@@ -7,18 +7,17 @@ The hypothesis used below is not an unnamed appeal to genericity.  It is the
 following cellwise assertion, quoted in the form in which it is recorded in
 the ledger.
 
-\begin{definition}[CONDITIONAL: Hypothesis H]
-For every odd prime $w$ and every rational $z$ with $v_w(z)\geq 1$ there
-exists a verified aligned class for the cell $(w,z)$---prime-$b$ data
-$(a,\varepsilon,1,q,N)$ from the L11 family, or escape data
-$(a,\varepsilon,f,q,N)$ with $f\mid\operatorname{num}(z)$ from the L12
-family---and a prime member $Q\equiv q\pmod N$ outside its finite excluded
-set, at which the emergent set is empty: every odd prime
-$l\notin S\cup\{Q\}$ satisfying
-$v_l(P(\varepsilon fQ))\neq 0$ has $v_l(P(\varepsilon fQ))$ even.  Here $S$
-is the frozen controlled set belonging to the verified class.
-% src: CONDITIONAL.md:76-109
+\begin{definition}[CONDITIONAL: member hypothesis H]
+For every odd prime $w$ and every rational $z$ with $v_w(z)\geq1$ there
+exists a verified aligned class for the cell $(w,z)$ and a prime member
+$Q\equiv q\pmod N$ outside its finite excluded set such that the bad
+emergent set is empty.  Explicitly, for every odd prime
+$\ell\notin S\cup\{Q\}$ with
+$v_\ell(P(\varepsilon fQ))$ odd, the local Hilbert symbol
+$(x_0,d_0)_\ell$ is $+1$.  Here $S$ is the frozen set of the class.
 \end{definition}
+% src: data/l19_classexist.jsonl (uniform class component)
+% src: data/l18_schinzel_implies_h.jsonl (member contract)
 
 \begin{theorem}[CONDITIONAL: Theorem C]
 Assume H.  Then $\Q\setminus\Z$ is Diophantine in $\Q$ with six unknowns,
@@ -27,14 +26,21 @@ realized by the L6 formula
  F(z):=\exists b,s\;\bigl[(1+2s,b)\in\Phi_1^{\{2\}}\ \wedge\
  \Theta_*\bigl(1+2s,b,h(1+2s,b,z^3),s\bigr)\bigr],
 \]
-where, with $A=1+4a^2$ and $B=2b$,
+where, with $A=1+4a^2$, $B=2b$, and
+$\tau^\dagger=(1+2a^2)/A$,
 \[
 \begin{aligned}
  \Theta_*(a,b,c,s):=\exists y,r\quad&
  [c^2-Ay^2-16Br^2=16-16ABs^2]\\
- &{}\vee[c^2-Ay^2-16ABr^2=16A-16A^2Bs^2].
+ &{}\vee[c^2-Ay^2-16ABr^2=16A-16A^2Bs^2]\\
+ &{}\vee[a^4(c^2-Ay^2)+4ABr^2=4A^2Bs^2-4A].
 \end{aligned}
 \]
+The three disjuncts are the cleared equations for
+$\tau=0$, $\tau=2a/A$, and $\tau^\dagger$, respectively, in the same
+witnesses $(y,r)$.
+% src: data/l19_classexist.jsonl (square-branch definition)
+% src: CONDITIONAL.md:18-31
 Consequently $\Z$ is definable in $\Q$ by a formula with six universal
 quantifiers,
 $\Z=\Q\setminus(F\vee\mathfrak m_2)$, and
@@ -44,12 +50,12 @@ $\operatorname{efd}_{\Q}(\Q\setminus\Z)\leq 5$.
 
 This is the ledger's exact conditional conclusion.  It is \emph{not} an
 unconditional definition and makes \textbf{no record claim}.  Soundness of
-the displayed formula consumes no hypothesis; completeness is exactly H.
-A finite collection of closed cells, however exhaustive within its stated
-horizon, cannot replace H's quantification over every odd $w$ and every
-eligible $z$.
-% src: CONDITIONAL.md:55-70
-% src: THEOREMS.md:1503-1511
+the expanded branch menu consumes no hypothesis; completeness is exactly H.
+Theorem~\ref{thm:classexist} proves the class component uniformly, rather
+than on a finite horizon.  The remaining member component follows from
+classical Schinzel~H only after the chosen pair is proved admissible; uniform
+irreducibility of its octic is still open.
+% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
 
 The quantifier saving is attributed precisely to Nicolas Daans, Philip
 Dittmann, and Arno Fehm, \emph{Existential rank and essential dimension of
@@ -64,20 +70,19 @@ because the set equality to $\Q\setminus\Z$ uses H.
 
 \subsection{What is proved, and what Schinzel must supply}
 
-\textbf{PROVED (finite alignment settled).}  Once an aligned class has been found, all
-controlled Hilbert symbols are frozen and the moving prime is restricted to
-one reduced progression.  For every canonical row audited here this
-progression is
+\textbf{PROVED (uniform class side and linear side).}
+Theorem~\ref{thm:classexist} constructs an aligned class for every cell and
+freezes all controlled Hilbert symbols while restricting the moving prime to
+one reduced progression
 \[
  q_1(t)=q_{1,0}+Nt,\qquad \gcd(q_{1,0},N)=1.
 \]
-The stored $q_{1,0}$ is proven prime by the repository's proven-primality
-engine.  Dirichlet's theorem therefore supplies infinitely many prime values
-of $q_1(t)$.  This is the linear, unconditional half of the member-existence
-problem; neither a refusal by the primality engine nor a probable-prime test
-is used as evidence.
-% src: THEOREMS.md:953-971
-% src: data/l17_schinzel_audit.jsonl:1-294
+The residue construction gives infinitely many proven-prime choices of the
+base $q_{1,0}$, and Dirichlet's theorem supplies infinitely many prime values
+of the progression.  This is the linear, unconditional half of the
+member-existence problem; no probable-prime test or refusal is used as
+evidence.
+% src: data/l19_classexist.jsonl (meta, construction rows, and summary)
 
 \textbf{OPEN/CONDITIONAL (cofactor side).}  Put
 \[
@@ -113,6 +118,16 @@ certificate that no prime divides the product for every integer $t$: any
 such fixed divisor would divide the computed gcd.  Thus all canonical
 pairs pass the fixed-divisor and irreducibility conditions.  This is
 \textbf{PROVED} for the stored pairs, not a prime-value theorem.
+
+The finite audit does not extrapolate to the classes just constructed for
+arbitrary rational cells.  The L20 audit proves their normalization,
+coprimality, fixed-divisor, frozen-unit, symbol-constancy, and positive-lead
+conditions uniformly, but it leaves irreducibility of $P(a,z)$ open
+uniformly.  Since affine substitution gives
+$G$ irreducible over $\Q$ if and only if $P$ is, this is the exact
+algebraic premise still missing before classical Schinzel~H applies in every
+cell.
+% src: data/l20_admissible.jsonl (uniform status and affine-equivalence blocks)
 % src: data/l17_schinzel_audit.jsonl:1-294
 
 For a prime $p$ dividing $N$, the corrected residue count is

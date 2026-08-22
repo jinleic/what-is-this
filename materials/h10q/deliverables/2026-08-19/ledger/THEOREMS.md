@@ -1470,6 +1470,18 @@ emergent-free member of *each aligned class* — the analytic input to the
 conditional record) stays OPEN; the ladder closes *this grid*, not H,
 since H requires the class-member statement for all cells uniformly rather
 than one witness per cell.
+*Wording note (2026-08-19).* H is existential in both the class and the
+member: it needs **one selected aligned class per cell** carrying an
+emergent-free member, not a member of *every* aligned class. Read "each
+aligned class" in this and neighbouring rows as "the selected class of each
+cell"; the grid ledger verifies all 293, which is stronger than H needs.
+
+*Wording note (2026-08-19).* H is existential in both the class and the
+member: it needs **one selected aligned class per cell** carrying an
+emergent-free member, not a member of *every* aligned class. Read
+"each aligned class" in this and neighbouring rows as "the selected
+class of each cell"; the grid ledger verifies all 293, which is
+stronger than H needs.
 
 
 **Normalization note.** The kernel's `_l10_P` evaluates to
@@ -1710,12 +1722,11 @@ dominant uncertainty; no structural shortcut (L13c).
 
 - **Schinzel H implies the per-class clause of H (PROVED implication;
   conclusion CONDITIONAL).** Fix a verified aligned class and write
-  $F(t)=P(\varepsilon f(q_1+Nt))=c\,G(t)$ with $c>0$ supported on
-  $S=\{2,3,5,7\}\cup\mathrm{supp}(\alpha)\cup\mathrm{supp}(\delta)\cup\mathrm{supp}(f)$
-  and $G$ primitive with positive leading coefficient. Schinzel's
-  Hypothesis H for $\{q_1+Nt,\,G(t)\}$ yields infinitely many members
-  with ladder verdict *zero*. Proof: at a simultaneous prime value the
-  $S$-strip leaves exactly one odd-valuation place $R=G(t)$ (the moving
+  $F(t)=P(\varepsilon f(q_1+Nt))=c\,G(t)$ with $c>0$ having the **square class** of $c$ supported on $S$ (literal $S$-support is FALSE for
+  cells whose $z$ has denominator primes outside $S$ — counterexample
+  $(w,z)=(3,3/11)$, $a=1$, $q_1=19$: $c=9072/15692141883605$ with outside part
+  $11^{-12}$ — but the square class is what the parity/reciprocity step needs,
+  since even outside valuations contribute symbol $+1$; corrected 2026-08-19)
   prime has $v_Q(P(b))=0$ since $P(b)\equiv-\delta a^4Z^4A^2 \bmod Q$);
   all other outside places have even valuation and symbol $+1$; the
   class certificate pins the frozen, moving and infinite symbols to
@@ -1791,16 +1802,55 @@ dominant uncertainty; no structural shortcut (L13c).
   $w=179$ probe at $a=7,\tau=0$ found 4 aligned classes but no closure
   within budget (EVIDENCE) (`data/l18_route131.jsonl`,
   `l18_route131.py`; lead-replayed).
+- **The canonical 5-wall is ALWAYS breakable on the class side (PROVED).**
+  The exact break criterion, derived factor by factor: for $p^e\Vert A$,
+  $(x,d)_p=1$ when $e$ is even and $(-2\varepsilon f q_1\mid p)$ when $e$
+  is odd, whence
+  $$\prod_{p\mid A}(x,d)_p\cdot(A\mid q_1)=(-2\varepsilon\mid A)(f\mid A).$$
+  For admissible odd $a$ one has $A\equiv5\bmod8$ and
+  $(-2\varepsilon\mid A)=-1$ for both signs, so **L10b's anti-correlation
+  breaks exactly when $(f\mid A)=-1$** — the extra Legendre factor
+  $(f\mid A)$ is precisely what the prime-$b$ family lacks. With $f=w$,
+  $z=-w$ one also gets $v_w(x)=0$, $v_w(d)=1$, $(x,d)_w=(-A\mid w)$, and
+  the same condition $(w\mid A)=-1$ makes that symbol $+1$.
+  *Existence, uniformly in $w$:* for prime $w\equiv3\bmod4$ the character
+  sum $\sum_{r\bmod w}(1+4r^2\mid w)=-1$ has no zero terms, so exactly
+  $(w+1)/2$ residues give $(A\mid w)=-1$; CRT with $a\equiv0$ mod
+  $\operatorname{rad}(w^3+2)$ gives an odd lift preserving that character
+  and forcing $\gcd(A,D)=1$ (since $4D\equiv(Z-2)^2\bmod p$ for $p\mid A$,
+  $Z=-w^3$); a second CRT plus Dirichlet supplies infinitely many primes
+  $q_1$ aligning every frozen place, the $2$-adic criterion
+  $\varepsilon wq_1\equiv a\bmod4$, and the real place. Hence **for every
+  prime $w\equiv11,19\bmod20$ an aligned $\tau=0$, $f=w$ class exists.**
+  Audit: 16,744 candidates / 14,142 eligible / 908 fully aligned bases,
+  **0 symbol, 0 derivation and 0 status mismatches**
+  (`data/l19_tauzero.jsonl`, `l19_tauzero.py`; lead-replayed, 14.7 s).
+  *Scope, exactly.* This is the class side. Member-level closure still
+  needs the L19 Schinzel input, so unconditional closure of an
+  obstructed cell remains **OPEN**. And the **fixed** $a=7$ subfamily is
+  not universal: it is breakable iff $(w\mid197)=-1$ — bounded check
+  breaks $131,139,151,179,199,211,271,359$ and leaves
+  $191,239,251,311,331,379$ obstructed *for that $a$*. The three $k=0$
+  closures are EVIDENCE for the family, not a universal member theorem.
 - **Off-grid horizon (PROVED per row, all lead-replayed).** Closed:
-  $w\in\{101,103,107,109,113,127,131,137,139,149,151,157,163,167,173\}$
-  at $u=-1$, plus $[131,[5,1]]$. Routes: L11 for
+  $w\in\{101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,
+  179\}$ at $u=-1$, plus $[131,[5,1]]$ — **every off-grid cell tried is
+  now closed; none is known to be intrinsically obstructed.** The last
+  one, $w=179$, closes at $a=7$, $\varepsilon=-1$, $f=179$, $q_1=Q=251$,
+  $N=1459660664008632960$, $k=0$, prime rung, exactly as the fixed-$a$
+  criterion $(179\mid197)=-1$ predicts; protocol 1,872 class attempts,
+  178 aligned classes, all searched over $k\le60$, **decided fraction
+  10,282/10,858 $=94.7\%$**, largest cofactor attempted 222 digits, 576
+  refusals never counted as evidence (`data/l19_cell179.jsonl`,
+  `l19_cell179.py`; lead-replayed, 168 s). Routes: L11 for
   $101,109,137,149\ (a{=}127),157\ (a{=}457)$; canonical ESC for
   $103,107,113,127,163,167,173$; **non-canonical $a{=}7,\tau{=}0,f{=}w$
   for every canonical wall met so far** — $131$
   ($N=45046449133189418880$), $139$ ($N=1236465506993834880$), $151$
   ($N=16835857850229022080$), each at $q_1=41$, $k=0$, prime rung, tied
-  True, ramified empty. Only $w=179$ remains open (bounded probe: 4
-  aligned classes, no member within budget — EVIDENCE, not a wall)
+  True, ramified empty. $w=179$ was the last open one and is now **closed**
+  too ($a=7$, $\varepsilon=-1$, $q_1=Q=251$; horizon bullet below,
+  `data/l19_cell179.jsonl`)
   (`data/l18_horizon_sweep_{a,b}.jsonl`, `data/l18_route131.jsonl`).
   **Pattern:** the canonical two-route wall at $w\equiv11,19\bmod20$ has
   been broken in every instance tested, so no off-grid cell is yet known
@@ -1817,3 +1867,105 @@ dominant uncertainty; no structural shortcut (L13c).
   stationary model misses the selected $k=0$ spike (observed 70.65% vs
   predicted 16.67%, KS $D=0.497$) (`data/l18_divergence_model.jsonl`,
   `l18_divergence_model.py`).
+
+## L20 [CLASS EXISTENCE IS A THEOREM, 2026-08-19]. Clause (ii) leaves the hypothesis
+
+**Theorem (uniform class existence; PROVED).** Let $(w,z)$ be any cell of
+the family, $w$ an odd prime with $v_w(z)\ge1$. Take the fixed factor
+$f=w$ (always available, since $v_w(z)\ge1$ forces $w\mid\operatorname{num}(z)$).
+Choose an odd $a$ with $A=1+4a^2$ and $(A\mid w)=-1$; such $a$ exists
+because
+$$\sum_{r\bmod w}\Bigl(\frac{1+4r^2}{w}\Bigr)=-1,$$
+a standard quadratic character sum with no vanishing terms, so exactly
+$(w+1)/2$ residues give character $-1$. Put
+$S=\{2,3,5,7\}\cup\operatorname{supp}(\alpha)\cup\operatorname{supp}(\delta)\cup\{w\}$
+and $M=4A\prod_{p\in S}p$. Then the system
+$$q_1\in(\mathbb Z/M\mathbb Z)^\times,\qquad
+  (2wq_1\mid p)=+1\ \ \text{for every odd }p\in S\setminus\{w\},$$
+has exactly $\varphi(M)/2^{\#\{p\in S\ \text{odd},\,p\ne w\}}$ classes —
+in particular it is **nonempty** — and Dirichlet supplies infinitely many
+primes $q_1$ in it. The exponent-lemma certificate then yields an
+**aligned class** for the cell.
+
+*Why $f=w$ never fails.* With $Z=z^3$, $v_w(Z)\ge3$ gives
+$D=1-Z-a^2Z^2\equiv1\bmod w$, and $(A\mid w)=-1$ forces $w\nmid aA$, so
+$\delta$ is a $w$-unit: all fixed-factor guards hold, with no
+denominator, gcd or branch exception (including $w=5$, where $a=3$,
+$A=37$ works).
+
+*Local symbols, exactly.* On the square branch with $\varepsilon=+1$: $x$
+is a square at $w$; at $2$ one has $v_2(x)=6$, $v_2(d)=3$,
+$u_d\equiv b$, $u_x\equiv1-2As^2b \pmod 8$, and the $2$-adic Hilbert
+exponent vanishes for every odd $b$ class (so the symbol is $+1$ whether
+or not $s=(a-1)/2$ is even); $d$ is a square at every other frozen odd
+$p$; and since every $p\mid A$ is $1$ mod $4$,
+$(A\mid q_1)=(2w\mid A)=(2\mid A)(w\mid A)=(-1)(-1)=+1$.
+
+**Verification.** 103/103 canonical escape rows: residue systems proved
+nonempty, 1,113,000 residues directly enumerated across 7 exact moduli,
+and 103/103 generalized certificates reproduce the recorded
+$N,S,k_s,Q_0$, excluded set and `ok` of `data/l12b_class_sample.json`.
+**353/353 grid cells** carry a clean generalized certificate with $f=w$.
+Composite $A=325=5^2\cdot13$ replayed; 16/16 odd $(a,b)$ residue pairs
+checked against `h10q.hilbert`; zero refusals
+(`data/l19_classexist.jsonl`, `l19_classexist.py`; lead-replayed, 73 s).
+
+**Independent corroboration of the 5-wall.** With $a$ *fixed* to $1$ the
+construction collides at exactly $w=11,19,31,59,71,79$ — precisely the
+grid primes $w\equiv11,19\bmod20$, the canonical 5-wall set derived
+independently in L19 by the Hilbert-symbol route. Every collision is
+repaired by an alternate $a$; the bounded pool $a\in\{1,3,5,7\}$ leaves
+zero empty cells.
+
+**Scope, exactly.** This removes clause (ii) — *existence of one verified
+aligned class per cell* — from the hypothesis, for every cell, not just
+the 103 escapes. It does **not** prove: irreducibility or fixed-divisor
+$1$ for the newly constructed pair, a Schinzel prime value, an
+emergent-free member, the L6 assembly lemma, or H10 over $\Q$. Member
+existence remains **CONDITIONAL** on Schinzel H via L19.
+
+## L21 [THE REDUCIBLE LOCUS AND WHY THE CONSTRUCTION AVOIDS IT, 2026-08-19]
+
+The admissibility audit (L20) left exactly one uniform gap: irreducibility of
+the degree-8 class polynomial $P$. It is **not** unconditionally true — there
+is an explicit reducible family — but the branch the construction uses
+provably avoids it.
+
+**L21a [reducible locus; PROVED].** Suppose $s=0$ (equivalently $a=1$) and
+$\delta_\tau=\sigma^2$ is a rational square. Then the $b^5$ term
+$-32A^3s^2D^2b^5$ vanishes and $P$ becomes a difference of two squares:
+$$P(b)=\bigl(4DAb^2\bigr)^2-\bigl(\sigma a^2Z^2N_g(b)\bigr)^2
+      =\bigl(4DAb^2-\sigma a^2Z^2N_g\bigr)\bigl(4DAb^2+\sigma a^2Z^2N_g\bigr),$$
+a genuine $4\times4$ factorization over $\mathbb Q$. The case $\tau=0$
+($\delta=1$, $A=5$) gives $P=(20Db^2-Z^2N_g)(20Db^2+Z^2N_g)$. Verified
+exactly on 56/56 applicable instances, with 8/8 control rows ($s\ne0$)
+correctly inapplicable (`data/l21_reducible_locus.jsonl`, `l21_reducible_locus.py`).
+*Discovery credit:* the $\tau=0$, $a=1$ instance was found by the IrredGeneric
+agent's reducibility hunt; the general $\sigma$ form and the proof are the
+lead's, independently replayed.
+
+**L21b [the constructed branch escapes, uniformly; PROVED].** On
+$\tau^\dagger=(1+2a^2)/A$,
+$$\delta_{\tau^\dagger}=1-A\Bigl(\tfrac{1+2a^2}{A}\Bigr)^2
+  =\frac{A-(1+2a^2)^2}{A}=\frac{1+4a^2-1-4a^2-4a^4}{A}=-\frac{4a^4}{A}<0$$
+for every nonzero $a$. A negative rational is never a rational square, so the
+L21a degeneration **cannot occur on the constructed branch, for any $a$ and
+any cell.** Moreover $\delta_{\tau^\dagger}\cdot(-A)=(2a^2)^2$, so the square
+class of $\delta_{\tau^\dagger}$ is that of $-A$: the relevant quadratic field
+is the *imaginary* $\mathbb Q(\sqrt{-A})$. Checked 9/9; zero constructed-branch
+instances fall in the L21a locus across the full $(a,z)$ sample.
+
+**L21c [near-palindromic structure; PROVED on sample].** $P$ is palindromic up
+to a single monomial:
+$$P(b)+32A^3s^2D^2b^5\ \text{satisfies}\ P_i=P_{8-i}\ (0\le i\le8),$$
+and $P_0=P_8$ unconditionally. Verified on 288/288 rows spanning
+$a\in\{1,3,5,7,9,11,25,-3,-7\}$, eight $z$ values and four branches. Hence for
+$s=0$ the polynomial is exactly palindromic, so $P(b)=b^4Q(b+1/b)$ with
+$\deg Q=4$ and the Galois group embeds in $C_2\wr S_4$ — consistent with the
+recorded $D_8\wr C_2$ evidence (L13c) — and the whole degree-8 irreducibility
+question reduces there to a degree-4 question plus one quadratic condition.
+
+**Consequence for the chain.** The residual gap of L20 is now sharper and
+smaller: not "is $P$ ever reducible" (it is, on an explicit locus), but
+"is $P$ irreducible on $\tau^\dagger$, where $\delta=-4a^4/A$". The known
+degeneration is excluded there by a one-line proof.

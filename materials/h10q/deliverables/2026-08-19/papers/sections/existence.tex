@@ -1,0 +1,173 @@
+\section{Uniform existence of an aligned class}
+\label{sec:existence}
+
+The prime-$b$ characterization of Section~\ref{sec:classes} describes one
+family, not the availability of classes altogether.  On the square branch,
+controlled non-coprimality gives a class for every cell.  This removes the
+class-existence clause from the global hypothesis; it does not produce an
+emergent-free member.
+
+\begin{theorem}[Uniform class existence; PROVED]
+\label{thm:classexist}
+Let $w$ be an odd prime and let $z\in\Q^\times$ satisfy $v_w(z)\geq1$.
+There are an odd integer $a$, a fixed factor $f=w$, and infinitely many
+positive primes $q_1$ for which the square branch
+\[
+ A=1+4a^2,\qquad
+ \tau^\dagger=\frac{1+2a^2}{A},\qquad
+ \delta=-\frac{4a^4}{A},\qquad
+ \alpha=(2a^2)^2,
+\]
+with $\varepsilon=+1$ and $b_0=fq_1$, is an aligned base class for the
+cell $(w,z)$.  If
+\[
+ S=\{2,3,5,7\}\cup\supp(\alpha)\cup\supp(\delta)\cup\{f\},
+\]
+then the class freezes every symbol at $S$, the moving-prime symbol, and
+the real symbol at $+1$.
+\end{theorem}
+% src: data/l19_classexist.jsonl (meta exact_hypothesis_clause and uniform-construction summary)
+
+\begin{proof}
+We give the construction, including the residue count.  First choose $a$.
+For the quadratic character $\chi_f$ the standard character sum is
+\[
+ \sum_{r\bmod f}\chi_f(1+4r^2)=-1.
+\]
+There are two zero terms if $f\equiv1\pmod4$ and none if
+$f\equiv3\pmod4$.  Hence the number of residues with
+$\chi_f(1+4r^2)=-1$ is respectively
+\[
+ \frac{f-1}{2}\quad\hbox{or}\quad\frac{f+1}{2},
+\]
+and is always positive.  Choose such a residue and lift it to an odd
+integer $a$; adding the odd modulus $f$ changes the parity of a lift.  Thus
+\[
+ \leg{A}{f}=-1. \tag{E1}
+\]
+% src: data/l19_classexist.jsonl (character-sum and target-prime rows)
+
+Taking $f=w$ is always admissible.  Indeed, (E1) implies
+$f\nmid aA$, so $v_f(\delta)=0$.  With $Z=z^3$ and
+$D=1-Z-a^2Z^2$, the cell condition gives $v_f(Z)\geq3$ and
+$D\equiv1\pmod f$.  Thus $f$ is an odd numerator prime, is coprime to
+$aA\delta D$, and meets every fixed-factor guard.  This includes $f=5$;
+there is no exceptional denominator or gcd case.
+% src: data/l19_classexist.jsonl (meta clause and target-prime character checks)
+
+Put
+\[
+ M=4A\prod_{p\in S}p
+\]
+and require the following reduced residue system for $q_1$:
+\[
+ q_1\in(\Z/M\Z)^\times,
+ \qquad
+ \leg{2fq_1}{p}=+1
+ \quad(p\in S\text{ odd},\ p\ne f). \tag{E2}
+\]
+At each distinct odd prime in (E2), precisely half of the unit classes
+satisfy the displayed character.  The Chinese remainder theorem therefore
+gives exactly
+\[
+ \frac{\varphi(M)}
+ {2^{\#\{p\in S:p\text{ odd},\ p\ne f\}}} \tag{E3}
+\]
+reduced classes modulo $M$.  In particular (E2) is nonempty.  Dirichlet's
+theorem gives infinitely many positive primes $q_1$ in any selected class.
+Removing the finitely many primes dividing the fixed cell data or producing
+a root or degeneracy leaves infinitely many choices.
+% src: data/l19_classexist.jsonl (residue-system direct counts and constructed-prime rows)
+
+It remains to verify the local symbols.  Write $s=(a-1)/2$ and
+\[
+ N_g(b)=16a^4b^2-A(b-1)^4,
+\]
+so the kernel polynomial is
+\[
+ P(b)=16D^2A^2b^4-\delta a^4Z^4N_g(b)^2
+      -32A^3s^2D^2b^5. \tag{E4}
+\]
+Since $\alpha,D^2,A^2$, and $b^4$ are squares, the square class of the
+local conic input $x$ is that of $P(b)$.
+
+At $f$, one has $v_f(b_0)=1$, $N_g(b_0)\equiv-A\pmod f$, and the three
+terms of (E4) have valuations $4$, at least $12$, and at least $5$.
+The uniquely minimal term is a square, so $x$ is a square in $\Q_f$ and
+the $f$-symbol is $+1$.
+
+At $2$ the exact computation is needed because the least unit need not be
+a square.  The kernel gives
+\[
+ v_2(x)=6,\qquad v_2(d)=3,\qquad
+ u_d\equiv b_0\pmod8,\qquad
+ u_x\equiv1-2As^2b_0\pmod8. \tag{E5}
+\]
+If $s$ is even then $u_x\equiv1$.  If $s$ is odd, then
+$A\equiv5\pmod8$ and $u_x\equiv1-2b_0\pmod8$.  In the standard
+$2$-adic Hilbert formula the exponent is
+\[
+ \epsilon(u_x)\epsilon(u_d)+6\omega(u_d)+3\omega(u_x)\pmod2,
+ \quad
+ \epsilon(u)=\frac{u-1}{2},\quad
+ \omega(u)=\frac{u^2-1}{8}.
+\]
+For $b_0\equiv1,3,5,7\pmod8$, the corresponding $u_x$ are
+$7,3,7,3$, and the exponent is respectively $0,0,0,0$.  Thus the
+$2$-adic symbol is always $+1$.
+% src: data/l19_classexist.jsonl (generalized certificates, exact 2-adic symbol)
+
+For every other odd $p\in S$, (E2) makes $2fq_1$ a square unit.
+Because $\alpha$ is a rational square, $d=2\alpha fq_1$ is a square in
+$\Q_p$ even when $p\mid a$; hence $(x,d)_p=+1$.  At infinity $d>0$, so
+the real symbol is $+1$.
+
+At the moving prime the kernel identity is
+\[
+ (x,d)_{q_1}=\leg{A}{q_1}.
+\]
+Every prime divisor of $A$ is $1\pmod4$, because
+$(2a)^2\equiv-1$ modulo that prime.  Reciprocity and (E2) therefore give
+\[
+ \leg{A}{q_1}
+ =\prod_{p^e\parallel A}\leg{q_1}{p}^{e}
+ =\leg{2f}{A}
+ =\leg{2}{A}\leg{f}{A}
+ =(-1)(-1)=+1. \tag{E6}
+\]
+Here $A\equiv5\pmod8$ and
+$\leg{f}{A}=\leg{A}{f}=-1$.  This is the compatibility identity that
+prevents a hidden collision between the frozen and moving places.
+
+Finally define
+\[
+ k_p=\texttt{\_l10\_exponent}(P,b_0,p),\qquad
+ N=\operatorname{lcm}\bigl(8,\{p^{k_p}:p\in S\},4A\bigr).
+\]
+The Taylor-exponent lemma freezes the $S$-symbols throughout
+$q_1+N\Z$, while $4A\mid N$ freezes (E6).  Since (E2) makes $q_1$ a
+unit at every prime dividing $N$, $\gcd(q_1,N)=1$.  This completes the
+class construction.  Emergent places outside $S$ have deliberately not
+been controlled; finding a member without a negative emergent symbol is
+the separate member-existence problem.
+% src: data/l19_classexist.jsonl (constructed class rows and uniform proof summary)
+\end{proof}
+
+\begin{remark}[The canonical parameter reproduces the $5$-wall]
+For $a=1$ one has $A=5$ and $\tau^\dagger=3/5$.  The independently
+computed frozen and moving symbols reduce to
+\[
+ \operatorname{Hilb}_5=-\leg{f}{5}\leg{q_1}{5},
+ \qquad
+ \operatorname{Hilb}_{q_1}=\leg{5}{q_1}=\leg{q_1}{5}.
+\]
+They can both be $+1$ exactly when $\leg{f}{5}=-1$.  For $f=w$ and the
+prime-$b$ route unavailable, this fails exactly at
+$w\equiv11,19\pmod{20}$, the independently derived canonical
+$5$-wall of Theorem~\ref{thm:fivewall}.  The separate replay recovered
+all $60$ walled grid cells and repaired all $60$ after allowing $a$ to
+vary.  Thus the collision at $a=1$ is exact, while class nonexistence is
+not.
+% src: data/l19_classexist.jsonl (canonical-collision rows and collision-summary row)
+% src: data/l18_fivewall.jsonl (independent canonical classification)
+\end{remark}

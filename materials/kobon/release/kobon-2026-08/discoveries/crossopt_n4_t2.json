@@ -1,0 +1,29 @@
+{
+ "stage": "VERDICT",
+ "n": 4,
+ "T": 2,
+ "result": "SAT",
+ "seconds": 0.0,
+ "parallel_pairs": [],
+ "concurrent_triples": [],
+ "selected": [
+  [
+   0,
+   1,
+   2
+  ],
+  [
+   0,
+   2,
+   3
+  ]
+ ],
+ "crossing_incidences": [
+  [
+   0,
+   2,
+   3,
+   1
+  ]
+ ]
+}

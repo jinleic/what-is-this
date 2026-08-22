@@ -159,10 +159,10 @@ The fixed space has one basis vector for each automorphism orbit of Pauli string
 | tag | graph | `n` | `|Aut|` | fixed local-term upper | `dim_Q h_Gamma` | `n(2n-1)` |
 |---|---|---:|---:|---:|---:|---:|
 | **[COMPUTATION]** | `K_{2,3}` | 5 | 12 | 49 | **44** | 45 |
-| **[COMPUTATION]** | `K_{3,3}` | 6 | 72 | 63 | **63** | 66 |
+| **[COMPUTATION]** | `K_{3,3}` | 6 | 72 | 64 | **63** | 66 |
 | **[COMPUTATION]** | `K_{3,4}` | 7 | 144 | 174 | **167** | 91 |
 
-**[THEOREM — symmetry explanation for `K_{3,3}`].** The `K_{3,3}` local-term algebra has 63 Pauli-string orbits under `(S_3 x S_3) semidirect C_2`, so symmetry gives `dim h<=63`.  The exact rational closure reaches all 63 orbit coordinates, proving equality.  This is a proved mechanism, not merely a fitted correlation between symmetry and a small dimension.
+**[THEOREM — symmetry explanation for `K_{3,3}`].** The `K_{3,3}` local-term algebra has 64 Pauli-string orbits under `(S_3 x S_3) semidirect C_2`, so symmetry alone gives `dim h<=64<66`.  The exact rational closure has codimension one in that fixed container and gives `dim h=63`.  This is a proved mechanism, not merely a fitted correlation between symmetry and a small dimension.
 
 **[THEOREM — the two load-bearing negatives].** Both `K_{2,3}` and `K_{3,3}` are simple, bipartite, carry the alternating Hamiltonian path `0-1-...-(n-1)`, and have maximum degree at least three.  Their exact dimensions lie below `dim so(2n)`, refuting the claim that the graph hypotheses alone force the desired dimension obstruction at those sizes.
 

@@ -973,3 +973,32 @@ agent's word alone.
    multiplier, 78% of the log gap - with the residual $1.84\times$ and a
    clear failure at the selected $k=0$ spike (70.65% observed vs 16.67%
    predicted). Honest partial success.
+
+### Citation audit and wall-scope repair (2026-08-19, advisory-driven)
+
+- All 13 bibliography entries rebuilt with complete author/title/journal/
+  volume/year/pages plus DOI and arXiv ids; parenthetical ledger prose
+  removed; inline bracket references converted to `\cite`. Zero undefined
+  citations or references in either paper.
+- **Real error caught:** the ten-quantifier record (arXiv:2301.02107)
+  carried the title of a *different* Daans paper. Correct:
+  *Universally defining Z in Q with 10 quantifiers*, JLMS (2) **109**
+  (2024), e12864. The other paper, *Universally defining finitely
+  generated subrings of global fields*, is Doc. Math. **26** (2021),
+  1851-1869 (arXiv:1812.04372). Also verified: Crelle 495 (1998) 1-28 is
+  CT-Skorobogatov-Swinnerton-Dyer, *Rational points and zero-cycles on
+  fibred varieties: Schinzel's hypothesis and Salberger's device*;
+  Cornelissen-Zahidi is Contemp. Math. 270 (2000), 253-260.
+- Schinzel-Sierpinski (Acta Arith. 4 (1958)) and Bateman-Horn (Math.
+  Comp. 16 (1962)) added and cited, since the record now names them.
+- **Wall scope stated exactly** (THEOREMS L19, paper Prop.): for the
+  tau=0/a=7 closure, L10b's failing hypothesis is verbatim
+  "b = eps*q1 with q1 != A prime" - b = 131*41 is not +/- a prime -
+  while a odd, A=197 prime and A doesn't divide 2zD_z all hold; L12's
+  failing hypothesis is coprimality of b to the cell data. Row verdict:
+  kernel authority (`_l7_tied_status`, `ramified`, identity against
+  `_l10_P`/`_sun_h`). Class certificate: labelled local generalization
+  of `l12_class.l12_class_cert` (a != 1 and composite f allowed, every
+  prime of f frozen), not the byte-identical kernel function. The
+  novelty is the tau=0 alignment alone; the b-shape is the orthodox
+  escape shape used in 103 grid rows.

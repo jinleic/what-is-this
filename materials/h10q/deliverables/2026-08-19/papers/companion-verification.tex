@@ -24,17 +24,27 @@ Engine Discipline, Artifact Schemas, and Reproducibility Scope}
 
 \begin{document}
 \begin{abstract}
-This companion describes what the finite H10Q computation verifies, how it
-refuses arithmetic it cannot certify, and how its persisted artifacts may be
-replayed.  The arithmetic kernel admits primality only through a deterministic
-Miller--Rabin range or a Pocklington certificate, including the
-Brillhart--Lehmer--Selfridge relaxation.  The surrounding suite separates
-machine proofs from conditional deductions and measured evidence, freezes its
-finite authorities in code, and records enough schema information to prevent a
-search log from silently becoming a theorem.  We give the exact downstream
-regeneration commands, the licenses attached to each artifact row, and the
-limitations left by missing historical producers and finite prime windows.
-% src: README.md:12-43; README.md:191-221
+This companion defines the verification boundary for the finite H10Q
+program and documents how its artifacts are replayed.  The new L19/L20
+chain separates three claims that must not be conflated: aligned classes
+exist uniformly by a character-sum/CRT/Dirichlet construction; members of a
+fixed admissible class follow conditionally from Schinzel's Hypothesis~H;
+and uniform irreducibility of the constructed degree-$8$ polynomial remains
+open.  The artifacts also certify that every canonical $5$-wall is
+breakable on the class side and that the searched cell $w=179$ has an exact
+ladder-zero member.
+% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
+% src: data/l19_tauzero.jsonl; data/l19_cell179.jsonl
+
+The arithmetic kernel accepts primality only inside its deterministic
+Miller--Rabin range or from a Pocklington certificate, including the
+Brillhart--Lehmer--Selfridge relaxation, and every refusal remains
+non-evidence.  We give the artifact schemas, the exact regeneration
+commands, and the scope licensed by each row.  In particular, finite
+modular irreducibility certificates never become an all-cell theorem, so
+this companion records no implication from Schinzel~H alone to a new
+quantifier record.
+% src: data/l20_admissible.jsonl (irreducibility and final-chain verdicts)
 \end{abstract}
 
 \section{The verification contract}
@@ -43,28 +53,31 @@ The program is a verifier of finite mathematical statements, not an oracle for
 Hilbert's Tenth Problem over \(\Q\).  A positive row is accepted only after its
 stated hypotheses and exact identities have been replayed.  A bounded scan
 licenses a statement about the scanned rows and no statement about the
-unscanned complement.  In particular, the canonical grid is closed
-instance-by-instance, while the uniform all-\(w\) assertion remains an analytic
-frontier; the audited simultaneous prime-value input has degree \(8\) and is
-still open.
-% src: README.md:138-145; README.md:225-231
+unscanned complement.  The canonical grid and every tried off-grid cell are
+closed instance by instance, while class existence is now proved uniformly.
+The member route still requires both uniform irreducibility of the
+constructed octic and the conjectural simultaneous prime values supplied by
+Schinzel's Hypothesis~H.
+% src: data/l19_classexist.jsonl; data/l19_cell179.jsonl
+% src: data/l20_admissible.jsonl
 
 \subsection{The label calculus}
 The ledger uses three labels as a small calculus of admissible inference.
 
-\emph{PROVED} means that an exact implication, identity, certificate, or finite
-exhaustion was replayed by the machine.  For example, the four off-grid rows at
-\(w\in\{101,103,107,109\}\), \(u=-1\), are PROVED per row after independent
-replay; this is a finite horizon statement, not a uniform theorem in \(w\).
-% src: RESULTS.md:104; NOTES.md:849-861
+\emph{PROVED} means that an exact implication, identity, certificate, or
+finite exhaustion was replayed by the machine.  Uniform class existence and
+the class-side break of every canonical $5$-wall are PROVED theorems; the
+closure of $[179,[-1,1]]$ is PROVED only for that row.
+% src: data/l19_classexist.jsonl; data/l19_tauzero.jsonl
+% src: data/l19_cell179.jsonl
 
-\emph{CONDITIONAL} means that every remaining hypothesis is stated and named.
-The six-unknown conclusion is conditional on the explicitly isolated global
-assembly lemma, so no quantifier record is claimed.  At the analytic end of the
-class reduction, the simultaneous primality of \(q_1(t)\) and the degree-\(8\)
-polynomial \(F_{\mathrm{cell}}(t)\) awaits Schinzel's Hypothesis H; the finite
-local audit does not supply that conjectural prime-value conclusion.
-% src: README.md:59-60; README.md:225-230; NOTES.md:862-869
+\emph{CONDITIONAL} means that every remaining hypothesis is stated and
+named.  For a fixed fully admissible class, Schinzel~H implies infinitely
+many ladder-zero members.  Uniformly, admissibility conditions (b), (c), and
+(d), and positivity in (a), are proved; irreducibility in (a) remains open.
+Thus the six-unknown conclusion is not presently a consequence of
+Schinzel~H alone.
+% src: data/l18_schinzel_implies_h.jsonl; data/l20_admissible.jsonl
 
 \emph{EVIDENCE} means a measured statistic with its sampling frame attached.
 The matched obstruction artifact reports marginal ratio \(0.9993\), a union
@@ -268,6 +281,48 @@ refused without weakening that license. \\ % src: data/l13h_all_closures.json:1-
 \end{tabular}
 \end{table}
 
+\begin{table}[p]
+\centering
+\scriptsize
+\caption{L19/L20 theorem and frontier artifacts.}
+\begin{tabular}{@{}p{.22\textwidth}p{.31\textwidth}p{.39\textwidth}@{}}
+\toprule
+Artifact & Row types and key fields & What the row licenses\\
+\midrule
+\path{l19_tauzero.jsonl} &
+\texttt{meta}; algebraic-criterion and uniform-theorem rows;
+\texttt{uniform-witness}; bounded tuple audits; summary &
+The factor-by-factor $\tau=0$ wall criterion and existence of a
+class-side break for every canonical $5$-wall.  Bounded aligned calls do
+not license members outside their recorded rows.\\
+% src: data/l19_tauzero.jsonl
+
+\path{l19_classexist.jsonl} &
+\texttt{meta}; per-cell generalized certificates; canonical collision
+rows; character and CRT counts; summary &
+The exact residue construction underlying uniform class existence and its
+finite corroborations.  It licenses no prime value of the octic and no
+emergent-free member.\\
+% src: data/l19_classexist.jsonl
+
+\path{l19_cell179.jsonl} &
+\texttt{meta}; \texttt{class-attempt}; \texttt{aligned-class};
+\texttt{member}; exact closure; summaries and refusal counts &
+The replayed ladder-zero closure of $[179,[-1,1]]$.  Attempts and prover
+refusals remain provenance, not negative evidence.\\
+% src: data/l19_cell179.jsonl
+
+\path{l20_admissible.jsonl} &
+\texttt{meta}; normalized per-class polynomials and content;
+irreducibility certificates; congruence checks; counterexample and summary &
+Uniform proofs of admissibility (b), (c), (d), and positive lead in (a);
+per-row irreducibility only.  Its overall label remains OPEN because
+uniform irreducibility is absent.\\
+% src: data/l20_admissible.jsonl
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Reading rows without overclaiming}
 Metadata is a scope declaration, not a certificate by itself.  A
 \texttt{meta} row identifies the authority, coordinate convention, engine,
@@ -348,6 +403,21 @@ The ledger records about \(17\) minutes for that \(1{,}275\)-probe auxiliary
 scan and records byte-identical regeneration for it.  No runtime is supplied
 here for commands for which the ledger records none.
 % src: README.md:41; NOTES.md:884-893; data/l17_horizon109_crossk.jsonl:1
+
+The L19/L20 chain is regenerated by
+\begin{verbatim}
+python3 l19_tauzero.py
+python3 l19_classexist.py
+python3 l19_cell179.py
+python3 l20_admissible.py
+\end{verbatim}
+Each command writes its correspondingly named JSONL artifact under
+\texttt{data/} and a human-readable report under \texttt{/tmp}.  The first
+two replay the wall and uniform class constructions, the third replays the
+finite member closure, and the fourth audits normalization and Schinzel
+admissibility while retaining the OPEN uniform-irreducibility verdict.
+% src: data/l19_tauzero.jsonl; data/l19_classexist.jsonl
+% src: data/l19_cell179.jsonl; data/l20_admissible.jsonl
 
 \section{Review-driven correction as methodology}
 
@@ -439,19 +509,36 @@ form.  Such fields must not be silently rewritten as success, and their
 refusals are not supporting evidence.
 % src: RESULTS.md:104; data/l17_horizon109.jsonl:387-390
 
-\item The Schinzel audit proves finite local admissibility and irreducibility
-for the canonical pairs, not simultaneous prime values of the degree-\(8\)
-polynomials.  The record claim remains CONDITIONAL, and the finite off-grid
-horizon does not imply the all-\(w\) hypothesis.
-% src: README.md:225-231; NOTES.md:862-869
+\item The L20 audit proves admissibility conditions (b), (c), and (d), and
+the positive-leading part of (a), uniformly.  It proves irreducibility only
+per row: $353/353$ reconstructed grid classes and $706/706$ legacy rows
+have exact modular certificates.  Uniform irreducibility of the constructed
+octic remains OPEN, and even after it is proved the simultaneous prime
+values remain conditional on Schinzel~H.  The finite off-grid horizon
+proves neither assertion.
+% src: data/l20_admissible.jsonl (condition and certificate summaries)
+% src: data/l19_cell179.jsonl (finite-horizon scope)
 \end{enumerate}
 
-The reproducibility claim is therefore intentionally narrow but useful:
-checked-in authorities can be replayed, specified downstream artifacts can be
-regenerated, and every refusal remains visible.  The paper's mathematical
-claims are exactly those finite certificates labeled PROVED; its statistics
-remain EVIDENCE; and its analytic extrapolations remain CONDITIONAL.
-% src: README.md:12-43; README.md:207-221
+\section{Conclusion}
+
+The new artifacts sharpen rather than erase the verification boundary.
+Uniform class existence is PROVED, the fixed-class Schinzel implication is
+PROVED, and all uniform admissibility conditions except octic
+irreducibility are PROVED.  The closure at $w=179$ and the modular
+irreducibility rows are exact finite certificates.  None supplies the
+missing all-cell irreducibility theorem, and none proves simultaneous prime
+values.
+% src: data/l19_classexist.jsonl; data/l19_cell179.jsonl
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
+
+The reproducibility claim is consequently narrow and checkable:
+checked-in generators rebuild the named artifacts, SHA-256 manifests detect
+drift, and refusals remain visible as unknowns.  The chain must be reported
+in the same order as its licenses: class existence first, uniform
+irreducibility still OPEN, and Schinzel member existence conditional after
+that premise.  No new quantifier record is claimed.
+% src: data/l20_admissible.jsonl (final chain verdict)
 
 \begin{thebibliography}{9}
 

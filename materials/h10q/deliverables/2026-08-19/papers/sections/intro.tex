@@ -115,6 +115,13 @@ The necessity holds for every admissible rational $a$, not only when
 $1+4a^2$ is prime; the sufficiency is constructive.
 % src: THEOREMS.md:1241-1258,1415-1431
 
+\item \textbf{PROVED --- uniform class existence.}
+For every cell, choose the fixed numerator prime $f=w$ and an odd $a$ with
+$\leg{1+4a^2}{w}=-1$.  A nonempty explicit CRT system and Dirichlet's
+theorem then give infinitely many square-branch aligned classes.  Class
+existence is therefore no longer part of the global hypothesis.
+% src: data/l19_classexist.jsonl (meta and uniform-construction summary)
+
 \item \textbf{PROVED --- exhaustive finite verification.}
 On the declared grid, every one of the $353$ cells has a replayable soluble
 witness, and every one of the $293$ aligned classes has a certified
@@ -131,29 +138,33 @@ validate the small-layer mechanism in the measured window; they do not
 supply a tail bound or a uniform density theorem.
 % src: THEOREMS.md:1574-1604; data/l17_matched.jsonl:1-3
 
-\item \textbf{PROVED --- an audited Schinzel reduction.}
-For all $293$ canonical linear/octic pairs, exact certificates verify
-irreducibility of the degree-$8$ factor, fixed-divisor and pair-product gcd
-conditions, and every local condition.  The linear Dirichlet side is a
-theorem.  The simultaneous prime-value assertion for the octic factor is
-not proved; it is precisely the remaining Schinzel input.
-% src: README.md:39-40,223-231; data/l17_schinzel_audit.jsonl:1
+\item \textbf{PROVED implication / OPEN uniform premise --- the Schinzel
+reduction.}
+For a fixed fully admissible class, Schinzel's Hypothesis~H for the
+linear/octic pair implies infinitely many emergent-free members.  The
+uniform audit proves coprimality, absence of a fixed prime divisor,
+frozen-unit and symbol constancy, and positive leading coefficient.  It
+does not prove irreducibility of the octic uniformly.  Exact modular
+certificates cover $353/353$ reconstructed grid classes and $706/706$
+legacy rows, but those finite certificates do not close the all-cell gap.
+% src: data/l20_admissible.jsonl (conditions (a)--(d) and certificate totals)
 
 \item \textbf{PROVED --- off-grid horizon extension.}
-The same certificate machinery closes and replays the four cells at $u=-1$,
-with $w=101$, $w=103$, $w=107$, and $w=109$.  They lie beyond the verified
-grid horizon $w\le97$.  This is an extension by four exact instances, not a
-uniform all-$w$ theorem.
-% src: THEOREMS.md:1626-1644; README.md:223-231
+The same certificate machinery now closes and replays
+$[179,[-1,1]]$, the last searched open cell.  Every off-grid cell tried to
+date has a certified member, but this remains a finite instance statement,
+not a uniform member theorem.
+% src: data/l19_cell179.jsonl (meta, closure, and summary rows)
 \end{enumerate}
 
 \paragraph{What is not claimed.}
 We claim \emph{no new unconditional quantifier record}: Daans's ten remains
 the refereed record, and Sun's seven remains an unrefereed announcement.
-The project hypothesis $H$ is open.  In particular, prime values of the
-irreducible degree-$8$ factor in the prescribed progressions are open; the
-closest unconditional square-class results have degree at most two, while
-the degree-three result is conditional on the elliptic-curve Parity
-Conjecture \cite{krumm}.  The finite grid, the matched sieve statistics, and
-the clean local audit do not prove that missing prime-value statement.
-% src: THEOREMS.md:259-265,1646-1654; data/litscout_h10q.md:6-13,24-28
+Nor do we claim that classical Schinzel~H presently implies the
+six-quantifier statement.  First one must prove that the constructed
+degree-$8$ polynomial $P(a,z)$ is irreducible for every cell, or prove that
+the parameter choice can always avoid its reducible locus.  Only after that
+uniform algebraic premise is supplied does Schinzel address the simultaneous
+prime-value member problem.
+% src: data/l20_admissible.jsonl (final chain verdict)
+% src: data/litscout_h10q.md (published and announced record boundary)

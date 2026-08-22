@@ -78,22 +78,20 @@ classes).
 
 \subsection{The off-grid horizon}
 
-The grid is $w$ prime, $w < 100$. Off-grid closures now exist for
+The grid is $w$ prime, $w<100$.  Off-grid closures now exist for
 \[
-   w \in \{101,103,107,109,113,127,131,137,139,149,151,157,163,167,173\},
-   \qquad u = -1 ,
+ w\in\{101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179\},
+ \qquad u=-1,
 \]
-together with $[131,[5,1]]$,
-each certified by an aligned class plus an exact ladder verdict
-\emph{zero}, and each replayed independently. Two routes appear: the
-L11 route through fresh Hensel roots of $1+4r^2 \equiv 0 \pmod w$
-($w = 101,109,137,149,157$), the canonical escape route with $f = w$
-($w = 103,107,113,127,163,167,173$), and the non-canonical
-$a{=}7$, $\tau{=}0$ family for the cells the canonical protocol walls
-($w = 131,139,151$). Only $w = 179$ remains open, and only for want of a
-member within budget --- four aligned classes were found --- so no
-off-grid cell is currently known to be intrinsically obstructed.
-% src: data/l17_horizon*.jsonl, data/l18_horizon_sweep_{a,b}.jsonl, data/l18_route131.jsonl
+together with $[131,[5,1]]$, each certified by an aligned class and an exact
+ladder verdict \emph{zero}.  The routes are the L11 family, the canonical
+fixed-factor escape, and the non-canonical $a=7$, $\tau=0$ family.  The
+last searched open cell, $[179,[-1,1]]$, is now closed, so every off-grid
+cell tried to date has a replayed member.  This is a finite-horizon
+statement only.
+% src: data/l17_horizon*.jsonl; data/l18_horizon_sweep_a.jsonl
+% src: data/l18_horizon_sweep_b.jsonl; data/l18_route131.jsonl
+% src: data/l19_cell179.jsonl (closure and summary rows)
 
 Two negative or delimiting findings carry structural content.
 
@@ -124,34 +122,68 @@ the canonical escape route, $14$ are obstructed, and there were zero
 identity or classification mismatches.
 % src: data/l18_fivewall.jsonl (classification_counts, identity_mismatches = 0)
 
-The wall is a statement about the canonical protocol, not about the
-cells, and it breaks.
+The wall is a statement about the canonical parameter, not about the cells.
+In fact it is always breakable on the class side.
 
-\begin{proposition}[Breaking the wall; PROVED]
+\begin{theorem}[Every canonical $5$-wall is breakable; PROVED]
 \label{prop:break}
-The obstructed cell $[131,[-1,1]]$ closes with the non-canonical class
-$a = 7$ (so $A = 197$), $\tau = 0$, $f = 131$, $\varepsilon = +1$,
-$q_1 = Q = 41$, $k = 0$, prime rung, tied status exact and ramified set
-empty. The same family closes the other two obstructed cells met so far,
-$w = 139$ and $w = 151$, each at $a = 7$, $\tau = 0$, $q_1 = 41$, $k = 0$.
-% src: data/l18_route131.jsonl, data/l18_horizon_sweep_a.jsonl
-\end{proposition}
+Let $w\equiv11,19\pmod{20}$ be prime and set $z=-w$, $f=w$.  There is an
+odd integer $a$ such that the $\tau=0$ fixed-factor family has an aligned
+class for infinitely many positive primes $q_1$.  This theorem concerns
+class existence; it does not assert an emergent-free member.  If $a$ is
+fixed to $7$, the class-side break exists exactly when
+$\leg{w}{197}=-1$.
+\end{theorem}
+% src: data/l19_tauzero.jsonl (criterion and always-breakable theorem rows)
 
-Two hypotheses fail, and it is worth being exact about which. The
-$\tau = 0$ wall assumes $b = \varepsilon q_1$ with $q_1$ prime; here
-$b = 131\cdot 41$ is not $\pm$ a prime, while every other hypothesis of
-that wall does hold ($a = 7$ odd, $A = 197$ prime, $A \nmid 2zD_z$). The
-generalized wall assumes $b$ coprime to the cell data; here
-$f = w = 131$ divides $\num(z)$. This is exactly the non-coprimality
-door, and the shape $b = \varepsilon f Q$ with $f \mid \num(z)$ is the
-orthodox escape shape already used in $103$ grid rows. \emph{The novelty
-is the $\tau = 0$ alignment alone, not a new family of $b$.} The row
-verdict is computed by the same kernel functions as every canonical row
-(tied status, ramified set, and the identity
-$M_0 = P(b)/(b^4 D_z^2 A^2)$); the class certificate is a local
-generalization of the escape certificate that drops two restrictions
-($a \ne 1$ allowed, $f$ composite allowed, every prime of $f$ frozen),
-with the same exponent-lemma proof.
+\begin{proof}
+Because $w\equiv3\pmod4$, the character sum
+$\sum_{r\bmod w}\leg{1+4r^2}{w}=-1$ has no zero terms.  Exactly
+$(w+1)/2$ residues therefore give character $-1$; choose one for $a\bmod
+w$.  By CRT also impose
+$a\equiv0\pmod{\operatorname{rad}(w^3+2)}$ and choose an odd lift.  For
+$A=1+4a^2$, $Z=-w^3$, and $D=1-Z-a^2Z^2$, the identity
+\[
+ 4D\equiv(Z-2)^2\pmod p\qquad(p\mid A)
+\]
+then gives $\gcd(A,D)=1$ while preserving $\leg{A}{w}=-1$.
+
+At every prime occurring to odd order in $A$, prescribe
+$\leg{-2\varepsilon wq_1}{p}=+1$; impose the exact $2$-adic class
+$\varepsilon wq_1\equiv a\pmod4$; and make
+$-2A\varepsilon wq_1$ a square at each of $3,5,7$ not dividing $A$.
+These independent local conditions define a reduced CRT class, so
+Dirichlet gives infinitely many primes $q_1$ in it.  After finitely many
+exclusions and a real-sign threshold, every frozen, moving, fixed-factor,
+and infinite symbol is $+1$, and the exponent lemma freezes the resulting
+progression.  The factor-by-factor identity
+\[
+ \prod_{p\mid A}(x,d)_p\,\leg{A}{q_1}
+   =\leg{-2\varepsilon}{A}\leg{w}{A}
+\]
+shows that for odd $a$ the break criterion is $\leg{w}{A}=-1$.
+Putting $a=7$ gives $A=197$ and the stated fixed-parameter criterion.
+\end{proof}
+% src: data/l19_tauzero.jsonl (algebraic-criterion and uniform-proof rows)
+
+\begin{proposition}[Finite member closures; PROVED per row]
+The non-canonical $\tau=0$ family closes the obstructed cells
+$w=131,139,151$ at $a=7$, $q_1=Q=41$, $k=0$.  It also closes
+$[179,[-1,1]]$ at $a=7$, $\varepsilon=-1$, $f=179$,
+$q_1=Q=251$, $k=0$, with prime rung, tied status exact, and empty
+ramified set.
+\end{proposition}
+% src: data/l18_route131.jsonl; data/l18_horizon_sweep_a.jsonl
+% src: data/l19_cell179.jsonl (verified closure row)
+
+These member rows are stronger than the class theorem only at their four
+individual cells.  Their fixed factor $f=w$ divides $\num(z)$, so they pass
+through the controlled non-coprimality door excluded by the generalized
+coprime wall.  The kernel verdict uses the same tied-status, ramification,
+alignment, and complete cofactor ladder as the canonical rows; refusals in
+the surrounding scans are not evidence.
+% src: data/l18_route131.jsonl; data/l18_horizon_sweep_a.jsonl
+% src: data/l19_cell179.jsonl
 
 \begin{remark}[Composite $w$]
 Composite $w$ is not admissible in the architecture: $w$ indexes a

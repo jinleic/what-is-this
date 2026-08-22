@@ -114,11 +114,15 @@ concurrent lines. Their bound
 \begin{equation}\label{eq:CB}
  K(n)\ \le\ \lfloor n(n-2)/3\rfloor - \mathbf 1_{n \bmod 6\in\{0,2\}}
 \end{equation}
-is therefore a statement about $K$; the case of a counted triangle whose
-sides are subdivided by crossings is not part of their case analysis, and
-their claim that a segment serving two triangles forces a multiple point at
-one of its endpoints fails once subdivided sides are admitted. Bartholdi,
-Blanc and Loisel \cite{BBL} and Blanc \cite{Blanc} bound $a_3^s$. Thus:
+is therefore a statement about $K$. Their case analysis does not treat a
+counted triangle whose sides are subdivided by crossings; by
+Theorem~\ref{thm:collapse} it need not, since such triangles may be
+eliminated without loss. What remains is that \eqref{eq:CB} rests on an
+unpublished draft, and that its route --- equality forces a perfect
+configuration, perfect configurations are simple and parallel-free (their
+Lemma 2), and the sharper simple bounds then contradict equality --- has not
+been refereed. Bartholdi, Blanc and Loisel \cite{BBL} and Blanc
+\cite{Blanc} bound $a_3^s$. Thus:
 
 \begin{quote}
 \emph{The base segment bound $\lfloor n(n-2)/3\rfloor$ is established for
@@ -197,6 +201,22 @@ $\Kgen(n)\le\lfloor n(n-2)/3\rfloor$, and $\Kgen(n)\le
 granted. In particular the three quantities of
 Definition~\ref{def:three} satisfy $a_3^s\le K=\Kgen$.
 \end{corollary}
+
+We could not locate either statement in the literature. The closest
+published relative is Lemma~4 of Leaños, Mbe Koua and Rivera \cite{LMR2010},
+which reaches the same conclusion for \emph{simple} arrangements under the
+extra hypothesis that one side of $T$ is uncrossed, by a chord induction like
+the one above; the all-sides-crossed case is not covered there. The
+convention itself is flagged in only two places we found: Zamfirescu
+\cite{Zam2018} defines \emph{facial} triangles ($L\cap\intr\Delta=\emptyset$
+for all $L\in\mathcal A$) alongside general ones, and the Kobon variations
+recorded after Forge and Ram\'irez Alfons\'in \cite{FRA1998} ask that counted
+triangles not be crossed. Neither remarks that the count is unaffected.
+That the collapse is not automatic is shown by Zamfirescu's own problem: for
+\emph{congruent} triangles the two conventions genuinely differ, her facial
+count being $14$ at $n=7$ against a larger general count \cite{Zam2018}. The
+exchange of Theorem~\ref{thm:collapse} uses interior-disjointness, which a
+congruence constraint destroys.
 
 Two remarks delimit the result. First, the collapse is a statement about
 maxima, not about individual optima: an optimal family may genuinely contain
@@ -683,6 +703,15 @@ triangles in a simple arrangement of $n$ pseudo-lines}, Geombinatorics
 \textbf{21} (2011), no.~1, 5--14; preprint arXiv:0801.2845.
 \bibitem{CB2007} G.~Clément, J.~Bader, \emph{Tighter upper bound for the
 number of Kobon triangles}, draft, ETH Zürich, 21 December 2007.
+\bibitem{FRA1998} D.~Forge, J.~L.~Ram\'irez Alfons\'in, \emph{Straight line
+arrangements in the real projective plane}, Discrete Comput.\ Geom.\
+\textbf{20} (1998), no.~2, 155--161.
+\bibitem{LMR2010} J.~Lea\~nos, M.~K.~Ndjatchi,
+L.~M.~Rivera-Mart\'inez, \emph{Simple Euclidean arrangements with one
+$(\ge5)$-gon}, arXiv:1008.4598 (2010); Lemma~4.
+\bibitem{Zam2018} C.~T.~Zamfirescu, \emph{Congruent triangles in
+arrangements of lines}, Ars Math.\ Contemp.\ \textbf{14} (2018), no.~2,
+359--373.
 \bibitem{FK1999} S.~Felsner, K.~Kriegel, \emph{Triangles in Euclidean
 arrangements}, Discrete Comput.\ Geom.\ \textbf{22} (1999), no.~3,
 429--438.

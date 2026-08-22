@@ -68,20 +68,29 @@ The original block is
 \]
 % src: THEOREMS.md:419-420
 The architectural step is to identify its witness $s$ with the congruence
-parameter by imposing $a=1+2s$.  The resulting two-witness block is
+parameter by imposing $a=1+2s$.  We use the finite branch menu
+\[
+ \tau\in\left\{0,\frac{2a}{A},
+ \tau^\dagger=\frac{1+2a^2}{A}\right\}.
+\]
+After clearing the nonzero denominators, the resulting two-witness block is
 \[
 \begin{aligned}
 \Theta_*(a,b,c,s):\quad \exists y,r\quad&
 \bigl[c^2-Ay^2-16Br^2=16-16ABs^2\bigr]\\
 &{}\vee
-\bigl[c^2-Ay^2-16ABr^2=16A-16A^2Bs^2\bigr].
+\bigl[c^2-Ay^2-16ABr^2=16A-16A^2Bs^2\bigr]\\
+&{}\vee
+\bigl[a^4(c^2-Ay^2)+4ABr^2=4A^2Bs^2-4A\bigr].
 \end{aligned}
 \]
-% src: THEOREMS.md:422-433
-Its branches are respectively $\tau=0$ and $\tau=2a/A$; in the latter
-case $\delta_\tau=1/A$ and the displayed equation has been multiplied by
-$A$.
-% src: THEOREMS.md:432-450
+The three equations correspond respectively to
+$\tau=0$, $\tau=2a/A$, and $\tau^\dagger$; on the last branch
+$\delta_{\tau^\dagger}=-4a^4/A$ and
+$\alpha=(2a^2)^2$ is a square.  A finite disjunction is represented by the
+product of these polynomials in the same witnesses $(y,r)$, so adding the
+square branch costs no variable.
+% src: data/l19_classexist.jsonl (square-branch definition); THEOREMS.md:1100-1121
 The candidate model is therefore
 \[
 F(z):=\exists b,s\ \bigl[(1+2s,b)\in\Phi_1^{\{2\}}\ \wedge\

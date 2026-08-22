@@ -1923,3 +1923,49 @@ the 103 escapes. It does **not** prove: irreducibility or fixed-divisor
 $1$ for the newly constructed pair, a Schinzel prime value, an
 emergent-free member, the L6 assembly lemma, or H10 over $\Q$. Member
 existence remains **CONDITIONAL** on Schinzel H via L19.
+
+## L21 [THE REDUCIBLE LOCUS AND WHY THE CONSTRUCTION AVOIDS IT, 2026-08-19]
+
+The admissibility audit (L20) left exactly one uniform gap: irreducibility of
+the degree-8 class polynomial $P$. It is **not** unconditionally true — there
+is an explicit reducible family — but the branch the construction uses
+provably avoids it.
+
+**L21a [reducible locus; PROVED].** Suppose $s=0$ (equivalently $a=1$) and
+$\delta_\tau=\sigma^2$ is a rational square. Then the $b^5$ term
+$-32A^3s^2D^2b^5$ vanishes and $P$ becomes a difference of two squares:
+$$P(b)=\bigl(4DAb^2\bigr)^2-\bigl(\sigma a^2Z^2N_g(b)\bigr)^2
+      =\bigl(4DAb^2-\sigma a^2Z^2N_g\bigr)\bigl(4DAb^2+\sigma a^2Z^2N_g\bigr),$$
+a genuine $4\times4$ factorization over $\mathbb Q$. The case $\tau=0$
+($\delta=1$, $A=5$) gives $P=(20Db^2-Z^2N_g)(20Db^2+Z^2N_g)$. Verified
+exactly on 56/56 applicable instances, with 8/8 control rows ($s\ne0$)
+correctly inapplicable (`data/l21_reducible_locus.jsonl`, `l21_reducible_locus.py`).
+*Discovery credit:* the $\tau=0$, $a=1$ instance was found by the IrredGeneric
+agent's reducibility hunt; the general $\sigma$ form and the proof are the
+lead's, independently replayed.
+
+**L21b [the constructed branch escapes, uniformly; PROVED].** On
+$\tau^\dagger=(1+2a^2)/A$,
+$$\delta_{\tau^\dagger}=1-A\Bigl(\tfrac{1+2a^2}{A}\Bigr)^2
+  =\frac{A-(1+2a^2)^2}{A}=\frac{1+4a^2-1-4a^2-4a^4}{A}=-\frac{4a^4}{A}<0$$
+for every nonzero $a$. A negative rational is never a rational square, so the
+L21a degeneration **cannot occur on the constructed branch, for any $a$ and
+any cell.** Moreover $\delta_{\tau^\dagger}\cdot(-A)=(2a^2)^2$, so the square
+class of $\delta_{\tau^\dagger}$ is that of $-A$: the relevant quadratic field
+is the *imaginary* $\mathbb Q(\sqrt{-A})$. Checked 9/9; zero constructed-branch
+instances fall in the L21a locus across the full $(a,z)$ sample.
+
+**L21c [near-palindromic structure; PROVED on sample].** $P$ is palindromic up
+to a single monomial:
+$$P(b)+32A^3s^2D^2b^5\ \text{satisfies}\ P_i=P_{8-i}\ (0\le i\le8),$$
+and $P_0=P_8$ unconditionally. Verified on 288/288 rows spanning
+$a\in\{1,3,5,7,9,11,25,-3,-7\}$, eight $z$ values and four branches. Hence for
+$s=0$ the polynomial is exactly palindromic, so $P(b)=b^4Q(b+1/b)$ with
+$\deg Q=4$ and the Galois group embeds in $C_2\wr S_4$ — consistent with the
+recorded $D_8\wr C_2$ evidence (L13c) — and the whole degree-8 irreducibility
+question reduces there to a degree-4 question plus one quadratic condition.
+
+**Consequence for the chain.** The residual gap of L20 is now sharper and
+smaller: not "is $P$ ever reducible" (it is, on an explicit locus), but
+"is $P$ irreducible on $\tau^\dagger$, where $\delta=-4a^4/A$". The known
+degeneration is excluded there by a one-line proof.

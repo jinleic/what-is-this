@@ -44,22 +44,27 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `artifacts/l18_horizon_sweep_b.jsonl` | repo-regenerable | 392941 |
 | `artifacts/l18_route131.jsonl` | repo-regenerable | 413188 |
 | `artifacts/l18_schinzel_implies_h.jsonl` | repo-regenerable | 23440 |
+| `artifacts/l19_cell179.jsonl` | repo-regenerable | 12013190 |
+| `artifacts/l19_classexist.jsonl` | repo-regenerable | 405756 |
+| `artifacts/l19_tauzero.jsonl` | repo-regenerable | 568168 |
+| `artifacts/l20_admissible.jsonl` | repo-regenerable | 808659 |
 | `artifacts/l6_witnesses.jsonl` | frozen authority (suite-asserted) | 3785 |
 | `artifacts/l9_steered.jsonl` | frozen authority (suite-asserted) | 23025 |
 | `artifacts/litscout_h10q.md` | persisted evidence (no checked-in producer) | 8438 |
-| `ledger/CONDITIONAL.md` | project ledger | 22057 |
-| `ledger/NOTES.md` | project ledger | 64730 |
+| `ledger/CONDITIONAL.md` | project ledger | 23633 |
+| `ledger/NOTES.md` | project ledger | 66528 |
 | `ledger/README.md` | project ledger | 21245 |
-| `ledger/RESULTS.md` | project ledger | 46050 |
-| `ledger/THEOREMS.md` | project ledger | 114304 |
-| `papers/companion-verification.tex` | paper draft | 23791 |
-| `papers/main-conditional-forall6.tex` | paper draft | 8787 |
-| `papers/sections/architecture.tex` | paper draft | 9138 |
-| `papers/sections/classes.tex` | paper draft | 8166 |
-| `papers/sections/frontier.tex` | paper draft | 7958 |
-| `papers/sections/intro.tex` | paper draft | 8689 |
-| `papers/sections/record.tex` | paper draft | 9678 |
-| `papers/sections/schinzel.tex` | paper draft | 4598 |
+| `ledger/RESULTS.md` | project ledger | 48370 |
+| `ledger/THEOREMS.md` | project ledger | 123532 |
+| `papers/companion-verification.tex` | paper draft | 27586 |
+| `papers/main-conditional-forall6.tex` | paper draft | 9431 |
+| `papers/sections/architecture.tex` | paper draft | 9549 |
+| `papers/sections/classes.tex` | paper draft | 8186 |
+| `papers/sections/existence.tex` | paper draft | 6483 |
+| `papers/sections/frontier.tex` | paper draft | 9153 |
+| `papers/sections/intro.tex` | paper draft | 9286 |
+| `papers/sections/record.tex` | paper draft | 10558 |
+| `papers/sections/schinzel.tex` | paper draft | 7469 |
 | `papers/sections/sieve.tex` | paper draft | 8461 |
 | `papers/sections/walls.tex` | paper draft | 10010 |
 | `scripts/h10q.py` | generator/replay script | 198192 |
@@ -89,6 +94,10 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `scripts/l18_horizon_sweep_b.py` | generator/replay script | 30368 |
 | `scripts/l18_route131.py` | generator/replay script | 39902 |
 | `scripts/l18_schinzel_implies_h.py` | generator/replay script | 27822 |
+| `scripts/l19_cell179.py` | generator/replay script | 41306 |
+| `scripts/l19_classexist.py` | generator/replay script | 39638 |
+| `scripts/l19_tauzero.py` | generator/replay script | 38085 |
+| `scripts/l20_admissible.py` | generator/replay script | 40213 |
 
 ## Verification
 
@@ -106,6 +115,10 @@ python3 l17_classrisk.py                  # per-class window factors
 python3 l17_schinzel_audit.py             # Schinzel local-condition audit
 python3 l17_horizon101.py                 # off-grid closure replays (103/107/109 likewise)
 python3 l17_horizon109_crossk.py          # ~17 min deterministic cross-k scan
+python3 l19_tauzero.py                   # tau=0 wall criterion / class-side break
+python3 l19_classexist.py                # uniform aligned-class construction
+python3 l19_cell179.py                   # exact w=179 member closure
+python3 l20_admissible.py                # uniform admissibility audit
 python3 h10q.py                           # default suite (exit 0 required)
 python3 h10q.py --extended                # extended suite (exit 0 required)
 ```

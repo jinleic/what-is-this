@@ -4,6 +4,119 @@ Newest first. Every entry records what was done, what was verified, and what it
 cost. "Verified" means a command ran and its output was observed, or a primary
 source was read directly — not that something looks right.
 
+### KOBON (2026-08-22) - THE CONVENTIONS COLLAPSE: crossings never help, so K = K_gen
+
+* **THEOREM (collapse), proved and machine-checked**: for every arrangement A,
+  `face(A) = broad(A)`; hence **`K_gen(n) = K(n)` for all n**. Proof is two
+  steps:
+  * *Corner-descent lemma*: every triangle bounded by three lines of an
+    arrangement contains a triangular FACE. Induct on the number of lines
+    meeting the interior; a chord either cuts off a corner (leaving a triangle
+    on two old lines + the chord) or runs from a vertex to the opposite side
+    (splitting into two such triangles); the piece loses that chord, so the
+    parameter strictly drops.
+  * *Exchange*: replace a crossed member of an interior-disjoint family by a
+    face inside it; size preserved, crossed count drops. Iterate.
+* **Machine check** (`scratch/kobon/collapse_verify.py`): 872 exact-rational
+  arrangements at n<=7 over six degeneracy modes (generic, parallel pair,
+  parallel triple, triple point, quadruple point, two triple points);
+  **13,017 triangles all descend to a face** (depths 0-4); **zero**
+  arrangements with face < broad. Independent sweep
+  (`convention_sweep.py`): 1,120 arrangements at n=5,6, zero gaps.
+* **HONEST DOWNGRADE**: this retires the convention hierarchy that the prior
+  session's paper was built on. Consequences:
+  * The ceiling `K_gen(n) <= floor((n-2)(5n-3)/12)` is **superseded** -
+    weaker than `floor(n(n-2)/3)` at every n>=4, since 5n-3 > 4n. Kept only
+    as a capacity-machinery corollary.
+  * `K_gen(8)=15`, `K_gen(9)=21` are **not new values** - they equal the
+    classical K(8), K(9). The DRAT ladder is an independent all-degeneracy
+    *verification* of the classical Kobon numbers, not new mathematics.
+  * The n=13 T=48 "separation probe" and the n=14 T=56 monolith are
+    **provably redundant** (48 > floor(13*11/3) = 47; T=56 is implied by
+    T=55). Both frozen, state preserved.
+* **POINTWISE FALSE**: the collapse equates maxima, not optima. Crossed
+  optima genuinely exist - at n=4, 296 of 300 random exact-rational
+  arrangements have an optimal 2-family using a crossed triangle; at n=6 the
+  exact arrangement in `scratch/kobon/discoveries/n6_convention_separation.json`
+  attains the record 7 with `012` crossed by line 4, and descent recovers the
+  face optimum by swapping `012 -> 014`. SAT-certified companion: forcing a
+  crossing into an optimal family is SAT at n=4,6 and UNSAT at n=5,7,8.
+* **SOUND SEARCH WLOG** (`scratch/kobon/faces_only.py`): crossings may be
+  forbidden outright. Validated against known values - UNSAT at (7,12),
+  (8,16), (9,22); ~2x faster than the broad encoding (n=8: 75s -> 31.6s;
+  n=9: 710s -> 388s).
+* **RETARGETED FRONTIER** (the rigorous K-windows, with OEIS's simple-only
+  upper bounds discarded): n=11 closed by Savchuk; n=13 closed (FK bound =
+  construction 47); **n=12 open at [38,39]** - the smallest genuinely open
+  case, decided by the single instance (12,39), now running; n=14 open at
+  [54,55], decided by (14,55) - `n14_faces_t55.cnf` (1,349,454 vars /
+  7,829,001 clauses) launched; n=18 [93,95]; n=20 [116,119].
+* **DISK**: guard fired exactly as designed -
+  `GUARD-STOP pid=88776 rc=0 state=T free_kib=15678924`. With approval,
+  255 GB of partial DRAT proofs for now-redundant runs were removed
+  (n11_monolith_t33.drat 91 GB, n14c-q0tp1 75 GB, n14c-q1tp1d 82 GB); the
+  blocks are currently pinned by Time Machine local snapshots, which macOS
+  purges under pressure. Collateral: the n11 discovery twin shared that
+  CNF path and was terminated with the writers; superseded by the compact
+  `n11_faces_t33.cnf` run.
+
+### R55 MIXED (2026-08-21) — level-2 pair lift executed and CLOSED; a retraction
+
+* **THE PAIR LIFT IS CLOSED.** The falsification criterion recorded at the end
+  of the mixed campaign (note §6.5) was run and fired. Exact optima of the
+  level-2 pair-coupled programme, maximised over every feasible integer edge
+  count (exactly `e in [454,536]`): `total_deficiency` 360 (frozen 360),
+  `degree20_count` **41** (frozen 14310/349, i.e. improved by exactly 1/349),
+  `deficiency_ge8_count` 45 (frozen 45). No route reaches its edge
+  (315, 1, 1). Disposition `MIXED_PAIR_LIFT_CLOSED`. **No R(5,5) bound
+  claimed.** Levels 1 and 2 of the first exact basis at n=45 are now both
+  closed; the recorded residual tiers (VeriPB gluing, then srg(45,22,10,11)
+  complementary SAT) are the only remaining routes.
+* **WHY — `excess_balance` IS the degree-squared identity.** Pure double
+  counting gives `sum_{u~v} deg(u) = e + e(G[N(v)]) - e(G[D(v)])` per vertex and
+  `sum_v deg(v)^2 = 45e + sum_v e(G[N(v)]) - sum_v e(G[D(v)])` in aggregate
+  (verified on all 2,131,018 labelled graphs to n=7 plus randoms at n=12,20,45;
+  independently re-verified by a second agent over all graphs on n=4,5,6,
+  209,184 per-vertex checks, 0 violations). Adjoining it gains nothing: the repo's
+  z stratum is the *complement* of the anti-neighbourhood, so the true interior
+  count is `e_y = C(m,2) - e_z`, and with that substitution
+  `2d^2 - 45d - 2e_x + 2e_y == excess_balance(s)` exactly on all 3215 states.
+  Exact rank stays 8 before and after. This retires every handshake-,
+  assortativity- and degree-correlation repair at the aggregate level — including
+  the one the campaign note itself proposed. Only the per-degree-class form is
+  finer, and it is worth 1/349.
+* **RETRACTION (mine, mid-session).** Substituting the recorded `e_z` for
+  `e(G[D(v)])` gives a row that IS independent of the frozen basis (rank 8->9)
+  and appears to cut hard: 360->4905/14, 14310/349->225/11, 45->4905/112, and
+  under integrality of the degree distribution 349/20/43 — each with matching
+  exact dual certificates AND exact primal witnesses. All retracted: the row
+  misreads the stratum convention. Exact certificates prove optimality *for the
+  programme written*, not soundness of the programme. A second trap was hit and
+  caught the same way: reading the non-adjacent codegree bound
+  `lam <= d+d'-30` as a lower bound makes every e infeasible and so manufactures
+  a false refutation of R(5,5)=45. Both are now pinned by regression tests
+  (`test_invalid_ez_row_is_the_trap`, `test_nonadjacent_bound_is_an_upper_bound`).
+* **TASK 4 LANDED** (the plan's last open item, delegated): disjoint checker
+  `r55/src/check_mixed_certificate.py` + 17 tests. Imports only stdlib plus
+  `check_ramsey.parse_graph6_line`/`popcount`; second independently written motif
+  kernel cross-validated by a combinations-only reference on all 33,867 labelled
+  graphs of orders 1..6; `--sweep` re-swept 8,500,211 graphs across 53 classes in
+  333 s with every per-class window agreeing; independent histogram-DP
+  reconstruction of q and the g endpoints (no frozen-m4 state comparison);
+  all 3215 F intervals re-derived; least-alpha canonicality enforced. Scoped gap
+  recorded verbatim in its docstring: outer windows for catalog-missing classes
+  are validated for schema, combinatorial caps and catalog containment but the
+  R1-R5 envelope LP is not re-run, so h and F endpoints in missing strata remain
+  conditional on those hash-pinned windows.
+* New: `r55/src/pair_lift_mixed.py`, `r55/tests/test_pair_lift_mixed.py` (18
+  tests). Verified: pair-lift suite 18/18 OK (131 s); checker suite 17/17 OK
+  (13 s); `pair_lift_mixed.py` CLI rc 0 printing `MIXED_PAIR_LIFT_CLOSED`;
+  `check_mixed_certificate.py` CLI rc 0 printing
+  `MIXED EVIDENCE VERIFIED: MIXED_NO_CUT_IN_FROZEN_BASIS`. Paper rebuilt to 8
+  pages, pdflatex exit 0, 0 LaTeX warnings. Trust discipline unchanged: HiGHS
+  only proposes; every accepted number re-verified by exact componentwise dual
+  feasibility in `Fraction`.
+
 ### KOBON (2026-08-21/22) — convention separation, two DRAT-certified closures, paper drafted
 
 * **NEW THEOREMS (DRAT-certified, strongest convention: crossings allowed):**
@@ -52,6 +165,19 @@ source was read directly — not that something looks right.
   (801,794 vars / 4,736,355 clauses); n=11 T=33 and n=12 T=39 monoliths;
   n=18 q0/q1/q2 cubes; n=20 q1; n=11 proof-grade DRAT run (94 GB, disk-floor
   guard armed at 15 GiB).
+* **CERTIFIED INITIAL SEGMENT (all DRAT-verified, broad convention)**:
+  `K_gen(4..9) = 2, 5, 7, 11, 15, 21`. Each value is certified by a
+  `drat-trim`-verified refutation of T = K+1; ledger
+  `scratch/kobon/ladder_certificates.json`, pipeline
+  `scratch/kobon/certify_ladder.sh`, transcripts
+  `scratch/kobon/ladder_n*_t*.dratcheck.log`:
+  n=4 (207/994, core 90, 0.05 s) · n=5 (972/5,257, core 424, 0.04 s) ·
+  n=6 (3,655/20,681, core 4,541, 0.48 s) · n=7 (10,682/63,405, core 12,255,
+  4.5 s) · n=8 (27,451/165,367, core 31,218, 117.6 s) ·
+  n=9 (61,569/377,405, core 66,346, 2,150,510 core lemmas, 86.8M resolution
+  steps, 1,060 s). With the prior 11-cube cover for n=10 this determines
+  `K_gen(n)` for every n <= 10 — each statement strictly stronger than the
+  classical one, since crossed families are also excluded.
 * **Attribution correction (verified at source)**: Parpalak-Utkin
   arXiv:2607.29236 states verbatim that "perfect arrangements solve both the
   Kobon problem (including the general non-simple case, for which the same
@@ -196,10 +322,282 @@ the corner $s,t\to0$. Hypothesis 2 (his §V-B, a 9-parameter global
 optimisation) is a separate target and structurally identical to what our
 certified branch-and-bound already does in 5 parameters.
 
+### WHY LIU'S HYPOTHESIS 1 RESISTS PROOF (2026-08-22) — it is an exactly tight inequality
+
+Follow-up to the reduction entry below. Two independent attacks were run on the
+reduced form; both fail, and the *reason* they fail is the finding.
+
+**Closed forms** (`uc/liu_tail.py`, PROVED by exact SymPy summation with
+parity/binomial checks; sampled 80-digit agreement 5.65e-78, 4.82e-78, 9.75e-28
+against 1024-term truncations). With $u=1-s$, $v=1-t$, $y=st$, $z=uv(1+y)$:
+$$P=uv\Big[y+\tfrac{(1-y)\ln(1-y)-(1+y)\ln(1+y)}{2}\Big],\qquad
+N_{\rm even}=uv\,\tfrac{(1-y)\ln(1-y)+(1+y)\ln(1+y)}{2},$$
+$$N_{k\ge2}=z+(1-z)\ln(1-z)=\sum_{k\ge2}\frac{z^k}{k(k-1)},$$
+and the reduced (projection-stripped) kernel is $P-N_{\rm even}-N_{k\ge2}$.
+Equivalently $P-N_{\rm even}=uv\,[\,y-(1+y)\ln(1+y)\,]$, whose Taylor
+coefficients in $y$ are $(-1)^{m+1}/(m(m-1))$ — positive exactly on odd
+$m\ge3$, which re-derives the sign structure from the closed form.
+
+**Attack 1 — Cauchy–Schwarz domination: PROVED impossible.** Using the
+telescoping $f_j=\sum_{m\ge0}g_{2,j+m}$ and any positive weights, the first
+retained odd index $J$ needs weight $c_{J,0}>1/(J(J-1))$ at index $J$, but the
+$k=2$ budget there is $\binom{2}{J}/2=0$ for $J\ge3$ — literally zero available
+negative weight at that index (checked in exact `Fraction` arithmetic). Only the
+vacuous $J_0=\infty$ closes, and no finite leftover set exists. The Margin-Lemma
+technique that carried our own certificates does not transfer here.
+
+**Attack 2 — spectral gap: PROVED impossible.** $D=N_{\rm even}+N_{k\ge2}$ is a
+compact positive operator, so its spectrum accumulates at $0$: its lower
+spectral edge on the infinite-dimensional projected subspace is exactly $0$, and
+no comparison of $\|P\|$ against a *positive* smallest eigenvalue of $D$ can
+exist.
+
+**The decisive measurement** (NUMERICAL, 64-node Gauss–Legendre, single core):
+$\|P\|=7.1806\times10^{-5}$, $\lambda_{\min}(D)=-7.8\times10^{-18}$,
+$\lambda_{\min}(D-P)=-9.0\times10^{-18}$ (roundoff), and the resolved
+generalised eigenvalue
+$$\max\ P/D \;=\; 0.9999999906 .$$
+So the inequality $P\preceq D$ — i.e. Liu's Hypothesis 1 — holds with ratio
+**exactly one to eight digits**: it is a *tight* inequality, with the extremal
+ratio approached but (on any finite node set) not attained. That explains every
+failure above at once: any argument that concedes slack anywhere must fail, and
+any finite grid can only ever certify "$\le$ something tiny and positive"
+because the spectrum accumulates at $0$.
+
+**Consequence for the programme.** Hypothesis 1 is not a numerical detail Liu
+happened not to prove; it is a sharp identity-level statement, in the same
+family as this project's own sharp results ($\Phi$ tight at the obstruction,
+Corollary 2 sharp at $\psi$ for $\alpha=0$ only, the Margin Lemma's
+Cauchy–Schwarz tight to $10^{-31}$). A proof must be an exact algebraic
+identity or an asymptotic argument at the corner $s,t\to0$ where $z\to1$, not an
+estimate. Recorded as the honest state: **we reduced the hypothesis to an
+explicit elementary-function kernel inequality and proved that two natural
+proof strategies cannot work.** That is progress on a published open
+conditional, not a proof of it.
+
+### SHARPER FORM (2026-08-22) — Liu's Hypothesis 1 needs no projection: an unconditional kernel inequality
+
+Continuing the two entries below. Collecting the exact expansion and dropping
+the three terms the projection annihilates leaves
+$$R(s,t)\;=\;uv\big[y-(1+y)\ln(1+y)\big]\;-\;\big[z+(1-z)\ln(1-z)\big],$$
+$$u=1-s,\quad v=1-t,\quad y=st,\quad z=uv(1+y).$$
+**Numerically $R$ is negative semidefinite with no projection at all**: on a
+400-node uniform grid, $\lambda_{\max}(R)=+1.80\times10^{-14}$ (roundoff) and
+$\lambda_{\min}(R)=-60.0$. So Liu's codimension-3 projection is pure
+bookkeeping — it exists only to discard $-z\ln u$, $-z\ln v$ and $+z$ — and his
+Hypothesis 1 follows from the cleaner unconditional statement
+$$R\preceq0\quad\text{on }L^2[0,1].$$
+Status: CONJECTURED (numerically tight to roundoff), with one half of it
+already **PROVED**: writing $G(z)=z+(1-z)\ln(1-z)=\sum_{k\ge2}z^k/(k(k-1))$,
+the kernel $G(z)$ is PSD because $G$ has nonnegative Taylor coefficients in $z$
+and $z$ has nonnegative Taylor coefficients in $(s,t)$ (Schur product theorem),
+so $-G(z)\preceq0$. The entire difficulty is that
+$F(y)=y-(1+y)\ln(1+y)=\sum_{m\ge2}(-1)^{m+1}y^m/(m(m-1))$ carries **positive**
+coefficients on odd $m\ge3$, and those must be absorbed by $G(z)$.
+
+**Third dead end closed.** The integral representation
+$F(y)=-y^2\int_0^1\frac{1-\theta}{1+\theta y}\,d\theta$ (verified termwise) would
+finish the proof at once if $1/(1+\theta st)$ were a PSD kernel, since
+$uvF(y)$ would then be an integral of $-\,$(rank-one $\times$ PSD). It is not:
+Gram minimum eigenvalues are $-1.02$ and $-3.48$ at $\theta=0.25$ ($n=60,200$),
+$-1.76/-6.01$ at $\theta=0.5$, $-2.33/-7.95$ at $\theta=0.75$,
+$-2.77/-9.47$ at $\theta=1$. So Cauchy–Schwarz domination, spectral-gap
+comparison, and this Schur-product route are all ruled out — the remaining
+route is an exact decomposition of $R$ in a basis mixing the families
+$\{u^ps^q\}$, which is what a dedicated attempt is now testing.
+
+### THEOREM (2026-08-22) — **Liu's Hypothesis 1 is proved**: the reduced kernel is negative semidefinite
+
+Everything below is machine-checked symbolically (SymPy exact) plus two
+elementary hand arguments (Descartes' rule, one monotone cubic); no grid, no
+quadrature, no numerical eigenvalue solve enters the proof. This settles the
+first of the two conditions under which Liu (arXiv:2306.08824v1, CISS 2024)
+obtains the union-closed constant $0.382709087918741$ — a constant strictly
+above the ceiling $c^*=0.3823455333667027$ of the route our own certificates
+use. His Hypothesis 2 (§V-B, a nine-parameter global optimisation) remains
+open, so the constant is not yet unconditional.
+
+**Setup.** $u=1-s$, $v=1-t$, $A=uv$, $B=st$, $z=A(1+B)$,
+$G(x)=x+(1-x)\ln(1-x)=\sum_{k\ge2}x^k/(k(k-1))$, and
+$$R(s,t)=A\big[B-(1+B)\ln(1+B)\big]-\big[z+(1-z)\ln(1-z)\big].$$
+Liu's §V-A hypothesis is equivalent to $R\preceq0$ (earlier entries: the three
+terms his codimension-3 projection removes are exactly those carrying a
+degree-$\le2$ polynomial factor).
+
+**Theorem.** $R\preceq0$ as a kernel on $L^2[0,1]$.
+
+*Proof.* Write $\varphi(B)=G(A(1+B))+A\,G(-B)$; since $G(-B)=-B+(1+B)\ln(1+B)$
+this is exactly $-R$.
+
+1. **Taylor with integral remainder** (PROVED, SymPy): $\varphi(0)=G(A)$,
+   $\varphi'(0)=-A\ln(1-A)$, and
+   $\varphi''(B)=A\big/\big[(1+B)(1-A(1+B))\big]$, hence
+   $$-R=G(A)-AB\ln(1-A)+B^2\!\int_0^1\!(1-r)\,\frac{A}{(1+rB)\,(1-A(1+rB))}\,dr.$$
+2. **$G(A)\succeq0$**: $G$ has nonnegative Taylor coefficients $1/(k(k-1))$ and
+   $A^k=(u^k)(v^k)$ is rank-one PSD; Schur product theorem.
+3. **$-AB\ln(1-A)\succeq0$**: $-\ln(1-A)=\sum_{k\ge1}A^k/k$ has nonnegative
+   coefficients and $AB=(us)(vt)$ is rank-one PSD; Schur again.
+4. **$A/D_r\succeq0$ for every $r\in[0,1]$**, where
+   $D_r=(1+rB)(1-A(1+rB))$. Its coefficient matrix in the basis
+   $(1,s,s^2,s^3)$ is
+   $$M(r)=\begin{pmatrix}0&1&0&0\\1&-r-1&2r&0\\0&2r&-r(r+2)&r^2\\0&0&r^2&-r^2\end{pmatrix},
+   \qquad \det M(r)=-2r^3,$$
+   with characteristic polynomial coefficients
+   $[\,1,\;(r+1)(2r+1),\;4r^3+2r-1,\;-2r(r^3-r^2+r+1),\;-2r^3\,]$ — sign
+   pattern $(+,+,\pm,-,-)$, exactly **one** Descartes sign change for every
+   $r\in(0,1]$, so exactly one positive eigenvalue: inertia $(1+,3-)$.
+   Hence $D_r(s,t)=a(s)a(t)-\langle b(s),b(t)\rangle$ with polynomial
+   $a,b$ of degree $\le3$. On the diagonal
+   $$D_r(s,s)=(1+rs^2)\big[1-(1-s)^2(1+rs^2)\big]\;\ge\;s\,(2-2s+2s^2-s^3)\;>\;0
+   \quad (s\in(0,1]),$$
+   because $2-2s+2s^2-s^3$ has derivative $-3s^2+4s-2$ with discriminant $-8$,
+   so it is monotone decreasing from $2$ to $1$. Therefore
+   $a(s)^2>\lVert b(s)\rVert^2$, so $a$ never vanishes on $(0,1]$ (constant
+   sign, by continuity) and $c:=b/a$ satisfies $\lVert c(s)\rVert<1$. By
+   Cauchy–Schwarz $|\langle c(s),c(t)\rangle|<1$, so
+   $$\frac1{D_r}=\frac1{a(s)a(t)}\sum_{k\ge0}\langle c(s),c(t)\rangle^k$$
+   converges, and every summand is PSD (Schur powers of a Gram kernel times a
+   rank-one factor of constant sign). Multiplying by the rank-one $A$ preserves
+   this.
+5. **Corner and integration**: $B^2A/D_r$ extends continuously to $[0,1]^2$
+   (near $(0,0)$, $D_r\asymp s+t$ while $B^2=s^2t^2$), so it is PSD there, and
+   $\int_0^1(1-r)(\cdot)\,dr$ with the nonnegative weight $(1-r)$ preserves
+   PSD.
+
+Summing 2, 3 and 5 in the identity of 1 gives $-R\succeq0$. $\qquad\blacksquare$
+
+**Independent numerical corroboration** (not used in the proof): the identity
+of step 1 reproduces $-R$ to $8.9\times10^{-16}$ on a 300-node grid (scale
+$0.96$); each of the three pieces has minimum eigenvalue at roundoff
+($-1.1\times10^{-14}$, $-1.9\times10^{-15}$, $-4.8\times10^{-16}$); $A/D_r$ has
+minimum eigenvalue $\approx-7\times10^{-14}$ for $r\in\{0,0.1,0.25,0.5,0.75,1\}$;
+and Arb interval enclosures of $\lambda_{\max}(R)$ on rational grids are
+negative ($-9.7\times10^{-19}$ at $N=16$, $-1.9\times10^{-36}$ at $N=32$) with
+interval Cholesky of $-R$ passing (`uc/liu_moment_cert.py`).
+
+**Why the earlier attempts failed, in hindsight.** The three routes ruled out
+above (Cauchy–Schwarz/telescoping, spectral gap, and Schur factorisation
+through $1/(1+\theta st)$ — which is *not* PSD, Gram minima $-1.02$ to $-9.47$)
+all tried to dominate the positive part *term by term* in a fixed basis. The
+positive part is only PSD-dominated after the exact Taylor regrouping, which
+mixes the families: the entire positive contribution is absorbed by the second
+derivative $\varphi''$, whose positivity is a statement about a
+$4\times4$ Lorentz form, not about coefficient sizes. The inequality's
+tightness (resolved generalised ratio $0.9999999906$) is precisely the
+degeneracy $D_r(0,0)=0$ at the corner, which the factor $B^2=s^2t^2$ neutralises.
+
+### SCOPED (2026-08-22) — Liu's Hypothesis 2: architecture yes, brute force no, and the reduction is already in our hands
+
+With Hypothesis 1 proved (entry above), Hypothesis 2 (his §V-B) is the only
+thing between $0.382709087918741$ and an unconditional constant above our
+ceiling $c^*$. Read directly from his paper (84)–(97) and his `frankl5.m`:
+
+* **It is exactly tight.** His defining equations (90)–(91) force the objective
+  to equal $1$ along his curve *for every* $\beta$; his own restarts bottom out
+  at $1.00000098$–$1.00000113$ at $c'$, with sub-$1$ values appearing only for
+  $c=0.3828>c'$. A certified branch-and-bound therefore cannot terminate at
+  $c'$ itself — the certificate must target a rational $c<c'$, exactly as our
+  own campaigns target rationals $t\ge\psi+\delta$.
+* **The available margin is capped algebraically**: $\delta/(1-c')=1.62\,\delta$
+  with $\delta=c'-c$. Beating $c^*=0.3823455333667027$ needs
+  $\delta<3.64\times10^{-4}$, so the whole usable window is
+  $c\in(c^*,c')$ — narrow, but nonempty, and every point of it would be the
+  largest explicitly proved union-closed constant.
+* **Our rule set ports in kind**: box plus simplex cut plus one bilinear mean
+  constraint; the quotient is cleared exactly as we clear ours, by certifying
+  $\Phi=N-D\ge0$ instead of a ratio; the sink lattice $\{0,1\}^6$ is precisely
+  what the Margin-Lemma ratio rule was built for.
+* **But brute force is out**: a dimension-calibrated cost model gives
+  $\gtrsim10^{15}$ boxes, i.e. $\ge10^3$ core-years at our measured
+  $\sim10^3$ boxes/s/worker. The reason is structural, not tuning: the objective
+  is invariant along the degenerate fibre $(q,P_0=P_1)$ for every $q$, so the
+  interior margin never exceeds the face margin and there is no $q$-slab
+  shortcut.
+
+**The reduction, and why it is close.** The objective separates as
+$$\Phi=\Phi_0(\mu)+\beta\,\bar q q\,\kappa(P_0-P_1),$$
+and $\kappa$ is *exactly* the kernel whose negative semidefiniteness we proved
+today. What the reduction needs is the **quantitative** version — coercivity of
+$\kappa$ in the moment defects — and our proof already contains it. From
+$$-R=G(A)-AB\ln(1-A)+B^2\!\int_0^1(1-r)\frac{A}{(1+rB)(1-A(1+rB))}dr$$
+with all three pieces PSD, dropping the last two gives the termwise bound
+$-R\succeq G(A)=\sum_{k\ge2}A^k/(k(k-1))$, i.e. for every signed $\mu$
+$$-\iint R\,d\mu\,d\mu\;\ge\;\sum_{k\ge2}\frac{\langle\mu,u^k\rangle^2}{k(k-1)},
+\qquad u=1-s .$$
+On the projected subspace $\{1,s,s(1-s)\}^\perp=\{1,u,u^2\}^\perp$ the $k=2$ term
+vanishes, leaving the explicit coercive estimate
+$$-\iint R\,d\mu\,d\mu\;\ge\;\frac{\langle\mu,u^3\rangle^2}{6}
++\frac{\langle\mu,u^4\rangle^2}{12}+\cdots$$
+— a strictly positive lower bound in the third and higher moment defects, which
+is the object the $\nu$-direction collapse requires. Deriving the sharp constant
+from the two discarded PSD pieces is the next concrete step; it is algebra on an
+identity we already have, not a new search.
+
+**Plan of record.** (1) Sharpen the coercive constant from the full
+decomposition. (2) Use it to collapse the $\nu$-direction of Liu's problem to
+the $q=0$ face, a five-parameter problem of exactly the shape our engine
+certifies — at $\delta=2\times10^{-4}$ its margin is $\approx3.24\times10^{-4}$,
+i.e. campaign-J cost, $\approx1.2\times10^9$ boxes, days on the cores we have.
+(3) Only then attempt the full statement. Face-only certification proves nothing
+about Hypothesis 2 by itself — recorded so no later reader mistakes it for one.
+
+### MEASURED (2026-08-22) — direct nine-parameter certification of Liu's Hypothesis 2 is out of reach; the pilot says why
+
+`uc/liu9_objective.py` (three evaluators: float64, mpmath, Arb) and
+`uc/liu9_pilot.py` (interval branch-and-bound probe). Both are probes, not
+certificates.
+
+**Liu's optimum, independently reproduced.** Solving his defining equations
+gives $x^*=0.690787593924988014$, $p^*=0.893604513905465446$,
+$c'=0.382709087918735$ against his printed $0.382709087918741$, and the
+objective at his point encloses rigorously as
+$$\text{obj}\in[1.000000000000000000000000000000000000000000000\pm3.06\times10^{-47}]$$
+in Arb — a certified statement that his inequality is **exactly tight at the
+optimum**, matching the earlier algebraic finding that (90)–(91) force
+obj $\equiv1$ along his curve for every $\beta$. Cross-checks: float64 vs mpmath
+agree to $4.4\times10^{-16}$ on 20 feasible points, and every mpmath value is
+enclosed by a finite two-sided Arb interval.
+
+**Feasible set, transcribed from `frankl5.m`**: $0\le a_1,a_2,q,b_0,\dots,b_5\le1$,
+$a_1+a_2\le1$, $a_3=1-a_1-a_2$, and the mean constraint
+$(1-q)(a_1b_0+a_2b_2+a_3b_4)+q(a_1b_1+a_2b_3+a_3b_5)\ge1-c$. No ordering
+constraints; $\beta$ is fixed externally, not a tenth variable. Two source
+ambiguities recorded: his `hxy` line leaves $0\log0$ unhandled at boundary
+points, and there is no explicit $\text{ehx}>0$ constraint.
+
+**Result: zero boxes cleared at every target.** With one core and 50k boxes or
+60 s per target: at $c=0.3827090,\;0.38268,\;0.38260,\;0.38250,\;0.38240$ the
+pilot cleared 0, split $\approx21$–25k, and left 19.7–22.4k residual boxes each
+time; a longer 200k-box run at $c=0.38240$ still cleared 0 (16,110 infeasible,
+83,891 residual). The two-atom candidate margins behave exactly as the
+algebraic cap $1.62\,\delta$ predicts — $1.42\times10^{-7}$ at $c=0.3827090$,
+then $4.71\times10^{-5}$, $1.77\times10^{-4}$, $3.39\times10^{-4}$,
+$5.01\times10^{-4}$ — so the margin is real but the nine-dimensional volume is
+not payable at our throughput. This is the measured confirmation of the
+$\gtrsim10^{15}$-box estimate.
+
+**Interval pathologies, quantified on one box** (useful for any future port):
+the root denominator ehx encloses zero ($\pm4.16$), so the quotient must never
+be formed — certify $N-D\ge0$ instead, exactly as our own engine does. Gap
+widths on the same box: natural $0.4718$, monotone-kernel corner $0.4695$,
+centered $0.3062$, KKT-shifted centered ($\lambda=-0.9$) $0.2455$; leaving
+$\beta$ as an interval $[0,1]$ instead of fixing it inflates the gap to
+$1.6914$. On the mean constraint, simplex-clipped monotone-corner evaluation
+halves the width ($0.1875\to0.1013$). No square roots occur, so the project's
+historical straddling-sqrt NaN trap does not arise here; entropy endpoints are
+handled before the logs and every accepted interval passes `is_finite()`.
+
+**Conclusion, unchanged by the pilot but now measured rather than modelled:**
+the reduction must come first. The named route stands — sharpen the coercive
+constant in $-\iint R\,d\mu\,d\mu\ \ge\ \sum_{k\ge3}\langle\mu,u^k\rangle^2/(k(k-1))$
+(verified numerically on random projected measures, holding with 30–60% of the
+true value captured), use it to collapse the $\nu$-direction, and certify the
+resulting five-parameter face problem with the existing engine.
+
 ## 2026-08-19 — h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle
 
 **Deliverable.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip`
-(9,531,464 bytes, SHA-256 `a2afe5754ebe925d3f508810580cb98eddf54c5da5cfb46a8499f42eec1b3de6`),
+(9,811,451 bytes, SHA-256 `f332023db2df19b16613670cf787a447b6271a196de4d0077c5443ace4dba39c`),
 built by `math/h10q/deliverables/make_bundle.py` from the staged tree
 `math/h10q/deliverables/2026-08-19/` — 62 files under `SHA256SUMS`
 (`shasum -a 256 -c` all OK), ZIP written outside the staged tree, verified free of self-inclusion.
@@ -262,9 +660,25 @@ chain is repo-regenerable; five older L17 JSONLs are persisted evidence without 
    delay against the ledger's $15.67\times$ Bateman–Horn gap (51% of the excess multiplier, 78% of
    the log gap), residual $1.84\times$, with an honest failure at the selected $k=0$ spike.
 
-**Final bundle.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip` — 9,778,248 bytes, SHA-256
-`f0d138a6068efe02cb0f7d2b3c1078362a2c1f92103b705ac0ff8a0fb0a7b8bc`, 77 staged files, 75/75
-checksums OK. Main paper now 19 pp (adds the Schinzel-implication and 5-wall sections).
+10. *Citation audit and bibliography repair.* All 13 bibliography entries rebuilt with full
+   author/title/journal/volume/year/pages/DOI/arXiv; every entry is now cited in text (zero
+   undefined citations or references in either paper). The audit caught a real misattribution:
+   the ten-quantifier record (arXiv:2301.02107) had been given the title of a different Daans
+   paper; it is *Universally defining $\Z$ in $\Q$ with 10 quantifiers*, JLMS (2) 109 (2024),
+   e12864, whereas *Universally defining finitely generated subrings of global fields* is
+   Doc. Math. 26 (2021), 1851–1869 (arXiv:1812.04372). Verified against publisher records.
+11. *Wall-exclusion clause made exact (advisory).* The $\tau=0$/$a=7$ closure now states which
+   hypothesis of each wall fails: L10b assumes verbatim "$b=\varepsilon q_1$ with $q_1\ne A$
+   prime" (THEOREMS L10b) and here $b=131\cdot41$ is not $\pm$ prime, while all its other
+   hypotheses hold ($a$ odd, $A=197$ prime); L12 assumes $b$ coprime to the cell data and
+   $f=w\mid\operatorname{num}(z)$. Row verdict comes from the kernel authority
+   (`_l7_tied_status`, `ramified`, identity vs `_l10_P`/`_sun_h`); the class certificate is a
+   labelled local generalization of `l12_class.l12_class_cert`. Novelty is the $\tau=0$
+   alignment alone.
+
+**Final bundle.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip` — 9,811,451 bytes, SHA-256
+`f332023db2df19b16613670cf787a447b6271a196de4d0077c5443ace4dba39c`, 77 staged files, 75/75
+checksums OK. Main paper 19 pp (Schinzel-implication and 5-wall sections; full bibliography).
 
 **Cost.** 19 subagents across two batches (7 authoring + 12 frontier), CPU held under the 50% cap.
 

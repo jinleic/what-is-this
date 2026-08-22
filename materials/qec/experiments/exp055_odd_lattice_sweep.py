@@ -641,8 +641,15 @@ def _screen_one(task: tuple) -> dict:
     thr, who = domination_threshold(n, cand["k_parent"])
     out = {**cand, "ell": ell, "m": m, "n": n,
            "threshold": thr, "threshold_source": who}
+    if thr == 0:
+        # No published code with n' <= n and k' >= k, so there is nothing to be
+        # dominated by and no solver call is warranted.  The certified ceiling is
+        # still recorded, and `certify` can pick these up on request.
+        out.update({"verdict": "no_reference", "solver_calls": 0, "wall_s": 0.0})
+        return out
     ceil = cand.get("ceiling")
-    if thr > 0 and ceil is not None and ceil <= thr:
+    if ceil is not None and ceil <= thr:
+        # d <= ceiling <= threshold: dominated, proved without any solver call.
         out.update({"verdict": "dominated_by_ceiling", "solver_calls": 0,
                     "wall_s": 0.0})
         return out
@@ -650,16 +657,14 @@ def _screen_one(task: tuple) -> dict:
     out["k_from_matrices"] = int(n - rank_np(HX) - rank_np(HZ))
     t0 = time.time()
     res = exact_distance_css(HX, HZ, time_limit_s=time_limit, workers=2,
-                             upper_bound=(thr if thr > 0 else None))
+                             upper_bound=thr)
     decided = bool(res["d_X_all_sectors_decided"] and res["d_Z_all_sectors_decided"])
     out.update({
         "solver_calls": 1, "screen_decided": decided,
         "d_found": res["d"], "d_exact": bool(res["d_exact"]),
         "wall_s": round(time.time() - t0, 1),
     })
-    if thr == 0:
-        out["verdict"] = "no_reference"      # nothing published dominates this (n,k)
-    elif res["d"] is not None:
+    if res["d"] is not None:
         out["verdict"] = "dominated"         # certified witness of weight <= thr
     elif decided:
         out["verdict"] = "survivor"          # proven d > threshold

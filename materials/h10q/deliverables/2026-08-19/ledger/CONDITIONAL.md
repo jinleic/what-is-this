@@ -17,9 +17,18 @@ $Z=z^3$, $D_z=1-Z-a^2Z^2$).
    by the L6 formula
    $$F(z):=\exists b,s\;\bigl[(1+2s,b)\in\Phi_1^{\{2\}}\ \wedge\
    \Theta_*\bigl(1+2s,\,b,\,h(1+2s,b,z^3),\,s\bigr)\bigr],$$
-   where $\Theta_*(a,b,c,s)$ is the two-branch tied block
-   $\exists y\,r\ \bigl[c^2-Ay^2-16Br^2=16-16ABs^2\bigr]\vee
-   \bigl[c^2-Ay^2-16ABr^2=16A-16A^2Bs^2\bigr]$, $B=2b$.
+   where $\Theta_*(a,b,c,s)$ is the tied block, a finite disjunction over the
+   branch menu $\tau\in\{0,\ 2a/A,\ \tau^\dagger=(1+2a^2)/A\}$ of the cleared
+   equations
+   $$\exists y\,r\ \bigl[\,c^2-Ay^2-16\delta_\tau^{-1}Br^2
+      =16\delta_\tau^{-1}\bigl(1-\tfrac{\delta_\tau}{16}\,\Delta_\tau(a,b,s)\bigr)\,\bigr],
+   \qquad B=2b,\ \ \delta_\tau=1-A\tau^2,$$
+   specializing at $\tau=0$ to $c^2-Ay^2-16Br^2=16-16ABs^2$ and at $\tau=2a/A$
+   to $c^2-Ay^2-16ABr^2=16A-16A^2Bs^2$. The third branch $\tau^\dagger$ is the
+   one the class-side construction (L19/L20) uses and must be in the menu.
+   **Cost: zero.** L11a proves a finite branch menu is a disjunction in the
+   *same* $(y,r)$, so branch completion is free and the count stays six
+   (`THEOREMS.md` L11a, lines 1100-1121).
 2. $\mathbb Z$ is definable in $\mathbb Q$ by a formula with **6 universal quantifiers**
    ($\mathbb Z = \mathbb Q\setminus(F\vee\mathfrak m_2)$).
 3. $\operatorname{efd}_{\mathbb Q}(\mathbb Q\setminus\mathbb Z)\le 5$.
@@ -176,26 +185,37 @@ pool `_L9_U_POOL` (`h10q.py::_l9_grid`). Sources: kernel tables, `data/` artifac
 | Cell $(89,(-2,1))$ — **CLOSED 2026-08-18** | 325 certified soluble candidates | `data/l13_filter_run2.json` (236 in the structured box: 133 proved-prime-rung + 103 factorint-rung) + dense-box block (89: 46 + 43); witness $(a,b)=(3,\,89/367)$, $\tau=19/37$, frozen `_L13_RESIDUAL` row 7 | **PROVED** (L13f cofactor ladder: zero-bad ⟺ stripped remainder is a square OR a single proved prime — parity law forces its symbol $+1$; lead-replayed all five rungs; INCONSISTENT = 0 across 5,767 decided rows; 1,896 + 1,637 + 937 refusals recorded with reasons, never evidence) |
 
 The closure does **not** touch hypothesis H below: it certifies ONE witness for the
-grid's last cell, whereas H requires an emergent-free member of *each aligned class*
-uniformly (`THEOREMS.md` L13f).
+grid's last cell, whereas H asks for *one selected aligned class per cell, with an
+emergent-free member*, uniformly over all cells (H is existential in both the class
+and the member; see the statement in §2). The grid ledger verifies that shape on
+293 classes; it does not establish it for arbitrary cells.
 
 ---
 
 ## 4. The blocking gap
 
-H restricts the **square class of values of an irreducible degree-8 polynomial at primes
-in an arithmetic progression**: for each cell, $P\in\mathbb Q[t]$ is irreducible of
-degree 8 over $\mathbb Q$ (`THEOREMS.md` L13c: all 706 (cell, branch) rows certified; the
-content's squarefree part is confined to $\{\pm1,\pm5\}$, so the constant factor never
-introduces an emergent place), and H asks for one prime $Q\equiv q\pmod N$ (outside a
-finite excluded set) such that every odd multiplicity $v_l(P(\varepsilon fQ))$ with
-$l\notin S\cup\{Q\}$ is even — equivalently, the squarefree kernel of $P(\varepsilon fQ)$
-is supported on the fixed finite set $S\cup\{Q\}$. One member per class suffices; no
-density, no infinite subsequence, no squarefreeness of the whole value is required.
+H restricts the **Hilbert-symbol class of values of a degree-8 polynomial at primes in
+an arithmetic progression.** On the 706 grid (cell, branch) rows, $P\in\mathbb Q[t]$ is
+certified irreducible of degree 8 over $\mathbb Q$, with the content's squarefree part
+confined to $\{\pm1,\pm5\}$ so the constant factor never introduces an emergent place
+(`THEOREMS.md` L13c). **That certification is a bounded audit of the grid rows, not a
+theorem for every cell**: for an arbitrary cell the irreducibility of the constructed
+$P$ is a separate obligation, part of the admissibility package below. Given a cell and
+*one selected* aligned class, H asks for a single prime $Q\equiv q\pmod N$, outside a
+finite excluded set, at which the ladder verdict is *zero* — every odd place
+$l\notin S\cup\{Q\}$ has Hilbert symbol $(x_0,d_0)_l=+1$. **Odd valuations outside $S$
+are allowed**: 197 of the 293 verified closures have exactly one, with symbol forced
+$+1$ by reciprocity. So the condition is strictly weaker than squarefreeness of the
+value and strictly weaker than confining its squarefree kernel to $S\cup\{Q\}$. One
+member of one class per cell suffices; no density and no infinite subsequence are
+required.
 
 **Upgrade (L19, 2026-08-19): the analytic input is now a NAMED classical conjecture.**
 For a fixed verified aligned class, write $F(t)=P(\varepsilon f(q_1+Nt))=c\,G(t)$ with
-$c>0$ supported on $S$ and $G\in\mathbb Z[t]$ primitive with positive leading
+$c>0$ whose **square class** is supported on $S$ (literal $S$-support fails when $z$ has
+denominator primes outside $S$; the square class is what the parity argument uses, since
+even outside valuations give symbol $+1$ — corrected 2026-08-19) and $G\in\mathbb Z[t]$
+primitive with positive leading
 coefficient. Then **Schinzel's Hypothesis H for the pair $\{q_1+Nt,\;G(t)\}$ implies the
 per-class clause of H — indeed infinitely many qualifying members** (PROVED implication;
 the conclusion remains CONDITIONAL on Schinzel). Mechanism: at a simultaneous prime
@@ -206,7 +226,9 @@ reciprocity then forces $(x_0,d_0)_R=+1$, i.e. ladder verdict *zero*. The Schinz
 hypotheses themselves are verified exactly on all 293 canonical pairs (primitive
 irreducible degree-8 $G$ with replayed Frobenius certificates, positive leading
 coefficients, pair-product fixed divisor 1 by an exact degree-9 finite-difference
-certificate, $G$ an $S$-unit for every integer $t$, frozen signs uniform in $t$):
+certificate, $v_p(G(t))=0$ at every $p\in S$ for every integer $t$ — a
+local-unit condition *at* $S$, not the standard "$S$-unit" notion of unit
+valuation *outside* $S$ — and frozen signs uniform in $t$):
 `data/l18_schinzel_implies_h.jsonl`, generator `l18_schinzel_implies_h.py`,
 cross-checked on 24 prime-rung rows. **Not supplied by Schinzel:** existence of an
 aligned class for every cell (that is the separate finite/structural side, characterized

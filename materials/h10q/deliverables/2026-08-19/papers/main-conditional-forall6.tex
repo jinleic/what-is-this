@@ -29,34 +29,33 @@
 
 \begin{document}
 \begin{abstract}
-We describe a constructive route to a universal definition of $\Z$ inside
-$\Q$ using six quantifiers, conditional on one explicit hypothesis $H$
-about the solubility of a family of tied conics. Every finitary component
-of the construction is machine-verified on a grid of $353$ cells
-$(w,z)$ with $w$ an odd prime below $100$: all $353$ cells carry a
-verified witness, and all $293$ aligned classes carry a certified
-emergent-free member. Two structural theorems delimit the search space:
-a generalized wall showing that every $b$ coprime to the cell data fails
-on every branch --- valid for composite squarefree $A$ as well as prime
-$A$ --- and a characterization theorem stating that an aligned class
-exists for a cell exactly when the numerator of $z$ has a prime divisor
-congruent to $1$ modulo $4$. The residual obstruction is analysed by an
-exact $p$-adic sieve model whose matched predictions agree with the
-observed obstruction at member level on an identical $8{,}760$-member
-sample (marginal ratio $0.9993$; hit-conditioned union residual
-$-2.9$; marginal-preserving permutation null $z = -0.09$). The analytic input is then identified exactly: we prove that
-\emph{Schinzel's Hypothesis~H for the pair $\{q_1+Nt,\;G(t)\}$ implies the
-per-class hypothesis}, indeed infinitely often, so the conditional
-statement rests on a named classical conjecture rather than a bespoke
-one; the Schinzel hypotheses themselves are verified exactly on all
-$293$ canonical pairs. The verified computational horizon extends
-off-grid to fifteen further cells, including three that are provably
-obstructed for the canonical protocol --- the obstruction being
-$w \equiv 11, 19 \pmod{20}$, a reciprocity phenomenon we prove and then
-break with a non-canonical class family. We claim no unconditional
-record: the published record remains the refereed ten-quantifier
-definition, and our statement is conditional on Schinzel's Hypothesis~H
-together with the finite class-existence side.
+We present a six-quantifier architecture for a universal definition of
+$\Z$ in $\Q$ under an explicit member-existence hypothesis, while making
+no new quantifier-record claim.  The class side is now unconditional:
+for every cell $(w,z)$, a character-sum choice of $a$, an exact
+Chinese-remainder system, and Dirichlet's theorem produce infinitely many
+aligned base classes on the square branch.  For any one such class whose
+linear/octic pair is Schinzel-admissible, classical Schinzel Hypothesis~H
+implies infinitely many ladder-zero members.  The admissibility audit proves
+uniformly that the linear progression is primitive, the pair has no fixed
+prime divisor, the normalized octic is a unit at every frozen prime, its
+frozen square classes are constant, and its leading coefficient is positive.
+It also corrects the normalization premise: only the square class of the
+content, not its literal support, must be supported on the frozen set.
+% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
+
+One algebraic condition remains: irreducibility of the degree-$8$ polynomial
+$P(a,z)$ is open uniformly in the constructed parameters.  Exact modular
+certificates prove it for $353/353$ reconstructed grid classes and
+$706/706$ legacy grid rows, but those finite results do not prove the
+all-cell statement.  Consequently the present chain does \emph{not} show
+that Schinzel's Hypothesis~H implies the six-quantifier definition; uniform
+irreducibility is the single named residual gap.  Separately, the canonical
+$5$-wall is always breakable on the class side, and the last searched cell
+$w=179$ now has a certified member, so every off-grid cell tried to date is
+closed instance by instance.
+% src: data/l20_admissible.jsonl (irreducibility summary and final verdict)
+% src: data/l19_tauzero.jsonl; data/l19_cell179.jsonl
 \end{abstract}
 
 \maketitle
@@ -66,6 +65,7 @@ together with the finite class-existence side.
 \input{sections/architecture}
 \input{sections/walls}
 \input{sections/classes}
+\input{sections/existence}
 \input{sections/sieve}
 \input{sections/record}
 
@@ -74,42 +74,56 @@ together with the finite class-existence side.
 
 \section{Conclusion and outlook}
 
-The program's current position is sharp. The algebraic architecture is
-complete and machine-checked; the search space is delimited by two
-theorems (the generalized wall, valid for composite squarefree $A$, and
-the class characterization); the finite verification is exhaustive on the
-grid and extends off-grid to $w \in \{101,103,107,109,113,127,137\}$; and the
-residual analytic content has been isolated to a single classical
-statement about prime values of a degree-$8$ polynomial in an arithmetic
-progression, with all of its local conditions verified.
+The logical chain now has one sharply isolated break.  Uniform
+class existence is a theorem: every cell admits a square-branch aligned
+class, with infinitely many allowable base primes.  For a fixed class that
+satisfies the standard two-polynomial admissibility package, Schinzel's
+Hypothesis~H supplies infinitely many emergent-free members.  The
+normalization, coprimality, fixed-divisor, frozen-unit, symbol-constancy, and
+positive-leading-coefficient parts of that package are all proved uniformly.
+What is not proved uniformly is that the constructed octic $P(a,z)$ is
+irreducible over $\Q$.  Thus classical Schinzel~H alone does not yet imply
+the six-quantifier definition in this paper.
+% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
 
-Three directions carry the most weight.
+Three conclusions should govern further work.
 
 \begin{enumerate}
-\item \emph{The step-(ii) divergence.} Theorem~\ref{thm:localbound} and
-Corollary~\ref{cor:nouniform} settle the local question: the masses are
-bounded by $8/(p+1)$, the frozen primes contribute nothing, and the
-clean product decays like $(\log X)^{-1/2}$, so no uniform positive
-mass exists. What remains is to convert the resulting divergence of the
-expected count of emergent-free members, at rate $X/(\log X)^{5/2}$,
-into an existence statement; that is precisely where the degree-$8$
-prime-value input enters.
-\item \emph{The protocol wall, answered.} Composite $w$ is out of scope
-by construction ($w$ indexes a place). The question raised by the first
-obstructed cell --- for which primes $w$ does the canonical escape route
-collide with the L11 route at the frozen place $5$? --- is now answered
-exactly by Theorem~\ref{thm:fivewall}: $w \equiv 11, 19 \pmod{20}$. It is
-also no longer an obstruction, since Proposition~\ref{prop:break} closes
-every such cell met so far off the canonical protocol. No off-grid cell
-is currently known to be intrinsically obstructed, and the natural next
-question is whether the $a = 7$, $\tau = 0$ family closes the obstructed
-congruence class in general.
-\item \emph{Degree-$8$ prime values.} Unconditional prime-value theorems
-stop at degree three. Any unconditional progress for a single grid class
-would convert the conditional statement into an unconditional one for
-that cell, and the audit shows there is no local obstruction anywhere on
-the grid.
+\item \emph{The residual algebraic problem.}  Affine substitution and
+primitive rescaling preserve factorization, so the normalized class
+polynomial $G$ is irreducible exactly when $P$ is.  Modular reductions give
+exact irreducibility certificates for every finite row audited, but a
+bounded ledger cannot settle arbitrary rational cells.  A uniform proof for
+$P(a,z)$, or a proof that the freely chosen parameter $a$ can always avoid
+the reducible locus while retaining the required character and congruence
+conditions, would close the only remaining admissibility gap.
+% src: data/l20_admissible.jsonl (condition-(a) and affine-equivalence blocks)
+
+\item \emph{The member problem after admissibility.}  The local sieve still
+has no cutoff-uniform positive mass: its clean product decays like
+$(\log X)^{-1/2}$, while the expected clean-prime count diverges like
+$X/(\log X)^{5/2}$.  These facts explain why bounded search works often
+without proving a member.  Once irreducibility is supplied, the
+fixed-class theorem invokes the classical simultaneous prime-value
+conjecture honestly; before then, invoking Schinzel hides a missing
+hypothesis.
+% src: data/l17_stepii.jsonl; data/l18_divergence_model.jsonl
+
+\item \emph{Walls and finite horizons.}  Fixing $a=1$ reproduces exactly the
+canonical $5$-wall, but varying $a$ breaks every such wall on the class
+side.  The fixed choice $a=7$ works only on its own quadratic-character
+branch.  The cell $[179,[-1,1]]$ now has a replayed ladder-zero member, so
+all searched off-grid cells are closed; this remains a finite collection of
+instance theorems, not an all-cell member theorem.
+% src: data/l19_classexist.jsonl; data/l19_tauzero.jsonl
+% src: data/l19_cell179.jsonl
 \end{enumerate}
+
+The published record therefore remains the refereed ten-quantifier
+definition.  The result here is a conditional architecture with a proved
+class side, a proved fixed-class Schinzel implication, and one explicit
+uniform irreducibility gap.  No stronger conclusion is claimed.
+% src: data/litscout_h10q.md (published-record boundary)
 
 \section*{Reproducibility}
 

@@ -18,37 +18,42 @@ State that makes these live now:
 
 ---
 
-## A. Odd-lattice PBB search: the one region theory says is structurally safe
+## A. Odd-lattice PBB search — premise corrected, partly executed (EXP-055)
 
-**Why now.** Every practical objection to PBB codes found in this programme
-comes from the collapse channel: a PBB sibling of the flagship $[[144,12,12]]$
-is *silently* $[[144,12,6]]$ at full $k$ (EXP-048). J-G1 says that hazard is
-**structurally absent** when $\ell$ and $m$ are both odd ($R$ semisimple ⟹ $I$
-idempotent ⟹ no single-row demotion). The published catalogue never explored
-this region: all 202 parents have $m\in\{3,6\}$ with $m=6$ dominant, and the
-only odd$\times$odd BB instance in the literature is $[[90,8,10]]$ on $(15,3)$.
-So the theory hands us an unexplored, *provably* collapse-free search region.
+**Status 2026-08-21: the "unexplored region" premise was FALSE and is retracted.**
+J-G1 does say the collapse hazard is structurally absent when $\ell,m$ are both
+odd, and our own 202-parent catalogue really does live at $m\in\{3,6\}$. But the
+claim that "$[[90,8,10]]$ on $(15,3)$ is the only odd$\times$odd BB instance in
+the literature" was wrong: a novelty check found **at least 27 sourced
+odd$\times$odd BB instances** in Wang–Mueller (arXiv:2408.10001v4),
+Eberhardt–Steffan (arXiv:2407.03973v1), Postema–Kokkelmans (arXiv:2502.17052v4)
+and Bravyi et al. (arXiv:2308.07915) — including $(9,9)\,[[162,8,12]]$,
+$(9,15)\,[[270,8,18]]$, $(7,7)\,[[98,6,12]]$ and $(3,27)\,[[162,8,14]]$. The
+region is *searched*; only our own catalogue avoided it.
 
-**Prediction (falsifiable).** On odd$\times$odd parents every PBB sibling
-satisfies $d_X(Q)\ge d_X(P)$ through the single-row channel — with certainty, by
-J-G1 — so any distance loss there must come from a multi-row light channel, and
-EXP-051's CP-SAT exclusion decides that per parent. If a certified reversal
-($d_Q>d_Z(P)$) exists anywhere with $k_Q>0$, an odd lattice is where it can be
-*trusted*.
+**What was also already published:** the odd-lattice rate law itself. $R$
+semisimple $\Rightarrow k=2\cdot\#\{\text{common roots}\}$ is
+Panteleev–Kalachev (arXiv:1904.02703) Prop. 1 in the cyclic case,
+Lin–Pryadko (arXiv:2306.16400) Eq. (47), Postema–Kokkelmans Thm. 2.6, and
+Eberhardt–Steffan Cor. 2.11–2.12 ("if $\ell$ and $m$ are odd, all BB codes are
+principal"). Claim it as reproduction, never as novelty.
 
-**First experiment (cheap).** Sweep odd$\times$odd lattices with $\ell m\le180$
-— $(9,9),(15,9),(21,9),(15,15),(27,5),(25,7),(21,15),(33,5),(45,3)$ — over
-weight-3 $A,B$ with translation/reflection reduction: compute $k=2\dim I$ by
-rank (milliseconds), keep $k\ge8$, then two-sided exact distance via the
-existing solvers on survivors, then Theorem H's $T$ and the EXP-046 constructor.
-Reuse EXP-054's per-polynomial invariant cache — the whole sweep is the same
-machinery with a different lattice list.
+**What survived and is now done (EXP-055).** Two things:
 
-**Payoff.** Either the first *structurally safe* PBB family with competitive
-$[[n,k,d]]$ (a genuinely new practical result), or a sharpened negative: the
-CSS envelope survives even where the collapse mechanism is provably empty, which
-strengthens the paper's no-go from "the searched family" to "the family plus its
-safe complement".
+1. *A certified solver-free distance ceiling* (novelty check: NOT FOUND in this
+   form). With $I=\operatorname{Ann}(a)\cap\operatorname{Ann}(b)$ and
+   $I_0=I\cap\bar I$, every nonzero $u\in I_0$ gives a nontrivial logical, so
+   $d\le\min\{\operatorname{wt}(u):0\ne u\in I_0\}$ — microseconds, no solver.
+   Validated on 25 reproduced published instances: **zero violations**, slack
+   $2$–$42$ (median $12$), so it is sound but roughly $2\times$ loose.
+2. *An exhaustive census*: all $65$ odd lattices with $\ell m\le180$,
+   $4.23\times10^9$ weight-$\le3$ pairs, exact $k$ by two independent routes
+   (zero mismatches), immunity re-verified ($273$ idempotence tests, zero
+   violations).
+
+**Remaining live question.** The Pareto screen: is any odd-lattice weight-3 BB
+code undominated by the published set? Running as EXP-055 `screen`. The ceiling
+rejects candidates with no solver call at all; the rest go to capped CP-SAT.
 
 ## B. Multi-row light channels: replace CP-SAT certificates with a theorem
 
