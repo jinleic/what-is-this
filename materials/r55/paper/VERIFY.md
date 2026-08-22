@@ -61,3 +61,35 @@ the 77 catalog-missing stratum classes are not independently re-derived (the
 m=4 campaign scoped this identically). Treat the disposition as
 producer-verified, independently re-verified at the search and F-interval
 layers, and cross-anchored — not as a fully disjoint replication.
+
+## Level-2 pair lift (added 2026-08-21)
+
+```bash
+cd <repo>/math
+./.venv/bin/python r55/src/pair_lift_mixed.py r55/data/engstrom_identity.json
+./.venv/bin/python -m unittest r55.tests.test_pair_lift_mixed -v      # 18 tests
+```
+
+Expected terminal line:
+
+```
+LIFT VERDICT: MIXED_PAIR_LIFT_CLOSED (no route reaches its acceptance edge; no R(5,5) bound claimed)
+```
+
+The run also prints the identity sweep (2,131,018 labelled graphs to n=7), the
+collapse `neighbour-degree row == excess_balance` on all 3215 states, the exact
+ranks (frozen 8; +row 8; +invalid e_z row 9), the feasible edge-count window
+`e in [454,536]`, and the per-route exact bounds 360 / 41 / 45.
+
+## Disjoint checker (Task 4, added 2026-08-21)
+
+```bash
+./.venv/bin/python r55/src/check_mixed_certificate.py r55/data/engstrom_identity.json
+./.venv/bin/python r55/src/check_mixed_certificate.py --sweep --jobs 32 r55/data/engstrom_identity.json
+./.venv/bin/python -m unittest r55.tests.test_check_mixed_certificate -v   # 17 tests
+```
+
+Imports only the standard library plus `check_ramsey.parse_graph6_line` and
+`check_ramsey.popcount`. The `--sweep` form re-derives all 8,500,211 catalog
+graphs with a second, independently written motif kernel (~333 s). Its scoped
+gap is stated verbatim in the module docstring.

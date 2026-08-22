@@ -33,6 +33,22 @@ hulls, structural caps on missing classes, exact envelope projection) are ruled
 out by measurement; a level-2 pair lift is the one direction the evidence
 supports. See the paper §5 and the terminal record §6.
 
+**That level-2 lift has since been built and it is also closed** (paper §6,
+record §7): with adjacent/non-adjacent degree-pair variables, the
+per-degree-class neighbour-degree identity and three exact codegree bounds, the
+optima move to **360 / 41 / 45** — two routes unchanged, one improved by exactly
+1/349, none reaching its edge. The reason is exact: the campaign's m=2 row
+`excess_balance` *is* the degree-squared identity
+`sum_v deg(v)^2 = 45e + sum_v e(G[N(v)]) - sum_v e(G[D(v)])` in disguise, so
+every handshake-style repair was already present. Levels 1 and 2 are both
+closed; VeriPB gluing and srg(45,22,10,11) SAT are the only remaining routes.
+
+A near-miss row is recorded with its regression test: misreading the z-stratum
+convention yields a row independent of the basis (rank 8→9) that appears to cut
+hard, with matching exact dual certificates and primal witnesses, and is
+unsound. Exact certificates prove optimality for the programme written, not
+soundness of the programme.
+
 ## Reproduce
 
 ```bash

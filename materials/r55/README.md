@@ -236,3 +236,35 @@ the frozen inputs are unchanged (they are hash-pinned inside the artifact;
 the m=4 search records make identical rebuilds deterministic, not
 byte-identical, since the discovery LP's proposal path is outside the trust
 base and acceptance depends only on the exact re-verified certificates).
+
+## Mixed Engström tier at n=45 (closed, 2026-08-21)
+
+```bash
+# mixed tier (full reproduction; single-process, in order)
+./.venv/bin/python -m unittest discover -s r55/tests -p 'test_*mixed*.py' -v
+./.venv/bin/python r55/src/mixed_deficiency_cone.py \
+  --output r55/data/engstrom_identity.json             # rebuild v3 cone artifact, ~75 min
+./.venv/bin/python r55/src/search_mixed_cuts.py \
+  --analysis r55/data/engstrom_identity.json           # -> MIXED_NO_CUT_IN_FROZEN_BASIS
+./.venv/bin/python r55/src/verify_mixed_independent.py \
+  r55/data/engstrom_identity.json                      # independent verifier, sub-second
+./.venv/bin/python r55/src/check_mixed_certificate.py \
+  --sweep --jobs 32 r55/data/engstrom_identity.json    # disjoint checker + 8.5M resweep, ~6 min
+./.venv/bin/python r55/src/pair_lift_mixed.py \
+  r55/data/engstrom_identity.json                      # level-2 pair lift -> CLOSED
+```
+
+Terminal lines: `MIXED EVIDENCE VERIFIED: MIXED_NO_CUT_IN_FROZEN_BASIS` and
+`LIFT VERDICT: MIXED_PAIR_LIFT_CLOSED`.
+
+**Recorded negative.** Levels 1 and 2 of the first exact basis at n=45 are both
+closed. The mixed Engström K=4 row is geometrically new (endpoint rank 6 → 8)
+but has zero cut strength; the level-2 pair-coupled lift moves the three route
+bounds from `360, 14310/349, 45` only to `360, 41, 45` against acceptance edges
+`315, 1, 1`. Collapsing every catalog-missing motif window to a point still
+leaves a factor-≈39 gap, so data quality is not the obstruction. The campaign's
+`excess_balance` row *is* the degree-squared identity
+`Σ_v d(v)² = n·e + Σ_v e(G[N(v)]) − Σ_v e(G[D(v)])` (Theorem 2, equivalent form),
+which retires every handshake-style repair. Remaining routes, in order:
+VeriPB-certified gluing search, then srg(45,22,10,11) complementary SAT.
+**No bound on R(5,5) is claimed by any of this.**

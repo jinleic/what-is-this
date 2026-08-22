@@ -16,14 +16,32 @@ a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
 .badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
 border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
 .tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
-</style></head>
+mjx-container{overflow-x:auto;max-width:100%}
+</style>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  },
+  options: {
+    // leave <pre> (PROGRESS/README blocks) typesettable
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea']
+  },
+  startup: {typeset: true}
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
 <body>
 <p><a href="../index.html">&larr; index</a></p>
 
 <h1>Three-dimensional Ising model (exact solution)</h1>
 <p class="tag">source: <code>math/ising3d</code> ·
 session: <code>019ff186-f657-7000-85d0-6d52723bfb5c</code> ·
-synced 2026-08-22T04:21:35Z</p>
+synced 2026-08-22T05:30:53Z</p>
 <h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>## 2026-08-21 — ising3d waves 10–18: eight closed waves recorded, unified paper, ledger gap repaired
 
 **Documentation gap closed.** This ledger&#x27;s last ising3d entry was wave 9 (2026-08-16); waves 10–17
@@ -138,7 +156,7 @@ The fixed conventions are in [`problem_specification.md`](problem_specification.
 | Deformation search | A local F3 deformation cancels DG2 on the `3x3` torus, but the displayed pair fails DG1.  Several bounded deformation families are exactly ruled out; the simultaneous unrestricted problem is open. | [`proofs/dg_deformation_nogo.md`](proofs/dg_deformation_nogo.md), [`results/deformation/dg_deformation_search.json`](results/deformation/dg_deformation_search.json) |
 | Kac--Ward obstruction | The 2D identity is reproduced exactly.  In 3D: the strict two-weight slice is inconsistent at `v^8`; the entire positive-real 30-weight cone is empty; the rational gauge-branch map is 31/32 empty over `Q`.  On the last branch `11111`, a nonsingular `F_5` section proves the construction ideal is proper over `Q`, so no rational Nullstellensatz certificate exists at any degree; its local `Q_5` lift fails the independent `3x3x3` order-eight holdout.  The global signed/complex branch remains open. | [`proofs/kac_ward_positive_real.md`](proofs/kac_ward_positive_real.md), [`proofs/kac_ward_close.md`](proofs/kac_ward_close.md), [`proofs/kw_cubic.md`](proofs/kw_cubic.md) |
 | Claimed formulas falsified | Exact/numerical checks reject Zhang 2007 and Degang Zhang 2021 critical/free-energy claims; CFT singularity checks independently </pre>
-<h2>Curated artifacts</h2><ul><li><a href="../materials/ising3d/README.md">README.md</a> (33KB, sha256 fdd36921c1b4)</li><li><a href="../materials/ising3d/research_log.md">research_log.md</a> (44KB, sha256 49bbf895a281)</li><li><a href="../materials/ising3d/problem_specification.md">problem_specification.md</a> (4KB, sha256 fcd198beb06a)</li><li><a href="../materials/ising3d/reports/final_technical_report.md">reports/final_technical_report.md</a> (169KB, sha256 fc2d089ab631)</li><li><a href="../materials/ising3d/deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.pdf">deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.pdf</a> (449KB, sha256 a3136d859ac5)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperA_no_go_mechanisms.pdf">deliverables/wave17_2026-08-20/papers/paperA_no_go_mechanisms.pdf</a> (323KB, sha256 6a13633a2cf0)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperB_series_bounds.pdf">deliverables/wave17_2026-08-20/papers/paperB_series_bounds.pdf</a> (267KB, sha256 cf32f83f48e0)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperC_layer_DLA.pdf">deliverables/wave17_2026-08-20/papers/paperC_layer_DLA.pdf</a> (312KB, sha256 675c5f95ff6c)</li></ul>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/ising3d/README.md">README.md</a> (33KB, sha256 fdd36921c1b4)</li><li><a href="../materials/ising3d/research_log.md">research_log.md</a> (44KB, sha256 49bbf895a281)</li><li><a href="../materials/ising3d/problem_specification.md">problem_specification.md</a> (4KB, sha256 fcd198beb06a)</li><li><a href="../materials/ising3d/reports/final_technical_report.md">reports/final_technical_report.md</a> (169KB, sha256 fc2d089ab631)</li><li><a href="../materials/ising3d/deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.pdf">deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.pdf</a> (455KB, sha256 a72cd0b4ae5b)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperA_no_go_mechanisms.pdf">deliverables/wave17_2026-08-20/papers/paperA_no_go_mechanisms.pdf</a> (323KB, sha256 6a13633a2cf0)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperB_series_bounds.pdf">deliverables/wave17_2026-08-20/papers/paperB_series_bounds.pdf</a> (267KB, sha256 cf32f83f48e0)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperC_layer_DLA.pdf">deliverables/wave17_2026-08-20/papers/paperC_layer_DLA.pdf</a> (312KB, sha256 675c5f95ff6c)</li></ul>
 
 <hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
 </body></html>

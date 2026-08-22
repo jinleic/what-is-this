@@ -1791,9 +1791,47 @@ dominant uncertainty; no structural shortcut (L13c).
   $w=179$ probe at $a=7,\tau=0$ found 4 aligned classes but no closure
   within budget (EVIDENCE) (`data/l18_route131.jsonl`,
   `l18_route131.py`; lead-replayed).
+- **The canonical 5-wall is ALWAYS breakable on the class side (PROVED).**
+  The exact break criterion, derived factor by factor: for $p^e\Vert A$,
+  $(x,d)_p=1$ when $e$ is even and $(-2\varepsilon f q_1\mid p)$ when $e$
+  is odd, whence
+  $$\prod_{p\mid A}(x,d)_p\cdot(A\mid q_1)=(-2\varepsilon\mid A)(f\mid A).$$
+  For admissible odd $a$ one has $A\equiv5\bmod8$ and
+  $(-2\varepsilon\mid A)=-1$ for both signs, so **L10b's anti-correlation
+  breaks exactly when $(f\mid A)=-1$** — the extra Legendre factor
+  $(f\mid A)$ is precisely what the prime-$b$ family lacks. With $f=w$,
+  $z=-w$ one also gets $v_w(x)=0$, $v_w(d)=1$, $(x,d)_w=(-A\mid w)$, and
+  the same condition $(w\mid A)=-1$ makes that symbol $+1$.
+  *Existence, uniformly in $w$:* for prime $w\equiv3\bmod4$ the character
+  sum $\sum_{r\bmod w}(1+4r^2\mid w)=-1$ has no zero terms, so exactly
+  $(w+1)/2$ residues give $(A\mid w)=-1$; CRT with $a\equiv0$ mod
+  $\operatorname{rad}(w^3+2)$ gives an odd lift preserving that character
+  and forcing $\gcd(A,D)=1$ (since $4D\equiv(Z-2)^2\bmod p$ for $p\mid A$,
+  $Z=-w^3$); a second CRT plus Dirichlet supplies infinitely many primes
+  $q_1$ aligning every frozen place, the $2$-adic criterion
+  $\varepsilon wq_1\equiv a\bmod4$, and the real place. Hence **for every
+  prime $w\equiv11,19\bmod20$ an aligned $\tau=0$, $f=w$ class exists.**
+  Audit: 16,744 candidates / 14,142 eligible / 908 fully aligned bases,
+  **0 symbol, 0 derivation and 0 status mismatches**
+  (`data/l19_tauzero.jsonl`, `l19_tauzero.py`; lead-replayed, 14.7 s).
+  *Scope, exactly.* This is the class side. Member-level closure still
+  needs the L19 Schinzel input, so unconditional closure of an
+  obstructed cell remains **OPEN**. And the **fixed** $a=7$ subfamily is
+  not universal: it is breakable iff $(w\mid197)=-1$ — bounded check
+  breaks $131,139,151,179,199,211,271,359$ and leaves
+  $191,239,251,311,331,379$ obstructed *for that $a$*. The three $k=0$
+  closures are EVIDENCE for the family, not a universal member theorem.
 - **Off-grid horizon (PROVED per row, all lead-replayed).** Closed:
-  $w\in\{101,103,107,109,113,127,131,137,139,149,151,157,163,167,173\}$
-  at $u=-1$, plus $[131,[5,1]]$. Routes: L11 for
+  $w\in\{101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,
+  179\}$ at $u=-1$, plus $[131,[5,1]]$ — **every off-grid cell tried is
+  now closed; none is known to be intrinsically obstructed.** The last
+  one, $w=179$, closes at $a=7$, $\varepsilon=-1$, $f=179$, $q_1=Q=251$,
+  $N=1459660664008632960$, $k=0$, prime rung, exactly as the fixed-$a$
+  criterion $(179\mid197)=-1$ predicts; protocol 1,872 class attempts,
+  178 aligned classes, all searched over $k\le60$, **decided fraction
+  10,282/10,858 $=94.7\%$**, largest cofactor attempted 222 digits, 576
+  refusals never counted as evidence (`data/l19_cell179.jsonl`,
+  `l19_cell179.py`; lead-replayed, 168 s). Routes: L11 for
   $101,109,137,149\ (a{=}127),157\ (a{=}457)$; canonical ESC for
   $103,107,113,127,163,167,173$; **non-canonical $a{=}7,\tau{=}0,f{=}w$
   for every canonical wall met so far** — $131$

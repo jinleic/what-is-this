@@ -16,7 +16,7 @@ Live site: https://jinleic.github.io/what-is-this/
 | Kobon triangle problem | `kobon` | `019ff95f-d695-7000-b3d0-36dd86537081` | ### KOBON (2026-08-21/22) — convention separation, two DRAT-certified closures, paper drafted |
 | Navier-Stokes existence & smoothness (route work) | `ns` | `019ff0a0-6557-7000-8b8c-9bdbccb719e4 (prelude)` | ## 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim |
 | Quantum LDPC codes: exact distance & co-design | `qec` | `019ff1a6-af1a-7000-b0e9-223c45ae0a3c` | ## 2026-08-18 — QEC/PBB: six-agent wave lands — W4 circuit distance certified [5,12] on both circuits; X-sector proof gap found + repaired (J.3); residual subclass EMPTYNESS to l*m |
-| Ramsey number R(5,5) | `r55` | `019ffb23-9512-7000-8c79-32667475fc6c` | ## 2026-08-17 — R55: m=3 identity campaign COMPLETE — exact negative `M3_NO_CUT_IN_FROZEN_CONE`, triple-verified (producer, exact-simplex audit, disjoint checker on all 8.5M catalo |
+| Ramsey number R(5,5) | `r55` | `019ffb23-9512-7000-8c79-32667475fc6c` | ### R55 MIXED (2026-08-21) — level-2 pair lift executed and CLOSED; a retraction |
 | Three-dimensional Ising model (exact solution) | `ising3d` | `019ff186-f657-7000-85d0-6d52723bfb5c` | ## 2026-08-21 — ising3d waves 10–18: eight closed waves recorded, unified paper, ledger gap repaired |
 | Union-closed sets conjecture (Frankl) | `uc` | `019ff0a0-6557-7000-8b8c-9bdbccb719e4` | ### THEOREM (2026-08-22) — **Liu's Hypothesis 1 is proved**: the reduced kernel is negative semidefinite |
 

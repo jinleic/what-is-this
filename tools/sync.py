@@ -236,6 +236,26 @@ a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
 .badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
 border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
 .tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+mjx-container{overflow-x:auto;max-width:100%}
+"""
+
+MATHJAX_HEAD = """
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  },
+  options: {
+    // leave <pre> (PROGRESS/README blocks) typesettable
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea']
+  },
+  startup: {typeset: true}
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 """
 
 
@@ -244,7 +264,7 @@ def page(slug: str, title: str, body: str) -> str:
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} — what-is-this</title>
-<style>{PAGE_CSS}</style></head>
+<style>{PAGE_CSS}</style>{MATHJAX_HEAD}</head>
 <body>
 <p><a href="../index.html">&larr; index</a></p>
 {body}

@@ -53,16 +53,25 @@ its aggregate constraints are strictly slack at every optimal witness, and on a
 complete catalog class the discarded joint structure is a
 $\rho=0.9464$-correlated point cloud replaced by its bounding box.
 
-Fourth and most consequentially, we show that fixing any of this would not help.
-Although the envelope certification of the $77$ catalog-missing stratum classes
-is $111\times$ looser than catalog truth and carries $98.6\%$ of all window
-width, collapsing every such window to a \emph{point} still leaves the three
-routes at $360$, $39.25$, $38.36$ against acceptance edges $315$, $1$, $1$: a
-factor-$\approx39$ gap survives perfect data. The obstruction is therefore not
-window quality but the absence of vertex-to-vertex coupling---five aggregate
-conditions over $3{,}215$ weights cannot separate the degree-$20$ states. This
-rules out three natural follow-on campaigns by measurement and isolates a
-level-2 pair lift as the only direction the evidence supports.
+Fourth, we show that fixing any of this would not help. Although the envelope
+certification of the $77$ catalog-missing stratum classes is $111\times$ looser
+than catalog truth and carries $98.6\%$ of all window width, collapsing every
+such window to a \emph{point} still leaves the three routes at $360$, $39.25$,
+$38.36$ against acceptance edges $315$, $1$, $1$: a factor-$\approx39$ gap
+survives perfect data. The obstruction is not window quality but the absence of
+vertex-to-vertex coupling.
+
+Fifth, we therefore build the level-2 pair-coupled lift and close it too. With
+adjacent and non-adjacent degree-pair variables, the per-degree-class
+neighbour-degree identity and three exact codegree bounds, the optima move to
+$360$, $41$, $45$: two routes unchanged, one improved by $1/349$. The
+explanation is exact --- the campaign's $m=2$ row \emph{is} the degree-squared
+identity $\sum_v\deg(v)^2=45e+\sum_v e(G[N(v)])-\sum_v e(G[D(v)])$ in disguise,
+so every handshake-style repair was already present. Levels $1$ and $2$ of the
+first exact basis at $n=45$ are thus both closed. We also record, with its
+regression test, a near-miss row that is independent of the basis and appears to
+cut hard but is unsound: exact certificates prove optimality for the programme
+written, not soundness of the programme.
 \end{abstract}
 
 \section{Setting}
@@ -368,17 +377,83 @@ $\sum_s w_sd_s=2e$ with the averaged per-vertex inequality
 $e\ge d_v+e(N_v)+e(D_v)$ is slack by $\approx200$ at every state, since
 $e\approx495$ while the right-hand side is $\approx250$.
 
-\paragraph{The one direction the evidence supports.} More constraints, not
-better data: a level-2 Sherali--Adams/Lasserre lift carrying pair variables
-$w^{\mathrm{adj}}_{s,s'},w^{\mathrm{non}}_{s,s'}$ with marginal consistency to
-the present $w_s$, together with per-pair facts already certifiable here --- for
-adjacent $u,v$ the common neighbourhood $N(u)\cap N(v)$ is $K_3$-free (else $G$
-contains $K_5$), $\sum_{uv\in E}|N(u)\cap N(v)|=3T$, and each MR97/Engstr\"om
-row applied to pair-restricted counts. \emph{Falsification criterion:} if the
-level-2 lift's exact optimum on \texttt{degree20\_count} remains above $1$, the
-pair-coupled relaxation of this basis is closed as well, leaving the recorded
-residual tiers---VeriPB-certified gluing search, then
-$\mathrm{srg}(45,22,10,11)$ complementary SAT---as the only routes.
+\paragraph{More constraints, not better data.} What is missing is vertex-to-vertex
+coupling: a level-2 Sherali--Adams lift carrying pair variables with marginal
+consistency to the present $w_s$. We built it, and it is closed.
+
+\section{The level-2 pair lift is closed}\label{sec:lift}
+
+The lift adjoins, for each integer edge count $e$, ordered degree-pair variables
+$M[d,d']$ (adjacent) and $N[d,d']$ (non-adjacent), symmetric and nonnegative,
+with marginals $\sum_{d'}M[d,d']=d\,n_d$ and $\sum_{d'}N[d,d']=(44-d)n_d$ where
+$n_d=\sum_{d_s=d}w_s$; the per-degree-class neighbour-degree identity
+\eqref{eq:nbr} below; the per-state window $20d_s\le e+\varphi(s)\le24d_s$; and
+three codegree facts, writing $\lambda(u,v)=|N(u)\cap N(v)|$. For $u\sim v$,
+$N(u)\cap N(v)$ is $K_3$-free with independence number $\le4$, so
+$\lambda\le R(3,5)-1=13$. For $u\not\sim v$, $D(u)\cap D(v)$ has independence
+number $\le2$ and is $K_5$-free, so
+$|D(u)\cap D(v)|=43-d_u-d_v+\lambda\le R(5,3)-1=13$, giving the \emph{upper}
+bound $\lambda\le d_u+d_v-30$; and $\lambda\ge\max(0,d_u+d_v-43)$ since
+$N(u)\cup N(v)$ omits $u$ and $v$. These tie to the vertex layer through
+$\sum_v e(G[N(v)])=3T$ and
+$\sum_{u\not\sim v}\lambda=\sum_v\binom{d_v}{2}-3T$.
+
+\begin{proposition}[The pair lift does not open the routes]\label{prop:lift}
+Maximised over every integer $e$ for which the lifted programme is feasible,
+which is exactly $e\in[454,536]$, the exact optima are $360$, $41$ and $45$
+against frozen $360$, $14310/349$ and $45$. Two routes are unchanged; the third
+improves by $1/349$. No route reaches its acceptance edge.
+\end{proposition}
+
+The reason is a collapse we can state exactly. For any finite simple graph, pure
+double counting gives $\sum_{u\in N(v)}\deg(u)=d_v+2e(G[N(v)])+e_{xz}(v)$ and
+$e=d_v+e(G[N(v)])+e(G[D(v)])+e_{xz}(v)$, hence for every vertex
+\begin{equation}\label{eq:nbr}
+\sum_{u\in N(v)}\deg(u)=e+e(G[N(v)])-e(G[D(v)]),
+\end{equation}
+and, summing and using $\sum_v\sum_{u\in N(v)}\deg(u)=\sum_u\deg(u)^2$,
+\begin{equation}\label{eq:deg2}
+\sum_v\deg(v)^2=45e+\sum_v e(G[N(v)])-\sum_v e(G[D(v)]).
+\end{equation}
+We verified \eqref{eq:nbr} and \eqref{eq:deg2} on all $2{,}131{,}018$ labelled
+graphs up to $n=7$ and on random graphs at $n=12,20,45$.
+
+\begin{proposition}[The $m=2$ row \emph{is} the degree-squared identity]\label{prop:collapse}
+Adjoining \eqref{eq:deg2} to \eqref{eq:relax} gains nothing, because it is
+already present. In this repository the $z$ stratum is the complement of the
+anti-neighbourhood, so $e_z=E_{45}[m]-b$ equals $e(\bar G[D(v)])$ and the
+interior count is $e_y=\binom{m}{2}-e_z$; with that substitution
+$2d^2-45d-2e_x+2e_y=\mathrm{bal}(s)$ identically on all $3{,}215$ states, and
+the exact rank of $\{1,\mathrm{bal},g_{\mathrm{lo}},g_{\mathrm{hi}},
+h_{\mathrm{lo}},h_{\mathrm{hi}},f_{\mathrm{lo}},f_{\mathrm{hi}}\}$ is $8$ both
+before and after adjunction.
+\end{proposition}
+
+Proposition~\ref{prop:collapse} retires the whole family of handshake-,
+assortativity- and degree-correlation repairs at the aggregate level, including
+the one suggested by \S\ref{sec:notwindows}. Only the per-degree-class form of
+\eqref{eq:nbr} is strictly finer than its aggregate, and
+Proposition~\ref{prop:lift} prices that refinement at $1/349$.
+
+\paragraph{A recorded trap.} Substituting the recorded $e_z$ directly for
+$e(G[D(v)])$ in \eqref{eq:deg2} yields
+$r(s)=2d^2-45d-2(E_{45}[d]-E_{45}[m])+2a-2b$, which \emph{is} independent of the
+frozen basis (rank $8\to9$) and appears to cut every route hard --- to
+$4905/14$, $225/11$, $4905/112$, and under integrality of the degree
+distribution to $349$, $20$, $43$ --- with matching exact dual certificates and
+exact primal witnesses throughout. All of it is invalid: $r$ misreads the
+stratum convention. We record it because exact certificates and matching
+witnesses establish optimality \emph{for the programme written down}; they carry
+no information about whether that programme is sound. Reading the non-adjacent
+bound $\lambda\le d+d'-30$ as a lower bound is a second such trap, and makes
+every $e$ infeasible, i.e.\ manufactures a refutation of $R(5,5)=45$. Both are
+pinned by regression tests.
+
+\paragraph{Consequence.} Levels $1$ and $2$ of this basis are now both closed,
+and the factor-$\approx39$ margin of Proposition~\ref{prop:shrink} shows data
+quality cannot substitute for a non-local argument. The recorded residual tiers
+---VeriPB-certified gluing search, then $\mathrm{srg}(45,22,10,11)$
+complementary SAT---are the only remaining routes.
 
 \section{Reproducibility}
 

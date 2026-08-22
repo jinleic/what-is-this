@@ -16,17 +16,88 @@ a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
 .badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
 border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
 .tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
-</style></head>
+mjx-container{overflow-x:auto;max-width:100%}
+</style>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  },
+  options: {
+    // leave <pre> (PROGRESS/README blocks) typesettable
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea']
+  },
+  startup: {typeset: true}
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
 <body>
 <p><a href="../index.html">&larr; index</a></p>
 
 <h1>Ramsey number R(5,5)</h1>
 <p class="tag">source: <code>math/r55</code> ·
 session: <code>019ffb23-9512-7000-8c79-32667475fc6c</code> ·
-synced 2026-08-22T04:21:35Z</p>
-<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>## 2026-08-17 — R55: m=3 identity campaign COMPLETE — exact negative `M3_NO_CUT_IN_FROZEN_CONE`, triple-verified (producer, exact-simplex audit, disjoint checker on all 8.5M catalogs); m=4 plan drafted and reviewed
+synced 2026-08-22T05:30:53Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>### R55 MIXED (2026-08-21) — level-2 pair lift executed and CLOSED; a retraction
 
-Session layer (`math/r55/`), four TDD tasks (`notes/higher_order_identity_m3_plan_2026-08-16.md`).
+* **THE PAIR LIFT IS CLOSED.** The falsification criterion recorded at the end
+  of the mixed campaign (note §6.5) was run and fired. Exact optima of the
+  level-2 pair-coupled programme, maximised over every feasible integer edge
+  count (exactly `e in [454,536]`): `total_deficiency` 360 (frozen 360),
+  `degree20_count` **41** (frozen 14310/349, i.e. improved by exactly 1/349),
+  `deficiency_ge8_count` 45 (frozen 45). No route reaches its edge
+  (315, 1, 1). Disposition `MIXED_PAIR_LIFT_CLOSED`. **No R(5,5) bound
+  claimed.** Levels 1 and 2 of the first exact basis at n=45 are now both
+  closed; the recorded residual tiers (VeriPB gluing, then srg(45,22,10,11)
+  complementary SAT) are the only remaining routes.
+* **WHY — `excess_balance` IS the degree-squared identity.** Pure double
+  counting gives `sum_{u~v} deg(u) = e + e(G[N(v)]) - e(G[D(v)])` per vertex and
+  `sum_v deg(v)^2 = 45e + sum_v e(G[N(v)]) - sum_v e(G[D(v)])` in aggregate
+  (verified on all 2,131,018 labelled graphs to n=7 plus randoms at n=12,20,45;
+  independently re-verified by a second agent over all graphs on n=4,5,6,
+  209,184 per-vertex checks, 0 violations). Adjoining it gains nothing: the repo&#x27;s
+  z stratum is the *complement* of the anti-neighbourhood, so the true interior
+  count is `e_y = C(m,2) - e_z`, and with that substitution
+  `2d^2 - 45d - 2e_x + 2e_y == excess_balance(s)` exactly on all 3215 states.
+  Exact rank stays 8 before and after. This retires every handshake-,
+  assortativity- and degree-correlation repair at the aggregate level — including
+  the one the campaign note itself proposed. Only the per-degree-class form is
+  finer, and it is worth 1/349.
+* **RETRACTION (mine, mid-session).** Substituting the recorded `e_z` for
+  `e(G[D(v)])` gives a row that IS independent of the frozen basis (rank 8-&gt;9)
+  and appears to cut hard: 360-&gt;4905/14, 14310/349-&gt;225/11, 45-&gt;4905/112, and
+  under integrality of the degree distribution 349/20/43 — each with matching
+  exact dual certificates AND exact primal witnesses. All retracted: the row
+  misreads the stratum convention. Exact certificates prove optimality *for the
+  programme written*, not soundness of the programme. A second trap was hit and
+  caught the same way: reading the non-adjacent codegree bound
+  `lam &lt;= d+d&#x27;-30` as a lower bound makes every e infeasible and so manufactures
+  a false refutation of R(5,5)=45. Both are now pinned by regression tests
+  (`test_invalid_ez_row_is_the_trap`, `test_nonadjacent_bound_is_an_upper_bound`).
+* **TASK 4 LANDED** (the plan&#x27;s last open item, delegated): disjoint checker
+  `r55/src/check_mixed_certificate.py` + 17 tests. Imports only stdlib plus
+  `check_ramsey.parse_graph6_line`/`popcount`; second independently written motif
+  kernel cross-validated by a combinations-only reference on all 33,867 labelled
+  graphs of orders 1..6; `--sweep` re-swept 8,500,211 graphs across 53 classes in
+  333 s with every per-class window agreeing; independent histogram-DP
+  reconstruction of q and the g endpoints (no frozen-m4 state comparison);
+  all 3215 F intervals re-derived; least-alpha canonicality enforced. Scoped gap
+  recorded verbatim in its docstring: outer windows for catalog-missing classes
+  are validated for schema, combinatorial caps and catalog containment but the
+  R1-R5 envelope LP is not re-run, so h and F endpoints in missing strata remain
+  conditional on those hash-pinned windows.
+* New: `r55/src/pair_lift_mixed.py`, `r55/tests/test_pair_lift_mixed.py` (18
+  tests). Verified: pair-lift suite 18/18 OK (131 s); checker suite 17/17 OK
+  (13 s); `pair_lift_mixed.py` CLI rc 0 printing `MIXED_PAIR_LIFT_CLOSED`;
+  `check_mixed_certificate.py` CLI rc 0 printing
+  `MIXED EVIDENCE VERIFIED: MIXED_NO_CUT_IN_FROZEN_BASIS`. Paper rebuilt to 8
+  pages, pdflatex exit 0, 0 LaTeX warnings. Trust discipline unchanged: HiGHS
+  only proposes; every accepted number re-verified by exact componentwise dual
+  feasibility in `Fraction`.
 </pre>
 <h2>Project README (verbatim, first lines)</h2><pre># R(5,5) ≤ 45 campaign
 
@@ -128,7 +199,7 @@ Next: `notes/higher_order_identity_m4_plan_2026-08-17.md` (m=4 T-family row,
 last nontrivial member; separately reviewed, all findings applied).
 
 ## m=4 identity cone campaign (COMPLETE 2026-08-18: exact negative)</pre>
-<h2>Curated artifacts</h2><ul><li><a href="../materials/r55/README.md">README.md</a> (14KB, sha256 c647e7bcc4d1)</li><li><a href="../materials/r55/paper/README.md">paper/README.md</a> (3KB, sha256 8b5099a0eb1b)</li><li><a href="../materials/r55/paper/VERIFY.md">paper/VERIFY.md</a> (2KB, sha256 40db44ebcff0)</li><li><a href="../materials/r55/paper/engstrom_mixed_n45.pdf">paper/engstrom_mixed_n45.pdf</a> (260KB, sha256 46a5f56fff7e)</li><li><a href="../materials/r55/paper/engstrom_mixed_n45.tex">paper/engstrom_mixed_n45.tex</a> (21KB, sha256 3cd4f92e3d77)</li></ul>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/r55/README.md">README.md</a> (16KB, sha256 6602df897f5d)</li><li><a href="../materials/r55/paper/README.md">paper/README.md</a> (4KB, sha256 a818ef5de355)</li><li><a href="../materials/r55/paper/VERIFY.md">paper/VERIFY.md</a> (4KB, sha256 08888d2d71c0)</li><li><a href="../materials/r55/paper/engstrom_mixed_n45.pdf">paper/engstrom_mixed_n45.pdf</a> (290KB, sha256 697e854a6526)</li><li><a href="../materials/r55/paper/engstrom_mixed_n45.tex">paper/engstrom_mixed_n45.tex</a> (25KB, sha256 fddfef9fa647)</li></ul>
 
 <hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
 </body></html>
