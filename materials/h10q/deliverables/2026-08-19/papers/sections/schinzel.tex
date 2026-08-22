@@ -1,0 +1,95 @@
+\section{Schinzel's Hypothesis H implies the per-class hypothesis}
+\label{sec:schinzel}
+
+The conditional statement of Section~\ref{sec:record} rests on a
+hypothesis $H$ about the existence of emergent-free members. We now show
+that $H$ is not a bespoke conjecture: for a fixed verified aligned
+class it follows from Schinzel's Hypothesis~H \cite{schinzel} applied to an
+explicit pair of polynomials. The implication is a theorem; only the prime values
+themselves remain conjectural.
+
+\subsection{The operational contract}
+
+A place is recorded as an obstruction only when its valuation is odd
+\emph{and} its Hilbert symbol is $-1$: the kernel appends a place under
+exactly that conjunction, and the ladder returns \emph{zero} when every
+remaining place is proved with symbol $+1$.
+% src: l13_filter.py smooth_emergent / cofactor_decide
+Emergent-freeness therefore means \emph{no place of symbol $-1$}, not
+\emph{no odd valuation outside the frozen set}. This distinction is
+load-bearing: $197$ of the $293$ grid closures have exactly one
+odd-valuation outside prime whose symbol is forced $+1$ by reciprocity.
+% src: THEOREMS.md L14/L17 (197 prime-rung closures, 197/197 singleton +1)
+The stronger reading would not follow from prime values, since a prime
+value deliberately creates one odd place.
+
+\subsection{The theorem}
+
+Fix a verified aligned class with data $(a,\varepsilon,f,q_1,N)$, put
+$Q(t) = q_1 + Nt$, $b(t) = \varepsilon f Q(t)$, and let
+$S = \{2,3,5,7\} \cup \supp(\alpha) \cup \supp(\delta) \cup \supp(f)$.
+Write the composed class polynomial as
+\[
+   F(t) \;=\; P\bigl(\varepsilon f (q_1 + Nt)\bigr) \;=\; c\,G(t),
+\]
+with $c > 0$ and $G \in \Z[t]$ primitive with positive leading
+coefficient. The relevant hypothesis on $c$ is that its \emph{square
+class} is supported on $S$. Literal $S$-support is false in general: for
+$(w,z) = (3, 3/11)$, $a = 1$, $q_1 = 19$ one gets
+$c = 9072/15692141883605$, whose outside part is $11^{-12}$. Only the
+square class matters, because an outside place of even valuation
+contributes Hilbert symbol $+1$.
+% src: data/l20_admissible.jsonl (normalization block, audited counterexample)
+
+\begin{theorem}[Schinzel implies $H$ per class; PROVED implication]
+\label{thm:schinzel}
+Assume the class certificate (all symbols at $S$, at the moving prime
+$Q$, and at infinity equal $+1$ for every member outside a finite
+excluded set), and assume $Q$ and $G$ are irreducible with positive
+leading coefficients whose product has no fixed prime divisor. Then
+Schinzel's Hypothesis~H for $\{Q, G\}$ implies that the class contains
+infinitely many members with ladder verdict \emph{zero}.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Schinzel supplies infinitely many $t$ with $Q(t)$ and $G(t)$
+simultaneously prime; the side conditions (Cauchy bound, $b \neq 0,1$,
+finitely many forbidden coincidences) exclude only finitely many $t$.
+For such $t$, stripping $S$ from $F(t) = c\,G(t)$ removes $c$ exactly and
+leaves the prime $G(t)$. At the moving prime, $b \equiv 0 \pmod{Q}$ and
+the kernel identity gives $P(b) \equiv -\delta a^4 Z^4 A^2 \pmod{Q}$, a
+unit, so $v_Q(P(b)) = 0$ and $G(t) \neq Q(t)$: there is exactly one
+outside place $R = G(t)$ of odd valuation. Every other outside place has
+even valuation with $v_p(d) = 0$, hence symbol $+1$. The certificate
+pins the symbols at $S$, at $Q$ and at infinity to $+1$. Hilbert
+reciprocity --- the product of all local symbols is $+1$ --- then forces
+$(x_0,d_0)_R = +1$. So no place carries $-1$ and the verdict is
+\emph{zero}.
+% src: THEOREMS.md L9 (reciprocity steering), h10q.py odd-prime symbol formula
+\end{proof}
+
+\subsection{The hypotheses are verified, not assumed}
+
+For all $293$ canonical closure pairs of the grid we verified exactly,
+not statistically: $G$ is primitive of degree $8$ and irreducible with a
+replayed Frobenius certificate; $G$ has positive leading coefficient;
+$\gcd(q_1,N) = 1$; the pair product has fixed divisor $1$, certified by
+finite differences on $t = 0,\dots,9$ (exact for degree $9$); $G(t)$ is
+an $S$-unit for every integer $t$; and the frozen symbols are constant
+in $t$, covered for $283$ rows by the Taylor exponent and for the
+remaining $10$ alternate escape rows by an explicit normalized-polynomial
+congruence.
+% src: data/l18_schinzel_implies_h.jsonl (class_audit block, 293/293 on each item)
+A $24$-row cross-check (12 escape, 12 L11) re-ran the proven-primality
+kernel end to end: every sampled member has a single proved-prime ladder
+residual with symbol $+1$ and verdict \emph{zero}.
+% src: data/l18_schinzel_implies_h.jsonl (24 verified_prime_rung rows)
+
+\begin{remark}[Exact scope]
+Schinzel supplies members inside a class that already exists. It does
+not construct an aligned class for a cell; that is the finite,
+structural side, characterized by the class theorem and verified
+$293/293$ on the grid. The conditional record therefore now reads:
+\emph{Schinzel's Hypothesis~H plus the class-existence side implies the
+six-quantifier universal definition}.
+\end{remark}

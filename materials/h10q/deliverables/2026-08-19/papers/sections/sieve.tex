@@ -1,0 +1,188 @@
+\section{The verified quantitative layer}
+\label{sec:sieve}
+
+The class construction reduces the residual local problem to a moving
+arithmetic progression.  For an aligned class write
+\[
+ Q(k)=q_1+kN,\qquad b(k)=\varepsilon fQ(k),
+\]
+% src: THEOREMS.md:1529-1537
+with the controlled Hilbert symbols already fixed to be positive.  A
+member is called \emph{emergent-free} when the remaining odd-valuation
+places contribute no negative symbol.  The purpose of the quantitative
+layer is twofold: to certify this condition on the finite grid and to
+separate the exact local mechanism from the statistical model suggested
+by the resulting population.
+
+\subsection{L14: instance verification}
+
+\begin{proposition}[Finite instance of hypothesis $H$]
+\textbf{PROVED (per row).}  All $293/293$ aligned classes in the
+finite grid have a certified emergent-free member; these comprise $190$
+L11 classes and $103$ escape classes.  Every stored row was replayed
+through the exact cofactor ladder and returned verdict \emph{zero}.
+% src: THEOREMS.md:1481-1486
+\end{proposition}
+
+The proposition is deliberately finite.  Its acceptance condition is
+an aligned class together with an exact zero verdict from the member
+ladder.  A tied-conic or ramification computation may also be attempted
+as an auxiliary cross-check, but a budget refusal there is accepted and
+logged: it neither invalidates a ladder certificate nor supplies
+positive evidence.  In particular, no refusal is promoted to a
+primality or solubility assertion.  This distinction is essential
+because the general, all-cell form of hypothesis $H$ remains open even
+though the displayed grid instance is complete.
+% src: THEOREMS.md:1485-1487
+% src: THEOREMS.md:1503-1511
+
+\subsection{L15: the exact remainder and counting laws}
+
+For a certified member, let $R$ be the remainder of $P(b)$ after the
+frozen support, the fixed shell, and the smooth-emergent primes have
+been stripped.  An independent replay gives the following exhaustive
+shape table.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}lcll@{}}
+\toprule
+Ladder shape & Rows & Exact form of $R$ & Size data \\
+\midrule
+proved-prime & $197$ & one prime, never $pC^2$ & median $48$ digits; maximum $119$ \\ % src: THEOREMS.md:1522-1523
+factorint & $96$ & squarefree product, $e\in\{2,3,4\}$ & multiplicities $76/15/5$ \\ % src: THEOREMS.md:1523-1525
+\bottomrule
+\end{tabular}
+\caption{\textbf{PROVED (finite audit).}  Shapes of the stripped
+remainder on all $293$ closure rows.}
+% src: THEOREMS.md:1513-1525
+\end{table}
+
+Thus $R$ is squarefree on every audited row and $R=1$ never occurs.
+% src: THEOREMS.md:1518-1524
+The prime rung is not a probable-prime shortcut: its singleton cofactor
+is accepted only after a proof of primality.  On a factorint rung the
+integer $e$ counts distinct emergent factors, and the exact
+factorization allows every corresponding Hilbert symbol to be checked.
+The two shapes therefore reflect two proof routes through the same
+local criterion, not two definitions of closure.
+
+There is also an exact finite counting statement.  The first certified
+member occurs at $k=0$ in $207/293$ classes, or $70.65\%$.
+% src: THEOREMS.md:1529-1532
+This is \textbf{PROVED} as a statement about deterministic playback of
+the stored progressions.  By contrast, interpreting the searches as
+samples from a stable member process is \textbf{EVIDENCE}: the measured
+per-prime-member emergent-free rate is approximately $0.040$, and the
+observed waiting time is approximately $15.7$ times the pure
+Bateman--Horn \cite{batemanhorn} first-prime prediction for the same
+progressions.
+% src: THEOREMS.md:1533-1537
+The exact histogram may therefore be used without qualification inside
+the finite audit, while the rate and the comparison are empirical laws,
+not uniform density theorems.
+
+\subsection{L16: why the small layer has sieve shape}
+
+Fix an emergent odd prime $p$.  On an aligned class, $b(k)$ is affine in
+$k$, and the sign at $p$ is
+\[
+ (x_0,d_0)_p=\leg{2\alpha b(k)}{p}.
+\]
+On every checked recurring-prime row, this sign is determined by
+$k\bmod p$.  The obstruction at $p$ is consequently not the whole root
+set of $P(b(k))$ modulo $p$: it is the union of those root classes having
+the bad signature, further restricted to odd valuation,
+\[
+ \mathcal B_p=\{k:v_p(P(b(k)))\ \text{is odd}\}
+ \cap\{k\bmod p:\leg{2\alpha b(k)}{p}=-1\}.
+\]
+% src: THEOREMS.md:1546-1557
+
+For a simple bad root, Hensel lifting gives an exact Haar mass
+\[
+ \sum_{j\geq0}\frac{p-1}{p^{2j+2}}=\frac{1}{p+1}.
+\]
+% src: THEOREMS.md:1555-1559
+This is the valuation-parity correction to a naive exclusion sieve:
+one must retain the odd levels of the Hensel tower rather than merely
+delete a residue class modulo $p$.  A singular root has no such
+one-line factor.  Its descendants are lifted recursively until the odd
+and even masses are certified with a residual bound; if that cannot be
+completed, the corresponding local product is explicitly labeled as
+an exclusion or partial result.
+% src: THEOREMS.md:1558-1562
+Accordingly, the residue and valuation checks are \textbf{PROVED per
+row}; the claim that this small layer supplies the useful global
+layering model is \textbf{EVIDENCE}.  No independence theorem is hidden
+in the product notation.
+% src: THEOREMS.md:1541-1544
+
+\subsection{L17: matched validation}
+
+The full-grid residue test strengthens the preliminary structural
+probe.  Across all $293$ classes and the window $k\in[0,119]$, it found
+zero residue-determination counterexamples on the identical
+$8{,}760$-member sample used for evaluation.
+% src: THEOREMS.md:1577-1580
+% src: data/l17_sieve.jsonl:1; data/l17_matched.jsonl:3
+This is \textbf{PROVED} as a finite statement.  The predictive use of
+the local masses is \textbf{EVIDENCE}; it was assessed only after the
+predictions and observations had been put on exactly the same member
+support.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+Matched statistic & Model & Observed & Diagnostic \\
+\midrule
+marginal odd hits & $4481.3$ & $4478$ & ratio $0.9993$ \\ % src: data/l17_matched.jsonl:3
+hit-conditioned union & $3477.9$ & $3475$ & residual $-2.9$ \\ % src: data/l17_matched.jsonl:3
+permutation null & --- & $3475$ & $z=-0.09$; tails $0.61/0.53$ \\ % src: data/l17_matched.jsonl:3
+\bottomrule
+\end{tabular}
+\caption{\textbf{EVIDENCE.}  Matched small-layer evaluation on the same
+$8{,}760$ members used on both sides.}
+% src: data/l17_matched.jsonl:3
+\end{table}
+
+The marginal statistic counts odd bad-root hits, so a member can
+contribute more than once; the union statistic asks whether a member is
+hit at least once.  Their simultaneous agreement, together with the
+marginal-preserving permutation null, shows no detectable overlap or
+dependence discrepancy on this window.  It does not prove independence
+outside the evaluated support.
+
+A superficially different class-weighted comparison has estimand about
+$+0.0195$, at $3.63$ standard deviations.
+% src: data/l17_matched.jsonl:3
+That quantity compares Haar-uniform local masses in $\Z_p$ with the
+finite $k\in[0,119]$ window, rather than comparing predictions and
+observations member by member on matched support.
+% src: data/l17_matched.jsonl:3
+It is therefore identified as the Haar--window gap, not as a failure of
+the hit-conditioned model.
+
+\subsection{L17 cofactor layer: reciprocity and its limit}
+
+The large-cofactor layer has a narrower theorem than the small layer.
+\textbf{PROVED:} on the prime rungs, reciprocity forces the singleton
+cofactor sign to be $+1$ in all $197/197$ cases; on the complete closure
+set, the cofactor-sign product is $+1$ on $293/293$ rows.
+% src: THEOREMS.md:1605-1611
+These are exactly the singleton and parity-product statements.  The
+individual positive signs in factorint closure rows are selected by the
+closure condition, so their residue tables are descriptive data and
+cannot support an unconditional sign-distribution claim.
+% src: THEOREMS.md:1611-1615
+
+The attempted nonclosure measurement remains \textbf{INCONCLUSIVE}:
+only $11/400$ sampled rows were resolved, and the predeclared power gate
+failed.
+% src: NOTES.md:835-845
+The unresolved rows are refusals, not observations of either sign.
+Consequently the cofactor layer is proved at reciprocity level and no
+further; its nonclosure sign distribution remains measurement-limited.
+This is also why the matched small-layer success must not be silently
+upgraded into a complete rate theorem for emergent-free members.

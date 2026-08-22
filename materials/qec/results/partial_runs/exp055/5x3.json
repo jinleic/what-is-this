@@ -1,0 +1,201 @@
+{
+ "ceiling_max": 8,
+ "ceiling_max_weight3": 8,
+ "ell": 5,
+ "frontier": {
+  "10": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 3,
+   "dim_I0": 5,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "20": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 2,
+   "dim_I0": 10,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "8": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "dim_I0": 0,
+   "exact_min": false,
+   "route": "member"
+  }
+ },
+ "frontier_weight3": {
+  "20": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 2,
+   "dim_I0": 10,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "8": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "dim_I0": 0,
+   "exact_min": false,
+   "route": "member"
+  }
+ },
+ "groups": 8,
+ "idempotence_tested": 8,
+ "idempotence_violations": [],
+ "k_crosschecks": 18,
+ "k_histogram": {
+  "0": 10119,
+  "10": 4,
+  "2": 176,
+  "20": 1,
+  "4": 824,
+  "6": 16,
+  "8": 96
+ },
+ "k_max": 20,
+ "k_mismatches": [],
+ "m": 3,
+ "max_weight": 3,
+ "n": 30,
+ "no_group_certificate_pairs": 4,
+ "no_group_certificate_represented": 96,
+ "pairs_total": 11236,
+ "qualifying_group_pairs": 6,
+ "qualifying_pairs_represented": 101,
+ "supports": 106,
+ "wall_s": 0.16
+}

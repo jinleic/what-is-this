@@ -1,0 +1,98 @@
+{
+  "code": "[[144,12,12]]",
+  "ell": 12,
+  "m": 6,
+  "A": [
+    [
+      3,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "B": [
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ]
+  ],
+  "n": 144,
+  "k": 12,
+  "d_X": 12,
+  "d_Z": 12,
+  "d": 12,
+  "d_lower_bound": 12,
+  "solver_reports_exact": true,
+  "witnesses_independently_verified": true,
+  "CERTIFIED_EXACT": true,
+  "witness_X": {
+    "weight": 12,
+    "commutes_with_opposite_checks": true,
+    "is_stabilizer": false,
+    "is_nontrivial_logical": true,
+    "symplectic_weight": 12,
+    "support": [
+      56,
+      57,
+      58,
+      59,
+      62,
+      64,
+      66,
+      68,
+      126,
+      130,
+      132,
+      134
+    ],
+    "matches_reported_value": true
+  },
+  "witness_Z": {
+    "weight": 12,
+    "commutes_with_opposite_checks": true,
+    "is_stabilizer": false,
+    "is_nontrivial_logical": true,
+    "symplectic_weight": 12,
+    "support": [
+      5,
+      21,
+      22,
+      39,
+      55,
+      56,
+      103,
+      109,
+      115,
+      118,
+      121,
+      130
+    ],
+    "matches_reported_value": true
+  },
+  "all_sectors_decided": {
+    "X": true,
+    "Z": true
+  },
+  "search_cap": 12,
+  "wall_time_s": 606.46,
+  "method": "CP-SAT exact IP per logical sector; lower bound by proven INFEASIBLE below the value, upper bound by an explicit witness verified through an independent GF(2) bitset path",
+  "solver": "ortools CP-SAT",
+  "env": {
+    "python": "3.13.9",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O"
+  }
+}

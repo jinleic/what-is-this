@@ -1,0 +1,897 @@
+{
+ "frozen": "2026-08-16 (v2: node-count instrumented)",
+ "purpose": "Gate-3 held-out benchmark for R(5,5)<=45 campaign: certified stratum reproduction. Gate-4 improvements must (a) keep every dev item MATCH, (b) improve wall/deferral metrics, (c) transfer to held-out items in a single certified A/B run.",
+ "protocol_erratum_2026_08_16": "bench/README.md criterion (b) previously said wall or search-size, conflicting with this SSOT's wall/deferral rule. Corrected: wall/deferral is the promotion gate; search size remains a required diagnostic. Held-out transfer remains mandatory before any improvement claim.",
+ "machine": {
+  "cpu": "Apple M3 Ultra",
+  "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "workers": 8
+ },
+ "toolchain": {
+  "engine": {
+   "file": "src/glue_census2.c",
+   "binary_sha256": "2dd29bec1e9f85c3fe93284d7e3028ed95444e9e5235084c74a3c6718ef70f70",
+   "source_sha256": "74af43087bd1f99d51a618690e95403622f6abd1049b6cc4931226dce91f6e2d",
+   "archived_binary": "outD/bench/glue_census2_c.v2_sparse",
+   "archived_source": "outD/bench/glue_census2_v2.c",
+   "note": "v2 = BASELINE PROVENANCE: post terminal-dmin-fix + per-pair node counts (5th CSV column, deferred/solution-bearing rows only) + #nodes summary. Every frozen baseline in this spec was produced by this binary. Source archived after an in-place v2.1 edit; reconstruction verified byte-identical to the source pin recorded at freeze time."
+  },
+  "sat": {
+   "file": "src/sat_pair.py",
+   "sha256": "6eabc76d963c9acbe3d4d7f9ede80ee097082a4016fa4959784786b668a29c56",
+   "solver": "Cadical195 via python-sat 1.9.dev13",
+   "note": "v2: optional stats out-param (Cadical accum: conflicts/decisions/propagations)"
+  },
+  "harness": {
+   "file": "src/bench_stratum.py",
+   "sha256": "0b70ef61d6f078e0188280749eedcf6f8e66d068f22d48bc9d22f92aa7d90011"
+  },
+  "checker": {
+   "file": "src/check_ramsey.py",
+   "sha256": "9c96cb4257bb8e621f4461573194266f731013d11aacbc684347e62770a9f2d9"
+  },
+  "labelg": "Nauty&Traces version 2.9301 (64 bits)",
+  "python": "Python 3.14.3",
+  "baseline_config": {
+   "GLUE_NODE_LIMIT": 1000000,
+   "GLUE_DMIN": "dmin_true(n,e) = e - E45[n-1]"
+  },
+  "d3_driver": {
+   "file": "src/case_split_21_107.py",
+   "sha256": "519136ec797d052b07e2cc0ce24bb20a220f665195c4601759514e04ecf535b3",
+   "note": "decomposition/encoding driver for held-out item (21,107); v2 2026-08-16 instrumented (case-1 SAT stats, case-2 #nodes aggregation, SAT-tail stats, fail-closed final_diff with isolated outdir)",
+   "runtime_constants_from_pinned_file": {
+    "WORKERS": 8,
+    "NODE_LIMIT": "1000000",
+    "GLUE_DMIN": "10 (within-case prune, delta>=10 case)",
+    "WINDOWS": {
+     "d11": [
+      3,
+      6
+     ],
+     "d12": [
+      13,
+      15
+     ],
+     "d13": "empty by arithmetic"
+    },
+    "case1": "one-vertex extension AllSAT of r4520.{100,99,98} at delta={7,8,9}"
+   }
+  },
+  "candidate2_instrumentation": {
+   "file": "src/glue_census2.c (live)",
+   "binary_sha256": "1787ac2c469e8534396689c734bbc85275e4cb2b49d61206632ab5e2873a5afa",
+   "source_sha256": "6d08477f3ea5fdbc6310bf625011b6c63e3f493ea0785d18f3eaba99d307c3a4",
+   "note": "v2.1 = DATA-COLLECTION build, NOT baseline provenance: adds opt-in GLUE_CSV_ALL emitting a row for every DFS-entered pair (incl. completed zero-solution pairs). Default mode verified byte-identical to v2 output (g6+CSV, (16,71) d=10) and dev suite re-MATCHed with node counts identical to v2 baselines. Used only for outD/cand2_data collection; any gate-4 A/B arm must state its build."
+  },
+  "candidate3_prefilter": {
+   "status": "REJECTED_BY_HELDOUT",
+   "candidate_source": "outD/candidate3/glue_census2_candidate3_fast.c",
+   "candidate_source_sha256": "acd815da6d1fb034b03d5746ff2ab738496e53d7f281ebb48c134836dd93c02e",
+   "candidate_binary": "outD/candidate3/glue_census2_candidate3_fast",
+   "candidate_binary_sha256": "f63872f6e2ca1d3779ceaa3332743b660126bd9cd4fb1fcf9739b05cc8ccf23b",
+   "baseline_binary": "outD/bench/glue_census2_c.v2_sparse",
+   "baseline_binary_sha256": "2dd29bec1e9f85c3fe93284d7e3028ed95444e9e5235084c74a3c6718ef70f70",
+   "config": {
+    "GLUE_LOCAL_PREFILTER": 1,
+    "GLUE_NODE_LIMIT": 1000000,
+    "GLUE_DMIN": "dmin_true(n,e) = e - E45[n-1]"
+   },
+   "measurement": "outD/candidate3/measurement.json",
+   "measurement_sha256": "7f9217dd99b747723123555edef7e9b2f5c14938dc00b6e95e0f4487f6987a24",
+   "canonical_source_restored_sha256": "6d08477f3ea5fdbc6310bf625011b6c63e3f493ea0785d18f3eaba99d307c3a4",
+   "note": "Opt-in experiment only. Both rejected sources/binaries are archived; live src/glue_census2.c was byte-restored to the pre-candidate v2.1 source."
+  }
+ },
+ "dev_items": [
+  {
+   "n": 12,
+   "e": 48,
+   "dmin_true": 8,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 1,
+   "classes": 1,
+   "published": 1,
+   "match": true,
+   "wall_s": 0.6,
+   "per_d": {
+    "d8": {
+     "pairs": 716,
+     "deferred": 0,
+     "dfs_raw": 1,
+     "sat_raw": 0,
+     "dfs_nodes": 4,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.1
+    },
+    "d9": {
+     "pairs": 580,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.1
+    },
+    "d10": {
+     "pairs": 313,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d11": {
+     "pairs": 0,
+     "note": "q=0 refuted by Mantel"
+    }
+   }
+  },
+  {
+   "n": 13,
+   "e": 52,
+   "dmin_true": 4,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 58,
+   "classes": 10,
+   "published": 10,
+   "match": true,
+   "wall_s": 1.1,
+   "per_d": {
+    "d8": {
+     "pairs": 1611,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 11811,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.2
+    },
+    "d9": {
+     "pairs": 1160,
+     "deferred": 0,
+     "dfs_raw": 58,
+     "sat_raw": 0,
+     "dfs_nodes": 152,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.2
+    },
+    "d10": {
+     "pairs": 626,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d11": {
+     "pairs": 105,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d12": {
+     "pairs": 0,
+     "note": "q=0 refuted by Mantel"
+    }
+   }
+  },
+  {
+   "n": 13,
+   "e": 53,
+   "dmin_true": 5,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 2,
+   "classes": 2,
+   "published": 2,
+   "match": true,
+   "wall_s": 0.9,
+   "per_d": {
+    "d9": {
+     "pairs": 1160,
+     "deferred": 0,
+     "dfs_raw": 2,
+     "sat_raw": 0,
+     "dfs_nodes": 8,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.2
+    },
+    "d10": {
+     "pairs": 626,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d11": {
+     "pairs": 105,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d12": {
+     "pairs": 0,
+     "note": "q=0 refuted by Mantel"
+    }
+   }
+  },
+  {
+   "n": 14,
+   "e": 60,
+   "dmin_true": 7,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 1,
+   "classes": 1,
+   "published": 1,
+   "match": true,
+   "wall_s": 1.2,
+   "per_d": {
+    "d9": {
+     "pairs": 2610,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 144,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.3
+    },
+    "d10": {
+     "pairs": 1252,
+     "deferred": 0,
+     "dfs_raw": 1,
+     "sat_raw": 0,
+     "dfs_nodes": 4,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d11": {
+     "pairs": 210,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d12": {
+     "pairs": 12,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.2
+    },
+    "d13": {
+     "pairs": 0,
+     "note": "q=0 refuted by Mantel"
+    }
+   }
+  },
+  {
+   "n": 15,
+   "e": 66,
+   "dmin_true": 6,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 1,
+   "classes": 1,
+   "published": 1,
+   "match": true,
+   "wall_s": 2.0,
+   "per_d": {
+    "d9": {
+     "pairs": 6960,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 41147,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.6
+    },
+    "d10": {
+     "pairs": 2817,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 43501,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.8
+    },
+    "d11": {
+     "pairs": 420,
+     "deferred": 0,
+     "dfs_raw": 1,
+     "sat_raw": 0,
+     "dfs_nodes": 4,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d12": {
+     "pairs": 24,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.2
+    },
+    "d13": {
+     "pairs": 1,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.1
+    }
+   }
+  },
+  {
+   "n": 16,
+   "e": 71,
+   "dmin_true": 5,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 21316,
+   "classes": 138,
+   "published": 138,
+   "match": true,
+   "wall_s": 7.4,
+   "per_d": {
+    "d9": {
+     "pairs": 24360,
+     "deferred": 0,
+     "dfs_raw": 30,
+     "sat_raw": 0,
+     "dfs_nodes": 11813277,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.9
+    },
+    "d10": {
+     "pairs": 7512,
+     "deferred": 10,
+     "dfs_raw": 6640,
+     "sat_raw": 13582,
+     "dfs_nodes": 34523492,
+     "sat_conflicts": 26423,
+     "sat_decisions": 387157,
+     "wall_s": 5.1
+    },
+    "d11": {
+     "pairs": 945,
+     "deferred": 1,
+     "dfs_raw": 22,
+     "sat_raw": 968,
+     "dfs_nodes": 2972539,
+     "sat_conflicts": 1280,
+     "sat_decisions": 69404,
+     "wall_s": 1.1
+    },
+    "d12": {
+     "pairs": 48,
+     "deferred": 0,
+     "dfs_raw": 74,
+     "sat_raw": 0,
+     "dfs_nodes": 186,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.2
+    },
+    "d13": {
+     "pairs": 2,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.1
+    }
+   }
+  },
+  {
+   "n": 16,
+   "e": 72,
+   "dmin_true": 6,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 372,
+   "classes": 5,
+   "published": 5,
+   "match": true,
+   "wall_s": 3.7,
+   "per_d": {
+    "d9": {
+     "pairs": 24360,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 1148875,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.7
+    },
+    "d10": {
+     "pairs": 7512,
+     "deferred": 1,
+     "dfs_raw": 130,
+     "sat_raw": 240,
+     "dfs_nodes": 7493951,
+     "sat_conflicts": 1131,
+     "sat_decisions": 19624,
+     "wall_s": 1.9
+    },
+    "d11": {
+     "pairs": 945,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 504870,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.8
+    },
+    "d12": {
+     "pairs": 48,
+     "deferred": 0,
+     "dfs_raw": 2,
+     "sat_raw": 0,
+     "dfs_nodes": 8,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.2
+    },
+    "d13": {
+     "pairs": 2,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.1
+    }
+   }
+  },
+  {
+   "n": 17,
+   "e": 78,
+   "dmin_true": 6,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 21041,
+   "classes": 86,
+   "published": 86,
+   "match": true,
+   "wall_s": 26.9,
+   "per_d": {
+    "d10": {
+     "pairs": 26292,
+     "deferred": 129,
+     "dfs_raw": 478,
+     "sat_raw": 18428,
+     "dfs_nodes": 376004258,
+     "sat_conflicts": 684852,
+     "sat_decisions": 2231138,
+     "wall_s": 18.6
+    },
+    "d11": {
+     "pairs": 2520,
+     "deferred": 28,
+     "dfs_raw": 0,
+     "sat_raw": 2134,
+     "dfs_nodes": 96333414,
+     "sat_conflicts": 29225,
+     "sat_decisions": 143991,
+     "wall_s": 7.4
+    },
+    "d12": {
+     "pairs": 108,
+     "deferred": 2,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 3372313,
+     "sat_conflicts": 299,
+     "sat_decisions": 859,
+     "wall_s": 0.8
+    },
+    "d13": {
+     "pairs": 4,
+     "deferred": 0,
+     "dfs_raw": 1,
+     "sat_raw": 0,
+     "dfs_nodes": 4,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.1
+    }
+   }
+  },
+  {
+   "n": 17,
+   "e": 79,
+   "dmin_true": 7,
+   "workers": 8,
+   "node_limit": 1000000,
+   "raw": 160,
+   "classes": 1,
+   "published": 1,
+   "match": true,
+   "wall_s": 7.3,
+   "per_d": {
+    "d10": {
+     "pairs": 26292,
+     "deferred": 14,
+     "dfs_raw": 0,
+     "sat_raw": 160,
+     "dfs_nodes": 66435481,
+     "sat_conflicts": 41167,
+     "sat_decisions": 134656,
+     "wall_s": 3.6
+    },
+    "d11": {
+     "pairs": 2520,
+     "deferred": 6,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 31614297,
+     "sat_conflicts": 1877,
+     "sat_decisions": 2652,
+     "wall_s": 3.2
+    },
+    "d12": {
+     "pairs": 108,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 575772,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.4
+    },
+    "d13": {
+     "pairs": 4,
+     "deferred": 0,
+     "dfs_raw": 0,
+     "sat_raw": 0,
+     "dfs_nodes": 0,
+     "sat_conflicts": 0,
+     "sat_decisions": 0,
+     "wall_s": 0.1
+    }
+   }
+  }
+ ],
+ "held_out_items": [
+  {
+   "n": 21,
+   "e": 107,
+   "classes": 31,
+   "driver": "src/case_split_21_107.py",
+   "baseline_wall_s": 4937,
+   "baseline_note": "v2 instrumented rerun landed 2026-08-16: rc 0, 209 raw -> 31 classes MATCH; gate-2 wall was 4,649 s (v1, uninstrumented)",
+   "baseline_dfs_nodes": 71184533784,
+   "baseline_sat_conflicts": 404295016,
+   "baseline_sat_decisions": 564270676,
+   "baseline_detail": {
+    "case1_extension_sats": 305671,
+    "case1_conflicts": 10165906,
+    "case1_decisions": 25829122,
+    "case2_d12": {
+     "dfs_nodes": 94593609,
+     "conflicts": 917819,
+     "decisions": 1245160
+    },
+    "case2_d11": {
+     "dfs_nodes": 71089940175,
+     "conflicts": 393211291,
+     "decisions": 537196394
+    }
+   }
+  },
+  {
+   "n": 18,
+   "e": 85,
+   "classes": 74,
+   "driver": "src/bench_stratum.py",
+   "baseline_wall_s": 314.5,
+   "baseline_note": "banked 2026-08-16 v2 instrumented: 74 classes MATCH; v1 wall was 302.5 s (same config; run-to-run drift ~4%)",
+   "baseline_dfs_nodes": 6780102449,
+   "baseline_sat_conflicts": 36195685
+  }
+ ],
+ "experiments": [
+  {
+   "id": "cand1_static_node_limit_100k",
+   "date": "2026-08-16",
+   "hypothesis": "AllSAT tail beats C DFS on solution-rich pairs; defer earlier (GLUE_NODE_LIMIT 1e6 -> 1e5)",
+   "dev_sweep_17_78": {
+    "30000": 21.4,
+    "100000": 16.1,
+    "250000": 17.9,
+    "1000000_baseline": 23.8,
+    "4000000": 38.9,
+    "10000000": 48.3
+   },
+   "dev_transfer_100k": {
+    "(17,79)": [
+     6.1,
+     5.7
+    ],
+    "(16,71)": [
+     6.5,
+     6.9
+    ],
+    "(16,72)": [
+     3.3,
+     3.5
+    ]
+   },
+   "held_out_ab_18_85": {
+    "baseline_1e6": 302.5,
+    "candidate_1e5": 323.7,
+    "both_match": true,
+    "deferred": [
+     3148,
+     11886
+    ]
+   },
+   "verdict": "REJECTED by held-out (-7% on (18,85) despite -17% on dev suite). Correctness preserved in every run.",
+   "insight": "Optimal DFS->SAT handoff is pair-dependent (n, cone width q, budget c_t, density), not a global constant. Next candidate: per-pair adaptive handoff policy fitted on dev pair-level features; requires exporting per-pair node counts from the engine (5th CSV column, spec bump v2)."
+  },
+  {
+   "id": "cand2_dfs_tail_concentration_and_measured_sat_cost",
+   "date": "2026-08-16",
+   "correction": "Advisory 1: v2 sparse CSVs are a censored sample (no completed zero-solution rows) - fixed with GLUE_CSV_ALL (v2.1). Advisory 2: the dataset is DFS-only and deferred rows remain right-censored at budget+1 (1,000,001); node concentration is NOT a handoff performance bound because SAT cost is unbounded by the DFS node cap. Advisory 3: only exact-tail SAT cost was measured; tail DFS cost and perfect-predictor savings are estimates from the measured full-slice node rate, not a forced-defer wall run. Exact selected pair IDs and per-pair SAT timing/stats are persisted.",
+   "dataset": "outD/cand2_data/*.csv - DFS-tail concentration dataset: 19 dev slices, 35,576 DFS-entered pair rows (DFS nodes only; deferred rows right-censored at 1,000,001); per-slice node sums reconcile exactly with frozen baselines",
+   "excluded": "held-out items (18,85) and (21,107) deliberately NOT collected (no training on held-out)",
+   "next": "Tested as candidate 3: structural pair prefilter (R(3,5,m) neighborhood edge windows / second identity family); later rejected by held-out transfer, see cand3_local_edge_window_prefilter.",
+   "dfs_node_concentration_17_78_d10": {
+    "completed_pairs": 13064,
+    "dfs_nodes_completed": 247004129,
+    "top_pct_node_share": {
+     "1%": 0.32,
+     "2%": 0.512,
+     "5%": 0.746,
+     "10%": 0.883
+    }
+   },
+   "measured_sat_and_estimated_dfs_cost_on_tail_17_78_d10": {
+    "tail": "top-2% completed pairs by DFS nodes (261 pairs, 126,440,846 nodes = 51.2% of completed-pair nodes)",
+    "artifact": "outD/cand2_data/17_78_d10_top2pct_sat.csv",
+    "artifact_sha256": "521ca1f9e69fd32264bec3cb94b558b42b0a63ae614034e57ef2d312c299d21b",
+    "selection": "rows with dfs_nsol != -1; sort by (-dfs_nodes,h_idx,k_idx); first ceil(0.02*13064)=261",
+    "dfs_rate_single_thread_measured_full_slice": "376,004,258 nodes / 48.1 s = 7.8M nodes/s (v2.1 default mode)",
+    "tail_dfs_s_single_thread_estimated": 16.2,
+    "tail_sat_s_single_thread_measured": 13.392442,
+    "tail_sat_loop_s_single_thread_measured": 13.397887,
+    "sat_per_pair_ms_measured": {
+     "mean": 51.312,
+     "median": 8.126,
+     "max": 1881.356
+    },
+    "sat_conflicts_total": 994130,
+    "sat_decisions_total": 1347157,
+    "cross_validation": "ALL 261 SAT solution counts equal DFS ground truth",
+    "verdict": "A PERFECT predictor has an ESTIMATED 2.8 s saving on the 48.1 s slice (~6%) from the full-slice average DFS rate; no forced-defer end-to-end wall run was performed. An imperfect feature-based predictor would keep less. The scheduling lever is largely exhausted; candidate 2 DEPRIORITIZED. This motivated candidate 3's structural node-mass prefilter, which was later rejected by held-out transfer."
+   }
+  },
+  {
+   "id": "cand3_local_edge_window_prefilter",
+   "date": "2026-08-16",
+   "hypothesis": "Intrinsic R(3,5,m) neighborhood and R(4,4,m) anti-neighborhood edge-window envelopes can reject whole (H,K) pairs before DFS and reduce wall/deferrals.",
+   "protocol_erratum": "The benchmark README's wall-or-search-size wording conflicted with this SSOT's wall/deferral criterion. Wall/deferral controls promotion; search size is diagnostic.",
+   "measurement": "outD/candidate3/measurement.json",
+   "measurement_sha256": "7f9217dd99b747723123555edef7e9b2f5c14938dc00b6e95e0f4487f6987a24",
+   "validation": {
+    "catalogs_passed": 32,
+    "small_exhaustive_valid_cones": 43200,
+    "small_exhaustive_pair_edge_cases": 562,
+    "false_rejections": 0,
+    "behavior_tests_each_variant": 3,
+    "independent_review": "No high-confidence mathematical-soundness or C-correctness defect; review findings about protocol wording and an unarchived cross-implementation claim were corrected."
+   },
+   "full_fixed_point_variant": {
+    "admitted_pair_rows": 35576,
+    "rows_rejected": 6111,
+    "completed_dfs_nodes_rejected": 11072343,
+    "positive_rows_rejected": 0,
+    "deferred_rows_rejected": 0,
+    "dev_dfs_nodes": [
+     632889512,
+     621817025
+    ],
+    "dev_deferred": [
+     191,
+     191
+    ],
+    "same_session_17_78_abba_mean_s": [
+     28.1,
+     28.45
+    ],
+    "disposition": "superseded by low-overhead one-pass variant"
+   },
+   "fast_one_pass_variant": {
+    "admitted_pair_rows": 35576,
+    "rows_rejected": 5160,
+    "completed_dfs_nodes_rejected": 10272379,
+    "positive_rows_rejected": 0,
+    "deferred_rows_rejected": 0,
+    "dev_dfs_nodes": [
+     632889512,
+     622617100
+    ],
+    "dev_deferred": [
+     191,
+     191
+    ],
+    "dev_all_match": true,
+    "same_session_full_dev_abba_mean_s": [
+     43.45,
+     43.15
+    ],
+    "same_session_full_dev_abba_delta": "-0.7%"
+   },
+   "held_out_ab_18_85": {
+    "baseline_wall_s": 252.0,
+    "candidate_wall_s": 266.9,
+    "candidate_delta": "+5.9%",
+    "both_match": true,
+    "classes": 74,
+    "dfs_nodes": [
+     6780102449,
+     6779182394
+    ],
+    "deferred": [
+     3148,
+     3148
+    ],
+    "sat_conflicts": [
+     36195685,
+     36195685
+    ]
+   },
+   "verdict": "REJECTED by held-out: the fixed fast variant improved same-session dev wall only 0.7% and nodes 1.62%, with no deferral reduction; on untouched (18,85), wall regressed 252.0->266.9 s (+5.9%) while both arms reproduced 74 classes MATCH.",
+   "insight": "The local edge-window envelopes are sound and remove many cheap pairs, but almost none of the dominant held-out node mass (0.014%). Gate 4 remains closed; any next candidate needs a qualitatively stronger inequality or search decomposition, not more scheduling or this prefilter."
+  }
+ ],
+ "node_count_semantics": {
+  "dfs_nodes": "glue_census2_c DFS nodes summed over every pair of the d-slice (#nodes CSV summary rows)",
+  "sat_conflicts/sat_decisions": "Cadical195 accum stats summed over the AllSAT tail",
+  "case1_(21,107)": "pure extension-SAT case; search size = number of base graphs solved (305,671)"
+ },
+ "next_research_campaign": {
+  "id": "higher_order_identity_positive_deficiency",
+  "date": "2026-08-16",
+  "status": "MIXED_PAIR_LIFT_CLOSED: levels 1 and 2 of first_exact_basis both exhausted; stop condition 2 fulfilled 2026-08-21. Residual fallback order for the next separately reviewed campaign: VeriPB-certified gluing search, then srg(45,22,10,11) complementary SAT. Measured evidence: the Engstrom mixed row raises the endpoint rank of the state cone by 2 yet leaves every frozen route's exact dual and primal optimum bit-identical (360, 14310/349, 45); the level-2 pair-coupled lift (adjacent and non-adjacent degree-pair variables, per-degree-class neighbour-degree identity, three exact codegree bounds, maximised over every feasible integer edge count e in [454,536]) moves them only to 360, 41, 45 against acceptance edges 315, 1, 1; and excess_balance is itself the degree-squared identity sum_v d(v)^2 = n*e + sum_v e(G[N(v)]) - sum_v e(G[D(v)]), so every handshake-style aggregate repair is already present.",
+  "claim_class": "Publishable structural lemma or exact reduction for hypothetical Ramsey(5,5,45) graphs; not a benchmark speedup and not an R(5,5) bound unless complete coverage is separately proved.",
+  "problem": "The implemented structural layer uses only the m=2 McKay-Radziszowski excess identity, whose n=45 edge-deficiency ceiling is 360. Candidate 3 showed that one-vertex edge-window filtering removes cheap pairs rather than dominant search mass.",
+  "primary_sources": [
+   {
+    "work": "McKay-Radziszowski, Subgraph Counting Identities and Ramsey Numbers, JCTB 69 (1997), Theorem 2.2",
+    "url": "https://users.cecs.anu.edu.au/~bdm/papers/r55.pdf",
+    "role": "Known m>=1 neighborhood identities; the repository currently implements only the m=2 consequence."
+   },
+   {
+    "work": "Engstrom, A proof of the McKay-Radziszowski subgraph counting conjecture",
+    "url": "https://arxiv.org/abs/1002.4304",
+    "role": "Proof and general normal form for the known mixed neighborhood/anti-neighborhood degree-4 identity."
+   },
+   {
+    "work": "Angeltveit-McKay, R(5,5)<=46",
+    "url": "https://arxiv.org/abs/2409.15709",
+    "role": "Current upper-bound method and evidence that the published n=46 argument uses the m=2 excess layer."
+   }
+  ],
+  "approaches_considered": [
+   {
+    "name": "higher-order exact identity LP/ILP",
+    "decision": "PRIMARY",
+    "tradeoff": "Best use of existing validated catalogs and best realistic chance of extracting a universal positive-deficiency consequence. Solver output is discovery only."
+   },
+   {
+    "name": "adjacent-pair deficiency-slack theorem",
+    "decision": "SECOND_STAGE_ONLY",
+    "tradeoff": "Potentially stronger two-vertex coupling, but broad positive-deficiency catalogs are missing. Enter only if the higher identities expose a specific pair interaction."
+   },
+   {
+    "name": "exact flag-algebra/SDP discovery",
+    "decision": "DEFERRED",
+    "tradeoff": "Broadest search space but highest numerical-certification and novelty risk. Requires separate approval after the structured exact basis is exhausted."
+   }
+  ],
+  "first_exact_basis": {
+   "identities": [
+    "McKay-Radziszowski Theorem 2.2 at m=2",
+    "McKay-Radziszowski Theorem 2.2 at m=3",
+    "McKay-Radziszowski Theorem 2.2 at m=4",
+    "Engstrom-proved mixed degree-4 neighborhood/anti-neighborhood identity"
+   ],
+   "features": "Exact induced-subgraph counts for the connected and T_{m,j} patterns required by those identities, with complement counterparts; no floating-point motif counts.",
+   "domains": "All 656 validated Ramsey(5,5,42) graphs; every applicable validated R(4,5) edge-extremal catalog at orders 17-24; the complete validated order-24 catalog where required."
+  },
+  "architecture": [
+   {
+    "slice": "identity derivation and replay",
+    "deliverable": "An independent combinatorial derivation and exact-integer verifier for m=3 first, followed by m=4 and the mixed identity only if m=3 passes."
+   },
+   {
+    "slice": "catalog motif vectors",
+    "deliverable": "Deterministic exact feature vectors with SHA-pinned inputs and independently recomputed aggregate checks."
+   },
+   {
+    "slice": "n=45 exact feasibility cone",
+    "deliverable": "A rational LP/ILP over degree, edge-deficiency, motif, complement, and handshake constraints. Optimization output may propose a cut but is outside the trust base."
+   },
+   {
+    "slice": "theorem extraction",
+    "deliverable": "Explicit rational coefficients, complete hypotheses, a human-readable counting proof, and a disjoint checker proving the finite catalog inequalities used by the cut."
+   }
+  ],
+  "significant_success_gate": {
+   "required": "A universally proved n=45 consequence with a primary-source novelty audit and independent replay.",
+   "quantified_consequences_any_one": [
+    "Eliminate degree 20 from every hypothetical Ramsey(5,5,45) graph.",
+    "Lower a required edge-deficiency layer from 8 to 7, eliminating the deepest catalog layer.",
+    "Reduce the global deficiency ceiling from 360 to at most 315.",
+    "Eliminate an entire named positive-deficiency local-type family required by every complete gluing cover."
+   ],
+   "not_sufficient": [
+    "A numerical LP optimum without an exact certificate.",
+    "An identity already in the primary sources without a new n=45 consequence.",
+    "A search-size or wall-clock improvement.",
+    "A sampled motif inequality."
+   ]
+  },
+  "trust_model": [
+   "AI and optimization solvers remain outside the trust base.",
+   "Every identity is derived independently and evaluated in exact integer or rational arithmetic.",
+   "Known identities must replay on all 656 validated n=42 graphs and every applicable validated extremal catalog.",
+   "The final cut must have explicit rational coefficients and a separate checker.",
+   "Catalog completeness assumptions are named; a bound claim requires a separate complete certificate chain.",
+   "Novelty is checked against the primary sources before any result is called new."
+  ],
+  "stop_conditions": [
+   "Stop and record a negative result if m=3 fails exact replay.",
+   "Stop this basis and record a negative result if m=2,3,4 plus the mixed identity produce no strict accepted consequence after all predefined feature vectors are exhausted.",
+   "Do not pivot to search-engine optimization, SDP, or raw catalog scaling without a separately approved design.",
+   "FULFILLED 2026-08-21: m=2,3,4 plus the Engstrom mixed identity produced no accepted consequence; all three instantiable routes carry exact primal rejection witnesses over the eight-coefficient basis, recorded in data/engstrom_identity.json:searches."
+  ]
+ },
+ "status": "COMPLETE: all 11 baselines frozen with wall + search-size metrics (v2); gate 4 stopped after candidates 1 and 3 failed held-out transfer and candidate 2 was deprioritized on measured evidence"
+}

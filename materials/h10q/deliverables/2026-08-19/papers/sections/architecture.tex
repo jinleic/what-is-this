@@ -1,0 +1,261 @@
+\section{Model-field architecture: selection, witness tying, and the open norm problem}
+
+\subsection{The finite-field selector is exact}
+
+\begin{theorem}[PROVED: L4, the small-field exhaustion]
+Let $q$ be an odd prime power with $q\leq 25$, let $\chi$ be the quadratic
+character of $\F_q$ with $\chi(0)=0$, and let
+$\tau\in\F_q\setminus\{0,\pm1\}$.  There is an $a\in\F_q$ such that
+\[
+ \chi(1+4a^2)=-1,
+ \qquad
+ \chi\bigl(-(1+4a^2)\,(1-\tau^2(1+4a^2))\bigr)=1.
+\]
+% src: THEOREMS.md:278-289
+For $q=3$ the assertion is vacuous, because there is no admissible $\tau$.
+For $q\in\{5,7,9,11,13\}$ the minimum number of choices is $2$, and for
+$q\in\{17,19,23,25\}$ it is $4$.
+% src: THEOREMS.md:287-294
+\end{theorem}
+
+Thus the constant $25$ in the unrefereed character-sum proof of
+\cite{sun} is not a genuine small-field obstruction: among odd residue
+fields, only the field of order $3$ remains, and there the issue is
+admissibility rather than failure of the selector.
+% src: THEOREMS.md:300-304
+
+\begin{theorem}[PROVED: L5, the Legendre identity]
+For every odd prime power $q$, every
+$\tau\in\F_q\setminus\{0,\pm1\}$, and $\lambda=\tau^{-2}$, let
+$E_\lambda:y^2=x(x-1)(x-\lambda)$.  Then
+\[
+N(\tau) := \#\bigl\{a \in \mathbb{F}_q : \chi(1+4a^2) = -1,\
+\chi\bigl(-(1+4a^2)(1-\tau^2(1+4a^2))\bigr) = 1\bigr\} \;=\; \frac{\#E_\lambda(\mathbb{F}_q)}{4}.
+\]
+% src: THEOREMS.md:308-315
+Consequently
+\[
+ \#E_\lambda(\F_q)\geq(\sqrt q-1)^2>0,
+ \qquad N(\tau)\geq(\sqrt q-1)^2/4>0,
+\]
+so the hypothesis $|k|>25$ can be deleted from the lemma.
+% src: THEOREMS.md:316-320
+\end{theorem}
+
+The proof is an exact point count, not an asymptotic substitution.  With
+$u_a=1+4a^2$ and $w_a=-u_a(1-\tau^2u_a)$, expand the corrected indicator;
+the hyperbola identity $\sum_b\chi(b^2+c)=-1$ for $c\neq0$ evaluates the
+quadratic pieces.  Fibre-counting the map $a\mapsto u_a$ then gives
+\[
+4N=q+1+\sum_u\chi\bigl(u(u-1)(u-\lambda)\bigr)
+   =\#E_\lambda(\F_q).
+\]
+% src: THEOREMS.md:322-359
+This also explains divisibility by $4$: the Legendre curve has its full
+rational $2$-torsion.
+% src: THEOREMS.md:366-369
+
+\subsection{The tied model and its six-variable bookkeeping}
+
+Set $K=\Q$, $S=\{2\}$, $\pi=2$, and $u=1$.  Pull the bridge back along
+$z\mapsto z^3$ and put
+$A=1+4a^2$, $B=2b$, $\delta_\tau=1-A\tau^2$, and
+$c=h(a,b,z^3)=a^2z^6g(a,b)/(1-z^3-a^2z^6)$.
+% src: THEOREMS.md:413-420
+The original block is
+\[
+\Psi_\tau(a,b,c):\ \exists y,r,s\ [\delta_\tau(c^2 - Ay^2) - 16B(r^2 - As^2) = 16].
+\]
+% src: THEOREMS.md:419-420
+The architectural step is to identify its witness $s$ with the congruence
+parameter by imposing $a=1+2s$.  The resulting two-witness block is
+\[
+\begin{aligned}
+\Theta_*(a,b,c,s):\quad \exists y,r\quad&
+\bigl[c^2-Ay^2-16Br^2=16-16ABs^2\bigr]\\
+&{}\vee
+\bigl[c^2-Ay^2-16ABr^2=16A-16A^2Bs^2\bigr].
+\end{aligned}
+\]
+% src: THEOREMS.md:422-433
+Its branches are respectively $\tau=0$ and $\tau=2a/A$; in the latter
+case $\delta_\tau=1/A$ and the displayed equation has been multiplied by
+$A$.
+% src: THEOREMS.md:432-450
+The candidate model is therefore
+\[
+F(z):=\exists b,s\ \bigl[(1+2s,b)\in\Phi_1^{\{2\}}\ \wedge\
+\Theta_*(1+2s,b,h(1+2s,b,z^3),s)\bigr].
+\]
+% src: THEOREMS.md:433-439
+Here $\Phi_1^{\{2\}}$ enforces $v_2(s)\geq0$ and
+$b\in\mathcal O_2^\times$.  Membership in it has existential rank at most
+$3$; the tied block has rank $2$ in $(y,r)$.
+% src: THEOREMS.md:453-456,470-473
+The intersection theorem of \cite{ddf} replaces their conjunction by
+$3+2-1=4$ witnesses, and projection of the two base coordinates $(b,s)$
+gives
+\[
+ 2+(3+2-1)=6.
+\]
+% src: THEOREMS.md:453-465
+If an input set has rank zero, the elementary conjunction bound is no
+larger.  The two branches share $(y,r)$ and are combined by multiplying
+their equations; denominator clearing introduces no inverse witness because
+$A\equiv5\pmod8$ at $2$ and $1-z^3-a^2z^6$ cannot vanish over $\Q$.
+% src: THEOREMS.md:441-463
+
+For use by the later local model, write $Z=z^3$,
+$D_z=1-z^3-a^2z^6$, and
+$N_g(b)=16a^4b^2-A(b-1)^4$.  The denominator-cleared value polynomial is
+\[
+P(b)=16D_z^2A^2b^4-\delta_\tau a^4Z^4N_g(b)^2-32A^3s^2D_z^2b^5 .
+\]
+% src: THEOREMS.md:729-731,975-977
+Finally define the tied target value
+\[
+M_\tau=16-\delta_\tau c^2-16ABs^2.
+\]
+% src: THEOREMS.md:527-535
+
+\textbf{PROVED: soundness.}\quad\textbf{CONDITIONAL: completeness.}
+Soundness, $F(z)\Rightarrow z\in\bigcup_{w\notin S}\mathfrak m_w$, is
+proved; the converse is the open assembly lemma.
+% src: THEOREMS.md:437-439,468-475
+If that lemma holds, the union outside $S$ is $\exists_6$; adjoining the
+finitely many omitted maximal ideals preserves that count, so
+$\Q\setminus\Z$ is $\exists_6$, $\Z$ is $\forall_6$, and
+$\operatorname{efd}_\Q(\Q\setminus\Z)\leq5$.
+% src: THEOREMS.md:582-591
+
+\subsection{Local structure and the exact global obstruction}
+
+\textbf{PROVED (W0).}
+
+The first criterion, W0, is uniform even in the residue field $\F_3$.
+For every finite field $k$ of odd order,
+\[
+\sum_{a\in k}\chi(1+4a^2)=-1.
+\]
+% src: THEOREMS.md:477-484
+Hence some $a$ makes $A$ a nonsquare, and the canonical selector is
+\[
+\tau_*(a)=
+\begin{cases}
+0,&\chi(-1)=-1,\\[2pt]
+2a/A,&\chi(-1)=1.
+\end{cases}
+\]
+% src: THEOREMS.md:484-492
+It satisfies $\delta_{\tau_*}\neq0$ and
+$\chi(-\delta_{\tau_*}A)=1$: the two values of
+$-\delta_{\tau_*}A$ are $-A$ and $-1$.  Since $s\mapsto1+2s$ is a
+bijection, tying loses no residue class and removes L5's $\F_3$ vacancy.
+% src: THEOREMS.md:493-501
+
+\textbf{PROVED (W1).}
+
+For W1, let $w$ be odd with
+$v_w(A)=v_w(\delta_\tau)=0$, $v_w(b)=1$, $v_w(z)\geq1$, and
+$v_w(s)\geq0$.  The cube pullback gives either $c=0$ or
+\[
+v_w(c)=2v_w(a)+6v_w(z)-2\geq6v_w(z)-2\geq4.
+\]
+% src: THEOREMS.md:504-508
+Then the tied conic
+\[
+-\delta_\tau A\,y^2-16B\,r^2=16-\delta_\tau c^2-16ABs^2
+\]
+% src: THEOREMS.md:508
+is soluble over $\Q_w$ if and only if
+$\chi_w(-\bar\delta_\tau\bar A)=1$.  The right side is a unit congruent
+to $16$; its two subtracted terms have valuations at least $8$ and $1$.
+Thus the target-place test is independent of the tied value of $s$.
+% src: THEOREMS.md:509-525
+
+\textbf{PROVED (W2).}
+
+W2 identifies the remaining obstruction.  Put
+$E_\tau=\Q(\sqrt{-\delta_\tau AB})$.  The conic is equivalent to
+\[
+N_{E_\tau/\mathbb Q}
+\bigl(\delta_\tau A\,y+4r\sqrt{-\delta_\tau AB}\bigr)
+=-\delta_\tau A\,M_\tau,
+\qquad M_\tau=16-\delta_\tau c^2-16ABs^2.
+\]
+% src: THEOREMS.md:527-538
+Its global solubility is exactly
+\[
+M_\tau=0\quad\text{or}\quad
+-\delta_\tau A M_\tau\in N_{E_\tau/\mathbb Q}(E_\tau^\times).
+\]
+% src: THEOREMS.md:539-545
+The zero alternative is genuine.  In the two branches the data are
+\[
+\begin{array}{c|c|c}
+\tau& E_\tau&M_\tau\\ \hline
+0&\mathbb Q(\sqrt{-AB})&16-c^2-16ABs^2\\
+2a/A&\mathbb Q(\sqrt{-B})&16-c^2/A-16ABs^2.
+\end{array}
+\]
+% src: THEOREMS.md:546-552
+
+\subsection{Structural corollaries and the remaining lemma}
+
+\textbf{PROVED (L7a).}
+At an odd place with $v(\delta_\tau A)=v(B)=0$ and $M_\tau\neq0$, the tied
+conic is soluble when $v(M_\tau)$ is even; when that valuation is odd, it
+is soluble exactly when $\chi_v(-\delta_\tau AB)=1$.  If also $v(A)=0$,
+the corresponding untied ternary form is universal over $\Q_v$.
+% src: THEOREMS.md:602-620
+Accordingly the full candidate obstruction set is
+\[
+\{2,\infty\}\ \cup\ \{v:\ v(M_\tau)\ \text{odd}\}\ \cup\ \{v:\ v(A)\ne0
+\ \text{or}\ v(B)\ne0\}.
+\]
+% src: THEOREMS.md:622-645
+Coefficient-bad places are genuine and cannot be replaced merely by the
+support of $AB$, because valuations can cancel in that product.
+% src: THEOREMS.md:622-643
+
+\textbf{CONDITIONAL (L7b, conditional on L6 soundness).}
+No fixed admissible $(s,b)$ and branch admits rational functions
+$Y(z),R(z)\in\Q(z)$ satisfying
+\[
+-\delta_\tau A\,Y(z)^2-16B\,R(z)^2=M_\tau(z)
+\]
+identically.  This rules out a uniform rational section, not pointwise
+coverage of all relevant rational fibres by some fixed pair.
+% src: THEOREMS.md:647-671
+
+\textbf{PROVED (L7c).}
+For $M_\tau\neq0$, local solubility is equivalent to
+\[
+t_v:=\bigl(-16\delta_\tau AB,\ -\delta_\tau A M_\tau\bigr)_v=1,
+\qquad \prod_v t_v=1.
+\]
+% src: THEOREMS.md:673-682
+Thus a failing tied conic is obstructed at an even number of places, at
+least two, and repairs must change places in pairs.
+% src: THEOREMS.md:676-684
+
+\textbf{CONDITIONAL / OPEN (assembly).}
+For every odd target $w$ and every $z$ with $v_w(z)\geq1$, one must choose
+$(s,b)$ with $(1+2s,b)\in\Phi_1^{\{2\}}$,
+$s\equiv(\bar a_w-1)/2\pmod{\mathfrak m_w}$, $v_w(b)=1$, and one of the
+two branches such that
+$M_\tau=0$ or
+$-\delta_\tau A M_\tau\in N_{E_\tau/\Q}(E_\tau^\times)$.
+% src: THEOREMS.md:557-565
+Equivalently, the free $b$-direction must steer the quadratic field
+$E_\tau=\Q(\sqrt{-\delta_\tau AB})$ simultaneously against the moving
+odd-valuation places of $M_\tau$ and the moving coefficient-bad places.
+That weak/norm-approximation statement, not W0, W1, W2, or the quantifier
+bookkeeping, is the open problem.
+% src: THEOREMS.md:701-714
+
+\textbf{EVIDENCE.}
+Bounded witness-switching searches support this steering mechanism, but
+are not a proof of assembly and are not used to upgrade the conditional
+six-quantifier conclusion.
+% src: THEOREMS.md:686-700

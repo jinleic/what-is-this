@@ -1,0 +1,152 @@
+date_checked: 2026-08-13
+papers:
+  - arxiv_id: "2308.07915"
+    version: "v2"
+    title: "High-threshold and low-overhead fault-tolerant quantum memory"
+    authors: [Bravyi, Cross, Gambetta, Maslov, Rall, Yoder]
+    url: "https://arxiv.org/abs/2308.07915"
+    claims_used:
+      - "0.8% circuit-level threshold"
+      - "depth-7 syndrome cycle"
+      - "n ancillas"
+      - "degree-6 connectivity"
+      - "12 logical qubits in 288 physical qubits sustaining approximately 1e6 cycles at p=0.1%"
+      - "surface-code equivalent approximately 3000 qubits"
+    date_checked: 2026-08-11
+  - arxiv_id: "2606.02418"
+    version: "v1 (2026-06-01)"
+    title: "Evolutionary Discovery of Bivariate Bicycle Codes with LLM-Guided Search"
+    authors: [Juan Cruz-Benito, Andrew W. Cross, David Kremer, Ismael Faro]
+    url: "https://arxiv.org/abs/2606.02418"
+    claims_used:
+      - "5 campaigns"
+      - "approximately 1650 iterations"
+      - "2e5 candidates screened"
+      - "465 distinct codes (97 CSS, 368 perturbed/non-CSS)"
+      - "CSS [[288,16,12]]"
+      - "PBB [[144,12,12]]"
+      - "PBB [[360,12,<=24]]"
+      - "approximately 140h / approximately $400"
+      - "Introduces the term perturbed bivariate bicycle (PBB)"
+    date_checked: 2026-08-11
+  - arxiv_id: "2409.01440"
+    version: "v3"
+    title: "An almost-linear time decoding algorithm for quantum LDPC codes under circuit-level noise"
+    authors: [Antonio deMarti iOlius, Imanol Etxezarreta Martinez, Joschka Roffe, Josu Etxezarreta Martinez]
+    url: "https://arxiv.org/abs/2409.01440"
+    claims_used: ["BP+OTF decoder"]
+    date_checked: 2026-08-11
+  - arxiv_id: "2406.19151"
+    version: "v4"
+    title: "Multivariate Bicycle Codes"
+    authors: [Lukas Voss, Sim Jian Xian, Tobias Haug, Kishor Bharti]
+    url: "https://arxiv.org/abs/2406.19151"
+    claims_used: []
+    date_checked: 2026-08-11
+  - arxiv_id: "2502.17052"
+    version: "v4 (rev 2026-04-30)"
+    title: "Existence and Characterisation of Bivariate Bicycle Codes"
+    authors: [Jasper Johannes Postema, Servaas J.J.M.F. Kokkelmans]
+    url: "https://arxiv.org/abs/2502.17052"
+    claims_used: []
+    date_checked: 2026-08-11
+  - arxiv_id: "2506.03094"
+    version: "v1 (2025-06-03)"
+    title: "Tour de gross: A modular quantum computer based on bivariate bicycle codes"
+    authors: [Theodore J. Yoder, Eddie Schoute, Patrick Rall, et al.]
+    url: "https://arxiv.org/abs/2506.03094"
+    claims_used: []
+    date_checked: 2026-08-11
+  - arxiv_id: "2509.13678"
+    version: "v2"
+    title: "Rare Event Simulation of Quantum Error-Correcting Circuits"
+    authors: [Carolyn Mayer, Anand Ganti, Uzoma Onunkwo, et al.]
+    url: "https://arxiv.org/abs/2509.13678"
+    claims_used: []
+    date_checked: 2026-08-11
+  - arxiv_id: "2501.14380"
+    version: "v3"
+    title: "Verifying Fault-Tolerance of Quantum Error Correction Codes"
+    authors: [Kean Chen, Yuhao Liu, Wang Fang, et al.]
+    url: "https://arxiv.org/abs/2501.14380"
+    claims_used: []
+    date_checked: 2026-08-11
+  - arxiv_id: "2601.20247"
+    version: "v1"
+    title: "Computer Science Challenges in Quantum Computing: Early Fault-Tolerance and Beyond"
+    authors: [Jens Palsberg, Jason Cong, Yufei Ding, et al.]
+    url: "https://arxiv.org/abs/2601.20247"
+    claims_used: []
+    date_checked: 2026-08-11
+  - arxiv_id: "2603.22532"
+    version: "v1 (2026-03-23)"
+    title: "Distance-Finding Algorithms for Quantum Codes and Circuits"
+    authors: [Mark Webster, Abraham Jacob, Oscar Higgott]
+    url: "https://arxiv.org/abs/2603.22532"
+    claims_used:
+      - "Classifies exact methods (Brouwer-Zimmermann, connected-cluster/m4riCC, SAT/CLISAT, MIP-SCIP/Gurobi) versus heuristic methods (QDistRnd/DistRandCSS, QDistEvol, BP-OSD, Stim GE/CC/UE)"
+    date_checked: 2026-08-11
+  - arxiv_id: "2601.18562"
+    version: "v1 (2026-01-26)"
+    title: "Bayesian Optimization for Quantum Error-Correcting Code Discovery"
+    authors: [Yihua Chengyu, Richard Meister, Conor Carty, Sheng-Ku Lin, Roberto Bondesan]
+    url: "https://arxiv.org/abs/2601.18562"
+    claims_used: ["Repository https://github.com/Chengyuyihua/BO_for_QECcodes"]
+    date_checked: 2026-08-11
+  - arxiv_id: "2308.15140"
+    version: null
+    title: "QDistRnd: A GAP package for computing the distance of quantum error-correcting codes"
+    authors: []
+    url: "https://arxiv.org/abs/2308.15140"
+    claims_used: []
+    date_checked: 2026-08-11
+  - arxiv_id: "2603.05496"
+    version: "March 2026"
+    title: "Mirror codes"
+    authors: [Khesin, Lu]
+    url: "https://arxiv.org/abs/2603.05496"
+    claims_used:
+      - "SECONDHAND / needs direct verification"
+      - "Non-CSS generalization of abelian two-block group algebra codes"
+      - "Best weight-6 non-CSS: [[60,4,10]], [[36,6,6]], [[48,8,6]], [[85,8,9]]"
+    date_checked: 2026-08-11
+  - arxiv_id: "2603.21499"
+    version: "v1 (2026-03-23)"
+    title: "Optimal Compilation of Syndrome Extraction Circuits for General Quantum LDPC Codes"
+    authors: [Kai Zhang, Dingchao Gao, Zhaohui Yang, Runshi Zhou, Fangming Liu, Zhengfeng Ji, Jianxin Chen]
+    url: "https://arxiv.org/abs/2603.21499"
+    legal_full_text: "https://arxiv.org/pdf/2603.21499"
+    artifact: "https://github.com/iqubit-org/Auto-Stabilizer-Check"
+    claims_used:
+      - "ASC certifies no depth-6 syndrome circuit for every IBM BB instance"
+      - "Solver fact partially scoops the headline fact of Theorem C3, but not Lemma C1's analytic explanation"
+      - "Framework claims general BSF input; published examples are CSS"
+    date_checked: 2026-08-12
+  - arxiv_id: "2601.19848"
+    version: "v1 (2026-01-27)"
+    title: "Theory of low-weight quantum codes"
+    authors: [Fuchuan Wei, Zhengyi Han, Austin Yubo He, Zimu Li, Zi-Wen Liu]
+    url: "https://arxiv.org/abs/2601.19848"
+    legal_full_text: "https://arxiv.org/pdf/2601.19848"
+    claims_used:
+      - "Defines optimal code weight as minimum over generating sets of maximum generator weight"
+      - "NP-hardness and small-n exact characterization; no n=144 BB/PBB computation"
+    date_checked: 2026-08-12
+  - arxiv_id: "2604.17339"
+    version: "v1 (2026-04-19)"
+    title: "Fault-Tolerant Cut-Cat State Syndrome Extraction for Quantum Codes"
+    authors: [Diego Forlivesi, Lorenzo Valentini, Marco Chiani]
+    url: "https://arxiv.org/abs/2604.17339"
+    legal_full_text: "https://arxiv.org/pdf/2604.17339"
+    claims_used:
+      - "CSS-only cut-cat alternative; prior-art context for EXP-024"
+    date_checked: 2026-08-12
+  - arxiv_id: "2511.13560"
+    version: "v3 (checked 2026-08-12)"
+    title: "Sequences of Bivariate Bicycle Codes from Covering Graphs"
+    authors: [Benjamin C. B. Symons, Abhishek Rajput, Dan E. Browne]
+    url: "https://arxiv.org/abs/2511.13560v3"
+    legal_full_text: "https://arxiv.org/pdf/2511.13560v3"
+    claims_used:
+      - "Cover-code BB families and rate/distance bounds; no PBB or circuit result"
+    date_checked: 2026-08-12

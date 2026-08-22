@@ -1,0 +1,159 @@
+\section{Introduction}
+
+Hilbert's Tenth Problem over $\Q$ asks for an algorithm which, given a finite
+system of polynomials with rational coefficients, decides whether the system
+has a common rational zero.  The problem remains open in both directions.
+One standard route to undecidability would be an existential definition of
+$\Z$ in $\Q$, since such a definition would transport the undecidability over
+$\Z$ to rational points.  The converse is not known: failure of that route
+would not imply decidability over $\Q$.
+% src: README.md:3-9; THEOREMS.md:176-181
+
+There is already a sharp first obstruction.  Cornelissen--Zahidi proved that
+$\Z$ cannot be the projection of the rational points of a curve over $\Q$;
+in particular, no polynomial with one existential witness defines $\Z$ in
+$\Q$ \cite{cz}.  Thus two witnesses, equivalently a surface as witness
+variety, form the first open existential case.  This is also exactly where
+the available topological and thin-set lower-bound methods stop.
+% src: THEOREMS.md:10-28,157-168
+A different elliptic-curve route has its own cliff.  If only finitely many
+primes are withheld from an $S$-integer ring, the indices $n$ for which
+$x(nP)$ is integral are a finite union of congruence classes, relative to the
+chosen integral Weierstrass model.  When nonempty this set has positive
+density and is archimedeanly equidistributed on a real component, rather than
+discrete.  Consequently the prime-index mechanism used in elliptic
+Diophantine models degenerates at the cofinite-$S$ boundary; this statement
+does not rule out unrelated predicates.
+% src: THEOREMS.md:36-85,100-118
+
+Koenigsmann changed the quantitative landscape by proving that $\Z$ is
+purely universally definable in $\Q$ \cite{koenigsmann}.
+% src: NOTES.md:46-58
+Complementation turns this into the study of the existential rank
+$\operatorname{rk}^{\exists}_{\Q}(\Q\setminus\Z)$.  Daans--Dittmann--Fehm
+then supplied the geometric interpretation: for a non-quantifier-free
+Diophantine set $D$ over $\Q$,
+\[
+  \operatorname{rk}^{\exists}_{\Q}(D)
+  =\operatorname{efd}_{\Q}(D)+1,
+\]
+and $\operatorname{efd}_{\Q}(D)\le d$ precisely when $D$ is the image of a
+morphism all of whose fibres have dimension at most $d$ \cite{ddf}.  The
+quantifier race is therefore a fibre-dimension problem.  In particular, a
+six-universal-quantifier definition would amount to the bound
+$\operatorname{efd}_{\Q}(\Q\setminus\Z)\le5$, not merely to more efficient
+logical notation.
+% src: THEOREMS.md:388-409; THEOREMS.md:582-591
+
+\subsection{The record chain and its audit}
+
+The refereed benchmark is Daans's ten-quantifier universal definition
+\cite{daans}.  Our source-level audit reconstructs its budget before applying
+any fusion: two quaternion parameters, three witnesses for the auxiliary
+$\Phi$ condition, one splitting witness, and two three-variable trace--norm
+certificates give twelve variables.  Two uses of the intersection theorem
+of Daans--Dittmann--Fehm save one coordinate each, giving ten; pairwise
+reassociation cannot improve that proof shape.  The same audit isolates the
+real places to seek an improvement: stronger simultaneous fusion, a cheaper
+trace--norm primitive, or a joint treatment of the nested valuation-ring
+conditions.
+% src: THEOREMS.md:122-161
+
+Sun subsequently announced an unrefereed seven-quantifier construction
+\cite{sun}.  It retains Daans's bridge but replaces the six-witness
+intersection block by a finite disjunction of three-witness quadrics, and
+then uses one further fusion.  Our A2 audit checked the exact quaternion
+identities, the block's soundness, the residue-field combinatorics, and
+explicit bridge certificates.  It also traced the local--global completeness
+argument through parameterized Hensel lifting, weak and norm approximation,
+and Hasse--Minkowski.  No substantive missing implication was found, but the
+posted preprint has stale cross-references at the decisive step, and its
+local--global chain was hand-traced rather than machine-verified.  We
+therefore call seven an \emph{unrefereed announcement}; ten remains the
+refereed record.
+% src: THEOREMS.md:185-265
+
+\textbf{PROVED.}  The audit also corrects one ingredient of the unrefereed announcement
+\cite{sun}.  Its finite-field selection lemma assumes a residue field larger
+than $25$.  Exhaustion first showed that the small fields do not fail; more
+conceptually, we proved the exact identity
+\[
+ N(\tau)=\frac{\#E_{\tau^{-2}}(\F_q)}{4},\qquad
+ E_{\tau^{-2}}:y^2=x(x-1)(x-\tau^{-2}).
+\]
+Hasse's bound makes this positive over every odd finite field admitting an
+admissible $\tau$.  Hence the threshold can be deleted: $\F_3$ is exceptional
+only because it has no $\tau\notin\{0,\pm1\}$, while the preprint's other,
+data-dependent exceptional places remain untouched.
+% src: THEOREMS.md:278-320,361-377
+
+\subsection{Contributions and scope}
+
+The contributions of this paper are deliberately separated by status.
+
+\begin{enumerate}
+\item \textbf{CONDITIONAL --- a six-quantifier architecture.}
+We tie a witness in Sun's quadratic block to Daans's congruence parameter by
+$a=1+2s$.  Soundness, denominator clearing, the exact target-place selector,
+and the global norm obstruction are proved; completeness is the explicitly
+named hypothesis $H$.  If $H$ holds, then $\Q\setminus\Z$ has existential
+rank at most six, $\Z$ has a six-quantifier universal definition, and the
+essential fibre dimension is at most five.
+% src: THEOREMS.md:413-475,477-565,582-591
+
+\item \textbf{PROVED --- wall theorems.}
+We prove the two-adic source--target alignment wall, show that branch choice
+cannot remove the reciprocity obstruction, and prove the generalized wall:
+every admissible $b$ whose odd support is coprime to the cell data fails.
+The only available door is controlled non-coprimality.
+% src: THEOREMS.md:721-797,1214-1239,1275-1332,1415-1431
+
+\item \textbf{PROVED --- complete class characterization.}
+For the prime-$b$ family, on every branch, an aligned class exists exactly
+when the numerator of $z$ has a prime divisor congruent to $1$ modulo $4$.
+The necessity holds for every admissible rational $a$, not only when
+$1+4a^2$ is prime; the sufficiency is constructive.
+% src: THEOREMS.md:1241-1258,1415-1431
+
+\item \textbf{PROVED --- exhaustive finite verification.}
+On the declared grid, every one of the $353$ cells has a replayable soluble
+witness, and every one of the $293$ aligned classes has a certified
+emergent-free member.  These are bounded, per-row theorems under the
+proven-primality engine, not an extrapolation to all primes.
+% src: THEOREMS.md:1363-1382,1481-1511; README.md:223-231
+
+\item \textbf{EVIDENCE --- a mechanistic sieve with matched validation.}
+Exact root lifting turns each recurring small-prime obstruction into an
+odd-valuation $p$-adic mass.  On the identical $8{,}760$-member sample, the
+matched marginal ratio is $0.9993$, the hit-conditioned union residual is
+$-2.9$, and a marginal-preserving permutation gives $z=-0.09$.  These data
+validate the small-layer mechanism in the measured window; they do not
+supply a tail bound or a uniform density theorem.
+% src: THEOREMS.md:1574-1604; data/l17_matched.jsonl:1-3
+
+\item \textbf{PROVED --- an audited Schinzel reduction.}
+For all $293$ canonical linear/octic pairs, exact certificates verify
+irreducibility of the degree-$8$ factor, fixed-divisor and pair-product gcd
+conditions, and every local condition.  The linear Dirichlet side is a
+theorem.  The simultaneous prime-value assertion for the octic factor is
+not proved; it is precisely the remaining Schinzel input.
+% src: README.md:39-40,223-231; data/l17_schinzel_audit.jsonl:1
+
+\item \textbf{PROVED --- off-grid horizon extension.}
+The same certificate machinery closes and replays the four cells at $u=-1$,
+with $w=101$, $w=103$, $w=107$, and $w=109$.  They lie beyond the verified
+grid horizon $w\le97$.  This is an extension by four exact instances, not a
+uniform all-$w$ theorem.
+% src: THEOREMS.md:1626-1644; README.md:223-231
+\end{enumerate}
+
+\paragraph{What is not claimed.}
+We claim \emph{no new unconditional quantifier record}: Daans's ten remains
+the refereed record, and Sun's seven remains an unrefereed announcement.
+The project hypothesis $H$ is open.  In particular, prime values of the
+irreducible degree-$8$ factor in the prescribed progressions are open; the
+closest unconditional square-class results have degree at most two, while
+the degree-three result is conditional on the elliptic-curve Parity
+Conjecture \cite{krumm}.  The finite grid, the matched sieve statistics, and
+the clean local audit do not prove that missing prime-value statement.
+% src: THEOREMS.md:259-265,1646-1654; data/litscout_h10q.md:6-13,24-28

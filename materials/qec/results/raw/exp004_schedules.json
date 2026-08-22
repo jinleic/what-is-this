@@ -1,0 +1,74 @@
+{
+  "[[72,12,6]]": {
+    "kind": "CSS",
+    "lb": 6,
+    "T": 7,
+    "mode": "orbit",
+    "num_checks": 72,
+    "num_data_qubits": 72,
+    "num_ancillas": 72,
+    "max_check_weight": 6,
+    "mean_check_weight": 6.0,
+    "total_two_qubit_gates": 432,
+    "max_qubit_degree": 6,
+    "two_qubit_layers": 6,
+    "num_mixed_checks": 0,
+    "num_pure_x_checks": 36,
+    "num_pure_z_checks": 36,
+    "gate_types": [
+      "CX",
+      "CZ"
+    ],
+    "noiseless_detectors": 0,
+    "noiseless_obs": 0,
+    "num_observables": 12
+  },
+  "[[144,12,12]]": {
+    "kind": "CSS",
+    "lb": 6,
+    "T": 7,
+    "mode": "orbit",
+    "num_checks": 144,
+    "num_data_qubits": 144,
+    "num_ancillas": 144,
+    "max_check_weight": 6,
+    "mean_check_weight": 6.0,
+    "total_two_qubit_gates": 864,
+    "max_qubit_degree": 6,
+    "two_qubit_layers": 6,
+    "num_mixed_checks": 0,
+    "num_pure_x_checks": 72,
+    "num_pure_z_checks": 72,
+    "gate_types": [
+      "CX",
+      "CZ"
+    ],
+    "noiseless_detectors": 0,
+    "noiseless_obs": 0,
+    "num_observables": 12
+  },
+  "PBB144": {
+    "kind": "nonCSS",
+    "lb": 10,
+    "T": 10,
+    "mode": "orbit",
+    "num_checks": 144,
+    "num_data_qubits": 144,
+    "num_ancillas": 144,
+    "max_check_weight": 10,
+    "mean_check_weight": 8.0,
+    "total_two_qubit_gates": 1152,
+    "max_qubit_degree": 8,
+    "two_qubit_layers": 10,
+    "num_mixed_checks": 72,
+    "num_pure_x_checks": 0,
+    "num_pure_z_checks": 72,
+    "gate_types": [
+      "CX",
+      "CZ"
+    ],
+    "noiseless_detectors": 0,
+    "noiseless_obs": 0,
+    "num_observables": 12
+  }
+}

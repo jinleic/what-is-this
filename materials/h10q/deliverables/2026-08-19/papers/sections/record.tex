@@ -1,0 +1,209 @@
+\section{The conditional record and the Schinzel audit}
+\label{sec:record}
+
+\subsection{The statement, with its hypothesis exposed}
+
+The hypothesis used below is not an unnamed appeal to genericity.  It is the
+following cellwise assertion, quoted in the form in which it is recorded in
+the ledger.
+
+\begin{definition}[CONDITIONAL: Hypothesis H]
+For every odd prime $w$ and every rational $z$ with $v_w(z)\geq 1$ there
+exists a verified aligned class for the cell $(w,z)$---prime-$b$ data
+$(a,\varepsilon,1,q,N)$ from the L11 family, or escape data
+$(a,\varepsilon,f,q,N)$ with $f\mid\operatorname{num}(z)$ from the L12
+family---and a prime member $Q\equiv q\pmod N$ outside its finite excluded
+set, at which the emergent set is empty: every odd prime
+$l\notin S\cup\{Q\}$ satisfying
+$v_l(P(\varepsilon fQ))\neq 0$ has $v_l(P(\varepsilon fQ))$ even.  Here $S$
+is the frozen controlled set belonging to the verified class.
+% src: CONDITIONAL.md:76-109
+\end{definition}
+
+\begin{theorem}[CONDITIONAL: Theorem C]
+Assume H.  Then $\Q\setminus\Z$ is Diophantine in $\Q$ with six unknowns,
+realized by the L6 formula
+\[
+ F(z):=\exists b,s\;\bigl[(1+2s,b)\in\Phi_1^{\{2\}}\ \wedge\
+ \Theta_*\bigl(1+2s,b,h(1+2s,b,z^3),s\bigr)\bigr],
+\]
+where, with $A=1+4a^2$ and $B=2b$,
+\[
+\begin{aligned}
+ \Theta_*(a,b,c,s):=\exists y,r\quad&
+ [c^2-Ay^2-16Br^2=16-16ABs^2]\\
+ &{}\vee[c^2-Ay^2-16ABr^2=16A-16A^2Bs^2].
+\end{aligned}
+\]
+Consequently $\Z$ is definable in $\Q$ by a formula with six universal
+quantifiers,
+$\Z=\Q\setminus(F\vee\mathfrak m_2)$, and
+$\operatorname{efd}_{\Q}(\Q\setminus\Z)\leq 5$.
+% src: CONDITIONAL.md:14-25
+\end{theorem}
+
+This is the ledger's exact conditional conclusion.  It is \emph{not} an
+unconditional definition and makes \textbf{no record claim}.  Soundness of
+the displayed formula consumes no hypothesis; completeness is exactly H.
+A finite collection of closed cells, however exhaustive within its stated
+horizon, cannot replace H's quantification over every odd $w$ and every
+eligible $z$.
+% src: CONDITIONAL.md:55-70
+% src: THEOREMS.md:1503-1511
+
+The quantifier saving is attributed precisely to Nicolas Daans, Philip
+Dittmann, and Arno Fehm, \emph{Existential rank and essential dimension of
+diophantine sets}, arXiv:2102.06941v5, Theorem~1.4 (equivalently
+Corollary~5.11)~\cite{ddf}.  Their intersection theorem turns the ranks
+three and two on the common base into $3+2-1=4$ witnesses; the two base
+coordinates then give six unknowns.  The recorded rank--essential-dimension
+identity gives the bound five.  These counts remain \textbf{CONDITIONAL}
+because the set equality to $\Q\setminus\Z$ uses H.
+% src: CONDITIONAL.md:31-48
+% src: data/litscout_h10q.md:30-34
+
+\subsection{What is proved, and what Schinzel must supply}
+
+\textbf{PROVED (finite alignment settled).}  Once an aligned class has been found, all
+controlled Hilbert symbols are frozen and the moving prime is restricted to
+one reduced progression.  For every canonical row audited here this
+progression is
+\[
+ q_1(t)=q_{1,0}+Nt,\qquad \gcd(q_{1,0},N)=1.
+\]
+The stored $q_{1,0}$ is proven prime by the repository's proven-primality
+engine.  Dirichlet's theorem therefore supplies infinitely many prime values
+of $q_1(t)$.  This is the linear, unconditional half of the member-existence
+problem; neither a refusal by the primality engine nor a probable-prime test
+is used as evidence.
+% src: THEOREMS.md:953-971
+% src: data/l17_schinzel_audit.jsonl:1-294
+
+\textbf{OPEN/CONDITIONAL (cofactor side).}  Put
+\[
+ F_{\mathrm{cell}}(t)=P\bigl(\varepsilon f q_1(t)\bigr),
+\]
+using the primitive integer representative after removal of the fixed
+rational scale recorded in the audit.  Requiring $F_{\mathrm{cell}}(t)$ to
+be prime simultaneously with $q_1(t)$ is the two-polynomial instance of
+Schinzel's Hypothesis~H \cite{schinzel} (or the corresponding Bunyakovsky-type prime-value
+input).  The polynomial $F_{\mathrm{cell}}$ has degree eight.  A prime
+cofactor is a sufficient route to an emergent-free member, because the
+class has already frozen the controlled places and reciprocity forces the
+remaining single symbol.  This sufficient prime-cofactor route must not be
+confused with a proof of H, whose conclusion asks only for one
+emergent-free member and is formally weaker.  In the ledger's shorthand,
+after using the progression prime itself as variable, the pair is written
+$\{t,F_{\mathrm{cell}}(t)\}$.
+% src: THEOREMS.md:953-971
+% src: CONDITIONAL.md:175-185
+% src: data/l17_schinzel_audit.jsonl:1-294
+
+\subsection{PROVED finite audit of the Schinzel pair}
+
+The exact audit contains $293$ canonical records, split into $190$ L11
+classes and $103$ escape classes.  The fields
+\texttt{F\_irreducible}, \texttt{F\_value\_gcd}, and
+\texttt{pair\_product\_gcd} respectively certify irreducibility on
+$293/293$ rows, value gcd one on $293/293$ rows, and pair-product gcd one
+on $293/293$ rows.  Every irreducibility certificate is a degree-eight
+Frobenius certificate modulo a certified prime; both gcds were computed
+exactly on $0\leq t\leq 2000$.  The pair-product computation is already a
+certificate that no prime divides the product for every integer $t$: any
+such fixed divisor would divide the computed gcd.  Thus all canonical
+pairs pass the fixed-divisor and irreducibility conditions.  This is
+\textbf{PROVED} for the stored pairs, not a prime-value theorem.
+% src: data/l17_schinzel_audit.jsonl:1-294
+
+For a prime $p$ dividing $N$, the corrected residue count is
+\[
+ \nu_p=\#\{t\in\F_p:q_1(t)\not\equiv0\pmod p,
+                  \ F_{\mathrm{cell}}(t)\not\equiv0\pmod p\}.
+\]
+The first condition is essential.  Since $p\mid N$ and
+$\gcd(q_{1,0},N)=1$, the linear polynomial is the nonzero constant
+$q_{1,0}$ modulo $p$; it must not be replaced by the parameter $t$.
+Consequently the count is $p$, rather than $p-1$, whenever the cofactor has
+no root modulo $p$.  The audit enumerated every $p\leq1000$ dividing the
+row's modulus and obtained exactly this full count in every occurrence.
+% src: data/l17_schinzel_audit.jsonl:1-294
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{c|c|c|c}
+primes $p$ & records containing $p\mid N$ & range of $\nu_p$ & mean density $\nu_p/p$\\ \hline
+$2,3,5,7$ & $293$ each & $p$ & $1$\\
+$11,37,89,97$ & $13$ each & $p$ & $1$\\
+$13,53$ & $26$ each & $p$ & $1$\\
+$17$ & $39$ & $p$ & $1$\\
+$23$ & $38$ & $p$ & $1$\\
+$29,41,61,73$ & $28$ each & $p$ & $1$\\
+$43,47,67,83$ & $10$ each & $p$ & $1$
+\end{tabular}
+\caption{Corrected admissible-residue counts for primes dividing the progression modulus.}
+% src: data/l17_schinzel_audit.jsonl:1
+\end{table}
+
+These local counts neither assume independence nor estimate a density of
+simultaneous prime values.  Their role is narrower and exact: together with
+the pair-product gcd, they rule out the elementary local obstruction for
+each stored Schinzel pair.
+% src: data/l17_schinzel_audit.jsonl:1
+
+\subsection{Residual certificates and the literature boundary}
+
+The six residual rows are deliberately segregated.  They are rational or
+composite-$b$ witnesses verified by exact branch reconstruction and tied
+status; they are not coerced into the prime family and are not evidence for
+Schinzel's hypothesis.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{c|c|c|c}
+cell $(w,z)$ & $(a,b)$ & $\tau$ & status\\ \hline
+$(67,2)$ & $(1,4757)$ & $3/5$ & PROVED pointwise\\
+% src: data/l17_schinzel_audit.jsonl:295
+$(41,1/7)$ & $(25,4985)$ & $1251/2501$ & PROVED pointwise\\
+% src: data/l17_schinzel_audit.jsonl:296
+$(61,-2/7)$ & $(25,55571)$ & $1251/2501$ & PROVED pointwise\\
+% src: data/l17_schinzel_audit.jsonl:297
+$(61,2)$ & $(25,-71431)$ & $1251/2501$ & PROVED pointwise\\
+% src: data/l17_schinzel_audit.jsonl:298
+$(53,1/3)$ & $(-15,9)$ & $451/901$ & PROVED pointwise\\
+% src: data/l17_schinzel_audit.jsonl:299
+$(29,-2)$ & $(-15,-29/5)$ & $4055/2703$ & PROVED pointwise
+% src: data/l17_schinzel_audit.jsonl:300
+\end{tabular}
+\caption{The six residual witnesses: unconditional certificates for their individual cells only.}
+\end{table}
+
+\textbf{OPEN (published boundary).}  The exact square-class reference is
+David Krumm, \emph{Squarefree parts of polynomial values}, Journal de
+Th\'eorie des Nombres de Bordeaux \textbf{28} (2016), no.~3, 699--724,
+arXiv:1407.4890~\cite{krumm}.  Its Theorem~1.3 and Propositions~3.4--3.5
+give the unconditional degree-one and degree-two cases.  Proposition~3.8
+makes the degree-three case conditional on the Parity Conjecture for
+elliptic curves over $\Q$---rank parity, not the sieve ``parity problem.''
+% src: data/litscout_h10q.md:6-13
+
+At prime arguments, the nearest unconditional results reach the cubic
+boundary without prescribing a square class: Helfgott proves square-free
+values of $f(p)$ for separable cubic $f$ \cite{helfgott}, while Reuss
+proves $(d-1)$-free values rather than prime or prescribed-square-class
+values \cite{reuss}.  Neither yields the required degree-eight
+conclusion.
+% src: data/litscout_h10q.md:15-28
+
+The conic-bundle literature does not remove the gap.  The unconditional
+Harpaz--Skorobogatov--Wittenberg theorem requires abelian constant fields
+in the bad fibres \cite[Theorem~3.1 and Corollary~3.4]{hsw}.  The general
+Schinzel reference in \emph{J. reine angew. Math.} \textbf{495} (1998),
+1--28 is by Colliot-Th\'el\`ene, Skorobogatov and Swinnerton-Dyer
+\cite{ctssd}, not by Colliot-Th\'el\`ene and Sansuc; the latter pair's
+Schinzel paper is \cite{ctsansuc}.  Thus no unconditional
+result is available for the degree-eight prime-value side or for the
+required degree-eight square-class side.  The six-quantifier theorem above
+remains \textbf{CONDITIONAL}, and no unconditional record is claimed.
+% src: data/litscout_h10q.md:36-39

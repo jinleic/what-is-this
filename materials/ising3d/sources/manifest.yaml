@@ -1,0 +1,913 @@
+sources:
+  - key: onsager1944
+    title: "Crystal Statistics. I. A Two-Dimensional Model with an Order-Disorder Transition"
+    authors: ["Lars Onsager"]
+    year: 1944
+    venue: "Physical Review 65, 117-149"
+    doi: "10.1103/PhysRev.65.117"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRev.65.117"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "https://journals.aps.org/pr/pdf/10.1103/PhysRev.65.117 (HTTP 403)"]
+    key_results_used: "Exact zero-field thermodynamic free energy of the anisotropic square-lattice Ising model; criticality is sinh(2K_x)sinh(2K_y)=1."
+    exact_location: "Physical Review 65, pp. 117-149; displayed equations not obtained in this run."
+    reproduced_locally: false
+
+  - key: kaufman1949
+    title: "Crystal Statistics. II. Partition Function Evaluated by Spinor Analysis"
+    authors: ["Bruria Kaufman"]
+    year: 1949
+    venue: "Physical Review 76, 1232-1243"
+    doi: "10.1103/PhysRev.76.1232"
+    arxiv: null
+    url: "http://cwp.library.ucla.edu/articles/kaufman/crystal_statistics_ii/crystal_statistics_ii.html"
+    local_path: null
+    sha256: null
+    obtained: abstract_only
+    access_routes_tried: ["UCLA transcription through Eq. (9)", "Crossref metadata via DOI", "https://journals.aps.org/pr/pdf/10.1103/PhysRev.76.1232 (HTTP 403)", "ADS scan route (HTTP 403)"]
+    key_results_used: "Spinor reduction of the finite periodic square-lattice transfer matrix to products of plane rotations; the finite torus partition function is a sum of four integer/half-integer momentum sectors."
+    exact_location: "UCLA transcription: Eqs. (1)-(9) only. The later four-sector product formula and its original equation number were not obtainable, so no verbatim equation number is asserted."
+    reproduced_locally: false
+
+  - key: leeyang1952
+    title: "Statistical Theory of Equations of State and Phase Transitions. II. Lattice Gas and Ising Model"
+    authors: ["T. D. Lee", "C. N. Yang"]
+    year: 1952
+    venue: "Physical Review 87, 410-419"
+    doi: "10.1103/PhysRev.87.410"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRev.87.410"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "https://journals.aps.org/pr/pdf/10.1103/PhysRev.87.410 (HTTP 403)"]
+    key_results_used: "For a finite ferromagnetic Ising system (J_ij >= 0), all zeros of the field-fugacity polynomial in z=exp(-2 beta h) lie on |z|=1; hence no real-field singularity occurs away from h=0 in the thermodynamic limit."
+    exact_location: "Physical Review 87, pp. 410-419; theorem numbering not extracted. The circle-theorem argument spans the companion Lee-Yang papers."
+    reproduced_locally: false
+
+  - key: yang1952
+    title: "The Spontaneous Magnetization of a Two-Dimensional Ising Model"
+    authors: ["C. N. Yang"]
+    year: 1952
+    venue: "Physical Review 85, 808-816"
+    doi: "10.1103/PhysRev.85.808"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRev.85.808"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "https://journals.aps.org/pr/pdf/10.1103/PhysRev.85.808 (HTTP 403)"]
+    key_results_used: "For the isotropic square lattice at zero field, M(K)=[1-sinh(2K)^(-4)]^(1/8) below T_c and M=0 above T_c."
+    exact_location: "Physical Review 85, pp. 808-816; displayed equation number not extracted."
+    reproduced_locally: false
+
+  - key: kacward1952
+    title: "A Combinatorial Solution of the Two-Dimensional Ising Model"
+    authors: ["Mark Kac", "John C. Ward"]
+    year: 1952
+    venue: "Physical Review 88, 1332-1337"
+    doi: "10.1103/PhysRev.88.1332"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRev.88.1332"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "https://journals.aps.org/pr/pdf/10.1103/PhysRev.88.1332 (HTTP 403)"]
+    key_results_used: "Planar zero-field Ising partition functions reduce to a signed non-backtracking determinant: Z=2^|V| prod_e cosh(beta J_e) sqrt(det(I-T)), with turning-angle phases cancelling unwanted loop intersections."
+    exact_location: "Physical Review 88, pp. 1332-1337; original displayed equation number not extracted."
+    reproduced_locally: false
+
+  - key: schultzmattisl1964
+    title: "Two-Dimensional Ising Model as a Soluble Problem of Many Fermions"
+    authors: ["T. D. Schultz", "D. C. Mattis", "E. H. Lieb"]
+    year: 1964
+    venue: "Reviews of Modern Physics 36, 856-871"
+    doi: "10.1103/RevModPhys.36.856"
+    arxiv: null
+    url: "https://doi.org/10.1103/RevModPhys.36.856"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "https://journals.aps.org/rmp/pdf/10.1103/RevModPhys.36.856 (HTTP 403)"]
+    key_results_used: "Recasts the 2D transfer-matrix problem as a quadratic many-fermion problem, making explicit the Jordan-Wigner/Majorana mechanism behind solvability."
+    exact_location: "Reviews of Modern Physics 36, pp. 856-871; equations not extracted."
+    reproduced_locally: false
+
+  - key: istrail2000
+    title: "Statistical Mechanics, Three-Dimensionality and NP-Completeness. I. Universality of Intractability of the Partition Functions of the Ising Model Across Non-Planar Lattices"
+    authors: ["Sorin Istrail"]
+    year: 2000
+    venue: "Proceedings of the 32nd ACM Symposium on Theory of Computing, 87-96"
+    doi: "10.1145/335305.335316"
+    arxiv: null
+    url: "https://cs.brown.edu/people/sistrail/papers/Statistical%20Mechanics,%20Three-Dimensionality%20and%20NP-completeness.pdf"
+    local_path: "sources/fulltext/cl_istrail2000.pdf"
+    sha256: "4ea31537feb308c2480b5ff87def01fb77d4f28c15b9ef2bf60ce0d13c88afa5"
+    obtained: full
+    access_routes_tried: ["Author-hosted PDF", "Brown University research summary"]
+    key_results_used: "Exact finite-instance partition-function evaluation becomes NP-complete for the paper's non-planar lattice families; planarity is the tractability boundary in that complexity setting. This is not a proof that the homogeneous simple-cubic thermodynamic-limit free energy lacks a closed form."
+    exact_location: "Extended abstract, main NP-completeness theorems and Brown University scope summary."
+    reproduced_locally: false
+
+  - key: zamolodchikov1980
+    title: "Tetrahedra Equations and Integrable Systems in Three-Dimensional Space"
+    authors: ["A. B. Zamolodchikov"]
+    year: 1980
+    venue: "Soviet Physics JETP 52, 325-336 (original Zh. Eksp. Teor. Fiz. 79, 641-664)"
+    doi: null
+    arxiv: null
+    url: "https://jetp.ras.ru/cgi-bin/dn/e_052_02_0325.pdf"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["JETP archive PDF route (connection/fetch failure)", "JETP bibliographic index", "Springer citations in later primary papers"]
+    key_results_used: "Introduces the tetrahedron equation, the 3D consistency relation schematically R_123 R_145 R_246 R_356 = R_356 R_246 R_145 R_123 (index convention depends on the paper). It is an integrability condition, not an exact solution of the simple-cubic Ising model."
+    exact_location: "JETP 52, pp. 325-336; original equation number not obtained."
+    reproduced_locally: false
+
+  - key: zamolodchikov1981
+    title: "Tetrahedron Equations and the Relativistic S-Matrix of Straight-Strings in 2+1-Dimensions"
+    authors: ["A. B. Zamolodchikov"]
+    year: 1981
+    venue: "Communications in Mathematical Physics 79, 489-505"
+    doi: "10.1007/BF01209309"
+    arxiv: null
+    url: "https://doi.org/10.1007/BF01209309"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "Springer article page"]
+    key_results_used: "Develops tetrahedron-equation consistency for factorized scattering of straight strings in 2+1 dimensions."
+    exact_location: "Communications in Mathematical Physics 79, pp. 489-505; equations not extracted."
+    reproduced_locally: false
+
+  - key: baxter1983
+    title: "On Zamolodchikov's Solution of the Tetrahedron Equations"
+    authors: ["R. J. Baxter"]
+    year: 1983
+    venue: "Communications in Mathematical Physics 88, 185-205"
+    doi: "10.1007/BF01209476"
+    arxiv: null
+    url: "https://doi.org/10.1007/BF01209476"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "Springer article page"]
+    key_results_used: "Analyzes and proves properties of Zamolodchikov's tetrahedron-equation solution; establishes a genuine 3D integrable model distinct from the nearest-neighbor simple-cubic Ising model."
+    exact_location: "Communications in Mathematical Physics 88, pp. 185-205; equations not extracted."
+    reproduced_locally: false
+
+  - key: baxter1986
+    title: "The Yang-Baxter Equations and the Zamolodchikov Model"
+    authors: ["R. J. Baxter"]
+    year: 1986
+    venue: "Physica D 18, 321-347"
+    doi: "10.1016/0167-2789(86)90195-8"
+    arxiv: null
+    url: "https://doi.org/10.1016/0167-2789(86)90195-8"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "publisher metadata"]
+    key_results_used: "Relates Yang-Baxter structures to the Zamolodchikov 3D model; useful as a benchmark for what a verified 3D integrability structure requires."
+    exact_location: "Physica D 18, pp. 321-347; equations not extracted."
+    reproduced_locally: false
+
+  - key: ferrenberg2018
+    title: "Pushing the Limits of Monte Carlo Simulations for the Three-Dimensional Ising Model"
+    authors: ["Alan M. Ferrenberg", "Jian Xu", "David P. Landau"]
+    year: 2018
+    venue: "Physical Review E 97, 043301"
+    doi: "10.1103/PhysRevE.97.043301"
+    arxiv: "1806.03558"
+    url: "https://arxiv.org/abs/1806.03558"
+    local_path: "sources/fulltext/num_ferrenberg2018.pdf"
+    sha256: "0501212f560928a9c8bcdfc3583643d0722c2460f83ff557533a926c4c86a680"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/1806.03558", "arXiv abstract API"]
+    key_results_used: "K_c=0.221654626(5), nu=0.629912(86), gamma=1.23708(33), beta=0.32630(22), and gamma/nu=1.96390(45)."
+    exact_location: "K_c: abstract and Sec. IV conclusion; nu: Eq. (39); gamma: Eq. (46); beta: Eq. (47); gamma/nu: Sec. III C; method/value comparison: Table X."
+    reproduced_locally: false
+
+  - key: campostrini2002
+    title: "25th-Order High-Temperature Expansion Results for Three-Dimensional Ising-Like Systems on the Simple-Cubic Lattice"
+    authors: ["Massimo Campostrini", "Andrea Pelissetto", "Paolo Rossi", "Ettore Vicari"]
+    year: 2002
+    venue: "Physical Review E 65, 066127"
+    doi: "10.1103/PhysRevE.65.066127"
+    arxiv: "cond-mat/0201180"
+    url: "https://arxiv.org/abs/cond-mat/0201180"
+    local_path: "sources/fulltext/num_campostrini2002.pdf"
+    sha256: "a36864c541e04e49c10f258255c2a210f0bf5f76ccd175046b3c3d5daa759927"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/cond-mat/0201180", "arXiv abstract API"]
+    key_results_used: "Improved-model estimates gamma=1.2373(2), nu=0.63012(16), alpha=0.1096(5), eta=0.03639(15), beta=0.32653(10), delta=4.7893(8); standard-model leading correction exponent Delta=0.52(3). Eq. (2.4) prints standard-series tails including chi_24=18554916271112254, chi_25=85923704942057238, (m2)_24=977496788431483776, and (m2)_25=47677378698515169334 in powers of v=tanh(beta)."
+    exact_location: "Abstract and Sec. II; standard series tails in Eq. (2.4); coefficient provenance and improved-model coefficients in Sec. II/Table 2."
+    reproduced_locally: false
+
+  - key: butera2011
+    title: "The Free Energy in a Magnetic Field and the Universal Scaling Equation of State for the Three-Dimensional Ising Model"
+    authors: ["P. Butera", "M. Pernici"]
+    year: 2011
+    venue: "Physical Review B 83, 054433"
+    doi: "10.1103/PhysRevB.83.054433"
+    arxiv: "1012.5004"
+    url: "https://arxiv.org/abs/1012.5004"
+    local_path: "sources/fulltext/num_butera2011.pdf"
+    sha256: "e1f430e1e312b8ef5263d429507a2b99389d985cfe02df8566a038905387970d"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/1012.5004", "arXiv abstract API"]
+    key_results_used: "Bivariate high-temperature/low-field free-energy expansion through K^24 for simple-cubic and body-centered-cubic models, with higher susceptibilities derived to the same order. The paper explicitly says numerical coefficient tables will appear separately; it supplies scaling/equation-of-state formulas rather than full tables."
+    exact_location: "Abstract; Sec. II statement on coefficients; scaling Eqs. (5), (8), (9), (13), and Eq. (14) onward."
+    reproduced_locally: false
+
+  - key: kos2016
+    title: "Precision Islands in the Ising and O(N) Models"
+    authors: ["Filip Kos", "David Poland", "David Simmons-Duffin", "Alessandro Vichi"]
+    year: 2016
+    venue: "Journal of High Energy Physics 2016, 036"
+    doi: "10.1007/JHEP08(2016)036"
+    arxiv: "1603.04436"
+    url: "https://arxiv.org/abs/1603.04436"
+    local_path: "sources/fulltext/num_kos2016.pdf"
+    sha256: "00e2e239559a9a357aa98efb5d47f0605badaf36fce893779504bd2f5678b562"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/1603.04436", "arXiv abstract API", "Crossref DOI metadata"]
+    key_results_used: "(Delta_sigma,Delta_epsilon,lambda_sigma-sigma-epsilon,lambda_epsilon-epsilon-epsilon)=(0.5181489(10),1.412625(10),1.0518537(41),1.532435(19)); translated exponents eta=0.0362978(20), nu=0.629971(4)."
+    exact_location: "Abstract; Eqs. (3.1)-(3.3) for dimensions/OPE data; exponent translation discussed in the 3D Ising results section."
+    reproduced_locally: false
+
+  - key: arisuefujiwara2002
+    title: "New Algorithm of the Finite Lattice Method for the High-Temperature Expansion of the Ising Model in Three Dimensions"
+    authors: ["Hiroaki Arisue", "Toshiaki Fujiwara"]
+    year: 2002
+    venue: "arXiv preprint hep-lat/0209002"
+    doi: null
+    arxiv: "hep-lat/0209002"
+    url: "https://arxiv.org/abs/hep-lat/0209002"
+    local_path: "sources/fulltext/num_arisue2002.pdf"
+    sha256: "bf79ec7918694768b57e6793ed4b0c8f581aaea6a705b4273ecab42641723afc"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/hep-lat/0209002", "arXiv source archive"]
+    key_results_used: "Finite-lattice algorithm extends the simple-cubic free-energy HT series from order 26 to 46. Table 1 gives exact rational a_n for even n=2,...,46 in t=tanh(beta); e.g. a_4=3, a_6=22, a_8=375/2, and a_46=14120314204713719766888210."
+    exact_location: "Source Table 1 and the equation immediately below it (source lines 274-315); preliminary alpha estimates follow the table."
+    reproduced_locally: false
+
+  - key: arisuefujiwara2003
+    title: "New Algorithm of the High-Temperature Expansion for the Ising Model in Three Dimensions"
+    authors: ["H. Arisue", "T. Fujiwara"]
+    year: 2002
+    venue: "arXiv preprint hep-lat/0209019"
+    doi: null
+    arxiv: "hep-lat/0209019"
+    url: "https://arxiv.org/abs/hep-lat/0209019"
+    local_path: "sources/fulltext/num_arisue2003.pdf"
+    sha256: "768927ceadfbe8e66facebb1bb3f9c75095e9ce207607d013b6a46d46734a286"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/hep-lat/0209019", "arXiv abstract API"]
+    key_results_used: "Companion presentation of the finite-lattice algorithm: free energy through beta^46 and susceptibility through beta^32."
+    exact_location: "Abstract and finite-lattice recursion sections; this short version does not supersede the coefficient table in hep-lat/0209002."
+    reproduced_locally: false
+
+  - key: arisuetabata1994
+    title: "Low-Temperature Series for Ising Model by Finite-Lattice Method"
+    authors: ["H. Arisue", "K. Tabata"]
+    year: 1994
+    venue: "arXiv preprint hep-lat/9412062"
+    doi: null
+    arxiv: "hep-lat/9412062"
+    url: "https://arxiv.org/abs/hep-lat/9412062"
+    local_path: "sources/fulltext/num_arisue1994.pdf"
+    sha256: "ed8b0f846fb1d65dd8a48aa84a14eb8a418d2e5e9ea4b94fb28abc03d6e28a45"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/hep-lat/9412062", "arXiv abstract API"]
+    key_results_used: "Finite-lattice low-temperature series for the 3D Ising second moment through u^26; also gives ASOS free energy through u^23."
+    exact_location: "Abstract and coefficient tables in the paper."
+    reproduced_locally: false
+
+  - key: bhanot1990
+    title: "Ising-Model Monte Carlo Simulations: Density of States and Mass Gap"
+    authors: ["Gyan Bhanot", "Nelson A. Alves", "Bernd A. Berg", "Ramon Villanova"]
+    year: 1990
+    venue: "Physical Review B 41, 383-390"
+    doi: "10.1103/PhysRevB.41.383"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRevB.41.383"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "APS PDF route not pursued after repeated APS HTTP 403 results"]
+    key_results_used: "Density-of-states/histogram benchmark cited by later finite-lattice series work; no exact 4x4x4 table was recovered from this source."
+    exact_location: "Metadata only; coefficient tables not extracted."
+    reproduced_locally: false
+
+  - key: pearson1982
+    title: "Partition Function of the Ising Model on the Periodic 4x4x4 Lattice"
+    authors: ["Robert B. Pearson"]
+    year: 1982
+    venue: "Physical Review B 26, 6285"
+    doi: "10.1103/PhysRevB.26.6285"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRevB.26.6285"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "APS PDF route not pursued after repeated APS HTTP 403 results", "Valani thesis citation"]
+    key_results_used: "Published exact partition function for the periodic 4x4x4 simple-cubic lattice, using symmetry reduction from 2^64 configurations; the coefficient table itself was not obtained."
+    exact_location: "Physical Review B 26, 6285; table/equations unobtained."
+    reproduced_locally: false
+
+  - key: valani2011
+    title: "On the Partition Function for the Three-Dimensional Ising Model"
+    authors: ["Yogendra P. Valani"]
+    year: 2011
+    venue: "Doctoral thesis, City University London"
+    doi: null
+    arxiv: null
+    url: "https://openaccess.city.ac.uk/id/eprint/7793/1/On_the_partition_function_for_the_three-dimensional_Ising_Model.pdf"
+    local_path: "sources/fulltext/num_valani2011.pdf"
+    sha256: "a8fede23a71a5fa692697e6ba225831da226cd6fb9bee659e92a0120360f870a"
+    obtained: full
+    access_routes_tried: ["City Research Online PDF", "repository metadata page"]
+    key_results_used: "Transfer-matrix exact finite-size partition polynomials. The convention is Z=sum_i a_i x^i with x=exp(beta), and Appendix E prints an exact coefficient table for a 5x5x10-prime lattice; it is not the missing Pearson 4x4x4 table."
+    exact_location: "Eq. (C.0.1) for polynomial convention; Eq. (C.0.2) for Z=Tr(T^N_z); Table E.1 for the 5x5x10-prime coefficients."
+    reproduced_locally: false
+
+  - key: chapman2020
+    title: "Characterization of Solvable Spin Models via Graph Invariants"
+    authors: ["Adrian Chapman", "Steven T. Flammia"]
+    year: 2020
+    venue: "Quantum 4, 278"
+    doi: "10.22331/q-2020-06-04-278"
+    arxiv: "2003.05465"
+    url: "https://arxiv.org/abs/2003.05465"
+    local_path: "sources/fulltext/alg_chapman2020.pdf"
+    sha256: "1c9db182c6fe451e15ac016bcbb65405f0eb5590ed5319f353e019cf2f479267"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/2003.05465", "Crossref DOI metadata"]
+    key_results_used: "For H=sum_j b_j sigma_j, the frustration graph has one vertex per nonzero Pauli term and edges for anticommutation. Theorem 1: an injective term-to-Majorana-bilinear map satisfying Eqs. (20)-(21) exists iff G(H) is a line graph L(R), Eq. (25)/(78). This necessity is only for that injective generator-to-generator notion; non-injective symmetry-sector mappings may exist beyond line graphs."
+    exact_location: "Definition 1 and Eq. (24); Theorem 1 and Eq. (25), restated as Eq. (78); caveats in Sec. 1.1 and the discussion following Corollary 1.1."
+    reproduced_locally: false
+
+  - key: elman2021
+    title: "Free Fermions Behind the Disguise"
+    authors: ["Samuel J. Elman", "Adrian Chapman", "Steven T. Flammia"]
+    year: 2021
+    venue: "Communications in Mathematical Physics 388, 969-1003"
+    doi: "10.1007/s00220-021-04220-w"
+    arxiv: "2012.07857"
+    url: "https://arxiv.org/abs/2012.07857"
+    local_path: "sources/fulltext/alg_elman2021.pdf"
+    sha256: "0443e6efa04d0834154f557059f6ef0b8f7f5d0e69b1ba39744a848793ab0956"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/2012.07857", "Crossref DOI metadata"]
+    key_results_used: "Definition 3: ECF means no induced claw K_1,3 and no induced even cycle C_2k (k>=2). Theorem 1: every ECF Hamiltonian has a free spectrum, with P_G(-1/epsilon_j^2)=0. Theorem 2: every ECF Hamiltonian is free-fermion-solvable via Eq. (2), with incognito modes. These are sufficient, not necessary, conditions."
+    exact_location: "Definition 3; Theorem 1, Eq. (5) and weighted independence polynomial Eq. (6); Definitions 4-5; Theorem 2; Lemmas 1-3."
+    reproduced_locally: false
+
+  - key: chapman2023
+    title: "A Unified Graph-Theoretic Framework for Free-Fermion Solvability"
+    authors: ["Adrian Chapman", "Samuel J. Elman", "Ryan L. Mann"]
+    year: 2023
+    venue: "arXiv preprint 2305.15625"
+    doi: null
+    arxiv: "2305.15625"
+    url: "https://arxiv.org/abs/2305.15625"
+    local_path: "sources/fulltext/alg_chapman2023.pdf"
+    sha256: "d893426d11363dac3d620438ab77e48150888cf4acf81849601083b8b4f8f4ca"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/2305.15625", "arXiv abstract API"]
+    key_results_used: "A spin Hamiltonian has an exact noninteracting-fermion description if its frustration graph is claw-free and contains a simplicial clique; commuting cycle symmetries allow solution sector by sector. This unifies line-graph and ECF sufficient constructions."
+    exact_location: "Abstract and main theorem sections of arXiv:2305.15625."
+    reproduced_locally: false
+
+  - key: wiersema2023
+    title: "Classification of Dynamical Lie Algebras for Translation-Invariant 2-Local Spin Systems in One Dimension"
+    authors: ["Roeland Wiersema", "Efekan Kökcü", "Alexander F. Kemper", "Bojko N. Bakalov"]
+    year: 2023
+    venue: "arXiv preprint 2309.05690"
+    doi: null
+    arxiv: "2309.05690"
+    url: "https://arxiv.org/abs/2309.05690"
+    local_path: "sources/fulltext/alg_wiersema2023.pdf"
+    sha256: "e36be711626812d07baeba9a2f6b6b7dea3d4c9deae360a01a49ffb713887b39"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/2309.05690", "arXiv abstract API"]
+    key_results_used: "Theorem IV.1 classifies 17 open-chain DLAs and Theorem IV.2 the periodic cases. For TFIM-equivalent generators, a_8(n) is isomorphic to so(2n-1), dimension (n-1)(2n-1); periodically a_8^o(n) is isomorphic to so(2n) direct-sum 2, dimension 2n(2n-1)."
+    exact_location: "Table I; Theorem IV.1; Theorem IV.2; Supplemental Lemmas C.6 and C.8; Eq. (C19) and Fig. S3."
+    reproduced_locally: false
+
+  - key: wosiek1982
+    title: "A Local Representation for Fermions on a Lattice"
+    authors: ["J. Wosiek"]
+    year: 1982
+    venue: "Acta Physica Polonica B 13, 543-551"
+    doi: null
+    arxiv: null
+    url: "https://inspirehep.net/literature/169185"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["INSPIRE bibliographic record", "publisher/search routes; full PDF not obtained"]
+    key_results_used: "Higher-dimensional Jordan-Wigner-type local spin representation with local constraints; background for why extra gauge/constraint degrees of freedom are normally required."
+    exact_location: "Acta Physica Polonica B 13, pp. 543-551; equations not obtained."
+    reproduced_locally: false
+
+  - key: ball2005
+    title: "Fermions Without Fermion Fields"
+    authors: ["R. C. Ball"]
+    year: 2005
+    venue: "Physical Review Letters 95, 176407"
+    doi: "10.1103/PhysRevLett.95.176407"
+    arxiv: "cond-mat/0409485"
+    url: "https://arxiv.org/abs/cond-mat/0409485"
+    local_path: "sources/fulltext/alg_ball2005.pdf"
+    sha256: "6878d7ee2f0f1f25c8c71787f6d9ae83393ccea1aaa95666648a88dbfc1bfa2a"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/cond-mat/0409485", "Crossref DOI metadata"]
+    key_results_used: "Maps arbitrary fermion hopping Hamiltonians to locally identified commuting operators with additional conserved degrees of freedom; shows locality can be retained at the price of constraints/gauge structure."
+    exact_location: "Abstract and construction in arXiv:cond-mat/0409485."
+    reproduced_locally: false
+
+  - key: verstraete2005
+    title: "Mapping Local Hamiltonians of Fermions to Local Hamiltonians of Spins"
+    authors: ["F. Verstraete", "J. I. Cirac"]
+    year: 2005
+    venue: "Journal of Statistical Mechanics: Theory and Experiment 2005, P09012"
+    doi: "10.1088/1742-5468/2005/09/P09012"
+    arxiv: "cond-mat/0508353"
+    url: "https://arxiv.org/abs/cond-mat/0508353"
+    local_path: "sources/fulltext/alg_verstraete2005.pdf"
+    sha256: "c8852466ff91ee493b1eea099cd9f22bc10781c26961a1173ee269194e6de316"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/cond-mat/0508353", "Crossref DOI metadata"]
+    key_results_used: "Introduces auxiliary Majorana fermions so local fermionic Hamiltonians in arbitrary dimension map to local spin Hamiltonians; the auxiliary sector enforces the needed gauge constraints."
+    exact_location: "Abstract and mapping construction in arXiv:cond-mat/0508353."
+    reproduced_locally: false
+
+  - key: chen2018
+    title: "Exact Bosonization in Two Spatial Dimensions and a New Class of Lattice Gauge Theories"
+    authors: ["Yu-An Chen", "Anton Kapustin", "Djordje Radicevic"]
+    year: 2018
+    venue: "Annals of Physics 393, 234-253"
+    doi: "10.1016/j.aop.2018.03.024"
+    arxiv: "1711.00515"
+    url: "https://arxiv.org/abs/1711.00515"
+    local_path: "sources/fulltext/alg_chen2018.pdf"
+    sha256: "240cd43307b54da2ee21346860971e9516363e8e57a115b24f953d32ca2ec0ad"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/1711.00515", "Crossref DOI metadata"]
+    key_results_used: "Exact locality-preserving 2D bosonization maps fermions to a lattice gauge theory; on simply connected space it is an equivalence, with Gauss-law constraints encoding fermionic statistics."
+    exact_location: "Abstract and duality/Gauss-law construction in arXiv:1711.00515."
+    reproduced_locally: false
+
+  - key: chen2019
+    title: "Bosonization in Three Spatial Dimensions and a 2-Form Gauge Theory"
+    authors: ["Yu-An Chen", "Anton Kapustin"]
+    year: 2019
+    venue: "Physical Review B 100, 245127"
+    doi: "10.1103/PhysRevB.100.245127"
+    arxiv: "1807.07081"
+    url: "https://arxiv.org/abs/1807.07081"
+    local_path: "sources/fulltext/alg_chen2019.pdf"
+    sha256: "3c5f148e6af598e22cf4e515f9b4c6190d72d01a5bf38f395d8c027bc10de23c"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/1807.07081", "Crossref DOI metadata"]
+    key_results_used: "A locality-preserving 3D fermion-to-boson map sends an arbitrary fermionic lattice system to a 2-form Z2 gauge theory with an unusual Gauss law; locality is preserved but gauge constraints are unavoidable."
+    exact_location: "Abstract and main mapping/Gauss-law sections in arXiv:1807.07081."
+    reproduced_locally: false
+
+  - key: wegner1971
+    title: "Duality in Generalized Ising Models and Phase Transitions Without Local Order Parameters"
+    authors: ["Franz J. Wegner"]
+    year: 1971
+    venue: "Journal of Mathematical Physics 12, 2259-2272; author reprint arXiv:1411.5815"
+    doi: "10.1063/1.1665530"
+    arxiv: "1411.5815"
+    url: "https://arxiv.org/abs/1411.5815"
+    local_path: "sources/fulltext/alg_wegner2014.pdf"
+    sha256: "ee61e6d0feca144b31f5ed115d64b36c1c5aa239f60ceb1880ba4804d2c27e8c"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/1411.5815", "Crossref DOI metadata"]
+    key_results_used: "Generalized Ising duality maps interaction products to dual variables and yields Z2 lattice-gauge models with nonlocal order diagnostics; duality changes the interaction structure and does not self-dualize the ordinary 3D nearest-neighbor Ising model."
+    exact_location: "Original JMP paper as reprinted/discussed in arXiv:1411.5815; duality construction and examples."
+    reproduced_locally: false
+
+  - key: balian1975
+    title: "Gauge Fields on a Lattice. II. Gauge-Invariant Ising Model"
+    authors: ["R. Balian", "J. M. Drouffe", "C. Itzykson"]
+    year: 1975
+    venue: "Physical Review D 11, 2098-2103"
+    doi: "10.1103/PhysRevD.11.2098"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRevD.11.2098"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref metadata via DOI", "APS PDF route not pursued after repeated APS HTTP 403 results"]
+    key_results_used: "Develops the 3D Z2 gauge-Ising dual setting; relevant as a distinct dual model, not an exact solution of ordinary 3D Ising."
+    exact_location: "Physical Review D 11, pp. 2098-2103; equations not obtained."
+    reproduced_locally: false
+
+  - key: zhang2007
+    title: "Conjectures on Exact Solution of Three-Dimensional Simple Orthorhombic Ising Lattices"
+    authors: ["Zhi-Dong Zhang"]
+    year: 2007
+    venue: "Philosophical Magazine 87, 5309-5419"
+    doi: "10.1080/14786430701646325"
+    arxiv: "0705.1045"
+    url: "https://arxiv.org/abs/0705.1045"
+    local_path: "sources/fulltext/cla_zhang2007.pdf"
+    sha256: "172315743ffcc84f608fe7317c06d5e78097f486a832ac04c75a629c192021d7"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/0705.1045", "arXiv abstract API"]
+    key_results_used: "Unverified claim based on two conjectures (extra rotation and eigenvector weights): for the isotropic cubic model, sinh(2K_c)sinh(6K_c)=1 and exp(-2K_c)=(sqrt(5)-1)/2, hence K_c=0.24060591...; claimed exponents alpha=0, beta=3/8, gamma=5/4, delta=13/3, eta=1/8, nu=2/3."
+    exact_location: "Free-energy integrals Eqs. (3.37) and (3.62); critical relations Eqs. (3.60) and (3.54); summary in Sec. IX."
+    reproduced_locally: false
+
+  - key: wu2008comment
+    title: "Comment on a Recent Conjectured Solution of the Three-Dimensional Ising Model arXiv:0705.1045"
+    authors: ["Fa Yueh Wu", "Barry M. McCoy", "Michael E. Fisher", "Lincoln Chayes"]
+    year: 2008
+    venue: "Philosophical Magazine 88, 3093-3095"
+    doi: "10.1080/14786430802399257"
+    arxiv: "0811.3876"
+    url: "https://arxiv.org/abs/0811.3876"
+    local_path: "sources/fulltext/cla_wu2008comment.pdf"
+    sha256: "584f2cfa9ad6dca644ca3097990219ade8d8c56c75f678d0ef462ba529d5b9b5"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/0811.3876", "arXiv abstract API"]
+    key_results_used: "The fourfold free-energy integral contains unknown weights; fitting 11 unknown weight-series coefficients to 11 known HT terms predicts nothing, while later setting w_y=w_z=0 breaks that exact HT series. The claimed magnetization expands as 1-6x^8-12x^10-18x^12-..., versus the exact 1-2x^6-12x^10+14x^12-..., and even gives the wrong 2D beta=3/8 instead of 1/8."
+    exact_location: "Comment pp. 2-5; objections refer to Zhang Eqs. (49), (74), (99), (102), (103), and Appendix Eq. (A2)."
+    reproduced_locally: false
+
+  - key: zhang2008response
+    title: "Response to arXiv:0811.3876 Comment on a Recent Conjectured Solution of the Three-Dimensional Ising Model by Wu et al."
+    authors: ["Z. D. Zhang"]
+    year: 2008
+    venue: "Philosophical Magazine 88, 3097-3101"
+    doi: "10.1080/14786430802567620"
+    arxiv: "0812.2330"
+    url: "https://arxiv.org/abs/0812.2330"
+    local_path: "sources/fulltext/cla_zhang2008response.pdf"
+    sha256: "ffa3d42eb0441d82198e7033e67f95df435100d99bcf9f363a25c7dcdb58a5b5"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/0812.2330", "arXiv abstract API"]
+    key_results_used: "Author's response interprets Conjecture 1 as smoothing knot crossings and Conjecture 2 weights as a topological phase, while acknowledging the conjectures are not rigorous and rejecting HT/LT series as decisive at finite temperature."
+    exact_location: "Abstract and response discussion of Conjectures 1-2."
+    reproduced_locally: false
+
+  - key: wu2008rejoinder
+    title: "Rejoinder to the Response arXiv:0812.2330 to Comment on a Recent Conjectured Solution of the Three-Dimensional Ising Model"
+    authors: ["F. Y. Wu", "B. M. McCoy", "M. E. Fisher", "L. Chayes"]
+    year: 2008
+    venue: "arXiv preprint 0812.2837"
+    doi: null
+    arxiv: "0812.2837"
+    url: "https://arxiv.org/abs/0812.2837"
+    local_path: "sources/fulltext/cla_wu2008rejoinder.pdf"
+    sha256: "eae70fd22ad97fd120b6618e6055b8a6e7bf3c5547669bbd3d9660b9680cc91d"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/0812.2837", "arXiv abstract API"]
+    key_results_used: "Reiterates that 11 fitted unknown coefficients are not predictions and that the conjectured formula supplies no next HT coefficient and fails the rigorous LT expansion. arXiv:0812.0264 is unrelated cosmology; 0812.2837 is the actual rejoinder."
+    exact_location: "Entire two-page rejoinder, especially paragraphs 3-5."
+    reproduced_locally: false
+
+  - key: perk2012
+    title: "Erroneous Solution of Three-Dimensional Ising Lattices"
+    authors: ["Jacques H. H. Perk"]
+    year: 2012
+    venue: "arXiv preprint 1209.0731"
+    doi: null
+    arxiv: "1209.0731"
+    url: "https://arxiv.org/abs/1209.0731"
+    local_path: "sources/fulltext/cla_perk2012.pdf"
+    sha256: "90dbe8aee873787f808ca1b3ac1542d88675ed2336773416760d35673e2b2fc7"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/1209.0731", "arXiv abstract API"]
+    key_results_used: "Explains that the claimed Eq. (49) is an integral transform of unknown w_x,w_y,w_z. Fitting Eq. (A2) to known series is not a solution; choosing (1,0,0) yields a different series whose first nontrivial term is already wrong."
+    exact_location: "Sec. 3.1 discussion, PDF lines corresponding to pp. 6-7; explicit summary at lines 624-627 in extracted text."
+    reproduced_locally: false
+
+  - key: zhang2021
+    title: "Exact Solution for Three-Dimensional Ising Model"
+    authors: ["Degang Zhang"]
+    year: 2021
+    venue: "Symmetry 13, 1837"
+    doi: "10.3390/sym13101837"
+    arxiv: "2110.11233"
+    url: "https://arxiv.org/abs/2110.11233"
+    local_path: "sources/fulltext/cla_zhang2021.pdf"
+    sha256: "579f75ab39e57dc5f3d76e4d65e916b5fdc19dfc46814449f61598ebb57937a0"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/2110.11233", "arXiv abstract API"]
+    key_results_used: "Unverified claim that screw-boundary operators close an Onsager algebra, producing sinh(2H)sinh(2H_1+2H_2)=1 (Eq. 32), so isotropic H_c=0.30468893. Its own HT series Eq. (44) differs from the periodic series Eq. (45)."
+    exact_location: "Eqs. (15)-(17) for the disputed operator step; Eq. (32) critical condition; Eqs. (35)-(36) thermodynamic-limit expression; Eqs. (44)-(45) HT series."
+    reproduced_locally: false
+
+  - key: perk2022comment
+    title: "Comment on Exact Solution for Three-Dimensional Ising Model by Degang Zhang Followed by Response to the Reply by Degang Zhang"
+    authors: ["Jacques H. H. Perk"]
+    year: 2023
+    venue: "Symmetry 15, 374"
+    doi: "10.3390/sym15020374"
+    arxiv: "2202.03136"
+    url: "https://arxiv.org/abs/2202.03136"
+    local_path: "sources/fulltext/cla_perk2022comment.pdf"
+    sha256: "6829a479ac503efc916cfe0360e1045d29e634e41b3e43d8c58e4f8f34b2851a"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/2202.03136", "arXiv abstract API"]
+    key_results_used: "Peierls-Bogolyubov gives |f_screw-f_periodic|<=2|J_1|/m -> 0, contradicting boundary-dependent bulk series. The disputed A_p,1 operators share spectra but are not equal because eigenvalues attach to eigenvectors differently. Eq. (32) gives rotation-dependent beta_c values 0.3503982204, 0.3046889317, 0.2937911957 for couplings (0.5,1.0,1.5), and isotropic 0.3046889317 versus 0.221654626(5)."
+    exact_location: "Comment Eqs. (1)-(3), discussion of Zhang Eqs. (15)-(17), and numerical test of Zhang Eq. (32); appended response Eqs. (4)-(7)."
+    reproduced_locally: false
+
+  - key: zhang2023reply
+    title: "Reply to Comment on Exact Solution for Three-Dimensional Ising Model Added by Reply to the Reply by Jacques H. H. Perk"
+    authors: ["Degang Zhang"]
+    year: 2023
+    venue: "Symmetry 15, 375"
+    doi: "10.3390/sym15020375"
+    arxiv: "2302.10139"
+    url: "https://arxiv.org/abs/2302.10139"
+    local_path: "sources/fulltext/cla_perk2023reply.pdf"
+    sha256: "5918e7eff77e6c7e2f5af60bb7e1fcd371b97117181ba8c979b382869fcc897e"
+    obtained: full
+    access_routes_tried: ["https://arxiv.org/pdf/2302.10139", "arXiv abstract API"]
+    key_results_used: "Author defends the operator identification via new primed spin variables, accepts bulk boundary-condition independence, and claims alpha_3D=0, nu_3D=2/3, mu_3D=4/3. Perk's appended response points out that the new primed variable is not the same physical Ising spin and does not repair the operator equality."
+    exact_location: "Reply pp. 1-2 and the appended Reply to Symmetry 2023, 15, 375; compare Perk arXiv:2202.03136v6."
+    reproduced_locally: false
+
+  - key: guttmann_enting1993
+    title: "Series studies of the Potts model. I. The simple cubic Ising model"
+    authors: ["A. J. Guttmann", "I. G. Enting"]
+    year: 1993
+    venue: "Journal of Physics A: Mathematical and General 26(4), 807-821"
+    doi: "10.1088/0305-4470/26/4/010"
+    arxiv: "hep-lat/9212032"
+    url: "https://arxiv.org/abs/hep-lat/9212032"
+    local_path: "sources/fulltext/num_guttmann_enting1993.pdf"
+    sha256: "b866f359ca4bc0f75d534f8561cc2a286edd0680a0b37e3f7d8a741830609bff"
+    obtained: full
+    access_routes_tried: ["arXiv full text hep-lat/9212032 (succeeded)"]
+    key_results_used: "Published simple-cubic low-temperature partition-function coefficients lambda_15 = 65337 and lambda_16 = -200934, and high-temperature coefficient a_22 = 16809862992. Used ONLY as an external witness against independently derived finite-lattice-method coefficients; never as the source of a coefficient and never as a fit input."
+    exact_location: "Table 2, arXiv PDF page 21 of 24. Normalisation conventions are fixed by Eqs. (9) and (17); a local exact formal-logarithm conversion is required before comparison with this repository's reduced free energy."
+    reproduced_locally: true
+
+  - key: cardy1985_yang_lee
+    title: "Conformal Invariance and the Yang-Lee Edge Singularity in Two Dimensions"
+    authors: ["John L. Cardy"]
+    year: 1985
+    venue: "Physical Review Letters 54(13), 1354-1356"
+    doi: "10.1103/PhysRevLett.54.1354"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRevLett.54.1354"
+    local_path: null
+    sha256: null
+    obtained: abstract_only
+    access_routes_tried: ["Oxford University Research Archive metadata record uuid:596c8430-1f5f-4f30-8c5a-f01a452cd14a (abstract obtained)", "APS full text (paywalled, not obtained)"]
+    key_results_used: "Two-dimensional conformal invariance gives the Yang-Lee edge exponent sigma = -1/6. Used ONLY as an external calibration target for the 2D control in experiments/e34; never as estimator input, fit parameter, or window/model selection criterion."
+    exact_location: "Article abstract: 'This leads to the value sigma=-1/6 for the edge exponent'. No section or equation number is asserted because only the abstract was obtained. Metadata confirms pp. 1354-1356."
+    reproduced_locally: false
+
+  - key: macdonald2000_saw
+    title: "Self-avoiding walks on the simple cubic lattice"
+    authors: ["D. MacDonald", "S. Joseph", "D. L. Hunter", "L. L. Moseley", "N. Jan", "A. J. Guttmann"]
+    year: 2000
+    venue: "Journal of Physics A: Mathematical and General 33(34), 5973-5983"
+    doi: "10.1088/0305-4470/33/34/303"
+    arxiv: null
+    url: "https://doi.org/10.1088/0305-4470/33/34/303"
+    local_path: null
+    sha256: null
+    obtained: abstract_only
+    access_routes_tried: ["Publisher DOI/full text (paywalled/bot challenge)", "Crossref metadata", "OpenAlex indexed abstract", "Unpaywall (no repository copy)", "author/institutional repository searches"]
+    key_results_used: "Source-audit candidate only. The abstract calls mu < 4.7114 a rigorous upper bound, but the proof and its numerical certificate were not obtainable, so this value is explicitly excluded from the certified K_c interval."
+    exact_location: "Article abstract, final sentence: 'A new, improved rigorous upper bound for the connective constant mu<4.7114 is obtained.' No page, section, equation, theorem, or corollary is asserted because only the abstract was obtained."
+    reproduced_locally: false
+
+  - key: schram2011_exact_saw
+    title: "Exact enumeration of self-avoiding walks"
+    authors: ["R. D. Schram", "G. T. Barkema", "R. H. Bisseling"]
+    year: 2011
+    venue: "Journal of Statistical Mechanics: Theory and Experiment, P06019"
+    doi: "10.1088/1742-5468/2011/06/P06019"
+    arxiv: null
+    url: "https://webspace.science.uu.nl/~bisse101/Articles/schram11.pdf"
+    local_path: "sources/fulltext/schram_barkema_bisseling2011.pdf"
+    sha256: "898d8333e8d70acd279e29f226ff108550b132463aa662f86df590b0ad72cb12"
+    obtained: full
+    access_routes_tried: ["Author-hosted full PDF (succeeded)"]
+    key_results_used: "Imported exact simple-cubic rooted SAW count c_36=2941370856334701726560670. Block submultiplicativity gives an explicit geometric susceptibility majorant and K_c>=atanh(c_36^(-1/36)). The paper's fitted mu=4.6840401(50) is explicitly not used."
+    exact_location: "Section II, equations (3)-(6), proves the exact length-doubling inclusion-exclusion identity; Section IV first paragraph and Table I give Z_36=2941370856334701726560670."
+    reproduced_locally: false
+
+  - key: bonati2014_peierls
+    title: "The Peierls argument for higher dimensional Ising models"
+    authors: ["Claudio Bonati"]
+    year: 2014
+    venue: "European Journal of Physics 35, 035002"
+    doi: "10.1088/0143-0807/35/3/035002"
+    arxiv: "1401.7894"
+    url: "https://arxiv.org/abs/1401.7894"
+    local_path: "sources/fulltext/bonati2014_peierls.pdf"
+    sha256: "2bd9daa39aad312c9a1141b404a9de19020c85e97d0b779644ddfe71567acd36"
+    obtained: full
+    access_routes_tried: ["arXiv full text 1401.7894 (succeeded)"]
+    key_results_used: "For D=3, the Peierls construction bounds the minus-spin density by 3*x^3*(9-11*x+4*x^2)/(16*(1-x)^3), x=9 exp(-4 beta J); setting this bound to 1/2 yields a rigorous but weak upper bound on K_c."
+    exact_location: "Section 3, equations (17)-(23); critical-coupling interpretation in Section 5."
+    reproduced_locally: true
+
+
+  - key: davies1990_onsager
+    title: "Onsager's algebra and superintegrability"
+    authors: ["B. Davies"]
+    year: 1990
+    venue: "Journal of Physics A: Mathematical and General 23, 2245-2261"
+    doi: "10.1088/0305-4470/23/12/010"
+    arxiv: null
+    url: "https://doi.org/10.1088/0305-4470/23/12/010"
+    local_path: null
+    sha256: null
+    obtained: abstract_only
+    access_routes_tried: ["IOP publisher page (abstract and metadata obtained; full text paywalled)", "Crossref DOI metadata", "IOP PDF route (subscription required)"]
+    key_results_used: "Historical provenance only: the publisher abstract says the paper considers irreducible representations of the Onsager algebra and Ising-like finite-system spectra. No theorem about arbitrary quotients is inferred from this abstract."
+    exact_location: "Publisher abstract only; no theorem, equation, or page-level mathematical claim from the full article is used."
+    reproduced_locally: false
+
+  - key: davies1991_onsager
+    title: "Onsager's algebra and the Dolan-Grady condition in the non-self-dual case"
+    authors: ["Brian Davies"]
+    year: 1991
+    venue: "Journal of Mathematical Physics 32, 2945-2950"
+    doi: "10.1063/1.529036"
+    arxiv: null
+    url: "https://doi.org/10.1063/1.529036"
+    local_path: null
+    sha256: null
+    obtained: abstract_only
+    access_routes_tried: ["Crossref DOI metadata and abstract", "AIP publisher route (full text not obtained)", "NASA ADS metadata"]
+    key_results_used: "Historical provenance only: the abstract says that a Dolan-Grady pair generates an Onsager algebra in the non-self-dual case. The no-go proof instead uses the universal presentation stated in the full Date-Roan source."
+    exact_location: "Crossref abstract only; no theorem, equation, or page-level mathematical claim from the full article is used."
+    reproduced_locally: false
+
+  - key: roan1991_onsager
+    title: "Onsager's Algebra, Loop Algebra and Chiral Potts Model"
+    authors: ["Shi-shyr Roan"]
+    year: 1991
+    venue: "Max-Planck-Institut fuer Mathematik preprint MPI/91-70"
+    doi: null
+    arxiv: null
+    url: "https://archive.mpim-bonn.mpg.de/3714/1/preprint_1991_70.pdf"
+    local_path: "sources/fulltext/roan1991_onsager.pdf"
+    sha256: "82988421997ae8fb388c79c4f46381def00ee15ecaaed04922bd7ab94c352313"
+    obtained: full
+    access_routes_tried: ["Official MPIM archive full PDF (succeeded)"]
+    key_results_used: "Proposition 1 realizes the Onsager algebra inside the sl2 loop algebra and the following paragraph identifies it with the fixed subalgebra of the loop involution; the evaluation-map discussion gives direct sums of sl2 at distinct non-fixed reciprocal orbits."
+    exact_location: "Proposition 1 and the paragraph immediately following it, scan PDF pages 11-12; evaluation map in Section 2, especially Lemma 7."
+    reproduced_locally: false
+
+  - key: date_roan2000_onsager
+    title: "The structure of quotients of the Onsager algebra by closed ideals"
+    authors: ["Etsuro Date", "Shi-shyr Roan"]
+    year: 2000
+    venue: "Journal of Physics A: Mathematical and General 33, 3275-3296"
+    doi: "10.1088/0305-4470/33/16/316"
+    arxiv: "math/9911018"
+    url: "https://arxiv.org/abs/math/9911018"
+    local_path: "sources/fulltext/date_roan2000_onsager.pdf"
+    sha256: "c1334b58ed30c77b1592e628d8bf26c40d52ef63b9226ecad1ddec0e96771b06"
+    obtained: full
+    access_routes_tried: ["arXiv full text math/9911018v3 (succeeded)", "Crossref DOI metadata"]
+    key_results_used: "OA is the fixed subalgebra of C[t,t^-1] tensor sl2 under t->t^-1 combined with the Chevalley involution. Theorem 2 classifies closed ideals by reciprocal polynomials with even multiplicity at t=+/-1; Lemma 1 gives Chinese-remainder splitting; Theorem 3 identifies non-fixed local factors with truncated sl2 current algebras; Proposition 4 proves the t=+/-1 factors are solvable. These statements imply that every finite-dimensional semisimple quotient of OA is a direct sum of sl2 copies."
+    exact_location: "Section 2 definition after Theorem 1; Section 3 Lemma 1 and Theorem 2; Section 4 Proposition 1 and Theorem 3; Section 5 Proposition 4; Section 6 Lemma 14 and Theorem 6."
+    reproduced_locally: true
+
+  - key: peierls1936_ising
+    title: "On Ising's model of ferromagnetism"
+    authors: ["R. Peierls"]
+    year: 1936
+    venue: "Mathematical Proceedings of the Cambridge Philosophical Society 32, 477-481"
+    doi: "10.1017/S0305004100019174"
+    arxiv: null
+    url: "https://doi.org/10.1017/S0305004100019174"
+    local_path: null
+    sha256: null
+    obtained: abstract_only
+    access_routes_tried: ["Crossref DOI metadata and abstract (succeeded)", "Cambridge DOI landing route (no full text obtained)"]
+    key_results_used: "Historical provenance for the Peierls low-temperature contour argument only. The local theorem uses the self-contained flip and counting proof in proofs/kc_upper_peierls.md, not an inaccessible step from the original article."
+    exact_location: "Crossref abstract only; no equation, theorem number, or full-text claim is imported."
+    reproduced_locally: false
+
+  - key: griffiths1964_peierls
+    title: "Peierls Proof of Spontaneous Magnetization in a Two-Dimensional Ising Ferromagnet"
+    authors: ["Robert B. Griffiths"]
+    year: 1964
+    venue: "Physical Review 136, A437-A439"
+    doi: "10.1103/PhysRev.136.A437"
+    arxiv: null
+    url: "https://doi.org/10.1103/PhysRev.136.A437"
+    local_path: null
+    sha256: null
+    obtained: metadata_only
+    access_routes_tried: ["Crossref DOI metadata (succeeded; no abstract supplied)", "APS DOI/full-text route (full text not obtained)"]
+    key_results_used: "Historical context for the rigorous correction of Peierls' two-dimensional argument. No mathematical step in the three-dimensional certificate depends on unavailable full text."
+    exact_location: "Bibliographic metadata only; no theorem, equation, or page-level result from the article is asserted."
+    reproduced_locally: false
+
+  - key: friedli_velenik2017_ising_ch3
+    title: "Statistical Mechanics of Lattice Systems: A Concrete Mathematical Introduction, Chapter 3: The Ising Model"
+    authors: ["Sacha Friedli", "Yvan Velenik"]
+    year: 2017
+    venue: "Cambridge University Press; author-supplied final-draft Chapter 3"
+    doi: "10.1017/9781316882603"
+    arxiv: null
+    url: "https://www.unige.ch/math/folks/velenik/smbook/Ising_Model.pdf"
+    local_path: "sources/fulltext/friedli_velenik_ising_ch3.pdf"
+    sha256: "4809d134deb0a97bb37bcc306345d3ace659f7543bbcd8cfedde53c5dbe47045"
+    obtained: full
+    access_routes_tried: ["Authors' book website, freely supplied final-draft Chapter 3 PDF (succeeded)"]
+    key_results_used: "Modern rigorous reference for the finite-volume plus-boundary Peierls flip: a fixed contour has probability at most exp(-2 beta times its size), and a uniform minus-spin probability below 1/2 gives positive plus-state magnetization. The chapter explicitly assigns the higher-dimensional extension; all 3D constants and combinatorics are proved locally."
+    exact_location: "Section 3.7.2, equations (3.29)-(3.40), especially Lemma 3.37; Exercise 3.20 states the extension to dimensions d>=3."
+    reproduced_locally: true
+
+  - key: kesten1963_saw_ratio
+    title: "On the Number of Self-Avoiding Walks"
+    authors: ["Harry Kesten"]
+    year: 1963
+    venue: "Journal of Mathematical Physics 4(7), 960-969"
+    doi: "10.1063/1.1704022"
+    arxiv: null
+    url: "https://doi.org/10.1063/1.1704022"
+    local_path: null
+    sha256: null
+    obtained: abstract_only
+    access_routes_tried: ["AIP article and direct PDF (Cloudflare/paywall; full text not obtained)", "Crossref abstract and bibliographic metadata (succeeded)", "OpenAlex availability record (closed access; no repository full text)", "general author/repository searches"]
+    key_results_used: "[EXTERNAL, AUDIT ONLY] The primary abstract says c_(n+2)/c_n - mu^2 tends to zero and gives asymptotic estimates for that difference. It does not state the proposed finite one-sided inequality. No certified endpoint depends on unavailable primary text."
+    exact_location: "Publisher/Crossref abstract and bibliographic metadata only. No page-level theorem or proof from the primary article is asserted because the full text was not obtained."
+    reproduced_locally: false
+
+  - key: madras_slade1996_ch7_preview
+    title: "The Self-Avoiding Walk, Chapter 7: Pattern theorems"
+    authors: ["Neal Madras", "Gordon Slade"]
+    year: 1996
+    venue: "Probability and Its Applications, Birkhauser Boston, pp. 229-255"
+    doi: "10.1007/978-1-4612-4132-4_7"
+    arxiv: null
+    url: "https://link.springer.com/chapter/10.1007/978-1-4612-4132-4_7"
+    local_path: "sources/fulltext/madras_slade1996_ch7_preview.pdf"
+    sha256: "4f3db221eb1a4fb8162b4f1fed325c3f41ad9d7912550deb51ee8a0200bc8135"
+    obtained: partial_preview
+    access_routes_tried: ["Official Springer downloadable two-page chapter preview, pp. 229-230 (succeeded)", "Google Books legal limited preview, book id xo32YMglDOcC, p. 248 (succeeded)", "Springer complete chapter PDF (subscription-only; not obtained)"]
+    key_results_used: "[EXTERNAL, AUDIT ONLY] Chapter opening equations (7.1.1)-(7.1.3) identify Kesten's results as ratio limits. Google Books preview p. 248 displays Theorem 7.3.4(a): lim_(N->infinity) c_(N+2)/c_N = mu^2. No finite one-sided inequality is stated, so the ratio candidate is excluded from the certified endpoint."
+    exact_location: "Official preview pp. 229-230; Google Books limited preview p. 248, Theorem 7.3.4(a). Equation (1.2.5), visible through Google Books search on p. 9, belongs to the subadditivity section and is not the ratio theorem."
+    reproduced_locally: false
+
+  - key: bauerschmidt2012_saw_lectures
+    title: "Lectures on self-avoiding walks"
+    authors: ["Roland Bauerschmidt", "Hugo Duminil-Copin", "Jesse Goodman", "Gordon Slade"]
+    year: 2012
+    venue: "Clay Mathematics Proceedings 15"
+    doi: null
+    arxiv: null
+    url: "https://personal.math.ubc.ca/~slade/saw_buzios.pdf"
+    local_path: "sources/fulltext/bauerschmidt_duminil_copin_goodman_slade2012_saw_lectures.pdf"
+    sha256: "f41468f516eea8d4ba5866d8c444636fa579ca57bcb27210204718515a2530cd"
+    obtained: full
+    access_routes_tried: ["Gordon Slade's author-hosted full PDF (succeeded)"]
+    key_results_used: "[EXTERNAL, AUDIT ONLY] Section 1.3, equation (1.17), states Kesten's theorem as lim_(n->infinity) c_(n+2)/c_n = mu^2. It supplies no finite-n sign and therefore cannot justify mu^2 <= c_(n+2)/c_n."
+    exact_location: "Section 1.3, printed page 4, equation (1.17), with nearest-neighbour SAWs on Z^d defined in Sections 1.1-1.2."
+    reproduced_locally: false
+
+  - key: grimmett2020_kesten_work
+    title: "Harry Kesten's work in probability theory"
+    authors: ["Geoffrey R. Grimmett"]
+    year: 2020
+    venue: "arXiv:2004.03861"
+    doi: null
+    arxiv: "2004.03861"
+    url: "https://arxiv.org/abs/2004.03861"
+    local_path: "sources/fulltext/grimmett2020_kesten_work.pdf"
+    sha256: "1ab2dc69831fcdf3ca26a05506cb6766dffd6d24cbcb8fc427e9555b0f4729b7"
+    obtained: full
+    access_routes_tried: ["arXiv full PDF 2004.03861v2 (succeeded)"]
+    key_results_used: "[EXTERNAL, AUDIT ONLY] Theorem 5.1(a) records abs(c_(n+2)/c_n - mu^2) <= A*n^(-1/3) for some unspecified A. This explicitly gives a two-sided error estimate, not the proposed one-sided sign, and no numerical A usable at n=34."
+    exact_location: "Section 5, Theorem 5.1(a), printed page 18; bibliography item K24 identifies Kesten's 1963 paper."
+    reproduced_locally: false
+
+  - key: schram2017_bcc_fcc
+    title: "Exact enumeration of self-avoiding walks on BCC and FCC lattices"
+    authors: ["Raoul D. Schram", "Gerard T. Barkema", "Rob H. Bisseling", "Nathan Clisby"]
+    year: 2017
+    venue: "arXiv:1703.09340"
+    doi: null
+    arxiv: "1703.09340"
+    url: "https://arxiv.org/abs/1703.09340"
+    local_path: "sources/fulltext/schram_barkema_bisseling_clisby2017_bcc_fcc.pdf"
+    sha256: "002b53281c491a0589b43139918db1cd22d0c35edfa4f9f9060e744175ebfc2f"
+    obtained: full
+    access_routes_tried: ["arXiv full PDF 1703.09340v1 (succeeded)"]
+    key_results_used: "[EXTERNAL, AUDIT ONLY] The Introduction says the exact simple-cubic series through N_max=36 was still the record as of 2017. The paper's longer displayed terms are extrapolations for BCC/FCC, not new exact simple-cubic counts."
+    exact_location: "Introduction, printed page 2, paragraph ending 'To date, this is the record series for the SC lattice.'"
+    reproduced_locally: false

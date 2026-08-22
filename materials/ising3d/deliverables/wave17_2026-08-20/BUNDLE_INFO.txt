@@ -1,0 +1,61 @@
+ISING3D EXACT-RESEARCH WAVE-17 PAPER AND ARTIFACT BUNDLE
+========================================================
+
+Purpose
+-------
+This directory consolidates three paper drafts and the exact repository artifacts behind the current most important results. The 3D Ising model remains unsolved. Every paper separates THEOREM, LEMMA, COMPUTATION, EXTERNAL, and UNRESOLVED scope.
+
+Papers
+------
+papers/paperA_no_go_mechanisms.tex / .pdf
+  Exact no-go certificates for Dolan--Grady, tridiagonal, claw/Majorana,
+  Pauli-string flux, spectral Gaussianity, all-size anisotropic Gaussian,
+  tetrahedron/RLLL, and positive-real Kac--Ward mechanisms. The full complex
+  scalar Kac--Ward family is explicitly left unresolved.
+
+papers/paperB_series_bounds.tex / .pdf
+  Exact high-temperature series through v^28, low-temperature series through
+  x^56, finite structure frontiers, and the current rigorous K_c interval.
+
+papers/paperC_layer_DLA.tex / .pdf
+  Exact characteristic-zero local-term DLA classifications for 2xL, L=2..5,
+  plus the all-L invariant-form containment and dimension upper bound. All-L
+  saturation/type equality beyond L=5 is explicitly open.
+
+Staged artifacts
+----------------
+docs/       README, reports, proof notes, notes, and checkpoints copied from
+            the repository after the wave-17 documentation repairs.
+artifacts/  experiments, results, source, tests, and problem_specification.md.
+            The gaussian_2x6_work/ directory is retained because the independent
+            verifier replays its content-keyed Euclidean state files.
+
+Next bounded frontier
+---------------------
+The bundle also contains the wave-18 Kac--Ward branch-11111 preflight:
+  artifacts/experiments/e156_kw_full_thin_census.py
+  artifacts/tests/test_kw_full_thin_census.py
+  artifacts/results/kac_ward/full_thin_census.json
+The exact producer launched 1 of 16,384 held thin-coordinate sections under a
+20-second process-time cap, recomputed the anchor controls, and measured an
+exhaustive-census estimate of 100002.627584 process seconds. The artifact is
+PREFLIGHT/[UNRESOLVED], not a full-branch theorem; missing sections and all
+characteristic-zero conclusions remain open.
+
+Reproduction
+------------
+Run from the repository root with the repository interpreter:
+  .venv/bin/python tests/test_gaussian_2x6.py
+  .venv/bin/python tests/test_lt_x56.py
+  ./tests/run_all.sh
+
+The wave-17 acceptance record is FINAL: 123 total, 123 passed, 0 failed.
+The full suite is not silently re-run by this bundle creation step.
+
+Provenance and limitations
+--------------------------
+- K_c benchmark 0.221654626 is comparison-only; it was not used to select or fit results.
+- Modular ranks/gcd degrees are used only in their proven one-sided directions.
+- Finite series do not prove a closed form, D-finiteness, or a thermodynamic-limit solution.
+- The staged docs are a snapshot; executable reproduction should use the repository root.
+- MANIFEST.json records byte sizes and SHA-256 hashes for every staged file except MANIFEST.json itself (self-referential hashing is excluded).

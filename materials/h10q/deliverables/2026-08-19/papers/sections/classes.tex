@@ -1,0 +1,183 @@
+\section{Class Dichotomy, Characterization, and Escapes}
+
+Fix an admissible parameter $a$, put
+\[
+ A=1+4a^2,\qquad \delta_\tau=1-A\tau^2,
+ \qquad \alpha=-\delta_\tau A,
+\]
+and first consider the prime-member family $b=\varepsilon q$, with
+$\varepsilon\in\{\pm1\}$ and $q$ prime.  An \emph{aligned class} means a
+nonempty prime progression in which the Hilbert symbols at every controlled
+finite place, at the moving place $q$, and at the real place are all $+1$.
+This is deliberately a frozen-side notion: odd-valuation primes emerging from
+the value of $P(b)$ are a separate obligation.
+% src: THEOREMS.md:973-991
+
+\subsection{The L10 dichotomy}
+
+\begin{proposition}[Canonical alignment and the opposite wall; \textnormal{PROVED in the stated scope}]
+On the canonical branch $\tau=2a/A$, the prime-$b$ family is aligned with the
+canonical square class $-1$ in the exact sense that
+\[
+ \delta_\tau=\frac1A,\qquad \alpha=-1.
+\]
+On the branch $\tau=0$, if $a$ is odd, $A$ is prime,
+$A\nmid 2zD_z$, and the prime $q\ne A$ satisfies the prescribed unit
+conditions, then no aligned class exists.
+\end{proposition}
+% src: THEOREMS.md:1003-1014
+% src: THEOREMS.md:1016-1042
+
+The first assertion is an identity, not permission to discard the places
+above $A$: although $\alpha$ is an $A$-unit, $\delta_\tau=1/A$ forces those
+places back into the controlled set.  This distinction is essential; the
+obsolete grid count obtained by omitting them is not used here.  For the
+second assertion, $\tau=0$ gives $\delta_\tau=1$ and $\alpha=-A$.  The local
+calculation at $A$ yields
+\[
+ (x,d)_A\,\leg{A}{q}=\leg{-2\varepsilon}{A}=-1.
+\]
+Indeed admissibility gives $A\equiv5\pmod 8$, so
+$\leg{-1}{A}=+1$ and $\leg{2}{A}=-1$, independently of the sign
+$\varepsilon$.  Two required symbols are therefore permanently
+anti-correlated.  This is a theorem for prime integral $A$ under the displayed
+hypotheses; it is not a claim extracted from a finite failure search.
+% src: THEOREMS.md:1016-1042
+
+\subsection{Free branches, an immovable wall}
+
+Branch completion itself costs nothing.  If $\tau=p/q$ is rational in the
+existing parameters and its denominator is proved nonzero on the base
+locus, adjoining that branch introduces no inverse witness.  Admissibility
+makes $A$ a nonsquare in $\Q_2$, hence $\delta_\tau\ne0$; the norm identity
+in the unrefereed argument of Sun~\cite{sun} is uniform in $\tau$; and a
+finite disjunction of branch equations is represented by their product in
+the same witnesses.  Explicit choices meet all four square classes of
+$\langle-1,A\rangle$, including the square branch
+\[
+ \tau^\dagger=\frac{1+2a^2}{1+4a^2},\qquad
+ \alpha=(2a^2)^2.
+\]
+% src: THEOREMS.md:1100-1146
+% src: RESULTS.md:89-91
+
+The corrected controlled set for a prime member is
+\[
+ S=\{2,3,5,7\}\cup\supp(\alpha)\cup\supp(\delta_\tau).
+\]
+Outside $S$, the fixed content of $P$ has even valuation; after that content
+is removed, the reduction is a nonzero polynomial whose degree prevents a
+permanent odd valuation at the remaining primes.  Thus no fixed bad place is
+silently omitted.
+% src: THEOREMS.md:1189-1209
+
+More importantly, changing branches does not change the obstruction.  For
+prime $A$, admissible $a$, and $v_A(z)\le0$, every branch in the relevant
+square-class group satisfies
+\[
+ (x,d)_A(x,d)_q=-1.
+\]
+Hence at least one controlled symbol is negative.  This branch-independent
+wall was checked exactly on $2{,}136$ extended instances across all four
+explicit branches; the computation confirms the proved identity rather than
+replacing it.
+% src: THEOREMS.md:1214-1239
+% src: RESULTS.md:95
+
+\begin{theorem}[The L11h characterization; \textnormal{PROVED}]
+For the prime-$b$ family, an aligned class exists at the cell $(w,u)$, with
+$z=wu$, if and only if the numerator of $z$ has a prime divisor
+$p\equiv1\pmod4$.  On the finite grid this selects $190$ of $353$ cells; the
+other $163$ cells are unreachable by this family on every branch.
+\end{theorem}
+% src: THEOREMS.md:1241-1265
+% src: RESULTS.md:96
+
+\begin{proof}[Proof sketch]
+For necessity, the generalized wall says that alignment is impossible unless
+some odd prime $p\mid A$ also has $v_p(z)>0$.  Write $a=m/n$ in lowest terms.
+Such a prime divides $n^2+4m^2$, and therefore
+$(2m n^{-1})^2\equiv-1\pmod p$; consequently $p\equiv1\pmod4$.  The
+factor-by-factor telescoping argument applies also when $A$ is composite or
+rational, so this necessity is \textsc{proved} for every admissible $a$, not
+merely supported by a search.
+% src: THEOREMS.md:1415-1431
+
+Conversely, let $p\equiv1\pmod4$ divide the numerator of $z$.  Choose odd
+representatives $m,n$ satisfying
+$n^2\equiv-4m^2\pmod p$ and set $a=m/n$.  Then $a$ is admissible and
+$v_p(A)>0$, so the factor shared by $A$ and $z$ breaks the wall.  Freezing the
+complete controlled set gives an explicit aligned progression.  The
+construction, including its escape prime, chosen $a$, branch, and modulus,
+is replayed on all $190$ predicted rows.  This constructive sufficiency and
+the preceding necessity make the equivalence the structural centre of the
+class analysis.
+% src: THEOREMS.md:1253-1259
+\end{proof}
+
+\subsection{Non-coprime escapes and complete grid coverage}
+
+The characterization concerns $b=\varepsilon q$.  The only effective door
+through the generalized coprime wall is to share a cell prime deliberately:
+\[
+ b=\varepsilon f q,\qquad f\mid z.
+\]
+This produces aligned escape classes at $103$ of the $163$ prime-family-walled
+cells.  Their frozen-side alignment is \textsc{proved} row by row; the
+remaining $60$ walled cells with no such escape are closed instead by direct,
+fully soluble witnesses.
+% src: RESULTS.md:98-100
+
+The Schinzel audit also keeps six legacy residual rational/composite-$b$
+witnesses separate as pointwise certificates.  They are unconditional local
+witnesses, but they are not promoted into prime progressions and give no
+prime-value theorem.  The eventual last cell, $(89,-2)$, was closed by the
+replayed square-branch witness
+$(a,b,\tau)=(3,89/367,19/37)$, completing cell coverage.
+% src: README.md:40
+% src: THEOREMS.md:1374-1382
+
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+verified object & coverage & status\\
+\hline
+L11 prime-$b$ aligned classes & $190/190$ & \textsc{proved per row}\\ % src: RESULTS.md:96
+non-coprime escape classes & $103/103$ & \textsc{proved per row}\\ % src: RESULTS.md:98-99
+all aligned classes, with a zero-bad member & $293/293$ & \textsc{proved per row}\\ % src: RESULTS.md:108
+all grid cells, with a soluble witness & $353/353$ & \textsc{proved per row}\\ % src: RESULTS.md:100
+\hline
+\end{tabular}
+\end{center}
+The class total is exactly the disjoint sum of the L11 and escape families;
+the cell total additionally uses direct pointwise witnesses.  Neither total
+asserts a uniform theorem beyond the verified grid.
+% src: THEOREMS.md:1481-1509
+
+\subsection{Why no square-class shortcut remains}
+
+\begin{proposition}[L13c; \textnormal{PROVED per row}]
+For every one of the $706$ cell--branch rows, $P$ is irreducible of degree
+$8$ over $\Q$.  Consequently no constant-square or weak square-factor form
+collapses the emergent-place obligation on the grid.
+\end{proposition}
+% src: THEOREMS.md:1384-1393
+% src: RESULTS.md:101
+
+The boundary between theorem and experiment is sharp.  The irreducibility
+certificates are \textsc{proved}.  By contrast, the $137.5$ million exact
+square-class tests with no admissible hit are \textsc{evidence} against a
+hidden special-value shortcut, not a universal nonexistence theorem.
+Likewise the observed Galois group $D_8\wr C_2$ is \textsc{evidence}: its
+cycle types matched all $28{,}240$ certified unramified Frobenius samples,
+but no group-identification proof is claimed.
+% src: THEOREMS.md:1393-1402
+% src: RESULTS.md:101
+
+Finally, the earlier zero-bad search already supplied $24$ certified members
+across $15$ distinct cells; those are \textsc{proved instances}, while the
+rough quarter-density inferred from the sample is only \textsc{evidence}.
+The later per-class replay strengthens the finite conclusion to the
+$293/293$ line in the table, without changing the open uniform problem.
+% src: THEOREMS.md:1404-1413
+% src: THEOREMS.md:1481-1510

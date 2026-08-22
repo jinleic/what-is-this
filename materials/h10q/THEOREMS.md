@@ -1470,6 +1470,18 @@ emergent-free member of *each aligned class* — the analytic input to the
 conditional record) stays OPEN; the ladder closes *this grid*, not H,
 since H requires the class-member statement for all cells uniformly rather
 than one witness per cell.
+*Wording note (2026-08-19).* H is existential in both the class and the
+member: it needs **one selected aligned class per cell** carrying an
+emergent-free member, not a member of *every* aligned class. Read "each
+aligned class" in this and neighbouring rows as "the selected class of each
+cell"; the grid ledger verifies all 293, which is stronger than H needs.
+
+*Wording note (2026-08-19).* H is existential in both the class and the
+member: it needs **one selected aligned class per cell** carrying an
+emergent-free member, not a member of *every* aligned class. Read
+"each aligned class" in this and neighbouring rows as "the selected
+class of each cell"; the grid ledger verifies all 293, which is
+stronger than H needs.
 
 
 **Normalization note.** The kernel's `_l10_P` evaluates to
@@ -1710,12 +1722,11 @@ dominant uncertainty; no structural shortcut (L13c).
 
 - **Schinzel H implies the per-class clause of H (PROVED implication;
   conclusion CONDITIONAL).** Fix a verified aligned class and write
-  $F(t)=P(\varepsilon f(q_1+Nt))=c\,G(t)$ with $c>0$ supported on
-  $S=\{2,3,5,7\}\cup\mathrm{supp}(\alpha)\cup\mathrm{supp}(\delta)\cup\mathrm{supp}(f)$
-  and $G$ primitive with positive leading coefficient. Schinzel's
-  Hypothesis H for $\{q_1+Nt,\,G(t)\}$ yields infinitely many members
-  with ladder verdict *zero*. Proof: at a simultaneous prime value the
-  $S$-strip leaves exactly one odd-valuation place $R=G(t)$ (the moving
+  $F(t)=P(\varepsilon f(q_1+Nt))=c\,G(t)$ with $c>0$ having the **square class** of $c$ supported on $S$ (literal $S$-support is FALSE for
+  cells whose $z$ has denominator primes outside $S$ — counterexample
+  $(w,z)=(3,3/11)$, $a=1$, $q_1=19$: $c=9072/15692141883605$ with outside part
+  $11^{-12}$ — but the square class is what the parity/reciprocity step needs,
+  since even outside valuations contribute symbol $+1$; corrected 2026-08-19)
   prime has $v_Q(P(b))=0$ since $P(b)\equiv-\delta a^4Z^4A^2 \bmod Q$);
   all other outside places have even valuation and symbol $+1$; the
   class certificate pins the frozen, moving and infinite symbols to
@@ -1837,8 +1848,9 @@ dominant uncertainty; no structural shortcut (L13c).
   for every canonical wall met so far** — $131$
   ($N=45046449133189418880$), $139$ ($N=1236465506993834880$), $151$
   ($N=16835857850229022080$), each at $q_1=41$, $k=0$, prime rung, tied
-  True, ramified empty. Only $w=179$ remains open (bounded probe: 4
-  aligned classes, no member within budget — EVIDENCE, not a wall)
+  True, ramified empty. $w=179$ was the last open one and is now **closed**
+  too ($a=7$, $\varepsilon=-1$, $q_1=Q=251$; horizon bullet below,
+  `data/l19_cell179.jsonl`)
   (`data/l18_horizon_sweep_{a,b}.jsonl`, `data/l18_route131.jsonl`).
   **Pattern:** the canonical two-route wall at $w\equiv11,19\bmod20$ has
   been broken in every instance tested, so no off-grid cell is yet known
@@ -1855,3 +1867,59 @@ dominant uncertainty; no structural shortcut (L13c).
   stationary model misses the selected $k=0$ spike (observed 70.65% vs
   predicted 16.67%, KS $D=0.497$) (`data/l18_divergence_model.jsonl`,
   `l18_divergence_model.py`).
+
+## L20 [CLASS EXISTENCE IS A THEOREM, 2026-08-19]. Clause (ii) leaves the hypothesis
+
+**Theorem (uniform class existence; PROVED).** Let $(w,z)$ be any cell of
+the family, $w$ an odd prime with $v_w(z)\ge1$. Take the fixed factor
+$f=w$ (always available, since $v_w(z)\ge1$ forces $w\mid\operatorname{num}(z)$).
+Choose an odd $a$ with $A=1+4a^2$ and $(A\mid w)=-1$; such $a$ exists
+because
+$$\sum_{r\bmod w}\Bigl(\frac{1+4r^2}{w}\Bigr)=-1,$$
+a standard quadratic character sum with no vanishing terms, so exactly
+$(w+1)/2$ residues give character $-1$. Put
+$S=\{2,3,5,7\}\cup\operatorname{supp}(\alpha)\cup\operatorname{supp}(\delta)\cup\{w\}$
+and $M=4A\prod_{p\in S}p$. Then the system
+$$q_1\in(\mathbb Z/M\mathbb Z)^\times,\qquad
+  (2wq_1\mid p)=+1\ \ \text{for every odd }p\in S\setminus\{w\},$$
+has exactly $\varphi(M)/2^{\#\{p\in S\ \text{odd},\,p\ne w\}}$ classes —
+in particular it is **nonempty** — and Dirichlet supplies infinitely many
+primes $q_1$ in it. The exponent-lemma certificate then yields an
+**aligned class** for the cell.
+
+*Why $f=w$ never fails.* With $Z=z^3$, $v_w(Z)\ge3$ gives
+$D=1-Z-a^2Z^2\equiv1\bmod w$, and $(A\mid w)=-1$ forces $w\nmid aA$, so
+$\delta$ is a $w$-unit: all fixed-factor guards hold, with no
+denominator, gcd or branch exception (including $w=5$, where $a=3$,
+$A=37$ works).
+
+*Local symbols, exactly.* On the square branch with $\varepsilon=+1$: $x$
+is a square at $w$; at $2$ one has $v_2(x)=6$, $v_2(d)=3$,
+$u_d\equiv b$, $u_x\equiv1-2As^2b \pmod 8$, and the $2$-adic Hilbert
+exponent vanishes for every odd $b$ class (so the symbol is $+1$ whether
+or not $s=(a-1)/2$ is even); $d$ is a square at every other frozen odd
+$p$; and since every $p\mid A$ is $1$ mod $4$,
+$(A\mid q_1)=(2w\mid A)=(2\mid A)(w\mid A)=(-1)(-1)=+1$.
+
+**Verification.** 103/103 canonical escape rows: residue systems proved
+nonempty, 1,113,000 residues directly enumerated across 7 exact moduli,
+and 103/103 generalized certificates reproduce the recorded
+$N,S,k_s,Q_0$, excluded set and `ok` of `data/l12b_class_sample.json`.
+**353/353 grid cells** carry a clean generalized certificate with $f=w$.
+Composite $A=325=5^2\cdot13$ replayed; 16/16 odd $(a,b)$ residue pairs
+checked against `h10q.hilbert`; zero refusals
+(`data/l19_classexist.jsonl`, `l19_classexist.py`; lead-replayed, 73 s).
+
+**Independent corroboration of the 5-wall.** With $a$ *fixed* to $1$ the
+construction collides at exactly $w=11,19,31,59,71,79$ — precisely the
+grid primes $w\equiv11,19\bmod20$, the canonical 5-wall set derived
+independently in L19 by the Hilbert-symbol route. Every collision is
+repaired by an alternate $a$; the bounded pool $a\in\{1,3,5,7\}$ leaves
+zero empty cells.
+
+**Scope, exactly.** This removes clause (ii) — *existence of one verified
+aligned class per cell* — from the hypothesis, for every cell, not just
+the 103 escapes. It does **not** prove: irreducibility or fixed-divisor
+$1$ for the newly constructed pair, a Schinzel prime value, an
+emergent-free member, the L6 assembly lemma, or H10 over $\Q$. Member
+existence remains **CONDITIONAL** on Schinzel H via L19.

@@ -1,0 +1,485 @@
+{
+  "abort_bound": {
+    "ell_times_m": 42,
+    "lattice": "6x7"
+  },
+  "aggregate": {
+    "bound_reached_ell_times_m": 40,
+    "bucket_T_eq_half_k": 4400,
+    "bucket_T_eq_k": 1624,
+    "bucket_T_gt_half_k": 1624,
+    "bucket_T_lt_half_k": 0,
+    "distinct_parent_fingerprints": 6024,
+    "lattices_completed": 6,
+    "parents_analyzed": 6024,
+    "residual_parents": 0,
+    "support_pairs_enumerated": 109813,
+    "unresolved_parents": 0
+  },
+  "basis_measurement": {
+    "L": 24,
+    "lattice": "4x6",
+    "ms_per_pair": 0.679073,
+    "pairs": 3655,
+    "parents_analyzed": 196,
+    "residual_count": 0,
+    "wall_s": 2.482
+  },
+  "eta_points": [
+    {
+      "L": 30,
+      "lattice": "5x6",
+      "ms_per_pair": 4.602143,
+      "pairs": 9316,
+      "wall_s": 42.874
+    },
+    {
+      "L": 32,
+      "lattice": "4x8",
+      "ms_per_pair": 0.30203,
+      "pairs": 12090,
+      "wall_s": 3.652
+    },
+    {
+      "L": 35,
+      "lattice": "5x7",
+      "ms_per_pair": 5.418108,
+      "pairs": 17578,
+      "wall_s": 95.24
+    },
+    {
+      "L": 36,
+      "lattice": "4x9",
+      "ms_per_pair": 15.211429,
+      "pairs": 19900,
+      "wall_s": 302.707
+    },
+    {
+      "L": 36,
+      "lattice": "6x6",
+      "ms_per_pair": 10.835052,
+      "pairs": 20301,
+      "wall_s": 219.962
+    },
+    {
+      "L": 40,
+      "lattice": "5x8",
+      "ms_per_pair": 0.389634,
+      "pairs": 30628,
+      "wall_s": 11.934
+    }
+  ],
+  "experiment": "EXP-042-EXT",
+  "extrapolated_skip_list": [
+    {
+      "aborted_after_s": 1502.0,
+      "canonical_pairs": 37675,
+      "ell_times_m": 42,
+      "eta_seconds": 95.4,
+      "lattice": "6x7",
+      "reason": "not re-run: an earlier in-session launch of the same scan exceeded the in-run deadline after 1502s (scan code identical); every larger lattice is skipped by the monotone bound rule"
+    },
+    {
+      "canonical_pairs": 45451,
+      "ell_times_m": 44,
+      "lattice": "4x11",
+      "reason": "skipped by the monotone bound rule: lattice 6x7 (ell*m=42) already exceeded the in-run budget, so every larger lattice is skipped"
+    },
+    {
+      "canonical_pairs": 65341,
+      "ell_times_m": 48,
+      "lattice": "4x12",
+      "reason": "skipped by the monotone bound rule: lattice 6x7 (ell*m=42) already exceeded the in-run budget, so every larger lattice is skipped"
+    },
+    {
+      "canonical_pairs": 77028,
+      "ell_times_m": 50,
+      "lattice": "5x10",
+      "reason": "skipped by the monotone bound rule: lattice 6x7 (ell*m=42) already exceeded the in-run budget, so every larger lattice is skipped"
+    },
+    {
+      "canonical_pairs": 90525,
+      "ell_times_m": 52,
+      "lattice": "4x13",
+      "reason": "skipped by the monotone bound rule: lattice 6x7 (ell*m=42) already exceeded the in-run budget, so every larger lattice is skipped"
+    },
+    {
+      "canonical_pairs": 106953,
+      "ell_times_m": 54,
+      "lattice": "6x9",
+      "reason": "skipped by the monotone bound rule: lattice 6x7 (ell*m=42) already exceeded the in-run budget, so every larger lattice is skipped"
+    }
+  ],
+  "first_witness": null,
+  "lattices": [
+    {
+      "ell": 5,
+      "ell_times_m": 30,
+      "eta_model_exponent_at_start": 0.0,
+      "eta_seconds_predicted": 6.3,
+      "family": {
+        "buckets": {
+          "T_eq_half_k": 410,
+          "T_eq_k": 232,
+          "T_gt_half_k": 232
+        },
+        "canonical_A_supports": 136,
+        "canonical_B_supports": 136,
+        "connected_positive_k_pairs": 642,
+        "d_Z_histogram": {
+          "2": 72,
+          "4": 170,
+          "6": 152,
+          "8": 248
+        },
+        "family": "3x3",
+        "k_T_histogram": {
+          "k=4,T=2": 316,
+          "k=4,T=4": 232,
+          "k=8,T=4": 94
+        },
+        "k_ge_2_pairs": 699,
+        "k_parent_histogram": {
+          "0": 8617,
+          "16": 10,
+          "20": 2,
+          "4": 548,
+          "40": 1,
+          "8": 138
+        },
+        "parents_analyzed": 642,
+        "residual_count": 0,
+        "support_pairs_enumerated": 9316,
+        "unresolved_parents": [],
+        "wall_time_s": 42.874
+      },
+      "lattice": "5x6",
+      "m": 6
+    },
+    {
+      "ell": 4,
+      "ell_times_m": 32,
+      "eta_model_exponent_at_start": 8.575,
+      "eta_seconds_predicted": 96.8,
+      "family": {
+        "buckets": {},
+        "canonical_A_supports": 155,
+        "canonical_B_supports": 155,
+        "connected_positive_k_pairs": 0,
+        "d_Z_histogram": {},
+        "family": "3x3",
+        "k_T_histogram": {},
+        "k_ge_2_pairs": 0,
+        "k_parent_histogram": {
+          "0": 12090
+        },
+        "parents_analyzed": 0,
+        "residual_count": 0,
+        "support_pairs_enumerated": 12090,
+        "unresolved_parents": [],
+        "wall_time_s": 3.652
+      },
+      "lattice": "4x8",
+      "m": 8
+    },
+    {
+      "ell": 5,
+      "ell_times_m": 35,
+      "eta_model_exponent_at_start": 2.0,
+      "eta_seconds_predicted": 25.4,
+      "family": {
+        "buckets": {
+          "T_eq_half_k": 492,
+          "T_eq_k": 156,
+          "T_gt_half_k": 156
+        },
+        "canonical_A_supports": 187,
+        "canonical_B_supports": 187,
+        "connected_positive_k_pairs": 648,
+        "d_Z_histogram": {
+          "2": 48,
+          "4": 120,
+          "6": 192,
+          "8": 288
+        },
+        "family": "3x3",
+        "k_T_histogram": {
+          "k=6,T=3": 492,
+          "k=6,T=6": 156
+        },
+        "k_ge_2_pairs": 650,
+        "k_parent_histogram": {
+          "0": 16928,
+          "30": 2,
+          "6": 648
+        },
+        "parents_analyzed": 648,
+        "residual_count": 0,
+        "support_pairs_enumerated": 17578,
+        "unresolved_parents": [],
+        "wall_time_s": 95.24
+      },
+      "lattice": "5x7",
+      "m": 7
+    },
+    {
+      "ell": 4,
+      "ell_times_m": 36,
+      "eta_model_exponent_at_start": 3.492,
+      "eta_seconds_predicted": 55.7,
+      "family": {
+        "buckets": {
+          "T_eq_half_k": 858,
+          "T_eq_k": 240,
+          "T_gt_half_k": 240
+        },
+        "canonical_A_supports": 199,
+        "canonical_B_supports": 199,
+        "connected_positive_k_pairs": 1098,
+        "d_Z_histogram": {
+          "10": 84,
+          "2": 36,
+          "4": 108,
+          "6": 372,
+          "8": 498
+        },
+        "family": "3x3",
+        "k_T_histogram": {
+          "k=4,T=2": 858,
+          "k=4,T=4": 240
+        },
+        "k_ge_2_pairs": 1197,
+        "k_parent_histogram": {
+          "0": 18703,
+          "12": 18,
+          "16": 6,
+          "24": 2,
+          "4": 1098,
+          "48": 1,
+          "8": 72
+        },
+        "parents_analyzed": 1098,
+        "residual_count": 0,
+        "support_pairs_enumerated": 19900,
+        "unresolved_parents": [],
+        "wall_time_s": 302.707
+      },
+      "lattice": "4x9",
+      "m": 9
+    },
+    {
+      "ell": 6,
+      "ell_times_m": 36,
+      "eta_model_exponent_at_start": 5.839,
+      "eta_seconds_predicted": 147.1,
+      "family": {
+        "buckets": {
+          "T_eq_half_k": 2640,
+          "T_eq_k": 996,
+          "T_gt_half_k": 996
+        },
+        "canonical_A_supports": 201,
+        "canonical_B_supports": 201,
+        "connected_positive_k_pairs": 3636,
+        "d_Z_histogram": {
+          "2": 216,
+          "4": 1452,
+          "6": 1248,
+          "8": 720
+        },
+        "family": "3x3",
+        "k_T_histogram": {
+          "k=12,T=12": 24,
+          "k=16,T=8": 24,
+          "k=4,T=2": 2304,
+          "k=4,T=4": 576,
+          "k=8,T=4": 312,
+          "k=8,T=8": 396
+        },
+        "k_ge_2_pairs": 4716,
+        "k_parent_histogram": {
+          "0": 15585,
+          "12": 64,
+          "16": 114,
+          "24": 40,
+          "32": 6,
+          "4": 2880,
+          "48": 4,
+          "8": 1608
+        },
+        "parents_analyzed": 3636,
+        "residual_count": 0,
+        "support_pairs_enumerated": 20301,
+        "unresolved_parents": [],
+        "wall_time_s": 219.962
+      },
+      "lattice": "6x6",
+      "m": 6
+    },
+    {
+      "ell": 5,
+      "ell_times_m": 40,
+      "eta_model_exponent_at_start": 6.493,
+      "eta_seconds_predicted": 573.3,
+      "family": {
+        "buckets": {},
+        "canonical_A_supports": 247,
+        "canonical_B_supports": 247,
+        "connected_positive_k_pairs": 0,
+        "d_Z_histogram": {},
+        "family": "3x3",
+        "k_T_histogram": {},
+        "k_ge_2_pairs": 0,
+        "k_parent_histogram": {
+          "0": 30628
+        },
+        "parents_analyzed": 0,
+        "residual_count": 0,
+        "support_pairs_enumerated": 30628,
+        "unresolved_parents": [],
+        "wall_time_s": 11.934
+      },
+      "lattice": "5x8",
+      "m": 8
+    }
+  ],
+  "protocol": {
+    "T_method": "translation-orbit span of every minimum-weight Z-logical modulo S_Z; every translate verified in ker[A B]",
+    "basis_lattice": "4x6",
+    "d_Z_method": "ascending-weight exact enumeration of ker[A B]: per split the cheapest of {solve-left, solve-right, vectorized MITM join} by cost model; EXP-041 dict join as fallback; one-sided splits read kernel spans; engines bit-exact per self_tests",
+    "engine_caps": {
+      "coset_cap_bits": 16,
+      "d_weight_cap": 12,
+      "join_row_cap": 8000000,
+      "match_guard": 400000,
+      "solver_side_weight_cap": 3000000
+    },
+    "eta_model": "ETA = wall(4x6) * pairs(L)/pairs(4x6) * (L/24)^p with p fitted by least squares on ln(ms per pair) vs ln(L) over the basis and every completed lattice, clamped to [2, 10]; lattices with ETA > 25 min are skipped and larger ones re-evaluated after each refit; a lattice that exceeds the in-run 25-minute deadline (or a recorded prior in-session abort of the same scan) sets a monotone bound -- every strictly larger lattice is skipped",
+    "family": "3x3 trinomial parents only (assignment scope)",
+    "nondegenerate_predicate": "k_P >= 2 and a single Tanner component",
+    "parent_equivalence": "supports identified under independent Z_ell x Z_m translations of the A and B blocks; {A, B} unordered (block swap allowed, including A = B); k_P, d_Z, T are invariants of the class",
+    "per_lattice_budget_s": 1500,
+    "target_lattices": [
+      "5x6",
+      "4x8",
+      "5x7",
+      "4x9",
+      "6x6",
+      "5x8",
+      "6x7",
+      "4x11",
+      "4x12",
+      "5x10",
+      "4x13",
+      "6x9"
+    ]
+  },
+  "pysat_imported": false,
+  "residual_parents": [],
+  "sat_decide_imported": false,
+  "sat_solver_used": false,
+  "schema": "exp042-residual-probe-ext-v1",
+  "self_tests": {
+    "column_syndrome_matches_dense": true,
+    "echelon_rank_matches_rank_np": true,
+    "join_engine_matches_dict_join": {
+      "random_cases": 75
+    },
+    "orbit_matches_reference": true,
+    "solver_engine_matches_mitm": {
+      "instances": 10
+    },
+    "symplectic_mitm_matches_full_enumeration": {
+      "instances": 12
+    }
+  },
+  "skipped_lattices_etas": {
+    "basis": {
+      "lattice": "4x6",
+      "pairs": 3655,
+      "wall_s": 2.482
+    },
+    "caveat": "the smooth per-shape fit is volatile because completed lattices are heterogeneous (4x8/5x8 have zero k>=2 parents); the operative skip authority for ell*m >= 44 was the monotone bound rule triggered by the measured 6x7 in-run abort, with the conservative line above as the extrapolated-budget justification",
+    "conservative_line_anchored_on_6x7_abort": {
+      "all_exceed_1500s_budget": true,
+      "definition": "exponent p' solving eta(42) = 1500s (the budget) with the measured abort at 1502s; the smooth fit under-predicted 6x7 by 15.7x, so this line is the defensible extrapolation",
+      "eta_seconds": {
+        "4x11": 2538.4,
+        "4x12": 6872.6,
+        "4x13": 17045.1,
+        "5x10": 10903.4,
+        "6x9": 26501.3
+      },
+      "implied_exponent": 7.2751
+    },
+    "formula": "eta_s(L) = wall_4x6 * pairs(L)/pairs_4x6 * (L/24)**p",
+    "purpose": "machine anchor for the paper sentence 'ell*m = 42 and larger skipped by the extrapolated budget model'; all values recomputed this session from basis_measurement and eta_points in this file, with the 6x7 prediction reproducing the recorded 95.4s exactly",
+    "smooth_model": {
+      "clamp": [
+        2.0,
+        10.0
+      ],
+      "fit_points": [
+        "5x6",
+        "4x8",
+        "5x7",
+        "4x9",
+        "6x6",
+        "5x8",
+        "4x6"
+      ],
+      "fitted_exponent_p": 2.3524,
+      "per_lattice": {
+        "4x11": {
+          "canonical_pairs": 45451,
+          "ell_times_m": 44,
+          "eta_seconds_smooth_model": 128.4,
+          "operative_skip_rule": "monotone bound rule after the 6x7 abort",
+          "ratio_to_1500s_budget": 0.086
+        },
+        "4x12": {
+          "canonical_pairs": 65341,
+          "ell_times_m": 48,
+          "eta_seconds_smooth_model": 226.6,
+          "operative_skip_rule": "monotone bound rule after the 6x7 abort",
+          "ratio_to_1500s_budget": 0.151
+        },
+        "4x13": {
+          "canonical_pairs": 90525,
+          "ell_times_m": 52,
+          "eta_seconds_smooth_model": 379.0,
+          "operative_skip_rule": "monotone bound rule after the 6x7 abort",
+          "ratio_to_1500s_budget": 0.253
+        },
+        "5x10": {
+          "canonical_pairs": 77028,
+          "ell_times_m": 50,
+          "eta_seconds_smooth_model": 294.0,
+          "operative_skip_rule": "monotone bound rule after the 6x7 abort",
+          "ratio_to_1500s_budget": 0.196
+        },
+        "6x7": {
+          "canonical_pairs": 37675,
+          "ell_times_m": 42,
+          "eta_seconds_smooth_model": 95.4,
+          "measured_abort_s": 1502.0,
+          "model_underprediction_factor": 15.7,
+          "operative_skip_rule": "prior in-session in-run deadline abort (measured)",
+          "ratio_to_1500s_budget": 0.064
+        },
+        "6x9": {
+          "canonical_pairs": 106953,
+          "ell_times_m": 54,
+          "eta_seconds_smooth_model": 489.3,
+          "operative_skip_rule": "monotone bound rule after the 6x7 abort",
+          "ratio_to_1500s_budget": 0.326
+        }
+      }
+    }
+  },
+  "stim_imported": false,
+  "utc": "2026-08-18T23:13:07.976523+00:00",
+  "verdict": "SMALL_CLASS_EMPTY",
+  "verdict_detail": "No trinomial parent with T < k_P/2 on any target lattice completed (bound reached: ell*m = 40; 6 larger lattices skipped by the ETA rule with extrapolated budgets attached)",
+  "wall_time_s": 679.367
+}

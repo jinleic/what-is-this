@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,enumitem,hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\pauli}{\mathcal P}
+\newcommand{\g}{\mathfrak g}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\artifact}[1]{\path{#1}}
+\title{Exact No-Go Certificates for Standard Integrability Mechanisms\\in the Three-Dimensional Ising Layer}
+\author{Exact 3D Ising Research Program\\\small Draft accompanying the wave-17 artifact bundle}
+\date{20 August 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The three-dimensional nearest-neighbour Ising model remains unsolved. This draft consolidates exact, finite, and explicitly scoped obstructions to several standard routes to an exact solution. For a finite layer graph $\Gamma=(V,E)$ we use $A=\sum_{v\in V}X_v$ and $B=\sum_{(ij)\in E}Z_iZ_j$, with transfer representative $V=\exp(K^*A)\exp(KB)$ up to a scalar. We prove the closed Dolan--Grady defect formula, a tridiagonal no-go for representative 3D layers, the induced-claw obstruction to term-wise Majorana bilinearity, and the exact Pauli-string centralizer theorem. We then give basis-independent spectral certificates: an exact Sylvester-inertia proof for the $2\times3$ layer, an independent two-prime pair-product certificate for the $2\times6$ layer, and an all-size anisotropic theorem for every graph with a branching vertex. An arbitrary $8\times8$ identical-$L$ tetrahedron/RLLL ansatz is ruled out over characteristic zero, while the full translation-invariant scalar Kac--Ward family remains unresolved. Every statement is separated from finite computation, external input, and open scope.
+\end{abstract}
+
+\section{Status and scope}
+The result is negative but load-bearing: it excludes named mechanisms, not exact solvability by every possible representation. ``Theorem'' below means a proof in the stated finite or algebraic scope; ``computation'' means an exact finite calculation with a checked artifact; ``external'' means a cited result not established by this repository. None of the results below derives the thermodynamic-limit free energy, critical exponents, magnetization, or correlation functions.
+
+For a layer graph $\Gamma$, the standard transfer factors are
+\[
+ A=\sum_{v\in V}X_v,\qquad B=\sum_{(ij)\in E}Z_iZ_j,
+\]
+and $V=\exp(K^*A)\exp(KB)$ up to a scalar. A one-dimensional layer has maximum degree at most two; a genuine three-dimensional cubic layer has a vertex of degree at least three.
+
+\section{Local algebraic obstructions}
+\subsection{Dolan--Grady defect}
+The Dolan--Grady relations are
+\[
+[A,[A,[A,B]]]=16[A,B],\qquad [B,[B,[B,A]]]=16[B,A].
+\]
+They generate the Onsager algebra and are the algebraic core of the original two-dimensional solution.
+
+\begin{theorem}[Dolan--Grady defect]
+For every finite simple graph $\Gamma$, with $d(v)=\deg(v)$ and neighbourhood $N(v)$,
+\begin{align}
+[A,[A,[A,B]]]-16[A,B]&=0,\\
+[B,[B,[B,A]]]-16[B,A]&=R(\Gamma),\\
+R(\Gamma)&=24i\sum_{v\in V}Y_v\left((d(v)-2)\sum_{u\sim v}Z_u
+ +2\sum_{\{u,u',u''\}\subset N(v)}Z_uZ_{u'}Z_{u''}\right).
+\end{align}
+Consequently $R(\Gamma)=0$ if and only if every vertex has degree $0$ or $2$. Its quartic part vanishes if and only if $\Delta(\Gamma)\leq2$. The number of four-body Pauli terms is exactly $\sum_v\binom{d(v)}3$, the number of induced claws in the associated frustration graph.
+\end{theorem}
+
+The proof is local. Only edges incident to the selected vertex contribute to the nested commutators; the unique $Y_v$ prevents cancellation between different vertices. Hence a bulk square-lattice layer, and therefore the standard 3D transfer layer, fails (DG2) by an explicit quartic operator. The exact term-by-term identity was checked on sixteen graph families, including paths, cycles, stars, grids, torus layers, and a cubic graph.
+
+\subsection{Term-wise Majorana and claw obstruction}
+The standard Pauli generator set has frustration graph equal to the subdivision $S(\Gamma)$: $X_i$ is adjacent precisely to $Z_iZ_j$ for incident edges, while the $X$ terms commute with one another and all $ZZ$ terms commute with one another.
+
+\begin{theorem}[Claw obstruction]
+If a set of Hermitian Pauli terms is mapped injectively, after a unitary change of basis, to Majorana bilinears $i\gamma_p\gamma_q$, its frustration graph has no induced $K_{1,3}$. Therefore the standard layer generator set can be term-wise Majorana-bilinear only when $\Delta(\Gamma)\leq2$. In particular, every square-grid layer containing a degree-three or degree-four vertex fails this representation.
+\end{theorem}
+
+The argument is combinatorial: two bilinears anticommute exactly when their two-element index sets intersect in one element. Three pairwise commuting neighbours of one bilinear would force two of their index sets to share one element, a contradiction. This theorem is about the displayed generating set; it does not by itself exclude a radically different decomposition.
+
+A quantitative version addresses an enlarged Gaussian realization. If the generated real Lie algebra $\g$ embeds into the span of bilinears of $m$ fermionic modes (that is, $2m$ Majorana operators), then
+\[
+ \dim\g\leq\dim\mathfrak{so}(2m)=m(2m-1),\qquad
+ m\geq\frac{1+\sqrt{1+8\dim\g}}4.
+\]
+This is a dimension obstruction, not a claim that no larger nonlocal embedding can ever exist.
+
+\subsection{Tridiagonal/Askey--Wilson relations}
+The general tridiagonal relation is tested through
+\[
+T_0=\beta T_1+\gamma^*T_2+\rho^*T_3,
+\quad
+(T_0,T_1,T_2,T_3)=([B,B^2A+AB^2],[B,BAB],[B,BA+AB],[B,A]).
+\]
+It is linear in the three unknown parameters for fixed $A,B$.
+
+\begin{theorem}[Representative tridiagonal no-go]
+For the boundaryless torus layers $3\times3$, $3\times4$, $4\times4$, $3\times5$, $4\times5$, and $5\times5$, and for the open $2\times3$ and $3\times3$ layers, the second tridiagonal relation has no solution over $\Q$ (hence no solution over $\C$). The result is invariant under every affine redefinition $A'=aA+s$, $B'=bB+t$ with $ab\neq0$.
+\end{theorem}
+
+For the $4\times4$ torus, one Pauli coefficient gives a complete one-line certificate:
+\[
+ W=Z_0Y_5Z_6Z_{10},\qquad [T_0]_W=-48,
+ \qquad [T_1]_W=[T_2]_W=[T_3]_W=0.
+\]
+The other failing layers carry explicit one- or four-row witnesses. The witness is the same quartic $Y_vZ_{u_1}Z_{u_2}Z_{u_3}$ that appears in the Dolan--Grady defect.
+
+\subsection{Pauli-string centralizer and flux scope}
+\begin{theorem}[Pauli centralizer]
+Let $\Gamma$ be connected and let
+\[
+ G=\{X_i:i\in V\}\cup\{Z_iZ_j:(ij)\in E\}.
+\]
+The Pauli strings commuting with every element of $G$ are exactly
+\[
+ \{I,\;\prod_{i\in V}X_i\}.
+\]
+The same centralizer holds for the summed pair $\{A,B\}$ within the Pauli group.
+\end{theorem}
+
+Writing a Pauli string as $(a\mid b)\in\mathbb F_2^{2n}$, commutation with every $X_i$ forces $b=0$, and commutation with every bond forces $a_i=a_j$ along every edge. Connectedness leaves only the two displayed strings. This closes a Kitaev-style family of Pauli fluxes on the same Hilbert space, but not all possible non-Pauli symmetries, enlarged-space constructions, or ordinary lattice translation sectors.
+
+\section{Basis-independent spectral no-go results}
+Algebraic failure of the obvious generators does not exclude ``free fermions in disguise.'' The following tests use only the spectrum.
+
+\subsection{Gaussian subset-product criterion}
+If a positive-spectrum Gaussian operator on $m$ modes has single-particle factors $u_1,\ldots,u_m\geq1$, its spectrum is
+\[
+ \{\lambda_0\prod_{k\in S}u_k:S\subseteq\{1,\ldots,m\}\}.
+\]
+If the three lowest eigenvalues are distinct, then $\lambda_1\lambda_2/\lambda_0$ must also be an eigenvalue. For rational $t=\tanh(K^*/2)$, the symmetrized transfer representative is, up to a positive scalar,
+\[
+ R=P_t\operatorname{diag}(q^{(b_k-\epsilon)/2})P_t,
+ \quad P_t(k,l)=t^{\operatorname{Ham}(k,l)},\quad q=\frac{1+t^2}{2t},
+\]
+which is exact rational symmetric positive definite.
+
+\begin{theorem}[Theorem S: exact $2\times3$ spectral no-go]
+At $t=1/3$ (equivalently $q=\exp(2K)=5/3$), the open $2\times3$ layer transfer operator is not a fermionic Gaussian operator on six modes in any Majorana basis. Exact rational inertia counts at the two outward-rounded endpoints of the forced-eigenvalue interval are both $8$, so the interval contains no eigenvalue, while a six-mode Gaussian spectrum would contain $\lambda_1\lambda_2/\lambda_0$.
+\end{theorem}
+
+The control chains of lengths four and six show the opposite inertia pattern, as expected for the 2D free-fermion model. Equal inertia counts prove absence; unequal counts only show that some eigenvalue lies in the interval and are not a proof of exact presence.
+
+\subsection{The $2\times6$ parity-half certificate}
+For a 12-mode Gaussian, any subset of one parity half has at most
+\[
+ A_{\rm same}(12)=\sum_{\substack{2\le r\le12\\r\ \mathrm{even}}}\binom{12}{r}2^{12-r}=261625
+\]
+distinct within-half pair products. The physical $(P=+1,\rho=+1)$ block of the open $2\times6$ layer has dimension $1056$ and $\binom{1056}{2}=557040$ pair slots.
+
+\begin{theorem}[Theorem $2\times6$-NG]
+At $t=1/3$, the physical $P=+1$ sector of the open $2\times6$ layer is not either parity half of any 12-mode Gaussian subset-product multiset. On both primes $1000003$ and $2000003$, the exact pair-polynomial computation gives
+\[
+ \deg\gcd(C,C')\le295414<295415
+ =\binom{1056}{2}-A_{\rm same}(12).
+\]
+Thus the block has at least $261626$ distinct within-half pair products, at least one above the Gaussian ceiling.
+\end{theorem}
+
+This is a one-sided modular lower-bound argument over $\Q$, not a claim that the exact number of distinct products is $261626$. The saved Euclidean tail was independently replayed with bit-identical remainders; the standalone verifier performs 38 checks, including artifact-key and digest-chain checks.
+
+\subsection{All-size anisotropic theorem}
+\begin{theorem}[Theorem F: all-size anisotropic no-go]
+Let $G$ be any finite simple graph with a vertex of degree at least three and $n=|V|\ge4$. For the inhomogeneous rational layer family with independent site parameters $t_v$ and bond parameters $w_e$, there is a nonzero polynomial $\rho_G$ with
+\[
+ \deg\rho_G\le 4(2n+|E|)S(S-1),\qquad S=\binom{2^n}{2},
+\]
+such that whenever $\rho_G\neq0$, the eigenvalues have at least
+\[
+ 3^n-2^n+48\,3^{n-4}
+\]
+distinct unordered slot-pair products. A full $n$-mode Gaussian multiset has at most $3^n-2^n$, so the generic inhomogeneous layer is not Gaussian.
+\end{theorem}
+
+The exceptional set is a proper algebraic hypersurface. This theorem is genuinely anisotropic: it does not cover the physical isotropic curve, where the present invariant reaches the Gaussian ceiling on the tested claw core. The named isotropic $2\times3$, $2\times4$, and $3\times3$ points are covered separately by finite or coupling-generic certificates; no isotropic all-size theorem is claimed.
+
+\section{Tensor and Kac--Ward ansatzes}
+\subsection{Identical-$L$ tetrahedron/RLLL equation}
+Let $L(q)$ be the verified six-leg Ising tensor and consider
+\[
+ R_{123}L_{145}(q)L_{246}(q)L_{356}(q)
+ =L_{356}(q)L_{246}(q)L_{145}(q)R_{123},
+\]
+with an arbitrary $8\times8$ matrix $R$ and no auxiliary grading assumption.
+
+\begin{theorem}[Ungraded tetrahedron no-go]
+Over every characteristic-zero field, if $q\notin\{0,1,-1\}$, the only arbitrary $8\times8$ solution of the identical-$L$ equation is $R=0$. Therefore no invertible auxiliary $R$ exists for finite ferromagnetic weights $0<q<1$.
+\end{theorem}
+
+The proof concatenates two complementary $64\times64$ minors whose common factor is
+\[
+ q^{109}(q-1)^{92}(q+1)^{77};
+\]
+the remaining factors are coprime by an explicit Bezout identity. The scope is limited to identical local factors, this vertex-type equation, and auxiliary dimension eight.
+
+\subsection{Kac--Ward status}
+A full translation-invariant scalar Kac--Ward transition has 30 directed-direction weights, reduced to 25 variables on a generic five-edge gauge chart. The exact 2D planar identity is reproduced as a control.
+
+\begin{theorem}[Positive-real scalar Kac--Ward no-go]
+No assignment of nonnegative real values to all 30 allowed direction transitions satisfies the coefficientwise scalar Kac--Ward identity on every free cubic box. In fact, the order-four trace equation on the free $2\times2\times2$ box is
+\[
+ F_4=48+8(M_{xy,+}+M_{xy,-}+M_{xz,+}+M_{xz,-}+M_{yz,+}+M_{yz,-}),
+\]
+which is strictly positive on the nonnegative orthant. The stored rational Positivstellensatz identity certifies infeasibility on all 32 selected gauge strata.
+\end{theorem}
+
+The full complex scalar family remains unresolved. Exact order-$4,6,8$ systems have finite-field points and modular Groebner attempts timed out; a numerical construction point fails an independent $3\times3\times3$ order-eight holdout, but that does not prove ideal emptiness. Matrix-valued weights, position-dependent weights, spin-structure sums, and higher auxiliary dimensions remain outside this paper's no-go claims.
+
+\section{Conclusion}
+The results jointly exclude the standard Onsager/Dolan--Grady route on branching layers; the full tridiagonal relation family for representative 3D layers; term-wise Majorana bilinearity of the standard generators; same-space Pauli-string flux decompositions; full-layer Gaussian spectra at the certified named points and generically in the anisotropic family; the displayed identical-$L$ eight-dimensional tetrahedron ansatz; and the nonnegative-real scalar Kac--Ward corner.
+
+They do not exclude an exact solution based on a larger Gaussian restriction, non-Pauli conserved quantities, a different matrix-valued or dynamical tensor ansatz, a nonlocal transformation, or an as-yet unknown mechanism. The full 3D Ising problem is therefore still open.
+
+\section*{Artifact and reproduction map}
+The accompanying bundle contains the exact source notes, scripts, tests, and JSON artifacts. Principal paths are:
+\begin{itemize}[leftmargin=*]
+\item \artifact{proofs/dolan_grady_defect.md}, \artifact{results/dg_theorem_check.json}, and \artifact{experiments/e16_dg_theorem_check.py};
+\item \artifact{proofs/tridiagonal_nogo.md}, \artifact{results/tridiagonal_certificate_general.json};
+\item \artifact{proofs/algebraic_obstruction.md}, \artifact{results/flux_sectors.json};
+\item \artifact{proofs/spectral_gaussianity.md}, \artifact{results/spectral/gaussianity_certificate.json};
+\item \artifact{proofs/gaussian_2x6.md}, \artifact{results/gaussian_2x6.json}, \artifact{results/gaussian_2x6_work/};
+\item \artifact{proofs/allsize_gaussian.md}, \artifact{results/spectral/allsize_gaussian.json};
+\item \artifact{proofs/tetra_ungraded.md}, \artifact{results/integrability/tetra_ungraded.json};
+\item \artifact{proofs/kac_ward_positive_real.md}, \artifact{proofs/kac_ward_full_family.md}, and \artifact{results/kac_ward/}.
+\end{itemize}
+Run the standalone tests from the repository root with \path{.venv/bin/python}; the bundle's \path{README.md} records the acceptance gate and exact environment assumptions.
+
+\end{document}

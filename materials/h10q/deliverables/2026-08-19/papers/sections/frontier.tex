@@ -1,0 +1,166 @@
+\section{The step-(ii) density law and the off-grid frontier}
+\label{sec:frontier}
+
+This section reports the two newest components of the program: an
+unconditional local bound on the sieve masses together with the exact
+decay law it implies, and the current state of the off-grid horizon.
+
+\subsection{An unconditional local bound}
+
+Fix an aligned class with parameters $(\varepsilon,f,q_1,N)$ and write
+$F(k) = P(\varepsilon f (q_1 + kN))$ for its degree-$8$ class
+polynomial, and $u(k) = 2\alpha\varepsilon f(q_1+kN)$ for the unit whose
+Legendre symbol decides bad signature. For an odd prime $p$ let $m_p$
+denote the Haar mass in $\Zp$ of the set of $k$ with $v_p(F(k))$ odd and
+$\leg{u(k)}{p} = -1$: the local mass of the emergent obstruction.
+
+\begin{theorem}[Local sieve bound; PROVED]
+\label{thm:localbound}
+For every aligned class of the grid,
+\[
+   m_3 = m_5 = m_7 = 0,
+   \qquad\text{and}\qquad
+   m_p \;\le\; \frac{8}{p+1} \;<\; 1
+   \quad\text{for all } p \ge 11 ,
+\]
+the bound holding for singular roots as well, counted with
+multiplicity.
+% src: data/l17_stepii.jsonl (meta.labels.theorem_replays = PROVED)
+\end{theorem}
+
+The vanishing at $p \in \{3,5,7\}$ is exactly the frozen-alignment
+condition of the class certificate: those places are controlled, and
+their symbols are pinned to $+1$ by construction. For $p \ge 11$ the
+bound is the root count of a degree-$8$ polynomial: at most eight
+residues can be roots, each simple root contributes Haar mass
+$1/(p+1)$ for odd valuation, and a singular root contributes at most
+its multiplicity times that mass, which is again bounded by the total
+degree. The bound was verified independently on every stored local
+pair: $102{,}439$ pairs with $p \le 10^4$ across the $293$ classes,
+zero violations.
+% src: data/l17_stepii.jsonl (verification.positive_local_pairs_checked_p_le_10000 = 102439, bound_violations = 0)
+
+Theorem~\ref{thm:localbound} settles a natural hope in the negative,
+and this is the important structural point.
+
+\begin{corollary}[No uniform positive mass; PROVED for the current classes]
+\label{cor:nouniform}
+For each of the $293$ classes the splitting condition governing the
+bad-signature event has Chebotarev exponent $c = 1/2$: the class
+polynomial is irreducible with a replayed degree-$8$ certificate, and a
+replayed witness shows the bad unit is a nonsquare at a simple bad
+root. Consequently the truncated clean product obeys
+\[
+   \prod_{p \le X} (1 - m_p) \;\asymp\; (\log X)^{-1/2},
+\]
+so no cutoff-uniform positive lower bound on the clean mass exists:
+the small-layer clean probability decays, slowly, to zero.
+% src: data/l17_stepii.jsonl (verdict; serialized_witnesses_replayed = 293)
+\end{corollary}
+
+The measured exponent agrees: the root-harmonic estimate gives
+$c \approx 0.4778$, the product estimate $c \approx 0.4801$, and the
+same-member sieve between $10^4$ and $10^5$ gives $c \approx 0.4590$
+(EVIDENCE).
+% src: data/l17_stepii.jsonl (evidence.root_harmonic_c_mean, product_c_mean, same_member_sieve_c_10000_100000)
+
+The consequence for hypothesis $H$ is a sharpening, not a defeat. The
+number of admissible prime members up to height $X$ in a class grows
+like $X/(\log X)^{2}$ by the Dirichlet--Bateman--Horn heuristic
+\cite{batemanhorn}, while
+each carries clean probability $\asymp (\log X)^{-1/2}$; the expected
+count of emergent-free members therefore still diverges, at rate
+$X/(\log X)^{5/2}$. What Corollary~\ref{cor:nouniform} rules out is the
+clean shortcut --- a uniform positive constant --- and what it leaves is
+a divergence statement of exactly the shape the measured counting law
+already exhibits (first emergent-free member at $k=0$ in $207$ of $293$
+classes).
+
+\subsection{The off-grid horizon}
+
+The grid is $w$ prime, $w < 100$. Off-grid closures now exist for
+\[
+   w \in \{101,103,107,109,113,127,131,137,139,149,151,157,163,167,173\},
+   \qquad u = -1 ,
+\]
+together with $[131,[5,1]]$,
+each certified by an aligned class plus an exact ladder verdict
+\emph{zero}, and each replayed independently. Two routes appear: the
+L11 route through fresh Hensel roots of $1+4r^2 \equiv 0 \pmod w$
+($w = 101,109,137,149,157$), the canonical escape route with $f = w$
+($w = 103,107,113,127,163,167,173$), and the non-canonical
+$a{=}7$, $\tau{=}0$ family for the cells the canonical protocol walls
+($w = 131,139,151$). Only $w = 179$ remains open, and only for want of a
+member within budget --- four aligned classes were found --- so no
+off-grid cell is currently known to be intrinsically obstructed.
+% src: data/l17_horizon*.jsonl, data/l18_horizon_sweep_{a,b}.jsonl, data/l18_route131.jsonl
+
+Two negative or delimiting findings carry structural content.
+
+\begin{theorem}[The canonical $5$-wall; PROVED]
+\label{thm:fivewall}
+On the canonical escape route ($z=-w$, $a=1$, $\tau=3/5$, $f=w$), write
+$e = v_5(D)$. Then $v_5(x_0) = -3-2e$ is odd and $v_5(d_0)=0$, so
+\[
+   \mathrm{Hilb}_5 \;=\; -\leg{w}{5}\leg{q_1}{5},
+   \qquad
+   \mathrm{Hilb}_{q_1} \;=\; \leg{5}{q_1} ,
+\]
+and both equal $+1$ for some admissible $q_1$ if and only if
+$\leg{w}{5} = -1$. Since the L11 route requires a root of
+$1+4r^2 \equiv 0 \pmod w$, i.e.\ $w \equiv 1 \pmod 4$, the canonical
+protocol is obstructed exactly for
+\[
+   w \equiv 3 \pmod 4 \ \text{ and } \ \leg{w}{5} = +1
+   \qquad\Longleftrightarrow\qquad
+   w \equiv 11, 19 \pmod{20}.
+\]
+% src: data/l18_fivewall.jsonl (proved identity + 53-prime audit, 0 mismatches)
+\end{theorem}
+
+The criterion was audited on all $53$ primes $w \in [101,400]$ with both
+character branches of $q_1$ covered: $26$ cells have the L11 route, $13$
+the canonical escape route, $14$ are obstructed, and there were zero
+identity or classification mismatches.
+% src: data/l18_fivewall.jsonl (classification_counts, identity_mismatches = 0)
+
+The wall is a statement about the canonical protocol, not about the
+cells, and it breaks.
+
+\begin{proposition}[Breaking the wall; PROVED]
+\label{prop:break}
+The obstructed cell $[131,[-1,1]]$ closes with the non-canonical class
+$a = 7$ (so $A = 197$), $\tau = 0$, $f = 131$, $\varepsilon = +1$,
+$q_1 = Q = 41$, $k = 0$, prime rung, tied status exact and ramified set
+empty. The same family closes the other two obstructed cells met so far,
+$w = 139$ and $w = 151$, each at $a = 7$, $\tau = 0$, $q_1 = 41$, $k = 0$.
+% src: data/l18_route131.jsonl, data/l18_horizon_sweep_a.jsonl
+\end{proposition}
+
+Two hypotheses fail, and it is worth being exact about which. The
+$\tau = 0$ wall assumes $b = \varepsilon q_1$ with $q_1$ prime; here
+$b = 131\cdot 41$ is not $\pm$ a prime, while every other hypothesis of
+that wall does hold ($a = 7$ odd, $A = 197$ prime, $A \nmid 2zD_z$). The
+generalized wall assumes $b$ coprime to the cell data; here
+$f = w = 131$ divides $\num(z)$. This is exactly the non-coprimality
+door, and the shape $b = \varepsilon f Q$ with $f \mid \num(z)$ is the
+orthodox escape shape already used in $103$ grid rows. \emph{The novelty
+is the $\tau = 0$ alignment alone, not a new family of $b$.} The row
+verdict is computed by the same kernel functions as every canonical row
+(tied status, ramified set, and the identity
+$M_0 = P(b)/(b^4 D_z^2 A^2)$); the class certificate is a local
+generalization of the escape certificate that drops two restrictions
+($a \ne 1$ allowed, $f$ composite allowed, every prime of $f$ frozen),
+with the same exponent-lemma proof.
+
+\begin{remark}[Composite $w$]
+Composite $w$ is not admissible in the architecture: $w$ indexes a
+place, and the residue-field construction has no meaning for composite
+modulus --- the break occurs already at the field constructor. The
+downstream arithmetic does generalize once $w$ is decomposed into
+genuine prime places; as an illustration the pseudo-cell
+$[21,[-1,1]]$ closes with the escape route at the honest prime $f = 3$
+(member $k=0$, $Q=11$, factorint rung, tied and ramified checks exact).
+This is a clarification of scope, not an extension of the horizon.
+% src: data/l17_composite_w.jsonl
+\end{remark}

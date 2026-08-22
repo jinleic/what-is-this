@@ -1,0 +1,185 @@
+{
+  "experiment": "EXP-024 benchmark feasibility amendment",
+  "status": "V1_RETIRED_WITHOUT_RESULT_V2_FROZEN_NOT_EXECUTED",
+  "date": "2026-08-13",
+  "scientific_result": null,
+  "amendment_timing": {
+    "made_before_any_failure_count_was_observed": true,
+    "cat_arm_failure_count_observed": false,
+    "one_ancilla_pbb_failure_count_observed": false,
+    "gross_failure_count_observed": false,
+    "unblinded_data_available_for_protocol_choice": false
+  },
+  "v1": {
+    "protocol": {
+      "circuits": [
+        "PBB two-ancilla unverified cat schedule 329fe25d512bc6a1",
+        "PBB one-ancilla EXP-016 schedule 68deaf53e5ff9d06",
+        "CSS Gross EXP-016 schedule e272dcdf59bdbab7"
+      ],
+      "p": 0.002,
+      "rounds": 12,
+      "shots_per_arm": 20000,
+      "shot_seed_allocation": [[20260812, 6667], [20260813, 6667], [20260814, 6666]],
+      "workers": 6,
+      "decoder": "BP min-sum max_iter=30 scale=0.625 plus OSD-0; undecomposed DEM",
+      "chunk_shots": 200,
+      "per_decode_deadline": null,
+      "per_arm_checkpoint": false
+    },
+    "outcome": {
+      "status": "OPERATIONALLY_INFEASIBLE_NO_LER_RESULT",
+      "process_runtime_at_stop": "17h17m",
+      "process_exit": 143,
+      "cat_arm": {
+        "shots_reportedly_completed_in_process": 20000,
+        "failure_count_written_or_observed": false,
+        "usable": false,
+        "reason": "the monolithic parent retained the result only in memory; no per-arm checkpoint was written before the later stop"
+      },
+      "one_ancilla_pbb_arm": {
+        "shots_returned_to_parent": 0,
+        "workers": 6,
+        "chunk_shots": 200,
+        "worker_cpu_time_range_at_diagnosis": [
+          "184:48.62",
+          "230:57.25"
+        ],
+        "any_chunk_returned": false,
+        "debugger_top_path": [
+          "SparseMatrixBase::insert_entry",
+          "GF2Sparse::add_rows",
+          "RowReduce::fast_solve",
+          "OsdDecoder::decode",
+          "BpOsdDecoder.decode"
+        ]
+      },
+      "gross_arm_started": false,
+      "canonical_benchmark_artifact_untouched": true,
+      "canonical_benchmark_path": "results/processed/exp024_cat_extraction.json",
+      "canonical_benchmark_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stall_diagnosis": "results/partial_runs/exp024_bposd_stall_diagnosis.json",
+      "failed_route_context": "notes/failed_routes.md (EXP-024/EXP-026 unbounded atomic BP+OSD stall discussion)"
+    }
+  },
+  "v2_frozen_protocol": {
+    "version": 2,
+    "status": "FROZEN_BLOCKED_NOT_EXECUTED",
+    "same_physical_contract_as_v1": true,
+    "circuits": {
+      "cat_pbb": {
+        "schedule_hash": "329fe25d512bc6a1",
+        "circuit_sha256": "9b0a9a4e6b815517bec1eea8482f721fb61798917119ee0d942686815b1f5301",
+        "dem_sha256": "6aded5620943c1b31e1d22e99d2aa67d7b168786074f2d813a17a84e10bfbf4d",
+        "dem_errors": 82368
+      },
+      "one_ancilla_pbb": {
+        "schedule_hash": "68deaf53e5ff9d06",
+        "circuit_sha256": "1615e2e77eaa94a89cd11e9b67f93081cab77e1aaf01c7d9977bcb4cccd43820",
+        "dem_sha256": "925829382fd70f7dee3534b8030f17008afaa82192a06236be665116c6750467",
+        "dem_errors": 82800
+      },
+      "gross": {
+        "schedule_hash": "e272dcdf59bdbab7",
+        "circuit_sha256": "0e3bdceaa636792e9f5a43abd19046b4664c5141220d4802bbfa2725282055f2",
+        "dem_sha256": "487387592343c97e19cc1d3ed867bfa37ee50506280722b475cfaa3497cd585e",
+        "dem_errors": 67032
+      }
+    },
+    "physical_noise": {
+      "p": 0.002,
+      "rounds": 12,
+      "two_qubit": "DEPOLARIZE2(p) after every two-qubit gate",
+      "idle": "DEPOLARIZE1(p) on every idle data and ancilla in every two-qubit layer",
+      "preparation_and_measurement_flip": 0.002
+    },
+    "decoder": {
+      "shared_harness": "experiments/exp026_decoder_codesign.py:SupervisedDecoder/evaluate_candidate",
+      "harness_sha256": "257e0b1827b4e18b5d70fabd67751922eadc482cfa5fb36e70a0961d38a8d9f2",
+      "harness_test_sha256": "04fac68276d3d6ffcd950bda03a6a2ac8000be51d7f95fe3bdc6c6d659f36efe",
+      "candidate": {
+        "kind": "bposd",
+        "max_iter": 30,
+        "alpha": 0.625,
+        "osd_method": "osd0",
+        "osd_order": 0
+      },
+      "dem": "undecomposed hypergraph",
+      "deadline_s_per_decode": 30.0,
+      "timeout_or_invalid_correction": "operational failure",
+      "timeout_action": "terminate and restart supervised worker",
+      "thread_limits": {
+        "OMP_NUM_THREADS": 1,
+        "OPENBLAS_NUM_THREADS": 1,
+        "MKL_NUM_THREADS": 1,
+        "VECLIB_MAXIMUM_THREADS": 1,
+        "NUMEXPR_NUM_THREADS": 1
+      }
+    },
+    "development": {
+      "shots_per_arm": 100,
+      "seeds": {
+        "cat_pbb": 20260812,
+        "one_ancilla_pbb": 20260813,
+        "gross": 20260814
+      },
+      "claims_allowed": false,
+      "purpose": "prove all three bound circuits complete under supervision, deadlines, restart, and atomic resume before heldout sampling"
+    },
+    "heldout": {
+      "shots_per_arm": 5000,
+      "seeds": {
+        "cat_pbb": 20270812,
+        "one_ancilla_pbb": 20270813,
+        "gross": 20270814
+      },
+      "early_stopping": false,
+      "interval": "two-sided Clopper-Pearson 95%",
+      "failure_definition": "logical mismatch OR invalid correction OR decoder timeout",
+      "claims": "three fixed circuits and schedules only; no schedule-average, global-best, or latency claim"
+    },
+    "sample_size_rationale": {
+      "reference_ler_range": [0.006, 0.02],
+      "source": "persisted EXP-016 fixed-schedule rows, used only for prospective sizing",
+      "at_n_5000": {
+        "expected_failures_at_0.006": 30,
+        "expected_failures_at_0.02": 100,
+        "normal_approx_half_width_95_at_0.006": 0.00214,
+        "normal_approx_half_width_95_at_0.02": 0.00388,
+        "two_arm_standard_error_near_0.02": 0.0028,
+        "rough_detectable_absolute_difference_at_1.96_se": 0.00549
+      },
+      "interpretation": "adequate for large cat-extraction costs and roughly a 30% relative difference near LER 0.02; smaller differences may be inconclusive and must be reported as such"
+    },
+    "resumption": {
+      "checkpoint_every_shots_max": 25,
+      "one_atomic_checkpoint_per_phase_and_arm": true,
+      "checkpoint_root": "results/partial_runs/exp024_benchmark_v2",
+      "binding": [
+        "v2 protocol hash",
+        "phase",
+        "arm",
+        "circuit SHA-256",
+        "seed",
+        "sample SHA-256",
+        "expected shots"
+      ],
+      "resume_rule": "only a unique contiguous shot-id prefix with an exactly matching binding may resume",
+      "canonical_write_rule": "only after all three heldout arms have exactly 5000 records and every structural/semantic gate passes"
+    },
+    "execution_gate": {
+      "status": "BLOCKED",
+      "required_gate_file": "results/partial_runs/exp024_benchmark_v2_harness_gate.json",
+      "required_attestations": [
+        "EXP-026 timeout/restart test passed at frozen harness hash",
+        "EXP-026 non-multiple checkpoint resume test passed at frozen harness hash",
+        "EXP-026 circuit/protocol/sample binding-drift rejection test passed",
+        "EXP-026 full-coverage canonical-route rejection test passed",
+        "atomic per-arm EXP-024 checkpoint test passed",
+        "development isolation gate passed with no heavy EXP-024/EXP-025 process"
+      ],
+      "production_execution_authorized": false
+    },
+    "result": null
+  }
+}

@@ -1,0 +1,374 @@
+{
+ "ceiling_max": 90,
+ "ceiling_max_weight3": 90,
+ "ell": 45,
+ "frontier": {
+  "10": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     5,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 27,
+   "dim_I0": 5,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "12": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     15,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 90,
+   "dim_I0": 2,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "18": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     9,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 15,
+   "dim_I0": 9,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "20": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     10,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "dim_I0": 10,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "24": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 20,
+   "dim_I0": 12,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "8": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 60,
+   "dim_I0": 4,
+   "exact_min": true,
+   "route": "ideal"
+  }
+ },
+ "frontier_weight3": {
+  "12": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 90,
+   "dim_I0": 2,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "20": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "dim_I0": 10,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "24": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 20,
+   "dim_I0": 12,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "8": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 60,
+   "dim_I0": 4,
+   "exact_min": true,
+   "route": "ideal"
+  }
+ },
+ "groups": 108,
+ "idempotence_tested": 11,
+ "idempotence_violations": [],
+ "k_crosschecks": 24,
+ "k_histogram": {
+  "0": 63475101,
+  "10": 432,
+  "12": 751800,
+  "120": 12,
+  "16": 23328,
+  "18": 704,
+  "180": 4,
+  "2": 10368,
+  "20": 28080,
+  "24": 58608,
+  "30": 228,
+  "36": 7904,
+  "4": 14805504,
+  "40": 972,
+  "48": 288,
+  "54": 16,
+  "6": 6192,
+  "60": 783,
+  "72": 384,
+  "8": 2659392,
+  "90": 16
+ },
+ "k_max": 180,
+ "k_mismatches": [],
+ "m": 3,
+ "max_weight": 3,
+ "n": 270,
+ "no_group_certificate_pairs": 822,
+ "no_group_certificate_represented": 2127312,
+ "pairs_total": 81830116,
+ "qualifying_group_pairs": 1540,
+ "qualifying_pairs_represented": 3522344,
+ "supports": 9046,
+ "wall_s": 130.97
+}

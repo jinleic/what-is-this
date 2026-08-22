@@ -1,0 +1,45 @@
+{
+  "experiment": "EXP-027",
+  "protocol": {
+    "experiment": "EXP-027",
+    "catalogue": "third_party/qcode-discovery/results/campaign7_publication_merged.jsonl",
+    "expected_catalogue_rows": 368,
+    "expected_delta_positive_rows": 155,
+    "scope": "every catalogue row with delta > 0",
+    "parent_distance_priority": [
+      "CERTIFIED_EXACT results/certificates/*.json matrix match",
+      "BRAVYI_BB literature/name-label matrix match (recorded but uncertified)",
+      "exact_distance_css for n <= 108",
+      "UNSETTLED otherwise"
+    ],
+    "pbb_distance_priority": [
+      "CERTIFIED_EXACT results/certificates/*.json matrix match",
+      "exact_distance_symplectic for n <= 72",
+      "catalogue d as UPPER_BOUND only"
+    ],
+    "time_limit_s_per_cp_sat_sector": 300.0,
+    "solver_workers_per_distance_call": 4,
+    "concurrent_parent_distance_calls": 2,
+    "maximum_concurrent_solver_workers": 8,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "parent_solver_search_cap": null,
+    "parent_solver_mode": "full exact optimization; no PBB-derived cap is passed to exact_distance_css",
+    "domination_rule": "certified parent_d_lower_bound >= certified pbb_d_upper_bound",
+    "certified_reversal_rule": "certified pbb_d_lower_bound > certified parent_d_upper_bound",
+    "reversal_confirmation": "rebuild from raw terms, recheck ranks, rerun both CP-SAT distances with a distinct derived seed",
+    "catalogue_d_direction": "UPPER_BOUND regardless of catalogue d_is_exact",
+    "bravyi_label_direction": "literature_reported_uncertified; never a certified lower bound"
+  },
+  "requested_time_limit_s": 0.01,
+  "full_coverage": false,
+  "clean": true,
+  "machine_readable_verdict": "INCONCLUSIVE_PARTIAL",
+  "verdict": "INCONCLUSIVE_PARTIAL",
+  "_NOT_CANONICAL": "non-default protocol override; canonical artifacts left untouched",
+  "wall_s": 1.754099503159523e-05
+}

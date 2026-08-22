@@ -1,0 +1,41 @@
+{
+  "artifact": "results/certificates/pbb_12_6_0193_distance.json",
+  "artifact_route": "canonical",
+  "bounds": {
+    "CERTIFIED_EXACT": true,
+    "certified_lower_bound": 12,
+    "certified_upper_bound": 12,
+    "distance": 12
+  },
+  "code_id": "12_6_0193",
+  "covered_dual_rank_bitset": 24,
+  "covered_dual_rank_numpy": 24,
+  "experiment": "EXP-035",
+  "missing_representatives": [],
+  "representative_statuses": {
+    "0": "UNSAT",
+    "1": "UNSAT",
+    "2": "UNSAT",
+    "3": "UNSAT"
+  },
+  "resume_command": null,
+  "solver_wall_time_s": 2173.603024168002,
+  "translation_orbit_union_rank": 24,
+  "unresolved_representatives": [],
+  "verdict": "EXACT d=12",
+  "witness_support": [
+    9,
+    23,
+    31,
+    45,
+    59,
+    67,
+    73,
+    87,
+    101,
+    109,
+    123,
+    137
+  ],
+  "witness_verified_nontrivial": true
+}

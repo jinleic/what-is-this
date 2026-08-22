@@ -1,0 +1,47 @@
+{
+  "env": {
+    "shots": 250,
+    "rounds": 12,
+    "p": 0.002,
+    "decoder": "BP min-sum 30 iter + osd0 order 0",
+    "load_at_start": [
+      2.7392578125,
+      2.54296875,
+      5.0283203125
+    ]
+  },
+  "codes": [
+    {
+      "label": "CSS-BB [[144,12,12]] Gross",
+      "depth": 7,
+      "shots": 250,
+      "dem_errors": 67032,
+      "dem_detectors": 1728,
+      "bp_converged_frac": 0.0,
+      "mean_detection_events_per_shot": 119.212,
+      "latency_mean_ms": 183.17057662829757,
+      "latency_p50_ms": 117.75520804803818,
+      "latency_p99_ms": 1411.380278863943,
+      "latency_mean_ms_bp_failed": 183.17057662829757
+    },
+    {
+      "label": "nonCSS-PBB [[144,12,12]] 12_6_0193",
+      "depth": 8,
+      "shots": 250,
+      "dem_errors": 82800,
+      "dem_detectors": 1728,
+      "bp_converged_frac": 0.0,
+      "mean_detection_events_per_shot": 163.4,
+      "latency_mean_ms": 1982.8613263024017,
+      "latency_p50_ms": 931.8738335277885,
+      "latency_p99_ms": 12224.590684736613,
+      "latency_mean_ms_bp_failed": 1982.8613263024017
+    }
+  ],
+  "ratios": {
+    "bp_failure_rate": 1.0,
+    "mean_latency": 10.825217471068846,
+    "dem_errors": 1.2352309344790549,
+    "detection_events": 1.370667382478274
+  }
+}

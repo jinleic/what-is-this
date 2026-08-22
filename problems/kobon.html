@@ -4,227 +4,96 @@
 <title>Kobon triangle problem — what-is-this</title>
 <style>
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1f2328}
 h1,h2,h3{line-height:1.25}
 pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
 overflow-x:auto;font-size:13px;line-height:1.45}
 table{border-collapse:collapse;width:100%;margin:1rem 0}
-th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px;vertical-align:top}
 th{background:#f6f8fa}
 a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
-.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
-.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
-border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tag{font-size:12px;color:#57606a;margin:-0.4rem 0 1rem}
 .tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+.markdown-body{box-sizing:border-box;background:transparent;font-size:15px;margin:0 0 1.2rem}
+details{border:1px solid #d0d7de;border-radius:6px;padding:6px 12px;margin:8px 0;background:#fafbfc}
+summary{cursor:pointer;font-size:14px}
+ul.files{margin:8px 0;padding-left:20px;font-size:13px}
+ul.files li{margin:2px 0}
+.fsize{color:#57606a;font-size:11px}
 mjx-container{overflow-x:auto;max-width:100%}
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css">
 <script>
 window.MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\(', '\)']],
-    displayMath: [['$$', '$$'], ['\[', '\]']],
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
     processEscapes: true,
     packages: {'[+]': ['color', 'ams']}
-  },
-  options: {
-    // leave <pre> (PROGRESS/README blocks) typesettable
-    skipHtmlTags: ['script', 'noscript', 'style', 'textarea']
-  },
-  startup: {typeset: true}
+  }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  function renderMD(el, md) {
+    var math = [];
+    function stash(re) {
+      md = md.replace(re, function (m) {
+        math.push(m);
+        return '@@MATH' + (math.length - 1) + '@@';
+      });
+    }
+    stash(/\$\$[\s\S]+?\$\$/g);
+    stash(/\\\[[\s\S]+?\\\]/g);
+    stash(/\\\((?:[^\\]|\\[^)])+?\\\)/g);
+    stash(/\$(?=\S)(?:[^$\n]*?\S)?\$/g);
+    var out = marked.parse(md, { mangle: false, headerIds: false });
+    out = out.replace(/@@MATH(\d+)@@/g, function (_, i) {
+      return math[+i].replace(/&/g, '&amp;')
+                     .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    });
+    el.innerHTML = out;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    var blobs = window.__MD__ || {};
+    Object.keys(blobs).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      try { renderMD(el, blobs[id]); }
+      catch (err) {
+        var p = document.createElement('pre');
+        p.textContent = blobs[id];
+        el.innerHTML = '';
+        el.appendChild(p);
+      }
+    });
+    if (window.MathJax) {
+      if (MathJax.typesetPromise) { MathJax.typesetPromise(); }
+      else if (MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(function () { MathJax.typesetPromise(); });
+      }
+    }
+  });
+})();
+</script>
 </head>
 <body>
 <p><a href="../index.html">&larr; index</a></p>
-
 <h1>Kobon triangle problem</h1>
-<p class="tag">source: <code>math/kobon</code> ·
-session: <code>019ff95f-d695-7000-b3d0-36dd86537081</code> ·
-synced 2026-08-22T05:30:53Z</p>
-<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>### KOBON (2026-08-21/22) — convention separation, two DRAT-certified closures, paper drafted
-
-* **NEW THEOREMS (DRAT-certified, strongest convention: crossings allowed):**
-  `K_gen(8) = 15` (instance 27,451 vars / 165,367 clauses; kissat UNSAT at
-  T=16 after 750,937 conflicts; drat-trim `s VERIFIED`, 31,218 core clauses,
-  411,278 core lemmas, 63 s) and `K_gen(9) = 21` (61,569 / 377,405; UNSAT at
-  T=22; 328.5 MB proof `s VERIFIED`, 66,346 core clauses, 2,150,510 core
-  lemmas, 86.8M resolution steps, 1060 s). Prober
-  `scratch/kobon/broad_ladder.py`; artifacts `scratch/kobon/ladder_n8_t16.*`,
-  `ladder_n9_t22.*`.
-* **THREE-CONVENTION SEPARATION** (literature audit with verbatim evidence):
-  `a_3^s` (simple faces; BBL/Blanc) &lt;= `K` (faces in arbitrary arrangements
-  = Clement-Bader&#x27;s actual object: their Kobon triangle is &quot;realized by 3
-  straight lines segments&quot;, and the mod-6 refinement routes through *perfect
-  configurations*, which are pairwise-intersecting by Def. 1 and simple by
-  their Lemma 2) &lt;= `K_gen` (crossings allowed; our object). C-B&#x27;s Lemma 1
-  never treats subdivided (crossed) sides and its claim 2 fails there, so no
-  published bound covers `K_gen`.
-* **OEIS A006066 updated 2026-08-21 19:04** to `a(14) = 54 [Maiorana]` as
-  exact. Audit: it pairs a NON-simple construction (two shared-line triple
-  points, Q=0) with BBL&#x27;s SIMPLE-only bound 54; the bound that does apply to
-  `K` is C-B&#x27;s 55. Rigorous status: `54 &lt;= K(14) &lt;= 55`. Our in-flight
-  n14 T=55 and T=56 monoliths are the decisive experiments for that entry.
-* **NEW BOUND covering `K_gen`**: capacity + audited face budget give
-  `6T + 4C + 5Q + sum_k N_k (k(k-4) + 3*C(k-1,2)) &lt;= n(n-2) + 3*C(n-1,2)`,
-  with the multiplicity-3 coefficient exactly 0, hence
-  `K_gen(n) &lt;= floor((n-2)(5n-3)/12)` = 18, 24, 31, 39, 47, 56, 67, 116, 145
-  at n = 8, 9, 10, 11, 12, 13, 14, 18, 20.
-* **REDUCTION LEMMA**: at `3T = n(n-2)` with no triple point, C=0, Q=0, all
-  multipoints have k_p=4, and the family consists of faces — the broad
-  question collapses onto the face question exactly there.
-* **EXACT OPTIMALITY CENSUS** (new tool `scratch/kobon/max_packing.py`:
-  exact-rational overlap graph + SAT-certified independence number): every
-  known extremal witness attains its published count as its exact broad
-  optimum — Maiorana sol1..sol15 (54 each), both 14-line 53-witnesses,
-  n=11 (32), n=18 (93), n=20 (116); optimality certified by UNSAT at
-  count+1. So `K = K_gen` on every known witness.
-* **PAPER**: `math/kobon/paper/kobon_broad_capacity.{tex,pdf}` — 8 pp,
-  compiles clean: three conventions, capacity theorem, closed-form ceiling,
-  certified ladder, verified 54, census, obstruction theorems, the n=20
-  impossibility, the K(14) status audit, open problems.
-* **DOCS HUB**: `math/kobon/docs/{INDEX,methods,experiments,reproduce,
-  ARTIFACTS,NEXT_BREAKTHROUGHS}.md` and `math/kobon/verification/` (scripts
-  + transcripts, byte-identical copies; release manifest re-checked 45/45).
-* **IN FLIGHT**: n=14 T=55 / T=56 monoliths; n=13 T=48 separation probe
-  (801,794 vars / 4,736,355 clauses); n=11 T=33 and n=12 T=39 monoliths;
-  n=18 q0/q1/q2 cubes; n=20 q1; n=11 proof-grade DRAT run (94 GB, disk-floor
-  guard armed at 15 GiB).
-* **CERTIFIED INITIAL SEGMENT (all DRAT-verified, broad convention)**:
-  `K_gen(4..9) = 2, 5, 7, 11, 15, 21`. Each value is certified by a
-  `drat-trim`-verified refutation of T = K+1; ledger
-  `scratch/kobon/ladder_certificates.json`, pipeline
-  `scratch/kobon/certify_ladder.sh`, transcripts
-  `scratch/kobon/ladder_n*_t*.dratcheck.log`:
-  n=4 (207/994, core 90, 0.05 s) · n=5 (972/5,257, core 424, 0.04 s) ·
-  n=6 (3,655/20,681, core 4,541, 0.48 s) · n=7 (10,682/63,405, core 12,255,
-  4.5 s) · n=8 (27,451/165,367, core 31,218, 117.6 s) ·
-  n=9 (61,569/377,405, core 66,346, 2,150,510 core lemmas, 86.8M resolution
-  steps, 1,060 s). With the prior 11-cube cover for n=10 this determines
-  `K_gen(n)` for every n &lt;= 10 — each statement strictly stronger than the
-  classical one, since crossed families are also excluded.
-* **Attribution correction (verified at source)**: Parpalak-Utkin
-  arXiv:2607.29236 states verbatim that &quot;perfect arrangements solve both the
-  Kobon problem (including the general non-simple case, for which the same
-  upper bound holds [12])&quot;, and their [12] is **Felsner &amp; Kriegel, Triangles
-  in Euclidean arrangements, Discrete Comput. Geom. 22(3):429-438 (1999)**.
-  So the base segment bound floor(n(n-2)/3) for `K` IS peer-reviewed for
-  non-simple arrangements; only the mod-6 `-1` rests on the C-B draft, and
-  `K_gen` (crossed families) remains uncovered by any published bound. Paper
-  §1, Prop. 1 and the windows-table caption were corrected accordingly:
-  `54 &lt;= K(14) &lt;= 56` unconditionally, `&lt;= 55` granting the draft.
-* **Fleet bookkeeping**: q2pos-001 and q2pos-002 (Q=2 placement cubes at
-  n=14/T=54 — the only running instrument on the &quot;is 54 reachable without
-  concurrency&quot; question) were SIGSTOP-frozen to free slots for the T=56 rung
-  and the n=13 separation probe; the q3triad t54 cube (Theorem-M-dead) was
-  frozen permanently. Resume q2pos with SIGCONT when slots free.
-* **Packer audit**: `max_packing.py` candidate generation uses
-  `engine.tri_ok`, which requires all three pairwise crossings to exist
-  (excluding parallel pairs) and `A != B`; since any two coincident vertices
-  force all three to coincide, concurrent triples are excluded — no
-  division-by-zero or coincident-vertex candidates can enter the graph.
-</pre>
-<h2>Project README (verbatim, first lines)</h2><pre># Kobon triangle problem — exact decisions at small n
-
-Canonical home of the Kobon campaign. Everything authoritative about this
-target lives in this directory; `scratch/` holds only machine working data
-(CNF instances, DRAT proofs, solver logs, venv, tools).
-
-## Statement and convention
-
-The Kobon triangle problem (Fujimura; on Wikipedia&#x27;s list of unsolved problems
-in mathematics) asks for the maximum number of non-overlapping triangles whose
-sides lie on $n$ straight lines. This campaign decides the **broad
-convention**, written $K_{\rm gen}(n)$: selected triangles have pairwise
-disjoint interiors, other lines MAY cross a selected triangle, and parallel
-lines and multiple intersection points are allowed.
-
-**Campaign result:** $K_{\rm gen}(10) = 25$, **certified complete
-2026-08-15** — machine-checkable certificates in both directions.
-
-**Active front (opened 2026-08-15): decide $K_{\rm gen}(12)\in\{38,39\}$.**
-UNSAT at target 39 is self-contained (any configuration with $\ge39$ disjoint
-triangles contains a 39-subfamily, so UNSAT@39 ⇒ $K_{\rm gen}(12)\le38$ —
-no reliance on the refuted published ceilings). Instances:
-`scratch/kobon/n12/` — 15-cube cover (`simple`, `par_noc`, `par_conc`,
-`c0`–`c11` from the constructively exhaustive D12 orbit enumeration),
-dimensions: `simple` 65,594 vars / 1,937,254 clauses; `par_noc`
-70,922 / 1,937,114; `par_conc` and `c0`–`c11` 60,194 /
-1,925,750–1,925,815. `par_conc` is split 8-way on X-vars 545/927/1385
-(byte-verified = parent + 3 units). A second 8-way split under
-`par_conc_0` uses X-vars 295/775/1121: branches 1/3/5/7 are
-DRAT-verified UNSAT. A compressed, completion-gated rerun now has
-`par_noc` branches 1/3/5/7 independently `s VERIFIED`; the remaining
-branches of `par_noc`, `simple`, `par_conc_0`, `c0`, and `c1` are active.
-**Lower bound $K_{\rm gen}(12)\ge38$: PROVED** (exact rational) —
-Kabanovitch&#x27;s arrangement (Charade 1999; combinatorics via Savchuk&#x27;s
-LineOrder gallery table + SVG) reconstructed over $\mathbb{Q}$ with its two
-triple points $\{0,3,5\},\{0,8,10\}$ imposed exactly;
-`engine.verify_n12_lower_bound()` → `(True,&#x27;ok&#x27;)` (38 triangles, all 703
-pairs disjoint; no published exact coefficients existed — scout-confirmed).
-Artifact: `scratch/kobon/n12/n12_lower_certificate.json`.
-
-Why no located source proves this case (priority not exhaustively reviewed;
-scouted 2026-08-13): the public tables&#x27; 25/38 entries at
-$n=10,12$ trace to theorems about triangular *faces* of *simple* arrangements
-(BBL arXiv:0706.0723, Blanc arXiv:0801.2845) or to the Clément–Bader draft
-whose charging lemmas assume nondegenerate/pairwise-crossing configurations.
-Exact rational counterexamples (in [`report.md`](report.md) §6) show those
-charging steps are false once degeneracies and crossed triangles are admitted,
-so no located source proves the broad-convention value at $n=10$. Scope
-verdicts were independently re-derived by two literature scouts (2026-08-13).
-
-## State (2026-08-15, final)
-
-| claim | status | evidence |
-|---|---|---|
-| $K_{\rm gen}(10)\ge25$ | **PROVED** (exact rational) | integer certificate in `engine.py::N10_LOWER_BOUND_LINES/TRIANGLES`; `verify_n10_lower_bound()` → `(True,&#x27;ok&#x27;)`; independently re-implemented by a reviewer agent (300/300 pairs separated) |
-| CNF relaxation sound (UNSAT ⇒ upper bound) | **PROVED** (necessity of every clause) | hand proofs + 1,296 planted-degeneracy configs, 0 violations; 203,673 triangle pairs vs exact separating-axis oracle, 0 gaps; adversarial reviewer audit found no unsound clause |
-| 11-cube cover exhaustive | **PROVED** | `dump_instances` docstring + CubeCoverAudit (D10 orbit transversal, Burnside $(120+5\cdot8)/20=8$; single WLOG σ-bit via $b\mapsto-b$) |
-| $K(9)\le21$ (control) | **CERTIFIED** | `proof_n9_t22.drat` `s VERIFIED` (drat-trim, 121,436,534 resolution steps) |
-| 9 of 11 cubes UNSAT at target 26 | **CERTIFIED** | all 9 shipped DRATs `s VERIFIED` by drat-trim (≈23.4 CPU-h; `scratch/kobon-audit/results_verified.tsv`) |
-| `c0`, `par_conc` cubes UNSAT | **CERTIFIED** (verified 8-way case splits) | 16/16 subcube DRATs `s VERIFIED` (≈16.4 CPU-h, 44 GB; `scratch/kobon-audit/splits.tsv`); each subcube CNF byte-verified = parent + 3 unit clauses (tautological split, `AUDIT.md`) |
-| $K_{\rm gen}(10)=25$ | **THEOREM — fully certified** | every row above green; verdict sealed in [`AUDIT.md`](AUDIT.md) |
-
-## Layout
-
-| path | contents |
-|---|---|
-| [`README.md`](README.md) | this file — SSOT index and status |
-| [`report.md`](report.md) | the theorem report: convention, encoding, machine-verified lemmas L1–L5, axioms A1–A7, rules R1–R4, accelerators, counterexamples to classical charging, results |
-| [`engine.py`](engine.py) | canonical engine: CNF builder, exact rational oracles, LP straightening, embedded lower-bound certificates (`verify_n10_lower_bound`, `verify_n12_lower_bound`), `dump_instances` proof-family driver. sha256 now `0b0dfa2a…e990` (n=12 certificate added 2026-08-15; the audited n=10 bundle hash `1f524967…79fe` is preserved in `AUDIT.md`) |
-| [`AUDIT.md`](AUDIT.md) | 2026-08-15 independent certification audit: truncation finding, byte-census method, reproducibility seal, in-flight verification fleet, closure criteria |
-| `~/jinleic-workspace/scratch/kobon/` | working data: 12 proof-family CNFs (regenerate byte-identically from `engine.py`), 9 complete DRATs + 2 truncated, historical instances |
-| `~/jinleic-workspace/scratch/kobon-audit/` | live audit working dir: tools (kissat 4.0.4, drat-trim), split subcube CNFs, replacement proofs (`resolve/`), fleet logs, `results.tsv`, `memwatch.log` |
-| `~/Downloads/files-to-transfer-math-phys/workspace-files/scratch/kobon/` | frozen source bundle audited by AUDIT.md (byte-identical `engine.py`) |
-
-## Verification (rerun anytime)
-
-```sh
-cd ~/jinleic-workspace
-# lower bound, exact rational:
-scratch/kobon-audit/venv/bin/python -c &quot;import sys; sys.path.insert(0,&#x27;math/kobon&#x27;); import engine; print(engine.verify_n10_lower_bound())&quot;
-# regenerate the proof-family CNFs and diff against shipped:
-scratch/kobon-audit/venv/bin/python -c &quot;import sys; sys.path.insert(0,&#x27;math/kobon&#x27;); import engine; print(engine.dump_instances(10,26,&#x27;/tmp/kobon-regen&#x27;))&quot;
-# check any cube proof:
-scratch/kobon-audit/tools/drat-trim/drat-trim scratch/kobon/kobon_n10_t26_proof_simple.cnf scratch/kobon/proof_n10_t26_simple.drat -w
-```
-
-## Process history (all retired 2026-08-15)
-
-`kobon-drat-fleet` (9-proof recheck — complete, 9/9 `s VERIFIED`),
-`ksplit-*` / `vsplit-*` (16 split solves + 16 verifications — complete,
-16/16 `s VERIFIED`), `kobon-solve-c0` / `kobon-solve-parconc` (whole-cube
-backup re-solves — stopped as superseded once their cubes were certified),
-`kobon-memwatch` (RSS observability — retired).
-
-## Discipline notes
-
-- UNSAT results are believed only after `drat-trim` verification of a complete
-  DRAT ending in the empty clause; solver exit codes are not evidence.
-- SAT results would be believed only after LP straightening + exact rational
-  re-verification (none occurred at target 26).</pre>
-<h2>Curated artifacts</h2><ul><li><a href="../materials/kobon/README.md">README.md</a> (7KB, sha256 1040611c9493)</li><li><a href="../materials/kobon/report.md">report.md</a> (24KB, sha256 d6b6e95ac27e)</li><li><a href="../materials/kobon/paper_capacity.md">paper_capacity.md</a> (58KB, sha256 f8be81157d75)</li><li><a href="../materials/kobon/paper_kobon_2026-08.md">paper_kobon_2026-08.md</a> (9KB, sha256 63eeac4be918)</li><li><a href="../materials/kobon/AUDIT.md">AUDIT.md</a> (7KB, sha256 981628f74ca6)</li><li><a href="../materials/kobon/paper/kobon_broad_capacity.pdf">paper/kobon_broad_capacity.pdf</a> (284KB, sha256 1bbb10574684)</li><li><a href="../materials/kobon/paper/kobon_broad_capacity.tex">paper/kobon_broad_capacity.tex</a> (32KB, sha256 ec303881323b)</li><li><a href="../materials/kobon/engine.py">engine.py</a> (42KB, sha256 2889cace737f)</li><li><a href="../materials/kobon/release/kobon-2026-08.zip">release/kobon-2026-08.zip</a> (604KB, sha256 9b0d490006bb)</li></ul>
-
+<p class="tag">source <code>math/kobon</code> ·
+session <code>019ff95f-d695-7000-b3d0-36dd86537081</code> ·
+last change 2026-08-22T05:44:40Z</p>
+<h2>Latest progress</h2><p class="tag">newest matching entry, quoted from <code>math/PROGRESS.md</code></p><div class="markdown-body" id="md-progress"></div>
+<h2>Project README</h2><p class="tag">first lines, verbatim</p><div class="markdown-body" id="md-readme"></div>
+<h2>Code &amp; artifacts</h2>
+<p class="tag">mirrored from the project tree; very large result files and campaign data excluded</p>
+<details open><summary><code>project root</code> — 7 files, 0.2 MB</summary><ul class="files"><li><a href="../materials/kobon/AUDIT.md">AUDIT.md</a> <span class="fsize">7 KB</span></li><li><a href="../materials/kobon/README.md">README.md</a> <span class="fsize">7 KB</span></li><li><a href="../materials/kobon/engine.py">engine.py</a> <span class="fsize">42 KB</span></li><li><a href="../materials/kobon/paper_capacity.md">paper_capacity.md</a> <span class="fsize">58 KB</span></li><li><a href="../materials/kobon/paper_kobon_2026-08.md">paper_kobon_2026-08.md</a> <span class="fsize">9 KB</span></li><li><a href="../materials/kobon/report.md">report.md</a> <span class="fsize">24 KB</span></li><li><a href="../materials/kobon/test_engine.py">test_engine.py</a> <span class="fsize">13 KB</span></li></ul></details>
+<details><summary><code>docs/</code> — 6 files, 0.1 MB</summary><ul class="files"><li><a href="../materials/kobon/docs/ARTIFACTS.md">docs/ARTIFACTS.md</a> <span class="fsize">64 KB</span></li><li><a href="../materials/kobon/docs/INDEX.md">docs/INDEX.md</a> <span class="fsize">15 KB</span></li><li><a href="../materials/kobon/docs/NEXT_BREAKTHROUGHS.md">docs/NEXT_BREAKTHROUGHS.md</a> <span class="fsize">5 KB</span></li><li><a href="../materials/kobon/docs/experiments.md">docs/experiments.md</a> <span class="fsize">13 KB</span></li><li><a href="../materials/kobon/docs/methods.md">docs/methods.md</a> <span class="fsize">10 KB</span></li><li><a href="../materials/kobon/docs/reproduce.md">docs/reproduce.md</a> <span class="fsize">5 KB</span></li></ul></details>
+<details><summary><code>paper/</code> — 5 files, 0.4 MB</summary><ul class="files"><li><a href="../materials/kobon/paper/kobon_broad_capacity.aux">paper/kobon_broad_capacity.aux</a> <span class="fsize">6 KB</span></li><li><a href="../materials/kobon/paper/kobon_broad_capacity.log">paper/kobon_broad_capacity.log</a> <span class="fsize">21 KB</span></li><li><a href="../materials/kobon/paper/kobon_broad_capacity.out">paper/kobon_broad_capacity.out</a> <span class="fsize">2 KB</span></li><li><a href="../materials/kobon/paper/kobon_broad_capacity.pdf">paper/kobon_broad_capacity.pdf</a> <span class="fsize">285 KB</span></li><li><a href="../materials/kobon/paper/kobon_broad_capacity.tex">paper/kobon_broad_capacity.tex</a> <span class="fsize">33 KB</span></li></ul></details>
+<details><summary><code>release/</code> — 96 files, 4.8 MB</summary><ul class="files"><li><a href="../materials/kobon/release/kobon-2026-08-obsolete-structure.zip">release/kobon-2026-08-obsolete-structure.zip</a> <span class="fsize">242 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08-obsolete-structure2.zip">release/kobon-2026-08-obsolete-structure2.zip</a> <span class="fsize">242 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08-obsolete-structure3.zip">release/kobon-2026-08-obsolete-structure3.zip</a> <span class="fsize">242 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08-v1.zip">release/kobon-2026-08-v1.zip</a> <span class="fsize">242 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08-v2.zip">release/kobon-2026-08-v2.zip</a> <span class="fsize">248 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08-v3.zip">release/kobon-2026-08-v3.zip</a> <span class="fsize">581 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08-v4.zip">release/kobon-2026-08-v4.zip</a> <span class="fsize">601 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08-v5.zip">release/kobon-2026-08-v5.zip</a> <span class="fsize">604 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08.zip">release/kobon-2026-08.zip</a> <span class="fsize">604 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/MANIFEST.sha256">release/kobon-2026-08/MANIFEST.sha256</a> <span class="fsize">8 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/README.md">release/kobon-2026-08/README.md</a> <span class="fsize">4 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/certify_ladder.sh">release/kobon-2026-08/certificates/certify_ladder.sh</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/ladder_certificates.json">release/kobon-2026-08/certificates/ladder_certificates.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/ladder_n4_t3.dratcheck.log">release/kobon-2026-08/certificates/ladder_n4_t3.dratcheck.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/ladder_n5_t6.dratcheck.log">release/kobon-2026-08/certificates/ladder_n5_t6.dratcheck.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/ladder_n6_t8.dratcheck.log">release/kobon-2026-08/certificates/ladder_n6_t8.dratcheck.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/ladder_n7_t12.dratcheck.log">release/kobon-2026-08/certificates/ladder_n7_t12.dratcheck.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/ladder_n8_t16.dratcheck.log">release/kobon-2026-08/certificates/ladder_n8_t16.dratcheck.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/ladder_n9_t22.dratcheck.log">release/kobon-2026-08/certificates/ladder_n9_t22.dratcheck.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/n11_k32.maxpacking.json">release/kobon-2026-08/certificates/n11_k32.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/n14_bader53_verified.maxpacking.json">release/kobon-2026-08/certificates/n14_bader53_verified.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/n14_best_exact53.maxpacking.json">release/kobon-2026-08/certificates/n14_best_exact53.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/n18_known93.maxpacking.json">release/kobon-2026-08/certificates/n18_known93.maxpacking.json</a> <span class="fsize">2 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/n20_known116.maxpacking.json">release/kobon-2026-08/certificates/n20_known116.maxpacking.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol10_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol10_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol11_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol11_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol12_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol12_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol13_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol13_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol14_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol14_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol15_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol15_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol1_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol1_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol2_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol2_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol3_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol3_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol4_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol4_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol5_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol5_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol6_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol6_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol7_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol7_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol8_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol8_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/certificates/sol9_lines_rational.maxpacking.json">release/kobon-2026-08/certificates/sol9_lines_rational.maxpacking.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/discoveries/n11_k32.json">release/kobon-2026-08/discoveries/n11_k32.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/discoveries/n14_bader53_verified.json">release/kobon-2026-08/discoveries/n14_bader53_verified.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/discoveries/n14_best_exact53.json">release/kobon-2026-08/discoveries/n14_best_exact53.json</a> <span class="fsize">2 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/discoveries/n18_known93.json">release/kobon-2026-08/discoveries/n18_known93.json</a> <span class="fsize">4 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/discoveries/n20_known116.json">release/kobon-2026-08/discoveries/n20_known116.json</a> <span class="fsize">7 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/discoveries/n9_t21_satpipe_rehearsal.json">release/kobon-2026-08/discoveries/n9_t21_satpipe_rehearsal.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/ARTIFACTS.md">release/kobon-2026-08/docs/ARTIFACTS.md</a> <span class="fsize">64 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/INDEX.md">release/kobon-2026-08/docs/INDEX.md</a> <span class="fsize">15 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/NEXT_BREAKTHROUGHS.md">release/kobon-2026-08/docs/NEXT_BREAKTHROUGHS.md</a> <span class="fsize">5 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/PROGRESS.md">release/kobon-2026-08/docs/PROGRESS.md</a> <span class="fsize">267 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/batch2_launch.md">release/kobon-2026-08/docs/batch2_launch.md</a> <span class="fsize">2 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/experiments.md">release/kobon-2026-08/docs/experiments.md</a> <span class="fsize">13 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/litrefs.md">release/kobon-2026-08/docs/litrefs.md</a> <span class="fsize">16 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/methods.md">release/kobon-2026-08/docs/methods.md</a> <span class="fsize">10 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/orbit_cube_plan.md">release/kobon-2026-08/docs/orbit_cube_plan.md</a> <span class="fsize">11 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/reproduce.md">release/kobon-2026-08/docs/reproduce.md</a> <span class="fsize">5 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/docs/signature_algebra.md">release/kobon-2026-08/docs/signature_algebra.md</a> <span class="fsize">10 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/LICENSE">release/kobon-2026-08/maiorana/LICENSE</a> <span class="fsize">18 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/SHA256SUMS.txt">release/kobon-2026-08/maiorana/SHA256SUMS.txt</a> <span class="fsize">4 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol10_lines_rational.json">release/kobon-2026-08/maiorana/sol10_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol11_lines_rational.json">release/kobon-2026-08/maiorana/sol11_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol12_lines_rational.json">release/kobon-2026-08/maiorana/sol12_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol13_lines_rational.json">release/kobon-2026-08/maiorana/sol13_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol14_lines_rational.json">release/kobon-2026-08/maiorana/sol14_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol15_lines_rational.json">release/kobon-2026-08/maiorana/sol15_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol1_lines_rational.json">release/kobon-2026-08/maiorana/sol1_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol2_lines_rational.json">release/kobon-2026-08/maiorana/sol2_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol3_lines_rational.json">release/kobon-2026-08/maiorana/sol3_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol4_lines_rational.json">release/kobon-2026-08/maiorana/sol4_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol5_lines_rational.json">release/kobon-2026-08/maiorana/sol5_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol6_lines_rational.json">release/kobon-2026-08/maiorana/sol6_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol7_lines_rational.json">release/kobon-2026-08/maiorana/sol7_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol8_lines_rational.json">release/kobon-2026-08/maiorana/sol8_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/maiorana/sol9_lines_rational.json">release/kobon-2026-08/maiorana/sol9_lines_rational.json</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/papers/kobon_broad_capacity.pdf">release/kobon-2026-08/papers/kobon_broad_capacity.pdf</a> <span class="fsize">270 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/papers/kobon_broad_capacity.tex">release/kobon-2026-08/papers/kobon_broad_capacity.tex</a> <span class="fsize">25 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/papers/paper_capacity.md">release/kobon-2026-08/papers/paper_capacity.md</a> <span class="fsize">58 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/papers/paper_kobon_2026-08.md">release/kobon-2026-08/papers/paper_kobon_2026-08.md</a> <span class="fsize">9 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/papers/report.md">release/kobon-2026-08/papers/report.md</a> <span class="fsize">24 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/proofs/Kgen14_ge54_certificate.md">release/kobon-2026-08/proofs/Kgen14_ge54_certificate.md</a> <span class="fsize">2 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/proofs/appendix_check_n18.py">release/kobon-2026-08/proofs/appendix_check_n18.py</a> <span class="fsize">7 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/proofs/appendix_independent_check.py">release/kobon-2026-08/proofs/appendix_independent_check.py</a> <span class="fsize">4 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/proofs/defect_lemma.md">release/kobon-2026-08/proofs/defect_lemma.md</a> <span class="fsize">12 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/proofs/escape_obstruction.md">release/kobon-2026-08/proofs/escape_obstruction.md</a> <span class="fsize">16 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/proofs/obstruction_n18.md">release/kobon-2026-08/proofs/obstruction_n18.md</a> <span class="fsize">18 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/proofs/obstruction_n20.md">release/kobon-2026-08/proofs/obstruction_n20.md</a> <span class="fsize">16 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/scripts/concurrency_cases.py">release/kobon-2026-08/scripts/concurrency_cases.py</a> <span class="fsize">11 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/scripts/engine.py">release/kobon-2026-08/scripts/engine.py</a> <span class="fsize">42 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/README.md">release/kobon-2026-08/verification/README.md</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/appendix_check_n18.py">release/kobon-2026-08/verification/appendix_check_n18.py</a> <span class="fsize">7 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/appendix_independent_check.py">release/kobon-2026-08/verification/appendix_independent_check.py</a> <span class="fsize">4 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/broad_ladder.py">release/kobon-2026-08/verification/broad_ladder.py</a> <span class="fsize">2 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/maiorana_verify.log">release/kobon-2026-08/verification/maiorana_verify.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/maiorana_verify.py">release/kobon-2026-08/verification/maiorana_verify.py</a> <span class="fsize">6 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/max_packing.py">release/kobon-2026-08/verification/max_packing.py</a> <span class="fsize">5 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/sweep_all_verify.log">release/kobon-2026-08/verification/sweep_all_verify.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/release/kobon-2026-08/verification/sweep_all_verify.py">release/kobon-2026-08/verification/sweep_all_verify.py</a> <span class="fsize">2 KB</span></li></ul></details>
+<details><summary><code>verification/</code> — 8 files, 0.0 MB</summary><ul class="files"><li><a href="../materials/kobon/verification/README.md">verification/README.md</a> <span class="fsize">3 KB</span></li><li><a href="../materials/kobon/verification/appendix_check_n18.py">verification/appendix_check_n18.py</a> <span class="fsize">7 KB</span></li><li><a href="../materials/kobon/verification/appendix_independent_check.py">verification/appendix_independent_check.py</a> <span class="fsize">4 KB</span></li><li><a href="../materials/kobon/verification/maiorana_verify.log">verification/maiorana_verify.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/verification/maiorana_verify.py">verification/maiorana_verify.py</a> <span class="fsize">6 KB</span></li><li><a href="../materials/kobon/verification/max_packing.py">verification/max_packing.py</a> <span class="fsize">5 KB</span></li><li><a href="../materials/kobon/verification/sweep_all_verify.log">verification/sweep_all_verify.log</a> <span class="fsize">1 KB</span></li><li><a href="../materials/kobon/verification/sweep_all_verify.py">verification/sweep_all_verify.py</a> <span class="fsize">2 KB</span></li></ul></details>
+<script>window.__MD__ = {"md-progress": "### KOBON (2026-08-22) - THE CONVENTIONS COLLAPSE: crossings never help, so K = K_gen\n\n* **THEOREM (collapse), proved and machine-checked**: for every arrangement A,\n  `face(A) = broad(A)`; hence **`K_gen(n) = K(n)` for all n**. Proof is two\n  steps:\n  * *Corner-descent lemma*: every triangle bounded by three lines of an\n    arrangement contains a triangular FACE. Induct on the number of lines\n    meeting the interior; a chord either cuts off a corner (leaving a triangle\n    on two old lines + the chord) or runs from a vertex to the opposite side\n    (splitting into two such triangles); the piece loses that chord, so the\n    parameter strictly drops.\n  * *Exchange*: replace a crossed member of an interior-disjoint family by a\n    face inside it; size preserved, crossed count drops. Iterate.\n* **Machine check** (`scratch/kobon/collapse_verify.py`): 872 exact-rational\n  arrangements at n\u003c=7 over six degeneracy modes (generic, parallel pair,\n  parallel triple, triple point, quadruple point, two triple points);\n  **13,017 triangles all descend to a face** (depths 0-4); **zero**\n  arrangements with face \u003c broad. Independent sweep\n  (`convention_sweep.py`): 1,120 arrangements at n=5,6, zero gaps.\n* **HONEST DOWNGRADE**: this retires the convention hierarchy that the prior\n  session's paper was built on. Consequences:\n  * The ceiling `K_gen(n) \u003c= floor((n-2)(5n-3)/12)` is **superseded** -\n    weaker than `floor(n(n-2)/3)` at every n>=4, since 5n-3 > 4n. Kept only\n    as a capacity-machinery corollary.\n  * `K_gen(8)=15`, `K_gen(9)=21` are **not new values** - they equal the\n    classical K(8), K(9). The DRAT ladder is an independent all-degeneracy\n    *verification* of the classical Kobon numbers, not new mathematics.\n  * The n=13 T=48 \"separation probe\" and the n=14 T=56 monolith are\n    **provably redundant** (48 > floor(13*11/3) = 47; T=56 is implied by\n    T=55). Both frozen, state preserved.\n* **POINTWISE FALSE**: the collapse equates maxima, not optima. Crossed\n  optima genuinely exist - at n=4, 296 of 300 random exact-rational\n  arrangements have an optimal 2-family using a crossed triangle; at n=6 the\n  exact arrangement in `scratch/kobon/discoveries/n6_convention_separation.json`\n  attains the record 7 with `012` crossed by line 4, and descent recovers the\n  face optimum by swapping `012 -> 014`. SAT-certified companion: forcing a\n  crossing into an optimal family is SAT at n=4,6 and UNSAT at n=5,7,8.\n* **SOUND SEARCH WLOG** (`scratch/kobon/faces_only.py`): crossings may be\n  forbidden outright. Validated against known values - UNSAT at (7,12),\n  (8,16), (9,22); ~2x faster than the broad encoding (n=8: 75s -> 31.6s;\n  n=9: 710s -> 388s).\n* **RETARGETED FRONTIER** (the rigorous K-windows, with OEIS's simple-only\n  upper bounds discarded): n=11 closed by Savchuk; n=13 closed (FK bound =\n  construction 47); **n=12 open at [38,39]** - the smallest genuinely open\n  case, decided by the single instance (12,39), now running; n=14 open at\n  [54,55], decided by (14,55) - `n14_faces_t55.cnf` (1,349,454 vars /\n  7,829,001 clauses) launched; n=18 [93,95]; n=20 [116,119].\n* **DISK**: guard fired exactly as designed -\n  `GUARD-STOP pid=88776 rc=0 state=T free_kib=15678924`. With approval,\n  255 GB of partial DRAT proofs for now-redundant runs were removed\n  (n11_monolith_t33.drat 91 GB, n14c-q0tp1 75 GB, n14c-q1tp1d 82 GB); the\n  blocks are currently pinned by Time Machine local snapshots, which macOS\n  purges under pressure. Collateral: the n11 discovery twin shared that\n  CNF path and was terminated with the writers; superseded by the compact\n  `n11_faces_t33.cnf` run.\n", "md-readme": "# Kobon triangle problem — exact decisions at small n\n\nCanonical home of the Kobon campaign. Everything authoritative about this\ntarget lives in this directory; `scratch/` holds only machine working data\n(CNF instances, DRAT proofs, solver logs, venv, tools).\n\n## Statement and convention\n\nThe Kobon triangle problem (Fujimura; on Wikipedia's list of unsolved problems\nin mathematics) asks for the maximum number of non-overlapping triangles whose\nsides lie on $n$ straight lines. This campaign decides the **broad\nconvention**, written $K_{\\rm gen}(n)$: selected triangles have pairwise\ndisjoint interiors, other lines MAY cross a selected triangle, and parallel\nlines and multiple intersection points are allowed.\n\n**Campaign result:** $K_{\\rm gen}(10) = 25$, **certified complete\n2026-08-15** — machine-checkable certificates in both directions.\n\n**Active front (opened 2026-08-15): decide $K_{\\rm gen}(12)\\in\\{38,39\\}$.**\nUNSAT at target 39 is self-contained (any configuration with $\\ge39$ disjoint\ntriangles contains a 39-subfamily, so UNSAT@39 ⇒ $K_{\\rm gen}(12)\\le38$ —\nno reliance on the refuted published ceilings). Instances:\n`scratch/kobon/n12/` — 15-cube cover (`simple`, `par_noc`, `par_conc`,\n`c0`–`c11` from the constructively exhaustive D12 orbit enumeration),\ndimensions: `simple` 65,594 vars / 1,937,254 clauses; `par_noc`\n70,922 / 1,937,114; `par_conc` and `c0`–`c11` 60,194 /\n1,925,750–1,925,815. `par_conc` is split 8-way on X-vars 545/927/1385\n(byte-verified = parent + 3 units). A second 8-way split under\n`par_conc_0` uses X-vars 295/775/1121: branches 1/3/5/7 are\nDRAT-verified UNSAT. A compressed, completion-gated rerun now has\n`par_noc` branches 1/3/5/7 independently `s VERIFIED`; the remaining\nbranches of `par_noc`, `simple`, `par_conc_0`, `c0`, and `c1` are active.\n**Lower bound $K_{\\rm gen}(12)\\ge38$: PROVED** (exact rational) —\nKabanovitch's arrangement (Charade 1999; combinatorics via Savchuk's\nLineOrder gallery table + SVG) reconstructed over $\\mathbb{Q}$ with its two\ntriple points $\\{0,3,5\\},\\{0,8,10\\}$ imposed exactly;\n`engine.verify_n12_lower_bound()` → `(True,'ok')` (38 triangles, all 703\npairs disjoint; no published exact coefficients existed — scout-confirmed).\nArtifact: `scratch/kobon/n12/n12_lower_certificate.json`.\n\nWhy no located source proves this case (priority not exhaustively reviewed;\nscouted 2026-08-13): the public tables' 25/38 entries at\n$n=10,12$ trace to theorems about triangular *faces* of *simple* arrangements\n(BBL arXiv:0706.0723, Blanc arXiv:0801.2845) or to the Clément–Bader draft\nwhose charging lemmas assume nondegenerate/pairwise-crossing configurations.\nExact rational counterexamples (in [`report.md`](report.md) §6) show those\ncharging steps are false once degeneracies and crossed triangles are admitted,\nso no located source proves the broad-convention value at $n=10$. Scope\nverdicts were independently re-derived by two literature scouts (2026-08-13).\n\n## State (2026-08-15, final)\n\n| claim | status | evidence |\n|---|---|---|\n| $K_{\\rm gen}(10)\\ge25$ | **PROVED** (exact rational) | integer certificate in `engine.py::N10_LOWER_BOUND_LINES/TRIANGLES`; `verify_n10_lower_bound()` → `(True,'ok')`; independently re-implemented by a reviewer agent (300/300 pairs separated) |\n| CNF relaxation sound (UNSAT ⇒ upper bound) | **PROVED** (necessity of every clause) | hand proofs + 1,296 planted-degeneracy configs, 0 violations; 203,673 triangle pairs vs exact separating-axis oracle, 0 gaps; adversarial reviewer audit found no unsound clause |\n| 11-cube cover exhaustive | **PROVED** | `dump_instances` docstring + CubeCoverAudit (D10 orbit transversal, Burnside $(120+5\\cdot8)/20=8$; single WLOG σ-bit via $b\\mapsto-b$) |\n| $K(9)\\le21$ (control) | **CERTIFIED** | `proof_n9_t22.drat` `s VERIFIED` (drat-trim, 121,436,534 resolution steps) |\n| 9 of 11 cubes UNSAT at target 26 | **CERTIFIED** | all 9 shipped DRATs `s VERIFIED` by drat-trim (≈23.4 CPU-h; `scratch/kobon-audit/results_verified.tsv`) |\n| `c0`, `par_conc` cubes UNSAT | **CERTIFIED** (verified 8-way case splits) | 16/16 subcube DRATs `s VERIFIED` (≈16.4 CPU-h, 44 GB; `scratch/kobon-audit/splits.tsv`); each subcube CNF byte-verified = parent + 3 unit clauses (tautological split, `AUDIT.md`) |\n| $K_{\\rm gen}(10)=25$ | **THEOREM — fully certified** | every row above green; verdict sealed in [`AUDIT.md`](AUDIT.md) |\n\n## Layout\n\n| path | contents |\n|---|---|\n| [`README.md`](README.md) | this file — SSOT index and status |\n| [`report.md`](report.md) | the theorem report: convention, encoding, machine-verified lemmas L1–L5, axioms A1–A7, rules R1–R4, accelerators, counterexamples to classical charging, results |\n| [`engine.py`](engine.py) | canonical engine: CNF builder, exact rational oracles, LP straightening, embedded lower-bound certificates (`verify_n10_lower_bound`, `verify_n12_lower_bound`), `dump_instances` proof-family driver. sha256 now `0b0dfa2a…e990` (n=12 certificate added 2026-08-15; the audited n=10 bundle hash `1f524967…79fe` is preserved in `AUDIT.md`) |\n| [`AUDIT.md`](AUDIT.md) | 2026-08-15 independent certification audit: truncation finding, byte-census method, reproducibility seal, in-flight verification fleet, closure criteria |\n| `~/jinleic-workspace/scratch/kobon/` | working data: 12 proof-family CNFs (regenerate byte-identically from `engine.py`), 9 complete DRATs + 2 truncated, historical instances |\n| `~/jinleic-workspace/scratch/kobon-audit/` | live audit working dir: tools (kissat 4.0.4, drat-trim), split subcube CNFs, replacement proofs (`resolve/`), fleet logs, `results.tsv`, `memwatch.log` |\n| `~/Downloads/files-to-transfer-math-phys/workspace-files/scratch/kobon/` | frozen source bundle audited by AUDIT.md (byte-identical `engine.py`) |\n\n## Verification (rerun anytime)\n\n```sh\ncd ~/jinleic-workspace\n# lower bound, exact rational:\nscratch/kobon-audit/venv/bin/python -c \"import sys; sys.path.insert(0,'math/kobon'); import engine; print(engine.verify_n10_lower_bound())\"\n# regenerate the proof-family CNFs and diff against shipped:\nscratch/kobon-audit/venv/bin/python -c \"import sys; sys.path.insert(0,'math/kobon'); import engine; print(engine.dump_instances(10,26,'/tmp/kobon-regen'))\"\n# check any cube proof:\nscratch/kobon-audit/tools/drat-trim/drat-trim scratch/kobon/kobon_n10_t26_proof_simple.cnf scratch/kobon/proof_n10_t26_simple.drat -w\n```\n\n## Process history (all retired 2026-08-15)\n\n`kobon-drat-fleet` (9-proof recheck — complete, 9/9 `s VERIFIED`),\n`ksplit-*` / `vsplit-*` (16 split solves + 16 verifications — complete,\n16/16 `s VERIFIED`), `kobon-solve-c0` / `kobon-solve-parconc` (whole-cube\nbackup re-solves — stopped as superseded once their cubes were certified),\n`kobon-memwatch` (RSS observability — retired).\n\n## Discipline notes\n\n- UNSAT results are believed only after `drat-trim` verification of a complete\n  DRAT ending in the empty clause; solver exit codes are not evidence.\n- SAT results would be believed only after LP straightening + exact rational\n  re-verification (none occurred at target 26)."};</script>
 <hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
 </body></html>

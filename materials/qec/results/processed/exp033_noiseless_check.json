@@ -1,0 +1,57 @@
+{
+  "experiment": "EXP-033-noiseless-check",
+  "canonical_input": "results/processed/exp033_unrestricted_three.json",
+  "canonical_input_sha256": "fc9cc1ae7475ca9b49e5a13fd1d881a876efba7fd597efed2da141636fa2fad1",
+  "protocol": {
+    "shots": 4000,
+    "rounds": 12,
+    "seed": 20260813,
+    "p": 0.0,
+    "basis": "Z"
+  },
+  "results": [
+    {
+      "exp031_instance": "pbb144-01",
+      "label": "12_6_0188",
+      "depth": 9,
+      "noiseless_shots": 4000,
+      "certified_depth": 9,
+      "w_max": 9,
+      "slot_sha256": "1f2dbaa0665dd10fd208cde846ebdfcd7f4e186a41bb595716f8764d33b8f83b",
+      "rounds": 12,
+      "noiseless_detector_firings": 0,
+      "noiseless_observable_flips": 0,
+      "passes": true
+    },
+    {
+      "exp031_instance": "pbb144-03",
+      "label": "12_6_0190",
+      "depth": 9,
+      "noiseless_shots": 4000,
+      "certified_depth": 9,
+      "w_max": 9,
+      "slot_sha256": "b5c0d8e427bb89b624cdfa9b6f80ae04d406d8bcafe7d86741b5bc86a4b197d5",
+      "rounds": 12,
+      "noiseless_detector_firings": 0,
+      "noiseless_observable_flips": 0,
+      "passes": true
+    },
+    {
+      "exp031_instance": "pbb144-11",
+      "label": "catalogue-line-41",
+      "depth": 9,
+      "noiseless_shots": 4000,
+      "certified_depth": 9,
+      "w_max": 9,
+      "slot_sha256": "ae91e90c9a180563c1407ca5618b43f21bdac38fd0dce90854a6396a66d08426",
+      "rounds": 12,
+      "noiseless_detector_firings": 0,
+      "noiseless_observable_flips": 0,
+      "passes": true
+    }
+  ],
+  "verdict": "POSITIVE",
+  "wall_s": 5.3,
+  "artifact_route": "canonical",
+  "artifact_path": "results/processed/exp033_noiseless_check.json"
+}

@@ -1,0 +1,272 @@
+{
+ "ceiling_max": 36,
+ "ceiling_max_weight3": 36,
+ "ell": 27,
+ "frontier": {
+  "12": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "dim_I0": 6,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "18": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     9,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 9,
+   "dim_I0": 9,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "24": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "dim_I0": 12,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "8": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "dim_I0": 4,
+   "exact_min": true,
+   "route": "ideal"
+  }
+ },
+ "frontier_weight3": {
+  "12": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "dim_I0": 6,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "24": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "dim_I0": 12,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "8": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "dim_I0": 4,
+   "exact_min": true,
+   "route": "ideal"
+  }
+ },
+ "groups": 33,
+ "idempotence_tested": 10,
+ "idempotence_violations": [],
+ "k_crosschecks": 24,
+ "k_histogram": {
+  "0": 8339879,
+  "108": 4,
+  "12": 51651,
+  "18": 228,
+  "2": 3888,
+  "24": 972,
+  "36": 783,
+  "4": 2025648,
+  "54": 16,
+  "6": 2268,
+  "72": 12,
+  "8": 78732
+ },
+ "k_max": 108,
+ "k_mismatches": [],
+ "m": 3,
+ "max_weight": 3,
+ "n": 162,
+ "no_group_certificate_pairs": 0,
+ "no_group_certificate_represented": 0,
+ "pairs_total": 10504081,
+ "qualifying_group_pairs": 122,
+ "qualifying_pairs_represented": 131583,
+ "supports": 3241,
+ "wall_s": 8.28
+}

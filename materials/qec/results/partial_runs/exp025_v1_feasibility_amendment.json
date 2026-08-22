@@ -1,0 +1,46 @@
+{
+  "experiment": "EXP-025",
+  "protocol_version": "exp025-preregistered-2026-08-12-v1",
+  "status": "RETIRED_INFEASIBLE_DEVELOPMENT_ONLY",
+  "canonical_claims_allowed": false,
+  "reason": "The original protocol planned 867500 supervised BP+OSD decodes, including a substantially slower PBB arm. It was frozen after the complete Gross stage-1 arm and before any PBB result, then replaced prospectively by v2. V1 outcomes are development/feasibility evidence only and are never reused by v2.",
+  "coverage": {
+    "stage1": {
+      "gross": {
+        "rows_completed": 70,
+        "rows_declared": 70,
+        "shots": 175000,
+        "logical_failures": 1847,
+        "decode_core_s": 106326.74373400159,
+        "summed_point_wall_s": 19813.905036455893
+      },
+      "pbb": {
+        "rows_completed": 0,
+        "rows_declared": 69,
+        "shots": 0,
+        "logical_failures": 0
+      }
+    },
+    "stage2": {
+      "gross_rows_completed": 0,
+      "pbb_rows_completed": 0,
+      "shots": 0
+    },
+    "planned_decodes_remaining": 692500,
+    "planned_decodes_total": 867500
+  },
+  "scope_correction": {
+    "schedule_class": "translation-invariant",
+    "gross_schedule_population": 8496,
+    "pbb_schedule_population": 9968,
+    "population_exhaustiveness": "exact only within the translation-invariant schedule class",
+    "gross_depth_7": "exact minimum only within the translation-invariant class in repository artifacts; unrestricted depth-6 exclusion is external ASC evidence",
+    "pbb_depth_8": "class-free exact from maximum check weight 8 plus a valid depth-8 witness; sampled population is translation-invariant"
+  },
+  "retired_statistics": "The v1 paired-seed/McNemar plan is invalid across distinct circuits because identical PRNG seeds do not create mathematically paired fault realizations. V2 uses independent exact tests.",
+  "checkpoint": "results/partial_runs/exp025_schedule_opt_checkpoint-full_scope.json",
+  "checkpoint_sha256": "88e373219d35e1e67d275c8b7a6bb682b55f2def39acdf759ffe172e551137bc",
+  "replacement_protocol": "exp025-preregistered-2026-08-13-v2",
+  "machine_readable_verdict": "DEVELOPMENT_ONLY",
+  "wall_s": 19813.905036455893
+}

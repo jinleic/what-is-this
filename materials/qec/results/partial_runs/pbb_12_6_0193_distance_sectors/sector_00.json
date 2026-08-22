@@ -1,0 +1,41 @@
+{
+  "code_id": "12_6_0193",
+  "detector_sha256": "f52fb6220960f16ba4dc453d8a91b0d5e164c54d09ed512ed3b59e67f3e10c4b",
+  "formulation": {
+    "centralizer": "Lambda(H) v^T = 0",
+    "coverage": "translation orbit of this representative; selected orbit union must have independently checked quotient rank 2k",
+    "nontriviality_sector": "v . Lambda(sum_j coefficient_j L_j) = 1",
+    "variables": "v=(x|z) in GF(2)^(2n)",
+    "weight": "sum_q OR(x_q,z_q) <= weight_cap"
+  },
+  "logical_basis_coefficient_mask_hex": "0x000004",
+  "logical_basis_coefficient_support": [
+    2
+  ],
+  "logical_basis_sha256": "3ae3fa15ca69349cf25bd1f7ab995bf7ddc6a8df716b126db68139a6635f17dd",
+  "matrix_sha256": "c017489e3fdfaaaa56dddb8be153f0156444cce92fb8fe1ae35556da91ed5f76",
+  "orbit_representative": 0,
+  "schema": "pbb-exact-distance-orbit-sector-v2",
+  "sector": 0,
+  "seed": 1553600036,
+  "solution": null,
+  "solver": {
+    "deterministic_time": 100.35323830671733,
+    "max_memory_mb": 4096,
+    "name": "OR-Tools CP-SAT",
+    "num_branches": 8021169,
+    "num_conflicts": 1879243,
+    "proof_complete_for_sector": false,
+    "random_seed": 1553600036,
+    "started_utc": "2026-08-14T04:37:32.506054+00:00",
+    "status": "UNKNOWN",
+    "status_code": 0,
+    "time_limit_s": 60.0,
+    "trace_path": "results/partial_runs/pbb_12_6_0193_distance_sectors/traces/sector_00.txt",
+    "trace_sha256": "b4e3c2768a52c0eefc016fd0bdf441ed2bc8ea193143332ca3b97e63bc014a52",
+    "version": "9.15.6755",
+    "wall_time_s": 60.01152470899979,
+    "workers": 1
+  },
+  "weight_cap": 11
+}

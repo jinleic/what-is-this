@@ -1,0 +1,94 @@
+{
+  "code": "[[90,8,10]]",
+  "ell": 15,
+  "m": 3,
+  "A": [
+    [
+      9,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "B": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      7,
+      0
+    ]
+  ],
+  "n": 90,
+  "k": 8,
+  "d_X": 10,
+  "d_Z": 10,
+  "d": 10,
+  "d_lower_bound": 10,
+  "solver_reports_exact": true,
+  "witnesses_independently_verified": true,
+  "CERTIFIED_EXACT": true,
+  "witness_X": {
+    "weight": 10,
+    "commutes_with_opposite_checks": true,
+    "is_stabilizer": false,
+    "is_nontrivial_logical": true,
+    "symplectic_weight": 10,
+    "support": [
+      2,
+      3,
+      9,
+      15,
+      26,
+      30,
+      50,
+      67,
+      69,
+      71
+    ],
+    "matches_reported_value": true
+  },
+  "witness_Z": {
+    "weight": 10,
+    "commutes_with_opposite_checks": true,
+    "is_stabilizer": false,
+    "is_nontrivial_logical": true,
+    "symplectic_weight": 10,
+    "support": [
+      13,
+      24,
+      26,
+      30,
+      50,
+      56,
+      63,
+      69,
+      77,
+      80
+    ],
+    "matches_reported_value": true
+  },
+  "all_sectors_decided": {
+    "X": true,
+    "Z": true
+  },
+  "search_cap": 10,
+  "wall_time_s": 25.85,
+  "method": "CP-SAT exact IP per logical sector; lower bound by proven INFEASIBLE below the value, upper bound by an explicit witness verified through an independent GF(2) bitset path",
+  "solver": "ortools CP-SAT",
+  "env": {
+    "python": "3.13.9",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O"
+  }
+}

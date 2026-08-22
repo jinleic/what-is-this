@@ -68,11 +68,12 @@ pairwise interior-disjoint triangles, and prove that every currently known
 extremal arrangement at $n=11,14,18,20$ attains its published count as its
 exact optimum. Finally we observe that the entry $a(14)=54$ recorded as
 exact in OEIS A006066 on 21 August 2026 pairs a non-simple construction with
-a simple-arrangement upper bound; the rigorous status is $54\le K(14)\le55$,
-and the decision procedure that closes it is a single crossing-free
-instance, together with two equality-branch obstruction theorems ($n=14$ and
-$n=18$, machine-checked) and a proof that the method cannot close the
-analogous branch at $n=20$.
+a simple-arrangement upper bound; the rigorous status is $54\le K(14)\le55$, and
+that the same reading leaves $38\le K(12)\le39$, so $n=12$ is in fact the
+smallest open case. Each is closed by a single crossing-free instance with
+all degeneracies free. We also prove two equality-branch obstruction
+theorems ($n=14$ and $n=18$, machine-checked) and that the method cannot
+close the analogous branch at $n=20$.
 \end{abstract}
 
 \section{Three quantities}
@@ -554,20 +555,38 @@ class with run lengths $(u,0,14-u)$, e.g.\ $(6,0,8)$; for the triad layout
 \eqref{eq:cycle} can exclude $T=117$ at $n=20$.
 \end{proposition}
 
-\section{The status of $K(14)$, and how to close it}
+\section{The two open small cases, and how to close them}
 
 Table~\ref{tab:windows} collects what is proved. Theorem~\ref{thm:collapse}
-simplifies the picture decisively: there is only one quantity above
-$a_3^s$, so a single instance closes $n=14$. The construction gives $54$
-and \eqref{eq:CB} gives $55$, so $K(14)\in\{54,55\}$, and the entire question
-is the satisfiability of $(n,T)=(14,55)$ with every parallel and
-multiple-point pattern free. By Remark~\ref{rem:wlog} that instance may
-additionally forbid crossings; the crossing-free form has $1{,}349{,}454$
-variables and $7{,}829{,}001$ clauses and is running at the time of writing.
-Unsatisfiability yields $K(14)=54$, matching the OEIS entry and making it a
-theorem; satisfiability yields, after straightening, a $55$-triangle record.
-The rungs $T=56,\dots$ that a bound for $\Kgen$ alone would leave open no
-longer exist.
+simplifies the picture decisively: there is only one quantity above $a_3^s$,
+so one instance per $n$ suffices, and the rungs above it that a bound for
+$\Kgen$ alone would leave open do not exist.
+
+Reading the table with the simple-arrangement entries discarded leaves
+exactly two open cases below $n=18$. At $n=11$ the value is settled
+\cite{Savchuk}; at $n=13$ the peer-reviewed bound $\lfloor
+13\cdot11/3\rfloor=47$ equals the construction, so $K(13)=47$. But at
+$n=12$ the construction gives $38$ while the bounds valid for $K$ give $40$
+\cite{FK1999} and $39$ \eqref{eq:CB}; the OEIS upper bound $38$ is a
+simple-arrangement value. So $K(12)\in\{38,39\}$, and $n=12$ --- not $n=14$
+--- is the smallest genuinely open case. At $n=14$ the same reading gives
+$K(14)\in\{54,55\}$.
+
+Each case is one decision instance, and by Remark~\ref{rem:wlog} it may
+forbid crossings while leaving every parallel and multiple-point pattern
+free:
+\begin{itemize}
+\item $(12,39)$: unsatisfiability gives $K(12)\le38$, hence $K(12)=38$ with
+the construction. This is self-contained --- it does not use
+\eqref{eq:CB} or \cite{FK1999} --- so it also removes the reliance of the
+$n=12$ row on an unpublished draft.
+\item $(14,55)$: unsatisfiability gives $K(14)=54$, making the OEIS entry a
+theorem; satisfiability gives, after straightening, a $55$-triangle record.
+The crossing-free form has $1{,}349{,}454$ variables and $7{,}829{,}001$
+clauses.
+\end{itemize}
+Both are running at the time of writing, together with the crossing-free
+$(11,33)$ as an independent check against the known value.
 
 \begin{table}[t]
 \centering
@@ -603,10 +622,11 @@ the non-simple literature proves.}
 \section{Open problems}
 
 \begin{enumerate}
-\item \textbf{Decide $(14,55)$}, closing $K(14)$ and hence the freshly
-recorded OEIS entry. By Theorem~\ref{thm:collapse} and
-Remark~\ref{rem:wlog} this is one crossing-free instance, and no further
-rungs exist above it.
+\item \textbf{Decide $(12,39)$ and $(14,55)$}, closing the two open small
+cases. By Theorem~\ref{thm:collapse} and Remark~\ref{rem:wlog} each is one
+crossing-free instance with all degeneracies free, and no further rungs exist
+above it. Unsatisfiability at $(12,39)$ proves $K(12)=38$ without
+\eqref{eq:CB}; unsatisfiability at $(14,55)$ proves $K(14)=54$.
 \item \textbf{A mod-$6$ refinement for arbitrary arrangements}, i.e.\ derive
 the $-1$ correction of \eqref{eq:CB} inside the framework of
 \eqref{eq:capacity}, removing the reliance on an unpublished draft. This is

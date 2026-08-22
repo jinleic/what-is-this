@@ -1,0 +1,50 @@
+{
+  "catalogue_index": 17,
+  "counting_margin": 2,
+  "d_z_parent_exact": 14,
+  "detail": {
+    "distinct_orbit_weights": [
+      14
+    ],
+    "orbit_size": 90,
+    "witness_weight": 14
+  },
+  "dim_delta": 2,
+  "k_parent": 8,
+  "k_pbb": 6,
+  "label": "15_6_0219",
+  "n": 180,
+  "orbit_rank": 4,
+  "parent_distance_calls": [
+    {
+      "certified_d_ge": 14,
+      "cnf_sha256": "898f3468c269f8428cde25631035e221fe05ae1c11432fa6e79cfa0e266f3fd2",
+      "reused_css_pool_lower_bound": "5a61c4ae52436b35",
+      "status": "SAT",
+      "wall_time_s": 19.160532040987164,
+      "weight_cap": 14
+    }
+  ],
+  "parent_fingerprint": "5a61c4ae52436b35d5804ba2f3ed79d9eba8675cc224684a12f4e431b5ed51cb",
+  "pbb_fingerprint": "9fa4c362c5cd0ba77631389885cdad713070aa77a81215c1f72991c4ad7a5d52",
+  "schema": "exp038-survival-v1",
+  "structurally_dominated": true,
+  "survivor": [
+    15,
+    70,
+    75,
+    85,
+    90,
+    96,
+    116,
+    121,
+    141,
+    145,
+    146,
+    150,
+    166,
+    176
+  ],
+  "survivor_weight": 14,
+  "utc": "2026-08-17T09:20:05.921421+00:00"
+}

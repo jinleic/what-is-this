@@ -1,0 +1,38 @@
+{
+  "code_sha256": "94c3bfaa730e461f6e5178b26d119f7e9692b4680b7b1416b9f8a45ce89f42a5",
+  "files": {
+    "arbcore.py": "42f7f7afdd69984a25ca3e6b1db43b6b3792db43c925f4e5eafe929fdb05e5bd",
+    "bound_kkt.py": "92a52e5e8222eaf0ecb34dc5ee52531912a5c5bff19a383b515b8548438e2783",
+    "cert2.py": "cfe87cdf6861fa463931b32d215e6a48a71c2ff48286e32c506b51233a7dbc06",
+    "cert3.py": "aa60879d2ca06b1f27c878951313612105a4b2af32e0f81b1c600683f9c72c39",
+    "cert3_par.py": "7cc7013d7a3ae1682af9ce96189e60011ad176711fd69a96255e61fdd44de9b4",
+    "diag_exhaust.py": "a06931bf948d6d354bbced8b464efc6ba78f28264eb3080c915f9fdf64c3aa9f",
+    "entropy.py": "2fbddcd8b2458d652ffd0d4268f9c868353967c6aacd7a66183556c65ece88a5"
+  },
+  "params": {
+    "alpha": "0.0356069",
+    "center_gate": -0.02,
+    "centered5_max_width": 0.03125,
+    "collar_edge": 0.01,
+    "collar_min_width": 0.000125,
+    "face_min_width": 0.001,
+    "lambda_family": [
+      "0.0",
+      "1.0",
+      "1.3408514938246714",
+      "1.368215810025175",
+      "1.3955801262256784",
+      "1.626",
+      "2.2"
+    ],
+    "level_offset": "0.0001",
+    "min_width": 0.001,
+    "nslices": 8,
+    "q2pin": 0.9375,
+    "root_w_range": [
+      0.5,
+      1.0
+    ],
+    "work_prec_bits": 80
+  }
+}

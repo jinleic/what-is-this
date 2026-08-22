@@ -1,0 +1,13 @@
+schema_version: 1
+date_checked: '2026-08-13'
+complete: false
+canonical_only: true
+status: BLOCKED_PENDING_CANONICAL_OUTPUTS
+blocking_empty_files:
+  - results/processed/exp024_cat_extraction.json
+  - results/processed/exp026_decoder_codesign.json
+  - results/raw/exp026_decoder_codesign.json
+note: >-
+  This placeholder is intentionally not an integrity certificate. Regenerate
+  with experiments/write_artifact_manifest.py only after every canonical
+  artifact is nonempty and semantically validated.

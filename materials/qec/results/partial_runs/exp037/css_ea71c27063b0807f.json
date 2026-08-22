@@ -1,0 +1,93 @@
+{
+  "calls": [
+    {
+      "cap": 6,
+      "cnf_sha256": "0f9626c557af8ee5d2a0707df75d8081ca04a6e786bffcc96da55473fd4dcc6c",
+      "side": "x",
+      "status": "SAT",
+      "wall_time_s": 0.004362542007584125
+    },
+    {
+      "cap": 6,
+      "cnf_sha256": "ae32f3acfb7452f7745da05f02ae8786db75a0f33bf6bb957636a0e5512769de",
+      "side": "z",
+      "status": "SAT",
+      "wall_time_s": 0.0010765839979285374
+    },
+    {
+      "cap": 5,
+      "cnf_sha256": "3a9ab19a980b43899e96a4220e3f44f4d4edd01fbcce5c1e1bbc10de37a4fd65",
+      "side": "x",
+      "status": "UNSAT",
+      "wall_time_s": 0.1114305420051096
+    },
+    {
+      "cap": 5,
+      "cnf_sha256": "d7412a5110a1a4355915d137fac3d79cb96049e64e711222766ae2e7294518b5",
+      "side": "z",
+      "status": "UNSAT",
+      "wall_time_s": 0.06451141698926222
+    }
+  ],
+  "certified_upper_bound": 6,
+  "css_fingerprint": "ea71c27063b0807fe719d67ae76f924a14438c568ee98e59129ae125f870455c",
+  "distance": 6,
+  "encoding_version": "sat-decide-v2",
+  "exact": true,
+  "k": 4,
+  "k_crosscheck_analyse_pbb": 4,
+  "n": 36,
+  "rank_HX": 16,
+  "rank_HZ": 16,
+  "schema": "exp037-envelope-classification-v1",
+  "source_catalogue_index": 198,
+  "utc": "2026-08-17T01:55:38.119919+00:00",
+  "witness_side": "x",
+  "witness_vector": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "witness_verification": {
+    "independent_paths_agree": true,
+    "num_vars": 36,
+    "pairing_hit_bitset": true,
+    "pairing_hit_numpy": true,
+    "parity_clean_bitset": true,
+    "parity_clean_numpy": true,
+    "valid": true
+  }
+}

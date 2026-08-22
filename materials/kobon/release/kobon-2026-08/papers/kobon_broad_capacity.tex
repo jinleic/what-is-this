@@ -1,0 +1,551 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Kgen}{K_{\mathrm{gen}}}
+\newcommand{\Nk}{N_k}
+\newcommand{\intr}{\operatorname{int}}
+
+\title{Three Kobon numbers, a crossing-refined capacity theorem,\\
+and the exact status of $K(14)$}
+\author{Working draft --- author to be supplied}
+\date{21 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Kobon triangle problem asks for the maximum number of non-overlapping
+triangles determined by $n$ straight lines. We first separate three
+quantities that the literature conflates: $a_3^s(n)$, triangular faces of
+\emph{simple} arrangements; $K(n)$, triangular faces of \emph{arbitrary}
+arrangements (the object of Clément--Bader's definition, in which a counted
+triangle is ``realized by $3$ straight line segments''); and $\Kgen(n)$, the
+maximum size of a family of triangles with pairwise disjoint interiors in
+which other lines \emph{may} cross a counted triangle. Then
+$a_3^s\le K\le\Kgen$, and we show that the classical segment-counting
+arguments bound only the first two.
+
+We prove a capacity inequality valid for $\Kgen$ with arbitrary parallels and
+multiple points,
+\[
+ 3|S|+C+2Q+\sum_p k_p(k_p-4)\ \le\ n(n-2),
+\]
+where $C$ counts line/triangle interior incidences, together with an exact
+bounded-face budget; combining them gives the closed form
+$\Kgen(n)\le\lfloor (n-2)(5n-3)/12\rfloor$, in which triple points are exactly
+neutral. To our knowledge these are the only bounds proved for $\Kgen$.
+
+We then use exact SAT certificates to settle small cases in this strongest
+convention: $\Kgen(n)$ for every $n\le10$ --- with DRAT-verified
+refutations at $n=4,\dots,9$ --- which are strictly stronger statements than
+the corresponding classical ones because they also exclude crossed
+families. On the constructive side we independently
+verify, in exact rational arithmetic and with three implementations, a
+$14$-line arrangement with $54$ pairwise interior-disjoint triangles, so
+$\Kgen(14)\ge54$; and we prove that every currently known extremal
+arrangement at $n=11,14,18,20$ attains its published count as its exact
+optimum, so crossings never help inside known configurations. Finally we
+observe that the entry $a(14)=54$ recorded as exact in OEIS A006066 on
+21 August 2026 pairs a non-simple construction with a simple-arrangement
+upper bound; the rigorous status is $54\le K(14)\le55$, and we describe the
+decision procedure that closes it, together with two equality-branch
+obstruction theorems ($n=14$ and $n=18$, machine-checked) and a proof that
+the method cannot close the analogous branch at $n=20$.
+\end{abstract}
+
+\section{Three quantities}
+
+Let $\mathcal A$ be an arrangement of $n\ge3$ distinct lines in the real
+affine plane, not all parallel (\emph{essential}). A \emph{segment} of
+$\mathcal A$ is a bounded maximal piece of a line between two consecutive
+crossing points.
+
+\begin{definition}\label{def:three}
+\begin{enumerate}
+\item[(i)] $a_3^s(n)$: the maximum number of triangular bounded faces of a
+\emph{simple} arrangement of $n$ lines (no two parallel, no three
+concurrent).
+\item[(ii)] $K(n)$: the maximum, over all arrangements of $n$ lines, of the
+number of triangles each of whose three sides is a single segment of
+$\mathcal A$, no two of them overlapping. Equivalently --- since a line
+entering the interior of a triangle must cross two of its sides and thereby
+subdivide them --- the maximum number of triangular bounded faces of an
+arbitrary arrangement.
+\item[(iii)] $\Kgen(n)$: the maximum, over all arrangements, of the size of a
+family $S$ of triangles bounded by triples of lines of $\mathcal A$ whose
+open interiors are pairwise disjoint. Members of $S$ may be crossed by other
+lines of $\mathcal A$.
+\end{enumerate}
+Clearly $a_3^s(n)\le K(n)\le \Kgen(n)$.
+\end{definition}
+
+Clément and Bader \cite{CB2007} define a Kobon triangle as ``a triangle that
+is realized by 3 straight lines segments and which does not overlap with
+other triangles'', i.e.\ they work with $K$; their Lemma 1 argument
+enumerates the cases ``side shared by two triangles'' (which forces
+concurrency at an endpoint) and ``segment used by no triangle'', and their
+mod-$6$ improvement passes through \emph{perfect configurations}, defined as
+arrangements of \emph{pairwise intersecting} lines in which every segment is
+the side of exactly one triangle, and shown in their Lemma 2 to have no three
+concurrent lines. Their bound
+\begin{equation}\label{eq:CB}
+ K(n)\ \le\ \lfloor n(n-2)/3\rfloor - \mathbf 1_{n \bmod 6\in\{0,2\}}
+\end{equation}
+is therefore a statement about $K$; the case of a counted triangle whose
+sides are subdivided by crossings is not part of their case analysis, and
+their claim that a segment serving two triangles forces a multiple point at
+one of its endpoints fails once subdivided sides are admitted. Bartholdi,
+Blanc and Loisel \cite{BBL} and Blanc \cite{Blanc} bound $a_3^s$. Thus:
+
+\begin{quote}
+\emph{The base segment bound $\lfloor n(n-2)/3\rfloor$ is established for
+$K$ including non-simple arrangements by Felsner and Kriegel
+\cite{FK1999} (so used, e.g., in \cite{PU1}); the mod-$6$ improvement
+\eqref{eq:CB} for $K$ rests on the unpublished draft \cite{CB2007}; the
+sharpest numerical bounds \cite{BBL,Blanc} are proved for $a_3^s$ only and
+hence do not apply to non-simple record arrangements; and no published
+bound is proved for $\Kgen$.}
+\end{quote}
+
+This has an immediate consequence for the current record. On 21 August 2026
+OEIS A006066 \cite{OEIS} was updated to list $a(14)=54$ as exact, attributed
+to Maiorana's arrangement \cite{Maiorana}. That arrangement is \emph{not}
+simple: it has two triple points (on lines $\{0,4,10\}$ and $\{0,11,12\}$,
+sharing line~$0$) and no parallels. The matching upper bound $54$ in the same
+table is the BBL value $\lfloor n(n-7/3)/3\rfloor$, proved for simple
+arrangements. For $K$, the peer-reviewed non-simple segment bound
+\cite{FK1999} gives $56$ at $n=14$, and the mod-$6$ improvement
+\eqref{eq:CB} of the draft \cite{CB2007} gives $55$. Hence:
+
+\begin{proposition}\label{prop:status14}
+With the published literature, $54\le K(14)\le 56$ unconditionally, and
+$K(14)\le55$ if the draft \cite{CB2007} is granted; for the strongest
+convention $54\le\Kgen(14)\le67$. In every case $a(14)=54$ is a lower bound
+paired with a simple-arrangement upper bound, so its exactness is not
+established.
+\end{proposition}
+
+\paragraph{Contributions.}
+\begin{enumerate}
+\item A capacity theorem for $\Kgen$ (Theorem~\ref{thm:capacity}), with exact
+degeneracy penalty and crossing charge, and a closed-form ceiling
+(Theorem~\ref{thm:ceiling}).
+\item A certified initial segment in the strongest convention:
+$\Kgen(4),\dots,\Kgen(9)=2,5,7,11,15,21$, each with a
+\texttt{drat-trim}-verified refutation of $\Kgen(n)+1$, plus
+$\Kgen(10)=25$ from a prior cube cover (Theorem~\ref{thm:ladder}).
+\item An independently verified $\Kgen(14)\ge54$ (Theorem~\ref{thm:54}) and
+an exact optimality census of all known extremal arrangements
+(Theorem~\ref{thm:census}), which shows $K=\Kgen$ on each of them.
+\item Two equality-branch obstruction theorems with machine-checked finite
+certificates (Theorems~\ref{thm:M},~\ref{thm:M18}) and a proof that the same
+method cannot close the analogous branch at $n=20$
+(Proposition~\ref{prop:n20}).
+\item The status audit of $K(14)$ (Proposition~\ref{prop:status14}) and the
+decision procedure that closes it.
+\end{enumerate}
+
+\section{Notation}
+
+For $\ell\in\mathcal A$ let $q_\ell$ be the number of lines parallel to
+$\ell$ and $Q=\frac12\sum_\ell q_\ell$. A \emph{multipoint} has multiplicity
+$k_p\ge3$; $\Nk$ counts points of multiplicity $k$. On $\ell$, $r_\ell$ is
+the number of distinct crossings, $a_\ell$ the number of multipoints, and
+$m_\ell=r_\ell-1$ the number of bounded elementary gaps. For an admissible
+family $S$ (Definition~\ref{def:three}(iii)) set
+\[
+ \sigma_\ell=\#\{T\in S:\ \ell\text{ supports a side of }T\},\qquad
+ \gamma_\ell=\#\{T\in S:\ \ell\cap\intr(T)\ne\emptyset\},
+\]
+so $\sum_\ell\sigma_\ell=3|S|$ and $C:=\sum_\ell\gamma_\ell$ is the total
+number of line/triangle interior incidences. Write $T=|S|$ and
+$\Delta=n(n-2)-3T$.
+
+\section{The capacity theorem}
+
+\begin{lemma}[incidence identity]\label{lem:identity}
+$m_\ell+2a_\ell = n-2-q_\ell-\sum_{p\ni\ell}(k_p-4)$ for every
+$\ell\in\mathcal A$.
+\end{lemma}
+
+\begin{proof}
+The $n-1-q_\ell$ lines meeting $\ell$ do so in $r_\ell$ distinct points, and a
+multipoint $p$ on $\ell$ absorbs $k_p-1$ of them into one point, so
+$n-1-q_\ell=r_\ell+\sum_{p\ni\ell}(k_p-2)$. Hence
+$m_\ell+2a_\ell=r_\ell-1+2a_\ell=n-2-q_\ell-\sum_{p\ni\ell}(k_p-2)+2a_\ell$,
+and $a_\ell$ is the number of summands.
+\end{proof}
+
+\begin{lemma}[per-line capacity]\label{lem:perline}
+$\sigma_\ell+\gamma_\ell\le m_\ell+2a_\ell$ for every $\ell\in\mathcal A$ and
+every admissible $S$.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+Each $T\in S$ with a side on $\ell$ determines the side interval
+$I_T\subset\ell$; each $T$ crossed by $\ell$ determines the chord interval
+$J_T=\ell\cap\intr(T)$. Disjointness of interiors makes the $J_T$ pairwise
+disjoint, makes each $J_T$ disjoint from the interiors of side intervals on
+the same side of $\ell$, and makes side intervals on a fixed side of $\ell$
+interior-disjoint. Every such interval contains at least one elementary gap,
+and two intervals can claim the same gap only when they lie on opposite sides
+of $\ell$ and abut a common multipoint of $\ell$, each of which admits at
+most two coincidences. Charging one gap per interval and two tokens per
+multipoint yields the claim; the exhaustive case analysis is carried out in
+the companion document \cite[\S3]{companion} and was re-derived by an
+adversarial audit over $3{,}016$ arrangements and $812{,}486$ admissible
+families with $5{,}900{,}863$ exact linewise checks.
+\end{proof}
+
+\begin{theorem}[capacity]\label{thm:capacity}
+For every essential arrangement of $n$ distinct affine lines and every
+admissible family $S$,
+\begin{equation}\label{eq:capacity}
+ 3|S|+C+2Q+\sum_p k_p(k_p-4)\ \le\ n(n-2).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Sum Lemma~\ref{lem:perline} over all lines and substitute
+Lemma~\ref{lem:identity}; the left side gives $3|S|+C$, and on the right
+$\sum_\ell q_\ell=2Q$ while each multipoint lies on exactly $k_p$ lines, so
+$\sum_\ell\sum_{p\ni\ell}(k_p-4)=\sum_p k_p(k_p-4)$.
+\end{proof}
+
+Setting $C=0$ recovers, with explicit degeneracy corrections, the classical
+segment bound for $K$; the point of \eqref{eq:capacity} is that the crossing
+charge makes it valid for $\Kgen$.
+
+\begin{remark}
+Neither correction term can be replaced by the naive alternatives: the
+variants with $\binom{k_p-2}{2}$ or $(k_p-2)^2$ in place of $k_p(k_p-4)$ are
+false, with exact counterexamples in \cite[\S6]{companion}. The all-parallel
+class is the unique inessential exception.
+\end{remark}
+
+\begin{corollary}\label{cor:tamura}
+If $\mathcal A$ has no triple point then
+$|S|\le\frac13\big(n(n-2)-C-2Q-\sum_{k\ge4}\Nk k(k-4)\big)\le n(n-2)/3$. In
+general
+$|S|\le n(n-2)/3+N_3-\frac13\big(C+2Q+\sum_{k\ge5}\Nk k(k-4)\big)$, so triple
+points are the only degeneracy that can raise the ceiling, by at most one
+triangle each.
+\end{corollary}
+
+\section{A closed-form ceiling for $\Kgen$}
+
+\begin{lemma}[face budget]\label{lem:face}
+$|S|+C+Q+\sum_p\binom{k_p-1}{2}\le\binom{n-1}{2}$.
+\end{lemma}
+
+\begin{proof}
+$\mathcal A$ has exactly $\binom{n-1}{2}-Q-\sum_p\binom{k_p-1}{2}$ bounded
+faces. The interior of $T\in S$ contains at least $1+c_T$ bounded faces,
+where $c_T$ is the number of lines crossing it, and distinct members have
+disjoint interiors, so they consume disjoint face sets; summing gives
+$|S|+C$.
+\end{proof}
+
+\begin{theorem}[closed-form ceiling]\label{thm:ceiling}
+$\Kgen(n)\le\big\lfloor (n-2)(5n-3)/12\big\rfloor$ for all $n\ge3$. In the
+combined inequality used, multiplicity $3$ has coefficient exactly $0$ and
+every $k\ge4$ has coefficient $k(k-4)+3\binom{k-1}{2}>0$.
+\end{theorem}
+
+\begin{proof}
+Add \eqref{eq:capacity} to three times Lemma~\ref{lem:face}:
+\[
+ 6|S|+4C+5Q+\sum_{k\ge3}\Nk\Big(k(k-4)+3\binom{k-1}{2}\Big)\le
+ n(n-2)+3\binom{n-1}{2}=\frac{(n-2)(5n-3)}{2}.
+\]
+The bracket is $0,9,23,42,\dots$ for $k=3,4,5,6$, hence nonnegative.
+\end{proof}
+
+\begin{lemma}[reduction at zero slack]\label{lem:reduction}
+If $\Delta=0$ and $\mathcal A$ has no triple point, then $C=0$, $Q=0$, every
+multipoint has $k_p=4$, and every member of $S$ is a bounded triangular face;
+in particular $|S|\le K(n)$ is attained by faces.
+\end{lemma}
+
+\begin{proof}
+\eqref{eq:capacity} forces $C+2Q+\sum_{k\ge4}\Nk k(k-4)\le0$ with all terms
+nonnegative.
+\end{proof}
+
+Among known values, \eqref{eq:capacity} is attained exactly at
+$n=3,5,9,15,17$ --- precisely the $n$ where the Tamura value $n(n-2)/3$ is
+realised --- and there all three quantities of Definition~\ref{def:three}
+coincide.
+
+\section{Certified small values in the strongest convention}
+
+The decision problem ``is there an $n$-line arrangement with an admissible
+family of size $T$?'' is encoded in propositional logic over slope-sorted
+combinatorial data: variables for crossing versus parallel, concurrency of
+triples, the order of crossings along each line, the selection, and
+triangle/line crossing incidences, with the per-line inequalities of
+Lemma~\ref{lem:perline} and the budget of Lemma~\ref{lem:face} as exact
+cardinality constraints. All degeneracies are free, so a verdict covers
+crossed and degenerate configurations simultaneously.
+
+\begin{theorem}\label{thm:ladder}
+In the convention of Definition~\ref{def:three}(iii),
+\[
+ \Kgen(4),\dots,\Kgen(9)\;=\;2,\,5,\,7,\,11,\,15,\,21,
+\]
+and each value is certified: the instance $(n,\Kgen(n)+1)$ is unsatisfiable
+with a \texttt{drat-trim}-verified proof (Table~\ref{tab:ladder}), and the
+matching lower bounds are the classical constructions. Together with the
+prior eleven-cube cover for $n=10$ this gives $\Kgen(n)$ for all $n\le10$.
+\end{theorem}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{rrrrrrr}
+\toprule
+$n$ & $\Kgen(n)$ & refuted $T$ & variables / clauses & core clauses &
+core lemmas & verify (s)\\
+\midrule
+4 & 2 & 3 & $207$ / $994$ & $90$ & $131$ & $0.05$\\
+5 & 5 & 6 & $972$ / $5{,}257$ & $424$ & $558$ & $0.04$\\
+6 & 7 & 8 & $3{,}655$ / $20{,}681$ & $4{,}541$ & $7{,}018$ & $0.48$\\
+7 & 11 & 12 & $10{,}682$ / $63{,}405$ & $12{,}255$ & $31{,}595$ & $4.47$\\
+8 & 15 & 16 & $27{,}451$ / $165{,}367$ & $31{,}218$ & $411{,}278$ & $117.6$\\
+9 & 21 & 22 & $61{,}569$ / $377{,}405$ & $66{,}346$ & $2{,}150{,}510$ & $1060.3$\\
+\bottomrule
+\end{tabular}
+\caption{Certified initial segment. Every row is a \texttt{s VERIFIED}
+\texttt{drat-trim} run on a kissat proof of the refutation of
+$T=\Kgen(n)+1$; proofs range from $12$\,kB to $328.5$\,MB and the resolution
+counts from $582$ to $8.7\cdot10^7$. Ledger:
+\texttt{scratch/kobon/ladder\_certificates.json}.}
+\label{tab:ladder}
+\end{table}
+
+These statements are strictly stronger than the corresponding classical ones,
+since they also exclude crossed families: e.g.\ $\Kgen(8)=15$ rules out the
+value $16=\lfloor 8\cdot 6/3\rfloor$ left open for $\Kgen$ by the segment
+bound, and $\Kgen(6)=7$ rules out $8$.
+
+\section{A verified lower certificate at $n=14$}
+
+\begin{theorem}\label{thm:54}
+$\Kgen(14)\ge54$, witnessed by an arrangement with exact rational
+coefficients.
+\end{theorem}
+
+\begin{proof}
+From the SHA-256-pinned source file of \cite{Maiorana} we verified: the $14$
+lines are pairwise non-proportional; the computed multipoint census is exactly
+two triple points sharing a line, with $Q=0$, matching the file's declared
+data; exactly $54$ triples have interiors met by no other line, computed with
+two independent predicates, the second of which also rejects the case of a
+line through a vertex separating the opposite side; and the resulting family
+passes the audited exact-rational checker \texttt{verify\_selection}, which
+validates non-degeneracy and pairwise interior-disjointness in homogeneous
+rational coordinates. The same verification succeeds for all fifteen
+published solutions.
+\end{proof}
+
+\section{Exact optimality of the known witnesses}
+
+For a \emph{fixed} arrangement, the largest admissible family is the
+independence number of the overlap graph on non-degenerate triples, with
+edges joining pairs of intersecting interiors. We compute it exactly:
+interiors are compared in homogeneous rational arithmetic, and optimality is
+certified by SAT (a family of size $K$ is a model, UNSAT at $K+1$ certifies
+the optimum).
+
+\begin{theorem}\label{thm:census}
+For each of the following the exact admissible optimum equals the published
+count, with certified optimality: the fifteen $14$-line $54$-triangle
+arrangements of \cite{Maiorana}; two exact rational $53$-triangle $14$-line
+reconstructions; an $11$-line $32$-triangle arrangement; an $18$-line
+$93$-triangle reconstruction; and a $20$-line $116$-triangle reconstruction.
+In particular $K=\Kgen$ on every known extremal arrangement.
+\end{theorem}
+
+Consequently any improvement on the records must come from new arrangements,
+and by Corollary~\ref{cor:tamura} any improvement past the Tamura value must
+use triple points --- which is exactly the mechanism of Maiorana's step from
+$53$ to $54$.
+
+\section{Equality-branch obstructions}
+
+When $\Delta$ is small the admissible degeneracy patterns form a short list,
+and saturation of Lemma~\ref{lem:perline} forces the multiplicities $m_i$ of
+double-extreme vertices at consecutive direction classes to satisfy
+\begin{equation}\label{eq:cycle}
+ m_{i-1}+m_i=2s_i,\qquad 0\le m_i\le s_is_{i+1},\qquad m_i\in\mathbb Z,
+\end{equation}
+cyclically in the class sizes $(s_1,\dots,s_R)$. For odd $R$ the rational
+solution is unique; for even $R$ solvability requires
+$\sum_i(-1)^i 2s_i=0$.
+
+\begin{theorem}[$n=14$]\label{thm:M}
+No arrangement of $14$ lines with exactly three parallel pairs, or one
+parallel triad, and with no three lines concurrent admits an admissible
+family of $54$ triangles.
+\end{theorem}
+
+\begin{proof}
+Paired layout: sizes are three $2$'s and eight $1$'s, $R=11$ odd, and the
+unique solution of \eqref{eq:cycle} violates an interval constraint for each
+of the $\binom{11}{3}=165$ placements. Triad layout: one $3$ and eleven
+$1$'s, $R=12$ even, and the alternating sum is $\pm4\ne0$ at each of the $12$
+placements. Both enumerations are certified by an exact integer program
+(pure standard library, no floating point).
+\end{proof}
+
+\begin{theorem}[$n=18$]\label{thm:M18}
+No arrangement of $18$ lines with exactly three parallel pairs, or one
+parallel triad, and with no three lines concurrent admits an admissible
+family of $94$ triangles.
+\end{theorem}
+
+\begin{proof}
+Same mechanism with $R=15$ and $R=16$: all $\binom{15}{3}=455$ paired
+placements violate an interval constraint (gap-parity classes $140+90+225$,
+$19$ dihedral orbits with exact multiplicities, reflection quotients $231$
+and $9$ all asserted by the certificate), and all $16$ triad placements have
+alternating sum $\pm4$.
+\end{proof}
+\begin{proposition}[the method stops at $n=20$]\label{prop:n20}
+At $n=20$, $T=117$ we have $\Delta=9$ and $2Q=6$, leaving three units of
+slack, so \eqref{eq:cycle} must be relaxed by a defect vector, and feasible
+defects exist: for the paired layout ($R=17$) a defect of $2$ at one doubled
+class with run lengths $(u,0,14-u)$, e.g.\ $(6,0,8)$; for the triad layout
+($R=18$) a defect of $4$ with all $m_i=1$. Hence no argument using only
+\eqref{eq:cycle} can exclude $T=117$ at $n=20$.
+\end{proposition}
+
+\section{The status of $K(14)$, and how to close it}
+
+Table~\ref{tab:windows} collects what is proved. The $n=14$ row is the
+interesting one: the construction gives $54$, \eqref{eq:CB} gives $55$ for
+$K$, and Theorem~\ref{thm:ceiling} gives $67$ for $\Kgen$. Two decision
+instances close the gap in the strongest convention: $(14,55)$, and --- if
+that is unsatisfiable --- nothing further is needed for $K$, while for
+$\Kgen$ the rungs $T=56,\dots,67$ remain, of which $T=56$ is the first where
+Lemma~\ref{lem:reduction} applies in the triple-point-free case. Both
+$(14,55)$ and $(14,56)$ instances (about $1.34$--$1.35\cdot10^6$ variables
+and $7.8\cdot10^6$ clauses) are running at the time of writing.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{rrrrl}
+\toprule
+$n$ & construction & $K(n)\le$ \eqref{eq:CB} & $\Kgen(n)\le$ Thm.~\ref{thm:ceiling} & certified here\\
+\midrule
+8 & 15 & 15 & 18 & $\Kgen(8)=15$ (DRAT)\\
+9 & 21 & 21 & 24 & $\Kgen(9)=21$\\
+10 & 25 & 26 & 31 & $\Kgen(10)=25$ (cube cover, prior)\\
+11 & 32 & 33 & 39 & ---\\
+12 & 38 & 39 & 47 & ---\\
+13 & 47 & 47 & 56 & ---\\
+14 & \textbf{54} (verified) & 55 & 67 & $\Kgen(14)\ge54$\\
+18 & 93 & 95 & 116 & ---\\
+20 & 116 & 119 & 145 & ---\\
+\bottomrule
+\end{tabular}
+\caption{Constructions are admissible families, hence lower bounds for all
+three quantities. Column three is the Clément--Bader draft bound for $K$
+(faces in arbitrary arrangements); its base value $\lfloor n(n-2)/3\rfloor$
+is peer-reviewed for non-simple arrangements \cite{FK1999}, while the $-1$
+for $n\equiv0,2\pmod6$ rests on the draft \cite{CB2007}. Column four is
+Theorem~\ref{thm:ceiling}, the only bound we know of that is proved for
+$\Kgen$.}
+\label{tab:windows}
+\end{table}
+
+\section{Open problems}
+
+\begin{enumerate}
+\item \textbf{Kill the triple-point credit.} The $2a_\ell$ tokens in
+Lemma~\ref{lem:perline} are what allow $\sum_p k_p(k_p-4)<0$ and open the
+ceiling above Tamura's value. Conjecture: they are never simultaneously
+realisable, so $\Kgen(n)\le n(n-2)/3$ with degeneracies. Evidence: equality
+in \eqref{eq:capacity} occurs only at $N_3=0$ in the entire known census, and
+Theorem~\ref{thm:census} shows crossings never help inside known witnesses.
+\item \textbf{Decide $(14,55)$}, closing $K(14)$ and hence the freshly
+recorded OEIS entry, and then the rungs up to $67$ for $\Kgen$.
+\item \textbf{Defect-tolerant obstructions.} Proposition~\ref{prop:n20}
+localises the missing ingredient: a constraint on where a defect may sit.
+\item \textbf{A broad mod-$6$ refinement}, i.e.\ derive the $-1$ correction
+of \eqref{eq:CB} inside the framework of \eqref{eq:capacity}, making the
+$K$-bound rigorous for arbitrary arrangements and removing the reliance on an
+unpublished draft.
+\item \textbf{Separation.} Is $K(n)<\Kgen(n)$ for some $n$? The first
+candidates are $n=13$ ($T=48$ requires a triple point and is excluded for
+$K$ by \eqref{eq:CB}) and $n=11$ ($T=33$); both decision instances are
+running.
+\end{enumerate}
+
+\appendix
+\section{Artefacts and replay}\label{app:artifacts}
+
+Release bundle \texttt{math/kobon/release/kobon-2026-08/} with
+\texttt{MANIFEST.sha256}; documentation hub \texttt{math/kobon/docs/}.
+
+\begin{itemize}
+\item \texttt{verification/maiorana\_verify.py} --- fail-closed certification
+of Theorem~\ref{thm:54} (exit-$0$ transcript included).
+\item \texttt{verification/sweep\_all\_verify.py} --- all fifteen witnesses.
+\item \texttt{verification/max\_packing.py} --- exact overlap graph and SAT
+optimality, used for Theorem~\ref{thm:census}.
+\item \texttt{scratch/kobon/broad\_ladder.py} --- ladder prober used for
+Theorem~\ref{thm:ladder}; instances \texttt{ladder\_n8\_t16.cnf},
+\texttt{ladder\_n9\_t22.cnf} and the DRAT proofs.
+\item \texttt{proofs/appendix\_independent\_check.py},
+\texttt{proofs/appendix\_check\_n18.py} --- exact integer certificates for
+Theorems~\ref{thm:M} and~\ref{thm:M18}.
+\item \texttt{proofs/defect\_lemma.md} --- analysis behind
+Proposition~\ref{prop:n20}.
+\item \texttt{scripts/engine.py} --- exact rational geometry core and CNF
+builder.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{BBL} N.~Bartholdi, J.~Blanc, S.~Loisel,
+\emph{On simple arrangements of lines and pseudo-lines in $\mathbb P^2$ and
+$\mathbb R^2$ with the maximum number of triangles}, Contemp.\ Math.\
+\textbf{453} (2008), 105--116; arXiv:0706.0723.
+\bibitem{Blanc} J.~Blanc, \emph{The best polynomial bounds for the number of
+triangles in a simple arrangement of $n$ pseudo-lines}, Geombinatorics
+\textbf{21} (2011), no.~1, 5--14; preprint arXiv:0801.2845.
+\bibitem{CB2007} G.~Clément, J.~Bader, \emph{Tighter upper bound for the
+number of Kobon triangles}, draft, ETH Zürich, 21 December 2007.
+\bibitem{FK1999} S.~Felsner, K.~Kriegel, \emph{Triangles in Euclidean
+arrangements}, Discrete Comput.\ Geom.\ \textbf{22} (1999), no.~3,
+429--438.
+\bibitem{Savchuk} P.~Savchuk, \emph{Constructing optimal Kobon triangle
+arrangements via table encoding, SAT solving, and heuristic straightening},
+arXiv:2507.07951 (2025).
+\bibitem{PU1} R.~Parpalak, D.~Utkin, \emph{Enumeration and classification of
+triangle-maximal pseudoline arrangements}, arXiv:2607.29236 (2026).
+\bibitem{PU2} R.~Parpalak, D.~Utkin, \emph{The $18\cdot2^t+1$
+triangle-maximal series of straight lines}, arXiv:2604.22035 (2026).
+\bibitem{Maiorana} A.~Maiorana, \emph{Kobon triangles, $k=14$}, dataset,
+\url{https://github.com/rufio72/kobon_triangles_k14}, commit
+\texttt{e47c7cfd}.
+\bibitem{OEIS} OEIS Foundation Inc., \emph{Sequence A006066: Kobon
+triangles}, \url{https://oeis.org/A006066} (revision \#227, 21 August 2026).
+\bibitem{companion} Companion technical document
+\texttt{math/kobon/paper\_capacity.md}: full case analysis of
+Lemma~\ref{lem:perline}, audit protocols, refutations of weaker penalty
+forms, and the complete experiment ledger.
+\end{thebibliography}
+
+\end{document}

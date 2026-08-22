@@ -1,0 +1,175 @@
+{
+  "schema": "exp048-exact-collapse-v1",
+  "experiment": "exp048_exact_collapse_sweep",
+  "catalogue_index": 196,
+  "label": "phase2_0",
+  "n": 36,
+  "parent_fingerprint": "813f243ec5506dc0af9a9a35077ee2c3d26361de68e2608efeac4bc792cc2f1b",
+  "pbb_fingerprint": "bc90745927015b9b06d24e0a10ae0807fdc7acb66952b477e14897b51b859e06",
+  "exp046_input_sha256": "756873f3f2a7c3485b3009b3ee1883e5bd2106f770eaca989a9f870cbcae3f81",
+  "exp046_delta_bar": 0,
+  "expected_k_q": 4,
+  "k_parent": 4,
+  "k_pbb_catalogue": 4,
+  "k_q": 4,
+  "k_preserving": true,
+  "symmetry_block_length": 18,
+  "solver_name": "cadical195",
+  "conflict_budget": 0,
+  "parent_d_bound": 6,
+  "parent_d_cert_exact": 6,
+  "parent_d_pool_lb": 6,
+  "exp046_demote_depth": "D0_basis",
+  "exp046_witness_c_terms": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ]
+  ],
+  "x0_witness": {
+    "weight": 6,
+    "pure_x": true,
+    "vector_sha256": "9d3a30e3a52a7e8b09c2d10dcddb5b8e51a1a3c6e493281d5f76f3020e084216",
+    "verified_logical": true
+  },
+  "calls": [
+    {
+      "cap": 5,
+      "status": "UNSAT",
+      "solver_name": "cadical195",
+      "conflict_budget": 0,
+      "cnf_sha256": "f88eda324d467c54692d457ec52ba88bc01f8e8fa59205645d3e9e150912dc3e",
+      "encoding_version": "sat-decide-v2",
+      "solver_wall_s": 0.04570283298380673
+    }
+  ],
+  "terminal_status": "UNSAT",
+  "best_weight": 6,
+  "best_witness": {
+    "weight": 6,
+    "pure_x": true,
+    "vector": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "vector_sha256": "9d3a30e3a52a7e8b09c2d10dcddb5b8e51a1a3c6e493281d5f76f3020e084216"
+  },
+  "exact_full_distance": 6,
+  "exact_x_distance": 6,
+  "strict_parent_drop_certified": false,
+  "wall_s": 0.04789141699438915
+}

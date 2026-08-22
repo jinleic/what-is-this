@@ -1,0 +1,2947 @@
+{
+  "aggregate": {
+    "b_prime_breaks": 0,
+    "bucket_T_eq_half_k": 3908,
+    "bucket_T_eq_k": 713,
+    "bucket_T_gt_half_k": 713,
+    "bucket_T_lt_half_k": 0,
+    "distinct_parent_fingerprints": 4621,
+    "parents_analyzed": 4621,
+    "residual_delta_positive_perturbations": 0,
+    "residual_parents": 0,
+    "shapes": 37,
+    "upper_law_breaks": 0
+  },
+  "catalogue_coverage": {
+    "all_recovered": true,
+    "catalogue_l18_parent_pairs": {
+      "3x6": 2,
+      "6x3": 1
+    },
+    "recovered_pairs": {
+      "3x6": 2,
+      "6x3": 1
+    }
+  },
+  "counterexamples": {
+    "b_prime_distance_increase_off_T": [],
+    "upper_law_dim_Delta_bar_exceeds_T": []
+  },
+  "experiment": "EXP-042",
+  "known_exception_context": {
+    "T": 4,
+    "d_z_parent": 6,
+    "ell_times_m": 72,
+    "fingerprint": "9a7638586033f4c7ae22623a4b53173fa72492f1b1212e94a47e9d8aa2467a4c",
+    "k_parent": 12,
+    "lattice": "12x6",
+    "note": "outside the ell*m <= 24 scan range (certificate read-only)"
+  },
+  "lattices": [
+    {
+      "ell": 2,
+      "ell_times_m": 4,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_k": 3,
+            "T_gt_half_k": 3
+          },
+          "canonical_A_supports": 3,
+          "canonical_B_supports": 3,
+          "connected_positive_k_pairs": 3,
+          "family": "2x2",
+          "k_ge_2_pairs": 6,
+          "k_parent_histogram": {
+            "2": 3,
+            "4": 3
+          },
+          "parents_analyzed": 3,
+          "residual_count": 0,
+          "support_pairs_enumerated": 6,
+          "unresolved_parents": [],
+          "wall_time_s": 0.001
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 3,
+          "canonical_B_supports": 1,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 3
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 3,
+          "unresolved_parents": [],
+          "wall_time_s": 0.0
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 1,
+          "canonical_B_supports": 1,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 1
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1,
+          "unresolved_parents": [],
+          "wall_time_s": 0.0
+        }
+      ],
+      "lattice": "2x2",
+      "m": 2
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 6,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 3,
+            "T_eq_k": 1,
+            "T_gt_half_k": 1
+          },
+          "canonical_A_supports": 3,
+          "canonical_B_supports": 3,
+          "connected_positive_k_pairs": 4,
+          "family": "2x2",
+          "k_ge_2_pairs": 6,
+          "k_parent_histogram": {
+            "2": 4,
+            "4": 1,
+            "6": 1
+          },
+          "parents_analyzed": 4,
+          "residual_count": 0,
+          "support_pairs_enumerated": 6,
+          "unresolved_parents": [],
+          "wall_time_s": 0.002
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 1,
+            "T_eq_k": 1,
+            "T_gt_half_k": 1
+          },
+          "canonical_A_supports": 3,
+          "canonical_B_supports": 4,
+          "connected_positive_k_pairs": 2,
+          "family": "2x3",
+          "k_ge_2_pairs": 2,
+          "k_parent_histogram": {
+            "0": 10,
+            "4": 2
+          },
+          "parents_analyzed": 2,
+          "residual_count": 0,
+          "support_pairs_enumerated": 12,
+          "unresolved_parents": [],
+          "wall_time_s": 0.001
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 2
+          },
+          "canonical_A_supports": 4,
+          "canonical_B_supports": 4,
+          "connected_positive_k_pairs": 2,
+          "family": "3x3",
+          "k_ge_2_pairs": 3,
+          "k_parent_histogram": {
+            "0": 7,
+            "4": 2,
+            "8": 1
+          },
+          "parents_analyzed": 2,
+          "residual_count": 0,
+          "support_pairs_enumerated": 10,
+          "unresolved_parents": [],
+          "wall_time_s": 0.001
+        }
+      ],
+      "lattice": "2x3",
+      "m": 3
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 8,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 4,
+            "T_eq_k": 1,
+            "T_gt_half_k": 1
+          },
+          "canonical_A_supports": 5,
+          "canonical_B_supports": 5,
+          "connected_positive_k_pairs": 5,
+          "family": "2x2",
+          "k_ge_2_pairs": 15,
+          "k_parent_histogram": {
+            "2": 5,
+            "4": 7,
+            "8": 3
+          },
+          "parents_analyzed": 5,
+          "residual_count": 0,
+          "support_pairs_enumerated": 15,
+          "unresolved_parents": [],
+          "wall_time_s": 0.005
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 5,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 35
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 35,
+          "unresolved_parents": [],
+          "wall_time_s": 0.004
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 28
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 28,
+          "unresolved_parents": [],
+          "wall_time_s": 0.003
+        }
+      ],
+      "lattice": "2x4",
+      "m": 4
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 10,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 10,
+            "T_eq_k": 1,
+            "T_gt_half_k": 1
+          },
+          "canonical_A_supports": 5,
+          "canonical_B_supports": 5,
+          "connected_positive_k_pairs": 11,
+          "family": "2x2",
+          "k_ge_2_pairs": 15,
+          "k_parent_histogram": {
+            "10": 1,
+            "2": 11,
+            "4": 3
+          },
+          "parents_analyzed": 11,
+          "residual_count": 0,
+          "support_pairs_enumerated": 15,
+          "unresolved_parents": [],
+          "wall_time_s": 0.013
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 5,
+          "canonical_B_supports": 12,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 60
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 60,
+          "unresolved_parents": [],
+          "wall_time_s": 0.003
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 12,
+          "canonical_B_supports": 12,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 78
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 78,
+          "unresolved_parents": [],
+          "wall_time_s": 0.004
+        }
+      ],
+      "lattice": "2x5",
+      "m": 5
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 12,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 9
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 9,
+          "family": "2x2",
+          "k_ge_2_pairs": 28,
+          "k_parent_histogram": {
+            "12": 3,
+            "2": 9,
+            "4": 12,
+            "6": 3,
+            "8": 1
+          },
+          "parents_analyzed": 9,
+          "residual_count": 0,
+          "support_pairs_enumerated": 28,
+          "unresolved_parents": [],
+          "wall_time_s": 0.022
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 12
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 19,
+          "connected_positive_k_pairs": 12,
+          "family": "2x3",
+          "k_ge_2_pairs": 18,
+          "k_parent_histogram": {
+            "0": 115,
+            "4": 12,
+            "8": 6
+          },
+          "parents_analyzed": 12,
+          "residual_count": 0,
+          "support_pairs_enumerated": 133,
+          "unresolved_parents": [],
+          "wall_time_s": 0.029
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 4,
+            "T_eq_k": 10,
+            "T_gt_half_k": 10
+          },
+          "canonical_A_supports": 19,
+          "canonical_B_supports": 19,
+          "connected_positive_k_pairs": 14,
+          "family": "3x3",
+          "k_ge_2_pairs": 21,
+          "k_parent_histogram": {
+            "0": 169,
+            "16": 1,
+            "4": 10,
+            "8": 10
+          },
+          "parents_analyzed": 14,
+          "residual_count": 0,
+          "support_pairs_enumerated": 190,
+          "unresolved_parents": [],
+          "wall_time_s": 0.051
+        }
+      ],
+      "lattice": "2x6",
+      "m": 6
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 14,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 18,
+            "T_eq_k": 3,
+            "T_gt_half_k": 3
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 21,
+          "family": "2x2",
+          "k_ge_2_pairs": 28,
+          "k_parent_histogram": {
+            "14": 1,
+            "2": 21,
+            "4": 6
+          },
+          "parents_analyzed": 21,
+          "residual_count": 0,
+          "support_pairs_enumerated": 28,
+          "unresolved_parents": [],
+          "wall_time_s": 0.059
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 8
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 26,
+          "connected_positive_k_pairs": 8,
+          "family": "2x3",
+          "k_ge_2_pairs": 8,
+          "k_parent_histogram": {
+            "0": 174,
+            "6": 8
+          },
+          "parents_analyzed": 8,
+          "residual_count": 0,
+          "support_pairs_enumerated": 182,
+          "unresolved_parents": [],
+          "wall_time_s": 0.027
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 6,
+            "T_eq_k": 12,
+            "T_gt_half_k": 12
+          },
+          "canonical_A_supports": 26,
+          "canonical_B_supports": 26,
+          "connected_positive_k_pairs": 18,
+          "family": "3x3",
+          "k_ge_2_pairs": 20,
+          "k_parent_histogram": {
+            "0": 331,
+            "12": 2,
+            "6": 18
+          },
+          "parents_analyzed": 18,
+          "residual_count": 0,
+          "support_pairs_enumerated": 351,
+          "unresolved_parents": [],
+          "wall_time_s": 0.109
+        }
+      ],
+      "lattice": "2x7",
+      "m": 7
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 16,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 16
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 9,
+          "connected_positive_k_pairs": 16,
+          "family": "2x2",
+          "k_ge_2_pairs": 45,
+          "k_parent_histogram": {
+            "16": 3,
+            "2": 16,
+            "4": 19,
+            "8": 7
+          },
+          "parents_analyzed": 16,
+          "residual_count": 0,
+          "support_pairs_enumerated": 45,
+          "unresolved_parents": [],
+          "wall_time_s": 0.052
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 35,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 315
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 315,
+          "unresolved_parents": [],
+          "wall_time_s": 0.042
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 35,
+          "canonical_B_supports": 35,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 630
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 630,
+          "unresolved_parents": [],
+          "wall_time_s": 0.102
+        }
+      ],
+      "lattice": "2x8",
+      "m": 8
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 18,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 27,
+            "T_eq_k": 3,
+            "T_gt_half_k": 3
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 9,
+          "connected_positive_k_pairs": 30,
+          "family": "2x2",
+          "k_ge_2_pairs": 45,
+          "k_parent_histogram": {
+            "12": 1,
+            "18": 1,
+            "2": 30,
+            "4": 9,
+            "6": 4
+          },
+          "parents_analyzed": 30,
+          "residual_count": 0,
+          "support_pairs_enumerated": 45,
+          "unresolved_parents": [],
+          "wall_time_s": 0.148
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 33
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 46,
+          "connected_positive_k_pairs": 33,
+          "family": "2x3",
+          "k_ge_2_pairs": 38,
+          "k_parent_histogram": {
+            "0": 376,
+            "12": 2,
+            "4": 33,
+            "8": 3
+          },
+          "parents_analyzed": 33,
+          "residual_count": 0,
+          "support_pairs_enumerated": 414,
+          "unresolved_parents": [],
+          "wall_time_s": 0.145
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 45,
+            "T_eq_k": 27,
+            "T_gt_half_k": 27
+          },
+          "canonical_A_supports": 46,
+          "canonical_B_supports": 46,
+          "connected_positive_k_pairs": 72,
+          "family": "3x3",
+          "k_ge_2_pairs": 81,
+          "k_parent_histogram": {
+            "0": 1000,
+            "12": 2,
+            "24": 1,
+            "4": 72,
+            "8": 6
+          },
+          "parents_analyzed": 72,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1081,
+          "unresolved_parents": [],
+          "wall_time_s": 0.865
+        }
+      ],
+      "lattice": "2x9",
+      "m": 9
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 20,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 18,
+            "T_eq_k": 6,
+            "T_gt_half_k": 6
+          },
+          "canonical_A_supports": 11,
+          "canonical_B_supports": 11,
+          "connected_positive_k_pairs": 24,
+          "family": "2x2",
+          "k_ge_2_pairs": 66,
+          "k_parent_histogram": {
+            "10": 3,
+            "2": 24,
+            "20": 3,
+            "4": 33,
+            "8": 3
+          },
+          "parents_analyzed": 24,
+          "residual_count": 0,
+          "support_pairs_enumerated": 66,
+          "unresolved_parents": [],
+          "wall_time_s": 0.225
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 11,
+          "canonical_B_supports": 57,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 627
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 627,
+          "unresolved_parents": [],
+          "wall_time_s": 0.09
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 57,
+          "canonical_B_supports": 57,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 1653
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1653,
+          "unresolved_parents": [],
+          "wall_time_s": 0.304
+        }
+      ],
+      "lattice": "2x10",
+      "m": 10
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 22,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 45,
+            "T_eq_k": 5,
+            "T_gt_half_k": 5
+          },
+          "canonical_A_supports": 11,
+          "canonical_B_supports": 11,
+          "connected_positive_k_pairs": 50,
+          "family": "2x2",
+          "k_ge_2_pairs": 66,
+          "k_parent_histogram": {
+            "2": 50,
+            "22": 1,
+            "4": 15
+          },
+          "parents_analyzed": 50,
+          "residual_count": 0,
+          "support_pairs_enumerated": 66,
+          "unresolved_parents": [],
+          "wall_time_s": 0.383
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 11,
+          "canonical_B_supports": 70,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 770
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 770,
+          "unresolved_parents": [],
+          "wall_time_s": 0.123
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 70,
+          "canonical_B_supports": 70,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 2485
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 2485,
+          "unresolved_parents": [],
+          "wall_time_s": 0.413
+        }
+      ],
+      "lattice": "2x11",
+      "m": 11
+    },
+    {
+      "ell": 2,
+      "ell_times_m": 24,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 20,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 13,
+          "canonical_B_supports": 13,
+          "connected_positive_k_pairs": 28,
+          "family": "2x2",
+          "k_ge_2_pairs": 91,
+          "k_parent_histogram": {
+            "12": 7,
+            "16": 1,
+            "2": 28,
+            "24": 3,
+            "4": 35,
+            "6": 5,
+            "8": 12
+          },
+          "parents_analyzed": 28,
+          "residual_count": 0,
+          "support_pairs_enumerated": 91,
+          "unresolved_parents": [],
+          "wall_time_s": 0.288
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 68,
+            "T_eq_k": 4,
+            "T_gt_half_k": 4
+          },
+          "canonical_A_supports": 13,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 72,
+          "family": "2x3",
+          "k_ge_2_pairs": 110,
+          "k_parent_histogram": {
+            "0": 995,
+            "16": 6,
+            "4": 64,
+            "8": 40
+          },
+          "parents_analyzed": 72,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1105,
+          "unresolved_parents": [],
+          "wall_time_s": 0.445
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 188,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 85,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 196,
+          "family": "3x3",
+          "k_ge_2_pairs": 253,
+          "k_parent_histogram": {
+            "0": 3402,
+            "16": 10,
+            "32": 1,
+            "4": 160,
+            "8": 82
+          },
+          "parents_analyzed": 196,
+          "residual_count": 0,
+          "support_pairs_enumerated": 3655,
+          "unresolved_parents": [],
+          "wall_time_s": 2.7
+        }
+      ],
+      "lattice": "2x12",
+      "m": 12
+    },
+    {
+      "ell": 3,
+      "ell_times_m": 6,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 3,
+            "T_eq_k": 1,
+            "T_gt_half_k": 1
+          },
+          "canonical_A_supports": 3,
+          "canonical_B_supports": 3,
+          "connected_positive_k_pairs": 4,
+          "family": "2x2",
+          "k_ge_2_pairs": 6,
+          "k_parent_histogram": {
+            "2": 4,
+            "4": 1,
+            "6": 1
+          },
+          "parents_analyzed": 4,
+          "residual_count": 0,
+          "support_pairs_enumerated": 6,
+          "unresolved_parents": [],
+          "wall_time_s": 0.003
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 1,
+            "T_eq_k": 1,
+            "T_gt_half_k": 1
+          },
+          "canonical_A_supports": 3,
+          "canonical_B_supports": 4,
+          "connected_positive_k_pairs": 2,
+          "family": "2x3",
+          "k_ge_2_pairs": 2,
+          "k_parent_histogram": {
+            "0": 10,
+            "4": 2
+          },
+          "parents_analyzed": 2,
+          "residual_count": 0,
+          "support_pairs_enumerated": 12,
+          "unresolved_parents": [],
+          "wall_time_s": 0.001
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 2
+          },
+          "canonical_A_supports": 4,
+          "canonical_B_supports": 4,
+          "connected_positive_k_pairs": 2,
+          "family": "3x3",
+          "k_ge_2_pairs": 3,
+          "k_parent_histogram": {
+            "0": 7,
+            "4": 2,
+            "8": 1
+          },
+          "parents_analyzed": 2,
+          "residual_count": 0,
+          "support_pairs_enumerated": 10,
+          "unresolved_parents": [],
+          "wall_time_s": 0.001
+        }
+      ],
+      "lattice": "3x2",
+      "m": 2
+    },
+    {
+      "ell": 3,
+      "ell_times_m": 9,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_k": 6,
+            "T_gt_half_k": 6
+          },
+          "canonical_A_supports": 4,
+          "canonical_B_supports": 4,
+          "connected_positive_k_pairs": 6,
+          "family": "2x2",
+          "k_ge_2_pairs": 10,
+          "k_parent_histogram": {
+            "2": 6,
+            "6": 4
+          },
+          "parents_analyzed": 6,
+          "residual_count": 0,
+          "support_pairs_enumerated": 10,
+          "unresolved_parents": [],
+          "wall_time_s": 0.004
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 20
+          },
+          "canonical_A_supports": 4,
+          "canonical_B_supports": 12,
+          "connected_positive_k_pairs": 20,
+          "family": "2x3",
+          "k_ge_2_pairs": 20,
+          "k_parent_histogram": {
+            "0": 28,
+            "4": 20
+          },
+          "parents_analyzed": 20,
+          "residual_count": 0,
+          "support_pairs_enumerated": 48,
+          "unresolved_parents": [],
+          "wall_time_s": 0.015
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 32,
+            "T_eq_k": 10,
+            "T_gt_half_k": 10
+          },
+          "canonical_A_supports": 12,
+          "canonical_B_supports": 12,
+          "connected_positive_k_pairs": 42,
+          "family": "3x3",
+          "k_ge_2_pairs": 46,
+          "k_parent_histogram": {
+            "0": 32,
+            "12": 4,
+            "4": 36,
+            "8": 6
+          },
+          "parents_analyzed": 42,
+          "residual_count": 0,
+          "support_pairs_enumerated": 78,
+          "unresolved_parents": [],
+          "wall_time_s": 0.06
+        }
+      ],
+      "lattice": "3x3",
+      "m": 3
+    },
+    {
+      "ell": 3,
+      "ell_times_m": 12,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 11,
+            "T_eq_k": 2,
+            "T_gt_half_k": 2
+          },
+          "canonical_A_supports": 6,
+          "canonical_B_supports": 6,
+          "connected_positive_k_pairs": 13,
+          "family": "2x2",
+          "k_ge_2_pairs": 21,
+          "k_parent_histogram": {
+            "12": 1,
+            "2": 13,
+            "4": 4,
+            "6": 2,
+            "8": 1
+          },
+          "parents_analyzed": 13,
+          "residual_count": 0,
+          "support_pairs_enumerated": 21,
+          "unresolved_parents": [],
+          "wall_time_s": 0.019
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 7,
+            "T_eq_k": 3,
+            "T_gt_half_k": 3
+          },
+          "canonical_A_supports": 6,
+          "canonical_B_supports": 19,
+          "connected_positive_k_pairs": 10,
+          "family": "2x3",
+          "k_ge_2_pairs": 12,
+          "k_parent_histogram": {
+            "0": 102,
+            "4": 10,
+            "8": 2
+          },
+          "parents_analyzed": 10,
+          "residual_count": 0,
+          "support_pairs_enumerated": 114,
+          "unresolved_parents": [],
+          "wall_time_s": 0.031
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 8,
+            "T_eq_k": 10,
+            "T_gt_half_k": 10
+          },
+          "canonical_A_supports": 19,
+          "canonical_B_supports": 19,
+          "connected_positive_k_pairs": 18,
+          "family": "3x3",
+          "k_ge_2_pairs": 21,
+          "k_parent_histogram": {
+            "0": 169,
+            "16": 1,
+            "4": 18,
+            "8": 2
+          },
+          "parents_analyzed": 18,
+          "residual_count": 0,
+          "support_pairs_enumerated": 190,
+          "unresolved_parents": [],
+          "wall_time_s": 0.066
+        }
+      ],
+      "lattice": "3x4",
+      "m": 4
+    },
+    {
+      "ell": 3,
+      "ell_times_m": 15,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 18,
+            "T_eq_k": 6,
+            "T_gt_half_k": 6
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 24,
+          "family": "2x2",
+          "k_ge_2_pairs": 28,
+          "k_parent_histogram": {
+            "10": 1,
+            "2": 24,
+            "6": 3
+          },
+          "parents_analyzed": 24,
+          "residual_count": 0,
+          "support_pairs_enumerated": 28,
+          "unresolved_parents": [],
+          "wall_time_s": 0.071
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 14,
+            "T_eq_k": 4,
+            "T_gt_half_k": 4
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 31,
+          "connected_positive_k_pairs": 18,
+          "family": "2x3",
+          "k_ge_2_pairs": 18,
+          "k_parent_histogram": {
+            "0": 199,
+            "4": 18
+          },
+          "parents_analyzed": 18,
+          "residual_count": 0,
+          "support_pairs_enumerated": 217,
+          "unresolved_parents": [],
+          "wall_time_s": 0.083
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 44,
+            "T_eq_k": 10,
+            "T_gt_half_k": 10
+          },
+          "canonical_A_supports": 31,
+          "canonical_B_supports": 31,
+          "connected_positive_k_pairs": 54,
+          "family": "3x3",
+          "k_ge_2_pairs": 55,
+          "k_parent_histogram": {
+            "0": 441,
+            "20": 1,
+            "4": 44,
+            "8": 10
+          },
+          "parents_analyzed": 54,
+          "residual_count": 0,
+          "support_pairs_enumerated": 496,
+          "unresolved_parents": [],
+          "wall_time_s": 0.405
+        }
+      ],
+      "lattice": "3x5",
+      "m": 5
+    },
+    {
+      "ell": 3,
+      "ell_times_m": 18,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 12,
+            "T_eq_k": 6,
+            "T_gt_half_k": 6
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 9,
+          "connected_positive_k_pairs": 18,
+          "family": "2x2",
+          "k_ge_2_pairs": 45,
+          "k_parent_histogram": {
+            "12": 4,
+            "18": 1,
+            "2": 18,
+            "4": 6,
+            "6": 16
+          },
+          "parents_analyzed": 18,
+          "residual_count": 0,
+          "support_pairs_enumerated": 45,
+          "unresolved_parents": [],
+          "wall_time_s": 0.176
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 116,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 48,
+          "connected_positive_k_pairs": 124,
+          "family": "2x3",
+          "k_ge_2_pairs": 152,
+          "k_parent_histogram": {
+            "0": 280,
+            "12": 8,
+            "4": 124,
+            "8": 20
+          },
+          "parents_analyzed": 124,
+          "residual_count": 0,
+          "support_pairs_enumerated": 432,
+          "unresolved_parents": [],
+          "wall_time_s": 0.535
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 288,
+            "T_eq_k": 30,
+            "T_gt_half_k": 30
+          },
+          "canonical_A_supports": 48,
+          "canonical_B_supports": 48,
+          "connected_positive_k_pairs": 318,
+          "family": "3x3",
+          "k_ge_2_pairs": 372,
+          "k_parent_histogram": {
+            "0": 804,
+            "12": 8,
+            "16": 6,
+            "24": 4,
+            "4": 300,
+            "8": 54
+          },
+          "parents_analyzed": 318,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1176,
+          "unresolved_parents": [],
+          "wall_time_s": 1.659
+        }
+      ],
+      "lattice": "3x6",
+      "m": 6
+    },
+    {
+      "ell": 3,
+      "ell_times_m": 21,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 48
+          },
+          "canonical_A_supports": 10,
+          "canonical_B_supports": 10,
+          "connected_positive_k_pairs": 48,
+          "family": "2x2",
+          "k_ge_2_pairs": 55,
+          "k_parent_histogram": {
+            "14": 1,
+            "2": 48,
+            "6": 6
+          },
+          "parents_analyzed": 48,
+          "residual_count": 0,
+          "support_pairs_enumerated": 55,
+          "unresolved_parents": [],
+          "wall_time_s": 0.371
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 57,
+            "T_eq_k": 12,
+            "T_gt_half_k": 12
+          },
+          "canonical_A_supports": 10,
+          "canonical_B_supports": 64,
+          "connected_positive_k_pairs": 69,
+          "family": "2x3",
+          "k_ge_2_pairs": 69,
+          "k_parent_histogram": {
+            "0": 571,
+            "4": 51,
+            "6": 18
+          },
+          "parents_analyzed": 69,
+          "residual_count": 0,
+          "support_pairs_enumerated": 640,
+          "unresolved_parents": [],
+          "wall_time_s": 0.55
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 176,
+            "T_eq_k": 60,
+            "T_gt_half_k": 60
+          },
+          "canonical_A_supports": 64,
+          "canonical_B_supports": 64,
+          "connected_positive_k_pairs": 236,
+          "family": "3x3",
+          "k_ge_2_pairs": 239,
+          "k_parent_histogram": {
+            "0": 1841,
+            "10": 6,
+            "12": 2,
+            "18": 2,
+            "28": 1,
+            "4": 146,
+            "6": 82
+          },
+          "parents_analyzed": 236,
+          "residual_count": 0,
+          "support_pairs_enumerated": 2080,
+          "unresolved_parents": [],
+          "wall_time_s": 3.683
+        }
+      ],
+      "lattice": "3x7",
+      "m": 7
+    },
+    {
+      "ell": 3,
+      "ell_times_m": 24,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 48,
+            "T_eq_k": 2,
+            "T_gt_half_k": 2
+          },
+          "canonical_A_supports": 12,
+          "canonical_B_supports": 12,
+          "connected_positive_k_pairs": 50,
+          "family": "2x2",
+          "k_ge_2_pairs": 78,
+          "k_parent_histogram": {
+            "12": 2,
+            "16": 1,
+            "2": 50,
+            "24": 1,
+            "4": 13,
+            "6": 7,
+            "8": 4
+          },
+          "parents_analyzed": 50,
+          "residual_count": 0,
+          "support_pairs_enumerated": 78,
+          "unresolved_parents": [],
+          "wall_time_s": 0.538
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 64,
+            "T_eq_k": 12,
+            "T_gt_half_k": 12
+          },
+          "canonical_A_supports": 12,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 76,
+          "family": "2x3",
+          "k_ge_2_pairs": 88,
+          "k_parent_histogram": {
+            "0": 932,
+            "16": 2,
+            "4": 76,
+            "8": 10
+          },
+          "parents_analyzed": 76,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1020,
+          "unresolved_parents": [],
+          "wall_time_s": 0.897
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 170,
+            "T_eq_k": 62,
+            "T_gt_half_k": 62
+          },
+          "canonical_A_supports": 85,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 232,
+          "family": "3x3",
+          "k_ge_2_pairs": 253,
+          "k_parent_histogram": {
+            "0": 3402,
+            "16": 2,
+            "32": 1,
+            "4": 232,
+            "8": 18
+          },
+          "parents_analyzed": 232,
+          "residual_count": 0,
+          "support_pairs_enumerated": 3655,
+          "unresolved_parents": [],
+          "wall_time_s": 9.559
+        }
+      ],
+      "lattice": "3x8",
+      "m": 8
+    },
+    {
+      "ell": 4,
+      "ell_times_m": 8,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 4,
+            "T_eq_k": 1,
+            "T_gt_half_k": 1
+          },
+          "canonical_A_supports": 5,
+          "canonical_B_supports": 5,
+          "connected_positive_k_pairs": 5,
+          "family": "2x2",
+          "k_ge_2_pairs": 15,
+          "k_parent_histogram": {
+            "2": 5,
+            "4": 7,
+            "8": 3
+          },
+          "parents_analyzed": 5,
+          "residual_count": 0,
+          "support_pairs_enumerated": 15,
+          "unresolved_parents": [],
+          "wall_time_s": 0.009
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 5,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 35
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 35,
+          "unresolved_parents": [],
+          "wall_time_s": 0.002
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 28
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 28,
+          "unresolved_parents": [],
+          "wall_time_s": 0.001
+        }
+      ],
+      "lattice": "4x2",
+      "m": 2
+    },
+    {
+      "ell": 4,
+      "ell_times_m": 12,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 11,
+            "T_eq_k": 2,
+            "T_gt_half_k": 2
+          },
+          "canonical_A_supports": 6,
+          "canonical_B_supports": 6,
+          "connected_positive_k_pairs": 13,
+          "family": "2x2",
+          "k_ge_2_pairs": 21,
+          "k_parent_histogram": {
+            "12": 1,
+            "2": 13,
+            "4": 4,
+            "6": 2,
+            "8": 1
+          },
+          "parents_analyzed": 13,
+          "residual_count": 0,
+          "support_pairs_enumerated": 21,
+          "unresolved_parents": [],
+          "wall_time_s": 0.022
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 7,
+            "T_eq_k": 3,
+            "T_gt_half_k": 3
+          },
+          "canonical_A_supports": 6,
+          "canonical_B_supports": 19,
+          "connected_positive_k_pairs": 10,
+          "family": "2x3",
+          "k_ge_2_pairs": 12,
+          "k_parent_histogram": {
+            "0": 102,
+            "4": 10,
+            "8": 2
+          },
+          "parents_analyzed": 10,
+          "residual_count": 0,
+          "support_pairs_enumerated": 114,
+          "unresolved_parents": [],
+          "wall_time_s": 0.026
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 8,
+            "T_eq_k": 10,
+            "T_gt_half_k": 10
+          },
+          "canonical_A_supports": 19,
+          "canonical_B_supports": 19,
+          "connected_positive_k_pairs": 18,
+          "family": "3x3",
+          "k_ge_2_pairs": 21,
+          "k_parent_histogram": {
+            "0": 169,
+            "16": 1,
+            "4": 18,
+            "8": 2
+          },
+          "parents_analyzed": 18,
+          "residual_count": 0,
+          "support_pairs_enumerated": 190,
+          "unresolved_parents": [],
+          "wall_time_s": 0.049
+        }
+      ],
+      "lattice": "4x3",
+      "m": 3
+    },
+    {
+      "ell": 4,
+      "ell_times_m": 16,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_k": 12,
+            "T_gt_half_k": 12
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 9,
+          "connected_positive_k_pairs": 12,
+          "family": "2x2",
+          "k_ge_2_pairs": 45,
+          "k_parent_histogram": {
+            "16": 3,
+            "2": 12,
+            "4": 15,
+            "8": 15
+          },
+          "parents_analyzed": 12,
+          "residual_count": 0,
+          "support_pairs_enumerated": 45,
+          "unresolved_parents": [],
+          "wall_time_s": 0.038
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 35,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 315
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 315,
+          "unresolved_parents": [],
+          "wall_time_s": 0.044
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 35,
+          "canonical_B_supports": 35,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 630
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 630,
+          "unresolved_parents": [],
+          "wall_time_s": 0.082
+        }
+      ],
+      "lattice": "4x4",
+      "m": 4
+    },
+    {
+      "ell": 4,
+      "ell_times_m": 20,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 34,
+            "T_eq_k": 4,
+            "T_gt_half_k": 4
+          },
+          "canonical_A_supports": 10,
+          "canonical_B_supports": 10,
+          "connected_positive_k_pairs": 38,
+          "family": "2x2",
+          "k_ge_2_pairs": 55,
+          "k_parent_histogram": {
+            "10": 2,
+            "2": 38,
+            "20": 1,
+            "4": 11,
+            "8": 3
+          },
+          "parents_analyzed": 38,
+          "residual_count": 0,
+          "support_pairs_enumerated": 55,
+          "unresolved_parents": [],
+          "wall_time_s": 0.189
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 10,
+          "canonical_B_supports": 57,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 570
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 570,
+          "unresolved_parents": [],
+          "wall_time_s": 0.084
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 57,
+          "canonical_B_supports": 57,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 1653
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1653,
+          "unresolved_parents": [],
+          "wall_time_s": 0.239
+        }
+      ],
+      "lattice": "4x5",
+      "m": 5
+    },
+    {
+      "ell": 4,
+      "ell_times_m": 24,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 20,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 13,
+          "canonical_B_supports": 13,
+          "connected_positive_k_pairs": 28,
+          "family": "2x2",
+          "k_ge_2_pairs": 91,
+          "k_parent_histogram": {
+            "12": 7,
+            "16": 1,
+            "2": 28,
+            "24": 3,
+            "4": 35,
+            "6": 5,
+            "8": 12
+          },
+          "parents_analyzed": 28,
+          "residual_count": 0,
+          "support_pairs_enumerated": 91,
+          "unresolved_parents": [],
+          "wall_time_s": 0.276
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 68,
+            "T_eq_k": 4,
+            "T_gt_half_k": 4
+          },
+          "canonical_A_supports": 13,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 72,
+          "family": "2x3",
+          "k_ge_2_pairs": 110,
+          "k_parent_histogram": {
+            "0": 995,
+            "16": 6,
+            "4": 64,
+            "8": 40
+          },
+          "parents_analyzed": 72,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1105,
+          "unresolved_parents": [],
+          "wall_time_s": 0.471
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 188,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 85,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 196,
+          "family": "3x3",
+          "k_ge_2_pairs": 253,
+          "k_parent_histogram": {
+            "0": 3402,
+            "16": 10,
+            "32": 1,
+            "4": 160,
+            "8": 82
+          },
+          "parents_analyzed": 196,
+          "residual_count": 0,
+          "support_pairs_enumerated": 3655,
+          "unresolved_parents": [],
+          "wall_time_s": 2.803
+        }
+      ],
+      "lattice": "4x6",
+      "m": 6
+    },
+    {
+      "ell": 5,
+      "ell_times_m": 10,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 10,
+            "T_eq_k": 1,
+            "T_gt_half_k": 1
+          },
+          "canonical_A_supports": 5,
+          "canonical_B_supports": 5,
+          "connected_positive_k_pairs": 11,
+          "family": "2x2",
+          "k_ge_2_pairs": 15,
+          "k_parent_histogram": {
+            "10": 1,
+            "2": 11,
+            "4": 3
+          },
+          "parents_analyzed": 11,
+          "residual_count": 0,
+          "support_pairs_enumerated": 15,
+          "unresolved_parents": [],
+          "wall_time_s": 0.016
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 5,
+          "canonical_B_supports": 12,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 60
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 60,
+          "unresolved_parents": [],
+          "wall_time_s": 0.003
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 12,
+          "canonical_B_supports": 12,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 78
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 78,
+          "unresolved_parents": [],
+          "wall_time_s": 0.004
+        }
+      ],
+      "lattice": "5x2",
+      "m": 2
+    },
+    {
+      "ell": 5,
+      "ell_times_m": 15,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 18,
+            "T_eq_k": 6,
+            "T_gt_half_k": 6
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 24,
+          "family": "2x2",
+          "k_ge_2_pairs": 28,
+          "k_parent_histogram": {
+            "10": 1,
+            "2": 24,
+            "6": 3
+          },
+          "parents_analyzed": 24,
+          "residual_count": 0,
+          "support_pairs_enumerated": 28,
+          "unresolved_parents": [],
+          "wall_time_s": 0.074
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 14,
+            "T_eq_k": 4,
+            "T_gt_half_k": 4
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 31,
+          "connected_positive_k_pairs": 18,
+          "family": "2x3",
+          "k_ge_2_pairs": 18,
+          "k_parent_histogram": {
+            "0": 199,
+            "4": 18
+          },
+          "parents_analyzed": 18,
+          "residual_count": 0,
+          "support_pairs_enumerated": 217,
+          "unresolved_parents": [],
+          "wall_time_s": 0.086
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 44,
+            "T_eq_k": 10,
+            "T_gt_half_k": 10
+          },
+          "canonical_A_supports": 31,
+          "canonical_B_supports": 31,
+          "connected_positive_k_pairs": 54,
+          "family": "3x3",
+          "k_ge_2_pairs": 55,
+          "k_parent_histogram": {
+            "0": 441,
+            "20": 1,
+            "4": 44,
+            "8": 10
+          },
+          "parents_analyzed": 54,
+          "residual_count": 0,
+          "support_pairs_enumerated": 496,
+          "unresolved_parents": [],
+          "wall_time_s": 0.394
+        }
+      ],
+      "lattice": "5x3",
+      "m": 3
+    },
+    {
+      "ell": 5,
+      "ell_times_m": 20,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 34,
+            "T_eq_k": 4,
+            "T_gt_half_k": 4
+          },
+          "canonical_A_supports": 10,
+          "canonical_B_supports": 10,
+          "connected_positive_k_pairs": 38,
+          "family": "2x2",
+          "k_ge_2_pairs": 55,
+          "k_parent_histogram": {
+            "10": 2,
+            "2": 38,
+            "20": 1,
+            "4": 11,
+            "8": 3
+          },
+          "parents_analyzed": 38,
+          "residual_count": 0,
+          "support_pairs_enumerated": 55,
+          "unresolved_parents": [],
+          "wall_time_s": 0.174
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 10,
+          "canonical_B_supports": 57,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 570
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 570,
+          "unresolved_parents": [],
+          "wall_time_s": 0.076
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 57,
+          "canonical_B_supports": 57,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 1653
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1653,
+          "unresolved_parents": [],
+          "wall_time_s": 0.233
+        }
+      ],
+      "lattice": "5x4",
+      "m": 4
+    },
+    {
+      "ell": 6,
+      "ell_times_m": 12,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 9
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 9,
+          "family": "2x2",
+          "k_ge_2_pairs": 28,
+          "k_parent_histogram": {
+            "12": 3,
+            "2": 9,
+            "4": 12,
+            "6": 3,
+            "8": 1
+          },
+          "parents_analyzed": 9,
+          "residual_count": 0,
+          "support_pairs_enumerated": 28,
+          "unresolved_parents": [],
+          "wall_time_s": 0.014
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 12
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 19,
+          "connected_positive_k_pairs": 12,
+          "family": "2x3",
+          "k_ge_2_pairs": 18,
+          "k_parent_histogram": {
+            "0": 115,
+            "4": 12,
+            "8": 6
+          },
+          "parents_analyzed": 12,
+          "residual_count": 0,
+          "support_pairs_enumerated": 133,
+          "unresolved_parents": [],
+          "wall_time_s": 0.027
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 4,
+            "T_eq_k": 10,
+            "T_gt_half_k": 10
+          },
+          "canonical_A_supports": 19,
+          "canonical_B_supports": 19,
+          "connected_positive_k_pairs": 14,
+          "family": "3x3",
+          "k_ge_2_pairs": 21,
+          "k_parent_histogram": {
+            "0": 169,
+            "16": 1,
+            "4": 10,
+            "8": 10
+          },
+          "parents_analyzed": 14,
+          "residual_count": 0,
+          "support_pairs_enumerated": 190,
+          "unresolved_parents": [],
+          "wall_time_s": 0.049
+        }
+      ],
+      "lattice": "6x2",
+      "m": 2
+    },
+    {
+      "ell": 6,
+      "ell_times_m": 18,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 12,
+            "T_eq_k": 6,
+            "T_gt_half_k": 6
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 9,
+          "connected_positive_k_pairs": 18,
+          "family": "2x2",
+          "k_ge_2_pairs": 45,
+          "k_parent_histogram": {
+            "12": 4,
+            "18": 1,
+            "2": 18,
+            "4": 6,
+            "6": 16
+          },
+          "parents_analyzed": 18,
+          "residual_count": 0,
+          "support_pairs_enumerated": 45,
+          "unresolved_parents": [],
+          "wall_time_s": 0.175
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 116,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 48,
+          "connected_positive_k_pairs": 124,
+          "family": "2x3",
+          "k_ge_2_pairs": 152,
+          "k_parent_histogram": {
+            "0": 280,
+            "12": 8,
+            "4": 124,
+            "8": 20
+          },
+          "parents_analyzed": 124,
+          "residual_count": 0,
+          "support_pairs_enumerated": 432,
+          "unresolved_parents": [],
+          "wall_time_s": 0.545
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 288,
+            "T_eq_k": 30,
+            "T_gt_half_k": 30
+          },
+          "canonical_A_supports": 48,
+          "canonical_B_supports": 48,
+          "connected_positive_k_pairs": 318,
+          "family": "3x3",
+          "k_ge_2_pairs": 372,
+          "k_parent_histogram": {
+            "0": 804,
+            "12": 8,
+            "16": 6,
+            "24": 4,
+            "4": 300,
+            "8": 54
+          },
+          "parents_analyzed": 318,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1176,
+          "unresolved_parents": [],
+          "wall_time_s": 1.772
+        }
+      ],
+      "lattice": "6x3",
+      "m": 3
+    },
+    {
+      "ell": 6,
+      "ell_times_m": 24,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 20,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 13,
+          "canonical_B_supports": 13,
+          "connected_positive_k_pairs": 28,
+          "family": "2x2",
+          "k_ge_2_pairs": 91,
+          "k_parent_histogram": {
+            "12": 7,
+            "16": 1,
+            "2": 28,
+            "24": 3,
+            "4": 35,
+            "6": 5,
+            "8": 12
+          },
+          "parents_analyzed": 28,
+          "residual_count": 0,
+          "support_pairs_enumerated": 91,
+          "unresolved_parents": [],
+          "wall_time_s": 0.284
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 68,
+            "T_eq_k": 4,
+            "T_gt_half_k": 4
+          },
+          "canonical_A_supports": 13,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 72,
+          "family": "2x3",
+          "k_ge_2_pairs": 110,
+          "k_parent_histogram": {
+            "0": 995,
+            "16": 6,
+            "4": 64,
+            "8": 40
+          },
+          "parents_analyzed": 72,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1105,
+          "unresolved_parents": [],
+          "wall_time_s": 0.465
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 188,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 85,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 196,
+          "family": "3x3",
+          "k_ge_2_pairs": 253,
+          "k_parent_histogram": {
+            "0": 3402,
+            "16": 10,
+            "32": 1,
+            "4": 160,
+            "8": 82
+          },
+          "parents_analyzed": 196,
+          "residual_count": 0,
+          "support_pairs_enumerated": 3655,
+          "unresolved_parents": [],
+          "wall_time_s": 2.8
+        }
+      ],
+      "lattice": "6x4",
+      "m": 4
+    },
+    {
+      "ell": 7,
+      "ell_times_m": 14,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 18,
+            "T_eq_k": 3,
+            "T_gt_half_k": 3
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 7,
+          "connected_positive_k_pairs": 21,
+          "family": "2x2",
+          "k_ge_2_pairs": 28,
+          "k_parent_histogram": {
+            "14": 1,
+            "2": 21,
+            "4": 6
+          },
+          "parents_analyzed": 21,
+          "residual_count": 0,
+          "support_pairs_enumerated": 28,
+          "unresolved_parents": [],
+          "wall_time_s": 0.069
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 8
+          },
+          "canonical_A_supports": 7,
+          "canonical_B_supports": 26,
+          "connected_positive_k_pairs": 8,
+          "family": "2x3",
+          "k_ge_2_pairs": 8,
+          "k_parent_histogram": {
+            "0": 174,
+            "6": 8
+          },
+          "parents_analyzed": 8,
+          "residual_count": 0,
+          "support_pairs_enumerated": 182,
+          "unresolved_parents": [],
+          "wall_time_s": 0.022
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 6,
+            "T_eq_k": 12,
+            "T_gt_half_k": 12
+          },
+          "canonical_A_supports": 26,
+          "canonical_B_supports": 26,
+          "connected_positive_k_pairs": 18,
+          "family": "3x3",
+          "k_ge_2_pairs": 20,
+          "k_parent_histogram": {
+            "0": 331,
+            "12": 2,
+            "6": 18
+          },
+          "parents_analyzed": 18,
+          "residual_count": 0,
+          "support_pairs_enumerated": 351,
+          "unresolved_parents": [],
+          "wall_time_s": 0.124
+        }
+      ],
+      "lattice": "7x2",
+      "m": 2
+    },
+    {
+      "ell": 7,
+      "ell_times_m": 21,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 48
+          },
+          "canonical_A_supports": 10,
+          "canonical_B_supports": 10,
+          "connected_positive_k_pairs": 48,
+          "family": "2x2",
+          "k_ge_2_pairs": 55,
+          "k_parent_histogram": {
+            "14": 1,
+            "2": 48,
+            "6": 6
+          },
+          "parents_analyzed": 48,
+          "residual_count": 0,
+          "support_pairs_enumerated": 55,
+          "unresolved_parents": [],
+          "wall_time_s": 0.425
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 57,
+            "T_eq_k": 12,
+            "T_gt_half_k": 12
+          },
+          "canonical_A_supports": 10,
+          "canonical_B_supports": 64,
+          "connected_positive_k_pairs": 69,
+          "family": "2x3",
+          "k_ge_2_pairs": 69,
+          "k_parent_histogram": {
+            "0": 571,
+            "4": 51,
+            "6": 18
+          },
+          "parents_analyzed": 69,
+          "residual_count": 0,
+          "support_pairs_enumerated": 640,
+          "unresolved_parents": [],
+          "wall_time_s": 0.63
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 176,
+            "T_eq_k": 60,
+            "T_gt_half_k": 60
+          },
+          "canonical_A_supports": 64,
+          "canonical_B_supports": 64,
+          "connected_positive_k_pairs": 236,
+          "family": "3x3",
+          "k_ge_2_pairs": 239,
+          "k_parent_histogram": {
+            "0": 1841,
+            "10": 6,
+            "12": 2,
+            "18": 2,
+            "28": 1,
+            "4": 146,
+            "6": 82
+          },
+          "parents_analyzed": 236,
+          "residual_count": 0,
+          "support_pairs_enumerated": 2080,
+          "unresolved_parents": [],
+          "wall_time_s": 3.947
+        }
+      ],
+      "lattice": "7x3",
+      "m": 3
+    },
+    {
+      "ell": 8,
+      "ell_times_m": 16,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 16
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 9,
+          "connected_positive_k_pairs": 16,
+          "family": "2x2",
+          "k_ge_2_pairs": 45,
+          "k_parent_histogram": {
+            "16": 3,
+            "2": 16,
+            "4": 19,
+            "8": 7
+          },
+          "parents_analyzed": 16,
+          "residual_count": 0,
+          "support_pairs_enumerated": 45,
+          "unresolved_parents": [],
+          "wall_time_s": 0.05
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 35,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 315
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 315,
+          "unresolved_parents": [],
+          "wall_time_s": 0.038
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 35,
+          "canonical_B_supports": 35,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 630
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 630,
+          "unresolved_parents": [],
+          "wall_time_s": 0.078
+        }
+      ],
+      "lattice": "8x2",
+      "m": 2
+    },
+    {
+      "ell": 8,
+      "ell_times_m": 24,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 48,
+            "T_eq_k": 2,
+            "T_gt_half_k": 2
+          },
+          "canonical_A_supports": 12,
+          "canonical_B_supports": 12,
+          "connected_positive_k_pairs": 50,
+          "family": "2x2",
+          "k_ge_2_pairs": 78,
+          "k_parent_histogram": {
+            "12": 2,
+            "16": 1,
+            "2": 50,
+            "24": 1,
+            "4": 13,
+            "6": 7,
+            "8": 4
+          },
+          "parents_analyzed": 50,
+          "residual_count": 0,
+          "support_pairs_enumerated": 78,
+          "unresolved_parents": [],
+          "wall_time_s": 0.582
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 64,
+            "T_eq_k": 12,
+            "T_gt_half_k": 12
+          },
+          "canonical_A_supports": 12,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 76,
+          "family": "2x3",
+          "k_ge_2_pairs": 88,
+          "k_parent_histogram": {
+            "0": 932,
+            "16": 2,
+            "4": 76,
+            "8": 10
+          },
+          "parents_analyzed": 76,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1020,
+          "unresolved_parents": [],
+          "wall_time_s": 1.002
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 170,
+            "T_eq_k": 62,
+            "T_gt_half_k": 62
+          },
+          "canonical_A_supports": 85,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 232,
+          "family": "3x3",
+          "k_ge_2_pairs": 253,
+          "k_parent_histogram": {
+            "0": 3402,
+            "16": 2,
+            "32": 1,
+            "4": 232,
+            "8": 18
+          },
+          "parents_analyzed": 232,
+          "residual_count": 0,
+          "support_pairs_enumerated": 3655,
+          "unresolved_parents": [],
+          "wall_time_s": 10.639
+        }
+      ],
+      "lattice": "8x3",
+      "m": 3
+    },
+    {
+      "ell": 9,
+      "ell_times_m": 18,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 27,
+            "T_eq_k": 3,
+            "T_gt_half_k": 3
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 9,
+          "connected_positive_k_pairs": 30,
+          "family": "2x2",
+          "k_ge_2_pairs": 45,
+          "k_parent_histogram": {
+            "12": 1,
+            "18": 1,
+            "2": 30,
+            "4": 9,
+            "6": 4
+          },
+          "parents_analyzed": 30,
+          "residual_count": 0,
+          "support_pairs_enumerated": 45,
+          "unresolved_parents": [],
+          "wall_time_s": 0.201
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 33
+          },
+          "canonical_A_supports": 9,
+          "canonical_B_supports": 46,
+          "connected_positive_k_pairs": 33,
+          "family": "2x3",
+          "k_ge_2_pairs": 38,
+          "k_parent_histogram": {
+            "0": 376,
+            "12": 2,
+            "4": 33,
+            "8": 3
+          },
+          "parents_analyzed": 33,
+          "residual_count": 0,
+          "support_pairs_enumerated": 414,
+          "unresolved_parents": [],
+          "wall_time_s": 0.155
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 45,
+            "T_eq_k": 27,
+            "T_gt_half_k": 27
+          },
+          "canonical_A_supports": 46,
+          "canonical_B_supports": 46,
+          "connected_positive_k_pairs": 72,
+          "family": "3x3",
+          "k_ge_2_pairs": 81,
+          "k_parent_histogram": {
+            "0": 1000,
+            "12": 2,
+            "24": 1,
+            "4": 72,
+            "8": 6
+          },
+          "parents_analyzed": 72,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1081,
+          "unresolved_parents": [],
+          "wall_time_s": 0.829
+        }
+      ],
+      "lattice": "9x2",
+      "m": 2
+    },
+    {
+      "ell": 10,
+      "ell_times_m": 20,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 18,
+            "T_eq_k": 6,
+            "T_gt_half_k": 6
+          },
+          "canonical_A_supports": 11,
+          "canonical_B_supports": 11,
+          "connected_positive_k_pairs": 24,
+          "family": "2x2",
+          "k_ge_2_pairs": 66,
+          "k_parent_histogram": {
+            "10": 3,
+            "2": 24,
+            "20": 3,
+            "4": 33,
+            "8": 3
+          },
+          "parents_analyzed": 24,
+          "residual_count": 0,
+          "support_pairs_enumerated": 66,
+          "unresolved_parents": [],
+          "wall_time_s": 0.273
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 11,
+          "canonical_B_supports": 57,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 627
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 627,
+          "unresolved_parents": [],
+          "wall_time_s": 0.102
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 57,
+          "canonical_B_supports": 57,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 1653
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1653,
+          "unresolved_parents": [],
+          "wall_time_s": 0.291
+        }
+      ],
+      "lattice": "10x2",
+      "m": 2
+    },
+    {
+      "ell": 11,
+      "ell_times_m": 22,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 45,
+            "T_eq_k": 5,
+            "T_gt_half_k": 5
+          },
+          "canonical_A_supports": 11,
+          "canonical_B_supports": 11,
+          "connected_positive_k_pairs": 50,
+          "family": "2x2",
+          "k_ge_2_pairs": 66,
+          "k_parent_histogram": {
+            "2": 50,
+            "22": 1,
+            "4": 15
+          },
+          "parents_analyzed": 50,
+          "residual_count": 0,
+          "support_pairs_enumerated": 66,
+          "unresolved_parents": [],
+          "wall_time_s": 0.505
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 11,
+          "canonical_B_supports": 70,
+          "connected_positive_k_pairs": 0,
+          "family": "2x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 770
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 770,
+          "unresolved_parents": [],
+          "wall_time_s": 0.128
+        },
+        {
+          "buckets": {},
+          "canonical_A_supports": 70,
+          "canonical_B_supports": 70,
+          "connected_positive_k_pairs": 0,
+          "family": "3x3",
+          "k_ge_2_pairs": 0,
+          "k_parent_histogram": {
+            "0": 2485
+          },
+          "parents_analyzed": 0,
+          "residual_count": 0,
+          "support_pairs_enumerated": 2485,
+          "unresolved_parents": [],
+          "wall_time_s": 0.387
+        }
+      ],
+      "lattice": "11x2",
+      "m": 2
+    },
+    {
+      "ell": 12,
+      "ell_times_m": 24,
+      "families": [
+        {
+          "buckets": {
+            "T_eq_half_k": 20,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 13,
+          "canonical_B_supports": 13,
+          "connected_positive_k_pairs": 28,
+          "family": "2x2",
+          "k_ge_2_pairs": 91,
+          "k_parent_histogram": {
+            "12": 7,
+            "16": 1,
+            "2": 28,
+            "24": 3,
+            "4": 35,
+            "6": 5,
+            "8": 12
+          },
+          "parents_analyzed": 28,
+          "residual_count": 0,
+          "support_pairs_enumerated": 91,
+          "unresolved_parents": [],
+          "wall_time_s": 0.308
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 68,
+            "T_eq_k": 4,
+            "T_gt_half_k": 4
+          },
+          "canonical_A_supports": 13,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 72,
+          "family": "2x3",
+          "k_ge_2_pairs": 110,
+          "k_parent_histogram": {
+            "0": 995,
+            "16": 6,
+            "4": 64,
+            "8": 40
+          },
+          "parents_analyzed": 72,
+          "residual_count": 0,
+          "support_pairs_enumerated": 1105,
+          "unresolved_parents": [],
+          "wall_time_s": 0.58
+        },
+        {
+          "buckets": {
+            "T_eq_half_k": 188,
+            "T_eq_k": 8,
+            "T_gt_half_k": 8
+          },
+          "canonical_A_supports": 85,
+          "canonical_B_supports": 85,
+          "connected_positive_k_pairs": 196,
+          "family": "3x3",
+          "k_ge_2_pairs": 253,
+          "k_parent_histogram": {
+            "0": 3402,
+            "16": 10,
+            "32": 1,
+            "4": 160,
+            "8": 82
+          },
+          "parents_analyzed": 196,
+          "residual_count": 0,
+          "support_pairs_enumerated": 3655,
+          "unresolved_parents": [],
+          "wall_time_s": 3.135
+        }
+      ],
+      "lattice": "12x2",
+      "m": 2
+    }
+  ],
+  "protocol": {
+    "T_method": "translation-orbit span of every minimum-weight Z-logical modulo S_Z; every translate verified to lie in ker[A B]",
+    "d_Q_threshold_method": "surviving minimum pure-Z logical, else exhaustive symplectic MITM over all ternary Pauli patterns of weight <= d_Z under per-side budget 20000000",
+    "d_Z_method": "ascending-weight exact enumeration of ker[A B]: per split the cheaper side is enumerated and the other side solved over a coset of its kernel (GF(2) column solver); one-sided splits read the kernel spans directly; the EXP-041 MITM join is the fallback when neither solve orientation is feasible.  Both engines verified bit-exact on real parents (self_tests) and against full nullspace spans (span_cross_checks)",
+    "d_weight_cap": 12,
+    "lattice_set": "all ordered (ell, m) with ell, m >= 2 and ell*m <= 24 (37 shapes)",
+    "match_guard": 400000,
+    "nondegenerate_predicate": "k_P >= 2 and a single Tanner component",
+    "parent_equivalence": "supports identified under independent Z_ell x Z_m translations of the A and B blocks; {A, B} unordered; k_P, d_Z, T are invariants of the class",
+    "perturbation_class": "every literal [C D] support of total weight 1..3 with zero AC^T + BD^T commutation defect",
+    "support_families": [
+      "2x2",
+      "2x3",
+      "3x3"
+    ]
+  },
+  "pysat_imported": false,
+  "residual_parents": [],
+  "sat_decide_imported": false,
+  "sat_solver_used": false,
+  "schema": "exp042-residual-probe-v1",
+  "self_tests": {
+    "column_syndrome_matches_dense": true,
+    "echelon_rank_matches_rank_np": true,
+    "orbit_matches_reference": true,
+    "solver_engine_matches_mitm": {
+      "instances": 10
+    },
+    "symplectic_mitm_matches_full_enumeration": {
+      "instances": 12
+    }
+  },
+  "span_cross_checks": [
+    {
+      "A_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "B_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "count_mitm_side": 5,
+      "count_span_side": 5,
+      "lattice": "2x2",
+      "nullspace_dim": 5,
+      "set_equal": true,
+      "span_enumerated": 32
+    },
+    {
+      "A_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "B_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "count_mitm_side": 4,
+      "count_span_side": 4,
+      "lattice": "2x3",
+      "nullspace_dim": 7,
+      "set_equal": true,
+      "span_enumerated": 128
+    },
+    {
+      "A_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "B_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "count_mitm_side": 10,
+      "count_span_side": 10,
+      "lattice": "2x3",
+      "nullspace_dim": 8,
+      "set_equal": true,
+      "span_enumerated": 256
+    },
+    {
+      "A_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "B_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "count_mitm_side": 7,
+      "count_span_side": 7,
+      "lattice": "2x3",
+      "nullspace_dim": 8,
+      "set_equal": true,
+      "span_enumerated": 256
+    },
+    {
+      "A_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "B_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "count_mitm_side": 5,
+      "count_span_side": 5,
+      "lattice": "2x4",
+      "nullspace_dim": 9,
+      "set_equal": true,
+      "span_enumerated": 512
+    },
+    {
+      "A_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "B_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "count_mitm_side": 6,
+      "count_span_side": 6,
+      "lattice": "2x5",
+      "nullspace_dim": 11,
+      "set_equal": true,
+      "span_enumerated": 2048
+    },
+    {
+      "A_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "B_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "count_mitm_side": 7,
+      "count_span_side": 7,
+      "lattice": "2x6",
+      "nullspace_dim": 13,
+      "set_equal": true,
+      "span_enumerated": 8192
+    },
+    {
+      "A_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "B_terms": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "count_mitm_side": 7,
+      "count_span_side": 7,
+      "lattice": "2x6",
+      "nullspace_dim": 14,
+      "set_equal": true,
+      "span_enumerated": 16384
+    }
+  ],
+  "stim_imported": false,
+  "utc": "2026-08-18T07:41:22.721623+00:00",
+  "verdict": "SMALL_CLASS_EMPTY",
+  "verdict_detail": "No parent with T < k_P/2 exists among the 4621 exhaustively enumerated connected k>=2 parents on any lattice with ell*m <= 24 (families 2x2, 2x3, 3x3); Conjecture B-prime's residual class is vacuous at small lattices.",
+  "wall_time_s": 61.561
+}

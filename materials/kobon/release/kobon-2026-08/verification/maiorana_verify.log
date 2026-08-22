@@ -1,0 +1,7 @@
+{"stage": "sha_pinned_source", "ok": true, "sha256": "83fc26666d73cd39791018a72aba71caeac4a3f7efb27109ed2955b4540b2523"}
+{"stage": "lines_distinct", "ok": true, "k": 14}
+{"stage": "multipoint_census", "ok": true, "triples": [[0, 4, 10], [0, 11, 12]]}
+{"stage": "record_census", "ok": true, "count": 54}
+{"stage": "cevian_check", "ok": true}
+{"stage": "engine_verify_selection", "ok": true, "detail": "ok", "minimum": 54}
+{"stage": "CERTIFIED", "K_gen_14_lower_bound": 54, "encoding_convention": "campaign engine K_gen"}

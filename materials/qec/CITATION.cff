@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this research code or its certified artifacts, cite this repository and the primary papers listed in sources/bibliography.bib."
+title: "qec-codesign: automated co-design of quantum LDPC codes, syndrome circuits, and decoders"
+type: software
+authors:
+  - name: "qec-codesign contributors"
+version: 0.1.0
+date-released: 2026-08-13
+license: Apache-2.0
+abstract: >-
+  Exact GF(2) validation, distance certification, mixed-stabilizer syndrome
+  compilation, circuit-level simulation, decoder benchmarking, and searchable
+  artifacts for perturbed and CSS bivariate-bicycle codes.
+keywords:
+  - quantum error correction
+  - quantum LDPC codes
+  - bivariate bicycle codes
+  - syndrome extraction
+  - circuit-level noise

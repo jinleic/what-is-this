@@ -12,6 +12,5 @@ omp session IDs in `~/.omp/agent/sessions/-jinleic-workspace/<timestamp>_<id>.js
 | `019ff957-1ed4-7000-8941-f92f3002c676` | 2026-08-13 | Hilbert's tenth over Q (h10q) |
 | `019ffb23-9512-7000-8c79-32667475fc6c` | 2026-08-13 | R(5,5) + zeta(5) triage (r55, zeta5) |
 
-Note: `ns` and `ccf` have no dedicated root session (ns was the opening scan of
-`019ff0a0`; ccf ran as subagents inside it). Restored 2026-08-15 from the
-migration bundle; audit: `SessionIndex` — `019ff0a0` is a union-closed cluster.
+`ns` and `ccf` have no dedicated root session: NS route work happened inside the
+`019ff0a0` prelude, and ccf inside its subagents.

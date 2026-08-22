@@ -1,0 +1,82 @@
+{
+  "experiment": "EXP-033",
+  "protocol_constants": {
+    "master_seed": 20260812,
+    "target_indices": [
+      1,
+      3,
+      11
+    ],
+    "time_limit_s_per_depth": 1500.0,
+    "max_extra_depth": 1,
+    "workers": 8,
+    "schedule_class": "unrestricted",
+    "provenance": "exp031 rerun mismatches (TI-class certified refutations)",
+    "note": "v2 bypasses the untimed PySAT criterion stage (v1 stalled there)"
+  },
+  "results": [
+    {
+      "exp031_instance": "pbb144-01",
+      "label": "12_6_0188",
+      "catalogue_row_number": 31,
+      "w_max": 9,
+      "schedule_class": "unrestricted",
+      "decided": true,
+      "certified_depth": 9,
+      "trace": [
+        {
+          "depth": 9,
+          "status": "OPTIMAL",
+          "wall_s": 465.8799932003021,
+          "valid": true
+        }
+      ],
+      "two_value_survives": true,
+      "two_value_refuted": false
+    },
+    {
+      "exp031_instance": "pbb144-03",
+      "label": "12_6_0190",
+      "catalogue_row_number": 33,
+      "w_max": 9,
+      "schedule_class": "unrestricted",
+      "decided": true,
+      "certified_depth": 9,
+      "trace": [
+        {
+          "depth": 9,
+          "status": "OPTIMAL",
+          "wall_s": 116.54943203926086,
+          "valid": true
+        }
+      ],
+      "two_value_survives": true,
+      "two_value_refuted": false
+    },
+    {
+      "exp031_instance": "pbb144-11",
+      "label": "catalogue-line-41",
+      "catalogue_row_number": 41,
+      "w_max": 9,
+      "schedule_class": "unrestricted",
+      "decided": true,
+      "certified_depth": 9,
+      "trace": [
+        {
+          "depth": 9,
+          "status": "OPTIMAL",
+          "wall_s": 1092.8687210083008,
+          "valid": true
+        }
+      ],
+      "two_value_survives": true,
+      "two_value_refuted": false
+    }
+  ],
+  "n_survive_two_value": 3,
+  "n_refuted_unrestricted": 0,
+  "n_undecided": 0,
+  "verdict": "POSITIVE",
+  "verdict_reason": "two-value law survives unrestricted for all three members; the TI-class failure is a structural cost of translation invariance",
+  "wall_s": 1675.3
+}

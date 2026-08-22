@@ -1,0 +1,964 @@
+{
+  "experiment": "EXP-010",
+  "description": "Stim circuit-level Z-memory baseline for CSS bivariate-bicycle codes",
+  "started_utc": "2026-08-11T21:27:27Z",
+  "completed_utc": "2026-08-11T22:00:53Z",
+  "artifact_commit": "fa77e3333d3ec44c79d8f914dd24c040d1da471b",
+  "artifact_evidence": {
+    "schedule": [
+      "third_party/BivariateBicycleCodes/decoder_setup.py:45-51",
+      "third_party/BivariateBicycleCodes/decoder_setup.py:208-264"
+    ],
+    "direction_mapping": "third_party/BivariateBicycleCodes/decoder_setup.py:181-205",
+    "noise_strengths": "third_party/BivariateBicycleCodes/decoder_setup.py:35-40",
+    "noise_sampling": "third_party/BivariateBicycleCodes/decoder_run.py:84-190",
+    "decoder_parameters": "third_party/BivariateBicycleCodes/decoder_run.py:67-72"
+  },
+  "recovered_schedule": {
+    "depth_7_layers_xz": [
+      [
+        "idle",
+        3
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        2,
+        "idle"
+      ]
+    ],
+    "sX": [
+      "idle",
+      1,
+      4,
+      3,
+      5,
+      0,
+      2
+    ],
+    "sZ": [
+      3,
+      5,
+      0,
+      1,
+      2,
+      4,
+      "idle"
+    ],
+    "timeline_depth_including_final_measure_reset_slice": 8
+  },
+  "noise_model": {
+    "description": "Uniform strength p: DEPOLARIZE2 after CNOT, DEPOLARIZE1 on each scheduled data idle, basis-opposite Pauli error after reset and before measurement",
+    "two_qubit": "DEPOLARIZE2(p) after CX",
+    "idle": "DEPOLARIZE1(p)",
+    "z_reset": "R then X_ERROR(p)",
+    "x_reset": "RX then Z_ERROR(p)",
+    "z_measurement": "X_ERROR(p) then MZ",
+    "x_measurement": "Z_ERROR(p) then MX"
+  },
+  "validation": {
+    "all_executed_gates_passed": true,
+    "per_code": {
+      "[[72,12,6]]": {
+        "rounds": 6,
+        "gate_a_dem_build": {
+          "passed": true,
+          "p": 0.001,
+          "detectors": 432,
+          "observables": 12,
+          "dem_error_instructions": 16164
+        },
+        "gate_b_noiseless": {
+          "passed": true,
+          "p": 0.0,
+          "shots": 10000,
+          "seed": 230807915,
+          "detection_events": 0,
+          "shots_with_detection_events": 0,
+          "logical_observable_flips": 0,
+          "shots_with_logical_failure": 0
+        },
+        "gate_d_qubit_count": {
+          "passed": true,
+          "code_data_qubits": 72,
+          "stim_num_qubits": 144,
+          "expected_num_qubits": 144,
+          "x_ancillas": 36,
+          "z_ancillas": 36
+        }
+      },
+      "[[144,12,12]]": {
+        "rounds": 12,
+        "gate_a_dem_build": {
+          "passed": true,
+          "p": 0.001,
+          "detectors": 1728,
+          "observables": 12,
+          "dem_error_instructions": 67752
+        },
+        "gate_b_noiseless": {
+          "passed": true,
+          "p": 0.0,
+          "shots": 10000,
+          "seed": 230807915,
+          "detection_events": 0,
+          "shots_with_detection_events": 0,
+          "logical_observable_flips": 0,
+          "shots_with_logical_failure": 0
+        },
+        "gate_d_qubit_count": {
+          "passed": true,
+          "code_data_qubits": 144,
+          "stim_num_qubits": 288,
+          "expected_num_qubits": 288,
+          "x_ancillas": 72,
+          "z_ancillas": 72
+        }
+      }
+    },
+    "gate_c_circuit_distance": {
+      "code": "[[72,12,6]]",
+      "executed": true,
+      "passed": true,
+      "method": "stim.Circuit.search_for_undetectable_logical_errors",
+      "graphlike_search_result": "Failed to find any graphlike logical errors.",
+      "search_parameters": {
+        "dont_explore_detection_event_sets_with_size_above": 6,
+        "dont_explore_edges_with_degree_above": 6,
+        "dont_explore_edges_increasing_symptom_degree": true,
+        "canonicalize_circuit_errors": true
+      },
+      "fault_set_size": 6,
+      "is_exact": false,
+      "bound": "heuristic upper bound on circuit distance",
+      "fault_set": [
+        "ExplainedError {\n    dem_error_terms: D37[coords 1,1,0] D38[coords 1,2,0] D54[coords 1,18,0] D75[coords 1,3,1] D96[coords 1,24,1] D102[coords 1,30,1] L6 L7 L8 L9 L10\n    CircuitErrorLocation {\n        flipped_pauli_product: Y36\n        Circuit location stack trace:\n            (after 6 TICKs)\n            at instruction #23 (DEPOLARIZE2) in the circuit\n            at targets #75 to #76 of the instruction\n            resolving to DEPOLARIZE2(0.001) 36 109\n    }\n}",
+        "ExplainedError {\n    dem_error_terms: D37[coords 1,1,0] D46[coords 1,10,0] D52[coords 1,16,0] D75[coords 1,3,1] L0 L2 L3 L6 L10\n    CircuitErrorLocation {\n        flipped_pauli_product: Y4\n        Circuit location stack trace:\n            (after 5 TICKs)\n            at instruction #20 (DEPOLARIZE2) in the circuit\n            at targets #105 to #106 of the instruction\n            resolving to DEPOLARIZE2(0.001) 4 124\n    }\n}",
+        "ExplainedError {\n    dem_error_terms: D38[coords 1,2,0] D65[coords 1,29,0] D68[coords 1,32,0] D96[coords 1,24,1] L4\n    CircuitErrorLocation {\n        flipped_pauli_product: Y96\n        Circuit location stack trace:\n            (after 6 TICKs)\n            at instruction #23 (DEPOLARIZE2) in the circuit\n            at targets #49 to #50 of the instruction\n            resolving to DEPOLARIZE2(0.001) 96 6\n    }\n}",
+        "ExplainedError {\n    dem_error_terms: D46[coords 1,10,0] D60[coords 1,24,0] D65[coords 1,29,0]\n    CircuitErrorLocation {\n        flipped_pauli_product: X64\n        Circuit location stack trace:\n            (after 6 TICKs)\n            at instruction #23 (DEPOLARIZE2) in the circuit\n            at targets #131 to #132 of the instruction\n            resolving to DEPOLARIZE2(0.001) 64 137\n    }\n}",
+        "ExplainedError {\n    dem_error_terms: D51[coords 1,15,0] D52[coords 1,16,0] D68[coords 1,32,0] L10\n    CircuitErrorLocation {\n        flipped_pauli_product: X50\n        Circuit location stack trace:\n            (after 6 TICKs)\n            at instruction #23 (DEPOLARIZE2) in the circuit\n            at targets #103 to #104 of the instruction\n            resolving to DEPOLARIZE2(0.001) 50 123\n    }\n}",
+        "ExplainedError {\n    dem_error_terms: D51[coords 1,15,0] D54[coords 1,18,0] D60[coords 1,24,0] D102[coords 1,30,1] L8 L10 L11\n    CircuitErrorLocation {\n        flipped_pauli_product: Z102*X12\n        Circuit location stack trace:\n            (after 6 TICKs)\n            at instruction #23 (DEPOLARIZE2) in the circuit\n            at targets #61 to #62 of the instruction\n            resolving to DEPOLARIZE2(0.001) 102 12\n    }\n}"
+      ]
+    }
+  },
+  "benchmarks": [
+    {
+      "code": "[[72,12,6]]",
+      "n": 72,
+      "k": 12,
+      "distance": 6,
+      "basis": "Z",
+      "p": 0.001,
+      "rounds": 6,
+      "shots": 20000,
+      "logical_failures": 13,
+      "logical_error_rate_per_shot": 0.00065,
+      "logical_error_rate_per_round": 0.0001083626852710901,
+      "clopper_pearson_95_ci_per_shot": {
+        "lower": 0.0003461415732329871,
+        "upper": 0.0011112633024966876
+      },
+      "clopper_pearson_95_ci_per_round": {
+        "lower": 5.7698584381838414e-05,
+        "upper": 0.0001852963660702481
+      },
+      "bp_converged_shots": 18989,
+      "shots_with_detection_events": 19736,
+      "detector_error_model": {
+        "decompose_errors": false,
+        "detectors": 432,
+        "observables": 12,
+        "error_instructions": 16164,
+        "check_matrix_shape": [
+          432,
+          16164
+        ],
+        "check_matrix_nonzeros": 91116
+      },
+      "decoder": {
+        "implementation": "ldpc.BpOsdDecoder",
+        "bp_method": "ms",
+        "max_iter": 200,
+        "ms_scaling_factor": 0.0,
+        "schedule": "parallel",
+        "omp_thread_count": 1,
+        "osd_method": "osd_0",
+        "osd_order": 0
+      },
+      "worker_count": 20,
+      "worker_omp_threads": 1,
+      "process_start_method": "fork",
+      "stim_seeds": [
+        10082023008079015,
+        10082023008079016,
+        10082023008079017,
+        10082023008079018,
+        10082023008079019,
+        10082023008079020,
+        10082023008079021,
+        10082023008079022,
+        10082023008079023,
+        10082023008079024,
+        10082023008079025,
+        10082023008079026,
+        10082023008079027,
+        10082023008079028,
+        10082023008079029,
+        10082023008079030,
+        10082023008079031,
+        10082023008079032,
+        10082023008079033,
+        10082023008079034
+      ],
+      "worker_shots": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "wall_time_s": 46.894085499923676,
+      "logical_error_rate_report_type": "empirical_point_estimate"
+    },
+    {
+      "code": "[[72,12,6]]",
+      "n": 72,
+      "k": 12,
+      "distance": 6,
+      "basis": "Z",
+      "p": 0.002,
+      "rounds": 6,
+      "shots": 20000,
+      "logical_failures": 281,
+      "logical_error_rate_per_shot": 0.01405,
+      "logical_error_rate_per_round": 0.0023554940605249168,
+      "clopper_pearson_95_ci_per_shot": {
+        "lower": 0.012464769430034958,
+        "upper": 0.01577870457952584
+      },
+      "clopper_pearson_95_ci_per_round": {
+        "lower": 0.002088334109173598,
+        "upper": 0.002647242107562325
+      },
+      "bp_converged_shots": 16863,
+      "shots_with_detection_events": 19997,
+      "detector_error_model": {
+        "decompose_errors": false,
+        "detectors": 432,
+        "observables": 12,
+        "error_instructions": 16164,
+        "check_matrix_shape": [
+          432,
+          16164
+        ],
+        "check_matrix_nonzeros": 91116
+      },
+      "decoder": {
+        "implementation": "ldpc.BpOsdDecoder",
+        "bp_method": "ms",
+        "max_iter": 200,
+        "ms_scaling_factor": 0.0,
+        "schedule": "parallel",
+        "omp_thread_count": 1,
+        "osd_method": "osd_0",
+        "osd_order": 0
+      },
+      "worker_count": 20,
+      "worker_omp_threads": 1,
+      "process_start_method": "fork",
+      "stim_seeds": [
+        10082023008089015,
+        10082023008089016,
+        10082023008089017,
+        10082023008089018,
+        10082023008089019,
+        10082023008089020,
+        10082023008089021,
+        10082023008089022,
+        10082023008089023,
+        10082023008089024,
+        10082023008089025,
+        10082023008089026,
+        10082023008089027,
+        10082023008089028,
+        10082023008089029,
+        10082023008089030,
+        10082023008089031,
+        10082023008089032,
+        10082023008089033,
+        10082023008089034
+      ],
+      "worker_shots": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "wall_time_s": 94.0939634591341,
+      "logical_error_rate_report_type": "empirical_point_estimate"
+    },
+    {
+      "code": "[[72,12,6]]",
+      "n": 72,
+      "k": 12,
+      "distance": 6,
+      "basis": "Z",
+      "p": 0.003,
+      "rounds": 6,
+      "shots": 20000,
+      "logical_failures": 1493,
+      "logical_error_rate_per_shot": 0.07465,
+      "logical_error_rate_per_round": 0.012847298855618024,
+      "clopper_pearson_95_ci_per_shot": {
+        "lower": 0.07104451108309111,
+        "upper": 0.07837970645467664
+      },
+      "clopper_pearson_95_ci_per_round": {
+        "lower": 0.012207288119791437,
+        "upper": 0.013511549917166452
+      },
+      "bp_converged_shots": 13347,
+      "shots_with_detection_events": 20000,
+      "detector_error_model": {
+        "decompose_errors": false,
+        "detectors": 432,
+        "observables": 12,
+        "error_instructions": 16164,
+        "check_matrix_shape": [
+          432,
+          16164
+        ],
+        "check_matrix_nonzeros": 91116
+      },
+      "decoder": {
+        "implementation": "ldpc.BpOsdDecoder",
+        "bp_method": "ms",
+        "max_iter": 200,
+        "ms_scaling_factor": 0.0,
+        "schedule": "parallel",
+        "omp_thread_count": 1,
+        "osd_method": "osd_0",
+        "osd_order": 0
+      },
+      "worker_count": 20,
+      "worker_omp_threads": 1,
+      "process_start_method": "fork",
+      "stim_seeds": [
+        10082023008099015,
+        10082023008099016,
+        10082023008099017,
+        10082023008099018,
+        10082023008099019,
+        10082023008099020,
+        10082023008099021,
+        10082023008099022,
+        10082023008099023,
+        10082023008099024,
+        10082023008099025,
+        10082023008099026,
+        10082023008099027,
+        10082023008099028,
+        10082023008099029,
+        10082023008099030,
+        10082023008099031,
+        10082023008099032,
+        10082023008099033,
+        10082023008099034
+      ],
+      "worker_shots": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "wall_time_s": 157.4434585410636,
+      "logical_error_rate_report_type": "empirical_point_estimate"
+    },
+    {
+      "code": "[[72,12,6]]",
+      "n": 72,
+      "k": 12,
+      "distance": 6,
+      "basis": "Z",
+      "p": 0.005,
+      "rounds": 6,
+      "shots": 20000,
+      "logical_failures": 9112,
+      "logical_error_rate_per_shot": 0.4556,
+      "logical_error_rate_per_round": 0.09637892206055422,
+      "clopper_pearson_95_ci_per_shot": {
+        "lower": 0.4486797313565861,
+        "upper": 0.462533180092659
+      },
+      "clopper_pearson_95_ci_per_round": {
+        "lower": 0.0944745519127313,
+        "upper": 0.09830718357979258
+      },
+      "bp_converged_shots": 4905,
+      "shots_with_detection_events": 20000,
+      "detector_error_model": {
+        "decompose_errors": false,
+        "detectors": 432,
+        "observables": 12,
+        "error_instructions": 16164,
+        "check_matrix_shape": [
+          432,
+          16164
+        ],
+        "check_matrix_nonzeros": 91116
+      },
+      "decoder": {
+        "implementation": "ldpc.BpOsdDecoder",
+        "bp_method": "ms",
+        "max_iter": 200,
+        "ms_scaling_factor": 0.0,
+        "schedule": "parallel",
+        "omp_thread_count": 1,
+        "osd_method": "osd_0",
+        "osd_order": 0
+      },
+      "worker_count": 20,
+      "worker_omp_threads": 1,
+      "process_start_method": "fork",
+      "stim_seeds": [
+        10082023008109015,
+        10082023008109016,
+        10082023008109017,
+        10082023008109018,
+        10082023008109019,
+        10082023008109020,
+        10082023008109021,
+        10082023008109022,
+        10082023008109023,
+        10082023008109024,
+        10082023008109025,
+        10082023008109026,
+        10082023008109027,
+        10082023008109028,
+        10082023008109029,
+        10082023008109030,
+        10082023008109031,
+        10082023008109032,
+        10082023008109033,
+        10082023008109034
+      ],
+      "worker_shots": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "wall_time_s": 443.24542670790106,
+      "logical_error_rate_report_type": "empirical_point_estimate"
+    },
+    {
+      "code": "[[144,12,12]]",
+      "n": 144,
+      "k": 12,
+      "distance": 12,
+      "basis": "Z",
+      "p": 0.001,
+      "rounds": 12,
+      "shots": 2000,
+      "logical_failures": 0,
+      "logical_error_rate_per_shot": 0.0018427397934059364,
+      "logical_error_rate_per_round": 0.0001536914988394138,
+      "clopper_pearson_95_ci_per_shot": {
+        "lower": 0.0,
+        "upper": 0.0018427397934059364
+      },
+      "clopper_pearson_95_ci_per_round": {
+        "lower": 0.0,
+        "upper": 0.0001536914988394138
+      },
+      "bp_converged_shots": 1723,
+      "shots_with_detection_events": 2000,
+      "detector_error_model": {
+        "decompose_errors": false,
+        "detectors": 1728,
+        "observables": 12,
+        "error_instructions": 67752,
+        "check_matrix_shape": [
+          1728,
+          67752
+        ],
+        "check_matrix_nonzeros": 391320
+      },
+      "decoder": {
+        "implementation": "ldpc.BpOsdDecoder",
+        "bp_method": "ms",
+        "max_iter": 200,
+        "ms_scaling_factor": 0.0,
+        "schedule": "parallel",
+        "omp_thread_count": 1,
+        "osd_method": "osd_0",
+        "osd_order": 0
+      },
+      "worker_count": 20,
+      "worker_omp_threads": 1,
+      "process_start_method": "fork",
+      "stim_seeds": [
+        10082023008079015,
+        10082023008079016,
+        10082023008079017,
+        10082023008079018,
+        10082023008079019,
+        10082023008079020,
+        10082023008079021,
+        10082023008079022,
+        10082023008079023,
+        10082023008079024,
+        10082023008079025,
+        10082023008079026,
+        10082023008079027,
+        10082023008079028,
+        10082023008079029,
+        10082023008079030,
+        10082023008079031,
+        10082023008079032,
+        10082023008079033,
+        10082023008079034
+      ],
+      "worker_shots": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "wall_time_s": 86.5655547499191,
+      "logical_error_rate_report_type": "clopper_pearson_95_upper_bound"
+    },
+    {
+      "code": "[[144,12,12]]",
+      "n": 144,
+      "k": 12,
+      "distance": 12,
+      "basis": "Z",
+      "p": 0.002,
+      "rounds": 12,
+      "shots": 2000,
+      "logical_failures": 3,
+      "logical_error_rate_per_shot": 0.0015,
+      "logical_error_rate_per_round": 0.00012508601994695452,
+      "clopper_pearson_95_ci_per_shot": {
+        "lower": 0.00030944294931233306,
+        "upper": 0.004377320104529616
+      },
+      "clopper_pearson_95_ci_per_round": {
+        "lower": 2.5790570472599205e-05,
+        "upper": 0.00036551056974087935
+      },
+      "bp_converged_shots": 1162,
+      "shots_with_detection_events": 2000,
+      "detector_error_model": {
+        "decompose_errors": false,
+        "detectors": 1728,
+        "observables": 12,
+        "error_instructions": 67752,
+        "check_matrix_shape": [
+          1728,
+          67752
+        ],
+        "check_matrix_nonzeros": 391320
+      },
+      "decoder": {
+        "implementation": "ldpc.BpOsdDecoder",
+        "bp_method": "ms",
+        "max_iter": 200,
+        "ms_scaling_factor": 0.0,
+        "schedule": "parallel",
+        "omp_thread_count": 1,
+        "osd_method": "osd_0",
+        "osd_order": 0
+      },
+      "worker_count": 20,
+      "worker_omp_threads": 1,
+      "process_start_method": "fork",
+      "stim_seeds": [
+        10082023008089015,
+        10082023008089016,
+        10082023008089017,
+        10082023008089018,
+        10082023008089019,
+        10082023008089020,
+        10082023008089021,
+        10082023008089022,
+        10082023008089023,
+        10082023008089024,
+        10082023008089025,
+        10082023008089026,
+        10082023008089027,
+        10082023008089028,
+        10082023008089029,
+        10082023008089030,
+        10082023008089031,
+        10082023008089032,
+        10082023008089033,
+        10082023008089034
+      ],
+      "worker_shots": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "wall_time_s": 137.89634479093365,
+      "logical_error_rate_report_type": "empirical_point_estimate"
+    },
+    {
+      "code": "[[144,12,12]]",
+      "n": 144,
+      "k": 12,
+      "distance": 12,
+      "basis": "Z",
+      "p": 0.003,
+      "rounds": 12,
+      "shots": 2000,
+      "logical_failures": 57,
+      "logical_error_rate_per_shot": 0.0285,
+      "logical_error_rate_per_round": 0.002406600329954705,
+      "clopper_pearson_95_ci_per_shot": {
+        "lower": 0.02165551844387129,
+        "upper": 0.036768869858472795
+      },
+      "clopper_pearson_95_ci_per_round": {
+        "lower": 0.0018227900579911266,
+        "upper": 0.0031169559624971204
+      },
+      "bp_converged_shots": 647,
+      "shots_with_detection_events": 2000,
+      "detector_error_model": {
+        "decompose_errors": false,
+        "detectors": 1728,
+        "observables": 12,
+        "error_instructions": 67752,
+        "check_matrix_shape": [
+          1728,
+          67752
+        ],
+        "check_matrix_nonzeros": 391320
+      },
+      "decoder": {
+        "implementation": "ldpc.BpOsdDecoder",
+        "bp_method": "ms",
+        "max_iter": 200,
+        "ms_scaling_factor": 0.0,
+        "schedule": "parallel",
+        "omp_thread_count": 1,
+        "osd_method": "osd_0",
+        "osd_order": 0
+      },
+      "worker_count": 20,
+      "worker_omp_threads": 1,
+      "process_start_method": "fork",
+      "stim_seeds": [
+        10082023008099015,
+        10082023008099016,
+        10082023008099017,
+        10082023008099018,
+        10082023008099019,
+        10082023008099020,
+        10082023008099021,
+        10082023008099022,
+        10082023008099023,
+        10082023008099024,
+        10082023008099025,
+        10082023008099026,
+        10082023008099027,
+        10082023008099028,
+        10082023008099029,
+        10082023008099030,
+        10082023008099031,
+        10082023008099032,
+        10082023008099033,
+        10082023008099034
+      ],
+      "worker_shots": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "wall_time_s": 184.42294470896013,
+      "logical_error_rate_report_type": "empirical_point_estimate"
+    },
+    {
+      "code": "[[144,12,12]]",
+      "n": 144,
+      "k": 12,
+      "distance": 12,
+      "basis": "Z",
+      "p": 0.005,
+      "rounds": 12,
+      "shots": 2000,
+      "logical_failures": 1271,
+      "logical_error_rate_per_shot": 0.6355,
+      "logical_error_rate_per_round": 0.08066288329342854,
+      "clopper_pearson_95_ci_per_shot": {
+        "lower": 0.6139705073280154,
+        "upper": 0.6566314724717589
+      },
+      "clopper_pearson_95_ci_per_round": {
+        "lower": 0.07625583699718456,
+        "upper": 0.08522692386886997
+      },
+      "bp_converged_shots": 43,
+      "shots_with_detection_events": 2000,
+      "detector_error_model": {
+        "decompose_errors": false,
+        "detectors": 1728,
+        "observables": 12,
+        "error_instructions": 67752,
+        "check_matrix_shape": [
+          1728,
+          67752
+        ],
+        "check_matrix_nonzeros": 391320
+      },
+      "decoder": {
+        "implementation": "ldpc.BpOsdDecoder",
+        "bp_method": "ms",
+        "max_iter": 200,
+        "ms_scaling_factor": 0.0,
+        "schedule": "parallel",
+        "omp_thread_count": 1,
+        "osd_method": "osd_0",
+        "osd_order": 0
+      },
+      "worker_count": 20,
+      "worker_omp_threads": 1,
+      "process_start_method": "fork",
+      "stim_seeds": [
+        10082023008109015,
+        10082023008109016,
+        10082023008109017,
+        10082023008109018,
+        10082023008109019,
+        10082023008109020,
+        10082023008109021,
+        10082023008109022,
+        10082023008109023,
+        10082023008109024,
+        10082023008109025,
+        10082023008109026,
+        10082023008109027,
+        10082023008109028,
+        10082023008109029,
+        10082023008109030,
+        10082023008109031,
+        10082023008109032,
+        10082023008109033,
+        10082023008109034
+      ],
+      "worker_shots": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "wall_time_s": 756.3620794580784,
+      "logical_error_rate_report_type": "empirical_point_estimate"
+    }
+  ],
+  "confidence_interval": "two-sided equal-tailed Clopper-Pearson, 95%",
+  "logical_failure_definition": "at least one of the 12 decoded pure-Z logical observables differs from Stim's sampled frame",
+  "software_versions": {
+    "stim": "1.16.0",
+    "sinter": "1.16.0",
+    "pymatching": "2.4.0",
+    "ldpc": "2.4.1",
+    "qldpc": "0.3.3",
+    "numpy": "2.4.6",
+    "scipy": "1.18.0",
+    "networkx": "3.6.1",
+    "python-sat": "1.9.dev13",
+    "ortools": "9.15.6755"
+  },
+  "hardware": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "processor": "arm",
+    "python": "3.13.9",
+    "os_cpu_count": 28,
+    "decoder_processes_requested": 20,
+    "decoder_omp_threads_per_process": 1,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "seeding": {
+    "base_seed": 10082023008079015,
+    "noiseless_validation_seed": 230807915,
+    "point_rule": "Each code was collected in a separate invocation: base + probability_index*10000 + worker_index (code_index was 0 in both invocations). Exact per-worker seeds are stored in each benchmark row."
+  },
+  "collection_runs": [
+    {
+      "code": "[[72,12,6]]",
+      "shots_per_point": 20000,
+      "started_utc": "2026-08-11T21:27:27Z",
+      "completed_utc": "2026-08-11T21:40:45Z",
+      "validation_included": true
+    },
+    {
+      "code": "[[144,12,12]]",
+      "shots_per_point": 2000,
+      "started_utc": "2026-08-11T21:40:54Z",
+      "completed_utc": "2026-08-11T22:00:53Z",
+      "validation_included": false
+    }
+  ],
+  "collection_notes": {
+    "shared_machine": true,
+    "wall_times_isolated": false,
+    "note": "Decoder wall times are not isolated: another 26-worker experiment shared the 28-logical-CPU host during part of collection. Shot counts, failures, and seeded Stim samples are unaffected.",
+    "gross_code_shot_reduction": "The [[144,12,12]] points were reduced to 2000 shots each after a contended 20000-shot attempt was cancelled before producing point-level output."
+  }
+}

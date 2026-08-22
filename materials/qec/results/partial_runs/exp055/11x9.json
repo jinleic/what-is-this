@@ -1,0 +1,157 @@
+{
+ "ceiling_max": 22,
+ "ceiling_max_weight3": 22,
+ "ell": 11,
+ "frontier": {
+  "12": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 22,
+   "dim_I0": 6,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "18": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 11,
+   "dim_I0": 9,
+   "exact_min": true,
+   "route": "ideal"
+  },
+  "22": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 9,
+   "dim_I0": 11,
+   "exact_min": true,
+   "route": "ideal"
+  }
+ },
+ "frontier_weight3": {
+  "12": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 22,
+   "dim_I0": 6,
+   "exact_min": true,
+   "route": "ideal"
+  }
+ },
+ "groups": 10,
+ "idempotence_tested": 4,
+ "idempotence_violations": [],
+ "k_crosschecks": 19,
+ "k_histogram": {
+  "0": 22259622,
+  "12": 17060,
+  "132": 1,
+  "18": 100,
+  "2": 8520,
+  "22": 60,
+  "4": 1255500,
+  "44": 117,
+  "6": 920,
+  "66": 4
+ },
+ "k_max": 132,
+ "k_mismatches": [],
+ "m": 9,
+ "max_weight": 3,
+ "n": 198,
+ "no_group_certificate_pairs": 0,
+ "no_group_certificate_represented": 0,
+ "pairs_total": 23541904,
+ "qualifying_group_pairs": 7,
+ "qualifying_pairs_represented": 17220,
+ "supports": 4852,
+ "wall_s": 12.95
+}

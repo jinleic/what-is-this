@@ -1,0 +1,39 @@
+{
+  "experiment": "EXP-026-BPLSD-feasibility-smoke",
+  "status": "DEVELOPMENT_ONLY_NOT_A_TIMING_OR_ACCURACY_CLAIM",
+  "date": "2026-08-13",
+  "circuit": {
+    "label": "nonCSS-PBB [[144,12,12]] 12_6_0193",
+    "circuit_sha256": "5570c6c7d978edebdd75b95268b3902140a39a9f6691f27c66ba9f435843620b",
+    "dem_sha256": "14a3dfbb9b7b23d4590bc903c079664918064694a1f5a82420f761d2e23a4d55",
+    "detectors": 1728,
+    "fault_columns": 82800,
+    "observables": 12,
+    "depth": 8,
+    "depth_claim": "class-free exact: weight-8 lower bound plus valid witness"
+  },
+  "protocol": {
+    "stim_seed": 20260813,
+    "shots": 10,
+    "decoder": "ldpc 2.4.1 BpLsdDecoder",
+    "bp_method": "minimum_sum",
+    "max_iter": 30,
+    "ms_scaling_factor": 0.625,
+    "omp_thread_count": 1,
+    "lsd_method": "LSD_0",
+    "lsd_order": 0,
+    "bits_per_step_tested": [1, 4, 16]
+  },
+  "results": [
+    {"bits_per_step": 1, "shots": 10, "logical_failures": 1, "syndrome_residuals": 0, "wall_s": 75.90930345800007, "latency_p50_s": 2.0295507080154493, "latency_max_s": 50.637809333973564},
+    {"bits_per_step": 4, "shots": 10, "logical_failures": 1, "syndrome_residuals": 0, "wall_s": 26.937861624988727, "latency_p50_s": 1.0384147710283287, "latency_max_s": 16.063899541040882},
+    {"bits_per_step": 16, "shots": 10, "logical_failures": 1, "syndrome_residuals": 0, "wall_s": 11.120293250016402, "latency_p50_s": 0.6964460624731146, "latency_max_s": 4.491718332981691}
+  ],
+  "environment": {
+    "python": "3.13.14",
+    "ldpc": "2.4.1",
+    "host_load_near_run": [393.78, 387.88, 266.18],
+    "shared_machine": true
+  },
+  "interpretation": "All 30 returned corrections exactly matched their sampled syndromes, establishing API feasibility and avoiding an immediate row-reduction hang. The ten shots were inspected and used to choose protocol-v2 localisation widths; their failures and timings are development data only. Extreme shared load invalidates every latency comparison from this smoke. Held-out accuracy and isolated timing remain required."
+}

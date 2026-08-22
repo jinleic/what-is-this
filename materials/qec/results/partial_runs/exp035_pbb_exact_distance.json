@@ -1,0 +1,42 @@
+{
+  "artifact": "results/partial_runs/pbb_12_6_0193_distance.json",
+  "artifact_route": "partial",
+  "bounds": {
+    "CERTIFIED_EXACT": false,
+    "certified_lower_bound": 7,
+    "certified_upper_bound": 12,
+    "distance": null
+  },
+  "code_id": "12_6_0193",
+  "covered_dual_rank_bitset": 20,
+  "covered_dual_rank_numpy": 20,
+  "experiment": "EXP-035",
+  "missing_representatives": [
+    1
+  ],
+  "representative_statuses": {
+    "0": "UNSAT",
+    "2": "UNSAT",
+    "3": "UNSAT"
+  },
+  "resume_command": "uv run python experiments/exp035_pbb_exact_distance.py run --sectors 1 --seed 2026081934 --time-limit-s 172800 --workers 7 --memory-mb 16384",
+  "solver_wall_time_s": 1499.8502119180012,
+  "translation_orbit_union_rank": 24,
+  "unresolved_representatives": [],
+  "verdict": "PARTIAL 7 <= d <= 12",
+  "witness_support": [
+    9,
+    23,
+    31,
+    45,
+    59,
+    67,
+    73,
+    87,
+    101,
+    109,
+    123,
+    137
+  ],
+  "witness_verified_nontrivial": true
+}

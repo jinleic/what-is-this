@@ -1,0 +1,51 @@
+{
+  "catalogue_index": 342,
+  "counting_margin": 0,
+  "d_z_parent_exact": 8,
+  "detail": {
+    "distinct_orbit_weights": [
+      8
+    ],
+    "orbit_size": 54,
+    "witness_weight": 8
+  },
+  "dim_delta": 2,
+  "k_parent": 4,
+  "k_pbb": 2,
+  "label": "9_6_0183",
+  "n": 108,
+  "orbit_rank": 2,
+  "parent_distance_calls": [
+    {
+      "cnf_sha256": "7af6d8590ce278505f4cc3367d8564f726983d4b422157f8ab4070258f1c34d1",
+      "status": "UNSAT",
+      "wall_time_s": 0.26056066699675284,
+      "weight_cap": 6
+    },
+    {
+      "cnf_sha256": "b56f7d3a1e8fd6100043dcab442b8887cbc6b146b3b82039324a7bb1bc36286b",
+      "status": "UNSAT",
+      "wall_time_s": 0.7932487499783747,
+      "weight_cap": 7
+    },
+    {
+      "cnf_sha256": "da77ace046da10f08d3aeec2c1131648091b14a9d45aff33048003006d21608c",
+      "status": "SAT",
+      "wall_time_s": 0.01574500001152046,
+      "weight_cap": 8
+    },
+    {
+      "cnf_sha256": "b56f7d3a1e8fd6100043dcab442b8887cbc6b146b3b82039324a7bb1bc36286b",
+      "status": "UNSAT",
+      "wall_time_s": 0.7453875000064727,
+      "weight_cap": 7
+    }
+  ],
+  "parent_fingerprint": "a36c82bc5208341b664c70db21e3237efb92adc411161769e2cbf58265e1c2e9",
+  "pbb_fingerprint": "878c97ca1cb0cf2e16440876c7feab12b83939ed04b3aaa413a32d4508f97085",
+  "schema": "exp038-survival-v1",
+  "structurally_dominated": false,
+  "survivor": null,
+  "survivor_weight": null,
+  "utc": "2026-08-17T06:15:25.991947+00:00"
+}

@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,enumitem,hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\artifact}[1]{\path{#1}}
+\title{Exact Finite-Lattice Series and Certified Bounds\\for the Simple-Cubic Ising Model}
+\author{Exact 3D Ising Research Program\\\small Draft accompanying the wave-17 artifact bundle}
+\date{20 August 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+This draft records the current exact-series and rigorous-boundary results for the ferromagnetic nearest-neighbour Ising model on $\mathbb Z^3$.  Finite-lattice enumeration gives the reduced free-energy series through $v^{28}$ at high temperature and through $x^{56}$ at low temperature, with exact rational coefficients, CRT uniqueness certificates, and independent audits.  The coefficients extend the known prefix but do not establish a closed form, D-finiteness, or a thermodynamic-limit solution.  A separate exact self-avoiding-walk/inclusion--exclusion certificate improves the lower endpoint of the rigorous critical-coupling interval to $0.2122159753270231627267517174\ldots$, while the audited upper endpoint remains $0.2527310098586630030260020266\ldots$.  We state the finite combinatorial lemmas, coefficient data, scope of external witnesses, and the unresolved barriers.
+\end{abstract}
+
+\section{Model, notation, and evidence tags}
+Let $K=\beta J$ and $v=\tanh K$.  The simple-cubic zero-field model has reduced free energy $\phi(v)$ at high temperature.  At low temperature write $x=e^{-2K}$ and use the standard reduced free-energy normalization in the exact finite-lattice method.  All displayed coefficients in this draft are exact rational numbers.  A finite coefficient computation is denoted [COMPUTATION]; a proved combinatorial implication is [THEOREM] or [LEMMA]; a source used only as an external check is [EXTERNAL].
+
+The repository never uses the benchmark value $K_c=0.221654626$ to choose a lattice, fit a coefficient, or tune a bound.  It is comparison-only.
+
+\section{High-temperature series through $v^{28}$}
+The finite-lattice method groups connected clusters by their bounding boxes.  If a cluster occupies an $a\times b\times c$ box, every edge crossing one of the $a+b+c-3$ internal cut planes must be paired in the even subgraph.  The resulting lower bound on the number of contributing edges gives the exact order filter
+\[
+ m\ge 2(a+b+c-3).
+\]
+Thus the order-$28$ calculation needs only boxes with $a+b+c\le17$. The exact inventory contains 147 canonical permutation classes, with 24 classes on the first $a+b+c=17$ frontier.
+
+\begin{lemma}[Finite-lattice order filter]
+For a connected even subgraph contained in an $a\times b\times c$ bounding box, the contribution order is at least $2(a+b+c-3)$.  Hence all boxes with $a+b+c\ge18$ are irrelevant through order $28$.
+\end{lemma}
+
+The cap-vector transfer calculation uses exact integer states, profile injections, orbit normalization, and independent CRT uniqueness bounds.  The resulting exact coefficient is
+\begin{equation}
+ [v^{28}]\phi(v)=\frac{2102198327465307}{28},
+ \qquad a_{28}=\frac{525549581866326}{7},
+\end{equation}
+where $a_{28}$ is the associated interaction coefficient in the repository normalization (it is rational, not an integer coefficient). The odd coefficient $[v^{27}]\phi$ vanishes, and every coefficient through $v^{26}$ reproduces the independent predecessor artifact.
+
+This is a finite exact coefficient calculation, not a solution of the 3D model.  The cached Arisue--Fujiwara table is a post-computation witness, not an input or proof of the calculation.
+
+\section{Low-temperature series through $x^{56}$}
+The low-temperature finite-lattice method is organized by a bounding surface.  For an $a\times b\times c$ box the minimal surface order is
+\[
+ |\partial S|\ge 4(a+b+c)-6.
+\]
+Consequently the order-$56$ inventory has $a+b+c\le15$ and exactly 455 ordered, or 102 permutation, classes. This inventory is complete through the achieved order $x^{56}$; by the same surface inequality, the first incomplete inventory is at $x^{58}$.
+
+For every finite box, the excitation polynomial has nonnegative integer coefficients bounded by the total number of spin configurations.  Those coefficient bounds, together with exact CRT reconstruction and per-box uniqueness certificates, prevent an integer coefficient from being inferred from an under-sized modulus.
+
+The exact new coefficients from the audited prefix are:
+\begin{center}
+\begin{tabular}{c|r}
+order & coefficient of the reduced low-temperature series\\ \midrule
+$x^{34}$ & $666750$\\
+$x^{36}$ & $-12520405/6$\\
+$x^{38}$ & $6583341$\\
+$x^{40}$ & $-83409453/4$\\
+$x^{42}$ & $464980286/7$\\
+$x^{44}$ & $-424819905/2$\\
+$x^{46}$ & $682202205$\\
+$x^{48}$ & $-17588511087/8$\\
+$x^{50}$ & $35552605353/5$\\
+$x^{52}$ & $-46131904167/2$\\
+$x^{54}$ & $675410878105/9$\\
+$x^{56}$ & $-979227570369/4$
+\end{tabular}
+\end{center}
+All odd powers through $x^{56}$ vanish.  In the variable $u=x^2$, the stored prefix reaches $u^{28}$.  The $x^{56}$ result was independently rebuilt with a fresh-prime audit: the producer's exact prefix, 18 survivor certificates, CRT digests, and coefficient normalization all agree.
+
+The external Guttmann--Enting PDF is a post-computation witness for the high-order values.  It is not used to select the enumeration or to infer missing coefficients.  Five legacy truncation-unobservable rows remain unresolved and require $x^{60}$ or beyond; a producer was stopped because the shared host was saturated, not because an exact coefficient was obtained.
+
+\section{Finite structure searches and their limits}
+The exact coefficient table was also tested against finite ansatz spaces.  The representative frontier includes algebraic relations, first- and second-order differential-algebraic relations, Euler ODEs, linear ODEs, and Mahler-type relations.  For example, the last frozen high-temperature Euler-ODE row at order two and degree at most six has 21 columns.  Its first previously unobservable holdout is $v^{24}$, where the exact residual is
+\[
+ \frac{499752451221372610239349461368647432702945848808}{11}\neq0.
+\]
+Thus that candidate is refuted by its first informative coefficient.  The residuals at $v^{26}$ and $v^{28}$ are confirmation only.
+
+The correct conclusion is finite: every searched row is either ruled out by an exact minor or holdout, or remains truncation-unobservable within its prescribed budget.  No non-D-finiteness theorem, non-differential-algebraicity theorem, closed form, or relation outside the searched ansatz spaces follows.
+
+\section{Certified critical-coupling interval}
+The current rigorous interval is
+\begin{equation}
+\boxed{
+0.2122159753270231627267517174278577806020
+\le K_c\le
+0.2527310098586630030260020266135701299926.}
+\end{equation}
+The upper endpoint is an audited incumbent from a separate rigorous route; the Peierls head-plus-tail calculation in the present wave does not improve it.
+
+\subsection{Lower endpoint from a finite exact union certificate}
+Let $c_{36}$ be the exact number of length-36 self-avoiding walks on the simple-cubic lattice.  A wave-14 inclusion--exclusion union gives the exact producer-certified lower bound
+\[
+ a_{35}\ge1972465461070186257835,
+\]
+and, with the exact $c_{36}$ used by the repository,
+\[
+ M=c_{36}-a_{35}=2939398390873631540302835.
+\]
+The high-temperature self-avoiding-walk majorant then gives
+\[
+ K_c\ge \operatorname{atanh}(M^{-1/36})
+ =0.2122159753270231627267517174278577806020\ldots,
+\]
+with the displayed decimal rounded downward.
+
+The union is composed of pairwise-disjoint height-slab schedules with varying rises, cut positions, and block counts, together with exact defect families and a coordinate-monotone family.  All pairwise and triple overlaps in the declared schedule family are evaluated as exact integers.  The standalone audit independently re-derives only the declared $\ell\le11$, tail $\le11$ band and the final floor; the full 404-member counts remain producer-certified and are explicitly scoped as such.
+
+A weaker but independently transparent baseline follows from the exact external integer $c_{36}=2941370856334701726560670$ and submultiplicativity:
+\[
+ c_{36q+r}\le c_{36}^q c_r,
+ \qquad
+ K_c\ge \operatorname{atanh}(c_{36}^{-1/36})
+ =0.2122119011661678393310862783954\ldots.
+\]
+The stronger displayed endpoint uses the finite inclusion--exclusion improvement, not a fitted connective constant.
+
+\subsection{Upper-endpoint scope}
+The incumbent upper endpoint $0.2527310098586630030260020266\ldots$ is rigorous in the repository's established bound chain.  New exact finite Simon--Lieb prisms, finite-torus infrared/GKS linear programs, and a contour head-plus-tail calculation were audited, but none crosses the incumbent.  In particular, the infrared route's two-point class has an $O(1/L)$ floor and the tested Peierls tail converges only well above the target endpoint.  These are negative results about named bound families, not an assertion that no sharper inequality exists.
+
+\section{Reproducibility and artifact map}
+The principal exact sources are:
+\begin{itemize}[leftmargin=*]
+\item High temperature: \artifact{proofs/ht_v28.md}, \artifact{experiments/e94_ht_v28.py}, \artifact{results/series/ht_v28.json}, and \artifact{tests/test_ht_v28.py};
+\item Low temperature: \artifact{proofs/lt_x54.md}, \artifact{proofs/lt_x56.md}, \artifact{experiments/e152_lt_x54.py}, \artifact{experiments/e153_lt_x56.py}, \artifact{results/series/lt_x34.json}, and \artifact{tests/test_lt_x56.py};
+\item Structure frontiers: \artifact{proofs/series_frontier3.md}, \artifact{results/series/frontier3.json}, and \artifact{results/series/structure_certificates.json};
+\item Critical lower endpoint: \artifact{proofs/saw_union4.md}, \artifact{experiments/e141_saw_union4.py}, and \artifact{results/bounds/saw_union4.json};
+\item Rigorous interval and upper-endpoint audit: \artifact{proofs/kc_bounds_improved.md}, \artifact{proofs/kc_interval2.md}, \artifact{proofs/mag_floor.md}, and \artifact{results/bounds/}.
+\end{itemize}
+The exact producer scripts and standalone tests are included in the bundle.  Run from the repository root with \path{.venv/bin/python}; do not substitute the benchmark coupling for any exact input.
+
+\section{Conclusion}
+The current evidence is a large, exact, independently audited finite prefix and a rigorous but non-sharp critical interval. It advances the boundary of what can be checked exactly without claiming a thermodynamic-limit solution. The next canonical high-temperature coefficient target is $v^{30}$; the alternate dense FLM route stalls at $v^{24}$. The low-temperature $x^{60}$ profile is in range but needs a calmer host or a new cut-capped route.
+
+\end{document}

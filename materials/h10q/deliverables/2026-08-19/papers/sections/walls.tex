@@ -1,0 +1,245 @@
+\section{Obstruction walls and reciprocity steering}
+\label{sec:walls}
+
+\subsection{The alignment wall}
+
+Put
+\[
+ a=1+2s,\qquad A=1+4a^2,\qquad B=2b,\qquad
+ P=1-ABs^2.
+\]
+For the two original tied branches, the source square classes are
+$D_0=P$ and $D_1=AP$, whereas the target norm fields are
+$E_0=\Q(\sqrt{-2Ab})$ and $E_1=\Q(\sqrt{-2b})$.  The exact value
+identities show that the branch value $u_\tau$ is a norm from
+$\Q(\sqrt{D_\tau})$, while solubility asks that $Au_\tau$ be a norm
+from $E_\tau$.  In both branches the mismatch is measured by
+\[
+ D_\tau\operatorname{disc}(E_\tau)
+ \equiv -2AbP=:\kappa\pmod{\Q^{\times 2}}.
+\]
+% src: THEOREMS.md:728-744
+
+\begin{proposition}[L8: absorption and the parity wall]
+\textbf{PROVED.}  At an odd place $v$, assume the branch value
+$M_\tau$ is nonzero and each of
+$v(\delta_\tau A)$, $v(B)$, and $v(M_\tau)$ is even.  Then the tied
+conic has a $\Q_v$-point.  Consequently an odd obstruction can occur
+only where $A$, $B$, or $M_\tau$ has odd valuation.  On the other hand,
+for every admissible pair, $v_2(P)=0$ and $v_2(\kappa)=1$.
+% src: THEOREMS.md:746-761
+\end{proposition}
+
+\begin{proof}
+After scaling the two conic variables and dividing by the even power
+of $v$ contributed by $M_\tau$, one obtains a nondegenerate binary
+quadratic form with unit coefficients representing a unit.  Over the
+residue field it represents every nonzero class: in the anisotropic
+case it is the norm form of the quadratic extension, whose norm is
+surjective.  Hensel lifting gives the local point.  This is the
+absorption mechanism.
+% src: THEOREMS.md:746-757
+
+Admissibility gives $v_2(ABs^2)\geq 1$, hence $P$ is a $2$-adic unit.
+Thus $-2AbP$ has odd $2$-adic valuation.  The target discriminants
+$-2b$ and $-2Ab$ likewise have valuation one, so the target is always
+a field and can never equal the source quadratic field.
+% src: THEOREMS.md:759-771
+\end{proof}
+
+The two exact-matching devices are therefore empty on the admissible
+locus.  Indeed, matching source and target would require
+$\operatorname{disc}(E_\tau)\equiv D_\tau$, equivalently
+$\kappa\equiv1$ modulo squares; splitting the target would require
+$\operatorname{disc}(E_\tau)$ itself to be a square.  The first
+condition contradicts $v_2(\kappa)=1$, and the second contradicts the
+odd valuation of the target discriminant.  This rules out precisely
+these two identities, not every possible fixed square-class relation:
+for a general class $j$, one would still have to prove that an
+odd-multiplicity value prime inert in $\Q(\sqrt j)$ must occur, and no
+such theorem is asserted here.
+% src: THEOREMS.md:774-797
+
+\textbf{EVIDENCE.}  The frozen rescues do not exhibit a further
+support-controlled identity: all ten have odd-multiplicity wild primes,
+and all measured symbols at those primes are $+1$.  In the recorded
+session sweep, thirteen of 161 admissible pairs succeeded, while every
+observed obstruction set had even cardinality.  These observations are
+alignment statistics only; they do not prove a uniform mechanism or an
+assembly theorem.
+% src: THEOREMS.md:799-808
+
+\subsection{Reciprocity steering}
+
+\begin{lemma}[L9 steering lemma]
+\textbf{PROVED.}  For $x,d\in\Q^\times$, let
+\[
+ T=\{2,\infty\}\cup
+ \{q\text{ odd}:v_q(x)\neq0\text{ or }v_q(d)\neq0\}.
+\]
+Then $\prod_{v\in T}(x,d)_v=1$.  Hence, if all symbols in $T$ except
+possibly one are $+1$, the remaining symbol is also $+1$.
+% src: THEOREMS.md:826-834
+\end{lemma}
+
+\begin{proof}
+Hilbert reciprocity gives the product over all places.  Outside $T$,
+both entries are odd-adic units and their Hilbert symbol is $+1$, so
+only the displayed finite set remains.
+% src: THEOREMS.md:828-834
+\end{proof}
+
+For the tied conic take
+$x=\alpha M_\tau$, $d=\alpha B$, and
+$\alpha=-\delta_\tau A$.  Once every controlled symbol is $+1$, a
+single wild odd-multiplicity prime $q_0$ with $v_{q_0}(d)=0$ is not an
+obstruction: its symbol is forced by the lemma.  Thus the useful
+arithmetic target is not complete smoothness, but a controlled part
+together with one proven prime-power cofactor.
+% src: THEOREMS.md:836-853
+
+\begin{proposition}[L9a: the prime-$b$ symbol]
+\textbf{PROVED.}  Fix an admissible $a$, a cell $(w,z)$, and a branch
+$\tau$.  Let $b=\varepsilon q_1$, where $q_1$ is odd prime, and impose separately
+\[
+ v_{q_1}(\delta_\tau)=v_{q_1}(A)=v_{q_1}(a)
+ =v_{q_1}(z)=v_{q_1}(D_z)=0.
+\]
+Then
+\[
+ (x,d)_{q_1}=\left(\frac{A}{q_1}\right).
+\]
+In particular, the moving place is aligned by choosing a residue class
+with $\left(\frac{A}{q_1}\right)=+1$.
+% src: THEOREMS.md:887-903
+\end{proposition}
+
+\begin{proof}
+Clearing denominators and reducing at $b\equiv0\pmod{q_1}$ gives
+$N_g(0)=-A$.  The hypotheses make this a unit, the denominator
+contributes valuation four, and $v_{q_1}(x)=-4$.  Its unit part is
+$A$ modulo squares, while $v_{q_1}(d)=1$; the Hilbert-symbol parity
+formula gives the stated Legendre symbol.  Quadratic reciprocity makes
+it constant on suitable congruence classes.
+% src: THEOREMS.md:893-903
+\end{proof}
+
+The corrected progression freezes only genuine controlled places.
+With $S_0=\{2\}\cup\supp(\alpha)$, the modulus contains the required
+$2$-adic and $A$-character moduli and the Taylor exponents at places of
+$S_0$; it does not freeze the moving prime.  For a coprime prime
+$q_1$ in the selected class,
+\[
+ \supp(d)=S_0\cup\{q_1\},
+ \qquad \left(\frac{A}{q_1}\right)=+1.
+\]
+Thus every place in the support of $d$ is controlled, and only the
+odd-multiplicity primes of the remaining cofactor of $x$ are wild.
+% src: THEOREMS.md:915-932
+% src: THEOREMS.md:953-957
+
+The need for the corrected modulus is witnessed by the recorded cell
+$(w,u)=(73,5)$.  With $s=0$, $b_0=-29$, $\tau=2/5$, the superseded
+recipe gives
+$N=689120$.  The prime $q=244637629=29+355N$ has the same prescribed
+class, sign, and value of $(A\mid q)$, but at $59$ the symbol changes:
+$v_{59}(x(b_0))=0$ with symbol $+1$, whereas
+$v_{59}(x(-q))=1$ with symbol $-1$.
+% src: THEOREMS.md:942-951
+
+\textbf{CONDITIONAL.}  Turning such a progression into an infinite
+assembly family still requires the named Schinzel--H/Bunyakovsky input
+that simultaneously makes $q_1$ prime and leaves a single prime
+cofactor of $x$.  Reciprocity removes the last symbol once that input
+is supplied; it does not prove the prime-value assertion.
+% src: THEOREMS.md:958-970
+
+\subsection{The generalized coprimality wall}
+
+\begin{theorem}[L12a]
+\textbf{PROVED.}  Let $a$ be admissible and suppose $A=1+4a^2$ is
+prime.  Let $\tau$ be any branch, assume $v_A(z)\leq0$, and suppose every odd-valuation place of an admissible rational
+$b$ is coprime to
+$\{2,z,D_z,a,\delta_\tau,A\}$.  If $b_{\mathrm{sf}}$ denotes the
+squarefree part of its odd part, then
+\[
+ \prod_{p\in\{A\}\cup\operatorname{oddsupp}(b)}(x,d)_p=-1.
+\]
+Thus at least one of these places obstructs every branch.
+% src: THEOREMS.md:1275-1287
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+At each odd place $p$ of $b$, whether $p$ occurs in the numerator or
+denominator, the dominant-term calculation makes $v_p(x)$ even and
+its unit part
+\[
+ u_x\equiv A\pmod{\Q_p^{\times2}}.
+\]
+Therefore $(x,d)_p=(A\mid p)=(p\mid A)$, and multiplication over these
+places gives $(b_{\mathrm{sf}}\mid A)$.  At $A$, the branch-uniform
+parity calculation gives
+$(x,d)_A=-(b_{\mathrm{sf}}\mid A)$: the minus sign is
+$(2\mid A)=-1$, since $A\equiv5\pmod8$, while the branch-dependent unit
+of $\alpha$ is a residue.  The two Jacobi factors cancel and leave
+$-1$.
+% src: THEOREMS.md:1288-1311
+\end{proof}
+
+The only door in this argument is non-coprimality.  If $b$ shares a
+prime $f$ with the cell data, the reduction to the constant term at
+$f$ and hence $u_x\equiv A$ can fail; the telescoping proof then no
+longer applies.  This is a door, not by itself a solubility claim.
+% src: THEOREMS.md:1325-1339
+
+\subsection{Composite squarefree wall}
+
+\begin{theorem}[L13e]
+\textbf{PROVED.}  Let $a$ be admissible, put $A=1+4a^2$, and let $K$
+be the squarefree kernel of its rational square class; this includes
+composite, non-squarefree, and rational $A$.  Assume $v_p(z)\leq0$ for
+every odd $p\mid K$ and that every odd-valuation place of an admissible
+rational $b$ is coprime to $\{2,z,D_z,a,\delta_\tau,A\}$.  Then, for
+every odd $p\mid K$ and every odd $\ell$ occurring to odd order in $b$,
+\[
+ (x,d)_p=\left(\frac{2b}{p}\right),\qquad
+ (x,d)_\ell=\left(\frac{A}{\ell}\right),
+\]
+and
+\[
+ \prod_{p\mid K}(x,d)_p
+ \prod_{\ell\in\operatorname{oddsupp}(b)}(x,d)_\ell
+ =\left(\frac{2}{K}\right)^{1+v_2(b)}.
+\]
+% src: THEOREMS.md:1415-1425
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+At an odd $p\mid K$, the middle term
+$-\delta_\tau a^4Z^4N_g^2$ strictly dominates the other terms of the
+value polynomial, and $v_p(N_g)=0$.  Hence $v_p(x)$ is odd and its unit
+class contains the complementary factor $K/p$.  Every prime divisor of
+$K$ is $1\pmod4$, because it divides a value $n^2+4m^2$ with the data
+coprime.  In the Hilbert-symbol formula, the complementary factors from
+the two entries cancel.  This yields $(2b\mid p)$ independently of the
+branch.
+% src: THEOREMS.md:1415-1422
+
+Multiplying over $p\mid K$ and over the moving primes of $b$ produces
+the cross terms $(M\mid K)(K\mid M)$.  Quadratic reciprocity cancels
+them factor by factor because every divisor of $K$ is $1\pmod4$.
+Moreover $K\equiv A\equiv5\pmod8$, so $(2\mid K)=-1$.  Admissibility is
+exactly $v_2(b)=0$, for which the product is $-1$; at the first
+non-admissible boundary $v_2(b)=1$, the product is $+1$ and this wall
+dissolves.  Even-exponent primes of $A$ do not enter $K$.
+% src: THEOREMS.md:1419-1425
+\end{proof}
+
+It follows that the necessity direction of L11h is a theorem for every
+admissible $a$: escaping the coprime wall requires a prime $p\mid K$
+with $v_p(z)>0$, and every such $p$ is congruent to $1$ modulo $4$ and
+divides the numerator of $z$.  Hence reachability implies that the
+numerator of $z$ has a prime divisor congruent to $1$ modulo $4$.
+This conclusion does not supply the separate prime-value input needed
+for assembly.
+% src: THEOREMS.md:1426-1431

@@ -1,0 +1,568 @@
+{
+  "bench": "manuscript_claim_bench",
+  "generated": "2026-08-18",
+  "paper": {
+    "markdown": "/Users/jinleic/jinleic-workspace/math/qec/reports/paper_pbb_nogo.md",
+    "lines": 571,
+    "pdf_pages": 11,
+    "pdf": "/Users/jinleic/jinleic-workspace/math/qec/reports/paper_pbb_nogo.pdf"
+  },
+  "method": "Single-process audit: every quantitative or theoremoid claim in reports/paper_pbb_nogo.md (Abstract and sections 1-10) extracted and checked against the committed artifact read from disk this session; test names verified to exist by reading tests/ (not executed; no SAT, Stim, or pytest runs). Post-2026-08-18 facts (EXP-040 W4 tightening, EXP-042 residual probe) are benched as separate rows with their paper relation.",
+  "status_definitions": {
+    "VERIFIED": "paper phrase matches the anchor artifact/test values exactly (within stated rounding)",
+    "UNDERWRITTEN": "anchor artifact supports more than the paper states; paper phrase drifts low or is silent",
+    "OVERWRITTEN": "paper states more than the anchor supports; paper phrase drifts high or cites detail the artifacts do not persist",
+    "UNSOURCED": "no artifact or test anchor exists"
+  },
+  "scope_exclusions": {
+    "EXP-043": "Out of scope by parent steering 2026-08-18: results/processed/exp043_sector_entanglement.json does not exist (streamed result lost pre-broker-restart; no ledger row claims it). No row was fabricated for it; a grep for 'ENTANGLEMENT|entangle' over reports/paper_pbb_nogo.{md,tex} returns no matches, so no paper phrase needs its anchor."
+  },
+  "headline_checks": {
+    "w4_d_dem_mech_both_ge_5": {
+      "claim": "certified d_DEM_mech >= 5 on BOTH Gross and PBB [[144,12,12]] circuits; interval [5,12] each (W4 tightening of EXP-029's [4,12])",
+      "anchor": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp040_circuit_distance.json",
+      "anchor_values": {
+        "verdict.certified_d_dem_mech_both_ge_5": true,
+        "verdict.summary": "certified d_DEM_mech >= 5 on both circuits",
+        "circuits.gross.lb.value": 5,
+        "circuits.gross.ub.value": 12,
+        "circuits.pbb.lb.value": 5,
+        "circuits.pbb.ub.value": 12,
+        "ub.method": "EXP-029 certified weight-12 data-logical DEM witness (results/raw/exp029_witnesses.json)"
+      },
+      "anchor_verified": true,
+      "paper_phrase": "section 6(iii): 'our detector-error-model mechanism-distance intervals for the two [[144,12,12]] circuits are tied' (no numbers quoted)",
+      "status": "UNDERWRITTEN",
+      "drift_note": "Paper says only 'tied'; the anchor now certifies the strictly stronger fact lb=5 (certified, exhaustive w=1..4 over perfect-matching and star co-occurrence classes) and ub=12 on BOTH circuits, i.e. identical [5,12] intervals. 'Tied' remains true; the certified numbers should be quoted."
+    },
+    "exp042_small_class_empty": {
+      "claim": "No parent with T < k_P/2 exists among 4,621 exhaustively enumerated connected k>=2 trinomial parents on any lattice with ell*m <= 24 (families 2x2, 2x3, 3x3); Conjecture B-prime residual class vacuous at small lattices",
+      "anchor": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp042_residual_probe.json",
+      "anchor_values": {
+        "verdict": "SMALL_CLASS_EMPTY",
+        "aggregate.distinct_parent_fingerprints": 4621,
+        "aggregate.parents_analyzed": 4621,
+        "aggregate.bucket_T_lt_half_k": 0,
+        "aggregate.bucket_T_eq_half_k": 3908,
+        "aggregate.bucket_T_eq_k": 713,
+        "aggregate.residual_parents": 0,
+        "aggregate.upper_law_breaks": 0,
+        "counterexamples": "empty"
+      },
+      "anchor_verified": true,
+      "paper_phrase": "none (paper predates EXP-042; section 7 Conjecture B' still calls the T<k_P/2 class 'one known: 9a7638586033')",
+      "status": "UNDERWRITTEN",
+      "drift_note": "Paper is silent on the exhaustive small-lattice scan. The artifact's known_exception_context independently confirms the paper's single exception parent 9a7638586033... (lattice 12x6, ell*m=72, k_parent=12, T=4, d_z_parent=6) and records it as outside the ell*m<=24 scan range."
+    }
+  },
+  "rows": [
+    {
+      "id": "B01",
+      "section": "Abstract (boxed) / S3 Theorem H",
+      "claim": "Boxed result 1: d_Q > d_Z(P) implies k_Q <= k_P - T(P) for every perturbation [C D] (parent-level no-go)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "counts {distinct_parents_total:202, parents_T_exact:134}; falsification_gate.all_saturate_bound=true over 7 replayed reversals; 134 per-parent certificates in results/partial_runs/exp039/ each with T_is_exact and family_closed flags",
+      "test_or_verification": "/Users/jinleic/jinleic-workspace/math/qec/tests/test_pbb_nogo.py::test_T_bounds_dim_delta_on_every_stored_row, ::test_falsification_gate_permits_every_certified_reversal, ::test_gate_would_catch_a_violation; re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_nogo.py -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B02",
+      "section": "Abstract (boxed) / S3.2 Theorem I",
+      "claim": "Boxed result 2: if T(P) >= k_P/2 and d_Q > d_Z(P) then k_Q = k_P - T(P) exactly (forced saturation)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/tests/test_pbb_theorems.py",
+      "artifact_values": "proof legs machine-checked: test_lemma2_left_kernel_dimension_all_parents (202 parents), test_lemma3_dressing_ceiling_every_row (368 rows), test_theorem_I_scope_single_exception (exactly one 2T<k_P parent), test_saturation_probe_aggregate (all 496 increases at dim=T)",
+      "test_or_verification": "PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_theorems.py -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B03",
+      "section": "Abstract / S3.2 Lemmas 2-3",
+      "claim": "Dressing space is the image of the left kernel of [A B], whose dimension is k_P/2 on every BB parent, capping dim(delta-bar) <= k_P/2",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/tests/test_pbb_theorems.py",
+      "artifact_values": "test_lemma2_left_kernel_dimension_all_parents recomputes k_P = 2 dim L on all 202 distinct parents; test_lemma3_dressing_ceiling_every_row verifies dim(delta-bar) = k_P - k_Q <= k_P/2 on all 368 catalogue rows",
+      "test_or_verification": "PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_theorems.py::test_lemma2_left_kernel_dimension_all_parents tests/test_pbb_theorems.py::test_lemma3_dressing_ceiling_every_row -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B04",
+      "section": "Abstract / S1 / S9",
+      "claim": "Published catalogue of 368 codes over 202 distinct CSS BB parents, including a non-CSS [[144,12,12]] and a [[360,12,<=24]] candidate (arXiv:2606.02418)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp027_delta_audit.json",
+      "artifact_values": "summary {catalogue_rows: 368, delta_positive_rows: 155}; expected_catalogue_rows=368, expected_delta_positive_rows=155 in protocol block",
+      "test_or_verification": "/Users/jinleic/jinleic-workspace/math/qec/tests/test_exp027_delta_audit.py::test_catalogue_scope_and_rank_relation (asserts 368 rows / 155 delta>0); tests/test_conventions.py::test_bb_reference_parameters ([[360,12,<=24]]); re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_exp027_delta_audit.py -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B05",
+      "section": "Abstract / S5 / S6",
+      "claim": "T computed exactly for 134 of 202 distinct parents; 61 family-closed, including the Gross code (T=12=k_P) and all 11 distinct catalogue [[144,12,12]] parents",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "counts {parents_T_exact:134, parents_certified:134, parents_family_closed:61, distinct_parents_total:202}; Gross cert /Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039/parent_aebb649586c1f5ab*.json: {T:12, T_is_exact:true, family_closed:true, k_parent:12, d_z_parent:12, num_witnesses:3}; 11 parents with n=144,k=12,d_z=12 all T=12 exact family-closed (recomputed over the 134 certs, claims_matrix R3)",
+      "test_or_verification": "tests/test_paper_claims.py::test_summary_table_matches_nogo_artifact, ::test_abstract_counts_agree_with_summary_table, ::test_gross_parent_row_is_the_literal_gross_code; re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_paper_claims.py -q",
+      "status": "VERIFIED",
+      "notes": "the count 11 itself has no dedicated guard (claims_matrix C24) but was recomputed true from the 134 committed certificates"
+    },
+    {
+      "id": "B06",
+      "section": "Abstract / S5 / S10",
+      "claim": "249 of 368 catalogue rows capped a priori (k_Q > k_P - T), 30 rows permitted by Theorem H",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "counts {catalogue_rows_capped_a_priori:249, catalogue_rows_theorem_permits:30}; 249+30=279 classified rows",
+      "test_or_verification": "tests/test_paper_claims.py::test_summary_table_matches_nogo_artifact; re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_paper_claims.py::test_summary_table_matches_nogo_artifact -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B07",
+      "section": "Abstract / S5.2",
+      "claim": "All 7 independently certified distance-increasing perturbations sit on the law exactly (slack 0, hypotheses replay-certified)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "falsification_gate.checks = 7 rows (12_6_0217, phase2_58, phase2_60, phase2_71, phase2_72, phase2_88, 9_6_0183), each {hypothesis_verified:true, permitted_by_theorem_H:true, slack:0}; all_saturate_bound=true",
+      "test_or_verification": "tests/test_paper_claims.py::test_gate_claims_match_artifact; tests/test_pbb_nogo.py::test_falsification_gate_permits_every_certified_reversal; re-run: PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py gate",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B08",
+      "section": "Abstract / S7 layer 2",
+      "claim": "Small-lattice probe: 64 sampled parents across four lattices, 26,898 valid delta>0 perturbations of Z-support <= 4, 496 strict increases, every one on the law, zero above it",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp040_saturation_probe.json",
+      "artifact_values": "small_lattice.aggregate {parents_sampled:64, delta_positive_perturbations:26898, d_Q_gt_d_Z:496, counterexamples:0, commutation_valid_supports:57868, raw_supports:720720}; lattices 4x3/3x4/5x2/6x2, 16 parents each",
+      "test_or_verification": "tests/test_pbb_theorems.py::test_saturation_probe_aggregate (skipif artifact absent; asserts counters 0/496/26898, above==0, below+at==total, per-parent 2T>=k_P); re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_theorems.py::test_saturation_probe_aggregate -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B09",
+      "section": "S1",
+      "claim": "Validity requires symmetry of M = AC^T+BD^T, not its vanishing; this is what the code verifies",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/src/qec_research/symplectic/core.py",
+      "artifact_values": "validate() enforces M + M^T = 0 over two independent GF(2) paths (code read this session per claims_matrix C10)",
+      "test_or_verification": "PYTHONPATH=src .venv/bin/python -m pytest tests/test_conventions.py -q; NOTE: no differential test that symmetric-nonzero M passes while asymmetric M fails (claims_matrix C10 gap)",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B10",
+      "section": "S2 Theorem G(i)",
+      "claim": "Pure-Z centralizer of Q equals ker[A B] (no dependence on [C D])",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/src/qec_research/codes/pbb_survival.py",
+      "artifact_values": "machine check runs on catalogue rows (EXP-038)",
+      "test_or_verification": "tests/test_pbb_survival.py::test_pure_z_centralizer_is_unchanged; re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_survival.py -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B11",
+      "section": "S2 Theorem G(ii)",
+      "claim": "Exact dimension identity k_Q = k_P - dim(delta-bar); sector identities J.1-J.3; holds on all tested catalogue rows",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/notes/theorem_j_xsector.md",
+      "artifact_values": "J.3 machine checks: 299/299 random non-CSS stabilizer codes dim(X-bar)=k exactly; all 4 target rows and all 368 catalogue rows pass the four J.3 identities; consistency checks 4/4 (e.g. phase2_58: 12-8=4=k_Q)",
+      "test_or_verification": "tests/test_pbb_survival.py::test_dimension_identity; re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_survival.py -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B12",
+      "section": "S2 Theorem G(iii)",
+      "claim": "A single unabsorbed minimum-weight parent Z-logical caps d_Q <= d_Z(P)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/src/qec_research/codes/pbb_survival.py",
+      "artifact_values": "EXP-038 machine checks incl. genuine-PBB-logical survivor construction and silence on certified reversals",
+      "test_or_verification": "tests/test_pbb_survival.py::test_survivor_is_a_genuine_pbb_logical, ::test_criterion_is_silent_on_certified_reversals",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B13",
+      "section": "S2 parenthetical",
+      "claim": "Pure-X centralizer shrinks: dimension 40 -> 12 on phase2_58; the 'X-sector unchanged' shortcut is false as an argument",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/notes/theorem_j_xsector.md",
+      "artifact_values": "X-sector table: phase2_58/60 dim Xcen(P)=40, dim Xcen(Q)=12, rho_X=28 >= delta-bar=4; 'HostileReview's 40->12 confirmed'",
+      "test_or_verification": "notes/theorem_j_xsector.md consistency checks 1-7 (all passing); artifacts results/partial_runs/xsector/*.json; re-run: PYTHONPATH=src .venv/bin/python results/partial_runs/xsector/verify_algebra.py",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B14",
+      "section": "S3 Lemma 1 + Corollary 2",
+      "claim": "Delta and S_Z are R-submodules; absorbing one minimum-weight Z-logical absorbs its entire translation orbit",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/src/qec_research/codes/pbb_nogo.py",
+      "artifact_values": "module implementation used by all 134 EXP-039 certificates",
+      "test_or_verification": "tests/test_pbb_nogo.py::test_dressing_space_is_translation_invariant, ::test_stabilizer_space_is_translation_invariant; tests/test_pbb_survival.py::test_translation_orbit_preserves_weight_and_logicality",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B15",
+      "section": "S3.1",
+      "claim": "T is computed exactly by monotone SAT enumeration terminating in certified UNSAT; every SAT witness re-verified through two independent GF(2) paths with weight checked to equal d_Z(P); budget-exhausted T is a certified lower bound",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039/",
+      "artifact_values": "134 parent certificates, each with T_is_exact flag, witness_vectors, cnf_sha256, encoding_version sat-decide-v2 (e.g. parent_aebb649586c1f5ab*.json: T=12, T_is_exact=true); independent re-derivation: /Users/jinleic/jinleic-workspace/math/qec/results/processed/exp041_t_crosscheck.json {num_certificates:134, num_processed:12, num_mismatch:0}",
+      "test_or_verification": "tests/test_pbb_nogo.py::test_module_closure_reproduces_a_small_parent (recomputes T from scratch), ::test_assembled_artifact_is_self_consistent; re-run: PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py run --ns 36",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B16",
+      "section": "S3.1(b)",
+      "claim": "Translation symmetry break is satisfiability-preserving; premise machine-validated with 30 differential SAT/UNSAT agreements",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/tests/test_translation_symmetry_break.py",
+      "artifact_values": "3 test functions covering automorphism action, transitivity, and 2 targets x 3 cases x 5 caps = 30 differential agreements",
+      "test_or_verification": "PYTHONPATH=src .venv/bin/python -m pytest tests/test_translation_symmetry_break.py -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B17",
+      "section": "S3.1(b)",
+      "claim": "Symmetry break buys 6.2x on decisive UNSAT proofs (77.8 s -> 12.5 s on the [[144,12,12]] cap-11 instance)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/notes/failed_routes.md",
+      "artifact_values": "FR-022 record line 776: 'a one-clause symmetry break on the identical instance bought 6.2x (77.8 s -> 12.5 s)'",
+      "test_or_verification": "timing re-measurement; no committed runner (claims_matrix C09 gap): re-run the [[144,12,12]] cap-11 UNSAT plain vs anchored and compare wall clocks",
+      "status": "VERIFIED",
+      "notes": "anchored to the FR-022 ledger record only; unpinned by any test"
+    },
+    {
+      "id": "B18",
+      "section": "S3.2 Lemma 2",
+      "claim": "k_P = 2 dim L for every CSS BB parent; verified on all 202 distinct parents",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/tests/test_pbb_theorems.py",
+      "artifact_values": "test_lemma2_left_kernel_dimension_all_parents recomputes from the E27 catalogue over E39 distinct_parents (202)",
+      "test_or_verification": "PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_theorems.py::test_lemma2_left_kernel_dimension_all_parents -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B19",
+      "section": "S3.2 Lemma 3",
+      "claim": "dim(delta-bar) <= k_P/2 for every valid perturbation; verified on all 368 catalogue rows via dim(delta-bar) = k_P - k_Q",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/tests/test_pbb_theorems.py",
+      "artifact_values": "test_lemma3_dressing_ceiling_every_row over 368 rows; corroborated catalogue-wide by EXP-042 upper_law_breaks=0",
+      "test_or_verification": "PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_theorems.py::test_lemma3_dressing_ceiling_every_row -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B20",
+      "section": "S3.2 Scope / S7 Conj B'",
+      "claim": "T >= k_P/2 on 133 of 134 certified parents; single exception 9a7638586033 (n=144, k_P=12, T=4, not family-closed), increase sandwiched to 4 <= dim(delta-bar) <= 6",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "recomputed over the 134 certs: exactly 1 parent with 2T<k_P, fingerprint 9a7638586033f4c7... (n=144, k_parent=12, T=4, family_closed=false; claims_matrix R16); independently echoed by /Users/jinleic/jinleic-workspace/math/qec/results/processed/exp042_residual_probe.json known_exception_context {T:4, k_parent:12, lattice:'12x6', ell_times_m:72}",
+      "test_or_verification": "tests/test_pbb_theorems.py::test_theorem_I_scope_single_exception (fails on any NEW T<k_P/2 parent); re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_theorems.py -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B21",
+      "section": "S4 table + Corollary 3",
+      "claim": "Gross parent aebb649586c1f5ab (row 12_6_0194, l=12,m=6, A=x^3+y+y^2, B=y^3+x+x^2): k_P=12, d_Z(P)=12, T=12 exact (UNSAT), family closed; entire perturbation family over the Gross code is closed",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039/parent_aebb649586c1f5ab*.json",
+      "artifact_values": "{T:12, T_is_exact:true, family_closed:true, k_parent:12, d_z_parent:12, num_witnesses:3, wall_time_s:180.21}",
+      "test_or_verification": "tests/test_paper_claims.py::test_gross_parent_row_is_the_literal_gross_code (rebuilds catalogue row, fingerprint, certificate); re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_paper_claims.py::test_gross_parent_row_is_the_literal_gross_code -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B22",
+      "section": "S4",
+      "claim": "All 11 distinct [[144,12,12]] parents in the catalogue have T=12=k_P certified by terminating UNSAT, including 4c7eb964a6a3e38c, parent of benchmark 12_6_0193 (220.4 s, 3 witnesses)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039/parent_4c7eb964a6a3e38c*.json",
+      "artifact_values": "{wall_time_s: 220.43, num_witnesses: 3, T: 12}; 11 parents with n=144,k=12,d_z=12 all T=12 exact family-closed (recomputed over the 134 certs, claims_matrix R3)",
+      "test_or_verification": "recompute: for f in results/partial_runs/exp039/parent_*.json select n=144,k_parent=12,d_z_parent=12 -> expect 11, all T=12; re-run: PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py run --ns 144",
+      "status": "VERIFIED",
+      "notes": "no test pins the count 11 or the 220.4 s (claims_matrix C24/C25 gaps); both recomputed true from committed certificates"
+    },
+    {
+      "id": "B23",
+      "section": "S4 / S8",
+      "claim": "12_6_0193 is genuinely non-CSS: not CSS after row operations, any qubit permutation, or any local Hadamard; 19-parity-mask plus one-hot certificate is CP-SAT infeasible",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/certificates/exp034_target_full_lc_decision.json",
+      "artifact_values": "num_parity_rows=19 and num_one_hot_parity_rows=1 in both certificate blocks; solver_status INFEASIBLE, status INEQUIVALENT, 'CP-SAT complete INFEASIBLE proof'",
+      "test_or_verification": "tests/test_exp034_target_equivalence.py::test_target_rowspace_is_exactly_indivisible_under_row_ops_permutations_and_lc, ::test_target_local_h_certificate_and_full_lc_status_are_honest, ::test_target_full_lc_linear_certificate_is_machine_checked; re-run: PYTHONPATH=src .venv/bin/python experiments/exp034_target_equivalence.py --solve-full-lc",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B24",
+      "section": "S4",
+      "claim": "Exact d=12 for 12_6_0193, two-sided: weights <=5 excluded by exact meet-in-the-middle, weight 6 by complete classification (72/72 zero-syndrome vectors coincide with stored pure-Z checks), weight-12 witness verified through two independent GF(2) paths",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/certificates/pbb_12_6_0193_distance.json",
+      "artifact_values": "bounds {CERTIFIED_EXACT:true, certified_lower_bound:12, certified_upper_bound:12}; small_weight_exclusion.checked_through_weight=5; weight_six_classification {complete:true, distinct_weight_six_zero_syndrome_vectors:72, stored_pure_z_weight6_rows:72, matches:true, no_weight6_logical:true}; witness block with independent bitset+numpy verification; corroborated by /Users/jinleic/jinleic-workspace/math/qec/results/processed/exp035_pbb_exact_distance.json verdict 'EXACT d=12'",
+      "test_or_verification": "tests/test_exp035_pbb_exact_distance.py::test_committed_certificate_claims_are_machine_checked_if_present, ::test_small_weight_exact_enumeration_certifies_lower_bound_six, ::test_weight_six_classification_target_and_counterexample_control, ::test_weight_twelve_witness_is_independently_nontrivial; re-run: PYTHONPATH=src .venv/bin/python experiments/exp035_pbb_exact_distance.py assemble",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B25",
+      "section": "S4",
+      "claim": "Weights 7-11 excluded by four CaDiCaL UNSAT sector proofs taking 502/674/422/576 s",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/pbb_12_6_0193_distance_sectors/",
+      "artifact_values": "sector_00..03_pysat.json each record solver.status=UNSAT and solver.wall_time_s = 501.981 / 673.753 / 421.973 / 575.896 (paper: 502/674/422/576 to rounding); sum = 2173.60 == results/processed/exp035_pbb_exact_distance.json solver_wall_time_s 2173.603 (verified this session)",
+      "test_or_verification": "statuses guarded via B24 tests (tests/test_exp035_pbb_exact_distance.py); re-run: PYTHONPATH=src .venv/bin/python experiments/exp035_pbb_exact_distance.py run-pysat; cross-check: .venv/bin/python -c \"import json,glob;print(sum(json.load(open(f))['solver']['wall_time_s'] for f in sorted(glob.glob('results/partial_runs/pbb_12_6_0193_distance_sectors/sector_*_pysat.json'))))\" -> 2173.6",
+      "status": "VERIFIED",
+      "notes": "corrected 2026-08-18 per parent steering: per-sector wall times ARE persisted one level deeper than the processed JSON (sector_*_pysat.json); earlier OVERWRITTEN verdict retracted"
+    },
+    {
+      "id": "B26",
+      "section": "S5 totals table",
+      "claim": "202 distinct parents; 134 with exact T; 61 family-closed; 249 of 368 rows capped a priori; 30 rows permitted",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "counts {distinct_parents_total:202, parents_T_exact:134, parents_family_closed:61, catalogue_rows_capped_a_priori:249, catalogue_rows_theorem_permits:30} (read this session)",
+      "test_or_verification": "tests/test_paper_claims.py::test_summary_table_matches_nogo_artifact, ::test_abstract_counts_agree_with_summary_table; re-run: PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py gate",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B27",
+      "section": "S5 per-length table",
+      "claim": "Per-n rows (36:3/3/3/47/47; 72:8/8/5/34/32; 108:68/68/28/107/80; 144:38/38/21/66/65; <=144 subtotal 117/117/57/254/224; 180:46 parents,16/46,4,64,24; 360:39 parents,1/39,0,50,1)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "by_n {36:3/3 closed 3, 72:8/8 closed 5, 108:68/68 closed 28, 144:38/38 closed 21, 180:16/46 closed 4, 360:1/39 closed 0}; capped-by-n {36:47, 72:32, 108:80, 144:65, 180:24, 360:1}, subtotal n<=144 = 224 (claims_matrix R5 recomputation)",
+      "test_or_verification": "tests/test_paper_claims.py::test_per_length_table_matches_artifact (subtotal row and per-n T_exact/totals asserted; capped column recomputed but not asserted - claims_matrix C13 gap); re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_paper_claims.py::test_per_length_table_matches_artifact -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B28",
+      "section": "S5 prose",
+      "claim": "The 68 uncertified parents are exactly the n=180 and n=360 ones; the slowest completed parent took 16,493 s; figures are monotone lower bounds",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "by_n: 180 has 46 parents with 16 certified, 360 has 39 with 1 certified -> 30+38=68 uncertified; max wall_time_s over the 134 certificates = 16492.95 s (fingerprint 330b4a23408b048a..., claims_matrix R4)",
+      "test_or_verification": "recompute max wall_time_s over results/partial_runs/exp039/parent_*.json; no test pins 16,493 (claims_matrix C15 gap)",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B29",
+      "section": "S5.1",
+      "claim": "Cross-tab of 134 certified parents against their 279 catalogue rows: only 4 ratios k_Q/k_P and 3 ratios T/k_P occur; cells 109/67/1, 11/10, 25/13, 13/30; every row keeping >1/2 of k capped a priori; only the 30 k-halving T/k_P=1/2 rows permitted",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "rows_capped_a_priori + rows_theorem_permits (249+30=279); cells {(1,1):109,(1,1/2):67,(1,1/3):1,(5/6,1):11,(5/6,1/2):10,(3/4,1):25,(3/4,1/2):13,(1/2,1):13,(1/2,1/2):30} (claims_matrix R5 recomputation)",
+      "test_or_verification": "tests/test_paper_claims.py::test_confinement_table_matches_recomputation; re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_paper_claims.py::test_confinement_table_matches_recomputation -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B30",
+      "section": "S5.2",
+      "claim": "Saturation table: 7 reversals with per-row (n,k_P,k_Q,d_Z,certified d_Q>,T,ceiling,slack=0), all hypotheses independently established by replayed UNSAT; 7/7 checked, 7/7 non-vacuous, 0 violations; gate executable and locked",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "falsification_gate.checks: 12_6_0217 (n144, k8/4, dz8, d>9, T4), phase2_58 (n72, 8/4, dz4, d>4, T4), phase2_60 (n72, 8/4, dz4, d>4, T4), phase2_71 (n108, 12/6, dz4, d>5, T6), phase2_72 (n108, 12/6, dz4, d>5, T6), phase2_88 (n108, 4/2, dz4, d>5, T2), 9_6_0183 (n108, 4/2, dz8, d>9, T2); all slack=0, hypothesis_verified=true; hypothesis lower bounds in results/partial_runs/exp037/row_*.json",
+      "test_or_verification": "tests/test_paper_claims.py::test_gate_claims_match_artifact; tests/test_pbb_nogo.py::test_gate_would_catch_a_violation; re-run: PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py gate (exits nonzero on any violation)",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B31",
+      "section": "S6",
+      "claim": "On five of the seven certified reversals the trade is mildly profitable vs the parent in kd^2/n (e.g. phase2_71: parent 12*4^2/108=1.78 vs PBB 6*6^2/108=2.00); max gain <= 1.13x",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp036_envelope_check.json",
+      "artifact_values": "recomputed (claims_matrix R7): profitable = phase2_58/60/71/72/88 at 1.125x; 12_6_0217 and 9_6_0183 at 0.781x; max gain 1.125x (paper '<= 1.13x'); d_pbb_upper - d_Z(P) = +2 for all 7",
+      "test_or_verification": "derive kd2_parent = k_P*d_Z^2/n and kd2_pbb from the exp039 gate checks; no dedicated test (claims_matrix C32/C36 gaps)",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B32",
+      "section": "S6",
+      "claim": "All 7 reversals dominated at equal n by CSS BB codes with k_C >= k_Q and certified exact d_C >= the PBB's upper bound, against 162 certified-exact CSS candidates; dominator table kd^2/n (2.78/1.85/2.00/0.67 vs 12.00/7.41/6.00), factors 4.3x/4.0x/3.7x/11.1x/3.0x",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp036_envelope_check.json",
+      "artifact_values": "all_reversals_css_dominated_at_equal_n=true; num_exact_css_candidates=162; num_reversals_checked=7; schema exp036-envelope-check-v2; dominators [[144,12,12]] k12 d12, [[108,8,10]] k8 d10, [[72,12,6]] k12 d6; ratios span 3.00x-11.11x (claims_matrix R6)",
+      "test_or_verification": "tests/test_paper_claims.py::test_envelope_table_matches_envelope_artifact; tests/test_exp036_delta_closure.py::test_envelope_check_artifact_is_machine_rederivable, ::test_envelope_check_covers_both_reversal_sources; re-run: PYTHONPATH=src .venv/bin/python experiments/exp036_envelope_check.py",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B33",
+      "section": "S6 X sector",
+      "claim": "d_X(P)=d_Z(P) for every BB parent (J.0); Xcen(Q)=Xcen(P) intersect ker[C D] with rho_X >= dim(delta-bar) (J.1); d_X(Q) >= d_X(P) open with zero violations in 3.16M valid perturbations across 12 lattices and on all 368 catalogue rows",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/notes/theorem_j_xsector.md",
+      "artifact_values": "J.0 proof; J.1 identity; hunt table: hunt1 2,428 valid + hunt2 1,029,827 + hunt3 2,131,004 + catalogue 368 = 3,163,627 valid perturbations (~3.16M), violations 0 in every row; 255 catalogue rows with demotion, 0 violations; underlying artifacts results/partial_runs/xsector/hunt*.json, catalogue_scan.json",
+      "test_or_verification": "PYTHONPATH=src .venv/bin/python results/partial_runs/xsector/verify_algebra.py; sums recomputed from the J-note hunt table this session",
+      "status": "VERIFIED",
+      "notes": "the '12 lattices' count derives from the hunt artifacts' lattice lists (ell*m 4-12 across hunts plus catalogue lattices); the 3.16M total is exact from the note's table"
+    },
+    {
+      "id": "B34",
+      "section": "S6 Not settled (i)",
+      "claim": "60 catalogue rows pending and 35 flagged as candidate escapees, all pool-coverage artifacts; both counts drift monotonically with the running sweep",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp037_envelope_classification.json",
+      "artifact_values": "LIVE artifact counts (read 2026-08-18): {PENDING: 60, CANDIDATE_ESCAPEE: 30, DOMINATED: 278}; at the 2026-08-17 claims-matrix read they were {60, 35, 273}",
+      "test_or_verification": "re-run: PYTHONPATH=src .venv/bin/python experiments/exp037_envelope_classification.py assemble && .venv/bin/python -c \"import json;print(json.load(open('results/partial_runs/exp037_envelope_classification.json'))['counts'])\"",
+      "status": "OVERWRITTEN",
+      "notes": "Drift found: paper says 35 escapees, live artifact says 30 (5 more rows reclassified DOMINATED, 273->278, since the paper revision; PENDING 60 still matches; 278+30+60=368 consistent). The paper itself warns the counts drift; as of this bench the quoted 35 overstates the flagged count. No test pins either number (claims_matrix C37/C38 gaps)."
+    },
+    {
+      "id": "B35",
+      "section": "S6 Not settled (iii)",
+      "claim": "DEM mechanism-distance intervals for the two [[144,12,12]] circuits are tied; PBB schedule ~6-17x slower (p50 10.3x, p95 16.6x, p99 6.3x); no circuit-level result has favoured the PBB candidate",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp040_circuit_distance.json",
+      "artifact_values": "both circuits lb=5 certified / ub=12 -> identical [5,12] intervals ('tied' true, stronger than quoted); latency from /Users/jinleic/jinleic-workspace/math/qec/reports/technical_report.md SS5-6: decode p50 118.2->1220.2 ms (10.3x), p95 579.2->9614.2 ms (16.6x), p99 2159.0->13629.1 ms (6.3x), 'observed 6-17x gap'",
+      "test_or_verification": "headlines: .venv/bin/python -c \"import json;d=json.load(open('results/processed/exp040_circuit_distance.json'));print(d['verdict'])\"; latency: experiments EXP-016/029 records in reports/technical_report.md SS5-6; no paper-level test (claims_matrix C39 gap)",
+      "status": "UNDERWRITTEN",
+      "notes": "The 'tied' phrase is true but numerically under-written: the anchor certifies d_DEM_mech >= 5 (exhaustive w=1..4 over perfect-matching and star classes) and <= 12 (EXP-029 weight-12 witnesses) on BOTH circuits. Latency numbers fully verified."
+    },
+    {
+      "id": "B36",
+      "section": "S6 Honest limitations",
+      "claim": "One catalogue heuristic bound was >= 2.5x loose (d <= 40 advertised, <= 16 re-verified)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp036/row_0001.json",
+      "artifact_values": "catalogue_d_untrusted=40, U_b=16, U_p=16 (40/16 = 2.5x), label bliss_68d93d677268a3fd",
+      "test_or_verification": "re-run: PYTHONPATH=src .venv/bin/python experiments/exp036_delta_closure.py run --indexes 1; no test (claims_matrix C41 gap)",
+      "status": "VERIFIED",
+      "notes": "known artifact conflict: exp037_envelope_classification.json currently lists pbb_upper_bound=30 for the same row; reconcile before quoting either (claims_matrix finding 2)"
+    },
+    {
+      "id": "B37",
+      "section": "S7 layer 1",
+      "claim": "On all 279 classified rows dim(delta-bar) <= T with zero exceptions, spread only non-positive, down to -24",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "recomputed (claims_matrix R17): spread (k_P - k_Q) - T over the 279 rows has min=-24, max=0, positive count=0; corroborated catalogue-wide by EXP-042 upper_law_breaks=0",
+      "test_or_verification": "recompute from rows_capped_a_priori + rows_theorem_permits; no test pins the aggregate (claims_matrix C55 gap)",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B38",
+      "section": "S7 layer 2",
+      "claim": "Probe detail: dim(delta-bar) < T on 23,634, = T on 3,264, > T on zero; all 496 strict increases at = T with actual containment M-bar = Delta-bar verified; every probed parent has T in {k_P/2, k_P}",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp040_saturation_probe.json",
+      "artifact_values": "per-parent counters recomputed (claims_matrix R18): less_than_T=23634, equal_T=3264, greater_than_T=0, sum=26898; certified_reversals block: 7 rows each dim_Delta_bar == T == k_drop == catalogue k_Q with equality/containment flags true",
+      "test_or_verification": "tests/test_pbb_theorems.py::test_saturation_probe_aggregate; re-run: PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_theorems.py::test_saturation_probe_aggregate -q",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B39",
+      "section": "S7 layer 3",
+      "claim": "All 7 catalogue reversals at dim(delta-bar) = T = k_P/2 with M-bar = Delta-bar",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp040_saturation_probe.json",
+      "artifact_values": "certified_reversals: 7 rows, dim_Delta_bar == T == k_drop in {4,4,6,6,2,2,4}, containment flags true (claims_matrix R15); exp039 gate: T = k_P/2 for all 7 (4=8/2, 4=8/2, 6=12/2, 2=4/2)",
+      "test_or_verification": "tests/test_pbb_theorems.py::test_saturation_probe_aggregate (reversal block); tests/test_paper_claims.py::test_gate_claims_match_artifact",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B40",
+      "section": "S7 Conj C",
+      "claim": "k-halving confinement: every one of the 279 classified rows with k_Q/k_P in {1, 3/4, 5/6} is capped a priori, zero exceptions; residual on T<k_P/2 and the 68 uncertified parents",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "cross-tab cells (B29): all rows with k_Q/k_P in {1,3/4,5/6} capped (109+67+1+11+10+25+13+13 = 249), only (1/2,1/2) permitted (30); post-paper corroboration: EXP-042 residual_parents=0 at ell*m<=24",
+      "test_or_verification": "tests/test_paper_claims.py::test_confinement_table_matches_recomputation; tests/test_pbb_theorems.py::test_theorem_I_scope_single_exception",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B41",
+      "section": "S7 Conj D",
+      "claim": "Certified reversals gain exactly +2 in distance (uniform gap d_Q - d_Z(P) = 2; d_Z even throughout)",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "gate checks: d_pbb_certified_gt - d_z_parent = {9-8, 4-4+2, 5-4+1... } -> d_pbb_upper - d_Z = +2 for all 7 (12_6_0217: 10-8; phase2_58/60: 6-4; phase2_71/72: 6-4; phase2_88: 6-4; 9_6_0183: 10-8) recomputed true (claims_matrix R7); probe stores only increase decisions, as the paper says",
+      "test_or_verification": "recompute d_pbb_upper - d_z_parent over the 7 gate checks; no test asserts the +2 gap (claims_matrix C21 gap)",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B42",
+      "section": "S8",
+      "claim": "Theorem G machine-checked in tests/test_pbb_survival.py (15 checks); Theorem H in tests/test_pbb_nogo.py (17 checks); Theorem I legs in tests/test_pbb_theorems.py; full suite 159 passing tests, 1 skipped",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/tests/",
+      "artifact_values": "per-file collected counts 15 / 17 / 4 measured by pytest --collect-only at the 2026-08-17 claims-matrix audit (R9); suite collected = 160 = 159 passing + 1 skipped; def-test floor across tests/ is now 144 <= 159 (one-sided guard holds)",
+      "test_or_verification": "re-run: PYTHONPATH=src .venv/bin/python -m pytest tests -q; per-file: PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_survival.py tests/test_pbb_nogo.py tests/test_pbb_theorems.py -q; guard: tests/test_paper_claims.py::test_no_stale_test_count",
+      "status": "VERIFIED",
+      "notes": "counts taken from the claims-matrix collect-only audit; the suite itself was not executed in this bench (contract)"
+    },
+    {
+      "id": "B43",
+      "section": "S8 provenance table",
+      "claim": "EXP-036 delta closure: 5 certified reversals, 41 dominations of 87; EXP-027 strict-provenance delta>0 audit: 155 rows",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp036_delta_closure.json",
+      "artifact_values": "verdict_counts {CERTIFIED_REVERSAL:5, DOMINATION_PROVED:41, UNDECIDED_BUDGET:41} over 87 items (read this session); /Users/jinleic/jinleic-workspace/math/qec/results/processed/exp027_delta_audit.json summary {catalogue_rows:368, delta_positive_rows:155}",
+      "test_or_verification": "re-run: PYTHONPATH=src .venv/bin/python experiments/exp036_delta_closure.py assemble; tests/test_exp027_delta_audit.py::test_catalogue_scope_and_rank_relation",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B44",
+      "section": "S8",
+      "claim": "Every SAT decision records its canonical CNF SHA-256 and encoding version; verdicts re-derived from rebuilt matrices on replay; tampered stamps rejected; forgery regression tests exist",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039/parent_aebb649586c1f5ab*.json",
+      "artifact_values": "per-call blocks carry cnf_sha256, encoding_version 'sat-decide-v2', solver backend pysat cadical195; same schema across exp035-exp039 records",
+      "test_or_verification": "tests/test_exp036_delta_closure.py::test_forged_unsat_cannot_survive_replay; tests/test_exp035_pbb_exact_distance.py::test_record_proof_complete_accepts_only_frozen_backend_status_pairs; re-run: PYTHONPATH=src .venv/bin/python experiments/exp036_delta_closure.py verify",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B45",
+      "section": "S8 environment line",
+      "claim": "macOS Darwin 25.5.0 arm64, Apple M3 Ultra, 28 logical CPUs, 96 GiB; Python 3.13.14 in qec-codesign/.venv; numpy 2.5.2, scipy 1.18.0, stim 1.16.0, ... CaDiCaL 1.9.5 via PySAT",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp040_circuit_distance.json",
+      "artifact_values": "live check 2026-08-18: uname = Darwin 25.5.0 (matches); math/qec/.venv AND qec-codesign/.venv both report Python 3.13.9, numpy 2.4.6; exp040 env block: {python:'3.13.9', numpy:'2.4.6', stim:'1.16.0', ncpu:28, platform:'macOS-26.5.2-arm64'}; exp039 certs: solver 'PySAT cadical195', pysat_version '1.9.dev13'",
+      "test_or_verification": "re-run: uname -sr; .venv/bin/python -V; .venv/bin/python -c 'import numpy;print(numpy.__version__)'; no test (claims_matrix C49 gap)",
+      "status": "OVERWRITTEN",
+      "notes": "Version drift: paper quotes Python 3.13.14 / numpy 2.5.2 but both live venvs and the newest artifact env blocks record Python 3.13.9 / numpy 2.4.6. OS family, CPU count, stim 1.16.0, and CaDiCaL 1.9.5 match. Update the env line or record which experiments ran on which interpreter."
+    },
+    {
+      "id": "B46",
+      "section": "S8 reproduce block",
+      "claim": "Headline reproduction commands: exp039_nogo_module.py run --ns 144; exp039_nogo_module.py gate; pytest tests/test_pbb_nogo.py tests/test_pbb_survival.py",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/experiments/exp039_nogo_module.py",
+      "artifact_values": "script exists with run/gate subcommands (verified on disk); tests exist",
+      "test_or_verification": "PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py gate",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "B47",
+      "section": "S10 conclusion",
+      "claim": "Restates: closes 61 of 202 parents outright incl. Gross; caps 249 of 368 rows with no search; confines increase to k-halving class; slack exactly zero on all 7 certified increases",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp039_nogo_module.json",
+      "artifact_values": "inherits B05/B06/B29/B30/B39 anchors (counts 61/202, 249/368, 30 permitted, 7x slack 0)",
+      "test_or_verification": "inherited: tests/test_paper_claims.py::test_summary_table_matches_nogo_artifact, ::test_confinement_table_matches_recomputation, ::test_gate_claims_match_artifact, ::test_gross_parent_row_is_the_literal_gross_code",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "P1",
+      "section": "post-paper fact (headline 1); paper phrase at S6(iii)",
+      "claim": "W4 certified: d_DEM_mech >= 5 on BOTH the Gross and the PBB [[144,12,12]] circuits; ub 12 from EXP-029 weight-12 witnesses; interval [5,12] on each",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp040_circuit_distance.json",
+      "artifact_values": "verdict.certified_d_dem_mech_both_ge_5 = true; circuits.gross {lb:5 certified (w1/w2 hash, w3 MITM, w4 matching-class + star-class exhaustive), ub:12}; circuits.pbb {lb:5 certified, ub:12}; wall_s 16070.9; upgrades EXP-029 baseline 4 <= d_DEM_mech <= 12 (results/processed/exp029_circuit_distance.json, read this session)",
+      "test_or_verification": "cd /Users/jinleic/jinleic-workspace/math/qec && .venv/bin/python -c \"import json; d=json.load(open('results/processed/exp040_circuit_distance.json')); print(d['verdict'], d['circuits']['gross']['lb']['value'], d['circuits']['gross']['ub']['value'], d['circuits']['pbb']['lb']['value'], d['circuits']['pbb']['ub']['value'])\" -> {'certified_d_dem_mech_both_ge_5': True, ...} 5 12 5 12",
+      "status": "UNDERWRITTEN",
+      "notes": "paper (S6 iii) says only 'intervals ... are tied'; anchor certifies the stronger [5,12]-on-both statement. No drift in the 'tied' claim itself - both intervals identical."
+    },
+    {
+      "id": "P2",
+      "section": "post-paper fact (headline 2); paper phrase at S7 Conj B'",
+      "claim": "EXP-042: T < k_P/2 parents ABSENT among 4,621 exhaustively enumerated connected k>=2 trinomial parents for all ell*m <= 24 (verdict SMALL_CLASS_EMPTY); 0 upper-law breaks; 0 residual parents",
+      "evidence_artifact": "/Users/jinleic/jinleic-workspace/math/qec/results/processed/exp042_residual_probe.json",
+      "artifact_values": "verdict 'SMALL_CLASS_EMPTY'; aggregate {distinct_parent_fingerprints:4621, parents_analyzed:4621, bucket_T_lt_half_k:0, bucket_T_eq_half_k:3908, bucket_T_eq_k:713, residual_parents:0, residual_delta_positive_perturbations:0, upper_law_breaks:0, b_prime_breaks:0, shapes:37}; counterexamples empty; catalogue l*m<=24 parent pairs all recovered",
+      "test_or_verification": "cd /Users/jinleic/jinleic-workspace/math/qec && .venv/bin/python -c \"import json; e=json.load(open('results/processed/exp042_residual_probe.json')); print(e['verdict']); print(e['aggregate'])\" -> SMALL_CLASS_EMPTY {...4621...bucket_T_lt_half_k:0...}",
+      "status": "UNDERWRITTEN",
+      "notes": "paper predates EXP-042 and remains silent; its Conjecture B' residual class is now known empty at ell*m<=24 (and the exception parent 9a7638586033 is confirmed outside that scan range). A revision should cite this artifact."
+    }
+  ],
+  "claim_echo_audit": {
+    "method": "grep-level pass over reports/paper_pbb_nogo.md (571 lines) for each required token; every occurrence mapped to a JSON/artifact value",
+    "tokens": {
+      "5,12": { "occurrences": 0, "defense": "none to defend; the W4 interval [5,12] is a post-paper fact anchored at results/processed/exp040_circuit_distance.json (row P1)" },
+      "[5,12]": { "occurrences": 0, "defense": "none to defend; see row P1" },
+      "4,621": { "occurrences": 0, "defense": "none to defend (also checked LaTeX form '4{,}621': 0); EXP-042 is post-paper, anchored at results/processed/exp042_residual_probe.json (row P2)" },
+      "61": {
+        "occurrences": 4,
+        "lines": [40, 383, 505, 562],
+        "defense": "all four are the family-closed parent count = exp039_nogo_module.json counts.parents_family_closed = 61 (rows B05/B26)"
+      },
+      "134": {
+        "occurrences": 6,
+        "lines": [39, 49, 251, 303, 331, 449],
+        "defense": "exact-T certified parent count = counts.parents_T_exact = 134; the 133/134 scope is recomputed true over the 134 certs (claims_matrix R16, row B20)"
+      },
+      "368": {
+        "occurrences": 8,
+        "lines": [16, 42, 242, 297, 305, 420, 537, 563],
+        "defense": "catalogue row count = exp027_delta_audit.json summary.catalogue_rows = 368; classified subset 249+30 = 279 from exp039 counts (rows B04/B06)"
+      },
+      "24": {
+        "occurrences": 3,
+        "lines": [17, 318, 458],
+        "per_line_defense": {
+          "17": "'[[360,12,<=24]] candidate' - catalogue-advertised bound, anchored by tests/test_conventions.py::test_bb_reference_parameters (row B04)",
+          "318": "n=180 capped-a-priori count 24 = exp039 rows_capped_a_priori by-n {180:24} (claims_matrix R5; row B27)",
+          "458": "spread minimum -24 = min((k_P-k_Q)-T) over 279 classified rows (claims_matrix R17; row B37)"
+        }
+      },
+      "249 (echo of the capped count)": {
+        "occurrences": 3,
+        "lines": [42, 505, 563],
+        "defense": "counts.catalogue_rows_capped_a_priori = 249 (rows B06/B26)"
+      }
+    }
+  },
+  "status_counts": {
+    "total_rows": 49,
+    "VERIFIED": 44,
+    "UNDERWRITTEN": 3,
+    "OVERWRITTEN": 2,
+    "UNSOURCED": 0
+  },
+  "violation_summary": {
+    "unsourced_rows": [],
+    "boxed_results_and_theorems_GHI_unsourced": false,
+    "six_keys_unsourced": false,
+    "drift_findings": [
+      "B34 OVERWRITTEN: paper '35 candidate escapees' vs live exp037 counts CANDIDATE_ESCAPEE=30, DOMINATED=278 (was 35/273 at the 2026-08-17 audit; PENDING 60 unchanged)",
+      "B45 OVERWRITTEN: paper env line 'Python 3.13.14 / numpy 2.5.2' vs live venvs and artifact env blocks 'Python 3.13.9 / numpy 2.4.6'",
+      "P1 UNDERWRITTEN: paper says intervals 'tied'; anchor certifies [5,12] on both circuits (verdict.certified_d_dem_mech_both_ge_5=true)",
+      "P2 UNDERWRITTEN: paper silent on EXP-042 SMALL_CLASS_EMPTY (4,621 parents, T<k_P/2 bucket empty)"
+    ]
+  }
+}
