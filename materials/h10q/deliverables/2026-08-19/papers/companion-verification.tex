@@ -1,0 +1,472 @@
+\documentclass[11pt]{amsart}% src: user assignment: document-class requirement
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\geometry{margin=1in}
+\hypersetup{hidelinks}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\title{A Machine-Verified Finite Program:\\
+Engine Discipline, Artifact Schemas, and Reproducibility Scope}
+\author{The H10Q verification program}
+\date{}
+% src: README.md:1
+
+\begin{document}
+\begin{abstract}
+This companion describes what the finite H10Q computation verifies, how it
+refuses arithmetic it cannot certify, and how its persisted artifacts may be
+replayed.  The arithmetic kernel admits primality only through a deterministic
+Miller--Rabin range or a Pocklington certificate, including the
+Brillhart--Lehmer--Selfridge relaxation.  The surrounding suite separates
+machine proofs from conditional deductions and measured evidence, freezes its
+finite authorities in code, and records enough schema information to prevent a
+search log from silently becoming a theorem.  We give the exact downstream
+regeneration commands, the licenses attached to each artifact row, and the
+limitations left by missing historical producers and finite prime windows.
+% src: README.md:12-43; README.md:191-221
+\end{abstract}
+
+\section{The verification contract}
+
+The program is a verifier of finite mathematical statements, not an oracle for
+Hilbert's Tenth Problem over \(\Q\).  A positive row is accepted only after its
+stated hypotheses and exact identities have been replayed.  A bounded scan
+licenses a statement about the scanned rows and no statement about the
+unscanned complement.  In particular, the canonical grid is closed
+instance-by-instance, while the uniform all-\(w\) assertion remains an analytic
+frontier; the audited simultaneous prime-value input has degree \(8\) and is
+still open.
+% src: README.md:138-145; README.md:225-231
+
+\subsection{The label calculus}
+The ledger uses three labels as a small calculus of admissible inference.
+
+\emph{PROVED} means that an exact implication, identity, certificate, or finite
+exhaustion was replayed by the machine.  For example, the four off-grid rows at
+\(w\in\{101,103,107,109\}\), \(u=-1\), are PROVED per row after independent
+replay; this is a finite horizon statement, not a uniform theorem in \(w\).
+% src: RESULTS.md:104; NOTES.md:849-861
+
+\emph{CONDITIONAL} means that every remaining hypothesis is stated and named.
+The six-unknown conclusion is conditional on the explicitly isolated global
+assembly lemma, so no quantifier record is claimed.  At the analytic end of the
+class reduction, the simultaneous primality of \(q_1(t)\) and the degree-\(8\)
+polynomial \(F_{\mathrm{cell}}(t)\) awaits Schinzel's Hypothesis H; the finite
+local audit does not supply that conjectural prime-value conclusion.
+% src: README.md:59-60; README.md:225-230; NOTES.md:862-869
+
+\emph{EVIDENCE} means a measured statistic with its sampling frame attached.
+The matched obstruction artifact reports marginal ratio \(0.9993\), a union
+residual of \(-2.9/8760\), and a marginal-preserving permutation statistic
+\(z=-0.09\) with empirical tails \(0.61/0.53\).  These numbers validate the
+matched finite model as EVIDENCE; they do not prove independence or a density
+theorem.
+% src: data/l17_matched.jsonl:3; NOTES.md:812-817
+
+Labels only move upward through a valid proof.  In particular,
+\texttt{PrimalityBound}, \texttt{FactorBudget}, a timeout guard, a
+zero-Jacobi outcome, or a missing producer cannot upgrade EVIDENCE to PROVED
+and cannot turn an open case into a negative result.  A refusal contributes
+\emph{unknown}; only a Fermat witness, a proper factor, or another exact
+certificate contributes a mathematical verdict.
+% src: README.md:200-204; h10q.py:127-146; NOTES.md:835-845
+
+\section{Proven-primality arithmetic}
+
+\subsection{The deterministic range}
+The entry point \texttt{\_is\_prime} first applies strong Miller--Rabin at the
+thirteen bases from \(2\) through \(41\)~\cite{jaeschke}.  Its strict deterministic cutoff is
+\[
+  \texttt{\_MR\_LIMIT}=3317044064679887385961981.
+\]
+For \(n\) below this bound, passing all bases is a proved primality verdict.
+At or above the bound, passing is only a screen and the code proceeds to a
+certificate; it never accepts ``probable prime'' as prime.
+% src: h10q.py:32-39; h10q.py:169-178
+
+This distinction is load-bearing because factorization feeds exact Hilbert
+symbols and ramification sets.  The regression suite therefore includes the
+least strong pseudoprime at the cutoff, a prime above the cutoff that must be
+Pocklington-certified, hard cases that must refuse, and a balanced semiprime
+that must exhaust the factor budget rather than be guessed.
+% src: h10q.py:261-297; RESULTS.md:42-53
+
+\subsection{Pocklington and the relaxed threshold}
+For a screened \(n\), the engine writes
+\[
+ n-1=FR,
+\]
+where every prime dividing the accumulated part \(F\) is recursively
+certified.  For each such prime \(q\), it seeks a base \(a\) satisfying
+\[
+ a^{n-1}\equiv 1\pmod n,
+ \qquad
+ \gcd\bigl(a^{(n-1)/q}-1,n\bigr)=1.
+\]
+The generalized Pocklington conclusion is immediate when \(F^2>n\).  A
+failed Fermat congruence or a proper gcd proves compositeness; failure to find a
+usable witness is a \texttt{PrimalityBound} refusal.
+% src: h10q.py:81-91; h10q.py:134-148
+
+Before attempting harder splitting, the implementation trial-divides \(n-1\)
+by every prime below \(10^6\).  It computes the integer ceiling of \(n^{1/3}\)
+exactly and stops that trial loop as soon as the accumulated certified part
+reaches the cube-root threshold.  Uncertifiable recursive chunks and
+factor-budget-exhausted chunks are excluded from \(F\), never counted as if
+they had factored.
+% src: h10q.py:71-78; h10q.py:94-135; README.md:42
+
+At the weaker threshold \(F^3\ge n\), the
+Brillhart--Lehmer--Selfridge relaxation, in the form recorded as
+Crandall--Pomerance Theorem~\(4.1.5\), applies.  The code first checks the
+required coprimality of \(F\) and \(R\), writes \(R=c_2F+c_1\), and tests
+\[
+ D=c_1^2-4c_2.
+\]
+Under the certified congruence conditions a composite \(n\) can then have
+exactly two factors of the form \(uF+1\) and \(vF+1\).  A nonnegative square
+\(D\) with the correct parity reconstructs those two factors and proves
+compositeness; otherwise the discriminant test proves primality.  This is a
+certificate theorem, not a heuristic strengthening of Miller--Rabin.
+% src: h10q.py:85-90; h10q.py:149-166; README.md:42
+
+\subsection{Explicit refusal types}
+\texttt{PrimalityBound} means that the screen passed outside its deterministic
+range but the certified part or witnesses were insufficient.
+\texttt{FactorBudget} means Brent's rho routine exhausted its bounded work on a
+large remaining composite.  Callers either propagate these exceptions or mark
+the candidate as refused.  The suite contains adversarial paths specifically
+to ensure that a partial factorization is not returned as complete and that a
+refusal is not counted as a soluble member.
+% src: h10q.py:42-48; h10q.py:181-216; h10q.py:281-297
+
+\section{Suite architecture and frozen authority}
+
+A default invocation is \texttt{python3 h10q.py}; the extended invocation adds
+\texttt{--extended}.  Both begin with arithmetic self-tests and the ledger
+verification, then replay the successive finite layers.  The current engine
+note records approximately \(51\) seconds for the default suite and
+approximately \(118\) seconds for the extended suite on the recorded run.
+% src: h10q.py:4474-4519; README.md:42
+
+The difference is scope, not soundness.  The default L6 replay covers the odd
+prime targets below \(100\), while the extended replay reaches the full
+\(61\)-row authority below \(300\).  L13 class sampling uses \(12\) escape
+rows by default and \(40\) in the extended run; fully soluble escape witnesses
+use \(24\) versus all \(60\).  Most importantly, the default L14 check takes a
+fixed seeded sample of \(60\) frozen H-class members, while the extended check
+replays all \(293\).
+% src: h10q.py:1445-1491; h10q.py:4133-4176; h10q.py:4314-4325
+
+\begin{table}[t]
+\centering
+\small
+\caption{Frozen finite authorities and their intended role.}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Authority & Rows & Role \\
+\midrule
+\texttt{\_L6\_WITNESSES} & \(61\) & bounded canonical tied evidence \\ % src: README.md:43
+\texttt{\_L9\_STEERED} & \(345\) & steered cell witnesses, fully replayed \\ % src: README.md:43; RESULTS.md:84
+\texttt{\_L11\_CLASSES} & \(190\) & reachable aligned prime classes \\ % src: h10q.py:3329-3344
+\texttt{\_L12\_ESCAPE} & \(103\) & non-coprime aligned escape classes \\ % src: h10q.py:3594-3606
+\texttt{\_L13\_ESCAPE2} & \(60\) & fully soluble walled-cell witnesses \\ % src: h10q.py:3615-3625
+\texttt{\_L13\_RESIDUAL} & \(6\) & legacy pointwise audit slice \\ % src: data/l17_schinzel_audit.jsonl:1; l17_schinzel_audit.py:10-11
+\texttt{\_L13\_ZERO\_BAD} & \(16\) & frozen ladder regression rows \\ % src: RESULTS.md:109; h10q.py:4014-4026
+\texttt{\_L13\_H\_CLASSES} & \(293\) & one certified member per aligned grid class \\ % src: h10q.py:4011; h10q.py:4314-4318
+\bottomrule
+\end{tabular}
+\end{table}
+
+The first two authorities have a stronger serialization contract.  Each suite
+run derives canonical JSONL text from the in-code objects and requires
+\path{data/l6_witnesses.jsonl} and
+\path{data/l9_steered.jsonl} to match byte for byte.  Drift, absence, or an
+underived field fails the run.  The only supported export command is
+\begin{verbatim}
+python3 h10q.py --export-evidence
+\end{verbatim}
+which writes those canonical serializations; it does not canonize arbitrary
+search logs.
+% src: README.md:43; h10q.py:1309-1315; h10q.py:1476-1491; h10q.py:4475-4486
+
+\section{Artifact schemas and licenses}
+
+A schema is part of the proof boundary.  Row types say whether a record is
+configuration, a replayable certificate, a failed attempt, or an aggregate.
+The principal persisted objects are summarized below; ``licenses'' always
+means ``licenses at the recorded finite scope.''
+
+\begin{table}[p]
+\centering
+\scriptsize
+\caption{Principal artifact schemas.}
+\begin{tabular}{@{}p{.22\textwidth}p{.31\textwidth}p{.39\textwidth}@{}}
+\toprule
+Artifact & Row types and key fields & What the row licenses \\
+\midrule
+\path{l17_sieve.jsonl} &
+\texttt{meta}; \texttt{class-summary} with \texttt{cell}, \texttt{family},
+\texttt{members}, forbidden residues, rates, alarms; \texttt{global-summary} &
+Per-class residue determination and the recorded member window; aggregates are
+measured summaries, not tail bounds. \\ % src: data/l17_sieve.jsonl:1-2; data/l17_sieve.jsonl:295
+
+\path{l17_badroots_closures.jsonl} &
+\texttt{meta}; \texttt{class} with progression parameters, root lists, exact
+or residual masses, exclusions; \texttt{summary} with reconciliation &
+Certified bad-signed \(k\bmod p\) roots and their stated \(p\)-adic masses for
+the closure progression; excluded roots license only an interval. \\ % src: data/l17_badroots_closures.jsonl:1-2; data/l17_badroots_closures.jsonl:295
+
+\path{l17_matched.jsonl} &
+\texttt{meta}, \texttt{meta-methods}, \texttt{global}, \texttt{class}; keys
+include matched support, expectations, residuals, window factors, permutation
+null, and partial flags &
+EVIDENCE for fit on the identical member sample.  It licenses neither
+cross-prime independence nor behavior above the recorded prime window. \\ % src: data/l17_matched.jsonl:1-4
+
+\path{l17_classfactors.jsonl} &
+Untagged per-class rows: \texttt{cell}, progression parameters,
+\texttt{partial}, \texttt{factor\_lower}, \texttt{factor\_upper},
+\texttt{factor\_window}, leading bad primes &
+Exact bookkeeping for each finite window interval; closure-effort correlation
+is descriptive EVIDENCE only. \\ % src: data/l17_classfactors.jsonl:1; NOTES.md:870-874
+
+\path{l17_schinzel_audit.jsonl} &
+\texttt{meta}; \texttt{canonical} with the two polynomials, coefficients,
+irreducibility certificate, value gcds, local counts; \texttt{residual} with
+pointwise witness and \texttt{schinzel\_applicable=false} &
+Finite irreducibility, fixed-divisor, pair-gcd, and local-condition checks.
+Residual rows are pointwise only; no simultaneous prime values follow. \\ % src: data/l17_schinzel_audit.jsonl:1-2; data/l17_schinzel_audit.jsonl:295-300
+
+\path{l17_horizon*.jsonl} &
+Usually \texttt{meta}, \texttt{class-attempt}, \texttt{aligned-class},
+\texttt{member}, \texttt{kernel-replay}, an untagged closure row, and
+\texttt{summary}; the compact H107 file has only meta and closure &
+Only a verified replay plus the exact closure row licenses an off-grid
+closure.  Attempt and refusal rows are provenance, not negative evidence. \\ % src: data/l17_horizon101.jsonl:1-446; data/l17_horizon103.jsonl:1-44; data/l17_horizon107.jsonl:1-2; data/l17_horizon109.jsonl:1-390
+
+\path{l13h_all_closures.json} &
+Top-level \texttt{n\_cells} and \texttt{records}; each record has
+\texttt{family}, \texttt{cell}, \texttt{a}, \texttt{eps}, \texttt{f},
+\texttt{q1}, \texttt{N}, \texttt{k\_zero}, \texttt{Q}, \texttt{rung},
+\texttt{tied}, \texttt{ramified\_empty}, \texttt{source} &
+The canonical closure authority.  Its thirteen-field record licenses the
+zero-bad ladder closure; auxiliary tied or ramified fields may themselves be
+refused without weakening that license. \\ % src: data/l13h_all_closures.json:1-24; h10q.py:3711-3715
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Reading rows without overclaiming}
+Metadata is a scope declaration, not a certificate by itself.  A
+\texttt{meta} row identifies the authority, coordinate convention, engine,
+window, and generator assumptions.  The claim-bearing payload is then found
+in a class, canonical, kernel-replay, or closure record, while a summary is a
+deterministic reduction of those payload rows.  Consequently a reader should
+not cite a global total without retaining the class-level artifact from which
+it was reduced, and should not cite an attempted class as a certified class.
+% src: data/l17_sieve.jsonl:1-2; data/l17_badroots_closures.jsonl:1-2
+
+The canonical closure document makes this lineage especially explicit.  Its
+record stores the cell and family, the aligned progression
+\(Q=q_1+k_{\mathrm{zero}}N\), the resulting member parameters, the ladder
+rung, and the source scan.  The Python authority stores the corresponding
+tuple needed for replay.  During L14 verification the suite reconstructs
+\(Q\), proves it prime, forms \(b=\varepsilon fQ\), re-runs the smooth
+emergent test and cofactor ladder, and accepts only the verdict
+\texttt{zero}.  The optional full tied and ramification calculations are
+cross-checks rather than hidden prerequisites for this accepted certificate.
+% src: data/l13h_all_closures.json:1-24; h10q.py:4321-4368
+
+Large integers and rational parameters are serialized as decimal strings or
+explicit numerator--denominator data where the producing schema requires
+them.  Status words such as \texttt{bad}, \texttt{deferred},
+\texttt{nonprime}, and \texttt{refused:FactorBudget} are intentionally not
+coerced to booleans.  This preserves the distinction between a proved
+negative result, a skipped member, and an arithmetic refusal.  Schema
+compatibility therefore includes both field names and status semantics; a
+consumer that collapses those states has changed the estimand even if its JSON
+parser succeeds.
+% src: data/l17_sieve.jsonl:2; data/l17_horizon109.jsonl:2-5; data/l17_horizon109_crossk.jsonl:2-4
+
+The horizon cross-\(k\) file is deliberately different.  Its meta row freezes
+the probe space and determinism contract; untagged rows record primality,
+tied, ramified, and size outcomes.  For H109 it contains \(1{,}275\) probes
+through \(k\le 50\), but no row with both requested auxiliary successes.  That
+is an auxiliary finite non-hit, not a defect in the accepted zero-bad closure.
+% src: data/l17_horizon109_crossk.jsonl:1-2; NOTES.md:855-861
+
+\section{Exact reproduction protocol}
+
+Run from the repository directory \texttt{math/h10q}.  The downstream matched
+chain is:
+\begin{verbatim}
+python3 l17_ratemodel_padic.py
+python3 l17_badroots_closures.py
+python3 l17_matched.py
+\end{verbatim}
+The middle command imports the checked-in p-adic module and rebuilds closure-
+authority roots from the persisted sieve; the final command consumes those
+roots and the same persisted member rows.  Thus the first arrow is also a code
+dependency.  It does not claim recovery of the original session-side producer
+for the older censored-rate artifact.
+% src: README.md:209-221; l17_badroots_closures.py:1-27; l17_matched.py:1-24
+
+The independent class-risk and Schinzel audits are regenerated by
+\begin{verbatim}
+python3 l17_classrisk.py
+python3 l17_schinzel_audit.py
+\end{verbatim}
+The former writes \texttt{data/l17\_classfactors.jsonl} and
+\texttt{/tmp/l17\_classrisk.report}; the latter writes
+\texttt{data/l17\_schinzel\_audit.jsonl} and its report under
+\texttt{/tmp}.
+% src: l17_classrisk.py:18-20; l17_classrisk.py:378-387; l17_schinzel_audit.py:33-35; l17_schinzel_audit.py:377-384
+
+The established off-grid horizon is replayed one cell at a time:
+\begin{verbatim}
+python3 l17_horizon101.py
+python3 l17_horizon103.py
+python3 l17_horizon107.py
+python3 l17_horizon109.py
+python3 l17_horizon109_crossk.py
+\end{verbatim}
+Each closure generator overwrites its named data artifact and emits or writes a
+report; the cross-\(k\) generator emits no elapsed or host-dependent fields.
+The ledger records about \(17\) minutes for that \(1{,}275\)-probe auxiliary
+scan and records byte-identical regeneration for it.  No runtime is supplied
+here for commands for which the ledger records none.
+% src: README.md:41; NOTES.md:884-893; data/l17_horizon109_crossk.jsonl:1
+
+\section{Review-driven correction as methodology}
+
+The L17 cycle treated review objections as attacks on the estimand, not as
+requests for cosmetic caveats.  Five corrections illustrate the method.
+% src: NOTES.md:777-883
+
+\paragraph{Recurring-prime-only support.}
+The first small-prime product used only primes recurring in the observed
+sample.  Omitting nonrecurring bad primes mechanically inflated the predicted
+clean mass; it was not evidence of cross-prime correlation.  The fix was to
+construct closure-authority root tables across every prime in the declared
+window and to target larger primes actually observed in the same cell, with
+simple roots assigned exact mass \(1/(p+1)\) and singular roots recursively
+resolved or intervalized.
+% src: NOTES.md:788-797; l17_badroots_closures.py:1-9
+
+\paragraph{Wrong-sign conditioning.}
+A proposed explanation attributed the clean-rate offset to conditioning on
+prime \(Q\), but the sign was backwards.  At the \(Q\)-root residue,
+\(2\alpha b\equiv0\), so the implementation marks the residue safe rather
+than bad.  The corrected interpretation is a difference between Haar measure
+on \(\Z_p\) and the finite \(k\)-window.  Its measured size is approximately
+\(+0.0195\), or \(3.63\) standard deviations in the artifact; it is
+characterized, not promoted to a dependence claim.
+% src: NOTES.md:798-807; data/l17_matched.jsonl:3
+
+\paragraph{Cohort versus closure progression.}
+The first matcher combined sieve members rebuilt from canonical closure
+classes with roots computed on an earlier wave cohort.  In the documented ESC
+example at cell \((3,(-3,1))\), the cohort used \(q_1=41\), \(\varepsilon=+1\),
+whereas the closure used \(q_1=59\), \(\varepsilon=-1\).  The fix was to
+rebuild every root in the closure record's own \((\varepsilon,f,q_1,N)\)
+coordinate.  The repaired table reconciles \(5{,}375/5{,}375\) observed
+odd-negative occurrences.
+% src: NOTES.md:818-830; data/l17_badroots_closures.jsonl:295
+
+\paragraph{Discarded resolved mass.}
+An excluded singular root can have a rigorously resolved prefix even when its
+remaining Taylor tree is unfinished.  An intermediate matcher discarded that
+known mass along with the unresolved remainder.  The corrected artifact stores
+both pieces and forms the interval
+\[
+ \left[\prod_p(1-k_p-r_p),\ \prod_p(1-k_p)\right].
+\]
+Across the \(67\) excluded pairs the maximum unresolved residual is
+\(6.9\times10^{-15}\), so the finite-window interval is valid without
+pretending to control any larger prime.
+% src: NOTES.md:875-883; data/l17_matched.jsonl:1
+
+\paragraph{The vacuous integer-support p-value.}
+A clipped two-sided empirical value on discrete integer support reported
+\(1.0\), which carried little diagnostic information.  The final report keeps
+the marginal-preserving null but presents its standardized statistic and both
+empirical tails.  Together with the repaired support and masses, the final
+matched values are marginal ratio \(0.9993\), union residual \(-2.9/8760\),
+\(z=-0.09\), and tails \(0.61/0.53\).  These are the final EVIDENCE numbers;
+the abandoned instruments license nothing.
+% src: NOTES.md:879-883; data/l17_matched.jsonl:3; l17_matched.py:162-166
+
+\section{Limitations}
+
+\begin{enumerate}
+\item Five older L17 files are persisted evidence without checked-in original
+producers: \path{l17_sieve.jsonl}, the cohort
+\path{l17_badroots.jsonl}, \path{l17_ratemodel_censored.jsonl},
+\path{l17_cofactor.jsonl}, and
+\path{l17_cofactor_nonclosure.jsonl}.  Downstream scripts consume reviewed
+copies, but the original session-side acquisition scripts were not recovered.
+% src: README.md:207-221; NOTES.md:884-894
+
+\item The class factors and matched Haar comparison are statistics only for
+\(p\le10^4\).  They provide no bound whatsoever for primes above \(10^4\), so
+they cannot by themselves prove a positive infinite product or a uniform
+density.
+% src: README.md:35; data/l17_matched.jsonl:1
+
+\item The nonclosure cofactor distribution is measurement-limited.  Only
+\(11/400\) sampled rows were exactly resolved and \(389\) were prover
+refusals; the predeclared power gate failed.  The distributional conclusion is
+therefore INCONCLUSIVE, even though parity remained consistent on resolved
+rows.
+% src: README.md:38; NOTES.md:835-845
+
+\item Some closure records contain auxiliary tied-status or ramification
+refusals.  For example, the H109 closure records budget/refusal values in those
+fields while its proved zero-bad ladder verdict remains the accepted closure
+form.  Such fields must not be silently rewritten as success, and their
+refusals are not supporting evidence.
+% src: RESULTS.md:104; data/l17_horizon109.jsonl:387-390
+
+\item The Schinzel audit proves finite local admissibility and irreducibility
+for the canonical pairs, not simultaneous prime values of the degree-\(8\)
+polynomials.  The record claim remains CONDITIONAL, and the finite off-grid
+horizon does not imply the all-\(w\) hypothesis.
+% src: README.md:225-231; NOTES.md:862-869
+\end{enumerate}
+
+The reproducibility claim is therefore intentionally narrow but useful:
+checked-in authorities can be replayed, specified downstream artifacts can be
+regenerated, and every refusal remains visible.  The paper's mathematical
+claims are exactly those finite certificates labeled PROVED; its statistics
+remain EVIDENCE; and its analytic extrapolations remain CONDITIONAL.
+% src: README.md:12-43; README.md:207-221
+
+\begin{thebibliography}{9}
+
+\bibitem{cp}
+R.~Crandall and C.~Pomerance,
+\emph{Prime Numbers: A Computational Perspective}, 2nd ed.,
+Springer, New York, 2005.
+% src: h10q.py:82-90 (the in-repository citation is CP, Theorems 4.1.3 and 4.1.5)
+
+\bibitem{jaeschke}
+G.~Jaeschke,
+\emph{On strong pseudoprimes to several bases},
+Mathematics of Computation \textbf{61} (1993), no.~204, 915--926.
+% src: h10q.py deterministic Miller-Rabin base sets below _MR_LIMIT
+
+\end{thebibliography}
+
+\end{document}

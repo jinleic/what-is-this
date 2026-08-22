@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hilbert&#x27;s tenth problem over Q — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
+.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
+border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+</style></head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+
+<h1>Hilbert&#x27;s tenth problem over Q</h1>
+<p class="tag">source: <code>math/h10q</code> ·
+session: <code>019ff957-1ed4-7000-8941-f92f3002c676</code> ·
+synced 2026-08-22T04:21:35Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>## 2026-08-19 — h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle
+
+**Deliverable.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip`
+(9,811,451 bytes, SHA-256 `f332023db2df19b16613670cf787a447b6271a196de4d0077c5443ace4dba39c`),
+built by `math/h10q/deliverables/make_bundle.py` from the staged tree
+`math/h10q/deliverables/2026-08-19/` — 62 files under `SHA256SUMS`
+(`shasum -a 256 -c` all OK), ZIP written outside the staged tree, verified free of self-inclusion.
+Contents: two paper drafts, 27 artifacts, 21 generator/replay scripts, 5 ledger files, MANIFEST.
+
+**Papers (drafts, compiled).** `papers/main-conditional-forall6.tex` — 17 pp, the conditional
+six-quantifier definition of $\mathbb Z$ in $\mathbb Q$: architecture, wall theorems, the class
+characterization, grid verification, the mechanistic sieve, the audited Schinzel reduction, the
+step-(ii) density law, and the off-grid frontier. Sections were authored per-layer by six subagents
+against explicit ledger line ranges with `% src:` provenance on every numeric claim, then
+lead-integrated; `pdflatex` exit 0. `papers/companion-verification.tex` — 6 pp: proven-primality
+engine, the PROVED/CONDITIONAL/EVIDENCE label calculus, frozen authority tables, artifact schemas,
+exact reproduction commands, the review-driven corrections of the L17 cycle, and a complete
+limitations section.
+
+**New mathematics (L18, all lead-replayed).**
+
+1. *Local sieve bound (PROVED).* For every aligned class, $m_3=m_5=m_7=0$ and $m_p\le 8/(p+1)&lt;1$
+   for $p\ge11$, singular roots included with multiplicity. Independently re-verified on all
+   102,439 stored local pairs with $p\le10^4$ across the 293 classes: **zero violations**.
+2. *No cutoff-uniform positive mass (PROVED for the 293 current classes).* Each class polynomial
+   carries a replayed degree-8 irreducibility certificate and a replayed nonsquare witness at a
+   simple bad root, so the Chebotarev exponent is $c=1/2$ and
+   $\prod_{p\le X}(1-m_p)\asymp(\log X)^{-1/2}$: the hoped-for uniform positive clean mass does not
+   exist. Measured $c$: 0.4778 / 0.4801 / 0.4590. Consequence: H is a divergence statement —
+   expected emergent-free members grow like $X/(\log X)^{5/2}$.
+3. *Horizon wave 2 (PROVED per row).* Off-grid closures now cover
+   $w\in\{101,103,107,109,113,127,137\}$ at $u=-1$ (L11 route for 101/109/137; escape route $f=w$
+   for 103/107/113/127).
+4. *A protocol wall at $w=131$ (PROVED within the protocol).* $(-1|131)=-1$ empties the L11 route
+   and the canonical escape forces $\mathrm{Hilb}_5=-(5|q_1)$; 336 attempts, 326 obstructed, 0
+   aligned. Cell open. New sharp question: which primes $w$ carry this 5-symbol collision?
+5. *Composite $w$ is out of scope* ($w$ indexes a place; the break is at the residue-field
+   constructor); downstream arithmetic still runs after prime decomposition (pseudo-cell
+   $[21,[-1,1]]$ closes at the honest prime $f=3$).
+
+**Verification.** Default suite exit 0; extended suite exit 0; every horizon script replayed by the
+lead from the repo path; the local-mass bound re-derived independently from the closure artifact.
+Reproducibility scope is declared in `math/h10q/README.md`: the matched/horizon/Schinzel/ClassRisk
+chain is repo-regenerable; five older L17 JSONLs are persisted evidence without producers.
+
+**Wave 3 (same session, 6 more subagents) — L19.**
+
+6. *Schinzel H implies the per-class hypothesis (PROVED implication; conclusion CONDITIONAL).*
+   For a fixed verified aligned class with $F(t)=P(\varepsilon f(q_1+Nt))=c\,G(t)$ ($c$ supported on
+   the frozen set, $G$ primitive with positive lead), Schinzel&#x27;s Hypothesis H for $\{q_1+Nt,G(t)\}$
+   yields infinitely many members with ladder verdict zero: the strip leaves one odd place $R=G(t)$,
+   the moving prime is a unit, all other outside symbols are $+1$, and Hilbert reciprocity forces
+   $(x_0,d_0)_R=+1$. Hypotheses verified exactly on 293/293 canonical pairs; 24-row prime-rung
+   cross-check. **The bespoke analytic hypothesis is replaced by a named classical conjecture.**
+   A load-bearing terminology bug in `CONDITIONAL.md` (emergent set defined by even valuations
+   rather than by absence of $-1$ symbols) was found and corrected.
+7. *The canonical 5-wall (PROVED) and its break (PROVED).* $\mathrm{Hilb}_5=-(w|5)(q_1|5)$ against
+   wild $(5|q_1)$ gives: canonical protocol obstructed exactly for $w\equiv11,19 \bmod 20$; audited
+   on all 53 primes in $[101,400]$ with zero mismatches. The wall is not intrinsic: $a=7$, $\tau=0$,
+   $f=w$ closes $131$, $139$ and $151$ through the non-coprimality door.
+8. *Off-grid horizon.* Closed $w\in\{101,103,107,109,113,127,131,137,139,149,151,157,163,167,173\}$
+   at $u=-1$ plus $[131,[5,1]]$; only $w=179$ open (bounded probe, EVIDENCE).
+9. *Divergence model (EVIDENCE).* Predeclared 239/54 split; the L18 tail explains an $8.5\times$
+   delay against the ledger&#x27;s $15.67\times$ Bateman–Horn gap (51% of the excess multiplier, 78% of
+   the log gap), residual $1.84\times$, with an honest failure at the selected $k=0$ spike.
+
+10. *Citation audit and bibliography repair.* All 13 bibliography entries rebuilt with full
+   author/title/journal/volume/year/pages/DOI/arXiv; every entry is now cited in text (zero
+   undefined citations or references in either paper). The audit caught a real misattribution:
+   the ten-quantifier record (arXiv:2301.02107) had been given the title of a different Daans
+   paper; it is *Universally defining $\Z$ in $\Q$ with 10 quantifiers*, JLMS (2) 109 (2024),
+   e12864, whereas *Universally defining finitely generated subrings of global fields* is
+   Doc. Math. 26 (2021), 1851–1869 (arXiv:1812.04372). Verified against publisher records.
+11. *Wall-exclusion clause made exact (advisory).* The $\tau=0$/$a=7$ closure now states which
+   hypothesis of each wall fails: L10b assumes verbatim &quot;$b=\varepsilon q_1$ with $q_1\ne A$
+   prime&quot; (THEOREMS L10b) and here $b=131\cdot41$ is not $\pm$ prime, while all its other
+   hypotheses hold ($a$ odd, $A=197$ prime); L12 assumes $b$ coprime to the cell data and
+   $f=w\mid\operatorname{num}(z)$. Row verdict comes from the kernel authority
+   (`_l7_tied_status`, `ramified`, identity vs `_l10_P`/`_sun_h`); the class certificate is a
+   labelled local generalization of `l12_class.l12_class_cert`. Novelty is the $\tau=0$
+   alignment alone.
+
+**Final bundle.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip` — 9,811,451 bytes, SHA-256
+`f332023db2df19b16613670cf787a447b6271a196de4d0077c</pre>
+<h2>Project README (verbatim, first lines)</h2><pre># Hilbert&#x27;s Tenth Problem over Q (`h10q/`)
+
+**Target.** Is the existential (positive) theory of $\mathbb{Q}$ decidable —
+equivalently, is there an algorithm deciding, given $f_1,\dots,f_m \in
+\mathbb{Q}[x_1,\dots,x_n]$, whether they have a common rational zero? Open in
+both directions. The 2024–25 breakthroughs (Koymans–Pagano arXiv:2412.01768;
+Alpöge–Bhargava–Ho–Shnidman arXiv:2501.18774) settled every ring of integers;
+the frontier is $\mathbb{Q}$ itself (Koymans–Pagano expository arXiv:2602.04468,
+Question 6.2). Opened 2026-08-12 in `scratch/`, canonicalized here 2026-08-15;
+nothing in `scratch/` remains.
+
+## Authorities (single source of truth)
+
+| File | Owns |
+|---|---|
+| [`THEOREMS.md`](THEOREMS.md) | Precise frontier statements (L1–L9, A1–A3), full proofs of everything proved here, and the exact open assembly lemma. |
+| [`RESULTS.md`](RESULTS.md) | Findings ledger, claim-by-claim scope table, frontier stratification, next actions. |
+| [`NOTES.md`](NOTES.md) | Problem map: exact theorem statements with arXiv ids, both pillars. |
+| [`h10q.py`](h10q.py) | Standalone executable model; re-verifies every in-suite claim on each run. |
+| [`l6_search.py`](l6_search.py) | Guarded tied-certificate searcher (`--canonical` enforces the W0/W1 hypotheses). |
+| [`l9_steer.py`](l9_steer.py) | Reciprocity-steered assembly searcher + deep-rescue mode; certificate logic lives in `h10q._l9_steered_solvable` (single source). |
+| [`l13_filter.py`](l13_filter.py) | Zero-bad square/smooth filter (`emergent_free`: strip the frozen set ∪ supp(b) from P(b), test remainders are squares — no factorization, no engine refusals) + the `cofactor_decide` ladder (square / proved-prime / prime-power / factorint rungs + Jacobi evidence tier) + cell-(89,(-2,1)) attack driver. Search-side: exact counters only, never citable as cell coverage. |
+| [`l13h_scan.py`](l13h_scan.py) | Per-class emergent-free member certification for hypothesis H (all 293 grid classes; `smooth_emergent` + `cofactor_decide`, stop-on-first-zero, reason-coded refusals). Data: `data/l13h_{l11_a,l11_b,esc}[_2].jsonl`. |
+| [`test_bls.py`](test_bls.py) | Manual unit check of the BLS-relaxed Pocklington (pinned-regime proofs + composite-cousin guard; NOT part of the suite). |
+| [`l13h_alt.py`](l13h_alt.py) | Wave-3 alternate-class driver: Hensel-root a-lifts (L11), f/ε variants (ESC, self-validating constructor), DEEPK mode; a=1 fallback for w≡3 mod 4. Lead-owned. |
+| `data/l13h_{l11_a,l11_b,esc}{,_2}.jsonl` | H-scan waves 1–2 per-class records (frozen classes, k≤200): verdict histograms + closures, reason-coded refusals. |
+| `data/l13h_alt_{l11_a,l11_b,esc,l11_hard,esc_hard}.jsonl`, `data/l13h_deepk_l11.jsonl` | Wave-3 alternate-class + deep-k closure records. |
+| `data/l13h_qa.{jsonl,md}` | LadderQA regression: 45/45 exact agreement (29 zero + 16 bad rows), 0 alarms. |
+| `data/l13h_all_closures.json` + `data/l13h_replay.jsonl` | Canonical merged 293-cell closure set + lead-wide replay verdicts (293/293 ladder-zero; ramified 271 empty / 22 refused-logged). Authority behind `_L13_H_CLASSES`. |
+| `data/l15_remainders.jsonl` | L15 exact remainder audit over all 293 closure members (R squarefree in every row; 197 $R=p$ exactly, 96 factorint $e\in\{2,3,4\}$; 0 refusals, 0 alarms). |
+| `data/l15_density.json` | L15 first-member counting law (deterministic 2.8-s playback): $k_{\text{zero}}$ histogram, per-family/per-rung splits, Bateman–Horn calibration, outlier table. |
+| `data/l16_char.jsonl` | L16 probe (lead-run): full sign-decorated emergent lists per prime-member $k$ on 7 sampled classes; residue-determination (small layer sieve-shaped) + two-layer obstruction split; parity row-checks. |
+| `data/l17_sieve.jsonl` | L17: all-293-class member-level obstruction scan ($k\le119$, 8,760 prime members): residue-determination 293/293, clean-rate histograms, recurring-prime tables. Persisted evidence (see **Reproducibility scope** below). |
+| `data/l17_badroots.jsonl`, `data/l17_badroots_closures.jsonl` | L17: exact bad-signed root residues ($k\bmod p$) with certified odd-valuation masses — wave-1 cohort and closure-authority versions; closure-authority reconciled 5,375/5,375 against observed occurrences. (The wave-1 cohort variant `l17_badroots.jsonl` is persisted evidence without a checked-in producer.) |
+| [`l17_ratemodel_padic.py`](l17_ratemodel_padic.py) + [`l17_badroots_closures.py`](l17_badroots_closures.py) + [`l17_matched.py`](l17_matched.py) + `data/l17_{badroots_closures,matched}.jsonl` | L17: matched-test regenerator + statistics: marginal ratio 0.9993; union residual −2.9/8760; per-class rows; marginal-preserving permutation $z=-0.09$, empirical tails $0.61/0.53$. Class-factors and the Haar-window estimand are $p\le10^4$-window statistics only (no $p&gt;10^4$ tail bound; the excluded-mass residual covers singular root lifts). |
+| `data/l17_ratemodel_censored.jsonl` | L17: two-layer rate model on the predeclared wave-1 cohort, right-censored with two-sided $c$-bands (unknown trials counted both ways); family $c \in [0.017, 0.80]$. Persisted evidence; no checked-in producer. |
+| `data/l17_cofactor.jsonl` | L17: cofactor sign audit on closures: proved reciprocity-level statements (197/197 auto-$+1$; parity product $+1$ on 293/293); factorint/residue tables closure-conditioned. Persisted evidence; no checked-in producer. |
+| `data/l17_cofactor_nonclosure.jsonl` | L17: nonclosure cofactor sign sample, power-gated: 11/400 resolved (389 prover refusals); parity-consistent; distributional claim INCONCLUSIVE (declared under-powered in the global summary). Persisted evidence; no checked-in producer. |
+| `data/l17_classfactors.jsonl` | L17: per-class $p\le10^4$ window factor intervals [lo, hi] rebuilt from v2 resolved-mass roots (generator [`l17_classrisk.py`](l17_classrisk.py)); closure-effort correlation (descriptive): Spearman $\rho=-0.178$, medians $0.5742$ vs $0.5662$ (cls=0 vs ≥1). |
+| `data/l17_schinzel_audit.jsonl` | L17: audit of the ledgered Schinzel reduction (THEOREMS L9–L10): 293 canonical closure pairs $\{q_1(t), F_{\text{cell}}(t)\}$ — all $F$ irreducible (deg 8, certified), value-gcd 1, pair-product gcd 1, local conditions pass with corrected $q_1(t)\not\equiv0\ (p)$ counts; 6 `_L13_RESIDUAL` rational-b witnesses segregated as pointwise certificates. Generator [`l17_schinzel_audit.py`](l17_schinzel_audit.py). |
+| `data/l17_horizon{101,103,107,109}.jsonl` + [`l17_horizon{101,103,107,109}.py`](l17_horizon101.py) | L17-horizon: off-grid closure artifacts + full scan logs at $w\in\{101,103,107,109\}$, $u=-1$; replay from repo root; H109 cross-k auxiliary scan `data/l17_horizon109_crossk.jsonl` (1,275 probes, $k\le50$; deterministic generator [`l17_horizon109_crossk.py`](l17_horizon109_crossk.py), ~17 min, byte-identical regeneration verified). |
+| Engine note (2026-08-18) | Proven-primality engine strengthened: `_pocklington` now uses trial division to $10^6$ (early abort at $F\ge n^{1/3}$, exact integer cube root) + the **Brillhart–Lehmer–Selfridge relaxation** (CP Thm 4.1.5: $F\ge n^{1/3}$, two-factor discriminant test). Every verdict still exact; `PrimalityBound` refusals remain non-evidence. Suites: default ~51 s, extended ~118 s. |
+| `data/l6_witnesses.jsonl`, `data/l9_steered.jsonl` | **Canonical serializations** of the authorities `_L6_WITNESSES` (61 rows) and `_L9_STEERED` (345 rows) in `h10q.py`. Byte-identical match required on every suite run — drift, absence, or any underived field fails the suite. Regenerate: `python3 h10q.py --export-evidence`. |
+| `data/l9_steer_run.jsonl`, `data/l9_rescue_*.jsonl` | Raw steered-search run artifacts — search-side provenance only, never citable evidence. |
+| `data/l13_filter_run2.json` | L13f stage-2 outcome (2026-08-18): full box spec, 22 counters with reason-coded refusals, 4,481 stored cofactor rows with per-row verdicts, 236 hit records, dense_box block. Authority for the cell-closure counters; the suite-frozen witness is the closing claim. |
+| `l13_dense.py` +</pre>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/h10q/README.md">README.md</a> (20KB, sha256 dec9cedf2ddc)</li><li><a href="../materials/h10q/RESULTS.md">RESULTS.md</a> (44KB, sha256 ff4329464276)</li><li><a href="../materials/h10q/THEOREMS.md">THEOREMS.md</a> (111KB, sha256 3c203b28c94a)</li><li><a href="../materials/h10q/CONDITIONAL.md">CONDITIONAL.md</a> (21KB, sha256 ffc3df891e05)</li><li><a href="../materials/h10q/deliverables/2026-08-19/papers/main-conditional-forall6.pdf">deliverables/2026-08-19/papers/main-conditional-forall6.pdf</a> (404KB, sha256 441387348161)</li><li><a href="../materials/h10q/deliverables/2026-08-19/papers/main-conditional-forall6.tex">deliverables/2026-08-19/papers/main-conditional-forall6.tex</a> (8KB, sha256 eb5f00266edc)</li><li><a href="../materials/h10q/deliverables/2026-08-19/papers/companion-verification.pdf">deliverables/2026-08-19/papers/companion-verification.pdf</a> (219KB, sha256 e1837ea86f3f)</li><li><a href="../materials/h10q/deliverables/2026-08-19/papers/companion-verification.tex">deliverables/2026-08-19/papers/companion-verification.tex</a> (23KB, sha256 684d40fbc142)</li></ul>
+
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

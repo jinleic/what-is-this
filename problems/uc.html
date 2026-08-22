@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Union-closed sets conjecture (Frankl) — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
+.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
+border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+</style></head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+
+<h1>Union-closed sets conjecture (Frankl)</h1>
+<p class="tag">source: <code>math/uc</code> ·
+session: <code>019ff0a0-6557-7000-8b8c-9bdbccb719e4</code> ·
+synced 2026-08-22T04:21:35Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>### THEOREM (2026-08-22) — **Liu&#x27;s Hypothesis 1 is proved**: the reduced kernel is negative semidefinite
+
+Everything below is machine-checked symbolically (SymPy exact) plus two
+elementary hand arguments (Descartes&#x27; rule, one monotone cubic); no grid, no
+quadrature, no numerical eigenvalue solve enters the proof. This settles the
+first of the two conditions under which Liu (arXiv:2306.08824v1, CISS 2024)
+obtains the union-closed constant $0.382709087918741$ — a constant strictly
+above the ceiling $c^*=0.3823455333667027$ of the route our own certificates
+use. His Hypothesis 2 (§V-B, a nine-parameter global optimisation) remains
+open, so the constant is not yet unconditional.
+
+**Setup.** $u=1-s$, $v=1-t$, $A=uv$, $B=st$, $z=A(1+B)$,
+$G(x)=x+(1-x)\ln(1-x)=\sum_{k\ge2}x^k/(k(k-1))$, and
+$$R(s,t)=A\big[B-(1+B)\ln(1+B)\big]-\big[z+(1-z)\ln(1-z)\big].$$
+Liu&#x27;s §V-A hypothesis is equivalent to $R\preceq0$ (earlier entries: the three
+terms his codimension-3 projection removes are exactly those carrying a
+degree-$\le2$ polynomial factor).
+
+**Theorem.** $R\preceq0$ as a kernel on $L^2[0,1]$.
+
+*Proof.* Write $\varphi(B)=G(A(1+B))+A\,G(-B)$; since $G(-B)=-B+(1+B)\ln(1+B)$
+this is exactly $-R$.
+
+1. **Taylor with integral remainder** (PROVED, SymPy): $\varphi(0)=G(A)$,
+   $\varphi&#x27;(0)=-A\ln(1-A)$, and
+   $\varphi&#x27;&#x27;(B)=A\big/\big[(1+B)(1-A(1+B))\big]$, hence
+   $$-R=G(A)-AB\ln(1-A)+B^2\!\int_0^1\!(1-r)\,\frac{A}{(1+rB)\,(1-A(1+rB))}\,dr.$$
+2. **$G(A)\succeq0$**: $G$ has nonnegative Taylor coefficients $1/(k(k-1))$ and
+   $A^k=(u^k)(v^k)$ is rank-one PSD; Schur product theorem.
+3. **$-AB\ln(1-A)\succeq0$**: $-\ln(1-A)=\sum_{k\ge1}A^k/k$ has nonnegative
+   coefficients and $AB=(us)(vt)$ is rank-one PSD; Schur again.
+4. **$A/D_r\succeq0$ for every $r\in[0,1]$**, where
+   $D_r=(1+rB)(1-A(1+rB))$. Its coefficient matrix in the basis
+   $(1,s,s^2,s^3)$ is
+   $$M(r)=\begin{pmatrix}0&amp;1&amp;0&amp;0\\1&amp;-r-1&amp;2r&amp;0\\0&amp;2r&amp;-r(r+2)&amp;r^2\\0&amp;0&amp;r^2&amp;-r^2\end{pmatrix},
+   \qquad \det M(r)=-2r^3,$$
+   with characteristic polynomial coefficients
+   $[\,1,\;(r+1)(2r+1),\;4r^3+2r-1,\;-2r(r^3-r^2+r+1),\;-2r^3\,]$ — sign
+   pattern $(+,+,\pm,-,-)$, exactly **one** Descartes sign change for every
+   $r\in(0,1]$, so exactly one positive eigenvalue: inertia $(1+,3-)$.
+   Hence $D_r(s,t)=a(s)a(t)-\langle b(s),b(t)\rangle$ with polynomial
+   $a,b$ of degree $\le3$. On the diagonal
+   $$D_r(s,s)=(1+rs^2)\big[1-(1-s)^2(1+rs^2)\big]\;\ge\;s\,(2-2s+2s^2-s^3)\;&gt;\;0
+   \quad (s\in(0,1]),$$
+   because $2-2s+2s^2-s^3$ has derivative $-3s^2+4s-2$ with discriminant $-8$,
+   so it is monotone decreasing from $2$ to $1$. Therefore
+   $a(s)^2&gt;\lVert b(s)\rVert^2$, so $a$ never vanishes on $(0,1]$ (constant
+   sign, by continuity) and $c:=b/a$ satisfies $\lVert c(s)\rVert&lt;1$. By
+   Cauchy–Schwarz $|\langle c(s),c(t)\rangle|&lt;1$, so
+   $$\frac1{D_r}=\frac1{a(s)a(t)}\sum_{k\ge0}\langle c(s),c(t)\rangle^k$$
+   converges, and every summand is PSD (Schur powers of a Gram kernel times a
+   rank-one factor of constant sign). Multiplying by the rank-one $A$ preserves
+   this.
+5. **Corner and integration**: $B^2A/D_r$ extends continuously to $[0,1]^2$
+   (near $(0,0)$, $D_r\asymp s+t$ while $B^2=s^2t^2$), so it is PSD there, and
+   $\int_0^1(1-r)(\cdot)\,dr$ with the nonnegative weight $(1-r)$ preserves
+   PSD.
+
+Summing 2, 3 and 5 in the identity of 1 gives $-R\succeq0$. $\qquad\blacksquare$
+
+**Independent numerical corroboration** (not used in the proof): the identity
+of step 1 reproduces $-R$ to $8.9\times10^{-16}$ on a 300-node grid (scale
+$0.96$); each of the three pieces has minimum eigenvalue at roundoff
+($-1.1\times10^{-14}$, $-1.9\times10^{-15}$, $-4.8\times10^{-16}$); $A/D_r$ has
+minimum eigenvalue $\approx-7\times10^{-14}$ for $r\in\{0,0.1,0.25,0.5,0.75,1\}$;
+and Arb interval enclosures of $\lambda_{\max}(R)$ on rational grids are
+negative ($-9.7\times10^{-19}$ at $N=16$, $-1.9\times10^{-36}$ at $N=32$) with
+interval Cholesky of $-R$ passing (`uc/liu_moment_cert.py`).
+
+**Why the earlier attempts failed, in hindsight.** The three routes ruled out
+above (Cauchy–Schwarz/telescoping, spectral gap, and Schur factorisation
+through $1/(1+\theta st)$ — which is *not* PSD, Gram minima $-1.02$ to $-9.47$)
+all tried to dominate the positive part *term by term* in a fixed basis. The
+positive part is only PSD-dominated after the exact Taylor regrouping, which
+mixes the families: the entire positive contribution is absorbed by the second
+derivative $\varphi&#x27;&#x27;$, whose positivity is a statement about a
+$4\times4$ Lorentz form, not about coefficient sizes. The inequality&#x27;s
+tightness (resolved generalised ratio $0.9999999906$) is precisely the
+degeneracy $D_r(0,0)=0$ at the corner, which the factor $B^2=s^2t^2$ neutralises.
+</pre>
+<h2>Project README (verbatim, first lines)</h2><pre># Union-closed sets conjecture — active target
+
+&gt; **CERTIFIED (2026-08-21) — a machine-checked certificate exists at the
+&gt; certified rational t = 0.3820660112501052 ≥ ψ + 10⁻⁴.** Campaign
+&gt; [`cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8`](campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/) is closed: its frozen
+&gt; collector replayed all eight committed proof traces and re-proved
+&gt; every discharge step, then printed `COMPOSITE CERTIFICATE`:
+&gt; **Φ ≥ 0 on the feasible 5-parameter family at certified rational
+&gt; t = 0.3820660112501052 ≥ exact ψ + 0.0001 over w ∈ [1/2,1]**
+&gt; (the proved orbit-swap symmetry covers w ∈ [0,1]); 488,465,854 boxes with
+&gt; zero residual leaves. Collector (`cert3_collect.py`) SHA-256
+&gt; `95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec`. Verbatim output:
+&gt; [`campaigns/CERTIFICATE.txt`](campaigns/CERTIFICATE.txt). &lt;!-- closeout:cert3_20260818T212601Z_425f109c --&gt;
+
+**Conjecture (Frankl, 1979).** For any union-closed family
+$\mathcal{F}\subseteq2^{[n]}$ with $\mathcal{F}\neq\{\emptyset\}$ there exists
+$i\in[n]$ contained in at least $|\mathcal{F}|/2$ of the sets.
+
+Everything here is verified in this directory or quoted verbatim from a paper I
+retrieved and read. Nothing is taken from a secondary summary.
+
+## Why this target
+
+Selected over Navier–Stokes on one criterion: **every primary is on arXiv**, so
+no step depends on a paywalled source. The NS attempt stalled with NRS and ESS
+publisher-blocked. Here the entire post-Gilmer literature is retrievable, and
+the state of the art is *a constant defined by an optimisation problem*, which
+is machine-checkable.
+
+## The ladder, and what is actually proved
+
+| constant | source | status |
+|---|---|---|
+| $0.01$ | Gilmer, [2211.09055](https://arxiv.org/abs/2211.09055) | proved |
+| $\psi=\frac{3-\sqrt5}{2}=0.3819660112501051$ | Chase–Lovett, Alweiss–Huang–Sellke, Pebody, Sawin | **proved** — the largest with a complete proof |
+| $c^*=0.3823455333667027$ | Yu [2212.00658](https://arxiv.org/abs/2212.00658), Cambie [2212.12500](https://arxiv.org/abs/2212.12500) | value almost certainly correct; **proof invalid** (see below) |
+| $&gt;c^*$, non-explicit | Liu [2306.08824](https://arxiv.org/abs/2306.08824) Thm 6 | proved, but no explicit value |
+| $0.382709087918741$ | Liu, Thm 13 | **conditional** on two unproved hypotheses |
+
+Cambie states the gap in his own paper, verbatim:
+
+&gt; *&quot;As such, the remaining problem is a minimisation problem for which the
+&gt; statement can be checked by a computer. This implies that an exact rigorous
+&gt; calculus proof is missing.&quot;*
+
+Liu&#x27;s Theorem 13, verbatim:
+
+&gt; *&quot;Under the positive-semidefiniteness hypothesis in Section V-A and the
+&gt; hypothesis of the global minimizer structure in Section V-B, the constant in
+&gt; the union-closed sets conjecture can be improved to $c&#x27;$ in (93).&quot;*
+
+The PSD hypothesis was checked on a grid (minimum eigenvalue $\approx-2.4\times10^{-14}$);
+the minimiser structure with $\sim10^5$ MATLAB restarts. Secondary sources
+(e.g. Lu–Raz [2405.10639](https://arxiv.org/abs/2405.10639)) report $0.38271$ as
+&quot;proven by Liu&quot;. That is an overstatement. The figure $0.38237$ circulating from
+Wakhare&#x27;s introduction matches no optimum in Liu and appears to be a typo.
+
+## Result 0 — the OR-entropy kernel has exactly one positive square
+
+[`decomposition.py`](decomposition.py), [`reduction.py`](reduction.py). This is
+the structural fact the rest rests on. Work in $x=1-p$; since
+$p\oplus q=1-(1-p)(1-q)$ and $h(1-z)=h(z)$, the iid kernel is $H(xy)$ with
+$H=\ln2\cdot h$. Put
+
+$$T(u)=u+(1-u)\ln(1-u)=\sum_{n\ge2}\frac{u^n}{n(n-1)},$$
+
+so $T(xy)$ is a **positive-definite kernel** (positive power-series coefficients).
+Then, from $H(u)=-u\ln u+u-T(u)$ and $-xy\ln(xy)=-xy\ln x-xy\ln y$:
+
+$$\boxed{\;H(xy)=g(x)g(y)-a(x)a(y)-T(xy),\qquad a(x)=-x\ln x,\;\; g(x)=x(1-\ln x)\;}$$
+
+**Verified as an exact algebraic tautology in sympy**, and numerically on 200
+random *signed* measures to $10^{-40}$ — so it is a form identity, not a
+coincidence on probability measures. Gram spectra on grids of 40/120/300 points
+show exactly **one** positive eigenvalue at every resolution, explaining the
+single positive mean-zero eigenvalue [`kernel.py`](kernel.py) found numerically:
+it is the functional $G(\mu)=\int g$.
+
+### Result 0′ — the Gilmer term in closed form
+
+Rearranged, with $B=\int(1-p)\,d\mu=1-\text{mean}$ and
+$W(x,y)=xy-xT(y)-yT(x)+T(xy)=\sum_{n\ge2}\frac{(x-x^n)(y-y^n)}{n(n-1)}$ (PSD):
+
+$$\boxed{\;Q(\mu)=2B\,L(\mu)-E(\mu),\qquad E=\tfrac1{\ln2}\iint W\,d\mu\,d\mu\ \ge0\;}$$
+
+equivalently $\ln2\cdot E=\sum_{n\ge2}\frac{(M_1-M_n)^2}{n(n-1)}$ with
+$M_n=\int(1-p)^n d\mu$ — every term a squared **moment defect** $M_1-M_n\ge0$.
+So the full two-strategy functional is
+
+$$F(\mu)=\big[2(1-\alpha)B-1\big]L+\alpha C-(1-\alpha)E.$$
+
+**This is sharp for the pure iid problem — $\alpha=0$ only.** At $\alpha=0$ the
+diagonal $W(x,x)/\ln2=2xh(x)-h(x^2)$ collapses $F(\delta_p)$ to $h(x^2)-h(x)$, so
+$F\ge0\iff(1-p)^2\ge p\iff p\le\psi$, with equality exactly at the golden point
+$x=1/\varphi$ where $x^2=1-x$. The barrier $\psi$ *is* the statement that the PSD
+defect $E$ first overtakes $(2B-1)L$.
+
+&gt; **The $\alpha=0$ hypothesis is essential and an earlier version of this section
+&gt; dropped it.** For $\alpha&gt;0$ the coupled term does **not** vanish at a point
+&gt; mass: $s^*(p,p)=1/2$ on $(1/4,1/2)$, so $h(s^*)=1$ near $\psi$ and</pre>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/uc/README.md">README.md</a> (35KB, sha256 85148b716cb4)</li><li><a href="../materials/uc/ANNOUNCEMENT.md">ANNOUNCEMENT.md</a> (11KB, sha256 35403811fe2f)</li><li><a href="../materials/uc/PROOF.md">PROOF.md</a> (26KB, sha256 92b2fbc074ee)</li><li><a href="../materials/uc/paper/main.pdf">paper/main.pdf</a> (440KB, sha256 7f3b6ab54663)</li><li><a href="../materials/uc/paper/main.tex">paper/main.tex</a> (68KB, sha256 e43650476f19)</li><li><a href="../materials/uc/paper/refs.bib">paper/refs.bib</a> (6KB, sha256 0bb18b790908)</li></ul>
+
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

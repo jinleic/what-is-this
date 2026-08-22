@@ -1,0 +1,1639 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+% ---------- theorem environments ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---------- operators ----------
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\ex}{ex}
+\DeclareMathOperator{\mean}{mean}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Int}{int}
+
+\newcommand{\PP}{\mathcal P}
+\newcommand{\DD}{\Delta}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\rh}{\operatorname{rh}}
+\newcommand{\sstar}{s^{\star}}
+\newcommand{\Lb}{\mathrm{L}}
+\newcommand{\Bb}{\mathrm{B}}
+\newcommand{\Cc}{\mathrm{C}}
+\newcommand{\Qq}{\mathrm{Q}}
+\newcommand{\Ee}{\mathrm{E}}
+\newcommand{\Ff}{\mathrm{F}}
+\newcommand{\Lh}{\Lambda}
+\newcommand{\MM}{\mathcal M}
+\newcommand{\PROVED}{\textsc{proved}}
+\newcommand{\CITED}{\textsc{cited}}
+\newcommand{\NUMERICAL}{\textsc{numerical}}
+
+\title{An explicit constant exceeding $(3-\sqrt5)/2$ for union-closed families:
+a machine-checked certificate with independent replay}
+\author{The union-closed certification project\thanks{Repository artifact:
+\texttt{math/uc/} of the \texttt{jinleic-workspace} tree; every claim carries a
+machine-checked artifact named in the text.}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Let
+\[
+\psi=\frac{3-\sqrt5}{2}
+\quad\text{and}\quad
+t_{\mathrm{cert}}
+=\frac{955165028125263}{2500000000000000}
+=0.3820660112501052.
+\]
+We establish the first explicit union-closed frequency constant strictly above
+$\psi$ with a complete proof chain: the exact rational comparison
+$t_{\mathrm{cert}}\ge\psi+10^{-4}$ and the required five-parameter functional
+inequality are \PROVED{} by machine-checked artifacts, while the single
+entropy-to-union-closed implication is \CITED{} from Cambie
+\cite[Question~2 and \S4]{cambie}.  Thus every finite union-closed family
+$\mathcal F\ne\{\emptyset\}$ has an element in at least
+$t_{\mathrm{cert}}|\mathcal F|$ member sets, subject precisely to that cited
+implication.  The new proof decomposes the OR-entropy kernel into one positive
+square minus an explicit positive-semidefinite defect, reduces the global
+minimum to two pair-orbits (five parameters), and certifies nonnegativity by an
+Arb interval branch-and-bound.  A frozen collector independently replayed all
+eight one-byte-per-node proof traces and printed
+\texttt{COMPOSITE CERTIFICATE}.  As a second, independent contribution, we
+prove Liu's previously only numerically verified positive-semidefiniteness
+hypothesis behind the best published constant, $0.382709087918741$; his
+separate nine-parameter global-optimization hypothesis remains open, so that
+constant is still conditional.  We do not claim Frankl's constant $1/2$,
+optimality of $t_{\mathrm{cert}}$, certification of the reported
+$0.3823455\ldots$ or $0.3827090\ldots$ constants, or a reproof of the one cited
+implication.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{Frankl's conjecture and the pre-constant era}
+A finite family of sets is \emph{union-closed} if $A\cup B$ belongs to the
+family whenever $A$ and $B$ do.  The union-closed sets conjecture says that
+every finite union-closed family $\mathcal F\ne\{\emptyset\}$ contains an
+element in at least $|\mathcal F|/2$ member sets.  It is commonly attributed to
+P\'eter Frankl in 1979, although the historical record describes it as a
+folklore conjecture already known in the 1970s
+\cite[\S1]{bruhn}.  We therefore use ``Frankl's conjecture'' as the conventional
+name, not as a claim of sole priority.
+
+Before the 2022 entropy breakthrough, the general quantitative bounds decayed
+with the size of the family.  Knill \cite{knill} and W\'ojcik \cite{wojcik}
+obtained frequency fractions of order $\Omega(1/\log|\mathcal F|)$; in
+particular these were not positive constants independent of
+$|\mathcal F|$.  The relevant early author is Emanuel \emph{Knill}.
+
+\subsection{The entropy ladder: 1/100 and the golden-ratio barrier}
+Gilmer \cite{gilmer} introduced the entropy method that produced the first
+dimension-free constant, proving $1/100$.  For a regular Borel probability law
+$\mu$ on $[0,1]$, its iid OR-entropy and one-coordinate entropy are
+\[
+\Qq(\mu)=\iint h(p+q-pq)\,d\mu(p)\,d\mu(q),
+\qquad
+\Lb(\mu)=\int h(p)\,d\mu(p),
+\]
+where $h(u)=-u\log_2u-(1-u)\log_2(1-u)$, continuously extended by
+$h(0)=h(1)=0$.  The sharp iid inequality was then established independently
+in near-simultaneous work of Alweiss--Huang--Sellke
+\cite{ahs}, Chase--Lovett \cite{chaselovett}, Sawin \cite{sawin}, and Pebody
+\cite{pebody}.  It yields
+\[
+\psi=\frac{3-\sqrt5}{2}\approx0.3819660112501051,
+\]
+the largest explicit constant above which no complete proof had previously
+been available.  Chase--Lovett also showed that $\psi$ is sharp for their
+approximate-union-closed formulation, and it is the sharp barrier for the iid
+entropy strategy.
+
+Sawin's revised paper \cite[\S2]{sawin} does more than prove the $\psi$ bound:
+it sketches how a convex combination of the iid coupling and a dependent
+max-entropy coupling gives some unspecified constant strictly larger than
+$\psi$.  The sketch deliberately does not calculate an explicit improvement.
+This is the conceptual second strategy used by Yu, Cambie, and the present
+work.
+
+\subsection{Claims beyond the golden-ratio barrier and their proof status}
+The distinction among \PROVED{}, \CITED{}, and \NUMERICAL{} statements is
+load-bearing here.
+
+\paragraph{Yu.}
+Yu \cite[\S4]{yu} claims the explicit value
+$0.38234\ldots$ (arXiv:2212.00658v2).  The argument invokes
+Krein--Milman/Carath\'eodory and then a concavity inequality to pass from
+extreme points to a finite-support optimization.  That inference is false on
+Yu's own extreme-point class.  The repository artifact
+\texttt{uc/yu\_gap.py} gives a particularly simple structured counterexample:
+with $Q_1=\delta_{(0.15,0.15)}$,
+$Q_2=(1-\beta)\delta_{(0.10,0.10)}+\beta Q_{1,1}$ at mean
+$0.382345533366702721$, and mixing weight $1/2$, it reports the claimed
+concavity defect as $-2.476271\times10^{-2}$.  This displayed sign is a
+\NUMERICAL{} diagnostic, not a proof step in our theorem; it refutes the
+specific reduction with a margin far from roundoff.  Theorem~\ref{thm:B3}
+below supplies a different support reduction with all hypotheses retained.
+
+\paragraph{Cambie.}
+Cambie \cite{cambie} formulates the two-strategy functional inequality as
+Question~2 and reports
+\[
+c^\star\approx0.3823455333667027.
+\]
+Version~2 explicitly describes its finite-dimensional verification as follows:
+\emph{``In contrast to the detailed work in e.g.\ [1] for the constant
+$(3-\sqrt5)/2$, this is done slightly less rigorous.''}
+In other words, that optimization was carried out slightly less rigorously:
+the paper itself notes local-minimum and finite-precision issues.  We do not
+use that numerical verification.  We use only the separate implication in
+Cambie's \S4 that converts a valid answer to Question~2 into the
+union-closed frequency bound; that one imported step is always labeled
+\CITED{} below.
+
+\paragraph{Liu.}
+Liu \cite{liu} develops conditionally iid couplings.  The explicit constant in
+Theorem~13,
+\[
+0.382709087918741,
+\]
+is conditional on two hypotheses stated there: the positive-semidefiniteness
+hypothesis of \S V-A and the global-minimizer-structure hypothesis of
+\S V-B.  Both were reported as numerically verified rather than proved.  As a
+second, independent contribution, Theorem~\ref{thm:liu-psd} proves the
+\S V-A hypothesis.  The nine-parameter \S V-B hypothesis remains open, so
+Liu's decimal is still conditional and is not a theorem claimed here.
+Related entropy developments include Wakhare \cite{wakhare} and
+Lu--Raz \cite{luraz}.
+
+\paragraph{Quantitative ladder.}
+\begin{itemize}
+\item \PROVED{} (size-dependent):
+$\Omega(1/\log|\mathcal F|)$, by Knill \cite{knill} and W\'ojcik
+\cite{wojcik}.
+\item \PROVED{}:
+$1/100$, by Gilmer \cite{gilmer}.
+\item \PROVED{}:
+$\psi=(3-\sqrt5)/2$, by Alweiss--Huang--Sellke \cite{ahs},
+Chase--Lovett \cite{chaselovett}, Sawin \cite{sawin}, and Pebody
+\cite{pebody}.
+\item Claimed with a finite-dimensional proof gap:
+$c^\star\approx0.3823455333667027$, by Yu \cite{yu} and Cambie
+\cite{cambie}.
+\item Conditional because the nine-parameter Hypothesis~2 remains open
+(Hypothesis~1 is proved in this work):
+$0.382709087918741$, in Liu's Theorem~13 \cite{liu}.
+\item \PROVED{} functional inequality plus one \CITED{} implication:
+$t_{\mathrm{cert}}=0.3820660112501052$, in this work and Cambie's
+\S4 \cite{cambie}.
+\end{itemize}
+The last item is the exact rational claim
+$t_{\mathrm{cert}}\ge\psi+10^{-4}$, never an equality between the rational
+target and the irrational number $\psi+10^{-4}$.
+
+\subsection{The result proved here}
+For a compact metric space $X$, let $\MM(X)$ be the real vector space of finite
+signed regular Borel measures, $\MM_+(X)$ its positive cone, and
+\[
+\PP(X)=\{\mu\in\MM_+(X):\mu(X)=1\}.
+\]
+All measures and couplings in the theorem statements are regular Borel
+measures.  For $\mu\in\PP([0,1])$ put
+$\mean(\mu)=\int_0^1p\,d\mu(p)$ and
+$\Bb(\mu)=1-\mean(\mu)$.  A self-coupling of $\mu$ means an element of
+$\PP([0,1]^2)$ whose two marginals both equal $\mu$; the set of all such
+couplings is denoted $\Pi(\mu,\mu)$.  Weak-$*$ topology is used only where it
+is named explicitly.
+
+Set
+\[
+\begin{aligned}
+\alpha_0&=\frac{356069}{10000000}=0.0356069,\\
+t_{\mathrm{cert}}
+&=\frac{955165028125263}{2500000000000000}\\
+&=0.3820660112501052.
+\end{aligned}
+\]
+The rational inequality
+$t_{\mathrm{cert}}\ge\psi+10^{-4}$ is checked exactly by the campaign
+preflight.
+
+\begin{theorem}[Machine-checked functional inequality]
+\label{thm:main}
+Let $\alpha_0=0.0356069$ and let
+$t_{\mathrm{cert}}=0.3820660112501052$ denote the exact rationals displayed
+above.  For every $\mu\in\PP([0,1])$ satisfying
+$\mean(\mu)\le t_{\mathrm{cert}}$, define
+\begin{align*}
+\Lb(\mu)&=\int h(p)\,d\mu(p),\\
+\Qq(\mu)&=\iint h(p+q-pq)\,d\mu(p)\,d\mu(q),\\
+\Cc(\mu)&=\min_{\pi\in\Pi(\mu,\mu)}
+  \iint h\bigl(\sstar(p,r)\bigr)\,d\pi(p,r),\\
+\sstar(p,r)&=\max\bigl(p,r,\min(p+r,\tfrac12)\bigr).
+\end{align*}
+Then
+\begin{equation}
+\Ff(\mu):=(1-\alpha_0)\Qq(\mu)+\alpha_0\Cc(\mu)-\Lb(\mu)\ge0.
+\label{eq:Fdef}
+\end{equation}
+\end{theorem}
+
+\begin{corollary}[Union-closed consequence; one cited implication]
+\label{cor:uc}
+Assume the entropy-to-union-closed implication in Cambie's Question~2 and
+\S4 \cite{cambie}: for $\alpha\in[0,1]$ and $t\in[0,1]$, validity of the
+corresponding functional inequality for every
+$\mu\in\PP([0,1])$ with $\mean(\mu)\le t$ implies the frequency bound $t$
+for every finite union-closed family other than $\{\emptyset\}$.  Then every
+finite union-closed family $\mathcal F\ne\{\emptyset\}$ has an element
+belonging to at least
+\[
+t_{\mathrm{cert}}|\mathcal F|
+=0.3820660112501052\,|\mathcal F|
+\]
+member sets.
+\end{corollary}
+
+Theorem~\ref{thm:main} is \PROVED{} here.  The implication explicitly assumed
+in Corollary~\ref{cor:uc} is \CITED{} and is not re-proved.  Together they give
+the first explicit constant strictly above $\psi$ with a complete proof chain.
+The scope is exact: we do not prove Frankl's $1/2$, certify $c^\star$, certify
+Liu's conditional decimal, prove optimality, or claim a result at any larger
+target.
+
+The proof has four structural ingredients:
+\begin{enumerate}
+\item[(A)] an exact OR-entropy-kernel decomposition; see
+\S\ref{sec:scaffold} and \path{decomposition.py};
+\item[(A${}'$)] the identity $\Qq=2\Bb\Lb-\Ee$ with an explicit
+positive-semidefinite defect; see \S\ref{sec:scaffold} and
+\path{reduction.py};
+\item[(B${}'''$)] a support reduction to at most two pair-orbits, hence five
+parameters; see \S\ref{sec:B3} and \path{thmB3_proof.py};
+\item a scale-free margin lemma and the $\rh$ bound controlling the entropy
+sinks; see \S\ref{sec:margin}, \path{margin_lemma.py}, and
+\path{lemma_rh_proof.py}.
+\end{enumerate}
+An Arb interval branch-and-bound then certifies the reduced functional
+(\S\ref{sec:certificate}).  Campaign I committed all eight slices, totaling
+$488{,}465{,}854$ boxes with zero residual and empty final stacks.  Its frozen
+collector replayed every trace and printed \texttt{COMPOSITE CERTIFICATE} on
+2026-08-21.  Appendix~\ref{sec:verify} gives the exact replay command and
+trust base.  Every search heuristic or sampled diagnostic is labeled
+\NUMERICAL{} and is not a proof step.
+
+\section{The exact scaffold: Theorems A and A-prime}
+\label{sec:scaffold}
+
+Throughout, logarithms are natural unless the subscript $2$ shows an explicit base.
+We use the natural-log kernels
+\begin{equation}
+H(u)=-u\ln u-(1-u)\ln(1-u),\qquad
+T(u)=u+(1-u)\ln(1-u),
+\label{eq:Hdef}
+\end{equation}
+extended continuously by $H(0)=0$, $T(0)=0$, $T(1)=1$; recall that
+$h(u)=H(u)/\ln2$.
+
+\begin{lemma}[T-series]
+\label{lem:Tseries}
+For $0\le u\le1$,
+\begin{equation}
+T(u)=\sum_{n=2}^{\infty}\frac{u^n}{n(n-1)},\qquad
+T(1)=\sum_{n=2}^{\infty}\frac{1}{n(n-1)}=1.
+\label{eq:Tseries}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$T'(u)=-\ln(1-u)=\sum_{m\ge1}u^{m}/m$ on $[0,1)$, so integrating from $0$
+gives $T(u)=\sum_{m\ge1}u^{m+1}/(m(m+1))=\sum_{n\ge2}u^n/(n(n-1))$; the
+endpoint follows by Abel's theorem or by the telescoping $1/(n(n-1))=1/(n-1)-
+1/n$. The machine artifact \texttt{decomposition.py} checks the closed
+form against the series at five points to $10^{-30}$ and the telescoping sum
+exactly. \qedhere
+\end{proof}
+
+\begin{theorem}[Theorem A; \texttt{decomposition.py}]
+\label{thm:A}
+Let $H,T$ be the continuous kernels in \eqref{eq:Hdef}, and set
+$g(x)=x(1-\ln x)$ and $a(x)=-x\ln x$, with $g(0)=a(0)=0$.
+For every $x,y\in[0,1]$,
+\begin{equation}
+H(xy)=g(x)\,g(y)-a(x)\,a(y)-T(xy).
+\label{eq:kernel}
+\end{equation}
+Moreover $T(xy)=\sum_{n\ge2}(xy)^n/(n(n-1))$ is positive semidefinite in
+the following explicit measure-cone sense:
+\[
+\iint T(xy)\,d\eta(x)\,d\eta(y)\ge0
+\qquad\text{for every }\eta\in\MM([0,1]).
+\]
+Thus \eqref{eq:kernel} writes the OR-entropy kernel as the single positive
+square $g\otimes g$ minus the positive-semidefinite remainder
+$a\otimes a+T$.
+\end{theorem}
+
+\begin{proof}
+Since $g=a+\mathrm{id}$,
+\[
+g(x)g(y)-a(x)a(y)=x\,a(y)+y\,a(x)+xy=-xy\ln(xy)+xy
+=H(xy)+T(xy),
+\]
+the last step by $H(u)+T(u)=-u\ln u+u$ from \eqref{eq:Hdef}. Rearranging
+gives \eqref{eq:kernel}.  The \PROVED{} gate in
+\texttt{decomposition.py} asserts the identity as an exact SymPy tautology on
+three symbolic atoms.  Its checks on 200 random signed measures and on a
+$200\times200$ grid are additional \NUMERICAL{} controls, not proof steps.
+\end{proof}
+
+\begin{remark}
+The ``at most one positive square'' statement is the algebraic heart of the method:
+it says the two-strategy entropy $\Qq$ differs from a square of a linear
+functional by a positive-semidefinite remainder, so that a variance
+(``defect'') term appears with a sign we can control. This is the property that
+makes the later support reduction possible; see \S3.
+\end{remark}
+
+We now pass to the probability-theoretic formulation.  For
+$\mu\in\PP([0,1])$ write, with the substitution $x=1-p$ in the $W$-kernel,
+\begin{equation}
+\begin{split}
+\Ee(\mu)&=\frac1{\ln2}\iint W(1-p,\,1-q)\,d\mu(p)\,d\mu(q),\\
+W(x,y)&=xy-x\,T(y)-y\,T(x)+T(xy).
+\end{split}
+\label{eq:Wdef}
+\end{equation}
+
+\begin{theorem}[Theorem A${}'$; \texttt{reduction.py}]
+\label{thm:Ap}
+Let $W$ and $\Ee$ be as in \eqref{eq:Wdef}.  For every $x,y\in[0,1]$,
+\begin{equation}
+W(x,y)=\sum_{n=2}^{\infty}\frac{(x-x^n)(y-y^n)}{n(n-1)}.
+\label{eq:Wseries}
+\end{equation}
+Consequently $W$ is positive semidefinite on the full signed-measure space:
+\[
+\iint W(x,y)\,d\eta(x)\,d\eta(y)\ge0
+\qquad\text{for every }\eta\in\MM([0,1]).
+\]
+For every $\mu\in\PP([0,1])$, with
+$\widetilde\mu=(p\mapsto1-p)_\#\mu$ and
+$M_n=\int x^n\,d\widetilde\mu(x)$, one has
+\begin{align}
+\Qq(\mu) &= 2\,\Bb(\mu)\,\Lb(\mu)-\Ee(\mu), \label{eq:Q2BL}\\
+\ln2\cdot\Ee(\mu) &= \sum_{n=2}^{\infty}\frac{(M_1-M_n)^2}{n(n-1)},
+  \label{eq:Emoment}\\
+\frac{W(x,x)}{\ln2} &= 2x\,h(x)-h(x^2)\qquad(0\le x\le1).
+\label{eq:Wdiag}
+\end{align}
+In particular $\Ee(\mu)\ge0$ for every $\mu\in\PP([0,1])$.
+\end{theorem}
+
+\begin{proof}
+For \eqref{eq:Wseries}, expand termwise over the four convergent series of
+\eqref{eq:Wdef} using \eqref{eq:Tseries}: the telescoping identity
+$\sum_{n\ge2}1/(n(n-1))=1$ and the two evaluations
+$\sum_{n\ge2}x y^n/(n(n-1))=x\,T(y)$ and its symmetric partner reproduce
+$W$. Each summand $(x-x^n)(y-y^n)$ is a rank-one kernel, so $W$ is a sum
+of nonnegative squares; its quadratic form against a finite signed measure is
+therefore a sum of squares, giving \eqref{eq:Emoment} with
+$\int(x-x^n)\,d\widetilde\mu=M_1-M_n$.
+
+For \eqref{eq:Q2BL}, note that $p+q-pq=1-xy$ with $x=1-p$, $y=1-q$,
+so $h(p+q-pq)=H(xy)/\ln2$, and by Theorem~\ref{thm:A}
+\[
+\ln2\cdot\Qq = \Bigl(\int g\,d\widetilde\mu\Bigr)^2
+-\Bigl(\int a\,d\widetilde\mu\Bigr)^2-\iint T(xy)\,d\widetilde\mu\,
+d\widetilde\mu .
+\]
+Let $\overline T=\int T\,d\widetilde\mu$ and $B=\int x\,d\widetilde\mu$;
+then $\int g\,d\widetilde\mu=\int a\,d\widetilde\mu+B$, and from
+$H(x)=a(x)+x-T(x)$,
+\[
+\ln2\cdot\Lb=\int a\,d\widetilde\mu+B-\overline T .
+\]
+A direct expansion gives
+\[
+\ln2\,(2B\,\Lb-\Qq)
+=B^2-2B\,\overline T+\iint T(xy)\,d\widetilde\mu\,d\widetilde\mu
+=\iint W\,d\widetilde\mu\,d\widetilde\mu=\ln2\cdot\Ee,
+\]
+which is \eqref{eq:Q2BL}. Finally
+\eqref{eq:Wdiag} follows from the identity
+$T(u)=-u\ln u+u-H(u)$:
+$W(x,x)=x^2-2x\,T(x)+T(x^2)=2x\,H(x)-H(x^2)$.
+The \PROVED{} gate in \texttt{reduction.py} verifies
+\eqref{eq:Wseries} against the closed form within an analytic tail bracket
+(the remainder is at most $1/N$ after $N$ terms) and asserts the symbolic
+identity chain.  Its random-law evaluations and four-point evaluations,
+including the golden point, are \NUMERICAL{} controls only.
+\end{proof}
+
+Substituting \eqref{eq:Q2BL} into \eqref{eq:Fdef} yields the form used
+throughout:
+
+\begin{corollary}[Defect form of the functional]
+\label{cor:Fid}
+For every $\alpha\in[0,1]$ and every $\mu\in\PP([0,1])$, with
+$\Ff(\mu)=(1-\alpha)\Qq(\mu)+\alpha\Cc(\mu)-\Lb(\mu)$,
+\begin{equation}
+\Ff(\mu)=\bigl[2(1-\alpha)\,\Bb(\mu)-1\bigr]\,\Lb(\mu)
++\alpha\,\Cc(\mu)-(1-\alpha)\,\Ee(\mu).
+\label{eq:Fid}
+\end{equation}
+\end{corollary}
+
+\subsection{The iid golden point and the golden-ratio barrier}
+For $\alpha\in[0,1]$ and a point mass $\mu=\delta_p$ with $p\in[0,1]$,
+the only self-coupling is $\delta_{(p,p)}$, and
+\begin{equation}
+\Ff(\delta_p)=\begin{cases}
+h\bigl((1-p)^2\bigr)-h(p),&\alpha=0,\\
+(1-\alpha)\,h\bigl((1-p)^2\bigr)+\alpha\,h\bigl(\sstar(p,p)\bigr)-h(p),
+&\alpha\ge0,
+\end{cases}
+\label{eq:Fpoint}
+\end{equation}
+since $\Qq(\delta_p)=h(2p-p^2)=h(1-(1-p)^2)$ and $\Cc(\delta_p)=
+h(\sstar(p,p))$.
+
+\begin{corollary}[The iid point-mass barrier; \texttt{reduction.py}]
+\label{cor:psi}
+For every $p\in[0,1]$, at $\alpha=0$,
+\[
+\Ff(\delta_p)\ge0
+\iff (1-p)^2\ge p
+\iff p\le\psi=\frac{3-\sqrt5}{2}.
+\]
+\end{corollary}
+
+For $p\in[0,\tfrac12]$, both $(1-p)^2$ and $p$ lie in
+$[0,\tfrac12]$ whenever the inequality can change sign, and $h$ is increasing
+there; for $p>\tfrac12$, one has
+$h((1-p)^2)<h(1-p)=h(p)$.  The quadratic inequality has smaller root
+$\psi$.  At the golden point $x=1/\varphi$, $x^2=1-x$ exactly, so
+$\Ff$ vanishes: $\psi$ is precisely where the PSD defect $\Ee$ first
+overtakes $(2\Bb-1)\Lb$.
+
+For later comparisons, define the two-orbit obstruction constants without a
+decimal approximation.  Let $b^\star$ be the larger root in $(0,\tfrac12)$ of
+\[
+h(b)\,[2-h(b)]=h\bigl((1-b)^2\bigr),
+\]
+put $a^\star=[1-h(b^\star)]/[2-h(b^\star)]$, and set
+$c^\star=a^\star+(1-a^\star)b^\star$.
+
+The endpoint value
+$\Ff(\delta_\psi)=\alpha[1-h(\psi)]\approx0.0405813\,\alpha>0$
+for $\alpha>0$, so point masses do not cap the constant once the second
+strategy is active.  The crossover value is
+\begin{equation}
+\alpha_{\mathrm{crit}}=
+\frac{h(c^{\star})-h\bigl((1-c^{\star})^2\bigr)}
+{1-h\bigl((1-c^{\star})^2\bigr)}
+\approx0.0144054585140081.
+\label{eq:acrit}
+\end{equation}
+
+\begin{lemma}[Point-mass threshold; \texttt{reduction.py} \S6]
+\label{lem:acrit}
+Let $\alpha\in[0,1)$, let
+$\Ff(\delta_p)=(1-\alpha)h(2p-p^2)
++\alpha h(\sstar(p,p))-h(p)$ for $p\in[\tfrac14,\tfrac12]$, and let
+$c^\star,\alpha_{\mathrm{crit}}$ be defined above.  The equation
+$\Ff(\delta_p)=0$ has a unique root in $(\tfrac14,\tfrac12)$, and
+\[
+\text{that root exceeds }c^{\star}
+\iff \alpha>\alpha_{\mathrm{crit}} .
+\]
+For $\alpha=\alpha_0=0.0356069>\alpha_{\mathrm{crit}}$, point masses are
+therefore not binding.
+\end{lemma}
+
+\begin{proof}[Proof sketch; complete in \texttt{reduction.py}]
+On $(1/4,1/2)$, $\sstar(p,p)=1/2$ is \emph{constant}
+(since $p\le1/2\le p+p$), so the $\alpha$-term drops out of
+$\partial_p\Ff(\delta_p)$, giving
+\[
+\frac{d}{dp}\,\Ff(\delta_p)=(1-\alpha)(2-2p)\,h'\bigl(2p-p^2\bigr)-h'(p).
+\]
+On $[p_0,\frac12)$ with $p_0=1-1/\sqrt2$ where $2p-p^2\ge\frac12$, each
+factor has a proved sign: $h'(2p-p^2)\le0$, $2-2p>0$, $h'(p)>0$,
+so the derivative is strictly negative. On $[0,p_0]$, both $h(2p-p^2)\ge
+h(p)$ and $h(\sstar(p,p))\ge h(p)$ hold uniformly, so $\Ff\ge0$ for
+\emph{every} $\alpha\in[0,1]$; and
+$\Ff(\delta_{1/2})<0$ for $\alpha<1$.  Hence there is a unique root.  Its
+position relative to $c^{\star}$ is decided by the sign at $c^{\star}$,
+which is affine in $\alpha$ and vanishes exactly at \eqref{eq:acrit}.  The
+artifact asserts this identity chain.  Its bisection over a grid of 401 points
+per $\alpha$ is an additional \NUMERICAL{} control, not the assertion.
+\end{proof}
+
+\subsection{Why the variance term is load-bearing}
+Dropping the variance in the crudest way --- replacing $\Ee$ by a pointwise
+upper bound derived from \eqref{eq:Wdiag} --- gives a bound whose ratio form is
+governed by $\kappa^{\star}=\max_{x\in(0,1)}[2x-h(x^2)/h(x)]$, i.e.\ an
+explicit constant $(1-\kappa^{\star})/2\approx0.34753<\psi$ (asserted in
+\texttt{reduction.py} \S8). The maximizer sits at $p^{\star}\approx0.117$,
+far below the mean bound, so the pointwise route \emph{wastes} the constraint
+$\EE p\le t$: the variance term is load-bearing, and one must either retain it
+(as we do, via the support reduction and the certificate) or control it sharply
+enough to win it back.
+
+\section{Support reduction: Theorem B-triple-prime}
+\label{sec:B3}
+
+The defect term $\Ee$ is convex in $\mu$ (a positive semidefinite quadratic
+form), so the certificate cannot simply minimize a concave relaxation; instead we prove
+that the global minimum of the exact functional $\Ff$ is attained on a tiny
+parameter family. The functional must first be recast on \emph{pair-orbit
+measures}.
+
+\begin{definition}[Pair-orbit measures]
+\label{def:pair}
+Let
+\[
+\DD=\{(p,q)\in[0,1]^2:p\le q\},
+\]
+and let $\PP(\DD)$ denote the regular Borel probability measures on this
+compact triangle.  A point $(p,q)\in\DD$ is a \emph{pair orbit}.  Every
+$\nu\in\PP(\DD)$ induces the marginal law
+\begin{align*}
+\mu_\nu=M(\nu)
+&=\frac{(\pi_1)_\#\nu+(\pi_2)_\#\nu}{2}\in\PP([0,1]),\\
+\int f\,d\mu_\nu
+&=\int_{\DD}\frac{f(p)+f(q)}2\,d\nu(p,q)
+\qquad(f\in C[0,1]).
+\end{align*}
+A \emph{two-orbit law} is
+\[
+\nu=w\delta_{(p_1,q_1)}+(1-w)\delta_{(p_2,q_2)},
+\quad
+0\le p_i\le q_i\le1,\quad 0\le w\le1.
+\]
+It is parametrized by $(p_1,q_1,p_2,q_2,w)$.
+\end{definition}
+
+The point of the folding is exactness of the coupling cost. If $\pi$ is a
+symmetric coupling of $\mu$ with itself (which suffices: replacing $\pi$ by
+$(\pi+\pi^{\top})/2$ preserves both marginals and every symmetric cost), folding
+$(p,r)\mapsto(\min(p,r),\max(p,r))$ yields a law $\nu$ on $\DD$ whose
+induced marginal is $\mu$ and whose $\sstar$-cost is unchanged. Hence
+\[
+\Cc(\mu)=\min_{\substack{\nu\in\PP(\DD)\\\mu_\nu=\mu}}\int c\,d\nu,\qquad
+c(p,q)=h\bigl(\sstar(p,q)\bigr),
+\]
+and the joint optimization over laws and couplings collapses to
+\[
+\inf_{\substack{\mu\in\PP([0,1])\\\mean(\mu)\le t}}\Ff(\mu)
+=
+\inf_{\substack{\nu\in\PP(\DD)\\\mean(\mu_\nu)\le t}}\Phi_\alpha(\nu),
+\]
+where $\Phi_\alpha$ is the functional stated explicitly in
+Theorem~\ref{thm:B3}.
+
+\begin{theorem}[Theorem B${}'''$; \texttt{thmB3\_proof.py}]
+\label{thm:B3}
+Let $\DD$ and the map $\nu\mapsto\mu_\nu$ be as in
+Definition~\ref{def:pair}.  For every $\alpha\in[0,1]$ and $t\in[0,1]$,
+define on the weak-$*$ compact convex set $\PP(\DD)$
+\[
+\Phi_\alpha(\nu)
+=(1-\alpha)\Qq(\mu_\nu)
++\alpha\int_{\DD}h(\sstar(p,q))\,d\nu(p,q)-\Lb(\mu_\nu).
+\]
+The minimum of $\Phi_\alpha$ over
+$\{\nu\in\PP(\DD):\mean(\mu_\nu)\le t\}$ is attained by a measure supported
+on at most two points of $\DD$.  Its induced marginal is therefore supported
+on at most four points of $[0,1]$.
+\end{theorem}
+
+The proof uses the \CITED{} Riesz, Banach--Alaoglu, Bauer, and moment-set
+theorems identified below.  The complete argument carries their hypotheses
+explicitly.  The executable \texttt{thmB3\_proof.py} also runs sampled
+\NUMERICAL{} controls, none of which is a proof step.
+
+\begin{proof}
+\emph{Step 1: compactness.} $\DD$ is a closed subset of $[0,1]^2$, hence a
+compact metric space. By the Riesz representation theorem (van~Neerven
+\cite{vanneerven}, Thm.~4.2), regular Borel measures on $\DD$ are identified
+with $C(\DD)^*$, and by Banach--Alaoglu (van~Neerven \cite{vanneerven},
+Thm.~4.50) the closed unit ball of $C(\DD)^*$ is weak-$*$ compact. The set
+$\PP(\DD)$ is weak-$*$ closed there (it is the intersection of closed conditions
+$\langle 1,\nu\rangle=1$ and $\langle f,\nu\rangle\ge0$ for all $f\ge0$),
+so $\PP(\DD)$ is weak-$*$ compact. (Equivalently, Prokhorov: every family of
+laws on compact $\DD$ is tight.)
+
+\emph{Step 2: continuity.} The functions
+\begin{align*}
+g(p,q)&=\frac{2-p-q}{2},\\
+\ell(p,q)&=\frac{h(p)+h(q)}{2},\\
+\sstar(p,q)&=\min\bigl(\max(\tfrac12,p,q),\min(p+q,1)\bigr).
+\end{align*}
+and $c=h\circ\sstar$
+are continuous on $\DD$ ($r\ln r\to0$ gives continuity of $h$ at the
+endpoints; min and max preserve continuity). The kernel $W$ of \eqref{eq:Wdef}
+is continuous on $[0,1]^2$ and $W(0,\cdot)=W(1,\cdot)=0$ by direct
+substitution, so $T$ and $W$ are likewise continuous. The marginal map $M$ is
+continuous and linear. If $\mu_i\to\mu$ weak-$*$, then $\mu_i\otimes\mu_i\to
+\mu\otimes\mu$ weak-$*$: product functions $a(x)b(y)$ separate points and form a
+unital subalgebra, hence are uniformly dense in $C([0,1]^2)$
+(Stone--Weierstrass; van~Neerven \cite{vanneerven}, Thm.~2.5), and
+uniform approximation extends convergence to the continuous kernel $W(1-x,1-y)$.
+Thus $\nu\mapsto\Ee(\mu_\nu)$ is weak-$*$ continuous, and so is
+$\Phi_\alpha$ by \eqref{eq:Fid}.
+
+\emph{Step 3: global attainment.}
+The feasible set
+$H_t=\{\nu\in\PP(\DD):\mean(\mu_\nu)\le t\}
+=\{\nu\in\PP(\DD):\Bb(\mu_\nu)\ge1-t\}$ is the preimage of a closed ray
+under a continuous map, hence weak-$*$ compact, and contains
+$\delta_{(0,0)}$.  A global minimizer $\nu^{\star}$ exists; put
+$\beta^{\star}=\Bb(\mu_{\nu^{\star}})$.
+
+\emph{Step 4: the slice.}
+The slice
+$K_\beta=\{\nu\in\PP(\DD):\Bb(\mu_\nu)=\beta^{\star}\}$
+is nonempty, convex, weak-$*$ compact, and contained in $H_t$, so
+\[
+\min_{K_\beta}\Phi_\alpha
+=\Phi_\alpha(\nu^{\star})
+=\min_{H_t}\Phi_\alpha.
+\]
+On $K_\beta$ the marginal mean, hence $\Bb$, is fixed.  By
+\eqref{eq:Q2BL},
+$\Qq(\mu_\nu)=2\beta^\star\Lb(\mu_\nu)-\Ee(\mu_\nu)$, and
+\[
+\Phi_\alpha(\nu)
+=\bigl[2(1-\alpha)\beta^\star-1\bigr]\Lb(\mu_\nu)
++\alpha\int_{\DD}c\,d\nu-(1-\alpha)\Ee(\mu_\nu).
+\]
+The first two terms are weak-$*$ continuous linear functionals. For
+$0\le\theta\le1$ and $\nu_0,\nu_1\in K_\beta$, positive semidefiniteness of
+$W$ gives
+\[
+\Ee\bigl(\theta\mu_{\nu_0}+(1-\theta)\mu_{\nu_1}\bigr)
+\le\theta\,\Ee(\mu_{\nu_0})+(1-\theta)\,\Ee(\mu_{\nu_1}),
+\]
+so $-(1-\alpha)\Ee$ is concave (here the restriction $\alpha\le1$ is used
+once). Hence $\Phi_\alpha$ is continuous and concave on the compact convex
+$K_\beta$.
+
+\emph{Step 5: Bauer's minimum principle.}
+By the Bauer maximum principle (Bauer \cite{bauer}; the formulation used here is
+Bru--de~Siqueira~Pedra \cite{brupedra}, Lemma~3.3, with the reference to
+Bauer's original paper checked against the publisher record), a continuous convex
+function on a compact convex set attains its maximum at an extreme point; applied
+to $-\Phi_\alpha$ on $K_\beta$, there is an extreme point $\nu^{**}\in K_\beta$
+with $\Phi_\alpha(\nu^{**})=\min_{K_\beta}\Phi_\alpha$.
+
+\emph{Step 6: extreme points of a one-moment slice.}
+$K_\beta=\{\nu:\int g\,d\nu=\beta^{\star}\}$ is a moment set cut from
+$\PP(\DD)$ by \emph{one} non-constant moment condition (plus the mass
+normalization, already part of $\PP(\DD)$). By Winkler's theorem on extreme
+points of moment sets \cite{winkler}, as reproduced in Pinelis'
+Theorem~12 \cite{pinelis}, every extreme point of such a slice is supported on at
+most $1+1=2$ points. For completeness we give the short direct proof in this
+case. Suppose an extreme $\nu\in K_\beta$ has three distinct support points, and
+choose pairwise disjoint Borel neighborhoods $A_1,A_2,A_3$ of them with
+positive $\nu$-mass. The three vectors
+\[
+v_i=\Bigl(\nu(A_i),\;\int_{A_i}g\,d\nu\Bigr)\in\mathbb R^2
+\]
+are linearly dependent: let $(a_1,a_2,a_3)\ne0$ with $\sum_i a_i v_i=0$,
+and put $\eta=\sum_i a_i\,\nu|_{A_i}$. Then $\eta$ is a nonzero signed
+measure with total mass $0$ and $g$-moment $0$, so for small $\eps>0$, the
+two measures $\nu+\eps\eta$ and $\nu-\eps\eta$ (with densities $1\pm\eps a_i$
+on $A_i$) are distinct nonnegative members of $K_\beta$ whose midpoint is $\nu$,
+contradicting extremality. Hence $|\supp(\nu^{**})|\le2$.
+
+\emph{Step 7.}
+$\nu^{**}$ has $\Bb(\mu_{\nu^{**}})=\beta^{\star}$, so
+$\mean(\mu_{\nu^{**}})=1-\beta^{\star}\le t$, and by Step~4 it is a global
+minimizer.  Its marginal is supported on at most four points, and
+$\nu^{**}$ is a two-orbit (or one-orbit) law in the five-parameter family of
+Definition~\ref{def:pair}. \qedhere
+\end{proof}
+
+\begin{remark}[Why two orbits, and the controls in \texttt{thmB3\_proof.py}]
+The decisive move is freezing $\Bb$ (equivalently the mean) up front: by
+Theorem~A${}'$ that is the \emph{only} place the mean enters $\Qq$, so the
+bilinear term becomes linear and the entire functional concave, leaving two moment
+conditions (mass and $\Bb$) and hence two orbits.  The executable additionally
+runs three explicitly labeled \NUMERICAL{} controls: fixed-$\Bb$ chord tests
+(worst observed
+$\Phi(\text{mid})-\text{chord}=+2.9\times10^{-9}$ over 3000 random
+segments), a merged-atom continuity check of $M$ and $\Ee$, and a control that
+\emph{removes} the fixed-$\Bb$ premise and detects non-concavity
+($-0.124$ observed).
+The binding obstruction (Section~\ref{sec:margin}) uses exactly two orbits, so
+the theorem is tight in orbit count.
+\end{remark}
+
+\begin{corollary}[Five-parameter certification target]
+\label{cor:5param}
+Let $\alpha_0=0.0356069$ and
+$t_{\mathrm{cert}}=0.3820660112501052$ be the exact rationals in
+Theorem~\ref{thm:main}.  Then \eqref{eq:Fdef} holds for every
+$\mu\in\PP([0,1])$ with $\mean(\mu)\le t_{\mathrm{cert}}$ if and only if
+\[
+\Phi_{\alpha_0}(\nu)\ge0
+\]
+for every
+\[
+\nu=w\delta_{(p_1,q_1)}+(1-w)\delta_{(p_2,q_2)},\qquad
+0\le p_i\le q_i\le1,\quad 0\le w\le1,
+\]
+satisfying $\mean(\mu_\nu)\le t_{\mathrm{cert}}$.
+\end{corollary}
+
+\section{The margin lemma and the diagonal inequality}
+\label{sec:margin}
+
+The functional $\Phi_\alpha$ vanishes identically on the ``sink'' laws
+$\{(1-u)\delta_0+u\delta_1\}$; on the way there both $\Lb$ and $\Ff$
+collapse, so a raw sign test cannot terminate. The margin lemma removes this
+degeneracy by dividing by $\Lb$.
+
+For $x\in[0,1]$ define the diagonal density
+\begin{align}
+\rh(x)
+&=\frac{W(1-x,1-x)}{\ln2}
+=2(1-x)h(x)-h\bigl((1-x)^2\bigr),
+  \label{eq:rhdiag}\\
+\rho(x)&=\frac{\rh(x)}{h(x)}\qquad(0<x<1).
+\end{align}
+The positive-semidefinite series in Theorem~\ref{thm:Ap} gives a Hilbert-space
+feature map $\mathbf v:[0,1]\to\ell^2$ satisfying
+\begin{align*}
+\langle\mathbf v(p),\mathbf v(q)\rangle
+&=\frac{W(1-p,1-q)}{\ln2},\\
+\|\mathbf v(p)\|^2&=\rh(p),\\
+\Ee(\mu)&=\left\|\int\mathbf v\,d\mu\right\|^2.
+\end{align*}
+
+\begin{lemma}[Margin lemma; \texttt{margin\_lemma.py}]
+\label{lem:margin}
+Let $\alpha\in[0,1]$ and let $\mu\in\PP([0,1])$ satisfy
+$\Lb(\mu)=\int h\,d\mu>0$.  With $\Cc(\mu)$ defined by the self-coupling
+minimum in Theorem~\ref{thm:main}, put
+\[
+\sigma(\mu)=\int\sqrt{\rh(p)}\,d\mu(p),\qquad
+\Lh(\mu)=2(1-\alpha)\Bb(\mu)-1
++\alpha\frac{\Cc(\mu)}{\Lb(\mu)}
+-(1-\alpha)\frac{\sigma(\mu)^2}{\Lb(\mu)}.
+\]
+Then, for
+$\Ff(\mu)=(1-\alpha)\Qq(\mu)+\alpha\Cc(\mu)-\Lb(\mu)$,
+\begin{equation}
+\Ff(\mu)\ge\Lb(\mu)\Lh(\mu).
+\label{eq:margineq}
+\end{equation}
+Equality holds whenever
+$|\supp(\mu)\setminus\{0,1\}|\le1$.
+\end{lemma}
+
+\begin{proof}
+By the triangle inequality for Bochner integrals,
+\[
+\Ee(\mu)=\left\|\int\mathbf v\,d\mu\right\|^2
+\le\left(\int\|\mathbf v\|\,d\mu\right)^2=\sigma(\mu)^2.
+\]
+Substitution in \eqref{eq:Fid} gives \eqref{eq:margineq}.  If the support has
+at most one non-sink point, all nonzero feature vectors are collinear, so
+equality holds. \qedhere
+\end{proof}
+
+Two properties make \eqref{eq:margineq} usable.
+\begin{enumerate}
+\item \emph{Bounded, never singular.}
+The global Arb cover in \texttt{cert2.\_rho\_global} \PROVED{} the cap used
+by the certificate.  Its approximate maximizer
+$p^\star\approx0.1165$ and value
+$\rho_{\max}\approx0.3049467$ are \NUMERICAL{} summaries.  Since
+$\rh(x)\le\rho_{\max}h(x)$,
+\[
+\sigma(\mu)^2\le \rho_{\max}\Lb(\mu),
+\]
+so $\Lh$ is bounded and $\sigma^2/\Lb$ cannot diverge.  Along a sequence of
+fixed mean $t$ collapsing to a sink, $\sigma^2$ is quadratic in the non-sink
+mass while $\Lb$ is linear, and hence
+\[
+\Lh\longrightarrow 2(1-\alpha)(1-t)-1=\kappa_t
+\approx0.19186255>0
+\]
+at the certified parameters.
+\item \emph{Tight at the obstruction.}
+With the exact $a^\star,b^\star$ defined above, the law
+$\mu^\star=a^\star\delta_1+(1-a^\star)\delta_{b^\star}$ has exactly one
+non-sink support point, so
+\[
+\Lh(\mu^\star)=\frac{\Ff(\mu^\star)}{\Lb(\mu^\star)}
+\]
+exactly.  The decimal summaries
+$a^\star\approx0.0788772927059232$ and
+$b^\star\approx0.3294547385030370$, the $10^{-12}$ evaluation, and the
+Jensen-variant value $-1.94\times10^{-2}$ are \NUMERICAL{} diagnostics
+recorded in \texttt{margin\_lemma.py}; none is a proof premise.
+\end{enumerate}
+
+The margin lemma is the reason the certificate can cover the near-total-sink
+slab $p_1,q_1\to0$, $q_2\to1$, $w\to1$ that defeated earlier campaigns
+(\S\ref{sec:record}): there $\Lb$ collapses while $\Lh$ stays positive.
+
+\subsection{A linear diagonal bound}
+\label{sec:rh}
+
+The certificate's ratio rule needs a certified upper bound on $\rho$ that is
+\emph{linear and piecewise dyadic-friendly}: over any box, the maximum of
+$2\min(x,1-x)$ is attained at a corner, so
+$\sqrt{\rh}\le\sqrt{2\min(x,1-x)}$ gives an aggregate bound with no interval
+blow-up.
+
+\begin{theorem}[$\rh$ inequality; \texttt{lemma\_rh\_proof.py},
+\texttt{lemma\_rh.py}]
+\label{thm:rh}
+Let $h(u)=-u\log_2u-(1-u)\log_2(1-u)$ on $[0,1]$, with
+$h(0)=h(1)=0$, and define
+\[
+\rh(x)=2(1-x)h(x)-h\bigl((1-x)^2\bigr).
+\]
+For every $x\in[0,1]$,
+\begin{equation}
+\rh(x)\le2\min(x,1-x).
+\label{eq:rhbound}
+\end{equation}
+Moreover $\rh(x)/x\to2$ as $x\downarrow0$.
+\end{theorem}
+
+\begin{proof}
+For $x\in[\tfrac12,1]$, $\rh(x)=2(1-x)h(x)-h((1-x)^2)\le 2(1-x)$, as
+$h\le1$ and $h\ge0$. This is the trivial side.
+
+For $x\in[0,\tfrac12]$ the relation $\rh\le2x$ is
+$f(x):=h\bigl((1-x)^2\bigr)-2(1-x)\,h(x)+2x\ge0$. The machine-checked
+proof (\texttt{lemma\_rh\_proof.py}) is built on the SymPy-exact identity
+\begin{equation}
+\label{eq:rhexact}
+\ln2\cdot f(x)=x^2\ln\frac{2}{x}-x(2-x)\,\ln\Bigl(1-\frac{x}{2}\Bigr),
+\qquad 0<x\le\tfrac12,
+\end{equation}
+with $f(0)=0$ exactly. For $0<x\le\tfrac12$ both summands on the right are
+strictly positive ($\ln(2/x)\ge\ln4>0$; $\ln(1-x/2)<0$ negated), so
+$f(x)>0$ on $(0,\tfrac12]$: positivity is immediate, with no cancellation. The
+near-zero structure is quantified by the explicit remainder
+$\ln2\,f(x)=x^2[-\ln x+\ln2+1]+R(x)$ with $-x^3/2\le R(x)\le
+-(15/62)\,x^3$, giving $\ln2\,f(x)\ge(\ln32+\tfrac{31}{32})\,x^2\approx
+4.434\,x^2$ on $(0,\tfrac1{16}]$; in particular
+$f(x)=x^2\log_2(1/x)+O(x^2)=o(x)$, which is the tightness claim. On
+$[\tfrac1{16},\tfrac12]$ an adaptive Arb interval cover certifies $f>0$ cell by
+cell; the machine proof executes a 44-subinterval cover with minimum certified lower
+bound $2.4\times10^{-3}$, after an exact recursive split of the interval.
+The \PROVED{} gate checks the SymPy identity, series through order $x^6$,
+leading behavior, algebraic factorizations, and remainder bounds; the adaptive
+Arb cover checks exact contiguity and positive lower bounds.  The executable
+prints \texttt{PROOF COMPLETE: machine-checked} only after both gates pass.
+\end{proof}
+
+A companion monotonicity fact supplies the endpoint-safe caps used by
+\texttt{cert2.rho\_upper}:
+
+\begin{equation}
+\frac{d}{dz}\frac{z}{h(z)}=\frac{h(z)-z\,h'(z)}{h(z)^2}
+=\frac{-\log_2(1-z)}{h(z)^2}>0\qquad(0<z<1),
+\label{eq:zoverh}
+\end{equation}
+so $z/h(z)$ increases and by symmetry $h(z)=h(1-z)$ the ratio
+$(1-z)/h(z)$ decreases.  These signs are proved symbolically by
+\path{cert2._RHO_NUMERATOR_IDENTITY} and asserted at import by
+\path{prove_rho_endpoint_monotonicity}.
+
+\section{The certificate}
+\label{sec:certificate}
+
+\subsection{The reduced problem and exact arithmetic}
+By Corollary~\ref{cor:5param} it remains to certify, for
+$\alpha=0.0356069$ and $t_{\mathrm{cert}}=0.3820660112501052$, that
+$\Phi_\alpha(\nu)\ge0$ for every two-orbit
+$\nu=w\,\delta_{(p_1,q_1)}+(1-w)\,\delta_{(p_2,q_2)}$ with
+$\mean(\mu_\nu)\le t_{\mathrm{cert}}$. All universal inequalities are
+statements in \emph{Arb ball arithmetic} (\texttt{flint}/\texttt{Arb},
+Johansson \cite{arb}): enclosures of $h$, $s^{\star}$ (monotone corners),
+$\rh$, and $\sqrt{\rh}$; sound min/max extensions; exact shortest-decimal parsing
+of float endpoints into Arb; certified covers. Every rule is an independently sound
+lower bound or infeasibility proof: \emph{skipping a rule can only send a box to
+the split branch, never clear it.} Numerically derived quantities that steer the
+search are labeled NUMERICAL and are never used as proof steps.
+
+The exact orbit swap
+$(p_1,q_1,p_2,q_2,w)\mapsto(p_2,q_2,p_1,q_1,1-w)$ preserves
+$\mean,\Lb,\Cc,\Ee,\Phi_\alpha$ term by term (asserted exactly and checked on
+rational endpoints by \texttt{verify\_orbit\_swap}), so the root
+$[0,1]^4\times[\tfrac12,1]$ covers the full cube, and it is split into the
+eight exact dyadic $w$-slices
+$[\tfrac12,\tfrac9{16}],[\tfrac9{16},\tfrac58],\ldots,[\tfrac{15}{16},1]$
+($\texttt{root\_w\_lo}=\texttt{1/2}$, $\texttt{root\_w\_hi}=\texttt{1}$
+in the manifest). Campaign parameters (v2 manifests): $\alpha=0.0356069$,
+$t=0.3820660112501052$, $\texttt{level\_offset}=10^{-4}$, min box width
+$10^{-3}$, collar floor $1.25\times10^{-4}$, face floor $10^{-3}$, face box
+budget $10^5$, box budget $2\times10^9$, 24\,h per slice (72\,h in the
+relaunched campaign I), 160-bit native
+covers with an 80-bit working precision, $\texttt{center\_gate}=-0.02$,
+$\texttt{centered5\_max\_width}=1/32$, $\texttt{q2pin}=15/16$,
+$\texttt{collar\_edge}=0.01$.
+
+\paragraph{$\lambda$-shifts.}
+For $\lambda\ge0$, the shifted functional
+$\Phi_{\alpha,\lambda}=\Phi_\alpha+\lambda(\mean-t)$ satisfies
+$\Phi_{\alpha,\lambda}\le\Phi_\alpha$ on feasible points
+($\mean\le t$), so any certified lower bound on the shifted functional over a box is
+a valid lower bound on $\Phi_\alpha$ there. The certified family is
+\[
+\begin{aligned}
+\lambda_{\mathrm{seed}}&=1.3682158100251758,\\
+\mathcal L&=\{\,0,\ 1,\ 1.626,\ 2.2,\ 0.98\lambda_{\mathrm{seed}},\
+\lambda_{\mathrm{seed}},\ 1.02\lambda_{\mathrm{seed}}\,\}.
+\end{aligned}
+\]
+The displayed decimal is an exact rational seed in the manifest, chosen from
+a \NUMERICAL{} face-KKT solve (reported residual below $10^{-35}$).
+Correctness does not depend on the seed satisfying any KKT equation.
+
+\subsection{The rule chain}
+\texttt{cert3.certify} runs the following cheap-first cascade on a stack of
+boxes; each rule writes one trace byte (codes in \S\ref{sec:trace}).
+
+\begin{enumerate}
+\item[\texttt{0}] \emph{Mean contractor} (\texttt{diag\_exhaust.mean\_contract});
+with exact rationals $l_i=(p_i^{\mathrm{lo}}+q_i^{\mathrm{lo}})/2$ from
+shortest-decimal endpoints, every point of the box satisfies
+$\mean\ge A(w):=l_2+w(l_1-l_2)$; solve $A(w)\le t$ exactly in
+\texttt{Fraction} arithmetic to contract $w$ or prove the box infeasible
+(trace code 0).
+\item[\texttt{1,2}] \emph{Corner bound} (\texttt{diag\_exhaust.phi\_corner}).
+With $m_{\star}=\min(\mean_{\mathrm{hi}},t)$ and
+$\kappa_{\star}=2(1-\alpha)(1-m_{\star})-1$ required $>0$, then
+$\Phi\ge\kappa_{\star}\,\Lb_{\mathrm{lo}}+\alpha\,\Cc_{\mathrm{lo}}
+-(1-\alpha)\,\sigma_{\mathrm{hi}}^2$ over the box (code 1 = infeasible,
+code 2 = corner-clear).
+\item[\texttt{3}] \emph{Ratio rule} (\texttt{cert2.ratio\_rule}). From the
+margin lemma, with a \emph{box-specific} $w$-window
+$W=\texttt{hull}(w_{\mathrm{lo}},w_{\mathrm{hi}})$:
+$\sigma^2\le\Lb\int\rho\,d\nu\le\Lb\,\rho_{\mathrm{hi}}$, so
+\begin{align*}
+\Phi&\ge\Lb\bigl[\kappa_t-(1-\alpha)\rho_{\mathrm{hi}}\bigr],\\
+\kappa_t&=2(1-\alpha)(1-t)-1
+\approx0.191862550011752.
+\end{align*}
+with $\rho_{\mathrm{hi}}$ the endpoint maximum over $W$ of the convex
+combination of the two orbits' certified caps (the combination is linear in $w$;
+an unsound slope-form co-variation was identified and replaced by the endpoint
+max). This rule is \emph{its own cheapest applicability test} (35.6\,$\mu$s
+vs.\ 27.5\,$\mu$s for the corner bound): a hand-tuned geometric pre-filter
+(``every atom $\le0.05$ or $\ge0.42$'') delegating applicability was removed
+because it fell silent exactly on the near-total-sink slab that matters; see
+\S\ref{sec:record}.
+\item[\texttt{4--7}] \emph{Centered (KKT-shifted) rules.}
+The primary rule is \path{centered5_best}, with
+\path{centered5_mixed}, \path{centered5_mixed_swap}, and
+\path{centered_w_best} as block-mixed, orbit-swap, and weight-only
+fallbacks.  They are gated to widths
+$\le1/32$ and require a corner lower bound at least $-0.02$.  Each proves
+the lower bound
+$\Phi_\lambda\ge\Phi_\lambda(\mathrm{mid})-\sum_i
+\sup_{\mathrm{box}}\lvert\partial_i\Phi_\lambda\rvert\cdot w_i$ built from
+certified interval gradients over the $\lambda$-family, falling back to
+block-mixed forms when the full gradient is unusable at a sink-touching vestigial
+orbit, and to the exact orbit-swapped form or the derivative-free weight-only form
+on collar-touching boxes.
+\item[\texttt{8}] \emph{$q_2$-pin face rule}. When $q_2^{\mathrm{lo}}\ge
+\texttt{q2pin}=15/16$, $\sstar(p_2,q_2)=q_2$ is pinned and
+$\partial\Phi_\lambda/\partial q_2\le0$ on the strip, so the $q_2$-face
+carries the minimum; a four-dimensional face branch-and-bound
+(\texttt{face\_bb}) certifies that face with the pinned $\lambda$-subfamily.
+\item[\texttt{9}] \emph{Residual}. All five coordinates at their floors (width
+$\le10^{-3}$, or $\le1.25\times10^{-4}$ for collar-touching boxes): an
+uncleared box, recorded with its center and full widths. A COMPLETE slice has
+zero residuals.
+\item[\texttt{16+$j$}] \emph{Split of coordinate $j$}. The splitter chooses
+the coordinate of largest \emph{influence-weighted} width (width $\times$
+influence, where orbit~1's atoms carry at most $w^{\mathrm{hi}}$ and orbit~2's
+at most $1-w^{\mathrm{lo}}$; \texttt{split\_by\_influence}, with
+\texttt{split\_by\_width} kept beside it behind the \texttt{SPLIT\_CHOICE}
+hook). Any split is sound (children cover the parent exactly); the choice affects
+only cost.
+\end{enumerate}
+
+A box is \emph{terminal} when a rule proves infeasibility, certifies
+$\Phi\ge0$, or cannot be split. The verdict is \texttt{COMPLETE} iff the stack
+is empty, residuals are zero, and the box and time budgets were not consumed.
+
+\subsection{Proof traces and independent replay}
+\label{sec:trace}
+Every processed raw DFS node writes exactly one byte (\texttt{cert3-trace-v1}):
+codes 0--9 name the terminal rule, code $16+j$ the split coordinate. The trace
+size therefore \emph{equals} the processed tally by construction.
+
+\texttt{cert3\_replay.replay\_trace} reconstructs every box from the exact dyadic
+root by re-applying the mean contractor and the recorded splits (strict,
+representable midpoints required), re-proves \emph{only the claimed rule} per
+terminal in Arb interval arithmetic (splits are intrinsically sound), rejects any
+residual event, unknown code, trailing event, or non-empty final stack, and
+compares all trace-derived tallies against the committed record. Worker fidelity is
+enforced by import order: same modules, 160-bit covers, then 80-bit working
+precision; the $\lambda$-family is recomputed and checked against the manifest. A
+replay failure is a rejection problem.
+
+\begin{itemize}
+\item \emph{Adversarial suite}: all eight attack vectors are verified rejections ---
+flipped rule byte; injected residual; clear-replaced-by-split; truncation;
+extension; unknown code; false infeasibility claim; wrong expected tallies --- each
+with the correct diagnostic. An INCOMPLETE slice trace replays mathematically and is
+rejected precisely for its pending stack.
+\item \emph{Determinism}: campaigns E and F ran slice~0 five hours apart on
+different snapshots; both processed exactly 16{,}231{,}621 boxes and their trace
+files are byte-identical (SHA-256 \texttt{9eed0cc1382f5485\ldots}). The proof
+object is reproducible, not merely re-derivable.
+\end{itemize}
+
+\subsection{The immutable campaign protocol (v2)}
+\label{sec:protocol}
+\path{cert3_par.py} \texttt{create} writes a fresh UUID-named campaign directory.
+The seven executable sources are \path{cert3.py}, \path{cert2.py},
+\path{cert3_par.py}, \path{diag_exhaust.py}, \path{bound_kkt.py},
+\path{arbcore.py}, and \path{entropy.py}.  The eight review sources are
+\path{bridge_uc.py}, \path{cert3_collect.py}, \path{cert3_replay.py},
+\path{decomposition.py}, \path{lemma_rh_proof.py},
+\path{margin_lemma.py}, \path{reduction.py}, and \path{thmB3_proof.py}.
+The protocol copies exactly those 15 files into \path{snapshot/}, hashes each
+with SHA-256, and atomically writes \path{launch.json} with exact dyadic roots,
+canonical lowercase-hex UUID4 run identifiers, and exact parameters.  Workers
+run from the snapshot under \texttt{python -B}; the exact listing prevents
+imports from preferring stray bytecode or extension modules.
+
+Commit is atomic and append-only. The worker writes its trace to a run-unique
+hidden temp file with flush+fsync, records its SHA-256 and size (size must equal
+processed), and the supervisor re-hashes the temp before installing it next to the
+result via Darwin \texttt{renamex\_np} with \texttt{RENAME\_EXCL}: nothing is
+ever deleted or overwritten, and two writers cannot collide.
+
+\path{cert3_collect.py} accepts a campaign only by \emph{re-proving it}.  Its
+hardcoded \path{EXPECTED_EXECUTABLE_FILES} (7) and
+\path{EXPECTED_REVIEW_FILES} (8) override the manifest's inventory;
+the snapshot is re-listed, re-hashed, and must be pristine; roots must be the
+exact dyadic partition, run ids canonical UUID4, exit code 0, verdicts
+COMPLETE, positive work, and
+$\texttt{stack}=\texttt{residual}=\texttt{budget\_boxes}=\texttt{budget\_time}=0$;
+trace digests and sizes consistent; then it re-imports the frozen modules from the
+snapshot (import location asserted) and \emph{replays all eight traces} before
+printing \texttt{COMPOSITE CERTIFICATE}. Hand-authored complete JSON is
+insufficient by construction.
+
+\subsection{The campaign record: E, F, G, H, I, and J status}
+\label{sec:record}
+The certified rational decimal
+$t_{\mathrm{cert}}=0.3820660112501052\ge\psi+10^{-4}$ is itself proven
+exactly: for $r\in[0,\tfrac32]$, $r\ge\psi\iff r^2-3r+1\le0$, checked
+in rationals (\texttt{cert3\_par.target\_relation\_holds}).
+
+\begin{table}[h]
+\centering
+\footnotesize
+\begin{tabular}{r r r r r r r}
+\hline
+slice & E proc.\ & F proc.\ & G proc.\ & G ratio & H proc. & I proc.\\
+\hline
+0 & 16,231,621 & 16,231,621 & 15,528,149 & 192,277 & 21,135,611 & 21,135,611$^{\ddagger}$\\
+1 & 16,320,717 & 16,320,717 & 15,226,435 & 228,386 & 20,827,065 & 20,827,065$^{\ddagger}$\\
+2 & 17,058,935 & 17,058,935 & 15,381,807 & 295,807 & 23,486,265 & 23,486,265$^{\ddagger}$\\
+3 & 19,213,165 & 19,213,165 & 17,831,917 & 281,389 & 34,186,855 & 34,186,855$^{\ddagger}$\\
+4 & 19,341,141 & 19,341,141 & 19,030,155 & 82,944 & 54,161,482$^{\dagger}$ & 71,405,987$^{\star}$\\
+5 & 22,972,035 & 22,972,035 & 22,640,283 & 78,913 & 59,867,104$^{\dagger}$ & 117,709,435$^{\star}$\\
+6 & 21,467,895 & 33,614,993 & 29,889,721 & 271,760 & 74,343,239$^{\dagger}$ & 121,456,775$^{\star}$\\
+7 & 26,095,385 & 51,360,695 & 52,086,331 & 1,193,438 & 78,257,861 & 78,257,861$^{\ddagger}$\\
+\hline
+\end{tabular}
+\caption{Processed boxes and (for G) ratio clears per $w$-slice in campaigns
+E, F, G, H, and I; residuals are $0$ except F slice~7 ($1{,}447{,}470$ sink
+residuals), F slices~6--7 and G slice~7 stopped by the wall (stacks 12/18,
+24), G slice~7 at $52{,}086{,}331$ boxes with residual~0. E: 2026-08-15,
+8\,h/slice, slices 0--5 COMPLETE and replayed. F: 2026-08-16 05:38,
+12\,h/slice, slices 0--6 COMPLETE and replayed. G: 2026-08-16 17:56,
+24\,h/slice, slices 0--6 COMPLETE and replayed, all rows summing to the
+committed 187{,}614{,}798 processed nodes. H (final): 2026-08-17 21:20,
+24\,h/slice, slices 0--3 and 7 COMPLETE and replayed, rows summing to the
+committed 366{,}265{,}482 processed boxes with residual~0 throughout;
+$\dagger$~marks the INCOMPLETE slices 4--6, stopped by the 24\,h wall with
+stacks 25/27/30 and residual~0 (time-limited only). I (relaunch): all eight
+slice records are committed, rows summing to $488{,}465{,}854$ boxes.
+$\ddagger$~marks ``trace SHA-256 identical to campaign H'' (slices 0--3, 7);
+$\star$~marks ``I total exceeds H wall'' (slices 4--6). The frozen collector
+replayed all eight traces in its own gate and printed \texttt{COMPOSITE
+CERTIFICATE} on 2026-08-21. On every replayed slice the binary-tree invariant
+$\text{terminals}=\text{splits}+1$ holds exactly.}
+\label{tab:campaigns}
+\end{table}
+
+\paragraph{How the residual barrier was found and removed (E,F,G).}
+Campaign E's slice 6--7 incompleteness was purely wall-clock (12 and 18 pending
+stack boxes at the 8\,h wall, zero residuals). Campaign F's slice~7 exposed a
+genuinely mathematical-looking wall: 1{,}447{,}470 residuals in 51.4\,M
+boxes, all \texttt{sink}, pinned to the razor-thin near-total-sink slab
+$p_1,q_1\in[0,10^{-4}]$, $q_2\in[0.9844,1]$, $w\in[0.9920,1]$,
+$p_2\in[0.4063,0.4200]$ --- the degenerate family the margin lemma was built
+for; the ratio rule cleared 400/400 sampled leaves but was \emph{never called}
+there, as a hand-tuned filter demanded every atom $\le0.05$ or $\ge0.42$ and
+$p_2$ missed $0.42$ by $1.4\times10^{-2}$. Removing the filter is sound (a
+skipped bound only forces a split), the rule is its own cheapest test, and the
+extracted slab certifies COMPLETE in 36{,}511 boxes. Campaign G ran without it:
+trees \emph{shrunk} (15.2--29.9\,M vs.\ 16.2--33.6\,M) while ratio clears
+rose (3.7$\times$ on slice~0); slice~7 passed F's residual onset at box
+26.1\,M at residual~0 and reached 52{,}086{,}331 boxes before the 24\,h wall.
+
+Campaign H's only change is the splitter.  The \NUMERICAL{} cost probe
+classified slice-7 splits as distributed (48.5\,\% \texttt{other},
+35.1\,\% \texttt{mean-boundary}, 16.4\,\% \texttt{sink}), so the remaining
+cost appeared computational rather than a new inequality;
+\texttt{split\_by\_influence} weights a coordinate's width by its orbit's
+weight cap (on slice~7, orbit~2's coordinates are discounted by up to
+16$\times$).  The measured changes --- the former residual slab
+$36{,}511\to131$ boxes, the tight-obstruction root $231\to109$ boxes, and
+$2.8\times$ throughput on $w\in[0.99,1]$ --- are all \NUMERICAL{}.
+Campaign H's mathematical acceptance is by replay alone.
+
+\paragraph{Campaign H outcome; campaign I.}
+H finished on 2026-08-18: slices 0--3 and 7 COMPLETE --- 21{,}135{,}611,
+20{,}827{,}065, 23{,}486{,}265, 34{,}186{,}855 and 78{,}257{,}861 boxes,
+stacks and budget flags all zero --- and slices 4--6 INCOMPLETE at the wall
+only, at 54{,}161{,}482, 59{,}867{,}104 and 74{,}343{,}239 processed boxes
+with stacks 25/27/30. Slice~7, which had defeated E (budget), F (residuals)
+and G (budget), finished with 7\,h of headroom; its 78{,}257{,}861-event
+trace replayed independently in 2\,h\,11\,m (PASS), as did the four smaller
+echoes, every tally matching the committed records and
+$\text{terminals}=\text{splits}+1$ exact. Across all 366{,}265{,}482 boxes
+the residual count never left zero: the three remaining slices wanted hours,
+not mathematics. Campaign I (2026-08-18 21:26\,UTC, workers
+\texttt{certI0--7}) committed all eight slices under the same code hash and
+exact target with a 72\,h budget per slice. Its totals are
+21{,}135{,}611, 20{,}827{,}065, 23{,}486{,}265, 34{,}186{,}855,
+71{,}405{,}987, 117{,}709{,}435, 121{,}456{,}775 and 78{,}257{,}861,
+for 488{,}465{,}854 boxes overall. The I traces on slices 0--3 and 7 are
+byte-identical to H by SHA-256; slices 4--6 have totals exceeding H's wall
+totals.  The frozen collector replayed all eight traces and printed
+\texttt{COMPOSITE CERTIFICATE} on 2026-08-21: campaign I certifies the
+rational target
+$t_{\mathrm{cert}}=0.3820660112501052\ge\psi+10^{-4}$.
+
+\paragraph{Second campaign (IN PROGRESS; not a certificate).}
+Campaign J, directory
+\path{cert3_20260820T181524Z_08ad738a1cf24a08bfc4189e65f9ef44_57a8908ba7b8}
+with code hash \texttt{57a8908ba7b8}, is running with a 72-hour budget per
+slice at the rational target
+$t_J=0.3821660112501052\ge\psi+2\cdot10^{-4}$.  As of 2026-08-21, six slices
+are committed \texttt{COMPLETE} with residual zero: slice~0 processed
+$21{,}891{,}091$ boxes; slice~1, $21{,}637{,}061$; slice~2,
+$24{,}563{,}611$; slice~3, $37{,}877{,}105$; slice~4, $85{,}793{,}971$;
+and slice~7, $93{,}281{,}643$.  Slices~5 and 6 are still running.  The frozen
+collector verdict has not yet been printed; in particular,
+\texttt{COMPOSITE CERTIFICATE} has not been printed for campaign J.
+Therefore campaign J remains IN PROGRESS, and this paper makes no
+certification claim at $t_J$.
+
+\section{A proof of Liu's positive-semidefiniteness hypothesis}
+\label{sec:liu-psd}
+
+Liu's conditionally iid argument \cite[Theorem~13 and \S V]{liu} has two
+separate conditional inputs.  Its Hypothesis~1, in \S V-A, is a
+positive-semidefiniteness assertion; Hypothesis~2, in \S V-B, asserts the
+structure of a nine-parameter global optimizer.  Assuming both, Liu obtains
+the union-closed constant
+\[
+0.382709087918741>c^\star=0.3823455333667027,
+\]
+strictly beyond the ceiling of the two-strategy method used by our
+certificates.  The result below proves Hypothesis~1.  Hypothesis~2 is not
+addressed and remains open.  Liu's numerical check of Hypothesis~1 used a
+float64 eigenvalue computation on a $2499$-point grid and reported a largest
+eigenvalue $1.6311\times10^{-14}$, below the roundoff scale of a dense
+computation of that size.
+
+For this section put
+\[
+a_{\mathrm L}(s)=s(1-s),\qquad
+z(s,t)=(1-s)(1-t)+a_{\mathrm L}(s)a_{\mathrm L}(t).
+\]
+Liu's hypothesis says that
+\begin{equation}
+\iint h(z(s,t))\,d\mu(s)\,d\mu(t)\le0
+\label{eq:liu-hypothesis}
+\end{equation}
+for every finite signed measure $\mu$ annihilating
+\[
+1,\qquad s,\qquad a_{\mathrm L}(s)=s(1-s).
+\]
+These three functions span all polynomials of degree at most two.  Thus the
+hypothesis has codimension three, as does Liu's projector
+$[1,i/n,a_{\mathrm L}(i/n)]$; the positive-semidefiniteness terminology refers
+to the negative of the entropy kernel on this subspace.
+
+\subsection{Exact reduction to an unprojected kernel}
+
+Set
+\[
+u=1-s,\qquad v=1-t,\qquad A=uv,\qquad B=st,
+\]
+so that $a_{\mathrm L}(s)a_{\mathrm L}(t)=AB$ and
+$z=A(1+B)$.  With
+\[
+G(x)=x+(1-x)\ln(1-x)
+     =\sum_{k=2}^{\infty}\frac{x^k}{k(k-1)}
+\]
+on $[0,1]$, the entropy has the exact expansion
+\begin{equation}
+\begin{aligned}
+\ln2\,h(z)
+ &=-z\ln u-z\ln v-z\ln(1+B)+z-G(z)\\
+ &=-z\ln u-z\ln v-z\ln(1+B)+z
+   -\sum_{k=2}^{\infty}\frac{z^k}{k(k-1)}.
+\end{aligned}
+\label{eq:liu-expansion}
+\end{equation}
+Products involving an endpoint logarithm are understood by continuous
+extension.  The three displayed terms $-z\ln u$, $-z\ln v$, and $+z$ are
+exactly the pieces discarded by Liu's projection.  Indeed,
+\[
+\begin{aligned}
+-z\ln u&=-(u\ln u)v-(us\ln u)(vt),\\
+-z\ln v&=-u(v\ln v)-(us)(vt\ln v),\\
+z&=uv+(us)(vt),
+\end{aligned}
+\]
+and every rank-one summand has, in at least one variable, a polynomial factor
+of degree at most two.  This is precisely why all three constraints
+$1,s,a_{\mathrm L}(s)$ are needed.
+
+The rank-one kernel $AB=a_{\mathrm L}(s)a_{\mathrm L}(t)$ is itself
+annihilated.  Moving that null summand from $z=A+AB$ into the remainder rewrites
+\eqref{eq:liu-expansion} as
+\[
+\ln2\,h(z)=-z\ln u-z\ln v+A+R(s,t),
+\]
+where
+\begin{equation}
+R(s,t)
+=A\bigl[B-(1+B)\ln(1+B)\bigr]
+ -\bigl[z+(1-z)\ln(1-z)\bigr].
+\label{eq:liu-R}
+\end{equation}
+Consequently, for every $\mu$ satisfying Liu's three constraints,
+\begin{equation}
+\ln2\iint h(z(s,t))\,d\mu(s)\,d\mu(t)
+=\iint R(s,t)\,d\mu(s)\,d\mu(t).
+\label{eq:liu-reduction}
+\end{equation}
+Thus it suffices to prove the stronger statement that $R$ is negative
+semidefinite without any projection.
+
+\begin{theorem}[Liu's positive-semidefiniteness hypothesis]
+\label{thm:liu-psd}
+The continuous kernel $R$ in \eqref{eq:liu-R} is negative semidefinite on
+$[0,1]$: for every $\nu\in\MM([0,1])$,
+\[
+\iint R(s,t)\,d\nu(s)\,d\nu(t)\le0.
+\]
+In particular, its integral operator is negative semidefinite on
+$L^2[0,1]$, and \eqref{eq:liu-hypothesis} holds.
+\end{theorem}
+
+\begin{proof}
+Continue to regard $A=uv$ and $B=st$ as kernels.  Extend
+$G(x)=x+(1-x)\ln(1-x)$ to $[-1,1]$.  Since
+$G(-B)=-B+(1+B)\ln(1+B)$, define
+\[
+\phi(B)=G\bigl(A(1+B)\bigr)+A\,G(-B)=-R.
+\]
+Treating $A$ as fixed, direct symbolic differentiation gives
+\begin{align*}
+\phi(0)&=G(A),&
+\phi'(0)&=-A\ln(1-A),\\
+\phi''(B)&=\frac{A}{(1+B)\,[1-A(1+B)]}.&&
+\end{align*}
+Taylor's theorem with integral remainder therefore gives the exact identity
+\begin{equation}
+\begin{aligned}
+-R
+={}&G(A)-AB\ln(1-A)\\
+&\quad+B^2\int_0^1(1-r)
+\frac{A}{(1+rB)\,[1-A(1+rB)]}\,dr.
+\end{aligned}
+\label{eq:liu-taylor}
+\end{equation}
+
+The first two kernels in \eqref{eq:liu-taylor} are positive semidefinite by
+nonnegative power series and the Schur product theorem:
+\[
+G(A)=\sum_{k=2}^{\infty}\frac{A^k}{k(k-1)},\qquad
+-AB\ln(1-A)=\sum_{k=1}^{\infty}\frac{A^{k+1}B}{k}.
+\]
+Indeed, $A^k=u^kv^k$ and
+$A^{k+1}B=(u^{k+1}s)(v^{k+1}t)$ are rank-one positive-semidefinite kernels.
+
+It remains to treat the integral remainder.  For $0\le r\le1$ write
+\[
+D_r(s,t)=(1+rB)\,[1-A(1+rB)].
+\]
+Let $\mathbf m(x)=(1,x,x^2,x^3)^{\mathsf T}$.  In this polynomial basis the
+kernel has coefficient matrix
+\begin{equation}
+\begin{aligned}
+M(r)&=
+\begin{pmatrix}
+0&1&0&0\\
+1&-r-1&2r&0\\
+0&2r&-r(r+2)&r^2\\
+0&0&r^2&-r^2
+\end{pmatrix},\\
+D_r(s,t)&=\mathbf m(s)^{\mathsf T}M(r)\mathbf m(t).
+\end{aligned}
+\label{eq:liu-M}
+\end{equation}
+Exact coefficient extraction gives
+\[
+\det M(r)=-2r^3,
+\]
+and the coefficients of $\det(\lambda I-M(r))$, in descending powers of
+$\lambda$, are
+\begin{equation}
+1,\quad (r+1)(2r+1),\quad 4r^3+2r-1,\quad
+-2r(r^3-r^2+r+1),\quad -2r^3.
+\label{eq:liu-charpoly}
+\end{equation}
+For $0<r\le1$ their signs are
+$(+,+,\mathord\pm,-,-)$, with a zero coefficient omitted.  There is exactly
+one Descartes sign change.  Since $M(r)$ is symmetric and its determinant is
+nonzero, it has inertia $(1\text{ positive},3\text{ negative})$.
+
+For completeness, an exact $LDL^{\mathsf T}$ factorization makes the resulting
+Lorentz decomposition explicit.  Put
+\[
+\begin{aligned}
+\zeta_0(s)&=-\frac{2rs^2-(r+1)s+1}{r+1},
+&\zeta_1(s)&=1+2rs^2,\\
+\zeta_2(s)&=\frac{s^2(r+2-rs)}{r+2},
+&\zeta_3(s)&=s^3,
+\end{aligned}
+\]
+and
+\[
+\begin{aligned}
+\alpha_r(s)&=\frac{\zeta_1(s)}{\sqrt{r+1}},\\
+\mathbf b_r(s)&=\left(
+\sqrt{r+1}\,\zeta_0(s),\
+\sqrt{r(r+2)}\,\zeta_2(s),\
+r\sqrt{\frac{2}{r+2}}\,\zeta_3(s)
+\right).
+\end{aligned}
+\]
+Then, also at $r=0$ by continuity,
+\begin{equation}
+D_r(s,t)=\alpha_r(s)\alpha_r(t)
+-\langle\mathbf b_r(s),\mathbf b_r(t)\rangle.
+\label{eq:liu-lorentz}
+\end{equation}
+The positive coordinate cannot degenerate away from the corner.  On the
+diagonal,
+\begin{align}
+D_r(s,s)
+&=(1+rs^2)\,[1-(1-s)^2(1+rs^2)]\notag\\
+&\ge s(2-2s+2s^2-s^3)>0
+\qquad(0<s\le1).
+\label{eq:liu-diagonal}
+\end{align}
+For the inequality, apply concavity of
+$q\mapsto q[1-(1-s)^2q]$ on $1\le q\le1+s^2$ and check its two endpoints.
+The cubic $p(s)=2-2s+2s^2-s^3$ has
+$p'(s)=-3s^2+4s-2$, whose discriminant is $-8$; hence $p$ decreases from
+$2$ to $1$ on $[0,1]$.
+
+Set $\mathbf c_r(s)=\mathbf b_r(s)/\alpha_r(s)$.  Equation
+\eqref{eq:liu-lorentz} and \eqref{eq:liu-diagonal} give
+$\|\mathbf c_r(s)\|<1$ for $s>0$.  Thus Cauchy--Schwarz gives absolute
+convergence of the Gram series
+\begin{equation}
+\frac1{D_r(s,t)}
+=\frac1{\alpha_r(s)\alpha_r(t)}
+\sum_{k=0}^{\infty}
+\left\langle
+\mathbf c_r(s)^{\otimes k},\mathbf c_r(t)^{\otimes k}
+\right\rangle
+\qquad(s,t>0).
+\label{eq:liu-geometric}
+\end{equation}
+Every summand is a positive-semidefinite kernel.  Multiplication by the
+rank-one kernel
+\[
+AB^2=(1-s)s^2(1-t)t^2
+\]
+therefore shows that $AB^2/D_r$ is positive semidefinite on $(0,1]^2$.
+It extends continuously by zero to the closed square: near $(0,0)$,
+$D_r(s,t)=s+t+O((s+t)^2)$ uniformly for $r\in[0,1]$, whereas
+$AB^2=O(s^2t^2)$.  Positive semidefiniteness at boundary points follows by
+taking limits of the finite Gram matrices.  Integration against the
+nonnegative weight $(1-r)\,dr$ preserves positive semidefiniteness.
+
+The middle term of \eqref{eq:liu-taylor} also has the asserted continuous
+extension at the only singular corner.  If $m=\max(s,t)$, then
+$1-A=s+t-st\ge m$ and $B=st\le m^2$, so
+\[
+0\le AB[-\ln(1-A)]\le m^2(-\ln m)\longrightarrow0.
+\]
+Hence every term in \eqref{eq:liu-taylor} extends to $[0,1]^2$ as a
+positive-semidefinite kernel.  Their sum is $-R$, so $R$ is negative
+semidefinite.  The signed-measure statement follows either from the displayed
+Gram representations or by approximating against the continuous kernels, and
+\eqref{eq:liu-reduction} proves Liu's Hypothesis~1.
+\end{proof}
+
+\paragraph{Scope.}
+Theorem~\ref{thm:liu-psd} settles Liu's Hypothesis~1 only.  Hypothesis~2, the
+nine-parameter global-optimization assertion in Liu's \S V-B, remains open.
+Consequently the value $0.382709087918741$ remains a conditional
+union-closed constant; this paper makes no unconditional claim at that value.
+
+\begin{remark}[Why the hypothesis resisted, and tightness]
+Three natural proof routes can be ruled out.  First, termwise
+Cauchy--Schwarz/telescoping domination cannot close: the negative double-series
+family is confined to the index band $i\le k$, while every positive term is of
+the form $us^j$ with $j\ge3$, so the available negative weight at the first
+positive index is exactly zero.  Second, a uniform spectral-gap comparison
+cannot close because the negative-side operator is compact on an
+infinite-dimensional space and has lower spectral edge zero.  Third, a Schur
+factorization through $(1+\theta st)^{-1}$ is invalid because that kernel is
+not positive semidefinite.  Already at $\theta=1/2$ and points $1/4,3/4$, its
+$2\times2$ Gram determinant is the exact negative rational
+$-131072/1657425$; larger \NUMERICAL{} Gram tests had minimum eigenvalues from
+$-1.02$ at $\theta=0.25$ to $-9.47$ at $\theta=1$ for $60$ and $200$ nodes.
+The inequality is tight at the corner: the resolved \NUMERICAL{} generalized
+ratio is $0.9999999906$, and the factorization identifies the exact source of
+the lost margin as $D_r(0,0)=0$.
+\end{remark}
+
+\paragraph{Corroboration only (not part of the proof).}
+The symbolic identities and diagnostics are implemented in
+\texttt{liu\_kernel.py}, \texttt{liu\_R\_nsd.py}, \texttt{liu\_tail.py}, and
+\texttt{liu\_moment\_cert.py}.  On a $300$-node grid,
+\eqref{eq:liu-taylor} reproduced $-R$ to $8.9\times10^{-16}$; the three pieces
+in its displayed order had minimum eigenvalues
+$-1.09\times10^{-14}$, $-1.92\times10^{-15}$, and
+$-4.78\times10^{-16}$.  The sampled kernels $A/D_r$ had minimum eigenvalue
+about $-7\times10^{-14}$ for
+$r\in\{0,0.1,0.25,0.5,0.75,1\}$.  Independently, exact moments followed by
+Arb arithmetic certified the following upper bounds for compressions of $R$
+to polynomials of degree at most $D$, in the orthonormal shifted-Legendre basis
+$\sqrt{2n+1}\,P_n(2s-1)$:
+\[
+\begin{aligned}
+D=8:\quad
+&\lambda_{\max}\le-1.64335523965845934982130\times10^{-10},\\
+D=12:\quad
+&\lambda_{\max}\le-1.39301806562092415191600\times10^{-14},\\
+D=16:\quad
+&\lambda_{\max}\le-1.37614421207490684661199\times10^{-18}.
+\end{aligned}
+\]
+These are strictly negative validated enclosures on the stated finite
+subspaces.  They corroborate, but do not replace, the continuum proof above.
+
+\appendix
+\section{Reproducibility}
+\label{sec:verify}
+
+\subsection{Frozen artifact and collector command}
+The certified campaign directory is
+\begin{quote}\small
+\path{cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8}.
+\end{quote}
+From the repository's \texttt{math/} directory, the complete replay is the
+following single command:
+\begin{quote}
+\footnotesize
+\texttt{.venv/bin/python -B }\path{uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_collect.py}\texttt{ }\path{uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json}
+\end{quote}
+Exit code 0 and the final line \texttt{COMPOSITE CERTIFICATE} are jointly
+required.  The accepted collector has SHA-256
+\begin{quote}\small
+\path{95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec}.
+\end{quote}
+The full evidence bundle used for independent transfer is
+\begin{quote}\small
+\path{/Users/jinleic/jinleic-workspace/data/uc-certificate-psi-plus-1e-4-2026-08-21-v2.zip}.
+\end{quote}
+
+\subsection{Pinned environment}
+The launch manifest pins CPython 3.14.3, flint 0.9.0, mpmath 1.3.0,
+numpy 2.5.2, scipy 1.18.0, and sympy 1.14.0 on macOS arm64.  Workers and the
+collector run the frozen sources with \texttt{python -B}.  The accepted code
+SHA-256 is
+\path{2f23a58ebdb8b14275284e2ffefca7862373f7baf5d354a06e607cff8d78ce05}.
+Never import the snapshot modules from another program: importing can create a
+bytecode cache before the module disables bytecode writes, thereby changing
+the immutable snapshot listing.
+
+\subsection{Committed tallies and replay time}
+Every campaign-I slice was committed with
+\[
+\texttt{stack}=\texttt{residual}=\texttt{budget\_boxes}
+=\texttt{budget\_time}=0.
+\]
+The collector record is:
+\begin{center}
+\small
+\begin{tabular}{r r r}
+\hline
+slice & processed boxes & replay elapsed (s)\\
+\hline
+0 & 21{,}135{,}611 & 2{,}436.6\\
+1 & 20{,}827{,}065 & 2{,}442.1\\
+2 & 23{,}486{,}265 & 2{,}721.5\\
+3 & 34{,}186{,}855 & 4{,}326.3\\
+4 & 71{,}405{,}987 & 9{,}746.8\\
+5 & 117{,}709{,}435 & 25{,}329.8\\
+6 & 121{,}456{,}775 & 21{,}622.3\\
+7 & 78{,}257{,}861 & 9{,}115.2\\
+\hline
+total & 488{,}465{,}854 & 77{,}740.6\\
+\hline
+\end{tabular}
+\end{center}
+Thus the practical expected serial replay wall time on the pinned host is
+about $77{,}741$ seconds, or 21 hours 36 minutes.  Hardware and system load can
+change elapsed time but cannot change any accepted tally or verdict.
+
+\subsection{Acceptance checks and residual trust base}
+The collector performs the protocol of \S\ref{sec:protocol}: it checks its
+hardcoded source inventories, pristine snapshot listing and hashes, exact
+dyadic roots, unique UUID4 run identifiers, worker exit codes, COMPLETE
+verdicts, positive work, zero stack/residual/budget fields, and trace
+digest/size consistency.  It then imports only the frozen modules and
+mathematically replays every claimed discharge in Arb arithmetic.  A
+hand-authored result JSON cannot pass this gate.
+
+The residual trust base is explicit: CPython semantics and startup behavior;
+the pinned flint/Arb implementation; mpmath, numpy, scipy, and sympy at the
+versions above; Darwin \texttt{renamex\_np} with
+\texttt{RENAME\_EXCL}; SHA-256; the hashed Python sources; and the
+\CITED{} results used in the analytic reduction --- Riesz,
+Banach--Alaoglu, and Stone--Weierstrass as presented by van Neerven
+\cite{vanneerven}, Bauer's principle \cite{bauer,brupedra}, the moment-set
+theorem \cite{winkler,pinelis}, and Cambie's single entropy-to-union-closed
+implication \cite[Question~2 and \S4]{cambie}.
+
+\paragraph{Artifact map.}
+\texttt{bridge\_uc.py} checks the $s^\star$ identity and folding bridge;
+\texttt{decomposition.py} checks Theorem~\ref{thm:A};
+\texttt{reduction.py} checks Theorem~\ref{thm:Ap},
+Corollary~\ref{cor:Fid}, Corollary~\ref{cor:psi}, and
+Lemma~\ref{lem:acrit}; \texttt{thmB3\_proof.py} checks
+Theorem~\ref{thm:B3}; \texttt{margin\_lemma.py} checks
+Lemma~\ref{lem:margin}; \texttt{lemma\_rh\_proof.py},
+\texttt{cert2.py}, and \texttt{arbcore.py} check
+Theorem~\ref{thm:rh} and its caps; \texttt{cert3.py} writes the certificate
+and traces; \texttt{cert3\_replay.py} replays them;
+\texttt{cert3\_par.py} enforces the campaign protocol; and
+\texttt{cert3\_collect.py} performs final acceptance.
+\texttt{liu\_kernel.py} checks the codimension-three reduction;
+\texttt{liu\_R\_nsd.py} checks the Taylor and Lorentz identities and the Arb
+compressions; and \texttt{liu\_tail.py} and
+\texttt{liu\_moment\_cert.py} audit the failed routes and corroborating
+calculations.
+
+\section*{Acknowledgments}
+This note is part of the union-closed certification project.  The companion
+proof ledger and status documents are maintained with the repository
+artifacts.  All certified computations reported here were performed on the
+pinned macOS arm64 environment described in Appendix~\ref{sec:verify}.
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

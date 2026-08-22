@@ -1,0 +1,210 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,geometry,hyperref,booktabs}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Zp}{\mathbb{Z}_p}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\efd}{efd}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\num}{\operatorname{num}}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\title[A conditional six-quantifier definition of $\Z$ in $\Q$]
+      {A conditional six-quantifier definition of $\Z$ inside $\Q$:\\
+       model-field assembly, its walls, and a machine-verified finite program}
+\author{h10q project}
+\date{Working draft, 2026-08-19 --- not submitted}
+
+\begin{document}
+\begin{abstract}
+We describe a constructive route to a universal definition of $\Z$ inside
+$\Q$ using six quantifiers, conditional on one explicit hypothesis $H$
+about the solubility of a family of tied conics. Every finitary component
+of the construction is machine-verified on a grid of $353$ cells
+$(w,z)$ with $w$ an odd prime below $100$: all $353$ cells carry a
+verified witness, and all $293$ aligned classes carry a certified
+emergent-free member. Two structural theorems delimit the search space:
+a generalized wall showing that every $b$ coprime to the cell data fails
+on every branch --- valid for composite squarefree $A$ as well as prime
+$A$ --- and a characterization theorem stating that an aligned class
+exists for a cell exactly when the numerator of $z$ has a prime divisor
+congruent to $1$ modulo $4$. The residual obstruction is analysed by an
+exact $p$-adic sieve model whose matched predictions agree with the
+observed obstruction at member level on an identical $8{,}760$-member
+sample (marginal ratio $0.9993$; hit-conditioned union residual
+$-2.9$; marginal-preserving permutation null $z = -0.09$). The analytic input is then identified exactly: we prove that
+\emph{Schinzel's Hypothesis~H for the pair $\{q_1+Nt,\;G(t)\}$ implies the
+per-class hypothesis}, indeed infinitely often, so the conditional
+statement rests on a named classical conjecture rather than a bespoke
+one; the Schinzel hypotheses themselves are verified exactly on all
+$293$ canonical pairs. The verified computational horizon extends
+off-grid to fifteen further cells, including three that are provably
+obstructed for the canonical protocol --- the obstruction being
+$w \equiv 11, 19 \pmod{20}$, a reciprocity phenomenon we prove and then
+break with a non-canonical class family. We claim no unconditional
+record: the published record remains the refereed ten-quantifier
+definition, and our statement is conditional on Schinzel's Hypothesis~H
+together with the finite class-existence side.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\input{sections/intro}
+\input{sections/architecture}
+\input{sections/walls}
+\input{sections/classes}
+\input{sections/sieve}
+\input{sections/record}
+
+\input{sections/schinzel}
+\input{sections/frontier}
+
+\section{Conclusion and outlook}
+
+The program's current position is sharp. The algebraic architecture is
+complete and machine-checked; the search space is delimited by two
+theorems (the generalized wall, valid for composite squarefree $A$, and
+the class characterization); the finite verification is exhaustive on the
+grid and extends off-grid to $w \in \{101,103,107,109,113,127,137\}$; and the
+residual analytic content has been isolated to a single classical
+statement about prime values of a degree-$8$ polynomial in an arithmetic
+progression, with all of its local conditions verified.
+
+Three directions carry the most weight.
+
+\begin{enumerate}
+\item \emph{The step-(ii) divergence.} Theorem~\ref{thm:localbound} and
+Corollary~\ref{cor:nouniform} settle the local question: the masses are
+bounded by $8/(p+1)$, the frozen primes contribute nothing, and the
+clean product decays like $(\log X)^{-1/2}$, so no uniform positive
+mass exists. What remains is to convert the resulting divergence of the
+expected count of emergent-free members, at rate $X/(\log X)^{5/2}$,
+into an existence statement; that is precisely where the degree-$8$
+prime-value input enters.
+\item \emph{The protocol wall, answered.} Composite $w$ is out of scope
+by construction ($w$ indexes a place). The question raised by the first
+obstructed cell --- for which primes $w$ does the canonical escape route
+collide with the L11 route at the frozen place $5$? --- is now answered
+exactly by Theorem~\ref{thm:fivewall}: $w \equiv 11, 19 \pmod{20}$. It is
+also no longer an obstruction, since Proposition~\ref{prop:break} closes
+every such cell met so far off the canonical protocol. No off-grid cell
+is currently known to be intrinsically obstructed, and the natural next
+question is whether the $a = 7$, $\tau = 0$ family closes the obstructed
+congruence class in general.
+\item \emph{Degree-$8$ prime values.} Unconditional prime-value theorems
+stop at degree three. Any unconditional progress for a single grid class
+would convert the conditional statement into an unconditional one for
+that cell, and the audit shows there is no local obstruction anywhere on
+the grid.
+\end{enumerate}
+
+\section*{Reproducibility}
+
+All certificates in this paper are produced by a stdlib-only kernel with
+a proven-primality discipline: deterministic Miller--Rabin below
+$3.3\times 10^{24}$, Pocklington with the Brillhart--Lehmer--Selfridge
+relaxation above, and explicit refusal labels that never count as
+evidence. The companion paper documents the engine, the artifact
+schemas, the exact reproduction commands, and the precise scope of what
+is regenerable from checked-in scripts.
+
+\begin{thebibliography}{99}
+
+\bibitem{batemanhorn}
+P.~T. Bateman and R.~A. Horn,
+\emph{A heuristic asymptotic formula concerning the distribution of prime
+numbers},
+Mathematics of Computation \textbf{16} (1962), 363--367.
+
+\bibitem{ctsansuc}
+J.-L. Colliot-Th\'el\`ene and J.-J. Sansuc,
+\emph{Sur le principe de Hasse et l'approximation faible, et sur une
+hypoth\`ese de Schinzel},
+Acta Arithmetica \textbf{41} (1982), no.~1, 33--53.
+
+\bibitem{ctssd}
+J.-L. Colliot-Th\'el\`ene, A.~N. Skorobogatov and Sir P. Swinnerton-Dyer,
+\emph{Rational points and zero-cycles on fibred varieties: Schinzel's
+hypothesis and Salberger's device},
+Journal f\"ur die reine und angewandte Mathematik \textbf{495} (1998),
+1--28.
+
+\bibitem{cz}
+G.~Cornelissen and K.~Zahidi,
+\emph{Topology of Diophantine sets: remarks on Mazur's conjectures},
+in: Hilbert's Tenth Problem: Relations with Arithmetic and Algebraic
+Geometry (Ghent, 1999), Contemporary Mathematics \textbf{270},
+American Mathematical Society, Providence RI, 2000, pp.~253--260;
+arXiv:math/0006140.
+
+\bibitem{daans}
+N.~Daans,
+\emph{Universally defining $\Z$ in $\Q$ with $10$ quantifiers},
+Journal of the London Mathematical Society (2) \textbf{109} (2024),
+no.~2, e12864, 20 pp.;
+\texttt{doi:10.1112/jlms.12864}; arXiv:2301.02107.
+
+\bibitem{ddf}
+N.~Daans, P.~Dittmann and A.~Fehm,
+\emph{Existential rank and essential dimension of diophantine sets},
+preprint, arXiv:2102.06941v5 (2021--2024).
+
+\bibitem{hsw}
+Y.~Harpaz, A.~N. Skorobogatov and O.~Wittenberg,
+\emph{The Hardy--Littlewood conjecture and rational points},
+Compositio Mathematica \textbf{150} (2014), no.~12, 2095--2111;
+\texttt{doi:10.1112/S0010437X14007568}; arXiv:1304.3333.
+
+\bibitem{helfgott}
+H.~A. Helfgott,
+\emph{Square-free values of $f(p)$, $f$ cubic},
+Acta Mathematica \textbf{213} (2014), no.~1, 107--135;
+\texttt{doi:10.1007/s11511-014-0117-2}; arXiv:1112.3820.
+
+\bibitem{koenigsmann}
+J.~Koenigsmann,
+\emph{Defining $\Z$ in $\Q$},
+Annals of Mathematics (2) \textbf{183} (2016), no.~1, 73--93;
+\texttt{doi:10.4007/annals.2016.183.1.2}; arXiv:1011.3424.
+
+\bibitem{krumm}
+D.~Krumm,
+\emph{Squarefree parts of polynomial values},
+Journal de Th\'eorie des Nombres de Bordeaux \textbf{28} (2016), no.~3,
+699--724;
+\texttt{doi:10.5802/jtnb.959}; arXiv:1407.4890.
+
+\bibitem{reuss}
+T.~Reuss,
+\emph{Power-free values of polynomials},
+Bulletin of the London Mathematical Society \textbf{47} (2015), no.~2,
+270--284;
+\texttt{doi:10.1112/blms/bdv007}; arXiv:1307.2802.
+
+\bibitem{schinzel}
+A.~Schinzel and W.~Sierpi\'nski,
+\emph{Sur certaines hypoth\`eses concernant les nombres premiers},
+Acta Arithmetica \textbf{4} (1958), 185--208;
+erratum, ibid.\ \textbf{5} (1958), 259.
+
+\bibitem{sun}
+Z.-W. Sun,
+\emph{$\Q\setminus\Z$ is diophantine over $\Q$ with $7$ unknowns},
+preprint, arXiv:2607.28606 (unrefereed).
+
+\end{thebibliography}
+
+\end{document}

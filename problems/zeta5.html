@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Irrationality of zeta(5) (Apéry-style) — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
+.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
+border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+</style></head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+
+<h1>Irrationality of zeta(5) (Apéry-style)</h1>
+<p class="tag">source: <code>math/zeta5</code> ·
+session: <code>019ffb23-9512-7000-8c79-32667475fc6c</code> ·
+synced 2026-08-22T04:21:35Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>## 2026-08-15 — Session 8: ζ(5) campaign opened ([`zeta5/`](zeta5/README.md)); baseline certified, search tool validated blind
+
+New target deliberately chosen from the 2026-08-13 triage (bundle
+`files-to-transfer-math-phys`, report `AperyTarget.md`): **prove
+$\zeta(5)\notin\mathbb{Q}$**, the higher-risk Apéry-style moonshot next to
+`r55/`. `uc/` and `r55/` remain active and untouched. Everything below ran
+and was observed; primaries were read first-hand today.
+</pre>
+<h2>Project README (verbatim, first lines)</h2><pre># ζ(5) irrationality campaign
+
+**Canonical target.** Prove $\zeta(5)\notin\mathbb{Q}$.
+
+Fallback outcomes that still publish (per the 2026-08-13 triage): a new
+*certified* Apéry-style construction with materially better arithmetic (faster
+decay or a proved denominator gain), a certified integrality theorem, or a
+sharp obstruction ruling out a family of constructions. A recurrence alone, or
+numerical convergence alone, publishes nothing.
+
+## Status quo (source-verified 2026-08-15)
+
+- **Open.** The corridor&#x27;s landmarks:
+  - Apéry 1979: $\zeta(3)\notin\mathbb{Q}$ — second-order recursion; decay
+    $-4\log(1+\sqrt2)=-3.5255$ beats the $D_n^3$ threshold $-3$ ($D_n=\mathrm{lcm}(1..n)$).
+  - Ball–Rivoal 2001: infinitely many $\zeta(2k{+}1)$ are irrational.
+  - Zudilin 2001: at least one of $\zeta(5),\zeta(7),\zeta(9),\zeta(11)$ is
+    irrational (DOI 10.1070/RM2001v056n04ABEH000427). No individual odd value
+    past 3 is settled.
+  - Zudilin 2002, arXiv:math/0206178 (primary, read first-hand): a third-order
+    Apéry-like recursion for $\zeta(5)$, presented explicitly as a fast-computation
+    algorithm — its inclusions &quot;do not allow oneself to prove the irrationality&quot;.
+    Reproduced and certified here (gate 1).
+- Recent corridor movement `[REPORTED — abstracts read, papers not yet studied]`:
+  the 2-adic analogue $\zeta_2(5)$ **is** irrational — Calegari–Dimitrov–Tang
+  (arXiv:2408.15403 machinery) and an Apéry-style reproof with
+  $\mu(\zeta_2(5))\le20.35$ by Lai–Sprang–Zudilin (arXiv:2505.05005, rev. 2026-05).
+  Apéry-style machinery is alive in this corridor; the archimedean case stays open.
+- arXiv:2407.07121 claimed $\zeta(5)\notin\mathbb{Q}$; **withdrawn by its author
+  2025-05-19**. No accepted claim exists (checked 2026-08-15).
+- Provenance: target chosen over $\zeta(7)$ / Catalan / $\gamma$ / the CDT constant
+  by the 2026-08-13 triage (session `019ffb23-…`, report `AperyTarget.md` in the
+  migration bundle): CDT already solved, $\zeta(7)$ strictly weaker starting
+  point, $\gamma$ has no comparable recurrence.
+
+## The race (PROVED, elementary)
+
+If $\zeta(5)=A/B$ and $\ell_n=q_n\zeta(5)-p_n$ with $q_n\in\mathbb{Z}$,
+$2D_n^5p_n\in\mathbb{Z}$, $\ell_n\neq0$, then $B\cdot2D_n^5\ell_n$ is a nonzero
+integer, so $2D_n^5|\ell_n|\ge1/B$ for every $n$. Hence
+$2D_n^5|\ell_n|\to0$ (with $\ell_n\ne0$) proves irrationality. Since
+$\tfrac1n\log D_n\to1$ (PNT), an attack in this form needs
+
+$$\lim_n\tfrac1n\log|\ell_n| &lt; -5.$$
+
+Zudilin&#x27;s recursion achieves $\log|\mu_2|=-1.08607936$.
+**Deficit: $5+\log|\mu_2|=3.9139$** (with the sharper, empirically verified
+inclusions (6); $5.9139$ against the proved (14)-type inclusions). Equivalently:
+need $|\mu_2|&lt;e^{-5}=0.006738$, have $0.337537$. Apéry&#x27;s $\zeta(3)$ margin, for
+scale: needed $&lt;-3$, achieved $-3.5255$.
+
+So any Apéry-style attack must (a) find constructions with radically faster
+decay, (b) prove denominator gains (Krattenthaler–Rivoal-type denominator
+conjectures) that shrink the exponent 5, or (c) eliminate the $\zeta(3)$
+contaminant from joint forms — the same $q_n$ here carries
+$\tilde\ell_n=q_n\zeta(3)-\tilde p_n$, a simultaneous-approximation structure.
+Gate 2 sweeps (a) systematically; (b)/(c) get attention only on a surviving
+candidate.
+
+## Go/no-go gates (failing a gate stops the campaign)
+
+1. **DONE 2026-08-15 — baseline certified** ([`src/zudilin_rec.py`](src/zudilin_rec.py),
+   record [`data/BASELINE.json`](data/BASELINE.json)).
+   Recursion (1) of math/0206178 transcribed (PDF exponents reconstructed; the
+   transcription is pinned by degree-9 homogeneity, the printed characteristic
+   polynomial, the printed $q_2$, and the paper&#x27;s convergent table) and verified:
+   printed convergents $n\le7$ exact; printed error bounds at $n=3..7,10,20,50$;
+   integrality (6) ($q_n\in\mathbb{Z}$, $2D_n^5p_n\in\mathbb{Z}$,
+   $2D_n^3\tilde p_n\in\mathbb{Z}$) machine-verified to $n=300$; sign patterns (3);
+   root decimals (5) and the $\mu_i=\lambda_j\lambda_k$ pairing; rates (4)–(5) at
+   $n=300$ [NUMERICAL]. Scoping fact: the $n{=}1$ instance of (1) holds for
+   $\{q_n\}$ but **not** $\{p_n\}$ — the recursion is imposed for $n\ge2$ only.
+   Search tool validated blind ([`src/recsearch.py`](src/recsearch.py)): from raw
+   $q_0..q_{63}$ it re-derives (1) as the *unique* order-3/degree-9 recurrence
+   (exact primitive-vector match) and finds nothing at order 2 (deg ≤ 12) or
+   order 3, deg ≤ 8.
+2. **Systematic construction sweep — the triage&#x27;s four-week falsifiable gate.**
+   Enumerate low-order polynomial recurrences from exact data of candidate
+   constructions: deformations of the very-well-poised series (7) of
+   math/0206178, Vasilyev-type integrals, Ball–Rivoal-type series; guess with
+   `recsearch`, certify by creative telescoping. A candidate is **retained only
+   if all three hold**: exact symbolic recurrence identity; integrality /
+   denominator control (proved, or LCM-scaled with certified exponent); certified
+   exponential error bounds. **Zero survivors better than the baseline deficit
+   ⇒ the campaign fails here; record and stop.**
+3. **Arithmetic sharpening — only on a gate-2 survivor.** Denominator-gain
+   proofs and contaminant elimination toward $\lim\tfrac1n\log|\ell_n|&lt;-5$.
+
+## Trust discipline (inherits [`math/README.md`](../README.md); additions)
+
+- A numerically guessed recurrence is exact on its verified range only;
+  validity for all $n$ is **CONDITIONAL** until certified symbolically
+  (creative telescoping / algebraic proof).
+- PSLQ/LLL output is a **candidate**, never evidence.
+- Rate claims from finite $n$ are **NUMERICAL**; only Poincaré–Perron applied
+  to a certified recurrence upgrades them (and Poincaré alone does not give
+  the constant or exclude degenerate solutions — track which solution you hold).
+- Integrality observed to $n=N$ (like (6) here) is labelled with its $N$;
+  the paper itself only proves the weaker (14)-type inclusions.
+</pre>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/zeta5/README.md">README.md</a> (6KB, sha256 d616b8a61a9e)</li></ul>
+
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

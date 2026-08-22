@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cordoba-Cordoba-Fontelos 1D inviscid model — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
+.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
+border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+</style></head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+
+<h1>Cordoba-Cordoba-Fontelos 1D inviscid model</h1>
+<p class="tag">source: <code>math/ccf</code> ·
+session: <code>019ff0a0-6557-7000-8b8c-9bdbccb719e4 (subagents)</code> ·
+synced 2026-08-22T04:21:35Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>### Salvage from the paused subproject
+
+`ccf/tail_basis.py`: the family $C_q=\mathrm{Re}(1-iy)^{-q}$, $S_q=\mathrm{Im}(1-iy)^{-q}$
+is closed under $H$, $d/dy$ **and** $\int_0^y$:
+$H[C_q]=S_q$, $H[S_q]=-C_q$, $\int_0^y C_q=S_{q-1}/(q-1)$, $\int_0^y S_q=(1-C_{q-1})/(q-1)$.
+All verified against mpmath to $\le10^{-15}$ (`tests/test_tail_basis.py`, 26/26 PASS).
+This removed the non-integrable $U$ quadrature that had blocked the CCF solve. Retained
+as reusable machinery; not pursued further.
+
+---
+</pre>
+<h2>Project README (verbatim, first lines)</h2><pre># CCF self-similar profile — PAUSED technique validation
+
+&gt; **PAUSED, and not on the canonical path.** The canonical target is Clay Navier–Stokes,
+&gt; Fefferman (C)/(D): see [`../ns/README.md`](../ns/README.md).
+&gt;
+&gt; This subproject is now known to be **structurally** off that path, not merely
+&gt; unbridged. Lemma 1 (`../ns/README.md`) forces any exact self-similar NS blowup to have
+&gt; $\beta=1/2$, and Tsai&#x27;s Theorem 2 (ARMA 143 (1998) 29–51) closes $\beta=1/2$ assuming
+&gt; only distributional NS plus a local energy bound. So the entire profile-based program
+&gt; — this, Chen–Hou, and the DeepMind unstable-singularity line — cannot reach the Clay
+&gt; statement by construction, whatever its merits as inviscid model mathematics.
+&gt;
+&gt; Retained for two things it produced: the exactly-invertible
+&gt; [`tail_basis.py`](tail_basis.py) family, and the lesson recorded below about
+&gt; validating an operator on the decay class you actually need.
+
+**Prize relevance: none.** 1D, inviscid, whole-line. VISCOSITY: no — the candidates are
+inviscid or fractional $\alpha\le1$; constant $\nu\Delta$ ($\alpha=2$) lies far outside.
+DOMAIN: no — 1D $\mathbb{R}$, not $\mathbb{R}^3$/$\mathbb{T}^3$. See
+[`../docs/GAP_MAP.md`](../docs/GAP_MAP.md).
+
+## The equation
+
+Córdoba–Córdoba–Fontelos, J. Math. Pures Appl. 86 (2006) 529–540, eq (1):
+
+$$f_t - (Hf)\,f_x = 0, \qquad Hf(x) = \frac{1}{\pi}\,\mathrm{PV}\!\int_{\mathbb{R}}\frac{f(y)}{x-y}\,dy, \qquad \widehat{Hf}(\xi) = -i\,\mathrm{sgn}(\xi)\,\hat f(\xi).$$
+
+Vorticity form ($\omega=f_x$, $u=Hf$, $u_x=H\omega$), arXiv:2511.22819 eq (2):
+
+$$\omega_t - u\,\omega_x = \omega\,u_x, \qquad u(0)=0.$$
+
+Self-similar ansatz, eq (3): $\omega=(1-t)^{-1}\Omega(y)$, $y=x(1-t)^{-(1+\lambda)}$,
+$U(y)=\int_0^y H\Omega$.
+
+## Profile equation — derived here, cross-checked
+
+Substituting gives $\omega_t=(1-t)^{-2}[\Omega+(1+\lambda)y\Omega&#x27;]$,
+$\omega_x=(1-t)^{-(2+\lambda)}\Omega&#x27;$, $u=(1-t)^{\lambda}U$, hence
+$u\omega_x=(1-t)^{-2}U\Omega&#x27;$ and $\omega u_x=(1-t)^{-2}\Omega\,H\Omega$, so
+
+$$\textbf{(P)}\qquad \Omega + \big[(1+\lambda)y - U\big]\Omega&#x27; - \Omega\,(H\Omega) = 0.$$
+
+This reproduces arXiv:2511.22819 eq (4) — an independent check on all sign and
+scaling conventions before any numerics were written.
+
+### Exact first integral
+
+Put $G=(1+\lambda)y-U$, so $G&#x27;=(1+\lambda)-H\Omega$. Then
+
+$$(G\Omega)&#x27; = G&#x27;\Omega + G\Omega&#x27; = (1+\lambda)\Omega - \Omega H\Omega + \big(-\Omega + \Omega H\Omega\big) = \lambda\,\Omega,$$
+
+using (P) for $G\Omega&#x27;$. With $F(y)=\int_0^y\Omega$ and $F(0)=0$, and noting
+$G(0)\Omega(0)=0$:
+
+$$\textbf{(Q)}\qquad \big[(1+\lambda)y - U(y)\big]\,\Omega(y) = \lambda\,F(y).$$
+
+**(Q) is algebraic in $\Omega$** — no derivative of the unknown appears. That is what is
+discretized: it removes the worst source of conditioning from the collocation system.
+Elementary, and plausibly known, but not stated in any source retrieved for this project.
+
+A further consequence, useful later: $U = HF$ exactly, since $U&#x27;=H\Omega=H(F&#x27;)=(HF)&#x27;$ and
+both vanish at $0$ ($F$ even ⇒ $HF$ odd).
+
+## Structure
+
+- **Parity.** (P) is consistent only for $\Omega$ **odd**; then $H\Omega$ and $F$ are even,
+  $U$ and $G$ odd. (Consistent with $f$ even and positive, $\omega=f_x$ odd, $u(0)=0$.)
+- **Symmetry.** The only continuous symmetry is the dilation $\Omega(y)\mapsto\Omega(by)$.
+  An amplitude rescale $\Omega\mapsto a\Omega$ is **not** a symmetry: substituting
+  $a\Omega(by)$ into (P) yields the original equation multiplied by $a$ only if $a=1$.
+  Normalizing $\Omega&#x27;(0)=1$ therefore removes the last degree of freedom and makes
+  $\lambda$ an isolated nonlinear eigenvalue.
+- **Far field.** Balancing $\Omega+(1+\lambda)y\Omega&#x27;\approx0$ gives
+  $\Omega\sim C\,\mathrm{sgn}(y)|y|^{-p}$ with $p=1/(1+\lambda)$. For $\lambda\approx1.18$,
+  $p\approx0.4586$ — very slow decay, and the source of every numerical difficulty here.
+  Accordingly we solve for the bounded $V$ in
+  $\Omega(y)=y(1+y^2)^{-(p+1)/2}V(y)$, $V$ even, $V(0)=1$, $V(\infty)=C$.
+
+## Target constants
+
+From arXiv:2509.14185 Fig. 2 (CCF column) `[REPORTED]`:
+
+| mode | $\lambda$ | $\log_{10}$ max residual (Fig. 3) |
+|---|---|---|
+| stable | **1.1807776628998** | −13.714 |
+| 1st unstable | 0.6057337012032 | −13.589 |
+| 2nd unstable | 0.4713248638620 | −6.664 |
+
+Corroboration: Eggers–Fontelos (Nonlinearity 2019) give stable $\lambda\approx1.18078$.
+
+**Recorded conflict.** Two sweep agents reported the 2nd unstable value as
+$\lambda_2=0.4703$ with residual $O(10^{-7})$ from the paper text, against
+$0.4713248638620$ from Fig. 2. Unresolved; do not rely on either until the paper is
+re-read directly. Not needed for the current stable-mode target.
+
+Related tables retained for later: IPM $\lambda$ = 1.0285722760222 (stable),
+0.4721297362414, 0.3149620267088, 0.2415604743989; Boussinesq = 1.9205599746927,
+1.3990961221852, 1.2523481636489, 1.1842500861997, 1.1448833556188 (last unvalidated).
+The Boussinesq list is corroborated by the paper&#x27;s own empirical fit
+$\lambda_n\approx 1/(1.4187n+1.0863)+1$, which reproduces all five to ~3 decimals; a</pre>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/ccf/README.md">README.md</a> (8KB, sha256 904aad447efd)</li></ul>
+
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

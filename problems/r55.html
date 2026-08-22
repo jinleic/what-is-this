@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ramsey number R(5,5) — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
+.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
+border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+</style></head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+
+<h1>Ramsey number R(5,5)</h1>
+<p class="tag">source: <code>math/r55</code> ·
+session: <code>019ffb23-9512-7000-8c79-32667475fc6c</code> ·
+synced 2026-08-22T04:21:35Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>## 2026-08-17 — R55: m=3 identity campaign COMPLETE — exact negative `M3_NO_CUT_IN_FROZEN_CONE`, triple-verified (producer, exact-simplex audit, disjoint checker on all 8.5M catalogs); m=4 plan drafted and reviewed
+
+Session layer (`math/r55/`), four TDD tasks (`notes/higher_order_identity_m3_plan_2026-08-16.md`).
+</pre>
+<h2>Project README (verbatim, first lines)</h2><pre># R(5,5) ≤ 45 campaign
+
+**Canonical target.** Prove that no Ramsey(5,5,45)-graph exists — a graph on 45
+vertices with no clique of size 5 and no independent set of size 5 — i.e.
+
+$$\mathcal{R}(5,5,45)=\emptyset \iff R(5,5)\le 45.$$
+
+Secondary (constructive) direction: search for a Ramsey(5,5,43)-graph, which
+would prove $R(5,5)\ge 44$ and refute the standing conjecture $R(5,5)=43$.
+Either outcome at either order is a publishable exact result.
+
+## Status quo (source-verified 2026-08-13, `notes/status_2026-08-13.md`)
+
+- $43 \le R(5,5) \le 46$, confirmed current: Radziszowski&#x27;s Dynamic Survey DS1
+  **revision #18 (2026-04-24)** lists it verbatim as &quot;the still open case&quot;.
+  Lower: Exoo 1989. Upper: Angeltveit–McKay, arXiv:2409.15709 (v2 2025-09-01).
+  The `math-open-problems-2026.md` figure &quot;$\le 48$&quot; is their **2018** result,
+  superseded. Not scooped: a full arXiv ti:Ramsey sweep (2025-01→2026-08)
+  found zero claimed improvements in either direction; AlphaEvolve
+  (arXiv:2603.09172) improved nine other Ramsey lower bounds but not
+  $R(5,5)\ge43$. (arXiv:2508.16699 *estimates* $R(5,5)=45$ heuristically —
+  explicitly not a proof.)
+- McKay–Radziszowski conjecture $R(5,5)=43$; 656 Ramsey(5,5,42)-graphs known
+  (verified here: 328 in the file + 328 complement classes, disjoint under
+  canonical labeling, none self-complementary) and no larger ones.
+- Competition risk: Angeltveit is actively computing next door
+  ($R(K_5,K_5{-}e)=30$, arXiv:2602.11459, 2026-02); a CMU group
+  (Braginsky–Yellenki–Zhu w/ Mackey) is SAT-attacking srg(45,22,10,11), whose
+  existence would prove $R(5,5)=46$ — 141/313 encodings UNSAT so far. Ruling
+  that srg out is a natural sub-goal of any $\le45$ proof.
+- AM state the ≤46 method cannot reach 45 without &quot;new theoretical insights&quot;;
+  Gasarch&#x27;s [REPORTED] estimate for 45 by brute extension: ~3000 CPU-years.
+
+## Why this frame is forced (PROVED, elementary)
+
+In a Ramsey(s,t,n)-graph, the neighborhood of any vertex induces a
+Ramsey(s−1,t)-graph and the non-neighborhood induces a Ramsey(s,t−1)-graph,
+so $n - R(s,t-1) \le \deg(v) \le R(s-1,t)-1$. With $R(4,5)=25$:
+
+- In a hypothetical Ramsey(5,5,45)-graph every degree lies in $[20,24]$;
+  every neighborhood induces a Ramsey(4,5,d)-graph, $d\in[20,24]$, and every
+  non-neighborhood induces the complement of a Ramsey(4,5,44-d)-graph.
+- This is why the Ramsey(4,5) catalogs are the raw material of any attack,
+  and why the Angeltveit–McKay proof glues pairs of (4,5)-graphs along a
+  vertex (&quot;pointed gluing&quot; — exact terminology to be confirmed from the
+  paper, see `notes/angeltveit_mckay_2409.md`).
+
+## Structural constraints from the excess identity (PROVED + machine-checked, 2026-08-15)
+
+Full writeup: `notes/structural_constraints_2026-08-15.md`. One-command
+re-verification: `src/structural_constraints.py` (prints `ALL CHECKS PASSED`,
+~2 min; exercises all 656 R(5,5,42) graphs and the boundary extremal classes;
+for the 24-vertex census it verifies the exact count and edge distribution and
+property-checks a deterministic sample plus all graphs with $e\ge130$ — full
+census property validation is gate 1&#x27;s `src/validate_catalogs.py`).
+
+- **Excess identity** (PROVED, elementary double count): for every graph,
+  $\sum_v [e(F_v^-) - e(F_v^+) - \tfrac{1}{2}d(v)(n-2d(v))] = 0$. Verified to
+  hold exactly on all 656 known Ramsey(5,5,42) graphs.
+- **Deficiency budgets** (PROVED, given the catalog trust root): the total
+  distance-from-edge-extremality of all neighborhoods in a hypothetical
+  Ramsey(5,5,n) graph is $\le 0/48/141/230/360$ at $n=49/48/47/46/45$ —
+  the exact quantitative form of the hardness gradient, and the number any
+  new inequality must beat to shrink the gate-4 search space.
+- **n=49 forcing chain** (PROVED, given the trust root; classical result
+  re-derived): any Ramsey(5,5,49) graph is an $\mathrm{srg}(49,24,11,12)$
+  whose every neighborhood induces one of the exactly 2 edge-maximal
+  Ramsey(4,5,24) graphs (both 11-regular, 176 triangles, non-principal
+  spectrum exactly in $[-4,3]$).
+- **Type-matching theorem** (PROVED, new presentation): $N(v)\cong X_i$
+  forces $D(v)\cong \overline{X_i}$ — mixed combinations die by an exact
+  integer Gram-trace mismatch ($\operatorname{tr}R^2 = 21984 \ne 22032$).
+  The two diagonal combos survive every counting/spectral/divisibility test
+  attempted; their elimination (published: MR 1997) is a gluing computation.
+  A strengthened SAT encoding is preserved in `src/n49_gluing_sat.py`
+  (NOT run to completion: a weaker variant was inconclusive after 50 min;
+  do not run casually).
+- **Catalog growth** (NUMERICAL extrapolation): observed $\times43$–$66$
+  census growth per unit edge-deficiency at order 23; deficiency-8 catalogs
+  (what a 46-style proof at $n{=}45$ would consume) extrapolate to
+  $10^{10}$–$10^{13}$ graphs. Quantifies AM&#x27;s &quot;new theoretical insights
+  needed&quot; — the budget, not raw compute, is the object to attack.
+
+
+## m=3 identity cone campaign (COMPLETE 2026-08-17: exact negative)
+
+`M3_NO_CUT_IN_FROZEN_CONE`, triple-verified. Full record:
+`notes/structural_constraints_2026-08-15.md` (final section), artifact
+`data/higher_identity_m3.json`, audits `notes/cone_lp_robustness_2026-08-17.md`.
+In one line: the exact 3,215-state cone over the m=3 neighborhood identity
+row admits no accepted cut — each route has an exact optimal certificate
+(360 / 14310/349 / 45) *and* an exact obstruction witness at the same value;
+the disjoint checker `src/check_m3_certificate.py` re-derives the entire
+chain from raw catalogs (`M3 EVIDENCE VERIFIED`, ~44 min). No R(5,5) bound is
+claimed; the negative is specific to the frozen cone and routes.
+
+Next: `notes/higher_order_identity_m4_plan_2026-08-17.md` (m=4 T-family row,
+last nontrivial member; separately reviewed, all findings applied).
+
+## m=4 identity cone campaign (COMPLETE 2026-08-18: exact negative)</pre>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/r55/README.md">README.md</a> (14KB, sha256 c647e7bcc4d1)</li><li><a href="../materials/r55/paper/README.md">paper/README.md</a> (3KB, sha256 8b5099a0eb1b)</li><li><a href="../materials/r55/paper/VERIFY.md">paper/VERIFY.md</a> (2KB, sha256 40db44ebcff0)</li><li><a href="../materials/r55/paper/engstrom_mixed_n45.pdf">paper/engstrom_mixed_n45.pdf</a> (260KB, sha256 46a5f56fff7e)</li><li><a href="../materials/r55/paper/engstrom_mixed_n45.tex">paper/engstrom_mixed_n45.tex</a> (21KB, sha256 3cd4f92e3d77)</li></ul>
+
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

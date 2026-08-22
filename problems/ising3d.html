@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Three-dimensional Ising model (exact solution) — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
+.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
+border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+</style></head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+
+<h1>Three-dimensional Ising model (exact solution)</h1>
+<p class="tag">source: <code>math/ising3d</code> ·
+session: <code>019ff186-f657-7000-85d0-6d52723bfb5c</code> ·
+synced 2026-08-22T04:21:35Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>## 2026-08-21 — ising3d waves 10–18: eight closed waves recorded, unified paper, ledger gap repaired
+
+**Documentation gap closed.** This ledger&#x27;s last ising3d entry was wave 9 (2026-08-16); waves 10–17
+had landed in [`ising3d/`](ising3d/README.md) without a root-ledger entry, in violation of the
+tracking contract. This entry records them. Per-wave detail lives in
+[`ising3d/reports/final_technical_report.md`](ising3d/reports/final_technical_report.md);
+the machine-readable inventory is
+[`ising3d/checkpoints/verified_results.json`](ising3d/checkpoints/verified_results.json) (117 entries)
+and the append-only hypothesis ledger is
+[`ising3d/notes/hypotheses.csv`](ising3d/notes/hypotheses.csv) (395 rows, `H001`–`H427`).
+The model is **not solved** and no wave claims otherwise.
+
+**Headline results across waves 10–17.**
+
+- **Wave 17 — `2x6` non-Gaussian certificate**, the largest layer so certified: the physical
+  `P=+1` sector of the open `2x6` layer at `t=1/3` is not either parity half of any 12-mode Gaussian
+  subset-product multiset. `deg gcd &lt;= 295414 &lt; 295415 = C(1056,2) - A_same(12)` at both primes
+  `1000003` and `2000003`, so at least `261626` distinct within-half pair products, at least one above
+  the ceiling `261625`. Margin is exactly one, so the claim is worded strictly one-sidedly. The saved
+  Euclidean tail (25 steps from step 261600) was replayed by a second independent implementation with
+  bit-identical remainders; the standalone verifier runs 38 checks
+  ([`ising3d/proofs/gaussian_2x6.md`](ising3d/proofs/gaussian_2x6.md), ledger `H425`–`H427`).
+- **Waves 15–17 — the `2xL` alternation law.** Exact characteristic-zero local-term algebras
+  `so_8+so_8`, `sp_32+sp_32`, `so_128+so_128`, `sp_512+sp_512` at `L=2,3,4,5` (dimensions
+  `56, 1056, 16256, 262656`), plus a proved all-`L` containment
+  `dim g_L &lt;= 2^(n-1)(2^(n-1)-(-1)^L)`, `n=2L`, with the alternation forced by
+  `Omega_L^T = (-1)^L Omega_L`. Equality was claimed only at `L&lt;=5`; two intermediate over-claims were
+  withdrawn in the same session they were made (`H420`/`H421` downgraded by `H422`/`H423`)
+  ([`ising3d/proofs/alternation_law.md`](ising3d/proofs/alternation_law.md)).
+- **Waves 6–10 — not an Onsager quotient.** Exact char-0 structures at `2x3` (dim 263), `2x4`
+  (dim 2952, type `D21+2B13+A23+A27+2A3`) and `3x3` (dim 8034, type
+  `A32+A47+A58+A2+A15+A29`); since the Levi of any finite-dimensional Onsager quotient is a sum of
+  `sl2`s (Date–Roan, fulltext read and hashed), none of the three layer algebras is an Onsager
+  quotient in any disguise
+  ([`ising3d/proofs/char0_complete_2x4.md`](ising3d/proofs/char0_complete_2x4.md),
+  [`ising3d/proofs/char0_3x3.md`](ising3d/proofs/char0_3x3.md)).
+- **Wave 13 — Theorem F, all-size.** For every finite graph with a vertex of degree `&gt;=3` and every
+  `n&gt;=4`, off an explicit hypersurface, the layer spectrum has at least `3^n - 2^n + 48*3^(n-4)`
+  distinct unordered pair products against the Gaussian ceiling `3^n - 2^n`; the excess is the
+  constant fraction `16/27` of `3^n`. Genuinely anisotropic; the isotropic curve is still only
+  covered at named graphs ([`ising3d/proofs/allsize_gaussian.md`](ising3d/proofs/allsize_gaussian.md)).
+- **Wave 11 — Theorem LC, all-size.** For `ab != 0` the only finite-support operator on `Z^3`
+  commuting with `a sum X + b sum ZZ` is a scalar
+  ([`ising3d/proofs/local_commutant.md`](ising3d/proofs/local_commutant.md)). The extensive-charge
+  class was treated separately: `Z^3` radius-2 support-size `s&lt;=5` is decided exactly (21,121,156
+  columns; `rank S = 14757412`, `rank M = 14757410` at both primes, meeting the analytic bound), and
+  both compression routes to `s&lt;=6` are now closed negatively.
+- **Series and bounds (waves 9–17).** Exact simple-cubic reduced free energy to `v^28` at high
+  temperature (`[v^28]phi = 2102198327465307/28`) and `x^56` at low temperature
+  (`-979227570369/4`), with per-box CRT uniqueness certificates and post-computation
+  Arisue–Fujiwara / Guttmann–Enting witnesses used as gates, never as inputs. Certified
+  `K_c` in `[0.2122159753270231627267517174278577806020, 0.2527310098586630030260020266135701299926]`;
+  the lower endpoint rests on the all-`n` first-backtrack inequality plus the exact SAW union
+  `a_35 &gt;= 1972465461070186257835`. The plain Peierls head+tail route is proved unable to beat the
+  incumbent upper endpoint, and the two-point infrared/GKS class is exactly optimal there.
+- **Tetrahedron and Kac–Ward.** Only `R=0` solves the identical-factor `8x8` tetrahedron equation for
+  `q` outside `{0,±1}`; the positive-real scalar Kac–Ward cone is empty (`F_4 = 48 + 8 sum M`); 31 of
+  32 rational branches are empty over `Q`. Branch `11111` remains `[UNRESOLVED]`: it has a nonsingular
+  `F_5` point, hence a proper ideal, so no Nullstellensatz emptiness certificate exists at any degree.
+
+**Wave 18 (in flight, seven parallel fronts).** All-`L` saturation, an all-`L` free-fermion no-go by
+algebra dimension, the isotropic gap in Theorem F, exact char-0 `r(T)`/`r_all(T)`, a sound Kac–Ward
+orbit quotient, the `W_L` law, and a paired-momentum/random-current upper-endpoint certificate.
+Reserved ledger `H428`–`H469`, experiments `e157`–`e177`; ownership table in
+[`ising3d/checkpoints/next_actions.md`](ising3d/checkpoints/next_actions.md) §2. Mid-flight, two
+fronts independently converged on a Clifford-grade construction: Jordan–Wigner along the perimeter
+Hamiltonian path sends each of the `L-1` non-path rungs to a single Clifford monomial of grade
+`4L-4c+2`, and `sum over k = 2 mod 4 of C(4L,k) = 2^(n-1)(2^(n-1)-(-1)^L)` — verified exactly here
+for `L=2..8`, reproducing `56, 1056, 16256, 262656` and predicting `4192256` at `L=6`. That is a
+structural explanation of the whole alternation law (the class is the `-1` eigenspace of Clifford
+reversal, whose half-spin form is symmetric for even `L` and alternating for odd `L`), and a route to
+all-`L` equality. Not yet a landed theorem; the fronts are still running.
+
+**Verified.** `fullsuite17b` finished `FINAL: 123 total, 123 passed, 0 failed` (8 h 10 m under host
+contention, load ~40); `fullsuite15b` passed `115/115` pre-wave-16. Every wave-11..17 deliverable was
+additionally run through its own standalone verifier by the lead in the main checkout before its
+ledger rows were appended. Targeted checks re-run today: `tests/test_alternation_law.py` 22/22,
+`tests/test_alternation_15.py` exact `2x5` replay, `tests/test_kw_full_thin_census.py` preflight
+verification.
+
+**D</pre>
+<h2>Project README (verbatim, first lines)</h2><pre># Exact 3D Ising research program
+
+This repository is an evidence-first attempt to understand the nearest-neighbour ferromagnetic Ising model on the simple-cubic lattice.  It combines exact finite-volume arithmetic, transfer matrices, finite-lattice series, rigorous bounds, and algebraic integrability tests.  Its purpose is to prove or falsify sharply stated routes to a solution—not to label a fitted formula “exact.”
+
+**Current status: the three-dimensional Ising model is not solved here.**  The repository contains exact finite results, rigorous bounds, verified controls, falsifications of published and structural proposals, and scoped no-go results for several standard mechanisms.
+
+## Conventions
+
+The fixed conventions are in [`problem_specification.md`](problem_specification.md) and [`notes/CODE_API.md`](notes/CODE_API.md):
+
+- `K = beta J`, `v = tanh K`, `x = exp(-2K)`, `u = x^2`.
+- `Z = exp(K n_b) sum_q c[q] x^q = 2^N (cosh K)^(n_b) P(v)`.
+- A periodic direction of length 1 contributes no self-bond; length 2 contributes two parallel bonds.
+- Combinatorial work uses exact integers or rational numbers.  Transcendental calculations use `mpmath` with recorded precision.
+
+## Headline results
+
+| Result | What is established | Primary evidence |
+|---|---|---|
+| Independent finite-volume engines | Exact enumeration and transfer propagation agree coefficient-by-coefficient on 17 torus, open-box, and cylinder cases. | [`tests/test_tm_vs_enumeration.py`](tests/test_tm_vs_enumeration.py) |
+| The transfer operator is the right one | `V = exp(K_z^* A) exp(K B)` with the stated prefactor reproduces exact 3D partition functions on seven lattices. | [`tests/test_transfer_operator_identity.py`](tests/test_transfer_operator_identity.py) |
+| Full 2D control | Kaufman&#x27;s four-sector finite-torus formula agrees with exact integer transfer matrices in eight cases with maximum relative error `3.63867276317e-60`; parity-resolved `log V` has maximum off-Majorana-bilinear coefficient `1.246e-15`. | [`notes/onsager_derivation.md`](notes/onsager_derivation.md), [`results/onsager/onsager_2d.json`](results/onsager/onsager_2d.json) |
+| Exact simple-cubic series | Reduced free energy is derived through `v^28` at high temperature and `x^56` at low temperature.  The generalized per-cut cap-vector frontier gives `[v^28] phi = 2102198327465307/28` (`a_28 = 525549581866326/7`) after reproducing `v^24` and `v^26`; the LT frontier adds exact coefficients past `x^32` through `x^54` and `x^56` with per-box CRT uniqueness certificates and a fresh-prime independent audit of the full x^56 series.  All CRT profile bounds and the external post-computation witnesses are exact.  Complete negative structure frontiers: algebraicity, first- and second-order differential algebraicity, linear ODE at full budget, and Mahler. | [`results/series/ht_v28.json`](results/series/ht_v28.json), [`proofs/ht_v28.md`](proofs/ht_v28.md), [`results/series/lt_x34.json`](results/series/lt_x34.json), [`proofs/lt_x34.md`](proofs/lt_x34.md), [`results/series/grid.json`](results/series/grid.json) |
+| Rigorous critical interval | `K_c` is certified in `[0.2122159753270231627267517174278577806020, 0.2527310098586630030260020266135701299926]`.  The lower endpoint follows from `mu^n &lt;= c_n-a_(n-1)` and an exact inclusion-exclusion at `n=36` with the wave-14 sieve union `a_35 &gt;= 1972465461070186257835` (exact overlap correction `5030204334415261659120` against the naive disjoint union); the wave-13 ancestor `a_35 &gt;= 507841195880595165555` is kept as the predecessor.  Pairwise-disjoint height-slab schedules with varying rises, cut positions and block counts (all 820 pairs carry an explicit disjoint allowed-height step), the defect families `L` and `F/Q` gadgets, and the coordinate-monotone family `C`, with every pairwise/triple overlap exact.  The upper endpoint is unchanged: the audited two-point infrared/GKS LP has floor `O(1/L)`, so that class cannot supply the missing uniform magnetization floor. | [`proofs/saw_union4.md`](proofs/saw_union4.md), [`proofs/saw_union3.md`](proofs/saw_union3.md), [`proofs/saw_union2.md`](proofs/saw_union2.md), [`proofs/mag_floor.md`](proofs/mag_floor.md) |
+| Simon--Lieb finite boxes | A second rigorous method proves `K_c &gt; 0.20517823158099`; it is valid but weaker than the SAW lower endpoint above. | [`proofs/simon_lieb_bound.md`](proofs/simon_lieb_bound.md), [`results/bounds/simon_lieb_bounds.json`](results/bounds/simon_lieb_bounds.json) |
+| Lee--Yang zeros | Exact field polynomials and 100-digit roots verify the unit circle on 13 lattices, reaching `4x4x4` (64 sites).  Including the separate 64-site record, the result artifact&#x27;s largest radial residual is `9.1044993726259e-92`. | [`notes/lee_yang.md`](notes/lee_yang.md), [`results/lee_yang/lee_yang_analysis.json`](results/lee_yang/lee_yang_analysis.json) |
+| Exact 3D Ising--gauge duality | Finite-volume `Z_2` gauge/Ising duality, including homology sectors and prefactors, passes 27 exact integer checks.  It also shows that the 3D Ising model is not self-dual. | [`proofs/duality_3d.md`](proofs/duality_3d.md), [`results/duality/duality.json`](results/duality/duality.json) |
+| Dolan--Grady defect theorem | The first relation holds on every graph.  The second has the closed local defect in [`proofs/dolan_grady_defect.md`](proofs/dolan_grady_defect.md); it vanishes exactly when every degree is `0` or `2`, while its quartic part vanishes exactly for maximum degree at most 2. | [`proofs/dolan_grady_defect.md`](proofs/dolan_grady_defect.md), [`results/dg_theorem_check.json`](results/dg_theorem_check.json) |
+| No natural tridiagonal relation in tested 3D layers | Exact rational systems and one- or four-row witnesses rule out every tridiagonal/Askey--Wilson parameter choice for tested torus layers through `5x5`; cycles are the 2D control. | [`proofs/tridiagonal_nogo.md`](proofs/tridiagonal_nogo.md), [`results/tridiagonal_certificate.json`](results/tridiagonal_certificate.json) |
+| Algebra growth and structure | Exact-Q structures: `2x3 = C + [C7+C3+C3+A8+A5]`, `2x4 = Qz + so(F)_D21 + 2 so(F)_B13 + sl24 + sl28 + 2 sl4`, and `3x3 = Qz + sl33 + sl48 + sl59 + sl3 + sl16 + sl30`; all three are now proved not to be Onsager-algebra quotients.  For `4x4`, 1794 literal Pauli words give the rigorous partial bound `dim_Q g &gt;= 1794` (no equality/type claim).  `D_(2L) &gt;= 2^L` is certified through `L=9`; all-`L` growth remains open. | [`proofs/char0_structure.md`](proofs/char0_structure.md), [`proofs/char0_complete_2x4.md`](proofs/char0_complete_2x4.md), [`proofs/char0_3x3.md`](proofs/char0_3x3.md), [`proofs/oa_3x3.md`](proofs/oa_3x3.md), [`proofs/char0_4x4.md`](proofs/char0_4x4.md), [`proofs/ladder_nonstat.md`](proofs/ladder_nonstat.md) |
+| Deformation search | A local F3 deformation cancels DG2 on the `3x3` torus, but the displayed pair fails DG1.  Several bounded deformation families are exactly ruled out; the simultaneous unrestricted problem is open. | [`proofs/dg_deformation_nogo.md`](proofs/dg_deformation_nogo.md), [`results/deformation/dg_deformation_search.json`](results/deformation/dg_deformation_search.json) |
+| Kac--Ward obstruction | The 2D identity is reproduced exactly.  In 3D: the strict two-weight slice is inconsistent at `v^8`; the entire positive-real 30-weight cone is empty; the rational gauge-branch map is 31/32 empty over `Q`.  On the last branch `11111`, a nonsingular `F_5` section proves the construction ideal is proper over `Q`, so no rational Nullstellensatz certificate exists at any degree; its local `Q_5` lift fails the independent `3x3x3` order-eight holdout.  The global signed/complex branch remains open. | [`proofs/kac_ward_positive_real.md`](proofs/kac_ward_positive_real.md), [`proofs/kac_ward_close.md`](proofs/kac_ward_close.md), [`proofs/kw_cubic.md`](proofs/kw_cubic.md) |
+| Claimed formulas falsified | Exact/numerical checks reject Zhang 2007 and Degang Zhang 2021 critical/free-energy claims; CFT singularity checks independently </pre>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/ising3d/README.md">README.md</a> (33KB, sha256 fdd36921c1b4)</li><li><a href="../materials/ising3d/research_log.md">research_log.md</a> (44KB, sha256 49bbf895a281)</li><li><a href="../materials/ising3d/problem_specification.md">problem_specification.md</a> (4KB, sha256 fcd198beb06a)</li><li><a href="../materials/ising3d/reports/final_technical_report.md">reports/final_technical_report.md</a> (169KB, sha256 fc2d089ab631)</li><li><a href="../materials/ising3d/deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.pdf">deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.pdf</a> (449KB, sha256 a3136d859ac5)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperA_no_go_mechanisms.pdf">deliverables/wave17_2026-08-20/papers/paperA_no_go_mechanisms.pdf</a> (323KB, sha256 6a13633a2cf0)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperB_series_bounds.pdf">deliverables/wave17_2026-08-20/papers/paperB_series_bounds.pdf</a> (267KB, sha256 cf32f83f48e0)</li><li><a href="../materials/ising3d/deliverables/wave17_2026-08-20/papers/paperC_layer_DLA.pdf">deliverables/wave17_2026-08-20/papers/paperC_layer_DLA.pdf</a> (312KB, sha256 675c5f95ff6c)</li></ul>
+
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

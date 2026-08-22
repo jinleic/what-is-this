@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Navier-Stokes existence &amp; smoothness (route work) — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
+.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
+border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+</style></head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+
+<h1>Navier-Stokes existence &amp; smoothness (route work)</h1>
+<p class="tag">source: <code>math/ns</code> ·
+session: <code>019ff0a0-6557-7000-8b8c-9bdbccb719e4 (prelude)</code> ·
+synced 2026-08-22T04:21:35Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>## 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim
+
+The 2026-08-11 block (&quot;NRS and ESS are publisher-blocked, and the exact-DSS
+closure rested on ESS&quot;) is lifted. Both load-bearing primaries were retrieved
+from legitimate non-paywalled hosts, read in full where load-bearing, and
+checked against every statement this project borrows from them. Local copies
+in [`ns/sources/`](ns/sources/) (page rasters alongside, since the NRS PDF is
+a text-layer-free scan):
+
+- **NRS 1996** — Acta Math. backfile is open on Project Euclid (the Springer
+  DOI PDF remains blocked): `NRS-1996-acta.pdf`, published page images, Acta
+  Math. 176 (1996) 283–294.
+  sha256 `9d3b8473786910ba3fc1b4a3c4d817d37012290fbf875723c2725f4b743ba9f7`.
+- **ESS 2003** — authors&#x27; IMA preprint #1904 at the UMN Digital Conservancy
+  (Azure-WAF&#x27;d; reachable interactively): `ESS-2003-ima1904.pdf`. Published as
+  Russ. Math. Surv. 58:2 (2003) 211–250, doi 10.1070/RM2003v058n02ABEH000609.
+  sha256 `aaee9ce2ab0094b320fb53d06f3c097b0b66832926563348d2928c7e09cbea19`.
+</pre>
+<h2>Project README (verbatim, first lines)</h2><pre># Canonical target — Clay Navier–Stokes, Fefferman alternative (C)
+
+&gt; **Domain scope.** The obstruction map in this directory is for **(C), on
+&gt; $\mathbb{R}^3$**. It does **not** cover **(D)** on the torus $\mathbb{R}^3/\mathbb{Z}^3$.
+&gt; Every argument here — Lemma 1&#x27;s Liouville step, the self-similar and DSS reductions,
+&gt; and Lemma 4&#x27;s Leray-projection covariance — runs on the Euclidean dilation
+&gt; $x\mapsto\lambda x$ and the $\mathbb{R}^3$ Leray multiplier. That dilation is **not a
+&gt; self-map of the fixed torus** (it carries a $1$-periodic field to a $1/\lambda$-periodic
+&gt; one), so for $\lambda\ne1$ continuous self-similarity and DSS have no torus analogue as
+&gt; written. Liouville also changes: a periodic harmonic field is *constant*, not zero.
+&gt; The cited rigidity theorems (NRS, Tsai, Chae, Chae–Wolf, ESS) are all stated on
+&gt; $\mathbb{R}^3$. Transferring them to a torus singularity would plausibly go by rescaling
+&gt; around the singular point to a whole-space limit — **not attempted or claimed here.**
+&gt; Since (C) alone suffices for the prize, this is a scope statement, not a defect.
+
+This directory holds the **actual** target of the project. Everything here is tied to
+the official CMI problem statement. Nothing in `../ccf/` is on this path; see
+[Scope discipline](#scope-discipline).
+
+## The statement being attacked
+
+Fefferman, *Existence and smoothness of the Navier–Stokes equation*
+(&lt;https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf&gt;):
+
+$$\partial_t u_i + \sum_j u_j\partial_{x_j}u_i = \nu\Delta u_i - \partial_{x_i}p + f_i,
+\qquad \nabla\cdot u = 0,\qquad u(x,0)=u^{\circ}(x),\qquad \nu&gt;0,\; n=3.$$
+
+**(C)** There exist a smooth divergence-free $u^{\circ}$ on $\mathbb{R}^3$ obeying the
+Schwartz-decay condition (4) and a smooth $f$ obeying (5), for which **no** pair $(p,u)$
+satisfying (1),(2),(3),(6),(7) exists on $\mathbb{R}^3\times[0,\infty)$.
+**(D)** The periodic analogue on $\mathbb{R}^3/\mathbb{Z}^3$.
+
+Per CMI rules §5(b), *&quot;a resolution in either direction will be evaluated by the
+standard evaluation procedure&quot;* — so a breakdown construction is fully prize-eligible.
+See [`../docs/CMI_RULES.md`](../docs/CMI_RULES.md).
+
+## Active object — the blowup-ansatz obstruction map
+
+Before constructing anything, establish exactly which *shapes* a finite-time breakdown
+for constant-viscosity NS is permitted to have. Each entry is either proved here or
+cited with its exact hypotheses; the value of the map is that its holes are the only
+places a construction can live.
+
+### Lemma 0 (scaling-invariant ansätze). Immediate.
+
+NS has the symmetry $u\mapsto \lambda u(\lambda^2 t,\lambda x)$. Writing $\tau=T-t$ and
+demanding that $u=\tau^{-\alpha}U(x/\tau^{\beta})$ be *invariant* under it gives
+$\lambda u(\lambda^2t,\lambda x) = \lambda^{1-2\alpha}\tau^{-\alpha}U\!\big(\lambda^{1-2\beta}x/\tau^{\beta}\big)$,
+which equals $u$ for all $\lambda&gt;0$ only if $\alpha=\beta=1/2$. So *scaling-invariant*
+self-similarity is Leray&#x27;s ansatz and nothing else. Lemma 1 addresses the broader
+**first-kind** family, where $\alpha$ is not pinned by the symmetry.
+
+### Lemma 1 (exponent rigidity, first-kind ansatz). Proved here.
+
+*Let $\nu&gt;0$, $\alpha&gt;0$, $\alpha+\beta=1$, and suppose*
+$$u(x,t) = \tau^{-\alpha}\,U(y),\qquad p(x,t)=\tau^{-2\alpha}P(y),\qquad
+y=\frac{x}{\tau^{\beta}},\quad \tau=T-t,$$
+*solves the unforced 3D Navier–Stokes equations exactly on $\mathbb{R}^3\times(t_0,T)$,
+with $U$ smooth, divergence-free, and $U(y)\to0$ as $|y|\to\infty$. Then $\beta=1/2$ or
+$U\equiv0$.*
+
+**Proof.** With $\nabla_x=\tau^{-\beta}\nabla_y$ and $\Delta_x=\tau^{-2\beta}\Delta_y$,
+$$\partial_t u = \tau^{-\alpha-1}\big[\alpha U + \beta\,y\cdot\nabla U\big],\qquad
+(u\cdot\nabla)u = \tau^{-2\alpha-\beta}(U\cdot\nabla)U,$$
+$$\nabla_x p = \tau^{-2\alpha-\beta}\nabla P,\qquad
+\nu\Delta_x u = \nu\,\tau^{-\alpha-2\beta}\Delta U.$$
+The hypotheses $\alpha+\beta=1$ and $\gamma=2\alpha$ make the three inviscid exponents
+coincide: $\alpha+1 = 2\alpha+\beta = \gamma+\beta$. Dividing by $\tau^{-\alpha-1}$ and
+using $\alpha-\beta = 1-2\beta$,
+$$\alpha U + \beta\,y\cdot\nabla U + (U\cdot\nabla)U + \nabla P
+\;=\; \nu\,\tau^{\,1-2\beta}\,\Delta U. \tag{$\star$}$$
+The left side is $t$-independent. If $\beta\ne1/2$ then $1-2\beta\ne0$, so
+$\tau\mapsto\tau^{1-2\beta}$ is non-constant; evaluating $(\star)$ at $t_1\ne t_2$ in
+$(t_0,T)$ and subtracting,
+$$\nu\big[\tau_1^{1-2\beta}-\tau_2^{1-2\beta}\big]\,\Delta U = 0 .$$
+The bracket is nonzero and $\nu&gt;0$, so $\Delta U\equiv0$; a harmonic function on
+$\mathbb{R}^3$ vanishing at infinity is $0$ by Liouville. Hence $U\equiv0$, and then
+$\nabla P\equiv0$. $\blacksquare$
+
+&gt; **The hypotheses are load-bearing, and $\alpha+\beta=1$ is assumed, not derived.**
+&gt; An earlier draft claimed &quot;matching $\partial_t u$ against $(u\cdot\nabla)u$ forces
+&gt; $\alpha+\beta=1$&quot;. That is false as stated: powers of $\tau$ are linearly independent,
+&gt; so the equation only requires that the profile coefficients sharing each *distinct*
+&gt; exponent sum to zero — and terms may cancel in groups. For instance if
+&gt; $(U\cdot\nabla)U+\nabla P\equiv0$ (with $\gamma=2\alpha$) that pair forms its own
+&gt; group and imposes no exponent relation on it; the degenerate case $\alpha=\beta=0$ is
+&gt; stationary rather than blowup. A full classification of every exponent grouping is a
+&gt; separate statement and is **not attempted here**.
+&gt;
+&gt; $\alpha+\beta=1$ is the standard *first-kind* condition — exactly what makes the
+&gt; inertial terms balance the time derivative — and by Lemma 0 the scaling-invariant
+&gt; case forces the stronger $\alpha=\beta=1/2$ anyway. So the hypothesis costs little in
+&gt; practice, but it is a hypothesis and is recorded as one.
+
+### Lemma 2 (the critical case $\beta=1/2$). Cited, hypotheses verified.
+
+$\beta=1/2$ is exactly Leray&#x27;s 1934 backward self-similar ansatz
+$u=\lambda(t)U(\lambda x)$, $p=\lambda^2 P$, $\lambda=1/\sqrt{2a(T-t)}$, with profile
+equation
+$$-\nu\Delta U + aU + a\,(y\cdot\nabla)U + (U\cdot\nabla)U + \nabla P = 0,\qquad \nabla\cdot U=0.$$</pre>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/ns/README.md">README.md</a> (26KB, sha256 a8d17a43f0d7)</li></ul>
+
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

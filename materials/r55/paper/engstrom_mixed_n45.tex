@@ -1,0 +1,424 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\conv}{conv}
+\newcommand{\Rams}{R}
+
+\title{A machine-certified exhaustion of the first exact identity basis for
+hypothetical Ramsey$(5,5,45)$ graphs, and the measured obstruction that closes it}
+
+\author{J.\ Chen\thanks{Computational campaign; all artifacts, sources and
+verification transcripts accompany this note.}}
+
+\date{21 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report the terminal outcome of an exact, fully machine-verified linear
+programming campaign over the finite state relaxation of a hypothetical
+Ramsey$(5,5,45)$ graph. The relaxation carries one interval row per
+subgraph-counting identity: the McKay--Radziszowski (MR97) rows at $m=2,3,4$ and
+Engstr\"om's non-separable degree-4 neighbourhood/anti-neighbourhood identity,
+the only identity of the campaign's recorded first exact basis that had never
+been used inside any computational certificate. Adding the Engstr\"om row
+produces \emph{no} accepted structural consequence: all three instantiable
+routes are rejected by exact rational primal witnesses, so the recorded basis is
+exhausted at $n=45$. We claim nothing about $\Rams(5,5)$.
+
+The contribution is not the negative disposition but its mechanism, which we
+measure exactly. First, the new row is genuinely new geometrically: the rank of
+the state-endpoint matrix rises from $6$ to $8$ when the Engstr\"om endpoints are
+adjoined, refuting the natural hypothesis that projection onto the $n=45$ domain
+collapses its coordinates. Second, it nonetheless has \emph{zero} cut strength:
+the exact dual and primal optima of all three routes are bit-identical with and
+without it ($360$, $14310/349$, $45$), and every optimal certificate carries
+$\eta=\theta=0$. Third, we localise the loss: it is the per-coordinate interval
+abstraction, not the identity or the projection. The median per-state Engstr\"om
+window is wider than the median magnitude of the row itself (ratio $1.207$),
+its aggregate constraints are strictly slack at every optimal witness, and on a
+complete catalog class the discarded joint structure is a
+$\rho=0.9464$-correlated point cloud replaced by its bounding box.
+
+Fourth and most consequentially, we show that fixing any of this would not help.
+Although the envelope certification of the $77$ catalog-missing stratum classes
+is $111\times$ looser than catalog truth and carries $98.6\%$ of all window
+width, collapsing every such window to a \emph{point} still leaves the three
+routes at $360$, $39.25$, $38.36$ against acceptance edges $315$, $1$, $1$: a
+factor-$\approx39$ gap survives perfect data. The obstruction is therefore not
+window quality but the absence of vertex-to-vertex coupling---five aggregate
+conditions over $3{,}215$ weights cannot separate the degree-$20$ states. This
+rules out three natural follow-on campaigns by measurement and isolates a
+level-2 pair lift as the only direction the evidence supports.
+\end{abstract}
+
+\section{Setting}
+
+Write $\Rams(5,5)\in\{43,\dots,46\}$ (Exoo; Angeltveit--McKay
+\cite{angeltveit2024}). At $n=45$ the only published structural restriction on a
+hypothetical Ramsey$(5,5,45)$ graph is the degree window
+$d_v\in\{20,\dots,24\}$. Our campaign works inside a finite relaxation of that
+setting, built from complete published $\Rams(4,5)$ censuses.
+
+\begin{definition}[State relaxation]\label{def:cone}
+For a hypothetical Ramsey$(5,5,45)$ graph $G$ and a vertex $v$ put
+$d=d_v$, $m=44-d$, let $X=G_v^{+}$ be the neighbourhood, $Y=G_v^{-}$ the
+anti-neighbourhood, and $Z=\overline{Y}$. Both $X$ and $Z$ are
+$\Rams(4,5)$ graphs, so $e(X)=E_{45}(d)-a$ and $e(Z)=E_{45}(m)-b$ for
+edge deficiencies $a,b\ge0$, where $E_{45}$ is the published maximum edge count.
+The \emph{state} of $v$ is $(d,a,b)$; there are exactly $3{,}215$ feasible
+states. Each state carries exact integer intervals for four rows: the $m=2$
+excess balance (a single integer), the $m=3$ row $g$, the $m=4$ row $h$, and the
+Engstr\"om mixed row $F$ of Section~\ref{sec:row}.
+\end{definition}
+
+Because every vertex occupies exactly one state, $G$ induces nonnegative
+rational weights $w_s$ with
+\begin{equation}\label{eq:relax}
+\sum_s w_s = 45,\qquad
+\sum_s w_s\,\mathrm{bal}(s)=0,\qquad
+\sum_s w_s r_{lo}(s)\ \le\ 0\ \le\ \sum_s w_s r_{hi}(s)
+\quad (r\in\{g,h,F\}),
+\end{equation}
+since each identity sums to zero over the $45$ vertices while each vertex row
+lies in its own state window. All statements below concern this relaxation only.
+
+\section{The Engstr\"om row}\label{sec:row}
+
+Engstr\"om \cite{engstrom2010} proved the MR97 subgraph-counting conjecture,
+yielding for every graph $G$ on $n$ vertices the universal identity
+$\sum_v\big[p_1(G_v^{+})+p_2(G_v^{-})+p_3(G_v^{+},G_v^{-})\big]=0$ with
+\begin{align*}
+p_1(X)&=n(n-3)s(K_1,X)-(n^2+2n-6)s(K_1,X)^2+3n\,s(K_1,X)^3-2s(K_1,X)^4\\
+&\quad+2(n^2+n-8)s(K_2,X)-12s(K_2,X)^2-12(n-1)s(K_1,X)s(K_2,X)+12s(K_1,X)^2s(K_2,X)\\
+&\quad+72s(C_4,X)+12(n-2)s(K_3,X)+24s(K_{1,3},X)+24s(P_4,X)+24s(T_{3,1},X)\\
+&\quad+12(n+2)s(P_3,X)-24s(K_1,X)s(P_3,X)+32s(T_{3,2},X),\\
+p_2(Y)&=4s(K_2,Y)^2-12s(K_{1,3},Y)-8s(C_4,Y)-8s(T_{3,1},Y)-24s(T_{3,2},Y)+2(n-8)s(P_3,Y),\\
+p_3(X,Y)&=4s(K_1,X)s(P_3,Y)-2(n-2)s(K_1,X)s(K_2,Y)+4s(K_1,X)^2s(K_2,Y),
+\end{align*}
+where $s(J,H)$ counts induced copies, $T_{3,1}$ is the paw and $T_{3,2}$ the
+diamond. Two features matter here. It is \emph{non-separable} (the $p_3$ cross
+terms), hence outside the MR97 Lemma 2.3 classification of separable identities
+of degree $\le6$; and its coordinate support
+($C_4,K_{1,3},P_3,P_4$ on both sides, plus three mixed products) is disjoint
+from the frozen basis support $\{d,e,t,\mathrm{paw},\mathrm{diamond},i_4\}$.
+It requires no $K_4$-free hypothesis. To our knowledge it had never been used
+inside a computational certificate for any Ramsey claim.
+
+Specialising to $n=45$ and eliminating the $Y$-side by the complement map
+$s(P_3,\overline Z)=\mathrm{pc}_3(Z)$, $s(C_4,\overline Z)=s(2K_2,Z)$,
+$s(K_{1,3},\overline Z)=s(K_3{+}K_1,Z)$,
+$s(T_{3,1},\overline Z)=s(P_3{+}K_1,Z)$,
+$s(T_{3,2},\overline Z)=s(K_2{+}2K_1,Z)$, $s(P_4,\overline Z)=s(P_4,Z)$ gives the
+per-vertex row used throughout, with $e_y=\binom{44-d}{2}-e_z$:
+\begin{align}\label{eq:F}
+F_v &= 1890d-2109d^2+135d^3-2d^4+4124e_x-12e_x^2-528\,d\,e_x+12d^2e_x
+      +4e_y^2-86\,d\,e_y+4d^2e_y\notag\\
+&\quad +516\,t(x)+72\,c_4(x)+24\,\mathrm{claw}(x)+24\,p_4(x)+24\,\mathrm{paw}(x)
+      +(564-24d)\,p_3(x)+32\,\mathrm{diamond}(x)\notag\\
+&\quad +(74+4d)\,\mathrm{pc}_3(z)-12\,k_3k_1(z)-8\,(2K_2)(z)-8\,(P_3{+}K_1)(z)
+      -24\,(K_2{+}2K_1)(z).
+\end{align}
+
+\paragraph{Kernel validation.} The eleven raw induced $4$-vertex counters, the
+complement map and \eqref{eq:F} are verified by exhaustive comparison against
+naive $4$-subset enumeration on all $33{,}867$ labelled graphs with $n\le6$,
+spot checks at $n\in\{7,8\}$, residual zero on all $328$ published
+Ramsey$(5,5,42)$ representatives \emph{and} their complements ($656$ checks),
+and replay of the $n=49$ type-combination values
+$\{0,144,288,432\}$ with a unique zero corner on the frozen order-$24$ census.
+Six plausible closed forms are provably wrong and are pinned as detected
+mutations with named witnesses (e.g.\ $\mathrm{claw}=\sum_v\binom{d_v}{3}-\mathrm{paw}$
+fails on the $4$-vertex diamond; $s(C_4,\overline Z)=s(C_4,Z)$ fails on $2K_2$;
+dropping $+c_{uv}$ from $\mathrm{pc}_3$ fails on $K_3$).
+
+\paragraph{Interval endpoints.} Per-class exact motif windows come from a single
+streaming pass over $8{,}500{,}211$ graphs (the $36$ validated edge-extremal
+$\Rams(4,5)$ catalogs at orders $17$--$23$ plus the complete order-$24$ census),
+recording exact histograms of fifteen aggregates and asserting $K_4$-freeness on
+every graph. Classes absent from the catalogs receive sound outer windows from a
+certified envelope LP over the R1--R5 relation system (raw $4$-motif
+coordinates) or from degree-histogram enumeration (the $3$-motif-derived
+aggregates). Every observed catalog value is verified to lie inside its outer
+window. Since \eqref{eq:F} splits additively over the two strata, interval
+endpoints are obtained by sign-aware affine images of the per-coordinate windows.
+
+\section{Certificates, witnesses, and the terminal result}
+
+\begin{definition}[Eight-coefficient certificate]
+A tuple $(\alpha,\beta,\gamma,\delta,\varepsilon,\zeta,\eta,\theta)$ with
+$\gamma,\delta,\varepsilon,\zeta,\eta,\theta\ge0$ such that for every state $s$
+\[
+\mathrm{obj}(s)\ \le\ \alpha+\beta\,\mathrm{bal}(s)
++\gamma g_{lo}(s)-\delta g_{hi}(s)
++\varepsilon h_{lo}(s)-\zeta h_{hi}(s)
++\eta f_{lo}(s)-\theta f_{hi}(s).
+\]
+Weighting by any $w$ admissible for \eqref{eq:relax} gives
+$\sum_v \mathrm{obj}\le 45\alpha$; we additionally require $\alpha$ to be the
+least constant its own coefficients admit, so certificates are canonical.
+\end{definition}
+
+Three routes are frozen in advance, with acceptance edges fixed before any run:
+\texttt{total\_deficiency} (accepted at $45\alpha\le315$), \texttt{degree20\_count}
+and \texttt{deficiency\_ge8\_count} (accepted at $45\alpha<1$, which forces a
+nonnegative integer count to vanish). A fourth route,
+\texttt{required\_local\_family}, is not instantiable in this repository (no
+hash-pinned complete gluing-cover manifest exists) and is recorded with no
+evidence at all. A route is refuted when an exactly rational admissible $w$
+attains a value beyond the same edge.
+
+\begin{theorem}[Terminal result]\label{thm:main}
+Over the relaxation of Definition~\ref{def:cone} with all four rows, every
+instantiable route is refuted by an exact rational primal witness:
+\[
+\texttt{total\_deficiency}: 360,\qquad
+\texttt{degree20\_count}: \tfrac{14310}{349},\qquad
+\texttt{deficiency\_ge8\_count}: 45,
+\]
+each equal to the exactly verified least upper bound $45\alpha$ of the same
+route. Consequently no certificate over
+$\{\mathrm{bal},g,h,F\}$ can accept any frozen route, and the campaign's
+recorded first exact basis (MR97 $m=2,3,4$ plus the Engstr\"om identity) is
+exhausted at $n=45$.
+\end{theorem}
+
+\begin{proof}[Verification]
+Coefficients are proposed by floating-point LP, then discarded: each is
+rationalised on a frozen denominator ladder, $\alpha$ is re-derived exactly as
+$\max_s(\cdot)$, and the affine inequality is re-checked at all $3{,}215$
+states in exact rational arithmetic. Primal supports are proposed numerically,
+then re-solved exactly by \texttt{Fraction} Gaussian elimination over every
+active/inactive choice of the six interval inequalities; each witness is
+re-verified against \eqref{eq:relax} including the two new aggregate conditions.
+Route statuses and the terminal disposition are re-derived from verified
+evidence, never read from storage. An independent verifier that imports none of
+the producers re-hashes all $64$ recorded inputs, re-derives the
+$8{,}500{,}211$ catalog counts across $53$ classes, recomputes all $3{,}215$
+$F$ intervals from the artifact's own windows using its own affine arithmetic,
+and re-derives every bound, witness value, status and the disposition. A
+twelve-mutation corruption battery (endpoints, padded and lowered $\alpha$,
+witness weights, trust roots, histogram counts, replay fields, route status,
+deleted state, schema version, swapped window pair, input digest) is rejected
+item-by-item while the untouched artifact passes.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:main} is a statement about a relaxation, not about
+$\Rams(5,5)$. It refutes routes; it proves no bound. In particular nothing here
+supports or contradicts $\Rams(5,5)\le45$.
+\end{remark}
+
+\section{The measured obstruction}
+
+The negative outcome had two candidate explanations: the new row might be
+redundant after projection (``coordinate collapse''), or it might be
+informative but wasted by the relaxation. We separate them exactly.
+
+\begin{proposition}[The row is geometrically new]\label{prop:rank}
+Over the $3{,}215$ states,
+\[
+\rank\big[\mathbf 1,\mathrm{bal},g_{lo},g_{hi},h_{lo},h_{hi}\big]=6,\qquad
+\rank\big[\cdots,f_{lo}\big]=7,\qquad
+\rank\big[\cdots,f_{lo},f_{hi}\big]=8 .
+\]
+Hence neither Engstr\"om endpoint is an affine combination of the frozen
+endpoints: the collapse hypothesis is false.
+\end{proposition}
+
+\begin{proposition}[Yet it has zero cut strength]\label{prop:strength}
+For each frozen route the exact optimum of the dual programme and of the primal
+programme is unchanged when the two $F$ columns, respectively the two $F$
+inequalities, are deleted:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+route & dual (m4 basis) & dual (mixed) & primal (m4) & primal (mixed)\\
+\midrule
+\texttt{total\_deficiency} & $360$ & $360$ & $360$ & $360$\\
+\texttt{degree20\_count} & $14310/349$ & $14310/349$ & $14310/349$ & $14310/349$\\
+\texttt{deficiency\_ge8\_count} & $45$ & $45$ & $45$ & $45$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every optimal certificate carries $\eta=\theta=0$; e.g.\ the
+\texttt{degree20\_count} optimum is $(\alpha,\beta,\delta)=(318/349,6/349,1/1047)$
+with all other coefficients zero.
+\end{proposition}
+
+\begin{proposition}[Mechanism: the interval abstraction]\label{prop:mech}
+The two new aggregate constraints are strictly slack at every optimal witness,
+with
+\[
+\textstyle\sum_s w_sf_{lo}(s)=-\tfrac{18522745}{2},\quad
+-\tfrac{2245549320}{349},\quad -11622240
+\]
+for the three routes respectively (and correspondingly large positive
+$\sum_s w_sf_{hi}$). The slack is structural: per-state window widths are
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+row & min & median & mean & max\\
+\midrule
+$g$ & $0$ & $930$ & $986$ & $1{,}458$\\
+$h$ & $0$ & $41{,}128$ & $41{,}808$ & $72{,}078$\\
+$F$ & $864$ & $802{,}396$ & $764{,}953$ & $1{,}318{,}306$\\
+\bottomrule
+\end{tabular}
+\end{center}
+so the median $F$ window ($802{,}396$) exceeds the median $|F|$ magnitude
+($664{,}870$). The row's information is destroyed by per-coordinate
+intervalisation, not by the identity and not by the projection.
+\end{proposition}
+
+\begin{proposition}[The discarded structure is large and measurable]\label{prop:corr}
+On the complete catalog class $(22,114)$ ($133$ graphs), the $x$-side
+contributions to the $h$ and $F$ rows satisfy
+$h_x\in[1686,2056]$, $F_x\in[234048,239156]$ and
+\[
+\rho(h_x,F_x)=0.9464 .
+\]
+The box relaxation replaces this near-degenerate cloud by its
+$370\times5108$ bounding box.
+\end{proposition}
+
+Propositions~\ref{prop:rank}--\ref{prop:corr} together give a sharper negative
+than a bare disposition: the frozen basis is exhausted \emph{as parameterised by
+independent per-row intervals}, and the exhaustion is caused by a quantified
+loss of joint information rather than by exhaustion of the identities.
+
+\section{Window quality is not the bottleneck}\label{sec:notwindows}
+
+Propositions~\ref{prop:mech}--\ref{prop:corr} suggest tightening the relaxation:
+each row splits additively over the two strata,
+$r=r_{\text{exact}}(d,a,b)+r_x(x)+r_z(z)$ for $r\in\{g,h,F\}$, so the attainable
+set of the \emph{triple} $(g,h,F)$ is a Minkowski sum of two finite point
+clouds and the present relaxation replaces it by a bounding box. Three such
+repairs suggest themselves: convex hulls over the catalog clouds; structural
+extremal caps on the catalog-missing classes (e.g.\ Zykov's theorem gives
+$i_4(z)\le900$ at order $22$ against the envelope's $1285$); and exact joint
+projection of the envelope polytope. We measured all three, and all three are
+dead ends.
+
+\begin{proposition}[Where the width lives]\label{prop:where}
+Summed over all $3{,}215$ states, the $h$ and $F$ window width contributed by
+catalog-certified stratum classes is $35{,}649{,}683$ ($1.4\%$); by the $77$
+envelope-LP classes, $2{,}558{,}092{,}854$ ($98.6\%$). Hence the catalog-side
+correlation of Proposition~\ref{prop:corr} governs only $1.4\%$ of the width,
+and hull-tightening over catalog clouds cannot matter. Separately, exact joint
+projection of the envelope polytope onto the $(h_z,F_z)$ plane for the class
+$(22,107)$ tightens the area only by a factor $1.5$.
+\end{proposition}
+
+\begin{proposition}[The envelope is $111\times$ loose, and it still does not
+matter]\label{prop:shrink}
+On the five catalog-present extremal classes the envelope LP is $111\times$
+looser than the truth in aggregate width ($92{,}888$ against $836$; e.g.\
+$i_4$ at $(22,114)$ is truly $[67,99]$ against the LP's $[0,1285]$).
+Nevertheless, recomputing every $h$ and $F$ endpoint from the artifact's own
+window table while shrinking all envelope-class windows toward their midpoints
+by a factor $k$ (holding $g$ at its frozen values; at $k=1$ the recomputation
+reproduces all $3{,}215$ recorded intervals exactly) gives
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+$k$ & \texttt{total\_deficiency} & \texttt{degree20\_count} & \texttt{deficiency\_ge8\_count}\\
+ & (edge $\le315$) & (edge $<1$) & (edge $<1$)\\
+\midrule
+$1$ & $360$ & $41.003$ & $45.000$\\
+$0.1$ & $360$ & $39.352$ & $38.632$\\
+$0.01$ & $360$ & $39.260$ & $38.387$\\
+$0$ & $360$ & $39.251$ & $38.363$\\
+\bottomrule
+\end{tabular}
+\end{center}
+with primal $=$ dual throughout; at $k=0$ the primal still places $39.251$ of
+the $45$ vertex-weight on degree-$20$ states.
+\end{proposition}
+
+Even a \emph{perfect} motif certification --- every catalog-missing class pinned
+to a point --- therefore leaves a factor-$\approx39$ gap on the count routes. No
+data-quality campaign can close it. (The rows $k<1$ are a sensitivity analysis,
+not a theorem: the shrunken windows are centred at current midpoints and are not
+sound certifications. The rigorous row is $k=1$; the robustness is nonetheless
+decisive, three orders of magnitude of width reduction buying $1.75$ units on a
+gap of $38$.)
+
+\paragraph{What the obstruction is.} The relaxation imposes exactly five
+aggregate conditions on $3{,}215$ nonnegative weights, so an optimal vertex has
+support at most five, and five linear conditions cannot separate the degree-$20$
+states: the programme is free to place $\approx39$--$41$ of the $45$ weight on
+them. The parameterisation is not at fault; the \emph{absence of vertex-to-vertex
+coupling} is. The relaxation never records that neighbourhoods of adjacent
+vertices intersect. A cheap candidate repair also fails: combining
+$\sum_s w_sd_s=2e$ with the averaged per-vertex inequality
+$e\ge d_v+e(N_v)+e(D_v)$ is slack by $\approx200$ at every state, since
+$e\approx495$ while the right-hand side is $\approx250$.
+
+\paragraph{The one direction the evidence supports.} More constraints, not
+better data: a level-2 Sherali--Adams/Lasserre lift carrying pair variables
+$w^{\mathrm{adj}}_{s,s'},w^{\mathrm{non}}_{s,s'}$ with marginal consistency to
+the present $w_s$, together with per-pair facts already certifiable here --- for
+adjacent $u,v$ the common neighbourhood $N(u)\cap N(v)$ is $K_3$-free (else $G$
+contains $K_5$), $\sum_{uv\in E}|N(u)\cap N(v)|=3T$, and each MR97/Engstr\"om
+row applied to pair-restricted counts. \emph{Falsification criterion:} if the
+level-2 lift's exact optimum on \texttt{degree20\_count} remains above $1$, the
+pair-coupled relaxation of this basis is closed as well, leaving the recorded
+residual tiers---VeriPB-certified gluing search, then
+$\mathrm{srg}(45,22,10,11)$ complementary SAT---as the only routes.
+
+\section{Reproducibility}
+
+All numbers above are produced by the accompanying sources and artifact.
+The canonical artifact \texttt{engstrom\_identity.json} (schema 3) records the
+provenance of every input by SHA-256, the fifteen per-class exact histograms,
+the per-class catalog and outer windows with their derivation method, all
+$3{,}215$ states with interval and motif provenance, the four search records
+with exact certificates and witnesses, and the disposition. Commands:
+
+\begin{verbatim}
+python -m unittest discover -s r55/tests -p 'test_*mixed*.py' -v
+python r55/src/mixed_deficiency_cone.py --output r55/data/engstrom_identity.json
+python r55/src/search_mixed_cuts.py     --analysis r55/data/engstrom_identity.json
+python r55/src/verify_mixed_independent.py       r55/data/engstrom_identity.json
+\end{verbatim}
+
+\paragraph{Trust boundary and remaining gap.} Catalog completeness is assumed
+from the published censuses and is named, not re-proved. Floating-point LP output
+is used only to propose; every accepted number is exact. The disposition is
+producer-verified, independently re-verified at the search and $F$-interval
+layer, and cross-anchored to the frozen $m=4$ artifact. Not yet redone
+independently: a second motif kernel re-sweeping the $8.5$M graphs, and
+recomputation of the $g,h$ endpoints from R1--R5 rather than by equality against
+the frozen $m=4$ projection.
+
+\begin{thebibliography}{9}
+\bibitem{mr97} B.~D.~McKay and S.~P.~Radziszowski,
+\emph{Subgraph counting identities and Ramsey numbers},
+J.~Combin.\ Theory Ser.~B \textbf{69} (1997), 193--209.
+\url{https://users.cecs.anu.edu.au/~bdm/papers/r55.pdf}
+\bibitem{engstrom2010} A.~Engstr\"om,
+\emph{A proof of the McKay--Radziszowski subgraph counting conjecture},
+arXiv:1002.4304 (2010). \url{https://arxiv.org/abs/1002.4304}
+\bibitem{angeltveit2024} V.~Angeltveit and B.~D.~McKay,
+\emph{$R(5,5)\le46$}, arXiv:2409.15709 (2024).
+\url{https://arxiv.org/abs/2409.15709}
+\bibitem{am2017} V.~Angeltveit and B.~D.~McKay,
+\emph{$R(5,5)\le48$}, arXiv:1703.08768 (2017).
+\url{https://arxiv.org/abs/1703.08768}
+\end{thebibliography}
+
+\end{document}

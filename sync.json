@@ -1,0 +1,303 @@
+{
+ "generated": "2026-08-22T04:21:35Z",
+ "limit_kb": 5,
+ "total_copied_bytes": 5360985,
+ "projects": {
+  "uc": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "### THEOREM (2026-08-22) \u2014 **Liu's Hypothesis 1 is proved**: the reduced kernel is negative semidefinite",
+   "readme_head_lines": 100,
+   "copied_bytes": 602249,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 36129,
+     "sha256": "85148b716cb4"
+    },
+    {
+     "path": "ANNOUNCEMENT.md",
+     "size": 11548,
+     "sha256": "35403811fe2f"
+    },
+    {
+     "path": "PROOF.md",
+     "size": 27076,
+     "sha256": "92b2fbc074ee"
+    },
+    {
+     "path": "paper/main.pdf",
+     "size": 450943,
+     "sha256": "7f3b6ab54663"
+    },
+    {
+     "path": "paper/main.tex",
+     "size": 70171,
+     "sha256": "e43650476f19"
+    },
+    {
+     "path": "paper/refs.bib",
+     "size": 6382,
+     "sha256": "0bb18b790908"
+    }
+   ],
+   "headline": "### THEOREM (2026-08-22) \u2014 **Liu's Hypothesis 1 is proved**: the reduced kernel is negative semidefinite"
+  },
+  "ising3d": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "## 2026-08-21 \u2014 ising3d waves 10\u201318: eight closed waves recorded, unified paper, ledger gap repaired",
+   "readme_head_lines": 33,
+   "copied_bytes": 1643914,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 34648,
+     "sha256": "fdd36921c1b4"
+    },
+    {
+     "path": "research_log.md",
+     "size": 45370,
+     "sha256": "49bbf895a281"
+    },
+    {
+     "path": "problem_specification.md",
+     "size": 4911,
+     "sha256": "fcd198beb06a"
+    },
+    {
+     "path": "reports/final_technical_report.md",
+     "size": 173259,
+     "sha256": "fc2d089ab631"
+    },
+    {
+     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.pdf",
+     "size": 460660,
+     "sha256": "a3136d859ac5"
+    },
+    {
+     "path": "deliverables/wave17_2026-08-20/papers/paperA_no_go_mechanisms.pdf",
+     "size": 331376,
+     "sha256": "6a13633a2cf0"
+    },
+    {
+     "path": "deliverables/wave17_2026-08-20/papers/paperB_series_bounds.pdf",
+     "size": 273801,
+     "sha256": "cf32f83f48e0"
+    },
+    {
+     "path": "deliverables/wave17_2026-08-20/papers/paperC_layer_DLA.pdf",
+     "size": 319889,
+     "sha256": "675c5f95ff6c"
+    }
+   ],
+   "headline": "## 2026-08-21 \u2014 ising3d waves 10\u201318: eight closed waves recorded, unified paper, ledger gap repaired"
+  },
+  "qec": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "## 2026-08-18 \u2014 QEC/PBB: six-agent wave lands \u2014 W4 circuit distance certified [5,12] on both circuits; X-sector proof gap found + repaired (J.3); residual subclass EMPTYNESS to l*m<=24; two main-text figure PDFs; 368-row dimension-identity lock",
+   "readme_head_lines": 100,
+   "copied_bytes": 811762,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 21790,
+     "sha256": "567696d58251"
+    },
+    {
+     "path": "reports/paper_pbb_nogo.pdf",
+     "size": 691702,
+     "sha256": "1494604967c9"
+    },
+    {
+     "path": "reports/fig_trade_law.pdf",
+     "size": 39544,
+     "sha256": "18cd6d45409b"
+    },
+    {
+     "path": "reports/fig_rate_distance.pdf",
+     "size": 58726,
+     "sha256": "6203e955d91b"
+    }
+   ],
+   "headline": "## 2026-08-18 \u2014 QEC/PBB: six-agent wave lands \u2014 W4 circuit distance certified [5,12] on both circuits; X-sector proof gap found + repaired (J.3); residual subclass EMPTYNESS to l*m"
+  },
+  "kobon": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "### KOBON (2026-08-21/22) \u2014 convention separation, two DRAT-certified closures, paper drafted",
+   "readme_head_lines": 100,
+   "copied_bytes": 1075373,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 7317,
+     "sha256": "1040611c9493"
+    },
+    {
+     "path": "report.md",
+     "size": 24616,
+     "sha256": "d6b6e95ac27e"
+    },
+    {
+     "path": "paper_capacity.md",
+     "size": 60130,
+     "sha256": "f8be81157d75"
+    },
+    {
+     "path": "paper_kobon_2026-08.md",
+     "size": 9973,
+     "sha256": "63eeac4be918"
+    },
+    {
+     "path": "AUDIT.md",
+     "size": 7567,
+     "sha256": "981628f74ca6"
+    },
+    {
+     "path": "paper/kobon_broad_capacity.pdf",
+     "size": 277341,
+     "sha256": "fb41c684ca9d"
+    },
+    {
+     "path": "paper/kobon_broad_capacity.tex",
+     "size": 25699,
+     "sha256": "a1782a750548"
+    },
+    {
+     "path": "engine.py",
+     "size": 43576,
+     "sha256": "2889cace737f"
+    },
+    {
+     "path": "release/kobon-2026-08.zip",
+     "size": 619154,
+     "sha256": "9b0d490006bb"
+    }
+   ],
+   "headline": "### KOBON (2026-08-21/22) \u2014 convention separation, two DRAT-certified closures, paper drafted"
+  },
+  "h10q": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "## 2026-08-19 \u2014 h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle",
+   "readme_head_lines": 46,
+   "copied_bytes": 875852,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 21245,
+     "sha256": "dec9cedf2ddc"
+    },
+    {
+     "path": "RESULTS.md",
+     "size": 46050,
+     "sha256": "ff4329464276"
+    },
+    {
+     "path": "THEOREMS.md",
+     "size": 114304,
+     "sha256": "3c203b28c94a"
+    },
+    {
+     "path": "CONDITIONAL.md",
+     "size": 22057,
+     "sha256": "ffc3df891e05"
+    },
+    {
+     "path": "deliverables/2026-08-19/papers/main-conditional-forall6.pdf",
+     "size": 414383,
+     "sha256": "441387348161"
+    },
+    {
+     "path": "deliverables/2026-08-19/papers/main-conditional-forall6.tex",
+     "size": 8787,
+     "sha256": "eb5f00266edc"
+    },
+    {
+     "path": "deliverables/2026-08-19/papers/companion-verification.pdf",
+     "size": 225235,
+     "sha256": "e1837ea86f3f"
+    },
+    {
+     "path": "deliverables/2026-08-19/papers/companion-verification.tex",
+     "size": 23791,
+     "sha256": "684d40fbc142"
+    }
+   ],
+   "headline": "## 2026-08-19 \u2014 h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle"
+  },
+  "r55": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "## 2026-08-17 \u2014 R55: m=3 identity campaign COMPLETE \u2014 exact negative `M3_NO_CUT_IN_FROZEN_CONE`, triple-verified (producer, exact-simplex audit, disjoint checker on all 8.5M catalogs); m=4 plan drafted and reviewed",
+   "readme_head_lines": 100,
+   "copied_bytes": 309993,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 14533,
+     "sha256": "c647e7bcc4d1"
+    },
+    {
+     "path": "paper/README.md",
+     "size": 3781,
+     "sha256": "8b5099a0eb1b"
+    },
+    {
+     "path": "paper/VERIFY.md",
+     "size": 2821,
+     "sha256": "40db44ebcff0"
+    },
+    {
+     "path": "paper/engstrom_mixed_n45.pdf",
+     "size": 267193,
+     "sha256": "46a5f56fff7e"
+    },
+    {
+     "path": "paper/engstrom_mixed_n45.tex",
+     "size": 21665,
+     "sha256": "3cd4f92e3d77"
+    }
+   ],
+   "headline": "## 2026-08-17 \u2014 R55: m=3 identity campaign COMPLETE \u2014 exact negative `M3_NO_CUT_IN_FROZEN_CONE`, triple-verified (producer, exact-simplex audit, disjoint checker on all 8.5M catalo"
+  },
+  "zeta5": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "## 2026-08-15 \u2014 Session 8: \u03b6(5) campaign opened ([`zeta5/`](zeta5/README.md)); baseline certified, search tool validated blind",
+   "readme_head_lines": 99,
+   "copied_bytes": 6588,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 6588,
+     "sha256": "d616b8a61a9e"
+    }
+   ],
+   "headline": "## 2026-08-15 \u2014 Session 8: \u03b6(5) campaign opened ([`zeta5/`](zeta5/README.md)); baseline certified, search tool validated blind"
+  },
+  "ns": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "## 2026-08-15 \u2014 Session 8: NS unblocked \u2014 NRS and ESS primaries retrieved and verified verbatim",
+   "readme_head_lines": 100,
+   "copied_bytes": 26804,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 26804,
+     "sha256": "a8d17a43f0d7"
+    }
+   ],
+   "headline": "## 2026-08-15 \u2014 Session 8: NS unblocked \u2014 NRS and ESS primaries retrieved and verified verbatim"
+  },
+  "ccf": {
+   "synced": "2026-08-22T04:21:35Z",
+   "progress_header": "### Salvage from the paused subproject",
+   "readme_head_lines": 100,
+   "copied_bytes": 8450,
+   "files": [
+    {
+     "path": "README.md",
+     "size": 8450,
+     "sha256": "904aad447efd"
+    }
+   ],
+   "headline": "### Salvage from the paused subproject"
+  }
+ }
+}

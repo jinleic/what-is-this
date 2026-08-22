@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantum LDPC codes: exact distance &amp; co-design — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.5rem 0 1.5rem}
+.badge{display:inline-block;background:#ddf4ff;border:1px solid #54aeff66;
+border-radius:20px;padding:1px 10px;font-size:12px;color:#0969da;margin-right:6px}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+</style></head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+
+<h1>Quantum LDPC codes: exact distance &amp; co-design</h1>
+<p class="tag">source: <code>math/qec</code> ·
+session: <code>019ff1a6-af1a-7000-b0e9-223c45ae0a3c</code> ·
+synced 2026-08-22T04:21:35Z</p>
+<h2>Latest progress — verbatim from math/PROGRESS.md</h2><p class="tag">Newest entry matching this project</p><pre>## 2026-08-18 — QEC/PBB: six-agent wave lands — W4 circuit distance certified [5,12] on both circuits; X-sector proof gap found + repaired (J.3); residual subclass EMPTYNESS to l*m&lt;=24; two main-text figure PDFs; 368-row dimension-identity lock
+
+Session layer (`math/qec/`), second parallel batch (5 agents) + direct integration.
+</pre>
+<h2>Project README (verbatim, first lines)</h2><pre># qec-codesign
+
+Co-design study of quantum LDPC codes, fault-tolerant syndrome-extraction
+circuits and decoders under circuit-level noise, centred on the non-CSS
+**perturbed bivariate-bicycle** (PBB) construction of arXiv:2606.02418 and the
+CSS bivariate-bicycle baselines of arXiv:2308.07915.
+
+## Headline result
+
+Two proved layers, one on each Pauli sector, plus a consistent circuit-level
+negative.
+
+**Z-sector (rate–distance).** The perturbation degree of freedom is priced
+exactly: with $T(P)$ the orbit-span dimension of all minimum-weight parent
+$Z$-logicals, $d_Q&gt;d_Z(P)\Rightarrow k_Q\le k_P-T(P)$ for *every* perturbation,
+and $=$ whenever $T\ge k_P/2$ (Theorems G/H/I). $63$ of $202$ catalogue parents
+are family-closed, including the Gross code and all $11$ catalogue
+$[[144,12,12]]$ parents. Every row of the published catalogue through $n\le180$
+($318/318$) is CSS-envelope-dominated; only $n=360$ rows remain open.
+
+**X-sector (collapse mechanism) — fully classified.** The single-row syzygy
+channel that silently destroys $X$-distance is governed by one ideal
+$I=\operatorname{Ann}_R(A,B)$: $\dim S=2\dim I^\infty$, so a parent is
+demote-full iff $I$ is nilpotent, demote-immune iff $I^2=I$, mixed iff neither
+(**Theorem J-G**, EXP-053: reproduces the whole $202$-parent classification in
+$8.9$ s, $I^2=0$ on all $192$ demoting parents, $I^2=I$ on all $10$ immune).
+Consequences: **odd$\times$odd lattices cannot demote at all** (semisimple $R$;
+only the published $[[90,8,10]]$ on $(15,3)$ enjoys this), and **no pair with
+$\operatorname{wt}(A),\operatorname{wt}(B)\le3$ — the entire literature family —
+is ever mixed** (**Theorem J-I**), while weight $4$ attains it (**Theorem
+J-J**: $(2,3)$, $A=(1+x)(y+y^2)$, $B=Ay$, $240/255$ classes demote). Census:
+$653{,}022{,}021$ weight-$\le3$ pairs over $18$ lattices, zero mixed.
+
+**Circuit level.** No circuit-level result favoured the PBB candidate: depth
+(basis-independent $\ge8$ vs Gross $7$), gates, hook structure, sampled LER and
+decoder latency all moved against it; certified mechanism-distance intervals
+tied. A fault-tolerant one-ancilla mixed-stabilizer circuit for the flagship
+remains unconstructed *and* unrefuted — the open end-to-end item.
+
+Full ordered directions: [`notes/next_breakthroughs.md`](notes/next_breakthroughs.md).
+
+* **[proved]** $k_{\rm PBB} = k_{\rm BB} - \delta$ with $\delta \ge 0$: the
+  perturbation can only *remove* logical qubits.
+* **[proved]** For $\delta = 0$ the nontrivial pure-$Z$ logical operators of the
+  PBB code are *identical* to the parent CSS code&#x27;s, so
+  $d_{\rm PBB} \le d({\rm parent})$ and the parent weakly dominates in
+  $[[n,k,d]]$. Covers **213 / 368** published PBB codes and **all 14** members
+  of the headline $[[144,12,12]]$ family.
+* **[proved, weaker]** For *arbitrary* $\delta$ there is a same-$(n,k)$ CSS
+  &quot;shadow&quot; whose **$Z$-distance** caps $d_{\rm PBB}$ — a ceiling, not domination.
+* **[exact, strict-provenance audit — EXP-027]** Over all 155 $\delta&gt;0$
+  catalogue codes: the parent provably dominates **66**; **2 are certified
+  reversals** — `phase2_58`/`phase2_60`, where the $\delta=4$ perturbation of a
+  $[[72,8,4]]$ parent yields a genuinely non-CSS $[[72,4,6]]$, i.e. **the
+  perturbation strictly increased distance** (both distances exact/OPTIMAL,
+  double-verified); **87 undecided** (parent distances uncertifiable at budget;
+  literature values were *not* accepted as certificates). The two reversal
+  codes are still dominated by the CSS $[[72,12,6]]$ at the same $n$ (more $k$,
+  same $d$), so the CSS envelope stands; but &quot;perturbations never buy
+  distance&quot; is now **refuted** for $\delta&gt;0$. The $\delta=0$ domination
+  theorem (Corollary 1) is untouched.
+* **[exact, SAT closure — EXP-036]** The CDCL method behind Theorem F turned
+  on EXP-027&#x27;s 87 undecided rows: **46 decided so far** — 41 parent
+  dominations and **5 new certified reversals** beyond `phase2_58`/`60`:
+  `phase2_71`, `phase2_72` ($\delta=6$: $[[108,12,\le4]]$ parents,
+  $[[108,6,&gt;4]]$ PBBs), `phase2_88`, `9_6_0183` ($\delta=2$:
+  $[[108,4,\le8]]$ parent, $[[108,2,&gt;8]]$ PBB with witness 10), and
+  `12_6_0217` ($\delta=4$: $[[144,8,\le8]]$ parent, $[[144,4,&gt;8]]$ PBB with
+  witness 10).  Every verdict is a verified-witness upper bound plus a
+  replayed CDCL UNSAT lower bound under the frozen tie-safe comparison
+  protocol, with CNF-hash-bound replay stamps
+  (`experiments/exp036_delta_closure.py`; per-row identity-gated records;
+  `verify` re-proves each decisive UNSAT from rebuilt matrices).  All 29
+  $n=108/144$ rows are closed plus 17 at $n=180/360$; the remaining 41 run
+  under a budget-laddered sharded schedule. A sound one-clause **translation symmetry break** (BB translations are code automorphisms acting transitively on each block, so any solution can be translated to anchor support at block index 0) cuts decisive UNSAT proofs by **6.2x** (77.8 s -&gt; 12.5 s on the $[[144,12,12]]$ cap-11 instance); premise machine-checked in `tests/test_translation_symmetry_break.py`.  Sector decomposition of the nontriviality disjunction was exact but measured **8x slower** and was abandoned (FR-022).
+* **[proved + machine-verified — EXP-038, Theorem G]** *Why* perturbation almost never
+  buys distance, and a domination test that needs no search on the PBB.  The PBB&#x27;s pure-$Z$
+  centralizer is exactly the parent&#x27;s $\ker[A\,B]$, and its pure-$Z$ stabilizers are the
+  parent&#x27;s plus the dressing space $\Delta=\{\lambda[C\,D]:\lambda[A\,B]=0\}$, with
+  $k_Q=k_P-\dim\Delta$ **proved** (from $\operatorname{rank}H_Q=\operatorname{rank}H_P+\dim\Delta$)
+  and verified with zero mismatches on all 368 rows.  So a surviving minimum-weight parent
+  $Z$-logical certifies $d_Q\le d_Z(\mathrm{parent})$ outright, the survivor itself being the
+  certificate; contrapositively $d_Q&gt;d_Z(P)$ forces $k_Q\le k_P-t$ for $t$ the rank of the
+  minimum-weight translation orbit.  This explains the confinement of **all seven** certified
+  reversals to the $k$-halving class (58 of 155 rows; none among the 97 at $k_Q/k_P\in\{3/4,5/6\}$),
+  each at margin **exactly zero** — they buy the smallest distance step parity allows ($+2$) at a
+* **[proved + exact computation — EXP-039, Theorem H]** The quantifier move from one perturbation
+  to an entire family.  $\Delta$ is an $R$-*submodule* of the $Z$-sector (the coefficient set
+  $\{\lambda:\lambda[A\,B]=0\}$ is an ideal), so absorbing one minimum-weight parent logical absorbs
+  its whole translation orbit.  Hence, with $T(P)=\dim\,(M(P)+S_Z)/S_Z$ the orbit-span dimension of
+  *all* minimum-weight $Z$-logicals, computed *exactly* by a SAT enumeration terminating in certified
+  UNSAT: $d_Q&gt;d_Z(P)\Rightarrow k_Q\le k_P-T(P)$ for **every** perturbation $[C\,D]$ of $P$.
+  $T=k_P$ closes the family outright.  Machine-certified: exact $T$ for **134/202** catalogue parents
+  (exhaustively all $117$ at $n\le144$), **61 family-closed** including the Gross code itself
+  ($T=12=k_P$) and **all eleven** catalogue $[[144,12,12]]$ parents; $249/368$ rows capped a priori
+  with no per-row search.  All **7/7** certified reversals sit exactly on the bound
+  ($k_Q=k_P-T$, slack zero, hypotheses replay-certified), and every reversal is CSS-dominated at equal
+  $n$ against $162$ certified-exact CSS candidates (`exp036_envelope_check.json`, schema v2).
+  **Theorem I (forced saturation, EXP-039/040).**  $\Delta$ is the image of the
+  left kernel $L=\{\lambda:\lambda[A\,B]=0\}$, and $k_P=2\dim L$ on every BB parent</pre>
+<h2>Curated artifacts</h2><ul><li><a href="../materials/qec/README.md">README.md</a> (21KB, sha256 567696d58251)</li><li><a href="../materials/qec/reports/paper_pbb_nogo.pdf">reports/paper_pbb_nogo.pdf</a> (675KB, sha256 1494604967c9)</li><li><a href="../materials/qec/reports/fig_trade_law.pdf">reports/fig_trade_law.pdf</a> (38KB, sha256 18cd6d45409b)</li><li><a href="../materials/qec/reports/fig_rate_distance.pdf">reports/fig_rate_distance.pdf</a> (57KB, sha256 6203e955d91b)</li></ul>
+
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>
