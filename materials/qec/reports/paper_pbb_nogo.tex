@@ -793,6 +793,79 @@ trinomial family. Open: the sharp weight/lattice map at weight $\ge4$, and
 whether any mixed parent has useful $[[n,k,d]]$ (the witness is a $[[12,8]]$
 toy).
 
+\subsection{A certified solver-free distance ceiling on odd
+lattices}\label{sec:ceiling}
+
+Corollary J-G1 says the collapse channel is empty when $\ell,m$ are both odd,
+which raises the design question of what actually lives in the collapse-free
+region. Answering it needed one new tool and one correction to our own
+bookkeeping.
+
+\paragraph{Already known (reproduced, not claimed).} For $\ell,m$ odd, $|G|$ is
+odd, so $R=\mathbb F_2[G]$ is semisimple by Maschke and splits as
+$\prod_\chi\mathbb F_\chi$ over Frobenius orbits of characters. Multiplication by
+$a$ is diagonal, hence
+$\operatorname{Ann}(a)=\bigoplus_{a(\chi)=0}\mathbb F_\chi$ and
+$k=2\dim I=2\,\#\{\chi: a(\chi)=b(\chi)=0\}$: $k$ is twice the number of common
+roots. This appears as $k=2\deg\gcd(a,b,x^\ell-1)$ in Panteleev--Kalachev
+(arXiv:1904.02703, Prop.~1), in Lin--Pryadko (arXiv:2306.16400, Eq.~47), as
+Eq.~(11) of Wang--Mueller (arXiv:2408.10001v4) for coprime lattices, as
+Thm.~2.6 of Postema--Kokkelmans (arXiv:2502.17052v4), and as
+Cor.~2.11--2.12 of Eberhardt--Steffan (arXiv:2407.03973v1). We use it; we do
+not claim it.
+
+\paragraph{Theorem K (certified ceiling).} Let
+$I=\operatorname{Ann}(a)\cap\operatorname{Ann}(b)$, let $\bar{\cdot}$ be the
+involution $x\mapsto x^{-1},y\mapsto y^{-1}$, and put $I_0=I\cap\bar I$. Then
+every nonzero $u\in I_0$ makes $(u,0)$ a nontrivial logical operator, so
+\[
+  d(P)\ \le\ \min\{\operatorname{wt}(u): 0\neq u\in I_0\}.
+\]
+\emph{Proof.} $I\times I\subseteq\ker H_X$ because $au+bv=0$ there. Writing
+$S_Z=\{(\bar b\lambda,\bar a\lambda)\}$ and using $\bar a(\chi)=a(\chi^{-1})$,
+the block $(S_Z)_\chi$ is a line unless $\chi^{-1}\in Z:=Z(a)\cap Z(b)$, where it
+vanishes; so $(I\times I)\cap S_Z$ is supported exactly on $Z\setminus Z^{-1}$.
+As $I_0$ is indexed by the inversion-closed set $Z\cap Z^{-1}$, that support is
+empty. $\square$
+
+The cost is $O(2^{\dim I_0}\ell m)$ bit operations, i.e.\ microseconds for
+$k\le32$ since $\dim I_0\le k/2$: no solver, no decoder, no sampling. When
+$Z\cap Z^{-1}=\varnothing$ the theorem is vacuous and a per-instance rank test
+supplies the smallest nontrivial $(u,0)$, $u\in I$ (Corollary K1).
+
+\paragraph{Validation, and a correction.} A read-only novelty check found no
+published form of this ceiling, and refuted a claim we had been carrying --- that
+$[[90,8,10]]$ on $(15,3)$ is the only odd$\times$odd BB instance in print. It is
+not: we sourced $27$ instances from arXiv:2308.07915, arXiv:2407.03973v1,
+arXiv:2408.10001v4 and arXiv:2502.17052v4, including $(9,9)\,[[162,8,12]]$,
+$(9,15)\,[[270,8,18]]$, $(7,7)\,[[98,6,12]]$ and $(3,27)\,[[162,8,14]]$. Our
+statement was scoped to the seven instances of our own baseline table, where it
+holds; asserted of the literature it was wrong and is withdrawn. The upside is a
+far stronger test bed: J-G1's immunity now covers $25$ published codes, not one.
+
+On those $27$ instances (EXP-055) we recomputed $k$ by three independent
+routes --- the annihilator ideal, $k=n-\operatorname{rank}H_X-\operatorname{rank}
+H_Z$, and the published $\gcd$ formula where the lattice is coprime. All three
+agree with each other on all $27$, and with the printed $k$ on $25$; two rows
+(both arXiv:2408.10001v4 App.~C Table~4, $(5,9)$ and $(7,11)$) give $k=0$ by both
+of our routes against printed $4$ and $6$, and are recorded as unreproduced and
+excluded from every count, with transcription on our side named as the likeliest
+cause. Theorem K, with Corollary K1 closing the $11$ cases where $I_0=0$, then
+certifies a ceiling for all $25$ reproduced instances with \textbf{zero
+violations}. The slack is stated plainly: minimum $2$, median $12$, maximum
+$42$ --- roughly a factor $2$, the same looseness as the idempotent-ideal bound
+recorded in \texttt{notes/failed\_routes.md} (FR-024), and for the same reason
+($\ker H_X$ exceeds $I\times I$ whenever $Z$ is not inversion-closed).
+
+\paragraph{Exhaustive census.} Over all $65$ odd lattices with $\ell m\le180$
+($n\le360$) we enumerated every weight-$\le3$ pair --- $4.23\times10^{9}$ pairs
+--- computing $k$ by the ideal route with a matrix-route cross-check and
+\textbf{zero mismatches}, and re-verifying the J-G1 mechanism directly ($273$
+idempotence tests, zero violations) on lattices outside our catalogue's
+$m\in\{3,6\}$. Grouping polynomials by $\operatorname{Ann}$ makes the pass exact
+rather than sampled, since $k$ and the ceiling depend only on the pair of
+annihilators.
+
 \section{The exact trade law, its residual, and remaining conjectures}\label{sec:conjectures}
 
 \begin{theoremI}[restated; proved in \S\ref{sec:Texact2}]

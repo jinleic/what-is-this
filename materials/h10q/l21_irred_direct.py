@@ -425,8 +425,11 @@ def count_table(rows: list[dict[str, Any]]) -> dict[str, Any]:
         for row in rows
     )
     A_np_counts: Counter[str] = Counter()
+    A_unit_Z_pairs = 0
     for row in rows:
         for item in row["newton_primes_dividing_A"]:
+            if item["v_p_z"] == 0:
+                A_unit_Z_pairs += 1
             slopes = ", ".join(
                 f'{segment["length"]}@{segment["slope"]}'
                 for segment in item["segments"]
@@ -447,6 +450,7 @@ def count_table(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "mod_w_factorization_counts": dict(sorted(mod_counts.items())),
         "newton_w_segment_counts": dict(sorted(w_np_counts.items())),
         "newton_A_segment_counts": dict(sorted(A_np_counts.items())),
+        "newton_A_unit_Z_pairs": A_unit_Z_pairs,
         "trace_local_case_counts": dict(sorted(trace_local_counts.items())),
         "auxiliary_certificate_prime_counts": dict(
             sorted(certificate_counts.items(), key=lambda item: int(item[0]))
@@ -505,6 +509,16 @@ def write_report(summary: dict[str, Any]) -> None:
         "",
         "The nonresidue condition therefore correlates with a completely reducible low-degree reduction, not an irreducible or large-degree factor pattern.",
         "",
+        "## Lemma L21-D2A: generic Newton polygon at `p | A` (PROVED)",
+        "",
+        "Let `p` be odd, `m=v_p(A)>0`, and `v_p(Z)=0`. Multiplication by `A` only shifts all coefficient valuations. In `A*P`, the contribution `4a^8Z^4 N_g^2` has coefficient valuations",
+        "",
+        "```text",
+        "(2m,2m,m,m,0,m,m,2m,2m),",
+        "```",
+        "",
+        "because the middle coefficient `16a^4-6A` of `N_g` is a unit and its other four coefficients are divisible by `A`. The two `D^2` terms have strictly larger valuations at degrees 4 and 5. Thus the lower polygon has two length-4 slopes `-m/2,+m/2`, never a denominator-8 single slope. This rules out the generic `p | A` proposal as well.",
+        "",
         "## Lemma L21-D3: uniform trace-quartic irreducibility when `a=1` (PROVED)",
         "",
         "Now `A=5`, `s=0`, `(5|w)=-1`, and",
@@ -514,11 +528,11 @@ def write_report(summary: dict[str, Any]) -> None:
         "T(u)=400D^2+(4/5)Z^4(16-5(u-2)^2)^2.",
         "```",
         "",
-        "Put `E=Q(t)`, `t^2=-5`. Up to the rational factor `5/4`,",
+        "Put `E=Q(t)`, `t^2=-5`. Exactly,",
         "",
         "```text",
-        "T(u) = (Z^2(16-5(u-2)^2)-10Dt)",
-        "       (Z^2(16-5(u-2)^2)+10Dt).",
+        "(5/4)T(u) = (Z^2(16-5(u-2)^2)-10Dt)",
+        "              (Z^2(16-5(u-2)^2)+10Dt).",
         "```",
         "",
         "For either quadratic, substitute `v=Z(u-2)`. At a prime of `E` above `w`, its square test reduces to whether `+2t` or `-2t` is a square in the residue field. If `w` is inert in `E`, the norm of either element is 20, whose character is `(5|w)=-1`, so both are nonsquares. If `w` splits, the characters of `2t` and `-2t` multiply to `(20|w)=-1`; conjugating the prime exchanges the signs, so each quadratic has a prime where its residue is nonsquare. Each quadratic is therefore irreducible over `E`. They are conjugate, so their product `T` is irreducible over `Q`.",
@@ -577,7 +591,7 @@ def write_report(summary: dict[str, Any]) -> None:
         lines.append(f"| `{case}` | {count} |")
     lines.extend([
         "",
-        "No prime dividing `A` had a slope denominator 8 in this scan; these rows show two length-4 slopes. This is mechanical evidence only outside the generic unit hypotheses.",
+        f"The symbolic `p | A`, `v_p(Z)=0` lemma applies to {tables['newton_A_unit_Z_pairs']} entries. No remaining entry had a slope denominator 8 in this scan; all rows show two length-4 slopes. The non-unit-`Z` remainder is mechanical evidence only.",
         "",
         "### Trace-quartic local cases (`a=1`)",
         "",
@@ -632,6 +646,7 @@ def main() -> None:
         "proved_structural_lemmas": [
             "L21-D1 exact reciprocal core and unique b^5 perturbation",
             "L21-D2 exact mod-w factorization and Newton-polygon law",
+            "L21-D2A generic p-dividing-A Newton-polygon law",
             "L21-D3 uniform trace-quartic irreducibility for a=1 and (5|w)=-1",
             "L21-D4 degree-8 irreducibility under explicit trace-norm nonsquare condition",
         ],

@@ -24,6 +24,8 @@ ENVELOPE = ROOT / "results" / "processed" / "exp036_envelope_check.json"
 TRICHOTOMY = ROOT / "results" / "processed" / "exp052_ideal_power_trichotomy.json"
 IDEAL = ROOT / "results" / "processed" / "exp053_ideal_classification.json"
 CENSUS = ROOT / "results" / "processed" / "exp054_mixed_census.json"
+ODDSWEEP = ROOT / "results" / "processed" / "exp055_odd_lattice_sweep.json"
+ODDLIT = ROOT / "results" / "processed" / "exp055_literature_validation.json"
 
 
 @pytest.fixture(scope="module")
@@ -54,6 +56,44 @@ def ideal() -> dict:
     d = json.loads(IDEAL.read_text(encoding="utf-8"))
     assert d.get("schema") == "exp053-ideal-classification-v1", d.get("schema")
     return d
+
+
+@pytest.fixture(scope="module")
+def oddsweep() -> dict:
+    assert ODDSWEEP.exists(), f"required artifact missing: {ODDSWEEP}"
+    d = json.loads(ODDSWEEP.read_text(encoding="utf-8"))
+    assert d.get("schema") == "exp055-odd-lattice-sweep-v1", d.get("schema")
+    return d
+
+
+@pytest.fixture(scope="module")
+def oddlit() -> dict:
+    assert ODDLIT.exists(), f"required artifact missing: {ODDLIT}"
+    d = json.loads(ODDLIT.read_text(encoding="utf-8"))
+    assert d.get("schema") == "exp055-literature-v2", d.get("schema")
+    return d
+
+
+def test_section_62_numbers_match_artifacts(paper: str, oddsweep: dict,
+                                            oddlit: dict) -> None:
+    """Section 6.2's counts must re-derive from EXP-055, not drift with prose."""
+    v = oddsweep["verdict"]
+    assert re.search(rf"all \${v['lattices_swept']}\$ odd lattices", paper)
+    # 4.23e9 pairs, quoted to three significant figures
+    assert f"${v['pairs_total'] / 1e9:.2f}" in f"${4.23:.2f}"
+    assert re.search(r"4\.23\\times10\^\{9\}", paper)
+    assert abs(v["pairs_total"] / 1e9 - 4.23) < 0.005, v["pairs_total"]
+    assert re.search(rf"\(\${v['idempotence_tested']}\$ idempotence tests", paper)
+    assert v["k_mismatches"] == 0 and v["idempotence_violations"] == 0
+    # literature battery
+    assert re.search(rf"we sourced \${oddlit['instances']}\$ such instances", paper)
+    assert re.search(rf"covers \${oddlit['reproduced_instances']}\$ published codes",
+                     paper)
+    assert oddlit["ceiling_never_violated"] is True
+    assert re.search(r"\*\*zero violations\*\*", paper)
+    for label, key in (("minimum", "slack_min"), ("median", "slack_median"),
+                       ("maximum", "slack_max")):
+        assert re.search(rf"{label} \${oddlit[key]}\$", paper), (label, oddlit[key])
 
 
 @pytest.fixture(scope="module")
