@@ -1,6 +1,6 @@
 {
- "ceiling_max": 90,
- "ceiling_max_weight3": 90,
+ "ceiling_max": 72,
+ "ceiling_max_weight3": 72,
  "ell": 45,
  "frontier": {
   "10": {
@@ -26,9 +26,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 27,
-   "dim_I0": 5,
+   "dim_pole": 5,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "12": {
    "A": [
@@ -56,10 +56,45 @@
     ]
    ],
    "bar_invariant": false,
-   "ceiling": 90,
-   "dim_I0": 2,
+   "ceiling": 66,
+   "dim_pole": 6,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
+  },
+  "16": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     0
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 48,
+   "dim_pole": 8,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   },
   "18": {
    "A": [
@@ -84,9 +119,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 15,
-   "dim_I0": 9,
+   "dim_pole": 9,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "20": {
    "A": [
@@ -115,9 +150,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 18,
-   "dim_I0": 10,
+   "dim_pole": 10,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "24": {
    "A": [
@@ -128,10 +163,6 @@
     [
      0,
      1
-    ],
-    [
-     0,
-     2
     ]
    ],
    "B": [
@@ -144,15 +175,15 @@
      0
     ],
     [
-     6,
+     12,
      0
     ]
    ],
-   "bar_invariant": true,
-   "ceiling": 20,
-   "dim_I0": 12,
+   "bar_invariant": false,
+   "ceiling": 24,
+   "dim_pole": 12,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "8": {
    "A": [
@@ -163,10 +194,6 @@
     [
      0,
      1
-    ],
-    [
-     0,
-     2
     ]
    ],
    "B": [
@@ -179,15 +206,15 @@
      0
     ],
     [
-     2,
+     4,
      0
     ]
    ],
-   "bar_invariant": true,
-   "ceiling": 60,
-   "dim_I0": 4,
+   "bar_invariant": false,
+   "ceiling": 72,
+   "dim_pole": 4,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   }
  },
  "frontier_weight3": {
@@ -221,10 +248,45 @@
     ]
    ],
    "bar_invariant": false,
-   "ceiling": 90,
-   "dim_I0": 2,
+   "ceiling": 66,
+   "dim_pole": 6,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
+  },
+  "16": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     0
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 48,
+   "dim_pole": 8,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   },
   "20": {
    "A": [
@@ -257,9 +319,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 18,
-   "dim_I0": 10,
+   "dim_pole": 10,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "24": {
    "A": [
@@ -287,14 +349,14 @@
     ],
     [
      6,
-     0
+     1
     ]
    ],
-   "bar_invariant": true,
-   "ceiling": 20,
-   "dim_I0": 12,
+   "bar_invariant": false,
+   "ceiling": 24,
+   "dim_pole": 12,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "8": {
    "A": [
@@ -322,14 +384,14 @@
     ],
     [
      2,
-     0
+     1
     ]
    ],
-   "bar_invariant": true,
-   "ceiling": 60,
-   "dim_I0": 4,
+   "bar_invariant": false,
+   "ceiling": 72,
+   "dim_pole": 4,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   }
  },
  "groups": 108,
@@ -364,11 +426,18 @@
  "m": 3,
  "max_weight": 3,
  "n": 270,
- "no_group_certificate_pairs": 822,
- "no_group_certificate_represented": 2127312,
+ "no_group_certificate_pairs": 0,
+ "no_group_certificate_represented": 0,
  "pairs_total": 81830116,
+ "protocol": {
+  "k_min": 8,
+  "max_weight": 3,
+  "sample": 12,
+  "seed": 55
+ },
  "qualifying_group_pairs": 1540,
  "qualifying_pairs_represented": 3522344,
+ "schema": "exp055-census-lattice-v2",
  "supports": 9046,
- "wall_s": 130.97
+ "wall_s": 50.02
 }

@@ -836,3 +836,57 @@ useful; the live version is per-*factor* (bound the coset minimum of
 $\ker H_X/S_Z$ inside each local ring $F_\chi[G_2]$ using classical cyclic-code
 bounds), recorded as direction D in `notes/next_breakthroughs.md`. Numbers
 reproduced by the probe in that note's D section; no artifact promoted.
+
+---
+
+## FR-025 — The cube-root-only trinomial criterion on odd lattices
+**Date** 2026-08-22 · **Track** K (odd-lattice search) · **Status** FALSIFIED BEFORE IMPLEMENTATION
+
+**What we almost claimed.** In characteristic two, if odd-order roots of unity
+satisfy $1+u+v=0$, then $\{u,v\}$ must be the two primitive cube roots. The
+proposed corollary was $3\nmid\ell m\Rightarrow k=0$ for every odd-lattice
+weight-3 BB pair, which would have pruned lattices such as $(7,7)$ and $(25,7)$.
+
+**Why it is false.** Every nonzero element of a finite field has odd
+multiplicative order. In $\mathbb F_8$, if
+$\alpha^3+\alpha+1=0$, then $1+\alpha+\alpha^3=0$ with
+$\operatorname{ord}(\alpha)=7$. Direct rank computation gives
+$\dim\operatorname{Ann}(1+x+y)=6$ on $(7,7)$ despite $3\nmid49$.
+Wang–Mueller publish $[[98,6,12]]$ on $(7,7)$, and
+Postema–Kokkelmans' trinomial classification includes Mersenne-prime channels
+$3,7,31,\ldots$ rather than only 3.
+
+**Correct result.** The general odd-lattice statement is the published
+common-root formula $k=2|Z(a)\cap Z(b)|$. EXP-055 therefore uses field-free
+annihilator ranks and scans **all** odd lattices; no divisibility prefilter is
+used. On $3$-power lattices the cube-root picture remains a special case only.
+
+**Artifacts.** `experiments/exp055_odd_lattice_sweep.py`;
+`notes/theorem_k_certified_ceiling.md`; the 65-lattice census.
+
+---
+
+## FR-026 — Raw left-annihilator vectors used as physical logicals
+**Date** 2026-08-22 · **Track** K (distance ceiling) · **Status** UNSOUND FALLBACK RETRACTED; BAR REGRESSION ADDED
+
+**What was wrong.** `ann_basis` computes
+`nullspace(poly_matrix(a).T)`: a **left**-annihilator coefficient space $I$.
+An intermediate EXP-055 fallback treated $(u,0)$ with $u\in I$ as a physical
+right-kernel vector. That is false unless the ideal is reciprocal-invariant.
+
+**How it was caught.** The new witness test failed on the published
+$(7,7)\,[[98,6,12]]$ code: every basis vector of raw $I$ violates
+$H_X(u,0)^T=0$. Applying the involution fixes all of them:
+$J=\bar I$ is the physical right-kernel pole. The bar-invariant
+$[[90,8,10]]$ control had hidden the defect.
+
+**Correct result.** On odd lattices
+$$J\oplus J\cong\ker H_X/S_Z,\qquad J=\bar I,$$
+the Eberhardt–Steffan principal-code isomorphism in the repository convention.
+All pole ceilings and reduced witnesses now use $J$; every persisted witness is
+rechecked in $\ker H_X\setminus S_Z$. The isomorphism passes 27/27 literature
+audits. The earlier restricted $I\cap\bar I$ statement was sound but weak.
+
+**Regression.** `test_bar_convention_on_noninvariant_code` and
+`test_reduced_witness_is_a_real_logical` in
+`tests/test_exp055_odd_lattice.py`.

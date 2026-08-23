@@ -26,9 +26,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 15,
-   "dim_I0": 5,
+   "dim_pole": 5,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "20": {
    "A": [
@@ -57,9 +57,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 10,
-   "dim_I0": 10,
+   "dim_pole": 10,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "8": {
    "A": [
@@ -68,12 +68,8 @@
      0
     ],
     [
-     1,
+     5,
      0
-    ],
-    [
-     3,
-     1
     ]
    ],
    "B": [
@@ -92,9 +88,9 @@
    ],
    "bar_invariant": false,
    "ceiling": 40,
-   "dim_I0": 0,
-   "exact_min": false,
-   "route": "member"
+   "dim_pole": 4,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   }
  },
  "frontier_weight3": {
@@ -129,9 +125,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 10,
-   "dim_I0": 10,
+   "dim_pole": 10,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "8": {
    "A": [
@@ -140,12 +136,12 @@
      0
     ],
     [
-     1,
-     0
+     0,
+     1
     ],
     [
-     3,
-     1
+     0,
+     2
     ]
    ],
    "B": [
@@ -164,9 +160,9 @@
    ],
    "bar_invariant": false,
    "ceiling": 40,
-   "dim_I0": 0,
-   "exact_min": false,
-   "route": "member"
+   "dim_pole": 4,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   }
  },
  "groups": 13,
@@ -191,11 +187,18 @@
  "m": 3,
  "max_weight": 3,
  "n": 150,
- "no_group_certificate_pairs": 8,
- "no_group_certificate_represented": 62400,
+ "no_group_certificate_pairs": 0,
+ "no_group_certificate_represented": 0,
  "pairs_total": 7706176,
+ "protocol": {
+  "k_min": 8,
+  "max_weight": 3,
+  "sample": 12,
+  "seed": 55
+ },
  "qualifying_group_pairs": 16,
  "qualifying_pairs_represented": 63400,
+ "schema": "exp055-census-lattice-v2",
  "supports": 2776,
- "wall_s": 5.79
+ "wall_s": 5.07
 }

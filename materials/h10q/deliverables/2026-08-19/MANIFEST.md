@@ -46,26 +46,36 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `artifacts/l18_schinzel_implies_h.jsonl` | repo-regenerable | 23440 |
 | `artifacts/l19_cell179.jsonl` | repo-regenerable | 12013190 |
 | `artifacts/l19_classexist.jsonl` | repo-regenerable | 405756 |
-| `artifacts/l19_tauzero.jsonl` | repo-regenerable | 568168 |
+| `artifacts/l19_tauzero.jsonl` | repo-regenerable | 568166 |
 | `artifacts/l20_admissible.jsonl` | repo-regenerable | 808659 |
+| `artifacts/l21_irred_direct.jsonl` | repo-regenerable | 643542 |
+| `artifacts/l21_irred_generic.jsonl` | repo-regenerable | 1818481 |
+| `artifacts/l21_reducible_locus.jsonl` | repo-regenerable | 19466 |
+| `artifacts/l22_elimination.jsonl` | repo-regenerable | 1053714 |
+| `artifacts/l22_factor_tuple.jsonl` | repo-regenerable | 11463 |
+| `artifacts/l22_fiber_geometry.jsonl` | repo-regenerable | 7158 |
+| `artifacts/l22_infinity.jsonl` | repo-regenerable | 4870 |
+| `artifacts/l22_reciprocal_cube.jsonl` | repo-regenerable | 17615 |
+| `artifacts/l22_square_branch.jsonl` | repo-regenerable | 19003 |
 | `artifacts/l6_witnesses.jsonl` | frozen authority (suite-asserted) | 3785 |
 | `artifacts/l9_steered.jsonl` | frozen authority (suite-asserted) | 23025 |
 | `artifacts/litscout_h10q.md` | persisted evidence (no checked-in producer) | 8438 |
-| `ledger/CONDITIONAL.md` | project ledger | 23633 |
-| `ledger/NOTES.md` | project ledger | 66528 |
-| `ledger/README.md` | project ledger | 21245 |
-| `ledger/RESULTS.md` | project ledger | 48370 |
-| `ledger/THEOREMS.md` | project ledger | 123532 |
-| `papers/companion-verification.tex` | paper draft | 27586 |
-| `papers/main-conditional-forall6.tex` | paper draft | 9431 |
-| `papers/sections/architecture.tex` | paper draft | 9549 |
-| `papers/sections/classes.tex` | paper draft | 8186 |
+| `ledger/CONDITIONAL.md` | project ledger | 19600 |
+| `ledger/NOTES.md` | project ledger | 73220 |
+| `ledger/README.md` | project ledger | 27786 |
+| `ledger/RESULTS.md` | project ledger | 50612 |
+| `ledger/THEOREMS.md` | project ledger | 140675 |
+| `papers/companion-verification.tex` | paper draft | 35144 |
+| `papers/main-conditional-forall6.tex` | paper draft | 9462 |
+| `papers/sections/architecture.tex` | paper draft | 10004 |
+| `papers/sections/classes.tex` | paper draft | 8324 |
 | `papers/sections/existence.tex` | paper draft | 6483 |
-| `papers/sections/frontier.tex` | paper draft | 9153 |
-| `papers/sections/intro.tex` | paper draft | 9286 |
-| `papers/sections/record.tex` | paper draft | 10558 |
-| `papers/sections/schinzel.tex` | paper draft | 7469 |
-| `papers/sections/sieve.tex` | paper draft | 8461 |
+| `papers/sections/frontier.tex` | paper draft | 9171 |
+| `papers/sections/intro.tex` | paper draft | 9570 |
+| `papers/sections/irreducibility.tex` | paper draft | 14175 |
+| `papers/sections/record.tex` | paper draft | 11208 |
+| `papers/sections/schinzel.tex` | paper draft | 8203 |
+| `papers/sections/sieve.tex` | paper draft | 8499 |
 | `papers/sections/walls.tex` | paper draft | 10010 |
 | `scripts/h10q.py` | generator/replay script | 198192 |
 | `scripts/l12_class.py` | generator/replay script | 16371 |
@@ -98,6 +108,15 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `scripts/l19_classexist.py` | generator/replay script | 39638 |
 | `scripts/l19_tauzero.py` | generator/replay script | 38085 |
 | `scripts/l20_admissible.py` | generator/replay script | 40213 |
+| `scripts/l21_irred_direct.py` | generator/replay script | 29699 |
+| `scripts/l21_irred_generic.py` | generator/replay script | 30789 |
+| `scripts/l21_reducible_locus.py` | generator/replay script | 8891 |
+| `scripts/l22_elimination.py` | generator/replay script | 43490 |
+| `scripts/l22_factor_tuple.py` | generator/replay script | 38235 |
+| `scripts/l22_fiber_geometry.py` | generator/replay script | 47516 |
+| `scripts/l22_infinity.py` | generator/replay script | 33552 |
+| `scripts/l22_reciprocal_cube.py` | generator/replay script | 32683 |
+| `scripts/l22_square_branch.py` | generator/replay script | 46150 |
 
 ## Verification
 
@@ -119,6 +138,15 @@ python3 l19_tauzero.py                   # tau=0 wall criterion / class-side bre
 python3 l19_classexist.py                # uniform aligned-class construction
 python3 l19_cell179.py                   # exact w=179 member closure
 python3 l20_admissible.py                # uniform admissibility audit
+nice -n 19 python3 l21_reducible_locus.py # explicit reducible locus / branch escape
+nice -n 19 python3 l21_irred_generic.py # generic and per-fiber irreducibility
+nice -n 19 python3 l21_irred_direct.py  # local no-go laws / reciprocal subfamily
+nice -n 19 python3 l22_elimination.py # PROVED fixed-Z theorem; scans EVIDENCE
+nice -n 19 python3 l22_reciprocal_cube.py # PROVED independent theorem; scans EVIDENCE
+nice -n 19 python3 l22_infinity.py # PROVED local structure; route OPEN
+nice -n 19 python3 l22_factor_tuple.py # PROVED criterion/no-go; compatibility OPEN
+nice -n 19 python3 l22_square_branch.py # PROVED free-lambda theorem; six-count OPEN/excluded
+nice -n 19 python3 l22_fiber_geometry.py # PROVED reductions; uniform lemma OPEN
 python3 h10q.py                           # default suite (exit 0 required)
 python3 h10q.py --extended                # extended suite (exit 0 required)
 ```

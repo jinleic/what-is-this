@@ -1,161 +1,203 @@
-# The conditional record: $\forall_6$ for $\mathbb Z$ in $\mathbb Q$, modulo one hypothesis per cell
+# The conditional record under classical Schinzel H: $\forall_6$ for $\mathbb Z$ in $\mathbb Q$
 
-Draft, 2026-08-18. Status: **draft theorem document** — the verified content lives in
-`h10q.py` (frozen tables, replayed every run), `THEOREMS.md` (exact statements L6–L13),
-`RESULTS.md` (scope table), and `data/`. Every number below is sourced to a file and table.
-Naming, formulas, and conventions follow `THEOREMS.md` exactly ($K=\mathbb Q$, $S=\{2\}$,
-$\pi=2$, $u=1$; $A=1+4a^2$, $\delta_\tau=1-A\tau^2$, $\alpha=-\delta_\tau A$,
-$Z=z^3$, $D_z=1-Z-a^2Z^2$).
+Status: **CONDITIONAL on classical Schinzel's Hypothesis H alone**.
+Classical Schinzel H is unproved.  The implication is proved in
+`THEOREMS.md` L19–L22; the six-unknown architecture and count are
+`THEOREMS.md` L6.  The intermediate per-cell statement H is retained in
+§2, but it is now a proved consequence of classical Schinzel H, not an
+additional conjectural premise.
+
+Conventions follow `THEOREMS.md`: $K=\mathbb Q$, $S=\{2\}$,
+$\pi=2$, $u=1$,
+$$
+A=1+4a^2,\quad \delta_\tau=1-A\tau^2,\quad
+\alpha=-\delta_\tau A,\quad Z=z^3,\quad D_z=1-Z-a^2Z^2.
+$$
+(Source: `THEOREMS.md`, L6 and L22.)
 
 ---
 
 ## 1. The statement
 
-**Theorem C (conditional).** Assume **H** (§2). Then:
+**Theorem C (CONDITIONAL).** Assume classical Schinzel H.  Then:
 
-1. $\mathbb Q\setminus\mathbb Z$ is Diophantine in $\mathbb Q$ with **6 unknowns**, realized
-   by the L6 formula
-   $$F(z):=\exists b,s\;\bigl[(1+2s,b)\in\Phi_1^{\{2\}}\ \wedge\
-   \Theta_*\bigl(1+2s,\,b,\,h(1+2s,b,z^3),\,s\bigr)\bigr],$$
-   where $\Theta_*(a,b,c,s)$ is the tied block, a finite disjunction over the
-   branch menu $\tau\in\{0,\ 2a/A,\ \tau^\dagger=(1+2a^2)/A\}$ of the cleared
-   equations
-   $$\exists y\,r\ \bigl[\,c^2-Ay^2-16\delta_\tau^{-1}Br^2
-      =16\delta_\tau^{-1}\bigl(1-\tfrac{\delta_\tau}{16}\,\Delta_\tau(a,b,s)\bigr)\,\bigr],
-   \qquad B=2b,\ \ \delta_\tau=1-A\tau^2,$$
-   specializing at $\tau=0$ to $c^2-Ay^2-16Br^2=16-16ABs^2$ and at $\tau=2a/A$
-   to $c^2-Ay^2-16ABr^2=16A-16A^2Bs^2$. The third branch $\tau^\dagger$ is the
-   one the class-side construction (L19/L20) uses and must be in the menu.
-   **Cost: zero.** L11a proves a finite branch menu is a disjunction in the
-   *same* $(y,r)$, so branch completion is free and the count stays six
-   (`THEOREMS.md` L11a, lines 1100-1121).
-2. $\mathbb Z$ is definable in $\mathbb Q$ by a formula with **6 universal quantifiers**
-   ($\mathbb Z = \mathbb Q\setminus(F\vee\mathfrak m_2)$).
-3. $\operatorname{efd}_{\mathbb Q}(\mathbb Q\setminus\mathbb Z)\le 5$.
-4. (Transferred) The $\forall_9\exists_6$-theory of $\mathbb Q$ is undecidable — the same
-   code-transfer as the recorded $\forall_9\exists_7$ row (`THEOREMS.md`, consequences
-   table; Daans Cor 6.2 + Sun 2021). Daans' Question 5.7 would narrow to $2\le m\le 6$;
-   the lower bound $m\ge2$ (DDF §8, Daans Thm 2.6) is untouched.
+1. $\mathbb Q\setminus\mathbb Z$ is Diophantine over $\mathbb Q$ with
+   **six unknowns**, realized by
+   $$
+   F(z):=\exists b,s\;\bigl[(1+2s,b)\in\Phi_1^{\{2\}}\ \wedge\
+   \Theta_*\bigl(1+2s,b,h(1+2s,b,z^3),s\bigr)\bigr].
+   $$
+   (Source for the formula and count: `THEOREMS.md`, L6;
+   chain closure: `THEOREMS.md`, L22d.)
+2. $\mathbb Z$ has a definition over $\mathbb Q$ with **six universal
+   quantifiers**, since
+   $\mathbb Z=\mathbb Q\setminus(F\vee\mathfrak m_2)$
+   (`THEOREMS.md`, L6 Status and L22d).
+3. $\operatorname{efd}_{\mathbb Q}
+   (\mathbb Q\setminus\mathbb Z)\le5$
+   (`THEOREMS.md`, A3 and L6 Count).
+4. The same code transfer gives undecidability of the
+   $\forall_9\exists_6$-theory of $\mathbb Q$, and Daans' range becomes
+   $2\le m\le6$ under the same assumption
+   (`THEOREMS.md`, consequences table; Daans Corollary 6.2 and Sun
+   2021 are recorded there).
 
-**Count (audited in `THEOREMS.md` L6).** Base unknowns $(b,s)$: 2. The $\Phi$-membership of
-$(1+2s,b)$ is $\exists_3$ (Daans Lemma 5.2 pulled back along the polynomial map
-$(b,s)\mapsto(1+2s,b)$, which adds no witness). The tied block is $\exists_2$
-($y,r$; $s$ is a base coordinate). Daans–Dittmann–Fehm, *Existential rank and essential
-dimension of diophantine sets*, arXiv **2102.06941v5**, **Theorem 1.4** — over a field
-finitely generated over a perfect subfield, the intersection of $\exists_{m_1}$ and
-$\exists_{m_2}$ subsets of the same space is $\exists_{m_1+m_2-1}$ — gives $3+2-1=4$
-witnesses for the conjunction on the common base, hence $2+4=6$ after projecting away
-$(b,s)$. If either set had existential rank 0 (the only unmet hypothesis of Thm 1.4), the
-trivial conjunction bound is $\le 3$, so the count is never worse (frozen audit note,
-L6 "Count [AUDITED]"). The branch disjunction multiplies two polynomials in the same
-$(y,r)$ and adds nothing (L11a(3)); denominator clearing and the $\delta_\tau\ne0$
-condition add nothing because $A\equiv5\bmod8$ is not a square in $\mathbb Q_2$ (L6,
-"No hidden denominator or inequation variable"). Adjoining the one omitted place
-$\mathfrak m_2$ as a finite $\exists_3$ disjunct keeps the count at 6 (L6, Status).
-In efd form the count is $\operatorname{rk}^\exists=\operatorname{efd}+1\le6$
-(DDF 4.16 + 5.10 + Cor 4.12, recorded as `THEOREMS.md` A3), i.e. the tie rigidifies one
-$(a,b)$-direction and drops the generic fibre bound from 6 to 5.
+The finite branch menu is unchanged:
+$$
+\tau\in
+\left\{0,\ \frac{2a}{A},\
+\tau^\dagger=\frac{1+2a^2}{A}\right\}.
+$$
+For each branch, $\Theta_*$ uses the same two tied variables $(y,r)$ and
+the cleared equation
+$$
+\exists y,r\quad
+c^2-Ay^2-16\delta_\tau^{-1}Br^2
+=16\delta_\tau^{-1}
+\left(1-\frac{\delta_\tau}{16}\Delta_\tau(a,b,s)\right),
+\qquad B=2b.
+$$
+The fixed branch used in the closure is
+$\tau^\dagger=(1+2a^2)/A$ with
+$\delta_{\tau^\dagger}=-4a^4/A$.  A finite disjunction multiplies the
+cleared branch equations in the **same** $(y,r)$, so it costs no new
+witness (`THEOREMS.md`, L11a and L22).
 
-*Citation note.* The drafting instruction for this document carried the arXiv id
-**1612.03992** for Theorem 1.4; that id resolves to an unrelated astrophysics preprint
-(checked 2026-08-18). The citation recorded in `NOTES.md` (References) and used here is
-**arXiv 2102.06941v5**, Thm 1.4 and Cor 5.11.
+**Exact count.** The base variables are $(b,s)$.  The pulled-back
+$\Phi$-membership has existential rank at most $3$, and the tied block
+has existential rank at most $2$.  Daans–Dittmann–Fehm,
+arXiv:2102.06941v5, Theorem 1.4, gives
+$3+2-1=4$ witnesses for their conjunction on the common base, hence
+$2+4=6$ after projection.  If either rank is zero, the elementary bound
+is no larger.  Adding the finite $\mathfrak m_2$ disjunct, clearing
+denominators, and adding the fixed finite branch menu do not increase
+the count (`THEOREMS.md`, L6 “Count [AUDITED]” and “No hidden
+denominator”; L11a).  Equivalently,
+$\operatorname{rk}^{\exists}=\operatorname{efd}+1\le6$
+(`THEOREMS.md`, A3).
 
-**Soundness (no hypothesis consumed).** Any solution of $F(z)$ is a $\Psi_0$- or
-$\Psi_{2a/A}$-solution of Sun's block for $(a,b)=(1+2s,b)$, and soundness of the block is
-**$\tau$-uniform**: the Sun identities (2.2)–(2.4) hold for arbitrary $\tau$
-($\operatorname{Nrd}(\gamma_\tau)=1$ identically) and Prop 2.1 ($c$ integral at every
-finite ramified place of $(A,B)$) never mentions $\tau$ (`THEOREMS.md` L11a(2); machine
-checks `(A)`, `(B)` in `_verify_sun`). The branch menu used by the class side is L11b's
-table of the four square classes of $\langle-1,A\rangle$
-($\tau\in\{0,\,2a/A,\,1,\,\tau^\dagger=(1+2a^2)/A\}$); the square branch $\tau^\dagger$
-with $\alpha=(2a^2)^2$ is the one carrying all 293 verified classes below. Hence
-$F(z)\Rightarrow z\in\bigcup_{w\ \mathrm{odd}}\mathfrak m_w$, unconditionally.
+*Citation correction.* The earlier drafting id 1612.03992 is an
+unrelated astrophysics preprint; the rank theorem used here is
+arXiv:2102.06941v5, Theorem 1.4 and Corollary 5.11
+(`NOTES.md`, References; citation audit recorded in `NOTES.md`, L19
+session).
 
-**Completeness = H.** The converse — the L6 assembly lemma — is precisely H of §2: for
-each target cell, a verified aligned class provides a candidate at every place, and an
-emergent-free member of it makes the attached tied conic globally soluble (W2,
-Hasse–Minkowski), producing a witness of $F(z)$. This document changes nothing about
-soundness; it packages the remaining gap as a clean analytic statement.
+**Soundness is unconditional.** Every branch in the displayed menu is a
+specialization of Sun's $\tau$-uniform block: identities (2.2)–(2.4)
+hold for arbitrary $\tau$, and Proposition 2.1 does not mention
+$\tau$.  L11a proves the cleared finite disjunction preserves that
+soundness.  Hence
+$$
+F(z)\Longrightarrow
+z\in\bigcup_{w\ {\rm odd}}\mathfrak m_w
+$$
+without Schinzel H (`THEOREMS.md`, L6 and L11a; replay authority
+`h10q.py::_verify_sun`).
+
+**Completeness under classical Schinzel H.** Fix a target cell $(w,z)$.
+L22 proves vertical irreducibility on the fixed
+$\tau^\dagger$, $\delta=-4a^4/A$ branch for the fixed nonzero value
+$Z=z^3$; quantitative Hilbert irreducibility in L20's odd
+character-admissible $a$-progression selects a concrete irreducible
+specialization (`/tmp/l22_elimination.md`; `THEOREMS.md`, L20–L22).
+Together, L20 supplies the aligned $f=w$ class and conditions (b)–(d),
+while L22 completes condition (a).  L19 applies classical Schinzel H to the
+resulting linear/octic pair and supplies an emergent-free member.  That
+is precisely intermediate H of §2; W2 and Hasse–Minkowski make the tied
+conic globally soluble, producing a witness of $F(z)$
+(`THEOREMS.md`, L6, L19–L22).  Thus
+$$
+\boxed{\text{classical Schinzel H}\Longrightarrow
+       \text{intermediate H}\Longrightarrow\text{Theorem C}.}
+$$
 
 ---
 
-## 2. The hypothesis H
+## 2. Intermediate per-cell H, and its derivation from Schinzel H
 
-**Setting of one cell.** A *cell* is a pair $(w,z)$ with $w$ an odd prime and
-$z\in\mathbb Q$, $v_w(z)\ge1$. On the square branch $\tau=\tau^\dagger=(1+2a^2)/A$
-($\delta_\tau=-4a^4/A$, $\alpha=(2a^2)^2$ a perfect square), a *verified aligned class*
-for the cell is data $(a,\varepsilon,f,q,N)$ with:
-- $a$ admissible ($a=1+2s$ a 2-adic odd unit; $A\equiv5\bmod8$);
-- $f=1$ (*L11 family*: available iff $z$ has a numerator prime $p\equiv1\bmod4$;
-  `THEOREMS.md` L11h) or $f\mid\operatorname{num}(z)$ prime (*L12 escape family*;
-  `THEOREMS.md` L12b/L13a);
-- $b=\varepsilon f Q$, $Q$ prime, $Q\equiv q\pmod N$, with controlled set
-  $S=\{2,3,5,7\}\cup\operatorname{supp}(\alpha)\cup\operatorname{supp}(\delta_\tau)
-  \cup\{f\}$
-  (at $a=1$: $S=\{2,3,5,7,f\}$) and $N$ built from the exponent lemma
-  (`h10q.py::_l10_exponent`) so that every frozen symbol $(x_0,d_0)_p$, $p\in S$, the wild
-  symbol $(x_0,d_0)_Q=(A\mid Q)$, and the real symbol are all $+1$ on the class;
-- a finite *excluded set* of members ($Q\mid D_z\cdot\operatorname{num}(z)\cdot a\cdot
-  \delta_\tau$) at which the class claim is void.
+**One cell.** A cell is $(w,z)$ with $w$ an odd prime,
+$z\in\mathbb Q$, and $v_w(z)\ge1$.  Work only on
+$$
+\tau=\tau^\dagger=\frac{1+2a^2}{A},\qquad
+\delta_{\tau^\dagger}=-\frac{4a^4}{A},\qquad
+\alpha=(2a^2)^2.
+$$
+(Source: `THEOREMS.md`, L20 and L22.)  A verified aligned class consists
+of $(a,\varepsilon,f,q_1,N)$ with admissible odd
+$a=1+2s$, $b=\varepsilon f(q_1+Nt)$, and controlled set
+$$
+S=\{2,3,5,7\}\cup\operatorname{supp}(\alpha)
+\cup\operatorname{supp}(\delta_{\tau^\dagger})\cup\{f\},
+$$
+such that all frozen, moving and real Hilbert symbols are $+1$ and a
+finite excluded set is named.  L20's uniform construction takes
+$f=w$ (`THEOREMS.md`, L20; replay
+`data/l19_classexist.jsonl`).
 
-Here $x_0=\alpha M_0$, $d_0=2\alpha b$, $M_0=16-\delta_\tau c_0^2-32Ab\,s_{\rm tie}^2$,
-$c_0=h(a,b,Z)$, and the value polynomial is
-$$P(b)=16D_z^2A^2b^4-\delta_\tau a^4Z^4N_g(b)^2-32A^3s^2D_z^2b^5,\qquad
-N_g=16a^4b^2-A(b-1)^4,$$
-with the kernel identity $x_0=\alpha\,P(b)/(D_z^2A^2b^4)$ asserted at every replay point
-(`l12_class.py`, module docstring and assertion; the kernel's `_l10_P` differs by the
-inert square factor $A^2$ — `THEOREMS.md` L13, Normalization note).
+The value polynomial on this fixed branch is
+$$
+P(b)=16D_z^2A^2b^4-\delta_{\tau^\dagger}a^4Z^4N_g(b)^2
+     -32A^3s^2D_z^2b^5,\qquad
+N_g=16a^4b^2-A(b-1)^4.
+$$
+The kernel identity is
+$x_0=\alpha P(b)/(D_z^2A^2b^4)$ and
+$d_0=2\alpha b$ (`THEOREMS.md`, L13 normalization note and L22;
+`l12_class.py`, asserted kernel identity).
 
-**Hypothesis H (one sentence, per cell).**
+**Intermediate H (per cell).**
 
-> **H.** For every odd prime $w$ and every rational $z$ with $v_w(z)\ge1$ there exists a
-> verified aligned class for the cell $(w,z)$ — prime-$b$ data $(a,\varepsilon,1,q,N)$
-> (L11 family) or escape data $(a,\varepsilon,f,q,N)$ with $f\mid\operatorname{num}(z)$
-> (L12 family) — and a prime member $Q\equiv q\pmod N$ of that class, outside its finite
-> excluded set, at which the *bad* emergent set is empty: every odd prime
-> $l\notin S\cup\{Q\}$ with $v_l\bigl(P(\varepsilon fQ)\bigr)$ **odd** has
-> Hilbert symbol $(x_0,d_0)_l=+1$.
+> **H.** For every cell $(w,z)$ there is one verified aligned class on
+> $\tau^\dagger=(1+2a^2)/A$,
+> $\delta_{\tau^\dagger}=-4a^4/A$, and a prime member
+> $Q=q_1+Nt$ outside its finite excluded set such that every odd prime
+> $l\notin S\cup\{Q\}$ with
+> $v_l(P(\varepsilon fQ))$ odd has
+> $(x_0,d_0)_l=+1$.
+> (Source: `THEOREMS.md`, L19–L22.)
 
-> **Terminology (corrected 2026-08-19).** An earlier wording of H required every
-> outside valuation to be *even*. That is strictly stronger than the kernel/L13/L14
-> contract and is contradicted by the 197 accepted prime-rung closures, in which a
-> single outside prime has odd valuation and reciprocity-forced symbol $+1$
-> (`l13_filter.py` `smooth_emergent`/`cofactor_decide`; `THEOREMS.md` L13f, L14, L17).
-> The operational contract above — *no place with symbol $-1$* — is the one the
-> machine verifies, the one the 293/293 instance verification establishes, and the
-> one implied by Schinzel prime values (L19).
+“Emergent-free” means **no place with Hilbert symbol $-1$**; it does not
+mean that every outside valuation is even.  The stronger historical
+wording is contradicted by the $197$ prime-rung closures among the
+$293$ recorded classes, each with one reciprocity-forced outside
+symbol $+1$ (`data/l13h_all_closures.json`;
+`data/l15_remainders.jsonl`; `THEOREMS.md`, L13f–L15).
 
-Two uniform equivalences make the final clause exactly the analytic content:
+The final clause is exact.  For
+$l\notin S\cup\operatorname{supp}(b)$,
+$v_l(x_0)$ is odd exactly when $v_l(P(b))$ is odd, because the displayed
+denominator is a square and $\alpha$ is an $l$-unit
+(`THEOREMS.md`, L10–L13).  Hilbert reciprocity makes the number of
+remaining $-1$ symbols even; when none remain, W2 and
+Hasse–Minkowski give global solubility (`THEOREMS.md`, L7c, L9 and W2).
 
-- **The $v_l$ criterion.** At any odd $l\notin S\cup\operatorname{supp}(b)$,
-  $v_l(x_0)$ is odd **iff** $v_l(P(b))$ is odd — the denominators $D_z^2A^2b^4$ are
-  squares and $v_l(\alpha)=0$ since $\operatorname{supp}(\alpha)\subseteq S$
-  (`THEOREMS.md` L10 identity and L11f; `THEOREMS.md` L13a defines emergent places by
-  exactly this dichotomy).
-- **The parity law.** The set of places where the quaternion algebra $(x_0,d_0)$
-  ramifies has even cardinality (`h10q.py::ramified`; `THEOREMS.md` L9 product-over-$T$,
-  L7c). With frozen, wild, and real symbols all $+1$ on the class, the number of emergent
-  $-1$s is therefore **automatically even**, so "zero emergent places" is equivalent to
-  "all Hilbert symbols $+1$", and the associated tied conic is globally soluble
-  (W2 + Hasse–Minkowski). Measured exactness: the bad count is even at every fully
-  factored member in both recorded sweeps — 39/39 (`data/l12b_class_sample.json`) and
-  44/44, histogram $\{0{:}9,\ 2{:}27,\ 4{:}6,\ 6{:}2\}$ (`data/l12_density.json`).
+**PROVED implication: classical Schinzel H $\Rightarrow$ H.**
 
-Per family:
+1. L20 supplies a nonempty odd character-admissible progression of
+   $a$-values for the cell, with $f=w$ (`THEOREMS.md`, L20;
+   `data/l19_classexist.jsonl`).
+2. L22 proves $P(a,z^3,b)$ irreducible in $\mathbb Q(a)[b]$ for the
+   fixed nonzero $z^3$.  Quantitative Hilbert irreducibility selects an
+   $a$ in that progression whose specialized octic is irreducible
+   (`/tmp/l22_elimination.md`; `THEOREMS.md`, L21d and L22).
+3. For this $a$, the normalized
+   $F(t)=P(\varepsilon w(q_1+Nt))=cG(t)$ has positive lead; the square
+   class of $c$ is $S$-supported; $\gcd(q_1,N)=1$; the pair has no fixed
+   prime divisor; and the $S$-adic unit and frozen-sign conditions hold.
+   Thus Schinzel conditions (a), (b), (c), and (d) are all **PROVED**
+   (`/tmp/l20_admissible.md`; closure of (a):
+   `/tmp/l22_elimination.md`; `THEOREMS.md`, L20 and L22).
+4. Classical Schinzel H for
+   $\{q_1+Nt,G(t)\}$ gives infinitely many simultaneous positive prime
+   values.  After stripping $S$, there is one outside odd-valuation
+   place $R=G(t)$; $v_Q(P(b))=0$; every other outside symbol is $+1$;
+   reciprocity forces $(x_0,d_0)_R=+1$
+   (`THEOREMS.md`, L19; replay
+   `data/l18_schinzel_implies_h.jsonl`).
 
-- **F1 — L11 family** ($z$ has a numerator prime $\equiv1\bmod4$): the class itself is
-  proved to exist (`THEOREMS.md` L11h, constructive sufficiency); H asks only for one
-  emergent-free prime member.
-- **F2 — L12 escape family** (all numerator primes $\equiv3\bmod4$ or $2$): coprimality
-  of $b$ to the cell data is provably fatal (`THEOREMS.md` L12a, generalized wall), so the
-  existence of the escape class is part of H's per-cell assertion; H then asks for one
-  emergent-free prime member.
-- **F3 — directly witnessed cells**: cells with an independently certified soluble witness
-  carry no hypothesis at all.
-
-H's finitary content (class data and certificates) is machine-checkable per cell; its only
-non-finitary content is the emergent-free member.
+Consequently H is **CONDITIONAL**, because classical Schinzel H is
+unproved, but it is no longer an independent hypothesis.  No finite
+evidence is used in this implication.
 
 ---
 
@@ -173,7 +215,7 @@ pool `_L9_U_POOL` (`h10q.py::_l9_grid`). Sources: kernel tables, `data/` artifac
 | — of which escape classes | **103** | `h10q.py::_L12_ESCAPE`; cert `l12_class.py::l12_class_cert` | **PROVED** (frozen side, L13a): minimal controlled set $S_{\min}=\{2,3,5,7,f\}$, $\gcd(q,N)=1$ |
 | — sampled members of the escapes | **883 primes, 0 violations** | `data/l12b_class_sample.json` (103 rows) | **VERIFIED-instance**: median modulus $N=24\,202\,080$, 0 failures, 0 Cauchy-sign failures, 0 excluded-member hits; 174 distinct excluded primes named per row; 12 rows $\times$ 2 members replayed in-suite each run (40 rows extended) |
 | — of which direct witnesses only | **60** | `h10q.py::_L13_ESCAPE2`; `data/l12_escape2.jsonl` (60 rows: branch sq; $a\in\{3,5,33\}$, 40/10/10; `fully_soluble`/`verified` true on all 60) | **PROVED per row**: 55 Hasse–Minkowski + 5 steered certificates (`THEOREMS.md` L13b) |
-| H instance-verified on the grid | **293/293 classes** | `h10q.py::_L13_H_CLASSES` + `_verify_L14` (default 60-seed / extended all); `data/l13h_all_closures.json`, `data/l13h_replay.jsonl`; engine upgrade: BLS-relaxed Pocklington (`test_bls.py`) | **PROVED per row**: every aligned class carries a certified emergent-free member (197 prime-rung + 96 factorint; lead replay 293/293, ramified empty 271, 22 refusals logged). **H on the grid: CLOSED**; the uniform all-$w$ form remains the open analytic input |
+| H instance-verified on the grid | **293/293 classes** | `h10q.py::_L13_H_CLASSES` + `_verify_L14`; `data/l13h_all_closures.json`, `data/l13h_replay.jsonl` | **PROVED per row**: every recorded aligned class has a certified emergent-free member.  This is finite corroboration; the all-cell implication now comes from classical Schinzel H through L19–L22, not from extrapolating the grid (`THEOREMS.md`, L22d). |
 | H remainder + counting laws on the grid | 293 exact row audits | `data/l15_remainders.jsonl` (0 refusals, 0 alarms: $R$ squarefree in all 293; $R{=}1$ never; 197 $R{=}p$ exactly, 96 factorint $e\in\{2,3,4\}$; parity law exact on all 15 odd-$|E|$ rows); `data/l15_density.json` ($k_{\text{zero}}{=}0$ in 70.65%; tail median 28; $p_0\approx0.040$; resistant subclass $a{=}1$, $w\equiv3(4)$) | **PROVED per row** (exact recomputation under discipline); the statistical claims are **EVIDENCE** for the uniform all-$w$ shape of H |
 | Residual-cell witnesses | **7** | `h10q.py::_L13_RESIDUAL` (previous 6 + the $(89,(-2,1))$ closure: $a{=}3$, $b=89/367$, $\tau=19/37$, frozen 2026-08-18) | **PROVED per row** (tied-status True, replayed every run) |
 | Directly witnessed cells, total | **65** | 60 + 7 above minus the two prior algebraic closures already in the 347 (one escape-class cell, three L11 cells, 60 witness-only walled cells, + cell $(89,-2)$) | **PROVED per row** |
@@ -184,121 +226,136 @@ pool `_L9_U_POOL` (`h10q.py::_l9_grid`). Sources: kernel tables, `data/` artifac
 | No structural shortcut | 706/706 rows irreducible deg 8 | `THEOREMS.md` L13c; `data/l12_squarehunt.json`; `data/l12_factorP.json` | **PROVED per row** (sympy `factor_list`; in-suite Frobenius re-certification) + **EVIDENCE** (137.5M square-class tests, 0 hits; Galois $D_8\wr C_2$ consistent, 28,240 certified samples) |
 | Cell $(89,(-2,1))$ — **CLOSED 2026-08-18** | 325 certified soluble candidates | `data/l13_filter_run2.json` (236 in the structured box: 133 proved-prime-rung + 103 factorint-rung) + dense-box block (89: 46 + 43); witness $(a,b)=(3,\,89/367)$, $\tau=19/37$, frozen `_L13_RESIDUAL` row 7 | **PROVED** (L13f cofactor ladder: zero-bad ⟺ stripped remainder is a square OR a single proved prime — parity law forces its symbol $+1$; lead-replayed all five rungs; INCONSISTENT = 0 across 5,767 decided rows; 1,896 + 1,637 + 937 refusals recorded with reasons, never evidence) |
 
-The closure does **not** touch hypothesis H below: it certifies ONE witness for the
-grid's last cell, whereas H asks for *one selected aligned class per cell, with an
-emergent-free member*, uniformly over all cells (H is existential in both the class
-and the member; see the statement in §2). The grid ledger verifies that shape on
-293 classes; it does not establish it for arbitrary cells.
+The grid is corroboration, not the source of the uniform implication.
+L20 supplies a class for every cell, L22 supplies fixed-fibre
+irreducibility for every nonzero rational $Z$, and L19 supplies a member
+from classical Schinzel H (`THEOREMS.md`, L19–L22).  No count in this
+table is promoted beyond its cited finite scope.
 
 ---
 
-## 4. The blocking gap
+## 4. The closed non-Schinzel gap and the remaining conditional input
 
-H restricts the **Hilbert-symbol class of values of a degree-8 polynomial at primes in
-an arithmetic progression.** On the 706 grid (cell, branch) rows, $P\in\mathbb Q[t]$ is
-certified irreducible of degree 8 over $\mathbb Q$, with the content's squarefree part
-confined to $\{\pm1,\pm5\}$ so the constant factor never introduces an emergent place
-(`THEOREMS.md` L13c). **That certification is a bounded audit of the grid rows, not a
-theorem for every cell**: for an arbitrary cell the irreducibility of the constructed
-$P$ is a separate obligation, part of the admissibility package below. Given a cell and
-*one selected* aligned class, H asks for a single prime $Q\equiv q\pmod N$, outside a
-finite excluded set, at which the ladder verdict is *zero* — every odd place
-$l\notin S\cup\{Q\}$ has Hilbert symbol $(x_0,d_0)_l=+1$. **Odd valuations outside $S$
-are allowed**: 197 of the 293 verified closures have exactly one, with symbol forced
-$+1$ by reciprocity. So the condition is strictly weaker than squarefreeness of the
-value and strictly weaker than confining its squarefree kernel to $S\cup\{Q\}$. One
-member of one class per cell suffices; no density and no infinite subsequence are
-required.
+### 4.1 What L22 closed
 
-**Upgrade (L19, 2026-08-19): the analytic input is now a NAMED classical conjecture.**
-For a fixed verified aligned class, write $F(t)=P(\varepsilon f(q_1+Nt))=c\,G(t)$ with
-$c>0$ whose **square class** is supported on $S$ (literal $S$-support fails when $z$ has
-denominator primes outside $S$; the square class is what the parity argument uses, since
-even outside valuations give symbol $+1$ — corrected 2026-08-19) and $G\in\mathbb Z[t]$
-primitive with positive leading
-coefficient. Then **Schinzel's Hypothesis H for the pair $\{q_1+Nt,\;G(t)\}$ implies the
-per-class clause of H — indeed infinitely many qualifying members** (PROVED implication;
-the conclusion remains CONDITIONAL on Schinzel). Mechanism: at a simultaneous prime
-value, stripping $S$ leaves the single odd-valuation place $R=G(t)$; the moving prime
-satisfies $v_Q(P(b))=0$; every other outside place has even valuation and symbol $+1$;
-the class certificate pins the frozen, moving and infinite symbols to $+1$; and Hilbert
-reciprocity then forces $(x_0,d_0)_R=+1$, i.e. ladder verdict *zero*. The Schinzel
-hypotheses themselves are verified exactly on all 293 canonical pairs (primitive
-irreducible degree-8 $G$ with replayed Frobenius certificates, positive leading
-coefficients, pair-product fixed divisor 1 by an exact degree-9 finite-difference
-certificate, $v_p(G(t))=0$ at every $p\in S$ for every integer $t$ — a
-local-unit condition *at* $S$, not the standard "$S$-unit" notion of unit
-valuation *outside* $S$ — and frozen signs uniform in $t$):
-`data/l18_schinzel_implies_h.jsonl`, generator `l18_schinzel_implies_h.py`,
-cross-checked on 24 prime-rung rows. **Not supplied by Schinzel:** existence of an
-aligned class for every cell (that is the separate finite/structural side, characterized
-by L11h and verified 293/293 on the grid).
+The former algebraic obstacle was vertical irreducibility of the
+degree-$8$ class polynomial on the **fixed**
+$$
+\tau^\dagger=(1+2a^2)/A,\qquad
+\delta_{\tau^\dagger}=-4a^4/A
+$$
+branch.  L22a proves it for every fixed nonzero rational $Z$ by
+$A$-adic parity, the $a=0$ and $a=\infty$ endpoint allocations, and
+exact elimination of degrees $2$ and $4$
+(`/tmp/l22_elimination.md`; `data/l22_elimination.jsonl`).  The
+exception $Z=0$ is explicitly reducible and outside the cell family;
+$Z=1$ is handled by an exact $a=1$, mod-$11$ certificate
+(`/tmp/l22_elimination.md`, §5).
 
-Honesty points:
+L22b is independent.  At
+$a=1,A=5,s=0,\tau=3/5=\tau^\dagger,\delta=-4/5$, the reciprocal trace
+has a uniform mod-$8$ norm obstruction, and the lift reduces to the
+rank-$0$ curve $y^2=x(x+5)(x+80)$
+(`/tmp/l22_reciprocal_cube.md`;
+`data/l22_reciprocal_cube.jsonl`).  This $a=1$ value is only a
+specialization witness; quantitative HIT chooses the actual admissible
+$a$ in L20's progression (`THEOREMS.md`, L21d and L22b).
 
-- The polynomial cannot be split or collapsed: $P$ is irreducible degree 8 on every grid
-  row, and no $P=cR^2$ or $P=cR^2S$ shortcut exists anywhere on the grid
-  (`THEOREMS.md` L13c), so the gap is exactly as phrased and no finer.
-- The condition at primes is strictly stronger than the classical "squarefree values at
-  integers" questions: here the argument itself is prime and must sit in a fixed residue
-  class modulo a scale-dependent modulus $N$ (median $2.4\times10^7$ over the 103 sampled
-  escape classes; `data/l12b_class_sample.json`).
+The other L22 routes retain their exact labels:
 
-**Literature status (LitScout verified report, 2026-08-18; every item in this list was
-checked at the source by the recon agent).** The required input sits outside the
-unconditionally solved range at every angle:
+- higher-order infinity analysis proves four quadratic local clusters
+  and stops at possible factor degrees $2,4,6$; L22a eliminates them
+  globally (`/tmp/l22_infinity.md`; `data/l22_infinity.jsonl`);
+- the factor-tuple criterion is PROVED and its prime-value conclusion is
+  CONDITIONAL, but its no-go shows parity controls only the product of
+  outside signs (`/tmp/l22_factor_tuple.md`;
+  `data/l22_factor_tuple.jsonl`);
+- the free-$\lambda$ class theorem is PROVED algebraically but **NOT
+  APPLICABLE** to this count, because the selected branch runs through
+  the infinite L11c family and would require an additional witness
+  (`/tmp/l22_square_branch.md`; `agent://BranchAudit`);
+- the Noether-pencil descent is PROVED, while one explicit polynomial
+  nonvanishing lemma remains OPEN in that auxiliary route.  It is no
+  longer a premise of Theorem C (`/tmp/l22_fiber_geometry.md`;
+  `data/l22_fiber_geometry.jsonl`).
 
-- *Integer argument, unconditional:* squarefree (and square-class) values of
-  single-variable polynomials are understood only in degree $\le3$ — Erdős,
-  J. London Math. Soc. 28 (1953) 416–425; Hooley, "On the power-free values of
-  polynomials", Mathematika 14 (1967) 21–26 (asymptotic); for binary forms, Greaves,
-  "Power-free values of binary forms", Q. J. Math. Oxford (2) 43 (1992) 45–65. The
-  univariate **quartic** case is already open; our degree is 8.
-- *Conditional ceiling:* Granville, "ABC allows us to count squarefrees", IMRN 1998 (19)
-  991–1009 (under $\mathsf{abc}$, any degree, integers); Poonen, Duke Math. J. 118 (2003)
-  353–373 (multivariable analogue).
-- *Values at primes:* degree 1 — Baker–Pollack, "Clusters of primes with square-free
-  translates" (Rev. Mat. Iberoam., submitted; pollack-math.net/ClustersPrimesSquarefree.pdf);
-  degree 3 — Helfgott, "Square-free values of $f(p)$, $f$ cubic", arXiv:1112.3820
-  (squarefree values at primes), and Reuss, "Power-Free Values of Polynomials",
-  arXiv:1307.2802 (asymptotics for $(d-1)$-free values $f(p)$, degree $d\ge3$).
-  **Nothing for degree 8; nothing prescribing a square class.**
-- *Square class at a prime argument in an arithmetic progression* (H's shape):
-  degree $\le2$ only — Krumm, "Squarefree parts of polynomial values", JTNB 28 (2016)
-  699–724, arXiv:1407.4890, Thm 1.3 with Props 3.4–3.5 (unconditional); degree 3 is
-  conditional on the **Parity Conjecture for elliptic curves over $\mathbb Q$** (Krumm
-  Prop 3.8 — rank parity, not the sieve "parity problem").
-- *Conic-bundle route* (the L8 "Direction" attack on the same assembly): HSW,
-  Compositio Math. 150 (2014) 2095–2111 (arXiv:1304.3333), Thm 3.1/Cor 3.4 — unconditional
-  only when degenerate fibres have abelian constant field over $\mathbb Q$; the general
-  case is conditional on Schinzel's Hypothesis H (Colliot-Thélène–Skorobogatov–
-  Swinnerton-Dyer, J. reine angew. Math. 495 (1998) 1–28; the CT–Sansuc Schinzel paper
-  is Acta Arith. 41 (1982) 33–53). The value divisor here is irreducible of degree 8 with non-abelian
-  Galois group (best evidence: $D_8\wr C_2$; `THEOREMS.md` L13c) — outside the unconditional
-  case.
-- *Negative reservation:* do not cite Carella arXiv:2310.16952 (math.GM, unrefereed,
-  claims contradicting the quartic open-problem status); it is not part of the record.
+Thus the non-Schinzel chain is closed:
+$$
+\text{fixed cell}\xrightarrow{\mathrm{L22+HIT}}
+\text{irreducible admissible }a
+\xrightarrow{\mathrm{L20}}\text{aligned class}
+\xrightarrow{\mathrm{L19+Schinzel}}\text{member}.
+$$
+(Source: `THEOREMS.md`, L19–L22.)  Conditions (a)–(d) are all PROVED;
+the final arrow is CONDITIONAL only because classical Schinzel H is
+unproved.
 
-Within the verified literature, the closest published anchors to H's analytic input are
-the degree-3 results of Helfgott and Reuss at primes; the degree-8 square-class input H
-needs is unconditional neither at integers nor at primes, and the theorem of §1 stays
-conditional as stated.
+### 4.2 Literature provenance, not a remaining irreducibility premise
+
+The earlier literature search remains useful provenance for why the
+Schinzel input has not been replaced unconditionally.  It is **not** a
+claim that a degree-$8$ irreducibility certificate is still missing.
+All bibliographic details below were source-checked in
+`data/litscout_h10q.md`.
+
+- For integer arguments, unconditional squarefree-value theorems cover
+  degrees at most $3$: Erdős, *J. London Math. Soc.* 28 (1953),
+  416–425; Hooley, “On the power-free values of polynomials,”
+  *Mathematika* 14 (1967), 21–26; and, for binary forms, Greaves,
+  “Power-free values of binary forms,” *Q. J. Math. Oxford* (2) 43
+  (1992), 45–65 (`data/litscout_h10q.md`).
+- Under $\mathsf{abc}$, Granville, “ABC allows us to count
+  squarefrees,” *IMRN* 1998 (19), 991–1009, handles arbitrary degree at
+  integer arguments; Poonen, *Duke Math. J.* 118 (2003), 353–373,
+  gives the multivariable analogue (`data/litscout_h10q.md`).
+- At prime arguments, the recorded anchors are Baker–Pollack,
+  “Clusters of primes with square-free translates,”
+  pollack-math.net/ClustersPrimesSquarefree.pdf, in degree $1$;
+  Helfgott, “Square-free values of $f(p)$, $f$ cubic,”
+  arXiv:1112.3820, in degree $3$; and Reuss, “Power-Free Values of
+  Polynomials,” arXiv:1307.2802, for $(d-1)$-free values
+  (`data/litscout_h10q.md`).
+- For prescribed square class in a progression, Krumm, “Squarefree
+  parts of polynomial values,” *JTNB* 28 (2016), 699–724,
+  arXiv:1407.4890, Theorem 1.3 and Propositions 3.4–3.5, proves the
+  degree-at-most-$2$ case.  Proposition 3.8 treats degree $3$
+  conditionally on the elliptic-curve Parity Conjecture, not the sieve
+  parity problem (`data/litscout_h10q.md`).
+- For the conic-bundle provenance, Harpaz–Skorobogatov–Wittenberg,
+  *Compositio Math.* 150 (2014), 2095–2111, arXiv:1304.3333,
+  Theorem 3.1 and Corollary 3.4, is unconditional under its abelian
+  constant-field hypothesis.  The general route uses Schinzel H in
+  Colliot-Thélène–Skorobogatov–Swinnerton-Dyer, “Rational points and
+  zero-cycles on fibred varieties: Schinzel's hypothesis and
+  Salberger's device,” *J. reine angew. Math.* 495 (1998), 1–28, and
+  the Colliot-Thélène–Sansuc Schinzel paper in *Acta Arith.* 41 (1982),
+  33–53 (`data/litscout_h10q.md`).
+- Carella arXiv:2310.16952 remains excluded from the record for the
+  reasons documented in the source-checked literature report
+  (`data/litscout_h10q.md`).
+
+The remaining research question for this route is therefore whether
+classical Schinzel H can be replaced by an unconditional theorem for
+the selected linear/octic pair.  Theorem C itself remains
+**CONDITIONAL**; no statement above proves Schinzel H.
 
 ---
 
 ## 5. Provenance and discipline
 
-- Authorities: `h10q.py` frozen tables (`_L9_STEERED`, `_L11_CLASSES`, `_L12_ESCAPE`,
-  `_L13_ESCAPE2`, `_L13_RESIDUAL`, `_L13_ZERO_BAD`), replayed on every suite run;
-  `THEOREMS.md` L6–L13; `RESULTS.md` scope table; `data/` artifacts cited per row above.
-- Engine discipline: proven primality only — deterministic MR below the A014233
-  13-base bound; above it, Pocklington (trial division to $10^6$, early abort at
-  $F\ge n^{1/3}$) with the **Brillhart–Lehmer–Selfridge relaxation** (two-factor
-  discriminant test, CP Thm 4.1.5), upgraded 2026-08-18 (`test_bls.py` unit check);
-  `FactorBudget`/`PrimalityBound` refusals are logged and are never evidence.
-- Nothing here rests on Sun's unrefereed §§3–8 chain: soundness is inherited from the
-  audited bridge/block chain, and completeness is isolated as H (`THEOREMS.md` L6, Status:
-  "independent of whether Sun's own §§3–8 chain survives refereeing").
-- Assembly remains **OPEN** in the unconditional sense; the $\forall_6$ count and
-  $\operatorname{efd}\le5$ are conditional on H, and H is certified at 5 fixed members
-  (`_L13_ZERO_BAD`) with 9 measured instances and no structural shortcut.
+- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L22;
+  `RESULTS.md`; and the cited `data/` artifacts.  The two symbolic L22
+  proof reports are `/tmp/l22_elimination.md` and
+  `/tmp/l22_reciprocal_cube.md`.
+- Engine discipline remains proven-primality only.  The exact
+  Miller–Rabin, Pocklington and Brillhart–Lehmer–Selfridge scopes are
+  recorded in `README.md`, Engine note, and `test_bls.py`; refusals are
+  logged and never treated as evidence.
+- Nothing here depends on Sun's unrefereed §§3–8 chain.  Soundness is
+  inherited from the audited block; completeness uses L19–L22 and
+  classical Schinzel H (`THEOREMS.md`, L6 and L19–L22).
+- **Final status:** the six-universal-quantifier record and
+  $\operatorname{efd}\le5$ are established conditionally on classical
+  Schinzel H alone (`THEOREMS.md`, L22d).  Classical Schinzel H is
+  unproved, so H10/$\mathbb Q$ and the unconditional six-quantifier
+  statement remain open.

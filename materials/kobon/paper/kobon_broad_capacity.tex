@@ -58,11 +58,16 @@ multiple points,
  3|S|+C+2Q+\sum_p k_p(k_p-4)\ \le\ n(n-2),
 \]
 where $C$ counts line/triangle interior incidences, together with an exact
-bounded-face budget; these drive the encoding. With them we certify
-$K(n)$ for every $n\le10$ --- $2,5,7,11,15,21,25$ from $n=4$, with
-\texttt{drat-trim}-verified refutations of $K(n)+1$ at $n=4,\dots,9$ --- an
-independent machine verification of the classical values that admits every
-degeneracy. On the constructive side we verify, in exact rational
+bounded-face budget; these drive the encoding. With them we certify $K(n)$ for every $n\le10$ ---
+$2,5,7,11,15,21,25$ from $n=4$, with \texttt{drat-trim}-verified refutations
+of $K(n)+1$ at $n=4,\dots,9$ --- admitting every degeneracy. Three of these
+are new: at $n=6,8,10$ the recorded value was a construction paired with a
+bound proved only for \emph{simple} arrangements, while the bound valid for
+arbitrary arrangements is strictly larger ($8$, $16$, $26$); at $n=10$ even
+the unpublished draft leaves $26$ open, and at $n=8$ the value $15$ exceeds
+the exact simple maximum $14$, so it is attained only non-simply. The same mismatch affects $n=12$ and $n=14$, where the
+constructions $38$ and $54$ exceed the exact simple maxima $37$ and $53$; we
+show the exactness claims recorded for them are unsupported. On the constructive side we verify, in exact rational
 arithmetic and with three implementations, a $14$-line arrangement with $54$
 pairwise interior-disjoint triangles, and prove that every currently known
 extremal arrangement at $n=11,14,18,20$ attains its published count as its
@@ -104,36 +109,55 @@ Clearly $a_3^s(n)\le K(n)\le \Kgen(n)$.
 
 Clément and Bader \cite{CB2007} define a Kobon triangle as ``a triangle that
 is realized by 3 straight lines segments and which does not overlap with
-other triangles'', i.e.\ they work with $K$; their Lemma 1 argument
-enumerates the cases ``side shared by two triangles'' (which forces
-concurrency at an endpoint) and ``segment used by no triangle'', and their
-mod-$6$ improvement passes through \emph{perfect configurations}, defined as
-arrangements of \emph{pairwise intersecting} lines in which every segment is
-the side of exactly one triangle, and shown in their Lemma 2 to have no three
-concurrent lines. Their bound
+other triangles'', i.e.\ they work with $K$. Their mod-$6$ claim
 \begin{equation}\label{eq:CB}
  K(n)\ \le\ \lfloor n(n-2)/3\rfloor - \mathbf 1_{n \bmod 6\in\{0,2\}}
 \end{equation}
-is therefore a statement about $K$. Their case analysis does not treat a
-counted triangle whose sides are subdivided by crossings; by
-Theorem~\ref{thm:collapse} it need not, since such triangles may be
-eliminated without loss. What remains is that \eqref{eq:CB} rests on an
-unpublished draft, and that its route --- equality forces a perfect
-configuration, perfect configurations are simple and parallel-free (their
-Lemma 2), and the sharper simple bounds then contradict equality --- has not
-been refereed. Bartholdi, Blanc and Loisel \cite{BBL} and Blanc
-\cite{Blanc} bound $a_3^s$. Thus:
+passes through \emph{perfect configurations}, defined as pairwise-intersecting
+arrangements in which every segment is the side of exactly one triangle.
+The load-bearing step in their Lemma 1 says that every multipoint belongs to
+at most two pairs of triangular faces sharing a side. This is false even in
+their face convention: Proposition~\ref{prop:flower} constructs a $k$-fold
+point belonging to all $2k$ possible shared radial sides, already six at a
+triple point and eight at a quadruple point. Thus the draft does not establish
+that equality forces a perfect configuration. This does not refute
+\eqref{eq:CB}; it leaves the claimed bound unproved by the argument as written.
+The draft is additionally unpublished. Bartholdi, Blanc and Loisel
+\cite{BBL} and Blanc \cite{Blanc} bound $a_3^s$. Thus:
 
 \begin{quote}
-\emph{The base segment bound $\lfloor n(n-2)/3\rfloor$ is established for
-$K$ including non-simple arrangements by Felsner and Kriegel
-\cite{FK1999} (so used, e.g., in \cite{PU1}); the mod-$6$ improvement
+\emph{The base segment bound $\lfloor n(n-2)/3\rfloor$ is stated for $K$
+including non-simple arrangements as Theorem 2(3) of Felsner and Kriegel
+\cite{FK1999} (so used, e.g., in \cite{PU1}), with the proof deferred there
+to Roudneff \cite{Rou1996}; the mod-$6$ improvement
 \eqref{eq:CB} for $K$ rests on the unpublished draft \cite{CB2007}; the
 sharpest numerical bounds \cite{BBL,Blanc} are proved for $a_3^s$ only and
 hence do not apply to non-simple record arrangements. No bound had been
 proved for $\Kgen$; Theorem~\ref{thm:collapse} below shows none is needed,
 since $\Kgen=K$.}
 \end{quote}
+
+\begin{remark}[provenance of the base bound]\label{rem:provenance}
+For \emph{simple} Euclidean arrangements the base bound is a two-line count:
+there are $n(n-2)$ bounded edges, and in a simple arrangement only one of the
+two cells along an edge can be a triangle (Grünbaum; equivalently
+Lemmas 5--6 of \cite{FK1999}), so $3p_3\le n(n-2)$. For arbitrary
+arrangements the situation is more delicate --- an edge with a multiple
+endpoint \emph{can} border two triangular cells --- and \cite{FK1999} states
+the bound as Theorem 2(3) for every Euclidean pseudoline arrangement while
+referring the proof to \cite{Rou1996}, whose theorem is the projective bound
+$p_3\le n(n-1)/3$ for arbitrary arrangements with $n\ge9$ (false for
+$n\le8$). The reduction is not immediate in the direction needed: adjoining
+the line at infinity to a Euclidean arrangement of $n$ lines and applying the
+projective bound gives only $p_3\le n(n+1)/3-3$, because Levi's theorem
+guarantees just three triangles along the added line whereas $n(n-2)/3$
+requires $n$ of them. We therefore cite Theorem 2(3) as the refereed
+statement and record that the numerical upper ends of
+Table~\ref{tab:windows} inherit that provenance --- one more reason to prefer
+the self-contained certificates of \S\ref{sec:ladder}, whose
+unsatisfiability verdicts bound $K$ with every degeneracy free and cite
+nothing.
+\end{remark}
 
 \section{Crossings never help}
 
@@ -276,10 +300,15 @@ corresponding pointwise statement is false.
 \item A capacity theorem for $\Kgen$ (Theorem~\ref{thm:capacity}), with exact
 degeneracy penalty and crossing charge, and a closed-form ceiling
 (Theorem~\ref{thm:ceiling}).
-\item A certified initial segment in the strongest convention:
-$\Kgen(4),\dots,\Kgen(9)=2,5,7,11,15,21$, each with a
-\texttt{drat-trim}-verified refutation of $\Kgen(n)+1$, plus
-$\Kgen(10)=25$ from a prior cube cover (Theorem~\ref{thm:ladder}).
+\item A certified initial segment with all degeneracies free:
+$K(4),\dots,K(9)=2,5,7,11,15,21$, each with a \texttt{drat-trim}-verified
+refutation of $K(n)+1$, plus $K(10)=25$ from a prior cube cover
+(Theorem~\ref{thm:ladder}); of these $K(6),K(8),K(10)$ are first
+determinations (Corollary~\ref{cor:before}).
+\item A hypothesis audit of the recorded small values
+(Proposition~\ref{prop:mismatch}): at $n=8,12,14$ the record exceeds the
+exact simple maximum, so the simple-only bound cited as ``the upper bound''
+cannot apply.
 \item An independently verified $\Kgen(14)\ge54$ (Theorem~\ref{thm:54}) and
 an exact optimality census of all known extremal arrangements
 (Theorem~\ref{thm:census}), which shows $K=\Kgen$ on each of them.
@@ -306,6 +335,59 @@ family $S$ (Definition~\ref{def:three}(iii)) set
 so $\sum_\ell\sigma_\ell=3|S|$ and $C:=\sum_\ell\gamma_\ell$ is the total
 number of line/triangle interior incidences. Write $T=|S|$ and
 $\Delta=n(n-2)-3T$.
+
+\section{What is actually proved for small $n$}\label{sec:actual}
+
+The recorded values are widely treated as exact. They are not, and the
+reason is a hypothesis mismatch that Theorem~\ref{thm:collapse} lets us state
+cleanly, since only one convention now exists.
+
+Write $\bar a_3^s(n)$ for the exact maximum over \emph{simple} affine
+arrangements. Blanc \cite{Blanc} (Theorem 1 for the bound, Theorem 3 for
+attainment, computer-assisted) and \cite{BBL} (Theorem 1.4) give
+$\bar a_3^s(8)=14$, $\bar a_3^s(11)=32$, $\bar a_3^s(12)=37$ and
+$\bar a_3^s(14)=53$. Meanwhile the even-$n$ bound $\lfloor
+n(n-7/3)/3\rfloor$ of \cite[Thm.~1.1]{BBL} --- proved under the explicit
+hypothesis ``our sole interest is with simple arrangements, i.e.\
+arrangements without multiple intersections'' --- takes the values
+$7,15,25,38,54$ at $n=6,8,10,12,14$, which are exactly the recorded
+constructions.
+
+\begin{proposition}\label{prop:mismatch}
+For $n\in\{8,12,14\}$ every arrangement attaining the recorded value
+($15$, $38$, $54$ respectively) is non-simple, because that value exceeds
+$\bar a_3^s(n)\in\{14,37,53\}$. Consequently the simple-arrangement bound
+$\lfloor n(n-7/3)/3\rfloor$ of \cite[Thm.~1.1]{BBL}, which coincides with the
+recorded value at those $n$, cannot be applied to the arrangements in
+question, and the exactness claims that invoke it --- the upper-bound column
+of OEIS A006066 \cite{OEIS} at $n=12$ and its comment of 13 August 2026 at
+$n=14$, and the corresponding table in MathWorld \cite{MW} --- are
+unsupported. The published bounds valid for arbitrary arrangements are
+$\lfloor n(n-2)/3\rfloor=16,40,56$ \cite{FK1999}, and $15,39,55$ if the
+unpublished draft \cite{CB2007} is granted.
+\end{proposition}
+
+\begin{proof}
+A simple arrangement has at most $\bar a_3^s(n)$ triangular faces by
+definition of $\bar a_3^s$, and $15>14$, $38>37$, $54>53$. The remaining
+statements are the cited hypotheses and values.
+\end{proof}
+
+At $n=6$ and $n=10$ the construction equals $\bar a_3^s(n)$, so it may be
+simple; but the same gap remains on the upper side, since
+$\lfloor n(n-2)/3\rfloor$ is $8$ and $26$ there. Collecting:
+
+\begin{corollary}\label{cor:before}
+Before the certificates of \S\ref{sec:ladder}, the values determined by the
+refereed literature were $K(n)$ for $n\le5$ and $n\in\{7,9,13\}$, where
+$\lfloor n(n-2)/3\rfloor$ is attained, together with $K(11)=32$
+\cite{Savchuk}. For the even cases $n\in\{6,8,10,12,14\}$ the record was a
+construction paired with a bound proved only for simple arrangements.
+Granting the unpublished draft \cite{CB2007} would settle $n=6$ and $n=8$,
+since \eqref{eq:CB} gives $7$ and $15$ there; it would not settle
+$n=10,12,14$, where \eqref{eq:CB} gives $26,39,55$ against constructions
+$25,38,54$.
+\end{corollary}
 
 \section{The capacity theorem}
 
@@ -342,6 +424,34 @@ the companion document \cite[\S3]{companion} and was re-derived by an
 adversarial audit over $3{,}016$ arrangements and $812{,}486$ admissible
 families with $5{,}900{,}863$ exact linewise checks.
 \end{proof}
+
+\begin{proposition}[flower saturation]\label{prop:flower}
+For every $k\ge3$ there is an arrangement of $k+3$ straight lines with a
+$k$-fold point $p$ incident to $2k$ bounded triangular faces. Every one of
+the $2k$ elementary radial segments from $p$ is the common side of the two
+triangular faces beside it. Consequently the two tokens per incident line in
+Lemma~\ref{lem:perline} can be simultaneously realised at one multipoint, and
+the local coefficient $k(k-4)$ in \eqref{eq:capacity} is sharp.
+\end{proposition}
+
+\begin{proof}
+Choose a triangle $\Delta$, a point $p\in\intr(\Delta)$, and $k$ distinct
+lines through $p$, three of which pass through the three vertices of
+$\Delta$. Choose the remaining lines generically. The $2k$ rays cut the
+boundary of $\Delta$ cyclically; because every vertex of $\Delta$ lies on a
+ray, the boundary arc between consecutive rays is contained in one side of
+$\Delta$. Each of the $2k$ sectors inside $\Delta$ is therefore a triangular
+arrangement face. Each radial segment is adjacent to the sectors on both
+sides and hence is used twice.
+
+Collapsing $k$ pairwise crossings to $p$ removes $k-2$ elementary gaps on
+each of the $k$ incident lines, or $k(k-2)$ in total, while the $2k$ shared
+radial segments return $2k$ units. The net local charge is
+$k(k-2)-2k=k(k-4)$. Exact rational instances for $k=3,4$, including all
+face and shared-side checks, are replayed by
+\texttt{scratch/kobon/flower\_counterexamples.py}.
+\end{proof}
+
 
 \begin{theorem}[capacity]\label{thm:capacity}
 For every essential arrangement of $n$ distinct affine lines and every
@@ -449,10 +559,23 @@ In the convention of Definition~\ref{def:three}(iii),
 \[
  \Kgen(4),\dots,\Kgen(9)\;=\;2,\,5,\,7,\,11,\,15,\,21,
 \]
-and each value is certified: the instance $(n,\Kgen(n)+1)$ is unsatisfiable
-with a \texttt{drat-trim}-verified proof (Table~\ref{tab:ladder}), and the
+and each value is certified: the instance $(n,K(n)+1)$ is unsatisfiable with
+a \texttt{drat-trim}-verified proof (Table~\ref{tab:ladder}), and the
 matching lower bounds are the classical constructions. Together with the
-prior eleven-cube cover for $n=10$ this gives $\Kgen(n)$ for all $n\le10$.
+prior eleven-cube cover for $n=10$ this gives $K(n)$ for all $n\le10$; the
+$n=10$ value is confirmed a second time, through a different encoding, by a
+single monolithic refutation of $(10,26)$ in the crossing-free formulation of
+Theorem~\ref{thm:collapse} ($131\,314$ variables, $792\,462$ clauses,
+unsatisfiable in $31$ minutes, discovery-level: the DRAT certificate for this
+value is the cube cover).
+By Corollary~\ref{cor:before} the rungs at $n=6$, $n=8$ and $n=10$ are the
+first determinations of those values from refereed inputs: they rule out $8$,
+$16$ and $26$ triangles respectively, which no simple-arrangement bound can
+exclude. At $n=10$ this is the first determination outright, since even
+\eqref{eq:CB} leaves $26$ open; at $n=6,8$ it removes the dependence on the
+unpublished draft. And $K(8)=15$ is attained only non-simply
+(Proposition~\ref{prop:mismatch}), so the certified statement lives entirely
+in the degenerate regime.
 \end{theorem}
 
 \begin{table}[t]
@@ -503,6 +626,43 @@ rational coordinates. The same verification succeeds for all fifteen
 published solutions.
 \end{proof}
 
+\section{Crossing incidences are exactly reified}\label{sec:tc}
+
+The experiments that force or forbid crossings rest on a single literal being
+exact, so we record what it encodes. For a triple $t$ of lines and a line
+$r\notin t$, let $\mathrm{TC}(t,r)$ be the variable defined by
+\begin{equation}\label{eq:tc}
+ \mathrm{TC}(t,r)\ \Longleftrightarrow\ S(t)\wedge
+ \Bigl(\bigvee_{e\subset t}\mathrm{SA}(e,r)\Bigr)\wedge
+ \Bigl(\bigvee_{e\subset t}\mathrm{SB}(e,r)\Bigr),
+\end{equation}
+where $S(t)$ says $t$ is in the selected family and $\mathrm{SA}(e,r)$,
+$\mathrm{SB}(e,r)$ say that the vertex of $t$ opposite\footnote{Indexed by
+the pair $e$ of lines meeting there.} lies strictly above, respectively
+strictly below, $r$. Both sidedness literals are exact in the model.
+
+\begin{lemma}\label{lem:tc}
+In every arrangement, $\mathrm{TC}(t,r)$ holds precisely when $t$ is selected
+and $r$ meets the open interior of $t$.
+\end{lemma}
+
+\begin{proof}
+If some vertex of $t$ is strictly above $r$ and another strictly below, then
+$r$ crosses the two sides joining them at relative interior points, and the
+open chord between those points lies in the open interior. Conversely,
+suppose $r$ meets the open interior. Then $r$ cannot contain two vertices of
+$t$: two vertices span a side, which lies on a line of $t$, and $r\notin t$.
+So at most one vertex is on $r$, and the chord separates the remaining two
+strictly, giving one strictly above and one strictly below. The conjunct
+$S(t)$ is asserted by the first clause of \eqref{eq:tc}.
+\end{proof}
+
+The point of the lemma is that $\mathrm{TC}$ is attached to a \emph{selected}
+triangle: a disjunction over $\mathrm{TC}$ literals asserts that the family
+exhibited by the model has a crossed member, not merely that the arrangement
+crosses some candidate triple. Cevians and lines through a vertex are handled
+by the ``at most one vertex on $r$'' case rather than excluded.
+
 \section{Exact optimality of the known witnesses}
 
 For a \emph{fixed} arrangement, the largest admissible family is the
@@ -520,6 +680,16 @@ reconstructions; an $11$-line $32$-triangle arrangement; an $18$-line
 $93$-triangle reconstruction; and a $20$-line $116$-triangle reconstruction.
 In particular $K=\Kgen$ on every known extremal arrangement.
 \end{theorem}
+
+By Lemma~\ref{lem:tc} we may also ask whether an \emph{optimal} family must
+be crossing-free, by conjoining $\bigvee_{t,r}\mathrm{TC}(t,r)$ with exact
+selection of $K(n)$ triangles. This is unsatisfiable for
+$n\in\{5,7,8,9\}$ and satisfiable for $n\in\{4,6\}$, so crossed optima exist
+but only at the smallest sizes; at $n=4$ they are generic, occurring in
+$296$ of $300$ random exact-rational arrangements, and at $n=6$ an explicit
+arrangement carries both a crossed and an uncrossed optimal family of size
+$7$. The satisfiable cases are therefore not artefacts of degeneracy, and by
+Theorem~\ref{thm:collapse} they never increase the optimum.
 
 Consequently any improvement on the records must come from new arrangements,
 and by Corollary~\ref{cor:tamura} any improvement past the Tamura value must
@@ -578,64 +748,77 @@ class with run lengths $(u,0,14-u)$, e.g.\ $(6,0,8)$; for the triad layout
 \section{The two open small cases, and how to close them}
 
 Table~\ref{tab:windows} collects what is proved. Theorem~\ref{thm:collapse}
-simplifies the picture decisively: there is only one quantity above $a_3^s$,
-so one instance per $n$ suffices, and the rungs above it that a bound for
-$\Kgen$ alone would leave open do not exist.
+simplifies the picture decisively: there is only one quantity above
+$a_3^s$, and every target may be searched in the face convention without
+discarding parallels or multiple points.
 
-Reading the table with the simple-arrangement entries discarded leaves
-exactly two open cases below $n=18$. At $n=11$ the value is settled
-\cite{Savchuk}; at $n=13$ the peer-reviewed bound $\lfloor
-13\cdot11/3\rfloor=47$ equals the construction, so $K(13)=47$. But at
-$n=12$ the construction gives $38$ while the bounds valid for $K$ give $40$
-\cite{FK1999} and $39$ \eqref{eq:CB}; the OEIS upper bound $38$ is a
-simple-arrangement value. So $K(12)\in\{38,39\}$, and $n=12$ --- not $n=14$
---- is the smallest genuinely open case. At $n=14$ the same reading gives
-$K(14)\in\{54,55\}$.
-
-Each case is one decision instance, and by Remark~\ref{rem:wlog} it may
-forbid crossings while leaving every parallel and multiple-point pattern
-free:
+Reading the table with simple-only bounds and the incomplete proof of
+\eqref{eq:CB} discarded leaves exactly two open cases below $n=18$. At
+$n=11$ the value is settled \cite{Savchuk}; at $n=13$ the peer-reviewed
+bound $\lfloor13\cdot11/3\rfloor=47$ equals the construction. At $n=12$,
+\[
+ 38\le K(12)\le40,
+\]
+and at $n=14$,
+\[
+ 54\le K(14)\le56,
+\]
+where the lower endpoints are exact-rational certificates and the upper
+endpoints are the general-arrangement bound stated in \cite{FK1999}. The
+first monotone frontier at each $n$ is therefore:
 \begin{itemize}
-\item $(12,39)$: unsatisfiability gives $K(12)\le38$, hence $K(12)=38$ with
-the construction. This is self-contained --- it does not use
-\eqref{eq:CB} or \cite{FK1999} --- so it also removes the reliance of the
-$n=12$ row on an unpublished draft.
-\item $(14,55)$: unsatisfiability gives $K(14)=54$, making the OEIS entry a
-theorem; satisfiability gives, after straightening, a $55$-triangle record.
-The crossing-free form has $1{,}349{,}454$ variables and $7{,}829{,}001$
-clauses.
+\item $(12,39)$: unsatisfiability proves $K(12)=38$; satisfiability, after
+straight-line realisation and exact verification, gives a new lower bound
+$39$ and leaves only $(12,40)$.
+\item $(14,55)$: unsatisfiability proves $K(14)=54$; satisfiability gives a
+$55$-triangle record and leaves only $(14,56)$.
 \end{itemize}
-Both are running at the time of writing, together with the crossing-free
-$(11,33)$ as an independent check against the known value.
+Neither unsatisfiability conclusion uses \eqref{eq:CB} or \cite{FK1999}.
+
+We use two sound crossing-free formulations. The first reifies every
+selected-triangle/line interior incidence and fixes it false. The stronger
+\emph{face-region} formulation additionally requires that no outside
+intersection lie strictly between the two vertices of a selected side.
+That condition is redundant for a realizable triangular face but propagates
+back into the line-order variables in the SAT relaxation, and it eliminates
+the crossing-indicator variables entirely. Certified-ladder controls retain
+SAT at every known optimum $n=5,\dots,9$ and refute the next value; compared
+with the first formulation, solve time fell from $31.6$ to $16.7$ seconds at
+$(8,16)$ and from $388$ to $155$ seconds at $(9,22)$. The resulting frontier
+instances have $303{,}359$ variables / $2{,}438{,}798$ clauses at $(12,39)$
+and $892{,}998$ / $6{,}912{,}085$ at $(14,55)$, versus
+$1{,}349{,}454$ / $7{,}829{,}001$ for the first $(14,55)$ formulation.
+Both strengthened frontiers are running at the time of writing.
 
 \begin{table}[t]
 \centering
-\begin{tabular}{rrrrl}
+\begin{tabular}{rrrrrl}
 \toprule
-$n$ & construction & $K=\Kgen\le$ \eqref{eq:CB} & window & certified here\\
+$n$ & constr. & $\bar a_3^s$ & \eqref{eq:CB} & FK & status\\
 \midrule
-8 & 15 & 15 & closed & $K(8)=15$ (DRAT)\\
-9 & 21 & 21 & closed & $K(9)=21$ (DRAT)\\
-10 & 25 & 26 & closed & $K(10)=25$ (cube cover, prior)\\
-11 & 32 & 33 & closed & $K(11)=32$ \cite{Savchuk}\\
-12 & 38 & 39 & $[38,39]$ & ---\\
-13 & 47 & 47 & closed & $K(13)=47$ \cite{FK1999}\\
-14 & \textbf{54} (verified) & 55 & $[54,55]$ & $K(14)\ge54$\\
-18 & 93 & 95 & $[93,95]$ & ---\\
-20 & 116 & 119 & $[116,119]$ & ---\\
+6 & 7 & 7 & 7 & 8 & $K(6)=7$ certified here (DRAT)\\
+8 & 15 & 14 & 15 & 16 & $K(8)=15$ certified here (DRAT)\\
+9 & 21 & 21 & 21 & 21 & $K(9)=21$; FK attained\\
+10 & 25 & 25 & 26 & 26 & $K(10)=25$ certified here (cube cover)\\
+11 & 32 & 32 & 33 & 33 & $K(11)=32$ \cite{Savchuk}\\
+12 & \textbf{38} & 37 & 39 & 40 & $[38,40]$; $(12,39)$ running\\
+13 & 47 & 47 & 47 & 47 & $K(13)=47$; FK attained\\
+14 & \textbf{54} (verified) & 53 & 55 & 56 & $[54,56]$; $(14,55)$ running\\
+18 & 93 & 93 & 95 & 96 & $[93,96]$\\
+20 & 116 & 116 & 119 & 120 & $[116,120]$\\
 \bottomrule
 \end{tabular}
-\caption{Constructions are admissible families, hence lower bounds for all
-three quantities. By Theorem~\ref{thm:collapse}, $K=\Kgen$, so column three
-bounds both: its base value $\lfloor n(n-2)/3\rfloor$ is peer-reviewed for
-non-simple arrangements \cite{FK1999}, while the $-1$ for $n\equiv0,2\pmod6$
-rests on the draft \cite{CB2007}. ``Closed'' means the value is settled, by
-agreement of construction and bound or by \cite{Savchuk} at $n=11$. Rows
-$8,9,10$ are additionally certified here with all degeneracies free. The
-upper bounds listed in OEIS A006066 at $n=12,14,18,20$ (namely
-$38,54,94,117$) are \emph{simple}-arrangement values of the
-\cite{BBL,Blanc} type and are not valid for $K$; the windows above are what
-the non-simple literature proves.}
+\caption{Constructions are lower bounds for $K=\Kgen$
+(Theorem~\ref{thm:collapse}). Column $\bar a_3^s$ is the exact maximum over
+\emph{simple} arrangements \cite{BBL,Blanc}: where the construction exceeds
+it (bold: $n=8,12,14$) the record is attained only non-simply, so the
+simple-only bound $\lfloor n(n-7/3)/3\rfloor$ --- which equals the
+construction at every even $n$ here and is what the OEIS upper-bound column
+reports --- cannot apply (Proposition~\ref{prop:mismatch}). The reference
+columns are the claim \eqref{eq:CB} from the incomplete unpublished draft
+\cite{CB2007}, and FK $=\lfloor n(n-2)/3\rfloor$ \cite{FK1999} (see
+Remark~\ref{rem:provenance}). Rows marked \emph{certified here} are settled
+by unsatisfiability with every degeneracy free, citing nothing.}
 \label{tab:windows}
 \end{table}
 
@@ -656,13 +839,15 @@ exactly what decides $n\equiv0,2\pmod 6$ --- including $n=14$, where it is
 the difference between the windows $[54,55]$ and $[54,56]$.
 \item \textbf{Defect-tolerant obstructions.} Proposition~\ref{prop:n20}
 localises the missing ingredient: a constraint on where a defect may sit.
-\item \textbf{Sharpen the capacity inequality with degeneracies.} Equality in
-\eqref{eq:capacity} occurs only at $N_3=0$ throughout the known census, yet
-the inequality permits $\sum_p k_p(k_p-4)<0$. A structural proof that the
-$2a_\ell$ tokens of Lemma~\ref{lem:perline} are never simultaneously
-realisable would recover $\lfloor n(n-2)/3\rfloor$ from the capacity
-machinery alone, i.e.\ without the exchange argument of
-Theorem~\ref{thm:collapse} and without \cite{FK1999}.
+\item \textbf{A global obstruction to saturated flowers.}
+Proposition~\ref{prop:flower} shows that the $2a_\ell$ tokens of
+Lemma~\ref{lem:perline} are simultaneously realisable at each individual
+multipoint; no pointwise strengthening can recover the missing mod-$6$
+unit. The remaining route is global: prove that fully saturated flowers
+cannot coexist with equality on every line when $n$ is even, or quantify the
+defect forced where two flowers interact. Such a result would recover
+\eqref{eq:CB} from \eqref{eq:capacity} and repair the false local step in
+\cite{CB2007}.
 \item \textbf{Pointwise structure.} Theorem~\ref{thm:collapse} equates the
 two maxima but not the optima: crossed optima exist (\S3). Which
 arrangements admit \emph{only} crossed optima of maximum size, and can the
@@ -715,6 +900,9 @@ arrangements of lines}, Ars Math.\ Contemp.\ \textbf{14} (2018), no.~2,
 \bibitem{FK1999} S.~Felsner, K.~Kriegel, \emph{Triangles in Euclidean
 arrangements}, Discrete Comput.\ Geom.\ \textbf{22} (1999), no.~3,
 429--438.
+\bibitem{Rou1996} J.-P.~Roudneff, \emph{The maximum number of triangles in
+arrangements of pseudolines}, J.~Combin.\ Theory Ser.~B \textbf{66} (1996),
+no.~1, 44--74.
 \bibitem{Savchuk} P.~Savchuk, \emph{Constructing optimal Kobon triangle
 arrangements via table encoding, SAT solving, and heuristic straightening},
 arXiv:2507.07951 (2025).
@@ -725,6 +913,9 @@ triangle-maximal series of straight lines}, arXiv:2604.22035 (2026).
 \bibitem{Maiorana} A.~Maiorana, \emph{Kobon triangles, $k=14$}, dataset,
 \url{https://github.com/rufio72/kobon_triangles_k14}, commit
 \texttt{e47c7cfd}.
+\bibitem{MW} E.~W.~Weisstein, \emph{Kobon Triangle}, MathWorld---A Wolfram
+Web Resource, \url{https://mathworld.wolfram.com/KobonTriangle.html},
+accessed 22 August 2026.
 \bibitem{OEIS} OEIS Foundation Inc., \emph{Sequence A006066: Kobon
 triangles}, \url{https://oeis.org/A006066} (revision \#227, 21 August 2026).
 \bibitem{companion} Companion technical document

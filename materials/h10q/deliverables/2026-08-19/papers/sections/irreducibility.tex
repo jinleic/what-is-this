@@ -1,0 +1,375 @@
+\section{Fixed-branch irreducibility for every vertical fiber}
+\label{sec:irreducibility}
+
+This section closes the algebraic premise needed in
+Section~\ref{sec:schinzel}.  Retain
+\[
+ A=1+4a^2,\qquad s=\frac{a-1}{2},\qquad
+ Z=z^3,\qquad D=1-Z-a^2Z^2,
+\]
+\[
+ N_g(b)=16a^4b^2-A(b-1)^4
+\]
+and
+\begin{equation}
+ P(b)=16D^2A^2b^4-\delta_\tau a^4Z^4N_g(b)^2
+       -32A^3s^2D^2b^5. \label{eq:value-P}
+\end{equation}
+% src: data/l22_elimination.jsonl (integral-model row)
+The class construction uses only the fixed canonical branch
+\[
+ \tau^\dagger=\frac{1+2a^2}{A},
+ \qquad
+ \delta_{\tau^\dagger}=-\frac{4a^4}{A}.
+\]
+On this branch multiplication by the nonzero scalar $A/4$ gives
+\begin{equation}
+ H:=\frac A4P
+ =a^8Z^4N_g(b)^2+4A^3D^2b^4
+  -2A^4(a-1)^2D^2b^5.                 \label{eq:integral-model}
+\end{equation}
+Its constant and leading coefficients are equal:
+\begin{equation}
+ H_0=H_8=L=a^8A^2Z^4.                 \label{eq:equal-endpoints}
+\end{equation}
+% src: data/l22_elimination.jsonl (integral-model row)
+
+\subsection{The off-branch warning}
+
+The branch qualification is essential.  If $a=1$ and
+$\delta_\tau=\sigma^2\in\Q^{\times2}$, then
+\[
+ P(b)=
+ \bigl(4DAb^2-\sigma a^2Z^2N_g(b)\bigr)
+ \bigl(4DAb^2+\sigma a^2Z^2N_g(b)\bigr),
+\]
+a genuine quartic-by-quartic factorization whenever the displayed
+endpoints are nonzero.  This does not meet the canonical branch, because
+$\delta_{\tau^\dagger}=-4a^4/A<0$ for rational $a\ne0$.
+% src: data/l21_reducible_locus.jsonl (l21a and l21b rows)
+Thus no blanket assertion over a moving $\tau$ is used below: every
+irreducibility statement is about the fixed pair
+$(\tau^\dagger,\delta_{\tau^\dagger})$.
+
+\subsection{Endpoint and Newton elimination}
+
+\begin{theorem}[Fixed-\texorpdfstring{$Z$}{Z} canonical-branch
+irreducibility; PROVED]
+\label{thm:fiber-irred}
+Fix $Z\in\Q^\times$.  On
+\[
+ \tau=\tau^\dagger=\frac{1+2a^2}{1+4a^2},
+ \qquad
+ \delta=-\frac{4a^4}{1+4a^2},
+\]
+the polynomial $H$ of \eqref{eq:integral-model}, and hence $P$, is
+irreducible of degree eight in $\Q(a)[b]$.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+\end{theorem}
+
+\begin{proof}
+We first assume $Z\notin\{0,1\}$.  The polynomial $H$ is primitive in
+$\Q[a][b]$.  Indeed, a common divisor of its coefficients must divide the
+equal endpoints $a^8A^2Z^4$.  Since $A=1+4a^2$ is irreducible in $\Q[a]$
+and coprime to $a$, only $a$ and $A$ could occur.  The coefficient of
+$b^4$ at $a=0$ is $4(1-Z)^2\ne0$, excluding $a$, and direct reduction of
+that coefficient modulo $A$ excludes $A$.  Gauss's lemma therefore turns
+any factorization over $\Q(a)$ into one by primitive factors in
+$\Q[a,b]$.
+% src: data/l22_elimination.jsonl (integral-model and local-newton-data rows)
+
+At the prime $A$, the coefficient valuations in ascending powers of $b$
+are
+\[
+ (2,2,1,1,0,1,1,2,2).
+\]
+The Newton polygon consequently has two sides, each of horizontal length
+four, with slopes $-1/2$ and $+1/2$.  The slopes belonging to a global
+factor form a sub-multiset of these slopes.  Its endpoint valuations are
+integers, whereas the sum of an odd number of half-integral root
+valuations is not.  Every global factor therefore has even degree.  If
+the octic were reducible, it would have a factor of degree two or four.
+% src: data/l22_elimination.jsonl (local-newton-data and global-degree-filter rows)
+
+At $a=0$ the coefficient valuations are
+\[
+ (8,8,8,8,0,0,8,8,8),
+\]
+and the sides have data
+\[
+ 4@(-2),\qquad 1@0,\qquad 3@(8/3).
+\]
+For the four roots in the first cluster, substitution $b=a^2x$ gives the
+residual polynomial
+\begin{equation}
+ R_0(x)=Z^4+4(1-Z)^2x^4.               \label{eq:small-residual}
+\end{equation}
+It has no rational linear factor, since its two terms are nonnegative on
+$\Q$ and do not vanish simultaneously.  It therefore has no rational
+cubic factor either.  The denominator three in the last slope makes its
+three roots an indivisible local block.  Hence a degree-two factor must
+take two roots from the first four-root cluster; a degree-four factor
+either takes all four of those roots or takes the unit root together with
+the three-root cluster.  In a $4+4$ factorization one of the factors is
+therefore the all-small factor.
+% src: data/l22_elimination.jsonl (local-newton-data and global-degree-filter rows)
+
+The two exact residual limits at infinity are
+\begin{align}
+ a^{-12}H(a,x/a)&\longrightarrow16Z^4(4x^2-1)^2, \label{eq:inf-small}\\
+ a^{-20}H(a,ax)&\longrightarrow16Z^4x^4(x^2-4)^2. \label{eq:inf-large}
+\end{align}
+% src: data/l22_elimination.jsonl (local-newton-data row)
+Let $F$ be a primitive factor of degree $r\in\{2,4\}$ formed from
+$a=0$ small roots.  Unique factorization and
+\eqref{eq:equal-endpoints} force
+\[
+ \operatorname{lc}_b(F)=cA^\beta,\qquad
+ F(0)=d\,a^{2r}A^\delta,
+\]
+with $c,d\in\Q^\times$ and $0\le\beta,\delta\le2$.  Fixed powers of the
+fixed rational $Z$ are units and are absorbed into $c,d$.  If $\ell$ of
+the roots of $F$ are large at infinity, comparison with
+\eqref{eq:inf-small}--\eqref{eq:inf-large} gives
+\[
+ 2r+2\delta-2\beta=2\ell-r.
+\]
+The integral possibilities are
+\[
+\begin{array}{c|c}
+r&(\beta,\delta,\ell)\\ \hline
+2&(1,0,2),\ (2,0,1),\ (2,1,2),\\
+4&(2,0,4).
+\end{array}
+\]
+% src: data/l22_elimination.jsonl (global-degree-filter row)
+
+Suppose first that $r=2$.  The rational degree-two divisors of the
+repeated clusters in \eqref{eq:inf-small}--\eqref{eq:inf-large}, in the
+three endpoint cases just listed, force the constant-to-leading ratio of
+the $a=0$ residual factor to be
+\[
+ \rho=d/c\in\{16,-16\}.
+\]
+After monic normalization, divisibility of \eqref{eq:small-residual} has
+the form
+\[
+ (x^2+ex+\rho)(x^2-ex+q)=x^4+K,\qquad
+ K=\frac{Z^4}{4(1-Z)^2}>0.
+\]
+Coefficient comparison gives
+$e(q-\rho)=0$ and $q-e^2+\rho=0$.  If $e=0$, then $q=-\rho$ and
+$K=-\rho^2<0$.  Otherwise $q=\rho$ and $e^2=2\rho$, which asks for a
+rational square root of $32$ or of $-32$.  Both alternatives are
+impossible, so no quadratic factor exists.
+% src: data/l22_elimination.jsonl (degree-2-elimination row)
+
+Now let $r=4$.  The endpoint enumeration gives
+$(\beta,\delta,\ell)=(2,0,4)$, so
+\[
+ \operatorname{lc}_b(F)=cA^2,\qquad F(0)=d\,a^8.
+\]
+The $b=ax$ initial form is the whole nonzero-root cluster
+$16c(x^2-4)^2$, and hence $d=256c$.  At $b=a^2x$, the complementary
+factor contributes the constant $Z^4/d$.  Matching the coefficient of
+$x^4$ in \eqref{eq:small-residual} gives
+\[
+ \frac{cZ^4}{d}=4(1-Z)^2,\qquad
+ Z^4=1024(1-Z)^2.                       \label{eq:forced-Z}
+\]
+The last equation splits into
+\[
+ Z^2+32Z-32=0,\qquad Z^2-32Z+32=0.
+\]
+Their discriminants are respectively
+$1152=576\cdot2$ and $896=64\cdot14$, neither a rational square.
+Thus no degree-four factor exists.
+% src: data/l22_elimination.jsonl (degree-4-elimination row)
+
+It remains to treat the degenerate residual value $Z=1$.  At $a=1$ the
+primitive ascending coefficient vector of $H$ is
+\[
+ (25,-200,540,-760,1546,-760,540,-200,25).
+\]
+Modulo $11$, monic normalization gives
+\[
+ q(b)=1+3b+4b^2+7b^3+2b^4+7b^5+4b^6+3b^7+b^8.
+\]
+In $\F_{11}[b]/(q)$ the exact Rabin certificate is
+\[
+ b^{11^8}=b,\qquad
+ b^{11^4}=8+7b+4b^2+9b^3+4b^4+7b^5+8b^6+10b^7,
+\]
+and $\gcd(b^{11^4}-b,q)=1$.  Since two is the only prime divisor of
+eight, $q$ is irreducible.  Localizing $\Q[a]$ at
+$L=a^8A^2$ makes $H/L$ monic; a putative factorization has monic factors
+in that localization, and evaluation at $a=1$ preserves their positive
+degrees because $L(1)=25\ne0$.  The certificate is therefore a
+contradiction, proving the vertical statement at $Z=1$.
+% src: data/l22_elimination.jsonl (exceptional-fiber Z=1 row)
+
+Finally, $Z=0$ gives
+\[
+ H=2A^3b^4\bigl(2-A(a-1)^2b\bigr),
+\]
+which is reducible and is excluded because the cell parameter $z$ is
+nonzero.  For fixed $Z\ne0$, the equation $D=0$ removes at most two
+special values of $a$; it does not affect irreducibility in
+$\Q(a)[b]$.  This completes all rational fixed fibers in the theorem.
+% src: data/l22_elimination.jsonl (exceptional-fiber and fixed-Z-theorem rows)
+\end{proof}
+
+\subsection{Hilbert selection inside the admissible progression}
+
+\begin{corollary}[Uniform admissible specialization; PROVED]
+\label{cor:admissible-irred}
+For every odd cell prime $w$ and every $z\in\Q^\times$ with
+$v_w(z)\ge1$, the existing odd-$a$ character progression contains an
+$a$ for which the canonical-branch polynomial $P(a,z^3;b)$ is
+irreducible in $\Q[b]$ and $D\ne0$.
+\end{corollary}
+
+\begin{proof}
+Fix $Z=z^3\ne0$.  Theorem~\ref{thm:fiber-irred} makes the octic over
+$\Q(a)$ irreducible and, in characteristic zero, separable.  Quantitative
+Hilbert irreducibility puts the integers at which its degree drops or it
+becomes reducible in a thin set $E_Z$ satisfying
+\begin{equation}
+ \#\{n\in E_Z\cap\Z:|n|\le B\}
+   =O_Z(\sqrt B\log B).                 \label{eq:thin-bound}
+\end{equation}
+\cite{cohenhit}\cite[Section~13, Theorems~1--2]{serremw}
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row);
+% src: data/l21_irred_generic.jsonl (quantitative-Hilbert selection)
+
+The character sum used in the class construction supplies
+$r\bmod w$ with
+\[
+ \leg{1+4r^2}{w}=-1.
+\]
+Combining this residue with parity gives an odd
+$a_0\bmod 2w$; every positive $a=a_0+2wk$ is character-admissible.
+The progression contributes linearly many integers up to height $B$,
+which eventually dominates \eqref{eq:thin-bound}.  It therefore contains
+a point outside $E_Z$, and the equation $D=0$ excludes at most two more
+points.  Such an $a$ has the asserted properties.
+% src: data/l19_classexist.jsonl (character-sum rows);
+% src: data/l21_irred_generic.jsonl (thin-set progression argument)
+\end{proof}
+
+This is the load-bearing order of the closure.  Fixed-$Z$ vertical
+irreducibility gives Hilbert selection \emph{inside the already admissible
+$a$ progression}; the resulting L20 class certificate has $f=w$ and all
+Schinzel-pair conditions; the L19 fixed-pair implication applies classical
+Schinzel~H to $\{q_1+Nt,G(t)\}$; the supplied prime pair gives an
+emergent-free member; and the L6 equivalence yields the six-variable
+definition.  No separate per-cell irreducibility premise remains.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
+
+\subsection{Independent reciprocal-trace corroboration}
+
+\begin{theorem}[The fixed reciprocal specialization; PROVED]
+\label{thm:reciprocal-fixed}
+On the same canonical branch, specialize
+\[
+ a=1,\quad A=5,\quad s=0,\quad
+ \tau^\dagger=3/5,\quad\delta_{\tau^\dagger}=-4/5.
+\]
+For every $Z\in\Q^\times$, the resulting polynomial $P(1,Z;b)$ is
+irreducible in $\Q[b]$.
+% src: data/l22_reciprocal_cube.jsonl (meta and summary rows)
+\end{theorem}
+
+\begin{proof}
+For this fixed choice
+$(a,A,s,\tau,\delta)=(1,5,0,3/5,-4/5)$, put
+$D=1-Z-Z^2$ and $u=b+b^{-1}$.  Direct expansion gives
+\[
+ P(b)=b^4T(u),\qquad
+ T(u)=400D^2+\frac45Z^4\bigl(16-5(u-2)^2\bigr)^2.
+\]
+In $E=\Q(t)$, $t^2=-5$, one has
+\[
+ \frac54T=Q_-Q_+,\qquad
+ Q_\pm=Z^2\bigl(16-5(u-2)^2\bigr)\pm10Dt.
+\]
+The conjugate quadratics are coprime, and trace reducibility is equivalent
+to $80Z^2+50Dt$ being a square in $E$.  Its norm makes
+\[
+ 125D^2+64Z^4
+\]
+a necessary rational square.  Writing $Z=p/q$ in lowest terms and
+$d=q^2-pq-p^2$, the cleared numerator is
+$125d^2+64p^4\equiv5\pmod8$: coprimality makes $d$ odd in all three
+parity patterns.  It cannot be a square, so $T$ is irreducible.
+% src: data/l22_reciprocal_cube.jsonl
+%      (symbolic_identity and trace_reducibility rows)
+
+For a root $u$ of $T$, the reciprocal lift is irreducible exactly when
+$u^2-4$ is not a square in $\Q(u)$.  Its norm is a rational square times
+\[
+ \Xi(Z)=(125D^2+64Z^4)(125D^2+1024Z^4).
+\]
+Suppose $\Xi(Z)$ were a square and put $h=5D/(8Z^2)$.  The resulting point
+on
+\[
+ v^2=(5h^2+1)(5h^2+16)
+\]
+maps by
+\[
+ x=25h^2,\qquad y=25hv
+\]
+to
+\[
+ E_0:\quad y^2=x(x+5)(x+80).
+\]
+% src: data/l22_reciprocal_cube.jsonl
+%      (reciprocal_lift, Xi_theorem, and curve_maps rows)
+The complete $2$-isogeny descent checks the square classes
+\[
+\begin{array}{c|c|c}
+&\text{candidate classes}&\text{realized classes}\\ \hline
+E_0&\{\pm1,\pm2,\pm5,\pm10\}&\{1,-5\}\\
+E'_0:y^2=x(x-45)(x-125)&\{\pm1,\pm3,\pm5,\pm15\}&\{1,5\}.
+\end{array}
+\]
+The excluded classes are eliminated modulo $3$, modulo $16$, or at the
+real place, so the descent gives rank zero.  The good-prime point counts
+$8$, $16$, and $12$ at $7$, $11$, and $13$ force torsion order at most
+four; the visible points already give
+\[
+ E_0(\Q)=\{O,(0,0),(-5,0),(-80,0)\}.
+\]
+But $D\ne0$ for rational $Z$ and the image has $x=25h^2>0$, a
+contradiction.  Thus $\Xi(Z)$ is nonsquare and the reciprocal lift is
+irreducible.
+% src: data/l22_reciprocal_cube.jsonl
+%      (two_isogeny_descent, isogeny_cover, and elliptic_torsion rows)
+\end{proof}
+
+The value $a=1$ in Theorem~\ref{thm:reciprocal-fixed} is a
+\emph{specialization witness} for the rational-function fiber.  It need
+not satisfy $\leg{5}{w}=-1$ and is not the class parameter selected in
+Corollary~\ref{cor:admissible-irred}.  Localizing at
+$a^8A^2Z^4$ shows that this theorem also gives an independent proof of
+fixed-$Z$ vertical irreducibility; the endpoint--Newton proof above remains
+the primary closure.
+% src: data/l22_reciprocal_cube.jsonl (branch_scope_note and summary rows)
+
+\subsection{Route discipline}
+
+Three structurally useful routes are deliberately not cited as the
+closure.  The infinity calculation alone resolves four quadratic local
+clusters but still permits global factor degrees $2$, $4$, and $6$; the
+equal-endpoint comparison in the primary proof is what eliminates them.
+A factor-tuple version of Schinzel controls only the product of the outside
+Hilbert signs unless an all-plus compatibility class is also proved, so it
+relocates rather than removes irreducibility.  Finally, the free-$\lambda$
+square-branch theorem varies $\tau$ through the infinite L11c family; that
+new branch parameter would cost a seventh witness and is excluded from the
+six-count.  These are proved scope statements about alternate routes, not
+gaps in Theorem~\ref{thm:fiber-irred}.
+% src: data/l22_infinity.jsonl (verdict row)
+% src: data/l22_factor_tuple.jsonl (summary row)
+% src: data/l22_square_branch.jsonl (summary row)

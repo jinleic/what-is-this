@@ -14,14 +14,14 @@ Live site: https://jinleic.github.io/what-is-this/
 | Problem | dir | last change | latest headline |
 |---|---|---|---|
 | [Cordoba-Cordoba-Fontelos 1D inviscid model](https://jinleic.github.io/what-is-this/problems/ccf.html) | `ccf` | 2026-08-22 | Salvage from the paused subproject |
-| [Hilbert's tenth problem over Q](https://jinleic.github.io/what-is-this/problems/h10q.html) | `h10q` | 2026-08-22 | 2026-08-19 — h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle |
+| [Hilbert's tenth problem over Q](https://jinleic.github.io/what-is-this/problems/h10q.html) | `h10q` | 2026-08-23 | H10/Q (2026-08-22) — L22 CLOSES THE FIXED FIBRES; THE CONDITIONAL RECORD NOW ASSUMES CLASSICAL SCHINZEL H ALONE |
 | [Irrationality of zeta(5) (Apéry-style)](https://jinleic.github.io/what-is-this/problems/zeta5.html) | `zeta5` | 2026-08-22 | 2026-08-15 — Session 8: ζ(5) campaign opened (zeta5/); baseline certified, search tool validated blind |
-| [Kobon triangle problem](https://jinleic.github.io/what-is-this/problems/kobon.html) | `kobon` | 2026-08-22 | KOBON (2026-08-22) - THE CONVENTIONS COLLAPSE: crossings never help, so K = K_gen |
+| [Kobon triangle problem](https://jinleic.github.io/what-is-this/problems/kobon.html) | `kobon` | 2026-08-23 | KOBON (2026-08-22c) — SATURATED FLOWERS + STRONG FACE FRONTIERS |
 | [Navier-Stokes existence & smoothness (route work)](https://jinleic.github.io/what-is-this/problems/ns.html) | `ns` | 2026-08-22 | 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim |
-| [Quantum LDPC codes: exact distance & co-design](https://jinleic.github.io/what-is-this/problems/qec.html) | `qec` | 2026-08-22 | 2026-08-18 — QEC/PBB: six-agent wave lands — W4 circuit distance certified [5,12] on both circuits; X-sector proof gap found + repaired (J.3); residual subclass EMPTYNESS to l*m |
-| [Ramsey number R(5,5)](https://jinleic.github.io/what-is-this/problems/r55.html) | `r55` | 2026-08-22 | R55 MIXED (2026-08-21) — level-2 pair lift executed and CLOSED; a retraction |
-| [Three-dimensional Ising model (exact solution)](https://jinleic.github.io/what-is-this/problems/ising3d.html) | `ising3d` | 2026-08-22 | 2026-08-21 — ising3d waves 10–18: eight closed waves recorded, unified paper, ledger gap repaired |
-| [Union-closed sets conjecture (Frankl)](https://jinleic.github.io/what-is-this/problems/uc.html) | `uc` | 2026-08-22 | THEOREM (2026-08-22) — Liu's Hypothesis 1 is proved: the reduced kernel is negative semidefinite |
+| [Quantum LDPC codes: exact distance & co-design](https://jinleic.github.io/what-is-this/problems/qec.html) | `qec` | 2026-08-23 | QEC (2026-08-22) — EXP-055 odd-lattice closure: 4.23B-pair census, exact pole logic, three exact references |
+| [Ramsey number R(5,5)](https://jinleic.github.io/what-is-this/problems/r55.html) | `r55` | 2026-08-23 | R55 (2026-08-22) — ALL ORDER-45 CAYLEY CONSTRUCTIONS CLOSED EXACTLY |
+| [Three-dimensional Ising model (exact solution)](https://jinleic.github.io/what-is-this/problems/ising3d.html) | `ising3d` | 2026-08-23 | 2026-08-21 — ising3d waves 10–18: eight closed waves recorded, unified paper, ledger gap repaired |
+| [Union-closed sets conjecture (Frankl)](https://jinleic.github.io/what-is-this/problems/uc.html) | `uc` | 2026-08-23 | THEOREM (2026-08-22) — Liu's Hypothesis 1 is proved: the reduced kernel is negative semidefinite |
 
 ## Update
 

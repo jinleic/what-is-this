@@ -21,41 +21,52 @@
 \newcommand{\num}{\operatorname{num}}
 \hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
 
-\title[A conditional six-quantifier definition of $\Z$ in $\Q$]
-      {A conditional six-quantifier definition of $\Z$ inside $\Q$:\\
-       model-field assembly, its walls, and a machine-verified finite program}
+\title[Schinzel-H conditional six-quantifier definition of $\Z$ in $\Q$]
+      {Assuming Schinzel's Hypothesis H:\\
+       a six-universal-quantifier definition of $\Z$ inside $\Q$}
 \author{h10q project}
 \date{Working draft, 2026-08-19 --- not submitted}
 
 \begin{document}
 \begin{abstract}
-We present a six-quantifier architecture for a universal definition of
-$\Z$ in $\Q$ under an explicit member-existence hypothesis, while making
-no new quantifier-record claim.  The class side is now unconditional:
-for every cell $(w,z)$, a character-sum choice of $a$, an exact
-Chinese-remainder system, and Dirichlet's theorem produce infinitely many
-aligned base classes on the square branch.  For any one such class whose
-linear/octic pair is Schinzel-admissible, classical Schinzel Hypothesis~H
-implies infinitely many ladder-zero members.  The admissibility audit proves
-uniformly that the linear progression is primitive, the pair has no fixed
-prime divisor, the normalized octic is a unit at every frozen prime, its
-frozen square classes are constant, and its leading coefficient is positive.
-It also corrects the normalization premise: only the square class of the
-content, not its literal support, must be supported on the frozen set.
+Assuming classical Schinzel's Hypothesis~H, we prove that $\Z$ has a
+definition in $\Q$ with six universal quantifiers and that
+$\operatorname{efd}_{\Q}(\Q\setminus\Z)\le5$.  This is a conditional
+result, not an unconditional solution of Hilbert's Tenth Problem over
+$\Q$.  For every cell $(w,z)$, the class construction fixes
+\[
+ \tau^\dagger=\frac{1+2a^2}{1+4a^2},
+ \qquad \delta_{\tau^\dagger}=-\frac{4a^4}{1+4a^2},
+\]
+uses $f=w$, and proves normalization, coprimality, absence of a fixed
+divisor, frozen local data, and positivity uniformly.
 % src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
 
-One algebraic condition remains: irreducibility of the degree-$8$ polynomial
-$P(a,z)$ is open uniformly in the constructed parameters.  Exact modular
-certificates prove it for $353/353$ reconstructed grid classes and
-$706/706$ legacy grid rows, but those finite results do not prove the
-all-cell statement.  Consequently the present chain does \emph{not} show
-that Schinzel's Hypothesis~H implies the six-quantifier definition; uniform
-irreducibility is the single named residual gap.  Separately, the canonical
-$5$-wall is always breakable on the class side, and the last searched cell
-$w=179$ now has a certified member, so every off-grid cell tried to date is
-closed instance by instance.
-% src: data/l20_admissible.jsonl (irreducibility summary and final verdict)
-% src: data/l19_tauzero.jsonl; data/l19_cell179.jsonl
+The last non-Schinzel obligation is removed by a fixed-fiber theorem.  For
+every fixed $Z\in\Q^\times$, equal endpoints and Newton polygons at $A$,
+$a=0$, and $a=\infty$ eliminate every possible factor of
+\[
+ H=\frac A4P
+ =a^8Z^4N_g^2+4A^3D^2b^4-2A^4(a-1)^2D^2b^5.
+\]
+The degree-four case would force
+$Z^4=1024(1-Z)^2$, whose two quadratic branches have nonsquare
+discriminants $1152$ and $896$; the degenerate value $Z=1$ has an exact
+degree-eight certificate modulo $11$.  Hence $P(a,Z)$ is irreducible in
+$\Q(a)[b]$ for every nonzero rational $Z$.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem and exceptional-fiber rows)
+
+Quantitative Hilbert irreducibility selects a good $a$ inside the existing
+character-admissible progression.  The L20 class and the L19 fixed-pair
+implication then reduce member existence exactly to classical Schinzel~H;
+the resulting simultaneous prime values give an emergent-free member and
+activate L6.  An independent reciprocal-trace and complete
+$2$-isogeny-descent proof at $a=1$ corroborates the vertical theorem;
+that $a=1$ is a specialization witness, not the selected class parameter.
+Thus Schinzel~H is the sole conjectural input and no per-cell
+irreducibility hypothesis remains.
+% src: data/l22_reciprocal_cube.jsonl (summary row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
 \end{abstract}
 
 \maketitle
@@ -70,60 +81,58 @@ closed instance by instance.
 \input{sections/record}
 
 \input{sections/schinzel}
+\input{sections/irreducibility}
 \input{sections/frontier}
 
 \section{Conclusion and outlook}
 
-The logical chain now has one sharply isolated break.  Uniform
-class existence is a theorem: every cell admits a square-branch aligned
-class, with infinitely many allowable base primes.  For a fixed class that
-satisfies the standard two-polynomial admissibility package, Schinzel's
-Hypothesis~H supplies infinitely many emergent-free members.  The
-normalization, coprimality, fixed-divisor, frozen-unit, symbol-constancy, and
-positive-leading-coefficient parts of that package are all proved uniformly.
-What is not proved uniformly is that the constructed octic $P(a,z)$ is
-irreducible over $\Q$.  Thus classical Schinzel~H alone does not yet imply
-the six-quantifier definition in this paper.
-% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
+For every nonzero rational $Z$, the fixed canonical branch
+$\tau^\dagger=(1+2a^2)/(1+4a^2)$,
+$\delta_{\tau^\dagger}=-4a^4/(1+4a^2)$ is vertically irreducible.  The
+endpoint--Newton proof is uniform in the fixed fiber, including the exact
+$Z=1$ certificate; quantitative Hilbert irreducibility then chooses a good
+$a$ inside the character progression already required by the class
+construction.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem and exceptional-fiber rows)
 
-Three conclusions should govern further work.
+The logical chain is therefore complete up to one named conjecture:
+fixed-$Z$ irreducibility gives Hilbert selection in the admissible
+$a$ progression; the L20 class certificate has $f=w$ and all
+Schinzel-pair conditions; the L19 fixed-pair implication turns classical
+Schinzel~H into infinitely many emergent-free members; and L6 yields
+\[
+ \Z\ \text{universally definable in }\Q\text{ with six quantifiers},
+ \qquad
+ \operatorname{efd}_{\Q}(\Q\setminus\Z)\le5.
+\]
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
+% src: CONDITIONAL.md:14-48
 
-\begin{enumerate}
-\item \emph{The residual algebraic problem.}  Affine substitution and
-primitive rescaling preserve factorization, so the normalized class
-polynomial $G$ is irreducible exactly when $P$ is.  Modular reductions give
-exact irreducibility certificates for every finite row audited, but a
-bounded ledger cannot settle arbitrary rational cells.  A uniform proof for
-$P(a,z)$, or a proof that the freely chosen parameter $a$ can always avoid
-the reducible locus while retaining the required character and congruence
-conditions, would close the only remaining admissibility gap.
-% src: data/l20_admissible.jsonl (condition-(a) and affine-equivalence blocks)
+The independent reciprocal proof specializes to
+\[
+ (a,A,s,\tau^\dagger,\delta)=(1,5,0,3/5,-4/5),
+\]
+factors through a trace quartic, and closes the reciprocal lift by a
+complete $2$-isogeny descent.
+Its $a=1$ is only a specialization witness for the rational-function
+fiber; it need not satisfy the target character condition and is not the
+class parameter chosen by Hilbert irreducibility.
+% src: data/l22_reciprocal_cube.jsonl (meta and summary rows)
 
-\item \emph{The member problem after admissibility.}  The local sieve still
-has no cutoff-uniform positive mass: its clean product decays like
-$(\log X)^{-1/2}$, while the expected clean-prime count diverges like
-$X/(\log X)^{5/2}$.  These facts explain why bounded search works often
-without proving a member.  Once irreducibility is supplied, the
-fixed-class theorem invokes the classical simultaneous prime-value
-conjecture honestly; before then, invoking Schinzel hides a missing
-hypothesis.
-% src: data/l17_stepii.jsonl; data/l18_divergence_model.jsonl
+The alternate routes retain their honest scope without weakening the
+primary theorem.  Infinity alone permits factor degrees $2$, $4$, and
+$6$; factor tuples control only the product of outside signs without an
+all-plus compatibility theorem; and a free $\lambda$ moves $\tau$ through
+an infinite L11c family and would add a seventh witness.  None is used as
+the six-count closure.
+% src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
+% src: data/l22_square_branch.jsonl
 
-\item \emph{Walls and finite horizons.}  Fixing $a=1$ reproduces exactly the
-canonical $5$-wall, but varying $a$ breaks every such wall on the class
-side.  The fixed choice $a=7$ works only on its own quadratic-character
-branch.  The cell $[179,[-1,1]]$ now has a replayed ladder-zero member, so
-all searched off-grid cells are closed; this remains a finite collection of
-instance theorems, not an all-cell member theorem.
-% src: data/l19_classexist.jsonl; data/l19_tauzero.jsonl
-% src: data/l19_cell179.jsonl
-\end{enumerate}
-
-The published record therefore remains the refereed ten-quantifier
-definition.  The result here is a conditional architecture with a proved
-class side, a proved fixed-class Schinzel implication, and one explicit
-uniform irreducibility gap.  No stronger conclusion is claimed.
-% src: data/litscout_h10q.md (published-record boundary)
+Accordingly, classical Schinzel's Hypothesis~H is the sole conjectural
+input to the six-universal-quantifier definition.  The conclusion remains
+conditional.  We do not prove Schinzel~H, make no new unconditional
+quantifier-record claim, and do not claim that H10($\Q$) is solved.
+% src: data/litscout_h10q.md; data/l22_elimination.jsonl
 
 \section*{Reproducibility}
 
@@ -134,6 +143,7 @@ relaxation above, and explicit refusal labels that never count as
 evidence. The companion paper documents the engine, the artifact
 schemas, the exact reproduction commands, and the precise scope of what
 is regenerable from checked-in scripts.
+% src: h10q.py:32-39,81-178
 
 \begin{thebibliography}{99}
 
@@ -188,6 +198,14 @@ H.~A. Helfgott,
 Acta Mathematica \textbf{213} (2014), no.~1, 107--135;
 \texttt{doi:10.1007/s11511-014-0117-2}; arXiv:1112.3820.
 
+\bibitem{cohenhit}
+S.~D. Cohen,
+\emph{The distribution of Galois groups and Hilbert's irreducibility
+theorem},
+Proceedings of the London Mathematical Society (3) \textbf{43} (1981),
+no.~2, 227--250;
+\texttt{doi:10.1112/plms/s3-43.2.227}.
+
 \bibitem{koenigsmann}
 J.~Koenigsmann,
 \emph{Defining $\Z$ in $\Q$},
@@ -213,6 +231,13 @@ A.~Schinzel and W.~Sierpi\'nski,
 \emph{Sur certaines hypoth\`eses concernant les nombres premiers},
 Acta Arithmetica \textbf{4} (1958), 185--208;
 erratum, ibid.\ \textbf{5} (1958), 259.
+
+\bibitem{serremw}
+J.-P. Serre,
+\emph{Lectures on the Mordell--Weil Theorem}, 3rd ed.,
+Aspects of Mathematics \textbf{E15},
+Friedr. Vieweg \& Sohn, Braunschweig, 1997, x+218 pp.;
+\texttt{doi:10.1007/978-3-663-10632-6}.
 
 \bibitem{sun}
 Z.-W. Sun,

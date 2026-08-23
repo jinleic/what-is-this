@@ -127,10 +127,13 @@ M_\tau=16-\delta_\tau c^2-16ABs^2.
 \]
 % src: THEOREMS.md:527-535
 
-\textbf{PROVED: soundness.}\quad\textbf{CONDITIONAL: completeness.}
+\textbf{PROVED: soundness.}\quad\textbf{CONDITIONAL ON SCHINZEL H:
+completeness.}
 Soundness, $F(z)\Rightarrow z\in\bigcup_{w\notin S}\mathfrak m_w$, is
-proved; the converse is the open assembly lemma.
+proved.  The converse is open unconditionally; Sections~\ref{sec:record}
+--\ref{sec:irreducibility} prove it assuming classical Schinzel~H.
 % src: THEOREMS.md:437-439,468-475
+% src: data/l22_elimination.jsonl; data/l18_schinzel_implies_h.jsonl
 If that lemma holds, the union outside $S$ is $\exists_6$; adjoining the
 finitely many omitted maximal ideals preserves that count, so
 $\Q\setminus\Z$ is $\exists_6$, $\Z$ is $\forall_6$, and
@@ -248,19 +251,23 @@ Thus a failing tied conic is obstructed at an even number of places, at
 least two, and repairs must change places in pairs.
 % src: THEOREMS.md:676-684
 
-\textbf{CONDITIONAL / OPEN (assembly).}
+\textbf{CONDITIONAL ON SCHINZEL H / OPEN UNCONDITIONALLY (assembly).}
 For every odd target $w$ and every $z$ with $v_w(z)\geq1$, one must choose
 $(s,b)$ with $(1+2s,b)\in\Phi_1^{\{2\}}$,
-$s\equiv(\bar a_w-1)/2\pmod{\mathfrak m_w}$, $v_w(b)=1$, and one of the
-two branches such that
+$s\equiv(\bar a_w-1)/2\pmod{\mathfrak m_w}$, $v_w(b)=1$, and a retained
+branch such that
 $M_\tau=0$ or
 $-\delta_\tau A M_\tau\in N_{E_\tau/\Q}(E_\tau^\times)$.
 % src: THEOREMS.md:557-565
-Equivalently, the free $b$-direction must steer the quadratic field
-$E_\tau=\Q(\sqrt{-\delta_\tau AB})$ simultaneously against the moving
-odd-valuation places of $M_\tau$ and the moving coefficient-bad places.
-That weak/norm-approximation statement, not W0, W1, W2, or the quantifier
-bookkeeping, is the open problem.
+In this local formulation the free $b$-direction must steer
+$E_\tau=\Q(\sqrt{-\delta_\tau AB})$ against the moving odd-valuation and
+coefficient-bad places.  Later sections implement the required choice on
+the fixed canonical branch: L22 supplies irreducibility, L20 supplies the
+admissible class, and classical Schinzel~H supplies the member.  Thus the
+weak/norm-approximation problem remains open only unconditionally, not as
+an extra premise of the conditional theorem.
+% src: data/l22_elimination.jsonl; data/l20_admissible.jsonl
+% src: data/l18_schinzel_implies_h.jsonl
 % src: THEOREMS.md:701-714
 
 \textbf{EVIDENCE.}

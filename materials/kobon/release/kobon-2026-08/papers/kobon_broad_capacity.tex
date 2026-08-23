@@ -58,11 +58,16 @@ multiple points,
  3|S|+C+2Q+\sum_p k_p(k_p-4)\ \le\ n(n-2),
 \]
 where $C$ counts line/triangle interior incidences, together with an exact
-bounded-face budget; these drive the encoding. With them we certify
-$K(n)$ for every $n\le10$ --- $2,5,7,11,15,21,25$ from $n=4$, with
-\texttt{drat-trim}-verified refutations of $K(n)+1$ at $n=4,\dots,9$ --- an
-independent machine verification of the classical values that admits every
-degeneracy. On the constructive side we verify, in exact rational
+bounded-face budget; these drive the encoding. With them we certify $K(n)$ for every $n\le10$ ---
+$2,5,7,11,15,21,25$ from $n=4$, with \texttt{drat-trim}-verified refutations
+of $K(n)+1$ at $n=4,\dots,9$ --- admitting every degeneracy. Three of these
+are new: at $n=6,8,10$ the recorded value was a construction paired with a
+bound proved only for \emph{simple} arrangements, while the bound valid for
+arbitrary arrangements is strictly larger ($8$, $16$, $26$); at $n=10$ even
+the unpublished draft leaves $26$ open, and at $n=8$ the value $15$ exceeds
+the exact simple maximum $14$, so it is attained only non-simply. The same mismatch affects $n=12$ and $n=14$, where the
+constructions $38$ and $54$ exceed the exact simple maxima $37$ and $53$; we
+show the exactness claims recorded for them are unsupported. On the constructive side we verify, in exact rational
 arithmetic and with three implementations, a $14$-line arrangement with $54$
 pairwise interior-disjoint triangles, and prove that every currently known
 extremal arrangement at $n=11,14,18,20$ attains its published count as its
@@ -114,22 +119,49 @@ concurrent lines. Their bound
 \begin{equation}\label{eq:CB}
  K(n)\ \le\ \lfloor n(n-2)/3\rfloor - \mathbf 1_{n \bmod 6\in\{0,2\}}
 \end{equation}
-is therefore a statement about $K$; the case of a counted triangle whose
-sides are subdivided by crossings is not part of their case analysis, and
-their claim that a segment serving two triangles forces a multiple point at
-one of its endpoints fails once subdivided sides are admitted. Bartholdi,
-Blanc and Loisel \cite{BBL} and Blanc \cite{Blanc} bound $a_3^s$. Thus:
+is therefore a statement about $K$. Their case analysis does not treat a
+counted triangle whose sides are subdivided by crossings; by
+Theorem~\ref{thm:collapse} it need not, since such triangles may be
+eliminated without loss. What remains is that \eqref{eq:CB} rests on an
+unpublished draft, and that its route --- equality forces a perfect
+configuration, perfect configurations are simple and parallel-free (their
+Lemma 2), and the sharper simple bounds then contradict equality --- has not
+been refereed. Bartholdi, Blanc and Loisel \cite{BBL} and Blanc
+\cite{Blanc} bound $a_3^s$. Thus:
 
 \begin{quote}
-\emph{The base segment bound $\lfloor n(n-2)/3\rfloor$ is established for
-$K$ including non-simple arrangements by Felsner and Kriegel
-\cite{FK1999} (so used, e.g., in \cite{PU1}); the mod-$6$ improvement
+\emph{The base segment bound $\lfloor n(n-2)/3\rfloor$ is stated for $K$
+including non-simple arrangements as Theorem 2(3) of Felsner and Kriegel
+\cite{FK1999} (so used, e.g., in \cite{PU1}), with the proof deferred there
+to Roudneff \cite{Rou1996}; the mod-$6$ improvement
 \eqref{eq:CB} for $K$ rests on the unpublished draft \cite{CB2007}; the
 sharpest numerical bounds \cite{BBL,Blanc} are proved for $a_3^s$ only and
 hence do not apply to non-simple record arrangements. No bound had been
 proved for $\Kgen$; Theorem~\ref{thm:collapse} below shows none is needed,
 since $\Kgen=K$.}
 \end{quote}
+
+\begin{remark}[provenance of the base bound]\label{rem:provenance}
+For \emph{simple} Euclidean arrangements the base bound is a two-line count:
+there are $n(n-2)$ bounded edges, and in a simple arrangement only one of the
+two cells along an edge can be a triangle (Grünbaum; equivalently
+Lemmas 5--6 of \cite{FK1999}), so $3p_3\le n(n-2)$. For arbitrary
+arrangements the situation is more delicate --- an edge with a multiple
+endpoint \emph{can} border two triangular cells --- and \cite{FK1999} states
+the bound as Theorem 2(3) for every Euclidean pseudoline arrangement while
+referring the proof to \cite{Rou1996}, whose theorem is the projective bound
+$p_3\le n(n-1)/3$ for arbitrary arrangements with $n\ge9$ (false for
+$n\le8$). The reduction is not immediate in the direction needed: adjoining
+the line at infinity to a Euclidean arrangement of $n$ lines and applying the
+projective bound gives only $p_3\le n(n+1)/3-3$, because Levi's theorem
+guarantees just three triangles along the added line whereas $n(n-2)/3$
+requires $n$ of them. We therefore cite Theorem 2(3) as the refereed
+statement and record that the numerical upper ends of
+Table~\ref{tab:windows} inherit that provenance --- one more reason to prefer
+the self-contained certificates of \S\ref{sec:ladder}, whose
+unsatisfiability verdicts bound $K$ with every degeneracy free and cite
+nothing.
+\end{remark}
 
 \section{Crossings never help}
 
@@ -272,10 +304,15 @@ corresponding pointwise statement is false.
 \item A capacity theorem for $\Kgen$ (Theorem~\ref{thm:capacity}), with exact
 degeneracy penalty and crossing charge, and a closed-form ceiling
 (Theorem~\ref{thm:ceiling}).
-\item A certified initial segment in the strongest convention:
-$\Kgen(4),\dots,\Kgen(9)=2,5,7,11,15,21$, each with a
-\texttt{drat-trim}-verified refutation of $\Kgen(n)+1$, plus
-$\Kgen(10)=25$ from a prior cube cover (Theorem~\ref{thm:ladder}).
+\item A certified initial segment with all degeneracies free:
+$K(4),\dots,K(9)=2,5,7,11,15,21$, each with a \texttt{drat-trim}-verified
+refutation of $K(n)+1$, plus $K(10)=25$ from a prior cube cover
+(Theorem~\ref{thm:ladder}); of these $K(6),K(8),K(10)$ are first
+determinations (Corollary~\ref{cor:before}).
+\item A hypothesis audit of the recorded small values
+(Proposition~\ref{prop:mismatch}): at $n=8,12,14$ the record exceeds the
+exact simple maximum, so the simple-only bound cited as ``the upper bound''
+cannot apply.
 \item An independently verified $\Kgen(14)\ge54$ (Theorem~\ref{thm:54}) and
 an exact optimality census of all known extremal arrangements
 (Theorem~\ref{thm:census}), which shows $K=\Kgen$ on each of them.
@@ -302,6 +339,59 @@ family $S$ (Definition~\ref{def:three}(iii)) set
 so $\sum_\ell\sigma_\ell=3|S|$ and $C:=\sum_\ell\gamma_\ell$ is the total
 number of line/triangle interior incidences. Write $T=|S|$ and
 $\Delta=n(n-2)-3T$.
+
+\section{What is actually proved for small $n$}\label{sec:actual}
+
+The recorded values are widely treated as exact. They are not, and the
+reason is a hypothesis mismatch that Theorem~\ref{thm:collapse} lets us state
+cleanly, since only one convention now exists.
+
+Write $\bar a_3^s(n)$ for the exact maximum over \emph{simple} affine
+arrangements. Blanc \cite{Blanc} (Theorem 1 for the bound, Theorem 3 for
+attainment, computer-assisted) and \cite{BBL} (Theorem 1.4) give
+$\bar a_3^s(8)=14$, $\bar a_3^s(11)=32$, $\bar a_3^s(12)=37$ and
+$\bar a_3^s(14)=53$. Meanwhile the even-$n$ bound $\lfloor
+n(n-7/3)/3\rfloor$ of \cite[Thm.~1.1]{BBL} --- proved under the explicit
+hypothesis ``our sole interest is with simple arrangements, i.e.\
+arrangements without multiple intersections'' --- takes the values
+$7,15,25,38,54$ at $n=6,8,10,12,14$, which are exactly the recorded
+constructions.
+
+\begin{proposition}\label{prop:mismatch}
+For $n\in\{8,12,14\}$ every arrangement attaining the recorded value
+($15$, $38$, $54$ respectively) is non-simple, because that value exceeds
+$\bar a_3^s(n)\in\{14,37,53\}$. Consequently the simple-arrangement bound
+$\lfloor n(n-7/3)/3\rfloor$ of \cite[Thm.~1.1]{BBL}, which coincides with the
+recorded value at those $n$, cannot be applied to the arrangements in
+question, and the exactness claims that invoke it --- the upper-bound column
+of OEIS A006066 \cite{OEIS} at $n=12$ and its comment of 13 August 2026 at
+$n=14$, and the corresponding table in MathWorld \cite{MW} --- are
+unsupported. The published bounds valid for arbitrary arrangements are
+$\lfloor n(n-2)/3\rfloor=16,40,56$ \cite{FK1999}, and $15,39,55$ if the
+unpublished draft \cite{CB2007} is granted.
+\end{proposition}
+
+\begin{proof}
+A simple arrangement has at most $\bar a_3^s(n)$ triangular faces by
+definition of $\bar a_3^s$, and $15>14$, $38>37$, $54>53$. The remaining
+statements are the cited hypotheses and values.
+\end{proof}
+
+At $n=6$ and $n=10$ the construction equals $\bar a_3^s(n)$, so it may be
+simple; but the same gap remains on the upper side, since
+$\lfloor n(n-2)/3\rfloor$ is $8$ and $26$ there. Collecting:
+
+\begin{corollary}\label{cor:before}
+Before the certificates of \S\ref{sec:ladder}, the values determined by the
+refereed literature were $K(n)$ for $n\le5$ and $n\in\{7,9,13\}$, where
+$\lfloor n(n-2)/3\rfloor$ is attained, together with $K(11)=32$
+\cite{Savchuk}. For the even cases $n\in\{6,8,10,12,14\}$ the record was a
+construction paired with a bound proved only for simple arrangements.
+Granting the unpublished draft \cite{CB2007} would settle $n=6$ and $n=8$,
+since \eqref{eq:CB} gives $7$ and $15$ there; it would not settle
+$n=10,12,14$, where \eqref{eq:CB} gives $26,39,55$ against constructions
+$25,38,54$.
+\end{corollary}
 
 \section{The capacity theorem}
 
@@ -445,10 +535,23 @@ In the convention of Definition~\ref{def:three}(iii),
 \[
  \Kgen(4),\dots,\Kgen(9)\;=\;2,\,5,\,7,\,11,\,15,\,21,
 \]
-and each value is certified: the instance $(n,\Kgen(n)+1)$ is unsatisfiable
-with a \texttt{drat-trim}-verified proof (Table~\ref{tab:ladder}), and the
+and each value is certified: the instance $(n,K(n)+1)$ is unsatisfiable with
+a \texttt{drat-trim}-verified proof (Table~\ref{tab:ladder}), and the
 matching lower bounds are the classical constructions. Together with the
-prior eleven-cube cover for $n=10$ this gives $\Kgen(n)$ for all $n\le10$.
+prior eleven-cube cover for $n=10$ this gives $K(n)$ for all $n\le10$; the
+$n=10$ value is confirmed a second time, through a different encoding, by a
+single monolithic refutation of $(10,26)$ in the crossing-free formulation of
+Theorem~\ref{thm:collapse} ($131\,314$ variables, $792\,462$ clauses,
+unsatisfiable in $31$ minutes, discovery-level: the DRAT certificate for this
+value is the cube cover).
+By Corollary~\ref{cor:before} the rungs at $n=6$, $n=8$ and $n=10$ are the
+first determinations of those values from refereed inputs: they rule out $8$,
+$16$ and $26$ triangles respectively, which no simple-arrangement bound can
+exclude. At $n=10$ this is the first determination outright, since even
+\eqref{eq:CB} leaves $26$ open; at $n=6,8$ it removes the dependence on the
+unpublished draft. And $K(8)=15$ is attained only non-simply
+(Proposition~\ref{prop:mismatch}), so the certified statement lives entirely
+in the degenerate regime.
 \end{theorem}
 
 \begin{table}[t]
@@ -499,6 +602,43 @@ rational coordinates. The same verification succeeds for all fifteen
 published solutions.
 \end{proof}
 
+\section{Crossing incidences are exactly reified}\label{sec:tc}
+
+The experiments that force or forbid crossings rest on a single literal being
+exact, so we record what it encodes. For a triple $t$ of lines and a line
+$r\notin t$, let $\mathrm{TC}(t,r)$ be the variable defined by
+\begin{equation}\label{eq:tc}
+ \mathrm{TC}(t,r)\ \Longleftrightarrow\ S(t)\wedge
+ \Bigl(\bigvee_{e\subset t}\mathrm{SA}(e,r)\Bigr)\wedge
+ \Bigl(\bigvee_{e\subset t}\mathrm{SB}(e,r)\Bigr),
+\end{equation}
+where $S(t)$ says $t$ is in the selected family and $\mathrm{SA}(e,r)$,
+$\mathrm{SB}(e,r)$ say that the vertex of $t$ opposite\footnote{Indexed by
+the pair $e$ of lines meeting there.} lies strictly above, respectively
+strictly below, $r$. Both sidedness literals are exact in the model.
+
+\begin{lemma}\label{lem:tc}
+In every arrangement, $\mathrm{TC}(t,r)$ holds precisely when $t$ is selected
+and $r$ meets the open interior of $t$.
+\end{lemma}
+
+\begin{proof}
+If some vertex of $t$ is strictly above $r$ and another strictly below, then
+$r$ crosses the two sides joining them at relative interior points, and the
+open chord between those points lies in the open interior. Conversely,
+suppose $r$ meets the open interior. Then $r$ cannot contain two vertices of
+$t$: two vertices span a side, which lies on a line of $t$, and $r\notin t$.
+So at most one vertex is on $r$, and the chord separates the remaining two
+strictly, giving one strictly above and one strictly below. The conjunct
+$S(t)$ is asserted by the first clause of \eqref{eq:tc}.
+\end{proof}
+
+The point of the lemma is that $\mathrm{TC}$ is attached to a \emph{selected}
+triangle: a disjunction over $\mathrm{TC}$ literals asserts that the family
+exhibited by the model has a crossed member, not merely that the arrangement
+crosses some candidate triple. Cevians and lines through a vertex are handled
+by the ``at most one vertex on $r$'' case rather than excluded.
+
 \section{Exact optimality of the known witnesses}
 
 For a \emph{fixed} arrangement, the largest admissible family is the
@@ -516,6 +656,16 @@ reconstructions; an $11$-line $32$-triangle arrangement; an $18$-line
 $93$-triangle reconstruction; and a $20$-line $116$-triangle reconstruction.
 In particular $K=\Kgen$ on every known extremal arrangement.
 \end{theorem}
+
+By Lemma~\ref{lem:tc} we may also ask whether an \emph{optimal} family must
+be crossing-free, by conjoining $\bigvee_{t,r}\mathrm{TC}(t,r)$ with exact
+selection of $K(n)$ triangles. This is unsatisfiable for
+$n\in\{5,7,8,9\}$ and satisfiable for $n\in\{4,6\}$, so crossed optima exist
+but only at the smallest sizes; at $n=4$ they are generic, occurring in
+$296$ of $300$ random exact-rational arrangements, and at $n=6$ an explicit
+arrangement carries both a crossed and an uncrossed optimal family of size
+$7$. The satisfiable cases are therefore not artefacts of degeneracy, and by
+Theorem~\ref{thm:collapse} they never increase the optimum.
 
 Consequently any improvement on the records must come from new arrangements,
 and by Corollary~\ref{cor:tamura} any improvement past the Tamura value must
@@ -606,32 +756,33 @@ $(11,33)$ as an independent check against the known value.
 
 \begin{table}[t]
 \centering
-\begin{tabular}{rrrrl}
+\begin{tabular}{rrrrrl}
 \toprule
-$n$ & construction & $K=\Kgen\le$ \eqref{eq:CB} & window & certified here\\
+$n$ & constr. & $\bar a_3^s$ & \eqref{eq:CB} & FK & status\\
 \midrule
-8 & 15 & 15 & closed & $K(8)=15$ (DRAT)\\
-9 & 21 & 21 & closed & $K(9)=21$ (DRAT)\\
-10 & 25 & 26 & closed & $K(10)=25$ (cube cover, prior)\\
-11 & 32 & 33 & closed & $K(11)=32$ \cite{Savchuk}\\
-12 & 38 & 39 & $[38,39]$ & ---\\
-13 & 47 & 47 & closed & $K(13)=47$ \cite{FK1999}\\
-14 & \textbf{54} (verified) & 55 & $[54,55]$ & $K(14)\ge54$\\
-18 & 93 & 95 & $[93,95]$ & ---\\
-20 & 116 & 119 & $[116,119]$ & ---\\
+6 & 7 & 7 & 7 & 8 & $K(6)=7$ certified here (DRAT)\\
+8 & 15 & 14 & 15 & 16 & $K(8)=15$ certified here (DRAT)\\
+9 & 21 & 21 & 21 & 21 & $K(9)=21$; FK attained\\
+10 & 25 & 25 & 26 & 26 & $K(10)=25$ certified here (cube cover)\\
+11 & 32 & 32 & 33 & 33 & $K(11)=32$ \cite{Savchuk}\\
+12 & \textbf{38} & 37 & 39 & 40 & $[38,40]$; $(12,39)$ running\\
+13 & 47 & 47 & 47 & 47 & $K(13)=47$; FK attained\\
+14 & \textbf{54} (verified) & 53 & 55 & 56 & $[54,56]$; $(14,55)$ running\\
+18 & 93 & 93 & 95 & 96 & $[93,96]$\\
+20 & 116 & 116 & 119 & 120 & $[116,120]$\\
 \bottomrule
 \end{tabular}
-\caption{Constructions are admissible families, hence lower bounds for all
-three quantities. By Theorem~\ref{thm:collapse}, $K=\Kgen$, so column three
-bounds both: its base value $\lfloor n(n-2)/3\rfloor$ is peer-reviewed for
-non-simple arrangements \cite{FK1999}, while the $-1$ for $n\equiv0,2\pmod6$
-rests on the draft \cite{CB2007}. ``Closed'' means the value is settled, by
-agreement of construction and bound or by \cite{Savchuk} at $n=11$. Rows
-$8,9,10$ are additionally certified here with all degeneracies free. The
-upper bounds listed in OEIS A006066 at $n=12,14,18,20$ (namely
-$38,54,94,117$) are \emph{simple}-arrangement values of the
-\cite{BBL,Blanc} type and are not valid for $K$; the windows above are what
-the non-simple literature proves.}
+\caption{Constructions are lower bounds for $K=\Kgen$
+(Theorem~\ref{thm:collapse}). Column $\bar a_3^s$ is the exact maximum over
+\emph{simple} arrangements \cite{BBL,Blanc}: where the construction exceeds
+it (bold: $n=8,12,14$) the record is attained only non-simply, so the
+simple-only bound $\lfloor n(n-7/3)/3\rfloor$ --- which equals the
+construction at every even $n$ here and is what the OEIS upper-bound column
+reports --- cannot apply (Proposition~\ref{prop:mismatch}). The bounds that
+do apply are \eqref{eq:CB}, resting on the unpublished draft \cite{CB2007},
+and FK $=\lfloor n(n-2)/3\rfloor$ \cite{FK1999} (see
+Remark~\ref{rem:provenance}). Rows marked \emph{certified here} are settled
+by unsatisfiability with every degeneracy free, citing nothing.}
 \label{tab:windows}
 \end{table}
 
@@ -711,6 +862,9 @@ arrangements of lines}, Ars Math.\ Contemp.\ \textbf{14} (2018), no.~2,
 \bibitem{FK1999} S.~Felsner, K.~Kriegel, \emph{Triangles in Euclidean
 arrangements}, Discrete Comput.\ Geom.\ \textbf{22} (1999), no.~3,
 429--438.
+\bibitem{Rou1996} J.-P.~Roudneff, \emph{The maximum number of triangles in
+arrangements of pseudolines}, J.~Combin.\ Theory Ser.~B \textbf{66} (1996),
+no.~1, 44--74.
 \bibitem{Savchuk} P.~Savchuk, \emph{Constructing optimal Kobon triangle
 arrangements via table encoding, SAT solving, and heuristic straightening},
 arXiv:2507.07951 (2025).
@@ -721,6 +875,9 @@ triangle-maximal series of straight lines}, arXiv:2604.22035 (2026).
 \bibitem{Maiorana} A.~Maiorana, \emph{Kobon triangles, $k=14$}, dataset,
 \url{https://github.com/rufio72/kobon_triangles_k14}, commit
 \texttt{e47c7cfd}.
+\bibitem{MW} E.~W.~Weisstein, \emph{Kobon Triangle}, MathWorld---A Wolfram
+Web Resource, \url{https://mathworld.wolfram.com/KobonTriangle.html},
+accessed 22 August 2026.
 \bibitem{OEIS} OEIS Foundation Inc., \emph{Sequence A006066: Kobon
 triangles}, \url{https://oeis.org/A006066} (revision \#227, 21 August 2026).
 \bibitem{companion} Companion technical document

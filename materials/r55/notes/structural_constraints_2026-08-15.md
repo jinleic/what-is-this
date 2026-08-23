@@ -312,7 +312,81 @@ ACCEPTED-tier disposition under any follow-on campaign requires the
 plan-letter R1-R5 LP recompute before the evidence label holds.
 
 Consequence: the T-family identity line (m=2, 3, 4; m>=5 void) is closed
-at n=45. The recorded fallback order for the next separately reviewed
-campaign: VeriPB-certified search -> Enstroem mixed-quadratic identity
-tier (open per `bench/spec.json:first_exact_basis`) -> srg(45,22,10,11)
-complementary SAT.
+at n=45. The Engström mixed row and its level-2 pair lift have since also
+closed (`MIXED_NO_CUT_IN_FROZEN_BASIS`, `MIXED_PAIR_LIFT_CLOSED`). The
+remaining exclusion lane is non-local certified gluing. The complementary
+construction lane is addressed next.
+
+## Theorem 6 (no order-45 Cayley Ramsey graph; 2026-08-22)
+
+No undirected Cayley graph on 45 vertices has both clique number and
+independence number at most four.
+
+*Proof.* Let `G` be a group of order 45. Its Sylow-5 subgroup is normal because
+its number divides 9 and is 1 modulo 5. Conjugation by a Sylow-3 subgroup has
+image whose order divides both 9 and `|Aut(C5)|=4`, so it is trivial. Thus
+`G = C5 × H`, where the order-9 group `H` is `C9` or `C3 × C3`. Hence the only
+two groups are `C45` and `C15 × C3`, both abelian.
+
+Neither has an involution, so the 44 nonidentity elements form 22 inverse
+pairs. An undirected Cayley graph selects an arbitrary subset `S` of those
+pairs. Translation makes any K5 contain zero; therefore `Cay(G,S)` has a K5
+iff four elements of `S` form a K4 under pair differences. Its complement is
+`Cay(G, G\\({0}∪S))`. Exhausting one representative of every complementary
+pair of connection sets gives `2^21` cases per group. In every one, the
+producer found and recorded a K5 on one side. A disjoint derivation converts
+the same condition to a 22-variable CNF and checks all `2^22` assignments by
+exact integer bitsets, leaving zero survivors for both groups. ∎
+
+Exact evidence:
+
+| group | normalized K5 patterns | CNF clauses | complement classes | survivors |
+|---|---:|---:|---:|---:|
+| `C45` | 12,749 | 25,498 | 2,097,152 | 0 |
+| `C15 × C3` | 12,650 | 25,300 | 2,097,152 | 0 |
+
+`src/cayley_r55_search.py` commits all 4,194,304 monochromatic witnesses to
+two SHA-256 coverage digests. `src/check_cayley_r55.py --resweep` independently
+repeats the full search with a different K4 kernel and reproduces both digests.
+The compact CNF checker is the default proof path and takes about three seconds.
+
+**Conference corollary.** No Cayley graph has strongly regular parameters
+`(45,22,10,11)`. Both groups have a character of order three. Since `S=-S`,
+each inverse pair contributes either 2 or `ω+ω²=-1`, making that character's
+Cayley eigenvalue an integer. But every nonprincipal eigenvalue of an
+`srg(45,22,10,11)` solves `x²+x−11=0`, whose roots are irrational.
+
+**Scope.** The theorem eliminates every regular group action, including every
+circulant construction, but not all vertex-transitive graphs of order 45 and
+not arbitrary graphs. It changes no bound on `R(5,5)`. A targeted literature
+search found no published exact statement of this order-45 Cayley closure;
+that absence is not a novelty proof.
+
+## Theorem 7 (order-3 automorphism parity in the conference lane)
+
+Let `A` be the adjacency matrix of any `srg(45,22,10,11)`, and let an
+automorphism of order three have `f` fixed vertices. Then
+
+`f ≡ 3 (mod 6)`.
+
+In particular, the graph has no fixed-point-free automorphism of order three.
+This strictly strengthens the Cayley conference corollary: translation by an
+element of order three would be fixed-point-free.
+
+*Proof.* The SRG relation is
+
+`A² + A − 11I = 11J`.
+
+Over `K=Q(ω)`, decompose the permutation representation of the automorphism
+into its `1,ω,ω²` eigenspaces. If there are `c=(45−f)/3` three-cycles, the
+`ω`-eigenspace `W` has dimension `c`. It is `A`-invariant, and `J` vanishes on
+it, so `A|W` satisfies `x²+x−11=0`. This polynomial is irreducible over
+`Q(ω)=Q(√−3)` because its discriminant 45 is not a square in that field.
+Therefore `W` is a vector space over the quadratic extension
+`K[x]/(x²+x−11)` and `c` is even. Hence `f=45−3c ≡ 3 (mod 6)`. ∎
+
+The statement is an elementary in-repo derivation, not a novelty claim.
+Maksimović's 2018 orbit-matrix enumeration studies
+`srg(45,22,10,11)` graphs with `S3` automorphisms and is the closest located
+prior-art lane; the exact congruence above was not source-verified there in
+this session.

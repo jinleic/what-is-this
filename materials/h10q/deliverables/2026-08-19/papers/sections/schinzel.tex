@@ -1,14 +1,16 @@
-\section{Schinzel's Hypothesis H: the fixed-class implication and its gap}
+\section{Schinzel's Hypothesis H: the fixed-class implication}
 \label{sec:schinzel}
 
-The member hypothesis of Section~\ref{sec:record} has two logically distinct
-parts.  Theorem~\ref{thm:classexist} now supplies an aligned class for every
-cell.  For any fixed class satisfying the standard polynomial
-admissibility package, Schinzel's Hypothesis~H \cite{schinzel} supplies the
-member.  The implication is proved below.  What is not yet proved is that
-the constructed octic is irreducible for every cell, so the fixed-class
-theorem cannot yet be composed with the class theorem uniformly.
-% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
+Theorem~\ref{thm:classexist} supplies the canonical aligned-class
+construction for every cell.  Section~\ref{sec:irreducibility} proves, for
+every fixed nonzero rational $Z$, that its octic is irreducible in
+$\Q(a)[b]$, and quantitative Hilbert irreducibility selects an irreducible
+specialization inside the existing character-admissible $a$ progression.
+The L20 admissibility package is therefore unconditional.  For any such
+fixed class, classical Schinzel's Hypothesis~H \cite{schinzel} is the sole
+remaining input and supplies the member.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
 
 \subsection{The operational contract}
 
@@ -43,7 +45,7 @@ square class matters, because an outside place of even valuation
 contributes Hilbert symbol $+1$.
 % src: data/l20_admissible.jsonl (normalization block, audited counterexample)
 
-\begin{theorem}[Schinzel implies H per admissible class; PROVED implication]
+\begin{theorem}[Classical Schinzel H supplies emergent-free members; PROVED implication]
 \label{thm:schinzel}
 Assume the class certificate (all symbols at $S$, at the moving prime
 $Q$, and at infinity equal $+1$ throughout the progression), assume the
@@ -87,8 +89,8 @@ is as follows.
 condition & requirement & uniform status\\
 \midrule
 (a) & irreducible polynomials with positive leading coefficients &
-positive lead \textsc{proved}; irreducibility of $P$ (equivalently $G$)
-\textsc{open}\\
+\textsc{proved} for every fixed $Z\in\Q^\times$; Hilbert selection in the
+admissible $a$ progression \textsc{proved}\\
 (b) & $\gcd(q_1,N)=1$ & \textsc{proved}\\
 (c) & $L(t)G(t)$ has no fixed prime divisor & \textsc{proved}\\
 (d) & $G(t)$ is a $p$-adic unit at $S$ and the frozen square classes are
@@ -98,7 +100,7 @@ constant & \textsc{proved}\\
 \caption{Admissibility of the uniformly constructed square-branch classes.}
 \label{tab:admissibility}
 \end{table}
-% src: data/l20_admissible.jsonl (condition-status summary)
+% src: data/l20_admissible.jsonl; data/l22_elimination.jsonl (fixed-Z-theorem row)
 
 For (a), the constant and leading coefficients of $P$ are
 $P_0=P_8=4a^8AZ^4>0$, and the affine substitution
@@ -109,7 +111,12 @@ lead and
  \quad\Longleftrightarrow\quad
  P\text{ irreducible over }\Q.
 \]
-No uniform proof of the right-hand statement is known.
+Theorem~\ref{thm:fiber-irred} proves the vertical polynomial irreducible
+for every fixed $Z\in\Q^\times$, and
+Corollary~\ref{cor:admissible-irred} selects a good $a$ in the required
+character progression.  Thus the fixed cell, not merely the generic
+two-variable family, is licensed.
+% src: data/l20_admissible.jsonl; data/l22_elimination.jsonl
 
 For (b), the prime support of $N$ is exactly $S$, while the CRT base
 $q_1$ is a unit modulo every prime in $S$.  For (c), primes in $S$ never
@@ -127,13 +134,14 @@ and the analogous congruences for $L(t)$.  The resulting ratios are local
 squares, so every frozen Hilbert symbol is constant for all integer $t$.
 % src: data/l20_admissible.jsonl (uniform proofs for conditions (a)--(d))
 
-The modular irreducibility engine nevertheless gives exact finite
-certificates: $353/353$ independently reconstructed grid classes and
-$706/706$ legacy cell--branch rows have irreducible degree-$8$ reductions
-at certified primes.  The same audit found zero mismatches in the uniform
-proofs above.  These are per-row theorems, not a uniform irreducibility
-theorem.
-% src: data/l20_admissible.jsonl (grid and legacy certificate totals)
+The modular engine remains an exact finite cross-check.  The L20 class
+audit certified $353/353$ independently reconstructed grid classes and
+$706/706$ legacy cell--branch rows, while the L21 audit certified all
+$353/353$ recorded target fibers.  The L22 endpoint--Newton theorem is
+strictly stronger in scope: it proves the vertical statement for every
+fixed nonzero rational $Z$, without extrapolating from those finite rows.
+% src: data/l20_admissible.jsonl; data/l21_irred_generic.jsonl
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
 
 A separate $24$-row cross-check re-ran the proven-primality kernel end to
 end: every sampled member had one proved-prime ladder residual with symbol
@@ -142,21 +150,20 @@ $+1$ and verdict \emph{zero}.
 
 \begin{remark}[Exact scope]
 Schinzel supplies members only after a chosen class satisfies every row of
-Table~\ref{tab:admissibility}.  Uniform class existence and conditions
-(b)--(d), together with positivity in (a), are proved.  Irreducibility in
-(a) is not.  Therefore the present result is the implication
+Table~\ref{tab:admissibility}.  Every one of those rows is now PROVED on the
+fixed canonical branch: Theorem~\ref{thm:fiber-irred} and
+Corollary~\ref{cor:admissible-irred} supply irreducibility, while L20
+supplies normalization, positivity, coprimality, absence of a fixed
+divisor, and frozen local data.  Therefore the implication has the exact
+form
 \[
-\begin{gathered}
- \text{uniform irreducibility of the constructed }P\\[-2pt]
- {}+\ \text{Schinzel H}
-\end{gathered}
-\quad\Longrightarrow\quad
-\begin{gathered}
- \text{the six-quantifier}\\[-2pt]
- \text{conditional conclusion}.
-\end{gathered}
+ \text{classical Schinzel H}
+ \quad\Longrightarrow\quad
+ \text{the conditional six-quantifier conclusion}.
 \]
-not ``Schinzel H implies the record.''  Uniform irreducibility is the
-single residual algebraic gap.
-% src: data/l20_admissible.jsonl (final chain verdict)
+Schinzel~H is the sole conjectural input.  The conclusion remains
+conditional: this argument neither proves Schinzel~H nor gives an
+unconditional solution of Hilbert's Tenth Problem over $\Q$.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
 \end{remark}

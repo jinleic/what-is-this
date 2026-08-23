@@ -16,7 +16,7 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
 
-\title{A Machine-Verified Finite Program:\\
+\title{Fixed-Branch Closure and a Machine-Verified Finite Program:\\
 Engine Discipline, Artifact Schemas, and Reproducibility Scope}
 \author{The H10Q verification program}
 \date{}
@@ -24,60 +24,75 @@ Engine Discipline, Artifact Schemas, and Reproducibility Scope}
 
 \begin{document}
 \begin{abstract}
-This companion defines the verification boundary for the finite H10Q
-program and documents how its artifacts are replayed.  The new L19/L20
-chain separates three claims that must not be conflated: aligned classes
-exist uniformly by a character-sum/CRT/Dirichlet construction; members of a
-fixed admissible class follow conditionally from Schinzel's Hypothesis~H;
-and uniform irreducibility of the constructed degree-$8$ polynomial remains
-open.  The artifacts also certify that every canonical $5$-wall is
-breakable on the class side and that the searched cell $w=179$ has an exact
-ladder-zero member.
-% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
-% src: data/l19_tauzero.jsonl; data/l19_cell179.jsonl
+This companion defines the verification boundary for the H10Q program and
+documents exact artifact replay.  The L22 endpoint--Newton theorem is
+symbolic, not an extrapolation from a scan: for every fixed
+$Z\in\Q^\times$, on
+\[
+ \tau^\dagger=\frac{1+2a^2}{1+4a^2},
+ \qquad \delta_{\tau^\dagger}=-\frac{4a^4}{1+4a^2},
+\]
+the value octic is irreducible in $\Q(a)[b]$.  Quantitative Hilbert
+irreducibility selects a good $a$ in the existing character progression,
+so L20 supplies a fully admissible class for every cell.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl
 
-The arithmetic kernel accepts primality only inside its deterministic
-Miller--Rabin range or from a Pocklington certificate, including the
-Brillhart--Lehmer--Selfridge relaxation, and every refusal remains
-non-evidence.  We give the artifact schemas, the exact regeneration
-commands, and the scope licensed by each row.  In particular, finite
-modular irreducibility certificates never become an all-cell theorem, so
-this companion records no implication from Schinzel~H alone to a new
-quantifier record.
-% src: data/l20_admissible.jsonl (irreducibility and final-chain verdicts)
+Classical Schinzel's Hypothesis~H for the resulting linear--octic pair then
+supplies infinitely many emergent-free members.  Consequently Schinzel~H
+is the sole conjectural input to the six-universal-quantifier definition
+of $\Z$ in $\Q$ and the bound
+$\operatorname{efd}_{\Q}(\Q\setminus\Z)\le5$.  This remains conditional;
+neither Schinzel~H nor Hilbert's Tenth Problem over $\Q$ is solved here.
+% src: data/l18_schinzel_implies_h.jsonl; data/l22_elimination.jsonl
+
+The six L22 artifacts keep proof and diagnostic scope separate.  The
+elimination and reciprocal-cube files carry PROVED uniform theorems;
+their finite scans are EVIDENCE.  Infinity, factor tuples, a free
+$\lambda$, and fiber geometry record PROVED structural reductions with
+their remaining OPEN or six-count-inapplicable scopes.  The arithmetic
+kernel accepts primality only inside its deterministic Miller--Rabin range
+or from a Pocklington certificate, and every refusal remains non-evidence.
+We give the schemas, exact commands, and license of every artifact.
+% src: data/l22_elimination.jsonl; data/l22_reciprocal_cube.jsonl
+% src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
+% src: data/l22_square_branch.jsonl; data/l22_fiber_geometry.jsonl
 \end{abstract}
 
 \section{The verification contract}
 
-The program is a verifier of finite mathematical statements, not an oracle for
-Hilbert's Tenth Problem over \(\Q\).  A positive row is accepted only after its
-stated hypotheses and exact identities have been replayed.  A bounded scan
-licenses a statement about the scanned rows and no statement about the
-unscanned complement.  The canonical grid and every tried off-grid cell are
-closed instance by instance, while class existence is now proved uniformly.
-The member route still requires both uniform irreducibility of the
-constructed octic and the conjectural simultaneous prime values supplied by
-Schinzel's Hypothesis~H.
-% src: data/l19_classexist.jsonl; data/l19_cell179.jsonl
-% src: data/l20_admissible.jsonl
+The program is a verifier of exact mathematical statements, not an oracle
+for Hilbert's Tenth Problem over $\Q$.  A positive row is accepted only
+after its stated hypotheses and identities have been replayed.  A bounded
+scan licenses a statement about its rows and no statement about an
+unscanned complement.  By contrast, the L22 fixed-$Z$ elimination is a
+symbolic proof whose artifact explicitly marks the finite-field tables as
+EVIDENCE not used in the theorem.  Together with the L19/L20 class and
+admissibility results, it leaves classical Schinzel~H as the sole
+conjectural input to member existence.
+% src: data/l22_elimination.jsonl (meta, fixed-Z-theorem, and summary rows)
+% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
+% src: data/l18_schinzel_implies_h.jsonl
 
 \subsection{The label calculus}
-The ledger uses three labels as a small calculus of admissible inference.
+The ledger uses four labels as a small calculus of admissible inference.
 
 \emph{PROVED} means that an exact implication, identity, certificate, or
-finite exhaustion was replayed by the machine.  Uniform class existence and
-the class-side break of every canonical $5$-wall are PROVED theorems; the
-closure of $[179,[-1,1]]$ is PROVED only for that row.
-% src: data/l19_classexist.jsonl; data/l19_tauzero.jsonl
-% src: data/l19_cell179.jsonl
+finite exhaustion was replayed.  The L22 endpoint--Newton elimination and
+fixed reciprocal theorem are PROVED uniformly in every rational
+$Z\ne0$; uniform class existence is also PROVED.  A finite closure such as
+$[179,[-1,1]]$ remains PROVED only for that row.
+% src: data/l22_elimination.jsonl; data/l22_reciprocal_cube.jsonl
+% src: data/l19_classexist.jsonl; data/l19_cell179.jsonl
 
 \emph{CONDITIONAL} means that every remaining hypothesis is stated and
-named.  For a fixed fully admissible class, Schinzel~H implies infinitely
-many ladder-zero members.  Uniformly, admissibility conditions (b), (c), and
-(d), and positivity in (a), are proved; irreducibility in (a) remains open.
-Thus the six-unknown conclusion is not presently a consequence of
-Schinzel~H alone.
-% src: data/l18_schinzel_implies_h.jsonl; data/l20_admissible.jsonl
+named.  All canonical-branch Schinzel admissibility conditions, including
+fixed-fiber irreducibility and admissible-$a$ selection, are PROVED.
+Classical Schinzel~H alone is then assumed to produce simultaneous prime
+values and hence ladder-zero members.  The six-unknown conclusion is
+conditional on Schinzel~H and on no additional per-cell certificate.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
 
 \emph{EVIDENCE} means a measured statistic with its sampling frame attached.
 The matched obstruction artifact reports marginal ratio \(0.9993\), a union
@@ -86,6 +101,14 @@ residual of \(-2.9/8760\), and a marginal-preserving permutation statistic
 matched finite model as EVIDENCE; they do not prove independence or a density
 theorem.
 % src: data/l17_matched.jsonl:3; NOTES.md:812-817
+
+\emph{OPEN} names an unproved statement and is never filled by a scan.
+The unconditional Schinzel prime-value assertion remains OPEN.  The OPEN
+endpoints in the infinity, factor-tuple, free-$\lambda$, and
+fiber-geometry artifacts describe only those alternate routes; they are
+not premises or gaps in the PROVED endpoint--Newton theorem.
+% src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
+% src: data/l22_square_branch.jsonl; data/l22_fiber_geometry.jsonl
 
 Labels only move upward through a valid proof.  In particular,
 \texttt{PrimalityBound}, \texttt{FactorBudget}, a timeout guard, a
@@ -284,7 +307,7 @@ refused without weakening that license. \\ % src: data/l13h_all_closures.json:1-
 \begin{table}[p]
 \centering
 \scriptsize
-\caption{L19/L20 theorem and frontier artifacts.}
+\caption{L19--L21 theorem and frontier artifacts.}
 \begin{tabular}{@{}p{.22\textwidth}p{.31\textwidth}p{.39\textwidth}@{}}
 \toprule
 Artifact & Row types and key fields & What the row licenses\\
@@ -316,9 +339,89 @@ refusals remain provenance, not negative evidence.\\
 \texttt{meta}; normalized per-class polynomials and content;
 irreducibility certificates; congruence checks; counterexample and summary &
 Uniform proofs of admissibility (b), (c), (d), and positive lead in (a);
-per-row irreducibility only.  Its overall label remains OPEN because
-uniform irreducibility is absent.\\
+per-row irreducibility at the L20 stopping point.\\
 % src: data/l20_admissible.jsonl
+
+\path{l21_reducible_locus.jsonl} &
+\texttt{l21a}; \texttt{l21b}; \texttt{palindrome}; \texttt{summary}, with
+factor degrees, square-class identities, endpoint equality, and controls &
+The explicit quartic-by-quartic reducible locus, its uniform exclusion from
+$\tau^\dagger$, and the near-palindromic identity.\\
+% src: data/l21_reducible_locus.jsonl
+
+\path{l21_irred_generic.jsonl} &
+\texttt{meta}; \texttt{generic-specialization};
+\texttt{grid-fiber-certificate};
+\texttt{first-irreducible-admissible-a}; \texttt{reducible-hunt}; summaries &
+Irreducibility over $\Q(a,Z)$, the $353$ separate vertical-fiber
+certificates, quantitative Hilbert selection on those fibers, and exact
+finite hunt rows.  Its L21-only scope left an uncertified $z$ OPEN; the
+uniform L22 theorem supersedes that premise.\\
+% src: data/l21_irred_generic.jsonl; data/l22_elimination.jsonl
+
+\path{l21_irred_direct.jsonl} &
+\texttt{meta}; $353$ \texttt{constructed-grid-pair} rows; \texttt{summary}
+with reductions, Newton polygons, trace data, and auxiliary certificates &
+The three local no-go laws, reciprocal-iff-$a=1$, and the trace-quartic and
+nonsquare-lift results.  Its L21 blanket verdict remained OPEN; the
+independent L22 proofs close the fixed canonical branch.\\
+% src: data/l21_irred_direct.jsonl; data/l22_elimination.jsonl
+% src: data/l22_reciprocal_cube.jsonl
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[p]
+\centering
+\scriptsize
+\caption{L22 data artifacts, checked-in producers, and strict licenses.}
+\begin{tabular}{@{}p{.25\textwidth}p{.25\textwidth}p{.42\textwidth}@{}}
+\toprule
+Data artifact & Producer & License\\
+\midrule
+\path{l22_elimination.jsonl} &
+\path{l22_elimination.py} &
+\textsc{proved}: fixed-$Z$ irreducibility on
+$(\tau^\dagger,\delta)=((1+2a^2)/A,-4a^4/A)$ for every
+$Z\in\Q^\times$, including the $Z=1$ certificate.
+\textsc{evidence}: the finite-field diagnostic tables.\\
+% src: data/l22_elimination.jsonl
+
+\path{l22_reciprocal_cube.jsonl} &
+\path{l22_reciprocal_cube.py} &
+\textsc{proved}: on
+$(a,A,s,\tau^\dagger,\delta)=(1,5,0,3/5,-4/5)$, trace irreducibility and
+the complete elliptic descent prove the octic irreducible for every
+$Z\in\Q^\times$.  \textsc{evidence}: bounded searches and fiber scans.\\
+% src: data/l22_reciprocal_cube.jsonl
+
+\path{l22_infinity.jsonl} &
+\path{l22_infinity.py} &
+\textsc{proved}: exact infinity and zero-place clusters.
+\textsc{open} for this route: local data alone still permit factor degrees
+$2$, $4$, and $6$; it is not the closure.\\
+% src: data/l22_infinity.jsonl (verdict row)
+
+\path{l22_factor_tuple.jsonl} &
+\path{l22_factor_tuple.py} &
+\textsc{proved}: weakened factor-tuple criterion and reciprocity no-go.
+\textsc{open} for this route: an all-plus compatibility theorem; parity
+alone controls only the product of outside signs.\\
+% src: data/l22_factor_tuple.jsonl (summary row)
+
+\path{l22_square_branch.jsonl} &
+\path{l22_square_branch.py} &
+\textsc{proved}: free-$\lambda$ algebraic and class theorems.
+\textsc{open}/excluded for the six-count: L11c makes an infinite moving
+branch parameter an additional witness.\\
+% src: data/l22_square_branch.jsonl (six-count-chain-interface and summary rows)
+
+\path{l22_fiber_geometry.jsonl} &
+\path{l22_fiber_geometry.py} &
+\textsc{proved}: Noether reduction, fixed-fiber descent, and generic
+geometric statements.  \textsc{open} for this route: the uniform
+polynomial nonvanishing lemma; residue scans are \textsc{evidence}.\\
+% src: data/l22_fiber_geometry.jsonl (uniform-cell-verdict and summary rows)
 \bottomrule
 \end{tabular}
 \end{table}
@@ -404,7 +507,7 @@ scan and records byte-identical regeneration for it.  No runtime is supplied
 here for commands for which the ledger records none.
 % src: README.md:41; NOTES.md:884-893; data/l17_horizon109_crossk.jsonl:1
 
-The L19/L20 chain is regenerated by
+The L19/L20 chain is regenerated from \texttt{math/h10q} by
 \begin{verbatim}
 python3 l19_tauzero.py
 python3 l19_classexist.py
@@ -414,10 +517,62 @@ python3 l20_admissible.py
 Each command writes its correspondingly named JSONL artifact under
 \texttt{data/} and a human-readable report under \texttt{/tmp}.  The first
 two replay the wall and uniform class constructions, the third replays the
-finite member closure, and the fourth audits normalization and Schinzel
-admissibility while retaining the OPEN uniform-irreducibility verdict.
+finite member closure, and the fourth records the L20 admissibility boundary
+subsequently sharpened by L21.
 % src: data/l19_tauzero.jsonl; data/l19_classexist.jsonl
 % src: data/l19_cell179.jsonl; data/l20_admissible.jsonl
+
+Run the L21 chain from the repository root with the exact commands
+\begin{verbatim}
+nice -n 19 python3 math/h10q/l21_reducible_locus.py
+nice -n 19 python3 math/h10q/l21_irred_generic.py
+nice -n 19 python3 math/h10q/l21_irred_direct.py
+\end{verbatim}
+The lead's replay measured respectively $0.3$ seconds, $101$ seconds, and
+$4$ seconds.  The commands regenerate
+\path{data/l21_reducible_locus.jsonl},
+\path{data/l21_irred_generic.jsonl}, and
+\path{data/l21_irred_direct.jsonl}, together with their reports under
+\path{/tmp}; no refusal is used as evidence.
+% src: data/l21_reducible_locus.jsonl; data/l21_irred_generic.jsonl
+% src: data/l21_irred_direct.jsonl; lead replay timings
+
+Run the L22 chain from the repository root, one command at a time, with
+the exact commands
+\begin{verbatim}
+nice -n 19 python3 math/h10q/l22_elimination.py
+nice -n 19 python3 math/h10q/l22_reciprocal_cube.py
+nice -n 19 python3 math/h10q/l22_infinity.py
+nice -n 19 python3 math/h10q/l22_factor_tuple.py
+nice -n 19 python3 math/h10q/l22_square_branch.py
+nice -n 19 python3 math/h10q/l22_fiber_geometry.py
+\end{verbatim}
+The respective output pairs are
+\begin{center}
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Data artifact & Human-readable report\\
+\midrule
+\path{data/l22_elimination.jsonl} & \path{/tmp/l22_elimination.md}\\
+\path{data/l22_reciprocal_cube.jsonl} & \path{/tmp/l22_reciprocal_cube.md}\\
+\path{data/l22_infinity.jsonl} & \path{/tmp/l22_infinity.md}\\
+\path{data/l22_factor_tuple.jsonl} & \path{/tmp/l22_factor_tuple.md}\\
+\path{data/l22_square_branch.jsonl} & \path{/tmp/l22_square_branch.md}\\
+\path{data/l22_fiber_geometry.jsonl} & \path{/tmp/l22_fiber_geometry.md}\\
+\bottomrule
+\end{tabular}
+\end{center}
+The strict licenses, in that order, are: \textsc{proved} uniform theorem
+with \textsc{evidence} scans; \textsc{proved} independent theorem with
+\textsc{evidence} scans; \textsc{proved} local structure with
+\textsc{open} route endpoint; \textsc{proved} criterion/no-go with
+\textsc{open} compatibility; \textsc{proved} free-parameter theorem but
+\textsc{open}/excluded for the six-count; and \textsc{proved} reductions
+with an \textsc{open} uniform lemma and \textsc{evidence} scans.
+% src: data/l22_elimination.jsonl; data/l22_reciprocal_cube.jsonl
+% src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
+% src: data/l22_square_branch.jsonl; data/l22_fiber_geometry.jsonl
 
 \section{Review-driven correction as methodology}
 
@@ -509,36 +664,45 @@ form.  Such fields must not be silently rewritten as success, and their
 refusals are not supporting evidence.
 % src: RESULTS.md:104; data/l17_horizon109.jsonl:387-390
 
-\item The L20 audit proves admissibility conditions (b), (c), and (d), and
-the positive-leading part of (a), uniformly.  It proves irreducibility only
-per row: $353/353$ reconstructed grid classes and $706/706$ legacy rows
-have exact modular certificates.  Uniform irreducibility of the constructed
-octic remains OPEN, and even after it is proved the simultaneous prime
-values remain conditional on Schinzel~H.  The finite off-grid horizon
-proves neither assertion.
-% src: data/l20_admissible.jsonl (condition and certificate summaries)
-% src: data/l19_cell179.jsonl (finite-horizon scope)
+\item L22 removes the former vertical-fiber premise but does not prove
+simultaneous prime values.  For every fixed $Z\in\Q^\times$, the canonical
+octic is irreducible and Hilbert selection produces an admissible $a$;
+classical Schinzel~H is still required for the resulting linear--octic
+pair.  The finite off-grid horizon proves neither Schinzel nor an
+unconditional all-cell member theorem.  The OPEN labels on the four
+alternate L22 routes are route-local and do not weaken the endpoint--Newton
+closure.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l19_cell179.jsonl
 \end{enumerate}
 
 \section{Conclusion}
 
-The new artifacts sharpen rather than erase the verification boundary.
-Uniform class existence is PROVED, the fixed-class Schinzel implication is
-PROVED, and all uniform admissibility conditions except octic
-irreducibility are PROVED.  The closure at $w=179$ and the modular
-irreducibility rows are exact finite certificates.  None supplies the
-missing all-cell irreducibility theorem, and none proves simultaneous prime
-values.
-% src: data/l19_classexist.jsonl; data/l19_cell179.jsonl
-% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
+The L22 artifacts change the verification boundary exactly once:
+irreducibility is now PROVED on the fixed canonical branch for every
+rational $Z\ne0$, rather than only generically and on a finite fiber
+ledger.  Quantitative Hilbert irreducibility selects a good $a$ in the
+existing character progression, so every L20 admissibility condition is
+PROVED.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl
 
-The reproducibility claim is consequently narrow and checkable:
-checked-in generators rebuild the named artifacts, SHA-256 manifests detect
-drift, and refusals remain visible as unknowns.  The chain must be reported
-in the same order as its licenses: class existence first, uniform
-irreducibility still OPEN, and Schinzel member existence conditional after
-that premise.  No new quantifier record is claimed.
-% src: data/l20_admissible.jsonl (final chain verdict)
+The remaining implication is precise.  The L20 class feeds the L19
+linear--octic pair; classical Schinzel~H supplies simultaneous prime values;
+reciprocity gives an emergent-free member; and L6 gives a
+six-universal-quantifier definition of $\Z$ in $\Q$ with
+$\operatorname{efd}_{\Q}(\Q\setminus\Z)\le5$.  Schinzel~H is the sole
+conjectural input.  The result is conditional and does not solve H10($\Q$)
+unconditionally.
+% src: data/l18_schinzel_implies_h.jsonl; data/l22_elimination.jsonl
+
+The reproducibility claim is narrow and checkable: all six L22 generators
+rebuild their named artifacts, SHA-256 manifests detect drift, and strict
+labels keep finite EVIDENCE and alternate-route OPEN statements out of the
+PROVED closure.  No new unconditional quantifier record is claimed.
+% src: data/l22_elimination.jsonl; data/l22_reciprocal_cube.jsonl
+% src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
+% src: data/l22_square_branch.jsonl; data/l22_fiber_geometry.jsonl
 
 \begin{thebibliography}{9}
 

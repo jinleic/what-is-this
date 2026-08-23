@@ -19,8 +19,10 @@ SPEC.loader.exec_module(EXP036)
 
 from qec_research.codes.bicycle import BRAVYI_BB, build_bb  # noqa: E402
 from qec_research.distance.sat_decide import (  # noqa: E402
+    DecisionInstance,
     css_logical_bases,
     css_side_instance,
+    decide_by_sectors,
     decide_weight_bounded,
     symplectic_instance,
     verify_witness_two_paths,
@@ -45,6 +47,22 @@ def test_decision_semantics_reproduce_known_exact_distance() -> None:
         assert at["status"] == "SAT"               # d <= 6, verified witness
         assert at["weight"] == 6
         assert at["verification"]["valid"]
+
+
+def test_sector_decomposition_drops_nonpreserving_global_symmetry() -> None:
+    # Swapping coordinates is a symmetry of the monolithic disjunction, so
+    # v_0=1 is a sound global anchor. It is not a symmetry of sector 1:
+    # the only weight-one sector witness is v=(0,1).
+    instance = DecisionInstance(
+        parity_rows=np.zeros((0, 2), dtype=np.uint8),
+        pairing_rows=np.eye(2, dtype=np.uint8),
+        groups=[[0], [1]],
+        kind="synthetic",
+        symmetry_clause=[0],
+    )
+    record = decide_by_sectors(instance, 1, sectors=[1])
+    assert record["status"] == "SAT"
+    assert record["vector"] == [0, 1]
 
 
 def test_witness_verification_rejects_corrupted_vector() -> None:

@@ -4,6 +4,78 @@ Newest first. Every entry records what was done, what was verified, and what it
 cost. "Verified" means a command ran and its output was observed, or a primary
 source was read directly — not that something looks right.
 
+### QEC (2026-08-22) — EXP-055 odd-lattice closure: 4.23B-pair census, exact pole logic, three exact references
+
+* **Prior-art correction:** retracted the claim that $[[90,8,10]]$ is the only
+  odd$\times$odd BB code in print; sourced 27 instances. The rate/principal-code
+  structure is published (Panteleev–Kalachev, Lin–Pryadko,
+  Eberhardt–Steffan, Postema–Kokkelmans), not new.
+* **Bar-aware logical structure:** in repository convention
+  $I=\operatorname{Ann}_{\rm left}(a,b)$ and the physical pole is $J=\bar I$;
+  $J^2\cong\ker H_X/S_Z$. Audited 27/27. A raw-$I$ fallback failed on
+  $(7,7)\,[[98,6,12]]$ and is retracted (FR-026).
+* **Source discipline:** Wang–Mueller distances are BP-OSD upper bounds;
+  Postema table distances are Monte-Carlo estimates. All 25 reproduced reported
+  values pass the pole ceiling only as a sanity check. Five rows are locally
+  two-sided exact, zero ceiling violations, slack 2/10/22. Estimates never set
+  screen thresholds.
+* **Complete algebraic census:** 65 odd lattices with $\ell m\le180$,
+  **4,229,823,962** weight-$\le3$ pairs; zero $k$ mismatches; 273/273
+  idempotence checks. Config-bound 65/65 shards.
+* **Exact discoveries/references:** connected and row-space-indecomposable
+  $[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$, all $d_X=d_Z=d$ exact with
+  explicit witnesses. The latter two exactify BP-OSD reports. The first is a
+  new checked-BB constructor but globally dominated by Grassl $[[30,8,7]]$.
+* **Fixed-point screen complete through $n=126$:** nine lattices; 715 symmetry
+  classes / 10,247 normalised pairs. **598/598** classes with a locally exact
+  reference dominated (588 explicit logical witnesses, 10 all-sector CP-SAT);
+  117 high-$k$ no-reference; zero survivors/undecided. Shards are bound to
+  census/reference hashes and protocol. $n>126$ remains open; a
+  $[[162,8,14]]$ exactification attempt timed out at 2,100s.
+* **Verification:** independent code review found no remaining high-confidence
+  issue after five blocker repairs; 38 targeted EXP-055/prose guards; full suite
+  **961 passed, 1 skipped (962 collected)**; PDF **17 pp, 0 undefined**; bundle
+  `pbb_nogo_bundle_2026-08-22.zip` (1,633 entries, 0 SHA mismatches).
+
+
+### KOBON (2026-08-22b) - K(10) CONFIRMED TWICE; ENCODING AUDIT PASSED
+
+* **`(10,26)` faces-only monolith is UNSAT** (`s UNSATISFIABLE`, exit 20;
+  131,314 vars / 792,462 clauses, 31 min). Second, independent confirmation of
+  `K(10)=25` through a different encoding than the DRAT-verified 11-cube
+  cover. Discovery-level: no new DRAT (15 GiB free; TM still pinning the
+  reclaimed 255 GB).
+* **Crossing-indicator audit (advisory-prompted), passed by source reading**:
+  `engine.py:462` emits `[-TC(t,r), S(t)]`, so every TC literal implies its
+  triangle is *selected*. `cnf.append(list(tc))` therefore asserts "the
+  exhibited family has a crossed member", not a global "some line crosses some
+  candidate". Converse clauses at 465-467 make TC exact given selection.
+* **Lemma (TC exactness), now in the paper** (\S "Crossing incidences are
+  exactly reified"): TC(t,r) holds iff t is selected and r meets the *open*
+  interior. Proof both ways; the reverse direction needs "r contains at most
+  one vertex of t" (two would force r to be a side line, excluded by r not in
+  t), which is what makes cevians and triple points correct rather than
+  excluded.
+* **SAT witnesses are not degeneracy artefacts**: crossed optima at n=4 occur
+  in 296/300 *random exact-rational* (hence simple) arrangements; at n=6 one
+  arrangement carries both a crossed and an uncrossed optimal 7-family. UNSAT
+  at n=5,7,8,9. Consistent with the collapse theorem: crossings occur, never
+  help.
+* **Paper at 13 pp.** New: hypothesis-mismatch section + Proposition (at
+  n=8,12,14 the record exceeds the exact simple maximum 14/37/53, so the
+  simple-only BBL bound that OEIS/MathWorld cite cannot apply);
+  Corollary (before this work the refereed literature determined only
+  n<=5, 7, 9, 13 and Savchuk's n=11); ladder reframed as **first
+  determinations of K(6), K(8), K(10)** - outright at n=10, since even the
+  unpublished draft leaves 26 open.
+* **Self-corrections this pass**: my windows table had a_3^s(18)=94,
+  a_3^s(20)=117 (those are the *weaker* BBL Thm 1.1 values OEIS reports;
+  Blanc's sharper simple maxima are 93, 116) and the draft bound at n=6 as 8
+  (it is 7). Both fixed by recomputation. Withdrew my criticism of
+  Clement-Bader Lemma 1: subdivided sides are excludable WLOG once the
+  collapse theorem holds, so the objection evaporates.
+* Fleet: (12,39), (11,33), (14,55) all past 15 h.
+
 ### KOBON (2026-08-22) - THE CONVENTIONS COLLAPSE: crossings never help, so K = K_gen
 
 * **THEOREM (collapse), proved and machine-checked**: for every arrangement A,
@@ -594,6 +666,381 @@ constant in $-\iint R\,d\mu\,d\mu\ \ge\ \sum_{k\ge3}\langle\mu,u^k\rangle^2/(k(k
 true value captured), use it to collapse the $\nu$-direction, and certify the
 resulting five-parameter face problem with the existing engine.
 
+### SHARPENED (2026-08-22) — the coercive constant, and campaign K's first slice
+
+**Coercivity** (`uc/liu_coercive.py`, PROVED inequality + NUMERICAL fraction).
+The proof of $R\preceq0$ gives the quantitative form for free: keeping the two
+elementary PSD pieces of
+$-R=G(A)-AB\ln(1-A)+B^2\!\int_0^1(1-r)A/[(1+rB)(1-A(1+rB))]\,dr$
+and discarding only the (PSD) integral remainder,
+$$-\iint R\,d\mu\,d\mu\;\ge\;\sum_{k\ge2}\frac{\langle\mu,u^k\rangle^2}{k(k-1)}
+\;+\;\sum_{k\ge1}\frac{\langle\mu,u^{k+1}s\rangle^2}{k},$$
+both families being rank-one sums with nonnegative coefficients
+($A^k=(u^k)(v^k)$, $A^{k+1}B=(u^{k+1}s)(v^{k+1}t)$). On Liu's projected
+subspace $\{1,u,u^2\}^\perp$ the $k=2$ term drops and the estimate starts at the
+third moment:
+$$\ge\;\tfrac16\langle\mu,u^3\rangle^2+\tfrac1{12}\langle\mu,u^4\rangle^2+\cdots
++\langle\mu,u^2s\rangle^2+\tfrac12\langle\mu,u^3s\rangle^2+\cdots$$
+Measured capture on random projected measures: **78.4–95.3%** of the true value
+(eight trials, worst 78.4%), up from 30–60% with the first family alone. The
+estimate therefore does **not** degenerate — the property the $\nu$-direction
+collapse needs. Remaining step for Hypothesis 2: convert this into the
+coercivity constant of Liu's separation
+$\Phi=\Phi_0(\mu)+\beta\bar qq\,\kappa(P_0-P_1)$ and reduce his nine-parameter
+problem to its $q=0$ face.
+
+**Campaign K, first commit.** Slice 4 ($w\in[5/8,21/32]$) is COMPLETE:
+**11,253,067 boxes in 3.50 h, residual 0, stack 0, budget_time 0** — the first
+committed slice at a target $\ge\psi+3\times10^{-4}$ and the first ever under the
+16-slice protocol. Sanity against the coarser partition: campaign J's slice 2
+covers $[5/8,11/16]$, i.e. exactly K's slices 4 and 5 together, and took
+24,563,611 boxes; K's slice 4 alone took 11.25 M, so the split is close to even
+here and the projected $\approx41$ h for the hardest slice remains on track.
+Slices 0–3 were held back for the CPU cap and are being launched as workers
+free; slice 0 is now live.
+
+### REFUTED (2026-08-22) — the nu-direction collapse cannot reduce Liu's Hypothesis 2, and the sign is the reason
+
+`uc/liu9_reduce.py`. The plan of record from the scope entry below was: use the
+proved coercivity of $-R$ to show the minimum of Liu's nine-parameter objective
+sits on its $q=0$ face, reducing to five parameters. **That route is dead, and
+not for want of a better constant.**
+
+**Separation, PROVED** (direct expansion of Liu (81)/`frankl5.m`; residuals
+$2.2\times10^{-16}$ float64, $2.1\times10^{-81}$ at 80 dps, $5.3\times10^{-81}$
+for the exact $K-R-D$ split over 24 feasible points):
+$$\Phi=\Phi_0(\mu)+\beta q(1-q)\frac{K(\nu)}{H(\mu)},\qquad
+K(\nu)=R(\nu)+D,\quad D=m_1^2-2m_1L_1-2m_aL_a,$$
+with the degenerate fibre $P_0=P_1$ exactly $q$-invariant, confirming that part
+of the earlier structural reading. So the kernel our theorem controls is indeed
+the one that governs the $\nu$-direction — but the sign works against us.
+
+**Why coercivity backfires.** $\Phi_0$ has *exactly zero* second variation in
+$\nu$: there is no positive gain to offset anything. The coercive bound says
+$-R\ge C$ with $C>0$, hence
+$$\Delta\Phi\;\le\;\beta q(1-q)\,\frac{D-C}{H},$$
+so a **larger** certified $C$ makes the proved loss **worse**. On the subspace
+$m_1=m_2=0$ one has $D=0$ and $C\ge\tfrac76m_3^2$, so every nonzero admissible
+direction is a strict loss and LOSS/GAIN $=+\infty$. No fraction of the
+discarded PSD remainder can close this; more coercivity only widens the gap.
+
+**Amended, stronger obstruction (PROVED, Arb-certified).** The first version of
+this entry used a fixed-measure path that leaves the 3+3-atom family except at
+endpoints. The corrected in-domain construction is a *paired-atom* path: for
+$P=\sum_i a_i\delta_{b_i}$ set $P_0(e)=\sum_i a_i\delta_{b_i-qe d_i}$ and
+$P_1(e)=\sum_i a_i\delta_{b_i+(1-q)e d_i}$, which stays inside the nine variables
+for small $|e|$ while the mixture still moves at order $e^2$. On explicit
+rational data with $q=1/2$, $\dot m_1=\dot m_2=0$ (hence $D=0$) and all atoms
+interior, 256-bit Arb encloses
+$$\text{LOSS}/\text{GAIN}>4.2848,\qquad \Phi''(0)<0,$$
+and even the **first 64 coercive terms alone**, summed as an exact rational,
+already force $\text{LOSS}/\text{GAIN}>4.0313$. So the collapse fails by a factor
+of four, not marginally. Writing $r=C+E$ with $E\ge0$ for the discarded
+remainder makes the mechanism explicit: adding any fraction of $E$ only
+increases LOSS, so **no sharper Hypothesis-1 constant can rescue this
+reduction**.
+
+**Scope: this is NOT a counterexample to Hypothesis 2.** The descent base point
+has objective $1.1835594833$ — a margin of $0.1836$ above the critical value $1$
+— and the path hits the feasibility wall at $e=172/3425\approx0.05022$ with value
+$1.1818791512$ (a drop of $1.68\times10^{-3}$ against the quadratic prediction
+$\approx3.8\times10^{-4}$, i.e. higher-order amplification, terminated by the
+wall). It is a certified non-binding local descent. Hypothesis 2 survives, and
+the route to a constant above $c^*$ through Liu's argument remains open.
+
+**First-version illustration** (superseded by the above but retained, since the
+numbers are correct for the path they describe): equal masses $1/3$, $q=1/2$,
+$P_0=(9/10,\,3/5,\,3/5)$, $P_1=(7/10+\sqrt3/10,\;7/10-\sqrt3/10,\;7/10)$, giving
+$m_1=m_2=0$, $m_3=-1/500$, $K(\nu)=-1.080170646394393\times10^{-4}$, retained
+$C=1.025653566288198\times10^{-4}$ (94.95% of $-R$), objective loss
+$4.833457640435485\times10^{-6}$. Hence the minimum is **not** on the $q=0$
+face: the interior strictly beats it, and a face certificate — even a perfect
+one — proves nothing about Hypothesis 2. That was flagged as a risk when the
+plan was recorded; it is now settled as fact.
+
+**What survives.** The five-parameter face problem is written out explicitly in
+the file (variables $(a_1,a_2,b_0,b_2,b_4)$ with $a_3=1-a_1-a_2$, box and
+simplex constraints, mean constraint $a_1b_0+a_2b_2+a_3b_4\ge1-c$, gap
+$(1-\beta)J+\beta K-H\ge0$ with $\beta$ the exact rational
+$50026279931487/500000000000000$), together with its margins: at
+$c=239/625$ the objective margin is $5.007\times10^{-4}$ (gap margin
+$2.769\times10^{-4}$), at $c=153/400$ it is $3.387\times10^{-4}$
+($1.873\times10^{-4}$), at $c=1913/5000$ it is $1.767\times10^{-4}$
+($9.768\times10^{-5}$). Those margins are in the same band as our own certified
+campaigns, so the face problem is certifiable at current cost — as a *validation
+target for the port*, explicitly not as a proof of Hypothesis 2.
+
+**Status of the route to a constant above $c^*$.** Hypothesis 1: proved.
+Hypothesis 2: open, and now known to require the genuine interior of a
+nine-parameter tight problem, with brute force measured at
+$\gtrsim10^{15}$ boxes and the two natural reductions (support restriction,
+$\nu$-collapse) both refuted. The honest next candidates are a different
+symmetry reduction of the interior, or a sharper analytic treatment of the
+$q$-mixture direction — not more compute.
+
+### OPERATIONAL (2026-08-22) — throughput halved by external machine load; budgets still fit, and a measurement trap recorded
+
+**Measured, not guessed.** Over a 300 s window, each live certification worker
+consumed 69 s of CPU (**23%** of a core) and each trace grew by exactly one
+131,072-byte buffer flush, i.e. **437 boxes/s** — against the 1,075–1,100
+boxes/s measured when the machine was quiet. The cause is external: load
+average 132 on 28 cores with roughly 130 unrelated processes, none individually
+large (the largest instantaneous consumer was 16.9%). Nothing of ours is
+starved by a single hog, and nothing of ours is stuck.
+
+**Not an I/O problem** (ruled out explicitly): 100 MiB write + fsync into the
+campaign filesystem takes 0.16 s (620 MB/s), 200k single-byte writes take
+0.03 s (6.9M writes/s), `iostat` shows the disk idle between bursts, and
+Syncthing and Spotlight sit at 0.1% CPU. 15.7 GiB free.
+
+**Budget arithmetic at the degraded rate** (NUMERICAL projections):
+* campaign J slice 5 — 102.1 M boxes done, projection ≈141 M, so ≈25 h more
+  against ≈31 h of budget left: fits, with little slack.
+* campaign J slice 6 — 116.0 M done, projection ≈145 M, ≈18 h more: fits.
+* campaign K — 13 slices live plus 3 committed; the leading slice 15 is at
+  40.0 M after 10 h, and the projected hardest slice is ≈117 M, i.e. ≈49 h more,
+  ≈59 h total against the 72 h budget: fits.
+All sixteen K slices are now launched; the four held back for the CPU cap went
+in as workers freed, since a process's scheduler share scales with its thread
+count and our total draw (14 × 23% ≈ 3.2 cores) is far below the 50% ceiling.
+
+**Measurement trap, recorded because it nearly caused a false alarm.** On
+Darwin, `ps -o %cpu` is a *lifetime average*, not an instantaneous rate, and
+`ps -o time` on a *supervisor* pid (46 min) says nothing about its *worker*
+child (1,947 min). Reading either as "the worker has stalled" is wrong. The
+sound test is a CPU-time delta on the worker pid over a fixed window, paired
+with trace growth; and trace growth is quantised to the 131,072-byte buffer, so
+any window shorter than about buffer/rate ≈ 5 minutes can read as zero progress
+on a perfectly healthy worker.
+
+### AUDITED (2026-08-22) — slice-count strings in diagnostics: live sources parameterised, frozen snapshots correctly frozen
+
+A review flagged that failure-message strings might hardcode "8"/"0..7" while
+the logic uses `NSLICES`, which would make campaign K's collector emit
+misleading diagnostics on a validation failure. Checked directly; the situation
+is clean, and the distinction is worth recording because it will recur every
+time the protocol changes.
+
+* **Live sources**: already parameterised. `cert3_par.py` emits
+  `"launch must contain exactly %d runs" % nslices`; `cert3_collect.py` emits
+  `"exactly 0..%d" % (nslices - 1)`, `"run IDs must be %d unique values"`,
+  `"run %d slice is outside 0..%d"`, `"found %d committed results, expected
+  exactly %d"`, and the success banner `"each slice 0..%d"`. The only literal
+  digits left are legitimately fixed: the allowed-set enumeration
+  `8, 16, 32, 64` and `parameters.work_prec_bits is not integer 80`.
+* **Campaign K's frozen snapshot** carries that same parameterised collector
+  (`ALLOWED_NSLICES = (8, 16, 32, 64)` present), so its diagnostics would
+  correctly report 16 and `0..15`.
+* **Campaign J's frozen snapshot** carries the older `NSLICES = 8` and its
+  hardcoded strings — which are *true statements about campaign J*, an
+  eight-slice campaign. That file is hash-pinned inside an immutable campaign
+  directory; editing it would break the launch/collector hash chain and
+  invalidate a certified-in-progress campaign. It stays as-is, correctly.
+
+The general rule this fixes in writing: a protocol change is applied to the live
+sources only, and every campaign keeps the diagnostics of the protocol it was
+launched under. Reviewing a frozen snapshot against the current source will
+always show such differences; that is the design working, not drift.
+
+### EVIDENCE (2026-08-22) — Liu's Hypothesis 2 survives the decisive test, and his printed constant is a rounding artefact
+
+`uc/liu9_binding.py` (5.94 s, one core). The earlier paired-atom descent
+(LOSS/GAIN > 4.2848) lived at a point with margin 0.1836 *above* the critical
+value, so the real question was whether the same mechanism operates where there
+is no slack to absorb it. It does not — it reverses.
+
+**The binding manifold.** Modulo permutations and atom-representation gauges the
+binding locus is essentially one-dimensional:
+$$P_0=P_1=P^*=p^*\delta_{x^*}+(1-p^*)\delta_0,\qquad q\in[0,1],$$
+with generic positive-mass coordinates giving a 2-dimensional $(q,r)$ stratum,
+zero-mass gauge strata of dimension 3, and the inactive-law endpoints $q\in\{0,1\}$
+opening to coordinate dimension 4.
+
+**Certified curvature.** In exact active-mean coordinates $(q,s,d,r)$ the reduced
+Hessian is diagonal,
+$$\mathrm{diag}\big(0,\;A,\;C\,q(1-q),\;0\big),\qquad
+A\in[0.7421351451334554801514\pm4.65\times10^{-67}],\;
+C\in[1.7160696505225689309703\pm8.41\times10^{-68}],$$
+with boundary coefficient $B\in[0.2727766904205061146396\pm4.08\times10^{-69}]$.
+Both nonzero eigenvalues are strictly positive; the two null directions are exact
+and structural (pure $q$ motion is flat because $P_0=P_1$, plus a representation
+gauge). Every local feasible direction at binding is certified non-decreasing —
+by positive curvature, by an exact null, by a positive boundary
+$y\log(1/y)$ barrier, or by a globally Arb-certified nonnegative zero-mass
+atom-insertion potential.
+
+**The crux, answered.** Re-testing the paired-atom mechanism *on* the binding
+locus gives
+$$\mathrm{LOSS}/\mathrm{GAIN}\in[0.2115581217698265043288\pm6.09\times10^{-68}],$$
+i.e. $\Phi''(0)=q(1-q)C>0$ — at $q=1/2$ it is
+$[0.4290174126306422327426\pm4.61\times10^{-68}]$. The sign reverses: the descent
+that exists at 0.18 above the critical value does not exist at the critical
+value. **Hypothesis 2 is not refuted, and now has certified local evidence in
+its favour** at the only place it could fail. Still CONJECTURED: completeness of
+the binding-locus classification, and the endpoint inward-$q$ functional
+$D(Q)\ge0$ — a 28,288-evaluation single-core global search found no negative
+value.
+
+**A correction to the published constant (important for anyone citing it).**
+Liu's equations (90)–(93) define
+$$c'=0.3827090879187350299303129021\ldots,\qquad
+\beta^*=0.1000525598628931066646283\ldots,$$
+whereas his paper prints the 15-digit $c'=0.382709087918741$ and
+$\beta^*=0.100052559862974$. Read literally as exact rationals, the printed pair
+admits an exact-rational, Arb-certified diagonal point with the mean constraint
+active and objective
+$$0.9999999999999903285961768504459\ldots<1,$$
+so the printed value overshoots the true root by $\approx6\times10^{-15}$ and the
+inequality *as printed* fails. This is a rounding artefact, not a defect in
+Liu's argument: the equation-defined constant stands. The consequence for us is
+concrete — any certificate must target a rational at or below
+$0.38270908791873503$, never the printed digits, and our paper should quote the
+equation-defined value with this caveat attached.
+
+**Campaign K meanwhile**: 6 of 16 slices committed, 116,529,236 boxes, residual
+0 everywhere. Slice 15 ($w\in[31/32,1]$, the region that defeated campaigns E–G)
+came in at 49,640,905 boxes in 11.66 h; campaign J needed 93,281,643 boxes for
+$[15/16,1]$ in one slice, so the finer partition is behaving as designed.
+
+### PROVED (2026-08-22) — the endpoint functional $D(Q)\ge0$; only the locus-completeness conjecture now stands
+
+`uc/liu9_endpoint.py` (109.5 s of certified branch-and-bound on one core).
+This closes the first of the two ingredients that the binding-locus analysis
+left conjectural.
+
+**Exact statement.** For $P^*=p\delta_x+(1-p)\delta_0$, $m=px$, $H^*=p\,h(x)$,
+$J(P,Q)=\iint h(yz)\,dP\,dQ$, $K(P,Q)=\iint h\big(yz[1+(1-y)(1-z)]\big)dP\,dQ$ and
+$\mathrm{core}=1/(px)$,
+$$D(Q)=\frac{2(1-\beta)[J(P^*,Q)-J(P^*,P^*)]+\beta[K(Q,Q)-K(P^*,P^*)]-[H(Q)-H^*]}{H^*}
+-\mathrm{core}\,[M(Q)-m],$$
+on the two four-dimensional inactive-law strata at $q=0$ (and by $P_0/P_1$
+symmetry at $q=1$).
+
+**Exact reduction.** $D(Q)=\int V\,dQ+\frac{\beta}{H^*}K(Q-P^*,Q-P^*)$ with
+$V(y)=\big[2p\big((1-\beta)h(xy)+\beta k(x,y)\big)-h(y)-H^*\mathrm{core}\,y\big]/H^*$.
+Writing $Q_s=a[s\delta_u+(1-s)\delta_v]+b\delta_w$ makes $D$ an explicit quadratic
+$As^2+Bs+C$ in the split parameter, so $s$ is eliminated exactly
+($C-B^2/4A$ when $A>0$ and $-2A<B<0$, else $\min(C,A+B+C)$); split-atom symmetry
+then reduces each chart from four dimensions to a three-dimensional cube.
+
+**Certificate.** Equality is attained exactly at $Q=P^*$ (modulo zero-weight and
+coincident-atom gauges and permutations) — the float "negatives" at
+$-1.8\times10^{-16}$ are cancellation roundoff, placed at $+1.72\times10^{-34}$ by
+90-digit arithmetic. So a plain nonnegativity search cannot terminate at that
+point, and the proof splits as designed: a **local** expansion with Arb-enclosed
+leading data (normalised Hessian $h_{MM}=0.25059\ldots$, $h_{Ms}=-0.01800\ldots$,
+$h_{ss}=1.71607\ldots$, determinant $0.42971\ldots>0$; split coefficient
+$2.17653\ldots$) covering a certified neighbourhood, and **interval
+branch-and-bound** on the complement: 406,054 boxes evaluated, 128,018
+interval-cleared, 74,699 infeasible, 609 local-cleared, **residual 0**, smallest
+certified margin
+$[1.9397933871402502843\times10^{-8}\pm7.0\times10^{-104}]$.
+NaN discipline enforced throughout (`.is_finite()`, never `==`), and an
+independent review caught and fixed two rigor defects (non-strict uniqueness
+clears, float-centred mean-value step) before the final residual-free run.
+
+**Where Hypothesis 2 now stands.** On the binding manifold every local feasible
+direction is certified non-decreasing: strictly positive reduced curvature
+($A_H=0.74214\ldots$, $C=1.71607\ldots$), two structural nulls (pure $q$ motion is
+flat because $P_0=P_1$, plus a representation gauge), a positive boundary
+$y\log(1/y)$ barrier, and now a **proved** endpoint functional. The paired-atom
+descent that exists 0.18 above the critical value reverses sign at binding
+(LOSS/GAIN $=0.21156\ldots$). **The only remaining conjecture is completeness of
+the binding-locus classification** — ruling out a disconnected binding or
+equality component off the diagonal family $P_0=P_1=P^*$ and its endpoint gauges.
+That is now the single named gap between Liu's constant and an unconditional
+statement, alongside the global-versus-local question that a certified
+nine-parameter search would settle but cannot afford.
+
+### MEASURED (2026-08-22) — the tube-plus-complement route for Hypothesis 2: complement is cheap, the local lemma is the whole problem
+
+`uc/liu9_tube.py` (exit 0; four radii, 100 s per radius, one core). Verdict as
+specified: **infeasible** — but the measurement localises the difficulty to one
+analytic lemma and shows the compute side is essentially solved.
+
+**Complement side — a factor of $10^{10}$ better than flat search.** With the
+equality manifold excised at radius $\rho$, interval branch-and-bound on
+$\{\mathrm{dist}\ge\rho\}$ behaves as follows (NUMERICAL; the runs are
+counterfactual since no $\rho$ certified locally, though every individual
+mean/tube/objective discard is itself certified by exact dyadic geometry plus
+Arb):
+
+| $\rho$ | processed | obj-cleared | residual | clear rate | optimistic total | weakest cleared gap |
+|---|---|---|---|---|---|---|
+| 0.1 | 26,247 | 3,001 | 71 | **0.977** | $2.7\times10^{4}$ | $7.84\times10^{-4}$ |
+| 0.03 | 22,801 | 695 | 9,112 | 0.071 | $3.2\times10^{5}$ | $2.17\times10^{-6}$ |
+| 0.01 | 18,103 | 0 | 8,538 | 0 | $\infty$ | none |
+| 0.003 | 17,343 | 0 | 8,438 | 0 | $\infty$ | none |
+
+At $\rho=0.1$ the complement needs on the order of $2.7\times10^{4}$ boxes
+against the $\gtrsim10^{15}$ of the flat nine-dimensional search — a reduction of
+about ten orders of magnitude, i.e. seconds rather than core-millennia. The
+compute obstacle to Hypothesis 2 is therefore **not** the obstacle any more.
+
+**Local side — the actual blocker, named.** Every attempt at a one-piece
+finite-$C_3$ tube inequality
+$\text{obj}-1\ge\kappa\,\mathrm{dist}^2-C_3\mathrm{dist}^3$ fails for a specific
+reason: $h'''$ over $[0,\rho]$ encloses the **zero-support entropy singularity**
+($y\log(1/y)$ as $y\to0$), so the enclosure is not finite
+(`finite=False` at $\rho=0.03,0.01,0.003$), and the smooth-mode curvature ceiling
+is $[0.70046750915308682296\pm5.0\times10^{-68}]$. The trade is adverse in
+exactly one direction: the complement is cheap only at a *large* radius, and a
+large radius is where a single Taylor remainder cannot be bounded.
+
+**What would close it** (CONJECTURED, but now a precise three-part target): a
+*piecewise* local lemma combining (i) the smooth $A_H$/$C$ Hessian modes already
+Arb-certified, (ii) an explicit $y\log(1/y)$ boundary-layer estimate covering the
+zero-mass strata rather than Taylor-expanding through them, and (iii) a
+$q$-weighted quantitative consequence of the now-**proved** $D(Q)\ge0$ to cover
+the degenerate endpoints $q\in\{0,1\}$ where the transverse curvature
+$Cq(1-q)$ vanishes. With those three pieces at $\rho\approx0.1$, the certified
+complement run above becomes a genuine certificate rather than a timing point,
+and Liu's constant — at his equation-defined root, not the printed rounding —
+would follow from machine-checkable ingredients only.
+
+Status of the Liu line after today: Hypothesis 1 **proved**; the endpoint
+functional **proved**; the binding-locus curvature **certified positive**, with
+the descent mechanism shown to reverse there; the compute cost **reduced by
+$10^{10}$** by excising a known manifold; and two named analytic gaps left —
+locus completeness, and the piecewise boundary-layer lemma above.
+
+### PACING (2026-08-22) — campaign K's cost curve in $w$, and every live slice fits the budget at the degraded rate
+
+Campaign K at 17.0 h of its 72 h per-slice budget: **9 of 16 slices committed,
+163,497,431 boxes, residual 0 everywhere**; 7 live with 224,002,048 boxes
+written so far. The committed data give the cost curve in $w$ directly:
+
+| slice | window | boxes | wall |
+|---|---|---|---|
+| 0–4 | $[1/2,21/32]$ | 11.25–11.63 M each | 2.8–4.5 h |
+| 5 | $[21/32,11/16]$ | 14,625,455 | 5.8 h |
+| 6 | $[11/16,23/32]$ | 18,061,911 | 10.9 h |
+| 7 | $[23/32,3/4]$ | 24,227,477 | 15.1 h |
+| 15 | $[31/32,1]$ | 49,640,905 | 11.7 h |
+
+So the trees are flat at $\approx11.3$ M up to $w\approx0.66$, thicken from
+$w\gtrsim0.69$, and the sink slab $[31/32,1]$ is the single most expensive slice.
+Cross-check against the coarser partition: K slices 6+7 total 42,289,388 boxes
+for $[11/16,3/4]$, against campaign J's single slice 3 at 37,877,105 for the same
+window — the finer split costs **+11.6%** in total boxes, which is the price paid
+for halving each worker's wall time.
+
+**Budget projection at the measured 437 boxes/s** (NUMERICAL; uses J's committed
+totals for the same windows, inflated by that 11.6%):
+
+| K slices | same window as | J boxes | K so far | K target | remaining each | ETA |
+|---|---|---|---|---|---|---|
+| 8, 9 | J s4 | 85,793,971 | 50.9 M | $\approx$95 M | $\approx$22 M | $\approx$14 h |
+| 10, 11 | J s5 (live) | $\approx$141 M proj | 58.5 M | $\approx$157 M | $\approx$49 M | $\approx$31 h |
+| 12, 13 | J s6 (live) | $\approx$145 M proj | 73.4 M | $\approx$161 M | $\approx$44 M | $\approx$28 h |
+| 14 | J s7 (with s15) | 93,281,643 | 41.3 M | $\approx$54 M | $\approx$13 M | $\approx$8 h |
+
+With 55 h of budget left and the tightest slice needing $\approx31$ h, every live
+slice fits with roughly $1.8\times$ headroom even if the machine stays loaded.
+That is the payoff of the 16-slice protocol: under the same degraded throughput
+an 8-slice campaign at this target would have needed $\approx60$ h on its worst
+slice, i.e. no margin at all.
+
 ## 2026-08-19 — h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle
 
 **Deliverable.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip`
@@ -676,9 +1123,66 @@ chain is repo-regenerable; five older L17 JSONLs are persisted evidence without 
    labelled local generalization of `l12_class.l12_class_cert`. Novelty is the $\tau=0$
    alignment alone.
 
-**Final bundle.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip` — 9,811,451 bytes, SHA-256
-`f332023db2df19b16613670cf787a447b6271a196de4d0077c5443ace4dba39c`, 77 staged files, 75/75
-checksums OK. Main paper 19 pp (Schinzel-implication and 5-wall sections; full bibliography).
+**Waves 4-6 (12 more subagents) — L19/L20/L21: the hypothesis shrinks to one algebraic gap.**
+
+12. *The canonical 5-wall is always breakable (PROVED).* Factor-by-factor,
+    $\prod_{p\mid A}(x,d)_p(A\mid q_1)=(-2\varepsilon\mid A)(f\mid A)$, so with $A\equiv5\bmod8$ the
+    L10b anti-correlation breaks **iff $(f\mid A)=-1$**. Uniform existence via the character sum
+    $\sum_r(1+4r^2\mid w)=-1$ plus CRT and Dirichlet. 16,744 candidates, 0 mismatches. Fixed $a=7$
+    is breakable iff $(w\mid197)=-1$.
+13. *Every tried off-grid cell is closed.* $w=179$ closed at $a=7,\varepsilon=-1,q_1=Q=251$
+    (decided fraction 94.7%, 222-digit max cofactor). Closed set now
+    $w\in\{101,\dots,179\}$ plus $[131,[5,1]]$.
+14. **Uniform class existence (PROVED) — clause (ii) removed from the hypothesis.** For *every*
+    cell take $f=w$ (available since $v_w(z)\ge1$), pick odd $a$ with $(A\mid w)=-1$, and solve an
+    explicit residue system for $q_1$ with $\varphi(M)/2^{k}$ classes; Dirichlet finishes.
+    103/103 canonical rows reproduced (1,113,000 residues enumerated), 353/353 grid certificates,
+    0 refusals. Independent corroboration: fixing $a=1$ collides at exactly
+    $w=11,19,31,59,71,79$ — precisely the 5-wall set derived by the other route.
+15. *Admissibility of the Schinzel pair.* (b) $\gcd(q_1,N)=1$, (c) no fixed prime divisor (degree
+    bound forces any such prime $\le9$, all in $S$), (d) $S$-adic units and frozen-symbol constancy:
+    all **PROVED uniformly**. Positive leading coefficient PROVED. **Irreducibility OPEN uniformly.**
+    The agent also refuted our own written premise: literal $S$-support of the content $c$ is false
+    (counterexample $(3,3/11)$, outside part $11^{-12}$); the correct and sufficient premise is that
+    the *square class* of $c$ is $S$-supported. Corrected in all four documents.
+16. **L21 (lead): the reducible locus, found and avoided.** Blanket irreducibility is **false** —
+    if $s=0$ and $\delta_\tau=\sigma^2$ then
+    $P=(4DAb^2-\sigma a^2Z^2N_g)(4DAb^2+\sigma a^2Z^2N_g)$. But on the constructed branch
+    $\delta_{\tau^\dagger}=-4a^4/A<0$ is never a square, so that degeneration cannot occur there,
+    for any $a$ or cell. Also: $P+32A^3s^2D^2b^5$ is palindromic and $P_0=P_8$ always (288/288),
+    so the Galois group embeds in $C_2\wr S_4$. 56/56 + 9/9 + 288/288 exact, 0 refusals.
+17. *Adversarial chain audit.* Verdict: the chain does **not** yet read "Schinzel H $\Rightarrow$
+    six quantifiers"; the blocker is uniform irreducibility. Two joints certified sound (ladder
+    zero $\Rightarrow$ global tied-conic solubility, covering $2,\infty,w,Q$ and all odd places;
+    quantifier count still exactly 6). Six record defects found and fixed, including a missing
+    branch in the displayed formula, an irreducibility overreach, an obsolete even-valuation
+    condition, a false ladder biconditional, and a stale open-cell sentence.
+
+18. **L21d/e: irreducibility on the constructed branch (PROVED generically and per cell).**
+    $H=(A/4)P$ has $L=a^8A^2Z^4$ as both end coefficients, so monic factors of $H/L$ over
+    $\mathbb Q(a,Z)$ would lie in $\mathbb Q[a,Z,1/L]$ and survive the specialization
+    $(a,Z)=(1,27)$ — but that octic is irreducible mod 17, so $P$ is irreducible over
+    $\mathbb Q(a,Z)$. The two-variable thin set can contain a vertical line, so the per-cell
+    statement was obtained one-variable instead: 353/353 exact fiber certificates plus
+    Cohen–Serre quantitative HIT ($O_z(\sqrt B\log B)$ bad integers against the progression's
+    $B/M+O(1)$ members) give a good $a$ for every cell; the first admissible $a$ worked 48/48.
+    Hunt: 1024/1024 constructed-branch rows irreducible, **0 reducible**. Three no-go laws proved
+    along the way: $P\equiv16A^2b^4(1-2As^2b)\bmod w$ (so mod-$w$ can never certify — this
+    refuted my own suggested route), two length-4 Newton slopes at $p\mid A$, and $P$ reciprocal
+    **iff** $a=1$. For $a=1$ with $(5\mid w)=-1$ the trace quartic is uniformly irreducible over
+    $\mathbb Q(\sqrt{-5})$.
+
+**Honest chain summary.** Class existence is proved for every cell; the Schinzel pair's
+admissibility is proved uniformly except for irreducibility, which is proved generically and
+per-cell on all 353 certified $z$; member existence follows from Schinzel's Hypothesis H. So the
+record is conditional on **Schinzel H plus a per-cell irreducibility certificate** — down from a
+bespoke hypothesis about degree-8 prime values. An adversarial audit confirms the chain does *not*
+yet read "Schinzel H implies the six-quantifier definition".
+
+**Final bundle.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip` — 10,856,456 bytes, SHA-256
+`efec51fa188d8027759cff50d8c49d03e96e6bb3b5aa419ae188ed398d955a75`, 91/91 checksums OK (verified
+independently by the lead), `unzip -t` clean. Main paper **27 pp**, companion 6 pp, both recompiled
+by the lead with 0 undefined citations and 0 undefined references.
 
 **Cost.** 19 subagents across two batches (7 authoring + 12 frontier), CPU held under the 50% cap.
 
@@ -804,32 +1308,83 @@ The model is **not solved** and no wave claims otherwise.
   32 rational branches are empty over `Q`. Branch `11111` remains `[UNRESOLVED]`: it has a nonsingular
   `F_5` point, hence a proper ideal, so no Nullstellensatz emptiness certificate exists at any degree.
 
-**Wave 18 (in flight, seven parallel fronts).** All-`L` saturation, an all-`L` free-fermion no-go by
-algebra dimension, the isotropic gap in Theorem F, exact char-0 `r(T)`/`r_all(T)`, a sound Kac–Ward
-orbit quotient, the `W_L` law, and a paired-momentum/random-current upper-endpoint certificate.
-Reserved ledger `H428`–`H469`, experiments `e157`–`e177`; ownership table in
-[`ising3d/checkpoints/next_actions.md`](ising3d/checkpoints/next_actions.md) §2. Mid-flight, two
-fronts independently converged on a Clifford-grade construction: Jordan–Wigner along the perimeter
-Hamiltonian path sends each of the `L-1` non-path rungs to a single Clifford monomial of grade
-`4L-4c+2`, and `sum over k = 2 mod 4 of C(4L,k) = 2^(n-1)(2^(n-1)-(-1)^L)` — verified exactly here
-for `L=2..8`, reproducing `56, 1056, 16256, 262656` and predicting `4192256` at `L=6`. That is a
-structural explanation of the whole alternation law (the class is the `-1` eigenspace of Clifford
-reversal, whose half-spin form is symmetric for even `L` and alternating for odd `L`), and a route to
-all-`L` equality. Not yet a landed theorem; the fronts are still running.
+**Wave 18 (landed, eight fronts, every one independently re-verified by the lead in the main
+checkout).** Ledger `H428`–`H469` and `H480`–`H487`, experiments `e157`–`e181`.
+
+- **All-`L` classification — the program's longest-standing open step, closed.** For EVERY `L>=2`
+  the open `2xL` local-term algebra is exactly `so_m(Q)+so_m(Q)` for even `L` and `sp_m(Q)+sp_m(Q)`
+  for odd `L`, `m=2^(n-1)`, `n=2L`, `dim = 2^(n-1)(2^(n-1)-(-1)^L)`. Proved by an explicit production
+  induction (invariant `I(L)`, square-triple second move, a no-rank-loss transport lemma, leaf
+  induction for token connectivity). Full closure enumerated at `L=2..6`, reaching `4192256` at `L=6`
+  with zero set-law violations in 19 process seconds and 437 MB
+  ([`ising3d/proofs/alll_saturation.md`](ising3d/proofs/alll_saturation.md)).
+- **An exact trichotomy for arbitrary layers.** Jordan–Wigner along a Hamiltonian path sends each
+  chord to a single Clifford monomial of grade `2*dist`, bipartiteness forces grade `= 2 mod 4`, and
+  the span of that class is the `-1` eigenspace of Clifford reversal — the algebra preserving the
+  spinor form, symmetric for `n = 0 mod 4` and alternating for `n = 2 mod 4`. For bipartite `Gamma`
+  with a Hamiltonian path exactly one of three cases holds: path, `dim = n(2n-1)`; even cycle,
+  `dim = 2n(2n-1)`; `Delta >= 3`, `dim = 2^(2n-2) - (-1)^(n/2) 2^(n-1)` for even `n` and
+  `2^(2n-2) - 1` for odd `n`, depending only on `n`. The two low branches are exactly the
+  free-fermion-solvable geometries, the open chain and the ring, and they are *quadratic* in `n`;
+  branching is *exponential*. So the solvable/unsolvable boundary appears as a dimension jump at the
+  same `Delta >= 3` threshold that governs the Dolan–Grady defect, the claw obstruction, and the
+  tridiagonal no-go. `C_6` at dim `132` is the exact counterexample that fixed the hypotheses, and
+  `3x3 = 65535` turned out to be the odd-`n` instance rather than a separate regime
+  ([`ising3d/proofs/clifford_grade_classification.md`](ising3d/proofs/clifford_grade_classification.md)).
+- **All-`L` quadratic no-go** with exact mode floors `6, 18, 65, 216, 991, 3168, 15354` at `L=2..8`,
+  covering `L=2` where the claw argument does not apply.
+- **Isotropic gap: split verdict.** Three isotropic cores certified above ceiling (paw `119>65`,
+  five-site tree `417>211`, `2x2`+pendant `475>211`), but the decoupling half provably fails on the
+  isotropic curve. Any isotropic all-size spectral proof must be non-localizing.
+- **Theorem U2 restored** after four waves: exact char-0 `r(T)=417`, `r_all(T)=445`, discharging
+  hypothesis CZ so Theorem F2 is unconditional for `m=2,4`.
+- **Kac–Ward:** no orbit reduction exists (the sound section group is trivial, `16384` singleton
+  orbits), and the complete `F_5`-unit census over all `4^13 = 67108864` points kills every one of
+  the `2960` local points; branch `11111` nonetheless remains open over `Q`.
+- **Upper endpoint:** two named certificate classes exactly refuted, incumbent unchanged.
+
+**Wave 19 (landed, three fronts; one still finishing).** Ledger `H488`–`H505`, experiments
+`e182`–`e190`.
+
+- **The trichotomy extends and its hypotheses are now exact.** Non-bipartite graphs obey a
+  dichotomy: odd cycles give `2n(2n-1)`, everything else gives the full noncentral even algebra
+  `2^(2n-1)-2`, with no Hamiltonicity needed. The Hamiltonian-path hypothesis is *necessary* for the
+  bipartite case: the claw `K_{1,3}` gives `72`, not the `56` the branching formula would predict.
+  Corollaries: every finite `a x b x c` box is Hamiltonian by an alternating-layer snake, so every
+  genuine 3D box has the branching formula; the open `4x4` layer local-term algebra is
+  `1073709056`.
+- **The two-generator algebra does NOT inherit the trichotomy.** `K_{2,3}` gives `44 < 45` and
+  `K_{3,3}` gives `63 < 66`, both bipartite and branching; for `K_{3,3}` the automorphism-fixed
+  container is `64`, so symmetry is the cause. A complete fixed-path census clears all `63` branching
+  graphs at `n=7` but that is finite, so no universal threshold is claimed beyond `n0 >= 7`.
+- **Two proof routes exactly closed.** `ad_A` Vandermonde grade separation cannot work, because every
+  Ising edge monomial has `ad_{iA}` spectrum `{0, ±4i}` regardless of grade; and group rigidity cannot
+  deliver the isotropic spectral theorem, since `exp(aH)exp(bX)` is pointwise conjugate into
+  `Spin(2,C)` while generating `sl(2,C)`.
 
 **Verified.** `fullsuite17b` finished `FINAL: 123 total, 123 passed, 0 failed` (8 h 10 m under host
 contention, load ~40); `fullsuite15b` passed `115/115` pre-wave-16. Every wave-11..17 deliverable was
-additionally run through its own standalone verifier by the lead in the main checkout before its
-ledger rows were appended. Targeted checks re-run today: `tests/test_alternation_law.py` 22/22,
-`tests/test_alternation_15.py` exact `2x5` replay, `tests/test_kw_full_thin_census.py` preflight
-verification.
+run through its own standalone verifier before its ledger rows were appended. For waves 18 and 19 the
+lead re-ran every front's standalone verifier in the main checkout after delivery, not just the
+agents' own runs: `test_isotropic_allsize.py` 58 checks, `test_alll_quadratic.py`,
+`test_upper_endpoint4.py`, `test_alll_saturation.py` (full closure through `L=6`, 27.7 s),
+`test_clifford_grade.py` 41 checks, `test_kw_orbit_quotient.py` (independent re-enumeration of all
+`67108864` unit points, 42 s), `test_rank_char0.py` 21 checks (897 s), `test_trichotomy_extend.py`
+31 checks, `test_layer_group_spectral.py`, and `test_twogen_allsize.py` (563 s CPU, 338 MB). All
+printed `PASS`. Targeted wave-17 re-checks also passed: `test_alternation_law.py` 22/22,
+`test_alternation_15.py` exact `2x5` replay, `test_kw_full_thin_census.py` preflight verification.
 
-**Deliverables.** A unified flagship paper plus three companion drafts, all compiled to PDF:
-[`ising3d/deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.tex`](ising3d/deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.tex)
-(18 pages, bibliography generated from the verified source manifest) and
-[`ising3d/deliverables/wave17_2026-08-20/papers/`](ising3d/deliverables/wave17_2026-08-20/papers/)
-(no-go mechanisms, exact series and bounds, layer DLA classification). The artifact bundle is a
-685-file manifest with SHA-256 per file plus a zip whose integrity check passes.
+**Deliverables.** A unified flagship paper (24 pp) covering both waves, compiled to PDF with a
+bibliography generated from the repository's verified source manifest:
+[`ising3d/deliverables/wave18-19_2026-08-21/papers/main_exact_3d_ising.tex`](ising3d/deliverables/wave18-19_2026-08-21/papers/main_exact_3d_ising.tex).
+The accompanying bundle
+[`ising3d/deliverables/wave18-19_2026-08-21/`](ising3d/deliverables/wave18-19_2026-08-21/) holds the
+eleven new proof notes, producers `e157`–`e190`, their standalone verifiers, the JSON artifacts, and
+a docs snapshot; `MANIFEST.json` records byte size and SHA-256 for all 93 staged files, and
+`ising3d_wave18-19_bundle.zip` (1,864,528 bytes, SHA-256
+`c85f101d9acd96874e98e6725565b5408864f4c607e71c34567ba7bff7133e05`) passes `unzip -t`. The three
+earlier companion drafts and the 685-file heavy-artifact bundle remain at
+[`ising3d/deliverables/wave17_2026-08-20/`](ising3d/deliverables/wave17_2026-08-20/).
 
 **Repairs made today.** `ising3d/checkpoints/next_actions.md` claimed next free ledger ID `H417` and
 still listed the `x^56` audit, the full suite, and the `2x6` front as pending, all of which had

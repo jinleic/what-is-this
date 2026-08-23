@@ -26,9 +26,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 11,
-   "dim_I0": 11,
+   "dim_pole": 11,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   }
  },
  "frontier_weight3": {},
@@ -49,8 +49,15 @@
  "no_group_certificate_pairs": 0,
  "no_group_certificate_represented": 0,
  "pairs_total": 52722121,
+ "protocol": {
+  "k_min": 8,
+  "max_weight": 3,
+  "sample": 12,
+  "seed": 55
+ },
  "qualifying_group_pairs": 12,
  "qualifying_pairs_represented": 1200,
+ "schema": "exp055-census-lattice-v2",
  "supports": 7261,
- "wall_s": 24.73
+ "wall_s": 22.36
 }

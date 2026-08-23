@@ -26,6 +26,8 @@ IDEAL = ROOT / "results" / "processed" / "exp053_ideal_classification.json"
 CENSUS = ROOT / "results" / "processed" / "exp054_mixed_census.json"
 ODDSWEEP = ROOT / "results" / "processed" / "exp055_odd_lattice_sweep.json"
 ODDLIT = ROOT / "results" / "processed" / "exp055_literature_validation.json"
+ODDSCREEN = ROOT / "results" / "processed" / "exp055_odd_lattice_screen.json"
+ODDDISC = ROOT / "results" / "certificates" / "exp055_discovered_references.json"
 
 
 @pytest.fixture(scope="module")
@@ -70,7 +72,23 @@ def oddsweep() -> dict:
 def oddlit() -> dict:
     assert ODDLIT.exists(), f"required artifact missing: {ODDLIT}"
     d = json.loads(ODDLIT.read_text(encoding="utf-8"))
-    assert d.get("schema") == "exp055-literature-v2", d.get("schema")
+    assert d.get("schema") == "exp055-literature-v3", d.get("schema")
+    return d
+
+
+@pytest.fixture(scope="module")
+def oddscreen() -> dict:
+    assert ODDSCREEN.exists(), f"required artifact missing: {ODDSCREEN}"
+    d = json.loads(ODDSCREEN.read_text(encoding="utf-8"))
+    assert d.get("schema") == "exp055-odd-lattice-screen-v2", d.get("schema")
+    return d
+
+
+@pytest.fixture(scope="module")
+def odddisc() -> dict:
+    assert ODDDISC.exists(), f"required artifact missing: {ODDDISC}"
+    d = json.loads(ODDDISC.read_text(encoding="utf-8"))
+    assert d.get("schema") == "exp055-discovered-references-v1", d.get("schema")
     return d
 
 
@@ -86,14 +104,40 @@ def test_section_62_numbers_match_artifacts(paper: str, oddsweep: dict,
     assert re.search(rf"\(\${v['idempotence_tested']}\$ idempotence tests", paper)
     assert v["k_mismatches"] == 0 and v["idempotence_violations"] == 0
     # literature battery
-    assert re.search(rf"we sourced \${oddlit['instances']}\$ such instances", paper)
-    assert re.search(rf"covers \${oddlit['reproduced_instances']}\$ published codes",
+    assert re.search(rf"we sourced \${oddlit['instances']}\$ instances", paper)
+    assert oddlit["pole_isomorphism_all"] is True
+    assert re.search(rf"passes\s+\*\*{oddlit['instances']}/{oddlit['instances']}\*\*",
                      paper)
-    assert oddlit["ceiling_never_violated"] is True
-    assert re.search(r"\*\*zero violations\*\*", paper)
-    for label, key in (("minimum", "slack_min"), ("median", "slack_median"),
-                       ("maximum", "slack_max")):
-        assert re.search(rf"{label} \${oddlit[key]}\$", paper), (label, oddlit[key])
+    assert re.search(rf"printed \$k\$ on \${oddlit['reproduced_instances']}\$",
+                     paper)
+    assert oddlit["reported_ceiling_sanity_holds"] is True
+    assert oddlit["exact_ceiling_never_violated"] is True
+    assert re.search(r"Five rows are\s+independently exact-certified", paper)
+    assert re.search(r"BP-OSD `distance_upperbound`", paper)
+    triplet = (oddlit["exact_slack_min"], oddlit["exact_slack_median"],
+               oddlit["exact_slack_max"])
+    assert re.search(rf"slack min/median/max "
+                     rf"\${triplet[0]}/{triplet[1]}/{triplet[2]}\$", paper), triplet
+
+
+def test_section_62_screen_and_discoveries_match_artifacts(
+        paper: str, oddscreen: dict, odddisc: dict) -> None:
+    v, scope = oddscreen["verdict"], oddscreen["scope"]
+    assert v["complete"] and v["all_referenced_decided"]
+    assert re.search(rf"complete through \$n={scope['n_max']}\$", paper)
+    assert f"**{v['candidates_after_symmetry']}**" in paper
+    assert f"**{v['orbits_represented']:,}**" in paper
+    assert f"**all {v['dominated']} are dominated**" in paper
+    assert re.search(rf"{v['verdicts']['dominated_by_witness']} by explicit logical "
+                     rf"witnesses", paper)
+    assert re.search(rf"{v['verdicts']['dominated']} by all-sector CP-SAT", paper)
+    assert re.search(rf"other {v['no_reference']}\s+high-\$k\$ classes", paper)
+    assert re.search(r"\*\*zero survivors and zero undecided\*\*", paper)
+
+    params = {(r["n"], r["k"], r["d"]) for r in odddisc["records"]}
+    assert params == {(30, 8, 4), (54, 8, 6), (126, 12, 10)}
+    for n, k, d in params:
+        assert f"[[{n},{k},{d}]]" in paper
 
 
 @pytest.fixture(scope="module")

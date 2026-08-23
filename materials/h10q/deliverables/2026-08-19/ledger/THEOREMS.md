@@ -1919,10 +1919,10 @@ zero empty cells.
 
 **Scope, exactly.** This removes clause (ii) — *existence of one verified
 aligned class per cell* — from the hypothesis, for every cell, not just
-the 103 escapes. It does **not** prove: irreducibility or fixed-divisor
-$1$ for the newly constructed pair, a Schinzel prime value, an
-emergent-free member, the L6 assembly lemma, or H10 over $\Q$. Member
-existence remains **CONDITIONAL** on Schinzel H via L19.
+the 103 recorded escapes (`data/l19_classexist.jsonl`). L20 itself does
+not prove irreducibility or a Schinzel prime value; L22 below supplies
+fixed-fibre irreducibility, and member existence remains **CONDITIONAL**
+on classical Schinzel H through L19.
 
 ## L21 [THE REDUCIBLE LOCUS AND WHY THE CONSTRUCTION AVOIDS IT, 2026-08-19]
 
@@ -1965,7 +1965,366 @@ $\deg Q=4$ and the Galois group embeds in $C_2\wr S_4$ — consistent with the
 recorded $D_8\wr C_2$ evidence (L13c) — and the whole degree-8 irreducibility
 question reduces there to a degree-4 question plus one quadratic condition.
 
-**Consequence for the chain.** The residual gap of L20 is now sharper and
-smaller: not "is $P$ ever reducible" (it is, on an explicit locus), but
-"is $P$ irreducible on $\tau^\dagger$, where $\delta=-4a^4/A$". The known
-degeneration is excluded there by a one-line proof.
+**Historical L21 frontier (SUPERSEDED by L22).** L21 reduced the remaining
+algebraic question to irreducibility on the fixed branch
+$\tau^\dagger=(1+2a^2)/A$, $\delta_{\tau^\dagger}=-4a^4/A$, after excluding
+the displayed square-$\delta$ degeneration. L22 below proves that fixed-fibre
+statement for every nonzero rational $Z$ (`/tmp/l22_elimination.md`).
+
+**L21d [generic irreducibility on the constructed branch; PROVED].** Let
+$H=(A/4)P\in\mathbb Q[a,Z][b]$ on $\tau^\dagger$. Its leading and constant
+coefficients are both $L=a^8A^2Z^4$. If $H/L$ factored over $\mathbb Q(a,Z)$,
+the monic factors would lie in the integrally closed localization
+$\mathbb Q[a,Z,1/L]$, and specializing $(a,Z)=(1,27)$ would preserve their
+degrees; but the primitive specialized octic is irreducible mod $17$
+($x^{17^8}\equiv x$ and $\gcd(x^{17^4}-x,q)=1$). Hence **$P$ is irreducible of
+degree 8 over $\mathbb Q(a,Z)$.**
+
+*From generic to per-cell, correctly.* A two-variable thin set may contain a
+whole vertical line $Z=Z_{\text{cell}}$, so generic irreducibility alone does
+not settle a fixed cell. The repair is one-variable: for each of the 353
+target $z$, an exact modular certificate at $a=1$ proves $P(a,z)$ irreducible
+in $\mathbb Q(a)[b]$; then quantitative Hilbert irreducibility (Cohen–Serre,
+$O_z(\sqrt B\log B)$ bad integers up to $B$) against the admissible
+progression's $B/M+O(1)$ members shows the progression contains a good $a$.
+So **for every one of the 353 cells, an admissible $a$ with $P$ irreducible
+provably exists** — and in practice the *first* admissible $a$ always works:
+48/48 rows (32 grid, 16 off-grid) had first index 1.
+Hunt: 1024/1024 constructed-branch rows proved irreducible mod a prime, **0
+reducible**; the only reducible rows found anywhere were the 128 off-branch
+$a=1$ square-$\delta$ cases of L21a (`data/l21_irred_generic.jsonl`,
+`l21_irred_generic.py`; lead-replayed, 101 s).
+
+**L21e [structural no-go laws and the $a=1$ quartic; PROVED].** Three negative
+results that close off the cheap routes, plus one positive:
+- **Mod $w$ is useless.** Uniformly, $P\equiv16A^2b^4(1-2As^2b)\pmod w$, so the
+  factorization type is $1^4$ or $1^4\!\cdot\!1$ and $P$ is *never* an
+  irreducible octic mod $w$. (This refutes the lead's suggested
+  $(A\mid w)=-1\Rightarrow$ mod-$w$ irreducibility route.)
+- **The $w$-Newton polygon** has several slopes, never a single slope of
+  denominator 8; and for odd $p\mid A$ with $v_p(Z)=0$ it has exactly two
+  length-4 slopes $\mp v_p(A)/2$, ruling out the $p\mid A$ single-slope route.
+- **Reciprocity is exact:** $P-b^8P(1/b)=32A^3s^2D^2(b^3-b^5)$, so $P$ is
+  reciprocal **iff** $a=1$, with no nontrivial rational reciprocal twist
+  (this sharpens L21c to an iff).
+- **Positive:** for $a=1$ and $(5\mid w)=-1$ the degree-4 trace polynomial is
+  *uniformly* irreducible by residue obstructions over $\mathbb Q(\sqrt{-5})$,
+  and the octic is irreducible whenever
+  $\Xi(Z)=(125D^2+64Z^4)(125D^2+1024Z^4)$ is a nonsquare — which holds on all
+  189 canonical $a=1$ rows.
+353 pairs, 0 mod-$w$ anomalies, 0 Newton anomalies, 0 trace-norm anomalies,
+353 constructed-branch modular certificates, 0 reducible
+(`data/l21_irred_direct.jsonl`, `l21_irred_direct.py`; lead-replayed, 4 s).
+
+**Historical L21 endpoint (SUPERSEDED by L22).** At L21 the vertical
+statement was proved only for the 353 recorded target values, using exact
+certificates and quantitative Hilbert irreducibility
+(`data/l21_irred_generic.jsonl`). L22 now proves it for every fixed
+$Z\in\mathbb Q^\times$ on
+$\tau^\dagger=(1+2a^2)/A$, $\delta_{\tau^\dagger}=-4a^4/A$; no new-cell
+certificate remains in the current chain (`/tmp/l22_elimination.md`,
+`data/l22_elimination.jsonl`).
+
+## L22 [FIXED-FIBER IRREDUCIBILITY ON THE CANONICAL BRANCH — PROVED]. The last non-Schinzel obligation closes
+
+Throughout this block the branch is **fixed**:
+$$
+\tau=\tau^\dagger=\frac{1+2a^2}{A},\qquad
+\delta_{\tau^\dagger}=-\frac{4a^4}{A},\qquad A=1+4a^2.
+$$
+(Source: `/tmp/l22_elimination.md`, §§1–5; exact replay
+`data/l22_elimination.jsonl`.)  Put
+$$
+D=1-Z-a^2Z^2,\qquad N_g=16a^4b^2-A(b-1)^4,
+$$
+and, on this same $\tau^\dagger$ branch,
+$$
+H=\frac A4P
+ =a^8Z^4N_g^2+4A^3D^2b^4-2A^4(a-1)^2D^2b^5.
+$$
+(Source: `/tmp/l22_elimination.md`, lines 5–20; kernel identity independently
+checked in `data/l22_elimination.jsonl`.)
+
+### L22a. Uniform fixed-$Z$ theorem and exact elimination
+
+**Theorem (PROVED).** For every **fixed** nonzero rational $Z$,
+$H(a,Z,b)$, and therefore $P(a,Z,b)=(4/A)H(a,Z,b)$, is irreducible in
+$\mathbb Q(a)[b]$.  In particular this applies to every cell, because
+$Z=z^3\ne0$ when $v_w(z)\ge1$ (`/tmp/l22_elimination.md`, §§5–6;
+`data/l22_elimination.jsonl`, record `fixed-Z-theorem`).
+
+The word *fixed* is indispensable: $Z^4$ is then a unit of
+$\mathbb Q[a]$, which is what makes the endpoint divisor enumeration
+below valid.  Also indispensable are $Z\ne0$, the exact equality of the
+two endpoint coefficients, the irreducibility of $A=1+4a^2$ over
+$\mathbb Q$, $\gcd(a,A)=1$, primitivity and Gauss's lemma, and the fact
+that the residue fields at $a=0$ and $a=\infty$ are $\mathbb Q$
+(`agent://ElimAudit`; proof source `/tmp/l22_elimination.md`, §§1–5).
+
+**Exact local data.** The constant and leading $b$-coefficients are both
+$$L=a^8A^2Z^4.$$
+For $Z\notin\{0,1\}$, $H$ is primitive in $\mathbb Q[a][b]$: a common
+divisor must divide $L$, while the $b^4$ coefficient at $a=0$ excludes
+$a$ and reduction modulo $A$ excludes $A$ (`/tmp/l22_elimination.md`,
+§1).  Direct sparse expansion gives
+$$
+\deg_a(H_i)_{i=0}^8=(12,12,14,14,16,13,14,12,12),
+$$
+$$
+v_a(H_i)_{i=0}^8=(8,8,8,8,0,0,8,8,8),\qquad
+v_A(H_i)_{i=0}^8=(2,2,1,1,0,1,1,2,2).
+$$
+(Source for both vectors and the cancellation leaving
+$1024a^{13}Z^4b^5$: `/tmp/l22_elimination.md`, §1;
+`data/l22_elimination.jsonl`, records `local-data` and
+`global-degree-filter`.)
+
+At the prime $A$, the Newton polygon has two length-$4$ sides of slopes
+$-1/2$ and $+1/2$.  A factor inherits a sub-multiset of these slopes,
+and integral endpoint valuations force its degree to be even.  Thus a
+reducible octic has a factor of degree $2$ or $4$
+(`/tmp/l22_elimination.md`, §1; `data/l22_elimination.jsonl`,
+`global-degree-filter`).
+
+At $a=0$, for $Z\notin\{0,1\}$, the sides are
+$$4@(-2),\qquad1@0,\qquad3@(8/3),$$
+and the four-root residual after $b=a^2x$ is
+$$R_0(x)=Z^4+4(1-Z)^2x^4.$$
+It has no rational linear factor because both summands are nonnegative
+on $\mathbb Q$, and the denominator-$3$ side is an indivisible local
+block.  Hence a quadratic global factor must take two small roots; a
+quartic takes either all four small roots or the three large roots and
+the unit root.  In a $4+4$ split, after swapping factors, one factor is
+therefore the all-small factor (`/tmp/l22_elimination.md`, §1;
+`data/l22_elimination.jsonl`, `global-degree-filter`).
+
+At infinity the two exact rescalings are
+$$
+a^{-12}H(a,x/a)\longrightarrow16Z^4(4x^2-1)^2,\qquad
+a^{-20}H(a,ax)\longrightarrow16Z^4x^4(x^2-4)^2.
+$$
+(Source: `/tmp/l22_elimination.md`, §1;
+`data/l22_elimination.jsonl`, `local-data`.)
+
+**Endpoint parameterization.** Let $F$ be a primitive degree-$m$ factor,
+where $m\in\{2,4\}$, containing only small roots at $a=0$.  Unique
+factorization of the common endpoint $L$ gives
+$$
+\operatorname{lc}_b(F)=cA^\beta,\qquad
+F(0)=d\,a^{2m}A^\delta,
+$$
+with $c,d\in\mathbb Q^\times$ and
+$0\le\beta,\delta\le2$.  If $\ell$ roots of $F$ are large at infinity,
+endpoint comparison gives
+$$2m+2\delta-2\beta=2\ell-m.$$
+The exact enumeration leaves three quadratic endpoint types and, for
+$m=4$, only $(\beta,\delta,\ell)=(2,0,4)$
+(`/tmp/l22_elimination.md`, §2; `data/l22_elimination.jsonl`,
+`endpoint-enumeration`).
+
+**Degree $2$ is impossible.** Infinity forces the constant/leading ratio
+of the quadratic residual to be $\rho=\pm16$.  A monic factorization of
+the zero-place residual has the form
+$$
+(x^2+ex+\rho)(x^2-ex+s)=x^4+K,\qquad
+K=\frac{Z^4}{4(1-Z)^2}>0.
+$$
+Coefficient comparison gives $e(s-\rho)=0$ and
+$s-e^2+\rho=0$.  If $e=0$, then $K=-\rho^2<0$; otherwise
+$s=\rho$ and $e^2=2\rho=\pm32$, impossible over $\mathbb Q$
+(`/tmp/l22_elimination.md`, §3; `data/l22_elimination.jsonl`,
+`degree-2-elimination`).
+
+**Degree $4$ is impossible.** The sole endpoint type is
+$$\operatorname{lc}_b(F)=cA^2,\qquad F(0)=da^8,$$
+and the infinity residual forces $d=256c$.  Matching the all-small
+residual at $a=0$ then forces
+$$Z^4=1024(1-Z)^2.$$
+Factoring the difference of squares gives
+$$Z^2+32Z-32=0\quad\text{or}\quad Z^2-32Z+32=0,$$
+whose discriminants are respectively
+$1152=576\cdot2$ and $896=64\cdot14$, neither a rational square.
+Therefore no rational $Z$ permits a quartic factor
+(`/tmp/l22_elimination.md`, §4; `data/l22_elimination.jsonl`,
+`degree-4-elimination`).
+
+**Exceptional values and specializations.**
+
+- $Z=0$ is genuinely reducible:
+  $$H=2A^3b^4\bigl(2-A(a-1)^2b\bigr).$$
+  It is excluded because a cell has $z\ne0$
+  (`/tmp/l22_elimination.md`, §5;
+  `data/l22_elimination.jsonl`, exceptional-fibre record `Z=0`).
+- At $Z=1$ the $a=0$ polygon degenerates.  At $a=1$ the primitive
+  coefficient vector is
+  $$(25,-200,540,-760,1546,-760,540,-200,25),$$
+  and its reduction modulo $11$ satisfies the exact degree-$8$ Rabin
+  criterion.  Localization at the nonzero endpoint $L$ makes any
+  putative vertical factorization specialize with positive degrees,
+  contradicting that certificate (`/tmp/l22_elimination.md`, §5;
+  `data/l22_elimination.jsonl`, exceptional-fibre record `Z=1`).
+- A specialization with $D=0$ makes $H=a^8Z^4N_g^2$, but for fixed
+  $Z\ne0$ there are at most two such $a$-values.  Vertical
+  irreducibility is a statement over $\mathbb Q(a)$, and the admissible
+  progression omits these finitely many values
+  (`/tmp/l22_elimination.md`, §5;
+  `data/l22_elimination.jsonl`, `fixed-Z-theorem`).
+
+This proves the theorem symbolically; the finite-field tables in
+`data/l22_elimination.jsonl` are **EVIDENCE** only and are not used to
+infer any rational fibre.
+
+### L22b. Independent reciprocal all-$Z$ theorem on the same branch
+
+**Independent theorem (PROVED).** Fix
+$$
+a=1,\quad A=5,\quad s=0,\quad
+\tau=3/5=\tau^\dagger,\quad\delta_{\tau^\dagger}=-4/5.
+$$
+On this explicitly named branch, the normalized polynomial
+$P(1,Z,b)$ is irreducible over $\mathbb Q$ for every
+$Z\in\mathbb Q^\times$ (`/tmp/l22_reciprocal_cube.md`, Status and Final
+conclusion; `data/l22_reciprocal_cube.jsonl`, summary).  The
+$\tau^\dagger,\delta=-4/5$ qualification is load-bearing: the
+square-$\delta$ branches of L21a are reducible.
+
+With $D=1-Z-Z^2$ and $u=b+b^{-1}$, exact expansion on this same branch
+gives
+$$
+P(b)=b^4T(u),\qquad
+T(u)=400D^2+\frac45Z^4\bigl(16-5(u-2)^2\bigr)^2.
+$$
+Over $E=\mathbb Q(t)$, $t^2=-5$,
+$$
+\frac54T=Q_-(u)Q_+(u),\qquad
+Q_\pm=Z^2\bigl(16-5(u-2)^2\bigr)\pm10Dt.
+$$
+(Source: `/tmp/l22_reciprocal_cube.md`, §1;
+`data/l22_reciprocal_cube.jsonl`, symbolic-identity record.)
+Trace reducibility is equivalent to
+$80Z^2+50Dt$ being a square in $E$, and therefore forces
+$$125D^2+64Z^4\in\mathbb Q^{\times2}.$$
+Writing $Z=p/q$ in lowest terms and
+$d=q^2-pq-p^2$, its cleared numerator is
+$$125d^2+64p^4\equiv5\pmod8,$$
+which is never a square.  Thus $T$ is irreducible for every rational
+$Z\ne0$ (`/tmp/l22_reciprocal_cube.md`, §1;
+`data/l22_reciprocal_cube.jsonl`, trace-theorem record).
+
+For a root $u$ of $T$, the reciprocal lift is irreducible if
+$u^2-4$ is nonsquare in $\mathbb Q(u)$.  Its norm is a rational square
+times
+$$
+\Xi(Z)=\bigl(125D^2+64Z^4\bigr)
+       \bigl(125D^2+1024Z^4\bigr).
+$$
+If $\Xi$ were square, setting $h=5D/(8Z^2)$ would give a rational point
+with positive $x$ on
+$$E:\ y^2=x(x+5)(x+80),\qquad x=25h^2.$$
+A complete $2$-isogeny descent gives rank $0$ and
+$$E(\mathbb Q)=\{O,(0,0),(-5,0),(-80,0)\},$$
+which has no positive $x$; hence $\Xi$ is nonsquare and the lift is
+irreducible (`/tmp/l22_reciprocal_cube.md`, §§2–3;
+`data/l22_reciprocal_cube.jsonl`, reciprocal-lift,
+two-isogeny-descent and elliptic-torsion records).  The proof uses norm
+nonsquareness only in the sufficient direction.
+
+The value $a=1$ is a specialization witness, not the final cell witness:
+it need not satisfy $(5\mid w)=-1$.  If
+$P(a,Z,b)$ on
+$\tau^\dagger=(1+2a^2)/A$, $\delta_{\tau^\dagger}=-4a^4/A$
+factored in $\mathbb Q(a)[b]$, localization at its nonzero endpoints
+would specialize that factorization at $a=1$, contradicting the theorem
+above.  Quantitative Hilbert irreducibility then selects the actual
+irreducible $a$ inside L20's odd character-admissible progression; the
+bad count is $O_Z(\sqrt B\log B)$ while the progression contributes
+$B/M+O(1)$ members (`THEOREMS.md`, L21d; fixed-branch specialization
+source `/tmp/l22_reciprocal_cube.md`).  This is an independent proof of
+the vertical input used in the chain.
+
+### L22c. Side lemmas and their exact scope
+
+1. **Infinity clusters (PROVED local structure; not the closure).**
+   Over $\mathbb Q(Z)((1/a))$, $Z\ne0$, higher-order Newton analysis
+   resolves the repeated residuals into four irreducible quadratic
+   clusters.  A proper global factor is therefore locally permitted only
+   in degrees $2$, $4$, or $6$; the $a=0$ place usually narrows this to a
+   $4+4$ split but has explicit square exceptional loci
+   (`/tmp/l22_infinity.md`, L22-I1–I5;
+   `data/l22_infinity.jsonl`).  This method alone stopped there; L22a
+   globally eliminates the surviving degrees.
+2. **Factor tuples (PROVED criterion and no-go; CONDITIONAL prime
+   values).** If a primitive reducible $G$ is written as a product of
+   irreducibles, classical Schinzel H need be applied only to its
+   odd-exponent factors together with the linear moving-prime
+   polynomial.  An all-plus residue in the explicit resultant-character
+   period is necessary and sufficient for progression refinement.
+   However, the admissible tuple
+   $(8t+5,8t+7,8t+23)$ has individual outside signs $(-1,-1)$ at every
+   simultaneous-prime value although their product is $+1$
+   (`/tmp/l22_factor_tuple.md`, §§1–4;
+   `data/l22_factor_tuple.jsonl`, summary).  Reciprocity controls only
+   the product: the route weakens irreducibility when compatibility is
+   separately known, but otherwise relocates rather than removes the
+   obligation.  It is not used in the six-count closure.
+3. **Free-$\lambda$ square branch (PROVED off-chain theorem; NOT
+   APPLICABLE to the six-count).** Every rational solution of
+   $X^2-r^2=A$ is
+   $$X=(\lambda+A/\lambda)/2,\quad
+     r=(\lambda-A/\lambda)/2,\quad
+     \tau=X/A,\quad\delta=-r^2/A,$$
+   and the associated pencil is irreducible over
+   $\mathbb Q(\lambda)[b]`; Hilbert irreducibility plus the enlarged
+   controlled set constructs an aligned class for each cell
+   (`/tmp/l22_square_branch.md`, §§1–5;
+   `data/l22_square_branch.jsonl`).  But the selected $\lambda$ varies
+   through the infinite L11c family after the cell is known.  L11c
+   permits only a predeclared finite branch menu at the current witness
+   count; making $\lambda$ a witness would raise the count by one
+   (`/tmp/l22_square_branch.md`, Six-count warning;
+   `agent://BranchAudit`).  **This theorem is not, and must never be
+   cited as, the six-count closure.**
+4. **Geometric Noether reduction (PROVED reduction; OPEN auxiliary
+   nonvanishing lemma).** The norm-pencil model gives a descent from
+   absolute irreducibility of $S_r$,
+   $r=(1-Z)/Z^2$, to vertical irreducibility of $H$.  Its generic member
+   is geometrically integral, and fixed-fibre reducibility is detected
+   by the gcd $N(r)$ of the $483$-minors of an explicit
+   $903\times483$ integer matrix (`/tmp/l22_fiber_geometry.md`, §§2–5;
+   `data/l22_fiber_geometry.jsonl`).  The statement
+   $N((1-z^3)/z^6)\ne0$ for every cell remains **OPEN** in that auxiliary
+   route (`/tmp/l22_fiber_geometry.md`, §7).  L22a proves the required
+   vertical theorem directly, so this open polynomial nonvanishing is
+   not a premise of the record.
+
+### L22d. Chain consequence
+
+Fix a cell $(w,z)$ and put $Z=z^3\ne0$.  L22a proves
+$P(a,Z,b)$ irreducible in $\mathbb Q(a)[b]$ on the fixed branch
+$\tau^\dagger=(1+2a^2)/A$,
+$\delta_{\tau^\dagger}=-4a^4/A$.  Quantitative Hilbert
+irreducibility inside L20's nonempty odd character-admissible
+$a$-progression therefore supplies a concrete admissible $a$ with an
+irreducible specialization (`/tmp/l22_elimination.md`;
+`THEOREMS.md`, L20 and L21d).
+
+For that $a$, L20 takes $f=w$ and constructs an aligned class.  In the
+Schinzel admissibility package, condition (a) — positive leading
+coefficient and irreducibility — is now **PROVED** by L20 plus L22;
+conditions (b), (c), and (d) were already **PROVED** uniformly by L20.
+Thus all four conditions are **PROVED** (`/tmp/l20_admissible.md`;
+`/tmp/l22_elimination.md`; `data/l22_elimination.jsonl`).
+
+Classical Schinzel H for the resulting pair
+$\{q_1+Nt,G(t)\}$ then supplies infinitely many emergent-free members by
+L19, so the intermediate per-cell hypothesis H holds.  The L6 assembly
+and the unchanged finite branch menu give Theorem C with exactly six
+universal quantifiers (`CONDITIONAL.md`, §§1–2; `THEOREMS.md`, L6,
+L19–L20).  Therefore
+$$
+\boxed{\text{classical Schinzel H}\ \Longrightarrow\
+       \text{intermediate H}\ \Longrightarrow\ \text{Theorem C}.}
+$$
+This is a **PROVED implication with CONDITIONAL conclusion**.  Classical
+Schinzel H is unproved; neither it nor Hilbert's Tenth Problem over
+$\mathbb Q$ is claimed solved.

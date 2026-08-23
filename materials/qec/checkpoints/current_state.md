@@ -1,3 +1,48 @@
+# Checkpoint — 2026-08-22 (EXP-055 odd-lattice closure; reciprocal-pole logic; three exact BB references)
+
+**Premise correction / prior art.** The claim that $[[90,8,10]]$ was the only
+odd$\times$odd BB code in print was false and is withdrawn. A primary-source
+refresh sourced 27 instances across Bravyi, Eberhardt–Steffan, Wang–Mueller and
+Postema–Kokkelmans. The odd-lattice rate/principal-code structure is published,
+not ours: in the repository convention $I=\operatorname{Ann}_{\rm left}(a,b)$,
+$J=\bar I$, and $J^2\cong\ker H_X/S_Z$. EXP-055 re-verifies the isomorphism
+27/27. The bar is load-bearing; raw $I$ fails the physical-kernel test on the
+$(7,7)\,[[98,6,12]]$ control (FR-026).
+
+**Literature audit.** Three independent $k$ routes agree internally on 27/27 and
+with printed $k$ on 25/27; the two transcribed App. C rows remain
+unreproduced. Source distance provenance is explicit: Wang–Mueller uses BP-OSD
+`distance_upperbound`, Postema table values are Monte-Carlo estimates. All 25
+reported values pass the pole ceiling only as a sanity check; five rows are
+locally two-sided exact-certified, with zero ceiling violations
+(slack min/median/max 2/10/22). No estimate enters a domination threshold.
+
+**Complete algebraic census.** All 65 odd lattices with $\ell m\le180$
+($n\le360$): 4,229,823,962 weight-$\le3$ pairs, zero $k$ mismatches,
+273/273 idempotence checks. Config-bound shards; assembled scope complete.
+
+**Exact discoveries.** Connected/row-space-indecomposable:
+$[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$, all with exact $d_X=d_Z=d$
+and explicit witnesses. The latter two exactify Wang–Mueller BP-OSD parameters.
+The $[[30,8,4]]$ constructor was not found in checked BB tables, but is globally
+dominated by Grassl's explicit $[[30,8,7]]$; it is not a general-code or
+end-to-end Pareto result. Canonical certificate:
+`results/certificates/exp055_discovered_references.json`.
+
+**Fixed-point exact-reference screen, complete through $n=126$.** Nine
+odd-lattice factorizations; weight-3 $A,B$; $8\le k\le24$; 715 symmetry classes
+representing 10,247 normalised pairs. All 598 classes with a locally exact
+reference are dominated (588 explicit logical witnesses, 10 all-sector
+CP-SAT); 117 high-$k$ classes have no reference; zero survivors, zero
+undecided. Census/reference/protocol hashes bind all shards. Exact distance
+closure above $n=126$ remains open; the first $[[162,8,14]]$ exactification
+attempt did not complete in 2,100s.
+
+Verification: 38 targeted EXP-055/prose guards; full suite **961 passed, 1
+skipped (962 collected)**; paper rebuilt 17 pp with zero undefined references;
+bundle `dist/pbb_nogo_bundle_2026-08-22.zip` verified (1,633 zip entries,
+0 SHA-256 mismatches).
+
 # Checkpoint — 2026-08-21b (the demote law is an ideal invariant; trinomials can never be mixed; J-A resolved)
 
 **Theorems J-G/J-H/J-I/J-J (proved; `notes/theorem_jg_ideal_invariant.md`, ledger 51–52).**

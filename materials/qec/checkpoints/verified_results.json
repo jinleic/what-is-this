@@ -14705,6 +14705,17 @@
    "evidence:tests": "tests/test_exp053_ideal_invariant.py (census contract + lemma unit checks) + tests/test_paper_claims.py (census pair-count guard)",
    "evidence:note": "notes/theorem_jg_ideal_invariant.md",
    "classification": "PROVED"
+  },
+  {
+   "id": "exp055:odd_lattice_pole_census_closure",
+   "date": "2026-08-22",
+   "kind": "theorem+exact-computation",
+   "statement": "EXP-055 ODD-LATTICE RESULT. PRIOR ART: for odd ell,m, semisimple group-algebra rate/principal-code structure is published (Panteleev-Kalachev, Lin-Pryadko, Eberhardt-Steffan, Postema-Kokkelmans); the prior internal claim that [[90,8,10]] was the only odd-by-odd BB code in print is FALSE and withdrawn (27 sourced instances). BAR-AWARE REPRODUCTION: ann_basis stores the LEFT annihilator I; the physical right-kernel pole is J=bar(I), and J x J is isomorphic to ker(H_X)/rowspace(H_Z). Independent rank audit 27/27. Raw-I fallback retracted: it fails physical-kernel membership on (7,7)[[98,6,12]] (FR-026). The pole ceiling d<=min wt(J\\0) is a short corollary of published structure; all 25 reproduced reported values pass as a sanity check, but Wang-Mueller values are BP-OSD upper bounds and Postema values are Monte-Carlo estimates. Five rows are locally two-sided exact (zero ceiling violations, slack 2/10/22); estimates never enter domination thresholds. CENSUS: all 65 odd lattices ell*m<=180 (n<=360), 4,229,823,962 weight<=3 pairs, zero k mismatches, 273/273 idempotence checks, config-bound complete shards. EXACT REFERENCES: connected/row-space-indecomposable [[30,8,4]], [[54,8,6]], [[126,12,10]], with d_X=d_Z=d exact and explicit witnesses. The latter two exactify Wang-Mueller BP-OSD parameters. [[30,8,4]] was not found as a BB constructor in the checked primary tables, but Grassl gives [[30,8,7]], so it is globally dominated and not a general-code/end-to-end Pareto result. FIXED-POINT SCREEN SCOPE: all nine odd lattices through n=126, exact weight-3 A/B, 8<=k<=24; 715 symmetry classes / 10,247 normalised pairs. All 598 classes with an independently exact reference are dominated (588 explicit logical witnesses, 10 all-sector CP-SAT); 117 high-k classes have no reference; zero survivors and zero undecided. Screen shards are census-hash/reference-hash/protocol bound. The algebraic census is complete to n=360; distance closure above n=126 remains open; [[162,8,14]] exactification did not finish in 2,100s.",
+   "evidence:json": "results/processed/exp055_odd_lattice_sweep.json; results/processed/exp055_literature_validation.json; results/processed/exp055_odd_lattice_screen.json; results/certificates/exp055_discovered_references.json; results/certificates/exp055_postema_rows.json; results/certificates/exp055_odd_lattice_survivors.json",
+   "evidence:experiment": "experiments/exp055_odd_lattice_sweep.py",
+   "evidence:tests": "tests/test_exp055_odd_lattice.py + tests/test_paper_claims.py (38 targeted); full suite 961 passed, 1 skipped",
+   "evidence:note": "notes/theorem_k_certified_ceiling.md; notes/next_breakthroughs.md; notes/failed_routes.md FR-025/026; reports/paper_pbb_nogo.pdf (17 pp)",
+   "classification": "PUBLISHED STRUCTURE REPRODUCED + EXACT COMPUTATION + NEW BB CONSTRUCTOR (GLOBALLY DOMINATED)"
   }
  ]
 }

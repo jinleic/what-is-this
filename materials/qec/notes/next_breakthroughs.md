@@ -40,20 +40,27 @@ principal"). Claim it as reproduction, never as novelty.
 
 **What survived and is now done (EXP-055).** Two things:
 
-1. *A certified solver-free distance ceiling* (novelty check: NOT FOUND in this
-   form). With $I=\operatorname{Ann}(a)\cap\operatorname{Ann}(b)$ and
-   $I_0=I\cap\bar I$, every nonzero $u\in I_0$ gives a nontrivial logical, so
-   $d\le\min\{\operatorname{wt}(u):0\ne u\in I_0\}$ — microseconds, no solver.
-   Validated on 25 reproduced published instances: **zero violations**, slack
-   $2$–$42$ (median $12$), so it is sound but roughly $2\times$ loose.
+1. *A certified solver-free distance ceiling* (the exact pole isomorphism is
+   published; its explicit use as a general-BB rejection oracle was not found).
+   If $I=\operatorname{Ann}_{\rm left}(a,b)$ and $J=\bar I$ is the physical
+   right-kernel pole, then $J^2\cong\ker H_X/S_Z$ exactly and
+   $d\le\min\{\operatorname{wt}(u):0\ne u\in J\}$. Reduced pole-coset witnesses
+   are self-certifying and much tighter. The isomorphism passes 27/27 literature
+   audits; the ceiling has zero violations on five locally exact-certified rows
+   (all 25 reported values also pass as a non-certifying sanity check).
 2. *An exhaustive census*: all $65$ odd lattices with $\ell m\le180$,
    $4.23\times10^9$ weight-$\le3$ pairs, exact $k$ by two independent routes
    (zero mismatches), immunity re-verified ($273$ idempotence tests, zero
    violations).
 
-**Remaining live question.** The Pareto screen: is any odd-lattice weight-3 BB
-code undominated by the published set? Running as EXP-055 `screen`. The ceiling
-rejects candidates with no solver call at all; the rest go to capped CP-SAT.
+**Screen verdict.** Complete through $n=126$: 715 symmetry classes / 10,247
+pairs; all 598 classes with an independently exact reference are dominated
+(588 explicit witnesses, 10 CP-SAT), 117 high-$k$ no-reference, zero survivors
+or undecided. Three exact local references were promoted during closure:
+$[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$. The $[[30,8,4]]$ constructor is
+new within checked BB tables but globally dominated by Grassl $[[30,8,7]]$.
+The live extension is the distance screen at $n>126$; the first
+$[[162,8,14]]$ exactification attempt timed out at 2,100s.
 
 ## B. Multi-row light channels: replace CP-SAT certificates with a theorem
 

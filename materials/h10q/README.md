@@ -13,7 +13,7 @@ nothing in `scratch/` remains.
 
 | File | Owns |
 |---|---|
-| [`THEOREMS.md`](THEOREMS.md) | Precise frontier statements (L1–L9, A1–A3), full proofs of everything proved here, and the exact open assembly lemma. |
+| [`THEOREMS.md`](THEOREMS.md) | Precise frontier statements (L1–L22, A1–A3), full proofs of everything proved here, and the exact chain showing classical Schinzel H implies the conditional six-quantifier record. |
 | [`RESULTS.md`](RESULTS.md) | Findings ledger, claim-by-claim scope table, frontier stratification, next actions. |
 | [`NOTES.md`](NOTES.md) | Problem map: exact theorem statements with arXiv ids, both pillars. |
 | [`h10q.py`](h10q.py) | Standalone executable model; re-verifies every in-suite claim on each run. |
@@ -39,6 +39,19 @@ nothing in `scratch/` remains.
 | `data/l17_classfactors.jsonl` | L17: per-class $p\le10^4$ window factor intervals [lo, hi] rebuilt from v2 resolved-mass roots (generator [`l17_classrisk.py`](l17_classrisk.py)); closure-effort correlation (descriptive): Spearman $\rho=-0.178$, medians $0.5742$ vs $0.5662$ (cls=0 vs ≥1). |
 | `data/l17_schinzel_audit.jsonl` | L17: audit of the ledgered Schinzel reduction (THEOREMS L9–L10): 293 canonical closure pairs $\{q_1(t), F_{\text{cell}}(t)\}$ — all $F$ irreducible (deg 8, certified), value-gcd 1, pair-product gcd 1, local conditions pass with corrected $q_1(t)\not\equiv0\ (p)$ counts; 6 `_L13_RESIDUAL` rational-b witnesses segregated as pointwise certificates. Generator [`l17_schinzel_audit.py`](l17_schinzel_audit.py). |
 | `data/l17_horizon{101,103,107,109}.jsonl` + [`l17_horizon{101,103,107,109}.py`](l17_horizon101.py) | L17-horizon: off-grid closure artifacts + full scan logs at $w\in\{101,103,107,109\}$, $u=-1$; replay from repo root; H109 cross-k auxiliary scan `data/l17_horizon109_crossk.jsonl` (1,275 probes, $k\le50$; deterministic generator [`l17_horizon109_crossk.py`](l17_horizon109_crossk.py), ~17 min, byte-identical regeneration verified). |
+| [`l19_tauzero.py`](l19_tauzero.py) + [`data/l19_tauzero.jsonl`](data/l19_tauzero.jsonl) | L19 variable-$a$, $\tau=0$, $f=w$ class-side break of the canonical 5-wall, with exact symbol audits and a separately labelled bounded scan. Replay from `math/h10q/`: `python3 l19_tauzero.py`. |
+| [`l19_classexist.py`](l19_classexist.py) + [`data/l19_classexist.jsonl`](data/l19_classexist.jsonl) | L20 uniform class-existence constructor for every cell, including the 353 grid certificates and the independent fixed-$a=1$ collision diagnostic. Replay from `math/h10q/`: `python3 l19_classexist.py`. |
+| [`l19_cell179.py`](l19_cell179.py) + [`data/l19_cell179.jsonl`](data/l19_cell179.jsonl) | L19 search ledger and exact kernel replay closing the last tried off-grid cell, $w=179$, with every refusal kept non-evidentiary. Replay from `math/h10q/`: `python3 l19_cell179.py`. |
+| [`l20_admissible.py`](l20_admissible.py) + [`data/l20_admissible.jsonl`](data/l20_admissible.jsonl) | L20 historical Schinzel-pair audit: conditions (b)–(d) and positive lead were proved there; its then-open irreducibility entry is superseded by L22. Replay from `math/h10q/`: `python3 l20_admissible.py`. |
+| [`l21_reducible_locus.py`](l21_reducible_locus.py) + [`data/l21_reducible_locus.jsonl`](data/l21_reducible_locus.jsonl) | L21a–c reducible-locus, constructed-branch escape, and corrected-palindromic identities, with exact applicability controls. Replay from `math/h10q/`: `python3 l21_reducible_locus.py`. |
+| [`l21_irred_generic.py`](l21_irred_generic.py) + [`data/l21_irred_generic.jsonl`](data/l21_irred_generic.jsonl) | L21d generic and 353-fiber irreducibility certificates, quantitative-HIT dodge, first-$a$ audit, and the cross-branch reducibility hunt. Replay from `math/h10q/`: `python3 l21_irred_generic.py`. |
+| [`l21_irred_direct.py`](l21_irred_direct.py) + [`data/l21_irred_direct.jsonl`](data/l21_irred_direct.jsonl) | L21e direct 353-cell no-go audits for mod $w$ and Newton polygons, plus the $a=1$ quartic trace criterion and auxiliary exact certificates. Replay from `math/h10q/`: `python3 l21_irred_direct.py`. |
+| [`l22_elimination.py`](l22_elimination.py) + [`data/l22_elimination.jsonl`](data/l22_elimination.jsonl) | **L22a — PROVED, PRIMARY CLOSURE:** for every fixed $Z\in\mathbb Q^\times$, the canonical-branch polynomial with $\tau^\dagger=(1+2a^2)/A$, $\delta=-4a^4/A$ is irreducible in $\mathbb Q(a)[b]$.  Symbolic endpoint elimination; finite scans remain EVIDENCE. Replay from the workspace root: `nice -n 19 python3 math/h10q/l22_elimination.py`. |
+| [`l22_reciprocal_cube.py`](l22_reciprocal_cube.py) + [`data/l22_reciprocal_cube.jsonl`](data/l22_reciprocal_cube.jsonl) | **L22b — PROVED, INDEPENDENT CLOSURE:** on the explicitly named $a=1,A=5,s=0,\tau=3/5=\tau^\dagger,\delta=-4/5$ specialization, reciprocal trace plus complete $2$-isogeny descent proves irreducibility for every rational $Z\ne0$. Replay: `python3 l22_reciprocal_cube.py`. |
+| [`l22_infinity.py`](l22_infinity.py) + [`data/l22_infinity.jsonl`](data/l22_infinity.jsonl) | **PROVED local side lemma; NOT the closure:** four quadratic Laurent clusters permit degrees $2,4,6$ locally; L22a performs the global elimination. Replay: `python3 l22_infinity.py`. |
+| [`l22_factor_tuple.py`](l22_factor_tuple.py) + [`data/l22_factor_tuple.jsonl`](data/l22_factor_tuple.jsonl) | **PROVED criterion/no-go; CONDITIONAL prime values:** factor tuples can weaken whole-polynomial irreducibility when an all-plus residue is separately known, but parity controls only the product of signs. This route relocates the obligation and is not the closure. Replay: `python3 l22_factor_tuple.py`. |
+| [`l22_square_branch.py`](l22_square_branch.py) + [`data/l22_square_branch.jsonl`](data/l22_square_branch.jsonl) | **PROVED off-chain algebra/class theorem; NOT APPLICABLE to the six-count:** the cell-dependent $\lambda$ selected by HIT ranges through the infinite L11c family and would require an additional witness. Never cite this artifact as the record closure. Replay: `python3 l22_square_branch.py`. |
+| [`l22_fiber_geometry.py`](l22_fiber_geometry.py) + [`data/l22_fiber_geometry.jsonl`](data/l22_fiber_geometry.jsonl) | **PROVED Noether reduction; OPEN auxiliary nonvanishing:** the geometric reduction is exact, but its remaining polynomial lemma is not proved. L22a makes that lemma unnecessary for the conditional chain. Replay: `python3 l22_fiber_geometry.py`. |
 | Engine note (2026-08-18) | Proven-primality engine strengthened: `_pocklington` now uses trial division to $10^6$ (early abort at $F\ge n^{1/3}$, exact integer cube root) + the **Brillhart–Lehmer–Selfridge relaxation** (CP Thm 4.1.5: $F\ge n^{1/3}$, two-factor discriminant test). Every verdict still exact; `PrimalityBound` refusals remain non-evidence. Suites: default ~51 s, extended ~118 s. |
 | `data/l6_witnesses.jsonl`, `data/l9_steered.jsonl` | **Canonical serializations** of the authorities `_L6_WITNESSES` (61 rows) and `_L9_STEERED` (345 rows) in `h10q.py`. Byte-identical match required on every suite run — drift, absence, or any underived field fails the suite. Regenerate: `python3 h10q.py --export-evidence`. |
 | `data/l9_steer_run.jsonl`, `data/l9_rescue_*.jsonl` | Raw steered-search run artifacts — search-side provenance only, never citable evidence. |
@@ -47,7 +60,7 @@ nothing in `scratch/` remains.
 | `data/litscout_h10q.md` | LitScout-2 (2026-08-18): source-verified citations for CONDITIONAL.md §4 — Krumm JTNB 28 (2016) pins (Thm 1.3, Props 3.4–3.5; degree 3 conditional on the elliptic Parity Conjecture, Prop 3.8), degree-8 ceiling beyond proved range on both sides, DDF arXiv:2102.06941v5 attribution confirmed, Crelle 495 (1998) author-list correction. Applied to CONDITIONAL.md same day. |
 | `data/superseded/` | Inadmissible or superseded raw search buckets and the old rescue log — provenance only, never citable evidence. |
 
-## State (2026-08-17)
+## State (2026-08-22)
 
 - **PROVED here (machine-checked):** W0 canonical two-branch selector from the
   character identity $\sum_{a\in k}\chi(1+4a^2)=-1$ over every odd residue
@@ -56,11 +69,15 @@ nothing in `scratch/` remains.
   $M_\tau=0$ **or** $-\delta_\tau A M_\tau\in N_{E_\tau/\mathbb{Q}}(E_\tau^\times)$
   (the zero case is solved by $(y,r)=(0,0)$ and is not absorbable); cube
   pullback $c=h(a,b,z^3)$ with $v_w(c)=2v_w(a)+6v_w(z)-2\ge4$.
-- **CONDITIONAL (no record claimed):** L6 witness-tie $a=1+2s$ gives a
-  universal definition of $\mathbb{Z}$ in $\mathbb{Q}$ with **6** quantifiers
-  *iff* the explicitly scoped global norm-assembly lemma (THEOREMS.md §L6)
-  holds. Unconditional records stand: $\forall_{10}$ refereed (Daans
-  arXiv:2301.02107), $\forall_7$ unrefereed (Sun arXiv:2607.28606).
+- **CONDITIONAL RECORD ESTABLISHED:** assuming classical Schinzel H
+  alone, L19–L22 prove the intermediate per-cell H and complete the L6
+  witness-tie architecture.  Hence $\mathbb Z$ has a definition over
+  $\mathbb Q$ with **six universal quantifiers**, and
+  $\operatorname{efd}_{\mathbb Q}(\mathbb Q\setminus\mathbb Z)\le5$
+  (`THEOREMS.md`, L6 and L22d; `CONDITIONAL.md`, §§1–2).
+  Classical Schinzel H is unproved; the unconditional anchors remain
+  $\forall_{10}$ refereed (Daans arXiv:2301.02107) and $\forall_7$
+  unrefereed (Sun arXiv:2607.28606), as sourced in `THEOREMS.md`, A1–A2.
 - **EVIDENCE (bounded, not proof):** 61/61 guarded canonical global tied
   certificates, $A$ a nonsquare $w$-unit, $\Delta=\{2,w\}$ exactly,
   32 $\tau{=}0$ / 29 $\tau{=}2a/A$. An earlier unguarded table was discarded
@@ -135,14 +152,49 @@ nothing in `scratch/` remains.
   coprimality: $b=\varepsilon fq$ with $f\mid z$ lights up **103 of the 163
   walled cells** — class alignment now **VERIFIED** (L13a: $S_{\min}=
   \{2,3,5,7,f\}$, 883 members, 0 violations).
+- **L19–L20 CLASS EXISTENCE + SCHINZEL ADMISSIBILITY
+  (historical precursor, completed by L22):** one aligned class exists
+  for every cell, using $f=w$.  L20 proved conditions (b), (c), and (d)
+  and the positive-leading part of (a); literal $S$-support of the
+  content is false, while square-class support is the correct sufficient
+  statement (`data/l19_classexist.jsonl`;
+  `data/l20_admissible.jsonl`).  Its sole then-open item,
+  irreducibility in condition (a), is now PROVED by L22.
+- **L21 IRREDUCIBILITY PRECURSOR (SUPERSEDED AS FRONTIER):** blanket
+  irreducibility is false off branch when $s=0$ and
+  $\delta_\tau$ is square, but the canonical branch
+  $\tau^\dagger=(1+2a^2)/A$ has
+  $\delta_{\tau^\dagger}=-4a^4/A$.  L21 proved generic
+  irreducibility and the recorded $353/353$ vertical fibres; L22
+  upgrades this to every fixed nonzero rational $Z$
+  (`data/l21_irred_generic.jsonl`; `/tmp/l22_elimination.md`).
+- **L22 FIXED-FIBRE CLOSURE:** the symbolic factor elimination proves
+  $P(a,Z,b)$ irreducible in $\mathbb Q(a)[b]$ for every fixed
+  $Z\in\mathbb Q^\times$ on
+  $\tau^\dagger=(1+2a^2)/A$, $\delta=-4a^4/A$
+  (`/tmp/l22_elimination.md`; `data/l22_elimination.jsonl`).  The
+  reciprocal specialization at
+  $a=1,A=5,s=0,\tau=3/5,\delta=-4/5$ gives an independent all-$Z$
+  proof (`/tmp/l22_reciprocal_cube.md`;
+  `data/l22_reciprocal_cube.jsonl`).  Quantitative HIT in L20's odd
+  character-admissible $a$-progression then selects a concrete
+  irreducible $a$ (`THEOREMS.md`, L21d and L22).
+
+**Current chain, exactly.** For every cell, L22 plus quantitative HIT
+selects an irreducible admissible $a$; L20 supplies the aligned $f=w$
+class and conditions (b)–(d), while L22 completes condition (a).  L19
+supplies a member under classical Schinzel H.  Therefore
+`classical Schinzel H => intermediate H => Theorem C`
+(`THEOREMS.md`, L22d; `CONDITIONAL.md`, §§1–2).  No per-cell
+irreducibility certificate remains.
 - **L14 H ON THE GRID COMPLETE (2026-08-18):** hypothesis H is verified
   instance-wise on the entire 353-cell grid — **every one of the 293
   aligned classes (190 L11 + 103 ESC) carries a certified emergent-free
   member** (`_L13_H_CLASSES`, replayed every run: default 60-seed,
   extended all 293, both suites exit 0). Method: L13f cofactor ladder +
   BLS-relaxed Pocklington engine upgrade + three scan waves (frozen
-  classes, upgraded-prover rerun, alternate aligned classes). The
-  uniform all-$w$ statement of H remains the open analytic frontier.
+  classes, upgraded-prover rerun, alternate aligned classes). This is the
+  bounded-grid result; the L19–L22 implication above is the current frontier.
 - **L13 AFTERMATH (2026-08-17):** the class side is verified and the
   shortcut side is dead. (a) All 103 escape rows carry verified class
   alignment (minimal controlled set $\{2,3,5,7,f\}$, median modulus
@@ -163,9 +215,10 @@ nothing in `scratch/` remains.
   sqf $\in\{\pm1,\pm5\}$; 137.5M square-class tests and 40 designed
   families found **zero** hits — step (ii) cannot be collapsed
   structurally. (d) Emergent-free members exist: 5 certified zero-bad
-  members, 9 found by sampling among 44 factored. Assembly hypothesis H
-  (an emergent-free member of each aligned CLASS, uniformly) stays open;
-  the count 6 stays conditional.
+  members, 9 found by sampling among 44 factored. The stronger “member in
+  every aligned class” statement is not required: L20 supplies one selected
+  class per cell, L22 supplies irreducibility, and L19 gives member existence
+  **CONDITIONAL** on classical Schinzel H (`THEOREMS.md`, L19–L22).
 - **L10 CLASS-SIDE DICHOTOMY (2026-08-16):** the reduction's class step is
   settled per branch. **Proved:** the modulus freezes only the fixed places
   $S_0=\{2\}\cup\operatorname{supp}(\alpha)$, and the symbols that must all
@@ -204,7 +257,14 @@ generalized Pocklington certificates above it, explicit
 acceptance anywhere.
 
 
-## Reproducibility scope (2026-08-19)
+## Reproducibility scope (2026-08-22)
+
+All six L22 artifacts are repo-regenerable from their paired scripts:
+`l22_{elimination,reciprocal_cube,infinity,factor_tuple,square_branch,fiber_geometry}.py`
+write
+`data/l22_{elimination,reciprocal_cube,infinity,factor_tuple,square_branch,fiber_geometry}.jsonl`.
+Their theorem labels and non-overclaim scopes are listed in the inventory
+above; finite scans are never promoted to a uniform proof.
 
 Exactly these L17 artifacts are **repo-regenerable** end-to-end from
 checked-in scripts: `l17_ratemodel_padic.py` → `l17_badroots_closures.py`
@@ -220,26 +280,21 @@ evidence without checked-in producers** — their data was reviewed and is
 downstream-consumed, but regenerating them requires the original
 session-side scripts (not recovered into the repo).
 
-## Next (updated 2026-08-19)
+## Next (updated 2026-08-22)
 
-The grid program is **closed**: all 353/353 cells witnessed; all 293/293
-classes carry a verified emergent-free member (L14); the member-level
-obstruction is matched-modeled exactly (L17, marginal 0.9993, union
-$z=-0.09$); the Schinzel reduction's local conditions are audited clean
-on all 293 canonical pairs (Dirichlet side proved, degree-8 prime-values
-side open); the verified horizon now extends off-grid to
-$w\in\{101,103,107,109\}$.
+The non-Schinzel algebraic chain is closed on the fixed canonical branch:
+class existence, all four Schinzel admissibility conditions, and
+fixed-fibre irreducibility are PROVED (`THEOREMS.md`, L19–L22).  No new
+cell needs a separate irreducibility certificate.
 
-Frontier items:
-1. **Horizon wave 2**: close $w\in\{113,127,131,137,139,149\}$ on the
-   established off-grid machinery (`l17_horizon*.py` recipe); measure
-   off-grid density against the validated model.
-2. **Composite-$w$ frontier**: extend the machinery beyond prime $w$
-   (L13e already covers the wall for composite squarefree $A$).
-3. **The uniform step (ii)**: a density/independence statement over the
-   prime-$Q$ subsequence (the emergent-freeness second factor of H);
-   the rate band $c\in[0.017,0.80]$ per family brackets it with the
-   refusal mass as the named dominant uncertainty.
-4. Watch arXiv:2607.28606 for v2 (its §3 dyadic freezing and §7 norm
-   approximation are the referee items; L5 here offers the exact
-   identity for a corrected §5).
+1. **Primary frontier:** replace classical Schinzel H for the selected
+   linear/octic pair by an unconditional prime-value or
+   member-existence theorem.  Until that happens, the six-quantifier
+   record is CONDITIONAL and H10/$\mathbb Q$ remains open
+   (`CONDITIONAL.md`, §§1 and 4).
+2. **Optional side problem:** finish the Noether polynomial
+   nonvanishing lemma.  It remains OPEN but is not needed by the chain
+   (`/tmp/l22_fiber_geometry.md`; `THEOREMS.md`, L22c).
+3. **Scope guard:** the free-$\lambda$ theorem is not a fallback closure;
+   its infinite L11c branch family costs an additional witness
+   (`/tmp/l22_square_branch.md`; `agent://BranchAudit`).

@@ -24,8 +24,15 @@
  "no_group_certificate_pairs": 0,
  "no_group_certificate_represented": 0,
  "pairs_total": 1628176,
+ "protocol": {
+  "k_min": 8,
+  "max_weight": 3,
+  "sample": 12,
+  "seed": 55
+ },
  "qualifying_group_pairs": 0,
  "qualifying_pairs_represented": 0,
+ "schema": "exp055-census-lattice-v2",
  "supports": 1276,
- "wall_s": 1.53
+ "wall_s": 1.47
 }

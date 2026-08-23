@@ -728,8 +728,9 @@ odd, so $R=\mathbb F_2[G]$ is semisimple by Maschke and splits as
 $\prod_\chi\mathbb F_\chi$ over the Frobenius orbits of characters.
 Multiplication by $a$ is then diagonal, so
 $\operatorname{Ann}(a)=\bigoplus_{a(\chi)=0}\mathbb F_\chi$ and
-$$k \;=\; 2\dim I \;=\; 2\,\#\{\chi:\ a(\chi)=b(\chi)=0\},$$
-the odd-lattice rate law. This is published in several equivalent forms:
+$$k=2\dim_{\mathbb F_2}I
+=2\sum_{\chi:\,a(\chi)=b(\chi)=0}[\mathbb F_\chi:\mathbb F_2],$$
+the degree-weighted odd-lattice common-root law.
 Panteleev–Kalachev (arXiv:1904.02703, Prop. 1) as
 $k=2\deg\gcd(a,b,x^\ell-1)$ in the cyclic case, Lin–Pryadko
 (arXiv:2306.16400, Eq. 47), Wang–Mueller (arXiv:2408.10001v4, Eq. 11) for
@@ -738,52 +739,77 @@ Thm. 2.6), and Eberhardt–Steffan (arXiv:2407.03973v1, Cor. 2.11–2.12: "if
 $\ell$ and $m$ are odd, all BB codes are principal"). We use it, we do not
 claim it.
 
-**Theorem K (certified ceiling).** Let $I=\operatorname{Ann}(a)\cap
-\operatorname{Ann}(b)$, let $\bar{\cdot}$ be the involution $x\mapsto x^{-1},
-y\mapsto y^{-1}$, and set $I_0=I\cap\bar I$. Then every nonzero $u\in I_0$
-makes $(u,0)$ a *nontrivial* logical operator, so
-$$d(P)\ \le\ \min\{\operatorname{wt}(u):0\neq u\in I_0\}. $$
-*Proof.* $I\times I\subseteq\ker H_X$ since $au+bv=0$ there. Writing
-$S_Z=\{(\bar b\lambda,\bar a\lambda)\}$ and using $\bar a(\chi)=a(\chi^{-1})$,
-the block $(S_Z)_\chi$ is a line unless $\chi^{-1}\in Z:=Z(a)\cap Z(b)$, in
-which case it vanishes. Hence $(I\times I)\cap S_Z$ is supported exactly on
-$Z\setminus Z^{-1}$. Since $I_0$ is indexed by $Z\cap Z^{-1}$, which is
-inversion-closed, that support is empty and no nonzero element of
-$I_0\times I_0$ lies in $S_Z$. $\square$
+**Theorem K (reciprocal-pole logical isomorphism; bar-aware form of the
+published principal-code structure).** The coefficient ideal
+$I=\operatorname{Ann}_{\rm left}(a,b)$ is what `nullspace(HX.T)` computes. It
+is **not** itself the physical right kernel. Put $J=\bar I$, where
+$\bar{\cdot}$ is $x\mapsto x^{-1},y\mapsto y^{-1}$, and define
+$\mathcal P=J\oplus J$. Then
+$$\mathcal P\subseteq\ker H_X,\qquad
+  \mathcal P\cap S_Z=0,\qquad
+  \dim\mathcal P=k,$$
+so the quotient map is an isomorphism
+$$\boxed{\mathcal P\cong\ker H_X/S_Z.}$$
+*Proof.* In the character decomposition $I$ is supported on the common-zero set
+$Z$ and $J=\bar I$ on $Z^{-1}$. The physical column action of $H_X$ evaluates
+the reciprocal character, so $\mathcal P\subseteq\ker H_X$. Meanwhile
+$S_Z=\{(\lambda\bar b,\lambda\bar a)\}$, and at
+$\chi\in Z^{-1}$ its generator is
+$(b(\chi^{-1}),a(\chi^{-1}))=(0,0)$; hence
+$\mathcal P\cap S_Z=0$. Finally $\dim\mathcal P=2\dim I=k$ by the published rate
+law. $\square$
 
-The cost is $O(2^{\dim I_0}\ell m)$ bit operations — microseconds for
-$k\le32$, since $\dim I_0\le k/2$. When $Z\cap Z^{-1}=\varnothing$ the theorem
-is vacuous and we fall back to a per-instance rank test for the smallest
-nontrivial $(u,0)$, $u\in I$ (Corollary K1), which is convention-free but not
-closed-form. Full statement and proof: `notes/theorem_k_certified_ceiling.md`.
+This exact logical transversal is the principal-code isomorphism of
+Eberhardt–Steffan in the repository's matrix convention. The solver-free
+corollaries are
+$$d(P)=\min_{0\ne p\in\mathcal P}\min_{s\in S_Z}\operatorname{wt}(p+s),
+\qquad
+d(P)\le d_{\rm pole}:=\min_{0\ne u\in J}\operatorname{wt}(u).$$
+The raw pole ceiling costs $O(2^{k/2}\ell m)$ bit operations — microseconds for
+$k\le32$, no solver, decoder, or sampling. Reducing selected pole vectors
+modulo $S_Z$ under several information-set orders gives much tighter
+**self-certifying** logical witnesses: randomisation changes only tightness,
+never soundness. On the published $[[90,8,10]]$, for example, the raw ceiling
+is $20$ and the reduced witness has weight exactly $10$.
+
+The bar is load-bearing. On the published $(7,7)\,[[98,6,12]]$ code every basis
+vector of raw $I$ fails $H_X(u,0)^T=0$, whereas every basis vector of
+$J=\bar I$ passes. An intermediate EXP-055 draft used raw $I$ in a fallback;
+the regression caught it before the final PDF and the route is retracted. The
+earlier restricted $I\cap\bar I$ statement happened to be sound but was
+unnecessarily weak. Full statement, proof, and retraction:
+`notes/theorem_k_certified_ceiling.md`.
 
 **Validation against the literature, and a correction.** A read-only novelty
-check found no published form of this ceiling; it also refuted a claim we had
-been carrying, that $[[90,8,10]]$ on $(15,3)$ is the only odd$\times$odd BB
-instance in print. It is not: we sourced $27$ such instances from
-arXiv:2308.07915, arXiv:2407.03973v1, arXiv:2408.10001v4 and
-arXiv:2502.17052v4, including $(9,9)\,[[162,8,12]]$, $(9,15)\,[[270,8,18]]$,
+check found the pole isomorphism already published and did not find the
+explicit general-BB minimum-pole-weight ceiling or its exhaustive use as a
+rejection oracle; the latter is nevertheless a short corollary and is not
+oversold as a deep new theorem. The same check refuted a claim we had been
+carrying, that $[[90,8,10]]$ on $(15,3)$ is the only odd$\times$odd BB instance
+in print. It is not: we sourced $27$ instances from arXiv:2308.07915,
+arXiv:2407.03973v1, arXiv:2408.10001v4 and arXiv:2502.17052v4, including
+$(9,9)\,[[162,8,12]]$, $(9,15)\,[[270,8,18]]$,
 $(7,7)\,[[98,6,12]]$ and $(3,27)\,[[162,8,14]]$. Our earlier statement was
 scoped to the seven instances of our own baseline table, where it is correct;
-stated of the literature it was wrong, and it is withdrawn. The upside is a
-much stronger test bed: J-G1's immunity now covers $25$ published codes rather
-than one.
+stated of the literature it was wrong, and it is withdrawn.
 
-On those $27$ instances (EXP-055) we recomputed $k$ by three independent
-routes — the annihilator ideal, $k=n-\operatorname{rank}H_X-
-\operatorname{rank}H_Z$, and the published $\gcd$ formula where the lattice is
-coprime. All three agree with each other on all $27$ and with the printed $k$
-on $25$. Two rows (both arXiv:2408.10001v4 App. C Table 4, $(5,9)$ and
-$(7,11)$) give $k=0$ by both of our routes against printed $k=4$ and $k=6$; we
-did not read that appendix ourselves, so we record them as unreproduced,
-exclude them from every count, and name transcription on our side as the
-likeliest cause. Theorem K (with Corollary K1 closing the $11$ cases where
-$I_0=0$) then certifies a ceiling for all $25$ reproduced instances with
-**zero violations**. The slack is honest about the tool's limits: minimum $2$,
-median $12$, maximum $42$, i.e. roughly a factor $2$ — the same looseness
-recorded for the idempotent-ideal bound in `notes/failed_routes.md` (FR-024),
-and for the same structural reason ($\ker H_X$ exceeds $I\times I$ whenever $Z$
-is not inversion-closed, and syzygy pairs carry the true minimum).
+On those $27$ instances (EXP-055), the reciprocal-pole isomorphism passes
+**27/27** independent rank audits. We recomputed $k$ by three independent
+routes — annihilator dimension, $k=n-\operatorname{rank}H_X-
+\operatorname{rank}H_Z$, and the published $\gcd$ formula on coprime lattices.
+All three agree internally on all $27$ and with printed $k$ on $25$. Two
+transcribed Wang–Mueller App. C rows, $(5,9)$ and $(7,11)$, give internal $k=0$
+against printed $4$ and $6$; because we did not read the appendix ourselves,
+we record them as unreproduced and exclude them. All 25 reproduced rows satisfy
+`pole ceiling >= reported d`, but this is only a sanity check:
+Wang–Mueller's distances are BP-OSD `distance_upperbound` outputs and
+Postema–Kokkelmans labels its table values Monte-Carlo estimates. Five rows are
+independently exact-certified here (Bravyi $[[90,8,10]]$, three small Postema
+rows, and Wang–Mueller's $[[126,12,10]]$ exactified by EXP-055): zero ceiling
+violations, slack min/median/max $2/10/22$.
+The screen admits **only independent two-sided certificates** as domination
+thresholds; no decoder estimate or un-replayed source distance can reject a
+candidate.
 
 **Exhaustive census of the region.** Over all $65$ odd lattices with
 $\ell m\le180$ ($n\le360$) we enumerated every weight-$\le3$ pair —
@@ -793,6 +819,46 @@ mechanism directly ($273$ idempotence tests, zero violations, on lattices
 outside our catalogue's $m\in\{3,6\}$). Grouping polynomials by
 $\operatorname{Ann}$ makes this exact rather than sampled: $k$ and the ceiling
 depend only on the pair of annihilators.
+
+**Exact discoveries before fixed-point closure.** The first exact screen wave
+produced two connected, row-space-indecomposable BB codes:
+$$
+\begin{array}{c|c|c|c}
+(\ell,m)&A&B&[[n,k,d]]\\\hline
+(5,3)&1+x+x^3y&1+xy+x^4y&[[30,8,4]]\\
+(9,3)&1+y+x^3y^2&1+x+x^2&[[54,8,6]]\\
+(7,9)&1+\pi+\pi^{58}&\pi^3+\pi^{16}+\pi^{44}&[[126,12,10]]
+\end{array}
+$$
+All sector distances are independently CP-SAT exact and carry explicit
+witnesses. A primary-table search found no matching $[[30,8,4]]$ BB
+constructor (Wang--Mueller's only $n=30$ row is $[[30,4,6]]$), but Grassl's
+QECC table contains an explicit general stabilizer $[[30,8,7]]$: the BB
+constructor is new within the checked BB corpus but **globally dominated**, not
+a code-parameter or end-to-end Pareto improvement. The $[[54,8,6]]$ and
+$[[126,12,10]]$ results independently exactify parameters Wang--Mueller
+reported through BP-OSD (the latter costs 306s). All three become hash-bound
+local references for the fixed-point screen; their certificates are
+`results/certificates/exp055_discovered_references.json`.
+
+**Fixed-point Pareto screen (complete through $n=126$).** We promoted the three
+exact discoveries above into the hash-bound reference set and reran every
+weight-3 pair on all nine odd lattices with $n\le126$, $8\le k\le24$. Exact
+translation/unit/block-swap/$x\leftrightarrow y$ quotienting leaves **715**
+classes representing **10,247** translation-normalised pairs. Of these, 598
+have an admissible independently exact reference: **all 598 are dominated** —
+588 by explicit logical witnesses checked in
+$\ker H_X\setminus S_Z$, and 10 by all-sector CP-SAT decisions. The other 117
+high-$k$ classes have no certified reference and are labelled `no_reference`,
+not dominated. There are **zero survivors and zero undecided** among the
+referenced classes. Every shard is bound to the census SHA-256, reference-set
+SHA-256 and protocol; the assembled screen is
+`results/processed/exp055_odd_lattice_screen.json`.
+
+Scope is load-bearing: the algebraic $k$ census covers all 65 odd lattices
+through $n=360$, but the exact Pareto screen stops at $n=126$. A direct attempt
+to exactify the next reported $[[162,8,14]]$ reference did not complete within
+2,100s; no $n>126$ distance-closure claim is made.
 
 ---
 
@@ -858,7 +924,7 @@ beaten this way*: §6's domination table says no for all seven known increases.
 Environment: macOS Darwin $25.5.0$ arm64, Apple M3 Ultra, $28$ logical CPUs, $96$ GiB;
 Python $3.13.9$ in `.venv`; `numpy 2.4.6`, `scipy 1.18.0`, `stim 1.16.0`,
 `pymatching 2.4.0`, `sinter 1.16.0`, `ldpc 2.4.1`, `galois 0.4.11`, `ortools 9.15.6755`,
-`python-sat 1.9.dev13`; solver CaDiCaL $1.9.5$ via PySAT. Full suite: $937$ passing tests, $1$ skipped ($938$ collected).
+`python-sat 1.9.dev13`; solver CaDiCaL $1.9.5$ via PySAT. Full suite: $961$ passing tests, $1$ skipped ($962$ collected).
 
 | claim | artifact | experiment |
 |---|---|---|
@@ -886,6 +952,9 @@ Python $3.13.9$ in `.venv`; `numpy 2.4.6`, `scipy 1.18.0`, `stim 1.16.0`,
 | Theorem J-E′′: demote fixed set $= I^\infty M$; $202/202$ fractions $\in\{0,1\}$ ($192/10$, $0$ mixed), chains $\le 3$, $196$ integer crosschecks | `results/processed/exp052_ideal_power_trichotomy.json` + `tests/test_exp052_ideal_power_trichotomy.py` ($11$ checks) | EXP-052 |
 | Theorems J-G/J-H/J-I/J-J: ideal-invariance ($\dim S=2\dim I^\infty$, $202/202$ vs EXP-052), $I^2=0$ on all $192$ demoting / $I^2=I$ on all $10$ immune, odd-lattice corollary ($3{,}600$ parents), baseline table ($[[90,8,10]]$ immune), coset criterion exact ($10$ vs $192$), lemma battery, mixed witness (3 routes) | `results/processed/exp053_ideal_classification.json` + `tests/test_exp053_ideal_invariant.py` ($13$ checks) | EXP-053 |
 | Weight-$\le3$ mixed census: $653{,}022{,}021$ pairs over $18$ lattices, zero mixed, $450$ independent cross-checks | `results/processed/exp054_mixed_census.json` | EXP-054 |
+| Odd-lattice algebraic census: $65$ lattices, $4{,}229{,}823{,}962$ pairs, zero $k$ mismatches, $273$ idempotence checks | `results/processed/exp055_odd_lattice_sweep.json` + config-bound `results/partial_runs/exp055/*.json` | EXP-055 |
+| Reciprocal-pole isomorphism $27/27$; five locally exact ceiling checks; source-estimate audit | `results/processed/exp055_literature_validation.json` + `notes/theorem_k_certified_ceiling.md` | EXP-055 |
+| Fixed-point screen through $n=126$: 715 classes / 10,247 pairs, $598/598$ referenced dominated, 117 no-reference, zero survivor/undecided; three exact discovered references | `results/processed/exp055_odd_lattice_screen.json` + `results/certificates/exp055_discovered_references.json` + `tests/test_exp055_odd_lattice.py` | EXP-055 |
 
 Every SAT decision records its canonical CNF SHA-256 and encoding version; verdicts are
 re-derived from rebuilt matrices on replay, and stamps that fail to hash-bind are
@@ -898,6 +967,10 @@ arithmetically or under replay.
 cd math/qec
 PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py run --ns 144
 PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py gate
+PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py run --max-dim 180 --workers 24 --force
+PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py literature
+PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py screen --lattices 3x3,5x3,7x3,9x3,9x5,15x3,7x7,9x7,21x3 --workers 9 --time-limit 90 --force
+PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py screen-certify
 PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_nogo.py tests/test_pbb_survival.py -q
 ```
 

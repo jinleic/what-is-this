@@ -34,9 +34,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 2,
-   "dim_I0": 6,
+   "dim_pole": 6,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "8": {
    "A": [
@@ -69,9 +69,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 4,
-   "dim_I0": 4,
+   "dim_pole": 4,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   }
  },
  "frontier_weight3": {
@@ -106,9 +106,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 2,
-   "dim_I0": 6,
+   "dim_pole": 6,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "8": {
    "A": [
@@ -141,9 +141,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 4,
-   "dim_I0": 4,
+   "dim_pole": 4,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   }
  },
  "groups": 13,
@@ -166,8 +166,15 @@
  "no_group_certificate_pairs": 0,
  "no_group_certificate_represented": 0,
  "pairs_total": 1369,
+ "protocol": {
+  "k_min": 8,
+  "max_weight": 3,
+  "sample": 12,
+  "seed": 55
+ },
  "qualifying_group_pairs": 10,
  "qualifying_pairs_represented": 16,
+ "schema": "exp055-census-lattice-v2",
  "supports": 37,
- "wall_s": 0.11
+ "wall_s": 0.04
 }

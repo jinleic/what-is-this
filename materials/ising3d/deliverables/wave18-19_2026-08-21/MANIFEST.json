@@ -1,0 +1,476 @@
+{
+  "bundle": "ising3d-exact-research-waves-18-19",
+  "generated_utc": "2026-08-22T17:53:18.929572+00:00",
+  "excluded_from_hash_list": [
+    "MANIFEST.json"
+  ],
+  "file_count": 93,
+  "total_bytes": 15744008,
+  "files": [
+    {
+      "path": "BUNDLE_INFO.txt",
+      "bytes": 5178,
+      "sha256": "615b21e5e5ed8fc1d42103688df9a764f5aee64b7301c5a9ddb06802ca9e103f"
+    },
+    {
+      "path": "artifacts/experiments/e157_saturation_local_move.py",
+      "bytes": 6747,
+      "sha256": "d6f6c752cc0c84e8e8790d143c1f3f87eff4a08b538446c6bb7b196f54a9e421"
+    },
+    {
+      "path": "artifacts/experiments/e158_pair_fiber_bfs.py",
+      "bytes": 9843,
+      "sha256": "1e0b3e8a35e29c53af0f4b15007c2451b177545c2c1e6fdd60199d67b8f95742"
+    },
+    {
+      "path": "artifacts/experiments/e159_alll_saturation.py",
+      "bytes": 27124,
+      "sha256": "86fdab244321ffeb97164b3f43b32b1b5e3fd9475fdb4d63bb2788bb815c3ec7"
+    },
+    {
+      "path": "artifacts/experiments/e160_hamiltonian_clifford_family.py",
+      "bytes": 18629,
+      "sha256": "7c35ee6f10cff6428f157f5676e16165cd18f6e7fffeb1ffc97dca5195c36585"
+    },
+    {
+      "path": "artifacts/experiments/e161_quadratic_mode_bounds.py",
+      "bytes": 4774,
+      "sha256": "05b03ad7106567662877ee758e2ded624669ee0e75a2e84d6606502ee18b79cd"
+    },
+    {
+      "path": "artifacts/experiments/e162_alll_quadratic.py",
+      "bytes": 11321,
+      "sha256": "d18c66a0dba57c566e6dfe7c3199aaafcb4808cb8c1d6c9d78687cda00842350"
+    },
+    {
+      "path": "artifacts/experiments/e163_isotropic_core_search.py",
+      "bytes": 8062,
+      "sha256": "beb6a982cb0112472ead4250da0c51c5367e245d895988660610eb392b17b950"
+    },
+    {
+      "path": "artifacts/experiments/e164_isotropic_decoupling.py",
+      "bytes": 10130,
+      "sha256": "699ad5132949324aa93fa49055badbdb620438f832c083170b69687c6a234420"
+    },
+    {
+      "path": "artifacts/experiments/e165_isotropic_allsize.py",
+      "bytes": 10358,
+      "sha256": "a1a668e87e03391d375772a0dbb00a1de36902e896722a2d84aaf50671e4e1d4"
+    },
+    {
+      "path": "artifacts/experiments/e166_rank_char0_spectrum.py",
+      "bytes": 9578,
+      "sha256": "865908aee213bd019647bf847977178dbb2c1d87688d64b0cd83fa238dfa2bc3"
+    },
+    {
+      "path": "artifacts/experiments/e167_rank_char0_products.py",
+      "bytes": 10335,
+      "sha256": "feb5bd9f393eb23a38386a6e0ab3380af0a047748a32abc01d2e54d1f764bd8b"
+    },
+    {
+      "path": "artifacts/experiments/e168_rank_char0.py",
+      "bytes": 14129,
+      "sha256": "f1d8c29af86f93771a658d15163f9515fecb4e7d3460146be9af6ffaf7124468"
+    },
+    {
+      "path": "artifacts/experiments/e169_kw_section_group.py",
+      "bytes": 16116,
+      "sha256": "2e019aa98edcf271014973a3884278bf9ab3f56f3d3e30428da0eab6d7233326"
+    },
+    {
+      "path": "artifacts/experiments/e170_kw_unit_census.py",
+      "bytes": 27018,
+      "sha256": "e87424a52475343e4570f2847e0f70980fd46fc07f8b10b286d6aa7c53c1f3b3"
+    },
+    {
+      "path": "artifacts/experiments/e171_kw_orbit_quotient.py",
+      "bytes": 17844,
+      "sha256": "4b19ef7224a42210e023b49ef4d6c2fbaf18eec17d6e310c0487152a03b6f3f4"
+    },
+    {
+      "path": "artifacts/experiments/e172_ladder_w8_regression.py",
+      "bytes": 21022,
+      "sha256": "eea16317f471c2f06c36eda5e75ef1431c72b013b3006760832dd6bfe24db3c1"
+    },
+    {
+      "path": "artifacts/experiments/e173_ladder_nogo_family.py",
+      "bytes": 14381,
+      "sha256": "714db2a2c9a616afd0be3fdae2fabbffe002c803d166aed8255f2384a740179f"
+    },
+    {
+      "path": "artifacts/experiments/e174_ladder_gap_certificates.py",
+      "bytes": 19277,
+      "sha256": "753310095f79c62702e34eb2301dcebf3a18d7ea93c2de27bc6bb796468324fc"
+    },
+    {
+      "path": "artifacts/experiments/e175_upper_endpoint4_paired.py",
+      "bytes": 11508,
+      "sha256": "d1dc0f8d6539dac280b8eda81601a7c485043b8ff4fc47dc0b3184ae97e097fb"
+    },
+    {
+      "path": "artifacts/experiments/e176_upper_endpoint4_current.py",
+      "bytes": 12339,
+      "sha256": "74f35065c54881d796dbaa120576003d2bd32ac8c50b1dff3e8f08bdf48f41dd"
+    },
+    {
+      "path": "artifacts/experiments/e177_upper_endpoint4.py",
+      "bytes": 7879,
+      "sha256": "7aef15ad016689ee25c50b528e99bf9b55929b0c8091fc29d7c17a74a35b49aa"
+    },
+    {
+      "path": "artifacts/experiments/e178_clifford_setup.py",
+      "bytes": 12964,
+      "sha256": "0c5ba197773ed4e277583087f931cd63cebc79dc46234bc418028d92d574b18a"
+    },
+    {
+      "path": "artifacts/experiments/e179_grade_generation.py",
+      "bytes": 11486,
+      "sha256": "c9e8e625c6cc425af82db1ddfa0f66b5c9b626263727c05b557d51cf6d6aaf22"
+    },
+    {
+      "path": "artifacts/experiments/e180_graph_verification.py",
+      "bytes": 14950,
+      "sha256": "03deb0c923af07e1c855742cfba7e8a25a3983488601f42d0322ec2890dc7b69"
+    },
+    {
+      "path": "artifacts/experiments/e181_clifford_grade.py",
+      "bytes": 14588,
+      "sha256": "ba64a6894054349bbee8cf62d4ba2fac0e26c1b3ee1f66d39838609b955b4131"
+    },
+    {
+      "path": "artifacts/experiments/e182_adA_spectrum.py",
+      "bytes": 11850,
+      "sha256": "5ecad328fd6110841f5f4f40769937873db4372749d5c2b73de99d6dec15272a"
+    },
+    {
+      "path": "artifacts/experiments/e183_twogen_closure.py",
+      "bytes": 34830,
+      "sha256": "bb420e5005cf7d579413bb9a4aabede1f43c12b0e777a064606f62d5090abaf1"
+    },
+    {
+      "path": "artifacts/experiments/e184_twogen_allsize.py",
+      "bytes": 12381,
+      "sha256": "a59acf807371cd1574e192b52da2869bf822b3502ef88ae272df6601a80b57ea"
+    },
+    {
+      "path": "artifacts/experiments/e185_order_counterexample.py",
+      "bytes": 13110,
+      "sha256": "c50fbeba49a7f9b1a7c57cef9b613dd0c5214026786b927d1d91385e7c0bd2b4"
+    },
+    {
+      "path": "artifacts/experiments/e186_nonbipartite.py",
+      "bytes": 10279,
+      "sha256": "0db606112afdd98ce808fbe643f30e0a4850e1a7f0b688de3f1c20f145909e97"
+    },
+    {
+      "path": "artifacts/experiments/e187_trichotomy_extend.py",
+      "bytes": 20474,
+      "sha256": "7ca16c989b0e45cb05b31a69d0a7543a4a1c0e3de4cee72e144d9577bc9fa957"
+    },
+    {
+      "path": "artifacts/experiments/e188_gaussian_group.py",
+      "bytes": 6071,
+      "sha256": "859663dd50774fd243e9716eb39c64409eeb34cc2e3d8b92e35b5b94f3626ab4"
+    },
+    {
+      "path": "artifacts/experiments/e189_varying_conjugator.py",
+      "bytes": 6840,
+      "sha256": "beb4e644a22c05015df81177871d63ce4cb61c9835fd13e962b3ea62494b34a6"
+    },
+    {
+      "path": "artifacts/experiments/e190_layer_group_spectral.py",
+      "bytes": 18939,
+      "sha256": "200ef48032d7a9663e342ee8a57ca058dcb6418343e9bca2cba77cfb4588091a"
+    },
+    {
+      "path": "artifacts/proofs/alll_quadratic_nogo.md",
+      "bytes": 17377,
+      "sha256": "2a235a7bfeedd8283c4b6fa341003534df865480fc6adbc697dfcc27c717d1eb"
+    },
+    {
+      "path": "artifacts/proofs/alll_saturation.md",
+      "bytes": 18638,
+      "sha256": "b9f0178e59535187864a77de517a6c8ab94575baa38fcde6e164448de9853426"
+    },
+    {
+      "path": "artifacts/proofs/clifford_grade_classification.md",
+      "bytes": 20965,
+      "sha256": "22beda26875f5ed3e54702a6b4b61e7056b29af11514134896f5114ee881bcd2"
+    },
+    {
+      "path": "artifacts/proofs/isotropic_allsize.md",
+      "bytes": 11736,
+      "sha256": "8b25294410ab341a52ebae35da7000febb7742a18390e012cdb1ba2a23624fc2"
+    },
+    {
+      "path": "artifacts/proofs/kw_orbit_quotient.md",
+      "bytes": 17262,
+      "sha256": "5530303d96d6c696dc967e0a335c10aa6cf7c90d130d5ac39d0232149c9cb26e"
+    },
+    {
+      "path": "artifacts/proofs/ladder_w8.md",
+      "bytes": 22105,
+      "sha256": "e609601c0784c898046fac4ed84634ca32f7f98f954dd302e4665f08dd70200a"
+    },
+    {
+      "path": "artifacts/proofs/layer_group_spectral.md",
+      "bytes": 17119,
+      "sha256": "f8928456451cf99d2036f77c68de2c302b23ad190bc0f581020ffabb118911a0"
+    },
+    {
+      "path": "artifacts/proofs/rank_char0.md",
+      "bytes": 9471,
+      "sha256": "4aa7e249c3984d0a1d8e6aff6f9fd924cc69714f3f787cc2db6b018748073cae"
+    },
+    {
+      "path": "artifacts/proofs/trichotomy_extend.md",
+      "bytes": 23007,
+      "sha256": "bfe316b1c1d71b6a20f52d75cd5b3c25c784a80c6cf042eeda2325f07d71a9dd"
+    },
+    {
+      "path": "artifacts/proofs/twogen_allsize.md",
+      "bytes": 15678,
+      "sha256": "391d019526013bc25a41777ea8aeb785ce189a8eb1c83488e06dc9272bf257fc"
+    },
+    {
+      "path": "artifacts/proofs/upper_endpoint4.md",
+      "bytes": 15326,
+      "sha256": "9b6bab87de525341c0d556b944ccaeff629797947beb8570c7a28521ec4d98b4"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/alll_quadratic.json",
+      "bytes": 1450976,
+      "sha256": "eb548b51af175d0b38873e5a6b5bb4fdb1206c14c5f63ed7d1e0331914ae740d"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/alll_saturation.json",
+      "bytes": 25890,
+      "sha256": "3d1c57c66c8e06e94bfa9e82437f9521863548d18d4a8a0546f0ef0982fd62dc"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/clifford_grade.json",
+      "bytes": 213737,
+      "sha256": "1c7264c7baacd75414aaa2cf1cd1bc90bbb7d8c91df7cedeb8201205c5aa6fea"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/ladder_w8.json",
+      "bytes": 16161,
+      "sha256": "cfa63e34ea386f646f7fffcb65125cd361569eca812a4302cef94ecb6d356455"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/ladder_w8_certificates.json",
+      "bytes": 11172,
+      "sha256": "827f5c94d410ef829cad2dbb11fe0711842f8abd3ad04f160d99916bc0bcfe9b"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/ladder_w8_family.json",
+      "bytes": 8593,
+      "sha256": "3edba06f089949e0aebcf960900f0b66ec5c404c1689e72f9255fd96e4807f29"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/ladder_w8_regression.json",
+      "bytes": 7204,
+      "sha256": "c8b253f0562f7569cf9ebb79efeb5c7fb7b3b6cbd540b5e40e935779c8f57a3d"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/trichotomy_extend.json",
+      "bytes": 26485,
+      "sha256": "87303306155410bc012aedaa1b36cc75bdc8dbd7445756bdcf9360faa79af1c5"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/twogen_allsize.json",
+      "bytes": 33630,
+      "sha256": "0d73d5222069f8cddedcd6e4e9a0c9a389e21cb8c9126e86f30fdc15e0e5e72e"
+    },
+    {
+      "path": "artifacts/results/bounds/upper_endpoint4.json",
+      "bytes": 18871,
+      "sha256": "815f7af6a4c8c0f07e5f56639cdfa5d67f58fcce9abd7a8e06a6a0584fd57e21"
+    },
+    {
+      "path": "artifacts/results/kac_ward/full_thin_census.json",
+      "bytes": 14879,
+      "sha256": "192d0ae69b0512bda7b528406aa462deb214911341d9defae47bf020567c1211"
+    },
+    {
+      "path": "artifacts/results/kac_ward/orbit_quotient.json",
+      "bytes": 11101702,
+      "sha256": "1d1c3b2c7348cc910c3abca66b3dc6e0a8ba3919b3e9824df5b318742820c116"
+    },
+    {
+      "path": "artifacts/results/spectral/isotropic_allsize.json",
+      "bytes": 74085,
+      "sha256": "688d5c0a909e70e0a5c4586d22c49a8b3c40e0f45e2ba20f1eef8f81e0817085"
+    },
+    {
+      "path": "artifacts/results/spectral/isotropic_core_search.json",
+      "bytes": 49856,
+      "sha256": "5c6b777ea80c6e331ef27f4a70cd347eaffff75bb2ae27e1ecc1cfd0df56b129"
+    },
+    {
+      "path": "artifacts/results/spectral/isotropic_decoupling.json",
+      "bytes": 12580,
+      "sha256": "0385c24bafafae8f8492833a4e844ddb295014c6c06b3477f2bba63c5d28f8c6"
+    },
+    {
+      "path": "artifacts/results/spectral/layer_group_spectral.json",
+      "bytes": 16906,
+      "sha256": "007d278891397024d34d6230ce87c5ad2aba632086be4fd6707bb587f4a664d9"
+    },
+    {
+      "path": "artifacts/results/spectral/rank_char0.json",
+      "bytes": 103469,
+      "sha256": "cb4192b75747bf3d87aad9a271d50d696336263f8aa3b2348f55b1257c8a6465"
+    },
+    {
+      "path": "artifacts/tests/test_alll_quadratic.py",
+      "bytes": 13266,
+      "sha256": "72c51f0dfc020af3d5344d96c28bd6abe507e32696c9194e1de7f46ee3e3aaac"
+    },
+    {
+      "path": "artifacts/tests/test_alll_saturation.py",
+      "bytes": 16460,
+      "sha256": "03aad3f389bce35e57ef562dcce19ef7c0b82a3c63ddd16a1b79f8575fc2add8"
+    },
+    {
+      "path": "artifacts/tests/test_clifford_grade.py",
+      "bytes": 16121,
+      "sha256": "0013048772b49a484b0d1f0e8d85e3266a79bbd11cf4b7486549980f87d1b3bf"
+    },
+    {
+      "path": "artifacts/tests/test_isotropic_allsize.py",
+      "bytes": 17157,
+      "sha256": "cf6c6fb8bd1efd6ea4d38807e0022e612f9b42f36b5518be4ee2604fc0e922ef"
+    },
+    {
+      "path": "artifacts/tests/test_kw_full_thin_census.py",
+      "bytes": 6614,
+      "sha256": "e7640d6c003f64dd5d09f69572ef5798aad96d9777d38f1080310c8da486722d"
+    },
+    {
+      "path": "artifacts/tests/test_kw_orbit_quotient.py",
+      "bytes": 32869,
+      "sha256": "b875b11fd1f2ae0c6c823d14837daa8c599e6c5fae5db64675fbbec07074e4ce"
+    },
+    {
+      "path": "artifacts/tests/test_ladder_w8.py",
+      "bytes": 25419,
+      "sha256": "dcae91d6fa9660fe378ea9728f07127d6d51fbb6482dd902ba99c42321405ea9"
+    },
+    {
+      "path": "artifacts/tests/test_layer_group_spectral.py",
+      "bytes": 14548,
+      "sha256": "f453cd0939db48a376152926249c76a929532f6dc07a06f82e0498404915e831"
+    },
+    {
+      "path": "artifacts/tests/test_rank_char0.py",
+      "bytes": 22187,
+      "sha256": "d1d7d2f8c604fe012dcb0fbbb3bfaf861b695222bd63acbe90aa3a123239dd9a"
+    },
+    {
+      "path": "artifacts/tests/test_trichotomy_extend.py",
+      "bytes": 26875,
+      "sha256": "eb68c103c554ac2f89eba269c345f1fea625a25859035a668b32b592291a6844"
+    },
+    {
+      "path": "artifacts/tests/test_twogen_allsize.py",
+      "bytes": 28610,
+      "sha256": "e71e741d236c4cca54fefe32564ba83f0375f846174c49ecef5aa2d87e83790d"
+    },
+    {
+      "path": "artifacts/tests/test_upper_endpoint4.py",
+      "bytes": 12962,
+      "sha256": "c8211ccde9d0f6bf1f940e5d11fbfec5120ade4b4601b93d81fa7c78b3b57ccb"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 36815,
+      "sha256": "79c8cb3144d54704bf7993066082c4a889063e48cae10834e7971a583a349b24"
+    },
+    {
+      "path": "docs/checkpoints/current_state.md",
+      "bytes": 44300,
+      "sha256": "6dc3eb10fd95de1f066da263c98511fa64435b217560415dbd3cf7270f087c13"
+    },
+    {
+      "path": "docs/checkpoints/failed_routes.md",
+      "bytes": 22509,
+      "sha256": "79abb58a9ac2c046de4b54b5fd837b6c895d5c0d429ea661846d7ed6eef489aa"
+    },
+    {
+      "path": "docs/checkpoints/gaussian2x6_progress.json",
+      "bytes": 3453,
+      "sha256": "f9c92edb0fd376d1a737cb9b461a8fae6a31b95be952ed6e95700b6ad05e38f1"
+    },
+    {
+      "path": "docs/checkpoints/hypotheses_pre_overwrite_snapshot.csv",
+      "bytes": 103849,
+      "sha256": "836db69fa2a34b36caa03eb347690247c6df3cbdcd8cefd94ef4d6fd681312c1"
+    },
+    {
+      "path": "docs/checkpoints/next_actions.md",
+      "bytes": 14881,
+      "sha256": "728c6c69aea89de1bf0c591d8dc937133527159efebe57a522982245600fe141"
+    },
+    {
+      "path": "docs/checkpoints/verified_results.json",
+      "bytes": 121332,
+      "sha256": "5f3e54367ec50302ff5e8b053006e08a4ffcebb602363cafa0a9e0edc78947dc"
+    },
+    {
+      "path": "docs/notes/CODE_API.md",
+      "bytes": 3452,
+      "sha256": "c7e7c82a680f1e9bc730eccffc00f0f3a1ca762b161abbf77df76c3a17a4ab6e"
+    },
+    {
+      "path": "docs/notes/frontier_analysis.md",
+      "bytes": 14224,
+      "sha256": "d0726a66802a6132548abd013ce4e9404df96bfbea88b315480d68dae36200d8"
+    },
+    {
+      "path": "docs/notes/hypotheses.csv",
+      "bytes": 458064,
+      "sha256": "177b155d51e292c15a0015df18eb5fbd52a9186bd5d60c302c406475b98d6090"
+    },
+    {
+      "path": "docs/problem_specification.md",
+      "bytes": 4911,
+      "sha256": "fcd198beb06a1da3279c064505082aa7ad3c90b8726d15b9695611aeda7a8229"
+    },
+    {
+      "path": "docs/reports/adversarial_audit.md",
+      "bytes": 35676,
+      "sha256": "b2881f08c251ef4430b85f575133b6893cde3c237cadceb6a6973706da0a825a"
+    },
+    {
+      "path": "docs/reports/final_technical_report.md",
+      "bytes": 173259,
+      "sha256": "fc2d089ab631a3e08c91318cfa16364967579e75550887b75949cd59215ccdf3"
+    },
+    {
+      "path": "docs/research_log.md",
+      "bytes": 45370,
+      "sha256": "49bbf895a28193520557ef840e3f936864746de75304b162d4b2eb35d1ef4c07"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.bbl",
+      "bytes": 7979,
+      "sha256": "7db3ac8e4d84d88d1d986025e0a1562e2270b5c39822d5e6d3c54762cfb0d2d5"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.pdf",
+      "bytes": 475748,
+      "sha256": "8a90f60e956f09d4f7b64dd881977581e4bd636b629f1cb75a0bab0a9184bd10"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.tex",
+      "bytes": 76415,
+      "sha256": "bf44f563a239f93ec7a589ea0d9bb3a4a3ae881e537b4b9bdb09d9179a1060f1"
+    },
+    {
+      "path": "papers/refs.bib",
+      "bytes": 11449,
+      "sha256": "465b3d56c4aadd742bbcac0abd750d87512fdb76d7aec19e497ac892352903b1"
+    }
+  ]
+}

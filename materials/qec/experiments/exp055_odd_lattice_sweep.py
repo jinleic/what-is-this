@@ -1,62 +1,67 @@
 """EXP-055: exhaustive weight-<=3 sweep of CSS BB codes on ODD x ODD lattices.
 
 WHY THIS REGION.  Theorem J-G1 (EXP-053/054) proves that when ell and m are both
-odd the group algebra R = GF(2)[x,y]/(x^ell-1, y^m-1) is semisimple, so every
-ideal is idempotent and the single-row X-collapse channel is structurally EMPTY:
-a PBB perturbation there cannot silently demote a parent stabilizer to a logical.
-The published catalogue never searched this region (all 202 parents have
-m in {3,6}), and the only odd x odd BB instance in the literature is [[90,8,10]]
-on (15,3).  So theory hands us an unexplored, provably collapse-free region.
+odd, R is semisimple and the single-row X-collapse channel is structurally empty.
+Our 202-parent PBB catalogue never searched the region (m in {3,6}), but the
+broader BB literature DID: a 2026-08-21 novelty audit found at least 27 sourced
+odd x odd instances.  The earlier claim that [[90,8,10]] was the only one is
+retracted in notes/next_breakthroughs.md.
 
 WHAT IS DECIDED HERE.
 
-(1) Rate law (two independent routes, all lattices).  R semisimple means
-    R = prod_chi F_chi over the Frobenius orbits of characters, multiplication by
-    a is diagonal, so
+(1) Published rate law, independently reproduced.  Semisimplicity gives
 
-        Ann(a) = sum over {chi : a(chi) = 0} F_chi,
-        k_P    = 2 dim (Ann(a) cap Ann(b)) = 2 #{chi : a(chi) = b(chi) = 0},
+        k_P = 2 dim I = 2 sum_{common-root orbits chi} [F_chi:F_2],
+        I   = Ann_left(a,b).
 
-    i.e. k is exactly twice the number of COMMON ROOTS.  Route 1 computes
-    dim(Ann(a) cap Ann(b)) by GF(2) rank; route 2 computes
-    k = n - rank(H_X) - rank(H_Z) from the matrices themselves.  They must agree.
+    Route 1 computes dim I by GF(2) rank; route 2 computes
+    k = n-rank(H_X)-rank(H_Z); on coprime lattices route 3 uses the published
+    gcd formula.  The result is already in Panteleev--Kalachev Prop. 1,
+    Lin--Pryadko Eq. 47, Wang--Mueller Eq. 11, Postema--Kokkelmans Thm. 2.6,
+    and Eberhardt--Steffan Cor. 2.11--2.12.  It is not claimed as new.
 
-(2) A solver-free CERTIFIED distance ceiling.  For u, v in I := Ann(a) cap Ann(b)
-    we have H_X (u,v)^T = a u + b v = 0, so I x I <= ker H_X, and dim(I x I) =
-    2 dim I = k_P = dim(ker H_X / S_Z).  The trivial part is
-    (I x I) cap S_Z, whose dimension is |Z \\ Z^{-1}| in character terms; hence
+(2) Exact reciprocal-pole logical transversal and certified bounds.  The stored
+    I is a LEFT annihilator.  The physical right-kernel pole is J = bar(I):
 
-        if I is bar-invariant (I = conj(I))  ==>  (I x I) cap S_Z = 0
-        ==>  EVERY nonzero element of I x I is a nontrivial logical
-        ==>  d(P) <= min{ wt(u) : 0 != u in I }  =: b0,
+        P = J x J <= ker H_X,    P cap S_Z = 0,    dim P = k,
+        therefore P ~= ker H_X / S_Z.
 
-    a rigorous upper bound obtained by enumerating 2^dim I - 1 vectors -- no
-    solver, microseconds.  When I is not bar-invariant the trivial subspace is
-    computed explicitly and the smallest NONTRIVIAL weight is used instead, so
-    the ceiling is rigorous either way.  b0 depends only on I, hence only on the
-    pair of annihilators: it is a GROUP invariant, which is what makes an
-    exhaustive sweep affordable.
+    This is the Eberhardt--Steffan principal-code isomorphism in our matrix/bar
+    convention.  It yields the solver-free ceiling
 
-(3) The frontier.  For every (n, k) reached, the maximum of the certified
-    ceiling over ALL weight-<=3 pairs is an upper bound on what this family can
-    achieve; the best pairs are then certified exactly with CP-SAT
-    (exact_distance_css) and compared against the published BB instances.
+        d <= min{wt(u) : 0 != u in J},
 
-Grouping polynomials by canon(Ann) collapses the O(P^2) pair sweep to O(G^2)
-exactly as in EXP-054, and is exact for k and for b0 because both depend on the
-pair (Ann(a), Ann(b)) alone.  Translation normalisation (supports containing the
-monomial 1) is exhaustive up to independent translations of A and B, which are
-qubit permutations.
+    plus much tighter self-certifying witnesses by reducing selected pole
+    vectors modulo S_Z.  Random information-set orders affect tightness only;
+    every returned vector is verified in ker H_X outside S_Z.  The raw ceiling
+    is a short corollary of published structure, not oversold as a deep theorem.
 
-Artifacts: results/processed/exp055_odd_lattice_sweep.json
-           results/partial_runs/exp055/<ell>x<m>.json  (per-lattice shards)
-Run: python experiments/exp055_odd_lattice_sweep.py run [--max-dim 180]
-     python experiments/exp055_odd_lattice_sweep.py assemble
-     python experiments/exp055_odd_lattice_sweep.py certify [--top 6]
+(3) Exhaustive census and Pareto screen.  Grouping polynomials by canon(Ann)
+    collapses O(P^2) to O(G^2), exactly for k and the pole ceiling.  Translation
+    normalisation is exhaustive up to independent qubit permutations.  The
+    screen further canonicalises unit maps, block swap and x/y interchange,
+    rejects with explicit witnesses first, and uses capped CP-SAT only on the
+    residual.  Every screen survivor is exact-distance certified and checked for
+    direct-sum decomposition.
+
+Artifacts:
+  results/processed/exp055_odd_lattice_sweep.json
+  results/processed/exp055_literature_validation.json
+  results/processed/exp055_odd_lattice_screen.json
+  results/certificates/exp055_odd_lattice_survivors.json
+  results/partial_runs/exp055/*.json
+  results/partial_runs/exp055_screen/*.json
+
+Run:
+  python experiments/exp055_odd_lattice_sweep.py run --max-dim 180
+  python experiments/exp055_odd_lattice_sweep.py literature
+  python experiments/exp055_odd_lattice_sweep.py screen --min-n 18
+  python experiments/exp055_odd_lattice_sweep.py screen-certify
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import itertools
 import json
@@ -64,7 +69,7 @@ import os
 import random
 import sys
 import time
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 from pathlib import Path
 
 import numpy as np
@@ -93,10 +98,15 @@ OUT = ROOT / "results" / "processed" / "exp055_odd_lattice_sweep.json"
 SHARDS = ROOT / "results" / "partial_runs" / "exp055"
 SCREEN_DIR = ROOT / "results" / "partial_runs" / "exp055_screen"
 LIT_OUT = ROOT / "results" / "processed" / "exp055_literature_validation.json"
+SCREEN_OUT = ROOT / "results" / "processed" / "exp055_odd_lattice_screen.json"
+SURVIVOR_CERT = ROOT / "results" / "certificates" / "exp055_odd_lattice_survivors.json"
 
 MAX_DIM = 180            # ell*m <= MAX_DIM, i.e. n = 2*ell*m <= 360
 K_MIN = 8                # the interesting regime; [[90,8,10]] has k = 8
 K_CEIL_MAX = 24          # above this k the codes are degenerate; skip the ceiling
+WITNESS_TRIES = 8
+WITNESS_KEEP = 64
+SCREEN_RESIDUAL_WORKERS = 8
 DIM_I_ENUM_CAP = 16      # 2^16 vectors per enumeration keeps memory bounded
 CERT_TIME_LIMIT_S = 900.0
 CERT_WORKERS = 8
@@ -188,95 +198,188 @@ def normalised_supports(ell: int, m: int, max_weight: int):
 # the certified ceiling
 # --------------------------------------------------------------------------- #
 def certified_ceiling(I: np.ndarray, ell: int, m: int, bar: np.ndarray) -> dict:
-    """Rigorous solver-free upper bound on d(P) from I = Ann(a) cap Ann(b).
+    """Rigorous solver-free pole bound from the LEFT annihilator I.
 
-    I x I <= ker H_X always (H_X (u,v)^T = a u + b v = 0).  The trivial part is
-    (I x I) cap S_Z, which at a character chi is nonzero only when chi is in
-    Z := Z(a) cap Z(b) while chi^{-1} is NOT -- because (S_Z)_chi is spanned by
-    (conj(b)(chi), conj(a)(chi)) = (b(chi^{-1}), a(chi^{-1})).  Restricting to
+    The coefficient representation used by ``nullspace(poly_matrix(a).T)`` is
+    the left-annihilator convention.  A physical column vector lies in the
+    right kernel of H_X only after the reciprocal involution:
 
-        I_0 := I cap conj(I)     (characters Z cap Z^{-1}, inversion-closed)
+        J := bar(I),       J x J <= ker H_X.
 
-    therefore kills the trivial part outright: (I_0 x I_0) cap S_Z = 0, so EVERY
-    nonzero u in I_0 makes (u, 0) a nontrivial logical operator and
+    On an odd lattice R is semisimple.  Character by character the Z-stabilizer
+    block vanishes exactly on the support of J, so
 
-        d(P) <= min{ wt(u) : 0 != u in I_0 }.
+        (J x J) cap S_Z = 0,     dim(J x J) = k,
 
-    No bar-invariance hypothesis is needed, and the bound depends only on the
-    pair of annihilators, so it is a group invariant.  For dim I_0 <= the
-    enumeration cap the minimum is exact; above it we minimise over the basis
-    rows and random combinations, which is still a valid upper bound on the
-    minimum weight and hence on d.
+    and J x J -> ker(H_X)/S_Z is an isomorphism (the principal-code logical
+    structure of Eberhardt--Steffan, Cor. 2.11--2.12, in our bar convention).
+    Thus every nonzero u in J makes (u,0) a nontrivial logical and
+
+        d(P) <= min{wt(u) : 0 != u in J}.
+
+    Bar preserves Hamming weight, so the numerical minimum equals min wt(I),
+    but the physical witness MUST use J.  This distinction is regression-locked:
+    using raw I fails on the published (7,7) [[98,6,12]] code.
     """
     d = I.shape[0]
     out: dict = {"dim_I": d, "k_parent": 2 * d}
     if d == 0:
-        out.update({"dim_I0": 0, "ceiling": None, "bar_invariant": None})
+        out.update({"dim_pole": 0, "ceiling": None, "bar_invariant": None})
         return out
-    Ib = I[:, bar]
-    out["bar_invariant"] = bool(rank_np(np.vstack([I, Ib])) == d)
-    I0 = I if out["bar_invariant"] else intersect(I, Ib)
-    d0 = I0.shape[0]
-    out["dim_I0"] = d0
-    if d0 == 0:
-        # Z cap Z^{-1} empty: no group-level certificate exists, flagged for
-        # per-member treatment.  Counted in the verdict, never silently dropped.
-        out["ceiling"] = None
-        return out
-    if d0 <= DIM_I_ENUM_CAP:
-        out["ceiling"] = int(span_vectors(I0).sum(axis=1).min())
+    J = I[:, bar]
+    out["dim_pole"] = d
+    out["bar_invariant"] = bool(rank_np(np.vstack([I, J])) == d)
+    if d <= DIM_I_ENUM_CAP:
+        vecs = span_vectors(J)
+        weights = vecs.sum(axis=1)
+        idx = int(np.argmin(weights))
+        out["ceiling"] = int(weights[idx])
+        out["witness_support"] = [int(j) for j in np.flatnonzero(vecs[idx])]
         out["ceiling_is_exact_min"] = True
     else:
-        rng = np.random.default_rng(0xC0FFEE ^ (d0 * 7919))
-        combos = rng.integers(0, 2, size=(4096, d0), dtype=np.uint8)
-        cand = np.vstack([I0, (combos @ I0) % 2])
+        rng = np.random.default_rng(0xC0FFEE ^ (d * 7919))
+        combos = rng.integers(0, 2, size=(4096, d), dtype=np.uint8)
+        cand = np.vstack([J, (combos @ J) % 2])
         w = cand.sum(axis=1)
-        w = w[w > 0]
-        out["ceiling"] = int(w.min())
+        nz = np.flatnonzero(w > 0)
+        idx = int(nz[int(np.argmin(w[nz]))])
+        out["ceiling"] = int(w[idx])
+        out["witness_support"] = [int(j) for j in np.flatnonzero(cand[idx])]
         out["ceiling_is_exact_min"] = False
     return out
 
 
 def member_ceiling(A_terms, B_terms, ell: int, m: int) -> dict:
-    """Ceiling for one concrete pair when I cap conj(I) = 0.
-
-    Falls back to the smallest weight of a NONTRIVIAL (u,0), u in I, tested
-    directly against rowspace(H_Z).
-    """
+    """Directly verify the smallest reciprocal-pole witness for one BB code."""
     I = intersect(ann_basis(A_terms, ell, m), ann_basis(B_terms, ell, m))
     d = I.shape[0]
     if d == 0 or d > DIM_I_ENUM_CAP:
         return {"ceiling": None, "reason": "dim out of range"}
+    bar = bar_permutation(ell, m)
+    J = I[:, bar]                                  # physical right-kernel pole
     HX, HZ = E53.bb_from_terms(ell, m, A_terms, B_terms)
     Rz, _ = rref_np(HZ)
     Rz = Rz[: rank_np(Rz)]
     r0 = Rz.shape[0]
     n = 2 * ell * m
-    vecs = span_vectors(I)
+    vecs = span_vectors(J)
     for idx in np.argsort(vecs.sum(axis=1), kind="stable"):
         u = vecs[idx]
         full = np.zeros(n, np.uint8)
         full[: ell * m] = u
+        if (HX @ full % 2).any():
+            raise AssertionError("reciprocal-pole vector is not in ker H_X")
         if rank_np(np.vstack([Rz, full[None, :]])) > r0:
-            return {"ceiling": int(u.sum()), "nontrivial_found": True}
+            return {
+                "ceiling": int(u.sum()),
+                "witness_support": [int(j) for j in np.flatnonzero(full)],
+                "nontrivial_found": True,
+            }
     return {"ceiling": None, "nontrivial_found": False}
+
+def reduced_witness_bound(J: np.ndarray, HZ: np.ndarray, ell: int, m: int,
+                          tries: int = WITNESS_TRIES, keep: int = WITNESS_KEEP,
+                          seed: int = 0x55AA,
+                          target: int | None = None) -> dict:
+    """Tighten the pole ceiling by reducing explicit logicals modulo S_Z.
+
+    Here J = bar(Ann(a,b)) is the physical right-kernel pole.  Every nonzero
+    (u,v) in J x J is a nontrivial logical on an odd lattice.  Reducing it against
+    rref(H_Z) produces a concrete representative of the same class; ANY nonzero
+    vector returned is therefore a self-certifying logical witness and its weight
+    is a rigorous upper bound on d.
+
+    Extra random information sets only lighten representatives of already
+    nontrivial classes, so soundness never depends on the randomisation.
+    """
+    d = J.shape[0]
+    n = 2 * ell * m
+    if d == 0 or d > DIM_I_ENUM_CAP:
+        return {"bound": None, "classes_tested": 0}
+    vecs = span_vectors(J)
+    order = np.argsort(vecs.sum(axis=1), kind="stable")[:keep]
+    selected = vecs[order]
+    count = len(selected)
+    # Both one-block slices and the Cartesian grid of light pole pairs.
+    targets = np.zeros((2 * count + count * count, n), np.uint8)
+    targets[:count, : ell * m] = selected
+    targets[count:2 * count, ell * m:] = selected
+    targets[2 * count:, : ell * m] = np.repeat(selected, count, axis=0)
+    targets[2 * count:, ell * m:] = np.tile(selected, (count, 1))
+
+    HZ = np.asarray(HZ, np.uint8) & 1
+
+    def reduce_against(perm: np.ndarray | None) -> np.ndarray:
+        M = HZ if perm is None else HZ[:, perm]
+        R, _ = rref_np(M)
+        R = R[: rank_np(R)]
+        T = targets if perm is None else targets[:, perm]
+        T = T.copy()
+        for row in R:
+            j = int(np.flatnonzero(row)[0])
+            hit = T[:, j] == 1
+            if hit.any():
+                T[hit] ^= row
+        return T
+
+    base = reduce_against(None)
+    nontrivial = base.any(axis=1)                       # class is nontrivial
+    if not nontrivial.any():
+        return {"bound": None, "classes_tested": int(targets.shape[0]),
+                "all_trivial": True}
+    idxs = np.flatnonzero(nontrivial)
+    base_weights = base[idxs].sum(axis=1)
+    j0 = int(idxs[int(np.argmin(base_weights))])
+    best_vec = base[j0].copy()
+    best = int(best_vec.sum())
+    rng = np.random.default_rng(seed ^ (ell * 131 + m))
+    if target is not None and best <= target:
+        return {
+            "bound": best,
+            "witness_support": [int(j) for j in np.flatnonzero(best_vec)],
+            "classes_tested": int(nontrivial.sum()),
+            "all_trivial": False,
+        }
+    for _ in range(tries):
+        perm = rng.permutation(n)
+        T = reduce_against(perm)
+        candidate_rows = T[idxs]
+        weights = candidate_rows.sum(axis=1)
+        j = int(np.argmin(weights))
+        if int(weights[j]) < best:
+            best = int(weights[j])
+            best_vec = np.zeros(n, np.uint8)
+            best_vec[perm] = candidate_rows[j]
+        if target is not None and best <= target:
+            break
+    return {
+        "bound": best,
+        "witness_support": [int(j) for j in np.flatnonzero(best_vec)],
+        "classes_tested": int(nontrivial.sum()),
+        "all_trivial": False,
+    }
 
 
 # --------------------------------------------------------------------------- #
 # literature validation battery
 # --------------------------------------------------------------------------- #
-# Every published odd x odd BB instance we could source with an EXACT distance.
-# "pi" rows are the coprime construction 1 + x^a y^a + x^b y^b (pi = xy).
-# Recorded 2026-08-21 from the primary texts named in `source`.
+# Sourced odd x odd BB instances with their REPORTED distances.  Provenance is
+# classified per row below: Wang--Mueller uses BP-OSD upper bounds and Postema
+# uses Monte-Carlo estimates; only ``distance_exact_certified_here`` rows may
+# enter the domination reference set.  "pi" means the coprime form pi=xy.
+# Recorded from the primary texts and checked 2026-08-22.
 LITERATURE_ODD: list[dict] = [
     {"ell": 15, "m": 3, "k": 8, "d": 10, "A": [(9, 0), (0, 1), (0, 2)],
-     "B": [(0, 0), (2, 0), (7, 0)], "source": "2308.07915 Table 3"},
+     "B": [(0, 0), (2, 0), (7, 0)], "source": "2308.07915 Table 3",
+     "distance_exact_certified_here": True},
     {"ell": 3, "m": 3, "k": 4, "d": 4, "A": [(0, 0), (1, 0), (0, 1)],
      "B": [(0, 0), (2, 0), (0, 2)], "source": "2408.10001v4 App.B Table 3"},
     {"ell": 3, "m": 3, "k": 4, "d": 2, "A": [(0, 0), (0, 1), (0, 2)],
-     "B": [(0, 0), (1, 0), (0, 1)], "source": "2502.17052v4 Table 2"},
+     "B": [(0, 0), (1, 0), (0, 1)], "source": "2502.17052v4 Table 2",
+     "source_distance_estimate": True, "distance_exact_certified_here": True},
     {"ell": 3, "m": 3, "k": 8, "d": 2, "A": [(0, 0), (0, 1), (0, 2)],
-     "B": [(0, 0), (1, 0), (2, 0)], "source": "2502.17052v4 Table 2"},
+     "B": [(0, 0), (1, 0), (2, 0)], "source": "2502.17052v4 Table 2",
+     "source_distance_estimate": True, "distance_exact_certified_here": True},
     {"ell": 3, "m": 5, "k": 4, "d": 6, "pi_A": [0, 1, 2], "pi_B": [1, 3, 8],
      "source": "2408.10001v4 Table 2"},
     {"ell": 3, "m": 7, "k": 6, "d": 6, "pi_A": [0, 2, 3], "pi_B": [1, 3, 11],
@@ -300,9 +403,11 @@ LITERATURE_ODD: list[dict] = [
     {"ell": 7, "m": 7, "k": 6, "d": 12, "A": [(3, 0), (0, 5), (0, 6)],
      "B": [(0, 2), (3, 0), (5, 0)], "source": "2408.10001v4 Table 1"},
     {"ell": 7, "m": 7, "k": 6, "d": 8, "A": [(4, 0), (0, 1), (0, 3)],
-     "B": [(0, 4), (1, 0), (3, 0)], "source": "2502.17052v4 Table 2"},
+     "B": [(0, 4), (1, 0), (3, 0)], "source": "2502.17052v4 Table 2",
+     "source_distance_estimate": True, "distance_exact_certified_here": True},
     {"ell": 7, "m": 9, "k": 12, "d": 10, "pi_A": [0, 1, 58], "pi_B": [3, 16, 44],
-     "source": "2408.10001v4 Table 2"},
+     "source": "2408.10001v4 Table 2", "source_distance_estimate": True,
+     "distance_exact_certified_here": True},
     {"ell": 7, "m": 9, "k": 6, "d": 14, "pi_A": [0, 4, 19], "pi_B": [0, 6, 16],
      "source": "2408.10001v4 App.C Table 4"},
     {"ell": 3, "m": 21, "k": 8, "d": 10, "A": [(0, 0), (0, 2), (0, 10)],
@@ -380,12 +485,12 @@ def cyclic_k(terms, other, ell: int, m: int) -> int | None:
 def validate_literature(args: argparse.Namespace) -> int:
     """Independent checks against every sourced published odd x odd instance.
 
-    (1) k by three routes where available: our k = 2 dim(Ann(a) cap Ann(b)), the
-        matrix route k = n - rank H_X - rank H_Z, and (coprime lattices only) the
-        published gcd formula.  All must equal the published k.
-    (2) ceiling: the certified ceiling must be >= the published exact d.  When
-        I cap conj(I) = 0 the group-level certificate does not exist and the
-        per-member route is used instead.  One violation falsifies the theorem.
+    (1) k by three routes where available: annihilator dimension, matrix ranks,
+        and (coprime lattices) the published gcd formula.
+    (2) exact pole isomorphism: J=bar(I), J x J <= ker H_X, intersection with
+        S_Z zero, and dim(J x J)=k.
+    (3) the pole ceiling must be >= the published exact d.  One violation
+        falsifies the claimed upper bound.
     """
     recs = []
     for rec in LITERATURE_ODD:
@@ -396,22 +501,44 @@ def validate_literature(args: argparse.Namespace) -> int:
         HX, HZ = E53.bb_from_terms(ell, m, A, B)
         k_mat = int(n - rank_np(HX) - rank_np(HZ))
         I = intersect(ann_basis(A, ell, m), ann_basis(B, ell, m))
+        J = I[:, bar]
         k_ideal = 2 * I.shape[0]
         k_gcd = cyclic_k(A, B, ell, m)
         cel = certified_ceiling(I, ell, m, bar)
-        route = "ideal"
-        if cel.get("ceiling") is None and cel.get("dim_I0") == 0:
-            cel.update(member_ceiling(A, B, ell, m))
-            route = "member"
         ceiling = cel.get("ceiling")
+        pole = np.vstack([
+            np.hstack([J, np.zeros_like(J)]),
+            np.hstack([np.zeros_like(J), J]),
+        ])
+        pole_rank = rank_np(pole)
+        rank_hz = rank_np(HZ)
+        pole_in_kernel = not (HX @ pole.T % 2).any()
+        pole_intersection_zero = (
+            rank_np(np.vstack([HZ, pole])) == rank_hz + pole_rank
+        )
+        pole_isomorphism = bool(
+            pole_in_kernel and pole_intersection_zero
+            and pole_rank == k_mat == k_ideal
+        )
         routes_agree = k_ideal == k_mat and (k_gcd is None or k_gcd == k_ideal)
+        exact_here = bool(rec.get("distance_exact_certified_here", False))
+        source_estimate = bool(
+            rec.get("source_distance_estimate", False)
+            or rec["source"].startswith("2408.10001")
+            or rec["source"].startswith("2502.17052")
+        )
         out = {
+            "source_distance_estimate": source_estimate,
+            "distance_exact_certified_here": exact_here,
             "source": rec["source"], "ell": ell, "m": m, "n": n,
             "k_published": rec["k"], "k_ideal": k_ideal, "k_matrices": k_mat,
             "k_gcd_formula": k_gcd, "our_routes_agree": bool(routes_agree),
             "k_agrees_with_paper": bool(routes_agree and k_ideal == rec["k"]),
-            "d_published": rec["d"], "ceiling": ceiling, "ceiling_route": route,
-            "dim_I0": cel.get("dim_I0"), "bar_invariant": cel.get("bar_invariant"),
+            "pole_rank": pole_rank, "pole_in_kernel": pole_in_kernel,
+            "pole_intersection_zero": pole_intersection_zero,
+            "pole_isomorphism": pole_isomorphism,
+            "d_published": rec["d"], "ceiling": ceiling, "ceiling_route": "pole",
+            "dim_pole": cel.get("dim_pole"), "bar_invariant": cel.get("bar_invariant"),
             "ceiling_respects_d": (None if ceiling is None else
                                    bool(ceiling >= rec["d"])),
             "slack": (None if ceiling is None else int(ceiling - rec["d"])),
@@ -428,71 +555,103 @@ def validate_literature(args: argparse.Namespace) -> int:
     unreproducible = [r for r in recs
                       if r["our_routes_agree"] and not r["k_agrees_with_paper"]]
     core = [r for r in recs if r not in unreproducible]
-    c_bad = [r for r in core if r["ceiling_respects_d"] is False]
-    slacks = [r["slack"] for r in core if r["slack"] is not None]
+    reported_bad = [r for r in core if r["ceiling_respects_d"] is False]
+    reported_slacks = [r["slack"] for r in core if r["slack"] is not None]
+    exact_core = [r for r in core if r["distance_exact_certified_here"]]
+    exact_bad = [r for r in exact_core if r["ceiling_respects_d"] is False]
+    exact_slacks = [r["slack"] for r in exact_core if r["slack"] is not None]
     payload = {
-        "schema": "exp055-literature-v2", "utc": E53.E52.utc_now(),
+        "schema": "exp055-literature-v3", "utc": E53.E52.utc_now(),
         "instances": len(recs), "records": recs,
         "reproduced_instances": len(core),
         "k_all_agree_on_reproduced": all(r["k_agrees_with_paper"] for r in core),
         "our_routes_always_agree": all(r["our_routes_agree"] for r in recs),
+        "pole_isomorphism_all": all(r["pole_isomorphism"] for r in recs),
         "unreproducible_rows": unreproducible,
-        "ceiling_violations": c_bad,
-        "ceiling_never_violated": not c_bad,
-        "ceiling_certified_count": len(slacks),
-        "slack_min": min(slacks) if slacks else None,
-        "slack_median": sorted(slacks)[len(slacks) // 2] if slacks else None,
-        "slack_max": max(slacks) if slacks else None,
+        "reported_distance_instances": len(core),
+        "reported_ceiling_violations": reported_bad,
+        "reported_ceiling_sanity_holds": not reported_bad,
+        "reported_slack_min": min(reported_slacks) if reported_slacks else None,
+        "reported_slack_median": (
+            sorted(reported_slacks)[len(reported_slacks) // 2]
+            if reported_slacks else None
+        ),
+        "reported_slack_max": max(reported_slacks) if reported_slacks else None,
+        "exact_distance_instances": len(exact_core),
+        "exact_ceiling_violations": exact_bad,
+        "exact_ceiling_never_violated": not exact_bad,
+        "exact_slack_min": min(exact_slacks) if exact_slacks else None,
+        "exact_slack_median": (
+            sorted(exact_slacks)[len(exact_slacks) // 2] if exact_slacks else None
+        ),
+        "exact_slack_max": max(exact_slacks) if exact_slacks else None,
         "no_certificate": [r["source"] for r in core if r["ceiling"] is None],
     }
     E53.E52.atomic_write_json(LIT_OUT, payload)
-    print(json.dumps({k: payload[k] for k in
-                      ("instances", "reproduced_instances",
-                       "k_all_agree_on_reproduced", "our_routes_always_agree",
-                       "ceiling_never_violated", "ceiling_certified_count",
-                       "slack_min", "slack_median", "slack_max",
-                       "no_certificate")}, indent=1))
+    print(json.dumps({k: payload[k] for k in (
+        "instances", "reproduced_instances", "k_all_agree_on_reproduced",
+        "our_routes_always_agree", "pole_isomorphism_all",
+        "reported_ceiling_sanity_holds", "reported_distance_instances",
+        "exact_ceiling_never_violated", "exact_distance_instances",
+        "exact_slack_min", "exact_slack_median", "exact_slack_max",
+        "no_certificate",
+    )}, indent=1))
     return 0
 
 # --------------------------------------------------------------------------- #
 # candidate enumeration, symmetry reduction, domination screen
 # --------------------------------------------------------------------------- #
-# Published BB instances with an exact, primary-source distance.  [[360,12,<=24]]
-# is deliberately absent: its 24 is an upper bound, and an upper bound cannot
-# dominate anything.  A larger reference set can only strengthen a negative
-# result, never weaken it.
-PUBLISHED_EXACT = [
+# Local two-sided certificates only. EXP-055 contributes exact
+# $[[30,8,4]]$ and $[[54,8,6]]$ references; the four standard baseline rows
+# have persisted local certificates; three additional small Postema rows enter
+# LITERATURE_ODD with ``distance_exact_certified_here=True``.
+EXACT_REFERENCES = [
+    {"name": "EXP-055 [[30,8,4]]", "n": 30, "k": 8, "d": 4},
+    {"name": "EXP-055 [[54,8,6]]", "n": 54, "k": 8, "d": 6},
     {"name": "[[72,12,6]]", "n": 72, "k": 12, "d": 6},
     {"name": "[[90,8,10]]", "n": 90, "k": 8, "d": 10},
     {"name": "[[108,8,10]]", "n": 108, "k": 8, "d": 10},
     {"name": "[[144,12,12]]", "n": 144, "k": 12, "d": 12},
-    {"name": "[[288,12,18]]", "n": 288, "k": 12, "d": 18},
-    {"name": "[[784,24,24]]", "n": 784, "k": 24, "d": 24},
 ]
 
 
 def domination_threshold(n: int, k: int) -> tuple[int, str]:
-    """Largest exact distance among known codes that would dominate (n,k,.).
+    """Largest locally exact distance that could dominate candidate (n,k,.).
 
-    A candidate [[n,k,d]] is Pareto-dominated by a known [[n',k',d']] when
-    n' <= n, k' >= k and d' >= d, so the candidate is interesting only if
-    d > threshold.  The reference set is the published BB table PLUS every
-    odd x odd instance whose (k, d) we independently reproduced in
-    `validate_literature` -- the codes a new odd-lattice code actually has to
-    beat.  Monte-Carlo distance estimates are excluded (an estimate cannot
-    dominate), and so are the two rows our routes could not reproduce.
+    A candidate [[n,k,d]] is Pareto-dominated by [[n',k',d']] when
+    n' <= n, k' >= k and d' >= d.  Only independent two-sided certificates are
+    admitted.  Wang--Mueller's BP-OSD ``distance_upperbound`` outputs, Postema
+    Monte-Carlo estimates, and un-replayed source values are all excluded.
     """
     best, who = 0, "none"
-    for r in PUBLISHED_EXACT:
+    for r in EXACT_REFERENCES:
         if r["n"] <= n and r["k"] >= k and r["d"] > best:
             best, who = r["d"], r["name"]
     for r in LITERATURE_ODD:
-        nn = 2 * r["ell"] * r["m"]
-        if r.get("unreproduced"):
+        if not r.get("distance_exact_certified_here"):
             continue
+        nn = 2 * r["ell"] * r["m"]
         if nn <= n and r["k"] >= k and r["d"] > best:
             best, who = r["d"], f"[[{nn},{r['k']},{r['d']}]] {r['source']}"
     return best, who
+
+
+def _file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _reference_fingerprint() -> str:
+    rows = [
+        *EXACT_REFERENCES,
+        *[
+            {"ell": r["ell"], "m": r["m"], "k": r["k"], "d": r["d"],
+             "source": r["source"]}
+            for r in LITERATURE_ODD if r.get("distance_exact_certified_here")
+        ],
+    ]
+    return hashlib.sha256(
+        json.dumps(rows, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
 
 def _coprime(nmod: int) -> list[int]:
     from math import gcd
@@ -556,6 +715,7 @@ def enumerate_candidates(ell: int, m: int, k_min: int, k_max: int) -> list[dict]
         g["members"].append(i)
     keys = list(groups)
     seen: dict[tuple, dict] = {}
+    visited_pairs: set[tuple[int, int]] = set()
     for i, ka in enumerate(keys):
         ga = groups[ka]
         for kb in keys[i:]:
@@ -567,64 +727,279 @@ def enumerate_candidates(ell: int, m: int, k_min: int, k_max: int) -> list[dict]
             cel = certified_ceiling(I, ell, m, bar)
             for ia in ga["members"]:
                 for ib in gb["members"]:
-                    best = None
+                    raw = (ia, ib) if ia <= ib else (ib, ia)
+                    if raw in visited_pairs:
+                        continue
+                    orbit = set()
                     for mp in maps:
                         x, y = mp[ia], mp[ib]
-                        cand = (x, y) if (x, y) <= (y, x) else (y, x)
-                        if best is None or cand < best:
-                            best = cand
-                    row = seen.get(best)
-                    if row is not None:
-                        row["orbit"] += 1
-                        continue
+                        orbit.add((x, y) if x <= y else (y, x))
+                    visited_pairs.update(orbit)
+                    best = min(orbit)  # class key only; witness is for original pair
                     seen[best] = {
                         "A": list(reps[ia]), "B": list(reps[ib]),
-                        "k_parent": k, "orbit": 1, "ceiling": cel.get("ceiling"),
-                        "dim_I0": cel.get("dim_I0"),
+                        "k_parent": k, "orbit": len(orbit),
+                        "ceiling": cel.get("ceiling"),
+                        "ceiling_witness_support": cel.get("witness_support"),
+                        "dim_pole": cel.get("dim_pole"),
                         "bar_invariant": cel.get("bar_invariant"),
                     }
     return sorted(seen.values(), key=lambda r: (-r["k_parent"], r["A"], r["B"]))
 
 
+def _screen_lattice(task: tuple) -> str:
+    """One lattice = one config-bound coarse task; writes its own shard."""
+    ell, m, protocol, force = task
+    k_min, k_max = protocol["k_range"]
+    time_limit = protocol["time_limit_s"]
+    p = SCREEN_DIR / f"{ell}x{m}.json"
+    if p.exists() and not force:
+        old = json.loads(p.read_text())
+        if old.get("schema") == "exp055-screen-v3" and old.get("protocol") == protocol:
+            return f"({ell},{m}) cached"
+    t0 = time.time()
+    cands = enumerate_candidates(ell, m, k_min, k_max)
+    recs = [_screen_one((ell, m, c, time_limit, False)) for c in cands]
+    residual = [i for i, r in enumerate(recs) if r["verdict"] == "solver_required"]
+    if residual:
+        workers = min(protocol["residual_workers"], len(residual))
+        tasks = [(ell, m, cands[i], time_limit, True) for i in residual]
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            solved = list(ex.map(_screen_one, tasks))
+        for i, rec in zip(residual, solved):
+            recs[i] = rec
+    verdicts: dict[str, int] = {}
+    for r in recs:
+        verdicts[r["verdict"]] = verdicts.get(r["verdict"], 0) + 1
+    payload = {
+        "schema": "exp055-screen-v3", "utc": E53.E52.utc_now(),
+        "protocol": protocol,
+        "ell": ell, "m": m, "n": 2 * ell * m,
+        "k_range": [k_min, k_max], "time_limit_s": time_limit,
+        "candidates_after_symmetry": len(cands),
+        "orbit_total": sum(c["orbit"] for c in cands),
+        "verdicts": verdicts,
+        "survivors": [r for r in recs if r["verdict"] == "survivor"],
+        "no_reference": [r for r in recs if r["verdict"] == "no_reference"],
+        "undecided": [r for r in recs if r["verdict"] == "undecided"],
+        "solver_calls": sum(r.get("solver_calls", 0) for r in recs),
+        "records": recs, "wall_s": round(time.time() - t0, 1),
+    }
+    E53.E52.atomic_write_json(p, payload)
+    return (f"({ell},{m}) n={2*ell*m} cands={len(cands)} "
+            f"orbits={payload['orbit_total']} solver={payload['solver_calls']} "
+            f"{verdicts} {payload['wall_s']}s")
+def _screen_protocol(census_sha256: str, reference_sha256: str,
+                     k_min: int, k_max: int, time_limit: float) -> dict:
+    return {
+        "census_sha256": census_sha256,
+        "reference_sha256": reference_sha256,
+        "k_range": [k_min, k_max],
+        "time_limit_s": float(time_limit),
+        "witness_tries": WITNESS_TRIES,
+        "witness_keep": WITNESS_KEEP,
+        "residual_workers": SCREEN_RESIDUAL_WORKERS,
+    }
+
+
+def _validate_screen_for_certification(screen_payload: dict,
+                                       census_sha256: str,
+                                       reference_sha256: str) -> None:
+    if screen_payload.get("schema") != "exp055-odd-lattice-screen-v2":
+        raise RuntimeError("unexpected or stale screen schema")
+    verdict = screen_payload.get("verdict", {})
+    if (not verdict.get("complete") or not verdict.get("all_referenced_decided")
+            or screen_payload.get("scope", {}).get("missing")):
+        raise RuntimeError("screen is incomplete/undecided; refusing survivor claims")
+    protocol = screen_payload.get("protocol", {})
+    if protocol.get("census_sha256") != census_sha256:
+        raise RuntimeError("screen is not bound to the current census")
+    if protocol.get("reference_sha256") != reference_sha256:
+        raise RuntimeError("screen reference set has changed")
+
+
+
+
+def _validate_census_for_screen(census: dict, k_min: int, k_max: int) -> None:
+    if not census.get("scope", {}).get("complete"):
+        raise RuntimeError("EXP-055 census is incomplete; refusing the screen")
+    protocol = census.get("protocol", {})
+    if int(protocol.get("max_weight", 0)) < 3:
+        raise RuntimeError("census did not include weight-3 polynomials")
+    if int(protocol.get("k_min", 10**9)) > k_min:
+        raise RuntimeError("census k_min is above the requested screen k_min")
+    if k_max > K_CEIL_MAX:
+        raise RuntimeError("screen k_max exceeds the census ceiling range")
+
+
 def screen(args: argparse.Namespace) -> int:
     """Rigorous Pareto screen: is any odd-lattice weight-3 BB code undominated?"""
+    census = json.loads(OUT.read_text())
+    _validate_census_for_screen(census, args.k_min, args.k_max)
     lats = ([tuple(int(v) for v in tok.split("x")) for tok in args.lattices.split(",")]
             if args.lattices else
-            [(r["ell"], r["m"]) for r in json.loads(OUT.read_text())["lattices"]
-             if r["frontier_weight3"] and 2 * r["ell"] * r["m"] >= args.min_n])
+            [(r["ell"], r["m"]) for r in census["lattices"]
+             if r["frontier_weight3"] and r["n"] >= args.min_n])
+    protocol = _screen_protocol(
+        _file_sha256(OUT), _reference_fingerprint(),
+        args.k_min, args.k_max, args.time_limit,
+    )
     SCREEN_DIR.mkdir(parents=True, exist_ok=True)
-    for (ell, m) in lats:
-        p = SCREEN_DIR / f"{ell}x{m}.json"
-        if p.exists() and not args.force:
-            print(f"({ell},{m}) cached", flush=True)
-            continue
-        t0 = time.time()
-        cands = enumerate_candidates(ell, m, args.k_min, args.k_max)
-        tasks = [(ell, m, c, args.time_limit) for c in cands]
-        recs = []
-        if tasks:
-            with ProcessPoolExecutor(max_workers=args.workers) as ex:
-                recs = list(ex.map(_screen_one, tasks))
-        verdicts: dict[str, int] = {}
-        for r in recs:
-            verdicts[r["verdict"]] = verdicts.get(r["verdict"], 0) + 1
-        payload = {
-            "schema": "exp055-screen-v1", "utc": E53.E52.utc_now(),
-            "ell": ell, "m": m, "n": 2 * ell * m,
-            "k_range": [args.k_min, args.k_max], "time_limit_s": args.time_limit,
-            "candidates_after_symmetry": len(cands),
-            "orbit_total": sum(c["orbit"] for c in cands),
+    tasks = [(ell, m, protocol, args.force) for ell, m in lats]
+    print(f"{len(tasks)} lattices, {args.workers} workers", flush=True)
+    with ProcessPoolExecutor(max_workers=args.workers) as ex:
+        for line in ex.map(_screen_lattice, tasks):
+            print(line, flush=True)
+    return assemble_screen(args)
+
+
+def assemble_screen(args: argparse.Namespace) -> int:
+    """Assemble only shards hash-bound to this exact screen protocol."""
+    census = json.loads(OUT.read_text())
+    k_min = int(getattr(args, "k_min", K_MIN))
+    k_max = int(getattr(args, "k_max", K_CEIL_MAX))
+    _validate_census_for_screen(census, k_min, k_max)
+    protocol = _screen_protocol(
+        _file_sha256(OUT), _reference_fingerprint(),
+        k_min, k_max, float(getattr(args, "time_limit", 120.0)),
+    )
+    if getattr(args, "lattices", ""):
+        expected = [tuple(int(v) for v in tok.split("x"))
+                    for tok in args.lattices.split(",")]
+    else:
+        min_n = int(getattr(args, "min_n", 18))
+        expected = [(r["ell"], r["m"]) for r in census["lattices"]
+                    if r["frontier_weight3"] and r["n"] >= min_n]
+    shards: dict[tuple[int, int], dict] = {}
+    for p in SCREEN_DIR.glob("*x*.json"):
+        d = json.loads(p.read_text())
+        if d.get("schema") == "exp055-screen-v3" and d.get("protocol") == protocol:
+            shards[(d["ell"], d["m"])] = d
+    missing = [f"{ell}x{m}" for ell, m in expected if (ell, m) not in shards]
+    recs = [shards[pair] for pair in expected if pair in shards]
+    verdicts: dict[str, int] = {}
+    survivors, no_reference, undecided = [], [], []
+    for r in recs:
+        for key, value in r["verdicts"].items():
+            verdicts[key] = verdicts.get(key, 0) + value
+        survivors.extend(r["survivors"])
+        no_reference.extend(r["no_reference"])
+        undecided.extend(r["undecided"])
+    with_reference = sum(value for key, value in verdicts.items()
+                         if key != "no_reference")
+    dominated = sum(value for key, value in verdicts.items()
+                    if key.startswith("dominated"))
+    payload = {
+        "schema": "exp055-odd-lattice-screen-v2",
+        "utc": E53.E52.utc_now(),
+        "protocol": protocol,
+        "scope": {
+            "lattices_expected": len(expected),
+            "lattices_completed": len(recs),
+            "missing": missing,
+            "weight_A": 3,
+            "weight_B": 3,
+            "k_range": protocol["k_range"],
+            "n_max": max((2 * ell * m for ell, m in expected), default=0),
+            "reference_rule": (
+                "max independently exact-certified d with n_ref <= n_candidate "
+                "and k_ref >= k_candidate; estimates excluded"
+            ),
+        },
+        "verdict": {
+            "complete": not missing,
+            "candidates_after_symmetry": sum(r["candidates_after_symmetry"] for r in recs),
+            "orbits_represented": sum(r["orbit_total"] for r in recs),
+            "solver_calls": sum(r["solver_calls"] for r in recs),
             "verdicts": verdicts,
-            "survivors": [r for r in recs if r["verdict"] == "survivor"],
-            "no_reference": [r for r in recs if r["verdict"] == "no_reference"],
-            "undecided": [r for r in recs if r["verdict"] == "undecided"],
-            "solver_calls": sum(r.get("solver_calls", 0) for r in recs),
-            "records": recs, "wall_s": round(time.time() - t0, 1),
+            "with_reference": with_reference,
+            "dominated": dominated,
+            "survivors": len(survivors),
+            "no_reference": len(no_reference),
+            "undecided": len(undecided),
+            "all_referenced_decided": not undecided,
+            "all_referenced_dominated": not survivors and not undecided,
+        },
+        "survivors": survivors,
+        "no_reference": no_reference,
+        "undecided": undecided,
+        "lattices": recs,
+    }
+    E53.E52.atomic_write_json(SCREEN_OUT, payload)
+    print(json.dumps(payload["verdict"], indent=1))
+    if missing:
+        print("missing:", ", ".join(missing), file=sys.stderr)
+    return 0
+
+
+def certify_screen_survivors(args: argparse.Namespace) -> int:
+    """Exact distance and decomposition certificates for a complete screen."""
+    screen_payload = json.loads(SCREEN_OUT.read_text())
+    _validate_screen_for_certification(
+        screen_payload, _file_sha256(OUT), _reference_fingerprint()
+    )
+    from qec_research.equivalence.css import (
+        stabilizer_direct_sum_certificate,
+        stabilizer_incidence_components,
+    )
+    out = []
+    for row in screen_payload["survivors"]:
+        ell, m, n = row["ell"], row["m"], row["n"]
+        HX, HZ = E53.bb_from_terms(ell, m, row["A"], row["B"])
+        k_direct = int(n - rank_np(HX) - rank_np(HZ))
+        t0 = time.time()
+        dist = exact_distance_css(
+            HX, HZ, time_limit_s=args.time_limit, workers=CERT_WORKERS
+        )
+        zeros = np.zeros_like(HX)
+        H = np.vstack([np.hstack([HX, zeros]), np.hstack([zeros, HZ])])
+        direct = stabilizer_direct_sum_certificate(H)
+        incidence = stabilizer_incidence_components(H)
+        rec = {
+            **row,
+            "k_from_matrices": k_direct,
+            "k_matches_screen": k_direct == row["k_parent"],
+            "d": dist["d"],
+            "d_X": dist["d_X"],
+            "d_Z": dist["d_Z"],
+            "d_exact": bool(dist["d_exact"]),
+            "d_X_exact": bool(dist["d_X_exact"]),
+            "d_Z_exact": bool(dist["d_Z_exact"]),
+            "d_X_witness": dist["d_X_witness"],
+            "d_Z_witness": dist["d_Z_witness"],
+            "beats_reference": bool(
+                dist["d_exact"] and dist["d"] is not None
+                and dist["d"] > row["threshold"]
+            ),
+            "incidence_component_sizes": [len(c) for c in incidence],
+            "direct_sum_component_sizes": direct["component_sizes"],
+            "is_direct_sum": bool(direct["is_direct_sum"]),
+            "max_check_weight": int(max(HX.sum(axis=1).max(),
+                                        HZ.sum(axis=1).max())),
+            "max_qubit_degree": int((HX.sum(axis=0) + HZ.sum(axis=0)).max()),
+            "wall_s": round(time.time() - t0, 2),
         }
-        E53.E52.atomic_write_json(p, payload)
-        print(f"({ell},{m}) n={2*ell*m} cands={len(cands)} "
-              f"orbits={payload['orbit_total']} solver_calls={payload['solver_calls']} "
-              f"{verdicts} {payload['wall_s']}s", flush=True)
+        out.append(rec)
+        print(json.dumps({k: rec[k] for k in
+                          ("ell", "m", "n", "k_from_matrices", "d",
+                           "d_exact", "beats_reference", "is_direct_sum",
+                           "wall_s")}), flush=True)
+    payload = {
+        "schema": "exp055-odd-lattice-survivors-v2",
+        "utc": E53.E52.utc_now(),
+        "screen_schema": screen_payload["schema"],
+        "screen_sha256": _file_sha256(SCREEN_OUT),
+        "survivors": len(out),
+        "all_k_match_screen": all(r["k_matches_screen"] for r in out),
+        "all_exact": all(r["d_exact"] for r in out),
+        "all_beat_reference": all(r["beats_reference"] for r in out),
+        "all_indecomposable": all(not r["is_direct_sum"] for r in out),
+        "records": out,
+    }
+    E53.E52.atomic_write_json(SURVIVOR_CERT, payload)
+    if (not payload["all_exact"] or not payload["all_beat_reference"]
+            or not payload["all_k_match_screen"]):
+        raise RuntimeError("survivor certification contradicted the screen")
     return 0
 
 
@@ -636,15 +1011,14 @@ def _screen_one(task: tuple) -> dict:
     d <= ceiling <= threshold, so the candidate is dominated with no solver
     call at all).  Only the survivors of that test reach CP-SAT.
     """
-    ell, m, cand, time_limit = task
+    ell, m, cand, time_limit, allow_solver = task
     n = 2 * ell * m
     thr, who = domination_threshold(n, cand["k_parent"])
     out = {**cand, "ell": ell, "m": m, "n": n,
            "threshold": thr, "threshold_source": who}
     if thr == 0:
-        # No published code with n' <= n and k' >= k, so there is nothing to be
-        # dominated by and no solver call is warranted.  The certified ceiling is
-        # still recorded, and `certify` can pick these up on request.
+        # No published code with n' <= n and k' >= k: nothing can dominate this
+        # (n,k), so no solver call is warranted.  The ceiling is still recorded.
         out.update({"verdict": "no_reference", "solver_calls": 0, "wall_s": 0.0})
         return out
     ceil = cand.get("ceiling")
@@ -655,6 +1029,21 @@ def _screen_one(task: tuple) -> dict:
         return out
     HX, HZ = E53.bb_from_terms(ell, m, cand["A"], cand["B"])
     out["k_from_matrices"] = int(n - rank_np(HX) - rank_np(HZ))
+    # Certified reciprocal-pole witnesses first: microseconds, no solver.
+    I = intersect(ann_basis(cand["A"], ell, m), ann_basis(cand["B"], ell, m))
+    J = I[:, bar_permutation(ell, m)]
+    t0 = time.time()
+    rw = reduced_witness_bound(J, HZ, ell, m, target=thr)
+    out["witness_bound"] = rw["bound"]
+    out["witness_classes"] = rw.get("classes_tested")
+    out["witness_support"] = rw.get("witness_support")
+    out["witness_wall_s"] = round(time.time() - t0, 2)
+    if rw["bound"] is not None and rw["bound"] <= thr:
+        out.update({"verdict": "dominated_by_witness", "solver_calls": 0})
+        return out
+    if not allow_solver:
+        out.update({"verdict": "solver_required", "solver_calls": 0})
+        return out
     t0 = time.time()
     res = exact_distance_css(HX, HZ, time_limit_s=time_limit, workers=2,
                              upper_bound=thr)
@@ -717,13 +1106,6 @@ def sweep_lattice(ell: int, m: int, max_weight: int, k_min: int, sample: int,
                 "wt_B": gb["min_weight"], **cel,
             })
 
-    # Pairs with I cap conj(I) = 0 carry no group-level certificate; resolve the
-    # representative of each directly so nothing is silently dropped.
-    no_cert = [q for q in qualifying if q.get("ceiling") is None
-               and q.get("dim_I0") == 0]
-    for q in no_cert[:64]:
-        q.update(member_ceiling(q["A"], q["B"], ell, m))
-        q["ceiling_route"] = "member"
 
     # frontier: per k, the largest certified ceiling.  Two versions: over the
     # whole weight-<=max_weight family, and restricted to the catalogue's own
@@ -738,9 +1120,10 @@ def sweep_lattice(ell: int, m: int, max_weight: int, k_min: int, sample: int,
             if cur is None or c > cur["ceiling"]:
                 best[q["k_parent"]] = {
                     "ceiling": c, "A": q["A"], "B": q["B"],
-                    "bar_invariant": q["bar_invariant"], "dim_I0": q.get("dim_I0"),
+                    "bar_invariant": q["bar_invariant"],
+                    "dim_pole": q.get("dim_pole"),
                     "exact_min": bool(q.get("ceiling_is_exact_min", False)),
-                    "route": q.get("ceiling_route", "ideal"),
+                    "route": "reciprocal_pole",
                 }
         return best
 
@@ -782,14 +1165,19 @@ def sweep_lattice(ell: int, m: int, max_weight: int, k_min: int, sample: int,
                              "dim_stable": int(rank_np(st))})
 
     return {
+        "schema": "exp055-census-lattice-v2",
+        "protocol": {
+            "max_weight": max_weight, "k_min": k_min,
+            "sample": sample, "seed": seed,
+        },
         "ell": ell, "m": m, "n": 2 * ell * m, "max_weight": max_weight,
         "supports": len(supports), "groups": len(keys), "pairs_total": pairs_total,
         "k_histogram": {str(k): v for k, v in sorted(k_hist.items())},
         "k_max": max(k_hist) if k_hist else 0,
         "qualifying_group_pairs": len(qualifying),
         "qualifying_pairs_represented": sum(q["pairs_represented"] for q in qualifying),
-        "no_group_certificate_pairs": len(no_cert),
-        "no_group_certificate_represented": sum(q["pairs_represented"] for q in no_cert),
+        "no_group_certificate_pairs": 0,
+        "no_group_certificate_represented": 0,
         "frontier": {str(k): v for k, v in sorted(frontier.items())},
         "frontier_weight3": {str(k): v for k, v in sorted(frontier_w3.items())},
         "ceiling_max": max((v["ceiling"] for v in frontier.values()), default=None),
@@ -808,8 +1196,12 @@ def _shard_path(ell: int, m: int) -> Path:
 def _worker(task: tuple) -> str:
     ell, m, max_weight, k_min, sample, seed, force = task
     p = _shard_path(ell, m)
+    identity = {"max_weight": max_weight, "k_min": k_min,
+                "sample": sample, "seed": seed}
     if p.exists() and not force:
-        return f"({ell},{m}) cached"
+        old = json.loads(p.read_text())
+        if old.get("schema") == "exp055-census-lattice-v2" and old.get("protocol") == identity:
+            return f"({ell},{m}) cached"
     rec = sweep_lattice(ell, m, max_weight, k_min, sample, seed)
     E53.E52.atomic_write_json(p, rec)
     return (f"({ell},{m}) n={rec['n']} groups={rec['groups']} "
@@ -834,7 +1226,26 @@ def run(args: argparse.Namespace) -> int:
 
 
 def assemble(args: argparse.Namespace) -> int:
-    recs = [json.loads(p.read_text()) for p in sorted(SHARDS.glob("*x*.json"))]
+    identity = {
+        "max_weight": int(getattr(args, "max_weight", 3)),
+        "k_min": int(getattr(args, "k_min", K_MIN)),
+        "sample": int(getattr(args, "sample", 12)),
+        "seed": int(getattr(args, "seed", 55)),
+    }
+    if getattr(args, "lattices", ""):
+        expected = [tuple(int(v) for v in tok.split("x"))
+                    for tok in args.lattices.split(",")]
+    else:
+        expected = odd_lattices(int(getattr(args, "max_dim", MAX_DIM)))
+    by_lattice: dict[tuple[int, int], dict] = {}
+    for p in SHARDS.glob("*x*.json"):
+        r = json.loads(p.read_text())
+        if (r.get("schema") == "exp055-census-lattice-v2"
+                and r.get("protocol") == identity):
+            by_lattice[(r["ell"], r["m"])] = r
+    missing = [f"{ell}x{m}" for ell, m in expected
+               if (ell, m) not in by_lattice]
+    recs = [by_lattice[pair] for pair in expected if pair in by_lattice]
     recs.sort(key=lambda r: (r["n"], r["ell"]))
     k_hist: dict[int, int] = {}
     for r in recs:
@@ -861,10 +1272,18 @@ def assemble(args: argparse.Namespace) -> int:
             published[name] = {"ell": spec.ell, "m": spec.m, "n": 2 * spec.ell * spec.m}
     payload = {
         "schema": SCHEMA, "utc": E53.E52.utc_now(),
-        "max_weight": args.max_weight, "k_min": args.k_min,
+        "protocol": identity,
+        "scope": {
+            "lattices_expected": len(expected),
+            "lattices_completed": len(recs),
+            "missing": missing,
+            "complete": not missing,
+        },
+        "max_weight": identity["max_weight"], "k_min": identity["k_min"],
         "lattices": recs,
         "verdict": {
             "lattices_swept": len(recs),
+            "complete": not missing,
             "pairs_total": sum(r["pairs_total"] for r in recs),
             "k_histogram_global": {str(k): v for k, v in sorted(k_hist.items())},
             "k_max_global": max(k_hist) if k_hist else 0,
@@ -948,8 +1367,12 @@ def main() -> int:
     r.add_argument("--force", action="store_true")
     r.set_defaults(fn=run)
     a = sub.add_parser("assemble")
+    a.add_argument("--max-dim", type=int, default=MAX_DIM)
+    a.add_argument("--lattices", default="")
     a.add_argument("--max-weight", type=int, default=3)
     a.add_argument("--k-min", type=int, default=K_MIN)
+    a.add_argument("--sample", type=int, default=12)
+    a.add_argument("--seed", type=int, default=55)
     a.set_defaults(fn=assemble)
     lit = sub.add_parser("literature")
     lit.set_defaults(fn=validate_literature)
@@ -961,6 +1384,16 @@ def main() -> int:
     s_.add_argument("--time-limit", type=float, default=120.0)
     s_.add_argument("--workers", type=int, default=12)
     s_.add_argument("--force", action="store_true")
+    sa = sub.add_parser("screen-assemble")
+    sa.add_argument("--lattices", default="")
+    sa.add_argument("--min-n", type=int, default=18)
+    sa.add_argument("--k-min", type=int, default=K_MIN)
+    sa.add_argument("--k-max", type=int, default=K_CEIL_MAX)
+    sa.add_argument("--time-limit", type=float, default=120.0)
+    sa.set_defaults(fn=assemble_screen)
+    sc = sub.add_parser("screen-certify")
+    sc.add_argument("--time-limit", type=float, default=CERT_TIME_LIMIT_S)
+    sc.set_defaults(fn=certify_screen_survivors)
     s_.set_defaults(fn=screen)
     c = sub.add_parser("certify")
     c.add_argument("--top", type=int, default=6)

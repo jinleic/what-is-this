@@ -1,0 +1,12902 @@
+{
+ "candidates_after_symmetry": 274,
+ "ell": 9,
+ "k_range": [
+  8,
+  24
+ ],
+ "m": 9,
+ "n": 162,
+ "no_reference": [],
+ "orbit_total": 12870,
+ "records": [
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 6,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 5.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 2.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 3.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 3.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 4.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 3.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 2.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 18,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 2.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 18,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 6,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 2.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 2.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 12,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 12,
+   "ell": 9,
+   "k_from_matrices": 24,
+   "k_parent": 24,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 6,
+   "threshold_source": "[[162,24,6]] 2407.03973v1 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 16.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 16.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 11.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 15.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 17.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 17.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 17.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 2.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 8.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 14.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 18.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 2.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 18.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 11.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 15.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 8.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 12.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 9.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 8.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 10.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     8,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 16.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     7,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 15.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 16.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     5,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 18.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 16.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 13.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     8,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 12,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 15.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     7,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 15.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 18.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     5,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     8,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 144,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     8,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     5,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 14.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     7,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 13.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 3.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 0.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 17.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     7,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 4,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 11.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     6,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 48,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 6.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     7,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 8,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 19.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 8.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 5.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 4.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 7.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     6,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 18,
+   "d_exact": true,
+   "d_found": 2,
+   "dim_I0": 6,
+   "ell": 9,
+   "k_from_matrices": 12,
+   "k_parent": 12,
+   "m": 9,
+   "n": 162,
+   "orbit": 24,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 12,
+   "threshold_source": "[[144,12,12]]",
+   "verdict": "dominated",
+   "wall_s": 1.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 9,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 3.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 224.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     5,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 220.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 4.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 230.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 178.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 11.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 10.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 255.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 13.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     5,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     8,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 243.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 328.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     8,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 221.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     8,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 156.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     5,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 256.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 285.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     8,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 231.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     8,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 307.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 243.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 219.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     8,
+     5
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 277.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     8,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 268.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 185.9
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 7.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 259.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     5,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 295.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 6.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 21.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 292.2
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     5,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 180.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 7.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 18.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     2,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 9,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 8.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     5,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 18,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 25.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 18.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 258.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     8
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 18,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 20.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 21.7
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     7
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     5,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.5
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 166.8
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 283.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 36,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 214.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 224.1
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     5,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 12,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 1440.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 283.3
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": false,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 72,
+   "screen_decided": false,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 207.4
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 18,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 16.6
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 36,
+   "d_exact": true,
+   "d_found": 6,
+   "dim_I0": 4,
+   "ell": 9,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 9,
+   "n": 162,
+   "orbit": 18,
+   "screen_decided": true,
+   "solver_calls": 1,
+   "threshold": 14,
+   "threshold_source": "[[162,8,14]] 2408.10001v4 Table 1",
+   "verdict": "dominated",
+   "wall_s": 17.6
+  }
+ ],
+ "schema": "exp055-screen-v2",
+ "solver_calls": 274,
+ "survivors": [],
+ "time_limit_s": 90.0,
+ "undecided": [],
+ "utc": "2026-08-22T20:07:43Z",
+ "verdicts": {
+  "dominated": 274
+ },
+ "wall_s": 50251.2
+}

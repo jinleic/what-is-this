@@ -1,6 +1,6 @@
 {
- "ceiling_max": 30,
- "ceiling_max_weight3": 30,
+ "ceiling_max": 24,
+ "ceiling_max_weight3": 24,
  "ell": 15,
  "frontier": {
   "10": {
@@ -26,9 +26,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 9,
-   "dim_I0": 5,
+   "dim_pole": 5,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "12": {
    "A": [
@@ -60,10 +60,45 @@
     ]
    ],
    "bar_invariant": false,
-   "ceiling": 30,
-   "dim_I0": 2,
+   "ceiling": 22,
+   "dim_pole": 6,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
+  },
+  "16": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     0
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 16,
+   "dim_pole": 8,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   },
   "18": {
    "A": [
@@ -88,9 +123,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 5,
-   "dim_I0": 9,
+   "dim_pole": 9,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "20": {
    "A": [
@@ -119,11 +154,11 @@
    ],
    "bar_invariant": true,
    "ceiling": 6,
-   "dim_I0": 10,
+   "dim_pole": 10,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
-  "8": {
+  "24": {
    "A": [
     [
      0,
@@ -144,19 +179,50 @@
      0
     ],
     [
+     3,
+     0
+    ],
+    [
+     9,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "dim_pole": 12,
+   "exact_min": true,
+   "route": "reciprocal_pole"
+  },
+  "8": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
      1,
      0
     ],
     [
-     2,
+     4,
      0
     ]
    ],
-   "bar_invariant": true,
-   "ceiling": 20,
-   "dim_I0": 4,
+   "bar_invariant": false,
+   "ceiling": 24,
+   "dim_pole": 4,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   }
  },
  "frontier_weight3": {
@@ -190,10 +256,45 @@
     ]
    ],
    "bar_invariant": false,
-   "ceiling": 30,
-   "dim_I0": 2,
+   "ceiling": 22,
+   "dim_pole": 6,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
+  },
+  "16": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     0
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 16,
+   "dim_pole": 8,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   },
   "20": {
    "A": [
@@ -226,9 +327,44 @@
    ],
    "bar_invariant": true,
    "ceiling": 6,
-   "dim_I0": 10,
+   "dim_pole": 10,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
+  },
+  "24": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     9,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "dim_pole": 12,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   },
   "8": {
    "A": [
@@ -256,14 +392,14 @@
     ],
     [
      2,
-     0
+     1
     ]
    ],
-   "bar_invariant": true,
-   "ceiling": 20,
-   "dim_I0": 4,
+   "bar_invariant": false,
+   "ceiling": 24,
+   "dim_pole": 4,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   }
  },
  "groups": 58,
@@ -291,11 +427,18 @@
  "m": 3,
  "max_weight": 3,
  "n": 90,
- "no_group_certificate_pairs": 280,
- "no_group_certificate_represented": 27168,
+ "no_group_certificate_pairs": 0,
+ "no_group_certificate_represented": 0,
  "pairs_total": 982081,
+ "protocol": {
+  "k_min": 8,
+  "max_weight": 3,
+  "sample": 12,
+  "seed": 55
+ },
  "qualifying_group_pairs": 425,
  "qualifying_pairs_represented": 43056,
+ "schema": "exp055-census-lattice-v2",
  "supports": 991,
- "wall_s": 10.63
+ "wall_s": 2.99
 }

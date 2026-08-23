@@ -1002,3 +1002,121 @@ agent's word alone.
   prime of f frozen), not the byte-identical kernel function. The
   novelty is the tau=0 alignment alone; the b-shape is the orthodox
   escape shape used in 103 grid rows.
+
+## Session 2026-08-19 (continued) - L20/L21: class existence proved, irreducibility narrowed
+
+The arc began by asking whether L19's per-class Schinzel implication could
+actually be fed a class for every cell. L20 removed that structural
+uncertainty. For any cell, take the fixed factor $f=w$, choose odd $a$ with
+$A=1+4a^2$ and $(A\mid w)=-1$ using
+$\sum_{r\bmod w}(1+4r^2\mid w)=-1$, solve the explicit residue system for
+$q_1$ modulo $M=4A\prod_{p\in S}p$, and invoke Dirichlet. The system is
+nonempty uniformly, so one verified aligned class exists for **EVERY**
+cell and clause (ii) is gone. The replay made the finite shadow exact:
+103/103 canonical rows reproduced after 1,113,000 residue visits, and
+353/353 grid certificates were clean. A second derivation supplied a useful
+adversarial check: if $a$ is frozen at $1$, collisions occur exactly at
+$w=11,19,31,59,71,79$. That is precisely the 5-wall set obtained earlier
+from the independent Hilbert-symbol route. Two derivations found the same
+obstruction, and varying $a$ repaired every collision.
+
+The next attempt was to promote the selected class to a fully admissible
+Schinzel pair. The L20 audit returned the deliberately split verdict
+**(b) PROVED, (c) PROVED, (d) PROVED, positive lead PROVED,
+irreducibility OPEN**. One premise broke during normalization. Literal
+$S$-support of the content $c$ is **FALSE**: for
+$(w,z)=(3,3/11)$, $a=1$, and $q_1=19$, its outside part is $11^{-12}$.
+What the parity argument actually uses, and what the corrected proof gives,
+is that the *square class* of $c$ is supported on $S$; the outside
+valuation is even and therefore harmless. This changed the statement
+rather than suppressing the counterexample.
+
+Before any record claim was allowed, the adversarial chain audit returned
+**NO**: standard Schinzel H alone did not yet imply the six-quantifier
+definition, because a per-cell irreducibility input had been silently
+promoted to a uniform theorem. It also caught six record defects. The
+displayed $\Theta^\ast$ contained only the $\tau=0$ and $2a/A$ branches
+although the construction used
+$\tau^\dagger=(1+2a^2)/A$; the repair is to add that finite branch at zero
+variable cost by L11a. A bounded set of 706 grid irreducibility checks had
+been described as “each cell”, alongside the obsolete demand that every
+outside valuation be even; the corrected contract keeps the finite scope
+and allows odd valuations whose Hilbert symbol is $+1$. “A member of each
+aligned class” was stronger than needed and was replaced by one selected
+class and member per cell. The L13f square-or-single-prime rung had been
+written as an if-and-only-if, but the 96 L14 factorint closures and 103
+cell-box factorization-rung candidates show that it is only a sufficient
+factorization-free shortcut. The ledger simultaneously called $w=179$
+closed and open; the exact replay closes it, so every tried off-grid cell
+is closed. Finally, “$G(t)$ is an $S$-unit” had the terminology backwards:
+the proved condition is that $G(t)$ is a $p$-adic unit for every $p\in S$,
+that is, coprime to $S$. Those six corrections fixed the scope of the
+chain without strengthening any hypothesis by prose.
+
+L21 then attacked the remaining word “irreducible” directly, and the first
+result was a counterexample to the blanket claim. **L21a (PROVED)** says
+that when $s=0$ (so $a=1$) and
+$\delta_\tau=\sigma^2$ is a rational square,
+$$
+P(b)=\bigl(4DAb^2-\sigma a^2Z^2N_g\bigr)
+     \bigl(4DAb^2+\sigma a^2Z^2N_g\bigr),
+$$
+a genuine $4\times4$ factorization. The identity held on 56/56 applicable
+rows and all 8/8 controls were correctly inapplicable: blanket
+irreducibility is **FALSE**. **L21b (PROVED)** explains why this does not
+kill the construction. On
+$\tau^\dagger=(1+2a^2)/A$ one has
+$\delta_{\tau^\dagger}=-4a^4/A<0$, never a rational square, for every
+$a$ and cell; 9/9 exact checks agreed. Its square class is that of $-A$,
+so the quadratic field governing this branch is the imaginary
+$\mathbb Q(\sqrt{-A})$.
+
+The coefficient symmetry turned out to be real but almost, rather than
+literally, reciprocal. **L21c (PROVED)** gives that
+$P+32A^3s^2D^2b^5$ is palindromic and that $P_0=P_8$ always, with
+288/288 exact checks; on the reciprocal slice the Galois group embeds in
+$C_2\wr S_4$. L21e sharpened the boundary to an identity,
+$$
+P(b)-b^8P(1/b)=32A^3s^2D^2(b^3-b^5),
+$$
+so $P$ itself is reciprocal if and only if $a=1$.
+
+The successful irreducibility proof was therefore global first and
+fiberwise second. **L21d (PROVED)** localizes at the common endpoint
+coefficient $L=a^8A^2Z^4$: a factorization over
+$\mathbb Q(a,Z)$ would survive the specialization $(a,Z)=(1,27)$, while
+the resulting octic has an exact irreducibility certificate modulo $17$.
+Thus $P$ is irreducible of degree 8 over $\mathbb Q(a,Z)$. The proof then
+respected the vertical-line objection instead of pretending that a
+two-variable thin set cannot contain a whole fixed-$z$ line. Exact
+one-variable certificates prove $P(a,z)$ irreducible in
+$\mathbb Q(a)[b]$ for 353/353 target $z$; Cohen–Serre's
+$O_z(\sqrt B\log B)$ bound for bad integers loses to the admissible
+progression's $B/M+O(1)$ members, so a good $a$ exists for every certified
+cell. The first admissible $a$ worked on 48/48 rows. In the wider hunt,
+1024/1024 constructed-branch rows were irreducible and none was reducible;
+the only reducible cases anywhere were the 128 off-branch,
+$a=1$, square-$\delta$ rows already explained by L21a.
+
+The cheap local proofs were also closed honestly. **L21e (PROVED)** gives
+$P\equiv16A^2b^4(1-2As^2b)\pmod w$, so reduction modulo $w$ never
+certifies octic irreducibility, and the $w$-Newton polygon never has one
+denominator-8 slope. At an odd $p\mid A$ with $v_p(Z)=0$ there are exactly
+two length-4 slopes $\mp v_p(A)/2$. The positive residue of this analysis
+is the $a=1$ trace criterion: when $(5\mid w)=-1$, the degree-4 trace
+polynomial is uniformly irreducible over $\mathbb Q(\sqrt{-5})$, and the
+octic is irreducible whenever
+$$
+\Xi(Z)=(125D^2+64Z^4)(125D^2+1024Z^4)
+$$
+is nonsquare, as it was on 189/189 rows.
+
+The residual scope is now exact. For a cell whose $z$ is not among the
+certified 353, irreducibility of $P(a,z)$ in $\mathbb Q(a)[b]$ is generic
+but not proved for every $z$; it needs one finite certificate per new
+cell, always obtainable so far, never yet failing. Class existence is
+proved for every cell; the Schinzel pair's admissibility is proved
+uniformly except for irreducibility, which is proved generically and
+per-cell on all 353 certified z; member existence follows from Schinzel's
+Hypothesis H; so the record is conditional on Schinzel H plus a per-cell
+irreducibility certificate.

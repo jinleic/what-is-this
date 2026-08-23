@@ -911,3 +911,19 @@ sources:
     key_results_used: "[EXTERNAL, AUDIT ONLY] The Introduction says the exact simple-cubic series through N_max=36 was still the record as of 2017. The paper's longer displayed terms are extrapolations for BCC/FCC, not new exact simple-cubic counts."
     exact_location: "Introduction, printed page 2, paragraph ending 'To date, this is the record series for the SC lattice.'"
     reproduced_locally: false
+
+  - key: poenitz_tittmann2000_saw_upper
+    title: "Improved Upper Bounds for Self-Avoiding Walks in Z^d"
+    authors: ["Andre Poenitz", "Peter Tittmann"]
+    year: 2000
+    venue: "The Electronic Journal of Combinatorics 7, #R21"
+    doi: "10.37236/1499"
+    arxiv: null
+    url: "https://www.combinatorics.org/ojs/index.php/eljc/article/download/v7i1r21/pdf"
+    local_path: "sources/fulltext/poenitz_tittmann2000_saw_upper.pdf"
+    sha256: "ccd467b28d9d371d12a3e8187dfba8ea35acc0a724e4b490e45c324fdc6d224f"
+    obtained: full
+    access_routes_tried: ["Official EJC open-access full PDF (succeeded)"]
+    key_results_used: "Finite-memory walk automaton construction (Section 2) and the upper-bound method (Section 3). Table 2 d=3 values 4.8646, 4.8075, 4.7780, 4.7599, 4.7476 serve as ceiled external witnesses for the in-repo exact automata at k=4..12; the explicit k=4 denominator 1-2zd+2z-2z^2d+2z^2-z^3 is reproduced exactly at d=3. The in-repo certificate mu<4.747526 is proved independently by an integer Collatz vector, not imported."
+    exact_location: "Section 2 (automaton and state-reduction rule), Section 3 (largest-eigenvalue upper bounds), Table 2 with the caption 'The values shown are true upper bounds', and the displayed k=4 generating-function denominator."
+    reproduced_locally: true

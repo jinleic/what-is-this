@@ -1,139 +1,167 @@
-# Theorem K — a certified solver-free distance ceiling for BB codes on odd lattices
+# Theorem K — the reciprocal-pole logical isomorphism and certified BB distance bounds
 
-**Status (2026-08-21):** proved; validated against 25 reproduced published
-instances with zero violations (EXP-055). Novelty check (read-only literature
-scout, 2026-08-21): this ceiling was **NOT FOUND** in the literature in this
-form; the nearest published items are Eberhardt–Steffan's explicit logical bases
-for odd lattices (arXiv:2407.03973v1, Cor. 2.11–2.12) and Rabeti–Mahdavifar's
-solver-free ceilings for the Frobenius-restricted UB subclass
-(arXiv:2605.14173v1, Cor. 4/6). Everything in §1 is *published* and is reproduced
-here only to fix notation.
+**Status (2026-08-21):** proved in the repository's matrix convention and
+machine-verified on 27 sourced odd-lattice BB instances. The underlying
+principal-code logical-space isomorphism is **published** (Eberhardt–Steffan,
+arXiv:2407.03973v1, Corollaries 2.11–2.12); do not claim it as new. A novelty
+search did not find the explicit general-BB *minimum-pole-weight ceiling* or its
+use as a solver-free exhaustive rejection oracle, but both are short corollaries
+of the published isomorphism and should be presented as such, not oversold as a
+deep new theorem.
 
-## 0. Setting
+## 0. Setting and the load-bearing bar
 
-$\ell, m$ odd, $G=\mathbb Z_\ell\times\mathbb Z_m$, $R=\mathbb F_2[G]
-=\mathbb F_2[x,y]/(x^\ell-1,\,y^m-1)$. For $a,b\in R$ the CSS bivariate-bicycle
-code is
-$$H_X=[A\;B],\qquad H_Z=[B^{\mathsf T}\;A^{\mathsf T}],\qquad n=2\ell m,$$
-with $A,B$ the circulant matrices of $a,b$. Write $S_Z=\operatorname{rowspace}
-H_Z$, and let $\bar{\cdot}$ be the involution $x\mapsto x^{-1},y\mapsto y^{-1}$,
-so that $A^{\mathsf T}$ is the circulant of $\bar a$.
+Let $\ell,m$ be odd, $G=\mathbb Z_\ell\times\mathbb Z_m$, and
+$$R=\mathbb F_2[G]
+  =\mathbb F_2[x,y]/(x^\ell-1,y^m-1).$$
+For $a,b\in R$, the CSS bivariate-bicycle code is
+$$H_X=[A\ B],\qquad H_Z=[B^{\mathsf T}\ A^{\mathsf T}],\qquad n=2\ell m,$$
+where $A,B$ are the binary circulants of $a,b$. Put
+$S_Z=\operatorname{rowspace}H_Z$ and let $\bar{\cdot}$ be the involution
+$x\mapsto x^{-1},y\mapsto y^{-1}$.
 
-Because $|G|$ is odd, $\gcd(2,|G|)=1$ and Maschke's theorem makes $R$
-**semisimple**:
-$$R\;\cong\;\prod_{\chi\in X}\mathbb F_\chi ,$$
-where $X$ indexes the Frobenius orbits of characters $G\to\bar{\mathbb F}_2^{\,*}$
-and $\dim_{\mathbb F_2}\mathbb F_\chi$ is the orbit length. Multiplication by $a$
-is diagonal in this decomposition, acting on the $\chi$-block as $a(\chi)$. Put
-$$Z(a)=\{\chi: a(\chi)=0\},\qquad Z=Z(a)\cap Z(b),\qquad
-I=\operatorname{Ann}(a)\cap\operatorname{Ann}(b),$$
-and $Z^{-1}=\{\chi^{-1}:\chi\in Z\}$. All sets are Frobenius-closed;
-$|\cdot|$ counts characters, i.e. $\mathbb F_2$-dimensions.
+The code stores polynomial coefficient vectors as **rows**. Consequently
+```python
+I = nullspace(HX.T)
+```
+is a *left*-annihilator coefficient ideal. A physical column vector in the
+right kernel of $H_X$ is obtained only after applying the reciprocal map. This
+is the convention that must never be elided:
+$$I=\operatorname{Ann}_{\rm left}(a,b),\qquad J=\bar I
+  =\operatorname{Ann}_{\rm right}(a,b).$$
+The distinction is invisible when $I=\bar I$ (for example the published
+$[[90,8,10]]$ code) and load-bearing otherwise. On the published
+$(7,7)\ [[98,6,12]]$ code every basis vector of raw $I$ fails the equation
+$H_X(u,0)^{\mathsf T}=0$, while every basis vector of $J=\bar I$ satisfies it.
+`test_bar_convention_on_noninvariant_code` locks this regression.
 
-## 1. Published input (reproduced, not claimed)
+## 1. Published rate and logical-space input
 
-**Lemma 1.** $\operatorname{Ann}(a)=\bigoplus_{\chi\in Z(a)}\mathbb F_\chi$, hence
-$I=\bigoplus_{\chi\in Z}\mathbb F_\chi$ and
-$$k \;=\; 2\dim_{\mathbb F_2} I \;=\; 2|Z| .$$
+Since $|G|$ is odd, Maschke's theorem makes $R$ semisimple:
+$$R\cong\prod_{\chi\in X}\mathbb F_\chi,$$
+with $X$ the Frobenius orbits of characters. Multiplication is diagonal, so if
+$Z=\{\chi:a(\chi)=b(\chi)=0\}$, then
+$$I\cong\bigoplus_{\chi\in Z}\mathbb F_\chi,\qquad
+  k=2\dim_{\mathbb F_2}I
+   =2\sum_{\chi\in Z}[\mathbb F_\chi:\mathbb F_2].$$
+This is published in equivalent forms by:
 
-*Proof.* Multiplication by $a$ is diagonal, so its kernel is the sum of the
-blocks where $a(\chi)=0$. $\square$
+* Panteleev–Kalachev, arXiv:1904.02703, Proposition 1
+  ($k=2\deg\gcd(a,b,x^\ell-1)$ in the cyclic case);
+* Lin–Pryadko, arXiv:2306.16400, Eq. (47);
+* Wang–Mueller, arXiv:2408.10001v4, Eq. (11), for coprime lattices via
+  $\pi=xy$;
+* Postema–Kokkelmans, arXiv:2502.17052v4, Theorem 2.6;
+* Eberhardt–Steffan, arXiv:2407.03973v1, Corollaries 2.11–2.12
+  (if $\ell,m$ are odd, all BB codes are principal).
 
-This is the odd-lattice rate law. It is published in several equivalent forms:
-Panteleev–Kalachev arXiv:1904.02703 Prop. 1 ($k=2\deg\gcd(a,b,x^\ell-1)$, cyclic
-case), Lin–Pryadko arXiv:2306.16400 Eq. (47), Wang–Mueller arXiv:2408.10001v4
-Eq. (11) (coprime case, via $\pi=xy$), Postema–Kokkelmans arXiv:2502.17052v4
-Thm. 2.6, and Eberhardt–Steffan arXiv:2407.03973v1 Cor. 2.11–2.12 ("if $\ell$ and
-$m$ are odd, all BB codes are principal"). EXP-055 reproduces it by three
-independent routes on 25 published instances.
+EXP-055 reproduces $k$ independently by annihilator dimension, direct matrix
+ranks, and the published gcd formula where $\gcd(\ell,m)=1$.
 
-## 2. Where the trivial operators live
+## 2. The exact reciprocal-pole isomorphism
 
-**Lemma 2.** $I\times I\subseteq\ker H_X$, and
-$$(I\times I)\cap S_Z=\bigoplus_{\chi\in Z\setminus Z^{-1}}(S_Z)_\chi ,
-\qquad \dim\big((I\times I)\cap S_Z\big)=|Z\setminus Z^{-1}| .$$
+**Theorem K (matrix-convention form of the published principal-code
+isomorphism).** Define
+$$\mathcal P=J\oplus J\subseteq\mathbb F_2^{2\ell m},
+  \qquad J=\bar I.$$
+Then
+$$\mathcal P\subseteq\ker H_X,\qquad
+  \mathcal P\cap S_Z=0,\qquad
+  \dim\mathcal P=k.$$
+Therefore the quotient map restricts to an isomorphism
+$$\boxed{\mathcal P\;\cong\;\ker H_X/S_Z.}$$
+Every logical class has a unique reciprocal-pole representative $(u,v)$ with
+$u,v\in J$.
 
-*Proof.* For $u,v\in I$, $H_X(u,v)^{\mathsf T}=au+bv=0$, giving the inclusion.
-Next, $S_Z=\{(\bar b\lambda,\ \bar a\lambda):\lambda\in R\}$, so at a character
-$$(S_Z)_\chi=\operatorname{span}_{\mathbb F_\chi}\big\{(\,b(\chi^{-1}),\,
-a(\chi^{-1})\,)\big\},$$
-using $\bar a(\chi)=a(\chi^{-1})$. Hence $(S_Z)_\chi=0$ exactly when
-$\chi^{-1}\in Z$, and is a line otherwise. Since $(I\times I)_\chi=
-\mathbb F_\chi^{\,2}$ for $\chi\in Z$ and $0$ otherwise, and a line inside
-$\mathbb F_\chi^2$ is contained in it, the intersection is the sum of $(S_Z)_\chi$
-over $\chi\in Z$ with $\chi^{-1}\notin Z$. $\square$
+**Proof.** In the character decomposition, $I$ is supported on $Z$ and
+$J=\bar I$ on $Z^{-1}$. Physical column multiplication by $H_X$ evaluates the
+reciprocal character, so both blocks of every $(u,v)\in J\oplus J$ are killed:
+$\mathcal P\subseteq\ker H_X$. Meanwhile
+$$S_Z=\{(\lambda\bar b,\lambda\bar a):\lambda\in R\}.$$
+At a character $\chi\in Z^{-1}$,
+$(\bar b(\chi),\bar a(\chi))=(b(\chi^{-1}),a(\chi^{-1}))=(0,0)$; hence $S_Z$
+has zero component on every block that supports $\mathcal P$, and
+$\mathcal P\cap S_Z=0$. Finally
+$\dim\mathcal P=2\dim J=2\dim I=k=\dim(\ker H_X/S_Z)$ by the published rate
+law. The injective quotient map is therefore surjective. $\square$
 
-Two consequences worth stating separately. First, $\dim S_Z=\ell m-|Z^{-1}|
-=\ell m-|Z|$ and $\dim\ker H_X=\ell m+|Z|$, which re-derives $k=2|Z|$
-independently of Lemma 1. Second, $I\times I$ spans the logical space **iff**
-$Z$ is inversion-closed; otherwise it covers a subspace of dimension
-$2|Z|-|Z\setminus Z^{-1}|$.
+This proof also states precisely why using raw $I$ was wrong: $I$ is supported
+on $Z$, while the physical pole and the zero blocks of $S_Z$ are supported on
+$Z^{-1}$.
 
-## 3. The ceiling
+## 3. Exact variational formula and solver-free bounds
 
-**Theorem K.** Let $I_0=I\cap\bar I$. Then
-$I_0=\bigoplus_{\chi\in Z\cap Z^{-1}}\mathbb F_\chi$,
-$(I_0\times I_0)\cap S_Z=0$, and consequently **every** nonzero $u\in I_0$ makes
-$(u,0)$ a nontrivial logical operator. Hence
-$$\boxed{\;d(P)\;\le\;\min\{\operatorname{wt}(u)\;:\;0\neq u\in I_0\}\;}$$
-whenever $I_0\neq 0$.
+**Corollary K1 (exact pole-coset formula).**
+$$\boxed{
+ d(P)=\min_{0\ne p\in\mathcal P}\ \min_{s\in S_Z}\operatorname{wt}(p+s).
+}$$
+This is just the definition of distance after replacing arbitrary logical
+representatives by the exact pole transversal $\mathcal P$.
 
-*Proof.* $\bar I=\bigoplus_{\chi\in Z^{-1}}\mathbb F_\chi$ because the involution
-permutes blocks by $\chi\mapsto\chi^{-1}$; intersecting gives the stated $I_0$,
-whose index set $Z\cap Z^{-1}$ is inversion-closed. Apply Lemma 2 to the pair
-$(I_0,I_0)$: its trivial part is supported on
-$(Z\cap Z^{-1})\setminus(Z\cap Z^{-1})^{-1}=\varnothing$. So no nonzero element
-of $I_0\times I_0$ lies in $S_Z$; in particular $(u,0)\notin S_Z$ while
-$(u,0)\in\ker H_X$, i.e. $(u,0)$ is a nontrivial logical of weight
-$\operatorname{wt}(u)$. $\square$
+**Corollary K2 (pole ceiling).** Taking $s=0$ and one pole block zero gives
+$$\boxed{
+ d(P)\le d_{\rm pole}:=
+ \min\{\operatorname{wt}(u):0\ne u\in J\}.
+}$$
+Bar preserves Hamming weight, so the number equals
+$\min\operatorname{wt}(I\setminus\{0\})$, but the *physical witness* is in
+$J=\bar I$. For $k\le32$, exhaustive enumeration costs
+$O(2^{k/2}\ell m)$ bit operations — microseconds, no solver, decoder, or
+sampling.
 
-**Cost.** $O(2^{\dim I_0}\cdot \ell m)$ bit operations — microseconds for the
-$k\le 32$ regime, since $\dim I_0\le\dim I=k/2$. No solver, no decoder, no
-sampling. This is the only distance bound in the programme that costs less than
-a rank computation.
+**Corollary K3 (certified coset reduction).** Pick any nonzero pole
+$p\in\mathcal P$ and any stabilizer $s\in S_Z$. Since
+$\mathcal P\cap S_Z=0$, $p+s$ is automatically a nontrivial logical. Row
+reducing selected pole vectors modulo $S_Z$, under several information-set
+orders, therefore returns explicit self-certifying logical witnesses. Every
+returned weight is a rigorous upper bound; randomisation changes only tightness,
+never soundness.
 
-**Corollary K1 (member-level fallback).** If $Z\cap Z^{-1}=\varnothing$ the
-theorem is vacuous, but for a *fixed* pair the smallest weight of a nontrivial
-$(u,0)$, $u\in I$, is still an upper bound on $d$, decidable by one rank test per
-candidate $u$. EXP-055 uses this whenever $I_0=0$; on the 27-instance literature
-battery it closes all 11 gaps left by Theorem K.
+This second route is much tighter in practice. On the published
+$[[90,8,10]]$, the raw pole ceiling is $20$ while the reduced witness has weight
+exactly $10$. In the Pareto screen, it turns many 30–90 second CP-SAT calls into
+$\approx0.01$ s witness checks.
 
-**Scope, stated honestly.** The character argument needs semisimplicity, i.e.
-$\ell,m$ both odd; on even lattices $R$ has nilpotents and Lemma 2's blockwise
-computation fails. Corollary K1 is convention-free and applies to any BB code,
-but it is a per-instance rank test rather than a closed-form certificate.
+## 4. Validation and limitations
 
-## 4. What it is good for, and what it is not
+`experiments/exp055_odd_lattice_sweep.py literature` audits 27 sourced
+odd-lattice instances:
 
-The ceiling is an **upper** bound, so it certifies *rejection*: if
-$\min\operatorname{wt}(I_0\setminus 0)\le D$ then the code provably cannot beat
-distance $D$. In EXP-055's Pareto screen this rejects candidates with **zero**
-solver calls, which is what makes an exhaustive odd-lattice screen affordable.
+* the reciprocal-pole isomorphism holds **27/27**: $\mathcal P\subseteq\ker H_X$,
+  $\mathcal P\cap S_Z=0$, and $\dim\mathcal P=k$ by independent rank tests;
+* 25 rows reproduce their printed $k$; two transcribed Wang–Mueller App. C rows
+  ($(5,9)$ and $(7,11)$) give internal $k=0$ by both our matrix and gcd routes
+  against printed 4 and 6, so they are excluded rather than reconciled;
+* all 25 reproduced rows satisfy `pole ceiling >= reported d`, but this is only
+  a **sanity check**: Wang–Mueller uses BP-OSD `distance_upperbound`, and
+  Postema–Kokkelmans labels its table distances Monte-Carlo estimates;
+* five rows are independently exact-certified here (Bravyi $[[90,8,10]]$,
+  three small Postema rows, and Wang–Mueller's $[[126,12,10]]$ exactified by
+  EXP-055): zero pole-ceiling violations, with slack min/median/max $2/10/22$.
 
-It is **not** tight. Measured slack against the 25 reproduced published
-instances: minimum $2$, median $12$, maximum $42$ — roughly a factor $2$, the
-same looseness recorded for the earlier idempotent-ideal bound in
-`failed_routes.md` (FR-024). The reason is structural: $\ker H_X$ is strictly
-larger than $I\times I$ whenever $Z$ is not inversion-closed, and the true
-minimum is often carried by syzygy pairs $(u,v)$ with $\bar au=\bar bv\neq0$
-rather than by the pole ideal. A tight algebraic bound would need the coset
-minimum in $\ker H_X/S_Z$, which is exactly the open item D of
-`next_breakthroughs.md`.
+The pole ceiling is sound but loose because setting $s=0$ ignores cancellations
+inside a logical coset. The reduced-witness route repairs much of that looseness
+but remains an upper-bound search, not an exact distance algorithm. Exactness
+still requires exhaustive coset search, CP-SAT/SAT, matching bounds, or a proof.
+No BP-OSD estimate is admitted as a domination threshold in EXP-055.
 
-## 5. Machine record
+The semisimple character proof requires both $\ell,m$ odd. On even lattices the
+ring has nilpotents and this pole decomposition is not valid without a local
+Artinian refinement.
 
-* `experiments/exp055_odd_lattice_sweep.py literature` —
-  `results/processed/exp055_literature_validation.json`: 27 sourced instances,
-  25 reproduced, $k$ agreeing by three independent routes (annihilator, matrix
-  rank, published gcd formula where the lattice is coprime), **zero ceiling
-  violations**, slack $2$/$12$/$42$ (min/median/max).
-* Two rows (both arXiv:2408.10001v4 App. C Table 4, $(5,9)$ and $(7,11)$) give
-  $k=0$ by **both** of our independent routes against the printed $k=4$ and
-  $k=6$; recorded as `unreproduced` and excluded from every count. We did not
-  read that appendix ourselves, so a transcription error on our side is the
-  likeliest explanation and is stated as such.
-* `experiments/exp055_odd_lattice_sweep.py run` —
-  `results/processed/exp055_odd_lattice_sweep.json`: all 65 odd lattices with
-  $\ell m\le180$, $4.23\times10^9$ weight-$\le3$ pairs, $k$ by two routes with
-  zero mismatches, 273 idempotence tests with zero violations (Theorem J-G1's
-  mechanism re-verified on lattices outside our catalogue).
+## 5. Retraction record
+
+An intermediate EXP-055 draft used raw $I$ as a physical kernel and proposed a
+member fallback when $I\cap\bar I=0$. That fallback was **wrong**; the new
+regression on $(7,7)$ caught it before a final PDF or ledger entry was shipped.
+The earlier restricted statement using $I\cap\bar I$ happened to be sound
+because that subspace is bar-invariant, but it was unnecessarily weak. The
+surviving result is the exact bar-aware isomorphism with $J=\bar I$ above.
+
+Machine sources:
+
+* `results/processed/exp055_literature_validation.json`
+* `results/processed/exp055_odd_lattice_sweep.json`
+* `results/processed/exp055_odd_lattice_screen.json`
+* `results/certificates/exp055_odd_lattice_survivors.json`
+* `tests/test_exp055_odd_lattice.py`

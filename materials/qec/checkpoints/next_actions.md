@@ -1,5 +1,37 @@
 # Next actions — ordered by expected information gain
 
+## 2026-08-22 update — EXP-055 closes odd-lattice algebra and the exact screen through n=126
+
+Ranked item A is **closed in its executable bounded form**:
+
+* full algebraic census: 65 odd lattices, $n\le360$, 4,229,823,962 pairs;
+* exact fixed-point screen: all nine odd lattices through $n=126$, 715 classes /
+  10,247 pairs; 598/598 referenced classes dominated, 117 no-reference, zero
+  survivors/undecided;
+* exact local references promoted during closure:
+  $[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$;
+* the first is a new checked-BB constructor but globally dominated by Grassl
+  $[[30,8,7]]$; the latter two exactify BP-OSD-reported parameters.
+
+**Next actions, reordered by information gain:**
+
+1. **Odd-lattice distance closure above $n=126$.** Do not rerun the monolithic
+   CP-SAT path blindly: one candidate costs up to $2k\times90$s. The
+   $[[162,8,14]]$ exact-reference attempt already timed out at 2,100s. Port the
+   EXP-036 translation-orbit SAT decision / certificate pipeline to the
+   reciprocal-pole logical basis, then exactify the strongest $n=162$ reference
+   before screening larger lattices.
+2. **Multi-row channel theorem (B).** Fitting-ideal analogue of J-G against the
+   8 INFEASIBLE / 2 witness EXP-051 controls.
+3. **End-to-end circuit item (E).** Flag/cat construction or class-restricted
+   hook no-go for the non-CSS flagship.
+4. **Per-factor distance bounds (D).** The exact pole-coset formula now gives
+   the right algebraic target; improve the loose pole ceiling rather than
+   repeating FR-024.
+5. **Weight-4 usable mixed map (C)** and **rare-event estimator (F)** retain
+   their previous positions after the three items above.
+
+
 ## 2026-08-21b update — the X-sector boundary taxonomy is SOLVED; ranked plan moved to a note
 
 The item "*a clean invariant separating the 10 immune parents from the 192*"

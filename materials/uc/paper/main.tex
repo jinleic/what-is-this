@@ -1480,6 +1480,28 @@ nine-parameter global-optimization assertion in Liu's \S V-B, remains open.
 Consequently the value $0.382709087918741$ remains a conditional
 union-closed constant; this paper makes no unconditional claim at that value.
 
+\begin{remark}[The printed constant is a rounding of the equation-defined root]
+\label{rem:liu-rounding}
+Liu's defining equations \S V-B (90)--(93) determine
+\[
+c'=0.3827090879187350299303129021\ldots,
+\qquad
+\beta^{*}=0.1000525598628931066646283\ldots,
+\]
+while the paper prints the $15$-digit values $0.382709087918741$ and
+$0.100052559862974$.  Taking the printed pair literally as exact rationals,
+one finds an exact-rational point with the mean constraint active and
+diagonal representation whose objective is enclosed in interval arithmetic
+strictly below $1$, namely
+$0.9999999999999903285961768504459\ldots$, so the printed decimal overshoots
+the root by roughly $6\times10^{-15}$ and the inequality \emph{as printed}
+fails.  This is an artifact of rounding the last digit upward, not a defect
+in Liu's argument: the equation-defined constant is unaffected.  The
+practical consequence is that any certificate along this route must target a
+rational at or below $0.38270908791873503$, and comparisons with $c^\star$
+should use the equation-defined value.
+\end{remark}
+
 \begin{remark}[Why the hypothesis resisted, and tightness]
 Three natural proof routes can be ruled out.  First, termwise
 Cauchy--Schwarz/telescoping domination cannot close: the negative double-series

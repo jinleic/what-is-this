@@ -1,0 +1,37 @@
+{
+  "front": "e154_gaussian_2x6 (wave 17, (P,rho)-block spectral non-Gaussianity certificate for the open 2x6 layer)",
+  "owner": "Gaussian2x6-2",
+  "started_utc": "2026-08-19T15:20:00Z",
+  "status": "producer under construction; recon and calibration audit COMPLETE",
+  "recon_summary": {
+    "wave16_partial_producer": "/private/tmp/ising3d-w16-gaussian2x6/math/ising3d/experiments/e150_gaussian_2x6.py (machinery blocks ok; driver, extend_power_sums, binary_power_trace never written; agent killed mid-append)",
+    "wave16_calibration_rows_found": "closure BFS validated (2x4=16256, 2x5=262656), (P,rho) block dims 1056/992/1024/1024 recorded as PASS",
+    "latent_bugs_found_in_e150": [
+      "orbit_character_data dims use 'each char coordinate ==1' instead of 'product over stabilizer ==1': reports 1056/1024/992/992 (sum 4064 != 4096); correct dims (Burnside): (flip+,rho+)=1056, (flip-,rho+)=1024, (flip+,rho-)=992, (flip-,rho-)=1024",
+      "block_matrix_mod_p asserts Y symmetric; Y = 8 G^-1 B^T M B is NOT symmetric for mixed gram sizes (free orbit gram 4, stab-2 orbit gram 2); assert must be dropped (charpoly unaffected)"
+    ],
+    "reusable_exact_machinery": "e136_pair_product_2x5.py (IDENTICAL sha in main checkout): fast_integral_model, matrix_mod_p, sequential_power_traces, horner_matrix_zero, newton_from_power_sums, extend_power_sums, binary_power_trace, remainder_lazy, poly_gcd, derivative_desc, coefficient_digest, Budget"
+  },
+  "plan": {
+    "theorem_target": "the 2048+2048 physical P=prod X sectors of the 2x6 layer transfer operator at t=1/3 are NOT the even/odd halves of any 12-mode Gaussian subset-product multiset, in either assignment of physical P to fermion parity",
+    "invariant": "parity-pair product ceiling theorem (proofs/parity_pair_product.md, m=12): within any subset of a Gaussian parity half, <= A_same(12)=261625 distinct pair products; witness block (P+,rho+) dim 1056, C(1056,2)=557040 pairs; kill-cap gcd < 295415",
+    "route": "exact integral model M (e136 split) -> joint (flip,rho) char basis (integral, gram in {2,4}) -> block Y = 8 gram^-1 B^T M B (integral, charpoly = 8-scaled restriction) -> traces -> Newton -> CH trace extension -> pair sums -> Newton pair poly C (deg 557040) -> exact Euclid gcd(C,C') with early exit at cap 295415; primes 1000003 and 2000003",
+    "controls": [
+      "chain n=4 full: pairs 120, floor 55, expect gcd==55 both primes",
+      "chain n=6 full: pairs 2016, floor 1351",
+      "2x3 digest replay: gcd==385 both primes, digests vs results/spectral/pair_product_scale.json",
+      "chain n=10 full (same-scale Gaussian calibration): pairs 523776, floor 465751, expect equality",
+      "chain n=12 (P,rho)=(+,+) block: theorem FORCES gcd >= 295415 (block subset of chain even half); value recorded"
+    ],
+    "decisive": "2x6 (P,rho)=(+,+) block, cap 295415, both primes; optional second block (P+,rho-) dim 992 cap 229911 if wall allows; stretch 2048-sector route documented not run unless wall surplus",
+    "rss_estimate_bytes": 600000000,
+    "wall_estimate_seconds": "600-2700 per prime-stage-block; total run target < 10800 s (3 h)"
+  },
+  "files": {
+    "producer": "experiments/e154_gaussian_2x6.py (in progress)",
+    "artifact": "results/spectral/gaussian_2x6.json (pending)",
+    "proof": "proofs/gaussian_2x6.md (pending)",
+    "progress": "checkpoints/gaussian2x6_progress.json (this file, updated at stage boundaries)"
+  },
+  "stage_log": []
+}

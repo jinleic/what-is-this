@@ -3,24 +3,30 @@
 
 \subsection{The statement, with its hypothesis exposed}
 
-The hypothesis used below is not an unnamed appeal to genericity.  It is the
-following cellwise assertion, quoted in the form in which it is recorded in
-the ledger.
+The member property below records the output required by L6; it is no
+longer an additional conjectural premise.
 
-\begin{definition}[CONDITIONAL: member hypothesis H]
-For every odd prime $w$ and every rational $z$ with $v_w(z)\geq1$ there
-exists a verified aligned class for the cell $(w,z)$ and a prime member
-$Q\equiv q\pmod N$ outside its finite excluded set such that the bad
-emergent set is empty.  Explicitly, for every odd prime
+\begin{definition}[Member property $\mathcal M$]
+For every odd prime $w$ and every rational $z$ with $v_w(z)\geq1$, there
+is a verified aligned class for $(w,z)$ and a prime member
+$Q\equiv q\pmod N$ outside its finite excluded set whose bad emergent set
+is empty.  Explicitly, for every odd prime
 $\ell\notin S\cup\{Q\}$ with
 $v_\ell(P(\varepsilon fQ))$ odd, the local Hilbert symbol
-$(x_0,d_0)_\ell$ is $+1$.  Here $S$ is the frozen set of the class.
+$(x_0,d_0)_\ell$ is $+1$, where $S$ is the frozen set of the class.
 \end{definition}
 % src: data/l19_classexist.jsonl (uniform class component)
 % src: data/l18_schinzel_implies_h.jsonl (member contract)
 
-\begin{theorem}[CONDITIONAL: Theorem C]
-Assume H.  Then $\Q\setminus\Z$ is Diophantine in $\Q$ with six unknowns,
+\begin{theorem}[CONDITIONAL ON CLASSICAL SCHINZEL H: Theorem C]
+Assume classical Schinzel's Hypothesis~H.  For every odd cell, use the
+fixed canonical branch
+\[
+ \tau^\dagger=\frac{1+2a^2}{1+4a^2},
+ \qquad \delta_{\tau^\dagger}=-\frac{4a^4}{1+4a^2}.
+\]
+Then the member property $\mathcal M$ holds and
+$\Q\setminus\Z$ is Diophantine in $\Q$ with six unknowns,
 realized by the L6 formula
 \[
  F(z):=\exists b,s\;\bigl[(1+2s,b)\in\Phi_1^{\{2\}}\ \wedge\
@@ -36,10 +42,13 @@ $\tau^\dagger=(1+2a^2)/A$,
  &{}\vee[a^4(c^2-Ay^2)+4ABr^2=4A^2Bs^2-4A].
 \end{aligned}
 \]
-The three disjuncts are the cleared equations for
+The three disjuncts remain the cleared equations for
 $\tau=0$, $\tau=2a/A$, and $\tau^\dagger$, respectively, in the same
-witnesses $(y,r)$.
+witnesses $(y,r)$.  They preserve the finite soundness menu and the
+six-count; completeness in this theorem uses only the third, fixed
+canonical disjunct.
 % src: data/l19_classexist.jsonl (square-branch definition)
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
 % src: CONDITIONAL.md:18-31
 Consequently $\Z$ is definable in $\Q$ by a formula with six universal
 quantifiers,
@@ -48,14 +57,16 @@ $\operatorname{efd}_{\Q}(\Q\setminus\Z)\leq 5$.
 % src: CONDITIONAL.md:14-25
 \end{theorem}
 
-This is the ledger's exact conditional conclusion.  It is \emph{not} an
-unconditional definition and makes \textbf{no record claim}.  Soundness of
-the expanded branch menu consumes no hypothesis; completeness is exactly H.
-Theorem~\ref{thm:classexist} proves the class component uniformly, rather
-than on a finite horizon.  The remaining member component follows from
-classical Schinzel~H only after the chosen pair is proved admissible; uniform
-irreducibility of its octic is still open.
-% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
+This is a conditional definition, not an unconditional solution of
+Hilbert's Tenth Problem over $\Q$.  Soundness of the finite branch menu
+consumes no hypothesis.  For completeness, fixed-$Z$ vertical
+irreducibility and Hilbert selection give a good canonical-branch $a$ in
+the existing admissible progression; L20 supplies the class and all
+Schinzel-pair conditions; Theorem~\ref{thm:schinzel} turns classical
+Schinzel~H into an emergent-free member; and L6 gives the displayed
+definition.  No per-cell irreducibility certificate is assumed.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
 
 The quantifier saving is attributed precisely to Nicolas Daans, Philip
 Dittmann, and Arno Fehm, \emph{Existential rank and essential dimension of
@@ -64,7 +75,7 @@ Corollary~5.11)~\cite{ddf}.  Their intersection theorem turns the ranks
 three and two on the common base into $3+2-1=4$ witnesses; the two base
 coordinates then give six unknowns.  The recorded rank--essential-dimension
 identity gives the bound five.  These counts remain \textbf{CONDITIONAL}
-because the set equality to $\Q\setminus\Z$ uses H.
+because the set equality to $\Q\setminus\Z$ uses classical Schinzel~H.
 % src: CONDITIONAL.md:31-48
 % src: data/litscout_h10q.md:30-34
 
@@ -84,22 +95,22 @@ member-existence problem; no probable-prime test or refusal is used as
 evidence.
 % src: data/l19_classexist.jsonl (meta, construction rows, and summary)
 
-\textbf{OPEN/CONDITIONAL (cofactor side).}  Put
+\textbf{CONDITIONAL (the sole conjectural cofactor side).}  Put
 \[
  F_{\mathrm{cell}}(t)=P\bigl(\varepsilon f q_1(t)\bigr),
 \]
 using the primitive integer representative after removal of the fixed
-rational scale recorded in the audit.  Requiring $F_{\mathrm{cell}}(t)$ to
-be prime simultaneously with $q_1(t)$ is the two-polynomial instance of
-Schinzel's Hypothesis~H \cite{schinzel} (or the corresponding Bunyakovsky-type prime-value
-input).  The polynomial $F_{\mathrm{cell}}$ has degree eight.  A prime
-cofactor is a sufficient route to an emergent-free member, because the
-class has already frozen the controlled places and reciprocity forces the
-remaining single symbol.  This sufficient prime-cofactor route must not be
-confused with a proof of H, whose conclusion asks only for one
-emergent-free member and is formally weaker.  In the ledger's shorthand,
-after using the progression prime itself as variable, the pair is written
-$\{t,F_{\mathrm{cell}}(t)\}$.
+rational scale recorded in the audit.  The L22 theorem and quantitative
+Hilbert irreducibility make $F_{\mathrm{cell}}$ irreducible for a selected
+admissible $a$.  Requiring it to be prime simultaneously with
+$q_1(t)$ is the two-polynomial instance of classical Schinzel's
+Hypothesis~H \cite{schinzel}.  The polynomial has degree eight.  A prime
+cofactor gives an emergent-free member because the class has frozen the
+controlled places and reciprocity forces the remaining single symbol.
+After using the progression prime as variable, the pair is
+$\{q_1+Nt,F_{\mathrm{cell}}(t)\}$.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
 % src: THEOREMS.md:953-971
 % src: CONDITIONAL.md:175-185
 % src: data/l17_schinzel_audit.jsonl:1-294
@@ -119,15 +130,17 @@ such fixed divisor would divide the computed gcd.  Thus all canonical
 pairs pass the fixed-divisor and irreducibility conditions.  This is
 \textbf{PROVED} for the stored pairs, not a prime-value theorem.
 
-The finite audit does not extrapolate to the classes just constructed for
-arbitrary rational cells.  The L20 audit proves their normalization,
-coprimality, fixed-divisor, frozen-unit, symbol-constancy, and positive-lead
-conditions uniformly, but it leaves irreducibility of $P(a,z)$ open
-uniformly.  Since affine substitution gives
-$G$ irreducible over $\Q$ if and only if $P$ is, this is the exact
-algebraic premise still missing before classical Schinzel~H applies in every
-cell.
-% src: data/l20_admissible.jsonl (uniform status and affine-equivalence blocks)
+The finite audit does not by itself extrapolate to arbitrary rational
+cells.  The L20 audit proves normalization, coprimality, absence of a fixed
+divisor, frozen-unit and symbol constancy, and positive leading coefficient
+uniformly.  Theorem~\ref{thm:fiber-irred} now supplies the missing uniform
+input directly: for every fixed nonzero rational $Z$, $P(a,Z)$ is
+irreducible in $\Q(a)[b]$.  Corollary~\ref{cor:admissible-irred} then
+selects a good $a$ inside the character progression.  Thus the
+$353$ recorded target certificates remain exact finite corroboration, but
+they are no longer a premise for a new cell.
+% src: data/l20_admissible.jsonl; data/l21_irred_generic.jsonl
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
 % src: data/l17_schinzel_audit.jsonl:1-294
 
 For a prime $p$ dividing $N$, the corrected residue count is
@@ -194,13 +207,13 @@ $(29,-2)$ & $(-15,-29/5)$ & $4055/2703$ & PROVED pointwise
 \caption{The six residual witnesses: unconditional certificates for their individual cells only.}
 \end{table}
 
-\textbf{OPEN (published boundary).}  The exact square-class reference is
-David Krumm, \emph{Squarefree parts of polynomial values}, Journal de
-Th\'eorie des Nombres de Bordeaux \textbf{28} (2016), no.~3, 699--724,
-arXiv:1407.4890~\cite{krumm}.  Its Theorem~1.3 and Propositions~3.4--3.5
-give the unconditional degree-one and degree-two cases.  Proposition~3.8
-makes the degree-three case conditional on the Parity Conjecture for
-elliptic curves over $\Q$---rank parity, not the sieve ``parity problem.''
+\textbf{OPEN (the unconditional published boundary).}  The exact
+square-class reference is David Krumm, \emph{Squarefree parts of polynomial
+values}, Journal de Th\'eorie des Nombres de Bordeaux \textbf{28} (2016),
+no.~3, 699--724, arXiv:1407.4890~\cite{krumm}.  Its Theorem~1.3 and
+Propositions~3.4--3.5 give the unconditional degree-one and degree-two
+cases; Proposition~3.8 makes the degree-three case conditional on the
+Parity Conjecture for elliptic curves over $\Q$.
 % src: data/litscout_h10q.md:6-13
 
 At prime arguments, the nearest unconditional results reach the cubic
@@ -217,8 +230,9 @@ in the bad fibres \cite[Theorem~3.1 and Corollary~3.4]{hsw}.  The general
 Schinzel reference in \emph{J. reine angew. Math.} \textbf{495} (1998),
 1--28 is by Colliot-Th\'el\`ene, Skorobogatov and Swinnerton-Dyer
 \cite{ctssd}, not by Colliot-Th\'el\`ene and Sansuc; the latter pair's
-Schinzel paper is \cite{ctsansuc}.  Thus no unconditional
-result is available for the degree-eight prime-value side or for the
-required degree-eight square-class side.  The six-quantifier theorem above
-remains \textbf{CONDITIONAL}, and no unconditional record is claimed.
+Schinzel paper is \cite{ctsansuc}.  No cited unconditional theorem supplies
+simultaneous prime values for the present linear--octic pair.  Classical
+Schinzel~H is therefore the sole conjectural input to the six-quantifier
+theorem, which remains \textbf{CONDITIONAL}; no unconditional record or
+solution of H10($\Q$) is claimed.
 % src: data/litscout_h10q.md:36-39

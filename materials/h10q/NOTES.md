@@ -79,24 +79,28 @@ H10/$\mathbb{Q}$ would be undecidable. What is actually known:
     $2+(3+2-1)=6$. The count survived an independent adversarial audit and a
     direct recheck of DDF v5 Thm 1.4. Soundness is inherited.
     - **W0–W1, proved:** the tied target conic is soluble iff
-      $\chi_w(-\delta_\tau A)=1$. The character identity
-      $\sum_a\chi(1+4a^2)=-1$ selects a nonsquare $A$, and the two formula
-      branches $\tau=0$ and $\tau=2a/A$ cover every odd residue field,
-      including $\mathbb F_3$.
-    - **W2, proved:** its exact global criterion is the disjunction
-      $M_\tau=0$ **or** $-\delta_\tau A M_\tau\in
+      $\chi_w(-\delta_\tau A)=1$.  The character identity
+      $\sum_a\chi(1+4a^2)=-1$ selects a nonsquare $A$, and the two
+      selector branches $\tau=0$ and $\tau=2a/A$ cover every odd residue
+      field, including $\mathbb F_3$ (`THEOREMS.md`, L6).
+      Theorem C's fixed finite menu also contains
+      $\tau^\dagger=(1+2a^2)/A$, $\delta=-4a^4/A$; L11a proves that
+      adjoining it costs no witness (`THEOREMS.md`, L11a and L22).
+    - **W2, proved:** its exact global criterion is
+      $M_\tau=0$ or
+      $-\delta_\tau A M_\tau\in
       N_{\mathbb Q(\sqrt{-\delta_\tau AB})/\mathbb Q}(E_\tau^\times)$,
-      $M_\tau=16-\delta_\tau c^2-16ABs^2$; the zero case is solved by
-      $(y,r)=(0,0)$ yet $0\notin N(E_\tau^\times)$.
-    - **Open:** choose the global $s,b$ so this criterion ($M_\tau=0$ or the
-      norm membership) holds while preserving $\Phi$, $v_w(b)=1$, and W0's
-      target residue class.
-    - **Evidence only:** fresh guarded searches give canonical tied points for
-      inputs $z=w$ (via $h(a,b,z^3)$) at all 61 odd primes $w<300$
-      (32 $\tau=0$, 29 $\tau=2a/A$), with $A$ a nonsquare $w$-unit and
-      $\Delta=\{2,w\}$. An earlier unguarded table was discarded after accepting
-      nonunit $A=5$ at $w=5$.
-    Thus **6 is a verified conditional count, not an established record**.
+      with the zero case represented by $(y,r)=(0,0)$
+      (`THEOREMS.md`, L6/W2).
+    - **Historical L6 endpoint — SUPERSEDED by L19–L22:** choosing
+      global $(s,b)$ was originally OPEN, and the $61$ guarded examples
+      below were EVIDENCE only (`data/l6_witnesses.jsonl`).  L20 now
+      supplies an aligned class for every cell, L22 supplies vertical
+      irreducibility, and L19 supplies a member under classical Schinzel
+      H (`THEOREMS.md`, L19–L22).
+    Thus **six is now an established CONDITIONAL count under classical
+    Schinzel H alone**, not an unconditional record
+    (`CONDITIONAL.md`, §§1–2).
     - **L7 structure (2026-08-15; THEOREMS.md L7, corollaries + bounded probe):**
       at odd places with $v(A)=v(B)=0$ the tie's exact cost is the wild
       (odd-valuation) places of $M_\tau$, where the untied quaternary is
@@ -112,18 +116,16 @@ H10/$\mathbb{Q}$ would be undecidable. What is actually known:
       certifiably fail at some $z\in\mathfrak m_w$, so they do not cover
       pointwise (some other fixed pair remains open); obstruction sets
       are always even, so repairs flip places in pairs (L7c). Free-$\Phi$
-      switching probe: 93/93 target cells positive, 71/71 rescues. Assembly
-      stays open.
+      switching probe: 93/93 target cells and 71/71 recorded rescues
+      were positive (`THEOREMS.md`, L7).  This is a historical bounded
+      layer, superseded as the global frontier by L19–L22.
 
-  Minimal count posed as Daans Question 5.7; established range $2 \le m \le 7$
-  (Sun's upper bound unrefereed; $\le10$ refereed). L6 would improve it to
-  $m\le6$ if its explicitly isolated global assembly lemma is proved.
-  The lower bound is Daans Thm 2.6: $K\setminus R$ is never $\exists_1$ for the
-  relevant infinite rings (thin sets). Finite intersections of valuation rings
-  are $\exists_3$ (Daans Prop 4.2; uniform $\exists_6$ Prop 4.10).
-  Equivalent geometric form (DDF 4.16 + Cor 6.17, see THEOREMS.md A3): minimal
-  unknowns $=\mathrm{efd}_\mathbb{Q}(\mathbb{Q}\setminus\mathbb{Z})+1$; currently
-  $\mathrm{efd}\in[1,6]$ ($[1,9]$ refereed), conditionally $[1,5]$ via L6.
+  Minimal count posed as Daans Question 5.7: the unconditional
+  unrefereed range is $2\le m\le7$ and the refereed upper bound is $10$;
+  under classical Schinzel H, L22 narrows it to $2\le m\le6$
+  (`THEOREMS.md`, consequences table and L22d).  The lower bound is
+  Daans Theorem 2.6.  Equivalently, the conditional essential-dimension
+  range is $[1,5]$ (`THEOREMS.md`, A3; `CONDITIONAL.md`, §1).
 
 - **Lower bounds stop at one witness.** DDF21 §8: no known example of an $\exists$-definable
   subset of a global field provably not $\exists_2$ (best positive case: sums of two squares
@@ -1002,3 +1004,210 @@ agent's word alone.
   prime of f frozen), not the byte-identical kernel function. The
   novelty is the tau=0 alignment alone; the b-shape is the orthodox
   escape shape used in 103 grid rows.
+
+## Session 2026-08-19 (continued) - L20/L21: class existence proved, irreducibility narrowed
+
+The arc began by asking whether L19's per-class Schinzel implication could
+actually be fed a class for every cell. L20 removed that structural
+uncertainty. For any cell, take the fixed factor $f=w$, choose odd $a$ with
+$A=1+4a^2$ and $(A\mid w)=-1$ using
+$\sum_{r\bmod w}(1+4r^2\mid w)=-1$, solve the explicit residue system for
+$q_1$ modulo $M=4A\prod_{p\in S}p$, and invoke Dirichlet. The system is
+nonempty uniformly, so one verified aligned class exists for **EVERY**
+cell and clause (ii) is gone. The replay made the finite shadow exact:
+103/103 canonical rows reproduced after 1,113,000 residue visits, and
+353/353 grid certificates were clean. A second derivation supplied a useful
+adversarial check: if $a$ is frozen at $1$, collisions occur exactly at
+$w=11,19,31,59,71,79$. That is precisely the 5-wall set obtained earlier
+from the independent Hilbert-symbol route. Two derivations found the same
+obstruction, and varying $a$ repaired every collision.
+
+At the **historical L20 checkpoint, SUPERSEDED by L22**, the attempt to
+promote the selected class to a fully admissible Schinzel pair returned
+the split verdict: (b), (c), (d), and positive lead PROVED;
+**irreducibility then OPEN — a status now superseded by L22**
+(`data/l20_admissible.jsonl`). One premise also
+broke during normalization.
+Literal $S$-support of the content $c$ is **FALSE**: for
+$(w,z)=(3,3/11)$, $a=1$, and $q_1=19$, its outside part is $11^{-12}$.
+What the parity argument actually uses, and what the corrected proof gives,
+is that the *square class* of $c$ is supported on $S$; the outside
+valuation is even and therefore harmless. This changed the statement
+rather than suppressing the counterexample.
+
+At that same **historical, superseded checkpoint**, the adversarial chain
+audit correctly returned NO: Schinzel H alone did not yet imply the
+six-quantifier definition because the vertical input had been overclaimed.
+L22 later proves that input (`agent://ElimAudit`;
+`THEOREMS.md`, L22). The audit also caught six record defects.
+The displayed $\Theta^\ast$ contained only the $\tau=0$ and $2a/A$ branches
+although the construction used
+$\tau^\dagger=(1+2a^2)/A$; the repair is to add that finite branch at zero
+variable cost by L11a. A bounded set of 706 grid irreducibility checks had
+been described as “each cell”, alongside the obsolete demand that every
+outside valuation be even; the corrected contract keeps the finite scope
+and allows odd valuations whose Hilbert symbol is $+1$. “A member of each
+aligned class” was stronger than needed and was replaced by one selected
+class and member per cell. The L13f square-or-single-prime rung had been
+written as an if-and-only-if, but the 96 L14 factorint closures and 103
+cell-box factorization-rung candidates show that it is only a sufficient
+factorization-free shortcut. The ledger simultaneously called $w=179$
+closed and open; the exact replay closes it, so every tried off-grid cell
+is closed. Finally, “$G(t)$ is an $S$-unit” had the terminology backwards:
+the proved condition is that $G(t)$ is a $p$-adic unit for every $p\in S$,
+that is, coprime to $S$. Those six corrections fixed the scope of the
+chain without strengthening any hypothesis by prose.
+
+L21 then attacked the remaining word “irreducible” directly, and the first
+result was a counterexample to the blanket claim. **L21a (PROVED)** says
+that when $s=0$ (so $a=1$) and
+$\delta_\tau=\sigma^2$ is a rational square,
+$$
+P(b)=\bigl(4DAb^2-\sigma a^2Z^2N_g\bigr)
+     \bigl(4DAb^2+\sigma a^2Z^2N_g\bigr),
+$$
+a genuine $4\times4$ factorization. The identity held on 56/56 applicable
+rows and all 8/8 controls were correctly inapplicable: blanket
+irreducibility is **FALSE**. **L21b (PROVED)** explains why this does not
+kill the construction. On
+$\tau^\dagger=(1+2a^2)/A$ one has
+$\delta_{\tau^\dagger}=-4a^4/A<0$, never a rational square, for every
+$a$ and cell; 9/9 exact checks agreed. Its square class is that of $-A$,
+so the quadratic field governing this branch is the imaginary
+$\mathbb Q(\sqrt{-A})$.
+
+The coefficient symmetry turned out to be real but almost, rather than
+literally, reciprocal. **L21c (PROVED)** gives that
+$P+32A^3s^2D^2b^5$ is palindromic and that $P_0=P_8$ always, with
+288/288 exact checks; on the reciprocal slice the Galois group embeds in
+$C_2\wr S_4$. L21e sharpened the boundary to an identity,
+$$
+P(b)-b^8P(1/b)=32A^3s^2D^2(b^3-b^5),
+$$
+so $P$ itself is reciprocal if and only if $a=1$.
+
+The successful irreducibility proof was therefore global first and
+fiberwise second. **L21d (PROVED)** localizes at the common endpoint
+coefficient $L=a^8A^2Z^4$: a factorization over
+$\mathbb Q(a,Z)$ would survive the specialization $(a,Z)=(1,27)$, while
+the resulting octic has an exact irreducibility certificate modulo $17$.
+Thus $P$ is irreducible of degree 8 over $\mathbb Q(a,Z)$. The proof then
+respected the vertical-line objection instead of pretending that a
+two-variable thin set cannot contain a whole fixed-$z$ line. Exact
+one-variable certificates prove $P(a,z)$ irreducible in
+$\mathbb Q(a)[b]$ for 353/353 target $z$; Cohen–Serre's
+$O_z(\sqrt B\log B)$ bound for bad integers loses to the admissible
+progression's $B/M+O(1)$ members, so a good $a$ exists for every certified
+cell. The first admissible $a$ worked on 48/48 rows. In the wider hunt,
+1024/1024 constructed-branch rows were irreducible and none was reducible;
+the only reducible cases anywhere were the 128 off-branch,
+$a=1$, square-$\delta$ rows already explained by L21a.
+
+The cheap local proofs were also closed honestly. **L21e (PROVED)** gives
+$P\equiv16A^2b^4(1-2As^2b)\pmod w$, so reduction modulo $w$ never
+certifies octic irreducibility, and the $w$-Newton polygon never has one
+denominator-8 slope. At an odd $p\mid A$ with $v_p(Z)=0$ there are exactly
+two length-4 slopes $\mp v_p(A)/2$. The positive residue of this analysis
+is the $a=1$ trace criterion: when $(5\mid w)=-1$, the degree-4 trace
+polynomial is uniformly irreducible over $\mathbb Q(\sqrt{-5})$, and the
+octic is irreducible whenever
+$$
+\Xi(Z)=(125D^2+64Z^4)(125D^2+1024Z^4)
+$$
+is nonsquare, as it was on 189/189 rows.
+
+**SUPERSEDED by L22.** This paragraph records the exact L21 endpoint:
+for a cell outside the $353$ certified values, the **historical,
+superseded** chain still required a fibre certificate in addition to
+Schinzel H
+(`data/l21_irred_generic.jsonl`).  L22 now proves the fixed-fibre theorem
+for every nonzero rational $Z$ on
+$\tau^\dagger=(1+2a^2)/A$, $\delta=-4a^4/A$; the current chain assumes
+classical Schinzel H alone (`/tmp/l22_elimination.md`;
+`THEOREMS.md`, L22d).
+ 
+## Session 2026-08-22 — L22: two fixed-branch closures and the Schinzel-only conditional record
+
+1. **The local analyses found the shape of the problem without closing
+   it.**  Higher-order Newton analysis at infinity split the repeated
+   residuals into four irreducible quadratic clusters and left only
+   factor degrees $2,4,6$ locally possible
+   (`/tmp/l22_infinity.md`; `data/l22_infinity.jsonl`).  The geometric
+   route constructed an exact Noether-matrix reduction but left
+   $N((1-z^3)/z^6)\ne0$ OPEN
+   (`/tmp/l22_fiber_geometry.md`;
+   `data/l22_fiber_geometry.jsonl`).  The factor-tuple route proved a
+   useful criterion and a no-go: reciprocity determines the product of
+   outside signs, not their individual values
+   (`/tmp/l22_factor_tuple.md`;
+   `data/l22_factor_tuple.jsonl`).
+
+2. **An apparent free-parameter closure was rejected.**  The
+   $\lambda$-pencil proof and generalized aligned-class theorem are
+   algebraically PROVED, but HIT chooses $\lambda$ after the cell and
+   ranges through the infinite L11c family.  That branch parameter
+   would be an additional witness, so the theorem is **NOT APPLICABLE**
+   to the six-count (`/tmp/l22_square_branch.md`;
+   `data/l22_square_branch.jsonl`).  BranchAudit identified the
+   overclaim with confidence $0.91$; the report and summary were patched
+   to preserve the theorem while rejecting it as the closure
+   (`agent://BranchAudit`).  SquareBranch is therefore recorded only as
+   an off-chain side theorem.
+
+3. **Primary closure: fixed-$Z$ endpoint elimination.**  On the fixed
+   canonical branch
+   $\tau^\dagger=(1+2a^2)/A$, $\delta=-4a^4/A$, set
+   $H=(A/4)P$.  The exact $A$-adic slopes make every global factor degree
+   even; the $a=0$ and $a=\infty$ residual allocations eliminate degree
+   $2$; and degree $4$ forces
+   $Z^4=1024(1-Z)^2$, whose two quadratic branches have nonsquare
+   discriminants $1152$ and $896$
+   (`/tmp/l22_elimination.md`, §§1–4;
+   `data/l22_elimination.jsonl`).  The excluded fibre $Z=0$ is explicitly
+   reducible, while $Z=1$ has a primitive $a=1$ specialization
+   irreducible modulo $11$
+   (`/tmp/l22_elimination.md`, §5).  Thus for every fixed
+   $Z\in\mathbb Q^\times$, $P(a,Z,b)$ is irreducible in
+   $\mathbb Q(a)[b]$.
+
+4. **Independent closure: reciprocal trace and elliptic descent.**  On
+   the explicitly named specialization
+   $a=1,A=5,s=0,\tau=3/5=\tau^\dagger,\delta=-4/5$,
+   $P=b^4T(b+b^{-1})$.  Trace reducibility forces
+   $125D^2+64Z^4$ square, but its reduced numerator is $5\bmod8$.
+   For the reciprocal lift, a square
+   $\Xi=(125D^2+64Z^4)(125D^2+1024Z^4)$ maps to
+   $E:y^2=x(x+5)(x+80)$ with positive $x$; complete
+   $2$-isogeny descent gives rank $0$ and only the four
+   $2$-torsion points, none with positive $x$
+   (`/tmp/l22_reciprocal_cube.md`, §§1–3;
+   `data/l22_reciprocal_cube.jsonl`).  Hence the same branch
+   specialization is irreducible for every rational $Z\ne0$.  The
+   $a=1$ point is only a specialization witness, not a claim that
+   $(5\mid w)=-1$ for every cell.
+
+5. **Audits.**  ElimAudit independently rebuilt the endpoints, all three
+   local polygons, the endpoint enumeration, both degree eliminations,
+   and the exceptional fibres; verdict SOUND, confidence $0.90$, with no
+   P0/P1 finding (`agent://ElimAudit`).  ReciprocalAudit independently
+   re-derived the trace identity, mod-$8$ obstruction, norm direction,
+   complete isogeny descent and torsion bound; verdict SOUND, confidence
+   $0.92$ (`agent://ReciprocalAudit`).  Its one scope finding was
+   load-bearing: every statement must name
+   $\tau=3/5=\tau^\dagger,\delta=-4/5$, because sibling square-$\delta$
+   branches are reducible.  The producer was patched, and the current
+   report and JSON summary carry the branch explicitly
+   (`/tmp/l22_reciprocal_cube.md`;
+   `data/l22_reciprocal_cube.jsonl`).
+
+6. **Chain consequence.**  For a fixed cell, L22 plus quantitative HIT
+   selects an irreducible $a$ in L20's odd character-admissible
+   progression; L20 supplies the aligned $f=w$ class and conditions
+   (b)–(d), while L22 completes condition (a).  L19 plus classical
+   Schinzel H supplies a member.  Therefore
+   $$\text{classical Schinzel H}\Rightarrow H\Rightarrow\text{Theorem C}$$
+   with the same finite branch menu and the same six universal
+   quantifiers (`THEOREMS.md`, L19–L22;
+   `CONDITIONAL.md`, §§1–2).  This is a PROVED implication with a
+   CONDITIONAL conclusion: Schinzel H remains unproved, and
+   H10/$\mathbb Q$ remains open.

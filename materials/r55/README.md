@@ -268,3 +268,50 @@ leaves a factor-≈39 gap, so data quality is not the obstruction. The campaign'
 which retires every handshake-style repair. Remaining routes, in order:
 VeriPB-certified gluing search, then srg(45,22,10,11) complementary SAT.
 **No bound on R(5,5) is claimed by any of this.**
+
+## Cayley construction lane at n=45 (exactly closed, 2026-08-22)
+
+Instead of adding another local inequality, this lane attacks the opposite side:
+construct a Ramsey(5,5,45) graph with a regular group action. It exhausts the
+class and proves the narrow theorem:
+
+> **No undirected Cayley graph on 45 vertices is Ramsey(5,5).**
+
+Every group of order 45 is `C45` or `C15 × C3`: its Sylow-5 subgroup is normal,
+the order-9 conjugation action on `Aut(C5)=C4` is trivial, and a group of order
+9 is `C9` or `C3 × C3`. Each group has 22 inverse pairs. Therefore all
+undirected Cayley presentations comprise `2 × 2^22 = 8,388,608` connection
+sets, or 4,194,304 complementary classes. No degree window, catalog, floating
+point computation, or unproved R(4,5) input enters this result.
+
+The producer attaches a canonical monochromatic K5 witness to every class. A
+disjoint checker also derives the equivalent 22-variable CNF: 25,498 clauses
+for `C45` and 25,300 for `C15 × C3`. Exact integer-bitset truth tables leave
+zero of `2^22` assignments in either group. `--resweep` independently repeats
+all 4,194,304 witness searches with a second clique kernel and reproduces both
+coverage SHA-256 digests.
+
+```bash
+./.venv/bin/python -m unittest r55.tests.test_cayley_r55_search -v
+./.venv/bin/python r55/src/cayley_r55_search.py \
+  --output r55/data/cayley_r55_45.json                  # ~3.5 min
+./.venv/bin/python r55/src/check_cayley_r55.py \
+  r55/data/cayley_r55_45.json                          # compact exact theorem proof, ~5 s
+./.venv/bin/python r55/src/check_cayley_r55.py --resweep \
+  r55/data/cayley_r55_45.json                          # disjoint witness replay, ~3 min
+```
+
+Default terminal: `CAYLEY THEOREM VERIFIED:
+NO_CAYLEY_RAMSEY_5_5_45 ... witness_replay=NOT_RUN`. With `--resweep`, the
+stronger artifact-level terminal is `CAYLEY EVIDENCE VERIFIED: ...
+witness_replay=VERIFIED`.
+
+The conference-graph subcase has an even shorter obstruction. Either group has
+an order-3 character; inverse-closed connection sets give that character an
+integer Cayley eigenvalue, whereas `srg(45,22,10,11)` requires nonprincipal
+eigenvalues solving `x²+x−11=0`. More generally, an order-3 automorphism of
+such an SRG must have `f ≡ 3 (mod 6)` fixed vertices, so none is semiregular.
+Thus a successful conference/SAT construction, if one exists, is necessarily
+non-Cayley and has sharply constrained 3-symmetry. This does **not** exclude
+arbitrary or non-Cayley Ramsey(5,5,45) graphs and does **not** change any bound
+on R(5,5).

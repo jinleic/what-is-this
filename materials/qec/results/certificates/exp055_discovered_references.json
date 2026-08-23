@@ -1,0 +1,217 @@
+{
+ "schema": "exp055-discovered-references-v1",
+ "utc": "2026-08-22T10:26:04Z",
+ "all_exact": true,
+ "all_indecomposable": true,
+ "records": [
+  {
+   "label": "exp055_30_8_4",
+   "ell": 5,
+   "m": 3,
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "novelty": "not found as BB constructor; globally dominated by Grassl [[30,8,7]]",
+   "n": 30,
+   "k": 8,
+   "d": 4,
+   "d_X": 4,
+   "d_Z": 4,
+   "d_exact": true,
+   "d_X_exact": true,
+   "d_Z_exact": true,
+   "d_X_witness": [
+    5,
+    11,
+    20,
+    23
+   ],
+   "d_Z_witness": [
+    2,
+    5,
+    20,
+    29
+   ],
+   "incidence_component_sizes": [
+    30
+   ],
+   "direct_sum_component_sizes": [
+    30
+   ],
+   "is_direct_sum": false,
+   "max_check_weight": 6,
+   "max_qubit_degree": 6,
+   "wall_s": 0.66
+  },
+  {
+   "label": "exp055_54_8_6",
+   "ell": 9,
+   "m": 3,
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "novelty": "independently exactifies a parameter reported by Wang-Mueller via BP-OSD",
+   "n": 54,
+   "k": 8,
+   "d": 6,
+   "d_X": 6,
+   "d_Z": 6,
+   "d_exact": true,
+   "d_X_exact": true,
+   "d_Z_exact": true,
+   "d_X_witness": [
+    1,
+    4,
+    10,
+    13,
+    19,
+    22
+   ],
+   "d_Z_witness": [
+    3,
+    4,
+    12,
+    13,
+    21,
+    22
+   ],
+   "incidence_component_sizes": [
+    54
+   ],
+   "direct_sum_component_sizes": [
+    54
+   ],
+   "is_direct_sum": false,
+   "max_check_weight": 6,
+   "max_qubit_degree": 6,
+   "wall_s": 1.08
+  },
+  {
+   "ell": 7,
+   "m": 9,
+   "n": 126,
+   "k": 12,
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "B": [
+    [
+     3,
+     3
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "reported_d": 10,
+   "d": 10,
+   "d_X": 10,
+   "d_Z": 10,
+   "d_exact": true,
+   "d_X_exact": true,
+   "d_Z_exact": true,
+   "d_X_witness": [
+    25,
+    26,
+    30,
+    44,
+    48,
+    104,
+    106,
+    114,
+    116,
+    119
+   ],
+   "d_Z_witness": [
+    55,
+    61,
+    63,
+    69,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77
+   ],
+   "wall_s": 306.37,
+   "label": "exp055_126_12_10",
+   "novelty": "independently exactifies Wang-Mueller BP-OSD parameter",
+   "incidence_component_sizes": [
+    126
+   ],
+   "direct_sum_component_sizes": [
+    126
+   ],
+   "is_direct_sum": false,
+   "max_check_weight": 6,
+   "max_qubit_degree": 6
+  }
+ ]
+}

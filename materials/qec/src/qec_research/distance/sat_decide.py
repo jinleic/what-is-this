@@ -334,7 +334,6 @@ def decision_cnf_digest(
 def sector_instance(instance: DecisionInstance, sector: int) -> DecisionInstance:
     """Restrict nontriviality to one logical functional.
 
-
     The full question fixes ``at least one pairing row is odd`` — a
     disjunction the solver must carry through the whole search.  Sector
     ``j`` replaces it with the single parity ``<v, L_j> = 1``.  Since
@@ -343,10 +342,14 @@ def sector_instance(instance: DecisionInstance, sector: int) -> DecisionInstance
           <=>  (exists j: exists v: parity & <v,L_j>=1 & wt<=c),
 
     the full instance is UNSAT iff every sector is UNSAT, and any sector
-    witness is a witness for the full instance.  The decomposition is exact,
-    strictly strengthens each subproblem, and is embarrassingly parallel.
-    """
+    witness is a witness for the full instance.
 
+    A symmetry clause sound for the full disjunction need not preserve a fixed
+    sector: translation can move ``L_j`` to a linear combination of pairing
+    rows.  Therefore sector instances deliberately drop the parent clause.
+    Sector-preserving anchors must be proved and attached to the returned
+    instance by the caller.
+    """
     rows = instance.pairing_rows
     if not 0 <= sector < rows.shape[0]:
         raise ValueError(f"sector {sector} out of range for {rows.shape[0]} rows")
@@ -356,7 +359,7 @@ def sector_instance(instance: DecisionInstance, sector: int) -> DecisionInstance
         groups=instance.groups,
         kind=f"{instance.kind}:sector{sector}",
         meta={**instance.meta, "sector": sector, "parent_kind": instance.kind},
-        symmetry_clause=instance.symmetry_clause,
+        symmetry_clause=None,
     )
 
 
@@ -426,7 +429,8 @@ def decide_by_sectors(
         "status": status,
         "cnf_sha256": digest,
         "encoding_version": ENCODING_VERSION,
-        "symmetry_break": bool(instance.symmetry_clause),
+        "symmetry_break": False,
+        "source_symmetry_break_dropped": bool(instance.symmetry_clause),
         "decomposition": "sectors",
         "solver": {
             "name": f"PySAT {solver_name}",

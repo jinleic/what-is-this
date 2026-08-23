@@ -46,42 +46,42 @@
    "updated": "2026-08-22T05:44:40Z"
   },
   "h10q": {
-   "bytes": 12614807,
+   "bytes": 16933930,
    "files": [
     {
      "path": "CONDITIONAL.md",
-     "sha256": "6aa08e8f7f3a",
-     "size": 23633
+     "sha256": "974294fd9827",
+     "size": 20228
     },
     {
      "path": "NOTES.md",
-     "sha256": "598865dd5fab",
-     "size": 66528
+     "sha256": "9f112fad88bb",
+     "size": 77684
     },
     {
      "path": "README.md",
-     "sha256": "dec9cedf2ddc",
-     "size": 21245
+     "sha256": "5bea0f076d94",
+     "size": 28208
     },
     {
      "path": "RESULTS.md",
-     "sha256": "fd4d12c5b17d",
-     "size": 48370
+     "sha256": "42c684b928ef",
+     "size": 50300
     },
     {
      "path": "THEOREMS.md",
-     "sha256": "9ac18f19f203",
-     "size": 123532
+     "sha256": "a7611485fe1b",
+     "size": 140411
     },
     {
      "path": "deliverables/2026-08-19/MANIFEST.md",
-     "sha256": "5ca06f037c30",
-     "size": 7387
+     "sha256": "618310ee07c6",
+     "size": 9412
     },
     {
      "path": "deliverables/2026-08-19/SHA256SUMS",
-     "sha256": "fcb9fcb06606",
-     "size": 7939
+     "sha256": "6e2316a9f2a0",
+     "size": 9787
     },
     {
      "path": "deliverables/2026-08-19/artifacts/l13h_all_closures.json",
@@ -220,18 +220,63 @@
     },
     {
      "path": "deliverables/2026-08-19/artifacts/l19_classexist.jsonl",
-     "sha256": "39579eca58ad",
+     "sha256": "d382ced4b7d6",
      "size": 405756
     },
     {
      "path": "deliverables/2026-08-19/artifacts/l19_tauzero.jsonl",
-     "sha256": "88cf4b25d312",
-     "size": 568168
+     "sha256": "a8cb29cf6ddb",
+     "size": 568166
     },
     {
      "path": "deliverables/2026-08-19/artifacts/l20_admissible.jsonl",
      "sha256": "b324b29fc73a",
      "size": 808659
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l21_irred_direct.jsonl",
+     "sha256": "1d3ac66739ea",
+     "size": 643542
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l21_irred_generic.jsonl",
+     "sha256": "aeb9b4b89f9d",
+     "size": 1818481
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l21_reducible_locus.jsonl",
+     "sha256": "6712f3fc5e43",
+     "size": 19466
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l22_elimination.jsonl",
+     "sha256": "ead38d8ca461",
+     "size": 1053714
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l22_factor_tuple.jsonl",
+     "sha256": "7d40ff18c8d1",
+     "size": 11463
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l22_fiber_geometry.jsonl",
+     "sha256": "f99fe03f4c90",
+     "size": 7158
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l22_infinity.jsonl",
+     "sha256": "05a4bf35bbda",
+     "size": 4870
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l22_reciprocal_cube.jsonl",
+     "sha256": "a55f794c6bf6",
+     "size": 17615
+    },
+    {
+     "path": "deliverables/2026-08-19/artifacts/l22_square_branch.jsonl",
+     "sha256": "02bc7e3e7f20",
+     "size": 19003
     },
     {
      "path": "deliverables/2026-08-19/artifacts/l6_witnesses.jsonl",
@@ -250,38 +295,38 @@
     },
     {
      "path": "deliverables/2026-08-19/ledger/CONDITIONAL.md",
-     "sha256": "6aa08e8f7f3a",
-     "size": 23633
+     "sha256": "429e2c334e54",
+     "size": 19600
     },
     {
      "path": "deliverables/2026-08-19/ledger/NOTES.md",
-     "sha256": "598865dd5fab",
-     "size": 66528
+     "sha256": "c27f72e3d772",
+     "size": 73220
     },
     {
      "path": "deliverables/2026-08-19/ledger/README.md",
-     "sha256": "dec9cedf2ddc",
-     "size": 21245
+     "sha256": "e0245d81f626",
+     "size": 27786
     },
     {
      "path": "deliverables/2026-08-19/ledger/RESULTS.md",
-     "sha256": "fd4d12c5b17d",
-     "size": 48370
+     "sha256": "464409120fe7",
+     "size": 50612
     },
     {
      "path": "deliverables/2026-08-19/ledger/THEOREMS.md",
-     "sha256": "9ac18f19f203",
-     "size": 123532
+     "sha256": "a0b91920abac",
+     "size": 140675
     },
     {
      "path": "deliverables/2026-08-19/papers/companion-verification.aux",
-     "sha256": "ee26e6c25914",
-     "size": 3319
+     "sha256": "152fe697feef",
+     "size": 3491
     },
     {
      "path": "deliverables/2026-08-19/papers/companion-verification.log",
-     "sha256": "ae45946462e1",
-     "size": 19257
+     "sha256": "1015af83c3e9",
+     "size": 20657
     },
     {
      "path": "deliverables/2026-08-19/papers/companion-verification.out",
@@ -290,53 +335,53 @@
     },
     {
      "path": "deliverables/2026-08-19/papers/companion-verification.pdf",
-     "sha256": "26caaa2e9ccf",
-     "size": 228025
+     "sha256": "393602874cc8",
+     "size": 253034
     },
     {
      "path": "deliverables/2026-08-19/papers/companion-verification.tex",
-     "sha256": "f58db04fd46e",
-     "size": 27586
+     "sha256": "0baa89d16673",
+     "size": 35144
     },
     {
      "path": "deliverables/2026-08-19/papers/main-conditional-forall6.aux",
-     "sha256": "5444797d0e37",
-     "size": 9154
+     "sha256": "61fb751f5820",
+     "size": 11309
     },
     {
      "path": "deliverables/2026-08-19/papers/main-conditional-forall6.log",
-     "sha256": "c5be4e96075d",
-     "size": 21509
+     "sha256": "cfecd148a60f",
+     "size": 21349
     },
     {
      "path": "deliverables/2026-08-19/papers/main-conditional-forall6.out",
-     "sha256": "f5bffc041fce",
-     "size": 10432
+     "sha256": "0bfce7f6fd80",
+     "size": 11999
     },
     {
      "path": "deliverables/2026-08-19/papers/main-conditional-forall6.pdf",
-     "sha256": "3e6eebc286f8",
-     "size": 441395
+     "sha256": "b7ea15fdfa0f",
+     "size": 490187
     },
     {
      "path": "deliverables/2026-08-19/papers/main-conditional-forall6.tex",
-     "sha256": "1712a7b5cc92",
-     "size": 9431
+     "sha256": "55e07fa785bb",
+     "size": 9462
     },
     {
      "path": "deliverables/2026-08-19/papers/main-conditional-forall6.toc",
-     "sha256": "4354ae8c3b95",
-     "size": 4246
+     "sha256": "864655cabbbc",
+     "size": 4886
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/architecture.tex",
-     "sha256": "22fd63282b46",
-     "size": 9549
+     "sha256": "716be4760cdd",
+     "size": 10004
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/classes.tex",
-     "sha256": "439b827c4152",
-     "size": 8186
+     "sha256": "9e4df764f6d6",
+     "size": 8324
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/existence.tex",
@@ -345,28 +390,33 @@
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/frontier.tex",
-     "sha256": "99a6d3354e2b",
-     "size": 9153
+     "sha256": "ce2c0a0d833d",
+     "size": 9171
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/intro.tex",
-     "sha256": "6ccefc9c00ca",
-     "size": 9286
+     "sha256": "8660fa18e624",
+     "size": 9570
+    },
+    {
+     "path": "deliverables/2026-08-19/papers/sections/irreducibility.tex",
+     "sha256": "07188e3ddbb4",
+     "size": 14175
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/record.tex",
-     "sha256": "307fa29b138b",
-     "size": 10558
+     "sha256": "6c64ab2d67ca",
+     "size": 11208
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/schinzel.tex",
-     "sha256": "df40f0883abf",
-     "size": 7469
+     "sha256": "8f35b61409e6",
+     "size": 8203
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/sieve.tex",
-     "sha256": "20ff7147a276",
-     "size": 8461
+     "sha256": "41517f1fb350",
+     "size": 8499
     },
     {
      "path": "deliverables/2026-08-19/papers/sections/walls.tex",
@@ -529,9 +579,54 @@
      "size": 40213
     },
     {
+     "path": "deliverables/2026-08-19/scripts/l21_irred_direct.py",
+     "sha256": "d2c3e1bedd92",
+     "size": 29699
+    },
+    {
+     "path": "deliverables/2026-08-19/scripts/l21_irred_generic.py",
+     "sha256": "52795ca7a91e",
+     "size": 30789
+    },
+    {
+     "path": "deliverables/2026-08-19/scripts/l21_reducible_locus.py",
+     "sha256": "027eafcb7727",
+     "size": 8891
+    },
+    {
+     "path": "deliverables/2026-08-19/scripts/l22_elimination.py",
+     "sha256": "29d11e0a0ddb",
+     "size": 43490
+    },
+    {
+     "path": "deliverables/2026-08-19/scripts/l22_factor_tuple.py",
+     "sha256": "895f87a81c5f",
+     "size": 38235
+    },
+    {
+     "path": "deliverables/2026-08-19/scripts/l22_fiber_geometry.py",
+     "sha256": "f1c027522b61",
+     "size": 47516
+    },
+    {
+     "path": "deliverables/2026-08-19/scripts/l22_infinity.py",
+     "sha256": "3573c8dd110d",
+     "size": 33552
+    },
+    {
+     "path": "deliverables/2026-08-19/scripts/l22_reciprocal_cube.py",
+     "sha256": "9765a599fc0c",
+     "size": 32683
+    },
+    {
+     "path": "deliverables/2026-08-19/scripts/l22_square_branch.py",
+     "sha256": "470576ab10e8",
+     "size": 46150
+    },
+    {
      "path": "deliverables/make_bundle.py",
-     "sha256": "0370f3e2716d",
-     "size": 8778
+     "sha256": "36afa02cf652",
+     "size": 10323
     },
     {
      "path": "h10q.py",
@@ -724,6 +819,36 @@
      "size": 8891
     },
     {
+     "path": "l22_elimination.py",
+     "sha256": "29d11e0a0ddb",
+     "size": 43490
+    },
+    {
+     "path": "l22_factor_tuple.py",
+     "sha256": "895f87a81c5f",
+     "size": 38235
+    },
+    {
+     "path": "l22_fiber_geometry.py",
+     "sha256": "f1c027522b61",
+     "size": 47516
+    },
+    {
+     "path": "l22_infinity.py",
+     "sha256": "3573c8dd110d",
+     "size": 33552
+    },
+    {
+     "path": "l22_reciprocal_cube.py",
+     "sha256": "9765a599fc0c",
+     "size": 32683
+    },
+    {
+     "path": "l22_square_branch.py",
+     "sha256": "470576ab10e8",
+     "size": 46150
+    },
+    {
      "path": "l6_residual_hunt.py",
      "sha256": "baed8597007a",
      "size": 4513
@@ -744,18 +869,18 @@
      "size": 1622
     }
    ],
-   "headline": "## 2026-08-19 — h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle",
-   "progress_header": "## 2026-08-19 — h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle",
-   "sig": "1e7ba52f01ff0408",
-   "updated": "2026-08-22T06:08:17Z"
+   "headline": "### H10/Q (2026-08-22) — L22 CLOSES THE FIXED FIBRES; THE CONDITIONAL RECORD NOW ASSUMES CLASSICAL SCHINZEL H ALONE",
+   "progress_header": "### H10/Q (2026-08-22) — L22 CLOSES THE FIXED FIBRES; THE CONDITIONAL RECORD NOW ASSUMES CLASSICAL SCHINZEL H ALONE",
+   "sig": "81929005025d4c72",
+   "updated": "2026-08-23T00:05:04Z"
   },
   "ising3d": {
-   "bytes": 42215771,
+   "bytes": 47040145,
    "files": [
     {
      "path": "README.md",
-     "sha256": "fdd36921c1b4",
-     "size": 34648
+     "sha256": "aed3c486cd5a",
+     "size": 36815
     },
     {
      "path": "checkpoints/current_state.md",
@@ -779,13 +904,18 @@
     },
     {
      "path": "checkpoints/next_actions.md",
-     "sha256": "4cb4b4fb25a6",
-     "size": 11640
+     "sha256": "728c6c69aea8",
+     "size": 14881
     },
     {
      "path": "checkpoints/verified_results.json",
      "sha256": "5f3e54367ec5",
      "size": 121332
+    },
+    {
+     "path": "deliverables/ising3d_wave18-19_bundle.zip",
+     "sha256": "c85f101d9acd",
+     "size": 1864528
     },
     {
      "path": "deliverables/wave17_2026-08-20/BUNDLE_INFO.txt",
@@ -2948,47 +3078,387 @@
      "size": 10306
     },
     {
-     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.aux",
-     "sha256": "fcaa808a1865",
-     "size": 12439
+     "path": "deliverables/wave18-19_2026-08-21/BUNDLE_INFO.txt",
+     "sha256": "615b21e5e5ed",
+     "size": 5178
     },
     {
-     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.bbl",
+     "path": "deliverables/wave18-19_2026-08-21/MANIFEST.json",
+     "sha256": "b5dcadb0feba",
+     "size": 16785
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e157_saturation_local_move.py",
+     "sha256": "d6f6c752cc0c",
+     "size": 6747
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e158_pair_fiber_bfs.py",
+     "sha256": "1e0b3e8a35e2",
+     "size": 9843
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e159_alll_saturation.py",
+     "sha256": "86fdab244321",
+     "size": 27124
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e160_hamiltonian_clifford_family.py",
+     "sha256": "7c35ee6f10cf",
+     "size": 18629
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e161_quadratic_mode_bounds.py",
+     "sha256": "05b03ad71065",
+     "size": 4774
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e162_alll_quadratic.py",
+     "sha256": "d18c66a0dba5",
+     "size": 11321
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e163_isotropic_core_search.py",
+     "sha256": "beb6a982cb01",
+     "size": 8062
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e164_isotropic_decoupling.py",
+     "sha256": "699ad5132949",
+     "size": 10130
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e165_isotropic_allsize.py",
+     "sha256": "a1a668e87e03",
+     "size": 10358
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e166_rank_char0_spectrum.py",
+     "sha256": "865908aee213",
+     "size": 9578
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e167_rank_char0_products.py",
+     "sha256": "feb5bd9f393e",
+     "size": 10335
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e168_rank_char0.py",
+     "sha256": "f1d8c29af86f",
+     "size": 14129
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e169_kw_section_group.py",
+     "sha256": "2e019aa98edc",
+     "size": 16116
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e170_kw_unit_census.py",
+     "sha256": "e87424a52475",
+     "size": 27018
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e171_kw_orbit_quotient.py",
+     "sha256": "4b19ef7224a4",
+     "size": 17844
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e172_ladder_w8_regression.py",
+     "sha256": "eea16317f471",
+     "size": 21022
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e173_ladder_nogo_family.py",
+     "sha256": "714db2a2c9a6",
+     "size": 14381
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e174_ladder_gap_certificates.py",
+     "sha256": "753310095f79",
+     "size": 19277
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e175_upper_endpoint4_paired.py",
+     "sha256": "d1dc0f8d6539",
+     "size": 11508
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e176_upper_endpoint4_current.py",
+     "sha256": "74f35065c548",
+     "size": 12339
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e177_upper_endpoint4.py",
+     "sha256": "7aef15ad0166",
+     "size": 7879
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e178_clifford_setup.py",
+     "sha256": "0c5ba197773e",
+     "size": 12964
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e179_grade_generation.py",
+     "sha256": "c9e8e625c6cc",
+     "size": 11486
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e180_graph_verification.py",
+     "sha256": "03deb0c923af",
+     "size": 14950
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e181_clifford_grade.py",
+     "sha256": "ba64a6894054",
+     "size": 14588
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e182_adA_spectrum.py",
+     "sha256": "5ecad328fd61",
+     "size": 11850
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e183_twogen_closure.py",
+     "sha256": "bb420e5005cf",
+     "size": 34830
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e184_twogen_allsize.py",
+     "sha256": "a59acf807371",
+     "size": 12381
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e185_order_counterexample.py",
+     "sha256": "c50fbeba49a7",
+     "size": 13110
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e186_nonbipartite.py",
+     "sha256": "0db606112afd",
+     "size": 10279
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e187_trichotomy_extend.py",
+     "sha256": "7ca16c989b0e",
+     "size": 20474
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e188_gaussian_group.py",
+     "sha256": "859663dd5077",
+     "size": 6071
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e189_varying_conjugator.py",
+     "sha256": "beb4e644a22c",
+     "size": 6840
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/experiments/e190_layer_group_spectral.py",
+     "sha256": "200ef48032d7",
+     "size": 18939
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/alll_quadratic_nogo.md",
+     "sha256": "2a235a7bfeed",
+     "size": 17377
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/alll_saturation.md",
+     "sha256": "b9f0178e5953",
+     "size": 18638
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/clifford_grade_classification.md",
+     "sha256": "22beda26875f",
+     "size": 20965
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/isotropic_allsize.md",
+     "sha256": "8b25294410ab",
+     "size": 11736
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/kw_orbit_quotient.md",
+     "sha256": "5530303d96d6",
+     "size": 17262
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/ladder_w8.md",
+     "sha256": "e609601c0784",
+     "size": 22105
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/layer_group_spectral.md",
+     "sha256": "f8928456451c",
+     "size": 17119
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/rank_char0.md",
+     "sha256": "4aa7e249c398",
+     "size": 9471
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/trichotomy_extend.md",
+     "sha256": "bfe316b1c1d7",
+     "size": 23007
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/twogen_allsize.md",
+     "sha256": "391d01952601",
+     "size": 15678
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/proofs/upper_endpoint4.md",
+     "sha256": "9b6bab87de52",
+     "size": 15326
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_alll_quadratic.py",
+     "sha256": "72c51f0dfc02",
+     "size": 13266
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_alll_saturation.py",
+     "sha256": "03aad3f389bc",
+     "size": 16460
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_clifford_grade.py",
+     "sha256": "0013048772b4",
+     "size": 16121
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_isotropic_allsize.py",
+     "sha256": "cf6c6fb8bd1e",
+     "size": 17157
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_kw_full_thin_census.py",
+     "sha256": "e7640d6c003f",
+     "size": 6614
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_kw_orbit_quotient.py",
+     "sha256": "b875b11fd1f2",
+     "size": 32869
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_ladder_w8.py",
+     "sha256": "dcae91d6fa96",
+     "size": 25419
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_layer_group_spectral.py",
+     "sha256": "f453cd0939db",
+     "size": 14548
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_rank_char0.py",
+     "sha256": "d1d7d2f8c604",
+     "size": 22187
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_trichotomy_extend.py",
+     "sha256": "eb68c103c554",
+     "size": 26875
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_twogen_allsize.py",
+     "sha256": "e71e741d236c",
+     "size": 28610
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/artifacts/tests/test_upper_endpoint4.py",
+     "sha256": "c8211ccde9d0",
+     "size": 12962
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/README.md",
+     "sha256": "79c8cb3144d5",
+     "size": 36815
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/checkpoints/current_state.md",
+     "sha256": "6dc3eb10fd95",
+     "size": 44300
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/checkpoints/failed_routes.md",
+     "sha256": "79abb58a9ac2",
+     "size": 22509
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/checkpoints/gaussian2x6_progress.json",
+     "sha256": "f9c92edb0fd3",
+     "size": 3453
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/checkpoints/hypotheses_pre_overwrite_snapshot.csv",
+     "sha256": "836db69fa2a3",
+     "size": 103849
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/checkpoints/next_actions.md",
+     "sha256": "728c6c69aea8",
+     "size": 14881
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/checkpoints/verified_results.json",
+     "sha256": "5f3e54367ec5",
+     "size": 121332
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/notes/CODE_API.md",
+     "sha256": "c7e7c82a680f",
+     "size": 3452
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/notes/frontier_analysis.md",
+     "sha256": "d0726a66802a",
+     "size": 14224
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/notes/hypotheses.csv",
+     "sha256": "177b155d51e2",
+     "size": 458064
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/problem_specification.md",
+     "sha256": "fcd198beb06a",
+     "size": 4911
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/reports/adversarial_audit.md",
+     "sha256": "b2881f08c251",
+     "size": 35676
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/reports/final_technical_report.md",
+     "sha256": "fc2d089ab631",
+     "size": 173259
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/docs/research_log.md",
+     "sha256": "49bbf895a281",
+     "size": 45370
+    },
+    {
+     "path": "deliverables/wave18-19_2026-08-21/papers/main_exact_3d_ising.bbl",
      "sha256": "7db3ac8e4d84",
      "size": 7979
     },
     {
-     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.blg",
-     "sha256": "3b26f4d6b9c8",
-     "size": 922
+     "path": "deliverables/wave18-19_2026-08-21/papers/main_exact_3d_ising.pdf",
+     "sha256": "8a90f60e956f",
+     "size": 475748
     },
     {
-     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.log",
-     "sha256": "ee8734db1a55",
-     "size": 36443
+     "path": "deliverables/wave18-19_2026-08-21/papers/main_exact_3d_ising.tex",
+     "sha256": "bf44f563a239",
+     "size": 76415
     },
     {
-     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.out",
-     "sha256": "7e6c1488567b",
-     "size": 7299
-    },
-    {
-     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.pdf",
-     "sha256": "a72cd0b4ae5b",
-     "size": 466681
-    },
-    {
-     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.tex",
-     "sha256": "de2bf4fa9757",
-     "size": 70126
-    },
-    {
-     "path": "deliverables/wave18_2026-08-21/papers/main_exact_3d_ising.toc",
-     "sha256": "09b856655c16",
-     "size": 3806
-    },
-    {
-     "path": "deliverables/wave18_2026-08-21/papers/refs.bib",
+     "path": "deliverables/wave18-19_2026-08-21/papers/refs.bib",
      "sha256": "465b3d56c4aa",
      "size": 11449
     },
@@ -3334,18 +3804,18 @@
     },
     {
      "path": "experiments/e172_ladder_w8_regression.py",
-     "sha256": "2ae1284665eb",
-     "size": 20984
+     "sha256": "eea16317f471",
+     "size": 21022
     },
     {
      "path": "experiments/e173_ladder_nogo_family.py",
-     "sha256": "de68d26cc448",
-     "size": 12328
+     "sha256": "714db2a2c9a6",
+     "size": 14381
     },
     {
      "path": "experiments/e174_ladder_gap_certificates.py",
-     "sha256": "da8df649031a",
-     "size": 18294
+     "sha256": "753310095f79",
+     "size": 19277
     },
     {
      "path": "experiments/e175_upper_endpoint4_paired.py",
@@ -3434,8 +3904,53 @@
     },
     {
      "path": "experiments/e190_layer_group_spectral.py",
-     "sha256": "4bdf82334f0b",
-     "size": 18712
+     "sha256": "200ef48032d7",
+     "size": 18939
+    },
+    {
+     "path": "experiments/e191_wlaw_structure.py",
+     "sha256": "a222d3c5570f",
+     "size": 8035
+    },
+    {
+     "path": "experiments/e192_wlaw_module.py",
+     "sha256": "ca4a74524c07",
+     "size": 7506
+    },
+    {
+     "path": "experiments/e193_wlaw_certificate.py",
+     "sha256": "69dab5ca4d74",
+     "size": 12775
+    },
+    {
+     "path": "experiments/e194_kmn_reduction.py",
+     "sha256": "5357082fe72c",
+     "size": 15712
+    },
+    {
+     "path": "experiments/e195_kmn_closure.py",
+     "sha256": "aaa65e7c39d7",
+     "size": 9273
+    },
+    {
+     "path": "experiments/e196_kmn_theorem.py",
+     "sha256": "5a3685f55652",
+     "size": 14065
+    },
+    {
+     "path": "experiments/e197_rectangle_words.py",
+     "sha256": "9a4bd1e5674b",
+     "size": 9627
+    },
+    {
+     "path": "experiments/e198_rectangle_induction.py",
+     "sha256": "916925544313",
+     "size": 7068
+    },
+    {
+     "path": "experiments/e199_rectangle_certificate.py",
+     "sha256": "c12dfae4ba99",
+     "size": 8859
     },
     {
      "path": "experiments/e19_series_analysis.py",
@@ -3443,14 +3958,144 @@
      "size": 22147
     },
     {
+     "path": "experiments/e200_isotropic_puiseux.py",
+     "sha256": "85a85ba24b29",
+     "size": 14644
+    },
+    {
+     "path": "experiments/e201_isotropic_invariant.py",
+     "sha256": "8d0002c4938d",
+     "size": 14696
+    },
+    {
+     "path": "experiments/e202_isotropic_certificate.py",
+     "sha256": "668776d7f088",
+     "size": 9104
+    },
+    {
+     "path": "experiments/e203_galois_charpoly.py",
+     "sha256": "90df167d1fcd",
+     "size": 17550
+    },
+    {
+     "path": "experiments/e204_galois_cycles.py",
+     "sha256": "4c3c466d6bb5",
+     "size": 10105
+    },
+    {
+     "path": "experiments/e205_galois_certificate.py",
+     "sha256": "7e80c6634b81",
+     "size": 16767
+    },
+    {
+     "path": "experiments/e206_ctm_definition.py",
+     "sha256": "393458fff373",
+     "size": 11778
+    },
+    {
+     "path": "experiments/e207_ctm_spectrum.py",
+     "sha256": "0e2975c4103e",
+     "size": 16496
+    },
+    {
+     "path": "experiments/e208_ctm_certificate.py",
+     "sha256": "2ed0657bc526",
+     "size": 25054
+    },
+    {
+     "path": "experiments/e209_plucker_tensor.py",
+     "sha256": "5e5d5f3773b4",
+     "size": 12496
+    },
+    {
      "path": "experiments/e20_algebra_growth.py",
      "sha256": "0c9c7ce7ac6e",
      "size": 39359
     },
     {
+     "path": "experiments/e210_plucker_search.py",
+     "sha256": "a164c12279e1",
+     "size": 9803
+    },
+    {
+     "path": "experiments/e211_plucker_certificate.py",
+     "sha256": "8cc0dd362d10",
+     "size": 18733
+    },
+    {
+     "path": "experiments/e212_allaux_intertwiner.py",
+     "sha256": "e05d382481a3",
+     "size": 17909
+    },
+    {
+     "path": "experiments/e213_allaux_controls.py",
+     "sha256": "ac61db494e67",
+     "size": 22990
+    },
+    {
+     "path": "experiments/e214_allaux_certificate.py",
+     "sha256": "987bb06766aa",
+     "size": 16620
+    },
+    {
+     "path": "experiments/e215_fourpoint_kernel.py",
+     "sha256": "b9840f5c2b0e",
+     "size": 6779
+    },
+    {
+     "path": "experiments/e216_fourpoint_certificate.py",
+     "sha256": "6a82c6235a92",
+     "size": 13390
+    },
+    {
+     "path": "experiments/e217_fourpoint_endpoint.py",
+     "sha256": "2a679e3ec5d0",
+     "size": 6406
+    },
+    {
+     "path": "experiments/e218_susceptibility_coeffs.py",
+     "sha256": "40d47ef8b6d0",
+     "size": 27214
+    },
+    {
      "path": "experiments/e21_tridiagonal.py",
      "sha256": "a229ea78ea9b",
      "size": 8083
+    },
+    {
+     "path": "experiments/e221_c8_closed.py",
+     "sha256": "9a3474f359c1",
+     "size": 19502
+    },
+    {
+     "path": "experiments/e222_c10_structure.py",
+     "sha256": "2d203c950b44",
+     "size": 16719
+    },
+    {
+     "path": "experiments/e223_c10_certificate.py",
+     "sha256": "d193c3ed81fb",
+     "size": 7263
+    },
+    {
+     "path": "experiments/e224_nonhamiltonian_census.py",
+     "sha256": "220c597ece29",
+     "size": 16817
+    },
+    {
+     "path": "experiments/e225_matching_grade.py",
+     "sha256": "4f9f2eccc876",
+     "size": 14113
+    },
+    {
+     "path": "experiments/e226_nonhamiltonian_theorem.py",
+     "sha256": "e49aa88ed146",
+     "size": 15547
+    },
+    {
+     "path": "experiments/e227_finite_memory_saw.py",
+     "sha256": "37660300d942",
+     "size": 16881
     },
     {
      "path": "experiments/e22_tridiagonal_certificate.py",
@@ -3869,8 +4514,8 @@
     },
     {
      "path": "notes/hypotheses.csv",
-     "sha256": "c57804f19233",
-     "size": 450242
+     "sha256": "177b155d51e2",
+     "size": 458064
     },
     {
      "path": "notes/integrability.md",
@@ -3973,6 +4618,11 @@
      "size": 17607
     },
     {
+     "path": "proofs/allaux_lax.md",
+     "sha256": "74d2ad9ebda9",
+     "size": 20002
+    },
+    {
      "path": "proofs/alll_quadratic_nogo.md",
      "sha256": "2a235a7bfeed",
      "size": 17377
@@ -4063,6 +4713,11 @@
      "size": 11038
     },
     {
+     "path": "proofs/ctm_signature.md",
+     "sha256": "37fbeec0ea35",
+     "size": 10872
+    },
+    {
      "path": "proofs/dg_deformation_nogo.md",
      "sha256": "c6d3c740d8f8",
      "size": 17599
@@ -4108,6 +4763,11 @@
      "size": 13577
     },
     {
+     "path": "proofs/galois_spectrum.md",
+     "sha256": "c556936de71b",
+     "size": 8912
+    },
+    {
      "path": "proofs/gaussian_2x6.md",
      "sha256": "7580a4838232",
      "size": 6332
@@ -4133,6 +4793,11 @@
      "size": 27984
     },
     {
+     "path": "proofs/interlayer_c10.md",
+     "sha256": "5ba9e6d7ffaa",
+     "size": 11803
+    },
+    {
      "path": "proofs/interlayer_c6.md",
      "sha256": "ef3f9fe4693b",
      "size": 10721
@@ -4151,6 +4816,11 @@
      "path": "proofs/isotropic_allsize.md",
      "sha256": "8b25294410ab",
      "size": 11736
+    },
+    {
+     "path": "proofs/isotropic_invariant.md",
+     "sha256": "d2ff423d1207",
+     "size": 15266
     },
     {
      "path": "proofs/kac_ward_3d_obstruction.md",
@@ -4188,6 +4858,11 @@
      "size": 10369
     },
     {
+     "path": "proofs/kc_lower_finite_memory.md",
+     "sha256": "2f0b254a4efb",
+     "size": 6710
+    },
+    {
      "path": "proofs/kc_upper_peierls.md",
      "sha256": "ecb9cacb4d9b",
      "size": 21807
@@ -4196,6 +4871,11 @@
      "path": "proofs/kesten_bound.md",
      "sha256": "b3ec31a33eb6",
      "size": 12039
+    },
+    {
+     "path": "proofs/kmn_twogen.md",
+     "sha256": "0e81662e198f",
+     "size": 11145
     },
     {
      "path": "proofs/kw_boundary.md",
@@ -4264,13 +4944,13 @@
     },
     {
      "path": "proofs/ladder_w8.md",
-     "sha256": "787576985912",
-     "size": 19669
+     "sha256": "e609601c0784",
+     "size": 22105
     },
     {
      "path": "proofs/layer_group_spectral.md",
-     "sha256": "3ab6d4c6492d",
-     "size": 16480
+     "sha256": "f8928456451c",
+     "size": 17119
     },
     {
      "path": "proofs/lee_yang_53.md",
@@ -4316,6 +4996,11 @@
      "path": "proofs/mag_floor.md",
      "sha256": "d420e645e9ab",
      "size": 15911
+    },
+    {
+     "path": "proofs/nonhamiltonian_bipartite.md",
+     "sha256": "cd5453a53634",
+     "size": 12894
     },
     {
      "path": "proofs/oa_3x3.md",
@@ -4373,9 +5058,19 @@
      "size": 12804
     },
     {
+     "path": "proofs/plucker_hirota.md",
+     "sha256": "2b55dd02521d",
+     "size": 8794
+    },
+    {
      "path": "proofs/rank_char0.md",
      "sha256": "4aa7e249c398",
      "size": 9471
+    },
+    {
+     "path": "proofs/rectangle_twogen.md",
+     "sha256": "e1c92f6eb738",
+     "size": 8439
     },
     {
      "path": "proofs/saw_refine.md",
@@ -4498,9 +5193,19 @@
      "size": 15326
     },
     {
+     "path": "proofs/upper_fourpoint.md",
+     "sha256": "932a322bc97e",
+     "size": 14580
+    },
+    {
      "path": "proofs/upper_infrared.md",
      "sha256": "9c25f69d2e85",
      "size": 20611
+    },
+    {
+     "path": "proofs/wlaw.md",
+     "sha256": "59752c038285",
+     "size": 18491
     },
     {
      "path": "pyproject.toml",
@@ -4524,8 +5229,8 @@
     },
     {
      "path": "sources/bibliography.bib",
-     "sha256": "37a9da5fb595",
-     "size": 15224
+     "sha256": "e3f070a1ad80",
+     "size": 15613
     },
     {
      "path": "sources/fulltext/alg_ball2005.pdf",
@@ -4688,6 +5393,11 @@
      "size": 2418159
     },
     {
+     "path": "sources/fulltext/poenitz_tittmann2000_saw_upper.pdf",
+     "sha256": "ccd467b28d9d",
+     "size": 112294
+    },
+    {
      "path": "sources/fulltext/roan1991_onsager.pdf",
      "sha256": "82988421997a",
      "size": 694185
@@ -4704,8 +5414,8 @@
     },
     {
      "path": "sources/manifest.yaml",
-     "sha256": "f94175fc4fc5",
-     "size": 55697
+     "sha256": "1b13c6723f78",
+     "size": 57009
     },
     {
      "path": "src/ising/__init__.py",
@@ -4848,6 +5558,11 @@
      "size": 9431
     },
     {
+     "path": "tests/test_allaux_lax.py",
+     "sha256": "dd0dac9255f4",
+     "size": 30572
+    },
+    {
      "path": "tests/test_alll_quadratic.py",
      "sha256": "72c51f0dfc02",
      "size": 13266
@@ -4953,6 +5668,11 @@
      "size": 24453
     },
     {
+     "path": "tests/test_ctm_signature.py",
+     "sha256": "a9f0619cc155",
+     "size": 25184
+    },
+    {
      "path": "tests/test_dg_deformation.py",
      "sha256": "4669ed087b7b",
      "size": 4129
@@ -4998,6 +5718,11 @@
      "size": 1522
     },
     {
+     "path": "tests/test_finite_memory_saw.py",
+     "sha256": "89dc208017ff",
+     "size": 11242
+    },
+    {
      "path": "tests/test_flux_support.py",
      "sha256": "82e40eeb3af1",
      "size": 7242
@@ -5006,6 +5731,11 @@
      "path": "tests/test_full_commutant.py",
      "sha256": "5c5d5b34447c",
      "size": 9339
+    },
+    {
+     "path": "tests/test_galois_spectrum.py",
+     "sha256": "fde4cf3b2fac",
+     "size": 23587
     },
     {
      "path": "tests/test_gates.py",
@@ -5048,6 +5778,11 @@
      "size": 16189
     },
     {
+     "path": "tests/test_interlayer_c10.py",
+     "sha256": "fd7550f941c5",
+     "size": 19772
+    },
+    {
      "path": "tests/test_interlayer_c4.py",
      "sha256": "5cb75b35f8a9",
      "size": 8333
@@ -5073,6 +5808,11 @@
      "size": 17157
     },
     {
+     "path": "tests/test_isotropic_invariant.py",
+     "sha256": "ec3d19e7aa14",
+     "size": 16547
+    },
+    {
      "path": "tests/test_kac_ward.py",
      "sha256": "d7a0b92ce6b1",
      "size": 4361
@@ -5091,6 +5831,11 @@
      "path": "tests/test_kesten_bound.py",
      "sha256": "f0804c67e263",
      "size": 8629
+    },
+    {
+     "path": "tests/test_kmn_twogen.py",
+     "sha256": "0723140fa2ac",
+     "size": 11472
     },
     {
      "path": "tests/test_kw_boundary.py",
@@ -5184,8 +5929,8 @@
     },
     {
      "path": "tests/test_ladder_w8.py",
-     "sha256": "d4a9a77cd368",
-     "size": 24738
+     "sha256": "dcae91d6fa96",
+     "size": 25419
     },
     {
      "path": "tests/test_ladder_w9.py",
@@ -5253,6 +5998,11 @@
      "size": 21719
     },
     {
+     "path": "tests/test_nonhamiltonian_bipartite.py",
+     "sha256": "64984a32e995",
+     "size": 18910
+    },
+    {
      "path": "tests/test_oa_3x3.py",
      "sha256": "0b637c0a9c25",
      "size": 5979
@@ -5318,6 +6068,11 @@
      "size": 12281
     },
     {
+     "path": "tests/test_plucker_hirota.py",
+     "sha256": "36c1e96b5b70",
+     "size": 16064
+    },
+    {
      "path": "tests/test_plus_boundary.py",
      "sha256": "9dc2e7c2ecba",
      "size": 4178
@@ -5326,6 +6081,11 @@
      "path": "tests/test_rank_char0.py",
      "sha256": "d1d7d2f8c604",
      "size": 22187
+    },
+    {
+     "path": "tests/test_rectangle_twogen.py",
+     "sha256": "c34a0a2dc73f",
+     "size": 12196
     },
     {
      "path": "tests/test_saw_refine.py",
@@ -5498,9 +6258,19 @@
      "size": 12962
     },
     {
+     "path": "tests/test_upper_fourpoint.py",
+     "sha256": "b9129e31c61b",
+     "size": 16892
+    },
+    {
      "path": "tests/test_upper_infrared.py",
      "sha256": "e71b78e4bdbb",
      "size": 19562
+    },
+    {
+     "path": "tests/test_wlaw.py",
+     "sha256": "3bc4844a869e",
+     "size": 29469
     },
     {
      "path": "tmp_elim_simon.py",
@@ -5530,11 +6300,11 @@
    ],
    "headline": "## 2026-08-21 — ising3d waves 10–18: eight closed waves recorded, unified paper, ledger gap repaired",
    "progress_header": "## 2026-08-21 — ising3d waves 10–18: eight closed waves recorded, unified paper, ledger gap repaired",
-   "sig": "315419e241d5528c",
-   "updated": "2026-08-22T06:08:17Z"
+   "sig": "cae959ead16951f4",
+   "updated": "2026-08-23T00:02:56Z"
   },
   "kobon": {
-   "bytes": 6267436,
+   "bytes": 7835290,
    "files": [
     {
      "path": "AUDIT.md",
@@ -5583,33 +6353,33 @@
     },
     {
      "path": "paper/kobon_broad_capacity.aux",
-     "sha256": "77a5ab3dd99c",
-     "size": 6587
+     "sha256": "d9881b1a6e81",
+     "size": 7659
     },
     {
      "path": "paper/kobon_broad_capacity.log",
-     "sha256": "c3f4b43c7a80",
-     "size": 21881
+     "sha256": "e806a8808da0",
+     "size": 22579
     },
     {
      "path": "paper/kobon_broad_capacity.out",
-     "sha256": "1c4ac2ff34e7",
-     "size": 2243
+     "sha256": "15762732d49a",
+     "size": 2733
     },
     {
      "path": "paper/kobon_broad_capacity.pdf",
-     "sha256": "ac40d6f39696",
-     "size": 295181
+     "sha256": "e38179a22adb",
+     "size": 346074
     },
     {
      "path": "paper/kobon_broad_capacity.tex",
-     "sha256": "1f2bff208c34",
-     "size": 35981
+     "sha256": "994488b88a9b",
+     "size": 46844
     },
     {
      "path": "paper_capacity.md",
-     "sha256": "f8be81157d75",
-     "size": 60130
+     "sha256": "94a8594a75dc",
+     "size": 61712
     },
     {
      "path": "paper_kobon_2026-08.md",
@@ -5662,13 +6432,23 @@
      "size": 619154
     },
     {
-     "path": "release/kobon-2026-08.zip",
+     "path": "release/kobon-2026-08-v6.zip",
      "sha256": "1926b6d3fc13",
      "size": 661330
     },
     {
+     "path": "release/kobon-2026-08-v7.zip",
+     "sha256": "282621b5fe47",
+     "size": 679926
+    },
+    {
+     "path": "release/kobon-2026-08.zip",
+     "sha256": "85d2f01f22e0",
+     "size": 727069
+    },
+    {
      "path": "release/kobon-2026-08/MANIFEST.sha256",
-     "sha256": "7ce9b4ebd4c3",
+     "sha256": "ed9dc1e035c3",
      "size": 9567
     },
     {
@@ -5878,8 +6658,8 @@
     },
     {
      "path": "release/kobon-2026-08/docs/PROGRESS.md",
-     "sha256": "f1dc1b6b9d0a",
-     "size": 300108
+     "sha256": "1ac6fecdb4bf",
+     "size": 336647
     },
     {
      "path": "release/kobon-2026-08/docs/batch2_launch.md",
@@ -6003,13 +6783,13 @@
     },
     {
      "path": "release/kobon-2026-08/papers/kobon_broad_capacity.pdf",
-     "sha256": "7c0550bec7ce",
-     "size": 294930
+     "sha256": "d7ac606b0724",
+     "size": 344524
     },
     {
      "path": "release/kobon-2026-08/papers/kobon_broad_capacity.tex",
-     "sha256": "e2310d094a56",
-     "size": 35759
+     "sha256": "b94ef2e57a45",
+     "size": 44887
     },
     {
      "path": "release/kobon-2026-08/papers/paper_capacity.md",
@@ -6192,10 +6972,10 @@
      "size": 2960
     }
    ],
-   "headline": "### KOBON (2026-08-22) - THE CONVENTIONS COLLAPSE: crossings never help, so K = K_gen",
-   "progress_header": "### KOBON (2026-08-22) - THE CONVENTIONS COLLAPSE: crossings never help, so K = K_gen",
-   "sig": "194e57cc65a1a8de",
-   "updated": "2026-08-22T06:03:44Z"
+   "headline": "### KOBON (2026-08-22c) — SATURATED FLOWERS + STRONG FACE FRONTIERS",
+   "progress_header": "### KOBON (2026-08-22c) — SATURATED FLOWERS + STRONG FACE FRONTIERS",
+   "sig": "ba19183e4771547a",
+   "updated": "2026-08-23T00:02:56Z"
   },
   "ns": {
    "bytes": 3739024,
@@ -6327,7 +7107,7 @@
    "updated": "2026-08-22T05:44:40Z"
   },
   "qec": {
-   "bytes": 35752788,
+   "bytes": 37588004,
    "files": [
     {
      "path": "CITATION.cff",
@@ -6341,8 +7121,8 @@
     },
     {
      "path": "README.md",
-     "sha256": "567696d58251",
-     "size": 21790
+     "sha256": "ada2e54bf19c",
+     "size": 23887
     },
     {
      "path": "artifacts/manifest.yaml",
@@ -6351,18 +7131,18 @@
     },
     {
      "path": "checkpoints/current_state.md",
-     "sha256": "d18393cd5a80",
-     "size": 30623
+     "sha256": "999524769951",
+     "size": 33347
     },
     {
      "path": "checkpoints/next_actions.md",
-     "sha256": "7f1d0e8e9b2e",
-     "size": 14790
+     "sha256": "aa71c17f7158",
+     "size": 16465
     },
     {
      "path": "checkpoints/verified_results.json",
-     "sha256": "03db4ad24241",
-     "size": 295257
+     "sha256": "6a157c70037d",
+     "size": 298247
     },
     {
      "path": "experiments/exp001_exact_distance_bb.py",
@@ -6656,8 +7436,13 @@
     },
     {
      "path": "experiments/exp055_odd_lattice_sweep.py",
-     "sha256": "bc293866a4e6",
-     "size": 44013
+     "sha256": "e9e1e71a5667",
+     "size": 62560
+    },
+    {
+     "path": "experiments/exp056_odd_distance.py",
+     "sha256": "a4f8cfa09c4b",
+     "size": 103257
     },
     {
      "path": "experiments/write_artifact_manifest.py",
@@ -6761,8 +7546,8 @@
     },
     {
      "path": "notes/failed_routes.md",
-     "sha256": "6c32e42a6639",
-     "size": 45221
+     "sha256": "d2a1ebba8c33",
+     "size": 47913
     },
     {
      "path": "notes/figure_provenance.md",
@@ -6786,18 +7571,18 @@
     },
     {
      "path": "notes/next_breakthroughs.md",
-     "sha256": "48d104fdd8a0",
-     "size": 9820
+     "sha256": "f2bbda7ff83b",
+     "size": 10311
     },
     {
      "path": "notes/novelty_matrix.md",
-     "sha256": "32eeb5c56de4",
-     "size": 9288
+     "sha256": "3ab282ab3d6e",
+     "size": 11388
     },
     {
      "path": "notes/open_status.md",
-     "sha256": "cdda08b511e0",
-     "size": 9576
+     "sha256": "5b45f2af986e",
+     "size": 11765
     },
     {
      "path": "notes/open_status_2026-08-17.md",
@@ -6836,8 +7621,8 @@
     },
     {
      "path": "notes/theorem_k_certified_ceiling.md",
-     "sha256": "4adc7a305d71",
-     "size": 7610
+     "sha256": "b4e23addd108",
+     "size": 7960
     },
     {
      "path": "notes/venue_plan.md",
@@ -6896,8 +7681,8 @@
     },
     {
      "path": "reports/paper_pbb_nogo.aux",
-     "sha256": "1b27c25d7dac",
-     "size": 4902
+     "sha256": "67f56d250c16",
+     "size": 5985
     },
     {
      "path": "reports/paper_pbb_nogo.bbl",
@@ -6916,28 +7701,28 @@
     },
     {
      "path": "reports/paper_pbb_nogo.log",
-     "sha256": "f5a415cbb2c6",
-     "size": 22426
+     "sha256": "96f2bd6c49dc",
+     "size": 23766
     },
     {
      "path": "reports/paper_pbb_nogo.md",
-     "sha256": "5c8fad6ab93e",
-     "size": 59736
+     "sha256": "4fef861e6c3b",
+     "size": 64404
     },
     {
      "path": "reports/paper_pbb_nogo.out",
-     "sha256": "d23e23ccec1a",
-     "size": 3674
+     "sha256": "8ce41ee16d72",
+     "size": 4033
     },
     {
      "path": "reports/paper_pbb_nogo.pdf",
-     "sha256": "1494604967c9",
-     "size": 691702
+     "sha256": "a68da745e5b1",
+     "size": 706783
     },
     {
      "path": "reports/paper_pbb_nogo.tex",
-     "sha256": "d1b09fd2d7c0",
-     "size": 61395
+     "sha256": "12b670a6eca3",
+     "size": 64892
     },
     {
      "path": "reports/technical_report.md",
@@ -6968,6 +7753,26 @@
      "path": "results/certificates/exp034_target_full_lc_decision.json",
      "sha256": "86eb2b145082",
      "size": 8073
+    },
+    {
+     "path": "results/certificates/exp055_discovered_references.json",
+     "sha256": "f0863c924bfe",
+     "size": 2623
+    },
+    {
+     "path": "results/certificates/exp055_n54_reference.json",
+     "sha256": "4ff5ed5cc806",
+     "size": 743
+    },
+    {
+     "path": "results/certificates/exp055_odd_lattice_survivors.json",
+     "sha256": "dc549cd71549",
+     "size": 356
+    },
+    {
+     "path": "results/certificates/exp055_postema_rows.json",
+     "sha256": "f79e151c190b",
+     "size": 1116
     },
     {
      "path": "results/certificates/pbb_12_6_0193_distance.json",
@@ -10320,6 +11125,11 @@
      "size": 11339
     },
     {
+     "path": "results/partial_runs/exp039/parent_2c4f5b959fc33b2a.json",
+     "sha256": "fa1139be30b8",
+     "size": 14963
+    },
+    {
      "path": "results/partial_runs/exp039/parent_2e14127bebe6a51b.json",
      "sha256": "1fd3265f51da",
      "size": 2797
@@ -10410,6 +11220,11 @@
      "size": 7047
     },
     {
+     "path": "results/partial_runs/exp039/parent_4cd5b4697c084fc7.json",
+     "sha256": "74e54eb1a49d",
+     "size": 3481
+    },
+    {
      "path": "results/partial_runs/exp039/parent_4d0ac4e2956fe9ac.json",
      "sha256": "8e41f1aa6ced",
      "size": 4450
@@ -10448,6 +11263,11 @@
      "path": "results/partial_runs/exp039/parent_5f4eea0714cf5a99.json",
      "sha256": "09e5ced9c311",
      "size": 3128
+    },
+    {
+     "path": "results/partial_runs/exp039/parent_61ffb64bc6fad23f.json",
+     "sha256": "09e2ce764eda",
+     "size": 10937
     },
     {
      "path": "results/partial_runs/exp039/parent_6838112c22d1f97f.json",
@@ -10503,6 +11323,11 @@
      "path": "results/partial_runs/exp039/parent_7b6a5ce3cc2bed87.json",
      "sha256": "555bb281118a",
      "size": 2807
+    },
+    {
+     "path": "results/partial_runs/exp039/parent_7bdf9619c71650bb.json",
+     "sha256": "b0aee977262a",
+     "size": 9988
     },
     {
      "path": "results/partial_runs/exp039/parent_7c4e8e5250433659.json",
@@ -10901,13 +11726,13 @@
     },
     {
      "path": "results/partial_runs/exp039/shard_1.log",
-     "sha256": "3daf03cc77e7",
-     "size": 882
+     "sha256": "12452665d484",
+     "size": 1297
     },
     {
      "path": "results/partial_runs/exp039/shard_2.log",
-     "sha256": "bb27de25e78d",
-     "size": 793
+     "sha256": "b012e02cbd1e",
+     "size": 1098
     },
     {
      "path": "results/partial_runs/exp039/shard_3.log",
@@ -10926,13 +11751,13 @@
     },
     {
      "path": "results/partial_runs/exp040/mc_driver.log",
-     "sha256": "959ed717c251",
-     "size": 10888
+     "sha256": "322057308c6c",
+     "size": 13881
     },
     {
      "path": "results/partial_runs/exp040/mc_partial.jsonl",
-     "sha256": "bb3f48c7bb51",
-     "size": 89242
+     "sha256": "54577db40279",
+     "size": 110332
     },
     {
      "path": "results/partial_runs/exp045/numpy_verify.py",
@@ -13766,343 +14591,403 @@
     },
     {
      "path": "results/partial_runs/exp055/11x11.json",
-     "sha256": "9d3d8699e576",
-     "size": 808
+     "sha256": "0733aab1f4b2",
+     "size": 940
     },
     {
      "path": "results/partial_runs/exp055/11x3.json",
-     "sha256": "3c2d8e338b9a",
-     "size": 825
+     "sha256": "4f51b1034bcf",
+     "size": 957
     },
     {
      "path": "results/partial_runs/exp055/11x5.json",
-     "sha256": "83d60e4c128d",
-     "size": 1069
+     "sha256": "e0da51825937",
+     "size": 1213
     },
     {
      "path": "results/partial_runs/exp055/11x7.json",
-     "sha256": "9d5126e9f7a4",
-     "size": 1096
+     "sha256": "6ceae656b947",
+     "size": 1240
     },
     {
      "path": "results/partial_runs/exp055/11x9.json",
-     "sha256": "8f7d1f9dc733",
-     "size": 1756
+     "sha256": "72e43df77294",
+     "size": 1924
     },
     {
      "path": "results/partial_runs/exp055/13x11.json",
-     "sha256": "f9d34633090d",
-     "size": 820
+     "sha256": "abb67d22ab59",
+     "size": 952
     },
     {
      "path": "results/partial_runs/exp055/13x13.json",
-     "sha256": "5d606a69e28e",
-     "size": 548
+     "sha256": "b433b38ba34e",
+     "size": 668
     },
     {
      "path": "results/partial_runs/exp055/13x3.json",
-     "sha256": "350a7a055cdf",
-     "size": 569
+     "sha256": "789057d0194b",
+     "size": 689
     },
     {
      "path": "results/partial_runs/exp055/13x5.json",
-     "sha256": "457766b36f7e",
-     "size": 810
+     "sha256": "9aa95817dc3f",
+     "size": 942
     },
     {
      "path": "results/partial_runs/exp055/13x7.json",
-     "sha256": "69abc4526335",
-     "size": 839
+     "sha256": "e80d9d7b14ed",
+     "size": 971
     },
     {
      "path": "results/partial_runs/exp055/13x9.json",
-     "sha256": "07d3075df244",
-     "size": 1499
+     "sha256": "2d91f56245ff",
+     "size": 1655
     },
     {
      "path": "results/partial_runs/exp055/15x11.json",
-     "sha256": "662755039e9e",
-     "size": 2467
+     "sha256": "34e06ee71774",
+     "size": 2620
     },
     {
      "path": "results/partial_runs/exp055/15x3.json",
-     "sha256": "cfd87726a3b1",
-     "size": 3066
+     "sha256": "c631189bd12e",
+     "size": 4561
     },
     {
      "path": "results/partial_runs/exp055/15x5.json",
-     "sha256": "4e27d3f5f52a",
-     "size": 1536
+     "sha256": "c1b66b99cb75",
+     "size": 2967
     },
     {
      "path": "results/partial_runs/exp055/15x7.json",
-     "sha256": "088ec9e74640",
-     "size": 5171
+     "sha256": "b4c74486e8f7",
+     "size": 5379
     },
     {
      "path": "results/partial_runs/exp055/15x9.json",
-     "sha256": "a79c81445c42",
-     "size": 3797
+     "sha256": "f4fa59c7df2a",
+     "size": 4631
     },
     {
      "path": "results/partial_runs/exp055/17x3.json",
-     "sha256": "3f858e52aaec",
-     "size": 573
+     "sha256": "06e4ab980111",
+     "size": 693
     },
     {
      "path": "results/partial_runs/exp055/17x5.json",
-     "sha256": "b70f85dd203a",
-     "size": 1466
+     "sha256": "ee894749d5a7",
+     "size": 1615
     },
     {
      "path": "results/partial_runs/exp055/17x7.json",
-     "sha256": "db4ebccd52a4",
-     "size": 844
+     "sha256": "8e54c8cd75fd",
+     "size": 976
     },
     {
      "path": "results/partial_runs/exp055/17x9.json",
-     "sha256": "3cb2f618d214",
-     "size": 1503
+     "sha256": "ed392082df14",
+     "size": 1659
     },
     {
      "path": "results/partial_runs/exp055/19x3.json",
-     "sha256": "d8773cbfa4be",
-     "size": 574
+     "sha256": "e7363c76c892",
+     "size": 694
     },
     {
      "path": "results/partial_runs/exp055/19x5.json",
-     "sha256": "2b89bac9d63c",
-     "size": 813
+     "sha256": "954f8f42b16e",
+     "size": 944
     },
     {
      "path": "results/partial_runs/exp055/19x7.json",
-     "sha256": "83ec6f0323c6",
-     "size": 844
+     "sha256": "80e76a04c874",
+     "size": 976
     },
     {
      "path": "results/partial_runs/exp055/19x9.json",
-     "sha256": "7be92e29a8ae",
-     "size": 1506
+     "sha256": "b77a901bc7e7",
+     "size": 1662
     },
     {
      "path": "results/partial_runs/exp055/21x3.json",
-     "sha256": "dbfd2d063684",
-     "size": 4505
+     "sha256": "3bb89ae300cc",
+     "size": 4727
     },
     {
      "path": "results/partial_runs/exp055/21x5.json",
-     "sha256": "e36dc4ccff5a",
-     "size": 3898
+     "sha256": "74ea9a355bb6",
+     "size": 5380
     },
     {
      "path": "results/partial_runs/exp055/21x7.json",
-     "sha256": "7481d260e3a2",
-     "size": 2956
+     "sha256": "1d708d62d4cb",
+     "size": 5099
     },
     {
      "path": "results/partial_runs/exp055/23x3.json",
-     "sha256": "7579f4a97219",
-     "size": 574
+     "sha256": "ab79f3d7a41a",
+     "size": 694
     },
     {
      "path": "results/partial_runs/exp055/23x5.json",
-     "sha256": "43a9f4ac9cf3",
-     "size": 814
+     "sha256": "bf2ff5101107",
+     "size": 946
     },
     {
      "path": "results/partial_runs/exp055/23x7.json",
-     "sha256": "3c8a82c8cb77",
-     "size": 847
+     "sha256": "fa4670f23eef",
+     "size": 979
     },
     {
      "path": "results/partial_runs/exp055/25x3.json",
-     "sha256": "dd554cbb29b5",
-     "size": 2145
+     "sha256": "fc7fa78492ca",
+     "size": 2289
     },
     {
      "path": "results/partial_runs/exp055/25x5.json",
-     "sha256": "d10ab120c479",
-     "size": 818
+     "sha256": "1d332d797071",
+     "size": 950
     },
     {
      "path": "results/partial_runs/exp055/25x7.json",
-     "sha256": "67dbead46d22",
-     "size": 1149
+     "sha256": "4816ace31617",
+     "size": 1293
     },
     {
      "path": "results/partial_runs/exp055/27x3.json",
-     "sha256": "7e53cde26b43",
-     "size": 2787
+     "sha256": "0ceff18e1c2d",
+     "size": 2991
     },
     {
      "path": "results/partial_runs/exp055/27x5.json",
-     "sha256": "aa3877fdc252",
-     "size": 3732
+     "sha256": "7ae9806bd268",
+     "size": 3905
     },
     {
      "path": "results/partial_runs/exp055/29x3.json",
-     "sha256": "35dbdea41925",
-     "size": 578
+     "sha256": "e290890444a6",
+     "size": 698
     },
     {
      "path": "results/partial_runs/exp055/29x5.json",
-     "sha256": "3a71f1a3c610",
-     "size": 817
+     "sha256": "cb49dbf3f5ee",
+     "size": 949
     },
     {
      "path": "results/partial_runs/exp055/31x3.json",
-     "sha256": "a87fb0c5e0b4",
-     "size": 1923
+     "sha256": "2662b5213772",
+     "size": 2712
     },
     {
      "path": "results/partial_runs/exp055/31x5.json",
-     "sha256": "581ff87477fc",
-     "size": 1225
+     "sha256": "d8ee2b753a27",
+     "size": 1330
     },
     {
      "path": "results/partial_runs/exp055/33x3.json",
-     "sha256": "b4a5f350b2ae",
-     "size": 2416
+     "sha256": "62777958893b",
+     "size": 2608
     },
     {
      "path": "results/partial_runs/exp055/33x5.json",
-     "sha256": "32972935a3e4",
-     "size": 2463
+     "sha256": "d05815fe25f3",
+     "size": 2617
     },
     {
      "path": "results/partial_runs/exp055/35x3.json",
-     "sha256": "3aeb40e2809e",
-     "size": 3895
+     "sha256": "50e419009698",
+     "size": 5380
     },
     {
      "path": "results/partial_runs/exp055/35x5.json",
-     "sha256": "0468e0aeff6f",
-     "size": 1150
+     "sha256": "9cff4951c9c1",
+     "size": 1294
     },
     {
      "path": "results/partial_runs/exp055/37x3.json",
-     "sha256": "ee65eff1218c",
-     "size": 582
+     "sha256": "5da80942c473",
+     "size": 702
     },
     {
      "path": "results/partial_runs/exp055/39x3.json",
-     "sha256": "d34aea615c9f",
-     "size": 2158
+     "sha256": "6d651e97683a",
+     "size": 2338
     },
     {
      "path": "results/partial_runs/exp055/3x3.json",
-     "sha256": "0c73a45b3fb1",
-     "size": 1811
+     "sha256": "9b2ce3d3dc76",
+     "size": 1979
     },
     {
      "path": "results/partial_runs/exp055/41x3.json",
-     "sha256": "4c1905767295",
-     "size": 582
+     "sha256": "6e53054361cd",
+     "size": 702
     },
     {
      "path": "results/partial_runs/exp055/43x3.json",
-     "sha256": "d79b64b88878",
-     "size": 582
+     "sha256": "dc43df15922c",
+     "size": 702
     },
     {
      "path": "results/partial_runs/exp055/45x3.json",
-     "sha256": "afd30fcfb4ba",
-     "size": 3798
+     "sha256": "5ae36f45cff5",
+     "size": 4634
     },
     {
      "path": "results/partial_runs/exp055/47x3.json",
-     "sha256": "f1af68b670db",
-     "size": 582
+     "sha256": "5948ce63bba6",
+     "size": 702
     },
     {
      "path": "results/partial_runs/exp055/49x3.json",
-     "sha256": "95ab9ae09103",
-     "size": 2858
+     "sha256": "2407a33765bf",
+     "size": 3020
     },
     {
      "path": "results/partial_runs/exp055/51x3.json",
-     "sha256": "42b64580c418",
-     "size": 2166
+     "sha256": "654e731559ba",
+     "size": 2346
     },
     {
      "path": "results/partial_runs/exp055/53x3.json",
-     "sha256": "0f5a5c5d4551",
-     "size": 586
+     "sha256": "3d6049f36143",
+     "size": 706
     },
     {
      "path": "results/partial_runs/exp055/55x3.json",
-     "sha256": "c1857441192f",
-     "size": 2463
+     "sha256": "5343178e397a",
+     "size": 2617
     },
     {
      "path": "results/partial_runs/exp055/57x3.json",
-     "sha256": "182a374f6811",
-     "size": 2167
+     "sha256": "ecadfe93ff2e",
+     "size": 2347
     },
     {
      "path": "results/partial_runs/exp055/59x3.json",
-     "sha256": "d1642ba796eb",
-     "size": 587
+     "sha256": "8eef05ebc731",
+     "size": 707
     },
     {
      "path": "results/partial_runs/exp055/5x3.json",
-     "sha256": "49728848054a",
-     "size": 2092
+     "sha256": "fde6beef7d33",
+     "size": 2267
     },
     {
      "path": "results/partial_runs/exp055/5x5.json",
-     "sha256": "7ad276941490",
-     "size": 786
+     "sha256": "728e31246f21",
+     "size": 918
     },
     {
      "path": "results/partial_runs/exp055/7x3.json",
-     "sha256": "ea0605b4baef",
-     "size": 2126
+     "sha256": "f10736035d32",
+     "size": 2956
     },
     {
      "path": "results/partial_runs/exp055/7x5.json",
-     "sha256": "b3f7042ec8b9",
-     "size": 1085
+     "sha256": "602110db4193",
+     "size": 1229
     },
     {
      "path": "results/partial_runs/exp055/7x7.json",
-     "sha256": "d5d7c66fb22e",
-     "size": 2135
+     "sha256": "90e623c5cecd",
+     "size": 2301
     },
     {
      "path": "results/partial_runs/exp055/9x3.json",
-     "sha256": "fc4eba3ee368",
-     "size": 2724
+     "sha256": "e50fccb532ff",
+     "size": 2928
     },
     {
      "path": "results/partial_runs/exp055/9x5.json",
-     "sha256": "555f6dacac1f",
-     "size": 3637
+     "sha256": "1f5c62e962df",
+     "size": 3840
     },
     {
      "path": "results/partial_runs/exp055/9x7.json",
-     "sha256": "c995d2e50fad",
-     "size": 3465
+     "sha256": "05cf13bdc3a1",
+     "size": 3654
     },
     {
      "path": "results/partial_runs/exp055/9x9.json",
-     "sha256": "42c7f29756f2",
-     "size": 2789
+     "sha256": "98eba340a5fb",
+     "size": 2993
+    },
+    {
+     "path": "results/partial_runs/exp055_21x3_residual.json",
+     "sha256": "059443bf4c6d",
+     "size": 6387
+    },
+    {
+     "path": "results/partial_runs/exp055_n126_probe.json",
+     "sha256": "8d4e7ef52293",
+     "size": 482
+    },
+    {
+     "path": "results/partial_runs/exp055_n54_probe.json",
+     "sha256": "cbf724f275f8",
+     "size": 6389
     },
     {
      "path": "results/partial_runs/exp055_screen/15x3.json",
-     "sha256": "8f796e0fe265",
-     "size": 143485
+     "sha256": "4e692323b011",
+     "size": 224493
+    },
+    {
+     "path": "results/partial_runs/exp055_screen/21x3.json",
+     "sha256": "a6e736113b89",
+     "size": 268042
+    },
+    {
+     "path": "results/partial_runs/exp055_screen/3x3.json",
+     "sha256": "732fdf622687",
+     "size": 4776
+    },
+    {
+     "path": "results/partial_runs/exp055_screen/5x3.json",
+     "sha256": "549233f0523b",
+     "size": 3835
+    },
+    {
+     "path": "results/partial_runs/exp055_screen/7x3.json",
+     "sha256": "06ae7969f67f",
+     "size": 5109
+    },
+    {
+     "path": "results/partial_runs/exp055_screen/7x7.json",
+     "sha256": "7aa4aad8fa17",
+     "size": 34712
     },
     {
      "path": "results/partial_runs/exp055_screen/9x3.json",
-     "sha256": "d4767b3ed29e",
-     "size": 26309
+     "sha256": "fbabfb9d8d24",
+     "size": 32194
     },
     {
      "path": "results/partial_runs/exp055_screen/9x5.json",
-     "sha256": "f29a3496daf2",
-     "size": 23193
+     "sha256": "9ed69662b1b6",
+     "size": 33444
+    },
+    {
+     "path": "results/partial_runs/exp055_screen/9x7.json",
+     "sha256": "1a19b37cf16d",
+     "size": 51553
+    },
+    {
+     "path": "results/partial_runs/exp055_screen/9x9.json",
+     "sha256": "ff1c478022c8",
+     "size": 154434
+    },
+    {
+     "path": "results/partial_runs/exp056_odd_distance/classes/class_00.json",
+     "sha256": "7156b9e458c5",
+     "size": 3261
+    },
+    {
+     "path": "results/partial_runs/exp056_wm_162_8_14_distance.json",
+     "sha256": "54870c3f78e4",
+     "size": 33056
     },
     {
      "path": "results/partial_runs/pbb_12_6_0193_distance.json",
@@ -14601,13 +15486,18 @@
     },
     {
      "path": "results/processed/exp055_literature_validation.json",
-     "sha256": "21aa5e2d5657",
-     "size": 11618
+     "sha256": "8715f3f5d9fc",
+     "size": 17406
+    },
+    {
+     "path": "results/processed/exp055_odd_lattice_screen.json",
+     "sha256": "395c376d33c9",
+     "size": 849144
     },
     {
      "path": "results/processed/exp055_odd_lattice_sweep.json",
-     "sha256": "995ba337f98f",
-     "size": 198256
+     "sha256": "c6733189b9e5",
+     "size": 227439
     },
     {
      "path": "results/quarantine/exp021_FAILED_seed123_rows60of368.json",
@@ -14711,13 +15601,13 @@
     },
     {
      "path": "sources/bibliography.bib",
-     "sha256": "1ebe0032c435",
-     "size": 5230
+     "sha256": "e677226fe3c1",
+     "size": 7316
     },
     {
      "path": "sources/manifest.yaml",
-     "sha256": "f62b50178698",
-     "size": 6917
+     "sha256": "3e4e2dbb633f",
+     "size": 9344
     },
     {
      "path": "src/qec_research/__init__.py",
@@ -14806,8 +15696,8 @@
     },
     {
      "path": "src/qec_research/distance/sat_decide.py",
-     "sha256": "eec17e07f3c4",
-     "size": 20934
+     "sha256": "930e8a0c5543",
+     "size": 21190
     },
     {
      "path": "src/qec_research/distance/sectors.py",
@@ -14916,8 +15806,8 @@
     },
     {
      "path": "tests/test_exp036_delta_closure.py",
-     "sha256": "571d29d4979d",
-     "size": 10884
+     "sha256": "d5a863db7a72",
+     "size": 11563
     },
     {
      "path": "tests/test_exp048_exact_collapse.py",
@@ -14941,8 +15831,13 @@
     },
     {
      "path": "tests/test_exp055_odd_lattice.py",
-     "sha256": "d0f101a15e34",
-     "size": 9183
+     "sha256": "cba86c3fc08c",
+     "size": 19103
+    },
+    {
+     "path": "tests/test_exp056_odd_distance.py",
+     "sha256": "c923e958a703",
+     "size": 10593
     },
     {
      "path": "tests/test_mixed_stabilizer_circuit.py",
@@ -14951,8 +15846,8 @@
     },
     {
      "path": "tests/test_paper_claims.py",
-     "sha256": "9ce9ef05c0b4",
-     "size": 19103
+     "sha256": "5de8a90af880",
+     "size": 21208
     },
     {
      "path": "tests/test_pbb_nogo.py",
@@ -14985,18 +15880,18 @@
      "size": 206223
     }
    ],
-   "headline": "## 2026-08-18 — QEC/PBB: six-agent wave lands — W4 circuit distance certified [5,12] on both circuits; X-sector proof gap found + repaired (J.3); residual subclass EMPTYNESS to l*m",
-   "progress_header": "## 2026-08-18 — QEC/PBB: six-agent wave lands — W4 circuit distance certified [5,12] on both circuits; X-sector proof gap found + repaired (J.3); residual subclass EMPTYNESS to l*m<=24; two main-text figure PDFs; 368-row dimension-identity lock",
-   "sig": "7c09205eea7f4842",
-   "updated": "2026-08-22T06:08:17Z"
+   "headline": "### QEC (2026-08-22) — EXP-055 odd-lattice closure: 4.23B-pair census, exact pole logic, three exact references",
+   "progress_header": "### QEC (2026-08-22) — EXP-055 odd-lattice closure: 4.23B-pair census, exact pole logic, three exact references",
+   "sig": "92950cbce5e2ebff",
+   "updated": "2026-08-23T00:04:22Z"
   },
   "r55": {
-   "bytes": 7396746,
+   "bytes": 7449744,
    "files": [
     {
      "path": "README.md",
-     "sha256": "6602df897f5d",
-     "size": 16387
+     "sha256": "c482567b2941",
+     "size": 18917
     },
     {
      "path": "bench/README.md",
@@ -15005,8 +15900,8 @@
     },
     {
      "path": "bench/spec.json",
-     "sha256": "34b38a2bf565",
-     "size": 28892
+     "sha256": "eb7fc259705d",
+     "size": 28705
     },
     {
      "path": "notes/angeltveit_mckay_2409.md",
@@ -15080,8 +15975,8 @@
     },
     {
      "path": "notes/structural_constraints_2026-08-15.md",
-     "sha256": "65edd960bdf9",
-     "size": 17217
+     "sha256": "87898ee8b8f9",
+     "size": 20996
     },
     {
      "path": "outA/r45_12_48.canon",
@@ -21684,6 +22579,16 @@
      "size": 15272
     },
     {
+     "path": "src/cayley_r55_search.py",
+     "sha256": "21a8212cffd6",
+     "size": 17157
+    },
+    {
+     "path": "src/check_cayley_r55.py",
+     "sha256": "c394733611f2",
+     "size": 18790
+    },
+    {
      "path": "src/check_m3_certificate.py",
      "sha256": "39260e0a24e7",
      "size": 70982
@@ -21869,6 +22774,11 @@
      "size": 4264
     },
     {
+     "path": "tests/test_cayley_r55_search.py",
+     "sha256": "f4c79951a375",
+     "size": 10929
+    },
+    {
      "path": "tests/test_check_mixed_certificate.py",
      "sha256": "febbdd63bf75",
      "size": 7591
@@ -21924,13 +22834,13 @@
      "size": 2474
     }
    ],
-   "headline": "### R55 MIXED (2026-08-21) — level-2 pair lift executed and CLOSED; a retraction",
-   "progress_header": "### R55 MIXED (2026-08-21) — level-2 pair lift executed and CLOSED; a retraction",
-   "sig": "1a3de94354935f37",
-   "updated": "2026-08-22T05:44:40Z"
+   "headline": "### R55 (2026-08-22) — ALL ORDER-45 CAYLEY CONSTRUCTIONS CLOSED EXACTLY",
+   "progress_header": "### R55 (2026-08-22) — ALL ORDER-45 CAYLEY CONSTRUCTIONS CLOSED EXACTLY",
+   "sig": "009706edcc88a0d0",
+   "updated": "2026-08-23T00:05:04Z"
   },
   "uc": {
-   "bytes": 5825150,
+   "bytes": 6023026,
    "files": [
     {
      "path": "ANNOUNCEMENT.md",
@@ -22538,6 +23448,16 @@
      "size": 14602
     },
     {
+     "path": "liu9_binding.py",
+     "sha256": "feb3a1aaded3",
+     "size": 39948
+    },
+    {
+     "path": "liu9_endpoint.py",
+     "sha256": "41d806fffc51",
+     "size": 60150
+    },
+    {
      "path": "liu9_objective.py",
      "sha256": "f043b8c99cb2",
      "size": 19096
@@ -22548,9 +23468,24 @@
      "size": 26765
     },
     {
+     "path": "liu9_reduce.py",
+     "sha256": "a46d2b17cfc8",
+     "size": 40527
+    },
+    {
+     "path": "liu9_tube.py",
+     "sha256": "f2013d25c944",
+     "size": 32346
+    },
+    {
      "path": "liu_R_nsd.py",
      "sha256": "7e8789848e57",
      "size": 33604
+    },
+    {
+     "path": "liu_coercive.py",
+     "sha256": "a58f35f93f23",
+     "size": 4273
     },
     {
      "path": "liu_kernel.py",
@@ -22604,8 +23539,8 @@
     },
     {
      "path": "paper/main.aux",
-     "sha256": "a88c0800f162",
-     "size": 13070
+     "sha256": "de5d15cebf15",
+     "size": 13189
     },
     {
      "path": "paper/main.bbl",
@@ -22619,8 +23554,8 @@
     },
     {
      "path": "paper/main.log",
-     "sha256": "3cbcab0fbeb7",
-     "size": 20798
+     "sha256": "01e54b607eec",
+     "size": 21399
     },
     {
      "path": "paper/main.out",
@@ -22629,13 +23564,13 @@
     },
     {
      "path": "paper/main.pdf",
-     "sha256": "7f3b6ab54663",
-     "size": 450943
+     "sha256": "408e40667bf8",
+     "size": 452188
     },
     {
      "path": "paper/main.tex",
-     "sha256": "e43650476f19",
-     "size": 70171
+     "sha256": "7687a6776c50",
+     "size": 71247
     },
     {
      "path": "paper/main.toc",
@@ -22663,6 +23598,11 @@
      "size": 4870
     },
     {
+     "path": "reimer_entropy.py",
+     "sha256": "545662244d8e",
+     "size": 7332
+    },
+    {
      "path": "relax_probe.py",
      "sha256": "f1a67d3d75ee",
      "size": 8834
@@ -22676,6 +23616,11 @@
      "path": "run_h_watch.py",
      "sha256": "dc2b9726bb2e",
      "size": 4213
+    },
+    {
+     "path": "shapley_entropy.py",
+     "sha256": "1f523849467f",
+     "size": 10259
     },
     {
      "path": "sinkdiag_resid.npy",
@@ -22710,8 +23655,8 @@
    ],
    "headline": "### THEOREM (2026-08-22) — **Liu's Hypothesis 1 is proved**: the reduced kernel is negative semidefinite",
    "progress_header": "### THEOREM (2026-08-22) — **Liu's Hypothesis 1 is proved**: the reduced kernel is negative semidefinite",
-   "sig": "3dc5e43c520985eb",
-   "updated": "2026-08-22T05:44:40Z"
+   "sig": "6d7f94de388f0f1e",
+   "updated": "2026-08-23T00:02:56Z"
   },
   "zeta5": {
    "bytes": 27160,
@@ -22743,5 +23688,5 @@
    "updated": "2026-08-22T05:44:40Z"
   }
  },
- "updated": "2026-08-22T06:08:17Z"
+ "updated": "2026-08-23T00:05:04Z"
 }

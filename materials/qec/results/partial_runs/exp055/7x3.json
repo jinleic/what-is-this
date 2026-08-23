@@ -1,6 +1,6 @@
 {
- "ceiling_max": 14,
- "ceiling_max_weight3": 14,
+ "ceiling_max": 10,
+ "ceiling_max_weight3": 10,
  "ell": 7,
  "frontier": {
   "10": {
@@ -33,10 +33,45 @@
     ]
    ],
    "bar_invariant": false,
-   "ceiling": 14,
-   "dim_I0": 2,
+   "ceiling": 10,
+   "dim_pole": 5,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
+  },
+  "12": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "dim_pole": 6,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   },
   "14": {
    "A": [
@@ -61,9 +96,9 @@
    ],
    "bar_invariant": true,
    "ceiling": 3,
-   "dim_I0": 7,
+   "dim_pole": 7,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
   },
   "18": {
    "A": [
@@ -96,9 +131,9 @@
    ],
    "bar_invariant": false,
    "ceiling": 4,
-   "dim_I0": 0,
-   "exact_min": false,
-   "route": "member"
+   "dim_pole": 9,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   }
  },
  "frontier_weight3": {
@@ -132,10 +167,45 @@
     ]
    ],
    "bar_invariant": false,
-   "ceiling": 14,
-   "dim_I0": 2,
+   "ceiling": 10,
+   "dim_pole": 5,
    "exact_min": true,
-   "route": "ideal"
+   "route": "reciprocal_pole"
+  },
+  "12": {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "dim_pole": 6,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   },
   "18": {
    "A": [
@@ -168,9 +238,9 @@
    ],
    "bar_invariant": false,
    "ceiling": 4,
-   "dim_I0": 0,
-   "exact_min": false,
-   "route": "member"
+   "dim_pole": 9,
+   "exact_min": true,
+   "route": "reciprocal_pole"
   }
  },
  "groups": 12,
@@ -193,11 +263,18 @@
  "m": 3,
  "max_weight": 3,
  "n": 42,
- "no_group_certificate_pairs": 4,
- "no_group_certificate_represented": 30,
+ "no_group_certificate_pairs": 0,
+ "no_group_certificate_represented": 0,
  "pairs_total": 44521,
+ "protocol": {
+  "k_min": 8,
+  "max_weight": 3,
+  "sample": 12,
+  "seed": 55
+ },
  "qualifying_group_pairs": 7,
  "qualifying_pairs_represented": 106,
+ "schema": "exp055-census-lattice-v2",
  "supports": 211,
- "wall_s": 0.2
+ "wall_s": 0.19
 }

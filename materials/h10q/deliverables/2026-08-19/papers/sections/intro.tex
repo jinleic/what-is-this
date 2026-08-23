@@ -92,14 +92,17 @@ data-dependent exceptional places remain untouched.
 The contributions of this paper are deliberately separated by status.
 
 \begin{enumerate}
-\item \textbf{CONDITIONAL --- a six-quantifier architecture.}
-We tie a witness in Sun's quadratic block to Daans's congruence parameter by
-$a=1+2s$.  Soundness, denominator clearing, the exact target-place selector,
-and the global norm obstruction are proved; completeness is the explicitly
-named hypothesis $H$.  If $H$ holds, then $\Q\setminus\Z$ has existential
-rank at most six, $\Z$ has a six-quantifier universal definition, and the
-essential fibre dimension is at most five.
-% src: THEOREMS.md:413-475,477-565,582-591
+\item \textbf{CONDITIONAL ON CLASSICAL SCHINZEL H --- a
+six-quantifier definition.}
+We tie a witness in Sun's quadratic block to Daans's congruence parameter
+by $a=1+2s$.  Soundness, denominator clearing, the exact target-place
+selector, the global norm obstruction, canonical-branch irreducibility,
+and every Schinzel-pair admissibility condition are proved.  Assuming
+classical Schinzel's Hypothesis~H, $\Q\setminus\Z$ has existential rank at
+most six, $\Z$ has a six-universal-quantifier definition, and
+$\operatorname{efd}_{\Q}(\Q\setminus\Z)\le5$.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
 
 \item \textbf{PROVED --- wall theorems.}
 We prove the two-adic source--target alignment wall, show that branch choice
@@ -138,16 +141,21 @@ validate the small-layer mechanism in the measured window; they do not
 supply a tail bound or a uniform density theorem.
 % src: THEOREMS.md:1574-1604; data/l17_matched.jsonl:1-3
 
-\item \textbf{PROVED implication / OPEN uniform premise --- the Schinzel
-reduction.}
-For a fixed fully admissible class, Schinzel's Hypothesis~H for the
-linear/octic pair implies infinitely many emergent-free members.  The
-uniform audit proves coprimality, absence of a fixed prime divisor,
-frozen-unit and symbol constancy, and positive leading coefficient.  It
-does not prove irreducibility of the octic uniformly.  Exact modular
-certificates cover $353/353$ reconstructed grid classes and $706/706$
-legacy rows, but those finite certificates do not close the all-cell gap.
-% src: data/l20_admissible.jsonl (conditions (a)--(d) and certificate totals)
+\item \textbf{PROVED --- fixed-fiber canonical-branch irreducibility.}
+Blanket irreducibility is false on the explicit $a=1$,
+square-$\delta$ locus, but the fixed branch
+\[
+ \tau^\dagger=\frac{1+2a^2}{1+4a^2},
+ \qquad \delta_{\tau^\dagger}=-\frac{4a^4}{1+4a^2}
+\]
+avoids it.  For every fixed $Z\in\Q^\times$, the endpoint--Newton
+elimination proves $P(a,Z)$ irreducible in $\Q(a)[b]$.  Quantitative
+Hilbert irreducibility then places a good $a$ in the existing
+character-admissible progression.  An independent reciprocal proof uses
+$a=1$ only as a specialization witness, not as the selected class
+parameter.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l22_reciprocal_cube.jsonl (summary row)
 
 \item \textbf{PROVED --- off-grid horizon extension.}
 The same certificate machinery now closes and replays
@@ -158,13 +166,14 @@ not a uniform member theorem.
 \end{enumerate}
 
 \paragraph{What is not claimed.}
-We claim \emph{no new unconditional quantifier record}: Daans's ten remains
-the refereed record, and Sun's seven remains an unrefereed announcement.
-Nor do we claim that classical Schinzel~H presently implies the
-six-quantifier statement.  First one must prove that the constructed
-degree-$8$ polynomial $P(a,z)$ is irreducible for every cell, or prove that
-the parameter choice can always avoid its reducible locus.  Only after that
-uniform algebraic premise is supplied does Schinzel address the simultaneous
-prime-value member problem.
-% src: data/l20_admissible.jsonl (final chain verdict)
+The chain is exact: fixed-$Z$ vertical irreducibility gives Hilbert
+selection in the admissible $a$ progression; the L20 class certificate
+has $f=w$ and all pair conditions; the L19 fixed-pair implication turns
+classical Schinzel~H into an emergent-free member; and L6 yields the
+definition.  Thus Schinzel~H is the sole conjectural input.  We claim
+\emph{no new unconditional quantifier record}: Daans's ten remains the
+refereed record, Sun's seven remains an unrefereed announcement, and
+Hilbert's Tenth Problem over $\Q$ remains open.
+% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
+% src: data/l20_admissible.jsonl; data/l18_schinzel_implies_h.jsonl
 % src: data/litscout_h10q.md (published and announced record boundary)

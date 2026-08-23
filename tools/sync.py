@@ -79,7 +79,7 @@ PROJECTS = [
     dict(slug="h10q", name="Hilbert's tenth problem over Q",
          dirname="h10q", session="019ff957-1ed4-7000-8941-f92f3002c676",
          keywords=("h10q", "Hilbert", "L18", "L13", "Schinzel"),
-         anchor="L18 step-(ii)",
+         anchor="H10/Q",
          exclude_dirs=("data",),
          papers=("README.md", "RESULTS.md", "THEOREMS.md", "CONDITIONAL.md",
                  "deliverables/2026-08-19/papers/main-conditional-forall6.pdf",

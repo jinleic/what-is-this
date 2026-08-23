@@ -37,9 +37,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 2,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -72,9 +72,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 4,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -109,9 +109,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 2,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -144,9 +144,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 4,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 13,
@@ -169,10 +169,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 1369,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 10,
    "qualifying_pairs_represented": 16,
+   "schema": "exp055-census-lattice-v2",
    "supports": 37,
-   "wall_s": 0.11
+   "wall_s": 0.04
   },
   {
    "ceiling_max": 8,
@@ -202,9 +209,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 3,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -237,9 +244,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 2,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -248,12 +255,12 @@
        0
       ],
       [
-       1,
-       0
+       0,
+       1
       ],
       [
-       3,
-       1
+       0,
+       2
       ]
      ],
      "B": [
@@ -272,9 +279,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 8,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -309,9 +316,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 2,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -320,12 +327,12 @@
        0
       ],
       [
-       1,
-       0
+       0,
+       1
       ],
       [
-       3,
-       1
+       0,
+       2
       ]
      ],
      "B": [
@@ -344,9 +351,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 8,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 8,
@@ -367,17 +374,24 @@
    "m": 3,
    "max_weight": 3,
    "n": 30,
-   "no_group_certificate_pairs": 4,
-   "no_group_certificate_represented": 96,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 11236,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 6,
    "qualifying_pairs_represented": 101,
+   "schema": "exp055-census-lattice-v2",
    "supports": 106,
-   "wall_s": 0.16
+   "wall_s": 0.05
   },
   {
-   "ceiling_max": 14,
-   "ceiling_max_weight3": 14,
+   "ceiling_max": 10,
+   "ceiling_max_weight3": 10,
    "ell": 7,
    "frontier": {
     "10": {
@@ -410,10 +424,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 14,
-     "dim_I0": 2,
+     "ceiling": 10,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "12": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 8,
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -438,9 +487,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 3,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -473,9 +522,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 4,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -509,10 +558,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 14,
-     "dim_I0": 2,
+     "ceiling": 10,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "12": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 8,
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -545,9 +629,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 4,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 12,
@@ -570,13 +654,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 42,
-   "no_group_certificate_pairs": 4,
-   "no_group_certificate_represented": 30,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 44521,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 7,
    "qualifying_pairs_represented": 106,
+   "schema": "exp055-census-lattice-v2",
    "supports": 211,
-   "wall_s": 0.2
+   "wall_s": 0.19
   },
   {
    "ceiling_max": 5,
@@ -606,9 +697,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 5,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -629,10 +720,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 90601,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 6,
    "qualifying_pairs_represented": 96,
+   "schema": "exp055-census-lattice-v2",
    "supports": 301,
-   "wall_s": 0.26
+   "wall_s": 0.15
   },
   {
    "ceiling_max": 12,
@@ -666,9 +764,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 6,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -693,9 +791,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 3,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -728,9 +826,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 4,
-     "dim_I0": 12,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -763,9 +861,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 12,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -800,9 +898,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 6,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -835,9 +933,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 4,
-     "dim_I0": 12,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -870,9 +968,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 12,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 23,
@@ -898,10 +996,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 123904,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 63,
    "qualifying_pairs_represented": 1783,
+   "schema": "exp055-census-lattice-v2",
    "supports": 352,
-   "wall_s": 0.58
+   "wall_s": 0.54
   },
   {
    "ceiling_max": 3,
@@ -931,9 +1036,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 3,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -957,10 +1062,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 279841,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 4,
+   "schema": "exp055-census-lattice-v2",
    "supports": 529,
-   "wall_s": 0.47
+   "wall_s": 0.45
   },
   {
    "ceiling_max": 7,
@@ -990,9 +1102,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 7,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -1017,9 +1129,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 5,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -1043,10 +1155,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 355216,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 2,
    "qualifying_pairs_represented": 52,
+   "schema": "exp055-census-lattice-v2",
    "supports": 596,
-   "wall_s": 0.55
+   "wall_s": 0.57
   },
   {
    "ceiling_max": null,
@@ -1074,10 +1193,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 550564,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 742,
-   "wall_s": 0.77
+   "wall_s": 0.66
   },
   {
    "ceiling_max": 24,
@@ -1107,9 +1233,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 9,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -1138,9 +1264,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 10,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -1165,9 +1291,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 5,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -1196,9 +1322,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 6,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -1231,9 +1357,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 8,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -1242,12 +1368,8 @@
        0
       ],
       [
-       0,
-       1
-      ],
-      [
-       1,
-       3
+       3,
+       0
       ]
      ],
      "B": [
@@ -1266,9 +1388,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 24,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -1303,9 +1425,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 10,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -1338,9 +1460,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 6,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -1373,9 +1495,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 8,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -1408,9 +1530,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 24,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 14,
@@ -1436,17 +1558,24 @@
    "m": 5,
    "max_weight": 3,
    "n": 90,
-   "no_group_certificate_pairs": 10,
-   "no_group_certificate_represented": 8304,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 982081,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 19,
    "qualifying_pairs_represented": 9321,
+   "schema": "exp055-census-lattice-v2",
    "supports": 991,
-   "wall_s": 1.4
+   "wall_s": 1.25
   },
   {
-   "ceiling_max": 30,
-   "ceiling_max_weight3": 30,
+   "ceiling_max": 24,
+   "ceiling_max_weight3": 24,
    "ell": 15,
    "frontier": {
     "10": {
@@ -1472,9 +1601,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 9,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -1506,10 +1635,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 30,
-     "dim_I0": 2,
+     "ceiling": 22,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "16": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 16,
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -1534,9 +1698,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 5,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -1565,11 +1729,11 @@
      ],
      "bar_invariant": true,
      "ceiling": 6,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
-    "8": {
+    "24": {
      "A": [
       [
        0,
@@ -1590,19 +1754,50 @@
        0
       ],
       [
+       3,
+       0
+      ],
+      [
+       9,
+       1
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 8,
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
+    },
+    "8": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
        1,
        0
       ],
       [
-       2,
+       4,
        0
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 20,
-     "dim_I0": 4,
+     "bar_invariant": false,
+     "ceiling": 24,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -1636,10 +1831,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 30,
-     "dim_I0": 2,
+     "ceiling": 22,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "16": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 16,
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -1672,9 +1902,44 @@
      ],
      "bar_invariant": true,
      "ceiling": 6,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "24": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       3,
+       0
+      ],
+      [
+       9,
+       1
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 8,
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -1702,14 +1967,14 @@
       ],
       [
        2,
-       0
+       1
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 20,
-     "dim_I0": 4,
+     "bar_invariant": false,
+     "ceiling": 24,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 58,
@@ -1737,13 +2002,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 90,
-   "no_group_certificate_pairs": 280,
-   "no_group_certificate_represented": 27168,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 982081,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 425,
    "qualifying_pairs_represented": 43056,
+   "schema": "exp055-census-lattice-v2",
    "supports": 991,
-   "wall_s": 10.63
+   "wall_s": 2.99
   },
   {
    "ceiling_max": 24,
@@ -1781,9 +2053,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 24,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -1808,9 +2080,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 7,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -1843,9 +2115,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 16,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -1880,9 +2152,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 24,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -1915,9 +2187,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 16,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 137,
@@ -1938,13 +2210,20 @@
    "m": 7,
    "max_weight": 3,
    "n": 98,
-   "no_group_certificate_pairs": 560,
-   "no_group_certificate_represented": 29232,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 1385329,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 568,
    "qualifying_pairs_represented": 29520,
+   "schema": "exp055-census-lattice-v2",
    "supports": 1177,
-   "wall_s": 9.72
+   "wall_s": 8.41
   },
   {
    "ceiling_max": null,
@@ -1972,10 +2251,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 1628176,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 1276,
-   "wall_s": 1.53
+   "wall_s": 1.47
   },
   {
    "ceiling_max": 11,
@@ -2005,9 +2291,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 11,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -2032,9 +2318,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 5,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -2056,10 +2342,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 2208196,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 2,
    "qualifying_pairs_represented": 116,
+   "schema": "exp055-census-lattice-v2",
    "supports": 1486,
-   "wall_s": 2.03
+   "wall_s": 1.85
   },
   {
    "ceiling_max": null,
@@ -2087,14 +2380,21 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 2550409,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 1597,
-   "wall_s": 2.31
+   "wall_s": 2.12
   },
   {
-   "ceiling_max": 42,
-   "ceiling_max_weight3": 42,
+   "ceiling_max": 32,
+   "ceiling_max_weight3": 32,
    "ell": 9,
    "frontier": {
     "10": {
@@ -2123,10 +2423,10 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 42,
-     "dim_I0": 2,
+     "ceiling": 30,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -2159,9 +2459,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 32,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -2186,9 +2486,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 9,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "16": {
      "A": [
@@ -2220,10 +2520,10 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 42,
-     "dim_I0": 2,
+     "ceiling": 26,
+     "dim_pole": 8,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -2232,12 +2532,8 @@
        0
       ],
       [
-       0,
-       1
-      ],
-      [
-       0,
-       3
+       3,
+       0
       ]
      ],
      "B": [
@@ -2250,15 +2546,15 @@
        1
       ],
       [
-       3,
+       0,
        3
       ]
      ],
      "bar_invariant": false,
      "ceiling": 12,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -2292,10 +2588,10 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 42,
-     "dim_I0": 2,
+     "ceiling": 30,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -2328,9 +2624,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 32,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "16": {
      "A": [
@@ -2362,10 +2658,10 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 42,
-     "dim_I0": 2,
+     "ceiling": 26,
+     "dim_pole": 8,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -2398,9 +2694,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 12,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 32,
@@ -2429,17 +2725,24 @@
    "m": 7,
    "max_weight": 3,
    "n": 126,
-   "no_group_certificate_pairs": 56,
-   "no_group_certificate_represented": 7740,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 3818116,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 80,
    "qualifying_pairs_represented": 17502,
+   "schema": "exp055-census-lattice-v2",
    "supports": 1954,
-   "wall_s": 7.8
+   "wall_s": 3.64
   },
   {
-   "ceiling_max": 42,
-   "ceiling_max_weight3": 42,
+   "ceiling_max": 30,
+   "ceiling_max_weight3": 30,
    "ell": 21,
    "frontier": {
     "10": {
@@ -2468,13 +2771,27 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 42,
-     "dim_I0": 2,
+     "ceiling": 30,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
       [
        0,
        0
@@ -2488,25 +2805,11 @@
        0
       ]
      ],
-     "B": [
-      [
-       0,
-       0
-      ],
-      [
-       7,
-       1
-      ],
-      [
-       14,
-       2
-      ]
-     ],
      "bar_invariant": false,
      "ceiling": 24,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -2539,9 +2842,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 28,
-     "dim_I0": 4,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -2550,12 +2853,8 @@
        0
       ],
       [
-       1,
-       0
-      ],
-      [
-       3,
-       0
+       0,
+       1
       ]
      ],
      "B": [
@@ -2564,19 +2863,19 @@
        0
       ],
       [
-       1,
+       3,
        0
       ],
       [
-       3,
+       9,
        0
       ]
      ],
      "bar_invariant": false,
      "ceiling": 12,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -2608,10 +2907,10 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 28,
-     "dim_I0": 4,
+     "ceiling": 20,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -2644,9 +2943,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 28,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -2680,13 +2979,27 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 42,
-     "dim_I0": 2,
+     "ceiling": 30,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
       [
        0,
        0
@@ -2700,25 +3013,11 @@
        0
       ]
      ],
-     "B": [
-      [
-       0,
-       0
-      ],
-      [
-       7,
-       1
-      ],
-      [
-       14,
-       2
-      ]
-     ],
      "bar_invariant": false,
      "ceiling": 24,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -2751,9 +3050,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 28,
-     "dim_I0": 4,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -2786,9 +3085,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 12,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -2820,10 +3119,10 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 28,
-     "dim_I0": 4,
+     "ceiling": 20,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -2856,9 +3155,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 28,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 52,
@@ -2889,13 +3188,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 126,
-   "no_group_certificate_pairs": 104,
-   "no_group_certificate_represented": 9792,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 3818116,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 309,
    "qualifying_pairs_represented": 72804,
+   "schema": "exp055-census-lattice-v2",
    "supports": 1954,
-   "wall_s": 18.78
+   "wall_s": 5.14
   },
   {
    "ceiling_max": 13,
@@ -2925,9 +3231,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 13,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -2949,10 +3255,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 4330561,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 144,
+   "schema": "exp055-census-lattice-v2",
    "supports": 2081,
-   "wall_s": 3.36
+   "wall_s": 2.99
   },
   {
    "ceiling_max": null,
@@ -2980,14 +3293,21 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 5508409,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 2347,
-   "wall_s": 4.02
+   "wall_s": 3.62
   },
   {
-   "ceiling_max": 15,
-   "ceiling_max_weight3": 10,
+   "ceiling_max": 40,
+   "ceiling_max_weight3": 40,
    "ell": 15,
    "frontier": {
     "10": {
@@ -3013,9 +3333,44 @@
      ],
      "bar_invariant": true,
      "ceiling": 15,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "16": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       5,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 32,
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -3044,12 +3399,78 @@
      ],
      "bar_invariant": true,
      "ceiling": 10,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "8": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 40,
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
+    "16": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       5,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 32,
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
+    },
     "20": {
      "A": [
       [
@@ -3081,9 +3502,44 @@
      ],
      "bar_invariant": true,
      "ceiling": 10,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "8": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 40,
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 46,
@@ -3109,13 +3565,20 @@
    "m": 5,
    "max_weight": 3,
    "n": 150,
-   "no_group_certificate_pairs": 288,
-   "no_group_certificate_represented": 367200,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 7706176,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 336,
    "qualifying_pairs_represented": 373200,
+   "schema": "exp055-census-lattice-v2",
    "supports": 2776,
-   "wall_s": 9.46
+   "wall_s": 6.79
   },
   {
    "ceiling_max": 40,
@@ -3145,9 +3608,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 15,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -3176,9 +3639,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 10,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -3187,12 +3650,8 @@
        0
       ],
       [
-       1,
+       5,
        0
-      ],
-      [
-       3,
-       1
       ]
      ],
      "B": [
@@ -3211,9 +3670,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 40,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -3248,9 +3707,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 10,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -3259,12 +3718,12 @@
        0
       ],
       [
-       1,
-       0
+       0,
+       1
       ],
       [
-       3,
-       1
+       0,
+       2
       ]
      ],
      "B": [
@@ -3283,9 +3742,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 40,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 13,
@@ -3310,13 +3769,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 150,
-   "no_group_certificate_pairs": 8,
-   "no_group_certificate_represented": 62400,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 7706176,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 16,
    "qualifying_pairs_represented": 63400,
+   "schema": "exp055-census-lattice-v2",
    "supports": 2776,
-   "wall_s": 5.79
+   "wall_s": 5.07
   },
   {
    "ceiling_max": 11,
@@ -3346,9 +3812,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 11,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -3373,9 +3839,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 7,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -3399,10 +3865,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 8567329,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 2,
    "qualifying_pairs_represented": 136,
+   "schema": "exp055-census-lattice-v2",
    "supports": 2927,
-   "wall_s": 5.91
+   "wall_s": 5.39
   },
   {
    "ceiling_max": 36,
@@ -3436,9 +3909,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -3463,9 +3936,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 9,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -3498,9 +3971,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 12,
-     "dim_I0": 12,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -3533,9 +4006,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 36,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -3570,9 +4043,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -3605,9 +4078,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 12,
-     "dim_I0": 12,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -3640,9 +4113,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 36,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 57,
@@ -3671,10 +4144,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 10504081,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 434,
    "qualifying_pairs_represented": 195708,
+   "schema": "exp055-census-lattice-v2",
    "supports": 3241,
-   "wall_s": 11.29
+   "wall_s": 10.12
   },
   {
    "ceiling_max": 36,
@@ -3708,9 +4188,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -3735,9 +4215,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 9,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -3770,9 +4250,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 12,
-     "dim_I0": 12,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -3805,9 +4285,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 36,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -3842,9 +4322,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -3877,9 +4357,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 12,
-     "dim_I0": 12,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -3912,9 +4392,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 36,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 33,
@@ -3943,10 +4423,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 10504081,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 122,
    "qualifying_pairs_represented": 131583,
+   "schema": "exp055-census-lattice-v2",
    "supports": 3241,
-   "wall_s": 8.28
+   "wall_s": 7.96
   },
   {
    "ceiling_max": 40,
@@ -3976,9 +4463,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 17,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "16": {
      "A": [
@@ -4011,9 +4498,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 40,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -4048,9 +4535,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 40,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 12,
@@ -4069,13 +4556,20 @@
    "m": 5,
    "max_weight": 3,
    "n": 170,
-   "no_group_certificate_pairs": 8,
-   "no_group_certificate_represented": 1152,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 12752041,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 9,
    "qualifying_pairs_represented": 1408,
+   "schema": "exp055-census-lattice-v2",
    "supports": 3571,
-   "wall_s": 7.91
+   "wall_s": 7.12
   },
   {
    "ceiling_max": null,
@@ -4103,10 +4597,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 14002564,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 3742,
-   "wall_s": 8.25
+   "wall_s": 7.75
   },
   {
    "ceiling_max": 13,
@@ -4136,9 +4637,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 13,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -4162,14 +4663,21 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 16777216,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 144,
+   "schema": "exp055-census-lattice-v2",
    "supports": 4096,
-   "wall_s": 9.93
+   "wall_s": 9.25
   },
   {
-   "ceiling_max": 62,
-   "ceiling_max_weight3": 62,
+   "ceiling_max": 48,
+   "ceiling_max_weight3": 48,
    "ell": 31,
    "frontier": {
     "10": {
@@ -4179,12 +4687,8 @@
        0
       ],
       [
-       1,
-       0
-      ],
-      [
-       12,
-       0
+       0,
+       1
       ]
      ],
      "B": [
@@ -4198,14 +4702,14 @@
       ],
       [
        12,
-       1
+       0
       ]
      ],
      "bar_invariant": false,
      "ceiling": 48,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 5,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -4237,10 +4741,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 62,
-     "dim_I0": 2,
+     "ceiling": 46,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "20": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       12,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 32,
+     "dim_pole": 10,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -4275,9 +4814,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 48,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 5,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -4309,10 +4848,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 62,
-     "dim_I0": 2,
+     "ceiling": 46,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "20": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       12,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 32,
+     "dim_pole": 10,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 24,
@@ -4336,13 +4910,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 186,
-   "no_group_certificate_pairs": 48,
-   "no_group_certificate_represented": 106020,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 18309841,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 54,
    "qualifying_pairs_represented": 111420,
+   "schema": "exp055-census-lattice-v2",
    "supports": 4279,
-   "wall_s": 21.86
+   "wall_s": 10.48
   },
   {
    "ceiling_max": 19,
@@ -4372,9 +4953,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 19,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -4396,10 +4977,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 19945156,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 324,
+   "schema": "exp055-census-lattice-v2",
    "supports": 4466,
-   "wall_s": 11.03
+   "wall_s": 9.96
   },
   {
    "ceiling_max": 22,
@@ -4433,9 +5021,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -4460,9 +5048,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 11,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -4487,9 +5075,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 9,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -4524,9 +5112,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 10,
@@ -4553,10 +5141,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 23541904,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 7,
    "qualifying_pairs_represented": 17220,
+   "schema": "exp055-census-lattice-v2",
    "supports": 4852,
-   "wall_s": 12.95
+   "wall_s": 11.64
   },
   {
    "ceiling_max": 44,
@@ -4590,9 +5185,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -4617,9 +5212,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 11,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -4644,9 +5239,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 9,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -4679,9 +5274,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 44,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -4716,9 +5311,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -4751,9 +5346,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 44,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 26,
@@ -4782,14 +5377,21 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 23541904,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 41,
    "qualifying_pairs_represented": 244068,
+   "schema": "exp055-census-lattice-v2",
    "supports": 4852,
-   "wall_s": 13.45
+   "wall_s": 12.74
   },
   {
-   "ceiling_max": 70,
-   "ceiling_max_weight3": 70,
+   "ceiling_max": 56,
+   "ceiling_max_weight3": 56,
    "ell": 15,
    "frontier": {
     "10": {
@@ -4818,10 +5420,10 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 70,
-     "dim_I0": 2,
+     "ceiling": 50,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -4854,9 +5456,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 40,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -4889,9 +5491,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 52,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 7,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -4900,12 +5502,8 @@
        0
       ],
       [
-       0,
-       1
-      ],
-      [
-       0,
-       3
+       3,
+       0
       ]
      ],
      "B": [
@@ -4918,15 +5516,15 @@
        1
       ],
       [
-       3,
+       0,
        3
       ]
      ],
      "bar_invariant": false,
      "ceiling": 20,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -4955,9 +5553,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 14,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -4990,9 +5588,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 32,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -5001,12 +5599,8 @@
        0
       ],
       [
-       1,
-       0
-      ],
-      [
-       4,
-       0
+       0,
+       1
       ]
      ],
      "B": [
@@ -5020,14 +5614,14 @@
       ],
       [
        4,
-       1
+       0
       ]
      ],
      "bar_invariant": false,
      "ceiling": 56,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -5061,10 +5655,10 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 70,
-     "dim_I0": 2,
+     "ceiling": 50,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -5097,9 +5691,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 40,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -5132,9 +5726,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 52,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 7,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -5167,9 +5761,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 20,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -5202,9 +5796,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 14,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -5237,9 +5831,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 32,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -5272,9 +5866,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 56,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 32,
@@ -5308,17 +5902,24 @@
    "m": 7,
    "max_weight": 3,
    "n": 210,
-   "no_group_certificate_pairs": 74,
-   "no_group_certificate_represented": 257520,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 29822521,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 101,
    "qualifying_pairs_represented": 308300,
+   "schema": "exp055-census-lattice-v2",
    "supports": 5461,
-   "wall_s": 21.81
+   "wall_s": 16.22
   },
   {
-   "ceiling_max": 70,
-   "ceiling_max_weight3": 70,
+   "ceiling_max": 56,
+   "ceiling_max_weight3": 56,
    "ell": 21,
    "frontier": {
     "10": {
@@ -5347,10 +5948,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 70,
-     "dim_I0": 2,
+     "ceiling": 50,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "12": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       3,
+       0
+      ],
+      [
+       9,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       7,
+       0
+      ],
+      [
+       14,
+       1
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 40,
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -5383,9 +6019,40 @@
      ],
      "bar_invariant": false,
      "ceiling": 52,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 7,
+     "exact_min": true,
+     "route": "reciprocal_pole"
+    },
+    "18": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       3,
+       0
+      ],
+      [
+       9,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 20,
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -5414,9 +6081,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 14,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -5449,9 +6116,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 32,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -5460,12 +6127,8 @@
        0
       ],
       [
-       0,
-       1
-      ],
-      [
-       1,
-       3
+       3,
+       0
       ]
      ],
      "B": [
@@ -5484,9 +6147,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 56,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -5520,10 +6183,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 70,
-     "dim_I0": 2,
+     "ceiling": 50,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "12": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       3,
+       0
+      ],
+      [
+       9,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       7,
+       0
+      ],
+      [
+       14,
+       1
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 40,
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -5556,9 +6254,44 @@
      ],
      "bar_invariant": false,
      "ceiling": 52,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 7,
+     "exact_min": true,
+     "route": "reciprocal_pole"
+    },
+    "18": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       3,
+       0
+      ],
+      [
+       9,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       3,
+       0
+      ],
+      [
+       9,
+       1
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 20,
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -5591,9 +6324,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 14,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -5626,9 +6359,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 32,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -5661,9 +6394,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 56,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 32,
@@ -5697,17 +6430,24 @@
    "m": 5,
    "max_weight": 3,
    "n": 210,
-   "no_group_certificate_pairs": 74,
-   "no_group_certificate_represented": 257520,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 29822521,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 101,
    "qualifying_pairs_represented": 308300,
+   "schema": "exp055-census-lattice-v2",
    "supports": 5461,
-   "wall_s": 22.51
+   "wall_s": 16.37
   },
   {
-   "ceiling_max": 70,
-   "ceiling_max_weight3": 70,
+   "ceiling_max": 56,
+   "ceiling_max_weight3": 56,
    "ell": 35,
    "frontier": {
     "10": {
@@ -5736,10 +6476,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 70,
-     "dim_I0": 2,
+     "ceiling": 50,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "12": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 40,
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -5772,9 +6547,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 52,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 7,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -5783,11 +6558,7 @@
        0
       ],
       [
-       1,
-       0
-      ],
-      [
-       3,
+       7,
        0
       ]
      ],
@@ -5807,9 +6578,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 20,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -5838,12 +6609,57 @@
      ],
      "bar_invariant": true,
      "ceiling": 14,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "24": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       5,
+       0
+      ],
+      [
+       15,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       7,
+       0
+      ],
+      [
+       21,
+       1
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 32,
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
+      [
+       0,
+       0
+      ],
+      [
+       5,
+       0
+      ]
+     ],
+     "B": [
       [
        0,
        0
@@ -5857,25 +6673,11 @@
        1
       ]
      ],
-     "B": [
-      [
-       0,
-       0
-      ],
-      [
-       1,
-       0
-      ],
-      [
-       8,
-       1
-      ]
-     ],
      "bar_invariant": false,
      "ceiling": 56,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -5909,10 +6711,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 70,
-     "dim_I0": 2,
+     "ceiling": 50,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "12": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 40,
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -5945,9 +6782,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 52,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 7,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -5980,9 +6817,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 20,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -6015,12 +6852,61 @@
      ],
      "bar_invariant": true,
      "ceiling": 14,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "24": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       5,
+       0
+      ],
+      [
+       15,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       7,
+       0
+      ],
+      [
+       21,
+       1
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 32,
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
       [
        0,
        0
@@ -6034,25 +6920,11 @@
        1
       ]
      ],
-     "B": [
-      [
-       0,
-       0
-      ],
-      [
-       1,
-       0
-      ],
-      [
-       8,
-       1
-      ]
-     ],
      "bar_invariant": false,
      "ceiling": 56,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 32,
@@ -6086,13 +6958,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 210,
-   "no_group_certificate_pairs": 74,
-   "no_group_certificate_represented": 257520,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 29822521,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 101,
    "qualifying_pairs_represented": 308300,
+   "schema": "exp055-census-lattice-v2",
    "supports": 5461,
-   "wall_s": 22.2
+   "wall_s": 15.17
   },
   {
    "ceiling_max": null,
@@ -6120,10 +6999,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 37283236,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 6106,
-   "wall_s": 18.21
+   "wall_s": 16.94
   },
   {
    "ceiling_max": 23,
@@ -6153,9 +7039,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 23,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -6177,10 +7063,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 42981136,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 484,
+   "schema": "exp055-census-lattice-v2",
    "supports": 6556,
-   "wall_s": 20.52
+   "wall_s": 18.99
   },
   {
    "ceiling_max": 26,
@@ -6214,9 +7107,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 26,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -6241,9 +7134,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 13,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -6278,9 +7171,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 26,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 10,
@@ -6307,10 +7200,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 46063369,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 5,
    "qualifying_pairs_represented": 32760,
+   "schema": "exp055-census-lattice-v2",
    "supports": 6787,
-   "wall_s": 21.65
+   "wall_s": 20.51
   },
   {
    "ceiling_max": 52,
@@ -6344,9 +7244,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 26,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -6371,9 +7271,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 13,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -6406,9 +7306,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 52,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -6443,9 +7343,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 26,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -6478,9 +7378,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 52,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 26,
@@ -6509,10 +7409,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 46063369,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 35,
    "qualifying_pairs_represented": 473328,
+   "schema": "exp055-census-lattice-v2",
    "supports": 6787,
-   "wall_s": 23.08
+   "wall_s": 20.83
   },
   {
    "ceiling_max": 17,
@@ -6542,9 +7449,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 17,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -6568,10 +7475,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 49308484,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 256,
+   "schema": "exp055-census-lattice-v2",
    "supports": 7022,
-   "wall_s": 23.29
+   "wall_s": 21.31
   },
   {
    "ceiling_max": 11,
@@ -6601,9 +7515,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 11,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -6624,10 +7538,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 52722121,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 12,
    "qualifying_pairs_represented": 1200,
+   "schema": "exp055-census-lattice-v2",
    "supports": 7261,
-   "wall_s": 24.73
+   "wall_s": 22.36
   },
   {
    "ceiling_max": null,
@@ -6655,10 +7576,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 56310016,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 7504,
-   "wall_s": 25.56
+   "wall_s": 23.53
   },
   {
    "ceiling_max": 25,
@@ -6688,9 +7616,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 25,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -6712,10 +7640,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 60078001,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 25,
    "qualifying_pairs_represented": 3280,
+   "schema": "exp055-census-lattice-v2",
    "supports": 7751,
-   "wall_s": 26.29
+   "wall_s": 24.69
   },
   {
    "ceiling_max": null,
@@ -6743,10 +7678,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 68178049,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 8257,
-   "wall_s": 29.54
+   "wall_s": 27.19
   },
   {
    "ceiling_max": 19,
@@ -6776,9 +7718,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 19,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -6802,14 +7744,21 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 77070841,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 324,
+   "schema": "exp055-census-lattice-v2",
    "supports": 8779,
-   "wall_s": 33.01
+   "wall_s": 31.34
   },
   {
-   "ceiling_max": 90,
-   "ceiling_max_weight3": 90,
+   "ceiling_max": 72,
+   "ceiling_max_weight3": 72,
    "ell": 15,
    "frontier": {
     "10": {
@@ -6835,9 +7784,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 27,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -6865,10 +7814,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 90,
-     "dim_I0": 2,
+     "ceiling": 66,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "16": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 48,
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -6893,9 +7877,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 15,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -6924,9 +7908,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -6937,10 +7921,6 @@
       [
        0,
        3
-      ],
-      [
-       0,
-       6
       ]
      ],
      "B": [
@@ -6953,15 +7933,15 @@
        0
       ],
       [
-       2,
+       4,
        0
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 20,
-     "dim_I0": 12,
+     "bar_invariant": false,
+     "ceiling": 24,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -6972,10 +7952,6 @@
       [
        0,
        1
-      ],
-      [
-       0,
-       2
       ]
      ],
      "B": [
@@ -6988,15 +7964,15 @@
        0
       ],
       [
-       2,
+       4,
        0
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 60,
-     "dim_I0": 4,
+     "bar_invariant": false,
+     "ceiling": 72,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -7030,10 +8006,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 90,
-     "dim_I0": 2,
+     "ceiling": 66,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "16": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 48,
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -7066,9 +8077,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -7078,11 +8089,11 @@
       ],
       [
        0,
-       3
+       1
       ],
       [
        0,
-       6
+       2
       ]
      ],
      "B": [
@@ -7091,19 +8102,19 @@
        0
       ],
       [
-       1,
+       3,
        0
       ],
       [
-       2,
-       0
+       9,
+       1
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 20,
-     "dim_I0": 12,
+     "bar_invariant": false,
+     "ceiling": 24,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -7131,14 +8142,14 @@
       ],
       [
        2,
-       0
+       1
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 60,
-     "dim_I0": 4,
+     "bar_invariant": false,
+     "ceiling": 72,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 108,
@@ -7173,13 +8184,20 @@
    "m": 9,
    "max_weight": 3,
    "n": 270,
-   "no_group_certificate_pairs": 822,
-   "no_group_certificate_represented": 2127312,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 81830116,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1540,
    "qualifying_pairs_represented": 3522344,
+   "schema": "exp055-census-lattice-v2",
    "supports": 9046,
-   "wall_s": 243.78
+   "wall_s": 51.1
   },
   {
    "ceiling_max": 72,
@@ -7209,9 +8227,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 27,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -7240,9 +8258,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 30,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -7267,9 +8285,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 15,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -7298,9 +8316,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -7309,12 +8327,8 @@
        0
       ],
       [
-       0,
-       1
-      ],
-      [
-       3,
-       3
+       9,
+       0
       ]
      ],
      "B": [
@@ -7333,9 +8347,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 24,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -7344,12 +8358,8 @@
        0
       ],
       [
-       0,
-       1
-      ],
-      [
-       1,
-       3
+       3,
+       0
       ]
      ],
      "B": [
@@ -7368,9 +8378,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 72,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -7405,9 +8415,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 30,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -7440,9 +8450,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -7475,9 +8485,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 24,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -7510,9 +8520,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 72,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 20,
@@ -7543,17 +8553,24 @@
    "m": 5,
    "max_weight": 3,
    "n": 270,
-   "no_group_certificate_pairs": 14,
-   "no_group_certificate_represented": 653616,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 81830116,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 31,
    "qualifying_pairs_represented": 719069,
+   "schema": "exp055-census-lattice-v2",
    "supports": 9046,
-   "wall_s": 54.8
+   "wall_s": 32.75
   },
   {
-   "ceiling_max": 90,
-   "ceiling_max_weight3": 90,
+   "ceiling_max": 72,
+   "ceiling_max_weight3": 72,
    "ell": 45,
    "frontier": {
     "10": {
@@ -7579,9 +8596,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 27,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
@@ -7609,10 +8626,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 90,
-     "dim_I0": 2,
+     "ceiling": 66,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "16": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 48,
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -7637,9 +8689,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 15,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -7668,9 +8720,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -7681,10 +8733,6 @@
       [
        0,
        1
-      ],
-      [
-       0,
-       2
       ]
      ],
      "B": [
@@ -7697,15 +8745,15 @@
        0
       ],
       [
-       6,
+       12,
        0
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 20,
-     "dim_I0": 12,
+     "bar_invariant": false,
+     "ceiling": 24,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -7716,10 +8764,6 @@
       [
        0,
        1
-      ],
-      [
-       0,
-       2
       ]
      ],
      "B": [
@@ -7732,15 +8776,15 @@
        0
       ],
       [
-       2,
+       4,
        0
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 60,
-     "dim_I0": 4,
+     "bar_invariant": false,
+     "ceiling": 72,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -7774,10 +8818,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 90,
-     "dim_I0": 2,
+     "ceiling": 66,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "16": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 48,
+     "dim_pole": 8,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -7810,9 +8889,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 18,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "24": {
      "A": [
@@ -7840,14 +8919,14 @@
       ],
       [
        6,
-       0
+       1
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 20,
-     "dim_I0": 12,
+     "bar_invariant": false,
+     "ceiling": 24,
+     "dim_pole": 12,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -7875,14 +8954,14 @@
       ],
       [
        2,
-       0
+       1
       ]
      ],
-     "bar_invariant": true,
-     "ceiling": 60,
-     "dim_I0": 4,
+     "bar_invariant": false,
+     "ceiling": 72,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 108,
@@ -7917,13 +8996,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 270,
-   "no_group_certificate_pairs": 822,
-   "no_group_certificate_represented": 2127312,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 81830116,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1540,
    "qualifying_pairs_represented": 3522344,
+   "schema": "exp055-census-lattice-v2",
    "supports": 9046,
-   "wall_s": 130.97
+   "wall_s": 50.02
   },
   {
    "ceiling_max": null,
@@ -7951,10 +9037,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 97436641,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 9871,
-   "wall_s": 39.77
+   "wall_s": 37.16
   },
   {
    "ceiling_max": 13,
@@ -7984,9 +9077,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 13,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -8008,10 +9101,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 103103716,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 144,
+   "schema": "exp055-census-lattice-v2",
    "supports": 10154,
-   "wall_s": 41.99
+   "wall_s": 39.17
   },
   {
    "ceiling_max": 29,
@@ -8041,9 +9141,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 29,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -8065,14 +9165,21 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 109014481,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 784,
+   "schema": "exp055-census-lattice-v2",
    "supports": 10441,
-   "wall_s": 43.99
+   "wall_s": 40.75
   },
   {
-   "ceiling_max": 98,
-   "ceiling_max_weight3": 98,
+   "ceiling_max": 72,
+   "ceiling_max_weight3": 72,
    "ell": 21,
    "frontier": {
     "10": {
@@ -8101,10 +9208,41 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 98,
-     "dim_I0": 2,
+     "ceiling": 70,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "12": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       7,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 72,
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -8129,9 +9267,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 21,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "16": {
      "A": [
@@ -8163,10 +9301,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 98,
-     "dim_I0": 2,
+     "ceiling": 70,
+     "dim_pole": 8,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "18": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       17,
+       2
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 56,
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -8198,10 +9371,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 98,
-     "dim_I0": 2,
+     "ceiling": 48,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "24": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       7,
+       0
+      ],
+      [
+       14,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 48,
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -8235,10 +9443,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 98,
-     "dim_I0": 2,
+     "ceiling": 70,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "12": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       2,
+       1
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 72,
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "16": {
      "A": [
@@ -8270,10 +9513,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 98,
-     "dim_I0": 2,
+     "ceiling": 70,
+     "dim_pole": 8,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "18": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       17,
+       2
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 56,
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -8305,10 +9583,45 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 98,
-     "dim_I0": 2,
+     "ceiling": 48,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
+    },
+    "24": {
+     "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "B": [
+      [
+       0,
+       0
+      ],
+      [
+       7,
+       0
+      ],
+      [
+       14,
+       0
+      ]
+     ],
+     "bar_invariant": false,
+     "ceiling": 48,
+     "dim_pole": 12,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 411,
@@ -8343,17 +9656,24 @@
    "m": 7,
    "max_weight": 3,
    "n": 294,
-   "no_group_certificate_pairs": 7280,
-   "no_group_certificate_represented": 2782080,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 115175824,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 10560,
    "qualifying_pairs_represented": 4095360,
+   "schema": "exp055-census-lattice-v2",
    "supports": 10732,
-   "wall_s": 210.39
+   "wall_s": 135.63
   },
   {
-   "ceiling_max": 98,
-   "ceiling_max_weight3": 98,
+   "ceiling_max": 70,
+   "ceiling_max_weight3": 70,
    "ell": 49,
    "frontier": {
     "10": {
@@ -8382,13 +9702,27 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 98,
-     "dim_I0": 2,
+     "ceiling": 70,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
       [
        0,
        0
@@ -8402,25 +9736,11 @@
        0
       ]
      ],
-     "B": [
-      [
-       0,
-       0
-      ],
-      [
-       7,
-       1
-      ],
-      [
-       21,
-       2
-      ]
-     ],
      "bar_invariant": false,
      "ceiling": 56,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -8445,9 +9765,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 21,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -8456,11 +9776,7 @@
        0
       ],
       [
-       1,
-       0
-      ],
-      [
-       3,
+       7,
        0
       ]
      ],
@@ -8480,9 +9796,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 28,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -8516,13 +9832,27 @@
       ]
      ],
      "bar_invariant": false,
-     "ceiling": 98,
-     "dim_I0": 2,
+     "ceiling": 70,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "12": {
      "A": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "B": [
       [
        0,
        0
@@ -8536,25 +9866,11 @@
        0
       ]
      ],
-     "B": [
-      [
-       0,
-       0
-      ],
-      [
-       7,
-       1
-      ],
-      [
-       21,
-       2
-      ]
-     ],
      "bar_invariant": false,
      "ceiling": 56,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 6,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -8587,9 +9903,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 28,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 9,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 21,
@@ -8618,13 +9934,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 294,
-   "no_group_certificate_pairs": 12,
-   "no_group_certificate_represented": 75558,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 115175824,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 20,
    "qualifying_pairs_represented": 255846,
+   "schema": "exp055-census-lattice-v2",
    "supports": 10732,
-   "wall_s": 51.2
+   "wall_s": 43.74
   },
   {
    "ceiling_max": 34,
@@ -8658,9 +9981,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 34,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -8685,9 +10008,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 17,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -8722,9 +10045,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 34,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 10,
@@ -8751,10 +10074,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 135233641,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 5,
    "qualifying_pairs_represented": 93024,
+   "schema": "exp055-census-lattice-v2",
    "supports": 11629,
-   "wall_s": 51.55
+   "wall_s": 47.13
   },
   {
    "ceiling_max": 68,
@@ -8788,9 +10118,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 34,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -8815,9 +10145,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 17,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -8850,9 +10180,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 68,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -8887,9 +10217,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 34,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -8922,9 +10252,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 68,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 26,
@@ -8953,10 +10283,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 135233641,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 35,
    "qualifying_pairs_represented": 1373568,
+   "schema": "exp055-census-lattice-v2",
    "supports": 11629,
-   "wall_s": 52.25
+   "wall_s": 48.55
   },
   {
    "ceiling_max": 80,
@@ -8970,12 +10307,8 @@
        0
       ],
       [
-       1,
-       0
-      ],
-      [
-       12,
-       0
+       0,
+       1
       ]
      ],
      "B": [
@@ -8989,14 +10322,14 @@
       ],
       [
        12,
-       1
+       0
       ]
      ],
      "bar_invariant": false,
      "ceiling": 80,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 5,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -9031,9 +10364,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 80,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 5,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 16,
@@ -9052,13 +10385,20 @@
    "m": 5,
    "max_weight": 3,
    "n": 310,
-   "no_group_certificate_pairs": 24,
-   "no_group_certificate_represented": 860400,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 142468096,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 25,
    "qualifying_pairs_represented": 861300,
+   "schema": "exp055-census-lattice-v2",
    "supports": 11936,
-   "wall_s": 55.66
+   "wall_s": 50.17
   },
   {
    "ceiling_max": null,
@@ -9086,10 +10426,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 157803844,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 12562,
-   "wall_s": 56.97
+   "wall_s": 52.59
   },
   {
    "ceiling_max": 23,
@@ -9119,9 +10466,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 23,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -9145,10 +10492,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 165920161,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 1,
    "qualifying_pairs_represented": 484,
+   "schema": "exp055-census-lattice-v2",
    "supports": 12881,
-   "wall_s": 59.56
+   "wall_s": 55.01
   },
   {
    "ceiling_max": 88,
@@ -9178,9 +10532,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 33,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -9209,9 +10563,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -9236,9 +10590,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 15,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -9247,12 +10601,8 @@
        0
       ],
       [
-       1,
-       0
-      ],
-      [
-       4,
-       0
+       0,
+       1
       ]
      ],
      "B": [
@@ -9266,14 +10616,14 @@
       ],
       [
        4,
-       1
+       0
       ]
      ],
      "bar_invariant": false,
      "ceiling": 88,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -9308,9 +10658,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -9343,9 +10693,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 88,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 16,
@@ -9373,13 +10723,20 @@
    "m": 11,
    "max_weight": 3,
    "n": 330,
-   "no_group_certificate_pairs": 14,
-   "no_group_certificate_represented": 1434480,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 183087961,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 26,
    "qualifying_pairs_represented": 1452636,
+   "schema": "exp055-census-lattice-v2",
    "supports": 13531,
-   "wall_s": 66.37
+   "wall_s": 59.76
   },
   {
    "ceiling_max": 88,
@@ -9409,9 +10766,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 33,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -9440,9 +10797,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -9467,9 +10824,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 15,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -9478,12 +10835,8 @@
        0
       ],
       [
-       0,
-       1
-      ],
-      [
-       1,
-       3
+       3,
+       0
       ]
      ],
      "B": [
@@ -9502,9 +10855,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 88,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -9539,9 +10892,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -9574,9 +10927,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 88,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 16,
@@ -9604,13 +10957,20 @@
    "m": 5,
    "max_weight": 3,
    "n": 330,
-   "no_group_certificate_pairs": 14,
-   "no_group_certificate_represented": 1434480,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 183087961,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 26,
    "qualifying_pairs_represented": 1452636,
+   "schema": "exp055-census-lattice-v2",
    "supports": 13531,
-   "wall_s": 65.2
+   "wall_s": 57.71
   },
   {
    "ceiling_max": 88,
@@ -9640,9 +11000,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 33,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "20": {
      "A": [
@@ -9671,9 +11031,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "22": {
      "A": [
@@ -9698,9 +11058,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 15,
-     "dim_I0": 11,
+     "dim_pole": 11,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -9709,12 +11069,8 @@
        0
       ],
       [
-       1,
+       5,
        0
-      ],
-      [
-       3,
-       1
       ]
      ],
      "B": [
@@ -9733,9 +11089,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 88,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -9770,9 +11126,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 22,
-     "dim_I0": 10,
+     "dim_pole": 10,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -9781,12 +11137,12 @@
        0
       ],
       [
-       1,
-       0
+       0,
+       1
       ],
       [
-       3,
-       1
+       0,
+       2
       ]
      ],
      "B": [
@@ -9805,9 +11161,9 @@
      ],
      "bar_invariant": false,
      "ceiling": 88,
-     "dim_I0": 0,
-     "exact_min": false,
-     "route": "member"
+     "dim_pole": 4,
+     "exact_min": true,
+     "route": "reciprocal_pole"
     }
    },
    "groups": 16,
@@ -9835,13 +11191,20 @@
    "m": 3,
    "max_weight": 3,
    "n": 330,
-   "no_group_certificate_pairs": 14,
-   "no_group_certificate_represented": 1434480,
+   "no_group_certificate_pairs": 0,
+   "no_group_certificate_represented": 0,
    "pairs_total": 183087961,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 26,
    "qualifying_pairs_represented": 1452636,
+   "schema": "exp055-census-lattice-v2",
    "supports": 13531,
-   "wall_s": 65.0
+   "wall_s": 58.09
   },
   {
    "ceiling_max": null,
@@ -9866,10 +11229,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 201554809,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 14197,
-   "wall_s": 69.34
+   "wall_s": 60.93
   },
   {
    "ceiling_max": 38,
@@ -9903,9 +11273,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 38,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -9930,9 +11300,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 19,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -9967,9 +11337,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 38,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 10,
@@ -9996,10 +11366,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 211295296,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 5,
    "qualifying_pairs_represented": 143640,
+   "schema": "exp055-census-lattice-v2",
    "supports": 14536,
-   "wall_s": 69.07
+   "wall_s": 61.99
   },
   {
    "ceiling_max": 76,
@@ -10033,9 +11410,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 38,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "18": {
      "A": [
@@ -10060,9 +11437,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 19,
-     "dim_I0": 9,
+     "dim_pole": 9,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -10095,9 +11472,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 76,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {
@@ -10132,9 +11509,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 38,
-     "dim_I0": 6,
+     "dim_pole": 6,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "8": {
      "A": [
@@ -10167,9 +11544,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 76,
-     "dim_I0": 4,
+     "dim_pole": 4,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "groups": 26,
@@ -10198,10 +11575,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 211295296,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 35,
    "qualifying_pairs_represented": 2137428,
+   "schema": "exp055-census-lattice-v2",
    "supports": 14536,
-   "wall_s": 70.32
+   "wall_s": 62.91
   },
   {
    "ceiling_max": 35,
@@ -10231,9 +11615,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 35,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -10258,9 +11642,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 25,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -10287,10 +11671,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 231831076,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 6,
    "qualifying_pairs_represented": 1664,
+   "schema": "exp055-census-lattice-v2",
    "supports": 15226,
-   "wall_s": 75.33
+   "wall_s": 66.66
   },
   {
    "ceiling_max": 35,
@@ -10320,9 +11711,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 35,
-     "dim_I0": 5,
+     "dim_pole": 5,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     },
     "14": {
      "A": [
@@ -10347,9 +11738,9 @@
      ],
      "bar_invariant": true,
      "ceiling": 25,
-     "dim_I0": 7,
+     "dim_pole": 7,
      "exact_min": true,
-     "route": "ideal"
+     "route": "reciprocal_pole"
     }
    },
    "frontier_weight3": {},
@@ -10376,10 +11767,17 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 231831076,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 39,
    "qualifying_pairs_represented": 7104,
+   "schema": "exp055-census-lattice-v2",
    "supports": 15226,
-   "wall_s": 73.95
+   "wall_s": 65.72
   },
   {
    "ceiling_max": null,
@@ -10407,18 +11805,38 @@
    "no_group_certificate_pairs": 0,
    "no_group_certificate_represented": 0,
    "pairs_total": 242642929,
+   "protocol": {
+    "k_min": 8,
+    "max_weight": 3,
+    "sample": 12,
+    "seed": 55
+   },
    "qualifying_group_pairs": 0,
    "qualifying_pairs_represented": 0,
+   "schema": "exp055-census-lattice-v2",
    "supports": 15577,
-   "wall_s": 74.38
+   "wall_s": 66.09
   }
  ],
  "max_weight": 3,
+ "protocol": {
+  "k_min": 8,
+  "max_weight": 3,
+  "sample": 12,
+  "seed": 55
+ },
  "schema": "exp055-odd-lattice-sweep-v1",
- "utc": "2026-08-22T04:35:28Z",
+ "scope": {
+  "complete": true,
+  "lattices_completed": 65,
+  "lattices_expected": 65,
+  "missing": []
+ },
+ "utc": "2026-08-22T09:37:19Z",
  "verdict": {
-  "ceiling_max_global": 98,
-  "ceiling_max_weight3": 98,
+  "ceiling_max_global": 88,
+  "ceiling_max_weight3": 88,
+  "complete": true,
   "frontier": {
    "110_10": {
     "A": [
@@ -10443,13 +11861,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 11,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 11,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 110,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "110_22": {
     "A": [
@@ -10474,13 +11892,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 5,
-    "dim_I0": 11,
+    "dim_pole": 11,
     "ell": 11,
     "exact_min": true,
     "k": 22,
     "m": 5,
     "n": 110,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_10": {
     "A": [
@@ -10508,14 +11926,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 42,
-    "dim_I0": 2,
+    "ceiling": 30,
+    "dim_pole": 5,
     "ell": 9,
     "exact_min": true,
     "k": 10,
     "m": 7,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_12": {
     "A": [
@@ -10548,13 +11966,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 32,
-    "dim_I0": 0,
+    "dim_pole": 6,
     "ell": 9,
-    "exact_min": false,
+    "exact_min": true,
     "k": 12,
     "m": 7,
     "n": 126,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "126_14": {
     "A": [
@@ -10587,13 +12005,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 28,
-    "dim_I0": 4,
+    "dim_pole": 7,
     "ell": 21,
     "exact_min": true,
     "k": 14,
     "m": 3,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_16": {
     "A": [
@@ -10625,14 +12043,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 42,
-    "dim_I0": 2,
+    "ceiling": 26,
+    "dim_pole": 8,
     "ell": 9,
     "exact_min": true,
     "k": 16,
     "m": 7,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_18": {
     "A": [
@@ -10641,12 +12059,8 @@
       0
      ],
      [
-      0,
-      1
-     ],
-     [
-      0,
-      3
+      3,
+      0
      ]
     ],
     "B": [
@@ -10659,19 +12073,19 @@
       1
      ],
      [
-      3,
+      0,
       3
      ]
     ],
     "bar_invariant": false,
     "ceiling": 12,
-    "dim_I0": 0,
+    "dim_pole": 9,
     "ell": 9,
-    "exact_min": false,
+    "exact_min": true,
     "k": 18,
     "m": 7,
     "n": 126,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "126_20": {
     "A": [
@@ -10703,14 +12117,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 28,
-    "dim_I0": 4,
+    "ceiling": 20,
+    "dim_pole": 10,
     "ell": 21,
     "exact_min": true,
     "k": 20,
     "m": 3,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_8": {
     "A": [
@@ -10743,13 +12157,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 28,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 21,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "130_10": {
     "A": [
@@ -10774,13 +12188,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 13,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 13,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 130,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "150_10": {
     "A": [
@@ -10805,13 +12219,52 @@
     ],
     "bar_invariant": true,
     "ceiling": 15,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 15,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 150,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "150_16": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      5,
+      3
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 32,
+    "dim_pole": 8,
+    "ell": 15,
+    "exact_min": true,
+    "k": 16,
+    "m": 5,
+    "n": 150,
+    "route": "reciprocal_pole"
    },
    "150_20": {
     "A": [
@@ -10840,13 +12293,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 10,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 15,
     "exact_min": true,
     "k": 20,
     "m": 5,
     "n": 150,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "150_8": {
     "A": [
@@ -10855,11 +12308,7 @@
       0
      ],
      [
-      1,
-      0
-     ],
-     [
-      3,
+      0,
       1
      ]
     ],
@@ -10873,19 +12322,19 @@
       0
      ],
      [
-      3,
-      1
+      4,
+      0
      ]
     ],
     "bar_invariant": false,
     "ceiling": 40,
-    "dim_I0": 0,
-    "ell": 25,
-    "exact_min": false,
+    "dim_pole": 4,
+    "ell": 15,
+    "exact_min": true,
     "k": 8,
-    "m": 3,
+    "m": 5,
     "n": 150,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "154_14": {
     "A": [
@@ -10910,13 +12359,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 11,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 11,
     "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 154,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "154_22": {
     "A": [
@@ -10941,13 +12390,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 7,
-    "dim_I0": 11,
+    "dim_pole": 11,
     "ell": 11,
     "exact_min": true,
     "k": 22,
     "m": 7,
     "n": 154,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "162_12": {
     "A": [
@@ -10976,13 +12425,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 18,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 9,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 162,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "162_18": {
     "A": [
@@ -11007,13 +12456,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 9,
-    "dim_I0": 9,
+    "dim_pole": 9,
     "ell": 9,
     "exact_min": true,
     "k": 18,
     "m": 9,
     "n": 162,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "162_24": {
     "A": [
@@ -11046,13 +12495,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 12,
-    "dim_I0": 12,
+    "dim_pole": 12,
     "ell": 9,
     "exact_min": true,
     "k": 24,
     "m": 9,
     "n": 162,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "162_8": {
     "A": [
@@ -11085,13 +12534,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 36,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 9,
     "exact_min": true,
     "k": 8,
     "m": 9,
     "n": 162,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "170_10": {
     "A": [
@@ -11116,13 +12565,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 17,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 17,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 170,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "170_16": {
     "A": [
@@ -11155,13 +12604,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 40,
-    "dim_I0": 0,
+    "dim_pole": 8,
     "ell": 17,
-    "exact_min": false,
+    "exact_min": true,
     "k": 16,
     "m": 5,
     "n": 170,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "182_14": {
     "A": [
@@ -11186,13 +12635,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 13,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 13,
     "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 182,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "186_10": {
     "A": [
@@ -11201,12 +12650,8 @@
       0
      ],
      [
-      1,
-      0
-     ],
-     [
-      12,
-      0
+      0,
+      1
      ]
     ],
     "B": [
@@ -11220,18 +12665,18 @@
      ],
      [
       12,
-      1
+      0
      ]
     ],
     "bar_invariant": false,
     "ceiling": 48,
-    "dim_I0": 0,
+    "dim_pole": 5,
     "ell": 31,
-    "exact_min": false,
+    "exact_min": true,
     "k": 10,
     "m": 3,
     "n": 186,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "186_14": {
     "A": [
@@ -11263,14 +12708,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 62,
-    "dim_I0": 2,
+    "ceiling": 46,
+    "dim_pole": 7,
     "ell": 31,
     "exact_min": true,
     "k": 14,
     "m": 3,
     "n": 186,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "186_20": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      12,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 32,
+    "dim_pole": 10,
+    "ell": 31,
+    "exact_min": true,
+    "k": 20,
+    "m": 3,
+    "n": 186,
+    "route": "reciprocal_pole"
    },
    "18_12": {
     "A": [
@@ -11303,13 +12787,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 2,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 3,
     "exact_min": true,
     "k": 12,
     "m": 3,
     "n": 18,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "18_8": {
     "A": [
@@ -11342,13 +12826,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 4,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 3,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 18,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "190_10": {
     "A": [
@@ -11373,13 +12857,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 19,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 19,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 190,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "198_12": {
     "A": [
@@ -11408,13 +12892,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 22,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 11,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 198,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "198_18": {
     "A": [
@@ -11439,13 +12923,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 11,
-    "dim_I0": 9,
+    "dim_pole": 9,
     "ell": 11,
     "exact_min": true,
     "k": 18,
     "m": 9,
     "n": 198,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "198_22": {
     "A": [
@@ -11470,13 +12954,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 9,
-    "dim_I0": 11,
+    "dim_pole": 11,
     "ell": 11,
     "exact_min": true,
     "k": 22,
     "m": 9,
     "n": 198,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "198_8": {
     "A": [
@@ -11509,13 +12993,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 44,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 33,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 198,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "210_10": {
     "A": [
@@ -11543,14 +13027,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 70,
-    "dim_I0": 2,
+    "ceiling": 50,
+    "dim_pole": 5,
     "ell": 15,
     "exact_min": true,
     "k": 10,
     "m": 7,
     "n": 210,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "210_12": {
     "A": [
@@ -11583,13 +13067,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 40,
-    "dim_I0": 0,
+    "dim_pole": 6,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 12,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "210_14": {
     "A": [
@@ -11622,13 +13106,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 52,
-    "dim_I0": 0,
+    "dim_pole": 7,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "210_18": {
     "A": [
@@ -11637,12 +13121,8 @@
       0
      ],
      [
-      0,
-      1
-     ],
-     [
-      0,
-      3
+      3,
+      0
      ]
     ],
     "B": [
@@ -11655,19 +13135,19 @@
       1
      ],
      [
-      3,
+      0,
       3
      ]
     ],
     "bar_invariant": false,
     "ceiling": 20,
-    "dim_I0": 0,
+    "dim_pole": 9,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 18,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "210_20": {
     "A": [
@@ -11696,13 +13176,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 14,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 15,
     "exact_min": true,
     "k": 20,
     "m": 7,
     "n": 210,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "210_24": {
     "A": [
@@ -11735,13 +13215,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 32,
-    "dim_I0": 0,
+    "dim_pole": 12,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 24,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "210_8": {
     "A": [
@@ -11750,12 +13230,8 @@
       0
      ],
      [
-      1,
-      0
-     ],
-     [
-      4,
-      0
+      0,
+      1
      ]
     ],
     "B": [
@@ -11769,18 +13245,18 @@
      ],
      [
       4,
-      1
+      0
      ]
     ],
     "bar_invariant": false,
     "ceiling": 56,
-    "dim_I0": 0,
+    "dim_pole": 4,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 8,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "230_10": {
     "A": [
@@ -11805,13 +13281,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 23,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 23,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 230,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "234_12": {
     "A": [
@@ -11840,13 +13316,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 26,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 13,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 234,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "234_18": {
     "A": [
@@ -11871,13 +13347,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 13,
-    "dim_I0": 9,
+    "dim_pole": 9,
     "ell": 13,
     "exact_min": true,
     "k": 18,
     "m": 9,
     "n": 234,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "234_8": {
     "A": [
@@ -11910,13 +13386,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 52,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 39,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 234,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "238_14": {
     "A": [
@@ -11941,13 +13417,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 17,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 17,
     "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 238,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "242_22": {
     "A": [
@@ -11972,13 +13448,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 11,
-    "dim_I0": 11,
+    "dim_pole": 11,
     "ell": 11,
     "exact_min": true,
     "k": 22,
     "m": 11,
     "n": 242,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "250_10": {
     "A": [
@@ -12003,13 +13479,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 25,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 25,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 250,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "266_14": {
     "A": [
@@ -12034,13 +13510,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 19,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 19,
     "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 266,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "270_10": {
     "A": [
@@ -12065,13 +13541,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 27,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 15,
     "exact_min": true,
     "k": 10,
     "m": 9,
     "n": 270,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "270_12": {
     "A": [
@@ -12099,14 +13575,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 90,
-    "dim_I0": 2,
+    "ceiling": 66,
+    "dim_pole": 6,
     "ell": 15,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 270,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "270_16": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 48,
+    "dim_pole": 8,
+    "ell": 15,
+    "exact_min": true,
+    "k": 16,
+    "m": 9,
+    "n": 270,
+    "route": "reciprocal_pole"
    },
    "270_18": {
     "A": [
@@ -12131,13 +13646,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 15,
-    "dim_I0": 9,
+    "dim_pole": 9,
     "ell": 15,
     "exact_min": true,
     "k": 18,
     "m": 9,
     "n": 270,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "270_20": {
     "A": [
@@ -12166,13 +13681,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 18,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 15,
     "exact_min": true,
     "k": 20,
     "m": 9,
     "n": 270,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "270_24": {
     "A": [
@@ -12182,10 +13697,6 @@
      ],
      [
       0,
-      1
-     ],
-     [
-      3,
       3
      ]
     ],
@@ -12195,23 +13706,23 @@
       0
      ],
      [
-      0,
-      1
+      1,
+      0
      ],
      [
-      3,
-      3
+      4,
+      0
      ]
     ],
     "bar_invariant": false,
     "ceiling": 24,
-    "dim_I0": 0,
-    "ell": 27,
-    "exact_min": false,
+    "dim_pole": 12,
+    "ell": 15,
+    "exact_min": true,
     "k": 24,
-    "m": 5,
+    "m": 9,
     "n": 270,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "270_8": {
     "A": [
@@ -12222,10 +13733,6 @@
      [
       0,
       1
-     ],
-     [
-      1,
-      3
      ]
     ],
     "B": [
@@ -12234,23 +13741,23 @@
       0
      ],
      [
-      0,
-      1
+      1,
+      0
      ],
      [
-      1,
-      3
+      4,
+      0
      ]
     ],
     "bar_invariant": false,
     "ceiling": 72,
-    "dim_I0": 0,
-    "ell": 27,
-    "exact_min": false,
+    "dim_pole": 4,
+    "ell": 15,
+    "exact_min": true,
     "k": 8,
-    "m": 5,
+    "m": 9,
     "n": 270,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "286_22": {
     "A": [
@@ -12275,13 +13782,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 13,
-    "dim_I0": 11,
+    "dim_pole": 11,
     "ell": 13,
     "exact_min": true,
     "k": 22,
     "m": 11,
     "n": 286,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "290_10": {
     "A": [
@@ -12306,13 +13813,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 29,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 29,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 290,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "294_10": {
     "A": [
@@ -12340,14 +13847,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 98,
-    "dim_I0": 2,
+    "ceiling": 70,
+    "dim_pole": 5,
     "ell": 21,
     "exact_min": true,
     "k": 10,
     "m": 7,
     "n": 294,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "294_12": {
     "A": [
@@ -12356,11 +13863,7 @@
       0
      ],
      [
-      1,
-      0
-     ],
-     [
-      3,
+      7,
       0
      ]
     ],
@@ -12370,23 +13873,23 @@
       0
      ],
      [
-      7,
+      0,
       1
      ],
      [
-      21,
-      2
+      1,
+      0
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 56,
-    "dim_I0": 0,
-    "ell": 49,
-    "exact_min": false,
+    "ceiling": 72,
+    "dim_pole": 6,
+    "ell": 21,
+    "exact_min": true,
     "k": 12,
-    "m": 3,
+    "m": 7,
     "n": 294,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "294_14": {
     "A": [
@@ -12411,13 +13914,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 21,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 21,
     "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 294,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "294_16": {
     "A": [
@@ -12449,14 +13952,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 98,
-    "dim_I0": 2,
+    "ceiling": 70,
+    "dim_pole": 8,
     "ell": 21,
     "exact_min": true,
     "k": 16,
     "m": 7,
     "n": 294,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "294_18": {
     "A": [
@@ -12465,8 +13968,8 @@
       0
      ],
      [
-      1,
-      0
+      0,
+      1
      ],
      [
       3,
@@ -12480,22 +13983,22 @@
      ],
      [
       1,
-      0
+      3
      ],
      [
-      3,
-      0
+      17,
+      2
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 28,
-    "dim_I0": 0,
-    "ell": 49,
-    "exact_min": false,
+    "ceiling": 56,
+    "dim_pole": 9,
+    "ell": 21,
+    "exact_min": true,
     "k": 18,
-    "m": 3,
+    "m": 7,
     "n": 294,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "294_22": {
     "A": [
@@ -12527,14 +14030,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 98,
-    "dim_I0": 2,
+    "ceiling": 48,
+    "dim_pole": 11,
     "ell": 21,
     "exact_min": true,
     "k": 22,
     "m": 7,
     "n": 294,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "294_24": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      0
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      7,
+      0
+     ],
+     [
+      14,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 48,
+    "dim_pole": 12,
+    "ell": 21,
+    "exact_min": true,
+    "k": 24,
+    "m": 7,
+    "n": 294,
+    "route": "reciprocal_pole"
    },
    "306_12": {
     "A": [
@@ -12563,13 +14105,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 34,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 17,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 306,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "306_18": {
     "A": [
@@ -12594,13 +14136,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 17,
-    "dim_I0": 9,
+    "dim_pole": 9,
     "ell": 17,
     "exact_min": true,
     "k": 18,
     "m": 9,
     "n": 306,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "306_8": {
     "A": [
@@ -12633,13 +14175,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 68,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 51,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 306,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "30_10": {
     "A": [
@@ -12664,13 +14206,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 3,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 5,
     "exact_min": true,
     "k": 10,
     "m": 3,
     "n": 30,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "30_20": {
     "A": [
@@ -12703,13 +14245,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 2,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 5,
     "exact_min": true,
     "k": 20,
     "m": 3,
     "n": 30,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "30_8": {
     "A": [
@@ -12718,12 +14260,12 @@
       0
      ],
      [
-      1,
-      0
+      0,
+      1
      ],
      [
-      3,
-      1
+      0,
+      2
      ]
     ],
     "B": [
@@ -12742,13 +14284,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 8,
-    "dim_I0": 0,
+    "dim_pole": 4,
     "ell": 5,
-    "exact_min": false,
+    "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 30,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "310_10": {
     "A": [
@@ -12757,12 +14299,8 @@
       0
      ],
      [
-      1,
-      0
-     ],
-     [
-      12,
-      0
+      0,
+      1
      ]
     ],
     "B": [
@@ -12776,18 +14314,18 @@
      ],
      [
       12,
-      1
+      0
      ]
     ],
     "bar_invariant": false,
     "ceiling": 80,
-    "dim_I0": 0,
+    "dim_pole": 5,
     "ell": 31,
-    "exact_min": false,
+    "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 310,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "322_14": {
     "A": [
@@ -12812,13 +14350,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 23,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 23,
     "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 322,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "330_10": {
     "A": [
@@ -12843,13 +14381,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 33,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 15,
     "exact_min": true,
     "k": 10,
     "m": 11,
     "n": 330,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "330_20": {
     "A": [
@@ -12878,13 +14416,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 22,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 15,
     "exact_min": true,
     "k": 20,
     "m": 11,
     "n": 330,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "330_22": {
     "A": [
@@ -12909,13 +14447,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 15,
-    "dim_I0": 11,
+    "dim_pole": 11,
     "ell": 15,
     "exact_min": true,
     "k": 22,
     "m": 11,
     "n": 330,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "330_8": {
     "A": [
@@ -12924,12 +14462,8 @@
       0
      ],
      [
-      1,
-      0
-     ],
-     [
-      4,
-      0
+      0,
+      1
      ]
     ],
     "B": [
@@ -12943,18 +14477,18 @@
      ],
      [
       4,
-      1
+      0
      ]
     ],
     "bar_invariant": false,
     "ceiling": 88,
-    "dim_I0": 0,
+    "dim_pole": 4,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 8,
     "m": 11,
     "n": 330,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "342_12": {
     "A": [
@@ -12983,13 +14517,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 38,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 19,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 342,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "342_18": {
     "A": [
@@ -13014,13 +14548,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 19,
-    "dim_I0": 9,
+    "dim_pole": 9,
     "ell": 19,
     "exact_min": true,
     "k": 18,
     "m": 9,
     "n": 342,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "342_8": {
     "A": [
@@ -13053,13 +14587,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 76,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 57,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 342,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "350_10": {
     "A": [
@@ -13084,13 +14618,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 35,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 25,
     "exact_min": true,
     "k": 10,
     "m": 7,
     "n": 350,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "350_14": {
     "A": [
@@ -13115,13 +14649,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 25,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 25,
     "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 350,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "42_10": {
     "A": [
@@ -13153,14 +14687,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 14,
-    "dim_I0": 2,
+    "ceiling": 10,
+    "dim_pole": 5,
     "ell": 7,
     "exact_min": true,
     "k": 10,
     "m": 3,
     "n": 42,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "42_12": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      3,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 8,
+    "dim_pole": 6,
+    "ell": 7,
+    "exact_min": true,
+    "k": 12,
+    "m": 3,
+    "n": 42,
+    "route": "reciprocal_pole"
    },
    "42_14": {
     "A": [
@@ -13185,13 +14758,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 3,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 7,
     "exact_min": true,
     "k": 14,
     "m": 3,
     "n": 42,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "42_18": {
     "A": [
@@ -13224,13 +14797,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 4,
-    "dim_I0": 0,
+    "dim_pole": 9,
     "ell": 7,
-    "exact_min": false,
+    "exact_min": true,
     "k": 18,
     "m": 3,
     "n": 42,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "50_10": {
     "A": [
@@ -13255,13 +14828,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 5,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 5,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 50,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "54_12": {
     "A": [
@@ -13290,13 +14863,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 6,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 9,
     "exact_min": true,
     "k": 12,
     "m": 3,
     "n": 54,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "54_18": {
     "A": [
@@ -13321,13 +14894,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 3,
-    "dim_I0": 9,
+    "dim_pole": 9,
     "ell": 9,
     "exact_min": true,
     "k": 18,
     "m": 3,
     "n": 54,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "54_24": {
     "A": [
@@ -13360,13 +14933,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 4,
-    "dim_I0": 12,
+    "dim_pole": 12,
     "ell": 9,
     "exact_min": true,
     "k": 24,
     "m": 3,
     "n": 54,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "54_8": {
     "A": [
@@ -13399,13 +14972,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 12,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 9,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 54,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "66_22": {
     "A": [
@@ -13430,13 +15003,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 3,
-    "dim_I0": 11,
+    "dim_pole": 11,
     "ell": 11,
     "exact_min": true,
     "k": 22,
     "m": 3,
     "n": 66,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "70_10": {
     "A": [
@@ -13461,13 +15034,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 7,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 7,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 70,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "70_14": {
     "A": [
@@ -13492,13 +15065,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 5,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 7,
     "exact_min": true,
     "k": 14,
     "m": 5,
     "n": 70,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "90_10": {
     "A": [
@@ -13523,13 +15096,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 9,
-    "dim_I0": 5,
+    "dim_pole": 5,
     "ell": 9,
     "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 90,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "90_12": {
     "A": [
@@ -13561,14 +15134,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 30,
-    "dim_I0": 2,
+    "ceiling": 22,
+    "dim_pole": 6,
     "ell": 15,
     "exact_min": true,
     "k": 12,
     "m": 3,
     "n": 90,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "90_16": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 16,
+    "dim_pole": 8,
+    "ell": 15,
+    "exact_min": true,
+    "k": 16,
+    "m": 3,
+    "n": 90,
+    "route": "reciprocal_pole"
    },
    "90_18": {
     "A": [
@@ -13593,13 +15205,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 5,
-    "dim_I0": 9,
+    "dim_pole": 9,
     "ell": 9,
     "exact_min": true,
     "k": 18,
     "m": 5,
     "n": 90,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "90_20": {
     "A": [
@@ -13628,13 +15240,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 6,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 9,
     "exact_min": true,
     "k": 20,
     "m": 5,
     "n": 90,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "90_24": {
     "A": [
@@ -13667,13 +15279,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 8,
-    "dim_I0": 0,
+    "dim_pole": 12,
     "ell": 9,
-    "exact_min": false,
+    "exact_min": true,
     "k": 24,
     "m": 5,
     "n": 90,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "90_8": {
     "A": [
@@ -13682,12 +15294,8 @@
       0
      ],
      [
-      0,
-      1
-     ],
-     [
-      1,
-      3
+      3,
+      0
      ]
     ],
     "B": [
@@ -13706,13 +15314,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 24,
-    "dim_I0": 0,
+    "dim_pole": 4,
     "ell": 9,
-    "exact_min": false,
+    "exact_min": true,
     "k": 8,
     "m": 5,
     "n": 90,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "98_12": {
     "A": [
@@ -13745,13 +15353,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 24,
-    "dim_I0": 0,
+    "dim_pole": 6,
     "ell": 7,
-    "exact_min": false,
+    "exact_min": true,
     "k": 12,
     "m": 7,
     "n": 98,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "98_14": {
     "A": [
@@ -13776,13 +15384,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 7,
-    "dim_I0": 7,
+    "dim_pole": 7,
     "ell": 7,
     "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 98,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "98_18": {
     "A": [
@@ -13815,13 +15423,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 16,
-    "dim_I0": 0,
+    "dim_pole": 9,
     "ell": 7,
-    "exact_min": false,
+    "exact_min": true,
     "k": 18,
     "m": 7,
     "n": 98,
-    "route": "member"
+    "route": "reciprocal_pole"
    }
   },
   "frontier_weight3": {
@@ -13855,14 +15463,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 42,
-    "dim_I0": 2,
+    "ceiling": 30,
+    "dim_pole": 5,
     "ell": 9,
     "exact_min": true,
     "k": 10,
     "m": 7,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_12": {
     "A": [
@@ -13895,13 +15503,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 32,
-    "dim_I0": 0,
+    "dim_pole": 6,
     "ell": 9,
-    "exact_min": false,
+    "exact_min": true,
     "k": 12,
     "m": 7,
     "n": 126,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "126_14": {
     "A": [
@@ -13934,13 +15542,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 28,
-    "dim_I0": 4,
+    "dim_pole": 7,
     "ell": 21,
     "exact_min": true,
     "k": 14,
     "m": 3,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_16": {
     "A": [
@@ -13972,14 +15580,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 42,
-    "dim_I0": 2,
+    "ceiling": 26,
+    "dim_pole": 8,
     "ell": 9,
     "exact_min": true,
     "k": 16,
     "m": 7,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_18": {
     "A": [
@@ -14012,13 +15620,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 12,
-    "dim_I0": 0,
+    "dim_pole": 9,
     "ell": 9,
-    "exact_min": false,
+    "exact_min": true,
     "k": 18,
     "m": 7,
     "n": 126,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "126_20": {
     "A": [
@@ -14050,14 +15658,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 28,
-    "dim_I0": 4,
+    "ceiling": 20,
+    "dim_pole": 10,
     "ell": 21,
     "exact_min": true,
     "k": 20,
     "m": 3,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "126_8": {
     "A": [
@@ -14090,13 +15698,52 @@
     ],
     "bar_invariant": true,
     "ceiling": 28,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 21,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 126,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "150_16": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      5,
+      3
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 32,
+    "dim_pole": 8,
+    "ell": 15,
+    "exact_min": true,
+    "k": 16,
+    "m": 5,
+    "n": 150,
+    "route": "reciprocal_pole"
    },
    "150_20": {
     "A": [
@@ -14129,13 +15776,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 10,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 15,
     "exact_min": true,
     "k": 20,
     "m": 5,
     "n": 150,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "150_8": {
     "A": [
@@ -14144,12 +15791,12 @@
       0
      ],
      [
-      1,
-      0
+      0,
+      1
      ],
      [
-      3,
-      1
+      1,
+      0
      ]
     ],
     "B": [
@@ -14158,23 +15805,23 @@
       0
      ],
      [
-      1,
-      0
+      0,
+      1
      ],
      [
-      3,
-      1
+      1,
+      0
      ]
     ],
     "bar_invariant": false,
     "ceiling": 40,
-    "dim_I0": 0,
-    "ell": 25,
-    "exact_min": false,
+    "dim_pole": 4,
+    "ell": 15,
+    "exact_min": true,
     "k": 8,
-    "m": 3,
+    "m": 5,
     "n": 150,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "162_12": {
     "A": [
@@ -14207,13 +15854,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 18,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 9,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 162,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "162_24": {
     "A": [
@@ -14246,13 +15893,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 12,
-    "dim_I0": 12,
+    "dim_pole": 12,
     "ell": 9,
     "exact_min": true,
     "k": 24,
     "m": 9,
     "n": 162,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "162_8": {
     "A": [
@@ -14285,13 +15932,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 36,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 9,
     "exact_min": true,
     "k": 8,
     "m": 9,
     "n": 162,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "170_16": {
     "A": [
@@ -14324,13 +15971,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 40,
-    "dim_I0": 0,
+    "dim_pole": 8,
     "ell": 17,
-    "exact_min": false,
+    "exact_min": true,
     "k": 16,
     "m": 5,
     "n": 170,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "186_10": {
     "A": [
@@ -14363,13 +16010,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 48,
-    "dim_I0": 0,
+    "dim_pole": 5,
     "ell": 31,
-    "exact_min": false,
+    "exact_min": true,
     "k": 10,
     "m": 3,
     "n": 186,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "186_14": {
     "A": [
@@ -14401,14 +16048,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 62,
-    "dim_I0": 2,
+    "ceiling": 46,
+    "dim_pole": 7,
     "ell": 31,
     "exact_min": true,
     "k": 14,
     "m": 3,
     "n": 186,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "186_20": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      12,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 32,
+    "dim_pole": 10,
+    "ell": 31,
+    "exact_min": true,
+    "k": 20,
+    "m": 3,
+    "n": 186,
+    "route": "reciprocal_pole"
    },
    "18_12": {
     "A": [
@@ -14441,13 +16127,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 2,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 3,
     "exact_min": true,
     "k": 12,
     "m": 3,
     "n": 18,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "18_8": {
     "A": [
@@ -14480,13 +16166,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 4,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 3,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 18,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "198_12": {
     "A": [
@@ -14519,13 +16205,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 22,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 11,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 198,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "198_8": {
     "A": [
@@ -14558,13 +16244,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 44,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 33,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 198,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "210_10": {
     "A": [
@@ -14596,14 +16282,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 70,
-    "dim_I0": 2,
+    "ceiling": 50,
+    "dim_pole": 5,
     "ell": 15,
     "exact_min": true,
     "k": 10,
     "m": 7,
     "n": 210,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "210_12": {
     "A": [
@@ -14636,13 +16322,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 40,
-    "dim_I0": 0,
+    "dim_pole": 6,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 12,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "210_14": {
     "A": [
@@ -14675,13 +16361,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 52,
-    "dim_I0": 0,
+    "dim_pole": 7,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 14,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "210_18": {
     "A": [
@@ -14714,13 +16400,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 20,
-    "dim_I0": 0,
+    "dim_pole": 9,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 18,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "210_20": {
     "A": [
@@ -14753,13 +16439,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 14,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 15,
     "exact_min": true,
     "k": 20,
     "m": 7,
     "n": 210,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "210_24": {
     "A": [
@@ -14792,13 +16478,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 32,
-    "dim_I0": 0,
+    "dim_pole": 12,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 24,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "210_8": {
     "A": [
@@ -14831,13 +16517,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 56,
-    "dim_I0": 0,
+    "dim_pole": 4,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 8,
     "m": 7,
     "n": 210,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "234_12": {
     "A": [
@@ -14870,13 +16556,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 26,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 13,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 234,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "234_8": {
     "A": [
@@ -14909,13 +16595,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 52,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 39,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 234,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "270_12": {
     "A": [
@@ -14947,14 +16633,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 90,
-    "dim_I0": 2,
+    "ceiling": 66,
+    "dim_pole": 6,
     "ell": 15,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 270,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "270_16": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 48,
+    "dim_pole": 8,
+    "ell": 15,
+    "exact_min": true,
+    "k": 16,
+    "m": 9,
+    "n": 270,
+    "route": "reciprocal_pole"
    },
    "270_20": {
     "A": [
@@ -14987,13 +16712,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 18,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 15,
     "exact_min": true,
     "k": 20,
     "m": 9,
     "n": 270,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "270_24": {
     "A": [
@@ -15006,8 +16731,8 @@
       1
      ],
      [
-      3,
-      3
+      0,
+      2
      ]
     ],
     "B": [
@@ -15016,23 +16741,23 @@
       0
      ],
      [
-      0,
-      1
+      3,
+      0
      ],
      [
-      3,
-      3
+      9,
+      1
      ]
     ],
     "bar_invariant": false,
     "ceiling": 24,
-    "dim_I0": 0,
-    "ell": 27,
-    "exact_min": false,
+    "dim_pole": 12,
+    "ell": 15,
+    "exact_min": true,
     "k": 24,
-    "m": 5,
+    "m": 9,
     "n": 270,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "270_8": {
     "A": [
@@ -15045,8 +16770,8 @@
       1
      ],
      [
-      1,
-      3
+      0,
+      2
      ]
     ],
     "B": [
@@ -15055,23 +16780,23 @@
       0
      ],
      [
-      0,
-      1
+      1,
+      0
      ],
      [
-      1,
-      3
+      2,
+      1
      ]
     ],
     "bar_invariant": false,
     "ceiling": 72,
-    "dim_I0": 0,
-    "ell": 27,
-    "exact_min": false,
+    "dim_pole": 4,
+    "ell": 15,
+    "exact_min": true,
     "k": 8,
-    "m": 5,
+    "m": 9,
     "n": 270,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "294_10": {
     "A": [
@@ -15103,17 +16828,31 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 98,
-    "dim_I0": 2,
+    "ceiling": 70,
+    "dim_pole": 5,
     "ell": 21,
     "exact_min": true,
     "k": 10,
     "m": 7,
     "n": 294,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "294_12": {
     "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      3
+     ]
+    ],
+    "B": [
      [
       0,
       0
@@ -15123,33 +16862,19 @@
       0
      ],
      [
-      3,
-      0
-     ]
-    ],
-    "B": [
-     [
-      0,
-      0
-     ],
-     [
-      7,
+      2,
       1
-     ],
-     [
-      21,
-      2
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 56,
-    "dim_I0": 0,
-    "ell": 49,
-    "exact_min": false,
+    "ceiling": 72,
+    "dim_pole": 6,
+    "ell": 21,
+    "exact_min": true,
     "k": 12,
-    "m": 3,
+    "m": 7,
     "n": 294,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "294_16": {
     "A": [
@@ -15181,14 +16906,14 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 98,
-    "dim_I0": 2,
+    "ceiling": 70,
+    "dim_pole": 8,
     "ell": 21,
     "exact_min": true,
     "k": 16,
     "m": 7,
     "n": 294,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "294_18": {
     "A": [
@@ -15197,8 +16922,8 @@
       0
      ],
      [
-      1,
-      0
+      0,
+      1
      ],
      [
       3,
@@ -15212,22 +16937,22 @@
      ],
      [
       1,
-      0
+      3
      ],
      [
-      3,
-      0
+      17,
+      2
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 28,
-    "dim_I0": 0,
-    "ell": 49,
-    "exact_min": false,
+    "ceiling": 56,
+    "dim_pole": 9,
+    "ell": 21,
+    "exact_min": true,
     "k": 18,
-    "m": 3,
+    "m": 7,
     "n": 294,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "294_22": {
     "A": [
@@ -15259,14 +16984,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 98,
-    "dim_I0": 2,
+    "ceiling": 48,
+    "dim_pole": 11,
     "ell": 21,
     "exact_min": true,
     "k": 22,
     "m": 7,
     "n": 294,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "294_24": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      0
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      7,
+      0
+     ],
+     [
+      14,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 48,
+    "dim_pole": 12,
+    "ell": 21,
+    "exact_min": true,
+    "k": 24,
+    "m": 7,
+    "n": 294,
+    "route": "reciprocal_pole"
    },
    "306_12": {
     "A": [
@@ -15299,13 +17063,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 34,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 17,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 306,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "306_8": {
     "A": [
@@ -15338,13 +17102,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 68,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 51,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 306,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "30_20": {
     "A": [
@@ -15377,13 +17141,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 2,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 5,
     "exact_min": true,
     "k": 20,
     "m": 3,
     "n": 30,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "30_8": {
     "A": [
@@ -15392,12 +17156,12 @@
       0
      ],
      [
-      1,
-      0
+      0,
+      1
      ],
      [
-      3,
-      1
+      0,
+      2
      ]
     ],
     "B": [
@@ -15416,13 +17180,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 8,
-    "dim_I0": 0,
+    "dim_pole": 4,
     "ell": 5,
-    "exact_min": false,
+    "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 30,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "310_10": {
     "A": [
@@ -15455,13 +17219,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 80,
-    "dim_I0": 0,
+    "dim_pole": 5,
     "ell": 31,
-    "exact_min": false,
+    "exact_min": true,
     "k": 10,
     "m": 5,
     "n": 310,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "330_20": {
     "A": [
@@ -15494,13 +17258,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 22,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 15,
     "exact_min": true,
     "k": 20,
     "m": 11,
     "n": 330,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "330_8": {
     "A": [
@@ -15533,13 +17297,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 88,
-    "dim_I0": 0,
+    "dim_pole": 4,
     "ell": 15,
-    "exact_min": false,
+    "exact_min": true,
     "k": 8,
     "m": 11,
     "n": 330,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "342_12": {
     "A": [
@@ -15572,13 +17336,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 38,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 19,
     "exact_min": true,
     "k": 12,
     "m": 9,
     "n": 342,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "342_8": {
     "A": [
@@ -15611,13 +17375,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 76,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 57,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 342,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "42_10": {
     "A": [
@@ -15649,14 +17413,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 14,
-    "dim_I0": 2,
+    "ceiling": 10,
+    "dim_pole": 5,
     "ell": 7,
     "exact_min": true,
     "k": 10,
     "m": 3,
     "n": 42,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "42_12": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      3,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 8,
+    "dim_pole": 6,
+    "ell": 7,
+    "exact_min": true,
+    "k": 12,
+    "m": 3,
+    "n": 42,
+    "route": "reciprocal_pole"
    },
    "42_18": {
     "A": [
@@ -15689,13 +17492,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 4,
-    "dim_I0": 0,
+    "dim_pole": 9,
     "ell": 7,
-    "exact_min": false,
+    "exact_min": true,
     "k": 18,
     "m": 3,
     "n": 42,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "54_12": {
     "A": [
@@ -15728,13 +17531,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 6,
-    "dim_I0": 6,
+    "dim_pole": 6,
     "ell": 9,
     "exact_min": true,
     "k": 12,
     "m": 3,
     "n": 54,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "54_24": {
     "A": [
@@ -15767,13 +17570,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 4,
-    "dim_I0": 12,
+    "dim_pole": 12,
     "ell": 9,
     "exact_min": true,
     "k": 24,
     "m": 3,
     "n": 54,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "54_8": {
     "A": [
@@ -15806,13 +17609,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 12,
-    "dim_I0": 4,
+    "dim_pole": 4,
     "ell": 9,
     "exact_min": true,
     "k": 8,
     "m": 3,
     "n": 54,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "90_12": {
     "A": [
@@ -15844,14 +17647,53 @@
      ]
     ],
     "bar_invariant": false,
-    "ceiling": 30,
-    "dim_I0": 2,
+    "ceiling": 22,
+    "dim_pole": 6,
     "ell": 15,
     "exact_min": true,
     "k": 12,
     "m": 3,
     "n": 90,
-    "route": "ideal"
+    "route": "reciprocal_pole"
+   },
+   "90_16": {
+    "A": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "B": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    "bar_invariant": false,
+    "ceiling": 16,
+    "dim_pole": 8,
+    "ell": 15,
+    "exact_min": true,
+    "k": 16,
+    "m": 3,
+    "n": 90,
+    "route": "reciprocal_pole"
    },
    "90_20": {
     "A": [
@@ -15884,13 +17726,13 @@
     ],
     "bar_invariant": true,
     "ceiling": 6,
-    "dim_I0": 10,
+    "dim_pole": 10,
     "ell": 9,
     "exact_min": true,
     "k": 20,
     "m": 5,
     "n": 90,
-    "route": "ideal"
+    "route": "reciprocal_pole"
    },
    "90_24": {
     "A": [
@@ -15923,13 +17765,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 8,
-    "dim_I0": 0,
+    "dim_pole": 12,
     "ell": 9,
-    "exact_min": false,
+    "exact_min": true,
     "k": 24,
     "m": 5,
     "n": 90,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "90_8": {
     "A": [
@@ -15962,13 +17804,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 24,
-    "dim_I0": 0,
+    "dim_pole": 4,
     "ell": 9,
-    "exact_min": false,
+    "exact_min": true,
     "k": 8,
     "m": 5,
     "n": 90,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "98_12": {
     "A": [
@@ -16001,13 +17843,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 24,
-    "dim_I0": 0,
+    "dim_pole": 6,
     "ell": 7,
-    "exact_min": false,
+    "exact_min": true,
     "k": 12,
     "m": 7,
     "n": 98,
-    "route": "member"
+    "route": "reciprocal_pole"
    },
    "98_18": {
     "A": [
@@ -16040,13 +17882,13 @@
     ],
     "bar_invariant": false,
     "ceiling": 16,
-    "dim_I0": 0,
+    "dim_pole": 9,
     "ell": 7,
-    "exact_min": false,
+    "exact_min": true,
     "k": 18,
     "m": 7,
     "n": 98,
-    "route": "member"
+    "route": "reciprocal_pole"
    }
   },
   "idempotence_tested": 273,
@@ -16187,7 +18029,7 @@
    "25x7",
    "35x5"
   ],
-  "no_group_certificate_pairs": 10608,
+  "no_group_certificate_pairs": 0,
   "pairs_total": 4229823962,
   "published_odd_instances": {
    "[[90,8,10]]": {

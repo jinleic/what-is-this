@@ -440,21 +440,25 @@ arXiv:2607.29236) study **bounded triangular faces in general position** only.
 
 ### 5.2 The scope gap
 
-**report.md §2** asserts the located public tables record 25 and 38 as exact at $n=10,12$,
-but without a proof chain that covers the broad convention: BBL/Blanc prove simple-face
-statements (and BBL note their even-$n$ bound is not attained for 12 and 14
-pseudolines); the Clément–Bader draft proves its charging in the perfect/nondegenerate
-regime; Savchuk can represent parallels and multiple points in pseudoline tables but states no
-exact theorem for $n\in\{10,12,14\}$; Parpalak–Utkin concerns bounded triangular faces
-in general position. The novelty audit (`scratch/kobon/novelty_audit_capacity_theorem.md`)
-checked each located source source-by-source and concluded:
+**report.md §2** inherited public tables that record 25 and 38 as exact at
+$n=10,12$, but no valid proof chain supports those upper endpoints. BBL/Blanc
+prove simple-face statements (and BBL note their even-$n$ bound is not attained
+for 12 and 14 pseudolines). The Clément--Bader draft states the relevant
+arbitrary-arrangement mod-$6$ bound, but its Lemma 1 uses the false assertion
+that a multipoint belongs to at most two pairs of triangular faces sharing a
+side (§5.3). Savchuk can represent parallels and multiple points in
+pseudoline tables but states no exact theorem for $n\in\{10,12,14\}$;
+Parpalak--Utkin concerns bounded triangular faces in general position. The
+novelty audit (`scratch/kobon/novelty_audit_capacity_theorem.md`) checked each
+located source source-by-source and concluded:
 
-1. **(Cap) is not subsumed.** No located published source proves any upper bound for
-   open-interior-disjoint selections in the broad convention that is (a) refined by
-   $Q$, $k_p$ and charged for crossed triangles by $C$. In the simple face convention
-   the inequality degenerates to the classical $3T\le n(n-2)$ — a special case, not
-   a subsumption. The Clément–Bader draft states only pointwise mod-6 integer bounds,
-   via steps that are false in exactly the broad convention (witnesses below).
+1. **(Cap) is not subsumed.** No located published source proves any upper
+   bound for open-interior-disjoint selections in the broad convention that
+   is (a) refined by $Q$, $k_p$ and charged for crossed triangles by $C$.
+   In the simple face convention the inequality degenerates to the classical
+   $3T\le n(n-2)$ -- a special case, not a subsumption. The
+   Clément--Bader draft states only a pointwise mod-$6$ bound, and its proof
+   contains a false local step even in the face convention.
 2. **(Cap) is not contradicted.** Nothing located asserts anything incompatible; the
    classical bounds agree with (1) in their common domain.
 3. The novelty is *precisely* the $C$ term and the $\sum_p k_p(k_p-4)$ penalty —
@@ -466,7 +470,28 @@ The internally attempted weaker form $\sum_p(k_p-2)^2$ in place of
 $\sum_p k_p(k_p-4)$ is **false** (report.md §6) — exact witnesses refute its local
 charging; the surviving form is $(k_p)(k_p-4)$.
 
-### 5.3 Why classical charging fails in the broad convention (exact witnesses)
+### 5.3 The multipoint charging step fails even for triangular faces
+
+For every $k\ge3$, take a triangle $\Delta$, an interior point $p$, and $k$
+distinct lines through $p$, three passing through the vertices of $\Delta$.
+The pencil partitions $\Delta$ into $2k$ triangular arrangement faces.
+Every radial elementary segment from $p$ is shared by the two faces beside it,
+so the one $k$-fold point belongs to **all $2k$ shared-side pairs**, not at
+most two. Exact rational $k=3,4$ instances are replayed by
+`scratch/kobon/flower_counterexamples.py`; its persisted JSON verifies zero
+line/triangle interior incidences, respectively 6 and 8 selected triangular
+faces, and respectively 6 and 8 shared elementary sides at the origin.
+
+This does not disprove the draft's numerical bound: an arrangement attaining
+the global segment ceiling may obey additional restrictions. It does invalidate
+the stated inference used to deduce that ceiling equality forces a perfect
+configuration. It also explains the surviving capacity coefficient. Merging
+$k-1$ pairwise crossings on each of $k$ lines destroys $k(k-2)$ elementary
+gaps, while the flower realizes all $2k$ possible double-use credits, leaving
+the sharp local net charge $k(k-2)-2k=k(k-4)$. Any repair of the mod-$6$
+argument must therefore be global, coupling saturated flowers across lines.
+
+### 5.4 Additional failures in the broad convention (exact witnesses)
 
 The following three exact-rational configurations, each fully verified by the campaign's
 exact routines (report.md §6), show that the two C–B local steps and the naive per-line
@@ -480,12 +505,15 @@ parallels, no concurrency. This also kills the "at Tamura equality the excess $0
 forces full-side sharing" salvage: the line $y=x-1$ carries two selected sides yet is
 fully tight.
 
-**(2) A single multipoint can serve many shared-side pairs** (kills C–B step 3).
-$n=6$, lines $y=0$, $y=x$, $y=-x$ (concurrent at the origin), $10y=10-x$, $x=-1$,
-$20y=x-20$; the six triangles $\{0,1,3\},\{1,2,3\},\{2,0,4\},\{0,1,4\},
-\{1,2,5\},\{2,0,5\}$ are pairwise interior-disjoint with **six** shared-side pairs
-at the single triple point — in the face/perfect convention each multiple point serves at
-most two.
+**(2) A broad-family multipoint can also serve many shared-side pairs.**
+$n=6$, lines $y=0$, $y=x$, $y=-x$ (concurrent at the origin), $10y=10-x$,
+$x=-1$, $20y=x-20$; the six triangles
+$\{0,1,3\},\{1,2,3\},\{2,0,4\},\{0,1,4\},\{1,2,5\},\{2,0,5\}$ are
+pairwise interior-disjoint with six shared-side pairs at the single triple
+point. This is retained as an independent stress test of the broad capacity
+inequality; the flower construction of §5.3 is stronger for auditing the
+Clément--Bader step because all of its selected triangles are arrangement
+faces.
 
 **(3) The per-line segment count fails under concurrency.** $n=6$, lines $y=0$,
 $y=x/5$, $x=1$, $10y=x-1$, $4y=x-2$, $3y=x-3$; the five pairwise-disjoint

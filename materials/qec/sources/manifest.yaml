@@ -1,4 +1,4 @@
-date_checked: 2026-08-13
+date_checked: 2026-08-22
 papers:
   - arxiv_id: "2308.07915"
     version: "v2"
@@ -48,8 +48,10 @@ papers:
     title: "Existence and Characterisation of Bivariate Bicycle Codes"
     authors: [Jasper Johannes Postema, Servaas J.J.M.F. Kokkelmans]
     url: "https://arxiv.org/abs/2502.17052"
-    claims_used: []
-    date_checked: 2026-08-11
+    claims_used:
+      - "Theorem 2.6 dimension formula"
+      - "Table distances are Monte-Carlo estimates, not exact certificates"
+    date_checked: 2026-08-22
   - arxiv_id: "2506.03094"
     version: "v1 (2025-06-03)"
     title: "Tour de gross: A modular quantum computer based on bivariate bicycle codes"
@@ -150,3 +152,55 @@ papers:
     claims_used:
       - "Cover-code BB families and rate/distance bounds; no PBB or circuit result"
     date_checked: 2026-08-12
+  - arxiv_id: "1904.02703"
+    version: "v1 (2019-04-04)"
+    title: "Degenerate Quantum LDPC Codes With Good Finite Length Performance"
+    authors: [Pavel Panteleev, Gleb Kalachev]
+    url: "https://arxiv.org/abs/1904.02703"
+    claims_used:
+      - "Proposition 1: generalized-bicycle dimension via gcd degree"
+    date_checked: 2026-08-22
+  - arxiv_id: "2306.16400"
+    version: "v1 (2023-06-28)"
+    title: "Quantum two-block group algebra codes"
+    authors: [Hsiang-Ku Lin, Leonid P. Pryadko]
+    url: "https://arxiv.org/abs/2306.16400"
+    claims_used:
+      - "Maschke semisimplicity for group-algebra codes"
+      - "Eq. (47): generalized-bicycle dimension formula"
+    date_checked: 2026-08-22
+  - arxiv_id: "2407.03973"
+    version: "v1 (2024-07-04)"
+    title: "Logical Operators and Fold-Transversal Gates of Bivariate Bicycle Codes"
+    authors: [Jens Niklas Eberhardt, Vincent Steffan]
+    url: "https://arxiv.org/abs/2407.03973"
+    claims_used:
+      - "Corollaries 2.11--2.12: principal-code logical structure on odd lattices"
+      - "Odd-by-odd BB instance table"
+    date_checked: 2026-08-22
+  - arxiv_id: "2408.10001"
+    version: "v4 (2024-12-29)"
+    title: "Coprime Bivariate Bicycle Codes and Their Layouts on Cold Atoms"
+    authors: [Ming Wang, Frank Mueller]
+    url: "https://arxiv.org/abs/2408.10001"
+    claims_used:
+      - "Eq. (11): coprime-BB dimension formula"
+      - "Odd-by-odd BB instance tables"
+      - "Distances are BP-OSD distance_upperbound estimates, not exact certificates"
+    date_checked: 2026-08-22
+  - arxiv_id: "2605.14173"
+    version: "v1 (2026-05-13)"
+    title: "Univariate Bicycle Quantum LDPC Codes: Explicit Logical Structure and Distance Bounds"
+    authors: [Sheida Rabeti, Hessam Mahdavifar]
+    url: "https://arxiv.org/abs/2605.14173"
+    claims_used:
+      - "Structured solver-free ceilings for the UB subclass"
+    date_checked: 2026-08-22
+  - url: "https://www.codetables.de/QECC.php?k=8&n=30&q=4"
+    version: "table last changed 2024-06-10"
+    title: "Bounds on the minimum distance of additive quantum codes: [[30,8]]"
+    authors: [Markus Grassl]
+    claims_used:
+      - "Explicit [[30,8,7]] cyclic stabilizer construction"
+      - "Globally dominates the EXP-055 [[30,8,4]] BB constructor at identical n,k"
+    date_checked: 2026-08-22
