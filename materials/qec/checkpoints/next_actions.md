@@ -1,26 +1,30 @@
 # Next actions — ordered by expected information gain
 
-## 2026-08-22 update — EXP-055 closes odd-lattice algebra and the exact screen through n=126
+## 2026-08-22 update — EXP-056 exactifies $[[162,8,14]]$ and closes the fixed-point screen through $n=162$
 
-Ranked item A is **closed in its executable bounded form**:
+Ranked item A is **closed through its second bounded milestone**:
 
 * full algebraic census: 65 odd lattices, $n\le360$, 4,229,823,962 pairs;
-* exact fixed-point screen: all nine odd lattices through $n=126$, 715 classes /
-  10,247 pairs; 598/598 referenced classes dominated, 117 no-reference, zero
-  survivors/undecided;
-* exact local references promoted during closure:
-  $[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$;
-* the first is a new checked-BB constructor but globally dominated by Grassl
-  $[[30,8,7]]$; the latter two exactify BP-OSD-reported parameters.
+* exact fixed-point screen: all 13 nonempty-frontier odd lattices through
+  $n=162$, 2,132 classes / 51,769 pairs; 1,928/1,928 referenced classes
+  dominated, 204 no-reference, zero survivors/undecided;
+* exact local references:
+  $[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$, $[[162,8,14]]$;
+* EXP-056 replaces the failed 2,100 s CP-SAT minimization: 255 nonzero classes
+  reduce to 20 automorphism orbits, all 20 sparse-generator CNFs are UNSAT and
+  replayed, the even-kernel law excludes 13, and a weight-14 witness plus BB
+  duality closes both sectors;
+* the $[[30,8,4]]$ constructor remains globally dominated by Grassl
+  $[[30,8,7]]$; the other three exactify BP-OSD-reported parameters.
 
 **Next actions, reordered by information gain:**
 
-1. **Odd-lattice distance closure above $n=126$.** Do not rerun the monolithic
-   CP-SAT path blindly: one candidate costs up to $2k\times90$s. The
-   $[[162,8,14]]$ exact-reference attempt already timed out at 2,100s. Port the
-   EXP-036 translation-orbit SAT decision / certificate pipeline to the
-   reciprocal-pole logical basis, then exactify the strongest $n=162$ reference
-   before screening larger lattices.
+1. **Odd-lattice closure above $n=162$.** First hash-bind the already exact
+   $n=180$ CSS frontier ($[[180,8,16]]$ and $[[180,20,6]]$) into the reference
+   validator, then screen the next nonempty frontiers:
+   $(17,5)$ at $n=170$, $(31,3)$ at $n=186$, and both $n=198$ lattices.
+   Reuse the reduced-witness → CDCL-witness → exact-fallback ladder and the
+   class-orbit solver; never return to per-logical CP-SAT minimization.
 2. **Multi-row channel theorem (B).** Fitting-ideal analogue of J-G against the
    8 INFEASIBLE / 2 witness EXP-051 controls.
 3. **End-to-end circuit item (E).** Flag/cat construction or class-restricted

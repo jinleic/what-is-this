@@ -1,0 +1,210 @@
+{
+  "discovery": {
+    "screen_shard": "results/partial_runs/exp055_screen/31x3.json",
+    "screen_shard_sha256": "1b370a89bad560614f929208e0bb1572f55a7f222d2a677ec52370eb1649ef24",
+    "screen_verdict": "undecided_resolved_by_exp058_probes"
+  },
+  "duality": {
+    "conclusion": "d_X = d_Z; one certified side determines CSS distance",
+    "maps_HX_to_HZ_exactly": true,
+    "maps_HZ_to_HX_exactly": true,
+    "permutation_is_bijection": true,
+    "permutation_is_involution": true,
+    "permutation_sha256": "0189ac1b7fc0e4652c3f54455ca71403384e9bfac154044c37c7100ef4790c55",
+    "schema": "exp056-bb-xz-duality-v1",
+    "valid": true
+  },
+  "identity": {
+    "HX_sha256": "a71abee8f647735e347dcb39ba07fad9df4c0eba19ba5c74756b5192f855c72e",
+    "HZ_sha256": "97e4add3dfc7d3fd1c41a33e599cc2b705b028273b2760b14bd4e7722732ba93",
+    "k": 10,
+    "n": 186,
+    "target": {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "ell": 31,
+      "expected_d": 14,
+      "expected_k": 10,
+      "lower_cap": 13,
+      "m": 3,
+      "name": "exp055-31x3-frontier-186-10-14",
+      "source": "EXP-055 exhaustive weight-3 odd-lattice screen, class 1 of 7 survivors",
+      "witness_support": [
+        3,
+        9,
+        12,
+        33,
+        36,
+        39,
+        42,
+        63,
+        66,
+        115,
+        140,
+        145,
+        155,
+        162
+      ]
+    }
+  },
+  "lower_bound": {
+    "effective_even_cap": 12,
+    "initial": {
+      "cnf_sha256": "b8a3803b28ffe4486f1d73b27e077a7b0fdd6c5ec1f5a1318a3140d7aeaa0f5c",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 7989,
+        "cnf_variables": 3163,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 326.89158950001
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 12
+    },
+    "replay": {
+      "cnf_sha256": "b8a3803b28ffe4486f1d73b27e077a7b0fdd6c5ec1f5a1318a3140d7aeaa0f5c",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 7989,
+        "cnf_variables": 3163,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 331.2546879169531
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 12
+    },
+    "requested_cap": 13
+  },
+  "parity_proof": {
+    "all_column_degrees_odd": true,
+    "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+    "column_degree_max": 3,
+    "column_degree_min": 3,
+    "effective_even_cap": 12,
+    "requested_cap": 13,
+    "schema": "exp056-kernel-weight-parity-v1",
+    "valid": true
+  },
+  "protocol": {
+    "conflict_budget": 0,
+    "decomposition": "monolithic",
+    "effective_even_cap": 12,
+    "encoding_version": "sat-decide-v2",
+    "replay_required": true,
+    "replay_solver": "kissat404",
+    "requested_cap": 13,
+    "side": "z",
+    "solver": "kissat404",
+    "validation_version": "exp058-pure-rebuild-validator-v1"
+  },
+  "protocol_sha256": "43514c9328b0f7c0ed82c5a279591f206c161c614fcf8a6a21f34cfc37bdf06b",
+  "schema": "exp058-odd-frontier-distance-v1",
+  "sibling_classes": {
+    "all_both_sector_unsat_cap12": true,
+    "all_weight14_witness_found": true,
+    "count": 6,
+    "evidence_files": [
+      "results/partial_runs/exp058_kissat_31x3_r0_x_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r2_x_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r3_x_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r4_x_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r5_x_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r6_x_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r0_z_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r2_z_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r3_z_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r4_z_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r5_z_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r6_z_12.json",
+      "results/partial_runs/exp058_kissat_31x3_r0_z_14.json",
+      "results/partial_runs/exp058_kissat_31x3_r2_z_14.json",
+      "results/partial_runs/exp058_kissat_31x3_r4_z_14.json",
+      "results/partial_runs/exp058_kissat_31x3_r5_z_14.json",
+      "results/partial_runs/exp058_kissat_31x3_r6_z_14.json"
+    ]
+  },
+  "upper_bound": {
+    "duality_preserves_weight": true,
+    "support": [
+      3,
+      9,
+      12,
+      33,
+      36,
+      39,
+      42,
+      63,
+      66,
+      115,
+      140,
+      145,
+      155,
+      162
+    ],
+    "vector_sha256": "d27b9d2288e4f60febe0a4fe3a00aa597fdfd2cf0b7b04b041001dad35d7fbd7",
+    "weight": 14,
+    "x_support": [
+      24,
+      34,
+      44,
+      49,
+      74,
+      120,
+      123,
+      144,
+      147,
+      150,
+      153,
+      174,
+      177,
+      183
+    ],
+    "x_valid_bitset": true,
+    "x_valid_numpy": true,
+    "x_vector_sha256": "f50e13190b3cf8f12ae911a93f8292080feb84d93aefa3af9d1432f29704f4d3",
+    "z_valid_bitset": true,
+    "z_valid_numpy": true
+  },
+  "utc": "2026-08-23T15:59:42.382361+00:00",
+  "verdict": {
+    "classification": "CERTIFIED_EXACT",
+    "d": 14,
+    "d_X": 14,
+    "d_Z": 14,
+    "exact": true
+  }
+}

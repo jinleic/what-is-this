@@ -91,6 +91,22 @@
     "symmetry_break": "anchor",
     "xor_encoding": "direct-small"
   },
+  "replay": {
+    "encoding_version": "exp056-sparse-generator-direct-small-v1",
+    "instance_sha256": "50cf2797abd025427ac92dd4d179f3bb02ccf73790eda38e2e2f8564ccd79acf",
+    "solver": {
+      "backend": "pysat",
+      "clauses": 4943,
+      "cnf_variables": 2039,
+      "conflict_budget": 0,
+      "name": "PySAT kissat404",
+      "stats": {},
+      "version": "1.9.dev13",
+      "wall_time_s": 72.87412833306007
+    },
+    "status": "UNSAT",
+    "utc": "2026-08-23T00:06:45.450475+00:00"
+  },
   "representative": {
     "anchor_coordinates": [
       0,

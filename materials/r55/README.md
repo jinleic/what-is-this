@@ -301,17 +301,108 @@ coverage SHA-256 digests.
   r55/data/cayley_r55_45.json                          # disjoint witness replay, ~3 min
 ```
 
-Default terminal: `CAYLEY THEOREM VERIFIED:
-NO_CAYLEY_RAMSEY_5_5_45 ... witness_replay=NOT_RUN`. With `--resweep`, the
-stronger artifact-level terminal is `CAYLEY EVIDENCE VERIFIED: ...
-witness_replay=VERIFIED`.
+Default terminal: `CAYLEY THEOREM VERIFIED: NO_CAYLEY_RAMSEY_5_5_45 ... witness_replay=NOT_RUN`. With `--resweep`, the
+stronger artifact-level terminal is `CAYLEY EVIDENCE VERIFIED: ... witness_replay=VERIFIED`.
 
 The conference-graph subcase has an even shorter obstruction. Either group has
 an order-3 character; inverse-closed connection sets give that character an
 integer Cayley eigenvalue, whereas `srg(45,22,10,11)` requires nonprincipal
-eigenvalues solving `x²+x−11=0`. More generally, an order-3 automorphism of
-such an SRG must have `f ≡ 3 (mod 6)` fixed vertices, so none is semiregular.
-Thus a successful conference/SAT construction, if one exists, is necessarily
-non-Cayley and has sharply constrained 3-symmetry. This does **not** exclude
-arbitrary or non-Cayley Ramsey(5,5,45) graphs and does **not** change any bound
-on R(5,5).
+eigenvalues solving `x²+x−11=0`. More generally, the order-three frontier
+below now excludes every order-three automorphism of a Ramsey-good
+`srg(45,22,10,11)`. Thus a successful conference/SAT construction, if one
+exists, is necessarily non-Cayley, non-vertex-transitive, and has automorphism
+group order coprime to three. This says nothing about non-strongly-regular
+Ramsey(5,5,45) graphs and changes no bound on R(5,5).
+
+
+## Order-three conference frontier (exactly closed, 2026-08-22)
+
+The Cayley obstruction extends through the entire non-Cayley order-three
+conference lane:
+
+> **A Ramsey-good `srg(45,22,10,11)` has no automorphism of order three.**
+
+The spectral argument first forces `f ≡ 3 (mod 6)`, leaving the nonidentity
+fixed-point counts `3,9,15,21,27,33,39`.
+
+- `f=3`: the fixed graph would be 1-regular on three vertices.
+- `f=9`: the fixed graph is uniquely `L_2(3)`. Ramsey avoidance uniquely fixes
+  its twelve fixed-to-orbit columns. Exact rank-77 quotient algebra leaves two
+  matrices (`τ=1,2`), and both force the same independent five-set after one
+  legal orbit rotation.
+- `f≥15`: write `c=(45−f)/3≤10`. Spectral trace forces `c/2` triangle
+  3-orbits. For one with `s` fixed neighbors and quotient degrees `t_i`,
+  degree and adjacent common-neighbor counts give `Σt_i=20−s`,
+  `ΣC(t_i,2)=9−s`, and `Σt_i²=38−3s`. Cauchy–Schwarz would require
+  `(20−s)²≤(c−1)(38−3s)`, but at `c=10` the gap polynomial
+  `s²−13s+58` has discriminant `−63`. This part excludes all five counts
+  for every `srg(45,22,10,11)`, without a Ramsey hypothesis.
+
+Consequently the automorphism group has order coprime to three. In particular,
+no Ramsey-good conference graph on 45 vertices is vertex-transitive.
+
+```bash
+./.venv/bin/python -m unittest r55.tests.test_order3_srg_frontier -v
+./.venv/bin/python r55/src/order3_srg_frontier.py \
+  --output r55/data/order3_srg_frontier.json
+./.venv/bin/python r55/src/check_order3_srg_frontier.py \
+  r55/data/order3_srg_frontier.json
+```
+
+Terminal disposition:
+`ORDER3_AUTOMORPHISMS_EXCLUDED_FOR_RAMSEY_SRG`. The result is exact,
+solver-free, and independently replayed. It excludes symmetry only inside the
+strongly-regular construction lane; non-strongly-regular hypothetical
+Ramsey(5,5,45) graphs remain open, and no Ramsey-number bound changes.
+
+## Odd-prime conference frontier (exactly closed, 2026-08-23)
+
+The symmetry argument now closes every odd prime, not only three:
+
+> **The automorphism group of a Ramsey-good `srg(45,22,10,11)` is a
+> 2-group.**
+
+The new proof excludes orders five, seven, eleven, and every prime at least
+thirteen; the independently checked order-three theorem supplies the remaining
+odd prime.
+
+- **Order five.** A quotient-diagonal moment excludes fixed counts
+  `10,15,…,40` for every `srg(45,22,10,11)`, without a Ramsey hypothesis.
+  Ramsey trace then leaves `f=0,5` with every moving orbit a `C5`. For `f=0`,
+  the required `9×9` integral Seidel quotient has three possible first-row
+  types; a complete 56,755-prefix enumeration finds none. For `f=5`, an
+  eight-block fixed-incidence design and `R(3,4)=R(4,3)=9` give a
+  solver-free `K5/I5` bridge.
+- **Order seven.** Cyclotomic parity leaves `f=3,17,31`. Handshake, a
+  support/complement packing bound, and an exact fixed-block Rayleigh
+  contradiction eliminate the three cases.
+- **Order eleven.** The `f=23` support classes force an independent set. For
+  `f=1`, quotient algebra is unique up to one swap; all
+  `10²·C(11,6)=46,200` cyclic two-orbit blocks contain a `K4` or an `I5`.
+- **Larger primes.** Orders `13,17,19` fail by fixed-graph handshake, while
+  `p≥23` is incompatible with the required even number of moving cycles.
+
+By Cauchy's group theorem no odd prime divides the automorphism-group order.
+Involutions and nontrivial 2-groups are the remaining symmetry frontier.
+
+```bash
+./.venv/bin/python -m unittest r55.tests.test_odd_prime_srg_frontier -v
+./.venv/bin/python r55/src/odd_prime_srg_frontier.py \
+  --output r55/data/odd_prime_srg_frontier.json
+./.venv/bin/python r55/src/check_odd_prime_srg_frontier.py \
+  r55/data/odd_prime_srg_frontier.json
+```
+
+Independent published-data corroboration also parses Maksimović's 288
+`S3`-invariant records, verifies their stated `f=9` order-three action, and
+finds both a `K5` and an `I5` in every graph:
+
+```bash
+./.venv/bin/python r55/src/validate_published_s3.py --verify-existing
+```
+
+Terminal dispositions:
+`AUTOMORPHISM_GROUP_IS_A_2_GROUP_FOR_RAMSEY_SRG` and
+`PUBLISHED S3 DATA VERIFIED`. The result remains confined to the
+strongly-regular construction lane. It says nothing about a
+non-strongly-regular Ramsey(5,5,45) graph and changes no Ramsey-number bound.

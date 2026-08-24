@@ -334,28 +334,105 @@ All bibliographic details below were source-checked in
   reasons documented in the source-checked literature report
   (`data/litscout_h10q.md`).
 
-The remaining research question for this route is therefore whether
-classical Schinzel H can be replaced by an unconditional theorem for
-the selected linear/octic pair.  Theorem C itself remains
-**CONDITIONAL**; no statement above proves Schinzel H.
+### 4.3 L23–L27: unconditional frontier theorems, but no member theorem
+
+L23 now proves a genuine unconditional theorem for the selected
+linear/octic sequence.  After absorbing the finitely many exceptional
+primes into the progression, the bad-root sieve has exact dimension
+$\kappa=1/2$ and Bombieri--Vinogradov level
+$$D=X^{1/2}/(\log X)^B.$$
+The semilinear lower sieve with $z=X^{49/100}$ gives
+$$
+\#\{X<t\le2X:\ Q(t)\ {\rm prime},\
+G(t)\ {\rm has\ no\ bad\ root\ prime}<z\}
+\gg\frac{X}{(\log X)^{3/2}}.
+$$
+This is unconditional **small-prime cleanliness**, not intermediate H:
+$|G(t)|=X^{8+o(1)}$ can retain up to $16$ factors above $z$, and
+reciprocity permits $0,2,\ldots,16$ bad odd-valuation factors.
+
+The first missing analytic input is therefore a parity-sensitive
+two-large-bad-divisor estimate in the sector
+$$p_1,p_2\ge z,\qquad p_1p_2>D,$$
+with both primes of bad sign and odd valuation.  Equivalently one needs
+$R_{\rm bad}\le1$ for sign-decorated divisors of the octic at prime
+arguments.  Even Elliott--Halberstam leaves up to eight large factors;
+the strongest cited general almost-prime result gives only $P_{12}$
+after a fixed-AP adaptation (`THEOREMS.md`, L23a–b;
+`data/l23_half_sieve.jsonl`).
+
+The algebraic alternatives tested in L23 do not bypass that sector.
+The untwisted Capell square-in-$K$ collapse is impossible on the
+selected refined protocol; the associated fixed-cell conic bundle has
+non-split rank $10$ and
+$\operatorname{Br}(X)/\operatorname{Br}(\mathbb Q)=\mathbb Z/2$, outside
+the checked low-rank fibration theorems.  Exact norm matching and
+polynomial-in-$b$ sections miss $\Phi$; the elementary
+$P=\pm2b\,\square$ and $P=A\,\mathrm{Norm}$ routes hit dyadic walls;
+the first admissible factor ansatz reduces to genus-$4$ curves; and
+moving $a$ has smallest **certified** squareclass degree $18$ in the
+audit, with no universal minimum claim (`THEOREMS.md`, L23c–f).
+
+L24 closes the tempting self-coupled diagonal alternative even more
+sharply.  Both formal tied-rank-$\le1$, finite-flat degree-$8$ covers
+are uniformly empty on $\Phi$ over $\mathbb Q_2$.  Orientation I has
+normalized coefficient valuations $(4,0,0)$; orientation II reduces
+to the complete contradiction
+$$0\equiv8+2Ab(s^2-1)\pmod{16}.$$
+Thus the diagonal $\le5$ count is vacuous and supplies no member.  The
+$4{,}026{,}282$ zero-hit scan is corroboration only; the mod-$16$
+exhaustion is the proof (`THEOREMS.md`, L24;
+`data/l24_diagonal_{geometry,arithmetic,local,search}.jsonl`).
+
+L25–L27 supply genuinely non-diagonal local and algebraic advances.
+L25 proves that two fixed scalings cover complementary dyadic parities,
+but its target formula is not aligned.  L26's even-pullback reciprocal
+tie gives
+$$P_{\rm rec}(b)=b^4T(b+b^{-1}),\qquad\deg T=4,$$
+automatic dyadic splitting, and the trace-character identity
+$(2b|p)=(2(u+2)|p)$; the quartic squareclass and global member remain
+open.  L27's fixed shear $(2X+28\rho,sX+\rho)$ covers every dyadic
+parity and every standard aligned odd target, including $3,5$, but its
+global degree-$8$ cover has no proved rational point
+(`THEOREMS.md`, L25–L27;
+`data/l25_scaled_coupling.jsonl`;
+`data/l26_reciprocal_tie.jsonl`;
+`data/l27_triangular_shear.jsonl`).
+
+Consequently classical Schinzel H has **not** become proved, weaker, or
+removable in Theorem C.  The exact next targets are the L26 quartic
+trace squareclass/member problem, a target-specific rational point on
+the L27 global cover, or the two-large-bad-divisor dispersion estimate.
+Theorem C remains **CONDITIONAL on classical Schinzel H alone**.
 
 ---
 
 ## 5. Provenance and discipline
 
-- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L22;
-  `RESULTS.md`; and the cited `data/` artifacts.  The two symbolic L22
-  proof reports are `/tmp/l22_elimination.md` and
-  `/tmp/l22_reciprocal_cube.md`.
+- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L27;
+  `RESULTS.md`; and the cited `data/` artifacts.  The L22 proof reports
+  remain `/tmp/l22_elimination.md` and
+  `/tmp/l22_reciprocal_cube.md`; all L23–L27 producer/data pairs are
+  inventoried in `README.md`.
 - Engine discipline remains proven-primality only.  The exact
   Miller–Rabin, Pocklington and Brillhart–Lehmer–Selfridge scopes are
   recorded in `README.md`, Engine note, and `test_bls.py`; refusals are
   logged and never treated as evidence.
+- The HalfSieveAudit, FibrationAudit and DiagonalAudit verdicts were
+  SOUND at confidences $0.90$, $0.88$ and $0.90$ respectively.
+  ReciprocalTieAudit's three scope findings were applied; the corrected
+  TriangularShearAudit returned no high-confidence finding.  Their
+  corrections are incorporated in `THEOREMS.md`, L23–L27 and retain all
+  finite rows at their declared scopes.
+- The $4{,}026{,}282$ diagonal attempts and every other bounded no-hit
+  scan are EVIDENCE only.  Uniform diagonal emptiness is the dyadic
+  theorem, not extrapolation from the scan.
 - Nothing here depends on Sun's unrefereed §§3–8 chain.  Soundness is
-  inherited from the audited block; completeness uses L19–L22 and
-  classical Schinzel H (`THEOREMS.md`, L6 and L19–L22).
+  inherited from the audited block; completeness of the conditional
+  implication uses L19–L22 and classical Schinzel H.  L23–L27 sharpen
+  the frontier but are not replacements for that conjectural input.
 - **Final status:** the six-universal-quantifier record and
   $\operatorname{efd}\le5$ are established conditionally on classical
-  Schinzel H alone (`THEOREMS.md`, L22d).  Classical Schinzel H is
-  unproved, so H10/$\mathbb Q$ and the unconditional six-quantifier
+  Schinzel H alone (`THEOREMS.md`, L22d and L24e–L27).  Classical
+  H is unproved, so H10/$\mathbb Q$ and the unconditional six-quantifier
   statement remain open.

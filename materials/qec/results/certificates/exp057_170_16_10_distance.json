@@ -1,0 +1,187 @@
+{
+  "discovery": {
+    "screen_shard": "results/partial_runs/exp055_screen/17x5.json",
+    "screen_shard_sha256": "a091f7c5bcd8cbd45475c0efb50b9ec87e2e5b90cea954da71b08f2be5c18b09",
+    "screen_verdict": "no_reference"
+  },
+  "duality": {
+    "conclusion": "d_X = d_Z; one certified side determines CSS distance",
+    "maps_HX_to_HZ_exactly": true,
+    "maps_HZ_to_HX_exactly": true,
+    "permutation_is_bijection": true,
+    "permutation_is_involution": true,
+    "permutation_sha256": "bcbf2f0f15f28131db49e11ea95b908c057df35475801213cd6bb404c0768a93",
+    "schema": "exp056-bb-xz-duality-v1",
+    "valid": true
+  },
+  "identity": {
+    "HX_sha256": "3b378ed342b5932ee24de8e83f85c8e6e1fb0799f134775bcfd676995881ef68",
+    "HZ_sha256": "8d1df986bcde3423a09be00b5f66ec64509e50dc04a0a1219e978f4092bc1bed",
+    "k": 16,
+    "n": 170,
+    "target": {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          9,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          15,
+          1
+        ]
+      ],
+      "ell": 17,
+      "expected_d": 10,
+      "expected_k": 16,
+      "lower_cap": 9,
+      "m": 5,
+      "name": "exp055-17x5-frontier-170-16-10",
+      "source": "EXP-055 exhaustive weight-3 odd-lattice screen",
+      "witness_support": [
+        2,
+        4,
+        7,
+        9,
+        14,
+        43,
+        46,
+        53,
+        84,
+        85
+      ]
+    }
+  },
+  "lower_bound": {
+    "effective_even_cap": 8,
+    "initial": {
+      "cnf_sha256": "7e728f6e76efb97880e90a0c3a36411b15ad87bc242148bc40650a105ca29bfb",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 6773,
+        "cnf_variables": 2451,
+        "conflict_budget": 0,
+        "name": "PySAT cadical195",
+        "pysat_version": "1.9.dev13",
+        "stats": {
+          "conflicts": 59332,
+          "decisions": 89769,
+          "propagations": 11009690,
+          "restarts": 1758
+        },
+        "wall_time_s": 2.236913083936088
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 8
+    },
+    "replay": {
+      "cnf_sha256": "7e728f6e76efb97880e90a0c3a36411b15ad87bc242148bc40650a105ca29bfb",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 6773,
+        "cnf_variables": 2451,
+        "conflict_budget": 0,
+        "name": "PySAT cadical195",
+        "pysat_version": "1.9.dev13",
+        "stats": {
+          "conflicts": 59332,
+          "decisions": 89769,
+          "propagations": 11009690,
+          "restarts": 1758
+        },
+        "wall_time_s": 2.1506284170318395
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 8
+    },
+    "requested_cap": 9
+  },
+  "parity_proof": {
+    "all_column_degrees_odd": true,
+    "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+    "column_degree_max": 3,
+    "column_degree_min": 3,
+    "effective_even_cap": 8,
+    "requested_cap": 9,
+    "schema": "exp056-kernel-weight-parity-v1",
+    "valid": true
+  },
+  "protocol": {
+    "conflict_budget": 0,
+    "decomposition": "monolithic",
+    "effective_even_cap": 8,
+    "encoding_version": "sat-decide-v2",
+    "replay_required": true,
+    "requested_cap": 9,
+    "side": "z",
+    "solver": "cadical195",
+    "validation_version": "exp057-pure-rebuild-validator-v1"
+  },
+  "protocol_sha256": "e54e5f9c834b428672d1eb371a94fcc7f5f2c371aab91e243c4e192b1ca9e444",
+  "schema": "exp057-odd-frontier-distance-v1",
+  "upper_bound": {
+    "duality_preserves_weight": true,
+    "support": [
+      2,
+      4,
+      7,
+      9,
+      14,
+      43,
+      46,
+      53,
+      84,
+      85
+    ],
+    "vector_sha256": "0bcbc5da9e026a11509ed54615113baa95abbdcc7f2484cb0b29959204f74769",
+    "weight": 10,
+    "x_support": [
+      0,
+      86,
+      88,
+      91,
+      122,
+      129,
+      132,
+      161,
+      166,
+      168
+    ],
+    "x_valid_bitset": true,
+    "x_valid_numpy": true,
+    "x_vector_sha256": "0e382ac830c956e148ab8dc6143ed3498410ab1d75c7fd9c14e592e95f79b6d3",
+    "z_valid_bitset": true,
+    "z_valid_numpy": true
+  },
+  "utc": "2026-08-23T11:34:55.848713+00:00",
+  "verdict": {
+    "classification": "CERTIFIED_EXACT",
+    "d": 10,
+    "d_X": 10,
+    "d_Z": 10,
+    "exact": true
+  }
+}

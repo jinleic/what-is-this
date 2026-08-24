@@ -762,12 +762,11 @@ Parallelizing the sectors does not recover it either: average sector cost
 (~56 s) is not below the whole monolithic solve, so 12 cores would buy
 nothing over 1.
 
-**What survives.**  The decomposition is *correct* — statuses agreed and
-bundle digests reproduce — and is retained as a tested, hash-bound
-alternative (`decide_by_sectors`, `--decomposition sectors`), including the
-soundness guard that exhausting a strict *subset* of sectors returns
-`UNSAT_SUBSET` and can never pass a proof gate.  The default stays
-monolithic.
+**What survives.** The decomposition identity itself is correct. The retained
+implementation (`decide_by_sectors`, `--decomposition sectors`) drops any
+monolithic symmetry clause before fixing a functional (FR-027), hash-binds the
+resulting sector bundle, and returns `UNSAT_SUBSET` when a strict subset is
+exhausted. The default stays monolithic; no persisted claim uses sector mode.
 
 **Lesson.**  "Split the disjunction" is not automatically a win for CDCL:
 clause sharing across the disjuncts can be worth more than the extra
@@ -890,3 +889,33 @@ audits. The earlier restricted $I\cap\bar I$ statement was sound but weak.
 **Regression.** `test_bar_convention_on_noninvariant_code` and
 `test_reduced_witness_is_a_real_logical` in
 `tests/test_exp055_odd_lattice.py`.
+
+---
+
+## FR-027 — A monolithic translation anchor is unsound in a fixed functional sector
+**Date** 2026-08-22 · **Track** K (exact distance) · **Status** LATENT ALTERNATIVE-MODE BUG FIXED; NO PERSISTED CLAIM AFFECTED
+
+**What was wrong.** `DecisionInstance.symmetry_clause` is sound for the
+monolithic predicate “at least one logical pairing is odd”: translation
+preserves nontriviality and can move support to the origin. The old
+`sector_instance` copied that clause after replacing the disjunction by one
+fixed pairing $\langle v,L_j\rangle=1$. Translation need not fix $L_j$; it can
+move a valid sector-$j$ witness into another sector. The origin clause can
+therefore turn a satisfiable fixed sector into UNSAT.
+
+**Counterexample.** With two singleton-weight variables, no parity checks,
+pairing rows $e_0,e_1$, cap one, and the coordinate-swap symmetry, the
+monolithic clause $v_0=1$ is sound. Sector $e_1$ has the unique witness
+$(0,1)$; copying $v_0=1$ makes that sector UNSAT. The new regression executes
+this exact decision and requires SAT.
+
+**Fix.** Generic `sector_instance` now drops the parent symmetry clause.
+EXP-056 reattaches an anchor only after machine-proving that its subgroup fixes
+the selected detector modulo stabilizers and that the stored coordinates cover
+every subgroup orbit. All persisted EXP-036 certificates use the monolithic
+encoding (`results` contains zero `\"decomposition\": \"sectors\"` records), so
+no shipped distance conclusion relied on the defective alternative mode.
+
+**Regression.**
+`test_sector_decomposition_drops_nonpreserving_global_symmetry` in
+`tests/test_exp036_delta_closure.py`.

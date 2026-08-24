@@ -1,47 +1,58 @@
-# Checkpoint — 2026-08-22 (EXP-055 odd-lattice closure; reciprocal-pole logic; three exact BB references)
+# Checkpoint — 2026-08-22 (EXP-056 exact $[[162,8,14]]$; fixed-point screen closed through $n=162$)
 
-**Premise correction / prior art.** The claim that $[[90,8,10]]$ was the only
-odd$\times$odd BB code in print was false and is withdrawn. A primary-source
-refresh sourced 27 instances across Bravyi, Eberhardt–Steffan, Wang–Mueller and
-Postema–Kokkelmans. The odd-lattice rate/principal-code structure is published,
-not ours: in the repository convention $I=\operatorname{Ann}_{\rm left}(a,b)$,
-$J=\bar I$, and $J^2\cong\ker H_X/S_Z$. EXP-055 re-verifies the isomorphism
-27/27. The bar is load-bearing; raw $I$ fails the physical-kernel test on the
-$(7,7)\,[[98,6,12]]$ control (FR-026).
+**Exact distance method.** The reciprocal-pole transversal now feeds a complete
+class-orbit SAT certificate. On the Wang–Mueller $(3,27)$ constructor
+$A=1+y^{10}+y^{14}$, $B=y^{12}+x+x^2$, the $255$ nonzero logical classes
+partition into **20** orbits under the verified order-$162$
+translation/$x$-reflection group (sizes $6,9,18$). Each representative is an
+affine coset of 77 independent sparse $Z$-stabilizer rows. Every $H_X$ column
+has odd degree three, so every kernel word is even and cap 12 excludes through
+13.
 
-**Literature audit.** Three independent $k$ routes agree internally on 27/27 and
-with printed $k$ on 25/27; the two transcribed App. C rows remain
-unreproduced. Source distance provenance is explicit: Wang–Mueller uses BP-OSD
-`distance_upperbound`, Postema table values are Monte-Carlo estimates. All 25
-reported values pass the pole ceiling only as a sanity check; five rows are
-locally two-sided exact-certified, with zero ceiling violations
-(slack min/median/max 2/10/22). No estimate enters a domination threshold.
+**Exact result.** Kissat returns UNSAT on all 20 class CNFs and repeats all 20
+on fresh digest/version-bound replay. Initial serial solver time is 1,312.75 s
+(39.79–89.19 s, median 62.00 s); replay is 1,287.67 s. An explicit weight-14
+word passes NumPy and bitset kernel/non-stabilizer checks on both sectors under
+the exact BB duality permutation. Therefore
+**$[[162,8,14]]$ with $d_X=d_Z=14$ exactly**. Canonical certificate:
+`results/certificates/exp056_wm_162_8_14_distance.json`.
 
-**Complete algebraic census.** All 65 odd lattices with $\ell m\le180$
-($n\le360$): 4,229,823,962 weight-$\le3$ pairs, zero $k$ mismatches,
-273/273 idempotence checks. Config-bound shards; assembled scope complete.
+**Soundness repairs.** Generic fixed-functional sectors must drop the
+monolithic origin anchor (FR-027; a two-variable counterexample changes SAT to
+UNSAT). The canonical result uses only the class route with verified
+class-stabilizer anchors; the two-generator pole route is diagnostic and
+cannot certify. Any verified SAT or non-replay-complete assembly atomically
+revokes the authoritative certificate before writing convenience evidence.
+EXP-055 admission invokes a pure EXP-056 validator that rebuilds the current
+constructor, matrices, orbit cover, 20 CNF hashes/replays, duality and upper
+witness from the same inode-bound snapshot it fingerprints. Hostile rereview:
+**NO_BLOCKER**.
 
-**Exact discoveries.** Connected/row-space-indecomposable:
-$[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$, all with exact $d_X=d_Z=d$
-and explicit witnesses. The latter two exactify Wang–Mueller BP-OSD parameters.
-The $[[30,8,4]]$ constructor was not found in checked BB tables, but is globally
-dominated by Grassl's explicit $[[30,8,7]]$; it is not a general-code or
-end-to-end Pareto result. Canonical certificate:
-`results/certificates/exp055_discovered_references.json`.
+**Literature audit.** The reciprocal-pole isomorphism remains 27/27; 25 rows
+reproduce printed $k$. Six literature rows are now local two-sided exact
+certificates, zero ceiling violations, slack min/median/max 2/20/22. The source
+$[[162,8,14]]$ value remains labelled a BP-OSD estimate; only the EXP-056
+certificate promotes it to a threshold.
 
-**Fixed-point exact-reference screen, complete through $n=126$.** Nine
-odd-lattice factorizations; weight-3 $A,B$; $8\le k\le24$; 715 symmetry classes
-representing 10,247 normalised pairs. All 598 classes with a locally exact
-reference are dominated (588 explicit logical witnesses, 10 all-sector
-CP-SAT); 117 high-$k$ classes have no reference; zero survivors, zero
-undecided. Census/reference/protocol hashes bind all shards. Exact distance
-closure above $n=126$ remains open; the first $[[162,8,14]]$ exactification
-attempt did not complete in 2,100s.
+**Fixed-point screen, complete through $n=162$.** Thirteen nonempty-frontier
+odd lattices; weight-3 $A,B$; $8\le k\le24$; 2,132 symmetry classes
+representing 51,769 normalised pairs. All **1,928/1,928** referenced classes
+are dominated: 1,804 reduced-pole witnesses, 119 CDCL witnesses, five exact
+CP-SAT fallbacks. All 1,923 persisted witnesses are rechecked physically. 204
+high-$k$ classes have no reference; zero survivors, zero undecided. Shards bind
+the census, certificate-hashed references, pure-validator version and solver
+protocol.
 
-Verification: 38 targeted EXP-055/prose guards; full suite **961 passed, 1
-skipped (962 collected)**; paper rebuilt 17 pp with zero undefined references;
-bundle `dist/pbb_nogo_bundle_2026-08-22.zip` verified (1,633 zip entries,
-0 SHA-256 mismatches).
+**Scope.** Algebraic $k$ census: all 65 odd lattices through $n=360$
+(4,229,823,962 pairs). Exact fixed-point distance screen: through $n=162$.
+The next actionable extension is to hash-bind the exact $n=180$ CSS frontier
+before screening the nonempty frontiers at $n=170,186,198$.
+
+Verification: 49 targeted odd-lattice/claims guards; full suite **972 passed, 1
+skipped (973 collected)** in 796.48 s; hostile review **NO_BLOCKER**; paper
+rebuilt to **17 pages / 708,817 bytes** with zero undefined references and no
+oversized float; bundle `dist/pbb_nogo_bundle_2026-08-22.zip` verified
+(1,704 zip entries, 0 SHA-256 mismatches).
 
 # Checkpoint — 2026-08-21b (the demote law is an ideal invariant; trinomials can never be mixed; J-A resolved)
 

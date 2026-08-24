@@ -34,11 +34,15 @@ For the quadratic character $\chi_f$ the standard character sum is
 \[
  \sum_{r\bmod f}\chi_f(1+4r^2)=-1.
 \]
-There are two zero terms if $f\equiv1\pmod4$ and none if
-$f\equiv3\pmod4$.  Hence the number of residues with
-$\chi_f(1+4r^2)=-1$ is respectively
+There are \(1+\leg{-1}{f}\) zero terms.  Hence the number of residues
+with $\chi_f(1+4r^2)=-1$ is
 \[
- \frac{f-1}{2}\quad\hbox{or}\quad\frac{f+1}{2},
+ \frac{f-\leg{-1}{f}}{2}
+ =
+ \begin{cases}
+ (f-1)/2,&f\equiv1\pmod4,\\
+ (f+1)/2,&f\equiv3\pmod4,
+ \end{cases}
 \]
 and is always positive.  Choose such a residue and lift it to an odd
 integer $a$; adding the odd modulus $f$ changes the parity of a lift.  Thus

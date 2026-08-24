@@ -1,10 +1,31 @@
 # Artifact inventory
 
-Inventory snapshot: **2026-08-22T01:55:20Z**. Paths are workspace-relative. This table covers every first-party document and computational artifact referenced by this hub, every file in the canonical release manifest, every current n=11/14/18/20 CNF/log/proof stream, all generated n=14 position cubes, the retained n=12 verification transcripts, and the certified n=10 proof chain. Third-party virtual environments, solver binaries/source trees, `__pycache__`, transient process markers, and uncited superseded exploratory CNFs are dependencies or scratch state rather than campaign artifacts and are excluded.
+Inventory base snapshot: **2026-08-22T01:55:20Z**. Paths are workspace-relative. The large tables below preserve that point-in-time campaign inventory. The 2026-08-23 square-penalty frontier delta is listed separately below; for the current release contents and hashes, `math/kobon/release/kobon-2026-08/MANIFEST.sha256` is authoritative. Third-party virtual environments, solver binaries/source trees, `__pycache__`, transient process markers, and uncited superseded exploratory CNFs are dependencies or scratch state rather than campaign artifacts and are excluded.
 
 Files strictly smaller than **50,000,000 bytes** have a SHA-256 computed from disk. Larger files record `hash omitted (large)`, as requested. Hashes of in-flight logs are point-in-time values and are expected to change. Zip inclusion is determined against `math/kobon/release/kobon-2026-08/MANIFEST.sha256`; “included byte-identically” may name the path used inside the zip. `ARTIFACTS.md` cannot contain a stable hash of itself, so it is the sole self-referential omission.
 
 **Inventory totals:** 427 files; 302 SHA-256 values computed; 125 large-file hashes omitted.
+
+## 2026-08-23 frontier deltas
+
+| Path | Size (bytes) | SHA-256 | Canonical release zip |
+|---|---:|---|---|
+| `scratch/kobon/square_penalty_counterexample.py` | 14,230 | `bd695af8fd3b6f441fd7bce8780159f4751b2f473ea8b426b209500cc6d7684d` | included as `scripts/square_penalty_counterexample.py` |
+| `scratch/kobon/square_penalty_counterexample.json` | 7,237 | `6555f65b47dfc3f5d08521fa9a99e97f4193f3f5309a70d867a8d3efaecd95a9` | included as `verification/square_penalty_counterexample.json` |
+| `scratch/kobon/square_penalty_sat.py` | 6,759 | `43a676c756d67c939417fc582d4ca065a91896d4ad4e03b43c139a6421aee0e9` | included as `scripts/square_penalty_sat.py` |
+| `scratch/kobon/c23_n7_violation.cnf` | 2,533,909 | `075ca17768ad70e4ff69673543c85d629a69737656b36211c949b8e0a32676d9` | included as `certificates/c23_n7_violation.cnf` |
+| `scratch/kobon/c23_n7_violation.drat` | 34,133,280 | `b17bb8d6610242ee3149b141d24447b2261ab1c75ac2f4e92c21913ad53f4c5a` | included as `certificates/c23_n7_violation.drat` |
+| `scratch/kobon/c23_n7_violation.dratcheck.log` | 442 | checker transcript ending `s VERIFIED` | included as `certificates/c23_n7_violation.dratcheck.log` |
+| `scratch/kobon/c23_n7_certificate.json` | 2,085 | `214c5fca509c4de1a310385e8d63cc0bf0e47ef25dfd57446a548f8ad6912b9b` | included as `certificates/c23_n7_certificate.json` |
+| `math/kobon/engine.py` | 48,399 | `5ecad5d184a8febe8cc0eb04c9e327ee907dc9b0984839b1685d48d98a39058e` | included as `scripts/engine.py` |
+| `scratch/kobon/gap_faces.py` | 5,588 | `d1cd586eb35018ea555f6933a009501addddda49cce9a007c90bf2cca9b04455` | included as `scripts/gap_faces.py` |
+| `scratch/kobon/sector_bound_audit.py` | 4,810 | `417b31817731c9b1bbd951c2b8544aa0aaa20b293c71c6eef66a9c58c91f230d` | included as `verification/sector_bound_audit.py` |
+| `scratch/kobon/sector_bound_audit.json` | 473 | `2c20841679043c474f3b539d57b6370ce7c1470e8777a7934aec87989b3907af` | included as `verification/sector_bound_audit.json` |
+| `scratch/kobon/pappus_relaxation_probe.py` | 3,601 | `975af524f5aad770d02dd0e20f22200f8054c9755d12821b8315f2bdd21d0880` | included as `verification/pappus_relaxation_probe.py` |
+| `scratch/kobon/pappus_relaxation_probe.json` | 659 | `ba4a108a77f9f527fbd576c64d173d8f715aa5735ba6d68584dfbf5968c4550c` | included as `verification/pappus_relaxation_probe.json` |
+| `scratch/kobon/n12_gap_sector_deletion_t39.cnf` | 16,145,451 | `5435cb9958710878b1a68bc112e353a46d9a031a723e1afaa31191a9a9546909` | referenced only; live discovery instance, no verdict |
+| `math/kobon/paper/kobon_broad_capacity.tex` | 62,608 | `bab2903d545ff61906b1ca6c4cbc1e6b494f7f6d5a360cbb81d1c416881bfa2f` | included as `papers/kobon_broad_capacity.tex` |
+| `math/kobon/paper/kobon_broad_capacity.pdf` | 369,258 | `742202e181b54a87a93219f41528dc1b0c41e7f6d913bacdcdda03401e4c10d2` | included as `papers/kobon_broad_capacity.pdf` |
 
 ## Canonical and working documents
 
@@ -50,7 +71,7 @@ Files strictly smaller than **50,000,000 bytes** have a SHA-256 computed from di
 
 | Path | Size (bytes) | SHA-256 | Canonical release zip |
 |---|---:|---|---|
-| `math/kobon/release/kobon-2026-08.zip` | 254,938 | `698b6c8136c563dbb63d856d76d02a2c851f3304db562ed52daff1821991270a` | canonical release container |
+| `math/kobon/release/kobon-2026-08.zip` | live outer container | hash intentionally not pinned inside itself; run `sha256sum` on the archive | canonical release container |
 | `math/kobon/release/kobon-2026-08-v1.zip` | 248,593 | `a4dfa51a5c728a49f21fe7c95e8572eaad08b0bca3dd235b13d3d5657c292f63` | referenced only (superseded archive) |
 | `math/kobon/release/kobon-2026-08-obsolete-structure.zip` | 248,543 | `052485125b30f3cc31d2ccdd57f9a65d977936ae2aadb5a13f7d61018b3ad3a3` | referenced only (superseded archive) |
 | `math/kobon/release/kobon-2026-08-obsolete-structure2.zip` | 248,571 | `bcd90fbcdffd32155d3df701d5568b03e1dd9e2c1ac912ebd0836935d49da2df` | referenced only (superseded archive) |

@@ -1,0 +1,76 @@
+{
+  "claim": "No arrangement of 12 distinct affine straight lines with exactly one parallel pair and no finite multiple point has 39 triangular bounded faces.",
+  "scope": {
+    "n": 12,
+    "target": 39,
+    "parallel_classes": [[0, 1]],
+    "all_other_pairs_cross": true,
+    "finite_concurrent_triples": 0,
+    "triangle_convention": "bounded arrangement faces",
+    "straight_line_soundness": "Each CNF is a necessary-condition relaxation; UNSAT covers every real arrangement in this branch."
+  },
+  "normalization": {
+    "parallel_pair_canonicalization": "Rotate the projective slope circle so the unique parallel direction is first, then relabel its two lines 0 and 1.",
+    "compact_symmetry_clause": "X(0,2,3)",
+    "compact_symmetry_justification": "P(0,2), P(0,3), P(2,3) are fixed true and C(0,2,3) false. The affine involution b_i -> -b_i preserves slopes, parallels, concurrencies and triangular faces while flipping every strict crossing-order bit. The primary certificate does not use this clause; the independent compact certificate does."
+  },
+  "generator": {
+    "path": "scratch/kobon/q1_gap_faces.py",
+    "sha256": "a67335fc5d7ac389348ac7f2e2333490ae3eebc5408f2ac968413fcbb77dee1c",
+    "direct_gap_criterion": "A selected triple is a triangular face only if no outside crossing lies strictly between its two vertices on any side line.",
+    "reproduction": "Current generator reproduces both CNFs byte-for-byte (cmp exit 0)."
+  },
+  "certificates": [
+    {
+      "role": "primary_unsymmetrized",
+      "variables": 20895,
+      "clauses": 111753,
+      "cnf": "scratch/kobon/n12/n12_q1_gap_t39.cnf",
+      "cnf_sha256": "fe70f05966df453b40be100bbb1fde5ca8269c43a868db5e7d4ead4cb7a21622",
+      "solver": "Kissat 4.0.4 8af8e56f174b778aef3aa45af9f739b2a5f492c2",
+      "seed": 0,
+      "result": "UNSATISFIABLE",
+      "exit_code": 20,
+      "conflicts": 23372476,
+      "process_time_seconds": 4221.60,
+      "proof": "scratch/kobon/n12/n12_q1_gap_t39.drat",
+      "proof_bytes": 2437053136,
+      "proof_sha256": "11ce6f6f8c31621c5ecff355dfd23678f1e21e572ea5e43349397b2867ec5545",
+      "checker_result": "s VERIFIED",
+      "checker_detected_empty_clause": true,
+      "formula_clauses_in_core": 19802,
+      "lemmas_in_core": 6539084,
+      "resolution_steps": 412704063,
+      "rat_lemmas_in_core": 5765,
+      "verification_seconds": 2040.064,
+      "checker_transcript": "scratch/kobon/n12/n12_q1_gap_t39.dratcheck.log",
+      "checker_transcript_sha256": "12e9abfa4c245f164ce5438fe906aa14009514a0061aa040b0df8c6b6e534374"
+    },
+    {
+      "role": "independent_compact_symmetry_broken",
+      "variables": 20895,
+      "clauses": 111754,
+      "cnf": "scratch/kobon/n12/n12_q1_gap_sym_t39.cnf",
+      "cnf_sha256": "17aa8cdac89cc8f3365ff96b49e0d7dbab00d09a52fee9a99f39c48958af6bce",
+      "solver": "Kissat 4.0.4 8af8e56f174b778aef3aa45af9f739b2a5f492c2",
+      "seed": 4,
+      "result": "UNSATISFIABLE",
+      "exit_code": 20,
+      "conflicts": 6844332,
+      "process_time_seconds": 968.42,
+      "proof": "scratch/kobon/n12/n12_q1_gap_sym_t39.drat",
+      "proof_bytes": 759328450,
+      "proof_sha256": "c6f7eaed6355a9a4adbb3dc7aaa9b1ff1b9616ab8842e088733d107dcb1df088",
+      "checker_result": "s VERIFIED",
+      "checker_detected_empty_clause": true,
+      "formula_clauses_in_core": 18296,
+      "lemmas_in_core": 2175416,
+      "resolution_steps": 126043830,
+      "rat_lemmas_in_core": 5362,
+      "verification_seconds": 660.064,
+      "checker_transcript": "scratch/kobon/n12/n12_q1_gap_sym_t39.dratcheck.log",
+      "checker_transcript_sha256": "c40810f5d45a1c46930159e89379edd858bdc053bb5bc0c71a7f75978fd22735"
+    }
+  ],
+  "consequence": "Blanc's exact simple maximum a_3^s(12)=37 excludes the Q=0/no-concurrency branch. Therefore every hypothetical 12-line arrangement with 39 triangular faces must contain a finite multiple point. These certificates alone do not prove K(12)=38."
+}

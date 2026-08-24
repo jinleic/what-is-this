@@ -1,18 +1,18 @@
 {
   "kit_file": "reports/arxiv_package.md",
-  "generated_utc": "2026-08-18T22:03:39Z",
+  "generated_utc": "2026-08-23T03:37:33Z",
   "do_not_post": true,
   "posting_status": "STAGING ONLY - no arXiv submission made or authorised by this kit",
   "source": {
     "paper_md": {
       "path": "reports/paper_pbb_nogo.md",
-      "bytes": 33262,
-      "md5": "4340160bb3e821359c0c8743a1ed6735"
+      "bytes": 66057,
+      "md5": "291d373ff96ac8f6ac7c7cff7d525aa6"
     },
     "paper_tex": {
       "path": "reports/paper_pbb_nogo.tex",
-      "bytes": 37483,
-      "md5": "ab90deef04a9522236184a0c0de278c5"
+      "bytes": 66226,
+      "md5": "d3a2c7e3a5fa4b474cf94480b3778664"
     },
     "paper_bib": {
       "path": "reports/paper_pbb_nogo.bib",
@@ -21,10 +21,10 @@
     },
     "paper_pdf": {
       "path": "reports/paper_pbb_nogo.pdf",
-      "bytes": 622680,
-      "md5": "579d2d193bd05f90d68a7b646b33ab2d"
+      "bytes": 708817,
+      "md5": "0f8b5ba50f8f59de140abd6ed104f789"
     },
-    "build_log": "reports/paper_pbb_nogo.log (pdflatex, 2026-08-17 23:07)"
+    "build_log": "reports/paper_pbb_nogo.log (pdflatex, 2026-08-22; two final passes)"
   },
   "title": "Perturbing a bivariate-bicycle code cannot buy distance for free",
   "subtitle": "An exact, perturbation-independent rate–distance obstruction for perturbed bivariate-bicycle (PBB) codes, with machine-checked certificates",
@@ -54,13 +54,13 @@
       "cs.ET": "no hardware-architecture claim"
     }
   },
-  "comments_field": "10 pages, 7 tables, 0 figures; two boxed main results; machine-checked with exact SAT certificates (CaDiCaL 1.9.5) and GF(2) replay; full provenance ledger and per-claim reproducers in the ancillary claims matrix",
+  "comments_field": "17 pages, 7 tables, 0 figures; two boxed main results; machine-checked with exact SAT certificates (CaDiCaL 1.9.5 and Kissat 4.0.4) and GF(2) replay; full provenance ledger and per-claim reproducers in the ancillary bundle",
   "measured_counts": {
-    "pages": 10,
+    "pages": 17,
     "tables": 7,
     "figures": 0,
-    "evidence": "reports/paper_pbb_nogo.log line 'Output written on paper_pbb_nogo.pdf (10 pages, 619338 bytes)'; grep counts on tex: 7 begin{table}, 7 begin{tabular}, 0 begin{figure}",
-    "note": "measured from the compiled PDF build log and tex source, not from the markdown"
+    "evidence": "reports/paper_pbb_nogo.log line 'Output written on paper_pbb_nogo.pdf (17 pages, 708817 bytes)'; tex counts: 6 table floats + 1 longtable, 6 tabular + 1 longtable, 0 figures",
+    "note": "measured from the final compiled PDF build log and tex source"
   },
   "authors": {
     "authors": "[TO FILL BY HUMAN]",
@@ -77,8 +77,8 @@
   "ancillary_files": [
     {
       "path": "reports/paper_pbb_nogo.tex",
-      "bytes": 37483,
-      "description": "LaTeX source compiled from the md (primary tex for arXiv)."
+      "bytes": 66226,
+      "description": "LaTeX source compiled from the md (primary tex for arXiv; 17-page reference build)."
     },
     {
       "path": "reports/paper_pbb_nogo.bib",
@@ -87,8 +87,8 @@
     },
     {
       "path": "reports/paper_pbb_nogo.pdf",
-      "bytes": 622680,
-      "description": "Reference build (10 pages) for preview; arXiv rebuilds from tex."
+      "bytes": 708817,
+      "description": "Reference build (17 pages) for preview; arXiv rebuilds from tex."
     },
     {
       "path": "reports/claims_matrix.md",
@@ -124,6 +124,21 @@
       "path": "results/processed/exp041_t_crosscheck.json",
       "bytes": 70288,
       "description": "EXP-041: independent T recomputation cross-checking EXP-039 host values."
+    },
+    {
+      "path": "results/certificates/exp056_wm_162_8_14_distance.json",
+      "bytes": 127917,
+      "description": "EXP-056 exact [[162,8,14]] certificate: 20 replayed class-orbit UNSATs, weight-14 witness, exact X/Z duality."
+    },
+    {
+      "path": "results/processed/exp055_odd_lattice_screen.json",
+      "bytes": 2677625,
+      "description": "Fixed-point odd-lattice screen through n=162: 2,132 classes / 51,769 pairs; 1,928/1,928 referenced dominated."
+    },
+    {
+      "path": "results/certificates/exp055_odd_lattice_survivors.json",
+      "bytes": 356,
+      "description": "Empty-survivor certificate hash-bound to the final n=162 screen."
     }
   ],
   "reviewer_quickstart": [

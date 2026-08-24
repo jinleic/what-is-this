@@ -108,6 +108,62 @@ line/pseudoline cases). This is not a theorem for the broad
 crossed/degenerate K_gen convention. In particular, do not cite Blanc as
 proving broad K(14)=53.
 
+### Rasukaru 2005 web analysis (newly located 2026-08-22)
+
+Primary archived Japanese pages, dated September 22--October 8, 2005:
+
+- https://web.archive.org/web/20061111125706/http://www10.plala.or.jp/rascalhp/nlines.htm
+- https://web.archive.org/web/20221209001801/http://www10.plala.or.jp/rascalhp/nlines2.htm
+- https://web.archive.org/web/20221208231339/http://www10.plala.or.jp/rascalhp/nlines3.htm
+
+Honma's page, which Clément--Bader cite as reference [6], explicitly credits
+the analysis to forum participant “らすかる” (Rasukaru) and dates the
+conclusions:
+https://web.archive.org/web/20171111045123/https://www004.upp.so-net.ne.jp/s_honma/triangle/triangle2.htm.
+
+Part 1 uses a sequential/per-line multipoint charge: adding a third line
+through an existing crossing destroys at least three segments and creates at
+most two new shared-side credits; later lines lose 5, 7, ... segments. It
+then gives the endpoint-loop parity obstruction for even n. Part 2 claims
+K(11)=32 and the mod-6 -1 bound. Part 3 gives a detailed n=10 case analysis
+claiming K(10)=25 and states the even formula
+
+    floor((n(n-2) - floor((n+2)/4)) / 3),
+
+which gives upper bound 54 at n=14. The final summary explicitly says the
+conditions/reductions in 5-1 and 5-3 are “probably” ignorable, so the general
+formula is not presented with a complete proof. The pages are public prior
+art, not refereed papers or proof certificates.
+
+Priority consequence: do not call the campaign's n=6,8,10 results first
+mathematical determinations. They are the first machine-checkable,
+all-degeneracy certificates located by this audit. The web argument motivates
+the face-specific square penalty
+
+    3F <= n(n-2) - 2Q - sum_p (k_p-2)^2,
+
+but the penalty is false even for triangular faces. A generic exact-rational
+chart of the classical simplicial arrangement A(12,1) has Q=0, N3=15, N6=1,
+and 30 triangular bounded faces, so its two sides are 90 and 89. The exact
+replay is `scratch/kobon/square_penalty_counterexample.py`; the earlier
+4,000-arrangement audit missed this structured simplicial family. More
+generally A(2m,1), defined as the m side lines and m mirror axes of a regular
+m-gon, violates the penalty for every m >= 6. The canonical source read
+directly is Branko Grünbaum, *A catalogue of simplicial arrangements in the
+real projective plane*, Ars Math. Contemp. 2 (2009), 1-25,
+doi:10.26493/1855-3974.88.e12. Pages 2 and 4 define the simplicial family
+R(1)=A(2m,1) and give, for m>3, t2=m, t3=m(m-1)/2, and t_m=1. For even m,
+half the axes join opposite vertices and half join opposite edge midpoints;
+for odd m, every axis joins a vertex to the opposite edge midpoint. The proof
+uses only m>=6, and the exact m=6 replay constructs three axes of each even
+type.
+
+Identifier correction: arXiv:0904.1244 is an astrophysics paper, not
+Grünbaum's catalogue; arXiv:1011.1862 is a lattice-QCD paper, not Cuntz.
+Cuntz's *Simplicial arrangements with up to 27 lines* is arXiv:1108.3000.
+The paper cites the verified published Grünbaum source, not any of these
+misassigned identifiers.
+
 ### Clement-Bader 2007 ETH draft
 
 PDF: https://www.sop.tik.ee.ethz.ch/publicationListFiles/cb2007a.pdf; OEIS
@@ -136,10 +192,16 @@ https://mathworld.wolfram.com/KobonTriangle.html explicitly states, "where
 the above expression (n^2-2n-2)/3 was incorrectly written as (n-1)^2/3 in
 the paper." Use the corrected value (n^2-2n-2)/3 only as a corrected
 transcription, never as a verbatim C-B quote. For n=14, C-B gives at most
-55; the current 54 upper bound comes from BBL, not C-B. C-B's theorem is an
-upper-bound result for the stated straight-line Kobon problem; its proof's
-perfect-configuration reduction should not be silently generalized to the
-report's broad degeneracy/crossing convention.
+55. Its Lemma 1 proof says one multipoint belongs to at most two shared-side
+pairs; the campaign's exact cevian-flower construction gives 2k such pairs at
+a k-fold point using genuine triangular faces. This invalidates the stated
+proof step, not the numerical bound. Rasukaru's earlier sequential/per-line
+argument is different and is not refuted by the flower alone; the
+$A(2m,1)$ family above does refute the coefficient-1 square inequality that
+the sequential credit suggests. Neither counterexample by itself refutes the
+stated mod-6 numerical bound. C-B is an unpublished draft; do not treat its
+theorem as a certified general-arrangement upper bound.
+The exact counterexample changes the proposed proof route, not this source-status conclusion.
 
 ### BBL context for the current even upper bounds
 

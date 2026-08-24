@@ -1,0 +1,43 @@
+{
+  "status": "VERIFIED_UNSAT",
+  "statement": "Every essential arrangement of 7 straight lines satisfies 3F + 2Q + (2/3) sum_p (k_p-2)^2 <= 35, where F is the number of bounded triangular faces, Q counts parallel pairs, and p ranges over finite multipoints.",
+  "scaled_statement": "9F + 6Q + 2 sum_p (k_p-2)^2 <= 105",
+  "scope": {
+    "n": 7,
+    "coefficient": "2/3",
+    "strict_violation_threshold": 106,
+    "essentiality_clause": "at least one pair of lines crosses",
+    "selected_face_count": "free, including zero",
+    "order_table_relaxation": "all parallel and finite concurrency patterns free",
+    "face_predicate": "universal direct-gap criterion"
+  },
+  "generator": {
+    "path": "scratch/kobon/square_penalty_sat.py",
+    "sha256": "43a676c756d67c939417fc582d4ca065a91896d4ad4e03b43c139a6421aee0e9",
+    "command": "math/.venv/bin/python scratch/kobon/square_penalty_sat.py 7 --coefficient 2/3 --out scratch/kobon/c23_n7_violation.cnf"
+  },
+  "cnf": {
+    "path": "scratch/kobon/c23_n7_violation.cnf",
+    "bytes": 2533909,
+    "variables": 74507,
+    "clauses": 152419,
+    "sha256": "075ca17768ad70e4ff69673543c85d629a69737656b36211c949b8e0a32676d9"
+  },
+  "proof": {
+    "path": "scratch/kobon/c23_n7_violation.drat",
+    "bytes": 34133280,
+    "sha256": "b17bb8d6610242ee3149b141d24447b2261ab1c75ac2f4e92c21913ad53f4c5a",
+    "solver": "Kissat --unsat --seed=0",
+    "solver_result": "s UNSATISFIABLE"
+  },
+  "checker": {
+    "path": "scratch/kobon/c23_n7_violation.dratcheck.log",
+    "tool": "drat-trim -w",
+    "result": "s VERIFIED",
+    "formula_clauses_in_core": 59128,
+    "lemmas_in_core": 211032,
+    "resolution_steps": 17656824,
+    "rat_lemmas_in_core": 2658
+  },
+  "soundness": "The order-table CNF is a necessary relaxation containing every essential straight-line arrangement. Selected triples imply triangular faces by the direct-gap theorem; no positive selection target is imposed. A geometric violation selects all of its faces and satisfies the scaled score threshold, so verified UNSAT proves the stated straight-line inequality at n=7."
+}

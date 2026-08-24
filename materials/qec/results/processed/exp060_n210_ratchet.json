@@ -1,0 +1,163 @@
+{
+  "all_exact": true,
+  "exact_parameter_histogram": {
+    "[[210,8,16]]": 1
+  },
+  "groups": [
+    "undecided"
+  ],
+  "records": [
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "decisions": [
+        {
+          "cnf_sha256": "f06cc9ced442a5389447e778bf852c33616387de0ca5af366b7960214f103382",
+          "encoding_version": "sat-decide-v2",
+          "kind": "css_z",
+          "solver": {
+            "backend": "pysat",
+            "clauses": 10201,
+            "cnf_variables": 4241,
+            "conflict_budget": 0,
+            "name": "PySAT kissat404",
+            "wall_time_s": 13825.384880584083
+          },
+          "status": "SAT",
+          "support": [
+            4,
+            11,
+            21,
+            35,
+            52,
+            59,
+            78,
+            92,
+            105,
+            119,
+            138,
+            151,
+            163,
+            164,
+            176,
+            198
+          ],
+          "symmetry_break": true,
+          "weight": 16,
+          "weight_cap": 16
+        }
+      ],
+      "duality": {
+        "conclusion": "d_X = d_Z; one certified side determines CSS distance",
+        "maps_HX_to_HZ_exactly": true,
+        "maps_HZ_to_HX_exactly": true,
+        "permutation_is_bijection": true,
+        "permutation_is_involution": true,
+        "permutation_sha256": "8222953f3d6857e43331e6f06488f5cafdc995cd58362b8e16fb97ad478cbb6d",
+        "schema": "exp056-bb-xz-duality-v1",
+        "valid": true
+      },
+      "exact": true,
+      "exact_distance": 16,
+      "group": "undecided",
+      "index": 5,
+      "k": 8,
+      "lower_bound": 16,
+      "n": 210,
+      "parity": {
+        "all_column_degrees_odd": true,
+        "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+        "column_degree_max": 3,
+        "column_degree_min": 3,
+        "effective_even_cap": 16,
+        "requested_cap": 17,
+        "schema": "exp056-kernel-weight-parity-v1",
+        "valid": true
+      },
+      "schema": "exp060-frontier-ratchet-v1",
+      "screen_verdict": "undecided",
+      "threshold": 16,
+      "upper": {
+        "duality_preserves_weight": true,
+        "route": "screen_reduced_or_cdcl_witness",
+        "support": [
+          4,
+          10,
+          17,
+          21,
+          28,
+          34,
+          59,
+          74,
+          85,
+          91,
+          112,
+          132,
+          135,
+          148,
+          157,
+          177,
+          190,
+          202
+        ],
+        "vector_sha256": "1b374092216021bf892dd25c40bbbd90690b0a496445ef7d5e9718838f310cab",
+        "weight": 18,
+        "x_support": [
+          15,
+          27,
+          40,
+          60,
+          69,
+          82,
+          85,
+          98,
+          108,
+          119,
+          132,
+          143,
+          158,
+          182,
+          183,
+          189,
+          200,
+          207
+        ],
+        "x_valid_bitset": true,
+        "x_valid_numpy": true,
+        "x_vector_sha256": "1e27100f86b034a5e21d48559cfd85c922ca247f73864f160f11136edf1dc445",
+        "z_valid_bitset": true,
+        "z_valid_numpy": true
+      },
+      "verdict": "exact"
+    }
+  ],
+  "schema": "exp060-frontier-ratchet-v1",
+  "source_shard": "results/partial_runs/exp055_screen/15x7.json",
+  "source_shard_sha256": "00c204184dfc7973303a23685927a14bbab9063ab18adfb1f810e868c0d18e91"
+}

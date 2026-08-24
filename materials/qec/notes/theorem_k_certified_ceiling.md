@@ -1,7 +1,9 @@
 # Theorem K — the reciprocal-pole logical isomorphism and certified BB distance bounds
 
-**Status (2026-08-21):** proved in the repository's matrix convention and
-machine-verified on 27 sourced odd-lattice BB instances. The underlying
+**Status (2026-08-22):** proved in the repository's matrix convention and
+machine-verified on 27 sourced odd-lattice BB instances. EXP-056 adds a
+replayed exact-distance closure for the published $(3,27)$ $[[162,8,14]]$
+instance. The underlying
 principal-code logical-space isomorphism is **published** (Eberhardt–Steffan,
 arXiv:2407.03973v1, Corollaries 2.11–2.12); do not claim it as new. A novelty
 search did not find the explicit general-BB *minimum-pole-weight ceiling* or its
@@ -135,9 +137,10 @@ odd-lattice instances:
 * all 25 reproduced rows satisfy `pole ceiling >= reported d`, but this is only
   a **sanity check**: Wang–Mueller uses BP-OSD `distance_upperbound`, and
   Postema–Kokkelmans labels its table distances Monte-Carlo estimates;
-* five rows are independently exact-certified here (Bravyi $[[90,8,10]]$,
-  three small Postema rows, and Wang–Mueller's $[[126,12,10]]$ exactified by
-  EXP-055): zero pole-ceiling violations, with slack min/median/max $2/10/22$.
+* six rows are independently exact-certified here (Bravyi $[[90,8,10]]$,
+  three small Postema rows, Wang–Mueller's $[[126,12,10]]$ exactified by
+  EXP-055, and its $[[162,8,14]]$ exactified by EXP-056): zero pole-ceiling
+  violations, with slack min/median/max $2/20/22$.
 
 The pole ceiling is sound but loose because setting $s=0$ ignores cancellations
 inside a logical coset. The reduced-witness route repairs much of that looseness
@@ -149,7 +152,69 @@ The semisimple character proof requires both $\ell,m$ odd. On even lattices the
 ring has nilpotents and this pole decomposition is not valid without a local
 Artinian refinement.
 
-## 5. Retraction record
+## 5. Orbit-generated exact distance and the $[[162,8,14]]$ closure
+
+The pole transversal also reduces exact lower-bound work. Let
+$L_X=I\oplus I\cong\ker H_Z/S_X$. If vectors $u_1,\ldots,u_r\in L_X$ have
+translation orbits spanning $L_X$, then for every weight cap $c$,
+$$
+\exists z\in\ker H_X\setminus S_Z,\ \operatorname{wt}(z)\le c
+\iff
+\exists i,\ z'\in\ker H_X:\ \langle z',u_i\rangle=1,\
+\operatorname{wt}(z')\le c.
+$$
+Indeed a nontrivial $z$ pairs with some translated $g u_i$; translating $z$
+by $g^{-1}$ preserves its class status and weight and moves the pairing to
+$u_i$. Since every ideal in the odd semisimple group algebra is principal,
+one pole generator per physical block suffices. EXP-056 machine-checks the
+two orbit ranks, their union quotient rank $k$, and the opposite-quotient
+pairing rank $k$ on the target.
+
+A global translation-origin clause is **not sound after fixing one arbitrary
+functional sector**: translation can move that functional to another sector.
+`sector_instance` therefore drops it. EXP-056 uses only the subgroup fixing
+the selected functional modulo stabilizers and inserts one support coordinate
+from each subgroup orbit. The hypotheses—code invariance, functional
+invariance, and coordinate-orbit coverage—are all replayed before UNSAT may
+count. A two-variable synthetic regression demonstrates that retaining the
+global clause can change SAT to UNSAT.
+The two-sector route is retained as a diagnostic speed probe only: it has no
+digest-bound replay writer and `canonical_route_enabled` is false. The exact
+certificate below rests exclusively on the fully replayed fixed-class route.
+
+For the Wang–Mueller code
+$$
+(\ell,m)=(3,27),\quad
+a=1+y^{10}+y^{14},\quad b=y^{12}+x+x^2,
+$$
+EXP-056 uses the stronger fixed-class form. The $2^8-1=255$ nonzero logical
+classes form **20** orbits under the verified order-$162$ automorphism group
+(translations and $x$-reflection), with sizes $6,9,18$. Each representative
+is the affine coset $p+S_Z$ and is encoded by 77 independent sparse
+$Z$-stabilizer generators. Every $H_X$ column has odd degree three, so summing
+all $H_X$ equations proves that every kernel word has even weight; excluding
+weight at most 12 therefore excludes weight at most 13.
+
+Kissat returns UNSAT on all 20 hash-bound class CNFs and repeats all 20 UNSATs
+on fresh replay. Initial per-class wall times are 39.79–89.19 s (median
+62.00 s; 1,312.75 s serial total); replay total is 1,287.67 s. An explicit
+weight-14 reciprocal-pole coset representative passes independent NumPy and
+bitset checks. Finally the exact coordinate permutation
+$QH_XP=H_Z,\ QH_ZP=H_X$ proves $d_X=d_Z$. Hence
+$$\boxed{[[162,8,14]]\ \text{with}\ d_X=d_Z=14\ \text{exactly}.}$$
+This promotes Wang–Mueller's BP-OSD `distance_upperbound` value to a local
+two-sided certificate; the source value remains correctly labelled an
+estimate.
+
+Promoting this certificate closes the fixed-point screen through $n=162$:
+13 nonempty-frontier lattices, 2,132 classes / 51,769 normalised pairs, all
+1,928 referenced classes dominated, 204 no-reference, zero
+survivors/undecided. Of the dominations, 1,804 use reduced-pole witnesses, 119
+use hash-bound CDCL witnesses, and five use the exact CP-SAT fallback. All
+1,923 persisted witnesses are rechecked in $\ker H_X\setminus S_Z$.
+
+## 6. Retraction record
+
 
 An intermediate EXP-055 draft used raw $I$ as a physical kernel and proposed a
 member fallback when $I\cap\bar I=0$. That fallback was **wrong**; the new
@@ -164,4 +229,7 @@ Machine sources:
 * `results/processed/exp055_odd_lattice_sweep.json`
 * `results/processed/exp055_odd_lattice_screen.json`
 * `results/certificates/exp055_odd_lattice_survivors.json`
+* `results/certificates/exp056_wm_162_8_14_distance.json`
+* `experiments/exp056_odd_distance.py`
+* `tests/test_exp056_odd_distance.py`
 * `tests/test_exp055_odd_lattice.py`

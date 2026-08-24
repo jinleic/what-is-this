@@ -100,8 +100,8 @@ $\tau^\dagger$, $\delta=-4a^4/A$ branch for the fixed nonzero value
 $Z=z^3$; quantitative Hilbert irreducibility in L20's odd
 character-admissible $a$-progression selects a concrete irreducible
 specialization (`/tmp/l22_elimination.md`; `THEOREMS.md`, L20–L22).
-L20 then supplies the aligned class with $f=w$ and all four Schinzel
-admissibility conditions.  L19 applies classical Schinzel H to the
+Together, L20 supplies the aligned $f=w$ class and conditions (b)–(d),
+while L22 completes condition (a).  L19 applies classical Schinzel H to the
 resulting linear/octic pair and supplies an emergent-free member.  That
 is precisely intermediate H of §2; W2 and Hasse–Minkowski make the tied
 conic globally soluble, producing a witness of $F(z)$
@@ -154,6 +154,7 @@ $d_0=2\alpha b$ (`THEOREMS.md`, L13 normalization note and L22;
 > $l\notin S\cup\{Q\}$ with
 > $v_l(P(\varepsilon fQ))$ odd has
 > $(x_0,d_0)_l=+1$.
+> (Source: `THEOREMS.md`, L19–L22.)
 
 “Emergent-free” means **no place with Hilbert symbol $-1$**; it does not
 mean that every outside valuation is even.  The stronger historical
@@ -299,56 +300,139 @@ All bibliographic details below were source-checked in
 
 - For integer arguments, unconditional squarefree-value theorems cover
   degrees at most $3$: Erdős, *J. London Math. Soc.* 28 (1953),
-  416–425; Hooley, *Mathematika* 14 (1967), 21–26; and, for binary
-  forms, Greaves, *Q. J. Math. Oxford* (2) 43 (1992), 45–65
+  416–425; Hooley, “On the power-free values of polynomials,”
+  *Mathematika* 14 (1967), 21–26; and, for binary forms, Greaves,
+  “Power-free values of binary forms,” *Q. J. Math. Oxford* (2) 43
+  (1992), 45–65 (`data/litscout_h10q.md`).
+- Under $\mathsf{abc}$, Granville, “ABC allows us to count
+  squarefrees,” *IMRN* 1998 (19), 991–1009, handles arbitrary degree at
+  integer arguments; Poonen, *Duke Math. J.* 118 (2003), 353–373,
+  gives the multivariable analogue (`data/litscout_h10q.md`).
+- At prime arguments, the recorded anchors are Baker–Pollack,
+  “Clusters of primes with square-free translates,”
+  pollack-math.net/ClustersPrimesSquarefree.pdf, in degree $1$;
+  Helfgott, “Square-free values of $f(p)$, $f$ cubic,”
+  arXiv:1112.3820, in degree $3$; and Reuss, “Power-Free Values of
+  Polynomials,” arXiv:1307.2802, for $(d-1)$-free values
   (`data/litscout_h10q.md`).
-- Under $\mathsf{abc}$, Granville, *IMRN* 1998 (19), 991–1009, handles
-  arbitrary degree at integer arguments; Poonen, *Duke Math. J.* 118
-  (2003), 353–373, gives the multivariable analogue
-  (`data/litscout_h10q.md`).
-- At prime arguments, the recorded anchors are Baker–Pollack in degree
-  $1$, Helfgott arXiv:1112.3820 in degree $3$, and Reuss
-  arXiv:1307.2802 for $(d-1)$-free values
-  (`data/litscout_h10q.md`).
-- For prescribed square class in a progression, Krumm,
-  *JTNB* 28 (2016), 699–724, arXiv:1407.4890, proves the degree-at-most-$2$
-  case; his degree-$3$ result is conditional on the elliptic-curve
-  Parity Conjecture, not the sieve parity problem
-  (`data/litscout_h10q.md`).
+- For prescribed square class in a progression, Krumm, “Squarefree
+  parts of polynomial values,” *JTNB* 28 (2016), 699–724,
+  arXiv:1407.4890, Theorem 1.3 and Propositions 3.4–3.5, proves the
+  degree-at-most-$2$ case.  Proposition 3.8 treats degree $3$
+  conditionally on the elliptic-curve Parity Conjecture, not the sieve
+  parity problem (`data/litscout_h10q.md`).
 - For the conic-bundle provenance, Harpaz–Skorobogatov–Wittenberg,
-  *Compositio Math.* 150 (2014), 2095–2111, arXiv:1304.3333, is
-  unconditional under its abelian constant-field hypothesis.  The
-  general route uses Schinzel H in
-  Colliot-Thélène–Skorobogatov–Swinnerton-Dyer,
-  *J. reine angew. Math.* 495 (1998), 1–28, and the
-  Colliot-Thélène–Sansuc paper in *Acta Arith.* 41 (1982), 33–53
-  (`data/litscout_h10q.md`).
+  *Compositio Math.* 150 (2014), 2095–2111, arXiv:1304.3333,
+  Theorem 3.1 and Corollary 3.4, is unconditional under its abelian
+  constant-field hypothesis.  The general route uses Schinzel H in
+  Colliot-Thélène–Skorobogatov–Swinnerton-Dyer, “Rational points and
+  zero-cycles on fibred varieties: Schinzel's hypothesis and
+  Salberger's device,” *J. reine angew. Math.* 495 (1998), 1–28, and
+  the Colliot-Thélène–Sansuc Schinzel paper in *Acta Arith.* 41 (1982),
+  33–53 (`data/litscout_h10q.md`).
 - Carella arXiv:2310.16952 remains excluded from the record for the
   reasons documented in the source-checked literature report
   (`data/litscout_h10q.md`).
 
-The remaining research question for this route is therefore whether
-classical Schinzel H can be replaced by an unconditional theorem for
-the selected linear/octic pair.  Theorem C itself remains
-**CONDITIONAL**; no statement above proves Schinzel H.
+### 4.3 L23–L27: unconditional frontier theorems, but no member theorem
+
+L23 now proves a genuine unconditional theorem for the selected
+linear/octic sequence.  After absorbing the finitely many exceptional
+primes into the progression, the bad-root sieve has exact dimension
+$\kappa=1/2$ and Bombieri--Vinogradov level
+$$D=X^{1/2}/(\log X)^B.$$
+The semilinear lower sieve with $z=X^{49/100}$ gives
+$$
+\#\{X<t\le2X:\ Q(t)\ {\rm prime},\
+G(t)\ {\rm has\ no\ bad\ root\ prime}<z\}
+\gg\frac{X}{(\log X)^{3/2}}.
+$$
+This is unconditional **small-prime cleanliness**, not intermediate H:
+$|G(t)|=X^{8+o(1)}$ can retain up to $16$ factors above $z$, and
+reciprocity permits $0,2,\ldots,16$ bad odd-valuation factors.
+
+The first missing analytic input is therefore a parity-sensitive
+two-large-bad-divisor estimate in the sector
+$$p_1,p_2\ge z,\qquad p_1p_2>D,$$
+with both primes of bad sign and odd valuation.  Equivalently one needs
+$R_{\rm bad}\le1$ for sign-decorated divisors of the octic at prime
+arguments.  Even Elliott--Halberstam leaves up to eight large factors;
+the strongest cited general almost-prime result gives only $P_{12}$
+after a fixed-AP adaptation (`THEOREMS.md`, L23a–b;
+`data/l23_half_sieve.jsonl`).
+
+The algebraic alternatives tested in L23 do not bypass that sector.
+The untwisted Capell square-in-$K$ collapse is impossible on the
+selected refined protocol; the associated fixed-cell conic bundle has
+non-split rank $10$ and
+$\operatorname{Br}(X)/\operatorname{Br}(\mathbb Q)=\mathbb Z/2$, outside
+the checked low-rank fibration theorems.  Exact norm matching and
+polynomial-in-$b$ sections miss $\Phi$; the elementary
+$P=\pm2b\,\square$ and $P=A\,\mathrm{Norm}$ routes hit dyadic walls;
+the first admissible factor ansatz reduces to genus-$4$ curves; and
+moving $a$ has smallest **certified** squareclass degree $18$ in the
+audit, with no universal minimum claim (`THEOREMS.md`, L23c–f).
+
+L24 closes the tempting self-coupled diagonal alternative even more
+sharply.  Both formal tied-rank-$\le1$, finite-flat degree-$8$ covers
+are uniformly empty on $\Phi$ over $\mathbb Q_2$.  Orientation I has
+normalized coefficient valuations $(4,0,0)$; orientation II reduces
+to the complete contradiction
+$$0\equiv8+2Ab(s^2-1)\pmod{16}.$$
+Thus the diagonal $\le5$ count is vacuous and supplies no member.  The
+$4{,}026{,}282$ zero-hit scan is corroboration only; the mod-$16$
+exhaustion is the proof (`THEOREMS.md`, L24;
+`data/l24_diagonal_{geometry,arithmetic,local,search}.jsonl`).
+
+L25–L27 supply genuinely non-diagonal local and algebraic advances.
+L25 proves that two fixed scalings cover complementary dyadic parities,
+but its target formula is not aligned.  L26's even-pullback reciprocal
+tie gives
+$$P_{\rm rec}(b)=b^4T(b+b^{-1}),\qquad\deg T=4,$$
+automatic dyadic splitting, and the trace-character identity
+$(2b|p)=(2(u+2)|p)$; the quartic squareclass and global member remain
+open.  L27's fixed shear $(2X+28\rho,sX+\rho)$ covers every dyadic
+parity and every standard aligned odd target, including $3,5$, but its
+global degree-$8$ cover has no proved rational point
+(`THEOREMS.md`, L25–L27;
+`data/l25_scaled_coupling.jsonl`;
+`data/l26_reciprocal_tie.jsonl`;
+`data/l27_triangular_shear.jsonl`).
+
+Consequently classical Schinzel H has **not** become proved, weaker, or
+removable in Theorem C.  The exact next targets are the L26 quartic
+trace squareclass/member problem, a target-specific rational point on
+the L27 global cover, or the two-large-bad-divisor dispersion estimate.
+Theorem C remains **CONDITIONAL on classical Schinzel H alone**.
 
 ---
 
 ## 5. Provenance and discipline
 
-- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L22;
-  `RESULTS.md`; and the cited `data/` artifacts.  The two symbolic L22
-  proof reports are `/tmp/l22_elimination.md` and
-  `/tmp/l22_reciprocal_cube.md`.
+- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L27;
+  `RESULTS.md`; and the cited `data/` artifacts.  The L22 proof reports
+  remain `/tmp/l22_elimination.md` and
+  `/tmp/l22_reciprocal_cube.md`; all L23–L27 producer/data pairs are
+  inventoried in `README.md`.
 - Engine discipline remains proven-primality only.  The exact
   Miller–Rabin, Pocklington and Brillhart–Lehmer–Selfridge scopes are
   recorded in `README.md`, Engine note, and `test_bls.py`; refusals are
   logged and never treated as evidence.
+- The HalfSieveAudit, FibrationAudit and DiagonalAudit verdicts were
+  SOUND at confidences $0.90$, $0.88$ and $0.90$ respectively.
+  ReciprocalTieAudit's three scope findings were applied; the corrected
+  TriangularShearAudit returned no high-confidence finding.  Their
+  corrections are incorporated in `THEOREMS.md`, L23–L27 and retain all
+  finite rows at their declared scopes.
+- The $4{,}026{,}282$ diagonal attempts and every other bounded no-hit
+  scan are EVIDENCE only.  Uniform diagonal emptiness is the dyadic
+  theorem, not extrapolation from the scan.
 - Nothing here depends on Sun's unrefereed §§3–8 chain.  Soundness is
-  inherited from the audited block; completeness uses L19–L22 and
-  classical Schinzel H (`THEOREMS.md`, L6 and L19–L22).
+  inherited from the audited block; completeness of the conditional
+  implication uses L19–L22 and classical Schinzel H.  L23–L27 sharpen
+  the frontier but are not replacements for that conjectural input.
 - **Final status:** the six-universal-quantifier record and
   $\operatorname{efd}\le5$ are established conditionally on classical
-  Schinzel H alone (`THEOREMS.md`, L22d).  Classical Schinzel H is
-  unproved, so H10/$\mathbb Q$ and the unconditional six-quantifier
+  Schinzel H alone (`THEOREMS.md`, L22d and L24e–L27).  Classical
+  H is unproved, so H10/$\mathbb Q$ and the unconditional six-quantifier
   statement remain open.

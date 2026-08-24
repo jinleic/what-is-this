@@ -20,7 +20,7 @@
 \title{Crossings never help: the Kobon conventions coincide,\\
 with certified values and the status of $K(14)$}
 \author{Working draft --- author to be supplied}
-\date{21 August 2026}
+\date{23 August 2026}
 
 \begin{document}
 \maketitle
@@ -60,12 +60,13 @@ multiple points,
 where $C$ counts line/triangle interior incidences, together with an exact
 bounded-face budget; these drive the encoding. With them we certify $K(n)$ for every $n\le10$ ---
 $2,5,7,11,15,21,25$ from $n=4$, with \texttt{drat-trim}-verified refutations
-of $K(n)+1$ at $n=4,\dots,9$ --- admitting every degeneracy. Three of these
-are new: at $n=6,8,10$ the recorded value was a construction paired with a
-bound proved only for \emph{simple} arrangements, while the bound valid for
-arbitrary arrangements is strictly larger ($8$, $16$, $26$); at $n=10$ even
-the unpublished draft leaves $26$ open, and at $n=8$ the value $15$ exceeds
-the exact simple maximum $14$, so it is attained only non-simply. The same mismatch affects $n=12$ and $n=14$, where the
+of $K(n)+1$ at $n=4,\dots,9$ --- admitting every degeneracy. These are the
+first machine-checkable all-degeneracy certificates known to us, but not the
+first claims of the values: web essays by Rasukaru in 2005
+\cite{Rasukaru2005} give geometric arguments for $n=6,8,10,11$. At $n=8$
+the value $15$ exceeds the exact simple maximum $14$, so it is attained only
+non-simply; the certificate verifies precisely the regime where a
+simple-arrangement bound cannot apply. The same mismatch affects $n=12$ and $n=14$, where the
 constructions $38$ and $54$ exceed the exact simple maxima $37$ and $53$; we
 show the exactness claims recorded for them are unsupported. On the constructive side we verify, in exact rational
 arithmetic and with three implementations, a $14$-line arrangement with $54$
@@ -78,7 +79,10 @@ that the same reading leaves $38\le K(12)\le39$, so $n=12$ is in fact the
 smallest open case. Each is closed by a single crossing-free instance with
 all degeneracies free. We also prove two equality-branch obstruction
 theorems ($n=14$ and $n=18$, machine-checked) and that the method cannot
-close the analogous branch at $n=20$.
+close the analogous branch at $n=20$. Finally, we refute a natural
+face-specific square penalty suggested by sequential line addition: the
+classical simplicial family formed by the sides and symmetry axes of a
+regular polygon gives infinitely many straight-line counterexamples.
 \end{abstract}
 
 \section{Three quantities}
@@ -109,25 +113,32 @@ Clearly $a_3^s(n)\le K(n)\le \Kgen(n)$.
 
 Clément and Bader \cite{CB2007} define a Kobon triangle as ``a triangle that
 is realized by 3 straight lines segments and which does not overlap with
-other triangles'', i.e.\ they work with $K$; their Lemma 1 argument
-enumerates the cases ``side shared by two triangles'' (which forces
-concurrency at an endpoint) and ``segment used by no triangle'', and their
-mod-$6$ improvement passes through \emph{perfect configurations}, defined as
-arrangements of \emph{pairwise intersecting} lines in which every segment is
-the side of exactly one triangle, and shown in their Lemma 2 to have no three
-concurrent lines. Their bound
+other triangles'', i.e.\ they work with $K$. Their mod-$6$ claim
 \begin{equation}\label{eq:CB}
  K(n)\ \le\ \lfloor n(n-2)/3\rfloor - \mathbf 1_{n \bmod 6\in\{0,2\}}
 \end{equation}
-is therefore a statement about $K$. Their case analysis does not treat a
-counted triangle whose sides are subdivided by crossings; by
-Theorem~\ref{thm:collapse} it need not, since such triangles may be
-eliminated without loss. What remains is that \eqref{eq:CB} rests on an
-unpublished draft, and that its route --- equality forces a perfect
-configuration, perfect configurations are simple and parallel-free (their
-Lemma 2), and the sharper simple bounds then contradict equality --- has not
-been refereed. Bartholdi, Blanc and Loisel \cite{BBL} and Blanc
-\cite{Blanc} bound $a_3^s$. Thus:
+passes through \emph{perfect configurations}, defined as pairwise-intersecting
+arrangements in which every segment is the side of exactly one triangle.
+The load-bearing step in their Lemma 1 says that every multipoint belongs to
+at most two pairs of triangular faces sharing a side. This is false even in
+their face convention: Proposition~\ref{prop:flower} constructs a $k$-fold
+point belonging to all $2k$ possible shared radial sides, already six at a
+triple point and eight at a quadruple point. Thus the draft does not establish
+that equality forces a perfect configuration. This does not refute
+\eqref{eq:CB}; it leaves the claimed bound unproved by the argument as written.
+Rasukaru's earlier web analysis \cite{Rasukaru2005}, which is credited on the
+Honma page cited as reference [6] of \cite{CB2007}, uses a different
+sequential charge: each additional line through an existing intersection
+loses at least three new segments and is assigned at most two new shared-side
+credits. This suggests the face-specific square penalty discussed below.
+Proposition~\ref{prop:squarefail} gives infinitely many straight-line
+counterexamples to that penalty, so the sequential credits cannot be
+globalised in this form. This does not by itself refute the resulting
+mod-$6$ numerical bound. The final generalisation on the web explicitly
+leaves two perturbation reductions at ``probably harmless'', so we treat it
+as prior insight rather than a proved theorem.
+The draft is additionally unpublished. Bartholdi, Blanc and Loisel
+\cite{BBL} and Blanc \cite{Blanc} bound $a_3^s$. Thus:
 
 \begin{quote}
 \emph{The base segment bound $\lfloor n(n-2)/3\rfloor$ is stated for $K$
@@ -304,11 +315,18 @@ corresponding pointwise statement is false.
 \item A capacity theorem for $\Kgen$ (Theorem~\ref{thm:capacity}), with exact
 degeneracy penalty and crossing charge, and a closed-form ceiling
 (Theorem~\ref{thm:ceiling}).
+\item Exact edge-use and sector-run identities, an infinite family of
+straight-line counterexamples to the tempting coefficient-$1$ square penalty,
+and a checked finite certificate for the surviving coefficient-$2/3$
+candidate at $n=7$ (Lemma~\ref{lem:edgeaccount},
+Corollary~\ref{cor:sectorexcess}, and
+Propositions~\ref{prop:squarefail}--\ref{prop:c23n7}).
 \item A certified initial segment with all degeneracies free:
 $K(4),\dots,K(9)=2,5,7,11,15,21$, each with a \texttt{drat-trim}-verified
 refutation of $K(n)+1$, plus $K(10)=25$ from a prior cube cover
-(Theorem~\ref{thm:ladder}); of these $K(6),K(8),K(10)$ are first
-determinations (Corollary~\ref{cor:before}).
+(Theorem~\ref{thm:ladder}); the $n=6,8,10$ rows are machine-checkable
+all-degeneracy certifications of values argued on the web in 2005
+(Remark~\ref{rem:priorweb}).
 \item A hypothesis audit of the recorded small values
 (Proposition~\ref{prop:mismatch}): at $n=8,12,14$ the record exceeds the
 exact simple maximum, so the simple-only bound cited as ``the upper bound''
@@ -381,17 +399,19 @@ At $n=6$ and $n=10$ the construction equals $\bar a_3^s(n)$, so it may be
 simple; but the same gap remains on the upper side, since
 $\lfloor n(n-2)/3\rfloor$ is $8$ and $26$ there. Collecting:
 
-\begin{corollary}\label{cor:before}
-Before the certificates of \S\ref{sec:ladder}, the values determined by the
-refereed literature were $K(n)$ for $n\le5$ and $n\in\{7,9,13\}$, where
-$\lfloor n(n-2)/3\rfloor$ is attained, together with $K(11)=32$
-\cite{Savchuk}. For the even cases $n\in\{6,8,10,12,14\}$ the record was a
-construction paired with a bound proved only for simple arrangements.
-Granting the unpublished draft \cite{CB2007} would settle $n=6$ and $n=8$,
-since \eqref{eq:CB} gives $7$ and $15$ there; it would not settle
-$n=10,12,14$, where \eqref{eq:CB} gives $26,39,55$ against constructions
-$25,38,54$.
-\end{corollary}
+\begin{remark}[source status]\label{rem:priorweb}
+The refereed literature before this work determines $K(n)$ for $n\le5$ and
+$n\in\{7,9,13\}$, where $\lfloor n(n-2)/3\rfloor$ is attained, together
+with $K(11)=32$ \cite{Savchuk}. This is not the whole prior record.
+Rasukaru's public Japanese web essays of September--October 2005
+\cite{Rasukaru2005}, preserved and credited by Honma, give geometric
+arguments for $K(6)=7$, $K(8)=15$, $K(10)=25$ and $K(11)=32$, and state a
+general even-$n$ bound that gives $54$ at $n=14$. The final generalisation
+explicitly treats two perturbation reductions as ``probably'' harmless, and
+the work is neither refereed nor accompanied by a checkable certificate.
+Accordingly, Theorem~\ref{thm:ladder} claims machine-checkable certificates,
+not priority for the numerical values.
+\end{remark}
 
 \section{The capacity theorem}
 
@@ -428,6 +448,156 @@ the companion document \cite[\S3]{companion} and was re-derived by an
 adversarial audit over $3{,}016$ arrangements and $812{,}486$ admissible
 families with $5{,}900{,}863$ exact linewise checks.
 \end{proof}
+
+\begin{proposition}[flower saturation]\label{prop:flower}
+For every $k\ge3$ there is an arrangement of $k+3$ straight lines with a
+$k$-fold point $p$ incident to $2k$ bounded triangular faces. Every one of
+the $2k$ elementary radial segments from $p$ is the common side of the two
+triangular faces beside it. Consequently the two tokens per incident line in
+Lemma~\ref{lem:perline} can be simultaneously realised at one multipoint, and
+the local coefficient $k(k-4)$ in \eqref{eq:capacity} is sharp.
+\end{proposition}
+
+\begin{proof}
+Choose a triangle $\Delta$, a point $p\in\intr(\Delta)$, and $k$ distinct
+lines through $p$, three of which pass through the three vertices of
+$\Delta$. Choose the remaining lines generically. The $2k$ rays cut the
+boundary of $\Delta$ cyclically; because every vertex of $\Delta$ lies on a
+ray, the boundary arc between consecutive rays is contained in one side of
+$\Delta$. Each of the $2k$ sectors inside $\Delta$ is therefore a triangular
+arrangement face. Each radial segment is adjacent to the sectors on both
+sides and hence is used twice.
+
+Collapsing $k$ pairwise crossings to $p$ removes $k-2$ elementary gaps on
+each of the $k$ incident lines, or $k(k-2)$ in total, while the $2k$ shared
+radial segments return $2k$ units. The net local charge is
+$k(k-2)-2k=k(k-4)$. Exact rational instances for $k=3,4$, including all
+face and shared-side checks, are replayed by
+\texttt{scratch/kobon/flower\_counterexamples.py}.
+\end{proof}
+\begin{lemma}[edge-use identity]\label{lem:edgeaccount}
+Let $F$ be the number of bounded triangular faces, $M$ the number of bounded
+elementary segments, $E_2$ the number incident with a triangular face on both
+sides, and $U$ the number incident with no triangular face. Then
+\[
+ 3F=M+E_2-U,\qquad
+ M=n(n-2)-2Q-\sum_p k_p(k_p-2).
+\]
+Consequently the proposed square penalty
+\[
+ 3F\le n(n-2)-2Q-\sum_p(k_p-2)^2
+\]
+is equivalent to
+\[
+ E_2-U\le 2\sum_p(k_p-2).
+\]
+\end{lemma}
+
+\begin{proof}
+If $E_1$ counts bounded elementary segments incident with exactly one
+triangular face, then $3F=E_1+2E_2$ and $M=U+E_1+E_2$. On a line $\ell$ there
+are
+\[
+ m_\ell=n-2-q_\ell-\sum_{p\ni\ell}(k_p-2)
+\]
+bounded elementary segments. Sum over $\ell$ and use
+$\sum_\ell q_\ell=2Q$. Finally,
+$k_p(k_p-2)-(k_p-2)^2=2(k_p-2)$.
+\end{proof}
+\begin{corollary}[sector-run excess]\label{cor:sectorexcess}
+At a $k_p$-fold point $p$, its $2k_p$ rays determine $2k_p$ angular
+sectors, each lying in one incident cell; call a sector triangular when that
+cell is a triangular face with vertex $p$. Let $z_p$ be the number of
+non-triangular sectors and $r_p$ the number of cyclic runs of triangular
+sectors, with $r_p=0$ when $z_p=0$. Let $D_2$ count doubly used segments
+whose two endpoints are both multipoints. Then
+\[
+ 3F-\left(n(n-2)-2Q-\sum_p(k_p-2)^2\right)
+ =\sum_p(4-z_p-r_p)-U-D_2.
+\]
+\end{corollary}
+
+\begin{proof}
+A segment $e\subset\ell$ used by triangular faces on both sides has at least
+one multipoint endpoint. Otherwise let $a$ and $b$ be the unique crossing
+lines at its two simple endpoints. At either endpoint the boundary of each
+adjacent face must turn from $\ell$ onto the crossing line; continuing along
+$\ell$ would not bound that face. Thus both triangles have the same three
+supporting lines $\ell,a,b$. If $a$ and $b$ are parallel neither triangle
+closes; otherwise they have one intersection and the three lines determine
+only one bounded triangle, not triangles on opposite sides of $e$.
+
+At $p$, a ray begins a doubly used segment exactly when both adjacent sectors
+are triangular. If $z_p=0$ all $2k_p$ rays qualify. Otherwise a run of length
+$s$ contributes $s-1$, so the number of qualifying rays is
+$I_p=2k_p-z_p-r_p$. Summing $I_p$ counts each doubly used segment once, and
+once more exactly when both endpoints are multipoints; hence
+$\sum_p I_p=E_2+D_2$. Therefore
+\[
+ E_2-U-2\sum_p(k_p-2)
+ =\sum_p(4-z_p-r_p)-U-D_2,
+\]
+and Lemma~\ref{lem:edgeaccount} identifies the left side with the claimed
+excess.
+\end{proof}
+
+
+\begin{proposition}[the square penalty fails]\label{prop:squarefail}
+The face-specific square penalty of Lemma~\ref{lem:edgeaccount} is false for
+straight-line arrangements. In fact it fails for infinitely many values of
+$n$. There is an exact rational $12$-line counterexample with no parallels,
+$N_3=15$, $N_6=1$, and all $30$ bounded faces triangular:
+\[
+ 3F=90>120-\bigl(15+(6-2)^2\bigr)=89.
+\]
+\end{proposition}
+
+\begin{proof}
+Let $\mathcal R_m$ be Grünbaum's regular simplicial projective arrangement
+$A(2m,1)$ in the family $R(1)$: the $m$ side lines and the $m$ mirror axes of
+a regular $m$-gon \cite[pp.~2, 4]{Grunbaum2009}. For even $m$, half the axes
+join opposite vertices and half join opposite edge midpoints; for odd $m$,
+each axis joins a vertex to the opposite edge midpoint. In either case the
+$m$ axes are distinct. The catalogue gives, for $m>3$, one $m$-fold centre,
+$\binom m2$ triple points and $m$ double points; our counterexample range is
+$m\ge6$. Directly, every pair of side lines meets on the symmetry axis
+interchanging them, and these points are distinct because no three tangents
+to a conic are concurrent. These triples consume $m(m-1)$ of the $m^2$
+side--axis pairs, leaving $m$ double points, while all axis--axis pairs meet
+at the centre.
+
+Thus
+\[
+ f_0=1+\binom m2+m=\frac{m^2+m+2}{2}.
+\]
+Projective Euler and simpliciality give
+$f_2=2(f_0-1)=m^2+m$. Choose a generic projective line as the line at
+infinity. It avoids every arrangement vertex, so the resulting affine
+arrangement has $Q=0$ and the same finite multiplicities. Its $2m$
+intersections with the arrangement divide the line at infinity into $2m$
+arcs, so at most $2m$ projective chambers become unbounded. Hence at least
+\[
+ F\ge f_2-2m=m(m-1)
+\]
+triangular faces remain bounded. The square correction is
+\[
+ \binom m2+(m-2)^2.
+\]
+With $n=2m$, the excess of $3F$ over the proposed right-hand side is therefore
+at least
+\[
+ 3m(m-1)-\left(2m(2m-2)-\binom m2-(m-2)^2\right)
+ =\frac{m^2-7m+8}{2},
+\]
+which is positive for every $m\ge6$. For $m=6$, the exact chart replay cited
+in Appendix~\ref{app:artifacts} finds $F=30$, the stated census, $39$ doubly
+used and no unused bounded segments, and verifies both sides as $90$ and
+$89$ by two independent face predicates. Its sector-run census gives
+$\sum_p(4-z_p-r_p)=27$ and $D_2=26$, exposing the one-unit violation in
+Corollary~\ref{cor:sectorexcess}.
+\end{proof}
+
+
 
 \begin{theorem}[capacity]\label{thm:capacity}
 For every essential arrangement of $n$ distinct affine lines and every
@@ -513,11 +683,110 @@ in particular $|S|\le K(n)$ is attained by faces.
 \eqref{eq:capacity} forces $C+2Q+\sum_{k\ge4}\Nk k(k-4)\le0$ with all terms
 nonnegative.
 \end{proof}
+\begin{remark}[zero slack is not simplicity]\label{rem:zeroslack}
+Lemma~\ref{lem:reduction} deliberately does not conclude that the arrangement
+is simple: quadruple points have zero coefficient in
+\eqref{eq:capacity}. Proposition~\ref{prop:flower} shows that their local
+double-use credit is real, not an artefact of the proof. Any implication
+``$\Delta=0$ forces simple'' therefore needs a genuinely stronger global
+inequality; it does not follow from the capacity theorem.
+\end{remark}
 
 Among known values, \eqref{eq:capacity} is attained exactly at
 $n=3,5,9,15,17$ --- precisely the $n$ where the Tamura value $n(n-2)/3$ is
 realised --- and there all three quantities of Definition~\ref{def:three}
 coincide.
+
+\begin{lemma}[direct gap criterion]\label{lem:gapface}
+Let $t=\{a,b,c\}$ be a nondegenerate triple in an arbitrary straight-line
+arrangement, allowing parallels and multiple points elsewhere. Then $t$
+bounds a triangular arrangement face if and only if, for each side line
+$r\in t$, no outside line $u\notin t$ meets $r$ strictly between the two
+vertices of $t$ on $r$.
+\end{lemma}
+
+\begin{proof}
+Necessity is immediate: such an intersection subdivides the relative interior
+of a face side. Conversely, if an outside line enters the open triangle, it
+must leave through the boundary. It cannot meet two vertices, since the line
+through two vertices is one of the three side lines; if it enters through one
+vertex, it leaves through the relative interior of the opposite side.
+Otherwise it meets two side interiors. In every case some forbidden strict
+between-intersection exists. Likewise an arrangement vertex in the open
+triangle would put each of its incident lines through the boundary. Thus the
+three unsubdivided sides bound one arrangement cell.
+\end{proof}
+
+In the slope-sorted order encoding, the forbidden event on side $r$ with
+endpoint lines $a,b$ is exactly
+\[
+ S(t)\wedge X(r,a,u)\wedge X(r,u,b)
+ \quad\hbox{or}\quad
+ S(t)\wedge X(r,b,u)\wedge X(r,u,a).
+\]
+Concurrency at an endpoint makes both strict patterns false, as required.
+Distinct arrangement faces have disjoint interiors, so no pairwise polygon
+disjointness clauses are needed once Lemma~\ref{lem:gapface} is imposed.
+
+\begin{lemma}[hereditary and vertex-sector cuts]\label{lem:hereditary}
+Let $S$ be a family of triangular arrangement faces.
+\begin{enumerate}
+\item For every subset $W\subseteq\mathcal A$, the members of $S$ whose three
+supporting lines lie in $W$ are distinct triangular faces of the
+subarrangement $W$. In particular their number is at most $K(|W|)$.
+\item At most four members of $S$ use any fixed pair of lines. If that pair
+meets at a finite multipoint, at most two do. In the latter case the number is
+zero unless the pair is consecutive on at least one of the two arcs of the
+cyclic slope order restricted to the lines through the point.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Deleting lines outside $W$ removes no boundary line of a face supported in
+$W$ and creates no new crossing, so its three unsubdivided sides still bound
+the same triangular cell. Distinct support triples remain distinct.
+
+At a simple intersection a fixed pair bounds four open sectors, and a cell
+incident with the intersection occupies exactly one. At a $k$-fold point with
+$k\ge3$, the $2k$ rays show that the fixed pair bounds a cell only when its
+rays are consecutive; then it bounds exactly two opposite sectors. In the
+standard chart with no vertical line, the labels are the linear slope order.
+Thus lines with labels strictly between the pair lie on one projective arc
+and labels outside the interval lie on the other, proving the last assertion.
+\end{proof}
+
+If exactly $T$ faces are selected, the first cut is equivalently the lower
+bound $T-K(|W|)$ on selected faces meeting
+$\mathcal A\setminus W$. This complementary form gives substantially smaller
+cardinality counters near the frontier.
+
+\begin{proposition}[certified endpoint control at $n=7$]\label{prop:c23n7}
+Every essential arrangement of seven straight lines satisfies
+\[
+ 9F+6Q+2\sum_p(k_p-2)^2\le105,
+\]
+equivalently the coefficient-$2/3$ inequality in the second open problem
+below.
+\end{proposition}
+
+\begin{proof}
+Using Lemma~\ref{lem:gapface}, encode every selected face by the strict
+crossing orders on its three sides. Leave the selected-face count,
+all parallel classes and all finite concurrency patterns free, and impose
+only essentiality. A canonical first triple and the later lines through its
+point encode
+\[
+ (k-2)^2=1+3u+2\binom u2,\qquad u=k-3.
+\]
+A strict violation is the integer score threshold $106$. The resulting
+necessary order-table relaxation has $74{,}507$ variables and $152{,}419$
+clauses. Kissat reports unsatisfiable; \texttt{drat-trim} verifies the
+$34{,}133{,}280$-byte proof, with $59{,}128$ formula clauses and $211{,}032$
+lemmas in the core. Every geometric violation extends this instance by
+selecting all of its triangular faces, so verified unsatisfiability proves
+the claim.
+\end{proof}
+
 
 \section{Certified small values, all degeneracies free}\label{sec:ladder}
 
@@ -544,14 +813,12 @@ single monolithic refutation of $(10,26)$ in the crossing-free formulation of
 Theorem~\ref{thm:collapse} ($131\,314$ variables, $792\,462$ clauses,
 unsatisfiable in $31$ minutes, discovery-level: the DRAT certificate for this
 value is the cube cover).
-By Corollary~\ref{cor:before} the rungs at $n=6$, $n=8$ and $n=10$ are the
-first determinations of those values from refereed inputs: they rule out $8$,
-$16$ and $26$ triangles respectively, which no simple-arrangement bound can
-exclude. At $n=10$ this is the first determination outright, since even
-\eqref{eq:CB} leaves $26$ open; at $n=6,8$ it removes the dependence on the
-unpublished draft. And $K(8)=15$ is attained only non-simply
-(Proposition~\ref{prop:mismatch}), so the certified statement lives entirely
-in the degenerate regime.
+The rungs at $n=6$, $n=8$ and $n=10$ are the first machine-checkable
+all-degeneracy certificates known to us for those values. They independently
+verify the 2005 web arguments \cite{Rasukaru2005} and rule out $8$, $16$ and
+$26$ triangles respectively without perturbation assumptions or a
+simple-arrangement hypothesis. At $n=8$ this matters structurally:
+$K(8)=15$ is attained only non-simply (Proposition~\ref{prop:mismatch}).
 \end{theorem}
 
 \begin{table}[t]
@@ -724,35 +991,89 @@ class with run lengths $(u,0,14-u)$, e.g.\ $(6,0,8)$; for the triad layout
 \section{The two open small cases, and how to close them}
 
 Table~\ref{tab:windows} collects what is proved. Theorem~\ref{thm:collapse}
-simplifies the picture decisively: there is only one quantity above $a_3^s$,
-so one instance per $n$ suffices, and the rungs above it that a bound for
-$\Kgen$ alone would leave open do not exist.
+simplifies the picture decisively: there is only one quantity above
+$a_3^s$, and every target may be searched in the face convention without
+discarding parallels or multiple points.
 
-Reading the table with the simple-arrangement entries discarded leaves
-exactly two open cases below $n=18$. At $n=11$ the value is settled
-\cite{Savchuk}; at $n=13$ the peer-reviewed bound $\lfloor
-13\cdot11/3\rfloor=47$ equals the construction, so $K(13)=47$. But at
-$n=12$ the construction gives $38$ while the bounds valid for $K$ give $40$
-\cite{FK1999} and $39$ \eqref{eq:CB}; the OEIS upper bound $38$ is a
-simple-arrangement value. So $K(12)\in\{38,39\}$, and $n=12$ --- not $n=14$
---- is the smallest genuinely open case. At $n=14$ the same reading gives
-$K(14)\in\{54,55\}$.
-
-Each case is one decision instance, and by Remark~\ref{rem:wlog} it may
-forbid crossings while leaving every parallel and multiple-point pattern
-free:
+Reading the table with simple-only bounds and the incomplete proof of
+\eqref{eq:CB} discarded leaves exactly two open cases below $n=18$. At
+$n=11$ the value is settled \cite{Savchuk}; at $n=13$ the peer-reviewed
+bound $\lfloor13\cdot11/3\rfloor=47$ equals the construction. At $n=12$,
+\[
+ 38\le K(12)\le40,
+\]
+and at $n=14$,
+\[
+ 54\le K(14)\le56,
+\]
+where the lower endpoints are exact-rational certificates and the upper
+endpoints are the general-arrangement bound stated in \cite{FK1999}. The
+first monotone frontier at each $n$ is therefore:
 \begin{itemize}
-\item $(12,39)$: unsatisfiability gives $K(12)\le38$, hence $K(12)=38$ with
-the construction. This is self-contained --- it does not use
-\eqref{eq:CB} or \cite{FK1999} --- so it also removes the reliance of the
-$n=12$ row on an unpublished draft.
-\item $(14,55)$: unsatisfiability gives $K(14)=54$, making the OEIS entry a
-theorem; satisfiability gives, after straightening, a $55$-triangle record.
-The crossing-free form has $1{,}349{,}454$ variables and $7{,}829{,}001$
-clauses.
+\item $(12,39)$: unsatisfiability proves $K(12)=38$; satisfiability, after
+straight-line realisation and exact verification, gives a new lower bound
+$39$ and leaves only $(12,40)$.
+\item $(14,55)$: unsatisfiability proves $K(14)=54$; satisfiability gives a
+$55$-triangle record and leaves only $(14,56)$.
 \end{itemize}
-Both are running at the time of writing, together with the crossing-free
-$(11,33)$ as an independent check against the known value.
+Neither unsatisfiability conclusion uses \eqref{eq:CB} or \cite{FK1999}.
+
+The current search uses the direct-gap formulation of
+Lemma~\ref{lem:gapface}: the audited crossing/parallel, concurrency and
+line-order axioms remain, while sidedness, polygon-overlap and crossing
+auxiliaries disappear. The exact face budget is retained. Per-line capacity
+counters give instances with $288{,}179$ variables / $653{,}828$ clauses at
+$(12,39)$ and $858{,}782$ / $1{,}891{,}433$ at $(14,55)$; omitting only
+those accelerator counters, while retaining the global face budget, gives
+sound solver-diversity instances of $45{,}014$ / $164{,}537$ and
+$128{,}612$ / $424{,}240$. The exact direct-gap predicate agrees with the
+independent strict-sign oracle on $109{,}104$ nondegenerate triples in
+$4{,}000$ arrangements across five degeneracy modes, with zero mismatches.
+SAT controls remain satisfiable at every known optimum $n=5,\dots,9$ and
+refute the next value; $(9,22)$ fell from $388$ seconds in the first
+face-only formulation to $111$ seconds, and a direct-gap $(7,12)$ DRAT is
+independently verified.
+
+An orthogonal accelerator instantiates Lemma~\ref{lem:hereditary}. At
+$(12,39)$ the independently established values $K(11)=32$ and $K(10)=25$
+give every one-line and two-line deletion cut; together with the vertex-sector
+clauses this produces $374{,}381$ variables and $830{,}030$ clauses. On the
+known $(9,22)$ UNSAT control, the same two cut types reduced a same-process
+CaDiCaL run from $1{,}034{,}027$ conflicts / $116.3$ seconds to $164{,}802$ /
+$19.5$ seconds, while $(9,21)$ remained satisfiable. An independent
+exact-rational audit over $3{,}600$ arrangements, $27{,}705$ triangular faces
+and $93{,}000$ line-pair checks found no vertex-sector mismatch. These are
+sound search accelerators, not a verdict at $(12,39)$.
+
+There is a smaller exact branch cut. With no finite multipoint,
+\eqref{eq:capacity} gives $Q\le1$ at both frontiers. The $Q=0$ branch is
+simple and already excluded by \cite{Blanc}. For $Q=1$, rotation and
+relabelling put the unique parallel class at $\{0,1\}$, so one canonical
+direct-gap cube covers the remaining no-concurrency branch. It has
+$20{,}895$ variables / $111{,}753$ clauses at $(12,39)$ and $44{,}399$ /
+$245{,}822$ at $(14,55)$.
+
+\begin{theorem}[$n=12$ no-concurrency reduction]\label{thm:n12q1}
+Every arrangement of $12$ lines with $39$ triangular faces has a finite point
+incident with at least three lines.
+\end{theorem}
+
+\begin{proof}
+Suppose there is no finite multipoint. Equation~\eqref{eq:capacity} gives
+$2Q\le120-3\cdot39=3$, hence $Q\le1$. If $Q=0$, the arrangement is simple
+and \cite[Thm.~3]{Blanc} gives at most $37$ triangular faces. If $Q=1$,
+rotate the circular slope order so the unique parallel class is
+$\{0,1\}$. The primary direct-gap instance has $20{,}895$ variables and
+$111{,}753$ clauses, with no further symmetry assumption. Kissat reports
+UNSAT and \texttt{drat-trim} verifies its $2{,}437{,}053{,}136$-byte proof:
+$19{,}802$ formula clauses and $6{,}539{,}084$ lemmas lie in the core, using
+$412{,}704{,}063$ resolution steps. Independently, the valid global-sign
+symmetry $X(0,2,3)$ gives a $111{,}754$-clause instance whose
+$759{,}328{,}450$-byte proof is also verified ($126{,}043{,}830$ resolution
+steps). The hash-bound dual-certificate manifest and both checker transcripts
+are recorded in
+\texttt{scratch/kobon/n12/n12\_q1\_gap\_certificate.json}.
+\end{proof}
 
 \begin{table}[t]
 \centering
@@ -765,7 +1086,7 @@ $n$ & constr. & $\bar a_3^s$ & \eqref{eq:CB} & FK & status\\
 9 & 21 & 21 & 21 & 21 & $K(9)=21$; FK attained\\
 10 & 25 & 25 & 26 & 26 & $K(10)=25$ certified here (cube cover)\\
 11 & 32 & 32 & 33 & 33 & $K(11)=32$ \cite{Savchuk}\\
-12 & \textbf{38} & 37 & 39 & 40 & $[38,40]$; $(12,39)$ running\\
+12 & \textbf{38} & 37 & 39 & 40 & $[38,40]$; $39\Rightarrow$ multipoint (Thm.~\ref{thm:n12q1})\\
 13 & 47 & 47 & 47 & 47 & $K(13)=47$; FK attained\\
 14 & \textbf{54} (verified) & 53 & 55 & 56 & $[54,56]$; $(14,55)$ running\\
 18 & 93 & 93 & 95 & 96 & $[93,96]$\\
@@ -778,9 +1099,9 @@ $n$ & constr. & $\bar a_3^s$ & \eqref{eq:CB} & FK & status\\
 it (bold: $n=8,12,14$) the record is attained only non-simply, so the
 simple-only bound $\lfloor n(n-7/3)/3\rfloor$ --- which equals the
 construction at every even $n$ here and is what the OEIS upper-bound column
-reports --- cannot apply (Proposition~\ref{prop:mismatch}). The bounds that
-do apply are \eqref{eq:CB}, resting on the unpublished draft \cite{CB2007},
-and FK $=\lfloor n(n-2)/3\rfloor$ \cite{FK1999} (see
+reports --- cannot apply (Proposition~\ref{prop:mismatch}). The reference
+columns are the claim \eqref{eq:CB} from the incomplete unpublished draft
+\cite{CB2007}, and FK $=\lfloor n(n-2)/3\rfloor$ \cite{FK1999} (see
 Remark~\ref{rem:provenance}). Rows marked \emph{certified here} are settled
 by unsatisfiability with every degeneracy free, citing nothing.}
 \label{tab:windows}
@@ -789,27 +1110,37 @@ by unsatisfiability with every degeneracy free, citing nothing.}
 \section{Open problems}
 
 \begin{enumerate}
-\item \textbf{Decide $(12,39)$ and $(14,55)$}, closing the two open small
-cases. By Theorem~\ref{thm:collapse} and Remark~\ref{rem:wlog} each is one
-crossing-free instance with all degeneracies free, and no further rungs exist
-above it. Unsatisfiability at $(12,39)$ proves $K(12)=38$ without
-\eqref{eq:CB}; unsatisfiability at $(14,55)$ proves $K(14)=54$.
-\item \textbf{A mod-$6$ refinement for arbitrary arrangements}, i.e.\ derive
-the $-1$ correction of \eqref{eq:CB} inside the framework of
-\eqref{eq:capacity}, removing the reliance on an unpublished draft. This is
-now the only gap between the peer-reviewed bound $\lfloor n(n-2)/3\rfloor$
-\cite{FK1999} and the numbers used in Table~\ref{tab:windows}, and it is
-exactly what decides $n\equiv0,2\pmod 6$ --- including $n=14$, where it is
-the difference between the windows $[54,55]$ and $[54,56]$.
+\item \textbf{Decide the first frontiers $(12,39)$ and $(14,55)$.}
+By Theorem~\ref{thm:collapse} each is one crossing-free instance with all
+degeneracies free. Unsatisfiability proves $K(12)=38$ or $K(14)=54$
+respectively; satisfiability gives a new record and leaves the final rung
+$(12,40)$ or $(14,56)$.
+\item \textbf{Find the right global degeneracy correction.}
+The coefficient-$1$ square penalty is false by
+Proposition~\ref{prop:squarefail}. More generally the family
+$\mathcal R_m$ rules out every universal inequality
+\[
+ 3F\le n(n-2)-2Q-c\sum_p(k_p-2)^2
+\]
+with fixed $c>2/3$: the admissible ratio tends to $2/3$ from above.
+Proposition~\ref{prop:c23n7} certifies the endpoint at $n=7$, but the general
+case remains open. Decide whether $c=2/3$ is universal, or whether the
+correction must use nonlocal incidence data. Any valid positive correction
+would force simplicity
+at $\Delta=0$. After Theorem~\ref{thm:collapse}, a $T$-member family can be
+replaced by $T$ distinct triangular faces, giving
+$T\le F(\mathcal A)\le\bar a_3^s(n)$; equality between $T$ and the total face
+count is not needed. Such an argument would provide a rigorous route to the
+prior mod-$6$ improvement, not a new numerical bound.
 \item \textbf{Defect-tolerant obstructions.} Proposition~\ref{prop:n20}
 localises the missing ingredient: a constraint on where a defect may sit.
-\item \textbf{Sharpen the capacity inequality with degeneracies.} Equality in
-\eqref{eq:capacity} occurs only at $N_3=0$ throughout the known census, yet
-the inequality permits $\sum_p k_p(k_p-4)<0$. A structural proof that the
-$2a_\ell$ tokens of Lemma~\ref{lem:perline} are never simultaneously
-realisable would recover $\lfloor n(n-2)/3\rfloor$ from the capacity
-machinery alone, i.e.\ without the exchange argument of
-Theorem~\ref{thm:collapse} and without \cite{FK1999}.
+\item \textbf{Global structure of saturated flowers.}
+Proposition~\ref{prop:flower} shows that the $2a_\ell$ tokens of
+Lemma~\ref{lem:perline} are simultaneously realisable at each individual
+multipoint. Proposition~\ref{prop:squarefail} goes further: networks of
+saturated triple sectors can defeat the full square charge globally.
+Any replacement must measure how these networks close rather than sum a
+pointwise penalty.
 \item \textbf{Pointwise structure.} Theorem~\ref{thm:collapse} equates the
 two maxima but not the optima: crossed optima exist (\S3). Which
 arrangements admit \emph{only} crossed optima of maximum size, and can the
@@ -828,11 +1159,31 @@ of Theorem~\ref{thm:54} (exit-$0$ transcript included).
 \item \texttt{verification/sweep\_all\_verify.py} --- all fifteen witnesses.
 \item \texttt{verification/max\_packing.py} --- exact overlap graph and SAT
 optimality, used for Theorem~\ref{thm:census}.
-\item \texttt{scratch/kobon/broad\_ladder.py} --- ladder prober used for
-Theorem~\ref{thm:ladder}; instances \texttt{ladder\_n8\_t16.cnf},
-\texttt{ladder\_n9\_t22.cnf} and the DRAT proofs.
-\item \texttt{proofs/appendix\_independent\_check.py},
-\texttt{proofs/appendix\_check\_n18.py} --- exact integer certificates for
+\item \path{scratch/kobon/broad_ladder.py} --- ladder prober used for
+Theorem~\ref{thm:ladder}; instances \path{ladder_n8_t16.cnf},
+\path{ladder_n9_t22.cnf} and the DRAT proofs.
+\item Direct-gap generator \path{gap_faces.py}, including the hereditary and
+vertex-sector options; exact $109{,}104$-triple oracle comparison
+\path{gap_face_verify.py}; and the independent $93{,}000$-pair sector replay
+\path{sector_bound_audit.py}.
+\item \path{scratch/kobon/pappus_relaxation_probe.py} --- a checked
+non-Pappus model showing where field-specific incidence cuts can strengthen
+the abstract order relaxation; no Pappus clauses enter the current frontier.
+\item \path{scratch/kobon/q1_gap_faces.py} and
+\path{n12/n12_q1_gap_certificate.json} --- generator, hash manifest and
+checker transcript for Theorem~\ref{thm:n12q1}.
+\item \path{scratch/kobon/flower_counterexamples.py} --- exact rational
+$k=3,4$ replays for Proposition~\ref{prop:flower}.
+\item \path{scratch/kobon/square_penalty_counterexample.py} and its JSON
+output --- exact rational $A(12,1)$ replay for
+Proposition~\ref{prop:squarefail}, with two face predicates and complete
+edge-use accounting.
+\item \path{scratch/kobon/square_penalty_sat.py} --- weighted-penalty
+generator for Proposition~\ref{prop:c23n7}.
+\item \path{c23_n7_violation.cnf}, its DRAT proof and checker log, and
+\path{c23_n7_certificate.json} --- checked endpoint certificate.
+\item \path{proofs/appendix_independent_check.py},
+\path{proofs/appendix_check_n18.py} --- exact integer certificates for
 Theorems~\ref{thm:M} and~\ref{thm:M18}.
 \item \texttt{proofs/defect\_lemma.md} --- analysis behind
 Proposition~\ref{prop:n20}.
@@ -856,6 +1207,11 @@ arrangements in the real projective plane}, Discrete Comput.\ Geom.\
 \bibitem{LMR2010} J.~Lea\~nos, M.~K.~Ndjatchi,
 L.~M.~Rivera-Mart\'inez, \emph{Simple Euclidean arrangements with one
 $(\ge5)$-gon}, arXiv:1008.4598 (2010); Lemma~4.
+\bibitem{Grunbaum2009} B.~Gr\"unbaum, \emph{A catalogue of simplicial
+arrangements in the real projective plane}, Ars Math.\ Contemp.\
+\textbf{2} (2009), no.~1, 1--25,
+doi:\href{https://doi.org/10.26493/1855-3974.88.e12}
+{10.26493/1855-3974.88.e12}.
 \bibitem{Zam2018} C.~T.~Zamfirescu, \emph{Congruent triangles in
 arrangements of lines}, Ars Math.\ Contemp.\ \textbf{14} (2018), no.~2,
 359--373.
@@ -865,6 +1221,13 @@ arrangements}, Discrete Comput.\ Geom.\ \textbf{22} (1999), no.~3,
 \bibitem{Rou1996} J.-P.~Roudneff, \emph{The maximum number of triangles in
 arrangements of pseudolines}, J.~Combin.\ Theory Ser.~B \textbf{66} (1996),
 no.~1, 44--74.
+\bibitem{Rasukaru2005} Rasukaru (pseudonym),
+\emph{Conditions for obtaining $n(n-2)/3$ triangles from $n$ lines}, three
+Japanese web essays, 22 September--8 October 2005, archived at
+\url{https://web.archive.org/web/20061111125706/http://www10.plala.or.jp/rascalhp/nlines.htm},
+\url{https://web.archive.org/web/20221209001801/http://www10.plala.or.jp/rascalhp/nlines2.htm},
+and
+\url{https://web.archive.org/web/20221208231339/http://www10.plala.or.jp/rascalhp/nlines3.htm}.
 \bibitem{Savchuk} P.~Savchuk, \emph{Constructing optimal Kobon triangle
 arrangements via table encoding, SAT solving, and heuristic straightening},
 arXiv:2507.07951 (2025).

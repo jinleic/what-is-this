@@ -1,0 +1,244 @@
+{
+ "note": "Every survivor class has all columns of HX and HZ odd degree; every per-sector kernel word (hence every logical of either type) is even weight, so cap-12 UNSAT both sectors + weight-14 witness forces exact d=14.",
+ "rows": [
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     12,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     8,
+     0
+    ]
+   ],
+   "all_hx_columns_odd": true,
+   "all_hz_columns_odd": true,
+   "even": true,
+   "witness_weight": 14
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     12,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     8,
+     2
+    ]
+   ],
+   "all_hx_columns_odd": true,
+   "all_hz_columns_odd": true,
+   "even": true,
+   "witness_weight": 14
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     12,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     17,
+     2
+    ]
+   ],
+   "all_hx_columns_odd": true,
+   "all_hz_columns_odd": true,
+   "even": true,
+   "witness_weight": 14
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     12,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     8,
+     2
+    ]
+   ],
+   "all_hx_columns_odd": true,
+   "all_hz_columns_odd": true,
+   "even": true,
+   "witness_weight": 14
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     12,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "all_hx_columns_odd": true,
+   "all_hz_columns_odd": true,
+   "even": true,
+   "witness_weight": 14
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     12,
+     0
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "all_hx_columns_odd": true,
+   "all_hz_columns_odd": true,
+   "even": true,
+   "witness_weight": 14
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     12,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     17,
+     1
+    ]
+   ],
+   "all_hx_columns_odd": true,
+   "all_hz_columns_odd": true,
+   "even": true,
+   "witness_weight": 14
+  }
+ ],
+ "schema": "exp058-sibling-parity-audit-v1"
+}

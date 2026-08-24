@@ -434,6 +434,121 @@ def add_exact_selection(cnf, pool, n, target):
                               encoding=EncType.totalizer))
 
 
+def add_subarrangement_face_bounds(
+        cnf, pool, n, upper_bounds, exact_target=None):
+    """Constrain selected triangles inherited by every proper line subset.
+
+    If ``W`` is a subset of the arrangement lines, deleting the lines outside
+    ``W`` preserves every selected triangle supported entirely on ``W``.
+    Those triangles therefore form an admissible family for the
+    ``len(W)``-line subarrangement, so their number is at most any proved upper
+    bound supplied for that size.
+
+    ``upper_bounds`` maps proper subset sizes to proved Kobon upper bounds for
+    the same arrangement convention.  When the caller enforces exactly
+    ``exact_target`` selections, the same cut is encoded more compactly as a
+    lower bound on selected triangles meeting the deleted lines.
+    """
+    all_selected = [
+        (triple, pool.id(("S",) + triple))
+        for triple in combinations(range(n), 3)
+    ]
+    if exact_target is not None and exact_target < 0:
+        raise ValueError("exact selection target must be nonnegative")
+    for size, upper in sorted(upper_bounds.items()):
+        if not 3 <= size < n:
+            raise ValueError("subarrangement sizes must satisfy 3 <= size < n")
+        if upper < 0:
+            raise ValueError("subarrangement upper bounds must be nonnegative")
+        if exact_target is not None and upper > exact_target:
+            continue
+        for subset in combinations(range(n), size):
+            support = set(subset)
+            if exact_target is None:
+                selected = [
+                    literal for triple, literal in all_selected
+                    if all(line in support for line in triple)
+                ]
+                if upper < len(selected):
+                    cnf.extend(CardEnc.atmost(
+                        lits=selected, bound=upper, vpool=pool,
+                        encoding=EncType.seqcounter))
+                continue
+
+            minimum = exact_target - upper
+            if minimum <= 0:
+                continue
+            meeting_deleted = [
+                literal for triple, literal in all_selected
+                if any(line not in support for line in triple)
+            ]
+            if minimum > len(meeting_deleted):
+                cnf.append([])
+            else:
+                cnf.extend(CardEnc.atleast(
+                    lits=meeting_deleted, bound=minimum, vpool=pool,
+                    encoding=EncType.seqcounter))
+
+
+def add_selected_face_sector_bounds(cnf, pool, n):
+    """Add local vertex-sector constraints for selected arrangement faces.
+
+    At a simple crossing of two lines there are four sectors, so at most four
+    triangular faces can use that line pair.  If a third line passes through
+    the crossing, the fixed pair bounds at most two of the resulting sectors.
+    Moreover, after the standard rotation removing vertical lines, the cyclic
+    slope order shows that the pair bounds no sector when the multipoint
+    contains incident lines on both arcs between the pair.
+
+    Callers must enforce that selected triples are nondegenerate arrangement
+    faces, not merely interior-disjoint crossed triangles.
+    """
+    concurrent = lambda i, j, k: pool.id(
+        ("C",) + tuple(sorted((i, j, k))))
+    selected = lambda i, j, k: pool.id(
+        ("S",) + tuple(sorted((i, j, k))))
+
+    for i, j in combinations(range(n), 2):
+        pair_faces = [
+            selected(i, j, third)
+            for third in range(n) if third not in (i, j)
+        ]
+        if len(pair_faces) > 4:
+            cnf.extend(CardEnc.atmost(
+                lits=pair_faces, bound=4, vpool=pool,
+                encoding=EncType.seqcounter))
+
+        multipoint = pool.id(("MP", i, j))
+        concurrency = [
+            concurrent(i, j, third)
+            for third in range(n) if third not in (i, j)
+        ]
+        for literal in concurrency:
+            cnf.append([-literal, multipoint])
+        cnf.append([-multipoint] + concurrency)
+
+        if len(pair_faces) > 2:
+            guarded = CardEnc.atmost(
+                lits=pair_faces, bound=2, vpool=pool,
+                encoding=EncType.seqcounter)
+            for clause in guarded.clauses:
+                cnf.append([-multipoint] + clause)
+
+        between = range(i + 1, j)
+        outside = tuple(range(i)) + tuple(range(j + 1, n))
+        for inner in between:
+            for outer in outside:
+                inner_concurrency = concurrent(i, j, inner)
+                outer_concurrency = concurrent(i, j, outer)
+                for third in range(n):
+                    if third not in (i, j, inner, outer):
+                        cnf.append([
+                            -inner_concurrency,
+                            -outer_concurrency,
+                            -selected(i, j, third),
+                        ])
+
+
 def add_triangle_crossing_indicators(cnf, pool, n):
     """Reify selected-triangle/open-interior crossing incidences.
 

@@ -1,0 +1,181 @@
+{
+  "A": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      3
+    ]
+  ],
+  "B": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      4,
+      0
+    ]
+  ],
+  "decisions": [
+    {
+      "cnf_sha256": "ce413a85efe01a27229934bdb6c7a837879070a5e5a41f64754a09e1c0acf42f",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 3725,
+        "cnf_variables": 1271,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 0.06291458301711828
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 2
+    },
+    {
+      "cnf_sha256": "2e7da1a7a81f13278d0a9e0ebbbda6abc529d20010ea1766050cd98af77bdba1",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 4537,
+        "cnf_variables": 1679,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 0.001037249923683703
+      },
+      "status": "SAT",
+      "support": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "symmetry_break": true,
+      "weight": 4,
+      "weight_cap": 4
+    }
+  ],
+  "duality": {
+    "conclusion": "d_X = d_Z; one certified side determines CSS distance",
+    "maps_HX_to_HZ_exactly": true,
+    "maps_HZ_to_HX_exactly": true,
+    "permutation_is_bijection": true,
+    "permutation_is_involution": true,
+    "permutation_sha256": "8222953f3d6857e43331e6f06488f5cafdc995cd58362b8e16fb97ad478cbb6d",
+    "schema": "exp056-bb-xz-duality-v1",
+    "valid": true
+  },
+  "exact": true,
+  "exact_distance": 4,
+  "group": "no_reference",
+  "index": 0,
+  "k": 24,
+  "lower_bound": 4,
+  "n": 210,
+  "parity": {
+    "all_column_degrees_odd": true,
+    "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+    "column_degree_max": 3,
+    "column_degree_min": 3,
+    "effective_even_cap": 0,
+    "requested_cap": 1,
+    "schema": "exp056-kernel-weight-parity-v1",
+    "valid": true
+  },
+  "schema": "exp060-frontier-ratchet-v1",
+  "screen_verdict": "no_reference",
+  "threshold": 0,
+  "upper": {
+    "duality_preserves_weight": true,
+    "route": "reciprocal_pole_ceiling_witness",
+    "support": [
+      0,
+      2,
+      3,
+      4,
+      21,
+      23,
+      24,
+      25,
+      28,
+      30,
+      31,
+      32,
+      42,
+      44,
+      45,
+      46,
+      56,
+      58,
+      59,
+      60,
+      63,
+      65,
+      66,
+      67,
+      70,
+      72,
+      73,
+      74,
+      77,
+      79,
+      80,
+      81
+    ],
+    "vector_sha256": "564a77b0c3a7cc0b6d8577b3e8a9f8bf6a6fc5227a89647bc84553b9bb568e94",
+    "weight": 32,
+    "x_support": [
+      105,
+      108,
+      109,
+      110,
+      133,
+      136,
+      137,
+      138,
+      140,
+      143,
+      144,
+      145,
+      147,
+      150,
+      151,
+      152,
+      154,
+      157,
+      158,
+      159,
+      168,
+      171,
+      172,
+      173,
+      182,
+      185,
+      186,
+      187,
+      189,
+      192,
+      193,
+      194
+    ],
+    "x_valid_bitset": true,
+    "x_valid_numpy": true,
+    "x_vector_sha256": "d6338326f28cc85daba62a270aa461f74ca987e95eb04ee2849ea257ca666ece",
+    "z_valid_bitset": true,
+    "z_valid_numpy": true
+  },
+  "verdict": "exact"
+}

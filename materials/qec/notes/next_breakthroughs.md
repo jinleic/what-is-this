@@ -18,7 +18,7 @@ State that makes these live now:
 
 ---
 
-## A. Odd-lattice PBB search — premise corrected, partly executed (EXP-055)
+## A. Odd-lattice PBB search — premise corrected; fixed-point closure through $n=162$ (EXP-055/056)
 
 **Status 2026-08-21: the "unexplored region" premise was FALSE and is retracted.**
 J-G1 does say the collapse hazard is structurally absent when $\ell,m$ are both
@@ -38,29 +38,38 @@ Lin–Pryadko (arXiv:2306.16400) Eq. (47), Postema–Kokkelmans Thm. 2.6, and
 Eberhardt–Steffan Cor. 2.11–2.12 ("if $\ell$ and $m$ are odd, all BB codes are
 principal"). Claim it as reproduction, never as novelty.
 
-**What survived and is now done (EXP-055).** Two things:
+**What survived and is now done (EXP-055/056).**
 
 1. *A certified solver-free distance ceiling* (the exact pole isomorphism is
    published; its explicit use as a general-BB rejection oracle was not found).
    If $I=\operatorname{Ann}_{\rm left}(a,b)$ and $J=\bar I$ is the physical
    right-kernel pole, then $J^2\cong\ker H_X/S_Z$ exactly and
    $d\le\min\{\operatorname{wt}(u):0\ne u\in J\}$. Reduced pole-coset witnesses
-   are self-certifying and much tighter. The isomorphism passes 27/27 literature
-   audits; the ceiling has zero violations on five locally exact-certified rows
-   (all 25 reported values also pass as a non-certifying sanity check).
+   are self-certifying and much tighter. The isomorphism passes 27/27
+   literature audits; the ceiling has zero violations on six locally exact
+   rows (all 25 reported values also pass as a non-certifying sanity check).
 2. *An exhaustive census*: all $65$ odd lattices with $\ell m\le180$,
    $4.23\times10^9$ weight-$\le3$ pairs, exact $k$ by two independent routes
    (zero mismatches), immunity re-verified ($273$ idempotence tests, zero
    violations).
+3. *An exact orbit-class solver*: EXP-056 reduces the $(3,27)$
+   $[[162,8,\cdot]]$ target's 255 nonzero classes to 20 verified automorphism
+   orbits. Sparse-generator CNFs are UNSAT 20/20 and replay 20/20; the
+   even-kernel law excludes 13 and an explicit weight-14 word closes
+   $d_X=d_Z=14$. The old 2,100 s CP-SAT minimization timeout is superseded.
 
-**Screen verdict.** Complete through $n=126$: 715 symmetry classes / 10,247
-pairs; all 598 classes with an independently exact reference are dominated
-(588 explicit witnesses, 10 CP-SAT), 117 high-$k$ no-reference, zero survivors
-or undecided. Three exact local references were promoted during closure:
-$[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$. The $[[30,8,4]]$ constructor is
-new within checked BB tables but globally dominated by Grassl $[[30,8,7]]$.
-The live extension is the distance screen at $n>126$; the first
-$[[162,8,14]]$ exactification attempt timed out at 2,100s.
+**Screen verdict.** Complete through $n=162$: 2,132 symmetry classes / 51,769
+pairs; all 1,928 classes with an independently exact reference are dominated
+(1,804 reduced-pole witnesses, 119 CDCL witnesses, five exact CP-SAT
+fallbacks), 204 high-$k$ no-reference, zero survivors or undecided. Exact local
+references are $[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$ and
+$[[162,8,14]]$. The $[[30,8,4]]$ constructor is new within checked BB tables
+but globally dominated by Grassl $[[30,8,7]]$.
+
+**Next A-step.** Extend beyond $n=162$ only after hash-binding the available
+$n=180$ exact CSS frontier (notably $[[180,8,16]]$ and $[[180,20,6]]$) or
+exactifying the next odd-lattice published reference. Reuse the class-orbit
+SAT route; do not return to per-logical CP-SAT minimization.
 
 ## B. Multi-row light channels: replace CP-SAT certificates with a theorem
 
@@ -180,7 +189,7 @@ graph TD
   F[F. rare-event estimator] --> E
 ```
 
-A is startable today with existing code; B and C are independent theory tracks
-that make A's survivors trustworthy; D unlocks the last open envelope rows; E is
-the end-to-end decision the assignment ultimately asks for, and F is what makes
-E affordable.
+A's first bounded phase is closed through $n=162$; its next extension needs a
+new exact reference, not another blind sweep. B and C are independent theory
+tracks; D unlocks the remaining $n=360$ envelope rows. E remains the decisive
+end-to-end item, and F is what makes E affordable.

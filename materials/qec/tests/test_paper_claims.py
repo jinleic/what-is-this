@@ -112,7 +112,7 @@ def test_section_62_numbers_match_artifacts(paper: str, oddsweep: dict,
                      paper)
     assert oddlit["reported_ceiling_sanity_holds"] is True
     assert oddlit["exact_ceiling_never_violated"] is True
-    assert re.search(r"Five rows are\s+independently exact-certified", paper)
+    assert re.search(r"Six rows are\s+independently exact-certified", paper)
     assert re.search(r"BP-OSD `distance_upperbound`", paper)
     triplet = (oddlit["exact_slack_min"], oddlit["exact_slack_median"],
                oddlit["exact_slack_max"])
@@ -125,13 +125,19 @@ def test_section_62_screen_and_discoveries_match_artifacts(
     v, scope = oddscreen["verdict"], oddscreen["scope"]
     assert v["complete"] and v["all_referenced_decided"]
     assert re.search(rf"complete through \$n={scope['n_max']}\$", paper)
-    assert f"**{v['candidates_after_symmetry']}**" in paper
+    assert f"**{v['candidates_after_symmetry']:,}**" in paper
     assert f"**{v['orbits_represented']:,}**" in paper
-    assert f"**all {v['dominated']} are dominated**" in paper
-    assert re.search(rf"{v['verdicts']['dominated_by_witness']} by explicit logical "
-                     rf"witnesses", paper)
-    assert re.search(rf"{v['verdicts']['dominated']} by all-sector CP-SAT", paper)
-    assert re.search(rf"other {v['no_reference']}\s+high-\$k\$ classes", paper)
+    assert f"**all {v['dominated']:,} are dominated**" in paper
+    assert re.search(
+        rf"{v['verdicts']['dominated_by_witness']:,} by reduced-pole logical "
+        rf"witnesses", paper
+    )
+    assert re.search(
+        rf"{v['verdicts']['dominated_by_cdcl_witness']:,} by bounded CDCL "
+        rf"witnesses", paper
+    )
+    assert re.search(r"five by the exact CP-SAT fallback", paper)
+    assert re.search(rf"other {v['no_reference']:,}\s+high-\$k\$ classes", paper)
     assert re.search(r"\*\*zero survivors and zero undecided\*\*", paper)
 
     params = {(r["n"], r["k"], r["d"]) for r in odddisc["records"]}

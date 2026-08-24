@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import threading
+from concurrent.futures import ThreadPoolExecutor
 import importlib.util
 import json
 from pathlib import Path
@@ -24,6 +26,7 @@ from qec_research.distance.sat_decide import (  # noqa: E402
     css_side_instance,
     decide_by_sectors,
     decide_weight_bounded,
+    decision_cnf_digest,
     symplectic_instance,
     verify_witness_two_paths,
 )
@@ -64,6 +67,29 @@ def test_sector_decomposition_drops_nonpreserving_global_symmetry() -> None:
     assert record["status"] == "SAT"
     assert record["vector"] == [0, 1]
 
+
+def test_concurrent_cnf_builds_are_thread_safe() -> None:
+    instance = DecisionInstance(
+        parity_rows=np.asarray(
+            [[(row * 7 + column * 3) % 11 < 4 for column in range(48)]
+             for row in range(24)],
+            dtype=np.uint8,
+        ),
+        pairing_rows=np.eye(8, 48, dtype=np.uint8),
+        groups=[[index] for index in range(48)],
+        kind="concurrent-cnf-regression",
+        symmetry_clause=[0, 24],
+    )
+    workers = 16
+    barrier = threading.Barrier(workers)
+
+    def build_digest(_index: int) -> str:
+        barrier.wait()
+        return decision_cnf_digest(instance, 8)
+
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        digests = list(executor.map(build_digest, range(workers)))
+    assert len(set(digests)) == 1
 
 def test_witness_verification_rejects_corrupted_vector() -> None:
     HX, HZ = build_bb(BRAVYI_BB["[[72,12,6]]"])

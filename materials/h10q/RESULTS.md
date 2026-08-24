@@ -1,14 +1,16 @@
-# H10 over Q — session results (2026-08-22, rev 11)
+# H10 over Q — session results (2026-08-23, rev 14)
 
 ## Deliverables
 - `NOTES.md` — problem map with exact theorem statements and arXiv ids.
-- `THEOREMS.md` — precise frontier statements through L22: published and
-  audited anchors; the audited six-unknown L6 architecture; L19–L20 class
-  existence and the Schinzel implication; and L22 fixed-fibre
-  irreducibility on the canonical
-  $\tau^\dagger=(1+2a^2)/A$, $\delta=-4a^4/A$ branch.  The conditional
-  chain is now closed under classical Schinzel H alone
-  (`THEOREMS.md`, L6 and L19–L22).
+- `THEOREMS.md` — precise frontier statements through L27: published and
+  audited anchors; the audited six-unknown L6 architecture; the unchanged
+  L19–L22 proof that classical Schinzel H implies the conditional record;
+  L23's unconditional half-sieve and exact analytic/algebraic barriers;
+  L24's theorem that both unscaled self-coupled diagonal images are empty
+  on $\Phi$ over $\mathbb Q_2$; L25's scaled dyadic escape; L26's
+  reciprocal quartic-trace tie; and L27's one-piece shear with complete
+  dyadic/aligned-target local points.  Schinzel H remains the sole
+  conjectural input (`THEOREMS.md`, L6 and L19–L27).
 - `h10q.py` — stdlib-only executable model of both pillars, running on a
   **proven-primality arithmetic engine**: deterministic Miller–Rabin below the exact A014233
   13-base bound, generalized Pocklington $n{-}1$ certificates above it, explicit
@@ -109,12 +111,22 @@ membership checks are sampled or windowed, never claimed beyond their stated sco
 | **L22 free-$\lambda$ square branch** | **PROVED off-chain algebra/class theorem; NOT APPLICABLE to the six-count** | The $\lambda$-pencil is irreducible and yields aligned classes after HIT, but the selected $\lambda$ ranges through the infinite L11c family after the cell is fixed; making it variable costs an additional witness.  It must not be cited as the record closure.  Proof: `/tmp/l22_square_branch.md`; replay: `l22_square_branch.py`, `data/l22_square_branch.jsonl`; scope audit: `agent://BranchAudit`. |
 | **L22 geometric Noether route** | **PROVED reduction; OPEN auxiliary nonvanishing only** | The norm pencil is generically geometrically integral and fixed-fibre reducibility is detected by the gcd of the $483$-minors of an explicit $903\times483$ matrix.  Nonvanishing at every cell parameter remains OPEN in this side route, but L22a makes it unnecessary for the chain.  Proof: `/tmp/l22_fiber_geometry.md`; replay: `l22_fiber_geometry.py`, `data/l22_fiber_geometry.jsonl`. |
 | **L22d: classical Schinzel H $\Rightarrow$ intermediate H $\Rightarrow$ Theorem C** | **PROVED implication; conclusion CONDITIONAL on classical Schinzel H** | L22 plus quantitative HIT selects an irreducible $a$ in L20's odd character-admissible progression; L20 supplies the aligned $f=w$ class and conditions (b)–(d), while L22 completes condition (a); L19 supplies a member from classical Schinzel H.  All four conditions are therefore PROVED.  The finite branch menu and exact six-count are unchanged (`THEOREMS.md`, L19–L22; `CONDITIONAL.md`, §§1–2). |
+| **L23a: half-dimensional bad-root sieve** | **PROVED unconditional small-prime-clean theorem; NOT a member theorem** | For a selected aligned linear/octic pair with $u(\theta)$ nonsquare, $r_-(p)$ has Chebotarev mean $1/2$, $\kappa=1/2$, and the mod-$p$ root oversieve has BV level $D=X^{1/2}/(\log X)^B$.  The semilinear lower sieve with $z=X^{49/100}$ gives $\gg X/(\log X)^{3/2}$ prime members clean at every bad root prime below $z$.  Exact odd valuation would require $p^2$ moduli; finite local replays are not the analytic proof (`l23_half_sieve.py`, `data/l23_half_sieve.jsonl`; `agent://HalfSieveAudit`). |
+| **L23b: large-bad-divisor barrier** | **PROVED barrier; unconditional global member existence remains OPEN** | Since $|G(t)|=X^{8+o(1)}$, as many as $16$ factors above $X^{0.49}$ survive, and reciprocity permits $0,2,\ldots,16$ bad factors.  The first missing estimate is a saving bound for the sector $p_1,p_2\ge z$, $p_1p_2>D$, both bad and of odd valuation.  Even EH leaves eight; Kao gives only total $P_{12}$ after an AP adaptation, whereas reciprocity needs the exact threshold $R_{\rm bad}\le1$. |
+| **L23c: Capell square-in-$K$ route** | **PROVED empty on the selected refined protocol; strict residual scope retained** | For irreducible $P$, $2\theta\in K^2$ iff $P(u^2/2)$ is reducible; $N(2\theta)=256$ is not sufficient.  Odd $v_w(z)$ gives an odd left-edge valuation for every admissible $a$; otherwise the free refinement $a\not\equiv1\pmod w$ gives the simple root $\beta=(2As^2)^{-1}$ with $2\beta=1/(As^2)$ nonsquare.  A pre-existing even-$v_w(z)$ class with $w\mid s$ remains OPEN uniformly, though all $353$ stored rows are proved individually.  No universal $2$-adic Capell claim is made. |
+| **L23d: fixed-cell conic bundle** | **PROVED rank/Brauer calculation; no unconditional point theorem applies** | $X_{a,Z}:U^2-2bV^2=P(b)W^2$ has ten geometric degenerate fibres in closed degrees $1+8+1$, splitting classes $(A,2\theta,A)$, and $K_X^2=-2$.  On the proved nonsquare scopes its non-split rank is $10$ and $\operatorname{Br}(X)/\operatorname{Br}(\mathbb Q)=\mathbb Z/2$, generated by $(A,b)$; the hypothetical square case would have rank $2$ and trivial quotient.  HWW first fails at rank $\le2$; the non-split degree-$8$ closed point defeats the other checked low-rank hypotheses (`l23_fibration.py`, `data/l23_fibration.jsonl`; `agent://FibrationAudit`). |
+| **L23e: norm and squareclass walls** | **PROVED in the stated ansatzes; residual curves OPEN** | $H=X^2+ALY^2$.  Exact matching $2b=-ALq^2$ plus $(A,L)=1$ is $\Phi$-empty by $v_2$; no polynomial-in-$b$ norm section exists because $P(0)=(2a^4Z^2)^2A$.  On $\Phi$, $v_2(P)=4+4\min(v_2(Z),0)$, so $P=\pm2b\,y^2$ is empty, while $P=A\,\mathrm{Norm}$ forces $(P,2b)_2=-1$.  The fixed-$P$ square locus is genus $1$.  The first admissible factor ansatz $L=-A\rho^2$ factors $H$ but reduces to scoped bad symbols and genus-$4$ curves, not a section (`l23_norm_section.py`, `l23_rational_section.py`, `l23_squareclass.py`; paired data). |
+| **L23f: moving-$a$ complexity** | **PROVED for the tested diagonals; no universal minimum claim** | On the $a(0)=0$ branch, exactly $Q^4\Vert H$; removing it gives a squarefree degree-$18$ representative with factor degrees $2,16$.  The separate $a(0)\ne0$ sharp diagonal has raw degree $21$ and factors $2,19$.  This corrects the earlier apparent minimum-$21$ claim: degree $18$ is the smallest certified example in this audit only (`l23_multivar.py`, `data/l23_multivar.jsonl`). |
+| **L24a: self-coupled diagonal covers** | **PROVED finite flat degree $8$; nominal $\le5$ count is vacuous** | The two exact systems eliminate to $Q_I=Au^2+(A^2-c^2-16AB)u+16A^2Bs^2-16A$ and $Q_{II}=Au^2-(c^2+16AB)u+16A^2B(s^2-1)-16A$, with $u$ and $A+u$ both squares.  Clearing by $E^2=(Ab^2D)^2$ introduces no inverse witness.  Each guarded coordinate algebra is free of rank $8$, so tied rank is at most $1$ before local admissibility (`l23_absorption.py`; L24 producers below). |
+| **L24b: both diagonal orientations are $\mathbb Q_2$-empty** | **PROVED uniformly on all of $\Phi$; diagonal five-count CLOSED/FALSE** | $v_2(c)\ge4$.  Orientation I has normalized coefficient valuations $(4,0,0)$ and possible $v_2(u)=0,4$, incompatible with simultaneous squareness of $u$ and $A+u$.  Orientation II is $u^2-32hu+16e$ with unit $h,e$; $v_2(u)=2$, and $u=4t^2$ gives $0\equiv8+2Ab(s^2-1)\pmod{16}$, which would require the impossible $v_2(s^2-1)=2$.  Both images are empty; this does not touch the fixed canonical six-count (`l24_diagonal_geometry.py`, `l24_diagonal_arithmetic.py`; paired data; `agent://DiagonalAudit`). |
+| **L24c: local geometry and bounded search** | **PROVED local/geometry statements; zero-hit scan EVIDENCE only** | Odd target places are locally soluble on orientation II's standard $k=1<v_w(Z)$ stratum, so the global obstruction is genuinely dyadic.  The generic cover is integral degree $8$ with Galois closure $V_4\wr C_2$ of order $32$, no base-rational section, genus-$35$ actual-cell slices and a genus-$53$ actual-$z$ slice; absolute surface rationality remains OPEN.  The scan covered $370$ cells, $2{,}013{,}141$ bases and $4{,}026{,}282$ orientation attempts with zero hits; every-cell emptiness comes from the mod-$16$ proof, never the scan (`l24_diagonal_{local,geometry,arithmetic,search}.py`; paired data). |
+| **L25: scaled non-diagonal couplings** | **PROVED local escape; global five-shape route remains OPEN** | With $u=\rho^2$, fixed scalings give exact eliminants.  The type-I scalings $(y,r)=(2X,\rho)$ and $(2X,\rho/2)$ are $2$-adically admissible exactly on even-$s$ and odd-$s$ strata, uniformly in unit classes and every $v_2(c)\ge4$; their disjunction covers all of $\Phi$, so L24's obstruction is not universal over coupled formulas.  A freely chosen unit-$b$ unramified target stratum has an exact smooth construction at every odd $w\ge7$ (Jacobian $-2400$); the streamlined proof does not lift at $w=3,5$, and compatibility with preselected L20 target residues remains separate.  Two guarded bridge samples provide parity-wise real certificates.  No rational coupled point, five-count improvement, or member theorem is claimed (`l25_scaled_coupling.py`, `data/l25_scaled_coupling.jsonl`; `THEOREMS.md`, L25). |
 | **L21d/e: precursor on the constructed branch** | **PROVED generically + PROVED per cell on 353/353; SUPERSEDED AS THE FRONTIER by L22** | Generic: $H=(A/4)P$ has $L=a^8A^2Z^4$ as both end coefficients; the $(a,Z)=(1,27)$ specialization is irreducible mod $17$, proving irreducibility over $\mathbb Q(a,Z)$.  The former vertical-line repair used 353/353 exact fibre certificates plus Cohen–Serre quantitative HIT; L22 now proves every fixed nonzero rational $Z$ directly (`data/l21_irred_generic.jsonl`; `/tmp/l22_elimination.md`). |
 | **L21: the reducible locus, and its avoidance** | **PROVED (both lemmas)** | (a) $s=0$ and $\delta_\tau=\sigma^2$ a square $\Rightarrow$ $P=(4DAb^2-\sigma a^2Z^2N_g)(4DAb^2+\sigma a^2Z^2N_g)$ — an explicit $4\times4$ factorization, so blanket irreducibility is **false**; 56/56 exact, 8/8 controls inapplicable. (b) On the constructed branch $\delta_{\tau^\dagger}=-4a^4/A<0$, never a square, so the degeneration **cannot occur there**, for any $a$ or cell (9/9). Square class of $\delta_{\tau^\dagger}$ is that of $-A$. (c) $P+32A^3s^2D^2b^5$ is palindromic, $P_0=P_8$ always (288/288) $\Rightarrow$ Galois group in $C_2\wr S_4$ (`data/l21_reducible_locus.jsonl`) |
-| **L20: uniform class existence** | **PROVED** | For every cell take $f=w$ (available since $v_w(z)\ge1$); pick odd $a$ with $(A\mid w)=-1$ (exists: $\sum_r(1+4r^2\mid w)=-1$, so $(w+1)/2$ residues qualify); the explicit residue system for $q_1$ mod $M=4A\prod_S p$ has $\varphi(M)/2^{\#\{p\}}$ classes, hence is nonempty, and Dirichlet finishes. **Clause (ii) of H is removed for every cell.** 103/103 canonical rows reproduced (1,113,000 residues enumerated), 353/353 grid certificates clean, composite $A$ replayed, 0 refusals (`data/l19_classexist.jsonl`). Fixing $a=1$ collides exactly at $w=11,19,31,59,71,79$ — the independently derived 5-wall set |
+| **L20: uniform class existence** | **PROVED** | For every cell take $f=w$ (available since $v_w(z)\ge1$); pick odd $a$ with $(A\mid w)=-1$.  The character sum is $-1$, with exactly $\bigl(w-\left(\frac{-1}{w}\right)\bigr)/2$ qualifying residues: $(w+1)/2$ for $w\equiv3\bmod4$, $(w-1)/2$ for $w\equiv1\bmod4$.  Thus the set is always nonempty.  The explicit residue system for $q_1$ mod $M=4A\prod_Sp$ has $\varphi(M)/2^{\#\{p\}}$ classes, and Dirichlet finishes. **Clause (ii) of H is removed for every cell.** 103/103 canonical rows reproduced (1,113,000 residues enumerated), 353/353 grid certificates clean, composite $A$ replayed, 0 refusals (`data/l19_classexist.jsonl`). Fixing $a=1$ collides exactly at $w=11,19,31,59,71,79$ — the independently derived 5-wall set |
 | **L19: Schinzel H $\Rightarrow$ per-class H** | **PROVED implication (conclusion CONDITIONAL on Schinzel)** | For a fixed verified aligned class with $F(t)=c\,G(t)$ (the **square class** of $c$ is $S$-supported; $G$ is primitive with positive lead), Schinzel H for $\{q_1+Nt,G(t)\}$ gives infinitely many ladder-zero members: the $S$-strip leaves one odd place $R=G(t)$, $v_Q(P(b))=0$, all other outside symbols are $+1$, and reciprocity forces $(x_0,d_0)_R=+1$.  The recorded audit covers 293/293 canonical pairs and a 24-row prime-rung cross-check (`data/l18_schinzel_implies_h.jsonl`); L22 supplies irreducibility uniformly. |
 | **L19: the canonical 5-wall and its break** | **PROVED (identity + criterion, canonical protocol); PROVED break** | $\mathrm{Hilb}_5=-(w|5)(q_1|5)$ vs wild $(5|q_1)$ $\Rightarrow$ canonical ESC 5-walled iff $(w|5)=+1$; with L11 iff $w\equiv1\bmod4$, canonical obstruction is exactly $w\equiv11,19\bmod20$. Audit: 53 primes in $[101,400]$, 26 L11 / 13 ESC / 14 obstructed, **0 mismatches** (`data/l18_fivewall.jsonl`). Break: $a{=}7,\tau{=}0,f{=}w$ closes $131,139,151$ (L12b non-coprimality door; no conflict with the L10 $\tau=0$ coprime wall) |
-| **L19: the 5-wall is always breakable (class side)** | **PROVED** | Factor-by-factor: $\prod_{p\mid A}(x,d)_p(A\mid q_1)=(-2\varepsilon\mid A)(f\mid A)$, so with $A\equiv5\bmod8$ the L10b anti-correlation breaks **iff $(f\mid A)=-1$**. Uniform existence: $\sum_r(1+4r^2\mid w)=-1$ gives $(w+1)/2$ good residues, CRT fixes the unit hypotheses, Dirichlet supplies $q_1$ — so every canonically obstructed $w\equiv11,19\bmod20$ has an aligned $\tau=0$, $f=w$ class. Audit 16,744 candidates, 908 aligned, **0 mismatches** (`data/l19_tauzero.jsonl`). Scope: class side only; member existence is **CONDITIONAL** on classical Schinzel H through L19. Fixed $a=7$ is breakable iff $(w\mid197)=-1$. |
+| **L19: the 5-wall is always breakable (class side)** | **PROVED** | Factor-by-factor: $\prod_{p\mid A}(x,d)_p(A\mid q_1)=(-2\varepsilon\mid A)(f\mid A)$, so with $A\equiv5\bmod8$ the L10b anti-correlation breaks **iff $(f\mid A)=-1$**. For the canonically obstructed primes $w\equiv11,19\bmod20$ — hence explicitly $w\equiv3\bmod4$ — the character sum gives exactly $(w+1)/2$ good residues; CRT fixes the unit hypotheses and Dirichlet supplies $q_1$. Thus every such $w$ has an aligned $\tau=0$, $f=w$ class. Audit 16,744 candidates, 908 aligned, **0 mismatches** (`data/l19_tauzero.jsonl`). Scope: class side only; member existence is **CONDITIONAL** on classical Schinzel H through L19. Fixed $a=7$ is breakable iff $(w\mid197)=-1$. |
 | **L19: off-grid horizon** | **PROVED per row (lead-replayed)** | Closed $w\in\{101,\dots,179\}$ — all sixteen tried cells at $u=-1$ plus $[131,[5,1]]$; **no off-grid cell remains open**. $w=179$: $a=7$, $\varepsilon=-1$, $f=179$, $q_1=Q=251$, $k=0$, decided fraction 94.7% (10,282/10,858), 222-digit max cofactor (`data/l19_cell179.jsonl`). Divergence model: L18 tail closes 51% of the excess multiplier / 78% of the log gap vs the 15.67$\times$ Bateman–Horn ledger gap; stationary model misses the selected $k=0$ spike (`data/l18_divergence_model.jsonl`) |
 | **L18: step-(ii) density law** | **PROVED (local bound; no-uniform-mass for the 293 current classes); EVIDENCE (measured exponents)** | $m_3=m_5=m_7=0$ and $m_p\le 8/(p+1)$ for $p\ge11$ (singular roots incl.); lead-verified on 102,439 local pairs, 0 violations. Chebotarev exponent $c=1/2$ in every class (293 replayed irreducibility certificates + 293 replayed nonsquare witnesses) $\Rightarrow \prod_{p\le X}(1-m_p)\asymp(\log X)^{-1/2}$: **no cutoff-uniform positive clean mass**. Measured $c$: 0.4778 / 0.4801 / 0.4590 (`data/l17_stepii.jsonl`) |
 | **L18-horizon wave 2 (historical frontier, SUPERSEDED by L19)** | **PROVED per row; one then-open protocol obstruction** | The recorded closures were $w\in\{113,127,137\}$ at $u=-1$, while $w=131$ was obstructed inside that protocol after 336 attempts and 326 eligible collisions (`data/l17_horizon{113,127,131,137}.jsonl`). L19 subsequently closed $w=131$ through the non-coprime $f=w$ route (`data/l18_route131.jsonl`); it is not open now. |
@@ -127,7 +139,7 @@ membership checks are sampled or windowed, never claimed beyond their stated sco
 
 QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$, sq branch, $q\in3001..8000$) died on a benign `NameError` in the loop body — fix pending, no result claimed or counted.
 
-## Findings (rev 11)
+## Findings (rev 14)
 1. **L1 is published.** Cornelissen–Zahidi math/0006140, Ex. 2.2(a) + Rem. 2.4 ⟹ no one-witness
    definition of $\mathbb{Z}$ in $\mathbb{Q}$.
 2. **L2 repaired into L2′ — a structure theorem** (advisory upheld; written proof in
@@ -361,7 +373,42 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
       unaffected — any wall is in the reduction, not in solubility.
 
 
-## The frontier, stratified (rev 11)
+16. **L23 — the unconditional sieve is real, but stops exactly at two
+    large bad divisors.**  The semilinear dimension-$1/2$ sieve supplies
+    $\gg X/(\log X)^{3/2}$ prime members clean below $X^{0.49}$.
+    Degree $8$ still permits sixteen large factors and reciprocity only
+    forces an even bad count.  The first missing estimate is the
+    parity-sensitive $p_1p_2>D$ sector, equivalently
+    $R_{\rm bad}\le1$; no unconditional member theorem follows.
+17. **L24 — the apparent unscaled diagonal five-count is vacuous.**  Both
+    exact self-coupled covers are finite flat of degree $8$, but
+    orientation I is killed by its $(4,0,0)$ dyadic Newton polygon and
+    orientation II by the complete mod-$16$ contradiction.  Their union is
+    empty on $\Phi$.  The $4{,}026{,}282$ zero-hit search is
+    corroboration only; the uniform theorem is local at $2$.
+18. **L25 — fixed scaling changes the local obstruction into parity
+    control.**  The type-I couplings $(2X,\rho)$ and $(2X,\rho/2)$ are
+    $2$-adically admissible exactly on even- and odd-$s$ strata,
+    respectively.  Their disjunction therefore has no uniform dyadic
+    obstruction; global rational coupled points and any count improvement
+    remain OPEN.
+19. **L26 — an even pullback and reciprocal tie expose a quartic trace
+    character.**  With $Z=z^2$ and
+    $\eta=Z(b+1)/(Db)$,
+    $P_{\rm rec}(b)=b^4T(b+b^{-1})$ for an exact quartic $T$.  The
+    canonical square branch is automatically split at $2$, guarded W1
+    targets lift, and $(2b|p)=(2(u+2)|p)$.  This is structural: the
+    quartic trace squareclass and global member remain OPEN.
+20. **L27 — one genuinely non-diagonal shear closes the displayed local
+    coupling gaps.**  The fixed matrix
+    $\left(\begin{smallmatrix}2&28\\s&1\end{smallmatrix}\right)$ covers
+    every $2$-adic $s$-parity.  A Weil character-sum bound, patched by
+    $43$ exact small-prime rows, gives a smooth point on the standard
+    aligned target stratum for every odd $w$; one guarded real sample
+    works.  Its bridge-specialized degree-$8$ cover has no proved global
+    rational point, so no five-count follows.
+
+## The frontier, stratified (rev 14)
 - **F1** ($\exists^k$ definability of $\mathbb{Z}$): $k=1$ is closed
   [CZ 2000], while $k=2$ is the first open case (sources and bounds:
   `THEOREMS.md`, L1 and consequences table).
@@ -369,9 +416,9 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
   $2\le m\le7$ and the refereed upper bound is $10$ (`THEOREMS.md`, A1–A2).
   **Classical Schinzel H conditionally narrows the range to
   $2\le m\le6$**, equivalently
-  $\operatorname{efd}\in[1,5]$ (`THEOREMS.md`, L22d;
-  `CONDITIONAL.md`, §1).  There is no remaining non-Schinzel
-  irreducibility premise.
+  $\operatorname{efd}\in[1,5]$ (`THEOREMS.md`, L22d and L24e–L27;
+  `CONDITIONAL.md`, §1).  L23–L27 neither remove Schinzel H nor improve
+  this record.
 - **F3** (cofinite subrings): L2′ closes the elliptic-integrality route
   decidably; infinite excluded prime sets are necessary
   (`THEOREMS.md`, L2′).
@@ -380,13 +427,22 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
   $\forall_9\exists_7$ result is unrefereed and the
   $\forall_9\exists_{10}$ anchor is refereed (`THEOREMS.md`,
   consequences table).
+- **F5** (unconditional member frontier): small-prime cleanliness for
+  the selected linear/octic sequence is a theorem, but globally good
+  members are not.  The exact analytic frontier is a parity-sensitive
+  two-large-bad-divisor estimate outside BV.  The new algebraic
+  frontiers are the L26 quartic-trace squareclass/member problem and a
+  target-specific rational point on L27's locally complete degree-$8$
+  shear cover (`THEOREMS.md`, L23–L27).
 
 
 ## Honest assessment
-No Hilbert problem fell.  The new record is **CONDITIONAL**, not
+No Hilbert problem fell.  The record remains **CONDITIONAL**, not
 unconditional: classical Schinzel H is unproved, and H10/$\mathbb Q$
-remains open (`THEOREMS.md`, L22d; `CONDITIONAL.md`, §1).  Every finite
-scan below retains its stated EVIDENCE or per-row scope.
+remains open (`THEOREMS.md`, L22d and L24e–L27; `CONDITIONAL.md`, §1).
+L23 proves small-prime cleanliness, L26 proves a trace descent, and L27
+proves local coupled points; none proves a global member or five-count.
+Every finite scan retains its stated EVIDENCE or per-row scope.
 
 Produced in this arc, to our knowledge new:
 (1) L2′ — a written structure theorem replacing a flawed step;
@@ -400,27 +456,49 @@ structure, with every bounded statement kept at its recorded scope;
 (8) L19–L20 — classical Schinzel H implies the member clause and an
 aligned $f=w$ class exists for every cell;
 (9) L21 — the reducible off-branch locus and the generic/per-grid
-precursor; and
-(10) **L22 — two independent fixed-branch irreducibility proofs for
-every nonzero rational $Z$, closing the last non-Schinzel premise**
-(`/tmp/l22_elimination.md`, `/tmp/l22_reciprocal_cube.md`,
-`agent://ElimAudit`, `agent://ReciprocalAudit`).
+precursor;
+(10) L22 — two independent fixed-branch irreducibility proofs for every
+nonzero rational $Z$, closing the last non-Schinzel premise;
+(11) L23 — the unconditional half-sieve, its exact two-large-divisor
+barrier, and the Capell/fibration/norm/squareclass/multivariable
+no-go reductions at their stated scopes; and
+(12) L24 — exact finite-flat unscaled diagonal covers and the uniform
+theorem that both their images are empty on $\Phi$ over $\mathbb Q_2$;
+and
+(13) L25 — the exact scaled-coupling parity theorem showing that
+$(2X,\rho)$ and $(2X,\rho/2)$ jointly have no uniform $2$-adic
+obstruction, with global rationality and target-compatibility left OPEN;
+(14) L26 — the even-pullback reciprocal tie, quartic trace model,
+automatic dyadic splitting and trace-character descent; and
+(15) L27 — the fixed $28$-shear, one-piece dyadic Hensel theorem and
+all-odd-prime aligned-target character-sum theorem, with global
+rationality left OPEN
+(`THEOREMS.md`, L23–L27; `agent://HalfSieveAudit`;
+`agent://FibrationAudit`; `agent://DiagonalAudit`;
+`agent://ReciprocalTieAudit`; `agent://TriangularShearAudit`).
 
 ### Next
 
-1. **Primary:** replace classical Schinzel H for the selected
-   linear/octic pair by an unconditional prime-value or member-existence
-   theorem.  The degree-$8$ squarefree and square-class literature is
-   provenance for why no such replacement is presently available
-   (`data/litscout_h10q.md`; `CONDITIONAL.md`, §4).  Further bounded
-   closures are EVIDENCE, not a substitute for Schinzel H.
-2. **Optional side geometry:** determine the Noether polynomial's
-   nonvanishing on the cell locus.  This remains OPEN but is no longer a
-   chain obligation (`/tmp/l22_fiber_geometry.md`; `THEOREMS.md`, L22c).
-3. **Scope guard:** do not use the free-$\lambda$ theorem as the
-   six-count closure; it leaves the fixed finite branch menu and would
-   require an additional witness (`/tmp/l22_square_branch.md`;
-   `agent://BranchAudit`).
-4. Continue the source watch for Sun's unrefereed paper and the priority
-   search for L2′; neither affects the L22 implication
-   (`THEOREMS.md`, A2 and L2′).
+1. **Primary reciprocal-tie target:** decide whether
+   $2(\theta+2)$ is square in L26's quartic trace algebra, or otherwise
+   prove a globally good reciprocal member.  The quartic character
+   descent is exact but does not lower the squarefree degree in $b$.
+2. **Primary coupled-cover target:** find a target-specific rational root
+   on L27's bridge-specialized degree-$8$ cover while meeting the
+   remaining controlled places.  Dyadic parity, every aligned odd target
+   (including $3,5$), and one real stratum are already solved locally.
+3. **Primary analytic target:** prove a parity-sensitive saving estimate
+   for the two-large-bad-divisor sector of the degree-$8$ linear/octic
+   sequence:
+   $p_1,p_2\ge X^{0.49}$, $p_1p_2>D_{\rm BV}$, both signs bad and both
+   valuations odd.  Equivalently, prove $R_{\rm bad}\le1$.
+4. **Scope guard:** until one of those targets produces actual globally
+   good members, classical Schinzel H remains the sole conjectural
+   input and the six-count remains CONDITIONAL.  The L24 zero-hit scan,
+   L25 bounded scans and L26 one-fibre certificates are corroboration,
+   not substitutes for a theorem.
+5. **Optional side geometry:** the L22 Noether polynomial nonvanishing
+   lemma and absolute rationality of the L24 total surfaces remain OPEN
+   but are not chain obligations.  Continue the source watch for Sun's
+   unrefereed paper and the priority search for L2′; neither affects the
+   unchanged L22 implication (`THEOREMS.md`, A2 and L2′).

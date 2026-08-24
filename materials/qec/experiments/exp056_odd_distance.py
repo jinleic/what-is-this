@@ -2182,6 +2182,37 @@ def _sector_path(sector: int) -> Path:
     return STATE_DIR / f"sector_{sector:02d}.json"
 
 
+def _revoke_exact_certificate(
+    route: str, identity: dict[str, Any], decision: dict[str, Any]
+) -> None:
+    """Atomically make revocation authoritative before writing convenience copy."""
+    revocation = {
+        "schema": "exp056-distance-certificate-revoked-v1",
+        "utc": utc_now(),
+        "reason": "verified lower-weight counterexample",
+        "route": route,
+        "target": {
+            key: value
+            for key, value in TARGET.items()
+            if key != "witness_support"
+        },
+        "identity": identity,
+        "decision": decision,
+        "verdict": {
+            "exact": False,
+            "classification": "COUNTEREXAMPLE",
+        },
+    }
+    atomic_write_json(CERTIFICATE, revocation)
+    atomic_write_json(
+        COUNTEREXAMPLE,
+        {
+            **revocation,
+            "schema": "exp056-distance-counterexample-v1",
+        },
+    )
+
+
 def run_sector(
     problem: dict[str, Any],
     cover: dict[str, Any],
@@ -2196,8 +2227,13 @@ def run_sector(
     identity = {**_problem_identity(problem, cover, cap), "sector": sector_index}
     path = _sector_path(sector_index)
     if path.exists() and not force:
-        stored = json.loads(path.read_text(encoding="utf-8"))
-        if stored.get("identity") == identity and stored.get("decision", {}).get("status") != "UNDECIDED_BUDGET":
+        stored = _validate_sector_record(problem, cover, cap, sector_index)
+        if (
+            stored is not None
+            and stored.get("decision", {}).get("status") != "UNDECIDED_BUDGET"
+        ):
+            if stored["decision"]["status"] == "SAT":
+                _revoke_exact_certificate("pole_sector", identity, stored["decision"])
             return stored
     instance = _sector_instance(problem, sector)
     decision = decide_weight_bounded(
@@ -2221,6 +2257,8 @@ def run_sector(
         "decision": decision,
     }
     atomic_write_json(path, payload)
+    if decision["status"] == "SAT":
+        _revoke_exact_certificate("pole_sector", identity, decision)
     return payload
 
 
@@ -2445,21 +2483,79 @@ def run_class_record(
     }
     atomic_write_json(path, payload)
     if decision["status"] == "SAT":
-        atomic_write_json(
-            COUNTEREXAMPLE,
-            {
-                "schema": "exp056-distance-counterexample-v1",
-                "utc": utc_now(),
-                "target": {
-                    key: value
-                    for key, value in TARGET.items()
-                    if key != "witness_support"
-                },
-                "identity": identity,
-                "decision": decision,
-            },
-        )
+        _revoke_exact_certificate("class_orbit", identity, decision)
     return payload
+
+def validate_exact_certificate_payload(certificate: dict[str, Any]) -> bool:
+    """Rebuild every current EXP-056 gate; trust no summary boolean."""
+    problem = build_problem(TARGET)
+    cover = build_orbit_cover(problem)
+    class_cover = build_class_orbit_cover(problem, cover)
+    protocol = _class_protocol(problem, cover, class_cover)
+    duality = bb_duality_proof(problem)
+    upper = verify_upper_witness(problem, default_witness(problem))
+    expected_identity = _problem_identity(
+        problem, cover, int(TARGET["lower_cap"])
+    )
+    verdict = certificate.get("verdict", {})
+    class_route = certificate.get("lower_bound", {}).get("class_route", {})
+    records = class_route.get("records", [])
+    expected_target = json.loads(
+        json.dumps(
+            {
+                key: value
+                for key, value in TARGET.items()
+                if key != "witness_support"
+            }
+        )
+    )
+    valid = bool(
+        certificate.get("schema") == SCHEMA
+        and certificate.get("target") == expected_target
+        and certificate.get("identity") == expected_identity
+        and verdict
+        == {
+            "exact": True,
+            "d": int(TARGET["expected_d"]),
+            "d_X": int(TARGET["expected_d"]),
+            "d_Z": int(TARGET["expected_d"]),
+            "classification": "CERTIFIED_EXACT",
+            "lower_route": "class_orbits",
+        }
+        and certificate.get("upper_bound") == upper
+        and canonical_json_sha256(certificate.get("orbit_cover"))
+        == canonical_json_sha256(_cover_metadata(cover))
+        and canonical_json_sha256(certificate.get("class_cover"))
+        == canonical_json_sha256(_class_cover_metadata(class_cover))
+        and certificate.get("duality")
+        == {key: value for key, value in duality.items() if key != "permutation"}
+        and class_route.get("protocol") == protocol
+        and class_route.get("required_classes") == class_cover["class_orbits"]
+        and class_route.get("missing_classes") == []
+        and class_route.get("statuses")
+        == ["UNSAT"] * class_cover["class_orbits"]
+        and len(records) == class_cover["class_orbits"]
+    )
+    if not valid:
+        raise RuntimeError("EXP-056 exact certificate failed rebuilt top-level gates")
+    for class_index, record in enumerate(records):
+        identity = _class_identity(
+            problem, cover, class_cover, class_index
+        )
+        if (
+            record is None
+            or record.get("identity") != identity
+            or record.get("protocol") != protocol
+            or record.get("decision", {}).get("status") != "UNSAT"
+            or record.get("decision", {}).get("instance_sha256")
+            != identity["instance_sha256"]
+            or not _class_replay_valid(record)
+        ):
+            raise RuntimeError(
+                f"EXP-056 class {class_index} failed rebuilt digest/replay gates"
+            )
+    return True
+
 
 
 def assemble(*, require_exact: bool = False) -> dict[str, Any]:
@@ -2487,11 +2583,9 @@ def assemble(*, require_exact: bool = False) -> dict[str, Any]:
         not sector_missing
         and sector_statuses == ["UNSAT"] * cover["required_sectors"]
     )
-    sector_replayed = bool(
-        sector_all_unsat
-        and all(record.get("replay", {}).get("status") == "UNSAT"
-                for record in sector_records if record is not None)
-    )
+    # Generic functional-sector records have no digest/version-bound replay
+    # implementation. They remain diagnostic only and can never certify exactness.
+    sector_replayed = False
 
     class_records = [
         _validate_class_record(problem, cover, class_cover, class_index)
@@ -2515,7 +2609,7 @@ def assemble(*, require_exact: bool = False) -> dict[str, Any]:
     counterexample = any(
         status == "SAT" for status in [*sector_statuses, *class_statuses]
     )
-    lower_exact = bool(sector_replayed or class_replayed)
+    lower_exact = class_replayed
     expected_d = int(TARGET["expected_d"])
     excluded_through = int(class_protocol["requested_exclusion_cap"])
     exact = bool(
@@ -2567,6 +2661,7 @@ def assemble(*, require_exact: bool = False) -> dict[str, Any]:
                 "missing_sectors": sector_missing,
                 "statuses": sector_statuses,
                 "all_orbit_sectors_unsat": sector_all_unsat,
+                "canonical_route_enabled": False,
                 "all_orbit_sectors_replayed": sector_replayed,
                 "records": sector_records,
             },
@@ -2577,13 +2672,34 @@ def assemble(*, require_exact: bool = False) -> dict[str, Any]:
             "d_X": expected_d if exact else None,
             "d_Z": expected_d if exact else None,
             "classification": classification,
-            "lower_route": (
-                "class_orbits" if class_replayed
-                else ("pole_sectors" if sector_replayed else None)
-            ),
+            "lower_route": "class_orbits" if class_replayed else None,
         },
     }
-    atomic_write_json(CERTIFICATE if exact else PARTIAL, payload)
+    if exact:
+        atomic_write_json(CERTIFICATE, payload)
+    else:
+        if counterexample:
+            sat_record = next(
+                record
+                for record in [*class_records, *sector_records]
+                if record is not None and record["decision"]["status"] == "SAT"
+            )
+            _revoke_exact_certificate(
+                "assembly", sat_record["identity"], sat_record["decision"]
+            )
+        else:
+            atomic_write_json(
+                CERTIFICATE,
+                {
+                    "schema": "exp056-distance-certificate-revoked-v1",
+                    "utc": utc_now(),
+                    "reason": "current protocol is not replay-complete",
+                    "identity": payload["identity"],
+                    "verdict": payload["verdict"],
+                    "partial": str(PARTIAL.relative_to(ROOT)),
+                },
+            )
+        atomic_write_json(PARTIAL, payload)
     if require_exact and not exact:
         raise RuntimeError(
             "EXP-056 remains noncanonical: "

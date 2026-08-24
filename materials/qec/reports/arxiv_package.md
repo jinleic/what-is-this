@@ -100,24 +100,29 @@ hardware-architecture claim.
 
 Suggested `Comments:` field (measured against the compiled PDF, not the md):
 
-> 10 pages, 7 tables, 0 figures; two boxed main results; machine-checked with exact SAT certificates (CaDiCaL 1.9.5) and GF(2) replay; full provenance ledger and per-claim reproducers in the ancillary claims matrix
+> 17 pages, 7 tables, 0 figures; two boxed main results; machine-checked with
+> exact SAT certificates (CaDiCaL 1.9.5 and Kissat 4.0.4) and GF(2) replay;
+> full provenance ledger and per-claim reproducers in the ancillary bundle
 
-Measured, not guessed: pdflatex line `Output written on paper_pbb_nogo.pdf (10 pages,
-619338 bytes)` (`reports/paper_pbb_nogo.log`); 7 `\begin{table}`, 7 `\begin{tabular}`,
-0 `\begin{figure}` in `reports/paper_pbb_nogo.tex`.
+Measured, not guessed: pdflatex line
+`Output written on paper_pbb_nogo.pdf (17 pages, 708817 bytes)`; 6 table floats
+plus 1 longtable, 6 tabular environments plus 1 longtable, and 0 figures.
 
 ---
 
 ## 4. Ancillary files
 
 Upload the tex sources normally plus these as ancillary files (arXiv "ancillary files"
-mechanism). Paths relative to repo root `math/qec/`; sizes as of 2026-08-18.
+mechanism). Paths relative to repo root `math/qec/`; sizes as of 2026-08-22.
 
 | File | Size | One-line description |
 |---|---|---|
-| `reports/paper_pbb_nogo.tex` | 35,994 B | LaTeX source compiled from the md (arXiv requires source; ship as the primary tex). |
+| `reports/paper_pbb_nogo.tex` | 66,226 B | LaTeX source compiled from the md (arXiv requires source; ship as the primary tex). |
 | `reports/paper_pbb_nogo.bib` | 2,772 B | Bibliography (compiled `paper_pbb_nogo.bbl` produced from it; arXiv will run its own bibtex pass). |
-| `reports/paper_pbb_nogo.pdf` | 619,338 B | Reference build of the paper (10 pages) for side-by-side preview; arXiv rebuilds from tex. |
+| `reports/paper_pbb_nogo.pdf` | 708,817 B | Reference build of the paper (17 pages) for side-by-side preview; arXiv rebuilds from tex. |
+| `results/certificates/exp056_wm_162_8_14_distance.json` | 127,917 B | EXP-056: exact $[[162,8,14]]$, 20 replayed class-orbit UNSATs plus weight-14 witness and duality. |
+| `results/processed/exp055_odd_lattice_screen.json` | 2,677,625 B | Fixed-point screen through $n=162$: 2,132 classes / 51,769 pairs, 1,928/1,928 referenced dominated. |
+| `results/certificates/exp055_odd_lattice_survivors.json` | 356 B | Empty-survivor certificate hash-bound to the final screen. |
 | `reports/claims_matrix.md` | 35,288 B | Machine-auditable 57-claim provenance ledger: every number → certifying artifact → regenerating command → guarding test (38 VERIFIED / 19 UNGUARDED, status-as-printed in the ledger). |
 | `notes/open_status_2026-08-17.md` | 10,729 B | Dated novelty/open-status annex: literature-search audit trail supporting the "to our knowledge new here" list (paper §9). |
 | `results/partial_runs/exp039_nogo_module.json` | 66,430 B | EXP-039 assembled result over the 134 parent T-certificates — 61 family-closed parents, 249 rows capped a priori, falsification-gate summary. **NOTE: the task template listed `results/processed/exp039_nogo_module.json`; the artifact actually lives under `results/partial_runs/` (as in paper §8). No `processed/` copy exists; ship the `partial_runs` path.** |

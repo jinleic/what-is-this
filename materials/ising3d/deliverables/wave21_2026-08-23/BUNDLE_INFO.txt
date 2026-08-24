@@ -1,0 +1,47 @@
+ISING3D EXACT-RESEARCH BUNDLE — WAVE 21
+=======================================
+
+Scope
+-----
+This bundle contains the exact artifacts produced in wave 21. The three-dimensional
+Ising model remains UNSOLVED. No thermodynamic-limit free energy, magnetisation,
+correlation function, exact critical point, or exact exponent is claimed.
+
+Headline results
+----------------
+1. On t in [999999997/3000000000,1000000003/3000000000], exact centered
+   log-moment Stieltjes/Hankel violations exclude full subset-product spectra
+   on the open 2x2 and 2x3 bipartite layers.
+2. At t=1/3, seven exact power traces make the six-mode subset-product trace
+   resultant system inconsistent on the open 2x3 layer; trace seven is the first
+   decisive row of the named system.
+3. Two-slice Delta in {0,2} observability recovers every exact U sector rank at
+   L=3..8. The bonding/antibonding up-to-two-a truncation first fails at (4,2)
+   with kernel Q a_0a_1a_2a_3 and rank 19<20; the all-L rank law remains open.
+4. The phase-sensitive PS4-convolution-block-Gram-L1 class is strictly stronger
+   than MR4 but has an exact Green lift for every even L>=266 with
+   p_0<=5168/(525L), so the certified upper endpoint remains unchanged.
+5. Packed first-use finite-memory SAW automata reproduce e227's ordered content
+   for k=4,6,8,10,12. The producer passed 33/33; the independent verifier passed.
+   Memory 14 was explicitly not launched; there is no new endpoint claim.
+
+Verification
+------------
+- Five targeted standalone verifiers were run by the lead inside this checkout:
+  bipartite log moments PASS, trace resultant PASS, W-law rank mechanism PASS
+  (21 checks, 0 failures), upper phase-sensitive PASS, and compact finite-memory
+  SAW crosswalk PASS.
+- Producer checks are 17/17, 5/5, 16/16, 29/29, and 33/33, respectively.
+- The repository contains 153 test scripts. No full 153-script suite was launched
+  under severe sustained host load.
+
+Provenance and limitations
+--------------------------
+- Exact combinatorial objects use integer/rational/interval arithmetic. Modular ranks
+  are used only in the rigorous one-sided direction and are never promoted without
+  a matching rational ceiling.
+- K_c=0.221654626 is comparison-only and played no selection, fitting, tuning, or
+  stopping role.
+- MANIFEST.json records byte size and SHA-256 for every staged file except itself.
+- Bundles are snapshots. Executable reproduction should use the repository root, not
+  this copy.

@@ -1,0 +1,44 @@
+{
+  "base_dimensions": {
+    "clauses_after_cut": 11260,
+    "variables": 744
+  },
+  "base_relaxation_admits_false_pappus_conclusion": true,
+  "base_stats": {
+    "conflicts": 0,
+    "decisions": 115,
+    "propagations": 744,
+    "restarts": 0
+  },
+  "cut_stats": {
+    "conflicts": 0,
+    "decisions": 0,
+    "propagations": 179,
+    "restarts": 0
+  },
+  "labels": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "nondegenerate_distinct_pencils_guard": "not C(A,B,a)",
+  "pappus_cut_rejects_false_conclusion": true,
+  "roles": [
+    "A",
+    "B",
+    "C",
+    "a",
+    "b",
+    "c",
+    "x",
+    "y",
+    "z"
+  ],
+  "status": "PASS"
+}

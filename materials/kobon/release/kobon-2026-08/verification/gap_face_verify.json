@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "trials_per_n_per_mode": 200,
+  "configurations": 4000,
+  "nondegenerate_triples": 109104,
+  "modes": {
+    "generic": 800,
+    "parallel": 800,
+    "triple": 800,
+    "parallel+triple": 800,
+    "fourfold": 800
+  },
+  "mismatches": 0,
+  "square_penalty_violations": 0,
+  "minimum_square_penalty_slack": {
+    "slack": 0,
+    "n": 5,
+    "mode": "parallel+triple",
+    "seed": 2,
+    "faces": 4,
+    "parallel_pairs": 1,
+    "multiplicities": [
+      3
+    ]
+  }
+}

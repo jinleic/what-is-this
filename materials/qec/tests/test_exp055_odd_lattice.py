@@ -111,13 +111,13 @@ def test_literature_battery_contract(lit: dict) -> None:
     assert lit["reported_distance_instances"] == 25
     assert lit["exact_ceiling_never_violated"] is True
     assert lit["exact_ceiling_violations"] == []
-    assert lit["exact_distance_instances"] == 5
+    assert lit["exact_distance_instances"] == 6
     assert lit["no_certificate"] == []
-    # Source provenance is explicit: every W-M distance is an estimate and is
-    # forbidden from the exact-reference set.
+    # Source provenance remains explicit: every W-M distance originated as an
+    # estimate; exactly two now have independent local exact certificates.
     wm = [r for r in lit["records"] if r["source"].startswith("2408.10001")]
     assert wm and all(r["source_distance_estimate"] for r in wm)
-    assert sum(bool(r["distance_exact_certified_here"]) for r in wm) == 1
+    assert sum(bool(r["distance_exact_certified_here"]) for r in wm) == 2
 
 
 def test_discovered_reference_certificates(discovered: dict) -> None:
@@ -295,6 +295,20 @@ def test_reduced_witness_is_a_real_logical(ell, m, A, B, d_pub) -> None:
     assert rank_np(np.vstack([HZ, word[None, :]])) == rank_np(HZ) + 1
 
 
+def test_cdcl_screen_witness_is_a_real_logical() -> None:
+    ell, m = 3, 3
+    A = [(0, 0), (0, 1), (0, 2)]
+    B = [(0, 0), (1, 0), (0, 1)]
+    HX, HZ = E55.E53.bb_from_terms(ell, m, A, B)
+    record = E55._cdcl_witness_bound(HX, HZ, ell * m, 2)
+    assert record["status"] == "SAT"
+    assert record["weight"] == 2
+    word = np.zeros(2 * ell * m, dtype=np.uint8)
+    word[record["witness_support"]] = 1
+    assert not np.any(HX @ word % 2)
+    assert rank_np(np.vstack([HZ, word])) == rank_np(HZ) + 1
+
+
 def test_exp055_survivor_is_exact_and_indecomposable() -> None:
     """Independent recomputation of the first Pareto survivor: [[30,8,4]]."""
     from qec_research.distance.exact import exact_distance_css
@@ -347,18 +361,137 @@ def test_screen_protocol_gate_rejects_inadequate_census() -> None:
         E55._validate_census_for_screen(base, 8, 26)
 
 
-def test_estimated_wang_mueller_distance_never_sets_threshold() -> None:
+def test_estimated_distances_require_local_certificate_before_threshold_use() -> None:
     # The n=126 value is admissible only because EXP-055 exact-certified it.
     threshold126, source126 = E55.domination_threshold(126, 12)
     assert threshold126 == 10
     assert "EXP-055" not in source126 and "2408.10001" in source126
-    # The estimated [[162,8,14]] is still excluded; exact Gross gives cap 12.
+    # EXP-056 replay-certified [[162,8,14]], so the former estimate is now a
+    # hash-bound exact threshold.
     threshold162, source162 = E55.domination_threshold(162, 8)
-    assert threshold162 == 12
-    assert source162 == "[[144,12,12]]"
+    assert threshold162 == 14
+    assert "2408.10001" in source162
+    target = next(
+        r for r in E55.LITERATURE_ODD if r["ell"] == 3 and r["m"] == 27
+    )
+    assert E55._distance_exact_here(target) is True
+    wrong_constructor = dict(target)
+    wrong_constructor["A"] = [(0, 0), (0, 1), (0, 2)]
+    with pytest.raises(RuntimeError, match="does not bind"):
+        E55._distance_exact_here(wrong_constructor)
     threshold54, source54 = E55.domination_threshold(54, 8)
     assert threshold54 == 6
     assert source54 == "EXP-055 [[54,8,6]]"
+
+    with pytest.raises(RuntimeError, match="missing"):
+        E55._distance_exact_here(
+            {
+                "ell": 3, "m": 27, "k": 8, "d": 14,
+                "distance_exact_certified_here": True,
+                "distance_certificate": "results/certificates/does-not-exist.json",
+            }
+        )
+
+def test_n180_exact_references_are_constructor_and_cnf_bound() -> None:
+    refs = [r for r in E55.EXACT_REFERENCES if r["n"] == 180]
+    assert {(r["k"], r["d"]) for r in refs} == {(8, 16), (20, 6)}
+    for rec in refs:
+        exact, certificate_sha256 = E55._validated_exact_reference(rec)
+        assert exact is True
+        assert certificate_sha256 is not None and len(certificate_sha256) == 64
+
+        certificate, _ = E55._distance_certificate_snapshot(
+            rec["distance_certificate"]
+        )
+        tampered = json.loads(json.dumps(certificate))
+        lower_calls = [
+            call
+            for call in tampered["calls"]
+            if call["side"] == "x"
+            and call["cap"] == rec["d"] - 1
+            and call["status"] == "UNSAT"
+        ]
+        assert lower_calls
+        for lower in lower_calls:
+            lower["cnf_sha256"] = "0" * 64
+        with pytest.raises(RuntimeError, match="does not bind"):
+            E55.validate_exp037_reference_payload(rec, tampered)
+
+    assert E55.domination_threshold(179, 8)[0] == 14
+    assert E55.domination_threshold(180, 8)[0] == 16
+    assert E55.domination_threshold(180, 20)[0] == 6
+
+    wrong_constructor = dict(refs[0])
+    wrong_constructor["A"] = [[0, 0], [1, 0], [2, 0]]
+    with pytest.raises(RuntimeError, match="does not bind"):
+        E55._validated_exact_reference(wrong_constructor)
+
+def test_n170_frontier_reference_is_exact_and_hash_bound() -> None:
+    rec = next(
+        r
+        for r in E55.EXACT_REFERENCES
+        if (r["n"], r["k"], r["d"]) == (170, 16, 10)
+    )
+    exact, certificate_sha256 = E55._validated_exact_reference(rec)
+    assert exact is True
+    assert certificate_sha256 is not None and len(certificate_sha256) == 64
+    assert E55.domination_threshold(169, 16)[0] == 0
+    assert E55.domination_threshold(170, 16) == (
+        10,
+        "EXP-057 [[170,16,10]]",
+    )
+
+    certificate, _ = E55._distance_certificate_snapshot(
+        rec["distance_certificate"]
+    )
+    tampered = json.loads(json.dumps(certificate))
+    tampered["identity"]["HX_sha256"] = "0" * 64
+    with pytest.raises(RuntimeError, match="does not validate"):
+        E55._frontier_validator_module(
+            "exp057_certificate_validator", "exp057_odd_frontier.py"
+        ).validate_exact_certificate_payload(tampered)
+
+
+def test_n186_frontier_reference_is_exact_and_hash_bound() -> None:
+    rec = next(
+        r
+        for r in E55.EXACT_REFERENCES
+        if (r["n"], r["k"], r["d"]) == (186, 10, 14)
+    )
+    exact, certificate_sha256 = E55._validated_exact_reference(rec)
+    assert exact is True
+    assert certificate_sha256 is not None and len(certificate_sha256) == 64
+    assert E55.domination_threshold(186, 10) == (
+        14,
+        "EXP-058 [[186,10,14]]",
+    )
+    assert E55.domination_threshold(186, 8)[0] == 16
+    assert E55.domination_threshold(185, 10)[0] == 12
+
+    wrong = dict(rec)
+    wrong["B"] = [[0, 0], [0, 1]]
+    with pytest.raises(RuntimeError, match="does not bind"):
+        E55._validated_exact_reference(wrong)
+
+
+def test_n210_frontier_reference_is_exact_and_hash_bound() -> None:
+    rec = next(
+        r
+        for r in E55.EXACT_REFERENCES
+        if (r["n"], r["k"], r["d"]) == (210, 18, 8)
+    )
+    exact, certificate_sha256 = E55._validated_exact_reference(rec)
+    assert exact is True
+    assert certificate_sha256 is not None and len(certificate_sha256) == 64
+    assert E55.domination_threshold(209, 18)[0] == 6
+    assert E55.domination_threshold(210, 18) == (
+        8,
+        "EXP-060 [[210,18,8]]",
+    )
+    wrong = dict(rec)
+    wrong["A"] = [[0, 0], [0, 1], [1, 1]]
+    with pytest.raises(RuntimeError, match="does not bind"):
+        E55._validated_exact_reference(wrong)
 
 
 def test_screen_hash_and_completeness_gates() -> None:
@@ -395,21 +528,28 @@ def test_screen_hash_and_completeness_gates() -> None:
 
 def test_fixed_point_screen_contract(screen: dict, survivor_cert: dict) -> None:
     scope, verdict = screen["scope"], screen["verdict"]
-    assert scope["lattices_expected"] == scope["lattices_completed"] == 9
-    assert scope["missing"] == [] and scope["n_max"] == 126
+    assert scope["lattices_expected"] == scope["lattices_completed"] == 13
+    assert scope["missing"] == [] and scope["n_max"] == 162
     assert scope["k_range"] == [8, 24]
     assert verdict["complete"] and verdict["all_referenced_decided"]
     assert verdict["survivors"] == verdict["undecided"] == 0
     assert verdict["all_referenced_dominated"] is True
-    assert verdict["candidates_after_symmetry"] == 715
-    assert verdict["orbits_represented"] == 10_247
-    assert verdict["with_reference"] == verdict["dominated"] == 598
-    assert verdict["no_reference"] == 117
-    assert verdict["solver_calls"] == 10
+    assert verdict["candidates_after_symmetry"] == 2_132
+    assert verdict["orbits_represented"] == 51_769
+    assert verdict["with_reference"] == verdict["dominated"] == 1_928
+    assert verdict["no_reference"] == 204
+    assert verdict["solver_calls"] == 129
     assert verdict["verdicts"] == {
-        "dominated": 10, "dominated_by_witness": 588, "no_reference": 117}
+        "dominated": 5,
+        "dominated_by_cdcl_witness": 119,
+        "dominated_by_witness": 1_804,
+        "no_reference": 204,
+    }
     assert screen["protocol"]["census_sha256"] == E55._file_sha256(CENSUS)
     assert screen["protocol"]["reference_sha256"] == E55._reference_fingerprint()
+    assert screen["protocol"]["reference_validation_version"] == (
+        E55.REFERENCE_VALIDATION_VERSION
+    )
     assert all(r["schema"] == "exp055-screen-v3"
                and r["protocol"] == screen["protocol"] for r in screen["lattices"])
 
@@ -420,11 +560,13 @@ def test_fixed_point_screen_contract(screen: dict, survivor_cert: dict) -> None:
 
 
 def test_every_persisted_screen_witness_is_physical(screen: dict) -> None:
-    """The 588 solver-free domination decisions each carry a real logical word."""
+    """All 1,923 persisted domination witnesses are physical logical words."""
     checked = 0
     for lattice in screen["lattices"]:
         for r in lattice["records"]:
-            if r["verdict"] != "dominated_by_witness":
+            if r["verdict"] not in {
+                "dominated_by_witness", "dominated_by_cdcl_witness"
+            }:
                 continue
             HX, HZ = E55.E53.bb_from_terms(r["ell"], r["m"], r["A"], r["B"])
             word = np.zeros(r["n"], np.uint8)
@@ -433,4 +575,4 @@ def test_every_persisted_screen_witness_is_physical(screen: dict) -> None:
             assert not (HX @ word % 2).any(), r
             assert rank_np(np.vstack([HZ, word[None, :]])) == rank_np(HZ) + 1, r
             checked += 1
-    assert checked == 588
+    assert checked == 1_923

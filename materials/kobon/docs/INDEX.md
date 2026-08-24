@@ -24,6 +24,7 @@ proved analytic branch does not settle an unrelated live SAT run.
 |---|---|---|
 | `math/kobon/docs/INDEX.md` | This navigation map, status vocabulary, and disk-drift warnings. | MACHINE-CHECKED inventory |
 | `math/kobon/paper_kobon_2026-08.md` | Consolidated paper: capacity theorem, branch obstructions, verified 54 lower bound, machinery, literature, and limitations. | PROVED + MACHINE-CHECKED + PENDING |
+| `math/kobon/paper/kobon_broad_capacity.{tex,pdf}` | Current 17-page research paper: convention collapse, capacity theorem, certified values, square-penalty refutation, sector identity, and checked coefficient-2/3 endpoint at n=7. | PROVED + MACHINE-CHECKED + PENDING frontiers |
 | `math/kobon/docs/methods.md` | Exact description of the SAT encoding, rational geometry, cube/monolith workflow, DRAT policy, and fixed-arrangement packing prober. | PROVED + MACHINE-CHECKED |
 | `math/kobon/docs/experiments.md` | Snapshot ledger of completed, interrupted, queued, and live experiments with actual DIMACS headers. | MACHINE-CHECKED + DISCOVERY-ONLY + PENDING |
 | `math/kobon/docs/reproduce.md` | Exact workspace commands for the lower certificate, 15-solution sweep, obstruction checks, cube builds, max packing, and engine test. | MACHINE-CHECKED procedures |
@@ -38,6 +39,7 @@ proved analytic branch does not settle an unrelated live SAT run.
 | `math/kobon/AUDIT.md` | Byte-level audit and completed recovery ledger for the n=10 DRAT cube family. | MACHINE-CHECKED |
 | `math/kobon/report.md` | Full computational-proof report for `K_gen(10)=25`, including encoding, validation, capacity theorem, counterexamples, and artifact map. | PROVED + MACHINE-CHECKED |
 | `math/kobon/paper_capacity.md` | Standalone proof of the crossing-refined capacity theorem, equality analysis, sharpness checks, literature comparison, and open-target consequences. | PROVED + MACHINE-CHECKED |
+| `math/kobon/paper/kobon_broad_capacity.{tex,pdf}` | Current full paper and compiled PDF, including the 2026-08-23 square-penalty frontier. | PROVED + MACHINE-CHECKED + PENDING frontiers |
 | `math/kobon/paper_kobon_2026-08.md` | Current short synthesis and scope ledger for the late-August campaign. | PROVED + MACHINE-CHECKED + PENDING |
 | `math/PROGRESS.md` | Multi-campaign chronological ledger; Kobon entries begin at the 2026-08-15 canonicalization and continue through the 2026-08-21 release/census. | MACHINE-CHECKED + DISCOVERY-ONLY + PENDING |
 
@@ -64,7 +66,10 @@ archives are superseded packaging history, not alternate authorities.
 | `release/kobon-2026-08/MANIFEST.sha256` | Integrity manifest for every file in the canonical archive snapshot. | MACHINE-CHECKED |
 | `release/kobon-2026-08/papers/paper_kobon_2026-08.md` | Packaged snapshot of the consolidated paper. | PROVED + MACHINE-CHECKED + PENDING |
 | `release/kobon-2026-08/papers/paper_capacity.md` | Packaged snapshot of the full capacity paper. | PROVED + MACHINE-CHECKED |
+| `release/kobon-2026-08/papers/kobon_broad_capacity.{tex,pdf}` | Packaged 17-page current paper. | PROVED + MACHINE-CHECKED + PENDING frontiers |
 | `release/kobon-2026-08/papers/report.md` | Packaged snapshot of the n=10 report. | PROVED + MACHINE-CHECKED |
+| `release/kobon-2026-08/certificates/c23_n7_*` | Hash-bound CNF, 34 MB DRAT, `s VERIFIED` transcript and manifest for the coefficient-2/3 endpoint at n=7. | MACHINE-CHECKED theorem |
+| `release/kobon-2026-08/verification/square_penalty_counterexample.json` | Exact A(12,1) face/edge/sector census refuting the coefficient-1 square penalty. | MACHINE-CHECKED counterexample |
 | `release/kobon-2026-08/proofs/Kgen14_ge54_certificate.md` | Provenance and three-way exact verification matrix for the 54 lower certificate. | MACHINE-CHECKED |
 | `release/kobon-2026-08/proofs/escape_obstruction.md` | Packaged n=14 Q=3 analytic obstruction and hypothesis ledger. | PROVED + MACHINE-CHECKED finite leg |
 | `release/kobon-2026-08/proofs/obstruction_n18.md` | Packaged n=18 Q=3 analytic obstruction and finite-check interface. | PROVED + MACHINE-CHECKED finite leg |
@@ -126,6 +131,11 @@ campaign documents; they are intentionally excluded from this navigation map.
 | `scratch/kobon/n11_monolith_t33.{cnf,drat}` | In-flight target-33 proof attempt; DRAT is not complete. | PENDING | `experiments.md`; `ARTIFACTS.md` |
 | `scratch/kobon/max_packing.py` | Fixed-arrangement exact optimum prober. | MACHINE-CHECKED only with `optimality_proved=true` | `methods.md`; `reproduce.md` |
 | `scratch/kobon/n14/concurrency_cases.py` | Target-controlled n=14 signature enumeration and cube/monolith builder. | MACHINE-CHECKED generator; generated run verdicts separate | `methods.md`; `reproduce.md` |
+| `scratch/kobon/square_penalty_counterexample.py` + JSON | Exact rational A(12,1) construction, dual face predicates, edge census and sector-run excess replay. | MACHINE-CHECKED counterexample | `paper/kobon_broad_capacity.tex`; `reproduce.md` |
+| `scratch/kobon/square_penalty_sat.py` + `c23_n7_*` | Rational-weight direct-gap violation generator and checked coefficient-2/3 n=7 certificate. | MACHINE-CHECKED finite theorem; general endpoint PENDING | `paper/kobon_broad_capacity.tex`; `reproduce.md` |
+| `scratch/kobon/sector_bound_audit.py` + JSON | Exact-rational replay of the simple/multipoint/nonadjacent vertex-sector cuts over six degeneracy modes. | PROVED local lemma + MACHINE-CHECKED implementation audit | `paper/kobon_broad_capacity.tex`; `reproduce.md` |
+| `scratch/kobon/pappus_relaxation_probe.py` + JSON | Exhibits a guarded non-Pappus abstract-order model and checks that the projective implication clauses reject it. | MACHINE-CHECKED relaxation-gap probe; clauses not used in frontier | `paper_capacity.md`; `reproduce.md` |
+| `scratch/kobon/n12_gap_sector_deletion_t39.cnf` | Direct-gap target-39 lane with hereditary one/two-line deletion cuts and multipoint sector cuts. | PENDING; no solver verdict yet | `math/PROGRESS.md`; `ARTIFACTS.md` |
 | `math/kobon/release/kobon-2026-08.zip` | Curated, hash-manifested release; large live solver objects deliberately referenced only. | MACHINE-CHECKED package integrity | `ARTIFACTS.md` |
 
 ## Disk/document discrepancies found during this inventory

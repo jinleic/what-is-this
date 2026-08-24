@@ -1,0 +1,153 @@
+{
+  "decision": {
+    "backend": "pysat",
+    "card_encoding": "seqcounter",
+    "class_index": 8,
+    "cnf_sha256": "44735e24be1088eadbb4339457bc1334f0be6d694df3370705aa10903f90ecb9",
+    "formulation": "generator",
+    "instance_sha256": "44735e24be1088eadbb4339457bc1334f0be6d694df3370705aa10903f90ecb9",
+    "mask_hex": "0x18",
+    "orbit_size": 18,
+    "solver": {
+      "backend": "pysat",
+      "clauses": 4943,
+      "cnf_variables": 2039,
+      "conflict_budget": 0,
+      "name": "PySAT kissat404",
+      "stats": {},
+      "version": "1.9.dev13",
+      "wall_time_s": 39.79391954198945
+    },
+    "status": "UNSAT",
+    "symmetry_break": "anchor",
+    "weight_cap": 12,
+    "xor_encoding": "direct-small"
+  },
+  "identity": {
+    "A": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        14
+      ]
+    ],
+    "B": [
+      [
+        0,
+        12
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "HX_sha256": "17529338da353c09b85a779d71cc10f97fee2510e82ceaa475f8aa9adb2ddf4f",
+    "HZ_sha256": "04b88ed082d3664ca6b72eba195ee8171d260e3bf944e7abea8564754f87d1be",
+    "class_index": 8,
+    "class_mask_hex": "0x18",
+    "class_vector_sha256": "1dbe89cdc0693e5f495ea3af1d0de734646f60328735c58690e2e5fafef5fd4d",
+    "ell": 3,
+    "instance_sha256": "44735e24be1088eadbb4339457bc1334f0be6d694df3370705aa10903f90ecb9",
+    "k": 8,
+    "m": 27,
+    "n": 162,
+    "name": "wm-3x27-162-8-14",
+    "protocol_sha256": "a086615034f607b63662935293debc7935fc56596ea92ce249739455ef606e1e",
+    "schema": "exp056-class-record-v1"
+  },
+  "protocol": {
+    "backend": "pysat",
+    "card_encoding": "seqcounter",
+    "class_cover_sha256": "f5538f136761bc5d20dd2a28c866ee76f88e6c9d41f605acee664aea9e168f6f",
+    "conflict_budget": 0,
+    "cover_sha256": "8836c5d126b6e606a5f6e3de59396c20e772e514ec6c96a86c28c43fd2a9c8c9",
+    "effective_solver_cap": 12,
+    "encoding_version": "exp056-sparse-generator-direct-small-v1",
+    "formulation": "generator",
+    "parity_proof": {
+      "all_column_degrees_odd": true,
+      "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+      "column_degree_max": 3,
+      "column_degree_min": 3,
+      "effective_even_cap": 12,
+      "requested_cap": 13,
+      "schema": "exp056-kernel-weight-parity-v1",
+      "valid": true
+    },
+    "requested_exclusion_cap": 13,
+    "schema": "exp056-class-certificate-protocol-v1",
+    "solver": "kissat404",
+    "symmetry_break": "anchor",
+    "xor_encoding": "direct-small"
+  },
+  "replay": {
+    "encoding_version": "exp056-sparse-generator-direct-small-v1",
+    "instance_sha256": "44735e24be1088eadbb4339457bc1334f0be6d694df3370705aa10903f90ecb9",
+    "solver": {
+      "backend": "pysat",
+      "clauses": 4943,
+      "cnf_variables": 2039,
+      "conflict_budget": 0,
+      "name": "PySAT kissat404",
+      "stats": {},
+      "version": "1.9.dev13",
+      "wall_time_s": 45.027857332956046
+    },
+    "status": "UNSAT",
+    "utc": "2026-08-23T00:12:49.052974+00:00"
+  },
+  "representative": {
+    "anchor_coordinates": [
+      0,
+      1,
+      2,
+      27,
+      28,
+      29,
+      54,
+      55,
+      56,
+      81,
+      82,
+      83,
+      108,
+      109,
+      110,
+      135,
+      136,
+      137
+    ],
+    "class_index": 8,
+    "class_stabilizer_size": 9,
+    "coordinate_orbit_count": 18,
+    "coordinate_orbits_cover_all": true,
+    "mask": 24,
+    "mask_hex": "0x18",
+    "orbit_size": 18,
+    "orbit_stabilizer_exact": true,
+    "syndrome_bits": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "syndrome_nonzero": true,
+    "vector_sha256": "1dbe89cdc0693e5f495ea3af1d0de734646f60328735c58690e2e5fafef5fd4d"
+  },
+  "utc": "2026-08-23T00:07:16.085284+00:00"
+}

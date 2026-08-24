@@ -609,14 +609,17 @@
  ],
  "orbit_total": 1002,
  "protocol": {
+  "cdcl_conflict_budget": 1000000,
+  "cdcl_solver": "cadical195",
   "census_sha256": "c6733189b9e5a533daca6b0743ac54e222194509fa9e45c729a9524c34b6b1d5",
   "k_range": [
    8,
    24
   ],
-  "reference_sha256": "e971c84c27da29dfd95bc39794bf1978276197a2e492b30358ddcbf9cfc3628a",
+  "reference_sha256": "86e49b6e239cc5f8460723bb8cf5ae35ededffc7215e42992f9973c6983481a3",
+  "reference_validation_version": "exp055-exact-reference-validator-v7",
   "residual_workers": 8,
-  "time_limit_s": 90.0,
+  "time_limit_s": 120.0,
   "witness_keep": 64,
   "witness_tries": 8
  },
@@ -1295,7 +1298,7 @@
     59,
     60
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -1381,7 +1384,7 @@
     24,
     25
    ],
-   "witness_wall_s": 0.07
+   "witness_wall_s": 0.04
   },
   {
    "A": [
@@ -1467,7 +1470,7 @@
     24,
     25
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.06
   },
   {
    "A": [
@@ -1547,7 +1550,7 @@
     109,
     116
    ],
-   "witness_wall_s": 0.02
+   "witness_wall_s": 0.05
   },
   {
    "A": [
@@ -1629,7 +1632,7 @@
     117,
     118
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -1721,7 +1724,7 @@
     111,
     115
    ],
-   "witness_wall_s": 0.07
+   "witness_wall_s": 0.06
   },
   {
    "A": [
@@ -1813,7 +1816,7 @@
     81,
     99
    ],
-   "witness_wall_s": 0.02
+   "witness_wall_s": 0.05
   },
   {
    "A": [
@@ -1901,7 +1904,7 @@
     95,
     112
    ],
-   "witness_wall_s": 0.05
+   "witness_wall_s": 0.04
   },
   {
    "A": [
@@ -1985,7 +1988,7 @@
     102,
     123
    ],
-   "witness_wall_s": 0.04
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -2159,7 +2162,7 @@
     103,
     105
    ],
-   "witness_wall_s": 0.11
+   "witness_wall_s": 0.09
   },
   {
    "A": [
@@ -2245,7 +2248,7 @@
     111,
     116
    ],
-   "witness_wall_s": 0.04
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -2337,7 +2340,7 @@
     122,
     125
    ],
-   "witness_wall_s": 0.06
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -2421,7 +2424,7 @@
     97,
     118
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -2487,7 +2490,7 @@
     27,
     48
    ],
-   "witness_wall_s": 0.02
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -2619,7 +2622,7 @@
     27,
     48
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.06
   },
   {
    "A": [
@@ -2685,7 +2688,7 @@
     48,
     111
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -2757,7 +2760,7 @@
     90,
     105
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -2827,7 +2830,7 @@
     107,
     110
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -2895,7 +2898,7 @@
     89,
     110
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -3035,7 +3038,7 @@
     86,
     109
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -3105,7 +3108,7 @@
     107,
     109
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.06
   },
   {
    "A": [
@@ -3175,7 +3178,7 @@
     108,
     110
    ],
-   "witness_wall_s": 0.06
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -3383,7 +3386,7 @@
     107,
     111
    ],
-   "witness_wall_s": 0.04
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -3451,7 +3454,7 @@
     89,
     111
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -3525,7 +3528,7 @@
     107,
     110
    ],
-   "witness_wall_s": 0.02
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -3595,7 +3598,7 @@
     106,
     111
    ],
-   "witness_wall_s": 0.04
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -4069,7 +4072,7 @@
     104,
     125
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -4249,7 +4252,7 @@
     118,
     123
    ],
-   "witness_wall_s": 0.08
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -4513,7 +4516,7 @@
     88,
     115
    ],
-   "witness_wall_s": 0.02
+   "witness_wall_s": 0.07
   },
   {
    "A": [
@@ -4690,15 +4693,30 @@
    "witness_wall_s": 0.0
   }
  ],
+ "reference_rebind": {
+  "all_carried_witnesses_rechecked": true,
+  "all_thresholds_monotone": true,
+  "archive": "results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v7/9x7.json",
+  "new_reference_sha256": "86e49b6e239cc5f8460723bb8cf5ae35ededffc7215e42992f9973c6983481a3",
+  "new_validation_version": "exp055-exact-reference-validator-v7",
+  "old_reference_sha256": "10fa66c7ed5280eb64463177c888fa4d242f82573cdcec6d7043b3277e7cacfa",
+  "old_shard_sha256": "c467ec5f900fa457303e418c861949eeca188cf25caff29a724eec825affecac",
+  "old_validation_version": "exp055-exact-reference-validator-v6",
+  "schema": "exp063-monotone-reference-rebind-v1",
+  "transitions": {
+   "dominated_by_witness->dominated_by_witness": 44,
+   "no_reference->no_reference": 10
+  }
+ },
  "schema": "exp055-screen-v3",
  "solver_calls": 0,
  "survivors": [],
- "time_limit_s": 90.0,
+ "time_limit_s": 120.0,
  "undecided": [],
- "utc": "2026-08-22T12:35:25Z",
+ "utc": "2026-08-23T16:11:44Z",
  "verdicts": {
   "dominated_by_witness": 44,
   "no_reference": 10
  },
- "wall_s": 2.5
+ "wall_s": 5.3
 }

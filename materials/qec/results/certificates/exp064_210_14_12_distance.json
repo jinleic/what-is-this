@@ -1,0 +1,171 @@
+{
+  "duality": {
+    "conclusion": "d_X = d_Z; one certified side determines CSS distance",
+    "maps_HX_to_HZ_exactly": true,
+    "maps_HZ_to_HX_exactly": true,
+    "permutation_is_bijection": true,
+    "permutation_is_involution": true,
+    "permutation_sha256": "8222953f3d6857e43331e6f06488f5cafdc995cd58362b8e16fb97ad478cbb6d",
+    "schema": "exp056-bb-xz-duality-v1",
+    "valid": true
+  },
+  "identity": {
+    "HX_sha256": "4d43eb0a1f22d76d2d1eec8085e255c46d106fe33d203844de8e729f326e5e5c",
+    "HZ_sha256": "839a5bc4a7b6381314b40bed25e8def41f773cb2f41f877b7db6e6be50ed7acd",
+    "k": 14,
+    "n": 210,
+    "target": {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          6
+        ]
+      ],
+      "ell": 15,
+      "expected_d": 12,
+      "expected_k": 14,
+      "lower_cap": 11,
+      "m": 7,
+      "name": "exp060-15x7-frontier-210-14-12",
+      "witness_support": [
+        40,
+        56,
+        79,
+        87,
+        102,
+        105,
+        114,
+        129,
+        147,
+        156,
+        183,
+        208
+      ]
+    },
+    "target_key": "k14d12"
+  },
+  "lower_bound": {
+    "initial": {
+      "cnf_sha256": "27ef8f9ed9a91999d86822ef21fa33307159ed0493f9a241694b678537cd5ac3",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 9213,
+        "cnf_variables": 3439,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 18.354751915903762
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 10
+    },
+    "replay": {
+      "cnf_sha256": "27ef8f9ed9a91999d86822ef21fa33307159ed0493f9a241694b678537cd5ac3",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 9213,
+        "cnf_variables": 3439,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 41.69672195799649
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 10
+    }
+  },
+  "parity": {
+    "all_column_degrees_odd": true,
+    "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+    "column_degree_max": 3,
+    "column_degree_min": 3,
+    "effective_even_cap": 10,
+    "requested_cap": 11,
+    "schema": "exp056-kernel-weight-parity-v1",
+    "valid": true
+  },
+  "protocol": {
+    "conflict_budget": 0,
+    "decomposition": "monolithic",
+    "effective_even_cap": 10,
+    "encoding_version": "sat-decide-v2",
+    "replay_required": true,
+    "replay_solver": "kissat404",
+    "requested_cap": 11,
+    "side": "z",
+    "solver": "kissat404"
+  },
+  "protocol_sha256": "cf2fc78004aed9c3b4adae01d553a601fa6682445ecd7af79afadb7a21f09cf5",
+  "schema": "exp064-n210-frontier-distance-v1",
+  "upper": {
+    "duality_preserves_weight": true,
+    "support": [
+      40,
+      56,
+      79,
+      87,
+      102,
+      105,
+      114,
+      129,
+      147,
+      156,
+      183,
+      208
+    ],
+    "vector_sha256": "57814cdd4b6e75133858e6172dd0fd30b07bb8dfc8a6fe464fbaf3083c01a54b",
+    "weight": 12,
+    "x_support": [
+      0,
+      9,
+      34,
+      61,
+      63,
+      88,
+      103,
+      115,
+      130,
+      138,
+      154,
+      177
+    ],
+    "x_valid_bitset": true,
+    "x_valid_numpy": true,
+    "x_vector_sha256": "2894537562df680338be14e617c1bad324566a54c1a1e3dea830e9f8b39f79ce",
+    "z_valid_bitset": true,
+    "z_valid_numpy": true
+  },
+  "verdict": {
+    "classification": "CERTIFIED_EXACT",
+    "d": 12,
+    "d_X": 12,
+    "d_Z": 12,
+    "exact": true
+  }
+}

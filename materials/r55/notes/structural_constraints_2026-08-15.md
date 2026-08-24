@@ -390,3 +390,333 @@ Maksimović's 2018 orbit-matrix enumeration studies
 `srg(45,22,10,11)` graphs with `S3` automorphisms and is the closest located
 prior-art lane; the exact congruence above was not source-verified there in
 this session.
+
+## Theorem 8 (no order-three automorphism in the Ramsey conference lane)
+
+Let `G` be a strongly regular graph with parameters `(45,22,10,11)` and with
+no clique or independent set of order five. Then `G` has no automorphism of
+order three. Equivalently, `3` does not divide `|Aut(G)|`.
+
+*Proof for `f=3`.* Every fixed-graph degree is `1 mod 3`; on three vertices it
+must equal one. A graph cannot have three odd degrees.
+
+*Proof for `f=9`.* Let `H` be the fixed graph. Its degrees lie in `{1,4,7}`.
+A degree-one vertex and any nonneighbor share at most one fixed neighbor, but
+their total common-neighbor count is 11 and all nonfixed orbits contribute
+multiples of three, requiring `2 mod 3` fixed common neighbors. Thus degree
+one is impossible; complementation excludes degree seven. Hence `H` is
+4-regular. Adjacent fixed pairs have exactly one fixed common neighbor and
+nonadjacent pairs exactly two, so `H = srg(9,4,1,2) ≅ L_2(3)`.
+
+There are twelve 3-cycles. The trace calculation in Theorem 7 forces six to
+induce triangles and six to induce independent triples. A fixed vertex has
+four fixed neighbors and therefore meets exactly six orbit columns. A triangle
+orbit's fixed-neighbor set must be independent (else it completes a K5), while
+an independent orbit's fixed-nonneighbor set must be a clique (else it
+completes an independent five-set). Since `L_2(3)` has independence and clique
+number three, the six triangle columns all have size three and the six
+independent columns all have size six. Exact multiplicity equations force each
+of the six independent triples and each complement of the six triangles of
+`L_2(3)` to occur once. This gives a unique `9×12` incidence matrix `B`, up to
+the fixed canonical ordering, with `BB^T=3(I+J)`.
+
+For the equitable quotient
+
+`Q = [[A, 3B], [B^T, T]]`,
+
+the fixed-to-orbit SRG equations, diagonal `diag(T)=(2^6,0^6)`, and row sums
+`(19^6,16^6)` have exact rank 77 in the 78 symmetric entries of `T`. Their
+entire affine family has entries `T[0,7]=τ` and `T[0,6]=3−τ`; integer bounds
+give `τ∈{0,1,2,3}`. The cycle-to-cycle equation
+
+`3B^T B + T^2 + T − 11I = 33J`
+
+leaves exactly `τ=1,2`.
+
+In both matrices `T[0,3]=1`. Independently rotate orbit 3 relative to orbit 0
+so that this single matching has phase zero. Fixed vertices `{2,3,6}` are
+independent and miss both orbit columns 0 and 3; positions 0 and 1 in those
+orbits are nonadjacent. These five vertices are independent, contradiction.
+
+*Proof for `f≥15`.* Put `c=(45−f)/3`. Theorem 7 makes `c` even. On each
+nontrivial order-three eigenspace, irreducibility of `x²+x−11` gives the two
+nonprincipal adjacency eigenvalues multiplicity `c/2` each. Hence on the
+orbit-constant subspace they have multiplicity `22−c` each, and the trace of
+the adjacency quotient there is
+
+`22 + (22−c)(r+s) = 22 − (22−c) = c`.
+
+Each 3-orbit induces either a triangle, contributing `2` to the quotient
+trace, or an independent triple, contributing zero. Therefore exactly `c/2`
+of the 3-orbits are triangles.
+
+Choose a triangle orbit `O`. Let `s` fixed vertices be adjacent to it. For the
+other `c−1` three-orbits, let `t_i∈{0,1,2,3}` be the number of neighbors in
+that orbit of one vertex of `O`. Equal orbit sizes make the reciprocal quotient
+entry also `t_i`. The degree equation gives
+
+`Σ_i t_i = 20−s`.
+
+Two adjacent vertices in `O` have ten common neighbors. Their fixed common
+neighbors contribute `s`, the third vertex of `O` contributes one, and a
+degree-`t_i` cyclic bipartite graph between two 3-orbits contributes
+`C(t_i,2)`. Thus
+
+`Σ_i C(t_i,2) = 9−s`,
+
+so `s≤9` and `Σ_i t_i² = 38−3s`. No Ramsey hypothesis entered these
+identities.
+
+For `f≥15`, `c≤10`. Cauchy–Schwarz would require
+
+`(20−s)² ≤ (c−1)(38−3s) ≤ 9(38−3s)`.
+
+But the difference at `c=10` is `s²−13s+58`, whose discriminant is `−63`;
+it is positive for every real `s`. Decreasing `c` only increases the gap
+because `38−3s=Σ_i t_i²≥0`. This contradiction excludes
+`f=15,21,27,33,39` for every `srg(45,22,10,11)`, Ramsey-good or not.
+Theorem 7 leaves only `f=3,9,15,21,27,33,39` for a nonidentity order-three
+automorphism (`f=45` is the identity), so the three cases above exhaust all
+possibilities in the Ramsey-good lane. ∎
+
+**Corollary.** No Ramsey-good `srg(45,22,10,11)` is vertex-transitive. A
+transitive automorphism group on 45 vertices has order divisible by three,
+and Cauchy's group theorem would supply an automorphism of order three.
+
+Exact artifacts: `src/order3_srg_frontier.py`,
+`src/check_order3_srg_frontier.py`, `tests/test_order3_srg_frontier.py`, and
+`data/order3_srg_frontier.json` (schema 2). The producer uses only
+integer/Fraction arithmetic. The checker independently constructs `L_2(3)`
+as a rook graph, repeats the complete `f=9` census and quotient calculation,
+derives the spectral trace from `(45,22,10,11)`, and derives both triangle
+moments from `k=22` and `λ=10` before checking every integral support.
+
+**Closest source-verified prior art.** Maksimović, *Symmetry* 10 (2018), 212,
+Table 4, found seven `Z3` orbit matrices and 288
+`srg(45,22,10,11)` graphs from the sole viable `S3` orbit distribution
+`(d1,d2,d3,d6)=(1,4,4,4)`. Restricting that action to `Z3` gives nine fixed
+vertices and twelve 3-orbits, exactly the `f=9` lane above. The published
+[adjacency data](https://www.math.uniri.hr/~mmaksimovic/srg45.txt) expose the
+same cycle structure. The paper does not state the Ramsey-good exclusion or
+the `f≥15` moment argument. This is a scope comparison, not a novelty
+certification: https://doi.org/10.3390/sym10060212.
+
+**Scope.** This excludes order-three symmetry—and therefore vertex
+transitivity—only inside the Ramsey-good strongly-regular construction lane.
+Non-strongly-regular hypothetical Ramsey(5,5,45) graphs remain open. No
+Ramsey-number bound is changed.
+
+## Theorem 9 (odd-prime automorphisms are impossible in the Ramsey conference lane; 2026-08-23)
+
+Let `G` be a strongly regular graph with parameters `(45,22,10,11)` and with
+no clique or independent set of order five. Then
+
+`|Aut(G)|` is a power of two.
+
+Equivalently, `G` has no automorphism of odd prime order. Theorem 8 supplies
+the prime three case. The remaining primes are excluded as follows.
+
+### Common cyclotomic reduction
+
+Write the nonprincipal eigenvalues as
+
+`r,s = (−1±3√5)/2`,
+
+each with multiplicity 22. If an automorphism of odd prime order `p` has `c`
+moving `p`-cycles, each nontrivial character space has dimension `c` and is
+annihilated by `J`. For `p≠5`, `Q(ζ_p)` does not contain `Q(√5)`, so
+`x²+x−11` remains irreducible and `c` is even. This leaves
+
+- `p=7`: `(f,c)=(3,6),(17,4),(31,2)`;
+- `p=11`: `(f,c)=(1,4),(23,2)`;
+- `p=13,17,19`: only `c=2`, giving `f=19,11,7`;
+- `p≥23`: no nonidentity case, since at most one `p`-cycle fits but `c` must
+  be even.
+
+The prime five field is exceptional because `√5∈Q(ζ_5)`, so it needs a
+separate trace argument.
+
+### Order five
+
+On the four nontrivial character spaces, Galois symmetry gives multiplicities
+`a_1=a_4`, `a_2=a_3`, and `a_1+a_2=c`; it does **not** force `c` even. On the
+orbit-constant subspace, both nonprincipal adjacency eigenvalues have
+multiplicity `22−2c`, so the quotient trace is `2c`.
+
+Every moving 5-orbit induces an invariant graph of degree `0,2`, or `4`. If
+their counts are `n_0,n_2,n_4`, the trace equation is
+
+`2n_2+4n_4 = 2c = 2(n_0+n_2+n_4)`,
+
+and hence `n_0=n_4`. Ramsey avoidance forbids both an independent orbit
+(`d=0`) and a complete orbit (`d=4`), so in the Ramsey lane every moving orbit
+is a `C5`.
+
+There is a stronger Ramsey-free cut for `f≥10`. Choose any moving orbit, with
+internal degree `d∈{0,2,4}`, fixed support `s`, and quotient degrees `t_i` into
+the other `c−1` moving orbits. Degree and the diagonal quotient equation give
+
+`Σt_i = 22−d−s`,  
+`Σt_i² = 66−d−d²−5s`.
+
+For `f≥10`, `c≤7`. At the weakest value `c=7`, the Cauchy gaps for
+`d=0,2,4` are respectively
+
+`s²−14s+88`, `s²−10s+40`, `s²−6s+48`,
+
+with discriminants `−156,−60,−156`. All are positive for every real `s`.
+Smaller `c` only increases the gap because the square sum is nonnegative.
+Thus `f=10,15,20,25,30,35,40` are impossible for every
+`srg(45,22,10,11)`, without a Ramsey hypothesis.
+
+Only `f=0,5` remain.
+
+*Fixed-point-free case.* There are nine `C5` orbits. Let `B` be their symmetric
+equitable quotient, so `diag(B)=2`, `B1=22·1`, and
+
+`B²+B = 11I+55J`.
+
+Set `M=2B+I−5J`. Then
+
+`M1=0`, `diag(M)=0`, `M²=45I−5J`,
+
+and every off-diagonal entry lies in `{-5,−3,−1,1,3,5}`. Each row therefore
+has sum zero and square sum 40. Up to permuting the other eight orbits, its
+off-diagonal entries have exactly one of three forms:
+
+`(−3,−3,−1,−1,1,1,3,3)`,  
+`(−3,−1,−1,−1,−1,1,1,5)`,  
+`(−5,−1,−1,1,1,1,1,3)`.
+
+A complete row-by-row integer enumeration tests 56,755 prefixes. In the three
+first-row cases, respectively, `72,64,8` second rows survive; `132,96,48`
+three-row prefixes survive; and no fourth row can be added. Hence no such
+quotient exists.
+
+*Five fixed points.* Every fixed degree is `2 mod 5`, so the fixed graph is a
+`C5`. Each fixed vertex is adjacent to four of the eight moving orbits. If
+those fixed-neighbor supports are viewed as eight blocks on five points, every
+point has replication four and every pair occurs in exactly two blocks.
+
+For a fixed triple `T`, let `m(T)` be the number of blocks containing it. If
+`m(T)=0`, choose an edge of the fixed `C5` in `T`; its two blocks both omit the
+third point. Their ten moving vertices contain a triangle or an independent
+four-set by `R(3,4)=9`, which extends to a `K5` or `I5`. If `m(T)≥2`, choose a
+nonedge of the fixed `C5` in `T`; inclusion-exclusion shows that `m(T)` blocks
+contain the remaining point and omit that nonedge. Two such blocks, together
+with `R(4,3)=9`, again extend to a `K5` or `I5`.
+
+Thus Ramsey avoidance would require `m(T)=1` for all ten triples. This is
+impossible. If a block has size five, the other seven blocks have size at most
+two and cannot supply the second occurrence of all ten pairs. Otherwise every
+block has size at most four. For any pair, its two blocks must then have sizes
+three and four, so every one of the ten pairs occurs in exactly one size-three
+block; but size-three blocks account for pairs in multiples of three. This
+excludes `f=5` and completes order five.
+
+### Order seven
+
+For any two fixed vertices, their moving-orbit supports intersect in at most
+one orbit: two shared 7-orbits would already contribute 14 common neighbors.
+The same holds for the complementary supports because the complement has the
+same SRG parameters.
+
+- `f=3`: every fixed degree is one, violating the handshake lemma.
+- `f=17`: support sizes are `1,2,3`. At most one size-one support, at most one
+  size-three support, and at most one copy of each of the six size-two
+  supports can occur. The simultaneous intersection constraints have exact
+  maximum six (attained by the six size-two supports), not 17.
+- `f=31`: the two moving orbits have internal degrees two and four. Original
+  and complementary intersection bounds leave, up to complementation, one
+  fixed vertex adjacent to both orbits, none adjacent to neither, cross degree
+  three, and support sizes 17 and 15. Let `B,C` be their disjoint residual
+  support groups, of sizes 16 and 14. For the fixed adjacency matrix `H` and
+  incidence matrix `X`,
+
+  `H²+H = 11(I+J)−7XX^T`.
+
+  Taking `v=1_B−1_C` gives `||v||²=30`, `Σv=2`, and
+  `X^Tv=(16,−14)`, so the right-hand quadratic form is
+
+  `11(30+2²)−7(16²+14²)=−2790`.
+
+  But every eigenvalue of `H²+H` is at least `−1/4`, so the same form is at
+  least `−30/4`. Contradiction.
+
+### Order eleven
+
+For `f=23`, fixed support sizes are `0,1,2`. Original and complementary
+intersection bounds allow at most one vertex of support size two and at most
+one of support size zero. At least 21 fixed vertices therefore have singleton
+support. One of the two support classes has size at least 11, and any two
+vertices in it share eleven moving common neighbors; they cannot be adjacent
+because `λ=10`. This already gives an independent five-set.
+
+For `f=1`, the fixed vertex meets exactly two of the four moving orbits.
+Ramsey avoidance restricts an invariant 11-orbit to degree four or six, and
+trace 20 forces two of each. The fixed-to-orbit and diagonal quotient
+equations leave, up to swapping the last two orbits, the unique moving
+quotient
+
+```text
+4 6 4 7
+6 4 7 4
+4 7 6 5
+7 4 5 6
+```
+
+The two orbits adjacent to the fixed vertex each have internal degree four
+and cross degree six. They have exactly
+
+`C(5,2)² C(11,6) = 10²·462 = 46,200`
+
+cyclic realizations. Exact bitset enumeration finds a `K4` in 44,000 and, in
+the remaining 2,200, an `I5`. A `K4` extends with the fixed vertex to a `K5`.
+The coverage digest is
+`b888c63a7b77419c3e6df970acd3759391da073a3357f3318f11f0611d5538a6`.
+
+### Larger primes and group conclusion
+
+For `p=13,17,19`, the sole spectral candidates have fixed graphs respectively
+9-regular on 19 vertices, 5-regular on 11 vertices, and 3-regular on seven
+vertices. Their degree sums `171,55,21` are odd. For `p≥23`, parity of the
+number of moving cycles excludes the only possible single cycle. No prime
+larger than 43 divides the order of a subgroup of `S_45`.
+
+Together with Theorem 8, every odd prime order is excluded. If an odd prime
+divided `|Aut(G)|`, Cauchy's theorem would supply an element of that order.
+Therefore `|Aut(G)|` is a power of two. ∎
+
+Exact artifacts: `src/odd_prime_srg_frontier.py`,
+`src/check_odd_prime_srg_frontier.py`,
+`tests/test_odd_prime_srg_frontier.py`, and
+`data/odd_prime_srg_frontier.json` (schema 1). The checker imports no producer
+symbol: it reconstructs the order-five quotient search from row multisets,
+derives the order-seven arithmetic independently, derives both order-eleven
+quotients, and resweeps all 46,200 cyclic blocks with a second graph builder
+and separate clique kernels. It composes the independently checked
+order-three artifact rather than copying that proof.
+
+As an external-data check, `src/validate_published_s3.py` parses Maksimović's
+published GAP/GRAPE file without executing GAP. The source payload has
+1,470,604 bytes and SHA-256
+`a53366d919f5d29876d07031a65c1bd722d05e88b59b39a04e9988c9162ebec0`.
+All 288 records verify as `srg(45,22,10,11)`, all admit the specified
+order-three action with nine fixed points and twelve 3-cycles, and every
+record contains both a `K5` and an `I5`. This corroborates Theorem 8's `f=9`
+lane but is not used in any proof.
+
+**Closest source-verified prior art.** Maksimović's 2018 paper classifies the
+`S3` lane used by Theorem 8. Her 2023 survey/construction paper, Table 2, lists
+the known `srg(45,22,10,11)` full automorphism groups; in particular eight
+known graphs have group `Z10`, so order-five symmetry certainly exists outside
+the Ramsey-good lane. The parameter set remains unclassified. Neither source
+states the Ramsey-good odd-prime exclusion above. This is a scope comparison,
+not a novelty certification:
+https://doi.org/10.3390/sym10060212 and
+https://doi.org/10.3390/sym15020408.
+
+**Scope and next symmetry frontier.** The theorem applies only to a
+Ramsey-good `srg(45,22,10,11)`. It leaves involutions—and therefore nontrivial
+2-groups—open. It does not constrain a non-strongly-regular hypothetical
+Ramsey(5,5,45) graph and changes no Ramsey-number bound.

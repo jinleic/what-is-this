@@ -4,7 +4,580 @@ Newest first. Every entry records what was done, what was verified, and what it
 cost. "Verified" means a command ran and its output was observed, or a primary
 source was read directly — not that something looks right.
 
-### QEC (2026-08-22) — EXP-055 odd-lattice closure: 4.23B-pair census, exact pole logic, three exact references
+### KOBON (2026-08-23e) — HEREDITARY/SECTOR CUTS; FIRST STRETCHABILITY PROBE
+
+* **New proved hereditary cut.** If \(W\) is any subset of the arrangement
+  lines, every selected triangular face supported entirely in \(W\) remains a
+  distinct triangular face after deleting the other lines. Hence its count is
+  at most \(K(|W|)\); under exact selection of \(T\), the equivalent compact
+  form requires at least \(T-K(|W|)\) selected faces to meet the deleted set.
+  The \(n=12,T=39\) lane uses the non-circular inputs \(K(11)=32\) (Savchuk)
+  and \(K(10)=25\) (the earlier independently certified cube cover).
+* **New proved vertex-sector cut.** A fixed crossing pair supports at most four
+  triangular faces; at a finite multipoint it supports at most two, and zero
+  unless the pair is adjacent on one of the two arcs of the cyclic slope order.
+  `engine.add_selected_face_sector_bounds` encodes the unconditional,
+  multipoint-conditioned and nonadjacency forms. The direct-gap CLI now exposes
+  `--sector-bounds` and repeatable `--sub-bound SIZE:UPPER`.
+* **Exact audit and controlled benchmark.**
+  `scratch/kobon/sector_bound_audit.py` checked 3,600 deterministic rational
+  arrangements in six degeneracy modes, 27,705 triangular faces, 93,000 line
+  pairs, 6,204 multipoint pairs and 154 nonadjacent multipoint pairs: zero
+  violations. In same-process CaDiCaL controls, the combined cuts retained SAT
+  at \((9,21)\) and reduced the \((9,22)\) refutation from 1,034,027 conflicts /
+  116.299 s to 164,802 / 19.456 s. The analogous \(n=8\) control improved
+  conflicts only, not wall time; no general speedup is claimed.
+* **New \(n=12\) frontier lane.** The combined direct-gap instance has 374,381
+  variables / 830,030 clauses. `n12-gap-sector-deletion-t39` (Kissat) and
+  `n12-gap-sector-cadical` are live at low priority. The earlier deletion-only
+  and direct hereditary variants remain independent A/B controls. None has a
+  verdict, so \(K(12)\) remains open.
+* **First field-specific/stretchability probe.**
+  `scratch/kobon/pappus_relaxation_probe.py` exhibits a nondegenerate dual
+  Pappus antecedent admitted by the abstract order axioms with a false
+  projective conclusion, then verifies that three Pappus implication clauses
+  reject it. This proves the current relaxation has genuine straight-line
+  strength left unused. Full Pappus instantiation is deliberately not launched:
+  its dense nine-line antecedent is likely low leverage for near-simple optima.
+* **Proof-grade \(n=10\) status.** The proof-logging
+  `ladder_n10_t26_faces.cnf` run ended with `s UNSATISFIABLE`, Kissat exit 20
+  (not a failure), and a 14,050,806,440-byte DRAT. Independent `drat-trim -w`
+  verification remains live as `n10-faces-dratcheck`; no JSON record or
+  proof-grade promotion occurs before `s VERIFIED`.
+* **Verification and review.** The focused engine suite is 22/22 green; the
+  exact sector audit and Pappus probe both report `PASS`; SAT controls at
+  \((8,15)\) and \((9,21)\) remain SAT. A bounded independent Fable review
+  found no theorem-level defect after the load-bearing conditions were checked:
+  exact-\(T\) selection, independently proved same-convention sub-bounds,
+  no-vertical slope normalization, and rejection of selected parallel triples.
+  `kobon_broad_capacity.tex` now contains both lemmas and the frontier data;
+  `latexmk` completed in two passes, producing an 18-page PDF with no undefined
+  reference, LaTeX-warning or overfull-box match.
+
+### ISING3D WAVE 21 (2026-08-23) — FINITE BIPARTITE OBSTRUCTIONS; TWO-SLICE W-LAW; PS4 LIMIT; COMPACT SAW CROSSWALK
+
+* **Bipartite log-moment interval.** For every
+  `t in [999999997/3000000000,1000000003/3000000000] =
+  [1/3-10^-9,1/3+10^-9]`, the positive reciprocal spectra of the open
+  `2x2` and `2x3` Ising layers violate the necessary Stieltjes/Hankel
+  condition `p1*p3-p2^2>=0` for a full subset-product spectrum. The
+  artifact passed **17/17** exact checks and the lead's independent
+  `test_bipartite_log_moments.py` run reported **PASS**. The theorem is
+  finite and interval-scoped; no `2x4`, every-coupling, or all-size
+  bipartite conclusion is claimed (`H584`, `e228`).
+* **Trace seven is independently decisive at one point.** At `t=1/3`,
+  the physical open `2x3` layer fails the six-mode subset-product trace
+  system: after the first three traces eliminate coefficients, the
+  trace-four through trace-six prefix ideals remain proper, while adding
+  trace seven gives the exact unit ideal `{1}`. The artifact passed
+  **5/5** and the lead's independent `test_trace_resultant.py` run
+  reported **PASS**; synthetic six-mode and open-chain controls remain
+  non-rejected. This is one finite graph and coupling (`H585`, `e232`).
+* **W-law mechanism and first truncation kernel.** Exact two-slice
+  observability on `Delta in {0,2}` recovers every sector rank for
+  `L=3..8` (all 39 sectors). The rung bonding/antibonding projection
+  retaining at most two `a` factors first fails at `(L,m)=(4,2)`, with
+  kernel `Q a_0a_1a_2a_3` and rank `19` rather than `20`. The artifact
+  passed **16/16**; the lead verifier reported **21 checks, 0 failures,
+  PASS**. The all-`L` two-slice exact-sequence lemma and exact `W_L` rank
+  law remain open (`H586`, `e230`).
+* **Phase-sensitive class is stronger, but the endpoint does not move.**
+  `PS4`-convolution-block-Gram-L1 strictly strengthens
+  `MR4`-power-simplex-L1 at `L=4,K=6/25`. Nevertheless, for every
+  `0<K<=I_3/2` the exact Green profile lifts to `PS4` on every even
+  `L>=266` and obeys `0<p_0<=5168/(525L)`, so the class has no uniform
+  positive Green floor.
+  The certified upper endpoint remains `I_3/2`; the full critical
+  interval remains
+  `[0.2138368062108697304302094293879379891333,
+  0.2527310098586630030260020266135701299926]`. The artifact passed
+  **29/29** and the lead's independent `test_upper_phase_sensitive.py`
+  run reported **PASS** (`H587`, `e231`).
+* **Compact finite-memory SAW crosswalk landed.** For each even
+  `k=4,6,8,10,12`, the packed first-use automaton equals the ordered
+  `e227` state and transition content. Exact state/transition counts are
+  `3/7`, `20/69`, `205/805`, `2722/11074`, and `41424/169975`.
+  The bounded-cache producer passed **33/33** in roughly 5 process CPU
+  seconds at 179,814,400 peak RSS bytes; the lead's independent verifier
+  used distinct canonicalization and reported **PASS**. Memory 14 was
+  explicitly not launched, so no spectral, Collatz, or endpoint result is
+  added and the critical interval above is unchanged (`H590`-`H595`, `e229`).
+* **Bookkeeping.** Wave 21's five targeted standalone verifiers passed
+  **5/5**. Ledger rows `H584`-`H587` and `H590`-`H595` landed;
+  `H588`-`H589` remain unallocated. Experiments `e228`-`e232` are used,
+  153 test scripts remain present, the next free ledger ID is `H596`,
+  and the next free experiment is `e233`.
+
+### H10/Q (2026-08-23) — L25 SCALED SELF-COUPLINGS MOVE THE DYADIC WALL TO PARITY
+
+* **Frontier result — PROVED local escape.** L24 had proved the two
+  unscaled diagonal self-couplings uniformly empty on $\Phi$ over
+  $\mathbb Q_2$.  L25 scales the tied norm witnesses by fixed rational
+  numbers without adding a free variable.  With $u=\rho^2$, exact
+  elimination gives two degree-two branch covers; replay verified the
+  identities on **1,200** exact instances.
+* **Complete parity split.** On $\Phi$, $(y,r)=(2X,\rho)$ is
+  $2$-adically admissible exactly for even $s$, while
+  $(y,r)=(2X,\rho/2)$ is admissible exactly for odd $s$; both statements
+  are uniform in the declared scalar unit classes, in odd $b$, and in
+  every $v_2(c)\ge4$.  The proof is a unit-root quartic/Hensel
+  calculation: for odd $t$, $v_2(g'(t))=1$, and a root modulo $8$
+  lifts; the two congruences are $g(1)\equiv2Abs^2$ and
+  $g(1)\equiv2b(As^2-1)\pmod8$.  Their disjunction therefore covers all
+  $s$ residues: L24's obstruction was an artifact of the unit scaling,
+  not a universal coupled-family wall
+  (`math/h10q/l25_scaled_coupling.py`;
+  `math/h10q/data/l25_scaled_coupling.jsonl`).
+* **Target place.** On the freely chosen unit-$b$ unramified reduction
+  $c\equiv0\pmod w$, the residues
+  $(s,A,X,\rho,b)\equiv(0,5,3,2,\kappa^{-2})$,
+  $\kappa\in\{1,1/2\}$, satisfy both cover equations, and the Jacobian is
+  the nonzero integer $-2400$, so Hensel lift works for every odd
+  $w\ge7$.  Complete bounded scans show the streamlined proof does not
+  lift at $w=3,5$; that small-prime analysis remains open, as does
+  compatibility with preselected L20 target residues.
+* **Real place.** The exact guarded bridge samples
+  $(a,b,Z)=(1,1,-10)$ and $(3,4,-2/5)$ have eliminated quadratics with
+  positive leading coefficient, negative linear coefficient, and
+  nonnegative discriminant, hence positive real roots.  These are named
+  parity-wise certificates; no all-parameter real theorem is claimed.
+* **Strict scope.** No rational coupled point, no global member theorem,
+  and no five-count improvement are claimed.  The bounded rational search
+  found zero hits and is labelled EVIDENCE ONLY.  L24 remains true
+  verbatim, and classical Schinzel H remains the sole conjectural input to
+  the established conditional six-count.
+* **Next frontier.** A five-shape route now needs both (i) control of
+  the parity stratum of the free base parameter $s$ and (ii) a global
+  rational-construction theorem for the two paired square conditions on
+  the scaled square-branch cover.  Neither follows from the present
+  Schinzel reduction.
+
+### H10/Q (2026-08-22b) — L23/L24 SHARPEN THE UNCONDITIONAL FRONTIER; BOTH DIAGONALS DIE AT 2
+
+* **Half-sieve theorem — PROVED, but not a member theorem.**  For the
+  selected linear/octic sequence, the bad-root sieve has exact
+  dimension $\kappa=1/2$ and Bombieri--Vinogradov level
+  $D=X^{1/2}/(\log X)^B$.  The semilinear lower sieve at
+  $z=X^{49/100}$ gives
+  $\gg X/(\log X)^{3/2}$ prime members clean at every bad root prime
+  below $z$.  Degree $8$ still permits $16$ large factors and
+  reciprocity only forces an even bad count.  The first missing input is
+  a parity-sensitive saving estimate for two large bad divisors
+  $p_1p_2>D$, equivalently $R_{\rm bad}\le1$.  Even EH leaves eight;
+  Kao gives only total $P_{12}$ after an AP adaptation
+  (`math/h10q/l23_half_sieve.py`;
+  `math/h10q/data/l23_half_sieve.jsonl`).
+* **Capell/fibration frontier — PROVED at the stated scopes.**  On the
+  canonical branch the tied quaternion is $(P(b),2b)$ and
+  $2\theta\in K^2$ iff $P(u^2/2)$ is reducible; the automatic norm
+  $N(2\theta)=256$ is not sufficient.  Odd $v_w(z)$ kills the square
+  locus for every $a$, while the free
+  $a\not\equiv1\pmod w$ refinement kills it on every selected cell.
+  The resulting fixed-cell conic bundle has ten degenerate fibres in
+  closed degrees $1+8+1$, non-split rank $10$, and
+  $\operatorname{Br}(X)/\operatorname{Br}(\mathbb Q)=\mathbb Z/2$
+  generated by $(A,b)$.  The checked low-rank fibration theorems do not
+  apply.  Pre-existing even-$v_w(z)$, $w\mid s$ classes remain OPEN
+  uniformly; recorded classes are settled only row by row
+  (`math/h10q/l23_fibration.py`;
+  `math/h10q/data/l23_fibration.jsonl`).
+* **Norm/squareclass/multivariable walls — PROVED reductions and
+  corrections.**  Exact matching and polynomial-in-$b$ norm sections
+  miss $\Phi$; $P=\pm2b\,\square$ is dyadically empty;
+  $P=A\,\mathrm{Norm}$ forces the wrong symbol; the fixed-$P$ square
+  locus is genus $1$; and the first admissible factor ansatz
+  $L=-A\rho^2$ leaves genus-$4$ curves and scoped bad symbols.  Fixed
+  twists relocate the character.  On the missing $a(0)=0$ moving branch,
+  $Q^4\Vert H$ and the certified squareclass degree is $18$ with factor
+  degrees $2,16$; the earlier minimum-$21$ wording is retracted
+  (`math/h10q/l23_{norm_section,rational_section,squareclass,multivar}.py`;
+  paired JSONL artifacts).
+* **Diagonal discovery and final refutation.**  The two self-coupled
+  branch systems are exact finite-flat degree-$8$ covers, so before
+  local admissibility their tied images have rank at most $1$ and the
+  formal count is at most five.  On $\Phi$, however,
+  $v_2(c)\ge4$.  Orientation I has normalized coefficient valuations
+  $(4,0,0)$ and root valuations $0$ or $4$, incompatible with
+  simultaneous squareness of $u$ and $A+u$.  Orientation II is
+  $u^2-32hu+16e$; $u=4t^2$ yields
+  $0\equiv8+2Ab(s^2-1)\pmod{16}$, which would require the impossible
+  $v_2(s^2-1)=2$.  **Both images are uniformly empty on $\Phi$; the
+  diagonal five-count is FALSE and vacuous, not OPEN.**
+* **Geometry/local scope.**  The generic diagonal cover is integral of
+  degree $8$ with Galois closure $V_4\wr C_2$ of order $32$, no
+  base-rational section, genus-$35$ actual-cell slices and a genus-$53$
+  actual-$z$ slice.  Orientation II is locally soluble at every odd
+  target prime on the standard $k=1$ stratum, so the decisive
+  obstruction is genuinely dyadic.  Absolute rationality of the total
+  surfaces remains OPEN and is not inferred from the high-genus fibres.
+* **Search scope.**  The exact scan covered $370$ cells,
+  $2{,}013{,}141$ guarded bases and $4{,}026{,}282$ orientation
+  attempts, with zero hits and $2{,}296$ fixed-base local certificates.
+  This is **corroboration only**.  Every-cell emptiness is proved by the
+  complete mod-$16$ argument, never by finite exhaustion
+  (`math/h10q/l24_diagonal_search.py`;
+  `math/h10q/data/l24_diagonal_search.jsonl`).
+* **Audits and repairs.**  HalfSieveAudit returned SOUND $0.90$,
+  FibrationAudit SOUND $0.88$, and DiagonalAudit SOUND $0.90$, all with
+  no P0/P1 defect after scope fixes.  Applied corrections include the
+  literal $2\beta=1/(As^2)$; no universal first-polygon $2$-adic
+  Capell claim; the degree-$18$ moving-$a$ branch; the non-split
+  non-rational fibre as the HSW failure; a single orientation-II
+  mod-$16$ proof covering both parities of $s$; and the L20 count
+  $$
+  \#\{a\bmod w:(1+4a^2\mid w)=-1\}
+  =\frac{w-(-1\mid w)}2,
+  $$
+  namely $(w+1)/2$ only for $w\equiv3\pmod4$ and $(w-1)/2$ for
+  $w\equiv1\pmod4$.
+* **Replay and CPU discipline.**  All seven L23 producer/data pairs
+  (`half_sieve`, `fibration`, `norm_section`, `rational_section`,
+  `squareclass`, `multivar`, `absorption`) and all four L24 pairs
+  (`diagonal_geometry`, `diagonal_arithmetic`, `diagonal_local`,
+  `diagonal_search`) were replayed from the workspace root.  Replays
+  ran **one at a time** as one paced stdlib process under
+  `nice -n 19`, with no pools and the wave's $\le50\%$ CPU discipline;
+  every producer exited $0$ and its JSONL summary/labels reconciled.
+* **Final verification and bundle.**  The default and extended `h10q.py`
+  suites both exited $0$ against the revised RESULTS ledger.  The main and
+  companion papers compile twice with `pdflatex -halt-on-error`, have **30**
+  and **10** pages, and contain no undefined citations or references.  The
+  rebuilt `math/h10q/deliverables/h10q-bundle-2026-08-19.zip` is
+  **10,924,945 bytes**, SHA-256
+  `3216e2b942f504507ab7c2824c15fdb25a605bf9678a1b672f8e63290fefb4ca`;
+  all **125/125** staged checksums pass and `unzip -tq` reports no errors.
+  The builder now fixes ZIP member timestamps to the bundle date; two
+  consecutive clean builds produced this byte-identical size and hash
+  (lead replays, 2026-08-22).
+* **Final status unchanged.**  L23–L24 sharpen the frontier and close
+  escape routes; they do not remove Schinzel H or improve the record.
+  Classical Schinzel H remains the sole conjectural input to the
+  established conditional six-count, and H10/$\mathbb Q$ remains open.
+
+### ISING3D WAVE 20 (2026-08-22) — CRITICAL FLOOR MOVES; GRAPH CLASSIFICATION CLOSES
+
+* **New certified interval.** A deterministic 41,424-state memory-12
+  simple-cubic finite-walk automaton and exact integer Collatz vector prove
+  `mu<4.747526`, hence
+  `K_c>0.2138368062108697304302094293879379891333`. The certified interval is
+  now `[0.2138368062108697304302094293879379891333,
+  0.2527310098586630030260020266135701299926]`, 4.000566% narrower.
+* **Complete connected-graph local-term classification.** The archived/hashed
+  Ahmet Seven transvection theorem removes the Hamiltonian restriction:
+  every connected bipartite `Delta>=3` graph is the nonradical quadratic-root
+  branch. Together with the wave-19 non-bipartite dichotomy, every connected
+  simple graph is classified.
+* **Every-coupling spectral theorem.** A determinant-center-free trace
+  invariant proves every finite non-bipartite graph is not a full subset-product
+  spectrum for every physical isotropic `0<t<1`; the invariant vanishes
+  identically on the bipartite grid locus, which remains open.
+* **Further exact structure.** `K4,4=137`, `K4,5=471`; the conjectured ladder
+  defect is the unique `SL_L` top-wedge hyperplane but natural monomial maps
+  cannot prove the law; `c8` forces `W8^2/8!`, `c10` forces `W10^2/10!`.
+* **Six routes retired.** Rank-one/`|+>` rectangle induction; Galois
+  nonsolvability as a free-fermion discriminator; intrinsic finite 3D CTM
+  spectra; local-algebra-to-all-auxiliary Lax; the first four-point
+  power-simplex relaxation; susceptibility supermultiplicativity.
+* **Verification.** Twelve delegated fronts plus one lead front, **13/13
+  standalone verifiers passed**. The clean-room SAW verifier rebuilt all
+  41,424 target states and replayed minimum residual `18,990,104`. One initial
+  susceptibility verifier failure exposed a false strict-ratio wording at the
+  exact `5,5` plateau; producer, proof, artifact, and verifier were corrected
+  and passed. Ledger `H506`-`H583`; experiments `e191`-`e227`; 148 tests now
+  present, full 148-script suite deferred under load ~65.
+* **Sources.** Full Poenitz--Tittmann 2000 and Seven 2003 PDFs archived with
+  SHA-256; 59 manifest records, 37 full texts. The inaccessible MacDonald
+  `mu<4.7114` proof remains excluded.
+* **Paper/package.** Current unified paper: 26 pages,
+  `ising3d/deliverables/wave20_2026-08-22/papers/main_exact_3d_ising.pdf`.
+  Bundle: 101 staged files plus manifest,
+  `ising3d/deliverables/ising3d_wave20_bundle.zip`, 2,841,630 bytes, SHA-256
+  `e3f5816636fb02dbe0863793d5866f5414f29844d79423f8ea88a7f55fc80c32`;
+  ZIP integrity check passes.
+
+### R55 (2026-08-22c) — ORDER-THREE AUTOMORPHISM LANE CLOSED IN THE RAMSEY CONFERENCE FAMILY
+
+* **EXACT STRUCTURAL THEOREM:** a Ramsey-good `srg(45,22,10,11)` has no
+  automorphism of order three. Spectral irreducibility leaves exactly the
+  nonidentity fixed counts `3,9,15,21,27,33,39`; the preceding campaign
+  excluded `3,9`, and the new moment argument excludes all five remaining
+  counts. This changes no bound on `R(5,5)`.
+* **The `f≥15` frontier collapses analytically:** with
+  `c=(45−f)/3≤10`, spectral trace forces `c/2` triangle 3-orbits. For one
+  triangle orbit, fixed support `s` and other-orbit quotient degrees `t_i`
+  satisfy `Σt_i=20−s`, `ΣC(t_i,2)=9−s`, and `Σt_i²=38−3s`.
+  Cauchy would require `(20−s)²≤(c−1)(38−3s)`, but at `c=10` the gap
+  polynomial `s²−13s+58` has discriminant `−63`. The gap only grows as
+  `c` decreases. This `f≥15` exclusion holds for every
+  `srg(45,22,10,11)`, without the Ramsey hypothesis.
+* **Full symmetry consequence:** `3∤|Aut(G)|` for a Ramsey-good candidate.
+  Orbit-stabilizer and Cauchy's group theorem then exclude vertex-transitive
+  Ramsey-good conference graphs on 45 vertices.
+* **Evidence suite hardened:** `r55/data/order3_srg_frontier.json` is schema
+  2 with disposition `ORDER3_AUTOMORPHISMS_EXCLUDED_FOR_RAMSEY_SRG`.
+  The producer now gates the `f=9` degree-residue obstruction. The disjoint
+  checker derives the adjacency polynomial, irreducibility discriminant,
+  orbit-constant trace, triangle count, and both moment equations directly
+  from `(45,22,10,11)`, rather than copying producer constants.
+* **Review corrections:** the independent closure audits returned **SOUND**
+  and observed that the new moment proof is Ramsey-free. A separate reviewer
+  returned **THEOREM HOLDS** but found two P2 certificate weaknesses: a
+  tautological degree-extreme helper/test and a checker that restated the
+  trace/moment constants. Both were replaced by exact derived checks, with
+  corruption regressions for the degree record and triangle trace; the
+  focused re-review returned **ACCEPTED** with no remaining P0/P1/P2 finding.
+* **Verification:** producer and disjoint checker both return the new terminal
+  disposition with five large fixed counts and minimum integral Cauchy gap
+  `16`; frontier suite **20/20 OK** in 5.880 s; combined Cayley+frontier suite
+  **34/34 OK** in 245.706 s.
+* **Source boundary:** Maksimović 2018 Table 4 has seven `Z3` orbit matrices
+  and 288 `srg(45,22,10,11)` graphs from the sole viable `S3` distribution
+  `(1,4,4,4)`, whose order-three element has `f=9`. No accessed source states
+  the Ramsey-good order-three exclusion or the `f≥15` moment closure; this is
+  not a novelty certification.
+
+
+### R55 (2026-08-22b) — ORDER-3 FIXED COUNTS 0, 3, 9 EXCLUDED IN THE RAMSEY CONFERENCE LANE
+
+* **NEW EXACT STRUCTURAL THEOREM:** a Ramsey-good
+  `srg(45,22,10,11)` has no order-three automorphism with 0, 3, or 9 fixed
+  vertices. The first open fixed count is 15. This changes no bound on
+  `R(5,5)`.
+* **Fixed graph and orbit incidence forced:** `f=9` gives the unique
+  `srg(9,4,1,2)=L_2(3)`. Six triangle orbits must use its six independent
+  triples; six independent orbits use complements of its six triangles.
+  Exact multiplicity equations have the unique all-ones solution and
+  `BB^T=3(I+J)`.
+* **Quotient line closed:** fixed-to-cycle equations, diagonal, and row sums
+  have rank 77 in 78 symmetric variables. Entries `T[0,7]=τ`,
+  `T[0,6]=3−τ` reduce to `τ∈{0,1,2,3}`; the cycle block leaves `τ=1,2`.
+  Both have `T[0,3]=1` and force independent set
+  `{fixed 2,3,6; orbit-0 position 0; orbit-3 position 1}` after phase
+  normalization.
+* **Trust correction:** an exploratory NumPy parameter filter initially
+  dropped the two exact `τ=1,2` solutions and falsely reported zero
+  Ramsey-compatible quotients. Retracted immediately. The landed proof is
+  solver-free and uses integer/Fraction rank plus direct identities only.
+* **Artifacts:** `r55/src/order3_srg_frontier.py`,
+  `r55/src/check_order3_srg_frontier.py`,
+  `r55/tests/test_order3_srg_frontier.py`,
+  `r55/data/order3_srg_frontier.json`; Theorem 8 in the structural ledger.
+* **Verification:** producer 6.26 s; disjoint checker 4.82 s; frontier
+  14/14 tests in 4.61 s; combined Cayley+frontier suite **28/28 OK** in
+  356.7 s. Independent audit re-derived every implication, checked the
+  144-entry cycle equation and phase gauge, and returned **THEOREM HOLDS**.
+  Closest prior art is Maksimović's S3 orbit-matrix enumeration; no located
+  source states the `f=9` Ramsey-good exclusion, but overlap of the two
+  quotient matrices with inaccessible tables remains a novelty uncertainty.
+
+
+### H10/Q (2026-08-22) — L22 CLOSES THE FIXED FIBRES; THE CONDITIONAL RECORD NOW ASSUMES CLASSICAL SCHINZEL H ALONE
+
+* **Primary theorem — PROVED.** On the fixed canonical branch
+  $\tau^\dagger=(1+2a^2)/A$,
+  $\delta_{\tau^\dagger}=-4a^4/A$, for every fixed
+  $Z\in\mathbb Q^\times$ the polynomial
+  $$
+  H=(A/4)P=a^8Z^4N_g^2+4A^3D^2b^4
+     -2A^4(a-1)^2D^2b^5
+  $$
+  is irreducible in $\mathbb Q(a)[b]$
+  (`/tmp/l22_elimination.md`;
+  `math/h10q/data/l22_elimination.jsonl`).  The $A$-adic slopes force
+  even factor degree; $a=0$ and $a=\infty$ exclude degree $2$; degree
+  $4$ forces $Z^4=1024(1-Z)^2$, whose two branches have nonsquare
+  discriminants $1152$ and $896$ (same sources).  $Z=0$ is explicitly
+  reducible and excluded, while $Z=1$ has an exact $a=1$, mod-$11$
+  certificate (same sources).
+* **Independent theorem — PROVED.** At
+  $a=1,A=5,s=0,\tau=3/5=\tau^\dagger,\delta=-4/5$,
+  reciprocal trace reducibility forces a cleared numerator congruent to
+  $5\bmod8$; the lift maps to
+  $E:y^2=x(x+5)(x+80)$, whose complete $2$-isogeny descent has rank $0$
+  and only four $2$-torsion points.  This proves the same all-$Z$
+  specialization independently
+  (`/tmp/l22_reciprocal_cube.md`;
+  `math/h10q/data/l22_reciprocal_cube.jsonl`).
+* **Audit outcomes.** ElimAudit: SOUND, confidence $0.90$, no P0/P1
+  finding (`agent://ElimAudit`).  ReciprocalAudit: SOUND, confidence
+  $0.92$; its single scope finding required every theorem statement to
+  name $\tau=3/5=\tau^\dagger,\delta=-4/5$, and the producer was patched
+  (`agent://ReciprocalAudit`;
+  `math/h10q/data/l22_reciprocal_cube.jsonl`).  BranchAudit, confidence
+  $0.91$, rejected the free-$\lambda$ result as a six-count closure
+  because it ranges through the infinite L11c family and costs an
+  additional witness; the algebraic theorem remains PROVED but is
+  labelled NOT APPLICABLE to the record (`agent://BranchAudit`;
+  `/tmp/l22_square_branch.md`).
+* **Side results retain strict scope.** Infinity analysis proves four
+  quadratic local clusters and permits degrees $2,4,6$
+  (`/tmp/l22_infinity.md`;
+  `math/h10q/data/l22_infinity.jsonl`).  The factor-tuple criterion and
+  parity no-go are PROVED, with prime values CONDITIONAL
+  (`/tmp/l22_factor_tuple.md`;
+  `math/h10q/data/l22_factor_tuple.jsonl`).  The geometric Noether
+  reduction is PROVED, while its one polynomial nonvanishing lemma is
+  OPEN but no longer needed by the chain
+  (`/tmp/l22_fiber_geometry.md`;
+  `math/h10q/data/l22_fiber_geometry.jsonl`).
+* **Replay and CPU facts.** The primary replay explicitly used
+  `nice -n 19`, exited $0$, and recorded $63.376$ s wall time,
+  $28{,}430$ paced checks, $142$ sleeps and $30.891$ s sleeping under
+  its $50\%$ duty-cycle cap
+  (`/tmp/l22_elimination.md`;
+  `math/h10q/data/l22_elimination.jsonl`, summary).  Companion summaries
+  record: reciprocal $26.139$ s with $317{,}306$ iterations and
+  $1{,}586$ sleeps
+  (`math/h10q/data/l22_reciprocal_cube.jsonl`); infinity $68$ replay
+  iterations
+  (`math/h10q/data/l22_infinity.jsonl`); factor tuple $1.144$ s with
+  $16{,}186$ iterations and $80$ sleeps
+  (`math/h10q/data/l22_factor_tuple.jsonl`); free-$\lambda$ $0.437$ s
+  with $589$ steps and $2$ sleeps
+  (`math/h10q/data/l22_square_branch.jsonl`); and geometry $263.594$ s
+  with $123{,}438$ paced iterations and $617$ sleeps
+  (`math/h10q/data/l22_fiber_geometry.jsonl`).  Finite scans remain
+  EVIDENCE and are not used to infer either theorem.
+* **Final verification and bundle.** All six L22 producers exited $0$ in
+  one-process-at-a-time `nice -n 19` replays; the default and extended
+  `h10q.py` suites both exited $0$, and the default suite exited $0$ again
+  after its historical status banners were synchronized with L22.  The main
+  and companion papers compile twice with `pdflatex -halt-on-error`, have
+  respectively **28** and **8** pages, and contain no undefined citations or
+  references.  The rebuilt
+  `math/h10q/deliverables/h10q-bundle-2026-08-19.zip` is **11,018,078
+  bytes**, SHA-256
+  `9bfc9dcd483389568072c1f46ab9c62620e3aa77c90c39c3a3309a3d2d6a36ad`;
+  all **103/103** staged checksums pass and `unzip -tq` reports no errors
+  (lead replays, 2026-08-22).
+* **Chain and remaining status.** For each cell, L22 plus quantitative
+  HIT selects an irreducible $a$ in the odd character-admissible
+  progression; L20 supplies the aligned $f=w$ class and conditions
+  (b)–(d), while L22 completes condition (a).  L19 plus classical
+  Schinzel H supplies a member.
+  Hence
+  `classical Schinzel H => intermediate H => Theorem C`, with the same
+  finite branch menu and exactly six universal quantifiers
+  (`math/h10q/THEOREMS.md`, L19–L22;
+  `math/h10q/CONDITIONAL.md`, §§1–2).  This is a PROVED implication with
+  a CONDITIONAL conclusion: classical Schinzel H is unproved, so
+  H10/$\mathbb Q$ remains open.
+
+### R55 (2026-08-22) — ALL ORDER-45 CAYLEY CONSTRUCTIONS CLOSED EXACTLY
+
+* **NEW EXACT CLASS EXCLUSION:** no undirected Cayley graph on 45 vertices is
+  Ramsey(5,5). This is deliberately not an upper bound on `R(5,5)`.
+* **Complete scope without Ramsey trust roots:** every group of order 45 is
+  `C45` or `C15 × C3`; each has 22 inverse pairs. Exhausted all
+  `2 × 2^22 = 8,388,608` connection sets as 4,194,304 complement classes.
+  Every class has an explicit monochromatic K5 witness.
+* **Two proof paths:** producer recursive translated-bitset K4 search; disjoint
+  checker independently normalizes translated K5s to a 22-variable CNF and
+  checks all `2^22` assignments with exact Python-integer bitsets. CNFs:
+  `C45` 12,749 patterns / 25,498 clauses; `C15 × C3` 12,650 / 25,300;
+  zero survivors in both. Optional pair-intersection resweep reproduced both
+  witness-coverage SHA-256 digests over all 4,194,304 classes.
+* **Conference corollaries, non-computational:** no Cayley
+  `srg(45,22,10,11)`. More generally every order-3 automorphism of such an SRG
+  has `f ≡ 3 (mod 6)` fixed vertices, so none is semiregular. Proof: on the
+  `ω`-eigenspace the SRG relation is `A²+A−11I=0`, irreducible over
+  `Q(ω)`, forcing that eigenspace's dimension even.
+* **Artifacts:** `r55/src/cayley_r55_search.py`,
+  `r55/src/check_cayley_r55.py`, `r55/tests/test_cayley_r55_search.py`,
+  `r55/data/cayley_r55_45.json`; theorem ledger in
+  `r55/notes/structural_constraints_2026-08-15.md` Theorems 6–7.
+* **Verification:** final schema-v2 producer 308.1 s; compact checker 4.81 s;
+  independent full resweep 216.2 s; 14/14 tests in 312.5 s. Adversarial review
+  found two evidence-contract issues (unstructured scientific prose; compact
+  verification did not bind replay summaries); both were fixed, and focused
+  rereview was clean. No floating point, external solver, catalog, or unproved
+  `R(4,5)` input enters the result.
+
+
+### KOBON (2026-08-22d) — DIRECT-GAP ENCODING + 2005 PRIOR-ART CORRECTION
+
+* **Priority correction:** Rasukaru's Japanese web essays (22 Sep--8 Oct
+  2005; primary Wayback pages read directly, Honma attribution verified)
+  already give geometric arguments for K(6)=7, K(8)=15, K(10)=25 and
+  K(11)=32, and state an even-n bound giving 54 at n=14. Therefore our ladder
+  claims **first machine-checkable all-degeneracy certificates known to us**,
+  not first mathematical determinations. The part-3 generalisation itself
+  labels two perturbation reductions “probably” harmless; it is informal,
+  non-refereed, and has no proof certificate.
+* **The missed global mechanism:** Rasukaru's sequential/per-line charge is
+  not Clément--Bader's false “at most two shared pairs per multipoint” claim.
+  It motivates the face-specific square penalty
+  `3F <= n(n-2)-2Q-sum_p(k_p-2)^2`. The saturated flower does not refute it:
+  closing the outer triangle forces compensating multipoints at its vertices.
+  No published repair was found. An exact 4,000-arrangement / 109,104-triple
+  audit across five degeneracy modes has zero direct-gap mismatches and zero
+  square-penalty violations; minimum slack 0. Evidence only, not theorem.
+* **Universal direct-gap criterion proved and audited:** a nondegenerate
+  triple is a triangular arrangement face iff no outside-line intersection is
+  strictly between its two vertices on any side. Ties at vertices are allowed.
+  Direct X-order clauses remove SA/SB, B, IN, TC and R1--R4. Independent exact
+  sign-straddle comparison: 109,104 triples, zero mismatches. A `(7,12)`
+  direct-gap DRAT is `s VERIFIED` (4,412 formula clauses / 14,545 lemmas in
+  core).
+* **Scale reduction:** universal `(12,39)` = 288,179 vars / 653,828 clauses
+  with per-line counters, or 45,014 / 164,537 global-only; `(14,55)` =
+  858,782 / 1,891,433 or 128,612 / 424,240. All four fronts are live.
+* **Certified n=12 no-concurrency theorem:** capacity reduces a 39-face
+  no-multipoint arrangement to Q=0 or Q=1. Q=0 is simple and Blanc caps it at
+  37. The canonical Q=1 branch has **two independently DRAT-verified
+  certificates**. Primary, no extra symmetry: 20,895 vars / 111,753 clauses;
+  2,437,053,136-byte proof; 19,802 formula clauses + 6,539,084 lemmas in
+  core; 412,704,063 resolution steps. Compact cross-check with valid WLOG
+  `X(0,2,3)`: 111,754 clauses; 759,328,450-byte proof; 126,043,830 steps.
+  Hash-bound dual manifest:
+  `scratch/kobon/n12/n12_q1_gap_certificate.json`. Therefore every
+  hypothetical 12-line/39-face arrangement has a finite multipoint. This does
+  not yet prove K(12)=38. The analogous n=14 Q1 cube (44,399 / 245,822)
+  remains live.
+* **Controls:** exact n=10 Q1 certificate is pair `{0,1}`, 25 faces, zero
+  crossings; gap SAT at 25 (5.7s), UNSAT at 26 (1.1s). Direct-gap SAT/UNSAT
+  controls pass at K(n)/K(n)+1 for every n=5..9. Paper corrected and compiles
+  to 14 pages after the Rasukaru attribution.
+
+
+### KOBON (2026-08-22c) — SATURATED FLOWERS + STRONG FACE FRONTIERS
+
+* **Clément--Bader Lemma 1 proof step falsified in its own face convention.**
+  For every k>=3, k concurrent cevians through an outer triangle partition it
+  into 2k triangular arrangement faces; all 2k radial elementary segments are
+  shared by the adjacent pair of faces. The draft says one multipoint belongs
+  to at most two shared-side pairs. This invalidates the proof step, not the
+  numerical bound itself.
+* **Exact artifacts:** `scratch/kobon/flower_counterexamples.py` and persisted
+  JSON verify a triple flower with 6 face triangles / 6 shared sides and a
+  quadruple flower with 8 / 8, using Fraction arithmetic,
+  `verify_selection`, an independent side-use census, and zero
+  line/triangle-interior incidences. This proves the capacity coefficient
+  k(k-4) is locally sharp: a k-fold merge loses k(k-2) gaps and all 2k
+  double-use credits can occur simultaneously. The missing mod-6 unit must be
+  a **global interaction/parity obstruction**, not a pointwise charge.
+* **New face-region SAT formulation:** enables the already-audited `FACE`
+  rules and removes all TC variables. The added side-order condition is
+  redundant on realizable triangular faces but strengthens the relaxation.
+  SAT controls pass at every known optimum n=5..9; next-value controls are
+  UNSAT. Runtime: (8,16) 31.6s -> 16.7s, (9,22) 388s -> 155s.
+  The independent (7,12) proof is `s VERIFIED` by drat-trim (7,322 vars,
+  56,685 clauses; 6,483 formula clauses / 18,429 lemmas in core).
+* **Real frontiers built + launched at low priority:** n=12,T=39 =
+  303,359 vars / 2,438,798 clauses; n=14,T=55 = 892,998 /
+  6,912,085, versus 1,349,454 / 7,829,001 in the first n=14 face-only
+  formulation. `n12-face-regions-t39` and `n14-face-regions-t55` are live.
+* **Status correction:** without granting the incomplete Clément--Bader
+  proof, the rigorous windows are [38,40] at n=12 and [54,56] at n=14.
+  Targets 39 and 55 remain the decisive first frontiers: UNSAT closes the
+  lower endpoint; SAT creates a record and leaves only 40 or 56.
+* **Verification:** `flower_counterexamples.py` exit 0; 17/17 engine tests;
+  paper compiles to 13 pages. The n=10 proof-logging monolith remains live;
+  the earlier exit-20 run is still labelled discovery-only until its DRAT is
+  independently checked.
+
+
+### QEC (2026-08-22) — EXP-056 exactifies $[[162,8,14]]$ and closes the fixed-point screen through $n=162$
 
 * **Prior-art correction:** retracted the claim that $[[90,8,10]]$ is the only
   odd$\times$odd BB code in print; sourced 27 instances. The rate/principal-code
@@ -14,28 +587,36 @@ source was read directly — not that something looks right.
   $I=\operatorname{Ann}_{\rm left}(a,b)$ and the physical pole is $J=\bar I$;
   $J^2\cong\ker H_X/S_Z$. Audited 27/27. A raw-$I$ fallback failed on
   $(7,7)\,[[98,6,12]]$ and is retracted (FR-026).
-* **Source discipline:** Wang–Mueller distances are BP-OSD upper bounds;
-  Postema table distances are Monte-Carlo estimates. All 25 reproduced reported
-  values pass the pole ceiling only as a sanity check. Five rows are locally
-  two-sided exact, zero ceiling violations, slack 2/10/22. Estimates never set
-  screen thresholds.
+* **Source discipline:** Wang–Mueller distances originate as BP-OSD upper
+  bounds; Postema table distances are Monte-Carlo estimates. All 25 reproduced
+  values pass the pole ceiling only as a sanity check. Six rows are now locally
+  two-sided exact, zero ceiling violations, slack 2/20/22. An estimate enters a
+  threshold only after a pure rebuilt-certificate validator binds its
+  constructor, matrices, 20 current CNFs/replays, duality and upper witness.
 * **Complete algebraic census:** 65 odd lattices with $\ell m\le180$,
   **4,229,823,962** weight-$\le3$ pairs; zero $k$ mismatches; 273/273
   idempotence checks. Config-bound 65/65 shards.
-* **Exact discoveries/references:** connected and row-space-indecomposable
-  $[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$, all $d_X=d_Z=d$ exact with
-  explicit witnesses. The latter two exactify BP-OSD reports. The first is a
-  new checked-BB constructor but globally dominated by Grassl $[[30,8,7]]$.
-* **Fixed-point screen complete through $n=126$:** nine lattices; 715 symmetry
-  classes / 10,247 normalised pairs. **598/598** classes with a locally exact
-  reference dominated (588 explicit logical witnesses, 10 all-sector CP-SAT);
-  117 high-$k$ no-reference; zero survivors/undecided. Shards are bound to
-  census/reference hashes and protocol. $n>126$ remains open; a
-  $[[162,8,14]]$ exactification attempt timed out at 2,100s.
-* **Verification:** independent code review found no remaining high-confidence
-  issue after five blocker repairs; 38 targeted EXP-055/prose guards; full suite
-  **961 passed, 1 skipped (962 collected)**; PDF **17 pp, 0 undefined**; bundle
-  `pbb_nogo_bundle_2026-08-22.zip` (1,633 entries, 0 SHA mismatches).
+* **Exact references:** connected and row-space-indecomposable
+  $[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$, all $d_X=d_Z=d$ exact. The
+  first is globally dominated by Grassl $[[30,8,7]]$; the latter two exactify
+  BP-OSD reports.
+* **EXP-056 exactification:** Wang–Mueller's $(3,27)$
+  $A=1+y^{10}+y^{14}$, $B=y^{12}+x+x^2$ is exactly $[[162,8,14]]$.
+  The 255 nonzero classes reduce to 20 verified automorphism orbits; all 20
+  sparse-generator CNFs are UNSAT and all 20 replay digest-identically.
+  Odd column degree tightens cap 13 to 12; an explicit weight-14 word and exact
+  BB $X/Z$ duality close both sides. Serial UNSAT total 1,312.75 s; replay
+  1,287.67 s.
+* **Fixed-point screen complete through $n=162$:** 13 nonempty-frontier
+  lattices; 2,132 symmetry classes / 51,769 normalised pairs. **1,928/1,928**
+  referenced classes dominated (1,804 reduced-pole witnesses, 119 CDCL
+  witnesses, five exact CP-SAT fallbacks); 204 high-$k$ no-reference; zero
+  survivors/undecided. All 1,923 persisted witnesses are checked physically.
+* **Verification:** hostile review **NO_BLOCKER** after certificate-admission,
+  replay, revocation and symmetry-anchor repairs; 49 targeted guards; full
+  suite **972 passed, 1 skipped (973 collected)**; PDF **17 pp / 708,817 B**,
+  zero undefined references, no oversized float; bundle
+  `pbb_nogo_bundle_2026-08-22.zip` (1,704 entries, 0 SHA mismatches).
 
 
 ### KOBON (2026-08-22b) - K(10) CONFIRMED TWICE; ENCODING AUDIT PASSED
@@ -71,9 +652,11 @@ source was read directly — not that something looks right.
 * **Self-corrections this pass**: my windows table had a_3^s(18)=94,
   a_3^s(20)=117 (those are the *weaker* BBL Thm 1.1 values OEIS reports;
   Blanc's sharper simple maxima are 93, 116) and the draft bound at n=6 as 8
-  (it is 7). Both fixed by recomputation. Withdrew my criticism of
-  Clement-Bader Lemma 1: subdivided sides are excludable WLOG once the
-  collapse theorem holds, so the objection evaporates.
+  (it is 7). Both fixed by recomputation. Withdrew the claim that
+  subdivided broad-convention sides refute Clément--Bader Lemma 1, because
+  the collapse theorem removes that issue WLOG. Entry 2026-08-22c later
+  identifies a distinct counterexample to the draft's shared-side step using
+  genuine triangular arrangement faces.
 * Fleet: (12,39), (11,33), (14,55) all past 15 h.
 
 ### KOBON (2026-08-22) - THE CONVENTIONS COLLAPSE: crossings never help, so K = K_gen
@@ -1041,6 +1624,221 @@ That is the payoff of the 16-slice protocol: under the same degraded throughput
 an 8-slice campaign at this target would have needed $\approx60$ h on its worst
 slice, i.e. no margin at all.
 
+### NEW IDEA + SHARP REFUTATION (2026-08-22) — Reimer's theorem, entropy, and why the scalar cut cannot break $c^*$
+
+`uc/reimer_entropy.py` (exit 0, 80-digit controls). This started as the first
+legitimate route found here that excluded the $c^*$ obstruction — unlike the
+refuted support restriction, it survives conditioning — and ended with a
+precise theorem saying what new information is actually required.
+
+**The valid constraint.** For uniform $A\in\mathcal F$ and the conditional
+probabilities $p_i=\Pr(A_i=1\mid A_{<i})$ used in Cambie's §4 proof,
+$$\sum_i\mathbb E[p_i]=\mathbb E|A|,\qquad
+\sum_i\mathbb E[h(p_i)]=H(A)=\log_2|\mathcal F|.$$
+Reimer's average-set-size theorem therefore gives the conditioning-stable
+**global** cut
+$$\sum_i\big(2M_i-L_i\big)\ge0.$$
+The old two-strategy obstruction violates the corresponding single-law cut:
+$M=c^*=0.3823455333667027$, $L=0.8422454145881537$, hence
+$L-2M=0.0775543478547482>0$ — so it is not the conditional law of every
+coordinate of a real union-closed family.
+
+**The tempting new ceiling** (NUMERICAL root of exact equations). Imposing
+$L\le2M$ on a single law produces a clean two-point obstruction
+$a_R\delta_1+(1-a_R)\delta_{b_R}$ with Reimer equality and $F=0$:
+$$a_R=0.1249081993926099066\ldots,\quad
+b_R=0.2944850724339305712\ldots,$$
+$$c_R=0.3826096716808159068990890908\ldots>c^*$$
+by $2.64138\times10^{-4}$. The KKT multiplier
+$\lambda_R=0.00883449108362051295944\ldots$ makes it stationary
+($H''=0.4856052>0$), and the sampled global search over 1–4 pair-orbits returns
+only this law. If the cut were local, $c_R$ would be an attainable record above
+$c^*$ and below Liu's equation-defined value.
+
+**Why that inference is false — PROVED.** Cambie's argument applies the
+probability-law inequality separately to each coordinate's conditional law;
+Reimer constrains only their **sum**. The natural dual inequality
+$F(\mu)-\lambda(2M-L)\ge0$ already fails on any deterministic conditional law
+$\nu_d=a\delta_1+(1-a)\delta_0$:
+$$L(\nu_d)=Q(\nu_d)=C(\nu_d)=F(\nu_d)=0,\qquad
+F-\lambda(2M-L)=-2\lambda a<0.$$
+This is structural, not a bad multiplier. The old $c^*$ law has Reimer deficit
+$d=0.0775543478547482$ and $F=0$; a deterministic law of mean $a\le c$ has
+Reimer surplus $2a$ and $F=0$. Taking
+$$N_{\rm det}/N_{\rm bad}=d/(2a)$$
+makes the **global** Reimer inequality an equality while $\sum_iF(\mu_i)=0$.
+At $a=c_R$ the ratio is $0.1013491733155$: one deterministic coordinate
+balances 9.8669 bad coordinates. Both means are below every target
+$c\ge c_R$.
+
+**Theorem-level conclusion for this methodology.** Reimer's scalar
+average-size inequality alone cannot break $c^*$ in any coordinatewise
+Sawin/Cambie entropy proof. The unusable $c_R$ is the ceiling of an illegitimate
+single-law relaxation, not a theorem target. Any real gain must couple the
+conditional laws across coordinates — Reimer's full non-interference
+structure, a realizability condition for the conditional-law sequence, or a
+new multi-coordinate entropy inequality.
+
+**Creative direction that survives the refutation: random-order/Shapley
+entropy.** The balancing construction is free only for a *fixed coordinate
+order*: zero-entropy deterministic laws carry the positive Reimer slack.
+Average Cambie's proof over a random coordinate permutation. Conditional
+entropy contributions become the Shapley values of the entropy polymatroid;
+a deterministic dependency can contribute zero when it comes after its causes,
+but must inherit the shared entropy when it comes before them. Thus the same
+coordinate cannot carry free positive Reimer slack in every order. The next
+concrete experiment is to enumerate small union-closed families, compute their
+permutation-averaged conditional-law functionals, and search for a universal
+Shapley-corrected inequality. This uses cross-coordinate realizability — exactly
+the information the impossibility theorem says is necessary — rather than
+recycling another one-law relaxation.
+
+**Literature check.** Lu--Raz (arXiv:2405.10639v2) studies Reimer's structural
+conditions and constructs families satisfying them without abundance; it
+mentions Gilmer's entropy work but does not formulate the law
+$\sum_i(2M_i-L_i)\ge0$ inside the conditional-entropy functional or the
+random-order/Shapley correction above. So the synthesis and its impossibility
+result are not merely a restatement of that paper.
+
+### FINITE EVIDENCE (2026-08-22) — random-order/Shapley entropy opens a positive window around the target scale
+
+`uc/shapley_entropy.py`: complete enumeration of all 65,535 nonempty families on
+a four-element ground set, all $4!=24$ coordinate orders, and exact-Fraction
+conditional-law construction; 523 distinct local laws, with the worst
+equal-marginal coupling solved and cached by a finite HiGHS transportation LP.
+Runtime 118 s, one core. This is a complete finite enumeration but **NUMERICAL**
+(float64 LP), not a universal theorem.
+
+**Order averaging has a real effect.** Among 4,958 nontrivial union-closed
+families, the Shapley/permutation average improves the worst fixed order by more
+than $10^{-12}$ in 4,643 cases (**94%**), with median gain $0.0524$ and maximum
+gain $0.1884$. The largest order-spread inside the union-closed class is $0.377$.
+Some symmetric families are order-invariant, so averaging is not a magic proof;
+that control prevents promoting the effect to a universal claim.
+
+**The target-scale filter is positive.** Among **all** families (not just
+union-closed) satisfying both the scalar Reimer cut and a maximum-frequency
+bound:
+
+| max frequency | family count | minimum fixed-order $\sum F_i$ | minimum Shapley-average $\sum F_i$ | gain at worst averaged family |
+|---|---:|---:|---:|---:|
+| 0.38235 | 110 | +0.1173386 | **+0.1298735** | +0.012535 |
+| 0.38261 | 110 | +0.1173386 | **+0.1298735** | +0.012535 |
+| 0.40000 | 358 | -0.0063344 | -0.0063344 | 0 |
+| 0.45000 | 1,360 | -0.2717435 | -0.2717435 | 0 |
+| 0.50000 | 8,281 | -0.7280083 | -0.7280083 | 0 |
+
+The worst target-scale averaged family is
+$\{0,1,2,4,7,9,10,12\}$ (bitmask notation), size 8, maximum frequency $3/8$,
+Reimer equality; its fixed-order total is +0.1173 and random-order total +0.1299.
+At frequency 0.4 the first order-invariant negative control appears, so the
+experiment locates a real transition between 0.38261 and 0.4 rather than merely
+reporting positivity on small instances.
+
+**Interpretation, stated narrowly.** `reimer_entropy.py` proves that scalar
+Reimer information cannot break $c^*$ for a fixed-order coordinatewise proof,
+because deterministic zero-entropy laws carry free positive slack. The finite
+enumeration shows that randomising the order redistributes that slack in 94% of
+real union-closed families and leaves a uniformly positive window for *every*
+Reimer-admissible family on $[4]$ at our target scale. This is precisely the
+cross-coordinate realizability effect the impossibility theorem says is needed.
+The surviving research target is a Shapley-corrected lower bound on the
+permutation-averaged local functional in terms of the entropy polymatroid — a
+multi-coordinate inequality, not another one-law moment constraint.
+
+### OUTCOME (2026-08-23) — campaign J: **NO CERTIFICATE**, missed by 31 and 29 stack leaves after 584.6 M residual-free boxes
+
+Campaign `uc/campaigns/cert3_20260820T181524Z_08ad738a1cf24a08bfc4189e65f9ef44_57a8908ba7b8/`,
+target rational $0.3821660112501052\ge\psi+2\times10^{-4}$, code hash
+`57a8908ba7b8`, 72 h per slice.
+
+| slice | processed | verdict | residual | stack / budget_time |
+|---|---:|---|---:|---:|
+| 0 | 21,891,091 | COMPLETE | 0 | 0 / 0 |
+| 1 | 21,637,061 | COMPLETE | 0 | 0 / 0 |
+| 2 | 24,563,611 | COMPLETE | 0 | 0 / 0 |
+| 3 | 37,877,105 | COMPLETE | 0 | 0 / 0 |
+| 4 | 85,793,971 | COMPLETE | 0 | 0 / 0 |
+| 5 | 142,886,584 | INCOMPLETE | 0 | 31 / 31 |
+| 6 | 156,713,996 | INCOMPLETE | 0 | 29 / 29 |
+| 7 | 93,281,643 | COMPLETE | 0 | 0 / 0 |
+| **total** | **584,645,062** | **6/8 COMPLETE** | **0 everywhere** | — |
+
+The frozen collector (checker SHA-256
+`95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec`)
+exited 1 **before replay**, correctly printing `NO COMPOSITE CERTIFICATE -- 6
+problem(s)`: non-COMPLETE verdict, nonzero stack, and nonzero `budget_time` for
+each of slices 5 and 6 — no other problem. Verbatim output is preserved at
+`campaigns/...57a8908ba7b8/collect_output.txt`.
+
+**Interpretation:** time-limited only, not mathematics-limited. Every one of
+584.6 M processed boxes discharged; no residual leaf exists. The earlier cost
+projection for J's slices 5/6 (≈141/145 M) was not a bound and underpredicted
+the actual trees (142.9/156.7 M). External machine load reduced late throughput
+from ≈1,100 to ≈200–437 boxes/s; temporary K reprioritisation recovered J to
+437 boxes/s, but the immutable 72 h wall still arrived with 60 open DFS leaves.
+The negative result is useful calibration: campaign K's 16-slice partition is
+not optional at tighter targets — it is what divides exactly these heavy trees
+into payable workers.
+
+### NEW FRONTIER (2026-08-23) — certified Shapley mixing gap + exact join-dependency map
+
+This is the surviving route beyond the two-strategy ceiling after the scalar
+Reimer synthesis was proved insufficient (`uc/reimer_entropy.py`). It couples
+coordinates instead of imposing another one-law moment cut.
+
+**Analytic half — PROVED (`uc/shapley_gap.py`, Arb, 256 bits).** At mean $c^*$
+the functional has two zero-cost equality mechanisms:
+$$\mu_*=a^*\delta_1+(1-a^*)\delta_{b^*}\quad\text{(entropy-active obstruction)},$$
+$$\nu_d=c^*\delta_1+(1-c^*)\delta_0\quad\text{(deterministic Reimer-slack carrier)}.$$
+For every $\theta\in[0,1]$,
+$$F((1-\theta)\nu_d+\theta\mu_*)\;\ge\;\boxed{0.1475\,\theta(1-\theta)},$$
+with equality only at $\theta\in\{0,1\}$. This is not a sampled LP statement.
+On atoms $\{0,b^*,1\}$ the worst coupling has the exact transport formula
+$$C(\theta)=\begin{cases}0,&y\le z,\\2(y-z)h(b^*),&z<y\le1/2,\\(2y-1)+2xh(b^*),&y>1/2,\end{cases}$$
+where $x=(1-\theta)(1-c^*)$, $y=\theta(1-a^*)$,
+$z=(1-\theta)c^*+\theta a^*$. The switches are
+$\theta_1=0.3122230602841248522\ldots$ and
+$\theta_2=0.5428158442308060908\ldots$; on each regime
+$F-0.1475\theta(1-\theta)$ is an Arb-enclosed **concave quadratic**, so its
+minimum is at an endpoint. The interior switch margin is certified positive
+($5.8252\times10^{-6}$ at $\theta_1$), and the sharp ratio candidate is
+$0.1475271269604090361\ldots$. The first draft caught two errors before passing:
+the repository's 17-digit $(b^*,c^*)$ display values cannot assert an exact
+endpoint identity, so the defining root is enclosed and all constants derived
+from the same Arb ball; and the first regime is concave, not monotone, so the
+certificate uses endpoint minima rather than a false derivative sign.
+
+**Structural half — COMPLETE FINITE DATA (`uc/join_dependencies.py`).** Exhaust
+all 4,959 union-closed families on $[4]$, retain the separating families with
+every coordinate active, and inspect every coordinate in every one of $4!=24$
+orders. There are 2,064 nontrivial deterministic instances in 248 families,
+across 13 signatures. In **every** instance, exact truth-table checks prove
+$$f(x\vee y)=f(x)\vee f(y),$$
+so $f$ is a join-homomorphism and $f^{-1}(0)$ a prime join-ideal — the
+cross-coordinate structure absent from an arbitrary sink law. Every such
+coordinate becomes entropy-active in at least **1/2 of all orders**; the minimum
+Shapley/marginal entropy share is **0.388518**; no dependency remains free under
+random order. This makes the certified quadratic mixing gap operative for the
+entire relevant $n=4$ class.
+
+**Finite global control (`uc/shapley_entropy.py`).** Among all 110 families on
+$[4]$ satisfying scalar Reimer and maximum frequency $\le0.38261$, the minimum
+fixed-order total functional is +0.11734 and the minimum Shapley-average is
++0.12987; the first order-invariant negative control appears at frequency 0.4.
+Across nontrivial union-closed families, order averaging strictly improves the
+worst fixed order in 4,643/4,958 cases (94%), median gain 0.0524.
+
+**Exact arbitrary-$n$ target.** Prove a quantitative Shapley-activation theorem
+for prime join-ideals of the prefix semilattices arising from separating
+union-closed families: enough deterministic slack must become entropy-active
+under random order to pay the $0.1475\theta(1-\theta)$ gap. A naive uniform
+$1/2$ bound cannot hold for arbitrary dependency arity (random precedence gives
+$1/(k+1)$ in the full Boolean OR case), so the theorem must aggregate activation
+against the **amount of Reimer slack**, not bound each coordinate separately.
+This is a concrete multi-coordinate inequality and genuinely new information —
+not another relaxation of Question 2.
+
 ## 2026-08-19 — h10q: L18 step-(ii) density law, horizon wave 2, and the deliverable bundle
 
 **Deliverable.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip`
@@ -1123,7 +1921,7 @@ chain is repo-regenerable; five older L17 JSONLs are persisted evidence without 
    labelled local generalization of `l12_class.l12_class_cert`. Novelty is the $\tau=0$
    alignment alone.
 
-**Waves 4-6 (12 more subagents) — L19/L20/L21: the hypothesis shrinks to one algebraic gap.**
+**HISTORICAL CHECKPOINT — SUPERSEDED BY THE L22 ENTRY ABOVE.** Waves 4–6 (L19/L20/L21) had reduced the hypothesis to one algebraic gap.
 
 12. *The canonical 5-wall is always breakable (PROVED).* Factor-by-factor,
     $\prod_{p\mid A}(x,d)_p(A\mid q_1)=(-2\varepsilon\mid A)(f\mid A)$, so with $A\equiv5\bmod8$ the
@@ -1139,9 +1937,10 @@ chain is repo-regenerable; five older L17 JSONLs are persisted evidence without 
     103/103 canonical rows reproduced (1,113,000 residues enumerated), 353/353 grid certificates,
     0 refusals. Independent corroboration: fixing $a=1$ collides at exactly
     $w=11,19,31,59,71,79$ — precisely the 5-wall set derived by the other route.
-15. *Admissibility of the Schinzel pair.* (b) $\gcd(q_1,N)=1$, (c) no fixed prime divisor (degree
-    bound forces any such prime $\le9$, all in $S$), (d) $S$-adic units and frozen-symbol constancy:
-    all **PROVED uniformly**. Positive leading coefficient PROVED. **Irreducibility OPEN uniformly.**
+15. *Admissibility at that checkpoint.* Conditions (b), (c), and (d)
+    and positive lead were PROVED, while irreducibility was then OPEN.
+    **That OPEN status is superseded by L22**
+    (`/tmp/l22_elimination.md`; `math/h10q/THEOREMS.md`, L22).
     The agent also refuted our own written premise: literal $S$-support of the content $c$ is false
     (counterexample $(3,3/11)$, outside part $11^{-12}$); the correct and sufficient premise is that
     the *square class* of $c$ is $S$-supported. Corrected in all four documents.
@@ -1151,12 +1950,13 @@ chain is repo-regenerable; five older L17 JSONLs are persisted evidence without 
     $\delta_{\tau^\dagger}=-4a^4/A<0$ is never a square, so that degeneration cannot occur there,
     for any $a$ or cell. Also: $P+32A^3s^2D^2b^5$ is palindromic and $P_0=P_8$ always (288/288),
     so the Galois group embeds in $C_2\wr S_4$. 56/56 + 9/9 + 288/288 exact, 0 refusals.
-17. *Adversarial chain audit.* Verdict: the chain does **not** yet read "Schinzel H $\Rightarrow$
-    six quantifiers"; the blocker is uniform irreducibility. Two joints certified sound (ladder
-    zero $\Rightarrow$ global tied-conic solubility, covering $2,\infty,w,Q$ and all odd places;
-    quantifier count still exactly 6). Six record defects found and fixed, including a missing
-    branch in the displayed formula, an irreducibility overreach, an obsolete even-valuation
-    condition, a false ladder biconditional, and a stale open-cell sentence.
+17. *Historical adversarial chain audit.* Its then-correct verdict was
+    that Schinzel H did not yet imply six quantifiers because uniform
+    irreducibility was missing.  It also certified the solubility and
+    count joints and forced the recorded scope corrections
+    (`math/h10q/NOTES.md`, L20/L21 session).  **L22 later closes exactly
+    that blocker** (`agent://ElimAudit`;
+    `math/h10q/THEOREMS.md`, L22).
 
 18. **L21d/e: irreducibility on the constructed branch (PROVED generically and per cell).**
     $H=(A/4)P$ has $L=a^8A^2Z^4$ as both end coefficients, so monic factors of $H/L$ over
@@ -1172,12 +1972,11 @@ chain is repo-regenerable; five older L17 JSONLs are persisted evidence without 
     **iff** $a=1$. For $a=1$ with $(5\mid w)=-1$ the trace quartic is uniformly irreducible over
     $\mathbb Q(\sqrt{-5})$.
 
-**Honest chain summary.** Class existence is proved for every cell; the Schinzel pair's
-admissibility is proved uniformly except for irreducibility, which is proved generically and
-per-cell on all 353 certified $z$; member existence follows from Schinzel's Hypothesis H. So the
-record is conditional on **Schinzel H plus a per-cell irreducibility certificate** — down from a
-bespoke hypothesis about degree-8 prime values. An adversarial audit confirms the chain does *not*
-yet read "Schinzel H implies the six-quantifier definition".
+**Historical chain summary — SUPERSEDED by L22.** At the L21 endpoint,
+the record required Schinzel H plus one fibre certificate outside the
+recorded grid (`data/l21_irred_generic.jsonl`).  The current result is
+classical Schinzel H alone: see the newest H10/Q entry above and
+`math/h10q/THEOREMS.md` L22d.
 
 **Final bundle.** `math/h10q/deliverables/h10q-bundle-2026-08-19.zip` — 10,856,456 bytes, SHA-256
 `efec51fa188d8027759cff50d8c49d03e96e6bb3b5aa419ae188ed398d955a75`, 91/91 checksums OK (verified

@@ -1,0 +1,516 @@
+{
+  "bundle": "ising3d-exact-research-wave-20",
+  "generated_utc": "2026-08-23T03:06:36.401348+00:00",
+  "excluded_from_hash_list": [
+    "MANIFEST.json"
+  ],
+  "file_count": 101,
+  "total_bytes": 6625464,
+  "files": [
+    {
+      "path": "BUNDLE_INFO.txt",
+      "bytes": 3110,
+      "sha256": "06503d4bf09025b4870c07e1c5068e8e15fe442b2c97dfbdb83969fe6c37321d"
+    },
+    {
+      "path": "artifacts/docs/README.md",
+      "bytes": 36486,
+      "sha256": "c8ce1a7e13154d894fc3b029ea9de0e1a3506099b437e5cb8792c395bc909cec"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/current_state.md",
+      "bytes": 46215,
+      "sha256": "bd1a0812a857df26c84779fc7d0246ee5f311dfe1d10871623dcc49e5108764a"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/failed_routes.md",
+      "bytes": 26259,
+      "sha256": "b062f7d4b4595ca000448c0e286d46afbbf7db0aeb0a9407e1563cde9586008b"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/next_actions.md",
+      "bytes": 16833,
+      "sha256": "50ab694e7ec90a0a2ef1f9ca08a561611be1340805186b5dc0c7280b373c3c98"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/verified_results.json",
+      "bytes": 132746,
+      "sha256": "6b59c6ea7c2b43ff21ca3bd127d67e84a7e235973b9b9ce925010fee324bbecf"
+    },
+    {
+      "path": "artifacts/docs/notes/frontier_analysis.md",
+      "bytes": 16170,
+      "sha256": "b835c9a072ec62ad1de2bf1fcd113787598c989d837543536a3ba3e01b081162"
+    },
+    {
+      "path": "artifacts/docs/notes/hypotheses.csv",
+      "bytes": 547114,
+      "sha256": "3f6b05f7f4bfe888c4f470ca16cd34c9b971a4bcae7f9a4f130854a313f967dc"
+    },
+    {
+      "path": "artifacts/docs/notes/literature_matrix.md",
+      "bytes": 25319,
+      "sha256": "e00cb5e84fe9bafa0416bf91d44eba8d5d53126fe3c2a187278f5b8b9f4636ba"
+    },
+    {
+      "path": "artifacts/docs/problem_specification.md",
+      "bytes": 4911,
+      "sha256": "fcd198beb06a1da3279c064505082aa7ad3c90b8726d15b9695611aeda7a8229"
+    },
+    {
+      "path": "artifacts/docs/reports/final_technical_report.md",
+      "bytes": 180927,
+      "sha256": "fb05de9f9c39fb72c1e5d4b55f01955bddd950b136d136b6d3a61f0a72ab5be2"
+    },
+    {
+      "path": "artifacts/docs/research_log.md",
+      "bytes": 47651,
+      "sha256": "ca56fb0c3d1ed351890e5b6d68f46f8b1c9e49b0d92591dff0e074a1f11333bf"
+    },
+    {
+      "path": "artifacts/docs/sources/bibliography.bib",
+      "bytes": 15861,
+      "sha256": "6a3fabd257ff01e985348ab51caab62199527c97fc36993c9812e11d6a25037f"
+    },
+    {
+      "path": "artifacts/docs/sources/manifest.yaml",
+      "bytes": 58196,
+      "sha256": "95d522a59feeed9e733fcad743746191148c6126008fd930ba35e3c3b9cef111"
+    },
+    {
+      "path": "artifacts/experiments/e191_wlaw_structure.py",
+      "bytes": 8035,
+      "sha256": "a222d3c5570f1eb57814a085b1bd111ae05856ed9399c921a1ae31e4f7ac4901"
+    },
+    {
+      "path": "artifacts/experiments/e192_wlaw_module.py",
+      "bytes": 7506,
+      "sha256": "ca4a74524c0727de231423baa4ff2db44f277962240d1a1fe7e012a1ff30f68c"
+    },
+    {
+      "path": "artifacts/experiments/e193_wlaw_certificate.py",
+      "bytes": 12775,
+      "sha256": "69dab5ca4d74c20cd101cb24a1ffafbaf0a68276bed1c85612b3570a5369add0"
+    },
+    {
+      "path": "artifacts/experiments/e194_kmn_reduction.py",
+      "bytes": 15712,
+      "sha256": "5357082fe72c63fc81bda05bdcb1d04410f1c22726f24a914de77809790c3356"
+    },
+    {
+      "path": "artifacts/experiments/e195_kmn_closure.py",
+      "bytes": 9273,
+      "sha256": "aaa65e7c39d77109fc75c48c32381284e0c636dbcd7d33755b400cb60ebde9ec"
+    },
+    {
+      "path": "artifacts/experiments/e196_kmn_theorem.py",
+      "bytes": 14065,
+      "sha256": "5a3685f55652d94d308f1cab91f10392ddb318cde15a2089f49d0b9de97dfa26"
+    },
+    {
+      "path": "artifacts/experiments/e197_rectangle_words.py",
+      "bytes": 9627,
+      "sha256": "9a4bd1e5674b89072f9756b94790cd849e32d3f7af6add171809edb60ae518ba"
+    },
+    {
+      "path": "artifacts/experiments/e198_rectangle_induction.py",
+      "bytes": 7068,
+      "sha256": "916925544313780336b0e32e0a15b32a7e1ecdd3392e9449206c401b74b4afcf"
+    },
+    {
+      "path": "artifacts/experiments/e199_rectangle_certificate.py",
+      "bytes": 8859,
+      "sha256": "c12dfae4ba9957d4928be597607240075188c36f400e57b634cc49698ca4c339"
+    },
+    {
+      "path": "artifacts/experiments/e200_isotropic_puiseux.py",
+      "bytes": 14644,
+      "sha256": "85a85ba24b29c7ee827db434116f316afe67d6b03eff7327f3b3496b290f4b2a"
+    },
+    {
+      "path": "artifacts/experiments/e201_isotropic_invariant.py",
+      "bytes": 14696,
+      "sha256": "8d0002c4938df022dafd3eb34cda5418ec39f4ef1665ce133693f1a069523752"
+    },
+    {
+      "path": "artifacts/experiments/e202_isotropic_certificate.py",
+      "bytes": 9104,
+      "sha256": "668776d7f088ea479c40cf945b7abacbdbe7f35bc2e59536aa953b1799ca46e4"
+    },
+    {
+      "path": "artifacts/experiments/e203_galois_charpoly.py",
+      "bytes": 17550,
+      "sha256": "90df167d1fcd5e5f2d04450fa58f72cf9461ea82a175b8ec73d566245235bba6"
+    },
+    {
+      "path": "artifacts/experiments/e204_galois_cycles.py",
+      "bytes": 10105,
+      "sha256": "4c3c466d6bb5995aa87276a355e46c2d02f1cc2d2127534d532174f663e44dba"
+    },
+    {
+      "path": "artifacts/experiments/e205_galois_certificate.py",
+      "bytes": 16767,
+      "sha256": "7e80c6634b8184e8609dca2bcbd01e0eab6732ff55607a16287df17bcf26fede"
+    },
+    {
+      "path": "artifacts/experiments/e206_ctm_definition.py",
+      "bytes": 11778,
+      "sha256": "393458fff3730662f1902b60c78d617d331442fcb098dc7f48728464b1590b53"
+    },
+    {
+      "path": "artifacts/experiments/e207_ctm_spectrum.py",
+      "bytes": 16496,
+      "sha256": "0e2975c4103e54216e840e41f5ccd34520ac3add46173230c02fd76903a79a25"
+    },
+    {
+      "path": "artifacts/experiments/e208_ctm_certificate.py",
+      "bytes": 25054,
+      "sha256": "2ed0657bc5262228b86d5c1e2ccf5abcf6baba6b4ccf43957a69c57719f70007"
+    },
+    {
+      "path": "artifacts/experiments/e209_plucker_tensor.py",
+      "bytes": 12496,
+      "sha256": "5e5d5f3773b48d727866d794f184b3dea6967af16296e085ceef36daf1be414a"
+    },
+    {
+      "path": "artifacts/experiments/e210_plucker_search.py",
+      "bytes": 9803,
+      "sha256": "a164c12279e153df31de629f44feecb594c333ab8256352159f58c74eab16cb5"
+    },
+    {
+      "path": "artifacts/experiments/e211_plucker_certificate.py",
+      "bytes": 18733,
+      "sha256": "8cc0dd362d102c731affa878ca80a1d3ba605c54c4299851727fdd9c5bdfee9a"
+    },
+    {
+      "path": "artifacts/experiments/e212_allaux_intertwiner.py",
+      "bytes": 17909,
+      "sha256": "e05d382481a34f3d968fb6b05cffda8db23c809d9917a2583f7e1c536c7f7922"
+    },
+    {
+      "path": "artifacts/experiments/e213_allaux_controls.py",
+      "bytes": 22990,
+      "sha256": "ac61db494e670b8b916d683e2e06a2873d4da1c2754cabc236b0b7099c1ad137"
+    },
+    {
+      "path": "artifacts/experiments/e214_allaux_certificate.py",
+      "bytes": 16620,
+      "sha256": "987bb06766aa0ddd1acbfb8be52193c19fb6d6e4338792e78521832905de91e4"
+    },
+    {
+      "path": "artifacts/experiments/e215_fourpoint_kernel.py",
+      "bytes": 6779,
+      "sha256": "b9840f5c2b0e067a9eefea70b1098d16628033ec427bd7a3be5f17aecd8f2c3f"
+    },
+    {
+      "path": "artifacts/experiments/e216_fourpoint_certificate.py",
+      "bytes": 13390,
+      "sha256": "6a82c6235a9287f9ddc643fc8db2a6abe44d34ed7f9a5b42144e83d806016f80"
+    },
+    {
+      "path": "artifacts/experiments/e217_fourpoint_endpoint.py",
+      "bytes": 6406,
+      "sha256": "2a679e3ec5d0d3de9f9ff131a79f58d8f4dffb7bad9509571fec424df4ef9586"
+    },
+    {
+      "path": "artifacts/experiments/e218_susceptibility_coeffs.py",
+      "bytes": 27260,
+      "sha256": "1bb6a4075cd686b5bf9e1742c6f1b0b8e27f1d957c80912ff1259c2b535d70b5"
+    },
+    {
+      "path": "artifacts/experiments/e219_coeff_inequality.py",
+      "bytes": 18309,
+      "sha256": "c93e5a3e7baa61c981172b826a14baf62a808e88a1e5802e067142198f6d2951"
+    },
+    {
+      "path": "artifacts/experiments/e220_coeff_bound.py",
+      "bytes": 15130,
+      "sha256": "fe9160da3296ffe9afd76a270ef9ece1ef22f737cc37ff0c72d0bdfd5f9aa36c"
+    },
+    {
+      "path": "artifacts/experiments/e221_c8_closed.py",
+      "bytes": 19502,
+      "sha256": "9a3474f359c1708b0b5bb63bada70aa4f2a85b8118f67c4ddec4778d3f5a0a95"
+    },
+    {
+      "path": "artifacts/experiments/e222_c10_structure.py",
+      "bytes": 16719,
+      "sha256": "2d203c950b44ff3b469adaeefc7eb15c3bf5d0d93f922870b534fbf5c6dfa17b"
+    },
+    {
+      "path": "artifacts/experiments/e223_c10_certificate.py",
+      "bytes": 7263,
+      "sha256": "d193c3ed81fb0a2fe97c0d504b735a0cb5df37abffc304ceeeef31301432b9b2"
+    },
+    {
+      "path": "artifacts/experiments/e224_nonhamiltonian_census.py",
+      "bytes": 16817,
+      "sha256": "220c597ece2953d12eeb92555fee5ebeb8c1113af629b6890d3e33ede420a029"
+    },
+    {
+      "path": "artifacts/experiments/e225_matching_grade.py",
+      "bytes": 14113,
+      "sha256": "4f9f2eccc87643f5972aa5fcf3b328ca09f6ae6d19bf6484c1c75a0543af15be"
+    },
+    {
+      "path": "artifacts/experiments/e226_nonhamiltonian_theorem.py",
+      "bytes": 15547,
+      "sha256": "e49aa88ed1467660214ed6f4ff8bd02a677ce3c3304bb48862727960c1ef9cd2"
+    },
+    {
+      "path": "artifacts/experiments/e227_finite_memory_saw.py",
+      "bytes": 16881,
+      "sha256": "37660300d9422dd501c8c396233074d5efbb3a0dcbeb63dd57374d171688ab0c"
+    },
+    {
+      "path": "artifacts/proofs/allaux_lax.md",
+      "bytes": 20002,
+      "sha256": "74d2ad9ebda9101efcff01c5363e75377157bc8eac3829821cc56c5e56f29719"
+    },
+    {
+      "path": "artifacts/proofs/ctm_signature.md",
+      "bytes": 10872,
+      "sha256": "37fbeec0ea357d16f36ec52624809784a84e8b5292e002474819192615813ed9"
+    },
+    {
+      "path": "artifacts/proofs/galois_spectrum.md",
+      "bytes": 8912,
+      "sha256": "c556936de71b95a45dd1030192d78278e88897ca882e7622c1c66ad3fb744057"
+    },
+    {
+      "path": "artifacts/proofs/interlayer_c10.md",
+      "bytes": 11803,
+      "sha256": "5ba9e6d7ffaa7d942584c181a0eda10a383ad13cba4374c36e24b7deb6ffa2c5"
+    },
+    {
+      "path": "artifacts/proofs/isotropic_invariant.md",
+      "bytes": 15266,
+      "sha256": "d2ff423d12078e575541b36f1cbe293f492776fe645b5ef0d5c639e2cfda99a7"
+    },
+    {
+      "path": "artifacts/proofs/kc_lower_finite_memory.md",
+      "bytes": 6710,
+      "sha256": "2f0b254a4efb98986c6843ba06f399b5b709a4abf19660b9a9a856b4b6e039b4"
+    },
+    {
+      "path": "artifacts/proofs/kmn_twogen.md",
+      "bytes": 11145,
+      "sha256": "0e81662e198fcf09c19b229259642fbe58c7c2f10f63cd75c88d73f020ff42c7"
+    },
+    {
+      "path": "artifacts/proofs/nonhamiltonian_bipartite.md",
+      "bytes": 12894,
+      "sha256": "cd5453a5363423252c7f8a5dfc294efb0538673638b093cef8c4eda148cb1cc8"
+    },
+    {
+      "path": "artifacts/proofs/plucker_hirota.md",
+      "bytes": 8794,
+      "sha256": "2b55dd02521daf97eba95647b732aaafabb35227b36dd684de417d3e0853b2d1"
+    },
+    {
+      "path": "artifacts/proofs/rectangle_twogen.md",
+      "bytes": 8439,
+      "sha256": "e1c92f6eb7389e049df16c3aad1e18ff90e95f0b56ec475583cde7f2c33c2384"
+    },
+    {
+      "path": "artifacts/proofs/susceptibility_coeffs.md",
+      "bytes": 21745,
+      "sha256": "900b2c0c0bac6074d015a3c4f19441e5e9bee025c449f681960a7d38494e4f33"
+    },
+    {
+      "path": "artifacts/proofs/upper_fourpoint.md",
+      "bytes": 14580,
+      "sha256": "932a322bc97ef4606f486857f64d86faa849cddb85755359b1131b0ea6eced05"
+    },
+    {
+      "path": "artifacts/proofs/wlaw.md",
+      "bytes": 18491,
+      "sha256": "59752c038285201b9aab9ab9618c04aace39b50b1c7968a73b3b1533adc5cd9a"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/kmn_twogen.json",
+      "bytes": 59100,
+      "sha256": "59c6714c4847055b16c0431a0fef6eeaff9d8e74ca1301e9f13d8ad06f5f47fc"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/nonhamiltonian_bipartite.json",
+      "bytes": 107980,
+      "sha256": "4aa2d67429f0ed7f706d6872a30aa4bdf9f73acb9e6563f17955416f429b0699"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/rectangle_twogen.json",
+      "bytes": 25997,
+      "sha256": "74e2ed8a5aa72c4634ef0244ee74b4ff0e021ac589d83dc249a3860e335eb9da"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/wlaw.json",
+      "bytes": 112630,
+      "sha256": "67e878708eecfd4ee3c697b0995a741883b15bc2b68108d6370204d8909d7a33"
+    },
+    {
+      "path": "artifacts/results/bounds/finite_memory_saw.json",
+      "bytes": 2823685,
+      "sha256": "f7ad773112f5db20f4e71728fd11c16d559ac6142a3f2afb92075f9da9d9e53e"
+    },
+    {
+      "path": "artifacts/results/bounds/susceptibility_coeffs.json",
+      "bytes": 20557,
+      "sha256": "a73aa5ad7a5a256522ecf474e8084c5546f6ff249c4dee6bae5e6ccf267975f5"
+    },
+    {
+      "path": "artifacts/results/bounds/upper_fourpoint.json",
+      "bytes": 90755,
+      "sha256": "0abb82add6be0afc83491d1efd82d6b94c3bde99276270ea335de3f9b127f140"
+    },
+    {
+      "path": "artifacts/results/integrability/allaux_lax.json",
+      "bytes": 33174,
+      "sha256": "5ba768a90659eac461f4e4c05b66b5d286f4e8305c174820f2f149f9238ff47d"
+    },
+    {
+      "path": "artifacts/results/integrability/plucker_hirota.json",
+      "bytes": 46494,
+      "sha256": "d3838014d60e2686c386bf64fb3e57b4bc9ca1efac5ebd8d9df286d1f3592470"
+    },
+    {
+      "path": "artifacts/results/interlayer/c10_structure.json",
+      "bytes": 42085,
+      "sha256": "0881a73137ca7b698f1c593943c2b7b939a736c1cf22a9a989f5232c2338b7f7"
+    },
+    {
+      "path": "artifacts/results/spectral/ctm_signature.json",
+      "bytes": 16137,
+      "sha256": "af772be4f26a5f9d99a48769bc0f154d8c3978e02e4b457416f749f16b1464b7"
+    },
+    {
+      "path": "artifacts/results/spectral/galois_spectrum.json",
+      "bytes": 55151,
+      "sha256": "d5731007932d072a86544552ac6bee78397d1b152e8cdd5714c0a080d96d04db"
+    },
+    {
+      "path": "artifacts/results/spectral/isotropic_invariant.json",
+      "bytes": 34974,
+      "sha256": "e0be517795e10b464f4a8326d432fff7942f5bea30bc982f1364429276c62222"
+    },
+    {
+      "path": "artifacts/sources/poenitz_tittmann2000_saw_upper.pdf",
+      "bytes": 112294,
+      "sha256": "ccd467b28d9d371d12a3e8187dfba8ea35acc0a724e4b490e45c324fdc6d224f"
+    },
+    {
+      "path": "artifacts/sources/seven2003_transvections_v1.pdf",
+      "bytes": 257787,
+      "sha256": "3c8b49509fe61f97f86ba2bfab56fc13347c3b8bae71d3931ccab116363cc18b"
+    },
+    {
+      "path": "artifacts/tests/test_allaux_lax.py",
+      "bytes": 30572,
+      "sha256": "dd0dac9255f4995dccdc93318f0052c0ed5d93f90def1a68f945e9ff5f5e7a4a"
+    },
+    {
+      "path": "artifacts/tests/test_ctm_signature.py",
+      "bytes": 25184,
+      "sha256": "a9f0619cc1555f878d0692d96851501f20643066746c7fe7a882e96a90092ed3"
+    },
+    {
+      "path": "artifacts/tests/test_finite_memory_saw.py",
+      "bytes": 11242,
+      "sha256": "89dc208017ffcddff20eb03f5eb942e626ea6ec3f9109e3c775d516a2bd5201e"
+    },
+    {
+      "path": "artifacts/tests/test_galois_spectrum.py",
+      "bytes": 23587,
+      "sha256": "fde4cf3b2fac96cf5a73339ec68cfd708f70ca39c14973e747f0b7f81aa12d18"
+    },
+    {
+      "path": "artifacts/tests/test_interlayer_c10.py",
+      "bytes": 19772,
+      "sha256": "fd7550f941c5c01977ff354ca0c97f40430e940535aa53789f9c741acd644dca"
+    },
+    {
+      "path": "artifacts/tests/test_isotropic_invariant.py",
+      "bytes": 16547,
+      "sha256": "ec3d19e7aa146579d3da268742b058f02dedea1e83ebc7447240006d90199db3"
+    },
+    {
+      "path": "artifacts/tests/test_kmn_twogen.py",
+      "bytes": 11472,
+      "sha256": "0723140fa2ac81ac084edaefbbc77c499d7079e86dd89c9231d5c2e1ed19baa9"
+    },
+    {
+      "path": "artifacts/tests/test_nonhamiltonian_bipartite.py",
+      "bytes": 18910,
+      "sha256": "64984a32e995ea65c20a3422d4be18d5849d8e18444f92546398072732580efd"
+    },
+    {
+      "path": "artifacts/tests/test_plucker_hirota.py",
+      "bytes": 16064,
+      "sha256": "36c1e96b5b70ffe6f4ce1f11aa324297d3033cef3c4338ab3a72b42b9614b82f"
+    },
+    {
+      "path": "artifacts/tests/test_rectangle_twogen.py",
+      "bytes": 12196,
+      "sha256": "c34a0a2dc73f01c9fdcd2105fb2688b3c1d7dc67815e88127cfd5a56f31da3a3"
+    },
+    {
+      "path": "artifacts/tests/test_susceptibility_coeffs.py",
+      "bytes": 23895,
+      "sha256": "cb188dc35114f84d3abb8de4c6851ec95027b5cb432aaca7e674bbc5a4ae0c91"
+    },
+    {
+      "path": "artifacts/tests/test_upper_fourpoint.py",
+      "bytes": 16892,
+      "sha256": "b9129e31c61be4cccf0dc1ae50f339de04d398670b415437f13d25712081f5b7"
+    },
+    {
+      "path": "artifacts/tests/test_wlaw.py",
+      "bytes": 29469,
+      "sha256": "3bc4844a869e427dd6d4c39657494bbda2b6fe932dd849a84d065259a818fb2a"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.aux",
+      "bytes": 13205,
+      "sha256": "d078c9457c8977268f140a3076a87a5f66c35ff9ec040eacc711ce2372a79e79"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.bbl",
+      "bytes": 7731,
+      "sha256": "e67a52449d3c5a65fe025440d4831230969114cfcafdc050c44981d01d96bfa4"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.blg",
+      "bytes": 921,
+      "sha256": "1293adc791dc336ae86a104772db53ab0cb738fe65e7a28502fe4d8c2a1d816a"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.log",
+      "bytes": 37424,
+      "sha256": "c2b92d0e0f62c54a2759343e3760de52a79049c66cbe70c6bf9a4ec74c71ef42"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.out",
+      "bytes": 7803,
+      "sha256": "1d86d9038250297af7d8470098b4c0c3ae18358a0b3f9c40b10ad4ab3dd67c68"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.pdf",
+      "bytes": 514906,
+      "sha256": "1e2987890ffbb9fa8b000fec8ce95f7b23bc3f708593d26a4628546bb2d896dc"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.tex",
+      "bytes": 83666,
+      "sha256": "1f4ccb23242e08e9d27d23fce7affedf1dddfdb97255ffa6f9d22aa07bd925a7"
+    },
+    {
+      "path": "papers/main_exact_3d_ising.toc",
+      "bytes": 4014,
+      "sha256": "d6fc2a40ae68a6a875002942eba723a800e5970e2f0ce151d25e0475c0e3b083"
+    },
+    {
+      "path": "papers/refs.bib",
+      "bytes": 11960,
+      "sha256": "655b0ba28fe93a48d86c2296d373c68ddc86c8bfdacc04fddb40cd045dbaebcc"
+    }
+  ]
+}

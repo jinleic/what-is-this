@@ -46,17 +46,35 @@ $\operatorname{efd}_{\Q}(\Q\setminus\Z)\le5$.  This remains conditional;
 neither Schinzel~H nor Hilbert's Tenth Problem over $\Q$ is solved here.
 % src: data/l18_schinzel_implies_h.jsonl; data/l22_elimination.jsonl
 
-The six L22 artifacts keep proof and diagnostic scope separate.  The
-elimination and reciprocal-cube files carry PROVED uniform theorems;
-their finite scans are EVIDENCE.  Infinity, factor tuples, a free
-$\lambda$, and fiber geometry record PROVED structural reductions with
-their remaining OPEN or six-count-inapplicable scopes.  The arithmetic
-kernel accepts primality only inside its deterministic Miller--Rabin range
-or from a Pocklington certificate, and every refusal remains non-evidence.
-We give the schemas, exact commands, and license of every artifact.
-% src: data/l22_elimination.jsonl; data/l22_reciprocal_cube.jsonl
-% src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
-% src: data/l22_square_branch.jsonl; data/l22_fiber_geometry.jsonl
+The seven L23 artifacts sharpen the unconditional boundary without
+producing a full member.  The half-dimensional beta sieve proves
+\(\gg X/(\log X)^{3/2}\) candidates with prime linear value and no bad
+prime below \(X^{49/100}\).  Its license is \textsc{proved} only for
+small-prime cleanliness: as many as \(16\) large factors remain, and
+parity leaves \(0,2,\ldots,16\) bad factors.  The fibration and norm
+artifacts prove rank-\(10\), Brauer, Capell, and section no-gos while
+retaining their explicitly named \textsc{open} residual scopes.
+% src: data/l23_half_sieve.jsonl; data/l23_fibration.jsonl
+% src: data/l23_norm_section.jsonl; data/l23_rational_section.jsonl
+
+The four L24 artifacts close the proposed unscaled diagonal route
+negatively.  Both exact finite-flat degree-\(8\) orientations are
+uniformly \(\Phi\)-empty over \(\Q_2\), so the formal at-most-five count
+is vacuous for that unit-scaling family.  The \(4{,}026{,}282\) zero-hit
+search is corroborating \textsc{evidence} only; the proof is the exact
+\(2\)-adic valuation and modulo-\(16\) argument.  L25 makes the first
+separation exact: two fixed scaled type-I couplings have \(2\)-adic
+roots on complementary \(s\)-parities.  L26 then gives a reciprocal
+even-pullback tie with a quartic trace character.  L27 gives a single
+triangular shear which is locally soluble on every dyadic parity and
+every standard aligned odd target.  Their global member/rational-point
+problems remain \textsc{open}; no improved count is claimed.  We give
+schemas, commands, and strict licenses for all fourteen new
+producer--artifact pairs.
+% src: data/l24_diagonal_geometry.jsonl; data/l24_diagonal_arithmetic.jsonl
+% src: data/l24_diagonal_local.jsonl; data/l24_diagonal_search.jsonl
+% src: data/l25_scaled_coupling.jsonl; data/l26_reciprocal_tie.jsonl
+% src: data/l27_triangular_shear.jsonl
 \end{abstract}
 
 \section{The verification contract}
@@ -65,25 +83,32 @@ The program is a verifier of exact mathematical statements, not an oracle
 for Hilbert's Tenth Problem over $\Q$.  A positive row is accepted only
 after its stated hypotheses and identities have been replayed.  A bounded
 scan licenses a statement about its rows and no statement about an
-unscanned complement.  By contrast, the L22 fixed-$Z$ elimination is a
-symbolic proof whose artifact explicitly marks the finite-field tables as
-EVIDENCE not used in the theorem.  Together with the L19/L20 class and
-admissibility results, it leaves classical Schinzel~H as the sole
-conjectural input to member existence.
-% src: data/l22_elimination.jsonl (meta, fixed-Z-theorem, and summary rows)
-% src: data/l19_classexist.jsonl; data/l20_admissible.jsonl
-% src: data/l18_schinzel_implies_h.jsonl
+unscanned complement.  By contrast, the L22 fixed-\(Z\) elimination,
+the L23 half-sieve theorem, the L24 dyadic diagonal obstruction, L25's
+parity split, L26's reciprocal/local identities, and L27's
+dyadic/target character theorem are symbolic proofs or finite
+exhaustions with their uniform arguments displayed separately.  Every
+scan or search remains separately labelled.  The L23 lower bound
+concerns small-prime-clean progression members only, not fully
+emergent-free members.  Classical Schinzel~H remains the sole
+conjectural input to the established member-existence chain.
+% src: data/l22_elimination.jsonl; data/l23_half_sieve.jsonl
+% src: data/l24_diagonal_arithmetic.jsonl
 
 \subsection{The label calculus}
 The ledger uses four labels as a small calculus of admissible inference.
 
 \emph{PROVED} means that an exact implication, identity, certificate, or
-finite exhaustion was replayed.  The L22 endpoint--Newton elimination and
-fixed reciprocal theorem are PROVED uniformly in every rational
-$Z\ne0$; uniform class existence is also PROVED.  A finite closure such as
+finite exhaustion was replayed.  The L22 endpoint--Newton elimination,
+the L23 dimension-\(1/2\) beta-sieve lower bound and parity barrier, the
+L24 emptiness of both unscaled diagonal orientations on \(\Phi(\Q_2)\),
+L25's complementary parity escape, L26's reciprocal identity, and
+L27's one-piece dyadic and aligned-target local theorem are PROVED at
+their stated scopes.  A finite closure such as
 $[179,[-1,1]]$ remains PROVED only for that row.
-% src: data/l22_elimination.jsonl; data/l22_reciprocal_cube.jsonl
-% src: data/l19_classexist.jsonl; data/l19_cell179.jsonl
+% src: data/l22_elimination.jsonl; data/l23_half_sieve.jsonl
+% src: data/l24_diagonal_arithmetic.jsonl; data/l26_reciprocal_tie.jsonl
+% src: data/l27_triangular_shear.jsonl
 
 \emph{CONDITIONAL} means that every remaining hypothesis is stated and
 named.  All canonical-branch Schinzel admissibility conditions, including
@@ -97,18 +122,26 @@ conditional on Schinzel~H and on no additional per-cell certificate.
 \emph{EVIDENCE} means a measured statistic with its sampling frame attached.
 The matched obstruction artifact reports marginal ratio \(0.9993\), a union
 residual of \(-2.9/8760\), and a marginal-preserving permutation statistic
-\(z=-0.09\) with empirical tails \(0.61/0.53\).  These numbers validate the
-matched finite model as EVIDENCE; they do not prove independence or a density
-theorem.
-% src: data/l17_matched.jsonl:3; NOTES.md:812-817
+\(z=-0.09\) with empirical tails \(0.61/0.53\).  Likewise, the L24 search's
+\(4{,}026{,}282\) zero hits corroborate the diagonal theorem but cannot prove
+emptiness.  These numbers validate their recorded finite frames as EVIDENCE;
+they license neither an unscanned density theorem nor a uniform no-point
+claim.
+% src: data/l17_matched.jsonl:3; data/l24_diagonal_search.jsonl (summary row)
 
 \emph{OPEN} names an unproved statement and is never filled by a scan.
-The unconditional Schinzel prime-value assertion remains OPEN.  The OPEN
-endpoints in the infinity, factor-tuple, free-$\lambda$, and
-fiber-geometry artifacts describe only those alternate routes; they are
-not premises or gaps in the PROVED endpoint--Newton theorem.
-% src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
-% src: data/l22_square_branch.jsonl; data/l22_fiber_geometry.jsonl
+The unconditional simultaneous prime-value assertion and the
+two-large-bad-divisor estimate remain OPEN.  So do the L26 quartic trace
+squareclass/member problem and rational points on L27's global
+degree-eight shear cover.  L25's own aligned-target and \(w=3,5\)
+questions remain open for those two scaled formulas, although L27 solves
+them on a different shear.  The unscaled diagonal five-count is not in
+this list: it is PROVED FALSE because both unit orientations are
+\(\Phi\)-empty over \(\Q_2\).
+% src: data/l23_half_sieve.jsonl; data/l23_fibration.jsonl
+% src: data/l23_rational_section.jsonl; data/l24_diagonal_arithmetic.jsonl
+% src: data/l25_scaled_coupling.jsonl; data/l26_reciprocal_tie.jsonl
+% src: data/l27_triangular_shear.jsonl
 
 Labels only move upward through a valid proof.  In particular,
 \texttt{PrimalityBound}, \texttt{FactorBudget}, a timeout guard, a
@@ -426,6 +459,140 @@ polynomial nonvanishing lemma; residue scans are \textsc{evidence}.\\
 \end{tabular}
 \end{table}
 
+\begin{table}[p]
+\centering
+\scriptsize
+\caption{L23 data artifacts, checked-in producers, and strict licenses.}
+\begin{tabular}{@{}p{.25\textwidth}p{.25\textwidth}p{.42\textwidth}@{}}
+\toprule
+Data artifact & Producer & License\\
+\midrule
+\path{l23_half_sieve.jsonl} &
+\path{l23_half_sieve.py} &
+\textsc{proved}: dimension \(1/2\), Bombieri--Vinogradov level, and
+\(\gg X/(\log X)^{3/2}\) members clean below \(X^{49/100}\).
+\textsc{open}: removal of two large bad divisors; no full-member theorem.\\
+
+\path{l23_fibration.jsonl} &
+\path{l23_fibration.py} &
+\textsc{proved}: closed degrees \(1,8,1\), non-split rank \(10\),
+\(\operatorname{Br}/\operatorname{Br}\Q=\Z/2\), and the refined Capell
+obstruction.  \textsc{open}: the named fixed even-\(v_w(z)\), \(w\mid s\)
+stratum and unconditional points.\\
+
+\path{l23_norm_section.jsonl} &
+\path{l23_norm_section.py} &
+\textsc{proved}: exact-match and polynomial-in-\(b\) norm no-gos, with
+the surviving curves isolated.  \textsc{open}: rational points and
+sections outside the classified ansatzes.\\
+
+\path{l23_rational_section.jsonl} &
+\path{l23_rational_section.py} &
+\textsc{proved}: no generic \(b\)-line section and exact genus-\(4\)
+factor residuals.  \textsc{open}: isolated per-cell points and
+nonconstant twists.\\
+
+\path{l23_squareclass.jsonl} &
+\path{l23_squareclass.py} &
+\textsc{proved}: \(P=\pm2b\) times a square is \(\Phi\)-empty,
+\(P=A\operatorname{Norm}\) has dyadic symbol \(-1\), and the reciprocal
+Capell locus is empty.  Bounded searches are \textsc{evidence}.\\
+
+\path{l23_multivar.jsonl} &
+\path{l23_multivar.py} &
+\textsc{proved}: exact degree formulas for the tested moving families
+and a squarefree degree-\(18=2+16\) certificate.  No minimum \(21\) and
+no unconditional closure are licensed.\\
+
+\path{l23_absorption.jsonl} &
+\path{l23_absorption.py} &
+\textsc{proved}: zero-cost identifications, finite-flat rank bound, and
+dyadic emptiness of the diagonal image.  \textsc{open}: record closure;
+the formal at-most-five count is vacuous.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[p]
+\centering
+\scriptsize
+\caption{L24 data artifacts, checked-in producers, and strict licenses.}
+\begin{tabular}{@{}p{.25\textwidth}p{.25\textwidth}p{.42\textwidth}@{}}
+\toprule
+Data artifact & Producer & License\\
+\midrule
+\path{l24_diagonal_geometry.jsonl} &
+\path{l24_diagonal_geometry.py} &
+\textsc{proved}: both finite-flat degree-\(8\) orientations are
+\(\Phi\)-empty; arithmetic monodromy is \(V_4\wr C_2\) of order \(32\),
+the audited \(b\)-slices have genus \(35\), and there is no base-rational
+section.  Absolute surface rationality remains separately \textsc{open}.\\
+
+\path{l24_diagonal_arithmetic.jsonl} &
+\path{l24_diagonal_arithmetic.py} &
+\textsc{proved}: the complete orientation-I valuation proof,
+orientation-II modulo-\(16\) proof, and genus-\(53\) \(z\)-slices.
+The union is empty and the diagonal route is CLOSED.\\
+
+\path{l24_diagonal_local.jsonl} &
+\path{l24_diagonal_local.py} &
+\textsc{proved}: orientation II is locally soluble at every odd target
+in the standard \(k=1\) stratum, while both orientations are globally
+superseded by the dyadic obstruction.\\
+
+\path{l24_diagonal_search.jsonl} &
+\path{l24_diagonal_search.py} &
+\textsc{proved}: exact replay of the imported dyadic certificate on each
+row.  \textsc{evidence}: \(4{,}026{,}282\) bounded attempts and zero
+rational hits; the no-hit total is not the uniform proof.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[p]
+\centering
+\scriptsize
+\caption{L25 data artifact, checked-in producer, and strict license.}
+\begin{tabular}{@{}p{.25\textwidth}p{.25\textwidth}p{.42\textwidth}@{}}
+\toprule
+Data artifact & Producer & License\\
+\midrule
+\path{l25_scaled_coupling.jsonl} &
+\path{l25_scaled_coupling.py} &
+\textsc{proved}: exact scaled eliminants; \((2X,\rho)\) is \(2\)-adically
+admissible exactly on even \(s\), and \((2X,\rho/2)\) exactly on odd
+\(s\); a symbolic unit-\(b\) target formula with \((\rho,X)\)-Jacobian \(-2400\) for all
+\(w\nmid2400\); guarded parity-wise real samples.  \textsc{open}: global
+rational points, aligned-target compatibility, and the target primes
+\(3,5\).  Bounded scans and searches are \textsc{evidence}.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[p]
+\centering
+\scriptsize
+\caption{L26--L27 data artifacts, producers, and strict licenses.}
+\begin{tabular}{@{}p{.25\textwidth}p{.25\textwidth}p{.42\textwidth}@{}}
+\toprule
+Data artifact & Producer & License\\
+\midrule
+\path{l26_reciprocal_tie.jsonl} &
+\path{l26_reciprocal_tie.py} &
+\textsc{proved}: reciprocal quartic-trace identity, dyadic square,
+guarded W1 target, and trace-character descent.  The degree-\(4\) field
+and bad-sign extension are conditional on irreducibility and
+nonsquareness.  One mod-\(37\) fibre is \textsc{evidence}.\\
+
+\path{l27_triangular_shear.jsonl} &
+\path{l27_triangular_shear.py} &
+\textsc{proved}: exact shear octic, one-piece dyadic Hensel theorem,
+all-odd-prime aligned-target theorem, and one guarded real sample.
+\textsc{open}: global rational point, member theorem, and five-count.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Reading rows without overclaiming}
 Metadata is a scope declaration, not a certificate by itself.  A
 \texttt{meta} row identifies the authority, coordinate convention, engine,
@@ -574,6 +741,99 @@ with an \textsc{open} uniform lemma and \textsc{evidence} scans.
 % src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
 % src: data/l22_square_branch.jsonl; data/l22_fiber_geometry.jsonl
 
+Run the L23 chain from the repository root, one process at a time:
+\begin{verbatim}
+nice -n 19 python3 math/h10q/l23_half_sieve.py
+nice -n 19 python3 math/h10q/l23_fibration.py
+nice -n 19 python3 math/h10q/l23_norm_section.py
+nice -n 19 python3 math/h10q/l23_rational_section.py
+nice -n 19 python3 math/h10q/l23_squareclass.py
+nice -n 19 python3 math/h10q/l23_multivar.py
+nice -n 19 python3 math/h10q/l23_absorption.py
+\end{verbatim}
+The output pairs are
+\begin{center}
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Data artifact & Human-readable report\\
+\midrule
+\path{data/l23_half_sieve.jsonl} & \path{/tmp/l23_half_sieve.md}\\
+\path{data/l23_fibration.jsonl} & \path{/tmp/l23_fibration.md}\\
+\path{data/l23_norm_section.jsonl} & \path{/tmp/l23_norm_section.md}\\
+\path{data/l23_rational_section.jsonl} & \path{/tmp/l23_rational_section.md}\\
+\path{data/l23_squareclass.jsonl} & \path{/tmp/l23_squareclass.md}\\
+\path{data/l23_multivar.jsonl} & \path{/tmp/l23_multivar.md}\\
+\path{data/l23_absorption.jsonl} & \path{/tmp/l23_absorption.md}\\
+\bottomrule
+\end{tabular}
+\end{center}
+Their strict boundary is not a chain from a sieve row to a full member:
+the small-prime lower bound is \textsc{proved}, the two-large-divisor
+sector is \textsc{open}, the exact norm and Capell no-gos are
+\textsc{proved}, and finite searches are at most \textsc{evidence}.
+% src: data/l23_half_sieve.jsonl; data/l23_fibration.jsonl
+% src: data/l23_norm_section.jsonl; data/l23_rational_section.jsonl
+% src: data/l23_squareclass.jsonl; data/l23_multivar.jsonl
+% src: data/l23_absorption.jsonl
+
+Run the L24 chain under the same one-process policy:
+\begin{verbatim}
+nice -n 19 python3 math/h10q/l24_diagonal_geometry.py
+nice -n 19 python3 math/h10q/l24_diagonal_arithmetic.py
+nice -n 19 python3 math/h10q/l24_diagonal_local.py
+nice -n 19 python3 math/h10q/l24_diagonal_search.py
+\end{verbatim}
+The output pairs are
+\begin{center}
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Data artifact & Human-readable report\\
+\midrule
+\path{data/l24_diagonal_geometry.jsonl} & \path{/tmp/l24_diagonal_geometry.md}\\
+\path{data/l24_diagonal_arithmetic.jsonl} & \path{/tmp/l24_diagonal_arithmetic.md}\\
+\path{data/l24_diagonal_local.jsonl} & \path{/tmp/l24_diagonal_local.md}\\
+\path{data/l24_diagonal_search.jsonl} & \path{/tmp/l24_diagonal_search.md}\\
+\bottomrule
+\end{tabular}
+\end{center}
+The geometry, arithmetic, and local files carry \textsc{proved} exact
+statements.  The search file replays those certificates, but its bounded
+zero-hit total remains \textsc{evidence}.  In particular the unscaled
+diagonal five-count is PROVED FALSE by the dyadic theorem, not left OPEN
+by the scan.
+% src: data/l24_diagonal_geometry.jsonl; data/l24_diagonal_arithmetic.jsonl
+% src: data/l24_diagonal_local.jsonl; data/l24_diagonal_search.jsonl
+
+Run the L25 scaled-coupling certificate:
+\begin{verbatim}
+nice -n 19 python3 math/h10q/l25_scaled_coupling.py
+\end{verbatim}
+It writes \path{data/l25_scaled_coupling.jsonl} and
+\path{/tmp/l25_scaled_coupling.md}.  The eliminants, parity classification,
+symbolic target formula, and named guarded real samples are
+\textsc{proved}; every complete small-prime residue scan and rational-point
+search is bounded \textsc{evidence}.  The artifact does not weaken L24 and
+does not improve the conditional count.
+% src: data/l25_scaled_coupling.jsonl
+
+Run the L26 and L27 producers:
+\begin{verbatim}
+nice -n 19 python3 math/h10q/l26_reciprocal_tie.py
+nice -n 19 python3 math/h10q/l27_triangular_shear.py
+\end{verbatim}
+They write the corresponding artifacts
+\begin{center}
+\path{data/l26_reciprocal_tie.jsonl}\\
+\path{data/l27_triangular_shear.jsonl}.
+\end{center}
+Matching reports are written under \path{/tmp}.  L26's one-fibre
+irreducibility row remains
+\textsc{evidence}; L27's \(43\) small-prime rows are a finite exhaustion
+used together with, not instead of, the displayed Weil bound.
+% src: data/l26_reciprocal_tie.jsonl; data/l27_triangular_shear.jsonl
+
 \section{Review-driven correction as methodology}
 
 The L17 cycle treated review objections as attacks on the estimand, not as
@@ -669,40 +929,93 @@ simultaneous prime values.  For every fixed $Z\in\Q^\times$, the canonical
 octic is irreducible and Hilbert selection produces an admissible $a$;
 classical Schinzel~H is still required for the resulting linear--octic
 pair.  The finite off-grid horizon proves neither Schinzel nor an
-unconditional all-cell member theorem.  The OPEN labels on the four
-alternate L22 routes are route-local and do not weaken the endpoint--Newton
-closure.
-% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
-% src: data/l20_admissible.jsonl; data/l19_cell179.jsonl
+unconditional all-cell member theorem.
+% src: data/l22_elimination.jsonl; data/l20_admissible.jsonl
+
+\item The L23 beta-sieve count is unconditional but stops at
+small-prime cleanliness.  Degree-eight values may retain \(16\) factors
+above \(X^{49/100}\), and reciprocity permits two or more bad factors.
+Neither the finite-window data nor the positive lower bound proves one
+fully emergent-free member.  The first missing estimate is the
+two-large-bad-divisor sector beyond Bombieri--Vinogradov.
+% src: data/l23_half_sieve.jsonl
+
+\item The L24 unscaled diagonal route is not an unresolved possible
+improvement.  It is PROVED FALSE on \(\Phi\): both unit orientations are
+empty over \(\Q_2\).  The separately OPEN absolute
+surface-classification question cannot restore a rational point to an
+empty local image, and the bounded search is not the proof.
+% src: data/l24_diagonal_geometry.jsonl; data/l24_diagonal_arithmetic.jsonl
+% src: data/l24_diagonal_search.jsonl
+
+\item L25 shows that this is not a universal coupled-formula wall.  The
+scaled type-I couplings are locally admissible on complementary
+\(s\)-parities, but global rational points, aligned-target compatibility,
+and the \(w=3,5\) analysis remain OPEN.  No member theorem or improved
+count follows.
+% src: data/l25_scaled_coupling.jsonl
+
+\item L26 changes the algebraic coordinates, not the theorem: its
+reciprocal octic has a quartic trace character and automatic dyadic
+splitting, but no uniform quartic squareclass or global member theorem.
+Its W1 statement retains every unit hypothesis.
+% src: data/l26_reciprocal_tie.jsonl
+
+\item L27 closes the displayed local coupling gaps on a new formula.
+One shear covers both dyadic parities and every standard aligned odd
+target, including \(3,5\), but no rational point on its global octic is
+known.  No member theorem or improved count follows.
+% src: data/l27_triangular_shear.jsonl
 \end{enumerate}
 
 \section{Conclusion}
 
-The L22 artifacts change the verification boundary exactly once:
-irreducibility is now PROVED on the fixed canonical branch for every
-rational $Z\ne0$, rather than only generically and on a finite fiber
-ledger.  Quantitative Hilbert irreducibility selects a good $a$ in the
+L22 proves irreducibility on the fixed canonical branch for every rational
+$Z\ne0$.  Quantitative Hilbert irreducibility selects a good $a$ in the
 existing character progression, so every L20 admissibility condition is
 PROVED.
-% src: data/l22_elimination.jsonl (fixed-Z-theorem row)
-% src: data/l20_admissible.jsonl
+% src: data/l22_elimination.jsonl; data/l20_admissible.jsonl
 
-The remaining implication is precise.  The L20 class feeds the L19
-linear--octic pair; classical Schinzel~H supplies simultaneous prime values;
-reciprocity gives an emergent-free member; and L6 gives a
+L23 changes the unconditional boundary, not the theorem.  The
+half-dimensional sieve gives
+\(\gg X/(\log X)^{3/2}\) small-prime-clean progression members, but its
+exact parity audit leaves \(0,2,\ldots,16\) possible large bad factors.
+The conic-bundle model has non-split rank \(10\) and Brauer quotient
+\(\Z/2\), while the audited norm, Capell, fixed-twist, and factor-section
+escapes either fail on \(\Phi\) or reduce to the named higher-genus and
+character obligations.
+% src: data/l23_half_sieve.jsonl; data/l23_fibration.jsonl
+% src: data/l23_norm_section.jsonl; data/l23_rational_section.jsonl
+
+L24 closes the unscaled diagonal proposal negatively.  Both exact
+degree-eight unit orientations are \(\Phi\)-empty over \(\Q_2\); the
+formal at-most-five rank count for that proposal is therefore vacuous.
+L25 proves that fixed scaling removes the universal dyadic wall, but
+leaves parity and aligned-target issues in those formulas.  L26 gives a
+different reciprocal tie with a quartic trace character and automatic
+dyadic splitting.  L27 gives a single shear which covers both dyadic
+parities, every aligned odd target, and one guarded real stratum.  The
+L26 member problem and L27 global rational-point problem remain OPEN;
+no count improvement is claimed.
+% src: data/l24_diagonal_arithmetic.jsonl; data/l25_scaled_coupling.jsonl
+% src: data/l26_reciprocal_tie.jsonl; data/l27_triangular_shear.jsonl
+
+The established implication is unchanged: the L20 class feeds the L19
+linear--octic pair; classical Schinzel~H supplies simultaneous prime
+values; reciprocity gives an emergent-free member; and L6 gives a
 six-universal-quantifier definition of $\Z$ in $\Q$ with
-$\operatorname{efd}_{\Q}(\Q\setminus\Z)\le5$.  Schinzel~H is the sole
-conjectural input.  The result is conditional and does not solve H10($\Q$)
-unconditionally.
+$\operatorname{efd}_{\Q}(\Q\setminus\Z)\le5$.  Schinzel~H remains the
+sole conjectural input.  The result is conditional and does not solve
+H10($\Q$) unconditionally.
 % src: data/l18_schinzel_implies_h.jsonl; data/l22_elimination.jsonl
 
-The reproducibility claim is narrow and checkable: all six L22 generators
-rebuild their named artifacts, SHA-256 manifests detect drift, and strict
-labels keep finite EVIDENCE and alternate-route OPEN statements out of the
-PROVED closure.  No new unconditional quantifier record is claimed.
-% src: data/l22_elimination.jsonl; data/l22_reciprocal_cube.jsonl
-% src: data/l22_infinity.jsonl; data/l22_factor_tuple.jsonl
-% src: data/l22_square_branch.jsonl; data/l22_fiber_geometry.jsonl
+The exact next frontier is the L26 quartic trace squareclass/member
+problem, a target-specific rational point on the L27 global octic, or a
+parity-sensitive two-large-divisor estimate for the original
+linear--octic sequence.  All \(20\) L22--L27 generators rebuild their
+named artifacts; SHA-256 manifests detect drift, and strict labels keep
+finite EVIDENCE and route-local OPEN statements out of the PROVED
+closure.  No new unconditional quantifier record is claimed.
 
 \begin{thebibliography}{9}
 

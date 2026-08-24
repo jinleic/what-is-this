@@ -1,0 +1,438 @@
+{
+  "bounded_elementary_edges": 51,
+  "bounded_faces": 30,
+  "claimed_lhs_3F": 90,
+  "claimed_rhs": 89,
+  "engine_verify_selection": "ok",
+  "face_edges_used_once": 12,
+  "face_edges_used_twice": 39,
+  "face_predicates": {
+    "direct_gap_count": 30,
+    "sets_equal": true,
+    "strict_straddle_count": 30
+  },
+  "finite_vertex_multiplicities": {
+    "2": 6,
+    "3": 15,
+    "6": 1
+  },
+  "linear_defect_sum": 19,
+  "lines_y_equals_mx_plus_b": [
+    [
+      "608/561",
+      "38/33"
+    ],
+    [
+      "247/51",
+      "-19/12"
+    ],
+    [
+      "2622/731",
+      "-38/43"
+    ],
+    [
+      "684/85",
+      "-38/5"
+    ],
+    [
+      "475/221",
+      "19/26"
+    ],
+    [
+      "2546/1207",
+      "38/71"
+    ],
+    [
+      "3",
+      "0"
+    ],
+    [
+      "8/3",
+      "0"
+    ],
+    [
+      "2",
+      "0"
+    ],
+    [
+      "14/5",
+      "0"
+    ],
+    [
+      "5/2",
+      "0"
+    ],
+    [
+      "4",
+      "0"
+    ]
+  ],
+  "multipoint_counts": {
+    "3": 15,
+    "6": 1
+  },
+  "multipoint_sector_census": [
+    {
+      "incident_shared_edges": 1,
+      "local_defect_4_minus_z_minus_r": -1,
+      "multiplicity": 3,
+      "nontriangular_sectors": 4,
+      "point": [
+        "-323/66",
+        "-323/33"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 2
+    },
+    {
+      "incident_shared_edges": 6,
+      "local_defect_4_minus_z_minus_r": -2,
+      "multiplicity": 6,
+      "nontriangular_sectors": 5,
+      "point": [
+        "0",
+        "0"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 7
+    },
+    {
+      "incident_shared_edges": 3,
+      "local_defect_4_minus_z_minus_r": 1,
+      "multiplicity": 3,
+      "nontriangular_sectors": 2,
+      "point": [
+        "323/818",
+        "646/409"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 4
+    },
+    {
+      "incident_shared_edges": 3,
+      "local_defect_4_minus_z_minus_r": 1,
+      "multiplicity": 3,
+      "nontriangular_sectors": 2,
+      "point": [
+        "323/580",
+        "323/290"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 4
+    },
+    {
+      "incident_shared_edges": 6,
+      "local_defect_4_minus_z_minus_r": 4,
+      "multiplicity": 3,
+      "nontriangular_sectors": 0,
+      "point": [
+        "646/1075",
+        "1938/1075"
+      ],
+      "triangular_sector_runs": 0,
+      "triangular_sectors": 6
+    },
+    {
+      "incident_shared_edges": 6,
+      "local_defect_4_minus_z_minus_r": 4,
+      "multiplicity": 3,
+      "nontriangular_sectors": 0,
+      "point": [
+        "323/444",
+        "646/333"
+      ],
+      "triangular_sector_runs": 0,
+      "triangular_sectors": 6
+    },
+    {
+      "incident_shared_edges": 6,
+      "local_defect_4_minus_z_minus_r": 4,
+      "multiplicity": 3,
+      "nontriangular_sectors": 0,
+      "point": [
+        "1615/2084",
+        "2261/1042"
+      ],
+      "triangular_sector_runs": 0,
+      "triangular_sectors": 6
+    },
+    {
+      "incident_shared_edges": 6,
+      "local_defect_4_minus_z_minus_r": 4,
+      "multiplicity": 3,
+      "nontriangular_sectors": 0,
+      "point": [
+        "1292/1589",
+        "3230/1589"
+      ],
+      "triangular_sector_runs": 0,
+      "triangular_sectors": 6
+    },
+    {
+      "incident_shared_edges": 6,
+      "local_defect_4_minus_z_minus_r": 4,
+      "multiplicity": 3,
+      "nontriangular_sectors": 0,
+      "point": [
+        "323/376",
+        "969/376"
+      ],
+      "triangular_sector_runs": 0,
+      "triangular_sectors": 6
+    },
+    {
+      "incident_shared_edges": 6,
+      "local_defect_4_minus_z_minus_r": 4,
+      "multiplicity": 3,
+      "nontriangular_sectors": 0,
+      "point": [
+        "969/1009",
+        "2584/1009"
+      ],
+      "triangular_sector_runs": 0,
+      "triangular_sectors": 6
+    },
+    {
+      "incident_shared_edges": 6,
+      "local_defect_4_minus_z_minus_r": 4,
+      "multiplicity": 3,
+      "nontriangular_sectors": 0,
+      "point": [
+        "1615/1438",
+        "2261/719"
+      ],
+      "triangular_sector_runs": 0,
+      "triangular_sectors": 6
+    },
+    {
+      "incident_shared_edges": 1,
+      "local_defect_4_minus_z_minus_r": -1,
+      "multiplicity": 3,
+      "nontriangular_sectors": 4,
+      "point": [
+        "323/257",
+        "646/257"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 2
+    },
+    {
+      "incident_shared_edges": 3,
+      "local_defect_4_minus_z_minus_r": 1,
+      "multiplicity": 3,
+      "nontriangular_sectors": 2,
+      "point": [
+        "1292/943",
+        "3230/943"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 4
+    },
+    {
+      "incident_shared_edges": 3,
+      "local_defect_4_minus_z_minus_r": 1,
+      "multiplicity": 3,
+      "nontriangular_sectors": 2,
+      "point": [
+        "969/686",
+        "1292/343"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 4
+    },
+    {
+      "incident_shared_edges": 2,
+      "local_defect_4_minus_z_minus_r": 0,
+      "multiplicity": 3,
+      "nontriangular_sectors": 3,
+      "point": [
+        "646/429",
+        "646/143"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 3
+    },
+    {
+      "incident_shared_edges": 1,
+      "local_defect_4_minus_z_minus_r": -1,
+      "multiplicity": 3,
+      "nontriangular_sectors": 4,
+      "point": [
+        "323/172",
+        "323/43"
+      ],
+      "triangular_sector_runs": 1,
+      "triangular_sectors": 2
+    }
+  ],
+  "n": 12,
+  "parallel_pairs": 0,
+  "regular_polygon_sides": 6,
+  "sector_defect_sum": 27,
+  "sector_excess_identity_rhs": 1,
+  "shared_edges_with_two_multipoint_endpoints": 26,
+  "shared_minus_unused": 39,
+  "source_arrangement": "A(12,1): regular-hexagon sides and symmetry axes",
+  "square_penalty": 31,
+  "status": "VERIFIED_COUNTEREXAMPLE",
+  "symmetry_axis_types": {
+    "opposite_edge_midpoint_axes": 3,
+    "opposite_vertex_axes": 3
+  },
+  "triangular_face_triples": [
+    [
+      0,
+      1,
+      9
+    ],
+    [
+      0,
+      1,
+      10
+    ],
+    [
+      0,
+      2,
+      7
+    ],
+    [
+      0,
+      2,
+      8
+    ],
+    [
+      0,
+      3,
+      10
+    ],
+    [
+      0,
+      4,
+      6
+    ],
+    [
+      0,
+      5,
+      9
+    ],
+    [
+      0,
+      5,
+      11
+    ],
+    [
+      0,
+      6,
+      9
+    ],
+    [
+      0,
+      7,
+      9
+    ],
+    [
+      1,
+      2,
+      10
+    ],
+    [
+      1,
+      3,
+      6
+    ],
+    [
+      1,
+      4,
+      9
+    ],
+    [
+      1,
+      4,
+      11
+    ],
+    [
+      1,
+      5,
+      6
+    ],
+    [
+      1,
+      5,
+      7
+    ],
+    [
+      1,
+      7,
+      10
+    ],
+    [
+      1,
+      8,
+      10
+    ],
+    [
+      2,
+      3,
+      9
+    ],
+    [
+      2,
+      4,
+      6
+    ],
+    [
+      2,
+      4,
+      7
+    ],
+    [
+      2,
+      5,
+      9
+    ],
+    [
+      2,
+      5,
+      10
+    ],
+    [
+      2,
+      8,
+      11
+    ],
+    [
+      3,
+      4,
+      9
+    ],
+    [
+      3,
+      4,
+      10
+    ],
+    [
+      3,
+      5,
+      7
+    ],
+    [
+      4,
+      5,
+      11
+    ],
+    [
+      5,
+      6,
+      11
+    ],
+    [
+      5,
+      8,
+      11
+    ]
+  ],
+  "triangular_faces": 30,
+  "twice_linear_defect": 38,
+  "unused_bounded_edges": 0,
+  "violation_margin": 1
+}

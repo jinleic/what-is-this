@@ -16,6 +16,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{booktabs}
+\usepackage{longtable}
 \usepackage[margin=1in]{geometry}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
@@ -869,12 +870,13 @@ printed $k$ on $25$; two transcribed Wang--Mueller App.~C rows, $(5,9)$ and
 $(7,11)$, give internal $k=0$ against printed $4$ and $6$, and are excluded.
 All 25 reproduced rows satisfy ``pole ceiling $\ge$ reported $d$'', but that is
 only a sanity check: Wang--Mueller uses BP-OSD \texttt{distance\_upperbound} and
-Postema--Kokkelmans labels table values Monte-Carlo estimates. Five rows are
+Postema--Kokkelmans labels table values Monte-Carlo estimates. Six rows are
 independently exact-certified here (Bravyi $[[90,8,10]]$, three small Postema
-rows, and Wang--Mueller's $[[126,12,10]]$ exactified by EXP-055): zero
-violations, slack min/median/max $2/10/22$. The screen uses
-only independent two-sided certificates as domination thresholds; no estimate
-or un-replayed source value can reject a candidate.
+rows, Wang--Mueller's $[[126,12,10]]$ exactified by EXP-055, and its
+$[[162,8,14]]$ exactified by EXP-056): zero violations, slack min/median/max
+$2/20/22$. The screen uses only independent two-sided certificates as
+domination thresholds; no estimate or un-replayed source value can reject a
+candidate.
 
 \paragraph{Exhaustive census.} Over all $65$ odd lattices with $\ell m\le180$
 ($n\le360$) we enumerated every weight-$\le3$ pair --- $4.23\times10^{9}$ pairs
@@ -903,22 +905,38 @@ $[[54,8,6]]$ and $[[126,12,10]]$ results exactify Wang--Mueller BP-OSD
 parameters (the latter costs 306s). All three become hash-bound local
 references for the fixed-point screen.
 
-\paragraph{Fixed-point Pareto screen (complete through $n=126$).} Promoting
-the three exact discoveries into the hash-bound reference set and rerunning all
-weight-3 pairs on all nine odd lattices with $n\le126$, $8\le k\le24$, leaves
-$715$ symmetry classes representing $10{,}247$ translation-normalised pairs.
-Of these, $598$ have an admissible independently exact reference: all $598$ are
-dominated ($588$ by explicit logical witnesses verified in
-$\ker H_X\setminus S_Z$, $10$ by all-sector CP-SAT). The other $117$ high-$k$
-classes have no certified reference and are labelled \texttt{no\_reference},
-not dominated. There are zero survivors and zero undecided among referenced
-classes. Every shard is bound to the census hash, reference-set hash and
-protocol.
+\paragraph{Orbit-class exactification at $n=162$ (EXP-056).}
+For the Wang--Mueller $(3,27)$ code
+$A=1+y^{10}+y^{14}$, $B=y^{12}+x+x^2$, the $255$ nonzero logical
+classes form $20$ orbits under the verified order-$162$
+translation/reflection group. Each representative is encoded as an affine
+coset of the 77-dimensional $Z$-stabilizer rowspace. Every $H_X$ column has
+odd degree three, so all kernel words have even weight and excluding weight
+$\le12$ also excludes weight 13. Kissat proves all 20 class CNFs UNSAT and
+repeats all 20 on fresh digest-bound replay; an explicit weight-14 word passes
+independent NumPy and bitset checks. The exact BB duality permutation gives
+$d_X=d_Z=14$, promoting the source BP-OSD estimate to a local two-sided
+certificate. Generic fixed-functional sectors do not inherit the monolithic
+origin anchor; a synthetic counterexample caught and repaired that latent
+alternative-mode bug (FR-027).
+
+\paragraph{Fixed-point Pareto screen (complete through $n=162$).} Promoting
+the three discoveries and the EXP-056 exactification into the hash-bound
+reference set and rerunning every weight-3 pair on all 13 odd lattices with a
+nonempty frontier through $n=162$, $8\le k\le24$, leaves $2{,}132$ symmetry
+classes representing $51{,}769$ translation-normalised pairs. Of these,
+$1{,}928$ have an admissible independently exact reference: all are dominated
+($1{,}804$ by reduced-pole logical witnesses, $119$ by bounded CDCL witnesses,
+and five by the exact CP-SAT fallback). All $1{,}923$ persisted witnesses are
+checked in $\ker H_X\setminus S_Z$. The other $204$ high-$k$ classes have no
+certified reference and are labelled \texttt{no\_reference}, not dominated.
+There are zero survivors and zero undecided among referenced classes. Every
+shard is bound to the census hash, certificate-hashed reference set,
+pure-validator version and decision protocol.
 
 Scope is load-bearing: the algebraic $k$ census covers all $65$ odd lattices
-through $n=360$, but the exact Pareto screen stops at $n=126$. A direct attempt
-to exactify the next reported $[[162,8,14]]$ reference did not complete within
-$2{,}100$\,s; no $n>126$ distance-closure claim is made.
+through $n=360$, but the exact Pareto screen stops at $n=162$. No $n>162$
+distance-closure claim is made.
 
 \section{The exact trade law, its residual, and remaining conjectures}\label{sec:conjectures}
 
@@ -991,14 +1009,14 @@ beaten this way}: \S\ref{sec:settle}'s domination table says no for all seven kn
 Environment: macOS Darwin $25.5.0$ arm64, Apple M3 Ultra, $28$ logical CPUs, $96$ GiB;
 Python $3.13.9$ in \texttt{.venv}; \texttt{numpy 2.4.6}, \texttt{scipy 1.18.0},
 \texttt{stim 1.16.0}, \texttt{pymatching 2.4.0}, \texttt{sinter 1.16.0}, \texttt{ldpc 2.4.1},
-\texttt{galois 0.4.11}, \texttt{ortools 9.15.6755}, \texttt{python-sat 1.9.dev13}; solver CaDiCaL
-$1.9.5$ via PySAT. Full suite: $961$ passing tests, $1$ skipped ($962$ collected).
+\texttt{galois 0.4.11}, \texttt{ortools 9.15.6755}, \texttt{python-sat 1.9.dev13};
+solvers CaDiCaL $1.9.5$ and Kissat $4.0.4$ via PySAT. Full suite: $972$
+passing tests, $1$ skipped ($973$ collected).
 
-\begin{table}[ht]
-\centering
+\begingroup
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.46\textwidth}l}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.46\textwidth}l}
 \toprule
 claim & artifact & experiment \\
 \midrule
@@ -1052,13 +1070,11 @@ Weight-$\le3$ mixed census: $653{,}022{,}021$ pairs over $18$ lattices, zero mix
 \path{results/processed/exp054_mixed_census.json} & EXP-054 \\
 Odd-lattice census: $65$ lattices, $4{,}229{,}823{,}962$ pairs, zero $k$ mismatches &
 \path{results/processed/exp055_odd_lattice_sweep.json} & EXP-055 \\
-Pole isomorphism $27/27$; five local exact ceiling checks &
-\path{results/processed/exp055_literature_validation.json} & EXP-055 \\
-Fixed-point $n\le126$: $715$ classes, $598/598$ referenced dominated, $117$ no-reference, no survivor/undecided; three exact references &
-\path{results/processed/exp055_odd_lattice_screen.json}, \path{results/certificates/exp055_discovered_references.json} & EXP-055 \\
+Odd-lattice exact closure: pole $27/27$; exact $\nk{162,8,14}$ ($20/20$ replayed class orbits); fixed-point $n\le162$ has $1{,}928/1{,}928$ referenced dominated, no survivor &
+\path{results/certificates/exp056_wm_162_8_14_distance.json}, \path{results/processed/exp055_odd_lattice_screen.json} & EXP-055/056 \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{longtable}
+\endgroup
 
 Every SAT decision records its canonical CNF SHA-256 and encoding version; verdicts are
 re-derived from rebuilt matrices on replay, and stamps that fail to hash-bind are
@@ -1073,11 +1089,22 @@ arithmetically or under replay.
 cd math/qec
 PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py run --ns 144
 PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py gate
-PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py run --max-dim 180 --workers 24 --force
-PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py literature
-PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py screen --lattices 3x3,5x3,7x3,9x3,9x5,15x3,7x7,9x7,21x3 --workers 9 --time-limit 90 --force
-PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py screen-certify
-PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_nogo.py tests/test_pbb_survival.py -q
+PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py run \
+  --max-dim 180 --workers 24 --force
+PYTHONPATH=src .venv/bin/python experiments/exp056_odd_distance.py \
+  run-classes --indexes all --force
+PYTHONPATH=src .venv/bin/python experiments/exp056_odd_distance.py \
+  run-classes --indexes all --replay
+PYTHONPATH=src .venv/bin/python experiments/exp056_odd_distance.py assemble
+PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py \
+  literature
+PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py screen \
+  --lattices 3x3,5x3,7x3,9x3,9x5,15x3,7x7,21x3,9x7,15x5,25x3,9x9,27x3 \
+  --workers 8 --time-limit 120 --force
+PYTHONPATH=src .venv/bin/python experiments/exp055_odd_lattice_sweep.py \
+  screen-certify
+PYTHONPATH=src .venv/bin/python -m pytest \
+  tests/test_exp055_odd_lattice.py tests/test_exp056_odd_distance.py -q
 \end{verbatim}
 }
 

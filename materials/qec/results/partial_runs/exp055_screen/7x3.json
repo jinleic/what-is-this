@@ -223,14 +223,17 @@
  ],
  "orbit_total": 10,
  "protocol": {
+  "cdcl_conflict_budget": 1000000,
+  "cdcl_solver": "cadical195",
   "census_sha256": "c6733189b9e5a533daca6b0743ac54e222194509fa9e45c729a9524c34b6b1d5",
   "k_range": [
    8,
    24
   ],
-  "reference_sha256": "e971c84c27da29dfd95bc39794bf1978276197a2e492b30358ddcbf9cfc3628a",
+  "reference_sha256": "86e49b6e239cc5f8460723bb8cf5ae35ededffc7215e42992f9973c6983481a3",
+  "reference_validation_version": "exp055-exact-reference-validator-v7",
   "residual_workers": 8,
-  "time_limit_s": 90.0,
+  "time_limit_s": 120.0,
   "witness_keep": 64,
   "witness_tries": 8
  },
@@ -448,14 +451,28 @@
    "wall_s": 0.0
   }
  ],
+ "reference_rebind": {
+  "all_carried_witnesses_rechecked": true,
+  "all_thresholds_monotone": true,
+  "archive": "results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v7/7x3.json",
+  "new_reference_sha256": "86e49b6e239cc5f8460723bb8cf5ae35ededffc7215e42992f9973c6983481a3",
+  "new_validation_version": "exp055-exact-reference-validator-v7",
+  "old_reference_sha256": "10fa66c7ed5280eb64463177c888fa4d242f82573cdcec6d7043b3277e7cacfa",
+  "old_shard_sha256": "58bc58daad3963112fa5c563d95fe7699c1e906a7fa99d7fa30a0eccbe5bdcb9",
+  "old_validation_version": "exp055-exact-reference-validator-v6",
+  "schema": "exp063-monotone-reference-rebind-v1",
+  "transitions": {
+   "no_reference->no_reference": 4
+  }
+ },
  "schema": "exp055-screen-v3",
  "solver_calls": 0,
  "survivors": [],
- "time_limit_s": 90.0,
+ "time_limit_s": 120.0,
  "undecided": [],
- "utc": "2026-08-22T12:35:23Z",
+ "utc": "2026-08-23T16:11:42Z",
  "verdicts": {
   "no_reference": 4
  },
- "wall_s": 0.1
+ "wall_s": 3.1
 }

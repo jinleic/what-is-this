@@ -1325,7 +1325,7 @@ def _evidence_export_lines():
 
 
 def _verify_L6(extended=False):
-    """Verify L6's proved pieces and bounded evidence for the open assembly lemma.
+    """Verify L6's proved pieces and bounded evidence for the assembly lemma.
 
     Proved: the tied block is a restriction of Psi; W0 selects one of its two
     formula branches at every odd target, W1 gives the exact target-place
@@ -1489,8 +1489,8 @@ def _verify_L6(extended=False):
     assert (t0, len(_L6_WITNESSES) - t0) == (32, 29)
     print(f"  (EV) evidence export byte-identical to authority serialization:"
           f" {len(_L6_WITNESSES)} rows, {t0} tau=0 / {len(_L6_WITNESSES) - t0} tau=2a/A")
-    print("  -> L6 count = 6 conditional on OPEN global assembly; W0-W2 proved,"
-          " E6 is bounded evidence only\n")
+    print("  -> L6 count = 6; W0-W2 proved and E6 bounded evidence only."
+          " Global completeness is CONDITIONAL on classical Schinzel H via L19-L22\n")
 
 _L7_RESCUES = {
     # (w, u): (s, b, tau).  A Phi-witness (2-adic conditions only: v2(s) >= 0,
@@ -1699,14 +1699,14 @@ def _verify_L7(extended=False):
           f" {nres} frozen rescue spot-checks re-verified ({ncert} canonical"
           f" failures Hasse-certified, rest budget-refused; all 5 probed pairs"
           f" certifiably miss cells)")
-    print("  -> corollaries + bounded probe only; the assembly lemma itself"
-          " remains OPEN (status and count unchanged)\n")
+    print("  -> L7 corollaries + bounded probe only. Unconditional assembly stays"
+          " open; the Schinzel-conditional chain is closed later by L22\n")
 
 
 def _verify_L8(extended=False):
     """L8 (THEOREMS.md): absorption sharpening, the 2-adic parity wall, and
     exact-matching emptiness (unconditional), plus scoped alignment evidence.
-    Structure results about the OPEN assembly lemma; no status/count changes.
+    Structure results only; the Schinzel-conditional chain closes later at L22.
 
     (0) Value identities: u0 = -M0, u1 = -A*M1, (A b^2 D_z)^2 u_tau =
         X^2 - D_tau Y^2, and D_tau*disc(E_tau) = -2AbP in both branches,
@@ -1847,8 +1847,8 @@ def _verify_L8(extended=False):
     print(f"  (L8d) alignment: {nal}/{len(_L7_RESCUES)} rescues have wild"
           " odd-mult primes > 10^5, all symbols +1 (deterministic"
           " factorizations, none refused)")
-    print("  -> structure results only; the assembly lemma itself remains OPEN"
-          " (status and count unchanged)\n")
+    print("  -> L8 structure results only. Unconditional assembly stays open;"
+          " the Schinzel-conditional chain is closed later by L22\n")
 
 # --------------------------------------------------- L9: reciprocity steering
 # Shared certificate machinery for the steered assembly probe (l9_steer.py
@@ -2530,8 +2530,8 @@ def _verify_L9(extended=False):
           f" {len(ws)} targets w; mechanisms {mechs}; largest forced wild"
           f" prime ~ 10^{len(str(maxwild)) - 1}; export byte-identical")
     print("  -> steering converts wild-prime luck into reciprocity; coverage"
-          " is bounded evidence ONLY: the assembly lemma remains OPEN"
-          " (status and count unchanged)\n")
+          " is bounded evidence ONLY. Unconditional assembly stays open;"
+          " the Schinzel-conditional chain is closed later by L22\n")
 
 
 
@@ -2874,8 +2874,8 @@ def _verify_L10(extended=False):
           " the retired shape are frozen as regressions and stay refused, each"
           " for the proved reason; L11h carries the corrected 190-cell table")
     print("  -> class side splits by branch: PROVED reachable on tau = 2a/A,"
-          " PROVED unreachable on tau = 0 for prime A (evidence otherwise);"
-          " assembly still OPEN (status and count unchanged)")
+          " PROVED unreachable on tau = 0 for prime A (evidence otherwise)."
+          " This layer is structural; the Schinzel-conditional chain closes at L22")
 
 # ---------------------------------------------------------------- L11:
 # branch completion.  See THEOREMS.md L11.
@@ -3365,7 +3365,7 @@ def _verify_L11(extended=False):
           " larger primes in class")
     print("  -> branch completion is free but does NOT move the class wall;"
           " step (i) holds at 190 cells and is IMPOSSIBLE at 163 for this"
-          " family (assembly still OPEN, status and count unchanged)")
+          " family. L20/L22 later replace this restricted family uniformly")
 
 
 # ---------------------------------------------------------------- L12:
@@ -3606,8 +3606,8 @@ def _verify_L12(extended=False):
           " symbol +1 with b = eps*f*q, f | z -- base point only; class"
           " constancy is NOT sampled here (conservative moduli ~1e13)")
     print("  -> the coprime-b family is dead on every branch; the only door is"
-          " b sharing a prime with the cell data (assembly still OPEN, status"
-          " and count unchanged)")
+          " b sharing a prime with the cell data. L20/L22 later close the"
+          " class/algebraic sides; member existence remains Schinzel-conditional")
 
 
 # ---------------------------------------------------------------- L13:
@@ -4307,8 +4307,8 @@ def _verify_L13(extended=False):
           f" valuation) and odd places of b = -1 on {nw2} instances across"
           " all four branches (L11h necessity now covers composite A too)")
     print(f"  -> witness coverage 353/353 (GRID COMPLETE 2026-08-18); class"
-          " side fully mapped; the L6 assembly hypothesis H remains OPEN,"
-          " status and count unchanged")
+          " side fully mapped. The all-cell member theorem is now CONDITIONAL"
+          " on classical Schinzel H via L19-L22")
 
 
 def _verify_L14(extended=False):
@@ -4367,10 +4367,10 @@ def _verify_L14(extended=False):
           f" {n_ram_ok}, {n_ram_ref} FactorBudget/PrimalityBound refusals"
           f" (logged, never evidence) ({time.time()-t0:.0f}s)")
     if extended:
-        print(f"  -> HYPOTHESIS H verified instance-wise on the whole"
+        print(f"  -> intermediate H verified instance-wise on the whole"
               f" 353-cell grid: all 293 aligned classes carry a certified"
-              f" emergent-free member; what remains is the general (all-w)"
-              f" analytic statement of H")
+              f" emergent-free member. Uniformly, L19-L22 derive H from"
+              f" classical Schinzel H")
 
 
 def _demo():
@@ -4497,9 +4497,9 @@ if __name__ == "__main__":
     print("== L5: Lemma 5.1 count = #E_Legendre/4 -> '|k| > 25' is void ==")
     _lemma51_identity(250 if extended else 49)
     print()
-    print("== L6: witness tie a = 1 + 2s (count 6 conditional on open assembly) ==")
+    print("== L6: witness tie a = 1 + 2s (six-count; completeness Schinzel-conditional) ==")
     _verify_L6(extended=extended)
-    print("== L7: structural corollaries + bounded probe (assembly stays open) ==")
+    print("== L7: structural corollaries + bounded probe (unconditional assembly open) ==")
     _verify_L7(extended=extended)
     print("== L8: absorption + 2-adic parity wall + alignment localization ==")
     _verify_L8(extended=extended)

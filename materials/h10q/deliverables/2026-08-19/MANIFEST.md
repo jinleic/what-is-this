@@ -47,7 +47,7 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `artifacts/l19_cell179.jsonl` | repo-regenerable | 12013190 |
 | `artifacts/l19_classexist.jsonl` | repo-regenerable | 405756 |
 | `artifacts/l19_tauzero.jsonl` | repo-regenerable | 568166 |
-| `artifacts/l20_admissible.jsonl` | repo-regenerable | 808659 |
+| `artifacts/l20_admissible.jsonl` | repo-regenerable | 808945 |
 | `artifacts/l21_irred_direct.jsonl` | repo-regenerable | 643542 |
 | `artifacts/l21_irred_generic.jsonl` | repo-regenerable | 1818481 |
 | `artifacts/l21_reducible_locus.jsonl` | repo-regenerable | 19466 |
@@ -57,27 +57,41 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `artifacts/l22_infinity.jsonl` | repo-regenerable | 4870 |
 | `artifacts/l22_reciprocal_cube.jsonl` | repo-regenerable | 17615 |
 | `artifacts/l22_square_branch.jsonl` | repo-regenerable | 19003 |
+| `artifacts/l23_absorption.jsonl` | repo-regenerable | 23031 |
+| `artifacts/l23_fibration.jsonl` | repo-regenerable | 106217 |
+| `artifacts/l23_half_sieve.jsonl` | repo-regenerable | 304817 |
+| `artifacts/l23_multivar.jsonl` | repo-regenerable | 11028 |
+| `artifacts/l23_norm_section.jsonl` | repo-regenerable | 24087 |
+| `artifacts/l23_rational_section.jsonl` | repo-regenerable | 10134 |
+| `artifacts/l23_squareclass.jsonl` | repo-regenerable | 5138 |
+| `artifacts/l24_diagonal_arithmetic.jsonl` | repo-regenerable | 14799 |
+| `artifacts/l24_diagonal_geometry.jsonl` | repo-regenerable | 14222 |
+| `artifacts/l24_diagonal_local.jsonl` | repo-regenerable | 16537 |
+| `artifacts/l24_diagonal_search.jsonl` | repo-regenerable | 1109849 |
+| `artifacts/l25_scaled_coupling.jsonl` | repo-regenerable | 2615 |
+| `artifacts/l26_reciprocal_tie.jsonl` | repo-regenerable | 2483 |
+| `artifacts/l27_triangular_shear.jsonl` | repo-regenerable | 6806 |
 | `artifacts/l6_witnesses.jsonl` | frozen authority (suite-asserted) | 3785 |
 | `artifacts/l9_steered.jsonl` | frozen authority (suite-asserted) | 23025 |
 | `artifacts/litscout_h10q.md` | persisted evidence (no checked-in producer) | 8438 |
-| `ledger/CONDITIONAL.md` | project ledger | 19600 |
-| `ledger/NOTES.md` | project ledger | 73220 |
-| `ledger/README.md` | project ledger | 27786 |
-| `ledger/RESULTS.md` | project ledger | 50612 |
-| `ledger/THEOREMS.md` | project ledger | 140675 |
-| `papers/companion-verification.tex` | paper draft | 35144 |
-| `papers/main-conditional-forall6.tex` | paper draft | 9462 |
+| `ledger/CONDITIONAL.md` | project ledger | 24266 |
+| `ledger/NOTES.md` | project ledger | 87781 |
+| `ledger/README.md` | project ledger | 39707 |
+| `ledger/RESULTS.md` | project ledger | 61119 |
+| `ledger/THEOREMS.md` | project ledger | 180017 |
+| `papers/companion-verification.tex` | paper draft | 49135 |
+| `papers/main-conditional-forall6.tex` | paper draft | 13618 |
 | `papers/sections/architecture.tex` | paper draft | 10004 |
 | `papers/sections/classes.tex` | paper draft | 8324 |
-| `papers/sections/existence.tex` | paper draft | 6483 |
-| `papers/sections/frontier.tex` | paper draft | 9171 |
+| `papers/sections/existence.tex` | paper draft | 6497 |
+| `papers/sections/frontier.tex` | paper draft | 22687 |
 | `papers/sections/intro.tex` | paper draft | 9570 |
 | `papers/sections/irreducibility.tex` | paper draft | 14175 |
 | `papers/sections/record.tex` | paper draft | 11208 |
 | `papers/sections/schinzel.tex` | paper draft | 8203 |
 | `papers/sections/sieve.tex` | paper draft | 8499 |
 | `papers/sections/walls.tex` | paper draft | 10010 |
-| `scripts/h10q.py` | generator/replay script | 198192 |
+| `scripts/h10q.py` | generator/replay script | 198398 |
 | `scripts/l12_class.py` | generator/replay script | 16371 |
 | `scripts/l13_filter.py` | generator/replay script | 40427 |
 | `scripts/l13h_scan.py` | generator/replay script | 6566 |
@@ -107,7 +121,7 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `scripts/l19_cell179.py` | generator/replay script | 41306 |
 | `scripts/l19_classexist.py` | generator/replay script | 39638 |
 | `scripts/l19_tauzero.py` | generator/replay script | 38085 |
-| `scripts/l20_admissible.py` | generator/replay script | 40213 |
+| `scripts/l20_admissible.py` | generator/replay script | 40702 |
 | `scripts/l21_irred_direct.py` | generator/replay script | 29699 |
 | `scripts/l21_irred_generic.py` | generator/replay script | 30789 |
 | `scripts/l21_reducible_locus.py` | generator/replay script | 8891 |
@@ -117,6 +131,20 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `scripts/l22_infinity.py` | generator/replay script | 33552 |
 | `scripts/l22_reciprocal_cube.py` | generator/replay script | 32683 |
 | `scripts/l22_square_branch.py` | generator/replay script | 46150 |
+| `scripts/l23_absorption.py` | generator/replay script | 44146 |
+| `scripts/l23_fibration.py` | generator/replay script | 44442 |
+| `scripts/l23_half_sieve.py` | generator/replay script | 38587 |
+| `scripts/l23_multivar.py` | generator/replay script | 47847 |
+| `scripts/l23_norm_section.py` | generator/replay script | 36260 |
+| `scripts/l23_rational_section.py` | generator/replay script | 35864 |
+| `scripts/l23_squareclass.py` | generator/replay script | 41399 |
+| `scripts/l24_diagonal_arithmetic.py` | generator/replay script | 44183 |
+| `scripts/l24_diagonal_geometry.py` | generator/replay script | 46316 |
+| `scripts/l24_diagonal_local.py` | generator/replay script | 50774 |
+| `scripts/l24_diagonal_search.py` | generator/replay script | 59565 |
+| `scripts/l25_scaled_coupling.py` | generator/replay script | 17600 |
+| `scripts/l26_reciprocal_tie.py` | generator/replay script | 10595 |
+| `scripts/l27_triangular_shear.py` | generator/replay script | 10259 |
 
 ## Verification
 
@@ -147,6 +175,17 @@ nice -n 19 python3 l22_infinity.py # PROVED local structure; route OPEN
 nice -n 19 python3 l22_factor_tuple.py # PROVED criterion/no-go; compatibility OPEN
 nice -n 19 python3 l22_square_branch.py # PROVED free-lambda theorem; six-count OPEN/excluded
 nice -n 19 python3 l22_fiber_geometry.py # PROVED reductions; uniform lemma OPEN
+nice -n 19 python3 l23_half_sieve.py # PROVED small-prime-clean lower bound; full members OPEN
+nice -n 19 python3 l23_fibration.py # PROVED rank-10/Br and Capell barrier; member route OPEN
+nice -n 19 python3 l23_norm_section.py # PROVED scoped norm no-gos/reductions; global route OPEN
+nice -n 19 python3 l23_rational_section.py # PROVED no-section/genus-4 reductions; points OPEN
+nice -n 19 python3 l23_squareclass.py # PROVED dyadic/squareclass no-gos; scans EVIDENCE
+nice -n 19 python3 l23_multivar.py # PROVED tested-family degree bounds; no global closure
+nice -n 19 python3 l23_absorption.py # PROVED rank reductions; diagonal image PROVED empty
+nice -n 19 python3 l24_diagonal_geometry.py # PROVED both orientations Phi-empty; route FALSE
+nice -n 19 python3 l24_diagonal_arithmetic.py # PROVED exact dyadic closure; route CLOSED
+nice -n 19 python3 l24_diagonal_local.py # PROVED odd local theorem and dyadic supersession
+nice -n 19 python3 l24_diagonal_search.py # 4,026,282 zero hits EVIDENCE only
 python3 h10q.py                           # default suite (exit 0 required)
 python3 h10q.py --extended                # extended suite (exit 0 required)
 ```

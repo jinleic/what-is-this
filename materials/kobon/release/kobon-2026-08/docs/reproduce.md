@@ -186,3 +186,96 @@ printf 'drat_trim_exit=%s\n' "$?"
 
 Only `s VERIFIED` for that exact pair promotes the branch.  Never promote an
 in-flight/truncated DRAT or a solver-only `s UNSATISFIABLE` line.
+
+## G. Exact face square-penalty counterexample
+
+This replay uses exact rational geometry and no SAT solver:
+
+```sh
+"$PY" scratch/kobon/square_penalty_counterexample.py \
+  --out /tmp/square_penalty_counterexample.json
+printf 'square_exit=%s\n' "$?"
+```
+
+Success is exit `0` and a JSON object containing:
+
+```json
+{
+  "status": "VERIFIED_COUNTEREXAMPLE",
+  "triangular_faces": 30,
+  "claimed_lhs_3F": 90,
+  "claimed_rhs": 89,
+  "sector_defect_sum": 27,
+  "shared_edges_with_two_multipoint_endpoints": 26,
+  "sector_excess_identity_rhs": 1
+}
+```
+
+The release-local copy is also runnable from
+`math/kobon/release/kobon-2026-08/`:
+
+```sh
+"$PY" math/kobon/release/kobon-2026-08/scripts/square_penalty_counterexample.py
+```
+
+## H. Coefficient-2/3 endpoint certificate at `n=7`
+
+Regenerate the essential all-degeneracy direct-gap CNF:
+
+```sh
+"$PY" scratch/kobon/square_penalty_sat.py 7 \
+  --coefficient 2/3 \
+  --out /tmp/c23_n7_violation.cnf
+sha256sum /tmp/c23_n7_violation.cnf
+```
+
+The expected CNF SHA-256 is
+`075ca17768ad70e4ff69673543c85d629a69737656b36211c949b8e0a32676d9`.
+Check the bundled proof:
+
+```sh
+scratch/kobon-audit/tools/drat-trim/drat-trim \
+  math/kobon/release/kobon-2026-08/certificates/c23_n7_violation.cnf \
+  math/kobon/release/kobon-2026-08/certificates/c23_n7_violation.drat -w
+```
+
+Success is `s VERIFIED`. The hash-bound metadata and checker-core counts are
+in `math/kobon/release/kobon-2026-08/certificates/c23_n7_certificate.json`.
+
+## I. Hereditary, vertex-sector, and Pappus probes
+
+Replay the exact-rational sector implementation audit:
+
+```sh
+"$PY" scratch/kobon/sector_bound_audit.py \
+  --samples-per-mode 100 \
+  --out /tmp/sector_bound_audit.json
+```
+
+Success is exit `0`, `"status": "PASS"`, 3,600 arrangements, 93,000 line-pair
+checks, 6,204 multipoint-pair checks, and zero violations.
+
+Replay the guarded dual-Pappus relaxation-gap probe:
+
+```sh
+"$PY" scratch/kobon/pappus_relaxation_probe.py \
+  --out /tmp/pappus_relaxation_probe.json
+```
+
+Success is exit `0`, the base abstract model SAT with a false Pappus
+conclusion, and the same assumptions UNSAT after the three projective
+conclusion clauses are added.
+
+Regenerate the live combined \(n=12,T=39\) discovery instance:
+
+```sh
+"$PY" scratch/kobon/gap_faces.py 12 39 \
+  --sector-bounds \
+  --sub-bound 11:32 \
+  --sub-bound 10:25 \
+  --out /tmp/n12_gap_sector_deletion_t39.cnf
+```
+
+The generator must report 374,381 variables / 830,030 clauses. This CNF is a
+sound discovery lane, not a certificate. An UNSAT solver result requires a
+complete DRAT and the promotion gate in section F.

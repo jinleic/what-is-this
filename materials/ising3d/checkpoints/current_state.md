@@ -1,12 +1,106 @@
 # Current state
 
-**Snapshot:** 2026-08-21, four clauses.
+**Snapshot:** 2026-08-23, wave 22 landed; all eight targeted fronts independently verified.
 
-- **Wave 19 (in flight):** three theory-first fronts — an all-size lower bound on the TWO-GENERATOR
-  algebra via `ad_A` grade separation, removal of the Hamiltonian-path hypothesis from the wave-18
-  trichotomy plus the non-bipartite branch, and an isotropic all-size SPECTRAL no-go by the group
-  route. Reserved ledger `H488`-`H505`, experiments `e182`-`e190`; ownership in
-  `checkpoints/next_actions.md` §2.
+- **Wave 22 (landed, all eight accepted standalone verifier fronts run by the lead):**
+  1. **All-size full-spectrum endpoint and generic theorem.** At `t->0`, ordered transfer
+     valuations are the graph cut distribution; this is a Boolean subset sum iff a simple graph
+     is a forest. At `t->1`, the first graph-sensitive bands are unsigned token graphs, while a
+     full Gaussian requires additive compounds; their signing is balanced iff a connected graph
+     is a path. Thus every finite connected simple nonpath graph is excluded near high
+     temperature, every cyclic simple graph near low temperature, and the full-cube coupling set
+     is finite by Chevalley constructibility. Exceptional couplings are not located or proved
+     absent in general (`H600`-`H608`, `e235`-`e236`).
+  2. **Open `2x3` continuum reduced to three exact candidates.** A stable rank-eight quotient
+     gives a primitive squarefree dense `E(q)` of degree `971`. Exactly three `q>1` roots map to
+     `t` intervals `(397429/10^6,39743/10^5)`,
+     `(160347/10^6,40087/250000)`, and
+     `(10457/200000,26143/500000)`. All are genuine seven-trace algebraic branches; whether a
+     branch has six real `u_i>=4` remains unresolved (`H628`-`H632`, `e238`).
+  3. **Exact octahedral checkerboard decimation.** Eliminating a degree-six star gives
+     `c2>0,c4<0,c6>0` for every real `K!=0`; arbitrary visible fields/pairs cannot reproduce
+     the positive six-spin coefficient. Checkerboard elimination is exactly a 2-/4-/6-spin
+     octahedral model, not a pairwise closure (`H596`-`H599`, `e234`).
+  4. **Exact Callen reconstruction.** The six-neighbour local field has explicit
+     `c1(v),c3(v),c5(v)`. On every finite loopless undirected free-boundary graph with uniform
+     internal coupling and no field, the complete Callen system has formal rank `2^n-1` and
+     reconstructs the unnormalised Gibbs moments up to scale. It remains exponential and gives no
+     thermodynamic compression (`H614`-`H617`, correction `H623`, `e240`).
+  5. **W-law finite exact sequence extended through `L=9`.** Every one of 49 sectors at
+     `L=3..9` has exact-Q two-slice injectivity. The balanced `L=9` rows use 1,556 integral leaf
+     pivots plus a `133x133` determinant `-2^288*3^5`; raw singleton peeling is thereby closed as
+     an all-`L` proof method. The all-`L` lemma remains open (`H610`-`H613`, `e237`).
+  6. **Uniform flat-holonomy averaging closed all sizes.** Averaging phase-free Hashimoto
+     determinants over every graph-`H^1` twist kills each shortest cycle: for every connected
+     simple cyclic graph the first mismatch with `P_G(v)^2` is `0` versus twice the girth-cycle
+     count. All 32 open-cube classes and two finite phase repairs were decided exactly
+     (`H618`-`H622`, `e239`).
+  7. **Open-box topology.** For `min(a,b,c)>=2`,
+     `gamma(P_a square P_b square P_c)>=max(0,ceil((abc-ab-bc-ca+4)/4))`; an open box is planar
+     exactly when a side is one or it is `2x2xL` up to permutation. This is not an arbitrary
+     Pfaffian-term lower bound (`H624`-`H627`, `e241`).
+  8. **Verification and hygiene.** Producer checks are `14/14`, `9/9`, `7/7`, `13/13`,
+     `9/9`, `14/14`, `13/13`, and `12/12` for `e234`-`e241` in experiment-number order;
+     every independent verifier passed. The final trace verifier passed as affine-Macaulay
+     elimination (`433.85` wall seconds) and hardened root-certificate (`110.00`) stages after a
+     one-shot Sturm path exceeded its resource wall; `H633` records the final-source correction.
+     The compact SAW verifier now asserts both content digests and reran PASS (`H609`).
+     Ledger `H596`-`H634` is used, `H635` is next; experiments `e234`-`e241` are landed,
+     `e233` remains an unlanded draft and must not be claimed or reused, `e242` is next unused,
+     and 161 test scripts are present. The critical interval is unchanged.
+     Wave-22 bundle: 47 staged files plus manifest; ZIP 1,248,489 bytes,
+     SHA-256 `5767bfed50a02cdbeddebb2b686f6f55e5657d25b4bcfd9a623a39b38a13ac7c`;
+     staged hashes and all 48 ZIP members validate.
+
+- **Wave 21 (landed, all five targeted standalone verifiers run by the lead in this checkout):**
+  1. **Finite bipartite log-moment interval.** On
+     `I=[999999997/3000000000,1000000003/3000000000]=[1/3-10^-9,1/3+10^-9]`,
+     the open `2x2` and `2x3` positive reciprocal spectra violate the necessary
+     Stieltjes/Hankel inequality `p1*p3-p2^2>=0`; artifact `17/17`, lead verifier PASS
+     (`H584`, `e228`).
+  2. **Trace-seven resultant obstruction.** At `t=1/3`, the physical open `2x3` layer is
+     not a full six-mode subset-product spectrum; traces four through six leave proper ideals
+     and trace seven first gives `{1}` in the named elimination; artifact `5/5`, lead verifier
+     PASS (`H585`, `e232`).
+  3. **Finite W-law rank mechanism and truncation closure.** The `Delta in {0,2}` slices
+     observe every exact sector rank for `L=3..8`; the at-most-two-`a` bonding/antibonding
+     truncation first fails at `(L,m)=(4,2)` with kernel `Q a_0a_1a_2a_3` and rank `19<20`.
+     Artifact `16/16`; the lead verifier reported 21 checks, 0 failures, PASS (`H586`, `e230`).
+  4. **Phase-sensitive upper class closed at its exact scope.**
+     `PS4`-convolution-block-Gram-L1 is strictly stronger than `MR4` at `L=4,K=6/25`, but
+     for every `0<K<=I_3/2` the exact Green profile lifts on every even `L>=266` with
+     `0<p_0<=5168/(525L)`.
+     Its uniform floor is zero and the upper endpoint does not move; artifact `29/29`, lead
+     verifier PASS (`H587`, `e231`).
+  5. **Compact finite-memory SAW crosswalk.** For each even `k=4,6,8,10,12`, the packed
+     first-use automaton matches the ordered `e227` state and transition content, with exact
+     state/transition counts `3/7`, `20/69`, `205/805`, `2722/11074`, and `41424/169975`.
+     The bounded producer passed `33/33`, and the distinct-canonicalization verifier passed.
+     Memory 14 was explicitly not launched and the critical interval is unchanged
+     (`H590`-`H595`, `e229`).
+  6. Ledger `H584`-`H587` and `H590`-`H595`; `H588`-`H589` remain unallocated. Experiments
+     `e228`-`e232` are used, 153 test scripts are present, the next free ledger ID is `H596`,
+     and the next free experiment is `e233`.
+- **Wave 20 (landed, all thirteen standalone verifiers run by the lead in this checkout):**
+  1. **Critical floor moved.** Exact memory-12 finite-walk automaton: 41,424 states,
+     `1000000 A w < 4747526 w` with minimum integer residual `18,990,104`, hence
+     `mu<4.747526` and `K_c>0.2138368062108697304302094293879379891333` (`H578`-`H583`).
+  2. **Connected-bipartite local-term classification completed.** Every `Delta>=3` graph is the
+     nonradical `Q_c=1` branch, without a Hamiltonian hypothesis; full archived Seven source
+     plus independent census (`H572`-`H577`).
+  3. **Every-coupling isotropic theorem on the non-bipartite locus.** The odd-Eulerian trace
+     invariant excludes every full subset-product spectrum for every `0<t<1`; it is identically
+     blind on bipartite graphs (`H524`-`H529`).
+  4. **New exact structures:** `K4,4=137`, `K4,5=471`; invariant-theory explanation of the
+     conjectured `W_L` defect; all-`v` `c8` structure forces `W8`, and `c10` forces `W10`.
+  5. **Exact route closures:** rank-one/`|+>` rectangle induction, Galois nonsolvability as an
+     integrability discriminator, intrinsic finite 3D CTM spectrum, local-algebra-to-all-aux-Lax,
+     `MR4-power-simplex-L1`, and susceptibility supermultiplicativity.
+  6. Ledger `H506`-`H583`, experiments `e191`-`e227`; verifier review caught and corrected the
+     unique coefficient-ratio plateau `5,5` before integration.
+- **Wave 19 (landed):** local-term non-bipartite dichotomy; two-generator counterexamples
+  `K2,3=44`, `K3,3=63`; all-`L>=3` ladder fixed-basis quadratic no-go; exact closure of the
+  `ad_A` grade-separation and varying-conjugator rigidity routes (`H488`-`H505`).
 - **Wave 18 (landed, all fronts independently re-verified by the lead in this checkout):**
   1. **All-`L` classification.** For EVERY `L>=2`, `g_{2xL}(Q) = so_m + so_m` (even `L`) or
      `sp_m + sp_m` (odd `L`), `m = 2^(n-1)`, `n = 2L`, `dim = 2^(n-1)(2^(n-1)-(-1)^L)`. The
@@ -64,13 +158,35 @@ The reusable code is under `src/ising/`; standalone computations are under `expe
 - **Finite arithmetic:** independent exact enumeration and transfer propagation agree on 17 lattice/boundary cases (`tests/test_tm_vs_enumeration.py`).  The natural layer transfer operator reproduces exact 3D partition functions on seven lattices (`tests/test_transfer_operator_identity.py`).
 - **2D control:** Kaufman's finite-torus formula agrees with exact integer transfer matrices in eight cases to maximum relative error `3.63867276317e-60`; parity-resolved `log V` has maximum off-Majorana-bilinear coefficient `1.246e-15` (`results/onsager/onsager_2d.json`).
 - **Exact series:** simple-cubic reduced free energy reaches `v^28` at HT (`proofs/ht_v28.md`) and `x^56` at LT (`proofs/lt_x56.md`, superseding the `x^34`/`x^52` stages in `proofs/lt_x34.md` and `proofs/lt_x54.md`).  The generalized cap-vector frontier reproduced `v^24`/`v^26` before giving `[v^28]phi=2102198327465307/28`, interaction `a_28=525549581866326/7`, with complete profile-wise CRT uniqueness and a post-computation Arisue--Fujiwara witness; the LT side reaches `x^56 = -979227570369/4` with per-box CRT certificates, an independent fresh-prime audit, and a post-computation Guttmann--Enting witness.  No D-finite recurrence at budget ≤11; complete second-order/linear-ODE/Mahler negative frontiers remain finite-budget results.
-- **Rigorous critical interval:** `K_c` belongs to `[0.2122159753270231627267517174278577806020, 0.2527310098586630030260020266135701299926]`.  The lower endpoint follows from the all-`n` theorem `mu^n<=c_n-a_(n-1)` plus the wave-14 exact union `a_35 >= 1972465461070186257835` — pairwise-disjoint height-slab schedules with varying rises, cut positions and block counts (all 820 pairs carry an explicit disjoint allowed-height step), the defect family `L`, the coordinate-monotone family `C`, and two- and three-gadget defect languages, every pairwise/triple overlap exact (`proofs/saw_union4.md`; wave-13 gave `499330428831189067251`, wave-11 `76401062626946721319`, wave-10 `75473476338501000000`).  The upper endpoint is unchanged; the audited two-point infrared/GKS LP floor is proved `O(1/L)` (`proofs/mag_floor.md`).
+- **Rigorous critical interval (wave 20; unchanged in wave 21):** `K_c` belongs to
+  `[0.2138368062108697304302094293879379891333, 0.2527310098586630030260020266135701299926]`.
+  The lower endpoint is `atanh(1000000/4747526)` rounded strictly downward after the exact
+  memory-12 Collatz certificate; the independent verifier rebuilds all 41,424 states and replays
+  all 169,975 transitions. Wave 21's compact packed-state crosswalk independently reproduces the
+  same ordered automata through `k=12`; it launched no `k=14` computation and therefore does not
+  alter either endpoint. This supersedes the wave-14 SAW-union floor. The upper endpoint remains
+  method-optimal only for the audited two-point infrared/GKS class, not globally. Wave 21's
+  strictly stronger `PS4` phase-sensitive class also admits the exact Green sequence for every
+  `0<K<=I_3/2` along all even `L>=266`, with zero uniform floor and no endpoint movement
+  (`proofs/kc_lower_finite_memory.md`, `proofs/kc_lower_memory14.md`,
+  `proofs/upper_phase_sensitive.md`).
 - **Lee--Yang:** finite field zeros pass unit-circle checks on 13 lattices through `4x4x4`; the largest stored 64-site radial residual is `9.1044993726259e-92` (`results/lee_yang/lee_yang_analysis.json`).
 - **Duality:** exact finite-volume 3D Ising--`Z_2` gauge duality passes 27 integer checks; the simple-cubic Ising model is not self-dual (`proofs/duality_3d.md`).
 - **Algebraic theorem:** for `A=sum_v X_v`, `B=sum_(ij) Z_iZ_j`, DG1 holds on every graph.  The exact DG2 residual is the degree-linear plus neighbor-triple formula in `proofs/dolan_grady_defect.md`.  It vanishes iff every degree is `0` or `2`; its quartic part vanishes iff maximum degree is at most 2.
 - **Spectral no-go (Theorem S, wave 5):** the `2x3` layer transfer operator at `tanh(K*/2)=1/3` is NOT spectrally Gaussian on 6 modes in any Majorana basis: exact rational Sylvester-inertia certificate; hypotheses (three lowest eigenvalues distinct) certified with relative gaps 53.0%/40.9%; forced value window `[0.0347241721739, 0.0347241728052]` contains no eigenvalue (inertia 8=8).  Controls: window-occupancy consistency only, never exact presence (`proofs/spectral_gaussianity.md`).
+- **Wave-21 scoped spectral and ladder closures:** determinant-centred log moments exclude full
+  subset products for the open `2x2` and `2x3` layers on the exact interval
+  `[1/3-10^-9,1/3+10^-9]`; an independent trace-resultant obstruction excludes the open `2x3`
+  layer at `t=1/3`, with trace seven first decisive in that named system. For ladders, the
+  `Delta in {0,2}` slices recover every sector rank at `L=3..8`, while the at-most-two-`a`
+  bonding truncation first fails at `(4,2)`. No every-coupling/all-size bipartite theorem or
+  all-`L` `W_L` rank law follows (`proofs/bipartite_log_moments.md`,
+  `proofs/trace_resultant.md`, `proofs/wlaw_rank_mechanism.md`).
 - **Algebra structure (wave 5, since resolved):** `C4` exact-Q decomposition `A1^3+C^2`; `2x3` certified mod-p quotient witnesses `sp(14), sp(6), gl(6)` (saturation-certified; the char-0 Levi was later settled exactly by wave 6 — see Theorem OA above and `results/algebra_structure/char0_levi.json`); `2x4` dim 2952, centre 1, derived 2951 (computed, not literal; the complete char-0 structure was later settled by waves 7-8 — see Theorem OA-2x4 above and `results/algebra_structure/char0_complete_2x4.json`).  `structure.json` keeps e29-scoped fields with `characteristic_zero_resolution` pointers.
-- **Interlayer expansion (wave 5):** `c2 = (1/2) sum_{r!=0} G(r)^2`, exact agreement with anisotropic FLM through `v^6` (`results/interlayer/interlayer_expansion.json`).
+- **Interlayer expansion (through wave 20):** exact `c2,c4,c6,c8` through `v^12`; `c8` now has
+  an all-`v` connected-correlation formula and uniquely forces `W8^2/8!`; `c10` has 16 profiles
+  and forces `W10^2/10!`; generally `c_(2m,q)` contains the square of the connected `2m`-point
+  datum divided by `(2m)!` (`proofs/interlayer_c10.md`).
 - **DG+TD simultaneous no-go (wave 5):** both varieties empty for the minimal orbit basis; Groebner `{p^2,pq,q^2,pr,qr,r^2}`, all saturations `[1]` (`proofs/dg_simultaneous.md`).
 - **Theorem OA (wave 6, headline):** the characteristic-zero `2x3` layer algebra has exact structure `263 = 1 + [C7+C3+C3+A8+A5]` (two independent exact-Q closures, Killing rank 262, C7-vs-B7 separated by an exact alternating form det 16384); combined with the fulltext Date–Roan classification (Levi of any finite-dim OA quotient = `sl2^n`), the layer algebra is **not an Onsager-algebra quotient in any disguise** — no generating pair satisfies Dolan–Grady (`proofs/char0_structure.md`, `proofs/onsager_quotient_nogo.md` sec. 9).
 - **Theorem S′ (wave 6):** the two physical `P=prod X` sector spectra of the `2x3` layer are not the even/odd halves of any single 6-mode Gaussian, either assignment (`proofs/parity_sector_gaussianity.md`).  Theorem S itself extended to `t=1/5,2/5,1/2` on `2x3` and to the `2x4` layer at `t=1/3` via certified symmetry sectors (`results/spectral/couplings.json`).
@@ -79,7 +195,14 @@ The reusable code is under `src/ising/`; standalone computations are under `expe
 - **Ladder obstruction (wave 6):** all single-Pauli words in `<A_L,B_L>` are row-swap fixed and pairwise commuting for every `L`; the single-string injection strategy class is dead; `D_{2L}>=2^L` still open beyond `L=6` (`proofs/ladder_growth_family.md`).
 - **Peierls attempt (wave 6):** honest non-improvement `K_c <= 1.696898` with new exact contour counts `N(6..24)` and a proved method-limitation (`proofs/kc_upper_peierls.md`); incumbent upper bound untouched.
 - **Series structure (wave 6):** complete algebraicity + first-order differential-algebraicity negative frontiers (HT all-negative; LT survivors all truncation-unobservable); interlayer `[v^8]c2=778` (two routes); `c3(v)=0` identically by layer-flip symmetry (`notes/series_structure.md`).
-- **Algebra size (superseded in wave 18 by an exact law):** the individual-term DLA dimensions `56,1056,16256,65535` for `2x2,2x3,2x4,3x3` are now instances of the wave-18 trichotomy, which gives `2^(2n-2)-(-1)^(n/2)2^(n-1)` for even `n` and `2^(2n-2)-1` for odd `n` on any bipartite Hamiltonian-path layer with `Delta>=3`, depending only on `n` (`proofs/clifford_grade_classification.md`).  The TWO-SUM algebra is a different object and is still only known at isolated sizes: `11,263,2952,8034` for `2x2,2x3,2x4,3x3`, `dim_Q(3x2)=263` exact by transposition, `3x4` depth-15 `>=1242`, open `4x4` only `>=1794`.  `D_(2L)>=2^L` is machine-certified for `2<=L<=9`; no all-`L` two-generator theorem is claimed, and closing that gap is the wave-19 front `TwoGenAllSize` (`proofs/ladder_nonstat.md`, `proofs/char0_4x4.md`).
+- **Complete local-term graph classification (waves 18-20):** connected bipartite graphs are
+  exactly path, even-cycle, or `Delta>=3` quadratic-root branches; no Hamiltonian hypothesis
+  remains. Connected non-bipartite graphs are odd cycles or the full noncentral even branch.
+  Every open `2xL` algebra is `so_m+so_m` (even `L`) or `sp_m+sp_m` (odd `L`). The TWO-SUM
+  algebra is different: exact anchors include `11,263,2952,8034` on `2x2,2x3,2x4,3x3` and
+  `44,63,167,137,471` on `K2,3,K3,3,K3,4,K4,4,K4,5`; every ladder `L>=3` clears the physical
+  quadratic ceiling, but no all-grid or universal graph threshold is proved
+  (`proofs/nonhamiltonian_bipartite.md`, `proofs/kmn_twogen.md`, `proofs/ladder_w8.md`).
 - **Theorem OA-2x4 (waves 7-8, headline):** complete characteristic-zero structure `2952 = Qz + so(F_000) + so(F_010) + so(F_100) + sl24 + sl28 + 2 sl4`, absolute type `D21+2B13+A23+A27+2A3`, radical = centre, structural Killing rank 2951; splitness of the orthogonal Q-forms deliberately not claimed; clean-room no-producer-import verifier re-derives all 13 controlling minors.  Corollary with Date--Roan: **the 2x4 layer algebra is not an Onsager-algebra quotient** (`proofs/char0_complete_2x4.md`, `proofs/levi_images_2x4.md`).
 - **Kac--Ward (waves 7-8):** positive-real cone EMPTY by exact Positivstellensatz on the free `2x2x2` cube (`F = 48 + 8 sum M`); rational branch map **31/32 EMPTY_OVER_Q** via thin-box integer constants; branch `11111` unresolved with exact negative certificates (no degree-0 span certificate, no multiplier-degree-1 Nullstellensatz; small-prime points persist) (`proofs/kac_ward_positive_real.md`, `proofs/kac_ward_close.md`).
 - **Ungraded tetrahedron (wave 8):** arbitrary `8x8` auxiliary `R` vanishes for all char-0 `q` outside `{0,+1,-1}`; complementary minors `2q^109(q-1)^92(q+1)^77(q^3+2q-1)` and `2q^110(q-1)^92(q+1)^77(q^2+1)` with Bezout clearance (`proofs/tetra_ungraded.md`).
@@ -153,13 +276,26 @@ Exact coefficient arrays, dimensions, residuals, methods, and scripts are record
 
 No thermodynamic-limit exact 3D free energy, magnetisation, correlation function, spectrum, exact critical coupling, or exact exponent has been produced.  The following are specifically open rather than silently ruled out:
 
-- an all-`L` proof or counterexample for exponential two-generator ladder/grid growth;
+- an all-`L` proof or counterexample for **exponential** two-generator ladder/grid growth; the
+  fixed-basis quadratic no-go is all-`L>=3`, and two-slice observability is exact at `L=3..8`,
+  but the two-slice exact-sequence lemma and exact `W_L` rank law remain open;
+- the every-coupling/all-size isotropic spectral theorem on **bipartite** branching grids; wave 21
+  gives an explicit log-moment interval on open `2x2`/`2x3` and a trace-seven obstruction at
+  `t=1/3` on open `2x3`, while the all-size non-bipartite trace invariant vanishes here;
 - simultaneous nonlinear deformations of both `A` and `B` beyond the invariant F1--F4 supports;
-- Kac--Ward branch `11111` over `Q`/`C` (signed/complex weights; the sole surviving branch);
-- non-Pauli or enlarged-Hilbert-space flux mechanisms;
-- spectral-parameter/different-representation tetrahedron mechanisms;
-- a useful exact recurrence/ODE (all completed frontiers negative through the `v^24`/`x^32` fitting budgets) or still-longer exact series beyond the independently computed `v^28`/`x^32` coefficients;
-- controlled thermodynamic Lee--Yang edge scaling.
+- Kac--Ward branch `11111` over `Q`/`C` (signed/complex weights; sole surviving scalar branch);
+- nonidentical/spectral/IRF/dynamical tetrahedron mechanisms and enlarged-Hilbert-space fluxes;
+- memory-14 finite-walk continuation: the compact `e229`/`H590`-`H595` crosswalk is landed and
+  verified through `k=12`, but memory 14 was explicitly not launched; an endpoint attempt must
+  still construct `A_14`, verify its mass, replay an integer Collatz rotation componentwise, and
+  apply directed `atanh` rounding; HT `v^30`, LT `x^60/x^62`, and `Z^3` radius-2 extensive
+  charges at support size 6 also remain open;
+- phase-sensitive input capable of improving the infrared upper endpoint; the audited `PS4`
+  convolution-block class is strictly stronger than `MR4` but has zero uniform Green floor, so
+  full cross-channel fourth moments, higher localizers, DLR equations, or sourced/multi-edge
+  current identities are still required;
+- scalar evaluation/bounds for the forced interlayer `W8/W10` sums and controlled Lee--Yang
+  thermodynamic edge scaling.
 
 The finite F3 deformation in `proofs/dg_deformation_nogo.md` cancels DG2 on the `3x3` torus but fails DG1; it is a positive cancellation result, not an integrable solution.
 
@@ -171,6 +307,8 @@ scripts present when it was launched.
 
 | wave | scripts | runner line | notes |
 |---|---:|---|---|
+| 21 | 153 present | no full-suite launch; **5/5 landed targeted standalone verifiers passed** | Producer artifacts passed `17/17`, `5/5`, `16/16`, `29/29`, and `33/33`; lead observed PASS from the bipartite log-moment, trace-resultant, W-law rank-mechanism (21 checks), phase-sensitive upper, and compact finite-memory SAW verifiers. The fifth verifier proves the packed `k<=12` crosswalk only; memory 14 was explicitly not launched and no endpoint result is claimed. |
+| 20 | 148 present | no full-suite launch; **13/13 new standalone verifiers passed** | Includes the independent 41,424-state memory-12 rebuild (18 checks); one initial susceptibility verifier failure exposed a false “strictly decreasing” wording at the exact `5,5` plateau, then passed after producer/proof/artifact correction. |
 | 17 | 123 | `FINAL: 123 total, 123 passed, 0 failed` | `fullsuite17b`, 8 h 10 m under heavy host contention (load ~40, hundreds of foreign jobs). Includes the standalone 38-check `H425` `2x6` verifier and the independent `x^56` fresh-prime audit. The earlier `fullsuite17` was snapshot-launched before `tests/test_gaussian_2x6.py` existed and was restarted so the gate would cover it. |
 | 16 | — | no separate full-suite gate | wave-16 deliverables were each run through their own standalone verifier before their ledger rows were appended, and are covered by the wave-17 `fullsuite17b` expansion. |
 | 15 | 115 | `FINAL: 115 total, 115 passed, 0 failed` | `fullsuite15b`, run pre-wave-16 on the integrated tree. |
@@ -181,10 +319,12 @@ scripts present when it was launched.
 | 10 | 86 | `FINAL: 86 total, 86 passed, 0 failed` | 3 h 56 min, run on a frozen tree while wave 11 worked in isolated worktrees |
 | 9 | 75 | `FINAL: 75 total, 75 passed, 0 failed` | 81 min; the first wave-9 run scored 74/75 and exposed the artifact-coupling bug fixed in correction 7a above |
 
-Independently of the suite, **every** wave-11 through wave-18 deliverable was run through its own standalone
-verifier by the lead inside this checkout before its ledger rows were appended; the per-test wall
-times for wave 13 are tabulated at the end of `research_log.md`. The audit-replication script still
-deliberately prints `FAIL` for two historical over-general claims while exiting 0.
+Independently of the suite, **every** wave-11 through wave-21 landed deliverable was run through its
+own standalone verifier by the lead inside this checkout before its ledger rows were appended.
+Wave 20 adds 13/13 and wave 21 adds 5/5; the per-test wall times for wave 13 are tabulated at the
+end of `research_log.md`.
+The audit-replication script still deliberately prints `FAIL` for two historical over-general
+claims while exiting 0.
 
 **Reading a suite failure.** Several verifiers carry their own wall budgets and declare
 `NON-DECISIVE` when they expire. Under heavy machine load such a line is a resource artefact, not a

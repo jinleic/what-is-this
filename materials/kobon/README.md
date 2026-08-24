@@ -30,6 +30,16 @@ dimensions: `simple` 65,594 vars / 1,937,254 clauses; `par_noc`
 DRAT-verified UNSAT. A compressed, completion-gated rerun now has
 `par_noc` branches 1/3/5/7 independently `s VERIFIED`; the remaining
 branches of `par_noc`, `simple`, `par_conc_0`, `c0`, and `c1` are active.
+
+An independent all-degeneracy direct-gap lane now adds two proved accelerator
+families: hereditary subarrangement bounds from the already established
+$K(11)=32$ and $K(10)=25$, and local vertex-sector bounds (four faces per
+simple line pair; two, or zero when nonadjacent, at a multipoint). The combined
+$(12,39)$ instance has 374,381 variables / 830,030 clauses and is live under
+both Kissat and CaDiCaL. Exact audit: 3,600 rational arrangements, 27,705
+triangular faces and 93,000 line-pair checks, zero violations. This is a sound
+search accelerator, not a verdict; $K(12)$ remains open.
+
 **Lower bound $K_{\rm gen}(12)\ge38$: PROVED** (exact rational) —
 Kabanovitch's arrangement (Charade 1999; combinatorics via Savchuk's
 LineOrder gallery table + SVG) reconstructed over $\mathbb{Q}$ with its two

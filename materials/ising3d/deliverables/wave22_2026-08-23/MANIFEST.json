@@ -1,0 +1,246 @@
+{
+  "bundle": "ising3d-exact-research-wave-22",
+  "generated_utc": "2026-08-24T02:50:58.916906+00:00",
+  "excluded_from_hash_list": [
+    "MANIFEST.json"
+  ],
+  "file_count": 47,
+  "total_bytes": 5342310,
+  "files": [
+    {
+      "path": "BUNDLE_INFO.txt",
+      "bytes": 3061,
+      "sha256": "7e0cbb5164d36865ea6acd929d39956042a991e5eceba5a8b4825ad3a7b71605"
+    },
+    {
+      "path": "artifacts/docs/MATH_README.md",
+      "bytes": 17385,
+      "sha256": "c92bc9e4981b621cec11444d6a7c56d6dc4efb15cc736707c657d25162ef7ab3"
+    },
+    {
+      "path": "artifacts/docs/PROGRESS.md",
+      "bytes": 395077,
+      "sha256": "03e682bdf39b141840b341cf1a8bf03e024b61b8752b1e5ce3b29693103dc6d7"
+    },
+    {
+      "path": "artifacts/docs/README.md",
+      "bytes": 46710,
+      "sha256": "dcfc2104366a0d6e3f97151ac36891d0117204404f534531b3e46ecc0a4d751c"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/current_state.md",
+      "bytes": 54581,
+      "sha256": "764fa1f00a3ef6061e001357116c89600b86cbed686086f39a99a016571b3709"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/failed_routes.md",
+      "bytes": 29891,
+      "sha256": "6038535892c846b48403835c4bccc9b31e514d3468bdaaf16dfd1e8492d8cc03"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/next_actions.md",
+      "bytes": 22445,
+      "sha256": "b0a033d5ab3eb31d26995cda01fa957539cb77e79056389df701cced35112007"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/verified_results.json",
+      "bytes": 155224,
+      "sha256": "3feed8f50866e3b077a972a633286a32d07325f5550586b7a6037bb3ba201e5b"
+    },
+    {
+      "path": "artifacts/docs/notes/CODE_API.md",
+      "bytes": 3452,
+      "sha256": "c7e7c82a680f1e9bc730eccffc00f0f3a1ca762b161abbf77df76c3a17a4ab6e"
+    },
+    {
+      "path": "artifacts/docs/notes/frontier_analysis.md",
+      "bytes": 18221,
+      "sha256": "dc4650a3f53371f5bcb3abc927b084f26d8ee0622869beef16e82156832ddc82"
+    },
+    {
+      "path": "artifacts/docs/notes/hypotheses.csv",
+      "bytes": 602072,
+      "sha256": "a072c23262a6e805c00a4e011e1fe15bd1295e2a4a7e97fe57e6a95eedc459fd"
+    },
+    {
+      "path": "artifacts/docs/problem_specification.md",
+      "bytes": 4911,
+      "sha256": "fcd198beb06a1da3279c064505082aa7ad3c90b8726d15b9695611aeda7a8229"
+    },
+    {
+      "path": "artifacts/docs/reports/final_technical_report.md",
+      "bytes": 200904,
+      "sha256": "0ce886f103a1f13ed7ce23e35879782f4741e49285ebe3824cd9489060bb12bf"
+    },
+    {
+      "path": "artifacts/docs/sources/bibliography.bib",
+      "bytes": 15861,
+      "sha256": "6a3fabd257ff01e985348ab51caab62199527c97fc36993c9812e11d6a25037f"
+    },
+    {
+      "path": "artifacts/docs/sources/manifest.yaml",
+      "bytes": 59167,
+      "sha256": "16bbd702215b5a7114771daf80abaf60e04c3e87c073498b612c758a6347ebad"
+    },
+    {
+      "path": "artifacts/docs/tests/run_all.sh",
+      "bytes": 761,
+      "sha256": "9305a85dc509ff4c42090e8fca25c36ab436c302b9fb3225b730bce68470c922"
+    },
+    {
+      "path": "artifacts/experiments/e234_star_decimation.py",
+      "bytes": 17428,
+      "sha256": "aa938ba6a74a5bf591ea6f775466a7fea441ed9c1f40838f7254121290901650"
+    },
+    {
+      "path": "artifacts/experiments/e235_tropical_cut_obstruction.py",
+      "bytes": 14852,
+      "sha256": "8b42c5eb535a22bf065e269aeb64202e4681da5ce8f8e9358d28f9cb4723b5ef"
+    },
+    {
+      "path": "artifacts/experiments/e236_token_splitting_obstruction.py",
+      "bytes": 21308,
+      "sha256": "95fae55760855d6c11baecc086a63a556d079cad324b7e84b888a5dc9c38507f"
+    },
+    {
+      "path": "artifacts/experiments/e237_wlaw_exact_sequence.py",
+      "bytes": 31461,
+      "sha256": "4eb19f853d3e6acafad5f52bc2771d1cb87ddda8bb9044b14920e3ca60a52bbd"
+    },
+    {
+      "path": "artifacts/experiments/e238_trace_exceptional_set.py",
+      "bytes": 35631,
+      "sha256": "7daf8716baec4f9fc39884f9f6956d7f256ce748aaaaf7040ea3eb5a8fbaebec"
+    },
+    {
+      "path": "artifacts/experiments/e239_twist_hashimoto.py",
+      "bytes": 38315,
+      "sha256": "317eacfc051a03a3e943a74488884346b8b91f3b30762116bc28f2d9d4c3f729"
+    },
+    {
+      "path": "artifacts/experiments/e240_callen_identity_system.py",
+      "bytes": 39277,
+      "sha256": "f810172970a797d3717f66825d39a60fcc6755d8ec13decdde1c951840ad7ed9"
+    },
+    {
+      "path": "artifacts/experiments/e241_box_genus_bound.py",
+      "bytes": 34301,
+      "sha256": "08bff9038734c8a8fadc245c6f992953ad666a7bf778d11c61bdd565fbd009e0"
+    },
+    {
+      "path": "artifacts/proofs/kac_ward_3d_obstruction.md",
+      "bytes": 39300,
+      "sha256": "6e150b07ae4e9779a52776bc83e5cc77ab91f88cef15906af757510ed48d4864"
+    },
+    {
+      "path": "artifacts/proofs/kc_lower_memory14.md",
+      "bytes": 3156,
+      "sha256": "87f5ca006a333080cdcfd1c1be92aa747a8291f576f8d41a3d60bd00263a34d4"
+    },
+    {
+      "path": "artifacts/proofs/trace_resultant.md",
+      "bytes": 17944,
+      "sha256": "f0d9bdf5ad8f8167910734a18028635b09c6ea40a1aec682b74c7572d8f6d4ec"
+    },
+    {
+      "path": "artifacts/proofs/wlaw_rank_mechanism.md",
+      "bytes": 20694,
+      "sha256": "ed1eaf12e8071c2986c0d399b0f79566451e1237630ecf93e87b74a8b8e6d1f3"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/wlaw_exact_sequence.json",
+      "bytes": 1709354,
+      "sha256": "50a9685c22679369b413fd9386319875fb02b231c77f8dc18ab5f346dc19647a"
+    },
+    {
+      "path": "artifacts/results/bounds/finite_memory_saw14.json",
+      "bytes": 17008,
+      "sha256": "cf0c67715d75d1b83a8ab2c4cc6a28853a140307d8352ef1900bd6da35edb967"
+    },
+    {
+      "path": "artifacts/results/correlations/callen_identity_system.json",
+      "bytes": 69211,
+      "sha256": "c3346266fce6a03e6bb2c8466c50cbcef95f1265700bfdcf72c76e0aced06861"
+    },
+    {
+      "path": "artifacts/results/integrability/star_decimation.json",
+      "bytes": 9854,
+      "sha256": "624961594e392d037f9cd1eb0d52636ce24eddee2035bbbdadce4a5ed30081b9"
+    },
+    {
+      "path": "artifacts/results/kac_ward/twist_hashimoto.json",
+      "bytes": 64470,
+      "sha256": "5459a36b453e5ee786ff9741b0124b739d95d095108b1d27c1905d22b30f8e08"
+    },
+    {
+      "path": "artifacts/results/spectral/token_splitting_obstruction.json",
+      "bytes": 11104,
+      "sha256": "44f27bcbf4d38e339c277473a4af75860af182c35429abc8087d9a56444e833a"
+    },
+    {
+      "path": "artifacts/results/spectral/trace_exceptional_set.json",
+      "bytes": 740912,
+      "sha256": "668c7d625cfb15f7ac146b6acb2b616d6db1b3dfdd642c1b529a1e3c4e3f7062"
+    },
+    {
+      "path": "artifacts/results/spectral/tropical_cut_obstruction.json",
+      "bytes": 7723,
+      "sha256": "0321c26a1a6e90f23e452e1f47cd48d49bb4c416407102dd0008f3b3f8c99ff3"
+    },
+    {
+      "path": "artifacts/results/topology/box_genus_bound.json",
+      "bytes": 601471,
+      "sha256": "93baa8b7c9d3804ba755b47c9b0d82ecec28e33402f8b5e50ff5e7ee34744c4d"
+    },
+    {
+      "path": "artifacts/sources/stacks_chevalley_054K.html",
+      "bytes": 12026,
+      "sha256": "cd262f58542d25515f167f1ae7f35617659fbda39dba3decb453931288c04740"
+    },
+    {
+      "path": "artifacts/tests/test_box_genus_bound.py",
+      "bytes": 22667,
+      "sha256": "f0c3e71bf51dfe99a769df011a0b3551a7be6035bb1849ef876a543bfc530464"
+    },
+    {
+      "path": "artifacts/tests/test_callen_identity_system.py",
+      "bytes": 26990,
+      "sha256": "3c8cef36df96fbb11f2d7cfcd35c23a6151415421d36f07cffe44a154d7f7eac"
+    },
+    {
+      "path": "artifacts/tests/test_finite_memory_saw14.py",
+      "bytes": 7387,
+      "sha256": "d602969b600ebae9cbba0f03d8c85aa2341c2d1c9bf8d2bfeb0c53b1cffe7184"
+    },
+    {
+      "path": "artifacts/tests/test_star_decimation.py",
+      "bytes": 10843,
+      "sha256": "3a0d56e9631ce6023f36b0fed95ed703003c665502f5d52a0f2d300e1984afed"
+    },
+    {
+      "path": "artifacts/tests/test_token_splitting_obstruction.py",
+      "bytes": 14545,
+      "sha256": "c5dc489128ebb74a6d8e812e9bc025a93cb5b85a6d1ea4ca04bc14b495c64433"
+    },
+    {
+      "path": "artifacts/tests/test_trace_exceptional_set.py",
+      "bytes": 22043,
+      "sha256": "078b3faf81f1bacf7b2d9ec539829a88b1b7f8957f9fe0b953e6f1451531cfda"
+    },
+    {
+      "path": "artifacts/tests/test_tropical_cut_obstruction.py",
+      "bytes": 10452,
+      "sha256": "3e8764cf7685ca0b4df4d50ff43a2fa030845d2d2626e154864b2a75f311a347"
+    },
+    {
+      "path": "artifacts/tests/test_twist_hashimoto.py",
+      "bytes": 21879,
+      "sha256": "7df39416714da364d4775d966e8b83f4d104d02c6d9fd22277f39a935b513e6f"
+    },
+    {
+      "path": "artifacts/tests/test_wlaw_exact_sequence.py",
+      "bytes": 18981,
+      "sha256": "2de4a6d48887ed3f9679544220a9f638ccf5e0b4ae6dc2254c920dc8eabbd9c6"
+    }
+  ]
+}

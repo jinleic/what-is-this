@@ -1,0 +1,52 @@
+ISING3D EXACT-RESEARCH BUNDLE — WAVE 20
+=======================================
+
+Scope
+-----
+This bundle contains the unified 26-page paper and the exact artifacts produced in wave 20.
+The three-dimensional Ising model remains UNSOLVED. No thermodynamic-limit free energy,
+magnetisation, correlation function, exact critical point, or exact exponent is claimed.
+
+Headline results
+----------------
+1. Exact memory-12 simple-cubic finite-walk automaton: 41,424 states and positive integer
+   certificate 1,000,000 A w < 4,747,526 w, minimum residual 18,990,104. Therefore
+   mu < 4.747526 and
+   K_c > 0.2138368062108697304302094293879379891333.
+2. Complete connected-bipartite local-term classification without a Hamiltonian-path hypothesis,
+   using Ahmet Seven's transvection-orbit theorem with every application hypothesis proved locally.
+3. Every finite non-bipartite graph is spectrally non-Gaussian at every physical isotropic
+   coupling 0<t<1. The invariant is identically blind on bipartite graphs.
+4. Exact K_{4,4}/K_{4,5} two-sum dimensions 137 and 471; invariant-theory explanation of the
+   conjectured W_L defect; forced W8/W10 interlayer hierarchy.
+5. Exact bounded no-go/route-closure results for rectangle compression, Galois discrimination,
+   finite 3D CTM spectra, all-auxiliary Lax inference, fixed Pluecker signatures, the first
+   four-point power-simplex relaxation, and susceptibility supermultiplicativity.
+
+Verification
+------------
+- Thirteen new standalone verifiers were run by the lead; 13/13 passed.
+- tests/test_finite_memory_saw.py independently rebuilt every automaton through memory 12 and
+  replayed the complete integer certificate (18/18 checks, 49.0 CPU seconds).
+- The first susceptibility verifier run failed on a false “strictly decreasing” wording at the
+  exact ratio plateau 5,5. Producer, proof, artifact, and verifier were corrected, then passed.
+- The repository contains 148 test scripts. The last full integration gate covered 123/123;
+  a full 148-script gate was not launched under sustained host load around 65.
+
+Contents
+--------
+- papers/: unified TeX, bibliography, compiled 26-page PDF, and retained build logs.
+- artifacts/proofs/: 13 wave-20 proof notes.
+- artifacts/experiments/: producers e191 through e227.
+- artifacts/tests/: 13 independent standalone verifiers.
+- artifacts/results/: 13 machine-readable result JSON files.
+- artifacts/sources/: full Poenitz–Tittmann and Seven PDFs used by the new theorems.
+- artifacts/docs/: current README, report, checkpoints, source manifest, bibliography, and ledger.
+
+Provenance and limitations
+--------------------------
+- Exact combinatorial objects use integer/rational arithmetic. Modular ranks are used only in their
+  rigorous one-sided direction; equal ranks at two primes are cross-checks, not rational equality.
+- K_c=0.221654626 is comparison-only and was not used to select, fit, tune, or stop a derivation.
+- MANIFEST.json records byte size and SHA-256 for every staged file except itself.
+- Bundles are snapshots. Executable reproduction should use the repository root, not this copy.

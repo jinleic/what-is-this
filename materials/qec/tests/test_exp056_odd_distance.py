@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
 from pathlib import Path
 
@@ -18,6 +19,10 @@ assert _SPEC and _SPEC.loader
 E56 = importlib.util.module_from_spec(_SPEC)
 sys.modules[_SPEC.name] = E56
 _SPEC.loader.exec_module(E56)
+
+CERTIFICATE = (
+    ROOT / "results" / "certificates" / "exp056_wm_162_8_14_distance.json"
+)
 
 
 def test_target_rebuild_and_pole_cover() -> None:
@@ -79,6 +84,41 @@ def test_class_certificate_protocol_is_hash_bound() -> None:
     forged["replay"]["instance_sha256"] = identity["instance_sha256"]
     assert E56._class_replay_valid(forged) is True
 
+
+
+def test_persisted_exact_distance_certificate() -> None:
+    assert CERTIFICATE.exists(), f"required artifact missing: {CERTIFICATE}"
+    certificate = json.loads(CERTIFICATE.read_text(encoding="utf-8"))
+    assert E56.validate_exact_certificate_payload(certificate) is True
+    assert certificate["schema"] == E56.SCHEMA
+    assert certificate["verdict"] == {
+        "classification": "CERTIFIED_EXACT",
+        "d": 14,
+        "d_X": 14,
+        "d_Z": 14,
+        "exact": True,
+        "lower_route": "class_orbits",
+    }
+    lower = certificate["lower_bound"]["class_route"]
+    assert lower["required_classes"] == 20
+    assert lower["missing_classes"] == []
+    assert lower["statuses"] == ["UNSAT"] * 20
+    assert lower["all_classes_unsat"] is True
+    assert lower["all_classes_replayed"] is True
+    pole_route = certificate["lower_bound"]["pole_sector_route"]
+    assert pole_route["canonical_route_enabled"] is False
+    assert pole_route["all_orbit_sectors_replayed"] is False
+    assert certificate["upper_bound"]["weight"] == 14
+
+    problem = E56.build_problem(E56.TARGET)
+    pole_cover = E56.build_orbit_cover(problem)
+    class_cover = E56.build_class_orbit_cover(problem, pole_cover)
+    for class_index in range(20):
+        record = E56._validate_class_record(
+            problem, pole_cover, class_cover, class_index
+        )
+        assert record is not None
+        assert E56._class_replay_valid(record)
 
 
 def test_target_component_decomposition_is_exact() -> None:

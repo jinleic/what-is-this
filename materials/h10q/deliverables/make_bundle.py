@@ -20,7 +20,6 @@ import hashlib
 import json
 import os
 import zipfile
-from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent          # math/h10q
@@ -69,6 +68,20 @@ ARTIFACTS = [
     ("data/l22_factor_tuple.jsonl", REGENERABLE),
     ("data/l22_square_branch.jsonl", REGENERABLE),
     ("data/l22_fiber_geometry.jsonl", REGENERABLE),
+    ("data/l23_half_sieve.jsonl", REGENERABLE),
+    ("data/l23_fibration.jsonl", REGENERABLE),
+    ("data/l23_norm_section.jsonl", REGENERABLE),
+    ("data/l23_rational_section.jsonl", REGENERABLE),
+    ("data/l23_squareclass.jsonl", REGENERABLE),
+    ("data/l23_multivar.jsonl", REGENERABLE),
+    ("data/l23_absorption.jsonl", REGENERABLE),
+    ("data/l24_diagonal_geometry.jsonl", REGENERABLE),
+    ("data/l24_diagonal_arithmetic.jsonl", REGENERABLE),
+    ("data/l24_diagonal_local.jsonl", REGENERABLE),
+    ("data/l24_diagonal_search.jsonl", REGENERABLE),
+    ("data/l25_scaled_coupling.jsonl", REGENERABLE),
+    ("data/l26_reciprocal_tie.jsonl", REGENERABLE),
+    ("data/l27_triangular_shear.jsonl", REGENERABLE),
     ("data/l13h_all_closures.json", AUTHORITY),
     ("data/l6_witnesses.jsonl", AUTHORITY),
     ("data/l9_steered.jsonl", AUTHORITY),
@@ -122,6 +135,20 @@ SCRIPTS = [
     "l22_factor_tuple.py",
     "l22_square_branch.py",
     "l22_fiber_geometry.py",
+    "l23_half_sieve.py",
+    "l23_fibration.py",
+    "l23_norm_section.py",
+    "l23_rational_section.py",
+    "l23_squareclass.py",
+    "l23_multivar.py",
+    "l23_absorption.py",
+    "l24_diagonal_geometry.py",
+    "l24_diagonal_arithmetic.py",
+    "l24_diagonal_local.py",
+    "l24_diagonal_search.py",
+    "l25_scaled_coupling.py",
+    "l26_reciprocal_tie.py",
+    "l27_triangular_shear.py",
     "l16_emergent.py",
     "l14_replay_all.py",
 ]
@@ -233,6 +260,17 @@ def main() -> None:
         "nice -n 19 python3 l22_factor_tuple.py # PROVED criterion/no-go; compatibility OPEN",
         "nice -n 19 python3 l22_square_branch.py # PROVED free-lambda theorem; six-count OPEN/excluded",
         "nice -n 19 python3 l22_fiber_geometry.py # PROVED reductions; uniform lemma OPEN",
+        "nice -n 19 python3 l23_half_sieve.py # PROVED small-prime-clean lower bound; full members OPEN",
+        "nice -n 19 python3 l23_fibration.py # PROVED rank-10/Br and Capell barrier; member route OPEN",
+        "nice -n 19 python3 l23_norm_section.py # PROVED scoped norm no-gos/reductions; global route OPEN",
+        "nice -n 19 python3 l23_rational_section.py # PROVED no-section/genus-4 reductions; points OPEN",
+        "nice -n 19 python3 l23_squareclass.py # PROVED dyadic/squareclass no-gos; scans EVIDENCE",
+        "nice -n 19 python3 l23_multivar.py # PROVED tested-family degree bounds; no global closure",
+        "nice -n 19 python3 l23_absorption.py # PROVED rank reductions; diagonal image PROVED empty",
+        "nice -n 19 python3 l24_diagonal_geometry.py # PROVED both orientations Phi-empty; route FALSE",
+        "nice -n 19 python3 l24_diagonal_arithmetic.py # PROVED exact dyadic closure; route CLOSED",
+        "nice -n 19 python3 l24_diagonal_local.py # PROVED odd local theorem and dyadic supersession",
+        "nice -n 19 python3 l24_diagonal_search.py # 4,026,282 zero hits EVIDENCE only",
         "python3 h10q.py                           # default suite (exit 0 required)",
         "python3 h10q.py --extended                # extended suite (exit 0 required)",
         "```",
@@ -242,13 +280,30 @@ def main() -> None:
         lines += ["## Missing at build time", ""] + [f"- `{m}`" for m in missing] + [""]
     (STAGE / "MANIFEST.md").write_text("\n".join(lines))
 
-    # ZIP (outside the staged tree)
+    # ZIP (outside the staged tree).  Write every member with the bundle date
+    # rather than the source mtime: SHA256SUMS and MANIFEST.md are regenerated
+    # on each run, so ZipFile.write() would otherwise make identical contents
+    # produce a different archive hash.
     if ZIP_PATH.exists():
         ZIP_PATH.unlink()
-    with zipfile.ZipFile(ZIP_PATH, "w", zipfile.ZIP_DEFLATED) as zf:
+    year, month, day = (int(part) for part in DATE.split("-"))
+    zip_timestamp = (year, month, day, 0, 0, 0)
+    with zipfile.ZipFile(
+        ZIP_PATH, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9
+    ) as zf:
         for path in sorted(STAGE.rglob("*")):
-            if path.is_file():
-                zf.write(path, arcname=f"h10q-{DATE}/{path.relative_to(STAGE).as_posix()}")
+            if not path.is_file():
+                continue
+            arcname = f"h10q-{DATE}/{path.relative_to(STAGE).as_posix()}"
+            info = zipfile.ZipInfo(arcname, date_time=zip_timestamp)
+            info.create_system = 3
+            info.external_attr = (path.stat().st_mode & 0xFFFF) << 16
+            zf.writestr(
+                info,
+                path.read_bytes(),
+                compress_type=zipfile.ZIP_DEFLATED,
+                compresslevel=9,
+            )
 
     print(json.dumps({
         "staged_files": len(staged) + 2,

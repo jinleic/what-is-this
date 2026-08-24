@@ -1204,20 +1204,23 @@ totals.  The frozen collector replayed all eight traces and printed
 rational target
 $t_{\mathrm{cert}}=0.3820660112501052\ge\psi+10^{-4}$.
 
-\paragraph{Second campaign (IN PROGRESS; not a certificate).}
+\paragraph{Second campaign (closed; no certificate).}
 Campaign J, directory
 \path{cert3_20260820T181524Z_08ad738a1cf24a08bfc4189e65f9ef44_57a8908ba7b8}
-with code hash \texttt{57a8908ba7b8}, is running with a 72-hour budget per
-slice at the rational target
-$t_J=0.3821660112501052\ge\psi+2\cdot10^{-4}$.  As of 2026-08-21, six slices
-are committed \texttt{COMPLETE} with residual zero: slice~0 processed
-$21{,}891{,}091$ boxes; slice~1, $21{,}637{,}061$; slice~2,
-$24{,}563{,}611$; slice~3, $37{,}877{,}105$; slice~4, $85{,}793{,}971$;
-and slice~7, $93{,}281{,}643$.  Slices~5 and 6 are still running.  The frozen
-collector verdict has not yet been printed; in particular,
-\texttt{COMPOSITE CERTIFICATE} has not been printed for campaign J.
-Therefore campaign J remains IN PROGRESS, and this paper makes no
-certification claim at $t_J$.
+with code hash \texttt{57a8908ba7b8}, ran with a 72-hour budget per slice at
+the rational target
+$t_J=0.3821660112501052\ge\psi+2\cdot10^{-4}$.  Six slices committed
+\texttt{COMPLETE} with residual and stack zero: slices 0--4 and 7 processed
+$21{,}891{,}091$, $21{,}637{,}061$, $24{,}563{,}611$, $37{,}877{,}105$,
+$85{,}793{,}971$, and $93{,}281{,}643$ boxes.  Slices 5 and 6 reached
+$142{,}886{,}584$ and $156{,}713{,}996$ boxes with residual zero, but hit the
+72-hour wall with stack and \texttt{budget\_time} tallies 31 and 29.
+The campaign processed $584{,}645{,}062$ boxes with no residual leaf.
+Its frozen collector exited 1 at admission, without replay, and printed
+\texttt{NO COMPOSITE CERTIFICATE} with exactly six problems: non-COMPLETE
+verdict, nonzero stack, and nonzero time budget for each of those two slices.
+Thus campaign J provides deterministic cost evidence and a negative-control
+collector run, but no certification claim at $t_J$.
 
 \section{A proof of Liu's positive-semidefiniteness hypothesis}
 \label{sec:liu-psd}

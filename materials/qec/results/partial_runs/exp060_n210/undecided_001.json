@@ -1,0 +1,165 @@
+{
+  "A": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      3
+    ]
+  ],
+  "B": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      11,
+      2
+    ]
+  ],
+  "decisions": [
+    {
+      "cnf_sha256": "8a988f8459a7483935916873b263f5166d6c9330322e479b7ee3feef00c4b222",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 9749,
+        "cnf_variables": 3947,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 3051.7601912500104
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 14
+    },
+    {
+      "cnf_sha256": "9f9c1699d3c96f2cc8148b01756c4dd931bc2a07944cafa54d962fb11ad9116f",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 10465,
+        "cnf_variables": 4307,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 0.3670773330377415
+      },
+      "status": "SAT",
+      "support": [
+        41,
+        87,
+        105,
+        115,
+        127,
+        133,
+        135,
+        141,
+        146,
+        166,
+        174,
+        178,
+        184,
+        188,
+        194,
+        200
+      ],
+      "symmetry_break": true,
+      "weight": 16,
+      "weight_cap": 16
+    }
+  ],
+  "duality": {
+    "conclusion": "d_X = d_Z; one certified side determines CSS distance",
+    "maps_HX_to_HZ_exactly": true,
+    "maps_HZ_to_HX_exactly": true,
+    "permutation_is_bijection": true,
+    "permutation_is_involution": true,
+    "permutation_sha256": "8222953f3d6857e43331e6f06488f5cafdc995cd58362b8e16fb97ad478cbb6d",
+    "schema": "exp056-bb-xz-duality-v1",
+    "valid": true
+  },
+  "exact": true,
+  "exact_distance": 16,
+  "group": "undecided",
+  "index": 1,
+  "k": 10,
+  "lower_bound": 16,
+  "n": 210,
+  "parity": {
+    "all_column_degrees_odd": true,
+    "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+    "column_degree_max": 3,
+    "column_degree_min": 3,
+    "effective_even_cap": 14,
+    "requested_cap": 15,
+    "schema": "exp056-kernel-weight-parity-v1",
+    "valid": true
+  },
+  "schema": "exp060-frontier-ratchet-v1",
+  "screen_verdict": "undecided",
+  "threshold": 14,
+  "upper": {
+    "duality_preserves_weight": true,
+    "route": "screen_reduced_or_cdcl_witness",
+    "support": [
+      104,
+      105,
+      110,
+      116,
+      118,
+      124,
+      132,
+      142,
+      144,
+      156,
+      162,
+      164,
+      168,
+      170,
+      195,
+      196,
+      198,
+      204
+    ],
+    "vector_sha256": "95bbc32c5e381ebba4f2944277ff25af951920a73a0396e0a35c8a5837132247",
+    "weight": 18,
+    "x_support": [
+      0,
+      2,
+      13,
+      14,
+      19,
+      22,
+      42,
+      47,
+      53,
+      55,
+      61,
+      73,
+      75,
+      85,
+      93,
+      99,
+      101,
+      113
+    ],
+    "x_valid_bitset": true,
+    "x_valid_numpy": true,
+    "x_vector_sha256": "dc710627382f466648cf2aa2afad3e1c72a7bed4d8c9e98d386044c3d0eaa932",
+    "z_valid_bitset": true,
+    "z_valid_numpy": true
+  },
+  "verdict": "exact"
+}

@@ -43,6 +43,7 @@ import hashlib
 import json
 import time
 from dataclasses import dataclass, field
+from threading import Lock
 from typing import Any
 
 import numpy as np
@@ -56,6 +57,9 @@ from ..gf2.linalg import (
 from ..symplectic.core import StabilizerCode, lambda_swap
 
 ENCODING_VERSION = "sat-decide-v2"
+# PySAT mutates a process-global Formula variable pool while CNFs are built.
+# Residual screen workers run in threads; serialize only construction, not solve.
+_CNF_BUILD_LOCK = Lock()
 
 __all__ = [
     "ENCODING_VERSION",
@@ -219,7 +223,7 @@ def css_side_instance(
     )
 
 
-def build_decision_cnf(instance: DecisionInstance, weight_cap: int):
+def _build_decision_cnf_unlocked(instance: DecisionInstance, weight_cap: int):
     """Equisatisfiable CNF for ``exists nontrivial logical, weight <= cap``."""
 
     from pysat.card import CardEnc, EncType
@@ -288,6 +292,12 @@ def build_decision_cnf(instance: DecisionInstance, weight_cap: int):
         ).clauses
     )
     return cnf
+
+
+def build_decision_cnf(instance: DecisionInstance, weight_cap: int):
+    """Thread-safe construction; preserves the exact canonical clause order."""
+    with _CNF_BUILD_LOCK:
+        return _build_decision_cnf_unlocked(instance, weight_cap)
 
 
 def sector_bundle_digest(selected: list[int], sector_hashes: list[str]) -> str:

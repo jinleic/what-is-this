@@ -1,0 +1,126 @@
+{
+  "A": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      3
+    ]
+  ],
+  "B": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      10,
+      3
+    ]
+  ],
+  "decisions": [
+    {
+      "cnf_sha256": "bbb3d2ee54c20cbff59aafbb9371200a664b0cd5100803586c119facdb579012",
+      "encoding_version": "sat-decide-v2",
+      "kind": "css_z",
+      "solver": {
+        "backend": "pysat",
+        "clauses": 9917,
+        "cnf_variables": 3989,
+        "conflict_budget": 0,
+        "name": "PySAT kissat404",
+        "wall_time_s": 8274.785354875028
+      },
+      "status": "UNSAT",
+      "symmetry_break": true,
+      "weight_cap": 14
+    }
+  ],
+  "duality": {
+    "conclusion": "d_X = d_Z; one certified side determines CSS distance",
+    "maps_HX_to_HZ_exactly": true,
+    "maps_HZ_to_HX_exactly": true,
+    "permutation_is_bijection": true,
+    "permutation_is_involution": true,
+    "permutation_sha256": "8222953f3d6857e43331e6f06488f5cafdc995cd58362b8e16fb97ad478cbb6d",
+    "schema": "exp056-bb-xz-duality-v1",
+    "valid": true
+  },
+  "exact": true,
+  "exact_distance": 16,
+  "group": "undecided",
+  "index": 2,
+  "k": 10,
+  "lower_bound": 16,
+  "n": 210,
+  "parity": {
+    "all_column_degrees_odd": true,
+    "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+    "column_degree_max": 3,
+    "column_degree_min": 3,
+    "effective_even_cap": 14,
+    "requested_cap": 15,
+    "schema": "exp056-kernel-weight-parity-v1",
+    "valid": true
+  },
+  "schema": "exp060-frontier-ratchet-v1",
+  "screen_verdict": "undecided",
+  "threshold": 14,
+  "upper": {
+    "duality_preserves_weight": true,
+    "route": "screen_reduced_or_cdcl_witness",
+    "support": [
+      97,
+      101,
+      108,
+      110,
+      123,
+      129,
+      133,
+      142,
+      155,
+      176,
+      187,
+      189,
+      191,
+      200,
+      202,
+      206
+    ],
+    "vector_sha256": "ca2ca0c2ad49ff45aee8fde0330b38b1a2e60945063284efca1d61ade0122b5a",
+    "weight": 16,
+    "x_support": [
+      2,
+      4,
+      11,
+      15,
+      17,
+      21,
+      26,
+      30,
+      41,
+      62,
+      75,
+      77,
+      88,
+      94,
+      116,
+      120
+    ],
+    "x_valid_bitset": true,
+    "x_valid_numpy": true,
+    "x_vector_sha256": "e2a879b0a72f0b93cb2db069f544000d65793ddf834fbea8380e1ab2cfa7317a",
+    "z_valid_bitset": true,
+    "z_valid_numpy": true
+  },
+  "verdict": "exact"
+}

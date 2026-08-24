@@ -32,12 +32,12 @@ protection; the wider literature contains many more odd-lattice BB codes), and
 $A=(1+x)(y+y^2)$, $B=Ay$, $240/255$ classes demote). Census:
 $653{,}022{,}021$ weight-$\le3$ pairs over $18$ lattices, zero mixed.
 
-**Odd-lattice extension (EXP-055).** The prior claim that $[[90,8,10]]$ was the
-only odd$\times$odd BB code in print was false and is withdrawn: $27$ sourced
-instances now form the validation battery. The published principal-code
-structure becomes, in our bar convention,
+**Odd-lattice extension (EXP-055/056).** The prior claim that $[[90,8,10]]$
+was the only odd$\times$odd BB code in print was false and is withdrawn: $27$
+sourced instances now form the validation battery. The published
+principal-code structure becomes, in our bar convention,
 $J^2\cong\ker H_X/S_Z$ with $J=\bar{\operatorname{Ann}_{\rm left}(A,B)}$;
-verified **27/27**. The pole ceiling has zero violations on the **five**
+verified **27/27**. The pole ceiling has zero violations on the **six**
 independently exact-certified literature rows; all 25 reproduced reported
 values also pass as a non-certifying sanity check. Exhaustive sweep: all $65$
 odd lattices with $\ell m\le180$,
@@ -45,13 +45,17 @@ $4{,}229{,}823{,}962$ weight-$\le3$ pairs, zero $k$ mismatches. Exact screen
 waves produced connected/indecomposable $[[30,8,4]]$, $[[54,8,6]]$ and
 $[[126,12,10]]$ BB references. The first is a new constructor within the
 checked BB tables but **globally dominated** by Grassl's $[[30,8,7]]$; the
-latter two independently exactify Wang--Mueller BP-OSD parameters. None is an
-end-to-end Pareto result.
-Fixed-point screen through $n=126$: **715** symmetry classes / **10,247**
-normalised pairs; all **598/598** classes with a locally exact reference are
-dominated (588 explicit witnesses + 10 CP-SAT), 117 high-$k$ classes have no
-reference, zero survivors/undecided. The $k$ census remains complete through
-$n=360$; no distance-closure claim beyond $n=126$.
+latter two exactify Wang--Mueller BP-OSD parameters. EXP-056 additionally
+exactifies Wang--Mueller's $(3,27)$ $[[162,8,14]]$: 20/20 logical-class orbits
+UNSAT and replayed, plus an explicit weight-14 witness and exact $X/Z$ duality.
+None is an end-to-end Pareto result.
+
+Fixed-point screen through $n=162$: **2,132** symmetry classes / **51,769**
+normalised pairs; all **1,928/1,928** classes with a locally exact reference
+are dominated (1,804 reduced-pole witnesses, 119 CDCL witnesses, five exact
+CP-SAT fallbacks), 204 high-$k$ classes have no reference, zero
+survivors/undecided. The $k$ census remains complete through $n=360$; no
+distance-closure claim beyond $n=162$.
 
 **Circuit level.** No circuit-level result favoured the PBB candidate: depth
 (basis-independent $\ge8$ vs Gross $7$), gates, hook structure, sampled LER and
@@ -163,16 +167,18 @@ Full ordered directions: [`notes/next_breakthroughs.md`](notes/next_breakthrough
   `notes/theorem_je_exact_decision.md`, `notes/theorem_je2_demote_trichotomy.md`,
   `notes/theorem_jg_ideal_invariant.md`; tests `tests/test_exp052_*.py`,
   `tests/test_exp053_ideal_invariant.py`.
-* **[published structure reproduced + new exhaustive computation — EXP-055]**
+* **[published structure reproduced + new exhaustive computation — EXP-055/056]**
   Odd-lattice BB logicals have the exact reciprocal-pole transversal
   $J^2\cong\ker H_X/S_Z$ (Eberhardt–Steffan; $J=\bar I$ is load-bearing).
-  Machine audit: $27/27$ isomorphisms; pole ceiling zero violations on four
+  Machine audit: $27/27$ isomorphisms; pole ceiling zero violations on six
   locally exact references; 65 lattices / $4.23\times10^9$ pairs / zero $k$
-  mismatches. The Pareto screen excludes all BP-OSD/Monte-Carlo estimates,
-  uses explicit reduced logical witnesses first, then capped CP-SAT.
-  Artifacts: `results/processed/exp055_*.json`; proof/convention note:
+  mismatches. EXP-056 exact-certifies $[[162,8,14]]$ by 20 replayed class-orbit
+  UNSATs plus a weight-14 witness. The Pareto screen excludes all unpromoted
+  BP-OSD/Monte-Carlo estimates and uses reduced witnesses, then CDCL witnesses,
+  then exact CP-SAT. Artifacts: `results/processed/exp055_*.json`,
+  `results/certificates/exp056_wm_162_8_14_distance.json`; note:
   `notes/theorem_k_certified_ceiling.md`; tests:
-  `tests/test_exp055_odd_lattice.py`.
+  `tests/test_exp055_odd_lattice.py`, `tests/test_exp056_odd_distance.py`.
 
 * **[exact, in flight — EXP-037]** The programme's central question, asked directly and catalogue-wide: does *any* of the 368 published PBB codes escape the CSS BB envelope at its own length?  A row $[[n,k,\cdot]]$ is **envelope-dominated** when some same-length CSS BB code has $k_C\ge k$ and certified exact $d_C\ge U$, where $U$ is a verified-witness upper bound on the PBB distance.  The asymmetry makes the sweep affordable — cheap SAT witness on the PBB side, expensive UNSAT spent once per CSS code and amortised over every row at that length.  **250 of 368 rows certified envelope-dominated, zero genuine escapees so far**; the 22 flagged rows simply have no certified same-length CSS code with $k_C\ge k$ yet.  Both domination dimensions are re-derived from rebuilt algebra at classification time.
 * **[proved + exact]** For every catalogue PBB $[[144,12,12]]$ member, **every

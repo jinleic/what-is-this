@@ -48,6 +48,9 @@ a further adversarial audit (`SuddenPtarmigan`) executed **$5{,}900{,}863$ linew
 exact checks** over $3{,}016$ arrangements and $812{,}486$ valid selections with
 **zero violations**. The inequality is then used to derive the audited budget case trees
 that drive the $n\in\{11,12,14,18,20\}$ decision campaign; those values remain open.
+For triangular faces we also derive an exact shared-minus-unused edge identity and use
+the classical simplicial family $A(2m,1)$ to refute the tempting coefficient-$1$
+square penalty by infinitely many straight-line arrangements.
 
 ---
 
@@ -461,14 +464,71 @@ located source source-by-source and concluded:
    contains a false local step even in the face convention.
 2. **(Cap) is not contradicted.** Nothing located asserts anything incompatible; the
    classical bounds agree with (1) in their common domain.
-3. The novelty is *precisely* the $C$ term and the $\sum_p k_p(k_p-4)$ penalty —
-   structurally invisible in the face convention ($C\equiv0$, all $k_p=2$).
-4. The **$n(n-2)$ simple special case** is folklore; the claimable novelty is the
-   broad-convention inequality **with** its two refinements and its proof.
+3. The novelty is *precisely* the $C$ term and the
+   $\sum_p k_p(k_p-4)$ penalty -- structurally invisible in the
+   **simple** face convention ($C\equiv0$, all $k_p=2$).
+4. The **$n(n-2)$ simple special case** is folklore; the claimable novelty is
+   the broad-convention inequality **with** its two refinements and its proof.
 
-The internally attempted weaker form $\sum_p(k_p-2)^2$ in place of
-$\sum_p k_p(k_p-4)$ is **false** (report.md §6) — exact witnesses refute its local
-charging; the surviving form is $(k_p)(k_p-4)$.
+For triangular faces, let $F$ be their total number, $M$ the number of bounded
+elementary segments, $E_2$ the number used by triangles on both sides, and
+$E_0$ the number used by no triangle. Exact incidence counting gives
+$$
+3F=M+E_2-E_0,\qquad
+M=n(n-2)-2Q-\sum_p k_p(k_p-2).
+$$
+Therefore the stronger square form
+$$3F\le n(n-2)-2Q-\sum_p(k_p-2)^2$$
+is **exactly equivalent** to
+$$E_2-E_0\le2\sum_p(k_p-2).$$
+
+There is also an exact local-to-global form. At a $k_p$-fold point let $z_p$
+be the number of non-triangular sectors and $r_p$ the number of cyclic runs
+of triangular sectors (set $r_p=0$ when all sectors are triangular). If
+$D_2$ counts doubly used segments with two multipoint endpoints, then
+$$
+3F-\left(n(n-2)-2Q-\sum_p(k_p-2)^2\right)
+=\sum_p(4-z_p-r_p)-E_0-D_2.
+$$
+Indeed, exactly $2k_p-z_p-r_p$ rays at $p$ begin doubly used segments,
+and summing those rays counts every such segment once plus one extra copy
+precisely for the $D_2$ segments. This identity isolates the obstruction:
+fully saturated sector runs contribute $4$, while unused edges and
+multipoint-to-multipoint shared edges refund the charge.
+It is false even in the triangular-face convention. A generic rational chart
+of the classical simplicial arrangement $A(12,1)$ has no parallels,
+$N_3=15$, $N_6=1$, and all $30$ bounded faces triangular, so
+$$3F=90>120-\bigl(15+(6-2)^2\bigr)=89.$$
+The two exact face predicates, full edge census
+$(M,E_2,E_0)=(51,39,0)$, line list, and sector-run census are replayed by
+`scratch/kobon/square_penalty_counterexample.py` and its JSON output. Here
+$\sum_p(4-z_p-r_p)=27$ and $D_2=26$, leaving the observed excess $1$.
+
+More generally, Grünbaum's regular simplicial family $A(2m,1)=R(1)$
+consists of the $m$ side lines and $m$ mirror axes of a regular $m$-gon
+([14], pp. 2, 4). For even $m$, half the axes join opposite vertices and
+half join opposite edge midpoints; for odd $m$, each joins a vertex to the
+opposite edge midpoint. The catalogue's census for $m>3$ is one $m$-fold
+point, $\binom m2$ triple points, and $m$ double points; only $m\ge6$ is used
+here. Projective
+Euler gives $f_2=m^2+m$; after choosing a generic line at infinity, at least
+$m(m-1)$ triangular faces remain bounded. The square inequality fails by at
+least $(m^2-7m+8)/2>0$ for every $m\ge6$. This also rules out every fixed
+coefficient $c>2/3$ in front of the square sum asymptotically. Rasukaru's
+sequential credit therefore cannot be globalised in the proposed
+coefficient-$1$ form; this does not by itself refute the prior mod-$6$
+numerical bound.
+
+The endpoint coefficient $c=2/3$ remains a live candidate. Its first
+proof-producing control is now complete at $n=7$: the scaled inequality
+$$9F+6Q+2\sum_p(k_p-2)^2\le105$$
+holds for every essential seven-line arrangement. The all-degeneracy
+direct-gap order-table instance has 74,507 variables and 152,419 clauses;
+Kissat reports UNSAT and `drat-trim` returns `s VERIFIED` on the
+34,133,280-byte proof. The generator, CNF, proof, checker transcript and hash
+manifest are `square_penalty_sat.py`, `c23_n7_violation.*` and
+`c23_n7_certificate.json`. This finite certificate is evidence for the
+endpoint architecture, not a general proof.
 
 ### 5.3 The multipoint charging step fails even for triangular faces
 
@@ -488,8 +548,10 @@ the stated inference used to deduce that ceiling equality forces a perfect
 configuration. It also explains the surviving capacity coefficient. Merging
 $k-1$ pairwise crossings on each of $k$ lines destroys $k(k-2)$ elementary
 gaps, while the flower realizes all $2k$ possible double-use credits, leaving
-the sharp local net charge $k(k-2)-2k=k(k-4)$. Any repair of the mod-$6$
-argument must therefore be global, coupling saturated flowers across lines.
+the sharp local net charge $k(k-2)-2k=k(k-4)$. Together with the
+$A(2m,1)$ counterexamples above, this shows that a useful global correction
+must be weaker than the full square charge or depend on nonlocal incidence
+structure.
 
 ### 5.4 Additional failures in the broad convention (exact witnesses)
 
@@ -561,6 +623,34 @@ exact certificate with two triple points, `scratch/kobon/n12/n12_lower_certifica
 attains $C=0$: with $Q=0$ and two $k_p=3$ vertices the RHS of (1) is
 $120-2\cdot0-2\cdot(-3)=126$, so that family has slack $126-3\cdot38=12$; any
 hypothetical $T=39$ family would need $C\le126-117=9$.
+
+**New hereditary/sector accelerator (proved, 2026-08-23).** If \(W\) is any
+subset of the arrangement lines, every selected triangular face supported
+entirely in \(W\) remains a distinct triangular face after the other lines are
+deleted. Hence its count is at most the independently established \(K(|W|)\).
+Under exact selection of \(T\) faces, the equivalent complementary cut says
+that at least \(T-K(|W|)\) selected faces meet the deleted lines. For
+\((12,39)\), the non-circular inputs \(K(11)=32\) (Savchuk) and \(K(10)=25\)
+(the earlier verified cube cover) give all one- and two-line deletion cuts.
+
+There is also a local sector cut. At a simple crossing a fixed line pair bounds
+four sectors, hence supports at most four triangular faces. At a finite
+multipoint the pair bounds at most two opposite sectors, and supports none if
+incident lines occur on both arcs between it in the cyclic slope order. The
+combined direct-gap instance has 374,381 variables / 830,030 clauses. In a
+same-process CaDiCaL control, \((9,22)\) fell from 1,034,027 conflicts / 116.3
+seconds to 164,802 / 19.5 seconds, while \((9,21)\) remained SAT. The
+independent exact-rational replay `scratch/kobon/sector_bound_audit.py` checked
+3,600 arrangements, 27,705 triangular faces, 93,000 line pairs and 6,204
+multipoint pairs with zero violations.
+
+As a separate stretchability experiment,
+`scratch/kobon/pappus_relaxation_probe.py` exhibits a nondegenerate dual-Pappus
+incidence pattern admitted by the abstract order axioms but impossible for
+straight lines, then verifies that the three projective Pappus clauses reject
+it. This identifies genuine additional straight-line strength, but full
+Pappus instantiation is not part of the current frontier: its dense
+nine-line antecedent is expected to have low leverage in near-simple optima.
 
 ### 6.3 $n=14$
 
@@ -908,11 +998,13 @@ pin]**; see `scratch/kobon/litrefs.md` and §5 for the current source audit.
    no-multipoint branch" statement are *conditions any hypothetical extremal
    family in those respective branches must satisfy*; they do not establish the
    non-existence of such a family.
-2. **No mod-6 / parity strengthening.** The classical face-convention refinements
-   (the BBL/Blanc even-$n$ parity improvements and the Clément–Bader mod-6 piecewise
-   formula) are of a qualitatively different nature than the degeneracy- and
-   crossing-refined bound here, and are not consequences of (1). Obtaining a version
-   of (1) that *also* captures parity of even-$n$ face counts is open.
+2. **No proved mod-6 / parity strengthening.** The classical face-convention
+   refinements and the Clément–Bader mod-6 formula are not consequences of
+   (1). The natural coefficient-$1$ square penalty is false by the
+   $A(2m,1)$ family in §5.2, and every constant coefficient above $2/3$ fails
+   asymptotically. The endpoint $2/3$ is certified at $n=7$, but whether it is
+   universal, or whether any useful strengthening must use nonlocal incidence
+   data, remains open.
 3. **Straight lines only.** The proof is affine and uses slope/cotangent comparisons
    and straight-line intersection structure; it does **not** extend to general pseudoline
    arrangements, where the order can bend.
@@ -986,12 +1078,20 @@ the broad convention (§5.3).
 
 [13] Felsner, *Arrangements of pseudolines* (Handbook of Discrete and Computational Geometry, ch. 5), bibliography corroborating that the published "maximum triangles" theory is simple/face-convention only.
 
-> **Citation care (from the novelty audit).** Two arXiv identifiers that have circulated
-> in secondary sources are wrong and are *not* cited here: "Blanc 2011, arXiv:1012.1931"
-> and "BBL arXiv:1705.07183" are particle-physics papers; the correct identifiers are
-> Blanc arXiv:0801.2845 and BBL arXiv:0706.0723; the "Clément–Bader 0706.0726"
-> identifier is likewise a physics paper and the true source is the ETH draft PDF [3].
-> OEIS A008765 is unrelated; the companion *bound* sequence is A032765.
+[14] B. Grünbaum, *A catalogue of simplicial arrangements in the real
+projective plane*, Ars Math. Contemp. **2** (2009), no. 1, 1–25,
+doi:[10.26493/1855-3974.88.e12](https://doi.org/10.26493/1855-3974.88.e12);
+pp. 2 and 4 define $A(2m,1)$ and give its multiplicity census.
+
+> **Citation care (from the novelty audit).** Several arXiv identifiers that
+> have circulated are unrelated and are not cited here. Blanc is
+> arXiv:0801.2845, not 1012.1931; BBL is arXiv:0706.0723, not 1705.07183;
+> Clément–Bader is the ETH draft PDF [3], not 0706.0726. For the simplicial
+> family, arXiv:0904.1244 is an astrophysics paper and arXiv:1011.1862 is a
+> lattice-QCD paper; Cuntz's *Simplicial arrangements with up to 27 lines* is
+> arXiv:1108.3000. The proof above is pinned to Grünbaum's canonical published
+> catalogue [14], read directly. OEIS A008765 is unrelated; the companion
+> bound sequence is A032765.
 
 ---
 

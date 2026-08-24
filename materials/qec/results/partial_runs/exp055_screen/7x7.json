@@ -438,14 +438,17 @@
  ],
  "orbit_total": 1792,
  "protocol": {
+  "cdcl_conflict_budget": 1000000,
+  "cdcl_solver": "cadical195",
   "census_sha256": "c6733189b9e5a533daca6b0743ac54e222194509fa9e45c729a9524c34b6b1d5",
   "k_range": [
    8,
    24
   ],
-  "reference_sha256": "e971c84c27da29dfd95bc39794bf1978276197a2e492b30358ddcbf9cfc3628a",
+  "reference_sha256": "86e49b6e239cc5f8460723bb8cf5ae35ededffc7215e42992f9973c6983481a3",
+  "reference_validation_version": "exp055-exact-reference-validator-v7",
   "residual_workers": 8,
-  "time_limit_s": 90.0,
+  "time_limit_s": 120.0,
   "witness_keep": 64,
   "witness_tries": 8
  },
@@ -953,7 +956,7 @@
     47,
     48
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -1109,7 +1112,7 @@
     47,
     48
    ],
-   "witness_wall_s": 0.05
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -1187,7 +1190,7 @@
     47,
     48
    ],
-   "witness_wall_s": 0.03
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -1419,7 +1422,7 @@
     84,
     92
    ],
-   "witness_wall_s": 0.05
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -1497,7 +1500,7 @@
     81,
     94
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -1651,7 +1654,7 @@
     24,
     73
    ],
-   "witness_wall_s": 0.02
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -1729,7 +1732,7 @@
     87,
     97
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -1807,7 +1810,7 @@
     82,
     92
    ],
-   "witness_wall_s": 0.02
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -1883,7 +1886,7 @@
     47,
     96
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.02
   },
   {
    "A": [
@@ -1961,7 +1964,7 @@
     13,
     62
    ],
-   "witness_wall_s": 0.06
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -2349,7 +2352,7 @@
     24,
     73
    ],
-   "witness_wall_s": 0.05
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -2581,7 +2584,7 @@
     88,
     92
    ],
-   "witness_wall_s": 0.04
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -2737,7 +2740,7 @@
     74,
     86
    ],
-   "witness_wall_s": 0.01
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -2891,7 +2894,7 @@
     87,
     96
    ],
-   "witness_wall_s": 0.04
+   "witness_wall_s": 0.01
   },
   {
    "A": [
@@ -3047,7 +3050,7 @@
     24,
     48
    ],
-   "witness_wall_s": 0.04
+   "witness_wall_s": 0.03
   },
   {
    "A": [
@@ -3123,7 +3126,7 @@
     48,
     97
    ],
-   "witness_wall_s": 0.04
+   "witness_wall_s": 0.05
   },
   {
    "A": [
@@ -3204,15 +3207,30 @@
    "witness_wall_s": 0.01
   }
  ],
+ "reference_rebind": {
+  "all_carried_witnesses_rechecked": true,
+  "all_thresholds_monotone": true,
+  "archive": "results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v7/7x7.json",
+  "new_reference_sha256": "86e49b6e239cc5f8460723bb8cf5ae35ededffc7215e42992f9973c6983481a3",
+  "new_validation_version": "exp055-exact-reference-validator-v7",
+  "old_reference_sha256": "10fa66c7ed5280eb64463177c888fa4d242f82573cdcec6d7043b3277e7cacfa",
+  "old_shard_sha256": "d5bd9d97dfc4531266f545e152514db9530f6a45ebfa16f98af222f24bf5f583",
+  "old_validation_version": "exp055-exact-reference-validator-v6",
+  "schema": "exp063-monotone-reference-rebind-v1",
+  "transitions": {
+   "dominated_by_witness->dominated_by_witness": 30,
+   "no_reference->no_reference": 7
+  }
+ },
  "schema": "exp055-screen-v3",
  "solver_calls": 0,
  "survivors": [],
- "time_limit_s": 90.0,
+ "time_limit_s": 120.0,
  "undecided": [],
- "utc": "2026-08-22T12:35:28Z",
+ "utc": "2026-08-23T16:11:46Z",
  "verdicts": {
   "dominated_by_witness": 30,
   "no_reference": 7
  },
- "wall_s": 5.1
+ "wall_s": 7.4
 }

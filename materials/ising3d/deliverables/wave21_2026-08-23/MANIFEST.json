@@ -1,0 +1,151 @@
+{
+  "bundle": "ising3d-exact-research-wave-21",
+  "generated_utc": "2026-08-23T15:24:41.635418+00:00",
+  "excluded_from_hash_list": [
+    "MANIFEST.json"
+  ],
+  "file_count": 28,
+  "total_bytes": 1967598,
+  "files": [
+    {
+      "path": "BUNDLE_INFO.txt",
+      "bytes": 2466,
+      "sha256": "e2752be7ce49f85c271151c2ac64c500a002200b0c237537b0c01bc35dde7782"
+    },
+    {
+      "path": "artifacts/docs/PROGRESS.md",
+      "bytes": 375635,
+      "sha256": "e61691890395892a13ab0e4a4d5e54c84fc01be0238ad0ab68cf4c27be71659a"
+    },
+    {
+      "path": "artifacts/docs/README.md",
+      "bytes": 40285,
+      "sha256": "e1ad277efdd9fe26e6bd85c2a662332769167fda9147021c3e0a3208f96de968"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/current_state.md",
+      "bytes": 50659,
+      "sha256": "35faaa5d0ec0e24f44c9f09dd4811102be05d0f7e0c368b7a22d396ca7c1031b"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/next_actions.md",
+      "bytes": 19850,
+      "sha256": "15d4633f0fef6e3397418015dbfbad4be463d8e4140e68fafc033e2976f1d2c6"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/verified_results.json",
+      "bytes": 140302,
+      "sha256": "91974893d4e5d9f1ac06136ab50ce09f4c219b60e2bfb4deb009a4756787b165"
+    },
+    {
+      "path": "artifacts/docs/notes/frontier_analysis.md",
+      "bytes": 16170,
+      "sha256": "b835c9a072ec62ad1de2bf1fcd113787598c989d837543536a3ba3e01b081162"
+    },
+    {
+      "path": "artifacts/docs/notes/hypotheses.csv",
+      "bytes": 560059,
+      "sha256": "0650ce008ab0e5687e1870858ad2266bffd3a57dd3b356d59f789189a321e920"
+    },
+    {
+      "path": "artifacts/experiments/e228_bipartite_log_moments.py",
+      "bytes": 36087,
+      "sha256": "8272cca7e55f0ef8e3efac2698007066a6ba6d2091d9f7602eed4ceacf31e2fe"
+    },
+    {
+      "path": "artifacts/experiments/e229_finite_memory_saw14.py",
+      "bytes": 23212,
+      "sha256": "0306f2a6aafe9a98b1708ef08b43bebedf613d1e35c81200124594e2584101fe"
+    },
+    {
+      "path": "artifacts/experiments/e230_wlaw_rank_mechanism.py",
+      "bytes": 30397,
+      "sha256": "c2c8a3644777796f5f5b15e1643d87918fdfe45a0f911c2bbb91ecc3c2f20ce4"
+    },
+    {
+      "path": "artifacts/experiments/e231_phase_sensitive_upper.py",
+      "bytes": 21263,
+      "sha256": "eb234db60e5a94e5cda4d9ee1aecaee6b9ea5b22d39372a8162ca382c549f8cc"
+    },
+    {
+      "path": "artifacts/experiments/e232_trace_resultant.py",
+      "bytes": 11687,
+      "sha256": "e770e145f4d4a5fee1442812706c3c893f2f1158bafa605ce34793236799efc8"
+    },
+    {
+      "path": "artifacts/proofs/bipartite_log_moments.md",
+      "bytes": 14094,
+      "sha256": "2b196907fbe798be9c91df2a3481174a118033bc68e9f8792548f864c8367c11"
+    },
+    {
+      "path": "artifacts/proofs/kc_lower_memory14.md",
+      "bytes": 3156,
+      "sha256": "87f5ca006a333080cdcfd1c1be92aa747a8291f576f8d41a3d60bd00263a34d4"
+    },
+    {
+      "path": "artifacts/proofs/trace_resultant.md",
+      "bytes": 9289,
+      "sha256": "6a8088fef99eded5069ac74890cb0b394f0b3396e855ba0a239803f0d9584bf6"
+    },
+    {
+      "path": "artifacts/proofs/upper_phase_sensitive.md",
+      "bytes": 17712,
+      "sha256": "41f0d3bc1a6474b2244e55f4adf09c67e86619129d95865eef557646f9feda1f"
+    },
+    {
+      "path": "artifacts/proofs/wlaw_rank_mechanism.md",
+      "bytes": 13853,
+      "sha256": "226674d4b32129bd81e05dcee2a245359f075599714ec6eb1068ad70d543f2e3"
+    },
+    {
+      "path": "artifacts/results/algebra_growth/wlaw_rank_mechanism.json",
+      "bytes": 93443,
+      "sha256": "f277440fa05be9685f3b2e02b23b0f08cbdd1786ac8918ba4c8f407ca971480e"
+    },
+    {
+      "path": "artifacts/results/bounds/finite_memory_saw14.json",
+      "bytes": 17008,
+      "sha256": "cf0c67715d75d1b83a8ab2c4cc6a28853a140307d8352ef1900bd6da35edb967"
+    },
+    {
+      "path": "artifacts/results/bounds/upper_phase_sensitive.json",
+      "bytes": 13856,
+      "sha256": "77a3c6abc2164b13a1a3f87001631e6d8f46c04420b0c14883a0128ba52c6b25"
+    },
+    {
+      "path": "artifacts/results/spectral/bipartite_log_moments.json",
+      "bytes": 366265,
+      "sha256": "53d6b69e3d99d8f5f6addc0068bc0f618d8bec11e2df2ef2c9bd8bac8828ce4d"
+    },
+    {
+      "path": "artifacts/results/spectral/trace_resultant.json",
+      "bytes": 7379,
+      "sha256": "bff1ada03b087be570839bcdf1b6dad16fefbe922e51ca0a39c2788286e6df57"
+    },
+    {
+      "path": "artifacts/tests/test_bipartite_log_moments.py",
+      "bytes": 25254,
+      "sha256": "ea261c782ece2ae02e4a3d739cb476dd267b3ae6dd92fecbaffe80004199e363"
+    },
+    {
+      "path": "artifacts/tests/test_finite_memory_saw14.py",
+      "bytes": 7250,
+      "sha256": "7b786f2e14ded927c2af50c2bba17afc4c16a21e967888f67a493caed8e74204"
+    },
+    {
+      "path": "artifacts/tests/test_trace_resultant.py",
+      "bytes": 9426,
+      "sha256": "5021e380a8ad3749193a98e0cd6dc48ed0c0ea046a06aa8ffe1e635227942b0f"
+    },
+    {
+      "path": "artifacts/tests/test_upper_phase_sensitive.py",
+      "bytes": 18730,
+      "sha256": "fe07c8881deacaa8c01067f527098c150631a025fd2cdee19103b3ae6149bf48"
+    },
+    {
+      "path": "artifacts/tests/test_wlaw_rank_mechanism.py",
+      "bytes": 22811,
+      "sha256": "4c7d823eb9735d70a7e42ca1dc32e89032a263d0111f3ebb348d2505e50bc8cb"
+    }
+  ]
+}

@@ -1211,3 +1211,204 @@ classical Schinzel H alone (`/tmp/l22_elimination.md`;
    `CONDITIONAL.md`, §§1–2).  This is a PROVED implication with a
    CONDITIONAL conclusion: Schinzel H remains unproved, and
    H10/$\mathbb Q$ remains open.
+
+## Session 2026-08-22 — L23/L24: the half-sieve frontier and the dyadic end of the diagonal
+
+1. **The function-field Capell idea.**  On the canonical branch
+   $\tau^\dagger=(1+2a^2)/A$ one has
+   $\alpha=4a^4=(2a^2)^2$, so the tied quaternion is exactly
+   $(P(b),2b)$ and the member surface is
+   $$U^2-2bV^2=P(b)W^2.$$
+   If $\theta$ is the root of the irreducible octic, making
+   $2\theta$ a square in $K=\mathbb Q(\theta)$ would split the
+   degree-$8$ discriminant point.  Capell makes the hope precise:
+   $$2\theta\in K^2\iff P(u^2/2)\ \text{is reducible},\qquad
+     N_{K/\mathbb Q}(2\theta)=256.$$
+   The square norm is only necessary.  At the target prime, odd
+   $v_w(z)$ gives an odd left-edge valuation for every $a$; after the
+   free refinement $a\not\equiv1\pmod w$, the horizontal root
+   $\beta=(2As^2)^{-1}$ has
+   $2\beta=1/(As^2)$ in the nonsquare class $1/A$.  Thus the selected
+   protocol cannot realize the Capell collapse.  A pre-existing class
+   with even $v_w(z)$ and $w\mid s$ remains OPEN uniformly; all $353$
+   recorded rows are settled only because their exact local or
+   reciprocal certificates cover them.
+
+2. **The false starts were corrected rather than promoted.**  The
+   identity
+   $$H=(A/4)P=X^2+ALY^2,\qquad L=1-2As^2b$$
+   first suggested exact norm matching.  The complete coefficient-linear
+   classification requires both $2b=-ALq^2$ and $(A,L)=1$, and its
+   full $2$-adic analysis shows every point misses $\Phi$.  A
+   polynomial identity $P=U^2-2bV^2$ already fails at
+   $P(0)=(2a^4Z^2)^2A$.  On $\Phi$,
+   $v_2(P)=4+4\min(v_2(Z),0)$, so
+   $P=\pm2b\,\square$ is empty; $P=A\,\mathrm{Norm}$ forces
+   $(P,2b)_2=-1$; and the fixed-$P$ square locus is genus $1$, not
+   genus $0$.  The first admissible factor ansatz
+   $$L=-A\rho^2,\qquad H=(X-A\rho Y)(X+A\rho Y)$$
+   is real, but it leaves scoped bad Hilbert symbols and genus-$4$
+   residual curves.  Fixed twists merely relocate the character.
+   Letting $a$ move also corrected an overstatement: on the
+   $a(0)=0$ branch, $Q^4\Vert H$ and the certified squareclass
+   representative has degree $18$ with factor degrees $2,16$.
+   There is no universal minimum-$21$ claim.
+
+3. **The half-sieve theorem and its barrier.**  For the selected
+   linear/octic pair, the bad-root density has exact Chebotarev
+   dimension $\kappa=1/2$.  Bombieri--Vinogradov gives
+   $D=X^{1/2}/(\log X)^B$, and the semilinear lower sieve at
+   $z=X^{49/100}$ proves
+   $$\#\{t\asymp X:Q(t)\ {\rm prime},\
+     \text{no bad root prime}<z\}\gg X/(\log X)^{3/2}.$$
+   This is unconditional small-prime cleanliness.  It is not a member
+   theorem: $|G(t)|=X^{8+o(1)}$ can retain $16$ large factors, and
+   reciprocity permits $0,2,\ldots,16$ bad ones.  The first missing
+   estimate is the parity-sensitive sector with
+   $p_1,p_2\ge z$, $p_1p_2>D$, both signs bad and both valuations odd.
+   Even Elliott--Halberstam leaves eight factors; Kao reaches only
+   total $P_{12}$ after an AP adaptation, while reciprocity needs
+   $R_{\rm bad}\le1$.  Schinzel H was not removed.
+
+4. **The fixed surface explains the algebraic wall.**  The conic bundle
+   has ten geometric degenerate fibres in closed degrees $1+8+1$ with
+   splitting classes $(A,2\theta,A)$.  Since
+   $N(2\theta)=256$, Faddeev leaves the sole relation
+   $e_0=e_\infty$.  On the selected nonsquare scope,
+   $$\operatorname{rank}_{\rm nonsplit}=10,\qquad
+     \operatorname{Br}(X)/\operatorname{Br}(\mathbb Q)
+       =\mathbb Z/2\langle(A,b)\rangle.$$
+   The hypothetical $2\theta$-square case would have rank $2$ and
+   trivial Brauer quotient, but L23 rules it out on the selected
+   protocol.  Harpaz--Wei--Wittenberg first fails at rank $\le2$;
+   Browning--Schindler fails at rank $\le3$; Shute first fails at
+   residue degree $8$; and the non-split degree-$8$ closed fibre lies
+   outside the applicable HSW hypothesis.  No checked unconditional
+   fibration theorem supplies the member.
+
+5. **The diagonal looked like a five-count before arithmetic was
+   imposed.**  Identifying the square-branch hyperbola coordinates with
+   the tied variables gives two exact systems.  With $u=r^2$ in
+   orientation I and $u=y^2$ in orientation II, their eliminants are
+   $$
+   \begin{aligned}
+   Q_I&=Au^2+(A^2-c^2-16AB)u+16A^2Bs^2-16A,\\
+   Q_{II}&=Au^2-(c^2+16AB)u+16A^2B(s^2-1)-16A.
+   \end{aligned}
+   $$
+   In each case $u$ and $A+u$ must both be squares.  Clearing by the
+   existing square $(Ab^2D)^2$ yields a finite-flat degree-$8$ cover,
+   so its tied image has rank at most $1$ and the formal intersection
+   count is $2+(3+1-1)\le5$.  This was the L24 discovery, not yet a
+   definition: the image still had to meet $\Phi$.
+
+6. **The dyadic refutation is complete in both orientations.**  On
+   $\Phi$, $A\equiv5\pmod{32}$ and $v_2(c)\ge4$.  Orientation I has
+   normalized coefficient valuations $(4,0,0)$, forcing
+   $v_2(u)=0$ or $4$; neither permits both $u$ and $A+u$ to be squares.
+   Orientation II is
+   $$u^2-32hu+16e=0,\qquad h,e\in\mathbb Z_2^\times.$$
+   It forces $u=4t^2$ with $t$ odd, and division by $16$ gives the
+   exhaustive congruence
+   $$0\equiv8+2Ab(s^2-1)\pmod{16},$$
+   which would require the impossible $v_2(s^2-1)=2$.  Thus both
+   diagonal images are uniformly empty on $\Phi$ and the nominal
+   five-count is vacuous.  Odd target places are locally soluble in
+   orientation II's standard $k=1$ stratum, so the obstruction is
+   genuinely at $2$.  The generic cover has Galois closure
+   $V_4\wr C_2$ of order $32$, genus-$35$ actual-cell slices, a
+   genus-$53$ actual-$z$ slice, and no base-rational section.  The
+   $370$-cell, $4{,}026{,}282$-orientation zero-hit search is
+   corroboration only; the mod-$16$ exhaustion is the proof.
+
+7. **Audits and the character-count repair.**  HalfSieveAudit,
+   FibrationAudit and DiagonalAudit returned SOUND at confidences
+   $0.90$, $0.88$ and $0.90$.  Their applied fixes included:
+   divisor-bounded (not bounded-multiplicity) BV residue counts; the
+   literal identity $2\beta=1/(As^2)$, not $1/A$; no universal
+   first-polygon $2$-adic Capell claim; the degree-$18$ correction;
+   the non-split non-rational fibre as the HSW failure; one mod-$16$
+   proof covering both parities of $s$; and the rule that finite no-hit
+   scans prove nothing uniformly.  The L20 character count is now
+   recorded in its only correct general form:
+   $$
+   \#\left\{a\bmod w:
+   \left(\frac{1+4a^2}{w}\right)=-1\right\}
+   =\frac{w-\left(\frac{-1}{w}\right)}2
+   =
+   \begin{cases}
+   (w+1)/2,&w\equiv3\pmod4,\\
+   (w-1)/2,&w\equiv1\pmod4.
+   \end{cases}
+   $$
+   The old blanket $(w+1)/2$ count was false outside the
+   $w\equiv3\pmod4$ scope.  The final status is unchanged:
+   classical Schinzel H remains the sole conjectural input to the
+   conditional six-count, and H10/$\mathbb Q$ remains open.
+
+## Session 2026-08-23 — L25–L27: scaling, a reciprocal tie, and a one-piece aligned shear
+
+1. **L25 separated an accidental dyadic wall from the coupled
+   architecture.**  The fixed type-I scalings $(2X,\rho)$ and
+   $(2X,\rho/2)$ are admissible exactly on even and odd $s$,
+   respectively.  The target formula with determinant $-2400$ is on a
+   freely chosen unit-$b$ stratum, not an aligned L20 target.  Audit
+   corrected its Jacobian label to the $(\rho,X)$ block.  The even real
+   bridge sample was also corrected from the canonically rejected
+   $b=1$ value to the guarded sample $(a,b,Z)=(1,3,-10)$.
+
+2. **L26 is a new reciprocal six-count tie.**  With $Z=z^2$ and
+   $\eta=Z(b+1)/(Db)$,
+   $$
+   P_{\rm rec}(b)=b^4T(b+b^{-1}),\qquad \deg T=4.
+   $$
+   On $\tau^\dagger$, $P_{\rm rec}$ is a $\mathbb Q_2$-square for every
+   guarded $\Phi$ base, standard W1 targets lift, and
+   $$
+   \left(\frac{2b}{p}\right)
+   =\left(\frac{2(u+2)}p\right).
+   $$
+   The character therefore descends to a quartic trace algebra.  The
+   field and nontrivial quadratic-extension language is conditional on
+   $T$ being irreducible and $2(\theta+2)$ being nonsquare.  The one
+   $(a,z)=(1,3)$ modular certificate is EVIDENCE only.
+
+3. **L27 is a genuinely non-diagonal one-piece local solution.**  The
+   fixed shear
+   $$
+   (y,r)=(2X+28\rho,\ sX+\rho)
+   $$
+   has determinant $2(1-14s)$ and one strong-Hensel argument covers
+   every dyadic $s$-parity.  On the standard aligned target stratum,
+   putting $x=\rho^2$ reduces existence to the character pattern
+   $$
+   \chi(x)=\chi(195x^2-57x+4)=+1,\qquad
+   \chi(195x^2-56x+4)=-1.
+   $$
+   Weil bounds give at least
+   $(w-11\sqrt w-26)/8>0$ smooth residues for $w\ge197$; both signs were
+   exhausted for all $43$ odd primes below $197$.  The guarded real row
+   uses $(a,b,Z)=(1,-1,-10)$.  The residual global cover is an exact
+   octic in $\lambda=X+\rho$ with leading $225A$ and constant $169A^5$.
+
+4. **Creative alternatives were tested, not promoted.**  The even
+   pullback $Z=z^4$ with the $\alpha\sim A$ branch removes both displayed
+   L23c target Capell tests, but that branch is itself locally
+   incompatible with a standard ramified target; the chain does not
+   move.  A parity-aware divisor-spin expansion is exact, but on a
+   bad--bad pair reciprocity makes the product character $+1$, reinforcing
+   rather than cancelling the pair sector.  A rationally parameterized
+   $\Phi$ family reduces another route to an explicit low-degree
+   multinorm/weak-approximation problem, whose Brauer obstruction and
+   global points remain OPEN.
+
+5. **Audit and scope.**  ReciprocalTieAudit caught three load-bearing
+   qualifications: W1 unit guards, the canonical $b\ne1$ bridge domain,
+   and conditional trace-field language.  TriangularShearAudit
+   independently rederived the octic, strong-Hensel proof, character
+   count, zero-weight correction, threshold, L20 compatibility and real
+   bracket, with no remaining high-confidence finding.  Both new
+   producers replay deterministically.  No global member, five-count,
+   unconditional quantifier record, or H10/$\mathbb Q$ solution is
+   claimed; classical Schinzel H remains the sole conjectural input to
+   the established conditional six-count.

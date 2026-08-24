@@ -14716,6 +14716,18 @@
    "evidence:tests": "tests/test_exp055_odd_lattice.py + tests/test_paper_claims.py (38 targeted); full suite 961 passed, 1 skipped",
    "evidence:note": "notes/theorem_k_certified_ceiling.md; notes/next_breakthroughs.md; notes/failed_routes.md FR-025/026; reports/paper_pbb_nogo.pdf (17 pp)",
    "classification": "PUBLISHED STRUCTURE REPRODUCED + EXACT COMPUTATION + NEW BB CONSTRUCTOR (GLOBALLY DOMINATED)"
+  },
+  {
+   "id": "exp056:odd_lattice_exact_162_screen_closure",
+   "date": "2026-08-22",
+   "kind": "theorem+exact-computation",
+   "statement": "EXP-056 EXACT DISTANCE AND FIXED-POINT CLOSURE. Wang-Mueller's (3,27) constructor A=1+y^10+y^14, B=y^12+x+x^2 is exactly [[162,8,14]]: the 255 nonzero logical classes partition into 20 verified automorphism orbits; all 20 sparse-generator cap-12 CNFs are UNSAT and all 20 replay with the same instance digest and encoding version; odd column degree proves every kernel word even, so cap 12 excludes 13; a weight-14 logical passes independent NumPy/bitset checks; an exact BB permutation proves d_X=d_Z. The source BP-OSD value remains labelled an estimate and is promoted only through a pure rebuilt-certificate validator. Fixed-point screen through n=162: 13 nonempty-frontier lattices, 2,132 symmetry classes / 51,769 normalised pairs; all 1,928 referenced classes dominated (1,804 reduced-pole witnesses, 119 CDCL witnesses, five exact CP-SAT fallbacks), 204 no-reference, zero survivors/undecided; all 1,923 persisted witnesses physically rechecked. Generic fixed-functional sectors drop the unsound monolithic origin anchor (FR-027).",
+   "evidence:certificate": "results/certificates/exp056_wm_162_8_14_distance.json",
+   "evidence:screen": "results/processed/exp055_odd_lattice_screen.json; results/certificates/exp055_odd_lattice_survivors.json",
+   "evidence:experiment": "experiments/exp056_odd_distance.py; experiments/exp055_odd_lattice_sweep.py",
+   "evidence:tests": "tests/test_exp056_odd_distance.py; tests/test_exp055_odd_lattice.py; tests/test_paper_claims.py; 49 targeted passed; full suite 972 passed, 1 skipped",
+   "evidence:note": "notes/theorem_k_certified_ceiling.md; notes/failed_routes.md FR-027; reports/paper_pbb_nogo.pdf (17 pages, zero undefined references)",
+   "classification": "EXACT COMPUTATION + REPLAYED CERTIFICATE + COMPLETE BOUNDED SCREEN"
   }
  ]
 }

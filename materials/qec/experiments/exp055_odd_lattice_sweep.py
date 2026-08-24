@@ -65,6 +65,7 @@ import hashlib
 import importlib.util
 import itertools
 import json
+from functools import lru_cache
 import os
 import random
 import sys
@@ -91,6 +92,13 @@ E53 = _load("exp053", "exp053_ideal_classification.py")
 
 from qec_research.codes.bicycle import BRAVYI_BB, poly_matrix  # noqa: E402
 from qec_research.distance.exact import exact_distance_css  # noqa: E402
+from qec_research.distance.sat_decide import (  # noqa: E402
+    ENCODING_VERSION,
+    css_side_instance,
+    decide_weight_bounded,
+    decision_cnf_digest,
+    verify_witness_two_paths,
+)
 from qec_research.gf2.linalg import nullspace_np, rank_np, rref_np  # noqa: E402
 
 SCHEMA = "exp055-odd-lattice-sweep-v1"
@@ -108,6 +116,9 @@ WITNESS_TRIES = 8
 WITNESS_KEEP = 64
 SCREEN_RESIDUAL_WORKERS = 8
 DIM_I_ENUM_CAP = 16      # 2^16 vectors per enumeration keeps memory bounded
+SCREEN_CDCL_CONFLICT_BUDGET = 1_000_000
+SCREEN_CDCL_SOLVER = "cadical195"
+REFERENCE_VALIDATION_VERSION = "exp055-exact-reference-validator-v7"
 CERT_TIME_LIMIT_S = 900.0
 CERT_WORKERS = 8
 
@@ -415,7 +426,10 @@ LITERATURE_ODD: list[dict] = [
     {"ell": 5, "m": 15, "k": 16, "d": 8, "A": [(0, 0), (0, 6), (0, 8)],
      "B": [(0, 5), (1, 0), (4, 0)], "source": "2408.10001v4 Table 1"},
     {"ell": 3, "m": 27, "k": 8, "d": 14, "A": [(0, 0), (0, 10), (0, 14)],
-     "B": [(0, 12), (1, 0), (2, 0)], "source": "2408.10001v4 Table 1"},
+     "B": [(0, 12), (1, 0), (2, 0)], "source": "2408.10001v4 Table 1",
+     "source_distance_estimate": True, "distance_exact_certified_here": True,
+     "distance_certificate":
+         "results/certificates/exp056_wm_162_8_14_distance.json"},
     {"ell": 7, "m": 11, "k": 6, "d": 16, "pi_A": [0, 4, 31], "pi_B": [0, 19, 53],
      "source": "2408.10001v4 App.C Table 4", "unreproduced": True},
     {"ell": 9, "m": 9, "k": 4, "d": 16, "A": [(0, 0), (1, 0), (0, 1)],
@@ -429,6 +443,265 @@ LITERATURE_ODD: list[dict] = [
     {"ell": 9, "m": 15, "k": 8, "d": 18, "A": [(3, 0), (0, 1), (0, 2)],
      "B": [(0, 3), (1, 0), (2, 0)], "source": "2407.03973v1 Table 1"},
 ]
+
+
+def _certificate_stat(path: Path) -> tuple[int, int, int, int, int]:
+    stat = path.stat()
+    return (
+        int(stat.st_dev), int(stat.st_ino), int(stat.st_size),
+        int(stat.st_mtime_ns), int(stat.st_ctime_ns),
+    )
+
+
+@lru_cache(maxsize=None)
+def _read_distance_certificate(
+    relative_path: str, snapshot: tuple[int, int, int, int, int]
+) -> tuple[dict, str]:
+    path = ROOT / relative_path
+    payload = path.read_bytes()
+    if _certificate_stat(path) != snapshot:
+        raise RuntimeError(f"distance certificate changed while reading: {relative_path}")
+    return json.loads(payload), hashlib.sha256(payload).hexdigest()
+
+
+def _distance_certificate_snapshot(relative_path: str) -> tuple[dict, str]:
+    path = ROOT / relative_path
+    if not path.exists():
+        raise RuntimeError(f"required distance certificate missing: {relative_path}")
+    return _read_distance_certificate(relative_path, _certificate_stat(path))
+
+
+@lru_cache(maxsize=1)
+def _exp056_validator_module():
+    return _load("exp056_certificate_validator", "exp056_odd_distance.py")
+
+
+@lru_cache(maxsize=None)
+def _validated_exp056_snapshot(
+    relative_path: str, snapshot: tuple[int, int, int, int, int]
+) -> tuple[dict, str]:
+    certificate, certificate_sha256 = _read_distance_certificate(
+        relative_path, snapshot
+    )
+    _exp056_validator_module().validate_exact_certificate_payload(certificate)
+    return certificate, certificate_sha256
+
+
+def _validated_distance_reference(rec: dict) -> tuple[bool, str | None]:
+    if not rec.get("distance_exact_certified_here", False):
+        return False, None
+    relative = rec.get("distance_certificate")
+    if relative is None:
+        return True, None
+    path = ROOT / str(relative)
+    if not path.exists():
+        raise RuntimeError(f"required distance certificate missing: {relative}")
+    certificate, certificate_sha256 = _validated_exp056_snapshot(
+        str(relative), _certificate_stat(path)
+    )
+    verdict = certificate.get("verdict", {})
+    target = certificate.get("target", {})
+    identity = certificate.get("identity", {})
+    lower = certificate.get("lower_bound", {}).get("class_route", {})
+    upper = certificate.get("upper_bound", {})
+    A, B = _terms_of(rec)
+    HX, HZ = E53.bb_from_terms(rec["ell"], rec["m"], A, B)
+    matrix_sha = lambda matrix: hashlib.sha256(
+        np.ascontiguousarray(np.asarray(matrix, dtype=np.uint8) & 1).tobytes()
+    ).hexdigest()
+    valid = bool(
+        certificate.get("schema") == "exp056-odd-orbit-distance-v1"
+        and verdict.get("exact") is True
+        and int(verdict.get("d", -1)) == int(rec["d"])
+        and int(verdict.get("d_X", -1)) == int(rec["d"])
+        and int(verdict.get("d_Z", -1)) == int(rec["d"])
+        and int(target.get("ell", -1)) == int(rec["ell"])
+        and int(target.get("m", -1)) == int(rec["m"])
+        and int(target.get("expected_k", -1)) == int(rec["k"])
+        and target.get("A") == [list(term) for term in A]
+        and target.get("B") == [list(term) for term in B]
+        and identity.get("HX_sha256") == matrix_sha(HX)
+        and identity.get("HZ_sha256") == matrix_sha(HZ)
+        and lower.get("all_classes_unsat") is True
+        and lower.get("all_classes_replayed") is True
+        and int(upper.get("weight", -1)) == int(rec["d"])
+        and upper.get("z_valid_numpy") is True
+        and upper.get("z_valid_bitset") is True
+        and upper.get("x_valid_numpy") is True
+        and upper.get("x_valid_bitset") is True
+    )
+    if not valid:
+        raise RuntimeError(
+            f"distance certificate does not bind [[{2 * rec['ell'] * rec['m']},"
+            f"{rec['k']},{rec['d']}]]: {relative}"
+        )
+    return True, certificate_sha256
+
+
+def _distance_exact_here(rec: dict) -> bool:
+    return _validated_distance_reference(rec)[0]
+
+def _exp027_matrix_fingerprint(*matrices: np.ndarray) -> str:
+    """Hash matrices with the exact EXP-027/037 shape-aware convention."""
+    digest = hashlib.sha256()
+    for matrix in matrices:
+        array = np.ascontiguousarray(np.asarray(matrix, dtype=np.uint8) & 1)
+        digest.update(len(array.shape).to_bytes(1, "big"))
+        for dimension in array.shape:
+            digest.update(int(dimension).to_bytes(8, "big"))
+        digest.update(array.tobytes())
+    return digest.hexdigest()
+
+
+def validate_exp037_reference_payload(rec: dict, certificate: dict) -> None:
+    """Rebuild and bind one legacy EXP-037 exact CSS distance certificate."""
+    try:
+        ell, m = int(rec["ell"]), int(rec["m"])
+        n, k, distance = int(rec["n"]), int(rec["k"]), int(rec["d"])
+        A = [tuple(map(int, term)) for term in rec["A"]]
+        B = [tuple(map(int, term)) for term in rec["B"]]
+        source_index = int(rec["source_catalogue_index"])
+    except (KeyError, TypeError, ValueError) as exc:
+        raise RuntimeError("EXP-037 reference identity is incomplete") from exc
+
+    HX, HZ = E53.bb_from_terms(ell, m, A, B)
+    instances = {
+        side: css_side_instance(HX, HZ, side, block_length=ell * m)
+        for side in ("x", "z")
+    }
+    lower_hashes = {
+        side: decision_cnf_digest(instances[side], distance - 1)
+        for side in ("x", "z")
+    }
+    calls = certificate.get("calls", [])
+    lower_bound_matches = all(
+        any(
+            call.get("side") == side
+            and int(call.get("cap", -1)) == distance - 1
+            and call.get("status") == "UNSAT"
+            and call.get("cnf_sha256") == lower_hashes[side]
+            for call in calls
+        )
+        for side in ("x", "z")
+    )
+
+    witness_side = certificate.get("witness_side")
+    witness = np.asarray(certificate.get("witness_vector", []), dtype=np.uint8)
+    witness_check = (
+        verify_witness_two_paths(instances[witness_side], witness)
+        if witness_side in instances and witness.shape == (n,)
+        else {"valid": False}
+    )
+    rx, rz = rank_np(HX), rank_np(HZ)
+    valid = bool(
+        certificate.get("schema") == "exp037-envelope-classification-v1"
+        and certificate.get("encoding_version") == ENCODING_VERSION
+        and certificate.get("exact") is True
+        and int(certificate.get("n", -1)) == n == 2 * ell * m
+        and int(certificate.get("k", -1)) == k == n - rx - rz
+        and int(certificate.get("distance", -1)) == distance
+        and int(certificate.get("certified_upper_bound", -1)) == distance
+        and int(certificate.get("rank_HX", -1)) == rx
+        and int(certificate.get("rank_HZ", -1)) == rz
+        and int(certificate.get("source_catalogue_index", -1)) == source_index
+        and certificate.get("css_fingerprint")
+        == _exp027_matrix_fingerprint(HX, HZ)
+        and lower_bound_matches
+        and witness_check.get("valid") is True
+        and int(witness.sum()) == distance
+    )
+    if not valid:
+        raise RuntimeError(
+            f"EXP-037 distance certificate does not bind [[{n},{k},{distance}]]"
+        )
+
+
+@lru_cache(maxsize=None)
+def _validated_exp037_reference_snapshot(
+    relative_path: str,
+    snapshot: tuple[int, int, int, int, int],
+    reference_json: str,
+) -> tuple[dict, str]:
+    certificate, certificate_sha256 = _read_distance_certificate(
+        relative_path, snapshot
+    )
+    validate_exp037_reference_payload(json.loads(reference_json), certificate)
+    return certificate, certificate_sha256
+
+@lru_cache(maxsize=None)
+def _frontier_validator_module(module_name: str, filename: str):
+    return _load(module_name, filename)
+
+
+@lru_cache(maxsize=None)
+def _validated_frontier_reference_snapshot(
+    relative_path: str,
+    snapshot: tuple[int, int, int, int, int],
+    reference_json: str,
+    label: str,
+    module_file: str,
+) -> tuple[dict, str]:
+    certificate, certificate_sha256 = _read_distance_certificate(
+        relative_path, snapshot
+    )
+    _frontier_validator_module(
+        f"{label.lower()}_certificate_validator", module_file
+    ).validate_exact_certificate_payload(certificate)
+    rec = json.loads(reference_json)
+    identity = certificate.get("identity", {})
+    target = identity.get("target", {})
+    valid = bool(
+        int(identity.get("n", -1)) == int(rec["n"])
+        and int(identity.get("k", -1)) == int(rec["k"])
+        and int(target.get("expected_d", -1)) == int(rec["d"])
+        and int(target.get("ell", -1)) == int(rec["ell"])
+        and int(target.get("m", -1)) == int(rec["m"])
+        and target.get("A") == rec["A"]
+        and target.get("B") == rec["B"]
+    )
+    if not valid:
+        raise RuntimeError(
+            f"{label} distance certificate does not bind "
+            f"[[{rec['n']},{rec['k']},{rec['d']}]]"
+        )
+    return certificate, certificate_sha256
+
+
+FRONTIER_REFERENCE_KINDS = {
+    "exp057_odd_exact": ("EXP-057", "exp057_odd_frontier.py"),
+    "exp058_odd_exact": ("EXP-058", "exp058_odd_frontier.py"),
+    "exp060_odd_exact": ("EXP-060", "exp060_frontier_ratchet.py"),
+}
+
+
+def _validated_exact_reference(rec: dict) -> tuple[bool, str | None]:
+    relative = rec.get("distance_certificate")
+    if relative is None:
+        return True, None
+    certificate_kind = rec.get("certificate_kind")
+    if certificate_kind == "exp037_css_exact":
+        path = ROOT / str(relative)
+        if not path.exists():
+            raise RuntimeError(
+                f"required distance certificate missing: {relative}"
+            )
+        reference_json = json.dumps(rec, sort_keys=True, separators=(",", ":"))
+        _certificate, certificate_sha256 = _validated_exp037_reference_snapshot(
+            str(relative), _certificate_stat(path), reference_json
+        )
+        return True, certificate_sha256
+    if certificate_kind not in FRONTIER_REFERENCE_KINDS:
+        raise RuntimeError(f"unsupported exact-reference certificate: {relative}")
+    label, module_file = FRONTIER_REFERENCE_KINDS[certificate_kind]
+    path = ROOT / str(relative)
+    if not path.exists():
+        raise RuntimeError(f"required distance certificate missing: {relative}")
+    reference_json = json.dumps(rec, sort_keys=True, separators=(",", ":"))
+    _certificate, certificate_sha256 = _validated_frontier_reference_snapshot(
+        str(relative), _certificate_stat(path), reference_json,
+        label, module_file,
+    )
+    return True, certificate_sha256
 
 
 def _terms_of(rec: dict) -> tuple[list, list]:
@@ -521,7 +794,7 @@ def validate_literature(args: argparse.Namespace) -> int:
             and pole_rank == k_mat == k_ideal
         )
         routes_agree = k_ideal == k_mat and (k_gcd is None or k_gcd == k_ideal)
-        exact_here = bool(rec.get("distance_exact_certified_here", False))
+        exact_here = _distance_exact_here(rec)
         source_estimate = bool(
             rec.get("source_distance_estimate", False)
             or rec["source"].startswith("2408.10001")
@@ -602,9 +875,11 @@ def validate_literature(args: argparse.Namespace) -> int:
 # candidate enumeration, symmetry reduction, domination screen
 # --------------------------------------------------------------------------- #
 # Local two-sided certificates only. EXP-055 contributes exact
-# $[[30,8,4]]$ and $[[54,8,6]]$ references; the four standard baseline rows
-# have persisted local certificates; three additional small Postema rows enter
-# LITERATURE_ODD with ``distance_exact_certified_here=True``.
+# $[[30,8,4]]$ and $[[54,8,6]]$ references; the four standard baselines and
+# every promoted reference must have a local certificate. EXP-057/058/060
+# supply the new $[[170,16,10]]$, $[[186,10,14]]$, and $[[210,18,8]]$ fixed
+# points; EXP-037's $n=180$ frontier is rebound to its constructors, current
+# CNFs, and physical witnesses.
 EXACT_REFERENCES = [
     {"name": "EXP-055 [[30,8,4]]", "n": 30, "k": 8, "d": 4},
     {"name": "EXP-055 [[54,8,6]]", "n": 54, "k": 8, "d": 6},
@@ -612,6 +887,73 @@ EXACT_REFERENCES = [
     {"name": "[[90,8,10]]", "n": 90, "k": 8, "d": 10},
     {"name": "[[108,8,10]]", "n": 108, "k": 8, "d": 10},
     {"name": "[[144,12,12]]", "n": 144, "k": 12, "d": 12},
+    {
+        "name": "EXP-057 [[170,16,10]]",
+        "n": 170,
+        "k": 16,
+        "d": 10,
+        "ell": 17,
+        "m": 5,
+        "A": [[0, 0], [1, 0], [9, 1]],
+        "B": [[0, 0], [2, 1], [15, 1]],
+        "certificate_kind": "exp057_odd_exact",
+        "distance_certificate":
+            "results/certificates/exp057_170_16_10_distance.json",
+    },
+    {
+        "name": "EXP-058 [[186,10,14]]",
+        "n": 186,
+        "k": 10,
+        "d": 14,
+        "ell": 31,
+        "m": 3,
+        "A": [[0, 0], [1, 0], [12, 0]],
+        "B": [[0, 0], [3, 1], [8, 1]],
+        "certificate_kind": "exp058_odd_exact",
+        "distance_certificate":
+            "results/certificates/exp058_186_10_14_distance.json",
+    },
+    {
+        "name": "EXP-060 [[210,18,8]]",
+        "n": 210,
+        "k": 18,
+        "d": 8,
+        "ell": 15,
+        "m": 7,
+        "A": [[0, 0], [0, 1], [3, 3]],
+        "B": [[0, 0], [0, 1], [12, 3]],
+        "certificate_kind": "exp060_odd_exact",
+        "distance_certificate":
+            "results/certificates/exp060_210_18_8_distance.json",
+    },
+    {
+        "name": "EXP-037 [[180,8,16]]",
+        "n": 180,
+        "k": 8,
+        "d": 16,
+        "ell": 15,
+        "m": 6,
+        "A": [[2, 5], [3, 5], [4, 2]],
+        "B": [[0, 0], [5, 5], [4, 1]],
+        "source_catalogue_index": 28,
+        "certificate_kind": "exp037_css_exact",
+        "distance_certificate":
+            "results/partial_runs/exp037/css_855e8bf135ba4e05.json",
+    },
+    {
+        "name": "EXP-037 [[180,20,6]]",
+        "n": 180,
+        "k": 20,
+        "d": 6,
+        "ell": 15,
+        "m": 6,
+        "A": [[10, 2], [5, 3], [5, 4]],
+        "B": [[0, 0], [10, 5], [0, 4]],
+        "source_catalogue_index": 211,
+        "certificate_kind": "exp037_css_exact",
+        "distance_certificate":
+            "results/partial_runs/exp037/css_15654a1cebe3e639.json",
+    },
 ]
 
 
@@ -625,10 +967,13 @@ def domination_threshold(n: int, k: int) -> tuple[int, str]:
     """
     best, who = 0, "none"
     for r in EXACT_REFERENCES:
-        if r["n"] <= n and r["k"] >= k and r["d"] > best:
+        if r["n"] > n or r["k"] < k or r["d"] <= best:
+            continue
+        exact, _certificate_sha256 = _validated_exact_reference(r)
+        if exact:
             best, who = r["d"], r["name"]
     for r in LITERATURE_ODD:
-        if not r.get("distance_exact_certified_here"):
+        if not _distance_exact_here(r):
             continue
         nn = 2 * r["ell"] * r["m"]
         if nn <= n and r["k"] >= k and r["d"] > best:
@@ -641,14 +986,23 @@ def _file_sha256(path: Path) -> str:
 
 
 def _reference_fingerprint() -> str:
-    rows = [
-        *EXACT_REFERENCES,
-        *[
-            {"ell": r["ell"], "m": r["m"], "k": r["k"], "d": r["d"],
-             "source": r["source"]}
-            for r in LITERATURE_ODD if r.get("distance_exact_certified_here")
-        ],
-    ]
+    rows = []
+    for rec in EXACT_REFERENCES:
+        exact, certificate_sha256 = _validated_exact_reference(rec)
+        if exact:
+            rows.append({**rec, "certificate_sha256": certificate_sha256})
+    for rec in LITERATURE_ODD:
+        exact, certificate_sha256 = _validated_distance_reference(rec)
+        if not exact:
+            continue
+        rows.append(
+            {
+                "ell": rec["ell"], "m": rec["m"],
+                "k": rec["k"], "d": rec["d"],
+                "source": rec["source"],
+                "certificate_sha256": certificate_sha256,
+            }
+        )
     return hashlib.sha256(
         json.dumps(rows, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
@@ -794,10 +1148,13 @@ def _screen_protocol(census_sha256: str, reference_sha256: str,
     return {
         "census_sha256": census_sha256,
         "reference_sha256": reference_sha256,
+        "reference_validation_version": REFERENCE_VALIDATION_VERSION,
         "k_range": [k_min, k_max],
         "time_limit_s": float(time_limit),
         "witness_tries": WITNESS_TRIES,
         "witness_keep": WITNESS_KEEP,
+        "cdcl_solver": SCREEN_CDCL_SOLVER,
+        "cdcl_conflict_budget": SCREEN_CDCL_CONFLICT_BUDGET,
         "residual_workers": SCREEN_RESIDUAL_WORKERS,
     }
 
@@ -1003,13 +1360,54 @@ def certify_screen_survivors(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cdcl_witness_bound(
+    HX: np.ndarray, HZ: np.ndarray, block: int, threshold: int
+) -> dict:
+    """Find one physical Z-logical at or below threshold; UNSAT is diagnostic."""
+    instance = css_side_instance(HX, HZ, "z", block_length=block)
+    record = decide_weight_bounded(
+        instance,
+        int(threshold),
+        solver_name=SCREEN_CDCL_SOLVER,
+        conflict_budget=SCREEN_CDCL_CONFLICT_BUDGET,
+    )
+    output = {
+        "status": record["status"],
+        "cnf_sha256": record["cnf_sha256"],
+        "encoding_version": record["encoding_version"],
+        "solver": record["solver"],
+    }
+    if record["status"] == "SAT":
+        vector = np.asarray(record["vector"], dtype=np.uint8)
+        weight = int(vector.sum())
+        outside = rank_np(np.vstack([HZ, vector])) == rank_np(HZ) + 1
+        if (
+            np.any(HX @ vector % 2)
+            or not outside
+            or weight != int(record["weight"])
+            or weight > int(threshold)
+        ):
+            raise RuntimeError("CDCL screen witness failed physical verification")
+        output.update(
+            {
+                "weight": weight,
+                "witness_support": [
+                    int(index) for index in np.flatnonzero(vector)
+                ],
+                "outside_z_stabilizer": True,
+            }
+        )
+    return output
+
+
 def _screen_one(task: tuple) -> dict:
     """Classify one candidate against the Pareto threshold.
 
     Order matters: the certified ceiling is free, so it is consulted first and
     rejects a candidate outright when ceiling <= threshold (then
     d <= ceiling <= threshold, so the candidate is dominated with no solver
-    call at all).  Only the survivors of that test reach CP-SAT.
+    call at all). Survivors first reach a bounded CDCL witness query; only its
+    non-SAT outcomes reach the older CP-SAT exact fallback.
     """
     ell, m, cand, time_limit, allow_solver = task
     n = 2 * ell * m
@@ -1045,11 +1443,25 @@ def _screen_one(task: tuple) -> dict:
         out.update({"verdict": "solver_required", "solver_calls": 0})
         return out
     t0 = time.time()
-    res = exact_distance_css(HX, HZ, time_limit_s=time_limit, workers=2,
-                             upper_bound=thr)
-    decided = bool(res["d_X_all_sectors_decided"] and res["d_Z_all_sectors_decided"])
+    cdcl = _cdcl_witness_bound(HX, HZ, ell * m, thr)
+    out["cdcl"] = cdcl
+    if cdcl["status"] == "SAT":
+        out.update({
+            "verdict": "dominated_by_cdcl_witness",
+            "solver_calls": 1,
+            "witness_bound": cdcl["weight"],
+            "witness_support": cdcl["witness_support"],
+            "wall_s": round(time.time() - t0, 1),
+        })
+        return out
+    res = exact_distance_css(
+        HX, HZ, time_limit_s=time_limit, workers=2, upper_bound=thr
+    )
+    decided = bool(
+        res["d_X_all_sectors_decided"] and res["d_Z_all_sectors_decided"]
+    )
     out.update({
-        "solver_calls": 1, "screen_decided": decided,
+        "solver_calls": 2, "screen_decided": decided,
         "d_found": res["d"], "d_exact": bool(res["d_exact"]),
         "wall_s": round(time.time() - t0, 1),
     })

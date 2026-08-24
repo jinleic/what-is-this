@@ -1,0 +1,56 @@
+{
+  "cap": 14,
+  "decision": {
+    "cnf_sha256": "8a988f8459a7483935916873b263f5166d6c9330322e479b7ee3feef00c4b222",
+    "encoding_version": "sat-decide-v2",
+    "kind": "css_z",
+    "solver": {
+      "backend": "pysat",
+      "clauses": 9749,
+      "cnf_variables": 3947,
+      "conflict_budget": 0,
+      "name": "PySAT kissat404",
+      "wall_time_s": 3051.7601912500104
+    },
+    "status": "UNSAT",
+    "symmetry_break": true,
+    "weight_cap": 14
+  },
+  "group": "undecided",
+  "identity": {
+    "A": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "B": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        11,
+        2
+      ]
+    ],
+    "HX_sha256": "517e956027c1cf6cc19a475a5c57f77b53aaa7985b3268ff37135f37f11ca127",
+    "HZ_sha256": "588b1d3adcf0d5a198cbaa85f6ca9597818689692966c9d9f365196908d7122f",
+    "k": 10,
+    "n": 210
+  },
+  "index": 1,
+  "schema": "exp060-frontier-ratchet-v1"
+}

@@ -1,0 +1,50 @@
+ISING3D EXACT-RESEARCH BUNDLE — WAVE 22
+=======================================
+
+Scope
+-----
+The three-dimensional nearest-neighbour simple-cubic Ising model remains UNSOLVED.
+No thermodynamic-limit free energy, magnetisation, correlation function, exact critical
+point, or critical exponent is claimed. The rigorous critical interval is unchanged.
+
+Headline results
+----------------
+1. Low-temperature cut valuations and high-temperature token exchange give all-size
+   endpoint obstructions. Chevalley constructibility makes the one-full-cube coupling set
+   finite for every finite connected simple nonpath graph; the finite set is not generally
+   located or proved empty.
+2. For the finite open 2x3 layer, a primitive squarefree degree-971 trace norm reduces the
+   entire physical continuum to three exact algebraic candidates. All three are genuine
+   seven-trace branches; six physical mode roots u_i>=4 remain unresolved.
+3. Exact checkerboard decimation gives an octahedral 2-/4-/6-spin model with
+   c2>0, c4<0, c6>0, and proves visible pairwise non-closure.
+4. The complete finite Callen system has rank 2^n-1 and reconstructs free-boundary Gibbs
+   moments exactly, but remains exponential and supplies no thermodynamic compression.
+5. Two-slice W-law injectivity is exact through L=9; canonical 133-column cores block the
+   raw singleton-peeling induction while exact determinants close the finite rows.
+6. Uniform phase-free graph-H1 twist averaging fails at girth on every cyclic simple graph.
+   The complete 32-class open-cube calculation and two finite phase repairs are included.
+7. Open boxes satisfy gamma >= max(0,ceil((abc-ab-bc-ca+4)/4)) and are planar exactly for
+   side-one slabs and 2x2xL tubes. This is not an arbitrary Pfaffian-count lower bound.
+8. The compact finite-memory SAW verifier now asserts both ordered content digests; memory
+   14 remains unlaunched and no endpoint moves.
+
+Verification
+------------
+- Eight targeted wave-22 verifier fronts passed in the lead checkout.
+- Producer check counts for e234..e241: 14/14, 9/9, 7/7, 13/13, 9/9,
+  13/13, 14/14, 12/12.
+- The final degree-971 verifier passed as two current-source stages: roots 110.00 wall
+  seconds and affine-Macaulay elimination 433.85 wall seconds. A one-shot exact Sturm path
+  exceeded 1800 seconds and is recorded only as a resource wall.
+- The repository contains 161 test scripts. No full 161-script suite was launched under
+  measured host load above 100.
+
+Provenance and limitations
+--------------------------
+- Exact combinatorial objects use integer/rational/algebraic arithmetic. Modular ranks are
+  used only in their rigorous one-sided direction unless an exact rational ceiling closes them.
+- K_c=0.221654626 is comparison-only and was not used to select, fit, tune, or stop work.
+- e233_trace_resultant_positivity.py is an unlanded draft and is deliberately excluded.
+- MANIFEST.json records byte size and SHA-256 for every staged file except itself.
+- This is a snapshot. Reproduction uses the repository root and existing interpreter.

@@ -1,0 +1,25 @@
+{
+  "counts": {
+    "arrangements": 3600,
+    "line_pair_checks": 93000,
+    "multipoint_pair_checks": 6204,
+    "nonadjacent_multipoint_pair_checks": 154,
+    "triangular_faces": 27705,
+    "violations": 0
+  },
+  "modes": [
+    "generic",
+    "parallel_pair",
+    "two_parallel_pairs",
+    "triple_point",
+    "two_triple_points",
+    "parallel_and_triple"
+  ],
+  "n_range": [
+    5,
+    10
+  ],
+  "samples_per_mode": 100,
+  "status": "PASS",
+  "violation_examples": []
+}

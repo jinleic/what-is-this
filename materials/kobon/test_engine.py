@@ -160,6 +160,103 @@ class CrossingFaceBoundCnfTest(unittest.TestCase):
 
 
 
+class SubarrangementFaceBoundCnfTest(unittest.TestCase):
+    def test_caps_faces_supported_on_every_eleven_line_subset(self):
+        n = 12
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        for triple in combinations(range(n), 3):
+            pool.id(("S",) + triple)
+
+        engine.add_subarrangement_face_bounds(cnf, pool, n, {11: 32})
+        inside = [
+            pool.id(("S",) + triple)
+            for triple in combinations(range(11), 3)
+        ]
+
+        with engine.Solver(name="cadical195",
+                           bootstrap_with=cnf.clauses) as solver:
+            self.assertTrue(solver.solve(assumptions=inside[:32]))
+            self.assertFalse(solver.solve(assumptions=inside[:33]))
+
+    def test_exact_target_form_enforces_the_deletion_lower_bound(self):
+        n = 5
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        triples = list(combinations(range(n), 3))
+        selected = [pool.id(("S",) + triple) for triple in triples]
+
+        engine.add_subarrangement_face_bounds(
+            cnf, pool, n, {4: 2}, exact_target=3)
+        inside = [
+            pool.id(("S",) + triple)
+            for triple in combinations(range(4), 3)
+        ]
+        outside = next(
+            pool.id(("S",) + triple) for triple in triples if 4 in triple)
+
+        with engine.Solver(name="cadical195",
+                           bootstrap_with=cnf.clauses) as solver:
+            all_false = [-literal for literal in selected]
+            three_inside = all_false.copy()
+            for literal in inside[:3]:
+                three_inside[selected.index(literal)] = literal
+            self.assertFalse(solver.solve(assumptions=three_inside))
+
+            two_inside_one_outside = all_false.copy()
+            for literal in inside[:2] + [outside]:
+                two_inside_one_outside[selected.index(literal)] = literal
+            self.assertTrue(solver.solve(
+                assumptions=two_inside_one_outside))
+
+
+class FaceVertexSectorBoundCnfTest(unittest.TestCase):
+    def test_simple_vertex_allows_four_faces_but_not_five(self):
+        n = 7
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        pair_faces = [
+            pool.id(("S", 0, 1, third)) for third in range(2, n)
+        ]
+
+        engine.add_selected_face_sector_bounds(cnf, pool, n)
+        with engine.Solver(name="cadical195",
+                           bootstrap_with=cnf.clauses) as solver:
+            self.assertTrue(solver.solve(assumptions=pair_faces[:4]))
+            self.assertFalse(solver.solve(assumptions=pair_faces))
+
+    def test_multipoint_allows_at_most_two_faces_on_a_line_pair(self):
+        n = 7
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        pair_faces = [
+            pool.id(("S", 0, 1, third)) for third in range(3, 6)
+        ]
+        concurrent = pool.id(("C", 0, 1, 2))
+
+        engine.add_selected_face_sector_bounds(cnf, pool, n)
+        with engine.Solver(name="cadical195",
+                           bootstrap_with=cnf.clauses) as solver:
+            self.assertTrue(solver.solve(
+                assumptions=[concurrent] + pair_faces[:2]))
+            self.assertFalse(solver.solve(
+                assumptions=[concurrent] + pair_faces))
+
+    def test_nonadjacent_multipoint_lines_support_no_face(self):
+        n = 7
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        inside = pool.id(("C", 1, 2, 4))
+        outside = pool.id(("C", 0, 1, 4))
+        selected = pool.id(("S", 1, 4, 6))
+
+        engine.add_selected_face_sector_bounds(cnf, pool, n)
+        with engine.Solver(name="cadical195",
+                           bootstrap_with=cnf.clauses) as solver:
+            self.assertFalse(solver.solve(
+                assumptions=[inside, outside, selected]))
+
+
 class FaceSelectionCnfTest(unittest.TestCase):
     def test_selected_face_rejects_an_outside_straddling_line(self):
         cnf, pool = engine.build_model(4, 1, rules=("FACE",))

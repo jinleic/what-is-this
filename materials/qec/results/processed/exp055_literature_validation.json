@@ -1,9 +1,9 @@
 {
  "exact_ceiling_never_violated": true,
  "exact_ceiling_violations": [],
- "exact_distance_instances": 5,
+ "exact_distance_instances": 6,
  "exact_slack_max": 22,
- "exact_slack_median": 10,
+ "exact_slack_median": 20,
  "exact_slack_min": 2,
  "instances": 27,
  "k_all_agree_on_reproduced": true,
@@ -518,7 +518,7 @@
    "ceiling_route": "pole",
    "d_published": 14,
    "dim_pole": 4,
-   "distance_exact_certified_here": false,
+   "distance_exact_certified_here": true,
    "ell": 3,
    "k_agrees_with_paper": true,
    "k_gcd_formula": null,
@@ -747,5 +747,5 @@
    "source_distance_estimate": true
   }
  ],
- "utc": "2026-08-22T10:53:59Z"
+ "utc": "2026-08-23T00:19:07Z"
 }
