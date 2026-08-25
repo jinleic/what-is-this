@@ -18,18 +18,19 @@ State that makes these live now:
 
 ---
 
-## A. Odd-lattice PBB search — premise corrected; fixed-point closure through $n=162$ (EXP-055/056)
+## A. Odd-lattice PBB search — exact closure through $n=234$ (EXP-055--067)
 
 **Status 2026-08-21: the "unexplored region" premise was FALSE and is retracted.**
 J-G1 does say the collapse hazard is structurally absent when $\ell,m$ are both
 odd, and our own 202-parent catalogue really does live at $m\in\{3,6\}$. But the
 claim that "$[[90,8,10]]$ on $(15,3)$ is the only odd$\times$odd BB instance in
-the literature" was wrong: a novelty check found **at least 27 sourced
+the literature" was wrong: the validation battery now contains **29 sourced
 odd$\times$odd BB instances** in Wang–Mueller (arXiv:2408.10001v4),
-Eberhardt–Steffan (arXiv:2407.03973v1), Postema–Kokkelmans (arXiv:2502.17052v4)
-and Bravyi et al. (arXiv:2308.07915) — including $(9,9)\,[[162,8,12]]$,
-$(9,15)\,[[270,8,18]]$, $(7,7)\,[[98,6,12]]$ and $(3,27)\,[[162,8,14]]$. The
-region is *searched*; only our own catalogue avoided it.
+Eberhardt–Steffan (arXiv:2407.03973v1), Postema–Kokkelmans
+(arXiv:2502.17052v4), Bravyi et al. (arXiv:2308.07915), and Liang et al.
+(arXiv:2503.03827v3). The later audit also missed Liang et al.'s two exact
+$[[234,8,18]]$ Table III rows; that omission is corrected. The region is
+*searched*; only our own catalogue avoided it.
 
 **What was also already published:** the odd-lattice rate law itself. $R$
 semisimple $\Rightarrow k=2\cdot\#\{\text{common roots}\}$ is
@@ -38,16 +39,17 @@ Lin–Pryadko (arXiv:2306.16400) Eq. (47), Postema–Kokkelmans Thm. 2.6, and
 Eberhardt–Steffan Cor. 2.11–2.12 ("if $\ell$ and $m$ are odd, all BB codes are
 principal"). Claim it as reproduction, never as novelty.
 
-**What survived and is now done (EXP-055/056).**
+**What survived and is now done (EXP-055--067).**
 
 1. *A certified solver-free distance ceiling* (the exact pole isomorphism is
    published; its explicit use as a general-BB rejection oracle was not found).
    If $I=\operatorname{Ann}_{\rm left}(a,b)$ and $J=\bar I$ is the physical
    right-kernel pole, then $J^2\cong\ker H_X/S_Z$ exactly and
    $d\le\min\{\operatorname{wt}(u):0\ne u\in J\}$. Reduced pole-coset witnesses
-   are self-certifying and much tighter. The isomorphism passes 27/27
-   literature audits; the ceiling has zero violations on six locally exact
-   rows (all 25 reported values also pass as a non-certifying sanity check).
+   are self-certifying and much tighter. The isomorphism passes 29/29
+   literature audits; the ceiling has zero violations on eight locally exact
+   rows (all 27 reproduced reported values also pass as a non-certifying
+   sanity check).
 2. *An exhaustive census*: all $65$ odd lattices with $\ell m\le180$,
    $4.23\times10^9$ weight-$\le3$ pairs, exact $k$ by two independent routes
    (zero mismatches), immunity re-verified ($273$ idempotence tests, zero
@@ -57,19 +59,49 @@ principal"). Claim it as reproduction, never as novelty.
    orbits. Sparse-generator CNFs are UNSAT 20/20 and replay 20/20; the
    even-kernel law excludes 13 and an explicit weight-14 word closes
    $d_X=d_Z=14$. The old 2,100 s CP-SAT minimization timeout is superseded.
+4. *An adaptive exact frontier ratchet*: odd-column parity skips odd caps,
+   verified BB duality halves sector work, and raw kissat stops at first
+   SAT/prior UNSAT. It exactifies $[[170,16,10]]$, seven
+   $[[186,10,14]]$, thirteen $[[210,18,8]]$, $[[210,24,4]]$,
+   $[[210,14,12]]$, and two $[[210,10,16]]$ classes. A separate $k=8$
+   row is dominated by independent weight-16 witnesses; its distance is not
+   claimed exact.
+5. *A cross-lattice CRT theorem*: all coprime factorizations of fixed
+   $N=\ell m$ are explicitly coordinate-permutation equivalent. Thus the
+   $(15,7)$, $(21,5)$ and $(35,3)$ screens are one exact problem.
+   Monotone reference rebinding then preserves old proofs without re-solving.
 
-**Screen verdict.** Complete through $n=162$: 2,132 symmetry classes / 51,769
-pairs; all 1,928 classes with an independently exact reference are dominated
-(1,804 reduced-pole witnesses, 119 CDCL witnesses, five exact CP-SAT
-fallbacks), 204 high-$k$ no-reference, zero survivors or undecided. Exact local
-references are $[[30,8,4]]$, $[[54,8,6]]$, $[[126,12,10]]$ and
-$[[162,8,14]]$. The $[[30,8,4]]$ constructor is new within checked BB tables
-but globally dominated by Grassl $[[30,8,7]]$.
+**Screen verdict.** Complete through $n=210$: 20 nonempty-frontier lattices,
+4,020 symmetry classes / 122,833 represented pairs; all 3,816 classes with an
+independently exact reference are dominated (3,364 reduced-pole witnesses,
+395 bounded/adaptive CDCL witnesses, 57 exact CP-SAT fallbacks), 204 high-$k$
+no-reference, zero survivors or undecided. All 3,759 explicit witnesses are
+physically rechecked.
 
-**Next A-step.** Extend beyond $n=162$ only after hash-binding the available
-$n=180$ exact CSS frontier (notably $[[180,8,16]]$ and $[[180,20,6]]$) or
-exactifying the next odd-lattice published reference. Reuse the class-orbit
-SAT route; do not return to per-logical CP-SAT minimization.
+**Method falsifiers.** The exact affine-trellis preflight is dead on the N=105
+hard core: best widths 48/53/80/99 exceed the five-million-state gate. The
+$H=7$ quotient projection is exact but yields lower bound only 4. Pole
+stabilizer $H=5$ characterizes all thirteen easy $[[210,18,8]]$ classes, but
+``hard implies $H=1$'' is falsified by hard classes with $H=5$ and $H=7$.
+
+**Exact $n=234$ closure (EXP-066/067).** The two frontiers are exhaustively
+represented: $(13,9)$ closes 84/84 classes; on $(39,3)$ the full 576-element
+automorphism action compresses 182 hard classes to 30 bundles and transported
+witnesses close 28. EXP-067 uniquely maps Liang et al.'s two published
+$[[234,8,18]]$ twisted-torus rows to the two residual representatives. For
+each, original and block-swapped rooted connected-cluster searches exhaust
+cap 16 and replay; even kernel weight and physical weight-18 witnesses give
+$d_X=d_Z=18$. Promoting that reference closes all 4,658/4,658 referenced
+classes across 22 lattices / 4,862 classes / 150,581 pairs, with 204
+no-reference and zero survivor/undecided. The multithreaded solver coordinator
+was rejected for FR-033's completion race; only the source-bound single-thread
+entrypoint is certifying.
+
+**Next A-step.** Screen the $n=270$ frontiers. First collapse the isomorphic
+noncyclic presentations $(15,9)$ and $(45,3)$; then screen their 5,024 classes
+once and the cyclic $(27,5)$ lattice's 688 classes. Liang Table III's two
+$[[270,8,20]]$ rows are source leads, not local exact references until their
+constructors and lower bounds are bound by the current protocol.
 
 ## B. Multi-row light channels: replace CP-SAT certificates with a theorem
 

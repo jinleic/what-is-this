@@ -1,9 +1,17 @@
 {
   "counts": {
     "arrangements": 3600,
+    "colliding_endpoint_cases": 1607,
+    "colliding_same_ray_cases": 84,
+    "face_sector_assignments": 83115,
     "line_pair_checks": 93000,
     "multipoint_pair_checks": 6204,
     "nonadjacent_multipoint_pair_checks": 154,
+    "shared_pair_face_pairs": 17325,
+    "shared_pair_segment_face_pairs": 1591,
+    "shared_ray_cases": 1591,
+    "shared_segment_face_pairs": 42,
+    "single_line_face_pairs": 73349,
     "triangular_faces": 27705,
     "violations": 0
   },
@@ -20,6 +28,53 @@
     10
   ],
   "samples_per_mode": 100,
+  "sharpness_control": {
+    "faces": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        0,
+        1,
+        5
+      ]
+    ],
+    "line_pair": [
+      0,
+      1
+    ],
+    "sector_keys": {
+      "2": [
+        1,
+        1
+      ],
+      "3": [
+        1,
+        0
+      ],
+      "4": [
+        0,
+        1
+      ],
+      "5": [
+        0,
+        0
+      ]
+    },
+    "status": "PASS"
+  },
   "status": "PASS",
   "violation_examples": []
 }

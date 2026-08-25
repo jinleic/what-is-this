@@ -315,7 +315,7 @@ def _transport_record(
 def _logical_witness_valid(record: dict[str, Any]) -> bool:
     support = record.get("witness_support")
     if support is None:
-        return True
+        return False
     HX, HZ = bb_matrices(
         int(record["ell"]), int(record["m"]), record["A"], record["B"]
     )
@@ -325,6 +325,21 @@ def _logical_witness_valid(record: dict[str, Any]) -> bool:
         not np.any(HX @ vector % 2)
         and rank_np(np.vstack([HZ, vector])) == rank_np(HZ) + 1
         and int(vector.sum()) == int(record["witness_bound"])
+    )
+
+def _ceiling_witness_valid(record: dict[str, Any]) -> bool:
+    support = record.get("ceiling_witness_support")
+    if support is None:
+        return False
+    HX, HZ = bb_matrices(
+        int(record["ell"]), int(record["m"]), record["A"], record["B"]
+    )
+    vector = np.zeros(int(record["n"]), dtype=np.uint8)
+    vector[np.asarray(support, dtype=int)] = 1
+    return bool(
+        not np.any(HX @ vector % 2)
+        and rank_np(np.vstack([HZ, vector])) == rank_np(HZ) + 1
+        and int(vector.sum()) == int(record["ceiling"])
     )
 
 
@@ -351,7 +366,14 @@ def transport_screen_shard(
         if record["verdict"]
         in {"dominated_by_witness", "dominated_by_cdcl_witness"}
     ]
-    witness_valid = all(_logical_witness_valid(record) for record in witnesses)
+    ceilings = [
+        record for record in records
+        if record["verdict"] == "dominated_by_ceiling"
+    ]
+    witness_valid = bool(
+        all(_logical_witness_valid(record) for record in witnesses)
+        and all(_ceiling_witness_valid(record) for record in ceilings)
+    )
     if not witness_valid:
         raise RuntimeError("transported physical witness failed target checks")
     output = {
@@ -381,7 +403,7 @@ def transport_screen_shard(
             "candidates_after_symmetry_preserved":
                 source_payload["candidates_after_symmetry"],
             "orbit_total_preserved": source_payload["orbit_total"],
-            "physical_witnesses_rechecked": len(witnesses),
+            "physical_witnesses_rechecked": len(witnesses) + len(ceilings),
             "all_physical_witnesses_valid": witness_valid,
             "valid": witness_valid,
         },

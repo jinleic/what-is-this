@@ -44,39 +44,79 @@ never increases cost.  Therefore
 
 The switches are theta_1=c*/(1-2a*+c*) and theta_2=1/[2(1-a*)].  IID entropy is
 Q=2xy h(b*)+y^2 h(2b*-b*^2), and L=y h(b*), so on each regime
-F-0.1475 theta(1-theta) is a quadratic.  The script constructs its coefficients
-as Arb balls and certifies the minimum on each closed regime from endpoints and
-the (possible) vertex.  Endpoint zeros are handled by derivative signs, not a
-tiny-grid approximation.
+F-0.1475 theta(1-theta) is a quadratic.  Exact rational endpoints bracket the
+unique defining root by an Arb sign change and a positive derivative.  The
+active endpoint zero follows algebraically from the root equation (Q=C=L).
+Every regime is certified concave, so its minimum is controlled by those exact
+endpoint identities and positive switch values, not a grid approximation.
 
 Run: ./.venv/bin/python uc/shapley_gap.py
 """
 
 from flint import arb, ctx
+import sympy as sp
 
-ctx.prec = 256
+ctx.prec = 384
 ZERO = arb(0)
 ONE = arb(1)
 TWO = arb(2)
+LOG2 = TWO.log()
 ALPHA = arb("0.0356069")
 KAPPA = arb("0.1475")
-# Enclose the DEFINING root, not the rounded display decimal.  The radius is
-# far wider than the 140-digit mpmath residual used to generate the midpoint,
-# so the true root is contained; every derived constant shares that enclosure.
-BSTAR = arb(
-    "0.329454738503036972391705383877134130751839116916698512937367708874881240708840123088556565701276198873",
-    "1e-90",
-)
 
 
 def h(x):
     if x == ZERO or x == ONE:
         return ZERO
-    return -(x * x.log() + (ONE - x) * (ONE - x).log()) / arb(2).log()
+    return -(x * x.log() + (ONE - x) * (ONE - x).log()) / LOG2
 
+
+def hprime(x):
+    return ((ONE - x) / x).log() / LOG2
+
+
+def root_residual(x):
+    hx = h(x)
+    return hx * (TWO - hx) - h(TWO * x - x * x)
+
+
+def root_derivative(x):
+    hx = h(x)
+    y = TWO * x - x * x
+    return TWO * (ONE - hx) * hprime(x) \
+        - TWO * (ONE - x) * hprime(y)
+
+
+# Exact rational decimal endpoints.  Arb proves a sign change and a strictly
+# positive derivative throughout this interval, hence one unique defining root.
+B_LO = arb(
+    "0.329454738503036972391705383877134130751839116916698512937367708874881240708840123088556565701276198872"
+)
+B_HI = arb(
+    "0.329454738503036972391705383877134130751839116916698512937367708874881240708840123088556565701276198874"
+)
+ROOT_LO_RESIDUAL = root_residual(B_LO)
+ROOT_HI_RESIDUAL = root_residual(B_HI)
+BSTAR = B_LO.union(B_HI)
+ROOT_DERIVATIVE = root_derivative(BSTAR)
+assert ROOT_LO_RESIDUAL.upper() < 0
+assert ROOT_HI_RESIDUAL.lower() > 0
+assert ROOT_DERIVATIVE.lower() > 0
 
 HB = h(BSTAR)
 H2 = h(TWO * BSTAR - BSTAR * BSTAR)
+
+# At the exact root H2=HB(2-HB).  With w=1/(2-HB), the active endpoint has
+# Q=w^2 H2=w HB=L and C=2w-1=w HB=L, so F=(1-alpha)Q+alpha C-L=0 exactly.
+_hs, _alpha = sp.symbols("h alpha")
+_w = 1 / (2 - _hs)
+_q_eq = _w ** 2 * _hs * (2 - _hs)
+_c_eq = 2 * _w - 1
+_l_eq = _w * _hs
+assert sp.cancel(_q_eq - _l_eq) == 0
+assert sp.cancel(_c_eq - _l_eq) == 0
+assert sp.cancel((1 - _alpha) * _q_eq + _alpha * _c_eq - _l_eq) == 0
+ENDPOINT_IDENTITY_PROVED = True
 ASTAR = ONE - ONE / (TWO - HB)
 CSTAR = ASTAR + (ONE - ASTAR) * BSTAR
 Y1 = ONE - ASTAR
@@ -142,14 +182,14 @@ def certify_regime(regime, lo, hi):
     # incorrectly required monotonicity in regimes 1 and 3.
     assert a.upper() < 0
     if regime == 1:
-        assert gap(ZERO, regime).contains(0)
+        assert gap(ZERO, regime) == ZERO
         assert gap(hi, regime).lower() > 0
     elif regime == 2:
         assert gap(lo, regime).lower() > 0
         assert gap(hi, regime).lower() > 0
     elif regime == 3:
         assert gap(lo, regime).lower() > 0
-        assert gap(ONE, regime).contains(0)
+        assert ENDPOINT_IDENTITY_PROVED
     else:
         raise ValueError(regime)
     return a, b, c, candidates, minimum, dlo, dhi
@@ -157,17 +197,22 @@ def certify_regime(regime, lo, hi):
 if __name__ == "__main__":
     print(__doc__.strip().splitlines()[0])
     print()
-    print("PROVED [Arb constants / exact identities]")
+    print("PROVED [rational root bracket + monotonicity + exact identities]")
+    print("  g(B_LO) =", ROOT_LO_RESIDUAL, "< 0")
+    print("  g(B_HI) =", ROOT_HI_RESIDUAL, "> 0")
+    print("  g'(B_LO..B_HI) =", ROOT_DERIVATIVE, "> 0")
+    print("  unique b* bracket =", BSTAR)
+    print("  exact endpoint identity: Q=C=L from g(b*)=0")
     print("  a* =", ASTAR)
-    print("  b* =", BSTAR)
     print("  c* =", CSTAR)
     print("  h(b*) < 1:", HB, "; certified:", HB.upper() < 1)
     print("  theta_1 (y=z)   =", THETA1)
     print("  theta_2 (y=1/2) =", THETA2)
     assert ZERO < THETA1 < THETA2 < ONE
     assert HB.upper() < 1
-    # Endpoint equality controls.
-    assert gap(ZERO, 1).contains(0)
+    assert gap(ZERO, 1) == ZERO
+    assert ENDPOINT_IDENTITY_PROVED
+    # Consistency only; endpoint equality is the exact algebra above.
     assert gap(ONE, 3).contains(0)
 
     intervals = ((1, ZERO, THETA1),
@@ -193,11 +238,13 @@ if __name__ == "__main__":
     print()
     print("NONCOMMUTATION CHECK")
     half = ONE / TWO
-    external_average = (gap(ZERO, 1) + gap(ONE, 3)) / TWO
+    external_average = ZERO  # Exact: both endpoint costs vanish algebraically.
+    endpoint_consistency = gap(ONE, 3)
     internal_mixture = gap(half, 2) + KAPPA * half * (ONE - half)
-    assert external_average.contains(0)
+    assert ENDPOINT_IDENTITY_PROVED
+    assert endpoint_consistency.contains(0)
     assert internal_mixture.lower() > KAPPA / arb(4)
-    print("  (F(nu)+F(mu*))/2 =", external_average)
+    print("  (F(nu)+F(mu*))/2 =", external_average, "[exact identity]")
     print("  F((nu+mu*)/2)    =", internal_mixture)
     print("  These are different operations; order averaging gives the first.")
     print()

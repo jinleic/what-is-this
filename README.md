@@ -7,21 +7,19 @@ never multi-GB campaign data or single files over the size cap; incremental —
 only changed files are rewritten; private-keyword gate blocks publishing when
 any word from a private, out-of-repo list appears in the output).
 
-Live site: https://jinleic.github.io/what-is-this/
-
 ## Problems
 
 | Problem | dir | last change | latest headline |
 |---|---|---|---|
-| [Cordoba-Cordoba-Fontelos 1D inviscid model](https://jinleic.github.io/what-is-this/problems/ccf.html) | `ccf` | 2026-08-22 | Salvage from the paused subproject |
-| [Hilbert's tenth problem over Q](https://jinleic.github.io/what-is-this/problems/h10q.html) | `h10q` | 2026-08-24 | H10/Q (2026-08-23b) — L26 RECIPROCAL TRACE TIE; L27 ONE-PIECE ALIGNED SHEAR |
-| [Irrationality of zeta(5) (Apéry-style)](https://jinleic.github.io/what-is-this/problems/zeta5.html) | `zeta5` | 2026-08-22 | 2026-08-15 — Session 8: ζ(5) campaign opened (zeta5/); baseline certified, search tool validated blind |
-| [Kobon triangle problem](https://jinleic.github.io/what-is-this/problems/kobon.html) | `kobon` | 2026-08-24 | KOBON (2026-08-23e) — HEREDITARY/SECTOR CUTS; FIRST STRETCHABILITY PROBE |
-| [Navier-Stokes existence & smoothness (route work)](https://jinleic.github.io/what-is-this/problems/ns.html) | `ns` | 2026-08-22 | 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim |
-| [Quantum LDPC codes: exact distance & co-design](https://jinleic.github.io/what-is-this/problems/qec.html) | `qec` | 2026-08-24 | QEC (2026-08-22) — EXP-056 exactifies $[[162,8,14]]$ and closes the fixed-point screen through $n=162$ |
-| [Ramsey number R(5,5)](https://jinleic.github.io/what-is-this/problems/r55.html) | `r55` | 2026-08-24 | R55 (2026-08-23) — ODD-PRIME AUTOMORPHISM LANE CLOSED; RAMSEY CONFERENCE AUT IS A 2-GROUP |
-| [Three-dimensional Ising model (exact solution)](https://jinleic.github.io/what-is-this/problems/ising3d.html) | `ising3d` | 2026-08-24 | ISING3D WAVE 22 (2026-08-23) — ENDPOINT SPECTRA; THREE TRACE CANDIDATES; EXACT LOCAL REFORMULATIONS |
-| [Union-closed sets conjecture (Frankl)](https://jinleic.github.io/what-is-this/problems/uc.html) | `uc` | 2026-08-24 | OUTCOME (2026-08-23) — campaign J: NO CERTIFICATE, missed by 31 and 29 stack leaves after 584.6 M residual-free boxes |
+| [Cordoba-Cordoba-Fontelos 1D inviscid model](problems/ccf.html) | `ccf` | 2026-08-22 | Salvage from the paused subproject |
+| [Hilbert's tenth problem over Q](problems/h10q.html) | `h10q` | 2026-08-25 | H10/Q (2026-08-24d) — L31 EXACT RECIPROCAL MEMBER; CUBE/DISPERSION/AP1 WALLS |
+| [Irrationality of zeta(5) (Apéry-style)](problems/zeta5.html) | `zeta5` | 2026-08-22 | 2026-08-15 — Session 8: ζ(5) campaign opened (zeta5/); baseline certified, search tool validated blind |
+| [Kobon triangle problem](problems/kobon.html) | `kobon` | 2026-08-25 | KOBON (2026-08-24f) — GENERALIZED LINE-0 COVECTOR LIFT EXHAUSTED |
+| [Navier-Stokes existence & smoothness (route work)](problems/ns.html) | `ns` | 2026-08-22 | 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim |
+| [Quantum LDPC codes: exact distance & co-design](problems/qec.html) | `qec` | 2026-08-25 | QEC (2026-08-24) — TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$ |
+| [Ramsey number R(5,5)](problems/r55.html) | `r55` | 2026-08-25 | R55 (2026-08-24c) — FORCED R(3,3) SUPPORT CUT: 6,627 / 705 D5 ORBITS |
+| [Three-dimensional Ising model (exact solution)](problems/ising3d.html) | `ising3d` | 2026-08-25 | ISING3D WAVE 22 (2026-08-23) — ENDPOINT SPECTRA; THREE TRACE CANDIDATES; EXACT LOCAL REFORMULATIONS |
+| [Union-closed sets conjecture (Frankl)](problems/uc.html) | `uc` | 2026-08-25 | OUTCOME (2026-08-23) — campaign J: NO CERTIFICATE, missed by 31 and 29 stack leaves after 584.6 M residual-free boxes |
 
 ## Update
 

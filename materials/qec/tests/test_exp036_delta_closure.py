@@ -52,6 +52,19 @@ def test_decision_semantics_reproduce_known_exact_distance() -> None:
         assert at["verification"]["valid"]
 
 
+def test_kissat_without_exposed_statistics_still_returns_a_decision() -> None:
+    instance = DecisionInstance(
+        parity_rows=np.zeros((0, 1), dtype=np.uint8),
+        pairing_rows=np.ones((1, 1), dtype=np.uint8),
+        groups=[[0]],
+        kind="kissat-stats-regression",
+    )
+    record = decide_weight_bounded(instance, 1, solver_name="kissat404")
+    assert record["status"] == "SAT"
+    assert record["vector"] == [1]
+    assert record["solver"]["stats"] == {}
+
+
 def test_sector_decomposition_drops_nonpreserving_global_symmetry() -> None:
     # Swapping coordinates is a symmetry of the monolithic disjunction, so
     # v_0=1 is a sound global anchor. It is not a symmetry of sector 1:

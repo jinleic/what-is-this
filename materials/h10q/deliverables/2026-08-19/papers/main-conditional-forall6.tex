@@ -77,13 +77,26 @@ ones.  L24 proves that both proposed \emph{unscaled} self-coupled diagonal
 orientations are \(\Phi\)-empty over \(\Q_2\).  L25 shows that fixed
 scaling removes this universal dyadic wall but leaves parity and target
 compatibility in those formulas.  L26 gives an even-pullback reciprocal
-tie with a quartic trace character.  L27 gives one triangular shear with
-complete dyadic and aligned odd-target local points.  No reciprocal
-member, rational coupled point, or five-count improvement is claimed,
-and none of these results changes the conditional theorem.
+tie with a quartic trace character.  L28 proves uniformly that the trace
+quartic and its bad-sign Capell cover are irreducible over \(\Q_2\).
+L29 completely classifies the distinct reciprocal lift and gives a
+target-preserving dyadic compressor.  L27 gives one triangular shear
+with complete dyadic and aligned odd-target local points.  L30 then
+replaces its degree-eight cover by the constant-two even quartic,
+proves the same complete displayed local data, and establishes broad
+square-branch/shear rigidity.  L31 proves one exact globally good
+fixed-field reciprocal member at \(w=13\).  It also finds an exact
+rational constant-two point immediately before the mandatory cube
+pullback, reduces that cube condition to two genus-\(2\) curves, and
+identifies AP1 as the exact parity replacement for Schinzel~H.  No
+uniform member theorem, controlled cube-compatible quartic point, AP1
+theorem, or five-count improvement is claimed, and the conditional
+theorem is unchanged.
 % src: data/l23_half_sieve.jsonl; data/l24_diagonal_arithmetic.jsonl
 % src: data/l25_scaled_coupling.jsonl; data/l26_reciprocal_tie.jsonl
-% src: data/l27_triangular_shear.jsonl
+% src: data/l27_triangular_shear.jsonl; data/l28_trace_field.jsonl
+% src: data/l29_reciprocal_frontier.jsonl; data/l30_quartic_frontier.jsonl
+% src: data/l31_frontier_push.jsonl
 \end{abstract}
 
 \maketitle
@@ -183,38 +196,80 @@ type-I formulas cover complementary dyadic parities, while their smooth
 target formula is on a freely chosen unit-\(b\) stratum rather than the
 aligned L20 stratum.  L26 changes the tie: \(Z=z^2\) and
 \(\eta=Z(b+1)/(Db)\) make the tied polynomial reciprocal with a quartic
-trace character, and remove its dyadic symbol.  L27 instead uses the
-single shear
+trace character and remove its dyadic symbol.  L28 proves uniformly
+that this trace quartic is irreducible over \(\Q_2\), and that
+\[
+ N\bigl(2(\theta+2)\bigr)\in A\Q_2^{\times2},
+ \qquad A\equiv5\pmod8.
+\]
+Thus the bad-sign extension is always nontrivial.  L29 further proves
+\[
+ \theta^2-4\in\Q_2(\theta)^{\times2}
+ \iff v_2(Z)=-2\ \text{or}\ v_2(Z)\ge2
+\]
+on the square-\(Z\) family, and the pullback
+\(Z=8z^2/(1+z^2)\) preserves odd targets while forcing the split
+stratum.  L27 instead uses the single shear
 \[
  (y,r)=(2X+28\rho,\ sX+\rho).
 \]
-One strong-Hensel argument covers all dyadic parities, and a Weil
-character-sum theorem, with \(43\) exact small-prime rows, supplies a
-smooth point on every standard aligned odd target.  The remaining
-degree-eight global cover has no proved rational point.  No member
-theorem or conditional five-count follows.
+It covers all dyadic parities and all aligned odd targets.  L30 improves
+the algebraic route by fixing
+\[
+ (y,r)=(2,\ sX+\rho).
+\]
+The resulting equation is quadratic in \(m=\lambda^2\), hence even
+quartic in \(\lambda\).  A normalized Hensel argument solves every
+dyadic stratum; a two-quadratic character count supplies fibre-regular
+rows for every \(w\ge5\); and \((a,b,z)=(5,3,3)\) is an exact
+strong-Hensel \(w=3\) fibre.  L30 also rules out a generic norm section
+for every rational square-branch tie and every \(B\)-independent
+linear-shear cancellation.
+
+L31 proves the exact fixed-field member
+\[
+ (w,a,Z,q_0,b,\rho,\lambda)
+ =(13,3,169,1,13,14/13,12).
+\]
+Its norm cofactor is prime by a recursive Pocklington certificate and
+every Hilbert symbol is \(+1\).  On the quartic side, L31 gives an exact
+rational point at
+\[
+ (a,c,\lambda,b,Z)=
+ (1,-64/25,3,-3253/3125,2033125/6101423),
+\]
+but \(Z\) is not a cube and its shared target prime leaves \(c\) a
+unit.  A complete external Magma calculation~\cite{magma} proves that the two
+genus-\(2\) cube curves on this unique constant-\(c\) section have only
+\(z=0\).  Thus this section is closed and the controlled quartic point
+remains open on other sections.
 % src: data/l25_scaled_coupling.jsonl; data/l26_reciprocal_tie.jsonl
-% src: data/l27_triangular_shear.jsonl
+% src: data/l27_triangular_shear.jsonl; data/l28_trace_field.jsonl
+% src: data/l29_reciprocal_frontier.jsonl; data/l30_quartic_frontier.jsonl
+% src: data/l31_frontier_push.jsonl; data/l31_magma_genus2.json
 
 Accordingly, classical Schinzel's Hypothesis~H remains the sole
 conjectural input to the established six-universal-quantifier definition.
-The exact next frontiers are the L26 quartic trace squareclass/member
-problem, a target-specific rational point on L27's global octic, or a
-parity-sensitive two-large-divisor estimate for the linear--octic
-sequence.  The theorem remains conditional: we make no new unconditional
+The exact next frontiers are a uniform reciprocal member theorem, a
+cube-compatible controlled point on L30's quartic, or AP1 via a
+pointwise fixed-family Buchstab/Hilbert-detector asymptotic.  The
+theorem remains conditional: we make no new unconditional
 quantifier-record claim and do not claim that H10(\(\Q\)) is solved.
 % src: data/litscout_h10q.md; data/l23_half_sieve.jsonl
-% src: data/l26_reciprocal_tie.jsonl; data/l27_triangular_shear.jsonl
+% src: data/l31_frontier_push.jsonl
 
 \section*{Reproducibility}
 
-All certificates in this paper are produced by a stdlib-only kernel with
-a proven-primality discipline: deterministic Miller--Rabin below
-$3.3\times 10^{24}$, Pocklington with the Brillhart--Lehmer--Selfridge
-relaxation above, and explicit refusal labels that never count as
-evidence. The companion paper documents the engine, the artifact
-schemas, the exact reproduction commands, and the precise scope of what
-is regenerable from checked-in scripts.
+All checked-in producer certificates in this paper use a stdlib-only
+kernel with a proven-primality discipline: deterministic Miller--Rabin
+below \(3.3\times10^{24}\), Pocklington with the
+Brillhart--Lehmer--Selfridge relaxation above, and explicit refusal
+labels that never count as evidence.  The sole external-CAS result is
+the scoped L31 genus-\(2\) calculation; its exact Magma V2.29-9 request,
+complete output, and intrinsic-help semantics are recorded, while the
+absence of a standalone checked-in Magma certificate is explicit.  The
+companion paper documents the engine, artifact schemas, exact
+reproduction commands, and precise regeneration scope.
 % src: h10q.py:32-39,81-178
 
 \begin{thebibliography}{99}
@@ -297,6 +352,12 @@ T.~Reuss,
 Bulletin of the London Mathematical Society \textbf{47} (2015), no.~2,
 270--284;
 \texttt{doi:10.1112/blms/bdv007}; arXiv:1307.2802.
+
+\bibitem{magma}
+W.~Bosma, J.~Cannon, and C.~Playoust,
+\emph{The Magma algebra system I: The user language},
+Journal of Symbolic Computation \textbf{24} (1997), nos.~3--4,
+235--265; computation replayed with Magma V2.29-9.
 
 \bibitem{schinzel}
 A.~Schinzel and W.~Sierpi\'nski,

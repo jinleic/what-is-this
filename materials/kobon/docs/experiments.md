@@ -33,6 +33,9 @@ filenames.  Byte counts are filesystem sizes at the snapshot.
 | Known n=20 packing | fixed n=20 arrangement | optimum 116, proved | MACHINE-CHECKED | `scratch/kobon/discoveries/n20_known116.maxpacking.json` |
 | n=20 reconstruction | 20 lines; overlap graph reported 1,122 triples / 294,134 clashes | 116 selected and exact `verify_selection=True`; later max-packing run proves optimum 116 | MACHINE-CHECKED after later prober | `scratch/kobon/n20/known116_reconstruct.log`, `scratch/kobon/discoveries/n20_known116.json` |
 | n=9 SAT-pipeline rehearsal | `p cnf 62517 379298`, target 21 | Kissat SAT; persisted model/rehearsal certificate | DISCOVERY-ONLY SAT model; exact witness artifact retained | `scratch/kobon/n9_rehearsal/n9_t21.kissat.stdout`, `scratch/kobon/n9_rehearsal/rehearsal_report.json`, `scratch/kobon/discoveries/n9_t21_satpipe_rehearsal.json` |
+| n=12 exact relocation census | 68,424 first-neighborhood + 205,272 selected depth-two placements | maximum 38 throughout; no target 39 in the covered local basins | MACHINE-CHECKED exact local enumeration; not a global upper bound | `scratch/kobon/one_line_relocation_n12.json`, `scratch/kobon/relocation_walk_depth2_n12.json`, `scratch/kobon/frontier_relocation_research.json` |
+| n=12 line-0 simple cutpath census | simple 11-line base; 11 source gaps; 7,960 fixed-affine pseudoline insertions | maximum 36; no target-39 topology, hence zero straightening candidates | MACHINE-CHECKED exhaustive simple fixed-base enumeration; vertex/parallel events excluded | `scratch/kobon/cutpath_insertion.py`, `scratch/kobon/test_cutpath_insertion.py`, `scratch/kobon/cutpath_line0_n12.json` |
+| n=12 line-0 generalized covector census | simple 11-line base; 65,517 finite + 29,092 parallel paths with arbitrary disjoint dual-vertex events | 94,609 fixed-affine topologies; maximum 38; no target-39 topology; all 6,304 exact geometric strata contained | MACHINE-CHECKED exhaustive generalized fixed-base enumeration; not a result for nonsimple deletion bases or global \(K(12)\) | `scratch/kobon/covector_insertion.py`, `scratch/kobon/test_covector_insertion.py`, `scratch/kobon/covector_line0_n12.json` |
 
 The obstruction scripts check the finite cycle enumerations.  Their hand-proof
 interfaces and hypotheses are separately stated in
@@ -167,3 +170,18 @@ A verified subcube does not close `K_gen(12)`: the cover and all remaining
 branches still need proof-checked closure.  The canonical `math/kobon/report.md`
 and `AUDIT.md` separately record the already certified n=10 campaign and its
 complete DRAT cover.
+
+## 8. Endpoint-closure frontier delta (2026-08-24)
+
+| Instance | Actual DIMACS header | Bytes | SHA-256 | Snapshot status |
+|---|---:|---:|---|---|
+| `scratch/kobon/n12_gap_endpoint_mi_k4_deletion_t39.cnf` | `p cnf 375037 1005366` | 21,685,650 | `6dca104aa120ee1f209aada8aca07a08bf3341f1335e6e99f4ae1f11bc2ba76b` | `n12-gap-endpoint-mi-k4-t39`, Kissat seed 0, live; no verdict/proof |
+| `scratch/kobon/n12_gap_endpoint_mi_k4_sub9_t39.cnf` | `p cnf 842317 1917926` | 39,495,970 | `34406004c932ce77d33f76f8b7d19c7b0f5a2e3e241e94651846269bf750f2df` | `n12-gap-endpoint-sub9-t39`, Kissat seed 1, live; no verdict/proof |
+
+Both regenerate byte-identically. The first combines single-line endpoint
+closure, shared-edge opposite-side parity, direct \(K(4)=2\) clauses, the
+simple-perturbation requirement of two multipoint-incident faces, and the
+existing 11-/10-line deletion cuts. The second additionally instantiates the
+checked \(K(9)=21\) bound on every nine-line subset. Neither process logs a
+proof, so an eventual UNSAT line is discovery only until a proof-producing
+rerun and independent check.

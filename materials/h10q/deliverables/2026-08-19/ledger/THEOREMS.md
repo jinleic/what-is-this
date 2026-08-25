@@ -3292,31 +3292,36 @@ $$
 $$
 Thus, after putting the finitely many primes dividing the fixed value
 $T_\tau(-2)$ into the controlled set, the emergent sign is a character
-of the quartic trace root.  Conditionally on $T_\tau$ being irreducible,
-if $\theta$ is a root then $K=\mathbb Q(\theta)$ has degree $4$; only if
-$2(\theta+2)$ is nonsquare is
+of the quartic trace root.  For the canonical branch
+$$
+\tau^\dagger=\frac{1+2a^2}{A},\qquad
+\delta=-\frac{4a^4}{A},
+$$
+L28 proves uniformly that $T_{\tau^\dagger}$ is irreducible, so
+$K=\mathbb Q(\theta)$ has degree $4$, and that
+$2(\theta+2)$ is nonsquare.  Hence
 $$K\bigl(\sqrt{2(\theta+2)}\bigr)/K$$
-the nontrivial quadratic bad-sign extension.  Equivalently, Capell gives
+is always the nontrivial quadratic bad-sign extension on the canonical
+L26 domain.  Equivalently, Capell gives the uniformly irreducible cover
 $$
-2(\theta+2)\in K^{\times2}
-\iff T_\tau(v^2/2-2)\ \text{is reducible over }\mathbb Q.
+T_{\tau^\dagger}(v^2/2-2).
 $$
-Neither irreducibility nor nonsquareness is asserted uniformly.
 
-For the guarded specialization $(a,z,Z)=(1,3,9)$ on $\tau^\dagger$,
-the reciprocal octic and its trace quartic are irreducible modulo $37$;
-this proves irreducibility for that one rational fibre only.  It is
-EVIDENCE that reciprocality is not automatic factorization.
+The guarded specialization $(a,z,Z)=(1,3,9)$ has reciprocal octic and
+trace quartic reductions irreducible modulo $37$.  That row remains
+one-fibre EVIDENCE for the distinct reciprocal lift; it is no longer the
+basis for the trace-field statement (`THEOREMS.md`, L28).
 
 ### L26e. Strict frontier
 
-L26 replaces the generic octic character field by a conditional quartic
-trace field and removes the dyadic symbol on this tie.  It does **not**
-produce a globally good $b$, prove the quartic Capell square condition,
-reduce the squarefree degree in the rational argument $b$, remove
-Schinzel H, or change the six-count.  The first new algebraic target is
-the squareclass of $2(\theta+2)$ in the trace quartic; the analytic
-two-large-bad-divisor problem remains.
+L26 replaces the generic octic character field by a quartic trace field
+and removes the dyadic symbol on this tie.  L28 closes trace
+irreducibility and bad-character nonsquareness uniformly.  L26 still
+does **not** produce a globally good $b$, decide the distinct reciprocal
+lift squareclass $\theta^2-4$, reduce the squarefree degree in the
+rational argument $b$, remove Schinzel H, or change the six-count.  The
+remaining obstruction is the global member/two-large-bad-divisor parity
+problem.
 
 ## L27 [ONE-PIECE TRIANGULAR SHEAR, 2026-08-23]. Dyadic parity and every aligned odd target are locally solved
 
@@ -3484,3 +3489,215 @@ give a rational root of $\mathcal G_{28}$, control every remaining
 finite place simultaneously, prove a member theorem, produce a
 five-count, or remove Schinzel H.  The global bridge-specialized
 degree-$8$ cover is now the sole obstruction in this sheared route.
+
+### L27e. The natural linear-\(B\) section does not exist
+
+The eliminant is even in \(\lambda\).  Put \(m=\lambda^2\) and separate
+the terms involving \(B=2b\):
+$$
+\mathcal G_{28}(m)
+=G_0(A,m)-c^2m(m-A)^2
+-16ABm(m-A)
+\bigl((s+1)^2m-(s-1)^2A\bigr),
+$$
+where \(G_0\) is independent of \(B\) and \(c\).  Thus the tempting
+strategy of first cancelling all linear \(B\)-dependence has only three
+possibilities.  The factor \(m=0\) is \(\lambda=0\), outside the conic
+parameterization.  At \(m=A\), the full eliminant is
+\(-64A^3\ne0\).  For \(s\ne\pm1\), the last factor would give
+$$
+\lambda^2=A\left(\frac{s-1}{s+1}\right)^2,
+$$
+forcing \(A\) to be a rational, hence \(2\)-adic, square; this
+contradicts \(A\equiv5\bmod8\).  At \(s=1\) it reduces to \(m=0\), and
+at \(s=-1\) it equals \(-4A\).
+
+Therefore no rational point on the canonical cover can arise by
+annihilating its linear \(B\)-coefficient
+(`l27_triangular_shear.py::b_coefficient_no_go`;
+`data/l27_triangular_shear.jsonl`).  This excludes exactly that section
+ansatz; it is **not** a no-point theorem for the full degree-\(8\)
+cover.
+
+## L28 [UNIFORM TRACE-FIELD CLOSURE, 2026-08-24]. The L26 quartic and its bad-sign cover are irreducible at \(2\)
+
+Retain the canonical L26 hypotheses
+$$
+v_2(a)=0,\qquad Z=z^2\ne0,\qquad
+A=1+4a^2,\qquad D=1-Z-a^2Z^2,
+$$
+and put \(t=v_2(Z)\in2\mathbb Z\).  Thus
+\(A\equiv5\bmod8\), \(D\ne0\), and
+$$
+v_2(D)=
+\begin{cases}
+0,&t\ge0,\\
+2t,&t<0.
+\end{cases}
+$$
+Let \(T\) be the canonical trace quartic from L26b.
+
+### L28a. The trace quartic is uniformly irreducible
+
+Set \(w=u-2\).  Exact expansion gives
+$$
+T(w+2)=d_4w^4+d_2w^2+d_1w+d_0,
+$$
+where
+$$
+\begin{aligned}
+d_4&=4a^8AZ^4,\\
+d_2&=-128a^{12}Z^4,\\
+d_1&=-32A^3Z^2,\\
+d_0&=16A^2D^2+\frac{1024a^{16}Z^4}{A}-128A^3Z^2.
+\end{aligned}
+$$
+The nonzero coefficient valuations are
+$$
+\begin{array}{c|rrrr}
+ &d_0&d_1&d_2&d_4\\ \hline
+t\ge0&4&5+2t&7+4t&2+4t\\
+t<0&4+4t&5+2t&7+4t&2+4t .
+\end{array}
+$$
+Consequently the Newton polygon has one segment, of slope
+\(t-\tfrac12\) for \(t\ge0\) and \(-\tfrac12\) for \(t<0\).
+Every root therefore has half-integral valuation, so \(T\) has no
+linear factor over \(\mathbb Q_2\).
+
+It remains to exclude a product of two quadratics.  Divide by \(d_4\)
+and write
+$$
+f(w)=w^4+pw^2+qw+r,
+$$
+where
+$$
+\begin{aligned}
+p&=-\frac{32a^4}{A},\\
+q&=-\frac{8A^2}{a^8Z^2},\\
+r&=\frac{4AD^2}{a^8Z^4}
+   +\frac{256a^8}{A^2}
+   -\frac{32A^2}{a^8Z^2}.
+\end{aligned}
+$$
+If
+$$
+f=(w^2+\alpha w+\beta)(w^2-\alpha w+\gamma),
+$$
+then \(q\ne0\) forces \(\alpha\ne0\), and
+\(Y=\alpha^2\) is a nonzero square root of the Ferrari resolvent
+$$
+\boxed{
+H(Y)=Y^3+2pY^2+(p^2-4r)Y-q^2.}
+$$
+Put \(h=p^2-4r\).  Direct valuation gives
+$$
+\begin{array}{c|rrrr}
+ &v_2(p)&v_2(q)&v_2(r)&v_2(h)\\ \hline
+t\ge0&5&3-2t&2-4t&4-4t\\
+t<0&5&3-2t&2&4 .
+\end{array}
+$$
+After the displayed power of \(2\) is removed,
+$$
+\frac{h}{2^{\,4-4t}}\equiv3\pmod8\quad(t\ge0),
+\qquad
+\frac h{16}\equiv3\pmod8\quad(t<0),
+$$
+while
+$$
+\frac{q^2}{2^{\,6-4t}}\equiv1\pmod8.
+$$
+
+The Newton polygon of \(H\) leaves only the valuations in the second
+column below.  If \(Y\) were a square, its normalized unit would be
+\(1\bmod8\).  Substitution gives the listed nonzero normalized residue:
+$$
+\begin{array}{c|c|c|c}
+\text{case}&v_2(Y)&\text{power dividing }H(Y)&
+H(Y)/2^{\text{power}}\pmod8\\ \hline
+t=0&2&6&3\\
+t>0&2&6-4t&2\\
+t>0&2-2t&6-6t&4\\
+t<0&2&6&4\\
+t<0&2-4t&6-4t&2 .
+\end{array}
+$$
+Here \(t>0\) means \(t\ge2\), and \(t<0\) means \(t\le-2\), because
+\(Z=z^2\); this is exactly what makes the omitted terms vanish modulo
+\(8\) in the two residue-\(4\) rows.  Thus \(H\) has no square root in
+\(\mathbb Q_2\), and \(f\) has no quadratic factor.  Together with the
+linear-factor exclusion,
+$$
+\boxed{T\text{ is irreducible over }\mathbb Q_2,\text{ hence over }\mathbb Q}
+$$
+for every canonical L26 parameter
+(`l28_trace_field.py::local_irreducibility_replay`;
+`data/l28_trace_field.jsonl`).
+
+### L28b. The bad-sign squareclass is uniformly nontrivial
+
+Let \(\theta\) be a root of \(T\) and
+\(K=\mathbb Q(\theta)\).  Since the leading coefficient is
+\(4a^8AZ^4\),
+$$
+\begin{aligned}
+N_{K/\mathbb Q}\bigl(2(\theta+2)\bigr)
+&=\frac{16T(-2)}{4a^8AZ^4}\\
+&=\frac{64E}{a^8Z^4A^2},
+\end{aligned}
+$$
+where
+$$
+\boxed{
+E=A^3D^2+64a^8Z^4(a^4-A)^2.}
+$$
+For a \(2\)-adic unit \(a\),
+$$v_2(a^4-A)=2,$$
+and therefore
+$$
+\frac{E}{A^3D^2}
+=1+\frac{64a^8Z^4(a^4-A)^2}{A^3D^2}
+\in1+2^{10}\mathbb Z_2.
+$$
+The correction is a \(2\)-adic square.  Every factor outside \(E\) in
+the norm formula is also a square, so
+$$
+\boxed{
+N_{K/\mathbb Q}\bigl(2(\theta+2)\bigr)
+\in A\,\mathbb Q_2^{\times2}.}
+$$
+Because \(A\equiv5\bmod8\), this norm is nonsquare.  Hence
+\(2(\theta+2)\) is nonsquare in \(K\), and
+$$
+[K(\sqrt{2(\theta+2)}):\mathbb Q]=8.
+$$
+Equivalently, Capell's criterion now gives the unconditional-on-the-
+parameters conclusion
+$$
+\boxed{T(v^2/2-2)\text{ is irreducible over }\mathbb Q_2
+\text{ and over }\mathbb Q.}
+$$
+The producer replays \(2{,}600\) exact unit-congruence rows, \(175\)
+exact norm rows, and an independent mod-\(41\) degree-\(8\) sample
+certificate (`l28_trace_field.py`;
+`data/l28_trace_field.jsonl`).
+
+TraceFieldAudit independently rederived every coefficient, Newton
+polygon, Ferrari-resolvent case, norm squareclass and Capell implication;
+verdict SOUND at confidence \(0.99\), with no finding
+(`agent://TraceFieldAudit`).
+
+### L28c. Consequence and strict frontier
+
+The conditional qualifications in L26d are now removed: the trace
+algebra is always a quartic field and its bad-sign quadratic extension
+is always nontrivial on the canonical even-pullback domain.  This
+closes the first algebraic target named in L26e.
+
+It does **not** decide the distinct reciprocal-lift squareclass
+\(\theta^2-4\), prove the reciprocal octic irreducible uniformly,
+produce a globally good \(b\), solve the two-large-bad-divisor parity
+problem, remove Schinzel H, or improve the formal six-count.  The L26
+route is now blocked by the global member/parity step rather than by
+trace-field or bad-character nontriviality.

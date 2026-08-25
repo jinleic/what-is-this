@@ -114,11 +114,13 @@ def _upper_witness(record: dict[str, Any], problem: dict[str, Any]) -> dict[str,
     return {"route": route, **physical_witness(problem, support, int(weight))}
 
 
-def _decision(problem: dict[str, Any], cap: int) -> dict[str, Any]:
+def _decision(
+    problem: dict[str, Any], cap: int, solver: str = SOLVER
+) -> dict[str, Any]:
     instance = E58.css_side_instance(
         problem["HX"], problem["HZ"], "z", block_length=problem["block"]
     )
-    return E58.decide_raw(instance, int(cap), SOLVER)
+    return E58.decide_raw(instance, int(cap), solver)
 
 
 def solve_record(group: str, index: int, record: dict[str, Any]) -> dict[str, Any]:
@@ -138,7 +140,7 @@ def solve_record(group: str, index: int, record: dict[str, Any]) -> dict[str, An
 
     decisions = []
     exact_distance = None
-    previous_unsat = start - 2
+    previous_unsat: int | None = 0 if start == 2 else None
     for cap in range(start, upper_weight, 2):
         decision = _decision(problem, cap)
         decisions.append(decision)
@@ -168,9 +170,10 @@ def solve_record(group: str, index: int, record: dict[str, Any]) -> dict[str, An
     else:
         exact_distance = upper_weight
 
-    lower = previous_unsat + 2
+    lower = previous_unsat + 2 if previous_unsat is not None else None
     exact = bool(
         exact_distance is not None
+        and lower is not None
         and exact_distance == lower
         and exact_distance <= upper_weight
     )
@@ -236,16 +239,20 @@ def run(groups: list[str], indexes: set[int] | None = None) -> int:
         if result.get("schema") == SCHEMA:
             completed.append(result)
     completed.sort(key=lambda record: (record["group"], record["index"]))
+    exact_records = [record for record in completed if record["exact"]]
     payload = {
         "schema": SCHEMA,
         "source_shard": str(SHARD.relative_to(ROOT)),
         "source_shard_sha256": hashlib.sha256(SHARD.read_bytes()).hexdigest(),
         "groups": sorted({record["group"] for record in completed}),
         "records": completed,
-        "all_exact": all(record["exact"] for record in completed),
+        "all_exact": len(exact_records) == len(completed),
+        "all_decided": all(
+            record["verdict"] in {"exact", "dominated"} for record in completed
+        ),
         "exact_parameter_histogram": {},
     }
-    for record in completed:
+    for record in exact_records:
         key = f"[[{record['n']},{record['k']},{record['exact_distance']}]]"
         payload["exact_parameter_histogram"][key] = (
             payload["exact_parameter_histogram"].get(key, 0) + 1
@@ -254,9 +261,10 @@ def run(groups: list[str], indexes: set[int] | None = None) -> int:
     print(json.dumps({
         "records": len(completed),
         "all_exact": payload["all_exact"],
+        "all_decided": payload["all_decided"],
         "exact_parameter_histogram": payload["exact_parameter_histogram"],
     }, indent=1))
-    return 0 if payload["all_exact"] else 1
+    return 0 if payload["all_decided"] else 1
 
 
 def promoted_problem() -> dict[str, Any]:
@@ -423,13 +431,52 @@ def promote(*, force: bool = False) -> int:
     return 0
 
 
+def probe(group: str, index: int, cap: int, solver: str) -> int:
+    shard = json.loads(SHARD.read_text(encoding="utf-8"))
+    record = shard[group][index]
+    problem = problem_of(record)
+    decision = _decision(problem, cap, solver)
+    payload = {
+        "schema": SCHEMA,
+        "group": group,
+        "index": index,
+        "A": record["A"],
+        "B": record["B"],
+        "n": problem["n"],
+        "k": problem["k"],
+        "cap": cap,
+        "solver": solver,
+        "decision": decision,
+    }
+    path = OUT_DIR / (
+        f"{group}_{index:03d}_probe_{solver}_cap{cap:02d}.json"
+    )
+    E56.atomic_write_json(path, payload)
+    print(json.dumps({
+        "solver": solver,
+        "group": group,
+        "index": index,
+        "k": problem["k"],
+        "cap": cap,
+        "status": decision["status"],
+        "weight": decision.get("weight"),
+    }))
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("run", "promote", "validate"))
+    parser.add_argument(
+        "command", choices=("run", "probe", "promote", "validate")
+    )
     parser.add_argument(
         "--groups", default="survivors,undecided,no_reference"
     )
     parser.add_argument("--indexes", default="")
+    parser.add_argument("--group", default="undecided")
+    parser.add_argument("--index", type=int, default=0)
+    parser.add_argument("--cap", type=int, default=0)
+    parser.add_argument("--solver", default=SOLVER)
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
     if args.command == "run":
@@ -439,6 +486,8 @@ def main() -> int:
             if args.indexes else None
         )
         return run(groups, indexes)
+    if args.command == "probe":
+        return probe(args.group, args.index, args.cap, args.solver)
     if args.command == "promote":
         return promote(force=args.force)
     payload = json.loads(CERTIFICATE.read_text(encoding="utf-8"))

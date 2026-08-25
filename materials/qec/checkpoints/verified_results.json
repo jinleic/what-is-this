@@ -14728,6 +14728,43 @@
    "evidence:tests": "tests/test_exp056_odd_distance.py; tests/test_exp055_odd_lattice.py; tests/test_paper_claims.py; 49 targeted passed; full suite 972 passed, 1 skipped",
    "evidence:note": "notes/theorem_k_certified_ceiling.md; notes/failed_routes.md FR-027; reports/paper_pbb_nogo.pdf (17 pages, zero undefined references)",
    "classification": "EXACT COMPUTATION + REPLAYED CERTIFICATE + COMPLETE BOUNDED SCREEN"
+  },
+  {
+   "id": "exp065:adaptive_frontier_exact_210_screen_closure",
+   "date": "2026-08-23",
+   "kind": "theorem+exact-computation+method-falsification",
+   "statement": "EXP-057--065 ADAPTIVE ODD-LATTICE FRONTIER. Exact replayed fixed points: [[170,16,10]]; seven symmetry classes [[186,10,14]]; thirteen [[210,18,8]]; [[210,24,4]]; [[210,14,12]]; two [[210,10,16]]. A separate n=210 k=8 row is dominated by independent CaDiCaL/Maple weight-16 witnesses; no lower-bound or exact-distance claim is made for it. EXP-059 proves an exact CRT coordinate-permutation equivalence of the coprime N=105 lattices (15,7), (21,5), (35,3) by checking all 105 monomial conjugations. EXP-060 uses odd-column parity, exact BB d_X=d_Z duality and one-sector even-cap raw-kissat climbs. EXP-063 proves monotone reference rebinding, archives old shards and rechecks carried witnesses. Fixed-point screen through n=210: 20 lattices, 4,020 symmetry classes / 122,833 represented pairs; all 3,816 referenced classes dominated (3,364 reduced-pole, 395 bounded/adaptive CDCL, 57 exact CP-SAT), 204 no-reference, zero survivor/undecided; all 3,759 explicit witnesses physically rechecked. Creative controls fail closed: exact affine-trellis widths 48/53/80/99 exceed the 5M-state gate; H=7 quotient projection exact lower bound is only 4; hard-implies-H=1 is falsified.",
+   "evidence:certificates": "results/certificates/exp057_170_16_10_distance.json; results/certificates/exp058_186_10_14_distance.json; results/certificates/exp060_210_18_8_distance.json; results/certificates/exp064_210_24_4_distance.json; results/certificates/exp064_210_14_12_distance.json; results/certificates/exp064_210_10_16_distance.json",
+   "evidence:screen": "results/processed/exp055_odd_lattice_screen.json; results/certificates/exp055_odd_lattice_survivors.json; results/partial_runs/exp055_screen/15x7.json; results/partial_runs/exp055_screen/21x5.json; results/partial_runs/exp055_screen/35x3.json",
+   "evidence:methods": "results/processed/exp059_coprime_transport.json; results/processed/exp060_n210_ratchet.json; results/processed/exp061_affine_trellis_profile.json; results/processed/exp062_n105_pole_stabilizers.json; results/processed/exp065_n105_k8_projection.json",
+   "evidence:experiments": "experiments/exp057_odd_frontier.py through experiments/exp065_quotient_projection.py; src/qec_research/distance/sat_decide.py",
+   "evidence:tests": "tests/test_exp055_odd_lattice.py; tests/test_exp057_odd_frontier.py; tests/test_exp058_odd_frontier.py; tests/test_exp059_coprime_transport.py; tests/test_exp060_frontier_ratchet.py; tests/test_exp061_n105_methods.py; tests/test_exp063_reference_rebind.py; tests/test_exp064_n210_promotions.py",
+   "evidence:notes": "notes/theorem_k_certified_ceiling.md; notes/failed_routes.md FR-028/029/030/031; reports/paper_pbb_nogo.pdf",
+   "classification": "EXACT COMPUTATION + REPLAYED CERTIFICATES + COMPLETE BOUNDED SCREEN + FAILED-CLOSED NEW METHODS"
+  },
+  {
+   "id": "exp066:n234_bounded_extension_hard_wall",
+   "date": "2026-08-23",
+   "kind": "exact-automorphism-audit+bounded-screen+failed-closed-residual",
+   "statement": "EXP-066 exhaustively represents the two n=234 frontiers. The (13,9) lattice closes 84/84 classes. On (39,3), all 576 automorphisms from F_13^* x GL(2,3) are explicit bijective homomorphisms; they partition 182 initial hard classes into 30 exact code-equivalence bundles. Candidate-local matrix-verified witness transport closes 28 bundles / 158 classes. The expanded 22-lattice surface contains 4,862 classes / 150,581 represented pairs: 4,634/4,658 referenced classes dominated, 24 undecided, 204 no-reference, zero survivors. The two open 12-class bundles all have weight-18 logical witnesses but no cap-16 lower decision, so exact closure remains n<=210 and no [[234,8,18]] claim is made.",
+   "evidence:screen": "results/processed/exp066_n234_frontier.json; results/processed/exp055_odd_lattice_screen.json; results/partial_runs/exp055_screen/13x9.json; results/partial_runs/exp055_screen/39x3.json",
+   "evidence:experiment": "experiments/exp066_n234_frontier.py",
+   "evidence:tests": "tests/test_exp066_n234_frontier.py; tests/test_paper_claims.py",
+   "evidence:notes": "notes/next_breakthroughs.md; notes/failed_routes.md FR-032; checkpoints/current_state.md",
+   "classification": "COMPLETE COMPARISON ENUMERATION + EXACT AUTOMORPHISM PARTITION + VERIFIED UPPER WITNESSES + FAIL-CLOSED LOWER RESIDUAL"
+  },
+  {
+   "id": "exp067:n234_exact_closure",
+   "date": "2026-08-24",
+   "kind": "published-constructor-transport+exact-connected-cluster-replay+physical-screen-proof-repair+monotone-promotion",
+   "statement": "EXP-067 identifies the two open EXP-066 (39,3) bundles with Liang et al. arXiv:2503.03827v3 Table III's two published [[234,8,18]] rows by unique quotient-lattice maps and exact HX/HZ rowspace permutations. For each representative, race-free legacy dist-m4ri connected-cluster searches exhaust weights 1--16 in original and block-swapped presentations and replay both. Odd column degree excludes 17; independent weight-18 X/Z witnesses close d_X=d_Z=d=18. The multithreaded coordinator was rejected before certification for a one-root completion race (FR-033). EXP-068 closes the global fail-open path found in final review: 29 independent and 28 CRT-transported physical witnesses now bind all 57 fallback dominations, while validator v11 rebuilds identity/transport, threshold/source and physical proof on all 22 shards before/after/archive rebind. The exact fixed-point screen through n=234 has 4,862 classes / 150,581 represented pairs, all 4,658 referenced classes dominated, 204 no-reference, zero survivor/undecided. The codes are published prior art; the independent certificate and exhaustive closure are local.",
+   "evidence:certificates": "results/certificates/exp067_234_8_18_bundle19_distance.json; results/certificates/exp067_234_8_18_bundle22_distance.json",
+   "evidence:runs": "results/partial_runs/exp067_n234_cluster/runs/*.json; results/partial_runs/exp067_n234_cluster/solver_build.json; source archives under results/partial_runs/exp067_n234_cluster/solver/; results/partial_runs/exp068_screen_witnesses/*.json",
+   "evidence:screen": "results/processed/exp055_odd_lattice_screen.json; results/processed/exp066_n234_frontier.json; results/certificates/exp055_odd_lattice_survivors.json; results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v11/",
+   "evidence:experiment": "experiments/exp067_n234_connected_cluster.py; experiments/exp068_screen_proof_repair.py",
+   "evidence:tests": "tests/test_exp067_n234_connected_cluster.py; tests/test_exp066_n234_frontier.py; tests/test_exp055_odd_lattice.py; tests/test_exp063_reference_rebind.py; tests/test_paper_claims.py",
+   "evidence:notes": "notes/theorem_k_certified_ceiling.md; notes/failed_routes.md FR-033/034/035; checkpoints/current_state.md",
+   "classification": "EXACT PUBLISHED-CODE REPRODUCTION + REPLAYED ROOTED LOWER CERTIFICATES + COMPLETE FIXED-POINT SCREEN + REJECTED RACY BACKEND"
   }
  ]
 }

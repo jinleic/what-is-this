@@ -6,7 +6,7 @@ Files strictly smaller than **50,000,000 bytes** have a SHA-256 computed from di
 
 **Inventory totals:** 427 files; 302 SHA-256 values computed; 125 large-file hashes omitted.
 
-## 2026-08-23 frontier deltas
+## 2026-08-23/24 frontier deltas
 
 | Path | Size (bytes) | SHA-256 | Canonical release zip |
 |---|---:|---|---|
@@ -17,32 +17,50 @@ Files strictly smaller than **50,000,000 bytes** have a SHA-256 computed from di
 | `scratch/kobon/c23_n7_violation.drat` | 34,133,280 | `b17bb8d6610242ee3149b141d24447b2261ab1c75ac2f4e92c21913ad53f4c5a` | included as `certificates/c23_n7_violation.drat` |
 | `scratch/kobon/c23_n7_violation.dratcheck.log` | 442 | checker transcript ending `s VERIFIED` | included as `certificates/c23_n7_violation.dratcheck.log` |
 | `scratch/kobon/c23_n7_certificate.json` | 2,085 | `214c5fca509c4de1a310385e8d63cc0bf0e47ef25dfd57446a548f8ad6912b9b` | included as `certificates/c23_n7_certificate.json` |
-| `math/kobon/engine.py` | 48,399 | `5ecad5d184a8febe8cc0eb04c9e327ee907dc9b0984839b1685d48d98a39058e` | included as `scripts/engine.py` |
-| `scratch/kobon/gap_faces.py` | 5,588 | `d1cd586eb35018ea555f6933a009501addddda49cce9a007c90bf2cca9b04455` | included as `scripts/gap_faces.py` |
-| `scratch/kobon/sector_bound_audit.py` | 4,810 | `417b31817731c9b1bbd951c2b8544aa0aaa20b293c71c6eef66a9c58c91f230d` | included as `verification/sector_bound_audit.py` |
-| `scratch/kobon/sector_bound_audit.json` | 473 | `2c20841679043c474f3b539d57b6370ce7c1470e8777a7934aec87989b3907af` | included as `verification/sector_bound_audit.json` |
+| `math/kobon/engine.py` | 65,426 | `d1ff89892e0bc5130c701365066c0cd43dbdc3d4d1d96e836502115617ff6351` | included as `scripts/engine.py` |
+| `math/kobon/test_engine.py` | 32,738 | `ebcc5feaec5d2f582ba28504f2590f935f1eacb3ba2f9d8acc3696090a166885` | referenced only; focused suite 36/36 |
+| `scratch/kobon/gap_faces.py` | 8,859 | `4b2f9668993b7be5cf56135b53a430990f37c19aacf68ab79df7904c7cf1c412` | included as `scripts/gap_faces.py` |
+| `scratch/kobon/sector_bound_audit.py` | 14,458 | `d4978d7b8a7893245a8d4dbbd0c332ac30116b67259498b07694c75b5524c6a9` | included as `verification/sector_bound_audit.py` |
+| `scratch/kobon/sector_bound_audit.json` | 1,280 | `b2bd2fc173ae659a6cd1f16374903673a66094a4858c4a011fb491330bc56b04` | included as `verification/sector_bound_audit.json` |
 | `scratch/kobon/pappus_relaxation_probe.py` | 3,601 | `975af524f5aad770d02dd0e20f22200f8054c9755d12821b8315f2bdd21d0880` | included as `verification/pappus_relaxation_probe.py` |
 | `scratch/kobon/pappus_relaxation_probe.json` | 659 | `ba4a108a77f9f527fbd576c64d173d8f715aa5735ba6d68584dfbf5968c4550c` | included as `verification/pappus_relaxation_probe.json` |
 | `scratch/kobon/n12_gap_sector_deletion_t39.cnf` | 16,145,451 | `5435cb9958710878b1a68bc112e353a46d9a031a723e1afaa31191a9a9546909` | referenced only; live discovery instance, no verdict |
-| `math/kobon/paper/kobon_broad_capacity.tex` | 62,608 | `bab2903d545ff61906b1ca6c4cbc1e6b494f7f6d5a360cbb81d1c416881bfa2f` | included as `papers/kobon_broad_capacity.tex` |
-| `math/kobon/paper/kobon_broad_capacity.pdf` | 369,258 | `742202e181b54a87a93219f41528dc1b0c41e7f6d913bacdcdda03401e4c10d2` | included as `papers/kobon_broad_capacity.pdf` |
+| `scratch/kobon/n12_gap_sector_deletion_t39.metadata.json` | 3,727 | `47846eac53412110d8bf1d9053476e0e676378ab0a6807f8659fd570e4757d0b` | included as `discoveries/n12_gap_sector_deletion_t39.metadata.json` |
+| `scratch/kobon/ladder_n10_t26_faces.cnf` | 22,125,971 | `d3eddc9c5ee996dc3946eeac1fdd3289daef8ffe0802199ca0d7a3791141dfa2` | included as `certificates/ladder_n10_t26_faces.cnf` |
+| `scratch/kobon/ladder_n10_t26_faces.drat` | 14,050,806,440 | `bdbab47463806ee96163d03ec36a052e5818e2125202272182ee4cbe94629007` | referenced only; complete checked proof |
+| `scratch/kobon/ladder_n10_t26_faces.dratcheck.log` | 452 | `d4efb6701373c33d259b8e08abe66b220c763b99e58d011578c915b380b22313` | included as `certificates/ladder_n10_t26_faces.dratcheck.log` |
+| `scratch/kobon/ladder_n10_t26_faces_certificate.json` | 3,066 | `50085b4607ab70bc8e124472f77db1bb981a76266c9be18c1eb9de46a07795f9` | included as `certificates/ladder_n10_t26_faces_certificate.json` |
+| `scratch/kobon/n12/n12_face_cells_q1_t39.cnf` | 13,615,953 | `fa8460252010e62bf9b722d9c08562e8ae6c2ddf996059901e9bce23e7c27bc4` | referenced only; discovery UNSAT without proof |
+| `scratch/kobon/n12/n12_face_cells_q1_t39.discovery.json` | 2,875 | `3c64a0ed92edad42a3452b449ae9f8950cc85c85d7ee193c975d419a9d1ded70` | included as `discoveries/n12_face_cells_q1_t39.discovery.json` |
+| `scratch/kobon/n12_gap_shared_ray_deletion_t39.cnf` | 16,474,653 | `0aa9e81e1806d5ff7413669d7357454c9e08a496d2172d8b4a512b27115b7e7d` | referenced only; live opt-in discovery instance, no verdict |
+| `scratch/kobon/shared_ray_bound_experiment.json` | 5,050 | `3d434eea77da033fcf562d1d3ac552a38821f440774f59c705615ff6fa562fdb` | included as `discoveries/shared_ray_bound_experiment.json` |
+| `scratch/kobon/reified_face_audit.py` | 7,156 | `76e15a255072e3a1a14075b7cb39cc0cc99d2b54461bdd74049acd0be03688b7` | included as `verification/reified_face_audit.py` |
+| `scratch/kobon/reified_face_audit.json` | 1,108 | `24dbaf97250b5750e415b2132aaeb9d4df12c1eb8ac9ec56f507fb79452026f8` | included as `verification/reified_face_audit.json` |
+| `scratch/kobon/chirotope_gp_audit.py` | 7,713 | `67fa614dbdafb540d17572f097e1d2e135bd50941c908bd9396a5af02c039676` | included as `verification/chirotope_gp_audit.py` |
+| `scratch/kobon/chirotope_gp_audit.json` | 662 | `65395eadc15ba3326df7f14753fbe7c0aa7c85a26c5702d47844ba1803dea9a2` | included as `verification/chirotope_gp_audit.json` |
+| `scratch/kobon/frontier_endpoint_research.json` | 9,556 | `3cda3792387f49e54c56be828be9b30c1209d07fa28965ebb3dc658c1e05c4ed` | included as `discoveries/frontier_endpoint_research.json` |
+| `scratch/kobon/n12_gap_endpoint_mi_k4_deletion_t39.cnf` | 21,685,650 | `6dca104aa120ee1f209aada8aca07a08bf3341f1335e6e99f4ae1f11bc2ba76b` | referenced only; live discovery instance, no verdict/proof |
+| `scratch/kobon/n12_gap_endpoint_mi_k4_sub9_t39.cnf` | 39,495,970 | `34406004c932ce77d33f76f8b7d19c7b0f5a2e3e241e94651846269bf750f2df` | referenced only; live \(K(9)\)-hereditary discovery instance, no verdict/proof |
+| `math/kobon/paper/kobon_broad_capacity.tex` | 67,966 | `e39b5db1eb181de2f6b31894c358218fd9a15a17bbd3030bd0d7dd70063d5e7d` | included as `papers/kobon_broad_capacity.tex` |
+| `math/kobon/paper/kobon_broad_capacity.pdf` | 377,434 | `1f794df33d7adfc1e35146191238763f374b66725a9aa30d22b4bddb7198523b` | included as `papers/kobon_broad_capacity.pdf` |
 
 ## Canonical and working documents
 
 | Path | Size (bytes) | SHA-256 | Canonical release zip |
 |---|---:|---|---|
-| `math/PROGRESS.md` | 252,178 | `c69519a36890685c63a3857532019f840d52e1cf5525cf33a320f28448a97b18` | referenced only |
-| `math/kobon/README.md` | 7,317 | `1040611c94936350549e1a9e85c52961c27d5432d02f82d7b447b4379da4b55d` | referenced only |
+| `math/PROGRESS.md` | 439,839 | `7f66e620d7d0ca300114a1f455d9e8a27dd6f44edcec33a7ed34ee5154589ef0` | included as `docs/PROGRESS.md` |
+| `math/kobon/README.md` | 10,178 | `aab60eda88312f6ee0df305beb48f529ec1651022862eb2056707871efd13d73` | referenced only |
 | `math/kobon/AUDIT.md` | 7,567 | `981628f74ca64a4d419f3826521e9a18d7ad4407ed2dd97b179b93216c0117a9` | referenced only |
 | `math/kobon/report.md` | 24,616 | `d6b6e95ac27e1dac478f3dd3018ee7d929cae3862734379eedc0538a14877333` | included byte-identically as `papers/report.md` |
-| `math/kobon/paper_capacity.md` | 60,130 | `f8be81157d75e3f530d194de7e72916134a3d0531a60059b2db652dada3133e7` | included byte-identically as `papers/paper_capacity.md` |
+| `math/kobon/paper_capacity.md` | 70,546 | `b664cb49ca581bb5536df3065c9702843cfb2bcbd13dfd3f2f97fc4c01bd2da3` | included byte-identically as `papers/paper_capacity.md` |
 | `math/kobon/paper_kobon_2026-08.md` | 9,973 | `63eeac4be91857da840487c2ef10bcd149c5bbb6d4f5735d8ea75e1c1ebeedef` | included byte-identically as `papers/paper_kobon_2026-08.md` |
-| `math/kobon/docs/INDEX.md` | 15,535 | `ac74b8599f0e99646efa177974473c8f8200ecaf13300824b6a152ff9892dea8` | referenced only |
-| `math/kobon/docs/methods.md` | 10,526 | `2022fee6b36a10883510dcd56bdc20d2783e9fc3e3aa09d37ac28aa5a2d9e892` | referenced only |
-| `math/kobon/docs/experiments.md` | 14,142 | `d3c7e5e01e5ea50c4d0f006267dd9c4073225f575735afc8bf578a5e3742ee05` | referenced only |
-| `math/kobon/docs/reproduce.md` | 5,814 | `e58fcaa127c8b2a5ba001de1925b3f7fcb70a21e5270739c915ecce47adf5218` | referenced only |
-| `math/kobon/verification/README.md` | 3,682 | `fba38ea7ae8e5e4096c5c341200936bb25af14e652a9db4559f56f9c467164de` | referenced only |
-| `scratch/kobon/litrefs.md` | 16,730 | `12eeacd1f657b8127b88dcf2e1d06e3d43364d13394616879857e4ab6f378239` | included byte-identically as `docs/litrefs.md` |
+| `math/kobon/docs/INDEX.md` | 19,733 | `091d8a580fc1d81a56e7f398d25bfe58ad6e2f753288fce2440c95b4f3f3e407` | included as `docs/INDEX.md` |
+| `math/kobon/docs/methods.md` | 11,879 | `8dbd5ffba71a9702d1ef0396ff23afa250c4f2130a5bd7ea5482247591db221b` | included as `docs/methods.md` |
+| `math/kobon/docs/experiments.md` | 15,240 | `4da9f824057c0f150fa5d691844c699e7a97b0763d4895aebfc0017b6732a752` | included as `docs/experiments.md` |
+| `math/kobon/docs/reproduce.md` | 11,758 | `89e80faefce3b7f60d0ffcc404997ab49c7a1451c4b4d8a62c50f216c3c22eb4` | included as `docs/reproduce.md` |
+| `math/kobon/verification/README.md` | 7,426 | `2894d5874fe5d410f4c6980e5b0b1fbd401de71555fb6c4ae45c58ffaa64f7a5` | included as `verification/README.md` |
+| `scratch/kobon/litrefs.md` | 21,776 | `76a54b74a05d31d4db7641b767e3d8320893b6f36ff5561858890d187ca036d1` | included byte-identically as `docs/litrefs.md` |
+| `math/kobon/docs/NEXT_BREAKTHROUGHS.md` | 7,072 | `2b9d0fe0dd52016d25a1ce99944264451b4248d56feb60e0f77b9ff8872f1ce3` | included as `docs/NEXT_BREAKTHROUGHS.md` |
 | `scratch/kobon/n11_chain.md` | 12,187 | `bbec7665795d0aa699ed6ac5934322f8b4cae17c8c481650d3e1187e55233e51` | referenced only |
 | `scratch/kobon/novelty_audit_capacity_theorem.md` | 13,153 | `a400184f72942a4ce598ccb7f351cfe016ce7e63bf9858d0e731b0aef9123731` | referenced only |
 | `scratch/kobon/n14_face_status.md` | 7,859 | `cac2d77c34b11301f458c829111364a30ceb85d0aa5e7967a37ca981203c4eee` | referenced only |

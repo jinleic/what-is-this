@@ -1,0 +1,77 @@
+{
+  "attempts": [
+    {
+      "lower_bound": 5,
+      "sector": 0,
+      "status": "FEASIBLE",
+      "value": 14
+    }
+  ],
+  "identity": {
+    "A": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "B": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        11,
+        1
+      ]
+    ],
+    "ell": 15,
+    "k_parent": 10,
+    "m": 7,
+    "threshold": 16
+  },
+  "protocol": {
+    "time_limit_s_per_sector": 120.0,
+    "upper_bound": 16,
+    "workers": 1
+  },
+  "route": "single-sector CP-SAT witness feasibility",
+  "schema": "exp068-screen-fallback-witness-v1",
+  "sector": 0,
+  "status": "FEASIBLE",
+  "support": [
+    12,
+    14,
+    23,
+    44,
+    52,
+    96,
+    109,
+    120,
+    136,
+    138,
+    141,
+    157,
+    168,
+    204
+  ],
+  "verification": {
+    "commutes_with_HX": true,
+    "outside_Z_stabilizer": true,
+    "vector_sha256": "301a8deafaffea453d5f4c4765ee5a62ffda65205072ae96126091e837de8783",
+    "weight": 14
+  },
+  "wall_time_s": 120.00702224999986,
+  "weight": 14
+}

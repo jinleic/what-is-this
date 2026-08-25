@@ -323,7 +323,8 @@ Corollary~\ref{cor:sectorexcess}, and
 Propositions~\ref{prop:squarefail}--\ref{prop:c23n7}).
 \item A certified initial segment with all degeneracies free:
 $K(4),\dots,K(9)=2,5,7,11,15,21$, each with a \texttt{drat-trim}-verified
-refutation of $K(n)+1$, plus $K(10)=25$ from a prior cube cover
+refutation of $K(n)+1$, plus $K(10)=25$ from a prior cube cover and an
+independent verified face-monolith refutation
 (Theorem~\ref{thm:ladder}); the $n=6,8,10$ rows are machine-checkable
 all-degeneracy certifications of values argued on the web in 2005
 (Remark~\ref{rem:priorweb}).
@@ -728,7 +729,8 @@ Concurrency at an endpoint makes both strict patterns false, as required.
 Distinct arrangement faces have disjoint interiors, so no pairwise polygon
 disjointness clauses are needed once Lemma~\ref{lem:gapface} is imposed.
 
-\begin{lemma}[hereditary and vertex-sector cuts]\label{lem:hereditary}
+\begin{lemma}[hereditary, sector, endpoint, and perturbation cuts]
+\label{lem:hereditary}
 Let $S$ be a family of triangular arrangement faces.
 \begin{enumerate}
 \item For every subset $W\subseteq\mathcal A$, the members of $S$ whose three
@@ -738,6 +740,20 @@ subarrangement $W$. In particular their number is at most $K(|W|)$.
 meets at a finite multipoint, at most two do. In the latter case the number is
 zero unless the pair is consecutive on at least one of the two arcs of the
 cyclic slope order restricted to the lines through the point.
+\item Let distinct faces $\{r,a,b\}$ and $\{r,c,d\}$ share line $r$. If
+$P_{ra}=P_{rc}$ and $P_{rb},P_{rd}$ lie on the same ray of $r$ from that
+point, then $P_{rb}=P_{rd}$. If both endpoint equalities hold, the faces share
+their side segment on $r$ and their apexes $P_{ab},P_{cd}$ lie in opposite
+open halfplanes of $r$. This includes $a=c$, where the first equality is
+automatic; hence two faces sharing a line pair and no remote concurrency
+occupy opposite sectors.
+\item Let $M(S)$ be the number of members of $S$ having a vertex at a finite
+multipoint. Then
+\[
+ |S|-M(S)\le \bar a_3^s(n),
+\]
+where $\bar a_3^s(n)$ is the simple-arrangement maximum. In particular, a
+$12$-line family of $39$ faces has at least two multipoint-incident members.
 \end{enumerate}
 \end{lemma}
 
@@ -753,12 +769,31 @@ rays are consecutive; then it bounds exactly two opposite sectors. In the
 standard chart with no vertical line, the labels are the linear slope order.
 Thus lines with labels strictly between the pair lie on one projective arc
 and labels outside the interval lie on the other, proving the last assertion.
+
+For the endpoint statement, a face side has no arrangement vertex in its
+relative interior. Two distinct points on the same ray are linearly ordered,
+and the nearer would lie in the relative interior of the side ending at the
+farther. Thus the remote points coincide. If both endpoints coincide, the two
+triangular cells border the same arrangement edge; distinct cells incident
+with one edge lie on its two opposite sides, proving the apex assertion.
+
+Finally retain only faces counted by $|S|-M(S)$. Their three vertices are
+simple, and the direct-gap inequalities defining every side are strict.
+There is therefore one sufficiently small generic perturbation of all line
+coefficients that preserves all these finitely many inequalities while
+removing every finite concurrency and parallelism. Intersections created from
+formerly parallel distinct lines escape to infinity as the perturbation tends
+to zero, so they do not enter the compact preserved sides. The retained faces
+survive in a simple arrangement and are at most $\bar a_3^s(n)$. At $n=12$,
+$\bar a_3^s(12)=37$, giving $M(S)\ge39-37=2$.
 \end{proof}
 
 If exactly $T$ faces are selected, the first cut is equivalently the lower
 bound $T-K(|W|)$ on selected faces meeting
 $\mathcal A\setminus W$. This complementary form gives substantially smaller
-cardinality counters near the frontier.
+cardinality counters near the frontier. For $|W|=4$, the certified
+$K(4)=2$ bound is cheaper in direct form: the four possible faces give four
+ternary prime clauses forbidding each three.
 
 \begin{proposition}[certified endpoint control at $n=7$]\label{prop:c23n7}
 Every essential arrangement of seven straight lines satisfies
@@ -808,11 +843,10 @@ and each value is certified: the instance $(n,K(n)+1)$ is unsatisfiable with
 a \texttt{drat-trim}-verified proof (Table~\ref{tab:ladder}), and the
 matching lower bounds are the classical constructions. Together with the
 prior eleven-cube cover for $n=10$ this gives $K(n)$ for all $n\le10$; the
-$n=10$ value is confirmed a second time, through a different encoding, by a
-single monolithic refutation of $(10,26)$ in the crossing-free formulation of
-Theorem~\ref{thm:collapse} ($131\,314$ variables, $792\,462$ clauses,
-unsatisfiable in $31$ minutes, discovery-level: the DRAT certificate for this
-value is the cube cover).
+$n=10$ value is confirmed independently through a different encoding by a
+single checked monolithic refutation of $(10,26)$ in the crossing-free
+formulation of Theorem~\ref{thm:collapse} ($131\,314$ variables, $792\,462$
+clauses, 14,050,806,440-byte DRAT, \texttt{s VERIFIED}).
 The rungs at $n=6$, $n=8$ and $n=10$ are the first machine-checkable
 all-degeneracy certificates known to us for those values. They independently
 verify the 2005 web arguments \cite{Rasukaru2005} and rule out $8$, $16$ and
@@ -834,13 +868,15 @@ core lemmas & verify (s)\\
 7 & 11 & 12 & $10{,}682$ / $63{,}405$ & $12{,}255$ & $31{,}595$ & $4.47$\\
 8 & 15 & 16 & $27{,}451$ / $165{,}367$ & $31{,}218$ & $411{,}278$ & $117.6$\\
 9 & 21 & 22 & $61{,}569$ / $377{,}405$ & $66{,}346$ & $2{,}150{,}510$ & $1060.3$\\
+10 & 25 & 26 & $131{,}314$ / $792{,}462$ & $52{,}808$ & $40{,}395{,}481$ & $58{,}458.4$\\
 \bottomrule
 \end{tabular}
 \caption{Certified initial segment. Every row is a \texttt{s VERIFIED}
 \texttt{drat-trim} run on a kissat proof of the refutation of
-$T=\Kgen(n)+1$; proofs range from $12$\,kB to $328.5$\,MB and the resolution
-counts from $582$ to $8.7\cdot10^7$. Ledger:
-\texttt{scratch/kobon/ladder\_certificates.json}.}
+$T=\Kgen(n)+1$; proofs range from $12$\,kB to $14.05$\,GB and the resolution
+counts from $582$ to $3.46\cdot 10^9$. Ledgers:
+\texttt{scratch/kobon/ladder\_certificates.json} and
+\texttt{scratch/kobon/ladder\_n10\_t26\_faces\_certificate.json}.}
 \label{tab:ladder}
 \end{table}
 
@@ -1040,10 +1076,52 @@ give every one-line and two-line deletion cut; together with the vertex-sector
 clauses this produces $374{,}381$ variables and $830{,}030$ clauses. On the
 known $(9,22)$ UNSAT control, the same two cut types reduced a same-process
 CaDiCaL run from $1{,}034{,}027$ conflicts / $116.3$ seconds to $164{,}802$ /
-$19.5$ seconds, while $(9,21)$ remained satisfiable. An independent
-exact-rational audit over $3{,}600$ arrangements, $27{,}705$ triangular faces
-and $93{,}000$ line-pair checks found no vertex-sector mismatch. These are
-sound search accelerators, not a verdict at $(12,39)$.
+$19.5$ seconds, while $(9,21)$ remained satisfiable.
+
+The shared-ray implication in Lemma~\ref{lem:hereditary} is available as a
+separate opt-in propagation cut. It adds $11{,}880$ clauses and no variables
+at $(12,39)$, giving $374{,}381$ variables / $841{,}910$ clauses. The
+exact-rational audit covered $83{,}115$ face-sector assignments, $17{,}325$
+pairs of faces sharing two lines, and $1{,}591$ same-ray cases in $3{,}600$
+arrangements; every same-ray case had the required remote concurrency. An
+exact six-line control realizes all four sectors at one line pair.
+Performance was mixed: a CaDiCaL $(8,16)$ control improved from $164{,}869$
+to $153{,}108$ conflicts, its $(9,22)$ control was neutral, and Kissat's
+$(9,22)$ control worsened. The cut therefore remains opt-in; its live
+$(12,39)$ run is solver diversity, not a speedup or a verdict.
+
+The endpoint form of the same argument is stronger. For two faces sharing
+only line $r$, a concurrency at one pair of side endpoints and equal ray
+directions forces the other endpoint concurrency; if both endpoints coincide,
+the apex-side bits are opposite. The exact replay now covers $73{,}349$
+single-line face pairs, $1{,}607$ colliding endpoints, $84$ colliding same-ray
+cases, and $42$ shared segments, again with zero violations. Together with
+the shared-pair edge-parity specialization this adds $154{,}440$ clauses and
+no variables at $(12,39)$. The perturbation item of
+Lemma~\ref{lem:hereditary}, instantiated with
+$\bar a_3^s(12)=37$, reifies multipoint incidence and requires two incident
+selected faces; it adds $656$ variables / $7{,}036$ clauses. The direct
+$K(4)=2$ clauses add another $1{,}980$ clauses. With the existing $11$- and
+$10$-line deletion cuts, the resulting discovery instance has
+$375{,}037$ variables / $1{,}005{,}366$ clauses. Adding the checked
+$K(9)=21$ deletion cuts gives $842{,}317$ / $1{,}917{,}926$.
+
+Fresh same-process CaDiCaL controls show a genuine but nonuniform tradeoff.
+At $(8,16)$ the shared-ray baseline used $249{,}513$ conflicts / $25.2$
+seconds; endpoint closure used $221{,}905$ / $18.2$, and endpoint plus
+$K(4)$ used $17.6$ seconds. At $(9,22)$ endpoint closure was slower
+($1{,}020{,}652$ conflicts / $169.6$ seconds versus $958{,}507$ / $138.4$).
+Both known-optimum controls $(8,15)$ and $(9,21)$ remain satisfiable.
+Accordingly the two new $(12,39)$ lanes are solver-diversity experiments, not
+a general speedup claim. They have no verdict and no proof logging.
+
+Two riskier formulations were rejected as defaults. Exact reification of
+every face literal accepted the exact $n=10$ and $n=12$ witnesses, but improved
+$(8,16)$ while making both $(9,21)$ and $(9,22)$ much slower. A zero-aware
+rank-three Grassmann--Pl\"ucker encoding passed $1{,}386{,}000$ exact rational
+relations with no violation, but found no semantic gap in the base relaxation
+through $n=7$ and doubled the $(8,16)$ endpoint runtime. It is retained only
+as an opt-in propagation experiment.
 
 There is a smaller exact branch cut. With no finite multipoint,
 \eqref{eq:capacity} gives $Q\le1$ at both frontiers. The $Q=0$ branch is
@@ -1162,10 +1240,18 @@ optimality, used for Theorem~\ref{thm:census}.
 \item \path{scratch/kobon/broad_ladder.py} --- ladder prober used for
 Theorem~\ref{thm:ladder}; instances \path{ladder_n8_t16.cnf},
 \path{ladder_n9_t22.cnf} and the DRAT proofs.
-\item Direct-gap generator \path{gap_faces.py}, including the hereditary and
-vertex-sector options; exact $109{,}104$-triple oracle comparison
-\path{gap_face_verify.py}; and the independent $93{,}000$-pair sector replay
+\item Direct-gap generator \path{gap_faces.py}, including hereditary,
+vertex-sector, endpoint-closure, perturbation, exact-face and projective
+chirotope options; exact $109{,}104$-triple oracle comparison
+\path{gap_face_verify.py}; and the expanded exact endpoint replay
 \path{sector_bound_audit.py}.
+\item \path{scratch/kobon/reified_face_audit.py} --- fixed exact-witness
+acceptance for the combined local-cut formulation.
+\item \path{chirotope_gp_audit.py} --- determinant-sign and
+$1{,}386{,}000$-relation Grassmann--Pl\"ucker replay.
+\item \path{scratch/kobon/frontier_endpoint_research.json} --- hash-bound
+theorems, source survey, clause deltas, A/B controls, live-lane inputs and
+promotion gates for the endpoint phase.
 \item \path{scratch/kobon/pappus_relaxation_probe.py} --- a checked
 non-Pappus model showing where field-specific incidence cuts can strengthen
 the abstract order relaxation; no Pappus clauses enter the current frontier.

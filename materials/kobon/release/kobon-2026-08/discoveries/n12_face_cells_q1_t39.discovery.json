@@ -1,0 +1,57 @@
+{
+  "status": "DISCOVERY_UNSAT_NO_PROOF",
+  "statement": "Kissat reported UNSAT for the distilled face-region relaxation of the n=12, target-39 branch with exactly one parallel pair and no finite concurrency.",
+  "scope": {
+    "n": 12,
+    "target": 39,
+    "formulation": "face-regions-distilled-q1-no-concurrency",
+    "active_rules": [
+      "FACE"
+    ],
+    "parallel_branch": "P(0,1) is false and every other pair crosses; canonical WLOG representative of exactly one parallel pair",
+    "finite_concurrency": "all concurrency literals forced false",
+    "selection": "exactly 39 nondegenerate triangular arrangement faces",
+    "accelerators": "exact bounded-face penalty and per-line face-capacity inequalities"
+  },
+  "generator": {
+    "path": "scratch/kobon/face_regions.py",
+    "sha256": "263cbfae08b3d9fdd262dcf6f0ab8febcaa1398bf2943d5bd994169302a2e19c",
+    "engine_path": "math/kobon/engine.py",
+    "engine_sha256": "5ecad5d184a8febe8cc0eb04c9e327ee907dc9b0984839b1685d48d98a39058e",
+    "command": "scratch/kobon-audit/venv/bin/python scratch/kobon/face_regions.py 12 39 --distilled --q1-no-concurrency --out /tmp/n12_face_cells_q1_t39.distilled.rebuilt.cnf",
+    "regeneration": "byte-identical to the solved CNF (cmp exit 0)"
+  },
+  "cnf": {
+    "path": "scratch/kobon/n12/n12_face_cells_q1_t39.cnf",
+    "bytes": 13615953,
+    "variables": 295439,
+    "clauses": 701634,
+    "sha256": "fa8460252010e62bf9b722d9c08562e8ae6c2ddf996059901e9bce23e7c27bc4"
+  },
+  "solver": {
+    "process": "n12-face-cells-q1-t39",
+    "tool": "Kissat 4.0.4",
+    "command": "/usr/bin/nice -n 10 scratch/kobon-audit/tools/kissat/build/kissat --unsat --seed=5 scratch/kobon/n12/n12_face_cells_q1_t39.cnf",
+    "seed": 5,
+    "result": "s UNSATISFIABLE",
+    "exit_code": 20,
+    "exit_semantics": "normal Kissat UNSAT exit; the supervisor's generic failed label is not a solver failure",
+    "seconds": 60078.27,
+    "conflicts": 451589688,
+    "decisions": 846066502,
+    "propagations": 57105937994,
+    "restarts": 15364331,
+    "reductions": 7713,
+    "solver_reported_max_resident_set_size_bytes": 736201015296
+  },
+  "proof_gate": {
+    "proof_logging": false,
+    "proof_path": null,
+    "independent_checker_result": null,
+    "promotion_allowed": false,
+    "evidence_class": "discovery solver verdict only",
+    "required_for_promotion": "rerun the byte-identical CNF with proof logging and obtain an independent checked-proof verdict such as s VERIFIED"
+  },
+  "relationship_to_existing_theorem": "This branch is already excluded by the two checked direct-gap Q=1 certificates recorded in scratch/kobon/n12/n12_q1_gap_certificate.json. The present result is independent formulation-level corroboration and does not change the proved status of K(12).",
+  "current_global_status": "K(12) remains open; the concurrency-inclusive target-39 frontier is not decided."
+}

@@ -434,6 +434,275 @@ def add_exact_selection(cnf, pool, n, target):
                               encoding=EncType.totalizer))
 
 
+def add_exact_gap_face_reification(cnf, pool, n):
+    """Make every ``S(t)`` literal equal the triangular-face predicate.
+
+    A nondegenerate triple is a triangular arrangement face exactly when no
+    outside line crosses the relative interior of any of its three sides.
+    ``B(r,u,a,b)`` is reified as the strict event that the crossing of ``u``
+    lies between the crossings of ``a`` and ``b`` on line ``r``.  The reverse
+    face clause then removes selectable-subset symmetry: callers must not also
+    force an exact number of ``S`` literals.
+
+    This helper is intended to augment ``build_model(..., rules=())``.  Its
+    exact-between reverse clauses rely on that model's total-order axioms.
+    """
+    sp = lambda *a: tuple(sorted(a))
+    crossing = lambda i, j: pool.id(("P",) + sp(i, j))
+    concurrent = lambda *triple: pool.id(("C",) + sp(*triple))
+    selected = lambda triple: pool.id(("S",) + sp(*triple))
+    order = lambda line, first, second: pool.id(
+        ("X", line, first, second))
+    between_done = set()
+
+    def between(line, outside, first, second):
+        key = (line, outside) + sp(first, second)
+        literal = pool.id(("B",) + key)
+        if key in between_done:
+            return literal
+        between_done.add(key)
+        first_before = order(line, first, outside)
+        before_second = order(line, outside, second)
+        second_before = order(line, second, outside)
+        before_first = order(line, outside, first)
+        cnf.append([-first_before, -before_second, literal])
+        cnf.append([-second_before, -before_first, literal])
+        cnf.append([-literal, first_before, second_before])
+        cnf.append([-literal, before_second, before_first])
+        return literal
+
+    for triple in combinations(range(n), 3):
+        face = selected(triple)
+        pair_crossings = [
+            crossing(first, second)
+            for first, second in combinations(triple, 2)
+        ]
+        triple_concurrency = concurrent(*triple)
+        for literal in pair_crossings:
+            cnf.append([-face, literal])
+        cnf.append([-face, -triple_concurrency])
+
+        blockers = []
+        for side in triple:
+            first, second = (
+                line for line in triple if line != side)
+            for outside in range(n):
+                if outside in triple:
+                    continue
+                blocker = between(
+                    side, outside, first, second)
+                blockers.append(blocker)
+                cnf.append([-face, -blocker])
+        cnf.append(
+            [-literal for literal in pair_crossings]
+            + [triple_concurrency] + blockers + [face])
+
+
+def add_simple_perturbation_bound(
+        cnf, pool, n, target, simple_upper):
+    """Force enough selected faces to touch finite multipoints.
+
+    Any selected triangular face whose three vertices are simple survives a
+    sufficiently small generic perturbation that removes every parallelism
+    and finite multipoint: its endpoint crossings and every direct-gap
+    inequality are strict.  Such surviving faces form a simple arrangement,
+    so at most ``simple_upper`` selected faces avoid all finite multipoints.
+    Therefore at least ``target - simple_upper`` selected faces must have a
+    multipoint vertex.
+
+    ``simple_upper`` is caller-supplied theorem data for the same line count.
+    ``MI(t)`` is reified exactly as ``S(t)`` and at least one concurrency
+    through a pair of supporting lines.
+    """
+    if target < 1:
+        raise ValueError("simple perturbation bound requires a positive target")
+    if simple_upper < 0:
+        raise ValueError("simple upper bound must be nonnegative")
+    minimum = target - simple_upper
+    if minimum <= 0:
+        return []
+
+    incident_faces = []
+    for triple in combinations(range(n), 3):
+        selected = pool.id(("S",) + triple)
+        incident = pool.id(("MI",) + triple)
+        concurrencies = [
+            pool.id(("C",) + tuple(sorted(pair + (outside,))))
+            for pair in combinations(triple, 2)
+            for outside in range(n)
+            if outside not in triple
+        ]
+        incident_faces.append(incident)
+        cnf.append([-incident, selected])
+        cnf.append([-incident] + concurrencies)
+        for concurrency in concurrencies:
+            cnf.append([-selected, -concurrency, incident])
+
+    if minimum > len(incident_faces):
+        cnf.append([])
+    else:
+        cnf.extend(CardEnc.atleast(
+            lits=incident_faces, bound=minimum, vpool=pool,
+            encoding=EncType.seqcounter))
+    return incident_faces
+
+
+def add_projective_chirotope_constraints(
+        cnf, pool, n, enforce=True):
+    """Add the zero-aware rank-three Grassmann--Pluecker axiom.
+
+    Dualize ``y=m_i*x+b_i`` to the point ``(m_i,b_i)``.  ``CP(t)`` and
+    ``CN(t)`` reify the positive and negative determinant signs for a sorted
+    triple.  The sign is zero exactly at a finite triple concurrency or when
+    all three lines are parallel.  With exactly one adjacent parallel pair,
+    its sign is supplied by the existing ``U`` intercept-order variable.
+
+    For distinct ``a,b,c,d,e``, the three products
+
+      chi(a,b,c)chi(a,d,e),
+      -chi(a,b,d)chi(a,c,e),
+      chi(a,b,e)chi(a,c,d)
+
+    are either all zero or contain both signs.  This is necessary for every
+    real projective line arrangement, including parallels and multipoints.
+    """
+    def pair(first, second):
+        return pool.id(("P",) + tuple(sorted((first, second))))
+
+    def concurrent(triple):
+        return pool.id(("C",) + tuple(sorted(triple)))
+
+    def order(line, first, second):
+        return pool.id(("X", line, first, second))
+
+    def parallel_order(first, second):
+        return pool.id(("U",) + tuple(sorted((first, second))))
+
+    signs = {}
+    for triple in combinations(range(n), 3):
+        first, middle, last = triple
+        positive = pool.id(("CP",) + triple)
+        negative = pool.id(("CN",) + triple)
+        signs[triple] = (positive, negative)
+        lower_pair = pair(first, middle)
+        upper_pair = pair(middle, last)
+        triple_concurrency = concurrent(triple)
+        cnf.append([-positive, -negative])
+        cnf.append([-triple_concurrency, -positive])
+        cnf.append([-triple_concurrency, -negative])
+        cnf.append([lower_pair, upper_pair, -positive])
+        cnf.append([lower_pair, upper_pair, -negative])
+
+        all_crossing_guard = [
+            -lower_pair, -upper_pair, triple_concurrency]
+        cnf.append(all_crossing_guard + [positive, negative])
+        orientation = order(first, middle, last)
+        cnf.append(all_crossing_guard + [-positive, -orientation])
+        cnf.append(all_crossing_guard + [positive, orientation])
+
+        lower_parallel_guard = [lower_pair, -upper_pair]
+        cnf.append(lower_parallel_guard + [positive, negative])
+        lower_orientation = parallel_order(first, middle)
+        cnf.append(lower_parallel_guard + [-positive, lower_orientation])
+        cnf.append(lower_parallel_guard + [positive, -lower_orientation])
+
+        upper_parallel_guard = [-lower_pair, upper_pair]
+        cnf.append(upper_parallel_guard + [positive, negative])
+        upper_orientation = parallel_order(middle, last)
+        cnf.append(upper_parallel_guard + [-positive, -upper_orientation])
+        cnf.append(upper_parallel_guard + [positive, upper_orientation])
+
+    def ordered_sign(first, second, third):
+        ordered = (first, second, third)
+        triple = tuple(sorted(ordered))
+        inversions = sum(
+            ordered[left] > ordered[right]
+            for left in range(3) for right in range(left + 1, 3))
+        positive, negative = signs[triple]
+        return (
+            (positive, negative)
+            if inversions % 2 == 0 else (negative, positive))
+
+    def reify_pair_disjunction(output, first_pair, second_pair):
+        first, second = first_pair
+        third, fourth = second_pair
+        cnf.append([-first, -second, output])
+        cnf.append([-third, -fourth, output])
+        cnf.append([-output, first, third])
+        cnf.append([-output, first, fourth])
+        cnf.append([-output, second, third])
+        cnf.append([-output, second, fourth])
+
+    def product_sign(key, left, right):
+        positive = pool.id(("GPP",) + key)
+        negative = pool.id(("GPN",) + key)
+        left_positive, left_negative = left
+        right_positive, right_negative = right
+        reify_pair_disjunction(
+            positive,
+            (left_positive, right_positive),
+            (left_negative, right_negative),
+        )
+        reify_pair_disjunction(
+            negative,
+            (left_positive, right_negative),
+            (left_negative, right_positive),
+        )
+        return positive, negative
+    relations = []
+
+    for five in combinations(range(n), 5):
+        for anchor in five:
+            first, second, third, fourth = (
+                line for line in five if line != anchor)
+            prefix = (anchor, first, second, third, fourth)
+            products = [
+                product_sign(
+                    prefix + (0,),
+                    ordered_sign(anchor, first, second),
+                    ordered_sign(anchor, third, fourth),
+                ),
+                product_sign(
+                    prefix + (1,),
+                    ordered_sign(anchor, first, third),
+                    ordered_sign(anchor, second, fourth),
+                )[::-1],
+                product_sign(
+                    prefix + (2,),
+                    ordered_sign(anchor, first, fourth),
+                    ordered_sign(anchor, second, third),
+                ),
+            ]
+            relations.append(products)
+            if enforce:
+                for index, (positive, negative) in enumerate(products):
+                    other = [
+                        products[position]
+                        for position in range(3) if position != index
+                    ]
+                    cnf.append([
+                        -positive, other[0][1], other[1][1]])
+                    cnf.append([
+                        -negative, other[0][0], other[1][0]])
+    return signs, relations
+
+
+def add_four_line_face_bounds(cnf, pool, n):
+    """Instantiate the certified ``K(4)=2`` bound as prime clauses.
+
+    Every four-line subset has four possible supporting triples.  Forbidding
+    each three of them gives four ternary clauses per subset, with no
+    cardinality auxiliaries.
+    """
+    for subset in combinations(range(n), 4):
+        faces = [
+            pool.id(("S",) + triple)
+            for triple in combinations(subset, 3)
+        ]
+        for forbidden in combinations(faces, 3):
+            cnf.append([-literal for literal in forbidden])
+
+
 def add_subarrangement_face_bounds(
         cnf, pool, n, upper_bounds, exact_target=None):
     """Constrain selected triangles inherited by every proper line subset.
@@ -490,7 +759,8 @@ def add_subarrangement_face_bounds(
                     encoding=EncType.seqcounter))
 
 
-def add_selected_face_sector_bounds(cnf, pool, n):
+def add_selected_face_sector_bounds(
+        cnf, pool, n, shared_ray=False, endpoint_closure=False):
     """Add local vertex-sector constraints for selected arrangement faces.
 
     At a simple crossing of two lines there are four sectors, so at most four
@@ -500,6 +770,17 @@ def add_selected_face_sector_bounds(cnf, pool, n):
     slope order shows that the pair bounds no sector when the multipoint
     contains incident lines on both arcs between the pair.
 
+    With ``shared_ray=True``, also make a short necessary consequence explicit:
+    if two faces extend from their common vertex along the same ray of either
+    shared line, their remote endpoints on that line must coincide.  Otherwise
+    the nearer endpoint lies in the side of the farther face.
+
+    With ``endpoint_closure=True``, apply the same argument to two faces that
+    share only one supporting line but whose side endpoints collide at a
+    multipoint.  Equal direction bits force their remote endpoints to collide;
+    if both endpoints collide, the two faces lie on opposite sides of their
+    common side segment.
+
     Callers must enforce that selected triples are nondegenerate arrangement
     faces, not merely interior-disjoint crossed triangles.
     """
@@ -507,12 +788,57 @@ def add_selected_face_sector_bounds(cnf, pool, n):
         ("C",) + tuple(sorted((i, j, k))))
     selected = lambda i, j, k: pool.id(
         ("S",) + tuple(sorted((i, j, k))))
+    order = lambda line, first, second: pool.id(
+        ("X", line, first, second))
+    def apex_above(line, first, second):
+        lower, middle, upper = sorted((line, first, second))
+        if line == lower:
+            return order(lower, middle, upper)
+        if line == middle:
+            return order(middle, upper, lower)
+        return order(upper, lower, middle)
 
     for i, j in combinations(range(n), 2):
-        pair_faces = [
-            selected(i, j, third)
-            for third in range(n) if third not in (i, j)
+        thirds = [
+            third for third in range(n) if third not in (i, j)
         ]
+        pair_faces = [selected(i, j, third) for third in thirds]
+        if shared_ray or endpoint_closure:
+            for first, second in combinations(thirds, 2):
+                selected_first = selected(i, j, first)
+                selected_second = selected(i, j, second)
+                for shared, pivot in ((i, j), (j, i)):
+                    direction_first = order(shared, pivot, first)
+                    direction_second = order(shared, pivot, second)
+                    remote_concurrency = concurrent(shared, first, second)
+                    cnf.append([
+                        -selected_first,
+                        -selected_second,
+                        -direction_first,
+                        -direction_second,
+                        remote_concurrency,
+                    ])
+                    cnf.append([
+                        -selected_first,
+                        -selected_second,
+                        direction_first,
+                        direction_second,
+                        remote_concurrency,
+                    ])
+                    if endpoint_closure:
+                        first_above = apex_above(
+                            shared, pivot, first)
+                        second_above = apex_above(
+                            shared, pivot, second)
+                        guard = [
+                            -selected_first,
+                            -selected_second,
+                            -remote_concurrency,
+                        ]
+                        cnf.append(
+                            guard + [first_above, second_above])
+                        cnf.append(
+                            guard + [-first_above, -second_above])
         if len(pair_faces) > 4:
             cnf.extend(CardEnc.atmost(
                 lits=pair_faces, bound=4, vpool=pool,
@@ -547,6 +873,71 @@ def add_selected_face_sector_bounds(cnf, pool, n):
                             -outer_concurrency,
                             -selected(i, j, third),
                         ])
+
+    if endpoint_closure:
+        for shared in range(n):
+            others = [line for line in range(n) if line != shared]
+            support_pairs = list(combinations(others, 2))
+            for first_pair, second_pair in combinations(support_pairs, 2):
+                if set(first_pair) & set(second_pair):
+                    continue
+                first_face = selected(shared, *first_pair)
+                second_face = selected(shared, *second_pair)
+
+                for first_endpoint in first_pair:
+                    first_remote = next(
+                        line for line in first_pair
+                        if line != first_endpoint)
+                    for second_endpoint in second_pair:
+                        second_remote = next(
+                            line for line in second_pair
+                            if line != second_endpoint)
+                        common_endpoint = concurrent(
+                            shared, first_endpoint, second_endpoint)
+                        remote_endpoint = concurrent(
+                            shared, first_remote, second_remote)
+                        first_direction = order(
+                            shared, first_endpoint, first_remote)
+                        second_direction = order(
+                            shared, second_endpoint, second_remote)
+                        cnf.append([
+                            -first_face,
+                            -second_face,
+                            -common_endpoint,
+                            -first_direction,
+                            -second_direction,
+                            remote_endpoint,
+                        ])
+                        cnf.append([
+                            -first_face,
+                            -second_face,
+                            -common_endpoint,
+                            first_direction,
+                            second_direction,
+                            remote_endpoint,
+                        ])
+
+                first_above = apex_above(shared, *first_pair)
+                second_above = apex_above(shared, *second_pair)
+                pairings = (
+                    (
+                        concurrent(shared, first_pair[0], second_pair[0]),
+                        concurrent(shared, first_pair[1], second_pair[1]),
+                    ),
+                    (
+                        concurrent(shared, first_pair[0], second_pair[1]),
+                        concurrent(shared, first_pair[1], second_pair[0]),
+                    ),
+                )
+                for first_endpoint, second_endpoint in pairings:
+                    guard = [
+                        -first_face,
+                        -second_face,
+                        -first_endpoint,
+                        -second_endpoint,
+                    ]
+                    cnf.append(guard + [first_above, second_above])
+                    cnf.append(guard + [-first_above, -second_above])
 
 
 def add_triangle_crossing_indicators(cnf, pool, n):
@@ -651,7 +1042,9 @@ def add_no_concurrency_crossed_triangle_indicators(cnf, pool, n):
     return crossed_lits
 
 
-def add_face_bound(cnf, pool, n, target, crossing_lits=(), per_line=False):
+def add_face_bound(
+        cnf, pool, n, target, crossing_lits=(), per_line=False,
+        count_selected=False):
     """Add the exact bounded-face penalty.
 
     For an essential arrangement of distinct affine lines,
@@ -664,6 +1057,11 @@ def add_face_bound(cnf, pool, n, target, crossing_lits=(), per_line=False):
     callers may use either crossed-triangle flags or the stronger exact list
     of line-through-triangle incidences.  Interior-disjoint triangles consume
     disjoint face sets.  A positive target makes the arrangement essential.
+
+    By default the target is charged as a constant; this matches callers that
+    later select exactly ``target`` triangles.  With ``count_selected=True``,
+    every ``S(t)`` literal is charged instead.  That mode is for exact face
+    reification, where the arrangement may have more than ``target`` faces.
 
     With ``per_line=True``, also add the universally necessary linewise
     capacity inequalities (the crossing-refined capability theorem, see
@@ -678,7 +1076,9 @@ def add_face_bound(cnf, pool, n, target, crossing_lits=(), per_line=False):
     """
     if target < 1:
         raise ValueError("face bound requires a positive target")
-    slack = comb(n-1, 2) - target
+    slack = comb(n-1, 2)
+    if not count_selected:
+        slack -= target
     if slack < 0:
         cnf.append([])
         return
@@ -687,6 +1087,10 @@ def add_face_bound(cnf, pool, n, target, crossing_lits=(), per_line=False):
     Pid = lambda i, j: pool.id(("P",)+sp(i, j))
     Cid = lambda *a: pool.id(("C",)+sp(*a))
     penalty = list(crossing_lits)
+    if count_selected:
+        penalty.extend(
+            pool.id(("S",) + triple)
+            for triple in combinations(range(n), 3))
     penalty.extend(-Pid(i, j) for i, j in combinations(range(n), 2))
 
     for a, b, c in combinations(range(n), 3):

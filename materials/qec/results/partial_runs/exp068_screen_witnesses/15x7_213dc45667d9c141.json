@@ -1,0 +1,81 @@
+{
+  "attempts": [
+    {
+      "classes_tested": 255,
+      "route": "information_set",
+      "seed": 2395286452219527489,
+      "tries": 2000
+    }
+  ],
+  "identity": {
+    "A": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "B": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        8,
+        3
+      ]
+    ],
+    "ell": 15,
+    "k_parent": 8,
+    "m": 7,
+    "threshold": 16
+  },
+  "protocol": {
+    "keep": 64,
+    "seed": 2395286452219527489,
+    "tries": 2000,
+    "upper_bound": 16
+  },
+  "route": "deterministic deep information-set coset reduction",
+  "schema": "exp068-screen-fallback-witness-v1",
+  "search_side": "Z",
+  "sector": null,
+  "status": "WITNESS",
+  "support": [
+    28,
+    40,
+    41,
+    43,
+    65,
+    99,
+    106,
+    114,
+    124,
+    136,
+    148,
+    150,
+    165,
+    174,
+    180,
+    182
+  ],
+  "verification": {
+    "commutes_with_HX": true,
+    "outside_Z_stabilizer": true,
+    "vector_sha256": "4e7134674c9abba2e12c005a2f406c34c87d55383402e3220012b6c580f02995",
+    "weight": 16
+  },
+  "wall_time_s": 0.018992709000485775,
+  "weight": 16
+}

@@ -334,7 +334,7 @@ All bibliographic details below were source-checked in
   reasons documented in the source-checked literature report
   (`data/litscout_h10q.md`).
 
-### 4.3 L23–L27: unconditional frontier theorems, but no member theorem
+### 4.3 L23–L28: unconditional frontier theorems, but no member theorem
 
 L23 now proves a genuine unconditional theorem for the selected
 linear/octic sequence.  After absorbing the finitely many exceptional
@@ -384,35 +384,43 @@ $4{,}026{,}282$ zero-hit scan is corroboration only; the mod-$16$
 exhaustion is the proof (`THEOREMS.md`, L24;
 `data/l24_diagonal_{geometry,arithmetic,local,search}.jsonl`).
 
-L25–L27 supply genuinely non-diagonal local and algebraic advances.
+L25–L28 supply genuinely non-diagonal local and algebraic advances.
 L25 proves that two fixed scalings cover complementary dyadic parities,
 but its target formula is not aligned.  L26's even-pullback reciprocal
 tie gives
 $$P_{\rm rec}(b)=b^4T(b+b^{-1}),\qquad\deg T=4,$$
 automatic dyadic splitting, and the trace-character identity
-$(2b|p)=(2(u+2)|p)$; the quartic squareclass and global member remain
-open.  L27's fixed shear $(2X+28\rho,sX+\rho)$ covers every dyadic
-parity and every standard aligned odd target, including $3,5$, but its
-global degree-$8$ cover has no proved rational point
-(`THEOREMS.md`, L25–L27;
+$(2b|p)=(2(u+2)|p)$.  L28 proves uniformly that this trace quartic is
+irreducible over $\mathbb Q_2$ and that
+$$
+N(2(\theta+2))\in A\mathbb Q_2^{\times2},
+\qquad A\equiv5\pmod8,
+$$
+so the bad-sign extension is always nontrivial.  The global reciprocal
+member remains open.  L27's fixed shear
+$(2X+28\rho,sX+\rho)$ covers every dyadic parity and every standard
+aligned odd target, including $3,5$, but its global degree-$8$ cover has
+no proved rational point
+(`THEOREMS.md`, L25–L28;
 `data/l25_scaled_coupling.jsonl`;
 `data/l26_reciprocal_tie.jsonl`;
-`data/l27_triangular_shear.jsonl`).
+`data/l27_triangular_shear.jsonl`;
+`data/l28_trace_field.jsonl`).
 
 Consequently classical Schinzel H has **not** become proved, weaker, or
-removable in Theorem C.  The exact next targets are the L26 quartic
-trace squareclass/member problem, a target-specific rational point on
-the L27 global cover, or the two-large-bad-divisor dispersion estimate.
+removable in Theorem C.  The exact next targets are a globally good L26
+reciprocal member, a target-specific rational point on the L27 global
+cover, or the two-large-bad-divisor dispersion estimate.
 Theorem C remains **CONDITIONAL on classical Schinzel H alone**.
 
 ---
 
 ## 5. Provenance and discipline
 
-- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L27;
+- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L28;
   `RESULTS.md`; and the cited `data/` artifacts.  The L22 proof reports
   remain `/tmp/l22_elimination.md` and
-  `/tmp/l22_reciprocal_cube.md`; all L23–L27 producer/data pairs are
+  `/tmp/l22_reciprocal_cube.md`; all L23–L28 producer/data pairs are
   inventoried in `README.md`.
 - Engine discipline remains proven-primality only.  The exact
   Miller–Rabin, Pocklington and Brillhart–Lehmer–Selfridge scopes are
@@ -421,18 +429,21 @@ Theorem C remains **CONDITIONAL on classical Schinzel H alone**.
 - The HalfSieveAudit, FibrationAudit and DiagonalAudit verdicts were
   SOUND at confidences $0.90$, $0.88$ and $0.90$ respectively.
   ReciprocalTieAudit's three scope findings were applied; the corrected
-  TriangularShearAudit returned no high-confidence finding.  Their
-  corrections are incorporated in `THEOREMS.md`, L23–L27 and retain all
-  finite rows at their declared scopes.
+  TriangularShearAudit returned no high-confidence finding.
+  TraceFieldAudit independently rederived L28's coefficients, Newton
+  polygons, Ferrari cases, norm and Capell step and returned SOUND at
+  confidence $0.99$ with no finding.  These corrections and audits are
+  incorporated in `THEOREMS.md`, L23–L28; every finite row retains its
+  declared scope.
 - The $4{,}026{,}282$ diagonal attempts and every other bounded no-hit
   scan are EVIDENCE only.  Uniform diagonal emptiness is the dyadic
   theorem, not extrapolation from the scan.
 - Nothing here depends on Sun's unrefereed §§3–8 chain.  Soundness is
   inherited from the audited block; completeness of the conditional
-  implication uses L19–L22 and classical Schinzel H.  L23–L27 sharpen
+  implication uses L19–L22 and classical Schinzel H.  L23–L28 sharpen
   the frontier but are not replacements for that conjectural input.
 - **Final status:** the six-universal-quantifier record and
   $\operatorname{efd}\le5$ are established conditionally on classical
-  Schinzel H alone (`THEOREMS.md`, L22d and L24e–L27).  Classical
+  Schinzel H alone (`THEOREMS.md`, L22d and L24e–L28).  Classical
   H is unproved, so H10/$\mathbb Q$ and the unconditional six-quantifier
   statement remain open.

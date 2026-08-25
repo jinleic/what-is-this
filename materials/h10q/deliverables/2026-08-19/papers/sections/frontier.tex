@@ -362,12 +362,100 @@ For \(r=v_2(Z)\), one has \(v_2(D)=0\) for \(r\ge0\) and \(2r\) for
 \((u+2)=(b+1)^2/b\) proves the character identity.
 \end{proof}
 
-If \(T_\tau\) is irreducible with root \(\theta\), the character lives
-in the quartic algebra \(\Q(\theta)\); only when
-\(2(\theta+2)\) is nonsquare is the associated quadratic extension
-nontrivial.  Neither hypothesis is uniform here.  A single guarded
-specialization has irreducible octic and trace quartic reductions modulo
-\(37\), which is EVIDENCE only.
+\begin{theorem}[Uniform reciprocal trace field; PROVED]
+\label{thm:tracefield}
+On the canonical L26 branch, for every \(v_2(a)=0\) and
+\(Z=z^2\ne0\), the trace quartic \(T\) is irreducible over \(\Q_2\).
+If \(\theta\) is a root, then
+\[
+ N_{\Q(\theta)/\Q}\bigl(2(\theta+2)\bigr)
+ \in A\Q_2^{\times2},\qquad A\equiv5\pmod8.
+\]
+Consequently \(2(\theta+2)\) is nonsquare and
+\(T(v^2/2-2)\) is irreducible over \(\Q_2\) and \(\Q\).
+\end{theorem}
+% src: data/l28_trace_field.jsonl
+
+\begin{proof}[Proof outline]
+After \(w=u-2\), the nonzero coefficients of \(T(w+2)\) have valuations
+\[
+\begin{array}{c|rrrr}
+ &d_0&d_1&d_2&d_4\\ \hline
+t\ge0&4&5+2t&7+4t&2+4t\\
+t<0&4+4t&5+2t&7+4t&2+4t ,
+\end{array}
+\qquad t=v_2(Z).
+\]
+The one-segment Newton polygon has half-integral slope, excluding linear
+factors.  For the monic form \(w^4+pw^2+qw+r\), a quadratic factor
+forces a square \(Y\) on
+\[
+Y^3+2pY^2+(p^2-4r)Y-q^2=0.
+\]
+Its Newton polygon leaves five possible valuation cases; after
+normalization their residues are \(3,2,4,4,2\pmod8\), excluding every
+square \(Y\).  Finally
+\[
+N\bigl(2(\theta+2)\bigr)=
+\frac{64\{A^3D^2+64a^8Z^4(a^4-A)^2\}}{a^8Z^4A^2}.
+\]
+Because \(v_2(a^4-A)=2\), the braced expression divided by \(A^3D^2\)
+lies in \(1+2^{10}\Z_2\); the norm has squareclass \(A\), and Capell
+finishes.
+\end{proof}
+
+\begin{theorem}[Reciprocal-lift classification and compression; PROVED]
+\label{thm:reciprocallift}
+In the setting of Theorem~\ref{thm:tracefield}, put
+\(t=v_2(Z)\in2\Z\).  Then
+\[
+ \theta^2-4\in\Q_2(\theta)^{\times2}
+ \quad\Longleftrightarrow\quad t=-2\ \text{or}\ t\ge2.
+\]
+Moreover
+\[
+ Z=\frac{8z^2}{1+z^2}
+\]
+preserves the positive-valuation locus at every odd prime and has
+\(v_2(Z)\ge2\) for every \(z\in\Q^\times\).  Thus this rational pullback
+forces the locally split reciprocal stratum without changing the odd
+target set.
+\end{theorem}
+% src: data/l29_reciprocal_frontier.jsonl
+
+\begin{proof}[Proof outline]
+For \(w=\theta-2\) and \(t\ge2\),
+\(\theta^2-4=w^2(1+4/w)\) with \(v_2(4/w)>2\), so strong Hensel applies.
+For \(t\le0\), put \(b=1+x\).  The monic shifted reciprocal octic has
+one Newton slope \(-1/4\), so a proper factorization must be two
+Eisenstein quartics.  Exhaustive necessary factor congruences modulo
+\(16\) and \(64\) exclude \(t=0\) and \(t\le-4\).
+
+At \(t=-2\), for
+\(\phi=x^4+6x^3+6\), the resultant
+\[
+ \mathcal R(Y)=\operatorname{Res}_x(S(x),Y-\phi(x))
+\]
+has Newton vertices \((0,21),(4,10),(8,0)\), hence two slopes.
+If \(S\) were irreducible, all conjugates \(\phi(\sigma\alpha)\) would
+have the same valuation, forcing a one-slope resultant.  Therefore
+\(S\) factors \(4+4\), equivalently
+\(b^2-\theta b+1\) splits in the trace field.
+
+Finally, direct valuation in the three cases \(v_p(z)>0,=0,<0\) proves
+the odd-place equivalence for the compressed pullback.  At \(2\), its
+valuation is \(3+2v_2(z)\), \(2\), or \(3\), respectively.
+\end{proof}
+
+\begin{remark}[Fixed-field slice]
+On \(b=w\rho^2\), the member symbol is \((M,2w)\), so the moving
+quadratic field is frozen.  The resulting conic bundle has no generic
+section: at \(\rho=0\), its squareclass is \(A\) and
+\((A,2w)_w=(A|w)=-1\).  Exact soluble fibres are evidence only; the
+inert-prime parity problem remains open.
+\end{remark}
+% src: data/l29_reciprocal_frontier.jsonl
+
 
 \begin{theorem}[One-piece aligned shear; PROVED local theorem]
 \label{thm:triangularshear}
@@ -419,10 +507,166 @@ exhaustion over both signs supplies a nonzero-Jacobian row for all
 The exact \(\lambda=X+\rho\) eliminant has degree \(8\), leading
 coefficient \(225A\), and constant coefficient \(169A^5\).  The guarded
 sample \((a,b,Z)=(1,-1,-10)\) supplies one real point by a sign change.
-No rational root of the global degree-eight cover, member theorem,
-five-count, or unconditional record follows.  L26 and L27 change the
-algebraic and local frontiers only.
-% src: data/l26_reciprocal_tie.jsonl; data/l27_triangular_shear.jsonl
+Writing \(m=\lambda^2\), the coefficient linear in \(B\) factors as
+\[
+-16ABm(m-A)\bigl((s+1)^2m-(s-1)^2A\bigr),
+\]
+excluding the natural cancellation section.  Direct dyadic reduction
+also gives \(C_2\equiv128\pmod{256}\) at
+\(\lambda=\pm1,\pm A\).  Finally \(y=0\) forces
+\((2a)^2-195\rho^2=-1\), which has no \(\Q_3\)-point.  These are three
+scoped section no-gos, not a no-point theorem for the full cover.
+
+\begin{theorem}[Constant-two quartic; PROVED local theorem]
+\label{thm:constanttwo}
+On the same square branch, fix
+\[
+ (y,r)=(2,\ sX+\rho).
+\]
+With \(m=(X+\rho)^2\), the tied equation is
+\[
+ H_2(m)=-(c^2-4A)(m-A)^2-16ABQ_s(m)-64Am=0,
+\]
+\[
+ Q_s(m)=(s+1)^2m^2-2A(s^2+1)m+(s-1)^2A^2.
+\]
+It is quadratic in \(m\), hence even quartic in the hyperbola parameter.
+Its leading coefficient has \(2\)-adic valuation \(2\) on every
+\(\Phi\)-base.  The cover has a \(\Q_2\)-point on every \(\Phi\)-stratum,
+a fibre-regular target-local point at every odd \(w\ge5\), an exact
+strong-Hensel fibre at \(w=3\), and a point on one guarded real stratum.
+\end{theorem}
+
+\begin{proof}[Proof outline]
+After division by \(A\), put \(m=1+8t\) and normalize by \(2^8\).
+The value at \(t=0\) is even because
+\[
+ Q_s(1)=-16a^2\bigl(s(1+2a^2)-a^2(s^2+1)\bigr),
+\]
+whereas the derivative is odd.  Hensel gives
+\(m\in1+8\Z_2\), hence a square.
+
+At an aligned odd target the equations reduce to
+\[
+ \rho^2=4,\qquad X^2=A+4.
+\]
+For \(w\ge5\), the conditions
+\[
+ \chi(1+4a^2)=-1,\qquad \chi(5+4a^2)=1
+\]
+have at least
+\[
+ \frac{w-3\sqrt w}{4}-2>0
+\]
+solutions for \(w\ge23\), by the Weil bound for the squarefree quartic
+\((4a^2+1)(4a^2+5)\).  Exact rows close
+\(w=5,7,11,13,17,19\).  At \(w=3\), the guarded fibre
+\((a,b,z)=(5,3,3)\) satisfies
+\(v_3(H_2(1))=3>2v_3(H_2'(1))\), so strong Hensel gives a square
+root \(m\in1+9\Z_3\).  The control \((1,3,3)\) is empty, showing that
+the selected \(a\) is load-bearing.  Finally
+\((a,b,Z)=(1,-1,1/8)\) gives positive \(\rho^2\) and \(X^2\) over
+\(\mathbb R\).
+\end{proof}
+
+The constant-two layer also gives two rigidity statements.  Every
+rational L11c square-branch tie
+\[
+ \ell_d=\frac{A-d^2}{2d}
+\]
+has the same target norm field \(\Q(\sqrt{2b})\).  At \(b=0\), its
+cleared norm value has even valuation and leading squareclass \(A\);
+a norm \(Y^2-2bR^2\) of even valuation has square leading unit.
+Therefore no rational \(d(b)\) produces a generic norm section.
+For a general \(B\)-independent linear shear, the coefficient of \(B\)
+factors as
+\[
+ -16ABmH_L(m),
+\]
+\[
+ H_L=(r+t)^2m^2-2A(t^2-r^2+2s^2)m+A^2(r-t)^2.
+\]
+Its discriminant is \(16A^2s^2(s^2+t^2-r^2)\).  If \(s\ne0\), every
+rational nonzero root has \(m/A\) square, impossible because \(m\) is
+square and \(A\equiv5\pmod8\).
+% src: data/l30_quartic_frontier.jsonl
+
+\begin{theorem}[L31 exact reciprocal member]
+\label{thm:l31member}
+On the mandatory fixed-field reciprocal slice, the parameters
+\[
+(w,a,z,Z,q_0,b,\rho,\lambda)
+=(13,3,13,169,1,13,14/13,12)
+\]
+give a globally soluble member.
+\end{theorem}
+
+\begin{proof}
+The canonical bridge gives
+\[
+M=\frac{2^4Q}{3^2 37^3 83^2 1033^2},\qquad
+Q=14082426920623718389.
+\]
+A recursive Pocklington chain certifies \(Q\) prime.  Direct Hilbert
+calculation gives
+\[
+(M,26)_v=1
+\quad
+(v=2,3,13,37,83,1033,Q,\infty),
+\]
+and there are no other candidate ramified places.  Hasse--Minkowski
+therefore gives a rational point on \(U^2-26V^2=MW^2\).  The lift is
+not implicit:
+\[
+\lambda^2=144=13(13\rho^2-4).
+\]
+\end{proof}
+
+This is one target, not a uniform member theorem.  For \(q_0=r/s\), the
+general fixed-field slice is the sign-decorated degree-\(16\) binary
+form
+\[
+G_w(r,s)=s^{16}P_{\rm rec}(wr^2/s^2).
+\]
+
+L31 also locates the constant-two cube wall.  At
+\[
+(a,c,\lambda,b,Z)
+=\left(1,-\frac{64}{25},3,-\frac{3253}{3125},
+\frac{2033125}{6101423}\right)
+\]
+all bridge guards and \(H_2(\lambda^2)=0\) hold, but
+\[
+Z=\frac{5^4\cdot3253}{1009\cdot6047}
+\]
+is not a cube and \(c\) is a \(3253\)-adic unit.  The unique
+constant-\(c\) bridge-square section is \(c=-64/25\); imposing
+\(Z=z^3\) on its two bridge maps gives the genus-\(2\) curves
+\[
+d^2=-64z^6+96z^3+64,\qquad
+d^2=96z^6-224z^3+64.
+\]
+Magma V2.29-9 \texttt{RationalPointsGenus2}~\cite{magma} returns only
+\((0:\pm8:1)\) on each curve with completeness flag \texttt{true}.
+Thus this unique constant-\(c\) section has no guarded nonzero cube
+point.  The exact external request and intrinsic-help semantics are
+recorded; no standalone Magma certificate is checked in.  Other
+constant-two sections remain open.
+
+Finally, fix one selected L20/L22 aligned class and a \(Q(t)\)-prime
+member.  If \(R_{\rm bad}\) counts its remaining odd-valuation outside
+places with symbol \(-1\), Hilbert reciprocity makes it even.  AP1
+asserts that every cell has such a selected class/member with
+\(R_{\rm bad}\le1\).  Inside this protocol AP1 is equivalent to the
+intermediate member hypothesis.  The two-large root-pair
+expansion starts at \(pq\ge X^{0.98}>D_{\rm BV}\) and retains a
+positive \(R_pR_q/4\) main term.  The natural missing theorem is a
+pointwise fixed-family Buchstab/Hilbert-detector asymptotic with
+positive zero-bad constant.  AP1 and that asymptotic remain open, so
+classical Schinzel~H and the conditional count are unchanged.
+% src: data/l26_reciprocal_tie.jsonl; data/l29_reciprocal_frontier.jsonl
+% src: data/l30_quartic_frontier.jsonl; data/l31_frontier_push.jsonl
+% src: data/l31_magma_genus2.json
 
 \subsection{The off-grid horizon}
 

@@ -631,7 +631,11 @@ deleted. Hence its count is at most the independently established \(K(|W|)\).
 Under exact selection of \(T\) faces, the equivalent complementary cut says
 that at least \(T-K(|W|)\) selected faces meet the deleted lines. For
 \((12,39)\), the non-circular inputs \(K(11)=32\) (Savchuk) and \(K(10)=25\)
-(the earlier verified cube cover) give all one- and two-line deletion cuts.
+(the 2026-08-15 verified cube cover) give all one- and two-line deletion cuts.
+The hash-bound lane record
+`scratch/kobon/n12_gap_sector_deletion_t39.metadata.json` names that primary
+provenance explicitly. It does not depend on the later face monolith, which is
+now an independently checked second certificate for \(K(10)=25\).
 
 There is also a local sector cut. At a simple crossing a fixed line pair bounds
 four sectors, hence supports at most four triangular faces. At a finite
@@ -639,10 +643,55 @@ multipoint the pair bounds at most two opposite sectors, and supports none if
 incident lines occur on both arcs between it in the cyclic slope order. The
 combined direct-gap instance has 374,381 variables / 830,030 clauses. In a
 same-process CaDiCaL control, \((9,22)\) fell from 1,034,027 conflicts / 116.3
-seconds to 164,802 / 19.5 seconds, while \((9,21)\) remained SAT. The
-independent exact-rational replay `scratch/kobon/sector_bound_audit.py` checked
-3,600 arrangements, 27,705 triangular faces, 93,000 line pairs and 6,204
-multipoint pairs with zero violations.
+seconds to 164,802 / 19.5 seconds, while \((9,21)\) remained SAT.
+
+A further shared-ray implication couples adjacency to degeneracy. If faces
+\(\{i,j,k\}\) and \(\{i,j,\ell\}\) have their remote vertices on the same ray
+of shared line \(i\) from \(P_{ij}\), those vertices coincide; otherwise the
+nearer lies in the farther face side. Thus \(i,k,\ell\) are concurrent. The
+opt-in clauses add 11,880 clauses and no variables at \((12,39)\), producing
+374,381 variables / 841,910 clauses. The independent exact-rational replay
+checked 83,115 face-sector assignments, 17,325 shared-pair face pairs and
+1,591 same-ray cases over 3,600 arrangements, with zero violations; an exact
+six-line control attains all four sectors. Controlled performance was mixed
+(better at CaDiCaL \((8,16)\), neutral or worse at \((9,22)\)), so the cut is
+not enabled by default and no general speedup is claimed.
+
+The endpoint argument extends beyond faces sharing a line pair. If faces
+\(\{r,a,b\}\) and \(\{r,c,d\}\) satisfy \(P_{ra}=P_{rc}\), and their remote
+vertices \(P_{rb},P_{rd}\) lie on the same ray of \(r\), the remote vertices
+also coincide: otherwise the nearer endpoint subdivides the farther face
+side. When both endpoint pairs coincide, the two faces share one arrangement
+edge and their apexes lie on opposite sides. The expanded exact replay checked
+73,349 single-line face pairs, 1,607 endpoint collisions, 84 colliding
+same-ray cases, 42 shared segments, and 1,591 shared-pair segments with zero
+violations.
+
+A second theorem couples the simple bound to degeneracy. Any selected face
+with three simple vertices is defined by finitely many strict direct-gap
+inequalities. One sufficiently small generic perturbation removes every
+parallelism and finite multipoint while preserving all such faces; crossings
+created from formerly parallel distinct lines escape to infinity. Therefore
+the number of selected faces not incident with a finite multipoint is at most
+\(\bar a_3^s(n)\). At \((12,39)\), \(\bar a_3^s(12)=37\) forces at least two
+multipoint-incident selected faces.
+
+The new endpoint clauses, shared-edge side parity, direct \(K(4)=2\) prime
+clauses, and multipoint-incidence counter produce 375,037 variables /
+1,005,366 clauses with the existing 11-/10-line deletion cuts. Adding the
+checked \(K(9)=21\) cuts gives 842,317 / 1,917,926. Exact regeneration is
+byte-identical for both persisted instances. The endpoint route improved a
+fresh CaDiCaL \((8,16)\) control (25.2 to 18.2 seconds) but worsened
+\((9,22)\) (138.4 to 169.6 seconds), while the known \((8,15)\) and
+\((9,21)\) controls remained satisfiable. Both \(n=12\) runs are therefore
+discovery-only solver diversity, with no verdict or proof logging.
+
+Two aggressive alternatives remain opt-in after negative A/B results. Exact
+face reification accepts both embedded rational optima but is sharply slower
+at \(n=9\). A zero-aware projective Grassmann--Plücker encoding matched exact
+determinant signs on 195,000 triples and passed 1,386,000 relations; however,
+the base relaxation admitted no violating product pattern through \(n=7\),
+and the extra propagation doubled the \(n=8\) endpoint runtime.
 
 As a separate stretchability experiment,
 `scratch/kobon/pappus_relaxation_probe.py` exhibits a nondegenerate dual-Pappus
@@ -840,7 +889,7 @@ silently inferred from a public table.
 | $n$ | reference target / record | $\Delta_n$ | role and current status | pending verdict or certificate |
 |---:|:---|---:|:---|:---|
 | 9 | $T=21$ | $0$ | **SEALED control:** $K_{\rm gen}(9)=21$; the target-22 control proof is DRAT-verified and the 21-triangle model is exact-verified | none for the control; retain the archived recipe/proof hashes |
-| 10 | $T=26$ | $2$ | **THEOREM:** $K_{\rm gen}(10)=25$; the exhaustive 11-cube cover is DRAT-certified, with the exact 25-triangle lower certificate | none |
+| 10 | $T=26$ | $2$ | **THEOREM:** $K_{\rm gen}(10)=25$; the exhaustive 11-cube cover and an independent 131,314-variable faces-only monolith are both DRAT-certified, with the exact 25-triangle lower certificate | none |
 | 11 | $T=33$ | $0$ | Lower certificate $K_{\rm gen}(11)\ge32$; the no-concurrency slice is discovery-UNSAT, while the 124-signature concurrency-inclusive monolith is still open | `[ ]` kissat UNSAT (or exact SAT realization) plus `drat-trim` verdict; only then fill $K_{\rm gen}(11)=32$ or the SAT alternative |
 | 12 | $T=39$ | $3$ | Lower certificate $K_{\rm gen}(12)\ge38$; the 15-cube/monolith upper-bound front is open | `[ ]` complete the target-39 cube ledger and independently verify every DRAT proof |
 | 13 | record $T=47$ | $2$ | Sharpness/control row: the exact reconstructed 47-triangle selection has $3T+C=141$ against capacity $143$; no global decision campaign is claimed | `[ ]` bibliography/provenance pin for the record; no $K_{\rm gen}(13)$ verdict claimed |

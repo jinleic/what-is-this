@@ -230,6 +230,49 @@ def real_certificate() -> dict:
     }
 
 
+def b_coefficient_no_go() -> dict:
+    checks = 0
+    for a in (F(1), F(3), F(5), F(-1), F(-3), F(5, 3)):
+        A = 1 + 4 * a * a
+        s = (a - 1) / 2
+        assert vp(A, 2) == 0
+        assert A.numerator * pow(A.denominator, -1, 8) % 8 == 5
+        for lam in (F(1), F(2), F(3, 2), F(-3), A):
+            m = lam * lam
+            for B in (F(2), F(-2), F(6), F(10, 3)):
+                expanded = (
+                    -16 * A * B * m * (s * s + 1) * (m - A) ** 2
+                    - 32 * A * B * s * m * (m * m - A * A)
+                )
+                factored = (
+                    -16 * A * B * m * (m - A)
+                    * ((s + 1) ** 2 * m - (s - 1) ** 2 * A)
+                )
+                assert expanded == factored
+                checks += 1
+    return {
+        "type": "linear-B-cancellation-no-go",
+        "label": "PROVED for the exact cancellation ansatz",
+        "instances": checks,
+        "B_coefficient": (
+            "-16*A*B*m*(m-A)*((s+1)^2*m-(s-1)^2*A)"
+        ),
+        "excluded_factors": {
+            "m=0": "lambda=0 is not a conic parameter",
+            "m=A": "the full eliminant equals -64*A^3, not zero",
+            "last_factor": (
+                "for s not in {-1,1}, lambda^2=A*((s-1)/(s+1))^2 "
+                "would make A a Q_2-square; s=1 gives m=0 and "
+                "s=-1 leaves -4*A"
+            ),
+        },
+        "scope": (
+            "rules out only the natural section obtained by cancelling "
+            "all linear B-dependence; it is not a global-point no-go"
+        ),
+    }
+
+
 def frontier_record() -> dict:
     return {
         "type": "global-frontier",
@@ -238,6 +281,7 @@ def frontier_record() -> dict:
             "one fixed coupling covers every 2-adic s-parity",
             "the standard ramified target stratum has a smooth point at every odd prime",
             "one guarded real bridge sample is viable",
+            "the linear-B cancellation ansatz cannot meet the rational conic",
         ],
         "open": [
             "a rational root of the bridge-specialized lambda octic",
@@ -268,6 +312,7 @@ def main() -> int:
         dyadic_certificate(),
         target_character_theorem(),
         real_certificate(),
+        b_coefficient_no_go(),
         frontier_record(),
     ]
     elapsed = time.perf_counter() - started

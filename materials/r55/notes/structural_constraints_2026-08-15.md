@@ -701,13 +701,15 @@ As an external-data check, `src/validate_published_s3.py` parses Maksimović's
 published GAP/GRAPE file without executing GAP. The source payload has
 1,470,604 bytes and SHA-256
 `a53366d919f5d29876d07031a65c1bd722d05e88b59b39a04e9988c9162ebec0`.
-All 288 records verify as `srg(45,22,10,11)`, all admit the specified
-order-three action with nine fixed points and twelve 3-cycles, and every
-record contains both a `K5` and an `I5`. This corroborates Theorem 8's `f=9`
-lane but is not used in any proof.
+All 288 records verify as `srg(45,22,10,11)` and admit both specified `S3`
+generators: the order-three action has nine fixed points and the involution
+has five. Every record contains both a `K5` and an `I5`. The order-three check
+corroborates Theorem 8's `f=9` lane; the involution check is the positive
+control expanded after Theorem 11. Neither external-data check is used in a
+proof.
 
 **Closest source-verified prior art.** Maksimović's 2018 paper classifies the
-`S3` lane used by Theorem 8. Her 2023 survey/construction paper, Table 2, lists
+`S3` lane used by Theorem 8. Her 2023 paper, Table 2, lists
 the known `srg(45,22,10,11)` full automorphism groups; in particular eight
 known graphs have group `Z10`, so order-five symmetry certainly exists outside
 the Ramsey-good lane. The parameter set remains unclassified. Neither source
@@ -720,3 +722,434 @@ https://doi.org/10.3390/sym15020408.
 Ramsey-good `srg(45,22,10,11)`. It leaves involutions—and therefore nontrivial
 2-groups—open. It does not constrain a non-strongly-regular hypothetical
 Ramsey(5,5,45) graph and changes no Ramsey-number bound.
+
+## Theorem 10 (involution fixed-count reduction for every conference SRG; 2026-08-24)
+
+Let `G` be any strongly regular graph with parameters `(45,22,10,11)`, and let
+`τ` be a nonidentity involution. Then the number `f` of fixed vertices belongs
+to
+
+`{1,5,9,13}`.
+
+No clique or independence hypothesis is used.
+
+*Proof.* Write the nonfixed vertices as `c=(45-f)/2` transposition pairs
+`P_i={x_i,τ(x_i)}`. On the rational anti-invariant basis
+`b_i=e_{x_i}-e_{τ(x_i)}`, adjacency has a symmetric integral matrix `C`.
+If the invariant `2×2` block between two transposition pairs is
+
+```text
+a b
+b a
+```
+
+then `C_ij=a-b∈{-1,0,1}`. On the diagonal,
+`C_ii=-ε_i`, where `ε_i` records whether `P_i` is an edge. Since `J` vanishes
+on the anti-invariant subspace, the SRG equation
+
+`A²+A-11I=11J`
+
+becomes
+
+`C²+C=11I`.                                                     (1)
+
+The polynomial `x²+x-11` is irreducible over `Q`. Its two roots therefore
+have equal multiplicity on this rational representation, so `c` is even and
+`tr(C)=-c/2`. Consequently exactly `c/2` pair orbits are edges. The diagonal
+part of (1) gives
+
+`Σ_{j≠i} C_ij²=11`
+
+for every row. Thus the off-diagonal support graph `S` of `C` is 11-regular,
+forcing `c≥12`. Hence `f≡1 (mod 4)`, `f≤21`, and initially
+
+`f∈{1,5,9,13,17,21}`.                                         (2)
+
+For `c=12`, `S=K_12`. Switch signs by `C↦DCD` so that the first row is
+positive. Choose a second row from the same diagonal class. Its off-diagonal
+equation with the first row requires a sum of ten signs to equal one,
+impossible by parity. Hence `f=21` does not occur.
+
+It remains to exclude `c=14`. Let `E` and `N` be the seven indices with
+diagonal respectively `-1` and `0`, and let `Z` be the zero graph, the
+off-diagonal complement of `S`. It is 2-regular. Reduce (1) modulo two and
+write `ε` for the indicator of `E`, `ν=1+ε` for the indicator of `N`.
+The row support degree is eleven, so `C1=ν`. Applying (1) to `1` gives
+`Cν=ε`, and therefore `Cε=1`. Every vertex consequently has odd cross-part
+degree in `S`, hence even cross-part degree in `Z`; because `Z` is 2-regular,
+that degree is zero or two. Each zero cycle is therefore wholly inside one
+part or alternates between the parts.
+
+Up to permutations preserving `E,N`, the cycle lengths have exactly twelve
+forms. If `x` vertices of each part lie on alternating cycles, then
+`x∈{0,2,3,4,7}`. The forms are
+
+```text
+x=0:  E,N each 7 or 4+3                              (4 forms)
+x=2:  cross 2; E,N each 5                            (1 form)
+x=3:  cross 3; E,N each 4                            (1 form)
+x=4:  cross 4 or 2+2; E,N each 3                     (2 forms)
+x=7:  cross 7, 5+2, 4+3, or 3+2+2                   (4 forms).
+```
+
+The off-diagonal part of (1), again modulo two, imposes the
+sign-independent rule
+
+`|S(i)∩S(j)| ≡ 1`
+
+exactly when `i,j` lie in the same part and `ij∈S`; in every other case the
+intersection must be even. Each of the twelve zero-cycle forms violates this
+rule. Their respective numbers of violating pairs are
+
+`14,24,24,34,22,28,34,42,28,32,28,36`.
+
+Thus `c=14`, and hence `f=17`, is impossible. Together with (2), only
+`f∈{1,5,9,13}` remain. ∎
+
+The finite artifact also supplies a redundant signing exhaustion. For each
+zero form, switching fixes a lexicographic spanning tree of `S` positive,
+which selects one representative of every switching class because `S` is
+connected. Row-prefix search then checks `10,008,588` sign assignments across
+the twelve `c=14` forms and finds no completion. A separately written checker
+generates the forms by integer partitions and repeats the search with recursive
+tail assignment.
+
+### Fixed-support interface and the next exact gate
+
+Let `H` be the fixed graph and let the columns of the binary matrix `X` be the
+fixed-neighbor supports of the transposition pairs. The fixed-fixed block of
+the SRG equation is
+
+`H²+H+2XXᵀ=11(J+I)`.                                         (3)
+
+Thus all fixed degrees are even, adjacent fixed pairs have an even number of
+fixed common neighbors, and nonadjacent pairs have an odd number. Equivalently,
+
+`H²+H+I=J (mod 2)`.
+
+Equation (3) also gives the exact support-design parameters
+
+```text
+r(v)=(22-d_H(v))/2,
+m(u,v)=(10-c_H(u,v))/2  if uv is an edge,
+m(u,v)=(11-c_H(u,v))/2  otherwise.
+```
+
+Under the Ramsey-good hypothesis, an edge-pair support is triangle-free and a
+nonedge-pair nonsupport has no independent triple. These implications do not
+close the surviving cases. At `f=5`, exhaustive enumeration of all `2^10`
+labelled fixed graphs leaves twelve labelled 5-cycles, one isomorphism type.
+An explicit 20-column support design nevertheless survives: take all five
+rotations of one subset of each size `1,2,3,4`, assigning even sizes to edge
+pairs and odd sizes to nonedge pairs. Every point has replication ten and
+every pair multiplicity five. The next genuine gate is therefore the signed
+incidence completion of these support designs, not another fixed-count cut.
+
+Exact artifacts: `src/involution_srg_frontier.py`,
+`src/check_involution_srg_frontier.py`,
+`tests/test_involution_srg_frontier.py`, and
+`data/involution_srg_frontier.json` (schema 1). The producer and checker use
+only the Python standard library and share no code.
+
+**Closest source-verified prior art.** Behbahani--Lam's general fixed-point
+bound, quoted as Theorem 1 in Maksimović (2018), gives only `f≤25` for these
+parameters. Maksimović's classified `S3` and `Z6` actions realize involutions
+with `f=5` and `f=13`, respectively, in known graphs, so those surviving
+fixed-count models are not vacuous. No
+involution-only orbit-matrix classification for `(45,22,10,11)` was located.
+This is a scope comparison, not a novelty certification:
+https://doi.org/10.1016/j.disc.2010.10.005,
+https://doi.org/10.3390/sym10060212, and
+https://doi.org/10.3390/sym15020408.
+
+**Scope.** The fixed-count theorem holds for every `srg(45,22,10,11)`, but it
+does not exclude involutions with `f=1,5,9,13`. It does not constrain
+non-strongly-regular hypothetical Ramsey(5,5,45) graphs and changes no
+Ramsey-number bound.
+
+## Theorem 11 (complete fixed-five balanced-support relaxation; 2026-08-24)
+
+Assume the involution fixes five vertices. By Theorem 10 and (3), the fixed
+graph is `C5`. There are ten internally adjacent transposition pairs and ten
+internally nonadjacent pairs. Their fixed supports have even and odd
+cardinality, respectively. On the five fixed points every point has
+replication ten and every point-pair has multiplicity five.
+
+Let `𝓔` be the group of the sixteen even subsets of the fixed points under
+symmetric difference. For `E∈𝓔`, let `x_E` count the even supports. Complement
+each odd support and let `z_T` count its even complement `T∈𝓔`. Define the sign
+character
+
+`χ_E(U)=(-1)^|E∩U|`.
+
+The constant Fourier coefficients of `x,z` are both ten. Replication ten
+implies equality of the five singleton coefficients:
+
+`\hat x({v})=\hat z({v})`.
+
+Indeed, complementing an odd support negates every singleton sign. For a pair
+`u,v`, the sum of `χ_S({u,v})` over all twenty supports is
+
+`20-2r(u)-2r(v)+4m(u,v)=20-20-20+20=0`.
+
+Complementation preserves pair signs, hence
+
+`\hat x({u,v})=-\hat z({u,v})`.
+
+The constant, five singleton, and ten pair character classes exhaust the
+sixteen characters of `𝓔`. Fourier inversion is therefore exact. Its kernel
+depends only on `|E△T|` and gives
+
+```text
+4z_T = sum_{|E△T|=2} x_E
+       - sum_{|E△T|∈{0,4}} x_E.
+```
+
+Since `sum_E x_E=10`, put
+
+`A_T=sum_{|E△T|∈{0,4}} x_E`.
+
+Then
+
+`z_T=(5-A_T)/2`.                                           (4)
+
+The graph on `𝓔` joining subsets at symmetric-difference distance four is the
+Clebsch graph, with spectrum `5,1^10,(-3)^5`. Hence its closed-neighborhood
+matrix has spectrum `6,2^10,(-2)^5`; on the affine hyperplane
+`sum_E x_E=10`, (4) is visibly an involution.
+
+Consequently an even-support multiset has a nonnegative integral odd partner
+if and only if every `A_T` lies in `{1,3,5}`. The Fourier sign change is an
+involution, so applying (4) in the reverse direction shows that every valid
+`x_E,z_T` lies in `{0,1,2}`.
+
+Enumerating the resulting
+
+`sum_{d=0}^5 C(16,d) C(16-d,10-2d)=996,216`
+
+ternary vectors gives exactly **7,872** balanced, moment-feasible support
+multisets on a labelled fixed `C5`. Quotienting by the explicit action of
+`Aut(C5)=D5` gives exactly **844** orbits. Their orbit sizes are
+
+```text
+size 1:   2
+size 5: 110
+size 10: 732.
+```
+
+Burnside gives the same count: the identity fixes 7,872 designs, each of the
+four nonidentity rotations fixes 2, and each of the five reflections fixes
+112, so
+
+`(7872+4·2+5·112)/10=844`.
+
+Every support system realized by an SRG completion lies in this list, but the
+converse is not asserted: 7,872 and 844 are upper bounds on the realizable
+labelled supports and support orbits. ∎
+
+The producer proves (4) directly and exhausts the 996,216 ternary vectors.
+The disjoint checker does not import the producer and does not assume the
+multiplicity bound. It builds the even and odd `16×16` incidence-moment
+matrices, inverts the odd matrix exactly over the rationals, and recursively
+covers all `C(25,15)=3,268,760` weak compositions of ten even blocks, pruning
+only when no assignment of the remaining multiplicity can make an odd count
+nonnegative. It independently recovers all 7,872 balanced designs and
+generates the ten automorphisms of `C5` by filtering all 120 point
+permutations.
+
+### Signed completion coordinates
+
+Equation (4) closes the balanced-support relaxation, not graph completion.
+The remaining relations have a compact exact Seidel form. Let `N` be the
+`5×20` fixed
+incidence matrix, put `R_vi=1-2N_vi`, and let
+`Q_F=J-I-2A(C5)`. For two transposition pairs let `p_ij,q_ij` be the parallel
+and crossed adjacency bits. Define
+
+```text
+W_ii = 1-2a_i,             T_ii = 2a_i-1,
+W_ij = 2-2(p_ij+q_ij),     T_ij = 2(q_ij-p_ij).
+```
+
+Here `a_i` records the internal pair edge. The conference Seidel equation
+splits into
+
+```text
+Q_F R + R W = -J,
+W² + 2RᵀR = 45I - 2J,                              (5)
+T² = 45I.                                           (6)
+```
+
+Every row of `W` has eight nonzero off-diagonal entries and every row of `T`
+has eleven. The relation blocks are recovered exactly by
+
+```text
+b_ij = 1-W_ij/2,  c_ij=-T_ij/2,
+p_ij=(b_ij+c_ij)/2,  q_ij=(b_ij-c_ij)/2,
+```
+
+and their binary domain is equivalent to
+
+`W_ij²+T_ij²=4` for `i≠j`.                           (7)
+
+Thus (5)--(7), followed by the orbit-level `K5/I5` conditions, are the next
+finite gate for the 844 balanced-support candidates.
+
+As a source-verified positive control, all 288 published `S3` records have the
+specified involution with five fixed vertices and satisfy (4)--(7). A
+hash-bound dependency check verifies that their 26 support types occur among
+the 844 balanced candidates. All 288 contain both a `K5` and an `I5`. This
+checks the signed model on real completions but neither claims completeness of
+the published family nor supplies a Ramsey-good completion.
+
+Exact artifacts: `src/involution_f5_support_census.py`,
+`src/check_involution_f5_support_census.py`,
+`tests/test_involution_f5_support_census.py`, and
+`data/involution_f5_support_census.json` (schema 1). Terminal disposition:
+`F5_BALANCED_SUPPORT_CENSUS_EXACT_7872_LABELLED_844_D5_ORBITS`.
+
+**Scope.** Theorem 11 is an exact census of the necessary balanced-support
+relaxation and therefore an upper bound on realizable support types. Signed
+completion of its 844 candidates remains open, as do fixed counts `1,9,13`
+and every non-strongly-regular graph. No Ramsey-number bound changes.
+
+## Theorem 12 (forced fixed-window `R(3,3)` filter; 2026-08-24)
+
+Retain the notation of Theorem 11. For each edge `e` of the fixed `C5`, let
+`n(e)` be the unique fixed nonedge disjoint from `e`, and define
+
+```text
+M_e = {i : e is contained in S_i and S_i is disjoint from n(e)}.
+```
+
+The multiset cardinality `m_e=|M_e|` counts transposition orbits, not individual
+vertices.
+
+**Claim.** Every Ramsey-good completion satisfies
+
+`m_e<=2` for all five fixed edges `e`.                         (8)
+
+**Proof.** Each orbit in `M_e` contributes both of its vertices. Those vertices
+are adjacent to both endpoints of `e` and nonadjacent to both endpoints of
+`n(e)`. If `m_e>=3`, choose three orbits, giving six vertices. Since
+`R(3,3)=6`, they contain a triangle or an independent triple. In the first
+case the triangle together with the endpoints of `e` is a `K5`. In the second
+case the independent triple together with the endpoints of `n(e)` is an
+`I5`. Both contradict Ramsey-goodness. Therefore (8) holds. ∎
+
+On the labelled fixed cycle, the five ordered window pairs are
+
+```text
+edge 01 versus nonedge 24,
+edge 12 versus nonedge 03,
+edge 23 versus nonedge 14,
+edge 34 versus nonedge 02,
+edge 04 versus nonedge 13.
+```
+
+Applying (8) to every representative in Theorem 11 rejects exactly **139** of
+the 844 `D5` orbits, with orbit-size histogram `1:0, 5:29, 10:110`.
+They account for **1,245** of the 7,872 labelled balanced supports. The exact
+remaining necessary Ramsey-support frontier is therefore
+
+```text
+6,627 labelled supports,
+705 D5 orbits,
+orbit sizes 1:2, 5:81, 10:622.                              (9)
+```
+
+The rejected representatives have 176 violating windows in total; every
+violating multiplicity is exactly three. The five-window multiplicity
+histogram over all 844 representatives is
+
+```text
+m=0: 750,  m=1: 1816,  m=2: 1478,  m=3: 176.
+```
+
+The condition is invariant under the explicit ten-element `D5` action. The
+producer checks all 844 canonical representatives and weights them by their
+already certified orbit sizes. The disjoint checker hash-binds the complete
+Theorem 11 artifact, exhausts all `2^15` labelled graphs on six vertices to
+verify `R(3,3)=6`, uses `C5` as the five-vertex sharpness control, and
+reconstructs every decision and aggregate in (9).
+
+### Four-vertex relation consequence
+
+Suppose `m_e=2`, with selected transposition orbits `i,j`. Their four vertices
+must contain neither a triangle nor an independent triple. Let `a_i,a_j` be
+the internal edge bits, and let `p_ij,q_ij` be the parallel and crossed bits
+from Theorem 11. Exhausting their four possible values gives
+
+```text
+(a_i,a_j)   allowed (p_ij,q_ij)       allowed W_ij/2
+(0,0)       (0,1),(1,0),(1,1)         -1,0
+(0,1)       (0,1),(1,0)                0
+(1,0)       (0,1),(1,0)                0
+(1,1)       (0,0),(0,1),(1,0)          0,+1.               (10)
+```
+
+Across the 705 survivors, (10) supplies exactly **1,227** early relation
+domains: 337 of type `{-1,0}`, 553 forced zeros, and 337 of type `{0,+1}`.
+They are recorded with deterministic orbit indices obtained by expanding the
+ten even supports in mask order and then the ten odd supports in mask order.
+
+### Additional exact signed actions
+
+The balanced moments imply
+
+```text
+R 1 = 0,       R R^T = 20 I_5.
+```
+
+Put `u=R^T 1_5`, so `u_i=5-2|S_i|`. Transposing the first equation in (5) and
+using `Q_F 1_5=0` gives
+
+`W u = -5 1_20`.                                             (11)
+
+Multiplying the second equation in (5) by `1_20` gives
+`W^2 1_20=5 1_20`. The same equation proves that `W` is invertible without
+using (12): if `Wv=0`, applying `R` to
+`2R^T Rv=45v-2Jv` and using `RR^T=20I` and `R1=0` gives `Rv=0`.
+It follows that `45v=2(1^T v)1`; summing coordinates then forces `1^T v=0`
+and hence `v=0`. Equations (11) and `W^2 1=5 1` now give
+`W(W1+u)=0`, so
+
+`W 1_20 = -u`.                                               (12)
+
+Write `x_ij=W_ij/2` off the diagonal and let `epsilon_i` be the internal
+edge bit, so `d_i=W_ii=1-2epsilon_i`. Since every row has eight nonzero `x_ij`,
+(12) determines both sign degrees:
+
+```text
+deg_i(W=+2) = 3 + floor(|S_i|/2),
+deg_i(W=-2) = 5 - floor(|S_i|/2).                            (13)
+```
+
+The total fixed-support incidence is 50 and exactly ten supports are odd.
+Summing (13) therefore gives exactly 40 unordered `W=+2` relations, 40
+unordered `W=-2` relations, and 110 complementary `T`-supported relations.
+
+Finally, `U=span{1_20, im(R^T)}` has dimension six. The first equation in (5)
+fixes the action of `W` on `U`, where its square is `5I` and its trace is zero.
+On `U^perp`, the second equation gives `W^2=45I`; the total trace is zero
+because the diagonal has ten entries of each sign. Hence every completion has
+
+```text
+char_W(t) = (t^2-5)^3 (t^2-45)^7,
+char_T(t) = (t^2-45)^10.                                    (14)
+```
+
+Equations (10)--(14) are exact completion constraints and integrity checks.
+They do not assert that any of the 705 supports has a signed completion.
+
+Exact artifacts: `src/involution_f5_ramsey_filter.py`,
+`src/check_involution_f5_ramsey_filter.py`,
+`tests/test_involution_f5_ramsey_filter.py`, and
+`data/involution_f5_ramsey_filter.json` (schema 1). Terminal disposition:
+`F5_RAMSEY_R33_SUPPORT_FILTER_EXACT_6627_LABELLED_705_D5_ORBITS`.
+
+**Scope.** Theorem 12 is a necessary Ramsey filter inside the fixed-five
+strongly regular branch. Signed completion of the 705 survivors remains open,
+as do fixed counts `1,9,13`, Ramsey-good strongly regular graphs with no
+nontrivial involution, and all non-strongly-regular graphs. No Ramsey-number
+bound changes.

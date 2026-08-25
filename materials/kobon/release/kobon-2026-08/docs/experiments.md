@@ -167,3 +167,18 @@ A verified subcube does not close `K_gen(12)`: the cover and all remaining
 branches still need proof-checked closure.  The canonical `math/kobon/report.md`
 and `AUDIT.md` separately record the already certified n=10 campaign and its
 complete DRAT cover.
+
+## 8. Endpoint-closure frontier delta (2026-08-24)
+
+| Instance | Actual DIMACS header | Bytes | SHA-256 | Snapshot status |
+|---|---:|---:|---|---|
+| `scratch/kobon/n12_gap_endpoint_mi_k4_deletion_t39.cnf` | `p cnf 375037 1005366` | 21,685,650 | `6dca104aa120ee1f209aada8aca07a08bf3341f1335e6e99f4ae1f11bc2ba76b` | `n12-gap-endpoint-mi-k4-t39`, Kissat seed 0, live; no verdict/proof |
+| `scratch/kobon/n12_gap_endpoint_mi_k4_sub9_t39.cnf` | `p cnf 842317 1917926` | 39,495,970 | `34406004c932ce77d33f76f8b7d19c7b0f5a2e3e241e94651846269bf750f2df` | `n12-gap-endpoint-sub9-t39`, Kissat seed 1, live; no verdict/proof |
+
+Both regenerate byte-identically. The first combines single-line endpoint
+closure, shared-edge opposite-side parity, direct \(K(4)=2\) clauses, the
+simple-perturbation requirement of two multipoint-incident faces, and the
+existing 11-/10-line deletion cuts. The second additionally instantiates the
+checked \(K(9)=21\) bound on every nine-line subset. Neither process logs a
+proof, so an eventual UNSAT line is discovery only until a proof-producing
+rerun and independent check.

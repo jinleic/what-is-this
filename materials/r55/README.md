@@ -406,3 +406,234 @@ Terminal dispositions:
 `PUBLISHED S3 DATA VERIFIED`. The result remains confined to the
 strongly-regular construction lane. It says nothing about a
 non-strongly-regular Ramsey(5,5,45) graph and changes no Ramsey-number bound.
+
+## Involution fixed-count frontier (exactly reduced, 2026-08-24)
+
+The first 2-group step is now exact for every conference graph with these
+parameters, without a Ramsey hypothesis:
+
+> **A nonidentity involution of an `srg(45,22,10,11)` fixes only
+> `1`, `5`, `9`, or `13` vertices.**
+
+If `f` vertices are fixed and `c=(45-f)/2` transposition orbits remain,
+adjacency on the anti-invariant basis `e_x-e_τ(x)` is an integral symmetric
+matrix `C` satisfying
+
+```text
+C² + C = 11I.
+```
+
+Its diagonal contains `c/2` copies each of `-1` and `0`, its off-diagonal
+entries lie in `{-1,0,1}`, and every row has exactly eleven nonzero
+off-diagonal entries. Spectral conjugacy gives `c` even, hence `f≡1 (mod 4)`;
+the row degree gives `c≥12`. This first leaves
+`f∈{1,5,9,13,17,21}`.
+
+- At `c=12` (`f=21`), the half-incidence graph is complete. After switching
+  one row positive, an edge-pair row would require a sum of ten signs to equal
+  one, an immediate parity contradiction.
+- At `c=14` (`f=17`), the zero graph is 2-regular on two seven-vertex parts.
+  Reduction modulo two forces cross-zero degree zero or two at every vertex,
+  leaving exactly twelve partition-preserving cycle shapes. Every shape
+  violates the sign-independent common-support parity equation. As a second
+  certificate, a canonical switching-tree DFS tests **10,008,588** row
+  assignments across the twelve shapes and finds no completion.
+
+The remaining Ramsey-specific problem is not hidden. Fixed-support incidence
+satisfies the exact binary Gram rules
+
+```text
+r(v) = (22-d_F(v))/2,
+m(u,v) = (10-c_F(u,v))/2  for uv in E(F),
+m(u,v) = (11-c_F(u,v))/2  for uv not in E(F).
+```
+
+For `f=5`, exhaustive fixed-graph parity leaves the unique type `C5`, but an
+explicit balanced 20-block support design survives (replication ten, pair
+multiplicity five). Thus the next genuine gate is signed incidence completion,
+not another fixed-count or support-only cut.
+
+```bash
+./.venv/bin/python -m unittest r55.tests.test_involution_srg_frontier -v
+./.venv/bin/python r55/src/involution_srg_frontier.py \
+  --output r55/data/involution_srg_frontier.json
+./.venv/bin/python r55/src/check_involution_srg_frontier.py \
+  r55/data/involution_srg_frontier.json
+```
+
+Terminal disposition:
+`INVOLUTION_FIXED_COUNTS_REDUCED_TO_1_5_9_13_FOR_SRG`. The producer uses only
+stdlib integer enumeration. The checker imports no producer symbol, generates
+the twelve zero-graph shapes independently, recursively replays every signing,
+and reconstructs the fixed-five graph and support design. Counts
+`1,5,9,13` remain open even in the Ramsey-good lane; non-strongly-regular
+Ramsey(5,5,45) graphs remain entirely outside scope, and no Ramsey-number bound
+changes.
+
+Closest source-verified context: Behbahani--Lam's general fixed-point bound,
+as quoted in Maksimović's 2018 paper, gives only `f≤25` here. Maksimović's
+published `S3` and `Z6` orbit distributions realize involutions with
+respectively `f=5` and `f=13` in known graphs, so those surviving fixed-count
+models are not vacuous. No involution-only classification for
+these parameters was located. This is a prior-art comparison, not a novelty
+certification:
+https://doi.org/10.3390/sym10060212,
+https://doi.org/10.3390/sym15020408, and
+https://doi.org/10.1016/j.disc.2010.10.005.
+
+## Fixed-five balanced-support census (exactly complete, 2026-08-24)
+
+The moment-feasible support relaxation of the `f=5` branch is now completely
+enumerated.
+Write `x_E` for the multiplicity of an even support `E`. Complement each odd
+support and write `z_T` for its multiplicity on the sixteen even subsets.
+For the sign character `χ_E(v)=(-1)^{[v∈E]}`, replication ten and pair
+multiplicity five say
+
+```text
+x-hat = z-hat  on the five singleton characters,
+x-hat = -z-hat on the ten pair characters.
+```
+
+Those characters plus the constant character exhaust the character group of
+the even subsets. Fourier inversion therefore gives the local formula
+
+```text
+z_T = (5 - A_T)/2,
+A_T = sum x_E over |E xor T| in {0,4}.
+```
+The distance-four graph on the sixteen even subsets is the Clebsch graph.
+Its closed-neighborhood spectrum is `6,2,-2`, making this affine transform an
+involution on the hyperplane `sum x_E=10`.
+
+Thus an edge-support multiset has an odd-support partner exactly when every
+`A_T` lies in `{1,3,5}`. The transform is involutive, so every valid
+multiplicity is in `{0,1,2}`. This reduces the producer's exact domain from
+`C(25,15)=3,268,760` weak compositions to **996,216** ternary vectors.
+The complete result is:
+
+> **There are exactly 7,872 balanced support multisets on a labelled fixed
+> `C5`, or 844 orbits under `Aut(C5)=D5`.**
+
+These are exact counts for the necessary incidence moments and therefore
+upper bounds on the support types realizable by an actual SRG completion.
+
+The orbit-size histogram is `1:2, 5:110, 10:732`. Burnside independently
+reproduces 844: the identity fixes 7,872 designs, each nonidentity rotation
+fixes 2, and each reflection fixes 112. Column permutations are already
+removed by the multiset representation; the only remaining quotient is the
+explicit ten-element action on the five fixed points.
+
+The checker does not import the producer or assume its ternary bound. It
+constructs the even/odd `16×16` incidence-moment matrices, inverts the odd
+matrix exactly over `Q`, and recursively covers every weak composition of ten
+even blocks. It independently generates `Aut(C5)` by testing all 120 point
+permutations. Both implementations reconstruct the same 7,872 balanced
+designs, 844 canonical representatives, orbit sizes, Burnside counts, and
+SHA-256 commitments.
+
+```bash
+./.venv/bin/python -m unittest r55.tests.test_involution_f5_support_census -v
+./.venv/bin/python r55/src/involution_f5_support_census.py \
+  --output r55/data/involution_f5_support_census.json
+./.venv/bin/python r55/src/check_involution_f5_support_census.py \
+  r55/data/involution_f5_support_census.json
+```
+
+The next exact variables can be expressed as two complementary signed Seidel
+blocks. If `R_vi=1-2N_vi`, `Q_F=J-I-2A(C5)`, `W` is the invariant block, and
+`T` the anti-invariant block, then
+
+```text
+Q_F R + R W = -J,
+W² + 2RᵀR = 45I - 2J,
+T² = 45I,
+W_ij² + T_ij² = 4  (i != j).
+```
+
+Here `W` has eight and `T` eleven nonzero off-diagonal entries per row.
+Unfiltered signed completion of the 844 balanced-support orbits remains open. A
+source-verified positive control now checks all 288 published `S3` records:
+the published involution fixes five vertices, every graph satisfies these
+signed equations, and every record contains both a `K5` and an `I5`. A
+hash-bound cross-check proves that their 26 support types occur among the 844
+balanced representatives. This validates the completion model but supplies no
+Ramsey-good witness and no completeness theorem for the published family.
+
+Terminal disposition:
+`F5_BALANCED_SUPPORT_CENSUS_EXACT_7872_LABELLED_844_D5_ORBITS`. This is an
+SRG balanced-support upper bound only. Signed completion, the `f∈{1,9,13}`
+branches, and all non-strongly-regular graphs remain open; no `R(5,5)` bound
+changes.
+
+## Fixed-five Ramsey support frontier (exact R(3,3) cut, 2026-08-24)
+
+The balanced moments are not the last support-only information once the
+Ramsey condition is used. Pair each fixed `C5` edge with the unique disjoint
+fixed nonedge. A transposition orbit whose support contains the edge and
+avoids the nonedge contributes both of its vertices to their common
+intersection.
+
+Three such orbits contribute six vertices. By `R(3,3)=6`, those vertices
+contain a triangle or an independent triple. The triangle joins the fixed edge
+to form a `K5`; the independent triple joins the fixed nonedge to form an
+`I5`. Therefore every Ramsey-good completion satisfies five explicit
+multiplicity inequalities:
+
+```text
+number of orbits containing fixed edge e
+and avoiding its opposite fixed nonedge <= 2.
+```
+
+Applying these inequalities to the exact balanced census rejects **139 of 844
+`D5` support orbits**, representing **1,245 of 7,872 labelled supports**. The
+exact surviving Ramsey-support frontier is:
+
+> **6,627 labelled balanced supports in 705 `D5` orbits.**
+
+The surviving orbit-size histogram is `1:2, 5:81, 10:622`. The filter is
+checked on every representative and on all ten images of the explicit `D5`
+action. The independent checker hash-binds the preceding support artifact,
+exhausts all `2^15` labelled graphs to verify `R(3,3)=6`, independently
+enumerates the four possible parallel/crossed relations on two transposition
+orbits, and reconstructs all 844 decisions.
+
+When an opposite window contains exactly two transposition orbits, its four
+vertices must avoid both `K3` and `I3`. Writing `a_i` for the internal edge bit
+and `W_ij/2=1-p_ij-q_ij`, this gives the exact early relation domains
+
+```text
+a_i=a_j=0:  W_ij/2 in {-1,0},
+a_i!=a_j:   W_ij   = 0,
+a_i=a_j=1:  W_ij/2 in {0,+1}.
+```
+
+The artifact records 1,227 such restrictions across the 705 survivors.
+The balanced identities also expose stronger signed checks:
+
+```text
+W 1 = -R^T 1,                 W R^T 1 = -5 1,
+deg_i(W=+2) = 3+floor(|S_i|/2),
+deg_i(W=-2) = 5-floor(|S_i|/2).
+```
+
+Globally there are exactly 40 unordered `W=+2` relations, 40 `W=-2`
+relations, and 110 `T`-supported relations. The forced characteristic
+polynomials are `(t^2-5)^3(t^2-45)^7` for `W` and `(t^2-45)^10` for `T`.
+These are necessary completion checks, not existence claims.
+
+```bash
+./.venv/bin/python -m unittest \
+  r55.tests.test_involution_f5_ramsey_filter -v
+./.venv/bin/python r55/src/involution_f5_ramsey_filter.py \
+  --output r55/data/involution_f5_ramsey_filter.json
+./.venv/bin/python r55/src/check_involution_f5_ramsey_filter.py \
+  r55/data/involution_f5_ramsey_filter.json
+```
+
+Terminal disposition:
+`F5_RAMSEY_R33_SUPPORT_FILTER_EXACT_6627_LABELLED_705_D5_ORBITS`. This is an
+exact necessary filter only for Ramsey-good completions in the fixed-five
+strongly regular branch. Signed completion of the 705 survivors, fixed counts
+`1,9,13`, Ramsey-good strongly regular graphs with no nontrivial involution,
+and all non-strongly-regular graphs remain open. No `R(5,5)` bound changes.

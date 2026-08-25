@@ -37,8 +37,38 @@ $K(11)=32$ and $K(10)=25$, and local vertex-sector bounds (four faces per
 simple line pair; two, or zero when nonadjacent, at a multipoint). The combined
 $(12,39)$ instance has 374,381 variables / 830,030 clauses and is live under
 both Kissat and CaDiCaL. Exact audit: 3,600 rational arrangements, 27,705
-triangular faces and 93,000 line-pair checks, zero violations. This is a sound
-search accelerator, not a verdict; $K(12)$ remains open.
+triangular faces and 93,000 line-pair checks, zero violations. The hash-bound
+record `scratch/kobon/n12_gap_sector_deletion_t39.metadata.json` binds the
+$K(10)=25$ input to the 2026-08-15 cube-cover certificate, not to the later
+face monolith. This is a sound search accelerator, not a verdict; $K(12)$
+remains open.
+
+An additional **opt-in** shared-ray cut couples face adjacency to degeneracy:
+two faces leaving their common vertex along the same ray of a shared line must
+meet at the same remote endpoint, forcing a triple concurrency there. The
+exact audit checked 1,591 such cases with zero violations and includes a
+six-line four-sector sharpness control. Because solver performance was mixed,
+the prior `--sector-bounds` encoding remains unchanged; the separate
+`--shared-ray-bounds` lane has 374,381 variables / 841,910 clauses and is live
+as `n12-gap-shared-ray-t39`. It has no verdict and does not change the open
+status of \(K(12)\).
+
+The stronger **endpoint-closure** lane now handles two faces that share only
+one line but meet at a multipoint endpoint. Equal ray directions force their
+other endpoints to coincide; a shared side forces the apexes to opposite
+sides. A separate perturbation theorem says at most
+\(\bar a_3^s(n)\) selected faces can avoid finite multipoints, so target 39 at
+\(n=12\) forces at least two multipoint-incident faces. With four prime
+\(K(4)=2\) clauses per four-line subset, the 11-/10-line deletion instance is
+375,037 variables / 1,005,366 clauses (SHA-256
+`6dca104aa120ee1f209aada8aca07a08bf3341f1335e6e99f4ae1f11bc2ba76b`);
+adding the checked \(K(9)=21\) cuts gives 842,317 / 1,917,926 (SHA-256
+`34406004c932ce77d33f76f8b7d19c7b0f5a2e3e241e94651846269bf750f2df`).
+Both low-priority Kissat lanes are live without proof logging. Exact audits
+found zero violations in 1,607 endpoint collisions, 84 new colliding same-ray
+cases, 42 single-line shared segments, and 1,591 shared-pair segments. The
+known \(n=8,9\) optima remain SAT; UNSAT controls show mixed performance.
+These are sound discovery accelerators, not a verdict: \(K(12)\) remains open.
 
 **Lower bound $K_{\rm gen}(12)\ge38$: PROVED** (exact rational) —
 Kabanovitch's arrangement (Charade 1999; combinatorics via Savchuk's
@@ -58,7 +88,7 @@ charging steps are false once degeneracies and crossed triangles are admitted,
 so no located source proves the broad-convention value at $n=10$. Scope
 verdicts were independently re-derived by two literature scouts (2026-08-13).
 
-## State (2026-08-15, final)
+## State (certified 2026-08-15; independently recertified 2026-08-23)
 
 | claim | status | evidence |
 |---|---|---|
@@ -68,6 +98,7 @@ verdicts were independently re-derived by two literature scouts (2026-08-13).
 | $K(9)\le21$ (control) | **CERTIFIED** | `proof_n9_t22.drat` `s VERIFIED` (drat-trim, 121,436,534 resolution steps) |
 | 9 of 11 cubes UNSAT at target 26 | **CERTIFIED** | all 9 shipped DRATs `s VERIFIED` by drat-trim (≈23.4 CPU-h; `scratch/kobon-audit/results_verified.tsv`) |
 | `c0`, `par_conc` cubes UNSAT | **CERTIFIED** (verified 8-way case splits) | 16/16 subcube DRATs `s VERIFIED` (≈16.4 CPU-h, 44 GB; `scratch/kobon-audit/splits.tsv`); each subcube CNF byte-verified = parent + 3 unit clauses (tautological split, `AUDIT.md`) |
+| Independent faces-only refutation at target 26 | **CERTIFIED** | `ladder_n10_t26_faces.drat` checked `s VERIFIED`: 131,314 variables / 792,462 clauses; 52,808 formula clauses and 40,395,481 lemmas in core; record `scratch/kobon/ladder_n10_t26_faces_certificate.json` |
 | $K_{\rm gen}(10)=25$ | **THEOREM — fully certified** | every row above green; verdict sealed in [`AUDIT.md`](AUDIT.md) |
 
 ## Layout

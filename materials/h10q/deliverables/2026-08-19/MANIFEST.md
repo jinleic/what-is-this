@@ -69,22 +69,23 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `artifacts/l24_diagonal_local.jsonl` | repo-regenerable | 16537 |
 | `artifacts/l24_diagonal_search.jsonl` | repo-regenerable | 1109849 |
 | `artifacts/l25_scaled_coupling.jsonl` | repo-regenerable | 2615 |
-| `artifacts/l26_reciprocal_tie.jsonl` | repo-regenerable | 2483 |
-| `artifacts/l27_triangular_shear.jsonl` | repo-regenerable | 6806 |
+| `artifacts/l26_reciprocal_tie.jsonl` | repo-regenerable | 2499 |
+| `artifacts/l27_triangular_shear.jsonl` | repo-regenerable | 7416 |
+| `artifacts/l28_trace_field.jsonl` | repo-regenerable | 2076 |
 | `artifacts/l6_witnesses.jsonl` | frozen authority (suite-asserted) | 3785 |
 | `artifacts/l9_steered.jsonl` | frozen authority (suite-asserted) | 23025 |
 | `artifacts/litscout_h10q.md` | persisted evidence (no checked-in producer) | 8438 |
-| `ledger/CONDITIONAL.md` | project ledger | 24266 |
-| `ledger/NOTES.md` | project ledger | 87781 |
-| `ledger/README.md` | project ledger | 39707 |
-| `ledger/RESULTS.md` | project ledger | 61119 |
-| `ledger/THEOREMS.md` | project ledger | 180017 |
-| `papers/companion-verification.tex` | paper draft | 49135 |
-| `papers/main-conditional-forall6.tex` | paper draft | 13618 |
+| `ledger/CONDITIONAL.md` | project ledger | 24662 |
+| `ledger/NOTES.md` | project ledger | 91184 |
+| `ledger/README.md` | project ledger | 41293 |
+| `ledger/RESULTS.md` | project ledger | 63565 |
+| `ledger/THEOREMS.md` | project ledger | 186118 |
+| `papers/companion-verification.tex` | paper draft | 50240 |
+| `papers/main-conditional-forall6.tex` | paper draft | 14016 |
 | `papers/sections/architecture.tex` | paper draft | 10004 |
 | `papers/sections/classes.tex` | paper draft | 8324 |
 | `papers/sections/existence.tex` | paper draft | 6497 |
-| `papers/sections/frontier.tex` | paper draft | 22687 |
+| `papers/sections/frontier.tex` | paper draft | 24239 |
 | `papers/sections/intro.tex` | paper draft | 9570 |
 | `papers/sections/irreducibility.tex` | paper draft | 14175 |
 | `papers/sections/record.tex` | paper draft | 11208 |
@@ -142,9 +143,10 @@ Two paper drafts plus the artifacts, generators and ledger they cite.
 | `scripts/l24_diagonal_geometry.py` | generator/replay script | 46316 |
 | `scripts/l24_diagonal_local.py` | generator/replay script | 50774 |
 | `scripts/l24_diagonal_search.py` | generator/replay script | 59565 |
-| `scripts/l25_scaled_coupling.py` | generator/replay script | 17600 |
-| `scripts/l26_reciprocal_tie.py` | generator/replay script | 10595 |
-| `scripts/l27_triangular_shear.py` | generator/replay script | 10259 |
+| `scripts/l25_scaled_coupling.py` | generator/replay script | 17759 |
+| `scripts/l26_reciprocal_tie.py` | generator/replay script | 10701 |
+| `scripts/l27_triangular_shear.py` | generator/replay script | 11938 |
+| `scripts/l28_trace_field.py` | generator/replay script | 10940 |
 
 ## Verification
 

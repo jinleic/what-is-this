@@ -230,6 +230,109 @@ def real_certificate() -> dict:
     }
 
 
+def b_coefficient_no_go() -> dict:
+    checks = 0
+    for a in (F(1), F(3), F(5), F(-1), F(-3), F(5, 3)):
+        A = 1 + 4 * a * a
+        s = (a - 1) / 2
+        assert vp(A, 2) == 0
+        assert A.numerator * pow(A.denominator, -1, 8) % 8 == 5
+        for lam in (F(1), F(2), F(3, 2), F(-3), A):
+            m = lam * lam
+            for B in (F(2), F(-2), F(6), F(10, 3)):
+                expanded = (
+                    -16 * A * B * m * (s * s + 1) * (m - A) ** 2
+                    - 32 * A * B * s * m * (m * m - A * A)
+                )
+                factored = (
+                    -16 * A * B * m * (m - A)
+                    * ((s + 1) ** 2 * m - (s - 1) ** 2 * A)
+                )
+                assert expanded == factored
+                checks += 1
+    return {
+        "type": "linear-B-cancellation-no-go",
+        "label": "PROVED for the exact cancellation ansatz",
+        "instances": checks,
+        "B_coefficient": (
+            "-16*A*B*m*(m-A)*((s+1)^2*m-(s-1)^2*A)"
+        ),
+        "excluded_factors": {
+            "m=0": "lambda=0 is not a conic parameter",
+            "m=A": "the full eliminant equals -64*A^3, not zero",
+            "last_factor": (
+                "for s not in {-1,1}, lambda^2=A*((s-1)/(s+1))^2 "
+                "would make A a Q_2-square; s=1 gives m=0 and "
+                "s=-1 leaves -4*A"
+            ),
+        },
+        "scope": (
+            "rules out only the natural section obtained by cancelling "
+            "all linear B-dependence; it is not a global-point no-go"
+        ),
+    }
+
+
+def canonical_hyperbola_sections_no_go() -> dict:
+    checks = 0
+    modulus = 256
+    for a_residue in range(1, 64, 2):
+        a = F(a_residue)
+        A = 1 + 4 * a * a
+        s = (a - 1) / 2
+        X = 1 + 2 * a * a
+        for b_residue in range(1, 64, 2):
+            B = 2 * F(b_residue)
+            for rho_sign in (-1, 1):
+                rho = rho_sign * 2 * a * a
+                u = rho * rho
+                V = X * rho
+                # The omitted -c^2*u term is 0 mod 256 because v2(c)>=4
+                # and v2(u)=2 on the canonical bridge domain.
+                residual = (
+                    A * (Q * Q + 4) * u * u
+                    + (4 * A * A - 16 * A * B * (s * s + 1)) * u
+                    + (4 * Q * A * u - 32 * A * B * s) * V
+                    - 16 * A
+                )
+                assert residual.denominator % 2
+                assert residual.numerator * pow(
+                    residual.denominator, -1, modulus
+                ) % modulus == 128
+                checks += 1
+    return {
+        "type": "canonical-hyperbola-sections-no-go",
+        "label": "PROVED uniformly on the Phi dyadic domain",
+        "sections": ["lambda=1", "lambda=-1", "lambda=A", "lambda=-A"],
+        "congruence": "C2 is 128 mod 256",
+        "reason": (
+            "lambda in {+/-1,+/-A} gives X=+/-(1+2*a^2), "
+            "rho=+/-2*a^2; c is in 16*Z_2, so direct reduction is uniform"
+        ),
+        "unit_rows": checks,
+        "scope": "excludes the four canonical rational sections of X^2-rho^2=A",
+    }
+
+
+def zero_y_section_no_go() -> dict:
+    return {
+        "type": "zero-y-section-no-go",
+        "label": "PROVED over Q_3",
+        "implication": (
+            "y=2*X+28*rho=0 forces X=-14*rho and hence "
+            "195*rho^2=A=1+4*a^2"
+        ),
+        "local_obstruction": (
+            "(2*a)^2-195*rho^2=-1 has no Q_3-point: the two left "
+            "valuations have opposite parity, and the unit case would "
+            "reduce to a square congruent to -1 mod 3"
+        ),
+        "scope": "excludes the coordinate-hyperplane section y=0 only",
+    }
+
+
+
+
 def frontier_record() -> dict:
     return {
         "type": "global-frontier",
@@ -238,6 +341,9 @@ def frontier_record() -> dict:
             "one fixed coupling covers every 2-adic s-parity",
             "the standard ramified target stratum has a smooth point at every odd prime",
             "one guarded real bridge sample is viable",
+            "the linear-B cancellation ansatz cannot meet the rational conic",
+            "the four canonical hyperbola sections lambda in {+/-1,+/-A} are dyadically impossible",
+            "the coordinate section y=0 is impossible already over Q_3",
         ],
         "open": [
             "a rational root of the bridge-specialized lambda octic",
@@ -268,6 +374,9 @@ def main() -> int:
         dyadic_certificate(),
         target_character_theorem(),
         real_certificate(),
+        b_coefficient_no_go(),
+        canonical_hyperbola_sections_no_go(),
+        zero_y_section_no_go(),
         frontier_record(),
     ]
     elapsed = time.perf_counter() - started

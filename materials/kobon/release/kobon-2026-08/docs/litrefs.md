@@ -239,6 +239,31 @@ certified by computer-assisted interval/combinatorial checks; Theorem
 matching the upper bound; n=21/23/27 base-config searches returned zero
 (strong negative evidence). Scope: simple straight lines face count.
 
+The 2607 paper explicitly excludes the present branch: "We restrict to odd
+\(n\); the even case (pairs of parallel lines in the Arnold problem,
+non-simple arrangements in the Kobon problem) is beyond the scope of this
+paper." Section 3.1 further says even optimal arrangements involve parallel
+pairs or triple points and that simple even arrangements have many unavoidable
+defects. Its defect and wall-debt methods are therefore research prompts, not
+universal clauses for \((12,39)\).
+
+### Rote NumPSLA 2025 and colored-pseudoline signotopes 2026
+
+Rote, arXiv:2503.02336, "NumPSLA — An experimental research tool for
+pseudoline arrangements and order types", enumerates small simple
+x-monotone pseudoline arrangements by incremental cutpaths. The abstract says
+12-point abstract order types and 11-pseudoline arrangements are practical;
+Section 1.1 explicitly assumes general position. The code's exclude database
+is a set difference against an order-type database, not a nonrealizability
+proof certificate. It was used for representation comparison only.
+
+Radtke--Keszegh--Lauff, arXiv:2601.20574, "On Triangles in Colored
+Pseudoline Arrangements", works with simple pairwise-crossing pseudolines.
+Definition 1 records the rank-three signotope four-set sign-change axiom and
+the text identifies triangular-face flips with changing one sign. This
+motivated a zero-aware projective chirotope audit, but none of its colored
+triangle theorems supplies an even non-simple Kobon upper bound.
+
 ### Savchuk 2025
 
 Paper: https://arxiv.org/abs/2507.07951; full PDF:

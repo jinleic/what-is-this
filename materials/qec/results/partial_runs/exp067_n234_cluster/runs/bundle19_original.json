@@ -1,0 +1,73 @@
+{
+  "input": {
+    "HX_rank": 113,
+    "HX_sha256": "145bfec8f242675860225565fe530a66e7f9b25447fbf4708e7c148975e04a24",
+    "HZ_rank": 113,
+    "HZ_sha256": "0d0037bf36c31285aa135a8b33905813a9a49bdbdd0230d4b3c05c4c591c3dd8",
+    "LX_rank": 8,
+    "LX_sha256": "95b8a8d5452ee33e33d758c8e813379377975248d6b41920a1be5117c2c7f0a1",
+    "k": 8,
+    "n": 234,
+    "presentation": "original",
+    "schema": "exp067-connected-cluster-input-v1",
+    "target": "bundle19"
+  },
+  "input_files": {
+    "HX": {
+      "path": "results/partial_runs/exp067_n234_cluster/inputs/bundle19_original_HX.mtx",
+      "sha256": "f8602bcebda60778851b07812b47b67361da6de2f5875fa5c570ac44eca8a91c"
+    },
+    "HZ": {
+      "path": "results/partial_runs/exp067_n234_cluster/inputs/bundle19_original_HZ.mtx",
+      "sha256": "b582743ba8e3a165c4629a519428c14e2b3ef5f9e57f7207e663ddd0dc035fdd"
+    },
+    "LX": {
+      "path": "results/partial_runs/exp067_n234_cluster/inputs/bundle19_original_LX.mtx",
+      "sha256": "9ced6f0c4f8f33a3f04e95b0ff47a374a55721db0523912e2c9ec566de54d81d"
+    }
+  },
+  "invocation": [
+    "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/solver/dist_m4ri_arm64_darwin",
+    "method=2",
+    "finH=/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/inputs/bundle19_original_HX.mtx",
+    "finG=/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/inputs/bundle19_original_HZ.mtx",
+    "start=0",
+    "dmin=1",
+    "wmax=16",
+    "smax=0",
+    "debug=3",
+    "timeout=3500"
+  ],
+  "presentation": "original",
+  "protocol": {
+    "dmin": 1,
+    "engine_variant": "legacy_single_thread_do_CC_dist",
+    "method": 2,
+    "root": 0,
+    "smax": 0,
+    "timeout_s": 3500.0,
+    "wmax": 16
+  },
+  "result": {
+    "exhaustive_through": 16,
+    "found_distance": null,
+    "status": "NO_LOGICAL_THROUGH_CAP"
+  },
+  "returncode": 0,
+  "run_id": "initial",
+  "schema": "exp067-connected-cluster-run-v1",
+  "solver": {
+    "binary_sha256": "04c051b27ae30dc353480015c01ce02b9925636d428a3a92c33a78ea5317ca66",
+    "name": "QEC-pages/dist-m4ri legacy STANDALONE method 2",
+    "source": "https://github.com/QEC-pages/dist-m4ri",
+    "source_commit": "538d119f6e98b3782415eb78f7ce322a076f8101"
+  },
+  "status": "COMPLETE",
+  "stderr": "# read H <- file '/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/inputs/bundle19_original_HX.mtx'\n# read G <- file '/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/inputs/bundle19_original_HZ.mtx'\n",
+  "stderr_sha256": "51b0be50b02c01546304507961d551e55786aec484623afc7840f921f18b22db",
+  "stdout": "# recursively searching for w=1 codewords wmax=16 beg=0 end=0\n-1\n# recursively searching for w=2 codewords wmax=16 beg=0 end=0\n-2\n# recursively searching for w=3 codewords wmax=16 beg=0 end=0\n-3\n# recursively searching for w=4 codewords wmax=16 beg=0 end=0\n-4\n# recursively searching for w=5 codewords wmax=16 beg=0 end=0\n-5\n# recursively searching for w=6 codewords wmax=16 beg=0 end=0\n-6\n# recursively searching for w=7 codewords wmax=16 beg=0 end=0\n-7\n# recursively searching for w=8 codewords wmax=16 beg=0 end=0\n-8\n# recursively searching for w=9 codewords wmax=16 beg=0 end=0\n-9\n# recursively searching for w=10 codewords wmax=16 beg=0 end=0\n-10\n# recursively searching for w=11 codewords wmax=16 beg=0 end=0\n-11\n# recursively searching for w=12 codewords wmax=16 beg=0 end=0\n-12\n# recursively searching for w=13 codewords wmax=16 beg=0 end=0\n-13\n# recursively searching for w=14 codewords wmax=16 beg=0 end=0\n-14\n# recursively searching for w=15 codewords wmax=16 beg=0 end=0\n-15\n# recursively searching for w=16 codewords wmax=16 beg=0 end=0\n### Cluster dmin=-16  (no codewords of weight up to 16)\n# cluster algorithm failed to find a codeword up to wmax=16\n-16\n",
+  "stdout_sha256": "7f85ae8c57619405fd5711ff75a26e7c682bc4af485aaeb6f6bd03f7f8a2a4f4",
+  "target": "bundle19",
+  "utc": "2026-08-24T23:31:53.501698+00:00",
+  "wall_time_s": 1953.2758467079839
+}

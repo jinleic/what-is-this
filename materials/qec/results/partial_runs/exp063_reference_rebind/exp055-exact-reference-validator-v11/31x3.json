@@ -1,0 +1,12101 @@
+{
+  "candidates_after_symmetry": 105,
+  "ell": 31,
+  "exp068_proof_repair": {
+    "all_domination_witnesses_physical": true,
+    "records_rebound": 3,
+    "schema": "exp068-screen-fallback-witness-v1"
+  },
+  "k_range": [
+    8,
+    24
+  ],
+  "m": 3,
+  "n": 186,
+  "no_reference": [],
+  "orbit_total": 6150,
+  "protocol": {
+    "cdcl_conflict_budget": 1000000,
+    "cdcl_solver": "cadical195",
+    "census_sha256": "c6733189b9e5a533daca6b0743ac54e222194509fa9e45c729a9524c34b6b1d5",
+    "k_range": [
+      8,
+      24
+    ],
+    "reference_sha256": "7daefcaa10015fbe7a3312710ae13a45f9d3ad8d527e407e82f658e175655125",
+    "reference_validation_version": "exp055-exact-reference-validator-v10",
+    "residual_workers": 8,
+    "time_limit_s": 120.0,
+    "witness_keep": 64,
+    "witness_tries": 8
+  },
+  "records": [
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 32,
+      "ceiling_witness_support": [
+        0,
+        1,
+        6,
+        7,
+        9,
+        10,
+        15,
+        16,
+        21,
+        22,
+        33,
+        34,
+        36,
+        37,
+        39,
+        40,
+        45,
+        46,
+        48,
+        49,
+        51,
+        52,
+        54,
+        55,
+        57,
+        58,
+        66,
+        67,
+        75,
+        76,
+        78,
+        79
+      ],
+      "dim_pole": 10,
+      "ell": 31,
+      "k_from_matrices": 20,
+      "k_parent": 20,
+      "m": 3,
+      "n": 186,
+      "orbit": 30,
+      "solver_calls": 0,
+      "threshold": 6,
+      "threshold_source": "EXP-037 [[180,20,6]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 2,
+      "witness_classes": 4224,
+      "witness_support": [
+        78,
+        79
+      ],
+      "witness_wall_s": 0.03
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 46,
+      "ceiling_witness_support": [
+        0,
+        4,
+        5,
+        6,
+        9,
+        13,
+        14,
+        15,
+        19,
+        20,
+        21,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        33,
+        36,
+        39,
+        43,
+        44,
+        45,
+        48,
+        51,
+        54,
+        57,
+        61,
+        62,
+        64,
+        65,
+        66,
+        70,
+        71,
+        73,
+        74,
+        75,
+        78,
+        82,
+        83,
+        85,
+        86,
+        88,
+        89,
+        91,
+        92
+      ],
+      "dim_pole": 7,
+      "ell": 31,
+      "k_from_matrices": 14,
+      "k_parent": 14,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 10,
+      "threshold_source": "EXP-057 [[170,16,10]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 2,
+      "witness_classes": 4224,
+      "witness_support": [
+        91,
+        184
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 46,
+      "ceiling_witness_support": [
+        0,
+        4,
+        5,
+        6,
+        9,
+        13,
+        14,
+        15,
+        19,
+        20,
+        21,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        33,
+        36,
+        39,
+        43,
+        44,
+        45,
+        48,
+        51,
+        54,
+        57,
+        61,
+        62,
+        64,
+        65,
+        66,
+        70,
+        71,
+        73,
+        74,
+        75,
+        78,
+        82,
+        83,
+        85,
+        86,
+        88,
+        89,
+        91,
+        92
+      ],
+      "dim_pole": 7,
+      "ell": 31,
+      "k_from_matrices": 14,
+      "k_parent": 14,
+      "m": 3,
+      "n": 186,
+      "orbit": 30,
+      "solver_calls": 0,
+      "threshold": 10,
+      "threshold_source": "EXP-057 [[170,16,10]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 4224,
+      "witness_support": [
+        21,
+        25,
+        55,
+        84,
+        88,
+        116,
+        118,
+        148,
+        179,
+        181
+      ],
+      "witness_wall_s": 0.15
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "67beea0cf1cca9eaba4352410194940e3e825d134e8b01ea4e66b59c3b31d7c8",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8129,
+          "cnf_variables": 3033,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 46383,
+            "decisions": 70286,
+            "propagations": 9663990,
+            "restarts": 871
+          },
+          "wall_time_s": 2.240112000028603
+        },
+        "status": "SAT",
+        "weight": 10,
+        "witness_support": [
+          16,
+          26,
+          51,
+          85,
+          89,
+          93,
+          112,
+          119,
+          138,
+          167
+        ]
+      },
+      "ceiling": 46,
+      "ceiling_witness_support": [
+        0,
+        4,
+        5,
+        6,
+        9,
+        13,
+        14,
+        15,
+        19,
+        20,
+        21,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        33,
+        36,
+        39,
+        43,
+        44,
+        45,
+        48,
+        51,
+        54,
+        57,
+        61,
+        62,
+        64,
+        65,
+        66,
+        70,
+        71,
+        73,
+        74,
+        75,
+        78,
+        82,
+        83,
+        85,
+        86,
+        88,
+        89,
+        91,
+        92
+      ],
+      "dim_pole": 7,
+      "ell": 31,
+      "k_from_matrices": 14,
+      "k_parent": 14,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 10,
+      "threshold_source": "EXP-057 [[170,16,10]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 177.8,
+      "witness_bound": 10,
+      "witness_classes": 4224,
+      "witness_support": [
+        16,
+        26,
+        51,
+        85,
+        89,
+        93,
+        112,
+        119,
+        138,
+        167
+      ],
+      "witness_wall_s": 8.34
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 46,
+      "ceiling_witness_support": [
+        0,
+        4,
+        5,
+        6,
+        9,
+        13,
+        14,
+        15,
+        19,
+        20,
+        21,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        33,
+        36,
+        39,
+        43,
+        44,
+        45,
+        48,
+        51,
+        54,
+        57,
+        61,
+        62,
+        64,
+        65,
+        66,
+        70,
+        71,
+        73,
+        74,
+        75,
+        78,
+        82,
+        83,
+        85,
+        86,
+        88,
+        89,
+        91,
+        92
+      ],
+      "dim_pole": 7,
+      "ell": 31,
+      "k_from_matrices": 14,
+      "k_parent": 14,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 10,
+      "threshold_source": "EXP-057 [[170,16,10]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 4,
+      "witness_classes": 4224,
+      "witness_support": [
+        16,
+        50,
+        51,
+        144
+      ],
+      "witness_wall_s": 0.12
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 46,
+      "ceiling_witness_support": [
+        0,
+        4,
+        5,
+        6,
+        9,
+        13,
+        14,
+        15,
+        19,
+        20,
+        21,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        33,
+        36,
+        39,
+        43,
+        44,
+        45,
+        48,
+        51,
+        54,
+        57,
+        61,
+        62,
+        64,
+        65,
+        66,
+        70,
+        71,
+        73,
+        74,
+        75,
+        78,
+        82,
+        83,
+        85,
+        86,
+        88,
+        89,
+        91,
+        92
+      ],
+      "dim_pole": 7,
+      "ell": 31,
+      "k_from_matrices": 14,
+      "k_parent": 14,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 10,
+      "threshold_source": "EXP-057 [[170,16,10]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 4224,
+      "witness_support": [
+        20,
+        21,
+        33,
+        45,
+        49,
+        79,
+        114,
+        126,
+        132,
+        142
+      ],
+      "witness_wall_s": 0.21
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 46,
+      "ceiling_witness_support": [
+        0,
+        4,
+        5,
+        6,
+        9,
+        13,
+        14,
+        15,
+        19,
+        20,
+        21,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        33,
+        36,
+        39,
+        43,
+        44,
+        45,
+        48,
+        51,
+        54,
+        57,
+        61,
+        62,
+        64,
+        65,
+        66,
+        70,
+        71,
+        73,
+        74,
+        75,
+        78,
+        82,
+        83,
+        85,
+        86,
+        88,
+        89,
+        91,
+        92
+      ],
+      "dim_pole": 7,
+      "ell": 31,
+      "k_from_matrices": 14,
+      "k_parent": 14,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 10,
+      "threshold_source": "EXP-057 [[170,16,10]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 4224,
+      "witness_support": [
+        91,
+        112,
+        126,
+        137,
+        143,
+        157,
+        159,
+        165,
+        176,
+        184
+      ],
+      "witness_wall_s": 0.03
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        6,
+        10,
+        11,
+        40,
+        46,
+        100,
+        102,
+        104,
+        133,
+        139
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        9,
+        10,
+        11,
+        102,
+        103,
+        104
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        9,
+        10,
+        11,
+        102,
+        103,
+        104
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.03
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "3a3fc10e107e16a8cbdafd84960791ccb832622fad2098e9f6c69b0603d7129b",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8857,
+          "cnf_variables": 3541,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 257227,
+            "decisions": 467581,
+            "propagations": 41767024,
+            "restarts": 7141
+          },
+          "wall_time_s": 15.8189361669356
+        },
+        "status": "SAT",
+        "weight": 12,
+        "witness_support": [
+          0,
+          1,
+          2,
+          57,
+          58,
+          59,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 33.4,
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        1,
+        2,
+        57,
+        58,
+        59,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95
+      ],
+      "witness_wall_s": 0.71
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        14,
+        22,
+        23,
+        26,
+        56,
+        83,
+        89,
+        92,
+        108,
+        115,
+        119,
+        136,
+        164,
+        179
+      ],
+      "witness_wall_s": 0.03
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        10,
+        27,
+        40,
+        50,
+        53,
+        97,
+        100,
+        110,
+        140,
+        150,
+        177
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "17450aa2780e002688630771376c522c40875dee9dea0132beabaac6e9a90aca",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8665,
+          "cnf_variables": 3493,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 145,
+            "decisions": 1610,
+            "propagations": 44448,
+            "restarts": 0
+          },
+          "wall_time_s": 0.1383197089890018
+        },
+        "status": "SAT",
+        "weight": 12,
+        "witness_support": [
+          0,
+          1,
+          2,
+          57,
+          58,
+          59,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 35.0,
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        1,
+        2,
+        57,
+        58,
+        59,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95
+      ],
+      "witness_wall_s": 0.85
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        7,
+        32,
+        48,
+        56,
+        57,
+        92,
+        100,
+        114,
+        122,
+        147,
+        166,
+        168,
+        175,
+        184
+      ],
+      "witness_wall_s": 0.09
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "6e90924a5b5ccfa7cc20c6d920cfd461ba87ed18f4166b16d622e2b63ae97df5",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8641,
+          "cnf_variables": 3487,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 159731,
+            "decisions": 291617,
+            "propagations": 25946534,
+            "restarts": 4618
+          },
+          "wall_time_s": 9.14626649999991
+        },
+        "status": "SAT",
+        "weight": 14,
+        "witness_support": [
+          44,
+          56,
+          72,
+          89,
+          93,
+          103,
+          125,
+          127,
+          137,
+          139,
+          141,
+          149,
+          165,
+          182
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 16.2,
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        44,
+        56,
+        72,
+        89,
+        93,
+        103,
+        125,
+        127,
+        137,
+        139,
+        141,
+        149,
+        165,
+        182
+      ],
+      "witness_wall_s": 1.41
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        3,
+        9,
+        12,
+        33,
+        36,
+        39,
+        42,
+        63,
+        66,
+        115,
+        140,
+        145,
+        155,
+        162
+      ],
+      "witness_wall_s": 0.08
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        2,
+        9,
+        22,
+        52,
+        55,
+        102,
+        125,
+        132,
+        158,
+        165,
+        175,
+        185
+      ],
+      "witness_wall_s": 0.07
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          17,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        97,
+        113,
+        121,
+        126,
+        149,
+        150,
+        161,
+        162,
+        166,
+        173,
+        178
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "f6454410b30f8c02718b4c0c7088ca0a97c4b37467bf820a8538a338dc741b38",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8673,
+          "cnf_variables": 3495,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 698980,
+            "decisions": 1364417,
+            "propagations": 93185754,
+            "restarts": 27911
+          },
+          "wall_time_s": 125.44979383295868
+        },
+        "status": "SAT",
+        "weight": 14,
+        "witness_support": [
+          19,
+          35,
+          40,
+          49,
+          52,
+          55,
+          76,
+          86,
+          93,
+          97,
+          106,
+          135,
+          143,
+          179
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 159.6,
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        19,
+        35,
+        40,
+        49,
+        52,
+        55,
+        76,
+        86,
+        93,
+        97,
+        106,
+        135,
+        143,
+        179
+      ],
+      "witness_wall_s": 1.88
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        89,
+        92,
+        94,
+        120,
+        135,
+        146,
+        159,
+        172,
+        174,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        89,
+        92,
+        96,
+        99,
+        109,
+        119,
+        142,
+        152,
+        156,
+        159,
+        169,
+        182
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        19,
+        24,
+        42,
+        81,
+        94,
+        109,
+        132,
+        143,
+        148,
+        161,
+        166,
+        171,
+        179,
+        184
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          16,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        93,
+        99,
+        112,
+        115,
+        118,
+        128,
+        131,
+        134,
+        137,
+        144,
+        157,
+        179,
+        182
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        83,
+        89,
+        99,
+        102,
+        118,
+        135,
+        137,
+        140,
+        151,
+        165,
+        170,
+        181,
+        184
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          16,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        135,
+        136,
+        137,
+        165,
+        166,
+        167,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 2,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        173
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 30,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 8,
+      "witness_classes": 1023,
+      "witness_support": [
+        39,
+        41,
+        72,
+        75,
+        132,
+        133,
+        165,
+        168
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 8,
+      "witness_classes": 1023,
+      "witness_support": [
+        40,
+        41,
+        74,
+        75,
+        132,
+        133,
+        165,
+        168
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 8,
+      "witness_classes": 1023,
+      "witness_support": [
+        4,
+        37,
+        39,
+        40,
+        97,
+        131,
+        132,
+        133
+      ],
+      "witness_wall_s": 0.03
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        12,
+        17,
+        40,
+        75,
+        77,
+        107,
+        110,
+        132,
+        168,
+        170
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        9,
+        10,
+        11,
+        102,
+        103,
+        104
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        12,
+        21,
+        40,
+        49,
+        55,
+        58,
+        72,
+        74,
+        77,
+        80,
+        102,
+        131,
+        142,
+        145
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 4,
+      "witness_classes": 1023,
+      "witness_support": [
+        40,
+        74,
+        77,
+        170
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        14,
+        20,
+        23,
+        29,
+        45,
+        48,
+        51,
+        57,
+        67,
+        70,
+        79,
+        123,
+        126,
+        157
+      ],
+      "witness_wall_s": 0.06
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "89dfaa8646f29c848aa7fb948c640bd3e353b4f39514f59a398e3f82c7bcf12e",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8777,
+          "cnf_variables": 3521,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 142,
+            "decisions": 1742,
+            "propagations": 61021,
+            "restarts": 5
+          },
+          "wall_time_s": 15.208387708989903
+        },
+        "status": "SAT",
+        "weight": 12,
+        "witness_support": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          60,
+          61,
+          62,
+          96,
+          97,
+          98
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 175.6,
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        60,
+        61,
+        62,
+        96,
+        97,
+        98
+      ],
+      "witness_wall_s": 1.77
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        25,
+        32,
+        40,
+        81,
+        88,
+        96,
+        111,
+        118,
+        122,
+        125,
+        137,
+        141,
+        163,
+        178
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "6f52ecb95022d1118f2f3373e490c784dbc2e1dbfb31deafb99007d6921e1d6e",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8753,
+          "cnf_variables": 3515,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 273206,
+            "decisions": 458953,
+            "propagations": 38205221,
+            "restarts": 6768
+          },
+          "wall_time_s": 15.192168791079894
+        },
+        "status": "SAT",
+        "weight": 12,
+        "witness_support": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          60,
+          61,
+          62,
+          96,
+          97,
+          98
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 175.1,
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        60,
+        61,
+        62,
+        96,
+        97,
+        98
+      ],
+      "witness_wall_s": 2.23
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        9,
+        21,
+        27,
+        32,
+        43,
+        46,
+        55,
+        83,
+        86,
+        122,
+        125,
+        128,
+        133,
+        161
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        24,
+        31,
+        41,
+        58,
+        61,
+        68,
+        126,
+        134,
+        136,
+        141,
+        149,
+        154,
+        161,
+        168
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        12,
+        34,
+        37,
+        46,
+        49,
+        52,
+        74,
+        77,
+        133,
+        161,
+        170
+      ],
+      "witness_wall_s": 0.05
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        27,
+        33,
+        61,
+        64,
+        67,
+        70,
+        72,
+        81,
+        89,
+        92,
+        154,
+        163,
+        171,
+        174
+      ],
+      "witness_wall_s": 0.08
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        101,
+        115,
+        125,
+        129,
+        146,
+        149,
+        153,
+        163,
+        173
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        14,
+        35,
+        39,
+        45,
+        63,
+        66,
+        69,
+        76,
+        79,
+        91,
+        98,
+        129,
+        163,
+        172
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "bd3779b7ac420e70234ef127811ee31675ccb191f8891eb927819a0ba82dde63",
+        "encoding_version": "sat-decide-v2",
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8681,
+          "cnf_variables": 3497,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 1000000,
+            "decisions": 1617067,
+            "propagations": 123924824,
+            "restarts": 24917
+          },
+          "wall_time_s": 125.5768446669681
+        },
+        "status": "UNDECIDED_BUDGET"
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "d_exact": false,
+      "d_found": 14,
+      "dim_pole": 5,
+      "ell": 31,
+      "fallback_witness": {
+        "path": "results/partial_runs/exp068_screen_witnesses/31x3_14c42ec25e3f4bfc.json",
+        "route": "deterministic deep information-set coset reduction",
+        "schema": "exp068-screen-fallback-witness-v1",
+        "sector": null,
+        "sha256": "e04fe4f56896c0f45fc20574b22fc5387040dd94b8c1a59dc61b53ef7c6f37ec"
+      },
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "pre_exp068_reduced_witness": {
+        "bound": 18,
+        "support": [
+          7,
+          26,
+          32,
+          35,
+          41,
+          44,
+          57,
+          60,
+          61,
+          63,
+          85,
+          88,
+          91,
+          111,
+          127,
+          137,
+          151,
+          154
+        ]
+      },
+      "screen_decided": false,
+      "solver_calls": 2,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated",
+      "wall_s": 2628.4,
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        3,
+        40,
+        62,
+        77,
+        80,
+        93,
+        141,
+        153,
+        157,
+        159,
+        167,
+        169,
+        173,
+        179
+      ],
+      "witness_wall_s": 1.7
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        93,
+        112,
+        117,
+        128,
+        133,
+        136,
+        149,
+        157,
+        162,
+        178,
+        181
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        9,
+        12,
+        51,
+        74,
+        85,
+        110,
+        130,
+        144,
+        161,
+        175
+      ],
+      "witness_wall_s": 0.03
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        3,
+        6,
+        43,
+        47,
+        62,
+        80,
+        93,
+        111,
+        137,
+        141,
+        152,
+        163,
+        178,
+        181
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        34,
+        53,
+        68,
+        71,
+        84,
+        87,
+        90,
+        107,
+        122,
+        132,
+        145,
+        158
+      ],
+      "witness_wall_s": 0.07
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        9,
+        21,
+        24,
+        40,
+        43,
+        46,
+        83,
+        109,
+        122,
+        130,
+        163,
+        171
+      ],
+      "witness_wall_s": 0.07
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        6,
+        12,
+        37,
+        40,
+        46,
+        55,
+        58,
+        80,
+        127,
+        152,
+        158,
+        164,
+        183
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          17,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        21,
+        27,
+        55,
+        58,
+        61,
+        64,
+        89,
+        131,
+        168,
+        182
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          17,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        5,
+        20,
+        31,
+        53,
+        61,
+        68,
+        84,
+        87,
+        95,
+        121,
+        147,
+        161,
+        162,
+        169
+      ],
+      "witness_wall_s": 0.06
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          17,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "9a93627266c46f17d774c2c57e1170ac79513e2c70721f3cc1d48077be19a8b2",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8705,
+          "cnf_variables": 3503,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 328360,
+            "decisions": 641673,
+            "propagations": 46325489,
+            "restarts": 11766
+          },
+          "wall_time_s": 16.294906832976267
+        },
+        "status": "SAT",
+        "weight": 14,
+        "witness_support": [
+          23,
+          29,
+          46,
+          48,
+          51,
+          54,
+          60,
+          63,
+          82,
+          93,
+          96,
+          107,
+          110,
+          116
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 104.9,
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        23,
+        29,
+        46,
+        48,
+        51,
+        54,
+        60,
+        63,
+        82,
+        93,
+        96,
+        107,
+        110,
+        116
+      ],
+      "witness_wall_s": 144.74
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        14,
+        21,
+        40,
+        55,
+        58,
+        77,
+        80,
+        92,
+        104,
+        107,
+        114,
+        163,
+        179,
+        185
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          16,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "6ec02fe0cf79c9b2d39107598bb51b05282043a9f4fe1ef359386c8ee185b52d",
+        "encoding_version": "sat-decide-v2",
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8841,
+          "cnf_variables": 3537,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 1000004,
+            "decisions": 1654221,
+            "propagations": 126525731,
+            "restarts": 25518
+          },
+          "wall_time_s": 63.303249416989274
+        },
+        "status": "UNDECIDED_BUDGET"
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "d_exact": false,
+      "d_found": 12,
+      "dim_pole": 5,
+      "ell": 31,
+      "fallback_witness": {
+        "path": "results/partial_runs/exp068_screen_witnesses/31x3_bceb8b2139beadbc.json",
+        "route": "deterministic deep information-set coset reduction",
+        "schema": "exp068-screen-fallback-witness-v1",
+        "sector": null,
+        "sha256": "dba02cf901d0111b1e34d3e1bef78130891ea77b3763bd2bf17d2f23651880a3"
+      },
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "pre_exp068_reduced_witness": {
+        "bound": 16,
+        "support": [
+          4,
+          20,
+          26,
+          32,
+          51,
+          54,
+          57,
+          60,
+          85,
+          88,
+          94,
+          108,
+          126,
+          140,
+          144,
+          172
+        ]
+      },
+      "screen_decided": false,
+      "solver_calls": 2,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated",
+      "wall_s": 2572.5,
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        18,
+        30,
+        33,
+        36,
+        52,
+        55,
+        73,
+        92,
+        106,
+        120,
+        124,
+        142,
+        152,
+        181
+      ],
+      "witness_wall_s": 144.16
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        23,
+        32,
+        33,
+        36,
+        48,
+        99,
+        118,
+        129,
+        137,
+        138,
+        141,
+        153,
+        162,
+        172
+      ],
+      "witness_wall_s": 0.08
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          16,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        135,
+        136,
+        137,
+        165,
+        166,
+        167,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        135,
+        136,
+        137,
+        165,
+        166,
+        167,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          16,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        3,
+        6,
+        25,
+        34,
+        62,
+        99,
+        111,
+        115,
+        141,
+        145,
+        161,
+        174,
+        175
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 2,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        173
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 8,
+      "witness_classes": 1023,
+      "witness_support": [
+        39,
+        72,
+        75,
+        77,
+        133,
+        165,
+        168,
+        170
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 30,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        10,
+        12,
+        13,
+        14,
+        17,
+        38,
+        104,
+        107,
+        110,
+        131,
+        162,
+        163
+      ],
+      "witness_wall_s": 0.05
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 8,
+      "witness_classes": 1023,
+      "witness_support": [
+        41,
+        74,
+        75,
+        77,
+        133,
+        165,
+        168,
+        170
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        10,
+        21,
+        74,
+        85,
+        92,
+        110,
+        114,
+        142,
+        153,
+        160,
+        171,
+        185
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "36ab16ca848a03fc328d63b9465161b089480dfa7209b598d8c639d1e54fceb9",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8745,
+          "cnf_variables": 3513,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 269453,
+            "decisions": 442730,
+            "propagations": 41121978,
+            "restarts": 5840
+          },
+          "wall_time_s": 13.710710457991809
+        },
+        "status": "SAT",
+        "weight": 12,
+        "witness_support": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          60,
+          61,
+          62,
+          96,
+          97,
+          98
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 103.9,
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        60,
+        61,
+        62,
+        96,
+        97,
+        98
+      ],
+      "witness_wall_s": 17.75
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "d889362bf9c8ffe52528b5bb90330a56cf17a6c98d578af14c6602e6e367f406",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8601,
+          "cnf_variables": 3477,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 286701,
+            "decisions": 534035,
+            "propagations": 48791199,
+            "restarts": 8382
+          },
+          "wall_time_s": 20.507952250074595
+        },
+        "status": "SAT",
+        "weight": 12,
+        "witness_support": [
+          0,
+          1,
+          2,
+          57,
+          58,
+          59,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 190.2,
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        1,
+        2,
+        57,
+        58,
+        59,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95
+      ],
+      "witness_wall_s": 21.21
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          0
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 4,
+      "witness_classes": 1023,
+      "witness_support": [
+        39,
+        74,
+        75,
+        168
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        4,
+        20,
+        61,
+        80,
+        81,
+        109,
+        118,
+        137,
+        162,
+        170,
+        174
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        6,
+        10,
+        28,
+        51,
+        72,
+        85,
+        94,
+        103,
+        121,
+        125,
+        137,
+        142,
+        165,
+        182
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        101,
+        114,
+        123,
+        130,
+        146,
+        148,
+        155,
+        164,
+        173
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 8,
+      "witness_classes": 1023,
+      "witness_support": [
+        9,
+        13,
+        17,
+        74,
+        110,
+        154,
+        168,
+        177
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        86,
+        92,
+        93,
+        103,
+        113,
+        135,
+        150,
+        160,
+        171,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "c2a25b9a78ed9d3c4abb01b0fa6111c433f07d04786bbcf984e862f92a0dd30f",
+        "encoding_version": "sat-decide-v2",
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8673,
+          "cnf_variables": 3495,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 1000003,
+            "decisions": 1637426,
+            "propagations": 130983549,
+            "restarts": 24879
+          },
+          "wall_time_s": 57.67433562502265
+        },
+        "status": "UNDECIDED_BUDGET"
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "d_exact": false,
+      "d_found": 14,
+      "dim_pole": 5,
+      "ell": 31,
+      "fallback_witness": {
+        "path": "results/partial_runs/exp068_screen_witnesses/31x3_a76adda1ae35ebb2.json",
+        "route": "deterministic deep information-set coset reduction",
+        "schema": "exp068-screen-fallback-witness-v1",
+        "sector": null,
+        "sha256": "6a174fa625e56030e53b8cabe07e67ed8d4278aff6be4c6f604139b6487ed900"
+      },
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "pre_exp068_reduced_witness": {
+        "bound": 18,
+        "support": [
+          7,
+          9,
+          11,
+          30,
+          40,
+          44,
+          45,
+          47,
+          66,
+          68,
+          75,
+          79,
+          83,
+          97,
+          106,
+          129,
+          148,
+          158
+        ]
+      },
+      "screen_decided": false,
+      "solver_calls": 2,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated",
+      "wall_s": 2571.6,
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        11,
+        12,
+        37,
+        48,
+        57,
+        69,
+        84,
+        110,
+        117,
+        140,
+        143,
+        156,
+        166,
+        176
+      ],
+      "witness_wall_s": 3.25
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        7,
+        17,
+        39,
+        49,
+        74,
+        85,
+        89,
+        100,
+        132,
+        149,
+        168,
+        171,
+        182,
+        185
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "e1e04b9c8212d79b66064efa1901ec428262ded31ab691780611dfefdd182a1c",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8681,
+          "cnf_variables": 3497,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 172984,
+            "decisions": 303990,
+            "propagations": 26844640,
+            "restarts": 4451
+          },
+          "wall_time_s": 65.5879718749784
+        },
+        "status": "SAT",
+        "weight": 12,
+        "witness_support": [
+          0,
+          4,
+          8,
+          9,
+          45,
+          61,
+          81,
+          111,
+          126,
+          137,
+          181,
+          185
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 168.8,
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        4,
+        8,
+        9,
+        45,
+        61,
+        81,
+        111,
+        126,
+        137,
+        181,
+        185
+      ],
+      "witness_wall_s": 3.15
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        4,
+        22,
+        31,
+        35,
+        49,
+        53,
+        54,
+        92,
+        97,
+        106,
+        159,
+        167,
+        172,
+        177
+      ],
+      "witness_wall_s": 0.08
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        4,
+        26,
+        65,
+        83,
+        88,
+        92,
+        97,
+        102,
+        106,
+        115,
+        119,
+        172
+      ],
+      "witness_wall_s": 0.08
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          17,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        11,
+        16,
+        26,
+        32,
+        43,
+        47,
+        48,
+        58,
+        62,
+        100,
+        111,
+        125,
+        132,
+        161
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          17,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        89,
+        92,
+        96,
+        99,
+        103,
+        113,
+        124,
+        135,
+        139,
+        149,
+        153,
+        178
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        12,
+        20,
+        31,
+        35,
+        36,
+        48,
+        52,
+        56,
+        92,
+        93,
+        118,
+        120,
+        148,
+        167
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          16,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        135,
+        136,
+        137,
+        165,
+        166,
+        167,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        135,
+        136,
+        137,
+        165,
+        166,
+        167,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          16,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        17,
+        23,
+        38,
+        49,
+        51,
+        53,
+        74,
+        97,
+        112,
+        144,
+        158,
+        163
+      ],
+      "witness_wall_s": 0.04
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 2,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        173
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 6,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 30,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        6,
+        9,
+        10,
+        39,
+        46,
+        100,
+        103,
+        104,
+        133,
+        135,
+        137,
+        139
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "50f0c4280928f179e5831c997d9bdfe7d26b42cc36cbfc56462a94980295f8ad",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8809,
+          "cnf_variables": 3529,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 171552,
+            "decisions": 329106,
+            "propagations": 27343069,
+            "restarts": 5443
+          },
+          "wall_time_s": 11.85489483398851
+        },
+        "status": "SAT",
+        "weight": 14,
+        "witness_support": [
+          23,
+          30,
+          32,
+          65,
+          66,
+          93,
+          99,
+          119,
+          123,
+          146,
+          161,
+          165,
+          166,
+          172
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 102.0,
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        23,
+        30,
+        32,
+        65,
+        66,
+        93,
+        99,
+        119,
+        123,
+        146,
+        161,
+        165,
+        166,
+        172
+      ],
+      "witness_wall_s": 98.0
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 8,
+      "witness_classes": 1023,
+      "witness_support": [
+        34,
+        64,
+        104,
+        127,
+        153,
+        164,
+        168,
+        175
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        3,
+        16,
+        20,
+        49,
+        58,
+        62,
+        71,
+        118,
+        122,
+        127,
+        165,
+        169
+      ],
+      "witness_wall_s": 0.03
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          24,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 4,
+      "witness_classes": 1023,
+      "witness_support": [
+        17,
+        50,
+        51,
+        144
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        80,
+        101,
+        116,
+        123,
+        131,
+        146,
+        148,
+        153,
+        163,
+        173
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 10,
+      "witness_classes": 1023,
+      "witness_support": [
+        86,
+        92,
+        98,
+        105,
+        109,
+        115,
+        125,
+        132,
+        158,
+        165
+      ],
+      "witness_wall_s": 0.01
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "cdcl": {
+        "cnf_sha256": "133b1cc6c0d54bd8ccb5b3ca496bab3cbdf57df8f27444f539cacc5b350c731a",
+        "encoding_version": "sat-decide-v2",
+        "outside_z_stabilizer": true,
+        "solver": {
+          "backend": "pysat",
+          "clauses": 8617,
+          "cnf_variables": 3481,
+          "conflict_budget": 1000000,
+          "name": "PySAT cadical195",
+          "pysat_version": "1.9.dev13",
+          "stats": {
+            "conflicts": 14521,
+            "decisions": 20526,
+            "propagations": 3256155,
+            "restarts": 73
+          },
+          "wall_time_s": 0.9639214169001207
+        },
+        "status": "SAT",
+        "weight": 14,
+        "witness_support": [
+          0,
+          22,
+          51,
+          59,
+          88,
+          92,
+          95,
+          103,
+          111,
+          118,
+          143,
+          157,
+          171,
+          182
+        ]
+      },
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 1,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_cdcl_witness",
+      "wall_s": 36.5,
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        0,
+        22,
+        51,
+        59,
+        88,
+        92,
+        95,
+        103,
+        111,
+        118,
+        143,
+        157,
+        171,
+        182
+      ],
+      "witness_wall_s": 67.67
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 14,
+      "witness_classes": 1023,
+      "witness_support": [
+        1,
+        4,
+        41,
+        82,
+        94,
+        104,
+        127,
+        142,
+        150,
+        153,
+        164,
+        168,
+        179,
+        183
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          17,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        89,
+        92,
+        98,
+        99,
+        102,
+        112,
+        125,
+        135,
+        138,
+        148,
+        155,
+        178
+      ],
+      "witness_wall_s": 0.03
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          17,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        5,
+        31,
+        38,
+        54,
+        61,
+        87,
+        109,
+        124,
+        131,
+        161,
+        172,
+        179
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          16,
+          2
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        135,
+        136,
+        137,
+        165,
+        166,
+        167,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.02
+    },
+    {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      "bar_invariant": false,
+      "ceiling": 48,
+      "ceiling_witness_support": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        21,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        66,
+        67,
+        68,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "dim_pole": 5,
+      "ell": 31,
+      "k_from_matrices": 10,
+      "k_parent": 10,
+      "m": 3,
+      "n": 186,
+      "orbit": 60,
+      "solver_calls": 0,
+      "threshold": 14,
+      "threshold_source": "EXP-058 [[186,10,14]]",
+      "verdict": "dominated_by_witness",
+      "witness_bound": 12,
+      "witness_classes": 1023,
+      "witness_support": [
+        90,
+        91,
+        92,
+        135,
+        136,
+        137,
+        165,
+        166,
+        167,
+        183,
+        184,
+        185
+      ],
+      "witness_wall_s": 0.02
+    }
+  ],
+  "reference_rebind": {
+    "all_carried_witnesses_rechecked": true,
+    "all_thresholds_monotone": true,
+    "archive": "results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v10/31x3.json",
+    "new_reference_sha256": "7daefcaa10015fbe7a3312710ae13a45f9d3ad8d527e407e82f658e175655125",
+    "new_validation_version": "exp055-exact-reference-validator-v10",
+    "old_reference_sha256": "c23aee22014743a1f72dd6a2bdd71be7904221990b98e24d5ed183bf53522a63",
+    "old_shard_sha256": "61730d506643849851939e646f031bd5ce96383dc23af25c4e92d7ae048ed629",
+    "old_validation_version": "exp055-exact-reference-validator-v9",
+    "schema": "exp063-monotone-reference-rebind-v1",
+    "transitions": {
+      "dominated->dominated": 3,
+      "dominated_by_cdcl_witness->dominated_by_cdcl_witness": 13,
+      "dominated_by_witness->dominated_by_witness": 89
+    }
+  },
+  "schema": "exp055-screen-v3",
+  "solver_calls": 19,
+  "survivors": [],
+  "time_limit_s": 120.0,
+  "undecided": [],
+  "utc": "2026-08-23T16:57:45Z",
+  "verdicts": {
+    "dominated": 3,
+    "dominated_by_cdcl_witness": 13,
+    "dominated_by_witness": 89
+  },
+  "wall_s": 2766.0
+}

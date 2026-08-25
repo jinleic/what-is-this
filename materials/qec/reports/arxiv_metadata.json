@@ -1,30 +1,30 @@
 {
   "kit_file": "reports/arxiv_package.md",
-  "generated_utc": "2026-08-23T03:37:33Z",
+  "generated_utc": "2026-08-24T11:12:31Z",
   "do_not_post": true,
   "posting_status": "STAGING ONLY - no arXiv submission made or authorised by this kit",
   "source": {
     "paper_md": {
       "path": "reports/paper_pbb_nogo.md",
-      "bytes": 66057,
-      "md5": "291d373ff96ac8f6ac7c7cff7d525aa6"
+      "bytes": 71156,
+      "md5": "37cb7a5bf9cac6e027066dd01f651ab6"
     },
     "paper_tex": {
       "path": "reports/paper_pbb_nogo.tex",
-      "bytes": 66226,
-      "md5": "d3a2c7e3a5fa4b474cf94480b3778664"
+      "bytes": 71077,
+      "md5": "5d72ede10c0e138fce3886eae133fc4f"
     },
     "paper_bib": {
       "path": "reports/paper_pbb_nogo.bib",
-      "bytes": 2772,
-      "md5": "91ecec291e989e46ecf55f6acfd22f34"
+      "bytes": 3173,
+      "md5": "e3cb8cdeacda2f7f4c7f831e0170cf75"
     },
     "paper_pdf": {
       "path": "reports/paper_pbb_nogo.pdf",
-      "bytes": 708817,
-      "md5": "0f8b5ba50f8f59de140abd6ed104f789"
+      "bytes": 716216,
+      "md5": "7243380018cb06b52ea1262cfbd61098"
     },
-    "build_log": "reports/paper_pbb_nogo.log (pdflatex, 2026-08-22; two final passes)"
+    "build_log": "reports/paper_pbb_nogo.log (pdflatex, 2026-08-24; two final passes)"
   },
   "title": "Perturbing a bivariate-bicycle code cannot buy distance for free",
   "subtitle": "An exact, perturbation-independent rate–distance obstruction for perturbed bivariate-bicycle (PBB) codes, with machine-checked certificates",
@@ -54,12 +54,12 @@
       "cs.ET": "no hardware-architecture claim"
     }
   },
-  "comments_field": "17 pages, 7 tables, 0 figures; two boxed main results; machine-checked with exact SAT certificates (CaDiCaL 1.9.5 and Kissat 4.0.4) and GF(2) replay; full provenance ledger and per-claim reproducers in the ancillary bundle",
+  "comments_field": "18 pages, 7 tables, 0 figures; two boxed main results; machine-checked with exact SAT and rooted connected-cluster certificates plus GF(2) replay; full provenance ledger and per-claim reproducers in the ancillary bundle",
   "measured_counts": {
-    "pages": 17,
+    "pages": 18,
     "tables": 7,
     "figures": 0,
-    "evidence": "reports/paper_pbb_nogo.log line 'Output written on paper_pbb_nogo.pdf (17 pages, 708817 bytes)'; tex counts: 6 table floats + 1 longtable, 6 tabular + 1 longtable, 0 figures",
+    "evidence": "reports/paper_pbb_nogo.log line 'Output written on paper_pbb_nogo.pdf (18 pages, 716216 bytes)'; tex counts: 6 table floats + 1 longtable, 6 tabular + 1 longtable, 0 figures",
     "note": "measured from the final compiled PDF build log and tex source"
   },
   "authors": {
@@ -77,22 +77,22 @@
   "ancillary_files": [
     {
       "path": "reports/paper_pbb_nogo.tex",
-      "bytes": 66226,
-      "description": "LaTeX source compiled from the md (primary tex for arXiv; 17-page reference build)."
+      "bytes": 71077,
+      "description": "LaTeX source compiled from the md (primary tex for arXiv; 18-page reference build)."
     },
     {
       "path": "reports/paper_pbb_nogo.bib",
-      "bytes": 2772,
+      "bytes": 3173,
       "description": "Bibliography (bbl produced from it; arXiv runs its own bibtex pass)."
     },
     {
       "path": "reports/paper_pbb_nogo.pdf",
-      "bytes": 708817,
-      "description": "Reference build (17 pages) for preview; arXiv rebuilds from tex."
+      "bytes": 716216,
+      "description": "Reference build (18 pages) for preview; arXiv rebuilds from tex."
     },
     {
       "path": "reports/claims_matrix.md",
-      "bytes": 35288,
+      "bytes": 35340,
       "description": "57-claim provenance ledger: number -> artifact -> regenerating command -> guarding test (38 VERIFIED / 19 UNGUARDED)."
     },
     {
@@ -131,14 +131,74 @@
       "description": "EXP-056 exact [[162,8,14]] certificate: 20 replayed class-orbit UNSATs, weight-14 witness, exact X/Z duality."
     },
     {
+      "path": "results/certificates/exp057_170_16_10_distance.json",
+      "bytes": 4516,
+      "description": "EXP-057 replayed exact [[170,16,10]] certificate."
+    },
+    {
+      "path": "results/certificates/exp058_186_10_14_distance.json",
+      "bytes": 5572,
+      "description": "EXP-058 replayed exact [[186,10,14]] promoted-class certificate; seven exact classes audited."
+    },
+    {
+      "path": "results/certificates/exp060_210_18_8_distance.json",
+      "bytes": 3833,
+      "description": "EXP-060 replayed exact [[210,18,8]] promoted-class certificate; thirteen exact classes."
+    },
+    {
+      "path": "results/certificates/exp064_210_24_4_distance.json",
+      "bytes": 3536,
+      "description": "EXP-064 replayed exact [[210,24,4]] certificate."
+    },
+    {
+      "path": "results/certificates/exp064_210_14_12_distance.json",
+      "bytes": 3827,
+      "description": "EXP-064 replayed exact [[210,14,12]] certificate."
+    },
+    {
+      "path": "results/certificates/exp064_210_10_16_distance.json",
+      "bytes": 3966,
+      "description": "EXP-064 replayed exact [[210,10,16]] certificate."
+    },
+    {
+      "path": "results/processed/exp059_coprime_transport.json",
+      "bytes": 1287,
+      "description": "Exact all-monomial CRT transport certificate for the three coprime N=105 lattices."
+    },
+    {
+      "path": "results/processed/exp060_n210_ratchet.json",
+      "bytes": 54307,
+      "description": "Adaptive parity/duality exact results: 17 exact n=210 classes plus one witness-only dominated k=8 row."
+    },
+    {
+      "path": "results/certificates/exp067_234_8_18_bundle19_distance.json",
+      "bytes": 7027,
+      "description": "EXP-067 exact [[234,8,18]] certificate for automorphism bundle 19: original/block-swapped rooted cap-16 exhaustion, both replayed, plus weight-18 X/Z witnesses."
+    },
+    {
+      "path": "results/certificates/exp067_234_8_18_bundle22_distance.json",
+      "bytes": 7024,
+      "description": "EXP-067 exact [[234,8,18]] certificate for automorphism bundle 22: original/block-swapped rooted cap-16 exhaustion, both replayed, plus weight-18 X/Z witnesses."
+    },
+    {
+      "path": "results/partial_runs/exp068_screen_witnesses/",
+      "bytes": 73393,
+      "description": "EXP-068 record-level proof repair: 57 hash-bound physical fallback witnesses (29 independent, 28 exact CRT transports) used by validator v11."
+    },
+    {
       "path": "results/processed/exp055_odd_lattice_screen.json",
-      "bytes": 2677625,
-      "description": "Fixed-point odd-lattice screen through n=162: 2,132 classes / 51,769 pairs; 1,928/1,928 referenced dominated."
+      "bytes": 7147344,
+      "description": "Validator-v11 exact odd-lattice fixed-point screen through n=234: 4,862 classes / 150,581 pairs; all 4,658 referenced classes carry record-level domination proofs, 204 no-reference, zero survivor/undecided."
+    },
+    {
+      "path": "results/processed/exp066_n234_frontier.json",
+      "bytes": 10398,
+      "description": "EXP-066 576-map automorphism audit refreshed after EXP-067 promotion: 182 hard classes to 30 bundles, all 842 local n=234 classes dominated."
     },
     {
       "path": "results/certificates/exp055_odd_lattice_survivors.json",
       "bytes": 356,
-      "description": "Empty-survivor certificate hash-bound to the final n=162 screen."
+      "description": "Empty-survivor certificate hash-bound to the exact n=234 screen."
     }
   ],
   "reviewer_quickstart": [

@@ -204,7 +204,7 @@ if __name__ == "__main__":
     if mixing_records:
         mixing_records.sort(key=lambda row: (row[0], row[1]))
         worst = mixing_records[0]
-        print("RANDOM-ORDER MIXING IN THE SEPARATING CLASS")
+        print("RANDOM-ORDER ROLE SWITCHING IN THE SEPARATING CLASS")
         print("  minimum fraction of orders making a deterministic-dependent")
         print("  coordinate entropy-active: %.6f" % worst[0])
         print("  corresponding Shapley/marginal entropy share: %.6f" % worst[1])
@@ -214,7 +214,7 @@ if __name__ == "__main__":
               min(row[1] for row in mixing_records))
         print("  maximum deterministic-order fraction: %.6f" %
               max(row[2]/len(ORDERS) for row in mixing_records))
-        print("  dependencies never entropy-active under random order:",
+        print("  dependent coordinates deterministic in every order:",
               len(zero_active_order))
         assert not zero_active_order
         print()

@@ -919,3 +919,183 @@ no shipped distance conclusion relied on the defective alternative mode.
 **Regression.**
 `test_sector_decomposition_drops_nonpreserving_global_symmetry` in
 `tests/test_exp036_delta_closure.py`.
+
+---
+
+## FR-028 — Exact affine-trellis DP on the N=105 hard core
+**Date** 2026-08-23 · **Track** K (exact distance) · **Status** FALSIFIED BY EXACT WIDTH PROFILE BEFORE IMPLEMENTATION
+
+**Proposal.** Replace CDCL by a deterministic affine syndrome trellis on the
+two complete detector sectors. For an order with prefix/suffix column spans,
+the exact state width is
+$w_i=\operatorname{rank}U_i+\operatorname{rank}V_i-\operatorname{rank}M$.
+
+**Falsifier.** EXP-061 evaluated CRT, three grid, interleaved, block and reverse
+orders, with NumPy/bitset rank agreement on the selected best profile. The
+best maximum widths are 53 ($k=14$), 80 ($k=10$), 99 ($k=8$), and 48
+($k=24$). Every $2^w$ state count exceeds the predeclared 5,000,000-state
+gate, so no recurrence or distance claim was attempted.
+
+**Artifact.** `results/processed/exp061_affine_trellis_profile.json`.
+
+---
+
+## FR-029 — H-orbit quotient projection as a complete k=8 lower bound
+**Date** 2026-08-23 · **Track** K (exact distance) · **Status** EXACT BUT TOO WEAK
+
+**Proposal.** For the $H=7$ hard class, project each 210-bit word to parity on
+the 30 physical $H$-orbits. Weight cannot increase. Compute every projected
+stabilizer coset leader by a solver-free $O(30\,2^{19})$ syndrome DP and lift
+the resulting lower bound to every nonzero logical class.
+
+**Result.** The projected stabilizer has rank 11/codimension 19 and no logical
+class projects to the stabilizer, but the exact leader histogram is
+$4{:}45,\ 6{:}195,\ 8{:}15$. The rigorous physical lower bound is only 4,
+far below the cap-16 question. Projection remains usable only as a
+class-bundle shrinker.
+
+**Artifact.** `results/processed/exp065_n105_k8_projection.json`.
+
+---
+
+## FR-030 — Treating the starting screen cap as a proved lower bound
+**Date** 2026-08-23 · **Track** K (adaptive exact distance) · **Status** FALSE EXACT LABEL REMOVED; NO REFERENCE OR FINAL SCREEN VERDICT AFFECTED
+
+**Bug.** EXP-060 initialized `previous_unsat = start - 2` before solving the
+starting cap. On one $k=8$ row the first decision was SAT at cap 16, yet the
+code inferred an unproved UNSAT at 14 and labelled $d=16$ exact.
+
+**Scope.** The weight-16 model is independently verified and meets the exact
+reference threshold, so domination is sound. No certificate or reference ever
+used this row. The erroneous exact label appeared only in the intermediate
+ratchet summary and draft prose.
+
+**Fix.** `previous_unsat` is now `None` unless cap 0 is the trivial baseline;
+only an actual UNSAT decision advances it. The artifact is corrected to
+`exact=false`, `lower_bound=null`, `verdict=dominated`; paper/README/checkpoint
+text says witness-only, not exact. Regression guards require every exact
+ratchet record to contain an UNSAT decision at $d-2$.
+
+---
+
+## FR-031 — Concurrent PySAT CNF construction uses a global variable pool
+**Date** 2026-08-23 · **Track** K (screen protocol) · **Status** RACE REPRODUCED LIVE; FIXED WITHOUT CNF DRIFT
+
+The residual ThreadPool triggered `ValueError: list modified during sort` in
+`pysat.formula.Formula._vpool`. CNF construction now acquires one process-local
+lock; solver execution remains parallel. Current EXP-037/057/058/060/064
+certificate digests still match byte-for-byte, proving clause order did not
+change. `test_concurrent_cnf_builds_are_thread_safe` is the stress regression.
+
+---
+
+## FR-032 — Multiplying the $n=234$ cap-16 query per comparison class
+**Date** 2026-08-23 · **Track** K (exact distance) · **Status** OPERATIONALLY FALSIFIED; REPLACED BY EXACT AUTOMORPHISM BUNDLES
+
+**Proposal.** After the cheap pole reduction, send every one of the 182
+$(39,3)$ residual comparison classes through the bounded monolithic
+CaDiCaL/Kissat ladder independently.
+
+**Falsifier.** The first live EXP-066 run spent its full 1,800-second process
+budget after completing only the trivial $(13,9)$ shard; no $(39,3)$ shard was
+written. Increasing the information-set search per class repeated the same
+multiplication and exhausted 600- and 1,200-second run budgets.
+
+**Replacement.** EXP-066 enumerates the full
+$\operatorname{Aut}(\mathbb Z_{39}\times\mathbb Z_3)
+\cong\mathbb F_{13}^{\times}\times\operatorname{GL}(2,3)$ action: 576 unique
+coordinate permutations, each checked as a bijective homomorphism. The 182
+residual classes become 30 exact bundles. One source witness is transported by
+a matrix-verified qubit permutation and then physically rechecked against each
+target's rebuilt $H_X,H_Z$. This closes 28 bundles / 158 classes without a SAT
+call. The remaining two bundles are recorded as 24 undecided classes, never as
+UNSAT or exact.
+
+**Artifacts.** `results/processed/exp066_n234_frontier.json`,
+`results/partial_runs/exp055_screen/39x3.json`,
+`tests/test_exp066_n234_frontier.py`.
+
+---
+
+## FR-033 — Multithreaded `dist-m4ri` rooted coordinator
+**Date** 2026-08-24 · **Track** K (exact distance) · **Status** REJECTED BEFORE CERTIFICATION; RACE-FREE ENTRYPOINT SUBSTITUTED
+
+**Proposal.** Use the 2026 multithreaded `dist_m4ri.c` method-2 coordinator
+from QEC-pages/dist-m4ri commit
+`538d119f6e98b3782415eb78f7ce322a076f8101` for each one-root cap-16
+enumeration.
+
+**Falsifier.** Source audit found a completion race. A worker increments
+`cc_col_next` at `dist_m4ri.c:412` before it increments
+`cc_active_workers` at line 415. In that window the coordinator predicate at
+lines 585--586 can observe `cc_col_next > end` and zero active workers and
+declare the weight round complete before the claimed root has been searched.
+The risk is load-bearing when `start=0` leaves exactly one root column.
+
+**Disposition.** Every run through that coordinator was cancelled and none
+entered a certificate. EXP-067 instead pins the legacy `STANDALONE`
+`dist_rw.c` entrypoint from the same source commit. It calls the single-thread
+`do_CC_dist` recursion directly, has no coordinator queue, and returns terminal
+`-16` only after exhausting rooted weights 1 through 16. The certificate
+rejects the multithreaded three-integer output format and hash-binds the
+race-free binary plus complete source archives.
+
+**Artifacts.** `experiments/exp067_n234_connected_cluster.py`,
+`results/partial_runs/exp067_n234_cluster/solver_build.json`,
+`tests/test_exp067_n234_connected_cluster.py`.
+
+---
+
+## FR-034 — Generic exact BZ and the unweighted three-row component reuse
+**Date** 2026-08-24 · **Track** K (exact distance) · **Status** FALSIFIED AS THE $n=234$ CLOSURE ROUTE
+
+**Probes.** Webster et al.'s exact Python Brouwer--Zimmermann implementation
+did not terminate on the first open representative within 600 seconds. After
+swapping $(39,3)$ to $(3,39)$, EXP-056's local three-cycle transform does split
+the $Z$-stabilizer rowspace exactly: constant/even ranks are $37+76=113$ on
+both representatives.
+
+**Falsifier.** The old EXP-056 component certificate requires every logical
+pole vector to have zero constant projection. Here the logical quotient splits
+$4+4$ between constant and even components; the constant projection is
+nonzero. Moreover the inverse local transform has weights
+$0,2,2,2,3,1,1,1$ on the eight binary component symbols, so treating the
+Fourier split as Hamming-isometric is unsound. A correct factor formulation
+must retain that coupled local cost; the existing component encoder cannot be
+reused unchanged.
+
+**Disposition.** Exact connected-cluster enumeration closed the two roots
+without this assumption. The $4+4$ split remains useful structural information
+for a future weighted constituent bound, not part of the EXP-067 lower
+certificate.
+
+---
+
+## FR-035 — Aggregate-only validation after monotone reference rebinding
+**Date** 2026-08-24 · **Track** K (fixed-point screen) · **Status** FAIL-OPEN PATH CLOSED BY EXP-068
+
+**Bug.** EXP-063 preserved any old verdict whose name began with `dominated`
+and the global assembler re-derived only aggregate counts. EXP-066 rebuilt
+physical proofs for its two $n=234$ target shards, not for the other 20.
+Therefore a forged or stale domination in a non-target shard could cross a
+reference-version rebind and still contribute to the claimed 4,658/4,658
+closure.
+
+**Latent evidence loss.** The 57 legacy exact-CP-SAT fallback records retained
+`d_found` but not the corresponding support. Their result was genuine, but the
+current shard alone could not replay the domination. EXP-068 recovers explicit
+physical $Z$-logicals for 29 independent records by deterministic deep
+information-set reduction (CP-SAT remains a fail-closed fallback), transports
+14 $n=210$ witnesses to each of the two CRT-equivalent presentations, and
+hash-binds all 57 evidence records.
+
+**Repair.** Validator v11 checks every comparison-class identity (or exact CRT
+transport cover), current threshold/source, and physical witness on all 22
+shards. EXP-063 invokes it before and after rebinding and validates any archive;
+EXP-066 invokes the same validator on every embedded shard. Hostile witness,
+identity, threshold, transport and fallback-binding mutations now fail.
+
+**Artifacts.** `experiments/exp068_screen_proof_repair.py`,
+`results/partial_runs/exp068_screen_witnesses/`,
+`tests/test_exp055_odd_lattice.py`,
+`tests/test_exp063_reference_rebind.py`.

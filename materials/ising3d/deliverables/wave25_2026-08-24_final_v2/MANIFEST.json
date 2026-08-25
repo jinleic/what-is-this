@@ -1,0 +1,258 @@
+{
+  "date": "2026-08-24",
+  "explicit_nonclaims": [
+    "no exact thermodynamic 3D Ising solution",
+    "no open-2x4 exceptional-set emptiness",
+    "no L>=10 W-law rank theorem",
+    "no arbitrary Pfaffian-count or hidden-auxiliary no-go",
+    "no critical-endpoint movement"
+  ],
+  "files": [
+    {
+      "bytes": 51842,
+      "path": "README.md",
+      "sha256": "ab4a434e8b847f3b92647285b087811c3ec9db78b49e385e1611c5357823d2c3"
+    },
+    {
+      "bytes": 63061,
+      "path": "checkpoints/current_state.md",
+      "sha256": "e62aaaa28572dd4c496cfc19a3e525a76727f6cd7c6e409b4883ec89fddfbfc4"
+    },
+    {
+      "bytes": 36376,
+      "path": "checkpoints/failed_routes.md",
+      "sha256": "29c003908ed720c4ea83c2bab69069373b75a9ed005fea0e0ad7b5d03503afe8"
+    },
+    {
+      "bytes": 29182,
+      "path": "checkpoints/next_actions.md",
+      "sha256": "488c90546efa62ff4f1275617e95d6146a91c10fc8737246733894c543fbd510"
+    },
+    {
+      "bytes": 175496,
+      "path": "checkpoints/verified_results.json",
+      "sha256": "577831e2a50b240dfe3e553fcbcd49ac288b8b1c76443aa5c201817874551033"
+    },
+    {
+      "bytes": 9115,
+      "path": "checkpoints/wave25_research_plan.md",
+      "sha256": "22d147bfb6b074100f91b386def75048b77158c18a63532d9b7f475ee50ad1b9"
+    },
+    {
+      "bytes": 30397,
+      "path": "experiments/e230_wlaw_rank_mechanism.py",
+      "sha256": "c2c8a3644777796f5f5b15e1643d87918fdfe45a0f911c2bbb91ecc3c2f20ce4"
+    },
+    {
+      "bytes": 31461,
+      "path": "experiments/e237_wlaw_exact_sequence.py",
+      "sha256": "4eb19f853d3e6acafad5f52bc2771d1cb87ddda8bb9044b14920e3ca60a52bbd"
+    },
+    {
+      "bytes": 35631,
+      "path": "experiments/e238_trace_exceptional_set.py",
+      "sha256": "7daf8716baec4f9fc39884f9f6956d7f256ce748aaaaf7040ea3eb5a8fbaebec"
+    },
+    {
+      "bytes": 39277,
+      "path": "experiments/e240_callen_identity_system.py",
+      "sha256": "f810172970a797d3717f66825d39a60fcc6755d8ec13decdde1c951840ad7ed9"
+    },
+    {
+      "bytes": 34301,
+      "path": "experiments/e241_box_genus_bound.py",
+      "sha256": "08bff9038734c8a8fadc245c6f992953ad666a7bf778d11c61bdd565fbd009e0"
+    },
+    {
+      "bytes": 18136,
+      "path": "experiments/e243_callen_termwise_closure.py",
+      "sha256": "71c5f884c8597b4890e3699ba6d19cbf7cfdf987aebc8315a0b334eefd252a28"
+    },
+    {
+      "bytes": 27886,
+      "path": "experiments/e246_callen_walsh_compression.py",
+      "sha256": "899744f1a9c6898e65c18c52c0b8d7c7b1fab34747c40c0dba030c04b6b58d52"
+    },
+    {
+      "bytes": 51801,
+      "path": "experiments/e247_boundary_matchgate_defect.py",
+      "sha256": "8321375b942d24367a3dd38280dd06d8cc9e5c4cc5119a58ad71b71d5b5ef72b"
+    },
+    {
+      "bytes": 32815,
+      "path": "experiments/e248_replica_trace_nine.py",
+      "sha256": "d3808dda592d1eab90795a1226a13623f056d525f929663a4f814b7733741eb7"
+    },
+    {
+      "bytes": 59690,
+      "path": "experiments/e249_wlaw_support_defect.py",
+      "sha256": "6d9315c61619b55f0ea4567aca1a171e4771f0529c91345c874282561730f1bf"
+    },
+    {
+      "bytes": 18323,
+      "path": "experiments/e250_callen_contact_orbit.py",
+      "sha256": "2961a743cad1c5972890e8b4c460d0cab89e77412ce0432672eeabb8a7421926"
+    },
+    {
+      "bytes": 23998,
+      "path": "notes/frontier_analysis.md",
+      "sha256": "c86549e80ab8963a503a72883c2b56ce44718e16382a9deec8f29fc4e7fa65cc"
+    },
+    {
+      "bytes": 638404,
+      "path": "notes/hypotheses.csv",
+      "sha256": "de32be8f5404be8049c526e3282251959c7a1676ceaca55d386b994d566b1305"
+    },
+    {
+      "bytes": 4911,
+      "path": "problem_specification.md",
+      "sha256": "fcd198beb06a1da3279c064505082aa7ad3c90b8726d15b9695611aeda7a8229"
+    },
+    {
+      "bytes": 17308,
+      "path": "proofs/boundary_matchgate_defect.md",
+      "sha256": "dbfedc4526c6479d604d974081483a7c12320a19969b9e0899f9721972add95b"
+    },
+    {
+      "bytes": 4432,
+      "path": "proofs/callen_contact_orbit.md",
+      "sha256": "9f2d121fdf261078fe035e49afa0ad7e4bec498f2355e890e5f9bb7005f39bd7"
+    },
+    {
+      "bytes": 8751,
+      "path": "proofs/replica_trace_nine.md",
+      "sha256": "523548fd5c06421ce7db51116b5124f70598b6c05267a6656f8128d86d53413c"
+    },
+    {
+      "bytes": 12855,
+      "path": "proofs/wlaw_support_defect.md",
+      "sha256": "c35e163988b2154c870e3b5a68b5aee7321f2c81de57f343970bc225523e1cec"
+    },
+    {
+      "bytes": 177,
+      "path": "pyproject.toml",
+      "sha256": "3b779706037618fec9d5d9da29987e45292b1fe48b3856f37caa80a3499c36f6"
+    },
+    {
+      "bytes": 221910,
+      "path": "reports/final_technical_report.md",
+      "sha256": "2a86b02f0f41a51c8a7c8d1292324ecbe89b598ca724b7a2d06f01466d57ce31"
+    },
+    {
+      "bytes": 1709354,
+      "path": "results/algebra_growth/wlaw_exact_sequence.json",
+      "sha256": "50a9685c22679369b413fd9386319875fb02b231c77f8dc18ab5f346dc19647a"
+    },
+    {
+      "bytes": 93443,
+      "path": "results/algebra_growth/wlaw_rank_mechanism.json",
+      "sha256": "f277440fa05be9685f3b2e02b23b0f08cbdd1786ac8918ba4c8f407ca971480e"
+    },
+    {
+      "bytes": 506383,
+      "path": "results/algebra_growth/wlaw_support_defect.json",
+      "sha256": "4b7b894e2c3bf6a2d372127d920a4605c9292df15f52637d914c383b7f607bf7"
+    },
+    {
+      "bytes": 10963,
+      "path": "results/correlations/callen_contact_orbit.json",
+      "sha256": "d6b8675a25eb0901eb8bfa4b8db7acd6d8d3d4fd35852f2c5270f95f951d4548"
+    },
+    {
+      "bytes": 69211,
+      "path": "results/correlations/callen_identity_system.json",
+      "sha256": "c3346266fce6a03e6bb2c8466c50cbcef95f1265700bfdcf72c76e0aced06861"
+    },
+    {
+      "bytes": 405020,
+      "path": "results/integrability/boundary_matchgate_defect.json",
+      "sha256": "772ace39b58daacd8ac283ccae6e9dd51b2186e119ccf0517a0d1600e6a14a8b"
+    },
+    {
+      "bytes": 2151806,
+      "path": "results/ladder/l8_saturation.json",
+      "sha256": "d9109f4c11102f948dfbaa3b0972a98f02023fc463a26916d81a094aa7b74ccc"
+    },
+    {
+      "bytes": 2628060,
+      "path": "results/ladder/w9_basis.json",
+      "sha256": "f2b1b202b1e05ceee91856ab3ed832fbe58dabb97fea42f96da88e739e285413"
+    },
+    {
+      "bytes": 16461,
+      "path": "results/ladder/w9_saturation.json",
+      "sha256": "06d680faf20f1c865f9736f145ad10cef2d1c4f760a744ec196180f481fbbe7e"
+    },
+    {
+      "bytes": 25751,
+      "path": "results/spectral/replica_trace_nine.json",
+      "sha256": "b468ea85b18c3073c188680f8a4a717102c72ee8282b9235828861dd05c49659"
+    },
+    {
+      "bytes": 740912,
+      "path": "results/spectral/trace_exceptional_set.json",
+      "sha256": "668c7d625cfb15f7ac146b6acb2b616d6db1b3dfdd642c1b529a1e3c4e3f7062"
+    },
+    {
+      "bytes": 20850,
+      "path": "sources/bibliography.bib",
+      "sha256": "05cd66633ae655e56d6f06b0f9d9375c2870eae1e102ea92d9e34e76ceec67a9"
+    },
+    {
+      "bytes": 70402,
+      "path": "sources/manifest.yaml",
+      "sha256": "56da9594e20c4f30d295f87fe0fb2b6d4abec9c6bf3d691f83060a512ca6257b"
+    },
+    {
+      "bytes": 39836,
+      "path": "tests/test_boundary_matchgate_defect.py",
+      "sha256": "c4708e90c9df07ce1958b7c8985b5e2dee434bc0e81f469d034c3030349ac421"
+    },
+    {
+      "bytes": 13851,
+      "path": "tests/test_callen_contact_orbit.py",
+      "sha256": "47b52bfd789f42e38952f75ff9ed68e82e71a1f26df7803e0cdde7a5fecd93c3"
+    },
+    {
+      "bytes": 20797,
+      "path": "tests/test_replica_trace_nine.py",
+      "sha256": "d845a28c92f6cdbc6a10b81e02eb776982d88e776a1c2df834969fdad211c1ac"
+    },
+    {
+      "bytes": 38933,
+      "path": "tests/test_wlaw_support_defect.py",
+      "sha256": "b48143476f9cce427ad9f051bbb079e628f6bcd0e82f301c2e5c590fbe53e711"
+    },
+    {
+      "bytes": 78973,
+      "path": "uv.lock",
+      "sha256": "4726afabb3d04a24194d5196ebc5b5331ae1bd2ad653987df10d5f80aaee3020"
+    },
+    {
+      "bytes": 474455,
+      "path": "workspace_math/PROGRESS.md",
+      "sha256": "4d1ceeee10ed423b2c1b9f7b8b56294939d07741bf9d98e87fc558689150251a"
+    },
+    {
+      "bytes": 16985,
+      "path": "workspace_math/README.md",
+      "sha256": "8c54744bb4b348b22ff1bde1fa9aa948fc05bf787a4f4848b3282cba75ad929c"
+    }
+  ],
+  "scope": "Final current Wave-25 code, artifacts, final review/bookkeeping, dependencies, and archive-self-reference-free documentation snapshot.",
+  "snapshot_self_reference_stripped": [
+    "README.md",
+    "checkpoints/current_state.md",
+    "checkpoints/next_actions.md",
+    "checkpoints/wave25_research_plan.md",
+    "reports/final_technical_report.md"
+  ],
+  "staged_bytes": 10809982,
+  "staged_file_count": 46,
+  "status": "FINAL_V2",
+  "supersedes": [
+    "deliverables/ising3d_wave25_bundle.zip",
+    "deliverables/ising3d_wave25_final_bundle.zip"
+  ],
+  "wave": 25
+}

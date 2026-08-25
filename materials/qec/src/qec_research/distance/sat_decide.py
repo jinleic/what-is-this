@@ -494,7 +494,10 @@ def decide_weight_bounded(
             answer = engine.solve_limited(expect_interrupt=False)
         else:
             answer = engine.solve()
-        stats = dict(engine.accum_stats())
+        try:
+            stats = dict(engine.accum_stats())
+        except NotImplementedError:
+            stats = {}
         model = engine.get_model() if answer else None
     wall = time.perf_counter() - started
     status = {True: "SAT", False: "UNSAT", None: "UNDECIDED_BUDGET"}[answer]

@@ -86,3 +86,38 @@ def test_transported_n210_screen_shards_preserve_every_verdict() -> None:
         assert target["transport"]["valid"] is True
         assert target["transport"]["all_physical_witnesses_valid"] is True
         assert target["transport"]["records_transported"] == len(source["records"])
+
+def test_transport_missing_proof_support_fails_closed(tmp_path: Path) -> None:
+    source_path = (
+        ROOT / "results" / "partial_runs" / "exp055_screen" / "15x7.json"
+    )
+    source = json.loads(source_path.read_text(encoding="utf-8"))
+
+    missing_logical = json.loads(json.dumps(source))
+    record = next(
+        row for row in missing_logical["records"]
+        if row["verdict"] in {
+            "dominated_by_witness", "dominated_by_cdcl_witness"
+        }
+    )
+    record.pop("witness_support", None)
+    logical_path = tmp_path / "missing-logical.json"
+    logical_path.write_text(json.dumps(missing_logical))
+    with pytest.raises(RuntimeError, match="witness failed"):
+        E59.transport_screen_shard(
+            logical_path, 21, 5, tmp_path / "logical-target.json"
+        )
+
+    missing_ceiling = json.loads(json.dumps(source))
+    record = next(
+        row for row in missing_ceiling["records"]
+        if row.get("ceiling_witness_support")
+    )
+    record["verdict"] = "dominated_by_ceiling"
+    record.pop("ceiling_witness_support", None)
+    ceiling_path = tmp_path / "missing-ceiling.json"
+    ceiling_path.write_text(json.dumps(missing_ceiling))
+    with pytest.raises(RuntimeError, match="witness failed"):
+        E59.transport_screen_shard(
+            ceiling_path, 21, 5, tmp_path / "ceiling-target.json"
+        )

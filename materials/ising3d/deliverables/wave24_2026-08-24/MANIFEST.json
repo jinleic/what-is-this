@@ -1,0 +1,226 @@
+{
+  "bundle": "ising3d-exact-research-wave-24",
+  "generated_utc": "2026-08-25T00:37:53.010417+00:00",
+  "excluded_from_hash_list": [
+    "MANIFEST.json"
+  ],
+  "file_count": 43,
+  "total_bytes": 2494639,
+  "files": [
+    {
+      "path": "BUNDLE_INFO.txt",
+      "bytes": 3628,
+      "sha256": "f0e95a5b525c5a445cd0f077ee173c27dfcd376e9baf1448bb3319344da04610"
+    },
+    {
+      "path": "artifacts/docs/MATH_README.md",
+      "bytes": 17036,
+      "sha256": "fe196d8963d85730476f11ef91c2e3f578fd9f08d094a60f56699a8d1070fd7a"
+    },
+    {
+      "path": "artifacts/docs/PROGRESS.md",
+      "bytes": 445271,
+      "sha256": "f82807b4e9a4bd803acff633699ed141684fa10f5e372d9f89a885d17fedf511"
+    },
+    {
+      "path": "artifacts/docs/README.md",
+      "bytes": 49936,
+      "sha256": "962a208dbee06704c7832a54634a159ce3f433ae3092f4b3a004e4cfa9d1bebd"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/current_state.md",
+      "bytes": 59237,
+      "sha256": "ada3478668112a9e6f707f7804869085e30d6f0a05053f2774a781f9998ad02e"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/failed_routes.md",
+      "bytes": 32829,
+      "sha256": "3757a3b4637b15e805bee8846aae5f31ed36e7f36bb558f3a6e5b885cffa761b"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/next_actions.md",
+      "bytes": 25887,
+      "sha256": "8b9d0ad1ae6c7a6bf5ba799bab4995a85f0c641fa33b9652311cad334e94248a"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/verified_results.json",
+      "bytes": 166600,
+      "sha256": "2ffebed53bfe6b3a1c36eb4c9a2fdd78b13163dda53e62b2c60705fa97879d4b"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/wave24_research_plan.md",
+      "bytes": 5595,
+      "sha256": "0ef07e0c38c6cc6d9540011620bc3b6dd3e4f2710c586ef189af48231b9f00f1"
+    },
+    {
+      "path": "artifacts/docs/notes/CODE_API.md",
+      "bytes": 3452,
+      "sha256": "c7e7c82a680f1e9bc730eccffc00f0f3a1ca762b161abbf77df76c3a17a4ab6e"
+    },
+    {
+      "path": "artifacts/docs/notes/frontier_analysis.md",
+      "bytes": 21751,
+      "sha256": "ae18c864c06e6fe5e2a5005f3b39a1c60c7fe49765a61d9598db621a5f578dcd"
+    },
+    {
+      "path": "artifacts/docs/notes/hypotheses.csv",
+      "bytes": 627005,
+      "sha256": "ee18c27f40466b20952229afd037a4aaa462cb20dd82aa2e65d693d5ec893290"
+    },
+    {
+      "path": "artifacts/docs/problem_specification.md",
+      "bytes": 4911,
+      "sha256": "fcd198beb06a1da3279c064505082aa7ad3c90b8726d15b9695611aeda7a8229"
+    },
+    {
+      "path": "artifacts/docs/reports/final_technical_report.md",
+      "bytes": 214157,
+      "sha256": "d45849069d0e16982f5bab8157b817459cddfce2c526ca29b413ba06be4b48e5"
+    },
+    {
+      "path": "artifacts/docs/sources/bibliography.bib",
+      "bytes": 18847,
+      "sha256": "ce90c0acf81d194926ab83c98aa847eee625756737cb13d392e2a0a8834fba1c"
+    },
+    {
+      "path": "artifacts/docs/sources/manifest.yaml",
+      "bytes": 66100,
+      "sha256": "2e22909c3169704619f968d21fb3444f6ded7120c9afc4bfa69183da49b436cb"
+    },
+    {
+      "path": "artifacts/docs/tests/run_all.sh",
+      "bytes": 761,
+      "sha256": "9305a85dc509ff4c42090e8fca25c36ab436c302b9fb3225b730bce68470c922"
+    },
+    {
+      "path": "artifacts/experiments/e234_star_decimation.py",
+      "bytes": 17428,
+      "sha256": "aa938ba6a74a5bf591ea6f775466a7fea441ed9c1f40838f7254121290901650"
+    },
+    {
+      "path": "artifacts/experiments/e236_token_splitting_obstruction.py",
+      "bytes": 21308,
+      "sha256": "95fae55760855d6c11baecc086a63a556d079cad324b7e84b888a5dc9c38507f"
+    },
+    {
+      "path": "artifacts/experiments/e240_callen_identity_system.py",
+      "bytes": 39277,
+      "sha256": "f810172970a797d3717f66825d39a60fcc6755d8ec13decdde1c951840ad7ed9"
+    },
+    {
+      "path": "artifacts/experiments/e243_callen_termwise_closure.py",
+      "bytes": 18136,
+      "sha256": "71c5f884c8597b4890e3699ba6d19cbf7cfdf987aebc8315a0b334eefd252a28"
+    },
+    {
+      "path": "artifacts/experiments/e244_octahedral_matchgate.py",
+      "bytes": 40648,
+      "sha256": "452e7aeee8a103061f714690dc6db25cd9562201a3331ee3847d92a48be5a285"
+    },
+    {
+      "path": "artifacts/experiments/e245_bipartite_exception_degree.py",
+      "bytes": 20940,
+      "sha256": "e86eec5b2cc722cc553d47a8a5bcf70812799cf9905fe8e03573222fdf63c936"
+    },
+    {
+      "path": "artifacts/experiments/e246_callen_walsh_compression.py",
+      "bytes": 27886,
+      "sha256": "899744f1a9c6898e65c18c52c0b8d7c7b1fab34747c40c0dba030c04b6b58d52"
+    },
+    {
+      "path": "artifacts/proofs/bipartite_exception_degree.md",
+      "bytes": 8368,
+      "sha256": "cd591aadff63eba8889727266c8bc324f92b3c4fa7e61f1067863373eb1437a2"
+    },
+    {
+      "path": "artifacts/proofs/callen_walsh_compression.md",
+      "bytes": 14808,
+      "sha256": "25116566d22236b3536455fbc5100f49aa25eb4b59a3cd8e6cd65b6d565a6266"
+    },
+    {
+      "path": "artifacts/proofs/octahedral_matchgate.md",
+      "bytes": 18730,
+      "sha256": "b18a2ee7e2d5f177f1834abc18bff528ad477f56b369e0e7a726782d89c4374f"
+    },
+    {
+      "path": "artifacts/results/correlations/callen_identity_system.json",
+      "bytes": 69211,
+      "sha256": "c3346266fce6a03e6bb2c8466c50cbcef95f1265700bfdcf72c76e0aced06861"
+    },
+    {
+      "path": "artifacts/results/correlations/callen_termwise_closure.json",
+      "bytes": 11326,
+      "sha256": "8e8e96c11b39c454b02449165f126de46ccf5278f02dadd940fc19026c46f46a"
+    },
+    {
+      "path": "artifacts/results/correlations/callen_walsh_compression.json",
+      "bytes": 50403,
+      "sha256": "41e5b389a86a59002a6e17b193f9b3594be15d96d253146d369301ff1d6cd6d7"
+    },
+    {
+      "path": "artifacts/results/integrability/octahedral_matchgate.json",
+      "bytes": 25258,
+      "sha256": "27207216651575968252789aa6a9d3a548065132152d33e49db1115c3f63380d"
+    },
+    {
+      "path": "artifacts/results/integrability/star_decimation.json",
+      "bytes": 9854,
+      "sha256": "624961594e392d037f9cd1eb0d52636ce24eddee2035bbbdadce4a5ed30081b9"
+    },
+    {
+      "path": "artifacts/results/spectral/bipartite_exception_degree.json",
+      "bytes": 152247,
+      "sha256": "a23785b4e5adeae448e88470952de74a2ff118c6ac2f629ed067f5d6260530ff"
+    },
+    {
+      "path": "artifacts/results/spectral/token_splitting_obstruction.json",
+      "bytes": 11104,
+      "sha256": "44f27bcbf4d38e339c277473a4af75860af182c35429abc8087d9a56444e833a"
+    },
+    {
+      "path": "artifacts/sources/dlmf_4_36.html",
+      "bytes": 23764,
+      "sha256": "415a64a3a8ebf1e7a11cda6eb1eaa33fdd94a3814761453468b8714b4a022b68"
+    },
+    {
+      "path": "artifacts/sources/stacks_chevalley_054K.html",
+      "bytes": 12026,
+      "sha256": "cd262f58542d25515f167f1ae7f35617659fbda39dba3decb453931288c04740"
+    },
+    {
+      "path": "artifacts/tests/test_bipartite_exception_degree.py",
+      "bytes": 14478,
+      "sha256": "7e4c5bc8a11cf301e817d7d121963f0f3e899f2e7d5cebb02f66bd1e9b4d9541"
+    },
+    {
+      "path": "artifacts/tests/test_callen_identity_system.py",
+      "bytes": 26990,
+      "sha256": "3c8cef36df96fbb11f2d7cfcd35c23a6151415421d36f07cffe44a154d7f7eac"
+    },
+    {
+      "path": "artifacts/tests/test_callen_termwise_closure.py",
+      "bytes": 10253,
+      "sha256": "2dca92e99d9a62f8bd890a80111f83a8bb6e75ac7a515b965bb9391372748008"
+    },
+    {
+      "path": "artifacts/tests/test_callen_walsh_compression.py",
+      "bytes": 28824,
+      "sha256": "b180327bed1c30511c3096cec11d8eeee57551b903566e87d94b4a78f0e1b0b7"
+    },
+    {
+      "path": "artifacts/tests/test_octahedral_matchgate.py",
+      "bytes": 32981,
+      "sha256": "fe233ff13f3ead93ae04069b5e89e9d03aa1d4a69d178e1a869f2f193aa8adf1"
+    },
+    {
+      "path": "artifacts/tests/test_star_decimation.py",
+      "bytes": 10843,
+      "sha256": "3a0d56e9631ce6023f36b0fed95ed703003c665502f5d52a0f2d300e1984afed"
+    },
+    {
+      "path": "artifacts/tests/test_token_splitting_obstruction.py",
+      "bytes": 14545,
+      "sha256": "c5dc489128ebb74a6d8e812e9bc025a93cb5b85a6d1ea4ca04bc14b495c64433"
+    }
+  ]
+}

@@ -38,11 +38,30 @@ def test_promoted_target_rebuilds_and_reduces_to_one_even_sector() -> None:
 
 def test_all_thirteen_screen_survivors_are_exact_210_18_8() -> None:
     summary = json.loads(E60.SUMMARY.read_text(encoding="utf-8"))
-    assert summary["groups"] == ["survivors"]
-    assert summary["all_exact"] is True
-    assert summary["exact_parameter_histogram"] == {"[[210,18,8]]": 13}
-    assert len(summary["records"]) == 13
+    assert summary["groups"] == ["no_reference", "survivors", "undecided"]
+    assert summary["all_exact"] is False
+    assert summary["all_decided"] is True
+    assert summary["exact_parameter_histogram"] == {
+        "[[210,24,4]]": 1,
+        "[[210,18,8]]": 13,
+        "[[210,14,12]]": 1,
+        "[[210,10,16]]": 2,
+    }
+    assert len(summary["records"]) == 18
     for record in summary["records"]:
+        if not record["exact"]:
+            continue
+        assert any(
+            decision["status"] == "UNSAT"
+            and decision["weight_cap"] == record["exact_distance"] - 2
+            for decision in record["decisions"]
+        )
+    survivors = [
+        record for record in summary["records"]
+        if record["group"] == "survivors"
+    ]
+    assert len(survivors) == 13
+    for record in survivors:
         assert record["k"] == 18
         assert record["threshold"] == 6
         assert record["lower_bound"] == record["exact_distance"] == 8
@@ -50,6 +69,14 @@ def test_all_thirteen_screen_survivors_are_exact_210_18_8() -> None:
         assert record["decisions"][0]["status"] == "UNSAT"
         assert record["duality"]["valid"] is True
         assert record["parity"]["valid"] is True
+    dominated = [
+        record for record in summary["records"]
+        if record["verdict"] == "dominated"
+    ]
+    assert len(dominated) == 1
+    assert (dominated[0]["k"], dominated[0]["threshold"]) == (8, 16)
+    assert dominated[0]["exact"] is False
+    assert dominated[0]["exact_distance"] is None
 
 
 def test_promoted_exact_certificate_rebuilds_current_protocol() -> None:

@@ -1,4 +1,4 @@
-# Kobon campaign consolidated release — 2026-08-23
+# Kobon campaign consolidated release — 2026-08-24
 
 Self-contained snapshot of the current main results. Companion canonical zip:
 `../kobon-2026-08.zip` (this directory archived). Two earlier drafts
@@ -13,7 +13,7 @@ proofs/           Kgen(14)>=54 certificate; Theorem-M obstruction docs
                   (n=14 exact integer certificate; n=18 machine-checked legs;
                   n=20 conditional-ledger) + verification scripts
 verification/     fail-closed exact verifiers and audit replays, including
-                  Maiorana, sector-bound, direct-gap and Pappus probes
+                  Maiorana, endpoint/sector, reified-face, chirotope and Pappus
 maiorana/         15 exact-rational witness JSONs + SHA256SUMS.txt manifest +
                   upstream LICENSE (CC BY 4.0 — Andrea Maiorana)
 scripts/          campaign engine (exact rational core) + cube builder
@@ -40,6 +40,9 @@ MANIFEST.sha256   integrity manifest of every file below
 | Coefficient-$2/3$ endpoint at $n=7$ | `scripts/square_penalty_sat.py` + `certificates/c23_n7_{certificate.json,violation.cnf,violation.drat,violation.dratcheck.log}` |
 | Hereditary and vertex-sector face cuts | `scripts/{engine,gap_faces}.py` + `verification/sector_bound_audit.{py,json}` |
 | Abstract-order stretchability gap (dual Pappus) | `verification/pappus_relaxation_probe.{py,json}`; probe only, clauses not used in frontier |
+| Independent faces-only $K(10)=25$ certificate | `certificates/ladder_n10_t26_faces_{certificate.json,cnf,dratcheck.log}` + `scripts/faces_only.py`; the 14.05 GB proof is hash-bound externally |
+| Shared-ray endpoint-concurrency lemma and opt-in lane | `scripts/{engine,gap_faces}.py` + `verification/sector_bound_audit.{py,json}` + `discoveries/shared_ray_bound_experiment.json`; live CNF referenced by hash |
+| Endpoint closure, perturbation incidence, and live \(n=12\) lanes | `scripts/{engine,gap_faces}.py` + `verification/{sector_bound_audit,reified_face_audit,chirotope_gp_audit}.{py,json}` + `discoveries/frontier_endpoint_research.json`; live CNFs referenced by hash |
 
 ## Deliberately NOT included (referenced, not copied)
 
@@ -52,8 +55,15 @@ MANIFEST.sha256   integrity manifest of every file below
   Both CNFs, the dual-certificate manifest and both `s VERIFIED` checker
   transcripts are included;
   the in-flight n=11 proof stream, frozen 70--82 GB n=14 cube proofs, and
-  40 MB--1 GB frontier CNFs. Their generators and proof/check manifests are
-  included where a theorem depends on them.
+  40 MB--1 GB frontier CNFs. The new endpoint target-39 CNFs are also
+  referenced rather than copied: 21,685,650 and 39,495,970 bytes. Their
+  generators and hash-bound discovery records are included.
+- The complete independent $n=10$, target-26 face-monolith DRAT is referenced,
+  not copied: `scratch/kobon/ladder_n10_t26_faces.drat`
+  (14,050,806,440 bytes, SHA-256
+  `bdbab47463806ee96163d03ec36a052e5818e2125202272182ee4cbe94629007`).
+  Its byte-reproducible 22,125,971-byte CNF, hash-bound certificate JSON and
+  `s VERIFIED` checker transcript are included.
 - Live process state, `*.kissat.log` (rotate and enormous).
 
 ## Verify the core claim yourself
@@ -183,3 +193,90 @@ verification/pappus_relaxation_probe.{py,json}
 The combined \(n=12,T=39\) discovery CNF is intentionally referenced rather
 than copied. Its live solvers have no verdict; these additions do not change
 the proved window for \(K(12)\).
+
+## v12 additions (2026-08-24)
+
+```
+certificates/ladder_n10_t26_faces.cnf
+                                         byte-reproducible 131,314-variable /
+                                         792,462-clause face monolith
+certificates/ladder_n10_t26_faces.dratcheck.log
+                                         independent drat-trim transcript;
+                                         3,464,683,123 resolution steps;
+                                         s VERIFIED
+certificates/ladder_n10_t26_faces_certificate.json
+                                         SHA-256 pins, scope, regeneration,
+                                         solver and checker statistics
+discoveries/n12_gap_sector_deletion_t39.metadata.json
+                                         explicit K(11)/K(10) provenance,
+                                         live-discovery status and proof gate
+```
+
+The $n=12$ hereditary lane was already unconditional: its $K(10)=25$ input is
+the 2026-08-15 checked eleven-cube cover. It never depended on the face
+monolith. The newly checked monolith is a second independent certificate.
+The $n=12$ lane itself still has no verdict and remains discovery-only.
+
+## v13 additions (2026-08-24)
+
+```
+discoveries/n12_face_cells_q1_t39.discovery.json
+                                         byte-identical distilled FACE Q=1 /
+                                         no-concurrency instance provenance;
+                                         Kissat exit 20, s UNSATISFIABLE
+```
+
+This is deliberately labelled `DISCOVERY_UNSAT_NO_PROOF`: the run emitted no
+DRAT, so it is not promoted as a new certificate. The same Q=1/no-concurrency
+geometric branch already has two checked direct-gap certificates. The
+concurrency-inclusive \(n=12,T=39\) frontier remains open.
+
+## v14 additions (2026-08-24)
+
+```
+scripts/{engine,gap_faces}.py            opt-in shared-ray endpoint clauses;
+                                         sector-only default unchanged
+verification/sector_bound_audit.{py,json}
+                                         1,591 same-ray cases, zero violations;
+                                         exact four-sector sharpness control
+discoveries/shared_ray_bound_experiment.json
+                                         proof, clause schema, review,
+                                         mixed A/B benchmarks and live-lane pin
+papers/kobon_broad_capacity.{tex,pdf}    shared-ray lemma and proof
+```
+
+The live `n12_gap_shared_ray_deletion_t39.cnf` is referenced rather than
+copied: 374,381 variables / 841,910 clauses, SHA-256
+`0aa9e81e1806d5ff7413669d7357454c9e08a496d2172d8b4a512b27115b7e7d`.
+It has no verdict and no proof logging. Performance controls were mixed, so
+the cut remains opt-in and is presented as solver diversity, not a speedup.
+
+## v15 additions (2026-08-24)
+
+```
+scripts/{engine,gap_faces}.py            endpoint closure; simple-perturbation
+                                         incidence; K(4) prime clauses;
+                                         opt-in exact-face and chirotope probes
+verification/sector_bound_audit.{py,json}
+                                         1,607 endpoint collisions, 84 new
+                                         same-ray cases, 42 single-line and
+                                         1,591 shared-pair segments; 0 failures
+verification/reified_face_audit.{py,json}
+                                         exact K(10)/K(12) fixed-geometry PASS
+verification/chirotope_gp_audit.{py,json}
+                                         195,000 signs / 1,386,000 GP
+                                         relations; propagation-only through n=7
+discoveries/frontier_endpoint_research.json
+                                         source survey, theorem proofs, clause
+                                         deltas, A/B controls and live hashes
+papers/kobon_broad_capacity.{tex,pdf}    endpoint and perturbation lemmas
+```
+
+The primary endpoint/multipoint/K(4) lane has 375,037 variables /
+1,005,366 clauses, SHA-256
+`6dca104aa120ee1f209aada8aca07a08bf3341f1335e6e99f4ae1f11bc2ba76b`.
+The \(K(9)=21\) hereditary variant has 842,317 / 1,917,926, SHA-256
+`34406004c932ce77d33f76f8b7d19c7b0f5a2e3e241e94651846269bf750f2df`.
+Both are live discovery runs without proof logging. Exact face reification and
+zero-aware Grassmann--Plücker were retained only as negative/propagation
+experiments after mixed or adverse controls. \(K(12)\) remains open.

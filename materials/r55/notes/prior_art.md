@@ -310,6 +310,15 @@ either VeriPB-style PB reasoning or theorem-prover glue.
   (SAT) problem and, using symmetry reduction, decompose it into 313 SAT encodings,
   141 of which we certify as unsatisfiable. Additionally, we introduce a new encoding
   for enforcing K5-freeness that runs empirically faster than the standard approach."
+- Conference slides [VERBATIM-VERIFIED]:
+  https://www.cs.rit.edu/~spr/COURSES/CCOMP/srg_r55.pdf. They anchor an edge,
+  enumerate its ten common neighbors as one of exactly 313
+  `R(3,5,10)` isomorphism types, and lex-order each remaining vertex class by
+  its ten-bit adjacency signature to that anchor block. Their improved Ramsey
+  encoding introduces a one-way variable for each homogeneous triangle; five
+  overlapping triangles covering the ten edges of a 5-set let one five-literal
+  clause forbid both `K5` and `I5`. The slides report 1,250,139 clauses versus
+  2,443,518 for the two direct ten-literal clauses per 5-set.
 - Status: PARTIAL (141/313 sub-encodings certified UNSAT as of the abstract). This is
   the existence side: finding such a graph would *disprove* our target R(5,5) <= 45.
   Conversely, ruling out this srg is a natural early sub-goal of any <= 45 proof
@@ -343,6 +352,28 @@ either VeriPB-style PB reasoning or theorem-prover glue.
   Radziszowki's survey"). https://www.cs.rit.edu/~spr/ElJC/ejcram18.pdf (site was
   unreachable at recon time; entry content [REPORTED]).
 
+### 3.4 Involution quotients and signed weighing matrices (2025--2026)
+
+- Goryainov, Haemers, Konstantinova, Li, "Thin divisible designs graphs: an
+  interplay between fixed-point free involutions of `(v,k,lambda)`-graphs and
+  symmetric weighing matrices", *Discrete Mathematics*, arXiv:2512.16653v1
+  (2025-12-18). https://arxiv.org/abs/2512.16653
+- [VERBATIM-VERIFIED from the paper]: a thin divisible-design quotient is a
+  symmetric `(0,1,2)` matrix `R` with `R^2=alpha I+beta J` together with a
+  symmetric weighing partner `Q`, with `R congruent Q (mod 2)`; the two recover
+  the original adjacency blocks. This is the fixed-point-free analog of the
+  complementary invariant/anti-invariant `W,T` blocks in the fixed-five
+  campaign. It supplies structural precedent, not an enumeration or a direct
+  theorem for the five fixed vertices.
+- Goldberger, Ben-Av, Dula, Strassler, "Constructing, Classifying and Studying
+  the Space of Small Integer Weighing Matrices", arXiv:2603.17552v1
+  (2026-03-18). https://arxiv.org/abs/2603.17552
+  Its prefix-minimal row search suggests a branch order for signed completion,
+  but its Sage classification uses monomial row/column operations and
+  `H`/`TH` equivalence. Those operations do not preserve the fixed support,
+  diagonal, and Seidel semantics here, and the computation has no proof
+  artifact. Use the row-prefix idea only as a heuristic.
+
 ---
 
 ## 4. Proof-certificate tooling relevant at this scale
@@ -373,39 +404,48 @@ either VeriPB-style PB reasoning or theorem-prover glue.
 
 ### 4.3 VeriPB / pseudo-Boolean proof logging — the symmetry-breaking fix
 
-- Bogaerts, Gocht, McCreesh, Nordström, "Certified Symmetry and Dominance Breaking
-  for Combinatorial Optimisation", AAAI 2022, arXiv:2203.12275; extended JAIR 77,
-  pp. 1539-1589 (2023). https://arxiv.org/pdf/2203.12275
-- Tool: https://github.com/StephanGocht/VeriPB ; publications list
-  https://veripb.org/publications.html
-- Why it matters [REPORTED from search summaries of the above]: DRAT cannot
-  efficiently express the *derivation* of symmetry-breaking constraints (adding them
-  is sound only up to satisfiability-equivalence arguments outside DRAT); VeriPB's
-  cutting-planes + redundance/dominance rules certify "automated static symmetry
-  breaking in SAT, manual static symmetry breaking in CP, and automated dynamic
-  dominance handling in maximum clique solving." This is exactly the gap in a
-  symmetry-reduced R(5,5) encoding.
-- Verified backend: CakePB — "CakePB is a kernel proof checker that has been formally
-  verified in the HOL4 theorem prover using the CakeML suite"; workflow: "use VeriPB
-  as a preprocessor to compile augmented proofs into kernel format for formal
-  verification by CakePB." [REPORTED from SAT Competition docs
-  https://satcompetition.github.io/2023/downloads/proposals/veripb.pdf and
-  https://satcompetition.github.io/2025/downloads/checkers/veripb.pdf]
-- PB<->DRAT bridge: Bryant/Heule et al., "Translating Pseudo-Boolean Proofs" (PBIP),
-  FMCAD 2024, https://www.cs.cmu.edu/~mheule/publications/PBIP.pdf [REPORTED — not read].
+- Bogaerts, Gocht, McCreesh, Nordström, "Certified Symmetry and Dominance
+  Breaking for Combinatorial Optimisation", AAAI 2022, arXiv:2203.12275;
+  extended JAIR 77 (2023). https://arxiv.org/pdf/2203.12275
+- Current tool: VeriPB, https://gitlab.com/MIAOresearch/software/VeriPB. The
+  source-verified stable release is `v3.0.2` (2026-03-20, commit
+  `c648bac0`); the API is evolving, so every campaign must pin the checker and
+  kernel versions rather than follow `main`.
+- VeriPB's cutting-planes and redundance/dominance rules certify the derivation
+  of symmetry-breaking constraints, which ordinary DRAT does not express.
+  This is the required trust path for residual identical-column symmetry in a
+  signed `W,T` encoding.
+- Verified backend: CakePB is a HOL4/CakeML-verified kernel checker. VeriPB
+  elaborates an augmented proof to kernel format, then CakePB checks that
+  kernel proof. For the CP-2026 projected-enumeration pipeline, the exact
+  source pins are VeriPB tag `CP2026-enumeration` at
+  `6d38dab246af9c321b8f17cb5a187f2fbb9e491d` and CakePB tag `CP2026` at
+  `a7593ef22de2fc0b47a688f2d4f08e6b742735af`.
+- Koops, Le Berre, Myreen, Nordström, Oertel, Tan, Vinyals,
+  "Practically Feasible Proof Logging for Pseudo-Boolean Optimization",
+  CP 2025, DOI 10.4230/LIPIcs.CP.2025.21 (2025-08-08), validates practical
+  proof logging for RoundingSat/Sat4j cutting planes, LP/Farkas reasoning, and
+  cut generation through VeriPB and CakePB. This supports a native
+  pseudo-Boolean `W,T` encoding, but is toolchain evidence rather than evidence
+  that any of the 705 instances is feasible or infeasible.
+- PB-to-DRAT bridge: Bryant/Heule et al., "Translating Pseudo-Boolean Proofs"
+  (PBIP), FMCAD 2024. https://www.cs.cmu.edu/~mheule/publications/PBIP.pdf
 
 ### 4.4 PBLean: VeriPB certificates into Lean 4 (2026)
 
-- Szeider, "PBLean: Pseudo-Boolean Proof Certificates for Lean 4", arXiv:2602.08692
-  (v1 2026-02-09, v2 2026-04-02). https://arxiv.org/abs/2602.08692
-- Abstract [FETCHED-ABSTRACT]: "a method for importing VeriPB pseudo-Boolean (PB)
-  proof certificates into Lean 4. Key to our approach is reflection … Our checker
-  supports all VeriPB kernel rules, including cutting-plane derivations,
-  proof-by-contradiction subproofs, and redundance-based reasoning for symmetry
-  breaking. … To derive theorems about the original combinatorial problems rather
-  than about PB constraints alone, we support verified encodings."
-- Relevance: closes solver->theorem gap for *symmetry-broken* encodings; strongest
-  single tool for making an R(5,5) sub-result a composable Lean lemma.
+- Szeider, "PBLean: Pseudo-Boolean Proof Certificates for Lean 4",
+  arXiv:2602.08692v2 (2026-04-02). https://arxiv.org/abs/2602.08692
+- [VERBATIM-VERIFIED from the paper and repository]: PBLean supports all
+  VeriPB kernel rules, including cutting planes, proof by contradiction,
+  redundance/dominance symmetry reasoning, solution logging, and conclusions.
+  Verified encodings lift a checked PB result to a theorem about the original
+  combinatorial problem.
+- Current development pin `bcfe56747322f948eccc0bd79f7601c1fb2d1e68`
+  identifies version `0.3.1`. Its scalable reflection path uses compiled
+  `native_decide`/native equality and therefore trusts the Lean compiler;
+  explicit kernel proof terms are stronger but do not scale comparably.
+- Relevance: formal capstone after VeriPB/CakePB, not the first 705-candidate
+  experiment.
 
 ### 4.5 LRAT-Catcher: LRAT + cube-and-conquer into Lean 4 (2026)
 
@@ -423,13 +463,53 @@ either VeriPB-style PB reasoning or theorem-prover glue.
 
 ### 4.6 Verified SMS pipeline (2026)
 
-- Kirchweger, Manrique, Szeider, "Formally Verified Graph Generation with SAT Modulo
-  Symmetries and Lean", IJCAR 2026, DOI 10.1007/978-3-032-32589-1_8
-  [VERBATIM-VERIFIED via dblp]. https://doi.org/10.1007/978-3-032-32589-1_8
-- Relevance: makes SMS's nc-certificate + DRAT story land in Lean — candidate for
-  certifying isomorph-free neighborhood catalogs (the analog of the R(4,5,n) censuses).
+- Kirchweger, Manrique, Szeider, "Formally Verified Graph Generation with SAT
+  Modulo Symmetries and Lean", IJCAR 2026,
+  DOI 10.1007/978-3-032-32589-1_8.
+  https://doi.org/10.1007/978-3-032-32589-1_8
+- Implementation: https://github.com/leansolving/leansms. Its verified
+  `EncodingSpec` proves graph-property invariance and encoding completeness;
+  every SMS clause is accompanied by a permutation that Lean checks before a
+  second CaDiCaL run supplies LRAT.
+- Current scope is UNSAT. The paper explicitly leaves certified enumeration up
+  to isomorphism as future work. The final LRAT check uses `native_decide`, so
+  its fast path also includes the Lean compiler in the trust base.
+- Important encoding caveat: sequential-counter/cardinality auxiliaries can
+  hide a symmetry of the graph variables, making the resulting CNF
+  syntactically asymmetric. Residual identical-column swaps are valid only
+  with equivariantly named auxiliaries or hand-specified substitutions whose
+  dominance proofs are checked.
 
-### 4.7 Scale reference points
+### 4.7 Projected enumeration and lower-cost certified symmetry (2026)
+
+- Bogaerts et al., "Proof Logging for Projected Enumeration (and Counting?)
+  Problems in VeriPB", CP 2026,
+  DOI 10.4230/LIPIcs.CP.2026.43 (2026-07-13).
+  https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CP.2026.43
+- [VERBATIM-VERIFIED from the paper and current source]: `solx` validates a
+  full solution and blocks only its preserved-variable projection. A sound
+  `ENUMERATION_COMPLETE` count requires checked deletion, every preserved
+  variable assigned, no strengthening witness touching a preserved variable,
+  every projection-blocking constraint retained in the core, and a final
+  contradiction. `--unchecked-deletion` disables the strong excluded-solution
+  guarantee and is forbidden for this use.
+- Projected solutions are not automatically group orbits. A separate semantic
+  theorem must prove that the preserved key selects exactly one representative
+  of each intended orbit. The fixed-five support census and its `R(3,3)`
+  filter instead use explicit `D5` expansion plus disjoint finite checkers.
+- Bogaerts et al., "Faster Certified Symmetry Breaking Using Orders With
+  Auxiliary Variables", AAAI 2026, arXiv:2511.16637; reproducibility artifact
+  https://zenodo.org/records/17607863. The pinned Satsuma commit is
+  `5adf016`. Auxiliary order variables make lex proofs linear-size, but they
+  must occur only in the order encoding and the preorder laws must be proved.
+  Generated output must be checked by the pinned VeriPB/CakePB pair.
+- Bogaerts et al., "Orbitopal Fixing in SAT", arXiv:2601.16855v1
+  (2026-01-23). Its succinct substitution-redundancy proof requires a literal
+  matrix with full row symmetry and a unique-literal clause per column. A
+  generic `W,T` one-hot encoding does not satisfy that hypothesis.
+
+
+### 4.8 Scale reference points
 
 - Pythagorean triples: ~200 TB DRAT, 68 GB compressed certificate (Section 1.2).
 - Empty hexagon: 17,300 CPU-hours, certificate-checked, encoding verified in Lean
@@ -504,11 +584,16 @@ correct and had a Lean formalisation of the proof".
 2. **Certification spine:** VeriPB for anything symmetry-broken or counting/LP-flavored
    (cutting planes covers the A-M "excess" LP layer natively — DRAT does not);
    CakePB/cake_lpr as verified checkers; DRAT-trim/LRAT for plain UNSAT cubes.
-3. **Formal capstone:** Lean 4 via PBLean (VeriPB->Lean) + LRAT-Catcher
+3. **Enumeration spine:** CP-2026 `solx` + `ENUMERATION_COMPLETE` for exact
+   projected counts, but only after a separate semantic theorem identifies the
+   preserved projection with exactly one representative per intended orbit.
+   LeanSMS-style permutation checking or explicit finite group expansion supplies
+   that missing layer.
+4. **Formal capstone:** Lean 4 via PBLean (VeriPB->Lean) + LRAT-Catcher
    (LRAT+cube-cover->Lean) + trestle/formal_ramsey verified Ramsey encoders;
    HOL4 Gauthier-Brown architecture as the fallback pattern for gluing-lemma
    formalization.
-4. **Known unknowns to resolve early:** (a) whether the A-M LP layer can be re-derived
+5. **Known unknowns to resolve early:** (a) whether the A-M LP layer can be re-derived
    as PB cutting-planes reasoning at acceptable size; (b) certificate volume at
    10^11-10^12 subproblems; (c) whether the R(4,5,24) catalog (352,366 graphs,
    https://users.cecs.anu.edu.au/~bdm/data/ramsey.html) can be independently

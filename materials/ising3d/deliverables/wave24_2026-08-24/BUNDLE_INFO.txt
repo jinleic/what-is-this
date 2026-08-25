@@ -1,0 +1,59 @@
+ISING3D EXACT-RESEARCH BUNDLE — WAVE 24
+=======================================
+
+Scope
+-----
+The three-dimensional nearest-neighbour simple-cubic Ising model remains UNSOLVED.
+No thermodynamic-limit free energy, magnetisation, correlation function, exact critical
+point, or critical exponent is claimed. The rigorous critical interval is unchanged.
+
+Headline results
+----------------
+1. For every connected simple nonpath graph with n vertices and m edges, the physical
+   full-spectrum exceptional set has at most [2^n(2n+2m)]^(n+2) points; uniformly at
+   fixed n, at most [2^n(n^2+n)]^(n+2). Paths are excluded. This is an explicit
+   algebraic size bound, not emptiness or a root list.
+2. For every even Ising star and every nonempty log-Walsh sector of size 2r, the
+   coefficient has strict sign (-1)^(r+1) for K!=0. At 0<v=tanh(K)<1, the
+   degree-six weight is a pure-even matchgate. Its ordinary CP rank and every
+   flattening rank are two, but its Walsh-basis nonnegative all-leg CP rank is
+   exactly 32. The normalized checkerboard contraction is the positive cycle-space
+   polynomial; no global nonplanar Pfaffian theorem follows.
+3. For every even local degree d and 0<v=tanh(K)<1, the fixed contact-free
+   selected-pivot/far-mark proper-even/odd Callen leakage matrix
+   has rank 2^(d-1)-C(d,d/2)/2, and every leakage-canceling combination has zero
+   pair coefficient. Cubic inversion leaves six exact higher-template relations in
+   a 19x16 rank-13 block; deleting the pair row lowers rank to 12.
+
+Verification
+------------
+- e244 producer: 13/13 PASS, 0.125478 process CPU seconds, 25,427,968 bytes peak RSS.
+  Its DLMF-bound clean-room verifier passed 22 checks at 25,706,496 bytes.
+- e245 producer: 9/9 PASS, 0.001505 process CPU seconds, 22,822,912 bytes peak RSS.
+  Its hardened clean-room verifier passed dependency, path-scope, degree, determinant,
+  projective-source, positivity, exact resource-method metadata, and semantic false-pass
+  gates; final replay passed at 23,412,736 bytes.
+- e246 producer: 10/10 PASS, 0.079249 process CPU seconds, 27,344,896 bytes peak RSS.
+  Its clean-room verifier passed 14 exact gates; final replay passed.
+- Independent theorem reviews of all three fronts returned PASS after review-driven
+  retained-spin normalization, path qualification, dependency provenance, and exact
+  semantic-gate repairs.
+- The repository contains 166 test scripts. No full 166-script suite was launched under
+  a measured nine-user load near 98.
+
+Provenance and limitations
+--------------------------
+- Exact mathematical controls use integers and Fractions. The all-even-star sign proof
+  uses the archived NIST DLMF cosh product and a self-contained Gaussian integral.
+- The exceptional-degree theorem pins arXiv:2511.07639v1, the e236 dependency artifact,
+  and the archived Stacks Chevalley source.
+- Nine Wave-24 degree, matchgate, factor-graph, DLMF, and lattice-bootstrap inputs are
+  registered in `sources/manifest.yaml` and `sources/bibliography.bib`.
+- Darwin task RSS uses mach_task_basic_info.resident_size_max because inherited ru_maxrss
+  carried an unrelated parent high-water mark.
+- K_c=0.221654626 is comparison-only and was not used to select, fit, tune, or stop work.
+- e233_trace_resultant_positivity.py remains an unlanded draft and is deliberately excluded.
+- Ledger H643-H657 and experiments e244-e246 are allocated; H653-H657 are append-only
+  review corrections. H658 and e247 are next.
+- MANIFEST.json records byte size and SHA-256 for every staged file except itself.
+- This is a snapshot. Reproduction uses the repository root and existing interpreter.

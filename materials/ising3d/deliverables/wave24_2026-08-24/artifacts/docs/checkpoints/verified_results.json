@@ -1,0 +1,2462 @@
+{
+  "provenance": {
+    "generated_utc": "2026-08-23T03:05:48.021811+00:00",
+    "last_updated_utc": "2026-08-25T00:33:56.585794Z",
+    "last_update": "Wave 24 final integration: three theorem fronts verified/reviewed; append-only corrections through H657 cover path scope, normalized cycle contraction, semantic/resource provenance, and archived external-source binding. Nine external inputs are registered. No critical endpoint moved and no full 166-script suite ran.",
+    "method": "Bookkeeping synthesis from repository proofs, notes, result JSON artifacts, experiment sources, and a fresh tests/run_all.sh execution | wave-6 entries appended by lead after independent standalone test verification of all nine agent deliverables | wave-7/8 entries appended by lead after independent standalone verification of every agent deliverable; 65/65 full-suite run 2026-08-14; repository relocated to math/ising3d | wave-9 entries appended by lead after independent standalone test verification of all ten agent deliverables | wave-10 entries appended by lead after independent standalone verification of all ten e90-e99 deliverables plus e100 OA-3x3 synthesis | wave-11 entries appended by lead after independent standalone verification of all four deliverables inside the main checkout plus four independent code reviews | wave-12 entries appended by lead after independent standalone verification of all five deliverables inside the main checkout, five independent code reviews, and lead clean-room recomputation of the SAW block profile and union arithmetic | wave-13 entries appended by lead after independent standalone verification of all eight deliverables inside the main checkout, seven independent code reviews (one blocked by a provider limit and replaced by a lead audit), and one advisory-driven correction of an overstated proof note | wave-14 entries appended by lead after wave-14 acceptance (fullsuite14: 110 total, 109 passed, 1 failed \u2014 tests/test_extensive_3d_r2.py, a dropped artifact-load line, a lead regression; standalone rerun after one-line restore PASS 555 s; full-suite re-run deferred to wave-15 close-out) and independent standalone verification of the six canonical deliverables (2x5 pair-product, sector-saturation refutation, s<=5 extensive-charge class, Peierls-at-incumbent limitation, KW 11111 anchor components, sieve-union endpoint) | wave-15 entries appended by lead after independent standalone verification of all five landed fronts (kw_boundary, char0_quotient, ladder_l8, octahedral, paired_momentum) | wave-20: twelve independent creative fronts plus lead finite-memory SAW front; all thirteen standalone verifiers run by lead, with one review-caught susceptibility ratio wording error corrected and reverified; H506-H583 appended | wave-24 entries appended after all three producers and clean-room verifiers passed, followed by independent theorem reviews and review-driven normalization/path-scope/provenance false-pass repairs",
+    "repository_root": "/Users/jinleic/jinleic-workspace/math/ising3d",
+    "interpreter": ".venv/bin/python",
+    "status_vocabulary": [
+      "theorem",
+      "machine_verified",
+      "numerical",
+      "external"
+    ]
+  },
+  "data": {
+    "results": [
+      {
+        "id": "finite_enumeration_transfer_agreement",
+        "category": "finite_volume",
+        "value": {
+          "cases": 17,
+          "coefficient_mismatches": 0
+        },
+        "how_verified": "Two independent exact engines compared complete broken-bond coefficient arrays on torus, open-box, and cylinder cases.",
+        "script": "tests/test_tm_vs_enumeration.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "src/ising/exact_enumeration/__init__.py",
+          "src/ising/transfer_matrix/__init__.py"
+        ]
+      },
+      {
+        "id": "transfer_operator_partition_identity",
+        "category": "finite_volume",
+        "value": {
+          "tested_lattices": 7,
+          "passed": 7,
+          "operator": "V = exp(K_z^* A) exp(K B), with sinh(2 K_z) sinh(2 K_z^*) = 1 and the prefactor stated in the test"
+        },
+        "how_verified": "Dense layer-operator matrix exponentials were compared with independent exact finite-volume enumeration at high precision; reported float64 relative errors range from about 1e-15 to 3.3e-12.",
+        "script": "tests/test_transfer_operator_identity.py",
+        "status": "numerical",
+        "artifact_paths": [
+          "proofs/algebraic_obstruction.md"
+        ]
+      },
+      {
+        "id": "kaufman_finite_torus_agreement",
+        "category": "onsager_2d",
+        "value": {
+          "cases": 8,
+          "mpmath_dps": 60,
+          "maximum_relative_error": "3.63867276317e-60"
+        },
+        "how_verified": "Kaufman's four-sector formula was evaluated independently and compared with exact integer bivariate transfer polynomials.",
+        "script": "experiments/e02_onsager_2d.py",
+        "status": "numerical",
+        "artifact_paths": [
+          "notes/onsager_derivation.md",
+          "results/onsager/onsager_2d.json",
+          "tests/test_onsager.py"
+        ]
+      },
+      {
+        "id": "onsager_thermodynamic_integral",
+        "category": "onsager_2d",
+        "value": {
+          "critical_coupling": "log(1 + sqrt(2))/2",
+          "critical_free_energy_per_site": "log(2)/2 + 2*Catalan/pi",
+          "maximum_reported_integral_error": "7.778769097733e-62"
+        },
+        "how_verified": "Three independent numerical integral normalizations were evaluated at high precision and matched the exact critical value; high- and low-temperature limits were checked.",
+        "script": "experiments/e02_onsager_2d.py",
+        "status": "numerical",
+        "artifact_paths": [
+          "notes/onsager_derivation.md",
+          "results/onsager/onsager_2d.json"
+        ]
+      },
+      {
+        "id": "onsager_majorana_quadratic_logV",
+        "category": "onsager_2d",
+        "value": {
+          "row_sizes": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "maximum_off_majorana_bilinear_coefficient": "1.246e-15",
+          "maximum_matrix_entry_residual": "0.000e+00"
+        },
+        "how_verified": "Parity-resolved matrix logarithms were expanded in Pauli strings and projected onto the Majorana-bilinear span; generator identities were also checked exactly at matrix level.",
+        "script": "experiments/e02_onsager_2d.py",
+        "status": "numerical",
+        "artifact_paths": [
+          "notes/onsager_derivation.md",
+          "results/onsager/onsager_2d.json"
+        ]
+      },
+      {
+        "id": "simple_cubic_ht_free_energy_series",
+        "category": "series",
+        "value": {
+          "variable": "v = tanh K",
+          "normalization": "phi = log(2) + 3*log(cosh K) + sum_n a_n v^n",
+          "achieved_order": 20,
+          "coefficients_by_power_0_through_20": [
+            "0",
+            "0",
+            "3/2",
+            "0",
+            "15/4",
+            "0",
+            "45/2",
+            "0",
+            "1503/8",
+            "0",
+            "19803/10",
+            "0",
+            "96177/4",
+            "0",
+            "4468383/14",
+            "0",
+            "72236127/16",
+            "0",
+            "134006939/2",
+            "0",
+            "4129826907/4"
+          ]
+        },
+        "how_verified": "Exact finite-lattice M\u00f6bius inversion used integer/Fraction arithmetic and modular CRT transfer; all old prefix coefficients were unchanged and direct GF(2) connected-cluster enumeration independently agreed through v^10.",
+        "script": "experiments/e18_series_extend.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "notes/flm_derivation.md",
+          "results/series/extended_sc_ht_free_energy.json"
+        ]
+      },
+      {
+        "id": "simple_cubic_lt_free_energy_series",
+        "category": "series",
+        "value": {
+          "variable": "x = exp(-2K)",
+          "normalization": "phi = 3*K + sum_n a_n x^n",
+          "achieved_order": 28,
+          "coefficients_by_power_0_through_28": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "0",
+            "3",
+            "0",
+            "-7/2",
+            "0",
+            "15",
+            "0",
+            "-33",
+            "0",
+            "313/3",
+            "0",
+            "-561/2",
+            "0",
+            "849",
+            "0",
+            "-9847/4",
+            "0",
+            "7485",
+            "0",
+            "-45069/2"
+          ]
+        },
+        "how_verified": "Exact low-temperature finite-lattice M\u00f6bius inversion used modular CRT transfer.  Prefix coefficients through x^20 reproduce the original exact result; an independent periodic-slab plus-boundary calculation agrees through x^15.",
+        "script": "experiments/e18_series_extend.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "notes/flm_derivation.md",
+          "results/series/extended_sc_lt_free_energy.json",
+          "results/series/lt_independent_check.json",
+          "experiments/e26_lt_series_independent.py"
+        ]
+      },
+      {
+        "id": "square_lattice_ht_series_control",
+        "category": "series",
+        "value": {
+          "variable": "v = tanh K",
+          "verified_through": "v^24",
+          "agreement": "exact coefficient identity with the Onsager expansion"
+        },
+        "how_verified": "The same finite-lattice machinery was run in two dimensions and compared coefficient-by-coefficient with the exact Onsager expansion.",
+        "script": "experiments/e03_flm_series.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "notes/flm_derivation.md",
+          "results/series/sc_ht_free_energy.json",
+          "tests/test_series.py"
+        ]
+      },
+      {
+        "id": "rigorous_simple_cubic_Kc_interval",
+        "category": "rigorous_bounds",
+        "value": {
+          "closed_interval": [
+            "0.2074277114992039908436804465100887760027",
+            "0.2527310098586630030260020266135701299926"
+          ],
+          "lower_method": "self-avoiding-walk correlation domination",
+          "upper_method": "infrared bound plus simple-cubic Watson integral"
+        },
+        "how_verified": "Exact SAW counts c_0 through c_14 were independently checked against OEIS A001412; endpoints use directed outward rounding at 80 decimal digits and the corrected Watson gamma formula.",
+        "script": "experiments/e05_kc_bounds.py",
+        "status": "theorem",
+        "artifact_paths": [
+          "proofs/kc_bounds.md",
+          "results/bounds/kc_bounds.json",
+          "tests/test_bounds.py"
+        ]
+      },
+      {
+        "id": "simple_cubic_watson_integral",
+        "category": "rigorous_bounds",
+        "value": {
+          "formula_denominator": "32*pi^3",
+          "problem_stated_denominator_4pi3_factor_error": 8,
+          "numerical_value": "1.516386059151978018156012159"
+        },
+        "how_verified": "Bessel-Laplace quadrature and the corrected gamma closed form agree beyond 25 digits; d=2 divergence and d=3,4,5 normalization trends were checked.",
+        "script": "tests/test_bounds.py",
+        "status": "numerical",
+        "artifact_paths": [
+          "proofs/kc_bounds.md",
+          "results/bounds/kc_bounds.json"
+        ]
+      },
+      {
+        "id": "simon_lieb_lower_bound",
+        "category": "rigorous_bounds",
+        "value": {
+          "certified_Kc_lower_bound": "0.20517823158099",
+          "strongest_box": [
+            4,
+            4,
+            32
+          ],
+          "relation_to_saw_bound": "valid but weaker"
+        },
+        "how_verified": "Exact rational boundary-correlation polynomials and conservative multiprecision root enclosures prove kappa<1; forward-error and rounding certificates are stored for all boxes.",
+        "script": "experiments/e12_simon_lieb.py",
+        "status": "theorem",
+        "artifact_paths": [
+          "proofs/simon_lieb_bound.md",
+          "results/bounds/simon_lieb_bounds.json",
+          "tests/test_simon_lieb.py"
+        ]
+      },
+      {
+        "id": "lee_yang_circle_finite_lattices",
+        "category": "lee_yang",
+        "value": {
+          "lattices": 13,
+          "largest_lattice": [
+            4,
+            4,
+            4
+          ],
+          "largest_n_sites": 64,
+          "largest_radial_residual_over_all_stored_records": "9.104499372625910455884227485843655747840585592075695619026321876256233e-92",
+          "largest_record_coupling_x": "7/10"
+        },
+        "how_verified": "Exact integer field polynomials were checked for coefficient symmetry and zero-field identities, then rooted with 100-decimal-digit arithmetic; every root count and unit-circle residual check passed.",
+        "script": "experiments/e04_lee_yang.py",
+        "status": "numerical",
+        "artifact_paths": [
+          "notes/lee_yang.md",
+          "results/lee_yang/lee_yang_analysis.json",
+          "tests/test_lee_yang.py"
+        ]
+      },
+      {
+        "id": "finite_volume_3d_ising_z2_gauge_duality",
+        "category": "duality",
+        "value": {
+          "exact_checks": 27,
+          "passed": 27,
+          "model_relation": "3D Ising is dual to Z2 gauge theory, not self-dual"
+        },
+        "how_verified": "Exact GF(2) homology ranks, gauge-orbit counts, surface sectors, dual-spin polynomials, and prefactors were checked on five 3D cell complexes; 2D Kramers--Wannier four-sector controls also passed.",
+        "script": "experiments/e09_duality.py",
+        "status": "theorem",
+        "artifact_paths": [
+          "proofs/duality_3d.md",
+          "results/duality/duality.json",
+          "tests/test_duality.py"
+        ]
+      },
+      {
+        "id": "term_generated_dla_dimensions",
+        "category": "operator_algebra",
+        "value": {
+          "open_chain_n_2_through_12": {
+            "formula": "n(2n-1)",
+            "dimensions": [
+              6,
+              15,
+              28,
+              45,
+              66,
+              91,
+              120,
+              153,
+              190,
+              231,
+              276
+            ]
+          },
+          "periodic_chain_n_3_through_10": {
+            "formula": "2n(2n-1)",
+            "dimensions": [
+              30,
+              56,
+              90,
+              132,
+              182,
+              240,
+              306,
+              380
+            ]
+          },
+          "open_grids": {
+            "2x2": 56,
+            "2x3": 1056,
+            "2x4": 16256,
+            "3x3": 65535
+          }
+        },
+        "how_verified": "Exact modular Pauli-Lie closure of the individual X_i and Z_iZ_j term set; dimensions were compared with free-fermion controls and full even-parity support ceilings.",
+        "script": "experiments/e07_dla.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "results/dla_table.json",
+          "proofs/algebraic_obstruction.md"
+        ]
+      },
+      {
+        "id": "two_sum_onsager_algebra_dimensions",
+        "category": "operator_algebra",
+        "value": {
+          "open_chain_n_2_through_32": "n^2",
+          "periodic_chain_n_3_through_32": "3n-1",
+          "open_grid_2x2": 11,
+          "open_grid_2x3": 263,
+          "open_grid_2x4": 2952,
+          "open_grid_3x3": 8034
+        },
+        "how_verified": "The Lie algebra generated by the two sums A and B was closed over two 31-bit primes.  Saturation was reached for the stated exact dimensions; formula controls were checked through n=32.",
+        "script": "experiments/e20_algebra_growth.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "results/onsager_algebra_dims.json",
+          "results/algebra_growth/exact_dimensions.json",
+          "notes/algebra_growth.md"
+        ]
+      },
+      {
+        "id": "one_bond_and_small_clawed_dimensions",
+        "category": "operator_algebra",
+        "value": {
+          "path_plus_one_rung": {
+            "n6": 470,
+            "n7": 3426,
+            "n8": 6397
+          },
+          "small_clawed_counterexamples": {
+            "K1,3": 24,
+            "K1,4": 33,
+            "K4": 15
+          }
+        },
+        "how_verified": "Exact two-prime Lie closure was run on minimal graph families.  The first set demonstrates sharp growth; the second falsifies claw iff large-dimension.",
+        "script": "experiments/e13_minimal_obstruction.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "results/minimal_obstruction.json",
+          "proofs/dolan_grady_defect.md"
+        ]
+      },
+      {
+        "id": "depth_graded_algebra_growth",
+        "category": "operator_algebra",
+        "value": {
+          "definition": "D_k = dimension of all brackets of length at most k",
+          "finite_certificate": "D_(2L)(2xL) >= 2^L for L=2,3,4,5,6",
+          "unsaturated_lower_bounds": {
+            "2x5_at_depth_20": 7183,
+            "2x6_at_depth_14": 460,
+            "3x4_at_depth_14": 741
+          }
+        },
+        "how_verified": "Exact ranks over each of two primes were computed by symmetry-orbit support blocks.  These are rigorous rational lower bounds; the finite exponential ladder statement is not extrapolated to all L.",
+        "script": "experiments/e20_algebra_growth.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "notes/algebra_growth.md",
+          "results/algebra_growth/profiles.json",
+          "tests/test_algebra_growth.py"
+        ]
+      },
+      {
+        "id": "majorana_termwise_obstruction",
+        "category": "operator_algebra",
+        "value": {
+          "statement": "For the natural term set {X_i, Z_iZ_j}, a term-wise injective Majorana-bilinear representation exists if and only if the graph maximum degree is at most 2."
+        },
+        "how_verified": "The proof translates pairwise Pauli anticommutation into a line-graph/claw condition and constructs the path/cycle representations.",
+        "script": "proofs/algebraic_obstruction.md",
+        "status": "theorem",
+        "artifact_paths": [
+          "proofs/algebraic_obstruction.md"
+        ]
+      },
+      {
+        "id": "global_gaussian_mode_lower_bound",
+        "category": "operator_algebra",
+        "value": {
+          "statement": "A Gaussian representation of the full even-spin Pauli algebra on n spins requires at least 2^(n-1) Majorana modes."
+        },
+        "how_verified": "A dimension bound compares the 4^(n-1)-dimensional even Pauli algebra with the quadratic Majorana algebra dimension.",
+        "script": "proofs/algebraic_obstruction.md",
+        "status": "theorem",
+        "artifact_paths": [
+          "proofs/algebraic_obstruction.md"
+        ]
+      },
+      {
+        "id": "dolan_grady_defect_formula",
+        "category": "operator_algebra",
+        "value": {
+          "DG1": "[A,[A,[A,B]]] = 16[A,B] on every finite simple graph",
+          "DG2_residual": "[B,[B,[B,A]]] - 16[B,A] = 24 i sum_v Y_v ((deg(v)-2) sum_{u~v} Z_u + 2 sum_{{u,u',u''} subset N(v)} Z_u Z_u' Z_u'')",
+          "zero_residual_condition": "every vertex degree is 0 or 2",
+          "quartic_zero_condition": "maximum degree <= 2",
+          "quartic_multiplicity": "sum_v binomial(deg(v),3)"
+        },
+        "how_verified": "Local Pauli commutator proof plus term-by-term exact integer comparison on 16 graphs; a hostile dense-matrix implementation independently reproduced representative cases.",
+        "script": "experiments/e16_dg_theorem_check.py",
+        "status": "theorem",
+        "artifact_paths": [
+          "proofs/dolan_grady_defect.md",
+          "results/dg_theorem_check.json",
+          "results/audit/audit_replication.json"
+        ]
+      },
+      {
+        "id": "dolan_grady_deformation_results",
+        "category": "operator_algebra",
+        "value": {
+          "positive_result": "A rational translation/point-group-invariant F3 deformation of A cancels the complete DG2 residual on the 3x3 torus.",
+          "DG1_witness": "coefficient in ad_A'^3(B) = 3 while the same coefficient in ad_A'(B) = 0",
+          "bounded_no_go": [
+            "torus B-linearized quartic families",
+            "full invariant F1 B deformation except decoupled fields",
+            "tested full F4 B systems",
+            "tested weighted-edge systems"
+          ]
+        },
+        "how_verified": "Exact integer/Fraction/SymPy QQ systems, rational rank, explicit coefficient witnesses, and recorded Groebner bases.",
+        "script": "experiments/e17_dg_deformation.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "proofs/dg_deformation_nogo.md",
+          "results/deformation/dg_deformation_search.json",
+          "tests/test_dg_deformation.py"
+        ]
+      },
+      {
+        "id": "tridiagonal_pair_certificates",
+        "category": "operator_algebra",
+        "value": {
+          "cycle_controls": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "no_solution_tori": [
+            "3x3",
+            "3x4",
+            "4x4",
+            "3x5",
+            "3x6",
+            "4x5",
+            "4x6",
+            "5x5"
+          ],
+          "certificate_size": "one row where valid, otherwise four rows"
+        },
+        "how_verified": "Exact rational systems for all tridiagonal parameters were rank-tested; each no-go case has an explicit short Pauli-row inconsistency witness.",
+        "script": "experiments/e23_certificate_general.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "proofs/tridiagonal_nogo.md",
+          "results/tridiagonal.json",
+          "results/tridiagonal_certificate.json",
+          "results/tridiagonal_certificate_general.json"
+        ]
+      },
+      {
+        "id": "local_conserved_charge_ansatz",
+        "category": "integrability",
+        "value": {
+          "one_dimensional_control_nontrivial_dimensions_by_range_1_to_4": [
+            1,
+            3,
+            5,
+            7
+          ],
+          "two_dimensional_layer_range_2_to_4": "only span{I,H}",
+          "largest_2d_ansatz_dimension": 2461
+        },
+        "how_verified": "Translation-invariant local Pauli commutator kernels were solved exactly over two prime fields at generic couplings.",
+        "script": "experiments/e10_conserved_charges.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "notes/integrability.md",
+          "results/integrability/conserved_charges.json",
+          "tests/test_integrability.py"
+        ]
+      },
+      {
+        "id": "tetrahedron_equation_specialization",
+        "category": "integrability",
+        "value": {
+          "physical_3d_specialization": "nonzero exact residual",
+          "orthogonal_and_monomial_gauge_search": "no valid removal in the tested class",
+          "scope": "constant isotropic tensor equation in the stated delta-bond representation"
+        },
+        "how_verified": "Residual polynomials were specialized and evaluated exactly; degenerate controls and metric-preserving gauge classes were checked separately.",
+        "script": "experiments/e11_tetrahedron.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "notes/integrability.md",
+          "results/integrability/tetrahedron.json",
+          "tests/test_integrability.py"
+        ]
+      },
+      {
+        "id": "pauli_flux_centraliser",
+        "category": "integrability",
+        "value": {
+          "connected_graph_centraliser": [
+            "I",
+            "product_i X_i"
+          ],
+          "brute_force_graphs": 7,
+          "scope": "Pauli strings commuting with every individual X_i and Z_iZ_j term"
+        },
+        "how_verified": "A binary symplectic proof gives b=0 and constant a on each connected component; brute force agrees on all seven cases.",
+        "script": "experiments/e27_flux_sectors.py",
+        "status": "theorem",
+        "artifact_paths": [
+          "proofs/algebraic_obstruction.md",
+          "results/flux_sectors.json"
+        ]
+      },
+      {
+        "id": "non_pauli_commutant_scope_correction",
+        "category": "integrability",
+        "value": {
+          "counterexample": "one-site translation U on C3 commutes with summed A and B",
+          "independence_from_I_and_global_parity_gram_determinant": 480
+        },
+        "how_verified": "Exact dense matrices checked both commutators and a nonzero Gram determinant.",
+        "script": "tests/test_audit_replication.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "results/audit/audit_replication.json",
+          "proofs/algebraic_obstruction.md"
+        ]
+      },
+      {
+        "id": "kac_ward_2d_controls",
+        "category": "kac_ward",
+        "value": {
+          "exact_lattices": [
+            "square_3x3",
+            "square_3x4",
+            "square_4x4",
+            "square_5x5"
+          ],
+          "identity": "det(I-zeta T) = P(v)^2 after the recorded normalization"
+        },
+        "how_verified": "Exact cyclotomic/CRT coefficient reconstruction and independent high-precision determinant evaluations match exact even-subgraph polynomials.",
+        "script": "experiments/e24_kac_ward.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "proofs/kac_ward_3d_obstruction.md",
+          "results/kac_ward/kac_ward.json",
+          "tests/test_kac_ward.py"
+        ]
+      },
+      {
+        "id": "kac_ward_scoped_3d_obstructions",
+        "category": "kac_ward",
+        "value": {
+          "natural_unsigned_half_angle_first_failure": "v^6: determinant coefficient 32 i versus target 32 on 2x2x2 free",
+          "strict_cubic_two_weight_result": "unit Groebner ideal; first unavoidable obstruction at v^8",
+          "full_30_weight_family": "unresolved"
+        },
+        "how_verified": "Closed non-backtracking walk coefficients and exact finite-box target equations were eliminated over the rationals; dense finite-box numerical reproduction cross-checked the strict slice.",
+        "script": "experiments/e24_kac_ward.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "proofs/kac_ward_3d_obstruction.md",
+          "results/kac_ward/kac_ward.json"
+        ]
+      },
+      {
+        "id": "zhang_2007_falsification",
+        "category": "claimed_solutions",
+        "value": {
+          "claimed_Kc": "0.24060591252980172374887945671",
+          "reference_Kc": "0.221654626(5)",
+          "quoted_standard_deviations": "3790257.3059603447",
+          "claimed_u6_magnetisation_coefficient": -18,
+          "exact_u6_coefficient": 14
+        },
+        "how_verified": "The claimed critical equation was evaluated at 80 digits; the magnetisation series was compared with exact projected finite-volume/graph coefficients.",
+        "script": "experiments/e06_falsify_claims.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "notes/falsification.md",
+          "results/falsification/falsification.json"
+        ]
+      },
+      {
+        "id": "degang_zhang_2021_falsification",
+        "category": "claimed_solutions",
+        "value": {
+          "anisotropic_permutation_roots": [
+            "0.293791195673181",
+            "0.304688931780032",
+            "0.350398220455"
+          ],
+          "free_energy_first_failed_order": "K^4",
+          "claimed_K4_coefficient": -3,
+          "exact_K4_coefficient": 3
+        },
+        "how_verified": "All six coupling permutations were solved at high precision; a symbolic HT expansion was compared with exact plaquette enumeration.",
+        "script": "experiments/e06_falsify_claims.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "notes/falsification.md",
+          "results/falsification/falsification.json"
+        ]
+      },
+      {
+        "id": "cft_rg_singularity_constraints",
+        "category": "critical_behavior",
+        "value": {
+          "external_3d_alpha": "0.110(1)",
+          "zhang_2007_classification": "logarithmic alpha=0",
+          "degang_zhang_2021_classification": "logarithmic alpha=0",
+          "rosengren": "not testable because no callable free energy is supplied"
+        },
+        "how_verified": "A benchmark-blind curvature classifier first recovered the exact 2D logarithmic control and synthetic power laws, then classified the supplied candidate functions.",
+        "script": "experiments/e25_cft_constraints.py",
+        "status": "numerical",
+        "artifact_paths": [
+          "notes/cft_constraints.md",
+          "results/cft/cft_constraints.json"
+        ]
+      },
+      {
+        "id": "external_reference_values",
+        "category": "external",
+        "value": {
+          "simple_cubic_Kc": "0.221654626(5)",
+          "simple_cubic_nu": "0.629971(4)",
+          "simple_cubic_eta": "0.036298(2)",
+          "simple_cubic_alpha_constraint": "0.110(1)"
+        },
+        "how_verified": "These values are literature inputs recorded with citations; they are used only for comparison/falsification and are not derived in this repository.",
+        "script": "notes/literature_matrix.md",
+        "status": "external",
+        "artifact_paths": [
+          "notes/literature_matrix.md",
+          "results/reference_data/claimed_solutions.json"
+        ]
+      },
+      {
+        "id": "short_series_singularity_analysis",
+        "category": "series_analysis",
+        "value": {
+          "untuned_Kc_estimate": "0.2229380779607 +/- 0.0050376391291",
+          "weak_alpha_estimate": "0.34698 +/- 0.34245",
+          "low_budget_homogeneous_euler_odes_surviving_three_holdouts": 0
+        },
+        "how_verified": "Dlog-Pade/differential approximants were repeated at v^16, v^18, and v^20 without benchmark-based selection.  Exact rational ODE candidates were tested on three held-out coefficients; an exp(z) control was recovered exactly.",
+        "script": "experiments/e19_series_analysis.py",
+        "status": "numerical",
+        "artifact_paths": [
+          "notes/series_analysis.md",
+          "results/series/extended_series_analysis.json"
+        ]
+      },
+      {
+        "id": "hostile_audit_corrections",
+        "category": "audit",
+        "value": {
+          "replication_checks": 11,
+          "passed_current_contract_checks": 9,
+          "deliberate_historical_counterexamples": [
+            "DG iff 2-regular fails for C3 plus an isolated vertex",
+            "full commutant has only I/global parity fails for C3 translation"
+          ],
+          "plus_boundary_length_one_bug": "repaired and independently rechecked"
+        },
+        "how_verified": "Independent dense algebra, direct cycle-space enumeration, ghost-bond brute force, benchmark-leak scans, and endpoint recomputation were used instead of the primary proof implementations.",
+        "script": "tests/test_audit_replication.py",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "results/audit/audit_replication.json",
+          "tests/test_plus_boundary.py"
+        ]
+      },
+      {
+        "id": "bookkeeping_test_run",
+        "category": "verification",
+        "value": {
+          "timestamp_utc": "2026-08-11T19:16:42Z",
+          "test_scripts_total": 18,
+          "passed": 18,
+          "failed": 0,
+          "wall_seconds": "579.04"
+        },
+        "how_verified": "tests/run_all.sh dynamically discovered and sequentially executed every tests/test_*.py with .venv/bin/python.",
+        "script": "tests/run_all.sh",
+        "status": "machine_verified",
+        "artifact_paths": [
+          "checkpoints/current_state.md"
+        ]
+      },
+      {
+        "id": "char0_levi_2x3",
+        "category": "THEOREM(finite object)",
+        "value": "dim_Q=263 (two independent exact closures); Killing rank 262; rad=centre dim 1; Levi C7+C3+C3+A8+A5 = 105+21+21+80+35 over Q; C7-vs-B7 separated by faithful 14-dim module with nondegenerate alternating form det 16384",
+        "script": "experiments/e45_char0_levi.py",
+        "artifact_paths": [
+          "proofs/char0_structure.md",
+          "results/algebra_structure/char0_levi.json"
+        ],
+        "how_verified": "tests/test_char0_levi.py 13/13 PASS standalone (410 s), incl. entrywise agreement of independently rebuilt full-orbit action maps after the unsound one-representative shortcut was found (218 mismatches) and replaced",
+        "status": "verified"
+      },
+      {
+        "id": "onsager_quotient_nogo_2x3",
+        "category": "THEOREM(unconditional, finite object)",
+        "value": "The complexified 2x3 layer algebra is not isomorphic to any Onsager-algebra quotient; no generating pair satisfies Dolan-Grady. Legs: Date-Roan classification (fulltext, sha256 in sources/manifest.yaml) => Levi of any finite-dim OA quotient is sl2^n; plus char0_levi_2x3 antecedent (sp(14,C) simple ideal)",
+        "script": "experiments/e47_oa_quotient_sanity.py",
+        "artifact_paths": [
+          "proofs/onsager_quotient_nogo.md"
+        ],
+        "how_verified": "tests/test_oa_quotient.py PASS; synthesis in proofs/onsager_quotient_nogo.md sec. 9 audited by lead",
+        "status": "verified"
+      },
+      {
+        "id": "spectral_couplings_2x3_2x4",
+        "category": "COMPUTATION(exact certificates)",
+        "value": "2x3 layer non-Gaussian at t=1/5 (counts 4=4), 2/5 (8=8), 1/2 (8=8); 2x4 layer (dim 256) non-Gaussian at t=1/3 via eight certified symmetry sectors (7.3 s); all with three-lowest-distinct hypothesis certified",
+        "script": "experiments/e39_spectral_couplings.py",
+        "artifact_paths": [
+          "results/spectral/couplings.json",
+          "notes/spectral_couplings.md"
+        ],
+        "how_verified": "tests/test_spectral_couplings.py PASS standalone, independently rebuilding the t=1/5 certificate two ways",
+        "status": "verified"
+      },
+      {
+        "id": "parity_sector_theorem_sprime",
+        "category": "THEOREM(finite object)",
+        "value": "Theorem S': the two physical P=prod X sector spectra of the 2x3 layer at t=1/3 are not the even/odd halves of any single 6-mode Gaussian spectrum, in either assignment (viable assignment: forced cross-sector value absent, inertia 2=2; swapped assignment rejected by certified ordering and empty window 1=1)",
+        "script": "experiments/e40_parity_sector.py",
+        "artifact_paths": [
+          "proofs/parity_sector_gaussianity.md",
+          "results/spectral/parity_sector.json"
+        ],
+        "how_verified": "tests/test_parity_sector.py PASS standalone re-deriving both assignments",
+        "status": "verified"
+      },
+      {
+        "id": "peierls_upper_attempt",
+        "category": "THEOREM(weaker than incumbent) + new exact data",
+        "value": "K_c <= 848449/500000 = 1.696898 by self-contained Peierls chain; N(6..24)=(1,0,6,0,45,12,332,240,2538,3040) exact; tail N(A) <= (78/625)*(11^11/10^10)^A proved; method limitation proved: tail converges only for K > ln(lambda)/2 ~ 1.67655, so cannot compete with incumbent 0.25273 (untouched)",
+        "script": "experiments/e41_peierls_upper.py",
+        "artifact_paths": [
+          "proofs/kc_upper_peierls.md",
+          "results/bounds/peierls_upper.json"
+        ],
+        "how_verified": "tests/test_peierls_upper.py PASS standalone incl. millionth-grid minimality and independent recount of head data; lead audited edge-connectivity lemma and universal-cover injection",
+        "status": "verified"
+      },
+      {
+        "id": "ladder_single_string_obstruction",
+        "category": "THEOREM(all L) obstruction lemma",
+        "value": "For every L>=2, all single-Pauli words in <A_L,B_L> are row-swap fixed and commute pairwise; nested-commutator single-string injections cannot reach 2^L (cap (2^L+2^ceil(L/2))/2); 96 orders and 3825 seed/control families exhausted; D_{2L}>=2^L stays open, certified L=2..6 only",
+        "script": "experiments/e46_ladder_induction.py",
+        "artifact_paths": [
+          "proofs/ladder_growth_family.md",
+          "results/algebra_growth/ladder_induction.json"
+        ],
+        "how_verified": "tests/test_ladder_induction.py PASS standalone",
+        "status": "verified"
+      },
+      {
+        "id": "kac_ward_branch00000_empty_Q",
+        "category": "THEOREM + evidence",
+        "value": "Branch 00000 empty over Q: integer certificate 2F_(3x3x2,4)-3F_(2x2x3,4)=56 (also empty in char not dividing 56); F_7 witness has no Hensel lift mod 49 (cokernel functional pairs to 5 mod 7); F_5/F_11 witnesses lift to 5^86/11^58 but rational reconstruction fails with certified height bounds ~8.04e29/~1.12e30; family remains UNRESOLVED",
+        "script": "experiments/e42_kw_hensel.py",
+        "artifact_paths": [
+          "notes/kw_hensel.md",
+          "results/kac_ward/hensel_lift.json"
+        ],
+        "how_verified": "tests/test_kw_hensel.py 5/5 PASS standalone",
+        "status": "verified"
+      },
+      {
+        "id": "series_structure_frontiers",
+        "category": "COMPUTATION(exact negative certificates)",
+        "value": "HT: 27/27 algebraic + 21/21 first-order differential-algebraic budgets NO_RELATION (nonzero rational maximal minors stored); LT: 28+29 negatives, 7+8 holdout-refuted, 18 survivors all exactly truncation-unobservable zero columns (72 basis vectors stored, flagged); interlayer [v^8]c2=778 two independent routes; c3(v)=0 identically by alternating-layer w->-w symmetry (THEOREM, fixed-odd-wrapping caveat)",
+        "script": "experiments/e43_series_structure.py",
+        "artifact_paths": [
+          "results/series/structure_certificates.json",
+          "notes/series_structure.md"
+        ],
+        "how_verified": "tests/test_series_structure.py PASS standalone",
+        "status": "verified"
+      },
+      {
+        "id": "tetra_graded_nogo_all_couplings",
+        "category": "THEOREM(all couplings, graded subfamily)",
+        "value": "Every Z2-grade-preserving 8x8 auxiliary R in RLLL=LLLR with three identical Ising L(q) is zero over char 0 for q not in {0,+1,-1}: det B(q) = -2*q^56*(q-1)^45*(q+1)^39 on exact 32x32 minor; physical tensor verified grade-preserving and reproduces 36450/16394562/246853161090; q=1/4 saturated QQ Groebner [1] on all 32 patches",
+        "script": "experiments/e44_tetra_graded.py",
+        "artifact_paths": [
+          "notes/tetra_graded.md",
+          "results/integrability/tetra_graded.json"
+        ],
+        "how_verified": "tests/test_tetra_graded.py 4/4 PASS standalone",
+        "status": "verified"
+      },
+      {
+        "id": "char0_complete_2x4_structure",
+        "category": "THEOREM(exact-Q)",
+        "value": "2x4 layer algebra: dim_Q=2952 = Qz + so(F_000,Q)[D21,861] + so(F_010,Q)[B13,351] + so(F_100,Q)[B13,351] + sl24[575] + sl28[783] + 2*sl4[15]; radical=centre dim 1; structural Killing rank 2951 nullity 1; splitness of orthogonal Q-forms not claimed; direct adjoint Killing matrix UNRESOLVED",
+        "script": "experiments/e76_char0_complete_2x4.py",
+        "artifact_paths": [
+          "results/algebra_structure/char0_complete_2x4.json",
+          "proofs/char0_complete_2x4.md"
+        ],
+        "how_verified": "producer-coupled test PASS and clean-room no-producer-import verifier tests/test_char0_complete_2x4_independent.py PASS (replays all 8 image + 5 linkage minors at p=65521, canonical 2952/2951 word trees at p=2147483647, global central witness z=(1/8)z_int, B-z derived membership); two mid-flight blockers repaired (split-form determinant removed; global central scale)",
+        "status": "verified"
+      },
+      {
+        "id": "oa_nogo_2x4",
+        "category": "THEOREM",
+        "value": "the complexified 2x4 layer algebra is not isomorphic to any finite-dimensional Onsager-algebra quotient; no generating pair satisfies normalized Dolan-Grady (exact D21 quotient + audited Date-Roan classification)",
+        "script": "experiments/e59_levi_images_2x4.py",
+        "artifact_paths": [
+          "results/algebra_structure/levi_images_2x4.json",
+          "proofs/levi_images_2x4.md"
+        ],
+        "how_verified": "tests/test_levi_images_2x4.py PASS: same-basis good-prime 861-minor (det 6248 mod 65521) independently regenerated; exact quotient/form identities rebuilt; OA implication checked",
+        "status": "verified"
+      },
+      {
+        "id": "kw_positive_real_nogo",
+        "category": "THEOREM(semialgebraic)",
+        "value": "no nonnegative-real translation-invariant scalar 30-weight Kac-Ward assignment satisfies the finite-box identity: F_(2x2x2,4) = 48 + 8*sum(6 oriented plaquette monomials) >= 48 on U>=0; rational Positivstellensatz -1 = -(1/48)F + (1/6)sum M; all 32 branch strata certified; signed-real parity and conditional reversal-conjugation constraints derived",
+        "script": "experiments/e71_kw_positive_real.py",
+        "artifact_paths": [
+          "results/kac_ward/positive_real.json",
+          "proofs/kac_ward_positive_real.md"
+        ],
+        "how_verified": "tests/test_kw_positive_real.py PASS: cube polynomial re-enumerated, Positivstellensatz re-expanded over QQ to -1, all 32 specializations rechecked",
+        "status": "verified"
+      },
+      {
+        "id": "kw_branches_31_of_32",
+        "category": "THEOREM + honest survivor",
+        "value": "31/32 Kac-Ward gauge-tree branches EMPTY_OVER_Q (12+5 wave-7 constants, 14 wave-8 thin-box constants 2F_(2x1x2,8)-F_(2x1x3,8)=16 and y-analogue, 00000 from wave 6); branch 11111 UNRESOLVED: 16-dim thin prime radical, no degree-0 span certificate (rank 45=45), no multiplier-degree-1 Nullstellensatz (Macaulay 546 vs 547 at three primes), F3/F5/F7/F11 points persist",
+        "script": "experiments/e62_kw_close.py",
+        "artifact_paths": [
+          "results/kac_ward/close.json",
+          "proofs/kac_ward_close.md",
+          "results/kac_ward/branches.json",
+          "notes/kw_branches.md"
+        ],
+        "how_verified": "tests/test_kw_close.py PASS (all constants rederived from raw lattice constants) and tests/test_kw_branches.py PASS run independently by lead",
+        "status": "verified"
+      },
+      {
+        "id": "tetra_ungraded_nogo",
+        "category": "THEOREM",
+        "value": "arbitrary 8x8 auxiliary R in RLLL=LLLR with three identical Ising L(q) vanishes for every char-0 q outside {0,+1,-1}: complementary 64x64 minors 2q^109(q-1)^92(q+1)^77(q^3+2q-1) and 2q^110(q-1)^92(q+1)^77(q^2+1); Bezout identity clears spurious roots; exceptional nullities 50/38/64 at q=0/+1/-1",
+        "script": "experiments/e70_tetra_ungraded.py",
+        "artifact_paths": [
+          "results/integrability/tetra_ungraded.json",
+          "proofs/tetra_ungraded.md"
+        ],
+        "how_verified": "tests/test_tetra_ungraded.py PASS: 262144 coefficients matched directly, both minors reconstructed, quotient-ring clearances and true exceptional nullspaces re-derived",
+        "status": "verified"
+      },
+      {
+        "id": "full_commutant_family",
+        "category": "THEOREM(finite exact)",
+        "value": "joint commutants: 2x2=27 [M4+M2^2+C^3], 2x3=12 [M2+C^8], 2x4=41 [M5+M2+C^12], 2x5=20 [M2^2+C^12], 3x3=98, chains n+1; 2x6 in [57,71] (exact lower via 7-dim common kernel, modular upper; closed at 71 by wave-9 entry commutant_2x6_exact); dim-2 conjecture falsified; excess = spatial/module projectors+intertwiners, no integrability claimed",
+        "script": "experiments/e60_commutant_family.py",
+        "artifact_paths": [
+          "results/integrability/commutant_family.json",
+          "proofs/commutant_family.md",
+          "results/integrability/full_commutant.json",
+          "proofs/full_commutant.md"
+        ],
+        "how_verified": "tests/test_commutant_family.py PASS (independent reversed-basis Hom tables at L=3,5) and tests/test_full_commutant.py PASS, both rerun by lead",
+        "status": "verified"
+      },
+      {
+        "id": "flux_support_and_charge_criterion",
+        "category": "THEOREM(finite exact)",
+        "value": "no non-scalar conserved operator on any connected proper support <=7 on 2x4/3x4 (<=6 on 3x3); four 3x3 support-7 orbits carry exact kernels (4,4,2,2) = two C^4 diagonal-reflection Bell algebras + two C^2 axial algebras; criterion: nonidentity site-permutation charge exists iff complement pointwise stabilizer nontrivial; converse verified on 142 graph classes / 2682 orbits, zero mismatches; 3x4 first positive supports have size 9",
+        "script": "experiments/e61_charge_criterion.py",
+        "artifact_paths": [
+          "results/integrability/charge_criterion.json",
+          "proofs/charge_criterion.md",
+          "results/integrability/flux_support.json",
+          "notes/flux_support.md"
+        ],
+        "how_verified": "tests/test_charge_criterion.py PASS and tests/test_flux_support.py PASS, rerun by lead; all four exceptional bases exactly substituted",
+        "status": "verified"
+      },
+      {
+        "id": "ht_v24_exact",
+        "category": "COMPUTATION(exact, new data)",
+        "value": "[v^24] phi_HT = 2135670379057/8 (interaction 266958797382); 5x5x5 minimal weight 8163299968 via cut-capped parity frontier (THEOREM: each of 12 cuts crossed exactly twice at minimal order), 1727071 peak states, 352305152 B RSS vs 242 GB projection; five-prime CRT with M > 2B = 3.449e39; prefix v^0..v^22 matches canonical exactly; reserved as strict structure-search holdout",
+        "script": "experiments/e68_ht_v24.py",
+        "artifact_paths": [
+          "results/series/ht_v24.json",
+          "proofs/ht_v24.md"
+        ],
+        "how_verified": "tests/test_ht_v24.py PASS: independent lower-order enumeration (3x3x3 weight 9188 two routes), CRT uniqueness certificate, canonical prefix equality",
+        "status": "verified"
+      },
+      {
+        "id": "interlayer_c4_c6_allorders",
+        "category": "THEOREM + COMPUTATION(exact)",
+        "value": "c4 and c6 exact through v^12, each by two independent exact routes (c6 second route: wave-9 open-slab even-subgraph FLM, exact agreement at v^0..v^12); all odd orders vanish by theorem; [v^2 w^(2m)]=2 all-order identity",
+        "script": "experiments/e75_interlayer_allorders.py",
+        "artifact_paths": [
+          "results/interlayer/allorders.json",
+          "proofs/interlayer_allorders.md",
+          "results/interlayer/c6_series.json",
+          "proofs/interlayer_c6.md",
+          "results/interlayer/c4_series.json",
+          "notes/interlayer_c4.md"
+        ],
+        "how_verified": "tests/test_interlayer_allorders.py, tests/test_interlayer_c6.py, tests/test_interlayer_c4.py all PASS, rerun by lead",
+        "status": "verified"
+      },
+      {
+        "id": "spectral_2x5_3x3_parametric",
+        "category": "THEOREM(finite exact) + honest UNRESOLVED",
+        "value": "non-Gaussian subset-product spectrum certified: 3x3 at t=1/3 (8=8) and 1/2 (11=11) via 12 refined D4xflip sectors; 2x5 at t=1/3 (8=8) and 1/2 (12=12) via complete 8-sector splits + strict congruence lemma; 2x3 continuum: four exact nonzero coupling components; connected [1/5,1/2] UNRESOLVED (forced-value crossings); degree-four polynomial shortcut FALSIFIED in-house (F(64,1,64,1)=14676480 != 0) and regression-gated",
+        "script": "experiments/e67_spectral_2x5.py",
+        "artifact_paths": [
+          "results/spectral/spectral_2x5.json",
+          "proofs/spectral_2x5.md",
+          "results/spectral/spectral_3x3.json",
+          "notes/spectral_3x3.md",
+          "results/spectral/parametric_gaussianity.json",
+          "proofs/parametric_gaussianity.md",
+          "results/spectral/polynomial_identity.json",
+          "proofs/spectral_polynomial.md"
+        ],
+        "how_verified": "tests/test_spectral_2x5.py, test_spectral_3x3.py, test_parametric_gaussianity.py, test_spectral_polynomial.py all PASS, rerun by lead",
+        "status": "verified"
+      },
+      {
+        "id": "kc_barrier_theorems",
+        "category": "THEOREM(method-class) + honest negatives",
+        "value": "upper endpoint I3/2 = 0.2527310098586630 is the EXACT optimum of the audited infrared/RP constraint class (feasible zero-magnetization witness Ghat_*=1/(I3 lambda); nonneg-autocorrelation test functions >= I3/2; anisotropic sub-models T(alpha)>=I3); lower endpoint: Simon-Lieb 20-box family exactly rejects challenge t=23/110 (family max 0.20513), Kesten finite-n inequality unauditable (conditional value 0.21582 recorded, not claimed); interval endpoints unchanged",
+        "script": "experiments/e72_upper_infrared.py",
+        "artifact_paths": [
+          "results/bounds/upper_infrared.json",
+          "proofs/upper_infrared.md",
+          "results/bounds/simon_lieb_next.json",
+          "proofs/simon_lieb_next.md",
+          "results/bounds/kesten_bound.json",
+          "proofs/kesten_bound.md"
+        ],
+        "how_verified": "tests/test_upper_infrared.py (17 checks + 7-way mutation detection), test_simon_lieb_next.py (lead-written clean verifier), test_kesten_bound.py all PASS",
+        "status": "verified"
+      },
+      {
+        "id": "lee_yang_identifiability_barrier",
+        "category": "COMPUTATION(exact) + calibrated negative",
+        "value": "frozen 2D protocol passes calibration (central sigma=-0.15032, envelope [-0.18366,-0.14563] contains -1/6); 3D non-identifiable at current sizes: exact adversarial models p=2/p=4 fit all cube angles, give sigma=1/2 vs -1/4 (3/4-wide barrier); no 3D exponent reported",
+        "script": "experiments/e73_lee_yang_prg.py",
+        "artifact_paths": [
+          "results/lee_yang/prg.json",
+          "proofs/lee_yang_prg.md"
+        ],
+        "how_verified": "tests/test_lee_yang_prg.py PASS, rerun by lead",
+        "status": "verified"
+      },
+      {
+        "id": "ladder_frontier_L8",
+        "category": "COMPUTATION(exact) + falsified family",
+        "value": "D_(2L)>=2^L certified 2<=L<=7 (two-prime AB/BB ranks); family fails at L=8: exact rank_Q 248/256 (good-prime 248-minor lower + eight primitive integer null relations upper, all residuals zero over Z); defect visible in last-3-rung projection (128->248); 96/96 product-lex orders exhausted earlier",
+        "script": "experiments/e65_ladder_representation.py",
+        "artifact_paths": [
+          "results/algebra_growth/ladder_representation.json",
+          "proofs/ladder_representation.md",
+          "results/algebra_growth/ladder_alll.json",
+          "proofs/ladder_alll.md"
+        ],
+        "how_verified": "tests/test_ladder_representation.py and tests/test_ladder_alll.py PASS, rerun by lead",
+        "status": "verified"
+      },
+      {
+        "id": "series_frontier2_and_3xl",
+        "category": "COMPUTATION(exact certificates)",
+        "value": "138 frontier rows (2nd-order DA, linear ODE full budget, Mahler; HT+LT) with zero unexplained survivors; dim_Q(3x2)=263 exact by transposition; dim_Q(3x3)>=8034 scoped modular (promoted to exact equality by wave-9 entry char0_3x3_structure); 3x4 depth-15 >= 1242; 3xL subset family rank 2^L for L=2..6",
+        "script": "experiments/e56_series_frontier2.py",
+        "artifact_paths": [
+          "results/series/frontier2.json",
+          "notes/series_frontier2.md",
+          "results/algebra_growth/dla_3xl.json",
+          "proofs/dla_3xl.md"
+        ],
+        "how_verified": "tests/test_series_frontier2.py and tests/test_dla_3xl.py PASS, rerun by lead",
+        "status": "verified"
+      },
+      {
+        "id": "interlayer_closed_form_c4_and_c6_route2",
+        "category": "THEOREM(identity)+COMPUTATION",
+        "value": "c4_q = (1/24) sum U4(0,r,s,t)^2 + (1/2) sum G(0,r)G(s,t)U4 + (3/4) sum G(0,r)G(s,t)G(0,s)G(r,t) with U4 = M4 - three pair channels; c4_w = c4_q + (1/3) sum G(0,r)^2; verified coefficientwise through v^12; c6 independent open-slab route agrees at every v^0..v^12 coefficient (v^8=109718, v^10=2061698, v^12=32654478) with proved finite-support lemma (height<=4, span<=6)",
+        "script": "experiments/e84_interlayer_closed.py",
+        "how_verified": "standalone tests/test_interlayer_closed.py rerun by lead (17.65 s, PASS); clean-room verifier imports no producer code",
+        "artifact_paths": [
+          "results/interlayer/closed_form.json",
+          "proofs/interlayer_closed.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "char0_3x3_structure",
+        "category": "THEOREM(exact-Q)",
+        "value": "3x3 layer algebra: g = Qz + sl33 + sl48 + sl59 + sl3 + sl16 + sl30 over Q; dim_Q = 8034 = 1+1088+2303+3480+8+255+899; derived 8033; rad = centre = Qz (witness W/1869120); type A32+A47+A58+A2+A15+A29 rank 183; structural Killing rank 8033 nullity 1",
+        "script": "experiments/e87_algebra_3x3.py",
+        "how_verified": "clean-room tests/test_algebra_3x3.py rerun by lead (853.7 s, PASS); no producer imports; rebuilds sectors/projectors/linkages/centre/both closures",
+        "artifact_paths": [
+          "results/algebra_structure/char0_3x3.json",
+          "proofs/char0_3x3.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "ht_series_v26",
+        "category": "COMPUTATION(exact, externally witnessed)",
+        "value": "[v^26] phi = 115377512914251/26; interaction 4437596650548; v^25 = 0; walled weights W(6x5x5)=66848887584, W(6x6x4)=37481891632, W(5x5x5)@26=310476131424; six-prime CRT modulus 98079699360994458463449574431304277015588525938982026813; Arisue-Fujiwara Table I agrees v^2..v^26 (sha256 bf79ec79...723afc, falsification target only); square-free-log bug found and fixed (degree-14 control 35112, degree-20 control 159872736)",
+        "script": "experiments/e86_ht_v26.py",
+        "how_verified": "standalone tests/test_ht_v26.py rerun by lead (9.5 s, PASS; independent lower-order route + rebuilt CRT bounds)",
+        "artifact_paths": [
+          "results/series/ht_v26.json",
+          "proofs/ht_v26.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "spectral_interval_crossings",
+        "category": "THEOREM+FALSIFICATION(exact)",
+        "value": "No absence interval can span a certified crossing (connected absence across the crossing region falsified; connected crossing-free absence intervals ARE proved): four c-count-jump brackets (width 1/16777216000) with jumps 4->5->6->7->8 prove attained forced value at real algebraic t*; corrected theorem: absence on [524287/2097152,524289/2097152] (width 1/1048576), [50331643/167772160,50331653/167772160], [8388605/25165824,8388611/25165824]; multiplicity-safe forced-relation lemma; n=4 chain proved Gaussian all t",
+        "script": "experiments/e81_spectral_interval2.py",
+        "how_verified": "standalone tests/test_spectral_interval2.py rerun by lead (12.8 s, PASS)",
+        "artifact_paths": [
+          "results/spectral/interval2.json",
+          "proofs/spectral_interval2.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "commutant_2x6_exact",
+        "category": "THEOREM(exact)",
+        "value": "2x6 joint commutant dim = 71 (closes [57,71]); complex type M_7(C) + M_2(C)^2 + C^14; centre 17; M_7 block = End of 7-dim common zero space (character dims 1,0,2,0,2,0,2,0); 2x5 = 20 control with all 36 Hom dims reproduced",
+        "script": "experiments/e89_commutant_2x6.py",
+        "how_verified": "clean-room tests/test_commutant_2x6.py rerun by lead (287.4 s, PASS)",
+        "artifact_paths": [
+          "results/integrability/commutant_2x6.json",
+          "proofs/commutant_2x6.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "saw_first_backtrack_theorem",
+        "category": "THEOREM+COMPUTATION(exact)",
+        "value": "c_(m+n) <= c_m(c_n - a_(n-1)) for all m,n >= 1 (first-backtrack injection); exact LP floors L=4,6 (253/15552 > 0 at L=6,K=1/5 vs naive -91999/1197504); wider Simon-Lieb prism family exactly rejects improvement at t=23/110; missing improving lemma isolated: mu^2 <= c_32/c_30 (c_32^18 < c_30^18 c_36 certified); interval endpoints unchanged",
+        "script": "experiments/e85_kc_interval2.py",
+        "how_verified": "standalone tests/test_kc_interval2.py rerun by lead (957.0 s, PASS; no producer imports)",
+        "artifact_paths": [
+          "results/bounds/kc_interval2.json",
+          "proofs/kc_interval2.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "ladder_l8_patched_family",
+        "category": "COMPUTATION(exact)+LEMMA",
+        "value": "D_16 >= 256 via patched 256-word family (248 AB/BB + 8 depth-15 BAB; boundary rank 256 mod 2147483629 and 2147483647; sha256 05e42304...21a8c8); eight primitive relations character-homogeneous (00:3,10:3,11:2), reflection-fixed - sector selection cannot repair; stationary two-letter class exactly obstructed (144/144 survivors rank 248 at L=8); all-L unresolved",
+        "script": "experiments/e82_ladder_all_l.py",
+        "how_verified": "standalone tests/test_ladder_all_l.py rerun by lead (1073.2 s, PASS; rebuilds exhaustive search)",
+        "artifact_paths": [
+          "results/algebra_growth/ladder_all_l.json",
+          "proofs/ladder_all_l.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "tetra16_cabled_generic",
+        "category": "THEOREM(generic)+COMPUTATION",
+        "value": "Canonical one-line-cabled 16x16 RLLL system (16384x256 over Z[q]): rank 256 / nullity 0 over Q(q) (nonzero sector minors mod 101 and 103 at q=2); exact full-rank certificates with factored determinants at q=1/4, 1/3, 2/5; all-q exceptional locus unresolved (two 120 s symbolic walls, peak RSS 158 MB)",
+        "script": "experiments/e83_tetra16.py",
+        "how_verified": "standalone tests/test_tetra16.py rerun by lead (32.9 s, PASS, six checks)",
+        "artifact_paths": [
+          "results/integrability/tetra16.json",
+          "proofs/tetra16.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "kw_branch11111_negative_certificates",
+        "category": "THEOREM(bounded)+COMPUTATION",
+        "value": "No rational Nullstellensatz certificate with multiplier degree <= 2 (Macaulay 7371 cols, Q-rank 7365, 6 syzygies, constant outside span; matrix sha256 f35b6b5f...cc66c5); thin radical solved on 16-dim Laurent torus (10 cleared numerators, Q-rank 6); reversal-conjugate Q(i) mu4 chart empty (65536 solutions, 0 pass); conditional lemma Re H = -1 all planes; branch 11111 open",
+        "script": "experiments/e80_kw_branch11111.py",
+        "how_verified": "standalone tests/test_kw_branch11111.py rerun by lead (21.0 s, PASS)",
+        "artifact_paths": [
+          "results/kac_ward/branch11111.json",
+          "proofs/kw_branch11111.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "lee_yang_boxes_5xx",
+        "category": "COMPUTATION(exact)+FALSIFICATION",
+        "value": "Exact 5x4x4/5x5x4 field polynomials at x=2/3, 7/10; theta_1 isolated to width 2^-260 with 10^-60 rational enclosures (e.g. 0.287184747933... at 5x4x4, x=2/3); all box zeros on unit circle (Sturm 40/50 simple roots); fixed-edge e=1/50 class exactly excluded (8/8 cases); free-edge p=2 vs p=4 degeneracy persists; 5^3 wall quantified: 50.7 GB, 3.16/5.72 h, 32 primes insufficient at x=7/10",
+        "script": "experiments/e88_lee_yang_zeros.py",
+        "how_verified": "standalone tests/test_lee_yang_zeros.py rerun by lead (89.5 s, PASS; no producer imports)",
+        "artifact_paths": [
+          "results/lee_yang/zeros_l5.json",
+          "proofs/lee_yang_zeros.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "oa_3x3_no_quotient",
+        "category": "THEOREM(exact-Q + audited external classification)",
+        "value": "The complexified open-3x3 layer algebra Qz + sl33 + sl48 + sl59 + sl3 + sl16 + sl30 is not isomorphic to any finite-dimensional quotient of the Onsager algebra; no generating pair satisfies normalized Dolan-Grady.",
+        "script": "experiments/e100_oa_3x3.py",
+        "how_verified": "standalone tests/test_oa_3x3.py passed; source SHA-256 pins, six non-sl2 factor dimensions, and both input artifacts recomputed.",
+        "artifact_paths": [
+          "results/algebra_structure/oa_3x3.json",
+          "proofs/oa_3x3.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "kw_branch11111_q5_component",
+        "category": "THEOREM(local algebra)+FALSIFICATION",
+        "value": "A nonsingular F5 section has Jacobian determinant 2 mod 5, hence all 42 construction constraints have a Q5 point and the rational ideal is proper: no Nullstellensatz certificate exists at any degree. Its unique local lift fails the independent 3x3x3 order-8 holdout with residue 250 mod 625.",
+        "script": "experiments/e90_kw_cubic.py",
+        "how_verified": "standalone tests/test_kw_cubic.py rerun by lead; dense sizing/syzygies, sparse exact selections, Hensel hypotheses, and holdout residual all PASS.",
+        "artifact_paths": [
+          "results/kac_ward/branch11111_cubic.json",
+          "proofs/kw_cubic.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "ladder_l9_finite_certificate",
+        "category": "COMPUTATION(exact modular lower bound)+LEMMA",
+        "value": "D_18(open 2x9 ladder) >= 512 via 512 depth<=18 literal words with a 512x512 integer hash image full rank at p=2147483647 and 2147483629; erase-last-rung is proved not an ad_B intertwiner; all-L growth remains open.",
+        "script": "experiments/e91_ladder_nonstat.py",
+        "how_verified": "clean-room tests/test_ladder_nonstat.py rerun by lead (exit 0); rebuilt Pauli vectors, two-prime minor/digest, seed tables, restriction witness, and failed repair families.",
+        "artifact_paths": [
+          "results/algebra_growth/ladder_nonstat.json",
+          "proofs/ladder_nonstat.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "saw_refined_kc_lower",
+        "category": "THEOREM(exact)",
+        "value": "For every n>=1, mu^n <= c_n-a_(n-1). An explicit height-slab family gives a_35>=75473476338501000000 and mu^36<=2941295382858363225560670, hence K_c >= 0.2122120570061123902353626109344172245745, strictly improving the prior lower endpoint.",
+        "script": "experiments/e92_saw_refine.py",
+        "how_verified": "clean-room tests/test_saw_refine.py rerun by lead; exact injections, finite enumerations, height-slab counts, integer comparisons, endpoint rounding, and source hash PASS.",
+        "artifact_paths": [
+          "results/bounds/saw_refine.json",
+          "proofs/saw_refine.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "infrared_lp_floor_collapse",
+        "category": "THEOREM+FALSIFICATION(exact)",
+        "value": "For the audited finite-torus two-point infrared/GKS LP, F(K,L)<=5168/(525L) for all sufficiently large even L when 0<K<I3/2 and for every even L>=4 at K=I3/2. Thus its missing uniform positive floor is false; the incumbent K_c upper endpoint is unchanged.",
+        "script": "experiments/e93_mag_floor.py",
+        "how_verified": "standalone tests/test_mag_floor.py rerun by lead; exact Green data, 12 primal-dual certificates, Q(sqrt2) dyadic counterexample, and rate controls PASS.",
+        "artifact_paths": [
+          "results/bounds/mag_floor.json",
+          "proofs/mag_floor.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "ht_series_v28",
+        "category": "COMPUTATION(exact, externally witnessed)",
+        "value": "[v^28] phi = 2102198327465307/28 and interaction a_28=525549581866326/7; six walled weights reconstructed from 27 exact cap-vector profiles; CRT modulus 98079699360994458463449574431304277015588525938982026813 exceeds twice every profile bound; v24/v26 reproduced before extraction.",
+        "script": "experiments/e94_ht_v28.py",
+        "how_verified": "clean-room tests/test_ht_v28.py rerun by lead; class/orbit completeness, public spin-transfer controls, profile injection, CRT uniqueness, prefix, normalization, and post-computation external witness PASS.",
+        "artifact_paths": [
+          "results/series/ht_v28.json",
+          "proofs/ht_v28.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "tetra16_complete_rank_locus",
+        "category": "THEOREM(exact characteristic-zero)",
+        "value": "For the canonical one-line-cabled 16384x256 system, rank B(q)<256 iff q in {-1,0,1}. Complementary-minor gcd is q^584(q-1)^580(q+1)^546(q^2+1)^4; q=\u00b1i are certified full rank; exact ranks at -1,0,1 are 0,30,58.",
+        "script": "experiments/e95_tetra16_locus.py",
+        "how_verified": "clean-room tests/test_tetra16_locus.py rerun by lead; four interpolated minors, height-bounded CRT, fresh Bareiss values, Bezout identity, split-prime algebraic controls, and exceptional ranks PASS.",
+        "artifact_paths": [
+          "results/integrability/tetra16_locus.json",
+          "proofs/tetra16_locus.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "spectral_crossing_local_uniqueness",
+        "category": "THEOREM(exact local algebraic isolation)",
+        "value": "Each of the four inherited open-2x3 forced-value crossing brackets contains exactly one crossing, represented by a unique nonsingular rational-box zero of four sector equations plus bc=ad. Exact Krawczyk contractions are <1/1000,<1/1000,<1/1000,<1/500. Global scan exhaustiveness and univariate minimal polynomials remain open.",
+        "script": "experiments/e96_crossing_alg.py",
+        "how_verified": "clean-room tests/test_crossing_alg.py rerun by lead; four exact Krawczyk systems, sector factors, inertia orderings, forced bands, and branch transport PASS.",
+        "artifact_paths": [
+          "results/spectral/crossing_alg.json",
+          "proofs/crossing_alg.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "algebra_4x4_partial_lower_bound",
+        "category": "COMPUTATION(rigorous Q lower bound)",
+        "value": "For the open 4x4 layer, 1794 literal nested integral Pauli words have a nonzero minor modulo 2147483647, hence dim_Q g>=1794. Completed depth-15 profile ends at 1240; depth 16 hit a 3600-second wall. No exact dimension, centre, radical, Killing rank, or type is claimed.",
+        "script": "experiments/e97_algebra_4x4.py",
+        "how_verified": "clean-room tests/test_algebra_4x4.py completed exit 0; replayed all 1794 recipes, reverse-order depth-15 closure, D4 support cap, and exact character multiplicities.",
+        "artifact_paths": [
+          "results/algebra_structure/char0_4x4.json",
+          "proofs/char0_4x4.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "lee_yang_53_fixed_value_quotient",
+        "category": "LEMMA+COMPUTATION(exact)",
+        "value": "A semilinear D8-plus-spin quotient evaluates fixed rational circle values without the 2^25-by-grade storage. It exactly reproduces 4x4x4 and 5x4x4 Q(0),Q(1/2) controls. For 5x5 states it has 2105872 representatives and 986550880 explicit live-layout bytes, but no 5x5x5 root or root count is claimed.",
+        "script": "experiments/e98_lee_yang_53.py",
+        "how_verified": "standalone tests/test_lee_yang_53.py rerun by lead; quotient identities and frozen full-polynomial controls PASS.",
+        "artifact_paths": [
+          "results/lee_yang/zeros_53.json",
+          "proofs/lee_yang_53.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "interlayer_c6_closed_correlation_form",
+        "category": "THEOREM(identity)+COMPUTATION",
+        "value": "The sixth direct interlayer coefficient is a 13-term anchored sum of 2D G, connected U4, and connected W6 correlations after complete Bell(6)=203/XOR reduction. c6,q and converted residual c6,w reproduce every exact coefficient through v^12; no scalar evaluation of the infinite W6 sums is claimed.",
+        "script": "experiments/e99_c6_closed.py",
+        "how_verified": "clean-room tests/test_c6_closed.py rerun by lead; independently rebuilt partitions, 2x2 exhaustive identity, boundary transfer, vertical cumulants, planar FLM, and q-to-w coefficients.",
+        "artifact_paths": [
+          "results/interlayer/c6_closed.json",
+          "proofs/c6_closed.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "local_commutant_Z3_compact",
+        "category": "THEOREM(all-size algebraic)",
+        "value": "For every a,b in C with ab != 0, the only compact finite-support operator on Z^3 commuting with H_g = a sum_x X_x + b sum_<xy> Z_x Z_y (finite-commutator-derivation sense) is a scalar multiple of I; the simultaneous centralizer of A and B is a corollary. Proof by private outside neighbour w=v+e_1 at a maximal-first-coordinate support site: the Z_w slot is exactly b[Q,Z_v] and the Y_v slot is exactly 2ia Q_Z, so the support peels by induction. Outside scope: extensive translation sums of local densities, quasilocal charges, finite-torus prod X, and a=0 or b=0.",
+        "script": "experiments/e115_local_commutant.py",
+        "how_verified": "standalone tests/test_local_commutant.py rerun by lead in the main checkout (83.7 s, PASS); independent code review found only a metadata wording defect, which was corrected and the artifact regenerated. Exhaustive private-neighbour census 271,099 subsets / 821,548 maximal-site checks / 0 failures; exact-Q nullity 1 on nine representative supports for six nonzero (a,b) pairs.",
+        "artifact_paths": [
+          "results/integrability/local_commutant.json",
+          "proofs/local_commutant.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "pair_product_gaussian_obstruction_2x3",
+        "category": "THEOREM(exact ordering-free spectral)",
+        "value": "At tanh(K*/2)=1/3 the exact 2x3 layer transfer spectrum is not a full six-mode Gaussian subset-product multiset. A Gaussian admits at most 3^6-2^6=665 distinct products over the C(64,2)=2016 unordered eigenvalue-slot pairs, forcing deg gcd(C_2,C_2') >= 1351. Under the monic integral model R_int = D R with D = 8968066875 = 3^15*5^4, every modular gcd degree bounds the characteristic-zero degree above; the exact value is 385 at p=1000003 and p=2000003, hence at least 1631 distinct pair products. No ordering, inertia, positivity, or simplicity hypothesis is used, and char-0 equality with 385 is not claimed.",
+        "script": "experiments/e107_pair_product_obstruction.py",
+        "how_verified": "standalone tests/test_pair_product_obstruction.py rerun by lead in the main checkout (PASS); rebuilds R from raw Fractions, recomputes the decisive prime, Newton reconstruction, trace recurrence through 4032, gcd divisibility, and the 1D/synthetic controls (chain n=6 and six-mode Gaussian both exactly 1351, four-mode exactly 55). Independent code review: NO_FINDINGS.",
+        "artifact_paths": [
+          "results/spectral/pair_product_obstruction.json",
+          "proofs/pair_product_obstruction.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "ht_euler_ode_survivor_refuted_v24",
+        "category": "COMPUTATION(exact holdout refutation)",
+        "value": "The sole frozen high-temperature Euler-ODE row left TRUNCATION_UNOBSERVABLE at the v^22 budget (order 2, degree 6, 21 monomial columns) is refuted by its first previously unobservable coefficient: the exact residual at v^24 is 499752451221372610239349461368647432702945848808/11, and the full 29-equation system has full column rank 21 with a stored nonzero 21x21 minor. v^26 and v^28 residuals are recorded as confirmation only; odd orders vanish by parity. The HT side of the searched algebraic/differential-algebraic/ODE frontier therefore has no unexplained survivor. Finite-prefix, finite-ansatz statement only; non-D-finiteness is not proved.",
+        "script": "experiments/e113_series_frontier3.py",
+        "how_verified": "standalone tests/test_series_frontier3.py rerun by lead in the main checkout (43 named checks, PASS); rebuilds the kernel from raw exact coefficients without importing producer conclusions, replays eight frozen e43 strict refutations and one NO_RELATION_AT_BUDGET control. Parent independently evaluated the same three residuals before the producer ran. Independent code review: NO_FINDINGS.",
+        "artifact_paths": [
+          "results/series/frontier3.json",
+          "proofs/series_frontier3.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "saw_union_kc_lower_endpoint",
+        "category": "THEOREM(exact finite family)+COMPUTATION",
+        "value": "Exact inclusion-exclusion of three explicit e_1-avoiding 35-step families - height-slab H (75473476338501000000), defect family L (644233352324156721), globally coordinate-monotone C (333543290395947705) - with H cap L empty, |C cap L| = 50032713330104219 and |C cap H| = 157640944278888, gives a_35 >= 76401062626946721319. With external c_36 = 2941370856334701726560670 and the proved chain mu^n <= c_n - a_(n-1), mu^36 <= 2941294455272074779839351 and K_c >= atanh(M^(-1/36)), whose directed 40-place floor is 0.2122120589214465859334619330429416874541. Only the chaining step is all-size.",
+        "script": "experiments/e116_saw_union.py",
+        "how_verified": "standalone tests/test_saw_union.py rerun by lead in the main checkout (186.8 s, OK); independent iterative enumeration, closed-form C count, per-pattern C cap H count, three mini-slab cross-checks, overlap-subtraction traps, and 150-dps directed rounding. Independent code review: NO_FINDINGS.",
+        "artifact_paths": [
+          "results/bounds/saw_union.json",
+          "proofs/saw_union.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "pair_product_generic_coupling_2x3_and_2x4",
+        "category": "THEOREM(exact ordering-free spectral, coupling-generic)",
+        "value": "With the polynomial scalar (2t)^3(1+t^2)^4 the 2x3 pair-product polynomial A(z,t) is monic in z over Z[t] (entry degree <=26, wedge degree <=52). Specialization then gives deg gcd(A(z,t0),A'(z,t0)) >= g_gen for every t0, so the single evaluated value 385 bounds the generic gcd degree, and rho = Res_z(A/G, A'/G) is a nonzero element of Q[t] whose finitely many roots (crude bound 2*52*2016*2015 = 422472960) contain all exceptions. Hence for every t>0 outside that finite set the open 2x3 layer spectrum has at least 1631 > 665 distinct unordered-slot pair products and is not a full six-mode Gaussian subset-product multiset. Separately, the open 2x4 layer at t=1/3 has exact modular pair-product gcd degree 9329 against the Gaussian floor 26335, hence at least 23311 > 6305 distinct pair products.",
+        "script": "experiments/e118_pair_product_scale.py",
+        "how_verified": "standalone tests/test_pair_product_scale.py rerun by lead in the main checkout (46.7 s, OK); the verifier raw-rebuilds a new 2x3 coupling (t=1/5), the 2x4 layer at p=1000003 with both polynomial digests, and the n=8 chain control (exactly 26335), checks the defining threshold identities and the decisive comparison field, and preserves the wave-11 regression. Independent code review found one test-coverage gap, which was fixed and re-verified; the mathematical audit was clean.",
+        "artifact_paths": [
+          "results/spectral/pair_product_scale.json",
+          "proofs/pair_product_scale.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "parity_pair_product_generic_coupling",
+        "category": "THEOREM(exact ordering-free parity spectral, coupling-generic)",
+        "value": "Parity-refined pair-product class counts are proved: within a fixed parity half at most A00(m)=A11(m)=(3^m+1)/2-2^m exponent classes occur, and across halves at most A01(m)=(3^m-1)/2; at m=6 these are 301, 301, 364, so a genuine even or odd Gaussian half forces within-sector gcd degree at least 496-301=195. The physical P=prod X sector of the open 2x3 layer has exact modular gcd degree 177 at t=1/3 and at five further deterministic rational samples, giving at least 319 > 301 distinct within-sector pair products; because both within-half floors coincide, this rejects both physical-to-fermionic assignments. The same specialization/resultant argument makes the statement hold for all t outside a finite exceptional set (bound 25534083, including the scalar zeros 0 and +-i).",
+        "script": "experiments/e119_parity_pair_product.py",
+        "how_verified": "standalone tests/test_parity_pair_product.py rerun by lead in the main checkout (0.4 s, OK); it rebuilds the sector split from P and the raw rational operator, brute-force verifies the exponent-class formulas for m=2..6, recomputes the decisive gcd degree, and checks both assignments plus the genericity metadata. Independent code review found one false monicity statement in the persisted certificate, which was corrected at the source, re-verified, and is now checked rather than asserted.",
+        "artifact_paths": [
+          "results/spectral/parity_pair_product.json",
+          "proofs/parity_pair_product.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "saw_union2_kc_lower_endpoint",
+        "category": "THEOREM(exact finite family)+COMPUTATION",
+        "value": "A 25-member pairwise-disjoint height-slab grid H_(q1,q2) with q1,q2 in {3,5,7,9,11} (disjoint because the heights after 11 and 22 steps are exactly q1 and q1+q2; length-11 parity forces odd rises and B(11,1)=0), together with the defect family L, the coordinate-monotone family C, and two new two-defect gadget languages, gives by exact inclusion-exclusion a_35 >= 499330428831189067251. With external c_36 = 2941370856334701726560670 and the proved chain mu^n <= c_n - a_(n-1), mu^36 <= 2940871525905870537493419 and K_c >= atanh(M^(-1/36)), whose directed 40-place floor is 0.2122129322754723621039731646196408804906 - a gain of 8.7e-7 over the wave-11 endpoint.",
+        "script": "experiments/e120_saw_union2.py",
+        "how_verified": "standalone tests/test_saw_union2.py rerun by lead in the main checkout (93.9 s, OK, 25 checks); the lead also independently recomputed the block profile B(11,q) with an own DFS (5832, 411156, 729000, 551124, 177147), the grid total 498882773010021488541, the grid net 498390727964942607428, the final a_35 and M. Independent code review: NO_FINDINGS.",
+        "artifact_paths": [
+          "results/bounds/saw_union2.json",
+          "proofs/saw_union2.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "series_structure_grid_expanded",
+        "category": "COMPUTATION(complete finite frontier)",
+        "value": "The predeclared expanded exact grid over algebraic, first-order differential-algebraic, Euler-ODE, and Mahler ansatz spaces (budget (r+1)(d+1)+2 <= 29 with HT exact through v^28) has 633 admissible cells: 322 NO_RELATION_AT_BUDGET each with a stored nonzero exact maximal minor, 159 CANDIDATE_REFUTED_BY_HOLDOUT each with its first refuting order and exact residual, and 152 CANDIDATE_SURVIVES, every one certified truncation-unobservable with a support certificate and first testable order. Zero unexplained survivors; the wave-11 v^24 refutation is reproduced inside the grid. The 18 legacy LT survivors are unchanged because no new LT order became observable.",
+        "script": "experiments/e121_series_grid.py",
+        "how_verified": "standalone tests/test_series_grid.py rerun by lead in the main checkout (9.4 s, PASS); after an independent review found the first version only sampled rows, the verifier now replays all 633 cells from the raw exact coefficients, all 152 survivor support certificates, and all 18 legacy LT rows, and dynamically finds U+2 split-sensitive witnesses in each family.",
+        "artifact_paths": [
+          "results/series/grid.json",
+          "proofs/series_grid.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "extensive_charge_density_census",
+        "category": "COMPUTATION(exact finite census)+THEOREM(finite-box corollary)",
+        "value": "For translation-covariant extensive charges sum_x tau_x(q) of a finite density q, vanishing of the formal derivation is equivalent to the local commutator being a lattice divergence, so the nontrivial quotient dimension equals rank S_R - rank M_R - 1. Exact results: the 1D transverse-field Ising chain has quotient dimension exactly 2R for R=0..9 (the integrable tower, with the oriented energy current appearing at R=1), while Z^2 at R=1 and R=2 and Z^3 at R=1 have quotient dimension exactly 1, i.e. only the Hamiltonian density survives modulo identity and divergences. The larger cases are certified by two-prime modular lower ranks meeting an independently proved I,h upper bound. A finite-box corollary gives quotient dimension 1 for all but finitely many nonzero ratios b/a.",
+        "script": "experiments/e117_extensive_charges.py",
+        "how_verified": "standalone tests/test_extensive_charges.py rerun by lead in the main checkout (95.0 s, PASS); the verifier independently rebuilds the coinvariant ranks, reconstructs the rooted-tree current system (incidence rank |V|-1 per orbit, both d=2 directions exercised, unsolvability for nonzero orbit sums), evaluates the explicit 1D energy-current density and its d=2 embedding, and recomputes both decisive sandwich ranks over a third prime. Independent code review found a test-coverage gap on the current presentation and the R=1 control, which was fixed and re-verified; the mathematical audit was clean.",
+        "artifact_paths": [
+          "results/integrability/extensive_charges.json",
+          "proofs/extensive_charges.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "allsize_gaussian_family_theorem",
+        "category": "THEOREM(all-size family, exact)",
+        "value": "Theorem F: for every finite simple graph with a vertex of degree >= 3 and every n = |V| >= 4, at inhomogeneous parameters (per-site t_v, per-bond w_e) off an explicit hypersurface {rho_G = 0} with deg rho_G <= 4(2n+|E|)S(S-1), S = C(2^n,2), the 2^n eigenvalues of the layer operator have at least 3^n - 2^n + 48*3^(n-4) distinct products over unordered pairs of distinct eigenvalue slots, hence the spectrum is not a full n-mode Gaussian subset-product multiset for any complex a, u_1..u_n. The excess is a constant fraction 16/27 of 3^n. Corollary F1: the exceptional set has Lebesgue measure zero, so almost every random-field/random-bond branching layer is spectrally non-Gaussian at every size. Corollary F2 is a Schwartz-Zippel sampling statement. Mechanism: Lemma 1 (Gaussian ceiling), Lemma 5 (exact tensor identity r = (3^m-2^m) r_all(core) + 2^m r(core)), a 16-dimensional claw seed with r_all >= 129 > 81, and monic specialization, which transfers gcd upper bounds from special to generic parameters only. SCOPE: the physical isotropic curve is not covered at any n, and that is proved to be an obstruction of the method (the isotropic claw is not certified above the ceiling; equal-field localization is provably linear in m).",
+        "script": "experiments/e128_allsize_gaussian.py",
+        "how_verified": "standalone tests/test_allsize_gaussian.py rerun by lead in the main checkout (53 checks, 0 failures); the claw input is rebuilt twice independently (explicit 120x120 exterior and 136x136 symmetric squares) and the isotropic 2x4, 3x3 and uniform T+P_4 certificates are independently rebuilt with digest comparison. An adversarial review confirmed Theorem F's inequality direction, excess, nonzero rho, degree bound and corollaries, and forced nine corrections elsewhere (Theorem U2 withdrawn, Theorem U quantifier restricted, non-certificates relabelled, Lemma 8 normalization, a false SO(2n,R) step removed, Theorem R domain restricted); all were applied and re-verified.",
+        "artifact_paths": [
+          "results/spectral/allsize_gaussian.json",
+          "proofs/allsize_gaussian.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "isotropic_curve_genericity_theorem_g",
+        "category": "THEOREM(exact, coupling-generic)",
+        "value": "Theorem G: on the isotropic curve the scaled operator M(t) = (2t)^|E| P_t D(q) P_t is integral with entry degree <= 2n+2|E|, so the pair-product polynomial is monic in z over Z[t]; one named-point certificate plus monic specialization and one resultant then give the same conclusion for all but finitely many t, with deg rho <= 4(2n+2|E|)S(S-1). Applied to eight isotropic cases: T u P_m for m = 0..4 (Theorem U, a uniform-field no-go with zero anisotropy at n = 5..9, certified at t = 1/3 for every row and additionally at 1/4, 2/5, 1/5 for m <= 3) and the 2x3, 2x4 and 3x3 layers. The 2x3 exceptional-degree bound comes out as 422472960, identical to the independently derived wave-12 value.",
+        "script": "experiments/e128_allsize_gaussian.py",
+        "how_verified": "standalone tests/test_allsize_gaussian.py rerun by lead: every isotropic-curve genericity row is recomputed and the 2x3 bound is compared against the independently derived value in proofs/pair_product_scale.md. Review-driven correction: the earlier all-t phrasing of Theorem U was replaced by the named-point plus Theorem G quantifier, and the claimed exactness of the counts 3893/35597 and of multiplicative independence was withdrawn.",
+        "artifact_paths": [
+          "results/spectral/allsize_gaussian.json",
+          "proofs/allsize_gaussian.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "pair_product_3x3_certificate",
+        "category": "THEOREM(exact ordering-free spectral)",
+        "value": "The open 3x3 layer at t = 1/3 (the first layer with a degree-4 vertex) is not a full nine-mode Gaussian subset-product multiset: the exact modular pair-product gcd degree is 59641 at p = 1000003 and p = 2000003, below the Gaussian floor C(512,2) - (3^9-2^9) = 111645, so the spectrum has at least 130816 - 59641 = 71175 distinct pair products against the Gaussian maximum 19171. This closes the 90-second resource wall recorded in proofs/pair_product_scale.md section 6. The pipeline is blocked traces to k = 512, Newton reconstruction of the degree-512 characteristic polynomial, extension to 2*130816 traces by its own recurrence, pair power sums, Newton reconstruction of the degree-130816 pair polynomial, and a finite-field gcd, all under the monic integral model.",
+        "script": "experiments/e122_pair_product_3x3.py",
+        "how_verified": "standalone tests/test_pair_product_3x3.py rerun by lead in the main checkout (596 s, PASS): raw-Fraction rebuild at both primes with digest comparison, the n = 9 open-chain control reaching exactly 111645, and the 2x3/2x4 regressions. A second, independent implementation (the integer-Kronecker build in e128) reproduces 59641 with matching pair-polynomial digests. Review found three defects (a global-clock wall that aborted the chain control under load, missing semantic-field comparisons, and a false docstring identity); all were fixed and re-verified.",
+        "artifact_paths": [
+          "results/spectral/pair_product_3x3.json",
+          "proofs/pair_product_3x3.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "saw_union3_kc_lower_endpoint",
+        "category": "THEOREM(exact finite family)+COMPUTATION",
+        "value": "Variable-cut and three-block slab schedules plus three-gadget defect families give a_35 >= 507841195880595165555, hence mu^36 <= 2940863015138821131395115 and K_c >= 0.2122129498516328253630821339504383555437 (directed 40-place floor). Unlike the wave-12 grid, disjointness is not automatic once cut positions and block counts vary: all 820 schedule pairs carry an explicit disjoint allowed-height step, and all 82 three-gadget schedule intersections are exact automaton counts.",
+        "script": "experiments/e123_saw_union3.py",
+        "how_verified": "standalone tests/test_saw_union3.py rerun by lead in the main checkout (131 s, OK, 25 checks): independent profile DFS, all 820 separators, all 82 gadget-schedule intersections, inclusion-exclusion omission traps, and 150-dps directed rounding; the lead also independently recomputed the endpoint from M. Independent code review: NO_FINDINGS.",
+        "artifact_paths": [
+          "results/bounds/saw_union3.json",
+          "proofs/saw_union3.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "lt_series_x52_and_survivor_reaudit",
+        "category": "COMPUTATION(exact series + holdout decisions)",
+        "value": "The exact simple-cubic low-temperature reduced free energy is extended from x^32 to x^52: ten new coefficients from x^34 = 666750 to x^52 = -46131904167/2, with per-box CRT uniqueness certificates (per-coefficient bound 0 <= [x^q] Xi_A <= 2^N, modulus product strictly above 2*2^N, 364 ordered boxes reducing to 83 canonical classes, 70 int64 and 13 CRT). Every stored coefficient through x^32 and every odd zero is reproduced before any new claim, and Guttmann-Enting Table 2 agrees as a hashed post-computation validation witness. Because x^34 is exactly the first order that can test the 18 stored LT truncation-unobservable survivors, the re-audit decides them: 11 are CANDIDATE_REFUTED_BY_HOLDOUT with first refuting orders and exact residuals, and the remaining 7 first become testable at x^54.",
+        "script": "experiments/e124_lt_x34.py",
+        "how_verified": "standalone tests/test_lt_x34.py rerun by lead in the main checkout (72 s, OK): independent rebuild of x^0..x^52 by a structurally different route, per-row recomputation of every CRT certificate from raw shape data (shape set, N, bounds, modulus product, bit length, primality), and replay of all 18 survivor residuals. Review found that the certificates were previously only read back and that the external-witness role was mislabelled; both were fixed, and the agent demonstrated the pre-fix exploit and the post-fix failures.",
+        "artifact_paths": [
+          "results/series/lt_x34.json",
+          "proofs/lt_x34.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "extensive_charges_support_stratification",
+        "category": "COMPUTATION(exact class certificates)+LEMMA",
+        "value": "Support-size stratification is exact: a bond commutator is nonzero only when one endpoint already carries an X, so a density word of support size <= s maps into words of size <= s+1 and the restricted system is closed. With it, the 3x3x3 box class of densities whose words have at most 4 non-identity sites has extensive-charge quotient exactly 1 (the Hamiltonian density alone): 1503766 columns, rank S = 822334, rank M = 822332 at both primes, meeting the analytic I,h upper bound rank S - 2. Z^2 at radius 3 gives quotient 1 up to support size 5 (1225093 columns, 790294 -> 790292). The wave-12 anchors (Z^3 R=1: 65536/64813/64811; Z^2 R=2: 262144/254209/254207) are reproduced by both producer and verifier.",
+        "script": "experiments/e125_extensive_3d_r2.py",
+        "how_verified": "standalone tests/test_extensive_3d_r2.py rerun by lead in the main checkout (1173 s, PASS) with a different orbit encoding, a third prime (1000000007), and raw-input recomputation. The lead independently audited the stratification lemma itself: the bond commutator requires a_u xor a_v = 1, so at least one endpoint is already in the support and the support grows by at most one site; h lies in the class for s >= 2, so the I,h bound applies within it. The assigned reviewer could not run (provider weekly limit), so this audit was done by the lead.",
+        "artifact_paths": [
+          "results/integrability/extensive_3d_r2.json",
+          "proofs/extensive_3d_r2.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "ladder_growth_conditional_theorem",
+        "category": "THEOREM(conditional)+COMPUTATION",
+        "value": "For the 2xL ladder pair: in the X eigenbasis A_L = 2L - 2N and B_L = D + F + Ddag with ad_A eigenvalues -4, 0, +4, where D = (1/32)[A,[A,B]] - (1/8)[A,B], Ddag the same with +1/8, and F = B - (1/16)[A,[A,B]]; so g_L is particle-number graded and contains all three at bracket depth 3. The evaluation map with a stabiliser-module argument gives dim g_L >= dim(g_L psi), moving the certificate from 16^L Pauli coordinates to 4^L state coordinates, and g_L psi lies in the (row-swap, rung-reversal)-invariant even space K_L with dim K_L = 2^(2L-3) + 3*2^(L-2). CONDITIONAL THEOREM: if g_L psi = K_L (SectorSaturationCyclicity) for every L >= 3, then dim g_L >= 2^(2L-3) >= 2^L, quadratically stronger than the standing conjecture. Saturation is verified at L = 3 (14 = 14, cross-checked against dim g_3 = 263), and the state-space certificates prove dim g_L >= 2^L for L = 3..8 with ranks 8, 16, 32, 64, 128, 256.",
+        "script": "experiments/e129_ladder_alll_proof.py",
+        "how_verified": "standalone tests/test_ladder_alll_proof.py rerun by lead in the worktree (178 checks, 0 failures, 2471 s): independent rebuild of the integer-Pauli identities and configuration actions at L = 2,3,4, direct orbit-sum construction of K_L through L = 9, and the state-space certificates. The unconditional claim was explicitly not retained; the L = 9 rank 420/512, the three-state multi-vector preflight (rank 26) and the rung-lex leader screen (7 leaders) are recorded as non-certificates, and a longer preflight is marked unlaunched.",
+        "artifact_paths": [
+          "results/algebra_growth/ladder_alll_proof.json",
+          "proofs/ladder_alll_proof.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "interlayer_c8_series",
+        "category": "COMPUTATION(exact formal series)",
+        "value": "The eighth interlayer coefficient c8 in f_3D(K,w) = f_2D(K) + c2 w^2 + c4 w^4 + c6 w^6 + c8 w^8 + ... is exact through v^12, with the open-slab even-subgraph FLM route agreeing independently through v^12 and the spin-DOS route through v^6. The all-order structure emerges from the computation rather than being imposed: odd orders vanish, the composition selection rule holds, and [v^2 w^8] = 2, verified by evaluating all 3,432 normalized gap multisets with literal layer-labelled Bell moments.",
+        "script": "experiments/e126_interlayer_c8.py",
+        "how_verified": "standalone tests/test_interlayer_c8.py rerun by lead in the main checkout (257 s, PASS). Review found three certificate defects (the selection rule was imposed rather than computed, the placement factors were never independently derived or compared, and a per-box spin-DOS claim exceeded what was checked); all three were repaired, with the exhaustive 3,432-multiset evaluation, independent placement derivation with coefficient digests, and per-box scope, then re-verified.",
+        "artifact_paths": [
+          "results/interlayer/c8_series.json",
+          "proofs/interlayer_c8.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "local_charge_finite_shape_reconstruction",
+        "category": "COMPUTATION+EXTERNAL(attribution)",
+        "value": "Finite-shape reconstruction of the absence-of-local-charge mechanism in the Z^d translation-orbit framework: the leading-symbol rows have at most two nonzero entries on every tested shape; the forcing statements T1 (X-support meeting both extreme faces), T2 (the d >= 2 clause) and M (surviving top-layer words) hold on every tested shape; single-shape densities in d >= 2 have exact kernel 0 at (2,2), (3,2), (2,3), (4,2), (2,4), (3,3), (2,2,2); the d = 1 counterpart has kernel exactly 1 at shapes (2)..(7) with the explicit conserved family j_n = Y_0 X_1..X_(n-2) Z_(n-1) - Z_0 X_1..X_(n-2) Y_(n-1) verified for n = 2..8; T2's hypothesis is vacuous on chains (T2_words = 0 for every chain shape, > 0 for every d >= 2 shape). The residual active kernel of the all-direction leading symbol is 2, 6, 28, 184, 120 at (2,2)/(2,2,2), (3,2)/(2,3), (4,2)/(2,4), (3,3), (5,2)/(2,5), so the leading symbol alone does not close the general case.",
+        "script": "experiments/e127_allr_charges.py",
+        "how_verified": "standalone tests/test_allr_charges.py rerun by lead in the main checkout (241 s, OK, 19584 assertions). ATTRIBUTION: the general d >= 2 theorem is due to Chiba (arXiv:2412.18903, Phys. Rev. B 111, 195130 (2025)) under a periodic-L hypothesis; this work reproduces the mechanism without that hypothesis and quantifies the residual. A system advisory caught the first draft of the note stating T1/T2/M and the single-shape result as all-radius theorems on finite-shape evidence; the lead rewrote the note so those four items are tagged [CONJECTURE] with [COMPUTATION] certificates.",
+        "artifact_paths": [
+          "results/integrability/allr_charges.json",
+          "proofs/allr_charges.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "pair_product_2x5_certificate",
+        "category": "THEOREM(exact ordering-free spectral)",
+        "value": "At t=1/3 the open 2x5 layer transfer operator (dim 1024, 13 bonds) is not a full ten-mode Gaussian subset-product spectrum: the modular pair-product gcd degree is 124921 at both p=1000003 and p=2000003 under the actual-LCM integral model D=3^26*5^7, below the Gaussian floor 465751=C(1024,2)-(3^10-2^10)=523776-58025, hence at least 398855 distinct pair products against the Gaussian maximum 58025 (Theorem P10); Theorem G10 extends to every positive real t outside a finite set of size <= 51576065587200. The n=10 open-chain control hits its floor 465751 exactly at both primes and the 2x3/3x3 regressions (385, 59641) replay with matching digests. Char-0 gcd equality with 124921 is not claimed; the point statement is one coupling and one layer.",
+        "script": "experiments/e136_pair_product_2x5.py",
+        "how_verified": "standalone tests/test_pair_product_2x5.py rerun by lead in the main checkout (PASS): raw rebuild at p=1000003 reproducing gcd=124921 and all coefficient digests, chain n=10 control at exactly 465751, and the 2x3/3x3 digests replayed. Independent code review: NO_FINDINGS.",
+        "artifact_paths": [
+          "results/spectral/pair_product_2x5.json",
+          "proofs/pair_product_2x5.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "sector_saturation_cyclicity_refuted",
+        "category": "THEOREM(exact ladder-sector refutation)+COMPUTATION",
+        "value": "SectorSaturationCyclicity as a universal hypothesis is refuted by certified falsity at L=4,5,6,7: dim(g_L psi)=K_L-W_L with certified 4B-invariant orthogonal annihilator blocks W_L=0,2,10,66,364 and exact cyclic dims 14/14, 42/44, 142/152, 494/560 at L=3..6 and 1780/2144 at L=7; dim K_L=(2^(2L-1)+3*2^L)/4 canonical by Burnside (two routes). Certified bound dim g_L>=K_L-W_L at L=3..7 (1780 at L=7) subsumes the 2^L certificates at those L; the one-rung cut is certified NOT K-preserving (explicit rho-breaking orbit witness at 4->5). Nothing about L>=8 is claimed; dim g_L for L>=4 and the W_L/K_L asymptotics (0, 4.5%, 6.6%, 11.8%, 17.0%) remain undetermined. Supersedes the wave-13 conditional theorem.",
+        "script": "experiments/e131_sector_saturation_tensor.py",
+        "how_verified": "standalone tests/test_sector_saturation_tensor.py rerun by lead in the main checkout (101 checks PASS, including the saturating L=3 control, raw F pair-create/rail-hop actions at L=3,4, the rho-breaking witness, and per-block 4B membership over Q), cross-confirmed by the independent duality-pairing front tests/test_sector_saturation_pairing.py (two-prime modular ranks 14/42/142/494 identical at p=2147483647 and 2147483629, exact-Q lift validation, kernel=W identity) and the state-space probe; three independent probes agree at every overlapping row L=3..7.",
+        "artifact_paths": [
+          "results/algebra_growth/sector_saturation_tensor.json",
+          "proofs/sector_saturation_tensor.md",
+          "results/algebra_growth/sector_saturation_pairing.json",
+          "proofs/sector_saturation_pairing.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "extensive_3d_s5_class_decided",
+        "category": "COMPUTATION(exact two-prime class certificate)+THEOREM",
+        "value": "The Z^3 radius-2 support-size s<=5 extensive-charge class C(3,2,5) is decided: 21,121,156 columns by the exact closed form, rank S=14,757,412, and column-oriented exact F_p elimination with compact CSR pivot storage gives rank M=14,757,410 at both p=2147483647 and p=2147483629 (1446.7 s / 1460.2 s process, peak RSS 2292.7 MiB), meeting the analytic I,h upper bound rank S-2, so rank_Q M=14,757,410 and the quotient is exactly 1 \u2014 only the Hamiltonian density survives modulo shifts and identity. The certified s<=4 regression (columns 1,503,766, rank S 822,334 -> rank M 822,332 at both primes) is reproduced before the s<=5 run. The FULL Z^3 radius-2 box and s>=6 are untouched; no all-size charge theorem is claimed.",
+        "script": "experiments/e135_extensive_3d_s5.py",
+        "how_verified": "standalone tests/test_extensive_3d_s5.py rerun by lead in the main checkout (PASS, 6/6 schema/check gates): s<=4 two-prime regression first, closed-form column count, identical lead-stream digests across primes, orbit-collision scan on the calibration class (1,503,765 images, 26,471,880 terms, zero collisions, zero zero-sum orbits), greedy stall recorded honestly as non-decisive (744881/822332=0.905815).",
+        "artifact_paths": [
+          "results/integrability/extensive_3d_s5.json",
+          "proofs/extensive_3d_s5.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "peierls_headtail_limitation",
+        "category": "THEOREM(limitation)+COMPUTATION(exact census)",
+        "value": "The plain Peierls head+tail contour certificate cannot beat the incumbent upper endpoint I_3/2: with the exact cell-class census through n<=10 (9,638,143 classes flood-filled, zero cavity-bearing; smallest cavity needs exactly 11 cells, attained by an 11-cell tree witness) the rooted contour counts extend to N(26)=20448=6*2967+7*378 and N(28)=33240, and the certified partial sum at x*=e^{-I_3} already exceeds 1/2 (V(x_-)=0.58831952760029326734594..., margin 0.0883195276...); K*=0.2558326>I_3/2 is 3-way-bisection-certified (gap 0.003102); the head-only crossing's feigned gain 0.01804 is annihilated by the proved tail mass 1.65288>1/2; the Lagrange/Lagrange-tail (certified 625*A*B_A<=78*lambda^A, lambda=11^11/10^10) converges only above (1/2)log lambda=1.6755, a certified 1.42 above the incumbent, so no finite exact head can close the gap; re-certified grid endpoint 1.695292=423823/250000 (below wave-6's 1.696898). K* is a property of the certificate, not of K_c; whether the full contour series converges at x* is open; the K_c upper endpoint is unchanged.",
+        "script": "experiments/e140_upper_beyond.py",
+        "how_verified": "standalone tests/test_upper_beyond.py rerun by lead in the main checkout (53 checks green, plus 53 producer self-checks): regenerates the complete census through n=10 with its own engine (own canonical form, growth, flood fill, leaf-extension tree census), every threshold/residual value with its own transcendental enclosures (e^{-t}=(e^u)^{-N} with exact geometric remainder), and re-decides every inequality on exact Fraction endpoints; wave-6 table reproduced verbatim.",
+        "artifact_paths": [
+          "results/bounds/upper_beyond.json",
+          "proofs/upper_beyond.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "kw_branch11111_anchor_components",
+        "category": "THEOREM(section-local component cleaning)+COMPUTATION",
+        "value": "Kac-Ward branch 11111 over the anchor thin-torus section (1,1,1,1,1,4,4): the unit chart (all six solve coordinates in F_5^x) has exactly 3 nonsingular F_5 solutions with det J in {2,4,1} (the full F_5^6 grid has 1553 solutions; one further nonsingular boundary point is chart-degenerate and its lift keeps a zero coordinate through mod 5^6), each lifting by Hensel to a genuine Q_5 point of the 42-equation construction variety (all 42 construction residues 0 mod 625 at every lift), and all three Q_5 lifts fail the independent 3x3x3 holdout at orders 8/10/12 mod 625 (residues [250,55,266], [456,350,132], [430,480,286]; the anchor k=8 residue 250 reproduces wave-10). Two independent routes (symbolic walk-monomial expansion, 23,288 monomials at order 12, and 108x108 matrix-power traces) agree at all five orders; the orbit-union lemma (semi-invariance under the rank-3 diagonal torus action with unimodular diagonal minor) collapses the census to one representative per orbit. Branch stays [UNRESOLVED] over Q; the other 4^7-1 thin-torus sections are unanalysed.",
+        "script": "experiments/e139_kw_components.py",
+        "how_verified": "standalone tests/test_kw_components.py rerun by lead in the main checkout (PASS, ~156 s, imports no producer module): independently rebuilds the 42-equation catalogue, the six primitives, the F_5 census (count 3 on all 4^6 unit-grid evaluations), the Jacobians (2,4,1), the Hensel lifts, the order-8 full-weight residue (250 at the anchor), the walk-vs-matrix residues at all five orders, the kernel vectors, the unimodular diagonal minor, H4=0, the characters, and the per-orbit uniformity, cross-checked against the wave-10 records [0,0,250], det=2, [226,197,98,63,161,216].",
+        "artifact_paths": [
+          "results/kac_ward/components.json",
+          "proofs/kw_components.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "saw_union4_kc_lower_endpoint",
+        "category": "THEOREM(exact finite family)+COMPUTATION",
+        "value": "Height-schedule sieve union: a_35 >= 1972465461070186257835 \u2014 the 404-member two/three-block family closed by inclusion-exclusion with exact overlap correction 5030204334415261659120 from the naive disjoint-union volume 7002669795485447916955 (2,780 active sieve terms over 8,344 chains, 2,167 intersecting pairs; full member counts rest on the wave-13 820 certificates), giving M=c_36-a_35=2939398390873631540302835 and K_c >= 0.2122159753270231627267517174278577806020 (40-place downward floor). c_36=2941370856334701726560670 is external with a hashed source. Only the first-backtrack/Fekete chaining is all-size; the union is a finite a_35 certificate.",
+        "script": "experiments/e141_saw_union4.py",
+        "how_verified": "standalone tests/test_saw_union4.py rerun by lead in the main checkout: clean-room verifier importing no producer code recomputes T(13)=142016661 and the B(11,q) triangle by a tuple-coordinate visited-set DFS, checks the l<=11/tail<=11 band member counts and the per-row sieve identities (1,423 rows c=+1, 1,357 c=-1), and re-derives the 40-dp floor by mpmath at 150 dps; the full 404-member exact counts rest on the producer's 16 internal checks and the wave-13 strict DP, with that narrower scope stated in the note.",
+        "artifact_paths": [
+          "results/bounds/saw_union4.json",
+          "proofs/saw_union4.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "kw_anchor_boundary_exclusion",
+        "category": "THEOREM(unit theorem)+COMPUTATION",
+        "value": "Anchor-section boundary of KW branch 11111 fully discharged: in any commutative ring, thin-torus chart points have all sixteen free coordinates invertible (nine relations, unit RHS, machine-checked coordinate coverage); full-grid census 1553/15625 with rank histogram {0:49,1:349,2:364,3:630,4:157,6:4}; the four maximal-rank points are the wave-14 three plus boundary q=(1,3,0,3,2,3), whose Hensel lift Lq=(276,278,0,288,282,83) satisfies all ten nonzero numerators mod 625 but keeps u_py_mz=0 exactly, so no chart point lies over any of the 1550 non-unit solutions - they are not shadow components, over Z/625, Z5 or Q5.",
+        "script": "experiments/e146_kw_boundary.py",
+        "how_verified": "standalone tests/test_kw_boundary.py rerun by lead in main checkout (PASS, 42.8 s process): census, rank histogram, Lq lift, anchor holdout residues, unit-theorem coverage certificate all recomputed independently; cross-checked against the wave-14 e139 records.",
+        "artifact_paths": [
+          "results/kac_ward/boundary_lifts.json",
+          "proofs/kw_boundary.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "char0_sp32_sp32_quotient",
+        "category": "THEOREM(char-0 Lie structure)",
+        "value": "The 13-local-term DLA of the open 2x3 layer (dim 1056) is exactly sp_32(Q)+sp_32(Q) over Q: perfect, Killing form nondegenerate signature (544,512) diagonal in the Pauli-string basis, parity half-representation kernels of dim 528 each isomorphic to sp_32(Q) (C16, split; invariant forms det 1/1 + two-prime nonzero 528-minors). Quotient dims exactly {0,528,1056}; sp(6)/gl(6)/sp(14) excluded for THIS algebra; wave-5/6 witnesses belong to the 263-dim two-generator algebra (H396 disambiguation). Controls: chain2=sl2+sl2, chain3=sl4, 2x2=so8+so8.",
+        "script": "experiments/e143_char0_quotient.py",
+        "how_verified": "standalone tests/test_char0_quotient.py rerun by lead in main checkout (exit 0, OK): dims, Killing rank/nullity/signature, form dets, 528-minors at two primes.",
+        "artifact_paths": [
+          "results/algebra/char0_quotient.json",
+          "proofs/char0_quotient.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "ladder_l8_exact_refutation",
+        "category": "THEOREM(exact ladder certificate)",
+        "value": "L=8 decided exactly: dim U(A,B)psi = 6562 = K_8 - W_8, K_8 = 8384 (three routes), W_8 = 1822 (sectors 4:70,6:448,8:786,10:448,12:70); three-prime modular rank + exact-Q kernel, 6562+1822=8384 closes the sandwich. Growth W=0,2,10,66,364,1822 unbroken (W_8/K_8=21.7%). Certified dim g_8 >= 6562; regressions replay L=3..7.",
+        "script": "experiments/e142_sector_saturation_l8.py",
+        "how_verified": "standalone tests/test_ladder_l8.py rerun by lead in main checkout (32/32 PASS): L=3..6 closures, frozen L=7 front, kernel 4B-invariance with sign-flip negative control, K_8 three ways.",
+        "artifact_paths": [
+          "results/ladder/l8_saturation.json",
+          "proofs/ladder_l8.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "octahedral_cap_lemma_s6",
+        "category": "THEOREM(route incapability)+COMPUTATION",
+        "value": "Order-48 orbit compression cannot decide the Z^3 R=2 s<=6 class: exact Burnside cycle-DP gives 5,048,368 column orbits (46.93x of 236,912,446) vs 191,949,608 required pivots - 2.63 percent; representative echelon provably incapable; quotient bracketed [1, 186,913,192]. Regressions 560/29747/822332 exact. Row-orbit G-equivariant elimination (~4 GiB) identified, not implemented.",
+        "script": "experiments/e144_octahedral.py",
+        "how_verified": "standalone tests/test_octahedral.py rerun by lead in main checkout (44/44 PASS): Burnside counts, closed forms, s<=2/s<=3 ranks, frozen s<=4 anchor, cap-lemma artifact checks.",
+        "artifact_paths": [
+          "results/integrability/octahedral_s6.json",
+          "proofs/octahedral_s6.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "theorem_pm_upper_endpoint_gap",
+        "category": "THEOREM(gap theorem)",
+        "value": "For every K*<I3/2, the ceiling-defect floor liminf DeltaHat_L(K*)>delta*(K*)=I3/(2K*)-1 (exact finite-torus identity, no FSS) is the weakest additional inequality improving the upper endpoint: equivalent to a uniform magnetization floor, implies K_c<=K*, delta* sharp (barrier realises equality). Thresholds exact from 0.0029008 (K*=63/250) to 0.1909142 (certified lower endpoint). Massive-Watson mu*(1/4)^2 in (1/1024,1/32); shell route: 2.29% on lambda>=2 certifies K_c<=1/4 (J_lo(2)=0.23850 exact); Wick four-point Gaussian-saturated (Prop. W), GHS h-floors insufficient; 3x3x2 instance INDECISIVE (Delta=+0.203061).",
+        "script": "experiments/e145_paired_momentum.py",
+        "how_verified": "standalone tests/test_paired_momentum.py rerun by lead in main checkout (PASS): full 2^N enumerations, own walk counts, own interval convolution, e72 anchor G(e)=4531/15844 bit-exact, delta* table.",
+        "artifact_paths": [
+          "results/bounds/paired_momentum.json",
+          "proofs/paired_momentum.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "ladder_w9_annihilator_horizon",
+        "category": "THEOREM(COMPUTATION)+CONJECTURE(model)",
+        "value": "W_9 = 8586 exact-Q for the 2x9 ladder pairing kernel; K_9 = 33152 closed form; cyclic-sector dim 24566 = K_9-W_9 both primes => dim g_9 >= 24566. Sequence W=(0,2,10,66,364,1822,8586). Growth model: W x5.419/rung vs K ~x4.0/rung (K_9/K_8=3.955) => annihilator-rescue sandwich negative at L0~14 (band 12-18, LSQ 7 points, deviation 5.9%): the W-based rescue of the ladder proof has a HARD structural horizon; classified model, not law.",
+        "script": "experiments/e151_ladder_w9.py",
+        "how_verified": "standalone tests/test_ladder_w9.py rerun by lead in main checkout (53/53 PASS, 108 s): L=3..8 points bit-exact vs wave-14/15 certificates, W_9 two-prime + exact-Q kernel re-derived, sign-flip negative control.",
+        "artifact_paths": [
+          "results/ladder/w9_saturation.json",
+          "results/ladder/w9_basis.json",
+          "proofs/ladder_l9.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "char0_so128_quotient",
+        "category": "THEOREM(char-0 Lie structure)",
+        "value": "The 18-local-term DLA of the open 2x4 layer (8 X + 10 open ZZ in gl(256)) is so_128(Q)+so_128(Q) (split D64+D64), dim 16256, over Q: perfect, nondegenerate diagonal Killing sig (8192,8064), parity halves 128/128 with symmetric det-1 invariant forms (so not sp), saturation forced by dims+faithfulness. sp_128+sp_128 (16512) REFUTED (H412 disambiguation); OA-2x4 two-generator algebra explicitly distinct. Controls chain2/chain3/2x2/2x3 re-certified through same code.",
+        "script": "experiments/e148_char0_2x4.py",
+        "how_verified": "standalone tests/test_char0_2x4.py rerun by lead in main checkout (32/32 PASS, 75.6 s): dims, Killing rank/nullity/signature, form dets/symmetry, saturation argument, four controls.",
+        "artifact_paths": [
+          "results/algebra/char0_2x4.json",
+          "proofs/char0_2x4.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "alternation_law_2xL_dla",
+        "category": "THEOREM(L<=4)+CONJECTURE(L>=5)",
+        "value": "Set/dim/type/form law for the 2xL layer DLA, bit-exact at L=2,3,4: strings = {(x|z): z even, z != J, (J-z).x = 1+z.d} (+ full z=J fiber for L odd), d checkerboard modulo complement; dim = 2^(n-1)(2^(n-1)-(-1)^L): 56/1056/16256 certified, 262656 probe-agreement, 4192256/67117056 predicted; even-so/odd-sp classical types; parity-half forms the same signed checkerboard matching, (-1)^L symmetry. All-L closure/saturation arguments OPEN.",
+        "script": "lead takeover (closure BFS + fiber analysis); tests/test_alternation_law.py",
+        "how_verified": "standalone tests/test_alternation_law.py: 22/22 PASS (22 checks incl. stored-basis fiber verification at L=4 and predictor fits at L=2,3).",
+        "artifact_paths": [
+          "proofs/alternation_law.md",
+          "results/algebra/alternation_law.json"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "shell_route_stress_falsified",
+        "category": "COMPUTATION",
+        "value": "PM-S uniform shell-defect premise NOT exhibited: min lambda>=2 defect negative on all four exact tori at K*=1/4 (-0.182744/-0.141396/-0.179753/-0.020384); eps*(63/250,2)=0.613% above incumbent 3x3x2 shell min +0.520%; structural: eps*(1/4,2)=2.29% exceeds Gaussian saturation defect 1.08%. Dual-walk global audit NOT launched; Theorem PM conditional unchanged; Lambda=3,4 open.",
+        "script": "lead takeover; tests/test_shell_stress.py",
+        "how_verified": "standalone tests/test_shell_stress.py: 8/8 PASS; all numbers recomputed exactly from results/bounds/paired_momentum.json certified intervals.",
+        "artifact_paths": [
+          "proofs/shell_stress.md",
+          "results/shell_stress.json"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "lt_series_x54",
+        "category": "THEOREM(COMPUTATION)",
+        "value": "Exact simple-cubic LT reduced free energy through x^54 = 675410878105/9 (eleven new coefficients x^34..x^54, all odd zero), per-box uniqueness certificates (23 CRT boxes), 102 canonical classes with surface-bound structure; two more legacy ansatz rows refuted (13/18 refuted, 5 dormant). Guard lift 22->25 audited value-safe (2^56<2^63). Measured: 2038 s, 47.27 GB peak (projection 44.0 GB, +6.7%). Next wall x^62 (5,6,6, cs 30); x^56/x^58 same inventory.",
+        "script": "experiments/e152_lt_x54.py",
+        "how_verified": "independent audit tests/test_lt_x54.py rerun to completion by lead in main (exit 0, 49m22s): fresh disjoint CRT primes, brute-force agreement on small boxes (guard lift changes no small-box value), formal-log + mixed-second-difference bulk equality, 18-row survivor replay, md-table row alignment; plus tests/test_tm_vs_enumeration.py 17/17.",
+        "artifact_paths": [
+          "results/series/lt_x54.json",
+          "proofs/lt_x54.md",
+          "src/ising/transfer_matrix/crt.py"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "lt_series_x56",
+        "category": "THEOREM(COMPUTATION)",
+        "value": "Exact simple-cubic LT reduced free energy through x^56 = -979227570369/4 (twelve new coefficients x^34..x^56; all odd zero; same 102-class inventory, deeper truncation only). Next wall x^62 (5,6,6); x^60 adds budget-16 classes ((6,6,4) cs 24).",
+        "script": "experiments/e153_lt_x56.py",
+        "how_verified": "producer all-checks PASS (2190s, peak < 48 GiB); test_lt_x56.py independent fresh-prime audit rerun to completion by lead (exit 0, 55m31s, independently rebuilt x^0..x^56 and replayed 18 survivors).",
+        "artifact_paths": [
+          "results/series/lt_x56.json",
+          "proofs/lt_x56.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "alternation_2xL_containment",
+        "category": "THEOREM",
+        "value": "For EVERY L>=2: g_{2xL}(Q) subset sp/so(Omega_L)(+)sp/so(Omega_L) with dim <= 2^(n-1)(2^(n-1)-(-1)^L): forward closure Lemma 4.1 (3-case uniform) + basis-set pull-back Lemma 5.1; the parity-signed checkerboard form's invariance identity |x| == 1+z.x+z.d (mod 2) equals the set law exactly; alternation (-1)^L from |d|=L. EQUALITY (set/dim/type/form) at L=2..5 exact. Saturation for all L OPEN (O1/O2).",
+        "script": "proofs/alternation_law.md (hand proof + experiments/e148, tests/test_alternation_l5.py)",
+        "how_verified": "Lemmas hand-proved in-note; zero-violation identity and law-containment recomputed on all 280,024 closure strings at L=2..5; L=5 closed-form sign law residual zero on all 256 classes; tests/test_alternation_l5.py standalone exit 0",
+        "artifact_paths": [
+          "proofs/alternation_law.md",
+          "results/algebra/alternation_l5_char0.json"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "shell_stress_lambda34",
+        "category": "COMPUTATION",
+        "value": "PM-S closed at Lambda=3,4 (family closed at 2,3,4): eps*(K*,Lam)=delta*(K*)*2K*/J_lo(Lam) exact; all 48 (box,eval,Lam) weakest-shell-mode defect-interval upper ends below eps*_lo; tightest +0.005196 vs 0.6130%.",
+        "script": "results/shell_stress_lambda34.json (lead direct derivation)",
+        "how_verified": "tests/test_shell_stress.py 28/28 including exact re-derivation of all 12 eps*-intervals from certified J_lo/delta*",
+        "artifact_paths": [
+          "results/shell_stress_lambda34.json",
+          "proofs/shell_stress.md"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "gaussian_2x6_no_go",
+        "category": "THEOREM",
+        "value": "The open 2x6 layer at t=1/3: physical P=+1 sector is NOT a Gaussian parity half: (P+,rho+) 1056-block pair-poly gcd <= 295414 < cap 295415 on BOTH primes 1000003/2000003 (block carries AT LEAST A_same(12)+1 = 261626 distinct within-half pair products, AT LEAST one more than the Gaussian ceiling (one-sided bound); either physical-P/fermion-parity assignment). Largest layer certified.",
+        "script": "experiments/e154_gaussian_2x6.py",
+        "how_verified": "producer exit 0 failures=[]; tests/test_gaussian_2x6.py 38/38 (exit 0): artifact invariants; pilot rows gcd=442067 exact on both primes inside the artifact; key-chained replay of saved exit tails: digest chain (cache_key, pairpol sha == artifact, digest0 == trimmed input), step accounting 261600+25 == 261625, exit remainder == artifact exit_digest on both primes, two-implementation remainder equality; structural cp(block)|cp(full) re-derived for all four characters. Controls n4/n6/n10 witnessed in conductor logs of the controlling e136 runs (digests matched the stored pair_product_scale.json).",
+        "artifact_paths": [
+          "results/gaussian_2x6.json",
+          "proofs/gaussian_2x6.md",
+          "results/spectral/gaussian_2x6_work/"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "wlaw_invariant_structure",
+        "category": "THEOREM+COMPUTATION",
+        "value": "The conjectured ladder sector dimension T(L,m)-delta is exactly dim Sym^2_0(Lambda^m Q^L), with the unique SL_L-invariant corank-one defect iff 4|L and m=L/2. The natural balanced polarization and every monomial reflection-equivariant map fall strictly short; the W_L rank law itself remains unresolved.",
+        "script": "experiments/e193_wlaw_certificate.py",
+        "how_verified": "Producer 11/11 computed checks; lead ran tests/test_wlaw.py: 22 checks, 0 failures.",
+        "artifact_paths": [
+          "results/algebra_growth/wlaw.json",
+          "proofs/wlaw.md",
+          "tests/test_wlaw.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "kmn_twogen_collective_spin",
+        "category": "THEOREM+COMPUTATION",
+        "value": "Faithful multiplicity-free Schur-Weyl reduction for K_{m,n}; exact dim_Q Lie<A,B> is 137 for K4,4 and 471 for K4,5, both above the physical quadratic ceilings 120 and 153. Opposite-parity all-size upper container proved; no universal n0 follows.",
+        "script": "experiments/e196_kmn_theorem.py",
+        "how_verified": "Producer upper/lower squeeze at checked primes; lead ran tests/test_kmn_twogen.py with independent prime 65537 and dual spin matrices: PASS.",
+        "artifact_paths": [
+          "results/algebra_growth/kmn_twogen.json",
+          "proofs/kmn_twogen.md",
+          "tests/test_kmn_twogen.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "rectangle_row_induction_nogo",
+        "category": "THEOREM(method limitation)+COMPUTATION",
+        "value": "No rank-one frozen added row is invariant under both rectangle two-sum generators; |+>-row compression agrees on generators and first bracket but fails at depth three by an explicit noncentral seam term for every core rectangle. No all-rectangle dimension theorem is claimed.",
+        "script": "experiments/e199_rectangle_certificate.py",
+        "how_verified": "Lead ran tests/test_rectangle_twogen.py; all exact integer/rational route-closure checks PASS.",
+        "artifact_paths": [
+          "results/algebra_growth/rectangle_twogen.json",
+          "proofs/rectangle_twogen.md",
+          "tests/test_rectangle_twogen.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "isotropic_nonbipartite_allcoupling",
+        "category": "THEOREM(all-size, every coupling)",
+        "value": "For every finite simple non-bipartite graph and every physical isotropic 0<t<1, the layer spectrum is not a full n-mode subset-product multiset. Phi_N=e_N^(N/2-1)e_1^(N/2)-e_(N-1)^(N/2) reduces to a strictly positive odd-Eulerian graph polynomial. The invariant vanishes identically on every bipartite graph.",
+        "script": "experiments/e202_isotropic_certificate.py",
+        "how_verified": "Producer 41/41; lead ran tests/test_isotropic_invariant.py: 32 independent checks PASS; proof identities reviewed against exact trace/Eulerian expansions.",
+        "artifact_paths": [
+          "results/spectral/isotropic_invariant.json",
+          "proofs/isotropic_invariant.md",
+          "tests/test_isotropic_invariant.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "galois_s6_and_control_refutation",
+        "category": "THEOREM+FALSIFICATION",
+        "value": "At t=1/3 an irreducible sextic factor of the open 2x3 layer has Galois group S6, proved by exact discriminant and Frobenius cycle types. The open P6 free-fermion control also has S6, refuting Galois nonsolvability as an integrability discriminator.",
+        "script": "experiments/e205_galois_certificate.py",
+        "how_verified": "Lead ran tests/test_galois_spectrum.py: exact factors, discriminants, Rabin irreducibility and both S6 arguments replayed, PASS.",
+        "artifact_paths": [
+          "results/spectral/galois_spectrum.json",
+          "proofs/galois_spectrum.md",
+          "tests/test_galois_spectrum.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "finite_ctm_signature_scope",
+        "category": "THEOREM(finite ansatz)+COMPUTATION",
+        "value": "A canonical finite 2D corner kernel has the required repeated complementary pair product; a declared q=1/2 3D contraction fails it exactly. The honest 3D object is rank-three and two positive symmetry-invariant contractions have inequivalent spectra, so no intrinsic 3D CTM spectral theorem follows.",
+        "script": "experiments/e208_ctm_certificate.py",
+        "how_verified": "Lead ran tests/test_ctm_signature.py: independent exterior-square and contraction rebuild PASS.",
+        "artifact_paths": [
+          "results/spectral/ctm_signature.json",
+          "proofs/ctm_signature.md",
+          "tests/test_ctm_signature.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "plucker_hirota_cube_nogo",
+        "category": "THEOREM(finite fixed-basis ansatz)",
+        "value": "Planar controls fix the unique Pfaffian sign vector in the declared class. The same Pluecker residual is 4v^6(1-v^2)^6 on a skew-terminal 2x2x2 cube and a positive explicit polynomial on an untouched 2x2x3 slab for 0<v<1. Scope is finite, fixed-basis and ansatz-bounded.",
+        "script": "experiments/e211_plucker_certificate.py",
+        "how_verified": "Lead ran tests/test_plucker_hirota.py: 28 independent checks PASS.",
+        "artifact_paths": [
+          "results/integrability/plucker_hirota.json",
+          "proofs/plucker_hirota.md",
+          "tests/test_plucker_hirota.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "allaux_lax_inference_refuted",
+        "category": "THEOREM(method limitation)+FALSIFICATION",
+        "value": "Large/irreducible local-term algebra alone cannot imply an all-auxiliary RLLL no-go: exact permutation and rational GL_d/XXX families provide nonidentity intertwiners with full local matrix envelopes. Existing Ising 8x8/16x16 theorems are not broadened.",
+        "script": "experiments/e214_allaux_certificate.py",
+        "how_verified": "Lead ran tests/test_allaux_lax.py: 20 independent exact checks PASS.",
+        "artifact_paths": [
+          "results/integrability/allaux_lax.json",
+          "proofs/allaux_lax.md",
+          "tests/test_allaux_lax.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "upper_fourpoint_power_simplex_limit",
+        "category": "THEOREM(method limitation)+COMPUTATION",
+        "value": "The named MR4-power-simplex-L1 four-point relaxation projects exactly to the inherited two-point relaxation via Q=pp^T and has an O(1/L) zero-mode floor; it cannot improve K_c<=I3/2. Phase-sensitive four-point constraints remain open.",
+        "script": "experiments/e217_fourpoint_endpoint.py",
+        "how_verified": "Lead ran tests/test_upper_fourpoint.py: exact rational projection and asymptotic certificates PASS.",
+        "artifact_paths": [
+          "results/bounds/upper_fourpoint.json",
+          "proofs/upper_fourpoint.md",
+          "tests/test_upper_fourpoint.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "susceptibility_coeff_route_audit",
+        "category": "THEOREM+COMPUTATION+FALSIFICATION",
+        "value": "Exact susceptibility HT coefficients a_0..a_10 re-derived. Supermultiplicativity fails minimally: a_2=30<36=a_1^2. Submultiplicativity is finite-prefix evidence only; finite completions with incompatible radii prove no prefix can certify an endpoint. Review corrected the unique ratio plateau a_2/a_1=a_3/a_2=5.",
+        "script": "experiments/e220_coeff_bound.py",
+        "how_verified": "Lead verifier first exposed the false strict-ratio wording; producer/proof/test were corrected. Final integration then exposed duplicate same-named checks after rerun; e219 now replaces owned checks. Regenerated artifact has 35 unique names and tests/test_susceptibility_coeffs.py passes.",
+        "artifact_paths": [
+          "results/bounds/susceptibility_coeffs.json",
+          "proofs/susceptibility_coeffs.md",
+          "tests/test_susceptibility_coeffs.py"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "interlayer_c8_c10_structure",
+        "category": "THEOREM(formal all-order)+COMPUTATION",
+        "value": "Exact coefficientwise connected-correlation formula for c8 over eight profiles; W8^2 occurs uniquely with coefficient 1/8!, so G/U4/W6 cannot close it universally. c10 has 16 profiles and forces W10^2/10!; generally c_(2m,q) contains C_[2m]^2/(2m)!.",
+        "script": "experiments/e223_c10_certificate.py",
+        "how_verified": "Producer 53 checks; lead ran tests/test_interlayer_c10.py: PASS.",
+        "artifact_paths": [
+          "results/interlayer/c10_structure.json",
+          "proofs/interlayer_c10.md",
+          "tests/test_interlayer_c10.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "nonhamiltonian_bipartite_classification",
+        "category": "THEOREM+EXTERNAL+COMPUTATION",
+        "value": "Every connected simple bipartite graph with Delta>=3 has local-term Pauli basis equal to the nonradical Q_c=1 level. Dimensions: 2^(2n-2)-1 for odd n and 2^(2n-2)-(-1)^r 2^(n-1) for even n. This completes the connected-bipartite path/cycle/branching trichotomy without a Hamiltonian hypothesis.",
+        "script": "experiments/e226_nonhamiltonian_theorem.py",
+        "how_verified": "Lead ran tests/test_nonhamiltonian_bipartite.py: 11 independent checks PASS; audited Ahmet Seven v1 Theorem 3.2/v2 Theorem 3.3 and archived full source SHA256.",
+        "artifact_paths": [
+          "results/algebra_growth/nonhamiltonian_bipartite.json",
+          "proofs/nonhamiltonian_bipartite.md",
+          "tests/test_nonhamiltonian_bipartite.py",
+          "sources/fulltext/seven2003_transvections_v1.pdf"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "finite_memory_saw_kc_lower",
+        "category": "THEOREM+COMPUTATION+EXTERNAL",
+        "value": "Memory-12 simple-cubic walk automaton: 41424 states and exact positive integer certificate 1000000*A*w < 4747526*w, hence mu<4.747526 and K_c>0.2138368062108697304302094293879379891333. New certified interval [0.2138368062108697304302094293879379891333,0.2527310098586630030260020266135701299926].",
+        "script": "experiments/e227_finite_memory_saw.py",
+        "how_verified": "Producer 6/6; lead ran tests/test_finite_memory_saw.py: 18 checks PASS, independently rebuilding every automaton through k=12 and replaying minimum integer residual 18990104.",
+        "artifact_paths": [
+          "results/bounds/finite_memory_saw.json",
+          "proofs/kc_lower_finite_memory.md",
+          "tests/test_finite_memory_saw.py",
+          "sources/fulltext/poenitz_tittmann2000_saw_upper.pdf"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "bipartite_log_moment_interval",
+        "category": "THEOREM(finite interval)+COMPUTATION",
+        "value": {
+          "graphs": [
+            "open 2x2",
+            "open 2x3"
+          ],
+          "physical_t_interval": [
+            "999999997/3000000000",
+            "1000000003/3000000000"
+          ],
+          "equivalent_interval": "[1/3-10^-9,1/3+10^-9]",
+          "necessary_inequality": "p1*p3-p2^2 >= 0",
+          "certified_outcome": "strictly negative on both graphs throughout the interval",
+          "scope": "finite open grids and one explicit coupling interval only; no 2x4, every-coupling, or all-size bipartite theorem"
+        },
+        "script": "experiments/e228_bipartite_log_moments.py",
+        "how_verified": "Producer artifact passed 17/17 exact checks. The lead ran tests/test_bipartite_log_moments.py and observed PASS; the independent verifier rebuilt the rational matrices, positive spectral enclosures, dyadic logarithms, cumulants, and uniform perturbation signs without importing the producer.",
+        "artifact_paths": [
+          "results/spectral/bipartite_log_moments.json",
+          "proofs/bipartite_log_moments.md",
+          "tests/test_bipartite_log_moments.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "trace_seven_resultant_obstruction",
+        "category": "THEOREM(finite obstruction)+COMPUTATION",
+        "value": {
+          "graph": "open 2x3",
+          "physical_t": "1/3",
+          "trace_range": "1..7",
+          "trace_four_through_six": "proper consecutive prefix ideals",
+          "trace_seven": "first decisive row; reduced ideal is {1}",
+          "scope": "one finite bipartite graph at one exact coupling; no every-coupling or all-size theorem"
+        },
+        "script": "experiments/e232_trace_resultant.py",
+        "how_verified": "Producer artifact passed 5/5 exact checks. The lead ran tests/test_trace_resultant.py and observed PASS; the independent verifier rebuilt the exact 64x64 representative and traces, used multiplication determinants for cyclotomic norms, and replayed lexicographic prefix elimination. Synthetic six-mode and open-chain controls remained non-rejected.",
+        "artifact_paths": [
+          "results/spectral/trace_resultant.json",
+          "proofs/trace_resultant.md",
+          "tests/test_trace_resultant.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "wlaw_two_slice_observability",
+        "category": "THEOREM(scoped truncation)+COMPUTATION",
+        "value": {
+          "L_range": [
+            3,
+            8
+          ],
+          "sector_count": 39,
+          "two_slice_result": "restriction to Delta in {0,2} is injective in every covered sector and reproduces the exact U_L rank",
+          "exceptional_retained_ranks": {
+            "L4_m2": 20,
+            "L8_m4": 2484
+          },
+          "bonding_truncation_first_failure": {
+            "L": 4,
+            "m": 2,
+            "kernel": "Q*a0*a1*a2*a3",
+            "rank": 19,
+            "full_rank": 20
+          },
+          "scope": "no all-L two-slice exact-sequence lemma, W_L rank law, L>=9 computation, or K_c claim"
+        },
+        "script": "experiments/e230_wlaw_rank_mechanism.py",
+        "how_verified": "Producer artifact passed 16/16 checks. The lead ran tests/test_wlaw_rank_mechanism.py and observed 21 checks, 0 failures, PASS; the verifier independently rebuilt orbit restrictions, exact ceiling sandwiches, the local bonding transform, and the 16-term first-kernel witness.",
+        "artifact_paths": [
+          "results/algebra_growth/wlaw_rank_mechanism.json",
+          "proofs/wlaw_rank_mechanism.md",
+          "tests/test_wlaw_rank_mechanism.py"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "upper_phase_sensitive_ps4_limit",
+        "category": "THEOREM(method limitation)+COMPUTATION",
+        "value": {
+          "class": "PS4-convolution-block-Gram-L1",
+          "strictly_stronger_than": "MR4-power-simplex-L1",
+          "strict_separator": "L=4, K=6/25",
+          "green_lift": "every 0<K<=I3/2 and every even L>=266",
+          "zero_mode_bound": "0 < p0 <= 5168/(525L)",
+          "uniform_positive_floor": false,
+          "improved_endpoint": false,
+          "incumbent_upper_endpoint": "I3/2",
+          "scope": "named phase-sensitive block relaxation only; no physical finite zero magnetisation or closure of full cross-channel, DLR, higher-localizer, or current constraints"
+        },
+        "script": "experiments/e231_phase_sensitive_upper.py",
+        "how_verified": "Producer artifact passed 29/29 exact checks. The lead ran tests/test_upper_phase_sensitive.py and observed PASS; the independent verifier rebuilt the strict MR4 separator, exact L=4 and L=6 Green controls, all-size polygon bounds, zero-floor direction, and unchanged-endpoint outcome.",
+        "artifact_paths": [
+          "results/bounds/upper_phase_sensitive.json",
+          "proofs/upper_phase_sensitive.md",
+          "tests/test_upper_phase_sensitive.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "compact_finite_memory_saw_crosswalk",
+        "category": "THEOREM(compact crosswalk)+COMPUTATION+VERIFICATION",
+        "value": {
+          "memory_values": [
+            4,
+            6,
+            8,
+            10,
+            12
+          ],
+          "proved": "packed first-use automata equal the ordered e227 state and transition content",
+          "state_transition_counts": {
+            "k4": "3/7",
+            "k6": "20/69",
+            "k8": "205/805",
+            "k10": "2722/11074",
+            "k12": "41424/169975"
+          },
+          "producer_checks": "33/33",
+          "resource_evidence": "roughly 5 process CPU seconds; 179814400 peak RSS bytes; bounded closability cache",
+          "ledger_rows": "H590-H595; H588-H589 unallocated",
+          "next_free_ledger_id": "H596",
+          "experiment": "e229",
+          "next_free_experiment": "e233",
+          "memory_14_launch_status": "not_launched",
+          "memory_14_endpoint_claim": null,
+          "critical_interval": "[0.2138368062108697304302094293879379891333,0.2527310098586630030260020266135701299926] unchanged",
+          "scope": "compact k<=12 crosswalk only; no memory-14 automaton, spectral radius, Collatz certificate, or endpoint"
+        },
+        "script": "experiments/e229_finite_memory_saw14.py",
+        "how_verified": "Producer passed 33/33 checks. The lead ran tests/test_finite_memory_saw14.py and observed PASS; the independent verifier used distinct first-use and raw 48-way canonicalization controls plus separately coded closability search, asserted both ordered state and transition digests in every memory-row pass predicate, and required memory 14 to remain not_launched with endpoint null.",
+        "artifact_paths": [
+          "results/bounds/finite_memory_saw14.json",
+          "proofs/kc_lower_memory14.md",
+          "tests/test_finite_memory_saw14.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "star_decimation_octahedral_obstruction",
+        "category": "THEOREM(exact transformation+method obstruction)+COMPUTATION",
+        "value": {
+          "local_weight": "2*cosh(K*sum_(i=1)^6 sigma_i)",
+          "exact_retained_interactions": "c0 plus permutation-symmetric 2-, 4-, and 6-spin octahedral sectors",
+          "signs_for_real_nonzero_K": {
+            "c2": "positive",
+            "c4": "negative",
+            "c6": "positive"
+          },
+          "pairwise_visible_representation": false,
+          "whole_sublattice": "checkerboard elimination factorizes exactly but is not closed within visible-spin pairwise Hamiltonians",
+          "scope": "uniform stars and the infinite/open simple-cubic checkerboard setting; hidden auxiliaries, nonlocal transformations, retained higher interactions, and integrability remain open"
+        },
+        "script": "experiments/e234_star_decimation.py",
+        "how_verified": "Producer passed 14/14 exact checks. The lead ran tests/test_star_decimation.py and observed PASS; the independent verifier rebuilt all Walsh vectors, c2/c4/c6 sign certificates, visible-pair orthogonality, barycenter support uniqueness, both checkerboard parities, boundary arity, and scope without producer imports or floating point.",
+        "artifact_paths": [
+          "results/integrability/star_decimation.json",
+          "experiments/e234_star_decimation.py",
+          "tests/test_star_decimation.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "tropical_cut_low_temperature_obstruction",
+        "category": "THEOREM(all-size endpoint)+COMPUTATION",
+        "value": {
+          "graphs": "every finite simple graph containing a cycle",
+          "physical_corner": "t=tanh(K*/2)->0, equivalently K->infinity",
+          "valuation_multiset": "cut sizes up to one common shift",
+          "sharp_tropical_boundary": "the cut multiset is a nonnegative integer Boolean subset sum iff the graph is a forest",
+          "conclusion": "for each cyclic G there exists delta_G>0 with no one-full-n-mode subset-product spectrum for 0<t<delta_G",
+          "delta_explicit": false,
+          "scope": "one full positive n-mode spectrum; no parity-sector, larger-auxiliary, multigraph, critical, or every-coupling claim"
+        },
+        "script": "experiments/e235_tropical_cut_obstruction.py",
+        "how_verified": "Producer passed 9/9 exact checks. The lead ran tests/test_tropical_cut_obstruction.py and observed PASS; the independent verifier rebuilt cut distributions, all simple graphs through n=5, odd/even transfer exponents, exact ordered min-max bounds by root counts with multiplicity, low-temperature direction, forest/C4/doubled-edge valuation controls, and scope.",
+        "artifact_paths": [
+          "results/spectral/tropical_cut_obstruction.json",
+          "experiments/e235_tropical_cut_obstruction.py",
+          "tests/test_tropical_cut_obstruction.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "token_splitting_high_temperature_obstruction",
+        "category": "THEOREM(all-size endpoint+generic finiteness)+EXTERNAL+COMPUTATION",
+        "value": {
+          "graphs": "every finite connected simple graph that is not a path",
+          "physical_corner": "t=tanh(K*/2)->1, equivalently K->0+",
+          "first_graph_sensitive_band": "one quarter of the unsigned hard-core token adjacency",
+          "Gaussian_requirement": "the additive compound spectrum pinned by the actual one-particle band",
+          "signing_boundary": "the two-token exterior signing is balanced iff G is a path",
+          "endpoint_conclusion": "for each nonpath G there exists epsilon_G>0 with no one-full-n-mode subset-product spectrum for 1-epsilon_G<t<1",
+          "generic_conclusion": "the physical full-cube coupling set is finite by Chevalley constructibility",
+          "exceptional_set_explicit": false,
+          "scope": "paths are only not excluded; parity-sector unions, larger restrictions, multigraphs, every-coupling emptiness, criticality, and a solution remain open"
+        },
+        "script": "experiments/e236_token_splitting_obstruction.py",
+        "how_verified": "Producer passed 7/7 exact checks. The lead ran tests/test_token_splitting_obstruction.py and observed PASS; the independent verifier rebuilt Walsh bands, graph Fourier coefficients, the one-quarter same-band coefficient, all-band Schur ledger, exact C4 token/additive characteristic polynomials, Boolean first-correction additivity, path/balance census through n=5, source hash, and scope. Two independent proof audits found no fatal theorem defect after the general off-band and additive-compound wording repairs.",
+        "artifact_paths": [
+          "results/spectral/token_splitting_obstruction.json",
+          "experiments/e236_token_splitting_obstruction.py",
+          "tests/test_token_splitting_obstruction.py",
+          "sources/stacks_chevalley_054K.html"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "wlaw_two_slice_exact_sequence_L9",
+        "category": "COMPUTATION(exact-Q finite extension)+THEOREM(method limitation)",
+        "value": {
+          "L_range": "3..9",
+          "sector_count": 49,
+          "two_slice_result": "restriction to Delta in {0,2} is injective in every covered sector over Q",
+          "L9_omitted_ranks": [
+            0,
+            0,
+            66,
+            614,
+            1689,
+            1689,
+            614,
+            66,
+            0,
+            0
+          ],
+          "L9_retained_ranks": [
+            1,
+            45,
+            666,
+            3570,
+            8001,
+            8001,
+            3570,
+            666,
+            45,
+            1
+          ],
+          "balanced_core": "1556 leaf pivots plus a 133x133 determinant -2^288*3^5 at m=4,5",
+          "method_boundary": "raw uncombined-source singleton peeling leaves order-independent cores and cannot prove the all-L lemma",
+          "scope": "finite L<=9 exact-Q certificate only; no L>=10 rank, all-L exact sequence, or W_L law"
+        },
+        "script": "experiments/e237_wlaw_exact_sequence.py",
+        "how_verified": "Producer passed 13/13 checks. The lead ran tests/test_wlaw_exact_sequence.py and observed 11/11 PASS; the independent verifier used opposite leaf order, Fraction determinants, opposite modular pivots, direct orbit census, exact source hashes, and rational ceilings in all 49 sectors.",
+        "artifact_paths": [
+          "results/algebra_growth/wlaw_exact_sequence.json",
+          "proofs/wlaw_rank_mechanism.md",
+          "tests/test_wlaw_exact_sequence.py"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "callen_identity_finite_reconstruction",
+        "category": "THEOREM(local identity+all finite graphs)+COMPUTATION",
+        "value": {
+          "six_neighbour_expansion": "tanh(K sum sigma)=c1(v)e1+c3(v)e3+c5(v)e5 over Q(v)",
+          "orbit_matrix_determinant": 512,
+          "all_spin_assignments": "64/64 exact",
+          "all_finite_graph_theorem": "over Q(v), the complete off-site-monomial Callen system has rank 2^n-1 and nullity one, the unnormalised Gibbs moment vector up to scale",
+          "finite_rank_controls": {
+            "chain_3": "7/1",
+            "square_open_2x2": "15/1",
+            "cube_open_2x2x2": "255/1"
+          },
+          "compression": false,
+          "scope": "finite loopless undirected free-boundary graphs, possibly disconnected, with uniform internal coupling, all spins dynamical, no external field, and the complete exponential-size correlator basis; a point-specialized rank claim requires regular local coefficients and nonzero flip factors, while only C_empty=1/probability normalization additionally requires Z_G(v0)!=0; no infinite-volume closure, endpoint, critical point, or exponent"
+        },
+        "script": "experiments/e240_callen_identity_system.py",
+        "how_verified": "Producer passed 14/14 exact checks. The lead ran tests/test_callen_identity_system.py and observed PASS; the independent verifier re-interpolated c1/c3/c5, checked all 64 local assignments, rebuilt 1068 raw finite-graph rows and negative controls, replayed modular ranks, derived exact Gibbs edge ratios, checked Walsh invertibility, K2 endpoint ranks 2/3/2 at v=-1,1/2,1, theorem hypotheses, tags, and scope without importing e240. Independent proof audit confirmed the formal theorem after specialization and boundary hypotheses were made explicit.",
+        "artifact_paths": [
+          "results/correlations/callen_identity_system.json",
+          "experiments/e240_callen_identity_system.py",
+          "tests/test_callen_identity_system.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "flat_twist_hashimoto_girth_obstruction",
+        "category": "THEOREM(all finite simple graphs)+COMPUTATION(method limitation)",
+        "value": {
+          "family": "uniform average of phase-free Hashimoto determinants over every graph-H1 flat Z2 twist",
+          "all_graph_result": "equals P_G(v)^2 for forests and fails for every finite connected simple cyclic graph first at degree girth(G)",
+          "first_mismatch_formula": "0 versus 2*c_g, where c_g is the number of simple girth cycles",
+          "open_cube": {
+            "twist_classes": 32,
+            "distinct_determinants": 6,
+            "first_mismatch": "v^4: 0 versus 12"
+          },
+          "additional_finite_limits": "all-face-negative fixed twist and one frame-dependent coordinate phase both first fail at v^6",
+          "scope": "uniform phase-free all-H1 average only; fixed/nonuniform twists, surface spin structures, and other turning phases remain open"
+        },
+        "script": "experiments/e239_twist_hashimoto.py",
+        "how_verified": "Producer passed 13/13 exact checks. The lead ran tests/test_twist_hashimoto.py and observed PASS; the independent verifier used a different spanning tree and direct 24x24 traces/Newton rather than Bass-Ihara, rebuilt all 32 determinant polynomials, triangle/C4/path controls, circuit classes, phase ansatz, content digests, and scope.",
+        "artifact_paths": [
+          "results/kac_ward/twist_hashimoto.json",
+          "proofs/kac_ward_3d_obstruction.md",
+          "experiments/e239_twist_hashimoto.py",
+          "tests/test_twist_hashimoto.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "open_box_genus_bound",
+        "category": "THEOREM(all-size topology+planarity)+COMPUTATION",
+        "value": {
+          "graph": "open P_a square P_b square P_c",
+          "genus_bound": "gamma >= max(0,ceil((abc-ab-bc-ca+4)/4)) for min(a,b,c)>=2",
+          "planarity": "iff a side is one or the box is 2x2xL up to permutation",
+          "cube_corollary": "gamma(P_L^3) >= ceil((L-2)^2(L+1)/4)",
+          "proof_core": "simple connected bipartite bridgeless graph; self-contained cellularity via regular-neighbourhood caps; face length >=4; Euler",
+          "finite_table": "512 ordered boxes with side lengths 1..8",
+          "scope": "open simple graphs only; no exact nonplanar genera, periodic length-two multigraphs, arbitrary Pfaffian-count lower bound, or thermodynamic solution"
+        },
+        "script": "experiments/e241_box_genus_bound.py",
+        "how_verified": "Producer passed 12/12 exact checks. The lead ran tests/test_box_genus_bound.py and observed 18-check PASS; the independent verifier rebuilt six-neighbor graphs, xy/xz/yz plaquettes, all 512 rows, every edge witness, ceiling arithmetic, planarity separation, pinned boxes, corollaries, content digests, resources, and construction-only scope without importing e241.",
+        "artifact_paths": [
+          "results/topology/box_genus_bound.json",
+          "proofs/kac_ward_3d_obstruction.md",
+          "experiments/e241_box_genus_bound.py",
+          "tests/test_box_genus_bound.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "trace_exceptional_set_open_2x3",
+        "category": "THEOREM(all physical couplings, finite graph)+COMPUTATION",
+        "value": {
+          "graph": "open 2x3",
+          "parameter": "q=(1+t^2)/(2t), 0<t<1",
+          "stable_quotient_rank": 8,
+          "exceptional_q_polynomial": {
+            "degree": 971,
+            "primitive": true,
+            "squarefree": true
+          },
+          "physical_root_count": 3,
+          "t_intervals": [
+            "(397429/1000000,39743/100000)",
+            "(160347/1000000,40087/250000)",
+            "(10457/200000,26143/500000)"
+          ],
+          "disposition": "e238 leaves three genuine seven-trace algebraic branches; e242 supersedes the unresolved physical disposition with unique sextics of Hermite signatures 2,2,6, the third having at most two roots above u=4",
+          "scope": "one finite graph at every physical coupling; e242 proves its full-spectrum physical exceptional set empty, but no all-size, parity-sector, auxiliary-mode, or thermodynamic theorem"
+        },
+        "script": "experiments/e238_trace_exceptional_set.py",
+        "how_verified": "Producer passed 9/9 exact checks in 444.245 process CPU seconds. The lead ran the final current-source independent verifier in two bounded stages: affine-Macaulay elimination PASS in 433.85 wall seconds; hardened integer-binomial roots PASS in 110.00 wall seconds. Together they rederive the degree-971 polynomial, three pairwise-disjoint q>1 brackets, physical/disjoint t brackets, the primitive reciprocal degree-1942 q-to-t pullback, symbolic chain branch, source hashes, and scope. A prior exact Sturm call exceeded 1800 seconds after Macaulay had passed and is recorded only as a resource wall; H633 supersedes earlier verifier timings.",
+        "artifact_paths": [
+          "results/spectral/trace_exceptional_set.json",
+          "proofs/trace_resultant.md",
+          "experiments/e238_trace_exceptional_set.py",
+          "tests/test_trace_exceptional_set.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "trace_branch_disposition_open_2x3",
+        "category": "THEOREM(every physical coupling, finite bipartite layer)+COMPUTATION",
+        "value": {
+          "graph": "open 2x3",
+          "inherited_exceptional_polynomial_degree": 971,
+          "branch_count": 3,
+          "rank_certificate": "all eight clearing denominators nonzero; det P=0 and C00!=0 give rank 7 and one reduced coefficient point on each branch",
+          "Hermite_signatures": [
+            2,
+            2,
+            6
+          ],
+          "third_branch_shifted_signs": "+---+++",
+          "third_branch_roots_above_4_upper_bound": 2,
+          "theorem": "for every 0<t<1, the positive-definite open-2x3 transfer spectrum is not a full six-mode subset-product spectrum",
+          "scope": "one finite full spectrum; parity sectors, larger auxiliaries, other bipartite grids, and thermodynamic observables remain open"
+        },
+        "script": "experiments/e242_trace_branch_disposition.py",
+        "how_verified": "Producer passed 10/10 exact checks in 814.373944 process CPU seconds without recomputing the degree-971 determinant. The final current-source independent verifier passed separate quotient/cofactor (713.290031 process CPU seconds) and dyadic/Hermite/Descartes (192.412972 process CPU seconds) stages. It uses affine Macaulay reduction instead of the producer H-basis, reproduces all denominator/cofactor polynomials and the inherited matrix digest, enforces one-to-one nesting inside the three e238 isolators, and independently obtains signatures 2,2,6 plus the two-variation shifted bound. A verifier-only bracket-alignment repair refreshed provenance with producer_rerun=false. Adversarial recheck returned PASS.",
+        "artifact_paths": [
+          "results/spectral/trace_branch_disposition.json",
+          "proofs/trace_resultant.md",
+          "experiments/e242_trace_branch_disposition.py",
+          "tests/test_trace_branch_disposition.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "callen_all_pivot_termwise_closure",
+        "category": "THEOREM(all connected six-regular simple graphs)+COMPUTATION(method limitation)",
+        "value": {
+          "parameter": "0<v=tanh(K)<1",
+          "closure": "the all-pivot {1,3}-termwise family generated by one pair is exactly all even proper supports",
+          "cardinality": "2^(n-1)-1 for even n and 2^(n-1) for odd n, including the empty normalization",
+          "periodic_cubic_nontrivial_orbit_lower_bound": "ceil((2^(n-1)-[n even]-1)/n) for n=LMN and L,M,N>=3",
+          "finite_controls": {
+            "K7": 64,
+            "K8_minus_perfect_matching": 127,
+            "periodic_3x3x3_two_token_component": 351,
+            "periodic_3x3x3_four_token_component": 17550
+          },
+          "scope": "all-pivot termwise support closure only; selected pivot rows, row combinations, aggregation across distinct support orbits, nonlinear/auxiliary variables, and thermodynamic conclusions remain open"
+        },
+        "script": "experiments/e243_callen_termwise_closure.py",
+        "how_verified": "Producer passed 8/8 exact checks. The lead ran tests/test_callen_termwise_closure.py and observed PASS; the independent verifier binds the current e240 coefficient source, reconstructs K7/K8 closures, periodic graph and token components, every pivot/triple growth witness, shape/group/order consistency, empty-normalization removal, orbit ceilings, and exact scope. Adversarial review found and repaired occupied-neighbour wording, provenance, witness, pivot-selection, and normalization false-pass risks; final narrow recheck returned PASS.",
+        "artifact_paths": [
+          "results/correlations/callen_termwise_closure.json",
+          "experiments/e243_callen_termwise_closure.py",
+          "tests/test_callen_termwise_closure.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "full_spectrum_exception_degree_bound",
+        "category": "THEOREM(all connected simple nonpath graphs, explicit algebraic degree)+COMPUTATION",
+        "value": {
+          "graph": "finite connected simple nonpath G with n vertices and m edges",
+          "polynomial_entry_degree": "delta=2n+2m using the uncentered aligned-edge representative",
+          "incidence_equation_degree": "d=2^n*(2n+2m) in n+2 affine variables",
+          "exceptional_candidate_bound": "[2^n*(2n+2m)]^(n+2)",
+          "uniform_simple_graph_bound": "[2^n*(n^2+n)]^(n+2) for connected simple nonpath graphs",
+          "grid_corollaries": {
+            "open_2xL, L>=2": "[4^L*(10L-4)]^(2L+2)",
+            "open_3xL, L>=2": "[8^L*(16L-6)]^(3L+2)"
+          },
+          "open_2x3_control": "delta=26, d=1664, bound=58779593138084256579321856",
+          "scope": "explicit complex-candidate/physical full-spectrum count only; no emptiness, root list, parity-sector, auxiliary-mode, thermodynamic, or endpoint theorem"
+        },
+        "script": "experiments/e245_bipartite_exception_degree.py",
+        "how_verified": "Producer passed 9/9 exact checks. The clean-room verifier passed current producer/verifier/e236 artifact/Chevalley hashes, independent aligned-exponent and determinant reconstruction, Boolean-mode and characteristic coefficient degrees, path-safe affine/projective degree bounds, qualified grid controls/scope, exact Darwin RSS-method metadata, and semantic hard gates. Final resource-hardened producer used 0.001505 process CPU seconds and 22822912 bytes; verifier passed at 23412736 bytes. The degree theorem is version-pinned to arXiv:2511.07639v1 Theorem 2.1 and the finite projection to e236. Independent theorem review returned PASS.",
+        "artifact_paths": [
+          "results/spectral/bipartite_exception_degree.json",
+          "proofs/bipartite_exception_degree.md",
+          "experiments/e245_bipartite_exception_degree.py",
+          "tests/test_bipartite_exception_degree.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "octahedral_matchgate_and_positivity_barrier",
+        "category": "THEOREM(all even-star log sectors + local matchgate/ranks)+COMPUTATION",
+        "value": {
+          "all_even_star_sign": "for even d and nonempty |A|=2r, sign c_A(K)=(-1)^(r+1) for every real K!=0; odd sectors vanish",
+          "degree_six_signature": "g(A)=v^|A| on even A and 0 on odd A",
+          "matchgate": "g is the pure-even principal-sub-Pfaffian tensor of v^2 J_6; all 4096 identities vanish",
+          "cycle_space": "2^(-|V|)-normalized retained-spin checkerboard contraction on any finite bipartite graph equals the positive even-subgraph polynomial; the raw retained-spin sum has factor 2^|V|",
+          "ordinary_CP_rank": 2,
+          "ordered_nontrivial_flattenings": "62, all rank 2",
+          "nonnegative_all_leg_CP_rank": 32,
+          "spin_basis_positive_rank": 2,
+          "scope": "local/basis-sensitive theorem; no arbitrary-hidden-auxiliary no-go, global Pfaffian contraction, integrability, or thermodynamic solution",
+          "parameter_scope": "strict log-Walsh signs hold for real K!=0; matchgate, rank-two, and nonnegative-rank-32 statements use 0<v=tanh(K)<1"
+        },
+        "script": "experiments/e244_octahedral_matchgate.py",
+        "how_verified": "Producer passed 13/13 exact checks in 0.125478 process CPU seconds and 25427968 bytes. The DLMF-bound clean-room verifier passed 22 current-hash, archived-product, log-Walsh, independent Walsh transform, matching-enumeration Pfaffian, exhaustive matchgate, fraction-free rank, PSD parity, nonnegative rectangle, exact normalized/raw cycle identity, scope, and Mach RSS checks at 25706496 bytes. The all-even-sector proof uses the archived DLMF 4.36.E2 snapshot plus a self-contained Gaussian positive-measure argument; no numerical logarithm enters. Independent theorem review returned PASS after the normalization hard gate.",
+        "artifact_paths": [
+          "results/integrability/octahedral_matchgate.json",
+          "proofs/octahedral_matchgate.md",
+          "experiments/e244_octahedral_matchgate.py",
+          "tests/test_octahedral_matchgate.py",
+          "sources/dlmf_4_36.html"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "callen_selected_walsh_compression",
+        "category": "THEOREM(all even local degrees at positive coupling)+COMPUTATION(exact higher-template relations/method boundary)",
+        "value": {
+          "matrix": "fixed contact-free selected-pivot/far-mark L_d(U,W)=c_|U xor W|, U even proper, W odd, d=2m",
+          "rank": "2^(d-1)-binom(d,m)/2",
+          "left_nullity": "binom(d,m)/2-1",
+          "pair_row_boundary": "every leakage-canceling combination has lambda(empty)=0",
+          "d6_raw": "31x32 rank22/nullity9; delete empty gives 30x32 rank21/nullity9",
+          "d6_cubic_fold": "19x16 rank13/nullity6; delete empty gives 18x16 rank12/nullity6",
+          "positive_relations": "six explicit inversion-invariant higher-template identities",
+          "far_mark_control": "20 contact-free marks on the 3x3x3 torus",
+          "scope": "fixed selected-pivot/far-mark block only; no pair/susceptibility closure or contact-inclusive/radius-expanded no-go",
+          "parameter": "0<v=tanh(K)<1"
+        },
+        "script": "experiments/e246_callen_walsh_compression.py",
+        "how_verified": "Producer passed 10/10 exact checks in 0.079249 process CPU seconds and 27344896 bytes. The clean-room verifier passed 14 current e240/e243/source, formal coefficient, d=2/4/6 Walsh and matrix, corrected raw/folded rank, weighted-kernel, far-mark, theorem-schema, scope, and Mach RSS gates at 24969216 bytes. Independent pre-implementation reconstruction corrected the scout preview from equal deleted-row rank to 13/12 folded and 22/21 raw.",
+        "artifact_paths": [
+          "results/correlations/callen_walsh_compression.json",
+          "proofs/callen_walsh_compression.md",
+          "experiments/e246_callen_walsh_compression.py",
+          "tests/test_callen_walsh_compression.py"
+        ],
+        "status": "theorem"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "all_entries_have_required_fields",
+      "passed": true,
+      "detail": "Every result entry contains value, how_verified, script, and an allowed status."
+    },
+    {
+      "name": "bookkeeping_acceptance_run",
+      "passed": true,
+      "detail": "18 total, 18 passed, 0 failed at 2026-08-11T19:16:42Z."
+    },
+    {
+      "name": "wave20_targeted_verifiers",
+      "passed": true,
+      "detail": "13/13 standalone wave-20 verifiers passed in the lead checkout; finite-memory SAW clean-room rebuild 18/18; susceptibility verifier passed after correcting its unique 5,5 ratio plateau wording."
+    },
+    {
+      "name": "wave21_targeted_verifiers",
+      "passed": true,
+      "detail": "5/5 targeted wave-21 verifiers passed in the lead checkout: bipartite log moments PASS after a 17/17 producer artifact; trace resultant PASS after 5/5; W-law rank mechanism reported 21 checks, 0 failures, PASS after 16/16; phase-sensitive upper PASS after 29/29; compact finite-memory SAW crosswalk PASS after 33/33. The fifth deliverable proves only the packed k<=12 crosswalk; memory 14 was explicitly not launched and no k=14 endpoint result is claimed."
+    },
+    {
+      "name": "wave22_targeted_verifiers",
+      "passed": true,
+      "detail": "8/8 accepted wave-22 standalone verifier fronts passed in the lead checkout: star decimation 14/14; tropical cut 9/9; token splitting 7/7; W-law exact sequence 11/11 after 13/13; Callen identity 14/14; flat-twist Hashimoto 13/13; box genus 18 checks after 12/12; trace exceptional set passed independent elimination and root stages. The compact SAW verifier was also repaired so both ordered digests are asserted and reran PASS."
+    },
+    {
+      "name": "wave23_targeted_verifiers",
+      "passed": true,
+      "detail": "2/2 wave-23 standalone fronts passed in the lead checkout: e242 producer 10/10 plus final current-source quotient/cofactor and disposition stages; e243 producer 8/8 plus independent closure verifier after adversarial repairs. The e242 verifier-only bracket-alignment provenance refresh explicitly records producer_rerun=false and unchanged mathematical payload."
+    },
+    {
+      "name": "wave24_targeted_verifiers",
+      "passed": true,
+      "detail": "3/3 wave-24 standalone fronts passed in the lead checkout: e244 producer 13/13 plus 21-check clean-room verifier; e245 producer 9/9 plus hardened independent degree/provenance verifier; e246 producer 10/10 plus 14-gate clean-room verifier. Independent theorem reviewers returned PASS after normalization, path-scope, provenance, and false-pass repairs."
+    }
+  ]
+}

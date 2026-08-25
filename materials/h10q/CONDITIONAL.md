@@ -3,9 +3,11 @@
 Status: **CONDITIONAL on classical Schinzel's Hypothesis H alone**.
 Classical Schinzel H is unproved.  The implication is proved in
 `THEOREMS.md` L19–L22; the six-unknown architecture and count are
-`THEOREMS.md` L6.  The intermediate per-cell statement H is retained in
-§2, but it is now a proved consequence of classical Schinzel H, not an
-additional conjectural premise.
+`THEOREMS.md` L6.  L31 proves that AP1 (\(R_{\rm bad}\le1\) in one
+selected aligned class per cell) is equivalent to the intermediate
+per-cell statement H, but AP1 remains unproved.  H is a proved
+consequence of classical Schinzel H, not an additional conjectural
+premise.
 
 Conventions follow `THEOREMS.md`: $K=\mathbb Q$, $S=\{2\}$,
 $\pi=2$, $u=1$,
@@ -171,6 +173,25 @@ denominator is a square and $\alpha$ is an $l$-unit
 remaining $-1$ symbols even; when none remain, W2 and
 Hasse–Minkowski give global solubility (`THEOREMS.md`, L7c, L9 and W2).
 
+**Exact parity replacement (L31).**  For a \(Q(t)\)-prime member in one
+selected aligned class, let \(R_{\rm bad}(t)\) count the remaining
+odd-valuation outside places whose Hilbert symbol is \(-1\).  The
+alignment conditions make every controlled, moving, and real symbol
+\(+1\), while unsupported even valuations are also \(+1\).  Hilbert
+reciprocity therefore gives
+\[
+R_{\rm bad}(t)\equiv0\pmod2.
+\]
+Define AP1 to mean that every cell has one selected aligned class and
+one \(Q(t)\)-prime member with \(R_{\rm bad}(t)\le1\).  Then, inside this
+protocol,
+\[
+\boxed{\mathrm{AP1}\iff H.}
+\]
+Indeed AP1 plus parity forces \(R_{\rm bad}=0\), and H trivially implies
+AP1.  This identifies the exact unconditional replacement one would
+need; it does not prove AP1 (`THEOREMS.md`, L31e).
+
 **PROVED implication: classical Schinzel H $\Rightarrow$ H.**
 
 1. L20 supplies a nonempty odd character-admissible progression of
@@ -334,7 +355,7 @@ All bibliographic details below were source-checked in
   reasons documented in the source-checked literature report
   (`data/litscout_h10q.md`).
 
-### 4.3 L23–L27: unconditional frontier theorems, but no member theorem
+### 4.3 L23–L31: unconditional frontier theorems, but no uniform member theorem
 
 L23 now proves a genuine unconditional theorem for the selected
 linear/octic sequence.  After absorbing the finitely many exceptional
@@ -351,15 +372,20 @@ This is unconditional **small-prime cleanliness**, not intermediate H:
 $|G(t)|=X^{8+o(1)}$ can retain up to $16$ factors above $z$, and
 reciprocity permits $0,2,\ldots,16$ bad odd-valuation factors.
 
-The first missing analytic input is therefore a parity-sensitive
-two-large-bad-divisor estimate in the sector
+The first missing analytic input is therefore a pointwise fixed-family
+Buchstab or analytic-Hilbert-detector asymptotic.  Its first term beyond
+the available distribution level is the sector
 $$p_1,p_2\ge z,\qquad p_1p_2>D,$$
-with both primes of bad sign and odd valuation.  Equivalently one needs
-$R_{\rm bad}\le1$ for sign-decorated divisors of the octic at prime
-arguments.  Even Elliott--Halberstam leaves up to eight large factors;
-the strongest cited general almost-prime result gives only $P_{12}$
-after a fixed-AP adaptation (`THEOREMS.md`, L23a–b;
-`data/l23_half_sieve.jsonl`).
+with both primes of bad sign and odd valuation.  The raw root-class
+expansion has a positive \(R_pR_q/4\) main term, and
+\(\sum_{X^{0.49}\le p\le X^8}1/p\) is constant-order.  Thus signed
+character cancellation or an AP-error bound alone cannot discard the
+unsigned pair sector.  The desired final output is a positive zero-bad
+main term, equivalently AP1 at the existential level.  Even
+Elliott--Halberstam leaves up to eight large factors; the strongest
+cited general almost-prime result gives only \(P_{12}\) after a
+fixed-AP adaptation (`THEOREMS.md`, L23a–b and L31d–e;
+`data/l23_half_sieve.jsonl`; `data/l31_frontier_push.jsonl`).
 
 The algebraic alternatives tested in L23 do not bypass that sector.
 The untwisted Capell square-in-$K$ collapse is impossible on the
@@ -384,35 +410,89 @@ $4{,}026{,}282$ zero-hit scan is corroboration only; the mod-$16$
 exhaustion is the proof (`THEOREMS.md`, L24;
 `data/l24_diagonal_{geometry,arithmetic,local,search}.jsonl`).
 
-L25–L27 supply genuinely non-diagonal local and algebraic advances.
+L25–L30 supply genuinely non-diagonal local and algebraic advances.
 L25 proves that two fixed scalings cover complementary dyadic parities,
 but its target formula is not aligned.  L26's even-pullback reciprocal
 tie gives
 $$P_{\rm rec}(b)=b^4T(b+b^{-1}),\qquad\deg T=4,$$
 automatic dyadic splitting, and the trace-character identity
-$(2b|p)=(2(u+2)|p)$; the quartic squareclass and global member remain
-open.  L27's fixed shear $(2X+28\rho,sX+\rho)$ covers every dyadic
-parity and every standard aligned odd target, including $3,5$, but its
-global degree-$8$ cover has no proved rational point
-(`THEOREMS.md`, L25–L27;
+$(2b|p)=(2(u+2)|p)$.  L28 proves uniformly that this trace quartic is
+irreducible over $\mathbb Q_2$ and that
+$$
+N(2(\theta+2))\in A\mathbb Q_2^{\times2},
+\qquad A\equiv5\pmod8,
+$$
+so the bad-sign extension is always nontrivial.  L29 now classifies the
+distinct reciprocal lift:
+$$
+\theta^2-4\in\mathbb Q_2(\theta)^{\times2}
+\iff v_2(Z)=-2\ \text{or}\ v_2(Z)\ge2
+$$
+on the square-\(Z\) family.  Its pullback
+\(Z=8z^2/(1+z^2)\) preserves every positive odd valuation and forces
+the split stratum; its slice \(b=w\rho^2\) freezes the norm field but
+retains obstruction pairs.  L31 proves one reciprocal member, not a
+uniform member theorem.
+
+L27's fixed shear \((2X+28\rho,sX+\rho)\) covers every dyadic parity
+and every standard aligned odd target, including \(3,5\), but its
+global degree-$8$ cover has no proved rational point.  L30 replaces it
+by the constant-two section
+\[
+(y,r)=(2,sX+\rho),
+\]
+whose exact equation is quadratic in \(m=\lambda^2\), hence degree
+\(4\) in \(\lambda\).  A uniform Hensel proof solves every dyadic
+stratum, a character sum supplies fibre-regular rows for \(w\ge5\),
+and the exact \((a,b,z)=(5,3,3)\) fibre solves \(w=3\) by strong
+Hensel; the empty control \((1,3,3)\) records fixed-\(a\) nonuniformity.
+One real stratum works.  L30 also proves generic rational-section
+rigidity for every square-branch \(d(b)\) tie and every
+\(B\)-independent linear-shear cancellation.  No cube-compatible
+controlled global root is proved.  On L26's square pullback, the
+trace-base degree-\(8\) fixed-field auxiliary still requires a separate
+reciprocal-lift conic, whose parameterization recovers L29's parity
+slice (`THEOREMS.md`, L25–L30;
 `data/l25_scaled_coupling.jsonl`;
 `data/l26_reciprocal_tie.jsonl`;
-`data/l27_triangular_shear.jsonl`).
+`data/l27_triangular_shear.jsonl`;
+`data/l28_trace_field.jsonl`;
+`data/l29_reciprocal_frontier.jsonl`;
+`data/l30_quartic_frontier.jsonl`).
+
+L31 changes two exact scopes.  First, the mandatory fixed-field slice
+has one proved global member at
+\[
+(w,a,Z,q_0,b,\rho,\lambda)
+=(13,3,169,1,13,14/13,12);
+\]
+the recursive Pocklington and complete Hilbert certificate are in
+`data/l31_frontier_push.jsonl`.  This is one target, not a uniform
+member theorem.  Second, the constant-two quartic has an exact rational
+point on the unique constant-\(c=-64/25\) bridge section before the cube
+condition.  Its \(Z\) is not a cube; imposing \(Z=z^3\) produces two
+genus-\(2\) curves.  Magma V2.29-9 `RationalPointsGenus2` returns only
+\((0:\pm8:1)\) for both, with completeness `true`; hence this unique
+section has no guarded cube point.  The exact external request and help
+semantics are recorded, but no standalone Magma certificate is checked
+in.  Other L30 sections remain open
+(`data/l31_frontier_push.jsonl`;
+`data/l31_magma_genus2.json`).
 
 Consequently classical Schinzel H has **not** become proved, weaker, or
-removable in Theorem C.  The exact next targets are the L26 quartic
-trace squareclass/member problem, a target-specific rational point on
-the L27 global cover, or the two-large-bad-divisor dispersion estimate.
+removable in Theorem C.  The exact next targets are a uniform-in-target
+reciprocal member theorem, a cube-compatible controlled root of L30's
+quartic, or AP1 via the fixed-family detector asymptotic.
 Theorem C remains **CONDITIONAL on classical Schinzel H alone**.
 
 ---
 
 ## 5. Provenance and discipline
 
-- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L27;
+- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L31;
   `RESULTS.md`; and the cited `data/` artifacts.  The L22 proof reports
   remain `/tmp/l22_elimination.md` and
-  `/tmp/l22_reciprocal_cube.md`; all L23–L27 producer/data pairs are
+  `/tmp/l22_reciprocal_cube.md`; all L23–L31 producer/data pairs are
   inventoried in `README.md`.
 - Engine discipline remains proven-primality only.  The exact
   Miller–Rabin, Pocklington and Brillhart–Lehmer–Selfridge scopes are
@@ -421,18 +501,23 @@ Theorem C remains **CONDITIONAL on classical Schinzel H alone**.
 - The HalfSieveAudit, FibrationAudit and DiagonalAudit verdicts were
   SOUND at confidences $0.90$, $0.88$ and $0.90$ respectively.
   ReciprocalTieAudit's three scope findings were applied; the corrected
-  TriangularShearAudit returned no high-confidence finding.  Their
-  corrections are incorporated in `THEOREMS.md`, L23–L27 and retain all
-  finite rows at their declared scopes.
+  TriangularShearAudit returned no high-confidence finding.
+  TraceFieldAudit independently rederived L28's coefficients, Newton
+  polygons, Ferrari cases, norm and Capell step and returned SOUND at
+  confidence $0.99$.  L29's first independent pass rejected an
+  under-specified higher-polygon presentation; the proof was replaced by
+  an ordinary resultant argument, whose embedding-invariance step and
+  two slopes passed a second independent audit at confidence $0.82$.
+  These corrections are incorporated in `THEOREMS.md`, L23–L31.
 - The $4{,}026{,}282$ diagonal attempts and every other bounded no-hit
   scan are EVIDENCE only.  Uniform diagonal emptiness is the dyadic
   theorem, not extrapolation from the scan.
 - Nothing here depends on Sun's unrefereed §§3–8 chain.  Soundness is
   inherited from the audited block; completeness of the conditional
-  implication uses L19–L22 and classical Schinzel H.  L23–L27 sharpen
-  the frontier but are not replacements for that conjectural input.
+  implication uses L19–L22 and classical Schinzel H.  L23–L31 sharpen
+  the frontier but do not prove AP1 or replace that conjectural input.
 - **Final status:** the six-universal-quantifier record and
   $\operatorname{efd}\le5$ are established conditionally on classical
-  Schinzel H alone (`THEOREMS.md`, L22d and L24e–L27).  Classical
+  Schinzel H alone (`THEOREMS.md`, L22d and L24e–L31).  Classical
   H is unproved, so H10/$\mathbb Q$ and the unconditional six-quantifier
   statement remain open.

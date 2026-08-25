@@ -796,101 +796,136 @@
   "case1_(21,107)": "pure extension-SAT case; search size = number of base graphs solved (305,671)"
  },
  "next_research_campaign": {
-  "id": "higher_order_identity_positive_deficiency",
-  "date": "2026-08-16",
-  "status": "MIXED_PAIR_LIFT_CLOSED; CAYLEY_ORDER45_CLOSED; AUTOMORPHISM_GROUP_IS_A_2_GROUP_FOR_RAMSEY_SRG: levels 1 and 2 of the exact local identity basis are exhausted; all 8,388,608 order-45 Cayley connection sets are excluded; and every odd-prime automorphism is excluded for a Ramsey-good srg(45,22,10,11). Order three is the prior solver-free closure. For order five, a Ramsey-free orbit-diagonal moment eliminates f>=10, a 56,755-prefix integral Seidel-quotient search eliminates f=0 in the Ramsey lane, and an R(3,4)/R(4,3) incidence bridge eliminates f=5. Orders seven and eleven fall to support/complement packing, a fixed-block Rayleigh contradiction, and a complete 46,200-block cyclic enumeration. Orders at least thirteen fall by handshake or cycle parity. Cauchy's theorem therefore makes the automorphism group a 2-group; involutions remain open. Published replay independently verifies all 288 Maksimovic S3 graphs and finds both K5 and I5 in each. No R(5,5) bound is claimed. Residual routes: involution symmetry, VeriPB-certified non-local gluing, or asymmetric complementary SAT.",
-  "claim_class": "Publishable structural lemma or exact reduction for hypothetical Ramsey(5,5,45) graphs; not a benchmark speedup and not an R(5,5) bound unless complete coverage is separately proved.",
-  "problem": "The implemented structural layer uses only the m=2 McKay-Radziszowski excess identity, whose n=45 edge-deficiency ceiling is 360. Candidate 3 showed that one-vertex edge-window filtering removes cheap pairs rather than dominant search mass.",
+  "id": "involution_f5_signed_completion",
+  "date": "2026-08-24",
+  "status": "F5_RAMSEY_R33_SUPPORT_FILTER_EXACT_6627_LABELLED_705_D5_ORBITS: the exact 7,872/844 balanced-support census is filtered by five forced R(3,3) inequalities to 6,627 labelled supports in 705 D5 orbits. The filter rejects 139 orbits / 1,245 labelled supports and supplies 1,227 exact four-vertex W relation domains. Signed completion remains open.",
+  "claim_class": "Exact necessary reduction for Ramsey-good completions in the fixed-five srg(45,22,10,11) involution branch; not a completion theorem and not an R(5,5) bound.",
+  "problem": "For each of 705 surviving support orbits, enumerate or reject complementary signed Seidel blocks W,T satisfying Q_F R+RW=-J, W^2+2R^T R=45I-2J, T^2=45I, W_ij^2+T_ij^2=4, the exact W sign degrees, and the 1,227 recorded R(3,3) relation domains. Bare solver UNSAT, unchecked deletion, and unproved symmetry quotienting are outside the trust model.",
+  "exact_frontier": {
+   "input": {
+    "labelled_supports": 7872,
+    "d5_orbits": 844
+   },
+   "r33_rejected": {
+    "labelled_supports": 1245,
+    "d5_orbits": 139
+   },
+   "surviving": {
+    "labelled_supports": 6627,
+    "d5_orbits": 705,
+    "orbit_size_histogram": {
+     "1": 2,
+     "5": 81,
+     "10": 622
+    }
+   },
+   "relation_domains": 1227,
+   "disposition": "F5_RAMSEY_R33_SUPPORT_FILTER_EXACT_6627_LABELLED_705_D5_ORBITS"
+  },
   "primary_sources": [
    {
-    "work": "McKay-Radziszowski, Subgraph Counting Identities and Ramsey Numbers, JCTB 69 (1997), Theorem 2.2",
-    "url": "https://users.cecs.anu.edu.au/~bdm/papers/r55.pdf",
-    "role": "Known m>=1 neighborhood identities; the repository currently implements only the m=2 consequence."
+    "work": "Braginsky-Yellenki-Zhu with Mackey and Battleman, Exploring srg(45,22,10,11), 2026 conference slides",
+    "url": "https://www.cs.rit.edu/~spr/COURSES/CCOMP/srg_r55.pdf",
+    "role": "Current direct SAT attack, 313 R(3,5,10) anchor cases, lex signatures, and the homogeneous-triangle Ramsey encoding."
    },
    {
-    "work": "Engstrom, A proof of the McKay-Radziszowski subgraph counting conjecture",
-    "url": "https://arxiv.org/abs/1002.4304",
-    "role": "Proof and general normal form for the known mixed neighborhood/anti-neighborhood degree-4 identity."
+    "work": "Goryainov-Haemers-Konstantinova-Li, Thin divisible designs graphs and symmetric weighing matrices",
+    "url": "https://arxiv.org/abs/2512.16653",
+    "role": "Recent structural precedent for involution quotients and orthogonal signed partner matrices."
    },
    {
-    "work": "Angeltveit-McKay, R(5,5)<=46",
-    "url": "https://arxiv.org/abs/2409.15709",
-    "role": "Current upper-bound method and evidence that the published n=46 argument uses the m=2 excess layer."
+    "work": "Bogaerts et al., Proof Logging for Projected Enumeration in VeriPB, CP 2026",
+    "url": "https://doi.org/10.4230/LIPIcs.CP.2026.43",
+    "role": "Checked solx projected enumeration and ENUMERATION_COMPLETE, conditional on checked deletion and a separately proved orbit key."
+   },
+   {
+    "work": "Bogaerts et al., Faster Certified Symmetry Breaking Using Orders With Auxiliary Variables, AAAI 2026",
+    "url": "https://arxiv.org/abs/2511.16637",
+    "role": "Linear-size proof-logged lex orders for residual identical-column symmetry."
+   },
+   {
+    "work": "Kirchweger-Manrique-Szeider, Formally Verified Graph Generation with SAT Modulo Symmetries and Lean, IJCAR 2026",
+    "url": "https://doi.org/10.1007/978-3-032-32589-1_8",
+    "role": "Lean checking of SMS permutation witnesses followed by LRAT; current scope is UNSAT rather than certified orbit enumeration."
    }
   ],
   "approaches_considered": [
    {
-    "name": "higher-order exact identity LP/ILP",
+    "name": "forced fixed-window Ramsey intersections",
+    "decision": "COMPLETED",
+    "tradeoff": "Solver-free and elementary; exactly removes 139 D5 support orbits but cannot decide signed completion."
+   },
+   {
+    "name": "global rational W cross-equation relaxation",
+    "decision": "DIAGNOSTIC_COMPLETE",
+    "tradeoff": "All 844 inputs were floating-point LP feasible in 7.85 single-core seconds, so this relaxation supplies no cut. No floating result enters the theorem."
+   },
+   {
+    "name": "one-hot pseudo-Boolean W/T completion",
     "decision": "PRIMARY",
-    "tradeoff": "Best use of existing validated catalogs and best realistic chance of extracting a universal positive-deficiency consequence. Solver output is discovery only."
+    "tradeoff": "Small coefficients, an explicit action on every relation and auxiliary variable, native cardinality constraints, and a VeriPB/CakePB certificate path. More engineering than bare CNF but closes the symmetry trust gap."
    },
    {
-    "name": "adjacent-pair deficiency-slack theorem",
-    "decision": "SECOND_STAGE_ONLY",
-    "tradeoff": "Potentially stronger two-vertex coupling, but broad positive-deficiency catalogs are missing. Enter only if the higher identities expose a specific pair interaction."
-   },
-   {
-    "name": "exact flag-algebra/SDP discovery",
-    "decision": "DEFERRED",
-    "tradeoff": "Broadest search space but highest numerical-certification and novelty risk. Requires separate approval after the structured exact basis is exhausted."
+    "name": "LeanSMS dynamic isomorph-free completion",
+    "decision": "CAPSTONE_ONLY",
+    "tradeoff": "Strong verified UNSAT path, but certified enumeration remains future work and sequential-counter auxiliaries can obscure the intended column symmetry."
    }
   ],
-  "first_exact_basis": {
-   "identities": [
-    "McKay-Radziszowski Theorem 2.2 at m=2",
-    "McKay-Radziszowski Theorem 2.2 at m=3",
-    "McKay-Radziszowski Theorem 2.2 at m=4",
-    "Engstrom-proved mixed degree-4 neighborhood/anti-neighborhood identity"
-   ],
-   "features": "Exact induced-subgraph counts for the connected and T_{m,j} patterns required by those identities, with complement counterparts; no floating-point motif counts.",
-   "domains": "All 656 validated Ramsey(5,5,42) graphs; every applicable validated R(4,5) edge-extremal catalog at orders 17-24; the complete validated order-24 catalog where required."
-  },
   "architecture": [
    {
-    "slice": "identity derivation and replay",
-    "deliverable": "An independent combinatorial derivation and exact-integer verifier for m=3 first, followed by m=4 and the mixed identity only if m=3 passes."
+    "stage": "support and Ramsey presolve",
+    "deliverable": "Hash-bound 705-candidate artifact, five window multiplicities, and exact four-vertex W domains with a disjoint finite checker."
    },
    {
-    "slice": "catalog motif vectors",
-    "deliverable": "Deterministic exact feature vectors with SHA-pinned inputs and independently recomputed aggregate checks."
+    "stage": "linear invariant block",
+    "deliverable": "Enumerate symmetric W row domains using sign degrees and Q_F R+RW=-J; reject only by deterministic tables or checked PB proofs."
    },
    {
-    "slice": "n=45 exact feasibility cone",
-    "deliverable": "A rational LP/ILP over degree, edge-deficiency, motif, complement, and handshake constraints. Optimization output may propose a cut but is outside the trust base."
+    "stage": "quadratic invariant block",
+    "deliverable": "Enforce W^2+2R^T R=45I-2J with exact signed overlap targets and independently replayed W witnesses."
    },
    {
-    "slice": "theorem extraction",
-    "deliverable": "Explicit rational coefficients, complete hypotheses, a human-readable counting proof, and a disjoint checker proving the finite catalog inequalities used by the cut."
+    "stage": "anti-invariant partner",
+    "deliverable": "Use the complementary support to enforce T^2=45I, modular rank checks, and exact relation recovery."
+   },
+   {
+    "stage": "Ramsey completion",
+    "deliverable": "Reconstruct every surviving 45-vertex graph and independently check SRG parameters, the involution, and K5/I5 avoidance."
+   },
+   {
+    "stage": "certification",
+    "deliverable": "Pin VeriPB CP2026-enumeration at 6d38dab246af9c321b8f17cb5a187f2fbb9e491d and CakePB CP2026 at a7593ef22de2fc0b47a688f2d4f08e6b742735af; use checked deletion only and prove any preserved orbit key separately."
    }
   ],
   "significant_success_gate": {
-   "required": "A universally proved n=45 consequence with a primary-source novelty audit and independent replay.",
-   "quantified_consequences_any_one": [
-    "Eliminate degree 20 from every hypothetical Ramsey(5,5,45) graph.",
-    "Lower a required edge-deficiency layer from 8 to 7, eliminating the deepest catalog layer.",
-    "Reduce the global deficiency ceiling from 360 to at most 315.",
-    "Eliminate an entire named positive-deficiency local-type family required by every complete gluing cover."
-   ],
+   "required": "At least one additional support orbit exactly rejected by an independent finite checker or VeriPB/CakePB proof, or a complete checked W/T census over all 705 survivors.",
    "not_sufficient": [
-    "A numerical LP optimum without an exact certificate.",
-    "An identity already in the primary sources without a new n=45 consequence.",
-    "A search-size or wall-clock improvement.",
-    "A sampled motif inequality."
+    "Floating-point LP infeasibility without a rational certificate.",
+    "Bare SAT or SMT UNSAT.",
+    "A conflict-limited UNKNOWN result.",
+    "A projected count without a theorem identifying the projection with residual column orbits.",
+    "A signed completion that is not independently checked for K5 and I5."
    ]
   },
+  "resource_policy": [
+   "Local discovery probes use one solver process and one numerical thread.",
+   "No sustained all-core local enumeration; parallel certificate campaigns require an explicit separate launch decision.",
+   "Run the 26 published signed support types as model controls where applicable, but do not treat their K5/I5-bad graphs as positive controls for the Ramsey filter.",
+   "Record wall time, proof bytes, checker wall/memory, exact tool commits, and every timeout."
+  ],
   "trust_model": [
-   "AI and optimization solvers remain outside the trust base.",
-   "Every identity is derived independently and evaluated in exact integer or rational arithmetic.",
-   "Known identities must replay on all 656 validated n=42 graphs and every applicable validated extremal catalog.",
-   "The final cut must have explicit rational coefficients and a separate checker.",
-   "Catalog completeness assumptions are named; a bound claim requires a separate complete certificate chain.",
-   "Novelty is checked against the primary sources before any result is called new."
+   "The support and R(3,3) layers use explicit finite enumeration and independent standard-library checkers.",
+   "D5 is expanded explicitly; no solver is trusted to supply that quotient.",
+   "Residual identical-column swaps are keyed by the full pair (support mask, internal type), and every one-hot/product auxiliary must transform equivariantly.",
+   "Negative solver claims require VeriPB elaboration plus CakePB or an equivalently checked LRAT path.",
+   "Projected ENUMERATION_COMPLETE forbids unchecked deletion and requires a separate canonical-orbit-key theorem.",
+   "No fixed-five SRG result alone proves a general R(5,5) bound."
   ],
   "stop_conditions": [
-   "Stop and record a negative result if m=3 fails exact replay.",
-   "Stop this basis and record a negative result if m=2,3,4 plus the mixed identity produce no strict accepted consequence after all predefined feature vectors are exhausted.",
-   "Do not pivot to search-engine optimization, SDP, or raw catalog scaling without a separately approved design.",
-   "FULFILLED 2026-08-21: m=2,3,4 plus the Engstrom mixed identity produced no accepted consequence; all three instantiable routes carry exact primal rejection witnesses over the eight-coefficient basis, recorded in data/engstrom_identity.json:searches."
+   "Do not optimize the rational W relaxation further; it rejected zero of 844 inputs.",
+   "If a staged integral relaxation rejects nothing, retain its checked survivor models and advance immediately to the next exact equation layer.",
+   "If proof logging cannot preserve the declared residual symmetry action, fall back to fully labelled enumeration rather than accept an unproved lex leader.",
+   "Keep any conflict-limited or timeout result explicitly experimental."
   ]
  },
  "status": "COMPLETE: all 11 baselines frozen with wall + search-size metrics (v2); gate 4 stopped after candidates 1 and 3 failed held-out transfer and candidate 2 was deprioritized on measured evidence"

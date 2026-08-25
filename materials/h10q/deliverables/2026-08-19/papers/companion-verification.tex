@@ -65,16 +65,26 @@ search is corroborating \textsc{evidence} only; the proof is the exact
 \(2\)-adic valuation and modulo-\(16\) argument.  L25 makes the first
 separation exact: two fixed scaled type-I couplings have \(2\)-adic
 roots on complementary \(s\)-parities.  L26 then gives a reciprocal
-even-pullback tie with a quartic trace character.  L27 gives a single
-triangular shear which is locally soluble on every dyadic parity and
-every standard aligned odd target.  Their global member/rational-point
-problems remain \textsc{open}; no improved count is claimed.  We give
-schemas, commands, and strict licenses for all fourteen new
-producer--artifact pairs.
+even-pullback tie with a quartic trace character.  L28 proves uniformly
+that this trace quartic and its bad-sign Capell cover are irreducible
+over \(\Q_2\).  L29 classifies the distinct reciprocal lift and gives a
+target-preserving dyadic compressor.  L27 gives a single triangular
+shear locally soluble on every dyadic parity and every standard aligned
+odd target.  L30 replaces its degree-eight equation by a constant-two
+even quartic with selected fibres at every odd target, including an
+exact strong-Hensel \(w=3\) row, and proves generic branch/shear
+rigidity.  L31 promotes one fixed-field row to a proved global
+reciprocal member at \(w=13\), with an explicit lift, recursive
+Pocklington chain, and complete Hilbert table.  Its exact constant-two
+point lies before the mandatory cube pullback, which remains
+\textsc{open}; no improved count is claimed.  We give schemas, commands,
+and strict licenses for all eighteen new producer--artifact pairs.
 % src: data/l24_diagonal_geometry.jsonl; data/l24_diagonal_arithmetic.jsonl
 % src: data/l24_diagonal_local.jsonl; data/l24_diagonal_search.jsonl
 % src: data/l25_scaled_coupling.jsonl; data/l26_reciprocal_tie.jsonl
-% src: data/l27_triangular_shear.jsonl
+% src: data/l27_triangular_shear.jsonl; data/l28_trace_field.jsonl
+% src: data/l29_reciprocal_frontier.jsonl; data/l30_quartic_frontier.jsonl
+% src: data/l31_frontier_push.jsonl
 \end{abstract}
 
 \section{The verification contract}
@@ -131,17 +141,21 @@ claim.
 
 \emph{OPEN} names an unproved statement and is never filled by a scan.
 The unconditional simultaneous prime-value assertion and the
-two-large-bad-divisor estimate remain OPEN.  So do the L26 quartic trace
-squareclass/member problem and rational points on L27's global
-degree-eight shear cover.  L25's own aligned-target and \(w=3,5\)
-questions remain open for those two scaled formulas, although L27 solves
-them on a different shear.  The unscaled diagonal five-count is not in
-this list: it is PROVED FALSE because both unit orientations are
+fixed-family two-large-divisor detector asymptotic remain OPEN.  L28
+closes the L26 quartic trace field and bad-sign squareclass; L29 closes
+the distinct reciprocal-lift squareclass; and L31 proves one globally
+good reciprocal member at \(w=13\), not a uniform member theorem.
+Cube-compatible controlled rational points on L30's lower-degree even
+quartic remain OPEN.  L25's own aligned-target and \(w=3,5\) questions
+remain open for those two scaled formulas, although L27 and L30 solve
+them on different sections.  The unscaled diagonal five-count is not
+in this list: it is PROVED FALSE because both unit orientations are
 \(\Phi\)-empty over \(\Q_2\).
 % src: data/l23_half_sieve.jsonl; data/l23_fibration.jsonl
 % src: data/l23_rational_section.jsonl; data/l24_diagonal_arithmetic.jsonl
 % src: data/l25_scaled_coupling.jsonl; data/l26_reciprocal_tie.jsonl
-% src: data/l27_triangular_shear.jsonl
+% src: data/l27_triangular_shear.jsonl; data/l28_trace_field.jsonl
+% src: data/l29_reciprocal_frontier.jsonl; data/l31_frontier_push.jsonl
 
 Labels only move upward through a valid proof.  In particular,
 \texttt{PrimalityBound}, \texttt{FactorBudget}, a timeout guard, a
@@ -572,7 +586,7 @@ rational points, aligned-target compatibility, and the target primes
 \begin{table}[p]
 \centering
 \scriptsize
-\caption{L26--L27 data artifacts, producers, and strict licenses.}
+\caption{L26--L31 data artifacts, producers, and strict licenses.}
 \begin{tabular}{@{}p{.25\textwidth}p{.25\textwidth}p{.42\textwidth}@{}}
 \toprule
 Data artifact & Producer & License\\
@@ -580,15 +594,59 @@ Data artifact & Producer & License\\
 \path{l26_reciprocal_tie.jsonl} &
 \path{l26_reciprocal_tie.py} &
 \textsc{proved}: reciprocal quartic-trace identity, dyadic square,
-guarded W1 target, and trace-character descent.  The degree-\(4\) field
-and bad-sign extension are conditional on irreducibility and
-nonsquareness.  One mod-\(37\) fibre is \textsc{evidence}.\\
+guarded W1 target, and trace-character descent.  L28 supersedes the
+former conditional trace-field license.  L31 promotes the \(w=13\)
+fixed-field row; no uniform member theorem follows.\\
 
 \path{l27_triangular_shear.jsonl} &
 \path{l27_triangular_shear.py} &
 \textsc{proved}: exact shear octic, one-piece dyadic Hensel theorem,
-all-odd-prime aligned-target theorem, and one guarded real sample.
-\textsc{open}: global rational point, member theorem, and five-count.\\
+all-odd-prime aligned-target theorem, one guarded real sample, and
+three scoped section no-gos.  \textsc{open}: full global rational point,
+member theorem, and five-count.\\
+
+\path{l28_trace_field.jsonl} &
+\path{l28_trace_field.py} &
+\textsc{proved}: uniform trace-quartic irreducibility over \(\Q_2\),
+the norm squareclass
+\(N(2(\theta+2))\in A\Q_2^{\times2}\), and irreducibility of the
+bad-sign Capell cover.  L29 supersedes the distinct-lift question.
+L31 proves one member; the uniform parity step and every count
+improvement remain \textsc{open}.\\
+
+\path{l29_reciprocal_frontier.jsonl} &
+\path{l29_reciprocal_frontier.py} &
+\textsc{proved}: complete dyadic reciprocal-lift classification,
+ordinary resultant certificate at \(v_2(Z)=-2\), target-preserving
+compressed pullback, and fixed-field reduction.  L31 promotes the
+\(w=13\) row with a complete certificate.  The other finite fibres and
+fixed-row parity scan remain \textsc{evidence}.  \textsc{open}: uniform
+member theorem and every count improvement.\\
+
+\path{l30_quartic_frontier.jsonl} &
+\path{l30_quartic_frontier.py} &
+\textsc{proved}: exact constant-two even quartic, uniform dyadic Hensel
+theorem, fibre-regular rows for every odd \(w\ge5\), an exact
+strong-Hensel \(w=3\) fibre with an empty fixed-\(a\) control, one real
+stratum, generic square-branch/shear rigidity, and square-pullback
+trace-base/lift separation.  The
+\(13{,}224\)-row zero-hit probe is \textsc{evidence}.  \textsc{open}:
+cube-compatible controlled quartic root, member theorem, and every
+count improvement.\\
+
+\path{l31_frontier_push.jsonl}; \path{l31_magma_genus2.json} &
+\path{l31_frontier_push.py}; external Magma V2.29-9~\cite{magma} replay &
+\textsc{proved}: one exact fixed-field reciprocal member at \(w=13\);
+the mandatory lift, recursive Pocklington chain, and complete Hilbert
+table; the unique constant-\(c=-64/25\) bridge-square section and one
+exact rational \(H_2\)-point before the cube pullback; two genus-\(2\)
+cube reductions; the positive-main dispersion correction; and AP1
+equivalent to intermediate H inside the selected L19--L22
+aligned-class/\(Q\)-prime protocol.  The external
+\texttt{RationalPointsGenus2} completeness flags show both cube curves
+have only \(z=0\), closing that unique section.  \textsc{open}: other
+cube-compatible controlled points, uniform member theorem, AP1, and
+every count improvement.\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -818,21 +876,38 @@ search is bounded \textsc{evidence}.  The artifact does not weaken L24 and
 does not improve the conditional count.
 % src: data/l25_scaled_coupling.jsonl
 
-Run the L26 and L27 producers:
+Run the L26--L31 producers:
 \begin{verbatim}
 nice -n 19 python3 math/h10q/l26_reciprocal_tie.py
 nice -n 19 python3 math/h10q/l27_triangular_shear.py
+nice -n 19 python3 math/h10q/l28_trace_field.py
+nice -n 19 python3 math/h10q/l29_reciprocal_frontier.py
+nice -n 19 python3 math/h10q/l30_quartic_frontier.py
+nice -n 19 python3 math/h10q/l31_frontier_push.py
 \end{verbatim}
 They write the corresponding artifacts
 \begin{center}
 \path{data/l26_reciprocal_tie.jsonl}\\
-\path{data/l27_triangular_shear.jsonl}.
+\path{data/l27_triangular_shear.jsonl}\\
+\path{data/l28_trace_field.jsonl}\\
+\path{data/l29_reciprocal_frontier.jsonl}\\
+\path{data/l30_quartic_frontier.jsonl}\\
+\path{data/l31_frontier_push.jsonl}\\
+\path{data/l31_magma_genus2.json} (external audit).
 \end{center}
-Matching reports are written under \path{/tmp}.  L26's one-fibre
-irreducibility row remains
-\textsc{evidence}; L27's \(43\) small-prime rows are a finite exhaustion
-used together with, not instead of, the displayed Weil bound.
+Matching reports are written under \path{/tmp}.  L31's \(w=13\) row is
+a theorem because it carries the full lift, primality, and Hilbert
+certificate; the remaining L29 member rows retain their finite
+\textsc{evidence} license.  The external Magma~\cite{magma} artifact records exact
+code, version, complete point sets, and intrinsic-help semantics; it
+has no standalone checked-in Magma certificate.  L27 and L30's finite
+target cross-checks accompany uniform character proofs.  L28's theorem
+is its exact Newton/resolvent/norm proof; L29's is its
+Hensel/congruence/resultant proof.
 % src: data/l26_reciprocal_tie.jsonl; data/l27_triangular_shear.jsonl
+% src: data/l28_trace_field.jsonl; data/l29_reciprocal_frontier.jsonl
+% src: data/l30_quartic_frontier.jsonl; data/l31_frontier_push.jsonl
+% src: data/l31_magma_genus2.json
 
 \section{Review-driven correction as methodology}
 
@@ -957,14 +1032,18 @@ count follows.
 
 \item L26 changes the algebraic coordinates, not the theorem: its
 reciprocal octic has a quartic trace character and automatic dyadic
-splitting, but no uniform quartic squareclass or global member theorem.
-Its W1 statement retains every unit hypothesis.
-% src: data/l26_reciprocal_tie.jsonl
+splitting.  L28 proves the trace quartic and bad-sign cover uniformly
+irreducible.  L29 now classifies the distinct reciprocal lift exactly
+and supplies a target-preserving compressed pullback, but no global
+reciprocal member theorem.
+% src: data/l26_reciprocal_tie.jsonl; data/l28_trace_field.jsonl
+% src: data/l29_reciprocal_frontier.jsonl
 
 \item L27 closes the displayed local coupling gaps on a new formula.
 One shear covers both dyadic parities and every standard aligned odd
-target, including \(3,5\), but no rational point on its global octic is
-known.  No member theorem or improved count follows.
+target, including \(3,5\).  The linear-\(B\), canonical-\(\lambda\), and
+\(y=0\) sections are excluded, but no rational point on the full global
+octic is known.
 % src: data/l27_triangular_shear.jsonl
 \end{enumerate}
 
@@ -993,12 +1072,20 @@ formal at-most-five rank count for that proposal is therefore vacuous.
 L25 proves that fixed scaling removes the universal dyadic wall, but
 leaves parity and aligned-target issues in those formulas.  L26 gives a
 different reciprocal tie with a quartic trace character and automatic
-dyadic splitting.  L27 gives a single shear which covers both dyadic
-parities, every aligned odd target, and one guarded real stratum.  The
-L26 member problem and L27 global rational-point problem remain OPEN;
-no count improvement is claimed.
+dyadic splitting.  L28 proves its trace field and bad-sign extension
+uniformly nontrivial; L29 classifies its distinct lift and adds a
+target-preserving compressor plus a fixed-field slice.  L27 gives a
+single shear covering both dyadic parities and every aligned odd target.
+L30 then replaces its degree-eight equation by a lower-degree
+constant-two even quartic with a selected fibre at every odd target and
+proves broad generic-section rigidity.  L31 proves one exact fixed-field
+reciprocal member and one rational quartic point before the cube
+pullback.  The uniform member theorem and cube-compatible controlled
+quartic point remain OPEN; no count improvement is claimed.
 % src: data/l24_diagonal_arithmetic.jsonl; data/l25_scaled_coupling.jsonl
 % src: data/l26_reciprocal_tie.jsonl; data/l27_triangular_shear.jsonl
+% src: data/l28_trace_field.jsonl; data/l29_reciprocal_frontier.jsonl
+% src: data/l30_quartic_frontier.jsonl; data/l31_frontier_push.jsonl
 
 The established implication is unchanged: the L20 class feeds the L19
 linear--octic pair; classical Schinzel~H supplies simultaneous prime
@@ -1009,13 +1096,13 @@ sole conjectural input.  The result is conditional and does not solve
 H10($\Q$) unconditionally.
 % src: data/l18_schinzel_implies_h.jsonl; data/l22_elimination.jsonl
 
-The exact next frontier is the L26 quartic trace squareclass/member
-problem, a target-specific rational point on the L27 global octic, or a
-parity-sensitive two-large-divisor estimate for the original
-linear--octic sequence.  All \(20\) L22--L27 generators rebuild their
-named artifacts; SHA-256 manifests detect drift, and strict labels keep
-finite EVIDENCE and route-local OPEN statements out of the PROVED
-closure.  No new unconditional quantifier record is claimed.
+The exact next frontier is a uniform fixed-field reciprocal member
+theorem, a cube-compatible controlled point on L30's quartic, or AP1
+via a pointwise fixed-family Buchstab/Hilbert-detector asymptotic.  All
+\(24\) L22--L31 generators rebuild their named artifacts; SHA-256
+manifests detect drift, and strict labels keep finite EVIDENCE and
+route-local OPEN statements out of the PROVED closure.  No new
+unconditional quantifier record is claimed.
 
 \begin{thebibliography}{9}
 
@@ -1024,6 +1111,12 @@ R.~Crandall and C.~Pomerance,
 \emph{Prime Numbers: A Computational Perspective}, 2nd ed.,
 Springer, New York, 2005.
 % src: h10q.py:82-90 (the in-repository citation is CP, Theorems 4.1.3 and 4.1.5)
+
+\bibitem{magma}
+W.~Bosma, J.~Cannon, and C.~Playoust,
+\emph{The Magma algebra system I: The user language},
+Journal of Symbolic Computation \textbf{24} (1997), nos.~3--4,
+235--265; computation replayed with Magma V2.29-9.
 
 \bibitem{jaeschke}
 G.~Jaeschke,

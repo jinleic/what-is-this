@@ -1,0 +1,83 @@
+{
+  "status": "DISCOVERY_INSTANCE_NO_VERDICT",
+  "statement": "Target-39 direct-gap face search for 12 lines with hereditary deletion cuts and vertex-sector cuts.",
+  "instance": {
+    "n": 12,
+    "target": 39,
+    "path": "scratch/kobon/n12_gap_sector_deletion_t39.cnf",
+    "bytes": 16145451,
+    "variables": 374381,
+    "clauses": 830030,
+    "sha256": "5435cb9958710878b1a68bc112e353a46d9a031a723e1afaa31191a9a9546909"
+  },
+  "generator": {
+    "path": "scratch/kobon/gap_faces.py",
+    "sha256": "d1cd586eb35018ea555f6933a009501addddda49cce9a007c90bf2cca9b04455",
+    "engine_path": "math/kobon/engine.py",
+    "engine_sha256": "5ecad5d184a8febe8cc0eb04c9e327ee907dc9b0984839b1685d48d98a39058e",
+    "command": "scratch/kobon-audit/venv/bin/python scratch/kobon/gap_faces.py 12 39 --out scratch/kobon/n12_gap_sector_deletion_t39.cnf --sector-bounds --sub-bound 11:32 --sub-bound 10:25",
+    "regeneration": "byte-identical to the live CNF (cmp exit 0)"
+  },
+  "subarrangement_bounds": [
+    {
+      "size": 11,
+      "upper": 32,
+      "provenance": "Savchuk, arXiv:2507.07951; local citation and scope audit in math/kobon/paper/kobon_broad_capacity.tex",
+      "role": "one-line deletion cuts"
+    },
+    {
+      "size": 10,
+      "upper": 25,
+      "provenance": "math/kobon/AUDIT.md, 2026-08-15 exhaustive 11-cube all-degeneracy cover: 9 shipped DRATs checked plus two parent cubes closed by 16 checked subcube DRATs",
+      "provenance_sha256": "981628f74ca64a4d419f3826521e9a18d7ad4407ed2dd97b179b93216c0117a9",
+      "role": "two-line deletion cuts",
+      "unconditional_before_lane_launch": true,
+      "depends_on_n10_faces_monolith": false,
+      "independent_second_certificate": {
+        "status": "VERIFIED_UNSAT",
+        "path": "scratch/kobon/ladder_n10_t26_faces_certificate.json",
+        "sha256": "50085b4607ab70bc8e124472f77db1bb981a76266c9be18c1eb9de46a07795f9",
+        "checker_result": "s VERIFIED"
+      }
+    }
+  ],
+  "sector_bounds": {
+    "enabled": true,
+    "audit_script": {
+      "path": "scratch/kobon/sector_bound_audit.py",
+      "sha256": "417b31817731c9b1bbd951c2b8544aa0aaa20b293c71c6eef66a9c58c91f230d"
+    },
+    "audit_record": {
+      "path": "scratch/kobon/sector_bound_audit.json",
+      "sha256": "2c20841679043c474f3b539d57b6370ce7c1470e8777a7934aec87989b3907af",
+      "result": "PASS",
+      "arrangements": 3600,
+      "faces": 27705,
+      "line_pair_checks": 93000,
+      "multipoint_pair_checks": 6204,
+      "nonadjacent_pair_checks": 154,
+      "violations": 0
+    }
+  },
+  "live_discovery_runs": [
+    {
+      "process": "n12-gap-sector-deletion-t39",
+      "solver": "Kissat 4.0.4",
+      "command": "/usr/bin/nice -n 15 scratch/kobon-audit/tools/kissat/build/kissat --seed=0 scratch/kobon/n12_gap_sector_deletion_t39.cnf",
+      "observed_status": "running; no verdict"
+    },
+    {
+      "process": "n12-gap-sector-cadical",
+      "solver": "CaDiCaL via python-sat cadical195",
+      "command": "/usr/bin/nice -n 15 scratch/kobon-audit/venv/bin/python scratch/kobon/gap_faces.py 12 39 --solve --solver cadical195 --sector-bounds --sub-bound 11:32 --sub-bound 10:25",
+      "observed_status": "running; no verdict"
+    }
+  ],
+  "proof_gate": {
+    "current_runs_are_proof_logging": false,
+    "sat_promotion": "requires exact straight-line realization and independent geometric verification",
+    "unsat_promotion": "requires a proof-logging rerun and an independent checker result such as s VERIFIED",
+    "current_claim": "discovery only"
+  },
+  "conditionality": "The hereditary clauses are unconditional consequences of the cited exact smaller-n bounds. This n=12 lane itself remains discovery-only until its own verdict and promotion gate are complete."
+}

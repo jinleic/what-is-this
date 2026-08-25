@@ -126,21 +126,21 @@ $\approx0.01$ s witness checks.
 
 ## 4. Validation and limitations
 
-`experiments/exp055_odd_lattice_sweep.py literature` audits 27 sourced
+`experiments/exp055_odd_lattice_sweep.py literature` audits 29 sourced
 odd-lattice instances:
 
-* the reciprocal-pole isomorphism holds **27/27**: $\mathcal P\subseteq\ker H_X$,
+* the reciprocal-pole isomorphism holds **29/29**: $\mathcal P\subseteq\ker H_X$,
   $\mathcal P\cap S_Z=0$, and $\dim\mathcal P=k$ by independent rank tests;
-* 25 rows reproduce their printed $k$; two transcribed Wang–Mueller App. C rows
+* 27 rows reproduce their printed $k$; two transcribed Wang–Mueller App. C rows
   ($(5,9)$ and $(7,11)$) give internal $k=0$ by both our matrix and gcd routes
   against printed 4 and 6, so they are excluded rather than reconciled;
-* all 25 reproduced rows satisfy `pole ceiling >= reported d`, but this is only
-  a **sanity check**: Wang–Mueller uses BP-OSD `distance_upperbound`, and
-  Postema–Kokkelmans labels its table distances Monte-Carlo estimates;
-* six rows are independently exact-certified here (Bravyi $[[90,8,10]]$,
-  three small Postema rows, Wang–Mueller's $[[126,12,10]]$ exactified by
-  EXP-055, and its $[[162,8,14]]$ exactified by EXP-056): zero pole-ceiling
-  violations, with slack min/median/max $2/20/22$.
+* all 27 reproduced rows satisfy `pole ceiling >= reported d`, but this is only
+  a **sanity check** for decoder-estimated rows: Wang–Mueller uses BP-OSD
+  `distance_upperbound`, and Postema–Kokkelmans labels its table distances
+  Monte-Carlo estimates;
+* eight rows are independently exact-certified here: the previous six plus
+  Liang et al.'s two $[[234,8,18]]$ rows exactified by EXP-067. There are zero
+  pole-ceiling violations, with slack min/median/max $2/22/34$.
 
 The pole ceiling is sound but loose because setting $s=0$ ignores cancellations
 inside a logical coset. The reduced-witness route repairs much of that looseness
@@ -206,14 +206,122 @@ This promotes Wang–Mueller's BP-OSD `distance_upperbound` value to a local
 two-sided certificate; the source value remains correctly labelled an
 estimate.
 
-Promoting this certificate closes the fixed-point screen through $n=162$:
-13 nonempty-frontier lattices, 2,132 classes / 51,769 normalised pairs, all
-1,928 referenced classes dominated, 204 no-reference, zero
-survivors/undecided. Of the dominations, 1,804 use reduced-pole witnesses, 119
-use hash-bound CDCL witnesses, and five use the exact CP-SAT fallback. All
-1,923 persisted witnesses are rechecked in $\ker H_X\setminus S_Z$.
+## 6. Adaptive fixed-point extension through $n=210$
 
-## 6. Retraction record
+EXP-057--065 retain the same bar-aware physical convention but add three
+independent mechanisms. First, all-odd check-column degree forces even kernel
+weight and exact BB duality reduces a distance proof to one side. An adaptive
+raw-kissat climb exactifies $[[170,16,10]]$, seven $[[186,10,14]]$ classes,
+thirteen $[[210,18,8]]$ classes, $[[210,24,4]]$, $[[210,14,12]]$, and two
+$[[210,10,16]]$ classes. A separate $k=8$ row has independent weight-16
+witnesses and is dominated, but has no certified lower bound and is not
+claimed exact.
+
+Second, for $\gcd(\ell,m)=1$ the map $\pi\mapsto(x,y)$ gives an explicit
+coordinate permutation between every factorization of $N=\ell m$. EXP-059
+checks every one of the 105 monomials, so the $(15,7)$, $(21,5)$ and $(35,3)$
+screens are one exact $N=105$ problem. Third, EXP-063 proves reference
+thresholds are monotone: old domination proofs survive a reference extension,
+while carried witnesses are rechecked and prior shards are archived.
+
+The final fixed-point screen is complete through $n=210$: 20
+nonempty-frontier lattices, 4,020 classes / 122,833 represented pairs, all
+3,816 referenced classes dominated, 204 no-reference, zero
+survivors/undecided. Of the dominations, 3,364 use reduced-pole witnesses, 395
+use bounded/adaptive CDCL witnesses, and 57 use exact CP-SAT fallback records.
+All 3,759 explicit witnesses are rechecked in $\ker H_X\setminus S_Z$.
+
+Two new alternatives fail closed rather than become claims: exact affine
+trellis widths 48--99 exceed the state gate, and the exact $H=7$ quotient
+projection gives physical lower bound only 4.
+
+## 7. Full-automorphism bundling at $n=234$ (EXP-066 bounded phase)
+
+For $G=\mathbb Z_{39}\times\mathbb Z_3\cong
+\mathbb Z_{13}\times\mathbb F_3^2$,
+$$
+\operatorname{Aut}(G)\cong
+\mathbb F_{13}^{\times}\times\operatorname{GL}(2,3),
+\qquad |\operatorname{Aut}(G)|=12\cdot48=576.
+$$
+EXP-066 enumerates all 576 coordinate maps, verifies that each is a bijective
+homomorphism, and checks both CSS rowspaces before transporting a witness.
+The 182 $(39,3)$ classes not closed by the initial pole reduction partition
+into 30 exact code-equivalence bundles. A source witness closes 28 bundles /
+158 classes; every transported word is then independently checked in the
+target's rebuilt $\ker H_X\setminus S_Z$.
+
+The two remaining bundles contain 24 classes. Each has a verified weight-18
+logical, but no complete cap-16 exclusion. Therefore EXP-066 proves only
+$$
+d\le18
+$$
+for these classes and records them as undecided. It does **not** prove
+$[[234,8,18]]$. The expanded comparison surface has 22 lattices, 4,862
+classes / 150,581 pairs, 4,634/4,658 referenced classes dominated, 204
+no-reference, zero survivors, and 24 undecided. Exact fixed-point closure
+remains $n\le210$.
+
+## 8. Exact $n=234$ closure by rooted connected clusters (EXP-067)
+
+The novelty audit missed Liang--Liu--Song--Chen
+(arXiv:2503.03827v3, Table III), which already prints two
+$[[234,8,18]]$ generalized-toric/BB rows and states that table distances
+through 20 were computed exactly by integer programming. EXP-067 enumerates
+all quotient-lattice generator images and finds one map for each row into
+$\mathbb Z_{39}\times\mathbb Z_3$. The mapped CSS matrices have exactly the
+two open EXP-066 representatives: both $H_X$ and $H_Z$ rowspaces agree after
+an explicit qubit permutation. Thus $[[234,8,18]]$ is **published prior art**;
+the result here is an independent machine certificate and fixed-point closure,
+not a new code.
+
+The lower certificate uses the connected-cluster algorithm of
+Webster--Jacob--Higgott (arXiv:2603.22532) through the pinned
+QEC-pages/dist-m4ri implementation. A minimum nontrivial kernel word has no
+proper zero-syndrome subset: a logical subset is already a lighter logical,
+while a stabilizer subset can be removed to leave a lighter representative of
+the same class. Therefore the first-unsatisfied-check recursion reaches every
+minimum logical from its least support coordinate. Translation sends any
+supported qubit in the first 117-qubit block to coordinate 0; an exact
+block-column-swapped presentation covers words supported only in the second
+block. Two rooted searches therefore replace 234 unrooted searches.
+
+For each open representative, EXP-067 exhausts weights 1--16 in the original
+and block-swapped presentations and repeats both runs. The accepted engine is
+the race-free legacy `STANDALONE` entrypoint; the multithreaded coordinator is
+rejected by FR-033. Every run terminates at `-16`, all check columns have odd
+degree and hence every kernel word has even weight, and independent NumPy and
+bitset paths verify a weight-18 logical plus the exact BB $X/Z$ isometry.
+Consequently both representatives have
+$$
+d_X=d_Z=d=18.
+$$
+
+Promoting either exact $[[234,8,18]]$ reference raises the $k=8$ threshold
+from 16 to 18. The 24 former undecided classes then carry rechecked
+weight-18 witnesses and become dominated. The exact fixed-point surface is
+closed through $n=234$: 22 lattices, 4,862 classes / 150,581 represented
+pairs, all 4,658/4,658 referenced classes dominated, 204 high-$k$
+`no_reference`, and zero survivors or undecided.
+
+EXP-068 closes the global proof-surface gap exposed by final review. The 57
+legacy CP-SAT fallback rows now bind explicit physical $Z$-logicals (29 solved
+independently, 28 obtained by exact CRT transport). Validator v11 checks every
+comparison-class identity or transport cover, current threshold/source and
+physical witness on all 22 shards; monotone rebinding validates its input,
+output and archive before the aggregate can move.
+
+The trusted-computing boundary is explicit: EXP-067 hardcodes the audited
+dist-m4ri binary, source, license and M4RI source digests rather than trusting
+the mutable build manifest. The native binary does not emit a proof trace.
+Initial/replay agreement, independent algebraic checks, and the published
+exact result are redundant evidence, not formal verification of the native
+executable.
+
+---
+
+## 9. Retraction record
+
 
 
 An intermediate EXP-055 draft used raw $I$ as a physical kernel and proposed a
@@ -231,5 +339,24 @@ Machine sources:
 * `results/certificates/exp055_odd_lattice_survivors.json`
 * `results/certificates/exp056_wm_162_8_14_distance.json`
 * `experiments/exp056_odd_distance.py`
+* `results/certificates/exp057_170_16_10_distance.json`
+* `results/certificates/exp058_186_10_14_distance.json`
+* `results/certificates/exp060_210_18_8_distance.json`
+* `results/certificates/exp064_210_*_distance.json`
+* `results/processed/exp059_coprime_transport.json`
+* `results/processed/exp060_n210_ratchet.json`
+* `results/processed/exp061_affine_trellis_profile.json`
+* `results/processed/exp062_n105_pole_stabilizers.json`
+* `results/processed/exp065_n105_k8_projection.json`
+* `experiments/exp057_odd_frontier.py` through `exp065_quotient_projection.py`
+* `results/processed/exp066_n234_frontier.json`
+* `experiments/exp066_n234_frontier.py`
+* `tests/test_exp066_n234_frontier.py`
+* `results/certificates/exp067_234_8_18_*_distance.json`
+* `results/partial_runs/exp067_n234_cluster/`
+* `experiments/exp067_n234_connected_cluster.py`
+* `experiments/exp068_screen_proof_repair.py`
+* `results/partial_runs/exp068_screen_witnesses/`
+* `tests/test_exp067_n234_connected_cluster.py`
 * `tests/test_exp056_odd_distance.py`
 * `tests/test_exp055_odd_lattice.py`

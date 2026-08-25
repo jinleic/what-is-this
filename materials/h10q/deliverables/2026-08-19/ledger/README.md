@@ -13,7 +13,7 @@ nothing in `scratch/` remains.
 
 | File | Owns |
 |---|---|
-| [`THEOREMS.md`](THEOREMS.md) | Precise frontier statements (L1–L27, A1–A3), full proofs of everything proved here, the unchanged chain showing classical Schinzel H implies the conditional six-quantifier record, the L23–L24 unconditional barriers, and the L25–L27 new coupling/tie frontiers. |
+| [`THEOREMS.md`](THEOREMS.md) | Precise frontier statements (L1–L28, A1–A3), full proofs of everything proved here, the unchanged chain showing classical Schinzel H implies the conditional six-quantifier record, the L23–L24 unconditional barriers, the L25–L27 coupling/tie frontiers, and L28's uniform trace-field closure. |
 | [`RESULTS.md`](RESULTS.md) | Findings ledger, claim-by-claim scope table, frontier stratification, next actions. |
 | [`NOTES.md`](NOTES.md) | Problem map: exact theorem statements with arXiv ids, both pillars. |
 | [`h10q.py`](h10q.py) | Standalone executable model; re-verifies every in-suite claim on each run. |
@@ -64,8 +64,9 @@ nothing in `scratch/` remains.
 | [`l24_diagonal_local.py`](l24_diagonal_local.py) + [`data/l24_diagonal_local.jsonl`](data/l24_diagonal_local.jsonl) | **L24 — PROVED odd-place classification:** orientation II is locally soluble on the standard $k=1<v_w(Z)$ stratum for every odd target prime; the route is killed at $2$, not at the target. Replay: `nice -n 19 python3 math/h10q/l24_diagonal_local.py`. |
 | [`l24_diagonal_search.py`](l24_diagonal_search.py) + [`data/l24_diagonal_search.jsonl`](data/l24_diagonal_search.jsonl) | **L24 — bounded corroboration only:** $370$ cells, $2{,}013{,}141$ guarded bases and $4{,}026{,}282$ orientation attempts, zero hits.  Every-cell emptiness comes from the mod-$16$ proof, never this scan. Replay: `nice -n 19 python3 math/h10q/l24_diagonal_search.py`. |
 | [`l25_scaled_coupling.py`](l25_scaled_coupling.py) + [`data/l25_scaled_coupling.jsonl`](data/l25_scaled_coupling.jsonl) | **L25 — PROVED local escape, global route OPEN:** exact scaled eliminants; $(2X,\rho)$ and $(2X,\rho/2)$ are $2$-adically admissible exactly on even/odd $s$, together covering all of $\Phi$; the smooth $w\ge7$ formula lies on a freely chosen unit-$b$ stratum and is **not** an aligned-target theorem; bounded scans/searches labelled evidence only. Replay: `nice -n 19 python3 math/h10q/l25_scaled_coupling.py`. |
-| [`l26_reciprocal_tie.py`](l26_reciprocal_tie.py) + [`data/l26_reciprocal_tie.jsonl`](data/l26_reciprocal_tie.jsonl) | **L26 — PROVED reciprocal tie/local structure, member OPEN:** the even pullback $Z=z^2$ and tie $\eta=Z(b+1)/(Db)$ make $P_{\rm rec}=b^4T(b+b^{-1})$ with quartic $T$; the tied dyadic symbol is automatically $+1$, standard W1 targets lift, and $(2b|p)=(2(u+2)|p)$.  Trace-field irreducibility/nonsquareness and global members remain OPEN. Replay: `nice -n 19 python3 math/h10q/l26_reciprocal_tie.py`. |
-| [`l27_triangular_shear.py`](l27_triangular_shear.py) + [`data/l27_triangular_shear.jsonl`](data/l27_triangular_shear.jsonl) | **L27 — PROVED complete local shear, global route OPEN:** the one-piece coupling $(y,r)=(2X+28\rho,sX+\rho)$ covers every $2$-adic $s$-parity; an exact character-sum theorem plus $43$ small-prime rows gives a smooth point on the standard aligned target stratum for every odd $w$; one guarded real sample works.  The bridge-specialized degree-$8$ global cover, member theorem and five-count remain OPEN. Replay: `nice -n 19 python3 math/h10q/l27_triangular_shear.py`. |
+| [`l26_reciprocal_tie.py`](l26_reciprocal_tie.py) + [`data/l26_reciprocal_tie.jsonl`](data/l26_reciprocal_tie.jsonl) | **L26 — PROVED reciprocal tie/local structure, member OPEN:** the even pullback $Z=z^2$ and tie $\eta=Z(b+1)/(Db)$ make $P_{\rm rec}=b^4T(b+b^{-1})$ with quartic $T$; the tied dyadic symbol is automatically $+1$, standard W1 targets lift, and $(2b|p)=(2(u+2)|p)$.  L28 proves the trace field and bad-sign extension uniformly; globally good members remain OPEN. Replay: `nice -n 19 python3 math/h10q/l26_reciprocal_tie.py`. |
+| [`l27_triangular_shear.py`](l27_triangular_shear.py) + [`data/l27_triangular_shear.jsonl`](data/l27_triangular_shear.jsonl) | **L27 — PROVED complete local shear + one section no-go, global route OPEN:** the one-piece coupling $(y,r)=(2X+28\rho,sX+\rho)$ covers every $2$-adic $s$-parity; an exact character-sum theorem plus $43$ small-prime rows gives a smooth point on the standard aligned target stratum for every odd $w$; one guarded real sample works.  In $m=\lambda^2$, the exact linear-$B$ coefficient factorization rules out the natural cancellation section.  The full degree-$8$ cover, member theorem and five-count remain OPEN. Replay: `nice -n 19 python3 math/h10q/l27_triangular_shear.py`. |
+| [`l28_trace_field.py`](l28_trace_field.py) + [`data/l28_trace_field.jsonl`](data/l28_trace_field.jsonl) | **L28 — PROVED uniform trace-field closure, global member OPEN:** on every canonical L26 even-pullback parameter, the trace quartic is irreducible over $\mathbb Q_2$; the norm of $2(\theta+2)$ has squareclass $A\equiv5\bmod8$, so the bad-sign extension is always nontrivial and $T(v^2/2-2)$ is irreducible.  The reciprocal-lift squareclass $\theta^2-4$, globally good members, parity barrier, and count remain OPEN. Replay: `nice -n 19 python3 math/h10q/l28_trace_field.py`. |
 | Engine note (2026-08-18) | Proven-primality engine strengthened: `_pocklington` now uses trial division to $10^6$ (early abort at $F\ge n^{1/3}$, exact integer cube root) + the **Brillhart–Lehmer–Selfridge relaxation** (CP Thm 4.1.5: $F\ge n^{1/3}$, two-factor discriminant test). Every verdict still exact; `PrimalityBound` refusals remain non-evidence. Suites: default ~51 s, extended ~118 s. |
 | `data/l6_witnesses.jsonl`, `data/l9_steered.jsonl` | **Canonical serializations** of the authorities `_L6_WITNESSES` (61 rows) and `_L9_STEERED` (345 rows) in `h10q.py`. Byte-identical match required on every suite run — drift, absence, or any underived field fails the suite. Regenerate: `python3 h10q.py --export-evidence`. |
 | `data/l9_steer_run.jsonl`, `data/l9_rescue_*.jsonl` | Raw steered-search run artifacts — search-side provenance only, never citable evidence. |
@@ -74,7 +75,7 @@ nothing in `scratch/` remains.
 | `data/litscout_h10q.md` | LitScout-2 (2026-08-18): source-verified citations for CONDITIONAL.md §4 — Krumm JTNB 28 (2016) pins (Thm 1.3, Props 3.4–3.5; degree 3 conditional on the elliptic Parity Conjecture, Prop 3.8), degree-8 ceiling beyond proved range on both sides, DDF arXiv:2102.06941v5 attribution confirmed, Crelle 495 (1998) author-list correction. Applied to CONDITIONAL.md same day. |
 | `data/superseded/` | Inadmissible or superseded raw search buckets and the old rescue log — provenance only, never citable evidence. |
 
-## State (2026-08-23)
+## State (2026-08-24)
 
 - **PROVED here (machine-checked):** W0 canonical two-branch selector from the
   character identity $\sum_{a\in k}\chi(1+4a^2)=-1$ over every odd residue
@@ -223,14 +224,17 @@ nothing in `scratch/` remains.
   aligned-target compatibility remains separate).  Two guarded bridge
   samples give the parity-wise real certificates.  No rational coupled
   point, member theorem, five-count, or unconditional record is claimed.
-- **L26 RECIPROCAL TIE:** replacing the cube by the even pullback
-  $Z=z^2$ and tying the third block coordinate to
-  $\eta=Z(b+1)/(Db)$ gives the exact reciprocal identity
+- **L26/L28 RECIPROCAL TRACE FIELD:** replacing the cube by the even
+  pullback $Z=z^2$ and tying the third block coordinate to
+  $\eta=Z(b+1)/(Db)$ gives
   $P_{\rm rec}(b)=b^4T(b+b^{-1})$ with $\deg T=4$.  On the canonical
   square branch the tied dyadic symbol is automatically $+1$, the
   standard guarded W1 target lifts, and the emergent character descends
-  by $(2b|p)=(2(u+2)|p)$.  Irreducibility and nonsquareness in the
-  quartic trace field, and a globally good member, remain OPEN.
+  by $(2b|p)=(2(u+2)|p)$.  L28 now proves uniformly that $T$ is
+  irreducible over $\mathbb Q_2$, that
+  $N(2(\theta+2))\in A\mathbb Q_2^{\times2}$, and hence that the
+  bad-sign extension is nontrivial.  A globally good member remains
+  OPEN.
 - **L27 ONE-PIECE SHEAR:** the single coupling
   $(y,r)=(2X+28\rho,sX+\rho)$ is $2$-adically admissible for every
   $s$-parity.  A Weil character-sum argument, with all $43$ odd primes
@@ -240,6 +244,13 @@ nothing in `scratch/` remains.
   gaps are gone in this new shear.  A rational point on its
   bridge-specialized degree-$8$ cover remains OPEN, so no five-count or
   unconditional record follows.
+- **L28 TRACE-FIELD CLOSURE:** after $w=u-2$, the trace quartic has a
+  one-segment dyadic Newton polygon.  A Ferrari-resolvent calculation
+  excludes the only remaining quadratic-factor shape in five exact
+  valuation cases.  Since $A\equiv5\bmod8$, the norm squareclass then
+  proves $T(v^2/2-2)$ irreducible.  This closes the L26 trace-field and
+  bad-character questions, not the reciprocal lift $\theta^2-4$ or the
+  global member/parity problem.
 
 
 **Current chain, exactly.** For every cell, L22 plus quantitative HIT
@@ -251,15 +262,15 @@ supplies a member under classical Schinzel H.  Therefore
 irreducibility certificate remains.
 
 **Unconditional frontier, exactly.** L23's small-prime cleanliness is
-insufficient for a globally good member.  L26 supplies a new reciprocal
-six-count tie with a quartic trace character, but no global member.
-L24's two unscaled diagonal images are empty; L27 now supplies a single
-shear with complete dyadic, aligned-target and named real local data,
-but no global rational point.  Classical Schinzel H remains the sole
-conjectural input to the established conditional chain.  The next
-targets are the quartic trace squareclass/member problem, the
-two-large-bad-divisor estimate, or a target-specific rational point on
-the L27 degree-$8$ cover.
+insufficient for a globally good member.  L26 supplies a reciprocal
+six-count tie, and L28 proves its quartic trace field and bad-sign cover
+uniformly irreducible, but no global member.  L24's two unscaled
+diagonal images are empty; L27 supplies a single shear with complete
+dyadic, aligned-target and named real local data, but no global rational
+point.  Classical Schinzel H remains the sole conjectural input to the
+established conditional chain.  The remaining targets are the
+two-large-bad-divisor/member problem or a target-specific rational point
+on the L27 degree-$8$ cover.
 - **L14 H ON THE GRID COMPLETE (2026-08-18):** hypothesis H is verified
   instance-wise on the entire 353-cell grid — **every one of the 293
   aligned classes (190 L11 + 103 ESC) carries a certified emergent-free
@@ -323,6 +334,7 @@ python3 h10q.py --extended                             # + 61-prime tables, 6494
 python3 l6_search.py --canonical /tmp/smoke.jsonl 3 5  # guarded searcher smoke
 python3 l26_reciprocal_tie.py                         # reciprocal identity/local replay
 python3 l27_triangular_shear.py                        # dyadic + all-target local replay
+python3 l28_trace_field.py                             # uniform trace/Capell irreducibility
 ```
 
 Dependency-free stdlib Python. All arithmetic runs on a proven-primality
@@ -332,20 +344,21 @@ generalized Pocklington certificates above it, explicit
 acceptance anywhere.
 
 
-## Reproducibility scope (2026-08-23)
+## Reproducibility scope (2026-08-24)
 
-All seven L23 producer/data pairs, all four L24 pairs, and the L25–L27
+All seven L23 producer/data pairs, all four L24 pairs, and the L25–L28
 pairs in the inventory above are repo-regenerable.  Replay them from the
 workspace root, **one process at a time**, with the displayed
 `nice -n 19 python3 math/h10q/<producer>.py` commands.  They write,
 respectively,
 `data/l23_{half_sieve,fibration,norm_section,rational_section,squareclass,multivar,absorption}.jsonl`,
 `data/l24_diagonal_{geometry,arithmetic,local,search}.jsonl`,
-`data/l25_scaled_coupling.jsonl`, `data/l26_reciprocal_tie.jsonl`, and
-`data/l27_triangular_shear.jsonl`.
+`data/l25_scaled_coupling.jsonl`, `data/l26_reciprocal_tie.jsonl`,
+`data/l27_triangular_shear.jsonl`, and `data/l28_trace_field.jsonl`.
 Every producer is stdlib-only and single-process; no pool is used.  The
-L24 $4{,}026{,}282$-attempt search, L25 bounded scans, and L26 one-fibre
-irreducibility row are corroboration only.
+L24 $4{,}026{,}282$-attempt search, L25 bounded scans, and L26
+one-fibre reciprocal-lift row are corroboration only.  L28's uniform
+claim comes from its Newton/resolvent/norm proof, not that row.
 
 All six L22 artifacts are likewise repo-regenerable from their paired
 scripts:
@@ -369,31 +382,33 @@ evidence without checked-in producers** — their data was reviewed and is
 downstream-consumed, but regenerating them requires the original
 session-side scripts (not recovered into the repo).
 
-## Next (updated 2026-08-23)
+## Next (updated 2026-08-24)
 
 The Schinzel-conditional chain remains closed on the fixed canonical
-branch.  L23–L27 now isolate three independent exact frontiers.
+branch.  L23–L28 now isolate two global routes and one analytic form of
+the member obstruction.
 
-1. **Primary reciprocal-tie target:** decide the squareclass of
-   $2(\theta+2)$ in L26's quartic trace algebra, or otherwise construct a
-   globally good member in the reciprocal family.  Reciprocality and the
-   quartic character descent alone do not lower the squarefree degree in
-   the rational argument $b$.
+1. **Primary reciprocal-tie target:** construct a globally good member
+   in the L26 family.  L28 has removed trace irreducibility and
+   $2(\theta+2)$ from the blocker list.  The distinct reciprocal-lift
+   squareclass $\theta^2-4$ remains relevant to uniform octic
+   irreducibility, while the parity-sensitive member step remains the
+   decisive obligation.
 2. **Primary coupled-cover target:** construct a target-specific rational
    root of L27's bridge-specialized degree-$8$ $\lambda$-cover while
    meeting the remaining controlled places.  Its dyadic parity, every
-   aligned odd target (including $3,5$), and one real stratum are now
-   proved locally soluble; these are no longer the blocker.
+   aligned odd target (including $3,5$), and one real stratum are proved
+   locally soluble; these are no longer the blocker.
 3. **Primary analytic target:** prove a parity-sensitive dispersion
    estimate for two large bad divisors of the degree-$8$ sequence at
    prime arguments, with $p_1,p_2\ge X^{0.49}$,
    $p_1p_2>D_{\rm BV}$, both signs bad and both valuations odd.
    Equivalently, reach the exact reciprocity threshold
    $R_{\rm bad}\le1$.
-4. **Scope guard:** L23 proves many small-prime-clean members, L26 proves
-   a trace descent, and L27 proves local points—not a globally good
-   member.  Classical Schinzel H remains unproved and remains the sole
-   conjectural input to the six-count; H10/$\mathbb Q$ is open.
+4. **Scope guard:** L23 proves many small-prime-clean members, L27 proves
+   local points, and L28 proves a local trace-field theorem—not a
+   globally good member.  Classical Schinzel H remains unproved and the
+   sole conjectural input to the six-count; H10/$\mathbb Q$ is open.
 5. **Optional side geometry:** the L22 Noether nonvanishing lemma and
    absolute rationality of the L24 total surfaces remain OPEN but are
    not chain obligations.

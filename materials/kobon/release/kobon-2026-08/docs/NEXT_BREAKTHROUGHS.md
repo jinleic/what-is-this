@@ -16,6 +16,27 @@ construction (three implementations, 15/15 witnesses). The upper half of
 that claim is exactly what our in-flight $T=55$ run decides.
 
 ---
+## 2026-08-24 endpoint-front update
+
+The \(n=12,T=39\) front now has two stronger sound discovery lanes:
+`n12-gap-endpoint-mi-k4-t39` (endpoint closure, two required
+multipoint-incident faces, direct \(K(4)=2\), and 11-/10-line heredity) and
+`n12-gap-endpoint-sub9-t39` (also every checked \(K(9)=21\) cut). They are
+375,037 / 1,005,366 and 842,317 / 1,917,926 variables/clauses respectively.
+Both are live without proof logging.
+
+The next action is conditional and exact:
+
+1. SAT: decode, straighten, and verify over \(\mathbb Q\); a verified
+   39-face arrangement is the breakthrough.
+2. UNSAT: rerun the byte-pinned formula with proof logging and independently
+   check the proof before claiming \(K(12)=38\).
+3. No verdict: cube on the forced multipoint-incident face pair and use the
+   endpoint-closure guards as the split surface; do not add the negative
+   exact-face or Grassmann--Plücker experiments to the production lane.
+
+---
+
 
 ## Tier 0 — decisive experiments already running
 

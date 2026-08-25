@@ -1,0 +1,182 @@
+{
+  "schema": 1,
+  "status": "PROVED_LOCAL_CUTS_LIVE_DISCOVERY_NO_VERDICT",
+  "goal": "Close or materially compress the all-degeneracy Kobon (12,39) frontier without weakening proof-promotion gates.",
+  "research_plan": [
+    "survey 2024-2026 primary literature and source code",
+    "derive missing local and global necessary conditions",
+    "falsify them on exact rational degeneracy suites and known optima",
+    "benchmark opt-in encodings on SAT and UNSAT controls",
+    "launch only reproducible sound n=12 discovery lanes"
+  ],
+  "recent_sources": [
+    {
+      "source": "Savchuk, Constructing Optimal Kobon Triangle Arrangements via Table Encoding, SAT Solving, and Heuristic Straightening",
+      "url": "https://arxiv.org/abs/2507.07951",
+      "used_for": "table/O-matrix and SAT comparison; its complete-row model is simple/pairwise-crossing and was not imported into the broad monolith"
+    },
+    {
+      "source": "Rote, NumPSLA",
+      "url": "https://arxiv.org/abs/2503.02336",
+      "used_for": "allowable-sequence and abstract-order-type enumeration comparison; non-simple handling is explicitly outside its current data model"
+    },
+    {
+      "source": "Parpalak and Utkin, The 18*2^t+1 Triangle-Maximal Series of Straight Lines",
+      "url": "https://arxiv.org/abs/2604.22035",
+      "used_for": "exact interval/O-matrix certificate design and post-SAT realization ideas; simple-arrangement scope only"
+    },
+    {
+      "source": "Parpalak and Utkin, Enumeration and Classification of Triangle-Maximal Pseudoline Arrangements",
+      "url": "https://arxiv.org/abs/2607.29236",
+      "used_for": "latest defect and reduced-word pruning survey; paper explicitly restricts to odd simple arrangements and leaves the even non-simple case out of scope"
+    },
+    {
+      "source": "Radtke, Keszegh, and Lauff, On Triangles in Colored Pseudoline Arrangements",
+      "url": "https://arxiv.org/abs/2601.20574",
+      "used_for": "rank-three signotope/triangle-mutation cross-check; simple pseudoline scope"
+    },
+    {
+      "source": "gagern/pseudolines ByteArrayChirotope",
+      "url": "https://github.com/gagern/pseudolines/blob/master/src/main/java/de/tum/ma/gagern/pseudolines/ByteArrayChirotope.java",
+      "used_for": "zero-aware three-term Grassmann-Plucker consistency experiment; algorithm reimplemented, no GPL source copied"
+    }
+  ],
+  "theorems": {
+    "endpoint_closure": {
+      "statement": "For two distinct triangular faces {r,a,b} and {r,c,d}, if P_ra=P_rc and P_rb,P_rd lie on the same ray of r from that point, then P_rb=P_rd. If both endpoint pairs coincide, the faces share an arrangement edge and their apexes lie in opposite open halfplanes of r.",
+      "proof": "A face side has no arrangement vertex in its relative interior. Two distinct points on one ray are ordered, so the nearer would subdivide the side ending at the farther. Two distinct cells incident with one arrangement edge occupy opposite sides.",
+      "scope": "all distinct affine straight-line arrangements, including parallels and arbitrary finite multipoints"
+    },
+    "simple_perturbation": {
+      "statement": "If M(S) selected triangular faces have a finite multipoint vertex, then |S|-M(S) <= a3_simple(n). Thus n=12,target=39 and a3_simple(12)=37 force at least two multipoint-incident selected faces.",
+      "proof": "Faces with only simple vertices are defined by finitely many strict direct-gap inequalities. One sufficiently small generic coefficient perturbation preserves all of them while removing finite concurrencies and parallels; intersections created from formerly parallel distinct lines escape to infinity.",
+      "provenance": "a3_simple(12)=37 from Blanc's exact simple-arrangement result"
+    },
+    "four_line_prime": {
+      "statement": "Every four-line subset supports at most K(4)=2 selected faces.",
+      "encoding": "four ternary all-negative prime clauses per four-line subset",
+      "provenance": "certified broad-convention K(4)=2 ladder"
+    }
+  },
+  "implementation": {
+    "engine_sha256": "d1ff89892e0bc5130c701365066c0cd43dbdc3d4d1d96e836502115617ff6351",
+    "test_sha256": "ebcc5feaec5d2f582ba28504f2590f935f1eacb3ba2f9d8acc3696090a166885",
+    "gap_faces_sha256": "4b2f9668993b7be5cf56135b53a430990f37c19aacf68ab79df7904c7cf1c412",
+    "flags": {
+      "endpoint_closure": "--endpoint-closure (implies sector and shared-ray cuts)",
+      "multipoint_incidence": "--simple-bound 37",
+      "four_line_prime": "--k4-bound",
+      "nine_line_heredity": "--sub-bound 9:21",
+      "experimental_exact_faces": "--reify-faces",
+      "experimental_chirotope": "--chirotope-gp"
+    },
+    "n12_delta_over_shared_ray": {
+      "endpoint_closure_clauses": 154440,
+      "endpoint_closure_variables": 0,
+      "k4_clauses": 1980,
+      "k4_variables": 0,
+      "multipoint_incidence_clauses": 7036,
+      "multipoint_incidence_variables": 656
+    },
+    "default_stability": "Legacy --sector-bounds and --shared-ray-bounds DIMACS outputs remain byte-identical to the prior release in n=8 controls."
+  },
+  "exact_audits": {
+    "endpoint_sector": {
+      "path": "scratch/kobon/sector_bound_audit.json",
+      "sha256": "b2bd2fc173ae659a6cd1f16374903673a66094a4858c4a011fb491330bc56b04",
+      "arrangements": 3600,
+      "triangular_faces": 27705,
+      "single_line_face_pairs": 73349,
+      "colliding_endpoint_cases": 1607,
+      "colliding_same_ray_cases": 84,
+      "single_line_shared_segments": 42,
+      "shared_pair_segments": 1591,
+      "violations": 0
+    },
+    "fixed_certificates": {
+      "path": "scratch/kobon/reified_face_audit.json",
+      "sha256": "24dbaf97250b5750e415b2132aaeb9d4df12c1eb8ac9ec56f507fb79452026f8",
+      "status": "PASS",
+      "n10_face_set": 25,
+      "n10_multipoint_incident_faces": 0,
+      "n12_face_set": 38,
+      "n12_multipoint_incident_faces": 8,
+      "fixed_geometry_cnf_sat": true
+    },
+    "chirotope": {
+      "path": "scratch/kobon/chirotope_gp_audit.json",
+      "sha256": "65395eadc15ba3326df7f14753fbe7c0aa7c85a26c5702d47844ba1803dea9a2",
+      "exact_triples": 195000,
+      "zero_triples": 2312,
+      "gp_relations": 1386000,
+      "violations": 0,
+      "semantic_strength": "NO_GAP_FOUND_THROUGH_N7_PROPAGATION_ONLY"
+    }
+  },
+  "controlled_benchmarks": {
+    "solver": "CaDiCaL 1.9.5 via PySAT; same process and formulation family",
+    "n8_target16": {
+      "shared_ray": {"seconds": 25.202, "conflicts": 249513, "propagations": 56619742},
+      "endpoint": {"seconds": 18.167, "conflicts": 221905, "propagations": 51998006},
+      "endpoint_k4": {"seconds": 17.635, "conflicts": 280497, "propagations": 59367656},
+      "all_local": {"seconds": 19.086, "conflicts": 178920, "propagations": 42328612}
+    },
+    "n9_target22": {
+      "shared_ray": {"seconds": 138.384, "conflicts": 958507, "propagations": 709745268},
+      "endpoint": {"seconds": 169.563, "conflicts": 1020652, "propagations": 653798242},
+      "endpoint_k4": {"seconds": 368.117, "conflicts": 1623231, "propagations": 888018904},
+      "all_local": {"seconds": 265.993, "conflicts": 1139737, "propagations": 736155225}
+    },
+    "sat_controls": {
+      "n8_target15": "SAT with endpoint+k4",
+      "n9_target21": "SAT with endpoint+k4 and inactive simple-bound 21"
+    },
+    "conclusion": "Endpoint closure is a sound solver-diversity cut with an n=8 gain and n=9 regression. Multipoint incidence lowers conflicts in the full n=8 control but is not a general wall-time speedup."
+  },
+  "high_risk_negative_results": {
+    "exact_face_reification": {
+      "status": "SOUND_OPT_IN_NOT_SELECTED",
+      "reason": "accepted exact n=10/n=12 witnesses and improved n=8 UNSAT, but n=9 SAT and UNSAT controls became dramatically slower"
+    },
+    "zero_aware_grassmann_plucker": {
+      "status": "SOUND_PROPAGATION_ONLY_NOT_SELECTED",
+      "reason": "no base-relaxation violation found through n=7; endpoint n=8 runtime increased from 18.167 to 35.502 seconds"
+    }
+  },
+  "frontier_lanes": [
+    {
+      "process": "n12-gap-endpoint-mi-k4-t39",
+      "status": "LIVE_DISCOVERY_NO_VERDICT",
+      "seed": 0,
+      "cnf": "scratch/kobon/n12_gap_endpoint_mi_k4_deletion_t39.cnf",
+      "sha256": "6dca104aa120ee1f209aada8aca07a08bf3341f1335e6e99f4ae1f11bc2ba76b",
+      "bytes": 21685650,
+      "variables": 375037,
+      "clauses": 1005366,
+      "regeneration": "byte-identical",
+      "proof_logging": false
+    },
+    {
+      "process": "n12-gap-endpoint-sub9-t39",
+      "status": "LIVE_DISCOVERY_NO_VERDICT",
+      "seed": 1,
+      "cnf": "scratch/kobon/n12_gap_endpoint_mi_k4_sub9_t39.cnf",
+      "sha256": "34406004c932ce77d33f76f8b7d19c7b0f5a2e3e241e94651846269bf750f2df",
+      "bytes": 39495970,
+      "variables": 842317,
+      "clauses": 1917926,
+      "regeneration": "byte-identical",
+      "proof_logging": false
+    }
+  ],
+  "verification": {
+    "focused_tests": "36/36 passed",
+    "endpoint_audit": "PASS",
+    "fixed_geometry_audit": "PASS",
+    "chirotope_audit": "PASS",
+    "default_and_shared_ray_dimacs": "byte-identical to prior release controls",
+    "independent_review": "No P1 soundness defect. Three P2 issues were fixed: reified heredity now uses direct subset caps, the n=12 witness is called a record rather than an optimum, and endpoint closure explicitly requires distinct faces."
+  },
+  "promotion_gate": "SAT requires exact rational realization and verification. UNSAT requires a proof-producing rerun and independent proof checking. Live discovery runs change no theorem.",
+  "global_status": "K(12) remains open."
+}

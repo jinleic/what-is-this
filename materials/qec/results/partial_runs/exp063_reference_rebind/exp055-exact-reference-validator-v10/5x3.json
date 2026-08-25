@@ -1,0 +1,332 @@
+{
+ "candidates_after_symmetry": 4,
+ "ell": 5,
+ "k_range": [
+  8,
+  24
+ ],
+ "m": 3,
+ "n": 30,
+ "no_reference": [
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 2,
+   "ceiling_witness_support": [
+    0,
+    1
+   ],
+   "dim_pole": 10,
+   "ell": 5,
+   "k_parent": 20,
+   "m": 3,
+   "n": 30,
+   "orbit": 1,
+   "solver_calls": 0,
+   "threshold": 0,
+   "threshold_source": "none",
+   "verdict": "no_reference",
+   "wall_s": 0.0
+  }
+ ],
+ "orbit_total": 11,
+ "protocol": {
+  "cdcl_conflict_budget": 1000000,
+  "cdcl_solver": "cadical195",
+  "census_sha256": "c6733189b9e5a533daca6b0743ac54e222194509fa9e45c729a9524c34b6b1d5",
+  "k_range": [
+   8,
+   24
+  ],
+  "reference_sha256": "c23aee22014743a1f72dd6a2bdd71be7904221990b98e24d5ed183bf53522a63",
+  "reference_validation_version": "exp055-exact-reference-validator-v9",
+  "residual_workers": 8,
+  "time_limit_s": 120.0,
+  "witness_keep": 64,
+  "witness_tries": 8
+ },
+ "records": [
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "bar_invariant": true,
+   "ceiling": 2,
+   "ceiling_witness_support": [
+    0,
+    1
+   ],
+   "dim_pole": 10,
+   "ell": 5,
+   "k_parent": 20,
+   "m": 3,
+   "n": 30,
+   "orbit": 1,
+   "solver_calls": 0,
+   "threshold": 0,
+   "threshold_source": "none",
+   "verdict": "no_reference",
+   "wall_s": 0.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "ceiling_witness_support": [
+    0,
+    1,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10
+   ],
+   "dim_pole": 4,
+   "ell": 5,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 3,
+   "n": 30,
+   "orbit": 4,
+   "solver_calls": 0,
+   "threshold": 4,
+   "threshold_source": "EXP-055 [[30,8,4]]",
+   "verdict": "dominated_by_witness",
+   "witness_bound": 2,
+   "witness_classes": 255,
+   "witness_support": [
+    13,
+    14
+   ],
+   "witness_wall_s": 0.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "ceiling_witness_support": [
+    0,
+    1,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10
+   ],
+   "dim_pole": 4,
+   "ell": 5,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 3,
+   "n": 30,
+   "orbit": 4,
+   "solver_calls": 0,
+   "threshold": 4,
+   "threshold_source": "EXP-055 [[30,8,4]]",
+   "verdict": "dominated_by_witness",
+   "witness_bound": 2,
+   "witness_classes": 255,
+   "witness_support": [
+    13,
+    28
+   ],
+   "witness_wall_s": 0.0
+  },
+  {
+   "A": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ],
+   "B": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "bar_invariant": false,
+   "ceiling": 8,
+   "ceiling_witness_support": [
+    0,
+    1,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10
+   ],
+   "dim_pole": 4,
+   "ell": 5,
+   "k_from_matrices": 8,
+   "k_parent": 8,
+   "m": 3,
+   "n": 30,
+   "orbit": 2,
+   "solver_calls": 0,
+   "threshold": 4,
+   "threshold_source": "EXP-055 [[30,8,4]]",
+   "verdict": "dominated_by_witness",
+   "witness_bound": 4,
+   "witness_classes": 255,
+   "witness_support": [
+    13,
+    17,
+    18,
+    23
+   ],
+   "witness_wall_s": 0.0
+  }
+ ],
+ "reference_rebind": {
+  "all_carried_witnesses_rechecked": true,
+  "all_thresholds_monotone": true,
+  "archive": "results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v9/5x3.json",
+  "new_reference_sha256": "c23aee22014743a1f72dd6a2bdd71be7904221990b98e24d5ed183bf53522a63",
+  "new_validation_version": "exp055-exact-reference-validator-v9",
+  "old_reference_sha256": "09a86dcaa0045cc51e7c947bac2fd9167b9f1bdc47edd919df5fb5a02b301ddf",
+  "old_shard_sha256": "f60e92d035466f6c069b2b0dad70f766564ace3a688bd9414ad68eabe36ed80a",
+  "old_validation_version": "exp055-exact-reference-validator-v8",
+  "schema": "exp063-monotone-reference-rebind-v1",
+  "transitions": {
+   "dominated_by_witness->dominated_by_witness": 3,
+   "no_reference->no_reference": 1
+  }
+ },
+ "schema": "exp055-screen-v3",
+ "solver_calls": 0,
+ "survivors": [],
+ "time_limit_s": 120.0,
+ "undecided": [],
+ "utc": "2026-08-23T16:11:42Z",
+ "verdicts": {
+  "dominated_by_witness": 3,
+  "no_reference": 1
+ },
+ "wall_s": 3.1
+}

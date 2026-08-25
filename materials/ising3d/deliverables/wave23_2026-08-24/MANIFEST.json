@@ -1,0 +1,151 @@
+{
+  "bundle": "ising3d-exact-research-wave-23",
+  "generated_utc": "2026-08-24T20:22:45.619595+00:00",
+  "excluded_from_hash_list": [
+    "MANIFEST.json"
+  ],
+  "file_count": 28,
+  "total_bytes": 3466803,
+  "files": [
+    {
+      "path": "BUNDLE_INFO.txt",
+      "bytes": 2810,
+      "sha256": "cebbae816964c5898993d02053b01ee4e867ec00295b4404de72db559787aca8"
+    },
+    {
+      "path": "artifacts/docs/MATH_README.md",
+      "bytes": 17473,
+      "sha256": "4dc3ab7f33899f22a4bbc0e47af03778d7dbf7e2a9daa42650382bf76f111584"
+    },
+    {
+      "path": "artifacts/docs/PROGRESS.md",
+      "bytes": 419797,
+      "sha256": "d37decd8980487d35f3e410af91d27494e93becb201a5f33e65a2fc888997348"
+    },
+    {
+      "path": "artifacts/docs/README.md",
+      "bytes": 47374,
+      "sha256": "3225f53cf680968422fb6332d6b917024cebacf91621fc63d82b8dc81475dbd0"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/current_state.md",
+      "bytes": 56398,
+      "sha256": "b3c3fba3ba76b7ebf4f70b3a5441ef7a2c8e86d75ec2fff5041e1dba4f33867d"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/failed_routes.md",
+      "bytes": 30882,
+      "sha256": "c654867c18e6e2e8f5c03ec88d10e11021bbd90f2db68984cc6e20aae85b30f9"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/next_actions.md",
+      "bytes": 23295,
+      "sha256": "94e4e25358df12dc067c24f500814f03b8b16afc42685e68cfc7d5becb137ece"
+    },
+    {
+      "path": "artifacts/docs/checkpoints/verified_results.json",
+      "bytes": 159774,
+      "sha256": "26559f8483089115820e497d855f5d98521b1aa28e9410e1606a6fd597fea6e5"
+    },
+    {
+      "path": "artifacts/docs/notes/CODE_API.md",
+      "bytes": 3452,
+      "sha256": "c7e7c82a680f1e9bc730eccffc00f0f3a1ca762b161abbf77df76c3a17a4ab6e"
+    },
+    {
+      "path": "artifacts/docs/notes/frontier_analysis.md",
+      "bytes": 19365,
+      "sha256": "934675efea083af775ba1a5929eaee6d2c2bcaa5ec2e6e935c6b88aa8874a9ac"
+    },
+    {
+      "path": "artifacts/docs/notes/hypotheses.csv",
+      "bytes": 610632,
+      "sha256": "bd81e101ba93baf7403f5604928a38b6fe2ee8152fa81a2911bb3485f72d303b"
+    },
+    {
+      "path": "artifacts/docs/problem_specification.md",
+      "bytes": 4911,
+      "sha256": "fcd198beb06a1da3279c064505082aa7ad3c90b8726d15b9695611aeda7a8229"
+    },
+    {
+      "path": "artifacts/docs/reports/final_technical_report.md",
+      "bytes": 206260,
+      "sha256": "e982efcff64d8278f344d135b7f5e2d24c13ea34434ed9e25d01a2f11f8c6155"
+    },
+    {
+      "path": "artifacts/docs/sources/manifest.yaml",
+      "bytes": 59167,
+      "sha256": "16bbd702215b5a7114771daf80abaf60e04c3e87c073498b612c758a6347ebad"
+    },
+    {
+      "path": "artifacts/docs/tests/run_all.sh",
+      "bytes": 761,
+      "sha256": "9305a85dc509ff4c42090e8fca25c36ab436c302b9fb3225b730bce68470c922"
+    },
+    {
+      "path": "artifacts/experiments/e238_trace_exceptional_set.py",
+      "bytes": 35631,
+      "sha256": "7daf8716baec4f9fc39884f9f6956d7f256ce748aaaaf7040ea3eb5a8fbaebec"
+    },
+    {
+      "path": "artifacts/experiments/e240_callen_identity_system.py",
+      "bytes": 39277,
+      "sha256": "f810172970a797d3717f66825d39a60fcc6755d8ec13decdde1c951840ad7ed9"
+    },
+    {
+      "path": "artifacts/experiments/e242_trace_branch_disposition.py",
+      "bytes": 32649,
+      "sha256": "ab83aabec70ff14b33c10d6fda56935271291a3ffea9ae63732e716372a59920"
+    },
+    {
+      "path": "artifacts/experiments/e243_callen_termwise_closure.py",
+      "bytes": 18136,
+      "sha256": "71c5f884c8597b4890e3699ba6d19cbf7cfdf987aebc8315a0b334eefd252a28"
+    },
+    {
+      "path": "artifacts/proofs/trace_resultant.md",
+      "bytes": 23023,
+      "sha256": "72e6748f622a64f8180903bc50f338102067740e2aa5e2ffbf1a0b6ac2287744"
+    },
+    {
+      "path": "artifacts/results/correlations/callen_identity_system.json",
+      "bytes": 69211,
+      "sha256": "c3346266fce6a03e6bb2c8466c50cbcef95f1265700bfdcf72c76e0aced06861"
+    },
+    {
+      "path": "artifacts/results/correlations/callen_termwise_closure.json",
+      "bytes": 11326,
+      "sha256": "8e8e96c11b39c454b02449165f126de46ccf5278f02dadd940fc19026c46f46a"
+    },
+    {
+      "path": "artifacts/results/spectral/trace_branch_disposition.json",
+      "bytes": 750728,
+      "sha256": "75ce73ff108b7cc3d4d52efa3a5b7c0c458e3ec8530205095a887da5f663ce93"
+    },
+    {
+      "path": "artifacts/results/spectral/trace_exceptional_set.json",
+      "bytes": 740912,
+      "sha256": "668c7d625cfb15f7ac146b6acb2b616d6db1b3dfdd642c1b529a1e3c4e3f7062"
+    },
+    {
+      "path": "artifacts/tests/test_callen_identity_system.py",
+      "bytes": 26990,
+      "sha256": "3c8cef36df96fbb11f2d7cfcd35c23a6151415421d36f07cffe44a154d7f7eac"
+    },
+    {
+      "path": "artifacts/tests/test_callen_termwise_closure.py",
+      "bytes": 10253,
+      "sha256": "2dca92e99d9a62f8bd890a80111f83a8bb6e75ac7a515b965bb9391372748008"
+    },
+    {
+      "path": "artifacts/tests/test_trace_branch_disposition.py",
+      "bytes": 24273,
+      "sha256": "0ec38c10a7acbadef63701039e58e7ea7a3ef7755c5e7a2edd661472b60f982e"
+    },
+    {
+      "path": "artifacts/tests/test_trace_exceptional_set.py",
+      "bytes": 22043,
+      "sha256": "078b3faf81f1bacf7b2d9ec539829a88b1b7f8957f9fe0b953e6f1451531cfda"
+    }
+  ]
+}

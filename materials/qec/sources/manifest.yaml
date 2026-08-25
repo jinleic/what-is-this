@@ -88,6 +88,15 @@ papers:
     claims_used:
       - "Classifies exact methods (Brouwer-Zimmermann, connected-cluster/m4riCC, SAT/CLISAT, MIP-SCIP/Gurobi) versus heuristic methods (QDistRnd/DistRandCSS, QDistEvol, BP-OSD, Stim GE/CC/UE)"
     date_checked: 2026-08-11
+  - arxiv_id: "2503.03827"
+    version: "v3 (2025-06-18); PRX Quantum 6, 020357"
+    title: "Generalized Toric Codes on Twisted Tori for Quantum Error Correction"
+    authors: [Zijian Liang, Ke Liu, Hao Song, Yu-An Chen]
+    url: "https://arxiv.org/abs/2503.03827"
+    claims_used:
+      - "Table III contains two [[234,8,18]] generalized-toric/BB codes and states that all table distances through d=20 were computed exactly by integer programming"
+      - "EXP-067 gives unique quotient-lattice maps from those two twisted-torus rows to the two open EXP-066 (39,3) bundles"
+    date_checked: 2026-08-24
   - arxiv_id: "2601.18562"
     version: "v1 (2026-01-26)"
     title: "Bayesian Optimization for Quantum Error-Correcting Code Discovery"

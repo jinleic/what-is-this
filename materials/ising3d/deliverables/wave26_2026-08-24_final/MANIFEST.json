@@ -1,0 +1,194 @@
+{
+  "date": "2026-08-24",
+  "exact_witnesses": [
+    {
+      "determinant_residue": 1660951362,
+      "prime": 2147483647,
+      "q": "2",
+      "rank": 96
+    },
+    {
+      "determinant_residue": 1100728375,
+      "prime": 2147483629,
+      "q": "5/3",
+      "rank": 96
+    }
+  ],
+  "explicit_nonclaims": [
+    "no primitive F9 norm reconstruction",
+    "no open-2x4 exceptional-set emptiness or physical root list",
+    "no all-size spectral theorem from e251",
+    "no exact thermodynamic 3D Ising solution",
+    "no critical-endpoint movement"
+  ],
+  "files": [
+    {
+      "bytes": 55824,
+      "path": "README.md",
+      "sha256": "550883c28ffdf7c19c785334957bcf6548f7607bd000046f0f1a6c9e13d449d3"
+    },
+    {
+      "bytes": 65240,
+      "path": "checkpoints/current_state.md",
+      "sha256": "d21c234e3b0764bf4ca3ebbf5d3bea05a7b0933d6e7e459523e77eb484a98165"
+    },
+    {
+      "bytes": 38721,
+      "path": "checkpoints/failed_routes.md",
+      "sha256": "112364cd44c3e7ebe20c54b79458f977b3196f5e27e9a8a7aaa620507ed1e239"
+    },
+    {
+      "bytes": 31321,
+      "path": "checkpoints/next_actions.md",
+      "sha256": "58af1fa2a07e8ea23b616b622db6318b84828be099684b224602c0a53265b132"
+    },
+    {
+      "bytes": 178630,
+      "path": "checkpoints/verified_results.json",
+      "sha256": "d6ba322372d043b8a7da585f095c688dfac9df19fff86116ea3766a5b9d56e16"
+    },
+    {
+      "bytes": 9447,
+      "path": "checkpoints/wave25_research_plan.md",
+      "sha256": "b7febe1f1829a227336dad557acc80bd6ba4b63449ac2a39e10aeb8b70d1a53d"
+    },
+    {
+      "bytes": 7352,
+      "path": "checkpoints/wave26_research_plan.md",
+      "sha256": "2a15538da3c5f040c746d9d671f6bed3e664eb80f1f92e55025bfb9824d0074b"
+    },
+    {
+      "bytes": 35631,
+      "path": "experiments/e238_trace_exceptional_set.py",
+      "sha256": "7daf8716baec4f9fc39884f9f6956d7f256ce748aaaaf7040ea3eb5a8fbaebec"
+    },
+    {
+      "bytes": 32815,
+      "path": "experiments/e248_replica_trace_nine.py",
+      "sha256": "d3808dda592d1eab90795a1226a13623f056d525f929663a4f814b7733741eb7"
+    },
+    {
+      "bytes": 43659,
+      "path": "experiments/e251_trace_nine_projection.py",
+      "sha256": "e0b8274038b02e9b80db60ee9f8ad4ff50bae8cdcfd240251c2a0e9b0f89e8e8"
+    },
+    {
+      "bytes": 26006,
+      "path": "notes/frontier_analysis.md",
+      "sha256": "b0903d3774dce14c87c00d463c6cecd2d01670d78e09d660ca4a22a7e64fb15a"
+    },
+    {
+      "bytes": 642579,
+      "path": "notes/hypotheses.csv",
+      "sha256": "c3e75393c1672ad77251d4315b8bd1cdad93bc4ce5fa041981a5c70eea44079b"
+    },
+    {
+      "bytes": 4911,
+      "path": "problem_specification.md",
+      "sha256": "fcd198beb06a1da3279c064505082aa7ad3c90b8726d15b9695611aeda7a8229"
+    },
+    {
+      "bytes": 8751,
+      "path": "proofs/replica_trace_nine.md",
+      "sha256": "523548fd5c06421ce7db51116b5124f70598b6c05267a6656f8128d86d53413c"
+    },
+    {
+      "bytes": 9900,
+      "path": "proofs/trace_nine_projection.md",
+      "sha256": "adeaf5ff25390c5fd0da9a037d15cfca633892cf63fd9776eec1a474cd0f9eb6"
+    },
+    {
+      "bytes": 177,
+      "path": "pyproject.toml",
+      "sha256": "3b779706037618fec9d5d9da29987e45292b1fe48b3856f37caa80a3499c36f6"
+    },
+    {
+      "bytes": 226449,
+      "path": "reports/final_technical_report.md",
+      "sha256": "e29746a2c18f38a17767a04b08ed2c63e76bcec01456ed59e8be2345089e940e"
+    },
+    {
+      "bytes": 25751,
+      "path": "results/spectral/replica_trace_nine.json",
+      "sha256": "b468ea85b18c3073c188680f8a4a717102c72ee8282b9235828861dd05c49659"
+    },
+    {
+      "bytes": 740912,
+      "path": "results/spectral/trace_exceptional_set.json",
+      "sha256": "668c7d625cfb15f7ac146b6acb2b616d6db1b3dfdd642c1b529a1e3c4e3f7062"
+    },
+    {
+      "bytes": 18512,
+      "path": "results/spectral/trace_nine_projection.json",
+      "sha256": "b43c46c25cda4c7b06a78405698cfab235e0e90cc9a6c3035a354090d2e3e82f"
+    },
+    {
+      "bytes": 20850,
+      "path": "sources/bibliography.bib",
+      "sha256": "05cd66633ae655e56d6f06b0f9d9375c2870eae1e102ea92d9e34e76ceec67a9"
+    },
+    {
+      "bytes": 70402,
+      "path": "sources/manifest.yaml",
+      "sha256": "56da9594e20c4f30d295f87fe0fb2b6d4abec9c6bf3d691f83060a512ca6257b"
+    },
+    {
+      "bytes": 20797,
+      "path": "tests/test_replica_trace_nine.py",
+      "sha256": "d845a28c92f6cdbc6a10b81e02eb776982d88e776a1c2df834969fdad211c1ac"
+    },
+    {
+      "bytes": 22043,
+      "path": "tests/test_trace_exceptional_set.py",
+      "sha256": "078b3faf81f1bacf7b2d9ec539829a88b1b7f8957f9fe0b953e6f1451531cfda"
+    },
+    {
+      "bytes": 36029,
+      "path": "tests/test_trace_nine_projection.py",
+      "sha256": "d2696a0f44a0848d0575736c93db68259f95003b7cdf0be4d03ee046766827c9"
+    },
+    {
+      "bytes": 78973,
+      "path": "uv.lock",
+      "sha256": "4726afabb3d04a24194d5196ebc5b5331ae1bd2ad653987df10d5f80aaee3020"
+    },
+    {
+      "bytes": 496615,
+      "path": "workspace_math/PROGRESS.md",
+      "sha256": "8ba54b000b6fb526fd8bcc6c9c7e6d225c6563055e4a09c8653c7f7ca944196e"
+    },
+    {
+      "bytes": 17219,
+      "path": "workspace_math/README.md",
+      "sha256": "997633785ba6e6369fd25cb583301e7bb8464764f12bf4e4845a522b78f121be"
+    }
+  ],
+  "headline": "The finite open-2x4 trace-four-through-nine full-eight-mode incidence is supported on a nonzero q polynomial of degree at most 182400.",
+  "scope": "Current Wave-26 e251 code, inherited e238/e248 trace inputs, exact artifact, proof, clean-room verifier, frozen plans, final bookkeeping, source registry, and pre-bundle-reference documentation snapshots.",
+  "snapshot_pre_bundle_reference": true,
+  "staged_bytes": 2965516,
+  "staged_file_count": 28,
+  "status": "FINAL",
+  "synthetic_control": {
+    "determinant_residue": 0,
+    "mode_roots": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "prime": 2147483647,
+    "rank": 95
+  },
+  "verification": {
+    "adversarial_reviews": "3 final PASS after displayed-identity, denominator/count, q-guard, and finite-scope hardening",
+    "clean_room_verifier": "PASS; 61.230270 process CPU seconds; 133529600 bytes peak task RSS",
+    "full_suite": "not run; 171 scripts currently auto-discovered",
+    "producer": "PASS 10/10; 86.942454 process CPU seconds; 174309376 bytes peak task RSS"
+  },
+  "wave": 26
+}

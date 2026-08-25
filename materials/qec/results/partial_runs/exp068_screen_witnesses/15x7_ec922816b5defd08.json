@@ -1,0 +1,88 @@
+{
+  "attempts": [
+    {
+      "lower_bound": 0,
+      "sector": 0,
+      "side": "X",
+      "status": "UNKNOWN",
+      "value": null
+    },
+    {
+      "lower_bound": 5,
+      "sector": 1,
+      "side": "X",
+      "status": "FEASIBLE",
+      "value": 16
+    }
+  ],
+  "identity": {
+    "A": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "B": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        4
+      ]
+    ],
+    "ell": 15,
+    "k_parent": 8,
+    "m": 7,
+    "threshold": 16
+  },
+  "protocol": {
+    "time_limit_s_per_sector": 120.0,
+    "upper_bound": 16,
+    "workers": 2
+  },
+  "route": "single-sector CP-SAT X witness plus exact BB duality",
+  "schema": "exp068-screen-fallback-witness-v1",
+  "search_side": "X",
+  "sector": 1,
+  "status": "FEASIBLE",
+  "support": [
+    22,
+    43,
+    51,
+    58,
+    79,
+    87,
+    97,
+    99,
+    130,
+    140,
+    150,
+    151,
+    173,
+    193,
+    203,
+    204
+  ],
+  "verification": {
+    "commutes_with_HX": true,
+    "outside_Z_stabilizer": true,
+    "vector_sha256": "10d2380c1177bea53975a9f1d38926dd811685816f50fd52e4913205261e1bde",
+    "weight": 16
+  },
+  "wall_time_s": 240.0126488750002,
+  "weight": 16
+}

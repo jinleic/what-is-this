@@ -1,6 +1,147 @@
 # Current state
 
-**Snapshot:** 2026-08-23, wave 22 landed; all eight targeted fronts independently verified.
+**Snapshot:** 2026-08-24, wave 26 landed the first nonzero open-`2x4` trace-nine projection; the targeted producer and clean-room verifier pass.
+
+Frozen Wave-26 plan and decision contract: `checkpoints/wave26_research_plan.md`.
+
+- **Wave 26 (landed, one standalone producer/verifier front run by the lead):**
+  1. **Trace nine now proves a finite open-`2x4` incidence.** The e248 `F4`-`F8` quotient has
+     Hilbert vector `(1,5,12,19,22,19,12,5,1)`. Exact `96x96` multiplication-by-`F9`
+     determinants are nonzero at `q=2` modulo `2147483647` and at `q=5/3` modulo
+     `2147483629`; the synthetic mode polynomial with roots `4,...,11` gives rank 95 and
+     determinant zero. The no-infinity leading system and multihomogeneous clearing therefore
+     confine every full eight-mode incidence to a nonzero `q` polynomial of degree at most
+     `182400` (`H669`, `e251`).
+  2. **The projection is not yet empty.** Seven pointwise Lucas-product necessities hold strictly
+     for the literal open-`2x4` targets after exact `q=1+x` coefficient tests, so none supplies a
+     q-only shortcut. The primitive norm, all `q>1` roots, repeated-root-safe shifted
+     `H0/H1` disposition, and open-`2x4` emptiness remain unresolved (`H670`).
+  3. **Verification and allocation.** The producer passed ten hard gates in 86.942454 process CPU
+     seconds and 174,309,376 bytes. The clean-room verifier used direct resultants, an independent
+     reducer, and scalar elimination; it passed in 61.230270 seconds and 133,529,600 bytes. Three
+     adversarial reviewers returned final PASS after repairing one displayed Lucas identity,
+     denominator-scalar/count wording, q-residue guards, and finite-graph scope (`H671`).
+     Experiments through `e251` and ledger through `H671` are allocated; `e252` and `H672` are
+     next. The tree has 171 test scripts. No full suite, primitive-norm interpolation, endpoint
+     movement, or thermodynamic calculation ran.
+  4. **Bundle.** `deliverables/ising3d_wave26_final_bundle.zip` has 28 staged files plus manifest;
+     all 29 members and every staged hash validate. Size 1,124,173 bytes, SHA-256
+     `d07e9130b19c8cd5d4f1a95b71fb11d347e4c3b2edf73240ac50d9d48bb33dc1`.
+     Snapshot docs predate this archive self-reference.
+
+
+Frozen Wave-25 plan and decision contract: `checkpoints/wave25_research_plan.md`.
+
+- **Wave 25 (landed, four standalone producer/verifier fronts run by the lead):**
+  1. **First all-coupling boundary matchgate defect.** On the smallest nonplanar open cubic box
+     `2x3x3`, eliminate either checkerboard color, retain the unique five-site opposite-color
+     `3x3` face, and average the other four retained spins. The normalized five-leg Walsh tensor
+     fails all five four-leg principal-Pfaffian equations in every one of `5!=120` ordinary
+     unsigned leg orders for every `0<v=tanh(K)<1`. Four exact positive factor classes prove the
+     sign; an alternating planar `C10` control passes exactly its ten dihedral orders. This is a fixed-boundary,
+     fixed-basis defect, not a global Pfaffian-count or hidden-auxiliary no-go (`H658`-`H659`,
+     `e247`).
+  2. **Open `2x4` trace nine became exact and correctly dimensioned.** A `4^k`-state
+     replica-column recurrence gives `H_k(q)=tr(B(q)^k)` for every open `2xL`; on `2x4` it
+     constructs `H1` through `H9` with maximum 262,144 states and degree 162. The eight-mode
+     rows have degrees `2,2,2,3,4,3`; `F4`-`F8` have a parameter-independent
+     zero-dimensional leading ideal with 35 grevlex basis elements and 96 standard monomials.
+     Trace eight is underdetermined once `q` is free; the `96x96` `F9` norm and physical branch
+     disposition remain unresolved, so no `2x4` emptiness theorem is claimed (`H660`-`H662`,
+     `e248`).
+  3. **W-law cores now have an exact support-defect block mechanism.** The all-size elementary
+     identity `|E|-|D|=L-2m` gives `|E|+|D|>=|L-2m|`. The literal e237 cores are exactly the
+     boundary families `17=16+1` and `133=128+5`; particle-hole identifies the two `L=9`
+     matrices. Each `133x133` core splits into four `29x29` shells plus the inherited signed
+     `17x17` `L=8` core, explaining `3^5*2^288`. Smith torsion `6` in the first normalized shell
+     exactly refutes the tempting eight-copy/dyadic recurrence. No `L>=10` rank or residual
+     theorem follows (`H663`-`H666`, `e249`).
+  4. **Contact-inclusive Callen aggregation still cannot close the pair.** On the finite
+     `C3^3` periodic cubic graph, all 864 radius-one contact rows fold to four classes under
+     translations and full cubic symmetry. After allowing normalization and the nearest-neighbour
+     pair, a nonallowed `4x4` minor is
+     `4(c1-c5)(c1+4c3+c5)` and is strictly positive for every `0<v<1`; hence no nonzero folded
+     combination closes on the pair. Contacts, all pivots, and the five-neighbour/full-neighbour
+     row are included; radius, nonlinear, auxiliary, and nonsymmetric zero-average relations are
+     not (`H667`-`H668`, `e250`).
+  5. **Verification and allocation.** Producers `e247/e248/e249/e250` passed `13/9/18/10`
+     hard gates; all four clean-room verifiers passed. The largest bounded stage was the e248
+     verifier at 21.271467 process CPU seconds and 1,245,003,776 bytes peak task RSS; its producer
+     used 18.714901 seconds and 1,241,841,664 bytes. Adversarial review
+     returned PASS on all four fronts after hardening ordinary-order scope, actual trace degrees,
+     Lucas/mode linkage, semantic hashes, dependency locks, and Callen pivot provenance.
+     Experiments through `e250` and ledger through `H668` are allocated; `e251` and `H669` are
+     next. The tree has 170 test scripts. No full suite or memory-14 launch ran, and the critical
+     interval is unchanged.
+     Definitive Wave-25 bundle: 46 staged files plus manifest; ZIP 1,575,644 bytes,
+     SHA-256 `d167e544c7693b10d9526f66987da5a28cb71d610d5f3f4819831bf525f5a29e`;
+     every staged hash and all 47 members validate. Snapshot docs omit archive self-references.
+     The two earlier Wave-25 ZIPs are superseded and retained pending user-approved deletion.
+
+
+Frozen Wave-24 plan and decision contract: `checkpoints/wave24_research_plan.md`.
+
+- **Wave 24 (landed, three standalone producer/verifier fronts run by the lead):**
+  1. **Graph-uniform exceptional-scheme degree bound.** For every connected simple nonpath
+     graph with `n` vertices and `m` edges, the physical full-spectrum exceptional set has at
+     most `[2^n(2n+2m)]^(n+2)` points; uniformly at fixed `n`, at most
+     `[2^n(n^2+n)]^(n+2)`. The polynomial representative has entry degree `2n+2m`.
+     Paths are excluded, and the bound does not prove emptiness (`H643`-`H645`, `e245`).
+  2. **All-even-star sign law and local matchgate structure.** For even star degree `d`, every
+     nonempty log-Walsh sector of size `2r` has strict sign `(-1)^(r+1)` for `K!=0`.
+     At `0<v=tanh(K)<1`, the degree-six weight signature is the pure-even
+     sub-Pfaffian tensor of `v^2 J_6`.
+     It has ordinary CP rank two and every flattening has rank two, but nonnegative all-leg
+     CP rank exactly `32`; the positive spin-basis rank-two form merely restores the eliminated
+     centre. The normalized checkerboard contraction is the positive cycle-space polynomial,
+     not a global 3D Pfaffian theorem (`H646`-`H649`, `e244`).
+  3. **Selected-row Callen Walsh theorem.** For even local degree `d=2m` and
+     `0<v=tanh(K)<1`, the proper-even by odd
+     leakage matrix has rank `2^(d-1)-C(d,m)/2` and left nullity `C(d,m)/2-1`; every
+     leakage-canceling combination has zero pair-row coefficient. Cubic inversion leaves six
+     exact higher-template relations in a `19x16` block of rank `13`, while deleting the pair
+     row lowers the rank to `12`. This closes only the fixed contact-free far-mark block
+     (`H650`-`H652`, `e246`).
+  4. **Verification and allocation.** Producers `e244/e245/e246` passed `13/13`, `9/9`, and
+     `10/10`; all three clean-room verifiers passed after review-driven normalization,
+     path-scope, provenance, and false-pass repairs. Independent theorem reviewers returned
+     PASS. Append-only corrections `H653`-`H657` supersede the pre-hardening scope,
+     normalization, timing, resource-provenance, and external-source wording in
+     `H644/H645/H649/H654/H655`. Experiments through `e246` and ledger through `H657`
+     are allocated; `e247` and `H658` are next. The tree has 166 test scripts.
+     `e233` remains an
+     unlanded draft.
+     The critical interval is unchanged, and no full 166-script suite was launched under the
+     contended multi-user host.
+     Wave-24 bundle: 43 staged files plus manifest; ZIP 814,269 bytes,
+     SHA-256 `b716c320aa6e253dc26345497ff512ff94949fd2ae5cc5c3bff3666ce41f7608`;
+     every staged hash and all 44 ZIP members validate. Bundle snapshot docs intentionally
+     predate this self-referential archive record.
+
+- **Wave 23 (landed, both standalone verifier fronts run by the lead):**
+  1. **Open `2x3` every-coupling full-spectrum theorem.** The three e238 real roots have unique
+     exact coefficient sextics from rank-seven adjugate certificates. Their Hermite signatures
+     are `2,2,6`; the third has shifted signs `+---+++` and at most two roots above `u=4`.
+     Therefore no physical `0<t<1` gives a full six-mode subset-product spectrum on this finite
+     layer (`H635`-`H639`, `e242`).
+  2. **All-pivot termwise Callen closure theorem.** On every connected six-regular simple graph,
+     nonzero one- and three-neighbour terms generated from one pair force exactly all even proper
+     supports. On periodic cubic boxes, removing the empty normalization still leaves at least
+     `ceil((2^(n-1)-[n even]-1)/n)` nontrivial translation orbits. Selected-pivot schemes, row
+     combinations, cross-orbit aggregation, and nonlinear/auxiliary variables remain open
+     (`H640`-`H642`, `e243`).
+  3. **Verification and allocation.** The e242 producer passed 10/10; its final current-source
+     quotient/cofactor stage passed in 713.290031 process CPU seconds and its
+     dyadic/Hermite/Descartes stage in 192.412972 process CPU seconds. The e243 producer passed
+     8/8 and its independent verifier passed after adversarial repairs. Experiments `e242` and
+     `e243` are landed; `e244` is next. Ledger `H635`-`H642` is allocated; `H643` is next.
+     The tree has 163 test scripts. `e233` remains an unlanded draft. The critical interval is
+     unchanged and no full 163-script suite was launched.
+     Wave-23 bundle: 28 staged files plus manifest; ZIP 1,333,269 bytes,
+     SHA-256 `fcbb60b2bf0797b7141193110e2d78d411221ab6942e90b1796e024a2a60e57a`;
+     staged hashes and all 29 ZIP members validate. Bundle snapshot docs intentionally predate
+     this self-referential archive record.
+
 
 - **Wave 22 (landed, all eight accepted standalone verifier fronts run by the lead):**
   1. **All-size full-spectrum endpoint and generic theorem.** At `t->0`, ordered transfer
@@ -11,12 +152,11 @@
      temperature, every cyclic simple graph near low temperature, and the full-cube coupling set
      is finite by Chevalley constructibility. Exceptional couplings are not located or proved
      absent in general (`H600`-`H608`, `e235`-`e236`).
-  2. **Open `2x3` continuum reduced to three exact candidates.** A stable rank-eight quotient
-     gives a primitive squarefree dense `E(q)` of degree `971`. Exactly three `q>1` roots map to
-     `t` intervals `(397429/10^6,39743/10^5)`,
-     `(160347/10^6,40087/250000)`, and
-     `(10457/200000,26143/500000)`. All are genuine seven-trace algebraic branches; whether a
-     branch has six real `u_i>=4` remains unresolved (`H628`-`H632`, `e238`).
+  2. **Open `2x3` continuum reduced to three exact candidates at wave 22.** A stable rank-eight
+     quotient gives a primitive squarefree dense `E(q)` of degree `971`. Exactly three `q>1`
+     roots map to the stored physical intervals. They were genuine seven-trace algebraic branches;
+     wave 23 now disposes all three semialgebraically (`H628`-`H632`, `e238`, superseded in scope
+     by `H635`-`H639`, `e242`).
   3. **Exact octahedral checkerboard decimation.** Eliminating a degree-six star gives
      `c2>0,c4<0,c6>0` for every real `K!=0`; arbitrary visible fields/pairs cannot reproduce
      the positive six-spin coefficient. Checkerboard elimination is exactly a 2-/4-/6-spin
@@ -45,9 +185,10 @@
      elimination (`433.85` wall seconds) and hardened root-certificate (`110.00`) stages after a
      one-shot Sturm path exceeded its resource wall; `H633` records the final-source correction.
      The compact SAW verifier now asserts both content digests and reran PASS (`H609`).
-     Ledger `H596`-`H634` is used, `H635` is next; experiments `e234`-`e241` are landed,
-     `e233` remains an unlanded draft and must not be claimed or reused, `e242` is next unused,
-     and 161 test scripts are present. The critical interval is unchanged.
+     At the wave-22 close, ledger `H596`-`H634` was used, `H635` was next, experiments
+     `e234`-`e241` were landed, `e242` was next unused, and 161 tests were present. The wave-23
+     block above supersedes that allocation. `e233` remains an unlanded draft. The critical
+     interval is unchanged.
      Wave-22 bundle: 47 staged files plus manifest; ZIP 1,248,489 bytes,
      SHA-256 `5767bfed50a02cdbeddebb2b686f6f55e5657d25b4bcfd9a623a39b38a13ac7c`;
      staged hashes and all 48 ZIP members validate.
@@ -251,7 +392,7 @@ The reusable code is under `src/ising/`; standalone computations are under `expe
 - **Wave-14 extensive charges (`s<=5` decided):** the `Z^3` radius-2 support-size `s<=5` class `C(3,2,5)` is decided: `21,121,156` columns, `rank S = 14,757,412`, and column-oriented exact `F_p` elimination with compact CSR pivot storage gives `rank M = 14,757,410` at both `p=2147483647` and `p=2147483629` (1446.7 s / 1460.2 s process, peak RSS 2292.7 MiB), meeting the analytic `I,h` upper bound `rank S - 2`, so the quotient is exactly `1` — only the Hamiltonian density survives modulo shifts and identity.  The certified `s<=4` regression (`822332` at both primes) is reproduced first; the FULL radius-2 box and `s >= 6` remain untouched (`proofs/extensive_3d_s5.md`).
 - **Wave-14 Peierls limitation (Theorem P):** the plain Peierls head+tail contour certificate cannot beat the incumbent `I_3/2`: with the exact cell-class census through `n<=10` (9,638,143 classes flood-filled, zero cavity-bearing; the smallest cavity needs exactly 11 cells, attained by an 11-cell tree witness) the rooted contour counts extend to `N(26)=20448` and `N(28)=33240`, and the certified partial sum at `x*=e^{-I_3}` already exceeds `1/2` (`V(x_-) = 0.5883195276...`, margin `0.08832`); `K* = 0.2558326 > I_3/2` is 3-way-bisection-certified (gap `0.003102`); the head-only crossing's feigned gain `0.01804` is annihilated by the proved tail mass `1.65288 > 1/2`; the Lagrange/Lagrange-tail converges only above `(1/2)log lambda = 1.6755`, a certified `1.42` above the incumbent, so no finite exact head can close the gap; re-certified grid endpoint `1.695292` (below wave-6's `1.696898`).  `K*` is a property of the certificate, not of `K_c`; the incumbent upper endpoint is unchanged (`proofs/upper_beyond.md`).
 - **Wave-14 Kac--Ward `11111` (anchor components cleaned):** over the anchor thin-torus section `(1,1,1,1,1,4,4)` the unit chart has exactly three nonsingular `F_5` solutions (`det J` in `{2,4,1}`; the full `F_5^6` grid has `1553` solutions, the fourth nonsingular point being chart-degenerate), each lifting by Hensel to a genuine `Q_5` point of the 42-equation construction variety (all 42 construction residues `0 mod 625`), and all three lifts fail the independent `3x3x3` holdout at orders `8/10/12 mod 625` (residues `[250,55,266]`, `[456,350,132]`, `[430,480,286]`; the anchor `k=8` residue `250` reproduces wave-10).  Two independent routes (symbolic walk-monomial expansion and `108x108` matrix-power traces) agree at all five orders, and the orbit-union lemma collapses the diagonal torus action to one representative per orbit.  Branch `11111` stays `[UNRESOLVED]` over `Q`; the other `4^7-1` thin-torus sections are unanalysed (`proofs/kw_components.md`).
-- **Wave-14 SAW sieve union:** `a_35 >= 1972465461070186257835` from the 404-member two/three-block height-schedule family closed by exact inclusion-exclusion — overlap correction `5030204334415261659120` against the naive disjoint-union volume `7002669795485447916955` (2,780 active sieve terms, 8,344 covered chains, 2,167 intersecting pairs; full member counts rest on the wave-13 820 certificates).  This sets the current lower endpoint recorded in the interval bullet above; the clean-room verifier independently re-derives `T(13)=142016661`, the `l<=11` band, the per-row sieve identities and the 40-dp floor (`proofs/saw_union4.md`).
+- **Wave-14 SAW sieve union:** `a_35 >= 1972465461070186257835` from the 404-member two/three-block height-schedule family closed by exact inclusion-exclusion — overlap correction `5030204334415261659120` against the naive disjoint-union volume `7002669795485447916955` (2,780 active sieve terms, 8,344 covered chains, 2,167 intersecting pairs; full member counts rest on the wave-13 820 certificates).  This set the wave-14 lower endpoint, superseded by the wave-20 memory-12 bound; the clean-room verifier independently re-derives `T(13)=142016661`, the `l<=11` band, the per-row sieve identities and the 40-dp floor (`proofs/saw_union4.md`).
 - **Wave-14 ledger state (`H380..H390`), canonical mapping copied from ledger row H386:** "The five earlier appended rows H380-H385 are: H380 = 2x5 spectral no-go (canonical); H381 = SectorSaturationCyclicity refutation (canonical); H382 = Z^3 s<=5 class (canonical); H383 = DUPLICATE of H380 (2x5, mistaken re-append); H384 = CORRECTION to H381 quantifier; H385 = DUPLICATE of H382 (s<=5, mistaken re-append).  The H383/H385 rows are superseded by their canonical H380/H382 and by THIS row; they are NOT additional certification."  The remaining wave-14 rows are `H386` = the mapping correction itself, `H387` = the Peierls-at-incumbent limitation theorem, `H388` = the KW `11111` anchor-section component theorem (its column alignment is recorded by row `H402` — the artifact list sits in the `next_action` slot; append-only, to be marked by a future row), `H389` = the height-schedule sieve union, `H390` = CORRECTION scoping `H388` to the unit chart.  The ledger holds `362` data rows, all unique IDs, highest `H390`; **next free ID `H391`**.
 
 Exact coefficient arrays, dimensions, residuals, methods, and scripts are recorded without rounding loss in `checkpoints/verified_results.json`.

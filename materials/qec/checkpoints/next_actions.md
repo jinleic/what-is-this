@@ -1,5 +1,111 @@
 # Next actions — ordered by expected information gain
 
+## 2026-08-24 update — EXP-067 closes $n=234$ exactly
+
+The two EXP-066 hard bundles are Liang et al.
+(arXiv:2503.03827v3, Table III) prior art. Unique quotient-lattice maps and
+explicit qubit permutations identify their two twisted-torus
+$[[234,8,18]]$ rows with the two $(39,3)$ representatives. EXP-067
+independently proves both distances: original and block-swapped rooted
+connected-cluster searches exhaust weights through 16, each is replayed,
+even kernel weight excludes 17, and physical weight-18 witnesses close both
+Pauli sectors. The modern multithreaded coordinator was rejected for a
+completion race (FR-033); only the hash-bound single-thread entrypoint enters
+the certificates.
+
+The exact fixed-point surface now reaches $n=234$: 22 lattices / 4,862
+classes / 150,581 represented pairs, all 4,658 referenced classes dominated,
+204 high-$k$ `no_reference`, zero survivor/undecided.
+
+Final review also closed the global proof-surface gap (FR-035): EXP-068 binds
+physical witnesses to all 57 fallback dominations, and validator v11 now
+checks identity/transport, threshold and physical proof on every record before
+or after monotone rebinding.
+
+**Next actions, reordered by information gain:**
+
+1. **Bounded $n=270$ screen.** The nonempty lattices are $(15,9)$, $(27,5)$
+   and $(45,3)$. First prove and use the exact
+   $\mathbb Z_{15}\times\mathbb Z_9\cong\mathbb Z_{45}\times\mathbb Z_3$
+   transport so the 5,024-class noncyclic screen is not duplicated; the
+   cyclic $(27,5)$ side has 688 classes. Liang Table III contains two
+   $[[270,8,20]]$ source leads, but they require the same local
+   constructor/distance binding before promotion.
+2. **Multi-row channel theorem (B).** Test the Fitting-ideal analogue of J-G
+   against the 8 INFEASIBLE / 2 witness EXP-051 controls.
+3. **End-to-end circuit item (E).** Construct a flag/cat extraction circuit or
+   prove a class-restricted mixed-hook no-go.
+4. **Proof-trace hardening.** The EXP-067 native connected-cluster executable
+   is replayed and source-bound, not formally proof-producing. A native-XOR
+   CryptoMiniSat FRAT-XOR/CakeML replay is the independent checker candidate.
+
+## 2026-08-23b update — EXP-066 exposes the $n=234$ exact hard wall
+
+The two $n=234$ frontiers are exhaustively represented, but exact closure does
+**not** move past $n=210$:
+
+* $(13,9)$: 84/84 classes dominated at the exact $k=12$, $d=12$ threshold;
+* $(39,3)$: 734/758 classes dominated at the exact $k=8$, $d=16$ and $k=12$,
+  $d=12$ thresholds;
+* the full 576-element
+  $\operatorname{Aut}(\mathbb Z_{39}\times\mathbb Z_3)$ action is
+  machine-checked and compresses 182 initial hard classes to 30 exact bundles;
+* candidate-local transported witnesses close 28 bundles / 158 classes;
+* two 12-class bundles remain undecided at cap 16; every class has a verified
+  weight-18 upper witness, so the unresolved question is exactly $d=16$ versus
+  $d=18$.
+
+The comparison surface now has 22 lattices / 4,862 classes / 150,581
+represented pairs: 4,634/4,658 referenced classes dominated, 24 undecided,
+204 no-reference, zero survivors.
+
+**Next actions, reordered by information gain:**
+
+1. **Exact lower decision for the two open bundles.** One complete cap-16 proof
+   per automorphism bundle suffices. Existing monolithic, fixed-class,
+   two-sector, native-cardinality, and quotient-pinned formulations all fail
+   closed under the recorded budgets; pursue a new factor-aware lower
+   formulation rather than another blind solver multiplier.
+2. **Multi-row channel theorem (B).** Fitting-ideal analogue of J-G against the
+   8 INFEASIBLE / 2 witness EXP-051 controls.
+3. **End-to-end circuit item (E).** Flag/cat construction or class-restricted
+   hook no-go for the non-CSS flagship.
+4. **Per-factor distance bounds (D).** Reuse the now-explicit CRT component
+   table; the global idempotent bound remains falsified.
+
+## 2026-08-23 update — adaptive ratchet and CRT transport close the screen through $n=210$
+
+Ranked item A is **closed through its third bounded milestone**:
+
+* exact $n=180$ CSS references are constructor/current-CNF-bound;
+* exact fixed points added at $[[170,16,10]]$, $[[186,10,14]]$ (seven
+  classes), and $n=210$: thirteen $[[210,18,8]]$, $[[210,24,4]]$,
+  $[[210,14,12]]$, two $[[210,10,16]]$;
+* an additional $k=8$ row has independent weight-16 witnesses and is
+  dominated, without an exact-distance claim;
+* exact CRT transport collapses the three coprime $N=105$ presentations;
+* final fixed-point screen: 20 lattices / 4,020 classes / 122,833 represented
+  pairs; all 3,816 referenced classes dominated, 204 no-reference, zero
+  survivor/undecided.
+
+**Next actions, reordered by information gain:**
+
+1. **Odd-lattice closure at $n=234$.** Screen the two inequivalent frontiers
+   $(13,9)$ and $(39,3)$. Use the EXP-060 even-cap/one-sector ratchet:
+   $k=12$ threshold 12, $k=8$ threshold 16. Promote a new exact fixed point
+   only when it raises one of these thresholds.
+2. **Quotient-projection/MITM follow-up.** The H-orbit projection is too weak
+   alone (lower bound 4), but its complete 30-bit syndrome table can prune
+   class-pinned bundles. Test it only as a bundle shrinker; the exact affine
+   trellis is closed as a failed route at widths 48--99.
+3. **Multi-row channel theorem (B).** Fitting-ideal analogue of J-G against the
+   8 INFEASIBLE / 2 witness EXP-051 controls.
+4. **End-to-end circuit item (E).** Flag/cat construction or class-restricted
+   hook no-go for the non-CSS flagship.
+5. **Per-factor distance bounds (D).** Reuse the now-explicit CRT component
+   table rather than the failed global idempotent bound.
+
+
 ## 2026-08-22 update — EXP-056 exactifies $[[162,8,14]]$ and closes the fixed-point screen through $n=162$
 
 Ranked item A is **closed through its second bounded milestone**:

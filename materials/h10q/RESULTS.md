@@ -1,16 +1,22 @@
-# H10 over Q — session results (2026-08-23, rev 14)
+# H10 over Q — session results (2026-08-24, rev 18)
 
 ## Deliverables
 - `NOTES.md` — problem map with exact theorem statements and arXiv ids.
-- `THEOREMS.md` — precise frontier statements through L27: published and
+- `THEOREMS.md` — precise frontier statements through L31: published and
   audited anchors; the audited six-unknown L6 architecture; the unchanged
   L19–L22 proof that classical Schinzel H implies the conditional record;
   L23's unconditional half-sieve and exact analytic/algebraic barriers;
   L24's theorem that both unscaled self-coupled diagonal images are empty
   on $\Phi$ over $\mathbb Q_2$; L25's scaled dyadic escape; L26's
-  reciprocal quartic-trace tie; and L27's one-piece shear with complete
-  dyadic/aligned-target local points.  Schinzel H remains the sole
-  conjectural input (`THEOREMS.md`, L6 and L19–L27).
+  reciprocal quartic-trace tie; L27's one-piece shear with complete
+  dyadic/aligned-target local points and three section no-gos; L28's
+  uniform trace-field and bad-sign-cover irreducibility; L29's complete
+  reciprocal-lift squareclass classification and fixed-field reduction;
+  L30's lower-degree constant-two quartic cover, square-branch rigidity,
+  and exact trace-base/lift separation; and L31's first proved
+  fixed-field reciprocal member, exact off-cube quartic point, dispersion
+  correction, and AP1 equivalence.  Schinzel H remains the sole
+  conjectural input (`THEOREMS.md`, L6 and L19–L31).
 - `h10q.py` — stdlib-only executable model of both pillars, running on a
   **proven-primality arithmetic engine**: deterministic Miller–Rabin below the exact A014233
   13-base bound, generalized Pocklington $n{-}1$ certificates above it, explicit
@@ -121,6 +127,12 @@ membership checks are sampled or windowed, never claimed beyond their stated sco
 | **L24b: both diagonal orientations are $\mathbb Q_2$-empty** | **PROVED uniformly on all of $\Phi$; diagonal five-count CLOSED/FALSE** | $v_2(c)\ge4$.  Orientation I has normalized coefficient valuations $(4,0,0)$ and possible $v_2(u)=0,4$, incompatible with simultaneous squareness of $u$ and $A+u$.  Orientation II is $u^2-32hu+16e$ with unit $h,e$; $v_2(u)=2$, and $u=4t^2$ gives $0\equiv8+2Ab(s^2-1)\pmod{16}$, which would require the impossible $v_2(s^2-1)=2$.  Both images are empty; this does not touch the fixed canonical six-count (`l24_diagonal_geometry.py`, `l24_diagonal_arithmetic.py`; paired data; `agent://DiagonalAudit`). |
 | **L24c: local geometry and bounded search** | **PROVED local/geometry statements; zero-hit scan EVIDENCE only** | Odd target places are locally soluble on orientation II's standard $k=1<v_w(Z)$ stratum, so the global obstruction is genuinely dyadic.  The generic cover is integral degree $8$ with Galois closure $V_4\wr C_2$ of order $32$, no base-rational section, genus-$35$ actual-cell slices and a genus-$53$ actual-$z$ slice; absolute surface rationality remains OPEN.  The scan covered $370$ cells, $2{,}013{,}141$ bases and $4{,}026{,}282$ orientation attempts with zero hits; every-cell emptiness comes from the mod-$16$ proof, never the scan (`l24_diagonal_{local,geometry,arithmetic,search}.py`; paired data). |
 | **L25: scaled non-diagonal couplings** | **PROVED local escape; global five-shape route remains OPEN** | With $u=\rho^2$, fixed scalings give exact eliminants.  The type-I scalings $(y,r)=(2X,\rho)$ and $(2X,\rho/2)$ are $2$-adically admissible exactly on even-$s$ and odd-$s$ strata, uniformly in unit classes and every $v_2(c)\ge4$; their disjunction covers all of $\Phi$, so L24's obstruction is not universal over coupled formulas.  A freely chosen unit-$b$ unramified target stratum has an exact smooth construction at every odd $w\ge7$ (Jacobian $-2400$); the streamlined proof does not lift at $w=3,5$, and compatibility with preselected L20 target residues remains separate.  Two guarded bridge samples provide parity-wise real certificates.  No rational coupled point, five-count improvement, or member theorem is claimed (`l25_scaled_coupling.py`, `data/l25_scaled_coupling.jsonl`; `THEOREMS.md`, L25). |
+| **L26: reciprocal even-pullback tie** | **PROVED structural/local theorem; uniform member theorem remains OPEN** | With $Z=z^2$ and $\eta=Z(b+1)/(Db)$, $P_{\rm rec}=b^4T(b+b^{-1})$ for an exact quartic $T$; the canonical tie is split at $2$, standard guarded W1 targets lift, and $(2b|p)=(2(u+2)|p)$.  L28 proves the trace field and bad-sign cover; L29 classifies the distinct lift; L31 proves one exact member at \(w=13\) but not a per-target theorem (`l26_reciprocal_tie.py`, `data/l26_reciprocal_tie.jsonl`; `THEOREMS.md`, L26–L31). |
+| **L27: one-piece triangular shear** | **PROVED complete local theorem + three scoped section no-gos; global cover remains OPEN** | The fixed shear $(2X+28\rho,sX+\rho)$ covers every dyadic $s$-parity and every standard aligned odd target, including $3,5$; one guarded real sample works.  The linear-$B$ coefficient factorization excludes its natural cancellation section; $C_2\equiv128\bmod256$ excludes $\lambda=\pm1,\pm A$ uniformly; and $y=0$ forces a conic with no $\mathbb Q_3$-point.  None is a no-point theorem for the full degree-$8$ cover (`l27_triangular_shear.py`, `data/l27_triangular_shear.jsonl`; `THEOREMS.md`, L27). |
+| **L28: uniform reciprocal trace field** | **PROVED over $\mathbb Q_2$ and $\mathbb Q$; lift question superseded by L29** | The shifted trace quartic has a one-segment Newton polygon, and its Ferrari resolvent has no square root in any of the five possible dyadic valuation cases.  Thus $T$ is irreducible uniformly.  Moreover $N(2(\theta+2))\in A\mathbb Q_2^{\times2}$ with $A\equiv5\bmod8$, so the bad-sign extension is nontrivial and $T(v^2/2-2)$ is irreducible.  L29 classifies the distinct reciprocal lift; L31 proves one exact \(w=13\) member, but no uniform member theorem follows (`l28_trace_field.py`, `data/l28_trace_field.jsonl`; `THEOREMS.md`, L28–L31). |
+| **L29: reciprocal lift and dyadic compressor** | **PROVED local classification + exact reductions; uniform member/parity step remains OPEN** | For square $Z$ with even $t=v_2(Z)$, $\theta^2-4$ is square in the trace field exactly for $t=-2$ or $t\ge2$, and nonsquare for $t=0$ or $t\le-4$.  The negative cases exhaust every possible Eisenstein-quartic factor congruence; the exceptional split case uses a two-slope ordinary resultant, independently validated after replacing an under-specified higher-polygon presentation.  The pullback $Z=8z^2/(1+z^2)$ preserves every positive odd valuation and forces $t\ge2$.  The slice $b=w\rho^2$ freezes the norm field but has no generic section.  L31 promotes the \(w=13\) row to a proved global member; the remaining finite rows stay EVIDENCE and no per-target theorem follows (`l29_reciprocal_frontier.py`, `data/l29_reciprocal_frontier.jsonl`; `THEOREMS.md`, L29–L31). |
+| **L30: constant-two quartic frontier** | **PROVED degree drop + dyadic/all-target selected-fibre theorem; global rational point remains OPEN** | The specialization $(y,r)=(2,sX+\rho)$ gives the exact quadratic $H_2(m)=0$ in $m=\lambda^2$, hence a genuine even quartic on every $\Phi$ base rather than L27's octic.  A normalized Hensel argument solves every dyadic stratum; a two-quadratic character count gives fibre-regular aligned rows for every odd $w\ge5$; and the exact fibre $(a,b,z)=(5,3,3)$ is solved by strong Hensel at $w=3$.  The control $(1,3,3)$ is $\mathbb Q_3$-empty, so the theorem selects $a$ rather than claiming fixed-$a$ uniformity.  One guarded real stratum works.  The producer also proves generic square-branch/shear rigidity and exact trace-base/lift separation.  The $13{,}224$-row zero-hit global scan is EVIDENCE only (`l30_quartic_frontier.py`, `data/l30_quartic_frontier.jsonl`; `THEOREMS.md`, L30). |
+| **L31: one exact reciprocal member and sharpened remaining walls** | **PROVED exact member/reductions; uniform closure remains OPEN** | On the mandatory fixed-field slice, \(w=13,a=3,Z=169,q_0=1,b=13\) gives \(M=2^4Q/(3^2 37^3 83^2 1033^2)\), \(Q=14082426920623718389\) prime by a recursive Pocklington certificate, and \((M,26)_v=+1\) at every place.  The reciprocal lift is explicit: \(\rho=14/13,\lambda=12\).  Separately, \(a=1,c=-64/25,\lambda=3,b=-3253/3125,Z=2033125/6101423\) is an exact rational \(H_2\)-point before the cube condition; \(Z\) is not a cube and the shared prime \(3253\) leaves \(c\) a unit, so it is not an L30 target point.  Cube compatibility reduces to two genus-\(2\) curves.  The two-large sector is corrected to a positive-main Buchstab/Hilbert-detector problem beyond BV, not a signed-error-only estimate.  AP1 (\(R_{\rm bad}\le1\) in one selected class per cell) is equivalent to intermediate H by even Hilbert parity but remains OPEN (`l31_frontier_push.py`, `data/l31_frontier_push.jsonl`; `THEOREMS.md`, L31). |
 | **L21d/e: precursor on the constructed branch** | **PROVED generically + PROVED per cell on 353/353; SUPERSEDED AS THE FRONTIER by L22** | Generic: $H=(A/4)P$ has $L=a^8A^2Z^4$ as both end coefficients; the $(a,Z)=(1,27)$ specialization is irreducible mod $17$, proving irreducibility over $\mathbb Q(a,Z)$.  The former vertical-line repair used 353/353 exact fibre certificates plus Cohen–Serre quantitative HIT; L22 now proves every fixed nonzero rational $Z$ directly (`data/l21_irred_generic.jsonl`; `/tmp/l22_elimination.md`). |
 | **L21: the reducible locus, and its avoidance** | **PROVED (both lemmas)** | (a) $s=0$ and $\delta_\tau=\sigma^2$ a square $\Rightarrow$ $P=(4DAb^2-\sigma a^2Z^2N_g)(4DAb^2+\sigma a^2Z^2N_g)$ — an explicit $4\times4$ factorization, so blanket irreducibility is **false**; 56/56 exact, 8/8 controls inapplicable. (b) On the constructed branch $\delta_{\tau^\dagger}=-4a^4/A<0$, never a square, so the degeneration **cannot occur there**, for any $a$ or cell (9/9). Square class of $\delta_{\tau^\dagger}$ is that of $-A$. (c) $P+32A^3s^2D^2b^5$ is palindromic, $P_0=P_8$ always (288/288) $\Rightarrow$ Galois group in $C_2\wr S_4$ (`data/l21_reducible_locus.jsonl`) |
 | **L20: uniform class existence** | **PROVED** | For every cell take $f=w$ (available since $v_w(z)\ge1$); pick odd $a$ with $(A\mid w)=-1$.  The character sum is $-1$, with exactly $\bigl(w-\left(\frac{-1}{w}\right)\bigr)/2$ qualifying residues: $(w+1)/2$ for $w\equiv3\bmod4$, $(w-1)/2$ for $w\equiv1\bmod4$.  Thus the set is always nonempty.  The explicit residue system for $q_1$ mod $M=4A\prod_Sp$ has $\varphi(M)/2^{\#\{p\}}$ classes, and Dirichlet finishes. **Clause (ii) of H is removed for every cell.** 103/103 canonical rows reproduced (1,113,000 residues enumerated), 353/353 grid certificates clean, composite $A$ replayed, 0 refusals (`data/l19_classexist.jsonl`). Fixing $a=1$ collides exactly at $w=11,19,31,59,71,79$ — the independently derived 5-wall set |
@@ -139,7 +151,7 @@ membership checks are sampled or windowed, never claimed beyond their stated sco
 
 QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$, sq branch, $q\in3001..8000$) died on a benign `NameError` in the loop body — fix pending, no result claimed or counted.
 
-## Findings (rev 14)
+## Findings (rev 18)
 1. **L1 is published.** Cornelissen–Zahidi math/0006140, Ex. 2.2(a) + Rem. 2.4 ⟹ no one-witness
    definition of $\mathbb{Z}$ in $\mathbb{Q}$.
 2. **L2 repaired into L2′ — a structure theorem** (advisory upheld; written proof in
@@ -373,13 +385,16 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
       unaffected — any wall is in the reduction, not in solubility.
 
 
-16. **L23 — the unconditional sieve is real, but stops exactly at two
-    large bad divisors.**  The semilinear dimension-$1/2$ sieve supplies
-    $\gg X/(\log X)^{3/2}$ prime members clean below $X^{0.49}$.
-    Degree $8$ still permits sixteen large factors and reciprocity only
-    forces an even bad count.  The first missing estimate is the
-    parity-sensitive $p_1p_2>D$ sector, equivalently
-    $R_{\rm bad}\le1$; no unconditional member theorem follows.
+16. **L23 — the unconditional sieve is real, but stops at the
+    fixed-family detector problem.**  The semilinear dimension-\(1/2\)
+    sieve supplies \(\gg X/(\log X)^{3/2}\) prime members clean below
+    \(X^{0.49}\).  Degree \(8\) still permits sixteen large factors and
+    reciprocity only forces an even bad count.  L31 corrects the
+    analytic target: the two-large sector is the first term beyond BV,
+    but its unsigned root-class expansion has a positive main term.
+    One needs a Buchstab/Hilbert-detector asymptotic with positive
+    zero-bad constant, or directly AP1; no unconditional member theorem
+    follows.
 17. **L24 — the apparent unscaled diagonal five-count is vacuous.**  Both
     exact self-coupled covers are finite flat of degree $8$, but
     orientation I is killed by its $(4,0,0)$ dyadic Newton polygon and
@@ -397,18 +412,60 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
     $\eta=Z(b+1)/(Db)$,
     $P_{\rm rec}(b)=b^4T(b+b^{-1})$ for an exact quartic $T$.  The
     canonical square branch is automatically split at $2$, guarded W1
-    targets lift, and $(2b|p)=(2(u+2)|p)$.  This is structural: the
-    quartic trace squareclass and global member remain OPEN.
+    targets lift, and $(2b|p)=(2(u+2)|p)$.  L28 proves the trace
+    field and bad-sign extension uniformly; L31 proves one exact member,
+    while the uniform member/parity step remains.
 20. **L27 — one genuinely non-diagonal shear closes the displayed local
     coupling gaps.**  The fixed matrix
     $\left(\begin{smallmatrix}2&28\\s&1\end{smallmatrix}\right)$ covers
     every $2$-adic $s$-parity.  A Weil character-sum bound, patched by
     $43$ exact small-prime rows, gives a smooth point on the standard
     aligned target stratum for every odd $w$; one guarded real sample
-    works.  Its bridge-specialized degree-$8$ cover has no proved global
-    rational point, so no five-count follows.
+    works.  The exact linear-$B$ factorization excludes the natural
+    cancellation section, but the full bridge-specialized degree-$8$
+    cover has no proved global rational point, so no five-count follows.
+21. **L28 — the quartic trace field closes uniformly at \(2\).**  After
+    shifting \(w=u-2\), the quartic Newton polygon excludes linear
+    factors.  A Ferrari resolvent and five exact mod-\(8\) valuation
+    cases exclude quadratic factors.  Finally
+    \(N(2(\theta+2))\in A\mathbb Q_2^{\times2}\) is nonsquare, so the
+    bad-sign cover has degree \(8\).  This is not a global member
+    theorem and does not improve the count.
 
-## The frontier, stratified (rev 14)
+22. **L29 — the distinct reciprocal lift is now classified exactly.**
+    For even \(t=v_2(Z)\), \(\theta^2-4\) is square in the trace field
+    exactly for \(t=-2\) or \(t\ge2\).  The \(t=-2\) proof uses an
+    ordinary resultant with two Newton slopes; the other strata use
+    strong Hensel or exhaustive necessary factor congruences.  The map
+    \(Z=8z^2/(1+z^2)\) preserves every positive odd valuation and forces
+    the split local stratum.  Freezing \(b=w\rho^2\) exposes a fixed
+    quadratic norm problem but retains obstruction pairs.  L31 proves
+    one \(w=13\) member, not a uniform theorem or count improvement.
+23. **L30 — fixing \(y=2\) halves the coupled-cover equation.**
+    The exact equation is quadratic in \(m=\lambda^2\), hence even
+    quartic in \(\lambda\).  A normalized Hensel argument solves every
+    dyadic stratum; fibre-regular rows exist for every aligned
+    \(w\ge5\), and \((a,b,z)=(5,3,3)\) gives an exact \(w=3\)
+    strong-Hensel fibre.  A nearby empty control shows the selected
+    \(a\) is load-bearing.  The same layer proves generic rigidity for
+    every rational square-branch tie and separates the trace-base bundle
+    from its mandatory reciprocal lift.  A global rational quartic root
+    remains open.
+24. **L31 — one reciprocal member is proved and the remaining inputs
+    are exact.**  The fixed-field row
+    \((w,a,Z,q_0,b,\rho,\lambda)=(13,3,169,1,13,14/13,12)\) has a
+    recursive Pocklington certificate and every Hilbert symbol \(+1\).
+    The constant-\(c=-64/25\) section gives a rational \(H_2\)-point,
+    but its \(Z\) is not a cube; the cube step becomes two squarefree
+    genus-\(2\) curves.  An external complete Magma calculation finds
+    only \(z=0\) on both, closing this unique section.  The unsigned
+    two-large-divisor expansion has a positive main term beyond BV, and
+    AP1 is equivalent to intermediate H.  Neither the uniform member
+    theorem, another controlled quartic point, fixed-family detector
+    asymptotic, nor AP1 is proved.
+
+
+## The frontier, stratified (rev 18)
 - **F1** ($\exists^k$ definability of $\mathbb{Z}$): $k=1$ is closed
   [CZ 2000], while $k=2$ is the first open case (sources and bounds:
   `THEOREMS.md`, L1 and consequences table).
@@ -416,8 +473,8 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
   $2\le m\le7$ and the refereed upper bound is $10$ (`THEOREMS.md`, A1–A2).
   **Classical Schinzel H conditionally narrows the range to
   $2\le m\le6$**, equivalently
-  $\operatorname{efd}\in[1,5]$ (`THEOREMS.md`, L22d and L24e–L27;
-  `CONDITIONAL.md`, §1).  L23–L27 neither remove Schinzel H nor improve
+  $\operatorname{efd}\in[1,5]$ (`THEOREMS.md`, L22d and L24e–L31;
+  `CONDITIONAL.md`, §1).  L23–L31 neither remove Schinzel H nor improve
   this record.
 - **F3** (cofinite subrings): L2′ closes the elliptic-integrality route
   decidably; infinite excluded prime sets are necessary
@@ -428,20 +485,30 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
   $\forall_9\exists_{10}$ anchor is refereed (`THEOREMS.md`,
   consequences table).
 - **F5** (unconditional member frontier): small-prime cleanliness for
-  the selected linear/octic sequence is a theorem, but globally good
-  members are not.  The exact analytic frontier is a parity-sensitive
-  two-large-bad-divisor estimate outside BV.  The new algebraic
-  frontiers are the L26 quartic-trace squareclass/member problem and a
-  target-specific rational point on L27's locally complete degree-$8$
-  shear cover (`THEOREMS.md`, L23–L27).
+  the selected linear/octic sequence is a theorem, and L31 proves one
+  globally good reciprocal member at \(w=13\), but no per-target member
+  theorem.  The exact analytic frontier is a fixed-family
+  Buchstab/Hilbert-detector asymptotic whose first unavailable term is
+  the two-large-bad-divisor sector outside BV.  L28 closes the L26
+  quartic trace field and bad-sign squareclass; L29 classifies the
+  distinct reciprocal lift and freezes the moving field on
+  \(b=w\rho^2\).  L30 replaces L27's degree-$8$ equation by a
+  degree-$4$ constant-two cover.  L31 gives an exact rational root
+  before the cube pullback, but its \(Z\) is not a cube.  The external
+  complete genus-\(2\) calculation closes that unique constant-\(c\)
+  section; other controlled cube-compatible points remain open.  AP1 is
+  equivalent to intermediate H and remains unproved
+  (`THEOREMS.md`, L23–L31).
 
 
 ## Honest assessment
 No Hilbert problem fell.  The record remains **CONDITIONAL**, not
 unconditional: classical Schinzel H is unproved, and H10/$\mathbb Q$
-remains open (`THEOREMS.md`, L22d and L24e–L27; `CONDITIONAL.md`, §1).
-L23 proves small-prime cleanliness, L26 proves a trace descent, and L27
-proves local coupled points; none proves a global member or five-count.
+remains open (`THEOREMS.md`, L22d and L24e–L31;
+`CONDITIONAL.md`, §1).  L31's \(w=13\) row is a genuine global member,
+but one row does not prove the uniform per-cell hypothesis.  Its exact
+quartic point fails the cube/target condition.  AP1, the fixed-family
+detector asymptotic, and every count improvement remain open.
 Every finite scan retains its stated EVIDENCE or per-row scope.
 
 Produced in this arc, to our knowledge new:
@@ -469,35 +536,62 @@ and
 $(2X,\rho)$ and $(2X,\rho/2)$ jointly have no uniform $2$-adic
 obstruction, with global rationality and target-compatibility left OPEN;
 (14) L26 — the even-pullback reciprocal tie, quartic trace model,
-automatic dyadic splitting and trace-character descent; and
+automatic dyadic splitting and trace-character descent;
 (15) L27 — the fixed $28$-shear, one-piece dyadic Hensel theorem and
 all-odd-prime aligned-target character-sum theorem, with global
-rationality left OPEN
-(`THEOREMS.md`, L23–L27; `agent://HalfSieveAudit`;
+rationality left OPEN;
+(16) L28 — the uniform dyadic irreducibility theorem for the L26 trace
+quartic and its bad-sign Capell cover;
+(17) L29 — the complete dyadic classification of the reciprocal lift,
+the exact target-preserving compressor, and the fixed-field slice with
+its section obstruction and scoped parity evidence
+(`THEOREMS.md`, L23–L29; `agent://HalfSieveAudit`;
 `agent://FibrationAudit`; `agent://DiagonalAudit`;
-`agent://ReciprocalTieAudit`; `agent://TriangularShearAudit`).
+`agent://ReciprocalTieAudit`; `agent://TriangularShearAudit`); and
+(18) L30 — the constant-two even quartic, its uniform dyadic and
+all-target selected-fibre theorem, its fixed-\(a\) \(w=3\) control, the
+general square-branch/shear rigidity theorems, and the exact trace-base
+reciprocal-lift separation
+(`THEOREMS.md`, L30; `l30_quartic_frontier.py`); and
+(19) L31 — the exact \(w=13\) fixed-field reciprocal member, the unique
+constant-\(c\) bridge section and its off-cube rational quartic point,
+the externally complete genus-\(2\) closure of that section, the
+positive-main correction to the two-large-divisor dispersion target,
+and the AP1 equivalence
+(`THEOREMS.md`, L31; `l31_frontier_push.py`;
+`data/l31_magma_genus2.json`).
 
 ### Next
 
-1. **Primary reciprocal-tie target:** decide whether
-   $2(\theta+2)$ is square in L26's quartic trace algebra, or otherwise
-   prove a globally good reciprocal member.  The quartic character
-   descent is exact but does not lower the squarefree degree in $b$.
-2. **Primary coupled-cover target:** find a target-specific rational root
-   on L27's bridge-specialized degree-$8$ cover while meeting the
-   remaining controlled places.  Dyadic parity, every aligned odd target
-   (including $3,5$), and one real stratum are already solved locally.
-3. **Primary analytic target:** prove a parity-sensitive saving estimate
-   for the two-large-bad-divisor sector of the degree-$8$ linear/octic
-   sequence:
-   $p_1,p_2\ge X^{0.49}$, $p_1p_2>D_{\rm BV}$, both signs bad and both
-   valuations odd.  Equivalently, prove $R_{\rm bad}\le1$.
-4. **Scope guard:** until one of those targets produces actual globally
-   good members, classical Schinzel H remains the sole conjectural
-   input and the six-count remains CONDITIONAL.  The L24 zero-hit scan,
-   L25 bounded scans and L26 one-fibre certificates are corroboration,
-   not substitutes for a theorem.
-5. **Optional side geometry:** the L22 Noether polynomial nonvanishing
+1. **Primary reciprocal-tie target:** extend the exact \(w=13\)
+   globally good member to a per-target theorem.  The member itself is
+   now PROVED, including the mandatory lift, Pocklington chain, and every
+   Hilbert symbol.  The general slice is a sign-decorated degree-\(16\)
+   binary-form norm problem; one row does not settle its density.
+2. **Primary coupled-cover target:** leave the now-closed
+   constant-\(c=-64/25\) section.  It gives a rational
+   \(H_2(\lambda^2)=0\) point before the cube, but its \(Z\) is not a
+   cube; Magma's complete rational-point calculation proves that both
+   resulting genus-\(2\) cube curves have only \(z=0\).  A different
+   section producing a target-specific rational point at all controlled
+   places remains OPEN.
+3. **Primary analytic target:** prove a pointwise fixed-family
+   Buchstab/analytic-Hilbert-detector asymptotic with positive zero-bad
+   constant.  The first unavailable term has
+   \(p_1,p_2\ge X^{0.49}\) and
+   \(p_1p_2>D_{\rm BV}\).  Its unsigned root-class expansion has a
+   positive main term; signed character cancellation alone cannot
+   discard it.
+4. **Exact Schinzel replacement:** prove AP1 for every cell: one
+   selected aligned class with \(Q(t)\) prime and
+   \(R_{\rm bad}\le1\).  Even Hilbert parity makes AP1 equivalent to
+   intermediate H.  L23 permits \(R_{\rm bad}=0,2,\ldots,16\), so it
+   does not prove AP1.
+5. **Scope guard:** the single \(w=13\) construction is not a uniform
+   member theorem.  Classical Schinzel H remains the sole conjectural
+   input and the six-count remains CONDITIONAL.  No unconditional count
+   or H10/\(\mathbb Q\) conclusion changes.
+6. **Optional side geometry:** the L22 Noether polynomial nonvanishing
    lemma and absolute rationality of the L24 total surfaces remain OPEN
    but are not chain obligations.  Continue the source watch for Sun's
    unrefereed paper and the priority search for L2′; neither affects the

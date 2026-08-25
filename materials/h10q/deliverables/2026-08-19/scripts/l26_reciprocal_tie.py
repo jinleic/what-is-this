@@ -137,10 +137,10 @@ def trace_character_descent() -> dict:
         "instances": checks,
         "character_identity": "(2b|p)=(2(u+2)|p)",
         "trace_algebra": "Q[u]/(T), with T quartic",
-        "conditional_field": "if T is irreducible, Q(theta) has degree 4",
-        "conditional_bad_sign_extension": (
-            "if 2(theta+2) is nonsquare, "
-            "Q(theta)(sqrt(2(theta+2))) is nontrivial"
+        "trace_field": "uniformly degree 4 on the canonical branch by L28",
+        "bad_sign_extension": (
+            "uniformly nontrivial on the canonical branch by "
+            "L28's dyadic norm theorem"
         ),
         "scope": "primes dividing T(u) outside the fixed divisor T(-2)",
     }
@@ -250,8 +250,8 @@ def bounded_irreducibility_context() -> dict:
     trace_certificate = irreducibility_certificate(T, 37)
     assert certificate["degree"] == 8 and trace_certificate["degree"] == 4 and primitive
     return {
-        "type": "bounded-irreducibility-context",
-        "label": "EVIDENCE ONLY; one reciprocal octic is still irreducible",
+        "type": "bounded-reciprocal-lift-context",
+        "label": "EVIDENCE ONLY for one reciprocal octic; trace irreducibility is PROVED by L28",
         "sample": {"a": 1, "z": 3, "Z": 9, "b": str(b)},
         "prime": 37,
         "degree": certificate["degree"],
@@ -267,9 +267,10 @@ def bounded_irreducibility_context() -> dict:
 def build_report(records: list[dict], elapsed: float) -> str:
     lines = [
         "# L26 reciprocal tie replay", "",
-        "PROVED labels are exact algebra/valuation statements.  The modular",
-        "irreducibility row is bounded EVIDENCE only.  No member theorem or",
-        "unconditional H10/Q consequence is claimed.", "",
+        "PROVED labels are exact algebra/valuation statements.  L28 separately",
+        "proves uniform trace-field and bad-sign-cover irreducibility.  The",
+        "modular reciprocal-octic row is bounded EVIDENCE only; no member",
+        "theorem or unconditional H10/Q consequence is claimed.", "",
     ]
     for record in records:
         lines.extend(["## " + record["type"], "", "```json",

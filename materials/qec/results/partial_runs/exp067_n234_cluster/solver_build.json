@@ -1,0 +1,36 @@
+{
+  "schema": "exp067-dist-m4ri-build-v1",
+  "solver": {
+    "repository": "https://github.com/QEC-pages/dist-m4ri",
+    "commit": "538d119f6e98b3782415eb78f7ce322a076f8101",
+    "license": "GPL-2.0",
+    "binary": "solver/dist_m4ri_arm64_darwin",
+    "binary_sha256": "04c051b27ae30dc353480015c01ce02b9925636d428a3a92c33a78ea5317ca66",
+    "source_archive": "solver/dist-m4ri-538d119f6e98.tar.gz",
+    "source_archive_sha256": "e7fed74881ddd3a7bcd792e104dcddf37915927d68f53a333efbb3f7ab83f369",
+    "license_file": "solver/LICENSE.dist-m4ri",
+    "license_file_sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "entrypoint": "legacy STANDALONE dist_rw.c -> single-thread do_CC_dist",
+    "excluded_entrypoint": "multithreaded dist_m4ri.c coordinator",
+    "exclusion_reason": "At source lines 412-415 a worker claims a column before incrementing cc_active_workers, while lines 585-586 may declare the round complete in that window. Rooted one-column searches therefore use the race-free legacy entrypoint."
+  },
+  "m4ri": {
+    "repository": "https://github.com/malb/m4ri",
+    "release": "20260122",
+    "homebrew_bottle": "m4ri--20260122.arm64_tahoe.bottle.tar.gz",
+    "static_library_sha256": "b51aa6b7f720ab88d7259690545b919f34c7addb55accca35beb59d10fd267d4",
+    "source_archive": "solver/m4ri-20260122.tar.gz",
+    "source_archive_sha256": "986c9d4bf77b906ece535f0c405d3637dbdc8ec6bd5823c01c2f9823e3217d1c"
+  },
+  "compiler": "Apple clang 17.0.0 (clang-1700.3.19.1), arm64-apple-darwin25.5.0",
+  "linkage": [
+    "locally extracted libm4ri.a",
+    "/opt/homebrew/opt/libpng/lib/libpng16.16.dylib",
+    "/usr/lib/libSystem.B.dylib"
+  ],
+  "build": [
+    "compile dist-m4ri objects with clang -O3 -DNDEBUG and the m4ri 20260122 headers",
+    "link dist_rw.c with -DSTANDALONE, dist_cc.o, mmio.o, util_m4ri.o, util_io.o, libm4ri.a, libpng, libm, and libpthread",
+    "method=2 calls single-thread do_CC_dist directly; terminal -w means every rooted cluster through weight w was exhausted without a logical"
+  ]
+}

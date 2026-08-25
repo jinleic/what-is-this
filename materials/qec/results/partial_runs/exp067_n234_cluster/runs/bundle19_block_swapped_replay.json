@@ -1,0 +1,73 @@
+{
+  "input": {
+    "HX_rank": 113,
+    "HX_sha256": "4ceb85946b4c395ab0c35d50f1f4ffa69e57ae34836ea6c95191c44fefff6e8a",
+    "HZ_rank": 113,
+    "HZ_sha256": "6c49390799115999e94c3d92a1f4b633c7f214ec10849569b22180e7929c6633",
+    "LX_rank": 8,
+    "LX_sha256": "893e872de08d4d1e10ef2ed66bd480926fd29532193d6659e729a140aed56427",
+    "k": 8,
+    "n": 234,
+    "presentation": "block_swapped",
+    "schema": "exp067-connected-cluster-input-v1",
+    "target": "bundle19"
+  },
+  "input_files": {
+    "HX": {
+      "path": "results/partial_runs/exp067_n234_cluster/inputs/bundle19_block_swapped_HX.mtx",
+      "sha256": "74558068011f1a3fd626a73e50c958fd62b772d18af85a095604b853dee1c848"
+    },
+    "HZ": {
+      "path": "results/partial_runs/exp067_n234_cluster/inputs/bundle19_block_swapped_HZ.mtx",
+      "sha256": "675838f9e1d8d37effc137d9d90c8773d27c054fc67db90f4437c5fb60b0f864"
+    },
+    "LX": {
+      "path": "results/partial_runs/exp067_n234_cluster/inputs/bundle19_block_swapped_LX.mtx",
+      "sha256": "8f71366e8fa342375417848a46f8caa728ec289ad6cc3de501a8605cf4d9af46"
+    }
+  },
+  "invocation": [
+    "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/solver/dist_m4ri_arm64_darwin",
+    "method=2",
+    "finH=/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/inputs/bundle19_block_swapped_HX.mtx",
+    "finG=/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/inputs/bundle19_block_swapped_HZ.mtx",
+    "start=0",
+    "dmin=1",
+    "wmax=16",
+    "smax=0",
+    "debug=3",
+    "timeout=3500"
+  ],
+  "presentation": "block_swapped",
+  "protocol": {
+    "dmin": 1,
+    "engine_variant": "legacy_single_thread_do_CC_dist",
+    "method": 2,
+    "root": 0,
+    "smax": 0,
+    "timeout_s": 3500.0,
+    "wmax": 16
+  },
+  "result": {
+    "exhaustive_through": 16,
+    "found_distance": null,
+    "status": "NO_LOGICAL_THROUGH_CAP"
+  },
+  "returncode": 0,
+  "run_id": "replay",
+  "schema": "exp067-connected-cluster-run-v1",
+  "solver": {
+    "binary_sha256": "04c051b27ae30dc353480015c01ce02b9925636d428a3a92c33a78ea5317ca66",
+    "name": "QEC-pages/dist-m4ri legacy STANDALONE method 2",
+    "source": "https://github.com/QEC-pages/dist-m4ri",
+    "source_commit": "538d119f6e98b3782415eb78f7ce322a076f8101"
+  },
+  "status": "COMPLETE",
+  "stderr": "# read H <- file '/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/inputs/bundle19_block_swapped_HX.mtx'\n# read G <- file '/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/inputs/bundle19_block_swapped_HZ.mtx'\n",
+  "stderr_sha256": "5d9c7b4385ccba069da057b9e7ecb0875acfc24bde25d16f98ffa96f30428035",
+  "stdout": "# recursively searching for w=1 codewords wmax=16 beg=0 end=0\n-1\n# recursively searching for w=2 codewords wmax=16 beg=0 end=0\n-2\n# recursively searching for w=3 codewords wmax=16 beg=0 end=0\n-3\n# recursively searching for w=4 codewords wmax=16 beg=0 end=0\n-4\n# recursively searching for w=5 codewords wmax=16 beg=0 end=0\n-5\n# recursively searching for w=6 codewords wmax=16 beg=0 end=0\n-6\n# recursively searching for w=7 codewords wmax=16 beg=0 end=0\n-7\n# recursively searching for w=8 codewords wmax=16 beg=0 end=0\n-8\n# recursively searching for w=9 codewords wmax=16 beg=0 end=0\n-9\n# recursively searching for w=10 codewords wmax=16 beg=0 end=0\n-10\n# recursively searching for w=11 codewords wmax=16 beg=0 end=0\n-11\n# recursively searching for w=12 codewords wmax=16 beg=0 end=0\n-12\n# recursively searching for w=13 codewords wmax=16 beg=0 end=0\n-13\n# recursively searching for w=14 codewords wmax=16 beg=0 end=0\n-14\n# recursively searching for w=15 codewords wmax=16 beg=0 end=0\n-15\n# recursively searching for w=16 codewords wmax=16 beg=0 end=0\n### Cluster dmin=-16  (no codewords of weight up to 16)\n# cluster algorithm failed to find a codeword up to wmax=16\n-16\n",
+  "stdout_sha256": "7f85ae8c57619405fd5711ff75a26e7c682bc4af485aaeb6f6bd03f7f8a2a4f4",
+  "target": "bundle19",
+  "utc": "2026-08-25T00:05:51.221809+00:00",
+  "wall_time_s": 1756.3986731669866
+}

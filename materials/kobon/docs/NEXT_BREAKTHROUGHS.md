@@ -16,6 +16,56 @@ construction (three implementations, 15/15 witnesses). The upper half of
 that claim is exactly what our in-flight $T=55$ run decides.
 
 ---
+## 2026-08-24 exact-relocation update
+
+The exact \(12\)-line/\(38\)-face certificate is now exhaustively one-line
+locally optimal. An exact generic affine shear separates all fixed-vertex
+abscissae, so the finite \((m,b)\) chart also covers every vertical replacement
+type. Sampling every \(0\)-, \(1\)-, and \(2\)-dimensional stratum checked
+68,424 placements. Three new exactly verified \(38\)-face neighbors were then
+expanded to depth two, checking another 205,272 placements. All 273,696 exact
+placements have at most 38 faces.
+
+This is a basin obstruction, not a global bound. Two topological lifts of the
+rigid line-\(0\) deletion are now complete. The simple NumPSLA-style census has
+7,960 paths and maximum \(36\). The generalized covector census adds arbitrary
+disjoint base-vertex transitions and every single point-at-infinity parallel
+event: 94,609 fixed-affine paths, maximum \(38\), no target-39 topology. An
+exact replay maps all 6,304 geometric parameter strata into the generalized
+census with zero missing paths and zero complete-face-set mismatches. This
+generalized search therefore strictly contains the full fixed-geometric
+line-\(0\) relocation basin.
+
+The two prior endpoint/K4 discovery processes ended by SIGTERM after about one
+hour with no verdict and no proof. Do not restart them blindly.
+
+---
+
+## 2026-08-24 endpoint-front update
+
+The \(n=12,T=39\) front produced two stronger sound discovery inputs:
+`n12-gap-endpoint-mi-k4-t39` (endpoint closure, two required
+multipoint-incident faces, direct \(K(4)=2\), and 11-/10-line heredity) and
+`n12-gap-endpoint-sub9-t39` (also every checked \(K(9)=21\) cut). They are
+375,037 / 1,005,366 and 842,317 / 1,917,926 variables/clauses respectively.
+Both processes ended by SIGTERM without a verdict or proof.
+
+The next action is conditional and exact:
+
+1. To sweep the other eleven deletions, first generalize the parent tope/covector
+   machinery to bases that already contain multipoints: every other deletion
+   retains at least one of the record's two triple points, so the current
+   simple-base path generator cannot be reused unchanged.
+2. For every target-39 topology, run the LP straightener, recompute the exact
+   grouped crossing table and complete triangular-face set over \(\mathbb Q\),
+   then call the independent exact selection verifier. Heuristic realization
+   failure remains unresolved, never an exclusion.
+3. If the nonsimple-parent local lifts also have no target, return to a
+   byte-pinned global formula with proof logging. No local negative result is a
+   global \(K(12)\) proof.
+
+---
+
 
 ## Tier 0 — decisive experiments already running
 

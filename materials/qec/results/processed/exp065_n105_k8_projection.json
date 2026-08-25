@@ -1,0 +1,56 @@
+{
+  "argument": "For every physical coset vector v, each odd H-orbit contains at least one support bit, so wt(v) >= wt(projection(v)). The syndrome DP is complete for every projected stabilizer coset.",
+  "cover_complete": true,
+  "distinct_projected_logical_syndromes": 255,
+  "k": 8,
+  "logical_classes": 255,
+  "n": 210,
+  "orbit_sizes": [
+    7
+  ],
+  "projected_codimension": 19,
+  "projected_coset_leader_histogram": {
+    "4": 45,
+    "6": 195,
+    "8": 15
+  },
+  "projected_length": 30,
+  "projected_stabilizer_rank": 11,
+  "rigorous_physical_distance_lower_bound": 4,
+  "schema": "exp065-h-orbit-projection-v1",
+  "stabilizer_size": 7,
+  "target": {
+    "A": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "B": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        1
+      ]
+    ],
+    "ell": 15,
+    "expected_k": 8,
+    "m": 7
+  },
+  "zero_projected_classes": 0
+}

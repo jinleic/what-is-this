@@ -68,7 +68,7 @@ def ratchet_records() -> dict[str, dict[str, Any]]:
     if not RATCHET_DIR.exists():
         return out
     for path in sorted(RATCHET_DIR.glob("*.json")):
-        if "_cap" in path.stem:
+        if "_cap" in path.stem and "_probe_" not in path.stem:
             continue
         record = json.loads(path.read_text(encoding="utf-8"))
         if all(key in record for key in ("A", "B", "n", "k")):
@@ -82,6 +82,13 @@ def ratchet_records() -> dict[str, dict[str, Any]]:
 
 
 def _ratchet_witness(result: dict[str, Any]) -> tuple[int, list[int]] | None:
+    if isinstance(result.get("decision"), dict):
+        decision = result["decision"]
+        if decision.get("status") == "SAT":
+            return (
+                int(decision["weight"]),
+                [int(index) for index in decision["support"]],
+            )
     distance = result.get("exact_distance")
     if not result.get("exact") or distance is None:
         return None
@@ -97,7 +104,7 @@ def _ratchet_witness(result: dict[str, Any]) -> tuple[int, list[int]] | None:
 def _physical_witness_valid(record: dict[str, Any]) -> bool:
     support = record.get("witness_support")
     if support is None:
-        return True
+        return False
     HX, HZ = E55.E53.bb_from_terms(
         int(record["ell"]), int(record["m"]), record["A"], record["B"]
     )
@@ -109,10 +116,46 @@ def _physical_witness_valid(record: dict[str, Any]) -> bool:
         and E55.rank_np(np.vstack([HZ, vector])) == E55.rank_np(HZ) + 1
     )
 
+def _ceiling_witness_valid(record: dict[str, Any]) -> bool:
+    support = record.get("ceiling_witness_support")
+    if support is None:
+        return False
+    HX, HZ = E55.E53.bb_from_terms(
+        int(record["ell"]), int(record["m"]), record["A"], record["B"]
+    )
+    vector = np.zeros(int(record["n"]), dtype=np.uint8)
+    vector[np.asarray(support, dtype=int)] = 1
+    return bool(
+        int(vector.sum()) == int(record["ceiling"])
+        and not np.any(HX @ vector % 2)
+        and E55.rank_np(np.vstack([HZ, vector])) == E55.rank_np(HZ) + 1
+    )
+def _validate_bound_archive(payload: dict[str, Any]) -> None:
+    binding = payload.get("reference_rebind")
+    if not isinstance(binding, dict):
+        return
+    relative = binding.get("archive")
+    if not isinstance(relative, str):
+        raise RuntimeError("reference-rebind archive path is missing")
+    archive = ROOT / relative
+    if (
+        not archive.is_file()
+        or file_sha256(archive) != binding.get("old_shard_sha256")
+    ):
+        raise RuntimeError("reference-rebind archive hash is stale")
+    archived = json.loads(archive.read_text(encoding="utf-8"))
+    E55._validate_screen_shard_aggregates(archived)
+    E55._validate_screen_shard_records(archived)
+
+
+
 
 def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, Any]:
     original_bytes = path.read_bytes()
     payload = json.loads(original_bytes)
+    E55._validate_screen_shard_aggregates(payload)
+    E55._validate_screen_shard_records(payload)
+    _validate_bound_archive(payload)
     old_protocol = payload["protocol"]
     k_min, k_max = old_protocol["k_range"]
     new_protocol = E55._screen_protocol(
@@ -139,45 +182,59 @@ def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, A
 
         if old_verdict.startswith("dominated"):
             pass
-        elif new_threshold > old_threshold:
+        else:
             ceiling = record.get("ceiling")
             witness = record.get("witness_bound")
+            result = ratchets.get(record_key(record))
+            exact_witness = _ratchet_witness(result) if result else None
             if ceiling is not None and int(ceiling) <= new_threshold:
+                if not _ceiling_witness_valid(record):
+                    raise RuntimeError("rebound ceiling witness failed verification")
                 new_verdict = "dominated_by_ceiling"
             elif witness is not None and int(witness) <= new_threshold:
+                if not _physical_witness_valid(record):
+                    raise RuntimeError("rebound physical witness failed verification")
                 new_verdict = "dominated_by_witness"
-            else:
-                result = ratchets.get(record_key(record))
-                exact_witness = _ratchet_witness(result) if result else None
-                if exact_witness and exact_witness[0] <= new_threshold:
-                    record["witness_bound"] = exact_witness[0]
-                    record["witness_support"] = exact_witness[1]
-                    record["reference_rebind_ratchet"] = {
-                        "schema": result["schema"],
-                        "exact_distance": result["exact_distance"],
-                        "source_group": result["group"],
-                        "source_index": result["index"],
-                    }
-                    new_verdict = "dominated_by_cdcl_witness"
-                elif new_threshold == 0:
-                    new_verdict = "no_reference"
-                else:
-                    new_verdict = "undecided"
+            elif exact_witness and exact_witness[0] <= new_threshold:
+                record["witness_bound"] = exact_witness[0]
+                record["witness_support"] = exact_witness[1]
+                record["reference_rebind_ratchet"] = {
+                    "schema": result["schema"],
+                    "exact_distance": result.get("exact_distance"),
+                    "witness_only": result.get("exact_distance") is None,
+                    "source_group": result["group"],
+                    "source_index": result["index"],
+                    "solver": result.get("solver"),
+                }
+                new_verdict = "dominated_by_cdcl_witness"
+            elif new_threshold > old_threshold:
+                new_verdict = (
+                    "no_reference" if new_threshold == 0 else "undecided"
+                )
         record["verdict"] = new_verdict
         transition = f"{old_verdict}->{new_verdict}"
         transitions[transition] = transitions.get(transition, 0) + 1
-        if new_verdict in {"dominated_by_witness", "dominated_by_cdcl_witness"}:
+        if new_verdict == "dominated_by_ceiling":
+            if not _ceiling_witness_valid(record):
+                raise RuntimeError("rebound ceiling witness failed verification")
+        elif new_verdict in {"dominated_by_witness", "dominated_by_cdcl_witness"}:
             if not _physical_witness_valid(record):
                 raise RuntimeError("rebound physical witness failed verification")
         records.append(record)
-
     verdicts: dict[str, int] = {}
     for record in records:
         verdicts[record["verdict"]] = verdicts.get(record["verdict"], 0) + 1
     version = E55.REFERENCE_VALIDATION_VERSION
     archive = ARCHIVE_DIR / version / path.name
     archive.parent.mkdir(parents=True, exist_ok=True)
-    if not archive.exists():
+    if archive.exists():
+        archived_bytes = archive.read_bytes()
+        archived = json.loads(archived_bytes)
+        E55._validate_screen_shard_aggregates(archived)
+        E55._validate_screen_shard_records(archived)
+        if archived_bytes != original_bytes:
+            raise RuntimeError("reference-rebind archive disagrees with source shard")
+    else:
         archive.write_bytes(original_bytes)
     rebound = {
         **payload,
@@ -200,6 +257,8 @@ def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, A
             "archive": str(archive.relative_to(ROOT)),
         },
     }
+    E55._validate_screen_shard_aggregates(rebound)
+    E55._validate_screen_shard_records(rebound)
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(rebound, indent=1, sort_keys=True) + "\n")
     temporary.replace(path)

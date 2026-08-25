@@ -183,7 +183,11 @@ def q2_quadratic_roots(A2: F, L2: F, M2: F) -> list[F]:
 
 def q2_solutions_exist(A2: F, L2: F, M2: F, need_u_square: bool = True,
                        need_Au_square: bool = True, A: F | None = None) -> bool:
-    """Decide existence of a Q_2 root with the requested square classes."""
+    """Decide the requested Q_2 square classes without a sign or valuation shortcut.
+
+    Negative even valuations are valid square valuations; for example,
+    ``u=1/4`` must be accepted.
+    """
     for u in q2_quadratic_roots(A2, L2, M2):
         if u == 0:
             continue
@@ -207,6 +211,7 @@ def complete_dyadic_classification() -> dict:
     c-dependence enters only through c^2 with v_2(c)>=4, which is invisible
     modulo 8 of the quadratic coefficients after multiplying by 1/(4A).
     """
+    assert squareclass_2adic(F(1, 4))
     records: list[dict] = []
     # The c unit enters L24's fatal mod-16 test, so finite classes are keyed
     # by c's 2-adic unit as well as s,b and scalar units.

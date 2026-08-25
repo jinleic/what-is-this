@@ -100,19 +100,24 @@ def test_census_is_exhaustive_and_clean(census: dict) -> None:
 
 
 def test_literature_battery_contract(lit: dict) -> None:
-    assert lit["instances"] == 27
-    assert lit["reproduced_instances"] == 25
+    assert lit["instances"] == 29
+    assert lit["reproduced_instances"] == 27
     assert lit["k_all_agree_on_reproduced"] is True
     assert lit["our_routes_always_agree"] is True
     assert lit["pole_isomorphism_all"] is True
     assert all(r["pole_isomorphism"] for r in lit["records"])
     assert lit["reported_ceiling_sanity_holds"] is True
     assert lit["reported_ceiling_violations"] == []
-    assert lit["reported_distance_instances"] == 25
+    assert lit["reported_distance_instances"] == 27
     assert lit["exact_ceiling_never_violated"] is True
     assert lit["exact_ceiling_violations"] == []
-    assert lit["exact_distance_instances"] == 6
+    assert lit["exact_distance_instances"] == 8
     assert lit["no_certificate"] == []
+    assert all(
+        len(record["distance_certificate_sha256"]) == 64
+        for record in lit["records"]
+        if record["distance_exact_certified_here"]
+    )
     # Source provenance remains explicit: every W-M distance originated as an
     # estimate; exactly two now have independent local exact certificates.
     wm = [r for r in lit["records"] if r["source"].startswith("2408.10001")]
@@ -494,6 +499,41 @@ def test_n210_frontier_reference_is_exact_and_hash_bound() -> None:
         E55._validated_exact_reference(wrong)
 
 
+def test_n210_multi_promotion_thresholds_are_hash_bound() -> None:
+    expected = {
+        (24, 4): "EXP-064 [[210,24,4]]",
+        (14, 12): "EXP-064 [[210,14,12]]",
+        (10, 16): "EXP-064 [[210,10,16]]",
+    }
+    for (k, d), source in expected.items():
+        rec = next(
+            r
+            for r in E55.EXACT_REFERENCES
+            if (r["n"], r["k"], r["d"]) == (210, k, d)
+        )
+        exact, certificate_sha256 = E55._validated_exact_reference(rec)
+        assert exact is True
+        assert certificate_sha256 is not None and len(certificate_sha256) == 64
+        assert E55.domination_threshold(210, k) == (d, source)
+        wrong = dict(rec)
+        wrong["B"] = [[0, 0], [0, 1]]
+        with pytest.raises(RuntimeError, match="does not bind"):
+            E55._validated_exact_reference(wrong)
+
+
+def test_every_admitted_exact_reference_has_a_bound_certificate_hash() -> None:
+    for rec in E55.EXACT_REFERENCES:
+        exact, certificate_sha256 = E55._validated_exact_reference(rec)
+        assert exact is True
+        assert certificate_sha256 is not None and len(certificate_sha256) == 64
+    for rec in E55.LITERATURE_ODD:
+        if not rec.get("distance_exact_certified_here", False):
+            continue
+        exact, certificate_sha256 = E55._validated_distance_reference(rec)
+        assert exact is True
+        assert certificate_sha256 is not None and len(certificate_sha256) == 64
+
+
 def test_screen_hash_and_completeness_gates() -> None:
     protocol = E55._screen_protocol("census-a", "refs-a", 8, 24, 90.0)
     good = {
@@ -526,23 +566,65 @@ def test_screen_hash_and_completeness_gates() -> None:
     assert protocol != E55._screen_protocol("census-a", "refs-a", 8, 24, 120.0)
 
 
+def test_screen_shard_aggregates_are_record_derived() -> None:
+    record = {
+        "verdict": "undecided",
+        "threshold": 12,
+        "orbit": 7,
+        "solver_calls": 0,
+    }
+    shard = {
+        "records": [record],
+        "candidates_after_symmetry": 1,
+        "orbit_total": 7,
+        "verdicts": {"undecided": 1},
+        "survivors": [],
+        "no_reference": [],
+        "undecided": [record],
+        "solver_calls": 0,
+    }
+    E55._validate_screen_shard_aggregates(shard)
+
+    stale = json.loads(json.dumps(shard))
+    stale["verdicts"] = {}
+    with pytest.raises(RuntimeError, match="aggregate"):
+        E55._validate_screen_shard_aggregates(stale)
+
+    nonterminal = json.loads(json.dumps(shard))
+    nonterminal["records"][0]["verdict"] = "solver_required"
+    nonterminal["verdicts"] = {"solver_required": 1}
+    nonterminal["undecided"] = []
+    with pytest.raises(RuntimeError, match="nonterminal"):
+        E55._validate_screen_shard_aggregates(nonterminal)
+
+    false_no_reference = json.loads(json.dumps(shard))
+    false_no_reference["records"][0]["verdict"] = "no_reference"
+    false_no_reference["verdicts"] = {"no_reference": 1}
+    false_no_reference["no_reference"] = false_no_reference["records"]
+    false_no_reference["undecided"] = []
+    with pytest.raises(RuntimeError, match="admissible reference"):
+        E55._validate_screen_shard_aggregates(false_no_reference)
+
+
 def test_fixed_point_screen_contract(screen: dict, survivor_cert: dict) -> None:
     scope, verdict = screen["scope"], screen["verdict"]
-    assert scope["lattices_expected"] == scope["lattices_completed"] == 13
-    assert scope["missing"] == [] and scope["n_max"] == 162
+    assert scope["lattices_expected"] == scope["lattices_completed"] == 22
+    assert scope["missing"] == [] and scope["n_max"] == 234
     assert scope["k_range"] == [8, 24]
     assert verdict["complete"] and verdict["all_referenced_decided"]
-    assert verdict["survivors"] == verdict["undecided"] == 0
+    assert verdict["survivors"] == 0 and verdict["undecided"] == 0
     assert verdict["all_referenced_dominated"] is True
-    assert verdict["candidates_after_symmetry"] == 2_132
-    assert verdict["orbits_represented"] == 51_769
-    assert verdict["with_reference"] == verdict["dominated"] == 1_928
+    assert verdict["candidates_after_symmetry"] == 4_862
+    assert verdict["orbits_represented"] == 150_581
+    assert verdict["with_reference"] == 4_658
+    assert verdict["dominated"] == 4_658
     assert verdict["no_reference"] == 204
-    assert verdict["solver_calls"] == 129
+    assert verdict["solver_calls"] == 605
     assert verdict["verdicts"] == {
-        "dominated": 5,
-        "dominated_by_cdcl_witness": 119,
-        "dominated_by_witness": 1_804,
+        "dominated": 57,
+        "dominated_by_automorphism_transport": 158,
+        "dominated_by_cdcl_witness": 395,
+        "dominated_by_witness": 4_048,
         "no_reference": 204,
     }
     assert screen["protocol"]["census_sha256"] == E55._file_sha256(CENSUS)
@@ -550,22 +632,60 @@ def test_fixed_point_screen_contract(screen: dict, survivor_cert: dict) -> None:
     assert screen["protocol"]["reference_validation_version"] == (
         E55.REFERENCE_VALIDATION_VERSION
     )
-    assert all(r["schema"] == "exp055-screen-v3"
-               and r["protocol"] == screen["protocol"] for r in screen["lattices"])
+    assert all(
+        r["schema"] == "exp055-screen-v3"
+        and r["protocol"] == screen["protocol"]
+        for r in screen["lattices"]
+    )
 
+    # The empty-survivor certificate is rebound to the exact n=234 closure.
     assert survivor_cert["screen_sha256"] == E55._file_sha256(SCREEN)
     assert survivor_cert["survivors"] == 0 and survivor_cert["records"] == []
-    assert survivor_cert["all_exact"] and survivor_cert["all_beat_reference"]
-    assert survivor_cert["all_k_match_screen"]
+    E55._validate_screen_for_certification(
+        screen,
+        E55._file_sha256(CENSUS),
+        E55._reference_fingerprint(),
+    )
+
+def test_every_screen_shard_has_record_level_proofs(screen: dict) -> None:
+    for shard in screen["lattices"]:
+        E55._validate_screen_shard_records(shard)
+
+    forged = json.loads(json.dumps(screen["lattices"][0]))
+    record = next(
+        row for row in forged["records"] if row["verdict"].startswith("dominated")
+    )
+    if record["verdict"] == "dominated_by_ceiling":
+        record["ceiling_witness_support"] = [0]
+    else:
+        record["witness_support"] = [0]
+        record["witness_bound"] = 1
+    with pytest.raises(RuntimeError, match="physical proof"):
+        E55._validate_screen_shard_records(forged)
+
+
+def test_all_fallback_dominations_bind_replayable_witnesses(screen: dict) -> None:
+    fallback = [
+        record
+        for shard in screen["lattices"]
+        for record in shard["records"]
+        if record["verdict"] == "dominated"
+    ]
+    assert len(fallback) == 57
+    assert all(E55._fallback_witness_evidence_valid(record) for record in fallback)
+
 
 
 def test_every_persisted_screen_witness_is_physical(screen: dict) -> None:
-    """All 1,923 persisted domination witnesses are physical logical words."""
+    """All 4,658 domination records carry physical logical witnesses."""
     checked = 0
     for lattice in screen["lattices"]:
         for r in lattice["records"]:
             if r["verdict"] not in {
-                "dominated_by_witness", "dominated_by_cdcl_witness"
+                "dominated",
+                "dominated_by_witness",
+                "dominated_by_cdcl_witness",
+                "dominated_by_automorphism_transport",
             }:
                 continue
             HX, HZ = E55.E53.bb_from_terms(r["ell"], r["m"], r["A"], r["B"])
@@ -575,4 +695,4 @@ def test_every_persisted_screen_witness_is_physical(screen: dict) -> None:
             assert not (HX @ word % 2).any(), r
             assert rank_np(np.vstack([HZ, word[None, :]])) == rank_np(HZ) + 1, r
             checked += 1
-    assert checked == 1_923
+    assert checked == 4_658

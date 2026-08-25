@@ -60,6 +60,30 @@ class CrossingFaceBoundCnfTest(unittest.TestCase):
             self.assertFalse(
                 solver.solve(assumptions=no_degeneracy + crossing_lits))
 
+    def test_face_bound_can_count_reified_face_literals(self):
+        n = 4
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        selected = [
+            pool.id(("S",) + triple)
+            for triple in combinations(range(n), 3)
+        ]
+        engine.add_face_bound(
+            cnf, pool, n, 1, count_selected=True)
+        no_degeneracy = [
+            pool.id(("P", i, j)) for i, j in combinations(range(n), 2)
+        ] + [
+            -pool.id(("C",) + triple)
+            for triple in combinations(range(n), 3)
+        ]
+
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            self.assertTrue(solver.solve(
+                assumptions=no_degeneracy + selected[:3] + [-selected[3]]))
+            self.assertFalse(solver.solve(
+                assumptions=no_degeneracy + selected))
+
     def test_crossing_indicator_is_exact_for_selected_triangle(self):
         n = 4
         cnf = engine.CNF()
@@ -210,6 +234,25 @@ class SubarrangementFaceBoundCnfTest(unittest.TestCase):
                 assumptions=two_inside_one_outside))
 
 
+class FourLineFaceBoundCnfTest(unittest.TestCase):
+    def test_every_four_lines_support_at_most_two_selected_faces(self):
+        n = 5
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        engine.add_four_line_face_bounds(cnf, pool, n)
+        faces = [
+            pool.id(("S",) + triple)
+            for triple in combinations(range(4), 3)
+        ]
+
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            self.assertTrue(solver.solve(
+                assumptions=faces[:2] + [-faces[2], -faces[3]]))
+            self.assertFalse(solver.solve(
+                assumptions=faces[:3]))
+
+
 class FaceVertexSectorBoundCnfTest(unittest.TestCase):
     def test_simple_vertex_allows_four_faces_but_not_five(self):
         n = 7
@@ -256,6 +299,179 @@ class FaceVertexSectorBoundCnfTest(unittest.TestCase):
             self.assertFalse(solver.solve(
                 assumptions=[inside, outside, selected]))
 
+    def test_same_ray_requires_remote_concurrency(self):
+        n = 6
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        selected = [
+            pool.id(("S", 0, 1, third)) for third in (2, 3)
+        ]
+
+        engine.add_selected_face_sector_bounds(
+            cnf, pool, n, shared_ray=True)
+        with engine.Solver(name="cadical195",
+                           bootstrap_with=cnf.clauses) as solver:
+            for shared, pivot in ((0, 1), (1, 0)):
+                directions = [
+                    pool.id(("X", shared, pivot, third))
+                    for third in (2, 3)
+                ]
+                remote_concurrency = pool.id(
+                    ("C",) + tuple(sorted((shared, 2, 3))))
+                for sign in (1, -1):
+                    with self.subTest(shared=shared, sign=sign):
+                        same_ray = [
+                            literal * sign for literal in directions
+                        ]
+                        self.assertFalse(solver.solve(
+                            assumptions=selected + same_ray
+                            + [-remote_concurrency]))
+                        self.assertTrue(solver.solve(
+                            assumptions=selected + same_ray
+                            + [remote_concurrency]))
+
+                for opposite_rays in (
+                        [directions[0], -directions[1]],
+                        [-directions[0], directions[1]]):
+                    self.assertTrue(solver.solve(
+                        assumptions=selected + opposite_rays
+                        + [-remote_concurrency]))
+
+    def test_shared_ray_constraint_is_opt_in(self):
+        n = 6
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        selected = [
+            pool.id(("S", 0, 1, third)) for third in (2, 3)
+        ]
+        directions = [
+            pool.id(("X", 0, 1, third)) for third in (2, 3)
+        ]
+        remote_concurrency = pool.id(("C", 0, 2, 3))
+
+        engine.add_selected_face_sector_bounds(cnf, pool, n)
+        with engine.Solver(name="cadical195",
+                           bootstrap_with=cnf.clauses) as solver:
+            self.assertTrue(solver.solve(
+                assumptions=selected + directions + [-remote_concurrency]))
+
+    def test_colliding_endpoints_close_remote_endpoint(self):
+        n = 5
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        selected = [
+            pool.id(("S", 0, 1, 2)),
+            pool.id(("S", 0, 3, 4)),
+        ]
+        common_endpoint = pool.id(("C", 0, 1, 4))
+        remote_endpoint = pool.id(("C", 0, 2, 3))
+        directions = [
+            pool.id(("X", 0, 1, 2)),
+            pool.id(("X", 0, 4, 3)),
+        ]
+
+        engine.add_selected_face_sector_bounds(
+            cnf, pool, n, endpoint_closure=True)
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            for sign in (1, -1):
+                same_ray = [
+                    sign * literal for literal in directions
+                ]
+                self.assertFalse(solver.solve(
+                    assumptions=selected + [common_endpoint]
+                    + same_ray + [-remote_endpoint]))
+                self.assertTrue(solver.solve(
+                    assumptions=selected + [common_endpoint]
+                    + same_ray + [remote_endpoint]))
+            for opposite_rays in (
+                    [directions[0], -directions[1]],
+                    [-directions[0], directions[1]]):
+                self.assertTrue(solver.solve(
+                    assumptions=selected + [common_endpoint]
+                    + opposite_rays + [-remote_endpoint]))
+            self.assertTrue(solver.solve(
+                assumptions=selected + [-common_endpoint]
+                + directions + [-remote_endpoint]))
+
+    def test_shared_segment_faces_have_opposite_apex_sides(self):
+        n = 5
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        selected = [
+            pool.id(("S", 0, 1, 2)),
+            pool.id(("S", 0, 3, 4)),
+        ]
+        endpoints = [
+            pool.id(("C", 0, 1, 4)),
+            pool.id(("C", 0, 2, 3)),
+        ]
+        apex_above = [
+            pool.id(("X", 0, 1, 2)),
+            pool.id(("X", 0, 3, 4)),
+        ]
+
+        engine.add_selected_face_sector_bounds(
+            cnf, pool, n, endpoint_closure=True)
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            for sign in (1, -1):
+                self.assertFalse(solver.solve(
+                    assumptions=selected + endpoints
+                    + [sign * literal for literal in apex_above]))
+            self.assertTrue(solver.solve(
+                assumptions=selected + endpoints
+                + [apex_above[0], -apex_above[1]]))
+            self.assertTrue(solver.solve(
+                assumptions=selected + endpoints
+                + [-apex_above[0], apex_above[1]]))
+
+    def test_shared_pair_segment_has_opposite_apex_sides(self):
+        n = 4
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        selected = [
+            pool.id(("S", 0, 1, 2)),
+            pool.id(("S", 0, 1, 3)),
+        ]
+        remote_endpoint = pool.id(("C", 0, 2, 3))
+        apex_above = [
+            pool.id(("X", 0, 1, 2)),
+            pool.id(("X", 0, 1, 3)),
+        ]
+
+        engine.add_selected_face_sector_bounds(
+            cnf, pool, n, endpoint_closure=True)
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            self.assertFalse(solver.solve(
+                assumptions=selected + [remote_endpoint] + apex_above))
+            self.assertFalse(solver.solve(
+                assumptions=selected + [remote_endpoint]
+                + [-literal for literal in apex_above]))
+            self.assertTrue(solver.solve(
+                assumptions=selected + [remote_endpoint]
+                + [apex_above[0], -apex_above[1]]))
+
+    def test_endpoint_closure_is_stronger_than_shared_pair_cut(self):
+        n = 5
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        assumptions = [
+            pool.id(("S", 0, 1, 2)),
+            pool.id(("S", 0, 3, 4)),
+            pool.id(("C", 0, 1, 3)),
+            pool.id(("X", 0, 1, 2)),
+            pool.id(("X", 0, 3, 4)),
+            -pool.id(("C", 0, 2, 4)),
+        ]
+
+        engine.add_selected_face_sector_bounds(
+            cnf, pool, n, shared_ray=True)
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            self.assertTrue(solver.solve(assumptions=assumptions))
+
 
 class FaceSelectionCnfTest(unittest.TestCase):
     def test_selected_face_rejects_an_outside_straddling_line(self):
@@ -278,6 +494,180 @@ class FaceSelectionCnfTest(unittest.TestCase):
                            bootstrap_with=cnf.clauses) as solver:
             self.assertFalse(solver.solve(
                 assumptions=[selected, between]))
+
+
+class ExactGapFaceCnfTest(unittest.TestCase):
+    def test_face_literal_is_forced_exactly_by_gap_conditions(self):
+        n = 4
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        engine.add_exact_gap_face_reification(cnf, pool, n)
+
+        selected = pool.id(("S", 0, 1, 2))
+        nondegenerate = [
+            pool.id(("P", 0, 1)),
+            pool.id(("P", 0, 2)),
+            pool.id(("P", 1, 2)),
+            -pool.id(("C", 0, 1, 2)),
+        ]
+        between = [
+            pool.id(("B", 0, 3, 1, 2)),
+            pool.id(("B", 1, 3, 0, 2)),
+            pool.id(("B", 2, 3, 0, 1)),
+        ]
+
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            self.assertFalse(solver.solve(
+                assumptions=nondegenerate
+                + [-literal for literal in between] + [-selected]))
+            self.assertFalse(solver.solve(
+                assumptions=nondegenerate
+                + [between[0], -between[1], -between[2], selected]))
+            self.assertTrue(solver.solve(
+                assumptions=nondegenerate
+                + [between[0], -between[1], -between[2], -selected]))
+
+    def test_between_literal_is_exact(self):
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        engine.add_exact_gap_face_reification(cnf, pool, 4)
+        between = pool.id(("B", 0, 3, 1, 2))
+        first_order = pool.id(("X", 0, 1, 3))
+        second_order = pool.id(("X", 0, 3, 2))
+
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            self.assertFalse(solver.solve(
+                assumptions=[first_order, second_order, -between]))
+            self.assertTrue(solver.solve(
+                assumptions=[first_order, second_order, between]))
+
+
+class SimplePerturbationBoundCnfTest(unittest.TestCase):
+    def test_target_above_simple_bound_requires_incident_face(self):
+        n = 5
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        incident_faces = engine.add_simple_perturbation_bound(
+            cnf, pool, n, target=3, simple_upper=2)
+        selected = pool.id(("S", 0, 1, 2))
+        concurrency = pool.id(("C", 0, 1, 3))
+        all_concurrency = [
+            pool.id(("C",) + triple)
+            for triple in combinations(range(n), 3)
+        ]
+        all_selected = [
+            pool.id(("S",) + triple)
+            for triple in combinations(range(n), 3)
+        ]
+
+        self.assertEqual(len(incident_faces), 10)
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            self.assertFalse(solver.solve(
+                assumptions=[-literal for literal in all_concurrency]))
+            self.assertTrue(solver.solve(
+                assumptions=[selected, concurrency]))
+            self.assertFalse(solver.solve(
+                assumptions=[-literal for literal in all_selected]
+                + [concurrency]
+                + [-literal for literal in all_concurrency
+                   if literal != concurrency]))
+
+    def test_bound_is_inactive_at_or_below_simple_upper(self):
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        incident_faces = engine.add_simple_perturbation_bound(
+            cnf, pool, 5, target=2, simple_upper=2)
+
+        self.assertEqual(incident_faces, [])
+        self.assertFalse(any(
+            isinstance(key, tuple) and key[:1] == ("MI",)
+            for key in pool.obj2id))
+
+
+class ProjectiveChirotopeCnfTest(unittest.TestCase):
+    def test_sign_reification_covers_crossing_parallel_and_zero_cases(self):
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        engine.add_projective_chirotope_constraints(cnf, pool, 3)
+        positive = pool.id(("CP", 0, 1, 2))
+        negative = pool.id(("CN", 0, 1, 2))
+        p01 = pool.id(("P", 0, 1))
+        p12 = pool.id(("P", 1, 2))
+        concurrency = pool.id(("C", 0, 1, 2))
+        order = pool.id(("X", 0, 1, 2))
+        lower_parallel_order = pool.id(("U", 0, 1))
+        upper_parallel_order = pool.id(("U", 1, 2))
+
+        cases = (
+            ([p01, p12, -concurrency, -order], positive, -negative),
+            ([p01, p12, -concurrency, order], negative, -positive),
+            ([-p01, p12, lower_parallel_order], positive, -negative),
+            ([-p01, p12, -lower_parallel_order], negative, -positive),
+            ([p01, -p12, -upper_parallel_order], positive, -negative),
+            ([p01, -p12, upper_parallel_order], negative, -positive),
+        )
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            for assumptions, asserted, excluded in cases:
+                with self.subTest(assumptions=assumptions):
+                    self.assertTrue(solver.solve(
+                        assumptions=assumptions + [asserted, excluded]))
+                    self.assertFalse(solver.solve(
+                        assumptions=assumptions + [-asserted]))
+            for zero_case in (
+                    [-p01, -p12],
+                    [p01, p12, concurrency]):
+                self.assertTrue(solver.solve(
+                    assumptions=zero_case + [-positive, -negative]))
+                self.assertFalse(solver.solve(
+                    assumptions=zero_case + [positive]))
+                self.assertFalse(solver.solve(
+                    assumptions=zero_case + [negative]))
+
+    def test_grassmann_plucker_rejects_one_sided_products(self):
+        n = 5
+        cnf = engine.CNF()
+        pool = engine.IDPool()
+        engine.add_projective_chirotope_constraints(cnf, pool, n)
+        triples = list(combinations(range(n), 3))
+        geometry = [
+            pool.id(("P",) + pair)
+            for pair in combinations(range(n), 2)
+        ] + [
+            -pool.id(("C",) + triple)
+            for triple in triples
+        ]
+        all_positive = [
+            literal
+            for triple in triples
+            for literal in (
+                pool.id(("CP",) + triple),
+                -pool.id(("CN",) + triple),
+            )
+        ]
+        flipped = (0, 2, 4)
+        violation = [
+            (-pool.id(("CP",) + triple)
+             if triple == flipped else pool.id(("CP",) + triple))
+            for triple in triples
+        ] + [
+            (pool.id(("CN",) + triple)
+             if triple == flipped else -pool.id(("CN",) + triple))
+            for triple in triples
+        ]
+
+        with engine.Solver(
+                name="cadical195", bootstrap_with=cnf.clauses) as solver:
+            self.assertTrue(solver.solve(
+                assumptions=geometry + all_positive))
+            self.assertFalse(solver.solve(
+                assumptions=geometry + violation))
+
+
+
 
 class NoConcurrencyCapacityCnfTest(unittest.TestCase):
     def test_global_target_implies_per_line_lower_bounds(self):

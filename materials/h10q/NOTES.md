@@ -1368,10 +1368,12 @@ classical Schinzel H alone (`/tmp/l22_elimination.md`;
    \left(\frac{2b}{p}\right)
    =\left(\frac{2(u+2)}p\right).
    $$
-   The character therefore descends to a quartic trace algebra.  The
-   field and nontrivial quadratic-extension language is conditional on
-   $T$ being irreducible and $2(\theta+2)$ being nonsquare.  The one
-   $(a,z)=(1,3)$ modular certificate is EVIDENCE only.
+   The character therefore descends to a quartic trace algebra.  At this
+   checkpoint the field and nontrivial quadratic-extension language was
+   conditional on $T$ being irreducible and $2(\theta+2)$ being
+   nonsquare; L28 (2026-08-24) subsequently proves both uniformly.  The
+   one $(a,z)=(1,3)$ modular certificate remains EVIDENCE only for the
+   distinct reciprocal lift.
 
 3. **L27 is a genuinely non-diagonal one-piece local solution.**  The
    fixed shear
@@ -1412,3 +1414,434 @@ classical Schinzel H alone (`/tmp/l22_elimination.md`;
    unconditional quantifier record, or H10/$\mathbb Q$ solution is
    claimed; classical Schinzel H remains the sole conjectural input to
    the established conditional six-count.
+
+## Session 2026-08-24 — L28: the reciprocal trace field closes at \(2\)
+
+1. **The conditional trace field became uniform.**  On the canonical
+   even pullback, put \(t=v_2(Z)\in2\mathbb Z\) and shift \(w=u-2\).
+   The trace quartic is
+   $$
+   4a^8AZ^4w^4-128a^{12}Z^4w^2-32A^3Z^2w+d_0.
+   $$
+   Its Newton polygon has one half-integral-slope segment, so it has no
+   linear factor over \(\mathbb Q_2\).  A quadratic factor would force a
+   square root \(Y=\alpha^2\) of the Ferrari resolvent
+   $$
+   Y^3+2pY^2+(p^2-4r)Y-q^2.
+   $$
+   The resolvent Newton polygon leaves five valuation cases.  Their
+   normalized residues are \(3,2,4,4,2\bmod8\), never zero.  Therefore
+   the quartic is irreducible over \(\mathbb Q_2\), hence over
+   \(\mathbb Q\), for every canonical L26 parameter.
+
+2. **The bad-sign squareclass also became uniform.**  For a trace root
+   \(\theta\),
+   $$
+   N(2(\theta+2))
+   =\frac{64\{A^3D^2+64a^8Z^4(a^4-A)^2\}}
+          {a^8Z^4A^2}.
+   $$
+   Since \(v_2(a^4-A)=2\), the braced expression divided by \(A^3D^2\)
+   lies in \(1+2^{10}\mathbb Z_2\).  The norm therefore has squareclass
+   \(A\equiv5\bmod8\), so it is nonsquare.  Capell now proves
+   \(T(v^2/2-2)\) irreducible uniformly.  The producer replays \(2{,}600\)
+   exact unit rows, \(175\) norm rows, and one independent mod-\(41\)
+   sample (`l28_trace_field.py`; `data/l28_trace_field.jsonl`).
+
+3. **The first global follow-up was pruned exactly, not by a scan.**
+   Writing L27's even eliminant in \(m=\lambda^2\), its coefficient
+   linear in \(B=2b\) factors as
+   $$
+   -16ABm(m-A)\bigl((s+1)^2m-(s-1)^2A\bigr).
+   $$
+   The factors \(m=0\) and \(m=A\) are invalid or nonzero on the full
+   eliminant.  The last factor would make \(A\) a square when
+   \(m=\lambda^2\); the \(s=\pm1\) endpoints do not escape.  Thus the
+   natural linear-\(B\) cancellation section is impossible.  This is
+   only an ansatz no-go, not a theorem that the L27 cover has no rational
+   point (`l27_triangular_shear.py::b_coefficient_no_go`).
+
+4. **The independent multinorm idea remains pre-theorem.**  The checked-in
+   record contains only the verbal reduction in the preceding session,
+   not an explicit torsor equation, birational map and inverse, splitting
+   fields, or Brauer evaluation.  Without those data there is no
+   reproducible claim to promote.  The exact prerequisite is an explicit
+   low-degree model followed by either a rational parameterization or a
+   verified Brauer--Manin/weak-approximation calculation.  It remains a
+   creative route, not evidence for a member.
+
+5. **Independent audit found no defect.**  TraceFieldAudit rederived the
+   shifted coefficients, both Newton polygons, the necessity of the
+   square Ferrari-resolvent root for every quadratic factorization, all
+   five residue exclusions, the norm squareclass, and the Capell
+   inference.  Verdict: SOUND, confidence \(0.99\), no findings
+   (`agent://TraceFieldAudit`).
+
+6. **Strict consequence at the L28 checkpoint (squareclass clause
+   superseded by L29 below).**  L28 removed trace irreducibility and
+   \(2(\theta+2)\) from the blocker list but did not then decide
+   \(\theta^2-4\).  It did not produce a globally good \(b\), solve the
+   parity sector, improve the count, remove Schinzel H, or solve
+   H10/\(\mathbb Q\); those latter statements remain current.
+
+## Session 2026-08-24 — L29: reciprocal lift classified and the dyadic input compressed
+
+1. **The distinct reciprocal lift now has an exact four-stratum law.**
+   For a square \(Z\), \(t=v_2(Z)\) is even and
+   \[
+   \theta^2-4\in\mathbb Q_2(\theta)^{\times2}
+   \iff t=-2\ \text{or}\ t\ge2.
+   \]
+   The positive stratum is strong Hensel applied to
+   \(w^2(1+4/w)\), \(w=\theta-2\).  At \(t=0\) and \(t\le-4\), the
+   shifted reciprocal octic has one slope \(-1/4\); every possible
+   factorization would be two Eisenstein quartics, but exhaustive
+   necessary congruences modulo \(16\) and \(64\) have respectively
+   \(2048\) and \(524{,}288\) candidates and zero survivors.
+
+2. **The exceptional \(t=-2\) split is proved by an ordinary resultant.**
+   For
+   \[
+   S(x)=P_{\rm rec}(1+x)/\operatorname{lc}(P_{\rm rec}),\qquad
+   \phi=x^4+6x^3+6,
+   \]
+   the polynomial
+   \(\mathcal R(Y)=\operatorname{Res}_x(S,Y-\phi)\) has exact Newton
+   vertices
+   \[
+   (0,21),\quad(4,10),\quad(8,0).
+   \]
+   Its two slopes are \(-11/4\) and \(-5/2\).  Were \(S\) irreducible,
+   every conjugate \(\phi(\sigma\alpha)\) would have the same valuation;
+   the resultant would have one slope.  Hence \(S\) is reducible, and
+   its first polygon forces \(4+4\).  This is equivalent to
+   \(b^2-\theta b+1\) splitting in the quartic trace field.
+
+3. **Audit changed the proof, not the claim.**  A first independent
+   pass correctly objected that the original higher-Newton-polygon
+   presentation had not stated its key-polynomial/residual-type
+   hypotheses.  Rather than defend that presentation, the proof and
+   producer were replaced by the elementary resultant argument above.
+   A second independent pass validated the embedding-invariance
+   contradiction and both slopes (confidence \(0.82\)).  Its modular
+   caveat is met: the producer enumerates every possible first monic
+   Eisenstein quartic residue; an exact \(\mathbb Q_2\)-factorization
+   would reduce to one of them.
+
+4. **A new rational pullback removes every adverse dyadic stratum.**
+   \[
+   Z=\frac{8z^2}{1+z^2}
+   \]
+   has no rational denominator zero and satisfies
+   \(v_p(Z)>0\iff v_p(z)>0\) at every odd prime.  At \(2\), its valuation
+   is \(3+2v_2(z)\), \(2\), or \(3\) according as \(v_2(z)>0\), \(=0\),
+   or \(<0\).  Thus \(v_2(Z)\ge2\) on every nonzero rational fibre.
+   L28's trace and bad-sign proofs extend to these \(t\ge2\) values,
+   while L29 makes the distinct reciprocal lift locally \(4+4\).
+   Soundness, odd targets and the formal witness count are unchanged.
+
+5. **The moving norm field can be frozen, but parity survives.**  On
+   \(b=w\rho^2\),
+   \[
+   (M,2b)_v=(M,2w)_v,\qquad
+   U^2-2wV^2=P_{\rm rec}(w\rho^2)W^2.
+   \]
+   The slice has no generic section because its \(\rho=0\) fibre has
+   squareclass \(A\) and \((A,2w)_w=(A|w)=-1\).  It is nevertheless
+   active: eight named target fibres are globally soluble.  On
+   \((w,a,Z)=(3,5,9)\), \(24\) of the \(33\) positive odd
+   \(w\)-adic units \(\rho<100\) were exactly decided: bad-place counts
+   \(0,2,4\) occur \(11,12,1\) times; \(9\) refusals are excluded.  This
+   is evidence
+   for a fixed-field attack and simultaneous evidence that obstruction
+   pairs remain.
+
+6. **Two more natural L27 sections are now closed.**  Uniformly on
+   \(\Phi\), \(\lambda=\pm1,\pm A\) gives
+   \(C_2\equiv128\bmod256\).  The coordinate choice \(y=0\) forces
+   \((2a)^2-195\rho^2=-1\), which has no \(\mathbb Q_3\)-point.  Together
+   with the linear-\(B\) cancellation theorem, these are three scoped
+   no-gos, not a no-point theorem for the full cover.
+
+7. **The newest source scan changes routing, not status.**  Diao's
+   random-binary-form Chowla/norm theorem (arXiv:2506.18065) is an
+   almost-all coefficient result; Wang's 2026-08-17 dynamical Chowla
+   theorem on average (arXiv:2608.16108) is also averaged.
+   Loughran--Matthiesen (1904.12845) first misses the non-rational
+   non-split fibre, and Shute (2209.08949) first misses the generic
+   high-degree fixed-field slice.  None supplies the missing pointwise
+   member theorem.
+
+8. **Strict consequence.**  The local trace/lift questions are closed.
+   The first reciprocal target is now a global member on the frozen
+   field slice or the original two-large-divisor estimate.  No
+   unconditional count improvement, removal of Schinzel H, or solution
+   of H10/\(\mathbb Q\) follows
+   (`l29_reciprocal_frontier.py`;
+   `data/l29_reciprocal_frontier.jsonl`; `THEOREMS.md`, L29).
+
+## Session 2026-08-24 — L30: the coupled equation drops from degree eight to four
+
+1. **The unconventional constant-witness section works locally.**  On
+   the L24--L27 square branch, set
+   \[
+   y=2,\qquad r=sX+\rho,\qquad X^2-\rho^2=A.
+   \]
+   With \(m=(X+\rho)^2\), the tied equation becomes the exact quadratic
+   \[
+   H_2(m)=-(c^2-4A)(m-A)^2-16ABQ_s(m)-64Am=0,
+   \]
+   where
+   \[
+   Q_s(m)=(s+1)^2m^2-2A(s^2+1)m+(s-1)^2A^2.
+   \]
+   Hence the \(\lambda=X+\rho\) cover is even quartic.  Its leading
+   coefficient has valuation \(2\) on every \(\Phi\)-base, so the degree
+   drop from L27's octic is genuine there.
+
+2. **The dyadic theorem is one ordinary Hensel step.**  After dividing
+   by \(A\), put \(m=1+8t\) and normalize by \(2^8\).
+   The value at \(t=0\) is even because \(Q_s(1)\) is divisible by
+   \(16\), while the derivative is odd because \(Q_s'(1)\) is even and
+   \(A-1=4a^2\).  Thus \(m\in1+8\mathbb Z_2\) is a square and the cover
+   has a \(\mathbb Q_2\)-point uniformly.  The artifact replays \(2048\)
+   finite residue rows.
+
+3. **Every aligned odd target is also solved.**  Modulo the target,
+   \[
+   \rho^2=4,\qquad X^2=A+4.
+   \]
+   For \(w\ge5\), the required residue conditions are
+   \[
+   \chi(1+4a^2)=-1,\qquad \chi(5+4a^2)=+1.
+   \]
+   A squarefree quartic Weil bound gives
+   \[
+   N_w\ge (w-3\sqrt w)/4-2>0\qquad(w\ge23),
+   \]
+   and exact rows close \(5,7,11,13,17,19\).  At \(w=3\), the exact
+   aligned fibre \((a,b,z)=(5,3,3)\) has
+   \(v_3(H_2(1))=3>2v_3(H_2'(1))=2\), so strong Hensel gives
+   \(m\in1+9\mathbb Z_3\), a square.  The control \((1,3,3)\) is empty
+   because \(v_3(\operatorname{disc}_m H_2)=1\).  Thus target existence
+   holds at \(3\), but is not uniform in a preselected \(a\).
+
+4. **The real place is nonempty, but the rational point is not found.**
+   The guarded row \((a,b,Z)=(1,-1,1/8)\) gives positive rational
+   \(\rho^2\) and \(X^2\).  The exact bounded probe checked
+   \(13{,}224\) guarded rows and found no rational \(\lambda\); this is
+   EVIDENCE only.  The new global target is precisely
+   \(H_2(\lambda^2)=0\) with all remaining controlled places.
+
+5. **Varying the whole L11c square-branch pencil cannot manufacture a
+   generic section.**  For
+   \[
+   \ell_d=(A-d^2)/(2d),
+   \]
+   every branch has target norm field \(\mathbb Q(\sqrt{2b})\).
+   At \(b=0\), the cleared value has even valuation and leading
+   squareclass \(A\) for every rational \(d(b)\).  A norm
+   \(Y^2-2bR^2\) of even valuation has square leading unit.  This
+   contradiction covers rational, Laurent, pole and nonlinear generic
+   sections, while leaving specialized members open.
+   The marginal choice \(d=2a\), \(\ell_d=1/(4a)\), also fails
+   uniform dyadic admissibility: the exact guarded row
+   \((a,b,z)=(1,-15,-9)\) has \((M_d,2b)_2=-1\).  This deprioritizes
+   that uniform tie without excluding specialized fibres.
+
+6. **The fixed L27 cancellation no-go generalizes to every
+   \(B\)-independent linear shear.**  Its \(B\)-coefficient is
+   \[
+   -16ABmH_L(m),
+   \]
+   with
+   \[
+   H_L=(r+t)^2m^2-2A(t^2-r^2+2s^2)m+A^2(r-t)^2.
+   \]
+   The discriminant is
+   \(16A^2s^2(s^2+t^2-r^2)\); for \(s\ne0\), every rational root has
+   \(m/A\) square, impossible because \(m\) is square and
+   \(A\equiv5\bmod8\).  The \(s=0\) residual edge remains.
+
+7. **Trace descent is exact but does not bypass the reciprocal lift.**
+   Return here to L26's square pullback \(Z=z^2\) (or L29's compressed
+   \(v_2(Z)\ge2\) stratum).  Then
+   \[
+   M=T(u)/(DA)^2,\qquad [2b]=[2(u+2)],\qquad u=b+b^{-1}.
+   \]
+   The base change \(u+2=w\rho^2\) gives the fixed-field degree-\(8\)
+   auxiliary
+   \[
+   U^2-2wV^2=T(w\rho^2-2)W^2.
+   \]
+   L28's norm squareclass proves the degree-\(8\) polynomial
+   irreducible over \(\mathbb Q_2\).  But rational \(b\) separately
+   requires
+   \[
+   \lambda^2=w(w\rho^2-4).
+   \]
+   Parameterizing this conic recovers exactly \(b=wq^2\), so omitting it
+   would merely hide L29's parity wall.
+
+8. **Latest research gives techniques, not a theorem for this fixed
+   family.**  Frei--Sofos (arXiv:2604.07047) introduce an analytic
+   Hilbert-symbol detector and level lowering, but their main result is
+   \(L^2\) over the full coefficient box, not pointwise on the fixed
+   H10 form and prime progression.  The degree-\(8\) conic-bundle work
+   arXiv:2511.17213 makes the trace auxiliary geometrically relevant,
+   but its direct Mestre criterion fails in both diagonal orientations
+   and the reciprocal-lift conic remains.  arXiv:2607.25287 kills
+   Brauer--Manin obstructions only after suitable finite extensions.
+   The first analytic estimate is still L23b's two-large-bad-divisor
+   sector.
+
+9. **Strict consequence and audit.**  L30 is a genuine algebraic/local
+   advance: the best coupled equation is now degree \(4\), not \(8\).
+   Independent review rederived the algebra, dyadic Hensel, \(w\ge5\)
+   character count, branch/shear rigidity, trace descent, lift
+   parameterization and \(d=2a\) counterexample.  Its initial \(w=3\)
+   objection was retracted after the exact \((5,3,3)\) fibre was checked;
+   its surviving square-pullback scope correction is incorporated in
+   L30g.  L30 is not a rational-point theorem, member theorem, count
+   improvement, removal of Schinzel H, or solution of H10/\(\mathbb Q\)
+   (`l30_quartic_frontier.py`;
+   `data/l30_quartic_frontier.jsonl`; `THEOREMS.md`, L30).
+
+## Session 2026-08-24 — L31: one reciprocal member is proved; the other walls become exact
+
+1. **The fixed-field slice now has one fully proved global member.**
+   Take
+   \[
+   (w,a,z,Z,q_0,b)=(13,3,13,169,1,13).
+   \]
+   The separate reciprocal lift is explicit:
+   \[
+   \rho=q_0+\frac1{wq_0}=\frac{14}{13},\qquad
+   \lambda=wq_0-\frac1{q_0}=12.
+   \]
+   Thus \(b+b^{-1}=170/13\) and
+   \(\lambda^2=13(13\rho^2-4)=144\); no trace-base point is being
+   smuggled through the lift.
+
+2. **The norm certificate is exact rather than scan evidence.**  The
+   bridge data are
+   \[
+   A=37,\quad D=-3\cdot83\cdot1033,\quad
+   N_g=-2^4 3^6 47,
+   \]
+   \[
+   c=\frac{277941456}{3172343},\qquad
+   \eta=-\frac{182}{257217},\qquad
+   \delta=-\frac{324}{37}.
+   \]
+   The norm value is
+   \[
+   M=\frac{2^4Q}{3^2 37^3 83^2 1033^2},\qquad
+   Q=14082426920623718389.
+   \]
+   A recursive Pocklington chain proves \(Q\) prime.  The only possible
+   symbol places are \(2,3,13,37,83,1033,Q,\infty\), and every
+   \((M,26)_v\) is \(+1\).  Hasse--Minkowski therefore gives the
+   rational norm point.  This promotes the \(w=13\) L29 evidence row;
+   the other seven rows remain at their recorded finite scope.
+
+3. **The general reciprocal problem gets harder, not easier.**  For
+   \(q_0=r/s\), clearing the mandatory slice gives
+   \[
+   G_w(r,s)=s^{16}P_{\rm rec}(wr^2/s^2).
+   \]
+   It is a sign-decorated degree-\(16\) binary-form norm problem.
+   Primes belonging only to \(q_0\) enter \(M\) with even valuation away
+   from fixed support, so they cannot cancel emergent bad places.
+   Odd-multiplicity primes of \(A\) impose the fixed condition
+   \((2w\mid p)=+1\).  One exact row is not a per-target theorem.
+
+4. **The constant-two quartic has a rational point immediately before
+   the cube pullback.**  On \(a=1\), the bridge discriminant for constant
+   \(c\) is
+   \[
+   q^2=5+\frac{64}{5c}-\frac4c
+   \left(\frac{(b-1)^2}{b}\right)^2.
+   \]
+   It is a polynomial square in the reciprocal coordinate exactly at
+   \(c=-64/25\).  Then
+   \[
+   b=\frac{2101}{25000}
+   -\frac{2\lambda^2}{(\lambda^2-5)^2}.
+   \]
+   At \(\lambda=3\),
+   \[
+   (b,Z)=\left(-\frac{3253}{3125},
+   \frac{2033125}{6101423}\right)
+   \]
+   satisfies every bridge guard, \(\Phi\) at \(2\), and
+   \(H_2(9)=0\).
+
+5. **The near miss identifies the actual wall.**  Exactly,
+   \[
+   Z=\frac{5^4\cdot3253}{1009\cdot6047},
+   \]
+   so it is not a rational cube.  At the shared prime \(3253\),
+   \(v(b)=v(Z)=1\) but \(v(c)=0\), whereas L30's target stratum has
+   \(Z=z^3\) and \(v_w(c)\ge4\).  Imposing the cube on the two rational
+   bridge maps gives
+   \[
+   d^2=-64z^6+96z^3+64
+   \quad\text{or}\quad
+   d^2=96z^6-224z^3+64.
+   \]
+   Both are squarefree genus-\(2\) curves.  Magma V2.29-9
+   `RationalPointsGenus2` returned exactly
+   \(\{(0:-8:1),(0:8:1)\}\) for each, with completeness flag `true`
+   and rank bounds \([0,1]\).  Its intrinsic help defines `true` to
+   mean all rational points are returned.  Hence this unique
+   constant-\(c\) section has only \(z=0\) and violates the guard.
+   The exact request/output are recorded as an external-CAS audit; no
+   checked-in standalone Magma certificate is claimed.  Other
+   constant-two sections remain open.
+
+6. **The four canonical hyperbola parameters are now excluded for
+   L30 itself.**  Directly,
+   \[
+   C_2\equiv128\pmod{256}
+   \]
+   at \(\lambda=\pm1,\pm A\) on every \(\Phi\)-base.  This is a
+   \(16{,}384\)-row residue replay plus a uniform congruence proof.  It
+   is a scoped section no-go, not a global no-point theorem.
+
+7. **The two-large-divisor target needs a positive-main asymptotic.**
+   For bad root sets \(\mathcal C_p^-\), the pair classes are exactly
+   \(\operatorname{CRT}(\mathcal C_p^-\times\mathcal C_q^-)\), and the
+   first pair modulus is
+   \[
+   pq\ge X^{0.98}>D_{\rm BV}.
+   \]
+   Exact odd valuation requires \(p^2q^2\), leaving product level
+   \(X^{1/4-o(1)}\).  More importantly, character expansion leaves the
+   positive \(R_pR_q/4\) term, and
+   \(\sum_{X^{0.49}\le p\le X^8}1/p\) has constant size.  Therefore
+   signed cancellation alone cannot make the unsigned pair sector
+   negligible.  The natural target is a fixed-family
+   Buchstab/analytic-Hilbert-detector asymptotic with positive zero-bad
+   constant, not an AP-error-only bound.
+
+8. **AP1 is the exact Schinzel replacement.**  In one selected aligned
+   class, let \(R_{\rm bad}\) count odd-valuation outside places with
+   symbol \(-1\).  Every controlled place is \(+1\), so Hilbert
+   reciprocity makes \(R_{\rm bad}\) even.  Thus
+   \[
+   \mathrm{AP1}:\ R_{\rm bad}\le1
+   \quad\Longleftrightarrow\quad
+   R_{\rm bad}=0
+   \quad\Longleftrightarrow\quad H
+   \]
+   inside the L19--L22 protocol.  L23a allows
+   \(R_{\rm bad}=0,2,\ldots,16\), so it does not prove AP1.
+
+9. **Strict consequence.**  The singular request for a fixed-field
+   reciprocal member is met at \(w=13\).  A uniform member theorem, a
+   cube-compatible controlled \(H_2\)-root, the fixed-family detector
+   asymptotic, and AP1 remain OPEN.  Classical Schinzel H remains the
+   sole conjectural input; no count or H10/\(\mathbb Q\) status changes
+   (`l31_frontier_push.py`; `data/l31_frontier_push.jsonl`;
+   `THEOREMS.md`, L31).

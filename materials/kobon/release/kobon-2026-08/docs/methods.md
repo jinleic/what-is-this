@@ -232,3 +232,28 @@ time-budget stop, so shell exit `0` alone must never be reported as an optimum.
 The completed census proves equality with the stored count for all 15 Maiorana
 54-witnesses and for the Bader/other `n=14` 53-witnesses and the known
 `n=11,18,20` witnesses (32, 93, 116 respectively).
+
+## 9. Direct-gap endpoint frontier
+
+`scratch/kobon/gap_faces.py` has opt-in, monotone strengthening flags. Legacy
+sector and shared-ray outputs are preserved byte-for-byte.
+
+- `--endpoint-closure` extends the shared-ray side argument to faces sharing
+  only one line at a multipoint endpoint and enforces opposite apex sides when
+  two selected faces share an arrangement edge.
+- `--simple-bound u` reifies `MI(t)`, meaning selected face `t` has at least
+  one finite multipoint vertex, and requires at least `T-u` such faces. The
+  caller must supply a proved same-\(n\) simple-arrangement upper bound.
+- `--k4-bound` emits the four prime clauses for `K(4)=2` on every four-line
+  subset.
+- `--reify-faces` makes every `S(t)` equal the exact direct-gap predicate and
+  counts all true faces. It is sound but not used in the production lane
+  because \(n=9\) controls regress sharply.
+- `--chirotope-gp` adds zero-aware rank-three projective determinant
+  constraints. Exact audits pass, but no semantic gap was found through
+  \(n=7\), and the \(n=8\) A/B run regressed; it remains propagation-only.
+
+For \(n=12,T=39\), `--simple-bound 37` is justified by the exact simple
+maximum and forces two multipoint-incident selected faces. The two current
+endpoint CNFs and their promotion gates are pinned in
+`scratch/kobon/frontier_endpoint_research.json`.

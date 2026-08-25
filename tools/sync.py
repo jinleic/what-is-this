@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""what-is-this: passive progress tracker + static site generator.
+"""what-is-this: passive progress tracker + static progress mirror.
 
-Mirrors the math campaign workspace into a public GitHub Pages site:
+Mirrors the math campaign workspace into the repo as a public progress
+mirror (no website hosting):
 
 - one page per problem, quoting the project's README head and the newest
   matching ``math/PROGRESS.md`` entry; both are rendered client-side
@@ -531,11 +532,10 @@ git add -A && git commit -m "sync $(date -u +%F)" && git push</pre>
 
 
 def build_readme(entries: list[dict]) -> str:
-    site = "https://jinleic.github.io/what-is-this"
     rows = []
     for e in entries:
         h = strip_md(e["headline"]).replace("|", "\\|")
-        rows.append(f"| [{e['name']}]({site}/problems/{e['slug']}.html) "
+        rows.append(f"| [{e['name']}](problems/{e['slug']}.html) "
                     f"| `{e['dirname']}` | {e['updated'][:10]} | {h} |")
     nl = "\n"
     return f"""# what-is-this — math campaign progress tracker
@@ -546,8 +546,6 @@ newest `math/PROGRESS.md` entry verbatim; mirrors core code + small artifacts,
 never multi-GB campaign data or single files over the size cap; incremental —
 only changed files are rewritten; private-keyword gate blocks publishing when
 any word from a private, out-of-repo list appears in the output).
-
-Live site: {site}/
 
 ## Problems
 
@@ -653,9 +651,6 @@ def main() -> int:
                         page("what-is-this — math campaign progress tracker",
                              idx_body, idx_md, depth=0, links=idx_links)):
         pages_rewritten += 1
-    nj = REPO / ".nojekyll"
-    if not nj.exists():
-        nj.write_bytes(b"")
 
     manifest = dict(
         updated=max((e["updated"] for e in entries), default=ts),
@@ -672,7 +667,7 @@ def main() -> int:
           f"pages rewritten this run: {pages_rewritten}")
     rc = final_gate(words)
     if rc == 0:
-        print("clean — publish with: git add -A && git commit && git push")
+        print("clean — sync with: git add -A && git commit && git push")
     return rc
 
 

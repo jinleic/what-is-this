@@ -1,0 +1,81 @@
+{
+  "identity": {
+    "A": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "B": [
+      [
+        0,
+        0
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "ell": 21,
+    "k_parent": 8,
+    "m": 5,
+    "threshold": 16
+  },
+  "route": "exact CRT transport of CP-SAT witness",
+  "schema": "exp068-screen-fallback-witness-v1",
+  "sector": 0,
+  "source": {
+    "path": "results/partial_runs/exp068_screen_witnesses/15x7_24679ae1140adb8b.json",
+    "route": "single-sector CP-SAT witness feasibility",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": 0,
+    "sha256": "8e2a53b9f7ecd95ded6c6f087c46ff69ac1bd9f761da35231b9918a528ac0dfd"
+  },
+  "status": "TRANSPORTED",
+  "support": [
+    12,
+    14,
+    15,
+    17,
+    20,
+    22,
+    23,
+    24,
+    29,
+    65,
+    74,
+    110,
+    111,
+    166,
+    169,
+    171
+  ],
+  "transport": {
+    "distance_preserved_by_exact_permutation": true,
+    "lattice": [
+      15,
+      7
+    ],
+    "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
+  },
+  "verification": {
+    "commutes_with_HX": true,
+    "outside_Z_stabilizer": true,
+    "vector_sha256": "e159809276d62c8ebe75873aedfab28894d235bb72c6991a4256825e8e6d1686",
+    "weight": 16
+  },
+  "wall_time_s": 0.0,
+  "weight": 16
+}

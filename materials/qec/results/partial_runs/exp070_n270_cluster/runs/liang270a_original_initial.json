@@ -1,0 +1,65 @@
+{
+  "input": {
+    "HX_rank": 131,
+    "HX_sha256": "504987d05af1337aa98bd1b006369a7bf7c39d9e53a5361fff34cb21474b39b4",
+    "HZ_rank": 131,
+    "HZ_sha256": "43351dbe3ddfac162a200ef006053c4f40f3671d3510965a47a2512ac703bd29",
+    "LX_rank": 8,
+    "LX_sha256": "1bd66d314d880487b89cfd99227a95dc00d6ac9ec81938a20caa046a47b0c03c",
+    "k": 8,
+    "n": 270,
+    "presentation": "original",
+    "schema": "exp070-connected-cluster-input-v1",
+    "target": "liang270a"
+  },
+  "input_files": {
+    "HX": {
+      "path": "results/partial_runs/exp070_n270_cluster/inputs/liang270a_original_HX.mtx",
+      "sha256": "a2df25d3e287a1efd151a2e432f4ccd20b57597c15d7f412f309e643bf985b52"
+    },
+    "HZ": {
+      "path": "results/partial_runs/exp070_n270_cluster/inputs/liang270a_original_HZ.mtx",
+      "sha256": "927a0d47ec18cab7db689e5a0e98362da67d165111f2ea02499168abdc8009ce"
+    },
+    "LX": {
+      "path": "results/partial_runs/exp070_n270_cluster/inputs/liang270a_original_LX.mtx",
+      "sha256": "b36e0658d6b3dd53f7bc55ec360ab13324f08ad543090b8a615408b9bf9b1138"
+    }
+  },
+  "invocation": [
+    "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp067_n234_cluster/solver/dist_m4ri_arm64_darwin",
+    "method=2",
+    "finH=/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp070_n270_cluster/inputs/liang270a_original_HX.mtx",
+    "finG=/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp070_n270_cluster/inputs/liang270a_original_HZ.mtx",
+    "start=0",
+    "dmin=1",
+    "wmax=18",
+    "smax=0",
+    "debug=3",
+    "timeout=7200"
+  ],
+  "presentation": "original",
+  "protocol": {
+    "dmin": 1,
+    "engine_variant": "legacy_single_thread_do_CC_dist",
+    "method": 2,
+    "parent_nice_priority": 15,
+    "processes": 1,
+    "root": 0,
+    "smax": 0,
+    "threads": 1,
+    "timeout_s": 7200.0,
+    "wmax": 18
+  },
+  "run_id": "initial",
+  "schema": "exp070-connected-cluster-run-v1",
+  "solver": {
+    "binary_sha256": "04c051b27ae30dc353480015c01ce02b9925636d428a3a92c33a78ea5317ca66",
+    "name": "QEC-pages/dist-m4ri legacy STANDALONE method 2",
+    "source": "https://github.com/QEC-pages/dist-m4ri",
+    "source_commit": "538d119f6e98b3782415eb78f7ce322a076f8101"
+  },
+  "status": "RUNNING",
+  "target": "liang270a",
+  "utc": "2026-08-25T04:39:40.348323+00:00"
+}

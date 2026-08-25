@@ -242,9 +242,9 @@ scratch/kobon-audit/tools/drat-trim/drat-trim \
 Success is `s VERIFIED`. The hash-bound metadata and checker-core counts are
 in `math/kobon/release/kobon-2026-08/certificates/c23_n7_certificate.json`.
 
-## I. Hereditary, vertex-sector, and Pappus probes
+## I. Hereditary, vertex-sector, shared-ray, and Pappus probes
 
-Replay the exact-rational sector implementation audit:
+Replay the exact-rational sector and shared-ray implementation audit:
 
 ```sh
 "$PY" scratch/kobon/sector_bound_audit.py \
@@ -253,7 +253,8 @@ Replay the exact-rational sector implementation audit:
 ```
 
 Success is exit `0`, `"status": "PASS"`, 3,600 arrangements, 93,000 line-pair
-checks, 6,204 multipoint-pair checks, and zero violations.
+checks, 83,115 face-sector assignments, 17,325 shared-pair face pairs, 1,591
+same-ray cases, a four-sector sharpness control, and zero violations.
 
 Replay the guarded dual-Pappus relaxation-gap probe:
 
@@ -276,6 +277,96 @@ Regenerate the live combined \(n=12,T=39\) discovery instance:
   --out /tmp/n12_gap_sector_deletion_t39.cnf
 ```
 
-The generator must report 374,381 variables / 830,030 clauses. This CNF is a
-sound discovery lane, not a certificate. An UNSAT solver result requires a
-complete DRAT and the promotion gate in section F.
+The generator must report 374,381 variables / 830,030 clauses and reproduce
+SHA-256 `5435cb9958710878b1a68bc112e353a46d9a031a723e1afaa31191a9a9546909`.
+The cited smaller-\(n\) inputs and promotion rules are pinned in
+`scratch/kobon/n12_gap_sector_deletion_t39.metadata.json`. This CNF is a sound
+discovery lane, not a certificate. An UNSAT solver result requires a complete
+DRAT and the promotion gate in section F.
+
+Regenerate the opt-in shared-ray solver-diversity lane:
+
+```sh
+"$PY" scratch/kobon/gap_faces.py 12 39 \
+  --sector-bounds \
+  --shared-ray-bounds \
+  --sub-bound 11:32 \
+  --sub-bound 10:25 \
+  --out /tmp/n12_gap_shared_ray_deletion_t39.cnf
+```
+
+The generator must report 374,381 variables / 841,910 clauses and reproduce
+SHA-256 `0aa9e81e1806d5ff7413669d7357454c9e08a496d2172d8b4a512b27115b7e7d`.
+`scratch/kobon/shared_ray_bound_experiment.json` records the proof, exact audit,
+mixed A/B benchmarks and promotion gate. This lane is discovery-only.
+ 
+## J. Independent faces-only certificate at `n=10`
+
+Regenerate the target-26 CNF and compare it byte-for-byte:
+
+```sh
+"$PY" scratch/kobon/faces_only.py 10 26 \
+  --out /tmp/ladder_n10_t26_faces.cnf
+cmp scratch/kobon/ladder_n10_t26_faces.cnf \
+  /tmp/ladder_n10_t26_faces.cnf
+```
+
+Then check the complete proof:
+
+```sh
+scratch/kobon-audit/tools/drat-trim/drat-trim \
+  scratch/kobon/ladder_n10_t26_faces.cnf \
+  scratch/kobon/ladder_n10_t26_faces.drat -w -t 200000
+```
+
+Success is `s VERIFIED`. The expected checker statistics and SHA-256 pins are
+in `scratch/kobon/ladder_n10_t26_faces_certificate.json`; the saved transcript
+is `scratch/kobon/ladder_n10_t26_faces.dratcheck.log`.
+
+## K. Endpoint-closure and multipoint-incidence frontier
+
+Replay the expanded exact audits:
+
+```sh
+"$PY" scratch/kobon/sector_bound_audit.py \
+  --samples-per-mode 100 \
+  --out /tmp/sector_bound_audit.json
+"$PY" scratch/kobon/reified_face_audit.py \
+  --out /tmp/reified_face_audit.json
+"$PY" scratch/kobon/chirotope_gp_audit.py \
+  --samples-per-mode 100 \
+  --out /tmp/chirotope_gp_audit.json
+```
+
+All three print `"status": "PASS"`. The endpoint audit reports 1,607
+colliding endpoints, 84 colliding same-ray cases, 42 single-line shared
+segments, 1,591 shared-pair segments, and zero violations. The fixed-witness
+audit accepts exactly 25 and 38 faces; the \(n=12\) witness has eight
+multipoint-incident faces. The chirotope audit checks 195,000 determinant
+signs and 1,386,000 Grassmann--Plücker relations with zero mismatch, while
+reporting `NO_GAP_FOUND_THROUGH_N7_PROPAGATION_ONLY`.
+
+Regenerate the primary endpoint lane:
+
+```sh
+"$PY" scratch/kobon/gap_faces.py 12 39 \
+  --endpoint-closure \
+  --k4-bound \
+  --simple-bound 37 \
+  --sub-bound 11:32 \
+  --sub-bound 10:25 \
+  --out /tmp/n12_gap_endpoint_mi_k4_deletion_t39.cnf
+```
+
+Expected header: 375,037 variables / 1,005,366 clauses. Expected SHA-256:
+`6dca104aa120ee1f209aada8aca07a08bf3341f1335e6e99f4ae1f11bc2ba76b`.
+
+Regenerate the high-risk \(K(9)=21\) hereditary variant by adding
+`--sub-bound 9:21`. Expected header: 842,317 variables / 1,917,926 clauses.
+Expected SHA-256:
+`34406004c932ce77d33f76f8b7d19c7b0f5a2e3e241e94651846269bf750f2df`.
+
+`scratch/kobon/frontier_endpoint_research.json` binds the proofs, source
+survey, exact outputs, A/B controls, hashes, and live-process names. Both CNFs
+are discovery inputs only. SAT requires exact rational realization; UNSAT
+requires a proof-producing rerun and independent proof checking.

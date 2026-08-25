@@ -1,0 +1,8 @@
+[project]
+name = "ising3d-exact"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["numpy","sympy","mpmath","scipy"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

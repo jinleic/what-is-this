@@ -1,0 +1,58 @@
+{
+  "status": "VERIFIED_UNSAT",
+  "statement": "No arrangement of 10 straight lines has 26 bounded triangular faces. Hence K(10) <= 25; together with the existing exact 25-face construction, K(10) = 25.",
+  "scope": {
+    "n": 10,
+    "refuted_target": 26,
+    "convention": "all parallel and finite multiple-point patterns are free",
+    "formulation": "faces-only monolith, justified without loss by the proved face/broad collapse theorem",
+    "selected_faces": "exactly 26",
+    "face_constraints": "triangle-crossing indicators forced false, with global and per-line face-capacity bounds"
+  },
+  "generator": {
+    "path": "scratch/kobon/faces_only.py",
+    "sha256": "dfa1e0c7070dba6a62d61f22e344dd9caa0470514c7d85fb615bb3650da98f54",
+    "engine_path": "math/kobon/engine.py",
+    "engine_sha256": "5ecad5d184a8febe8cc0eb04c9e327ee907dc9b0984839b1685d48d98a39058e",
+    "command": "scratch/kobon-audit/venv/bin/python scratch/kobon/faces_only.py 10 26 --out /tmp/ladder_n10_t26_faces_only.rebuilt.cnf",
+    "regeneration": "byte-identical to the certified CNF (cmp exit 0)"
+  },
+  "cnf": {
+    "path": "scratch/kobon/ladder_n10_t26_faces.cnf",
+    "bytes": 22125971,
+    "variables": 131314,
+    "clauses": 792462,
+    "sha256": "d3eddc9c5ee996dc3946eeac1fdd3289daef8ffe0802199ca0d7a3791141dfa2"
+  },
+  "proof": {
+    "path": "scratch/kobon/ladder_n10_t26_faces.drat",
+    "bytes": 14050806440,
+    "sha256": "bdbab47463806ee96163d03ec36a052e5818e2125202272182ee4cbe94629007",
+    "solver": "Kissat 4.0.4",
+    "solver_binary_sha256": "14c46e479179ea764f168c2a339c47fd3ea95fc9aec13a9d80d95bfd1eb9d5f4",
+    "solver_result": "s UNSATISFIABLE",
+    "solver_exit_code": 20,
+    "solve_time_reported": "31 minutes"
+  },
+  "checker": {
+    "path": "scratch/kobon/ladder_n10_t26_faces.dratcheck.log",
+    "sha256": "d4efb6701373c33d259b8e08abe66b220c763b99e58d011578c915b380b22313",
+    "tool": "drat-trim",
+    "tool_binary_sha256": "111b0405566d55629f5d391b80b3220cc7a3ebc3cd406a35895ff65cc9acd5e4",
+    "command": "scratch/kobon-audit/tools/drat-trim/drat-trim scratch/kobon/ladder_n10_t26_faces.cnf scratch/kobon/ladder_n10_t26_faces.drat -w -t 200000",
+    "result": "s VERIFIED",
+    "formula_clauses_in_core": 52808,
+    "proof_lemmas": 125041814,
+    "lemmas_in_core": 40395481,
+    "resolution_steps": 3464683123,
+    "rat_lemmas_in_core": 12437,
+    "redundant_literals_in_core_lemmas": 55622464,
+    "verification_seconds": 58458.387,
+    "checker_exit_code": 0
+  },
+  "independence": {
+    "prior_certificate": "math/kobon/AUDIT.md: the 2026-08-15 exhaustive 11-cube all-degeneracy cover",
+    "role": "independent second upper-bound certificate; the prior cube-cover theorem did not depend on this monolith"
+  },
+  "soundness": "Every 10-line arrangement with 26 admissible triangles can, by the proved collapse theorem, be replaced by 26 triangular arrangement faces. Such a face family extends the necessary all-degeneracy CNF. The checked DRAT refutation therefore rules out 26 and proves the upper bound independently of the earlier cube cover."
+}

@@ -1,0 +1,91 @@
+{
+  "status": "VERIFIED_SOUND_OPT_IN_LIVE",
+  "statement": "If two triangular arrangement faces share lines i,j and their remote vertices lie on the same ray of shared line i from P_ij, those remote vertices coincide; therefore i and the two third lines are concurrent. The analogous implication holds on j.",
+  "proof": "Each face side from P_ij to its remote vertex contains no arrangement vertex in its relative interior. On one ray, two distinct remote vertices are linearly ordered, so the nearer would lie in the farther face side. Hence the vertices are equal, which is exactly the required triple concurrency.",
+  "encoding": {
+    "engine_path": "math/kobon/engine.py",
+    "engine_sha256": "98622b6171a770cdc14f78049a78516e4ed77182c5fb1f4df616a7b432ec1226",
+    "function": "add_selected_face_sector_bounds(..., shared_ray=True)",
+    "clauses_per_shared_pair_of_faces": 4,
+    "new_variables": 0,
+    "clause_schema": [
+      "-S(i,j,k) -S(i,j,l) -X(i,j,k) -X(i,j,l) C(i,k,l)",
+      "-S(i,j,k) -S(i,j,l) X(i,j,k) X(i,j,l) C(i,k,l)",
+      "and the two analogous clauses on shared line j"
+    ],
+    "cli": "--shared-ray-bounds",
+    "default_behavior": "opt-in; --sector-bounds without --shared-ray-bounds is byte-identical to the prior release encoding"
+  },
+  "implementation": {
+    "gap_faces_path": "scratch/kobon/gap_faces.py",
+    "gap_faces_sha256": "b2839db6352974760630961c07b7937c5ef85910e18c3e53cd6c1829ddaa3ede",
+    "test_path": "math/kobon/test_engine.py",
+    "test_sha256": "f05b8bc9927bcd45c85bef42e0d8da611d34c5f818e7535e4f6a4f540cec6b13",
+    "audit_path": "scratch/kobon/sector_bound_audit.py",
+    "audit_sha256": "aab61cafa800b51b8df6cc56718d96b805127524549bc7886282071c5da73643",
+    "audit_record": "scratch/kobon/sector_bound_audit.json",
+    "audit_record_sha256": "c91eccbf0889e741216a5f2a84b2d75518fa27cfafa0a4cbb104ab03c8f8d719"
+  },
+  "exact_audit": {
+    "status": "PASS",
+    "arrangements": 3600,
+    "triangular_faces": 27705,
+    "face_sector_assignments": 83115,
+    "shared_pair_face_pairs": 17325,
+    "shared_ray_cases": 1591,
+    "violations": 0,
+    "sharpness_control": "an exact six-line arrangement realizes four faces on one line pair, one in each sector"
+  },
+  "tests": {
+    "focused_suite": "24/24 passed",
+    "regression": "same direction on either shared line requires remote concurrency for both signs; positive concurrency remains SAT; both opposite-ray assignments remain SAT; the strengthening is opt-in",
+    "sat_controls": [
+      "n=8,target=15: SAT",
+      "n=9,target=21: SAT"
+    ]
+  },
+  "controlled_benchmarks": {
+    "interpretation": "mixed; the strengthening remains opt-in and no general speedup is claimed",
+    "cadical195": {
+      "n8_target16": {
+        "prior": {"clauses": 58311, "conflicts": 164869, "seconds": 20.73, "propagations": 107169376},
+        "shared_ray": {"clauses": 59991, "conflicts": 153108, "seconds": 19.956, "propagations": 98957568}
+      },
+      "n9_target22": {
+        "prior": {"clauses": 126485, "conflicts": 203892, "seconds": 50.537, "propagations": 329114052},
+        "shared_ray": {"clauses": 129509, "conflicts": 206959, "seconds": 50.378, "propagations": 328602906}
+      }
+    },
+    "kissat_4_0_4_seed0": {
+      "n9_target22": {
+        "prior": {"clauses": 126485, "conflicts": 228022, "seconds": 32.43, "decisions": 667791, "propagations": 305609984},
+        "shared_ray": {"clauses": 129509, "conflicts": 300407, "seconds": 45.47, "decisions": 783920, "propagations": 358223013}
+      }
+    }
+  },
+  "n12_lane": {
+    "status": "LIVE_DISCOVERY_NO_VERDICT",
+    "process": "n12-gap-shared-ray-t39",
+    "command": "/usr/bin/nice -n 19 scratch/kobon-audit/tools/kissat/build/kissat --seed=0 scratch/kobon/n12_gap_shared_ray_deletion_t39.cnf",
+    "cnf_path": "scratch/kobon/n12_gap_shared_ray_deletion_t39.cnf",
+    "cnf_sha256": "0aa9e81e1806d5ff7413669d7357454c9e08a496d2172d8b4a512b27115b7e7d",
+    "bytes": 16474653,
+    "variables": 374381,
+    "clauses": 841910,
+    "added_clauses_over_sector_deletion_lane": 11880,
+    "added_variables": 0,
+    "regeneration_command": "scratch/kobon-audit/venv/bin/python scratch/kobon/gap_faces.py 12 39 --sector-bounds --shared-ray-bounds --sub-bound 11:32 --sub-bound 10:25 --out /tmp/n12_gap_shared_ray_deletion_t39.rebuilt.cnf",
+    "regeneration": "byte-identical (cmp exit 0)",
+    "proof_logging": false,
+    "promotion_gate": "discovery only until a verdict; UNSAT would require a proof-logging rerun and independent proof check"
+  },
+  "independent_review": {
+    "fable": "unavailable: local Claude CLI returned the seven-day Fable limit before inference",
+    "repository_reviewer": {
+      "verdict": "no P1 correctness issue",
+      "finding": "P2: the first regression omitted the legitimate positive-concurrency escape and one asymmetric opposite-ray assignment",
+      "resolution": "added both SAT escape checks for each shared line and sign, plus both opposite-ray assignments; focused suite 24/24 passed"
+    }
+  },
+  "global_status": "K(12) remains open."
+}

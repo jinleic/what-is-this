@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.11.7)  23 AUG 2026 12:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.11.7)  24 AUG 2026 22:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -465,6 +465,9 @@ dmap/pdftex.map}])
 \openout4 = `main-conditional-forall6.toc'.
 
  (./sections/intro.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [2]
 Overfull \hbox (1.79514pt too wide) in paragraph at lines 62--75
@@ -540,12 +543,18 @@ dyad-i-cally killed.[][] \OT1/cmr/m/n/10.95 L24 kills the two \OT1/cmr/m/it/10.
 
 [28]
 
-[29])
+[29]
 
 [30]
 
 [31]
-Underfull \hbox (badness 1009) in paragraph at lines 268--272
+
+[32])
+
+[33]
+
+[34]
+Underfull \hbox (badness 1009) in paragraph at lines 323--327
 []\OT1/cmr/m/n/9 H. A. Helf-gott, \OT1/cmr/m/it/9 Square-free val-ues of $\OML/
 cmm/m/it/9 f\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 p\OT1/cmr/m/n/9 )$\OT1/cmr/m/it/9 ,
  $\OML/cmm/m/it/9 f$ \OT1/cmr/m/it/9 cu-bic\OT1/cmr/m/n/9 , Acta Math-e-mat-ica
@@ -553,7 +562,7 @@ cmm/m/it/9 f\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 p\OT1/cmr/m/n/9 )$\OT1/cmr/m/it/9 ,
  []
 
 
-Underfull \hbox (badness 7433) in paragraph at lines 282--286
+Underfull \hbox (badness 7433) in paragraph at lines 337--341
 []\OT1/cmr/m/n/9 J. Koenigs-mann, \OT1/cmr/m/it/9 Defin-ing $\U/msb/m/n/9 Z$ \O
 T1/cmr/m/it/9 in $\U/msb/m/n/9 Q$\OT1/cmr/m/n/9 , An-nals of Math-e-mat-ics (2)
  \OT1/cmr/bx/n/9 183 \OT1/cmr/m/n/9 (2016), no. 1, 73--93;
@@ -561,7 +570,7 @@ T1/cmr/m/it/9 in $\U/msb/m/n/9 Q$\OT1/cmr/m/n/9 , An-nals of Math-e-mat-ics (2)
 
 
 
-[32] (./main-conditional-forall6.aux)
+[35] (./main-conditional-forall6.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -571,13 +580,13 @@ d.
 (rerunfilecheck)             Checksum: 742F6110CB516B5FC8994739493FD796;13574.
  ) 
 Here is how much of TeX's memory you used:
- 10859 strings out of 473190
- 165751 string characters out of 5704335
- 574655 words of memory out of 5000000
- 33644 multiletter control sequences out of 15000+600000
+ 10873 strings out of 473190
+ 165922 string characters out of 5704335
+ 574972 words of memory out of 5000000
+ 33649 multiletter control sequences out of 15000+600000
  572322 words of font info for 89 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 75i,12n,79p,613b,630s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,613b,618s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmbx9.pfb></opt/homebrew/Cellar/texlive/202503
@@ -615,10 +624,10 @@ r/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam1
 0.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main-conditional-forall6.pdf (32 pages, 516523 bytes).
+Output written on main-conditional-forall6.pdf (35 pages, 532634 bytes).
 PDF statistics:
- 709 PDF objects out of 1000 (max. 8388607)
- 610 compressed objects within 7 object streams
- 157 named destinations out of 1000 (max. 500000)
+ 731 PDF objects out of 1000 (max. 8388607)
+ 629 compressed objects within 7 object streams
+ 166 named destinations out of 1000 (max. 500000)
  409 words of extra memory for PDF output out of 10000 (max. 10000000)
 

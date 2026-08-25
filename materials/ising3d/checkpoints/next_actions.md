@@ -1,6 +1,6 @@
 # Next actions
 
-**Snapshot:** 2026-08-23. Waves 18 through 22 LANDED and were independently re-verified.
+**Snapshot:** 2026-08-24. Waves 18 through 26 LANDED and were independently verified.
 This file is the single source of truth for the ranked open queue, ledger/experiment allocation,
 and environment state. Strategic reasoning lives in `notes/frontier_analysis.md`; do not duplicate
 one into the other.
@@ -11,16 +11,16 @@ immutable for agents.
 
 ## 1. Ledger and numbering state (read before appending anything)
 
-- **LEDGER next free ID: `H635`.** Allocation to date: `H001`-`H505` historical through wave 19;
+- **LEDGER next free ID: `H672`.** Allocation to date: `H001`-`H505` historical through wave 19;
   `H506`-`H583` wave 20; `H584`-`H587` and `H590`-`H595` wave 21; `H596`-`H634`
-  wave 22. `H588`-`H589` remain intentionally unallocated. Wave-22 rows use the 11-field legacy
-  schema; `H623`, `H633`, and `H634` are the Callen-scope, trace-verifier, and midnight-date
-  corrections.
-- **Next unused experiment number: `e242`.** Wave 22 lands `e234` star decimation, `e235`
-  tropical cuts, `e236` token splitting, `e237` W-law exact sequence, `e238` trace exceptional
-  set, `e239` twist Hashimoto, `e240` Callen identities, and `e241` box genus. The pre-existing
-  `e233_trace_resultant_positivity.py` is an unlanded draft with no artifact/test/proof; do not
-  claim it and do not reuse its number.
+  wave 22; `H635`-`H642` wave 23; `H643`-`H657` wave 24; `H658`-`H668`
+  wave 25; `H669`-`H671` wave 26. `H588`-`H589` remain intentionally unallocated.
+  `H653`-`H657` are append-only wave-24 review corrections; wave-24 through wave-26 rows use the
+  11-field legacy schema.
+- **Next unused experiment number: `e252`.** Wave 26 lands `e251` finite trace-nine projection
+  for the open `2x4` layer. Wave 25 landed `e247` through `e250`. The pre-existing
+  `e233_trace_resultant_positivity.py` remains an unlanded draft with no artifact/test/proof;
+  do not claim it and do not reuse its number.
 - **Width anomalies (historical, do not edit):** `H388` has 12 fields; `H389`/`H390` have 6;
   `H393`-`H397` and `H399`-`H401` have 10. Recorded by append-only row `H402`. `H383`/`H385` are
   DUPLICATEs of `H380`/`H382`; `H384`/`H390` are corrections, per the canonical mapping in `H386`.
@@ -29,7 +29,124 @@ immutable for agents.
   `id, date, statement, topic, owner, status, artifact, artifact, detail, status-word, next-action`
   rather than the legacy header semantics. Wave-18 rows return to the legacy header.
 
-## 2. Waves 20-22 landed — do not re-open these
+## 2. Waves 20-26 landed — do not re-open these
+
+### Wave 26
+
+Frozen pre-implementation contract, normalization correction, and resource stop rules:
+`checkpoints/wave26_research_plan.md`.
+
+- **The open `2x4` trace-nine projection is nonzero and finite.** The 96 standard monomials have
+  Hilbert vector `(1,5,12,19,22,19,12,5,1)`. Exact multiplication-by-`F9` determinants are
+  nonzero at `q=2` modulo `2147483647` and at `q=5/3` modulo `2147483629`; a synthetic
+  eight-mode control has rank 95 and determinant zero. The no-infinity leading system plus
+  multihomogeneous clearing yields one nonzero projection polynomial of degree at most `182400`
+  (`H669`, `e251`).
+- **Emptiness is still open.** Seven exact Lucas-product inequalities hold strictly for the
+  literal targets throughout `q>1`, closing those q-only shortcuts without proving a mode
+  representation. The primitive norm, all physical roots, and repeated-root-safe shifted
+  `H0/H1` branch disposition are not materialized (`H670`).
+- **Verification.** The ten-gate producer used 86.942454 process CPU seconds and 174,309,376
+  bytes. The clean-room verifier rebuilt the incidence with direct resultants, a separate reducer,
+  and scalar finite-field elimination; it passed in 61.230270 seconds and 133,529,600 bytes
+  (`H671`). Three adversarial reviewers returned final PASS after the displayed-identity,
+  denominator-scalar/count, q-guard, and scope repairs. The first exploratory `q^(+10k)` residue
+  was discarded before artifact generation; both landed paths use e248's `q^(-10k)` normalization.
+  No full 171-script suite, endpoint movement, or thermodynamic calculation occurred.
+- **Bundle.** `deliverables/ising3d_wave26_final_bundle.zip` has 28 staged files plus manifest;
+  all 29 members and every staged hash validate. Size 1,124,173 bytes, SHA-256
+  `d07e9130b19c8cd5d4f1a95b71fb11d347e4c3b2edf73240ac50d9d48bb33dc1`.
+  Snapshot docs predate this self-reference.
+
+
+
+### Wave 25
+
+Frozen pre-implementation contract and resource stop rules:
+`checkpoints/wave25_research_plan.md`.
+
+- **A local-to-global matchgate defect is now exact.** For both checkerboard choices on the open
+  `2x3x3` box, the normalized five-leg face-boundary Walsh tensor violates every four-leg
+  principal-Pfaffian condition in every one of 120 ordinary unsigned leg orders throughout `0<v<1`. Four positive
+  polynomial factor classes prove the sign; the planar alternating `C10` control passes exactly
+  its ten dihedral orders. The theorem is fixed contraction/basis/order, not an arbitrary
+  spin-structure, hidden-auxiliary, or Pfaffian-count no-go (`H658`-`H659`, `e247`).
+- **The open `2x4` trace-nine input is exact, but emptiness remains open.** The replica-column
+  identity uses `4^k` states; `H9` has degree 162 and requires 262,144 states. The correctly
+  dimensioned eight-mode incidence has degrees `2,2,2,3,4,3`; `F4`-`F8` have a
+  zero-dimensional leading ideal with 35 basis elements and 96 standard monomials. `F9` is the
+  first safe coupling-cutting row. The `96x96` norm and shifted-localizer/Hermite branch stage
+  were not materialized, so no exceptional root or emptiness claim exists (`H660`-`H662`,
+  `e248`).
+- **The W-law residual cores have a finite block theorem, not an all-size recurrence.** The
+  literal cores are exactly `17=16+1` and `133=128+5` packing-boundary families. Each L9 core
+  is four `29x29` off-centre shells plus a signed inherited L8 `17x17` core; Smith forms explain
+  `-3*2^32` and `-3^5*2^288`. The first normalized shell has invariant 6, refuting the named
+  eight-copy/dyadic recurrence. Every L>=10 residual/rank statement remains open
+  (`H663`-`H666`, `e249`).
+- **The first contact-inclusive Callen orbit block is closed negatively at all positive
+  couplings.** All 864 radius-one contact rows on `C3^3`, including the five-neighbour contact
+  form of the full-neighbour row, fold to four cubic classes. A nonallowed minor
+  `4(c1-c5)(c1+4c3+c5)>0` for `0<v<1`, so no nonzero folded combination leaves only
+  normalization and the nearest-neighbour pair. Radius-expanded, nonlinear, auxiliary, and
+  nonsymmetric zero-average systems remain open (`H667`-`H668`, `e250`).
+- **Verification.** All four producers and all four clean-room verifiers passed. The largest
+  stage was the e248 verifier at 21.271467 process CPU seconds and 1,245,003,776 bytes; its
+  producer used 18.714901 seconds and 1,241,841,664 bytes. All four adversarial reviewers
+  returned PASS after review-driven semantic and provenance hardening.
+  Five current 2025-2026 research inputs are registered as motivation only. No full 170-script
+  suite, memory-14 construction, endpoint movement, or thermodynamic calculation occurred.
+- **Bundle.** `deliverables/ising3d_wave25_final_v2_bundle.zip` has 46 staged files plus
+  manifest; all 47 members and hashes validate. Size 1,575,644 bytes, SHA-256
+  `d167e544c7693b10d9526f66987da5a28cb71d610d5f3f4819831bf525f5a29e`.
+  Snapshot docs omit archive self-references. The two earlier Wave-25 ZIPs are superseded and
+  retained pending user-approved deletion.
+
+### Wave 24
+Frozen pre-implementation contract and decision record:
+`checkpoints/wave24_research_plan.md`.
+
+
+- **Graph-uniform finite-scheme degree.** For every connected simple nonpath graph,
+  `#E_G <= [2^n(2n+2m)]^(n+2)` and uniformly at fixed `n`,
+  `#E_G <= [2^n(n^2+n)]^(n+2)`. Paths are excluded. The bound is algebraic control,
+  not emptiness or a root list (`H643`-`H645`, corrections `H653`-`H654` and `H656`, `e245`).
+- **Exact even-star structure.** For `K!=0`, every nonempty even log-Walsh sector of an
+  even star has strict alternating sign. At `0<v=tanh(K)<1`, the degree-six weight is a
+  pure-even matchgate with ordinary CP rank two, all flattenings rank two, and Walsh-basis
+  nonnegative CP rank `32`. The normalized checkerboard contraction is the cycle-space
+  polynomial; no global 3D Pfaffian follows (`H646`-`H649`, corrections `H655` and `H657`, `e244`).
+- **Selected-row Callen block classified.** At `0<v=tanh(K)<1`, the fixed contact-free
+  selected-pivot/far-mark proper-even/odd leakage rank is
+  `2^(d-1)-C(d,d/2)/2`; every closed combination has zero pair coefficient. Cubic inversion
+  yields six exact higher-template relations in a `19x16` rank-13 block, but no pair closure
+  (`H650`-`H652`, `e246`).
+- **Verification and bundle.** Producers passed `13/13`, `9/9`, and `10/10`; all three
+  clean-room verifiers passed after adversarial normalization, path-scope, provenance, and
+  false-pass repairs. Separate theorem reviewers returned PASS. The bundle has 43 staged files
+  plus manifest; all 44 ZIP members validate, final size 814,269 bytes, SHA-256
+  `b716c320aa6e253dc26345497ff512ff94949fd2ae5cc5c3bff3666ce41f7608`.
+  No endpoint moved and no full 166-script suite was launched.
+
+### Wave 23
+
+- **Every-coupling full-spectrum no-go on the minimal open bipartite grid.** The three e238
+  roots have unique exact coefficient sextics. Their Hermite signatures are `2,2,6`; the
+  third has shifted sign pattern `+---+++` and at most two roots above `u=4`. Therefore the
+  positive-definite open `2x3` transfer spectrum is not a full six-mode subset-product
+  spectrum for any `0<t<1` (`H635`-`H639`, `e242`).
+- **All-pivot termwise Callen closure is exponential.** On every connected six-regular simple
+  graph, the nonzero one- and three-neighbour terms generated from one pair force exactly all
+  even proper supports. For periodic cubic boxes, removing the empty normalization still leaves
+  at least `ceil((2^(n-1)-[n even]-1)/n)` nontrivial translation orbits
+  (`H640`-`H642`, `e243`).
+- **Verification.** The e242 producer passed 10/10 in 814.373944 process CPU seconds. Its final
+  current-source independent verifier passed the affine-Macaulay/cofactor stage in 713.290031
+  process CPU seconds and the dyadic/Hermite/Descartes stage in 192.412972 process CPU seconds.
+  The verifier-only bracket-alignment repair is explicit in artifact provenance; the producer
+  was not rerun because the mathematical payload did not change. The e243 producer passed 8/8
+  and its independently reconstructed closure verifier passed after adversarial repairs.
+  No critical endpoint moved and no full 163-script suite was launched.
 
 ### Wave 22
 
@@ -40,8 +157,9 @@ immutable for agents.
   temperature, and Chevalley makes the full-cube coupling set finite (`H600`-`H608`).
 - **Finite open `2x3` continuum compressed to three algebraic trace candidates.** A stable
   rank-eight quotient and degree-971 norm polynomial leave exactly three physical `t` brackets.
-  All are genuine trace branches; six real mode roots `u_i>=4` remain undecided
-  (`H628`-`H632`, `e238`).
+  All are genuine trace branches and remained semialgebraically undecided at the wave-22 close;
+  wave 23 above disposes them (`H628`-`H632`, `e238`, superseded in scope by `H635`-`H639`,
+  `e242`).
 - **New positive exact representations plus sharp limitations.** Checkerboard decimation is an
   exact octahedral 2-/4-/6-spin model with `c2>0,c4<0,c6>0`, not a visible pairwise closure
   (`H596`-`H599`). The complete Callen system reconstructs every finite free-boundary Gibbs
@@ -204,62 +322,64 @@ immutable for agents.
   upper endpoint. Mode-resolved four-point/DLR, multi-edge or block current, and sourced-current
   classes are untouched (`proofs/upper_endpoint4.md`, `H464`-`H469`).
 
-## 5. Ranked queue after wave 22
+## 5. Ranked queue after wave 26
 
-1. **Dispose the three open-`2x3` algebraic trace branches.** The entire physical continuum has
-   been reduced to three exact roots of `E(q)`. For each branch, construct the mode sextic over
-   its real algebraic field and use a Hermite/Sturm signature to decide whether all six roots lie
-   in `[4,infinity)`. This is now the shortest route to an empty-exceptional-set theorem for the
-   minimal bipartite grid; do not rerun the degree-971 elimination.
-2. **Extend finite-exception control across the bipartite grid family.** Wave 22 proves generic
-   finiteness for every connected simple nonpath graph but gives no degree bound or empty set
-   all sizes. Seek a graph-uniform invariant or recurrence controlling the finite exceptional
-   schemes, not another same-point certificate.
-3. **Find a compressed Callen/conditional subsystem.** The complete finite system is proved rank
-   `2^n-1`, so completeness itself is not progress toward the thermodynamic limit. A live positive
-   route must prove closure of a translation/orbit/locality quotient whose size is subexponential,
-   or prove that a natural candidate cannot close.
-4. **Prove the W-law block-core theorem.** Two-slice injectivity is exact in all 49 sectors through
-   `L=9`; raw singleton peeling leaves canonical 17- and 133-column cores. The missing all-`L`
-   theorem now requires structural row combinations, a Koszul/incidence complex, or a uniform
-   block determinant. Do not fit another row or retry leaf ordering.
+1. **Materialize the primitive open-`2x4` norm.** e251 proves the trace-nine projection is
+   nonzero and gives a safe degree bound `182400`, but generic per-node quotient sampling would
+   require 182,401 nodes. Build a fixed-leading-form lift or fraction-free border template, derive
+   a tighter denominator/valuation/height envelope, reconstruct with height-certified modular CRT,
+   isolate every `q>1` root, then use repeated-root-safe shifted `H0/H1` localizers. Never discard
+   chart-denominator roots or infer degree from apparent interpolation stabilization.
+2. **Lift the W-law defect-position blocks beyond stored `L=9`.** The central L8 inheritance and
+   four exact L9 shells replace the opaque 17/133 determinants, but Smith invariant 6 kills the
+   count-driven eight-copy/dyadic recurrence. Seek a direct shell formula, signed incidence
+   module, or construction of the needed annihilator rows without launching a full W10 closure.
+   Do not fit determinant exponents from two sizes.
+3. **Move Callen beyond the complete radius-one cubic contact quotient.** Contacts, all pivots,
+   the full-neighbour row, and cubic aggregation still have full nonallowed row rank. A live route
+   now needs radius-two factors, nonlinear/auxiliary observables, sourced identities, or a
+   nonsymmetric system whose useful pair component survives cubic averaging.
+4. **Build the surface bridge after the first boundary defect.** The fixed `2x3x3` five-leg
+   tensor is not one matchgate in any leg order. Construct an explicit genus-one rotation system,
+   Kasteleyn orientations, and the finite spin-structure sum, or prove a controlled quartic
+   crossing expansion. Flat graph-H1 twists are not surface spin structures, and this finite
+   defect is not a lower bound on arbitrary Pfaffian term counts.
 5. **Two-generator grids beyond ladders.** Prove the physical inequality for all `3xL` and then
    rectangles with `min(a,b)>=4`. Rank-one frozen rows and `|+>` compression are closed by the
    all-size depth-three anomaly; use a higher-rank invariant code or direct word family.
-6. **Exploit the exact octahedral decimation model.** The pairwise closure route is closed, but the
-   retained 2-/4-/6-spin model is exact. Seek a duality, surface representation, or controlled
-   resummation that genuinely uses `c4,c6`; hidden-auxiliary claims require explicit construction.
-7. **Actual memory-14 finite-walk launch.** Compact `k<=12` crosswalks are exact, but no `A_14`,
-   spectral radius, Collatz vector, or endpoint exists. A claim must construct all four, replay the
-   componentwise integer inequality, and direction-round `atanh`; launch only after host load clears.
-8. **The upper endpoint.** `PS4` and earlier relaxation classes have zero uniform floor. A live
+6. **Actual memory-14 finite-walk launch.** Compact `k<=12` crosswalks are exact, but no `A_14`,
+   spectral radius, Collatz vector, or endpoint exists. A claim must construct all four, replay
+   the componentwise integer inequality, and direction-round `atanh`; launch only after load clears.
+7. **The upper endpoint.** `PS4` and earlier relaxation classes have zero uniform floor. A live
    certificate must use full cross-channel fourth moments, higher localizers, or multi-edge/sourced
-   random currents that exclude the exact Green lift; the complete Callen system alone is exponential.
-9. **Kac-Ward and surface routes beyond the newly closed classes.** Uniform phase-free H1 averaging
-   fails at girth, fixed all-face and coordinate phases fail on the cube, and box genus grows.
-   Remaining routes are fixed/nonuniform spin-structure sums, genuine surface 2-cell data, and
-   branch `11111` outside the unit census. Never turn genus or `4^g` construction size into an
-   arbitrary Pfaffian lower bound.
-10. **`s<=6` extensive charges — structural idea required.** `s<=5` is exactly quotient one;
-    both symmetry-compression routes are closed. Do not launch a larger version of either.
-11. **Resource frontiers:** HT `v^30`, LT `x^60/x^62`, and the `3x4` pair-product certificate.
+   random currents that exclude the exact Green lift.
+8. **Kac-Ward and surface routes beyond the closed classes.** Uniform phase-free H1 averaging
+   fails at girth, fixed face/coordinate phases fail on the cube, and box genus grows. Remaining
+   routes are fixed/nonuniform spin-structure sums, genuine surface 2-cell data, and branch
+   `11111` outside the unit census. Never turn genus or `4^g` construction size into an arbitrary
+   Pfaffian lower bound.
+9. **`s<=6` extensive charges — structural idea required.** `s<=5` is exactly quotient one;
+   both symmetry-compression routes are closed. Do not launch a larger version of either.
+10. **Resource frontiers:** HT `v^30`, LT `x^60/x^62`, and the `3x4` pair-product certificate.
     These extend exact data but are not structural breakthroughs; cost every stage and wait for
     host clearance.
-12. **Forced interlayer data, genuine spectral/IRF Lax equations, and Lee--Yang interlacing.**
+11. **Forced interlayer data, genuine spectral/IRF Lax equations, and Lee--Yang interlacing.**
     `W8/W10` need actual square-lattice evaluation/bounds; Lax progress needs a concrete equation;
     Lee--Yang needs a no-earlier-root or argument-principle theorem, not larger fits.
 
-## 6. Environment state (measured 2026-08-23, 18:16 local)
+## 6. Environment state (measured during wave 26 on 2026-08-24)
 
-- Host: 28 cores, 96 GB; load average measured **114.88 / 96.37 / 89.96** with eleven users.
-  CPU and memory contention are severe. Keep work single-process, nice/low priority, under 2 GiB,
-  and budget by `time.process_time()`, never wall clock. Heavy series and memory-14 remain
-  ENVIRONMENT-BLOCKED.
-- A verifier wall is a resource result, not a mathematical result. Wave 22's one-shot exact Sturm
-  path exceeded 1,800 seconds after Macaulay passed; split bounded verification replaced it and
-  both current-source stages passed.
-- Wave 22 leaves 161 auto-discovered test scripts. Eight targeted verifier fronts and the repaired
-  SAW digest verifier passed standalone; no full 161-script suite was launched.
+- Host: 28 cores, 96 GB, ten to eleven users. Live load was roughly 3-9. Every heavy stage was
+  single-process and below 175 MB task RSS; no full suite, memory-14, series frontier, or primitive
+  norm interpolation ran.
+- The final e251 producer used 86.942454 process CPU seconds and 174,309,376 bytes. Its clean-room
+  verifier used 61.230270 seconds and 133,529,600 bytes. These are process CPU and Darwin task
+  peak RSS, not wall-clock claims.
+- Generic specialized quotient nodes remain vulnerable to background QoS throttling. The finite
+  witness uses only three bounded nodes; a full-node interpolation is forbidden without a compiled
+  reducer and a proved cost envelope.
+- Darwin `mach_task_basic_info.resident_size_max` remains the required per-task RSS measurement.
+- Wave 26 leaves 171 auto-discovered test scripts. The new producer and clean-room verifier pass.
 
 ## 7. Method notes worth reusing
 
@@ -279,6 +399,15 @@ immutable for agents.
   wrong side cost this program Theorem U2, which took four waves to restore.
 - **Razor margins are one-sided.** `deg gcd <= 295414 < 295415` proves "at least one above the
   ceiling", never "exactly one".
+- **Bound the reduced incidence variety in ambient dimension, then audit the projection scope.**
+  Homogenization gives `d^(n+2)` independently of the `2^n` equation count, but only after the
+  inherited complex projection is finite. Path controls are cofinite and must stay excluded.
+- **Matrix rank is not nonnegative tensor rank.** The octahedral tensor has rank two under every
+  flattening yet nonnegative all-leg CP rank `32`; basis, sign, and atom-support constraints are
+  load-bearing.
+- **Diagonalize local XOR kernels before materializing supports.** The Callen neighbour cube turns
+  one exponential-looking block into exact Walsh eigenvalues and exposes both its relations and
+  its pair-row obstruction without generating the global support closure.
 - **Content digests, not byte digests**, for cross-artifact references.
 
 ## 8. Standing hygiene

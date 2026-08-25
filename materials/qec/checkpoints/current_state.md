@@ -1,3 +1,144 @@
+# Checkpoint — 2026-08-24 (EXP-067 exact $[[234,8,18]]$; closure through $n=234$)
+
+**Prior-art correction.** The refreshed primary search found that Liang,
+Liu, Song and Chen (arXiv:2503.03827v3, Table III) already published two
+$[[234,8,18]]$ generalized-toric/BB rows and state that their table distances
+through 20 are exact integer-programming results. EXP-067 enumerates the
+quotient-lattice generator images and finds a unique map for each row into
+$\mathbb Z_{39}\times\mathbb Z_3$. Explicit qubit permutations make both
+$H_X$ and $H_Z$ rowspaces equal to the two open EXP-066 representatives.
+These are prior-art codes; the local result is an independent certificate.
+
+**Exact lower method.** A minimum nontrivial kernel word has no proper
+zero-syndrome subset. The connected-cluster first-unsatisfied-check recursion
+therefore reaches it from its least support coordinate. Translation moves a
+supported first-block qubit to coordinate 0; an exact block-column-swapped
+presentation covers words supported only in the second block. Each target
+needs two rooted searches rather than 234 unrooted searches.
+
+**Exact result.** Original and block-swapped searches exhaust weights 1--16
+for both representatives and repeat all four runs. Initial wall times are
+1,953.28/1,961.95 s (bundle 19) and 2,051.99/2,075.03 s (bundle 22);
+replays are 1,762.85/1,756.40 s and 1,852.04/1,875.43 s. Every terminal result
+is `-16`. Odd check-column degree forces even kernel weight, independent
+NumPy/bitset paths verify weight-18 logicals, and BB duality is an exact
+coordinate permutation. Hence both rows satisfy
+$d_X=d_Z=d=18$.
+
+**Solver trust repair.** The current multithreaded dist-m4ri coordinator is
+not certifying: a worker claims its root before incrementing the active-worker
+count, so the coordinator can declare a one-root round complete in that
+window. All such runs were cancelled (FR-033). Certificates pin the
+source-archived legacy `STANDALONE` entrypoint, which calls the single-thread
+recursion directly, and reject the multithreaded output format. The native
+binary remains in the trusted computing base; no formal proof trace is
+claimed.
+
+**Literature and screen.** The battery is now 29 sourced / 27 reproduced /
+eight locally exact rows, with zero pole-ceiling violations and exact slack
+min/median/max 2/22/34. Promoting $[[234,8,18]]$ raises the $k=8$ threshold
+from 16 to 18. All 24 former undecided classes have rechecked weight-18
+witnesses. Exact fixed-point closure now covers 22 lattices / 4,862 classes /
+150,581 represented pairs: all 4,658 referenced classes dominated, 204
+high-$k$ `no_reference`, zero survivor/undecided.
+
+**Global proof hardening (EXP-068).** Final review found that monotone rebinding
+had preserved old `dominated*` labels while non-target shards received only
+aggregate validation. It also found 57 legacy CP-SAT fallback rows that stored
+`d_found` but not the witness. EXP-068 recovers 29 independent physical
+$Z$-logicals, transports 28 more through exact CRT maps, and hash-binds all 57
+evidence records. Validator v11 now checks class identity or transport cover,
+threshold/source, and physical proof on every record in all 22 shards; EXP-063
+checks pre/post/archive and EXP-066 uses the same global validator (FR-035).
+
+**Verification.** Full suite: 1,026 passed / 1 skipped in 740.10 s. The focused
+proof-surface suite passes 75/75 in 249.12 s. Both EXP-067 certificate
+validators return `CERTIFIED_EXACT`; EXP-068 validates all 57 fallback
+bindings; EXP-066 rebuilds all 22 shards and returns 842 dominated / zero
+undecided. Changed JSON authorities and every evidence record parse and
+rebuild. The paper is 18 pages / 716,216 bytes with no undefined citation,
+reference-rerun, or LaTeX warning.
+
+**Independent review and next action.** Final adversarial re-review is
+`NO_BLOCKER` on the main source/artifact surface after hardcoded solver digests
+and validator-v11/EXP-068 repairs. The native no-proof-trace executable remains
+an explicit trusted-computing limitation. The next bounded
+frontier is $n=270$: collapse $(15,9)$ with the isomorphic $(45,3)$
+presentation, screen that 5,024-class group once, and separately screen the
+688 cyclic $(27,5)$ classes. Liang Table III's two $[[270,8,20]]$ rows remain
+source leads until locally bound.
+
+
+# Checkpoint — 2026-08-23b (exact closure through $n=210$; bounded $n=234$ extension)
+
+**Exact frontier.** Constructor- and matrix-bound replay certificates now give
+$[[170,16,10]]$; seven $[[186,10,14]]$ classes; thirteen
+$[[210,18,8]]$ classes; $[[210,24,4]]$; $[[210,14,12]]$; and two
+$[[210,10,16]]$ classes. A separate $k=8$ residual has independently verified
+weight-16 logicals from CaDiCaL and Maple and is dominated at threshold 16; no
+lower-bound or exact-distance claim is attached to that row.
+
+**New method.** EXP-060 replaces per-logical CP-SAT minimisation with an
+adaptive exact ratchet: all-odd check columns force even kernel weight, exact
+BB duality reduces certification to one side, and raw kissat climbs even caps
+until the first SAT/prior UNSAT. Thirteen $[[210,18,8]]$ survivors exactified
+in 11.8 s. EXP-063's monotone reference theorem archives each old shard,
+proves thresholds only increase, preserves every old domination, and rechecks
+every carried witness; no unaffected lattice is re-solved.
+
+**Cross-lattice theorem.** EXP-059 proves by all-105-monomial conjugation that
+the coprime $(15,7)$, $(21,5)$ and $(35,3)$ presentations are one $N=105$ BB
+search space. One solved shard transports exactly to the other two; all
+transported physical witnesses are rebuilt and verified.
+
+**EXP-066 $n=234$ extension.** $(13,9)$ closes all 84 classes. On $(39,3)$,
+the full 576-element automorphism group is enumerated as
+$\mathbb F_{13}^{\times}\times\operatorname{GL}(2,3)$, with every coordinate
+map checked as a bijective homomorphism. It compresses 182 initial hard classes
+to 30 exact bundles. Candidate-local transported witnesses close 28 bundles /
+158 classes. The remaining two bundles contain 24 classes, each with a verified
+weight-18 upper witness and an undecided cap-16 lower query. The expanded
+surface is 22 lattices / 4,862 classes / 150,581 pairs: 4,634/4,658 referenced
+dominated, 24 undecided, 204 no-reference, zero survivors.
+
+**Creative failures and diagnostics.** Exact affine-trellis widths
+$48/53/80/99$ exceed the predeclared five-million-state gate on every hard
+type, so the route fails closed before implementation. The exact $H=7$
+30-coordinate quotient projection has leader histogram
+$4{:}45,6{:}195,8{:}15$ but physical lower bound only $4$. All thirteen easy
+$[[210,18,8]]$ classes have pole stabilizer $H=5$, but the hypothesis that all
+hard residuals have $H=1$ is falsified ($H=1,5,7$ all occur).
+
+**Fixed-point screen, complete through $n=210$.** Twenty nonempty-frontier
+odd lattices; weight-3 $A,B$; $8\le k\le24$; 4,020 symmetry classes
+representing 122,833 normalised pairs. All **3,816/3,816** referenced classes
+are dominated: 3,364 reduced-pole witnesses, 395 bounded/adaptive CDCL
+witnesses, and 57 exact CP-SAT fallbacks. All 3,759 persisted witnesses are
+rechecked physically. The same 204 high-$k$ classes remain no-reference; zero
+survivors, zero undecided.
+
+**Protocol repairs.** EXP-037 $n=180$ certificates are rebound to current
+constructors and CNF digests. PySAT's process-global formula pool caused one
+thread race; CNF construction is now lock-serialized while solver execution
+remains parallel. All current certificate hashes replay unchanged.
+
+**Scope / next action.** The $k$ census remains complete on all 65 odd
+lattices through $n=360$. Exact distance closure stops at $n=210$. EXP-066
+exhaustively represents both $n=234$ frontiers but fails closed on two
+12-class $(39,3)$ bundles. A new factor-aware cap-16 lower formulation, or one
+complete class/sector proof per bundle, is required before any $n=234$ closure
+or $[[234,8,18]]$ exactness claim.
+
+**Verification.** Pre-EXP-066 full suite: **1,007 passed, 1 skipped (1,008
+collected)** in 763.70 s. Current targeted regression set: **52 passed**,
+including all EXP-055/066 screen contracts, every persisted physical witness,
+paper-claim guards, and the Kissat statistics traceback regression. EXP-066
+`validate` replays the 576-map audit and all transported witnesses. Paper
+rebuild: 18 pages / 712,898 bytes, with no undefined-reference or rerun
+warning. Strict-provenance rereview remains **NO_BLOCKER** for the exact
+$n\le210$ claims; the $n=234$ result is explicitly fail-closed.
+
+
 # Checkpoint — 2026-08-22 (EXP-056 exact $[[162,8,14]]$; fixed-point screen closed through $n=162$)
 
 **Exact distance method.** The reciprocal-pole transversal now feeds a complete

@@ -1368,10 +1368,12 @@ classical Schinzel H alone (`/tmp/l22_elimination.md`;
    \left(\frac{2b}{p}\right)
    =\left(\frac{2(u+2)}p\right).
    $$
-   The character therefore descends to a quartic trace algebra.  The
-   field and nontrivial quadratic-extension language is conditional on
-   $T$ being irreducible and $2(\theta+2)$ being nonsquare.  The one
-   $(a,z)=(1,3)$ modular certificate is EVIDENCE only.
+   The character therefore descends to a quartic trace algebra.  At this
+   checkpoint the field and nontrivial quadratic-extension language was
+   conditional on $T$ being irreducible and $2(\theta+2)$ being
+   nonsquare; L28 (2026-08-24) subsequently proves both uniformly.  The
+   one $(a,z)=(1,3)$ modular certificate remains EVIDENCE only for the
+   distinct reciprocal lift.
 
 3. **L27 is a genuinely non-diagonal one-piece local solution.**  The
    fixed shear
@@ -1412,3 +1414,71 @@ classical Schinzel H alone (`/tmp/l22_elimination.md`;
    unconditional quantifier record, or H10/$\mathbb Q$ solution is
    claimed; classical Schinzel H remains the sole conjectural input to
    the established conditional six-count.
+
+## Session 2026-08-24 — L28: the reciprocal trace field closes at \(2\)
+
+1. **The conditional trace field became uniform.**  On the canonical
+   even pullback, put \(t=v_2(Z)\in2\mathbb Z\) and shift \(w=u-2\).
+   The trace quartic is
+   $$
+   4a^8AZ^4w^4-128a^{12}Z^4w^2-32A^3Z^2w+d_0.
+   $$
+   Its Newton polygon has one half-integral-slope segment, so it has no
+   linear factor over \(\mathbb Q_2\).  A quadratic factor would force a
+   square root \(Y=\alpha^2\) of the Ferrari resolvent
+   $$
+   Y^3+2pY^2+(p^2-4r)Y-q^2.
+   $$
+   The resolvent Newton polygon leaves five valuation cases.  Their
+   normalized residues are \(3,2,4,4,2\bmod8\), never zero.  Therefore
+   the quartic is irreducible over \(\mathbb Q_2\), hence over
+   \(\mathbb Q\), for every canonical L26 parameter.
+
+2. **The bad-sign squareclass also became uniform.**  For a trace root
+   \(\theta\),
+   $$
+   N(2(\theta+2))
+   =\frac{64\{A^3D^2+64a^8Z^4(a^4-A)^2\}}
+          {a^8Z^4A^2}.
+   $$
+   Since \(v_2(a^4-A)=2\), the braced expression divided by \(A^3D^2\)
+   lies in \(1+2^{10}\mathbb Z_2\).  The norm therefore has squareclass
+   \(A\equiv5\bmod8\), so it is nonsquare.  Capell now proves
+   \(T(v^2/2-2)\) irreducible uniformly.  The producer replays \(2{,}600\)
+   exact unit rows, \(175\) norm rows, and one independent mod-\(41\)
+   sample (`l28_trace_field.py`; `data/l28_trace_field.jsonl`).
+
+3. **The first global follow-up was pruned exactly, not by a scan.**
+   Writing L27's even eliminant in \(m=\lambda^2\), its coefficient
+   linear in \(B=2b\) factors as
+   $$
+   -16ABm(m-A)\bigl((s+1)^2m-(s-1)^2A\bigr).
+   $$
+   The factors \(m=0\) and \(m=A\) are invalid or nonzero on the full
+   eliminant.  The last factor would make \(A\) a square when
+   \(m=\lambda^2\); the \(s=\pm1\) endpoints do not escape.  Thus the
+   natural linear-\(B\) cancellation section is impossible.  This is
+   only an ansatz no-go, not a theorem that the L27 cover has no rational
+   point (`l27_triangular_shear.py::b_coefficient_no_go`).
+
+4. **The independent multinorm idea remains pre-theorem.**  The checked-in
+   record contains only the verbal reduction in the preceding session,
+   not an explicit torsor equation, birational map and inverse, splitting
+   fields, or Brauer evaluation.  Without those data there is no
+   reproducible claim to promote.  The exact prerequisite is an explicit
+   low-degree model followed by either a rational parameterization or a
+   verified Brauer--Manin/weak-approximation calculation.  It remains a
+   creative route, not evidence for a member.
+
+5. **Independent audit found no defect.**  TraceFieldAudit rederived the
+   shifted coefficients, both Newton polygons, the necessity of the
+   square Ferrari-resolvent root for every quadratic factorization, all
+   five residue exclusions, the norm squareclass, and the Capell
+   inference.  Verdict: SOUND, confidence \(0.99\), no findings
+   (`agent://TraceFieldAudit`).
+
+6. **Strict consequence.**  L28 removes trace irreducibility and
+   \(2(\theta+2)\) from the L26 blocker list.  It does not decide the
+   distinct reciprocal-lift squareclass \(\theta^2-4\), produce a
+   globally good \(b\), solve the two-large-bad-divisor parity sector,
+   prove a five-count, remove Schinzel H, or solve H10/\(\mathbb Q\).

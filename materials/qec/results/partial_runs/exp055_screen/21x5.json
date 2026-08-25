@@ -1,100 +1,18 @@
 {
  "candidates_after_symmetry": 419,
  "ell": 21,
+ "exp068_proof_repair": {
+  "all_domination_witnesses_physical": true,
+  "records_rebound": 14,
+  "schema": "exp068-screen-fallback-witness-v1"
+ },
  "k_range": [
   8,
   24
  ],
  "m": 5,
  "n": 210,
- "no_reference": [
-  {
-   "A": [
-    [
-     0,
-     0
-    ],
-    [
-     15,
-     0
-    ],
-    [
-     3,
-     0
-    ]
-   ],
-   "B": [
-    [
-     0,
-     0
-    ],
-    [
-     7,
-     1
-    ],
-    [
-     7,
-     4
-    ]
-   ],
-   "bar_invariant": false,
-   "ceiling": 32,
-   "ceiling_witness_support": [
-    0,
-    1,
-    3,
-    4,
-    11,
-    13,
-    15,
-    16,
-    18,
-    19,
-    20,
-    24,
-    35,
-    39,
-    45,
-    46,
-    48,
-    49,
-    50,
-    54,
-    56,
-    58,
-    71,
-    73,
-    80,
-    84,
-    86,
-    88,
-    90,
-    91,
-    93,
-    94
-   ],
-   "dim_pole": 12,
-   "ell": 21,
-   "k_parent": 24,
-   "m": 5,
-   "n": 210,
-   "orbit": 8,
-   "solver_calls": 0,
-   "threshold": 0,
-   "threshold_source": "none",
-   "transported_from": {
-    "distance_preserved_by_exact_permutation": true,
-    "lattice": [
-     15,
-     7
-    ],
-    "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
-   },
-   "verdict": "no_reference",
-   "wall_s": 0.0,
-   "witness_support": null
-  }
- ],
+ "no_reference": [],
  "orbit_total": 16818,
  "protocol": {
   "cdcl_conflict_budget": 1000000,
@@ -104,8 +22,8 @@
    8,
    24
   ],
-  "reference_sha256": "86e49b6e239cc5f8460723bb8cf5ae35ededffc7215e42992f9973c6983481a3",
-  "reference_validation_version": "exp055-exact-reference-validator-v7",
+  "reference_sha256": "7daefcaa10015fbe7a3312710ae13a45f9d3ad8d527e407e82f658e175655125",
+  "reference_validation_version": "exp055-exact-reference-validator-v11",
   "residual_workers": 8,
   "time_limit_s": 120.0,
   "witness_keep": 64,
@@ -183,9 +101,15 @@
    "m": 5,
    "n": 210,
    "orbit": 8,
+   "reference_rebind_ratchet": {
+    "exact_distance": 4,
+    "schema": "exp060-frontier-ratchet-v1",
+    "source_group": "no_reference",
+    "source_index": 0
+   },
    "solver_calls": 0,
-   "threshold": 0,
-   "threshold_source": "none",
+   "threshold": 4,
+   "threshold_source": "EXP-064 [[210,24,4]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -194,9 +118,15 @@
     ],
     "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
    },
-   "verdict": "no_reference",
+   "verdict": "dominated_by_cdcl_witness",
    "wall_s": 0.0,
-   "witness_support": null
+   "witness_bound": 4,
+   "witness_support": [
+    0,
+    45,
+    60,
+    75
+   ]
   },
   {
    "A": [
@@ -4532,8 +4462,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -4668,10 +4598,16 @@
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "reference_rebind_ratchet": {
+    "exact_distance": 12,
+    "schema": "exp060-frontier-ratchet-v1",
+    "source_group": "undecided",
+    "source_index": 0
+   },
    "screen_decided": false,
    "solver_calls": 2,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -4680,27 +4616,23 @@
     ],
     "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
    },
-   "verdict": "undecided",
+   "verdict": "dominated_by_cdcl_witness",
    "wall_s": 3958.5,
-   "witness_bound": 16,
+   "witness_bound": 12,
    "witness_classes": 4224,
    "witness_support": [
-    1,
-    8,
-    32,
-    37,
-    43,
-    50,
-    51,
-    57,
-    99,
-    113,
-    131,
-    136,
-    148,
-    160,
-    169,
-    177
+    11,
+    17,
+    25,
+    59,
+    73,
+    105,
+    106,
+    123,
+    134,
+    146,
+    186,
+    187
    ],
    "witness_wall_s": 2.04
   },
@@ -4797,8 +4729,8 @@
    "n": 210,
    "orbit": 24,
    "solver_calls": 0,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -4951,8 +4883,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -5072,8 +5004,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -5192,8 +5124,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -5342,8 +5274,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -5463,8 +5395,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -5583,8 +5515,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
+   "threshold": 12,
+   "threshold_source": "EXP-064 [[210,14,12]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -7401,8 +7333,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -7511,8 +7443,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -7633,8 +7565,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -7753,8 +7685,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -7871,8 +7803,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -7993,8 +7925,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -8113,8 +8045,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -8235,8 +8167,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -8353,8 +8285,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -8471,8 +8403,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -8593,8 +8525,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -8753,8 +8685,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -8874,8 +8806,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -8994,8 +8926,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -9116,8 +9048,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -9238,8 +9170,8 @@
    "n": 210,
    "orbit": 24,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -9360,8 +9292,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -9482,8 +9414,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -9594,8 +9526,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -9752,8 +9684,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -9915,8 +9847,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -10062,10 +9994,16 @@
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "reference_rebind_ratchet": {
+    "exact_distance": 16,
+    "schema": "exp060-frontier-ratchet-v1",
+    "source_group": "undecided",
+    "source_index": 1
+   },
    "screen_decided": false,
    "solver_calls": 2,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -10074,29 +10012,27 @@
     ],
     "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
    },
-   "verdict": "undecided",
+   "verdict": "dominated_by_cdcl_witness",
    "wall_s": 2695.4,
-   "witness_bound": 18,
+   "witness_bound": 16,
    "witness_classes": 1023,
    "witness_support": [
-    104,
+    17,
+    100,
     105,
-    109,
-    115,
-    126,
-    132,
-    137,
-    138,
-    143,
-    148,
-    149,
-    154,
-    160,
-    165,
-    171,
-    187,
-    188,
-    193
+    116,
+    128,
+    133,
+    139,
+    144,
+    145,
+    155,
+    156,
+    167,
+    183,
+    189,
+    205,
+    206
    ],
    "witness_wall_s": 0.25
   },
@@ -10191,8 +10127,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -10339,8 +10275,8 @@
    "orbit": 48,
    "screen_decided": false,
    "solver_calls": 2,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -10349,7 +10285,7 @@
     ],
     "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
    },
-   "verdict": "undecided",
+   "verdict": "dominated_by_witness",
    "wall_s": 2820.4,
    "witness_bound": 16,
    "witness_classes": 1023,
@@ -10464,8 +10400,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -10584,8 +10520,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -10704,8 +10640,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -10826,8 +10762,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -10944,8 +10880,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -11066,8 +11002,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -11222,8 +11158,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -11345,8 +11281,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -11505,8 +11441,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -11668,8 +11604,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -11791,8 +11727,8 @@
    "n": 210,
    "orbit": 24,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -11913,8 +11849,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -12033,8 +11969,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -12155,8 +12091,8 @@
    "n": 210,
    "orbit": 24,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -12271,8 +12207,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -12389,8 +12325,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -12507,8 +12443,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -12617,8 +12553,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -12777,8 +12713,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -12900,8 +12836,8 @@
    "n": 210,
    "orbit": 24,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -13062,8 +12998,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 1,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -13204,15 +13140,45 @@
    "d_found": 14,
    "dim_pole": 5,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_e2cedfbb3961478a.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": 0,
+    "sha256": "cb78982dc5cfa208f15c2dd1bdc43aab73f28e27fedacefbd2713725008fb35e"
+   },
    "k_from_matrices": 10,
    "k_parent": 10,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 18,
+    "support": [
+     4,
+     5,
+     12,
+     24,
+     25,
+     28,
+     34,
+     45,
+     54,
+     65,
+     76,
+     91,
+     97,
+     103,
+     110,
+     127,
+     137,
+     175
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -13223,27 +13189,23 @@
    },
    "verdict": "dominated",
    "wall_s": 2873.3,
-   "witness_bound": 18,
+   "witness_bound": 14,
    "witness_classes": 1023,
    "witness_support": [
-    4,
-    5,
-    12,
-    24,
-    25,
-    28,
-    34,
-    45,
-    54,
-    65,
-    76,
-    91,
-    97,
-    103,
-    110,
-    127,
-    137,
-    175
+    46,
+    48,
+    52,
+    72,
+    96,
+    98,
+    109,
+    145,
+    147,
+    149,
+    157,
+    159,
+    195,
+    204
    ],
    "witness_wall_s": 1.24
   },
@@ -13338,8 +13300,8 @@
    "n": 210,
    "orbit": 24,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -13476,10 +13438,18 @@
    "m": 5,
    "n": 210,
    "orbit": 24,
+   "reference_rebind_ratchet": {
+    "exact_distance": null,
+    "schema": "exp060-frontier-ratchet-v1",
+    "solver": null,
+    "source_group": "undecided",
+    "source_index": 0,
+    "witness_only": true
+   },
    "screen_decided": false,
    "solver_calls": 2,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -13488,31 +13458,27 @@
     ],
     "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
    },
-   "verdict": "undecided",
+   "verdict": "dominated_by_cdcl_witness",
    "wall_s": 3034.6,
-   "witness_bound": 20,
+   "witness_bound": 16,
    "witness_classes": 1023,
    "witness_support": [
+    0,
+    6,
+    26,
+    41,
+    58,
+    78,
     104,
-    108,
-    115,
-    126,
-    130,
-    131,
-    136,
-    141,
-    142,
-    147,
-    152,
-    153,
-    163,
-    164,
-    165,
-    170,
-    174,
-    186,
-    191,
-    192
+    107,
+    118,
+    124,
+    129,
+    135,
+    151,
+    177,
+    179,
+    201
    ],
    "witness_wall_s": 4.65
   },
@@ -13607,8 +13573,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -13719,8 +13685,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -13841,8 +13807,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -13961,8 +13927,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -14081,8 +14047,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -14203,8 +14169,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -14323,8 +14289,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -14441,8 +14407,8 @@
    "n": 210,
    "orbit": 48,
    "solver_calls": 0,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
+   "threshold": 16,
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -14566,7 +14532,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -14688,7 +14654,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -14812,7 +14778,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -14942,7 +14908,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -15064,7 +15030,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -15186,7 +15152,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -15316,7 +15282,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -15442,7 +15408,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -15572,7 +15538,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -15702,7 +15668,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -15828,7 +15794,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -15956,7 +15922,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -16084,7 +16050,7 @@
    "orbit": 8,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -16212,7 +16178,7 @@
    "orbit": 8,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -16340,7 +16306,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -16456,7 +16422,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -16586,7 +16552,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -16716,7 +16682,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -16846,7 +16812,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -16970,7 +16936,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -17100,7 +17066,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -17226,7 +17192,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -17398,7 +17364,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -17529,7 +17495,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -17659,7 +17625,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -17783,7 +17749,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -17947,7 +17913,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -18118,7 +18084,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -18291,7 +18257,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -18462,7 +18428,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -18633,7 +18599,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -18764,7 +18730,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -18890,7 +18856,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -19020,7 +18986,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -19188,7 +19154,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -19317,7 +19283,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -19447,7 +19413,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -19569,7 +19535,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -19739,7 +19705,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -19868,7 +19834,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -19998,7 +19964,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -20142,15 +20108,51 @@
    "d_found": 14,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_ee2c166fbc9cdaef.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": 0,
+    "sha256": "b6e07f39128751ddc74734642c0464986a942cf1e3c2db7ef8511f892c3ef59e"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 24,
+    "support": [
+     1,
+     4,
+     5,
+     22,
+     25,
+     35,
+     41,
+     45,
+     54,
+     61,
+     64,
+     65,
+     74,
+     79,
+     117,
+     119,
+     127,
+     133,
+     139,
+     153,
+     169,
+     190,
+     196,
+     207
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -20161,33 +20163,23 @@
    },
    "verdict": "dominated",
    "wall_s": 2106.3,
-   "witness_bound": 24,
+   "witness_bound": 14,
    "witness_classes": 255,
    "witness_support": [
-    1,
-    4,
-    5,
-    22,
-    25,
-    35,
+    11,
+    26,
     41,
-    45,
-    54,
-    61,
-    64,
-    65,
-    74,
-    79,
-    117,
-    119,
-    127,
-    133,
-    139,
-    153,
-    169,
-    190,
-    196,
-    207
+    56,
+    71,
+    86,
+    101,
+    116,
+    131,
+    146,
+    161,
+    176,
+    191,
+    206
    ],
    "witness_wall_s": 0.98
   },
@@ -20331,7 +20323,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -20502,7 +20494,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -20631,7 +20623,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -20759,7 +20751,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -20881,7 +20873,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -21009,7 +21001,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -21179,7 +21171,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -21348,7 +21340,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -21519,7 +21511,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -21650,7 +21642,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -21774,7 +21766,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -21902,7 +21894,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -22020,7 +22012,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -22142,7 +22134,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -22270,7 +22262,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -22396,7 +22388,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -22568,7 +22560,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -22699,7 +22691,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -22827,7 +22819,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -22953,7 +22945,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -23075,7 +23067,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -23203,7 +23195,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -23333,7 +23325,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -23463,7 +23455,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -23593,7 +23585,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -23741,15 +23733,47 @@
    "d_found": 16,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_5d293ec1a910b4eb.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": 0,
+    "sha256": "e6c1e0e1e77987875d9c73837bc76b685280ad64720b98a5ce6cd23390fbf524"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 20,
+    "support": [
+     11,
+     18,
+     43,
+     45,
+     47,
+     54,
+     63,
+     82,
+     83,
+     87,
+     144,
+     163,
+     166,
+     168,
+     170,
+     171,
+     177,
+     178,
+     180,
+     183
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -23760,29 +23784,25 @@
    },
    "verdict": "dominated",
    "wall_s": 2161.2,
-   "witness_bound": 20,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    11,
-    18,
-    43,
-    45,
-    47,
-    54,
-    63,
-    82,
-    83,
-    87,
-    144,
-    163,
-    166,
-    168,
+    5,
+    16,
+    20,
+    25,
+    57,
+    61,
+    65,
+    94,
+    103,
+    110,
+    118,
+    125,
+    132,
+    165,
     170,
-    171,
-    177,
-    178,
-    180,
-    183
+    177
    ],
    "witness_wall_s": 0.11
   },
@@ -23907,10 +23927,18 @@
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "reference_rebind_ratchet": {
+    "exact_distance": null,
+    "schema": "exp060-frontier-ratchet-v1",
+    "solver": "maplechrono",
+    "source_group": "undecided",
+    "source_index": 1,
+    "witness_only": true
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -23919,31 +23947,27 @@
     ],
     "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
    },
-   "verdict": "undecided",
+   "verdict": "dominated_by_cdcl_witness",
    "wall_s": 2271.6,
-   "witness_bound": 20,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    2,
-    19,
-    25,
-    34,
-    36,
+    0,
+    6,
+    9,
+    13,
+    17,
     38,
-    44,
-    46,
-    50,
-    59,
-    71,
-    80,
-    105,
-    113,
-    126,
-    131,
-    141,
-    175,
-    181,
-    185
+    74,
+    86,
+    97,
+    101,
+    116,
+    142,
+    180,
+    198,
+    203,
+    209
    ],
    "witness_wall_s": 0.08
   },
@@ -24045,7 +24069,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -24193,15 +24217,45 @@
    "d_found": 14,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_fbb42c9bbbb8fc6d.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": 0,
+    "sha256": "c74bbc808262db8aee4b60106222f6b32ab7a33b265a60921bed4a044cd04c6f"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 18,
+    "support": [
+     4,
+     12,
+     35,
+     44,
+     54,
+     63,
+     77,
+     81,
+     83,
+     90,
+     99,
+     132,
+     136,
+     150,
+     173,
+     202,
+     204,
+     205
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -24212,26 +24266,22 @@
    },
    "verdict": "dominated",
    "wall_s": 2502.3,
-   "witness_bound": 18,
+   "witness_bound": 14,
    "witness_classes": 255,
    "witness_support": [
-    4,
-    12,
-    35,
-    44,
-    54,
-    63,
-    77,
-    81,
-    83,
-    90,
-    99,
-    132,
-    136,
-    150,
-    173,
-    202,
-    204,
+    9,
+    13,
+    22,
+    26,
+    36,
+    49,
+    68,
+    72,
+    76,
+    95,
+    131,
+    134,
+    187,
     205
    ],
    "witness_wall_s": 0.13
@@ -24334,7 +24384,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -24458,7 +24508,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -24588,7 +24638,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -24716,7 +24766,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -24878,7 +24928,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -25051,7 +25101,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -25182,7 +25232,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -25306,7 +25356,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -25478,7 +25528,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -25609,7 +25659,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -25781,7 +25831,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -25912,7 +25962,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -26040,7 +26090,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -26166,7 +26216,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -26310,15 +26360,47 @@
    "d_found": 16,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_b5408dfc4a03499d.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": 1,
+    "sha256": "84d36b4ec9f1ae814bc6b2ea06d26f8e58d458ccbd58ef613a0e015f4bde686b"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 20,
+    "support": [
+     0,
+     12,
+     14,
+     26,
+     41,
+     44,
+     45,
+     71,
+     75,
+     81,
+     84,
+     87,
+     103,
+     105,
+     131,
+     139,
+     179,
+     189,
+     196,
+     200
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -26329,28 +26411,24 @@
    },
    "verdict": "dominated",
    "wall_s": 2468.8,
-   "witness_bound": 20,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    0,
-    12,
+    5,
     14,
-    26,
-    41,
-    44,
     45,
-    71,
-    75,
+    51,
+    77,
     81,
-    84,
-    87,
-    103,
-    105,
-    131,
-    139,
-    179,
-    189,
-    196,
+    83,
+    114,
+    120,
+    128,
+    142,
+    156,
+    186,
+    194,
+    197,
     200
    ],
    "witness_wall_s": 0.28
@@ -26453,7 +26531,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -26581,7 +26659,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -26709,7 +26787,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -26825,7 +26903,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -26953,7 +27031,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -27081,7 +27159,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -27209,7 +27287,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -27337,7 +27415,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -27465,7 +27543,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -27593,7 +27671,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -27721,7 +27799,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -27849,7 +27927,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -27977,7 +28055,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -28105,7 +28183,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -28233,7 +28311,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -28361,7 +28439,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -28489,7 +28567,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -28617,7 +28695,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -28747,7 +28825,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -28913,7 +28991,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -29042,7 +29120,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -29212,7 +29290,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -29341,7 +29419,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -29507,7 +29585,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -29636,7 +29714,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -29764,7 +29842,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -29934,7 +30012,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -30063,7 +30141,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -30214,10 +30292,16 @@
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "reference_rebind_ratchet": {
+    "exact_distance": 16,
+    "schema": "exp060-frontier-ratchet-v1",
+    "source_group": "undecided",
+    "source_index": 5
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -30226,29 +30310,27 @@
     ],
     "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
    },
-   "verdict": "undecided",
+   "verdict": "dominated_by_cdcl_witness",
    "wall_s": 2647.8,
-   "witness_bound": 18,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
     3,
-    20,
-    38,
-    39,
-    51,
-    69,
-    77,
-    87,
+    8,
+    21,
+    41,
+    52,
+    70,
     88,
     90,
-    138,
-    141,
-    157,
-    173,
-    181,
-    182,
-    185,
-    189
+    105,
+    110,
+    118,
+    177,
+    188,
+    193,
+    196,
+    204
    ],
    "witness_wall_s": 71.86
   },
@@ -30350,7 +30432,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -30478,7 +30560,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -30606,7 +30688,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -30722,7 +30804,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -30852,7 +30934,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -30982,7 +31064,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -31110,7 +31192,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -31240,7 +31322,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -31404,7 +31486,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -31533,7 +31615,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -31703,7 +31785,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -31832,7 +31914,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -31954,7 +32036,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -32082,7 +32164,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -32252,7 +32334,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -32421,7 +32503,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -32590,7 +32672,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -32719,7 +32801,7 @@
    "orbit": 12,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -32849,7 +32931,7 @@
    "orbit": 12,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -33015,7 +33097,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -33144,7 +33226,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -33274,7 +33356,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -33418,15 +33500,47 @@
    "d_found": 16,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_036ff4904842e013.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": 0,
+    "sha256": "8d5d2654a733f8c8b187d9a818f39d41a2c224000c8a6b2c5bf0e196036e08fb"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 20,
+    "support": [
+     35,
+     39,
+     43,
+     71,
+     73,
+     74,
+     78,
+     81,
+     106,
+     131,
+     138,
+     148,
+     150,
+     173,
+     175,
+     176,
+     177,
+     178,
+     184,
+     199
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -33437,29 +33551,25 @@
    },
    "verdict": "dominated",
    "wall_s": 2480.3,
-   "witness_bound": 20,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    35,
-    39,
-    43,
-    71,
-    73,
+    12,
+    14,
+    15,
+    17,
+    20,
+    22,
+    23,
+    24,
+    29,
+    65,
     74,
-    78,
-    81,
-    106,
-    131,
-    138,
-    148,
-    150,
-    173,
-    175,
-    176,
-    177,
-    178,
-    184,
-    199
+    110,
+    111,
+    166,
+    169,
+    171
    ],
    "witness_wall_s": 0.73
   },
@@ -33561,7 +33671,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -33681,7 +33791,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -33847,7 +33957,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -33976,7 +34086,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -34102,7 +34212,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -34246,15 +34356,45 @@
    "d_found": 16,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_f13ed893b4db4ba2.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": 1,
+    "sha256": "36b5f16e267ff907547f61b0872a05cb35a88619e178e47198127f3d1c9dc7fc"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 18,
+    "support": [
+     24,
+     30,
+     32,
+     33,
+     36,
+     71,
+     75,
+     81,
+     102,
+     104,
+     123,
+     138,
+     154,
+     156,
+     182,
+     185,
+     186,
+     207
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -34265,27 +34405,25 @@
    },
    "verdict": "dominated",
    "wall_s": 2484.5,
-   "witness_bound": 18,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    24,
-    30,
-    32,
-    33,
-    36,
-    71,
-    75,
-    81,
-    102,
-    104,
-    123,
-    138,
-    154,
-    156,
-    182,
-    185,
-    186,
-    207
+    11,
+    13,
+    17,
+    44,
+    68,
+    76,
+    78,
+    82,
+    121,
+    149,
+    169,
+    175,
+    179,
+    196,
+    197,
+    198
    ],
    "witness_wall_s": 0.71
   },
@@ -34387,7 +34525,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -34517,7 +34655,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -34647,7 +34785,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -34817,7 +34955,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -34948,7 +35086,7 @@
    "orbit": 12,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -35066,7 +35204,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -35182,7 +35320,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -35310,7 +35448,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -35438,7 +35576,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -35566,7 +35704,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -35694,7 +35832,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -35822,7 +35960,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -35950,7 +36088,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -36078,7 +36216,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -36206,7 +36344,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -36334,7 +36472,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -36462,7 +36600,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -36590,7 +36728,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -36718,7 +36856,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -36846,7 +36984,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -36974,7 +37112,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -37090,7 +37228,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -37220,7 +37358,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -37350,7 +37488,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -37480,7 +37618,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -37644,7 +37782,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -37791,15 +37929,45 @@
    "d_found": 14,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_d2bd51b26caed391.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": null,
+    "sha256": "ab77d5d1008f59485b86fc1b3c59e2dd36cfbff179655d016e52bbfcbbec77c0"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 18,
+    "support": [
+     1,
+     7,
+     27,
+     39,
+     59,
+     60,
+     71,
+     77,
+     83,
+     86,
+     103,
+     109,
+     111,
+     115,
+     122,
+     135,
+     164,
+     205
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -37810,27 +37978,25 @@
    },
    "verdict": "dominated",
    "wall_s": 2512.9,
-   "witness_bound": 18,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    1,
-    7,
-    27,
-    39,
-    59,
-    60,
-    71,
+    2,
+    17,
+    32,
+    47,
+    62,
+    68,
     77,
-    83,
-    86,
-    103,
-    109,
-    111,
-    115,
+    79,
+    107,
     122,
-    135,
-    164,
-    205
+    137,
+    152,
+    173,
+    182,
+    197,
+    199
    ],
    "witness_wall_s": 0.19
   },
@@ -37932,7 +38098,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -38102,7 +38268,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -38231,7 +38397,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -38401,7 +38567,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -38570,7 +38736,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -38739,7 +38905,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -38868,7 +39034,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -38994,7 +39160,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -39134,15 +39300,45 @@
    "d_found": 14,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_49b870c3a8c16e17.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": null,
+    "sha256": "a314483587c2d2dd9cf627adb3bb62a46eb5ed33755cc131859b6822a32426cb"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 18,
+    "support": [
+     29,
+     89,
+     101,
+     108,
+     118,
+     127,
+     128,
+     134,
+     136,
+     137,
+     146,
+     162,
+     169,
+     181,
+     188,
+     190,
+     197,
+     200
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -39153,27 +39349,25 @@
    },
    "verdict": "dominated",
    "wall_s": 2432.1,
-   "witness_bound": 18,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    29,
-    89,
-    101,
+    9,
+    27,
+    36,
+    62,
+    97,
     108,
-    118,
-    127,
-    128,
-    134,
-    136,
-    137,
-    146,
-    162,
-    169,
-    181,
-    188,
-    190,
-    197,
-    200
+    117,
+    142,
+    151,
+    160,
+    161,
+    177,
+    193,
+    194,
+    196,
+    205
    ],
    "witness_wall_s": 0.31
   },
@@ -39275,7 +39469,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -39443,7 +39637,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -39574,7 +39768,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -39696,7 +39890,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -39866,7 +40060,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -39995,7 +40189,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -40125,7 +40319,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -40243,7 +40437,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -40373,7 +40567,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -40501,7 +40695,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -40625,7 +40819,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -40753,7 +40947,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -40921,7 +41115,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -41094,7 +41288,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -41225,7 +41419,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -41355,7 +41549,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -41485,7 +41679,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -41613,7 +41807,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -41739,7 +41933,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -41867,7 +42061,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -41993,7 +42187,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -42141,15 +42335,47 @@
    "d_found": 14,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_f5aa84ca39cec3dc.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": null,
+    "sha256": "82160fe08952edd569c8bd9ae17081d3ba382c461f072f09a04f4adafa5925c2"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 20,
+    "support": [
+     7,
+     8,
+     16,
+     25,
+     37,
+     57,
+     63,
+     89,
+     104,
+     106,
+     112,
+     115,
+     121,
+     122,
+     123,
+     128,
+     130,
+     136,
+     139,
+     144
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -42160,29 +42386,25 @@
    },
    "verdict": "dominated",
    "wall_s": 2343.7,
-   "witness_bound": 20,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    7,
-    8,
-    16,
-    25,
-    37,
-    57,
-    63,
-    89,
+    0,
+    12,
+    14,
+    17,
+    32,
+    38,
+    64,
+    103,
     104,
-    106,
-    112,
-    115,
-    121,
+    105,
+    111,
+    114,
     122,
-    123,
-    128,
-    130,
-    136,
-    139,
-    144
+    129,
+    140,
+    203
    ],
    "witness_wall_s": 0.07
   },
@@ -42284,7 +42506,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -42400,7 +42622,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -42528,7 +42750,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -42656,7 +42878,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -42784,7 +43006,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -42912,7 +43134,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -43040,7 +43262,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -43168,7 +43390,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -43296,7 +43518,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -43424,7 +43646,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -43552,7 +43774,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -43680,7 +43902,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -43808,7 +44030,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -43936,7 +44158,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -44064,7 +44286,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -44234,7 +44456,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -44405,7 +44627,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -44534,7 +44756,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -44700,7 +44922,7 @@
    "orbit": 24,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -44829,7 +45051,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -44959,7 +45181,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -45089,7 +45311,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -45217,7 +45439,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -45333,7 +45555,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -45461,7 +45683,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -45589,7 +45811,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -45717,7 +45939,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -45845,7 +46067,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -45973,7 +46195,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -46101,7 +46323,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -46229,7 +46451,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -46357,7 +46579,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -46485,7 +46707,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -46613,7 +46835,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -46741,7 +46963,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -46869,7 +47091,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -46997,7 +47219,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -47125,7 +47347,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -47255,7 +47477,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -47389,15 +47611,45 @@
    "d_found": 14,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_110ea494edb0963f.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": null,
+    "sha256": "e4340193c944aedbdc9650174c508a47ed9f9b7bf54f60e416d9b8eb2041cd4a"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 24,
+   "pre_exp068_reduced_witness": {
+    "bound": 18,
+    "support": [
+     0,
+     17,
+     35,
+     39,
+     40,
+     46,
+     58,
+     69,
+     70,
+     92,
+     98,
+     116,
+     122,
+     127,
+     157,
+     175,
+     180,
+     192
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -47408,27 +47660,25 @@
    },
    "verdict": "dominated",
    "wall_s": 2287.8,
-   "witness_bound": 18,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    0,
-    17,
-    35,
+    11,
+    22,
+    23,
+    29,
     39,
     40,
-    46,
-    58,
+    52,
+    65,
     69,
-    70,
-    92,
-    98,
-    116,
-    122,
+    81,
+    105,
+    110,
     127,
-    157,
-    175,
-    180,
-    192
+    139,
+    163,
+    187
    ],
    "witness_wall_s": 0.03
   },
@@ -47530,7 +47780,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -47656,7 +47906,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -47786,7 +48036,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -47914,7 +48164,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -48084,7 +48334,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -48213,7 +48463,7 @@
    "orbit": 12,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -48385,7 +48635,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -48556,7 +48806,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -48685,7 +48935,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -48813,7 +49063,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -48949,15 +49199,45 @@
    "d_found": 14,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_6bdf76f3baacf263.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": null,
+    "sha256": "81d1d987a9bb73d104589e73cf301d7141c3911ce64e32127cfb90132f4d6a03"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 18,
+    "support": [
+     25,
+     34,
+     38,
+     43,
+     52,
+     57,
+     92,
+     98,
+     136,
+     142,
+     148,
+     149,
+     162,
+     168,
+     169,
+     175,
+     182,
+     191
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -48968,27 +49248,23 @@
    },
    "verdict": "dominated",
    "wall_s": 2200.6,
-   "witness_bound": 18,
+   "witness_bound": 14,
    "witness_classes": 255,
    "witness_support": [
-    25,
-    34,
-    38,
-    43,
-    52,
-    57,
-    92,
-    98,
-    136,
-    142,
-    148,
+    12,
+    16,
+    18,
+    44,
+    79,
+    80,
+    123,
+    137,
     149,
+    150,
+    151,
     162,
-    168,
     169,
-    175,
-    182,
-    191
+    171
    ],
    "witness_wall_s": 0.25
   },
@@ -49132,7 +49408,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -49263,7 +49539,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -49391,7 +49667,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -49519,7 +49795,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -49691,7 +49967,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -49822,7 +50098,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -49938,7 +50214,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -50066,7 +50342,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -50194,7 +50470,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -50322,7 +50598,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -50450,7 +50726,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -50578,7 +50854,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -50706,7 +50982,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -50834,7 +51110,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -50962,7 +51238,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -51126,7 +51402,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -51297,7 +51573,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -51446,15 +51722,47 @@
    "d_found": 14,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_8a033d58de837ceb.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": null,
+    "sha256": "660493e6bcf06bc72c2176826eab3a4b16bea370dedba20e108dfe34bb4cb9c5"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 20,
+    "support": [
+     4,
+     7,
+     14,
+     16,
+     21,
+     44,
+     63,
+     67,
+     75,
+     109,
+     112,
+     135,
+     149,
+     153,
+     160,
+     173,
+     177,
+     190,
+     199,
+     200
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -51465,28 +51773,24 @@
    },
    "verdict": "dominated",
    "wall_s": 2129.3,
-   "witness_bound": 20,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    4,
-    7,
-    14,
-    16,
-    21,
+    25,
+    39,
     44,
-    63,
-    67,
-    75,
-    109,
-    112,
-    135,
-    149,
-    153,
-    160,
-    173,
-    177,
-    190,
-    199,
+    49,
+    76,
+    100,
+    121,
+    132,
+    139,
+    159,
+    163,
+    176,
+    180,
+    181,
+    186,
     200
    ],
    "witness_wall_s": 34.87
@@ -51589,7 +51893,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -51719,7 +52023,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -51847,7 +52151,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -51975,7 +52279,7 @@
    "orbit": 24,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -52103,7 +52407,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -52271,7 +52575,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -52400,7 +52704,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -52528,7 +52832,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -52700,7 +53004,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -52873,7 +53177,7 @@
    "orbit": 48,
    "solver_calls": 1,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53004,7 +53308,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53134,7 +53438,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53280,15 +53584,45 @@
    "d_found": 16,
    "dim_pole": 4,
    "ell": 21,
+   "fallback_witness": {
+    "path": "results/partial_runs/exp068_screen_witnesses/21x5_7e54c0f5b26e942b.json",
+    "route": "exact CRT transport of CP-SAT witness",
+    "schema": "exp068-screen-fallback-witness-v1",
+    "sector": null,
+    "sha256": "c891204540db5848a51b4edea6294eaf80216e178cf04789bc8c5964bbafb0ea"
+   },
    "k_from_matrices": 8,
    "k_parent": 8,
    "m": 5,
    "n": 210,
    "orbit": 48,
+   "pre_exp068_reduced_witness": {
+    "bound": 18,
+    "support": [
+     25,
+     36,
+     41,
+     46,
+     47,
+     76,
+     77,
+     126,
+     144,
+     151,
+     163,
+     169,
+     174,
+     182,
+     187,
+     189,
+     195,
+     207
+    ]
+   },
    "screen_decided": false,
    "solver_calls": 2,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53299,27 +53633,25 @@
    },
    "verdict": "dominated",
    "wall_s": 2167.7,
-   "witness_bound": 18,
+   "witness_bound": 16,
    "witness_classes": 255,
    "witness_support": [
-    25,
-    36,
-    41,
-    46,
-    47,
+    6,
+    17,
+    20,
+    22,
+    31,
     76,
-    77,
-    126,
-    144,
-    151,
-    163,
-    169,
-    174,
-    182,
-    187,
-    189,
-    195,
-    207
+    79,
+    94,
+    100,
+    109,
+    125,
+    130,
+    147,
+    153,
+    176,
+    197
    ],
    "witness_wall_s": 0.76
   },
@@ -53421,7 +53753,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53547,7 +53879,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53677,7 +54009,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53803,7 +54135,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53931,7 +54263,7 @@
    "orbit": 48,
    "solver_calls": 0,
    "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
+   "threshold_source": "EXP-064 [[210,10,16]]",
    "transported_from": {
     "distance_preserved_by_exact_permutation": true,
     "lattice": [
@@ -53965,20 +54297,17 @@
  "reference_rebind": {
   "all_carried_witnesses_rechecked": true,
   "all_thresholds_monotone": true,
-  "archive": "results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v7/15x7.json",
-  "new_reference_sha256": "86e49b6e239cc5f8460723bb8cf5ae35ededffc7215e42992f9973c6983481a3",
-  "new_validation_version": "exp055-exact-reference-validator-v7",
-  "old_reference_sha256": "10fa66c7ed5280eb64463177c888fa4d242f82573cdcec6d7043b3277e7cacfa",
-  "old_shard_sha256": "ef788585a1af8bfa37bf0d647e6333dc7ffd81ed1e165536bfe4bf925fde934c",
-  "old_validation_version": "exp055-exact-reference-validator-v6",
+  "archive": "results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v11/21x5.json",
+  "new_reference_sha256": "7daefcaa10015fbe7a3312710ae13a45f9d3ad8d527e407e82f658e175655125",
+  "new_validation_version": "exp055-exact-reference-validator-v11",
+  "old_reference_sha256": "7daefcaa10015fbe7a3312710ae13a45f9d3ad8d527e407e82f658e175655125",
+  "old_shard_sha256": "9f20f417b616ed382679a1c3b26e20f2b54df0f354c7e128166b14d127ad3449",
+  "old_validation_version": "exp055-exact-reference-validator-v10",
   "schema": "exp063-monotone-reference-rebind-v1",
   "transitions": {
    "dominated->dominated": 14,
-   "dominated_by_cdcl_witness->dominated_by_cdcl_witness": 62,
-   "dominated_by_witness->dominated_by_witness": 323,
-   "no_reference->no_reference": 1,
-   "survivor->dominated_by_witness": 13,
-   "undecided->undecided": 6
+   "dominated_by_cdcl_witness->dominated_by_cdcl_witness": 68,
+   "dominated_by_witness->dominated_by_witness": 337
   }
  },
  "schema": "exp055-screen-v3",
@@ -53990,14 +54319,14 @@
   "candidates_after_symmetry_preserved": 419,
   "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf",
   "orbit_total_preserved": 16818,
-  "physical_witnesses_rechecked": 398,
+  "physical_witnesses_rechecked": 419,
   "records_transported": 419,
   "schema": "exp059-coprime-transport-v1",
   "source_lattice": [
    15,
    7
   ],
-  "source_shard_sha256": "00c204184dfc7973303a23685927a14bbab9063ab18adfb1f810e868c0d18e91",
+  "source_shard_sha256": "1795220d2519a1d0e45accebdf6ea86120a5c63d4af85b82aa20fee143158260",
   "target_lattice": [
    21,
    5
@@ -54006,947 +54335,12 @@
   "theorem_certificate_sha256": "9cb9f75a5b9c6b08b243e7d0643c424c1b1734cf03e2bd318cbf7d5a8199c760",
   "valid": true
  },
- "undecided": [
-  {
-   "A": [
-    [
-     0,
-     0
-    ],
-    [
-     1,
-     1
-    ],
-    [
-     10,
-     4
-    ]
-   ],
-   "B": [
-    [
-     0,
-     0
-    ],
-    [
-     16,
-     1
-    ],
-    [
-     13,
-     4
-    ]
-   ],
-   "bar_invariant": false,
-   "cdcl": {
-    "cnf_sha256": "27ef8f9ed9a91999d86822ef21fa33307159ed0493f9a241694b678537cd5ac3",
-    "cnf_sha256_is_source_coordinate_order": true,
-    "encoding_version": "sat-decide-v2",
-    "solver": {
-     "backend": "pysat",
-     "clauses": 9213,
-     "cnf_variables": 3439,
-     "conflict_budget": 1000000,
-     "name": "PySAT cadical195",
-     "pysat_version": "1.9.dev13",
-     "stats": {
-      "conflicts": 668664,
-      "decisions": 1039518,
-      "propagations": 107506677,
-      "restarts": 23906
-     },
-     "wall_time_s": 63.476588124991395
-    },
-    "source_cnf_sha256": "27ef8f9ed9a91999d86822ef21fa33307159ed0493f9a241694b678537cd5ac3",
-    "status": "UNSAT",
-    "witness_support": null
-   },
-   "ceiling": 52,
-   "ceiling_witness_support": [
-    0,
-    1,
-    3,
-    4,
-    5,
-    9,
-    10,
-    12,
-    14,
-    15,
-    16,
-    18,
-    19,
-    21,
-    22,
-    23,
-    25,
-    27,
-    29,
-    32,
-    35,
-    39,
-    41,
-    43,
-    47,
-    50,
-    54,
-    55,
-    57,
-    59,
-    62,
-    66,
-    67,
-    68,
-    71,
-    73,
-    75,
-    76,
-    78,
-    79,
-    81,
-    82,
-    83,
-    86,
-    88,
-    92,
-    96,
-    97,
-    98,
-    100,
-    102,
-    104
-   ],
-   "d_exact": false,
-   "d_found": null,
-   "dim_pole": 7,
-   "ell": 21,
-   "k_from_matrices": 14,
-   "k_parent": 14,
-   "m": 5,
-   "n": 210,
-   "orbit": 48,
-   "screen_decided": false,
-   "solver_calls": 2,
-   "threshold": 10,
-   "threshold_source": "EXP-057 [[170,16,10]]",
-   "transported_from": {
-    "distance_preserved_by_exact_permutation": true,
-    "lattice": [
-     15,
-     7
-    ],
-    "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
-   },
-   "verdict": "undecided",
-   "wall_s": 3958.5,
-   "witness_bound": 16,
-   "witness_classes": 4224,
-   "witness_support": [
-    1,
-    8,
-    32,
-    37,
-    43,
-    50,
-    51,
-    57,
-    99,
-    113,
-    131,
-    136,
-    148,
-    160,
-    169,
-    177
-   ],
-   "witness_wall_s": 2.04
-  },
-  {
-   "A": [
-    [
-     0,
-     0
-    ],
-    [
-     1,
-     1
-    ],
-    [
-     17,
-     2
-    ]
-   ],
-   "B": [
-    [
-     0,
-     0
-    ],
-    [
-     13,
-     1
-    ],
-    [
-     2,
-     1
-    ]
-   ],
-   "bar_invariant": false,
-   "cdcl": {
-    "cnf_sha256": "8a988f8459a7483935916873b263f5166d6c9330322e479b7ee3feef00c4b222",
-    "cnf_sha256_is_source_coordinate_order": true,
-    "encoding_version": "sat-decide-v2",
-    "solver": {
-     "backend": "pysat",
-     "clauses": 9749,
-     "cnf_variables": 3947,
-     "conflict_budget": 1000000,
-     "name": "PySAT cadical195",
-     "pysat_version": "1.9.dev13",
-     "stats": {
-      "conflicts": 1000003,
-      "decisions": 1670274,
-      "propagations": 137532462,
-      "restarts": 29083
-     },
-     "wall_time_s": 95.30055004206952
-    },
-    "source_cnf_sha256": "8a988f8459a7483935916873b263f5166d6c9330322e479b7ee3feef00c4b222",
-    "status": "UNDECIDED_BUDGET",
-    "witness_support": null
-   },
-   "ceiling": 50,
-   "ceiling_witness_support": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    25,
-    26,
-    27,
-    28,
-    29,
-    35,
-    36,
-    37,
-    38,
-    39,
-    50,
-    51,
-    52,
-    53,
-    54,
-    55,
-    56,
-    57,
-    58,
-    59,
-    75,
-    76,
-    77,
-    78,
-    79,
-    100,
-    101,
-    102,
-    103,
-    104
-   ],
-   "d_exact": false,
-   "d_found": null,
-   "dim_pole": 5,
-   "ell": 21,
-   "k_from_matrices": 10,
-   "k_parent": 10,
-   "m": 5,
-   "n": 210,
-   "orbit": 48,
-   "screen_decided": false,
-   "solver_calls": 2,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
-   "transported_from": {
-    "distance_preserved_by_exact_permutation": true,
-    "lattice": [
-     15,
-     7
-    ],
-    "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
-   },
-   "verdict": "undecided",
-   "wall_s": 2695.4,
-   "witness_bound": 18,
-   "witness_classes": 1023,
-   "witness_support": [
-    104,
-    105,
-    109,
-    115,
-    126,
-    132,
-    137,
-    138,
-    143,
-    148,
-    149,
-    154,
-    160,
-    165,
-    171,
-    187,
-    188,
-    193
-   ],
-   "witness_wall_s": 0.25
-  },
-  {
-   "A": [
-    [
-     0,
-     0
-    ],
-    [
-     1,
-     1
-    ],
-    [
-     17,
-     2
-    ]
-   ],
-   "B": [
-    [
-     0,
-     0
-    ],
-    [
-     8,
-     2
-    ],
-    [
-     10,
-     0
-    ]
-   ],
-   "bar_invariant": false,
-   "cdcl": {
-    "cnf_sha256": "bbb3d2ee54c20cbff59aafbb9371200a664b0cd5100803586c119facdb579012",
-    "cnf_sha256_is_source_coordinate_order": true,
-    "encoding_version": "sat-decide-v2",
-    "solver": {
-     "backend": "pysat",
-     "clauses": 9917,
-     "cnf_variables": 3989,
-     "conflict_budget": 1000000,
-     "name": "PySAT cadical195",
-     "pysat_version": "1.9.dev13",
-     "stats": {
-      "conflicts": 1000000,
-      "decisions": 1611062,
-      "propagations": 153992863,
-      "restarts": 27180
-     },
-     "wall_time_s": 107.38626308401581
-    },
-    "source_cnf_sha256": "bbb3d2ee54c20cbff59aafbb9371200a664b0cd5100803586c119facdb579012",
-    "status": "UNDECIDED_BUDGET",
-    "witness_support": null
-   },
-   "ceiling": 50,
-   "ceiling_witness_support": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    25,
-    26,
-    27,
-    28,
-    29,
-    35,
-    36,
-    37,
-    38,
-    39,
-    50,
-    51,
-    52,
-    53,
-    54,
-    55,
-    56,
-    57,
-    58,
-    59,
-    75,
-    76,
-    77,
-    78,
-    79,
-    100,
-    101,
-    102,
-    103,
-    104
-   ],
-   "d_exact": false,
-   "d_found": null,
-   "dim_pole": 5,
-   "ell": 21,
-   "k_from_matrices": 10,
-   "k_parent": 10,
-   "m": 5,
-   "n": 210,
-   "orbit": 48,
-   "screen_decided": false,
-   "solver_calls": 2,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
-   "transported_from": {
-    "distance_preserved_by_exact_permutation": true,
-    "lattice": [
-     15,
-     7
-    ],
-    "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
-   },
-   "verdict": "undecided",
-   "wall_s": 2820.4,
-   "witness_bound": 16,
-   "witness_classes": 1023,
-   "witness_support": [
-    68,
-    89,
-    107,
-    110,
-    112,
-    115,
-    120,
-    123,
-    128,
-    131,
-    144,
-    152,
-    162,
-    165,
-    173,
-    194
-   ],
-   "witness_wall_s": 0.9
-  },
-  {
-   "A": [
-    [
-     0,
-     0
-    ],
-    [
-     1,
-     1
-    ],
-    [
-     17,
-     0
-    ]
-   ],
-   "B": [
-    [
-     0,
-     0
-    ],
-    [
-     13,
-     1
-    ],
-    [
-     2,
-     1
-    ]
-   ],
-   "bar_invariant": false,
-   "cdcl": {
-    "cnf_sha256": "80af85c8c37c221c6ff9974492d91c2537cecdd1fa72d955e2bb840bf3560e89",
-    "cnf_sha256_is_source_coordinate_order": true,
-    "encoding_version": "sat-decide-v2",
-    "solver": {
-     "backend": "pysat",
-     "clauses": 9877,
-     "cnf_variables": 3979,
-     "conflict_budget": 1000000,
-     "name": "PySAT cadical195",
-     "pysat_version": "1.9.dev13",
-     "stats": {
-      "conflicts": 1000001,
-      "decisions": 1578089,
-      "propagations": 137307683,
-      "restarts": 21304
-     },
-     "wall_time_s": 95.07355762494262
-    },
-    "source_cnf_sha256": "80af85c8c37c221c6ff9974492d91c2537cecdd1fa72d955e2bb840bf3560e89",
-    "status": "UNDECIDED_BUDGET",
-    "witness_support": null
-   },
-   "ceiling": 50,
-   "ceiling_witness_support": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    25,
-    26,
-    27,
-    28,
-    29,
-    35,
-    36,
-    37,
-    38,
-    39,
-    50,
-    51,
-    52,
-    53,
-    54,
-    55,
-    56,
-    57,
-    58,
-    59,
-    75,
-    76,
-    77,
-    78,
-    79,
-    100,
-    101,
-    102,
-    103,
-    104
-   ],
-   "d_exact": false,
-   "d_found": null,
-   "dim_pole": 5,
-   "ell": 21,
-   "k_from_matrices": 10,
-   "k_parent": 10,
-   "m": 5,
-   "n": 210,
-   "orbit": 24,
-   "screen_decided": false,
-   "solver_calls": 2,
-   "threshold": 14,
-   "threshold_source": "EXP-058 [[186,10,14]]",
-   "transported_from": {
-    "distance_preserved_by_exact_permutation": true,
-    "lattice": [
-     15,
-     7
-    ],
-    "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
-   },
-   "verdict": "undecided",
-   "wall_s": 3034.6,
-   "witness_bound": 20,
-   "witness_classes": 1023,
-   "witness_support": [
-    104,
-    108,
-    115,
-    126,
-    130,
-    131,
-    136,
-    141,
-    142,
-    147,
-    152,
-    153,
-    163,
-    164,
-    165,
-    170,
-    174,
-    186,
-    191,
-    192
-   ],
-   "witness_wall_s": 4.65
-  },
-  {
-   "A": [
-    [
-     0,
-     0
-    ],
-    [
-     7,
-     1
-    ],
-    [
-     1,
-     4
-    ]
-   ],
-   "B": [
-    [
-     0,
-     0
-    ],
-    [
-     17,
-     2
-    ],
-    [
-     8,
-     3
-    ]
-   ],
-   "bar_invariant": false,
-   "cdcl": {
-    "cnf_sha256": "45a4e84d2acfaa3e62c0f01e0bfefef659d8ee3f2bc38734adeb19d19dba408f",
-    "cnf_sha256_is_source_coordinate_order": true,
-    "encoding_version": "sat-decide-v2",
-    "solver": {
-     "backend": "pysat",
-     "clauses": 10057,
-     "cnf_variables": 4205,
-     "conflict_budget": 1000000,
-     "name": "PySAT cadical195",
-     "pysat_version": "1.9.dev13",
-     "stats": {
-      "conflicts": 1000001,
-      "decisions": 1815472,
-      "propagations": 143645086,
-      "restarts": 29050
-     },
-     "wall_time_s": 113.66757908300497
-    },
-    "source_cnf_sha256": "45a4e84d2acfaa3e62c0f01e0bfefef659d8ee3f2bc38734adeb19d19dba408f",
-    "status": "UNDECIDED_BUDGET",
-    "witness_support": null
-   },
-   "ceiling": 56,
-   "ceiling_witness_support": [
-    0,
-    1,
-    3,
-    4,
-    5,
-    9,
-    11,
-    13,
-    15,
-    16,
-    18,
-    19,
-    20,
-    24,
-    26,
-    28,
-    30,
-    31,
-    33,
-    34,
-    35,
-    39,
-    41,
-    43,
-    45,
-    46,
-    48,
-    49,
-    50,
-    54,
-    56,
-    58,
-    60,
-    61,
-    63,
-    64,
-    65,
-    69,
-    71,
-    73,
-    75,
-    76,
-    78,
-    79,
-    80,
-    84,
-    86,
-    88,
-    90,
-    91,
-    93,
-    94,
-    95,
-    99,
-    101,
-    103
-   ],
-   "d_exact": false,
-   "d_found": null,
-   "dim_pole": 4,
-   "ell": 21,
-   "k_from_matrices": 8,
-   "k_parent": 8,
-   "m": 5,
-   "n": 210,
-   "orbit": 48,
-   "screen_decided": false,
-   "solver_calls": 2,
-   "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
-   "transported_from": {
-    "distance_preserved_by_exact_permutation": true,
-    "lattice": [
-     15,
-     7
-    ],
-    "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
-   },
-   "verdict": "undecided",
-   "wall_s": 2271.6,
-   "witness_bound": 20,
-   "witness_classes": 255,
-   "witness_support": [
-    2,
-    19,
-    25,
-    34,
-    36,
-    38,
-    44,
-    46,
-    50,
-    59,
-    71,
-    80,
-    105,
-    113,
-    126,
-    131,
-    141,
-    175,
-    181,
-    185
-   ],
-   "witness_wall_s": 0.08
-  },
-  {
-   "A": [
-    [
-     0,
-     0
-    ],
-    [
-     7,
-     1
-    ],
-    [
-     10,
-     4
-    ]
-   ],
-   "B": [
-    [
-     0,
-     0
-    ],
-    [
-     20,
-     2
-    ],
-    [
-     2,
-     3
-    ]
-   ],
-   "bar_invariant": false,
-   "cdcl": {
-    "cnf_sha256": "f06cc9ced442a5389447e778bf852c33616387de0ca5af366b7960214f103382",
-    "cnf_sha256_is_source_coordinate_order": true,
-    "encoding_version": "sat-decide-v2",
-    "solver": {
-     "backend": "pysat",
-     "clauses": 10201,
-     "cnf_variables": 4241,
-     "conflict_budget": 1000000,
-     "name": "PySAT cadical195",
-     "pysat_version": "1.9.dev13",
-     "stats": {
-      "conflicts": 1000002,
-      "decisions": 1758683,
-      "propagations": 142175023,
-      "restarts": 26990
-     },
-     "wall_time_s": 78.19914370798506
-    },
-    "source_cnf_sha256": "f06cc9ced442a5389447e778bf852c33616387de0ca5af366b7960214f103382",
-    "status": "UNDECIDED_BUDGET",
-    "witness_support": null
-   },
-   "ceiling": 56,
-   "ceiling_witness_support": [
-    0,
-    1,
-    3,
-    4,
-    5,
-    9,
-    11,
-    13,
-    15,
-    16,
-    18,
-    19,
-    20,
-    24,
-    26,
-    28,
-    30,
-    31,
-    33,
-    34,
-    35,
-    39,
-    41,
-    43,
-    45,
-    46,
-    48,
-    49,
-    50,
-    54,
-    56,
-    58,
-    60,
-    61,
-    63,
-    64,
-    65,
-    69,
-    71,
-    73,
-    75,
-    76,
-    78,
-    79,
-    80,
-    84,
-    86,
-    88,
-    90,
-    91,
-    93,
-    94,
-    95,
-    99,
-    101,
-    103
-   ],
-   "d_exact": false,
-   "d_found": null,
-   "dim_pole": 4,
-   "ell": 21,
-   "k_from_matrices": 8,
-   "k_parent": 8,
-   "m": 5,
-   "n": 210,
-   "orbit": 48,
-   "screen_decided": false,
-   "solver_calls": 2,
-   "threshold": 16,
-   "threshold_source": "EXP-037 [[180,8,16]]",
-   "transported_from": {
-    "distance_preserved_by_exact_permutation": true,
-    "lattice": [
-     15,
-     7
-    ],
-    "mapping_sha256": "8007dd319b7657293ff07ec48981632ba3f92e5a02dba7cc11f0a3ad06af45cf"
-   },
-   "verdict": "undecided",
-   "wall_s": 2647.8,
-   "witness_bound": 18,
-   "witness_classes": 255,
-   "witness_support": [
-    3,
-    20,
-    38,
-    39,
-    51,
-    69,
-    77,
-    87,
-    88,
-    90,
-    138,
-    141,
-    157,
-    173,
-    181,
-    182,
-    185,
-    189
-   ],
-   "witness_wall_s": 71.86
-  }
- ],
+ "undecided": [],
  "utc": "2026-08-23T20:46:52Z",
  "verdicts": {
   "dominated": 14,
-  "dominated_by_cdcl_witness": 62,
-  "dominated_by_witness": 336,
-  "no_reference": 1,
-  "undecided": 6
+  "dominated_by_cdcl_witness": 68,
+  "dominated_by_witness": 337
  },
  "wall_s": 8511.3
 }

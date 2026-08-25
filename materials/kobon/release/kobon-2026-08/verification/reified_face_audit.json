@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "case": "K10=25",
+      "clauses": 383934,
+      "direct_face_count": 25,
+      "face_set_matches_certificate": true,
+      "fixed_geometry_cnf_sat": true,
+      "multipoint_incident_faces": 0,
+      "n": 10,
+      "required_multipoint_incident_faces": 0,
+      "simple_perturbation_bound_holds": true,
+      "solver_stats": {
+        "conflicts": 0,
+        "decisions": 21812,
+        "propagations": 148069,
+        "restarts": 0
+      },
+      "target": 25,
+      "variables": 148069
+    },
+    {
+      "case": "K12>=38",
+      "clauses": 1437364,
+      "direct_face_count": 38,
+      "face_set_matches_certificate": true,
+      "fixed_geometry_cnf_sat": true,
+      "multipoint_incident_faces": 8,
+      "n": 12,
+      "required_multipoint_incident_faces": 1,
+      "simple_perturbation_bound_holds": true,
+      "solver_stats": {
+        "conflicts": 0,
+        "decisions": 79889,
+        "propagations": 592983,
+        "restarts": 0
+      },
+      "target": 38,
+      "variables": 592983
+    }
+  ],
+  "predicate": "exact direct-gap face reification",
+  "status": "PASS"
+}

@@ -857,26 +857,25 @@ pole isomorphism already published and did not find the explicit general-BB
 minimum-pole-weight ceiling or its use as an exhaustive rejection oracle; the
 latter is nevertheless a short corollary and is not oversold as a deep new
 theorem. The same check refuted a claim that $[[90,8,10]]$ on $(15,3)$ is the
-only odd$\times$odd BB instance in print. We sourced $27$ from
-arXiv:2308.07915, arXiv:2407.03973v1, arXiv:2408.10001v4 and
-arXiv:2502.17052v4, including $(9,9)\,[[162,8,12]]$,
-$(9,15)\,[[270,8,18]]$, $(7,7)\,[[98,6,12]]$ and
-$(3,27)\,[[162,8,14]]$. Our statement was correct only for the seven entries in
-our baseline table; literature-wide it was wrong and is withdrawn.
+only odd$\times$odd BB instance in print. We sourced $29$ from
+arXiv:2308.07915, arXiv:2407.03973v1, arXiv:2408.10001v4,
+arXiv:2502.17052v4, and Liang et al.~\cite{liang2025generalized}. The later
+audit also missed Liang et al.'s two exact $\nk{234,8,18}$ Table~III rows;
+that omission is corrected. Our statement was correct only for the seven
+entries in our baseline table; literature-wide it was wrong and is withdrawn.
 
-On these $27$ instances the reciprocal-pole isomorphism passes $27/27$ rank
-audits. Three independent $k$ routes agree internally on all $27$ and with the
-printed $k$ on $25$; two transcribed Wang--Mueller App.~C rows, $(5,9)$ and
+On these $29$ instances the reciprocal-pole isomorphism passes $29/29$ rank
+audits. Three independent $k$ routes agree internally on all $29$ and with
+printed $k$ on $27$; two transcribed Wang--Mueller App.~C rows, $(5,9)$ and
 $(7,11)$, give internal $k=0$ against printed $4$ and $6$, and are excluded.
-All 25 reproduced rows satisfy ``pole ceiling $\ge$ reported $d$'', but that is
-only a sanity check: Wang--Mueller uses BP-OSD \texttt{distance\_upperbound} and
-Postema--Kokkelmans labels table values Monte-Carlo estimates. Six rows are
-independently exact-certified here (Bravyi $[[90,8,10]]$, three small Postema
-rows, Wang--Mueller's $[[126,12,10]]$ exactified by EXP-055, and its
-$[[162,8,14]]$ exactified by EXP-056): zero violations, slack min/median/max
-$2/20/22$. The screen uses only independent two-sided certificates as
-domination thresholds; no estimate or un-replayed source value can reject a
-candidate.
+All 27 reproduced rows satisfy ``pole ceiling $\ge$ reported $d$'', but
+decoder-reported values remain only a sanity check: Wang--Mueller uses BP-OSD
+\texttt{distance\_upperbound} and Postema--Kokkelmans labels table values
+Monte-Carlo estimates. Eight rows are independently exact-certified here: the
+previous six plus Liang et al.'s two $\nk{234,8,18}$ rows locally replayed by
+EXP-067. There are zero violations, with slack min/median/max $2/22/34$.
+The screen uses only independent two-sided certificates as domination
+thresholds; no estimate or un-replayed source value can reject a candidate.
 
 \paragraph{Exhaustive census.} Over all $65$ odd lattices with $\ell m\le180$
 ($n\le360$) we enumerated every weight-$\le3$ pair --- $4.23\times10^{9}$ pairs
@@ -920,23 +919,85 @@ certificate. Generic fixed-functional sectors do not inherit the monolithic
 origin anchor; a synthetic counterexample caught and repaired that latent
 alternative-mode bug (FR-027).
 
-\paragraph{Fixed-point Pareto screen (complete through $n=162$).} Promoting
-the three discoveries and the EXP-056 exactification into the hash-bound
-reference set and rerunning every weight-3 pair on all 13 odd lattices with a
-nonempty frontier through $n=162$, $8\le k\le24$, leaves $2{,}132$ symmetry
-classes representing $51{,}769$ translation-normalised pairs. Of these,
-$1{,}928$ have an admissible independently exact reference: all are dominated
-($1{,}804$ by reduced-pole logical witnesses, $119$ by bounded CDCL witnesses,
-and five by the exact CP-SAT fallback). All $1{,}923$ persisted witnesses are
-checked in $\ker H_X\setminus S_Z$. The other $204$ high-$k$ classes have no
-certified reference and are labelled \texttt{no\_reference}, not dominated.
-There are zero survivors and zero undecided among referenced classes. Every
-shard is bound to the census hash, certificate-hashed reference set,
-pure-validator version and decision protocol.
+\paragraph{Adaptive frontier ratchet and CRT transport (EXP-057--065).}
+Above $n=162$, constructor-bound monolithic certificates exactify
+$\nk{170,16,10}$ and seven distinct $\nk{186,10,14}$ symmetry classes.
+At block size $105$, an explicit CRT coordinate permutation proves that the
+coprime lattices $(15,7)$, $(21,5)$ and $(35,3)$ are one BB search space.
+A new adaptive method uses the all-odd column-degree parity law, exact BB
+$d_X=d_Z$ duality, and one-sector raw-kissat decisions at even caps only.
+It exactifies thirteen $\nk{210,18,8}$ classes, $\nk{210,24,4}$,
+$\nk{210,14,12}$ and two $\nk{210,10,16}$ classes; promoted representatives
+are replayed and hash-bound. A separate $k=8$ residual has independent
+weight-16 witnesses from CaDiCaL and Maple and is dominated at threshold 16;
+no lower-bound or exact-distance claim is made for it. Two independent
+alternatives fail closed: exact affine-trellis widths are $48$--$99$ on the
+hard types (above the $5{,}000{,}000$-state gate), while the $H=7$ orbit
+projection gives only the rigorous lower bound $4$. A pole-stabilizer audit
+confirms $H=5$ on all thirteen easy classes but falsifies ``hard implies
+$H=1$''.
 
-Scope is load-bearing: the algebraic $k$ census covers all $65$ odd lattices
-through $n=360$, but the exact Pareto screen stops at $n=162$. No $n>162$
-distance-closure claim is made.
+\paragraph{Fixed-point Pareto screen (complete through $n=210$).}
+Promoting every new fixed point into the constructor- and certificate-hash-bound
+reference set, and replacing two duplicate $n=210$ solves by exact CRT
+transport, closes all $20$ odd lattices with nonempty weight-3 frontier through
+$n=210$, $8\le k\le24$. Exact quotienting leaves $4{,}020$ classes
+representing $122{,}833$ translation-normalised pairs. Of these, $3{,}816$
+have an admissible independently exact reference: all are dominated
+($3{,}364$ by reduced-pole logical witnesses, $395$ by bounded or adaptive
+CDCL witnesses, and $57$ by the exact CP-SAT fallback). All $3{,}759$
+persisted witnesses are checked in $\ker H_X\setminus S_Z$. The other $204$
+high-$k$ classes have no certified reference and are labelled
+\texttt{no\_reference}, not dominated. There are zero survivors and zero
+undecided among referenced classes. Direct shards bind the census and reference
+hashes; monotone rebinding archives prior shards and rechecks every carried
+witness, while transported shards carry exact coordinate-permutation proofs.
+
+\paragraph{Exact $n=234$ closure (EXP-066/067).}
+The two next frontiers are exhaustively represented. On $(13,9)$ all 84
+classes are dominated at the exact $k=12$, $d=12$ threshold. On $(39,3)$,
+EXP-066 enumerates all
+$12\lvert\operatorname{GL}(2,3)\rvert=576$ automorphisms from
+$\mathbb Z_{39}\times\mathbb Z_3\cong
+\mathbb Z_{13}\times\mathbb F_3^2$, checks every coordinate map as a
+bijective homomorphism, and compresses 182 hard classes to 30 exact bundles.
+Matrix-verified witness transport closes 28 bundles / 158 classes.
+
+The final two bundles are Liang et al.'s two published $\nk{234,8,18}$
+Table~III rows. EXP-067 enumerates every quotient-lattice generator image,
+finds one map per row, and verifies the mapped $H_X,H_Z$ rowspaces by explicit
+qubit permutation. A minimum logical has no proper zero-syndrome subset, so
+connected-cluster enumeration may be rooted at its least coordinate.
+Translation plus an exact block-column swap reduces the lower proof to two
+roots per code. Each root exhausts weights 1--16 and is replayed; the
+even-kernel law excludes 17, physical weight-18 witnesses pass independent
+NumPy/bitset checks, and BB duality gives $d_X=d_Z=18$.
+
+Promoting that exact reference closes the 24 former undecided classes by
+rechecked weight-18 witnesses. Across 22 lattices there are $4{,}862$ classes /
+$150{,}581$ represented pairs; all $4{,}658/4{,}658$ referenced classes are
+dominated, 204 are \texttt{no\_reference}, and there are zero survivors or
+undecided. The 4,658 dominations comprise 4,048 direct physical witnesses, 158
+full-automorphism transports, 395 bounded CDCL witnesses, and 57 exact CP-SAT
+fallbacks. Exact fixed-point closure reaches $n=234$; the algebraic $k$ census
+remains complete through $n=360$.
+
+Final proof-surface review found and closed a separate aggregation weakness:
+the monotone rebinder had preserved old \texttt{dominated*} labels while
+non-target shards received only aggregate validation, and the 57 CP-SAT
+fallback rows stored \texttt{d\_found} without support. EXP-068 recovers 29
+independent physical $Z$-logicals, transports 28 by exact CRT permutations,
+and hash-binds all 57. Validator v11 now rebuilds every class identity or
+transport cover, threshold/source and physical witness on all 22 shards;
+rebinding validates pre-state, post-state and archive, and EXP-066 invokes the
+same global validator.
+
+The multithreaded dist-m4ri coordinator has a one-root completion race, so
+those runs were cancelled. Certificates use the source-archived, hash-bound
+legacy single-thread entrypoint, which calls the recursion directly and emits
+terminal \texttt{-16} only after full exhaustion. It remains native trusted
+code rather than a proof-trace checker; replay and the published exact result
+are redundant evidence, not formal verification of the executable.
 
 \section{The exact trade law, its residual, and remaining conjectures}\label{sec:conjectures}
 
@@ -1010,8 +1071,8 @@ Environment: macOS Darwin $25.5.0$ arm64, Apple M3 Ultra, $28$ logical CPUs, $96
 Python $3.13.9$ in \texttt{.venv}; \texttt{numpy 2.4.6}, \texttt{scipy 1.18.0},
 \texttt{stim 1.16.0}, \texttt{pymatching 2.4.0}, \texttt{sinter 1.16.0}, \texttt{ldpc 2.4.1},
 \texttt{galois 0.4.11}, \texttt{ortools 9.15.6755}, \texttt{python-sat 1.9.dev13};
-solvers CaDiCaL $1.9.5$ and Kissat $4.0.4$ via PySAT. Full suite: $972$
-passing tests, $1$ skipped ($973$ collected).
+solvers CaDiCaL $1.9.5$ and Kissat $4.0.4$ via PySAT. Full suite: $1007$
+passing tests, $1$ skipped ($1008$ collected).
 
 \begingroup
 \footnotesize
@@ -1070,8 +1131,25 @@ Weight-$\le3$ mixed census: $653{,}022{,}021$ pairs over $18$ lattices, zero mix
 \path{results/processed/exp054_mixed_census.json} & EXP-054 \\
 Odd-lattice census: $65$ lattices, $4{,}229{,}823{,}962$ pairs, zero $k$ mismatches &
 \path{results/processed/exp055_odd_lattice_sweep.json} & EXP-055 \\
-Odd-lattice exact closure: pole $27/27$; exact $\nk{162,8,14}$ ($20/20$ replayed class orbits); fixed-point $n\le162$ has $1{,}928/1{,}928$ referenced dominated, no survivor &
-\path{results/certificates/exp056_wm_162_8_14_distance.json}, \path{results/processed/exp055_odd_lattice_screen.json} & EXP-055/056 \\
+Exact frontier ratchet: $\nk{170,16,10}$, seven $\nk{186,10,14}$,
+thirteen $\nk{210,18,8}$, $\nk{210,24,4}$, $\nk{210,14,12}$,
+and two $\nk{210,10,16}$; independent weight-16 witnesses (not exactness)
+for the final $k=8$ residual; exact CRT transport &
+\path{results/certificates/exp060_210_18_8_distance.json},
+\path{results/processed/exp059_coprime_transport.json} & EXP-057--065 \\
+Historical exact closure through $n=210$: $4{,}020$ classes / $122{,}833$
+pairs, $3{,}816/3{,}816$ referenced dominated &
+\path{results/processed/exp055_odd_lattice_screen.json} & EXP-055--065 \\
+Exact closure through $n=234$: 22 lattices / $4{,}862$ classes /
+$150{,}581$ pairs, $4{,}658/4{,}658$ referenced dominated, 204
+\texttt{no\_reference}, zero survivor/undecided; 576-map audit, two
+replayed rooted certificates for Liang et al.'s $\nk{234,8,18}$ rows, and
+physical witness bindings for all 57 fallback dominations &
+\path{results/processed/exp066_n234_frontier.json},
+\path{results/certificates/exp067_234_8_18_bundle19_distance.json},
+\path{results/certificates/exp067_234_8_18_bundle22_distance.json},
+\path{results/partial_runs/exp068_screen_witnesses/} &
+EXP-066--068 \\
 \bottomrule
 \end{longtable}
 \endgroup

@@ -1,0 +1,34 @@
+{
+  "counts": {
+    "arrangements": 3600,
+    "gp_relations": 1386000,
+    "gp_violations": 0,
+    "sign_mismatches": 0,
+    "triples": 195000,
+    "zero_triples": 2312
+  },
+  "modes": [
+    "generic",
+    "parallel_pair",
+    "two_parallel_pairs",
+    "triple_point",
+    "two_triple_points",
+    "parallel_and_triple"
+  ],
+  "n_range": [
+    5,
+    10
+  ],
+  "relaxation_gap_probe": {
+    "base_relaxation_admits_gp_violation": false,
+    "gp_cut_rejects_witness": false,
+    "n_range": [
+      5,
+      7
+    ]
+  },
+  "samples_per_mode": 100,
+  "semantic_strength": "NO_GAP_FOUND_THROUGH_N7_PROPAGATION_ONLY",
+  "status": "PASS",
+  "violation_examples": []
+}
