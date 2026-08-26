@@ -1,0 +1,482 @@
+{
+  "duality": {
+    "conclusion": "d_X = d_Z; one certified side determines CSS distance",
+    "maps_HX_to_HZ_exactly": true,
+    "maps_HZ_to_HX_exactly": true,
+    "permutation_is_bijection": true,
+    "permutation_is_involution": true,
+    "permutation_sha256": "d66e9265930f5d5d3e7206bc70bf96f084d27f354ac8d04377a49c12e9bc65a1",
+    "schema": "exp056-bb-xz-duality-v1",
+    "valid": true
+  },
+  "identity": {
+    "HX_sha256": "504987d05af1337aa98bd1b006369a7bf7c39d9e53a5361fff34cb21474b39b4",
+    "HZ_sha256": "43351dbe3ddfac162a200ef006053c4f40f3671d3510965a47a2512ac703bd29",
+    "k": 8,
+    "n": 270,
+    "published_transport": {
+      "lattice_relations_vanish": true,
+      "local_15x9": {
+        "A": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            6,
+            8
+          ]
+        ],
+        "B": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            2,
+            6
+          ]
+        ],
+        "k": 8
+      },
+      "matrix_transport": {
+        "HX_exact": true,
+        "HZ_exact": true,
+        "coordinate_permutation_sha256": "b182cf9f201efa934a3aebdeee9f5a7ecb058e93bdee63c92179114812f9e95d",
+        "qubit_permutation_bijective": true
+      },
+      "published": {
+        "f_support": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            -3
+          ]
+        ],
+        "g_support": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "lattice_basis": [
+          [
+            0,
+            15
+          ],
+          [
+            9,
+            6
+          ]
+        ],
+        "reported_parameters": [
+          270,
+          8,
+          20
+        ]
+      },
+      "quotient_map": {
+        "formula": "(x,y) -> (x+6y mod 45, y mod 3)",
+        "generator_images": {
+          "x": [
+            1,
+            0
+          ],
+          "y": [
+            6,
+            1
+          ]
+        }
+      },
+      "quotient_map_surjective": true,
+      "quotient_order": 135,
+      "source": "Liang et al. arXiv:2503.03827v3 Table III",
+      "source_url": "https://arxiv.org/abs/2503.03827",
+      "target_45x3": {
+        "A": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            26,
+            0
+          ]
+        ],
+        "B": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            42,
+            2
+          ]
+        ],
+        "k": 8
+      }
+    },
+    "target": {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ]
+      ],
+      "ell": 15,
+      "expected_d": 20,
+      "expected_k": 8,
+      "m": 9,
+      "name": "liang-twisted-torus-270-8-20-green",
+      "source": "Liang et al. arXiv:2503.03827v3 Table III",
+      "source_url": "https://arxiv.org/abs/2503.03827"
+    },
+    "target_key": "liang270a"
+  },
+  "lower_runs": {
+    "base": {
+      "initial": {
+        "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_base_initial.json",
+        "sha256": "af74e5f17fe642c50db83a131556513e86ce3776120299294cfd635ad534e5a8"
+      },
+      "replay": {
+        "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_base_replay.json",
+        "sha256": "904d82c714dcfc94f57e62ed7f29f4d62138211f98cdf6b12c19311efddf00f4"
+      }
+    },
+    "prefixes": {
+      "135": {
+        "initial": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix135_initial.json",
+          "sha256": "d22f2a3fc1313b3b44619a87822cb21b8e18522837fbc0df195f286cbcaab9b0"
+        },
+        "replay": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix135_replay.json",
+          "sha256": "bde3f2e93a315fb89806c7a2cb64026e5cea11c639db5254561485385b671538"
+        }
+      },
+      "150": {
+        "initial": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix150_initial.json",
+          "sha256": "93dcb47a2e7488bb9efc501fcab3169e1a4062e3548307bcd8937f9611c113fe"
+        },
+        "replay": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix150_replay.json",
+          "sha256": "f4b2effdb6c2ed54f567c7a4c73a0ac3ffc9cc085bf594773097329433ebac4c"
+        }
+      },
+      "159": {
+        "initial": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix159_initial.json",
+          "sha256": "f746a4d4057052f99cb75f8fbaa03baec967a4e57c0cbf1d49f2ffcdac23dcb3"
+        },
+        "replay": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix159_replay.json",
+          "sha256": "dfcf8123d33b867726482a8110697d3164b5f00f9902d93afc05b3cfb85892d6"
+        }
+      },
+      "55": {
+        "initial": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix55_initial.json",
+          "sha256": "4af0eb5aa17dee6c294fbdf16e9d4827848839a24ccfbc2cabceaa8c9b653b18"
+        },
+        "replay": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix55_replay.json",
+          "sha256": "102bf0d0f9d9a66dae36e93b084cb45f738943fce8532801a0532b19583efc5a"
+        }
+      },
+      "62": {
+        "initial": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix62_initial.json",
+          "sha256": "2919fc10d6c2be2e3d4ac802d491a9e62114d659fbb9d0a58e80ef77b272a3b6"
+        },
+        "replay": {
+          "path": "results/partial_runs/exp070_n270_cluster/runs/liang270a_prefix62_replay.json",
+          "sha256": "931badd47022764fee0c6c829af6fd48e46d3d92b789205a312a2ca75a3b6354"
+        }
+      }
+    }
+  },
+  "parity": {
+    "all_column_degrees_odd": true,
+    "argument": "Summing every H_X parity equation gives sum_j(deg_j mod 2)v_j = wt(v) mod 2 = 0.",
+    "column_degree_max": 3,
+    "column_degree_min": 3,
+    "effective_even_cap": 18,
+    "requested_cap": 19,
+    "schema": "exp056-kernel-weight-parity-v1",
+    "valid": true
+  },
+  "prefix_partition": {
+    "complete": true,
+    "coverage_argument": "A nonzero-syndrome partial cluster rooted at 0 must cancel the first unsatisfied check. Therefore every completed zero-syndrome cluster contains at least one of the five other incident columns; the five prefix runs cover the full root recursion. Overlap is safe.",
+    "first_unsatisfied_check": 0,
+    "incident_columns": [
+      0,
+      55,
+      62,
+      135,
+      150,
+      159
+    ],
+    "prefix_columns": [
+      55,
+      62,
+      135,
+      150,
+      159
+    ],
+    "root_coordinate": 0,
+    "schema": "exp070-root-prefix-partition-v1"
+  },
+  "protocol": {
+    "algorithm": "prefix-checkpointed connected-cluster exact enumeration plus exhaustive pure-second-block enumeration",
+    "base_exhaustive_through_weight": 16,
+    "external_engine": "QEC-pages/dist-m4ri legacy STANDALONE prefix-partitioned method 2",
+    "prefix_exact_weight": 18,
+    "replay_required": true,
+    "resource_policy": {
+      "minimum_nice_priority": 10,
+      "processes": 1,
+      "threads": 1
+    },
+    "rooted_presentations": [
+      "original"
+    ],
+    "side": "z"
+  },
+  "pure_second_enumeration": {
+    "complete": true,
+    "kernel_basis_sha256": "e9984518894769f1921935e7826d38ff166c613f3a06f944ecd5d0735c9c9158",
+    "kernel_dimension": 18,
+    "logical_quotient_rank": 4,
+    "logical_words": 245760,
+    "minimum_support": [
+      141,
+      150,
+      156,
+      159,
+      168,
+      171,
+      174,
+      177,
+      180,
+      186,
+      192,
+      204,
+      207,
+      213,
+      216,
+      219,
+      222,
+      225,
+      237,
+      240,
+      246,
+      252
+    ],
+    "minimum_weight": 22,
+    "schema": "exp070-pure-second-exhaustive-v1",
+    "vectors_enumerated": 262143,
+    "verification": {
+      "duality_preserves_weight": true,
+      "support": [
+        141,
+        150,
+        156,
+        159,
+        168,
+        171,
+        174,
+        177,
+        180,
+        186,
+        192,
+        204,
+        207,
+        213,
+        216,
+        219,
+        222,
+        225,
+        237,
+        240,
+        246,
+        252
+      ],
+      "vector_sha256": "d2dc8382c13327925e990d21f19592245a8cebe40b94e791b244f3df702a6608",
+      "weight": 22,
+      "x_support": [
+        3,
+        18,
+        33,
+        39,
+        42,
+        45,
+        54,
+        57,
+        60,
+        63,
+        66,
+        75,
+        87,
+        90,
+        93,
+        99,
+        102,
+        105,
+        111,
+        120,
+        123,
+        129
+      ],
+      "x_valid_bitset": true,
+      "x_valid_numpy": true,
+      "x_vector_sha256": "8c76e0a34391b90312f567df3b68d7742e33827923bb35e4805735545a3e82ba",
+      "z_valid_bitset": true,
+      "z_valid_numpy": true
+    }
+  },
+  "root_reduction": {
+    "connected_component_lemma": "Every Tanner-connected component of a zero-syndrome support has zero syndrome; a nontrivial word therefore has a nontrivial component no heavier than itself.",
+    "coverage_argument": "Translation moves every logical touching the first block to root 0; the exact prefix partition covers that rooted recursion. Logicals supported only in the second block are exhausted independently.",
+    "dist_m4ri_ordering_guard": "start=0 is load-bearing because the engine keeps only clusters whose root is the minimum column.",
+    "enumeration_argument": "Every proper partial support is nonzero-syndrome. The recursion therefore reaches each minimum first-block-touching logical.",
+    "irreducible_subset_lemma": "A minimum logical contains no nonempty proper zero-syndrome subset: a logical subset is lighter, while removing a stabilizer subset gives a lighter representative of the same logical class.",
+    "prefix_partition_sha256": "d24f892c41cf5c1ae590002ea1fa4ca6199229a1497b41e8dcc7212083bf99ba",
+    "presentations": [
+      "original"
+    ],
+    "pure_second_enumeration_sha256": "e9b0f00d852dbaa8ab55ee01740e8fe78cc98029fbb18632f188a1e79d867b51",
+    "root_coordinate": 0,
+    "schema": "exp070-rooted-prefix-reduction-v1",
+    "translation_group_size": 135,
+    "translations_preserve_code": true,
+    "valid": true
+  },
+  "schema": "exp070-n270-connected-cluster-v1",
+  "solver_build": {
+    "binary": "results/partial_runs/exp070_n270_cluster/solver/dist-m4ri-src/src/dist_m4ri_prefix",
+    "binary_sha256": "12dd8b65ff3d6f3a7ed3609d777fb7364670689606bba000b358be639e61e769",
+    "m4ri_source_archive_sha256": "986c9d4bf77b906ece535f0c405d3637dbdc8ec6bd5823c01c2f9823e3217d1c",
+    "path": "results/partial_runs/exp070_n270_cluster/solver_build.json",
+    "sha256": "0ffeccdc01a7d6ae2ed8dc98cb7528ee5501e2729f577696b2eb4c9c14b7ce6f",
+    "source_archive_sha256": "e7fed74881ddd3a7bcd792e104dcddf37915927d68f53a333efbb3f7ab83f369",
+    "source_commit": "538d119f6e98b3782415eb78f7ce322a076f8101"
+  },
+  "upper": {
+    "duality_preserves_weight": true,
+    "support": [
+      0,
+      29,
+      34,
+      77,
+      82,
+      89,
+      109,
+      111,
+      116,
+      132,
+      138,
+      144,
+      159,
+      172,
+      181,
+      190,
+      196,
+      199,
+      214,
+      264
+    ],
+    "vector_sha256": "4e43e01b0ffe87176f6d24c34f7a4c75568fb1b56cb19316f5a420114a7034f1",
+    "weight": 20,
+    "x_support": [
+      6,
+      15,
+      65,
+      80,
+      83,
+      89,
+      98,
+      107,
+      120,
+      126,
+      135,
+      147,
+      163,
+      168,
+      170,
+      190,
+      197,
+      202,
+      245,
+      250
+    ],
+    "x_valid_bitset": true,
+    "x_valid_numpy": true,
+    "x_vector_sha256": "40b74962ad036672a924a07c3345f68bb579499badc874428c59ffc4c5777aa2",
+    "z_valid_bitset": true,
+    "z_valid_numpy": true
+  },
+  "utc": "2026-08-25T23:35:54.208339+00:00",
+  "verdict": {
+    "classification": "CERTIFIED_EXACT",
+    "d": 20,
+    "d_X": 20,
+    "d_Z": 20,
+    "exact": true
+  }
+}

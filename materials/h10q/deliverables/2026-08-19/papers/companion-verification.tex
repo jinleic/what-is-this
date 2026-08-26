@@ -76,15 +76,24 @@ exact strong-Hensel \(w=3\) row, and proves generic branch/shear
 rigidity.  L31 promotes one fixed-field row to a proved global
 reciprocal member at \(w=13\), with an explicit lift, recursive
 Pocklington chain, and complete Hilbert table.  Its exact constant-two
-point lies before the mandatory cube pullback, which remains
-\textsc{open}; no improved count is claimed.  We give schemas, commands,
-and strict licenses for all eighteen new producer--artifact pairs.
+point lies before the mandatory cube pullback.  L32 gives
+automatic-\(\Phi\) rational maps with smooth local bases at \(2\) and
+every odd target.  L33 proves a positive unweighted two-large root-pair
+main beyond BV.  L34 proves that a conditioned root-pair upper bound by
+the unrestricted envelope \(0.974960\ldots<1\) would imply AP1, but
+that estimate and the globally controlled cube pullback remain
+\textsc{open}; no improved count is
+claimed.  We give schemas, commands, and strict licenses for all
+twenty-one new producer--artifact pairs.
 % src: data/l24_diagonal_geometry.jsonl; data/l24_diagonal_arithmetic.jsonl
 % src: data/l24_diagonal_local.jsonl; data/l24_diagonal_search.jsonl
 % src: data/l25_scaled_coupling.jsonl; data/l26_reciprocal_tie.jsonl
 % src: data/l27_triangular_shear.jsonl; data/l28_trace_field.jsonl
 % src: data/l29_reciprocal_frontier.jsonl; data/l30_quartic_frontier.jsonl
 % src: data/l31_frontier_push.jsonl
+% src: data/l32_local_parameter_frontier.jsonl
+% src: data/l33_unweighted_pair_main.jsonl
+% src: data/l34_ap1_pair_threshold.jsonl
 \end{abstract}
 
 \section{The verification contract}
@@ -144,11 +153,13 @@ The unconditional simultaneous prime-value assertion and the
 fixed-family two-large-divisor detector asymptotic remain OPEN.  L28
 closes the L26 quartic trace field and bad-sign squareclass; L29 closes
 the distinct reciprocal-lift squareclass; and L31 proves one globally
-good reciprocal member at \(w=13\), not a uniform member theorem.
-Cube-compatible controlled rational points on L30's lower-degree even
-quartic remain OPEN.  L25's own aligned-target and \(w=3,5\) questions
-remain open for those two scaled formulas, although L27 and L30 solve
-them on different sections.  The unscaled diagonal five-count is not
+good reciprocal member at \(w=13\), not a uniform member theorem.  L32
+removes base selection at \(2\) and \(w\), but not emergent
+numerator/denominator primes.  Cube-compatible controlled rational
+points on L30's lower-degree even quartic remain OPEN.  L25's own
+aligned-target and \(w=3,5\) questions remain open for those two scaled
+formulas, although L27 and L30 solve them on different sections.
+The unscaled diagonal five-count is not
 in this list: it is PROVED FALSE because both unit orientations are
 \(\Phi\)-empty over \(\Q_2\).
 % src: data/l23_half_sieve.jsonl; data/l23_fibration.jsonl
@@ -585,8 +596,8 @@ rational points, aligned-target compatibility, and the target primes
 
 \begin{table}[p]
 \centering
-\scriptsize
-\caption{L26--L31 data artifacts, producers, and strict licenses.}
+\tiny
+\caption{L26--L34 data artifacts, producers, and strict licenses.}
 \begin{tabular}{@{}p{.25\textwidth}p{.25\textwidth}p{.42\textwidth}@{}}
 \toprule
 Data artifact & Producer & License\\
@@ -647,6 +658,35 @@ aligned-class/\(Q\)-prime protocol.  The external
 have only \(z=0\), closing that unique section.  \textsc{open}: other
 cube-compatible controlled points, uniform member theorem, AP1, and
 every count improvement.\\
+
+\path{l32_local_parameter_frontier.jsonl} &
+\path{l32_local_parameter_frontier.py} &
+\textsc{proved}: automatic-\(\Phi\) rational maps; a quartic
+character-sum theorem giving a smooth L30 base at every \(w\ge5\); a
+three-map \(b\)-menu with \(v_w(b)=1\); the non-uniformity of every
+finite fixed proportional-trace menu; and the restriction
+\(b=1\pm2a\) to \(w\equiv5,19\bmod24\).  \textsc{open}: control of
+emergent numerator/denominator primes, a global \(H_2\)-root, AP1, and
+every count improvement.\\
+
+\path{l33_unweighted_pair_main.jsonl} &
+\path{l33_unweighted_pair_main.py} &
+\textsc{proved}: for every \(0<\alpha<\beta<1/2\), the unweighted
+bad-root pair sum is asymptotic to
+\(\frac18\log^2(\beta/\alpha)X\), by L23 Chebotarev and exact CRT
+counting.  \textsc{open}: transfer to \(\Lambda(Q(t))\), exact odd
+valuations modulo \(p^2q^2\), small-prime cleanliness, AP1, and every
+count improvement.\\
+
+\path{l34_ap1_pair_threshold.jsonl} &
+\path{l34_ap1_pair_threshold.py} &
+\textsc{proved}: the exact root-oversieve inequality
+\(\mathcal N_{\rm good}\ge\#\mathcal A_z-\mathcal P_2^{\rm root}\),
+the threshold \(\vartheta>8e^{-2\sqrt2}\), and the unrestricted
+\(\vartheta=0.49\) pair envelope \(0.9749604961\ldots<1\).
+\textsc{open}: the conditioned prime-weighted root-moment estimate,
+AP1, and every count improvement.  Exact odd valuations are not needed
+for this upper-bound route.\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -876,7 +916,7 @@ search is bounded \textsc{evidence}.  The artifact does not weaken L24 and
 does not improve the conditional count.
 % src: data/l25_scaled_coupling.jsonl
 
-Run the L26--L31 producers:
+Run the L26--L34 producers:
 \begin{verbatim}
 nice -n 19 python3 math/h10q/l26_reciprocal_tie.py
 nice -n 19 python3 math/h10q/l27_triangular_shear.py
@@ -884,6 +924,9 @@ nice -n 19 python3 math/h10q/l28_trace_field.py
 nice -n 19 python3 math/h10q/l29_reciprocal_frontier.py
 nice -n 19 python3 math/h10q/l30_quartic_frontier.py
 nice -n 19 python3 math/h10q/l31_frontier_push.py
+nice -n 19 python3 math/h10q/l32_local_parameter_frontier.py
+nice -n 19 python3 math/h10q/l33_unweighted_pair_main.py
+nice -n 19 python3 math/h10q/l34_ap1_pair_threshold.py
 \end{verbatim}
 They write the corresponding artifacts
 \begin{center}
@@ -893,7 +936,10 @@ They write the corresponding artifacts
 \path{data/l29_reciprocal_frontier.jsonl}\\
 \path{data/l30_quartic_frontier.jsonl}\\
 \path{data/l31_frontier_push.jsonl}\\
-\path{data/l31_magma_genus2.json} (external audit).
+\path{data/l31_magma_genus2.json} (external audit)\\
+\path{data/l32_local_parameter_frontier.jsonl}\\
+\path{data/l33_unweighted_pair_main.jsonl}\\
+\path{data/l34_ap1_pair_threshold.jsonl}.
 \end{center}
 Matching reports are written under \path{/tmp}.  L31's \(w=13\) row is
 a theorem because it carries the full lift, primality, and Hilbert
@@ -1080,12 +1126,20 @@ L30 then replaces its degree-eight equation by a lower-degree
 constant-two even quartic with a selected fibre at every odd target and
 proves broad generic-section rigidity.  L31 proves one exact fixed-field
 reciprocal member and one rational quartic point before the cube
-pullback.  The uniform member theorem and cube-compatible controlled
-quartic point remain OPEN; no count improvement is claimed.
+pullback.  L32 gives automatic-\(\Phi\) local bases at \(2\) and every
+odd target and closes two natural section menus.  L33 proves the
+positive unweighted pair main.  L34 identifies the unrestricted
+root-pair envelope that would imply AP1.  Emergent map primes, that
+conditioned prime-weighted root moment, the uniform member theorem, and
+a cube-compatible controlled quartic point remain OPEN; no count
+improvement is claimed.
 % src: data/l24_diagonal_arithmetic.jsonl; data/l25_scaled_coupling.jsonl
 % src: data/l26_reciprocal_tie.jsonl; data/l27_triangular_shear.jsonl
 % src: data/l28_trace_field.jsonl; data/l29_reciprocal_frontier.jsonl
 % src: data/l30_quartic_frontier.jsonl; data/l31_frontier_push.jsonl
+% src: data/l32_local_parameter_frontier.jsonl
+% src: data/l33_unweighted_pair_main.jsonl
+% src: data/l34_ap1_pair_threshold.jsonl
 
 The established implication is unchanged: the L20 class feeds the L19
 linear--octic pair; classical Schinzel~H supplies simultaneous prime

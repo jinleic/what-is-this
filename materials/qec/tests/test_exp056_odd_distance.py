@@ -274,6 +274,27 @@ def test_orbit_reduction_matches_full_decision_on_small_odd_code() -> None:
     assert native_at["weight"] == 2
     assert native_at["verification"]["valid"] is True
 
+    cryptosat_below = E56.decide_class_orbit_bundle(
+        problem,
+        cover,
+        class_cover,
+        1,
+        backend="cryptosat",
+        time_limit_s=30.0,
+    )
+    cryptosat_at = E56.decide_class_orbit_bundle(
+        problem,
+        cover,
+        class_cover,
+        2,
+        backend="cryptosat",
+        time_limit_s=30.0,
+    )
+    assert cryptosat_below["status"] == "UNSAT"
+    assert cryptosat_at["status"] == "SAT"
+    assert cryptosat_at["weight"] == 2
+    assert cryptosat_at["verification"]["valid"] is True
+
     lex_below = E56.decide_class_orbit_bundle(
         problem,
         cover,

@@ -4820,3 +4820,423 @@ No unconditional quantifier record or conclusion about
 H10/\(\mathbb Q\) changes
 (`l31_frontier_push.py`; `data/l31_frontier_push.jsonl`;
 `data/l31_magma_genus2.json`).
+
+## L32 [AUTOMATIC-\(\Phi\) TARGET MAPS; TWO SECTION MENUS CLOSED, 2026-08-24].
+The dyadic and target base can be parameterized globally, but the remaining controlled places still block a rational \(H_2\)-root
+
+L30 proved local existence at \(2\) and at every selected odd target,
+but its global base still had to be chosen by weak approximation.  The
+following rational maps make both local choices simultaneously and
+without a \(\Phi\)-membership search.
+
+### L32a. Rational maps landing in \(\Phi\)
+
+Put
+\[
+\sigma(t)=\frac{t}{1+2t^2},\qquad
+a(t)=1+2\sigma(t)
+     =\frac{2t^2+2t+1}{2t^2+1}.
+\]
+For every \(t\in\mathbb Q\),
+\[
+\boxed{v_2(\sigma(t))\ge0,\qquad v_2(a(t))=0.}
+\]
+Indeed, if \(v_2(t)\ge0\), then \(1+2t^2\) is a unit.  If
+\(v_2(t)<0\), then
+\[
+v_2(\sigma(t))=-1-v_2(t)\ge0.
+\]
+
+For \(\kappa\in\{1,2,-2\}\), also put
+\[
+\boxed{b_\kappa(u)=\frac{u^2+\kappa}{5u^2+\kappa}.}
+\]
+Every numerator and denominator is nonzero over \(\mathbb Q\), and
+\[
+\boxed{v_2(b_\kappa(u))=0\qquad(u\in\mathbb Q).}
+\]
+For \(v_2(u)>0\), the numerator and denominator have the same
+valuation; for \(v_2(u)=0\), their valuation pairs are \((1,1)\) for
+\(\kappa=1\) and \((0,0)\) for \(\kappa=\pm2\); for \(v_2(u)<0\), the
+\(u^2\)-terms dominate both.  Thus
+\[
+\bigl(a(t),b_\kappa(u)\bigr)\in\Phi_1^{\{2\}}
+\]
+for all rational \(t,u\).
+
+### L32b. The maps contain a smooth constant-two target base at every odd prime
+
+Let
+\[
+d(t)=2t^2+1,\qquad n(t)=2t^2+2t+1.
+\]
+The squareclasses of \(A(t)=1+4a(t)^2\) and \(A(t)+4\) are represented
+by
+\[
+\begin{aligned}
+F_5(t)&=d(t)^2+4n(t)^2
+      =20t^4+32t^3+36t^2+16t+5,\\
+F_9(t)&=5d(t)^2+4n(t)^2
+      =36t^4+32t^3+52t^2+16t+9.
+\end{aligned}
+\]
+Exactly,
+\[
+\operatorname{disc}(F_5)=2^{20}\cdot17,\qquad
+\operatorname{disc}(F_9)=2^{20}\cdot5^2\cdot89,\qquad
+\operatorname{Res}(F_5,F_9)=2^{28}.
+\]
+For an odd prime \(w\), consider
+\[
+I_w(t)=
+\frac{(1-\chi_w(F_5(t)))(1+\chi_w(F_9(t)))}4.
+\]
+Away from the zero loci, this is the indicator of
+\[
+\chi_w(A(t))=-1,\qquad \chi_w(A(t)+4)=+1.
+\]
+For \(w\ge211\), the two quartics and their product are squarefree
+modulo \(w\).  The three Weil bounds are respectively
+\[
+3\sqrt w,\qquad3\sqrt w,\qquad7\sqrt w.
+\]
+The zero-value indicator weights contribute at most \(4\), while a
+root of \(d\) contributes zero.  Hence the number \(N_w\) of desired
+parameters satisfies
+\[
+\boxed{N_w\ge\frac{w-13\sqrt w}{4}-4>0\qquad(w\ge211).}
+\]
+Exact exhaustion supplies a row for every prime \(5\le w<211\),
+including the discriminant primes \(5,17,89\).  Therefore \(a(t)\)
+contains a desired target residue for every \(w\ge5\).
+
+The \(b\)-menu is even simpler.  For every odd \(w\),
+\[
+\left(\frac{-1}{w}\right)
+\left(\frac{-2}{w}\right)
+\left(\frac{2}{w}\right)
+=\left(\frac4w\right)=1.
+\]
+Thus one of \(-1,-2,2\) is a square.  Choose
+\(\kappa\in\{1,2,-2\}\) and \(u_0\ne0\) with
+\(u_0^2=-\kappa\bmod w\).  At this root,
+\[
+5u_0^2+\kappa=-4\kappa\ne0,\qquad
+\frac{d}{du}(u^2+\kappa)=2u_0\ne0.
+\]
+A rational lift can therefore be chosen with
+\[
+\boxed{v_w(b_\kappa(u))=1.}
+\]
+
+Combining the two maps with a cell \(v_w(z)\ge1\), \(Z=z^3\), gives
+\[
+v_w(D)=v_w(N_g)=0,\qquad
+v_w(c)=2v_w(Z)-2=6v_w(z)-2\ge4.
+\]
+Choose \(X^2=A+4\) and \(\rho=2\) modulo \(w\).  L30c's fibre
+Jacobian \(16AX\rho\) is nonzero, so the target point lifts.  At \(2\),
+L30b applies because the maps lie in \(\Phi\).  Consequently:
+\[
+\boxed{\text{for every }w\ge5\text{ and every target cell, one explicit
+finite rational-map menu is locally soluble at both }2\text{ and }w.}
+\]
+The \(w=3\) branch remains L30c's separate \(a=5\) strong-Hensel
+fibre.
+
+### L32c. Every fixed proportional-trace menu is non-uniform in the target
+
+Consider the natural bridge simplification
+\[
+\frac{(b-1)^2}{b}=4r a^2
+\]
+with fixed \(r\in\mathbb Q^\times\).  Rationality of \(b\) is
+equivalent to
+\[
+h^2-r^2a^2=r.
+\]
+Writing
+\[
+h=\frac{t^2+r}{2t},\qquad
+a=\frac{t^2-r}{2rt}
+\]
+gives exactly two branches
+\[
+\boxed{b=\frac{t^2}{r}\quad\text{or}\quad b=\frac r{t^2}.}
+\]
+Moreover
+\[
+\frac{N_g}{b^2}=16a^4(1-Ar^2),\qquad
+c=\frac{16a^6Z^2(1-Ar^2)}{AD},
+\]
+so this is the complete proportional-trace simplification, not merely
+a sample.
+
+Let \(w\) be odd, \(v_w(b)=1\), and \(v_w(a)=0\).  On the first branch,
+\[
+v_w(r)=2v_w(t)-1,\qquad v_w(a)=-v_w(t);
+\]
+on the second,
+\[
+v_w(r)=2v_w(t)+1,\qquad v_w(a)=-v_w(t)-1.
+\]
+In either case,
+\[
+\boxed{v_w(r)=-1.}
+\]
+Thus a fixed \(r\) can meet a unit-\(a\) target only at a denominator
+prime of \(r\).  Every finite fixed menu of such \(r\)'s misses all but
+finitely many targets.  Letting \(r\) move with \(w\) would add a new
+base parameter and is not a uniform section of the six-variable
+formula.
+
+### L32d. The two linear bridge simplifications cover only two prime classes
+
+The identities
+\[
+\begin{array}{c|c}
+b=1+2a&N_g=64a^5\\
+b=1-2a&N_g=-64a^5
+\end{array}
+\]
+hold exactly.  If an odd target \(w\mid b\), then
+\[
+A=1+4a^2\equiv2\pmod w.
+\]
+The constant-two target conditions require
+\[
+\left(\frac2w\right)=-1,\qquad
+\left(\frac6w\right)=+1.
+\]
+For \(w\ge5\), quadratic reciprocity makes this equivalent to
+\[
+\boxed{w\equiv5\ \text{or}\ 19\pmod{24}.}
+\]
+Hence these two especially simple bridge sections miss infinitely many
+targets and cannot form a uniform menu.
+
+### L32e. Strict frontier
+
+L32 removes weak approximation from the simultaneous \(2\)-adic and
+target-base selection: the displayed rational maps provide those two
+local points uniformly.  It also closes every finite fixed
+proportional-trace menu and the two linear \(N_g=\pm64a^5\) sections.
+
+It does **not** control the new primes appearing in the numerators and
+denominators of the rational maps.  A rational point on
+\(H_2(\lambda^2)=0\) satisfying all remaining controlled places is
+still unknown.  The fixed-family Hilbert-detector asymptotic and AP1
+are unchanged, so classical Schinzel H is still not removed from the
+six-variable chain
+(`l32_local_parameter_frontier.py`;
+`data/l32_local_parameter_frontier.jsonl`).
+
+## L33 [THE UNSIGNED TWO-LARGE ROOT SECTOR HAS A POSITIVE MAIN, 2026-08-24].
+An unconditional unweighted asymptotic isolates the prime-weighted dispersion theorem exactly
+
+Retain L23/L31's fixed selected polynomial \(G\), bad-root sets
+\(\mathcal C_p^-\), and counts \(r_-(p)=\#\mathcal C_p^-\).  Fix
+\[
+0<\alpha<\beta<\frac12
+\]
+and let \(\mathcal P_X\) be the good primes in
+\([X^\alpha,X^\beta]\).  Define the unweighted root-pair sum
+\[
+\mathcal U_2(X;\alpha,\beta)=
+\sum_{\substack{p<q\\p,q\in\mathcal P_X}}
+\ \sum_{c\in\mathcal C_{pq}^-}
+\#\{X<t\le2X:t\equiv c\pmod{pq}\}.
+\]
+
+### L33a. Exact positive-main asymptotic
+
+L23a's Chebotarev law and partial summation give
+\[
+\sum_{p\in\mathcal P_X}\frac{r_-(p)}p
+=\frac12\log\!\left(\frac\beta\alpha\right)+o(1).
+\]
+For \(p\ne q\), CRT gives exactly \(r_-(p)r_-(q)\) simultaneous
+classes.  Since \(pq\le X^{2\beta}<X\), each class contains
+\[
+\frac X{pq}+O(1)
+\]
+integers in \((X,2X]\).  Therefore
+\[
+\begin{aligned}
+\mathcal U_2(X;\alpha,\beta)
+&=
+X\sum_{\substack{p<q\\p,q\in\mathcal P_X}}
+\frac{r_-(p)r_-(q)}{pq}
++O\!\left(
+\sum_{\substack{p<q\\p,q\in\mathcal P_X}}
+r_-(p)r_-(q)\right)\\
+&=
+\frac X2\left[
+\left(\sum_{p\in\mathcal P_X}\frac{r_-(p)}p\right)^2
+-\sum_{p\in\mathcal P_X}\frac{r_-(p)^2}{p^2}
+\right]+o(X).
+\end{aligned}
+\]
+Here \(r_-(p)\le8\), so the diagonal sum is \(o(1)\), while the total
+\(O(1)\)-per-class error is
+\[
+O(X^{2\beta})=o(X).
+\]
+Consequently
+\[
+\boxed{
+\mathcal U_2(X;\alpha,\beta)
+\sim\frac18\log^2\!\left(\frac\beta\alpha\right)X.}
+\]
+In particular, taking \(\alpha=0.49\) and any
+\(0.49<\beta<1/2\) proves a positive order-\(X\) unsigned pair main
+entirely inside the first beyond-BV range.
+
+This is stronger than L31d's formal-main warning in one precise
+direction: for the unweighted mod-\(p\) root oversieve, the positive
+pair main is now a theorem, not a heuristic.
+
+### L33b. The exact missing transfer
+
+The requested prime-weighted sum replaces the elementary class count
+by
+\[
+\sum_{\substack{X<t\le2X\\t\equiv c\pmod{pq}}}\Lambda(Q(t)).
+\]
+For the displayed window,
+\[
+pq\ge X^{2\alpha}=X^{0.98}>D_{\rm BV}.
+\]
+Thus Bombieri--Vinogradov cannot transfer L33a to the selected
+\(Q(t)\)-prime sequence.  Requiring
+\(v_p(G(t))=v_q(G(t))=1\) further replaces \(pq\) by \(p^2q^2\).
+L33a also does not condition on L23a's small-prime-clean set.
+
+Hence a negligibility estimate for the unsigned root-pair sum is not
+the right target: it already has a proved positive main before prime
+weighting.  What remains open is exactly the pointwise
+prime-weighted Buchstab/analytic-Hilbert-detector asymptotic from L31d.
+No existing BV, beta-sieve, or coefficient-box average supplies that
+transfer
+(`l33_unweighted_pair_main.py`;
+`data/l33_unweighted_pair_main.jsonl`).
+
+## L34 [THE SHARP PAIR-MOMENT THRESHOLD FOR AP1, 2026-08-24].
+A safe pair envelope below one would suffice; negligibility is unnecessary
+
+Let \(\mathcal A_z(X)\) be L31d's \(Q(t)\)-prime,
+small-bad-prime-clean set, with \(z=X^\vartheta\), and put
+\[
+\mathcal P_2(X)=
+\sum_{t\in\mathcal A_z(X)}
+\binom{R_{\rm bad}(t)}2.
+\]
+Also let \(R_{\rm root}(t)\) count bad-sign root primes
+\(p\ge z\) with \(p\mid G(t)\), without testing valuation parity, and
+put
+\[
+\mathcal P_2^{\rm root}(X)=
+\sum_{t\in\mathcal A_z(X)}
+\binom{R_{\rm root}(t)}2.
+\]
+Then
+\[
+R_{\rm bad}(t)\le R_{\rm root}(t),\qquad
+\mathcal P_2(X)\le\mathcal P_2^{\rm root}(X).
+\]
+
+### L34a. Exact combinatorial criterion
+
+Hilbert reciprocity gives \(R_{\rm bad}(t)\) even.  Pointwise,
+\[
+\boxed{
+\mathbf 1_{\{R_{\rm bad}(t)=0\}}
+\ge1-\binom{R_{\rm bad}(t)}2.}
+\]
+Indeed this is equality for \(R_{\rm bad}=0,2\), and the right side is
+negative for every even \(R_{\rm bad}\ge4\).  Summing gives
+\[
+\boxed{
+\mathcal N_{\rm good}(X)
+\ge\#\mathcal A_z(X)-\mathcal P_2(X)
+\ge\#\mathcal A_z(X)-\mathcal P_2^{\rm root}(X).}
+\]
+Consequently the root-oversieve estimate
+\[
+\mathcal P_2^{\rm root}(X)<\#\mathcal A_z(X)
+\]
+already supplies a zero-bad member and proves AP1.  Exact odd
+valuations are unnecessary for this upper-bound route, and the pair
+sector does not need to be \(o(\#\mathcal A_z)\).
+
+### L34b. An unrestricted octic pair envelope lies below one
+
+The Chebotarev local mass for bad primes between
+\(X^\vartheta\) and the octic size \(X^8\) is
+\[
+\mu(\vartheta)=\frac12\log\!\left(\frac8\vartheta\right).
+\]
+Ignoring the additional divisor-product restriction
+\(\log_Xp+\log_Xq\le8\), the unordered factorial-pair envelope is
+\[
+\frac{\mu(\vartheta)^2}{2}.
+\]
+The product restriction can only decrease the admissible pair region.
+Algebraically,
+\[
+\frac{\mu(\vartheta)^2}{2}<1
+\quad\Longleftrightarrow\quad
+\boxed{\vartheta>8e^{-2\sqrt2}=0.4728459724\ldots.}
+\]
+L23's choice \(\vartheta=0.49\) lies in this window:
+\[
+\mu(0.49)=1.3963957147\ldots,\qquad
+\boxed{\frac{\mu(0.49)^2}{2}
+=0.9749604961\ldots<1.}
+\]
+At the formal BV endpoint \(\vartheta=1/2\), this envelope is
+\[
+\frac{(\log4)^2}{2}
+=0.9609060278\ldots.
+\]
+
+Thus the following **conditioned pointwise upper bound by the
+unrestricted envelope** would suffice:
+\[
+\boxed{
+\mathcal P_2^{\rm root}(X)
+\le\left(\frac{\mu(0.49)^2}{2}+o(1)\right)
+\#\mathcal A_z(X).}
+\]
+It would imply AP1 directly by L34a.  This is a safe sufficient target
+with a \(2.5\%\) margin, not a claim that the actual constrained pair
+constant equals \(0.974960\ldots\).  L31d's \(o\)-bound is much stronger
+than necessary.
+
+### L34c. Why this still does not remove Schinzel H
+
+The displayed relative moment estimate is not proved.  The semilinear
+lower sieve is being used with
+\[
+\frac{\log D_{\rm BV}}{\log z}\to\frac{50}{49},
+\]
+just above its lower limit \(1\), and does not provide the sharp
+relative constant.  Every root-pair modulus is at least \(X^{0.98}\),
+beyond BV.  The root oversieve avoids the \(p^2q^2\) exact-valuation
+loss, but its prime-weighted moment after conditioning on small-prime
+cleanliness is still unavailable.  L33 proves that the unweighted pair
+main is positive, so cancellation to zero is not available.
+
+Therefore the exact analytic route from L23 to AP1 is now:
+\[
+\boxed{\text{sharp conditioned prime-weighted root-pair moment}<1
+\Longrightarrow\mathrm{AP1}
+\Longrightarrow H
+\Longrightarrow\text{Theorem C}.}
+\]
+The first implication is a proved reduction; its hypothesis remains
+open.  The unconditional untied seven-variable theorem of A2 is
+separate.  Classical Schinzel H is still not removed from the
+six-variable chain
+(`l34_ap1_pair_threshold.py`;
+`data/l34_ap1_pair_threshold.jsonl`).

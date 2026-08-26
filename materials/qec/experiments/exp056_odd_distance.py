@@ -1606,7 +1606,7 @@ def decide_class_representative_cryptosat(
     """CryptoMiniSat with native XORs and a clausal cardinality encoding."""
     import pysat
     from pysat.formula import CNF, IDPool
-    from pysat.solvers import Solver
+    from pysat.solvers import CryptoMinisat
 
     if card_encoding == "native":
         raise ValueError("CryptoMiniSat needs a clausal cardinality encoding")
@@ -1657,11 +1657,12 @@ def decide_class_representative_cryptosat(
         }
     )
     started = time.perf_counter()
-    with Solver(name="cryptosat", bootstrap_with=cnf.clauses) as engine:
+    with CryptoMinisat(bootstrap_with=cnf.clauses) as engine:
         for literals, rhs in xor_rows:
             engine.add_xor_clause(literals, value=bool(rhs))
-        if conflict_budget > 0:
-            engine.conf_budget(int(conflict_budget))
+        engine.conf_budget(
+            int(conflict_budget) if conflict_budget > 0 else (1 << 63) - 1
+        )
         if time_limit_s > 0:
             engine.time_budget(float(time_limit_s))
         answer = engine.solve_limited(expect_interrupt=False)

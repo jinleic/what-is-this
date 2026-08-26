@@ -88,15 +88,26 @@ square-branch/shear rigidity.  L31 proves one exact globally good
 fixed-field reciprocal member at \(w=13\).  It also finds an exact
 rational constant-two point immediately before the mandatory cube
 pullback, reduces that cube condition to two genus-\(2\) curves, and
-identifies AP1 as the exact parity replacement for Schinzel~H.  No
-uniform member theorem, controlled cube-compatible quartic point, AP1
-theorem, or five-count improvement is claimed, and the conditional
+identifies AP1 as the exact parity replacement for Schinzel~H.  L32
+gives automatic-\(\Phi\) rational maps with smooth constant-two bases at
+\(2\) and every odd target, while closing two natural fixed section
+menus.  L33 proves a positive order-\(X\) unweighted two-large
+bad-root pair main beyond Bombieri--Vinogradov, leaving the
+prime-weighted transfer as the precise analytic gap.  L34 shows that a
+conditioned root-pair upper bound by the unrestricted envelope
+\(0.974960\ldots<1\), rather than negligibility, would imply AP1.  That
+estimate is open.
+No uniform member theorem, controlled cube-compatible quartic point,
+AP1 theorem, or five-count improvement is claimed, and the conditional
 theorem is unchanged.
 % src: data/l23_half_sieve.jsonl; data/l24_diagonal_arithmetic.jsonl
 % src: data/l25_scaled_coupling.jsonl; data/l26_reciprocal_tie.jsonl
 % src: data/l27_triangular_shear.jsonl; data/l28_trace_field.jsonl
 % src: data/l29_reciprocal_frontier.jsonl; data/l30_quartic_frontier.jsonl
 % src: data/l31_frontier_push.jsonl
+% src: data/l32_local_parameter_frontier.jsonl
+% src: data/l33_unweighted_pair_main.jsonl
+% src: data/l34_ap1_pair_threshold.jsonl
 \end{abstract}
 
 \maketitle
@@ -248,11 +259,56 @@ remains open on other sections.
 % src: data/l29_reciprocal_frontier.jsonl; data/l30_quartic_frontier.jsonl
 % src: data/l31_frontier_push.jsonl; data/l31_magma_genus2.json
 
+L32 makes the remaining local/global distinction exact.  The maps
+\[
+a(t)=\frac{2t^2+2t+1}{2t^2+1},\qquad
+b_\kappa(u)=\frac{u^2+\kappa}{5u^2+\kappa},
+\quad\kappa\in\{1,2,-2\},
+\]
+lie in \(\Phi\) at \(2\) for all rational parameters.  A quartic
+character-sum bound and a three-squareclass identity supply a smooth
+L30 target base at every \(w\ge5\).  The uncontrolled places are now
+the emergent numerator and denominator primes.  Fixed proportional-trace
+menus and \(b=1\pm2a\) are proved non-uniform, but no global rational
+\(H_2\)-root follows.
+% src: data/l32_local_parameter_frontier.jsonl
+
+L33 proves that the unsigned root-pair term is genuinely a main term
+before prime weighting.  For \(0<\alpha<\beta<1/2\),
+\[
+\mathcal U_2(X;\alpha,\beta)
+\sim\frac18\log^2(\beta/\alpha)X.
+\]
+This is elementary CRT counting combined with L23 Chebotarev.  The
+remaining analytic problem is the transfer to
+\(\Lambda(Q(t))\), exact odd valuations, and the small-prime-clean
+sequence.
+% src: data/l33_unweighted_pair_main.jsonl
+
+L34 identifies the sharp sufficient relative root moment.  Let
+\(\mathcal P_2^{\rm root}\) oversieve even valuations.  Even Hilbert
+parity gives
+\[
+\mathcal N_{\rm good}
+\ge\#\mathcal A_z-\mathcal P_2^{\rm root}.
+\]
+At \(\vartheta=0.49\), the unrestricted Chebotarev pair envelope is
+\[
+\frac12\left(\frac12\log(8/0.49)\right)^2
+=0.9749604961\ldots<1.
+\]
+The divisor-product constraint only shrinks its pair region.  A
+conditioned prime-weighted root-pair upper bound by this envelope would
+therefore imply AP1 without resolving exact odd valuations.  It is not
+proved.
+% src: data/l34_ap1_pair_threshold.jsonl
+
 Accordingly, classical Schinzel's Hypothesis~H remains the sole
 conjectural input to the established six-universal-quantifier definition.
 The exact next frontiers are a uniform reciprocal member theorem, a
-cube-compatible controlled point on L30's quartic, or AP1 via a
-pointwise fixed-family Buchstab/Hilbert-detector asymptotic.  The
+globally controlled point on L30's automatic-\(\Phi\) quartic surfaces,
+or L34's conditioned prime-weighted root-pair moment, which would
+imply AP1 and the pointwise fixed-family detector theorem.  The
 theorem remains conditional: we make no new unconditional
 quantifier-record claim and do not claim that H10(\(\Q\)) is solved.
 % src: data/litscout_h10q.md; data/l23_half_sieve.jsonl

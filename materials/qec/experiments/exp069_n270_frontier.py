@@ -58,6 +58,7 @@ CYCLIC = (27, 5)
 K_MIN = 8
 K_MAX = 24
 TIME_LIMIT_S = 120.0
+DISTANCE_REFERENCE_THRESHOLD = 20
 PARTIAL_DIR = ROOT / "results" / "partial_runs" / "exp069_n270"
 
 LIANG_TARGETS: dict[str, dict[str, Any]] = {
@@ -425,6 +426,94 @@ def deepen_record(
     }
 
 
+def solve_residual_record(
+    record: dict[str, Any], *, time_limit_s: float = TIME_LIMIT_S
+) -> dict[str, Any]:
+    """Decide one residual serially and retain any physical domination witness."""
+    problem = E56.build_problem(record)
+    started = time.perf_counter()
+    cdcl = E55._cdcl_witness_bound(
+        problem["HX"],
+        problem["HZ"],
+        int(problem["block"]),
+        int(record["threshold"]),
+    )
+    output = dict(record)
+    output["initial_verdict"] = record["verdict"]
+    output["cdcl"] = cdcl
+    if cdcl["status"] == "SAT":
+        support = cdcl["witness_support"]
+        verification = verify_witness(record, support)
+        output.update(
+            {
+                "verdict": "dominated_by_cdcl_witness",
+                "solver_calls": 1,
+                "witness_bound": int(verification["weight"]),
+                "witness_support": support,
+                "wall_s": round(time.perf_counter() - started, 3),
+            }
+        )
+        return output
+
+    exact = E55.exact_distance_css(
+        problem["HX"],
+        problem["HZ"],
+        time_limit_s=float(time_limit_s),
+        workers=1,
+        upper_bound=int(record["threshold"]),
+    )
+    output["exact_decision"] = exact
+    decided = bool(
+        exact["d_X_all_sectors_decided"]
+        and exact["d_Z_all_sectors_decided"]
+    )
+    output.update(
+        {
+            "solver_calls": 2,
+            "screen_decided": decided,
+            "d_found": exact["d"],
+            "d_exact": bool(exact["d_exact"]),
+            "wall_s": round(time.perf_counter() - started, 3),
+        }
+    )
+    if exact["d"] is None:
+        output["verdict"] = "survivor" if decided else "undecided"
+        return output
+
+    threshold = int(record["threshold"])
+    support: list[int] | None = None
+    if exact["d_Z"] is not None and int(exact["d_Z"]) <= threshold:
+        support = exact["d_Z_witness"]
+    elif exact["d_X"] is not None and int(exact["d_X"]) <= threshold:
+        x_vector = np.zeros(int(problem["n"]), dtype=np.uint8)
+        x_vector[np.asarray(exact["d_X_witness"], dtype=int)] = 1
+        permutation = np.asarray(
+            E56.bb_duality_proof(problem)["permutation"], dtype=int
+        )
+        z_vector = (
+            x_vector
+            @ np.eye(int(problem["n"]), dtype=np.uint8)[permutation]
+        ) % 2
+        support = [
+            int(index) for index in np.flatnonzero(z_vector)
+        ]
+    if support is None:
+        output["verdict"] = "undecided"
+        return output
+    verification = verify_witness(record, support)
+    if int(verification["weight"]) > threshold:
+        raise RuntimeError("exact fallback witness exceeds the threshold")
+    output.update(
+        {
+            "verdict": "dominated_by_exact_witness",
+            "witness_bound": int(verification["weight"]),
+            "witness_support": support,
+            "witness_verification": verification,
+        }
+    )
+    return output
+
+
 def finalize_deep_record(
     record: dict[str, Any], deep: dict[str, Any]
 ) -> dict[str, Any]:
@@ -442,6 +531,55 @@ def finalize_deep_record(
     output["solver_calls"] = 0
     output["wall_s"] = round(float(deep["wall_time_s"]), 3)
     return output
+
+
+def resolve_candidate_record(
+    record: dict[str, Any], *, tries: int
+) -> dict[str, Any]:
+    if int(record["k_parent"]) == 8:
+        if int(record["threshold"]) < DISTANCE_REFERENCE_THRESHOLD:
+            output = dict(record)
+            output.update(
+                {
+                    "initial_verdict": record["verdict"],
+                    "verdict": "undecided",
+                    "solver_calls": 0,
+                    "wall_s": 0.0,
+                    "reference_pending": {
+                        "required_threshold": DISTANCE_REFERENCE_THRESHOLD,
+                        "reason": (
+                            "The two published n=270 distance-20 rows are not "
+                            "admissible until their local lower certificates pass."
+                        ),
+                    },
+                }
+            )
+            return output
+        return finalize_deep_record(
+            record, deepen_record(record, tries=tries)
+        )
+    if int(record["k_parent"]) < 20:
+        output = dict(record)
+        output.update(
+            {
+                "initial_verdict": record["verdict"],
+                "verdict": "undecided",
+                "solver_calls": 0,
+                "wall_s": 0.0,
+                "exact_pending": {
+                    "resource_reason": (
+                        "serial per-sector fallback exceeded the bounded "
+                        "screen budget"
+                    ),
+                    "observed_route": (
+                        "CP-SAT did not finish the first k=12 comparison "
+                        "class within five minutes"
+                    ),
+                },
+            }
+        )
+        return output
+    return solve_residual_record(record)
 
 
 def _initial_path(
@@ -548,7 +686,7 @@ def _resolved_path(
 ) -> Path:
     ell, m = lattice
     protocol_id = canonical_sha256(protocol)[:12]
-    return PARTIAL_DIR / f"resolved_{ell}x{m}_{protocol_id}_t{tries}.json"
+    return PARTIAL_DIR / f"resolved_v2_{ell}x{m}_{protocol_id}_t{tries}.json"
 
 
 def _screen_lattice_payload(
@@ -568,8 +706,8 @@ def _screen_lattice_payload(
             "schema": SCHEMA,
             "deep_tries": int(deep_tries),
             "processes": 1,
-            "threads": 1,
-            "external_solvers": False,
+            "max_solver_workers": 1,
+            "external_solvers": True,
         },
         "ell": ell,
         "m": m,
@@ -600,7 +738,7 @@ def resolve_screen(
     lattice: tuple[int, int],
     *,
     tries: int = 2_000,
-    checkpoint_every: int = 10,
+    checkpoint_every: int = 1,
 ) -> dict[str, Any]:
     """Resolve solver-free residuals serially and publish a validated shard."""
     if tries <= 0 or checkpoint_every <= 0:
@@ -623,7 +761,7 @@ def resolve_screen(
     if path.exists():
         payload = json.loads(path.read_text(encoding="utf-8"))
         if (
-            payload.get("schema") != "exp069-resolved-screen-v1"
+            payload.get("schema") != "exp069-resolved-screen-v2"
             or payload.get("protocol") != protocol
             or payload.get("lattice") != list(lattice)
             or payload.get("initial") != initial_binding
@@ -645,7 +783,7 @@ def resolve_screen(
         E56.atomic_write_json(
             path,
             {
-                "schema": "exp069-resolved-screen-v1",
+                "schema": "exp069-resolved-screen-v2",
                 "utc": E56.utc_now(),
                 "status": status,
                 "protocol": protocol,
@@ -657,8 +795,8 @@ def resolve_screen(
                 "resolved_records": resolved_records,
                 "resource_policy": {
                     "processes": 1,
-                    "threads": 1,
-                    "external_solvers": False,
+                    "max_solver_workers": 1,
+                    "external_solvers": True,
                 },
                 "wall_s": (
                     started_wall_s + time.perf_counter() - started
@@ -681,9 +819,7 @@ def resolve_screen(
                 residual_indexes[residual_position]
             ]
             resolved_records.append(
-                finalize_deep_record(
-                    record, deepen_record(record, tries=tries)
-                )
+                resolve_candidate_record(record, tries=tries)
             )
             if len(resolved_records) % checkpoint_every == 0:
                 checkpoint("RUNNING")

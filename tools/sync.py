@@ -44,7 +44,7 @@ PROJECTS = [
     dict(slug="uc", name="Union-closed sets conjecture (Frankl)",
          dirname="uc", session="019ff0a0-6557-7000-8b8c-9bdbccb719e4",
          keywords=("cert3", "union-closed", "Cambie", "Liu", "Frankl", "pscil"),
-         anchor="campaign J:",
+         anchor="BOLD FRONTIER CAMPAIGN IV",
          exclude_dirs=("campaigns",),
          papers=("README.md", "ANNOUNCEMENT.md", "PROOF.md",
                  "paper/main.pdf", "paper/main.tex", "paper/refs.bib")),

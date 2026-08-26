@@ -1845,3 +1845,158 @@ classical Schinzel H alone (`/tmp/l22_elimination.md`;
    sole conjectural input; no count or H10/\(\mathbb Q\) status changes
    (`l31_frontier_push.py`; `data/l31_frontier_push.jsonl`;
    `THEOREMS.md`, L31).
+
+## Session 2026-08-24 — L32: automatic-\(\Phi\) target maps
+
+1. **The dyadic base can be parameterized without a membership
+   search.**  For every \(t,u\in\mathbb Q\),
+   \[
+   \sigma(t)=\frac{t}{1+2t^2},\qquad
+   a(t)=1+2\sigma(t),\qquad
+   b_\kappa(u)=\frac{u^2+\kappa}{5u^2+\kappa}
+   \]
+   with \(\kappa\in\{1,2,-2\}\) satisfy
+   \[
+   v_2(\sigma(t))\ge0,\qquad v_2(a(t))=v_2(b_\kappa(u))=0.
+   \]
+   The proof is a complete three-case valuation split, not the finite
+   replay.
+
+2. **The \(a\)-map contains every regular constant-two target.**  With
+   \(d=2t^2+1\), \(n=2t^2+2t+1\), the relevant squareclasses are
+   \[
+   F_5=d^2+4n^2,\qquad F_9=5d^2+4n^2.
+   \]
+   Their degrees are \(4,4\), their resultant is \(2^{28}\), and their
+   odd discriminant primes are \(17\) and \(5,89\).  The indicator
+   expansion has Weil error
+   \((3+3+7)\sqrt w\), giving
+   \[
+   N_w\ge\frac{w-13\sqrt w}{4}-4>0\qquad(w\ge211).
+   \]
+   Exact exhaustion closes every \(5\le w<211\); all primes below
+   \(5000\) are a cross-check.
+
+3. **A three-map \(b\)-menu hits every odd target.**  Since
+   \[
+   (-1|w)(-2|w)(2|w)=1,
+   \]
+   at least one numerator \(u^2+\kappa\) has a simple root modulo
+   \(w\), while its denominator is \(-4\kappa\).  A lift gives
+   \(v_w(b_\kappa)=1\).  Combined with item 2 and L30, this supplies one
+   explicit rational-map base locally soluble at both \(2\) and every
+   \(w\ge5\).
+
+4. **The proportional-trace simplification is now classified.**  The
+   ansatz
+   \[
+   (b-1)^2/b=4ra^2
+   \]
+   has exactly the branches \(b=t^2/r,r/t^2\) and
+   \[
+   c=\frac{16a^6Z^2(1-Ar^2)}{AD}.
+   \]
+   If \(v_w(b)=1\) and \(a\) is a \(w\)-unit, both branches force
+   \(v_w(r)=-1\).  Hence every finite fixed \(r\)-menu misses all but
+   finitely many targets.
+
+5. **The two linear simplifications are not uniform.**  Although
+   \(b=1\pm2a\) gives \(N_g=\pm64a^5\), a target divisor forces
+   \(A\equiv2\pmod w\).  Regularity then holds only for
+   \(w\equiv5,19\bmod24\).
+
+6. **The global wall moved, but did not close.**  Base selection at
+   \(2\) and \(w\) is no longer the issue for L30.  The numerators and
+   denominators of the rational maps create uncontrolled emergent
+   primes, and no rational \(H_2\)-root satisfying all controlled
+   places follows.  The detector asymptotic and AP1 remain open
+   (`l32_local_parameter_frontier.py`;
+   `data/l32_local_parameter_frontier.jsonl`; `THEOREMS.md`, L32).
+
+## Session 2026-08-24 — L33: the unweighted pair main is a theorem
+
+1. **A positive pair main can be proved before prime weighting.**  For
+   \(0<\alpha<\beta<1/2\), let \(\mathcal U_2\) count simultaneous
+   bad-root classes for primes \(p,q\in[X^\alpha,X^\beta]\), with
+   unweighted \(t\in(X,2X]\).  L23 Chebotarev gives
+   \[
+   \sum\frac{r_-(p)}p
+   =\frac12\log(\beta/\alpha)+o(1).
+   \]
+   CRT gives \(r_-(p)r_-(q)\) classes and \(X/(pq)+O(1)\) points per
+   class.  Since \(2\beta<1\), the total class-counting error is
+   \(O(X^{2\beta})=o(X)\).  Therefore
+   \[
+   \boxed{\mathcal U_2(X;\alpha,\beta)
+   \sim\frac18\log^2(\beta/\alpha)X.}
+   \]
+
+2. **The first beyond-BV range already contains this main.**  Taking
+   \(\alpha=0.49\) and \(0.49<\beta<1/2\) puts every pair modulus above
+   \(X^{0.98}\), while retaining a positive order-\(X\) asymptotic.
+   Thus the unsigned root-pair main is no longer merely a formal
+   expectation.
+
+3. **The remaining estimate is exactly the hard transfer.**  L33 is
+   unweighted and uses the mod-\(p\) root oversieve.  Replacing the
+   class count by \(\Lambda(Q(t))\), imposing exact odd valuations via
+   \(p^2q^2\), and conditioning on L23 small-prime cleanliness are all
+   outside the theorem.  Those are precisely the pointwise
+   fixed-family detector problem; no negligible unsigned-pair estimate
+   is compatible with the proved unweighted main
+   (`l33_unweighted_pair_main.py`;
+   `data/l33_unweighted_pair_main.jsonl`; `THEOREMS.md`, L33).
+
+## Session 2026-08-24 — L34: a \(2.5\%\) pair-moment margin would prove AP1
+
+1. **Negligibility is stronger than needed.**  Because
+   \(R_{\rm bad}\) is even,
+   \[
+   \mathbf1_{\{R_{\rm bad}=0\}}
+   \ge1-\binom{R_{\rm bad}}2.
+   \]
+   Let \(\mathcal P_2\) use exact bad primes and let
+   \(\mathcal P_2^{\rm root}\) use all bad-sign root primes, including
+   even valuations.  Since \(R_{\rm bad}\le R_{\rm root}\),
+   \[
+   \mathcal N_{\rm good}
+   \ge\#\mathcal A_z-\mathcal P_2
+   \ge\#\mathcal A_z-\mathcal P_2^{\rm root}.
+   \]
+   Any strict relative root-pair bound below \(1\) proves AP1; exact
+   odd valuations are unnecessary for this upper-bound route.
+
+2. **The unrestricted octic envelope is below \(1\) in the BV
+   window.**  The large-bad-prime local mass is
+   \[
+   \mu(\vartheta)=\tfrac12\log(8/\vartheta).
+   \]
+   Ignoring the additional divisor-product constraint, the unordered
+   pair envelope \(\mu(\vartheta)^2/2\) is below \(1\) exactly when
+   \[
+   \vartheta>8e^{-2\sqrt2}=0.4728459724\ldots.
+   \]
+   At L23's \(\vartheta=0.49\),
+   \[
+   \mu^2/2=0.9749604961\ldots.
+   \]
+
+3. **The exact sufficient analytic theorem now has a constant.**  A
+   pointwise conditioned estimate
+   \[
+   \mathcal P_2^{\rm root}(X)
+   \le(0.9749604961\ldots+o(1))\#\mathcal A_z(X)
+   \]
+   would imply AP1, intermediate H, and the six-variable theorem
+   without classical Schinzel H.
+
+4. **The estimate is not proved.**  The \(50/49\) semilinear-sieve
+   ratio is too close to its lower limit to give this sharp constant,
+   and pair moduli start at \(X^{0.98}\).  The root oversieve avoids
+   \(p^2q^2\), but its prime-weighted moment after small-prime
+   conditioning is unavailable.  L33's positive unweighted main also
+   rules out an unsigned cancellation-to-zero strategy.  The
+   unconditional untied
+   seven-variable theorem remains separate
+   (`l34_ap1_pair_threshold.py`;
+   `data/l34_ap1_pair_threshold.jsonl`; `THEOREMS.md`, L34).

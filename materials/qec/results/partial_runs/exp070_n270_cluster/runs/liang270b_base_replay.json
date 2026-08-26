@@ -1,0 +1,77 @@
+{
+  "input": {
+    "HX_rank": 131,
+    "HX_sha256": "468305676835d9fbf4420042f537daec4e701054d89d0047717491cb66af7eae",
+    "HZ_rank": 131,
+    "HZ_sha256": "4ecec26359ccb79a094b5a3da9f98e6a9afdb52f7a24799334ce1c7f89ee3e7c",
+    "LX_rank": 8,
+    "LX_sha256": "678c59d137b3e25993f4b7232e6db42c5ca65262a7aa29640079df3985b77f9f",
+    "k": 8,
+    "n": 270,
+    "presentation": "original",
+    "schema": "exp070-connected-cluster-input-v1",
+    "target": "liang270b"
+  },
+  "input_files": {
+    "HX": {
+      "path": "results/partial_runs/exp070_n270_cluster/inputs/liang270b_original_HX.mtx",
+      "sha256": "fe0eb0ac0975064e01e9c7e8de79a030d38b8704e7f241b5d2131f373e006343"
+    },
+    "HZ": {
+      "path": "results/partial_runs/exp070_n270_cluster/inputs/liang270b_original_HZ.mtx",
+      "sha256": "fcf6011667a7da2b402f54be8eb25d47b061936ba07d7797e11044c9b334314e"
+    },
+    "LX": {
+      "path": "results/partial_runs/exp070_n270_cluster/inputs/liang270b_original_LX.mtx",
+      "sha256": "cd1f7cba552652dc2098bd828a58127390cb0747e0e02717a1d718f5845c2e67"
+    }
+  },
+  "invocation": [
+    "/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp070_n270_cluster/solver/dist-m4ri-src/src/dist_m4ri_prefix",
+    "method=2",
+    "finH=/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp070_n270_cluster/inputs/liang270b_original_HX.mtx",
+    "finG=/Users/jinleic/jinleic-workspace/math/qec/results/partial_runs/exp070_n270_cluster/inputs/liang270b_original_HZ.mtx",
+    "start=0",
+    "dmin=1",
+    "wmax=16",
+    "smax=0",
+    "debug=0",
+    "timeout=7200"
+  ],
+  "mode": "base",
+  "prefix": null,
+  "protocol": {
+    "dmin": 1,
+    "engine_variant": "legacy_single_thread_do_CC_dist_prefix",
+    "method": 2,
+    "mode": "base",
+    "parent_nice_priority": 15,
+    "prefix": null,
+    "processes": 1,
+    "root": 0,
+    "smax": 0,
+    "threads": 1,
+    "timeout_s": 7200.0,
+    "wmax": 16
+  },
+  "run_id": "replay",
+  "schema": "exp070-connected-cluster-run-v1",
+  "solver": {
+    "binary_sha256": "12dd8b65ff3d6f3a7ed3609d777fb7364670689606bba000b358be639e61e769",
+    "build": {
+      "binary": "results/partial_runs/exp070_n270_cluster/solver/dist-m4ri-src/src/dist_m4ri_prefix",
+      "binary_sha256": "12dd8b65ff3d6f3a7ed3609d777fb7364670689606bba000b358be639e61e769",
+      "m4ri_source_archive_sha256": "986c9d4bf77b906ece535f0c405d3637dbdc8ec6bd5823c01c2f9823e3217d1c",
+      "path": "results/partial_runs/exp070_n270_cluster/solver_build.json",
+      "sha256": "0ffeccdc01a7d6ae2ed8dc98cb7528ee5501e2729f577696b2eb4c9c14b7ce6f",
+      "source_archive_sha256": "e7fed74881ddd3a7bcd792e104dcddf37915927d68f53a333efbb3f7ab83f369",
+      "source_commit": "538d119f6e98b3782415eb78f7ce322a076f8101"
+    },
+    "name": "QEC-pages/dist-m4ri legacy STANDALONE prefix-partitioned method 2",
+    "source": "https://github.com/QEC-pages/dist-m4ri",
+    "source_commit": "538d119f6e98b3782415eb78f7ce322a076f8101"
+  },
+  "status": "RUNNING",
+  "target": "liang270b",
+  "utc": "2026-08-25T23:58:06.155728+00:00"
+}

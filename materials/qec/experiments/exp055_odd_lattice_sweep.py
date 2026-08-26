@@ -1679,6 +1679,8 @@ def _validate_screen_shard_records(shard: dict) -> None:
             "dominated_by_witness",
             "dominated_by_cdcl_witness",
             "dominated_by_automorphism_transport",
+            "dominated_by_deep_reduction",
+            "dominated_by_exact_witness",
         }:
             valid = bool(
                 record.get("witness_bound") is not None

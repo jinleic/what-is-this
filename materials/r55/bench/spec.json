@@ -798,9 +798,9 @@
  "next_research_campaign": {
   "id": "involution_f5_signed_completion",
   "date": "2026-08-24",
-  "status": "F5_RAMSEY_R33_SUPPORT_FILTER_EXACT_6627_LABELLED_705_D5_ORBITS: the exact 7,872/844 balanced-support census is filtered by five forced R(3,3) inequalities to 6,627 labelled supports in 705 D5 orbits. The filter rejects 139 orbits / 1,245 labelled supports and supplies 1,227 exact four-vertex W relation domains. Signed completion remains open.",
-  "claim_class": "Exact necessary reduction for Ramsey-good completions in the fixed-five srg(45,22,10,11) involution branch; not a completion theorem and not an R(5,5) bound.",
-  "problem": "For each of 705 surviving support orbits, enumerate or reject complementary signed Seidel blocks W,T satisfying Q_F R+RW=-J, W^2+2R^T R=45I-2J, T^2=45I, W_ij^2+T_ij^2=4, the exact W sign degrees, and the 1,227 recorded R(3,3) relation domains. Bare solver UNSAT, unchecked deletion, and unproved symmetry quotienting are outside the trust model.",
+  "status": "F5_RAMSEY_SIGNED_SQUARE_EMPTY_OVER_108_SUPPORT_ORBITS at the exhaustive finite-engine layer: 48,865,656 exact W row domains reduce 705 D5 supports to 155 W-square supports, 108 signed-square supports, and then zero Ramsey-good supports after 73,336 switching-gauge signed completions; every completion has both K5 and I5. Full VeriPB/CakePB coverage is incomplete (1 of 550 W-negative supports certified; 549 W-negative plus 155 deeper cases remain).",
+  "claim_class": "Exhaustive candidate-level negative for the fixed-five srg(45,22,10,11) involution branch, with one pinned VeriPB/CakePB control certificate; not yet a theorem-grade branch closure and not an R(5,5) bound.",
+  "problem": "Finish checked certification of the exhaustive candidate result without promoting enumerative no-goods to formula axioms: 549 remaining W-negative supports and all 155 deeper signed/Ramsey cases need sound derived VeriPB/CakePB certificates or an equivalently checked proof path. Bare solver UNSAT, unchecked deletion, self-certified DFS leaves, and unproved symmetry/projection counts remain outside the trust model.",
   "exact_frontier": {
    "input": {
     "labelled_supports": 7872,
@@ -820,7 +820,30 @@
     }
    },
    "relation_domains": 1227,
-   "disposition": "F5_RAMSEY_R33_SUPPORT_FILTER_EXACT_6627_LABELLED_705_D5_ORBITS"
+   "disposition": "F5_RAMSEY_R33_SUPPORT_FILTER_EXACT_6627_LABELLED_705_D5_ORBITS",
+   "completion_census": {
+    "linear_w_row_domains": 48865656,
+    "w_square": {
+     "surviving_d5_orbits": 155,
+     "surviving_labelled_supports": 1401
+    },
+    "signed_square": {
+     "surviving_d5_orbits": 108,
+     "surviving_labelled_supports": 986
+    },
+    "ramsey": {
+     "signed_switching_classes_checked": 73336,
+     "with_k5": 73336,
+     "with_i5": 73336,
+     "surviving_d5_orbits": 0
+    },
+    "certificate_coverage": {
+     "w_negative_total": 550,
+     "w_negative_veripb_cakepb": 1,
+     "deeper_negative_pending": 155,
+     "status": "PENDING_VERIPB_CAKEPB"
+    }
+   }
   },
   "primary_sources": [
    {

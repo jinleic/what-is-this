@@ -71,6 +71,9 @@ nothing in `scratch/` remains.
 | [`l30_quartic_frontier.py`](l30_quartic_frontier.py) + [`data/l30_quartic_frontier.jsonl`](data/l30_quartic_frontier.jsonl) | **L30 — PROVED constant-two quartic + all-target selected fibres + rigidity reductions, global point OPEN:** $(y,r)=(2,sX+\rho)$ yields an exact quadratic in $m=\lambda^2$, hence degree $4$ rather than L27's degree $8$.  A uniform dyadic Hensel proof and character theorem close every odd $w\ge5$; the exact fibre $(a,b,z)=(5,3,3)$ closes $w=3$ by strong Hensel, while $(1,3,3)$ is an empty fixed-$a$ control.  One real stratum works.  General rational square-branch ties have no generic norm section, general $B$-independent shear cancellation is impossible for $s\ne0$, and the square-pullback trace-base bundle retains a separate reciprocal-lift conic.  The bounded zero-hit scan is EVIDENCE only. Replay: `nice -n 19 python3 math/h10q/l30_quartic_frontier.py`. |
 | [`l31_frontier_push.py`](l31_frontier_push.py) + [`data/l31_frontier_push.jsonl`](data/l31_frontier_push.jsonl) | **L31 — one exact reciprocal member PROVED; other closures OPEN:** \(w=13,a=3,Z=169,q_0=1,b=13\) has a recursive Pocklington certificate and every Hilbert symbol \(+1\), with the mandatory lift \((\rho,\lambda)=(14/13,12)\).  The constant-\(c=-64/25\) section gives an exact rational \(H_2\)-point before the cube pullback and reduces cube compatibility to two genus-\(2\) curves.  The external Magma audit below proves both have only \(z=0\), closing this one section.  The analytic audit records the positive main term that signed cancellation cannot remove and proves AP1 equivalent to intermediate H. Replay: `nice -n 19 python3 math/h10q/l31_frontier_push.py`. |
 | [`data/l31_magma_genus2.json`](data/l31_magma_genus2.json) | **L31 external-CAS completeness audit:** exact Magma V2.29-9 request, output, version, and intrinsic-help semantics.  `RationalPointsGenus2` returns only \((0:\pm8:1)\) with completeness `true` for both cube-compatibility curves, so the unique constant-\(c\) section has no guarded nonzero cube point.  Scoped external proof; no checked-in standalone Magma certificate and no claim about other L30 sections. |
+| [`l32_local_parameter_frontier.py`](l32_local_parameter_frontier.py) + [`data/l32_local_parameter_frontier.jsonl`](data/l32_local_parameter_frontier.jsonl) | **L32 — automatic-\(\Phi\) all-target maps PROVED; global point OPEN:** \(a(t)=(2t^2+2t+1)/(2t^2+1)\) and the three \(b_\kappa(u)=(u^2+\kappa)/(5u^2+\kappa)\) maps are dyadically admissible for every rational parameter.  A degree-\(8\) Weil bound plus exact small-prime exhaustion gives a smooth L30 target base for every \(w\ge5\); \((-1|w)(-2|w)(2|w)=1\) gives \(v_w(b)=1\).  Fixed proportional-trace menus and \(b=1\pm2a\) are proved non-uniform.  Primes introduced by the rational-map numerators and denominators remain uncontrolled, so no global \(H_2\)-root, detector asymptotic, or AP1 follows. Replay: `nice -n 19 python3 math/h10q/l32_local_parameter_frontier.py`. |
+| [`l33_unweighted_pair_main.py`](l33_unweighted_pair_main.py) + [`data/l33_unweighted_pair_main.jsonl`](data/l33_unweighted_pair_main.jsonl) | **L33 — positive unweighted two-large root-pair main PROVED; prime-weighted transfer OPEN:** for every \(0<\alpha<\beta<1/2\), elementary CRT counting plus L23 Chebotarev gives \(\mathcal U_2(X;\alpha,\beta)\sim\frac18\log^2(\beta/\alpha)X\).  Taking \(\alpha=0.49\) proves an order-\(X\) unsigned pair main inside the first beyond-BV range.  This is the mod-\(p\) root oversieve on unweighted \(t\); replacing class counts by \(\Lambda(Q(t))\), imposing exact odd valuations, and conditioning on small-prime cleanliness remain the fixed-family detector problem. Replay: `nice -n 19 python3 math/h10q/l33_unweighted_pair_main.py`. |
+| [`l34_ap1_pair_threshold.py`](l34_ap1_pair_threshold.py) + [`data/l34_ap1_pair_threshold.jsonl`](data/l34_ap1_pair_threshold.jsonl) | **L34 — sharp relative pair-moment criterion for AP1 PROVED; estimate OPEN:** Hilbert parity gives \(\mathbf1_{R_{\rm bad}=0}\ge1-\binom{R_{\rm bad}}2\), hence \(\mathcal N_{\rm good}\ge\#\mathcal A_z-\mathcal P_2\).  The unrestricted Chebotarev pair envelope is \(\mu(\vartheta)^2/2\), \(\mu(\vartheta)=\frac12\log(8/\vartheta)\); the actual divisor-product constraint can only lower its pair region.  At L23's \(\vartheta=0.49\) the envelope is \(0.974960\ldots<1\), so a conditioned prime-weighted upper bound by it would imply AP1; an \(o\)-bound is unnecessary.  That safe \(2.5\%\)-margin estimate is not proved. Replay: `nice -n 19 python3 math/h10q/l34_ap1_pair_threshold.py`. |
 | Engine note (2026-08-18) | Proven-primality engine strengthened: `_pocklington` now uses trial division to $10^6$ (early abort at $F\ge n^{1/3}$, exact integer cube root) + the **Brillhart–Lehmer–Selfridge relaxation** (CP Thm 4.1.5: $F\ge n^{1/3}$, two-factor discriminant test). Every verdict still exact; `PrimalityBound` refusals remain non-evidence. Latest suites: default $58.56$ s, extended $179.74$ s. |
 | `data/l6_witnesses.jsonl`, `data/l9_steered.jsonl` | **Canonical serializations** of the authorities `_L6_WITNESSES` (61 rows) and `_L9_STEERED` (345 rows) in `h10q.py`. Byte-identical match required on every suite run — drift, absence, or any underived field fails the suite. Regenerate: `python3 h10q.py --export-evidence`. |
 | `data/l9_steer_run.jsonl`, `data/l9_rescue_*.jsonl` | Raw steered-search run artifacts — search-side provenance only, never citable evidence. |
@@ -439,25 +442,34 @@ session-side scripts (not recovered into the repo).
 
 The Schinzel-conditional chain remains closed on the fixed canonical
 branch.  L31 proves one exact reciprocal member and closes its unique
-constant-\(c\) quartic section after the cube; the uniform and full
-quartic problems remain open.
+constant-\(c\) quartic section after the cube.  L32 parameterizes
+\(\Phi\)-admissible bases with smooth local points at both \(2\) and
+every odd target, but the uniform global quartic problem remains open.
 
 1. **Primary reciprocal-tie target:** extend the proved \(w=13\)
    fixed-field member to every target.  The general mandatory slice is
    a sign-decorated degree-\(16\) binary-form norm problem; one exact
    member does not establish a density theorem.
-2. **Primary coupled-cover target:** leave the externally closed
-   \(c=-64/25\) section and construct a different target-specific
-   rational root of \(H_2(\lambda^2)=0\) satisfying \(Z=z^3\) and every
-   controlled place.
-3. **Primary analytic target:** prove a pointwise fixed-family
-   Buchstab/Hilbert-detector asymptotic with positive zero-bad constant.
-   Its first unavailable term is the two-large sector beyond
-   \(D_{\rm BV}\); signed character cancellation leaves a positive
-   root-pair main term.
-4. **Exact conjectural replacement:** prove AP1 for every cell.  Even
-   Hilbert parity makes \(R_{\rm bad}\le1\) equivalent to intermediate
-   H inside the L19–L22 protocol.
+2. **Primary coupled-cover target:** use L32's automatic-\(\Phi\)
+   all-target maps, or leave them for a genuinely different section,
+   to construct a rational root of \(H_2(\lambda^2)=0\) satisfying
+   \(Z=z^3\) and every controlled place.  The remaining obstruction is
+   emergent ramification from the map numerators and denominators, not
+   base selection at \(2\) or \(w\).
+3. **Primary analytic target:** prove L34's conditioned
+   prime-weighted root-pair upper bound
+   \[
+   \mathcal P_2^{\rm root}(X)
+   \le(0.9749604961\ldots+o(1))\#\mathcal A_z(X).
+   \]
+   It must transfer L33's unweighted main to the small-prime-clean
+   sequence; exact odd valuations are unnecessary, but every pair
+   modulus begins beyond \(D_{\rm BV}\).
+4. **Exact conjectural replacement:** the displayed strict
+   relative bound implies AP1 by
+   \(\mathbf1_{R_{\rm bad}=0}\ge1-\binom{R_{\rm bad}}2\).
+   Proving that bound, or AP1 by another route, removes classical
+   Schinzel H from the six-variable chain.
 5. **Scope guard:** classical Schinzel H remains unproved and the sole
    conjectural input to the six-count; H10/$\mathbb Q$ is open.
 6. **Optional side geometry:** the L22 Noether nonvanishing lemma and

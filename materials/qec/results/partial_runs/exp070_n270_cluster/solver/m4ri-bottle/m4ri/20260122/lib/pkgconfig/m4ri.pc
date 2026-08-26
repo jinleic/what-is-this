@@ -1,0 +1,12 @@
+prefix=@@HOMEBREW_CELLAR@@/m4ri/20260122
+exec_prefix=${prefix}
+libdir=@@HOMEBREW_CELLAR@@/m4ri/20260122/lib
+includedir=${prefix}/include
+
+Name: M4RI
+Description: Dense linear algebra over GF(2).
+Version: 20260122
+Requires.private: 
+Libs: -L${libdir} -lm4ri 
+Libs.private:  -lpng -lpng
+Cflags: -I${includedir} 

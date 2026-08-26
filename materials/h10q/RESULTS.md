@@ -1,8 +1,8 @@
-# H10 over Q — session results (2026-08-24, rev 18)
+# H10 over Q — session results (2026-08-24, rev 21)
 
 ## Deliverables
 - `NOTES.md` — problem map with exact theorem statements and arXiv ids.
-- `THEOREMS.md` — precise frontier statements through L31: published and
+- `THEOREMS.md` — precise frontier statements through L34: published and
   audited anchors; the audited six-unknown L6 architecture; the unchanged
   L19–L22 proof that classical Schinzel H implies the conditional record;
   L23's unconditional half-sieve and exact analytic/algebraic barriers;
@@ -13,10 +13,13 @@
   uniform trace-field and bad-sign-cover irreducibility; L29's complete
   reciprocal-lift squareclass classification and fixed-field reduction;
   L30's lower-degree constant-two quartic cover, square-branch rigidity,
-  and exact trace-base/lift separation; and L31's first proved
-  fixed-field reciprocal member, exact off-cube quartic point, dispersion
-  correction, and AP1 equivalence.  Schinzel H remains the sole
-  conjectural input (`THEOREMS.md`, L6 and L19–L31).
+  and exact trace-base/lift separation; L31's first proved fixed-field
+  reciprocal member, exact off-cube quartic point, dispersion correction,
+  and AP1 equivalence; L32's automatic-\(\Phi\) all-target maps plus
+  two section-menu obstructions; L33's positive unweighted two-large
+  root-pair asymptotic; and L34's sharp relative pair-moment criterion
+  for AP1.  Schinzel H remains the sole conjectural input
+  (`THEOREMS.md`, L6 and L19–L34).
 - `h10q.py` — stdlib-only executable model of both pillars, running on a
   **proven-primality arithmetic engine**: deterministic Miller–Rabin below the exact A014233
   13-base bound, generalized Pocklington $n{-}1$ certificates above it, explicit
@@ -133,6 +136,9 @@ membership checks are sampled or windowed, never claimed beyond their stated sco
 | **L29: reciprocal lift and dyadic compressor** | **PROVED local classification + exact reductions; uniform member/parity step remains OPEN** | For square $Z$ with even $t=v_2(Z)$, $\theta^2-4$ is square in the trace field exactly for $t=-2$ or $t\ge2$, and nonsquare for $t=0$ or $t\le-4$.  The negative cases exhaust every possible Eisenstein-quartic factor congruence; the exceptional split case uses a two-slope ordinary resultant, independently validated after replacing an under-specified higher-polygon presentation.  The pullback $Z=8z^2/(1+z^2)$ preserves every positive odd valuation and forces $t\ge2$.  The slice $b=w\rho^2$ freezes the norm field but has no generic section.  L31 promotes the \(w=13\) row to a proved global member; the remaining finite rows stay EVIDENCE and no per-target theorem follows (`l29_reciprocal_frontier.py`, `data/l29_reciprocal_frontier.jsonl`; `THEOREMS.md`, L29–L31). |
 | **L30: constant-two quartic frontier** | **PROVED degree drop + dyadic/all-target selected-fibre theorem; global rational point remains OPEN** | The specialization $(y,r)=(2,sX+\rho)$ gives the exact quadratic $H_2(m)=0$ in $m=\lambda^2$, hence a genuine even quartic on every $\Phi$ base rather than L27's octic.  A normalized Hensel argument solves every dyadic stratum; a two-quadratic character count gives fibre-regular aligned rows for every odd $w\ge5$; and the exact fibre $(a,b,z)=(5,3,3)$ is solved by strong Hensel at $w=3$.  The control $(1,3,3)$ is $\mathbb Q_3$-empty, so the theorem selects $a$ rather than claiming fixed-$a$ uniformity.  One guarded real stratum works.  The producer also proves generic square-branch/shear rigidity and exact trace-base/lift separation.  The $13{,}224$-row zero-hit global scan is EVIDENCE only (`l30_quartic_frontier.py`, `data/l30_quartic_frontier.jsonl`; `THEOREMS.md`, L30). |
 | **L31: one exact reciprocal member and sharpened remaining walls** | **PROVED exact member/reductions; uniform closure remains OPEN** | On the mandatory fixed-field slice, \(w=13,a=3,Z=169,q_0=1,b=13\) gives \(M=2^4Q/(3^2 37^3 83^2 1033^2)\), \(Q=14082426920623718389\) prime by a recursive Pocklington certificate, and \((M,26)_v=+1\) at every place.  The reciprocal lift is explicit: \(\rho=14/13,\lambda=12\).  Separately, \(a=1,c=-64/25,\lambda=3,b=-3253/3125,Z=2033125/6101423\) is an exact rational \(H_2\)-point before the cube condition; \(Z\) is not a cube and the shared prime \(3253\) leaves \(c\) a unit, so it is not an L30 target point.  Cube compatibility reduces to two genus-\(2\) curves.  The two-large sector is corrected to a positive-main Buchstab/Hilbert-detector problem beyond BV, not a signed-error-only estimate.  AP1 (\(R_{\rm bad}\le1\) in one selected class per cell) is equivalent to intermediate H by even Hilbert parity but remains OPEN (`l31_frontier_push.py`, `data/l31_frontier_push.jsonl`; `THEOREMS.md`, L31). |
+| **L32: automatic-\(\Phi\) target maps and section-menu obstructions** | **PROVED local parameterization; global rational point remains OPEN** | The maps \(\sigma(t)=t/(1+2t^2)\), \(a(t)=1+2\sigma(t)\), and \(b_\kappa(u)=(u^2+\kappa)/(5u^2+\kappa)\), \(\kappa\in\{1,2,-2\}\), lie in the dyadic \(\Phi\)-conditions for every rational parameter.  Quartics \(F_5=20t^4+32t^3+36t^2+16t+5\) and \(F_9=36t^4+32t^3+52t^2+16t+9\), with resultant \(2^{28}\), give \(N_w\ge(w-13\sqrt w)/4-4>0\) for \(w\ge211\); exact exhaustion closes \(5\le w<211\).  The identity \((-1|w)(-2|w)(2|w)=1\) lets the \(b\)-menu achieve \(v_w(b)=1\) at every odd target.  Thus one finite rational-map menu is locally soluble at both \(2\) and every \(w\ge5\).  Conversely, \((b-1)^2/b=4ra^2\) with fixed \(r\) can meet a unit-\(a\) target only when \(v_w(r)=-1\), so every finite fixed \(r\)-menu is non-uniform; \(b=1\pm2a\) covers only \(w\equiv5,19\bmod24\).  Emergent numerator/denominator primes remain uncontrolled (`l32_local_parameter_frontier.py`, `data/l32_local_parameter_frontier.jsonl`; `THEOREMS.md`, L32). |
+| **L33: unweighted two-large root-pair main** | **PROVED positive asymptotic; prime-weighted exact-odd transfer remains OPEN** | For every \(0<\alpha<\beta<1/2\), L23 Chebotarev gives \(\sum_{X^\alpha\le p\le X^\beta}r_-(p)/p=\frac12\log(\beta/\alpha)+o(1)\).  CRT supplies \(r_-(p)r_-(q)\) classes and \(X/(pq)+O(1)\) integers per class, while the total error is \(O(X^{2\beta})=o(X)\).  Hence \(\mathcal U_2(X;\alpha,\beta)\sim\frac18\log^2(\beta/\alpha)X\).  With \(\alpha=0.49\), this is a proved positive main in the first beyond-BV range.  The theorem is unweighted and uses the mod-\(p\) root oversieve; \(\Lambda(Q(t))\), exact odd valuations \(p^2q^2\), and small-prime cleanliness remain the pointwise fixed-family detector problem (`l33_unweighted_pair_main.py`, `data/l33_unweighted_pair_main.jsonl`; `THEOREMS.md`, L33). |
+| **L34: sharp pair-moment threshold for AP1** | **PROVED exact sufficient criterion; prime-weighted estimate remains OPEN** | Even Hilbert parity gives \(\mathbf1_{\{R_{\rm bad}=0\}}\ge1-\binom{R_{\rm bad}}2\).  Since \(R_{\rm bad}\le R_{\rm root}\), \(\mathcal N_{\rm good}\ge\#\mathcal A_z-\mathcal P_2^{\rm root}\); exact odd valuations are unnecessary for this upper-bound route.  With \(\mu(\vartheta)=\frac12\log(8/\vartheta)\), the unrestricted pair envelope \(\mu(\vartheta)^2/2\) is below \(1\) for \(\vartheta>8e^{-2\sqrt2}\); the divisor-product constraint can only lower its region.  At \(\vartheta=0.49\) the envelope is \(0.9749604961\ldots\).  Thus \(\mathcal P_2^{\rm root}\le(0.9749604961\ldots+o(1))\#\mathcal A_z\) would imply AP1.  Current sieve constants and beyond-BV prime weighting after small-prime conditioning do not prove this safe \(2.5\%\)-margin estimate (`l34_ap1_pair_threshold.py`, `data/l34_ap1_pair_threshold.jsonl`; `THEOREMS.md`, L34). |
 | **L21d/e: precursor on the constructed branch** | **PROVED generically + PROVED per cell on 353/353; SUPERSEDED AS THE FRONTIER by L22** | Generic: $H=(A/4)P$ has $L=a^8A^2Z^4$ as both end coefficients; the $(a,Z)=(1,27)$ specialization is irreducible mod $17$, proving irreducibility over $\mathbb Q(a,Z)$.  The former vertical-line repair used 353/353 exact fibre certificates plus Cohen–Serre quantitative HIT; L22 now proves every fixed nonzero rational $Z$ directly (`data/l21_irred_generic.jsonl`; `/tmp/l22_elimination.md`). |
 | **L21: the reducible locus, and its avoidance** | **PROVED (both lemmas)** | (a) $s=0$ and $\delta_\tau=\sigma^2$ a square $\Rightarrow$ $P=(4DAb^2-\sigma a^2Z^2N_g)(4DAb^2+\sigma a^2Z^2N_g)$ — an explicit $4\times4$ factorization, so blanket irreducibility is **false**; 56/56 exact, 8/8 controls inapplicable. (b) On the constructed branch $\delta_{\tau^\dagger}=-4a^4/A<0$, never a square, so the degeneration **cannot occur there**, for any $a$ or cell (9/9). Square class of $\delta_{\tau^\dagger}$ is that of $-A$. (c) $P+32A^3s^2D^2b^5$ is palindromic, $P_0=P_8$ always (288/288) $\Rightarrow$ Galois group in $C_2\wr S_4$ (`data/l21_reducible_locus.jsonl`) |
 | **L20: uniform class existence** | **PROVED** | For every cell take $f=w$ (available since $v_w(z)\ge1$); pick odd $a$ with $(A\mid w)=-1$.  The character sum is $-1$, with exactly $\bigl(w-\left(\frac{-1}{w}\right)\bigr)/2$ qualifying residues: $(w+1)/2$ for $w\equiv3\bmod4$, $(w-1)/2$ for $w\equiv1\bmod4$.  Thus the set is always nonempty.  The explicit residue system for $q_1$ mod $M=4A\prod_Sp$ has $\varphi(M)/2^{\#\{p\}}$ classes, and Dirichlet finishes. **Clause (ii) of H is removed for every cell.** 103/103 canonical rows reproduced (1,113,000 residues enumerated), 353/353 grid certificates clean, composite $A$ replayed, 0 refusals (`data/l19_classexist.jsonl`). Fixing $a=1$ collides exactly at $w=11,19,31,59,71,79$ — the independently derived 5-wall set |
@@ -151,7 +157,7 @@ membership checks are sampled or windowed, never claimed beyond their stated sco
 
 QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$, sq branch, $q\in3001..8000$) died on a benign `NameError` in the loop body — fix pending, no result claimed or counted.
 
-## Findings (rev 18)
+## Findings (rev 21)
 1. **L1 is published.** Cornelissen–Zahidi math/0006140, Ex. 2.2(a) + Rem. 2.4 ⟹ no one-witness
    definition of $\mathbb{Z}$ in $\mathbb{Q}$.
 2. **L2 repaired into L2′ — a structure theorem** (advisory upheld; written proof in
@@ -463,9 +469,23 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
     AP1 is equivalent to intermediate H.  Neither the uniform member
     theorem, another controlled quartic point, fixed-family detector
     asymptotic, nor AP1 is proved.
+25. **L32 — the dyadic and target base now has an explicit rational
+    parameterization.**  Automatic-\(\Phi\) maps select smooth local
+    L30 bases at \(2\) and every odd target.  Fixed proportional-trace
+    menus and \(b=1\pm2a\) are proved non-uniform.  Emergent map primes
+    remain uncontrolled.
+26. **L33 — the unweighted pair main is positive.**  For
+    \(0<\alpha<\beta<1/2\),
+    \(\mathcal U_2\sim\frac18\log^2(\beta/\alpha)X\).  This puts a
+    proved order-\(X\) unsigned main in the first beyond-BV window.
+27. **L34 — a sharp root-pair upper bound below \(1\) would prove
+    AP1.**  The root oversieve avoids exact odd valuations, and the
+    unrestricted \(\vartheta=0.49\) pair envelope is
+    \(0.9749604961\ldots\).  The conditioned prime-weighted estimate is
+    unproved.
 
 
-## The frontier, stratified (rev 18)
+## The frontier, stratified (rev 21)
 - **F1** ($\exists^k$ definability of $\mathbb{Z}$): $k=1$ is closed
   [CZ 2000], while $k=2$ is the first open case (sources and bounds:
   `THEOREMS.md`, L1 and consequences table).
@@ -473,8 +493,8 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
   $2\le m\le7$ and the refereed upper bound is $10$ (`THEOREMS.md`, A1–A2).
   **Classical Schinzel H conditionally narrows the range to
   $2\le m\le6$**, equivalently
-  $\operatorname{efd}\in[1,5]$ (`THEOREMS.md`, L22d and L24e–L31;
-  `CONDITIONAL.md`, §1).  L23–L31 neither remove Schinzel H nor improve
+  $\operatorname{efd}\in[1,5]$ (`THEOREMS.md`, L22d and L24e–L34;
+  `CONDITIONAL.md`, §1).  L23–L34 neither remove Schinzel H nor improve
   this record.
 - **F3** (cofinite subrings): L2′ closes the elliptic-integrality route
   decidably; infinite excluded prime sets are necessary
@@ -487,24 +507,24 @@ QS2/L13-audit crash note (2026-08-18): the hi-q leg of the same driver ($a{=}17$
 - **F5** (unconditional member frontier): small-prime cleanliness for
   the selected linear/octic sequence is a theorem, and L31 proves one
   globally good reciprocal member at \(w=13\), but no per-target member
-  theorem.  The exact analytic frontier is a fixed-family
-  Buchstab/Hilbert-detector asymptotic whose first unavailable term is
-  the two-large-bad-divisor sector outside BV.  L28 closes the L26
-  quartic trace field and bad-sign squareclass; L29 classifies the
-  distinct reciprocal lift and freezes the moving field on
-  \(b=w\rho^2\).  L30 replaces L27's degree-$8$ equation by a
-  degree-$4$ constant-two cover.  L31 gives an exact rational root
-  before the cube pullback, but its \(Z\) is not a cube.  The external
-  complete genus-\(2\) calculation closes that unique constant-\(c\)
-  section; other controlled cube-compatible points remain open.  AP1 is
-  equivalent to intermediate H and remains unproved
-  (`THEOREMS.md`, L23–L31).
+  theorem.  L30 supplies the degree-\(4\) constant-two cover, while L32
+  parameterizes bases locally at \(2\) and every odd target; other map
+  primes remain uncontrolled.  L33 proves that the unweighted
+  root-pair sector has a positive order-\(X\) main.  L34 shows that the
+  conditioned prime-weighted root-oversieve bound
+  \[
+  \mathcal P_2^{\rm root}
+  \le(0.9749604961\ldots+o(1))\#\mathcal A_z
+  \]
+  would imply AP1 without exact odd valuations.  That beyond-BV sharp
+  estimate is not proved.  AP1 remains equivalent to intermediate H
+  (`THEOREMS.md`, L23–L34).
 
 
 ## Honest assessment
 No Hilbert problem fell.  The record remains **CONDITIONAL**, not
 unconditional: classical Schinzel H is unproved, and H10/$\mathbb Q$
-remains open (`THEOREMS.md`, L22d and L24e–L31;
+remains open (`THEOREMS.md`, L22d and L24e–L34;
 `CONDITIONAL.md`, §1).  L31's \(w=13\) row is a genuine global member,
 but one row does not prove the uniform per-cell hypothesis.  Its exact
 quartic point fails the cube/target condition.  AP1, the fixed-family

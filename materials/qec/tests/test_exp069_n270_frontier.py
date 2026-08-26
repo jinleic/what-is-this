@@ -90,6 +90,86 @@ def test_deep_resolution_is_fail_closed() -> None:
     assert open_record["witness_bound"] == 20
 
 
+def test_exact_fallback_persists_a_physical_z_witness(monkeypatch) -> None:
+    record = {
+        "ell": 3,
+        "m": 3,
+        "n": 18,
+        "A": [[0, 0], [0, 1], [0, 2]],
+        "B": [[0, 0], [1, 0], [0, 1]],
+        "k_parent": 4,
+        "orbit": 1,
+        "threshold": 2,
+        "threshold_source": "small-control",
+        "verdict": "solver_required",
+        "solver_calls": 0,
+    }
+    monkeypatch.setattr(
+        E69.E55,
+        "_cdcl_witness_bound",
+        lambda *_args: {
+            "status": "UNSAT",
+            "cnf_sha256": "control",
+            "encoding_version": "control",
+            "solver": {"name": "control"},
+        },
+    )
+
+    resolved = E69.solve_residual_record(record, time_limit_s=30.0)
+
+    assert resolved["verdict"] == "dominated_by_exact_witness"
+    assert resolved["screen_decided"] is True
+    assert resolved["witness_bound"] == 2
+    assert len(resolved["witness_support"]) == 2
+    assert E69.verify_witness(
+        record, resolved["witness_support"]
+    )["weight"] == 2
+
+
+
+def test_k8_resolution_waits_for_a_bound_n270_reference(monkeypatch) -> None:
+    record = {
+        "k_parent": 8,
+        "threshold": 18,
+        "threshold_source": "EXP-067 [[234,8,18]]",
+        "verdict": "solver_required",
+        "solver_calls": 0,
+    }
+    monkeypatch.setattr(
+        E69,
+        "deepen_record",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("premature deep search")
+        ),
+    )
+    monkeypatch.setattr(
+        E69,
+        "solve_residual_record",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("premature exact search")
+        ),
+    )
+
+    deferred = E69.resolve_candidate_record(record, tries=2_000)
+
+    assert deferred["verdict"] == "undecided"
+    assert deferred["reference_pending"]["required_threshold"] == 20
+    assert deferred["solver_calls"] == 0
+
+    hard = E69.resolve_candidate_record(
+        {
+            **record,
+            "k_parent": 12,
+            "threshold": 12,
+            "threshold_source": "EXP-037 [[180,12,12]]",
+        },
+        tries=2_000,
+    )
+    assert hard["verdict"] == "undecided"
+    assert hard["exact_pending"]["resource_reason"] == (
+        "serial per-sector fallback exceeded the bounded screen budget"
+    )
+
 def test_initial_screen_is_serial_checkpointed_and_resumable(
     tmp_path: Path, monkeypatch
 ) -> None:

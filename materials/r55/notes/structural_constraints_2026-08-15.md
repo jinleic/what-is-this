@@ -1153,3 +1153,42 @@ strongly regular branch. Signed completion of the 705 survivors remains open,
 as do fixed counts `1,9,13`, Ramsey-good strongly regular graphs with no
 nontrivial involution, and all non-strongly-regular graphs. No Ramsey-number
 bound changes.
+
+## Computational status after Theorem 12 (2026-08-24)
+
+The finite signed completion search has been exhausted, without yet promoting
+its negative result to a theorem. For each of the 705 representatives, exact
+meet-in-the-middle enumeration produces every row of `W` satisfying (5), the
+sign degrees, and (10). There are 48,865,656 such rows in total. A symmetric
+`W` is exactly a 20-clique in the resulting partite compatibility graph:
+compatibility of rows `i,j` means agreement at `(i,j)` and their prescribed
+inner product in (11). The diagonal entries of (11) are automatic from the
+eight nonzero off-diagonal `W` entries.
+
+The exact stages are:
+
+```text
+705 D5 supports / 6,627 labelled supports
+    -- W square --> 155 / 1,401
+    -- T square --> 108 /   986
+    -- K5/I5  -->   0 /     0.
+```
+
+For a fixed `W`, the 11-regular support of `T` is connected. Conjugating `T`
+by a diagonal sign matrix corresponds to swapping vertices inside
+transposition orbits, so every switching class has a representative in which
+the edges of a fixed spanning tree are positive. Exhausting that gauge yields
+73,336 signed completions. Direct reconstruction finds both a `K5` and an
+`I5` in every completion.
+
+This establishes a complete **candidate-level** negative for the fixed-five
+branch, conditional on the finite engines. It is not yet a theorem-grade
+negative: the complete VeriPB/CakePB proof bundle is pending. The sound
+certificate control for source representative 0 derives its DFS clauses
+inside the proof (none is inserted as an unproved formula axiom), contains no
+unchecked deletion, and is accepted by both pinned checkers. Coverage is
+1 of 550 `W`-negative supports; 549 other `W` negatives and all 155 deeper
+signed/Ramsey cases remain uncertified. Accordingly,
+`data/involution_f5_ramsey_square_census.json` retains
+`PENDING_VERIPB_CAKEPB`, and no theorem or Ramsey-number bound is claimed from
+the exhaustive search alone.

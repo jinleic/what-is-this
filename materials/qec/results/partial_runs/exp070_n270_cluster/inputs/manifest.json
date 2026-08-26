@@ -20,24 +20,6 @@
     },
     {
       "HX_rank": 131,
-      "HX_sha256": "ada7fc8898b43cef574991693ad9cd2678da94f1de592ec40a3c58ce03fedd75",
-      "HZ_rank": 131,
-      "HZ_sha256": "77a201226296b93d54d7a109741e1e5a306dddd379e75b35a8cf49c54fc8e454",
-      "LX_rank": 8,
-      "LX_sha256": "dc3034a031130eb318e3217916cf4159d14567d13dc7b60faf21fb0ed0c2cb6e",
-      "k": 8,
-      "n": 270,
-      "paths": {
-        "HX": "results/partial_runs/exp070_n270_cluster/inputs/liang270a_block_swapped_HX.mtx",
-        "HZ": "results/partial_runs/exp070_n270_cluster/inputs/liang270a_block_swapped_HZ.mtx",
-        "LX": "results/partial_runs/exp070_n270_cluster/inputs/liang270a_block_swapped_LX.mtx"
-      },
-      "presentation": "block_swapped",
-      "schema": "exp070-connected-cluster-input-v1",
-      "target": "liang270a"
-    },
-    {
-      "HX_rank": 131,
       "HX_sha256": "468305676835d9fbf4420042f537daec4e701054d89d0047717491cb66af7eae",
       "HZ_rank": 131,
       "HZ_sha256": "4ecec26359ccb79a094b5a3da9f98e6a9afdb52f7a24799334ce1c7f89ee3e7c",
@@ -51,24 +33,6 @@
         "LX": "results/partial_runs/exp070_n270_cluster/inputs/liang270b_original_LX.mtx"
       },
       "presentation": "original",
-      "schema": "exp070-connected-cluster-input-v1",
-      "target": "liang270b"
-    },
-    {
-      "HX_rank": 131,
-      "HX_sha256": "8c9438e018d2b5e211b7dc0d93fc9aa2de40316f034cf508a167ea308ad23841",
-      "HZ_rank": 131,
-      "HZ_sha256": "1da3385694e5f4731d1eb54851905017f14318ae3012aa81a53e591f5c955ec5",
-      "LX_rank": 8,
-      "LX_sha256": "cbc47488f376561dab2ec22c938257b656de7d5a4405624b3b9049a4332b170b",
-      "k": 8,
-      "n": 270,
-      "paths": {
-        "HX": "results/partial_runs/exp070_n270_cluster/inputs/liang270b_block_swapped_HX.mtx",
-        "HZ": "results/partial_runs/exp070_n270_cluster/inputs/liang270b_block_swapped_HZ.mtx",
-        "LX": "results/partial_runs/exp070_n270_cluster/inputs/liang270b_block_swapped_LX.mtx"
-      },
-      "presentation": "block_swapped",
       "schema": "exp070-connected-cluster-input-v1",
       "target": "liang270b"
     }

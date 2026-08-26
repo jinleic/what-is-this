@@ -19,6 +19,7 @@ dependencies = [
     "python-sat>=1.8",
     "pyyaml>=6.0",
     "tqdm>=4.66",
+    "pycryptosat==5.14.7",
 ]
 
 [project.optional-dependencies]

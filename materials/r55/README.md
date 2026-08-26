@@ -634,6 +634,73 @@ These are necessary completion checks, not existence claims.
 Terminal disposition:
 `F5_RAMSEY_R33_SUPPORT_FILTER_EXACT_6627_LABELLED_705_D5_ORBITS`. This is an
 exact necessary filter only for Ramsey-good completions in the fixed-five
-strongly regular branch. Signed completion of the 705 survivors, fixed counts
-`1,9,13`, Ramsey-good strongly regular graphs with no nontrivial involution,
-and all non-strongly-regular graphs remain open. No `R(5,5)` bound changes.
+strongly regular branch. Its signed completion is exhausted computationally
+below but awaits full proof certification. Fixed counts `1,9,13`, Ramsey-good
+SRGs with no nontrivial involution, and all non-strongly-regular graphs remain
+open. No `R(5,5)` bound changes.
+
+## Fixed-five signed completion frontier (exhausted; certification incomplete, 2026-08-24)
+
+The full signed search has now been exhausted at the candidate level, but the
+branch is **not yet promoted to a proved negative** because the complete
+VeriPB/CakePB bundle is still missing.
+
+For each of the 705 Ramsey-support representatives, the producer enumerates
+every exact linear `W` row domain satisfying the cross equation, sign degrees,
+and recorded four-vertex restrictions. The complete table contains
+**48,865,656 row domains** over 14,100 rows. Selecting one domain per row turns
+the invariant square equation into a 20-partite clique condition: two selected
+rows must agree on their shared entry and have the prescribed Gram inner
+product. Exact integer DFS gives:
+
+```text
+705 D5 support orbits / 6,627 labelled supports
+  -> W^2: 155 orbits / 1,401 labelled supports
+  -> T^2: 108 orbits /   986 labelled supports
+```
+
+The `T` search fixes a positive spanning tree in its 11-regular support graph.
+This is an exact switching gauge: conjugation by a diagonal sign matrix
+preserves `T^2=45I` and corresponds to swapping the two vertices inside
+transposition orbits. No projected solution count is treated as an orbit
+count, and no residual identical-column symmetry is used to delete cases.
+
+Across the 108 signed-square survivors, the exhaustive gauge-fixed search
+reconstructs **73,336 signed completions**. Every one contains both a `K5` and
+an `I5`; no Ramsey-good completion survives. The first witness for every
+signed-support survivor is also reconstructed independently in Python and
+rechecked for `srg(45,22,10,11)`, the full `W/T` equations, `K5`, and `I5`.
+
+Artifacts and dispositions:
+
+```text
+data/involution_f5_w_square_census.json
+  F5_W_SQUARE_CENSUS_HAS_155_SURVIVING_SUPPORT_ORBITS
+data/involution_f5_signed_square_census.json
+  F5_SIGNED_SQUARE_CENSUS_HAS_108_SURVIVING_SUPPORT_ORBITS
+data/involution_f5_ramsey_square_census.json
+  F5_RAMSEY_SIGNED_SQUARE_EMPTY_OVER_108_SUPPORT_ORBITS
+```
+
+The trust boundary remains explicit. A deletion-free DFS certificate for
+source representative `0` has been checked by pinned VeriPB
+`6d38dab246af9c321b8f17cb5a187f2fbb9e491d`, elaborated, and checked again by
+pinned CakePB `a7593ef22de2fc0b47a688f2d4f08e6b742735af`; the independent replay
+prints `veripb_unsat=true` and `cakepb_unsat=true`. This is a **single-case
+certificate control**, not coverage of the campaign: 549 other `W`-negative
+supports plus all 155 deeper signed/Ramsey cases still need checked
+certificates. The committed Ramsey artifact therefore deliberately says
+`PENDING_VERIPB_CAKEPB`.
+
+```bash
+./.venv/bin/python -m unittest \
+  r55.tests.test_involution_f5_signed_completion \
+  r55.tests.test_involution_f5_signed_square_census -v
+./.venv/bin/python r55/src/check_involution_f5_w_dfs_certificate.py
+```
+
+Candidate-level computation now rules out the fixed-five branch, conditional
+on its independently reviewable finite engines. The theorem-grade branch
+closure remains pending the full proof bundle. Fixed counts `1,9,13`,
+Ramsey-good SRGs without nontrivial involutions, and all non-strongly-regular
+graphs remain open. No general `R(5,5)` bound changes.

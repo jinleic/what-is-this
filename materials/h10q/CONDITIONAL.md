@@ -5,9 +5,12 @@ Classical Schinzel H is unproved.  The implication is proved in
 `THEOREMS.md` L19–L22; the six-unknown architecture and count are
 `THEOREMS.md` L6.  L31 proves that AP1 (\(R_{\rm bad}\le1\) in one
 selected aligned class per cell) is equivalent to the intermediate
-per-cell statement H, but AP1 remains unproved.  H is a proved
-consequence of classical Schinzel H, not an additional conjectural
-premise.
+per-cell statement H, but AP1 remains unproved.  L32 parameterizes the
+dyadic and target local bases; L33 proves the positive unweighted pair
+main; and L34 gives the sharp \(0.974960\ldots\) relative moment that
+would suffice for AP1.  That prime-weighted estimate is open.  H is a
+proved consequence of classical Schinzel H, not an additional
+conjectural premise.
 
 Conventions follow `THEOREMS.md`: $K=\mathbb Q$, $S=\{2\}$,
 $\pi=2$, $u=1$,
@@ -355,7 +358,7 @@ All bibliographic details below were source-checked in
   reasons documented in the source-checked literature report
   (`data/litscout_h10q.md`).
 
-### 4.3 L23–L31: unconditional frontier theorems, but no uniform member theorem
+### 4.3 L23–L34: unconditional frontier theorems, but no uniform member theorem
 
 L23 now proves a genuine unconditional theorem for the selected
 linear/octic sequence.  After absorbing the finitely many exceptional
@@ -479,6 +482,58 @@ in.  Other L30 sections remain open
 (`data/l31_frontier_push.jsonl`;
 `data/l31_magma_genus2.json`).
 
+L32 removes a local base-selection ambiguity without changing that
+conclusion.  The rational maps
+\[
+a(t)=\frac{2t^2+2t+1}{2t^2+1},\qquad
+b_\kappa(u)=\frac{u^2+\kappa}{5u^2+\kappa},
+\quad\kappa\in\{1,2,-2\},
+\]
+lie in \(\Phi\) at \(2\) for every rational parameter.  A quartic
+character-sum theorem selects \(a(t)\) at every \(w\ge5\), and
+\((-1|w)(-2|w)(2|w)=1\) selects a \(b_\kappa(u)\) with
+\(v_w(b_\kappa)=1\).  Thus one finite rational-map menu has local L30
+points at both \(2\) and every odd target.  The maps do not control the
+other primes introduced by their numerators and denominators, so they
+do not produce a global \(H_2\)-root or imply AP1.  L32 also proves
+that every finite fixed proportional-trace menu is non-uniform and
+that \(b=1\pm2a\) covers only \(w\equiv5,19\bmod24\)
+(`data/l32_local_parameter_frontier.jsonl`; `THEOREMS.md`, L32).
+
+L33 proves that the unsigned root-pair main itself is not negligible
+before prime weighting.  For every \(0<\alpha<\beta<1/2\),
+\[
+\mathcal U_2(X;\alpha,\beta)
+\sim\frac18\log^2(\beta/\alpha)X.
+\]
+This follows from L23 Chebotarev and elementary CRT counting.  With
+\(\alpha=0.49\), it lies wholly beyond BV.  What remains open is the
+transfer to the \(\Lambda(Q(t))\)-weighted, exact-odd-valuation,
+small-prime-clean sequence, not cancellation of an unsigned error term
+(`data/l33_unweighted_pair_main.jsonl`; `THEOREMS.md`, L33).
+
+L34 sharpens the sufficient detector theorem.  Let
+\(\mathcal P_2^{\rm root}\) count pairs of bad-sign root primes,
+oversieving even valuations.  Even Hilbert parity and
+\(R_{\rm bad}\le R_{\rm root}\) give
+\[
+\mathcal N_{\rm good}
+\ge\#\mathcal A_z-\mathcal P_2^{\rm root}.
+\]
+For \(\vartheta=0.49\), the unrestricted Chebotarev pair envelope is
+\[
+\frac12\left(\frac12\log(8/0.49)\right)^2
+=0.9749604961\ldots<1;
+\]
+the divisor-product constraint can only reduce the admissible pair
+region.  Thus a conditioned prime-weighted root-pair upper bound by
+this envelope would prove AP1 and remove classical Schinzel H from the
+six-variable chain.  Exact odd valuations are unnecessary for this
+route.  The estimate is not proved; this is a sufficient reduction
+with a safe \(2.5\%\) margin, not an unconditional
+closure
+(`data/l34_ap1_pair_threshold.jsonl`; `THEOREMS.md`, L34).
+
 Consequently classical Schinzel H has **not** become proved, weaker, or
 removable in Theorem C.  The exact next targets are a uniform-in-target
 reciprocal member theorem, a cube-compatible controlled root of L30's
@@ -489,10 +544,10 @@ Theorem C remains **CONDITIONAL on classical Schinzel H alone**.
 
 ## 5. Provenance and discipline
 
-- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L31;
+- Authorities: `h10q.py` frozen tables; `THEOREMS.md` L6–L34;
   `RESULTS.md`; and the cited `data/` artifacts.  The L22 proof reports
   remain `/tmp/l22_elimination.md` and
-  `/tmp/l22_reciprocal_cube.md`; all L23–L31 producer/data pairs are
+  `/tmp/l22_reciprocal_cube.md`; all L23–L34 producer/data pairs are
   inventoried in `README.md`.
 - Engine discipline remains proven-primality only.  The exact
   Miller–Rabin, Pocklington and Brillhart–Lehmer–Selfridge scopes are
@@ -514,10 +569,10 @@ Theorem C remains **CONDITIONAL on classical Schinzel H alone**.
   theorem, not extrapolation from the scan.
 - Nothing here depends on Sun's unrefereed §§3–8 chain.  Soundness is
   inherited from the audited block; completeness of the conditional
-  implication uses L19–L22 and classical Schinzel H.  L23–L31 sharpen
+  implication uses L19–L22 and classical Schinzel H.  L23–L34 sharpen
   the frontier but do not prove AP1 or replace that conjectural input.
 - **Final status:** the six-universal-quantifier record and
   $\operatorname{efd}\le5$ are established conditionally on classical
-  Schinzel H alone (`THEOREMS.md`, L22d and L24e–L31).  Classical
+  Schinzel H alone (`THEOREMS.md`, L22d and L24e–L34).  Classical
   H is unproved, so H10/$\mathbb Q$ and the unconditional six-quantifier
   statement remain open.
