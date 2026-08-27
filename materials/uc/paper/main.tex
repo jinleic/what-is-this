@@ -279,7 +279,7 @@ Then
 
 \begin{corollary}[Union-closed consequence]
 \label{cor:uc}
-Every finite union-closed family $\mathcal F\ne\{\emptyset\}$ has an element
+Every finite nonempty union-closed family $\mathcal F\ne\{\emptyset\}$ has an element
 belonging to at least
 \[
 t_{\mathrm{cert}}|\mathcal F|
@@ -308,7 +308,10 @@ sequentially with \(A\): conditional on prefixes \(a_{<i},c_{<i}\), set
 \Pr(0,1)=s-p,\quad
 \Pr(0,0)=1-s.
 \]
-The three-case identity for \(\sstar\) gives
+Write $m=\max(p,r)$.  Three exhaustive cases give
+$\sstar(p,r)$ explicitly: if $p+r\le\frac12$ then $m\le p+r$ and
+$s=p+r$; if $m\le\frac12\le p+r$ then $s=\frac12$; and if $m\ge\frac12$ then
+$s=m$.  In every case
 \(\max(p,r)\le s\le\min(p+r,1)\), so these masses are nonnegative and have
 Bernoulli marginals \(p,r\).  Induction and the product rule therefore keep
 both \(A\) and \(C\) uniform on \(\mathcal F\), while
@@ -326,20 +329,33 @@ that conditioning reduces entropy give
 &\ge\sum_i\mathbb E h(\sstar(P_i,R_i)),\\
 \mathsf H(A)&=\sum_i\mathbb E h(P_i).
 \end{align*}
+For each \(i\), the law of \((P_i,R_i)\) is an admissible member of
+\(\Pi(\mathcal L(P_i),\mathcal L(P_i))\), so its \(\sstar\)-cost is at least
+\(\Cc(\mathcal L(P_i))\).
 Theorem~\ref{thm:main}, applied coordinatewise, therefore yields
 \[
 (1-\alpha_0)\mathsf H(A\cup B)+\alpha_0\mathsf H(A\cup C)
 \ge\mathsf H(A).
 \]
 
-The inequality is strict for coordinate \(1\).  Its conditional probability
-is the constant \(u\in(0,t_{\mathrm{cert}})\).  If \(u\le\psi\), the iid gap is
+The inequality is strict for coordinate \(1\).  Its prefix is empty, so
+\(P_1,Q_1,R_1\) all equal the deterministic constant
+\(u=|\mathcal F(1)|/|\mathcal F|\in(0,t_{\mathrm{cert}})\), which is positive
+by the choice of element \(1\).  If \(u\le\psi\), the iid gap is
 nonnegative and
 \(h(\sstar(u,u))-h(u)>0\).  If
-\(\psi\le u\le t_{\mathrm{cert}}\), then \(\sstar(u,u)=1/2\) and
+\(\psi\le u\le t_{\mathrm{cert}}\), then \(\sstar(u,u)=1/2\).  Put
 \[
-g'(u)=(1-\alpha_0)(2-2u)h'(2u-u^2)-h'(u)<0.
+g(u)=(1-\alpha_0)h(2u-u^2)+\alpha_0-h(u).
 \]
+Then
+\[
+g'(u)=(1-\alpha_0)(2-2u)h'(2u-u^2)-h'(u)<0
+\]
+on that range: \(2u-u^2=1-(1-u)^2\) increases in \(u\), and
+\(\psi^2-3\psi+1=0\) gives \((1-\psi)^2=\psi\), so
+\(2u-u^2\ge1-\psi>\tfrac12\) and \(h'(2u-u^2)<0\), while
+\(u\le t_{\mathrm{cert}}<\tfrac12\) gives \(h'(u)>0\).
 The independent 256-bit Arb check
 \path{verification/cambie_bridge_strictness.py} proves
 \[
@@ -696,7 +712,10 @@ exists; ``min'' below is literal rather than an unattained infimum.
 \Cc(\mu)=\min_{\substack{\nu\in\PP(\DD)\\\mu_\nu=\mu}}\int c\,d\nu,\qquad
 c(p,q)=h\bigl(\sstar(p,q)\bigr),
 \]
-and the joint optimization over laws and couplings collapses to
+Indeed, every \(\nu\) unfolds to an admissible self-coupling, so
+\(\Phi_\alpha(\nu)\ge\Ff(\mu_\nu)\); for every \(\mu\), folding an optimal
+symmetric self-coupling gives a \(\nu\) attaining equality.
+Consequently, the joint optimization over laws and couplings collapses to
 \[
 \inf_{\substack{\mu\in\PP([0,1])\\\mean(\mu)\le t}}\Ff(\mu)
 =
@@ -741,7 +760,7 @@ laws on compact $\DD$ is tight.)
 \begin{align*}
 g(p,q)&=\frac{2-p-q}{2},\\
 \ell(p,q)&=\frac{h(p)+h(q)}{2},\\
-\sstar(p,q)&=\min\bigl(\max(\tfrac12,p,q),\min(p+q,1)\bigr).
+\sstar(p,q)&=\max\bigl(p,q,\min(p+q,\tfrac12)\bigr),
 \end{align*}
 and $c=h\circ\sstar$
 are continuous on $\DD$ ($r\ln r\to0$ gives continuity of $h$ at the
@@ -749,12 +768,15 @@ endpoints; min and max preserve continuity). The kernel $W$ of \eqref{eq:Wdef}
 is continuous on $[0,1]^2$ and $W(0,\cdot)=W(1,\cdot)=0$ by direct
 substitution, so $T$ and $W$ are likewise continuous. The marginal map $M$ is
 continuous and linear. If $\mu_i\to\mu$ weak-$*$, then $\mu_i\otimes\mu_i\to
-\mu\otimes\mu$ weak-$*$: product functions $a(x)b(y)$ separate points and form a
-unital subalgebra, hence are uniformly dense in $C([0,1]^2)$
+\mu\otimes\mu$ weak-$*$: the linear span of the product functions
+$a(x)b(y)$ is a unital subalgebra of $C([0,1]^2)$ that separates points, hence
+is uniformly dense
 (Stone--Weierstrass; van~Neerven \cite{vanneerven}, Thm.~2.5), and
 uniform approximation extends convergence to the continuous kernel $W(1-x,1-y)$.
-Thus $\nu\mapsto\Ee(\mu_\nu)$ is weak-$*$ continuous, and so is
-$\Phi_\alpha$ by \eqref{eq:Fid}.
+Thus $\nu\mapsto\Ee(\mu_\nu)$ is weak-$*$ continuous.  So are
+$\nu\mapsto\Lb(\mu_\nu)$ and $\nu\mapsto\int c\,d\nu$, because $h\in C[0,1]$
+and $c\in C(\DD)$; hence $\Phi_\alpha$ is weak-$*$ continuous directly from its
+definition in Theorem~\ref{thm:B3}, without invoking \eqref{eq:Fid}.
 
 \emph{Step 3: global attainment.}
 The feasible set
@@ -781,11 +803,20 @@ $\Qq(\mu_\nu)=2\beta^\star\Lb(\mu_\nu)-\Ee(\mu_\nu)$, and
 =\bigl[2(1-\alpha)\beta^\star-1\bigr]\Lb(\mu_\nu)
 +\alpha\int_{\DD}c\,d\nu-(1-\alpha)\Ee(\mu_\nu).
 \]
-The first two terms are weak-$*$ continuous linear functionals. For
-$0\le\theta\le1$ and $\nu_0,\nu_1\in K_\beta$, positive semidefiniteness of
-$W$ gives
+The first two terms are weak-$*$ continuous linear functionals. Write
+$\Ee(\mu)=\langle\widetilde W,\mu\otimes\mu\rangle$ for the symmetric kernel
+$\widetilde W(x,y)=W(1-x,1-y)/\ln2$ of Theorem~\ref{thm:Ap}, which is positive
+semidefinite: $\langle\widetilde W,\eta\otimes\eta\rangle
+=\|\int\mathbf v\,d\eta\|^2\ge0$ for every finite signed $\eta$. Applying this
+to $\eta=\mu_{\nu_0}-\mu_{\nu_1}$ gives
+$2\langle\widetilde W,\mu_{\nu_0}\otimes\mu_{\nu_1}\rangle
+\le\Ee(\mu_{\nu_0})+\Ee(\mu_{\nu_1})$, and expanding the square for
+$0\le\theta\le1$ and $\nu_0,\nu_1\in K_\beta$,
 \[
 \Ee\bigl(\theta\mu_{\nu_0}+(1-\theta)\mu_{\nu_1}\bigr)
+=\theta^2\Ee(\mu_{\nu_0})
++2\theta(1-\theta)\langle\widetilde W,\mu_{\nu_0}\otimes\mu_{\nu_1}\rangle
++(1-\theta)^2\Ee(\mu_{\nu_1})
 \le\theta\,\Ee(\mu_{\nu_0})+(1-\theta)\,\Ee(\mu_{\nu_1}),
 \]
 so $-(1-\alpha)\Ee$ is concave (here the restriction $\alpha\le1$ is used
@@ -864,8 +895,10 @@ satisfying $\mean(\mu_\nu)\le t_{\mathrm{cert}}$.
 \section{The margin lemma and the diagonal inequality}
 \label{sec:margin}
 
-The functional $\Phi_\alpha$ vanishes identically on the ``sink'' laws
-$\{(1-u)\delta_0+u\delta_1\}$; on the way there both $\Lb$ and $\Ff$
+The functional $\Ff$ vanishes identically on the ``sink'' laws
+$\mu=(1-u)\delta_0+u\delta_1$, and $\Phi_\alpha$ vanishes on every
+$\nu\in\PP(\DD)$ supported in $\{0,1\}^2$ (all of $h(p)$, $h(p+q-pq)$, and
+$h(\sstar(p,q))$ vanish there); on the way there both $\Lb$ and $\Ff$
 collapse, so a raw sign test cannot terminate. The margin lemma removes this
 degeneracy by dividing by $\Lb$.
 
@@ -1769,6 +1802,19 @@ before/after source and stage equality.  All reports passed; the aggregator
 accepted 488,465,854 nodes and zero residuals.  Composite SHA-256:
 \path{57ca3f52c054bd9bccfefc349f440674c74fe7ef671d06c103ef3f52dc33d53d}.
 
+A third, source-independent arithmetic replay then processed all eight traces
+from byte zero.  Its standalone verifier imports no frozen campaign arithmetic,
+derives centered gradients by interval automatic differentiation, and
+rediscovers every nested face proof.  After adversarial hardening, checkpoint
+resume cannot produce \texttt{PASS}; a 343-file runtime seal and an exact
+eight-process loaded-image inventory are bound into the acceptance record.
+All eight processes exited zero with exact tallies, totaling
+\(488{,}465{,}854\) nodes, \(244{,}232{,}923\) splits, and zero residuals.
+The trusted report-lock raw SHA-256 is
+\path{af86480901c2c497739916bb410f1e117e4eaf3eefb82575ce494b7d8c04e730};
+the secure composite canonical SHA-256 is
+\path{4acbd3b935bda7e51ed387e42e0598debf22f4a85b7a24ad976c3eaca4f23243}.
+
 \subsection{Acceptance checks and residual trust base}
 The frozen collector checks its hardcoded filename inventory, a pristine
 snapshot, launch-supplied hashes, exact roots, UUIDs, COMPLETE records, zero
@@ -1777,15 +1823,48 @@ discharge in Arb.  It does \emph{not} hardcode Campaign I's expected code
 digest or enforce \path{launch.environment}; the external lock and clean-room
 harness close those provenance gaps.
 
-Arithmetic replay shares the frozen rule functions with the producer.  The
-independent structural auditor verifies hashes, opcode inventory, DFS topology,
-termination, and tallies without importing those functions, but is not a
-second interval implementation.  The collector hash-pins rather than executes
-the human review proofs.  Accordingly the residual trust base includes the
-human audit in \path{../AUDIT.md}; CPython and python-flint/Arb semantics;
-the pinned libraries and native code; SHA-256; and the cited standard
-functional-analysis results.  The entropy-to-UC argument is proved directly
-in Corollary~\ref{cor:uc}, with Cambie cited as its source.
+The secure replay removes the producer/replayer's common Python-rule
+implementation: every arithmetic predicate and control path is separately
+implemented.  It still shares the authenticated trace partition and
+python-flint/Arb primitives.  The independent structural auditor additionally
+verifies hashes, opcode inventory, DFS topology, termination, and tallies
+without interval imports.  The collector and secure verifier hash-pin rather
+than execute the human review proofs.  Accordingly the residual trust base
+includes the human audit in \path{../AUDIT.md}; custody of the published
+report-lock digest; a nonmalicious OS/kernel/file-system/process-inspection
+stack; CPython and python-flint/Arb correctness; SHA-256; and the cited standard
+functional-analysis results.  This is not hardware-backed execution
+attestation.  The entropy-to-UC argument is proved directly in
+Corollary~\ref{cor:uc}, with Cambie cited as its source.
+
+\paragraph{Exhaustive finite control for Corollary~\ref{cor:uc}.}
+\path{verification/entropy_bridge_exhaustive.py} rebuilds the sequential
+coupling from the statement of Corollary~\ref{cor:uc} alone --- importing no
+campaign, certificate, or bridge source --- and runs it on \emph{every}
+nonempty family of subsets of \([n]\) for \(n\le4\): \(65{,}808\) families and
+\(1{,}631{,}880\) coupled prefix states.  In exact rational arithmetic it
+confirms the four coupling masses, both Bernoulli marginals,
+\(\Pr(A_i\vee C_i\mid\text{prefixes})=\sstar(P_i,R_i)\), prefix-by-prefix
+uniformity of
+\(A\) and \(C\), \(\mathcal L(P_i)=\mathcal L(R_i)\) with mean the frequency of
+element \(i\), and the chain-rule identity \(\mathsf H(A)=\sum_i\EE h(P_i)\);
+in 256-bit Arb it certifies both data-processing inequalities, every enclosure
+being either provably nonnegative or a structural tie inside \(\pm2^{-200}\).
+All \(5{,}096\) enumerated union-closed families satisfy the conclusion of
+Corollary~\ref{cor:uc}, the extreme case being frequency exactly \(1/2\).
+Beyond the exhaustive range the same verifier checks seeded random families on
+\(5\le n\le8\): \(7{,}650\) uniform families, contributing \(1{,}682{,}137\)
+further coupled prefix states, and \(5{,}300\) random union-closed families
+with up to \(146\) members.  All pass, and the smallest maximal frequency
+observed among them is again exactly \(1/2\).  Total runtime 110\,s on one
+core.  Report:
+\path{verification/results/entropy-bridge-exhaustive.json}, canonical SHA-256
+\path{6681f8faf13d9344f8e7bf3a5d7785ed289f1e82c5e9badd1e7967c03e3ebfef}.
+The exhaustion is a finite
+control and the samples are evidence, not the induction;
+\path{verification/test_entropy_bridge_exhaustive.py}
+shows that breaking the \(\sstar\) clipping law or the prefix conditional
+probability makes the control fail.
 
 \paragraph{Artifact map.}
 \path{bridge_uc.py}, \path{decomposition.py}, \path{reduction.py},
@@ -1796,9 +1875,12 @@ the collector does not execute those proofs.
 \path{cert3_par.py} creates immutable campaigns; and
 \path{cert3_collect.py} performs the historical acceptance gate.
 \path{verification/structural_trace_audit.py} is the independent topology
-implementation, while \path{verification/clean_room_replay.py} supplies
-external pins, environment enforcement, before/after hashing, and resumable
-per-slice reports.  \path{liu_kernel.py} is numerical/structural evidence;
+implementation; \path{verification/clean_room_replay.py} supplies hardened
+same-source staging; and
+\path{verification/independent_arithmetic_replay_secure.py},
+\path{verification/aggregate_independent_reports.py}, and the runtime/report
+locks implement the byte-zero source-independent acceptance path.
+\path{liu_kernel.py} is numerical/structural evidence;
 \path{liu_R_nsd.py} machine-checks finite algebra and Arb corroboration
 for the separate human Liu-H1 proof.  Its full audit, independent checker,
 clean logs, and focused manuscript are in \path{../../LIU_H1/}.

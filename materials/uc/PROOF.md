@@ -53,6 +53,23 @@ C = \inf_{M \in \mathrm{SymCpl}(\mu)} \int h(s^\star)\,dM,$$
 satisfies: $F(\mu)\ge0$ on every feasible $\mu$ implies the union-closed bound
 at $t$ by the human entropy-chain proof in the revised manuscript.
 
+**Exhaustive finite control (2026-08-27).**
+`verification/entropy_bridge_exhaustive.py` rebuilds that entropy-chain proof's
+construction from the corollary statement alone — importing neither
+`bridge_uc.py` nor any campaign or certificate module — and runs it on every
+nonempty family of subsets of \([n]\) for \(n\le4\): 65,808 families,
+1,631,880 coupled prefix states, 48.2 s on one core.  Exact rational checks
+cover the four coupling masses, both Bernoulli marginals, the \(s^\star\) OR
+identity, prefix-by-prefix uniformity of \(A\) and \(C\),
+\(\mathcal L(P_i)=\mathcal L(R_i)\) with mean the frequency of element \(i\),
+and the chain rule; 256-bit Arb certifies both conditioning inequalities, each
+enclosure being provably nonnegative or a structural tie inside
+\(\pm2^{-200}\).  All 5,096 enumerated union-closed families satisfy the
+\(t_{\mathrm{cert}}\) conclusion, the extreme case being exactly \(1/2\).  The
+universal statement is still the human induction; this is a finite control,
+and its fail-closed tests reject a broken \(s^\star\) clip, a constant prefix
+probability, and an inflated union bit.
+
 ## 2. Exact scaffold: Theorems A and A′
 
 Natural-log entropy $H = \ln2\cdot h$ inside proofs.  **Lemma 1 — PROVED,
@@ -298,6 +315,18 @@ root*, it re-runs `mean_contract` itself, re-proves each claimed rule in Arb
 deadline), follows recorded splits (midpoint strict and representable), and
 requires an empty stack, no residual events, and tallies equal to the
 committed record.
+
+**Secure source-independent replay — MACHINE-VERIFIED.**
+`verification/independent_arithmetic_replay_secure.py` imports no frozen
+campaign arithmetic, derives centered gradients by interval AD, and
+rediscovers nested face proofs.  Eight no-resume workers started at trace byte
+zero and reproduced all 488,465,854 events, 244,232,923 splits, 244,232,931
+leaves, exact per-rule tallies, and zero residuals.  The accepted trust boundary
+still includes the trace partition, Arb primitives, published report-lock
+custody, and a nonmalicious system stack.  Trusted report-lock raw SHA-256:
+`af86480901c2c497739916bb410f1e117e4eaf3eefb82575ce494b7d8c04e730`;
+secure composite canonical SHA-256:
+`4acbd3b935bda7e51ed387e42e0598debf22f4a85b7a24ad976c3eaca4f23243`.
 
 * **Adversarial suite — all 8 rejections VERIFIED**: flipped rule byte;
   injected residual; clear-replaced-by-split; truncation; extension; unknown

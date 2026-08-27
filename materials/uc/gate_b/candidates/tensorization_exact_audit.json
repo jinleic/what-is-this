@@ -1,0 +1,985 @@
+{
+  "arithmetic": "exact_python_fractions",
+  "bellman_intersection_failures": 0,
+  "case_count": 35,
+  "cases": [
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 1,
+      "left_rows": [
+        0
+      ],
+      "name": "singleton_x_singleton",
+      "orders_checked": 2,
+      "product_defect": "0",
+      "product_size": 1,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000000",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 1,
+      "left_rows": [
+        0,
+        1
+      ],
+      "name": "bit_x_bit",
+      "orders_checked": 2,
+      "product_defect": "0",
+      "product_size": 4,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000026",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 1,
+      "left_rows": [
+        0,
+        1
+      ],
+      "name": "bit_x_pair",
+      "orders_checked": 6,
+      "product_defect": "0",
+      "product_size": 4,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000064",
+      "right_defect": "0",
+      "right_dimension": 2,
+      "right_rows": [
+        0,
+        3
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        1
+      ],
+      "name": "dead_column_x_bit",
+      "orders_checked": 6,
+      "product_defect": "0",
+      "product_size": 4,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000064",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        3
+      ],
+      "name": "duplicate_columns_x_bit",
+      "orders_checked": 6,
+      "product_defect": "0",
+      "product_size": 4,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000064",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "name": "power_set_x_bit",
+      "orders_checked": 6,
+      "product_defect": "0",
+      "product_size": 8,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000089",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "name": "power_set_x_power_set",
+      "orders_checked": 24,
+      "product_defect": "0",
+      "product_size": 16,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000303",
+      "right_defect": "0",
+      "right_dimension": 2,
+      "right_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "1/2",
+      "left_dimension": 2,
+      "left_rows": [
+        1,
+        2
+      ],
+      "name": "antichain_x_pair",
+      "orders_checked": 24,
+      "product_defect": "1/2",
+      "product_size": 4,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000152",
+      "right_defect": "0",
+      "right_dimension": 2,
+      "right_rows": [
+        0,
+        3
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        1,
+        3
+      ],
+      "name": "chain_x_triple",
+      "orders_checked": 120,
+      "product_defect": "2/3",
+      "product_size": 9,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000543",
+      "right_defect": "2/3",
+      "right_dimension": 3,
+      "right_rows": [
+        1,
+        2,
+        4
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "2/3",
+      "left_dimension": 3,
+      "left_rows": [
+        1,
+        2,
+        4
+      ],
+      "name": "triple_x_triple",
+      "orders_checked": 720,
+      "product_defect": "8/9",
+      "product_size": 9,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000909",
+      "right_defect": "2/3",
+      "right_dimension": 3,
+      "right_rows": [
+        3,
+        5,
+        6
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        1,
+        3
+      ],
+      "name": "union_closed_x_not",
+      "orders_checked": 24,
+      "product_defect": "1/2",
+      "product_size": 6,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000152",
+      "right_defect": "1/2",
+      "right_dimension": 2,
+      "right_rows": [
+        1,
+        2
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 3,
+      "left_rows": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "name": "full_x_triple",
+      "orders_checked": 720,
+      "product_defect": "2/3",
+      "product_size": 24,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001402",
+      "right_defect": "2/3",
+      "right_dimension": 3,
+      "right_rows": [
+        1,
+        2,
+        4
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "3/8",
+      "left_dimension": 3,
+      "left_rows": [
+        0,
+        3,
+        5,
+        6
+      ],
+      "name": "weight_cells_x_bit",
+      "orders_checked": 24,
+      "product_defect": "3/8",
+      "product_size": 8,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000202",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 3,
+      "left_rows": [
+        7
+      ],
+      "name": "sparse_x_dense",
+      "orders_checked": 120,
+      "product_defect": "0",
+      "product_size": 4,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000152",
+      "right_defect": "0",
+      "right_dimension": 2,
+      "right_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 1,
+      "left_rows": [
+        0,
+        1
+      ],
+      "name": "bit_x_five_sparse",
+      "orders_checked": 720,
+      "product_defect": "2/25",
+      "product_size": 10,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000594",
+      "right_defect": "2/25",
+      "right_dimension": 5,
+      "right_rows": [
+        0,
+        1,
+        6,
+        25,
+        31
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "6/25",
+      "left_dimension": 5,
+      "left_rows": [
+        0,
+        3,
+        12,
+        21,
+        31
+      ],
+      "name": "five_sparse_x_bit",
+      "orders_checked": 720,
+      "product_defect": "6/25",
+      "product_size": 10,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000632",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        3
+      ],
+      "name": "pair_x_four_weights",
+      "orders_checked": 720,
+      "product_defect": "2/25",
+      "product_size": 10,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000796",
+      "right_defect": "2/25",
+      "right_dimension": 4,
+      "right_rows": [
+        0,
+        1,
+        6,
+        9,
+        15
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 4,
+      "left_rows": [
+        0,
+        5,
+        10,
+        15
+      ],
+      "name": "four_weights_x_pair",
+      "orders_checked": 720,
+      "product_defect": "1/2",
+      "product_size": 8,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000682",
+      "right_defect": "1/2",
+      "right_dimension": 2,
+      "right_rows": [
+        1,
+        2
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 3,
+      "left_rows": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "name": "triple_deterministic_x_triple",
+      "orders_checked": 720,
+      "product_defect": "0",
+      "product_size": 16,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001010",
+      "right_defect": "0",
+      "right_dimension": 3,
+      "right_rows": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "2/3",
+      "left_dimension": 3,
+      "left_rows": [
+        1,
+        2,
+        4
+      ],
+      "name": "triple_antichain_x_triple_chain",
+      "orders_checked": 720,
+      "product_defect": "2/3",
+      "product_size": 12,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001301",
+      "right_defect": "0",
+      "right_dimension": 3,
+      "right_rows": [
+        0,
+        1,
+        3,
+        7
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 3,
+      "left_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "name": "triple_dead_x_triple_dup",
+      "orders_checked": 720,
+      "product_defect": "0",
+      "product_size": 16,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001010",
+      "right_defect": "0",
+      "right_dimension": 3,
+      "right_rows": [
+        0,
+        3,
+        4,
+        7
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 3,
+      "left_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "name": "triple_uc_x_triple_nonuc",
+      "orders_checked": 720,
+      "product_defect": "2/3",
+      "product_size": 12,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001149",
+      "right_defect": "2/3",
+      "right_dimension": 3,
+      "right_rows": [
+        1,
+        2,
+        4
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 3,
+      "left_rows": [
+        0,
+        3,
+        5,
+        6,
+        7
+      ],
+      "name": "triple_weight_cells_x_triple",
+      "orders_checked": 720,
+      "product_defect": "3/8",
+      "product_size": 20,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001364",
+      "right_defect": "3/8",
+      "right_dimension": 3,
+      "right_rows": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "2/9",
+      "left_dimension": 5,
+      "left_rows": [
+        0,
+        15,
+        26
+      ],
+      "name": "random_0",
+      "orders_checked": 720,
+      "product_defect": "2/9",
+      "product_size": 6,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000468",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 5,
+      "left_rows": [
+        2,
+        3,
+        11,
+        14,
+        15
+      ],
+      "name": "random_1",
+      "orders_checked": 720,
+      "product_defect": "0",
+      "product_size": 5,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000392",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "name": "random_2",
+      "orders_checked": 6,
+      "product_defect": "0",
+      "product_size": 8,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000089",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 4,
+      "left_rows": [
+        1,
+        11,
+        15
+      ],
+      "name": "random_3",
+      "orders_checked": 120,
+      "product_defect": "0",
+      "product_size": 6,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000266",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 5,
+      "left_rows": [
+        31
+      ],
+      "name": "random_4",
+      "orders_checked": 720,
+      "product_defect": "0",
+      "product_size": 2,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000291",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "3/8",
+      "left_dimension": 4,
+      "left_rows": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        11,
+        12,
+        13
+      ],
+      "name": "random_5",
+      "orders_checked": 720,
+      "product_defect": "3/8",
+      "product_size": 32,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001364",
+      "right_defect": "0",
+      "right_dimension": 2,
+      "right_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 2,
+      "left_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "name": "random_6",
+      "orders_checked": 720,
+      "product_defect": "1/2",
+      "product_size": 16,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001136",
+      "right_defect": "1/2",
+      "right_dimension": 4,
+      "right_rows": [
+        1,
+        7,
+        8,
+        10
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "2/5",
+      "left_dimension": 5,
+      "left_rows": [
+        2,
+        9,
+        11,
+        13,
+        18
+      ],
+      "name": "random_7",
+      "orders_checked": 720,
+      "product_defect": "2/5",
+      "product_size": 10,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000745",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        0,
+        1
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 3,
+      "left_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "name": "random_8",
+      "orders_checked": 720,
+      "product_defect": "0",
+      "product_size": 14,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000745",
+      "right_defect": "0",
+      "right_dimension": 3,
+      "right_rows": [
+        0,
+        6
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "0",
+      "left_dimension": 3,
+      "left_rows": [
+        0,
+        3
+      ],
+      "name": "random_9",
+      "orders_checked": 720,
+      "product_defect": "0",
+      "product_size": 16,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001010",
+      "right_defect": "0",
+      "right_dimension": 3,
+      "right_rows": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "1/18",
+      "left_dimension": 3,
+      "left_rows": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7
+      ],
+      "name": "random_10",
+      "orders_checked": 720,
+      "product_defect": "59/144",
+      "product_size": 24,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000001288",
+      "right_defect": "3/8",
+      "right_dimension": 3,
+      "right_rows": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "schema": 1
+    },
+    {
+      "bellman_intersection_failures": 0,
+      "bellman_worst_gap_decimal": "0.000000000000000000000000000000",
+      "defect_identity_exact": true,
+      "kind": "case",
+      "left_defect": "3/8",
+      "left_dimension": 4,
+      "left_rows": [
+        3,
+        5,
+        9,
+        11
+      ],
+      "name": "random_11",
+      "orders_checked": 120,
+      "product_defect": "3/8",
+      "product_size": 4,
+      "q_enclosures_intersect": true,
+      "q_worst_gap_decimal": "0.000000000000000000000000000114",
+      "right_defect": "0",
+      "right_dimension": 1,
+      "right_rows": [
+        1
+      ],
+      "schema": 1
+    }
+  ],
+  "defect_identity_failures": 0,
+  "foreign_schema_checkpoint_lines": 0,
+  "new_evaluations": 0,
+  "q_intersection_failures": 0,
+  "resumed_cases": 35,
+  "schema_version": 1,
+  "seed": 20260827,
+  "third_party_dependencies": [],
+  "tolerance": "1/100000000000000000000",
+  "tolerance_role": "The two sides are certified enclosures, so the lemma is attacked by demanding that they intersect.  The tolerance only absorbs the certificate width, which is below 1e-24, and is far smaller than any additivity defect a wrong lemma would produce.",
+  "total_orders_checked": 15010,
+  "truncated_checkpoint_lines": 0,
+  "unequal_dimension_cases": 20,
+  "verdict": "NO_EXACT_COUNTEREXAMPLE",
+  "worst_bellman_gap_decimal": "0.000000000000000000000000000000",
+  "worst_q_gap_decimal": "0.000000000000000000000000001402"
+}

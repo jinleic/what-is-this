@@ -1,0 +1,4224 @@
+{
+  "claim_status": "NUMERICAL",
+  "finished_utc": "2026-08-27T09:56:57.820590+00:00",
+  "lambdas": [
+    "0",
+    "-2/5",
+    "-4/5",
+    "-9/10",
+    "-1",
+    "-6/5"
+  ],
+  "limitations": [
+    "Diagnostic only: no verdict here is a proof about Liu Hypothesis 2.",
+    "The local tube lemma remains unproved, so the complement run is counterfactual.",
+    "Stop is by deterministic box budget; a different budget yields a different frontier."
+  ],
+  "precision_bits": 320,
+  "report_sha256": "78370971cdeb99a746701b2be60cacfb206e545360bdecbdc8c74201add35fb6",
+  "report_type": "liu9_complement_residual",
+  "residual": [
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883161767091,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b4",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883160047495,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b1",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883160047495,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b4",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883160047495,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883160047495,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b4",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883160047495,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b4",
+        "b1",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883160047495,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b4",
+        "b1",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883159996034,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b1",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883159996034,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b1",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883159996034,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4",
+        "b1",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883159235059,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b4",
+        "b1",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883159235059,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b4",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883158244701,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b4",
+        "b1",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883158244701,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b1",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883158244701,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b4",
+        "b1",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883155796865,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b1",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883155796865,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.15888315577844,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.15888315577844,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.15888315577844,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154916888,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154916888,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b4",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154916888,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b4",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154418189,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b1",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154136188,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154136188,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b1",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154136188,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4",
+        "b1",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154136188,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154136188,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b1",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.158883154136188,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4",
+        "b3",
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "depth": 5,
+      "distance_squared_lower": -6.412997346184492e-10,
+      "distance_squared_upper": 0.8582355829993353,
+      "gap_lower": -4.1588831535947035,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b5"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 7,
+      "distance_squared_lower": -5.038163433704758e-10,
+      "distance_squared_upper": 0.5003449520645955,
+      "gap_lower": -3.4657359684484814,
+      "maximum_width": 1.0,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.0,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b4",
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 12,
+      "distance_squared_lower": -4.865720609394752e-10,
+      "distance_squared_upper": 0.5003449511505171,
+      "gap_lower": -2.079441563522422,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 12,
+      "distance_squared_lower": -4.865720609394752e-10,
+      "distance_squared_upper": 0.5003449511505171,
+      "gap_lower": -2.0467385568356296,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4",
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 12,
+      "distance_squared_lower": -4.865720609394752e-10,
+      "distance_squared_upper": 0.5003449511505171,
+      "gap_lower": -2.0467385567803977,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 12,
+      "distance_squared_lower": -4.865720609394752e-10,
+      "distance_squared_upper": 0.5003449511505171,
+      "gap_lower": -2.014035547449499,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b4",
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 12,
+      "distance_squared_lower": -4.865720609394752e-10,
+      "distance_squared_upper": 0.5003449511505171,
+      "gap_lower": -2.0140355455084538,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 12,
+      "distance_squared_lower": -4.865720609394752e-10,
+      "distance_squared_upper": 0.5003449511505171,
+      "gap_lower": -1.9813325406285969,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 12,
+      "distance_squared_lower": -4.865720609394752e-10,
+      "distance_squared_upper": 0.5003449511505171,
+      "gap_lower": -1.981332536954117,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b4",
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.75,
+          1.0
+        ]
+      ],
+      "depth": 15,
+      "distance_squared_lower": 0.00022183206604710552,
+      "distance_squared_upper": 0.30893388890402307,
+      "gap_lower": -1.8660726296994525,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.009107188549339394,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 14,
+      "distance_squared_lower": 0.00013524788096266012,
+      "distance_squared_upper": 0.362657753570375,
+      "gap_lower": -1.8660726251283035,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.009107192208143822,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b4",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ],
+      "depth": 13,
+      "distance_squared_lower": -3.087135247372815e-10,
+      "distance_squared_upper": 0.45560862093094867,
+      "gap_lower": -1.8178174882591673,
+      "maximum_width": 0.5,
+      "method": "direct",
+      "objective_lower": 0.0,
+      "q_high": 1.0,
+      "q_low": 0.5,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b4",
+        "b1",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.75,
+          1.0
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.5,
+          0.75
+        ]
+      ],
+      "depth": 20,
+      "distance_squared_lower": 0.00013524941965744244,
+      "distance_squared_upper": 0.22078420101530657,
+      "gap_lower": -1.203409801853518,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.028723876782336594,
+      "q_high": 1.0,
+      "q_low": 0.75,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b2",
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.75,
+          1.0
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.5,
+          0.75
+        ]
+      ],
+      "depth": 19,
+      "distance_squared_lower": 0.00013524910897665592,
+      "distance_squared_upper": 0.2375290835043108,
+      "gap_lower": -1.1802141788200096,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.02927188380203408,
+      "q_high": 1.0,
+      "q_low": 0.75,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b0",
+        "b2",
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010940454380199542,
+      "distance_squared_upper": 0.10130580334606044,
+      "gap_lower": -1.1598923928719755,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.04970217440603193,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.75,
+          1.0
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.5,
+          0.75
+        ]
+      ],
+      "depth": 23,
+      "distance_squared_lower": 0.0020309368703574186,
+      "distance_squared_upper": 0.15721487706490458,
+      "gap_lower": -1.1588405235733845,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.04974504547726048,
+      "q_high": 1.0,
+      "q_low": 0.75,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.011065232425705446,
+      "distance_squared_upper": 0.10936567592226054,
+      "gap_lower": -1.155944399033549,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.04986346317493771,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010940454396502148,
+      "distance_squared_upper": 0.10966468819797881,
+      "gap_lower": -1.1539704008480236,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.04994450023952675,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.011065232500215712,
+      "distance_squared_upper": 0.11772456071597123,
+      "gap_lower": -1.1500224103187153,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05010736619036876,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010712214760044312,
+      "distance_squared_upper": 0.11840211066001068,
+      "gap_lower": -1.143540886694418,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05037706529660653,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010712214718139256,
+      "distance_squared_upper": 0.1267609955701367,
+      "gap_lower": -1.1376188974685997,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.0506260308713645,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010712214923753358,
+      "distance_squared_upper": 0.11840211047447376,
+      "gap_lower": -1.1353651336039852,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05072142964516349,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010836992969259262,
+      "distance_squared_upper": 0.12646198305067385,
+      "gap_lower": -1.1314171425636923,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05088941100755115,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.01043271960704464,
+      "distance_squared_upper": 0.1284151079646765,
+      "gap_lower": -1.1203452644513292,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05136649581776766,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": [
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010483974954352163,
+      "distance_squared_upper": 0.13549841813766994,
+      "gap_lower": -1.119013630072092,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05142447816394116,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": []
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.01043271933230894,
+      "distance_squared_upper": 0.13677399310763316,
+      "gap_lower": -1.1144232739950561,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05162536324093056,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": [
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.01043271981168221,
+      "distance_squared_upper": 0.1331345272249324,
+      "gap_lower": -1.100571701012251,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.052241166020599,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": [
+        "b2"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.25,
+          0.375
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010557497529787095,
+      "distance_squared_upper": 0.13716446389864115,
+      "gap_lower": -1.0966237068788582,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05241938319886449,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": [
+        "b2"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010204479859560151,
+      "distance_squared_upper": 0.14551141538412812,
+      "gap_lower": -1.0958180071789474,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05245590238154731,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": [
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.75
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 24,
+      "distance_squared_lower": 0.010204479853249779,
+      "distance_squared_upper": 0.14551141537781775,
+      "gap_lower": -1.0842201949676566,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.05298728623980722,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": [
+        "b2"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.625
+        ],
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.875,
+          1.0
+        ]
+      ],
+      "depth": 25,
+      "distance_squared_lower": 0.011141329413211398,
+      "distance_squared_upper": 0.1371644636298776,
+      "gap_lower": -0.9130805289683439,
+      "maximum_width": 0.25,
+      "method": "direct",
+      "objective_lower": 0.09897931566993355,
+      "q_high": 0.5,
+      "q_low": 0.25,
+      "straddles_tube": false,
+      "supports_touching_zero": [
+        "b2",
+        "b3"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.625
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.875,
+          1.0
+        ],
+        [
+          0.1875,
+          0.25
+        ],
+        [
+          0.1875,
+          0.25
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.625,
+          0.75
+        ]
+      ],
+      "depth": 29,
+      "distance_squared_lower": 0.0020309373604987676,
+      "distance_squared_upper": 0.08115639061284409,
+      "gap_lower": -0.7066822491276614,
+      "maximum_width": 0.125,
+      "method": "direct",
+      "objective_lower": 0.23759268573726552,
+      "q_high": 1.0,
+      "q_low": 0.875,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.625
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.875,
+          1.0
+        ],
+        [
+          0.125,
+          0.1875
+        ],
+        [
+          0.125,
+          0.25
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.375,
+          0.5
+        ],
+        [
+          0.625,
+          0.75
+        ]
+      ],
+      "depth": 28,
+      "distance_squared_lower": 0.0020309374499631267,
+      "distance_squared_upper": 0.08507629051520799,
+      "gap_lower": -0.7004511881972856,
+      "maximum_width": 0.125,
+      "method": "direct",
+      "objective_lower": 0.23920069067436,
+      "q_high": 1.0,
+      "q_low": 0.875,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.515625,
+          0.53125
+        ],
+        [
+          0.0,
+          0.03125
+        ],
+        [
+          0.96875,
+          1.0
+        ],
+        [
+          0.1875,
+          0.203125
+        ],
+        [
+          0.171875,
+          0.1875
+        ],
+        [
+          0.0,
+          0.015625
+        ],
+        [
+          0.484375,
+          0.5
+        ],
+        [
+          0.375,
+          0.390625
+        ],
+        [
+          0.734375,
+          0.75
+        ]
+      ],
+      "depth": 52,
+      "distance_squared_lower": 0.004884387367937883,
+      "distance_squared_upper": 0.016136604028006252,
+      "gap_lower": -0.14075827360602886,
+      "maximum_width": 0.03125,
+      "method": "direct",
+      "objective_lower": 0.7928790602904433,
+      "q_high": 1.0,
+      "q_low": 0.96875,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.515625
+        ],
+        [
+          0.015625,
+          0.03125
+        ],
+        [
+          0.96875,
+          1.0
+        ],
+        [
+          0.1875,
+          0.203125
+        ],
+        [
+          0.171875,
+          0.1875
+        ],
+        [
+          0.0,
+          0.015625
+        ],
+        [
+          0.484375,
+          0.5
+        ],
+        [
+          0.375,
+          0.390625
+        ],
+        [
+          0.734375,
+          0.75
+        ]
+      ],
+      "depth": 53,
+      "distance_squared_lower": 0.004948839558264184,
+      "distance_squared_upper": 0.01581887413186388,
+      "gap_lower": -0.11266973427907975,
+      "maximum_width": 0.03125,
+      "method": "direct",
+      "objective_lower": 0.8314633602284938,
+      "q_high": 1.0,
+      "q_low": 0.96875,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.515625
+        ],
+        [
+          0.0,
+          0.015625
+        ],
+        [
+          0.984375,
+          1.0
+        ],
+        [
+          0.1875,
+          0.1953125
+        ],
+        [
+          0.1796875,
+          0.1875
+        ],
+        [
+          0.0,
+          0.015625
+        ],
+        [
+          0.484375,
+          0.5
+        ],
+        [
+          0.375,
+          0.390625
+        ],
+        [
+          0.734375,
+          0.75
+        ]
+      ],
+      "depth": 56,
+      "distance_squared_lower": 0.004767188029883768,
+      "distance_squared_upper": 0.01121343333093297,
+      "gap_lower": -0.08513854897746297,
+      "maximum_width": 0.015625,
+      "method": "direct",
+      "objective_lower": 0.8713942780482322,
+      "q_high": 1.0,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.515625
+        ],
+        [
+          0.0,
+          0.015625
+        ],
+        [
+          0.984375,
+          1.0
+        ],
+        [
+          0.1875,
+          0.1953125
+        ],
+        [
+          0.171875,
+          0.1796875
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.484375,
+          0.4921875
+        ],
+        [
+          0.375,
+          0.390625
+        ],
+        [
+          0.734375,
+          0.75
+        ]
+      ],
+      "depth": 58,
+      "distance_squared_lower": 0.005132392633400647,
+      "distance_squared_upper": 0.011045044246871746,
+      "gap_lower": -0.08480091033749605,
+      "maximum_width": 0.015625,
+      "method": "direct",
+      "objective_lower": 0.8718389323150021,
+      "q_high": 1.0,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.515625
+        ],
+        [
+          0.0,
+          0.015625
+        ],
+        [
+          0.984375,
+          1.0
+        ],
+        [
+          0.1875,
+          0.1953125
+        ],
+        [
+          0.171875,
+          0.1796875
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.4921875,
+          0.5
+        ],
+        [
+          0.375,
+          0.3828125
+        ],
+        [
+          0.734375,
+          0.75
+        ]
+      ],
+      "depth": 59,
+      "distance_squared_lower": 0.004914450825795619,
+      "distance_squared_upper": 0.010679580848860178,
+      "gap_lower": -0.08125184067693601,
+      "maximum_width": 0.015625,
+      "method": "direct",
+      "objective_lower": 0.8772039369821729,
+      "q_high": 1.0,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5078125,
+          0.515625
+        ],
+        [
+          0.0,
+          0.015625
+        ],
+        [
+          0.984375,
+          1.0
+        ],
+        [
+          0.1875,
+          0.1953125
+        ],
+        [
+          0.171875,
+          0.1796875
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.4921875,
+          0.5
+        ],
+        [
+          0.3828125,
+          0.390625
+        ],
+        [
+          0.7421875,
+          0.75
+        ]
+      ],
+      "depth": 61,
+      "distance_squared_lower": 0.00519002509985107,
+      "distance_squared_upper": 0.010567676881451505,
+      "gap_lower": -0.06290319017162117,
+      "maximum_width": 0.015625,
+      "method": "direct",
+      "objective_lower": 0.9037031547949046,
+      "q_high": 1.0,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.5078125
+        ],
+        [
+          0.0078125,
+          0.015625
+        ],
+        [
+          0.984375,
+          1.0
+        ],
+        [
+          0.1875,
+          0.1953125
+        ],
+        [
+          0.171875,
+          0.1796875
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.4921875,
+          0.5
+        ],
+        [
+          0.3828125,
+          0.390625
+        ],
+        [
+          0.7421875,
+          0.75
+        ]
+      ],
+      "depth": 62,
+      "distance_squared_lower": 0.005224277299958491,
+      "distance_squared_upper": 0.010474573498896066,
+      "gap_lower": -0.04839733163150202,
+      "maximum_width": 0.015625,
+      "method": "direct",
+      "objective_lower": 0.9252834979449938,
+      "q_high": 1.0,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.5078125
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.984375,
+          0.9921875
+        ],
+        [
+          0.1875,
+          0.19140625
+        ],
+        [
+          0.17578125,
+          0.1796875
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.4921875,
+          0.5
+        ],
+        [
+          0.3828125,
+          0.390625
+        ],
+        [
+          0.7421875,
+          0.75
+        ]
+      ],
+      "depth": 65,
+      "distance_squared_lower": 0.0071979772432788705,
+      "distance_squared_upper": 0.010396834487848679,
+      "gap_lower": -0.038164160379118066,
+      "maximum_width": 0.0078125,
+      "method": "direct",
+      "objective_lower": 0.9405414899998638,
+      "q_high": 0.9921875,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.5078125
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.984375,
+          0.9921875
+        ],
+        [
+          0.1875,
+          0.19140625
+        ],
+        [
+          0.171875,
+          0.17578125
+        ],
+        [
+          0.0,
+          0.00390625
+        ],
+        [
+          0.4921875,
+          0.49609375
+        ],
+        [
+          0.3828125,
+          0.390625
+        ],
+        [
+          0.7421875,
+          0.75
+        ]
+      ],
+      "depth": 67,
+      "distance_squared_lower": 0.007396554161912324,
+      "distance_squared_upper": 0.010294035934291575,
+      "gap_lower": -0.03799079633109759,
+      "maximum_width": 0.0078125,
+      "method": "direct",
+      "objective_lower": 0.9407955946196492,
+      "q_high": 0.9921875,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.5078125
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.984375,
+          0.9921875
+        ],
+        [
+          0.1875,
+          0.19140625
+        ],
+        [
+          0.171875,
+          0.17578125
+        ],
+        [
+          0.0,
+          0.00390625
+        ],
+        [
+          0.49609375,
+          0.5
+        ],
+        [
+          0.3828125,
+          0.38671875
+        ],
+        [
+          0.7421875,
+          0.75
+        ]
+      ],
+      "depth": 68,
+      "distance_squared_lower": 0.007285312173441192,
+      "distance_squared_upper": 0.010202433363407757,
+      "gap_lower": -0.03624095063057862,
+      "maximum_width": 0.0078125,
+      "method": "direct",
+      "objective_lower": 0.9435226797778651,
+      "q_high": 0.9921875,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.50390625,
+          0.5078125
+        ],
+        [
+          0.0,
+          0.0078125
+        ],
+        [
+          0.984375,
+          0.9921875
+        ],
+        [
+          0.1875,
+          0.19140625
+        ],
+        [
+          0.171875,
+          0.17578125
+        ],
+        [
+          0.0,
+          0.00390625
+        ],
+        [
+          0.49609375,
+          0.5
+        ],
+        [
+          0.38671875,
+          0.390625
+        ],
+        [
+          0.74609375,
+          0.75
+        ]
+      ],
+      "depth": 70,
+      "distance_squared_lower": 0.007437265924000324,
+      "distance_squared_upper": 0.010175985453589031,
+      "gap_lower": -0.026918730416290663,
+      "maximum_width": 0.0078125,
+      "method": "direct",
+      "objective_lower": 0.9577704114985104,
+      "q_high": 0.9921875,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.50390625
+        ],
+        [
+          0.00390625,
+          0.0078125
+        ],
+        [
+          0.984375,
+          0.98828125
+        ],
+        [
+          0.1875,
+          0.189453125
+        ],
+        [
+          0.171875,
+          0.17578125
+        ],
+        [
+          0.0,
+          0.00390625
+        ],
+        [
+          0.49609375,
+          0.5
+        ],
+        [
+          0.38671875,
+          0.390625
+        ],
+        [
+          0.74609375,
+          0.75
+        ]
+      ],
+      "depth": 73,
+      "distance_squared_lower": 0.00851561763067711,
+      "distance_squared_upper": 0.010140594477546797,
+      "gap_lower": -0.01585159531748144,
+      "maximum_width": 0.00390625,
+      "method": "direct",
+      "objective_lower": 0.9749269467145751,
+      "q_high": 0.98828125,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    },
+    {
+      "box": [
+        [
+          0.5,
+          0.50390625
+        ],
+        [
+          0.00390625,
+          0.0078125
+        ],
+        [
+          0.984375,
+          0.98828125
+        ],
+        [
+          0.189453125,
+          0.19140625
+        ],
+        [
+          0.171875,
+          0.173828125
+        ],
+        [
+          0.0,
+          0.001953125
+        ],
+        [
+          0.49609375,
+          0.5
+        ],
+        [
+          0.38671875,
+          0.390625
+        ],
+        [
+          0.74609375,
+          0.75
+        ]
+      ],
+      "depth": 75,
+      "distance_squared_lower": 0.008516108130407027,
+      "distance_squared_upper": 0.010125506093372913,
+      "gap_lower": -0.01575907127351992,
+      "maximum_width": 0.00390625,
+      "method": "direct",
+      "objective_lower": 0.9750706666023092,
+      "q_high": 0.98828125,
+      "q_low": 0.984375,
+      "straddles_tube": true,
+      "supports_touching_zero": [
+        "b4"
+      ]
+    }
+  ],
+  "rho": "1/10",
+  "run": {
+    "elapsed_seconds": 796.782,
+    "maximum_depth": 81,
+    "mean_infeasible": 207132,
+    "objective_cleared": 64485,
+    "processed": 866551,
+    "residual_count": 76,
+    "split": 433275,
+    "stop_reason": "box_budget",
+    "tube_excluded": 161583
+  },
+  "summary": {
+    "any_support_touching_zero": 67,
+    "distinct_zero_support_patterns": 47,
+    "gap_lower_max": -0.01575907127351992,
+    "gap_lower_min": -4.158883161767091,
+    "maximum_width_max": 1.0,
+    "maximum_width_min": 0.00390625,
+    "q_at_one_only": 22,
+    "q_at_zero_only": 0,
+    "q_full_range": 32,
+    "q_interior": 22,
+    "residual_count": 76,
+    "straddling_tube_boundary": 60,
+    "support_touching_zero_by_coordinate": {
+      "b0": 23,
+      "b1": 24,
+      "b2": 28,
+      "b3": 29,
+      "b4": 40,
+      "b5": 31
+    },
+    "wholly_outside_tube": 16,
+    "zero_support_patterns": {
+      "(none)": 9,
+      "b0,b1,b3": 1,
+      "b0,b1,b3,b5": 1,
+      "b0,b1,b5": 1,
+      "b0,b2,b1,b3": 1,
+      "b0,b2,b1,b3,b5": 1,
+      "b0,b2,b1,b5": 1,
+      "b0,b2,b3,b5": 1,
+      "b0,b2,b4": 2,
+      "b0,b2,b4,b1,b3": 2,
+      "b0,b2,b4,b1,b5": 1,
+      "b0,b2,b4,b3": 1,
+      "b0,b2,b4,b3,b5": 1,
+      "b0,b2,b4,b5": 1,
+      "b0,b2,b5": 1,
+      "b0,b3,b5": 1,
+      "b0,b4,b1,b3": 1,
+      "b0,b4,b1,b3,b5": 1,
+      "b0,b4,b1,b5": 1,
+      "b0,b4,b3,b5": 1,
+      "b0,b4,b5": 1,
+      "b0,b5": 1,
+      "b1,b3": 1,
+      "b1,b3,b5": 1,
+      "b1,b5": 1,
+      "b2": 3,
+      "b2,b1,b3": 1,
+      "b2,b1,b3,b5": 1,
+      "b2,b1,b5": 1,
+      "b2,b3": 1,
+      "b2,b3,b5": 1,
+      "b2,b4": 1,
+      "b2,b4,b1,b3": 1,
+      "b2,b4,b1,b3,b5": 1,
+      "b2,b4,b1,b5": 1,
+      "b2,b4,b3,b5": 1,
+      "b2,b4,b5": 1,
+      "b2,b5": 1,
+      "b3": 3,
+      "b3,b5": 1,
+      "b4": 16,
+      "b4,b1,b3": 1,
+      "b4,b1,b3,b5": 1,
+      "b4,b1,b5": 1,
+      "b4,b3,b5": 1,
+      "b4,b5": 1,
+      "b5": 1
+    }
+  }
+}

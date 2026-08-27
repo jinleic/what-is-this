@@ -41,10 +41,12 @@ CITED ORIGIN, RECONSTRUCTED LOCALLY: Cambie v2, Question 2 / equation (1)
 states the hypothesis for expectations **strictly below** ``c``. Section 4's
 wording switches to “at most” while deriving the union-closed consequence.
 The closed-domain certificate is stronger than Question 2's domain, and the
-sequential Bernoulli-coupling proof in ``AUDIT.md`` and ``paper/main.tex``
+sequential Bernoulli-coupling induction in ``AUDIT.md`` and ``paper/main.tex``
 resolves the boundary by proving a strict positive first-coordinate margin.
-That set-family argument is human-audited, not checked by this finite symbolic
-schema.
+The exact exhaustive control below constructs that coupling for every nonempty
+set family on at most three coordinates and checks all prefix and final
+marginals.  This guards the finite implementation; the displayed induction is
+the proof for arbitrary finite families.
 
 Primary source (fixed version, retrievable from arXiv):
     Stijn Cambie, "Better bounds for the union-closed sets conjecture using the
@@ -129,6 +131,129 @@ def bernoulli_union_identities():
     assert sp.expand(coupled_or - (p + r - z)) == 0
     assert sp.expand(z + (p - z) + (r - z) + (1 - p - r + z) - 1) == 0
     return True
+
+
+def _prefix_parameter(family, prefix, coordinate):
+    """Exact next-bit probability under the uniform law on ``family``."""
+    mask = (1 << coordinate) - 1
+    eligible = tuple(member for member in family if member & mask == prefix)
+    assert eligible
+    bit = 1 << coordinate
+    return Fraction(sum(bool(member & bit) for member in eligible), len(eligible))
+
+
+def _add_mass(mapping, key, mass):
+    mapping[key] = mapping.get(key, Fraction(0)) + mass
+
+
+def sequential_coupling_control(max_coordinates=3):
+    """Exhaust the sequential coupling on every small nonempty set family.
+
+    This is an exact finite implementation control, not the universal proof.
+    The universal statement follows from the same one-step marginal calculation
+    and induction written in the manuscript.
+    """
+    summaries = {}
+    for coordinate_count in range(1, max_coordinates + 1):
+        universe_size = 1 << coordinate_count
+        family_count = 0
+        prefix_state_count = 0
+        transition_count = 0
+        for family_mask in range(1, 1 << universe_size):
+            family = tuple(
+                member for member in range(universe_size)
+                if family_mask & (1 << member)
+            )
+            family_count += 1
+            uniform_mass = Fraction(1, len(family))
+            joint = {(0, 0): ONE}
+
+            for coordinate in range(coordinate_count):
+                next_joint = {}
+                law_p = {}
+                law_r = {}
+                frequency = Fraction(
+                    sum(bool(member & (1 << coordinate)) for member in family),
+                    len(family),
+                )
+                for (a_prefix, c_prefix), state_mass in joint.items():
+                    prefix_state_count += 1
+                    p = _prefix_parameter(family, a_prefix, coordinate)
+                    r = _prefix_parameter(family, c_prefix, coordinate)
+                    _add_mass(law_p, p, state_mass)
+                    _add_mass(law_r, r, state_mass)
+                    s = cambie_sstar(p, r)
+                    probabilities = {
+                        (1, 1): p + r - s,
+                        (1, 0): s - r,
+                        (0, 1): s - p,
+                        (0, 0): ONE - s,
+                    }
+                    assert sum(probabilities.values(), Fraction(0)) == ONE
+                    assert all(probability >= 0 for probability in probabilities.values())
+                    assert sum(
+                        probability for (a_bit, _), probability in probabilities.items()
+                        if a_bit
+                    ) == p
+                    assert sum(
+                        probability for (_, c_bit), probability in probabilities.items()
+                        if c_bit
+                    ) == r
+                    assert sum(
+                        probability for bits, probability in probabilities.items()
+                        if any(bits)
+                    ) == s
+                    for (a_bit, c_bit), probability in probabilities.items():
+                        if not probability:
+                            continue
+                        transition_count += 1
+                        next_a = a_prefix | (a_bit << coordinate)
+                        next_c = c_prefix | (c_bit << coordinate)
+                        _add_mass(
+                            next_joint,
+                            (next_a, next_c),
+                            state_mass * probability,
+                        )
+
+                assert law_p == law_r
+                assert sum(value * mass for value, mass in law_p.items()) == frequency
+                assert sum(value * mass for value, mass in law_r.items()) == frequency
+                assert sum(next_joint.values(), Fraction(0)) == ONE
+                joint = next_joint
+
+                prefix_mask = (1 << (coordinate + 1)) - 1
+                for prefix in range(1 << (coordinate + 1)):
+                    expected = uniform_mass * sum(
+                        member & prefix_mask == prefix for member in family
+                    )
+                    first_mass = sum(
+                        mass for (a_prefix, _), mass in joint.items()
+                        if a_prefix == prefix
+                    )
+                    second_mass = sum(
+                        mass for (_, c_prefix), mass in joint.items()
+                        if c_prefix == prefix
+                    )
+                    assert first_mass == expected
+                    assert second_mass == expected
+
+            for member in range(universe_size):
+                expected = uniform_mass if member in family else Fraction(0)
+                assert sum(
+                    mass for (a_value, _), mass in joint.items()
+                    if a_value == member
+                ) == expected
+                assert sum(
+                    mass for (_, c_value), mass in joint.items()
+                    if c_value == member
+                ) == expected
+
+        summaries[coordinate_count] = {
+            "families": family_count,
+            "prefix_states": prefix_state_count,
+            "positive_transitions": transition_count,
+        }
+    return summaries
 
 
 def symbolic_fold_schema(n):
@@ -252,11 +377,13 @@ def main():
     for n in range(1, 6):
         assert symbolic_fold_schema(n)
     assert functional_identity()
+    sequential = sequential_coupling_control()
     print("HUMAN PROOF BRIDGE: Cambie Q2 s* equals repository s* by 3 exhaustive cases")
     print("EXACT IMPLEMENTATION CONTROL: %d rational pairs; cases=%s" %
           (sum(counts.values()), counts))
     print("HUMAN PROOF BRIDGE: symmetrize+fold preserves equal marginal and symmetric cost")
     print("EXACT FINITE SCHEMA: Q, coupling, and marginal terms match Cambie Q2")
+    print("EXACT SEQUENTIAL COUPLING CONTROL: %s" % sequential)
     print("HUMAN-AUDITED UC IMPLICATION: reconstructed in uc/AUDIT.md and paper/main.tex")
     print("PRIMARY SOURCE: %s" % SOURCE)
     print("BRIDGE CHECK PASS")

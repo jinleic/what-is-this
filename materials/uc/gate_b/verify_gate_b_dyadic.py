@@ -362,6 +362,9 @@ def certified_shapley_iid(
     dimension: int = DIMENSION,
 ) -> Interval:
     """Direct predecessor-subset Shapley average, independent of order orbits."""
+    assert dimension > 0
+    assert family
+    assert all(0 <= row < 1 << dimension for row in family)
     total = Interval.zero()
     for coordinate in range(dimension):
         others = tuple(index for index in range(dimension) if index != coordinate)
@@ -400,6 +403,9 @@ def relaxed_bellman_cost(
     plus the affine constant.
     """
     dimension = len(order)
+    assert tuple(sorted(order)) == tuple(range(dimension))
+    assert family
+    assert all(0 <= row < 1 << dimension for row in family)
 
     @lru_cache(maxsize=None)
     def value(

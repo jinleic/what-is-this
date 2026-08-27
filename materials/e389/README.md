@@ -22,8 +22,15 @@ Labels are literal.
 
 - **PROVED (elementary, below):** the valuation/carry and prime-power-zone
   criteria; exact band/local small-prime controls; compensation-good integer
-  separation; the guaranteed first-prefix repair cone and its exact size;
-  retained-prime product displacement; and the shift-spike/first-term identity.
+  separation; the short-cofactor prime-power spike criterion; the guaranteed
+  first-prefix repair cone and its exact size; retained-prime product
+  displacement; zero-carry CRT eviction of prescribed blockers; the
+  shift-spike/first-term identity; **half-window translation eviction with its
+  sharp minimal offset**; and **the powersmooth necessity bound for every
+  compensated prime power**.
+- **PROVED (using the prime number theorem):** the short-cofactor density is
+  $\log 2$, so for every fixed $m$ the witnesses have upper density at most
+  $1-\log 2=0.30685\ldots$. This is a ceiling, not an obstruction.
 - **PROVED (using Dirichlet's theorem):** every fixed CRT class contains
   arbitrarily large single-level bad-window obstructions.
 - **CERTIFIED FINITE:** all 27 values currently listed in OEIS A375071
@@ -42,11 +49,34 @@ Labels are literal.
 - **CERTIFIED FINITE:** the first 200,000,000 forward offsets from the
   published $m=26$ natural-shift target contain no $m=27$ witness. Twelve
   offsets survive the single-level sieve; complete exact checks reject all.
+- **SUPERSEDED:** the adaptive eviction progression reaches a uniform
+  small-prime-safe class at \(10\le t\le706\) with 32--81-digit candidates, all
+  beyond the retained factorization bound. Those sizes came from demanding the
+  *sufficient* uniform classes, not from eviction. The half-window translation
+  evicts every old blocker at 13 digits, satisfies the exact small-prime tier
+  for all 12 survivor systems with no search, and classifies all 12 completely:
+  each fails only at 9--15 newly entering large primes.
 - **CERTIFIED FINITE:** combining the atlas with an exact compensation-run
   sieve proves that an $m=27$ witness, if one exists, has
   $k>1{,}000{,}050{,}000$.
-- **OPEN:** a uniform witness construction, density theorem, effective global
-  bound, or finite shift-repair theorem.
+- **CERTIFIED FINITE:** four new contiguous exact compensation-run shards extend
+  the neighbourhood of the published $m=26$ natural-shift target to the full
+  interval $5{,}048{,}891{,}644{,}619\le k<5{,}049{,}891{,}644{,}619$. All
+  $10^9$ candidates are rejected, $8\cdot10^8$ of them by the exact
+  compensation criterion with no offset reaching the small-prime tier, and the
+  longest compensation-good runs are 8, 9, 9, 8 against the required 14.
+- **MEASURED EXACTLY:** the $27$-compensation-good density is $0.133708$ over
+  $[50{,}015,\,100{,}050{,}027]$, $0.129223$ over
+  $[100{,}050{,}015,\,1{,}000{,}050{,}027]$, and $0.123664$ in a fresh block at
+  $5\cdot10^{12}$; the exact small-prime tier passes for 19,920 of 20,000
+  consecutive $k$ there. Observed run spectra match a term-independence model
+  within one unit of the longest run.
+- **NOT PROVED (extrapolation):** regressing $\log k_m$ on $\lceil m/2\rceil$
+  over the 26 published witnesses gives $R^2=0.989$ and predicts a least
+  $m=27$ witness near $2.8\cdot10^{13}$; the independence model predicts
+  $5.1\cdot10^{12}$. Both exceed every exhausted range here.
+- **OPEN:** a uniform witness construction, a lower-bound density theorem, an
+  effective global bound, or a finite shift-repair theorem.
 
 ## Exact reductions
 
@@ -162,7 +192,13 @@ The exact rectangle $1\le m\le50$, $1\le k\le50{,}000$ contains:
 
 The original carry-pattern summaries omitted $p$ from their global keys. That
 merged equal-looking carry positions from different bases: 77 old near-witness
-groups and 15 old shift groups contained multiple primes. Schema 2 now uses
+groups and 15 old shift groups contained multiple primes.
+
+The dominant old shift group was itself a cross-base collision: count 6,053,
+left/right carry positions \([0]\)/\([0]\), first representative \(p=5\), and
+1,860 distinct primes in the independently reconstructed split. The regression
+suite pins this case explicitly; cross-prime equality is the rule here, not an
+edge case. Schema 2 now uses
 
 $$
 (p,\text{deficit},\text{left carries},\text{right carries})
@@ -183,7 +219,8 @@ shifts unrepaired for every $|\delta|\le16$. This is not a CRT test.
 
 [`THEOREMS.md`](THEOREMS.md) proves and checks:
 
-- an exact $-1/0/+1$ prime-power zone formula and bad-window support theorem;
+- an exact $-1/0/+1$ prime-power zone formula and universal bad-window
+  support for every negative level;
 - exact prime-power-band CRT classes and uniform local-safe residue classes;
 - a Dirichlet construction proving no fixed CRT class can be sufficient;
 - the exact decomposition into a small-prime tier and a run of
@@ -191,6 +228,21 @@ shifts unrepaired for every $|\delta|\le16$. This is not a CRT test.
 - the full guaranteed odd-prime first-prefix cone, of size
   $\frac{p-1}{2}(\frac{p+1}{2})^{e-1}$;
 - a product-displacement lower bound for every repair retaining old blockers;
+- a zero-carry CRT system that controls all small primes while evicting any
+  prescribed finite set of old large blockers, with its exact class count;
+- an adaptive progression that evicts old blockers and visits every uniform
+  small-prime-safe class in one exact period;
+- unconditional eviction of every attached large prime by translating $k$ by
+  $\lceil m/2\rceil$, together with the proof that no smaller uniform offset
+  works;
+- the powersmooth necessity bound $p^{v_p(w)}<\sqrt{2w}$ at every large prime
+  of a compensation-good integer, attained at $w=p^e(p^e+1)/2$;
+- the exact $\log 2$ short-cofactor density and the resulting witness density
+  ceiling $1-\log 2$ for every fixed $m$;
+- the reduction of every natural shift of a witness to one integer: an odd
+  source keeps its window and can fail only at $p\le m+1$, while an even source
+  adjoins exactly $x/2$;
+- sharp short-cofactor and minimal-cofactor prime-power spike thresholds;
 - the odd-$m$ CRT-safe shift theorem and the identity equating even-shift
   spikes with compensation of the newly adjoined first bad-window term;
 - sharp single-level and smooth-window sufficient criteria.
@@ -199,8 +251,9 @@ Finite evidence now separates the mechanisms. All 5,798 CRT-safe odd witnesses
 shift successfully. The old fatal-spike lemma explains 4,578/5,669 failed
 even shifts; the exact digit formula explains 5,620/5,669, leaving 49 with
 only small-prime obstructions. The compensation formula is checked at 50,360
-large-prime bad-window events, and the band/local CRT formulas at 711 band
-values and 523,408 unrestricted-high-part extensions.
+large-prime bad-window events, the short-cofactor corollary at 405,780 factors,
+and the band/local CRT formulas at 711 band values and 523,408
+unrestricted-high-part extensions.
 
 The band-exact radius-64 cover gives every one of 5,678 boundary-comparable
 failed shifts a valid $p\le m+1$ tier candidate. In 5,321 cases the failed
@@ -217,7 +270,22 @@ searches check the next 200,000,000 offsets. Single-level primes reject
 at 14, 6, and 7 large primes; the later nine at 9--17 total primes. Two of the
 later cases also fail at $p=7$. The structure certificate checks all 140 large
 survivor blockers. Retaining every old blocker forces prime-product
-displacements of 30--79 digits, before any new-window interference is tested.
+displacements of 30--79 digits, and the earlier zero-carry and adaptive
+eviction routes produced 49--98- and 32--81-digit representatives beyond the
+retained factorization bound.
+
+That size cost was avoidable. Translating $k$ by exactly $\lceil m/2\rceil$
+evicts every attached prime $p>m$ unconditionally, because the translated
+window is the next block of $\lceil m/2\rceil$ integers and the two blocks
+together span at most $m$ consecutive values. No smaller uniform offset works.
+The translated candidate keeps the magnitude of its source, so all 12 survivor
+systems give 13-digit candidates that evict all 140 recorded blockers, satisfy
+the exact small-prime tier with no search, stay inside the factorization bound,
+and are classified completely: each fails only at 9--15 newly entering large
+primes. Over $1\le m\le20$, $1\le k\le5{,}000$ the same translation classifies
+all 98,706 large-prime-obstructed sources exactly, yielding 1,033 witnesses,
+59,641 new-large-prime-only failures, 162 small-prime-only failures, and 37,870
+double failures.
 
 The compensation-good criterion removes the residual sieve's proximity
 restriction. Two contiguous exact runs exhaust
@@ -227,11 +295,34 @@ consecutive $27$-compensation-good integers is 9, short of the required 14.
 Together with the atlas, this is an exact finite lower bound on the least
 possible $m=27$ witness.
 
-**Next active proof task:** produce, or prove the existence of, a length-14 run
-of $27$-compensation-good integers that intersects an exact small-prime band
-class. Fixed classes cannot suffice, and retaining the blockers of one failed
-window is already product-scale. Extending the finite sieve raises the lower
-bound but does not address this adaptive intersection.
+Four new shards apply the same criterion at the shift target's own scale and
+extend the certified neighbourhood to the contiguous interval
+$5{,}048{,}891{,}644{,}619\le k<5{,}049{,}891{,}644{,}619$, again with no
+witness and with longest runs 8, 9, 9, 8. Each shard processed
+$2\cdot10^8$ candidates in about 720 s on one reduced-priority process, a
+measured $2.8\cdot10^5$ candidates per second. At that rate and the measured
+densities, reaching the independence model's predicted $5.1\cdot10^{12}$ would
+cost roughly $1.8\cdot10^7$ single-core seconds, so brute force is expensive
+but not out of reach; the regression's $2.8\cdot10^{13}$ is about six times
+further.
+
+The barrier now has a measured size. Compensation-good density is $0.1237$ at
+the $5\cdot10^{12}$ scale against a proved ceiling of $1-\log 2$, the exact
+small-prime tier passes for 99.6% of consecutive $k$ there, and observed run
+spectra match a term-independence model. The published $m=25$ and $m=26$
+witnesses already supply a run of 13 consecutive $27$-compensation-good
+integers; the even-to-odd shift adjoins exactly one further term on the left,
+and for $m=26$ that term is the prime $5{,}048{,}891{,}644{,}633$, which cannot
+compensate.
+
+**Next active proof task:** decide the existence of a length-$\lceil m/2\rceil$
+run of $m$-compensation-good integers. Old blockers are no longer part of the
+difficulty: translation evicts them at zero cost, the small-prime tier is
+almost never binding, and every remaining failure is a newly entering large
+prime. The proved powersmooth necessity bound reduces the target to
+$\lceil m/2\rceil$ consecutive integers that are simultaneously
+$\sqrt{2w}$-powersmooth away from $p\le m$, a correlation problem for large
+prime factors of consecutive integers.
 
 ## Files
 
@@ -245,7 +336,11 @@ bound but does not address this adaptive intersection.
 | `zone_analysis.py` | Exhaustive finite certificate for the level-zone, support, and single-level obstruction theorems. |
 | `zero_carry_corridor_search.py` | Full or partial small-prime-zero candidate-family search. |
 | `residue_control_analysis.py` | Exact band/local CRT classes, fixed-class obstruction examples, bad-window compensation, mirror lifts, and exact shift-spike certificate. |
-| `compensation_structure_analysis.py` | Exact local-window separation, prefix-cone, retained-prime displacement, and shift-identity certificate. |
+| `compensation_structure_analysis.py` | Exact local-window separation, short-cofactor spikes, prefix cone, retained-prime displacement, zero-carry blocker eviction, and shift-identity certificate. |
+| `adaptive_eviction_analysis.py` | Exact first-hit search along blocker-evicting progressions through uniform local-safe classes, plus a bounded exact new-prime scan. |
+| `exact_eviction_certificate.py` | Exhaustive half-window translation eviction, its sharp minimal offset, and exact classification of every translated candidate. |
+| `parity_shift_certificate.py` | Exact reduction of every witness shift to its adjoined bad-window term, over a rectangle and all published witnesses. |
+| `smooth_density_analysis.py` | Powersmooth necessity checks, two-method short-cofactor counts, measured compensation densities and run spectra, and the labelled growth model. |
 | `compensation_run_search.py` | Segmented exact search for runs of compensation-good integers, with full checks of every large-prime-good window. |
 | `crt_repair_cover.py` | Radius-bounded separation of exact small-prime tier repair from moving-window blockers. |
 | `moving_bad_window_search.py` | Segmented exact single-level sieve plus full checks of every survivor near the first $m=27$ shift target. |
@@ -267,8 +362,13 @@ bound but does not address this adaptive intersection.
 | `data/crt_repair_cover_m1_50_k50000_r64.json` | Exact 5,678-case small-prime-tier versus moving-window repair cover. |
 | `data/moving_bad_window_m27_h*.json` | Exact 1M, 20M, and two contiguous 100M moving-window searches near the published natural-shift target. |
 | `data/bad_window_near_miss_m27_h*.json` | Exact one-prime and combined-CRT repair analyses for the 1M near misses and 100M sieve survivors. |
-| `data/compensation_structure_m1_20_k5000_m27_h*.json` | Exact theorem checks and retained-prime bounds for the 100M and 200M moving certificates. |
-| `data/compensation_run_m27_k*.json` | Two contiguous exact run searches proving the $m=27$ bound through $k=1{,}000{,}050{,}000$. |
+| `data/compensation_structure_m1_20_k5000_m27_h*.json` | Exact theorem checks, blocker-eviction experiments, and retained-prime bounds for the 100M and 200M moving certificates. |
+| `data/adaptive_eviction_m27_h200000000.json` | Exact first safe progression parameters for all 12 moving-window survivor blocker systems. |
+| `data/exact_eviction_m1_20_k5000_m27.json` | Exhaustive eviction certificate, sharpness instances, 98,706 exactly classified translated candidates, and the 12 resolved survivor systems. |
+| `data/compensation_run_m27_k5049*_h200000000.json` | Four contiguous exact shards extending the shift-target neighbourhood to $10^9$ candidates. |
+| `data/parity_shift_m1_20_k4000_published.json` | Exact shift reduction at 905 rectangle witness sources and all 26 published witnesses. |
+| `data/smooth_density_m1_20_k3000.json` | Powersmooth necessity checks, short-cofactor densities against $\log 2$, measured block densities and run spectra, and the labelled growth model. |
+| `data/compensation_run_m27_k50001_h100000000.json`, `data/compensation_run_m27_k100050001_h900000000.json` | Two contiguous exact run searches proving the $m=27$ bound through $k=1{,}000{,}050{,}000$. |
 | `data/known_witness_verification.json` | Machine-written witness certificates and run summary. |
 | `data/atlas_smoke_m1_8_k500*.json` | Repaired and preserved pre-fix smoke artifacts. |
 | `run_low_cpu.sh` | One-process, reduced-priority launcher with thread pools pinned to one. |
@@ -289,11 +389,18 @@ From this directory:
 ./run_low_cpu.sh python3 compensation_structure_analysis.py
 ./run_low_cpu.sh python3 compensation_run_search.py
 ./run_low_cpu.sh python3 compensation_run_search.py --start-k 100050001 --offset-limit 900000000 --output data/compensation_run_m27_k100050001_h900000000.json
+for start in 5049091644619 5049291644619 5049491644619 5049691644619; do
+  ./run_low_cpu.sh python3 compensation_run_search.py --start-k $start --offset-limit 200000000 --chunk-size 1000000 --output data/compensation_run_m27_k${start}_h200000000.json
+done
 ./run_low_cpu.sh python3 moving_bad_window_search.py
 ./run_low_cpu.sh python3 moving_bad_window_search.py --offset-limit 20000000 --chunk-size 1000000 --output data/moving_bad_window_m27_h20000000.json
 ./run_low_cpu.sh python3 moving_bad_window_search.py --offset-limit 100000000 --chunk-size 1000000 --output data/moving_bad_window_m27_h100000000.json
 ./run_low_cpu.sh python3 moving_bad_window_search.py --start-k 5048991644619 --offset-limit 100000000 --chunk-size 1000000 --output data/moving_bad_window_m27_h100000000_199999999.json
 ./run_low_cpu.sh python3 compensation_structure_analysis.py --extended-moving data/moving_bad_window_m27_h100000000_199999999.json --output data/compensation_structure_m1_20_k5000_m27_h200000000.json
+./run_low_cpu.sh python3 adaptive_eviction_analysis.py
+./run_low_cpu.sh python3 exact_eviction_certificate.py
+./run_low_cpu.sh python3 parity_shift_certificate.py
+./run_low_cpu.sh python3 smooth_density_analysis.py --short-cofactor-limits 100000 1000000 2000000
 ./run_low_cpu.sh python3 bad_window_near_miss_analysis.py
 ./run_low_cpu.sh python3 bad_window_near_miss_analysis.py --offset-limit 100000000 --chunk-size 1000000 --output data/bad_window_near_miss_m27_h100000000.json
 ./run_low_cpu.sh python3 zero_carry_corridor_search.py

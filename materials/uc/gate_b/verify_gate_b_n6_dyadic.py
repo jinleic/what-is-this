@@ -18,8 +18,12 @@ from fractions import Fraction
 from itertools import combinations, permutations
 import json
 from math import factorial
+import sys
 from pathlib import Path
 from typing import Any
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
 
 from verify_gate_b_dyadic import (
     ALPHA,
@@ -61,6 +65,36 @@ def reconstruct_family() -> tuple[int, ...]:
     return tuple(sorted(rows))
 
 
+
+def _ordered_weight_union_count(
+    block_size: int,
+    left_weight: int,
+    right_weight: int,
+    union_weight: int,
+) -> int:
+    intersection = left_weight + right_weight - union_weight
+    left_only = left_weight - intersection
+    right_only = right_weight - intersection
+    outside = block_size - union_weight
+    if min(intersection, left_only, right_only, outside) < 0:
+        return 0
+    return factorial(block_size) // (
+        factorial(intersection)
+        * factorial(left_only)
+        * factorial(right_only)
+        * factorial(outside)
+    )
+
+
+def _cell_join_success_count() -> int:
+    return sum(
+        _ordered_weight_union_count(3, left[0], right[0], joined[0])
+        * _ordered_weight_union_count(3, left[1], right[1], joined[1])
+        for left in BLOCK_CELLS
+        for right in BLOCK_CELLS
+        for joined in BLOCK_CELLS
+    )
+
 def _exact_base(family: tuple[int, ...]) -> dict[str, Any]:
     expected = (
         0, 1, 2, 4, 8, 11, 13, 14, 16, 19, 21, 22, 25,
@@ -90,6 +124,8 @@ def _exact_base(family: tuple[int, ...]) -> dict[str, Any]:
     defect = Fraction(missing, len(family) ** 2)
     assert missing == 444
     assert defect == Fraction(444, 625)
+    cell_success = _cell_join_success_count()
+    assert cell_success == len(family) ** 2 - missing == 181
 
     columns = tuple(
         tuple((row >> coordinate) & 1 for row in family)
@@ -109,6 +145,7 @@ def _exact_base(family: tuple[int, ...]) -> dict[str, Any]:
         "total_incidence": incidence,
         "reimer_threshold": threshold,
         "missing_ordered_join_pairs": missing,
+        "cell_formula_join_success_pairs": cell_success,
         "closure_defect": str(defect),
         "join_success_probability": str(1 - defect),
         "active": True,

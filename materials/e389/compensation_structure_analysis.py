@@ -760,6 +760,69 @@ def analyze(
         raise ValueError("unexpected moving-window artifact status")
     if near_miss["status"] != "EXACT_BOUNDED_BAD_WINDOW_NEAR_MISS_ANALYSIS":
         raise ValueError("unexpected near-miss artifact status")
+    if moving.get("schema_version") != 1:
+        raise ValueError("moving schema_version must be 1")
+    if near_miss.get("schema_version") != 1:
+        raise ValueError("near-miss schema_version must be 1")
+    interval_fields = (
+        "target_m",
+        "start_k",
+        "offset_count",
+        "offset_min",
+        "offset_max",
+    )
+    if any(
+        moving["parameters"].get(field) != near_miss["parameters"].get(field)
+        for field in interval_fields
+    ):
+        raise ValueError("near-miss parameters disagree with moving window")
+    if moving["parameters"].get("target_m") != 27:
+        raise ValueError("compensation-structure survivor sections require m=27")
+    for label, artifact in (
+        ("moving", moving),
+        ("near-miss", near_miss),
+    ):
+        parameters = artifact["parameters"]
+        offset_count = parameters.get("offset_count")
+        if (
+            not isinstance(offset_count, int)
+            or isinstance(offset_count, bool)
+            or offset_count < 1
+            or parameters.get("offset_min") != 0
+            or parameters.get("offset_max") != offset_count - 1
+        ):
+            raise ValueError(f"{label} interval metadata is invalid")
+
+    extended_bytes: bytes | None = None
+    extended: dict[str, Any] | None = None
+    if extended_moving_path is not None:
+        extended_moving_path = extended_moving_path.resolve()
+        extended_bytes = extended_moving_path.read_bytes()
+        extended = json.loads(extended_bytes)
+        if extended.get("schema_version") != 1:
+            raise ValueError("extended moving schema_version must be 1")
+        if extended.get("status") != "EXACT_BOUNDED_MOVING_BAD_WINDOW_SEARCH":
+            raise ValueError("unexpected extended moving-window artifact status")
+        extended_parameters = extended["parameters"]
+        extended_count = extended_parameters.get("offset_count")
+        if (
+            not isinstance(extended_count, int)
+            or isinstance(extended_count, bool)
+            or extended_count < 1
+            or extended_parameters.get("offset_min") != 0
+            or extended_parameters.get("offset_max") != extended_count - 1
+        ):
+            raise ValueError("extended moving interval metadata is invalid")
+        if extended_parameters.get("target_m") != moving["parameters"].get(
+            "target_m"
+        ):
+            raise ValueError("moving-window target indices disagree")
+        expected_start = (
+            moving["parameters"]["start_k"]
+            + moving["parameters"]["offset_count"]
+        )
+        if extended_parameters.get("start_k") != expected_start:
+            raise ValueError("moving-window artifacts are not contiguous")
 
     result = {
         "schema_version": 3,
@@ -811,10 +874,12 @@ def analyze(
             "moving_window": {
                 "logical_name": moving_path.name,
                 "sha256": hashlib.sha256(moving_bytes).hexdigest(),
+                "schema_version": moving["schema_version"],
             },
             "near_miss": {
                 "logical_name": near_miss_path.name,
                 "sha256": hashlib.sha256(near_miss_bytes).hexdigest(),
+                "schema_version": near_miss["schema_version"],
             },
         },
         "implementation_sha256": {
@@ -825,20 +890,8 @@ def analyze(
             ),
         },
     }
-    if extended_moving_path is not None:
-        extended_moving_path = extended_moving_path.resolve()
-        extended_bytes = extended_moving_path.read_bytes()
-        extended = json.loads(extended_bytes)
-        if extended["status"] != "EXACT_BOUNDED_MOVING_BAD_WINDOW_SEARCH":
-            raise ValueError("unexpected extended moving-window artifact status")
-        if extended["parameters"]["target_m"] != moving["parameters"]["target_m"]:
-            raise ValueError("moving-window target indices disagree")
-        expected_start = (
-            moving["parameters"]["start_k"]
-            + moving["parameters"]["offset_count"]
-        )
-        if extended["parameters"]["start_k"] != expected_start:
-            raise ValueError("moving-window artifacts are not contiguous")
+    if extended is not None:
+        assert extended_moving_path is not None and extended_bytes is not None
         result["parameters"]["contiguous_moving_offset_count"] = (
             moving["parameters"]["offset_count"]
             + extended["parameters"]["offset_count"]
@@ -849,6 +902,7 @@ def analyze(
         result["input"]["extended_moving_window"] = {
             "logical_name": extended_moving_path.name,
             "sha256": hashlib.sha256(extended_bytes).hexdigest(),
+            "schema_version": extended["schema_version"],
         }
     return result
 

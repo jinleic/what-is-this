@@ -23,7 +23,7 @@
 \title{A Tensorization Obstruction to a Scalar\\
 Closure-Defect Repair for a Union-Closed Entropy Functional}
 \author{Research draft}
-\date{25 August 2026}
+\date{26 August 2026}
 
 \begin{document}
 \maketitle
@@ -48,8 +48,16 @@ and still proves $A_+<-1/40$, without clamp decisions or Arb.  The same
 dyadic primitive certifies a separate 25-member family on six coordinates,
 evaluating all 720 orders without a symmetry quotient and proving
 $A_+<-1/80$.  Its Cartesian powers have repair ratio greater than $k/80$.
+Finally, an exact rational certificate evaluates the true optimum over the
+exact feasible action set, with no interval library, no clamp classification
+and no relaxation, and returns two-sided enclosures of width below
+$6\times10^{-27}$ for both bases over all $720$ and all $5040$ coordinate
+orders.
 These two constructions rule out every fixed scalar multiple of this
-ordered-pair defect.
+ordered-pair defect.  The same enclosures make the growth rate explicit: the
+supremum over families on at most $n$ coordinates exceeds $n/250-7/250$, while
+$Q\ge0$ and $C_+\ge0$ bound it by $n/\eps_0$ once $\eps_\vee\ge\eps_0$, so the
+divergence is exactly of order $n$ under a positive defect floor.
 They neither produce a union-closed counterexample nor settle a separate
 small-defect stability question.
 \end{abstract}
@@ -66,7 +74,7 @@ let all random members be uniform on $\F$.  The admissibility conditions are
 \end{align}
 A family is called normalized here when every coordinate column is nonzero and
 the columns are pairwise distinct.  Normalization is not required in the
-supremum below, but all members of our sequence satisfy it.
+supremum below, but all members of both sequences satisfy it.
 
 Fix a coordinate order $\pi$.  At coordinate $i$ and predecessor prefix $u$,
 write
@@ -343,6 +351,13 @@ an automorphism quotient, and certifies
  A_+(\mathcal D)&<-0.0125897106568747589615082453240<-\frac1{80}.
 \end{aligned}
 \]
+A separate 256-bit Arb evaluation of the same family and its 10 exact order
+orbits certifies the stronger bound
+\[
+ A_+(\mathcal D)<-\frac{17}{1250}.
+\]
+Thus the second base, like the first, survives both arithmetic formulations;
+the dyadic certificate additionally removes the order quotient.
 For $\mathcal G_k=\mathcal D^{\boxprod k}$, the product identities give
 \[
  A_+(\mathcal G_k)=kA_+(\mathcal D),\qquad
@@ -356,10 +371,86 @@ is normalized and admissible and independently gives
  >\frac{k/80}{1-(181/625)^k}>\frac{k}{80}\longrightarrow+\infty.
 \]
 
+\subsection{Exact rational certificate without relaxation}
+
+The two certificates above are numerical in different ways: one needs a
+third-party ball-arithmetic library and a three-way clamp classification, the
+other enlarges every feasible action interval to $[0,1]$ and therefore bounds a
+relaxation of $C_+$ rather than $C_+$ itself.  A third certificate removes both
+concessions.
+
+\begin{proposition}[Exact rational enclosures]
+There are exact rational two-sided enclosures, computed with ordinary
+fractions and no third-party package, of the true objective over the exact
+feasible action set:
+\begin{align}
+ A_+(\mathcal D)&\in[-0.0136721077321777735618599156610,\,
+  -0.0136721077321777735618599129978],\\
+ A_+(\B)&\in[-0.0286491867944683178160269819327,\,
+  -0.0286491867944683178160269764548].
+\end{align}
+Both widths are below $6\times10^{-27}$, and the upper endpoints give
+$A_+(\mathcal D)<-17/1250$ and $A_+(\B)<-7/250$.
+\label{prop:rational}
+\end{proposition}
+\begin{proof}
+Three certified scalar primitives suffice, all integer arithmetic.  First, for
+$y>0$ and any bit $b$ one has $\log_2y=(b+\log_2(y^2/2^{b}))/2$ exactly;
+iterating $N$ times with monotone rounding of the state keeps the accumulated
+value on the intended side, and choosing $b=1$ exactly when the rounded square
+is at least two keeps the state in $(0,2]$, so the discarded tail
+$2^{-N}\log_2y_N$ lies in $[0,2^{-N}]$.  Second, with $r_0=2$ and
+$r_{j+1}$ the ceiling square root of $r_j$ at a fixed dyadic denominator,
+induction gives $r_j\ge2^{2^{-j}}$, so rounding an exponent up to $N$ binary
+places and multiplying the $r_j$ over its set bits bounds $2^x$ from above.
+Third, both weights of $h$ are negative, so bounding each logarithm on the
+opposite side bounds $h$; and $h(s)+cs$ is concave with derivative
+$\log_2((1-s)/s)+c$, so on $[\ell,u]$ its maximum is exactly at an endpoint
+when the derivative has a sign there and otherwise at most the Fenchel value
+$\log_2(1+2^{c})$.
+
+A Bellman step is monotone in its children because the four feasible
+transition probabilities are nonnegative and sum to one; replacing children,
+and then the affine data, by upper bounds therefore yields an upper bound.  For
+the lower endpoint the same recursion evaluates one explicitly feasible
+rational action near $1/(1+2^{-c})$ against pessimistic children, which is the
+value of an admissible one-sided coupling and hence at most $C_{+,\pi}$.
+Evaluating all $720$ and all $5040$ coordinate orders — without any
+automorphism quotient — and averaging gives the stated enclosures; the
+all-order value lists partition into $10$ classes of size $72$ and $21$ classes
+of size $240$, which recovers the automorphism data instead of assuming it.
+\end{proof}
+
+The Arb value in \eqref{eq:base-negative} and its six-coordinate
+analogue lie strictly inside these enclosures, so retaining the unconstrained
+maximum at the $982$ and $305$ clamp-ambiguous states cost less than
+$10^{-26}$.
+
+\subsection{Growth rate}
+
+Let $c^\star(n)$ denote the supremum in \eqref{eq:cstar} restricted to
+admissible families on at most $n$ coordinates.  Taking
+$k=\lfloor n/d\rfloor$ powers of a certified base of dimension $d$ with
+$A_+\le-\delta$ gives
+\[
+ c^\star(n)\ \ge\
+ \frac{\delta\lfloor n/d\rfloor}{1-(1-\eps_\vee)^{\lfloor n/d\rfloor}}
+ \ >\ \delta\left\lfloor\frac nd\right\rfloor,
+\]
+so $c^\star(n)>n/250-7/250$ from $\B$ and $c^\star(n)>17n/7500-17/1250$ from
+$\mathcal D$.  In the other direction every local term of $Q$ is a binary
+entropy and $C_+$ is a maximum of sums of binary entropies, so $Q\ge0$ and
+$C_+\ge0$, whence $A_+\ge-\log_2m\ge-n$.  Therefore any admissible family on at
+most $n$ coordinates with $\eps_\vee\ge\eps_0>0$ satisfies
+$-A_+/\eps_\vee\le n/\eps_0$.  Under a positive defect floor the Gate B ratio is
+thus of order exactly $n$, and the only route to a bounded ratio is to force
+$\eps_\vee\to0$.
+
 \section{Computational controls}
 
-The proof uses computation only to establish the strictly negative finite base.
-The standalone verifier additionally performs the following adversarial checks.
+The proof uses computation only to establish the two strictly negative finite
+bases.  The standalone verifiers additionally perform the following
+adversarial checks.
 
 \begin{enumerate}
 \item It explicitly constructs the 2,025-row square and counts 3,920,000
@@ -388,11 +479,25 @@ block-swapped, reversed, alternating, and a seeded interleaving.  The directly
 computed $C_{+,\pi}$ and $Q_\pi$ match the induced block sums to float64
 rounding, worst gaps $8.9\times10^{-16}$ and $3.6\times10^{-15}$, while the
 values take three distinct magnitudes.
+\item The second base has its own non-factored control.  It materializes the
+625-row square as plain 12-bit masks, directly counts 357,864 missing ordered
+joins out of 390,625, and runs the generic evaluators for the same five order
+patterns.  The Bellman product gap is zero in every case and the worst iid gap
+is $1.8\times10^{-15}$.  This resumable check does not use the dyadic
+certificate's order computation.
 \item A resumable falsification search attacks additivity on 292 ordered
 products, 205 with unequal block dimensions, including dead columns, duplicate
 columns, singletons, full power sets, middle layers, and seeded random pairs,
 over every global order of each product.  It found no counterexample; the worst
 gap is $1.8\times10^{-15}$ and the exact ordered-defect product never failed.
+\item The same attack is then repeated in exact rational arithmetic on 35
+ordered products, 20 with unequal block dimensions, over every global order of
+every product, 15,010 orders in total.  For each order it requires the
+certified enclosures of the two sides to intersect, so a failure would be a
+counterexample and not rounding.  There were no intersection failures, no
+failures of the exact defect identity, a worst $Q$ discrepancy of
+$1.4\times10^{-27}$, and a worst fixed-order Bellman discrepancy of exactly
+zero.
 \item The shared algebra is verified symbolically: the four transition weights
 sum identically to one, the step objective equals
 $\text{const}+sD+h(s)$ so a common additive shift of the continuation values
@@ -428,28 +533,29 @@ arbitrary-$n=8$ optimum.
 
 \section{Scope and limitations}
 
-The sequence satisfies $\eps_\vee(\F_k)\to1$.  This is no limitation for the
+Both sequences satisfy \(\eps_\vee\to1\).  This is no limitation for the
 unrestricted supremum \eqref{eq:cstar}, but it means the argument does not
 settle a different local-stability problem restricted to
 $\eps_\vee\to0$.  Approximate-union-closure results such as
 Chase--Lovett~\cite{ChaseLovett} concern that small-defect regime and frequency
 bounds, not the present Bellman functional.
 
-The base is deliberately non-union-closed.  The theorem neither refutes the
+Both bases are deliberately non-union-closed.  The theorem neither refutes the
 union-closed sets conjecture nor supplies the UC-specific structural charge
 needed by the larger entropy programme.  Its conclusion is narrower and
 complete: no fixed scalar multiple of the ordered-pair closure defect can
 repair $A_+$ over all cap/Reimer families.
 
-There are three verified finite-base certificates covering two different
-families, but they are ordinary interval computations rather than
-proof-assistant artifacts, and the tensorization lemmas are human-audited
-mathematics supported by the falsification searches above.  The
-seven-coordinate sign is established by two arithmetically disjoint checkers:
-a 256-bit Arb computation with clamp classification, and a standard-library
-dyadic computation that avoids clamp decisions entirely.  The second dyadic
-certificate uses the six-coordinate family, evaluates all 720 orders without
-symmetry reduction, and needs no third-party package.
+There are now six verified finite-base certificates covering two different
+families, and the tensorization lemmas remain human-audited mathematics
+supported by the falsification searches above.  Each family is checked by three
+arithmetically disjoint routes: a 256-bit Arb computation with clamp
+classification, a standard-library dyadic computation that avoids clamp
+decisions entirely, and an exact rational computation that additionally avoids
+every relaxation and every interval library and returns a two-sided enclosure.
+For both families the exact rational route evaluates every coordinate order
+without symmetry reduction.  None of the three is a proof-assistant artifact,
+and formalization remains open.
 
 \begin{thebibliography}{9}
 \bibitem{ChaseLovett}

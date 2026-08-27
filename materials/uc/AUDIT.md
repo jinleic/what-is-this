@@ -205,8 +205,8 @@ of \(\Phi_{\rm rel}\) at every accepted trace leaf is **MACHINE-VERIFIED**. Evid
 | D11 | \(E\le S^2\), hence \(\Phi_{\rm ex}\ge\Phi_{\rm rel}\); handle \(L=0\) separately | D5 | **HUMAN-AUDITED** | `S/margin_lemma.py:15-37`; Sections 4.5–4.6 |
 | D12 | \(\operatorname{rh}\) collars, \(\rho\) caps, and endpoint derivative cap | D5 | Collar theorem **MACHINE-VERIFIED** by targeted frozen run plus **HUMAN-AUDITED** signs; derivative cap **HUMAN-AUDITED** | `S/lemma_rh_proof.py:42-207,266-424`; `S/cert2.py:51-65,193-313`; `S/cert3.py:126-171` |
 | D13 | Every code 0–8 discharge is a valid infeasibility proof or lower bound for \(\Phi_{\rm rel}\); splits preserve coverage | D0, D11, D12 | Rule derivations **HUMAN-AUDITED**; accepted leaf arithmetic reported **MACHINE-VERIFIED** | Section 6; `S/cert3.py:1406-1593` |
-| D14 | Trace reconstruction covers all eight roots and rejects residual/pending work | D13 | **MACHINE-VERIFIED** according to archived replay; common-mode source soundness remains human | `S/cert3_replay.py:187-331`; `I/collect_output.txt:2-25` |
-| D15 | Campaign I establishes \(\Phi_{\rm rel}\ge0\) on the feasible five-parameter domain | D13, D14 | **MACHINE-VERIFIED** in the archived collector run, conditional on named hashes/runtime trust | `I/collect_output.txt:1-25`; eight `I/result_slice*.json:1` records |
+| D14 | Trace reconstruction covers all eight roots and rejects residual/pending work | D13 | **MACHINE-VERIFIED** by frozen, structural, and secure independent byte-zero replays | `S/cert3_replay.py:187-331`; `verification/results/independent-arithmetic/secure-full/composite.json` |
+| D15 | Campaign I establishes \(\Phi_{\rm rel}\ge0\) on the feasible five-parameter domain | D13, D14 | **MACHINE-VERIFIED** independently at the Python formula/control layer, conditional on the stated trace/Arb/runtime/custody trust | secure composite and report lock; archived Campaign I records |
 | D16 | \(F(\mu)\ge0\) for all \(\mathbb E p\le t_{\rm cert}\) | D2–D15 | **HUMAN-AUDITED** implication from machine arithmetic and analytic lemmas | Equations (1)–(2); `uc/PROOF.md:95-169` |
 | D17 | Finite union-closed consequence | D16 | **HUMAN-AUDITED** self-contained reconstruction here; current paper labels it **CITED-DEPENDENCY** | Section 4.1; Cambie arXiv:2212.12500v2, Q2 and Section 4 |
 
@@ -363,6 +363,33 @@ endpoint sign is **MACHINE-VERIFIED**; the sequential proof is not machine
 checked. This also shows that the stronger assumption “all frequencies
 \(\le t\)” leads to a contradiction, so the `<`/`<=` mismatch does not leave
 a boundary gap.
+
+**2026-08-27 update — the finite content of this bridge is now exhaustively
+machine-checked.** `verification/entropy_bridge_exhaustive.py` rebuilds steps
+1--3 above from the corollary statement alone, importing neither
+`S/bridge_uc.py` nor any campaign or certificate module, and runs them on
+**every** nonempty family of subsets of \([n]\) for \(n\le4\): 65,808 families
+and 1,631,880 coupled prefix states.  In exact rational arithmetic it confirms
+the four conditional masses, both Bernoulli marginals, the OR parameter
+\(s^*\), prefix-by-prefix uniformity of \(A\) and \(C\),
+\(\mathcal L(P_i)=\mathcal L(R_i)\), \(\mathbb E P_i=\) the frequency of
+element \(i\), and the chain rule \(\mathsf H(A)=\sum_i\mathbb E h(P_i)\).  In
+256-bit Arb it certifies the two conditioning inequalities, each enclosure
+being provably nonnegative or a structural tie inside \(\pm2^{-200}\).  All
+5,096 enumerated union-closed families satisfy the \(t_{\rm cert}\)
+conclusion, the extreme case being exactly \(1/2\).  The sequential proof for
+arbitrary finite families remains **HUMAN-AUDITED**: this is an exhaustive
+finite control, and `verification/test_entropy_bridge_exhaustive.py` (4/4)
+demonstrates that it rejects a broken \(s^*\) clip, a constant prefix
+probability, and an inflated union bit.  Report
+`verification/results/entropy-bridge-exhaustive.json`, canonical SHA-256
+`6681f8faf13d9344f8e7bf3a5d7785ed289f1e82c5e9badd1e7967c03e3ebfef`.
+
+A second independent read-only referee re-derived this bridge and the
+Section 4.2/Theorem B\('''\) chain on 2026-08-27 and found **no proof defect
+and no blocker**.  Eight minor exposition defects were repaired in the
+manuscript; see
+`verification/results/uc-bridge-referee-2026-08-27.md`.
 
 ### 4.2 Coupling symmetrization, folding, and existence of the minimum
 
@@ -808,11 +835,16 @@ the explicitly retained trusted assumptions: custody of the out-of-band
 report-lock digest, a nonmalicious OS/kernel/process-inspection/hash stack, and
 absence of a hostile same-inode file-rewrite race.
 
-The secure eight-slice byte-zero replay is **RUNNING, not accepted**.  Exact
-commands, source/seal hashes, CPU sample, checkpoint policy, and current
-acceptance gate are in `uc/REPRODUCIBILITY.md`.  This paragraph must not be
-read as a completed certificate until all eight reports and the composite
-pass.
+The secure eight-slice byte-zero replay is now **MACHINE-VERIFIED** under that
+trust boundary.  All eight processes exited zero after independently
+recomputing \(488{,}465{,}854\) events, \(244{,}232{,}923\) splits, and
+\(244{,}232{,}931\) leaves with zero residuals and exact locked tallies.
+The externally trusted report-lock raw SHA-256 is
+`af86480901c2c497739916bb410f1e117e4eaf3eefb82575ce494b7d8c04e730`;
+the accepted composite canonical SHA-256 is
+`4acbd3b935bda7e51ed387e42e0598debf22f4a85b7a24ad976c3eaca4f23243`.
+Exact per-slice hashes, runtimes, commands, runtime pins, adversarial tests,
+and the remaining OS/custody assumptions are in `uc/REPRODUCIBILITY.md`.
 
 ### 7.3 Campaign I acceptance record
 
@@ -986,14 +1018,17 @@ mathematical review, not hidden certificate failures.
    compactness/continuity, fixed-\(B\) concavity, Bauer, the direct support
    perturbation, and \(E\le S^2\).
 
-2. **MACHINE-VERIFIED in the archived frozen replay, under the named trust
-   base:** all eight exact dyadic Campaign I traces were reported replayed with
-   empty stacks, no residual or budget event, and exact matching tallies,
-   establishing \(\Phi_{\rm rel}\ge0\) over
-   \([0,1]^4\times[1/2,1]\) subject to ordering and \(M\le t_{\rm cert}\).
-   Orbit-label symmetry covers \(w\in[0,1]\). This statement is bound to code
-   hash `2f23...ce05`, checker hash `95d093...81ec`, launch hash
-   `6414...65cc`, and the pinned/current environment described above.
+2. **MACHINE-VERIFIED by an independent arithmetic/control implementation,
+   under the named trust base:** all eight exact Campaign I traces were
+   replayed from byte zero with empty stacks, no residual event, exact matching
+   tallies, and independently rediscovered face proofs.  This establishes
+   \(\Phi_{\rm rel}\ge0\) over
+   \([0,1]^4\times[1/2,1]\) subject to ordering and \(M\le t_{\rm cert}\);
+   orbit-label symmetry covers \(w\in[0,1]\).  The secure verifier imports no
+   frozen arithmetic and derives gradients by interval AD, but shares the
+   authenticated traces and Arb primitives.  It is bound to verifier hash
+   `e67058...91a9a`, runtime-seal raw hash `58c493...2a0c`, trusted report-lock
+   raw hash `af8648...e730`, and composite canonical hash `4acbd3...3243`.
 
 3. **HUMAN-AUDITED:** the sequential entropy bridge proves that the functional
    inequality on the closed mean domain implies a present element of every

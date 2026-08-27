@@ -113,6 +113,31 @@ Therefore every obstructing prime $p$ either satisfies $p\le m$ or divides an
 integer in $\mathcal B(m,k)$. This cuts the large-prime support from all $m$
 numerator terms to the top $\lceil m/2\rceil$ terms.
 
+The support statement has a universal one-way form, including \(q\le m\).
+Let \(t=N\bmod q\) and \(r=m\bmod q\). Writing \(N=Aq+t\) and \(m=Bq+r\)
+in (1) gives
+
+$$
+\boxed{\displaystyle
+\Delta_q(m,k)=\left\lfloor\frac{2t-r}{q}\right\rfloor,
+\qquad
+\Delta_q=-1\Longleftrightarrow 2t<r.} \tag{7a}
+$$
+
+When this level is negative, \(t<\lceil m/2\rceil\), so
+
+$$
+N-t=k+(m-t)\in\mathcal B(m,k),
+\qquad q\mid N-t.
+$$
+
+Consequently **every** obstructing prime, small or large, divides some integer
+in the bad window: if \(s_p<0\), at least one level \(q=p^j\) is negative and
+the displayed multiple supplies the term. For \(q\le m\) the converse need
+not hold; divisibility of a bad-window term alone does not force that level
+negative. The regression suite checks (7a) and its window position over
+\(1\le m\le10\), \(1\le k\le100\).
+
 Also, every prime power $q$ with $N<q\le x$ has $\Delta_q=+1$: here
 $N\bmod q=N\ge\lceil(q+m)/2\rceil$ is equivalent to $q\le2N-m=x$.
 
@@ -468,6 +493,96 @@ The strict hypothesis $p>m$ is essential: at $(m,k,p)=(5,2,5)$, the prime
 divides the bad-window term $5$, but its exact slack is $0$, whereas the local
 formula would predict $-1$.
 
+### Short-cofactor spike criterion — PROVED
+
+Suppose \(p^e\Vert w\), put \(c=w/p^e\), and assume \(c<p\). In the
+large-prime setting \(p>m\) of this section, (16) specializes to
+
+$$
+\boxed{\displaystyle
+C_p(w)=\mathbf 1_{\{2c>p\}},
+\qquad
+s_p(m,k)=-e+\mathbf 1_{\{2c>p\}}.} \tag{16a}
+$$
+
+Indeed, \(c\bmod p=c\). For every \(r\ge2\), one again has
+\(c\bmod p^r=c\), while \(2c<2p\le p^r\), so no prefix after the first can
+be positive. This also covers \(p=2\): then \(c=1\), the first prefix is
+exactly half, and the strict inequality fails.
+
+
+In particular, every \(m\)-compensation-good integer \(w\) obeys the necessary
+large-prime-power bounds
+
+$$
+p^2<2w\quad(e=1),
+\qquad
+p^{e+1}<w\quad(e\ge2)
+$$
+
+for every \(p^e\Vert w\) with \(p>m\). In the second case, goodness forces
+\(c>p\); in the first, either \(c>p\) or the strict repair inequality
+\(p<2c\) gives the displayed bound.
+
+Consequently a short cofactor can never repair \(e\ge2\). For \(e=1\), it
+repairs the prime exactly when \(p<2c\); the boundary \(2c=p\) is bad.
+
+For odd \(p\), there is a sharp threshold without the short-cofactor
+assumption. Every counted prefix satisfies \(p^r\le2c-1\), hence
+
+$$
+C_p(w)\le\left\lfloor\log_p(2c-1)\right\rfloor.
+$$
+
+Therefore compensation of a valuation \(e\) requires
+
+$$
+\boxed{\displaystyle
+c\ge\frac{p^e+1}{2},
+\qquad
+w\ge\frac{p^e(p^e+1)}2.} \tag{16c}
+$$
+
+The bound is attained. For \(c_0=(p^e+1)/2\) and \(1\le r\le e\),
+
+$$
+c_0\bmod p^r=\frac{p^r+1}{2},
+$$
+
+so exactly those first \(e\) prefixes are strictly above half and the slack
+is zero. Thus \(p^e(p^e+1)/2\) is the least bad-window term whose exact
+\(p\)-valuation is \(e\) and can be compensated. This odd-prime threshold
+does not apply to \(p=2\), where the strict half-boundary is reachable; the
+binary lift after (17) remains the correct control.
+
+There is a sharp natural-shift form. Let \(m\) be even, let an odd
+\(p>m+1\) satisfy \(p^a\Vert x=m+2k\), and put \(y=x/p^a\). The first new
+bad-window term after shifting is \(w=x/2=p^a(y/2)\). If \(y<2p\), then
+
+$$
+\boxed{\displaystyle
+s_p(m+1,k-1)=-a+\mathbf 1_{\{y>p\}}.} \tag{16b}
+$$
+
+Thus every such spike with \(a\ge2\) is fatal. When \(a=1\), it is fatal
+for \(y<p\) and repaired for \(p<y<2p\); equality cannot occur because
+\(y\) is even and \(p\) is odd.
+
+More generally, (16c) and the first-term identity give the stronger fatal
+range
+
+$$
+\boxed{\displaystyle
+x<p^{2a}+p^a
+\quad\Longrightarrow\quad
+s_p(m+1,k-1)<0.} \tag{16d}
+$$
+
+Equality is sharp: \(x=p^a(p^a+1)\) makes the first new term the minimal
+compensated term in (16c), with shifted slack zero. The regression suite
+checks the threshold and the immediately lower cofactor for
+\(p\in\{5,7\}\), \(1\le a\le3\).
+
 ### The full guaranteed first-prefix repair cone — PROVED
 
 The mirror residue in (17) is only one sufficient choice. For odd $p$ and
@@ -515,6 +630,68 @@ repairs $p$. The mirror lift is the single choice $c\equiv-1\pmod {p^e}$.
 For $p=2$, the first strict prefix is impossible for odd $c$, so this cone is
 empty; the later-prefix binary repair after (17) remains necessary.
 
+### Half-window translation evicts every large blocker — PROVED
+
+Put $L=\lceil m/2\rceil$ and $I_m=\{\lfloor m/2\rfloor+1,\ldots,m\}$, so
+$|I_m|=L$. Suppose $p>m$ divides a term $k+i_p$ of $\mathcal B(m,k)$, with
+$i_p\in I_m$. Then
+
+$$
+\boxed{p\nmid k+L+i\qquad\text{for every }i\in I_m.} \tag{23}
+$$
+
+If $p$ divided $k+L+i$, it would divide the difference $L+i-i_p$. Both
+indices lie in $I_m$, so $|i-i_p|\le m-\lfloor m/2\rfloor-1=L-1$ and
+
+$$
+1\le L-(L-1)\le L+i-i_p\le L+(L-1)=2\lceil m/2\rceil-1\le m<p,
+$$
+
+where the last inequality of the chain uses $2\lceil m/2\rceil-1\le m$, valid
+for every $m\ge1$. A nonzero integer smaller than $p$ in absolute value is not
+divisible by $p$, which proves (23). Equivalently, $\mathcal B(m,k+L)$ is the
+block of $L$ integers immediately following $\mathcal B(m,k)$, and the union of
+the two blocks spans at most $m$ consecutive integers, shorter than the gap
+between consecutive multiples of any $p>m$.
+
+The offset is also the least uniform one. Fix $1\le\delta\le L-1$, put
+$i_p=\lfloor m/2\rfloor+1+\delta$, which lies in $I_m$, take any prime $p>m$,
+and set $k=p-i_p\ge1$. Then $p\mid k+i_p$ and
+
+$$
+k+\delta+(i_p-\delta)=k+i_p\equiv0\pmod p,
+\qquad
+i_p-\delta=\lfloor m/2\rfloor+1\in I_m,
+$$
+
+so that blocker survives the translation by $\delta$. Hence
+
+$$
+\boxed{\min\{\delta\ge1:\ \delta\ \text{evicts every possible blocker}\}
+=\lceil m/2\rceil.} \tag{24}
+$$
+
+More precisely, a blocker attached at $i_p$ survives exactly the offsets
+$\delta\equiv i_p-i\pmod p$ with $i\in I_m$; below $p$ these are the
+$\delta\in\{i_p-i:i\in I_m,\ i<i_p\}$.
+
+Eviction therefore costs one half-window step and nothing else. The candidate
+$k+L$ has the magnitude of $k$, so it stays inside any factorization bound that
+contained the source, and no modulus, product, or CRT system is involved. Two
+consequences are immediate.
+
+- The product-scale bound (20) below constrains only repairs that *retain*
+  their blockers. Dropping them is free, so (20) is not an obstruction.
+- The zero-carry system (20a), its exact class count, and the adaptive
+  progression (20b) are not needed in order to evict blockers. Their large
+  canonical representatives are a consequence of demanding the *sufficient*
+  uniform classes (15) instead of the exact small-prime tier of Section 8,
+  which the translated candidate usually already satisfies.
+
+`data/exact_eviction_m1_20_k5000_m27.json` checks (23) at every attached
+large prime of $1\le m\le20$, $1\le k\le5{,}000$, and instantiates (24) for
+every $m\le200$ and every smaller offset.
+
 ### Retaining all old blockers forces product-scale displacement — PROVED
 
 Suppose distinct primes $p\in S$ are attached to positions $i_p$ of the bad
@@ -535,7 +712,102 @@ $$
 
 This lower bound applies to the entire cone (19), not only to the mirror
 residue. It does not restrict a repair that drops an old prime from the
-translated bad window.
+translated bad window, and by (23) the half-window translation always drops
+every old prime. The bound is therefore a property of the retention strategy,
+not a barrier to repair.
+
+### Zero-carry CRT eviction of prescribed blockers — PROVED
+
+Put
+
+$$
+I_m=\{\lfloor m/2\rfloor+1,\ldots,m\},
+\qquad L=|I_m|=\lceil m/2\rceil.
+$$
+
+Suppose that each distinct prime \(p\) in a finite set \(S\) satisfies
+\(p>m\) and divides one old bad-window term \(k+i_p\), with \(i_p\in I_m\).
+Let \(M_m\) be the small-prime zero-carry modulus from (8). The system
+
+$$
+\boxed{\displaystyle
+K\equiv0\pmod {M_m},
+\qquad
+K\equiv k+L\pmod p\quad(p\in S)} \tag{20a}
+$$
+
+is consistent by CRT. Its first congruence gives the complete small-prime
+control (9). For every \(j\in I_m\),
+
+$$
+K+j\equiv L+j-i_p\pmod p.
+$$
+
+The integer on the right lies between \(1\) and \(m\). Since \(p>m\), it
+is nonzero modulo \(p\). Hence no old blocker in \(S\) divides any term of
+the new bad window.
+
+The count is also exact. Modulo each \(p\in S\), precisely the \(L\)
+classes \(-j\), \(j\in I_m\), put \(p\) into the new window. Therefore,
+with the small-prime tier fixed to the zero-carry class, there are exactly
+
+$$
+\boxed{\displaystyle
+\prod_{p\in S}(p-L)}
+$$
+
+eviction classes modulo \(M_m\prod_{p\in S}p\). More generally, replacing
+the zero class by all uniform local-safe classes from (15) multiplies this
+count by their exact CRT class count.
+
+There is a more useful one-dimensional form. Put \(P=\prod_{p\in S}p\).
+Every member of
+
+$$
+\boxed{\displaystyle K_t=k+L+tP\qquad(t\ge0)} \tag{20b}
+$$
+
+evicts all primes in \(S\). If \(\mathcal C\) is any uniform local-safe
+family modulo \(Q\) from (15), then \(\gcd(P,Q)=1\), so \(t\mapsto K_t\bmod Q\)
+is a bijection over one period. Exactly \(|\mathcal C|\) values of
+\(t\bmod Q\) therefore land in the chosen uniform small-prime-safe family.
+This gives an exact adaptive search along the blocker-evicting progression,
+not merely an existence statement from a single zero-carry class.
+
+This removes every prescribed old large prime while controlling all
+\(p\le m\); unlike (20), it does not retain their attachments. It still
+does not control primes newly entering the translated window.
+
+The structure certificate applies the zero-carry construction to all 3,846
+large-prime-obstructed source pairs in \(1\le m\le8\), \(1\le k\le500\).
+Of the 2,737 canonical candidates with \(m+2K\le10^8\), 103 are witnesses and
+2,634 fail only at newly entering large primes; 1,109 candidates exceed that
+check bound.
+
+For the 12 single-level-sieve survivors in the two \(m=27\) moving-window
+artifacts, the zero-carry representatives have 49--98 digits. The exact
+adaptive search `data/adaptive_eviction_m27_h200000000.json` instead scans
+(20b) against every least-power local-safe class. All 12 systems reach their
+first safe \(t\) between 10 and 706, reducing the candidates to 32--81 digits.
+Every candidate still exceeds the retained full-factorization bound. A bounded
+exact scan through \(10^6\) performs 12,649,506 trial-prime divisibility checks
+and rejects one candidate at \(p=137{,}341\); the other 11 new windows remain
+unclassified in that search.
+
+**Superseded.** Both digit ranges are artifacts of the uniform sufficient
+classes (15), not of eviction. By (23) the candidate \(k+L\) already evicts
+every old blocker, and for all 12 survivor systems it also satisfies the exact
+small-prime tier of Section 8 with no search at all. Those candidates have 13
+digits, stay inside the retained factorization bound, and are classified
+completely in Section 12. The retained artifacts remain valid records of what
+the sufficient-class route costs; they are not the best available bound.
+
+An abandoned route is worth recording. Classifying the 32--81-digit candidates
+directly needs a general large-integer factorization backend, which this
+repository deliberately does not carry. That work was started and then dropped
+as unnecessary: the exact-tier translation keeps every candidate at 13 digits,
+inside the existing trial factorizer, so no external arithmetic dependency is
+required for any statement here.
 
 ## 10. Exact natural-shift spike formula — PROVED
 
@@ -616,7 +888,149 @@ full digit formula adds 1,042. The remaining 49 even failures have only
 small-prime obstructions; all 21 odd failures are likewise small-prime
 failures. The artifact checks 24,809 factored shift primes exactly.
 
-## 11. Exact finite evidence and current gaps
+### One integer decides every shift of a witness — PROVED
+
+Goodness is monotone in $m$: being $m$-compensation-good constrains only the
+primes $p>m$, and $\{p>m+1\}\subset\{p>m\}$, so every $m$-compensation-good
+integer is also $(m+1)$-compensation-good. Combining this with the window
+identity above and the separation criterion (18) gives an exact reduction for a
+witness source $(m,k)$.
+
+- If $m$ is odd, $\mathcal B(m+1,k-1)=\mathcal B(m,k)$, so the target's large
+  tier is inherited and automatically satisfied. Then
+  $$
+  (m+1,k-1)\ \text{is a witness}
+  \iff s_p(m+1,k-1)\ge0\ \text{for every prime }p\le m+1 .
+  $$
+  This recovers Section 5 without any residue computation.
+- If $m$ is even, $\mathcal B(m+1,k-1)=\mathcal B(m,k)\cup\{x/2\}$, so
+  $$
+  (m+1,k-1)\ \text{is a witness}
+  \iff s_p(m+1,k-1)\ge0\ \ (p\le m+1)
+  \ \text{and}\ x/2\ \text{is}\ (m+1)\text{-compensation-good}.
+  $$
+
+The entire large-prime cost of a natural shift is therefore carried by one
+integer, and only in the even-to-odd direction. This is the exact structural
+reason for the pair pattern of A375071.
+
+`data/parity_shift_m1_20_k4000_published.json` checks the reduction at all 905
+witness sources of $1\le m\le20$, $2\le k\le4{,}000$ and at all 26 published
+witnesses, with 2,124 and 463 inherited large-prime monotonicity checks. In the
+rectangle, 433 of 435 odd-source shifts are witnesses and the other 2 fail only
+at small primes, exactly as the first case allows. Of the 470 even-source
+shifts, 34 are witnesses, 378 fail only at the adjoined term, 11 fail only at
+small primes, and 47 fail at both.
+
+Every published witness obeys the same split: all 13 odd-source shifts are
+witnesses, all 13 even-source shifts fail, and 12 of the published successors
+are exactly the natural shift of their predecessor. At $m=26$ the adjoined term
+is $x/2=5{,}048{,}891{,}644{,}633$, which is prime, so $c=1$, $e=1$, and
+$2c>p$ is impossible: one prime integer accounts for the entire failure of the
+published chain at the first unlisted index.
+
+## 11. Powersmooth necessity and an unconditional density ceiling — PROVED
+
+### Every compensated prime power is bounded by the term — PROVED
+
+Let $w$ be $m$-compensation-good and let $p>m$ with $p^e\Vert w$, $e\ge1$.
+Threshold (16c) gives $w\ge p^e(p^e+1)/2$, hence
+
+$$
+\boxed{p^{v_p(w)}<\sqrt{2w}\qquad\text{for every prime }p>m\text{ dividing }w.}
+\tag{25}
+$$
+
+In particular a single prime factor $p>m$ with $p^2>2w$ is always fatal: then
+$e=1$ and the cofactor $c=w/p<p/2$ satisfies $2c<p$, so (16a) gives
+$C_p(w)=0<1=e$. Equivalently, **every bad-window term of a witness is
+$\sqrt{2w}$-powersmooth away from the primes $p\le m$.** Section 7 gives the
+matching sufficient condition, full $m$-smoothness, so a witness window is
+sandwiched between $m$-smooth and $\sqrt{2w}$-powersmooth.
+
+The bound (25) is attained: for odd $p$ the term $w=p^e(p^e+1)/2$ is the least
+one with $v_p(w)=e$ that compensates, by the sharpness case of (16c).
+
+### The short-cofactor density is $\log 2$ — PROVED
+
+Call $n$ *short-cofactor* when some prime $p\mid n$ has $p^2>2n$. Such a prime
+is unique: two of them would give $pq\mid n$ with $pq>2n$. Writing $n=pc$, the
+condition $p^2>2n$ is exactly $p>2c$, and then $c<p$ forces $v_p(n)=1$ and
+$p=P(n)$. Hence, counting by cofactor,
+
+$$
+S(X)=\#\{n\le X:\ n\ \text{short-cofactor}\}
+=\sum_{2c^2<X}\bigl(\pi(X/c)-\pi(2c)\bigr).
+$$
+
+The subtracted terms contribute $O(X/\log X)$. For the main sum, the prime
+number theorem is uniform on $X/c\ge\sqrt X$, so with $t=\log c$
+
+$$
+S(X)=(1+o(1))\,X\!\!\int_0^{\frac12\log X}\!\!\frac{dt}{\log X-t}
+=(1+o(1))\,X\log 2 .
+$$
+
+Therefore the density of integers passing the necessary condition (25) is
+$1-\log 2=0.30685\ldots$, and since a witness requires **every** term of its
+bad window to pass, the first term alone gives the unconditional ceiling
+
+$$
+\boxed{\#\{k\le X:\ (m,k)\ \text{is a witness}\}\le(1-\log 2+o(1))X}
+\tag{26}
+$$
+
+for every fixed $m\ge1$. This is the first density statement in this file. It
+is not an obstruction: $1-\log 2>0$, so (26) is consistent with infinitely many
+witnesses for every $m$. Its content is that a positive proportion of $k$ is
+excluded by one term of one exactly computable local condition, and that the
+exclusion is quantitative rather than heuristic.
+
+No multiplicative strengthening of (26) is claimed here. Requiring all
+$\lceil m/2\rceil$ terms to pass simultaneously is a correlation problem for
+large prime factors of consecutive integers, and the available elementary
+bounds degrade past two terms.
+
+`data/smooth_density_m1_20_k3000.json` checks (25) at 331,361 large window
+prime powers over $1\le m\le20$, $1\le k\le3{,}000$, including 216,747 powers
+with $p^{2e}>2w$ that are all fatal, and 1,706 exactly tight minimal terms.
+It computes $S(X)$ for $X=10^5,10^6,2\cdot10^6$ by two independent exact
+methods, obtaining densities $0.67277$, $0.679867$, and $0.68121$ against the
+limit $\log 2=0.693147\ldots$, with the signed deviation shrinking as expected.
+
+### Dominant-prime repair has density zero — PROVED
+
+Let $p^e\Vert w$ with $p>m$ and short cofactor $c=w/p^e<p$. By (16a),
+$C_p(w)=\mathbf 1_{\{2c>p\}}$, so $w$ is good at $p$ only when $e=1$ and
+$p<2c$, that is
+
+$$
+\boxed{w<p^2<2w.} \tag{27}
+$$
+
+A dominant prime therefore compensates only inside the narrow window
+$p\in(\sqrt w,\sqrt{2w})$. Counting by cofactor, with $n=pc$ and $c<p<2c$,
+
+$$
+\#\{n\le X:\ \exists p,\ n=pc,\ c<p<2c\}
+=\sum_{c<\sqrt X}
+\Bigl(\pi\bigl(\min(2c-1,X/c)\bigr)-\pi(c)\Bigr)
+\ll\sum_{c\le\sqrt X}\frac{c}{\log c}
+\ll\frac{X}{\log X}.
+$$
+
+So apart from a set of density $O(1/\log X)$, an $m$-compensation-good integer
+has no prime factor $p>m$ with $p^2>w$ at all. The $\log 2$ proportion of
+integers carrying a short-cofactor prime is almost entirely lost rather than
+repaired, and (25) fails almost only in its unrepairable direction. This is why
+the single-level sieve of Section 3 rejects essentially every candidate in the
+moving-window searches before any compensation test is needed.
+
+The certificate counts the narrow window exactly at $X=10^5,10^6,2\cdot10^6$,
+obtaining densities $0.06044$, $0.051792$, and $0.0493005$, consistent with the
+$1/\log X$ decay, and repeats the smallest count by direct factorization.
+
+## 12. Exact finite evidence and current gaps
 
 `data/zero_carry_corridor_m5_18_t2000.json` exhausts 24,014 candidates
 $k=tM_m$. It finds five witnesses: one for $m=5$, three for $m=6$, and one for
@@ -685,15 +1099,41 @@ digits, far outside that bound. The exact records are in
 `data/compensation_structure_m1_20_k5000_m27_h200000000.json` checks the exact
 small/large separation at 100,000 pairs and 587,169 large-prime term factors.
 Of 1,294 large-prime-good windows, 190 fail only at the small-prime tier and
-1,104 are witnesses. It exhaustively enumerates 19,804 residues for the prefix
-cone, checks the even-shift/first-term identity at 19,654 primes, and combines
-the moving certificates to show that all 200,000,000 offsets have a certified
-large-prime obstruction. Retaining the old blockers in the first three
-survivors forces displacements divisible by 69-, 30-, and 35-digit prime
-products. The nine later survivors have 113 large blockers and retained-prime
-products of 36--79 digits. The larger cone (19) therefore cannot produce a
-nearby same-blocker repair; a useful move must drop old primes and control the
-new window.
+1,104 are witnesses. It checks the short-cofactor formula at 405,780 factors,
+including 363,792 obstructions and 7,173 repeated-prime spikes. It exhaustively
+enumerates 19,804 residues for the prefix cone and checks the
+even-shift/first-term identity at 19,654 primes.
+
+The same certificate combines the moving-window artifacts to show that all
+200,000,000 offsets have a large-prime obstruction. Retaining the old blockers
+in the first three survivors forces 69-, 30-, and 35-digit prime products; the
+nine later survivors force 36--79 digits. On the smaller certified rectangle,
+2,634 of 2,737 exactly checked canonical zero-carry evictions acquire new
+large-prime blockers.
+
+`data/exact_eviction_m1_20_k5000_m27.json` replaces both of those repair
+directions by the half-window translation (23). It verifies (23) at 587,169
+attached large primes over $1\le m\le20$, $1\le k\le5{,}000$ through 3,871,667
+divisibility checks, instantiates the sharpness statement (24) for every
+$m\le200$ with 9,900 explicit surviving blockers, and checks the residue core
+at 676,700 window pairs.
+
+It then classifies the translated candidate exactly. Of the 98,706
+large-prime-obstructed sources in that rectangle, all 98,706 translated
+candidates evict every old blocker; 1,033 are witnesses, 59,641 fail only at
+newly entering large primes, 162 fail only at the small-prime tier, and 37,870
+fail at both. On the 9,832 candidates with $k\le500$ the separation-based
+classification is confirmed by complete Legendre and Kummer certificates.
+
+For the 12 recorded $m=27$ survivor systems the outcome is decisive. Each
+translated candidate $k+14$ has 13 decimal digits, evicts all 140 recorded old
+blockers across 1,960 divisibility checks, and satisfies the exact small-prime
+tier for every $p\le27$ with no search. All 12 lie inside the retained
+factorization bound, so their translated windows are factored completely: 369
+large-prime factors, of which 9 to 15 per candidate are exact obstructions.
+Every one of the 12 is therefore classified as `new_large_prime_only`. The
+earlier 32--81-digit and 49--98-digit candidates and the 11 unclassified cases
+are superseded, and only the new-prime side of the problem remains.
 
 
 Within the first million offsets, only five windows have as few as one
@@ -727,17 +1167,91 @@ $$
 
 for the least possible $m=27$ witness, if one exists.
 
+The same exact criterion now also covers the scale that the shift target lives
+at. Four contiguous shards
+`data/compensation_run_m27_k5049091644619_h200000000.json`,
+`...k5049291644619...`, `...k5049491644619...`, and `...k5049691644619...`
+extend the two moving-window artifacts forward by $8\cdot10^8$ candidates. Each
+shard rejects all $2\cdot10^8$ of its offsets by an exact negative local slack
+at some $p>27$, with no offset ever reaching the small-prime tier, and the
+longest compensation-good runs are $8$, $9$, $9$, and $8$. Their union with the
+two moving artifacts is contiguous, so
+
+$$
+\boxed{\text{no }m=27\text{ witness has }
+5{,}048{,}891{,}644{,}619\le k<5{,}049{,}891{,}644{,}619,}
+$$
+
+exactly $10^9$ consecutive candidates starting at the published $m=26$
+natural-shift target. This is five times the previously certified
+neighbourhood, and unlike the earlier sweep every rejection here comes from the
+exact compensation criterion rather than the single-level sieve alone. The four
+shards used one reduced-priority process each, 717.99--725.21 s of wall time,
+for a measured $2.8\cdot10^5$ candidates per second at this scale.
+
+Their combined compensation-good density is $0.123936$, independently
+reproducing the $0.123664$ measured in the fresh block below, and the
+term-independence model predicts a longest run of $9.03$ against the observed
+$8,9,9,8$.
+
+The same artifacts also fix the size of the barrier. Their exact term counts
+give a $27$-compensation-good density of $0.133708$ over
+$[50{,}015,\,100{,}050{,}027]$ and $0.129223$ over
+$[100{,}050{,}015,\,1{,}000{,}050{,}027]$, both far below the proved ceiling
+$1-\log 2$ of (26). `data/smooth_density_m1_20_k3000.json` measures the same
+density in fresh blocks of 250,000 consecutive integers: $0.142756$ near
+$10^6$, $0.124948$ near $10^9$, and $0.123664$ near $5\cdot10^{12}$. The exact
+small-prime tier passes for 19,920 of 20,000 consecutive $k$ at the
+$5\cdot10^{12}$ scale, so it is not the binding constraint anywhere in this
+range.
+
+Run lengths match a term-independence model closely. In the two run artifacts
+the model predicts longest runs of $9.01$ and $9.94$ against exact values $8$
+and $9$. In the fresh $5\cdot10^{12}$ block the observed spectrum of runs of
+length $1$ through $6$ is $19{,}176$, $2{,}369$, $266$, $32$, $6$, $1$ against
+model values $19{,}079$, $2{,}374$, $295$, $37$, $4.6$, $0.6$.
+
+One measurement in this session initially contradicted that model: a block
+beginning at $5{,}048{,}891{,}644{,}635$ contained a run of $12$, which the
+model puts at $2\cdot10^{-6}$ expected occurrences. The cause was sampling
+bias, not structure. That block starts inside the bad window of the published
+$m=25$ witness $k=5{,}048{,}891{,}644{,}621$, whose 13 window terms are
+$25$-compensation-good, hence also $27$-compensation-good because goodness at
+$m$ constrains only the primes $p>m$. The certificate now keeps that block as a
+labelled control and asserts the full run of 13, next to an unbiased block of
+equal length whose longest run is 5. The published data therefore already
+supplies 13 of the 14 consecutive good integers that $m=27$ requires, and the
+missing one is the term adjoined on the left by the even-to-odd shift of
+Section 10.
+
+Extrapolation, **not proved**, places the barrier well past every exhausted
+range. Regressing $\log k_m$ on $\lceil m/2\rceil$ over the 26 published
+witnesses gives slope $2.1899$ with $R^2=0.989$, an implied per-term density
+$0.1119$ consistent with the measured $0.1237$, and a predicted least
+$m=27$ witness near $2.8\cdot10^{13}$. The independence model with the measured
+densities predicts $5.1\cdot10^{12}$. Both estimates exceed the exhausted
+$10^9$ rectangle by three to four orders of magnitude and exceed the
+$2\cdot10^8$ offsets swept around the natural-shift target, so the negative
+results in this file are exactly what either estimate predicts.
 
 Open gaps:
 
-1. The exact target is now an intersection between a prime-power-band
-   small-prime CRT class and a run of $\lceil m/2\rceil$ consecutive
-   $m$-compensation-good integers. No theorem proves that this intersection is
-   nonempty.
+1. The exact target is a run of $\lceil m/2\rceil$ consecutive
+   $m$-compensation-good integers whose start also satisfies the exact
+   small-prime tier. No theorem proves that such a run exists for a given $m$.
+   Ceiling (26) bounds the density of the target from above but cannot
+   establish nonemptiness.
 2. The Dirichlet construction proves that no fixed modulus can be sufficient;
    a successful construction must adapt to the translated bad window.
-3. Formula (16) and cone (19) control any prescribed primes, but (20) proves
-   that retaining all current blockers is intrinsically product-scale. No
-   construction controls the new primes after old blockers are dropped.
-4. No construction here reaches a previously unknown $m$; Erdős #389 remains
+3. Old blockers are no longer part of the difficulty. Translation (23) evicts
+   them at zero cost and (24) shows the half-window offset is optimal, while
+   formula (16), cone (19), and system (20a) control retained or prescribed
+   primes. None of these mechanisms controls the primes newly entering the
+   translated window, and the exact classification of 98,706 translated
+   candidates shows that this is where every failure now occurs.
+4. Necessity (25) shows each window term must be $\sqrt{2w}$-powersmooth away
+   from $p\le m$. Proving that $\lceil m/2\rceil$ consecutive integers can meet
+   that condition simultaneously is a correlation problem for large prime
+   factors of consecutive integers and is not solved here.
+5. No construction here reaches a previously unknown $m$; Erdős #389 remains
    open.

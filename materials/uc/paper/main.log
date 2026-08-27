@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.11.7)  26 AUG 2026 08:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.11.7)  27 AUG 2026 02:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -391,7 +391,7 @@ nc/dvips/cm-super/cm-super-ts1.enc}]
 [3]
 
 [4]
-Underfull \hbox (badness 2318) in paragraph at lines 261--265
+Underfull \hbox (badness 2318) in paragraph at lines 262--266
 [][]\OT1/cmr/bx/n/10.95 Theorem 1.1 \OT1/cmr/m/n/10.95 (Cer-tifi-cate-backed fu
 nc-tional in-equal-ity)\OT1/cmr/bx/n/10.95 . []\OT1/cmr/m/it/10.95 Let $\OML/cm
 m/m/it/10.95 [] \OT1/cmr/m/n/10.95 =
@@ -402,7 +402,7 @@ m/m/it/10.95 [] \OT1/cmr/m/n/10.95 =
 [5]
 
 [6]
-Underfull \hbox (badness 2096) in paragraph at lines 355--361
+Underfull \hbox (badness 2096) in paragraph at lines 372--378
 []\OT1/cmr/m/n/10.95 Theorem [][]1.1[][] com-bines or-di-nary math-e-mat-i-cal 
 ar-gu-ments with a
  []
@@ -422,6 +422,22 @@ ar-gu-ments with a
 [12]
 
 [13]
+Overfull \hbox (97.19344pt too wide) detected at line 821
+\OT1/cmr/m/n/10.95 E[]\OML/cmm/m/it/10.95 ^^R^^V[] \OT1/cmr/m/n/10.95 + (1 \OMS
+/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10
+.95 ^^V[][] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 ^^R[]\OT1/cmr/m/n/10.95 E(
+\OML/cmm/m/it/10.95 ^^V[]\OT1/cmr/m/n/10.95 ) + 2\OML/cmm/m/it/10.95 ^^R\OT1/cm
+r/m/n/10.95 (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.9
+5 )\OMS/cmsy/m/n/10.95 h[]\OML/cmm/m/it/10.95 ; ^^V[] \OMS/cmsy/m/n/10.95 
+ \OML/cmm/m/it/10.95 ^^V[]\OMS/cmsy/m/n/10.95 i \OT1/cmr/m/n/10.95 + (1 \OMS/cm
+sy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.95 )[]E(\OML/cmm/m/it/1
+0.95 ^^V[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 ^^R 
+\OT1/cmr/m/n/10.95 E(\OML/cmm/m/it/10.95 ^^V[]\OT1/cmr/m/n/10.95 ) + (1 \OMS/cm
+sy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.95 ) E(\OML/cmm/m/it/10
+.95 ^^V[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ;
+ []
+
+
 
 [14]
 
@@ -459,13 +475,17 @@ ar-gu-ments with a
 
 [31]
 
-[32] (./main.bbl
+[32]
 
 [33]
 
-[34])
+[34] (./main.bbl
 
-[35] (./main.aux)
+[35]
+
+[36])
+
+[37] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -474,13 +494,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 0AFA1CCC8DDD2456C7B39FB1D3505AC3;5913.
  ) 
 Here is how much of TeX's memory you used:
- 9923 strings out of 473190
- 151735 string characters out of 5704335
- 555684 words of memory out of 5000000
+ 9926 strings out of 473190
+ 151760 string characters out of 5704335
+ 558684 words of memory out of 5000000
  32906 multiletter control sequences out of 15000+600000
  578385 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,16n,79p,1463b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,16n,79p,1463b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/homebrew/Cellar/texlive/20250
@@ -517,10 +537,10 @@ s/type1/public/amsfonts/symbols/msbm10.pfb></opt/homebrew/Cellar/texlive/202503
 ellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.
 pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/publi
 c/cm-super/sfrm1095.pfb>
-Output written on main.pdf (35 pages, 448731 bytes).
+Output written on main.pdf (37 pages, 455322 bytes).
 PDF statistics:
- 608 PDF objects out of 1000 (max. 8388607)
- 509 compressed objects within 6 object streams
- 144 named destinations out of 1000 (max. 500000)
+ 627 PDF objects out of 1000 (max. 8388607)
+ 526 compressed objects within 6 object streams
+ 147 named destinations out of 1000 (max. 500000)
  193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

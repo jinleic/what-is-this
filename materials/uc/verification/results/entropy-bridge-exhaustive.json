@@ -1,0 +1,247 @@
+{
+  "$schema": "/Users/jinleic/jinleic-workspace/math/uc/verification/report.schema.json",
+  "checked_statements": [
+    "sequential coupling masses are nonnegative and sum to one",
+    "coupled Bernoulli marginals equal p and r",
+    "P(A_i or C_i | prefixes) equals s*(p,r)",
+    "A and C stay exactly uniform at every prefix and at the end",
+    "law(P_i)=law(R_i) and E[P_i] equals the frequency of element i",
+    "H(A)=sum_i E h(P_i) to within 1e-60",
+    "H(A u B)>=sum_i E h(P_i+Q_i-P_iQ_i) with a certified Arb sign",
+    "H(A u C)>=sum_i E h(s*(P_i,R_i)) with a certified Arb sign",
+    "every enumerated union-closed family other than {emptyset} has an element of frequency at least t_cert"
+  ],
+  "claim_status": "MACHINE-VERIFIED (exhaustive finite control)",
+  "elapsed_seconds": 109.961,
+  "finished_utc": "2026-08-27T09:49:13.125791+00:00",
+  "levels": {
+    "1": {
+      "coupled_prefix_states": 3,
+      "coupled_slack_classes": {
+        "equality": 1,
+        "nonnegative": 2,
+        "positive": 0
+      },
+      "families": 3,
+      "iid_slack_classes": {
+        "equality": 1,
+        "nonnegative": 2,
+        "positive": 0
+      },
+      "smallest_certified_positive_coupled_slack": null,
+      "smallest_certified_positive_iid_slack": null,
+      "smallest_union_closed_max_frequency": "1/2",
+      "union_closed_families": 3
+    },
+    "2": {
+      "coupled_prefix_states": 43,
+      "coupled_slack_classes": {
+        "equality": 10,
+        "nonnegative": 4,
+        "positive": 1
+      },
+      "families": 15,
+      "iid_slack_classes": {
+        "equality": 7,
+        "nonnegative": 4,
+        "positive": 4
+      },
+      "smallest_certified_positive_coupled_slack": 0.12581458369391144,
+      "smallest_certified_positive_iid_slack": 0.04337328061813203,
+      "smallest_union_closed_max_frequency": "1/2",
+      "union_closed_families": 13
+    },
+    "3": {
+      "coupled_prefix_states": 2083,
+      "coupled_slack_classes": {
+        "equality": 175,
+        "nonnegative": 8,
+        "positive": 72
+      },
+      "families": 255,
+      "iid_slack_classes": {
+        "equality": 44,
+        "nonnegative": 8,
+        "positive": 203
+      },
+      "smallest_certified_positive_coupled_slack": 0.009909720375195228,
+      "smallest_certified_positive_iid_slack": 0.002877968562500512,
+      "smallest_union_closed_max_frequency": "1/2",
+      "union_closed_families": 121
+    },
+    "4": {
+      "coupled_prefix_states": 1629751,
+      "coupled_slack_classes": {
+        "equality": 22009,
+        "nonnegative": 16,
+        "positive": 43510
+      },
+      "families": 65535,
+      "iid_slack_classes": {
+        "equality": 311,
+        "nonnegative": 16,
+        "positive": 65208
+      },
+      "smallest_certified_positive_coupled_slack": 0.0005856602035288971,
+      "smallest_certified_positive_iid_slack": 0.0012777739696828055,
+      "smallest_union_closed_max_frequency": "1/2",
+      "union_closed_families": 4959
+    }
+  },
+  "limitations": [
+    "Exhaustive only for the enumerated coordinate counts; deeper coordinate counts are a seeded uniform sample, not a proof.",
+    "Arb (python-flint) is a trusted dependency for the entropy inequalities.",
+    "This control does not verify Theorem thm:main, the certificate, or the strictness estimate at t_cert."
+  ],
+  "max_coordinates": 4,
+  "outcome": "PASS",
+  "precision_bits": 256,
+  "report_sha256": "6681f8faf13d9344f8e7bf3a5d7785ed289f1e82c5e9badd1e7967c03e3ebfef",
+  "report_type": "entropy_bridge_exhaustive",
+  "runtime": {
+    "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "python_executable": "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "python_flint": "0.9.0"
+  },
+  "sampled_levels": {
+    "5": {
+      "coupled_prefix_states": 391840,
+      "coupled_slack_classes": {
+        "equality": 338,
+        "nonnegative": 0,
+        "positive": 4662
+      },
+      "families": 5000,
+      "iid_slack_classes": {
+        "equality": 0,
+        "nonnegative": 0,
+        "positive": 5000
+      },
+      "seed": 20260832,
+      "union_closed_families": 2
+    },
+    "6": {
+      "coupled_prefix_states": 510708,
+      "coupled_slack_classes": {
+        "equality": 5,
+        "nonnegative": 0,
+        "positive": 1995
+      },
+      "families": 2000,
+      "iid_slack_classes": {
+        "equality": 0,
+        "nonnegative": 0,
+        "positive": 2000
+      },
+      "seed": 20260833,
+      "union_closed_families": 0
+    },
+    "7": {
+      "coupled_prefix_states": 391018,
+      "coupled_slack_classes": {
+        "equality": 0,
+        "nonnegative": 0,
+        "positive": 500
+      },
+      "families": 500,
+      "iid_slack_classes": {
+        "equality": 0,
+        "nonnegative": 0,
+        "positive": 500
+      },
+      "seed": 20260834,
+      "union_closed_families": 0
+    },
+    "8": {
+      "coupled_prefix_states": 388571,
+      "coupled_slack_classes": {
+        "equality": 0,
+        "nonnegative": 0,
+        "positive": 150
+      },
+      "families": 150,
+      "iid_slack_classes": {
+        "equality": 0,
+        "nonnegative": 0,
+        "positive": 150
+      },
+      "seed": 20260835,
+      "union_closed_families": 0
+    }
+  },
+  "sampled_union_closed_levels": {
+    "5": {
+      "coupled_prefix_states": 111634,
+      "coupled_slack_classes": {
+        "equality": 2100,
+        "nonnegative": 6,
+        "positive": 894
+      },
+      "families": 3000,
+      "iid_slack_classes": {
+        "equality": 112,
+        "nonnegative": 6,
+        "positive": 2882
+      },
+      "largest_family_size": 32,
+      "seed": 20261832,
+      "smallest_union_closed_max_frequency": "1/2"
+    },
+    "6": {
+      "coupled_prefix_states": 114671,
+      "coupled_slack_classes": {
+        "equality": 805,
+        "nonnegative": 4,
+        "positive": 691
+      },
+      "families": 1500,
+      "iid_slack_classes": {
+        "equality": 20,
+        "nonnegative": 4,
+        "positive": 1476
+      },
+      "largest_family_size": 58,
+      "seed": 20261833,
+      "smallest_union_closed_max_frequency": "1/2"
+    },
+    "7": {
+      "coupled_prefix_states": 89241,
+      "coupled_slack_classes": {
+        "equality": 251,
+        "nonnegative": 0,
+        "positive": 349
+      },
+      "families": 600,
+      "iid_slack_classes": {
+        "equality": 8,
+        "nonnegative": 0,
+        "positive": 592
+      },
+      "largest_family_size": 103,
+      "seed": 20261834,
+      "smallest_union_closed_max_frequency": "4/7"
+    },
+    "8": {
+      "coupled_prefix_states": 55890,
+      "coupled_slack_classes": {
+        "equality": 63,
+        "nonnegative": 0,
+        "positive": 137
+      },
+      "families": 200,
+      "iid_slack_classes": {
+        "equality": 1,
+        "nonnegative": 0,
+        "positive": 199
+      },
+      "largest_family_size": 146,
+      "seed": 20261835,
+      "smallest_union_closed_max_frequency": "20/31"
+    }
+  },
+  "schema": "uc-entropy-bridge-exhaustive-report-v1",
+  "verifier": {
+    "sha256": "a4ae27a8d28fd706a35ec08b0b27a03cd60cb311613975a95acfb486921e3b9c",
+    "size": 24471
+  }
+}

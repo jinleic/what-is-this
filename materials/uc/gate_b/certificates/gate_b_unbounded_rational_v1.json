@@ -1,0 +1,416 @@
+{
+  "action_set": "exact feasible interval; no clamp-free relaxation",
+  "alpha": {
+    "denominator": 10000000,
+    "dimension_independent": true,
+    "numerator": 356069
+  },
+  "arithmetic": "exact_python_fractions",
+  "asymptotic": {
+    "bases": {
+      "n6": {
+        "asymptotic_slope": "17/7500",
+        "base_dimension": 6,
+        "certified_threshold": "-17/1250",
+        "linear_lower_bound": "c(n) >= 17/1250 * floor(n/6)"
+      },
+      "n7": {
+        "asymptotic_slope": "1/250",
+        "base_dimension": 7,
+        "certified_threshold": "-7/250",
+        "linear_lower_bound": "c(n) >= 7/250 * floor(n/7)"
+      }
+    },
+    "statement": "Write c(n) for the supremum of -A_+/eps_join over admissible families on at most n coordinates with A_+ < 0.  Cartesian powers of a certified base give c(n) >= |delta| * floor(n/d) with the base dimension d, hence c(n) = Omega(n).  Conversely Q >= 0 and C_+ >= 0 force -A_+ <= log2 m <= n, so for every family with eps_join >= eps0 the ratio is at most n/eps0.  Under a positive defect floor the growth is therefore exactly of order n.",
+    "upper_bound_reason": "h >= 0 termwise gives Q >= 0; C_+ is a maximum of sums of h, so C_+ >= 0; hence A_+ >= -log2 m and -A_+ <= log2 m <= n."
+  },
+  "bases": {
+    "n6": {
+      "base": "n6",
+      "exact_base": {
+        "active": true,
+        "block_cells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "block_partition": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ],
+        "cap_bound": 10,
+        "closure_defect": "444/625",
+        "coordinate_counts": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "dimension": 6,
+        "family_rows": [
+          0,
+          1,
+          2,
+          4,
+          8,
+          11,
+          13,
+          14,
+          16,
+          19,
+          21,
+          22,
+          25,
+          26,
+          28,
+          32,
+          35,
+          37,
+          38,
+          41,
+          42,
+          44,
+          49,
+          50,
+          52
+        ],
+        "family_size": 25,
+        "join_success_probability": "181/625",
+        "missing_ordered_join_pairs": 444,
+        "ordered_pairs_with_replacement": true,
+        "reimer_integer_witness": "25**5 < 2**24",
+        "reimer_threshold": 59,
+        "separating": true,
+        "total_incidence": 60
+      },
+      "infinite_construction": {
+        "a_plus_upper": "-17/1250*k",
+        "closure_defect": "1-(181/625)^k",
+        "coordinate_count": "10*25^(k-1)",
+        "dimension": "6*k",
+        "family": "n6^(boxtimes k)",
+        "family_size": "25^k",
+        "reimer_integer_witness": "25**5 < 2**24",
+        "repair_ratio_lower": "(17/1250*k)/(1-(181/625)^k) > 17/1250*k",
+        "sampled_ratio_lower_bounds": {
+          "1": "0.019144144145",
+          "10": "0.136000564322",
+          "100": "1.360000000001",
+          "1000": "13.600000000001",
+          "2": "0.029690049852",
+          "3": "0.041815627115"
+        },
+        "zero_defect_convention_used": false
+      },
+      "order_evaluation": {
+        "all_order_count": 720,
+        "automorphism_count": 72,
+        "bellman_state_count": 584784,
+        "distinct_enclosure_count": 10,
+        "distinct_enclosure_multiplicities": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "evaluated_order_count": 720,
+        "foreign_schema_checkpoint_lines": 0,
+        "mode": "all",
+        "new_evaluations": 720,
+        "order_orbit_count": 10,
+        "rechecked_records": 0,
+        "resumed_records": 0,
+        "symmetry_quotient_used": false,
+        "truncated_checkpoint_lines": 0
+      },
+      "rational_consequence": {
+        "a_plus_two_sided_enclosure": [
+          "-0.0136721077321777735618599156610223516934",
+          "-0.0136721077321777735618599129978279356672"
+        ],
+        "a_plus_upper_lt": [
+          "-17/1250",
+          "-1/80"
+        ],
+        "base_ratio_lower_gt": "17/888",
+        "enclosure_is_negative": true,
+        "sharpest_frozen_target_passed": "-17/1250"
+      },
+      "rational_values": {
+        "a_plus_enclosure_width_decimal": "0.0000000000000000000000000026631944160262",
+        "a_plus_lower": "-1083215973317510682954327539/79228162514264337593543950336",
+        "a_plus_lower_decimal": "-0.0136721077321777735618599156610223516934",
+        "a_plus_upper": "-33850499166172208842322729/2475880078570760549798248448",
+        "a_plus_upper_decimal": "-0.0136721077321777735618599129978279356672",
+        "bellman_average_lower": "99113548530306663971219028767/19807040628566084398385987584",
+        "bellman_average_lower_decimal": "5.0039554312502015468360185043605253246954",
+        "bellman_average_upper": "198227097060613327942438057539/39614081257132168796771975168",
+        "bellman_average_upper_decimal": "5.0039554312502015468360185044867430695309",
+        "family_entropy_lower": "183962096448172129506858884093/39614081257132168796771975168",
+        "family_entropy_lower_decimal": "4.6438561897747246957406388589733818057884",
+        "family_entropy_upper": "367924192896344259013717768187/79228162514264337593543950336",
+        "maximum_order_upper": "201423913121880269389200363859/39614081257132168796771975168",
+        "minimum_order_upper": "98441305944378394820496005801/19807040628566084398385987584",
+        "shapley_iid_lower": "45718451334623252037646298655/9903520314283042199192993792",
+        "shapley_iid_lower_decimal": "4.6163838598571102600389234597950763582489",
+        "shapley_iid_upper": "22859225667311626018823149341/4951760157141521099596496896",
+        "shapley_iid_upper_decimal": "4.6163838598571102600389234625213796466928"
+      }
+    },
+    "n7": {
+      "base": "n7",
+      "exact_base": {
+        "active": true,
+        "block_cells": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "block_partition": [
+          [
+            5,
+            6
+          ],
+          [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        "cap_bound": 18,
+        "closure_defect": "64/81",
+        "coordinate_counts": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ],
+        "dimension": 7,
+        "family_rows": [
+          1,
+          2,
+          4,
+          7,
+          8,
+          11,
+          13,
+          14,
+          16,
+          19,
+          21,
+          22,
+          25,
+          26,
+          28,
+          32,
+          35,
+          37,
+          38,
+          41,
+          42,
+          44,
+          49,
+          50,
+          52,
+          56,
+          63,
+          64,
+          67,
+          69,
+          70,
+          73,
+          74,
+          76,
+          81,
+          82,
+          84,
+          88,
+          95,
+          96,
+          97,
+          98,
+          100,
+          104,
+          112
+        ],
+        "family_size": 45,
+        "join_success_probability": "17/81",
+        "missing_ordered_join_pairs": 1600,
+        "ordered_pairs_with_replacement": true,
+        "reimer_integer_witness": "45**5 < 2**28",
+        "reimer_threshold": 124,
+        "separating": true,
+        "total_incidence": 126
+      },
+      "infinite_construction": {
+        "a_plus_upper": "-7/250*k",
+        "closure_defect": "1-(17/81)^k",
+        "coordinate_count": "18*45^(k-1)",
+        "dimension": "7*k",
+        "family": "n7^(boxtimes k)",
+        "family_size": "45^k",
+        "reimer_integer_witness": "45**5 < 2**28",
+        "repair_ratio_lower": "(7/250*k)/(1-(17/81)^k) > 7/250*k",
+        "sampled_ratio_lower_bounds": {
+          "1": "0.035437500000",
+          "10": "0.280000046430",
+          "100": "2.800000000001",
+          "1000": "28.000000000001",
+          "2": "0.058580357143",
+          "3": "0.084783798773"
+        },
+        "zero_defect_convention_used": false
+      },
+      "order_evaluation": {
+        "all_order_count": 5040,
+        "automorphism_count": 240,
+        "bellman_state_count": 13381680,
+        "distinct_enclosure_count": 21,
+        "distinct_enclosure_multiplicities": [
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240
+        ],
+        "evaluated_order_count": 5040,
+        "foreign_schema_checkpoint_lines": 0,
+        "mode": "all",
+        "new_evaluations": 5040,
+        "order_orbit_count": 21,
+        "rechecked_records": 0,
+        "resumed_records": 0,
+        "symmetry_quotient_used": false,
+        "truncated_checkpoint_lines": 0
+      },
+      "rational_consequence": {
+        "a_plus_two_sided_enclosure": [
+          "-0.0286491867944683178160269819326732064410",
+          "-0.0286491867944683178160269764548230805862"
+        ],
+        "a_plus_upper_lt": [
+          "-7/250",
+          "-1/40"
+        ],
+        "base_ratio_lower_gt": "567/16000",
+        "enclosure_is_negative": true,
+        "sharpest_frozen_target_passed": "-7/250"
+      },
+      "rational_values": {
+        "a_plus_enclosure_width_decimal": "0.0000000000000000000000000054778501258548",
+        "a_plus_lower": "-1134911213626825828623314077/39614081257132168796771975168",
+        "a_plus_lower_decimal": "-0.0286491867944683178160269819326732064410",
+        "a_plus_upper": "-283727803406706457155828465/9903520314283042199192993792",
+        "a_plus_upper_decimal": "-0.0286491867944683178160269764548230805862",
+        "bellman_average_lower": "466849050226493195695016065529/79228162514264337593543950336",
+        "bellman_average_lower_decimal": "5.8924634298118564604419277935504868012384",
+        "bellman_average_upper": "116712262556623298923754016385/19807040628566084398385987584",
+        "bellman_average_upper_decimal": "5.8924634298118564604419277936893263205574",
+        "family_entropy_lower": "435109429620473268137839951889/79228162514264337593543950336",
+        "family_entropy_lower_decimal": "5.4918530963296747107777973173816784723517",
+        "family_entropy_upper": "217554714810236634068919975945/39614081257132168796771975168",
+        "maximum_order_upper": "469295643090788175145617158923/79228162514264337593543950336",
+        "minimum_order_upper": "232046767549317899486106231041/39614081257132168796771975168",
+        "shapley_iid_lower": "431583925420774885169543888475/79228162514264337593543950336",
+        "shapley_iid_lower_decimal": "5.4473549773803219881606998813152776225564",
+        "shapley_iid_upper": "431583925420774885169543888923/79228162514264337593543950336",
+        "shapley_iid_upper_decimal": "5.4473549773803219881606998869698325911807"
+      }
+    }
+  },
+  "primitives": {
+    "accumulator_bits": 96,
+    "entropy": "termwise from log2_lower (upper bound) or log2_upper (lower bound) because both weights are negative",
+    "exp2": "repeated ceiling square roots of two",
+    "exp2_bits": 128,
+    "exp2_steps": 96,
+    "interval_maximum": "concavity case split: exact at an endpoint, otherwise the Fenchel value log2(1 + 2^slope)",
+    "interval_minimum": "one explicitly feasible rational action near the maximizer, evaluated with pessimistic children",
+    "log2": "bit-by-bit squaring with monotone rounding; tail in [0, 1)",
+    "log2_state_bits": 128,
+    "log2_steps": 96
+  },
+  "proof_boundary": "Both finite negative bases are certified here in exact rational arithmetic against the true feasible action set.  Product additivity and all-k admissibility are the exact lemmas of PROOF.md, not finite-n extrapolation.",
+  "schema_version": 1,
+  "third_party_dependencies": [],
+  "verdict": "PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL"
+}

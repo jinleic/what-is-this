@@ -5,10 +5,12 @@ from __future__ import annotations
 
 from fractions import Fraction
 from itertools import permutations
+from math import factorial
 import json
 from pathlib import Path
 from random import Random
 import sys
+from tempfile import TemporaryDirectory
 import unittest
 
 import sympy
@@ -20,8 +22,12 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(UC_ROOT))
 
 import search_n8_block_symmetric as n8
+import audit_n6_square_direct as n6_square
 import verify_gate_b_dyadic as dyadic
 import verify_gate_b_n6_dyadic as n6_dyadic
+import verify_gate_b_n6_arb as n6_arb
+import verify_gate_b_rational as rational
+import audit_tensorization_exact as tensor_exact
 import verify_gate_b as verifier
 import shapley_n7_block_symmetric as n7
 from shapley_n6_shared_bellman import one_sided_costs
@@ -40,12 +46,22 @@ INDEPENDENT_CERTIFICATE = (
 SECOND_BASE_CERTIFICATE = (
     HERE / "certificates" / "gate_b_unbounded_n6_dyadic_v1.json"
 )
+SECOND_BASE_ARB_CERTIFICATE = (
+    HERE / "certificates" / "gate_b_unbounded_n6_arb_v1.json"
+)
 TENSORIZATION_AUDIT = HERE / "candidates" / "tensorization_audit.json"
 TENSORIZATION_CHECKPOINT = (
     HERE / "experiments" / "tensorization_audit_checkpoint.jsonl"
 )
 POWER_AUDIT = HERE / "candidates" / "power_admissibility_audit.json"
 SQUARE_AUDIT = HERE / "candidates" / "square_direct_audit.json"
+N6_SQUARE_AUDIT = HERE / "candidates" / "n6_square_direct_audit.json"
+RATIONAL_CERTIFICATE = (
+    HERE / "certificates" / "gate_b_unbounded_rational_v1.json"
+)
+TENSORIZATION_EXACT_AUDIT = (
+    HERE / "candidates" / "tensorization_exact_audit.json"
+)
 
 
 def average_certified_cost(family: tuple[int, ...], dimension: int) -> arb:
@@ -294,6 +310,369 @@ class IndependentDyadicCertificateTests(unittest.TestCase):
             json.loads(SECOND_BASE_CERTIFICATE.read_text()),
             result,
         )
+
+    def test_second_base_arb_certificate_and_dyadic_dominance(self) -> None:
+        result = n6_arb.verify()
+        self.assertEqual(
+            result["verdict"],
+            "PROVED_GATE_B_UNBOUNDED_SECOND_BASE_ARB",
+        )
+        self.assertEqual(
+            result["rational_consequence"]["a_plus_upper_lt"],
+            "-17/1250",
+        )
+        self.assertEqual(
+            result["rational_consequence"]["base_ratio_lower_gt"],
+            "17/888",
+        )
+        self.assertEqual(
+            json.loads(SECOND_BASE_ARB_CERTIFICATE.read_text()),
+            result,
+        )
+
+        actual_upper = arb(result["arb"]["a_plus"]["upper"])
+        self.assertLess(actual_upper, arb("-0.0136"))
+        dyadic_certificate = json.loads(SECOND_BASE_CERTIFICATE.read_text())
+        relaxed_upper = arb(
+            dyadic_certificate["intervals"]["a_plus_upper_relaxation"][
+                "upper_decimal"
+            ]
+        )
+        self.assertGreater(relaxed_upper, actual_upper)
+
+
+class ExactRationalCertificateTests(unittest.TestCase):
+    """The exact rational route must bracket the true objective on both bases."""
+
+    # An Arb ball comparison is only decidable when the two do not overlap, and
+    # at points such as log2(1/2) or h(1/2) the rational primitive is exactly
+    # right.  These cross-checks therefore allow a slack far below the width of
+    # any bound the certificate relies on; soundness itself is argued in
+    # PROOF.md, not by agreement with Arb.
+    SLACK = Fraction(1, 10**30)
+
+    def assert_at_most(self, value: Fraction, reference: arb) -> None:
+        self.assertTrue(verifier.aq(value - self.SLACK) < reference)
+
+    def assert_at_least(self, value: Fraction, reference: arb) -> None:
+        self.assertTrue(verifier.aq(value + self.SLACK) > reference)
+
+    def test_certified_log_and_exp_primitives_bracket_arb(self) -> None:
+        for value in (
+            Fraction(1, 625),
+            Fraction(1, 45),
+            Fraction(1, 3),
+            Fraction(1, 2),
+            Fraction(2),
+            Fraction(25),
+            Fraction(45),
+            Fraction(625),
+        ):
+            reference = verifier.aq(value).log() / verifier.LOG2
+            self.assert_at_most(rational.log2_lower(value), reference)
+            self.assert_at_least(rational.log2_upper(value), reference)
+            width = rational.log2_upper(value) - rational.log2_lower(value)
+            self.assertLess(width, Fraction(1, 10**24))
+
+        for exponent in (
+            Fraction(-9, 2),
+            Fraction(-1),
+            Fraction(0),
+            Fraction(1, 3),
+            Fraction(7, 2),
+        ):
+            reference = (verifier.aq(exponent) * verifier.LOG2).exp()
+            self.assert_at_least(rational.exp2_upper(exponent), reference)
+
+    def test_entropy_and_fenchel_bounds_bracket_arb(self) -> None:
+        for value in (
+            Fraction(1, 625),
+            Fraction(3, 25),
+            Fraction(2, 5),
+            Fraction(1, 2),
+            Fraction(17, 18),
+        ):
+            reference = verifier.binary_entropy(value)
+            self.assert_at_least(rational.entropy_upper(value), reference)
+            self.assert_at_most(rational.entropy_lower(value), reference)
+            self.assertLess(
+                rational.entropy_upper(value) - rational.entropy_lower(value),
+                Fraction(1, 10**24),
+            )
+
+        for slope in (Fraction(-4), Fraction(0), Fraction(3, 7), Fraction(6)):
+            reference = (
+                verifier.ONE + (verifier.aq(slope) * verifier.LOG2).exp()
+            ).log() / verifier.LOG2
+            self.assert_at_least(rational.softplus2_upper(slope), reference)
+
+    def test_interval_maximum_dominates_every_feasible_action(self) -> None:
+        cases = (
+            (Fraction(2), Fraction(1, 5), Fraction(4, 5)),
+            (Fraction(-3), Fraction(1, 25), Fraction(1, 2)),
+            (Fraction(0), Fraction(0), Fraction(1)),
+            (Fraction(11, 3), Fraction(1, 2), Fraction(1)),
+            (Fraction(-7, 2), Fraction(0), Fraction(3, 10)),
+        )
+        for slope, lower, upper in cases:
+            bound = rational.max_affine_entropy_upper(slope, lower, upper)
+            for step in range(65):
+                action = lower + (upper - lower) * Fraction(step, 64)
+                actual = verifier.binary_entropy(action) + verifier.aq(
+                    slope * action
+                )
+                self.assert_at_least(bound, actual)
+            feasible = rational.feasible_near_argmax(slope, lower, upper)
+            self.assertGreaterEqual(feasible, lower)
+            self.assertLessEqual(feasible, upper)
+
+    def test_rational_enclosure_contains_arb_optimum_for_every_orbit(self) -> None:
+        for name in ("n6", "n7"):
+            base = rational.BASES[name]
+            family = base.reconstruct()
+            representatives, group = rational.order_orbits(
+                family, base.dimension
+            )
+            arb_roots, _states, _ambiguous = verifier.certified_one_sided_costs(
+                family, base.dimension, representatives
+            )
+            for order, reference in zip(representatives, arb_roots):
+                low, high, _order_states = rational.bellman_bounds(
+                    family, base.dimension, order
+                )
+                # The rational pair encloses the true optimum; the Arb value is
+                # itself an upper bound for it, so it must sit above the lower
+                # endpoint and agree with the upper endpoint to high precision.
+                self.assertLess(low, high)
+                self.assertLess(high - low, Fraction(1, 10**24))
+                self.assertLessEqual(verifier.aq(low), reference.lower())
+                self.assertLessEqual(
+                    reference.upper(),
+                    verifier.aq(high + Fraction(1, 10**20)),
+                )
+            self.assertEqual(
+                len(representatives) * len(group), factorial(base.dimension)
+            )
+
+    def test_rational_upper_bound_is_sharper_than_dyadic_relaxation(self) -> None:
+        base = rational.BASES["n6"]
+        family = base.reconstruct()
+        representatives, _group = rational.order_orbits(family, base.dimension)
+        for order in representatives:
+            _low, high, _states = rational.bellman_bounds(
+                family, base.dimension, order
+            )
+            relaxed, _relaxed_states = dyadic.relaxed_bellman_cost(family, order)
+            self.assertLess(high, Fraction(relaxed.hi, dyadic.SCALE))
+
+    def test_state_canonicalisation_does_not_change_the_value(self) -> None:
+        base = rational.BASES["n6"]
+        family = base.reconstruct()
+        order = (3, 0, 4, 1, 5, 2)
+        canonical = rational.bellman_bounds(family, base.dimension, order)
+        direct = rational.bellman_bounds(
+            family, base.dimension, order, canonicalize=False
+        )
+        self.assertEqual(canonical[:2], direct[:2])
+        self.assertGreaterEqual(direct[2], canonical[2])
+
+    def test_orbit_quotient_reproduces_the_all_order_certificate(self) -> None:
+        certificate = json.loads(RATIONAL_CERTIFICATE.read_text())
+        recomputed = rational.verify(
+            base_names=("n6", "n7"),
+            order_mode="orbits",
+            checkpoint=None,
+            sample_recheck=0,
+        )
+        for name in ("n6", "n7"):
+            stored = certificate["bases"][name]
+            fresh = recomputed["bases"][name]
+            self.assertEqual(
+                stored["order_evaluation"]["evaluated_order_count"],
+                factorial(rational.BASES[name].dimension),
+            )
+            self.assertFalse(
+                stored["order_evaluation"]["symmetry_quotient_used"]
+            )
+            self.assertEqual(
+                stored["order_evaluation"]["distinct_enclosure_multiplicities"],
+                [stored["order_evaluation"]["automorphism_count"]]
+                * stored["order_evaluation"]["order_orbit_count"],
+            )
+            for key in ("a_plus_lower", "a_plus_upper", "shapley_iid_upper"):
+                self.assertEqual(
+                    stored["rational_values"][key],
+                    fresh["rational_values"][key],
+                )
+
+    def test_certificate_is_internally_consistent(self) -> None:
+        certificate = json.loads(RATIONAL_CERTIFICATE.read_text())
+        self.assertEqual(
+            certificate["verdict"], "PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL"
+        )
+        self.assertEqual(certificate["third_party_dependencies"], [])
+        for name, targets in (
+            ("n6", ["-17/1250", "-1/80"]),
+            ("n7", ["-7/250", "-1/40"]),
+        ):
+            payload = certificate["bases"][name]
+            values = payload["rational_values"]
+            low = Fraction(values["a_plus_lower"])
+            high = Fraction(values["a_plus_upper"])
+            self.assertLess(low, high)
+            self.assertLess(high, 0)
+            self.assertEqual(
+                payload["rational_consequence"]["a_plus_upper_lt"], targets
+            )
+            self.assertTrue(
+                payload["rational_consequence"]["enclosure_is_negative"]
+            )
+            for target in targets:
+                self.assertLess(high, Fraction(target))
+
+            iid = Fraction(values["shapley_iid_upper"])
+            bellman = Fraction(values["bellman_average_upper"])
+            entropy = Fraction(values["family_entropy_lower"])
+            alpha = Fraction(
+                certificate["alpha"]["numerator"],
+                certificate["alpha"]["denominator"],
+            )
+            self.assertEqual(
+                high,
+                rational.round_up(
+                    (1 - alpha) * iid + alpha * bellman - entropy,
+                    rational.ACCUMULATOR_BITS,
+                ),
+            )
+            self.assertEqual(
+                Fraction(payload["exact_base"]["closure_defect"]),
+                1 - Fraction(payload["exact_base"]["join_success_probability"]),
+            )
+
+    def test_checkpoint_rejects_foreign_and_truncated_records(self) -> None:
+        base = rational.BASES["n6"]
+        with TemporaryDirectory() as directory:
+            checkpoint = Path(directory) / "records.jsonl"
+            first = rational.evaluate_base(
+                base, "orbits", checkpoint, sample_recheck=0, progress=0
+            )
+            self.assertEqual(
+                first["order_evaluation"]["new_evaluations"],
+                first["order_evaluation"]["evaluated_order_count"],
+            )
+
+            resumed = rational.evaluate_base(
+                base, "orbits", checkpoint, sample_recheck=2, progress=0
+            )
+            self.assertEqual(resumed["order_evaluation"]["new_evaluations"], 0)
+            self.assertEqual(resumed["order_evaluation"]["rechecked_records"], 2)
+            self.assertEqual(
+                resumed["rational_values"]["a_plus_upper"],
+                first["rational_values"]["a_plus_upper"],
+            )
+
+            lines = checkpoint.read_text().splitlines()
+            foreign = json.loads(lines[0])
+            foreign["schema"] = rational.RECORD_SCHEMA + 1
+            with checkpoint.open("a") as handle:
+                handle.write(json.dumps(foreign, sort_keys=True) + "\n")
+                handle.write('{"kind": "order", "base": "n6"')
+            partial = rational.evaluate_base(
+                base, "orbits", checkpoint, sample_recheck=0, progress=0
+            )
+            self.assertEqual(partial["order_evaluation"]["new_evaluations"], 0)
+            self.assertEqual(
+                partial["order_evaluation"]["foreign_schema_checkpoint_lines"], 1
+            )
+            self.assertEqual(
+                partial["order_evaluation"]["truncated_checkpoint_lines"], 1
+            )
+            self.assertEqual(
+                partial["rational_values"]["a_plus_lower"],
+                first["rational_values"]["a_plus_lower"],
+            )
+
+    def test_linear_growth_corollary_is_exact(self) -> None:
+        certificate = json.loads(RATIONAL_CERTIFICATE.read_text())
+        for name, dimension, delta in (
+            ("n6", 6, Fraction(17, 1250)),
+            ("n7", 7, Fraction(7, 250)),
+        ):
+            payload = certificate["bases"][name]
+            success = Fraction(
+                payload["exact_base"]["join_success_probability"]
+            )
+            self.assertEqual(
+                certificate["asymptotic"]["bases"][name]["asymptotic_slope"],
+                str(delta / dimension),
+            )
+            for coordinates in range(dimension, 40 * dimension + 1, dimension):
+                power = coordinates // dimension
+                defect = 1 - success**power
+                self.assertGreater(defect, 0)
+                self.assertLess(defect, 1)
+                ratio = delta * power / defect
+                self.assertGreater(ratio, delta * power)
+                # Linear lower bound in the number of coordinates.
+                self.assertGreater(ratio, delta * coordinates / dimension - 1)
+            # Matching upper bound under a defect floor: -A_+ <= log2 m <= n.
+            floor = Fraction(1, 2)
+            self.assertLess(
+                delta * 1000 / (1 - success**1000),
+                Fraction(dimension * 1000) / floor,
+            )
+
+    def test_exact_tensorization_audit_found_no_counterexample(self) -> None:
+        summary = json.loads(TENSORIZATION_EXACT_AUDIT.read_text())
+        self.assertEqual(summary["verdict"], "NO_EXACT_COUNTEREXAMPLE")
+        self.assertEqual(summary["arithmetic"], "exact_python_fractions")
+        self.assertEqual(summary["third_party_dependencies"], [])
+        self.assertEqual(summary["bellman_intersection_failures"], 0)
+        self.assertEqual(summary["defect_identity_failures"], 0)
+        self.assertEqual(summary["q_intersection_failures"], 0)
+        self.assertGreaterEqual(summary["total_orders_checked"], 15_000)
+        self.assertGreaterEqual(summary["unequal_dimension_cases"], 20)
+        self.assertEqual(
+            Fraction(summary["worst_bellman_gap_decimal"]), Fraction(0)
+        )
+        self.assertLess(
+            Fraction(summary["worst_q_gap_decimal"]), Fraction(1, 10**24)
+        )
+        for case in summary["cases"]:
+            self.assertTrue(case["defect_identity_exact"])
+            self.assertTrue(case["q_enclosures_intersect"])
+            self.assertEqual(case["bellman_intersection_failures"], 0)
+            self.assertEqual(
+                case["orders_checked"],
+                factorial(case["left_dimension"] + case["right_dimension"]),
+            )
+
+    def test_exact_audit_replays_one_case_from_scratch(self) -> None:
+        summary = json.loads(TENSORIZATION_EXACT_AUDIT.read_text())
+        target = next(
+            case
+            for case in summary["cases"]
+            if case["name"] == "triple_antichain_x_triple_chain"
+        )
+        replay = tensor_exact.evaluate_case(
+            {
+                "name": target["name"],
+                "left": tuple(target["left_rows"]),
+                "left_dimension": target["left_dimension"],
+                "right": tuple(target["right_rows"]),
+                "right_dimension": target["right_dimension"],
+            }
+        )
+        self.assertEqual(replay, target)
+        self.assertEqual(replay["orders_checked"], 720)
+
+    def test_induced_order_extraction_is_faithful(self) -> None:
+        order = (4, 0, 3, 1, 5, 2)
+        left, right = tensor_exact.induced_orders(order, 3)
+        self.assertEqual(left, (0, 1, 2))
+        self.assertEqual(right, (1, 0, 2))
+        self.assertEqual(tensor_exact._relabel(right), (1, 0, 2))
+        self.assertEqual(tensor_exact._relabel((4, 0, 3)), (2, 0, 1))
 
 
 class ProductIdentityTests(unittest.TestCase):
@@ -549,6 +928,50 @@ class AuditArtifactTests(unittest.TestCase):
                 order["base_block_bellman_sum"],
                 places=12,
             )
+
+    def test_second_base_direct_square_audit(self) -> None:
+        summary = json.loads(N6_SQUARE_AUDIT.read_text())
+        self.assertEqual(summary["status"], "complete")
+        self.assertEqual(summary["checked_order_count"], 5)
+        self.assertTrue(summary["all_within_tolerance"])
+        self.assertLess(summary["worst_bellman_gap"], 1e-12)
+        self.assertLess(summary["worst_iid_gap"], 1e-12)
+
+        exact = summary["exact_square"]
+        self.assertEqual(exact["family_size"], 625)
+        self.assertEqual(exact["dimension"], 12)
+        self.assertEqual(exact["coordinate_counts"], [250] * 12)
+        self.assertEqual(exact["cap_bound"], 250)
+        self.assertTrue(exact["cap_holds_with_equality"])
+        self.assertTrue(exact["reimer_holds_strictly"])
+        self.assertEqual(exact["missing_ordered_join_pairs"], 357_864)
+        self.assertEqual(exact["closure_defect"], "357864/390625")
+        self.assertTrue(exact["closure_defect_matches_product"])
+        self.assertTrue(exact["active"] and exact["separating"])
+        for order in summary["orders"].values():
+            self.assertAlmostEqual(
+                order["direct_square_bellman"],
+                order["base_block_bellman_sum"],
+                places=12,
+            )
+
+    def test_second_base_square_checkpoint_tolerates_truncated_tail(self) -> None:
+        with TemporaryDirectory() as directory:
+            checkpoint = Path(directory) / "checkpoint.jsonl"
+            checkpoint.write_text(
+                '{"order_name": "complete", "value": 1}\n'
+                '{"order_name": "truncated"'
+            )
+            original = n6_square.CHECKPOINT
+            try:
+                n6_square.CHECKPOINT = checkpoint
+                records = n6_square.load_records()
+            finally:
+                n6_square.CHECKPOINT = original
+        self.assertEqual(
+            records,
+            {"complete": {"order_name": "complete", "value": 1}},
+        )
 
     def test_constructed_powers_are_admissible_and_match_defects(self) -> None:
         summary = json.loads(POWER_AUDIT.read_text())

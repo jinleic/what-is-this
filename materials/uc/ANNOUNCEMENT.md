@@ -143,10 +143,11 @@ human proof, not part of the branch-and-bound certificate.
 | $0.382709087918741$ | Liu, Theorem 13 | explicitly conditional; local H1 candidate does not resolve H2 |
 | $0.3820660112501052$ | this project | candidate theorem: human-audited chain plus replayed finite Arb certificate |
 
-The bounded search through 2026-08-25 found this apparently the first
-explicit *certified* improvement over \(\psi\), not the first claimed
-improvement. See [`LITERATURE_ORIGINALITY.md`](LITERATURE_ORIGINALITY.md);
-universal priority and external review remain open.
+The full bounded search through 2026-08-25 and an arXiv-feed refresh on
+2026-08-26 found this apparently the first explicit *certified* improvement
+over \(\psi\), not the first claimed improvement. See
+[`LITERATURE_ORIGINALITY.md`](LITERATURE_ORIGINALITY.md); universal priority
+and external review remain open.
 
 ## How to verify
 
@@ -165,15 +166,20 @@ The independent structural command is:
   --nice 10 --cpu-limit-seconds 600
 ```
 
-It checks all 488,465,854 trace bytes, hashes, opcodes, DFS topology,
-termination, and tallies without importing certificate arithmetic. It is not a
-second interval proof. Arithmetic replay uses the frozen rule functions and
-therefore retains common-mode implementation trust.
+The structural command checks all 488,465,854 trace bytes, hashes, opcodes, DFS
+topology, termination, and tallies without importing certificate arithmetic;
+by itself it is not an interval proof.  A separate secure arithmetic
+implementation has now replayed every trace from byte zero without importing
+the frozen rule modules.  It uses interval AD, rediscovers every face proof,
+and is bound to a 343-file runtime seal and live process/image inventory.  Its
+trusted report-lock raw SHA-256 is
+`af86480901c2c497739916bb410f1e117e4eaf3eefb82575ce494b7d8c04e730`;
+the accepted composite canonical SHA-256 is
+`4acbd3b935bda7e51ed387e42e0598debf22f4a85b7a24ad976c3eaca4f23243`.
 
 The historical collector printed `COMPOSITE CERTIFICATE` on 2026-08-21, but
-it does not hardcode the accepted code digest or enforce
-`launch.environment`; the external lock and clean-room harness supply those
-missing provenance gates.
+does not itself enforce those external provenance/independence gates; the lock,
+secure verifier, runtime evidence, and trusted report-lock digest do.
 
 ## Campaign I record
 

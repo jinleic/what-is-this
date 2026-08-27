@@ -15,6 +15,7 @@ SECURE_DIR = HERE / "results/independent-arithmetic/secure-full"
 PREFLIGHT = HERE / "results/independent-arithmetic/secure-preflight-20k.json"
 LAUNCH_MANIFEST = SECURE_DIR / "launch-manifest.json"
 LIVE_ATTESTATION = SECURE_DIR / "live-runtime-midrun.json"
+REPORT_LOCK = SECURE_DIR / "report-lock.json"
 
 
 def load(name, path):
@@ -75,13 +76,22 @@ class IndependentAcceptanceTests(unittest.TestCase):
                 {},
             )
 
-    def test_report_lock_refuses_incomplete_secure_directory(self):
-        with self.assertRaises(self.locker.LockError):
-            self.locker.create_lock(
-                SECURE_DIR,
-                LAUNCH_MANIFEST,
-                LIVE_ATTESTATION,
-            )
+    def test_completed_reports_lock_and_aggregate(self):
+        generated = self.locker.create_lock(
+            SECURE_DIR,
+            LAUNCH_MANIFEST,
+            LIVE_ATTESTATION,
+        )
+        self.assertEqual(len(generated["reports"]), 8)
+        raw_digest = hashlib.sha256(REPORT_LOCK.read_bytes()).hexdigest()
+        aggregate = self.aggregate.aggregate_reports(
+            SECURE_DIR,
+            LOCK_PATH,
+            REPORT_LOCK,
+            raw_digest,
+        )
+        self.assertEqual(aggregate["outcome"], "PASS")
+        self.assertEqual(aggregate["total_processed"], 488_465_854)
 
 
 if __name__ == "__main__":

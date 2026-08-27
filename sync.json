@@ -46,17 +46,22 @@
    "updated": "2026-08-22T05:44:40Z"
   },
   "e389": {
-   "bytes": 430140,
+   "bytes": 593055,
    "files": [
     {
      "path": "README.md",
-     "sha256": "7507f5cabdd0",
-     "size": 17249
+     "sha256": "1066d22d7444",
+     "size": 25274
     },
     {
      "path": "THEOREMS.md",
-     "sha256": "bb50585d3314",
-     "size": 26317
+     "sha256": "7f56f090d5d1",
+     "size": 48857
+    },
+    {
+     "path": "adaptive_eviction_analysis.py",
+     "sha256": "6ef814340754",
+     "size": 13145
     },
     {
      "path": "artifact_io.py",
@@ -85,8 +90,8 @@
     },
     {
      "path": "compensation_structure_analysis.py",
-     "sha256": "185707ed051c",
-     "size": 36880
+     "sha256": "42c0eff9c3db",
+     "size": 39106
     },
     {
      "path": "crt_repair_cover.py",
@@ -95,18 +100,18 @@
     },
     {
      "path": "data/compensation_run_m27_k100050001_h900000000.json",
-     "sha256": "54ccb0152170",
-     "size": 15235
+     "sha256": "caddc64cb04e",
+     "size": 15228
     },
     {
      "path": "data/compensation_run_m27_k50001_h100000000.json",
-     "sha256": "edcc1956d8d9",
-     "size": 14840
+     "sha256": "bbe05b8e23a6",
+     "size": 14839
     },
     {
      "path": "data/compensation_structure_m1_20_k5000_m27_h200000000.json",
-     "sha256": "fed9bc832f21",
-     "size": 54310
+     "sha256": "46b3d7aab60c",
+     "size": 87816
     },
     {
      "path": "data/known_witness_verification.json",
@@ -119,9 +124,19 @@
      "size": 14856
     },
     {
+     "path": "exact_eviction_certificate.py",
+     "sha256": "a003a8015aec",
+     "size": 22247
+    },
+    {
      "path": "moving_bad_window_search.py",
      "sha256": "51b8dbbeb3ac",
      "size": 13383
+    },
+    {
+     "path": "parity_shift_certificate.py",
+     "sha256": "c0dcd4d1e5eb",
+     "size": 12648
     },
     {
      "path": "prime_repair_analysis.py",
@@ -144,9 +159,14 @@
      "size": 15229
     },
     {
+     "path": "smooth_density_analysis.py",
+     "sha256": "8e1e71e5fbd2",
+     "size": 22404
+    },
+    {
      "path": "tests/test_erdos389.py",
-     "sha256": "f9a5037fc6f3",
-     "size": 56820
+     "sha256": "022a54b2ee54",
+     "size": 83002
     },
     {
      "path": "verify_known.py",
@@ -164,10 +184,10 @@
      "size": 5896
     }
    ],
-   "headline": "### E389-COMPENSATION-RUN-BOUND (2026-08-26) — EXACT LOCAL DECOMPOSITION LIFTS THE \\(m=27\\) LOWER BOUND ABOVE \\(10^9\\)",
-   "progress_header": "### E389-COMPENSATION-RUN-BOUND (2026-08-26) — EXACT LOCAL DECOMPOSITION LIFTS THE \\(m=27\\) LOWER BOUND ABOVE \\(10^9\\)",
-   "sig": "c3e3e755a14f0396",
-   "updated": "2026-08-27T00:20:47Z"
+   "headline": "### E389-HALF-WINDOW-EVICTION-DENSITY (2026-08-27) — EVICTION TURNS OUT TO BE FREE, THE WITNESS DENSITY GETS AN UNCONDITIONAL CEILING, AND THE \\(m=27\\) SHIFT NEIGHBOURHOOD REACHES ",
+   "progress_header": "### E389-HALF-WINDOW-EVICTION-DENSITY (2026-08-27) — EVICTION TURNS OUT TO BE FREE, THE WITNESS DENSITY GETS AN UNCONDITIONAL CEILING, AND THE \\(m=27\\) SHIFT NEIGHBOURHOOD REACHES \\(10^9\\)",
+   "sig": "305bbc1b25811d25",
+   "updated": "2026-08-27T11:21:20Z"
   },
   "h10q": {
    "bytes": 20380068,
@@ -29408,17 +29428,17 @@
    "updated": "2026-08-26T00:05:20Z"
   },
   "uc": {
-   "bytes": 27470104,
+   "bytes": 29117775,
    "files": [
     {
      "path": "ANNOUNCEMENT.md",
-     "sha256": "1bd3e3026220",
-     "size": 12420
+     "sha256": "d4e25c3f8098",
+     "size": 12853
     },
     {
      "path": "AUDIT.md",
-     "sha256": "6ccaf87ff8d8",
-     "size": 67782
+     "sha256": "4118489db65f",
+     "size": 70174
     },
     {
      "path": "CERT_CLOSEOUT.md",
@@ -29437,18 +29457,18 @@
     },
     {
      "path": "PROOF.md",
-     "sha256": "feb826cbca45",
-     "size": 27210
+     "sha256": "9d8b6b758248",
+     "size": 29091
     },
     {
      "path": "README.md",
-     "sha256": "057c860db401",
-     "size": 40635
+     "sha256": "a4f36828105d",
+     "size": 43672
     },
     {
      "path": "REPRODUCIBILITY.md",
-     "sha256": "cdc94a9fbfb1",
-     "size": 29766
+     "sha256": "e4d3de6cb6a2",
+     "size": 36138
     },
     {
      "path": "_probe.py",
@@ -29482,8 +29502,8 @@
     },
     {
      "path": "bridge_uc.py",
-     "sha256": "0f2d28a3b7ee",
-     "size": 10114
+     "sha256": "02cc9227b1ba",
+     "size": 15629
     },
     {
      "path": "campaign_i_plan.md",
@@ -30022,23 +30042,28 @@
     },
     {
      "path": "gate_b/EXPERIMENTS.md",
-     "sha256": "b38e56518f44",
-     "size": 29478
+     "sha256": "da887cb56019",
+     "size": 36073
     },
     {
      "path": "gate_b/PROOF.md",
-     "sha256": "ea698719c6b6",
-     "size": 15656
+     "sha256": "ac7f56f9c835",
+     "size": 23618
     },
     {
      "path": "gate_b/README.md",
-     "sha256": "48b32965980b",
-     "size": 15090
+     "sha256": "9ba1a7ce3e43",
+     "size": 24114
     },
     {
      "path": "gate_b/audit_n5_complete.py",
      "sha256": "a79651c87edd",
      "size": 8346
+    },
+    {
+     "path": "gate_b/audit_n6_square_direct.py",
+     "sha256": "3836ddcabe26",
+     "size": 8402
     },
     {
      "path": "gate_b/audit_power_admissibility.py",
@@ -30056,9 +30081,19 @@
      "size": 12021
     },
     {
+     "path": "gate_b/audit_tensorization_exact.py",
+     "sha256": "1880fdc77528",
+     "size": 14729
+    },
+    {
      "path": "gate_b/candidates/n5_complete_audit.json",
      "sha256": "14f687541884",
      "size": 1226
+    },
+    {
+     "path": "gate_b/candidates/n6_square_direct_audit.json",
+     "sha256": "87dd06084361",
+     "size": 1712
     },
     {
      "path": "gate_b/candidates/n7_block_extremizer.json",
@@ -30086,6 +30121,11 @@
      "size": 467
     },
     {
+     "path": "gate_b/candidates/tensorization_exact_audit.json",
+     "sha256": "456520716b0c",
+     "size": 24159
+    },
+    {
      "path": "gate_b/certificates/gate_b_unbounded_arb.json",
      "sha256": "701469e8778b",
      "size": 2830
@@ -30111,14 +30151,29 @@
      "size": 3786
     },
     {
+     "path": "gate_b/certificates/gate_b_unbounded_n6_arb_v1.json",
+     "sha256": "3b4650fc00e1",
+     "size": 3499
+    },
+    {
      "path": "gate_b/certificates/gate_b_unbounded_n6_dyadic_v1.json",
-     "sha256": "04c14a62f108",
-     "size": 5353
+     "sha256": "1c39d372bde1",
+     "size": 5397
+    },
+    {
+     "path": "gate_b/certificates/gate_b_unbounded_rational_v1.json",
+     "sha256": "6a04b708583e",
+     "size": 12654
     },
     {
      "path": "gate_b/experiments/n5_complete_checkpoint.jsonl",
      "sha256": "90fa33d4849c",
      "size": 2754782
+    },
+    {
+     "path": "gate_b/experiments/n6_square_direct_checkpoint.jsonl",
+     "sha256": "fcc0c9164132",
+     "size": 2354
     },
     {
      "path": "gate_b/experiments/n8_k1_checkpoint.jsonl",
@@ -30131,6 +30186,11 @@
      "size": 1591
     },
     {
+     "path": "gate_b/experiments/rational_certificate_checkpoint.jsonl",
+     "sha256": "35ac123d1653",
+     "size": 1463448
+    },
+    {
      "path": "gate_b/experiments/square_direct_checkpoint.jsonl",
      "sha256": "0599d2b038a8",
      "size": 2589
@@ -30141,39 +30201,39 @@
      "size": 118435
     },
     {
+     "path": "gate_b/experiments/tensorization_exact_checkpoint.jsonl",
+     "sha256": "45644badf44e",
+     "size": 19248
+    },
+    {
      "path": "gate_b/paper/main.aux",
-     "sha256": "6120fe1d7194",
-     "size": 1734
+     "sha256": "228eb9060269",
+     "size": 2199
     },
     {
      "path": "gate_b/paper/main.fdb_latexmk",
-     "sha256": "c18b1c346534",
-     "size": 16402
+     "sha256": "0529cd7f947d",
+     "size": 16558
     },
     {
      "path": "gate_b/paper/main.fls",
-     "sha256": "08e72d31c60b",
-     "size": 19492
+     "sha256": "f9519eb1177b",
+     "size": 19690
     },
     {
      "path": "gate_b/paper/main.log",
-     "sha256": "4e4a948529ea",
-     "size": 23486
+     "sha256": "758af4d4d641",
+     "size": 23598
     },
     {
      "path": "gate_b/paper/main.out",
-     "sha256": "7bd70d3ec8d1",
-     "size": 905
-    },
-    {
-     "path": "gate_b/paper/main.pdf",
-     "sha256": "31da3136e01f",
-     "size": 230921
+     "sha256": "e451a010daf4",
+     "size": 1442
     },
     {
      "path": "gate_b/paper/main.tex",
-     "sha256": "61bafd52096b",
-     "size": 19062
+     "sha256": "47e0675e663c",
+     "size": 24841
     },
     {
      "path": "gate_b/search_n8_block_symmetric.py",
@@ -30182,8 +30242,8 @@
     },
     {
      "path": "gate_b/test_gate_b.py",
-     "sha256": "ebbd6b2184c7",
-     "size": 27169
+     "sha256": "e1f66f4d0e3c",
+     "size": 45582
     },
     {
      "path": "gate_b/verify_gate_b.py",
@@ -30192,13 +30252,23 @@
     },
     {
      "path": "gate_b/verify_gate_b_dyadic.py",
-     "sha256": "7304a3067373",
-     "size": 20821
+     "sha256": "7d8a1484cf76",
+     "size": 21061
+    },
+    {
+     "path": "gate_b/verify_gate_b_n6_arb.py",
+     "sha256": "ed6814505eb8",
+     "size": 6443
     },
     {
      "path": "gate_b/verify_gate_b_n6_dyadic.py",
-     "sha256": "c6be031b9b8c",
-     "size": 8362
+     "sha256": "c43cc21d6f0d",
+     "size": 9479
+    },
+    {
+     "path": "gate_b/verify_gate_b_rational.py",
+     "sha256": "39504e842791",
+     "size": 38747
     },
     {
      "path": "join_dependencies.py",
@@ -30441,6 +30511,11 @@
      "size": 40527
     },
     {
+     "path": "liu9_residual.py",
+     "sha256": "46babd152730",
+     "size": 13458
+    },
+    {
      "path": "liu9_tube.py",
      "sha256": "f2013d25c944",
      "size": 32346
@@ -30507,8 +30582,8 @@
     },
     {
      "path": "paper/main.aux",
-     "sha256": "edd6a0d7d3ef",
-     "size": 13284
+     "sha256": "a70fbd7b2b2d",
+     "size": 13425
     },
     {
      "path": "paper/main.bbl",
@@ -30522,7 +30597,7 @@
     },
     {
      "path": "paper/main.fdb_latexmk",
-     "sha256": "5883e92bdc8f",
+     "sha256": "991e04f9894a",
      "size": 19743
     },
     {
@@ -30532,8 +30607,8 @@
     },
     {
      "path": "paper/main.log",
-     "sha256": "2a277ec0d56d",
-     "size": 18273
+     "sha256": "fb44bcb83d08",
+     "size": 19275
     },
     {
      "path": "paper/main.out",
@@ -30542,13 +30617,13 @@
     },
     {
      "path": "paper/main.pdf",
-     "sha256": "2d6fbeb7927a",
-     "size": 448731
+     "sha256": "dc128d95c2aa",
+     "size": 455322
     },
     {
      "path": "paper/main.tex",
-     "sha256": "34a805bab015",
-     "size": 77742
+     "sha256": "6b1c7ebc6848",
+     "size": 82660
     },
     {
      "path": "paper/main.toc",
@@ -30791,6 +30866,11 @@
      "size": 55389
     },
     {
+     "path": "verification/entropy_bridge_exhaustive.py",
+     "sha256": "a4ae27a8d28f",
+     "size": 24471
+    },
+    {
      "path": "verification/independent-report.schema.json",
      "sha256": "b6b45e072fd1",
      "size": 8609
@@ -30951,6 +31031,21 @@
      "size": 17441
     },
     {
+     "path": "verification/results/entropy-bridge-exhaustive.json",
+     "sha256": "c3f094ba0b0d",
+     "size": 7157
+    },
+    {
+     "path": "verification/results/liu9-complement-residual-rho0.1-3M.json",
+     "sha256": "4b30773669e5",
+     "size": 74308
+    },
+    {
+     "path": "verification/results/liu9-complement-residual-rho0.1.json",
+     "sha256": "a82fc9ec882a",
+     "size": 71509
+    },
+    {
      "path": "verification/results/preflight/slice-0/events.jsonl",
      "sha256": "049a19da8a60",
      "size": 2112
@@ -31001,6 +31096,11 @@
      "size": 3300
     },
     {
+     "path": "verification/results/uc-bridge-referee-2026-08-27.md",
+     "sha256": "de4962e8a500",
+     "size": 5986
+    },
+    {
      "path": "verification/seal_runtime_environment.py",
      "sha256": "1d51fba31236",
      "size": 10666
@@ -31009,6 +31109,11 @@
      "path": "verification/structural_trace_audit.py",
      "sha256": "7238a17f8cf8",
      "size": 28111
+    },
+    {
+     "path": "verification/test_entropy_bridge_exhaustive.py",
+     "sha256": "bf5aab239aa3",
+     "size": 3000
     },
     {
      "path": "verification/test_independent_arithmetic_replay.py",
@@ -31022,8 +31127,8 @@
     },
     {
      "path": "verification/test_independent_report_acceptance.py",
-     "sha256": "94148387db74",
-     "size": 3022
+     "sha256": "23357c9702bc",
+     "size": 3406
     },
     {
      "path": "yu_gap.py",
@@ -31031,10 +31136,10 @@
      "size": 7811
     }
    ],
-   "headline": "### UC-GATE-B-INDEPENDENCE (2026-08-26) — THE OBSTRUCTION SURVIVES REMOVING ARB, THE CLAMPS, AND THE FACTORED SQUARE",
-   "progress_header": "### UC-GATE-B-INDEPENDENCE (2026-08-26) — THE OBSTRUCTION SURVIVES REMOVING ARB, THE CLAMPS, AND THE FACTORED SQUARE",
-   "sig": "3f1143fe9ca55185",
-   "updated": "2026-08-27T00:20:47Z"
+   "headline": "### UC-BRIDGE-EXHAUSTION-CAMPAIGN-K-RESUME (2026-08-27) — THE ENTROPY BRIDGE IS NOW EXHAUSTIVELY MACHINE-CHECKED, A SECOND REFEREE FINDS NO PROOF DEFECT, AND CAMPAIGN K'S THREE LOS",
+   "progress_header": "### UC-BRIDGE-EXHAUSTION-CAMPAIGN-K-RESUME (2026-08-27) — THE ENTROPY BRIDGE IS NOW EXHAUSTIVELY MACHINE-CHECKED, A SECOND REFEREE FINDS NO PROOF DEFECT, AND CAMPAIGN K'S THREE LOST SLICES ARE RUNNING AGAIN",
+   "sig": "599d2e8c6d29157f",
+   "updated": "2026-08-27T11:21:20Z"
   },
   "zeta5": {
    "bytes": 27160,
@@ -31066,5 +31171,5 @@
    "updated": "2026-08-26T00:08:14Z"
   }
  },
- "updated": "2026-08-27T00:20:47Z"
+ "updated": "2026-08-27T11:21:20Z"
 }

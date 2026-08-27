@@ -46,8 +46,43 @@ evaluates all 720 coordinate orders without a symmetry quotient and proves
 {\varepsilon_\vee(\mathcal D^{\boxtimes k})}
 >\frac{k/80}{1-(181/625)^k}>\frac{k}{80}\to\infty.
 \]
-Thus an error specific to the 45-row family or its order-orbit reduction cannot
-reverse the Gate B conclusion.
+The same \(n=6\) base also has a 256-bit Arb certificate
+\(A_+(\mathcal D)<-17/1250\), produced by the generic standalone Bellman
+evaluator.  The two bases are therefore each certified by both arithmetic
+routes; the all-720-order dyadic route remains the one that avoids symmetry and
+clamp classification simultaneously.  Thus an error specific to the 45-row
+family or its order-orbit reduction cannot reverse the Gate B conclusion.
+
+The negativity of both bases now also has an **exact rational** certificate
+that uses no interval library and no relaxation of the action set. It evaluates
+the true one-sided Bellman recursion over the exact feasible interval
+\([s^*,U]\) with Python fractions and returns a two-sided enclosure:
+\[
+\begin{aligned}
+A_+(\mathcal D)&\in[-0.01367210773217777356185991566,\,
+ -0.01367210773217777356185991299],\\
+A_+(\mathcal B)&\in[-0.02864918679446831781602698193,\,
+ -0.02864918679446831781602697645],
+\end{aligned}
+\]
+each of width below \(6\times10^{-27}\), computed over **all** \(720\) and
+**all** \(5040\) coordinate orders with no automorphism quotient. Both Arb
+values lie strictly inside these enclosures. The three certified scalar
+primitives are a bit-by-bit binary logarithm, repeated ceiling square roots of
+two, and a concavity case split for the constrained entropy maximum.
+
+Because the enclosure is two-sided, an inverted clamp comparison, a mis-stated
+feasible interval, or a sign error breaks the sandwich instead of silently
+moving one bound. The upper endpoints alone imply the theorem.
+
+The divergence is also now quantified. With
+\(c_{\rm cl}^\star(n)\) the supremum over admissible families on at most \(n\)
+coordinates, the powers give \(c_{\rm cl}^\star(n)>\frac1{250}n-\frac7{250}\),
+while \(Q\ge0\), \(C_+\ge0\) give \(-A_+\le\log_2m\le n\) and hence
+\(c_{\rm cl}^\star(n)\le n/\varepsilon_0\) on families with
+\(\varepsilon_\vee\ge\varepsilon_0\). So under a positive defect floor the
+growth is exactly of order \(n\), and the only escape is
+\(\varepsilon_\vee\to0\).
 
 No fixed scalar closure-defect coefficient can repair \(A_+\) on all
 cap/Reimer families. This is not a union-closed counterexample and does not
@@ -74,6 +109,17 @@ use this convention.
 | [certificates/gate_b_unbounded_dyadic_v1.json](certificates/gate_b_unbounded_dyadic_v1.json) | independently certified | Exact dyadic endpoints for \(Q\), the relaxed Bellman upper bound, entropy, and \(A_+\), plus the exact family, defect, symmetry partition, and all-power formulas. |
 | [verify_gate_b_n6_dyadic.py](verify_gate_b_n6_dyadic.py) | independently certified second base | Reconstructs the separate 25-row \(n=6\) family, evaluates the clamp-free relaxation on all 720 orders without a symmetry quotient, and proves \(A_+<-1/80\). It shares only the audited dyadic interval primitive with the \(n=7\) checker. |
 | [certificates/gate_b_unbounded_n6_dyadic_v1.json](certificates/gate_b_unbounded_n6_dyadic_v1.json) | independently certified | Exact \(n=6\) rows, filters, defect \(444/625\), all-order count, interval bounds, and the second all-power consequence. |
+| [verify_gate_b_n6_arb.py](verify_gate_b_n6_arb.py) | independently certified second base | Reconstructs the 25-row family separately and evaluates its 10 exact order orbits with the generic 256-bit Arb Bellman checker, proving \(A_+<-17/1250\). |
+| [certificates/gate_b_unbounded_n6_arb_v1.json](certificates/gate_b_unbounded_n6_arb_v1.json) | certified | Exact \(n=6\) family, 72-element automorphism group, Arb intervals, rational bound, and all-power consequence. |
+| [verify_gate_b_rational.py](verify_gate_b_rational.py) | exactly certified, both bases | Standard-library-only exact rational evaluator. No interval class, no third-party arithmetic, and no action-set relaxation: it maximizes over the true feasible interval \([s^*,U]\) and returns a two-sided enclosure of \(A_+\). Resumable per coordinate order with a schema-checked append-only checkpoint. |
+| [certificates/gate_b_unbounded_rational_v1.json](certificates/gate_b_unbounded_rational_v1.json) | exactly certified | All 720 \(n=6\) and all 5040 \(n=7\) orders, exact rational enclosures of \(Q\), \(\mathbb E_\pi C_{+,\pi}\), \(\log_2m\) and \(A_+\) for both bases, the frozen rational targets each enclosure passes, and the linear-growth block. |
+| [experiments/rational_certificate_checkpoint.jsonl](experiments/rational_certificate_checkpoint.jsonl) | append-only log | 5,760 exact per-order enclosures. A complete resume reports `new_evaluations: 0`; foreign-schema and truncated lines are counted and ignored, never trusted. |
+| [audit_tensorization_exact.py](audit_tensorization_exact.py) | exact falsification search | Repeats the product-lemma attack in exact rational arithmetic. For every global order of every product it demands that the certified enclosures of the two sides intersect; non-intersection would be a counterexample, not rounding. Resumable at case granularity. |
+| [candidates/tensorization_exact_audit.json](candidates/tensorization_exact_audit.json) | exact adversarial | Zero intersection failures, zero exact defect-identity failures, and a worst fixed-order Bellman gap of exactly zero — replacing the float64 \(1.8\times10^{-15}\) evidence for Lemma 3. |
+| [experiments/tensorization_exact_checkpoint.jsonl](experiments/tensorization_exact_checkpoint.jsonl) | append-only log | One record per product case; a complete resume reports `new_evaluations: 0`. |
+| [audit_n6_square_direct.py](audit_n6_square_direct.py) | resumable falsification search | Materializes the second base's 625-row square as plain 12-bit masks and compares generic Bellman/iid evaluations against the induced block sums for five hostile global orders. |
+| [candidates/n6_square_direct_audit.json](candidates/n6_square_direct_audit.json) | direct numerical | Exact square constraints and defect; zero Bellman product gap and \(1.8\times10^{-15}\) worst iid gap across five orders. |
+| [experiments/n6_square_direct_checkpoint.jsonl](experiments/n6_square_direct_checkpoint.jsonl) | append-only log | Five deterministic order records; a complete resume reports zero new evaluations and leaves the artifact byte-identical. |
 | [certificates/gate_b_unbounded_arb_v4.json](certificates/gate_b_unbounded_arb_v4.json) | certified | Authoritative interval output. It verifies the full cell-union row definition, directly certifies the base ratio, separates actual square-order checks from identity-derived values, and records exact power ratios. The v1--v3 JSON files remain intermediate checkpoints. |
 | [search_n8_block_symmetric.py](search_n8_block_symmetric.py) | complete finite search | Checkpointed exhaustive \(S_1\times S_7\) class on \(n=8\). Exact class/defects; float64 objective. |
 | [candidates/n8_k1_census.json](candidates/n8_k1_census.json) | complete numerical | 65,535 raw masks, 136 admissible canonical families, two negative; maximum ratio \(0.03433549\ldots\), below the certified \(n=7\) base. |
@@ -87,39 +133,52 @@ use this convention.
 | [candidates/square_direct_audit.json](candidates/square_direct_audit.json) | direct numerical | Five declared global orders; exact square combinatorics and zero product gap in every order. |
 | [audit_power_admissibility.py](audit_power_admissibility.py) | exact constructed-family audit | Builds \(\mathcal F_k\) for \(k\le3\) and recomputes size, counts, cap, incidence, Reimer, normalization, and the missing-join count by brute force over all ordered pairs. |
 | [candidates/power_admissibility_audit.json](candidates/power_admissibility_audit.json) | exact | At \(k=3\): 91,125 rows, all counts 36,450 equal to the cap bound, incidence 765,450 against threshold 750,668, and 8,227,000,000 of 8,303,765,625 ordered joins missing, i.e. exactly \(1-(17/81)^3=526528/531441\). |
-| [test_gate_b.py](test_gate_b.py) | regression suite | 24 tests: exact constraints, 5,400 fixed-order comparisons over all 225 products of nonempty \(n=2\) families, independent evaluator agreement, dyadic-vs-Arb enclosure dominance, order-orbit value invariance, symbolic Bellman algebra, exact integer cap/Reimer/ratio checks for the general power claim, symmetry/order coverage, and artifact contracts. |
+| [test_gate_b.py](test_gate_b.py) | regression suite | 42 tests: exact constraints, 5,400 fixed-order comparisons over all 225 products of nonempty \(n=2\) families, both bases under Arb, dyadic and exact rational arithmetic, all-720-order \(n=6\) certification, Arb-versus-rational bracketing of every certified primitive, 65-point sampled domination of the constrained maximum, per-orbit enclosure agreement, sharpness against the dyadic relaxation, state-canonicalization invariance, orbit-versus-all-order certificate equality, foreign-schema and truncated-checkpoint rejection, exact finite-to-general checks for both power sequences, the exact-integer growth corollary, symbolic Bellman algebra, all direct-square and tensorization audits, symmetry/order coverage, and artifact contracts. |
 | [EXPERIMENTS.md](EXPERIMENTS.md) | chronological ledger | Commands, parameters, failures, scope labels, and resource use. |
-| [paper/main.tex](paper/main.tex) | paper draft | Paper-quality statement, proof, both computational lemmas, controls, and limitations. |
+| [paper/main.tex](paper/main.tex) | paper draft | Paper-quality statement, both infinite constructions, six finite-base certificate boundaries, the exact rational proposition, the \(\Theta(n)\) growth section, computational controls, and limitations. |
 
 Authoritative SHA-256 values after final review:
 
 ```text
 405b0b74129c6192be791788b22ffbfbcb921e407e1d0002d01fb8193d131c72  verify_gate_b.py
-6784c4d90abf8292a901185504c6727baff8ba8e894526659d9855263ddd0d46  verify_gate_b_dyadic.py
+7d8a1484cf76a6fb2cf274c3874b52896662e85f005844601d962a40fb7f32a9  verify_gate_b_dyadic.py
+c43cc21d6f0da26eca071319fb73c978c532d0917ca1f7cd7e7dfb2ae68878c7  verify_gate_b_n6_dyadic.py
+ed6814505eb89f072e4efe8cf50a828aa3b514e024ec17c8933d5dae4a725b60  verify_gate_b_n6_arb.py
+39504e842791cc6de5431d358535d8b9a0463477354a9fb18aa2d347c0e0e270  verify_gate_b_rational.py
 dbe8064eed8d68dc3b49a7823242b599188dfcc82d98e892cf19b332fcc971ea  audit_tensorization.py
+1880fdc7752815f7d47054f0b862dd5be6ae3c13df003290c3e5c64dfa702e98  audit_tensorization_exact.py
 a2a9477a71153242726311df9792006a1f614cee6b178a60b9c886fd3425740d  audit_square_direct.py
+3836ddcabe26e839ec95b1334019e7ce3ea44bb95a05f35b854801164b1701a9  audit_n6_square_direct.py
 6f963f4eaf05408a10bbc180854df30aa1052a5771eae3bc1f03000fcd3ef016  audit_power_admissibility.py
 a79651c87edd36332fe1d0c4ff3b59b8efaad96f5194121d99a3dbd7e525b3b7  audit_n5_complete.py
 365a2ccb1482e7a68f1b4dab10fc813e0167fa83ddf87812ad10af915934612d  search_n8_block_symmetric.py
-b007967afa6da21ec1c7506bb3d383b0656f2fb37c7825b6bf4500d633b3ab8d  test_gate_b.py
+e1f66f4d0e3c360dc50b863a8c79091d4c8b0be964e433e2bcb55093d01a908b  test_gate_b.py
 9deabde710eff1e9d49b7c198edecc8d8af4e3d606a9e69feb179eb52df4df36  candidates/n7_block_extremizer.json
 14f6875418849011ccc350d5a0d1da7a57eae8bfe695182559184de57d281588  candidates/n5_complete_audit.json
 d65d5f5e2735295ae5988cd1077814dc353d8609f7d951d45d150672e25b112d  candidates/n8_k1_census.json
 0f48dc396827fad4043f148a552f2b2d1a4bceb7092d6ce4fd3a4b9cef2801da  candidates/tensorization_audit.json
+456520716b0c5cf30d252ff96f16a92d03019a56b98585fa37c7051bbbdc97b1  candidates/tensorization_exact_audit.json
 92659ae392a18b1146a1520dc63c80d28d70469aad16f30499dd2cfdb0cfd7cc  candidates/square_direct_audit.json
+87dd06084361e14832c348b6a97fd433c8c58f16438d2895d432ba8aa9adbfb2  candidates/n6_square_direct_audit.json
 287ee465e2376f12441641bcc5795463d0b867dd27821135531f43cb8ecdca0a  candidates/power_admissibility_audit.json
 9c147dba19b8d3f00055c43917927cb5f70b07daa87d94528fad521564d09882  certificates/gate_b_unbounded_arb_v4.json
 d4019a9bca35e0945ab75c05c9a72dcf52311f022429d179f1b193acadef937b  certificates/gate_b_unbounded_dyadic_v1.json
+1c39d372bde1086da7f97099c02f99783d1576b9c10d72e033b2d8f38354613a  certificates/gate_b_unbounded_n6_dyadic_v1.json
+3b4650fc00e17817cd34824643533320bd6718ea4cb341d404ff2587030f94da  certificates/gate_b_unbounded_n6_arb_v1.json
+6a04b708583eaa4ac90608b89de4224e31102dc4ee484be35c5faaf82a08a180  certificates/gate_b_unbounded_rational_v1.json
 90fa33d4849c568bd686941fc951e11bdc6aebc64aa94202cf4bc6d14f6631c6  experiments/n5_complete_checkpoint.jsonl
 012051ad8feb2aaac3f410318957f14e9c9836c9fad7111c6fdc91940d52ed47  experiments/n8_k1_checkpoint.jsonl
 2c46e8dae7b8268bd28e10357374617a21e434a3da44da1e8bac7136058cdd9f  experiments/tensorization_audit_checkpoint.jsonl
+45644badf44ef8507130ece9c14208b0d2fa638970b394fc986cf9042f93fcc7  experiments/tensorization_exact_checkpoint.jsonl
+35ac123d1653867f79eb45b4791c444eb869c96ed7a6b7698232287de970130d  experiments/rational_certificate_checkpoint.jsonl
 0599d2b038a82fa7298c4ca0d3f5d8b6d6761451271591e4dac449037b07ac39  experiments/square_direct_checkpoint.jsonl
+fcc0c916413271dc269fa9dbd1f5a50819fc972eeed651dce7d58fbde31ef775  experiments/n6_square_direct_checkpoint.jsonl
 2695bb03ae5d5a5a222b71201330b6c37f0d2306bdb0db49e35248062d522cb1  experiments/power_admissibility_checkpoint.jsonl
-c5caf2c7a5d6a3e04057641d23150262183e230b5ee89910c42aaf27371313a7  PROOF.md
+ac7f56f9c8356e2fca51207ad6b79c00bb582ab9c28d6003cd1f8e354050eb80  PROOF.md
 2d295690e1159e60859401ab96433e810d778b409e91afe4edb01dd8ca4f08d8  DEFINITIONS.md
-cb41ff8284189575fd17cc6d9015cabf4260405ab5acb9e3db9bb30a4110cb1a  EXPERIMENTS.md
-62f550287852662a236a1d65e5d869d63781f9f55483a3da80bbc154d2904f6a  paper/main.tex
-31da3136e01f37b4fb2f6ccc3e913e483f12acf6d3abf1208425cd781cfd1298  paper/main.pdf
+da887cb5601990a99535bdfb00b231a20d387ecba1819a27bb827fd11284e215  EXPERIMENTS.md
+47e0675e663c2726325474d84030071150e555dafdb231925d2ecfd95425418a  paper/main.tex
+cef36cacbd5f7b30cc823548026e343b007a9ce3d1e3d23e5128b9a91a3d2c84  paper/main.pdf
 ```
 
 ## Reproduce in the existing environment
@@ -136,6 +195,10 @@ nice -n 10 /Library/Developer/CommandLineTools/usr/bin/python3 -B \
   uc/gate_b/verify_gate_b_dyadic.py
 nice -n 10 /Library/Developer/CommandLineTools/usr/bin/python3 -B \
   uc/gate_b/verify_gate_b_n6_dyadic.py
+nice -n 10 ./.venv/bin/python -B uc/gate_b/verify_gate_b_n6_arb.py
+nice -n 10 /Library/Developer/CommandLineTools/usr/bin/python3 -B \
+  uc/gate_b/verify_gate_b_rational.py --bases n6,n7 --orders all
+nice -n 10 ./.venv/bin/python -B uc/gate_b/audit_n6_square_direct.py
 nice -n 10 ./.venv/bin/python -B uc/gate_b/search_n8_block_symmetric.py --k 1
 nice -n 10 c++ -O3 -std=c++17 \
   uc/shapley_n5_global_coupling_enumerate.cpp \
@@ -147,9 +210,10 @@ nice -n 10 ./.venv/bin/python -B uc/gate_b/audit_square_direct.py
 nice -n 10 ./.venv/bin/python -B uc/gate_b/audit_power_admissibility.py
 ```
 
-The \(n=8\), \(n=5\), tensorization, and square audits resume from append-only
-checkpoints and must report zero new evaluations when the checked-in
-checkpoints are complete.
+The \(n=8\), \(n=5\), tensorization, square, and exact-rational runs resume from
+append-only checkpoints and must report zero new evaluations when the checked-in
+checkpoints are complete. The rational verifier also recomputes a deterministic
+sample of stored records on every resume and aborts on any mismatch.
 
 Reproduce the original Gate A computations independently:
 
@@ -204,6 +268,25 @@ The same pristine interpreter also reproduces the second-base certificate.
 That checker evaluates all 720 six-coordinate orders rather than trusting an
 automorphism quotient and proves \(A_+(\mathcal D)<-1/80\).
 
+The exact rational certificate has the same property and needs no interval
+arithmetic at all. In a stripped environment:
+
+```sh
+env -i OMP_NUM_THREADS=1 HOME="$HOME" PATH=/usr/bin:/bin nice -n 10 \
+  /Library/Developer/CommandLineTools/usr/bin/python3 -B \
+  uc/gate_b/verify_gate_b_rational.py --bases n6,n7 --orders all --fresh \
+  --write-certificate /tmp/rational_replay.json
+```
+
+That reproduces `certificates/gate_b_unbounded_rational_v1.json` byte-identically
+in 250 s. Use `--fresh` for the byte comparison: the certificate honestly
+records whether each order was newly evaluated or replayed, so a resumed run
+differs from the canonical fresh run in exactly those bookkeeping fields
+(`new_evaluations`, `resumed_records`, `rechecked_records`) and in nothing
+mathematical. Dropping `--fresh` on the committed checkpoint is the resumability
+check: it must print `new_evaluations: 0` and recompute its sampled records
+without a mismatch, which takes about one second.
+
 ## Evidence labels
 
 - **PROVED:** product identities, admissibility of every power, and divergence.
@@ -212,10 +295,22 @@ automorphism quotient and proves \(A_+(\mathcal D)<-1/80\).
 - **INDEPENDENTLY CERTIFIED:** the standard-library dyadic relaxation proves
   \(A_+(\mathcal B)<-1/40\) without Arb or Bellman clamp classification. Its
   exact product consequence gives ratio \(>k/40\to\infty\).
+- **CERTIFIED SECOND BASE:** the generic 256-bit Arb recurrence independently
+  proves \(A_+(\mathcal D)<-17/1250\), giving ratio
+  \(>(17k/1250)/(1-(181/625)^k)\).
 - **INDEPENDENTLY CERTIFIED SECOND BASE:** all 720 orders of the distinct
   25-row \(n=6\) family give the standard-library dyadic relaxation
   \(A_+(\mathcal D)<-1/80\), and exact product arithmetic gives ratio
   \(>k/80\to\infty\).
+- **EXACTLY CERTIFIED, BOTH BASES:** exact rational two-sided enclosures over
+  all 720 and all 5040 coordinate orders against the true feasible action set,
+  with no interval library and no relaxation. They give
+  \(A_+(\mathcal D)<-17/1250\) and \(A_+(\mathcal B)<-7/250\), i.e. the sharp
+  form of both base lemmas from one standard-library artifact, and they contain
+  the Arb values.
+- **PROVED (growth rate):** \(c_{\rm cl}^\star(n)>n/250-7/250\) from the powers,
+  and \(-A_+\le\log_2m\le n\) from \(Q\ge0\), \(C_+\ge0\), so the ratio is
+  \(\Theta(n)\) on families with defect bounded below.
 - **COMPLETE EXACT / COMPLETE NUMERICAL:** the full nontrivial \(n=5\)
   cap/Reimer census,
   the declared \(n=6\) controls, and the declared \(n=8\)

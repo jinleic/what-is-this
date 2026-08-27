@@ -29,6 +29,7 @@ from compare_atlas_classifications import (
 )
 from artifact_io import atomic_write_json
 from compensation_structure_analysis import (
+    analyze as analyze_compensation_structure,
     blocker_eviction_crt,
     flexible_prefix_residue,
     flexible_prefix_residue_count,
@@ -43,6 +44,24 @@ from compensation_run_search import (
     segmented_compensation_obstructions,
 )
 from crt_repair_cover import analyze as analyze_crt_repair_cover
+from exact_eviction_certificate import (
+    bad_window_positions,
+    classify_eviction_candidate,
+    surviving_blocker_offsets,
+    translation_offset,
+    window_large_primes,
+)
+from parity_shift_certificate import (
+    classify_shift,
+    shift_window_difference,
+    small_prime_slacks,
+)
+from smooth_density_analysis import (
+    compensation_levels,
+    count_narrow_repair_integers,
+    count_short_cofactor_integers,
+    measure_compensation_block,
+)
 from bad_window_near_miss_analysis import analyze as analyze_bad_window_near_misses
 from erdos389 import (
     MAX_TRIAL_FACTORIZER_VALUE,
@@ -123,11 +142,21 @@ CRT_REPAIR_COVER = DATA.parent / "crt_repair_cover_m1_50_k50000_r64.json"
 COMPENSATION_STRUCTURE = (
     DATA.parent / "compensation_structure_m1_20_k5000_m27_h200000000.json"
 )
+ADAPTIVE_EVICTION = DATA.parent / "adaptive_eviction_m27_h200000000.json"
 COMPENSATION_RUN_FIRST_100M = (
     DATA.parent / "compensation_run_m27_k50001_h100000000.json"
 )
 COMPENSATION_RUN_NEXT_900M = (
     DATA.parent / "compensation_run_m27_k100050001_h900000000.json"
+)
+SHIFT_SCALE_RUN_SHARDS = tuple(
+    DATA.parent / f"compensation_run_m27_k{start}_h200000000.json"
+    for start in (
+        5_049_091_644_619,
+        5_049_291_644_619,
+        5_049_491_644_619,
+        5_049_691_644_619,
+    )
 )
 
 def known_witnesses() -> list[tuple[int, int]]:
@@ -260,6 +289,35 @@ class ControlLemmaTests(unittest.TestCase):
                         seen.add(p)
                         record = large_prime_bad_window_formula(m, k, p)
                         self.assertEqual(record["predicted_slack"], slack(m, k, p))
+
+    def test_every_negative_prime_power_level_lies_in_the_bad_window(self) -> None:
+        for m in range(1, 11):
+            first_position = m // 2 + 1
+            for k in range(1, 101):
+                x = m + 2 * k
+                for p in primes_up_to(x):
+                    power = p
+                    while power <= x:
+                        residue_n = (m + k) % power
+                        residue_m = m % power
+                        contribution = zone_contribution(m, k, power)
+                        self.assertEqual(
+                            contribution,
+                            (2 * residue_n - residue_m) // power,
+                        )
+                        if contribution == -1:
+                            position = m - residue_n
+                            self.assertGreaterEqual(position, first_position)
+                            self.assertLessEqual(position, m)
+                            self.assertEqual((k + position) % power, 0)
+                        power *= p
+                    if slack(m, k, p) < 0:
+                        self.assertTrue(
+                            any(
+                                (k + position) % p == 0
+                                for position in range(first_position, m + 1)
+                            )
+                        )
 
     def test_natural_shift_spike_formula_is_exact(self) -> None:
         factorizer = SPFFactorizer(500)
@@ -481,6 +539,46 @@ class ControlLemmaTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             short_cofactor_compensation_formula(35, 5)
 
+    def test_odd_prime_minimal_compensating_cofactor_is_sharp(self) -> None:
+        for p in (3, 5, 7, 11):
+            for exponent in (1, 2, 3):
+                power = p**exponent
+                minimum = (power + 1) // 2
+                boundary = term_compensation_formula(power * minimum, p)
+                self.assertEqual(boundary["exponent"], exponent)
+                self.assertEqual(
+                    boundary["positive_prefix_levels"],
+                    exponent,
+                )
+                self.assertEqual(boundary["predicted_slack"], 0)
+                for cofactor in range(1, minimum):
+                    if cofactor % p:
+                        self.assertLess(
+                            term_compensation_formula(power * cofactor, p)[
+                                "predicted_slack"
+                            ],
+                            0,
+                        )
+
+        for p in (5, 7):
+            for exponent in (1, 2, 3):
+                power = p**exponent
+                threshold_x = power * (power + 1)
+                boundary_k = (threshold_x - 2) // 2
+                below_k = (power * (power - 1) - 2) // 2
+                self.assertEqual(
+                    shift_first_bad_term_formula(
+                        2, boundary_k, p
+                    )["predicted_shifted_slack"],
+                    0,
+                )
+                self.assertLess(
+                    shift_first_bad_term_formula(
+                        2, below_k, p
+                    )["predicted_shifted_slack"],
+                    0,
+                )
+
     def test_zero_carry_crt_evicts_every_prescribed_blocker(self) -> None:
         controls = ((7, 3), (11, 4))
         record = blocker_eviction_crt(5, 18, controls)
@@ -515,6 +613,115 @@ class ControlLemmaTests(unittest.TestCase):
             exact_class_count,
             record["combined_eviction_class_count"],
         )
+
+    def test_even_window_eviction_uses_length_not_first_position(self) -> None:
+        controls = ((5, 3), (11, 4))
+        record = blocker_eviction_crt(4, 7, controls)
+        self.assertEqual(record["bad_window_first_position"], 3)
+        self.assertEqual(record["bad_window_length"], 2)
+        self.assertEqual(record["small_prime_zero_carry_modulus"], 72)
+        self.assertEqual(record["blocker_prime_product"], 55)
+        self.assertEqual(record["combined_modulus"], 3_960)
+        self.assertEqual(record["combined_eviction_class_count"], 27)
+
+        candidate = record["least_forward_candidate"]
+        for p, position in controls:
+            self.assertEqual((7 + position) % p, 0)
+            self.assertEqual(candidate % p, (7 + 2) % p)
+            self.assertTrue(
+                all((candidate + new_position) % p for new_position in (3, 4))
+            )
+        exact_class_count = sum(
+            residue % 72 == 0
+            and all(
+                (residue + position) % p
+                for p, _ in controls
+                for position in (3, 4)
+            )
+            for residue in range(record["combined_modulus"])
+        )
+        self.assertEqual(exact_class_count, 27)
+
+    def test_compensation_structure_rejects_mismatched_input_metadata(self) -> None:
+        def invoke(
+            *,
+            moving_path: Path = MOVING_BAD_WINDOW_100M,
+            near_path: Path = BAD_WINDOW_SURVIVORS,
+            extended_path: Path | None = None,
+        ) -> None:
+            analyze_compensation_structure(
+                max_m=1,
+                max_k=1,
+                shift_max_m=2,
+                shift_max_k=2,
+                eviction_max_m=1,
+                eviction_max_k=1,
+                eviction_candidate_max_x=100,
+                moving_path=moving_path,
+                near_miss_path=near_path,
+                extended_moving_path=extended_path,
+            )
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+
+            mismatched_near = json.loads(
+                BAD_WINDOW_SURVIVORS.read_text(encoding="utf-8")
+            )
+            mismatched_near["parameters"]["target_m"] = 26
+            mismatched_near_path = root / "mismatched_near.json"
+            mismatched_near_path.write_text(
+                json.dumps(mismatched_near),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "near-miss parameters"):
+                invoke(near_path=mismatched_near_path)
+
+            other_moving = json.loads(
+                MOVING_BAD_WINDOW_100M.read_text(encoding="utf-8")
+            )
+            other_near = json.loads(
+                BAD_WINDOW_SURVIVORS.read_text(encoding="utf-8")
+            )
+            other_moving["parameters"]["target_m"] = 26
+            other_near["parameters"]["target_m"] = 26
+            other_moving_path = root / "other_m_moving.json"
+            other_near_path = root / "other_m_near.json"
+            other_moving_path.write_text(
+                json.dumps(other_moving),
+                encoding="utf-8",
+            )
+            other_near_path.write_text(
+                json.dumps(other_near),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "survivor sections require m=27"):
+                invoke(
+                    moving_path=other_moving_path,
+                    near_path=other_near_path,
+                )
+
+            for source_path, argument, message in (
+                (MOVING_BAD_WINDOW_100M, "moving", "moving schema"),
+                (BAD_WINDOW_SURVIVORS, "near", "near-miss schema"),
+                (
+                    MOVING_BAD_WINDOW_100M_TO_200M,
+                    "extended",
+                    "extended moving schema",
+                ),
+            ):
+                payload = json.loads(source_path.read_text(encoding="utf-8"))
+                payload["schema_version"] = 2
+                invalid_path = root / f"{argument}_schema.json"
+                invalid_path.write_text(json.dumps(payload), encoding="utf-8")
+                with self.subTest(argument=argument):
+                    with self.assertRaisesRegex(ValueError, message):
+                        if argument == "moving":
+                            invoke(moving_path=invalid_path)
+                        elif argument == "near":
+                            invoke(near_path=invalid_path)
+                        else:
+                            invoke(extended_path=invalid_path)
 
     def test_local_formula_boundaries_and_multilevel_compensation(self) -> None:
         self.assertEqual(term_compensation_formula(5, 5)["predicted_slack"], -1)
@@ -1134,6 +1341,7 @@ class AtlasContractTests(unittest.TestCase):
             structure["status"],
             "PASS_EXACT_COMPENSATION_STRUCTURE_ANALYSIS",
         )
+        self.assertEqual(structure["schema_version"], 3)
         self.assertEqual(
             structure["input"]["moving_window"]["sha256"],
             hashlib.sha256(MOVING_BAD_WINDOW_100M.read_bytes()).hexdigest(),
@@ -1148,6 +1356,12 @@ class AtlasContractTests(unittest.TestCase):
                 MOVING_BAD_WINDOW_100M_TO_200M.read_bytes()
             ).hexdigest(),
         )
+        for input_name in (
+            "moving_window",
+            "near_miss",
+            "extended_moving_window",
+        ):
+            self.assertEqual(structure["input"][input_name]["schema_version"], 1)
         self.assertEqual(
             structure["parameters"]["contiguous_moving_offset_count"],
             200_000_000,
@@ -1160,6 +1374,11 @@ class AtlasContractTests(unittest.TestCase):
                 (PROJECT / "compensation_structure_analysis.py").read_bytes()
             ).hexdigest(),
         )
+        for dependency in ("erdos389.py", "residue_control_analysis.py"):
+            self.assertEqual(
+                structure["implementation_sha256"][dependency],
+                hashlib.sha256((PROJECT / dependency).read_bytes()).hexdigest(),
+            )
         self.assertEqual(
             structure["small_and_large_prime_separation"]["counts"],
             {
@@ -1168,12 +1387,41 @@ class AtlasContractTests(unittest.TestCase):
                 "large_prime_good_windows": 1_294,
                 "large_prime_obstructions": 442_704,
                 "pairs": 100_000,
+                "short_cofactor_checks": 405_780,
+                "short_cofactor_obstructions": 363_792,
+                "short_cofactor_prime_power_spikes": 7_173,
                 "witnesses": 1_104,
             },
         )
         self.assertEqual(
             structure["even_shift_first_bad_term_identity"]["counts"],
-            {"prime_checks": 19_654, "spikes": 15_336},
+            {
+                "prime_checks": 19_654,
+                "short_cofactor_checks": 14_510,
+                "short_cofactor_prime_power_spikes": 314,
+                "short_cofactor_spikes": 12_969,
+                "spikes": 15_336,
+            },
+        )
+        self.assertEqual(
+            structure["zero_carry_blocker_eviction"]["counts"],
+            {
+                "canonical_candidate_witnesses": 103,
+                "canonical_candidates_beyond_exact_check_bound": 1_109,
+                "canonical_candidates_exactly_checked": 2_737,
+                "canonical_candidates_with_new_prime_interference": 2_634,
+                "new_large_obstruction_prime_checks": 5_570,
+                "new_short_cofactor_obstructions": 4_061,
+                "new_short_cofactor_prime_power_spikes": 190,
+                "old_blocker_prime_checks": 7_782,
+                "source_systems": 3_846,
+            },
+        )
+        self.assertEqual(
+            structure["zero_carry_blocker_eviction"][
+                "maximum_canonical_candidate_decimal_digits"
+            ],
+            15,
         )
         retained = structure["m27_survivor_retained_prime_bounds"]
         self.assertEqual(
@@ -1189,6 +1437,19 @@ class AtlasContractTests(unittest.TestCase):
             ],
             [69, 30, 35],
         )
+        self.assertEqual(
+            [
+                row["zero_carry_eviction_candidate_decimal_digits"]
+                for row in retained["rows"]
+            ],
+            [87, 49, 53],
+        )
+        self.assertTrue(
+            all(
+                row["zero_carry_eviction_candidate_exceeds_factorizer_bound"]
+                for row in retained["rows"]
+            )
+        )
         extended_retained = structure[
             "m27_extended_survivor_retained_prime_bounds"
         ]
@@ -1202,6 +1463,7 @@ class AtlasContractTests(unittest.TestCase):
                 "survivors": 9,
                 "survivors_with_large_prime_obstructions": 9,
                 "survivors_with_small_prime_obstructions": 2,
+                "zero_carry_eviction_crt_systems": 9,
             },
         )
         self.assertEqual(
@@ -1210,6 +1472,93 @@ class AtlasContractTests(unittest.TestCase):
                 for row in extended_retained["rows"]
             ],
             [36, 74, 79, 45, 79, 78, 42, 48, 48],
+        )
+        self.assertEqual(
+            [
+                row["zero_carry_eviction_candidate_decimal_digits"]
+                for row in extended_retained["rows"]
+            ],
+            [55, 94, 98, 64, 98, 97, 61, 67, 67],
+        )
+        self.assertTrue(
+            all(
+                row["zero_carry_eviction_candidate_exceeds_factorizer_bound"]
+                for row in extended_retained["rows"]
+            )
+        )
+        adaptive = json.loads(ADAPTIVE_EVICTION.read_text(encoding="utf-8"))
+        self.assertEqual(
+            adaptive["status"],
+            "EXACT_BOUNDED_ADAPTIVE_EVICTION_SEARCH",
+        )
+        self.assertEqual(adaptive["schema_version"], 1)
+        self.assertEqual(
+            adaptive["input"]["structure_sha256"],
+            hashlib.sha256(COMPENSATION_STRUCTURE.read_bytes()).hexdigest(),
+        )
+        self.assertEqual(
+            adaptive["implementation_sha256"]["adaptive_eviction_analysis.py"],
+            hashlib.sha256(
+                (PROJECT / "adaptive_eviction_analysis.py").read_bytes()
+            ).hexdigest(),
+        )
+        for dependency in ("erdos389.py", "residue_control_analysis.py"):
+            self.assertEqual(
+                adaptive["implementation_sha256"][dependency],
+                hashlib.sha256((PROJECT / dependency).read_bytes()).hexdigest(),
+            )
+        self.assertEqual(
+            adaptive["counts"],
+            {
+                "candidates_rejected_by_trial_prime": 1,
+                "candidates_unclassified_after_trial_scan": 11,
+                "old_blocker_prime_checks": 140,
+                "old_blocker_window_divisibility_checks": 1_960,
+                "safe_candidates_beyond_factorizer_bound": 12,
+                "small_prime_slack_checks": 108,
+                "source_systems": 12,
+                "systems_with_safe_t_in_bound": 12,
+                "tested_t_values_through_first_safe": 2_369,
+                "trial_prime_divisibility_checks": 12_649_506,
+                "trial_prime_divisor_hits": 224,
+            },
+        )
+        self.assertEqual(
+            adaptive["uniform_small_prime_system"]["safe_t_count_per_full_period"],
+            adaptive["uniform_small_prime_system"]["safe_class_count"],
+        )
+        self.assertEqual(
+            [record["first_safe_t"] for record in adaptive["records"]],
+            [706, 63, 10, 70, 119, 423, 153, 22, 24, 409, 268, 90],
+        )
+        self.assertEqual(
+            [
+                record["candidate_decimal_digits"]
+                for record in adaptive["records"]
+            ],
+            [72, 32, 36, 37, 77, 81, 47, 80, 80, 45, 51, 50],
+        )
+        trial_obstructions = [
+            record["trial_prime_obstruction"]
+            for record in adaptive["records"]
+            if record["trial_prime_obstruction"] is not None
+        ]
+        self.assertEqual(len(trial_obstructions), 1)
+        self.assertEqual(
+            {
+                field: trial_obstructions[0][field]
+                for field in ("prime", "position", "predicted_slack")
+            },
+            {"prime": 137_341, "position": 21, "predicted_slack": -1},
+        )
+        self.assertTrue(
+            all(
+                record["candidate_exceeds_factorizer_bound"]
+                and all(
+                    row["slack"] >= 0 for row in record["small_prime_slacks"]
+                )
+                for record in adaptive["records"]
+            )
         )
         compensation_runs = [
             json.loads(COMPENSATION_RUN_FIRST_100M.read_text(encoding="utf-8")),
@@ -1234,6 +1583,21 @@ class AtlasContractTests(unittest.TestCase):
                     (PROJECT / "compensation_run_search.py").read_bytes()
                 ).hexdigest(),
             )
+            self.assertEqual(
+                run["implementation_sha256"][
+                    "compensation_structure_analysis.py"
+                ],
+                hashlib.sha256(
+                    (PROJECT / "compensation_structure_analysis.py").read_bytes()
+                ).hexdigest(),
+            )
+            for dependency in ("erdos389.py", "residue_control_analysis.py"):
+                self.assertEqual(
+                    run["implementation_sha256"][dependency],
+                    hashlib.sha256(
+                        (PROJECT / dependency).read_bytes()
+                    ).hexdigest(),
+                )
             self.assertEqual(run["parameters"]["offset_count"], offsets)
             self.assertEqual(
                 run["counts"]["large_prime_rejected_offsets"],
@@ -1411,6 +1775,267 @@ class AtlasContractTests(unittest.TestCase):
             + offset["uncovered_by_every_tested_offset"],
             offset["eligible_natural_shift_failures"],
         )
+
+
+class HalfWindowEvictionTests(unittest.TestCase):
+    def test_half_window_translation_evicts_every_attached_large_prime(self) -> None:
+        max_m, max_k = 14, 400
+        factorizer = SPFFactorizer(max_m + max_k + translation_offset(max_m))
+        checked = 0
+        for m in range(1, max_m + 1):
+            offset = translation_offset(m)
+            self.assertEqual(offset, -(-m // 2))
+            self.assertEqual(len(bad_window_positions(m)), offset)
+            for k in range(1, max_k + 1):
+                attached = window_large_primes(m, k, factorizer)
+                for p, source_position in attached.items():
+                    self.assertEqual((k + source_position) % p, 0)
+                    for position in bad_window_positions(m):
+                        self.assertNotEqual((k + offset + position) % p, 0)
+                        checked += 1
+        self.assertGreater(checked, 50_000)
+
+    def test_every_smaller_offset_keeps_an_explicit_blocker(self) -> None:
+        for m in range(1, 60):
+            offset = translation_offset(m)
+            first_position = m // 2 + 1
+            p = next(q for q in primes_up_to(2 * m + 2) if q > m)
+            for delta in range(1, offset):
+                source_position = first_position + delta
+                self.assertIn(source_position, bad_window_positions(m))
+                k = p - source_position
+                self.assertGreaterEqual(k, 1)
+                self.assertEqual((k + source_position) % p, 0)
+                survivor = source_position - delta
+                self.assertEqual(survivor, first_position)
+                self.assertEqual((k + delta + survivor) % p, 0)
+                self.assertIn(delta, surviving_blocker_offsets(m, source_position))
+
+    def test_translated_survivor_candidates_stay_small_and_are_classified(
+        self,
+    ) -> None:
+        structure = json.loads(COMPENSATION_STRUCTURE.read_text(encoding="utf-8"))
+        row = structure["m27_survivor_retained_prime_bounds"]["rows"][1]
+        k = row["k"]
+        candidate = k + translation_offset(27)
+        self.assertLessEqual(27 + 2 * candidate, MAX_TRIAL_FACTORIZER_VALUE)
+        factorizer = TrialFactorizer(27 + 2 * candidate)
+        classification = classify_eviction_candidate(
+            27, k, factorizer, tuple(primes_up_to(27))
+        )
+        self.assertEqual(classification["candidate"], candidate)
+        self.assertEqual(classification["candidate_decimal_digits"], 13)
+        self.assertTrue(classification["small_prime_tier_ok"])
+        self.assertEqual(classification["category"], "new_large_prime_only")
+        self.assertTrue(classification["new_large_prime_obstructions"])
+        for record in row["obstructions"]:
+            for position in bad_window_positions(27):
+                self.assertNotEqual(
+                    (candidate + position) % record["prime"], 0
+                )
+
+
+class PowersmoothDensityTests(unittest.TestCase):
+    def test_compensated_prime_powers_obey_the_minimal_term_bound(self) -> None:
+        factorizer = SPFFactorizer(4_000)
+        for m in range(1, 13):
+            for k in range(1, 300):
+                for position in range(m // 2 + 1, m + 1):
+                    term = k + position
+                    for p, exponent in factorizer.factor(term).items():
+                        if p <= m:
+                            continue
+                        power = p**exponent
+                        good = (
+                            compensation_levels(term, p, exponent) >= exponent
+                        )
+                        if good:
+                            self.assertLessEqual(power * (power + 1), 2 * term)
+                        if power * power > 2 * term:
+                            self.assertFalse(good)
+
+    def test_dominant_prime_repairs_only_inside_the_narrow_window(self) -> None:
+        factorizer = SPFFactorizer(6_000)
+        checked = 0
+        for term in range(2, 6_001):
+            for p, exponent in factorizer.factor(term).items():
+                cofactor = term // p**exponent
+                if cofactor >= p:
+                    continue
+                good = compensation_levels(term, p, exponent) >= exponent
+                self.assertEqual(
+                    good, exponent == 1 and term < p * p < 2 * term, (term, p)
+                )
+                checked += 1
+        self.assertGreater(checked, 1_000)
+
+    def test_narrow_repair_counts_agree_and_decay(self) -> None:
+        small = count_narrow_repair_integers(10_000, 10_000)
+        self.assertEqual(small["direct_recount"], small["narrow_repair_integers"])
+        larger = count_narrow_repair_integers(100_000, 0)
+        self.assertIsNone(larger["direct_recount"])
+        self.assertLess(larger["density"], small["density"])
+
+    def test_minimal_compensated_term_is_attained_and_sharp(self) -> None:
+        for p in (3, 5, 7, 11):
+            for exponent in (1, 2):
+                power = p**exponent
+                term = power * (power + 1) // 2
+                self.assertEqual(
+                    compensation_levels(term, p, exponent), exponent
+                )
+                self.assertEqual(term_compensation_formula(term, p)["exponent"],
+                                 exponent)
+                smaller = term - power
+                if smaller > 0 and smaller % power == 0:
+                    self.assertLess(
+                        compensation_levels(smaller, p, exponent), exponent
+                    )
+
+    def test_short_cofactor_count_agrees_with_largest_prime_factor(self) -> None:
+        limit = 20_000
+        record = count_short_cofactor_integers(limit)
+        self.assertEqual(record["limit"], limit)
+        factorizer = SPFFactorizer(limit)
+        expected = sum(
+            1
+            for n in range(2, limit + 1)
+            if any(p * p > 2 * n for p in factorizer.factor(n))
+        )
+        self.assertEqual(record["short_cofactor_integers"], expected)
+        self.assertAlmostEqual(record["density"], expected / limit)
+        self.assertLess(record["density"], 0.6931471805599453)
+
+    def test_published_witness_window_is_a_thirteen_term_good_run(self) -> None:
+        published = dict(known_witnesses())
+        source_k = published[25]
+        start = source_k + 25 // 2 + 1
+        block = measure_compensation_block(
+            target_m=27, start=start, count=13, label="unit_control"
+        )
+        self.assertEqual(block["compensation_good_terms"], 13)
+        self.assertEqual(block["longest_run"], 13)
+        shift_target_term = published[26] + 26 // 2
+        factorizer = TrialFactorizer(shift_target_term)
+        self.assertEqual(factorizer.factor(shift_target_term), {shift_target_term: 1})
+        self.assertEqual(
+            term_compensation_formula(shift_target_term, shift_target_term)[
+                "predicted_slack"
+            ],
+            -1,
+        )
+
+
+class ParityShiftReductionTests(unittest.TestCase):
+    def test_window_identity_matches_source_parity(self) -> None:
+        for m in range(1, 30):
+            for k in (2, 3, 17, 500):
+                adjoined = shift_window_difference(m, k)
+                if m % 2:
+                    self.assertEqual(adjoined, ())
+                else:
+                    self.assertEqual(adjoined, (k + m // 2,))
+                    self.assertEqual(2 * adjoined[0], m + 2 * k)
+
+    def test_odd_source_shifts_never_fail_at_a_large_prime(self) -> None:
+        factorizer = SPFFactorizer(2_200)
+        checked = 0
+        for m in range(1, 12, 2):
+            for k in range(2, 1_500):
+                if large_prime_window_obstructions(m, k, factorizer):
+                    continue
+                if any(row["slack"] < 0 for row in small_prime_slacks(m, k)):
+                    continue
+                row = classify_shift(m, k, factorizer)
+                self.assertTrue(row["large_prime_tier_ok"])
+                self.assertEqual(row["adjoined_terms"], [])
+                self.assertEqual(
+                    row["shift_is_witness"], row["small_prime_tier_ok"]
+                )
+                checked += 1
+        self.assertGreater(checked, 100)
+
+    def test_published_even_shifts_fail_at_the_adjoined_term(self) -> None:
+        published = dict(known_witnesses())
+        m, k = 26, published[26]
+        adjoined = shift_window_difference(m, k)
+        self.assertEqual(adjoined, (5_048_891_644_633,))
+        factorizer = TrialFactorizer(27 + 2 * (k + m))
+        row = classify_shift(m, k, factorizer)
+        self.assertFalse(row["shift_is_witness"])
+        self.assertTrue(row["small_prime_tier_ok"])
+        self.assertEqual(
+            [record["prime"] for record in row["adjoined_obstructions"]],
+            [5_048_891_644_633],
+        )
+        self.assertEqual(
+            row["adjoined_obstructions"][0]["predicted_slack"], -1
+        )
+
+
+class ShiftScaleRunShardTests(unittest.TestCase):
+    def test_shift_scale_shards_cover_one_contiguous_billion(self) -> None:
+        moving = [
+            json.loads(MOVING_BAD_WINDOW_100M.read_text(encoding="utf-8")),
+            json.loads(
+                MOVING_BAD_WINDOW_100M_TO_200M.read_text(encoding="utf-8")
+            ),
+        ]
+        intervals = [
+            (
+                payload["parameters"]["start_k"],
+                payload["parameters"]["start_k"]
+                + payload["parameters"]["offset_count"],
+            )
+            for payload in moving
+        ]
+        expected_counts = (
+            (24_829_873, 175_170_140, 8),
+            (24_661_439, 175_338_574, 9),
+            (25_053_346, 174_946_667, 9),
+            (24_604_542, 175_395_471, 8),
+        )
+        for path, (good, bad, longest) in zip(
+            SHIFT_SCALE_RUN_SHARDS, expected_counts, strict=True
+        ):
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(
+                payload["status"], "EXACT_BOUNDED_COMPENSATION_RUN_SEARCH"
+            )
+            self.assertEqual(payload["parameters"]["target_m"], 27)
+            offsets = payload["parameters"]["offset_count"]
+            self.assertEqual(offsets, 200_000_000)
+            self.assertEqual(
+                payload["counts"]["large_prime_rejected_offsets"], offsets
+            )
+            self.assertEqual(
+                payload["counts"].get("large_prime_good_offsets", 0), 0
+            )
+            self.assertEqual(payload["counts"]["compensation_good_terms"], good)
+            self.assertEqual(payload["counts"]["compensation_bad_terms"], bad)
+            self.assertEqual(
+                payload["counts"][
+                    "maximum_consecutive_compensation_good_terms"
+                ],
+                longest,
+            )
+            self.assertLess(longest, 14)
+            self.assertEqual(payload["survivors"]["witness_records"], [])
+            self.assertEqual(
+                payload["implementation_sha256"]["compensation_run_search.py"],
+                hashlib.sha256(
+                    (PROJECT / "compensation_run_search.py").read_bytes()
+                ).hexdigest(),
+            )
+            start = payload["parameters"]["start_k"]
+            intervals.append((start, start + offsets))
+
+        intervals.sort()
+        for (_, end), (next_start, _) in zip(intervals, intervals[1:]):
+            self.assertEqual(end, next_start)
+        self.assertEqual(intervals[0][0], 5_048_891_644_619)
+        self.assertEqual(intervals[-1][1], 5_049_891_644_619)
+        self.assertEqual(intervals[-1][1] - intervals[0][0], 1_000_000_000)
 
 
 if __name__ == "__main__":

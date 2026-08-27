@@ -111,6 +111,21 @@ columns, duplicate columns, singletons, full power sets, and seeded random
 pairs, over every global order of each product: no counterexample, worst gap
 \(1.8\times10^{-15}\), and zero failures of the exact defect product.
 
+That evidence was float64, so it could not separate exact additivity from
+additivity up to machine epsilon. The exact rational evaluator closes that gap:
+[`audit_tensorization_exact.py`](audit_tensorization_exact.py) repeats the
+attack with certified rational enclosures on 35 ordered products — 20 with
+unequal block dimensions, including singletons, full power sets, dead columns,
+duplicate columns, deterministic coordinates, union-closed against non
+union-closed factors, and seeded random pairs — over **every** global order of
+every product, 15,010 orders in total. For each order it demands that the
+enclosure of \(C_{+,\pi}(\mathcal H)\) intersect the enclosure of
+\(C_{+,\pi_F}(\mathcal F)+C_{+,\pi_G}(\mathcal G)\); non-intersection would be
+a counterexample rather than rounding. The result is zero intersection
+failures, zero failures of the exact defect identity, worst \(Q\) discrepancy
+\(1.4\times10^{-27}\) — the certificate width — and a worst fixed-order Bellman
+discrepancy of **exactly zero**.
+
 The computational lemma supplies a strictly negative base and direct product
 controls. The passage to every \(k\) is the mathematical product argument
 below.
@@ -216,8 +231,15 @@ A_+(\mathcal D)
 
 This route shares the already-audited dyadic transcendental primitive with the
 preceding certificate, but it shares neither the finite family nor an order
-symmetry reduction.  Its 720-order value is also independently consistent with
-the older 256-bit Arb computation of the six-coordinate falsifier.
+symmetry reduction.  A second checker,
+[`verify_gate_b_n6_arb.py`](verify_gate_b_n6_arb.py), passes the same family
+through the generic 256-bit Arb Bellman evaluator and its exact 72-element
+automorphism group.  It independently certifies the stronger bound
+\[
+A_+(\mathcal D)<-\frac{17}{1250}.
+\]
+Thus the second construction has both an all-order clamp-free certificate and
+an arithmetically disjoint clamp-classified certificate.
 
 For \(\mathcal G_k=\mathcal D^{\boxtimes k}\), the product lemmas below give
 
@@ -238,6 +260,91 @@ Consequently this second construction alone proves
 \frac{k/80}{1-(181/625)^k}
 >\frac{k}{80}\longrightarrow+\infty.
 \]
+
+### Exact rational certificate with no relaxation and no interval library
+
+Both preceding routes bound \(A_+\) from above, but each asks for extra trust:
+the Arb route uses a third-party arithmetic library and a three-way clamp
+classification, and the dyadic route enlarges every feasible action interval to
+\([0,1]\), so it certifies a relaxation rather than \(C_+\) itself.
+
+[`verify_gate_b_rational.py`](verify_gate_b_rational.py) removes both
+concessions. It evaluates the recurrence of
+[DEFINITIONS.md](DEFINITIONS.md) over the **exact** feasible interval
+\([s^*(p,r),U(p,r)]\) in ordinary rational arithmetic, and it produces a
+*two-sided* enclosure. It needs exactly three certified scalar primitives.
+
+**Primitive 1 (binary logarithm).** For \(y>0\) and any bit \(b\in\{0,1\}\),
+
+\[
+\log_2y=\frac{b+\log_2\!\left(y^2/2^{b}\right)}{2}.
+\]
+
+Iterating \(N\) times and using monotonicity of \(\log_2\), replacing each
+intermediate state by a rational upper (lower) bound keeps the accumulated
+value an upper (lower) bound. Choosing \(b=1\) exactly when the rounded square
+is at least two keeps every state in \((0,2]\) upward and in \([1,2]\)
+downward, so the discarded tail \(2^{-N}\log_2y_N\) lies in
+\([0,2^{-N}]\). Adding \(2^{-N}\) upward and nothing downward therefore gives
+certified rational bounds. All arithmetic is integer.
+
+**Primitive 2 (binary exponential).** With \(r_0=2\) and
+\(r_{j+1}=\lceil\sqrt{r_j}\rceil\) rounded up to a fixed dyadic denominator,
+induction gives \(r_j\ge2^{2^{-j}}\). Rounding a rational exponent up to \(N\)
+binary places and multiplying the \(r_j\) over its set bits therefore
+upper-bounds \(2^x\). Only `math.isqrt` is used.
+
+**Primitive 3 (entropy and its constrained maximum).** Since both weights in
+\(h(s)=-s\log_2s-(1-s)\log_2(1-s)\) are negative, a lower bound on each
+logarithm gives an upper bound on \(h\), and conversely. For the Bellman step,
+\(h(s)+cs\) is concave with derivative \(\log_2((1-s)/s)+c\), so on
+\([\ell,u]\subseteq[0,1]\):
+
+* if \(c\le\log_2(\ell/(1-\ell))\) the maximum is exactly at \(\ell\);
+* if \(c\ge\log_2(u/(1-u))\) it is exactly at \(u\);
+* otherwise it is at most the unconstrained Fenchel value
+  \(\max_{s\in[0,1]}[h(s)+cs]=\log_2(1+2^{c})\).
+
+Each branch is a valid upper bound, and the endpoint branches are exact. The
+two sign tests are decided with certified bounds of the same logarithm, and the
+third branch is always available, so the case split never needs an exact
+transcendental comparison.
+
+**Monotone induction.** On the feasible interval every transition probability
+\(P_{ac}(s)\) is nonnegative and \(\sum_{ac}P_{ac}(s)=1\), so a Bellman step is
+monotone in its children. Replacing children by upper bounds, and then the
+affine data \((\text{const},c)\) by upper bounds — legitimate because
+\(s\ge0\) — keeps the result an upper bound of the true optimum. For the lower
+bound the same recursion evaluates one explicitly *feasible* rational action
+near \(1/(1+2^{-c})\) against pessimistic children; that is the value of an
+admissible one-sided coupling, hence at most \(C_{+,\pi}\).
+
+**Result.** Evaluating all \(6!=720\) orders of \(\mathcal D\) and all
+\(7!=5040\) orders of \(\mathcal B\) — no automorphism quotient in either case —
+gives the certified rational enclosures
+
+\[
+\begin{aligned}
+A_+(\mathcal D)&\in
+[-0.0136721077321777735618599156610,\,
+  -0.0136721077321777735618599129978],\\
+A_+(\mathcal B)&\in
+[-0.0286491867944683178160269819327,\,
+  -0.0286491867944683178160269764548].
+\end{aligned}
+\]
+
+Both enclosures have width below \(6\times10^{-27}\) and both lie strictly
+below \(-17/1250\) and \(-7/250\) respectively, so this single artifact
+re-derives the sharp form of *both* base lemmas. The Arb values quoted earlier
+lie strictly inside these enclosures, which also confirms that retaining the
+unconstrained maximum at the 982 and 305 clamp-ambiguous states cost less than
+\(10^{-26}\).
+
+The upper endpoints are what the theorem consumes. The lower endpoints are not
+needed for unboundedness; they matter because a sign error, an inverted clamp
+comparison, or a mis-stated feasible interval would break the sandwich instead
+of silently shifting one bound.
 
 
 ## Product lemmas
@@ -401,17 +508,74 @@ Every constructed defect lies strictly between zero and one, so the proof
 never divides by zero. The result is an all-\(k\) consequence of the product
 lemmas; no finite-\(n\) optimality or extrapolation is used.
 
-The only numerical input is the sign of \(A_+(\mathcal B)\), and it is
-established twice by arithmetically disjoint routes: the 256-bit Arb
-certificate with its clamp classification, and the standard-library dyadic
-clamp-free relaxation. The algebra those routes share — unit transition mass,
+The only numerical input is the sign of \(A_+(\mathcal B)\), and it is now
+established three times by arithmetically disjoint routes: the 256-bit Arb
+certificate with its clamp classification, the standard-library dyadic
+clamp-free relaxation, and the exact rational two-sided enclosure over the true
+feasible action set. The algebra those routes share — unit transition mass,
 shift invariance of the Bellman slope, and the closed form
 \(\max_s[sD+h(s)]=\log_2(1+2^D)\) with strictly negative second derivative —
 is machine-checked symbolically in `test_gate_b.py`.
 
-Both certificates are ordinary verified computation, not proof-assistant
+All three certificates are ordinary verified computation, not proof-assistant
 artifacts. The product lemmas are human-audited mathematics supported by the
 falsification searches above.
+
+## Corollary: the divergence is exactly linear in the dimension
+
+Unboundedness alone does not say how fast the obstruction grows. Define
+
+\[
+c_{\rm cl}^\star(n)=
+\sup\Big\{\tfrac{-A_+(\mathcal F)}{\varepsilon_\vee(\mathcal F)}:
+\mathcal F\subseteq2^{[n']},\ n'\le n,\ \mathcal F\text{ cap/Reimer},\
+A_+(\mathcal F)<0\Big\}.
+\]
+
+**Lower bound.** For a certified base of dimension \(d\) with
+\(A_+\le-\delta<0\), the powers \(\mathcal F_k\) for \(k=\lfloor n/d\rfloor\)
+live in \(2^{[dk]}\subseteq2^{[n]}\) and give
+
+\[
+c_{\rm cl}^\star(n)\ \ge\ \frac{\delta\lfloor n/d\rfloor}
+{1-(1-\varepsilon_\vee)^{\lfloor n/d\rfloor}}
+\ >\ \delta\left\lfloor\frac nd\right\rfloor .
+\]
+
+With \(\mathcal B\) this is \(c_{\rm cl}^\star(n)>\frac7{250}\lfloor n/7\rfloor\),
+i.e. slope \(1/250\) per coordinate; with \(\mathcal D\) it is
+\(\frac{17}{1250}\lfloor n/6\rfloor\), slope \(17/7500\). Both are exact
+rational consequences of the enclosures above.
+
+**Matching upper bound under a defect floor.** Every local term of \(Q\) is a
+binary entropy, so \(Q\ge0\); \(C_+\) is a maximum over policies of a sum of
+binary entropies, so \(C_+\ge0\). With \(0<\alpha<1\) this gives
+
+\[
+A_+(\mathcal F)=(1-\alpha)Q+\alpha C_+-\log_2m\ \ge\ -\log_2m\ \ge\ -n ,
+\]
+
+because \(m=|\mathcal F|\le2^{n}\). Hence for any admissible family on at most
+\(n\) coordinates whose defect satisfies \(\varepsilon_\vee\ge\varepsilon_0>0\),
+
+\[
+\frac{-A_+(\mathcal F)}{\varepsilon_\vee(\mathcal F)}
+\ \le\ \frac{\log_2m}{\varepsilon_0}\ \le\ \frac n{\varepsilon_0}.
+\]
+
+So on the subclass with defect bounded away from zero the Gate B ratio grows
+**exactly of order \(n\)**: the two certified families realize slopes
+\(1/250\) and \(17/7500\), and no family can exceed \(1/\varepsilon_0\) per
+coordinate. In particular the divergence proved above is not an artifact of a
+wild sequence; it is the true growth rate up to a constant factor, and the only
+way to escape it is to force \(\varepsilon_\vee\to0\), which is precisely the
+separate local-stability question left open below.
+
+A remark on the unrestricted supremum at fixed \(n\): dropping the defect floor
+leaves only \(\varepsilon_\vee\ge1/m^2\) for a non-union-closed family, so the
+trivial bound degrades to \(n\,m^2\le n4^{n}\). The theorem does not claim that
+this is attained; the linear statement above is the sharp one available with
+these definitions.
 
 ## Scope and stronger interpretation
 

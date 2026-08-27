@@ -222,7 +222,7 @@ self-consistency record, not an authenticated execution attestation.
 |---|---|---|
 | External pin manifest, regular-file/inventory checks, raw hashes, canonical JSON hashes, exact rational roots, before/after comparison | **MACHINE-VERIFIED** | Standard-library implementation independent of campaign code |
 | One-byte opcode inventory, split-coordinate labels, DFS pending-node topology, termination, and trace-derived tallies | **MACHINE-VERIFIED** | `structural_trace_audit.py` imports no campaign or numerical module |
-| A terminal opcode actually clears its reconstructed box | **MACHINE-VERIFIED** by both complete fresh direct and hardened staged replays | Uses the same frozen arithmetic modules as the producer |
+| A terminal opcode actually clears its reconstructed box | **MACHINE-VERIFIED** by the two same-source replays and the complete secure byte-zero replay | Secure replay uses an independent Python formula/control implementation and interval AD; it shares the trace and Arb primitives |
 | Frozen `cert3_collect.py` provenance checks | **COMPUTATIONAL-EVIDENCE** in archived output only | Its arithmetic phase calls the same frozen `cert3_replay.replay_trace`; it is not a second arithmetic implementation |
 | Structural trace audit | **MACHINE-VERIFIED** | Structural only; it cannot validate interval contraction, corner, ratio, centered, pin, or face predicates |
 | Cambie point-mass strictness value | **MACHINE-VERIFIED** | Self-contained formula, independent of Campaign I source modules; still depends on python-flint/Arb |
@@ -300,14 +300,72 @@ Run one slice from trace byte zero:
   --checkpoint verification/results/independent-arithmetic/secure-full/checkpoint-0.json
 ```
 
-**RUNNING, not accepted:** eight byte-zero workers were launched between
-2026-08-26 09:34:53 and 09:36:23 local time.  Together with the earlier direct
-implementation they sampled at 38.4% machine-wide CPU, below the requested
-50% ceiling.  The immutable launch record is
+**MACHINE-VERIFIED — independently reproduced subject to the trust boundary
+below.**  All eight secure workers started at trace byte zero, used no resume
+or event limit, reached authenticated EOF with an empty DFS stack, reproduced
+every locked terminal tally, revalidated their 343-file runtime seal, and
+exited `0`.  The aggregate proves:
+
+- processed events: `488465854`;
+- splits: `244232923`;
+- terminal leaves: `244232931`;
+- residuals: `0`;
+- every opcode 0--8 occurs in the accepted reports; opcode 9 occurs zero times.
+
+| Slice | Processed | Elapsed seconds | Canonical report SHA-256 |
+|---:|---:|---:|---|
+| 0 | 21,135,611 | 6,272.135 | `4d9e46f66124bfb580db36bdc4d391c0a7e82b4a5e11db311bc838dbc0b0b4d6` |
+| 1 | 20,827,065 | 6,309.982 | `23b38b2a581bf460cee02e0e2a17ee3c978434e700fd3047e1d42febc6928a97` |
+| 2 | 23,486,265 | 6,708.251 | `c2b4385a4480d4f8ed76276921448e3faab94d00942ce2f0c604e987f25709a2` |
+| 3 | 34,186,855 | 9,677.585 | `87bccbaf357352e841ae8d2cbabe95d6a5ec116bf142b84e97fd023ba5aa6001` |
+| 4 | 71,405,987 | 21,249.065 | `9c49621cdb522de19821bab4dfc0aef9f97e3baa4289845220529ef5be8a559c` |
+| 5 | 117,709,435 | 38,905.739 | `97c7f81459d70efc5ec0d11eab3a2c9f86881c923f5b1649894f58e05191b708` |
+| 6 | 121,456,775 | 35,566.039 | `09e5bedcf8b23a4eb88c01a2410737c0c32233fafce59c3a62ae94bfe30bd294` |
+| 7 | 78,257,861 | 17,728.386 | `7f3a117298c88d477533b0c458b13b183891ad01bf7d01110a5d49a5bc81b91c` |
+| **Sum** | **488,465,854** | **142,417.181** | |
+
+The immutable launch record is
 [`launch-manifest.json`](verification/results/independent-arithmetic/secure-full/launch-manifest.json).
-No secure slice or composite is `MACHINE-VERIFIED` until all eight reach EOF
-with exact locked tallies and the externally pinned report lock passes the
-aggregator.
+The live eight-process/image attestation has raw SHA-256
+`19c8cb83abd9fba16c2bcae63302e02bcd4602db842a8b3675085902801e126c`
+and canonical SHA-256
+`f54adf0e02a0ebb306107c63a974a813815d29485d6507cf33bd2d785a6bc707`.
+Complete checkpoint/exit logs are in
+[`secure-full/logs/`](verification/results/independent-arithmetic/secure-full/logs/);
+their `sha256sum -c` manifest has raw SHA-256
+`94d9fd6c029e57b87c4425200d8974ef0b962ee0956bbf79ad491fcc820ea880`.
+
+The externally trusted report lock has raw SHA-256
+`af86480901c2c497739916bb410f1e117e4eaf3eefb82575ce494b7d8c04e730`
+and canonical SHA-256
+`7fe63ab9d3c420fd60b648e40aa342bf201b53a03c3b1b46f9f89067534a5c84`.
+It fixes all eight raw reports, the launch manifest, and the live runtime
+attestation.  The accepted
+[`composite.json`](verification/results/independent-arithmetic/secure-full/composite.json)
+has raw SHA-256
+`92edd4cdf607f65d7a7479bd41b025385b54847a80047d716d8b97f61e5c557a`
+and canonical SHA-256
+`4acbd3b935bda7e51ed387e42e0598debf22f4a85b7a24ad976c3eaca4f23243`.
+
+To repeat the acceptance step after independently fixing the report-lock raw
+digest:
+
+```sh
+../.venv/bin/python -I -B verification/aggregate_independent_reports.py \
+  --reports verification/results/independent-arithmetic/secure-full \
+  --lock verification/campaign-lock.json \
+  --report-lock verification/results/independent-arithmetic/secure-full/report-lock.json \
+  --report-lock-sha256 af86480901c2c497739916bb410f1e117e4eaf3eefb82575ce494b7d8c04e730 \
+  --output /path/to/new-composite.json
+```
+
+The accepted trust boundary is explicit: Arb/python-flint mathematical
+correctness; custody of the out-of-band report-lock digest; the authenticated
+outer trace partition; and a nonmalicious OS, kernel, interpreter, `ps`,
+`lsof`, file system, and SHA-256 implementation.  A hostile same-inode
+rewrite race or malicious system stack is not excluded.  Thus this closes the
+previous same-Python common-mode arithmetic gap, but it is not hardware-backed
+execution attestation and does not machine-check the human analytic chain.
 
 ## Runtime provenance, not a promised runtime
 
@@ -390,3 +448,66 @@ The hardened repository-local rerun has canonical object SHA-256 `68f3157157d301
 **HUMAN-AUDITED:** the sequential entropy-to-union-closed proof is in
 `uc/AUDIT.md` and `uc/paper/main.tex`; Cambie's Question 2 / Section 4 is its
 source. The standalone Arb computation checks only the strict endpoint.
+
+## Exhaustive entropy-bridge control
+
+**MACHINE-VERIFIED (exhaustive finite):** the sequential coupling behind
+`cor:uc` is rebuilt from the corollary statement alone and exercised on every
+nonempty family of subsets of `[n]` for `n <= 4`:
+
+```bash
+"$PY" -I -B uc/verification/entropy_bridge_exhaustive.py \
+  --max-coordinates 4 \
+  --sample 5:5000 --sample 6:2000 --sample 7:500 --sample 8:150 \
+  --sample-closed 5:3000 --sample-closed 6:1500 \
+  --sample-closed 7:600 --sample-closed 8:200 \
+  --output "$OUT/entropy-bridge-exhaustive.json"
+```
+
+Single core, 110.0 s observed. The verifier imports no campaign snapshot, no
+certificate module, and not `uc/bridge_uc.py`. Exhaustive coverage:
+
+| n | families | coupled prefix states | union-closed families | smallest certified positive iid slack | smallest certified positive coupled slack |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 3 | 3 | 3 | none (all ties) | none (all ties) |
+| 2 | 15 | 43 | 13 | 4.337e-2 | 1.258e-1 |
+| 3 | 255 | 2,083 | 121 | 2.878e-3 | 9.910e-3 |
+| 4 | 65,535 | 1,629,751 | 4,959 | 1.278e-3 | 5.857e-4 |
+
+Seeded deterministic samples beyond the exhaustive range (seed 20260827):
+
+| n | uniform families | prefix states | random union-closed families | largest closed family | smallest max frequency |
+|---:|---:|---:|---:|---:|---:|
+| 5 | 5,000 | 391,840 | 3,000 | 32 | 1/2 |
+| 6 | 2,000 | 510,708 | 1,500 | 58 | 1/2 |
+| 7 | 500 | 391,018 | 600 | 103 | 4/7 |
+| 8 | 150 | 388,571 | 200 | 146 | 20/31 |
+
+Exact rational arithmetic checks the four coupling masses, both Bernoulli
+marginals, `P(A_i or C_i | prefixes) = s*`, prefix-by-prefix uniformity of `A`
+and `C`, `law(P_i) = law(R_i)` with mean equal to the frequency of element
+`i`, and the chain rule `H(A) = sum_i E h(P_i)`. 256-bit Arb certifies both
+data-processing inequalities; every enclosure is either provably nonnegative
+or a structural tie inside `+/-2^-200`. Every union-closed family reached,
+enumerated or sampled, has an element of frequency at least `t_cert`, the
+extreme case being exactly `1/2`.
+
+Report: [`results/entropy-bridge-exhaustive.json`](verification/results/entropy-bridge-exhaustive.json),
+canonical object SHA-256
+`6681f8faf13d9344f8e7bf3a5d7785ed289f1e82c5e9badd1e7967c03e3ebfef`.
+That digest identifies the stored artifact, which carries `finished_utc` and
+`elapsed_seconds`; a rerun reproduces every count and verdict but not the
+digest. The coverage counts and the seeded sample identity are the
+reproducible quantities.
+
+**MACHINE-VERIFIED (fail-closed):**
+`uc/verification/test_entropy_bridge_exhaustive.py` passes 4/4 and shows the
+control has teeth: dropping the `max` branch of `s*`, replacing the prefix
+conditional probability by a constant, or inflating the union bit each makes
+it reject. Replacing the `1/2` clip by another admissible cap does not, since
+that coupling is still valid; the identification with Cambie's `s*` is the
+separate three-case proof in `uc/bridge_uc.py`.
+
+**OPEN:** this is a finite control. The universal statement is the induction
+in `uc/paper/main.tex`, and the control does not touch Theorem `thm:main`, the
+certificate, or the strictness estimate at `t_cert`.

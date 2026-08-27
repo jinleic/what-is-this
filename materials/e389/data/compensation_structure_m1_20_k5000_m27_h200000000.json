@@ -1,8 +1,11 @@
 {
-  "claim_boundary": "The local decomposition, prefix-cone count, retained-prime product bound, and shift identity are proved algebraically in THEOREMS.md. The reported counts are exact only over their declared finite domains. No witness or existence claim is made outside those domains.",
+  "claim_boundary": "The local decomposition, short-cofactor formula, prefix-cone count, retained-prime product bound, blocker-eviction CRT, and shift identity are proved algebraically in THEOREMS.md. The reported counts are exact only over their declared finite domains. No witness or existence claim is made outside those domains.",
   "even_shift_first_bad_term_identity": {
     "counts": {
       "prime_checks": 19654,
+      "short_cofactor_checks": 14510,
+      "short_cofactor_prime_power_spikes": 314,
+      "short_cofactor_spikes": 12969,
       "spikes": 15336
     }
   },
@@ -111,21 +114,24 @@
     ]
   },
   "implementation_sha256": {
-    "compensation_structure_analysis.py": "096e486a8b75595e3f15b8b75a05c02d8f9515a82c1c9e47f5c1da866fe6ebcb",
+    "compensation_structure_analysis.py": "42c0eff9c3db66444339b4cde763847d27e404b4c458aed4d92ca03a45f98bcb",
     "erdos389.py": "28debc996b4091caecf6f2528f70f3f4e46cdfd89223dcd971e59d808e7350d8",
     "residue_control_analysis.py": "901a0a0fe01b82ec889e234385f48446d305e31daa58653914741298d5e953af"
   },
   "input": {
     "extended_moving_window": {
       "logical_name": "moving_bad_window_m27_h100000000_199999999.json",
+      "schema_version": 1,
       "sha256": "ac9b02929f6fb4305ad54faef7c893f9c259d1e371d57753a74392f2641720c2"
     },
     "moving_window": {
       "logical_name": "moving_bad_window_m27_h100000000.json",
+      "schema_version": 1,
       "sha256": "d0f9128e55426ed8c28cba5c3bc0bf959b7577b8d5545d8623e754101e77142a"
     },
     "near_miss": {
       "logical_name": "bad_window_near_miss_m27_h100000000.json",
+      "schema_version": 1,
       "sha256": "02723427575e1455497387adfbac63546690370bb96f5f97650e65b7cd3f09f8"
     }
   },
@@ -137,7 +143,8 @@
       "single_level_rejected_offsets": 99999991,
       "survivors": 9,
       "survivors_with_large_prime_obstructions": 9,
-      "survivors_with_small_prime_obstructions": 2
+      "survivors_with_small_prime_obstructions": 2,
+      "zero_carry_eviction_crt_systems": 9
     },
     "rows": [
       {
@@ -240,7 +247,22 @@
         "offset": 586005,
         "retained_prime_product": 130363360713721040509650752778186019,
         "retained_prime_product_decimal_digits": 36,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 9,
+          "blocker_prime_product": 130363360713721040509650752778186019,
+          "canonical_residue": 1864436156427793431602826775091138151243157587556920000,
+          "combined_eviction_class_count": 117494775428138269454156130804434229,
+          "combined_modulus": 2335766523229219339795794956391642744023277161508396000,
+          "least_forward_candidate": 1864436156427793431602826775091138151243157587556920000,
+          "least_forward_delta": 1864436156427793431602826775091138151243152538564689376,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5048992230624
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 55,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "exact_obstruction_count": 16,
@@ -405,7 +427,22 @@
         "offset": 29566220,
         "retained_prime_product": 85544787138233515671415125848566614658776888075501590544807962274903134233,
         "retained_prime_product_decimal_digits": 74,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 16,
+          "blocker_prime_product": 85544787138233515671415125848566614658776888075501590544807962274903134233,
+          "canonical_residue": 1244005723906591463482327037843146621982250263493093243221219859016352778873119762274771840000,
+          "combined_eviction_class_count": 77315404987575809335386859530251144836369127656441887388751102110259765625,
+          "combined_modulus": 1532736260712436531784187564292957906816067369790980438765732538796701649674004777112975172000,
+          "least_forward_candidate": 1244005723906591463482327037843146621982250263493093243221219859016352778873119762274771840000,
+          "least_forward_delta": 1244005723906591463482327037843146621982250263493093243221219859016352778873119757225750629161,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5049021210839
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 94,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "exact_obstruction_count": 16,
@@ -570,7 +607,22 @@
         "offset": 29566221,
         "retained_prime_product": 2009618246254441113036250514481966952670780050230438972329022143043084659844091,
         "retained_prime_product_decimal_digits": 79,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 16,
+          "blocker_prime_product": 2009618246254441113036250514481966952670780050230438972329022143043084659844091,
+          "canonical_residue": 26409470754498218265209324959152221286692401622402672268490927501799781467887114623433942753608000,
+          "combined_eviction_class_count": 1988105155116792873774352618196258830583661810247934723195746526827948368984375,
+          "combined_modulus": 36007042150284815230113955026179902643365371068341070803129010917163027296296276299651804552844000,
+          "least_forward_candidate": 26409470754498218265209324959152221286692401622402672268490927501799781467887114623433942753608000,
+          "least_forward_delta": 26409470754498218265209324959152221286692401622402672268490927501799781467887114623428893732397160,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5049021210840
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 98,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "exact_obstruction_count": 9,
@@ -672,7 +724,22 @@
         "offset": 35363326,
         "retained_prime_product": 460319494477848161189131812315996748121564497,
         "retained_prime_product_decimal_digits": 45,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 9,
+          "blocker_prime_product": 460319494477848161189131812315996748121564497,
+          "canonical_residue": 4184881485527930850278086141694313620461140419635722218846124000,
+          "combined_eviction_class_count": 429908872246640928405559290760545061809961875,
+          "combined_modulus": 8247707479345368718821170224541844340505144825070668182394148000,
+          "least_forward_candidate": 4184881485527930850278086141694313620461140419635722218846124000,
+          "least_forward_delta": 4184881485527930850278086141694313620461140419635717169819116055,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5049027007945
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 64,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "exact_obstruction_count": 17,
@@ -842,7 +909,22 @@
             "prime": 7,
             "slack": -1
           }
-        ]
+        ],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 16,
+          "blocker_prime_product": 2437738150155816307135759306195010813291494652139504827929031352222659895509479,
+          "canonical_residue": 12520615938184191960548880230226023797039015073135944912841250300079064522060146445934316895028000,
+          "combined_eviction_class_count": 2363003409593814813565939028337313916524019541607181408752389834164021299279875,
+          "combined_modulus": 43677818156565632179345427725384673926231444526181772384671925728838991328483659278200609231036000,
+          "least_forward_candidate": 12520615938184191960548880230226023797039015073135944912841250300079064522060146445934316895028000,
+          "least_forward_delta": 12520615938184191960548880230226023797039015073135944912841250300079064522060146445929267849803012,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5049045224988
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 98,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "exact_obstruction_count": 17,
@@ -1012,7 +1094,22 @@
             "prime": 7,
             "slack": -1
           }
-        ]
+        ],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 16,
+          "blocker_prime_product": 462126809890248640997737981284710382743352977338060306197841424998635281499121,
+          "canonical_residue": 7442548753742092954548501766601087606004702654492523065953983800522161311562017081233050601408000,
+          "combined_eviction_class_count": 447645854704792308744320625858367767293547827330865017057226684688061676659625,
+          "combined_modulus": 8280089789943141858741494490212505288865614879561644991020164893592378282973116660671073811364000,
+          "least_forward_candidate": 7442548753742092954548501766601087606004702654492523065953983800522161311562017081233050601408000,
+          "least_forward_delta": 7442548753742092954548501766601087606004702654492523065953983800522161311562017081228001556183011,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5049045224989
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 97,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "exact_obstruction_count": 9,
@@ -1114,7 +1211,22 @@
         "offset": 53850036,
         "retained_prime_product": 552912905324301634220797613690099772626959,
         "retained_prime_product_decimal_digits": 42,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 9,
+          "blocker_prime_product": 552912905324301634220797613690099772626959,
+          "canonical_residue": 2001616353388158393932881578677613432110915762621576935776000,
+          "combined_eviction_class_count": 548244615631626346477866704692834255572825,
+          "combined_modulus": 9906736428450941391210493515818870562840455462373035275356000,
+          "least_forward_candidate": 2001616353388158393932881578677613432110915762621576935776000,
+          "least_forward_delta": 2001616353388158393932881578677613432110915762616527890281345,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5049045494655
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 61,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "exact_obstruction_count": 11,
@@ -1234,7 +1346,22 @@
         "offset": 57510911,
         "retained_prime_product": 376848262863605622063682408695827110354587843001,
         "retained_prime_product_decimal_digits": 48,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 11,
+          "blocker_prime_product": 376848262863605622063682408695827110354587843001,
+          "canonical_residue": 5915710459547018584998574481422507420543972615982306987621953692000,
+          "combined_eviction_class_count": 329484184669571441067622155577112525300145046875,
+          "combined_modulus": 6752123847642176290320584000752369477548455575236083959122553284000,
+          "least_forward_candidate": 5915710459547018584998574481422507420543972615982306987621953692000,
+          "least_forward_delta": 5915710459547018584998574481422507420543972615982306982572904536470,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5049049155530
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 67,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "exact_obstruction_count": 11,
@@ -1354,7 +1481,22 @@
         "offset": 57510912,
         "retained_prime_product": 376848262863605622063682408695827110354587843001,
         "retained_prime_product_decimal_digits": 48,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 11,
+          "blocker_prime_product": 376848262863605622063682408695827110354587843001,
+          "canonical_residue": 5638963252410878689014963029927490067695801163380176492261569668000,
+          "combined_eviction_class_count": 329484184669571441067622155577112525300145046875,
+          "combined_modulus": 6752123847642176290320584000752369477548455575236083959122553284000,
+          "least_forward_candidate": 5638963252410878689014963029927490067695801163380176492261569668000,
+          "least_forward_delta": 5638963252410878689014963029927490067695801163380176487212520512469,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5049049155531
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 67,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       }
     ]
   },
@@ -1365,7 +1507,8 @@
       "offsets_with_certified_large_prime_obstruction": 100000000,
       "single_level_rejected_offsets": 99999997,
       "survivors": 3,
-      "survivors_with_large_prime_obstructions": 3
+      "survivors_with_large_prime_obstructions": 3,
+      "zero_carry_eviction_crt_systems": 3
     },
     "rows": [
       {
@@ -1514,7 +1657,22 @@
         "offset": 24710064,
         "retained_prime_product": 440645701146077327433819698267062465360275094303291284780399068563213,
         "retained_prime_product_decimal_digits": 69,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 14,
+          "blocker_prime_product": 440645701146077327433819698267062465360275094303291284780399068563213,
+          "canonical_residue": 792393139074328176219688614570192633382403331903903817918750687944668173776519422328000,
+          "combined_eviction_class_count": 432312166779135461712725890386051408209637094927913477677087316665125,
+          "combined_modulus": 7895205153556188131822507654505050373546239247777243843575649430080781992127340985492000,
+          "least_forward_candidate": 792393139074328176219688614570192633382403331903903817918750687944668173776519422328000,
+          "least_forward_delta": 792393139074328176219688614570192633382403331903903817918750687944668173771470505973317,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5048916354683
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 87,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "canonical_mirror_crt_solution": 3200261226427203173588771962193034826304194665990331649152083329480598217752000,
@@ -1590,7 +1748,22 @@
         "offset": 25238496,
         "retained_prime_product": 446794760279882278613138134549,
         "retained_prime_product_decimal_digits": 30,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 6,
+          "blocker_prime_product": 446794760279882278613138134549,
+          "canonical_residue": 2505844115226914982075250263751625976305128356000,
+          "combined_eviction_class_count": 445074010089296072544077279157,
+          "combined_modulus": 8005380024742880022472878822764739933489620916000,
+          "least_forward_candidate": 2505844115226914982075250263751625976305128356000,
+          "least_forward_delta": 2505844115226914982075250263751625971256211472885,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5048916883115
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 49,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       },
       {
         "canonical_mirror_crt_solution": 1505402344197409972319091895969154757947576836968238904687004302536668777056205204360000,
@@ -1675,12 +1848,34 @@
         "offset": 25238497,
         "retained_prime_product": 15003814844958726798107791696289969,
         "retained_prime_product_decimal_digits": 35,
-        "small_prime_obstructions": []
+        "small_prime_obstructions": [],
+        "zero_carry_blocker_eviction": {
+          "bad_window_first_position": 14,
+          "bad_window_length": 14,
+          "blocker_prime_count": 7,
+          "blocker_prime_product": 15003814844958726798107791696289969,
+          "canonical_residue": 74770713442148813674200436937052434525417258092224000,
+          "combined_eviction_class_count": 14939799296667401267087042029463019,
+          "combined_modulus": 268828666610890654034661743747262731706514959980196000,
+          "least_forward_candidate": 74770713442148813674200436937052434525417258092224000,
+          "least_forward_delta": 74770713442148813674200436937052434525412209175340884,
+          "small_prime_zero_carry_modulus": 17917354312141284000,
+          "source_k": 5048916883116
+        },
+        "zero_carry_eviction_candidate_decimal_digits": 53,
+        "zero_carry_eviction_candidate_exceeds_factorizer_bound": true
       }
     ]
   },
   "parameters": {
     "contiguous_moving_offset_count": 200000000,
+    "eviction_rectangle": {
+      "candidate_max_x": 100000000,
+      "max_k": 500,
+      "max_m": 8,
+      "min_k": 1,
+      "min_m": 1
+    },
     "local_rectangle": {
       "max_k": 5000,
       "max_m": 20,
@@ -1695,11 +1890,11 @@
     }
   },
   "resources": {
-    "process_cpu_seconds": 6.143206,
+    "process_cpu_seconds": 6.889273,
     "processes": 1,
-    "wall_seconds": 6.144762666983297
+    "wall_seconds": 6.898960958002135
   },
-  "schema_version": 2,
+  "schema_version": 3,
   "small_and_large_prime_separation": {
     "counts": {
       "large_good_but_small_prime_failed": 190,
@@ -1707,8 +1902,768 @@
       "large_prime_good_windows": 1294,
       "large_prime_obstructions": 442704,
       "pairs": 100000,
+      "short_cofactor_checks": 405780,
+      "short_cofactor_obstructions": 363792,
+      "short_cofactor_prime_power_spikes": 7173,
       "witnesses": 1104
     }
   },
-  "status": "PASS_EXACT_COMPENSATION_STRUCTURE_ANALYSIS"
+  "status": "PASS_EXACT_COMPENSATION_STRUCTURE_ANALYSIS",
+  "zero_carry_blocker_eviction": {
+    "counts": {
+      "canonical_candidate_witnesses": 103,
+      "canonical_candidates_beyond_exact_check_bound": 1109,
+      "canonical_candidates_exactly_checked": 2737,
+      "canonical_candidates_with_new_prime_interference": 2634,
+      "new_large_obstruction_prime_checks": 5570,
+      "new_short_cofactor_obstructions": 4061,
+      "new_short_cofactor_prime_power_spikes": 190,
+      "old_blocker_prime_checks": 7782,
+      "source_systems": 3846
+    },
+    "maximum_canonical_candidate_decimal_digits": 15,
+    "parameters": {
+      "candidate_max_x": 100000000,
+      "max_k": 500,
+      "max_m": 8,
+      "min_k": 1,
+      "min_m": 1
+    },
+    "reported_representatives": [
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 5,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 2,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 1,
+          "combined_modulus": 2,
+          "least_forward_candidate": 2,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 1
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 3,
+            "term": 3
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 2,
+            "slack": -1
+          }
+        ],
+        "source_k": 1
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 7,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 3,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 2,
+          "combined_modulus": 3,
+          "least_forward_candidate": 3,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 2
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 2,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -2,
+            "prime": 2,
+            "term": 4
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 3,
+            "slack": -1
+          }
+        ],
+        "source_k": 2
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 9,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 2,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 1,
+          "combined_modulus": 2,
+          "least_forward_candidate": 4,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 3
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 5,
+            "term": 5
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 2,
+            "slack": -2
+          }
+        ],
+        "source_k": 3
+      },
+      {
+        "canonical_candidate_is_witness": true,
+        "canonical_candidate_x": 11,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 5,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 4,
+          "combined_modulus": 5,
+          "least_forward_candidate": 5,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 4
+        },
+        "m": 1,
+        "new_large_obstructions": [],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 5,
+            "slack": -1
+          }
+        ],
+        "source_k": 4
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 15,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 7,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 6,
+          "combined_modulus": 7,
+          "least_forward_candidate": 7,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 6
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 3,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -3,
+            "prime": 2,
+            "term": 8
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 7,
+            "slack": -1
+          }
+        ],
+        "source_k": 6
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 17,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 2,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 1,
+          "combined_modulus": 2,
+          "least_forward_candidate": 8,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 7
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 2,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -2,
+            "prime": 3,
+            "term": 9
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 2,
+            "slack": -3
+          }
+        ],
+        "source_k": 7
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 19,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 3,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 2,
+          "combined_modulus": 3,
+          "least_forward_candidate": 9,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 8
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 2,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 5,
+            "term": 10
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 3,
+            "slack": -2
+          }
+        ],
+        "source_k": 8
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 21,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 5,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 4,
+          "combined_modulus": 5,
+          "least_forward_candidate": 10,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 9
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 11,
+            "term": 11
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 5,
+            "slack": -1
+          }
+        ],
+        "source_k": 9
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 23,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 11,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 10,
+          "combined_modulus": 11,
+          "least_forward_candidate": 11,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 10
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 3,
+            "exponent": 2,
+            "position": 1,
+            "positive_prefix_levels": 1,
+            "predicted_slack": -1,
+            "prime": 2,
+            "term": 12
+          },
+          {
+            "cofactor": 4,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 3,
+            "term": 12
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 11,
+            "slack": -1
+          }
+        ],
+        "source_k": 10
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 25,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 2,
+          "blocker_prime_product": 6,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 2,
+          "combined_modulus": 6,
+          "least_forward_candidate": 12,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 11
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 13,
+            "term": 13
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 2,
+            "slack": -1
+          },
+          {
+            "position": 1,
+            "prime": 3,
+            "slack": -1
+          }
+        ],
+        "source_k": 11
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 27,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 13,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 12,
+          "combined_modulus": 13,
+          "least_forward_candidate": 13,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 12
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 2,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 7,
+            "term": 14
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 13,
+            "slack": -1
+          }
+        ],
+        "source_k": 12
+      },
+      {
+        "canonical_candidate_is_witness": true,
+        "canonical_candidate_x": 29,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 7,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 6,
+          "combined_modulus": 7,
+          "least_forward_candidate": 14,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 13
+        },
+        "m": 1,
+        "new_large_obstructions": [],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 7,
+            "slack": -1
+          }
+        ],
+        "source_k": 13
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 33,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 2,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 1,
+          "combined_modulus": 2,
+          "least_forward_candidate": 16,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 15
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 17,
+            "term": 17
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 2,
+            "slack": -4
+          }
+        ],
+        "source_k": 15
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 35,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 17,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 16,
+          "combined_modulus": 17,
+          "least_forward_candidate": 17,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 16
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 2,
+            "exponent": 2,
+            "position": 1,
+            "positive_prefix_levels": 1,
+            "predicted_slack": -1,
+            "prime": 3,
+            "term": 18
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 17,
+            "slack": -1
+          }
+        ],
+        "source_k": 16
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 37,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 3,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 2,
+          "combined_modulus": 3,
+          "least_forward_candidate": 18,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 17
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 19,
+            "term": 19
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 3,
+            "slack": -1
+          }
+        ],
+        "source_k": 17
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 39,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 19,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 18,
+          "combined_modulus": 19,
+          "least_forward_candidate": 19,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 18
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 5,
+            "exponent": 2,
+            "position": 1,
+            "positive_prefix_levels": 1,
+            "predicted_slack": -1,
+            "prime": 2,
+            "term": 20
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 19,
+            "slack": -1
+          }
+        ],
+        "source_k": 18
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 41,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 2,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 1,
+          "combined_modulus": 2,
+          "least_forward_candidate": 20,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 19
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 3,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 7,
+            "term": 21
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 2,
+            "slack": -1
+          }
+        ],
+        "source_k": 19
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 43,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 7,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 6,
+          "combined_modulus": 7,
+          "least_forward_candidate": 21,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 20
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 2,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 11,
+            "term": 22
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 7,
+            "slack": -1
+          }
+        ],
+        "source_k": 20
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 45,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 11,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 10,
+          "combined_modulus": 11,
+          "least_forward_candidate": 22,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 21
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 1,
+            "exponent": 1,
+            "position": 1,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 23,
+            "term": 23
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 11,
+            "slack": -1
+          }
+        ],
+        "source_k": 21
+      },
+      {
+        "canonical_candidate_is_witness": false,
+        "canonical_candidate_x": 47,
+        "eviction": {
+          "bad_window_first_position": 1,
+          "bad_window_length": 1,
+          "blocker_prime_count": 1,
+          "blocker_prime_product": 23,
+          "canonical_residue": 0,
+          "combined_eviction_class_count": 22,
+          "combined_modulus": 23,
+          "least_forward_candidate": 23,
+          "least_forward_delta": 1,
+          "small_prime_zero_carry_modulus": 1,
+          "source_k": 22
+        },
+        "m": 1,
+        "new_large_obstructions": [
+          {
+            "cofactor": 3,
+            "exponent": 3,
+            "position": 1,
+            "positive_prefix_levels": 1,
+            "predicted_slack": -2,
+            "prime": 2,
+            "term": 24
+          }
+        ],
+        "old_blockers": [
+          {
+            "position": 1,
+            "prime": 23,
+            "slack": -1
+          }
+        ],
+        "source_k": 22
+      }
+    ]
+  }
 }

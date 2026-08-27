@@ -10,6 +10,13 @@
 > `6ef126ced337b035e5c5f22a130b1be3697666e60f16586b75540ef6fc734b16`
 > and
 > `57ca3f52c054bd9bccfefc349f440674c74fe7ef671d06c103ef3f52dc33d53d`.
+> A third secure source-independent replay then passed all eight traces from
+> byte zero, with a separately implemented interval-AD arithmetic layer,
+> 343-file/runtime-image pins, exact tallies, and zero residuals.  Its trusted
+> report-lock raw SHA-256 is
+> `af86480901c2c497739916bb410f1e117e4eaf3eefb82575ce494b7d8c04e730`;
+> composite canonical SHA-256 is
+> `4acbd3b935bda7e51ed387e42e0598debf22f4a85b7a24ad976c3eaca4f23243`.
 > This is not an end-to-end machine proof of the union-closed consequence.
 > Support reduction, the Margin Lemma, and the set-family bridge are ordinary
 > human-audited mathematics; see [`AUDIT.md`](AUDIT.md) and
@@ -97,12 +104,42 @@ counterexample to the tensorization lemmas, and the shared algebra
 ($\sum P_{ac}=1$, shift invariance of $D$, and
 $\max_s[sD+h(s)]=\log_2(1+2^D)$) is now verified symbolically.
 
-This does not refute a union-closed statement: $\mathcal B$ is explicitly
-non-UC, and the power defects tend to one. A separate local-stability problem
-restricted to $\varepsilon_\vee\to0$ remains open, but that restriction was
+**Second-base audit (2026-08-26).**  The conclusion no longer depends on
+\(\mathcal B\).  The separate 25-row \(3+3\) family \(\mathcal D\), with cells
+\((0,0),(0,1),(1,0),(1,2),(2,1)\), has exact closure success \(181/625\).
+A 160-bit dyadic checker evaluates all 720 orders without symmetry reduction
+and proves \(A_+(\mathcal D)<-1/80\); a 256-bit Arb checker independently proves
+\(A_+(\mathcal D)<-17/1250\).  Its powers are normalized, meet the cap exactly,
+satisfy Reimer by \(25^5<2^{24}\), and have ratio \(>k/80\to\infty\).  A
+non-factored 625-row square audit found zero Bellman product gap on five hostile
+global orders.
+
+**Exact-arithmetic audit (2026-08-27).**  The finite input is now an exact
+rational fact about the *true* objective.  `uc/gate_b/verify_gate_b_rational.py`
+uses only the Python standard library, keeps the exact feasible action interval
+\([s^*,U]\) — no clamp classification and no relaxation — and returns two-sided
+enclosures over **all** 720 and **all** 5040 coordinate orders:
+\(A_+(\mathcal D)\in[-0.013672107732177773561859915661,
+-0.013672107732177773561859912998]\) and
+\(A_+(\mathcal B)\in[-0.028649186794468317816026981933,
+-0.028649186794468317816026976455]\), widths below \(6\times10^{-27}\),
+re-deriving the sharp \(-17/1250\) and \(-7/250\) bounds and containing both Arb
+values.  Its certified primitives are a bit-by-bit \(\log_2\), ceiling
+square-root towers for \(2^x\), and a concavity case split.  The all-order value
+lists partition into 10 classes of size 72 and 21 of size 240, recovering the
+automorphism data rather than assuming it.  The same arithmetic re-attacks the
+product lemmas on 35 products over all 15,010 global orders with worst
+fixed-order Bellman discrepancy exactly zero.  Finally the growth rate is
+pinned: \(c_{\rm cl}^\star(n)>n/250-7/250\), while \(Q\ge0\) and \(C_+\ge0\)
+give \(-A_+\le\log_2m\le n\), so the ratio is \(\Theta(n)\) whenever
+\(\varepsilon_\vee\ge\varepsilon_0>0\).
+
+This does not refute a union-closed statement: both bases are explicitly
+non-UC, and both power defects tend to one. A separate local-stability problem
+restricted to \(\varepsilon_\vee\to0\) remains open, but that restriction was
 not present in the authoritative Gate B supremum. The complete statement,
-proof, standalone verifier, append-only search records, certificate, and paper
-draft are in [`gate_b/`](gate_b/).
+proof, six finite-base certificates, append-only searches, and paper draft
+are in [`gate_b/`](gate_b/).
 
 Reproduce from `math/`:
 
@@ -110,6 +147,11 @@ Reproduce from `math/`:
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/test_gate_b.py
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/verify_gate_b.py
 OMP_NUM_THREADS=1 /Library/Developer/CommandLineTools/usr/bin/python3 -B uc/gate_b/verify_gate_b_dyadic.py
+OMP_NUM_THREADS=1 /Library/Developer/CommandLineTools/usr/bin/python3 -B uc/gate_b/verify_gate_b_n6_dyadic.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/verify_gate_b_n6_arb.py
+OMP_NUM_THREADS=1 /Library/Developer/CommandLineTools/usr/bin/python3 -B uc/gate_b/verify_gate_b_rational.py --bases n6,n7 --orders all
+OMP_NUM_THREADS=1 /Library/Developer/CommandLineTools/usr/bin/python3 -B uc/gate_b/audit_tensorization_exact.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/audit_n6_square_direct.py
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/audit_tensorization.py
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/audit_square_direct.py
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/search_n8_block_symmetric.py --k 1
@@ -583,7 +625,7 @@ Checked first-hand, none accepted, all preprint-only.
 
 | file | contents |
 |---|---|
-| `gate_b/` | Gate B exact definitions, Cartesian-power proof that $c_{\rm cl}^\star=\infty$, standalone Arb verifier, machine-readable candidates/certificates, checkpointed $n=8$ search, tests, experiment ledger, and paper draft |
+| `gate_b/` | Gate B exact definitions, Cartesian-power proof that $c_{\rm cl}^\star=\infty$, the $\Theta(n)$ growth corollary, standalone Arb / dyadic / exact-rational verifiers, machine-readable candidates and certificates, checkpointed $n=8$ search and exact tensorization audit, tests, experiment ledger, and paper draft |
 | `entropy.py` | base-2 $h$, $\varphi$, $\psi$, Sawin's $\lambda$, one-step functional |
 | `onestep.py` | $\psi$ exact (sympy) + extremiser search |
 | `coupling.py` | closed form for $c^*$; obstruction; exact-LP coupling search |

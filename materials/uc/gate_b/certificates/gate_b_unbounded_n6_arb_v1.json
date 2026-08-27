@@ -1,0 +1,127 @@
+{
+  "alpha": {
+    "denominator": 10000000,
+    "dimension_independent": true,
+    "numerator": 356069
+  },
+  "arb": {
+    "a_plus": {
+      "ball": "[-0.0136721077321777735618599145775119739486864989418696936116793983177968229 +/- 4.04e-74]",
+      "lower": "[-0.01367210773217777356185991457751197394868649894186969361167939831779682287625 +/- 1.26e-78]",
+      "upper": "[-0.01367210773217777356185991457751197394868649894186969361167939831779682285960 +/- 2.88e-78]"
+    },
+    "ambiguous_clamp_state_count": 305,
+    "bellman_state_count": 1434,
+    "family_entropy": {
+      "ball": "[4.643856189774724695740638858978780351729662786049161224109512791631869553217 +/- 3.06e-76]",
+      "lower": "[4.643856189774724695740638858978780351729662786049161224109512791631869553217 +/- 4.15e-77]",
+      "upper": "[4.643856189774724695740638858978780351729662786049161224109512791631869553217 +/- 3.18e-76]"
+    },
+    "one_sided_cost": {
+      "ball": "[5.00395543125020154683601850443445456969902847356713970021421030988849998973 +/- 9.14e-75]",
+      "lower": "[5.003955431250201546836018504434454569699028473567139700214210309888499989721 +/- 1.42e-76]",
+      "upper": "[5.003955431250201546836018504434454569699028473567139700214210309888499989738 +/- 4.23e-76]"
+    },
+    "shapley_iid": {
+      "ball": "[4.6163838598571102600389234608954804813132320732612393679571909299547081995 +/- 5.59e-74]",
+      "lower": "[4.616383859857110260038923460895480481313232073261239367957190929954708199444 +/- 1.18e-76]",
+      "upper": "[4.616383859857110260038923460895480481313232073261239367957190929954708199460 +/- 1.46e-76]"
+    }
+  },
+  "arithmetic": "python_flint_arb",
+  "exact_base": {
+    "active": true,
+    "block_cells": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "closure_defect": "444/625",
+    "coordinate_counts": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ],
+    "dimension": 6,
+    "family_rows": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      11,
+      13,
+      14,
+      16,
+      19,
+      21,
+      22,
+      25,
+      26,
+      28,
+      32,
+      35,
+      37,
+      38,
+      41,
+      42,
+      44,
+      49,
+      50,
+      52
+    ],
+    "family_size": 25,
+    "join_success_probability": "181/625",
+    "missing_ordered_join_pairs": 444,
+    "ordered_pairs_with_replacement": true,
+    "reimer_threshold": 59,
+    "separating": true,
+    "total_incidence": 60
+  },
+  "infinite_construction": {
+    "a_plus_upper": "-17*k/1250",
+    "closure_defect": "1-(181/625)^k",
+    "coordinate_count": "10*25^(k-1)",
+    "dimension": "6*k",
+    "family": "D^(boxtimes k)",
+    "family_size": "25^k",
+    "reimer_integer_witness": "25^5 < 2^24",
+    "repair_ratio_lower": "(17*k/1250)/(1-(181/625)^k) > 17*k/1250",
+    "zero_defect_convention_used": false
+  },
+  "precision_bits": 256,
+  "proof_boundary": "The finite negative base is certified here with Arb. Product additivity and all-k admissibility are exact lemmas in PROOF.md.",
+  "rational_consequence": {
+    "a_plus_upper_lt": "-17/1250",
+    "base_ratio_lower_gt": "17/888"
+  },
+  "schema_version": 1,
+  "symmetry": {
+    "all_order_count": 720,
+    "automorphism_count": 72,
+    "equal_order_orbit_count": 10,
+    "order_orbit_size": 72,
+    "partition_verified_exactly": true
+  },
+  "verdict": "PROVED_GATE_B_UNBOUNDED_SECOND_BASE_ARB"
+}

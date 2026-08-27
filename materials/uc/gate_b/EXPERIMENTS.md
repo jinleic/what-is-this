@@ -602,8 +602,13 @@ The final system-Python run was one low-priority process and took 96.20 s.
 The corresponding two-test contract replay under the project environment took
 42.70 s.  The existing, separately implemented 256-bit Arb falsifier was then
 replayed in 13.04 s; it reconstructed the same rows and exact defect and gave
-\(A_+<-0.0136721077321777735\ldots\), consistent with the deliberately looser
-dyadic bound.
+\(A_+<-0.0136721077321777735\ldots\).  That route was promoted to the compact
+committed checker `verify_gate_b_n6_arb.py`, which reuses only the generic
+standalone Arb evaluator, writes a deterministic certificate in 0.21 s, and
+proves the rational bound \(A_+<-17/1250\).
+The isolated Python 3.9 environment reproduced the new Arb JSON
+byte-identically in 0.41 s; the same environment reproduced the original
+\(n=7\) Arb v4 certificate byte-identically in 59.77 s.
 
 For \(\mathcal G_k=\mathcal D^{\boxtimes k}\), exact product arithmetic gives
 \[
@@ -618,11 +623,129 @@ strictly for every power.  Thus this second family alone yields
 >\frac{k/80}{1-(181/625)^k}>\frac{k}{80}\to\infty.
 \]
 
+A direct-square counterexample search then materialized
+\(\mathcal D^{\boxtimes2}\) as 625 plain 12-bit row masks and passed those masks
+to the generic float64 prefix-fiber evaluators.  It directly counted 357,864
+missing ordered joins out of 390,625, exactly
+\(1-(181/625)^2\), and verified cap equality, Reimer, activity, and separation.
+Five hostile global orders (consecutive, block-swapped, reversed, alternating,
+and seeded interleaved) had zero Bellman product gap and worst iid gap
+\(1.78\times10^{-15}\).  The 13.20 s search is append-only and resumable; its
+immediate replay reported `new_evaluations: 0` and left both artifacts
+byte-identical.
+
+The first isolated-system replay of the new dyadic checker exposed a packaging
+defect: Python's `-I` mode did not place the script directory on `sys.path`, so
+the sibling arithmetic module could not be imported.  The checker now inserts
+its resolved sibling directory explicitly.  With an otherwise empty
+environment, system Python 3.9 then reproduced both dyadic JSON certificates
+byte-identically (8.9 s for \(n=7\), 96.68 s for all 720 \(n=6\) orders).
+The expanded suite passes 29/29 tests in 54.930 s test time / 55.84 s wall.
+
 Status: **SECOND INFINITE CONSTRUCTION CERTIFIED.**  The Gate B conclusion no
-longer depends on the \(n=7\) candidate or any order-orbit quotient.  The new
-checker shares the audited dyadic transcendental primitive with the earlier
-checker; this is a combinatorially independent route, not a third arithmetic
-implementation.
+longer depends on the \(n=7\) candidate or any order-orbit quotient.  Both
+finite bases now survive the same two arithmetically disjoint stacks: an exact
+clamp-classified 256-bit Arb recurrence and a clamp-free standard-library
+dyadic relaxation.
+
+## E18 — exact rational two-sided certificate for both bases (2026-08-27)
+
+Motivation: after E17 the load-bearing sign of \(A_+\) still rested on two
+*numerical* stacks. The Arb route needs `python-flint` and a three-way clamp
+classification; the dyadic route needs a 160-bit interval class, hand-derived
+atanh/exp tail bounds, and — more seriously — it relaxes every feasible action
+interval to \([0,1]\), so it certifies a relaxation of \(C_+\) rather than
+\(C_+\). Neither route can distinguish "the true optimum is negative" from
+"some upper bound of it is negative".
+
+Command:
+
+```sh
+nice -n 10 /Library/Developer/CommandLineTools/usr/bin/python3 -B \
+  uc/gate_b/verify_gate_b_rational.py --bases n6,n7 --orders all \
+  --progress 500 \
+  --write-certificate uc/gate_b/certificates/gate_b_unbounded_rational_v1.json
+```
+
+Wall time: 250.35 s in one low-priority process on the pristine system
+interpreter with no third-party package. Peak observed share of total machine
+CPU: 2.4 %.
+
+The evaluator keeps the exact feasible interval \([s^*(p,r),U(p,r)]\) and needs
+only three certified primitives, all integer arithmetic:
+
+1. bit-by-bit binary logarithm from \(\log_2y=(b+\log_2(y^2/2^b))/2\), with
+   monotone rounding of the state and the tail in \([0,2^{-N}]\);
+2. `math.isqrt` towers \(r_{j+1}=\lceil\sqrt{r_j}\rceil\ge2^{2^{-(j+1)}}\) for
+   \(2^x\) from above;
+3. a concavity case split for \(\max_{s\in[\ell,u]}[h(s)+cs]\): exact at an
+   endpoint when the derivative has a sign there, otherwise the Fenchel value
+   \(\log_2(1+2^c)\).
+
+Results, over **all** coordinate orders with no automorphism quotient:
+
+| base | orders | Bellman states | distinct enclosures | multiplicity |
+|---|---:|---:|---:|---:|
+| \(\mathcal D\), \(n=6\) | 720 | 584,784 | 10 | 72 each |
+| \(\mathcal B\), \(n=7\) | 5,040 | 13,381,680 | 21 | 240 each |
+
+The multiplicities were *not* assumed: they are the observed partition of the
+all-order value list, and they independently reproduce the 72- and 240-element
+automorphism groups and the 10 and 21 orbit counts.
+
+```text
+A_+(D) in [-0.0136721077321777735618599156610223516934,
+           -0.0136721077321777735618599129978279356672]
+A_+(B) in [-0.0286491867944683178160269819326732064410,
+           -0.0286491867944683178160269764548230805862]
+```
+
+Both enclosures have width below \(6\times10^{-27}\); both upper endpoints beat
+the sharp frozen targets \(-17/1250\) and \(-7/250\); and both Arb values from
+E2 and E17 lie strictly inside, which retroactively shows the clamp-ambiguous
+relaxation in those runs cost less than \(10^{-26}\).
+
+Resumability: 5,760 append-only records with an explicit `schema` field. A
+complete rerun reports `new_evaluations: 0`, recomputes a deterministic sample
+and aborts on mismatch, and counts foreign-schema or truncated lines instead of
+trusting them. An intermediate run of an earlier record schema was discarded
+for exactly that reason rather than reused.
+
+Growth rate: the same enclosures give the exact linear statement
+\(c_{\rm cl}^\star(n)>\frac1{250}n-\frac7{250}\) from \(\mathcal B\) and
+\(\frac{17}{7500}n-\frac{17}{1250}\) from \(\mathcal D\), while \(Q\ge0\),
+\(C_+\ge0\) and \(m\le2^n\) give \(-A_+\le\log_2m\le n\). Hence on families
+with \(\varepsilon_\vee\ge\varepsilon_0\) the ratio is \(\Theta(n)\).
+
+Exact product-lemma repeat: `audit_tensorization_exact.py` ran 35 ordered
+products over all 15,010 global orders in 62.18 s (20 new cases resumed onto 15
+earlier ones, demonstrating case-level resume). Zero intersection failures,
+zero exact defect-identity failures, worst \(Q\) discrepancy
+\(1.4\times10^{-27}\), worst fixed-order Bellman discrepancy exactly zero. An
+immediate rerun reported `new_evaluations: 0` in 0.09 s.
+
+Clean-room replay: in a stripped environment
+(`env -i OMP_NUM_THREADS=1 HOME=... PATH=/usr/bin:/bin`) the pristine system
+interpreter reproduced `certificates/gate_b_unbounded_rational_v1.json`
+byte-identically with `--fresh` in 251.47 s. Without `--fresh` the same
+environment replayed the committed checkpoint in 0.92 s, reporting
+`new_evaluations: 0`, `resumed_records` 720 and 5040, and two recomputed
+records per base with no mismatch. Only the bookkeeping fields differ between
+those two modes.
+
+Suite: 42 tests pass in 60.2 s under the project environment, including
+Arb-versus-rational bracketing of every primitive, 65-point sampled domination
+of the constrained maximum, per-orbit enclosure agreement on both bases,
+sharpness against the dyadic relaxation, state-canonicalization invariance,
+orbit-versus-all-order certificate equality, foreign-schema and
+truncated-checkpoint rejection, an exact one-case audit replay, and the
+exact-integer growth corollary. The paper draft rebuilds to eight pages with no
+undefined reference.
+
+Status: **EXACTLY CERTIFIED, BOTH BASES.** The finite input to the Gate B
+theorem is now an exact rational fact about the true objective, established
+without any interval library, any clamp classification, any action-set
+relaxation, and any symmetry quotient.
 
 ## Failed or superseded routes
 
