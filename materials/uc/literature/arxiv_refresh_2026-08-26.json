@@ -1,0 +1,20 @@
+{
+  "checked_utc": "2026-08-26T15:10:15Z",
+  "endpoint": "https://export.arxiv.org/api/query?search_query=all%3A%22union-closed%22&start=0&max_results=20&sortBy=submittedDate&sortOrder=descending",
+  "feed_updated_utc": "2026-08-26T15:10:15Z",
+  "query": "all:\"union-closed\"",
+  "reported_total_results": 103,
+  "screened_results": 20,
+  "newest_union_closed_combinatorics_record": {
+    "arxiv_id": "2607.26425v1",
+    "published_utc": "2026-07-29T03:09:45Z",
+    "title": "Supersaturation in union-closed families of sets",
+    "relevance_to_explicit_entropy_constant": "none at theorem level; the abstract concerns k-chain supersaturation rather than entropy coupling or explicit frequency constants"
+  },
+  "records_after_prior_2026_08_25_cutoff": [],
+  "conclusion": "No new arXiv record after the full literature-audit cutoff collides with the UC certificate-backed explicit-constant candidate.",
+  "limitations": [
+    "This is a one-index refresh, not a repeat of the full Crossref/OpenAlex/zbMATH and citation-graph audit.",
+    "Absence from arXiv does not establish universal priority."
+  ]
+}

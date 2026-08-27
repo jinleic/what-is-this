@@ -1,0 +1,200 @@
+{
+  "campaign_directory": "cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8",
+  "campaign_id": "20260818T212601Z_425f109c15b64a6198785c6cebbbdaab",
+  "claim_status": "MACHINE-VERIFIED",
+  "finished_utc": "2026-08-26T12:12:25.268015+00:00",
+  "limitations": [
+    "Every arithmetic replay uses the same frozen rule implementation as the producer.",
+    "This aggregate validates public report bytes; it is not an authenticated execution attestation."
+  ],
+  "lock": {
+    "sha256": "d254a23a4df7cb3a4c6aae2453883324fba2381c1890c4f011d61c7971b84b48",
+    "size": 12590
+  },
+  "outcome": "PASS",
+  "report_sha256": "57ca3f52c054bd9bccfefc349f440674c74fe7ef671d06c103ef3f52dc33d53d",
+  "report_type": "clean_room_composite",
+  "schema": "uc-clean-room-composite-report-v1",
+  "slices": [
+    {
+      "attempt_id": "e372f36843fe466c920223071291c1ba",
+      "elapsed_seconds": 2296.9807529160025,
+      "report_sha256": "2024df2a46a72f67599a1827d6f417bb2eab31aea33655be75099f25e7eaedf8",
+      "slice": 0,
+      "stdout_sha256": "b0d61e1336654f973610485f44eba24c8f53a68c13ad0cc01345f8d4239e65b0",
+      "tallies": {
+        "center": 4166369,
+        "center_mixed": 1059513,
+        "center_mixed_swap": 831310,
+        "center_w": 27088,
+        "corner": 3218757,
+        "face": 142023,
+        "infeasible": 766564,
+        "processed": 21135611,
+        "ratio": 356182,
+        "residual": 0,
+        "split": 10567805
+      }
+    },
+    {
+      "attempt_id": "7814c676c4304012b2efbb9c02908be1",
+      "elapsed_seconds": 2300.2888511250057,
+      "report_sha256": "0393ac41ffc3ea3cbb19d801a83c0207073b78676225a88e88f83b53f94e3f27",
+      "slice": 1,
+      "stdout_sha256": "92c54a2e7ab1174c11f9f4243ab55e3392798f064fd8d4b4a7cdd6aa0c3312a6",
+      "tallies": {
+        "center": 4074579,
+        "center_mixed": 1107712,
+        "center_mixed_swap": 858664,
+        "center_w": 23434,
+        "corner": 2837057,
+        "face": 230614,
+        "infeasible": 835153,
+        "processed": 20827065,
+        "ratio": 446320,
+        "residual": 0,
+        "split": 10413532
+      }
+    },
+    {
+      "attempt_id": "23c7c163d6a3490b89eae4ef2bc4e66c",
+      "elapsed_seconds": 2548.867277792,
+      "report_sha256": "b9e95114b030c0bf1e9e6a3149a85710174c7fadf74c550eb26f5cbe3bfbcfea",
+      "slice": 2,
+      "stdout_sha256": "9690ebe1efce97db953d29437c29a07a33c9052d0caf12e344cfd9372d675141",
+      "tallies": {
+        "center": 4198151,
+        "center_mixed": 1025766,
+        "center_mixed_swap": 827217,
+        "center_w": 29236,
+        "corner": 3338422,
+        "face": 470233,
+        "infeasible": 1159349,
+        "processed": 23486265,
+        "ratio": 694759,
+        "residual": 0,
+        "split": 11743132
+      }
+    },
+    {
+      "attempt_id": "ff31c5a5e6c04040a9a098cd4733b597",
+      "elapsed_seconds": 4044.748742249998,
+      "report_sha256": "d4aadd54a971d5551bd8d5558b13f530b1fc820545838ad8f4555af532578a30",
+      "slice": 3,
+      "stdout_sha256": "6c0c74133fb96ed64c6645457ef30caed7fde0e1a5060127d1021bd7cbdad43b",
+      "tallies": {
+        "center": 5261749,
+        "center_mixed": 999230,
+        "center_mixed_swap": 592501,
+        "center_w": 14975,
+        "corner": 4699405,
+        "face": 2110724,
+        "infeasible": 2637747,
+        "processed": 34186855,
+        "ratio": 777097,
+        "residual": 0,
+        "split": 17093427
+      }
+    },
+    {
+      "attempt_id": "53cfe460091e4610a3375c5a01c01bd8",
+      "elapsed_seconds": 9075.477098749994,
+      "report_sha256": "159479b69f71329d2282784481dfa187526bcbd9e7902a265bfd76d50a51b061",
+      "slice": 4,
+      "stdout_sha256": "2d1f31a8950d15a12c5507021ed1f496503c15651ad20dfeea9f8e6d8ff62e52",
+      "tallies": {
+        "center": 11895793,
+        "center_mixed": 1269484,
+        "center_mixed_swap": 95757,
+        "center_w": 1427,
+        "corner": 9899146,
+        "face": 5487361,
+        "infeasible": 6969122,
+        "processed": 71405987,
+        "ratio": 84904,
+        "residual": 0,
+        "split": 35702993
+      }
+    },
+    {
+      "attempt_id": "585994ea62da4fea84caa7c609323417",
+      "elapsed_seconds": 16296.533956208004,
+      "report_sha256": "19a8613aaf778bb58e57790e102cebaa9f523cc831c9ac88d71bf0a76c765678",
+      "slice": 5,
+      "stdout_sha256": "0c7d9aaa36ead48d7135d0d07e6db4e2b56cf08726a1cfa52bec0f09fd8ca7e6",
+      "tallies": {
+        "center": 22256705,
+        "center_mixed": 1786704,
+        "center_mixed_swap": 26246,
+        "center_w": 531,
+        "corner": 12155506,
+        "face": 9882707,
+        "infeasible": 12719058,
+        "processed": 117709435,
+        "ratio": 27261,
+        "residual": 0,
+        "split": 58854717
+      }
+    },
+    {
+      "attempt_id": "e9fe7261a0d94e8a9b757ce659e28786",
+      "elapsed_seconds": 15053.861451207995,
+      "report_sha256": "bfb9cd27732745074deea59449a68070a840f7e24c67746ab347a267e4609af0",
+      "slice": 6,
+      "stdout_sha256": "cf459a39ab8c13cd6f2b80df203179c8e6067b71589ab3562ed155852879bf1e",
+      "tallies": {
+        "center": 20315341,
+        "center_mixed": 2937116,
+        "center_mixed_swap": 16355,
+        "center_w": 313,
+        "corner": 13820378,
+        "face": 10265837,
+        "infeasible": 13349700,
+        "processed": 121456775,
+        "ratio": 23348,
+        "residual": 0,
+        "split": 60728387
+      }
+    },
+    {
+      "attempt_id": "2a9cd1ff99af4e0ab6efc68dd5b15ea4",
+      "elapsed_seconds": 6650.2158082499955,
+      "report_sha256": "64019b495111ac3240f004f107e648742d6863fd980328e8eabffdf9067d84c0",
+      "slice": 7,
+      "stdout_sha256": "f4407f29f33837d3b04767d80895514ea7b9debfb27c274f44b2abfc53b71ea3",
+      "tallies": {
+        "center": 11466023,
+        "center_mixed": 4150412,
+        "center_mixed_swap": 2473,
+        "center_w": 80,
+        "corner": 16794114,
+        "face": 1645285,
+        "infeasible": 5057436,
+        "processed": 78257861,
+        "ratio": 13108,
+        "residual": 0,
+        "split": 39128930
+      }
+    }
+  ],
+  "total_elapsed_seconds": 58266.973938498995,
+  "total_processed": 488465854,
+  "verifier": {
+    "sha256": "c46f6100edf84c18d16adba907f44b102c4863e29761bef1e35376d771b67890",
+    "size": 8176
+  },
+  "verifier_inputs": {
+    "campaign_lock": {
+      "sha256": "d254a23a4df7cb3a4c6aae2453883324fba2381c1890c4f011d61c7971b84b48",
+      "size": 12590
+    },
+    "clean_room_replay.py": {
+      "sha256": "432fa2e94a2321f6d0c22c574759f799c504f944fbc3dc23ae7b4984c836527c",
+      "size": 55389
+    },
+    "report.schema.json": {
+      "sha256": "d34595787382f0110daa6f307c0fd773eec28e1d02ec490a2839bebdd9fdeead",
+      "size": 14451
+    }
+  }
+}

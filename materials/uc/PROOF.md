@@ -1,20 +1,20 @@
-# The union-closed inequality at $t = 0.3820660112501052$: the verified chain
+# The union-closed inequality at $t = 0.3820660112501052$: candidate proof and evidence chain
 
-Every step of this chain is a displayed algebraic proof, a verified quotation
-from the literature, or a machine-checked artifact named in place.  Anything
-numerically sampled is labeled **NUMERICAL** and is never a proof step.
+This document separates ordinary mathematics, cited standard results,
+machine-verified finite arithmetic, and numerical evidence.  The Arb
+certificate is replayable; the support reduction, Margin Lemma, and
+set-family bridge are human-audited rather than formalized.  The overall claim
+must not be described as end-to-end machine checked.
 
-**Claim.** Set
+**Candidate claim.** Set
 $$\psi = \tfrac{3-\sqrt5}{2} = 0.3819660112501051\ldots,\qquad
 t_{\mathrm{cert}} = 0.3820660112501052,\qquad \alpha = 0.0356069.$$
-The pair-orbit functional $\Phi$ below is nonnegative on every feasible
-2-orbit measure at $t_{\mathrm{cert}}$; hence every union-closed family
-$\mathcal{F} \neq \{\varnothing\}$ has an element in at least a
-$t_{\mathrm{cert}}$ fraction of its sets.  Since
-$t_{\mathrm{cert}} \ge \psi + 10^{-4}$, this is the largest explicit constant
-with a complete proof; $\psi$ was the previous record
-(Sawin arXiv:2211.11504v3 Theorem 1; Chase–Lovett; AHS — see the Session-5
-literature record in `PROGRESS.md`).
+The human reduction and replayed certificate imply that every union-closed
+family $\mathcal{F} \neq \{\varnothing\}$ has an element in at least a
+$t_{\mathrm{cert}}$ fraction of its sets.  The exact comparison
+$t_{\mathrm{cert}}\ge\psi+10^{-4}$ is machine checked.  Novelty and priority
+are addressed separately in `LITERATURE_ORIGINALITY.md`; external mathematical
+review remains outstanding.
 
 The margin is *rational-exact*: for $r \in [0, 3/2]$, $r \ge \psi
 \iff r^2 - 3r + 1 \le 0$ — a rational check by
@@ -22,16 +22,17 @@ The margin is *rational-exact*: for $r \in [0, 3/2]$, $r \ge \psi
 
 ## 1. From the certificate to union-closed sets (bridge)
 
-Cambie's Question 2 (**cited, arXiv:2212.12500v2, Q2 + Section 4**): if for
-i.i.d. $p,q \sim \mu$ on $[0,1]$ and $(p,r)$ any coupling of
-$\mu$ with itself,
-$$(1-\alpha)\,\mathbb{E}h(p+q-pq) + \alpha\,\mathbb{E}h\!\big(\max(p,r,\min(p+r,\tfrac12))\big) \;\ge\; \mathbb{E}h(p)$$
-($h(u) = -u\log_2 u - (1-u)\log_2(1-u)$, $h(0)=h(1)=0$) holds for all $\mu$
-with $\mathbb{E}p \le c$, then every union-closed family has an element with
-frequency $\ge c$.  His hypothesis uses *at most* $c$; our certificate on the
-closed domain $\mathbb{E}p \le t$ covers the boundary.
+Cambie's Question 2 (**source, arXiv:2212.12500v2, Q2 + Section 4**) asks for
+the following inequality when the common expectation is strictly below \(c\).
+For iid $p,q\sim\mu$ on $[0,1]$ and $(p,r)$ any self-coupling,
+$$(1-\alpha)\,\mathbb{E}h(p+q-pq) + \alpha\,\mathbb{E}h\!\big(\max(p,r,\min(p+r,\tfrac12))\big) \;\ge\; \mathbb{E}h(p).$$
+Our certificate covers the stronger closed domain
+\(\mathbb E p\le t_{\mathrm{cert}}\).  The revised paper and `AUDIT.md`
+reconstruct Section 4's sequential Bernoulli coupling and prove the required
+strict first-coordinate margin, so the implication is no longer an opaque
+black-box citation.
 
-Two exact bridge steps, **PROVED — `bridge_uc.py`**:
+Two exact human bridge steps, with finite symbolic controls in `bridge_uc.py`:
 
 1. $s^\star(p,r) := \min(\max(\tfrac12,p,r),\ \min(p+r,1))
   = \max(p,r,\min(p+r,\tfrac12))$: three exhaustive cases on $s = p+r$ and
@@ -49,8 +50,8 @@ So the certified functional — the exact quantity minimized in
 $$F(\mu) = (1-\alpha)\,Q + \alpha\,C - L,\qquad
 Q = \iint h(p+q-pq)\,d\mu d\mu,\quad L = \int h\,d\mu,\quad
 C = \inf_{M \in \mathrm{SymCpl}(\mu)} \int h(s^\star)\,dM,$$
-satisfies: $F(\mu)\ge0$ on every feasible $\mu$ ⟹ Q2 at $(\alpha,t)$ ⟹ the
-union-closed bound at $t$.  (Theorem 3's α = Cambie's α = 0.0356069.)
+satisfies: $F(\mu)\ge0$ on every feasible $\mu$ implies the union-closed bound
+at $t$ by the human entropy-chain proof in the revised manuscript.
 
 ## 2. Exact scaffold: Theorems A and A′
 
@@ -94,9 +95,9 @@ $10^{-30}$).  Recorded consequences:
 
 ## 3. Support reduction: Theorem B′′′
 
-**Theorem B′′′ — PROVED, `thmB3_proof.py`** (a text proof tagged
-[PROVED-HERE] / [CITED(verified quote)]; its controls are explicitly
-sampled): for each $\alpha \in [0,1]$ and $t$,
+**Theorem B′′′ — HUMAN-AUDITED, `thmB3_proof.py`** (the text proof uses
+explicitly identified Riesz/Banach--Alaoglu/Stone--Weierstrass and Bauer
+inputs; its executable controls are sampled):
 $$\min\{\,\Phi_{\mathrm{exact}}(\nu) : \nu\in P(\Delta),\;
 \mathbb{E}_{\mu_\nu}p \le t\,\},\qquad
 \Phi_{\mathrm{exact}}(\nu) = (1-\alpha)Q(\mu_\nu) + \alpha\int c\,d\nu - L(\mu_\nu),$$
@@ -134,12 +135,17 @@ tight: the obstruction uses exactly two orbits.)
 
 ## 4. The Margin Lemma and the certified functional
 
-Write $W(x,y) = \langle\psi(x),\psi(y)\rangle\ln2$; then $E = \|\int\psi\,
-d\mu\|^2$ and $\|\psi(x)\|^2 = W(x,x)/\ln2 = \operatorname{rh}(p)\,h(p)$, with
-$$\operatorname{rh}(p) := 2(1-p)h(p) - h\big((1-p)^2\big)
-= 2(1-p)h(p) - h(2p-p^2),\qquad \rho := \operatorname{rh}/h .$$
+Write $W(x,y)=\langle\psi(x),\psi(y)\rangle\ln2$; then
+$E=\|\int\psi\,d\mu\|^2$ and
+\[
+\|\psi(x)\|^2=\frac{W(x,x)}{\ln2}
+=\operatorname{rh}(p)=\rho(p)h(p),
+\]
+where
+$$\operatorname{rh}(p):=2(1-p)h(p)-h\big((1-p)^2\big)
+=2(1-p)h(p)-h(2p-p^2),\qquad \rho:=\operatorname{rh}/h.$$
 
-**Margin Lemma — PROVED, `margin_lemma.py`.**  Put
+**Margin Lemma — HUMAN-AUDITED, `margin_lemma.py`.**  Put
 $\sigma(\mu) = \int\sqrt{\operatorname{rh}}\,d\mu$ and, for $L>0$,
 $$\Lambda(\mu) := 2(1-\alpha)B - 1 + \alpha\,\frac{C}{L} - (1-\alpha)\frac{\sigma^2}{L},\qquad\text{then}\quad
 F(\mu) \ge L(\mu)\,\Lambda(\mu),$$
@@ -196,7 +202,7 @@ certifies $\min\Phi_{\mathrm{exact}} = \inf F \ge 0$.
   run, encoding $\sigma^2/L \le \mathrm{RHO\_GMAX}$);
   $\operatorname{rh}$: `arbcore`/`diag_exhaust` ($n = 20000$), with the
   pinned interior assertion $0.2342294 \le \mathrm{RH\_GMAX} \le 0.2350$.
-* **Endpoint derivative lemma — PROVED, `cert3.py` (in-file).**  With
+* **Endpoint derivative lemma — HUMAN-AUDITED, with symbolic subchecks in `cert3.py`.**  With
   $x = 1-z$: $\ln2\,\operatorname{rh}(1-x) = (1-x)^2\ln(1-x) +
   (1-x^2)\ln(1+x)$ (import-time asserted identity), so
   $\operatorname{rh} \ge c\,x^2/\ln2$, $c = (2-3X+X^2)/2 > 0$ on $x\le X$,
@@ -206,7 +212,7 @@ certifies $\min\Phi_{\mathrm{exact}} = \inf F \ge 0$.
 
 ## 6. The interval certificate (5-D branch-and-bound)
 
-**Machine-checked arithmetic.**  All universal inequalities are Arb ball
+**Machine-checked reduced arithmetic.**  All certificate discharge inequalities are Arb ball
 arithmetic (`flint`): ranges of $h$; $s^\star$ (monotone corners);
 $\operatorname{rh}$; $\sqrt{\operatorname{rh}}$; sound min/max extensions;
 exact shortest-decimal parsing of float endpoints into Arb/`Fraction`.
@@ -272,14 +278,13 @@ on it).
 7. **Residual**: all coordinates at the floor ($10^{-3}$ ordinary,
    $1.25\times10^{-4}$ collar-touching) — a COMPLETE slice has *zero*.
 
-**Orbit swap** — PROVED (exact invariance asserted term-by-term plus a
-rational-endpoint regression in `verify_orbit_swap`):
+**Orbit swap — HUMAN-AUDITED** (direct termwise invariance, plus an exact
+decimal-endpoint enclosure check and sampled value regression in `verify_orbit_swap`):
 $(p_1,q_1,p_2,q_2,w)\mapsto(p_2,q_2,p_1,q_1,1-w)$ preserves $M,L,C,S,\Phi$,
 so the root $[0,1]^4\times[\frac12,1]$ covers the full cube; the root is
-split into 8 exact dyadic $w$-slices.  Campaign numbers (v2 manifests): min
-width $10^{-3}$, collar floor $1.25\times10^{-4}$, face floor $10^{-3}$, face
-budget $10^5$, box budget $2\times10^9$, 24 h/slice, 160-bit covers, 80-bit
-work.
+split into 8 exact dyadic $w$-slices. Campaign I used min width $10^{-3}$,
+collar floor $1.25\times10^{-4}$, face floor $10^{-3}$, face budget $10^5$,
+box budget $2\times10^9$, 72 h/slice, 160-bit covers, and 80-bit work.
 
 ## 7. Proof trace and independent replay
 
@@ -385,10 +390,9 @@ arithmetic itself; **mpmath, numpy, scipy, sympy** at the versions pinned in
 **SHA-256**; the hashed Python sources; and the published citations: Bauer
 (1958), Winkler (1988) via Pinelis (2016), van Neerven arXiv:2112.11166v7
 (Riesz / Banach–Alaoglu / Stone–Weierstrass), Bru & de Siqueira Pedra (Lemma
-3.3), and Cambie arXiv:2212.12500v2 (Q2 + §4, the implication from the
-functional inequality to the UC constant — cited, not reproved).  A prior
-replay-chain audit recorded exactly this residual trust base; its four
-findings are closed in the campaign-F snapshot.
+3.3), and standard finite Shannon entropy facts. Cambie
+arXiv:2212.12500v2 supplies the source construction for the locally
+reconstructed set-family bridge.  The analytic chain remains human-audited.
 
 ## References
 

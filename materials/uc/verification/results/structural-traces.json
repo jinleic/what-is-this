@@ -1,0 +1,922 @@
+{
+  "$schema": "/Users/jinleic/jinleic-workspace/math/uc/verification/report.schema.json",
+  "arithmetic_rules_checked": false,
+  "campaign_id": "20260818T212601Z_425f109c15b64a6198785c6cebbbdaab",
+  "claim_status": "MACHINE-VERIFIED",
+  "finished_utc": "2026-08-26T07:27:50.396969+00:00",
+  "ignored_campaign_non_inputs": [
+    ".replay_slice0_OK",
+    ".replay_slice1_OK",
+    ".replay_slice2_OK",
+    ".replay_slice3_OK",
+    ".replay_slice4_OK",
+    ".replay_slice7_OK",
+    ".worker_slice0_2fb154187bc54147855004d5dafaf214_ac5d845bdc514d4993685adf5014ec2b.json",
+    ".worker_slice1_af8b2ece3eb947339f8a4e273c46e3bd_bc1997b70fcd41279784aa2d7b5e3597.json",
+    ".worker_slice2_26a971c6ac644309946431b3900b780a_e7399afd93804aab8555479b721a4464.json",
+    ".worker_slice3_89cda161a3584c8aa9c1631258e37fde_8d8b7ab7cf09497ca1120a49daee8c38.json",
+    ".worker_slice4_5136a0e6ac8c4078a5f8ceb73e34b777_7967e3077df544c6b174eecd42c1828f.json",
+    ".worker_slice5_7ab1c417449946a7b48c2d66c672bf93_764b77d8951d4efcb151a4cfe1e9884b.json",
+    ".worker_slice6_30d759beee9b4026928e3e9181f6afaa_6b0dfac6cffc4b3689edd27b278dad73.json",
+    ".worker_slice7_e8b0b30179f441129e30d9afa266cc78_5249e244bd7e46f59dc609376506a2a0.json",
+    "collect_output.txt",
+    "replay_slice0.txt",
+    "replay_slice1.txt",
+    "replay_slice2.txt",
+    "replay_slice3.txt",
+    "replay_slice4.txt",
+    "replay_slice6.txt",
+    "replay_slice7.txt"
+  ],
+  "imports_frozen_arithmetic": false,
+  "inputs": {
+    "source_after": {
+      "launch.json": {
+        "sha256": "63bb6fbe1cfbcb6b7d4c50d7b66882255e5e778ce604c92ecd1abdfa1ea8337e",
+        "size": 4339
+      },
+      "result_slice0_2fb154187bc54147855004d5dafaf214.json": {
+        "sha256": "1563f7310eefc2677b53d74448e31fc01c76a5d558ce545a2fb101ac1c043e30",
+        "size": 1425
+      },
+      "result_slice1_af8b2ece3eb947339f8a4e273c46e3bd.json": {
+        "sha256": "2692a0138d6a27806a34978d42a3073e073635239abe99639610a92427832b0a",
+        "size": 1425
+      },
+      "result_slice2_26a971c6ac644309946431b3900b780a.json": {
+        "sha256": "98575a068643f3d31e64876f7f3f4dcae7c45e5fcacd323551d3661c0669045d",
+        "size": 1430
+      },
+      "result_slice3_89cda161a3584c8aa9c1631258e37fde.json": {
+        "sha256": "6ed4deef8cf9305e86db8529b2446ac9ed884ecba746a10afa24de236f90f493",
+        "size": 1430
+      },
+      "result_slice4_5136a0e6ac8c4078a5f8ceb73e34b777.json": {
+        "sha256": "572d73f4ffef9d8df556bee2784d71f6075e2179f49499e04ca581e69d3bba12",
+        "size": 1431
+      },
+      "result_slice5_7ab1c417449946a7b48c2d66c672bf93.json": {
+        "sha256": "9e31c7f73486874893722c946837f2e9bce1c8db53483249fc236860d32ca759",
+        "size": 1437
+      },
+      "result_slice6_30d759beee9b4026928e3e9181f6afaa.json": {
+        "sha256": "894c2c1a412395ca4feffcb52d6473f47ed12fbb5dd5cd635968233e16b7f1dd",
+        "size": 1438
+      },
+      "result_slice7_e8b0b30179f441129e30d9afa266cc78.json": {
+        "sha256": "ed01f108e7642a4c85c3b09d93840a46cc51cf83f04596e0fdda5aefe325c603",
+        "size": 1425
+      },
+      "trace_slice0_2fb154187bc54147855004d5dafaf214.bin": {
+        "sha256": "4f55bcc261c541ab1adadff85f2b1148ce87fe5d34a9782f5cc14d1ba6588240",
+        "size": 21135611
+      },
+      "trace_slice1_af8b2ece3eb947339f8a4e273c46e3bd.bin": {
+        "sha256": "4f267f19cd0a99e7ed9dbb423b35fd1b4f2c9bf86f170e5527b2c31dd3870adb",
+        "size": 20827065
+      },
+      "trace_slice2_26a971c6ac644309946431b3900b780a.bin": {
+        "sha256": "e31cd8fdcec4db33a2eac19a153ef6d1b70772bb53416c7255f4b9ae088ec0ae",
+        "size": 23486265
+      },
+      "trace_slice3_89cda161a3584c8aa9c1631258e37fde.bin": {
+        "sha256": "d6cfc79989e17d69bfd449ec2a0dbcbf75f2f859a531a19114a11748a3f357e5",
+        "size": 34186855
+      },
+      "trace_slice4_5136a0e6ac8c4078a5f8ceb73e34b777.bin": {
+        "sha256": "c1434d19d3a7ce44224c295fc0eef0e56a14fd99351d9604b4edc84b0ff44f70",
+        "size": 71405987
+      },
+      "trace_slice5_7ab1c417449946a7b48c2d66c672bf93.bin": {
+        "sha256": "ae584e405a97229755ddb81dc77cfb5113938854e7566a6226c5ea5dee392f3c",
+        "size": 117709435
+      },
+      "trace_slice6_30d759beee9b4026928e3e9181f6afaa.bin": {
+        "sha256": "4a483eda93ebfbacc033f95f363b55af795c6e8664f67504849b943f056d03ef",
+        "size": 121456775
+      },
+      "trace_slice7_e8b0b30179f441129e30d9afa266cc78.bin": {
+        "sha256": "302fc8b877bf2331c10b7d67a717ca18a513f748cf9cf6929da8db6108bf5156",
+        "size": 78257861
+      }
+    },
+    "source_before": {
+      "launch.json": {
+        "sha256": "63bb6fbe1cfbcb6b7d4c50d7b66882255e5e778ce604c92ecd1abdfa1ea8337e",
+        "size": 4339
+      },
+      "result_slice0_2fb154187bc54147855004d5dafaf214.json": {
+        "sha256": "1563f7310eefc2677b53d74448e31fc01c76a5d558ce545a2fb101ac1c043e30",
+        "size": 1425
+      },
+      "result_slice1_af8b2ece3eb947339f8a4e273c46e3bd.json": {
+        "sha256": "2692a0138d6a27806a34978d42a3073e073635239abe99639610a92427832b0a",
+        "size": 1425
+      },
+      "result_slice2_26a971c6ac644309946431b3900b780a.json": {
+        "sha256": "98575a068643f3d31e64876f7f3f4dcae7c45e5fcacd323551d3661c0669045d",
+        "size": 1430
+      },
+      "result_slice3_89cda161a3584c8aa9c1631258e37fde.json": {
+        "sha256": "6ed4deef8cf9305e86db8529b2446ac9ed884ecba746a10afa24de236f90f493",
+        "size": 1430
+      },
+      "result_slice4_5136a0e6ac8c4078a5f8ceb73e34b777.json": {
+        "sha256": "572d73f4ffef9d8df556bee2784d71f6075e2179f49499e04ca581e69d3bba12",
+        "size": 1431
+      },
+      "result_slice5_7ab1c417449946a7b48c2d66c672bf93.json": {
+        "sha256": "9e31c7f73486874893722c946837f2e9bce1c8db53483249fc236860d32ca759",
+        "size": 1437
+      },
+      "result_slice6_30d759beee9b4026928e3e9181f6afaa.json": {
+        "sha256": "894c2c1a412395ca4feffcb52d6473f47ed12fbb5dd5cd635968233e16b7f1dd",
+        "size": 1438
+      },
+      "result_slice7_e8b0b30179f441129e30d9afa266cc78.json": {
+        "sha256": "ed01f108e7642a4c85c3b09d93840a46cc51cf83f04596e0fdda5aefe325c603",
+        "size": 1425
+      },
+      "trace_slice0_2fb154187bc54147855004d5dafaf214.bin": {
+        "sha256": "4f55bcc261c541ab1adadff85f2b1148ce87fe5d34a9782f5cc14d1ba6588240",
+        "size": 21135611
+      },
+      "trace_slice1_af8b2ece3eb947339f8a4e273c46e3bd.bin": {
+        "sha256": "4f267f19cd0a99e7ed9dbb423b35fd1b4f2c9bf86f170e5527b2c31dd3870adb",
+        "size": 20827065
+      },
+      "trace_slice2_26a971c6ac644309946431b3900b780a.bin": {
+        "sha256": "e31cd8fdcec4db33a2eac19a153ef6d1b70772bb53416c7255f4b9ae088ec0ae",
+        "size": 23486265
+      },
+      "trace_slice3_89cda161a3584c8aa9c1631258e37fde.bin": {
+        "sha256": "d6cfc79989e17d69bfd449ec2a0dbcbf75f2f859a531a19114a11748a3f357e5",
+        "size": 34186855
+      },
+      "trace_slice4_5136a0e6ac8c4078a5f8ceb73e34b777.bin": {
+        "sha256": "c1434d19d3a7ce44224c295fc0eef0e56a14fd99351d9604b4edc84b0ff44f70",
+        "size": 71405987
+      },
+      "trace_slice5_7ab1c417449946a7b48c2d66c672bf93.bin": {
+        "sha256": "ae584e405a97229755ddb81dc77cfb5113938854e7566a6226c5ea5dee392f3c",
+        "size": 117709435
+      },
+      "trace_slice6_30d759beee9b4026928e3e9181f6afaa.bin": {
+        "sha256": "4a483eda93ebfbacc033f95f363b55af795c6e8664f67504849b943f056d03ef",
+        "size": 121456775
+      },
+      "trace_slice7_e8b0b30179f441129e30d9afa266cc78.bin": {
+        "sha256": "302fc8b877bf2331c10b7d67a717ca18a513f748cf9cf6929da8db6108bf5156",
+        "size": 78257861
+      }
+    }
+  },
+  "limitations": [
+    "This audit checks only bytes, hashes, valid opcodes, exact-root metadata, DFS topology/termination, and equality with committed structural tallies.",
+    "It does not evaluate any interval discharge predicate and is not a second interval proof.",
+    "Auxiliary producer tallies listed in unchecked_result_tallies are hash-locked but are not encoded by cert3-trace-v1."
+  ],
+  "opcode_contract": {
+    "split": {
+      "16": "split_0",
+      "17": "split_1",
+      "18": "split_2",
+      "19": "split_3",
+      "20": "split_4"
+    },
+    "terminal": {
+      "0": "mean_infeasible",
+      "1": "corner_infeasible",
+      "2": "corner",
+      "3": "ratio",
+      "4": "center",
+      "5": "center_mixed",
+      "6": "center_mixed_swap",
+      "7": "center_w",
+      "8": "face",
+      "9": "residual"
+    }
+  },
+  "outcome": "PASS",
+  "report_sha256": "7270e5418be72b09e607457438bc9f8109154c31b491abca9546f4ebee3cf5a3",
+  "report_type": "structural_trace_audit",
+  "resource_controls": {
+    "chunk_size": 4194304,
+    "cpu_limit_seconds": 600,
+    "nice_increment": 10,
+    "parallel_workers": 1
+  },
+  "schema": "uc-structural-trace-audit-report-v1",
+  "slices": [
+    {
+      "claim_status": "MACHINE-VERIFIED",
+      "dyadic_midpoint_closure": true,
+      "maximum_pending_nodes": 31,
+      "opcode_counts": {
+        "0": 661564,
+        "1": 105000,
+        "16": 1831495,
+        "17": 1852221,
+        "18": 3063626,
+        "19": 1909690,
+        "2": 3218757,
+        "20": 1910773,
+        "3": 356182,
+        "4": 4166369,
+        "5": 1059513,
+        "6": 831310,
+        "7": 27088,
+        "8": 142023,
+        "9": 0
+      },
+      "result_tallies_match": true,
+      "root_exact": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "run_id": "2fb154187bc54147855004d5dafaf214",
+      "slice": 0,
+      "split_by_coordinate": {
+        "0": 1831495,
+        "1": 1852221,
+        "2": 3063626,
+        "3": 1909690,
+        "4": 1910773
+      },
+      "structural_tallies": {
+        "center": 4166369,
+        "center_mixed": 1059513,
+        "center_mixed_swap": 831310,
+        "center_w": 27088,
+        "corner": 3218757,
+        "face": 142023,
+        "infeasible": 766564,
+        "processed": 21135611,
+        "ratio": 356182,
+        "residual": 0,
+        "split": 10567805
+      },
+      "terminal_count": 10567806,
+      "topology": {
+        "final_pending_nodes": 0,
+        "initial_pending_nodes": 1,
+        "leaf_count_equals_split_count_plus_one": true,
+        "no_event_after_termination": true
+      },
+      "trace": {
+        "sha256": "4f55bcc261c541ab1adadff85f2b1148ce87fe5d34a9782f5cc14d1ba6588240",
+        "size": 21135611
+      },
+      "unchecked_result_tallies": [
+        "elapsed_ms",
+        "face_cleared",
+        "face_failed",
+        "face_processed",
+        "pin_success"
+      ]
+    },
+    {
+      "claim_status": "MACHINE-VERIFIED",
+      "dyadic_midpoint_closure": true,
+      "maximum_pending_nodes": 35,
+      "opcode_counts": {
+        "0": 722007,
+        "1": 113146,
+        "16": 1861807,
+        "17": 1713073,
+        "18": 2953961,
+        "19": 2179597,
+        "2": 2837057,
+        "20": 1705094,
+        "3": 446320,
+        "4": 4074579,
+        "5": 1107712,
+        "6": 858664,
+        "7": 23434,
+        "8": 230614,
+        "9": 0
+      },
+      "result_tallies_match": true,
+      "root_exact": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "run_id": "af8b2ece3eb947339f8a4e273c46e3bd",
+      "slice": 1,
+      "split_by_coordinate": {
+        "0": 1861807,
+        "1": 1713073,
+        "2": 2953961,
+        "3": 2179597,
+        "4": 1705094
+      },
+      "structural_tallies": {
+        "center": 4074579,
+        "center_mixed": 1107712,
+        "center_mixed_swap": 858664,
+        "center_w": 23434,
+        "corner": 2837057,
+        "face": 230614,
+        "infeasible": 835153,
+        "processed": 20827065,
+        "ratio": 446320,
+        "residual": 0,
+        "split": 10413532
+      },
+      "terminal_count": 10413533,
+      "topology": {
+        "final_pending_nodes": 0,
+        "initial_pending_nodes": 1,
+        "leaf_count_equals_split_count_plus_one": true,
+        "no_event_after_termination": true
+      },
+      "trace": {
+        "sha256": "4f267f19cd0a99e7ed9dbb423b35fd1b4f2c9bf86f170e5527b2c31dd3870adb",
+        "size": 20827065
+      },
+      "unchecked_result_tallies": [
+        "elapsed_ms",
+        "face_cleared",
+        "face_failed",
+        "face_processed",
+        "pin_success"
+      ]
+    },
+    {
+      "claim_status": "MACHINE-VERIFIED",
+      "dyadic_midpoint_closure": true,
+      "maximum_pending_nodes": 36,
+      "opcode_counts": {
+        "0": 1027212,
+        "1": 132137,
+        "16": 2117186,
+        "17": 2208818,
+        "18": 3233502,
+        "19": 2601551,
+        "2": 3338422,
+        "20": 1582075,
+        "3": 694759,
+        "4": 4198151,
+        "5": 1025766,
+        "6": 827217,
+        "7": 29236,
+        "8": 470233,
+        "9": 0
+      },
+      "result_tallies_match": true,
+      "root_exact": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "run_id": "26a971c6ac644309946431b3900b780a",
+      "slice": 2,
+      "split_by_coordinate": {
+        "0": 2117186,
+        "1": 2208818,
+        "2": 3233502,
+        "3": 2601551,
+        "4": 1582075
+      },
+      "structural_tallies": {
+        "center": 4198151,
+        "center_mixed": 1025766,
+        "center_mixed_swap": 827217,
+        "center_w": 29236,
+        "corner": 3338422,
+        "face": 470233,
+        "infeasible": 1159349,
+        "processed": 23486265,
+        "ratio": 694759,
+        "residual": 0,
+        "split": 11743132
+      },
+      "terminal_count": 11743133,
+      "topology": {
+        "final_pending_nodes": 0,
+        "initial_pending_nodes": 1,
+        "leaf_count_equals_split_count_plus_one": true,
+        "no_event_after_termination": true
+      },
+      "trace": {
+        "sha256": "e31cd8fdcec4db33a2eac19a153ef6d1b70772bb53416c7255f4b9ae088ec0ae",
+        "size": 23486265
+      },
+      "unchecked_result_tallies": [
+        "elapsed_ms",
+        "face_cleared",
+        "face_failed",
+        "face_processed",
+        "pin_success"
+      ]
+    },
+    {
+      "claim_status": "MACHINE-VERIFIED",
+      "dyadic_midpoint_closure": true,
+      "maximum_pending_nodes": 38,
+      "opcode_counts": {
+        "0": 2465289,
+        "1": 172458,
+        "16": 2846567,
+        "17": 3574023,
+        "18": 4577452,
+        "19": 4402652,
+        "2": 4699405,
+        "20": 1692733,
+        "3": 777097,
+        "4": 5261749,
+        "5": 999230,
+        "6": 592501,
+        "7": 14975,
+        "8": 2110724,
+        "9": 0
+      },
+      "result_tallies_match": true,
+      "root_exact": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "run_id": "89cda161a3584c8aa9c1631258e37fde",
+      "slice": 3,
+      "split_by_coordinate": {
+        "0": 2846567,
+        "1": 3574023,
+        "2": 4577452,
+        "3": 4402652,
+        "4": 1692733
+      },
+      "structural_tallies": {
+        "center": 5261749,
+        "center_mixed": 999230,
+        "center_mixed_swap": 592501,
+        "center_w": 14975,
+        "corner": 4699405,
+        "face": 2110724,
+        "infeasible": 2637747,
+        "processed": 34186855,
+        "ratio": 777097,
+        "residual": 0,
+        "split": 17093427
+      },
+      "terminal_count": 17093428,
+      "topology": {
+        "final_pending_nodes": 0,
+        "initial_pending_nodes": 1,
+        "leaf_count_equals_split_count_plus_one": true,
+        "no_event_after_termination": true
+      },
+      "trace": {
+        "sha256": "d6cfc79989e17d69bfd449ec2a0dbcbf75f2f859a531a19114a11748a3f357e5",
+        "size": 34186855
+      },
+      "unchecked_result_tallies": [
+        "elapsed_ms",
+        "face_cleared",
+        "face_failed",
+        "face_processed",
+        "pin_success"
+      ]
+    },
+    {
+      "claim_status": "MACHINE-VERIFIED",
+      "dyadic_midpoint_closure": true,
+      "maximum_pending_nodes": 43,
+      "opcode_counts": {
+        "0": 6720686,
+        "1": 248436,
+        "16": 3832359,
+        "17": 5412978,
+        "18": 9868799,
+        "19": 12688496,
+        "2": 9899146,
+        "20": 3900361,
+        "3": 84904,
+        "4": 11895793,
+        "5": 1269484,
+        "6": 95757,
+        "7": 1427,
+        "8": 5487361,
+        "9": 0
+      },
+      "result_tallies_match": true,
+      "root_exact": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "run_id": "5136a0e6ac8c4078a5f8ceb73e34b777",
+      "slice": 4,
+      "split_by_coordinate": {
+        "0": 3832359,
+        "1": 5412978,
+        "2": 9868799,
+        "3": 12688496,
+        "4": 3900361
+      },
+      "structural_tallies": {
+        "center": 11895793,
+        "center_mixed": 1269484,
+        "center_mixed_swap": 95757,
+        "center_w": 1427,
+        "corner": 9899146,
+        "face": 5487361,
+        "infeasible": 6969122,
+        "processed": 71405987,
+        "ratio": 84904,
+        "residual": 0,
+        "split": 35702993
+      },
+      "terminal_count": 35702994,
+      "topology": {
+        "final_pending_nodes": 0,
+        "initial_pending_nodes": 1,
+        "leaf_count_equals_split_count_plus_one": true,
+        "no_event_after_termination": true
+      },
+      "trace": {
+        "sha256": "c1434d19d3a7ce44224c295fc0eef0e56a14fd99351d9604b4edc84b0ff44f70",
+        "size": 71405987
+      },
+      "unchecked_result_tallies": [
+        "elapsed_ms",
+        "face_cleared",
+        "face_failed",
+        "face_processed",
+        "pin_success"
+      ]
+    },
+    {
+      "claim_status": "MACHINE-VERIFIED",
+      "dyadic_midpoint_closure": true,
+      "maximum_pending_nodes": 42,
+      "opcode_counts": {
+        "0": 12373200,
+        "1": 345858,
+        "16": 7256037,
+        "17": 11020402,
+        "18": 16033214,
+        "19": 20656472,
+        "2": 12155506,
+        "20": 3888592,
+        "3": 27261,
+        "4": 22256705,
+        "5": 1786704,
+        "6": 26246,
+        "7": 531,
+        "8": 9882707,
+        "9": 0
+      },
+      "result_tallies_match": true,
+      "root_exact": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "run_id": "7ab1c417449946a7b48c2d66c672bf93",
+      "slice": 5,
+      "split_by_coordinate": {
+        "0": 7256037,
+        "1": 11020402,
+        "2": 16033214,
+        "3": 20656472,
+        "4": 3888592
+      },
+      "structural_tallies": {
+        "center": 22256705,
+        "center_mixed": 1786704,
+        "center_mixed_swap": 26246,
+        "center_w": 531,
+        "corner": 12155506,
+        "face": 9882707,
+        "infeasible": 12719058,
+        "processed": 117709435,
+        "ratio": 27261,
+        "residual": 0,
+        "split": 58854717
+      },
+      "terminal_count": 58854718,
+      "topology": {
+        "final_pending_nodes": 0,
+        "initial_pending_nodes": 1,
+        "leaf_count_equals_split_count_plus_one": true,
+        "no_event_after_termination": true
+      },
+      "trace": {
+        "sha256": "ae584e405a97229755ddb81dc77cfb5113938854e7566a6226c5ea5dee392f3c",
+        "size": 117709435
+      },
+      "unchecked_result_tallies": [
+        "elapsed_ms",
+        "face_cleared",
+        "face_failed",
+        "face_processed",
+        "pin_success"
+      ]
+    },
+    {
+      "claim_status": "MACHINE-VERIFIED",
+      "dyadic_midpoint_closure": true,
+      "maximum_pending_nodes": 42,
+      "opcode_counts": {
+        "0": 12903993,
+        "1": 445707,
+        "16": 8103608,
+        "17": 11671103,
+        "18": 17216690,
+        "19": 18498988,
+        "2": 13820378,
+        "20": 5237998,
+        "3": 23348,
+        "4": 20315341,
+        "5": 2937116,
+        "6": 16355,
+        "7": 313,
+        "8": 10265837,
+        "9": 0
+      },
+      "result_tallies_match": true,
+      "root_exact": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "run_id": "30d759beee9b4026928e3e9181f6afaa",
+      "slice": 6,
+      "split_by_coordinate": {
+        "0": 8103608,
+        "1": 11671103,
+        "2": 17216690,
+        "3": 18498988,
+        "4": 5237998
+      },
+      "structural_tallies": {
+        "center": 20315341,
+        "center_mixed": 2937116,
+        "center_mixed_swap": 16355,
+        "center_w": 313,
+        "corner": 13820378,
+        "face": 10265837,
+        "infeasible": 13349700,
+        "processed": 121456775,
+        "ratio": 23348,
+        "residual": 0,
+        "split": 60728387
+      },
+      "terminal_count": 60728388,
+      "topology": {
+        "final_pending_nodes": 0,
+        "initial_pending_nodes": 1,
+        "leaf_count_equals_split_count_plus_one": true,
+        "no_event_after_termination": true
+      },
+      "trace": {
+        "sha256": "4a483eda93ebfbacc033f95f363b55af795c6e8664f67504849b943f056d03ef",
+        "size": 121456775
+      },
+      "unchecked_result_tallies": [
+        "elapsed_ms",
+        "face_cleared",
+        "face_failed",
+        "face_processed",
+        "pin_success"
+      ]
+    },
+    {
+      "claim_status": "MACHINE-VERIFIED",
+      "dyadic_midpoint_closure": true,
+      "maximum_pending_nodes": 38,
+      "opcode_counts": {
+        "0": 4370311,
+        "1": 687125,
+        "16": 4728914,
+        "17": 7473742,
+        "18": 12544006,
+        "19": 11126684,
+        "2": 16794114,
+        "20": 3255584,
+        "3": 13108,
+        "4": 11466023,
+        "5": 4150412,
+        "6": 2473,
+        "7": 80,
+        "8": 1645285,
+        "9": 0
+      },
+      "result_tallies_match": true,
+      "root_exact": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "run_id": "e8b0b30179f441129e30d9afa266cc78",
+      "slice": 7,
+      "split_by_coordinate": {
+        "0": 4728914,
+        "1": 7473742,
+        "2": 12544006,
+        "3": 11126684,
+        "4": 3255584
+      },
+      "structural_tallies": {
+        "center": 11466023,
+        "center_mixed": 4150412,
+        "center_mixed_swap": 2473,
+        "center_w": 80,
+        "corner": 16794114,
+        "face": 1645285,
+        "infeasible": 5057436,
+        "processed": 78257861,
+        "ratio": 13108,
+        "residual": 0,
+        "split": 39128930
+      },
+      "terminal_count": 39128931,
+      "topology": {
+        "final_pending_nodes": 0,
+        "initial_pending_nodes": 1,
+        "leaf_count_equals_split_count_plus_one": true,
+        "no_event_after_termination": true
+      },
+      "trace": {
+        "sha256": "302fc8b877bf2331c10b7d67a717ca18a513f748cf9cf6929da8db6108bf5156",
+        "size": 78257861
+      },
+      "unchecked_result_tallies": [
+        "elapsed_ms",
+        "face_cleared",
+        "face_failed",
+        "face_processed",
+        "pin_success"
+      ]
+    }
+  ],
+  "started_utc": "2026-08-26T07:26:55.927270+00:00",
+  "total_elapsed_seconds": 54.46924633299932,
+  "verifier_inputs_after": {
+    "campaign_lock": {
+      "sha256": "d254a23a4df7cb3a4c6aae2453883324fba2381c1890c4f011d61c7971b84b48",
+      "size": 12590
+    },
+    "report.schema.json": {
+      "sha256": "d34595787382f0110daa6f307c0fd773eec28e1d02ec490a2839bebdd9fdeead",
+      "size": 14451
+    },
+    "structural_trace_audit.py": {
+      "sha256": "7238a17f8cf83024d9b05eb921c9badacc6a517e54295b6af56c20fbf9997d57",
+      "size": 28111
+    }
+  },
+  "verifier_inputs_before": {
+    "campaign_lock": {
+      "sha256": "d254a23a4df7cb3a4c6aae2453883324fba2381c1890c4f011d61c7971b84b48",
+      "size": 12590
+    },
+    "report.schema.json": {
+      "sha256": "d34595787382f0110daa6f307c0fd773eec28e1d02ec490a2839bebdd9fdeead",
+      "size": 14451
+    },
+    "structural_trace_audit.py": {
+      "sha256": "7238a17f8cf83024d9b05eb921c9badacc6a517e54295b6af56c20fbf9997d57",
+      "size": 28111
+    }
+  }
+}

@@ -1,0 +1,911 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\M}{\mathcal M}
+\newcommand{\W}{\mathcal W}
+\newcommand{\V}{\mathcal V}
+\newcommand{\QF}{\mathcal Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\status}[1]{\textnormal{\textsf{\footnotesize[#1]}}}
+\newcommand{\MachineVerified}{\status{MACHINE-VERIFIED}}
+\newcommand{\HumanAudited}{\status{HUMAN-AUDITED}}
+\newcommand{\ComputationalEvidence}{\status{COMPUTATIONAL-EVIDENCE}}
+\newcommand{\CitedDependency}{\status{CITED-DEPENDENCY}}
+\newcommand{\OpenStatus}{\status{OPEN}}
+\newcommand{\FailedStatus}{\status{FAILED}}
+
+\title{A Gram Decomposition for the Entropy Kernel in Liu's First Hypothesis}
+\author{J.\ Chen\thanks{Repository manuscript package:
+\texttt{math/LIU\_H1/paper/}.  Status labels distinguish human proof,
+machine-verified algebra, finite computation, and open scope.}}
+\date{August 26, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\HumanAudited{} We give a self-contained proof of the operational
+three-moment formulation of the positive-semidefiniteness hypothesis in
+Liu's conditionally-IID approach to the union-closed sets conjecture.  For
+\[
+  K_{\mathrm L}(s,t)
+  =h\bigl((1-s)(1-t)+s(1-s)t(1-t)\bigr),
+  \qquad 0\le s,t\le1,
+\]
+we prove that
+\[
+  \iint K_{\mathrm L}(s,t)\,d\mu(s)\,d\mu(t)\le0
+\]
+for every finite signed regular Borel measure \(\mu\) annihilating
+\(1\), \(s\), and \(s(1-s)\).  The reduction removes the projected
+rank-one terms and leaves a residual kernel \(R\).  An exact Taylor identity
+writes \(-R\) as two positive-semidefinite power-series kernels plus an
+integral of reciprocal polynomial kernels.  An explicit Lorentz-signature
+factorization makes every reciprocal kernel a convergent Gram series.
+\MachineVerified{} The finite algebraic identities in this decomposition are
+also checked by exact symbolic assertions in the canonical repository script;
+those checks corroborate but do not replace the analytic proof.
+\OpenStatus{} This manuscript is a candidate resolution of Liu's first
+hypothesis only.  Liu's separate Hypothesis~2 and the stronger
+union-closed constant derived conditionally from both hypotheses remain open.
+A bounded theorem-level literature search found no earlier proof of this
+kernel statement; absence from that search is not proof of universal priority.
+No claim of peer review, independent acceptance, or end-to-end formal
+verification is made.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+\CitedDependency{} A finite family of sets is \emph{union-closed} if it is
+closed under pairwise unions.  Frankl's union-closed sets conjecture asks
+whether every finite nontrivial union-closed family has an element belonging
+to at least half of its member sets; Bruhn and Schaudt survey the history and
+classical formulations \cite{bruhn-schaudt}.
+
+\CitedDependency{} Liu introduced a conditionally-IID entropy coupling and a
+finite-dimensional reduction for improving quantitative bounds toward that
+conjecture \cite{liu}.  The explicit value reported in Liu's Theorem~13 is
+conditional on two distinct inputs: the positive-semidefiniteness condition
+in Section~V-A and the asserted structure of a nine-parameter global minimizer
+in Section~V-B.  We call these inputs Hypothesis~1 and Hypothesis~2,
+respectively, following the repository audit terminology.  Liu supported
+Section~V-A with the 2,499-node grid code \texttt{frankl3.m} and finite
+coefficient code \texttt{frankl7.m}, and Section~V-B with random-start
+optimization.  Copies are archived under \path{../literature/code/}; all are
+numerical evidence rather than continuum/global proofs.
+
+\HumanAudited{} The purpose of this paper is deliberately narrower than a
+new union-closed frequency theorem.  We prove the operational formulation of
+Hypothesis~1, including all endpoints and all finite signed measures.  The
+argument has three steps:
+\begin{enumerate}[label=(\roman*)]
+  \item the codimension-three projection is removed exactly;
+  \item the resulting residual kernel is written as a sum of three kernels;
+  \item the only non-obvious summand is made positive semidefinite by an
+        explicit Lorentz-to-Gram conversion.
+\end{enumerate}
+The residual statement is stronger than the projected assertion because it
+requires no moment constraints.
+
+\HumanAudited{} Liu introduced the scale-one kernel and supported its
+conditional sign numerically.  The closest rigorous predecessors are the
+unperturbed product-entropy kernel of Alweiss--Huang--Sellke
+\cite[Lemma~5]{ahs} and Liu's Lemma~11 for sufficiently small perturbation
+scale.  Neither reaches \(f(x)=x(1-x)\) at scale one.  We are not aware of an
+earlier proof at that endpoint; the full multi-index search cutoff is
+2026-08-25, an arXiv-feed refresh on 2026-08-26 found no later collision, and
+universal priority remains open.
+
+The proof uses classical closure of PSD kernels under nonnegative sums,
+limits, and Schur products \cite[Theorem~7.5.3]{horn-johnson}.  Its reciprocal
+kernel is the standard Hilbert-ball kernel
+\((1-\langle u,v\rangle)^{-1}\) \cite{agler-mccarthy}.  The
+problem-specific content is the exact entropy Taylor regrouping and the
+Lorentz factorization placing the normalized polynomial feature map inside
+the unit ball.  Search protocol, sources, and limitations:
+\path{../LITERATURE_ORIGINALITY.md}.
+
+\paragraph{Status vocabulary.}
+Every load-bearing claim is assigned one of the following labels.
+\MachineVerified{} means an exact symbolic or validated finite computation
+has a replayable code path.  \HumanAudited{} means the continuum mathematical
+argument is written and checked as ordinary proof.  \ComputationalEvidence{}
+means a finite-precision or finite-dimensional diagnostic only.
+\CitedDependency{} identifies material imported from an external source.
+\OpenStatus{} marks an unresolved question or incomplete audit, and
+\FailedStatus{} marks a route for which an explicit obstruction is recorded.
+A machine-verified algebraic identity is not the same as an end-to-end formal
+proof in a proof assistant.
+
+\section{Spaces, kernels, and projectors}
+\label{sec:setup}
+
+Let \(X=[0,1]\) with its Borel \(\sigma\)-algebra.  Write \(\M(X)\) for the
+real vector space of finite signed regular Borel measures on \(X\), equipped
+with total-variation norm, and write \(L^2=L^2(X,ds)\) for the real Hilbert
+space with Lebesgue measure.  All unqualified integrals below are over
+\([0,1]\); double integrals are over \([0,1]^2\).
+
+Define binary entropy in bits by
+\begin{equation}
+  h(x)=-x\log_2x-(1-x)\log_2(1-x),\qquad 0<x<1,
+  \label{eq:entropy}
+\end{equation}
+with the continuous endpoint values \(h(0)=h(1)=0\).  Put
+\begin{equation}
+  a(s)=s(1-s),\qquad
+  z(s,t)=(1-s)(1-t)+a(s)a(t),\qquad
+  K_{\mathrm L}(s,t)=h(z(s,t)).
+  \label{eq:liu-kernel}
+\end{equation}
+The subscript \({\mathrm L}\) distinguishes Liu's entropy kernel from the
+auxiliary kernels introduced later.  The functions \(z\) and
+\(K_{\mathrm L}\) are symmetric and continuous on the closed square.
+Indeed, for fixed \(t\), the function
+\((1-s)(1-t)(1+st)\) is nonincreasing in \(s\), so \(0\le z\le1\).
+
+For a continuous symmetric kernel \(F:X^2\to\RR\), define
+\begin{equation}
+  \QF_F(\mu)=\iint F(s,t)\,d\mu(s)\,d\mu(t),
+  \qquad \mu\in\M(X),
+  \label{eq:measure-form}
+\end{equation}
+and define its bounded self-adjoint integral operator on \(L^2\) by
+\begin{equation}
+  (T_Fg)(s)=\int F(s,t)g(t)\,dt.
+  \label{eq:integral-operator}
+\end{equation}
+We call \(F\) positive semidefinite (PSD) if every finite Gram matrix
+\([F(x_i,x_j)]_{i,j=1}^n\) is positive semidefinite; it is negative
+semidefinite (NSD) if \(-F\) is PSD.  Lemma~\ref{lem:psd-closure} below connects
+this pointwise definition with \eqref{eq:measure-form}.
+
+Set
+\begin{equation}
+  f_0(s)=1,\qquad f_1(s)=s,\qquad f_2(s)=a(s),
+  \qquad
+  \W=\operatorname{span}\{f_0,f_1,f_2\}\subset L^2.
+  \label{eq:constraint-space}
+\end{equation}
+The algebraic identity \(a(s)=s-s^2\), together with
+\(s^2=s-a(s)\), proves explicitly that
+\begin{equation}
+  \W=\operatorname{span}\{1,s,s(1-s)\}
+    =\operatorname{span}\{1,s,s^2\}.
+  \label{eq:span-equality}
+\end{equation}
+Thus \(\dim\W=3\).  The corresponding moment-annihilating spaces are
+\begin{align}
+  \V_{\M}
+  &=\left\{\mu\in\M(X):
+      \int f_j\,d\mu=0\ \text{for }j=0,1,2\right\},
+      \label{eq:measure-subspace}\\
+  \V_2
+  &=\W^\perp
+   =\left\{g\in L^2:
+      \int f_j(s)g(s)\,ds=0\ \text{for }j=0,1,2\right\}.
+      \label{eq:l2-subspace}
+\end{align}
+
+For completeness, let
+\[
+  \boldsymbol f(s)=(f_0(s),f_1(s),f_2(s))^{\mathsf T},
+  \qquad
+  \Gamma=\int\boldsymbol f(s)\boldsymbol f(s)^{\mathsf T}\,ds
+  =\begin{pmatrix}
+      1&1/2&1/6\\
+      1/2&1/3&1/12\\
+      1/6&1/12&1/30
+    \end{pmatrix}.
+\]
+Linear independence makes \(\Gamma\) invertible.  The \(L^2\)-orthogonal
+projector onto \(\W\) and the complementary projector onto \(\V_2\) are
+\begin{equation}
+  (\Pi_{\W}g)(s)
+  =\boldsymbol f(s)^{\mathsf T}\Gamma^{-1}
+      \int\boldsymbol f(t)g(t)\,dt,
+  \qquad
+  P_{\V}=I-\Pi_{\W}.
+  \label{eq:continuum-projector}
+\end{equation}
+No other continuum projector is used in the proof.
+
+The associated discrete projector can also be stated without ambiguity.  For
+distinct nodes \(s_1,\ldots,s_n\) for which the \(n\times3\) design matrix
+\(C\), \(C_{ij}=f_{j-1}(s_i)\), has full column rank, put
+\begin{equation}
+  P_n=I_n-C(C^{\mathsf T}C)^{-1}C^{\mathsf T}.
+  \label{eq:discrete-projector}
+\end{equation}
+Then \(P_n\) is the Euclidean orthogonal projector onto
+\(\ker C^{\mathsf T}\), a subspace of dimension \(n-3\).
+
+\begin{hypothesis}[Operational form of Liu's Hypothesis~1;
+\CitedDependency]
+\label{hyp:liu-h1}
+For every \(\mu\in\V_{\M}\),
+\begin{equation}
+  \QF_{K_{\mathrm L}}(\mu)
+  =\iint K_{\mathrm L}(s,t)\,d\mu(s)\,d\mu(t)\le0.
+  \label{eq:liu-h1}
+\end{equation}
+Equivalently at the level of the named constraints, \(\mu\) annihilates
+\(1,s,s(1-s)\), or, by \eqref{eq:span-equality}, \(1,s,s^2\).
+\end{hypothesis}
+
+\begin{remark}[The source's codimension count]
+\label{rem:codimension}
+\CitedDependency{} Liu's Section~V-A calls the affine probability-measure
+slice ``codimension 2'' \cite[Section~V-A]{liu}: normalization already fixes
+mass, and equations~(48)--(49) add two moments.  Homogeneous signed
+perturbations must also annihilate mass, so the accompanying numerical
+projector has the three columns \(1,s,s(1-s)\).  By
+\eqref{eq:span-equality} these are the independent moments \(1,s,s^2\).
+Thus ``codimension two in the probability simplex'' and ``three homogeneous
+constraints on signed measures'' describe the same operational tangent space.
+\end{remark}
+
+\begin{theorem}[Unprojected residual theorem; \HumanAudited]
+\label{thm:residual}
+Define the continuous symmetric kernel \(R\) by
+\begin{equation}
+  R(s,t)
+  =A\bigl[B-(1+B)\ln(1+B)\bigr]
+   -\bigl[z+(1-z)\ln(1-z)\bigr],
+  \label{eq:residual}
+\end{equation}
+where
+\begin{equation}
+  u=1-s,\qquad v=1-t,\qquad A=uv,\qquad B=st,
+  \qquad z=A(1+B).
+  \label{eq:ABz}
+\end{equation}
+The convention at \(z=1\) is the continuous one.  Then \(R\) is NSD on the
+whole closed interval: for every \(\nu\in\M(X)\),
+\begin{equation}
+  \QF_R(\nu)=\iint R(s,t)\,d\nu(s)\,d\nu(t)\le0.
+  \label{eq:residual-nsd}
+\end{equation}
+No moment, mass, sign, absolute-continuity, or endpoint-exclusion assumption is
+placed on \(\nu\).
+\end{theorem}
+
+\begin{corollary}[Candidate resolution of Liu's Hypothesis~1;
+\HumanAudited]
+\label{cor:liu-h1}
+Hypothesis~\ref{hyp:liu-h1} holds.  In particular,
+\begin{equation}
+  \langle g,T_{K_{\mathrm L}}g\rangle_{L^2}\le0
+  \quad(g\in\V_2),
+  \qquad
+  -P_{\V}T_{K_{\mathrm L}}P_{\V}\succeq0
+  \quad\text{on }L^2.
+  \label{eq:operator-consequence}
+\end{equation}
+For every discrete node set covered by \eqref{eq:discrete-projector},
+\(-P_n[K_{\mathrm L}(s_i,s_j)]_{i,j}P_n\) is positive semidefinite.
+\end{corollary}
+
+Theorem~\ref{thm:residual} and Corollary~\ref{cor:liu-h1} are proved in
+Sections~\ref{sec:reduction}--\ref{sec:assembly}.
+
+\section{Exact removal of the projector}
+\label{sec:reduction}
+
+Use natural logarithms in this section and define
+\begin{equation}
+  G(x)=x+(1-x)\ln(1-x),\qquad -1\le x<1,
+  \quad G(1)=1.
+  \label{eq:G-definition}
+\end{equation}
+On \([0,1]\),
+\begin{equation}
+  G(x)=\sum_{k=2}^{\infty}\frac{x^k}{k(k-1)}.
+  \label{eq:G-series}
+\end{equation}
+
+\begin{lemma}[Projected entropy equals the residual form;
+\HumanAudited]
+\label{lem:reduction}
+For every \(\mu\in\V_{\M}\),
+\begin{equation}
+  (\ln2)\,\QF_{K_{\mathrm L}}(\mu)=\QF_R(\mu).
+  \label{eq:exact-reduction}
+\end{equation}
+All terms are interpreted by continuous extension at \(s=0,1\) and
+\(t=0,1\).
+\end{lemma}
+
+\begin{proof}
+From \(z=uv(1+st)\) and \eqref{eq:entropy},
+\begin{align}
+  (\ln2)h(z)
+  &=-z\ln u-z\ln v-z\ln(1+B)+z-G(z).
+  \label{eq:entropy-expansion}
+\end{align}
+Here, for example, \(u\ln u\) is set to zero at \(u=0\); every apparently
+singular product in \eqref{eq:entropy-expansion} then has a continuous value.
+Since \(z=A+AB\), move the rank-one term \(AB=a(s)a(t)\) into the remainder.
+The result is the pointwise identity
+\begin{equation}
+  (\ln2)h(z)=-z\ln u-z\ln v+A+R(s,t).
+  \label{eq:pointwise-reduction}
+\end{equation}
+Indeed, the remainder on the right is exactly \eqref{eq:residual}.
+
+It remains to show that the first three kernels on the right of
+\eqref{eq:pointwise-reduction} vanish in the quadratic form of \(\mu\).  Their
+rank-one decompositions are
+\begin{align*}
+  -z\ln u
+    &=-(u\ln u)v-(us\ln u)(vt),\\
+  -z\ln v
+    &=-u(v\ln v)-(us)(vt\ln v),\\
+  A&=uv.
+\end{align*}
+The functions \(u=1-s\) and \(us=s(1-s)\) belong to \(\W\); the analogous
+statements hold in the \(t\)-variable.  Each rank-one product therefore has at
+least one factor annihilated by \(\mu\).  Fubini's theorem
+\cite[Chapter~8]{rudin} applies because all extended factors are continuous
+and \(\mu\) has finite total variation.
+Integrating \eqref{eq:pointwise-reduction} proves
+\eqref{eq:exact-reduction}.
+\end{proof}
+
+\section{Positive-semidefinite closure and the Taylor identity}
+\label{sec:taylor}
+
+\begin{lemma}[Closure rules for continuous PSD kernels;
+\HumanAudited]
+\label{lem:psd-closure}
+Let \(Y\) be a compact metric space.
+\begin{enumerate}[label=(\alph*)]
+  \item A rank-one kernel \(q(x)q(y)\) is PSD.
+  \item A nonnegative linear combination, a pointwise limit, or a pointwise
+        product of finite-valued PSD kernels is PSD whenever the resulting
+        kernel is finite.  A finite nonnegative integral of PSD kernels is
+        PSD whenever its entries are measurable and integrable.
+  \item If \(F\) is continuous and PSD on \(Y^2\), then
+        \(\iint F\,d\nu\,d\nu\ge0\) for every \(\nu\in\M(Y)\).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (a) follows from
+\(\sum_{i,j}c_ic_jq(x_i)q(x_j)=(\sum_i c_iq(x_i))^2\).
+For part (b), nonnegative sums and integrals preserve each finite Gram
+quadratic form.  Pointwise limits preserve positive semidefiniteness because
+the cone of positive semidefinite finite matrices is closed.  Products are
+covered by the Schur product theorem \cite[Theorem~7.5.3]{horn-johnson};
+equivalently, Gram vectors may be tensor-multiplied.
+
+For part (c), partition \(Y\) into finitely many Borel sets of mesh tending to
+zero and choose one point from each nonempty cell.  Replacing \(\nu\) by the
+atomic measure that assigns each chosen point the signed mass of its cell
+produces nonnegative quadratic forms.  Uniform continuity of \(F\) bounds the
+difference from the original double integral by the oscillation of \(F\) on
+the product cells times \(\lvert\nu\rvert(Y)^2\), which tends to zero.  The
+limit is therefore nonnegative.
+\end{proof}
+
+For \(0\le r\le1\), define the polynomial kernel
+\begin{equation}
+  D_r(s,t)=(1+rB)\,[1-A(1+rB)].
+  \label{eq:D-definition}
+\end{equation}
+It is positive away from \((s,t)=(0,0)\): the first factor is positive, while
+\(A(1+rB)\le A(1+B)=z\le1\), with equality only at the corner.
+
+\begin{lemma}[Exact Taylor decomposition; \HumanAudited{} and
+\MachineVerified]
+\label{lem:taylor}
+For every \((s,t)\in[0,1]^2\setminus\{(0,0)\}\),
+\begin{equation}
+\begin{split}
+  -R(s,t)
+  ={}&G(A)-AB\ln(1-A)\\
+     &+B^2\int_0^1(1-r)\frac{A}{D_r(s,t)}\,dr.
+\end{split}
+\label{eq:taylor-decomposition}
+\end{equation}
+At \((s,t)=(0,0)\), assigning the three terms on the right the values
+\(1,0,0\), respectively, gives the same identity.  These assignments are
+proved continuous in \eqref{eq:log-endpoint} and
+Lemma~\ref{lem:reciprocal}.
+\end{lemma}
+
+\begin{proof}
+Because
+\(G(-B)=-B+(1+B)\ln(1+B)\), equation \eqref{eq:residual} gives
+\begin{equation}
+  -R=G(A(1+B))+A G(-B).
+  \label{eq:phi-definition}
+\end{equation}
+For fixed \(0\le A<1\), let the right-hand side be \(\phi_A(B)\).  Direct
+differentiation yields, for all \(B\) in the relevant interval,
+\begin{equation}
+  \phi_A(0)=G(A),\qquad
+  \phi_A'(0)=-A\ln(1-A),\qquad
+  \phi_A''(B)=\frac{A}{(1+B)[1-A(1+B)]}.
+  \label{eq:phi-derivatives}
+\end{equation}
+Twice applying the fundamental theorem of calculus gives
+\[
+  \phi_A(B)-\phi_A(0)-B\phi_A'(0)
+  =\int_0^B(B-x)\phi_A''(x)\,dx
+  =B^2\int_0^1(1-r)\phi_A''(rB)\,dr.
+\]
+This is \eqref{eq:taylor-decomposition}.  The excluded value \(A=1\) occurs
+only at \((s,t)=(0,0)\), where \(B=0\).  Directly from
+\eqref{eq:residual}, \(R(0,0)=-1\), so the assigned endpoint values also give
+the identity there.
+\end{proof}
+
+The first two kernels in \eqref{eq:taylor-decomposition} are already PSD.
+Indeed, by \eqref{eq:G-series},
+\begin{align}
+  G(A)&=\sum_{k=2}^{\infty}\frac{u^kv^k}{k(k-1)},
+  \label{eq:first-psd-series}\\
+  -AB\ln(1-A)
+  &=\sum_{k=1}^{\infty}\frac{A^{k+1}B}{k}
+    =\sum_{k=1}^{\infty}\frac{(u^{k+1}s)(v^{k+1}t)}{k}.
+  \label{eq:second-psd-series}
+\end{align}
+Every summand is rank one with nonnegative coefficient.  At the sole corner
+where the logarithmic expression is indeterminate, if
+\(m=\max\{s,t\}\), then
+\begin{equation}
+  0\le AB[-\ln(1-A)]
+  \le m^2[-\ln m]\longrightarrow0,
+  \label{eq:log-endpoint}
+\end{equation}
+because \(1-A=s+t-st\ge m\) and \(B=st\le m^2\).  Hence the pointwise-limit
+rule in Lemma~\ref{lem:psd-closure} applies on the closed square.
+
+\section{Lorentz factorization and reciprocal Gram kernels}
+\label{sec:lorentz}
+
+The remaining integrand in \eqref{eq:taylor-decomposition} contains the kernel
+\(AB^2/D_r\).  The numerator is rank one:
+\begin{equation}
+  AB^2=(1-s)s^2(1-t)t^2=q(s)q(t),
+  \qquad q(s)=(1-s)s^2.
+  \label{eq:numerator-rank-one}
+\end{equation}
+The reciprocal denominator is handled next.
+
+\begin{lemma}[Exact Lorentz factorization; \HumanAudited{} and
+\MachineVerified]
+\label{lem:lorentz}
+For \(0\le r\le1\), define
+\begin{align*}
+  \zeta_0(s)&=-\frac{2rs^2-(r+1)s+1}{r+1},
+  &\zeta_1(s)&=1+2rs^2,\\
+  \zeta_2(s)&=\frac{s^2(r+2-rs)}{r+2},
+  &\zeta_3(s)&=s^3,
+\end{align*}
+and
+\begin{equation}
+  \alpha_r(s)=\frac{\zeta_1(s)}{\sqrt{r+1}},\qquad
+  \boldsymbol b_r(s)=
+  \left(
+    \sqrt{r+1}\,\zeta_0(s),
+    \sqrt{r(r+2)}\,\zeta_2(s),
+    r\sqrt{\frac{2}{r+2}}\,\zeta_3(s)
+  \right).
+  \label{eq:alpha-b}
+\end{equation}
+Then, for all \(s,t\in[0,1]\),
+\begin{equation}
+  D_r(s,t)=\alpha_r(s)\alpha_r(t)
+  -\langle\boldsymbol b_r(s),\boldsymbol b_r(t)\rangle_{\RR^3}.
+  \label{eq:lorentz-factorization}
+\end{equation}
+Moreover,
+\begin{equation}
+  D_r(s,s)\ge s(2-2s+2s^2-s^3)>0
+  \qquad(0<s\le1).
+  \label{eq:diagonal-lower-bound}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+With \(\boldsymbol m(s)=(1,s,s^2,s^3)^{\mathsf T}\), direct coefficient
+collection in \eqref{eq:D-definition} gives
+\begin{equation}
+  D_r(s,t)=\boldsymbol m(s)^{\mathsf T}M(r)\boldsymbol m(t),
+  \quad
+  M(r)=
+  \begin{pmatrix}
+    0&1&0&0\\
+    1&-r-1&2r&0\\
+    0&2r&-r(r+2)&r^2\\
+    0&0&r^2&-r^2
+  \end{pmatrix}.
+  \label{eq:coefficient-matrix}
+\end{equation}
+Let \(S\) be the permutation matrix that swaps the first two coordinates and
+put \(\widetilde{\boldsymbol m}(s)=(s,1,s^2,s^3)^{\mathsf T}\).  Exact
+multiplication gives
+\begin{equation}
+  S^{\mathsf T}M(r)S=L(r)\Delta(r)L(r)^{\mathsf T},
+  \label{eq:ldl}
+\end{equation}
+where
+\[
+  L(r)=
+  \begin{pmatrix}
+    1&0&0&0\\
+    -\frac1{r+1}&1&0&0\\
+    -\frac{2r}{r+1}&2r&1&0\\
+    0&0&-\frac r{r+2}&1
+  \end{pmatrix},
+  \qquad
+  \Delta(r)=\operatorname{diag}\left(
+    -r-1,\frac1{r+1},-r(r+2),-\frac{2r^2}{r+2}
+  \right).
+\]
+A second exact multiplication gives
+\[
+  L(r)^{\mathsf T}\widetilde{\boldsymbol m}(s)
+  =(\zeta_0(s),\zeta_1(s),\zeta_2(s),\zeta_3(s))^{\mathsf T}.
+\]
+Substitution into \eqref{eq:ldl} is precisely
+\eqref{eq:lorentz-factorization}, including \(r=0\), where two negative
+coordinates vanish.
+
+For the diagonal bound, set \(q_r=1+rs^2\).  Then
+\[
+  D_r(s,s)=q_r[1-(1-s)^2q_r],\qquad 1\le q_r\le1+s^2.
+\]
+The displayed quadratic is concave as a function of \(q_r\), so its minimum
+on this interval occurs at an endpoint.  At the endpoints,
+\begin{align*}
+  1-(1-s)^2&=s(2-s),\\
+  1-(1-s)^2(1+s^2)&=s(2-2s+2s^2-s^3).
+\end{align*}
+The first endpoint value is at least the right side of
+\eqref{eq:diagonal-lower-bound}, because
+\((2-s)-(2-2s+2s^2-s^3)=s(1-s)^2\ge0\); the second endpoint has the additional
+factor \(1+s^2\ge1\).  Finally, the cubic
+\(p(s)=2-2s+2s^2-s^3\) decreases from \(2\) to \(1\) on \([0,1]\): its
+derivative has discriminant \(-8\) and is negative at \(s=0\).  This proves
+\eqref{eq:diagonal-lower-bound}.
+\end{proof}
+
+\begin{lemma}[Reciprocal Gram series, including the boundary;
+\HumanAudited]
+\label{lem:reciprocal}
+For each \(r\in[0,1]\), define
+\begin{equation}
+  H_r(s,t)=
+  \begin{cases}
+    \displaystyle\frac{AB^2}{D_r(s,t)},&(s,t)\ne(0,0),\\[6pt]
+    0,&(s,t)=(0,0).
+  \end{cases}
+  \label{eq:H-r}
+\end{equation}
+Then \(H_r\) is a continuous PSD kernel on \([0,1]^2\).  The continuity at
+the corner is uniform in \(r\in[0,1]\).
+\end{lemma}
+
+\begin{proof}
+The function \(\alpha_r(s)>0\) on \([0,1]\).  For \(s>0\), put
+\(\boldsymbol c_r(s)=\boldsymbol b_r(s)/\alpha_r(s)\).  From
+Lemma~\ref{lem:lorentz},
+\[
+  1-\|\boldsymbol c_r(s)\|^2
+  =\frac{D_r(s,s)}{\alpha_r(s)^2}>0.
+\]
+Consequently, for \(s,t>0\), Cauchy--Schwarz gives
+\(|\langle\boldsymbol c_r(s),\boldsymbol c_r(t)\rangle|<1\), and the geometric
+series yields the absolutely convergent identity
+\begin{equation}
+  \frac1{D_r(s,t)}
+  =\frac1{\alpha_r(s)\alpha_r(t)}
+   \sum_{k=0}^{\infty}
+   \left\langle
+     \boldsymbol c_r(s)^{\otimes k},
+     \boldsymbol c_r(t)^{\otimes k}
+   \right\rangle,
+  \label{eq:reciprocal-series}
+\end{equation}
+where the \(k=0\) inner product is \(1\).  Each summand is a Gram kernel.
+Thus \(1/D_r\) is PSD on \((0,1]^2\), and multiplying its feature vectors by
+\(q(s)=(1-s)s^2\) shows that \(H_r\) is PSD there.
+
+If exactly one of \(s,t\) is zero, the denominator is positive and the
+numerator is zero, so \eqref{eq:H-r} is continuous with value zero.  At the
+remaining corner, set \(E_r=1-A(1+rB)\).  Exact factorization gives
+\begin{align}
+  E_r-s&=(1-s)t\,[1-rs(1-t)]\ge0,\notag\\
+  E_r-t&=(1-t)s\,[1-rt(1-s)]\ge0.
+  \label{eq:corner-factors}
+\end{align}
+Thus \(D_r=(1+rB)E_r\ge\max\{s,t\}=:m\), uniformly for
+\(r\in[0,1]\).  Since \(0\le AB^2\le s^2t^2\le m^4\),
+\[
+  0\le H_r(s,t)\le m^3\longrightarrow0
+  \qquad\text{as }(s,t)\to(0,0),
+\]
+again uniformly in \(r\).  For \(\varepsilon\in(0,1)\), define
+\[
+H_{r,\varepsilon}(s,t)
+=H_r\bigl(\max\{s,\varepsilon\},\max\{t,\varepsilon\}\bigr).
+\]
+This is the pullback of the PSD kernel \(H_r\) on
+\([\varepsilon,1]^2\), hence is PSD on the whole closed square.  The continuity
+just proved gives \(H_{r,\varepsilon}\to H_r\) pointwise as
+\(\varepsilon\downarrow0\), so Lemma~\ref{lem:psd-closure} proves that the
+extended \(H_r\) is PSD.
+\end{proof}
+
+\section{Assembly of the proof}
+\label{sec:assembly}
+
+\begin{proof}[Proof of Theorem~\ref{thm:residual}]
+By Lemma~\ref{lem:taylor},
+\begin{equation}
+  -R=G(A)-AB\ln(1-A)+\int_0^1(1-r)H_r\,dr.
+  \label{eq:assembly}
+\end{equation}
+The first kernel is PSD by \eqref{eq:first-psd-series} and the second by
+\eqref{eq:second-psd-series}, with its closed-square extension justified by
+\eqref{eq:log-endpoint}.  Lemma~\ref{lem:reciprocal} proves that every \(H_r\)
+is continuous and PSD.  Away from \((s,t)=(0,0)\), the map
+\((r,s,t)\mapsto H_r(s,t)\) is rational with positive denominator; the uniform
+bound \(0\le H_r(s,t)\le\max\{s,t\}^3\) extends it continuously at the corner.
+It is therefore bounded and jointly continuous on \([0,1]^3\).  In particular,
+every entry \(r\mapsto H_r(x_i,x_j)\) is measurable and integrable, and
+integration in \(r\) preserves continuity in \((s,t)\).  Since \(1-r\ge0\),
+the integral in \eqref{eq:assembly} is PSD by
+Lemma~\ref{lem:psd-closure}.  Hence \(-R\) is a continuous PSD kernel on
+\([0,1]^2\).  Applying part (c) of that
+lemma to an arbitrary \(\nu\in\M(X)\) gives
+\(-\QF_R(\nu)\ge0\), which is \eqref{eq:residual-nsd}.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:liu-h1}]
+For \(\mu\in\V_{\M}\), Lemma~\ref{lem:reduction} and
+Theorem~\ref{thm:residual} give
+\[
+  (\ln2)\QF_{K_{\mathrm L}}(\mu)=\QF_R(\mu)\le0.
+\]
+Since \(\ln2>0\), this is Hypothesis~\ref{hyp:liu-h1}.
+
+If \(g\in\V_2\), the signed measure \(d\mu(s)=g(s)\,ds\) is finite because
+\([0,1]\) has finite measure and \(L^2\subset L^1\).  It belongs to
+\(\V_{\M}\), so
+\(\langle g,T_{K_{\mathrm L}}g\rangle=\QF_{K_{\mathrm L}}(\mu)\le0\).
+For arbitrary \(g\in L^2\), apply this inequality to \(P_{\V}g\) to obtain
+the operator statement in \eqref{eq:operator-consequence}.
+
+Finally, for nodes \(s_i\) and a vector \(c\in\ker C^{\mathsf T}\), the atomic
+measure \(\sum_i c_i\delta_{s_i}\) lies in \(\V_{\M}\).  Thus
+\(c^{\mathsf T}[K_{\mathrm L}(s_i,s_j)]c\le0\).  Since \(P_n\) maps onto
+\(\ker C^{\mathsf T}\), this is exactly the asserted positive
+semidefiniteness of the negative projected matrix.
+\end{proof}
+
+\section{Discussion and limits of the result}
+\label{sec:discussion}
+
+\HumanAudited{} The proof establishes a stronger unprojected statement for
+\(R\), then transfers it to the projected entropy kernel by an exact identity.
+No grid limit, spectral truncation, unproved exchange of infinite sums, or
+assumption about the support of the signed measure is used.  Three infinite
+Gram series appear: \eqref{eq:first-psd-series},
+\eqref{eq:second-psd-series}, and \eqref{eq:reciprocal-series}.  The first
+converges uniformly because its nonnegative coefficients sum to one.  The
+second and third converge absolutely away from their singular corner and
+extend to the closed square by \eqref{eq:log-endpoint} and the uniform
+\(H_r\le\max\{s,t\}^3\) estimate, respectively.
+
+\OpenStatus{} Liu's Hypothesis~2 is a separate global optimization assertion
+for a nine-parameter objective.  Nothing in Theorem~\ref{thm:residual} proves
+that assertion, identifies its global minimizers, or validates the stronger
+union-closed constant that Liu derives when both hypotheses are assumed.
+Accordingly, both Liu's printed decimal \(0.382709087918741\) and the nearby
+equation-defined value discussed in the canonical audit remain conditional as
+union-closed frequency claims.  This paper does not claim an unconditional
+result at either value, nor does it claim Frankl's conjectured constant
+\(1/2\).
+
+\HumanAudited{} The completed bounded literature audit found this proof
+apparently new through its 2026-08-25 cutoff, with no citation claiming or
+proving Liu's Hypothesis~1.  That is a search result, not a universal priority
+theorem.  The result remains a candidate until ordinary external mathematical
+review; no statement here implies peer review or journal acceptance.
+
+\HumanAudited{} The continuum proof is ordinary mathematics, not a formal
+proof-assistant development.  \MachineVerified{} labels below refer only to
+specified exact algebraic assertions or validated finite computations.
+Therefore the package does not claim end-to-end formal verification.
+
+\appendix
+\section{Computational verification and separation of roles}
+\label{app:verification}
+
+The analytic proof in Sections~\ref{sec:reduction}--\ref{sec:assembly} is
+load-bearing.  The computations in this appendix have narrower roles.  Paths
+are relative to this manuscript directory unless explicitly stated otherwise.
+
+\medskip
+\noindent\textbf{Artifact:} \path{../verification/independent_exact_checker.py}.
+\MachineVerified{} CAS-free coefficient checks over exact rational arithmetic
+cover the reduction, projector span, Lorentz factorization, diagonal bound,
+and corner factors.
+
+\medskip
+\noindent\textbf{Artifact:} \path{../../uc/liu_R_nsd.py}.
+\MachineVerified{} A clean isolated run completed successfully and checked the
+canonical SymPy identities, finite Arb compression bounds, and floating
+diagnostics.  Its exact stdout is
+\path{../verification/logs/liu_R_nsd.clean.log}; the analytic continuum
+conclusion remains \HumanAudited{}.
+
+\medskip
+\noindent\textbf{Artifact:} \path{../../uc/liu_kernel.py}.
+\ComputationalEvidence{} This reproduces the projected grid calculation and
+the operational three-column projector; it is not a continuum proof.
+
+\medskip
+\noindent\textbf{Artifact:} \path{../../uc/liu_moment_cert.py}.
+\MachineVerified{} Its exact finite-moment, finite-node Arb, and interval
+Cholesky claims replayed successfully; the log is
+\path{../verification/logs/liu_moment_cert.clean.log}.
+\ComputationalEvidence{} Its floating spectra remain finite-dimensional
+corroboration only.
+
+\medskip
+\noindent\textbf{Artifact:} \path{../../uc/liu_tail.py}.
+\FailedStatus{} This records obstructions to earlier tail-domination routes.
+\ComputationalEvidence{} Its sampled diagnostics are not imported into the
+proof above.
+
+\subsection{Exact symbolic checks}
+\label{app:symbolic}
+
+\MachineVerified{} Two separate exact code paths audit the finite algebraic
+core.  The function \path{exact_factorisation_checks()} in
+\path{../../uc/liu_R_nsd.py} uses SymPy exact expressions \cite{sympy}.
+The package-local
+\path{../verification/independent_exact_checker.py} uses only Python integers
+and \path{fractions.Fraction}; it does not import the canonical module or any
+computer-algebra, numerical, or interval package.  Between them, the exact
+assertions cover:
+\begin{enumerate}[label=(\arabic*)]
+  \item the polynomial reduction \(z=A(1+B)\), the removal \(z-AB=A\), and
+        the full rank of \(\{1,s,s(1-s)\}\);
+  \item the three values in \eqref{eq:phi-derivatives};
+  \item coefficient extraction of \(D_r\) into \(M(r)\), its determinant, and
+        its exact characteristic polynomial;
+  \item the \(LDL^{\mathsf T}\) and cleared-denominator versions of the Lorentz
+        factorization, including \(r=0\);
+  \item the diagonal polynomial and nonnegative-factor certificates used in
+        \eqref{eq:diagonal-lower-bound};
+  \item both exact corner identities in \eqref{eq:corner-factors}.
+\end{enumerate}
+Successful replay checks transcription and algebra.  Neither code path verifies
+Taylor's theorem, logarithm differentiation, kernel closure, convergence,
+Fubini's theorem, signed-measure approximation, or the logical assembly of the
+result; those are the \HumanAudited{} arguments in the body.
+
+\subsection{Finite validated and numerical corroboration}
+\label{app:numerical}
+
+\MachineVerified{} The clean isolated canonical run completed successfully at
+the pinned environment in \path{../REPRODUCIBILITY.md}.  The degree
+\(8,12,16\) computations give certified negative one-sided upper bounds for
+compressed \(R\) eigenvalues through a finite Loewner majorant.  They do not
+prove the continuum theorem.  \ComputationalEvidence{} The same run
+reconstructs \eqref{eq:taylor-decomposition} at quadrature nodes and inspects
+sampled eigenvalues; these are regression tests only.
+
+From the \path{math/} directory, run the independent exact checker with
+\begin{quote}\small
+\path{python3 -I -B LIU_H1/verification/independent_exact_checker.py}.
+\end{quote}
+The standard-library-only checker and every canonical clean command, exact
+package version, source/log hash, observed exit status, and runtime are recorded
+in \path{../REPRODUCIBILITY.md}.  The canonical entry point is executed in an
+isolated \texttt{uv} environment rather than trusting the repository virtual
+environment.  Exit status zero and the complete labeled output are required.
+
+\subsection{Trust boundary}
+\label{app:trust}
+
+The computational trust boundary includes the invoked Python interpreter,
+SymPy for exact expression manipulation, and, for interval subroutines, the
+Python-FLINT/Arb implementation \cite{arb}.  Floating diagnostics additionally depend on
+NumPy and SciPy.  No numerical result is required for the continuum proof.
+The manuscript does not assert that these tools constitute a proof assistant
+or an independently certified implementation.
+
+\section{Reproducibility checklist}
+\label{app:reproducibility}
+
+A reproducibility review should distinguish the following checks.
+\begin{enumerate}[label=\textbf{R\arabic*.}]
+  \item \HumanAudited{} Verify the definitions
+        \eqref{eq:entropy}--\eqref{eq:ABz}, including the base-two versus
+        natural-log factor \(\ln2\).
+  \item \HumanAudited{} Verify the span identity
+        \eqref{eq:span-equality} before comparing the source's codimension
+        terminology with its operational projector.
+  \item \HumanAudited{} Check every rank-one factor in
+        \eqref{eq:pointwise-reduction}; this is the entire use of the three
+        moment constraints.
+  \item \MachineVerified{} Replay the exact symbolic assertions and compare
+        them with \eqref{eq:phi-derivatives}, \eqref{eq:coefficient-matrix},
+        and \eqref{eq:ldl}.
+  \item \HumanAudited{} Check positivity of \(D_r(s,s)\), absolute convergence
+        in \eqref{eq:reciprocal-series}, and the uniform corner estimate in
+        Lemma~\ref{lem:reciprocal}.
+  \item \HumanAudited{} Check the atomic approximation in
+        Lemma~\ref{lem:psd-closure}; this is what extends finite Gram
+        positivity to every finite signed regular Borel measure.
+  \item \HumanAudited{} Read the bounded literature-search result separately
+        from mathematical correctness.  Its 2026-08-25 cutoff and inaccessible
+        sources prohibit an unqualified novelty or priority claim.
+\end{enumerate}
+
+The LaTeX manuscript itself can be built from this directory with the standard
+sequence
+\begin{quote}\small
+\path{pdflatex main.tex}\quad
+\path{bibtex main}\quad
+\path{pdflatex main.tex}\quad
+\path{pdflatex main.tex}.
+\end{quote}
+A successful typesetting build checks cross-reference and bibliography syntax;
+it does not verify the theorem.
+
+\section{Data and code availability statement}
+\label{app:data-code}
+
+No empirical dataset is used in the theorem.  The source of truth for the
+proof computations remains the canonical code under \path{../../uc/}; this
+paper does not duplicate or fork those scripts.  Package-specific replay
+records belong under \path{../verification/}.  The manuscript sources are
+\path{main.tex} and \path{refs.bib}.  Availability and reuse are governed by
+the repository's existing terms; this paper does not assert an additional
+software or data license.
+
+\HumanAudited{} The literature and originality audit at
+\path{../LITERATURE_ORIGINALITY.md} is complete through its 2026-08-25 cutoff.
+It records three indexed sources as inaccessible and excludes private or
+unindexed work; accordingly this paper makes no unqualified priority claim.
+Hypothesis~2 code and experiments elsewhere in the repository are outside this
+paper's theorem and data claim.
+
+\section*{Acknowledgment of scope}
+This manuscript isolates one kernel theorem from a larger union-closed audit.
+The status labels are intended to keep analytic proof, symbolic checking,
+numerical corroboration, cited context, failed routes, and open questions
+logically separate.
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

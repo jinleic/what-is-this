@@ -1,0 +1,61 @@
+{
+  "canonical_family_count": 5172,
+  "coordinate_order_count": 120,
+  "dimension": 5,
+  "evidence_status": "complete_exact_census_complete_numerical_objective",
+  "family_size_counts": {
+    "3": 9,
+    "4": 5,
+    "5": 126,
+    "6": 62,
+    "7": 10,
+    "8": 573,
+    "9": 48,
+    "10": 3058,
+    "11": 179,
+    "13": 433,
+    "15": 669
+  },
+  "family_size_range": [
+    3,
+    15
+  ],
+  "near_zero_a_plus_count": 0,
+  "negative_a_plus_count": 0,
+  "nontrivial_only": true,
+  "represented_labeled_family_count": 463343,
+  "schema_version": 1,
+  "status": "complete",
+  "union_closed_count": 0,
+  "worst_a_plus": {
+    "a_plus": 0.006474313148642441,
+    "closure_defect": {
+      "denominator": 25,
+      "numerator": 6
+    },
+    "coordinate_counts": [
+      2,
+      2,
+      2,
+      2,
+      0
+    ],
+    "evidence_status": "exact_feasible_complete_numerical_objective",
+    "family_mask_hex": "0x8119",
+    "family_rows": [
+      0,
+      3,
+      4,
+      8,
+      15
+    ],
+    "family_size": 5,
+    "normalized": false,
+    "one_sided_cost": 2.559726233877682,
+    "repair_ratio": null,
+    "shapley_iid": 2.3198615709703287,
+    "shared_state_count": 1093,
+    "total_incidence": 8,
+    "union_closed": false
+  }
+}

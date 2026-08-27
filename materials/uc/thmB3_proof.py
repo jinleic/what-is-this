@@ -250,8 +250,9 @@ most 1+1=2 points.
 
 [PROVED-HERE: direct specialization, independently checking the cited bound]
 There is also a short perturbation proof in this particular case.  If an
-extreme nu in (E1) had three distinct support points, choose pairwise disjoint
-Borel neighborhoods A_1,A_2,A_3 of them; each has positive nu-mass.  The three
+extreme nu in (E1) had three distinct points in its topological support,
+choose pairwise disjoint Borel neighborhoods A_1,A_2,A_3 of them.  By the
+definition of topological support, each has positive nu-mass.  The three
 vectors
 
     v_i = (nu(A_i), integral_(A_i) g dnu) in R^2

@@ -1,28 +1,47 @@
-# A machine-checked constant 0.3820660112501052 for union-closed families
+# A certificate-backed candidate constant 0.3820660112501052 for union-closed families
 
-**Status — read this first.** **CERTIFIED 2026-08-21.** Campaign I (`cert3_20260818T212601Z_425f109c…_2f23a58ebdb8`) committed all eight slices — 488,465,854 boxes, zero residual, zero stack — and its frozen collector replayed every trace inside its own acceptance gate and printed **`COMPOSITE CERTIFICATE`** (checker SHA-256 `95d09322a7821f41…`; verbatim output at [`campaigns/CERTIFICATE.txt`](campaigns/CERTIFICATE.txt)). The result of [`PROOF.md`](PROOF.md) stands; the campaign-I record below is the authoritative account (see *How to verify*).
+**Finite-certificate status — read this first.** Campaign I
+(`cert3_20260818T212601Z_425f109c…_2f23a58ebdb8`) committed all eight
+slices: 488,465,854 boxes, zero residual, zero stack. Its frozen collector
+replayed every trace and printed **`COMPOSITE CERTIFICATE`** (checker SHA-256
+`95d09322a7821f41…`; verbatim output at
+[`campaigns/CERTIFICATE.txt`](campaigns/CERTIFICATE.txt)). This machine result
+is the five-dimensional interval certificate only. The reduction to it and
+the entropy-to-union-closed bridge are ordinary human proofs audited in
+[`AUDIT.md`](AUDIT.md); the overall result is a candidate theorem pending
+external mathematical review, not an end-to-end machine-checked proof.
+
+**Fresh replay (2026-08-26).** Eight isolated direct replay processes all
+exited zero and reproduced the exact expected stdout hashes/tallies; pre/post
+input maps matched. Machine-readable summary:
+[`verification/results/direct-isolated-replay/summary.json`](verification/results/direct-isolated-replay/summary.json),
+canonical SHA-256
+`6ef126ced337b035e5c5f22a130b1be3697666e60f16586b75540ef6fc734b16`.
+The hardened fresh-copy replay independently passed all eight slices as well;
+its composite SHA-256 is
+`57ca3f52c054bd9bccfefc349f440674c74fe7ef671d06c103ef3f52dc33d53d`.
 
 ## Abstract
 
-Every union-closed family $\mathcal F\neq\{\emptyset\}$ contains an element
-belonging to at least $0.3820660112501052\cdot|\mathcal F|$ of its sets,
-conditional on a single cited implication (Cambie, arXiv:2212.12500v2,
-Question 2 and Section 4), which turns a two-strategy entropy functional
-inequality into the union-closed bound. We prove that functional inequality
-and machine-check the proof end to end: exact identities decompose the
-OR-entropy kernel ($Q=2BL-E$, with $E$ a sum of squared moment defects); a
-support-reduction theorem shows the minimum is attained on two pair-orbits
-(five parameters); a margin lemma controls the defect by Cauchy–Schwarz;
-and an interval branch-and-bound in Arb ball arithmetic certifies
-$\Phi\ge0$ at $t=0.3820660112501052\ge\psi+10^{-4}$ (rational-exact: the
-certificate's $t-\psi$ strictly exceeds $10^{-4}$, never equals it, since
-$t$ is rational and $\psi$ irrational), exceeding
-$\psi=\frac{3-\sqrt5}{2}\approx0.3819660112501051$, the largest previously
-completely proved constant. Every pruning decision is a certified Arb sign.
-All sampled heuristics are labeled NUMERICAL and are never proof steps.
-The computation writes one-byte-per-node proof traces; an independent
-replayer re-proves every node; a frozen collector re-proves the campaign
-before acceptance. The pipeline is deterministic.
+We present a certificate-backed, machine-assisted candidate proof that every
+nontrivial finite union-closed family has an element belonging to at least
+$0.3820660112501052\cdot|\mathcal F|$ of its sets. Exact identities decompose
+the OR-entropy kernel ($Q=2BL-E$). A human-audited support-reduction theorem
+places the minimum on two pair-orbits, and a human-audited Margin Lemma lowers
+the exact functional to a five-parameter surrogate. Arb interval
+branch-and-bound certifies that surrogate at the exact rational target
+$t=0.3820660112501052\ge\psi+10^{-4}$, where
+$\psi=(3-\sqrt5)/2$. The computation writes one byte per DFS node; the replay
+re-derives every box and re-proves the named interval rule. The implication
+from the functional inequality to union-closed families is reconstructed
+directly by a sequential Bernoulli-coupling and entropy-chain argument in the
+revised manuscript, following Cambie's Question 2 and Section 4.
+
+The machine-verified layer does not include compactness, support reduction,
+the Bochner-triangle Margin Lemma, or the set-family bridge. Sampled controls
+and numerical KKT seeds are evidence or heuristics only. No claim of formal
+verification, peer review, publication priority, or Frankl's constant $1/2$
+is made.
 
 ## The claim, precisely
 
@@ -30,21 +49,22 @@ Let $h(u)=-u\log_2u-(1-u)\log_2(1-u)$ (binary entropy, $h(0)=h(1)=0$),
 $\alpha=0.0356069$ (Cambie's $\alpha$), and
 $t_{\mathrm{cert}}=0.3820660112501052\ge\psi+10^{-4}$.
 
-* **Machine-checked here** (`cert3.py` + trace + replay): for
-  every probability measure $\mu$ on $[0,1]$ with $\mathbb Ep\le
-  t_{\mathrm{cert}}$,
-  $$F(\mu)=(1-\alpha)\,Q(\mu)+\alpha\,C(\mu)-L(\mu)\ \ge\ 0,$$
-  where $L=\int h\,d\mu$, $Q=\iint h(p+q-pq)\,d\mu d\mu$, and $C$ is the
-  symmetric-coupling term with cost $h(s^\star)$, $s^\star(p,r)=
-  \max(p,r,\min(p+r,\tfrac12))$.
-* **Cited, not reproved** (Cambie, arXiv:2212.12500v2, Q2 + §4): if that
-  inequality holds for all $\mu$ with $\mathbb Ep\le c$, then every
-  union-closed family $\neq\{\emptyset\}$ has an element with frequency
-  $\ge c$.
+* **Machine-verified finite claim** (`cert3.py` + traces + replay): the explicit
+  lower functional $\widehat\Phi$ is nonnegative on every feasible
+  five-parameter two-orbit law at $t_{\mathrm{cert}}$.
+* **Human-audited reduction:** exact algebra, compactness, fixed-mean
+  concavity, Bauer/extreme-point support reduction, and the Margin Lemma give
+  $F(\mu)\ge\widehat\Phi(\nu)$ at a minimizing two-orbit representation. The
+  case $L(\mu)=0$ is handled separately and gives equality zero.
+* **Human-audited set-family bridge:** the sequential max-entropy Bernoulli
+  coupling, entropy chain rule, and a rigorous positive point-mass margin
+  convert $F\ge0$ into the union-closed frequency conclusion. Cambie
+  arXiv:2212.12500v2 is cited as the source of this construction, not used as
+  an unaudited black box.
 
-Together: frequency $\ge 0.3820660112501052$ for every union-closed family
-$\neq\{\emptyset\}$. The comparison $t_{\mathrm{cert}}\ge\psi$ is itself
-rational-exact: for $r\in[0,3/2]$, $r\ge\psi\iff r^2-3r+1\le 0$
+Together these form a candidate proof of frequency
+$\ge0.3820660112501052$. The comparison with $\psi$ is rational-exact: for
+$r\in[0,3/2]$, $r\ge\psi\iff r^2-3r+1\le0$
 (`cert3_par.target_relation_holds`).
 
 ## Plain-English explainer
@@ -58,94 +78,102 @@ Gilmer's 2022 idea: choose a set uniformly at random from the family and
 study the entropies of the events "element $i$ is present". His
 one-strategy argument gives $0.01$; refinements by Chase–Lovett,
 Alweiss–Huang–Sellke, Pebody, and Sawin reach
-$\psi=(3-\sqrt5)/2\approx0.3819660112501051$ — until now the largest
-explicit constant with a complete proof. All are statements of the form "a
-certain functional of a probability distribution is nonnegative". Going
-further requires handling distributions with many atoms. Yu reduced the
-problem to five parameters, but that proof has an invalid concavity step —
+$\psi=(3-\sqrt5)/2\approx0.3819660112501051$, the benchmark with a complete
+analytic proof independent of later finite-dimensional numerical claims.
+All of these entropy arguments assert that a certain functional of a
+probability distribution is nonnegative. Going further requires handling
+distributions with many atoms. Yu reduced the problem to five parameters, but
+that proof has an invalid concavity step —
 explicit counterexamples are in [`README.md`](README.md) (Result 3). Cambie
 reformulated the remaining task as an entropy functional inequality and
 stated the gap himself, verbatim: *"an exact rigorous calculus proof is
 missing"* — the remaining problem is a minimisation checkable by computer.
 
-This work closes that gap as a checked computation. The OR-entropy kernel
-decomposes exactly as one positive square minus a positive-definite
-remainder (Theorem A), giving $Q=2BL-E$ with $E$ a sum of squared moment
-defects (Theorem A′). A support-reduction theorem (B‴, tight in orbit
-count) shows the minimum of $F$ is attained on two "pair-orbits" — five
-parameters $(p_1,q_1,p_2,q_2,w)$. A margin lemma bounds $E$ by
-Cauchy–Schwarz in a form that stays finite where the functional degenerates
-(at the entropy sinks $0$ and $1$). The rest is a five-dimensional
-branch-and-bound in Arb interval arithmetic with guaranteed signs.
+This work supplies a candidate repair with a reproducible finite certificate.
+The OR-entropy kernel decomposes exactly as one positive square minus a
+positive-definite remainder (Theorem A), giving $Q=2BL-E$ with $E$ a sum of
+squared moment defects (Theorem A′). The human Theorem B‴ places a minimizer
+on two pair-orbits. The human Margin Lemma bounds $E$ by the Bochner triangle
+inequality in a form that stays finite at the entropy sinks. The interval
+certificate then checks the resulting five-dimensional lower functional.
 
-Two honesty notes. Anything sampled is labeled NUMERICAL and is never a proof step — the KKT seed $\lambda^\star$ that picks cheap multipliers is numerical, and correctness never depends on it. And the step from the functional inequality to union-closed families is Cambie's cited result, not ours; the certificate covers the functional inequality end to end.
+Anything sampled is labeled NUMERICAL and is never a proof step. The KKT seed
+$\lambda^\star$ only selects cheap nonnegative multipliers. The certificate
+does not machine-check the surrounding human arguments.
 
-## What is machine-checked
+## Evidence layers
 
-| step | artifact |
-|---|---|
-| $s^\star$ identity; symmetrize-and-fold (exact bridge to Cambie's form) | `bridge_uc.py` |
-| Theorem A: kernel has exactly one positive square (SymPy tautology) | `decomposition.py` |
-| Theorem A′: $Q=2BL-E$, $E$ a squared-moment-defect series | `reduction.py` |
-| Theorem B‴: attainment on ≤2 pair-orbits (5 parameters) | `thmB3_proof.py` |
-| Margin Lemma: $F\ge L\Lambda$, scale-free at the sinks | `margin_lemma.py` |
-| $\operatorname{rh}$ bounds; endpoint/derivative lemmas | `lemma_rh_proof.py`, `cert2/3.py` |
-| 5-D interval certificate, one-byte-per-node traces | `cert3.py` |
-| independent replay of every node | `cert3_replay.py` |
-| immutable campaign, atomic commits, hashed snapshot | `cert3_par.py` |
-| acceptance only by replaying all 8 traces | `cert3_collect.py` |
+| step | evidence level | artifact |
+|---|---|---|
+| $s^\star$ identity; symmetrize-and-fold | human identity + exact finite schemas | `bridge_uc.py` |
+| Theorem A kernel decomposition | human series argument + exact SymPy identity | `decomposition.py` |
+| Theorem A′: $Q=2BL-E$ | human series argument + exact controls | `reduction.py` |
+| Theorem B‴: attainment on ≤2 pair-orbits | **human-audited**, standard cited functional analysis | `thmB3_proof.py`, `AUDIT.md` |
+| Margin Lemma: $F\ge L\Lambda$ | **human-audited** Bochner triangle inequality | `margin_lemma.py`, `AUDIT.md` |
+| $\operatorname{rh}$ and endpoint bounds | human inequalities + exact symbolic/Arb subchecks | `lemma_rh_proof.py`, `cert2.py`, `cert3.py` |
+| 5-D interval certificate and node traces | **machine-verified** Arb arithmetic | `cert3.py`, campaign traces |
+| arithmetic replay of every node | **machine-verified**, shares frozen rule implementation | `cert3_replay.py` |
+| independent trace topology/tally audit | **machine-verified structural check** | `verification/structural_trace_audit.py` |
+| campaign identity and immutable-input pins | **machine-verified external lock** | `verification/campaign-lock.json` |
+| entropy-to-union-closed bridge | **human-audited**, with independent Arb strictness check | paper §1, `verification/cambie_bridge_strictness.py` |
 
 Each branch-and-bound rule (mean contractor, corner bound, ratio rule, KKT-shifted center rules, $q_2$-pin face rule, split) is an independently sound lower bound or infeasibility proof in Arb ball arithmetic; skipping a rule can only send a box to the split branch. Campaign parameters (v2 manifests): min box width $10^{-3}$, collar floor $1.25\times10^{-4}$, box budget $2\times10^9$, 24 h/slice, 160-bit covers, 80-bit work.
 
 Tamper tests: the adversarial suite of eight trace attacks — all rejected by the replayer. Determinism: campaigns E and F ran slice 0 five hours apart on different snapshots — 16,231,621 nodes each, byte-identical traces (SHA-256 `9eed0cc1382f5485…`).
 
-## The conditional step
+## Bridge to union-closed families
 
-The implication "functional inequality at $c$ ⟹ union-closed element with frequency $\ge c$" is Cambie's (arXiv:2212.12500v2, Question 2 and Section 4) and is used as a citation. His hypothesis is stated for $\mathbb Ep\le c$ ("at most"); the certificate proves the closed domain $\mathbb Ep\le t_{\mathrm{cert}}$, which covers the boundary. Everything downstream of that citation is machine-checked; it is the single non-machine step. The residual trust base (PROOF.md §10): CPython semantics with pinned-source execution (`python -B`), flint/Arb, the pinned library versions, Darwin `renamex_np` (RENAME_EXCL) atomicity, SHA-256, and the published citations (Bauer 1958; Winkler 1988 via Pinelis 2016; van Neerven; Bru–de Siqueira Pedra; Cambie).
+Cambie's Question 2 is stated for expectations strictly below $c$, not “at
+most $c$.” The interval certificate proves the stronger closed domain
+$\mathbb Ep\le t_{\mathrm{cert}}$. The revised paper now gives the bridge
+directly: it constructs the dependent uniform sample coordinate by coordinate,
+applies the entropy chain rule, and proves strictness at the first present
+coordinate. The strict point-mass endpoint is independently enclosed at
+$+0.0012927838426659849\ldots$ by 256-bit Arb. This layer remains an ordinary
+human proof, not part of the branch-and-bound certificate.
 
 ## Relation to the literature
 
-| constant | source | status per README.md |
+| constant | source | audited status |
 |---|---|---|
 | $0.01$ | Gilmer, arXiv:2211.09055 | proved |
-| $\psi=\frac{3-\sqrt5}{2}=0.3819660112501051$ | Chase–Lovett, Alweiss–Huang–Sellke, Pebody, Sawin (arXiv:2211.11504v3 Thm 1) | proved; previous largest with a complete proof |
-| $c^*=0.3823455333667027$ | Yu (arXiv:2212.00658), Cambie (arXiv:2212.12500) | value likely correct; published proofs invalid (Yu's concavity step refuted by explicit counterexample) |
-| $>c^*$, non-explicit | Liu, arXiv:2306.08824 Thm 6 | proved, no explicit value |
-| $0.382709087918741$ | Liu, Thm 13 | conditional on two unproved hypotheses |
-| $0.3820660112501052$ | this work | machine-checked modulo the cited Cambie implication |
+| $\psi=\frac{3-\sqrt5}{2}$ | Chase–Lovett, AHS, Pebody, Sawin | complete analytic proofs |
+| $c^*=0.3823455333667027$ | Yu; Cambie | claimed; Yu's support step is invalid and Cambie's matching lower check remains numerical/graphical |
+| $>c^*$, non-explicit | Liu, Theorem 6 | analytic perturbation but imports the unresolved Yu--Cambie optimizer description |
+| $0.382709087918741$ | Liu, Theorem 13 | explicitly conditional; local H1 candidate does not resolve H2 |
+| $0.3820660112501052$ | this project | candidate theorem: human-audited chain plus replayed finite Arb certificate |
 
-This note claims the largest **explicit** constant with a complete
-proof; Liu's non-explicit theorem already exceeds $c^*$.
+The bounded search through 2026-08-25 found this apparently the first
+explicit *certified* improvement over \(\psi\), not the first claimed
+improvement. See [`LITERATURE_ORIGINALITY.md`](LITERATURE_ORIGINALITY.md);
+universal priority and external review remain open.
 
 ## How to verify
 
-One command, from the repository's `math/` directory, using the campaign's
-own frozen collector (as checked in at [`campaigns/README.md`](campaigns/README.md)):
+Use [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), not a campaign-local replay
+marker. It pins the exact Campaign I launch, fifteen sources, eight results,
+and eight traces through [`verification/campaign-lock.json`](verification/campaign-lock.json);
+checks the interpreter and dependency versions; supplies isolated `-I -B`
+per-slice replay commands; and defines accepted machine-readable reports.
+
+The independent structural command is:
 
 ```sh
-cd math
-./.venv/bin/python -B uc/campaigns/<ID>/snapshot/cert3_collect.py \
-    uc/campaigns/<ID>/launch.json
+./.venv/bin/python -I -B uc/verification/structural_trace_audit.py \
+  --campaign uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8 \
+  --output uc/verification/results/structural-traces.json \
+  --nice 10 --cpu-limit-seconds 600
 ```
 
-with `<ID> = cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8`.
+It checks all 488,465,854 trace bytes, hashes, opcodes, DFS topology,
+termination, and tallies without importing certificate arithmetic. It is not a
+second interval proof. Arithmetic replay uses the frozen rule functions and
+therefore retains common-mode implementation trust.
 
-The collector trusts nothing it did not re-derive: hardcoded file
-inventories (the manifest's own inventory is not trusted), a pristine
-snapshot listing, exact dyadic roots, unique runs, exit code 0, COMPLETE
-verdicts, positive work, `stack`=`residual`=`budget_boxes`=`budget_time`=0,
-consistent trace digests/sizes — then it **replays all eight traces**
-(`cert3_replay.py` re-runs the mean contractor, re-proves each claimed rule
-in Arb, follows the recorded splits, requires an empty stack, no residuals,
-matching tallies) and only then prints `COMPOSITE CERTIFICATE`. On
-2026-08-21 it printed exactly that (verbatim at
-[`campaigns/CERTIFICATE.txt`](campaigns/CERTIFICATE.txt)); checker SHA-256
-`95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec`.
-Environment pinned by `launch.json`: CPython
-3.14.3, flint 0.9.0, mpmath 1.3.0, numpy 2.5.2, scipy 1.18.0, sympy
-1.14.0, macOS arm64. The eight workers cover the exact dyadic partition of
-$w\in[\tfrac12,1]$ (the exact orbit-swap invariance makes $w\ge\tfrac12$
-cover the full cube).
+The historical collector printed `COMPOSITE CERTIFICATE` on 2026-08-21, but
+it does not hardcode the accepted code digest or enforce
+`launch.environment`; the external lock and clean-room harness supply those
+missing provenance gates.
 
 ## Campaign I record
 

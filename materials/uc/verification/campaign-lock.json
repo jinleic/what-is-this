@@ -1,0 +1,389 @@
+{
+  "campaign_directory_name": "cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8",
+  "campaign_id": "20260818T212601Z_425f109c15b64a6198785c6cebbbdaab",
+  "code_sha256": "2f23a58ebdb8b14275284e2ffefca7862373f7baf5d354a06e607cff8d78ce05",
+  "expected_environment": {
+    "flint": "0.9.0",
+    "mpmath": "1.3.0",
+    "numpy": "2.5.2",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "python_implementation": "CPython",
+    "scipy": "1.18.0",
+    "sympy": "1.14.0"
+  },
+  "launch": {
+    "object_sha256": "6414affcaa54bd5e37e9f7bd351c6ed4cf675167b10b55d86cce1436ebdf65cc",
+    "path": "launch.json",
+    "raw_sha256": "63bb6fbe1cfbcb6b7d4c50d7b66882255e5e778ce604c92ecd1abdfa1ea8337e",
+    "size": 4339
+  },
+  "schema": "uc-campaign-lock-v1",
+  "slices": [
+    {
+      "expected_completion_tallies": {
+        "budget_boxes": 0,
+        "budget_time": 0,
+        "stack": 0
+      },
+      "expected_replay_tallies": {
+        "center": 4166369,
+        "center_mixed": 1059513,
+        "center_mixed_swap": 831310,
+        "center_w": 27088,
+        "corner": 3218757,
+        "face": 142023,
+        "infeasible": 766564,
+        "processed": 21135611,
+        "ratio": 356182,
+        "residual": 0,
+        "split": 10567805
+      },
+      "result": {
+        "path": "result_slice0_2fb154187bc54147855004d5dafaf214.json",
+        "raw_sha256": "1563f7310eefc2677b53d74448e31fc01c76a5d558ce545a2fb101ac1c043e30",
+        "record_sha256": "8a1bbb4d960b43128fd5884eec2054bbbbc267cba9b940a21b8d97ae32010133",
+        "size": 1425
+      },
+      "run_id": "2fb154187bc54147855004d5dafaf214",
+      "slice": 0,
+      "trace": {
+        "path": "trace_slice0_2fb154187bc54147855004d5dafaf214.bin",
+        "schema": "cert3-trace-v1",
+        "sha256": "4f55bcc261c541ab1adadff85f2b1148ce87fe5d34a9782f5cc14d1ba6588240",
+        "size": 21135611
+      },
+      "w_hi": "9/16",
+      "w_lo": "1/2"
+    },
+    {
+      "expected_completion_tallies": {
+        "budget_boxes": 0,
+        "budget_time": 0,
+        "stack": 0
+      },
+      "expected_replay_tallies": {
+        "center": 4074579,
+        "center_mixed": 1107712,
+        "center_mixed_swap": 858664,
+        "center_w": 23434,
+        "corner": 2837057,
+        "face": 230614,
+        "infeasible": 835153,
+        "processed": 20827065,
+        "ratio": 446320,
+        "residual": 0,
+        "split": 10413532
+      },
+      "result": {
+        "path": "result_slice1_af8b2ece3eb947339f8a4e273c46e3bd.json",
+        "raw_sha256": "2692a0138d6a27806a34978d42a3073e073635239abe99639610a92427832b0a",
+        "record_sha256": "833ba059a088bfe67e2b1125485f727de21824623a0d307fadd166fbd7d95a89",
+        "size": 1425
+      },
+      "run_id": "af8b2ece3eb947339f8a4e273c46e3bd",
+      "slice": 1,
+      "trace": {
+        "path": "trace_slice1_af8b2ece3eb947339f8a4e273c46e3bd.bin",
+        "schema": "cert3-trace-v1",
+        "sha256": "4f267f19cd0a99e7ed9dbb423b35fd1b4f2c9bf86f170e5527b2c31dd3870adb",
+        "size": 20827065
+      },
+      "w_hi": "5/8",
+      "w_lo": "9/16"
+    },
+    {
+      "expected_completion_tallies": {
+        "budget_boxes": 0,
+        "budget_time": 0,
+        "stack": 0
+      },
+      "expected_replay_tallies": {
+        "center": 4198151,
+        "center_mixed": 1025766,
+        "center_mixed_swap": 827217,
+        "center_w": 29236,
+        "corner": 3338422,
+        "face": 470233,
+        "infeasible": 1159349,
+        "processed": 23486265,
+        "ratio": 694759,
+        "residual": 0,
+        "split": 11743132
+      },
+      "result": {
+        "path": "result_slice2_26a971c6ac644309946431b3900b780a.json",
+        "raw_sha256": "98575a068643f3d31e64876f7f3f4dcae7c45e5fcacd323551d3661c0669045d",
+        "record_sha256": "cde3056e999d2eed17b1da7acfb4930bde7531ddd7bec7051acd237b40d27658",
+        "size": 1430
+      },
+      "run_id": "26a971c6ac644309946431b3900b780a",
+      "slice": 2,
+      "trace": {
+        "path": "trace_slice2_26a971c6ac644309946431b3900b780a.bin",
+        "schema": "cert3-trace-v1",
+        "sha256": "e31cd8fdcec4db33a2eac19a153ef6d1b70772bb53416c7255f4b9ae088ec0ae",
+        "size": 23486265
+      },
+      "w_hi": "11/16",
+      "w_lo": "5/8"
+    },
+    {
+      "expected_completion_tallies": {
+        "budget_boxes": 0,
+        "budget_time": 0,
+        "stack": 0
+      },
+      "expected_replay_tallies": {
+        "center": 5261749,
+        "center_mixed": 999230,
+        "center_mixed_swap": 592501,
+        "center_w": 14975,
+        "corner": 4699405,
+        "face": 2110724,
+        "infeasible": 2637747,
+        "processed": 34186855,
+        "ratio": 777097,
+        "residual": 0,
+        "split": 17093427
+      },
+      "result": {
+        "path": "result_slice3_89cda161a3584c8aa9c1631258e37fde.json",
+        "raw_sha256": "6ed4deef8cf9305e86db8529b2446ac9ed884ecba746a10afa24de236f90f493",
+        "record_sha256": "41d1b64aacfe84fc8cd087dea77494fc3db3a052421f10c89d179d8dc87622f2",
+        "size": 1430
+      },
+      "run_id": "89cda161a3584c8aa9c1631258e37fde",
+      "slice": 3,
+      "trace": {
+        "path": "trace_slice3_89cda161a3584c8aa9c1631258e37fde.bin",
+        "schema": "cert3-trace-v1",
+        "sha256": "d6cfc79989e17d69bfd449ec2a0dbcbf75f2f859a531a19114a11748a3f357e5",
+        "size": 34186855
+      },
+      "w_hi": "3/4",
+      "w_lo": "11/16"
+    },
+    {
+      "expected_completion_tallies": {
+        "budget_boxes": 0,
+        "budget_time": 0,
+        "stack": 0
+      },
+      "expected_replay_tallies": {
+        "center": 11895793,
+        "center_mixed": 1269484,
+        "center_mixed_swap": 95757,
+        "center_w": 1427,
+        "corner": 9899146,
+        "face": 5487361,
+        "infeasible": 6969122,
+        "processed": 71405987,
+        "ratio": 84904,
+        "residual": 0,
+        "split": 35702993
+      },
+      "result": {
+        "path": "result_slice4_5136a0e6ac8c4078a5f8ceb73e34b777.json",
+        "raw_sha256": "572d73f4ffef9d8df556bee2784d71f6075e2179f49499e04ca581e69d3bba12",
+        "record_sha256": "b29baa18da4cc596bbc2b176211bae9e251e8589c4450ead694215ecb1b2b11e",
+        "size": 1431
+      },
+      "run_id": "5136a0e6ac8c4078a5f8ceb73e34b777",
+      "slice": 4,
+      "trace": {
+        "path": "trace_slice4_5136a0e6ac8c4078a5f8ceb73e34b777.bin",
+        "schema": "cert3-trace-v1",
+        "sha256": "c1434d19d3a7ce44224c295fc0eef0e56a14fd99351d9604b4edc84b0ff44f70",
+        "size": 71405987
+      },
+      "w_hi": "13/16",
+      "w_lo": "3/4"
+    },
+    {
+      "expected_completion_tallies": {
+        "budget_boxes": 0,
+        "budget_time": 0,
+        "stack": 0
+      },
+      "expected_replay_tallies": {
+        "center": 22256705,
+        "center_mixed": 1786704,
+        "center_mixed_swap": 26246,
+        "center_w": 531,
+        "corner": 12155506,
+        "face": 9882707,
+        "infeasible": 12719058,
+        "processed": 117709435,
+        "ratio": 27261,
+        "residual": 0,
+        "split": 58854717
+      },
+      "result": {
+        "path": "result_slice5_7ab1c417449946a7b48c2d66c672bf93.json",
+        "raw_sha256": "9e31c7f73486874893722c946837f2e9bce1c8db53483249fc236860d32ca759",
+        "record_sha256": "c725d9b10bff5a043fa0bd99c5e3647b0cc3f9bae85ea7c16052645f79a13a23",
+        "size": 1437
+      },
+      "run_id": "7ab1c417449946a7b48c2d66c672bf93",
+      "slice": 5,
+      "trace": {
+        "path": "trace_slice5_7ab1c417449946a7b48c2d66c672bf93.bin",
+        "schema": "cert3-trace-v1",
+        "sha256": "ae584e405a97229755ddb81dc77cfb5113938854e7566a6226c5ea5dee392f3c",
+        "size": 117709435
+      },
+      "w_hi": "7/8",
+      "w_lo": "13/16"
+    },
+    {
+      "expected_completion_tallies": {
+        "budget_boxes": 0,
+        "budget_time": 0,
+        "stack": 0
+      },
+      "expected_replay_tallies": {
+        "center": 20315341,
+        "center_mixed": 2937116,
+        "center_mixed_swap": 16355,
+        "center_w": 313,
+        "corner": 13820378,
+        "face": 10265837,
+        "infeasible": 13349700,
+        "processed": 121456775,
+        "ratio": 23348,
+        "residual": 0,
+        "split": 60728387
+      },
+      "result": {
+        "path": "result_slice6_30d759beee9b4026928e3e9181f6afaa.json",
+        "raw_sha256": "894c2c1a412395ca4feffcb52d6473f47ed12fbb5dd5cd635968233e16b7f1dd",
+        "record_sha256": "4bdc2d23b1ccfea0dd0f5f9e790fe3b3f0a95c34f54c1cc67fd43febc00fa4cd",
+        "size": 1438
+      },
+      "run_id": "30d759beee9b4026928e3e9181f6afaa",
+      "slice": 6,
+      "trace": {
+        "path": "trace_slice6_30d759beee9b4026928e3e9181f6afaa.bin",
+        "schema": "cert3-trace-v1",
+        "sha256": "4a483eda93ebfbacc033f95f363b55af795c6e8664f67504849b943f056d03ef",
+        "size": 121456775
+      },
+      "w_hi": "15/16",
+      "w_lo": "7/8"
+    },
+    {
+      "expected_completion_tallies": {
+        "budget_boxes": 0,
+        "budget_time": 0,
+        "stack": 0
+      },
+      "expected_replay_tallies": {
+        "center": 11466023,
+        "center_mixed": 4150412,
+        "center_mixed_swap": 2473,
+        "center_w": 80,
+        "corner": 16794114,
+        "face": 1645285,
+        "infeasible": 5057436,
+        "processed": 78257861,
+        "ratio": 13108,
+        "residual": 0,
+        "split": 39128930
+      },
+      "result": {
+        "path": "result_slice7_e8b0b30179f441129e30d9afa266cc78.json",
+        "raw_sha256": "ed01f108e7642a4c85c3b09d93840a46cc51cf83f04596e0fdda5aefe325c603",
+        "record_sha256": "1f72efcd57f1a28ea15891ab41674183d16ce92d4ee112c57c5c3c82d4321f32",
+        "size": 1425
+      },
+      "run_id": "e8b0b30179f441129e30d9afa266cc78",
+      "slice": 7,
+      "trace": {
+        "path": "trace_slice7_e8b0b30179f441129e30d9afa266cc78.bin",
+        "schema": "cert3-trace-v1",
+        "sha256": "302fc8b877bf2331c10b7d67a717ca18a513f748cf9cf6929da8db6108bf5156",
+        "size": 78257861
+      },
+      "w_hi": "1",
+      "w_lo": "15/16"
+    }
+  ],
+  "snapshot": {
+    "arbcore.py": {
+      "path": "snapshot/arbcore.py",
+      "sha256": "42f7f7afdd69984a25ca3e6b1db43b6b3792db43c925f4e5eafe929fdb05e5bd",
+      "size": 4013
+    },
+    "bound_kkt.py": {
+      "path": "snapshot/bound_kkt.py",
+      "sha256": "ece39bd496a7fe88bd63d1c337cf242fcce6264c28bc94132ff266e94f35b4f4",
+      "size": 33053
+    },
+    "bridge_uc.py": {
+      "path": "snapshot/bridge_uc.py",
+      "sha256": "49af3194090798a55609fe17b926ca95ed552c87adb06ea55f8e7a553d61cd54",
+      "size": 9999
+    },
+    "cert2.py": {
+      "path": "snapshot/cert2.py",
+      "sha256": "b6cc756d07ed360af4eb3913cc899cb73c3288af72ae07345cf81bfe20e6c1fa",
+      "size": 26364
+    },
+    "cert3.py": {
+      "path": "snapshot/cert3.py",
+      "sha256": "984a568fbd70ce4860f981e4f7e105b7028ec3c3869ecc7560b8b4ac08a06b3f",
+      "size": 70700
+    },
+    "cert3_collect.py": {
+      "path": "snapshot/cert3_collect.py",
+      "sha256": "95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec",
+      "size": 24056
+    },
+    "cert3_par.py": {
+      "path": "snapshot/cert3_par.py",
+      "sha256": "a741aa167a79fb1058d89373db15e19d4124576a7eb7fb76c57ee3f70d3709bc",
+      "size": 29848
+    },
+    "cert3_replay.py": {
+      "path": "snapshot/cert3_replay.py",
+      "sha256": "4bfc2568e6d5b5364516f1acf734eb049d0f670bbec6cc6c95728466146ebeef",
+      "size": 14770
+    },
+    "decomposition.py": {
+      "path": "snapshot/decomposition.py",
+      "sha256": "622d297cc61e0cf9adb67b78c09afaac1b32d15deb0661ee9cee7bb441735515",
+      "size": 16219
+    },
+    "diag_exhaust.py": {
+      "path": "snapshot/diag_exhaust.py",
+      "sha256": "23d8ec78fc2bc1ac29262577705551eb25a4a98c24ffb6062d656f39a7e00016",
+      "size": 24222
+    },
+    "entropy.py": {
+      "path": "snapshot/entropy.py",
+      "sha256": "2fbddcd8b2458d652ffd0d4268f9c868353967c6aacd7a66183556c65ece88a5",
+      "size": 2459
+    },
+    "lemma_rh_proof.py": {
+      "path": "snapshot/lemma_rh_proof.py",
+      "sha256": "4236dcfd159ea091638d4d7e3fe4f1a804c8d551c3490a7e311f56f6be7a9fbd",
+      "size": 14602
+    },
+    "margin_lemma.py": {
+      "path": "snapshot/margin_lemma.py",
+      "sha256": "d11d2eb57269abe849acf04ce8acb4a7d908b2d210370cb48a2140cdcd895ace",
+      "size": 18891
+    },
+    "reduction.py": {
+      "path": "snapshot/reduction.py",
+      "sha256": "b2af27e52b28339258f384f98ffd451b54b4a2cef2aae995fa0993880cfecc65",
+      "size": 23274
+    },
+    "thmB3_proof.py": {
+      "path": "snapshot/thmB3_proof.py",
+      "sha256": "c459d70d8e06a855031c52fb76f60db3510c099bfa55f6901fc97b594e5a214f",
+      "size": 24473
+    }
+  }
+}

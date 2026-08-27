@@ -15,16 +15,21 @@ values are float64, matching ``shapley_adaptive_coupling.py``.
 """
 
 from fractions import Fraction
+from functools import lru_cache
 
 from shapley_global_coupling import binary_entropy, sstar
 
 
 DIMENSION = 6
-ROW_ONES = tuple(
-    sum(1 << row for row in range(1 << DIMENSION)
-        if (row >> coordinate) & 1)
-    for coordinate in range(DIMENSION)
-)
+
+
+@lru_cache(maxsize=None)
+def row_ones(dimension):
+    return tuple(
+        sum(1 << row for row in range(1 << dimension)
+            if (row >> coordinate) & 1)
+        for coordinate in range(dimension)
+    )
 
 
 def family_mask(family):
@@ -38,8 +43,9 @@ def _sigmoid2(value):
     return power / (1.0 + power)
 
 
-def coupling_costs(family, orders, optimize):
+def coupling_costs(family, orders, optimize, dimension=DIMENSION):
     """Return costs for all orders and the number of shared DAG states."""
+    coordinate_rows = row_ones(dimension)
     root = family_mask(family)
     cache = {}
 
@@ -55,7 +61,7 @@ def coupling_costs(family, orders, optimize):
 
         coordinate = suffix[0]
         rest = suffix[1:]
-        ones = ROW_ONES[coordinate]
+        ones = coordinate_rows[coordinate]
         left_one = left_rows & ones
         right_one = right_rows & ones
         left_zero = left_rows ^ left_one
@@ -106,9 +112,11 @@ def coupling_costs(family, orders, optimize):
     return costs, len(cache)
 
 
-def one_sided_costs(family, orders):
-    return coupling_costs(family, orders, optimize=True)
+def one_sided_costs(family, orders, dimension=DIMENSION):
+    return coupling_costs(
+        family, orders, optimize=True, dimension=dimension)
 
 
-def sequential_costs(family, orders):
-    return coupling_costs(family, orders, optimize=False)
+def sequential_costs(family, orders, dimension=DIMENSION):
+    return coupling_costs(
+        family, orders, optimize=False, dimension=dimension)

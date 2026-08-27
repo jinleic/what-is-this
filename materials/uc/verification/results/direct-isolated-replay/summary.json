@@ -1,0 +1,373 @@
+{
+  "schema": "uc-direct-isolated-replay-report-v1",
+  "report_type": "direct_isolated_replay",
+  "claim_status": "MACHINE-VERIFIED",
+  "outcome": "PASS",
+  "campaign_id": "20260818T212601Z_425f109c15b64a6198785c6cebbbdaab",
+  "campaign_code_sha256": "2f23a58ebdb8b14275284e2ffefca7862373f7baf5d354a06e607cff8d78ce05",
+  "frozen_replayer_sha256": "4bfc2568e6d5b5364516f1acf734eb049d0f670bbec6cc6c95728466146ebeef",
+  "launch_raw_sha256": "63bb6fbe1cfbcb6b7d4c50d7b66882255e5e778ce604c92ecd1abdfa1ea8337e",
+  "campaign_lock_raw_sha256": "d254a23a4df7cb3a4c6aae2453883324fba2381c1890c4f011d61c7971b84b48",
+  "started_utc": "2026-08-26T05:58:38.669Z",
+  "finished_utc": "2026-08-26T10:37:09.059Z",
+  "parallel_workers": 8,
+  "declared_max_cpu_fraction": 0.2857142857142857,
+  "bytecode_disabled": true,
+  "isolated_interpreter": true,
+  "cached_replay_artifacts_used": false,
+  "input_hash_evidence_before": {
+    "report": "../structural-traces.json",
+    "report_sha256": "7270e5418be72b09e607457438bc9f8109154c31b491abca9546f4ebee3cf5a3"
+  },
+  "input_hash_evidence_after": {
+    "report": "../structural-traces-post-direct.json",
+    "report_sha256": "f52323d3b77f28a28a73d75e5eddbcf264298d13e1d7d1efa1bf3cd7121744cf"
+  },
+  "pre_post_input_maps_equal": true,
+  "slices": [
+    {
+      "slice": 0,
+      "process_name": "uc-replay-s0",
+      "started_utc": "2026-08-26T05:58:38.669Z",
+      "finished_utc": "2026-08-26T06:37:17.903Z",
+      "elapsed_seconds": 2319.234,
+      "exit_code": 0,
+      "command": [
+        "/Users/jinleic/jinleic-workspace/math/.venv/bin/python",
+        "-I",
+        "-B",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_replay.py",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/result_slice0_2fb154187bc54147855004d5dafaf214.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/trace_slice0_2fb154187bc54147855004d5dafaf214.bin"
+      ],
+      "cwd": "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot",
+      "environment": {
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "stdout_sha256": "b0d61e1336654f973610485f44eba24c8f53a68c13ad0cc01345f8d4239e65b0",
+      "expected_stdout_sha256": "b0d61e1336654f973610485f44eba24c8f53a68c13ad0cc01345f8d4239e65b0",
+      "log": "slice-0.log",
+      "tallies": {
+        "center": 4166369,
+        "center_mixed": 1059513,
+        "center_mixed_swap": 831310,
+        "center_w": 27088,
+        "corner": 3218757,
+        "face": 142023,
+        "infeasible": 766564,
+        "processed": 21135611,
+        "ratio": 356182,
+        "residual": 0,
+        "split": 10567805
+      }
+    },
+    {
+      "slice": 1,
+      "process_name": "uc-replay-s1",
+      "started_utc": "2026-08-26T05:58:38.673Z",
+      "finished_utc": "2026-08-26T06:37:17.486Z",
+      "elapsed_seconds": 2318.813,
+      "exit_code": 0,
+      "command": [
+        "/Users/jinleic/jinleic-workspace/math/.venv/bin/python",
+        "-I",
+        "-B",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_replay.py",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/result_slice1_af8b2ece3eb947339f8a4e273c46e3bd.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/trace_slice1_af8b2ece3eb947339f8a4e273c46e3bd.bin"
+      ],
+      "cwd": "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot",
+      "environment": {
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "stdout_sha256": "92c54a2e7ab1174c11f9f4243ab55e3392798f064fd8d4b4a7cdd6aa0c3312a6",
+      "expected_stdout_sha256": "92c54a2e7ab1174c11f9f4243ab55e3392798f064fd8d4b4a7cdd6aa0c3312a6",
+      "log": "slice-1.log",
+      "tallies": {
+        "center": 4074579,
+        "center_mixed": 1107712,
+        "center_mixed_swap": 858664,
+        "center_w": 23434,
+        "corner": 2837057,
+        "face": 230614,
+        "infeasible": 835153,
+        "processed": 20827065,
+        "ratio": 446320,
+        "residual": 0,
+        "split": 10413532
+      }
+    },
+    {
+      "slice": 2,
+      "process_name": "uc-replay-s2",
+      "started_utc": "2026-08-26T05:58:38.672Z",
+      "finished_utc": "2026-08-26T06:41:32.875Z",
+      "elapsed_seconds": 2574.203,
+      "exit_code": 0,
+      "command": [
+        "/Users/jinleic/jinleic-workspace/math/.venv/bin/python",
+        "-I",
+        "-B",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_replay.py",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/result_slice2_26a971c6ac644309946431b3900b780a.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/trace_slice2_26a971c6ac644309946431b3900b780a.bin"
+      ],
+      "cwd": "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot",
+      "environment": {
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "stdout_sha256": "9690ebe1efce97db953d29437c29a07a33c9052d0caf12e344cfd9372d675141",
+      "expected_stdout_sha256": "9690ebe1efce97db953d29437c29a07a33c9052d0caf12e344cfd9372d675141",
+      "log": "slice-2.log",
+      "tallies": {
+        "center": 4198151,
+        "center_mixed": 1025766,
+        "center_mixed_swap": 827217,
+        "center_w": 29236,
+        "corner": 3338422,
+        "face": 470233,
+        "infeasible": 1159349,
+        "processed": 23486265,
+        "ratio": 694759,
+        "residual": 0,
+        "split": 11743132
+      }
+    },
+    {
+      "slice": 3,
+      "process_name": "uc-replay-s3",
+      "started_utc": "2026-08-26T05:58:38.675Z",
+      "finished_utc": "2026-08-26T07:06:39.956Z",
+      "elapsed_seconds": 4081.281,
+      "exit_code": 0,
+      "command": [
+        "/Users/jinleic/jinleic-workspace/math/.venv/bin/python",
+        "-I",
+        "-B",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_replay.py",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/result_slice3_89cda161a3584c8aa9c1631258e37fde.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/trace_slice3_89cda161a3584c8aa9c1631258e37fde.bin"
+      ],
+      "cwd": "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot",
+      "environment": {
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "stdout_sha256": "6c0c74133fb96ed64c6645457ef30caed7fde0e1a5060127d1021bd7cbdad43b",
+      "expected_stdout_sha256": "6c0c74133fb96ed64c6645457ef30caed7fde0e1a5060127d1021bd7cbdad43b",
+      "log": "slice-3.log",
+      "tallies": {
+        "center": 5261749,
+        "center_mixed": 999230,
+        "center_mixed_swap": 592501,
+        "center_w": 14975,
+        "corner": 4699405,
+        "face": 2110724,
+        "infeasible": 2637747,
+        "processed": 34186855,
+        "ratio": 777097,
+        "residual": 0,
+        "split": 17093427
+      }
+    },
+    {
+      "slice": 4,
+      "process_name": "uc-replay-s4",
+      "started_utc": "2026-08-26T05:58:38.674Z",
+      "finished_utc": "2026-08-26T08:30:42.020Z",
+      "elapsed_seconds": 9123.346,
+      "exit_code": 0,
+      "command": [
+        "/Users/jinleic/jinleic-workspace/math/.venv/bin/python",
+        "-I",
+        "-B",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_replay.py",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/result_slice4_5136a0e6ac8c4078a5f8ceb73e34b777.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/trace_slice4_5136a0e6ac8c4078a5f8ceb73e34b777.bin"
+      ],
+      "cwd": "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot",
+      "environment": {
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "stdout_sha256": "2d1f31a8950d15a12c5507021ed1f496503c15651ad20dfeea9f8e6d8ff62e52",
+      "expected_stdout_sha256": "2d1f31a8950d15a12c5507021ed1f496503c15651ad20dfeea9f8e6d8ff62e52",
+      "log": "slice-4.log",
+      "tallies": {
+        "center": 11895793,
+        "center_mixed": 1269484,
+        "center_mixed_swap": 95757,
+        "center_w": 1427,
+        "corner": 9899146,
+        "face": 5487361,
+        "infeasible": 6969122,
+        "processed": 71405987,
+        "ratio": 84904,
+        "residual": 0,
+        "split": 35702993
+      }
+    },
+    {
+      "slice": 5,
+      "process_name": "uc-replay-s5",
+      "started_utc": "2026-08-26T05:58:38.673Z",
+      "finished_utc": "2026-08-26T10:37:09.059Z",
+      "elapsed_seconds": 16710.386,
+      "exit_code": 0,
+      "command": [
+        "/Users/jinleic/jinleic-workspace/math/.venv/bin/python",
+        "-I",
+        "-B",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_replay.py",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/result_slice5_7ab1c417449946a7b48c2d66c672bf93.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/trace_slice5_7ab1c417449946a7b48c2d66c672bf93.bin"
+      ],
+      "cwd": "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot",
+      "environment": {
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "stdout_sha256": "0c7d9aaa36ead48d7135d0d07e6db4e2b56cf08726a1cfa52bec0f09fd8ca7e6",
+      "expected_stdout_sha256": "0c7d9aaa36ead48d7135d0d07e6db4e2b56cf08726a1cfa52bec0f09fd8ca7e6",
+      "log": "slice-5.log",
+      "tallies": {
+        "center": 22256705,
+        "center_mixed": 1786704,
+        "center_mixed_swap": 26246,
+        "center_w": 531,
+        "corner": 12155506,
+        "face": 9882707,
+        "infeasible": 12719058,
+        "processed": 117709435,
+        "ratio": 27261,
+        "residual": 0,
+        "split": 58854717
+      }
+    },
+    {
+      "slice": 6,
+      "process_name": "uc-replay-s6",
+      "started_utc": "2026-08-26T05:58:38.675Z",
+      "finished_utc": "2026-08-26T10:14:35.413Z",
+      "elapsed_seconds": 15356.738,
+      "exit_code": 0,
+      "command": [
+        "/Users/jinleic/jinleic-workspace/math/.venv/bin/python",
+        "-I",
+        "-B",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_replay.py",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/result_slice6_30d759beee9b4026928e3e9181f6afaa.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/trace_slice6_30d759beee9b4026928e3e9181f6afaa.bin"
+      ],
+      "cwd": "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot",
+      "environment": {
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "stdout_sha256": "cf459a39ab8c13cd6f2b80df203179c8e6067b71589ab3562ed155852879bf1e",
+      "expected_stdout_sha256": "cf459a39ab8c13cd6f2b80df203179c8e6067b71589ab3562ed155852879bf1e",
+      "log": "slice-6.log",
+      "tallies": {
+        "center": 20315341,
+        "center_mixed": 2937116,
+        "center_mixed_swap": 16355,
+        "center_w": 313,
+        "corner": 13820378,
+        "face": 10265837,
+        "infeasible": 13349700,
+        "processed": 121456775,
+        "ratio": 23348,
+        "residual": 0,
+        "split": 60728387
+      }
+    },
+    {
+      "slice": 7,
+      "process_name": "uc-replay-s7",
+      "started_utc": "2026-08-26T05:58:38.673Z",
+      "finished_utc": "2026-08-26T07:50:21.862Z",
+      "elapsed_seconds": 6703.189,
+      "exit_code": 0,
+      "command": [
+        "/Users/jinleic/jinleic-workspace/math/.venv/bin/python",
+        "-I",
+        "-B",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_replay.py",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/result_slice7_e8b0b30179f441129e30d9afa266cc78.json",
+        "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/trace_slice7_e8b0b30179f441129e30d9afa266cc78.bin"
+      ],
+      "cwd": "/Users/jinleic/jinleic-workspace/math/uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot",
+      "environment": {
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "stdout_sha256": "f4407f29f33837d3b04767d80895514ea7b9debfb27c274f44b2abfc53b71ea3",
+      "expected_stdout_sha256": "f4407f29f33837d3b04767d80895514ea7b9debfb27c274f44b2abfc53b71ea3",
+      "log": "slice-7.log",
+      "tallies": {
+        "center": 11466023,
+        "center_mixed": 4150412,
+        "center_mixed_swap": 2473,
+        "center_w": 80,
+        "corner": 16794114,
+        "face": 1645285,
+        "infeasible": 5057436,
+        "processed": 78257861,
+        "ratio": 13108,
+        "residual": 0,
+        "split": 39128930
+      }
+    }
+  ],
+  "total_processed": 488465854,
+  "total_residual": 0,
+  "limitations": [
+    "Each fresh replay uses the same frozen arithmetic discharge implementation as the producer.",
+    "This direct run read externally pinned original inputs in place rather than a fresh read-only staging copy; independent pre/post structural audits prove those input bytes were unchanged.",
+    "Hub process metadata and logs are local execution records, not cryptographic remote attestation."
+  ],
+  "report_sha256": "6ef126ced337b035e5c5f22a130b1be3697666e60f16586b75540ef6fc734b16"
+}

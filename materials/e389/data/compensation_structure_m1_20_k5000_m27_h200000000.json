@@ -1,0 +1,1714 @@
+{
+  "claim_boundary": "The local decomposition, prefix-cone count, retained-prime product bound, and shift identity are proved algebraically in THEOREMS.md. The reported counts are exact only over their declared finite domains. No witness or existence claim is made outside those domains.",
+  "even_shift_first_bad_term_identity": {
+    "counts": {
+      "prime_checks": 19654,
+      "spikes": 15336
+    }
+  },
+  "flexible_prefix_cone": {
+    "counts": {
+      "enumerated_residues": 19804,
+      "safe_residue_formula_checks": 1645
+    },
+    "rows": [
+      {
+        "exponent": 1,
+        "modulus": 3,
+        "prime": 3,
+        "safe_residue_count": 1
+      },
+      {
+        "exponent": 2,
+        "modulus": 9,
+        "prime": 3,
+        "safe_residue_count": 2
+      },
+      {
+        "exponent": 3,
+        "modulus": 27,
+        "prime": 3,
+        "safe_residue_count": 4
+      },
+      {
+        "exponent": 4,
+        "modulus": 81,
+        "prime": 3,
+        "safe_residue_count": 8
+      },
+      {
+        "exponent": 1,
+        "modulus": 5,
+        "prime": 5,
+        "safe_residue_count": 2
+      },
+      {
+        "exponent": 2,
+        "modulus": 25,
+        "prime": 5,
+        "safe_residue_count": 6
+      },
+      {
+        "exponent": 3,
+        "modulus": 125,
+        "prime": 5,
+        "safe_residue_count": 18
+      },
+      {
+        "exponent": 4,
+        "modulus": 625,
+        "prime": 5,
+        "safe_residue_count": 54
+      },
+      {
+        "exponent": 1,
+        "modulus": 7,
+        "prime": 7,
+        "safe_residue_count": 3
+      },
+      {
+        "exponent": 2,
+        "modulus": 49,
+        "prime": 7,
+        "safe_residue_count": 12
+      },
+      {
+        "exponent": 3,
+        "modulus": 343,
+        "prime": 7,
+        "safe_residue_count": 48
+      },
+      {
+        "exponent": 4,
+        "modulus": 2401,
+        "prime": 7,
+        "safe_residue_count": 192
+      },
+      {
+        "exponent": 1,
+        "modulus": 11,
+        "prime": 11,
+        "safe_residue_count": 5
+      },
+      {
+        "exponent": 2,
+        "modulus": 121,
+        "prime": 11,
+        "safe_residue_count": 30
+      },
+      {
+        "exponent": 3,
+        "modulus": 1331,
+        "prime": 11,
+        "safe_residue_count": 180
+      },
+      {
+        "exponent": 4,
+        "modulus": 14641,
+        "prime": 11,
+        "safe_residue_count": 1080
+      }
+    ]
+  },
+  "implementation_sha256": {
+    "compensation_structure_analysis.py": "096e486a8b75595e3f15b8b75a05c02d8f9515a82c1c9e47f5c1da866fe6ebcb",
+    "erdos389.py": "28debc996b4091caecf6f2528f70f3f4e46cdfd89223dcd971e59d808e7350d8",
+    "residue_control_analysis.py": "901a0a0fe01b82ec889e234385f48446d305e31daa58653914741298d5e953af"
+  },
+  "input": {
+    "extended_moving_window": {
+      "logical_name": "moving_bad_window_m27_h100000000_199999999.json",
+      "sha256": "ac9b02929f6fb4305ad54faef7c893f9c259d1e371d57753a74392f2641720c2"
+    },
+    "moving_window": {
+      "logical_name": "moving_bad_window_m27_h100000000.json",
+      "sha256": "d0f9128e55426ed8c28cba5c3bc0bf959b7577b8d5545d8623e754101e77142a"
+    },
+    "near_miss": {
+      "logical_name": "bad_window_near_miss_m27_h100000000.json",
+      "sha256": "02723427575e1455497387adfbac63546690370bb96f5f97650e65b7cd3f09f8"
+    }
+  },
+  "m27_extended_survivor_retained_prime_bounds": {
+    "counts": {
+      "all_offsets_with_certified_large_prime_obstruction": 100000000,
+      "obstruction_prime_checks": 113,
+      "offsets_with_certified_large_prime_obstruction": 100000000,
+      "single_level_rejected_offsets": 99999991,
+      "survivors": 9,
+      "survivors_with_large_prime_obstructions": 9,
+      "survivors_with_small_prime_obstructions": 2
+    },
+    "rows": [
+      {
+        "exact_obstruction_count": 9,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 252778950145537605765865189782720,
+        "flexible_prefix_density": {
+          "denominator": 16994605816575746396466092783565859162731199395651204164046056167068361,
+          "numerator": 252778950145537605765865189782720
+        },
+        "flexible_prefix_modulus": 16994605816575746396466092783565859162731199395651204164046056167068361,
+        "is_witness": false,
+        "k": 5048992230624,
+        "large_prime_obstruction_count": 9,
+        "least_forward_retaining_candidate": 130363360713721040509655801770416643,
+        "least_forward_retaining_candidate_decimal_digits": 36,
+        "obstructions": [
+          {
+            "cofactor": 25629402186,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 197,
+            "term": 5048992230642
+          },
+          {
+            "cofactor": 2614703382,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1931,
+            "term": 5048992230642
+          },
+          {
+            "cofactor": 2611998050,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1933,
+            "term": 5048992230650
+          },
+          {
+            "cofactor": 2250999657,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2243,
+            "term": 5048992230651
+          },
+          {
+            "cofactor": 2207692274,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2287,
+            "term": 5048992230638
+          },
+          {
+            "cofactor": 1048161144,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 4817,
+            "term": 5048992230648
+          },
+          {
+            "cofactor": 93877103,
+            "exponent": 1,
+            "position": 25,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 53783,
+            "term": 5048992230649
+          },
+          {
+            "cofactor": 27801749,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 181607,
+            "term": 5048992230643
+          },
+          {
+            "cofactor": 6873520,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 734557,
+            "term": 5048992230640
+          }
+        ],
+        "offset": 586005,
+        "retained_prime_product": 130363360713721040509650752778186019,
+        "retained_prime_product_decimal_digits": 36,
+        "small_prime_obstructions": []
+      },
+      {
+        "exact_obstruction_count": 16,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 1296196588265308089555328517252131436398756001930034035129867404247040,
+        "flexible_prefix_density": {
+          "denominator": 7317910606525682327853242713467021803820006071996301665474295497725350109723122327573747835609645903128603756570137027282137633358059503126816498289,
+          "numerator": 1296196588265308089555328517252131436398756001930034035129867404247040
+        },
+        "flexible_prefix_modulus": 7317910606525682327853242713467021803820006071996301665474295497725350109723122327573747835609645903128603756570137027282137633358059503126816498289,
+        "is_witness": false,
+        "k": 5049021210839,
+        "large_prime_obstruction_count": 16,
+        "least_forward_retaining_candidate": 85544787138233515671415125848566614658776888075501590544807967323924345072,
+        "least_forward_retaining_candidate_decimal_digits": 74,
+        "obstructions": [
+          {
+            "cofactor": 28206822407,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 179,
+            "term": 5049021210853
+          },
+          {
+            "cofactor": 3368259647,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1499,
+            "term": 5049021210853
+          },
+          {
+            "cofactor": 1105544386,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 4567,
+            "term": 5049021210862
+          },
+          {
+            "cofactor": 1079081259,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 4679,
+            "term": 5049021210861
+          },
+          {
+            "cofactor": 548627753,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 9203,
+            "term": 5049021210859
+          },
+          {
+            "cofactor": 544016939,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 9281,
+            "term": 5049021210859
+          },
+          {
+            "cofactor": 114847058,
+            "exponent": 1,
+            "position": 15,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 43963,
+            "term": 5049021210854
+          },
+          {
+            "cofactor": 94680391,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 53327,
+            "term": 5049021210857
+          },
+          {
+            "cofactor": 85335089,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 59167,
+            "term": 5049021210863
+          },
+          {
+            "cofactor": 44964522,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 112289,
+            "term": 5049021210858
+          },
+          {
+            "cofactor": 43878968,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 115067,
+            "term": 5049021210856
+          },
+          {
+            "cofactor": 32719351,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 154313,
+            "term": 5049021210863
+          },
+          {
+            "cofactor": 9012263,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 560239,
+            "term": 5049021210857
+          },
+          {
+            "cofactor": 7122945,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 708839,
+            "term": 5049021210855
+          },
+          {
+            "cofactor": 6443752,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 783553,
+            "term": 5049021210856
+          },
+          {
+            "cofactor": 2487542,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2029723,
+            "term": 5049021210866
+          }
+        ],
+        "offset": 29566220,
+        "retained_prime_product": 85544787138233515671415125848566614658776888075501590544807962274903134233,
+        "retained_prime_product_decimal_digits": 74,
+        "small_prime_obstructions": []
+      },
+      {
+        "exact_obstruction_count": 16,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 30640799919518946346723143263378298924630826421038197813592041576559411200,
+        "flexible_prefix_density": {
+          "denominator": 4038565495678775522645135266662822063616978719525523819644392667861111385024839587000085044816982252682725462454595038428648083855418021327907027512427616281,
+          "numerator": 30640799919518946346723143263378298924630826421038197813592041576559411200
+        },
+        "flexible_prefix_modulus": 4038565495678775522645135266662822063616978719525523819644392667861111385024839587000085044816982252682725462454595038428648083855418021327907027512427616281,
+        "is_witness": false,
+        "k": 5049021210840,
+        "large_prime_obstruction_count": 16,
+        "least_forward_retaining_candidate": 2009618246254441113036250514481966952670780050230438972329022143048133681054931,
+        "least_forward_retaining_candidate_decimal_digits": 79,
+        "obstructions": [
+          {
+            "cofactor": 1105544386,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 4567,
+            "term": 5049021210862
+          },
+          {
+            "cofactor": 1079081259,
+            "exponent": 1,
+            "position": 21,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 4679,
+            "term": 5049021210861
+          },
+          {
+            "cofactor": 548627753,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 9203,
+            "term": 5049021210859
+          },
+          {
+            "cofactor": 544016939,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 9281,
+            "term": 5049021210859
+          },
+          {
+            "cofactor": 126614871,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 39877,
+            "term": 5049021210867
+          },
+          {
+            "cofactor": 114847058,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 43963,
+            "term": 5049021210854
+          },
+          {
+            "cofactor": 94680391,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 53327,
+            "term": 5049021210857
+          },
+          {
+            "cofactor": 85335089,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 59167,
+            "term": 5049021210863
+          },
+          {
+            "cofactor": 44964522,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 112289,
+            "term": 5049021210858
+          },
+          {
+            "cofactor": 43878968,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 115067,
+            "term": 5049021210856
+          },
+          {
+            "cofactor": 32719351,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 154313,
+            "term": 5049021210863
+          },
+          {
+            "cofactor": 31941477,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 158071,
+            "term": 5049021210867
+          },
+          {
+            "cofactor": 9012263,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 560239,
+            "term": 5049021210857
+          },
+          {
+            "cofactor": 7122945,
+            "exponent": 1,
+            "position": 15,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 708839,
+            "term": 5049021210855
+          },
+          {
+            "cofactor": 6443752,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 783553,
+            "term": 5049021210856
+          },
+          {
+            "cofactor": 2487542,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2029723,
+            "term": 5049021210866
+          }
+        ],
+        "offset": 29566221,
+        "retained_prime_product": 2009618246254441113036250514481966952670780050230438972329022143043084659844091,
+        "retained_prime_product_decimal_digits": 79,
+        "small_prime_obstructions": []
+      },
+      {
+        "exact_obstruction_count": 9,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 894795870126584128875609711166064172000000,
+        "flexible_prefix_density": {
+          "denominator": 211894036996341683763162053441039680841291275868482053885212158008360603463289438930863009,
+          "numerator": 894795870126584128875609711166064172000000
+        },
+        "flexible_prefix_modulus": 211894036996341683763162053441039680841291275868482053885212158008360603463289438930863009,
+        "is_witness": false,
+        "k": 5049027007945,
+        "large_prime_obstruction_count": 9,
+        "least_forward_retaining_candidate": 460319494477848161189131812316001797148572442,
+        "least_forward_retaining_candidate_decimal_digits": 45,
+        "obstructions": [
+          {
+            "cofactor": 21669643811,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 233,
+            "term": 5049027007963
+          },
+          {
+            "cofactor": 1979234421,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2551,
+            "term": 5049027007971
+          },
+          {
+            "cofactor": 154343136,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 32713,
+            "term": 5049027007968
+          },
+          {
+            "cofactor": 129002453,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 39139,
+            "term": 5049027007967
+          },
+          {
+            "cofactor": 13360360,
+            "exponent": 1,
+            "position": 15,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 377911,
+            "term": 5049027007960
+          },
+          {
+            "cofactor": 7810741,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 646421,
+            "term": 5049027007961
+          },
+          {
+            "cofactor": 5626453,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 897373,
+            "term": 5049027007969
+          },
+          {
+            "cofactor": 4031317,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1252451,
+            "term": 5049027007967
+          },
+          {
+            "cofactor": 2291836,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2203049,
+            "term": 5049027007964
+          }
+        ],
+        "offset": 35363326,
+        "retained_prime_product": 460319494477848161189131812315996748121564497,
+        "retained_prime_product_decimal_digits": 45,
+        "small_prime_obstructions": []
+      },
+      {
+        "exact_obstruction_count": 17,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 37114597066101420596825126708089900106298015332181431154933725797504972800,
+        "flexible_prefix_density": {
+          "denominator": 5942567288725101212618194101427643674929215370805745206104752018566626258827356114427927479482212643856721089506533609431055841082543437439508106548978851441,
+          "numerator": 37114597066101420596825126708089900106298015332181431154933725797504972800
+        },
+        "flexible_prefix_modulus": 5942567288725101212618194101427643674929215370805745206104752018566626258827356114427927479482212643856721089506533609431055841082543437439508106548978851441,
+        "is_witness": false,
+        "k": 5049045224988,
+        "large_prime_obstruction_count": 16,
+        "least_forward_retaining_candidate": 2437738150155816307135759306195010813291494652139504827929031352227708940734467,
+        "least_forward_retaining_candidate_decimal_digits": 79,
+        "obstructions": [
+          {
+            "cofactor": 3533271676,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1429,
+            "term": 5049045225004
+          },
+          {
+            "cofactor": 3390896726,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1489,
+            "term": 5049045225014
+          },
+          {
+            "cofactor": 2614730826,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1931,
+            "term": 5049045225006
+          },
+          {
+            "cofactor": 860583812,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 5867,
+            "term": 5049045225004
+          },
+          {
+            "cofactor": 304031145,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 16607,
+            "term": 5049045225015
+          },
+          {
+            "cofactor": 182453844,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 27673,
+            "term": 5049045225012
+          },
+          {
+            "cofactor": 149102124,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 33863,
+            "term": 5049045225012
+          },
+          {
+            "cofactor": 59000026,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 85577,
+            "term": 5049045225002
+          },
+          {
+            "cofactor": 39060251,
+            "exponent": 1,
+            "position": 25,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 129263,
+            "term": 5049045225013
+          },
+          {
+            "cofactor": 22173430,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 227707,
+            "term": 5049045225010
+          },
+          {
+            "cofactor": 11315731,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 446197,
+            "term": 5049045225007
+          },
+          {
+            "cofactor": 5140615,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 982187,
+            "term": 5049045225005
+          },
+          {
+            "cofactor": 4583079,
+            "exponent": 1,
+            "position": 21,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1101671,
+            "term": 5049045225009
+          },
+          {
+            "cofactor": 4022384,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1255237,
+            "term": 5049045225008
+          },
+          {
+            "cofactor": 2630022,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1919773,
+            "term": 5049045225006
+          },
+          {
+            "cofactor": 2277070,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2217343,
+            "term": 5049045225010
+          }
+        ],
+        "offset": 53580369,
+        "retained_prime_product": 2437738150155816307135759306195010813291494652139504827929031352222659895509479,
+        "retained_prime_product_decimal_digits": 79,
+        "small_prime_obstructions": [
+          {
+            "prime": 7,
+            "slack": -1
+          }
+        ]
+      },
+      {
+        "exact_obstruction_count": 17,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 7035535589491180294962339972172505837201626679427025990877522902298841600,
+        "flexible_prefix_density": {
+          "denominator": 213561188419338009154285101816729222158307576116162247313101260107584736623643985114207448450729599697880361415823851603902597276178332231436641425123772641,
+          "numerator": 7035535589491180294962339972172505837201626679427025990877522902298841600
+        },
+        "flexible_prefix_modulus": 213561188419338009154285101816729222158307576116162247313101260107584736623643985114207448450729599697880361415823851603902597276178332231436641425123772641,
+        "is_witness": false,
+        "k": 5049045224989,
+        "large_prime_obstruction_count": 16,
+        "least_forward_retaining_candidate": 462126809890248640997737981284710382743352977338060306197841425003684326724110,
+        "least_forward_retaining_candidate_decimal_digits": 78,
+        "obstructions": [
+          {
+            "cofactor": 3533271676,
+            "exponent": 1,
+            "position": 15,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1429,
+            "term": 5049045225004
+          },
+          {
+            "cofactor": 3390896726,
+            "exponent": 1,
+            "position": 25,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1489,
+            "term": 5049045225014
+          },
+          {
+            "cofactor": 2614730826,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1931,
+            "term": 5049045225006
+          },
+          {
+            "cofactor": 860583812,
+            "exponent": 1,
+            "position": 15,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 5867,
+            "term": 5049045225004
+          },
+          {
+            "cofactor": 311227592,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 16223,
+            "term": 5049045225016
+          },
+          {
+            "cofactor": 304031145,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 16607,
+            "term": 5049045225015
+          },
+          {
+            "cofactor": 182453844,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 27673,
+            "term": 5049045225012
+          },
+          {
+            "cofactor": 149102124,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 33863,
+            "term": 5049045225012
+          },
+          {
+            "cofactor": 39060251,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 129263,
+            "term": 5049045225013
+          },
+          {
+            "cofactor": 22173430,
+            "exponent": 1,
+            "position": 21,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 227707,
+            "term": 5049045225010
+          },
+          {
+            "cofactor": 11315731,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 446197,
+            "term": 5049045225007
+          },
+          {
+            "cofactor": 5140615,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 982187,
+            "term": 5049045225005
+          },
+          {
+            "cofactor": 4583079,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1101671,
+            "term": 5049045225009
+          },
+          {
+            "cofactor": 4022384,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1255237,
+            "term": 5049045225008
+          },
+          {
+            "cofactor": 2630022,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1919773,
+            "term": 5049045225006
+          },
+          {
+            "cofactor": 2277070,
+            "exponent": 1,
+            "position": 21,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2217343,
+            "term": 5049045225010
+          }
+        ],
+        "offset": 53580370,
+        "retained_prime_product": 462126809890248640997737981284710382743352977338060306197841424998635281499121,
+        "retained_prime_product_decimal_digits": 78,
+        "small_prime_obstructions": [
+          {
+            "prime": 7,
+            "slack": -1
+          }
+        ]
+      },
+      {
+        "exact_obstruction_count": 9,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 1079254871917153306348165973759167176960,
+        "flexible_prefix_density": {
+          "denominator": 305712680874160142451708789963201679900774601994935086834000269477514510299773587681,
+          "numerator": 1079254871917153306348165973759167176960
+        },
+        "flexible_prefix_modulus": 305712680874160142451708789963201679900774601994935086834000269477514510299773587681,
+        "is_witness": false,
+        "k": 5049045494655,
+        "large_prime_obstruction_count": 9,
+        "least_forward_retaining_candidate": 552912905324301634220797613695148818121614,
+        "least_forward_retaining_candidate_decimal_digits": 42,
+        "obstructions": [
+          {
+            "cofactor": 1178857225,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 4283,
+            "term": 5049045494675
+          },
+          {
+            "cofactor": 897927351,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 5623,
+            "term": 5049045494673
+          },
+          {
+            "cofactor": 475741590,
+            "exponent": 1,
+            "position": 15,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 10613,
+            "term": 5049045494670
+          },
+          {
+            "cofactor": 204010081,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 24749,
+            "term": 5049045494669
+          },
+          {
+            "cofactor": 163775844,
+            "exponent": 1,
+            "position": 21,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 30829,
+            "term": 5049045494676
+          },
+          {
+            "cofactor": 71032280,
+            "exponent": 1,
+            "position": 25,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 71081,
+            "term": 5049045494680
+          },
+          {
+            "cofactor": 41749386,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 120937,
+            "term": 5049045494682
+          },
+          {
+            "cofactor": 16701163,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 302317,
+            "term": 5049045494671
+          },
+          {
+            "cofactor": 4628063,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1090963,
+            "term": 5049045494669
+          }
+        ],
+        "offset": 53850036,
+        "retained_prime_product": 552912905324301634220797613690099772626959,
+        "retained_prime_product_decimal_digits": 42,
+        "small_prime_obstructions": []
+      },
+      {
+        "exact_obstruction_count": 11,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 182287335026114369760333580462474071287040000,
+        "flexible_prefix_density": {
+          "denominator": 142014613223317200202069808533992122727708674784286734303333046128075021014771652624101824686001,
+          "numerator": 182287335026114369760333580462474071287040000
+        },
+        "flexible_prefix_modulus": 142014613223317200202069808533992122727708674784286734303333046128075021014771652624101824686001,
+        "is_witness": false,
+        "k": 5049049155530,
+        "large_prime_obstruction_count": 11,
+        "least_forward_retaining_candidate": 376848262863605622063682408695827115403636998531,
+        "least_forward_retaining_candidate_decimal_digits": 48,
+        "obstructions": [
+          {
+            "cofactor": 21669738865,
+            "exponent": 1,
+            "position": 15,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 233,
+            "term": 5049049155545
+          },
+          {
+            "cofactor": 12344863461,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 409,
+            "term": 5049049155549
+          },
+          {
+            "cofactor": 11397402157,
+            "exponent": 1,
+            "position": 21,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 443,
+            "term": 5049049155551
+          },
+          {
+            "cofactor": 917842057,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 5501,
+            "term": 5049049155557
+          },
+          {
+            "cofactor": 641311972,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 7873,
+            "term": 5049049155556
+          },
+          {
+            "cofactor": 202618450,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 24919,
+            "term": 5049049155550
+          },
+          {
+            "cofactor": 155455807,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 32479,
+            "term": 5049049155553
+          },
+          {
+            "cofactor": 11951572,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 422459,
+            "term": 5049049155548
+          },
+          {
+            "cofactor": 8156428,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 619027,
+            "term": 5049049155556
+          },
+          {
+            "cofactor": 5182823,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 974189,
+            "term": 5049049155547
+          },
+          {
+            "cofactor": 5051014,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 999611,
+            "term": 5049049155554
+          }
+        ],
+        "offset": 57510911,
+        "retained_prime_product": 376848262863605622063682408695827110354587843001,
+        "retained_prime_product_decimal_digits": 48,
+        "small_prime_obstructions": []
+      },
+      {
+        "exact_obstruction_count": 11,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 182287335026114369760333580462474071287040000,
+        "flexible_prefix_density": {
+          "denominator": 142014613223317200202069808533992122727708674784286734303333046128075021014771652624101824686001,
+          "numerator": 182287335026114369760333580462474071287040000
+        },
+        "flexible_prefix_modulus": 142014613223317200202069808533992122727708674784286734303333046128075021014771652624101824686001,
+        "is_witness": false,
+        "k": 5049049155531,
+        "large_prime_obstruction_count": 11,
+        "least_forward_retaining_candidate": 376848262863605622063682408695827115403636998532,
+        "least_forward_retaining_candidate_decimal_digits": 48,
+        "obstructions": [
+          {
+            "cofactor": 21669738865,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 233,
+            "term": 5049049155545
+          },
+          {
+            "cofactor": 12344863461,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 409,
+            "term": 5049049155549
+          },
+          {
+            "cofactor": 11397402157,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 443,
+            "term": 5049049155551
+          },
+          {
+            "cofactor": 917842057,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 5501,
+            "term": 5049049155557
+          },
+          {
+            "cofactor": 641311972,
+            "exponent": 1,
+            "position": 25,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 7873,
+            "term": 5049049155556
+          },
+          {
+            "cofactor": 202618450,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 24919,
+            "term": 5049049155550
+          },
+          {
+            "cofactor": 155455807,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 32479,
+            "term": 5049049155553
+          },
+          {
+            "cofactor": 11951572,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 422459,
+            "term": 5049049155548
+          },
+          {
+            "cofactor": 8156428,
+            "exponent": 1,
+            "position": 25,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 619027,
+            "term": 5049049155556
+          },
+          {
+            "cofactor": 5182823,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 974189,
+            "term": 5049049155547
+          },
+          {
+            "cofactor": 5051014,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 999611,
+            "term": 5049049155554
+          }
+        ],
+        "offset": 57510912,
+        "retained_prime_product": 376848262863605622063682408695827110354587843001,
+        "retained_prime_product_decimal_digits": 48,
+        "small_prime_obstructions": []
+      }
+    ]
+  },
+  "m27_survivor_retained_prime_bounds": {
+    "counts": {
+      "all_offsets_with_certified_large_prime_obstruction": 100000000,
+      "obstruction_prime_checks": 27,
+      "offsets_with_certified_large_prime_obstruction": 100000000,
+      "single_level_rejected_offsets": 99999997,
+      "survivors": 3,
+      "survivors_with_large_prime_obstructions": 3
+    },
+    "rows": [
+      {
+        "canonical_mirror_crt_solution": 2804758913076793147011676680717990242274888799304033282236713038877552303511470619809691623324012157998431158573730252408383472773274926944496029060980179808,
+        "exact_obstruction_count": 14,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 26858311755649610078042357939321852500466929138389186689203800000,
+        "flexible_prefix_density": {
+          "denominator": 194168633938518093715902609691203823552730837732473065310276959239259892046850211458636861367003035192083144716948518085314424888176883369,
+          "numerator": 26858311755649610078042357939321852500466929138389186689203800000
+        },
+        "flexible_prefix_modulus": 194168633938518093715902609691203823552730837732473065310276959239259892046850211458636861367003035192083144716948518085314424888176883369,
+        "is_witness": false,
+        "k": 5048916354683,
+        "large_prime_obstruction_count": 14,
+        "least_forward_retaining_candidate": 440645701146077327433819698267062465360275094303291284785447984917896,
+        "least_forward_retaining_candidate_decimal_digits": 69,
+        "obstructions": [
+          {
+            "cofactor": 2459287070,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2053,
+            "term": 5048916354710
+          },
+          {
+            "cofactor": 2317079557,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2179,
+            "term": 5048916354703
+          },
+          {
+            "cofactor": 873061794,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 5783,
+            "term": 5048916354702
+          },
+          {
+            "cofactor": 547545424,
+            "exponent": 1,
+            "position": 21,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 9221,
+            "term": 5048916354704
+          },
+          {
+            "cofactor": 325799597,
+            "exponent": 1,
+            "position": 26,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 15497,
+            "term": 5048916354709
+          },
+          {
+            "cofactor": 128278573,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 39359,
+            "term": 5048916354707
+          },
+          {
+            "cofactor": 120490570,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 41903,
+            "term": 5048916354710
+          },
+          {
+            "cofactor": 48202900,
+            "exponent": 1,
+            "position": 17,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 104743,
+            "term": 5048916354700
+          },
+          {
+            "cofactor": 21206895,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 238079,
+            "term": 5048916354705
+          },
+          {
+            "cofactor": 15074497,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 334931,
+            "term": 5048916354707
+          },
+          {
+            "cofactor": 4029427,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1253011,
+            "term": 5048916354697
+          },
+          {
+            "cofactor": 3435102,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 1469801,
+            "term": 5048916354702
+          },
+          {
+            "cofactor": 2364873,
+            "exponent": 1,
+            "position": 16,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2134963,
+            "term": 5048916354699
+          },
+          {
+            "cofactor": 2294183,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 2200747,
+            "term": 5048916354701
+          }
+        ],
+        "offset": 24710064,
+        "retained_prime_product": 440645701146077327433819698267062465360275094303291284780399068563213,
+        "retained_prime_product_decimal_digits": 69,
+        "small_prime_obstructions": []
+      },
+      {
+        "canonical_mirror_crt_solution": 3200261226427203173588771962193034826304194665990331649152083329480598217752000,
+        "exact_obstruction_count": 6,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 6979246254392880118210560000,
+        "flexible_prefix_density": {
+          "denominator": 199625557813557471080754461227018606508427617282227627433401,
+          "numerator": 6979246254392880118210560000
+        },
+        "flexible_prefix_modulus": 199625557813557471080754461227018606508427617282227627433401,
+        "is_witness": false,
+        "k": 5048916883115,
+        "large_prime_obstruction_count": 6,
+        "least_forward_retaining_candidate": 446794760279882283662055017664,
+        "least_forward_retaining_candidate_decimal_digits": 30,
+        "obstructions": [
+          {
+            "cofactor": 1048145502,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 4817,
+            "term": 5048916883134
+          },
+          {
+            "cofactor": 195142306,
+            "exponent": 1,
+            "position": 23,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 25873,
+            "term": 5048916883138
+          },
+          {
+            "cofactor": 104142177,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 48481,
+            "term": 5048916883137
+          },
+          {
+            "cofactor": 25665890,
+            "exponent": 1,
+            "position": 15,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 196717,
+            "term": 5048916883130
+          },
+          {
+            "cofactor": 10396055,
+            "exponent": 1,
+            "position": 20,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 485657,
+            "term": 5048916883135
+          },
+          {
+            "cofactor": 6523140,
+            "exponent": 1,
+            "position": 25,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 774001,
+            "term": 5048916883140
+          }
+        ],
+        "offset": 25238496,
+        "retained_prime_product": 446794760279882278613138134549,
+        "retained_prime_product_decimal_digits": 30,
+        "small_prime_obstructions": []
+      },
+      {
+        "canonical_mirror_crt_solution": 1505402344197409972319091895969154757947576836968238904687004302536668777056205204360000,
+        "exact_obstruction_count": 7,
+        "exceeds_factorizer_bound": true,
+        "flexible_prefix_choice_count": 117181544611256457184755302400000,
+        "flexible_prefix_density": {
+          "denominator": 225114459901803863066499709403120771600681431967567592916678930020961,
+          "numerator": 117181544611256457184755302400000
+        },
+        "flexible_prefix_modulus": 225114459901803863066499709403120771600681431967567592916678930020961,
+        "is_witness": false,
+        "k": 5048916883116,
+        "large_prime_obstruction_count": 7,
+        "least_forward_retaining_candidate": 15003814844958726798112840613173085,
+        "least_forward_retaining_candidate_decimal_digits": 35,
+        "obstructions": [
+          {
+            "cofactor": 1048145502,
+            "exponent": 1,
+            "position": 18,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 4817,
+            "term": 5048916883134
+          },
+          {
+            "cofactor": 195142306,
+            "exponent": 1,
+            "position": 22,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 25873,
+            "term": 5048916883138
+          },
+          {
+            "cofactor": 150350403,
+            "exponent": 1,
+            "position": 27,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 33581,
+            "term": 5048916883143
+          },
+          {
+            "cofactor": 104142177,
+            "exponent": 1,
+            "position": 21,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 48481,
+            "term": 5048916883137
+          },
+          {
+            "cofactor": 25665890,
+            "exponent": 1,
+            "position": 14,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 196717,
+            "term": 5048916883130
+          },
+          {
+            "cofactor": 10396055,
+            "exponent": 1,
+            "position": 19,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 485657,
+            "term": 5048916883135
+          },
+          {
+            "cofactor": 6523140,
+            "exponent": 1,
+            "position": 24,
+            "positive_prefix_levels": 0,
+            "predicted_slack": -1,
+            "prime": 774001,
+            "term": 5048916883140
+          }
+        ],
+        "offset": 25238497,
+        "retained_prime_product": 15003814844958726798107791696289969,
+        "retained_prime_product_decimal_digits": 35,
+        "small_prime_obstructions": []
+      }
+    ]
+  },
+  "parameters": {
+    "contiguous_moving_offset_count": 200000000,
+    "local_rectangle": {
+      "max_k": 5000,
+      "max_m": 20,
+      "min_k": 1,
+      "min_m": 1
+    },
+    "shift_rectangle": {
+      "even_m_max": 20,
+      "even_m_min": 2,
+      "max_k": 2000,
+      "min_k": 2
+    }
+  },
+  "resources": {
+    "process_cpu_seconds": 6.143206,
+    "processes": 1,
+    "wall_seconds": 6.144762666983297
+  },
+  "schema_version": 2,
+  "small_and_large_prime_separation": {
+    "counts": {
+      "large_good_but_small_prime_failed": 190,
+      "large_prime_factor_checks": 587169,
+      "large_prime_good_windows": 1294,
+      "large_prime_obstructions": 442704,
+      "pairs": 100000,
+      "witnesses": 1104
+    }
+  },
+  "status": "PASS_EXACT_COMPENSATION_STRUCTURE_ANALYSIS"
+}

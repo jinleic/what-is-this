@@ -38,13 +38,14 @@ direction; if only one atom has psi != 0 -- i.e. only one atom lies outside
 
 TWO PROPERTIES THAT MATTER.
 
-(1) SCALE-FREE, so the sink degeneracy disappears.  As mu approaches the sink set,
-    F and L vanish together, but sigma^2 is QUADRATIC in the non-sink mass while L
-    is linear, so sigma^2/L -> 0 and Lambda tends to 2(1-alpha)(1-t) - 1 > 0.
-    Numerically, along (1-u-w)delta_0 + u delta_1 + w delta_{0.1165} with the mean
-    pinned at t, F and L collapse through 10 orders while Lambda stays at
-    0.1918625.  Also sigma^2 <= int rho h dmu <= (max rho) L, so
-    sigma^2/L <= max_p rho = 0.3049467 ALWAYS: Lambda is bounded, never singular.
+(1) SCALE-FREE, so the sink degeneracy disappears.  If epsilon is the
+    non-sink mass, Cauchy--Schwarz and rh <= (max rho) h give
+    sigma^2 <= epsilon (max rho) L.  Thus sigma^2/L -> 0 as epsilon -> 0.
+    Along a feasible sequence whose mean tends to m <= t, C/L >= 0 gives
+    liminf Lambda >= 2(1-alpha)(1-m)-1 >= 2(1-alpha)(1-t)-1 > 0.
+    On the zero-cost path below the mean is pinned at t, so equality holds:
+    Lambda tends to 0.1918625.  Also sigma^2/L <= max_p rho = 0.3049467
+    ALWAYS, so Lambda is bounded and never singular.
 
 (2) TIGHT WHERE IT COUNTS.  The binding obstruction
     mu* = a delta_1 + (1-a) delta_b has exactly one atom outside {0,1} (namely b;

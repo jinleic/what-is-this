@@ -1,6 +1,6 @@
 """Exact and numerical analysis of Liu's residual kernel R.
 
-PROVED in this file: for 0 <= s,t <= 1,
+HUMAN-AUDITED theorem supported by this file: for 0 <= s,t <= 1,
 
     R(s,t) = (1-s)(1-t) F(st) - G((1-s)(1-t)(1+st))
 
@@ -9,16 +9,16 @@ is a negative-semidefinite kernel, where
     F(x) = x - (1+x) log(1+x),
     G(x) = x + (1-x) log(1-x).
 
-PROVED consequence (using the exact reduction recorded in ``liu_kernel.py``):
-this settles Liu's Hypothesis 1 in arXiv:2306.08824v1, Section V-A.
-It does NOT settle Liu's Hypothesis 2 in Section V-B (the nine-parameter
-optimisation), so Liu's constant 0.382709087918741 is not yet unconditional.
+The script MACHINE-VERIFIES the finite symbolic identities and finite Arb
+compression bounds used by the proof.  The calculus, convergence, endpoint,
+kernel-closure, and signed-measure steps are ordinary human arguments audited
+in ``LIU_H1/AUDIT.md``; this is not an end-to-end formal verification.
 
-The proof below is an explicit Gram decomposition obtained from a
-Lorentz-signature factorisation of a degree-three denominator.  NUMERICAL
-Mercer diagnostics and PROVED finite Arb compressions are also reported.  A
-status label on an output heading applies to every indented line below it until
-the next status label.
+HUMAN-AUDITED consequence: on Liu's constrained subspace, the entropy and
+``R`` quadratic forms agree.  The stronger unprojected theorem therefore
+settles Liu's Hypothesis 1 in arXiv:2306.08824v1, Section V-A.  It does NOT
+settle Liu's Hypothesis 2 in Section V-B (the nine-parameter optimisation), so
+Liu's constant 0.382709087918741 is not yet unconditional.
 
 Run from the repository root with
 
@@ -253,7 +253,7 @@ def series_coefficient(p: int, q: int) -> Fraction:
 
 
 def exact_series_checks() -> None:
-    """Check the all-index coefficient formula on exact symbolic truncations."""
+    """Check finite coefficients of the human-derived all-index formula."""
     x, aa, bb = sp.symbols("x aa bb")
     f_series = sp.series(x - (1 + x) * sp.log(1 + x), x, 0, 14).removeO()
     for q in range(2, 13):
@@ -702,7 +702,7 @@ def print_fingerprint(result: dict[str, object]) -> None:
 
 def print_series_and_sos(sos: dict[str, object]) -> None:
     print("2. EXACT DOUBLE SERIES AND FINITE SOS HUNT")
-    print("PROVED [Taylor series plus the binomial theorem, checked by SymPy]:")
+    print("MACHINE-VERIFIED [finite coefficients of the human-derived Taylor/binomial formula]:")
     print("   R = sum_(p,q) c_(p,q) A^p B^q, with")
     print("     c_(1,q) = (-1)^(q+1)/[q(q-1)]                  (q >= 2),")
     print("     c_(p,q) = -binom(p,q)/[p(p-1)]       (p >= 2, 0 <= q <= p),")
@@ -720,17 +720,17 @@ def print_series_and_sos(sos: dict[str, object]) -> None:
             + ", ".join(str(series_coefficient(p, q)) for q in range(p + 1))
         )
 
-    print("PROVED [explicit non-rank-one 2-by-2 regrouping]:")
+    print("MACHINE-VERIFIED [explicit non-rank-one 2-by-2 regrouping]:")
     print("   Put x=(1-s)s^2 and y=(1-s)^2s^2, so (1-s)s^3=x-y.")
     print("   The q=2, q=3 and (p,q)=(2,2) terms of -R are")
     print("     (1/2)x@x + (1/2)y@y - (1/6)(x-y)@(x-y)")
     print("       = (1/4)(x+y)@(x+y) + (1/12)(x-y)@(x-y),")
     print("   an exact SOS that genuinely mixes two different (p,q) features.")
-    print("PROVED [exact rational LDL^T, all pivots positive]:")
+    print("MACHINE-VERIFIED [exact rational LDL^T, all pivots positive]:")
     print("   The joint prefix q<=5, p<=4 of -R is an SOS after factoring uv.")
     print("   Rational LDL pivots:")
     print("     " + ", ".join(str(pivot) for pivot in sos["pivots"]))
-    print("PROVED [exact determinant obstruction to the natural next prefix]:")
+    print("MACHINE-VERIFIED [exact determinant obstruction to the natural next prefix]:")
     print("   For q<=7, p<=6 the reduced coefficient determinant is")
     print(f"     {sos['failed_determinant']} < 0,")
     print("   so that particular finite prefix is not an SOS.  This refutes only")
@@ -760,7 +760,7 @@ def print_factorisation_proof(
     )
     print("   All diagnostics pass the requested 1e-12 threshold.")
 
-    print("PROVED [two exact derivatives and Taylor's theorem with integral remainder]:")
+    print("HUMAN-AUDITED [Taylor remainder]; MACHINE-VERIFIED [three derivative identities]:")
     print("   Since G(-B)=-F(B), put phi(B)=G(A(1+B))+A G(-B)=-R.  SymPy gives")
     print("     phi(0)=G(A),        phi'(0)=-A ln(1-A),")
     print("     phi''(B)=A/[(1+B)(1-A(1+B))].")
@@ -768,22 +768,22 @@ def print_factorisation_proof(
     print("     -R = G(A)-AB ln(1-A)")
     print("          + integral_0^1 (1-theta) A B^2 / D_theta(s,t) dtheta,")
     print("     D_theta=(1+theta st)[1-uv(1+theta st)].")
-    print("PROVED [nonnegative power-series Gram maps]:")
+    print("HUMAN-AUDITED [nonnegative power-series Gram maps]:")
     print("   G(A)=sum_(n>=2) A^n/[n(n-1)] is PSD, and")
     print("   -AB ln(1-A)=sum_(n>=1) A^(n+1)B/n is PSD.")
 
-    print("PROVED [exact SymPy coefficient extraction]:")
+    print("MACHINE-VERIFIED [exact SymPy coefficient extraction]:")
     print("   In the basis (1,s,s^2,s^3), D_theta has coefficient matrix")
     print(f"     {symbolic['coefficient_matrix']}")
     print("   det M(theta)=-2 theta^3, and its characteristic coefficients are")
     print("     1, (theta+1)(2theta+1), 4theta^3+2theta-1,")
     print("     -2theta(theta^3-theta^2+theta+1), -2theta^3.")
-    print("PROVED [Descartes' rule, using symmetry of M(theta)]:")
+    print("HUMAN-AUDITED [Descartes and symmetric-matrix inertia]; MACHINE-VERIFIED signs:")
     print("   For 0<theta<=1 the signs are (+,+,+/-,-,-), hence exactly one")
     print("   positive eigenvalue; det!=0 then gives inertia (1 positive, 3 negative).")
     print("   At theta=0 the inertia is (1 positive, 1 negative, 2 zero).")
 
-    print("PROVED [exact rational LDL^T, giving an explicit Lorentz factor]:")
+    print("MACHINE-VERIFIED [exact rational LDL^T and Lorentz factor]:")
     print("   In the permuted basis (s,1,s^2,s^3), the pivots are")
     print("     -(theta+1), 1/(theta+1), -theta(theta+2), -2theta^2/(theta+2).")
     print("   Define")
@@ -796,13 +796,13 @@ def print_factorisation_proof(
     print("              theta sqrt(2/(theta+2))z3).")
     print("   Then D_theta(s,t)=a_theta(s)a_theta(t)-b_theta(s).b_theta(t).")
 
-    print("PROVED [exact cubic monotonicity check]:")
+    print("HUMAN-AUDITED [diagonal inequality]; MACHINE-VERIFIED polynomial identities:")
     print("   For 0<s<=1 and 0<=theta<=1,")
     print("     D_theta(s,s) >= s p(s),  p(s)=2-2s+2s^2-s^3.")
     print("   p'(s)=-3s^2+4s-2 has discriminant -8 and is negative; p decreases")
     print("   from 2 to 1.  Thus D_theta(s,s)>0, a_theta is nonzero with constant")
     print("   sign, and ||c_theta(s)||<1 for c_theta=b_theta/a_theta.")
-    print("PROVED [geometric tensor-power Gram series]:")
+    print("HUMAN-AUDITED [geometric tensor-power Gram series and convergence]:")
     print("     1/D_theta(s,t) = 1/[a_theta(s)a_theta(t)]")
     print("       * sum_(n>=0) <c_theta(s)^tensor n, c_theta(t)^tensor n>.")
     print("   Cauchy--Schwarz gives absolute convergence.  Multiplication by")
@@ -810,15 +810,15 @@ def print_factorisation_proof(
     print("   At (0,0), B^2/D_theta extends continuously by zero; PSD follows by limits.")
     print("   Also AB[-ln(1-A)] extends by zero there: with m=max(s,t),")
     print("   st[-ln(s+t-st)] <= m^2[-ln m] -> 0.  Hence the full identity extends.")
-    print("PROVED [the preceding explicit Gram decomposition]: R is NSD on [0,1].")
+    print("HUMAN-AUDITED [preceding integral Gram decomposition]: R is NSD on [0,1].")
     print()
 
 
 def print_arb_bounds(bounds: dict[int, tuple[object, object]]) -> None:
     print("4. RIGOROUS FINITE ARB COMPRESSIONS")
     print(
-        "PROVED [exact Legendre moments, exact Fraction/fmpq arithmetic, "
-        f"{ARB_PRECISION_BITS}-bit Arb]:"
+        "MACHINE-VERIFIED [exact Legendre moments, exact Fraction/fmpq arithmetic, "
+        f"{ARB_PRECISION_BITS}-bit finite Arb bounds]:"
     )
     print("   The comparison kernel is B_K=A F(B)-sum_(p=2..K) z^p/[p(p-1)]")
     print(f"   with K={ARB_G_CUTOFF}.  Since the omitted G tail is PSD, R <= B_K.")
@@ -827,15 +827,15 @@ def print_arb_bounds(bounds: dict[int, tuple[object, object]]) -> None:
         enclosure, upper = bounds[degree]
         print(f"   degree <= {degree:2d}: lambda_max(B_K) in {enclosure.str(24)}")
         print(f"                 hence lambda_max(R) <= {upper.str(24)} < 0")
-    print("PROVED [logic of finite sections]: each displayed inequality applies only")
+    print("HUMAN-AUDITED [finite-section scope]: each displayed inequality applies only")
     print("   to its stated polynomial subspace.  Finite compressions alone cannot")
     print("   prove an infinite-dimensional kernel claim; Section 3 supplies that proof.")
     print()
 
 
 def main() -> None:
-    print("LIU RESIDUAL KERNEL: EXACT NSD PROOF AND CERTIFIED COMPRESSIONS")
-    print("Status labels are PROVED, NUMERICAL, or CONJECTURED.")
+    print("LIU RESIDUAL KERNEL: AUDITED NSD PROOF AND CERTIFIED COMPRESSIONS")
+    print("Status labels are HUMAN-AUDITED, MACHINE-VERIFIED, NUMERICAL, or CONJECTURED.")
     print()
 
     fingerprint = mercer_fingerprint()
@@ -853,12 +853,12 @@ def main() -> None:
     print_arb_bounds(bounds)
 
     print("FINAL STATUS")
-    print("PROVED [exact integral Gram factorisation]: R <= 0 without projection.")
-    print("PROVED [the exact reduction in liu_kernel.py]: Liu's Hypothesis 1 is settled.")
-    print("PROVED [scope statement]: Liu's Hypothesis 2 (the nine-parameter Section V-B")
+    print("HUMAN-AUDITED [integral Gram proof]: R <= 0 without projection.")
+    print("HUMAN-AUDITED [restricted-form identity]: Liu's Hypothesis 1 is settled.")
+    print("OPEN [scope]: Liu's Hypothesis 2 (the nine-parameter Section V-B")
     print("   optimisation) remains open, so 0.382709087918741 is still conditional.")
-    print("PROVED [Arb]: the degree-8, degree-12, and degree-16 compressions have")
-    print("   strictly negative certified upper bounds as belt-and-braces checks.")
+    print("MACHINE-VERIFIED [finite Arb]: degree-8, degree-12, and degree-16")
+    print("   compression upper bounds are strictly negative corroborating checks.")
 
 
 if __name__ == "__main__":

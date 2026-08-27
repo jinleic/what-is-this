@@ -1,0 +1,1113 @@
+{
+  "bounded_minima": {
+    "m_3": 207,
+    "m_5": 2475
+  },
+  "claim_boundary": "The listed k values are verified witnesses. Minimality is independently exhausted here only for m=3 and m=5.",
+  "input": {
+    "logical_name": "data/oeis_a375071.csv",
+    "sha256": "0de7326a42247a8661c91f332c20202dfd627b8acf3d401298c950fe7499c5cf",
+    "source": "Local transcription of OEIS A375071 b-file, retrieved 2026-08-25"
+  },
+  "nontrivial_tight_witnesses": 26,
+  "published_rows": 27,
+  "random_cross_checks": 2000,
+  "records": [
+    {
+      "carry_check_agrees": true,
+      "k": 1,
+      "left_prime_count": 0,
+      "m": 0,
+      "minimum_slack": null,
+      "natural_shift": null,
+      "original_n": 1,
+      "tight_prime_count": 0,
+      "tight_primes": []
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 5,
+      "left_prime_count": 2,
+      "m": 1,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 4,
+        "target_m": 2
+      },
+      "original_n": 2,
+      "tight_prime_count": 2,
+      "tight_primes": [
+        2,
+        3
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 4,
+      "left_prime_count": 2,
+      "m": 2,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 5,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 3,
+        "target_m": 3
+      },
+      "original_n": 3,
+      "tight_prime_count": 2,
+      "tight_primes": [
+        3,
+        5
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 207,
+      "left_prime_count": 6,
+      "m": 3,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 206,
+        "target_m": 4
+      },
+      "original_n": 4,
+      "tight_prime_count": 5,
+      "tight_primes": [
+        5,
+        7,
+        11,
+        13,
+        19
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 206,
+      "left_prime_count": 8,
+      "m": 4,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 2,
+            "shifted_slack": -1,
+            "source_slack": 4,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 5
+          },
+          {
+            "prime": 13,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 205,
+        "target_m": 5
+      },
+      "original_n": 5,
+      "tight_prime_count": 6,
+      "tight_primes": [
+        5,
+        7,
+        11,
+        13,
+        19,
+        23
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 2475,
+      "left_prime_count": 8,
+      "m": 5,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 2474,
+        "target_m": 6
+      },
+      "original_n": 6,
+      "tight_prime_count": 8,
+      "tight_primes": [
+        2,
+        7,
+        31,
+        37,
+        59,
+        67,
+        619,
+        2477
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 984,
+      "left_prime_count": 12,
+      "m": 6,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 3,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          },
+          {
+            "prime": 47,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 983,
+        "target_m": 7
+      },
+      "original_n": 7,
+      "tight_prime_count": 10,
+      "tight_primes": [
+        3,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        43,
+        47,
+        197
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 8171,
+      "left_prime_count": 15,
+      "m": 7,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 8170,
+        "target_m": 8
+      },
+      "original_n": 8,
+      "tight_prime_count": 10,
+      "tight_primes": [
+        13,
+        17,
+        29,
+        37,
+        47,
+        61,
+        73,
+        109,
+        227,
+        743
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 8170,
+      "left_prime_count": 16,
+      "m": 8,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 61,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 8169,
+        "target_m": 9
+      },
+      "original_n": 9,
+      "tight_prime_count": 11,
+      "tight_primes": [
+        13,
+        17,
+        29,
+        37,
+        47,
+        61,
+        73,
+        109,
+        227,
+        743,
+        8171
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 45144,
+      "left_prime_count": 17,
+      "m": 9,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 45143,
+        "target_m": 10
+      },
+      "original_n": 10,
+      "tight_prime_count": 13,
+      "tight_primes": [
+        17,
+        23,
+        43,
+        83,
+        101,
+        149,
+        151,
+        163,
+        173,
+        277,
+        9029,
+        11287,
+        22573
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 45143,
+      "left_prime_count": 20,
+      "m": 10,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 11287,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 45142,
+        "target_m": 11
+      },
+      "original_n": 11,
+      "tight_prime_count": 13,
+      "tight_primes": [
+        17,
+        23,
+        43,
+        83,
+        101,
+        149,
+        151,
+        163,
+        173,
+        277,
+        9029,
+        11287,
+        22573
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 3648830,
+      "left_prime_count": 25,
+      "m": 11,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 3648829,
+        "target_m": 12
+      },
+      "original_n": 12,
+      "tight_prime_count": 14,
+      "tight_primes": [
+        61,
+        127,
+        157,
+        197,
+        383,
+        1171,
+        1187,
+        1361,
+        1427,
+        2339,
+        2557,
+        31729,
+        1216277,
+        3648833
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 3648829,
+      "left_prime_count": 27,
+      "m": 12,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 31729,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 3648828,
+        "target_m": 13
+      },
+      "original_n": 13,
+      "tight_prime_count": 15,
+      "tight_primes": [
+        61,
+        127,
+        157,
+        197,
+        383,
+        1171,
+        1187,
+        1361,
+        1427,
+        2339,
+        2557,
+        31729,
+        364883,
+        1216277,
+        3648833
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 7979077,
+      "left_prime_count": 30,
+      "m": 13,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 7979076,
+        "target_m": 14
+      },
+      "original_n": 14,
+      "tight_prime_count": 22,
+      "tight_primes": [
+        19,
+        29,
+        37,
+        43,
+        79,
+        269,
+        331,
+        379,
+        503,
+        509,
+        547,
+        569,
+        673,
+        709,
+        761,
+        3677,
+        3919,
+        4639,
+        14831,
+        725371,
+        1139869,
+        1329847
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 7979076,
+      "left_prime_count": 31,
+      "m": 14,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 1139869,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 7979075,
+        "target_m": 15
+      },
+      "original_n": 15,
+      "tight_prime_count": 24,
+      "tight_primes": [
+        19,
+        29,
+        37,
+        43,
+        79,
+        269,
+        331,
+        379,
+        503,
+        509,
+        547,
+        569,
+        673,
+        709,
+        743,
+        761,
+        3677,
+        3919,
+        4639,
+        10739,
+        14831,
+        725371,
+        1139869,
+        1329847
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 58068862,
+      "left_prime_count": 36,
+      "m": 15,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 58068861,
+        "target_m": 16
+      },
+      "original_n": 16,
+      "tight_prime_count": 25,
+      "tight_primes": [
+        17,
+        37,
+        47,
+        53,
+        73,
+        79,
+        83,
+        193,
+        239,
+        379,
+        613,
+        691,
+        761,
+        839,
+        1571,
+        2143,
+        2203,
+        2963,
+        5849,
+        8527,
+        38153,
+        365213,
+        11613773,
+        58068863,
+        58068869
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 58068861,
+      "left_prime_count": 39,
+      "m": 16,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 58068869,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 58068860,
+        "target_m": 17
+      },
+      "original_n": 17,
+      "tight_prime_count": 26,
+      "tight_primes": [
+        17,
+        37,
+        47,
+        53,
+        73,
+        79,
+        83,
+        193,
+        239,
+        379,
+        613,
+        691,
+        761,
+        839,
+        1571,
+        2143,
+        2203,
+        2963,
+        3259,
+        5849,
+        8527,
+        38153,
+        365213,
+        11613773,
+        58068863,
+        58068869
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 255278295,
+      "left_prime_count": 44,
+      "m": 17,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 255278294,
+        "target_m": 18
+      },
+      "original_n": 18,
+      "tight_prime_count": 22,
+      "tight_primes": [
+        3,
+        71,
+        269,
+        383,
+        1459,
+        1549,
+        1787,
+        2927,
+        4519,
+        6211,
+        7417,
+        9431,
+        11299,
+        17209,
+        17443,
+        21871,
+        45757,
+        49253,
+        127703,
+        290419,
+        350657,
+        127639151
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 255278294,
+      "left_prime_count": 47,
+      "m": 18,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 45757,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 255278293,
+        "target_m": 19
+      },
+      "original_n": 19,
+      "tight_prime_count": 23,
+      "tight_primes": [
+        11,
+        71,
+        233,
+        269,
+        383,
+        1459,
+        1549,
+        1787,
+        2927,
+        4519,
+        6211,
+        7417,
+        9431,
+        11299,
+        17209,
+        17443,
+        21871,
+        45757,
+        49253,
+        127703,
+        290419,
+        350657,
+        127639151
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 1019547825,
+      "left_prime_count": 48,
+      "m": 19,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 1019547824,
+        "target_m": 20
+      },
+      "original_n": 20,
+      "tight_prime_count": 27,
+      "tight_primes": [
+        37,
+        547,
+        557,
+        653,
+        751,
+        811,
+        937,
+        1039,
+        1217,
+        1787,
+        2731,
+        2741,
+        13127,
+        15013,
+        18839,
+        19417,
+        22637,
+        26627,
+        34259,
+        42979,
+        49459,
+        71317,
+        114659,
+        242923,
+        9995567,
+        10094533,
+        1019547827
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 1019547824,
+      "left_prime_count": 50,
+      "m": 20,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 9995567,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 1019547823,
+        "target_m": 21
+      },
+      "original_n": 21,
+      "tight_prime_count": 28,
+      "tight_primes": [
+        37,
+        547,
+        557,
+        653,
+        751,
+        811,
+        937,
+        1039,
+        1217,
+        1787,
+        2731,
+        2741,
+        13127,
+        15013,
+        18839,
+        19417,
+        22637,
+        26627,
+        34259,
+        42979,
+        49459,
+        71317,
+        114659,
+        242923,
+        9995567,
+        10094533,
+        13593971,
+        1019547827
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 17609764973,
+      "left_prime_count": 59,
+      "m": 21,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 17609764972,
+        "target_m": 22
+      },
+      "original_n": 22,
+      "tight_prime_count": 27,
+      "tight_primes": [
+        89,
+        293,
+        313,
+        557,
+        599,
+        733,
+        1171,
+        4079,
+        8447,
+        9239,
+        28559,
+        32189,
+        35099,
+        51941,
+        73877,
+        94351,
+        95633,
+        97973,
+        101537,
+        119183,
+        148429,
+        152909,
+        628561,
+        1615723,
+        18305369,
+        17609764979,
+        17609764981
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 17609764972,
+      "left_prime_count": 60,
+      "m": 22,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 4079,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          },
+          {
+            "prime": 35099,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 17609764971,
+        "target_m": 23
+      },
+      "original_n": 23,
+      "tight_prime_count": 29,
+      "tight_primes": [
+        89,
+        229,
+        293,
+        313,
+        557,
+        599,
+        733,
+        1171,
+        4079,
+        8447,
+        9239,
+        28559,
+        32189,
+        35099,
+        51941,
+        73877,
+        94351,
+        95633,
+        97973,
+        101537,
+        119183,
+        148429,
+        152909,
+        628561,
+        1615723,
+        18305369,
+        76898537,
+        17609764979,
+        17609764981
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 1070858041562,
+      "left_prime_count": 62,
+      "m": 23,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 1070858041561,
+        "target_m": 24
+      },
+      "original_n": 24,
+      "tight_prime_count": 33,
+      "tight_primes": [
+        131,
+        233,
+        617,
+        937,
+        1319,
+        3967,
+        7927,
+        8663,
+        13613,
+        17789,
+        19079,
+        19457,
+        19727,
+        24421,
+        30757,
+        42397,
+        44293,
+        51913,
+        74507,
+        304301,
+        433229,
+        530711,
+        1323997,
+        1335371,
+        16327789,
+        500167231,
+        732962383,
+        1824289679,
+        8112560921,
+        10602554867,
+        13220469649,
+        14090237389,
+        107085804157
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 1070858041561,
+      "left_prime_count": 64,
+      "m": 24,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 1824289679,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 1070858041560,
+        "target_m": 25
+      },
+      "original_n": 25,
+      "tight_prime_count": 34,
+      "tight_primes": [
+        131,
+        233,
+        617,
+        937,
+        1319,
+        3967,
+        7927,
+        8663,
+        13613,
+        17789,
+        19079,
+        19457,
+        19727,
+        24421,
+        30757,
+        42397,
+        44293,
+        51913,
+        74507,
+        304301,
+        433229,
+        530711,
+        1323997,
+        1335371,
+        16327789,
+        198380519,
+        500167231,
+        732962383,
+        1824289679,
+        8112560921,
+        10602554867,
+        13220469649,
+        14090237389,
+        107085804157
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 5048891644621,
+      "left_prime_count": 71,
+      "m": 25,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": true,
+        "obstructions": [],
+        "target_k": 5048891644620,
+        "target_m": 26
+      },
+      "original_n": 26,
+      "tight_prime_count": 38,
+      "tight_primes": [
+        127,
+        229,
+        491,
+        857,
+        937,
+        3019,
+        3209,
+        3449,
+        3557,
+        3943,
+        4451,
+        6079,
+        6197,
+        23159,
+        39209,
+        55049,
+        73721,
+        98669,
+        100927,
+        171559,
+        339613,
+        393727,
+        481847,
+        506047,
+        801019,
+        1175767,
+        1802797,
+        2484379,
+        3151543,
+        5574137,
+        9457067,
+        33380219,
+        47061871,
+        147249523,
+        225497617,
+        516880799,
+        1682963881541,
+        5048891644633
+      ]
+    },
+    {
+      "carry_check_agrees": true,
+      "k": 5048891644620,
+      "left_prime_count": 74,
+      "m": 26,
+      "minimum_slack": 0,
+      "natural_shift": {
+        "is_witness": false,
+        "obstructions": [
+          {
+            "prime": 5048891644633,
+            "shifted_slack": -1,
+            "source_slack": 0,
+            "v_p_m_plus_one": 0,
+            "v_p_m_plus_two_k": 1
+          }
+        ],
+        "target_k": 5048891644619,
+        "target_m": 27
+      },
+      "original_n": 27,
+      "tight_prime_count": 39,
+      "tight_primes": [
+        127,
+        229,
+        491,
+        857,
+        937,
+        3019,
+        3209,
+        3449,
+        3557,
+        3943,
+        4451,
+        6079,
+        6197,
+        23159,
+        39209,
+        55049,
+        73721,
+        98669,
+        100927,
+        171559,
+        339613,
+        393727,
+        481847,
+        506047,
+        801019,
+        1175767,
+        1802797,
+        2484379,
+        3151543,
+        5574137,
+        9457067,
+        33380219,
+        47061871,
+        147249523,
+        225497617,
+        516880799,
+        19956093457,
+        1682963881541,
+        5048891644633
+      ]
+    }
+  ],
+  "resources": {
+    "process_cpu_seconds": 0.6263,
+    "processes": 1,
+    "wall_seconds": 0.6267002079985105
+  },
+  "schema_version": 1,
+  "status": "PASS",
+  "tight_prime_count_range": [
+    2,
+    39
+  ],
+  "verified_witnesses": 27
+}

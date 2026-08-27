@@ -1,0 +1,269 @@
+{
+  "alpha": {
+    "denominator": 10000000,
+    "dimension_independent": true,
+    "numerator": 356069
+  },
+  "arb": {
+    "a_plus": {
+      "ball": "[-0.0286491867944683178160269789255044875014518142655932128897236096085913990 +/- 2.55e-74]",
+      "lower": "[-0.02864918679446831781602697892550448750145181426559321288972360960859139902546 +/- 2.76e-78]",
+      "upper": "[-0.02864918679446831781602697892550448750145181426559321288972360960859139898021 +/- 3.01e-78]"
+    },
+    "a_plus_plus_one_fiftieth_defect": {
+      "ball": "[-0.0128467176586658486802245097897020183656493451297907437539211404727889299 +/- 5.56e-74]",
+      "lower": "[-0.01284671765866584868022450978970201836564934512979074375392114047278892988966 +/- 8.13e-79]",
+      "upper": "[-0.01284671765866584868022450978970201836564934512979074375392114047278892984441 +/- 5.28e-79]"
+    },
+    "ambiguous_clamp_state_count": 982,
+    "bellman_state_count": 5152,
+    "one_sided_cost": {
+      "ball": "[5.8924634298118564604419277936320844998325882768827260881561547462071535205 +/- 7.86e-74]",
+      "lower": "[5.892463429811856460441927793632084499832588276882726088156154746207153520421 +/- 4.07e-76]",
+      "upper": "[5.892463429811856460441927793632084499832588276882726088156154746207153520494 +/- 2.27e-76]"
+    },
+    "shapley_iid": {
+      "ball": "[5.4473549773803219881606998844189578257101999243128284311948838174566121828 +/- 6.19e-74]",
+      "lower": "[5.447354977380321988160699884418957825710199924312828431194883817456612182818 +/- 2.74e-76]",
+      "upper": "[5.447354977380321988160699884418957825710199924312828431194883817456612182862 +/- 6.26e-77]"
+    }
+  },
+  "candidate": "/Users/jinleic/jinleic-workspace/math/uc/gate_b/candidates/n7_block_extremizer.json",
+  "derived_from_proved_identities": {
+    "evidence_origin": "Computed from the product identities proved in PROOF.md; not independently recomputed on all square orders.",
+    "square_a_plus": {
+      "ball": "[-0.0572983735889366356320539578510089750029036285311864257794472192171827980 +/- 5.10e-74]",
+      "lower": "[-0.05729837358893663563205395785100897500290362853118642577944721921718279805093 +/- 4.50e-78]",
+      "upper": "[-0.05729837358893663563205395785100897500290362853118642577944721921718279796043 +/- 3.99e-78]"
+    },
+    "square_one_sided_cost": {
+      "ball": "[11.7849268596237129208838555872641689996651765537654521763123094924143070409 +/- 8.85e-74]",
+      "lower": "[11.78492685962371292088385558726416899966517655376545217631230949241430704084 +/- 2.82e-75]",
+      "upper": "[11.78492685962371292088385558726416899966517655376545217631230949241430704099 +/- 1.55e-75]"
+    },
+    "square_shapley_iid": {
+      "ball": "[10.8947099547606439763213997688379156514203998486256568623897676349132243657 +/- 6.34e-74]",
+      "lower": "[10.89470995476064397632139976883791565142039984862565686238976763491322436564 +/- 3.46e-75]",
+      "upper": "[10.89470995476064397632139976883791565142039984862565686238976763491322436572 +/- 3.88e-75]"
+    }
+  },
+  "direct_square": {
+    "closure_defect": "6272/6561",
+    "coordinate_count": 810,
+    "dimension": 14,
+    "family_size": 2025,
+    "missing_ordered_join_pairs": 3920000,
+    "total_incidence": 11340
+  },
+  "exact_base": {
+    "active": true,
+    "automorphism_count": 240,
+    "closure_defect": "64/81",
+    "coordinate_counts": [
+      18,
+      18,
+      18,
+      18,
+      18,
+      18,
+      18
+    ],
+    "dimension": 7,
+    "family_size": 45,
+    "join_success_probability": "17/81",
+    "missing_ordered_join_pairs": 1600,
+    "order_representative_count": 21,
+    "reimer_threshold": 124,
+    "separating": true,
+    "total_incidence": 126
+  },
+  "infinite_construction": {
+    "base_columns_active_separating": true,
+    "base_columns_nonconstant": true,
+    "base_coordinate_count": 18,
+    "base_dimension": 7,
+    "base_family_size": 45,
+    "base_join_success": {
+      "denominator": 81,
+      "numerator": 17
+    },
+    "base_total_incidence": 126,
+    "certified_negative_delta": {
+      "denominator": 250,
+      "numerator": 7
+    },
+    "checked_power_arithmetic": [
+      {
+        "cap_holds_with_equality": true,
+        "closure_defect": "64/81",
+        "coordinate_count": 18,
+        "dimension": 7,
+        "family_size": 45,
+        "power": 1,
+        "reimer_holds_strictly": true,
+        "total_incidence": 126
+      },
+      {
+        "cap_holds_with_equality": true,
+        "closure_defect": "6272/6561",
+        "coordinate_count": 810,
+        "dimension": 14,
+        "family_size": 2025,
+        "power": 2,
+        "reimer_holds_strictly": true,
+        "total_incidence": 11340
+      },
+      {
+        "cap_holds_with_equality": true,
+        "closure_defect": "526528/531441",
+        "coordinate_count": 36450,
+        "dimension": 21,
+        "family_size": 91125,
+        "power": 3,
+        "reimer_holds_strictly": true,
+        "total_incidence": 765450
+      },
+      {
+        "cap_holds_with_equality": true,
+        "closure_defect": "42963200/43046721",
+        "coordinate_count": 1640250,
+        "dimension": 28,
+        "family_size": 4100625,
+        "power": 4,
+        "reimer_holds_strictly": true,
+        "total_incidence": 45927000
+      },
+      {
+        "cap_holds_with_equality": true,
+        "closure_defect": "3485364544/3486784401",
+        "coordinate_count": 73811250,
+        "dimension": 35,
+        "family_size": 184528125,
+        "power": 5,
+        "reimer_holds_strictly": true,
+        "total_incidence": 2583393750
+      },
+      {
+        "cap_holds_with_equality": true,
+        "closure_defect": "282405398912/282429536481",
+        "coordinate_count": 3321506250,
+        "dimension": 42,
+        "family_size": 8303765625,
+        "power": 6,
+        "reimer_holds_strictly": true,
+        "total_incidence": 139503262500
+      },
+      {
+        "cap_holds_with_equality": true,
+        "closure_defect": "22876382116288/22876792454961",
+        "coordinate_count": 149467781250,
+        "dimension": 49,
+        "family_size": 373669453125,
+        "power": 7,
+        "reimer_holds_strictly": true,
+        "total_incidence": 7323921281250
+      },
+      {
+        "cap_holds_with_equality": true,
+        "closure_defect": "1853013213094400/1853020188851841",
+        "coordinate_count": 6726050156250,
+        "dimension": 56,
+        "family_size": 16815125390625,
+        "power": 8,
+        "reimer_holds_strictly": true,
+        "total_incidence": 376658808750000
+      }
+    ],
+    "formulas_proved_in_PROOF.md": {
+      "a_plus": "k*A_plus(F_1)",
+      "closure_defect": "1-(17/81)^k",
+      "coordinate_count": "18*45^(k-1)",
+      "dimension": "7*k",
+      "family_size": "45^k",
+      "ratio_lower_bound": "7*k/250",
+      "total_incidence": "126*k*45^(k-1)"
+    },
+    "reimer_integer_witness": {
+      "left": 184528125,
+      "proves": "log2(45) < 28/5",
+      "right": 268435456
+    }
+  },
+  "precision_bits": 256,
+  "schema_version": 1,
+  "tensorization_checks": {
+    "actual_square_fixed_orders": {
+      "alternating": {
+        "actual_square_cost": {
+          "ball": "[11.743725681706514449377178886011934977394696317342626060360100840663940 +/- 4.62e-70]",
+          "lower": "[11.74372568170651444937717888601193497739469631734262606036010084066393953890 +/- 3.84e-75]",
+          "upper": "[11.74372568170651444937717888601193497739469631734262606036010084066393978543 +/- 4.26e-75]"
+        },
+        "ambiguous_clamp_state_count": 405641,
+        "bellman_state_count": 2985831,
+        "global_order": [
+          0,
+          7,
+          1,
+          8,
+          2,
+          9,
+          3,
+          10,
+          4,
+          11,
+          5,
+          12,
+          6,
+          13
+        ],
+        "residual": {
+          "ball": "[+/- 1.24e-70]",
+          "lower": "[-1.233631038643230414063609142164677135747312169971546863989854123260650832502e-70 +/- 2.43e-146]",
+          "upper": "[1.233625511495355153619048894899484943491586655731313624769767708090429924603e-70 +/- 3.92e-148]"
+        },
+        "twice_base_order_cost": {
+          "ball": "[11.743725681706514449377178886011934977394696317342626060360100840663939662 +/- 2.68e-73]",
+          "lower": "[11.74372568170651444937717888601193497739469631734262606036010084066393966207 +/- 1.49e-75]",
+          "upper": "[11.74372568170651444937717888601193497739469631734262606036010084066393966227 +/- 2.86e-75]"
+        }
+      },
+      "consecutive": {
+        "actual_square_cost": {
+          "ball": "[11.743725681706514449377178886011934977394696317342626060360100840663940 +/- 4.74e-70]",
+          "lower": "[11.74372568170651444937717888601193497739469631734262606036010084066393952601 +/- 3.98e-75]",
+          "upper": "[11.74372568170651444937717888601193497739469631734262606036010084066393979832 +/- 4.12e-75]"
+        },
+        "ambiguous_clamp_state_count": 396,
+        "bellman_state_count": 3108,
+        "global_order": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "residual": {
+          "ball": "[+/- 1.37e-70]",
+          "lower": "[-1.362529160361289997189583599429795577624179293254647874425300601939401739078e-70 +/- 6.82e-148]",
+          "upper": "[1.362523633213414736745023352164603385368453779014414635205214186769180831179e-70 +/- 2.53e-146]"
+        },
+        "twice_base_order_cost": {
+          "ball": "[11.743725681706514449377178886011934977394696317342626060360100840663939662 +/- 2.68e-73]",
+          "lower": "[11.74372568170651444937717888601193497739469631734262606036010084066393966207 +/- 1.49e-75]",
+          "upper": "[11.74372568170651444937717888601193497739469631734262606036010084066393966227 +/- 2.86e-75]"
+        }
+      }
+    }
+  },
+  "verdict": "PROVED_GATE_B_UNBOUNDED"
+}

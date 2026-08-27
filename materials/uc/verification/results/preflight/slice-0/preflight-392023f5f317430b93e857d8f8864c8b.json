@@ -1,0 +1,531 @@
+{
+  "$schema": "/Users/jinleic/jinleic-workspace/math/uc/verification/report.schema.json",
+  "attempt_id": "392023f5f317430b93e857d8f8864c8b",
+  "campaign_id": "20260818T212601Z_425f109c15b64a6198785c6cebbbdaab",
+  "claim_status": "OPEN",
+  "command": null,
+  "environment_after": {
+    "base_prefix": "/opt/homebrew/opt/python@3.14/Frameworks/Python.framework/Versions/3.14",
+    "dependencies": {
+      "flint": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/flint/__init__.py",
+        "file_sha256": "2e5f8f1768d14eccd7961353c635195bd557f297edff8b8de09e2d211f03ec2d",
+        "file_size": 2714,
+        "version": "0.9.0"
+      },
+      "mpmath": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/mpmath/__init__.py",
+        "file_sha256": "b241584d2c1fc0304b0a1015ea923749d7b0800411dd406dcab7c82bf25d9fe8",
+        "file_size": 8765,
+        "version": "1.3.0"
+      },
+      "numpy": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/numpy/__init__.py",
+        "file_sha256": "09295a80660f17925ae23765ce8cbd7ff7ceae968d5f2f89349f1cb74c0b9e11",
+        "file_size": 25220,
+        "version": "2.5.2"
+      },
+      "scipy": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/scipy/__init__.py",
+        "file_sha256": "39ccae300a4739cc53719bd3b39ce3f8f66e736c6eb672006e338a4c5cc3dc76",
+        "file_size": 4193,
+        "version": "1.18.0"
+      },
+      "sympy": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/sympy/__init__.py",
+        "file_sha256": "4e9476348ba105feab28d82f5bcf6cdba2e3e84de6e059bbfe7a13728c0a4ab0",
+        "file_size": 29422,
+        "version": "1.14.0"
+      }
+    },
+    "executable": "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "flags": {
+      "dont_write_bytecode": 1,
+      "ignore_environment": 1,
+      "isolated": 1,
+      "no_user_site": 1,
+      "safe_path": true
+    },
+    "launch_environment": {
+      "flint": "0.9.0",
+      "mpmath": "1.3.0",
+      "numpy": "2.5.2",
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python": "3.14.3",
+      "python_implementation": "CPython",
+      "scipy": "1.18.0",
+      "sympy": "1.14.0"
+    },
+    "prefix": "/Users/jinleic/jinleic-workspace/math/.venv",
+    "sys_path": [
+      "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python314.zip",
+      "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14",
+      "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/lib-dynload",
+      "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages"
+    ],
+    "user_site_enabled": false
+  },
+  "environment_before": {
+    "base_prefix": "/opt/homebrew/opt/python@3.14/Frameworks/Python.framework/Versions/3.14",
+    "dependencies": {
+      "flint": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/flint/__init__.py",
+        "file_sha256": "2e5f8f1768d14eccd7961353c635195bd557f297edff8b8de09e2d211f03ec2d",
+        "file_size": 2714,
+        "version": "0.9.0"
+      },
+      "mpmath": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/mpmath/__init__.py",
+        "file_sha256": "b241584d2c1fc0304b0a1015ea923749d7b0800411dd406dcab7c82bf25d9fe8",
+        "file_size": 8765,
+        "version": "1.3.0"
+      },
+      "numpy": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/numpy/__init__.py",
+        "file_sha256": "09295a80660f17925ae23765ce8cbd7ff7ceae968d5f2f89349f1cb74c0b9e11",
+        "file_size": 25220,
+        "version": "2.5.2"
+      },
+      "scipy": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/scipy/__init__.py",
+        "file_sha256": "39ccae300a4739cc53719bd3b39ce3f8f66e736c6eb672006e338a4c5cc3dc76",
+        "file_size": 4193,
+        "version": "1.18.0"
+      },
+      "sympy": {
+        "file": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/sympy/__init__.py",
+        "file_sha256": "4e9476348ba105feab28d82f5bcf6cdba2e3e84de6e059bbfe7a13728c0a4ab0",
+        "file_size": 29422,
+        "version": "1.14.0"
+      }
+    },
+    "executable": "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "flags": {
+      "dont_write_bytecode": 1,
+      "ignore_environment": 1,
+      "isolated": 1,
+      "no_user_site": 1,
+      "safe_path": true
+    },
+    "launch_environment": {
+      "flint": "0.9.0",
+      "mpmath": "1.3.0",
+      "numpy": "2.5.2",
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python": "3.14.3",
+      "python_implementation": "CPython",
+      "scipy": "1.18.0",
+      "sympy": "1.14.0"
+    },
+    "prefix": "/Users/jinleic/jinleic-workspace/math/.venv",
+    "sys_path": [
+      "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python314.zip",
+      "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14",
+      "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/lib-dynload",
+      "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages"
+    ],
+    "user_site_enabled": false
+  },
+  "environment_matches_launch": true,
+  "errors": [],
+  "finished_utc": "2026-08-26T07:35:02.909006+00:00",
+  "ignored_campaign_non_inputs": [
+    ".replay_slice0_OK",
+    ".replay_slice1_OK",
+    ".replay_slice2_OK",
+    ".replay_slice3_OK",
+    ".replay_slice4_OK",
+    ".replay_slice7_OK",
+    ".worker_slice0_2fb154187bc54147855004d5dafaf214_ac5d845bdc514d4993685adf5014ec2b.json",
+    ".worker_slice1_af8b2ece3eb947339f8a4e273c46e3bd_bc1997b70fcd41279784aa2d7b5e3597.json",
+    ".worker_slice2_26a971c6ac644309946431b3900b780a_e7399afd93804aab8555479b721a4464.json",
+    ".worker_slice3_89cda161a3584c8aa9c1631258e37fde_8d8b7ab7cf09497ca1120a49daee8c38.json",
+    ".worker_slice4_5136a0e6ac8c4078a5f8ceb73e34b777_7967e3077df544c6b174eecd42c1828f.json",
+    ".worker_slice5_7ab1c417449946a7b48c2d66c672bf93_764b77d8951d4efcb151a4cfe1e9884b.json",
+    ".worker_slice6_30d759beee9b4026928e3e9181f6afaa_6b0dfac6cffc4b3689edd27b278dad73.json",
+    ".worker_slice7_e8b0b30179f441129e30d9afa266cc78_5249e244bd7e46f59dc609376506a2a0.json",
+    "collect_output.txt",
+    "replay_slice0.txt",
+    "replay_slice1.txt",
+    "replay_slice2.txt",
+    "replay_slice3.txt",
+    "replay_slice4.txt",
+    "replay_slice6.txt",
+    "replay_slice7.txt"
+  ],
+  "inputs": {
+    "source_after": {
+      "launch.json": {
+        "sha256": "63bb6fbe1cfbcb6b7d4c50d7b66882255e5e778ce604c92ecd1abdfa1ea8337e",
+        "size": 4339
+      },
+      "result_slice0_2fb154187bc54147855004d5dafaf214.json": {
+        "sha256": "1563f7310eefc2677b53d74448e31fc01c76a5d558ce545a2fb101ac1c043e30",
+        "size": 1425
+      },
+      "snapshot/arbcore.py": {
+        "sha256": "42f7f7afdd69984a25ca3e6b1db43b6b3792db43c925f4e5eafe929fdb05e5bd",
+        "size": 4013
+      },
+      "snapshot/bound_kkt.py": {
+        "sha256": "ece39bd496a7fe88bd63d1c337cf242fcce6264c28bc94132ff266e94f35b4f4",
+        "size": 33053
+      },
+      "snapshot/bridge_uc.py": {
+        "sha256": "49af3194090798a55609fe17b926ca95ed552c87adb06ea55f8e7a553d61cd54",
+        "size": 9999
+      },
+      "snapshot/cert2.py": {
+        "sha256": "b6cc756d07ed360af4eb3913cc899cb73c3288af72ae07345cf81bfe20e6c1fa",
+        "size": 26364
+      },
+      "snapshot/cert3.py": {
+        "sha256": "984a568fbd70ce4860f981e4f7e105b7028ec3c3869ecc7560b8b4ac08a06b3f",
+        "size": 70700
+      },
+      "snapshot/cert3_collect.py": {
+        "sha256": "95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec",
+        "size": 24056
+      },
+      "snapshot/cert3_par.py": {
+        "sha256": "a741aa167a79fb1058d89373db15e19d4124576a7eb7fb76c57ee3f70d3709bc",
+        "size": 29848
+      },
+      "snapshot/cert3_replay.py": {
+        "sha256": "4bfc2568e6d5b5364516f1acf734eb049d0f670bbec6cc6c95728466146ebeef",
+        "size": 14770
+      },
+      "snapshot/decomposition.py": {
+        "sha256": "622d297cc61e0cf9adb67b78c09afaac1b32d15deb0661ee9cee7bb441735515",
+        "size": 16219
+      },
+      "snapshot/diag_exhaust.py": {
+        "sha256": "23d8ec78fc2bc1ac29262577705551eb25a4a98c24ffb6062d656f39a7e00016",
+        "size": 24222
+      },
+      "snapshot/entropy.py": {
+        "sha256": "2fbddcd8b2458d652ffd0d4268f9c868353967c6aacd7a66183556c65ece88a5",
+        "size": 2459
+      },
+      "snapshot/lemma_rh_proof.py": {
+        "sha256": "4236dcfd159ea091638d4d7e3fe4f1a804c8d551c3490a7e311f56f6be7a9fbd",
+        "size": 14602
+      },
+      "snapshot/margin_lemma.py": {
+        "sha256": "d11d2eb57269abe849acf04ce8acb4a7d908b2d210370cb48a2140cdcd895ace",
+        "size": 18891
+      },
+      "snapshot/reduction.py": {
+        "sha256": "b2af27e52b28339258f384f98ffd451b54b4a2cef2aae995fa0993880cfecc65",
+        "size": 23274
+      },
+      "snapshot/thmB3_proof.py": {
+        "sha256": "c459d70d8e06a855031c52fb76f60db3510c099bfa55f6901fc97b594e5a214f",
+        "size": 24473
+      },
+      "trace_slice0_2fb154187bc54147855004d5dafaf214.bin": {
+        "sha256": "4f55bcc261c541ab1adadff85f2b1148ce87fe5d34a9782f5cc14d1ba6588240",
+        "size": 21135611
+      }
+    },
+    "source_before": {
+      "launch.json": {
+        "sha256": "63bb6fbe1cfbcb6b7d4c50d7b66882255e5e778ce604c92ecd1abdfa1ea8337e",
+        "size": 4339
+      },
+      "result_slice0_2fb154187bc54147855004d5dafaf214.json": {
+        "sha256": "1563f7310eefc2677b53d74448e31fc01c76a5d558ce545a2fb101ac1c043e30",
+        "size": 1425
+      },
+      "snapshot/arbcore.py": {
+        "sha256": "42f7f7afdd69984a25ca3e6b1db43b6b3792db43c925f4e5eafe929fdb05e5bd",
+        "size": 4013
+      },
+      "snapshot/bound_kkt.py": {
+        "sha256": "ece39bd496a7fe88bd63d1c337cf242fcce6264c28bc94132ff266e94f35b4f4",
+        "size": 33053
+      },
+      "snapshot/bridge_uc.py": {
+        "sha256": "49af3194090798a55609fe17b926ca95ed552c87adb06ea55f8e7a553d61cd54",
+        "size": 9999
+      },
+      "snapshot/cert2.py": {
+        "sha256": "b6cc756d07ed360af4eb3913cc899cb73c3288af72ae07345cf81bfe20e6c1fa",
+        "size": 26364
+      },
+      "snapshot/cert3.py": {
+        "sha256": "984a568fbd70ce4860f981e4f7e105b7028ec3c3869ecc7560b8b4ac08a06b3f",
+        "size": 70700
+      },
+      "snapshot/cert3_collect.py": {
+        "sha256": "95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec",
+        "size": 24056
+      },
+      "snapshot/cert3_par.py": {
+        "sha256": "a741aa167a79fb1058d89373db15e19d4124576a7eb7fb76c57ee3f70d3709bc",
+        "size": 29848
+      },
+      "snapshot/cert3_replay.py": {
+        "sha256": "4bfc2568e6d5b5364516f1acf734eb049d0f670bbec6cc6c95728466146ebeef",
+        "size": 14770
+      },
+      "snapshot/decomposition.py": {
+        "sha256": "622d297cc61e0cf9adb67b78c09afaac1b32d15deb0661ee9cee7bb441735515",
+        "size": 16219
+      },
+      "snapshot/diag_exhaust.py": {
+        "sha256": "23d8ec78fc2bc1ac29262577705551eb25a4a98c24ffb6062d656f39a7e00016",
+        "size": 24222
+      },
+      "snapshot/entropy.py": {
+        "sha256": "2fbddcd8b2458d652ffd0d4268f9c868353967c6aacd7a66183556c65ece88a5",
+        "size": 2459
+      },
+      "snapshot/lemma_rh_proof.py": {
+        "sha256": "4236dcfd159ea091638d4d7e3fe4f1a804c8d551c3490a7e311f56f6be7a9fbd",
+        "size": 14602
+      },
+      "snapshot/margin_lemma.py": {
+        "sha256": "d11d2eb57269abe849acf04ce8acb4a7d908b2d210370cb48a2140cdcd895ace",
+        "size": 18891
+      },
+      "snapshot/reduction.py": {
+        "sha256": "b2af27e52b28339258f384f98ffd451b54b4a2cef2aae995fa0993880cfecc65",
+        "size": 23274
+      },
+      "snapshot/thmB3_proof.py": {
+        "sha256": "c459d70d8e06a855031c52fb76f60db3510c099bfa55f6901fc97b594e5a214f",
+        "size": 24473
+      },
+      "trace_slice0_2fb154187bc54147855004d5dafaf214.bin": {
+        "sha256": "4f55bcc261c541ab1adadff85f2b1148ce87fe5d34a9782f5cc14d1ba6588240",
+        "size": 21135611
+      }
+    },
+    "stage_after": {
+      "launch.json": {
+        "sha256": "63bb6fbe1cfbcb6b7d4c50d7b66882255e5e778ce604c92ecd1abdfa1ea8337e",
+        "size": 4339
+      },
+      "result_slice0_2fb154187bc54147855004d5dafaf214.json": {
+        "sha256": "1563f7310eefc2677b53d74448e31fc01c76a5d558ce545a2fb101ac1c043e30",
+        "size": 1425
+      },
+      "snapshot/arbcore.py": {
+        "sha256": "42f7f7afdd69984a25ca3e6b1db43b6b3792db43c925f4e5eafe929fdb05e5bd",
+        "size": 4013
+      },
+      "snapshot/bound_kkt.py": {
+        "sha256": "ece39bd496a7fe88bd63d1c337cf242fcce6264c28bc94132ff266e94f35b4f4",
+        "size": 33053
+      },
+      "snapshot/bridge_uc.py": {
+        "sha256": "49af3194090798a55609fe17b926ca95ed552c87adb06ea55f8e7a553d61cd54",
+        "size": 9999
+      },
+      "snapshot/cert2.py": {
+        "sha256": "b6cc756d07ed360af4eb3913cc899cb73c3288af72ae07345cf81bfe20e6c1fa",
+        "size": 26364
+      },
+      "snapshot/cert3.py": {
+        "sha256": "984a568fbd70ce4860f981e4f7e105b7028ec3c3869ecc7560b8b4ac08a06b3f",
+        "size": 70700
+      },
+      "snapshot/cert3_collect.py": {
+        "sha256": "95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec",
+        "size": 24056
+      },
+      "snapshot/cert3_par.py": {
+        "sha256": "a741aa167a79fb1058d89373db15e19d4124576a7eb7fb76c57ee3f70d3709bc",
+        "size": 29848
+      },
+      "snapshot/cert3_replay.py": {
+        "sha256": "4bfc2568e6d5b5364516f1acf734eb049d0f670bbec6cc6c95728466146ebeef",
+        "size": 14770
+      },
+      "snapshot/decomposition.py": {
+        "sha256": "622d297cc61e0cf9adb67b78c09afaac1b32d15deb0661ee9cee7bb441735515",
+        "size": 16219
+      },
+      "snapshot/diag_exhaust.py": {
+        "sha256": "23d8ec78fc2bc1ac29262577705551eb25a4a98c24ffb6062d656f39a7e00016",
+        "size": 24222
+      },
+      "snapshot/entropy.py": {
+        "sha256": "2fbddcd8b2458d652ffd0d4268f9c868353967c6aacd7a66183556c65ece88a5",
+        "size": 2459
+      },
+      "snapshot/lemma_rh_proof.py": {
+        "sha256": "4236dcfd159ea091638d4d7e3fe4f1a804c8d551c3490a7e311f56f6be7a9fbd",
+        "size": 14602
+      },
+      "snapshot/margin_lemma.py": {
+        "sha256": "d11d2eb57269abe849acf04ce8acb4a7d908b2d210370cb48a2140cdcd895ace",
+        "size": 18891
+      },
+      "snapshot/reduction.py": {
+        "sha256": "b2af27e52b28339258f384f98ffd451b54b4a2cef2aae995fa0993880cfecc65",
+        "size": 23274
+      },
+      "snapshot/thmB3_proof.py": {
+        "sha256": "c459d70d8e06a855031c52fb76f60db3510c099bfa55f6901fc97b594e5a214f",
+        "size": 24473
+      },
+      "trace_slice0_2fb154187bc54147855004d5dafaf214.bin": {
+        "sha256": "4f55bcc261c541ab1adadff85f2b1148ce87fe5d34a9782f5cc14d1ba6588240",
+        "size": 21135611
+      }
+    },
+    "stage_before": {
+      "launch.json": {
+        "sha256": "63bb6fbe1cfbcb6b7d4c50d7b66882255e5e778ce604c92ecd1abdfa1ea8337e",
+        "size": 4339
+      },
+      "result_slice0_2fb154187bc54147855004d5dafaf214.json": {
+        "sha256": "1563f7310eefc2677b53d74448e31fc01c76a5d558ce545a2fb101ac1c043e30",
+        "size": 1425
+      },
+      "snapshot/arbcore.py": {
+        "sha256": "42f7f7afdd69984a25ca3e6b1db43b6b3792db43c925f4e5eafe929fdb05e5bd",
+        "size": 4013
+      },
+      "snapshot/bound_kkt.py": {
+        "sha256": "ece39bd496a7fe88bd63d1c337cf242fcce6264c28bc94132ff266e94f35b4f4",
+        "size": 33053
+      },
+      "snapshot/bridge_uc.py": {
+        "sha256": "49af3194090798a55609fe17b926ca95ed552c87adb06ea55f8e7a553d61cd54",
+        "size": 9999
+      },
+      "snapshot/cert2.py": {
+        "sha256": "b6cc756d07ed360af4eb3913cc899cb73c3288af72ae07345cf81bfe20e6c1fa",
+        "size": 26364
+      },
+      "snapshot/cert3.py": {
+        "sha256": "984a568fbd70ce4860f981e4f7e105b7028ec3c3869ecc7560b8b4ac08a06b3f",
+        "size": 70700
+      },
+      "snapshot/cert3_collect.py": {
+        "sha256": "95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec",
+        "size": 24056
+      },
+      "snapshot/cert3_par.py": {
+        "sha256": "a741aa167a79fb1058d89373db15e19d4124576a7eb7fb76c57ee3f70d3709bc",
+        "size": 29848
+      },
+      "snapshot/cert3_replay.py": {
+        "sha256": "4bfc2568e6d5b5364516f1acf734eb049d0f670bbec6cc6c95728466146ebeef",
+        "size": 14770
+      },
+      "snapshot/decomposition.py": {
+        "sha256": "622d297cc61e0cf9adb67b78c09afaac1b32d15deb0661ee9cee7bb441735515",
+        "size": 16219
+      },
+      "snapshot/diag_exhaust.py": {
+        "sha256": "23d8ec78fc2bc1ac29262577705551eb25a4a98c24ffb6062d656f39a7e00016",
+        "size": 24222
+      },
+      "snapshot/entropy.py": {
+        "sha256": "2fbddcd8b2458d652ffd0d4268f9c868353967c6aacd7a66183556c65ece88a5",
+        "size": 2459
+      },
+      "snapshot/lemma_rh_proof.py": {
+        "sha256": "4236dcfd159ea091638d4d7e3fe4f1a804c8d551c3490a7e311f56f6be7a9fbd",
+        "size": 14602
+      },
+      "snapshot/margin_lemma.py": {
+        "sha256": "d11d2eb57269abe849acf04ce8acb4a7d908b2d210370cb48a2140cdcd895ace",
+        "size": 18891
+      },
+      "snapshot/reduction.py": {
+        "sha256": "b2af27e52b28339258f384f98ffd451b54b4a2cef2aae995fa0993880cfecc65",
+        "size": 23274
+      },
+      "snapshot/thmB3_proof.py": {
+        "sha256": "c459d70d8e06a855031c52fb76f60db3510c099bfa55f6901fc97b594e5a214f",
+        "size": 24473
+      },
+      "trace_slice0_2fb154187bc54147855004d5dafaf214.bin": {
+        "sha256": "4f55bcc261c541ab1adadff85f2b1148ce87fe5d34a9782f5cc14d1ba6588240",
+        "size": 21135611
+      }
+    }
+  },
+  "limitations": [
+    "Arithmetic replay uses the frozen cert3_replay.py and the same frozen interval-arithmetic modules used by the producer; it is not an independently implemented interval proof.",
+    "Repository-local reports are self-consistent records, not authenticated execution attestations; fresh replay is required."
+  ],
+  "outcome": "PREFLIGHT_PASS",
+  "replay": null,
+  "report_sha256": "6765e63f55f2ae49f204fc494d07eb1deaaa345681f13926f8d622a8ec29597d",
+  "report_type": "clean_room_replay",
+  "resource_controls": {
+    "address_space_gib": 0,
+    "cpu_limit_seconds": 0,
+    "nice_increment": 10,
+    "thread_limits": {
+      "BLIS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "wall_timeout_seconds": 0
+  },
+  "root_exact": [
+    [
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "1"
+    ],
+    [
+      "1/2",
+      "9/16"
+    ]
+  ],
+  "run_id": "2fb154187bc54147855004d5dafaf214",
+  "schema": "uc-clean-room-replay-report-v1",
+  "slice": 0,
+  "started_utc": "2026-08-26T07:35:02.312010+00:00",
+  "total_elapsed_seconds": 0.5968417080002837,
+  "verifier_inputs_after": {
+    "campaign_lock": {
+      "sha256": "d254a23a4df7cb3a4c6aae2453883324fba2381c1890c4f011d61c7971b84b48",
+      "size": 12590
+    },
+    "clean_room_replay.py": {
+      "sha256": "432fa2e94a2321f6d0c22c574759f799c504f944fbc3dc23ae7b4984c836527c",
+      "size": 55389
+    },
+    "report.schema.json": {
+      "sha256": "d34595787382f0110daa6f307c0fd773eec28e1d02ec490a2839bebdd9fdeead",
+      "size": 14451
+    }
+  },
+  "verifier_inputs_before": {
+    "campaign_lock": {
+      "sha256": "d254a23a4df7cb3a4c6aae2453883324fba2381c1890c4f011d61c7971b84b48",
+      "size": 12590
+    },
+    "clean_room_replay.py": {
+      "sha256": "432fa2e94a2321f6d0c22c574759f799c504f944fbc3dc23ae7b4984c836527c",
+      "size": 55389
+    },
+    "report.schema.json": {
+      "sha256": "d34595787382f0110daa6f307c0fd773eec28e1d02ec490a2839bebdd9fdeead",
+      "size": 14451
+    }
+  }
+}

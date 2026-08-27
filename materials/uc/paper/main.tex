@@ -45,12 +45,12 @@
 \newcommand{\CITED}{\textsc{cited}}
 \newcommand{\NUMERICAL}{\textsc{numerical}}
 
-\title{An explicit constant exceeding $(3-\sqrt5)/2$ for union-closed families:
-a machine-checked certificate with independent replay}
-\author{The union-closed certification project\thanks{Repository artifact:
-\texttt{math/uc/} of the \texttt{jinleic-workspace} tree; every claim carries a
-machine-checked artifact named in the text.}}
-\date{\today}
+\title{A certificate-backed candidate improvement over $(3-\sqrt5)/2$
+for union-closed families}
+\author{J.\ Chen\thanks{Repository artifact: \texttt{math/uc/} of the
+\texttt{jinleic-workspace} tree.  Status labels distinguish human proof,
+machine-verified finite claims, cited results, and numerical evidence.}}
+\date{August 26, 2026}
 
 \begin{document}
 
@@ -59,33 +59,37 @@ machine-checked artifact named in the text.}}
 \begin{abstract}
 Let
 \[
-\psi=\frac{3-\sqrt5}{2}
-\quad\text{and}\quad
+\begin{aligned}
+\psi&=\frac{3-\sqrt5}{2},\\
 t_{\mathrm{cert}}
-=\frac{955165028125263}{2500000000000000}
+&=\frac{955165028125263}{2500000000000000}
 =0.3820660112501052.
+\end{aligned}
 \]
-We establish the first explicit union-closed frequency constant strictly above
-$\psi$ with a complete proof chain: the exact rational comparison
-$t_{\mathrm{cert}}\ge\psi+10^{-4}$ and the required five-parameter functional
-inequality are \PROVED{} by machine-checked artifacts, while the single
-entropy-to-union-closed implication is \CITED{} from Cambie
-\cite[Question~2 and \S4]{cambie}.  Thus every finite union-closed family
-$\mathcal F\ne\{\emptyset\}$ has an element in at least
-$t_{\mathrm{cert}}|\mathcal F|$ member sets, subject precisely to that cited
-implication.  The new proof decomposes the OR-entropy kernel into one positive
-square minus an explicit positive-semidefinite defect, reduces the global
-minimum to two pair-orbits (five parameters), and certifies nonnegativity by an
-Arb interval branch-and-bound.  A frozen collector independently replayed all
-eight one-byte-per-node proof traces and printed
-\texttt{COMPOSITE CERTIFICATE}.  As a second, independent contribution, we
-prove Liu's previously only numerically verified positive-semidefiniteness
-hypothesis behind the best published constant, $0.382709087918741$; his
-separate nine-parameter global-optimization hypothesis remains open, so that
-constant is still conditional.  We do not claim Frankl's constant $1/2$,
-optimality of $t_{\mathrm{cert}}$, certification of the reported
-$0.3823455\ldots$ or $0.3827090\ldots$ constants, or a reproof of the one cited
-implication.
+We present a certificate-backed, machine-assisted candidate proof of the
+union-closed frequency bound \(t_{\mathrm{cert}}>\psi\).  Exact algebra reduces
+the entropy functional to a five-parameter family.  A frozen Arb
+branch-and-bound certificate proves the resulting finite-dimensional lower
+bound.  A fresh eight-process direct replay completed every one-byte
+proof-trace event with exact expected hashes and tallies.
+The reduction to that certificate---compactness, support reduction, and the
+Margin Lemma---is ordinary human-audited mathematics using identified standard
+functional-analysis results; it is not formalized in a proof assistant.  We
+also derive the entropy-to-union-closed implication directly, following the
+sampling construction underlying Cambie's Question~2 and Section~4
+\cite{cambie}.  Subject to ordinary external mathematical review, the chain
+gives an element in at least
+\(t_{\mathrm{cert}}|\mathcal F|\) member sets of every finite nontrivial
+union-closed family.
+
+The finite certificate contains eight slices and \(488{,}465{,}854\) processed
+boxes with no residual leaves.  As a separate contribution, we give a
+human-audited Gram proof of Liu's previously numerical
+positive-semidefiniteness hypothesis; exact symbolic checks corroborate its
+algebraic core.  Liu's separate nine-parameter global-minimizer hypothesis
+remains open, so \(0.382709087918741\) is still conditional.  We claim neither
+Frankl's \(1/2\), optimality, end-to-end formal verification, nor publication
+priority.
 \end{abstract}
 
 \section{Introduction}
@@ -123,8 +127,9 @@ in near-simultaneous work of Alweiss--Huang--Sellke
 \[
 \psi=\frac{3-\sqrt5}{2}\approx0.3819660112501051,
 \]
-the largest explicit constant above which no complete proof had previously
-been available.  Chase--Lovett also showed that $\psi$ is sharp for their
+the benchmark with a complete analytic proof independent of the later
+finite-dimensional numerical claims.  Chase--Lovett also showed that $\psi$
+is sharp for their
 approximate-union-closed formulation, and it is the sharp barrier for the iid
 entropy strategy.
 
@@ -165,10 +170,10 @@ Version~2 explicitly describes its finite-dimensional verification as follows:
 $(3-\sqrt5)/2$, this is done slightly less rigorous.''}
 In other words, that optimization was carried out slightly less rigorously:
 the paper itself notes local-minimum and finite-precision issues.  We do not
-use that numerical verification.  We use only the separate implication in
-Cambie's \S4 that converts a valid answer to Question~2 into the
-union-closed frequency bound; that one imported step is always labeled
-\CITED{} below.
+use that numerical verification.  We instead prove the functional inequality
+at the smaller rational target \(t_{\mathrm{cert}}\) and reconstruct the
+entropy-to-union-closed sampling argument in Corollary~\ref{cor:uc}, citing
+Cambie for its source rather than treating it as a black box.
 
 \paragraph{Liu.}
 Liu \cite{liu} develops conditionally iid couplings.  The explicit constant in
@@ -196,19 +201,34 @@ $1/100$, by Gilmer \cite{gilmer}.
 $\psi=(3-\sqrt5)/2$, by Alweiss--Huang--Sellke \cite{ahs},
 Chase--Lovett \cite{chaselovett}, Sawin \cite{sawin}, and Pebody
 \cite{pebody}.
-\item Claimed with a finite-dimensional proof gap:
-$c^\star\approx0.3823455333667027$, by Yu \cite{yu} and Cambie
-\cite{cambie}.
+\item Yu and Cambie claimed
+$c^\star\approx0.3823455333667027$ \cite{yu,cambie};
+a finite-dimensional proof gap remains.
 \item Conditional because the nine-parameter Hypothesis~2 remains open
-(Hypothesis~1 is proved in this work):
+(Hypothesis~1 has the separate human-audited candidate proof in Section~6):
 $0.382709087918741$, in Liu's Theorem~13 \cite{liu}.
-\item \PROVED{} functional inequality plus one \CITED{} implication:
-$t_{\mathrm{cert}}=0.3820660112501052$, in this work and Cambie's
-\S4 \cite{cambie}.
+\item Candidate theorem from a human-audited reduction, a machine-verified
+five-dimensional certificate, and the self-contained entropy bridge:
+$t_{\mathrm{cert}}=0.3820660112501052$, in this work.
 \end{itemize}
 The last item is the exact rational claim
 $t_{\mathrm{cert}}\ge\psi+10^{-4}$, never an equality between the rational
 target and the irrational number $\psi+10^{-4}$.
+
+\paragraph{Originality scope.}
+A dated multi-index theorem search through 2026-08-25, followed by an arXiv
+feed refresh on 2026-08-26, found no prior exhaustive interval certificate for
+an original-family constant above \(\psi\).  The
+appropriate claim is therefore \emph{apparently the first explicit certified
+improvement found in that bounded search}, not the first claimed improvement:
+Yu and Cambie claimed larger decimals earlier.  Fixed-moment concavity and
+few-atom extreme measures are known from AHS, Liu, Bauer, Winkler, and
+Pinelis.  The apparently new component is their use on the exact pair-orbit
+coupling functional after fixing \(B=1-\mathbb Ep\), together with the
+replayable five-dimensional certificate.  The search protocol, saved primary
+sources, hashes, and unresolved coverage limits are recorded in
+\path{../LITERATURE_ORIGINALITY.md}.  This bounded search is not proof of
+universal publication priority.
 
 \subsection{The result proved here}
 For a compact metric space $X$, let $\MM(X)$ be the real vector space of finite
@@ -237,7 +257,7 @@ The rational inequality
 $t_{\mathrm{cert}}\ge\psi+10^{-4}$ is checked exactly by the campaign
 preflight.
 
-\begin{theorem}[Machine-checked functional inequality]
+\begin{theorem}[Certificate-backed functional inequality]
 \label{thm:main}
 Let $\alpha_0=0.0356069$ and let
 $t_{\mathrm{cert}}=0.3820660112501052$ denote the exact rationals displayed
@@ -257,28 +277,88 @@ Then
 \end{equation}
 \end{theorem}
 
-\begin{corollary}[Union-closed consequence; one cited implication]
+\begin{corollary}[Union-closed consequence]
 \label{cor:uc}
-Assume the entropy-to-union-closed implication in Cambie's Question~2 and
-\S4 \cite{cambie}: for $\alpha\in[0,1]$ and $t\in[0,1]$, validity of the
-corresponding functional inequality for every
-$\mu\in\PP([0,1])$ with $\mean(\mu)\le t$ implies the frequency bound $t$
-for every finite union-closed family other than $\{\emptyset\}$.  Then every
-finite union-closed family $\mathcal F\ne\{\emptyset\}$ has an element
+Every finite union-closed family $\mathcal F\ne\{\emptyset\}$ has an element
 belonging to at least
 \[
 t_{\mathrm{cert}}|\mathcal F|
-=0.3820660112501052\,|\mathcal F|
+:=0.3820660112501052\,|\mathcal F|
 \]
 member sets.
 \end{corollary}
 
-Theorem~\ref{thm:main} is \PROVED{} here.  The implication explicitly assumed
-in Corollary~\ref{cor:uc} is \CITED{} and is not re-proved.  Together they give
-the first explicit constant strictly above $\psi$ with a complete proof chain.
-The scope is exact: we do not prove Frankl's $1/2$, certify $c^\star$, certify
-Liu's conditional decimal, prove optimality, or claim a result at any larger
-target.
+\begin{proof}
+We give the entropy argument directly; it is the implication underlying
+Cambie's Question~2 and Section~4 \cite{cambie}.  Suppose instead that every
+element has frequency strictly below \(t_{\mathrm{cert}}\), and order the
+ground set so that element \(1\) occurs in at least one member of
+\(\mathcal F\).  Let \(A\) be uniform on \(\mathcal F\), and for each prefix
+\(a_{<i}\) of positive probability put
+\[
+p_i(a_{<i})=\Pr(i\in A\mid A_{<i}=a_{<i}).
+\]
+Take an independent uniform copy \(B\).  Construct a third uniform copy \(C\)
+sequentially with \(A\): conditional on prefixes \(a_{<i},c_{<i}\), set
+\(p=p_i(a_{<i})\), \(r=p_i(c_{<i})\), and \(s=\sstar(p,r)\), and give
+\((A_i,C_i)\) the four probabilities
+\[
+\Pr(1,1)=p+r-s,\quad
+\Pr(1,0)=s-r,\quad
+\Pr(0,1)=s-p,\quad
+\Pr(0,0)=1-s.
+\]
+The three-case identity for \(\sstar\) gives
+\(\max(p,r)\le s\le\min(p+r,1)\), so these masses are nonnegative and have
+Bernoulli marginals \(p,r\).  Induction and the product rule therefore keep
+both \(A\) and \(C\) uniform on \(\mathcal F\), while
+\(\Pr(A_i\vee C_i=1\mid A_{<i},C_{<i})=s\).
+
+Write \(P_i=p_i(A_{<i})\), \(Q_i=p_i(B_{<i})\), and
+\(R_i=p_i(C_{<i})\).  Then \(P_i,Q_i\) are iid, \((P_i,R_i)\) is a
+self-coupling, and all three variables have mean equal to the frequency of
+element \(i\), hence below \(t_{\mathrm{cert}}\).  The chain rule and the fact
+that conditioning reduces entropy give
+\begin{align*}
+\mathsf H(A\cup B)
+&\ge\sum_i\mathbb E h(P_i+Q_i-P_iQ_i),\\
+\mathsf H(A\cup C)
+&\ge\sum_i\mathbb E h(\sstar(P_i,R_i)),\\
+\mathsf H(A)&=\sum_i\mathbb E h(P_i).
+\end{align*}
+Theorem~\ref{thm:main}, applied coordinatewise, therefore yields
+\[
+(1-\alpha_0)\mathsf H(A\cup B)+\alpha_0\mathsf H(A\cup C)
+\ge\mathsf H(A).
+\]
+
+The inequality is strict for coordinate \(1\).  Its conditional probability
+is the constant \(u\in(0,t_{\mathrm{cert}})\).  If \(u\le\psi\), the iid gap is
+nonnegative and
+\(h(\sstar(u,u))-h(u)>0\).  If
+\(\psi\le u\le t_{\mathrm{cert}}\), then \(\sstar(u,u)=1/2\) and
+\[
+g'(u)=(1-\alpha_0)(2-2u)h'(2u-u^2)-h'(u)<0.
+\]
+The independent 256-bit Arb check
+\path{verification/cambie_bridge_strictness.py} proves
+\[
+g(t_{\mathrm{cert}})
+\in[0.0012927838426659849883486212008270
+\mathbin{+/-}4.45\cdot10^{-76}]>0.
+\]
+Thus the weighted entropy is strictly larger than
+\(\mathsf H(A)=\log_2|\mathcal F|\).  At least one of \(A\cup B,A\cup C\)
+has entropy above \(\log_2|\mathcal F|\), impossible if \(\mathcal F\) is
+union-closed because both unions are then \(\mathcal F\)-valued.
+\end{proof}
+
+Theorem~\ref{thm:main} combines ordinary mathematical arguments with a
+machine-verified finite-dimensional interval certificate; it is not an
+end-to-end formal proof.  Corollary~\ref{cor:uc} is now derived in the
+manuscript rather than imported as a black box.  The candidate proof does not
+establish Frankl's \(1/2\), certify \(c^\star\), make Liu's conditional
+decimal unconditional, prove optimality, or claim a result at a larger target.
 
 The proof has four structural ingredients:
 \begin{enumerate}
@@ -356,8 +436,12 @@ $a\otimes a+T$.
 \begin{proof}
 Since $g=a+\mathrm{id}$,
 \[
-g(x)g(y)-a(x)a(y)=x\,a(y)+y\,a(x)+xy=-xy\ln(xy)+xy
-=H(xy)+T(xy),
+\begin{aligned}
+g(x)g(y)-a(x)a(y)
+&=x\,a(y)+y\,a(x)+xy\\
+&=-xy\ln(xy)+xy
+=H(xy)+T(xy).
+\end{aligned}
 \]
 the last step by $H(u)+T(u)=-u\ln u+u$ from \eqref{eq:Hdef}. Rearranging
 gives \eqref{eq:kernel}.  The \PROVED{} gate in
@@ -598,7 +682,16 @@ The point of the folding is exactness of the coupling cost. If $\pi$ is a
 symmetric coupling of $\mu$ with itself (which suffices: replacing $\pi$ by
 $(\pi+\pi^{\top})/2$ preserves both marginals and every symmetric cost), folding
 $(p,r)\mapsto(\min(p,r),\max(p,r))$ yields a law $\nu$ on $\DD$ whose
-induced marginal is $\mu$ and whose $\sstar$-cost is unchanged. Hence
+induced marginal is $\mu$ and whose $\sstar$-cost is unchanged.
+Conversely, any \(\nu\in\PP(\DD)\) unfolds to a symmetric coupling:
+replace each off-diagonal point \((p,q)\) by half its mass at \((p,q)\)
+and half at \((q,p)\), while leaving diagonal mass at \((p,p)\), and integrate
+this kernel against \(\nu\).  Both marginals equal \(\mu_\nu\), folding returns
+\(\nu\), and the symmetric cost is unchanged.  Thus folding and unfolding give
+both directions of the optimization equality below.
+The set \(\Pi(\mu,\mu)\) is weak-* closed in the compact probability-measure
+space on \([0,1]^2\), and the cost is continuous.  Thus an optimal coupling
+exists; ``min'' below is literal rather than an unattained infimum.
 \[
 \Cc(\mu)=\min_{\substack{\nu\in\PP(\DD)\\\mu_\nu=\mu}}\int c\,d\nu,\qquad
 c(p,q)=h\bigl(\sstar(p,q)\bigr),
@@ -714,9 +807,10 @@ normalization, already part of $\PP(\DD)$). By Winkler's theorem on extreme
 points of moment sets \cite{winkler}, as reproduced in Pinelis'
 Theorem~12 \cite{pinelis}, every extreme point of such a slice is supported on at
 most $1+1=2$ points. For completeness we give the short direct proof in this
-case. Suppose an extreme $\nu\in K_\beta$ has three distinct support points, and
-choose pairwise disjoint Borel neighborhoods $A_1,A_2,A_3$ of them with
-positive $\nu$-mass. The three vectors
+case. Suppose an extreme \(\nu\in K_\beta\) has three distinct points in its
+topological support.  Choose pairwise disjoint Borel neighborhoods
+\(A_1,A_2,A_3\) of them; by the definition of topological support, each has
+positive \(\nu\)-mass. The three vectors
 \[
 v_i=\Bigl(\nu(A_i),\;\int_{A_i}g\,d\nu\Bigr)\in\mathbb R^2
 \]
@@ -797,12 +891,12 @@ feature map $\mathbf v:[0,1]\to\ell^2$ satisfying
 Let $\alpha\in[0,1]$ and let $\mu\in\PP([0,1])$ satisfy
 $\Lb(\mu)=\int h\,d\mu>0$.  With $\Cc(\mu)$ defined by the self-coupling
 minimum in Theorem~\ref{thm:main}, put
-\[
-\sigma(\mu)=\int\sqrt{\rh(p)}\,d\mu(p),\qquad
-\Lh(\mu)=2(1-\alpha)\Bb(\mu)-1
+\begin{align*}
+\sigma(\mu)&=\int\sqrt{\rh(p)}\,d\mu(p),\\
+\Lh(\mu)&=2(1-\alpha)\Bb(\mu)-1
 +\alpha\frac{\Cc(\mu)}{\Lb(\mu)}
 -(1-\alpha)\frac{\sigma(\mu)^2}{\Lb(\mu)}.
-\]
+\end{align*}
 Then, for
 $\Ff(\mu)=(1-\alpha)\Qq(\mu)+\alpha\Cc(\mu)-\Lb(\mu)$,
 \begin{equation}
@@ -835,14 +929,21 @@ $\rh(x)\le\rho_{\max}h(x)$,
 \[
 \sigma(\mu)^2\le \rho_{\max}\Lb(\mu),
 \]
-so $\Lh$ is bounded and $\sigma^2/\Lb$ cannot diverge.  Along a sequence of
-fixed mean $t$ collapsing to a sink, $\sigma^2$ is quadratic in the non-sink
-mass while $\Lb$ is linear, and hence
+so $\Lh$ is bounded and $\sigma^2/\Lb$ cannot diverge.  More sharply, if
+\(\varepsilon=\mu((0,1))\) is the non-sink mass, Cauchy--Schwarz and the same
+cap give
 \[
-\Lh\longrightarrow 2(1-\alpha)(1-t)-1=\kappa_t
-\approx0.19186255>0
+\sigma(\mu)^2\le \varepsilon\int\rh\,d\mu
+\le\varepsilon\rho_{\max}\Lb(\mu).
 \]
-at the certified parameters.
+Hence, along any feasible sequence with \(\varepsilon\to0\) and mean tending
+to \(m\le t\), using \(\Cc\ge0\),
+\[
+\liminf\Lh\ge2(1-\alpha)(1-m)-1
+\ge\kappa_t\approx0.19186255>0.
+\]
+On the mean-\(t\), zero-cost sink path recorded in
+\texttt{margin\_lemma.py}, the limit is exactly \(\kappa_t\).
 \item \emph{Tight at the obstruction.}
 With the exact $a^\star,b^\star$ defined above, the law
 $\mu^\star=a^\star\delta_1+(1-a^\star)\delta_{b^\star}$ has exactly one
@@ -932,23 +1033,54 @@ $(1-z)/h(z)$ decreases.  These signs are proved symbolically by
 \label{sec:certificate}
 
 \subsection{The reduced problem and exact arithmetic}
-By Corollary~\ref{cor:5param} it remains to certify, for
-$\alpha=0.0356069$ and $t_{\mathrm{cert}}=0.3820660112501052$, that
-$\Phi_\alpha(\nu)\ge0$ for every two-orbit
-$\nu=w\,\delta_{(p_1,q_1)}+(1-w)\,\delta_{(p_2,q_2)}$ with
-$\mean(\mu_\nu)\le t_{\mathrm{cert}}$. All universal inequalities are
-statements in \emph{Arb ball arithmetic} (\texttt{flint}/\texttt{Arb},
-Johansson \cite{arb}): enclosures of $h$, $s^{\star}$ (monotone corners),
-$\rh$, and $\sqrt{\rh}$; sound min/max extensions; exact shortest-decimal parsing
-of float endpoints into Arb; certified covers. Every rule is an independently sound
-lower bound or infeasibility proof: \emph{skipping a rule can only send a box to
-the split branch, never clear it.} Numerically derived quantities that steer the
-search are labeled NUMERICAL and are never used as proof steps.
+For a two-orbit law
+\(\nu=w\,\delta_{(p_1,q_1)}+(1-w)\,\delta_{(p_2,q_2)}\), write
+\[
+\begin{aligned}
+M_\nu&=\mean(\mu_\nu),&
+L_\nu&=\Lb(\mu_\nu),\\
+C_\nu&=\int_{\DD}h(\sstar(p,q))\,d\nu(p,q),&
+S_\nu&=\int_{\DD}\frac{\sqrt{\rh(p)}+\sqrt{\rh(q)}}2\,d\nu(p,q).
+\end{aligned}
+\]
+The exact pair-orbit functional from Theorem~\ref{thm:B3} is
+\[
+\Phi_\alpha(\nu)
+=\bigl[2(1-\alpha)(1-M_\nu)-1\bigr]L_\nu
++\alpha C_\nu-(1-\alpha)\Ee(\mu_\nu).
+\]
+The interval code certifies the distinct, explicit lower functional
+\begin{equation}
+\widehat\Phi_\alpha(\nu)
+:=\bigl[2(1-\alpha)(1-M_\nu)-1\bigr]L_\nu
++\alpha C_\nu-(1-\alpha)S_\nu^2.
+\label{eq:relaxed-phi}
+\end{equation}
+The Margin Lemma gives
+\[
+\Phi_\alpha(\nu)-\widehat\Phi_\alpha(\nu)
+=(1-\alpha)\bigl(S_\nu^2-\Ee(\mu_\nu)\bigr)\ge0.
+\]
+When \(L_\nu=0\), the marginal is supported on \(\{0,1\}\) and
+\(C_\nu=S_\nu=\Ee(\mu_\nu)=0\), so both functionals vanish.  Thus
+Corollary~\ref{cor:5param} reduces Theorem~\ref{thm:main} to certifying
+\(\widehat\Phi_\alpha\ge0\) at \(\alpha=0.0356069\) for every feasible
+two-orbit law with \(M_\nu\le t_{\mathrm{cert}}\).
 
-The exact orbit swap
+All universal computational inequalities are statements in \emph{Arb ball
+arithmetic} (\texttt{flint}/\texttt{Arb}, Johansson \cite{arb}): enclosures of
+\(h\), \(\sstar\), \(\rh\), and \(\sqrt{\rh}\); sound min/max extensions;
+exact shortest-decimal parsing of float endpoints; and certified covers.
+Every rule is a lower bound or infeasibility proof.  Skipping a rule can only
+send a box to the split branch.  Numerical search heuristics are never proof
+premises.
+
+The elementary orbit-swap identity
 $(p_1,q_1,p_2,q_2,w)\mapsto(p_2,q_2,p_1,q_1,1-w)$ preserves
-$\mean,\Lb,\Cc,\Ee,\Phi_\alpha$ term by term (asserted exactly and checked on
-rational endpoints by \texttt{verify\_orbit\_swap}), so the root
+$M_\nu,L_\nu,C_\nu,S_\nu$ and \(\widehat\Phi_\alpha\) term by term.  The
+implementation checks the decimal-endpoint enclosure exactly and samples the
+value identity; the mathematical invariance itself follows by direct
+substitution.  Hence the root
 $[0,1]^4\times[\tfrac12,1]$ covers the full cube, and it is split into the
 eight exact dyadic $w$-slices
 $[\tfrac12,\tfrac9{16}],[\tfrac9{16},\tfrac58],\ldots,[\tfrac{15}{16},1]$
@@ -963,11 +1095,13 @@ $\texttt{centered5\_max\_width}=1/32$, $\texttt{q2pin}=15/16$,
 $\texttt{collar\_edge}=0.01$.
 
 \paragraph{$\lambda$-shifts.}
-For $\lambda\ge0$, the shifted functional
-$\Phi_{\alpha,\lambda}=\Phi_\alpha+\lambda(\mean-t)$ satisfies
-$\Phi_{\alpha,\lambda}\le\Phi_\alpha$ on feasible points
-($\mean\le t$), so any certified lower bound on the shifted functional over a box is
-a valid lower bound on $\Phi_\alpha$ there. The certified family is
+For $\lambda\ge0$, put
+$\widehat\Phi_{\alpha,\lambda}
+=\widehat\Phi_\alpha+\lambda(M_\nu-t)$.  On feasible points
+$M_\nu\le t$, one has
+$\widehat\Phi_{\alpha,\lambda}\le\widehat\Phi_\alpha$, so a certified lower
+bound on the shifted functional is a valid lower bound on
+$\widehat\Phi_\alpha$. The certified family is
 \[
 \begin{aligned}
 \lambda_{\mathrm{seed}}&=1.3682158100251758,\\
@@ -991,17 +1125,20 @@ $\mean\ge A(w):=l_2+w(l_1-l_2)$; solve $A(w)\le t$ exactly in
 \texttt{Fraction} arithmetic to contract $w$ or prove the box infeasible
 (trace code 0).
 \item[\texttt{1,2}] \emph{Corner bound} (\texttt{diag\_exhaust.phi\_corner}).
-With $m_{\star}=\min(\mean_{\mathrm{hi}},t)$ and
-$\kappa_{\star}=2(1-\alpha)(1-m_{\star})-1$ required $>0$, then
-$\Phi\ge\kappa_{\star}\,\Lb_{\mathrm{lo}}+\alpha\,\Cc_{\mathrm{lo}}
--(1-\alpha)\,\sigma_{\mathrm{hi}}^2$ over the box (code 1 = infeasible,
-code 2 = corner-clear).
+With $m_{\star}=\min(M_{\nu,\mathrm{hi}},t)$ and
+$\kappa_{\star}=2(1-\alpha)(1-m_{\star})-1$ required $>0$, the rule proves
+\[
+\widehat\Phi_\alpha\ge
+\kappa_{\star}L_{\nu,\mathrm{lo}}+\alpha C_{\nu,\mathrm{lo}}
+-(1-\alpha)S_{\nu,\mathrm{hi}}^2
+\]
+over the box (code 1 = infeasible, code 2 = corner-clear).
 \item[\texttt{3}] \emph{Ratio rule} (\texttt{cert2.ratio\_rule}). From the
 margin lemma, with a \emph{box-specific} $w$-window
 $W=\texttt{hull}(w_{\mathrm{lo}},w_{\mathrm{hi}})$:
-$\sigma^2\le\Lb\int\rho\,d\nu\le\Lb\,\rho_{\mathrm{hi}}$, so
+$S_\nu^2\le L_\nu\int\rho\,d\mu_\nu\le L_\nu\,\rho_{\mathrm{hi}}$, so
 \begin{align*}
-\Phi&\ge\Lb\bigl[\kappa_t-(1-\alpha)\rho_{\mathrm{hi}}\bigr],\\
+\widehat\Phi_\alpha&\ge L_\nu\bigl[\kappa_t-(1-\alpha)\rho_{\mathrm{hi}}\bigr],\\
 \kappa_t&=2(1-\alpha)(1-t)-1
 \approx0.191862550011752.
 \end{align*}
@@ -1020,17 +1157,21 @@ The primary rule is \path{centered5_best}, with
 fallbacks.  They are gated to widths
 $\le1/32$ and require a corner lower bound at least $-0.02$.  Each proves
 the lower bound
-$\Phi_\lambda\ge\Phi_\lambda(\mathrm{mid})-\sum_i
-\sup_{\mathrm{box}}\lvert\partial_i\Phi_\lambda\rvert\cdot w_i$ built from
-certified interval gradients over the $\lambda$-family, falling back to
-block-mixed forms when the full gradient is unusable at a sink-touching vestigial
-orbit, and to the exact orbit-swapped form or the derivative-free weight-only form
-on collar-touching boxes.
-\item[\texttt{8}] \emph{$q_2$-pin face rule}. When $q_2^{\mathrm{lo}}\ge
-\texttt{q2pin}=15/16$, $\sstar(p_2,q_2)=q_2$ is pinned and
-$\partial\Phi_\lambda/\partial q_2\le0$ on the strip, so the $q_2$-face
-carries the minimum; a four-dimensional face branch-and-bound
-(\texttt{face\_bb}) certifies that face with the pinned $\lambda$-subfamily.
+$\widehat\Phi_{\alpha,\lambda}\ge
+\widehat\Phi_{\alpha,\lambda}(\mathrm{mid})-\sum_i
+\sup_{\mathrm{box}}\lvert\partial_i\widehat\Phi_{\alpha,\lambda}\rvert\cdot w_i$.
+The centered rules use only \(\lambda\in\{0,\lambda_{\mathrm{seed}}\}\);
+the full seven-value family is reserved for the face rule.  Block-mixed forms
+handle a sink-touching vestigial orbit, followed by the orbit-swapped or
+derivative-free weight-only forms on collar-touching boxes.
+\item[\texttt{8}] \emph{$q_2$-pin face rule}. It requires
+\(q_2^{\mathrm{lo}}\ge15/16\),
+\(p_2^{\mathrm{hi}}\le q_2^{\mathrm{lo}}\), and a certified positive strip
+coefficient.  Then \(\sstar(p_2,q_2)=q_2\) and
+$\partial\widehat\Phi_{\alpha,\lambda}/\partial q_2\le0$ on the entire strip,
+so the \(q_2=1\) face carries the minimum.  A four-dimensional
+\texttt{face\_bb} then certifies the \emph{full} face, without imposing the
+original feasibility restriction after pinning.
 \item[\texttt{9}] \emph{Residual}. All five coordinates at their floors (width
 $\le10^{-3}$, or $\le1.25\times10^{-4}$ for collar-touching boxes): an
 uncleared box, recorded with its center and full widths. A COMPLETE slice has
@@ -1045,7 +1186,7 @@ only cost.
 \end{enumerate}
 
 A box is \emph{terminal} when a rule proves infeasibility, certifies
-$\Phi\ge0$, or cannot be split. The verdict is \texttt{COMPLETE} iff the stack
+$\widehat\Phi_\alpha\ge0$, or cannot be split. The verdict is \texttt{COMPLETE} iff the stack
 is empty, residuals are zero, and the box and time budgets were not consumed.
 
 \subsection{Proof traces and independent replay}
@@ -1116,9 +1257,10 @@ $t_{\mathrm{cert}}=0.3820660112501052\ge\psi+10^{-4}$ is itself proven
 exactly: for $r\in[0,\tfrac32]$, $r\ge\psi\iff r^2-3r+1\le0$, checked
 in rationals (\texttt{cert3\_par.target\_relation\_holds}).
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \footnotesize
+\setlength{\tabcolsep}{5.8pt}
 \begin{tabular}{r r r r r r r}
 \hline
 slice & E proc.\ & F proc.\ & G proc.\ & G ratio & H proc. & I proc.\\
@@ -1135,8 +1277,9 @@ slice & E proc.\ & F proc.\ & G proc.\ & G ratio & H proc. & I proc.\\
 \end{tabular}
 \caption{Processed boxes and (for G) ratio clears per $w$-slice in campaigns
 E, F, G, H, and I; residuals are $0$ except F slice~7 ($1{,}447{,}470$ sink
-residuals), F slices~6--7 and G slice~7 stopped by the wall (stacks 12/18,
-24), G slice~7 at $52{,}086{,}331$ boxes with residual~0. E: 2026-08-15,
+residuals), F slices~6--7 and G slice~7 stopped by the wall (stacks 12/18
+and 16, respectively), with G slice~7 at $52{,}086{,}331$ boxes and residual~0.
+E: 2026-08-15,
 8\,h/slice, slices 0--5 COMPLETE and replayed. F: 2026-08-16 05:38,
 12\,h/slice, slices 0--6 COMPLETE and replayed. G: 2026-08-16 17:56,
 24\,h/slice, slices 0--6 COMPLETE and replayed, all rows summing to the
@@ -1487,13 +1630,15 @@ union-closed constant; this paper makes no unconditional claim at that value.
 \label{rem:liu-rounding}
 Liu's defining equations \S V-B (90)--(93) determine
 \[
-c'=0.3827090879187350299303129021\ldots,
-\qquad
-\beta^{*}=0.1000525598628931066646283\ldots,
+\begin{aligned}
+c'&=0.3827090879187350299303129021\ldots,\\
+\beta^{*}&=0.1000525598628931066646283\ldots.
+\end{aligned}
 \]
-while the paper prints the $15$-digit values $0.382709087918741$ and
-$0.100052559862974$.  Taking the printed pair literally as exact rationals,
-one finds an exact-rational point with the mean constraint active and
+The paper prints \(c'_{\rm print}=0.382709087918741\).  It likewise prints
+\(\beta^{*}_{\rm print}=0.100052559862974\).
+Taking the printed pair literally as exact rationals, one finds an
+exact-rational point with the mean constraint active and
 diagonal representation whose objective is enclosed in interval arithmetic
 strictly below $1$, namely
 $0.9999999999999903285961768504459\ldots$, so the printed decimal overshoots
@@ -1505,7 +1650,7 @@ rational at or below $0.38270908791873503$, and comparisons with $c^\star$
 should use the equation-defined value.
 \end{remark}
 
-\begin{remark}[Why the hypothesis resisted, and tightness]
+\begin{remark}[Why the hypothesis resisted; failed routes and near-tight evidence]
 Three natural proof routes can be ruled out.  First, termwise
 Cauchy--Schwarz/telescoping domination cannot close: the negative double-series
 family is confined to the index band $i\le k$, while every positive term is of
@@ -1518,9 +1663,10 @@ not positive semidefinite.  Already at $\theta=1/2$ and points $1/4,3/4$, its
 $2\times2$ Gram determinant is the exact negative rational
 $-131072/1657425$; larger \NUMERICAL{} Gram tests had minimum eigenvalues from
 $-1.02$ at $\theta=0.25$ to $-9.47$ at $\theta=1$ for $60$ and $200$ nodes.
-The inequality is tight at the corner: the resolved \NUMERICAL{} generalized
-ratio is $0.9999999906$, and the factorization identifies the exact source of
-the lost margin as $D_r(0,0)=0$.
+The resolved \NUMERICAL{} generalized ratio is $0.9999999906$, which is
+near-tight evidence only.  The factorization degenerates at
+$D_r(0,0)=0$, identifying a plausible source of lost margin, but no analytic
+extremizing sequence is claimed here.
 \end{remark}
 
 \paragraph{Corroboration only (not part of the proof).}
@@ -1553,36 +1699,32 @@ subspaces.  They corroborate, but do not replace, the continuum proof above.
 \section{Reproducibility}
 \label{sec:verify}
 
-\subsection{Frozen artifact and collector command}
-The certified campaign directory is
+\subsection{Frozen artifact and externally pinned replay}
+The sole accepted campaign directory is
 \begin{quote}\small
 \path{cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8}.
 \end{quote}
-From the repository's \texttt{math/} directory, the complete replay is the
-following single command:
-\begin{quote}
-\footnotesize
-\texttt{.venv/bin/python -B }\path{uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/snapshot/cert3_collect.py}\texttt{ }\path{uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/launch.json}
-\end{quote}
-Exit code 0 and the final line \texttt{COMPOSITE CERTIFICATE} are jointly
-required.  The accepted collector has SHA-256
+The independent lock file \path{../verification/campaign-lock.json} pins the
+raw launch, all fifteen snapshot sources, all eight result records, and all
+eight traces.  Its raw SHA-256 is
 \begin{quote}\small
+\path{d254a23a4df7cb3a4c6aae2453883324fba2381c1890c4f011d61c7971b84b48}.
+\end{quote}
+The accepted code hash is
+\path{2f23a58ebdb8b14275284e2ffefca7862373f7baf5d354a06e607cff8d78ce05};
+the frozen collector hash is
 \path{95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec}.
-\end{quote}
-The full evidence bundle used for independent transfer is
-\begin{quote}\small
-\path{/Users/jinleic/jinleic-workspace/data/uc-certificate-psi-plus-1e-4-2026-08-21-v2.zip}.
-\end{quote}
+Exact low-CPU clean-room, structural-audit, and direct-replay commands are in
+\path{../REPRODUCIBILITY.md}.  Existing campaign-local replay markers and
+\path{collect_output.txt} are excluded as fresh-replay inputs.
 
 \subsection{Pinned environment}
-The launch manifest pins CPython 3.14.3, flint 0.9.0, mpmath 1.3.0,
-numpy 2.5.2, scipy 1.18.0, and sympy 1.14.0 on macOS arm64.  Workers and the
-collector run the frozen sources with \texttt{python -B}.  The accepted code
-SHA-256 is
-\path{2f23a58ebdb8b14275284e2ffefca7862373f7baf5d354a06e607cff8d78ce05}.
-Never import the snapshot modules from another program: importing can create a
-bytecode cache before the module disables bytecode writes, thereby changing
-the immutable snapshot listing.
+The required tuple is CPython 3.14.3, flint 0.9.0, mpmath 1.3.0,
+numpy 2.5.2, scipy 1.18.0, and sympy 1.14.0 on
+\path{macOS-26.5.2-arm64-arm-64bit-Mach-O}.  The new harness requires
+\texttt{-I -B}, checks these versions and module fingerprints before and after
+execution, uses a fresh empty home and working directory, and limits numerical
+thread pools to one.
 
 \subsection{Committed tallies and replay time}
 Every campaign-I slice was committed with
@@ -1610,47 +1752,56 @@ total & 488{,}465{,}854 & 77{,}740.6\\
 \hline
 \end{tabular}
 \end{center}
-Thus the practical expected serial replay wall time on the pinned host is
-about $77{,}741$ seconds, or 21 hours 36 minutes.  Hardware and system load can
-change elapsed time but cannot change any accepted tally or verdict.
+The archived serial replay sum is about $77{,}741$ seconds, or 21 hours
+36 minutes.  It is runtime provenance, not a guarantee; hardware and load
+change elapsed time but not accepted tallies.
+
+A fresh isolated direct replay on 2026-08-26 completed all eight slices in
+parallel, with observed elapsed times between \(2{,}318.8\) and
+\(16{,}710.4\) seconds.  Every process exited zero and reproduced the expected
+stdout hash; independent structural audits before and after had identical
+input maps.  The machine-readable summary has canonical SHA-256
+\path{6ef126ced337b035e5c5f22a130b1be3697666e60f16586b75540ef6fc734b16}.
+
+The hardened replay harness then repeated all eight slices from fresh read-only
+staging, enforcing the external lock, environment/module hashes, and
+before/after source and stage equality.  All reports passed; the aggregator
+accepted 488,465,854 nodes and zero residuals.  Composite SHA-256:
+\path{57ca3f52c054bd9bccfefc349f440674c74fe7ef671d06c103ef3f52dc33d53d}.
 
 \subsection{Acceptance checks and residual trust base}
-The collector performs the protocol of \S\ref{sec:protocol}: it checks its
-hardcoded source inventories, pristine snapshot listing and hashes, exact
-dyadic roots, unique UUID4 run identifiers, worker exit codes, COMPLETE
-verdicts, positive work, zero stack/residual/budget fields, and trace
-digest/size consistency.  It then imports only the frozen modules and
-mathematically replays every claimed discharge in Arb arithmetic.  A
-hand-authored result JSON cannot pass this gate.
+The frozen collector checks its hardcoded filename inventory, a pristine
+snapshot, launch-supplied hashes, exact roots, UUIDs, COMPLETE records, zero
+stack/residual/budget fields, trace hashes/sizes, and then replays every
+discharge in Arb.  It does \emph{not} hardcode Campaign I's expected code
+digest or enforce \path{launch.environment}; the external lock and clean-room
+harness close those provenance gaps.
 
-The residual trust base is explicit: CPython semantics and startup behavior;
-the pinned flint/Arb implementation; mpmath, numpy, scipy, and sympy at the
-versions above; Darwin \texttt{renamex\_np} with
-\texttt{RENAME\_EXCL}; SHA-256; the hashed Python sources; and the
-\CITED{} results used in the analytic reduction --- Riesz,
-Banach--Alaoglu, and Stone--Weierstrass as presented by van Neerven
-\cite{vanneerven}, Bauer's principle \cite{bauer,brupedra}, the moment-set
-theorem \cite{winkler,pinelis}, and Cambie's single entropy-to-union-closed
-implication \cite[Question~2 and \S4]{cambie}.
+Arithmetic replay shares the frozen rule functions with the producer.  The
+independent structural auditor verifies hashes, opcode inventory, DFS topology,
+termination, and tallies without importing those functions, but is not a
+second interval implementation.  The collector hash-pins rather than executes
+the human review proofs.  Accordingly the residual trust base includes the
+human audit in \path{../AUDIT.md}; CPython and python-flint/Arb semantics;
+the pinned libraries and native code; SHA-256; and the cited standard
+functional-analysis results.  The entropy-to-UC argument is proved directly
+in Corollary~\ref{cor:uc}, with Cambie cited as its source.
 
 \paragraph{Artifact map.}
-\texttt{bridge\_uc.py} checks the $s^\star$ identity and folding bridge;
-\texttt{decomposition.py} checks Theorem~\ref{thm:A};
-\texttt{reduction.py} checks Theorem~\ref{thm:Ap},
-Corollary~\ref{cor:Fid}, Corollary~\ref{cor:psi}, and
-Lemma~\ref{lem:acrit}; \texttt{thmB3\_proof.py} checks
-Theorem~\ref{thm:B3}; \texttt{margin\_lemma.py} checks
-Lemma~\ref{lem:margin}; \texttt{lemma\_rh\_proof.py},
-\texttt{cert2.py}, and \texttt{arbcore.py} check
-Theorem~\ref{thm:rh} and its caps; \texttt{cert3.py} writes the certificate
-and traces; \texttt{cert3\_replay.py} replays them;
-\texttt{cert3\_par.py} enforces the campaign protocol; and
-\texttt{cert3\_collect.py} performs final acceptance.
-\texttt{liu\_kernel.py} checks the codimension-three reduction;
-\texttt{liu\_R\_nsd.py} checks the Taylor and Lorentz identities and the Arb
-compressions; and \texttt{liu\_tail.py} and
-\texttt{liu\_moment\_cert.py} audit the failed routes and corroborating
-calculations.
+\path{bridge_uc.py}, \path{decomposition.py}, \path{reduction.py},
+\path{thmB3_proof.py}, \path{margin_lemma.py}, and
+\path{lemma_rh_proof.py} contain human proofs plus exact or sampled controls;
+the collector does not execute those proofs.
+\path{cert3.py} writes traces; \path{cert3_replay.py} replays their discharges;
+\path{cert3_par.py} creates immutable campaigns; and
+\path{cert3_collect.py} performs the historical acceptance gate.
+\path{verification/structural_trace_audit.py} is the independent topology
+implementation, while \path{verification/clean_room_replay.py} supplies
+external pins, environment enforcement, before/after hashing, and resumable
+per-slice reports.  \path{liu_kernel.py} is numerical/structural evidence;
+\path{liu_R_nsd.py} machine-checks finite algebra and Arb corroboration
+for the separate human Liu-H1 proof.  Its full audit, independent checker,
+clean logs, and focused manuscript are in \path{../../LIU_H1/}.
 
 \section*{Acknowledgments}
 This note is part of the union-closed certification project.  The companion

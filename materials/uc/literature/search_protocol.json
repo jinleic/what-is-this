@@ -1,0 +1,146 @@
+{
+  "coverage_limits": [
+    "No MathSciNet subscription was used; zbMATH Open, Crossref, OpenAlex, arXiv, and public author pages provide the public metadata layer.",
+    "OpenAlex citation edges are incomplete and sometimes split preprint/version-of-record nodes.",
+    "Publisher PDFs blocked by access controls are listed in sources.json; no credentials were used.",
+    "Private manuscripts, unindexed repositories, non-English sources not surfaced by these queries, and items posted after the cutoff are outside coverage.",
+    "Competing full-proof titles were not accepted at face value: Scandone is author-marked erroneous; Demontis and Schrader remain unadjudicated in this audit and outside the entropy/coupling route."
+  ],
+  "cutoff": "Sources and versions public by 2026-08-25 local date; APIs queried at the UTC date boundary may show 2026-08-26 timestamps.",
+  "protocol_steps": [
+    {
+      "index": "arXiv metadata corpus",
+      "pages": [
+        {
+          "returned": 100,
+          "start": 0
+        },
+        {
+          "returned": 3,
+          "start": 100
+        }
+      ],
+      "query": "all:\"union-closed\"",
+      "review": "Titles and abstracts screened; entropy, coupling, explicit-constant, computer-assisted, formalization, and competing full-proof claims opened at theorem level where relevant.",
+      "total": 103,
+      "url": "https://export.arxiv.org/api/query?search_query=all%3A%22union-closed%22&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    },
+    {
+      "index": "arXiv pinned records",
+      "query_ids": [
+        "2211.09055",
+        "2211.11504",
+        "2211.11689",
+        "2211.11731",
+        "2211.13139",
+        "2212.00658",
+        "2212.12500",
+        "2306.08824",
+        "2306.12351",
+        "2301.09664",
+        "2312.14743",
+        "2405.10639",
+        "2412.18622",
+        "2501.03302",
+        "2601.19327",
+        "2302.03484",
+        "1204.0249",
+        "1610.03411",
+        "2112.11166",
+        "2405.03731"
+      ],
+      "returned": 20,
+      "review": "Latest versions, dates, comments, journal references, DOIs, PDFs, and source bundles checked.",
+      "url": "https://export.arxiv.org/api/query?id_list=2211.09055,2211.11504,2211.11689,2211.11731,2211.13139,2212.00658,2212.12500,2306.08824,2306.12351,2301.09664,2312.14743,2405.10639,2412.18622,2501.03302,2601.19327,2302.03484,1204.0249,1610.03411,2112.11166,2405.03731&max_results=100"
+    },
+    {
+      "index": "Crossref",
+      "note": "Very noisy relevance ranking; used only to find publication/DOI records, not as an exhaustive theorem search.",
+      "query": "query.bibliographic=union-closed entropy coupling; 2022-01-01..2026-08-25",
+      "reviewed": 100,
+      "total_results_reported": 215978,
+      "url": "https://api.crossref.org/works?query.bibliographic=union-closed%20entropy%20coupling&filter=from-pub-date%3A2022-01-01,until-pub-date%3A2026-08-25&rows=100"
+    },
+    {
+      "index": "Crossref",
+      "note": "Noisy substring search; relevant combinatorics records inspected.",
+      "query": "query.title=\"union-closed\"; 2022-01-01..2026-08-25",
+      "reviewed": 100,
+      "total_results_reported": 57519,
+      "url": "https://api.crossref.org/works?query.title=%22union-closed%22&filter=from-pub-date%3A2022-01-01,until-pub-date%3A2026-08-25&rows=100"
+    },
+    {
+      "index": "OpenAlex",
+      "query": "cites:<work-id> for each core arXiv/published record",
+      "review": "All returned citing records through the cutoff saved in citation_graph.json; arXiv/published duplicates queried separately.",
+      "targets": {
+        "ahs-arxiv": "W4309805338",
+        "ahs-published": "W4402686388",
+        "cambie": "W4312206463",
+        "chase-lovett": "W4309805482",
+        "gilmer": "W4320855610",
+        "liu-arxiv": "W4380993927",
+        "liu-published": "W4393407100",
+        "pebody": "W4309956985",
+        "sawin": "W4309804126",
+        "yu": "W4378100983"
+      }
+    },
+    {
+      "index": "zbMATH Open",
+      "query": "arXiv identifier, exact title, or DOI for each core work",
+      "review": "Public bibliographic records saved in sources.json; editorial text may be license-limited.",
+      "targets": [
+        "2211.09055",
+        "2211.11504",
+        "2211.11689",
+        "2211.11731",
+        "2211.13139",
+        "2212.00658",
+        "2212.12500",
+        "2306.08824",
+        "2306.12351",
+        "2312.14743",
+        "2601.19327"
+      ]
+    },
+    {
+      "index": "Author/code sources",
+      "review": "Repository commits pinned; cited computation files downloaded where accessible.",
+      "urls": [
+        "https://github.com/StijnCambie/UCconjecture",
+        "https://leiyudotscholar.wordpress.com/",
+        "https://jingbol.web.illinois.edu/",
+        "https://github.com/boonsuan/entropy-inequality"
+      ]
+    },
+    {
+      "index": "Exact phrase and theorem-concept web search",
+      "queries": [
+        "\"pair-orbit\" \"union-closed\"",
+        "\"Bauer\" \"union-closed\" entropy measure",
+        "\"Extreme Points of Moment Sets\" \"union-closed\"",
+        "\"moment defects\" \"union-closed\" entropy",
+        "\"two orbits\" \"union-closed\" entropy coupling",
+        "\"support\" \"at most two\" \"symmetric coupling\" \"union-closed\"",
+        "\"xy - xT(y) - yT(x) + T(xy)\"",
+        "\"2B\" \"union-closed\" entropy coupling",
+        "\"A constant lower bound for the union-closed sets conjecture\" journal DOI",
+        "\"An improved lower bound for the union-closed set conjecture\" journal DOI",
+        "\"Approximate union closed conjecture\" journal DOI",
+        "\"Extension of a Method of Gilmer\" journal DOI",
+        "\"Progress on the union-closed conjecture and offsprings\" survey",
+        "\"A proof of the union-closed sets conjecture\" Scandone error",
+        "\"The union-closed set conjecture is true\" Demontis error",
+        "\"A class of inequalities for intersection-closed set systems\" Schrader critique",
+        "\"Proof of Union-Closed Sets Conjecture\" Blinovsky Speranca error",
+        "\"union-closed\" 0.382709087918741",
+        "\"union-closed\" 0.3823455333667027",
+        "\"union-closed\" computer assisted constant entropy 2025 OR 2026",
+        "\"union-closed sets conjecture\" entropy dependent coupling citations Cambie Liu"
+      ],
+      "review": "Hits were followed to primary sources; absence of a phrase was never treated by itself as proof of novelty."
+    }
+  ],
+  "search_date": "2026-08-25"
+}

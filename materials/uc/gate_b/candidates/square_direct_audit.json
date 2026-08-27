@@ -1,0 +1,73 @@
+{
+  "all_within_tolerance": true,
+  "checked_order_count": 5,
+  "declared_order_count": 5,
+  "evidence_status": "direct_numerical_product_check_float64",
+  "exact_square": {
+    "active": true,
+    "cap_bound": 810,
+    "cap_holds": true,
+    "closure_defect": "6272/6561",
+    "closure_defect_matches_product": true,
+    "coordinate_counts": [
+      810,
+      810,
+      810,
+      810,
+      810,
+      810,
+      810,
+      810,
+      810,
+      810,
+      810,
+      810,
+      810,
+      810
+    ],
+    "dimension": 14,
+    "family_size": 2025,
+    "missing_ordered_join_pairs": 3920000,
+    "reimer_holds_strictly": true,
+    "reimer_threshold": 11122,
+    "separating": true,
+    "total_incidence": 11340
+  },
+  "float64_tolerance": 1e-09,
+  "orders": {
+    "alternating": {
+      "base_block_bellman_sum": 11.743725681706515,
+      "bellman_state_count": 4946031,
+      "direct_square_bellman": 11.743725681706515,
+      "seconds": 323.61
+    },
+    "blockswap": {
+      "base_block_bellman_sum": 11.743725681706515,
+      "bellman_state_count": 3047424,
+      "direct_square_bellman": 11.743725681706515,
+      "seconds": 185.13
+    },
+    "consecutive": {
+      "base_block_bellman_sum": 11.743725681706515,
+      "bellman_state_count": 3047424,
+      "direct_square_bellman": 11.743725681706515,
+      "seconds": 189.85
+    },
+    "reversed": {
+      "base_block_bellman_sum": 11.826243246195125,
+      "bellman_state_count": 3071736,
+      "direct_square_bellman": 11.826243246195125,
+      "seconds": 184.87
+    },
+    "seeded_interleaved": {
+      "base_block_bellman_sum": 11.833153208527015,
+      "bellman_state_count": 3325789,
+      "direct_square_bellman": 11.833153208527014,
+      "seconds": 173.83
+    }
+  },
+  "schema_version": 1,
+  "status": "complete",
+  "worst_bellman_gap": 8.881784197001252e-16,
+  "worst_iid_gap": 3.552713678800501e-15
+}

@@ -1,0 +1,560 @@
+{
+  "$id": "urn:uc:campaign-i:verification-report:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/cleanRoomReplay"
+    },
+    {
+      "$ref": "#/$defs/structuralAudit"
+    },
+    {
+      "$ref": "#/$defs/bridgeStrictness"
+    }
+  ],
+  "title": "Union-closed Campaign I verification reports",
+  "$defs": {
+    "bridgeStrictness": {
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "arb_interval": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "checks": {
+          "additionalProperties": false,
+          "properties": {
+            "f_t_gt_lower_gt_zero": {"const": true},
+            "f_t_lt_upper": {"const": true},
+            "t_gt_psi": {"const": true}
+          },
+          "required": [
+            "f_t_gt_lower_gt_zero",
+            "f_t_lt_upper",
+            "t_gt_psi"
+          ],
+          "type": "object"
+        },
+        "claim_status": {
+          "const": "MACHINE-VERIFIED"
+        },
+        "exact_inputs": {
+          "properties": {
+            "alpha": {
+              "const": "356069/10000000"
+            },
+            "t": {
+              "const": "955165028125263/2500000000000000"
+            }
+          },
+          "required": [
+            "alpha",
+            "t"
+          ],
+          "type": "object"
+        },
+        "formula": {
+          "const": "(1-alpha)*h(2*t-t^2)+alpha-h(t)"
+        },
+        "outcome": {
+          "const": "PASS"
+        },
+        "positive_bracket": {
+          "additionalProperties": false,
+          "properties": {
+            "lower_exclusive": {
+              "const": "0.001292783842665984988348621200827023977631257987517743548011480508341589953"
+            },
+            "upper_exclusive": {
+              "const": "0.001292783842665984988348621200827023977631257987517743548011480508341589955"
+            }
+          },
+          "required": [
+            "lower_exclusive",
+            "upper_exclusive"
+          ],
+          "type": "object"
+        },
+        "precision_bits": {
+          "const": 256
+        },
+        "report_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "report_type": {
+          "const": "cambie_bridge_strictness"
+        },
+        "schema": {
+          "const": "uc-cambie-bridge-strictness-report-v1"
+        }
+      },
+      "required": [
+        "schema",
+        "report_type",
+        "claim_status",
+        "outcome",
+        "precision_bits",
+        "exact_inputs",
+        "formula",
+        "arb_interval",
+        "positive_bracket",
+        "checks",
+        "report_sha256"
+      ],
+      "type": "object"
+    },
+    "cleanRoomReplay": {
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "claim_status": {"const": "MACHINE-VERIFIED"},
+              "outcome": {"const": "PASS"}
+            },
+            "required": ["claim_status", "outcome"]
+          },
+          "then": {
+            "properties": {
+              "command": {
+                "properties": {
+                  "exit_code": {"const": 0},
+                  "stderr_sha256": {
+                    "const": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  "stderr_utf8": {"const": ""},
+                  "termination": {"const": "exit"}
+                },
+                "required": [
+                  "exit_code",
+                  "stderr_sha256",
+                  "stderr_utf8",
+                  "stdout_sha256",
+                  "stdout_utf8",
+                  "termination"
+                ],
+                "type": "object"
+              },
+              "errors": {"maxItems": 0},
+              "replay": {
+                "properties": {
+                  "implementation": {"const": "snapshot/cert3_replay.py"},
+                  "implementation_sha256": {
+                    "const": "4bfc2568e6d5b5364516f1acf734eb049d0f670bbec6cc6c95728466146ebeef"
+                  },
+                  "shares_frozen_arithmetic": {"const": true},
+                  "tallies": {"$ref": "#/$defs/replayTallies"}
+                },
+                "required": [
+                  "implementation",
+                  "implementation_sha256",
+                  "shares_frozen_arithmetic",
+                  "tallies"
+                ],
+                "type": "object"
+              },
+              "verifier_inputs_after": {"minProperties": 3},
+              "verifier_inputs_before": {"minProperties": 3}
+            }
+          }
+        }
+      ],
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "attempt_id": {
+          "pattern": "^[0-9a-f]{32}$",
+          "type": "string"
+        },
+        "campaign_id": {
+          "const": "20260818T212601Z_425f109c15b64a6198785c6cebbbdaab"
+        },
+        "claim_status": {
+          "enum": [
+            "MACHINE-VERIFIED",
+            "OPEN",
+            "FAILED"
+          ]
+        },
+        "command": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "properties": {
+                "elapsed_seconds": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "exit_code": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "stderr_sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "stderr_utf8": {
+                  "type": "string"
+                },
+                "stdout_sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "stdout_utf8": {
+                  "type": "string"
+                },
+                "termination": {
+                  "enum": [
+                    "exit",
+                    "interrupted",
+                    "wall-timeout"
+                  ]
+                }
+              },
+              "required": [
+                "elapsed_seconds",
+                "exit_code",
+                "stderr_sha256",
+                "stderr_utf8",
+                "stdout_sha256",
+                "stdout_utf8",
+                "termination"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "environment_after": {
+          "type": "object"
+        },
+        "environment_before": {
+          "type": "object"
+        },
+        "errors": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "inputs": {
+          "properties": {
+            "source_after": {
+              "$ref": "#/$defs/fingerprintMap"
+            },
+            "source_before": {
+              "$ref": "#/$defs/fingerprintMap"
+            },
+            "stage_after": {
+              "$ref": "#/$defs/fingerprintMap"
+            },
+            "stage_before": {
+              "$ref": "#/$defs/fingerprintMap"
+            }
+          },
+          "required": [
+            "source_after",
+            "source_before",
+            "stage_after",
+            "stage_before"
+          ],
+          "type": "object"
+        },
+        "outcome": {
+          "enum": [
+            "PASS",
+            "PREFLIGHT_PASS",
+            "FAIL"
+          ]
+        },
+        "replay": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "properties": {
+                "implementation": {
+                  "const": "snapshot/cert3_replay.py"
+                },
+                "implementation_sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "shares_frozen_arithmetic": {
+                  "const": true
+                },
+                "tallies": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/replayTallies"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "implementation",
+                "implementation_sha256",
+                "shares_frozen_arithmetic",
+                "tallies"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "report_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "report_type": {
+          "const": "clean_room_replay"
+        },
+        "schema": {
+          "const": "uc-clean-room-replay-report-v1"
+        },
+        "verifier_inputs_after": {
+          "$ref": "#/$defs/fingerprintMap"
+        },
+        "verifier_inputs_before": {
+          "$ref": "#/$defs/fingerprintMap"
+        },
+        "slice": {
+          "maximum": 7,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema",
+        "report_type",
+        "claim_status",
+        "outcome",
+        "campaign_id",
+        "slice",
+        "attempt_id",
+        "inputs",
+        "environment_before",
+        "environment_after",
+        "command",
+        "replay",
+        "errors",
+        "verifier_inputs_before",
+        "verifier_inputs_after",
+        "report_sha256"
+      ],
+      "type": "object"
+    },
+    "fingerprint": {
+      "additionalProperties": false,
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "size": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sha256",
+        "size"
+      ],
+      "type": "object"
+    },
+    "fingerprintMap": {
+      "additionalProperties": {
+        "$ref": "#/$defs/fingerprint"
+      },
+      "type": "object"
+    },
+    "replayTallies": {
+      "additionalProperties": false,
+      "properties": {
+        "center": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "center_mixed": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "center_mixed_swap": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "center_w": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "corner": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "face": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "infeasible": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "processed": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "ratio": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "residual": {
+          "const": 0
+        },
+        "split": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "processed",
+        "infeasible",
+        "corner",
+        "ratio",
+        "center",
+        "center_mixed",
+        "center_mixed_swap",
+        "center_w",
+        "face",
+        "residual",
+        "split"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "structuralAudit": {
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "arithmetic_rules_checked": {
+          "const": false
+        },
+        "campaign_id": {
+          "const": "20260818T212601Z_425f109c15b64a6198785c6cebbbdaab"
+        },
+        "claim_status": {
+          "const": "MACHINE-VERIFIED"
+        },
+        "imports_frozen_arithmetic": {
+          "const": false
+        },
+        "inputs": {
+          "properties": {
+            "source_after": {
+              "$ref": "#/$defs/fingerprintMap"
+            },
+            "source_before": {
+              "$ref": "#/$defs/fingerprintMap"
+            }
+          },
+          "required": [
+            "source_after",
+            "source_before"
+          ],
+          "type": "object"
+        },
+        "outcome": {
+          "const": "PASS"
+        },
+        "report_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "report_type": {
+          "const": "structural_trace_audit"
+        },
+        "schema": {
+          "const": "uc-structural-trace-audit-report-v1"
+        },
+        "verifier_inputs_after": {
+          "$ref": "#/$defs/fingerprintMap"
+        },
+        "verifier_inputs_before": {
+          "$ref": "#/$defs/fingerprintMap"
+        },
+        "slices": {
+          "items": {
+            "properties": {
+              "claim_status": {
+                "const": "MACHINE-VERIFIED"
+              },
+              "result_tallies_match": {
+                "const": true
+              },
+              "slice": {
+                "maximum": 7,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "structural_tallies": {
+                "$ref": "#/$defs/replayTallies"
+              },
+              "trace": {
+                "$ref": "#/$defs/fingerprint"
+              },
+              "topology": {
+                "additionalProperties": false,
+                "properties": {
+                  "final_pending_nodes": {"const": 0},
+                  "initial_pending_nodes": {"const": 1},
+                  "leaf_count_equals_split_count_plus_one": {"const": true},
+                  "no_event_after_termination": {"const": true}
+                },
+                "required": [
+                  "final_pending_nodes",
+                  "initial_pending_nodes",
+                  "leaf_count_equals_split_count_plus_one",
+                  "no_event_after_termination"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "slice",
+              "claim_status",
+              "trace",
+              "structural_tallies",
+              "result_tallies_match",
+              "topology"
+            ],
+            "type": "object"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "schema",
+        "report_type",
+        "claim_status",
+        "outcome",
+        "campaign_id",
+        "arithmetic_rules_checked",
+        "imports_frozen_arithmetic",
+        "inputs",
+        "slices",
+        "verifier_inputs_before",
+        "verifier_inputs_after",
+        "report_sha256"
+      ],
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Erdős Problem #389: consecutive-product divisibility — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1f2328}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px;vertical-align:top}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.4rem 0 1rem}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+.markdown-body{box-sizing:border-box;background:transparent;font-size:15px;margin:0 0 1.2rem}
+details{border:1px solid #d0d7de;border-radius:6px;padding:6px 12px;margin:8px 0;background:#fafbfc}
+summary{cursor:pointer;font-size:14px}
+ul.files{margin:8px 0;padding-left:20px;font-size:13px}
+ul.files li{margin:2px 0}
+.fsize{color:#57606a;font-size:11px}
+mjx-container{overflow-x:auto;max-width:100%}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css">
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  function renderMD(el, md) {
+    var math = [];
+    function stash(re) {
+      md = md.replace(re, function (m) {
+        math.push(m);
+        return '@@MATH' + (math.length - 1) + '@@';
+      });
+    }
+    stash(/\$\$[\s\S]+?\$\$/g);
+    stash(/\\\[[\s\S]+?\\\]/g);
+    stash(/\\\((?:[^\\]|\\[^)])+?\\\)/g);
+    stash(/\$(?=\S)(?:[^$\n]*?\S)?\$/g);
+    var out = marked.parse(md, { mangle: false, headerIds: false });
+    out = out.replace(/@@MATH(\d+)@@/g, function (_, i) {
+      return math[+i].replace(/&/g, '&amp;')
+                     .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    });
+    el.innerHTML = out;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    function rewriteLinks(el) {
+      var base = (window.__LINKS__ || {})[el.id];
+      if (!base) return;
+      var nodes = el.querySelectorAll('a[href], img[src]');
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        var attr = n.tagName === 'IMG' ? 'src' : 'href';
+        var h = n.getAttribute(attr);
+        if (!h) continue;
+        if (/^(?:https?:|mailto:|tel:|#|\/\/|\/)/i.test(h)) continue;
+        n.setAttribute(attr, base + h);
+      }
+    }
+    var blobs = window.__MD__ || {};
+    Object.keys(blobs).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      try { renderMD(el, blobs[id]); rewriteLinks(el); }
+      catch (err) {
+        var p = document.createElement('pre');
+        p.textContent = blobs[id];
+        el.innerHTML = '';
+        el.appendChild(p);
+      }
+    });
+    if (window.MathJax) {
+      if (MathJax.typesetPromise) { MathJax.typesetPromise(); }
+      else if (MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(function () { MathJax.typesetPromise(); });
+      }
+    }
+  });
+})();
+</script>
+</head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+<h1>Erdős Problem #389: consecutive-product divisibility</h1>
+<p class="tag">source <code>math/e389</code> ·
+session <code>01a03c0c-c36d-73b7-96b7-f1203909eb76</code> ·
+last change 2026-08-27T00:20:47Z</p>
+<h2>Latest progress</h2><p class="tag">newest matching entry, quoted from <code>math/PROGRESS.md</code></p><div class="markdown-body" id="md-progress"></div>
+<h2>Project README</h2><p class="tag">first lines, verbatim</p><div class="markdown-body" id="md-readme"></div>
+<h2>Code &amp; artifacts</h2>
+<p class="tag">mirrored from the project tree; very large result files and campaign data excluded</p>
+<details open><summary><code>project root</code> — 18 files, 0.3 MB</summary><ul class="files"><li><a href="../materials/e389/README.md">README.md</a> <span class="fsize">16 KB</span></li><li><a href="../materials/e389/THEOREMS.md">THEOREMS.md</a> <span class="fsize">25 KB</span></li><li><a href="../materials/e389/artifact_io.py">artifact_io.py</a> <span class="fsize">1 KB</span></li><li><a href="../materials/e389/atlas.py">atlas.py</a> <span class="fsize">23 KB</span></li><li><a href="../materials/e389/bad_window_near_miss_analysis.py">bad_window_near_miss_analysis.py</a> <span class="fsize">12 KB</span></li><li><a href="../materials/e389/compare_atlas_classifications.py">compare_atlas_classifications.py</a> <span class="fsize">22 KB</span></li><li><a href="../materials/e389/compensation_run_search.py">compensation_run_search.py</a> <span class="fsize">14 KB</span></li><li><a href="../materials/e389/compensation_structure_analysis.py">compensation_structure_analysis.py</a> <span class="fsize">36 KB</span></li><li><a href="../materials/e389/crt_repair_cover.py">crt_repair_cover.py</a> <span class="fsize">10 KB</span></li><li><a href="../materials/e389/erdos389.py">erdos389.py</a> <span class="fsize">14 KB</span></li><li><a href="../materials/e389/moving_bad_window_search.py">moving_bad_window_search.py</a> <span class="fsize">13 KB</span></li><li><a href="../materials/e389/prime_repair_analysis.py">prime_repair_analysis.py</a> <span class="fsize">7 KB</span></li><li><a href="../materials/e389/residue_control_analysis.py">residue_control_analysis.py</a> <span class="fsize">26 KB</span></li><li><a href="../materials/e389/run_low_cpu.sh">run_low_cpu.sh</a> <span class="fsize">1 KB</span></li><li><a href="../materials/e389/shift_repair_analysis.py">shift_repair_analysis.py</a> <span class="fsize">14 KB</span></li><li><a href="../materials/e389/verify_known.py">verify_known.py</a> <span class="fsize">6 KB</span></li><li><a href="../materials/e389/zero_carry_corridor_search.py">zero_carry_corridor_search.py</a> <span class="fsize">8 KB</span></li><li><a href="../materials/e389/zone_analysis.py">zone_analysis.py</a> <span class="fsize">5 KB</span></li></ul></details>
+<details><summary><code>data/</code> — 4 files, 0.1 MB</summary><ul class="files"><li><a href="../materials/e389/data/compensation_run_m27_k100050001_h900000000.json">data/compensation_run_m27_k100050001_h900000000.json</a> <span class="fsize">14 KB</span></li><li><a href="../materials/e389/data/compensation_run_m27_k50001_h100000000.json">data/compensation_run_m27_k50001_h100000000.json</a> <span class="fsize">14 KB</span></li><li><a href="../materials/e389/data/compensation_structure_m1_20_k5000_m27_h200000000.json">data/compensation_structure_m1_20_k5000_m27_h200000000.json</a> <span class="fsize">53 KB</span></li><li><a href="../materials/e389/data/known_witness_verification.json">data/known_witness_verification.json</a> <span class="fsize">20 KB</span></li></ul></details>
+<details><summary><code>tests/</code> — 1 files, 0.1 MB</summary><ul class="files"><li><a href="../materials/e389/tests/test_erdos389.py">tests/test_erdos389.py</a> <span class="fsize">55 KB</span></li></ul></details>
+<script>window.__MD__ = {"md-progress": "### E389-COMPENSATION-RUN-BOUND (2026-08-26) — EXACT LOCAL DECOMPOSITION LIFTS THE \\(m=27\\) LOWER BOUND ABOVE \\(10^9\\)\n\n* **Checkpoint reverified before extension.** A fresh\n  \\(1\\le m\\le50,\\ 1\\le k\\le50{,}000\\) atlas is semantically identical to the\n  repaired schema-2 artifact after removing time/resource metadata: 6,493\n  near patterns and 2,249 shift patterns. The independent classification\n  comparison again passes with 101,646 changed cases, and its 21.9 MB JSONL\n  ledger is byte-identical. The then-current 27-test suite passed.\n* **Large primes now separate exactly by bad-window integer (PROVED).** For\n  \\(p^e\\Vert w\\) with \\(p>m\\), define\n  \\(C_p(w)=\\#\\{r\\ge1:2((w/p^e)\\bmod p^r)>p^r\\}\\). A pair is a witness exactly\n  when every \\(p\\le m\\) slack is nonnegative and every bad-window integer\n  satisfies \\(C_p(w)\\ge e\\) for each of its prime divisors \\(p>m\\). Thus the\n  construction target is an exact small-prime band class intersecting a run\n  of \\(\\lceil m/2\\rceil\\) compensation-good integers.\n* **CRT repair family enlarged, then sharply demoted (PROVED).** For odd\n  \\(p\\), the cofactor residues whose first \\(e\\) prefixes guarantee repair\n  form a digit box of exact size\n  \\(\\frac{p-1}{2}(\\frac{p+1}{2})^{e-1}\\), strictly enlarging the single mirror\n  lift. But if a repair retains attached primes \\(S\\), its displacement is\n  divisible by \\(\\prod_{p\\in S}p\\). At the first three \\(m=27\\) survivors\n  those products have 69, 30, and 35 digits; at the next nine they have\n  36--79 digits. A near repair must drop old blockers and face a new window.\n* **Prime-power spikes unified with the local criterion (PROVED).** For an\n  even-source natural shift, the target bad window is the old window with\n  \\(x/2\\) adjoined as its first term. The exact odd-prime spike digit sum is\n  precisely formula \\(C_p(x/2)-v_p(x)\\). The certificate checks this identity\n  at 19,654 primes, the prefix cone at 19,804 residues, and the complete\n  small/large separation at 100,000 pairs and 587,169 large-prime factors.\n* **Natural-shift neighborhood doubled.** The next 100,000,000 offsets have\n  99,999,991 single-level rejections and nine full-check survivors; seven\n  fail only at large primes and two also at \\(p=7\\). Combined with the earlier\n  shard, the first 200,000,000 forward offsets contain no witness. Moving\n  artifact SHA-256:\n  `ac9b02929f6fb4305ad54faef7c893f9c259d1e371d57753a74392f2641720c2`;\n  combined structure SHA-256:\n  `fed9bc832f21446bd11c67089acf950e37b5c004a8ef31067149583492e65daa`.\n* **Global \\(m=27\\) lower bound advanced exactly.** The new segmented\n  compensation-run sieve exhausts the contiguous interval\n  \\(50{,}001\\le k\\le1{,}000{,}050{,}000\\). Every one of the \\(10^9\\)\n  candidates has negative local slack at a prime \\(p>27\\); the large-prime\n  condition rejects all of them before a small-prime filter is needed. The\n  longest compensation-good integer run is\n  9, versus the required 14. With the atlas,\n  \\(k_{\\min}(27)>1{,}000{,}050{,}000\\). Shard SHA-256 values:\n  `edcc1956d8d94a50ae9d7d02ed5867cdb3d880ab9e2fc697350bb6f126b3be15`\n  and `54ccb015217085e362ea4faafd4c7e98890555916028df03ce1d5c057db67666`.\n* **Verification and cost.** Thirty-five tests pass in 1.216 s; targeted\n  theorem, artifact, Legendre/Kummer, and published-minimum checks all pass.\n  An independent code-review agent returned `PASS`. Every producer used one\n  reduced-priority process with numerical thread pools pinned to one. Wall\n  times were 526.59 s (second moving 100M), 6.14 s (combined structure),\n  195.09 s (first global 100M), and 1,930.58 s (next global 900M).\n* **Status and pivot.** Erdős #389 remains open; no novelty claim is made.\n  Fixed CRT classes, same-blocker CRT repair, and finite sieving do not provide\n  existence. The next proof target is an adaptive theorem producing a\n  length-14 compensation-good run that also lands in one exact small-prime\n  band class.\n", "md-readme": "# Erdős Problem #389: consecutive-product divisibility\n\n**Canonical target.** Prove or disprove that, for every integer $n\\ge1$, some\n$k\\ge1$ satisfies\n\n$$\n n(n+1)\\cdots(n+k-1)\\mid(n+k)(n+k+1)\\cdots(n+2k-1).\n$$\n\nSet $m=n-1$. The exact working form is\n\n$$\n\\boxed{\\binom{m+k}{m}\\mid\\binom{m+2k}{k}}. \\tag{1}\n$$\n\nThe universal statement remains **OPEN**. This directory contains exact\nreductions and bounded computation, not a claimed solution.\n\n## Current status\n\nLabels are literal.\n\n- **PROVED (elementary, below):** the valuation/carry and prime-power-zone\n  criteria; exact band/local small-prime controls; compensation-good integer\n  separation; the guaranteed first-prefix repair cone and its exact size;\n  retained-prime product displacement; and the shift-spike/first-term identity.\n- **PROVED (using Dirichlet's theorem):** every fixed CRT class contains\n  arbitrarily large single-level bad-window obstructions.\n- **CERTIFIED FINITE:** all 27 values currently listed in OEIS A375071\n  ($0\\le m\\le26$) are witnesses. Legendre valuations and Kummer carries agree.\n  Every nontrivial listed witness has minimum valuation slack zero and is tight\n  at 2--39 primes. The verifier independently exhausts minimality only for\n  $m=3$ ($k=207$) and $m=5$ ($k=2475$).\n- **CERTIFIED FINITE:** `atlas.py` exhausts\n  $1\\le m\\le50$, $1\\le k\\le50{,}000$. It reproduces the published minima for\n  $m=1,\\ldots,10$; no witness occurs in this rectangle for $m=11,\\ldots,50$.\n  This says nothing about $k>50{,}000$.\n- **CERTIFIED REPAIR:** atlas schema 2 includes prime $p$ in every carry-pattern\n  identity. The preserved schema-1 artifact merged bases incorrectly; an\n  independent re-scan identifies every affected event and proves that witness\n  truth values, per-$m$ counts, and offset-screen results were unchanged.\n- **CERTIFIED FINITE:** the first 200,000,000 forward offsets from the\n  published $m=26$ natural-shift target contain no $m=27$ witness. Twelve\n  offsets survive the single-level sieve; complete exact checks reject all.\n- **CERTIFIED FINITE:** combining the atlas with an exact compensation-run\n  sieve proves that an $m=27$ witness, if one exists, has\n  $k>1{,}000{,}050{,}000$.\n- **OPEN:** a uniform witness construction, density theorem, effective global\n  bound, or finite shift-repair theorem.\n\n## Exact reductions\n\nDefine the $p$-adic slack\n\n$$\n s_p(m,k)=v_p\\binom{m+2k}{k}-v_p\\binom{m+k}{m}.\n$$\n\nOnly primes dividing the left binomial need checking. Thus (1) is equivalent to\n\n$$\n s_p(m,k)\\ge0\\qquad\\text{for every prime }p. \\tag{2}\n$$\n\nKummer's theorem identifies the two valuations with base-$p$ carry counts:\n\n$$\n v_p\\binom{m+k}{m}=\\operatorname{carries}_p(k,m),\\qquad\n v_p\\binom{m+2k}{k}=\\operatorname{carries}_p(k,m+k).\n$$\n\nConsequently (2) is exactly\n\n$$\n\\operatorname{carries}_p(k,m+k)\\ge\n\\operatorname{carries}_p(k,m)\\quad\\text{for every prime }p. \\tag{3}\n$$\n\nThe checker factors only the $m$ integers $k+1,\\ldots,k+m$ and $m!$ to obtain\nthe prime support of the left binomial. It never constructs a product or\ncentral binomial having $k$ terms.\n\nThe retained trial-factor table is explicitly capped at inputs $10^{14}$,\nwhich bounds its sieve at $10^7$ and covers the present certificates. This is\nan implementation/resource limit, not a mathematical restriction; larger\ncandidates require a different exact factorizer before they are accepted.\n\n\n## Natural shift framework\n\nLet\n\n$$\n Q(m,k)=\\frac{\\binom{m+2k}{k}}{\\binom{m+k}{m}}.\n$$\n\nFor $k\\ge2$, the shift $(m,k)\\mapsto(m+1,k-1)$ preserves $m+k$ and satisfies\n\n$$\n\\frac{Q(m+1,k-1)}{Q(m,k)}"};</script>
+<script>window.__LINKS__ = {"md-progress": "../materials/", "md-readme": "../materials/e389/"};</script>
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

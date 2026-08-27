@@ -1,8 +1,8 @@
 """Exact local bridge from the certified pair-orbit functional to Cambie's Q2.
 
-Scope and status
-----------------
-PROVED HERE:
+Scope and evidence level
+------------------------
+HUMAN PROOFS WITH EXACT FINITE IMPLEMENTATION CONTROLS:
 
 1. For ``p,r in [0,1]``, the repository's clipped-median formula
 
@@ -37,13 +37,14 @@ PROVED HERE:
    coupling.  The support reduction, Margin Lemma, and interval certificate are
    separate pinned proof artifacts.
 
-CITED (not reproved here): Cambie v2, Question 2 / equation (1) and Section 4
-prove that this inequality for the identically distributed variables constructed
-there implies the union-closed bound.  Section 4's contradiction hypothesis is
-that every element frequency is **at most** ``c``; hence it supplies
-``E p <= c``.  The certificate here is deliberately proved on the closed domain
-``E p <= t``, so it covers that boundary case as well as the paper's subsequent
-strict-expectation wording.
+CITED ORIGIN, RECONSTRUCTED LOCALLY: Cambie v2, Question 2 / equation (1)
+states the hypothesis for expectations **strictly below** ``c``. Section 4's
+wording switches to “at most” while deriving the union-closed consequence.
+The closed-domain certificate is stronger than Question 2's domain, and the
+sequential Bernoulli-coupling proof in ``AUDIT.md`` and ``paper/main.tex``
+resolves the boundary by proving a strict positive first-coordinate margin.
+That set-family argument is human-audited, not checked by this finite symbolic
+schema.
 
 Primary source (fixed version, retrievable from arXiv):
     Stijn Cambie, "Better bounds for the union-closed sets conjecture using the
@@ -251,12 +252,12 @@ def main():
     for n in range(1, 6):
         assert symbolic_fold_schema(n)
     assert functional_identity()
-    print("PROVED-HERE BRIDGE: Cambie Q2 s* equals repository s* by 3 exhaustive cases")
+    print("HUMAN PROOF BRIDGE: Cambie Q2 s* equals repository s* by 3 exhaustive cases")
     print("EXACT IMPLEMENTATION CONTROL: %d rational pairs; cases=%s" %
           (sum(counts.values()), counts))
-    print("PROVED-HERE BRIDGE: symmetrize+fold preserves equal marginal and symmetric cost")
-    print("PROVED-HERE BRIDGE: Q, coupling, and marginal terms match Cambie Q2")
-    print("CITED IMPLICATION: Cambie arXiv:2212.12500v2, Section 4, Q2(c) => UC(c)")
+    print("HUMAN PROOF BRIDGE: symmetrize+fold preserves equal marginal and symmetric cost")
+    print("EXACT FINITE SCHEMA: Q, coupling, and marginal terms match Cambie Q2")
+    print("HUMAN-AUDITED UC IMPLICATION: reconstructed in uc/AUDIT.md and paper/main.tex")
     print("PRIMARY SOURCE: %s" % SOURCE)
     print("BRIDGE CHECK PASS")
 

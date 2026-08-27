@@ -41,17 +41,40 @@ PRIVATE_WORDS = WORKSPACE / ".sync-banned.txt"   # NEVER inside the repo
 
 # ---------------------------------------------------------------- projects
 PROJECTS = [
+    dict(slug="e389",
+         name="Erdős Problem #389: consecutive-product divisibility",
+         dirname="e389", session="01a03c0c-c36d-73b7-96b7-f1203909eb76",
+         keywords=("E389", "Erdős Problem #389", "consecutive-product",
+                   "compensation-good"),
+         anchor=None,
+         exclude_dirs=("data",),
+         papers=("README.md", "THEOREMS.md",
+                 "data/known_witness_verification.json",
+                 "data/compensation_run_m27_k50001_h100000000.json",
+                 "data/compensation_run_m27_k100050001_h900000000.json",
+                 "data/compensation_structure_m1_20_k5000_m27_h200000000.json")),
+    dict(slug="liu_h1",
+         name="Liu Hypothesis 1: entropy-kernel theorem",
+         dirname="LIU_H1", session="01a03b5f-2600-7019-adf6-b03bd015c2ce",
+         keywords=("LIU_H1", "Liu Hypothesis 1", "Taylor--Lorentz--Gram"),
+         anchor=None,
+         exclude_dirs=("literature", "logs"),
+         papers=("AUDIT.md", "REPRODUCIBILITY.md",
+                 "LITERATURE_ORIGINALITY.md", "paper/main.pdf",
+                 "paper/main.tex", "paper/refs.bib",
+                 "verification/independent_exact_checker.py",
+                 "verification/environment.json")),
     dict(slug="uc", name="Union-closed sets conjecture (Frankl)",
          dirname="uc", session="019ff0a0-6557-7000-8b8c-9bdbccb719e4",
          keywords=("cert3", "union-closed", "Cambie", "Liu", "Frankl", "pscil"),
-         anchor="BOLD FRONTIER CAMPAIGN IV",
-         exclude_dirs=("campaigns",),
+         anchor="UC-",
+         exclude_dirs=("campaigns", "independent-arithmetic"),
          papers=("README.md", "ANNOUNCEMENT.md", "PROOF.md",
                  "paper/main.pdf", "paper/main.tex", "paper/refs.bib")),
     dict(slug="ising3d", name="Three-dimensional Ising model (exact solution)",
          dirname="ising3d", session="019ff186-f657-7000-85d0-6d52723bfb5c",
          keywords=("ising3d", "Ising", "wave 1", "Gaussian", "Peierls"),
-         anchor="ISING3D WAVE 22",
+         anchor="ISING-W",
          exclude_dirs=("results", ".venv"),
          papers=("README.md", "research_log.md", "problem_specification.md",
                  "reports/final_technical_report.md",
@@ -397,7 +420,7 @@ window.MathJax = {
         var attr = n.tagName === 'IMG' ? 'src' : 'href';
         var h = n.getAttribute(attr);
         if (!h) continue;
-        if (/^(?:https?:|mailto:|tel:|#|\/\/|\/)/i.test(h)) continue;
+        if (/^(?:https?:|mailto:|tel:|#|\\/\\/|\\/)/i.test(h)) continue;
         n.setAttribute(attr, base + h);
       }
     }
@@ -580,6 +603,8 @@ omp session IDs in `~/.omp/agent/sessions/-jinleic-workspace/<timestamp>_<id>.js
 | `019ff95f-d695-7000-b3d0-36dd86537081` | 2026-08-13 | Kobon triangles |
 | `019ff957-1ed4-7000-8941-f92f3002c676` | 2026-08-13 | Hilbert's tenth over Q (h10q) |
 | `019ffb23-9512-7000-8c79-32667475fc6c` | 2026-08-13 | R(5,5) + zeta(5) triage (r55, zeta5) |
+| `01a03c0c-c36d-73b7-96b7-f1203909eb76` | 2026-08-25 | Erdős Problem #389 (e389) |
+| `01a03b5f-2600-7019-adf6-b03bd015c2ce` | 2026-08-25 | UC audit + Liu Hypothesis 1 submission package (liu_h1) |
 
 `ns` and `ccf` have no dedicated root session: NS route work happened inside the
 `019ff0a0` prelude, and ccf inside its subagents.

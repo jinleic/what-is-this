@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "uc-independent-report.schema.json",
+  "title": "UC independent arithmetic replay report",
+  "type": "object",
+  "required": [
+    "schema",
+    "outcome",
+    "claim_status",
+    "slice",
+    "processed",
+    "pending_stack",
+    "input_sha256",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "uc-independent-arithmetic-report-v1"
+    },
+    "outcome": {
+      "enum": ["PASS", "PARTIAL_AUDIT", "FAIL"]
+    },
+    "claim_status": {
+      "enum": ["MACHINE-VERIFIED", "COMPUTATIONAL-EVIDENCE", "FAILED"]
+    },
+    "slice": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 7
+    },
+    "processed": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "pending_stack": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "trace_offset": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "trace_eof": {
+      "type": "boolean"
+    },
+    "arithmetic_complete": {
+      "type": "boolean"
+    },
+    "finite_event_limit": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "expected_tallies_authenticated": {
+      "type": "boolean"
+    },
+    "tallies": {
+      "type": "object",
+      "required": [
+        "processed",
+        "infeasible",
+        "corner",
+        "ratio",
+        "center",
+        "center_mixed",
+        "center_mixed_swap",
+        "center_w",
+        "face",
+        "residual",
+        "split"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "processed": {"type": "integer", "minimum": 0},
+        "infeasible": {"type": "integer", "minimum": 0},
+        "corner": {"type": "integer", "minimum": 0},
+        "ratio": {"type": "integer", "minimum": 0},
+        "center": {"type": "integer", "minimum": 0},
+        "center_mixed": {"type": "integer", "minimum": 0},
+        "center_mixed_swap": {"type": "integer", "minimum": 0},
+        "center_w": {"type": "integer", "minimum": 0},
+        "face": {"type": "integer", "minimum": 0},
+        "residual": {"type": "integer", "minimum": 0},
+        "split": {"type": "integer", "minimum": 0}
+      }
+    },
+    "campaign_id": {
+      "const": "20260818T212601Z_425f109c15b64a6198785c6cebbbdaab"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "initial_trace_offset": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "resume_used": {
+      "type": "boolean"
+    },
+    "precision": {
+      "type": "object",
+      "required": ["global_cover_bits", "replay_bits", "cover_cells"],
+      "additionalProperties": false,
+      "properties": {
+        "global_cover_bits": {"const": 160},
+        "replay_bits": {"const": 80},
+        "cover_cells": {"const": 20000}
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": ["decimal", "upper_fraction"],
+      "additionalProperties": false,
+      "properties": {
+        "decimal": {"const": "0.3820660112501052"},
+        "upper_fraction": {
+          "const": "115472366449356389981023/302231454903657293676544"
+        }
+      }
+    },
+    "runtime_seal": {
+      "type": "object",
+      "required": ["path", "raw_sha256", "report_sha256", "file_count"],
+      "additionalProperties": false,
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "raw_sha256": {
+          "const": "58c49334a92b2d9e8b02b672d9e67da01b772a626b0ec29e88347d1cc7f92a0c"
+        },
+        "report_sha256": {
+          "const": "2bf686b6d0ba496383c2dd2afe51e4bffb34ee7b9e18f3bd49e7f68f4bb5184c"
+        },
+        "file_count": {"const": 343}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["python", "python_implementation", "platform", "flint"],
+      "additionalProperties": false,
+      "properties": {
+        "python": {"const": "3.14.3"},
+        "python_implementation": {"const": "cpython"},
+        "platform": {"const": "macOS-26.5.2-arm64-arm-64bit-Mach-O"},
+        "flint": {"const": "0.9.0"}
+      }
+    },
+    "elapsed_seconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "started_utc": {"type": "string", "minLength": 1},
+    "finished_utc": {"type": "string", "minLength": 1},
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "implementation": {
+      "type": "object",
+      "required": [
+        "gradient_engine",
+        "imports_frozen_arithmetic",
+        "rediscover_face_proofs",
+        "shares_python_flint",
+        "byte_zero_required_for_pass"
+      ],
+      "properties": {
+        "gradient_engine": {
+          "const": "interval automatic differentiation"
+        },
+        "imports_frozen_arithmetic": {
+          "const": false
+        },
+        "rediscover_face_proofs": {
+          "const": true
+        },
+        "shares_python_flint": {
+          "const": true
+        },
+        "byte_zero_required_for_pass": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "input_sha256": {
+      "type": "object",
+      "required": ["verifier"],
+      "properties": {
+        "lock": {"$ref": "#/$defs/sha256"},
+        "launch": {"$ref": "#/$defs/sha256"},
+        "trace": {"$ref": "#/$defs/sha256"},
+        "result": {"$ref": "#/$defs/sha256"},
+        "verifier": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "report_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "error": {
+      "type": "string",
+      "minLength": 1
+    },
+    "error_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "failing_event": {
+      "type": ["integer", "null"],
+      "minimum": 1
+    },
+    "failing_opcode": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 255
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"outcome": {"const": "PASS"}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "required": [
+          "campaign_id",
+          "run_id",
+          "arithmetic_complete",
+          "trace_offset",
+          "trace_eof",
+          "finite_event_limit",
+          "expected_tallies_authenticated",
+          "initial_trace_offset",
+          "resume_used",
+          "tallies",
+          "implementation",
+          "precision",
+          "target",
+          "runtime_seal",
+          "environment",
+          "elapsed_seconds",
+          "started_utc",
+          "finished_utc",
+          "limitations"
+        ],
+        "properties": {
+          "claim_status": {"const": "MACHINE-VERIFIED"},
+          "arithmetic_complete": {"const": true},
+          "trace_eof": {"const": true},
+          "finite_event_limit": {"const": null},
+          "expected_tallies_authenticated": {"const": true},
+          "pending_stack": {"const": 0},
+          "processed": {"type": "integer", "minimum": 1},
+          "initial_trace_offset": {"const": 0},
+          "resume_used": {"const": false},
+          "tallies": {
+            "properties": {
+              "residual": {"const": 0}
+            }
+          },
+          "input_sha256": {
+            "required": ["lock", "launch", "trace", "result", "verifier"],
+            "properties": {
+              "verifier": {
+                "const": "e67058df1347545c39b6c2d27c53e758d68f4ff338e42225acff51836aa91a9a"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"outcome": {"const": "PARTIAL_AUDIT"}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "required": [
+          "campaign_id",
+          "run_id",
+          "arithmetic_complete",
+          "trace_offset",
+          "trace_eof",
+          "finite_event_limit",
+          "expected_tallies_authenticated",
+          "initial_trace_offset",
+          "resume_used",
+          "tallies",
+          "implementation",
+          "precision",
+          "target",
+          "runtime_seal",
+          "environment"
+        ],
+        "properties": {
+          "claim_status": {"const": "COMPUTATIONAL-EVIDENCE"},
+          "finite_event_limit": {"type": "integer", "minimum": 0},
+          "expected_tallies_authenticated": {"const": false}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"outcome": {"const": "FAIL"}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "required": ["error", "error_type"],
+        "properties": {
+          "claim_status": {"const": "FAILED"}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

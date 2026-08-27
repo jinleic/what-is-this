@@ -1,0 +1,71 @@
+{
+  "arb": {
+    "a_plus": {
+      "ball": "[-0.0286491867944683178160269789255044875014518142655932128897236096085913990 +/- 2.55e-74]",
+      "lower": "[-0.02864918679446831781602697892550448750145181426559321288972360960859139902546 +/- 2.76e-78]",
+      "upper": "[-0.02864918679446831781602697892550448750145181426559321288972360960859139898021 +/- 3.01e-78]"
+    },
+    "a_plus_plus_one_fiftieth_defect": {
+      "ball": "[-0.0128467176586658486802245097897020183656493451297907437539211404727889299 +/- 5.56e-74]",
+      "lower": "[-0.01284671765866584868022450978970201836564934512979074375392114047278892988966 +/- 8.13e-79]",
+      "upper": "[-0.01284671765866584868022450978970201836564934512979074375392114047278892984441 +/- 5.28e-79]"
+    },
+    "ambiguous_clamp_state_count": 982,
+    "bellman_state_count": 5152,
+    "one_sided_cost": {
+      "ball": "[5.8924634298118564604419277936320844998325882768827260881561547462071535205 +/- 7.86e-74]",
+      "lower": "[5.892463429811856460441927793632084499832588276882726088156154746207153520421 +/- 4.07e-76]",
+      "upper": "[5.892463429811856460441927793632084499832588276882726088156154746207153520494 +/- 2.27e-76]"
+    },
+    "shapley_iid": {
+      "ball": "[5.4473549773803219881606998844189578257101999243128284311948838174566121828 +/- 6.19e-74]",
+      "lower": "[5.447354977380321988160699884418957825710199924312828431194883817456612182818 +/- 2.74e-76]",
+      "upper": "[5.447354977380321988160699884418957825710199924312828431194883817456612182862 +/- 6.26e-77]"
+    }
+  },
+  "candidate": "/Users/jinleic/jinleic-workspace/math/uc/gate_b/candidates/n7_block_extremizer.json",
+  "direct_square": {
+    "closure_defect": "6272/6561",
+    "coordinate_count": 810,
+    "dimension": 14,
+    "family_size": 2025,
+    "missing_ordered_join_pairs": 3920000,
+    "total_incidence": 11340
+  },
+  "exact_base": {
+    "active": true,
+    "automorphism_count": 240,
+    "closure_defect": "64/81",
+    "coordinate_counts": [
+      18,
+      18,
+      18,
+      18,
+      18,
+      18,
+      18
+    ],
+    "dimension": 7,
+    "family_size": 45,
+    "join_success_probability": "17/81",
+    "missing_ordered_join_pairs": 1600,
+    "order_representative_count": 21,
+    "reimer_threshold": 124,
+    "separating": true,
+    "total_incidence": 126
+  },
+  "infinite_construction": {
+    "a_plus_identity": "A_plus(F_k)=k*A_plus(F_1)",
+    "certified_delta": "7/250",
+    "closure_defect": "1-(17/81)^k",
+    "coordinate_count": "18*45^(k-1)",
+    "dimension": "7*k",
+    "family": "F_k = F_1 Cartesian-power k on disjoint 7-coordinate blocks",
+    "family_size": "45^k",
+    "ratio_lower_bound": "-A_plus(F_k)/epsilon_join(F_k) > 7*k/250",
+    "total_incidence": "126*k*45^(k-1)"
+  },
+  "precision_bits": 256,
+  "schema_version": 1,
+  "verdict": "PROVED_GATE_B_UNBOUNDED"
+}

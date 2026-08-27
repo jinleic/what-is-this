@@ -1,0 +1,461 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathcal F}
+\newcommand{\G}{\mathcal G}
+\newcommand{\B}{\mathcal B}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\boxprod}{\mathbin{\boxtimes}}
+
+\title{A Tensorization Obstruction to a Scalar\\
+Closure-Defect Repair for a Union-Closed Entropy Functional}
+\author{Research draft}
+\date{25 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We analyze a scalar repair proposed for a Shapley-averaged entropy functional
+arising in an approach to the union-closed sets conjecture.  For a finite set
+family $\F$, let $A_+(\F)$ combine the iid OR-entropy and an optimized one-sided
+causal Bellman coupling, and let $\eps_\vee(\F)$ be the probability that the
+union of two independent uniform members leaves $\F$.  The question was
+whether $-A_+(\F)/\eps_\vee(\F)$ is universally bounded over cap-$2/5$,
+Reimer-admissible families.  We prove that it is not.  A 45-member normalized
+family on seven coordinates has a certified value $A_+<-7/250$.  Both iid and
+optimized causal costs are additive under Cartesian products, whereas closure
+success is multiplicative.  Its $k$-fold powers are normalized and preserve
+the cap and Reimer conditions, but their repair ratios exceed $7k/250$.
+A standalone 256-bit Arb verifier certifies the sharper base value, directly
+checks the 2,025-member square, and evaluates the actual square Bellman
+recursion for two contrasting global orders.  Independently, a standard-library
+160-bit dyadic checker relaxes every nondegenerate action interval to $[0,1]$
+and still proves $A_+<-1/40$, without clamp decisions or Arb.  The same
+dyadic primitive certifies a separate 25-member family on six coordinates,
+evaluating all 720 orders without a symmetry quotient and proving
+$A_+<-1/80$.  Its Cartesian powers have repair ratio greater than $k/80$.
+These two constructions rule out every fixed scalar multiple of this
+ordered-pair defect.
+They neither produce a union-closed counterexample nor settle a separate
+small-defect stability question.
+\end{abstract}
+
+\section{Problem and definitions}
+
+Let $\F\subseteq2^{[n]}$ be a nonempty finite simple family, $m=|\F|$, and
+let all random members be uniform on $\F$.  The admissibility conditions are
+\begin{align}
+ \max_{i\in[n]}|\{A\in\F:i\in A\}|&\le \left\lfloor\frac{2m}{5}\right\rfloor,
+ \label{eq:cap}\\
+ \sum_{A\in\F}|A|&\ge \frac{m\log_2m}{2}.
+ \label{eq:reimer}
+\end{align}
+A family is called normalized here when every coordinate column is nonzero and
+the columns are pairwise distinct.  Normalization is not required in the
+supremum below, but all members of our sequence satisfy it.
+
+Fix a coordinate order $\pi$.  At coordinate $i$ and predecessor prefix $u$,
+write
+\[
+ p_i(u)=\Prob[X_i=1\mid X_{\operatorname{pred}_\pi(i)}=u].
+\]
+For two independent prefixes $u,v$, define
+\[
+ Q_\pi(\F)=\sum_i\E_{u,v}
+ h\bigl(p_i(u)+p_i(v)-p_i(u)p_i(v)\bigr),
+\]
+where $h$ is binary entropy in bits, and put $Q(\F)=\E_\pi Q_\pi(\F)$.
+
+For the causal term, at a pair of prefixes let $p=p_i(u)$ and $r=p_i(v)$.
+Set
+\[
+ s^*(p,r)=\max\{p,r,\min(p+r,1/2)\},\qquad U(p,r)=\min(1,p+r).
+\]
+A one-sided action chooses $s\in[s^*,U]$, with next-bit probabilities
+\[
+ P_{00}=1-s,\quad P_{10}=s-r,\quad
+ P_{01}=s-p,\quad P_{11}=p+r-s.
+\]
+The fixed-order Bellman value $C_{+,\pi}(\F)$ is the maximum expected sum of
+$h(s)$ over all such causal policies.  We average over all orders to obtain
+$C_+(\F)$.  The coefficient is the fixed, dimension-independent rational
+\[
+ \alpha=0.0356069=\frac{356069}{10^7},
+\]
+and the functional is
+\begin{equation}
+ A_+(\F)=(1-\alpha)Q(\F)+\alpha C_+(\F)-\log_2m.
+ \label{eq:Aplus}
+\end{equation}
+
+The ordered-pair closure defect is
+\begin{equation}
+ \eps_\vee(\F)=
+ \Prob_{X,Y\sim\operatorname{Unif}(\F)}[X\cup Y\notin\F].
+ \label{eq:defect}
+\end{equation}
+The Gate B quantity is
+\begin{equation}
+ c_{\rm cl}^\star=
+ \sup_{\substack{\F\ \text{satisfies \eqref{eq:cap}, \eqref{eq:reimer}}\\
+                  A_+(\F)<0}}
+ \frac{-A_+(\F)}{\eps_\vee(\F)}.
+ \label{eq:cstar}
+\end{equation}
+The quotient is interpreted in the extended nonnegative reals: an admissible
+family with $A_+(\F)<0$ and $\eps_\vee(\F)=0$ has value $+\infty$; otherwise
+the quotient is taken only at positive defect.  Our construction has strictly
+positive defect, so the theorem is independent of this convention.
+No upper bound on $\eps_\vee$ occurs in \eqref{eq:cstar}.
+
+\section{Certified negative base}
+
+Partition the seven coordinates as $\{5,6\}\sqcup\{0,1,2,3,4\}$ and let $\B$
+be the union of the seven weight cells
+\begin{equation}
+ (0,1),(0,3),(1,0),(1,2),(1,5),(2,0),(2,1).
+ \label{eq:cells}
+\end{equation}
+The exact row-mask list is stored in the accompanying machine-readable
+candidate.  Direct counting gives
+\[
+ |\B|=45,\qquad d_i=18\quad(0\le i<7),\qquad
+ \sum_{A\in\B}|A|=126.
+\]
+Thus the cap holds with equality.  The exact Reimer threshold is 124.  The
+columns are active and pairwise distinct.  There are exactly 1,600 missing
+ordered join pairs, and hence
+\begin{equation}
+ \eps_\vee(\B)=\frac{64}{81},\qquad
+ 1-\eps_\vee(\B)=\frac{17}{81}.
+ \label{eq:base-defect}
+\end{equation}
+The family is not union-closed: rows 1 and 2 occur but row 3 does not.
+
+\begin{proposition}[Certified base]
+For the functional \eqref{eq:Aplus},
+\begin{equation}
+ A_+(\B)
+ \le -0.0286491867944683178160269789255044875\ldots
+ <-\frac7{250}.
+ \label{eq:base-negative}
+\end{equation}
+\end{proposition}
+
+\noindent
+The proposition is a finite computational lemma.  A standalone checker
+reconstructs $\B$ from the cell predicate in \eqref{eq:cells}, verifies that it
+equals the stored row list, rebuilds the exact constraints and the 240-element
+automorphism group, reduces the 5,040 coordinate orders to 21 equal-size
+orbits, and produces a rigorous upper certificate for the one-sided Bellman
+maximum with 256-bit Arb arithmetic. At each of 982 clamp-ambiguous states the
+unconstrained concave maximum is retained, which upper-bounds the constrained
+maximum. The checker imports no implementation module from the original
+discovery code.
+
+\begin{proposition}[Independent clamp-free certificate]
+There is a standard-library-only, outward-rounded dyadic certificate that
+proves
+\[
+ A_+(\B)
+ <-0.0271742911034863966862278304907
+ <-\frac1{40}.
+\label{eq:independent-base}
+\]
+\end{proposition}
+\begin{proof}
+For a fixed order, define a relaxed backward value $W$ as follows.  At a
+nondegenerate state, replace the feasible one-sided action interval by all of
+$[0,1]$.  Given child values $W_{ac}$, put
+\[
+ D=-W_{00}+W_{10}+W_{01}-W_{11}.
+\]
+The unrestricted concave maximum is
+\[
+ W_{00}-rW_{10}-pW_{01}+(p+r)W_{11}
+ +\log_2(1+2^D).
+\]
+At a degenerate state the action is forced and the boundary recurrence is
+used.  Backward induction gives $C_{+,\pi}\le W_\pi$: before enlarging the
+action interval, all four feasible transition coefficients are nonnegative,
+so replacing each true child by an upper child preserves the inequality;
+maximizing over a superset can only increase it.
+
+The checker reconstructs $\B$ from \eqref{eq:cells}, computes $Q$ directly by
+the predecessor-subset Shapley formula, and exactly partitions all 5,040
+orders into the 21 equal orbits of the verified 240-element automorphism
+group.  It obtains the outward upper endpoints
+\[
+ Q(\B)<5.447354977380321988160699884419,\qquad
+ \E_\pi W_\pi<5.933885055704082998831935023544,
+\]
+which imply \eqref{eq:independent-base}.  Natural logarithms use a rational
+atanh series with an exact tail bound; exponentials use range reduction, a
+rational Taylor tail bound, and repeated squaring.  Thus no floating-point
+library or Arb operation enters this second certificate.
+\end{proof}
+
+\section{Tensorization}
+
+For families on disjoint coordinate blocks define
+\[
+ \F\boxprod\G=\{A\cup(n+B):A\in\F,\ B\in\G\}.
+\]
+
+\begin{lemma}[Closure success]
+\begin{equation}
+ 1-\eps_\vee(\F\boxprod\G)
+ =(1-\eps_\vee(\F))(1-\eps_\vee(\G)).
+ \label{eq:defect-product}
+\end{equation}
+\end{lemma}
+\begin{proof}
+A product join lies in the product family if and only if both block joins lie
+in their respective families.  Under two independent uniform product rows,
+the two events are independent.
+\end{proof}
+
+\begin{lemma}[Cost tensorization]
+\begin{equation}
+ Q(\F\boxprod\G)=Q(\F)+Q(\G),\qquad
+ C_+(\F\boxprod\G)=C_+(\F)+C_+(\G).
+ \label{eq:cost-product}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Fix a global coordinate order $\pi$ and write $\pi_F,\pi_G$ for its induced
+relative block orders.  A uniform product row has independent blocks.
+Conditioning on predecessor coordinates in the other block therefore does not
+alter a within-block conditional-one probability.  Each iid local term is the
+corresponding factor term, giving
+\[
+ Q_\pi(\F\boxprod\G)=Q_{\pi_F}(\F)+Q_{\pi_G}(\G).
+\]
+
+For the optimized causal term, split every pair of product prefixes into its
+two block states.  We prove by backward induction on the remaining global
+suffix that the Bellman value decomposes as $V=V_F+V_G$.  The terminal case is
+immediate.  Suppose the next coordinate belongs to the $F$ block.  Its
+conditional marginals, action interval, and transition probabilities depend
+only on the $F$ prefixes.  By induction, every child value is its $F$-child
+value plus the same unchanged constant $V_G$.  For every feasible action,
+\[
+ \sum_{a,c}P_{ac}
+ =(1-s)+(s-r)+(s-p)+(p+r-s)=1,
+\]
+and hence
+\[
+ \max_s\left\{h(s)+\sum_{a,c}P_{ac}(V_{F,ac}+V_G)\right\}
+ =V_G+\max_s\left\{h(s)+\sum_{a,c}P_{ac}V_{F,ac}\right\}.
+\]
+The common shift also cancels from
+$-V_{00}+V_{10}+V_{01}-V_{11}$, so it cannot change the optimizer.  The
+remaining maximization is exactly the $F$ Bellman step.  The other block is
+symmetric.  In particular, a policy cannot gain by
+using other-block prefixes: their continuation contribution cancels from the
+Bellman slope and hence from the optimizer.  Thus
+\[
+ C_{+,\pi}(\F\boxprod\G)
+ =C_{+,\pi_F}(\F)+C_{+,\pi_G}(\G).
+\]
+A uniform global order induces uniform relative orders in each block.
+Averaging proves \eqref{eq:cost-product}.
+\end{proof}
+
+\begin{corollary}
+\begin{equation}
+ A_+(\F\boxprod\G)=A_+(\F)+A_+(\G).
+ \label{eq:A-product}
+\end{equation}
+\end{corollary}
+\begin{proof}
+Combine \eqref{eq:cost-product} with
+$\log_2|\F\boxprod\G|=\log_2|\F|+\log_2|\G|$ in \eqref{eq:Aplus}.
+\end{proof}
+
+\section{Unbounded repair ratio}
+
+Let $\F_k=\B^{\boxprod k}$.  Then $|\F_k|=45^k$ and the dimension is $7k$.
+Every coordinate occurs in
+\[
+ 18\cdot45^{k-1}=\frac25\,45^k
+\]
+rows, so the cap holds with equality.  The total incidence is
+$126k45^{k-1}$ and the average row size is $14k/5$.  Since
+\[
+ 45^5=184{,}528{,}125<268{,}435{,}456=2^{28},
+\]
+we have $\log_2 45<28/5$, and \eqref{eq:reimer} holds strictly for every $k$.
+Activity and separation within a block are inherited from $\B$; columns in
+different blocks are distinct because base columns take both values and blocks
+vary independently.  Hence every $\F_k$ is normalized.
+
+Equations \eqref{eq:base-defect}, \eqref{eq:defect-product}, and
+\eqref{eq:A-product} give
+\[
+ \eps_\vee(\F_k)=1-\left(\frac{17}{81}\right)^k,
+ \qquad A_+(\F_k)=kA_+(\B).
+\]
+
+\begin{theorem}[Gate B]
+The quantity in \eqref{eq:cstar} is infinite.
+\end{theorem}
+\begin{proof}
+By \eqref{eq:base-negative},
+\[
+ \frac{-A_+(\F_k)}{\eps_\vee(\F_k)}
+ >\frac{7k/250}{1-(17/81)^k}
+ >\frac{7k}{250}\longrightarrow+\infty.
+\]
+Every member of the sequence is admissible, so the supremum is infinite.
+\end{proof}
+
+\subsection{A second base}
+
+The conclusion does not rely on the seven-coordinate search output.  Partition
+six coordinates into two triples and let $\mathcal D$ be the union of the weight cells
+\[
+ (0,0),(0,1),(1,0),(1,2),(2,1).
+\]
+It has 25 rows, every coordinate count is 10, total incidence 60, and exact
+Reimer threshold 59.  Exactly 444 of its 625 ordered joins are missing, so its
+closure-success probability is $181/625$.  A third-party-free 160-bit dyadic
+checker evaluates the clamp-free relaxation for all $6!=720$ orders, without
+an automorphism quotient, and certifies
+\[
+\begin{aligned}
+ Q(\mathcal D)&<4.616383859857110260038923460896,\\
+ \mathbb E_\pi W_\pi(\mathcal D)&<5.034353951629763221689815640761,\\
+ A_+(\mathcal D)&<-0.0125897106568747589615082453240<-\frac1{80}.
+\end{aligned}
+\]
+For $\mathcal G_k=\mathcal D^{\boxprod k}$, the product identities give
+\[
+ A_+(\mathcal G_k)=kA_+(\mathcal D),\qquad
+ \eps_\vee(\mathcal G_k)=1-\left(\frac{181}{625}\right)^k.
+\]
+The cap holds with equality.  The average row size is $12k/5$, and
+$25^5<2^{24}$ proves the strict Reimer inequality.  Hence this second sequence
+is normalized and admissible and independently gives
+\[
+ \frac{-A_+(\mathcal G_k)}{\eps_\vee(\mathcal G_k)}
+ >\frac{k/80}{1-(181/625)^k}>\frac{k}{80}\longrightarrow+\infty.
+\]
+
+\section{Computational controls}
+
+The proof uses computation only to establish the strictly negative finite base.
+The standalone verifier additionally performs the following adversarial checks.
+
+\begin{enumerate}
+\item It explicitly constructs the 2,025-row square and counts 3,920,000
+missing ordered joins, obtaining
+$\eps_\vee(\F_2)=6272/6561=1-(17/81)^2$.
+\item It evaluates the actual square-family Bellman recursion in an exact
+factored-fiber representation for consecutive and alternating global orders.
+Both Arb enclosures agree with twice the base-order optimum, with residual
+radius below $1.4\times10^{-70}$.  The alternating computation visits
+2,985,831 states and encounters 405,641 ambiguous clamps, retaining the
+unconstrained upper bound at each.
+\item It records $\alpha=356069/10^7$ independently of dimension and checks the
+cap, incidence, Reimer witness, and exact defect arithmetic for powers
+$1\le k\le8$.  The all-$k$ conclusion is the proof above, not extrapolation
+from these instances.
+\item A separate regression suite attacks the fixed-order product identity for
+all 225 ordered pairs of nonempty two-coordinate families and all 24 global
+orders of each product: 5,400 interleaved Bellman comparisons.  It checks the
+iid and one-sided identities with the legacy float implementation and the
+defect identity exactly.  It also compares the independent Arb and legacy
+float Bellman evaluators and brute-checks the $n=8$ order quotient.
+\item A non-factored audit materializes the same square as a plain list of
+2,025 fourteen-bit masks and runs generic prefix-fiber evaluators on it, with
+no product-aware shortcut, for five declared global orders: consecutive,
+block-swapped, reversed, alternating, and a seeded interleaving.  The directly
+computed $C_{+,\pi}$ and $Q_\pi$ match the induced block sums to float64
+rounding, worst gaps $8.9\times10^{-16}$ and $3.6\times10^{-15}$, while the
+values take three distinct magnitudes.
+\item A resumable falsification search attacks additivity on 292 ordered
+products, 205 with unequal block dimensions, including dead columns, duplicate
+columns, singletons, full power sets, middle layers, and seeded random pairs,
+over every global order of each product.  It found no counterexample; the worst
+gap is $1.8\times10^{-15}$ and the exact ordered-defect product never failed.
+\item The shared algebra is verified symbolically: the four transition weights
+sum identically to one, the step objective equals
+$\text{const}+sD+h(s)$ so a common additive shift of the continuation values
+leaves $D$ unchanged, and
+$\max_s\{sD+h(s)\}=\log_2(1+2^D)$ at $s=1/(1+2^{-D})$ with second derivative
+$1/(s(s-1)\ln2)<0$.
+\item The powers themselves are instantiated for $k\le3$ and re-audited from
+the constructed rows.  At $k=3$ the family has 91,125 members, all 21
+coordinate counts equal the cap bound 36,450, incidence 765,450 exceeds the
+Reimer threshold 750,668, the columns are active and pairwise distinct, and a
+brute-force count over all $8{,}303{,}765{,}625$ ordered pairs finds
+$8{,}227{,}000{,}000$ missing joins, i.e. exactly
+$526528/531441=1-(17/81)^3$.  That count uses no product shortcut.
+\end{enumerate}
+
+Complete smaller-dimension controls remain separate from the theorem.  The
+full labeled $n=4$ scan (which also contains lower-dimensional families via
+zero columns) retained 358 nontrivial cap-$2/5$ families.  An exact $n=5$
+producer represented all 463,343 nontrivial admissible labeled families by
+5,172 coordinate orbits; a resumable 120-order evaluation found minimum
+$A_+=0.006474313148642441\ldots$.  At $n=6$, exhaustive coverage is feasible
+only for declared subclasses: all 262,585 admissible families with
+$3\le|\F|\le7$ (1,081 orbits), and all 450 orbits in the three two-block
+classes.  Enumeration and defects in these controls are exact; their objective
+comparisons are float64.  None is used to infer the all-$k$ result.
+
+A complete declared-class $n=8$ search provides a finite control.  It exhausts
+all 65,535 families invariant under $S_1\times S_7$, finds 136 admissible full
+$S_8$ orbits (130 normalized), and finds two negative values.  Its largest
+float64 ratio is $0.034335490331443\ldots$, below the certified seven-coordinate
+base.  This is a complete numerical result for that symmetry class, not an
+arbitrary-$n=8$ optimum.
+
+\section{Scope and limitations}
+
+The sequence satisfies $\eps_\vee(\F_k)\to1$.  This is no limitation for the
+unrestricted supremum \eqref{eq:cstar}, but it means the argument does not
+settle a different local-stability problem restricted to
+$\eps_\vee\to0$.  Approximate-union-closure results such as
+Chase--Lovett~\cite{ChaseLovett} concern that small-defect regime and frequency
+bounds, not the present Bellman functional.
+
+The base is deliberately non-union-closed.  The theorem neither refutes the
+union-closed sets conjecture nor supplies the UC-specific structural charge
+needed by the larger entropy programme.  Its conclusion is narrower and
+complete: no fixed scalar multiple of the ordered-pair closure defect can
+repair $A_+$ over all cap/Reimer families.
+
+There are three verified finite-base certificates covering two different
+families, but they are ordinary interval computations rather than
+proof-assistant artifacts, and the tensorization lemmas are human-audited
+mathematics supported by the falsification searches above.  The
+seven-coordinate sign is established by two arithmetically disjoint checkers:
+a 256-bit Arb computation with clamp classification, and a standard-library
+dyadic computation that avoids clamp decisions entirely.  The second dyadic
+certificate uses the six-coordinate family, evaluates all 720 orders without
+symmetry reduction, and needs no third-party package.
+
+\begin{thebibliography}{9}
+\bibitem{ChaseLovett}
+Z.~Chase and S.~Lovett,
+\emph{Approximate union closed conjecture},
+arXiv:2211.11689 (2022).
+\end{thebibliography}
+
+\end{document}

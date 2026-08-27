@@ -1,0 +1,1169 @@
+{
+  "access_limitations": [
+    {
+      "result": "HTTP 403; DOI metadata and Pinelis arXiv restatement retained",
+      "source": "Winkler version-of-record PDF",
+      "url": "https://pubsonline.informs.org/doi/pdf/10.1287/moor.13.4.581"
+    },
+    {
+      "result": "HTTP 200 HTML landing page, not a PDF; DOI metadata and Bru-de Siqueira Pedra arXiv statement retained",
+      "source": "Bauer version-of-record PDF",
+      "url": "https://link.springer.com/content/pdf/10.1007/BF01898615.pdf"
+    },
+    {
+      "result": "HTTP 401/403/404 or HTML wrapper; full PMC HTML is accessible and arXiv v2 PDF/source were saved",
+      "source": "Yu version-of-record PDF",
+      "urls": [
+        "https://content.openalex.org/works/W4378100983.pdf",
+        "https://www.mdpi.com/1099-4300/25/5/767/pdf?version=1683534109",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10217025/bin/entropy-25-00767.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10217025/pdf/entropy-25-00767.pdf"
+      ]
+    },
+    {
+      "result": "HTTP 202 with empty HTML; arXiv v1 PDF/source and DOI metadata were saved",
+      "source": "Liu CISS version-of-record PDF",
+      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10480167"
+    },
+    {
+      "result": "HTTP 403; only Crossref/OpenAlex metadata audited",
+      "source": "Samotij 2026 full text",
+      "url": "https://epubs.siam.org/doi/10.1137/25M180874X"
+    },
+    {
+      "result": "Cited URL resolves to an empty WordPress template; arXiv v2 source bundle contains TeX/classes only and no code",
+      "source": "Yu cited computation code",
+      "url": "https://leiyudotscholar.wordpress.com/"
+    },
+    {
+      "result": "HTTP 404; arXiv metadata preserved, including author comment that Proposition 1.2 contains a mistake",
+      "source": "Scandone arXiv v2 PDF",
+      "url": "https://arxiv.org/pdf/2302.03484v2"
+    },
+    {
+      "result": "HTTP 429; citation graph therefore uses OpenAlex, Crossref, and inspected reference lists",
+      "source": "Semantic Scholar citation API",
+      "url": "https://api.semanticscholar.org/graph/v1/paper/ARXIV:2212.12500"
+    }
+  ],
+  "arxiv_query_url": "https://export.arxiv.org/api/query?id_list=2211.09055,2211.11504,2211.11689,2211.11731,2211.13139,2212.00658,2212.12500,2306.08824,2306.12351,2301.09664,2312.14743,2405.10639,2412.18622,2501.03302,2601.19327,2302.03484,1204.0249,1610.03411,2112.11166,2405.03731&max_results=100",
+  "arxiv_records": {
+    "1204.0249": {
+      "abstract": "Necessary and sufficient conditions for a measure to be an extreme point of the set of measures (on an abstract measurable space) with prescribed generalized moments are given, as well as an application to extremal problems over such moment sets; these conditions are expressed in terms of atomic partitions of the measurable space. It is also shown that every such extreme measure can be adequately represented by a linear combination of k Dirac probability measures with nonnegative coefficients, where k is the number of restrictions on moments; moreover, when the measurable space has appropriate topological properties, the phrase \"can be adequately represented by\" here can be replaced simply by \"is\". The proofs are elementary and mainly self-contained.",
+      "arxiv_id": "1204.0249",
+      "authors": [
+        "Iosif Pinelis"
+      ],
+      "categories": [
+        "math.OC",
+        "math.PR",
+        "math.ST"
+      ],
+      "comment": "10 pages",
+      "doi": null,
+      "journal_ref": "Math. Methods Oper. Res., 83(3):325--349 (2016)",
+      "latest_version": "v1",
+      "published": "2012-04-01T17:48:11Z",
+      "title": "On the extreme points of moments sets",
+      "updated": "2012-04-01T17:48:11Z",
+      "versioned_abs_url": "https://arxiv.org/abs/1204.0249v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/1204.0249v1"
+    },
+    "1610.03411": {
+      "abstract": "We show that the minimization problem of any non-convex and non-lower semi-continuous function on a compact convex subset of a locally convex real topological vector space can be studied via an associated convex and lower semi-continuous function $Γ\\left( h\\right) $. This observation uses the notion of $Γ$-regularization as a key ingredient. As an application we obtain, on any locally convex real space, a generalization of the Lanford III-Robinson theorem which has only been proven for separable real Banach spaces. The latter is a characterization of subdifferentials of convex continuous functions.",
+      "arxiv_id": "1610.03411",
+      "authors": [
+        "J. -B. Bru",
+        "W. de Siqueira Pedra"
+      ],
+      "categories": [
+        "math.FA"
+      ],
+      "comment": null,
+      "doi": null,
+      "journal_ref": "Journal of Convex Analysis 19(2):467-483 (2012)",
+      "latest_version": "v1",
+      "published": "2016-10-10T15:57:21Z",
+      "title": "Remarks on the $Γ$-regularization of Non-convex and Non-semi-continuous Functions on Topological Vector Spaces",
+      "updated": "2016-10-10T15:57:21Z",
+      "versioned_abs_url": "https://arxiv.org/abs/1610.03411v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/1610.03411v1"
+    },
+    "2112.11166": {
+      "abstract": "This book is based on notes compiled over the many years I have been teaching the course \"Applied Functional Analysis\" in the first year of the Master programme at Delft University of Technology, for students with previous exposure to the essentials of Real Analysis and the theory of Lebesgue integration. It offers a comprehensive introduction to functional analysis, covering both the abstract theory and applications to spectral theory, boundary value problems, semigroup theory, and quantum mechanics. It starts with the basic results of the subject and progresses towards a treatment of several advanced topics not commonly found in functional analysis textbooks, including Fredholm theory, form methods, boundary value problems, semigroup theory, trace formulas and a mathematical treatment of states and observables in quantum mechanics.",
+      "arxiv_id": "2112.11166",
+      "authors": [
+        "Jan van Neerven"
+      ],
+      "categories": [
+        "math.FA",
+        "math-ph",
+        "math.AP"
+      ],
+      "comment": "In the present corrected version, some misprints have been fixed and a few proofs have been streamlined",
+      "doi": "10.1017/9781009232487",
+      "journal_ref": "Cambridge Studies in Advanced Mathematics, volume 201 (June 2022, corrected printings 2023, 2025)",
+      "latest_version": "v7",
+      "published": "2021-12-21T13:02:04Z",
+      "title": "Functional Analysis",
+      "updated": "2025-07-17T14:45:22Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2112.11166v7",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2112.11166v7"
+    },
+    "2211.09055": {
+      "abstract": "We show that for any union-closed family $\\mathcal{F} \\subseteq 2^{[n]}, \\mathcal{F} \\neq \\{\\emptyset\\}$, there exists an $i \\in [n]$ which is contained in a $0.01$ fraction of the sets in $\\mathcal{F}$. This is the first known constant lower bound, and improves upon the $Ω(\\log_2(|\\mathcal{F}|)^{-1})$ bounds of Knill and Wójick. Our result follows from an information theoretic strengthening of the conjecture. Specifically, we show that if $A, B$ are independent samples from a distribution over subsets of $[n]$ such that $Pr[i \\in A] < 0.01$ for all $i$ and $H(A) > 0$, then $H(A \\cup B) > H(A)$.",
+      "arxiv_id": "2211.09055",
+      "authors": [
+        "Justin Gilmer"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": "9 pages, 1 figure. (Update 11/28/22: Typos fixed, and added reference to follow up work improving the bound and refuting Conjecture 1.)",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v2",
+      "published": "2022-11-16T17:17:42Z",
+      "title": "A constant lower bound for the union-closed sets conjecture",
+      "updated": "2022-11-28T07:28:55Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2211.09055v2",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2211.09055v2"
+    },
+    "2211.11504": {
+      "abstract": "Gilmer has recently shown that in any nonempty union-closed family $\\mathcal F$ of subsets of a finite set, there exists an element contained in at least a proportion $.01$ of the sets of $\\mathcal F$. We improve the proportion from $.01$ to $\\frac{ 3 -\\sqrt{5}}{2} \\approx .38$ in this result. An improvement to $\\frac{1}{2}$ would be the Frankl union-closed set conjecture. We follow Gilmer's method, replacing one key estimate by a sharp estimate. We then suggest a new addition to this method and sketch a proof that it can obtain a constant strictly greater than $\\frac{ 3 -\\sqrt{5}}{2} $. We also disprove a conjecture of Gilmer that would have implied the union-closed set conjecture.",
+      "arxiv_id": "2211.11504",
+      "authors": [
+        "Will Sawin"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": "9 pages",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v3",
+      "published": "2022-11-21T14:42:37Z",
+      "title": "An improved lower bound for the union-closed set conjecture",
+      "updated": "2023-06-19T11:25:34Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2211.11504v3",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2211.11504v3"
+    },
+    "2211.11689": {
+      "abstract": "A set system is called union closed if for any two sets in the set system their union is also in the set system. Gilmer recently proved that in any union closed set system some element belongs to at least a $0.01$ fraction of sets, and conjectured that his technique can be pushed to the constant $\\frac{3-\\sqrt{5}}{2}$. We verify his conjecture; show that it extends to approximate union closed set systems, where for nearly all pairs of sets their union belong to the set system; and show that for such set systems this bound is optimal.",
+      "arxiv_id": "2211.11689",
+      "authors": [
+        "Zachary Chase",
+        "Shachar Lovett"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": "3 pages",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2022-11-21T18:04:53Z",
+      "title": "Approximate union closed conjecture",
+      "updated": "2022-11-21T18:04:53Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2211.11689v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2211.11689v1"
+    },
+    "2211.11731": {
+      "abstract": "We verify an explicit inequality conjectured recently by Gilmer, thus proving that for any nonempty union-closed family $F \\subseteq 2^{[n]}$, some $i\\in [n]$ is contained in at least a $\\frac{3-\\sqrt{5}}{2} \\approx 0.38$ fraction of the sets in $F$. One case, an explicit one-variable inequality, is checked by computer calculation.",
+      "arxiv_id": "2211.11731",
+      "authors": [
+        "Ryan Alweiss",
+        "Brice Huang",
+        "Mark Sellke"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": null,
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v4",
+      "published": "2022-11-21T18:53:06Z",
+      "title": "Improved Lower Bound for Frankl's Union-Closed Sets Conjecture",
+      "updated": "2024-07-08T07:42:36Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2211.11731v4",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2211.11731v4"
+    },
+    "2211.13139": {
+      "abstract": "It is a well-known conjecture, sometimes attributed to Frankl, that for any family of sets which is closed under the union operation, there is some element which is contained in at least half of the sets. Gilmer was the first to prove a constant bound, showing that there is some element contained in at least 1\\% of the sets. They state in their paper that the best possible bound achievable by the same method is $\\frac{3-\\sqrt5}2\\approx 38.1\\%$. This note achieves that bound by finding the optimum value, given a binary variable $X$ potentially depending on some other variable $S$ with a given expected value $E(X)$ and conditional entropy $H(X|S)$ of the conditional entropy of $H(X_1\\cup X_2|S_1,S_2)$ for independent readings $X_1, S_1$ and $X_2,S_2$.",
+      "arxiv_id": "2211.13139",
+      "authors": [
+        "Luke Pebody"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": null,
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2022-11-23T17:12:29Z",
+      "title": "Extension of a Method of Gilmer",
+      "updated": "2022-11-23T17:12:29Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2211.13139v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2211.13139v1"
+    },
+    "2212.00658": {
+      "abstract": "The union-closed sets conjecture states that in any nonempty union-closed family $\\mathcal{F}$ of subsets of a finite set, there exists an element contained in at least a proportion $1/2$ of the sets of $\\mathcal{F}$. Using the information-theoretic method, Gilmer \\cite{gilmer2022constant} recently showed that there exists an element contained in at least a proportion $0.01$ of the sets of such $\\mathcal{F}$. He conjectured that his technique can be pushed to the constant $\\frac{3-\\sqrt{5}}{2}$ which was subsequently confirmed by several researchers \\cite{sawin2022improved,chase2022approximate,alweiss2022improved,pebody2022extension}. Furthermore, Sawin \\cite{sawin2022improved} showed that Gilmer's technique can be improved to obtain a bound better than $\\frac{3-\\sqrt{5}}{2}$, but this new bound is not explicitly given by Sawin. This paper further improves Gilmer's technique to derive new bounds in the optimization form for the union-closed sets conjecture. These bounds include Sawin's improvement as a special case. By providing cardinality bounds on auxiliary random variables, we make Sawin's improvement computable, and then evaluate it numerically which yields a bound around $0.38234$, slightly better than $\\frac{3-\\sqrt{5}}{2}\\approx0.38197$. }",
+      "arxiv_id": "2212.00658",
+      "authors": [
+        "Lei Yu"
+      ],
+      "categories": [
+        "math.CO",
+        "cs.IT"
+      ],
+      "comment": "10 pages, to appear in Entropy as an invited paper",
+      "doi": "10.3390/e25050767",
+      "journal_ref": null,
+      "latest_version": "v2",
+      "published": "2022-12-01T17:02:58Z",
+      "title": "Dimension-Free Bounds for the Union-Closed Sets Conjecture",
+      "updated": "2023-05-05T10:17:15Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2212.00658v2",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2212.00658v2"
+    },
+    "2212.12500": {
+      "abstract": "We improve the best known constant $\\frac{3-\\sqrt 5}{2}$ for which the union-closed conjecture is known to be true, by using dependent samples as suggested by Sawin and the entropy approach on this problem initiated by Gilmer. Meanwhile, we focus on the intuition behind this entropy approach and its boundaries.",
+      "arxiv_id": "2212.12500",
+      "authors": [
+        "Stijn Cambie"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": "12 pages There is now a verification with 2 parameters (2D) in subsection 3.4",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v2",
+      "published": "2022-12-23T17:48:48Z",
+      "title": "Better bounds for the union-closed sets conjecture using the entropy approach",
+      "updated": "2025-02-16T14:42:27Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2212.12500v2",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2212.12500v2"
+    },
+    "2301.09664": {
+      "abstract": "We provide a simple proof of a curious inequality for the binary entropy function, an inequality that has been used in two different contexts. In the 1980's, Boppana used this entropy inequality to prove lower bounds on Boolean formulas. More recently, the inequality was used to achieve major progress on Frankl's union-closed sets conjecture. Our proof of the entropy inequality uses basic differential calculus.",
+      "arxiv_id": "2301.09664",
+      "authors": [
+        "Ravi B. Boppana"
+      ],
+      "categories": [
+        "math.CO",
+        "cs.CC",
+        "cs.IT"
+      ],
+      "comment": "4 pages",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2023-01-23T19:02:37Z",
+      "title": "A Useful Inequality for the Binary Entropy Function",
+      "updated": "2023-01-23T19:02:37Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2301.09664v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2301.09664v1"
+    },
+    "2302.03484": {
+      "abstract": "We provide a proof of the union-closed sets conjecture, by means of a suitable refinement of the breakthrough entropy-approach introduced by Gilmer. The novelty here is to consider a convex combination of $A$ and $A\\cup B$, where $A,B$ are independent samples from the uniform distribution over a union-closed family.",
+      "arxiv_id": "2302.03484",
+      "authors": [
+        "Raffaele Scandone"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": "There is a mistake in the proof of Proposition 1.2, at the end of page 4",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v2",
+      "published": "2023-02-06T18:01:33Z",
+      "title": "A proof of the union-closed sets conjecture",
+      "updated": "2023-02-08T17:57:02Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2302.03484v2",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2302.03484v2"
+    },
+    "2306.08824": {
+      "abstract": "Recently, Gilmer proved the first constant lower bound for the union-closed sets conjecture via an information-theoretic argument. The heart of the argument is an entropic inequality involving the OR function of two i.i.d.\\ binary vectors, and the best constant obtainable through the i.i.d.\\ coupling is $\\frac{3-\\sqrt{5}}{2}\\approx0.38197$. Sawin demonstrated that the bound can be strictly improved by considering a convex combination of the i.i.d.\\ coupling and the max-entropy coupling, and the best constant obtainable through this approach is around 0.38234, as evaluated by Yu and Cambie. In this work we show analytically that the bound can be further strictly improved by considering another class of coupling under which the two binary sequences are i.i.d.\\ conditioned on an auxiliary random variable. We also provide a new class of bounds in terms of finite-dimensional optimization. For a basic instance from this class, analysis assisted with numerically solved 9-dimensional optimization suggests that the optimizer assumes a certain structure. Under numerically verified hypotheses, the lower bound for the union-closed sets conjecture can be improved to approximately 0.38271, a number that can be defined as the solution to an analytic equation.",
+      "arxiv_id": "2306.08824",
+      "authors": [
+        "Jingbo Liu"
+      ],
+      "categories": [
+        "cs.IT",
+        "math.CO"
+      ],
+      "comment": null,
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2023-06-15T02:35:27Z",
+      "title": "Improving the Lower Bound for the Union-closed Sets Conjecture via Conditionally IID Coupling",
+      "updated": "2023-06-15T02:35:27Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2306.08824v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2306.08824v1"
+    },
+    "2306.12351": {
+      "abstract": "Mathematicians had little idea whether the easy-to-state union-closed conjecture was true or false even after $40$ years. However, last winter saw a surge of interest in the conjecture and its variants, initiated by the contribution of a researcher at Google. Justin Gilmer [arXiv:2211.09055] made a significant breakthrough by discovering a first constant lower bound for the proportion of the most common element in a union-closed family.",
+      "arxiv_id": "2306.12351",
+      "authors": [
+        "Stijn Cambie"
+      ],
+      "categories": [
+        "math.CO",
+        "math.HO"
+      ],
+      "comment": "8 pages, 3 figures",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2023-06-21T15:46:56Z",
+      "title": "Progress on the union-closed conjecture and offsprings in winter 2022-2023",
+      "updated": "2023-06-21T15:46:56Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2306.12351v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2306.12351v1"
+    },
+    "2312.14743": {
+      "abstract": "We embark on a systematic study of the $(k+1)$-th derivative of $x^{k-r}H(x^r)$, where $H(x):=-x\\log x-(1-x)\\log(1-x)$ is the binary entropy and $k>r\\geq 1$ are integers. Our motivation is the conjectural entropy inequality $α_k H(x^k)\\geq x^{k-1}H(x)$, where $0<α_k<1$ is given by a functional equation. The $k=2$ case was the key technical tool driving recent breakthroughs on the union-closed sets conjecture. We express $ \\frac{d^{k+1}}{dx^{k+1}}x^{k-r}H(x^r)$ as a rational function, an infinite series, and a sum over generalized Stirling numbers. This allows us to reduce the proof of the entropy inequality for real $k$ to showing that an associated polynomial has only two real roots in the interval $(0,1)$, which also allows us to prove the inequality for fractional exponents such as $k=3/2$. The proof suggests a new framework for proving tight inequalities for the sum of polynomials times the logarithms of polynomials, which converts the inequality into a statement about the real roots of a simpler associated polynomial.",
+      "arxiv_id": "2312.14743",
+      "authors": [
+        "Tanay Wakhare"
+      ],
+      "categories": [
+        "cs.IT",
+        "math.CO",
+        "math.NT"
+      ],
+      "comment": "v2, 15 pages",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v2",
+      "published": "2023-12-22T14:53:01Z",
+      "title": "Iterated Entropy Derivatives and Binary Entropy Inequalities",
+      "updated": "2025-01-14T02:23:52Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2312.14743v2",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2312.14743v2"
+    },
+    "2405.03731": {
+      "abstract": "We prove that the conjecture made by Peter Frankl in the late 1970s is true. In other words for every finite union-closed family which contains a non?empty set, there is an element that belongs to at least half of its m",
+      "arxiv_id": "2405.03731",
+      "authors": [
+        "Roberto Demontis"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": null,
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2024-05-06T10:22:43Z",
+      "title": "The union-closed set conjecture is true",
+      "updated": "2024-05-06T10:22:43Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2405.03731v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2405.03731v1"
+    },
+    "2405.10639": {
+      "abstract": "The Union-Closed Sets Conjecture, often attributed to Péter Frankl in 1979, remains an open problem in discrete mathematics. It posits that for any finite family of sets $S\\neq\\{\\emptyset\\}$, if the union of any two sets in the family is also in the family, then $\\underline{\\text{there must exist an element that belongs to at least half of the member sets}}$. We will refer to the underlined text as the abundance condition. In 2001, David Reimer proved that the average set size of a union-closed family $S$ must be at least $\\frac{1}{2}\\log_{2}|S|$. When proving this result, he showed that a family being union-closed implies that the family satisfies certain conditions, which we will refer to as the Reimer's conditions. Therefore, as seen in the context of Tim Gowers' polymath project on the Union-Closed Sets Conjecture, it is natural to ask if all families that satisfy Reimer's conditions meet the abundance condition. A minimal counterexample to this question was offered by Raz in 2017. In this paper, we will discuss a general method to construct infinitely many such counterexamples with any fixed lower bound on the size of the member sets. Furthermore, we will discuss some properties related to these counterexamples, especially those focusing on how far these counterexamples are from being union-closed.",
+      "arxiv_id": "2405.10639",
+      "authors": [
+        "Kengbo Lu",
+        "Abigail Raz"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": null,
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v2",
+      "published": "2024-05-17T09:03:01Z",
+      "title": "Note on the union-closed sets conjecture and Reimer's average set size theorem",
+      "updated": "2024-05-30T02:15:06Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2405.10639v2",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2405.10639v2"
+    },
+    "2412.18622": {
+      "abstract": "In this paper, we will use the entropy approach to derive a necessary and sufficient condition for the existence of an element that belongs to at least half of the sets in a finite family of sets.",
+      "arxiv_id": "2412.18622",
+      "authors": [
+        "Veronica Phan"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": "4 pages, 0 figures",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2024-12-17T10:40:26Z",
+      "title": "Entropy approach for a generalization of Frankl's conjecture",
+      "updated": "2024-12-17T10:40:26Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2412.18622v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2412.18622v1"
+    },
+    "2501.03302": {
+      "abstract": "Let $N$ be a finite set and $\\mathcal{F}$, an intersection-closed family of subsets. Frankl conjectured that there always exists an element in $N$ which is contained in at most half the number of sets in $\\mathcal{F}$ unless $\\mathcal{F} =\\{E\\}$. We prove the validity of a class of inequalities which imply Frankl's conjecture.",
+      "arxiv_id": "2501.03302",
+      "authors": [
+        "Rainer Schrader"
+      ],
+      "categories": [
+        "math.CO"
+      ],
+      "comment": null,
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2025-01-06T15:51:11Z",
+      "title": "A class of inequalities for intersection-closed set systems",
+      "updated": "2025-01-06T15:51:11Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2501.03302v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2501.03302v1"
+    },
+    "2601.19327": {
+      "abstract": "In recent progress on the union-closed sets conjecture, a key lemma has been Boppana's entropy inequality: $h(x^2)\\geφxh(x)$, where $φ=(1+\\sqrt5)/2$ and $h(x)=-x\\log x-(1-x)\\log(1-x)$. In this note, we prove that the generalized inequality $α_kh(x^k)\\ge x^{k-1}h(x)$, first conjectured by Yuster, holds for real $k>1$, where $α_k$ is the unique positive solution to $x(1+x)^{k-1}=1$. This implies an analogue of the union-closed sets conjecture for approximate $k$-union closed set systems. We also formalize our proof in Lean 4.",
+      "arxiv_id": "2601.19327",
+      "authors": [
+        "Boon Suan Ho"
+      ],
+      "categories": [
+        "math.CO",
+        "cs.IT"
+      ],
+      "comment": "4 pages",
+      "doi": null,
+      "journal_ref": null,
+      "latest_version": "v1",
+      "published": "2026-01-27T08:13:51Z",
+      "title": "A generalization of Boppana's entropy inequality",
+      "updated": "2026-01-27T08:13:51Z",
+      "versioned_abs_url": "https://arxiv.org/abs/2601.19327v1",
+      "versioned_pdf_url": "https://arxiv.org/pdf/2601.19327v1"
+    }
+  },
+  "audited_through": "2026-08-25",
+  "generated": "2026-08-25",
+  "published_records": {
+    "ahs": {
+      "authors": [
+        "Ryan Alweiss",
+        "Brice Huang",
+        "Mark Sellke"
+      ],
+      "doi": "10.37236/12232",
+      "published": "2024-09-20",
+      "title": "Improved Lower Bound for Frankl's Union-Closed Sets Conjecture",
+      "url": "https://doi.org/10.37236/12232",
+      "venue": "Electronic Journal of Combinatorics 31(3), P3.35",
+      "version_of_record_pdf": "https://www.combinatorics.org/ojs/index.php/eljc/article/download/v31i3p35/pdf"
+    },
+    "bauer": {
+      "authors": [
+        "Heinz Bauer"
+      ],
+      "doi": "10.1007/BF01898615",
+      "published": "1958-11",
+      "title": "Minimalstellen von Funktionen und Extremalpunkte",
+      "url": "https://doi.org/10.1007/BF01898615",
+      "venue": "Archiv der Mathematik 9, 389-393"
+    },
+    "liu": {
+      "authors": [
+        "Jingbo Liu"
+      ],
+      "doi": "10.1109/CISS59072.2024.10480167",
+      "note": "The six-page version of record points to arXiv:2306.08824 for additional numerical evaluation results.",
+      "published": "2024-03-13",
+      "title": "Improving the Lower Bound for the Union-closed Sets Conjecture via Conditionally IID Coupling",
+      "url": "https://doi.org/10.1109/CISS59072.2024.10480167",
+      "venue": "2024 58th Annual Conference on Information Sciences and Systems (CISS), pp. 1-6"
+    },
+    "pinelis": {
+      "authors": [
+        "Iosif Pinelis"
+      ],
+      "doi": "10.1007/s00186-015-0530-0",
+      "published": "2016-01-09",
+      "title": "On the extreme points of moments sets",
+      "url": "https://doi.org/10.1007/s00186-015-0530-0",
+      "venue": "Mathematical Methods of Operations Research 83, 325-349"
+    },
+    "samotij": {
+      "access": "metadata only; publisher page returned HTTP 403",
+      "authors": [
+        "Wojciech Samotij"
+      ],
+      "doi": "10.1137/25M180874X",
+      "published": "2026-07-01",
+      "title": "Entropy Methods in Combinatorics",
+      "url": "https://doi.org/10.1137/25M180874X",
+      "venue": "Proceedings of the International Congress of Mathematicians 2026, vol. 6, pp. 253-273"
+    },
+    "wakhare": {
+      "authors": [
+        "Tanay Wakhare"
+      ],
+      "doi": "10.1016/j.jat.2025.106143",
+      "published": "2025-01-13",
+      "title": "Iterated Entropy Derivatives and Binary Entropy Inequalities",
+      "url": "https://doi.org/10.1016/j.jat.2025.106143",
+      "venue": "Journal of Approximation Theory 307, 106143"
+    },
+    "winkler": {
+      "authors": [
+        "Gerhard Winkler"
+      ],
+      "doi": "10.1287/moor.13.4.581",
+      "published": "1988-11",
+      "title": "Extreme Points of Moment Sets",
+      "url": "https://doi.org/10.1287/moor.13.4.581",
+      "venue": "Mathematics of Operations Research 13(4), 581-587"
+    },
+    "yu": {
+      "authors": [
+        "Lei Yu"
+      ],
+      "doi": "10.3390/e25050767",
+      "full_text_html": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10217025/",
+      "pmcid": "PMC10217025",
+      "published": "2023-05-08",
+      "title": "Dimension-Free Bounds for the Union-Closed Sets Conjecture",
+      "url": "https://doi.org/10.3390/e25050767",
+      "venue": "Entropy 25(5), 767"
+    }
+  },
+  "repository_pins": {
+    "Cambie_UCconjecture": {
+      "commit": "3fd901fb43d1da6aab05f941e0c8d61269c9951d",
+      "commit_date": "2024-09-16T12:55:16Z",
+      "url": "https://github.com/StijnCambie/UCconjecture"
+    },
+    "Ho_entropy_inequality": {
+      "commit": "93db124699c1ccc06a7b1333596c039bb37bad65",
+      "commit_date": "2026-03-13T08:17:25Z",
+      "url": "https://github.com/boonsuan/entropy-inequality"
+    },
+    "Liu_author_code": {
+      "files": [
+        "https://jingbol.web.illinois.edu/frankl3.m",
+        "https://jingbol.web.illinois.edu/frankl5.m",
+        "https://jingbol.web.illinois.edu/frankl7.m"
+      ],
+      "url": "https://jingbol.web.illinois.edu/"
+    }
+  },
+  "saved_artifacts": [
+    {
+      "bytes": 1092,
+      "path": "code/ahs-numerics-v4.py",
+      "sha256": "74d757a5284ef10ed3ea308dd896a4e6d05face0cd26ab7b9795e59e44420260",
+      "source_url": "https://export.arxiv.org/e-print/2211.11731v4"
+    },
+    {
+      "bytes": 1092615,
+      "path": "code/cambie-FinalComputation23.mw",
+      "sha256": "28330527b2940a737c7e2ebfbf72084bb71b2a24275b4bcc0b6bb415500958c5",
+      "source_url": "https://raw.githubusercontent.com/StijnCambie/UCconjecture/3fd901fb43d1da6aab05f941e0c8d61269c9951d/FinalComputation23.mw"
+    },
+    {
+      "bytes": 512334,
+      "path": "code/cambie-FinalComputation24.mw",
+      "sha256": "d0e0e60883fb3ffe40799f4b532cb2570251cd49dfbb40aeaf289d20e9cddd3d",
+      "source_url": "https://raw.githubusercontent.com/StijnCambie/UCconjecture/3fd901fb43d1da6aab05f941e0c8d61269c9951d/FinalComputation24.mw"
+    },
+    {
+      "bytes": 4359,
+      "path": "code/cambie-Sharpness.sagews",
+      "sha256": "52b0ad6c29c1fe4e92cc8f36e777daf3d29a728befc94d917f6f054920a4a1b4",
+      "source_url": "https://raw.githubusercontent.com/StijnCambie/UCconjecture/3fd901fb43d1da6aab05f941e0c8d61269c9951d/Sharpness.sagews"
+    },
+    {
+      "bytes": 1718,
+      "path": "code/cambie-reduction_UC.sagews",
+      "sha256": "d583616f7d83443a20ccc89dd470c806e3746faf4d10114e4aa0fa2116493b5c",
+      "source_url": "https://raw.githubusercontent.com/StijnCambie/UCconjecture/3fd901fb43d1da6aab05f941e0c8d61269c9951d/reduction_UC.sagews"
+    },
+    {
+      "bytes": 68313,
+      "path": "code/ho-entropy-2601.19327.lean",
+      "sha256": "d2f78e5d1c0df81493643057ce71c6dd1cae297daffd0d3e02d079c3aba2db9d",
+      "source_url": "https://raw.githubusercontent.com/boonsuan/entropy-inequality/93db124699c1ccc06a7b1333596c039bb37bad65/entropy.lean"
+    },
+    {
+      "bytes": 1068,
+      "path": "code/liu-frankl3.m",
+      "sha256": "5225e3d64590772e1c593d77efae9dd9405f2b385810a4983b8a536c9919e410",
+      "source_url": "https://jingbol.web.illinois.edu/frankl3.m"
+    },
+    {
+      "bytes": 9199,
+      "path": "code/liu-frankl5.m",
+      "sha256": "c9b2a929594f0f1ea9d05a4612a71b818c440035766c5a1a238fc150e5c67e7a",
+      "source_url": "https://jingbol.web.illinois.edu/frankl5.m"
+    },
+    {
+      "bytes": 1174,
+      "path": "code/liu-frankl7.m",
+      "sha256": "d48149ba4a864b602621715afd15f8f192b41b0f6f65b2ba5fcf4afda77f08d4",
+      "source_url": "https://jingbol.web.illinois.edu/frankl7.m"
+    },
+    {
+      "bytes": 354867,
+      "path": "papers/ahs-EJC-v31i3p35-published.pdf",
+      "sha256": "05fde0b20f8005ba45ade8571b2194f25dacab97bd9d063f9172c61824c240ef",
+      "source_url": "https://www.combinatorics.org/ojs/index.php/eljc/article/download/v31i3p35/pdf"
+    },
+    {
+      "bytes": 184385,
+      "path": "papers/arxiv-1204.0249v1.pdf",
+      "sha256": "9d82bdd7c870e80108fc450ecd36b2bd66f5f09d9bf77d9cf25afdbf22051386",
+      "source_url": "https://arxiv.org/pdf/1204.0249v1"
+    },
+    {
+      "bytes": 248254,
+      "path": "papers/arxiv-1610.03411v1.pdf",
+      "sha256": "b8dd15a18a02dcfecc0dfd3664b62a2eba67ef95d66495013e2f58c240564ab2",
+      "source_url": "https://arxiv.org/pdf/1610.03411v1"
+    },
+    {
+      "bytes": 4530184,
+      "path": "papers/arxiv-2112.11166v7.pdf",
+      "sha256": "827aad144c608177ef28a6883473fd16a50899cf7c12852ae584af4c9f837cd4",
+      "source_url": "https://arxiv.org/pdf/2112.11166v7"
+    },
+    {
+      "bytes": 1125120,
+      "path": "papers/arxiv-2211.09055v2.pdf",
+      "sha256": "275f81de081362cb28a2c29ac7ff8a7f51f8bd4ca18e346ece714e8b115019c8",
+      "source_url": "https://arxiv.org/pdf/2211.09055v2"
+    },
+    {
+      "bytes": 152845,
+      "path": "papers/arxiv-2211.11504v3.pdf",
+      "sha256": "3307048e6dea287bd72e184953403c2cb9d11df325e4eb9372e1be6b1f799e65",
+      "source_url": "https://arxiv.org/pdf/2211.11504v3"
+    },
+    {
+      "bytes": 97752,
+      "path": "papers/arxiv-2211.11689v1.pdf",
+      "sha256": "f364e0f15449030ec0ef7fa32942c0575a22e12b5776472fbd5fa3a404806c1e",
+      "source_url": "https://arxiv.org/pdf/2211.11689v1"
+    },
+    {
+      "bytes": 367945,
+      "path": "papers/arxiv-2211.11731v4.pdf",
+      "sha256": "4708670f2bd34714a3ac0f0c0639d0becd03ef7bae2a17fa7cb07c8d430599b2",
+      "source_url": "https://arxiv.org/pdf/2211.11731v4"
+    },
+    {
+      "bytes": 102036,
+      "path": "papers/arxiv-2211.13139v1.pdf",
+      "sha256": "0e47cce76165440e5de2e9496e3fc64b671a7776aebbbe89a8583544885a1afe",
+      "source_url": "https://arxiv.org/pdf/2211.13139v1"
+    },
+    {
+      "bytes": 222372,
+      "path": "papers/arxiv-2212.00658v2.pdf",
+      "sha256": "7126640c6f7d62f84728d2007f32ff661469b3aed3fd8546b10f658f4edf2cf7",
+      "source_url": "https://arxiv.org/pdf/2212.00658v2"
+    },
+    {
+      "bytes": 256027,
+      "path": "papers/arxiv-2212.12500v2.pdf",
+      "sha256": "a2fa9302e498b34228091569fb4cdd053a541fcea2b01c70c8110224ac434f85",
+      "source_url": "https://arxiv.org/pdf/2212.12500v2"
+    },
+    {
+      "bytes": 69587,
+      "path": "papers/arxiv-2301.09664v1.pdf",
+      "sha256": "116cf08e34c7b3768033ee805b1d6cbc503518dc3f30cae883cf85aca7b540af",
+      "source_url": "https://arxiv.org/pdf/2301.09664v1"
+    },
+    {
+      "bytes": 229437,
+      "path": "papers/arxiv-2306.08824v1.pdf",
+      "sha256": "e7463fcb0d3fdfefb411289282ab344a6fee718e4f4368c1dd3cc832d0e17d5b",
+      "source_url": "https://arxiv.org/pdf/2306.08824v1"
+    },
+    {
+      "bytes": 164441,
+      "path": "papers/arxiv-2306.12351v1.pdf",
+      "sha256": "7a51252de7cb6022b9335e52d8d2ef71e2e0c910216e3c8fda5d1108efb08211",
+      "source_url": "https://arxiv.org/pdf/2306.12351v1"
+    },
+    {
+      "bytes": 264667,
+      "path": "papers/arxiv-2312.14743v2.pdf",
+      "sha256": "8bfd637b0b52234c0cb7dfa1ce1a38099794788d8efe4cc1bf9c3a1604dcae19",
+      "source_url": "https://arxiv.org/pdf/2312.14743v2"
+    },
+    {
+      "bytes": 295998,
+      "path": "papers/arxiv-2405.10639v2.pdf",
+      "sha256": "de7d53f053cb0d1362c72d2f148357325a284f5c8cd1fafc3d36c918038de2b3",
+      "source_url": "https://arxiv.org/pdf/2405.10639v2"
+    },
+    {
+      "bytes": 80830,
+      "path": "papers/arxiv-2412.18622v1.pdf",
+      "sha256": "439ff3deffeb77fcb9e8368ffef17c8c6627daecd340f589b6cf3ef6e8fa1e82",
+      "source_url": "https://arxiv.org/pdf/2412.18622v1"
+    },
+    {
+      "bytes": 334578,
+      "path": "papers/arxiv-2601.19327v1.pdf",
+      "sha256": "5768b6d5f5e891dd1ab8fe9d4c49eed0167b2051375902ca6f0f96f4d1c0339a",
+      "source_url": "https://arxiv.org/pdf/2601.19327v1"
+    },
+    {
+      "bytes": 2648826,
+      "path": "papers/cambie-FinalComputation23.pdf",
+      "sha256": "5e2ea3e4c9c9a5e1ebe47e5c73d71463eb4e3a5a94a32f4b5b672a05b7046bd2",
+      "source_url": "https://raw.githubusercontent.com/StijnCambie/UCconjecture/3fd901fb43d1da6aab05f941e0c8d61269c9951d/FinalComputation23.pdf"
+    },
+    {
+      "bytes": 2245256,
+      "path": "papers/cambie-FinalComputation24.pdf",
+      "sha256": "4a4682193d2e75efa793e1175f0a3f90529a145dc718af77f765bfd5bc0b64d8",
+      "source_url": "https://raw.githubusercontent.com/StijnCambie/UCconjecture/3fd901fb43d1da6aab05f941e0c8d61269c9951d/FinalComputation24.pdf"
+    },
+    {
+      "bytes": 490121,
+      "path": "papers/demontis-2405.03731v1.pdf",
+      "sha256": "a4e9bf96295c7b77db904e29e83d626887cb197fb9a99bd1b05fd4ef448698f7",
+      "source_url": "https://www.opastpublishers.com/open-access-articles/the-unionclosed-set-conjecture-is-true.pdf"
+    },
+    {
+      "bytes": 110723,
+      "path": "papers/schrader-2501.03302v1.pdf",
+      "sha256": "dd1818f63a90bce8655411a2b49d18e617231d15d56eee7345673bf6defe731c",
+      "source_url": "https://arxiv.org/pdf/2501.03302v1"
+    },
+    {
+      "bytes": 29742,
+      "path": "sources/arxiv-2211.11731v4-source.tar.gz",
+      "sha256": "a2cf04e795aa0f22217b6c442458db962a28d033cf82ac361af6ea30a68be76a",
+      "source_url": "https://export.arxiv.org/e-print/2211.11731v4"
+    },
+    {
+      "bytes": 157627,
+      "path": "sources/arxiv-2212.00658v2-source.tar.gz",
+      "sha256": "015482466188f3d18a54d14d043babe0a95f9b07c1a597605e6a05ddfd0113cc",
+      "source_url": "https://export.arxiv.org/e-print/2212.00658v2"
+    },
+    {
+      "bytes": 19024,
+      "path": "sources/arxiv-2212.12500v2-source.tar.gz",
+      "sha256": "b11113095e1d4fcd5bfec1008784d64beeb2f78aeebed0a8587b98c8ef424f52",
+      "source_url": "https://export.arxiv.org/e-print/2212.12500v2"
+    },
+    {
+      "bytes": 16237,
+      "path": "sources/arxiv-2306.08824v1-source.tar.gz",
+      "sha256": "49ae8b3b25644223979f1706b81aa6d117775d8bcc0c2a03e1c3483bcb0c6ef0",
+      "source_url": "https://export.arxiv.org/e-print/2306.08824v1"
+    }
+  ],
+  "zbmath_open_records": {
+    "2211.09055": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=ti%3A%22A%20constant%20lower%20bound%20for%20the%20union-closed%20sets%20conjecture%22",
+      "query": "ti:\"A constant lower bound for the union-closed sets conjecture\"",
+      "records": [
+        {
+          "id": 900552389,
+          "identifier": "arXiv:2211.09055",
+          "links": [
+            {
+              "identifier": "2211.09055",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2211.09055"
+            }
+          ],
+          "source": "Preprint, arXiv:2211.09055 [math.CO] (2022)",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "s",
+              "item with single author"
+            ]
+          ],
+          "title": "A constant lower bound for the union-closed sets conjecture",
+          "year": "2022",
+          "zbmath_url": "https://zbmath.org/900552389"
+        }
+      ],
+      "total": 1
+    },
+    "2211.11504": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=arxiv%3A2211.11504",
+      "records": [
+        {
+          "id": 900573186,
+          "identifier": "arXiv:2211.11504",
+          "links": [
+            {
+              "identifier": "2211.11504",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2211.11504"
+            }
+          ],
+          "source": "Preprint, arXiv:2211.11504 [math.CO] (2022)",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "s",
+              "item with single author"
+            ]
+          ],
+          "title": "An improved lower bound for the union-closed set conjecture",
+          "year": "2022",
+          "zbmath_url": "https://zbmath.org/900573186"
+        }
+      ],
+      "total": 1
+    },
+    "2211.11689": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=ti%3A%22Approximate%20union%20closed%20conjecture%22",
+      "query": "ti:\"Approximate union closed conjecture\"",
+      "records": [
+        {
+          "id": 900552853,
+          "identifier": "arXiv:2211.11689",
+          "links": [
+            {
+              "identifier": "2211.11689",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2211.11689"
+            }
+          ],
+          "source": "Preprint, arXiv:2211.11689 [math.CO] (2022)",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ]
+          ],
+          "title": "Approximate union closed conjecture",
+          "year": "2022",
+          "zbmath_url": "https://zbmath.org/900552853"
+        }
+      ],
+      "total": 1
+    },
+    "2211.11731": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=doi%3A10.37236/12232",
+      "query": "doi:10.37236/12232",
+      "records": [
+        {
+          "id": 7922009,
+          "identifier": "1548.05316",
+          "links": [
+            {
+              "identifier": "10.37236/12232",
+              "type": "doi",
+              "url": "https://doi.org/10.37236/12232"
+            },
+            {
+              "identifier": "2211.11731",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2211.11731"
+            },
+            {
+              "identifier": "35504",
+              "type": "emis",
+              "url": "http://www.emis.de/35504"
+            }
+          ],
+          "source": "Electron. J. Comb. 31, No. 3, Paper No. P3.35, 11 p. (2024).",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "r",
+              "item has references"
+            ],
+            [
+              "c",
+              "is cited"
+            ]
+          ],
+          "title": "Improved lower bound for Frankl's union-closed sets conjecture",
+          "year": "2024",
+          "zbmath_url": "https://zbmath.org/7922009"
+        }
+      ],
+      "total": 1
+    },
+    "2211.13139": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=arxiv%3A2211.13139",
+      "records": [
+        {
+          "id": 900553102,
+          "identifier": "arXiv:2211.13139",
+          "links": [
+            {
+              "identifier": "2211.13139",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2211.13139"
+            }
+          ],
+          "source": "Preprint, arXiv:2211.13139 [math.CO] (2022)",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "s",
+              "item with single author"
+            ]
+          ],
+          "title": "Extension of a Method of Gilmer",
+          "year": "2022",
+          "zbmath_url": "https://zbmath.org/900553102"
+        }
+      ],
+      "total": 1
+    },
+    "2212.00658": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=arxiv%3A2212.00658",
+      "records": [
+        {
+          "id": 900573596,
+          "identifier": "arXiv:2212.00658",
+          "links": [
+            {
+              "identifier": "10.3390/e25050767",
+              "type": "doi",
+              "url": "https://doi.org/10.3390/e25050767"
+            },
+            {
+              "identifier": "2212.00658",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2212.00658"
+            }
+          ],
+          "source": "Preprint, arXiv:2212.00658 [math.CO] (2022)",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "s",
+              "item with single author"
+            ]
+          ],
+          "title": "Dimension-Free Bounds for the Union-Closed Sets Conjecture",
+          "year": "2022",
+          "zbmath_url": "https://zbmath.org/900573596"
+        }
+      ],
+      "total": 1
+    },
+    "2212.12500": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=arxiv%3A2212.12500",
+      "records": [
+        {
+          "id": 900556008,
+          "identifier": "arXiv:2212.12500",
+          "links": [
+            {
+              "identifier": "2212.12500",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2212.12500"
+            }
+          ],
+          "source": "Preprint, arXiv:2212.12500 [math.CO] (2022)",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "s",
+              "item with single author"
+            ]
+          ],
+          "title": "Better bounds for the union-closed sets conjecture using the entropy approach",
+          "year": "2022",
+          "zbmath_url": "https://zbmath.org/900556008"
+        }
+      ],
+      "total": 1
+    },
+    "2306.08824": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=arxiv%3A2306.08824",
+      "records": [
+        {
+          "id": 900596154,
+          "identifier": "arXiv:2306.08824",
+          "links": [
+            {
+              "identifier": "2306.08824",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2306.08824"
+            }
+          ],
+          "source": "Preprint, arXiv:2306.08824 [cs.IT] (2023)",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "s",
+              "item with single author"
+            ]
+          ],
+          "title": "Improving the Lower Bound for the Union-closed Sets Conjecture via Conditionally IID Coupling",
+          "year": "2023",
+          "zbmath_url": "https://zbmath.org/900596154"
+        }
+      ],
+      "total": 1
+    },
+    "2306.12351": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=ti%3A%22Progress%20on%20the%20union-closed%20conjecture%20and%20offsprings%22",
+      "query": "ti:\"Progress on the union-closed conjecture and offsprings\"",
+      "records": [
+        {
+          "id": 7828682,
+          "identifier": "1536.05442",
+          "links": [
+            {
+              "identifier": "2306.12351",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2306.12351"
+            }
+          ],
+          "source": "Nieuw Arch. Wiskd. (5) 24, No. 4, 219-224 (2023).",
+          "states": [
+            [
+              "s",
+              "item with single author"
+            ],
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "c",
+              "is cited"
+            ]
+          ],
+          "title": "Progress on the union-closed conjecture and offsprings in Winter 2022--2023",
+          "year": "2023",
+          "zbmath_url": "https://zbmath.org/7828682"
+        }
+      ],
+      "total": 1
+    },
+    "2312.14743": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=doi%3A10.1016/j.jat.2025.106143",
+      "query": "doi:10.1016/j.jat.2025.106143",
+      "records": [
+        {
+          "id": 7988473,
+          "identifier": "1566.94022",
+          "links": [
+            {
+              "identifier": "10.1016/j.jat.2025.106143",
+              "type": "doi",
+              "url": "https://doi.org/10.1016/j.jat.2025.106143"
+            },
+            {
+              "identifier": "2312.14743",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2312.14743"
+            },
+            {
+              "identifier": "A108267",
+              "type": "oeis",
+              "url": "https://oeis.org/A108267"
+            }
+          ],
+          "source": "J. Approx. Theory 307, Article ID 106143, 20 p. (2025).",
+          "states": [
+            [
+              "s",
+              "item with single author"
+            ],
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "r",
+              "item has references"
+            ]
+          ],
+          "title": "Iterated entropy derivatives and binary entropy inequalities",
+          "year": "2025",
+          "zbmath_url": "https://zbmath.org/7988473"
+        }
+      ],
+      "total": 1
+    },
+    "2601.19327": {
+      "queried_url": "https://api.zbmath.org/v1/document/_search?search_string=arxiv%3A2601.19327",
+      "records": [
+        {
+          "id": 902941182,
+          "identifier": "arXiv:2601.19327",
+          "links": [
+            {
+              "identifier": "2601.19327",
+              "type": "arxiv",
+              "url": "https://arxiv.org/abs/2601.19327"
+            }
+          ],
+          "source": "Preprint, arXiv:2601.19327 [math.CO] (2026)",
+          "states": [
+            [
+              "o",
+              "has open version"
+            ],
+            [
+              "s",
+              "item with single author"
+            ]
+          ],
+          "title": "A generalization of Boppana's entropy inequality",
+          "year": "2026",
+          "zbmath_url": "https://zbmath.org/902941182"
+        }
+      ],
+      "total": 1
+    }
+  }
+}

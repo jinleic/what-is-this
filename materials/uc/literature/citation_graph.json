@@ -1,0 +1,303 @@
+{
+  "audited_through": "2026-08-25",
+  "limitations": [
+    "OpenAlex splits some arXiv and published versions, so counts are lower bounds and duplicates were queried separately.",
+    "Semantic Scholar returned HTTP 429.",
+    "Citation does not validate a theorem; claim status was checked against the cited primary source."
+  ],
+  "manual_primary_text_edges": [
+    {
+      "cites": [
+        "Gilmer",
+        "AHS",
+        "Chase-Lovett",
+        "Sawin",
+        "Pebody",
+        "Yu",
+        "Cambie 2212.12500",
+        "Liu (note added)"
+      ],
+      "citing": "Cambie survey, arXiv:2306.12351v1 (2023-06-21)",
+      "relevance": "Summarizes the constant ladder and explicitly describes Yu/Cambie as numerical/plot-based.",
+      "status": "HUMAN-AUDITED"
+    },
+    {
+      "cites": [
+        "Gilmer",
+        "AHS",
+        "Chase-Lovett",
+        "Sawin",
+        "Yu",
+        "Cambie"
+      ],
+      "citing": "Liu, arXiv:2306.08824v1 / CISS 2024",
+      "relevance": "Builds the conditionally-IID route; Theorem 13 is explicitly conditional.",
+      "status": "HUMAN-AUDITED"
+    },
+    {
+      "cites": [
+        "Liu"
+      ],
+      "citing": "Lu-Raz, arXiv:2405.10639v2 (2024-05-30)",
+      "relevance": "Says 0.38271 was proven by Liu, but Liu Theorem 13 expressly assumes two hypotheses.",
+      "status": "FAILED"
+    },
+    {
+      "cites": [
+        "AHS",
+        "Sawin",
+        "Yu",
+        "Cambie",
+        "Liu"
+      ],
+      "citing": "Wakhare, arXiv:2312.14743v2 / JAT 307 (2025)",
+      "relevance": "Calls 0.38237 the current best; Liu prints 0.382709..., and the theorem is conditional.",
+      "status": "FAILED"
+    },
+    {
+      "cites": [
+        "Gilmer",
+        "Cambie survey",
+        "Boppana"
+      ],
+      "citing": "Ho, arXiv:2601.19327v1 (2026-01-27)",
+      "relevance": "Lean formalization covers generalized Boppana inequality and approximate k-union systems, not a dependent-coupling constant above psi.",
+      "status": "HUMAN-AUDITED"
+    },
+    {
+      "cites": [
+        "Yu",
+        "AHS (published)"
+      ],
+      "citing": "Samotij, ICM 2026 invited lecture, DOI 10.1137/25M180874X",
+      "relevance": "OpenAlex shows the edges, but publisher full text was inaccessible (HTTP 403), so theorem-level treatment was not audited.",
+      "status": "OPEN"
+    }
+  ],
+  "openalex_targets": {
+    "ahs-arxiv": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1016/j.jat.2025.106143",
+          "landing_page_url": "https://doi.org/10.1016/j.jat.2025.106143",
+          "openalex_id": "https://openalex.org/W4406323120",
+          "publication_date": "2025-01-13",
+          "title": "Iterated entropy derivatives and binary entropy inequalities"
+        }
+      ],
+      "indexed_citing_count": 1,
+      "openalex_work_id": "W4309805338",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4309805338&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "ahs-published": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1007/s11083-025-09717-w",
+          "landing_page_url": "https://doi.org/10.1007/s11083-025-09717-w",
+          "openalex_id": "https://openalex.org/W4417109249",
+          "publication_date": "2025-12-08",
+          "title": "Chain Conditions and Optimal Elements in Generalized Union-Closed Families of Sets"
+        },
+        {
+          "doi": "https://doi.org/10.1137/25m180874x",
+          "landing_page_url": "https://doi.org/10.1137/25m180874x",
+          "openalex_id": "https://openalex.org/W7168145927",
+          "publication_date": "2026-07-01",
+          "title": "Entropy Methods in Combinatorics"
+        }
+      ],
+      "indexed_citing_count": 2,
+      "openalex_work_id": "W4402686388",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4402686388&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "cambie": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "landing_page_url": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "openalex_id": "https://openalex.org/W4393407100",
+          "publication_date": "2024-03-13",
+          "title": "Improving the Lower Bound for the Union-closed Sets Conjecture via Conditionally IID Coupling"
+        },
+        {
+          "doi": "https://doi.org/10.1016/j.jat.2025.106143",
+          "landing_page_url": "https://doi.org/10.1016/j.jat.2025.106143",
+          "openalex_id": "https://openalex.org/W4406323120",
+          "publication_date": "2025-01-13",
+          "title": "Iterated entropy derivatives and binary entropy inequalities"
+        }
+      ],
+      "indexed_citing_count": 2,
+      "openalex_work_id": "W4312206463",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4312206463&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "chase-lovett": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "landing_page_url": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "openalex_id": "https://openalex.org/W4393407100",
+          "publication_date": "2024-03-13",
+          "title": "Improving the Lower Bound for the Union-closed Sets Conjecture via Conditionally IID Coupling"
+        },
+        {
+          "doi": "https://doi.org/10.1016/j.jat.2025.106143",
+          "landing_page_url": "https://doi.org/10.1016/j.jat.2025.106143",
+          "openalex_id": "https://openalex.org/W4406323120",
+          "publication_date": "2025-01-13",
+          "title": "Iterated entropy derivatives and binary entropy inequalities"
+        }
+      ],
+      "indexed_citing_count": 2,
+      "openalex_work_id": "W4309805482",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4309805482&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "gilmer": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "landing_page_url": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "openalex_id": "https://openalex.org/W4393407100",
+          "publication_date": "2024-03-13",
+          "title": "Improving the Lower Bound for the Union-closed Sets Conjecture via Conditionally IID Coupling"
+        },
+        {
+          "doi": "https://doi.org/10.1145/3717823.3718212",
+          "landing_page_url": "https://doi.org/10.1145/3717823.3718212",
+          "openalex_id": "https://openalex.org/W4411319848",
+          "publication_date": "2025-06-15",
+          "title": "Redundancy Is All You Need"
+        }
+      ],
+      "indexed_citing_count": 2,
+      "openalex_work_id": "W4320855610",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4320855610&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "liu-arxiv": {
+      "citing_works": [],
+      "indexed_citing_count": 0,
+      "openalex_work_id": "W4380993927",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4380993927&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "liu-published": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1007/s00373-024-02834-0",
+          "landing_page_url": "https://doi.org/10.1007/s00373-024-02834-0",
+          "openalex_id": "https://openalex.org/W4404542869",
+          "publication_date": "2024-11-20",
+          "title": "Several Minimality Concepts Related to Frankl’s Conjecture"
+        },
+        {
+          "doi": "https://doi.org/10.1007/s11083-025-09717-w",
+          "landing_page_url": "https://doi.org/10.1007/s11083-025-09717-w",
+          "openalex_id": "https://openalex.org/W4417109249",
+          "publication_date": "2025-12-08",
+          "title": "Chain Conditions and Optimal Elements in Generalized Union-Closed Families of Sets"
+        }
+      ],
+      "indexed_citing_count": 2,
+      "openalex_work_id": "W4393407100",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4393407100&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "pebody": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1145/3717823.3718212",
+          "landing_page_url": "https://doi.org/10.1145/3717823.3718212",
+          "openalex_id": "https://openalex.org/W4411319848",
+          "publication_date": "2025-06-15",
+          "title": "Redundancy Is All You Need"
+        }
+      ],
+      "indexed_citing_count": 1,
+      "openalex_work_id": "W4309956985",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4309956985&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "sawin": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "landing_page_url": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "openalex_id": "https://openalex.org/W4393407100",
+          "publication_date": "2024-03-13",
+          "title": "Improving the Lower Bound for the Union-closed Sets Conjecture via Conditionally IID Coupling"
+        },
+        {
+          "doi": "https://doi.org/10.1016/j.jat.2025.106143",
+          "landing_page_url": "https://doi.org/10.1016/j.jat.2025.106143",
+          "openalex_id": "https://openalex.org/W4406323120",
+          "publication_date": "2025-01-13",
+          "title": "Iterated entropy derivatives and binary entropy inequalities"
+        },
+        {
+          "doi": "https://doi.org/10.1145/3717823.3718212",
+          "landing_page_url": "https://doi.org/10.1145/3717823.3718212",
+          "openalex_id": "https://openalex.org/W4411319848",
+          "publication_date": "2025-06-15",
+          "title": "Redundancy Is All You Need"
+        }
+      ],
+      "indexed_citing_count": 3,
+      "openalex_work_id": "W4309804126",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4309804126&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    },
+    "yu": {
+      "citing_works": [
+        {
+          "doi": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "landing_page_url": "https://doi.org/10.1109/ciss59072.2024.10480167",
+          "openalex_id": "https://openalex.org/W4393407100",
+          "publication_date": "2024-03-13",
+          "title": "Improving the Lower Bound for the Union-closed Sets Conjecture via Conditionally IID Coupling"
+        },
+        {
+          "doi": "https://doi.org/10.1109/tit.2024.3408043",
+          "landing_page_url": "https://doi.org/10.1109/tit.2024.3408043",
+          "openalex_id": "https://openalex.org/W4399206048",
+          "publication_date": "2024-05-31",
+          "title": "Exact Exponents for Concentration and Isoperimetry in Product Polish Spaces"
+        },
+        {
+          "doi": "https://doi.org/10.1007/s00373-024-02834-0",
+          "landing_page_url": "https://doi.org/10.1007/s00373-024-02834-0",
+          "openalex_id": "https://openalex.org/W4404542869",
+          "publication_date": "2024-11-20",
+          "title": "Several Minimality Concepts Related to Frankl’s Conjecture"
+        },
+        {
+          "doi": "https://doi.org/10.1016/j.jat.2025.106143",
+          "landing_page_url": "https://doi.org/10.1016/j.jat.2025.106143",
+          "openalex_id": "https://openalex.org/W4406323120",
+          "publication_date": "2025-01-13",
+          "title": "Iterated entropy derivatives and binary entropy inequalities"
+        },
+        {
+          "doi": "https://doi.org/10.1145/3717823.3718212",
+          "landing_page_url": "https://doi.org/10.1145/3717823.3718212",
+          "openalex_id": "https://openalex.org/W4411319848",
+          "publication_date": "2025-06-15",
+          "title": "Redundancy Is All You Need"
+        },
+        {
+          "doi": "https://doi.org/10.1007/s11083-025-09717-w",
+          "landing_page_url": "https://doi.org/10.1007/s11083-025-09717-w",
+          "openalex_id": "https://openalex.org/W4417109249",
+          "publication_date": "2025-12-08",
+          "title": "Chain Conditions and Optimal Elements in Generalized Union-Closed Families of Sets"
+        },
+        {
+          "doi": "https://doi.org/10.1137/25m180874x",
+          "landing_page_url": "https://doi.org/10.1137/25m180874x",
+          "openalex_id": "https://openalex.org/W7168145927",
+          "publication_date": "2026-07-01",
+          "title": "Entropy Methods in Combinatorics"
+        }
+      ],
+      "indexed_citing_count": 7,
+      "openalex_work_id": "W4378100983",
+      "query_url": "https://api.openalex.org/works?filter=cites:W4378100983&per-page=100&sort=publication_date:asc&select=id,display_name,ids,publication_date,primary_location"
+    }
+  },
+  "provider": "OpenAlex public API plus inspected primary reference lists"
+}

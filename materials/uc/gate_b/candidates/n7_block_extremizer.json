@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "n7_block_extremizer",
+  "evidence_status": "certified_feasible_negative_base",
+  "dimension": 7,
+  "alpha": {
+    "numerator": 356069,
+    "denominator": 10000000
+  },
+  "family_rows": [
+    1, 2, 4, 7, 8, 11, 13, 14, 16, 19, 21, 22, 25, 26, 28,
+    32, 35, 37, 38, 41, 42, 44, 49, 50, 52, 56, 63, 64, 67,
+    69, 70, 73, 74, 76, 81, 82, 84, 88, 95, 96, 97, 98, 100,
+    104, 112
+  ],
+  "block_partition": [[5, 6], [0, 1, 2, 3, 4]],
+  "block_cells": [[0, 1], [0, 3], [1, 0], [1, 2], [1, 5], [2, 0], [2, 1]],
+  "expected": {
+    "family_size": 45,
+    "coordinate_counts": [18, 18, 18, 18, 18, 18, 18],
+    "total_incidence": 126,
+    "missing_ordered_join_pairs": 1600,
+    "closure_defect": {"numerator": 64, "denominator": 81},
+    "automorphism_count": 240,
+    "order_representative_count": 21,
+    "active": true,
+    "separating": true,
+    "explicit_missing_join": [1, 2, 3]
+  },
+  "certified_rational_consequences": {
+    "a_plus_upper_lt": {"numerator": -7, "denominator": 250},
+    "corrected_one_fiftieth_upper_lt": {"numerator": -1, "denominator": 100},
+    "repair_ratio_lower_gt": {"numerator": 181, "denominator": 5000}
+  },
+  "scope": "The base family is non-union-closed. Its Cartesian powers are the Gate B construction."
+}

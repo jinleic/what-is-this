@@ -1,23 +1,27 @@
 # Union-closed sets conjecture — active target
 
-> **CERTIFIED (2026-08-21) — a machine-checked certificate exists at the
-> certified rational t = 0.3820660112501052 ≥ ψ + 10⁻⁴.** Campaign
-> [`cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8`](campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/) is closed: its frozen
-> collector replayed all eight committed proof traces and re-proved
-> every discharge step, then printed `COMPOSITE CERTIFICATE`:
-> **Φ ≥ 0 on the feasible 5-parameter family at certified rational
-> t = 0.3820660112501052 ≥ exact ψ + 0.0001 over w ∈ [1/2,1]**
-> (the proved orbit-swap symmetry covers w ∈ [0,1]); 488,465,854 boxes with
-> zero residual leaves. Collector (`cert3_collect.py`) SHA-256
-> `95d09322a7821f41850ef1ce77345e5e93eb4fa570cc0e7f58f817716cf681ec`. Verbatim output:
-> [`campaigns/CERTIFICATE.txt`](campaigns/CERTIFICATE.txt). <!-- closeout:cert3_20260818T212601Z_425f109c -->
+> **MACHINE-VERIFIED FINITE CERTIFICATE (2026-08-21).** Campaign
+> [`cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8`](campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/)
+> replayed all eight traces and certified the explicit relaxed functional
+> \(\Phi_{\rm rel}\ge0\) on the feasible five-parameter family at exact rational
+> \(t=0.3820660112501052\ge\psi+10^{-4}\): 488,465,854 nodes, no residuals.
+> Fresh direct isolated and hardened clean-stage replays on 2026-08-26 both
+> passed all eight slices; their canonical report hashes are
+> `6ef126ced337b035e5c5f22a130b1be3697666e60f16586b75540ef6fc734b16`
+> and
+> `57ca3f52c054bd9bccfefc349f440674c74fe7ef671d06c103ef3f52dc33d53d`.
+> This is not an end-to-end machine proof of the union-closed consequence.
+> Support reduction, the Margin Lemma, and the set-family bridge are ordinary
+> human-audited mathematics; see [`AUDIT.md`](AUDIT.md) and
+> [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md). The overall result is a
+> certificate-backed candidate theorem pending external review.
 
 **Conjecture (Frankl, 1979).** For any union-closed family
 $\mathcal{F}\subseteq2^{[n]}$ with $\mathcal{F}\neq\{\emptyset\}$ there exists
 $i\in[n]$ contained in at least $|\mathcal{F}|/2$ of the sets.
 
-Everything here is verified in this directory or quoted verbatim from a paper I
-retrieved and read. Nothing is taken from a secondary summary.
+Claims below are labeled by evidence type. Machine verification covers only the
+named executable facts; human and cited steps remain explicit.
 
 ## Why this target
 
@@ -27,15 +31,103 @@ publisher-blocked. Here the entire post-Gilmer literature is retrievable, and
 the state of the art is *a constant defined by an optimisation problem*, which
 is machine-checkable.
 
-## The ladder, and what is actually proved
+## Current frontier — closure-defect scalar route
+
+The authoritative current verdict is in [`../RESULTS.md`](../RESULTS.md);
+sections below preserve the derivation and its recorded corrections.
+
+**PROVED/CERTIFIED (2026-08-25): Gate B is resolved in its stated scope, and
+the scalar closure-defect route fails.** Campaign IV first refuted the
+closure-blind arbitrary-family target $A_+>0$ with a non-union-closed $n=6$
+family. The complete declared $n=7$ block census then refuted
+$$
+A_+(\mathcal F)+\frac1{50}\varepsilon_\vee(\mathcal F)>0,\qquad
+\varepsilon_\vee=\Pr[X\vee Y\notin\mathcal F].
+$$
+Its certified normalized 45-row extremizer $\mathcal B$ is the union of the
+seven cells
+$$
+(0,1),(0,3),(1,0),(1,2),(1,5),(2,0),(2,1)
+$$
+for a $2+5$ coordinate partition. Every coordinate count is 18, the exact
+defect is $64/81$, and a 256-bit Arb recurrence proves
+$$
+A_+(\mathcal B)
+\le-0.0286491867944683\ldots<-\frac7{250}.
+$$
+
+Gate B asked whether
+$$
+c_{\rm cl}^\star=
+\sup_{\substack{\mathcal F\ {\rm cap/Reimer}\\A_+(\mathcal F)<0}}
+\frac{-A_+(\mathcal F)}{\varepsilon_\vee(\mathcal F)}
+$$
+is finite. Put $\mathcal F_k=\mathcal B^{\boxtimes k}$ on disjoint
+seven-coordinate blocks. A fixed-order Bellman induction proves exact
+tensorization
+$$
+A_+(\mathcal F_k)=kA_+(\mathcal B),
+\qquad
+\varepsilon_\vee(\mathcal F_k)=1-\left(\frac{17}{81}\right)^k.
+$$
+Every $\mathcal F_k$ is normalized, has size $45^k$, meets the cap with each
+coordinate count $18\cdot45^{k-1}=(2/5)45^k$, and satisfies Reimer strictly
+because $45^5<2^{28}$. Therefore
+$$
+\boxed{\frac{-A_+(\mathcal F_k)}
+{\varepsilon_\vee(\mathcal F_k)}
+>\frac{7k}{250}\longrightarrow+\infty},
+\qquad
+\boxed{c_{\rm cl}^\star=+\infty}.
+$$
+No fixed scalar coefficient can repair this $A_+$ relaxation over all
+cap/Reimer families.
+
+**Independence audit (2026-08-26).** The finite input to that conclusion no
+longer rests on one arithmetic stack. A second standalone checker,
+`uc/gate_b/verify_gate_b_dyadic.py`, imports nothing outside the Python
+standard library, works in $2^{-160}$ outward-rounded dyadic intervals with
+rational transcendental tail bounds, and makes no Bellman clamp decision at all
+because it relaxes every nondegenerate action interval to $[0,1]$. It proves
+$A_+(\mathcal B)<-1/40$, which already gives ratio $>k/40\to\infty$. The
+pristine system interpreter reproduces its certificate byte-identically. A
+non-factored audit of the 2,025-row square and a 292-case product
+falsification search — 205 of them with unequal block dimensions — found no
+counterexample to the tensorization lemmas, and the shared algebra
+($\sum P_{ac}=1$, shift invariance of $D$, and
+$\max_s[sD+h(s)]=\log_2(1+2^D)$) is now verified symbolically.
+
+This does not refute a union-closed statement: $\mathcal B$ is explicitly
+non-UC, and the power defects tend to one. A separate local-stability problem
+restricted to $\varepsilon_\vee\to0$ remains open, but that restriction was
+not present in the authoritative Gate B supremum. The complete statement,
+proof, standalone verifier, append-only search records, certificate, and paper
+draft are in [`gate_b/`](gate_b/).
+
+Reproduce from `math/`:
+
+```sh
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/test_gate_b.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/verify_gate_b.py
+OMP_NUM_THREADS=1 /Library/Developer/CommandLineTools/usr/bin/python3 -B uc/gate_b/verify_gate_b_dyadic.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/audit_tensorization.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/audit_square_direct.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/gate_b/search_n8_block_symmetric.py --k 1
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/shapley_n7_block_symmetric.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/shapley_n7_falsifier_cert.py
+```
+
+
+## The ladder and current evidence status
 
 | constant | source | status |
 |---|---|---|
 | $0.01$ | Gilmer, [2211.09055](https://arxiv.org/abs/2211.09055) | proved |
-| $\psi=\frac{3-\sqrt5}{2}=0.3819660112501051$ | Chase–Lovett, Alweiss–Huang–Sellke, Pebody, Sawin | **proved** — the largest with a complete proof |
-| $c^*=0.3823455333667027$ | Yu [2212.00658](https://arxiv.org/abs/2212.00658), Cambie [2212.12500](https://arxiv.org/abs/2212.12500) | value almost certainly correct; **proof invalid** (see below) |
-| $>c^*$, non-explicit | Liu [2306.08824](https://arxiv.org/abs/2306.08824) Thm 6 | proved, but no explicit value |
-| $0.382709087918741$ | Liu, Thm 13 | **conditional** on two unproved hypotheses |
+| $\psi=\frac{3-\sqrt5}{2}=0.3819660112501051$ | Chase–Lovett, Alweiss–Huang–Sellke, Pebody, Sawin | proved analytically |
+| $0.3820660112501052$ | this project | **candidate theorem**: human-audited reduction and entropy bridge plus replayed Arb certificate |
+| $c^*=0.3823455333667027$ | Yu [2212.00658](https://arxiv.org/abs/2212.00658), Cambie [2212.12500](https://arxiv.org/abs/2212.12500) | claimed; finite-dimensional verification gap remains |
+| $>c^*$, non-explicit | Liu [2306.08824](https://arxiv.org/abs/2306.08824) Thm 6 | proved, no explicit value |
+| $0.382709087918741$ | Liu, Thm 13 | conditional: Hypothesis 1 now has a human-audited candidate proof; Hypothesis 2 remains open |
 
 Cambie states the gap in his own paper, verbatim:
 
@@ -49,11 +141,12 @@ Liu's Theorem 13, verbatim:
 > hypothesis of the global minimizer structure in Section V-B, the constant in
 > the union-closed sets conjecture can be improved to $c'$ in (93)."*
 
-The PSD hypothesis was checked on a grid (minimum eigenvalue $\approx-2.4\times10^{-14}$);
-the minimiser structure with $\sim10^5$ MATLAB restarts. Secondary sources
-(e.g. Lu–Raz [2405.10639](https://arxiv.org/abs/2405.10639)) report $0.38271$ as
-"proven by Liu". That is an overstatement. The figure $0.38237$ circulating from
-Wakhare's introduction matches no optimum in Liu and appears to be a typo.
+Liu checked Hypothesis 1 on a float64 grid (roundoff-scale extremal
+eigenvalue) and Hypothesis 2 with roughly \(10^5\) MATLAB restarts.  The
+human-audited residual-kernel proof in [`../LIU_H1/AUDIT.md`](../LIU_H1/AUDIT.md)
+now supplies a candidate resolution of Hypothesis 1, with independent exact
+algebra checks. Hypothesis 2 remains open, so secondary claims that
+\(0.38271\) was already proved remain overstatements.
 
 ## Result 0 — the OR-entropy kernel has exactly one positive square
 
@@ -250,9 +343,9 @@ Search evidence (not a certificate):
 | $\psi+2\times10^{-4}$ | $2\times10^{-4}$ | $+2.925862\times10^{-4}$ | same |
 | $c^*$ | $3.80\times10^{-4}$ | $-0.0000000000$ | $0$ |
 
-$\min\Lambda$ equals $\min F/L$ at every minimiser, because each minimiser has one
-non-sink atom. The certified branch-and-bound is **not done**; it is now the only
-missing step.
+The search table is historical pre-certificate evidence. Campaign I has since
+completed the branch-and-bound; current acceptance and limitations are in
+`AUDIT.md` and `REPRODUCIBILITY.md`.
 
 ### Result 0⁗ — Theorem B‴: the reduction lands on **two** pair-orbits
 
@@ -261,8 +354,8 @@ B′ and B″ each had to freeze a functional chosen to absorb a *convex* direct
 $B=1-\text{mean}$ instead removes the bilinear term outright — and $B$ is the
 *only* place the mean enters $Q$, which is exactly what Theorem A′ makes visible.
 
-**Theorem B‴.** *$\inf\{F(\mu):\text{mean}\le t\}$ is attained at a pair-orbit
-measure with at most **2** atoms — a marginal with at most 4 atoms.*
+**Theorem B‴ (HUMAN-AUDITED).** *$\inf\{F(\mu):\text{mean}\le t\}$ is attained
+at a pair-orbit measure with at most **2** atoms — a marginal with at most 4 atoms.*
 
 *Proof.* On the slice $\{\nu:B(\nu)=\beta\}$, Theorem A′ gives $Q=2\beta L-E$, so
 $$\Phi\big|_{B=\beta}=\big(2(1-\alpha)\beta-1\big)L(\nu)+\alpha\!\int\! c\,d\nu-(1-\alpha)E(\nu).$$
@@ -490,6 +583,7 @@ Checked first-hand, none accepted, all preprint-only.
 
 | file | contents |
 |---|---|
+| `gate_b/` | Gate B exact definitions, Cartesian-power proof that $c_{\rm cl}^\star=\infty$, standalone Arb verifier, machine-readable candidates/certificates, checkpointed $n=8$ search, tests, experiment ledger, and paper draft |
 | `entropy.py` | base-2 $h$, $\varphi$, $\psi$, Sawin's $\lambda$, one-step functional |
 | `onestep.py` | $\psi$ exact (sympy) + extremiser search |
 | `coupling.py` | closed form for $c^*$; obstruction; exact-LP coupling search |
@@ -499,10 +593,10 @@ Checked first-hand, none accepted, all preprint-only.
 | `concavity_nondeg.py` | it fails away from the degenerate corner too |
 | `yu_gap.py` | counterexample on genuine extreme points |
 | `dual_barrier.py` | dual-route triage: empty / capped / **Theorem C** (one claim retracted) |
-| `decomposition.py` | **Theorem A** (one positive square, sympy tautology) + **Theorem B′**; $C$-convexity witness |
-| `reduction.py` | **Theorem A′** $Q=2BL-E$; sharpness at $\psi$; moment form |
+| `decomposition.py` | Theorem A/B′ human derivations plus exact/sampled controls; not collector-executed |
+| `reduction.py` | Theorem A′ human series proof plus exact/sampled controls |
 | `support3.py` | pair-orbit landscape; exact obstruction family; margins |
-| `margin_lemma.py` | **Margin Lemma** $F\ge L\Lambda$ + **Theorems B″, B‴**; the target |
+| `margin_lemma.py` | **human-audited** Margin Lemma and historical sampled controls |
 | `cert.py` | rigorous **Arb** enclosures + B&B; **no certificate obtained** |
 | `relax_probe.py` | three candidate dimension reductions, **all refuted**; $q_2\to1$ asymptotics |
 | `diag_v2.py` | corner bound `phi_corner` (point coefficient via mean-monotonicity); soundness-checked vs mpmath |
@@ -511,9 +605,9 @@ Checked first-hand, none accepted, all preprint-only.
 | `diag_classify.py` | true $\Phi$ at residual centres by distance bucket (sampled, not certified) |
 | `lemma_rh.py` | **conjecture (numerical)** $rh(x)\le2\min(x,1-x)$; candidate corner discharge rule |
 | `tests/test_yu_counterexample.py` | 40-digit check of that counterexample |
-| `lemma_rh_proof.py` | **PROVED** $rh(x)\le2x$ on $[0,\tfrac12]$: exact identity + remainder + Arb cover |
-| `thmB3_proof.py` | **Theorem B‴** complete writeup: citations + machine-checked controls |
-| `bridge_uc.py` | exact bridge to Cambie Q2: $s^*$ identity, symmetrize/fold, term match |
+| `lemma_rh_proof.py` | human endpoint/sign proof plus exact symbolic and Arb subchecks |
+| `thmB3_proof.py` | **human-audited** support-reduction writeup with cited standard inputs; executable controls are sampled |
+| `bridge_uc.py` | human universal bridge identities plus exact finite implementation schemas |
 | `bound_kkt.py` | centered/MVT lower bounds, five-dimensional gradient enclosures |
 | `diag_exhaust.py` | exact-rational mean contractor + corner bound consumed by `cert3.py` |
 | `arbcore.py` | shared Arb helpers: $h$, $s^*$, $\sqrt{rh}$ enclosures, global $rh$ cover |

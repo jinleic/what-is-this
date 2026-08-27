@@ -1,0 +1,48 @@
+{
+  "$schema": "/Users/jinleic/jinleic-workspace/math/uc/verification/report.schema.json",
+  "arb_interval": "[0.00129278384266598498834862120082702397763125798751774354801148050834158995427309831484301405 +/- 2.31e-76]",
+  "checks": {
+    "f_t_gt_lower_gt_zero": true,
+    "f_t_lt_upper": true,
+    "t_gt_psi": true
+  },
+  "claim_status": "MACHINE-VERIFIED",
+  "exact_inputs": {
+    "alpha": "356069/10000000",
+    "t": "955165028125263/2500000000000000"
+  },
+  "finished_utc": "2026-08-26T07:32:22.368282+00:00",
+  "formula": "(1-alpha)*h(2*t-t^2)+alpha-h(t)",
+  "human_audited_dependencies": [
+    "f'(u)<0 on [psi,t] for the point-mass function",
+    "the elementary u<=psi point-mass case"
+  ],
+  "human_audited_dependency": "Sequential entropy-to-union-closed proof in uc/AUDIT.md and uc/paper/main.tex",
+  "limitations": [
+    "This computation checks one exact point value only; it does not prove the derivative sign on an interval.",
+    "This computation is independent of the frozen Campaign I arithmetic modules but still depends on python-flint/Arb."
+  ],
+  "outcome": "PASS",
+  "positive_bracket": {
+    "lower_exclusive": "0.001292783842665984988348621200827023977631257987517743548011480508341589953",
+    "upper_exclusive": "0.001292783842665984988348621200827023977631257987517743548011480508341589955"
+  },
+  "precision_bits": 256,
+  "report_sha256": "68f3157157d30136f5bbe69332252594a9979f642ed9038cee52fbe8b825b67b",
+  "report_type": "cambie_bridge_strictness",
+  "runtime": {
+    "flint_module": "/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.14/site-packages/flint/__init__.py",
+    "flint_module_fingerprint": {
+      "sha256": "2e5f8f1768d14eccd7961353c635195bd557f297edff8b8de09e2d211f03ec2d",
+      "size": 2714
+    },
+    "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "python_executable": "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "python_flint": "0.9.0"
+  },
+  "schema": "uc-cambie-bridge-strictness-report-v1",
+  "verifier": {
+    "sha256": "36199e999a053641702b697f6ffd66cc36afbfee6f8e37a61e66f6079eb53e40",
+    "size": 8025
+  }
+}

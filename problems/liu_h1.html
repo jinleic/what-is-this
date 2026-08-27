@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Liu Hypothesis 1: entropy-kernel theorem — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1f2328}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px;vertical-align:top}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.4rem 0 1rem}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+.markdown-body{box-sizing:border-box;background:transparent;font-size:15px;margin:0 0 1.2rem}
+details{border:1px solid #d0d7de;border-radius:6px;padding:6px 12px;margin:8px 0;background:#fafbfc}
+summary{cursor:pointer;font-size:14px}
+ul.files{margin:8px 0;padding-left:20px;font-size:13px}
+ul.files li{margin:2px 0}
+.fsize{color:#57606a;font-size:11px}
+mjx-container{overflow-x:auto;max-width:100%}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css">
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  function renderMD(el, md) {
+    var math = [];
+    function stash(re) {
+      md = md.replace(re, function (m) {
+        math.push(m);
+        return '@@MATH' + (math.length - 1) + '@@';
+      });
+    }
+    stash(/\$\$[\s\S]+?\$\$/g);
+    stash(/\\\[[\s\S]+?\\\]/g);
+    stash(/\\\((?:[^\\]|\\[^)])+?\\\)/g);
+    stash(/\$(?=\S)(?:[^$\n]*?\S)?\$/g);
+    var out = marked.parse(md, { mangle: false, headerIds: false });
+    out = out.replace(/@@MATH(\d+)@@/g, function (_, i) {
+      return math[+i].replace(/&/g, '&amp;')
+                     .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    });
+    el.innerHTML = out;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    function rewriteLinks(el) {
+      var base = (window.__LINKS__ || {})[el.id];
+      if (!base) return;
+      var nodes = el.querySelectorAll('a[href], img[src]');
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        var attr = n.tagName === 'IMG' ? 'src' : 'href';
+        var h = n.getAttribute(attr);
+        if (!h) continue;
+        if (/^(?:https?:|mailto:|tel:|#|\/\/|\/)/i.test(h)) continue;
+        n.setAttribute(attr, base + h);
+      }
+    }
+    var blobs = window.__MD__ || {};
+    Object.keys(blobs).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      try { renderMD(el, blobs[id]); rewriteLinks(el); }
+      catch (err) {
+        var p = document.createElement('pre');
+        p.textContent = blobs[id];
+        el.innerHTML = '';
+        el.appendChild(p);
+      }
+    });
+    if (window.MathJax) {
+      if (MathJax.typesetPromise) { MathJax.typesetPromise(); }
+      else if (MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(function () { MathJax.typesetPromise(); });
+      }
+    }
+  });
+})();
+</script>
+</head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+<h1>Liu Hypothesis 1: entropy-kernel theorem</h1>
+<p class="tag">source <code>math/LIU_H1</code> ·
+session <code>01a03b5f-2600-7019-adf6-b03bd015c2ce</code> ·
+last change 2026-08-27T00:20:47Z</p>
+<h2>Latest progress</h2><p class="tag">newest matching entry, quoted from <code>math/PROGRESS.md</code></p><div class="markdown-body" id="md-progress"></div>
+
+<h2>Code &amp; artifacts</h2>
+<p class="tag">mirrored from the project tree; very large result files and campaign data excluded</p>
+<details open><summary><code>project root</code> — 3 files, 0.1 MB</summary><ul class="files"><li><a href="../materials/liu_h1/AUDIT.md">AUDIT.md</a> <span class="fsize">42 KB</span></li><li><a href="../materials/liu_h1/LITERATURE_ORIGINALITY.md">LITERATURE_ORIGINALITY.md</a> <span class="fsize">23 KB</span></li><li><a href="../materials/liu_h1/REPRODUCIBILITY.md">REPRODUCIBILITY.md</a> <span class="fsize">6 KB</span></li></ul></details>
+<details><summary><code>paper/</code> — 10 files, 0.4 MB</summary><ul class="files"><li><a href="../materials/liu_h1/paper/main.aux">paper/main.aux</a> <span class="fsize">7 KB</span></li><li><a href="../materials/liu_h1/paper/main.bbl">paper/main.bbl</a> <span class="fsize">1 KB</span></li><li><a href="../materials/liu_h1/paper/main.blg">paper/main.blg</a> <span class="fsize">1 KB</span></li><li><a href="../materials/liu_h1/paper/main.fdb_latexmk">paper/main.fdb_latexmk</a> <span class="fsize">19 KB</span></li><li><a href="../materials/liu_h1/paper/main.fls">paper/main.fls</a> <span class="fsize">19 KB</span></li><li><a href="../materials/liu_h1/paper/main.log">paper/main.log</a> <span class="fsize">18 KB</span></li><li><a href="../materials/liu_h1/paper/main.out">paper/main.out</a> <span class="fsize">2 KB</span></li><li><a href="../materials/liu_h1/paper/main.pdf">paper/main.pdf</a> <span class="fsize">317 KB</span></li><li><a href="../materials/liu_h1/paper/main.tex">paper/main.tex</a> <span class="fsize">35 KB</span></li><li><a href="../materials/liu_h1/paper/refs.bib">paper/refs.bib</a> <span class="fsize">3 KB</span></li></ul></details>
+<details><summary><code>verification/</code> — 2 files, 0.0 MB</summary><ul class="files"><li><a href="../materials/liu_h1/verification/environment.json">verification/environment.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/liu_h1/verification/independent_exact_checker.py">verification/independent_exact_checker.py</a> <span class="fsize">12 KB</span></li></ul></details>
+<script>window.__MD__ = {"md-progress": "### UC-LIU-AUDIT-REPLAY-SUBMISSION (2026-08-26) — HYBRID PROOF STATUS FIXED, TWO FULL REPLAYS PASS, LIU H1 PACKAGED\n\n* **UC proof chain independently reconstructed.** The exact and relaxed\n  pair-orbit functionals are now separated explicitly:\n  \\(\\Phi_{\\rm ex}-\\Phi_{\\rm rel}=(1-\\alpha)(S^2-E)\\ge0\\). Compact\n  optimal-coupling attainment, fixed-\\(B\\) support reduction, the Margin\n  Lemma, \\(L=0\\), every interval rule, and every boundary case were audited.\n  No fatal circularity, reversed inequality, uncovered feasible region, or\n  float/rational unsoundness was found. The sequential Bernoulli construction\n  and entropy chain rule now prove the UC bridge in-repo; Cambie is the source,\n  not an opaque black box.\n* **Fresh full arithmetic replay passed twice.** Eight direct isolated\n  replayers processed all 488,465,854 events with exit 0, exact expected\n  stdout hashes/tallies, and zero residuals; pre/post structural input maps\n  match. Summary SHA-256:\n  `6ef126ced337b035e5c5f22a130b1be3697666e60f16586b75540ef6fc734b16`.\n  A second full replay from fresh read-only staging passed the external lock,\n  pinned environment/module hashes, source/stage before-after checks, and the\n  executable composite aggregator; composite SHA-256:\n  `57ca3f52c054bd9bccfefc349f440674c74fe7ef671d06c103ef3f52dc33d53d`.\n  Both replays share the frozen producer's discharge implementation.\n* **Independent machine checks added.** A standard-library structural auditor\n  independently checks all trace hashes, opcodes, DFS topology, termination,\n  and tallies. A separate 256-bit Arb checker proves the positive\n  first-coordinate bridge margin. The clean-room verifier was hardened after\n  adversarial review: one-descriptor lock hashing/parsing, dependency module\n  pins, disabled unauthenticated resume, conditional PASS schemas, and a\n  composite report validator. An obsolete four-minute pre-hardening batch was\n  stopped with exit 143 and contributes no accepted result.\n* **UC claim language corrected.** The correct description is a\n  certificate-backed, machine-assisted candidate proof, not an end-to-end\n  machine proof. The finite certificate is machine verified; support\n  reduction, Margin/endpoint arguments, set-family bridge, and standard\n  functional analysis remain human-audited/cited. The bounded literature\n  search found this apparently the first explicit *certified* improvement\n  over \\(\\psi\\), not the first claimed improvement.\n* **Liu Hypothesis 1 audited and packaged.** The exact Taylor--Lorentz--Gram\n  proof establishes the stronger unprojected continuous-kernel theorem\n  \\(R\\preceq0\\) for every finite signed Borel measure. On Liu's constrained\n  subspace the entropy and \\(R\\) forms agree, so H1 follows. A CAS-free\n  standard-library checker independently verifies the algebraic core, and all\n  four canonical scripts reproduce in an isolated pinned `uv` environment.\n  The 12-page submission manuscript builds cleanly and survived an independent\n  final review.\n* **Liu overclaims retired.** Unprojected NSD is stronger than, not equivalent\n  to, the projected statement; roundoff-scale eigenvalues are not exact zero\n  modes; `0.9999999906` is near-tight evidence, not exact tightness; finite Arb\n  compressions are corroboration only; and codimension two in the probability\n  simplex corresponds to three homogeneous signed tangent constraints.\n  Hypothesis 2 remains open, so `0.382709087918741` remains conditional.\n* **Originality checked at theorem level.** No prior Liu-H1 proof was found.\n  AHS's unperturbed product kernel and Liu's sufficiently-small perturbation\n  lemma are the closest rigorous predecessors. Schur closure and the\n  Hilbert-ball reciprocal kernel are classical; plausible problem-specific\n  novelty is the scale-one Taylor regrouping, explicit Lorentz factorization,\n  and stronger unprojected theorem. Universal priority remains open.\n* **Authoritative artifacts.** UC: `uc/AUDIT.md`,\n  `uc/REPRODUCIBILITY.md`, `uc/verification/`,\n  `uc/LITERATURE_ORIGINALITY.md`, and the revised `uc/paper/`. Liu:\n  `LIU_H1/AUDIT.md`, `LIU_H1/REPRODUCIBILITY.md`,\n  `LIU_H1/verification/`, `LIU_H1/LITERATURE_ORIGINALITY.md`, and\n  `LIU_H1/paper/`. Root status: `RESEARCH_STATUS.md`.\n"};</script>
+<script>window.__LINKS__ = {"md-progress": "../materials/", "md-readme": "../materials/liu_h1/"};</script>
+<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+</body></html>

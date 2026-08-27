@@ -1,0 +1,17 @@
+{
+  "captured_utc": "2026-08-26T06:33:44Z",
+  "execution": "uv run --isolated --no-project --python 3.14",
+  "flint": "0.9.0",
+  "mpmath": "1.3.0",
+  "numpy": "2.5.2",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3",
+  "scipy": "1.18.0",
+  "sympy": "1.14.0",
+  "thread_limits": {
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  }
+}

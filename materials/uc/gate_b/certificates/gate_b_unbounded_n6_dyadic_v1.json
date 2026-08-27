@@ -1,0 +1,176 @@
+{
+  "all_order_evaluation": {
+    "distinct_root_interval_count": 10,
+    "evaluated_order_count": 720,
+    "maximum_root_interval": {
+      "denominator_power_of_two": 160,
+      "lower_decimal": "5.1098232222244310256615657265730496632777204471231619498",
+      "lower_numerator": 7468015005752476141136987482879312969614885887640,
+      "upper_decimal": "5.1098232222244310256615657265730496632777206107924962085",
+      "upper_numerator": 7468015005752476141136987482879312969614886126843
+    },
+    "minimum_root_interval": {
+      "denominator_power_of_two": 160,
+      "lower_decimal": "4.9817028144161058839222096691105792524827594714377427643",
+      "lower_numerator": 7280766819965105947431440619645749216037627238792,
+      "upper_decimal": "4.9817028144161058839222096691105792524827596412090202383",
+      "upper_numerator": 7280766819965105947431440619645749216037627486913
+    },
+    "multiplicity_per_root_interval": 72,
+    "symmetry_quotient_used": false,
+    "total_bellman_state_count": 584784
+  },
+  "alpha": {
+    "denominator": 10000000,
+    "dimension_independent": true,
+    "numerator": 356069
+  },
+  "arithmetic": "pure_python_dyadic_intervals",
+  "exact_base": {
+    "active": true,
+    "block_cells": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "block_partition": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "closure_defect": "444/625",
+    "coordinate_counts": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ],
+    "dimension": 6,
+    "explicit_missing_join": [
+      1,
+      2,
+      3
+    ],
+    "family_rows": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      11,
+      13,
+      14,
+      16,
+      19,
+      21,
+      22,
+      25,
+      26,
+      28,
+      32,
+      35,
+      37,
+      38,
+      41,
+      42,
+      44,
+      49,
+      50,
+      52
+    ],
+    "family_size": 25,
+    "join_success_probability": "181/625",
+    "missing_ordered_join_pairs": 444,
+    "ordered_pairs_with_replacement": true,
+    "reimer_threshold": 59,
+    "separating": true,
+    "total_incidence": 60
+  },
+  "infinite_construction": {
+    "a_plus_upper": "-k/80",
+    "closure_defect": "1-(181/625)^k",
+    "coordinate_count": "10*25^(k-1)",
+    "dimension": "6*k",
+    "family": "D^(boxtimes k)",
+    "family_size": "25^k",
+    "reimer_integer_witness": "25^5 < 2^24",
+    "repair_ratio_lower": "(k/80)/(1-(181/625)^k) > k/80",
+    "zero_defect_convention_used": false
+  },
+  "intervals": {
+    "a_plus_upper_relaxation": {
+      "denominator_power_of_two": 160,
+      "lower_decimal": "-0.0125897106568747589615082453240509575649306057570182827",
+      "lower_numerator": -18399882738544777521924608140099738901367959340,
+      "upper_decimal": "-0.0125897106568747589615082453240509575649305961627765509",
+      "upper_numerator": -18399882738544777521924608140099738901367945318
+    },
+    "clamp_free_bellman_relaxation": {
+      "denominator_power_of_two": 160,
+      "lower_decimal": "5.0343539516297632216898156407608692922319053913858772099",
+      "lower_numerator": 7357716543210200180286600513378721981049584717476,
+      "upper_decimal": "5.0343539516297632216898156407608692922319055595635882173",
+      "upper_numerator": 7357716543210200180286600513378721981049584963268
+    },
+    "family_entropy": {
+      "denominator_power_of_two": 160,
+      "lower_decimal": "4.6438561897747246957406388589787803517296627854396917165",
+      "lower_numerator": 6787003424885008368963971855463279453894523137143,
+      "upper_decimal": "4.6438561897747246957406388589787803517296627866884073890",
+      "upper_numerator": 6787003424885008368963971855463279453894523138968
+    },
+    "shapley_iid": {
+      "denominator_power_of_two": 160,
+      "lower_decimal": "4.6163838598571102600389234608954804813132320719132117079",
+      "lower_numerator": 6746852569729120121911490544160213194480674655960,
+      "upper_decimal": "4.6163838598571102600389234608954804813132320743559048317",
+      "upper_numerator": 6746852569729120121911490544160213194480674659530
+    }
+  },
+  "precision_bits": 160,
+  "proof_boundary": "The second finite negative base and all 720 order values are certified here. Product additivity and all-k admissibility are exact lemmas proved in PROOF.md, not finite-n extrapolation.",
+  "rational_consequence": {
+    "a_plus_upper_lt": "-1/80",
+    "base_ratio_lower_gt": "125/7104"
+  },
+  "relaxation": {
+    "clamp_free_upper_bound": true,
+    "does_not_use_arb_clamp_classification": true,
+    "does_not_use_order_symmetry": true,
+    "statement": "At every nondegenerate Bellman state, maximize the affine entropy objective over [0,1], a superset of the feasible one-sided interval. Induction is monotone on feasible transitions because their four probabilities are nonnegative."
+  },
+  "schema_version": 1,
+  "transcendental_bounds": {
+    "arithmetic_module": "verify_gate_b_dyadic.py",
+    "exponential": "32-term Taylor series after x/2^j <= 1/8, with exact geometric tail and repeated squaring",
+    "natural_log": "64-term atanh series with exact rational tail",
+    "third_party_dependencies": []
+  },
+  "verdict": "PROVED_GATE_B_UNBOUNDED_SECOND_BASE"
+}

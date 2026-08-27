@@ -1,5 +1,13 @@
 # Certification closeout checklist — campaign I
 
+> **SUPERSEDED STATUS NOTE (2026-08-26).** This checklist records the historical
+> campaign closeout, not the current proof-status language. The collector
+> machine-checks the reduced interval certificate only; support reduction,
+> the Margin Lemma, and the entropy-to-UC bridge are human-audited. The
+> “complete machine-checked proof” claim shape in §7 is withdrawn. Current
+> authority: [`AUDIT.md`](AUDIT.md), [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md),
+> and [`../RESULTS.md`](../RESULTS.md).
+
 Run through this **the moment** `collect_output.txt` in
 `uc/campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/`
 prints `COMPOSITE CERTIFICATE` — not before.
