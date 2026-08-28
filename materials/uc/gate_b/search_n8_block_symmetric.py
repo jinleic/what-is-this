@@ -7,6 +7,30 @@ and evaluate exact block-order representatives.  Enumeration, constraints,
 canonicalization, order coverage, and closure defects are exact.  Entropy and
 Bellman values are float64 and are therefore discovery evidence only.
 
+Why the objective here is a *screen* and not an estimate
+-------------------------------------------------------
+`block_order_representatives(k)` returns one order per S_k x S_(8-k) pattern,
+which is a valid representative system for the objective **only when the
+family's automorphism group is exactly that block group**.  That holds at k=1
+and fails in general.  For the k=2 witness `n8lo` the automorphism group has
+order 1440, the same as |S_2 x S_6|, but only 120 of its elements preserve the
+block partition: the 28 block-pattern orders then hit just 12 of the 28 true
+automorphism orbits, double-counting six (multiplicity up to six) and missing
+sixteen.  The resulting `one_sided_cost` is off by 2.3e-2, i.e. `a_plus` is off
+by alpha times that, 8.3e-4 -- far beyond float64 noise, and in either
+direction.  Measured consequences across the re-ranked classes: three float
+negatives are exactly non-negative, and one family reported non-negative is
+exactly negative.
+
+Any average over a subset of orders lies within
+`ALPHA * (max_pi C_+ - min_pi C_+)` of the true average; measured over the
+registered n=8 bases that bound is at most 5.2e-3.  So this module is used as a
+cheap screen, and every candidate it surfaces is re-evaluated by
+`certify_class_negatives.py` in exact rational arithmetic over the family's real
+automorphism orbits, with a screening threshold of +0.01 rather than 0 so that
+missed witnesses are recovered.  No label is ever taken from the number computed
+here.
+
 The default k=1 class has 2^16-1 raw masks and eight order representatives per
 family.  Checkpoints are append-only JSONL: every complete line is durable and
 a truncated final line is ignored on resume.
@@ -310,7 +334,10 @@ def build_result(
 def main() -> None:
     root = Path(__file__).parent
     parser = argparse.ArgumentParser()
-    parser.add_argument("--k", type=int, choices=(1, 2), default=1)
+    # S_k x S_(8-k) pairs k with 8-k, so k in {1,2,3,4} exhausts every
+    # block-symmetric class at n=8.  Cell counts are (k+1)(9-k): 16, 21, 24, 25,
+    # so the raw mask count grows 2^16, 2^21, 2^24, 2^25.
+    parser.add_argument("--k", type=int, choices=(1, 2, 3, 4), default=1)
     parser.add_argument(
         "--checkpoint",
         type=Path,

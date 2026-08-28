@@ -33,6 +33,57 @@ Labels are literal.
   $1-\log 2=0.30685\ldots$. This is a ceiling, not an obstruction.
 - **PROVED (using Dirichlet's theorem):** every fixed CRT class contains
   arbitrarily large single-level bad-window obstructions.
+- **PROVED (elementary, Section 13):** the small-prime tier is asymptotically
+  free. The slack has a base-$p$ digit-sum identity, a carry lower bound
+  $s_p\ge W-D-Z$ that is attained, a closed-form failure bound, and an explicit
+  envelope $4e^{-J/24}$ over $k<p^J$. Consequently tier failures have density
+  zero, and if the set of $k$ whose whole bad window is compensation-good has
+  positive upper density then that $m$ has infinitely many witnesses: no
+  prime-power band and no CRT class can obstruct existence. Erdős #389 reduces
+  exactly to the existence of a run of $\lceil m/2\rceil$ consecutive
+  compensation-good integers (Conjecture R).
+- **PROVED (using Mertens' theorem, Section 14):** call $(M,k)$ *size-forcing*
+  when the part of every window term pinned by $k\bmod M$ already meets the
+  powersmooth threshold. Then
+  $\log M\ge\frac L4\log\frac k2-\frac L2(\log L+1)$. This prices one pair,
+  not a class working for unbounded $k$ — Section 8 already settles that
+  reading by Dirichlet and empties the hypothesis. Over a dyadic range it gives
+  content: for $L\ge5$, past an explicit threshold ($k\ge70{,}247$ at $m=27$)
+  a size-forcing modulus exceeds the range, so the class meets it at most once
+  and names the witness instead of predicting it. Section 14 makes no claim
+  about primes; the modulus range below the size-forcing scale belongs to
+  Sections 15 and 16.
+- **PROVED (elementary, Section 15):** every arithmetic progression of length at
+  least $P_0=\min\{p:p^2>2\,\mathrm{top},\ p>m\}$ contains a non-witness,
+  whatever its common difference. Bertrand's postulate and one modular
+  inversion; no prime is asked to lie in a progression or an interval.
+  Consequences: every class $\bmod M$ contains a non-witness $k<4M^2$
+  (effective, beating the $M^{5.18}$ that Linnik would give); every class with
+  $M\cdot P_0(N,m)\le N$ — in practice $M\le\sqrt N/2$ — contains one inside
+  $[N,2N)$, which is unconditional where GRH reaches only
+  $M\le\sqrt N/\log^{2+}N$; the witness set contains no progression of length
+  $2\sqrt{2Y}(1+o(1))$ below $Y$; and any family of classes consisting entirely
+  of witnesses needs $r\ge\frac12\delta\sqrt N$ members to cover a proportion
+  $\delta$ of a block.
+- **PROVED (elementary, Section 16):** if every prime factor of $M$ is at most
+  $m$ and $M^2\ge N$, then every $n\in[N,2N)$ divisible by $M$ satisfies the
+  powersmooth criterion. The single-position route is therefore sharp to within
+  a factor $2$: proved to $\sqrt N/2$, obstructed from $\sqrt N$.
+- **CERTIFIED FINITE (Section 15.4(e)):** a covering criterion decides in
+  $O(L\log L)$ whether one prime evicts *every* class $\bmod M$; scanning primes
+  certifies $\theta=\log M/\log N$ up to $0.5145$ ($m=5$), $0.5451$ ($m=13$),
+  $0.5702$ ($m=27$), $0.5926$ ($m=51$) at $N=10^{12}$ — within $0.05\%$ of the
+  measure ceiling $L\lfloor N/P_0\rfloor$ that no covering argument can pass.
+- **CERTIFIED FINITE (Section 16.4):** an exhaustive census of
+  $[10^7,2\cdot10^7)$ evicts every class of every tested modulus up to
+  $\theta=0.990$ for $m=27$ and $m=51$, $0.950$ for $m=13$, $0.900$ for $m=5$.
+  Survivor density $0.31223$ against Dickman's $\rho(2)=0.30685$.
+- **OPEN (reduced to one effective constant):** above $\sqrt N$ the eviction of
+  every class for every $N$ needs either an effective Balog–Pomerance or Shiu
+  constant below $1$ at $u=2$ — both theorems already cover our individual
+  moduli, with a factor $3.26$ of margin — or the weaker statement that no
+  $\lceil m/2\rceil$ consecutive residues $\bmod M$ are prime-free in $[N,2N)$.
+  [`LOCALIZATION.md`](LOCALIZATION.md) audits every candidate theorem.
 - **CERTIFIED FINITE:** all 27 values currently listed in OEIS A375071
   ($0\le m\le26$) are witnesses. Legendre valuations and Kummer carries agree.
   Every nontrivial listed witness has minimum valuation slack zero and is tight
@@ -71,12 +122,60 @@ Labels are literal.
   $5\cdot10^{12}$; the exact small-prime tier passes for 19,920 of 20,000
   consecutive $k$ there. Observed run spectra match a term-independence model
   within one unit of the longest run.
+- **CERTIFIED FINITE (exact, without enumeration):** a base-$p$ digit dynamic
+  program counts tier failures over every $k$ in a range. For $m=27$ the union
+  over $p\le27$ is $0.382703$ at $10^6$, $0.013272$ at the published witness
+  scale $5.05\cdot10^{12}$, and $0.012370$ at $10^{13}$; per prime the density
+  falls to $3.86\cdot10^{-23}$ ($p=2$) and $1.20\cdot10^{-15}$ ($p=23$) at
+  ranges of 76 and 77 decimal digits. Beyond $X=2^{250}$ the exact tier
+  density is already below the measured $(0.123664)^{14}$ run density.
+- **MEASURED EXACTLY:** classifying every integer of a
+  block into good / short-cofactor-only / level-failure-only / both gives
+  $0.144500$, $0.629345$, $0.172740$, $0.053415$ at $10^6$ and
+  $0.136070$, $0.621890$, $0.178990$, $0.063050$ at $10^7$. Independence would
+  predict $0.071745$ for the level-only class, so the observed value is $2.41$
+  times larger: the two failure modes are adversely correlated. The
+  *first-order* union total tends to $\log2+0.322521=1.015668>1$, so no
+  first-order union bound can prove $R(1)$. **[Corrected 2026-08-28: this
+  bullet previously concluded that "the overlap that would rescue the union
+  bound does not exist". It does. Independence is the wrong yardstick — the
+  union bound overshoots by only $0.015668$, and the measured overlap is
+  $3.4$ times that. See Section 17.]**
+- **PROVED (Mertens + Vinogradov, Section 17):** $R(1)$ — the
+  $m$-compensation-good integers have positive lower density, at least
+  $0.0293$, uniformly for $m\le x^{1/4}$ and hence for every $m$. The
+  second Bonferroni term of the exact identity
+  $\#\mathrm{good}=x-\#A-\#B+\#(A\cap B)$ supplies $0.045021$ against a
+  deficit of $0.015668$. The overlap is bounded **from below on the prime
+  side** — the free variable is the large prime and the level test is a
+  congruence to a single modulus $q^r\le y^{1-\delta}$ — so Vinogradov's
+  exponential-sum bound suffices and no Bombieri–Vinogradov or GRH input is
+  taken.
+- **PROVED (elementary, Section 13):** the reduction is *finitary*. Since (32)
+  bounds tier failures by $4\pi(m)mX^{1-c_m}$ with $c_m=1/(24\log m)$, a single
+  scale $X$ with $\#(G_m\cap[1,X])>4\pi(m)mX^{1-c_m}$ already produces a
+  witness $k\le X$ — no density hypothesis. For $m=27$ ($c=0.0126$, constant
+  $972$) the criterion is vacuous below $X=10^{236.3}$ and beats the measured
+  run density only past $X=10^{1241.6}$: a structural sharpening, not a
+  computational one.
+- **FAILED APPROACH (quantified, Section 17.8):** the same Bonferroni repair
+  does *not* reach $R(2)$. Under cross-term independence the depth-3 total is
+  $1+(u-1)(2\pi-(u-1))$ with $u=\log2+\Lambda_B$, so it closes only for
+  $\pi<(u-1)/2=0.007834$ — while the overlap that proves $R(1)$ is
+  $\pi\ge0.045$, too large by a factor $5.7$. The very term that rescues one
+  coordinate defeats two. Finite blocks give $0.99234$ and $0.99435$, both
+  under $1$, purely because $u<1$ there; that dip is worthless.
 - **NOT PROVED (extrapolation):** regressing $\log k_m$ on $\lceil m/2\rceil$
   over the 26 published witnesses gives $R^2=0.989$ and predicts a least
   $m=27$ witness near $2.8\cdot10^{13}$; the independence model predicts
   $5.1\cdot10^{12}$. Both exceed every exhausted range here.
-- **OPEN:** a uniform witness construction, a lower-bound density theorem, an
-  effective global bound, or a finite shift-repair theorem.
+- **OPEN:** Conjecture R($L$) for $L\ge2$ — a run of $\lceil m/2\rceil$
+  consecutive compensation-good integers. By Section 13 this is the *whole*
+  problem: the small-prime side cannot obstruct. $R(1)$ is now proved
+  (Section 17), so what remains is purely a correlation statement: the
+  inclusion–exclusion that settles one term has $4^L$ cross terms at length
+  $L$, and they are correlations between the large prime factors of
+  consecutive integers.
 
 ## Exact reductions
 
@@ -315,14 +414,56 @@ integers; the even-to-odd shift adjoins exactly one further term on the left,
 and for $m=26$ that term is the prime $5{,}048{,}891{,}644{,}633$, which cannot
 compensate.
 
-**Next active proof task:** decide the existence of a length-$\lceil m/2\rceil$
-run of $m$-compensation-good integers. Old blockers are no longer part of the
-difficulty: translation evicts them at zero cost, the small-prime tier is
-almost never binding, and every remaining failure is a newly entering large
-prime. The proved powersmooth necessity bound reduces the target to
-$\lceil m/2\rceil$ consecutive integers that are simultaneously
-$\sqrt{2w}$-powersmooth away from $p\le m$, a correlation problem for large
-prime factors of consecutive integers.
+**Next active proof task:** decide Conjecture R — does a run of
+$\lceil m/2\rceil$ consecutive $m$-compensation-good integers exist? This is
+now the entire problem. The small-prime tier fails on a set of density zero
+(Section 13), so it cannot obstruct existence; old blockers are evicted at zero
+cost by translation; forcing the window by residues costs a modulus above the
+range being searched (Section 14); and every progression long enough to be a
+mechanism rather than a name is evicted outright (Section 15), so no
+congruence-shaped construction reaches a witness it does not already name. The
+proved powersmooth necessity bound reduces R to $\lceil m/2\rceil$ consecutive
+integers that are simultaneously $\sqrt{2w}$-powersmooth away from $p\le m$,
+with an exact level condition on each surviving prime power — a correlation
+problem for large prime factors of consecutive integers. $R(1)$, positive
+density for a single term, is now **proved** (Section 17): the elementary union
+bound overshoots by $1.567\%$, and the second Bonferroni term buys back
+$4.5\%$ because the overlap can be counted on the prime side, where a
+single-modulus exponential-sum bound applies. What remains is exactly the
+correlation between consecutive terms, with no first-term obstruction left.
+
+**Second active proof task, now sharply posed:** make the Balog–Pomerance or
+Shiu upper bound for $\Psi(x,\sqrt{2x};q,a)$ effective at $u=2$, with constant
+below $1$ against a class of size $N/M$. Both theorems already cover every
+individual modulus in the open range, the Dickman margin is $3.26$, and the
+subgroup mechanism that could break per-class bounds cannot operate because
+$y\approx q^{1+\delta}$ lies far above the least-non-residue threshold
+$q^{1/(4\sqrt e)}$. That single constant would evict every class for every $N$
+up to $M\le N^{2/3}$; see [`LOCALIZATION.md`](LOCALIZATION.md).
+
+### Dependency graph of the headline claims
+
+```
+(25) powersmooth necessity ── PROVED, elementary
+  ├── Section 13 tier-free  ── PROVED, elementary  ─┐
+  ├── Section 14 (33)       ── PROVED + Mertens     ├─→ Conjecture R  ── OPEN
+  ├── Section 15 (36)       ── PROVED + Bertrand    ─┘   (no analytic input)
+  │     ├── (37) k < 4M²    ── PROVED               (supersedes Linnik route)
+  │     ├── (38) block      ── PROVED               (supersedes GRH route)
+  │     ├── (39) covering   ── PROVED               (needs Dirichlet nowhere)
+  │     └── (39b) criterion ── CERTIFIED FINITE per (m,N,M)
+  └── Section 16
+        ├── 16.2 sharpness  ── PROVED, elementary
+        ├── (45) survivors  ── OPEN: needs an effective Balog–Pomerance/Shiu
+        │                       constant (individual modulus, no averaging)
+        └── (46) windows     ── OPEN: needs primes in one of L consecutive
+                                classes; implied by Montgomery's conjecture,
+                                not by GRH, not by any average over moduli
+```
+
+No unconditional label above depends on a conditional or averaged input: (33),
+(36)–(39) and 16.2 use only Bertrand, Mertens and Legendre valuations, and every
+conditional statement is confined to `LOCALIZATION.md`.
 
 ## Files
 
@@ -338,9 +479,13 @@ prime factors of consecutive integers.
 | `residue_control_analysis.py` | Exact band/local CRT classes, fixed-class obstruction examples, bad-window compensation, mirror lifts, and exact shift-spike certificate. |
 | `compensation_structure_analysis.py` | Exact local-window separation, short-cofactor spikes, prefix cone, retained-prime displacement, zero-carry blocker eviction, and shift-identity certificate. |
 | `adaptive_eviction_analysis.py` | Exact first-hit search along blocker-evicting progressions through uniform local-safe classes, plus a bounded exact new-prime scan. |
+| `good_density_decomposition.py` | Exact four-way classification of why integers fail to be compensation-good, refuting the independence repair of the union bound. |
+| `overlap_density_bound.py` | Certified positive lower density for the compensation-good integers: one-sided bounds with explicit tails for both failure families and for the Section 17 overlap, plus an exhaustive block check of the inclusion–exclusion identity. |
 | `exact_eviction_certificate.py` | Exhaustive half-window translation eviction, its sharp minimal offset, and exact classification of every translated candidate. |
 | `parity_shift_certificate.py` | Exact reduction of every witness shift to its adjoined bad-window term, over a rectangle and all published witnesses. |
 | `smooth_density_analysis.py` | Powersmooth necessity checks, two-method short-cofactor counts, measured compensation densities and run spectra, and the labelled growth model. |
+| `tier_density_dp.py` | Exact base-$p$ digit programs for small-prime tier failures over every $k$ in a range, cross-checked against enumeration, with the closed-form bound and decay envelope. |
+| `forcing_mass_bound.py` | Exact window counting lemma, Mertens correction, and the modulus lower bound for size-forcing pairs, bracketed by explicit size-forcing moduli. |
 | `compensation_run_search.py` | Segmented exact search for runs of compensation-good integers, with full checks of every large-prime-good window. |
 | `crt_repair_cover.py` | Radius-bounded separation of exact small-prime tier repair from moving-window blockers. |
 | `moving_bad_window_search.py` | Segmented exact single-level sieve plus full checks of every survivor near the first $m=27$ shift target. |
@@ -365,13 +510,22 @@ prime factors of consecutive integers.
 | `data/compensation_structure_m1_20_k5000_m27_h*.json` | Exact theorem checks, blocker-eviction experiments, and retained-prime bounds for the 100M and 200M moving certificates. |
 | `data/adaptive_eviction_m27_h200000000.json` | Exact first safe progression parameters for all 12 moving-window survivor blocker systems. |
 | `data/exact_eviction_m1_20_k5000_m27.json` | Exhaustive eviction certificate, sharpness instances, 98,706 exactly classified translated candidates, and the 12 resolved survivor systems. |
+| `data/good_density_decomposition.json` | Exact failure classes at $10^6$ and $10^7$, the asymptotic union-bound total $1.01567$, and the refuted independence prediction. |
+| `data/overlap_density_bound.json` | The R(1) certificate: level union bound $0.322521$ with tail, vanishing exponent tail, overlap lower bound $0.045021$ against a deficit $0.015668$, and certified good density $\ge0.029348$. |
 | `data/compensation_run_m27_k5049*_h200000000.json` | Four contiguous exact shards extending the shift-target neighbourhood to $10^9$ candidates. |
 | `data/parity_shift_m1_20_k4000_published.json` | Exact shift reduction at 905 rectangle witness sources and all 26 published witnesses. |
 | `data/smooth_density_m1_20_k3000.json` | Powersmooth necessity checks, short-cofactor densities against $\log 2$, measured block densities and run spectra, and the labelled growth model. |
+| `data/tier_density_m1_30.json` | Exact tier-failure counts and densities out to 76-digit ranges, three-method agreement, bound and envelope checks, and the exact crossover scale. |
+| `data/forcing_mass_bound.json` | 595,020 exhaustively checked residues, the Mertens margin, and the certifying-modulus bracket for every published witness with $k\le10^9$. |
 | `data/compensation_run_m27_k50001_h100000000.json`, `data/compensation_run_m27_k100050001_h900000000.json` | Two contiguous exact run searches proving the $m=27$ bound through $k=1{,}000{,}050{,}000$. |
 | `data/known_witness_verification.json` | Machine-written witness certificates and run summary. |
 | `data/atlas_smoke_m1_8_k500*.json` | Repaired and preserved pre-fix smoke artifacts. |
 | `run_low_cpu.sh` | One-process, reduced-priority launcher with thread pools pinned to one. |
+| `elementary_class_eviction.py` | Master theorem (36) and its corollaries: progression, class and block eviction, the covering criterion, the barrier scan, and the modulus-family diagnostics. |
+| `survivor_census.py` | Exact fatality mask of a block, per-class survivor counts, and the multi-position eviction census. |
+| `LOCALIZATION.md` | Audit of every candidate analytic input against this project's parameters, regime by regime, with APPLIES/FAILS verdicts. |
+| `data/elementary_class_eviction.json` | 1,152 progressions at minimal length, 65,520 classes for (37), 47,040 for (38), the covering certificates, and the measured barrier against its cost model. |
+| `data/survivor_census.json` | Exhaustive census of \([10^7,2\cdot10^7)\): 36 moduli in three shapes, per-class survivor counts, multi-position eviction by \(m\). |
 
 ## Reproduction
 
@@ -398,9 +552,15 @@ done
 ./run_low_cpu.sh python3 moving_bad_window_search.py --start-k 5048991644619 --offset-limit 100000000 --chunk-size 1000000 --output data/moving_bad_window_m27_h100000000_199999999.json
 ./run_low_cpu.sh python3 compensation_structure_analysis.py --extended-moving data/moving_bad_window_m27_h100000000_199999999.json --output data/compensation_structure_m1_20_k5000_m27_h200000000.json
 ./run_low_cpu.sh python3 adaptive_eviction_analysis.py
+./run_low_cpu.sh python3 good_density_decomposition.py
+./run_low_cpu.sh python3 overlap_density_bound.py
 ./run_low_cpu.sh python3 exact_eviction_certificate.py
 ./run_low_cpu.sh python3 parity_shift_certificate.py
 ./run_low_cpu.sh python3 smooth_density_analysis.py --short-cofactor-limits 100000 1000000 2000000
+./run_low_cpu.sh python3 tier_density_dp.py
+./run_low_cpu.sh python3 forcing_mass_bound.py
+./run_low_cpu.sh python3 elementary_class_eviction.py
+./run_low_cpu.sh python3 survivor_census.py
 ./run_low_cpu.sh python3 bad_window_near_miss_analysis.py
 ./run_low_cpu.sh python3 bad_window_near_miss_analysis.py --offset-limit 100000000 --chunk-size 1000000 --output data/bad_window_near_miss_m27_h100000000.json
 ./run_low_cpu.sh python3 zero_carry_corridor_search.py

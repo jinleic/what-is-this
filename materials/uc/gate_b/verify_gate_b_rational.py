@@ -317,6 +317,10 @@ def _subsets_of_weight(
 class Base:
     """A block-cell family together with its frozen exact facts."""
 
+    #: Bases that declare normalization assert it; a non-separating witness
+    #: sets this False and carries the duplicate columns in its facts instead.
+    requires_separation = True
+
     def __init__(
         self,
         name: str,
@@ -379,7 +383,23 @@ class Base:
             for coordinate in range(self.dimension)
         )
         assert all(any(column) for column in columns)
-        assert len(set(columns)) == self.dimension
+        separating = len(set(columns)) == self.dimension
+        # Separation is reported, and required only of the bases that claim it.
+        # DEFINITIONS.md records normalization (active and separating) as a
+        # search and reporting condition, not a condition in the displayed
+        # supremum, and no lemma in PROOF.md uses it: Lemmas 1-3 use only block
+        # independence of uniform product rows and the fact that the four
+        # transition probabilities sum to one, while cap and Reimer for powers
+        # are computed from degrees and incidence alone.
+        assert separating or not self.requires_separation, (
+            f"{self.name}: declared separating but two columns coincide"
+        )
+        duplicates = sorted(
+            (i, j)
+            for i in range(self.dimension)
+            for j in range(i + 1, self.dimension)
+            if columns[i] == columns[j]
+        )
 
         return {
             "dimension": self.dimension,
@@ -395,10 +415,91 @@ class Base:
             "closure_defect": str(defect),
             "join_success_probability": str(1 - defect),
             "active": True,
-            "separating": True,
+            "separating": separating,
+            "duplicate_column_pairs": [list(pair) for pair in duplicates],
             "ordered_pairs_with_replacement": True,
             "reimer_integer_witness": self.reimer_witness,
         }
+
+
+class ExplicitBase(Base):
+    """A family given by its rows rather than by a weight-cell pattern.
+
+    The two published bases are block-cell families, so `Base` reconstructs them
+    from cells and checks the reconstruction.  A family found by search has no
+    such description, but every *exact* check that matters -- size, distinct
+    rows, per-coordinate counts against the cap, incidence against the integer
+    Reimer threshold, the missing-join count, activity and separation -- is
+    independent of how the rows were produced.  This subclass keeps all of them
+    and drops only the cell reconstruction.
+    """
+
+    def __init__(
+        self,
+        name: str,
+        dimension: int,
+        rows: tuple[int, ...],
+        expected_count: int,
+        expected_missing: int,
+        reimer_witness: str,
+    ) -> None:
+        super().__init__(
+            name=name,
+            dimension=dimension,
+            left=(),
+            right=tuple(range(dimension)),
+            cells=frozenset(),
+            expected_rows=tuple(sorted(rows)),
+            expected_count=expected_count,
+            expected_missing=expected_missing,
+            reimer_witness=reimer_witness,
+        )
+
+    def reconstruct(self) -> tuple[int, ...]:
+        return self.expected_rows
+
+    def exact_facts(self) -> dict[str, Any]:
+        facts = super().exact_facts()
+        facts["block_partition"] = None
+        facts["block_cells"] = None
+        facts["provenance"] = (
+            "search witness: minimum closure defect found with A_+ < 0"
+        )
+        return facts
+
+
+class ClonedCoordinateBase(ExplicitBase):
+    """An admissible witness with two identical coordinates.
+
+    Sizes 70 and 75 are infeasible at seven coordinates: `7*floor(2*70/5) = 196`
+    is below the integer Reimer threshold 215.  Duplicating a coordinate adds
+    incidence without changing the size, the closure defect or the family's
+    join structure, so it is the cheapest way to clear Reimer at a size the
+    smaller ground set cannot support.  The result is admissible but not
+    separating.
+
+    That is permitted, and it is load-bearing rather than a technicality.
+    `DEFINITIONS.md` records normalization as a search and reporting condition,
+    not a condition in the displayed supremum, and no lemma in `PROOF.md` uses
+    separation: Lemma 1 needs only that the two block join events are
+    independent under independent uniform product rows, Lemmas 2 and 3 need only
+    that a uniform product row has independent blocks and that the four
+    transition probabilities sum to one, and admissibility of every power is
+    computed from degrees and incidence.  So the Cartesian powers of such a
+    witness are admissible and its objective is still additive.
+    """
+
+    requires_separation = False
+
+    def exact_facts(self) -> dict[str, Any]:
+        facts = super().exact_facts()
+        assert facts["separating"] is False, f"{self.name}: expected a duplicate column"
+        assert facts["duplicate_column_pairs"], f"{self.name}: no duplicate column found"
+        facts["provenance"] = (
+            "search witness: cloned-coordinate family, admissible but not "
+            "separating; normalization is a reporting condition in DEFINITIONS.md"
+        )
+        return facts
 
 
 BASES: dict[str, Base] = {
@@ -432,6 +533,135 @@ BASES: dict[str, Base] = {
         expected_count=18,
         expected_missing=1_600,
         reimer_witness="45**5 < 2**28",
+    ),
+    "n7lo": ExplicitBase(
+        name="n7lo",
+        dimension=7,
+        rows=(
+            0, 1, 2, 4, 5, 8, 11, 13, 14, 16, 19, 21, 22, 25, 26, 28,
+            32, 34, 37, 38, 41, 44, 49, 50, 52, 56, 59, 64, 67, 69, 70,
+            73, 74, 76, 81, 82, 84, 88, 96, 97, 98, 110, 111, 112, 127,
+        ),
+        expected_count=18,
+        expected_missing=1_336,
+        reimer_witness="45**5 < 2**28",
+    ),
+    # Two n=8 witnesses from the complete S_2 x S_6 block-symmetric class.
+    # Both are separating and active, all eight degrees sit exactly at the cap
+    # 30, and incidence 240 clears the integer Reimer threshold 234.  Size 75 is
+    # infeasible at n=7, where 7*floor(2*75/5) = 7*30 = 210 falls short of
+    # R_75 = 234, so the eighth coordinate is what admits this size at all.
+    # (Size 70 fails there too, by 7*28 = 196 < R_70 = 215.)
+    "n8lo": ExplicitBase(
+        name="n8lo",
+        dimension=8,
+        rows=(
+            0, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28,
+            32, 34, 36, 38, 40, 42, 44, 48, 50, 52, 56, 64, 66, 68, 70,
+            72, 74, 76, 80, 82, 84, 88, 96, 98, 100, 104, 112, 126, 127,
+            128, 129, 131, 133, 135, 137, 139, 141, 145, 147, 149, 153,
+            161, 163, 165, 169, 177, 191, 193, 195, 197, 201, 209, 223,
+            225, 239, 247, 251, 253, 254,
+        ),
+        expected_count=30,
+        expected_missing=3_432,
+        reimer_witness="75**5 < 2**32",
+    ),
+    "n8hi": ExplicitBase(
+        name="n8hi",
+        dimension=8,
+        rows=(
+            0, 1, 2, 4, 7, 8, 11, 13, 14, 16, 19, 21, 22, 25, 26, 28,
+            32, 35, 37, 38, 41, 42, 44, 49, 50, 52, 56, 64, 67, 69, 70,
+            73, 74, 76, 81, 82, 84, 88, 97, 98, 100, 104, 112, 126, 127,
+            128, 129, 131, 133, 134, 137, 138, 140, 145, 146, 148, 152,
+            161, 162, 164, 168, 176, 191, 193, 194, 196, 200, 208, 223,
+            224, 239, 247, 251, 253, 254,
+        ),
+        expected_count=30,
+        expected_missing=4_212,
+        reimer_witness="75**5 < 2**32",
+    ),
+    # Two cloned-coordinate witnesses from the same class: coordinates 0 and 1
+    # coincide, so each is admissible but not separating.  `n8clone_hi` carries
+    # the largest certified -A_+ per coordinate found anywhere in this
+    # repository, 0.037547.../8, which exceeds the n=7 base's 0.028649.../7 and
+    # so improves the certified asymptotic growth constant.
+    "n8clone_lo": ClonedCoordinateBase(
+        name="n8clone_lo",
+        dimension=8,
+        rows=(
+            0, 4, 7, 8, 11, 12, 15, 16, 19, 20, 23, 24, 27, 28, 32, 35, 36,
+            39, 40, 43, 44, 48, 51, 52, 56, 64, 67, 68, 71, 72, 75, 76, 80,
+            83, 84, 88, 96, 99, 100, 104, 112, 127, 128, 131, 132, 135, 136,
+            139, 140, 144, 147, 148, 152, 160, 163, 164, 168, 176, 191, 192,
+            195, 196, 200, 208, 223, 224, 239, 247, 251, 255,
+        ),
+        expected_count=28,
+        expected_missing=2_780,
+        reimer_witness="70**5 < 2**32",
+    ),
+    "n8clone_hi": ClonedCoordinateBase(
+        name="n8clone_hi",
+        dimension=8,
+        rows=(
+            0, 3, 4, 7, 8, 11, 12, 16, 19, 20, 24, 28, 31, 32, 35, 36, 40,
+            44, 47, 48, 52, 55, 56, 59, 64, 67, 68, 72, 76, 79, 80, 84, 87,
+            88, 91, 96, 100, 103, 104, 107, 112, 115, 128, 131, 132, 136,
+            140, 143, 144, 148, 151, 152, 155, 160, 164, 167, 168, 171, 176,
+            179, 192, 196, 199, 200, 203, 208, 211, 224, 227, 255,
+        ),
+        expected_count=28,
+        expected_missing=3_170,
+        reimer_witness="70**5 < 2**32",
+    ),
+    # From the complete S_3 x S_5 class.  This one sits at the *maximum*
+    # admissible size at n=8, m=80, with every degree at the cap 32 and
+    # incidence 256 = 8*32, the largest incidence any n=8 family can have.
+    # It carries the best certified repair ratio among separating families.
+    "n8max": ExplicitBase(
+        name="n8max",
+        dimension=8,
+        rows=(
+            0, 1, 2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 21, 25, 31, 32,
+            33, 35, 37, 41, 47, 49, 55, 59, 61, 64, 66, 68, 70, 72, 74, 76,
+            80, 82, 84, 88, 94, 96, 98, 100, 104, 110, 112, 118, 122, 124,
+            128, 130, 132, 134, 136, 138, 140, 144, 146, 148, 152, 158, 160,
+            162, 164, 168, 174, 176, 182, 186, 188, 193, 199, 203, 205, 211,
+            213, 217, 227, 229, 233, 241,
+        ),
+        expected_count=32,
+        expected_missing=4_686,
+        reimer_witness="80**5 < 2**32",
+    ),
+    # From the complete S_4 x S_4 class, which closes block-symmetric coverage
+    # at n=8.  `n8tiny` carries the lowest closure defect with A_+ < 0 found
+    # anywhere: four of its eight coordinates coincide, and it reaches defect
+    # 4/9 at only fifteen rows.  `n8best` is separating and is the first such
+    # base to improve the asymptotic growth constant: slope 177/40000 = 0.004425
+    # against the n=7 base's 1/250 = 0.004.
+    "n8tiny": ClonedCoordinateBase(
+        name="n8tiny",
+        dimension=8,
+        rows=(0, 1, 2, 60, 61, 62, 64, 67, 124, 128, 131, 188, 193, 194, 255),
+        expected_count=6,
+        expected_missing=100,
+        reimer_witness="15**5 < 2**32",
+    ),
+    "n8best": ExplicitBase(
+        name="n8best",
+        dimension=8,
+        rows=(
+            1, 2, 4, 7, 8, 11, 13, 14, 16, 19, 21, 22, 25, 26, 28, 32, 35,
+            37, 38, 41, 42, 44, 49, 50, 52, 56, 63, 64, 67, 69, 70, 73, 74,
+            76, 81, 82, 84, 88, 95, 97, 98, 100, 104, 112, 126, 128, 131,
+            133, 134, 137, 138, 140, 145, 146, 148, 152, 159, 161, 162, 164,
+            168, 176, 190, 193, 194, 196, 200, 208, 222, 224, 227, 229, 233,
+            241, 255,
+        ),
+        expected_count=30,
+        expected_missing=4_260,
+        reimer_witness="75**5 < 2**32",
     ),
 }
 
@@ -858,6 +1088,34 @@ def evaluate_base(
 RATIONAL_TARGETS = {
     "n6": (Fraction(-17, 1250), Fraction(-1, 80)),
     "n7": (Fraction(-7, 250), Fraction(-1, 40)),
+    # The low-defect search witness is only just negative, so its frozen
+    # targets are correspondingly small.  Its value is the defect, not the
+    # sharpness: it certifies negativity at closure defect 1336/2025 instead of
+    # 64/81, which is what moves the local frontier.
+    "n7lo": (Fraction(-1, 1250), Fraction(-1, 1200)),
+    # The two n=8 witnesses, from the complete S_2 x S_6 class.  Both targets
+    # were first set from the census float64 values and both were WRONG: the
+    # exact evaluator returned -0.002032376 for n8lo against a float
+    # -0.00285945, and -0.027744002 for n8hi against a float -0.02786810.  The
+    # targets below are the ones the exact enclosures actually beat.  `n8lo`
+    # moves the local frontier from 1336/2025 to 1144/1875; `n8hi` is the first
+    # family whose certified ratio beats the published base's 0.0362591...
+    "n8lo": (Fraction(-1, 600), Fraction(-1, 500)),
+    "n8hi": (Fraction(-1, 40), Fraction(-693, 25_000)),
+    # The cloned-coordinate witnesses.  `n8clone_hi` is the growth base: its
+    # certified threshold -3/80 over dimension 8 gives slope 3/640 = 0.0046875,
+    # against the n=7 base's (7/250)/7 = 1/250 = 0.004.
+    "n8clone_lo": (Fraction(-1, 50), Fraction(-243, 10_000)),
+    "n8clone_hi": (Fraction(-1, 30), Fraction(-3, 80)),
+    # Best certified ratio among separating families, at the maximum admissible
+    # size m=80.  Slope (19/625)/8 = 19/5000 = 0.0038 stays below the n=7
+    # base's 0.004, so this improves the finite ratio witness, not the growth.
+    "n8max": (Fraction(-1, 40), Fraction(-19, 625)),
+    # The S_4 x S_4 records.  `n8best` is separating and its slope
+    # (177/5000)/8 = 177/40000 = 0.004425 beats the n=7 base's 1/250 = 0.004,
+    # so the growth constant improves without leaving the normalized class.
+    "n8tiny": (Fraction(-1, 2500), Fraction(-1, 2100)),
+    "n8best": (Fraction(-1, 30), Fraction(-177, 5000)),
 }
 
 
@@ -896,17 +1154,24 @@ def _asymptotic_block(results: dict[str, dict[str, Any]]) -> dict[str, Any]:
     block: dict[str, Any] = {
         "statement": (
             "Write c(n) for the supremum of -A_+/eps_join over admissible "
-            "families on at most n coordinates with A_+ < 0.  Cartesian powers "
-            "of a certified base give c(n) >= |delta| * floor(n/d) with the "
-            "base dimension d, hence c(n) = Omega(n).  Conversely Q >= 0 and "
-            "C_+ >= 0 force -A_+ <= log2 m <= n, so for every family with "
-            "eps_join >= eps0 the ratio is at most n/eps0.  Under a positive "
-            "defect floor the growth is therefore exactly of order n."
+            "families on at most n coordinates with A_+ < 0, and Lambda(n) for "
+            "the supremum of -A_+ alone.  Cartesian powers of a certified base "
+            "give c(n) >= |delta| * floor(n/d) with the base dimension d, hence "
+            "c(n) = Omega(n).  Conversely Q >= 0 and C_+ >= 0 force "
+            "-A_+ <= log2 m, and the cap and Reimer conditions force the size "
+            "ceiling log2 m <= 4n/5, so Lambda(n) <= 4n/5 unconditionally and "
+            "Lambda(n) = Theta(n).  For every family with eps_join >= eps0 the "
+            "ratio is at most (4n/5)/eps0, so under a positive defect floor the "
+            "growth of c(n) is also exactly of order n."
         ),
         "upper_bound_reason": (
             "h >= 0 termwise gives Q >= 0; C_+ is a maximum of sums of h, so "
-            "C_+ >= 0; hence A_+ >= -log2 m and -A_+ <= log2 m <= n."
+            "C_+ >= 0; hence A_+ >= -log2 m and -A_+ <= log2 m.  Incidence is "
+            "sum_i deg_i <= n*floor(2m/5) <= 2nm/5 while Reimer demands "
+            "incidence >= m log2 m / 2, so log2 m <= 4n/5, tested exactly as "
+            "m^5 <= 2^(4n).  See bound_local_regime.py and PROOF.md Lemma 9."
         ),
+        "size_ceiling_integer_test": "m**5 <= 2**(4*n)",
         "bases": {},
     }
     for name, result in results.items():

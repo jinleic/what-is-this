@@ -426,6 +426,28 @@ def artifact_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+ENVIRONMENT_FIELDS = ("generated_at_utc", "resources", "runtime")
+
+
+def semantic_sha256(payload: dict[str, Any]) -> str:
+    """Hash an atlas payload with environment-dependent blocks removed.
+
+    Two runs of ``atlas.py`` on the same inputs differ only in wall-clock
+    stamps, measured resources, and interpreter metadata. Dropping exactly
+    ``ENVIRONMENT_FIELDS`` and canonicalising the remainder gives a digest that
+    a rerun reproduces, so reproducibility claims can cite a fingerprint
+    instead of a hand-made comparison.
+    """
+    stripped = {
+        key: value
+        for key, value in payload.items()
+        if key not in ENVIRONMENT_FIELDS
+    }
+    return hashlib.sha256(
+        json.dumps(stripped, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+
+
 def write_changed_cases(
     path: Path,
     events_by_kind: dict[str, list[Event]],
@@ -559,11 +581,13 @@ def build_diff(
             "pre_fix": {
                 "logical_name": pre_path.name,
                 "sha256": sha256_bytes(pre_bytes),
+                "semantic_sha256": semantic_sha256(pre),
                 "schema_version": pre["schema_version"],
             },
             "repaired": {
                 "logical_name": post_path.name,
                 "sha256": sha256_bytes(post_bytes),
+                "semantic_sha256": semantic_sha256(post),
                 "schema_version": post["schema_version"],
             },
             "changed_cases": {

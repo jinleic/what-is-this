@@ -747,6 +747,591 @@ theorem is now an exact rational fact about the true objective, established
 without any interval library, any clamp classification, any action-set
 relaxation, and any symmetry quotient.
 
+## E19 — the local regime: is the ratio bounded when the defect is small? (2026-08-27)
+
+Motivation: E18 closed the arithmetic of the finite input, so the highest-value
+remaining gap is no longer a certificate but the one escape the theorem leaves
+open. Every family in the Gate B construction has defect at least `444/625`
+(Lemma 5, proved this round), so the published proof says nothing about
+
+    c_loc = lim_{e -> 0+} sup { -A_+/eps_vee : admissible, A_+ < 0, 0 < eps_vee <= e }.
+
+Four elementary facts were proved first and are now in
+[PROOF.md](PROOF.md): failures come in pairs so `eps_vee >= 2/m^2` (this also
+sharpens a `1/m^2` remark that was already in the document); the defect
+multiplies under products so the power mechanism cannot enter the local regime
+at all; hence `-A_+/eps_vee <= m^2 log2(m)/2` and reaching defect `e` forces
+`m >= sqrt(2/e)`; and a family with zero defect would be a Frankl
+counterexample, so proving a positive universal defect floor at cap `2/5` is
+strictly harder than beating the published union-closed frontier by `~0.018`.
+That last point is the blocker, and it is why this round measures the regime
+instead of trying to prove it empty.
+
+### Instruments
+
+`search_local_defect.py` minimizes the closure defect alone, which costs
+`O(m^2)` set lookups and no entropy evaluation. `--mode exact` enumerates every
+admissible family for `n <= 4`. `hunt_local_ratio.py` has three modes:
+`hunt` minimizes `A_+ + lam*eps_vee` from random starts, `descend` minimizes the
+defect from a certified negative family under a hard negativity constraint, and
+`sweep` minimizes `A_+` under a hard defect cap.
+
+Commands (one worker, `nice -n 19`, total machine CPU below 50 % throughout):
+
+```sh
+OMP_NUM_THREADS=1 nice -n 10 ./.venv/bin/python -B \
+  uc/gate_b/search_local_defect.py --mode exact --dimension 4
+OMP_NUM_THREADS=1 nice -n 19 ./.venv/bin/python -B \
+  uc/gate_b/search_local_defect.py --mode search --dimension 7 \
+  --sizes 25,33,40,45 --restarts 6 --steps 120000
+OMP_NUM_THREADS=1 nice -n 19 ./.venv/bin/python -B \
+  uc/gate_b/search_local_defect.py --mode frontier --dimension 7
+OMP_NUM_THREADS=1 nice -n 19 ./.venv/bin/python -B \
+  uc/gate_b/hunt_local_ratio.py --mode descend --dimension 7 \
+  --restarts 3 --steps 1600 --screen 48
+OMP_NUM_THREADS=1 nice -n 19 ./.venv/bin/python -B \
+  uc/gate_b/hunt_local_ratio.py --mode sweep --dimension 7 --sizes 45 \
+  --restarts 2 --steps 1000 --screen 24 \
+  --defect-caps 0.79,0.74,0.70,0.66,0.62,0.58,0.52,0.46,0.40,0.35
+```
+
+### Result 1 — the defect does not want to be small
+
+Exact enumeration of *every* admissible family on `n <= 4` gives a minimum
+defect of `2/9` at `m = 3` and `6/25` at `m = 5`; no admissible family on four
+coordinates has defect below `6/25 = 0.24`. Searched upper bounds on
+`eps_*(n, m)` for `n = 5..8` and every feasible size never went below `2/9`.
+In the size range that Lemma 6 actually forces, the minima are
+
+| n | m | best defect found | pair floor `2/m^2` | ratio to floor |
+|---|---|---|---|---|
+| 6 | 25 | `184/625 = 0.2944` | `0.0032` | 92x |
+| 7 | 45 | `692/2025 = 0.3417` | `0.00099` | 346x |
+| 8 | 63 | `1468/3969 = 0.3699` | `0.00050` | 734x |
+| 8 | 80 | `163/400 = 0.4075` | `0.00031` | 1304x |
+
+The combinatorial floor decays like `1/m^2` while the achieved minimum does not
+decay at all, and the gap widens monotonically. Note the `n = 7`, `m = 45` row:
+at the published base's own parameters there are admissible families with defect
+`0.3417`, less than half the base's `64/81 = 0.7901`. Low-defect admissible
+families are plentiful; the question is their sign.
+
+### Result 2 — low defect forces a large *positive* objective
+
+Evaluating `A_+` over all `n!` orders on the 38 minimum-defect witnesses for
+`n = 6, 7` and `m >= 15` gave `A_+ > 0` in every case, from `+0.0588` to
+`+0.5607`. The contrast at the certified bases' own sizes is the finding:
+
+| family | defect | `A_+` |
+|---|---|---|
+| `n=6, m=25` minimum-defect witness | `0.2944` | `+0.05877257` |
+| `n=6, m=25` certified base `D` | `0.7104` | `-0.01367211` |
+| `n=7, m=45` minimum-defect witness | `0.3417` | `+0.08470357` |
+| `n=7, m=45` certified base `B` | `0.7901` | `-0.02864919` |
+
+Driving the defect down drives the objective up, at both dimensions.
+
+### Result 3 — the negativity region terminates well away from zero
+
+A first `hunt` sweep over `lam` in `{0.04, 0.06, 0.10}`, 48 restarts at
+`n = 6, 7`, found **zero** negative families. That was a search failure, not a
+landscape fact: it never rediscovered either certified base, and its best score
+at `n = 6` (`+0.0311` at `lam = 0.04`) was much worse than `D`'s own `+0.0147`.
+Diagnosis: a 12-order screen is too noisy relative to a signal of size `0.03`,
+and random starts are infeasible. Recorded as a failed route rather than as
+evidence.
+
+The `descend` mode fixes both by starting *at* a certified negative family and
+using the exact all-order objective at `n = 6`. Results:
+
+| n | restarts | negatives visited | lowest defect with `A_+ < 0` | `A_+` there | ratio |
+|---|---|---|---|---|---|
+| 6 | 5 | 1 | `444/625 = 0.7104` (= base `D`, no improvement) | `-0.01367211` | `0.0192456` |
+| 7 | 3 | 64 | `1336/2025 = 0.6598` | `-0.00085519` | `0.0012962` |
+
+So the lowest defect at which negativity survives moved down from `0.7901` to
+`0.6598` at `n = 7`, and at that point `A_+` is only `-0.00086`: the ratio
+collapsed by a factor of 28, from `0.0363` to `0.0013`. This is the opposite of
+the behaviour a local counterexample needs. Combined with Result 2, the
+negativity region at reachable dimensions is an interval of large defect, and
+`-A_+` vanishes as its lower endpoint is approached.
+
+### Result 4 — the frontier curve, after fixing the seeding
+
+The first `sweep` run seeded every cap from the minimum-defect witness and could
+not climb back into the negativity region: at cap `0.79` it reported `+0.037`
+although a negative family was feasible there. Recorded as a defect of the
+instrument. The fix was to seed each cap from the *best family already known*
+under that cap, pooled from both checkpoints and re-verified, which also makes
+the curve monotone by construction. Reseeded records use the `sweep2:` key
+namespace so the loose points are never silently reused. The curve at `n = 7`,
+`m = 45`, all points recomputed over all 5040 orders:
+
+| defect cap | least `A_+` found | defect attained | negative |
+|---|---|---|---|
+| 0.79 | `-0.01628321` | `314/405` | yes |
+| 0.74 | `-0.01489899` | `56/81` | yes |
+| 0.70 | `-0.01489899` | `56/81` | yes |
+| 0.66 | `-0.00085519` | `1336/2025` | yes |
+| 0.64 | `+0.01171204` | `1222/2025` | no |
+| 0.58 | `+0.02129440` | `1154/2025` | no |
+| 0.52 | `+0.04399390` | `206/405` | no |
+| 0.46 | `+0.05599499` | `184/405` | no |
+| 0.40 | `+0.06939557` | `796/2025` | no |
+| 0.35 | `+0.07951401` | `236/675` | no |
+
+### Result 5 — the low-defect witness is now certified exactly
+
+The witness at defect `1336/2025` was promoted from a float64 find to an exact
+fact. `verify_gate_b_rational.py` gained an `ExplicitBase` type, because the two
+published bases are reconstructed from weight cells and a search witness has no
+such description, while every exact check that matters is independent of how the
+rows arose. Command and result:
+
+```sh
+OMP_NUM_THREADS=1 nice -n 19 ./.venv/bin/python -B \
+  uc/gate_b/verify_gate_b_rational.py --bases n7lo --orders all \
+  --write-certificate uc/gate_b/certificates/gate_b_lowdefect_rational_v1.json
+```
+
+```text
+verdict PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL
+defect      1336/2025          counts [18]*7   incidence 126 >= 124
+A_+ lower  -0.0008551853337231417110078957932
+A_+ upper  -0.0008551853337231417110078902901
+width       0.0000000000000000000000000055031
+targets     a_plus_upper_lt = -1/1250, -1/1200
+orders      5040 of 5040, automorphism_count 1, 12,716,352 Bellman states
+```
+
+Run time 159 s; a rerun resumes with `new_evaluations: 0`, 5040 resumed records
+and 2 sampled rechecks. The trivial automorphism group is worth noting: unlike
+both published bases this family admits no symmetry quotient even in principle,
+so all 5040 enclosures are distinct and were computed independently.
+
+This makes `e* <= 1336/2025 = 0.6597...` a certified statement, improving the
+previous `64/81 = 0.7901...`, and supplies a third infinite construction with
+`eps_vee = 1-(689/2025)^k` and ratio above `k/1200`. Its certified ratio lower
+bound is `27/21376 = 0.001263...` and the enclosure pins the value to
+`0.0012962...`, twenty-eight times below the published base's `0.0362591`, which
+is the point: the family is far *less* negative and far *closer* to union-closed.
+
+Suite: 55 tests pass in 61.9 s, including thirteen new ones for the local regime
+(Lemma 4 parity on 400 random families, exact product multiplicativity of the
+defect, cross-implementation agreement of the integer Reimer threshold, the
+published defects and calibration ratios of both bases, the exact `n <= 4`
+minima, the witness-versus-schema contract, seeder coverage of every feasible
+size, the hard defect cap of the sweep, and two pinning the new certificate's
+defect, trivial automorphism group and negative enclosure).
+
+Status: **the local question stays OPEN, and it is now bracketed.** Certified:
+negativity survives to defect `1336/2025`. Searched and not found: any negative
+family below defect `0.64` at `m = 45`, or any negative family at all among the
+minimum-defect witnesses. Blocked: by Proposition 7, proving the regime empty
+implies a `2/5` Frankl bound, about `0.018` beyond the published frontier. The
+measurements point away from a local counterexample without excluding one.
+
+## E20 — the size ceiling, and the eighth coordinate (2026-08-27)
+
+Motivation: E19 bracketed the local regime but its instruments all worked at
+`n = 7`, `m = 45`. Two questions were left. Is there anything to prove about the
+repair ratio that does not go through Frankl? And is `n = 7` actually where the
+frontier lives?
+
+### Result 1 — the numerator's growth is settled, both sides
+
+Command:
+
+```sh
+OMP_NUM_THREADS=1 nice -n 19 python3 -B uc/gate_b/bound_local_regime.py \
+    --bases n6,n7,n7lo --max-dimension 4
+```
+
+Incidence is at most `n*floor(2m/5)` and Reimer demands at least
+`m log2 m / 2`, so every admissible family satisfies `log2 m <= 4n/5`, tested
+exactly as the integer inequality `m^5 <= 2^(4n)`. With `Q, C_+ >= 0` this gives
+the first unconditional `n`-explicit ceiling `-A_+ <= 4n/5`, and the certified
+powers supply the matching linear lower bound: the numerator is `Theta(n)`.
+Verified for every admissible size at every `3 <= n <= 16`. The ceiling is close
+to sharp -- the largest admissible size at `n = 11` is 445, i.e. `log2 m =
+8.7977` against `8.8`. The repository already carried this inequality per base
+as the `reimer_witness` string without recognising it as a general ceiling.
+
+### Result 2 — two defect floors, one of them attained
+
+`eps_vee >= ((8/5) sbar - M) / (n - M)`, because the cap forces
+`E|X or Y| >= (8/5) sbar` while a successful union has size at most `M`; and
+`eps_vee >= 1 - m^-2 sum_A N(A)^2` from downset counting. Exhaustive audit over
+all 366 admissible families with `n <= 4`: zero violations, and the capacity
+floor is attained with slack exactly `0`. Consequence (Corollary 12): the ratio
+is `O(n)` on every family *without* a dominant set, so approaching the local
+regime **requires** a set of size at least `(8/5) sbar >= (4/5) log2 m`. The
+`n = 6` base is below that threshold and its floor `7/25` is active; both `n = 7`
+bases are above it, and every `n = 8` witness below contains `[8]` itself.
+
+### Result 3 — the certified bases admit no addition whatsoever
+
+25 and 45 are the *largest* admissible sizes at `n = 6` and `n = 7`, all three
+certified bases attain them with every degree exactly at the cap, and the
+verifier finds **zero** admissible additions over all `2^n` candidate sets. So
+the one amplification route that lowers the defect and raises `log2 m` at the
+same time -- adding the missing unions -- is empty here, not merely unpromising.
+A first greedy attempt confirmed this before the proof: every base reported
+"no admissible addition (cap/Reimer block)" at step 0.
+
+### Result 4 — the combinatorial floor is not the obstruction
+
+At `n = 7`, `m = 45` the recorded defect frontier over *all* admissible families
+is `692/2025 = 0.3417`, while the best certified negative sits at
+`1336/2025 = 0.6598`: a gap of `0.318`. Measuring `Q` along the way explains it.
+At fixed `m = 45`, `log2 45 = 5.4919` is fixed and `Q` rises as the defect falls
+-- `5.4474` at `0.79`, `5.4758` at `0.66`, `5.5608` at `0.34` -- crossing the
+entropy and turning `A_+` positive. Negativity is a race against `log2 m` and is
+won only at the maximum admissible size, which is why every base sits there.
+
+### Result 5 — the eighth coordinate, and a stronger base
+
+That diagnosis says the frontier should move when the size ceiling moves, so the
+untried `S_2 x S_6` class at `n = 8` was enumerated:
+
+```sh
+OMP_NUM_THREADS=1 nice -n 19 ./.venv/bin/python -B \
+    uc/gate_b/search_n8_block_symmetric.py --k 2 \
+    --checkpoint uc/gate_b/experiments/n8_k2_checkpoint.jsonl \
+    --result uc/gate_b/candidates/n8_k2_census.json
+```
+
+21 cells, 2,097,151 raw masks, 2,272 canonical admissible families, 419 s. Then
+every candidate with float `A_+ < 0.01` was re-evaluated in exact rational
+arithmetic:
+
+```sh
+OMP_NUM_THREADS=1 nice -n 19 python3 -B uc/gate_b/certify_class_negatives.py \
+    --census uc/gate_b/experiments/n8_k2_checkpoint.jsonl --threshold 0.01
+```
+
+36 families evaluated exactly, 20 certified negative. Certified improvements:
+
+| quantity | old | new | family |
+|---|---|---|---|
+| lowest defect, separating | `1336/2025 = 0.659753` | `1144/1875 = 0.610133` | `n8lo`, `m = 75` |
+| lowest defect, any admissible | `1336/2025` | `139/245 = 0.567347` | `m = 70` |
+| highest repair ratio, separating | `0.0362591` | `0.0370512` | `n8hi`, `m = 75` |
+| highest repair ratio, any admissible | `0.0362591` | `0.0580391` | `m = 70` |
+
+Sizes 70 and 75 are **infeasible at `n = 7`** (`7*28 = 196 < R_70 = 215`); the
+eighth coordinate supplies the missing incidence, and in the two 70-row families
+it is an exact duplicate of the first. Coordinate cloning changes neither defect
+nor size, so it is exactly the mechanism Lemma 9 predicts: raising `n` is the
+only way to raise the size ceiling. Normalization is a reporting condition in
+`DEFINITIONS.md`, not a condition in the displayed supremum, so both conventions
+are reported.
+
+### Result 6 — the float census produced a false negative
+
+The 80-row family at defect `2553/3200` reads `-0.00026687` in float64 and
+`+0.000454098` exactly. Float/exact gaps reach `2e-3` elsewhere in the class,
+far beyond float64 noise, so the census ordering is not an ordering of the exact
+values. Both frozen rational targets for the new bases were first written from
+float values and both were rejected by the verifier before being corrected
+against the exact enclosures -- the intended behaviour of the frozen-target
+gate, observed working. The mirror check was then run: all 15 families with
+float `A_+` in `[0, 0.01)` are exactly non-negative, so no negative is hiding in
+the positive tail.
+
+Suite: 66 tests pass, including eleven new ones for the size ceiling, both
+defect floors, the maximality of the certified bases, the dominant-set
+equivalence, cross-implementation agreement of the standalone checker, the two
+`n = 8` bases, the infeasibility of size 75 at seven coordinates, and the false
+negative.
+
+Status: **the local frontier moved from `0.6598` to `0.6101` (separating) and
+`0.5673` (any admissible), and the finite ratio witness beat the published base
+for the first time.** The numerator's growth law is closed at `Theta(n)`. The
+local question itself stays OPEN and Frankl-equivalent by Proposition 7.
+
+## E21 — the growth constant improves, and separation turns out to be free (2026-08-27)
+
+Motivation: E20 left a specific question. The two non-separating 70-row
+witnesses had the largest `-A_+` per coordinate seen anywhere,
+`0.037548/8 = 0.004694` against the `n=7` base's `0.028649/7 = 0.004093`, so
+they *would* improve the certified asymptotic growth constant — if their
+Cartesian powers are admissible and the product lemmas apply to a base that is
+not separating. That had to be settled by reading the proof, not by assuming it.
+
+### Result 1 — no lemma uses separation
+
+Read against `PROOF.md`: Lemma 1 uses only that the two block join events are
+independent under two independent uniform product rows. Lemmas 2 and 3 use only
+that a uniform product row has independent blocks, that the conditional
+marginals, feasible interval and four transition probabilities at a coordinate
+depend on that block's prefixes alone, and that the four transition
+probabilities sum to one. The additivity corollary uses only
+`|H| = |F| |G|`. Separation appears exactly once, in the last bullet of the
+admissibility section, where it is *concluded* for the powers of a normalized
+base — never assumed. Recorded as Proposition 16.
+
+### Result 2 — one base-level Reimer check certifies every power
+
+For a base with size `m`, incidence `I` and every degree equal to `c`, the power
+`F^k` has size `m^k`, degree `c m^(k-1)` and incidence `k I m^(k-1)`.
+
+* Cap: `c <= floor(2m/5) <= 2m/5`, so the degree is an integer at most `2m^k/5`,
+  hence at most `floor(2m^k/5)`. For `m = 70` it is *exactly* the cap, because
+  `70/5 = 14` is an integer.
+* Reimer: the requirement is `k I m^(k-1) >= ceil(k m^k log2(m)/2)`, and an
+  integer dominating a real number dominates its ceiling, so it suffices that
+  `2I >= m log2 m`, i.e. `m^m <= 2^(2I)` — which is exactly the base condition
+  `I >= R_m`, since `R_m` is the least `r` with `2^(2r) >= m^m`.
+
+A first attempt at this got the algebra wrong (`m^(2I) < 2^(4I)`, which is false
+for `m > 4`) and the audit correctly returned `FAILED`; the corrected witness
+`70^70 <= 2^448` holds with `log2(70^70) = 429.05` against `448`.
+
+```sh
+OMP_NUM_THREADS=1 nice -n 19 python3 -B uc/gate_b/audit_clone_power.py \
+    --base n8clone_hi
+```
+
+Verdict `EVERY_POWER_ADMISSIBLE`: degrees equal the cap at every power up to 40,
+Reimer strict throughout, and the instantiated square — 4,900 rows rebuilt from
+the product and recounted with no product-aware shortcut — has defect
+`210171/240100 = 1-(173/490)^2` exactly.
+
+### Result 3 — the certified growth constant improves by 75/64
+
+Registering the two cloned witnesses as `ClonedCoordinateBase` (which reports
+separation instead of asserting it, and carries the duplicate column pair in its
+facts) and certifying:
+
+```sh
+OMP_NUM_THREADS=1 nice -n 19 python3 -B uc/gate_b/verify_gate_b_rational.py \
+    --bases n8clone_lo,n8clone_hi --orders orbits \
+    --write-certificate uc/gate_b/certificates/gate_b_n8_clone_rational_v1.json
+```
+
+`n8clone_hi`: defect `317/490`, `A_+ <= -3/80`, certified ratio `>= 147/2536 =
+0.0579653`, asymptotic slope `3/640 = 0.0046875` against the published
+`1/250 = 0.004` — an improvement by exactly `75/64 = 1.1719`. With Corollary 10
+the numerator is now pinned between `(3/640)n - 3/80` and `4n/5`.
+
+The mechanism is not the one to guess. Cloning a coordinate changes neither the
+size, the defect, nor the join structure; it only adds incidence. What it buys is
+*feasibility*: size 70 is impossible at seven coordinates, where `7*28 = 196`
+falls short of `R_70 = 215`. The eighth coordinate is spent entirely on clearing
+Reimer, and the reward is a base whose `-A_+` per coordinate beats anything
+available at seven. The cost is separation, which the definitions do not charge
+for.
+
+### Result 4 — the S_3 x S_5 class, and the best separating ratio
+
+```sh
+OMP_NUM_THREADS=1 nice -n 19 ./.venv/bin/python -B \
+    uc/gate_b/search_n8_block_symmetric.py --k 3 \
+    --checkpoint uc/gate_b/experiments/n8_k3_checkpoint.jsonl \
+    --result uc/gate_b/candidates/n8_k3_census.json
+```
+
+24 cells, 16,777,215 raw masks, 13,470 canonical admissible families, 54
+float-negative, 2,743 s. Exact re-ranking of all 110 candidates with float
+`A_+ < 0.01` took 1,194 s and certified 52. Its best, `n8max`, sits at the
+**maximum** admissible size `m = 80` with every degree at the cap 32 and
+incidence `256 = 8*32`, the largest any `n=8` family can carry: defect
+`2343/3200`, `A_+ <= -19/625`, certified ratio `>= 2432/58575 = 0.0415194`, the
+best among separating families, improving `n8hi`'s `0.0370192`. Its slope
+`19/5000 = 0.0038` does *not* improve the growth constant. `k=3` moved neither
+the defect frontier nor the slope.
+
+### Result 5 — the census screen fails in both directions
+
+`k=3` settles a question `k=2` left open. Three of its 54 float negatives are
+exactly non-negative, and — new — **one family the census called non-negative is
+exactly negative**: defect `94/125`, float `+0.00003418`, exact
+`-0.00005157`. So the census both raises false alarms and *misses* witnesses.
+Largest census/exact gap in the class is `3.24e-3`, above `k=2`'s `2.03e-3`.
+E22 below identifies the cause, which is **not** float64 error.
+
+The practical consequence is already in force: the re-ranking threshold is
+`+0.01`, not `0`, precisely so that missed witnesses are recovered. Across both
+re-ranked classes the float census reported 75 negatives; the exact route
+certifies 72, of which one was never reported as negative at all.
+
+Suite: 77 tests pass, including nine new ones for the cloned bases, the
+separation flag (an impostor declaring separation must fail loudly), the
+equivalence of `I >= R_m` with `m^m <= 2^(2I)` on all eight registered bases, the
+power audit, the slope improvement, `n8max` at maximum incidence, and the
+two-directional float failure.
+
+Status: **the growth constant is improved and the numerator is bracketed
+`(3/640)n - 3/80 <= Lambda(n) <= 4n/5`.** The local question stays OPEN and
+Frankl-equivalent.
+
+
+## E22 — the census discrepancy is an order-set bug, not float error (2026-08-27)
+
+Motivation: E20 and E21 both recorded "float/exact gaps up to `3.24e-3`" and
+attributed them to float64. That attribution was never tested, and a `3e-3`
+error in a quantity assembled from values of size `6` is about eleven orders of
+magnitude worse than float64 noise. So it was tested.
+
+### Result 1 — the float evaluator is not at fault
+
+Evaluating `Q` and `C_+` for `n8lo` and `n8hi` over the *same* 28 automorphism
+orbit representatives:
+
+| base | Q gap (float vs exact) | C_+ gap | orders disagreeing beyond 1e-9 |
+|---|---|---|---|
+| `n8lo` | `-1.24e-14` | `0.0` | 0 of 28 |
+| `n8hi` | `-2.93e-14` | `0.0` | 0 of 28 |
+
+So `shapley_n6_shared_bellman.one_sided_costs` and `shapley_join_loss.shapley_iid`
+agree with the exact rational route to `1e-14`. Nothing needs fixing there.
+
+### Result 2 — the census averages over the wrong orders
+
+For `n8lo`, comparing the three order sets with the *same* float evaluator:
+
+```text
+C_+ over census block reps : 6.683920061576
+C_+ over Aut orbit reps    : 6.707147997083
+C_+ over ALL 40320 orders  : 6.707147997083
+```
+
+The orbit route is exact to the last digit. The census is off by `-2.32e-2`,
+which times `alpha = 0.0356069` is `-8.27e-4` in `A_+` — exactly the observed
+`n8lo` gap (`-0.002859451` census against `-0.002032376` true).
+
+### Result 3 — why, precisely
+
+`block_order_representatives(k)` returns one order per `S_k x S_(8-k)` pattern.
+That is a valid representative system only when the family's automorphism group
+**is** that block group. Measured for `n8lo`:
+
+* `|Aut| = 1440`, which is exactly `|S_2 x S_6|` — so a size check would pass;
+* but only **120** of those 1440 elements preserve the block partition
+  `{0,1} | {2..7}`, so `Aut` is a *different* group of the same order;
+* consequently the 28 block-pattern orders hit only **12 of the 28** true
+  automorphism orbits, double-counting six of them with multiplicities
+  `[(1,6),(2,2),(3,1),(4,1),(5,1),(6,1)]` and missing sixteen entirely.
+
+At `k=1` the block group *is* the automorphism group, and the `k=1` census value
+is exactly right: re-ranked exactly, its negative reads `-0.027762696467` and
+ratio `0.034335490331`, matching the published figures to every digit. The bug
+is class-dependent, which is why it went unnoticed.
+
+### Result 4 — a rigorous screening bound
+
+Any average over a subset of orders lies within
+`alpha * (max_pi C_+ - min_pi C_+)` of the true average. Measured over all
+40320 orders per base:
+
+| base | min C_+ | max C_+ | alpha * spread |
+|---|---|---|---|
+| `n8lo` | 6.674547 | 6.751629 | `0.002745` |
+| `n8hi` | 6.677357 | 6.702007 | `0.000878` |
+| `n8clone_hi` | 6.504946 | 6.648994 | `0.005129` |
+| `n8max` | 6.684842 | 6.822257 | `0.004893` |
+
+Worst bound `5.13e-3` against the re-ranking threshold `+0.01`: a `1.95x`
+margin. That is why the threshold is `+0.01` and not `0`, and it is now the
+documented reason rather than a guess.
+
+Decision: **the census stays as a screen and its docstring now says so.** Its
+evaluation logic is not changed, because fixing it properly needs the true
+automorphism group per family — 40320 permutation tests each, times 13,470
+families — while the two-stage architecture (cheap screen, exact re-rank) already
+produces the correct answer and is what every label already comes from. What was
+wrong was the *description*, in three documents, and that is corrected.
+
+Suite: 79 tests pass, including two new ones that pin the diagnosis: the census
+order set covers 12 of 28 orbits while the honest system covers 28 of 28, and
+the screening bound is below `1/100` for every registered base.
+
+## E23 — cloning is a defect-free amplifier, and it has a ceiling (2026-08-27)
+
+Motivation: a review nit pointed out that a registry comment cited `7*28=196 <
+R_70` while talking about size 75 (the right numbers there are `7*30=210 <
+R_75=234`; the conclusion was unaffected). Checking it exposed something the
+narrative had wrong. The comment's *story* — "the extra coordinate is what
+admits the size" — cannot be what `n8tiny` is doing, because
+
+```text
+m=15 n=7: cap=6  n*cap=42  R_15=30  feasible=True
+m=15 n=5: cap=6  n*cap=30  R_15=30  feasible=True
+```
+
+Size 15 is feasible down to five coordinates. So the clones in `n8tiny` are not
+buying feasibility. They are buying something else.
+
+### Result 1 — cloning is exactly free in size and defect
+
+Duplicating a coordinate maps each row to itself with one bit repeated, a
+bijection commuting with union. So `m` is unchanged, `eps_vee` is unchanged,
+every degree is unchanged and the clone's degree equals its twin's (cap still
+met), and the incidence rises while `R_m` depends only on `m`.
+**Admissibility is preserved unconditionally and the defect cannot move.**
+
+### Result 2 — but it is not objective-free: it flips the sign
+
+Collapsing `n8tiny`'s duplicate columns leaves an admissible five-coordinate
+family, same size 15, same defect `4/9`, incidence `30` exactly meeting both
+`R_15 = 30` and the ceiling `5*6 = 30`. Its exact objective is **positive**:
+
+```text
+A_+(collapsed, n=5) = +0.010695694     A_+(n8tiny, n=8) = -0.000478465
+```
+
+So the clones, not the ground set, make the record low-defect witness a witness.
+The earlier framing had this backwards. For `n8clone_lo` and `n8clone_hi` the
+original story does hold — they collapse to *inadmissible* seven-coordinate
+families, incidence 196 against `R_70 = 215`, with the cap satisfied — so the two
+uses of a clone are genuinely different and both occur among the registered
+bases.
+
+### Result 3 — the amplification saturates geometrically
+
+```sh
+OMP_NUM_THREADS=1 nice -n 19 python3 -B uc/gate_b/audit_clone_saturation.py \
+    --max-clones 4
+```
+
+| clones | n | `A_+ <=` | delta | defect | admissible |
+|---|---|---|---|---|---|
+| 0 | 5 | `+0.010695694` | | `4/9` | yes |
+| 1 | 6 | `+0.003478204` | `-0.007217490` | `4/9` | yes |
+| 2 | 7 | `+0.000772362` | `-0.002705842` | `4/9` | yes |
+| 3 | 8 | `-0.000478465` | `-0.001250827` | `4/9` | yes |
+| 4 | 9 | `-0.001137229` | `-0.000658764` | `4/9` | yes |
+
+Delta ratios `0.375, 0.462, 0.527` (and `0.577` at the fifth clone, measured
+separately at `n=10` with 210 orbit representatives). The improvement is
+geometric and the total budget is bounded, roughly `0.013` for this family.
+Verdict `CLONING_IS_DEFECT_FREE_AND_SATURATES`.
+
+### Interpretation
+
+This answers the original plan's amplification question in its sharpest
+available form. *Can the numerator be amplified faster than the closure defect?*
+Yes — at **zero** defect cost, since cloning cannot move the defect at all. But
+the amplification is finite, so cloning flips a family whose objective is
+positive but small and cannot rescue one that is far positive: the lowest-defect
+admissible family known at `n=7, m=45` has `A_+ = +0.0847`, an order of magnitude
+outside the budget. That is the honest reason the local frontier sits at `4/9`
+and not at the combinatorial floor.
+
+The actionable consequence for `n = 9, 10` is concrete: rank low-defect
+admissible families by `A_+`, and clone only those already within about `0.01`
+of zero. Cloning cheap positives is the highest-yield move available, and
+cloning expensive ones is wasted work.
+
+Suite: 87 tests pass, including four new ones pinning that cloning preserves
+size, defect and admissibility at every rung; that the collapsed core is
+admissible yet positive; that the other two bases' cores are inadmissible for
+Reimer but not for the cap; and that every delta is negative and strictly
+smaller than the one before.
+
+
+
 ## Failed or superseded routes
 
 1. **Increase `1/50` to another finite coefficient.** Superseded: Cartesian

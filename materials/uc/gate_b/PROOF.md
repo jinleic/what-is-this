@@ -572,10 +572,498 @@ way to escape it is to force \(\varepsilon_\vee\to0\), which is precisely the
 separate local-stability question left open below.
 
 A remark on the unrestricted supremum at fixed \(n\): dropping the defect floor
-leaves only \(\varepsilon_\vee\ge1/m^2\) for a non-union-closed family, so the
-trivial bound degrades to \(n\,m^2\le n4^{n}\). The theorem does not claim that
-this is attained; the linear statement above is the sharp one available with
-these definitions.
+leaves only Lemma 4 below, \(\varepsilon_\vee\ge2/m^2\), for a
+non-union-closed family, so the trivial bound degrades to
+\(nm^2/2\le n4^{n}/2\). The theorem does not claim that this is attained; the
+linear statement above is the sharp one available with these definitions.
+
+## The local regime
+
+The corollary just proved isolates one escape and only one: forcing
+\(\varepsilon_\vee\to0\). This section makes that regime precise, proves what is
+elementary about it, and states exactly where it is blocked. For
+\(0<\varepsilon\le1\) put
+
+\[
+c_{\rm loc}(\varepsilon)=
+\sup\Big\{\tfrac{-A_+(\mathcal F)}{\varepsilon_\vee(\mathcal F)}:
+\mathcal F\text{ cap/Reimer},\ A_+(\mathcal F)<0,\
+0<\varepsilon_\vee(\mathcal F)\le\varepsilon\Big\},
+\qquad
+c_{\rm loc}=\lim_{\varepsilon\to0^+}c_{\rm loc}(\varepsilon),
+\]
+
+with \(\sup\emptyset=0\). The limit exists in \([0,+\infty]\) because
+\(c_{\rm loc}\) is nondecreasing in \(\varepsilon\). Gate B is the statement
+\(c_{\rm loc}(1)=+\infty\); the open question is the value of \(c_{\rm loc}\).
+
+### Lemma 4: failures come in pairs
+
+If \(\mathcal F\) is not union-closed then
+\(\varepsilon_\vee(\mathcal F)\ge2/m^2\).
+
+*Proof.* Let \(S=\{(X,Y)\in\mathcal F^2:X\cup Y\notin\mathcal F\}\), which is
+nonempty by assumption. \(S\) is invariant under exchanging the two
+coordinates, and it contains no diagonal element because \(X\cup X=X\in\mathcal
+F\). Hence \(S\) is a disjoint union of two-element orbits, so \(|S|\ge2\) is
+even. \(\square\)
+
+### Lemma 5: products never dilute the defect
+
+For \(\mathcal H=\mathcal F\boxtimes\mathcal G\),
+
+\[
+1-\varepsilon_\vee(\mathcal H)
+=\big(1-\varepsilon_\vee(\mathcal F)\big)\big(1-\varepsilon_\vee(\mathcal G)\big),
+\qquad\text{hence}\qquad
+\varepsilon_\vee(\mathcal H)\ \ge\
+\max\{\varepsilon_\vee(\mathcal F),\varepsilon_\vee(\mathcal G)\},
+\]
+
+with equality in the second display if and only if the other factor is
+union-closed.
+
+*Proof.* The identity is Lemma 1. Monotonicity follows since
+\(1-\varepsilon_\vee(\mathcal H)=(1-\varepsilon_\vee(\mathcal F))(1-\varepsilon_
+\vee(\mathcal G))\le1-\varepsilon_\vee(\mathcal F)\), and equality forces
+\(\varepsilon_\vee(\mathcal G)=0\). \(\square\)
+
+**Consequence for the proof above.** Every family in the Gate B construction
+satisfies \(\varepsilon_\vee(\mathcal B^{\boxtimes k})\ge64/81\) and
+\(\varepsilon_\vee(\mathcal D^{\boxtimes k})\ge444/625\). So the Cartesian-power
+mechanism cannot exhibit even one family with
+\(\varepsilon_\vee<444/625=0.7104\), and therefore contributes nothing to
+\(c_{\rm loc}\). The local question is untouched by the theorem, not merely
+unaddressed by its statement.
+
+### Lemma 6: the local regime forces large families
+
+For a non-union-closed admissible \(\mathcal F\),
+
+\[
+\frac{-A_+(\mathcal F)}{\varepsilon_\vee(\mathcal F)}
+\ \le\ \frac{m^2\log_2m}{2},
+\]
+
+and \(\varepsilon_\vee(\mathcal F)\le\varepsilon\) forces
+\(m\ge\sqrt{2/\varepsilon}\).
+
+*Proof.* Combine \(-A_+\le\log_2m\), proved in the corollary above from
+\(Q,C_+\ge0\), with Lemma 4. The second claim is Lemma 4 rearranged.
+\(\square\)
+
+So \(c_{\rm loc}(\varepsilon)\) is finite on every subclass of bounded size, and
+any sequence witnessing \(c_{\rm loc}=+\infty\) must have \(m\to\infty\), hence
+\(n\to\infty\) as well since \(m\le2^n\).
+
+### Proposition 7: the zero-defect boundary is Frankl's conjecture at 2/5
+
+An admissible family with \(\varepsilon_\vee=0\) is union-closed and has every
+degree at most \(\lfloor2m/5\rfloor<m/2\), i.e. it is a counterexample to
+Frankl's union-closed sets conjecture. Two consequences.
+
+*(i)* **[REPORTED]** Frankl's conjecture is verified for \(n\le12\)
+(Vučković and Živković, *The 12-Element Case of Frankl's Conjecture*, IPSI BgD
+Transactions on Internet Research 13(1), 65-71, 2017), which together with
+Faro's bound and the Roberts-Simpson estimate \(|\mathcal F|\ge4q-1\) for a
+minimal counterexample on \(q\) elements gives the conjecture for \(m\le50\)
+(as stated in arXiv:1711.04276). Neither range is re-verified here.
+Hence no admissible family on at most twelve coordinates has zero defect: every
+search reported below runs at \(n\le8\), strictly inside the verified range, so
+its families all have \(\varepsilon_\vee\ge2/m^2>0\) by Lemma 4 and the
+extended-value convention never activates.
+
+*(ii)* Suppose one could prove a universal positive defect floor,
+
+\[
+\varepsilon_\vee(\mathcal F)\ \ge\ \varepsilon_*>0
+\qquad\text{for every cap-}2/5\text{ family }\mathcal F .
+\]
+
+Then no union-closed family satisfies the cap, i.e. every union-closed family
+has an element in more than \(2m/5\) of its sets. The best published constant
+for that statement is \(\psi=(3-\sqrt5)/2=0.381966\ldots\), with small explicit
+improvements above it; this repository's own Campaign I certified
+\(\psi+10^{-4}\). A positive floor at cap \(2/5\) would therefore improve the
+union-closed frontier by about \(0.018\), which is far beyond current technique.
+
+**This is the precise blocker.** Emptying the local regime by a theorem is at
+least as hard as a major advance on Frankl's conjecture. Populating it instead
+requires exhibiting an admissible family that is simultaneously nearly union
+closed and has \(A_+<0\); by Lemma 5 no product of the certified bases is such a
+family, and by Lemma 6 any such family must be large. Both directions are
+recorded as open, with the searched evidence in
+[EXPERIMENTS.md](EXPERIMENTS.md).
+
+### Proposition 8: the negativity region reaches defect 1336/2025
+
+Let \(\mathcal L\) be the 45-row family on seven coordinates listed in
+[`certificates/gate_b_lowdefect_rational_v1.json`](certificates/gate_b_lowdefect_rational_v1.json).
+Then \(\mathcal L\) is normalized and cap/Reimer-admissible, every coordinate
+degree equals the cap \(18\), the incidence is \(126\ge124\), and
+
+\[
+\varepsilon_\vee(\mathcal L)=\frac{1336}{2025},
+\qquad
+A_+(\mathcal L)\in
+[-0.00085518533372314171100789579,\,-0.00085518533372314171100789029],
+\]
+
+so \(A_+(\mathcal L)<-1/1200<0\). Consequently
+
+\[
+e^\star:=\min\{\varepsilon_\vee(\mathcal F):
+\mathcal F\text{ admissible},\ A_+(\mathcal F)<0\}
+\ \le\ \frac{1336}{2025}=0.6597\ldots
+\]
+
+*Proof.* The combinatorial facts are exact integer computations on the row
+list, replayed by the checker before it evaluates anything. The enclosure is
+produced by the exact rational evaluator of the previous section, applied to
+this family over **all** \(5040\) coordinate orders; its automorphism group is
+trivial, so the run records 5040 distinct enclosures and no symmetry quotient is
+used or available. The upper endpoint is a rational number smaller than
+\(-1/1200\). \(\square\)
+
+By Lemmas 2, 3 and 5 the powers \(\mathcal L^{\boxtimes k}\) are admissible with
+\(A_+=kA_+(\mathcal L)\) and \(\varepsilon_\vee=1-(689/2025)^k\), so they give a
+third infinite construction with ratio exceeding \(k/1200\). Its role is not
+sharpness -- both published bases are far more negative -- but *defect*: it
+certifies that negativity survives down to closure defect \(0.6598\), against
+\(64/81=0.7901\) for \(\mathcal B\) and \(444/625=0.7104\) for \(\mathcal D\).
+
+Together with the searched evidence in [EXPERIMENTS.md](EXPERIMENTS.md), which
+found no negative family below defect \(0.64\) at \(m=45\) and a least
+\(A_+\) rising monotonically to \(+0.0795\) as the defect cap falls to
+\(0.35\), the current picture of the local regime is an interval of large defect
+on which \(A_+<0\), with \(-A_+\to0\) at its lower endpoint. That is the
+behaviour of a *bounded* local ratio. The certified frozen target gives
+\(-A_+(\mathcal L)/\varepsilon_\vee(\mathcal L)>27/21376=0.001263\ldots\) as a
+lower bound, and the enclosure endpoints pin the value itself to
+\(0.0012962\ldots\), twenty-eight times below the \(0.0362591\ldots\) of
+\(\mathcal B\).
+Nothing here decides \(c_{\rm loc}\), and by Proposition 7 deciding it downward
+is at least as hard as a major advance on Frankl's conjecture.
+
+## The size ceiling, the defect floor, and the eighth coordinate
+
+### Lemma 9: the admissible size ceiling
+
+Every admissible \(\mathcal F\subseteq2^{[n]}\) satisfies
+
+\[
+\log_2 m\ \le\ \frac{4n}{5},
+\qquad\text{equivalently the integer test}\qquad m^5\le 2^{4n}.
+\]
+
+*Proof.* Incidence counted by coordinates is
+\(\sum_{A\in\mathcal F}|A|=\sum_{i\in[n]}\deg_i\), and the cap bounds every
+degree by \(\lfloor 2m/5\rfloor\le 2m/5\), so the incidence is at most
+\(2nm/5\). Reimer admissibility demands incidence at least \(m\log_2m/2\).
+Hence \(m\log_2m/2\le 2nm/5\); divide by \(m>0\). \(\square\)
+
+The bound is close to sharp: the largest admissible sizes are \(45\) at
+\(n=7\) (\(\log_2 45=5.4919\) against \(5.6\)) and \(445\) at \(n=11\)
+(\(8.7977\) against \(8.8\)). The repository already carried this inequality as
+the per-base `reimer_witness` string; Lemma 9 is the statement that it holds for
+*every* admissible family and depends only on \(n\).
+
+### Corollary 10: the numerator grows exactly linearly
+
+\(Q\ge0\) and \(C_+\ge0\) give \(-A_+=\log_2m-(1-\alpha)Q-\alpha C_+\le\log_2m\),
+so by Lemma 9 every admissible family on \(n\) coordinates has
+
+\[
+-A_+(\mathcal F)\ \le\ \frac{4n}{5}.
+\]
+
+The certified powers give \(-A_+(\mathcal B^{\boxtimes k})=k\,(-A_+(\mathcal B))\)
+on \(7k\) coordinates. Writing \(\Lambda(n)\) for the supremum of \(-A_+\) over
+admissible families on at most \(n\) coordinates,
+
+\[
+\frac{7}{250}\left\lfloor\frac n7\right\rfloor\ \le\ \Lambda(n)\ \le\ \frac{4n}{5},
+\]
+
+so \(\Lambda(n)=\Theta(n)\), bounded on both sides. Only the denominator of the
+repair ratio is still open.
+
+### Lemma 11: the union-growth defect floor
+
+Let \(M=\max_{A\in\mathcal F}|A|<n\) and \(\bar s=\frac1m\sum_{A}|A|\). Then
+
+\[
+\varepsilon_\vee(\mathcal F)\ \ge\ \frac{\frac85\bar s-M}{\,n-M\,}.
+\]
+
+*Proof.* With \(p_i=\deg_i/m\) the cap gives \(p_i\le2/5\), so
+\[
+\mathbb E|X\vee Y|=\sum_i\bigl(1-(1-p_i)^2\bigr)=\sum_i p_i(2-p_i)
+\ \ge\ \sum_i p_i\left(2-\tfrac25\right)=\tfrac85\bar s .
+\]
+A union that lands in \(\mathcal F\) has size at most \(M\), and any union has
+size at most \(n\), so \(\mathbb E|X\vee Y|\le(1-\varepsilon_\vee)M+\varepsilon_\vee n\).
+Combine and solve for \(\varepsilon_\vee\). \(\square\)
+
+Reimer gives \(\bar s\ge\frac{\log_2m}{2}\) and hence \(\frac85\bar s\ge\frac45\log_2m\).
+
+### Corollary 12: without a dominant set the ratio is O(n)
+
+If \(M\le\theta\cdot\frac85\bar s\) for some \(\theta<1\), then by Corollary 10
+and Lemma 11
+
+\[
+\frac{-A_+}{\varepsilon_\vee}\ \le\ \frac{(4n/5)\,(n-M)}{\frac85\bar s-M}
+\ \le\ \frac{5n}{4(1-\theta)} .
+\]
+
+So the repair ratio is \(O(n)\) on every family without a dominant set, matching
+the certified \(\Theta(n)\) lower bound. **Any sequence whose ratio diverges
+faster than linearly, and in particular any approach to the local regime, must
+contain sets of size at least \(\frac85\bar s\ge\frac45\log_2m\).** The
+\(n=6\) base has \(M=3\) below its threshold \(96/25=3.84\), and its floor
+\(7/25\) is active; both \(n=7\) bases have \(M\in\{6,7\}\) above their threshold
+\(112/25=4.48\), and every \(n=8\) witness contains \([8]\) itself. The
+dominant set is not incidental, it is what the low-defect families are made of.
+
+### Lemma 13: the downset capacity floor
+
+With \(N(A)=|\{B\in\mathcal F:B\subseteq A\}|\),
+
+\[
+\varepsilon_\vee(\mathcal F)\ \ge\ 1-\frac1{m^2}\sum_{A\in\mathcal F}N(A)^2 .
+\]
+
+*Proof.* \(X\vee Y=A\) forces \(X,Y\in\mathcal F\) with \(X,Y\subseteq A\), so at
+most \(N(A)^2\) ordered pairs have union \(A\); sum over \(A\in\mathcal F\) and
+compare with \((1-\varepsilon_\vee)m^2\). \(\square\)
+
+This one is attained: the exhaustive audit over all 366 admissible families with
+\(n\le4\) reports tightest slack exactly \(0\).
+
+### Proposition 14: the certified bases admit no addition at all
+
+At \(n=6\) and \(n=7\) the largest admissible sizes are \(25\) and \(45\), and
+\(\mathcal D\), \(\mathcal B\), \(\mathcal L\) all attain them with *every*
+coordinate degree exactly at the cap. Consequently, for every
+\(C\subseteq[n]\) not already present, \(\mathcal F\cup\{C\}\) is inadmissible:
+a nonempty \(C\) pushes some degree past \(\lfloor2(m+1)/5\rfloor\), which does
+not grow at \(m=25\) or \(m=45\), and \(C=\emptyset\) leaves the incidence fixed
+while \(R_{m+1}\) rises above it.
+
+*Verified exhaustively* over all \(2^n\) candidate sets for all three bases by
+[`bound_local_regime.py`](bound_local_regime.py), which reports zero admissible
+additions. So the "add the missing unions" route to lower defect -- the one
+amplification mechanism that lowers \(\varepsilon_\vee\) and raises \(\log_2 m\)
+simultaneously -- is not merely unpromising at the certified bases, it is empty.
+Lowering the defect requires a larger ground set, which is exactly where the
+next section goes.
+
+### Proposition 15: the local frontier at eight coordinates
+
+The complete \(S_2\times S_6\) block-symmetric class at \(n=8\) contains 2,272
+canonical admissible families, of which 21 have negative float64 objective and
+**20 are certified negative in exact rational arithmetic**. Among them:
+
+* a separating 75-row family with \(\varepsilon_\vee=1144/1875=0.610133\ldots\)
+  and \(A_+\le-0.002032376\), improving the certified local frontier from
+  \(1336/2025=0.659753\ldots\);
+* a separating 75-row family with \(\varepsilon_\vee=468/625\) and
+  \(A_+\le-0.027744001\), whose repair ratio \(0.0370512\ldots\) is the first in
+  this repository to exceed the published base's \(0.0362591\ldots\);
+* two non-separating 70-row families reaching \(\varepsilon_\vee=139/245=0.567347\ldots\)
+  and ratio \(0.0580391\ldots\). `DEFINITIONS.md` records normalization as a
+  search and reporting condition rather than a condition in the displayed
+  supremum, so these are admissible; the flag is carried with every claim.
+
+Size 70 and 75 are **infeasible at \(n=7\)**: \(7\lfloor2\cdot70/5\rfloor=196\)
+is below \(R_{70}=215\). The eighth coordinate supplies the missing incidence,
+and in the two 70-row families it is an exact duplicate of the first. Coordinate
+cloning, which cannot change the defect or the size, is therefore what makes
+these sizes admissible at all: it is the amplification mechanism that Lemma 9
+predicts, since raising \(n\) is the only way to raise the size ceiling.
+
+**The census objective is a screen, not an estimate.** The 80-row family at
+\(\varepsilon_\vee=2553/3200\) reads \(-0.00026687\) in the census and
+\(+0.000454098\) exactly. This is *not* float64 imprecision: on the same order
+set the float evaluator agrees with the exact one to \(10^{-14}\), and the exact
+orbit route agrees with all \(8!\) orders exactly. The census averages
+\(C_{+,\pi}\) over one order per \(S_k\times S_{8-k}\) pattern, which represents
+the objective only when the family's automorphism group *is* that block group.
+For this class it is not: \(|\mathrm{Aut}|=1440\) matches \(|S_2\times S_6|\),
+but only 120 of those elements preserve the block partition, so the 28
+block-pattern orders cover just 12 of the 28 true orbits. Any subset average
+lies within \(\alpha(\max_\pi C_{+,\pi}-\min_\pi C_{+,\pi})\) of the truth, at
+most \(5.2\times10^{-3}\) over the registered bases, so candidates are re-ranked
+exactly with a threshold of \(+0.01\); every number above comes from the exact
+route.
+
+### Proposition 16: no lemma above uses separation, and the growth constant improves
+
+**No step of the product argument uses separation or activity.** Lemma 1 uses
+only that the two block join events are independent under two independent
+uniform product rows. Lemmas 2 and 3 use only that a uniform product row has
+independent blocks, that the conditional marginals, feasible interval and four
+transition probabilities at a coordinate depend on that block's prefixes alone,
+and that the four transition probabilities sum to one. The Corollary uses only
+\(|\mathcal H|=|\mathcal F||\mathcal G|\). In the admissibility section,
+separation appears exactly once, in the last bullet, where it is *concluded* for
+the powers of a normalized base; it is never a hypothesis.
+
+Moreover admissibility of the powers needs nothing beyond the base's own
+conditions. For a base with every degree equal to \(c\), incidence \(I\) and
+size \(m\):
+
+* *Cap.* The power has size \(m^k\) and coordinate degree \(cm^{k-1}\). Since
+  \(c\le\lfloor2m/5\rfloor\le2m/5\), the degree is an integer at most
+  \(2m^k/5\), hence at most \(\lfloor2m^k/5\rfloor\).
+* *Reimer.* The power's incidence is \(kIm^{k-1}\), an integer, and the
+  requirement is \(kIm^{k-1}\ge\lceil km^k\log_2m/2\rceil\). An integer
+  dominating a real number dominates its ceiling, so it suffices that
+  \(kIm^{k-1}\ge km^k\log_2m/2\), which cancels to \(2I\ge m\log_2m\), i.e. to
+  the integer inequality \(m^m\le2^{2I}\) --- and that is precisely the base
+  condition \(I\ge R_m\), because \(R_m\) is the least \(r\) with
+  \(2^{2r}\ge m^m\). **One base-level Reimer check certifies every power.**
+
+Consequently the two cloned-coordinate witnesses of Proposition 15 carry valid
+infinite constructions. Certified in
+[`certificates/gate_b_n8_clone_rational_v1.json`](certificates/gate_b_n8_clone_rational_v1.json),
+with the powers audited by direct instantiation in
+[`audit_clone_power.py`](audit_clone_power.py) (verdict
+`EVERY_POWER_ADMISSIBLE`: degrees equal the cap exactly at every power, Reimer
+strict, and at \(k=2\) the 4,900-row product recomputed from its rows has
+defect \(210171/240100=1-(173/490)^2\) exactly):
+
+\[
+\mathcal C=\text{the 70-row }n=8\text{ witness},\qquad
+\varepsilon_\vee(\mathcal C)=\frac{317}{490},\qquad
+A_+(\mathcal C)\le-\frac{3}{80}.
+\]
+
+Its powers give \(c_{\rm cl}^\star(n)\ge\frac3{80}\lfloor n/8\rfloor\), i.e. an
+asymptotic slope \(3/640=0.0046875\), against \(1/250=0.004\) for the published
+\(n=7\) base --- an improvement by a factor \(75/64=1.1719\ldots\). Combined
+with Corollary 10 the numerator is now pinned between
+
+\[
+\frac3{640}\,n-\frac3{80}\ \le\ \Lambda(n)\ \le\ \frac45\,n .
+\]
+
+The mechanism deserves a remark, because it is not the mechanism one would
+guess. Cloning a coordinate changes neither the size, nor the closure defect,
+nor the join structure; it only adds incidence. What it buys is *feasibility*:
+size 70 is impossible at seven coordinates, where \(7\lfloor2\cdot70/5\rfloor=196\)
+falls short of \(R_{70}=215\). So the eighth coordinate is spent entirely on
+clearing Reimer, and the reward is a base whose \(-A_+\) per coordinate exceeds
+anything available at seven. The cost is separation, which the definitions do
+not charge for.
+
+### Proposition 17: block-symmetric coverage at eight coordinates is complete
+
+\(S_k\times S_{8-k}\) pairs \(k\) with \(8-k\), so \(k\in\{1,2,3,4\}\) exhausts
+every block-symmetric class at \(n=8\). All four are enumerated and every
+candidate whose screen value is below \(+0.01\) is exactly re-ranked:
+
+| class | cells | raw masks | canonical families | screen-negative | certified negative |
+|---|---|---|---|---|---|
+| \(k=1\) | 16 | 65,535 | 136 | 2 | 2 |
+| \(k=2\) | 21 | 2,097,151 | 2,272 | 21 | 20 |
+| \(k=3\) | 24 | 16,777,215 | 13,470 | 54 | 52 |
+| \(k=4\) | 25 | 33,554,431 | 11,553 | 73 | 73 |
+| total | | 52,494,332 | 27,431 | 150 | 147 |
+
+The \(S_4\times S_4\) class supplies two further records, both certified in
+[`certificates/gate_b_n8_k4_rational_v1.json`](certificates/gate_b_n8_k4_rational_v1.json).
+
+**The lowest defect anywhere is \(4/9\).** The family \(\mathcal T\) of fifteen
+rows \(\{0,1,2,60,61,62,64,67,124,128,131,188,193,194,255\}\) has all eight
+degrees at the cap \(6\), incidence \(48\ge R_{15}=30\), exactly \(100\) of its
+\(225\) ordered joins missing, and
+
+\[
+\varepsilon_\vee(\mathcal T)=\frac49=0.4444\ldots,\qquad
+A_+(\mathcal T)\le-\frac1{2100}.
+\]
+
+This improves \(e^\star\le139/245=0.5673\ldots\) substantially. Two features are
+worth naming. It is *tiny*: low defect turned out not to need a large family, and
+by Lemma 6 a family with defect \(\varepsilon\) needs only
+\(m\ge\sqrt{2/\varepsilon}=2.12\) at \(\varepsilon=4/9\), so nothing forced size
+here. And it is exactly the shape Corollary 12 demands: four of its eight
+coordinates coincide, and it contains \([8]\) itself, well above the dominant-set
+threshold \(\frac85\bar s=128/25=5.12\).
+
+**The growth constant improves without leaving the separating class.** The
+separating 75-row family \(\mathcal S\) with all degrees at the cap \(30\) and
+incidence \(240\ge R_{75}=234\) has
+
+\[
+\varepsilon_\vee(\mathcal S)=\frac{284}{375},\qquad
+A_+(\mathcal S)\le-\frac{177}{5000},
+\]
+
+so its powers give slope \(177/40000=0.004425\) against the published
+\(1/250=0.004\): an improvement of \(10.6\%\) using a fully normalized family, so
+the growth improvement of Proposition 16 does not depend on admitting
+non-separating bases. Its certified ratio \(531/11360=0.0467\ldots\) is the best
+among separating families. The cloned base still holds the overall slope record
+at \(3/640=0.0046875\).
+
+**The screen is exact at \(k=1\) and \(k=4\) and wrong at \(k=2\) and \(k=3\).**
+That is consistent with the diagnosis in Proposition 15: block-pattern orders
+represent the objective exactly when the family's automorphism group is the block
+group. Of the 150 screen-reported negatives, 147 are certified, four are exactly
+non-negative, and one — reported non-negative — is exactly negative.
+
+### Proposition 18: coordinate cloning is defect-free, and it saturates
+
+Let \(\mathcal F'\) be \(\mathcal F\) with coordinate \(i\) duplicated. Each row
+of \(\mathcal F'\) is a row of \(\mathcal F\) with one bit repeated, so the map
+is a bijection commuting with union. Hence, **exactly**:
+
+* \(m\) is unchanged;
+* \(\varepsilon_\vee\) is unchanged, since \(X\vee Y\) leaves the family before
+  cloning exactly when it leaves after;
+* every degree is unchanged and the clone's degree equals its twin's, so the cap
+  still holds;
+* the incidence rises by \(\deg_i\) while \(R_m\) depends only on \(m\).
+
+So **cloning preserves admissibility unconditionally and cannot move the
+defect.** It is free in both quantities the local question measures.
+
+What it does move is \(A_+\). Since \(\log_2m\) is fixed, \(A_+\) tracks \(Q\)
+and \(C_+\), and both fall: a clone placed after its twin has a deterministic
+conditional OR probability and contributes no entropy, while the prefix
+structure seen by the other coordinates changes. Measured exactly on the
+five-coordinate core of \(\mathcal T=\)`n8tiny`, cloning coordinate 2 repeatedly
+([`audit_clone_saturation.py`](audit_clone_saturation.py), verdict
+`CLONING_IS_DEFECT_FREE_AND_SATURATES`):
+
+| clones | \(n\) | \(A_+\le\) | \(\Delta\) | \(\varepsilon_\vee\) |
+|---|---|---|---|---|
+| 0 | 5 | \(+0.010695694\) | | \(4/9\) |
+| 1 | 6 | \(+0.003478204\) | \(-0.007217490\) | \(4/9\) |
+| 2 | 7 | \(+0.000772362\) | \(-0.002705842\) | \(4/9\) |
+| 3 | 8 | \(-0.000478465\) | \(-0.001250827\) | \(4/9\) |
+| 4 | 9 | \(-0.001137229\) | \(-0.000658764\) | \(4/9\) |
+
+**This is how the record low-defect witness exists.** Collapsing \(\mathcal T\)'s
+four identical coordinates leaves an admissible five-coordinate family of the
+same size 15 and the same defect \(4/9\) whose objective is *positive*,
+\(+0.010695694\). The clones, not the ground set, make it a witness. That is the
+opposite of the mechanism in Proposition 16: `n8clone_lo` and `n8clone_hi`
+collapse to *inadmissible* seven-coordinate families (incidence 196 below
+\(R_{70}=215\)), so for those the clone buys feasibility, while here it buys
+negativity. Both effects are real and they are distinct.
+
+**The gain has a ceiling.** The successive deltas shrink with ratios
+\(0.3749,\ 0.4623,\ 0.5267\), so the improvement is geometric and the total
+budget is bounded — for this family roughly \(0.013\). Cloning therefore flips a
+family whose objective is positive but *small*, and cannot rescue one that is far
+positive: the lowest-defect admissible family known at \(n=7,m=45\) has
+\(A_+=+0.0847\), an order of magnitude outside the budget. So cloning answers the
+amplification question in the sharpest available form — the numerator can be
+amplified at *zero* defect cost — while showing the amplification is finite.
 
 ## Scope and stronger interpretation
 

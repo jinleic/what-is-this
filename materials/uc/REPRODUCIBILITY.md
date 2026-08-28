@@ -511,3 +511,248 @@ separate three-case proof in `uc/bridge_uc.py`.
 **OPEN:** this is a finite control. The universal statement is the induction
 in `uc/paper/main.tex`, and the control does not touch Theorem `thm:main`, the
 certificate, or the strictness estimate at `t_cert`.
+
+## Liu H2 zero-support boundary layer
+
+Not part of the UC certificate chain. This is the quantitative form of the
+ingredient `uc/liu9_tube.py` names as missing on the zero-support stratum of
+Liu's Hypothesis 2.
+
+```bash
+"$PY" -I -B uc/liu9_boundary_layer.py \
+  --random-points 3000 --cross-octaves 60 --cross-pieces 4 \
+  --paired-boxes 400 --dps 60 \
+  --output "$OUT/liu9-boundary-layer.json"
+```
+
+Single core, 51.2 s observed. Parameters come from Liu's equations
+(87)--(90), never from the printed decimals.
+
+**PROVED (Arb), at `y0 = 1/32`:**
+
+| constant | definition | certified enclosure |
+|---|---|---|
+| `Lam_f` | `2(1-beta)*mean - 1` | `0.11105875229486864...` |
+| `Lam` | `2(1-beta)*(mean-y0) - 1` | `0.05481203728629946...` |
+| `K` | `2(1-beta)*log(1/(1-y0))` | `0.05714431955178364...` |
+| `m0` | `Lam*(log(1/y0)+1) - K` | `0.18763176326324115...` |
+| `m0s` | sharpened single-coordinate constant | `0.29916157182525466...` |
+
+`y0 = 1/8` and `1/16` are refuted (`Lam < 0`); `1/24` through `1/1024` are
+certified, with the face's `|h'''|` ceiling rising from 575 to `1.05e6`. The
+admissible `kappa` is `m0/(2*delta + y0*x^2)`: `5.374` at component-mean
+deviation `1/100`, `0.873` at `1/10`, against the smooth `A/C` ceiling
+`0.70046750915...` recomputed from the certified curvatures.
+
+**MACHINE-VERIFIED (cells and samples):** 57,600 dyadic cells for the cross
+link, exactly one tight at the corner `(y0,1)` where the estimate is an
+equality; 160,000 cells for the paired link, 400 of them on the edge `z=0`
+where `pi_1` vanishes identically. 3,240 stratum points (240 structured
+corners with `q` in `{0,1e-9,1/2,1-1e-9,1}` and supports down to `1e-30`,
+plus 3,000 seeded random draws) show no violation; the worst
+actual/predicted ratio is 2.61 for one coordinate and 3.93 for all of them.
+Forward-mode differentiation through Liu's own transcribed `_formula` agrees
+with the closed-form partial derivative to `1.2e-60`, and the finite
+difference of `G` in `log(1/y)` between `1e-40` and `1e-80` reproduces the
+separately Arb-certified leading coefficient `B` to 41 digits.
+
+Report: [`results/liu9-boundary-layer.json`](verification/results/liu9-boundary-layer.json).
+As above, the stored digest identifies the artifact, which carries a
+timestamp; the counts and constants are what reproduce.
+
+**MACHINE-VERIFIED (fail-closed):**
+`uc/verification/test_liu9_boundary_layer.py` passes 9/9 and rejects
+`y0 = 1/8` and `1/16`, a dropped `-h'(y)` term, a halved cross term, a
+paired discard above `y0 = 1/4`, and a tenfold inflated `m0`.
+
+**OPEN:** ingredients (i) and (iii) of the piecewise local lemma, and the
+mirror stratum. The face is `C^3` only for supports in `[y0,1-y0]`: `h'''`
+blows up at `b_j -> 1` as well, and a small-mass atom near 1 lies inside the
+tube. The run measures that layer's coefficient, `1-2(1-beta)*W1-2*beta*A1`
+with `W1` the weight already at support 1, against the closed form to `1e-40`
+at six configurations; the mean constraint does not sign it and it flips at
+`W1 = 1/2`. The lower layer's own admissible `kappa` decays like
+`sqrt(min(q,1-q))`, so it cannot certify a tube radius on its own. Nothing
+here claims Liu's Hypothesis 2.
+
+## Liu H2 mirror boundary layer
+
+Not part of the UC certificate chain.  This closes the stratum that the
+zero-support layer exposed: the face `b_j=0` is only `C^3` for supports in
+`[y0,1-y0]`, and `h'''` is equally unbounded as `b_j -> 1`.
+
+```bash
+"$PY" -I -B uc/liu9_mirror_layer.py \
+  --random-points 1200 --theta-pieces 32768 --paired-boxes 128 \
+  --cross-octaves 40 --cross-boxes 64 --dps 60 \
+  --output "$OUT/liu9-mirror-layer.json"
+"$PY" -I -B uc/verification/test_liu9_mirror_layer.py
+```
+
+Single core, 18.3 s and 0.35 s observed.  What it certifies:
+
+| Claim | Status |
+|---|---|
+| The leading coefficient is `1-2(1-beta)W1-2*beta*A1`, matched to the closed form to `1e-40` at six configurations | PROVED |
+| The discriminating case `W1=1/2, A1=1` gives exactly `-beta`, so no `W1`-only formula fits | PROVED |
+| A tube forces `W1 <= rho^2/g(1-t0)`, `g(b)=[b(b-x)]^2`, hence `M>0` below an explicit critical radius | PROVED |
+| `G_j >= M log(1/t) - K1`, and the reduction to `b_j=1` gains `m1` per unit of `sum_j w_j(1-b_j)` | PROVED |
+| The reduction raises supports, so the mean rises and mean-feasibility is free | PROVED |
+| `(rho,t0)=(1/10,1/64)`: raw-gap `kappa <= 0.393693` | PROVED |
+| `(rho,t0)=(1/10,1/32)`: the estimate does not cover the layer | REFUTED |
+| `(rho,t0)=(1/50,1/1024)`: raw-gap `kappa <= 2.47862` | PROVED |
+
+Two arithmetic rules are load-bearing and were learned the hard way.  First,
+`arb.union` outward-rounds, so a ball touching zero from above has a negative
+lower bound -- `-4.5e-13` at `1/2048`.  Signs of manifestly nonnegative
+quantities are therefore certified in exact `Fraction` arithmetic at cell
+corners, and Arb is used only where a genuine enclosure is wanted.  Second,
+`1-pi` must be evaluated through its manifest forms
+`1-pi-u(1-2s) = s+su(s+u-su)` rather than by subtracting the product form,
+which loses the inequality to cancellation near the origin.
+
+## Liu H2 smooth chart
+
+```bash
+"$PY" -I -B uc/liu9_smooth_chart.py --q-cells 8 \
+  --output "$OUT/liu9-smooth-chart.json"
+```
+
+Single core, 1.8 s observed.  The method is Taylor's *mean-value* form, not a
+Taylor bound with a remainder: both `gap` and `dist^2` vanish to second order
+at the chart centre, so `f(v) = (1/2) v^T Hess f(xi) v` exactly, and the
+unbounded `h'''` never appears.
+
+| Claim | Status |
+|---|---|
+| At the centre both functionals vanish with vanishing gradient, every `q`; worst enclosure `2.1e-68` | PROVED |
+| The jet Hessian reproduces `H* diag(A, C q(1-q))` and `diag(2px^2, 2(p^2+px^2)q(1-q))` to `1.9e-67` | PROVED |
+| `r` is a gauge: no Hessian entry moves by more than `1.1e-67` | PROVED |
+| The `q(1-q)` factors cancel in the pencil, so the ceiling is `q`-free and equals `0.3871250878` | PROVED |
+| `gap >= kappa dist^2` on `|s-x|,|d| <= 1/2048`, all `q in [1/4,3/4]`, `kappa >= 234627/1048576` | PROVED |
+| The same at radius `1/1024` or larger | REFUTED |
+
+**OPEN, with the blocker measured.**  The worst `H_ss` enclosure width is
+`14.36` at radius `1/64`, `6.715` at `1/128`, `3.254` at `1/256`, `1.602` at
+`1/512`, `0.7952` at `1/1024`, `0.3961` at `1/2048`, against a true
+`H*A = 0.4101534`.  That is linear in the radius with constant about `811`, so
+the limit is interval dependency, not geometry.  Covering the `|s-x| ~ 0.15`
+that a `rho=1/10` tube reaches would need about `9.7e7` cells.  The tool that
+would fix it is Taylor-model or centered-form arithmetic, or an analytic
+third-derivative bound on the chart.
+
+## Liu H2 residual frontier
+
+```bash
+"$PY" -I -B uc/liu9_survivors.py \
+  --output "$OUT/liu9-survivor-classification.json"
+```
+
+Single core, 0.9 s observed, canonical SHA-256
+`f7b22755620c708dde899ab51f83c70ed0c78f20ea3381fdaaff99c1840f3ff5`.
+All 79 residual complement boxes are covered by the zero-face hypothesis
+`2(1-beta)*mean-1 >= 0.11105875229... > 0` (70 boxes, and that constant is
+exactly the boundary layer's own `lam_feasible`) or are mirror-only and
+entirely outside the tube (9 boxes: `large-044`, `-046` through `-052`,
+`-054`).  The run also corrects an earlier count: **61** boxes are
+coordinate-identical across the two localized runs, not nine.
+
+## Units for every Liu H2 kappa
+
+`gap = EHX*(Phi-1)` is exact wherever `EHX > 0`, and
+`H* = EHX(P*) = p*h(x) = 0.552666730020487676...`.  The ceiling
+`0.70046750915...` printed by `uc/liu9_tube.py` is in `(Phi-1)/dist^2` units;
+every kappa derived from `d gap/d b_j` is in raw-gap units, where the same
+ceiling is `0.38712508776...`.  Use
+`liu9_boundary_layer.smooth_kappa_ceiling(params, units="gap")`.  Before
+2026-08-28 the boundary-layer module compared the two directly, which was a
+comparison between incompatible quantities; both conclusions survive the
+correction with a larger margin.
+
+## Liu H2 endpoint stratum and centered chart form
+
+```bash
+"$PY" -I -B uc/liu9_qdegenerate.py    --output "$OUT/liu9-qdegenerate.json"
+"$PY" -I -B uc/verification/test_liu9_qdegenerate.py
+"$PY" -I -B uc/liu9_chart_centered.py --output "$OUT/liu9-chart-centered.json"
+"$PY" -I -B uc/verification/test_liu9_chart_centered.py
+"$PY" -I -B uc/verification/test_liu9_smooth_chart.py
+```
+
+Single core; 13.3 s for the centered form, the rest a few seconds each.
+Canonical digests `7a1f903031ca0fd2` (q-degenerate) and `c5a0ff94d59f44a6`
+(centered).  Test counts 9, 12, and 9, all passing.
+
+| Claim | Status |
+|---|---|
+| Inner core `\|d\| <= 1/32` has q-uniform `kappa = 1/3` | PROVED |
+| Endpoint annulus `1/32 <= \|d\| <= 1/4`, `min(q,1-q) <= 1/4096`, `kappa = 1/20` | PROVED |
+| `H* D(Q_d) >= (1/4) delta(Q_d)^2` over 384 exact dyadic cells | PROVED |
+| The seam holds under `rho^2 <= p^2 eps_sm^2 q_*(1-q_*)` at `rho = 1/4096` | PROVED |
+| Only the simultaneous swap `(q,P0,P1) -> (1-q,P1,P0)` is a symmetry | PROVED |
+| `q -> 1-q` alone is a symmetry | REFUTED, gap changes by `2.155e-02` |
+| Integration with an interior chart at `eps_sm = 1/32` | DISCHARGED by `liu9_chart_cover.py` |
+| Centered form: inflation constant `811.29 -> 72.20` | PROVED |
+| Centered form: radius `1/256`, `kappa >= 4119063/33554432` | PROVED |
+| Centered form at radius `1/128` | REFUTED |
+| Cover: pencil PSD on `\|s-x\|,\|d\| <= 1/32`, `q in [1/4096,4095/4096]`, 393216 cells | PROVED |
+| A uniform box cover suffices; no radial quadrature is needed | PROVED (PSD is pointwise; the box is convex and contains the centre) |
+| The radius was the binding constraint | REFUTED -- the `q` range was |
+| A uniform `q` grid reaches `q = 1/4096` | REFUTED, stops below `q = 1/64` |
+| `m22/(q(1-q))` is the same constant across `q = 1/4 .. 1/4096` | PROVED, `0.69512040` to nine digits |
+| Step B yields `gap - kappa*dist^2 >= 0` exactly | REFUTED -- `>= -7.361e-69` at radius `1/32`, the binding residual of (87)-(90) |
+| That deficit is an all-`q` enclosure, not a sampled bound | PROVED -- value and `d/ds` from a `q`-free jet, `d/dd` exactly zero for every `q` |
+| The centre `d`-gradient bound needs sampling in `q` | REFUTED -- `(1-q)*(-q)+q*(1-q)` is the zero polynomial in exact `Fraction` |
+| Ambient nine-variable extension of the chart result | REFUTED at `(y,eps,q)=(1/32,1/1024,1/2)` |
+| That counterexample refutes Liu's Hypothesis 2 | REFUTED -- it is mean-infeasible, `mean-target = -6.4408e-04` |
+| Feasible-half-space nine-variable extension | CONDITIONAL; 0 of 65 scanned mean-preserving `y` are negative |
+| A positive tube radius | OPEN -- not certified, and `liu9_tube.py` does not claim one |
+
+`h'''(u) = (1-2u)/(u^2(1-u)^2)`.  The task specification that commissioned the
+centered form gave that sign wrong; the module's own 20-digit Richardson
+finite-difference gate rejected it before any arithmetic depended on it, and
+the wrong sign is now a mutation test.  Using `h'''` at all is legitimate only
+on this chart, where the zero-support and mirror strata are already removed and
+every support stays inside `[0.659,0.722]`.
+
+## Liu H2 chart cover
+
+```bash
+$PY -I -B uc/liu9_chart_cover.py \
+  --radius 1/32 --delta 1/512 --q-min 1/4096 --q-pieces 64 \
+  --falsification-points 1200 --progress-every 50000 \
+  --checkpoint uc/verification/results/.cover.checkpoint.json \
+  --output uc/verification/results/liu9-chart-cover.json
+```
+
+Report `sha256 = 410ada1675fdb8858bb11d9ed2ca13ba69b7cb6e96daf472f5f70b9eff49ecd8`; the weakest determinant margin, `2.480756e-05` at
+`(s-x,d,q) = (15/512,-15/512,1/4096)`, reproduced identically across two
+independent full runs.
+
+393,216 cells at about 205 cells/s on one core, roughly 32 minutes; the run is
+checkpointed every 2,000 cells and resumes in place unless `--no-resume` is
+given.  Cell geometry is exact `Fraction`: the verifier requires both endpoint
+cells to land on the box boundary, every consecutive pair to abut with neither
+gap nor slack, and the covered region to contain the chart centre.  That last
+check is not decoration -- an annulus would pass every PSD test and prove
+nothing, because the mean-value step draws its segments from the centre.
+
+Two measured facts fixed the parameters, and both are mutation-tested.  At
+`delta = 1/256` the pencil fails at offset `1/32`, so the cell half-width is
+`1/512`.  A uniform `q` grid fails below `q = 1/64` at any cell size, because
+`gap.hdd` and `dist.hdd` carry an exact factor `q(1-q)` while the enclosure
+error does not; octave cells of relative width `1/64` are what reach `1/4096`.
+
+## Liu H2 nine-variable extension
+
+```bash
+$PY -I -B uc/liu9_ninevar.py
+$PY -I -B uc/verification/test_liu9_ninevar.py
+```
+
+**OPEN:** the ambient refutation is real but mean-infeasible, so the question
+that decides Liu's Hypothesis 2 -- positivity over the feasible half-space
+`mean >= p*x` -- is not settled.  The 65-point scan is evidence, not a proof:
+it covers one transverse family, the single-atom insertion, at sampled `y`.
+Nothing here certifies a tube radius.
+

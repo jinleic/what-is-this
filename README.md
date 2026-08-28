@@ -12,7 +12,7 @@ any word from a private, out-of-repo list appears in the output).
 | Problem | dir | last change | latest headline |
 |---|---|---|---|
 | [Cordoba-Cordoba-Fontelos 1D inviscid model](problems/ccf.html) | `ccf` | 2026-08-22 | Salvage from the paused subproject |
-| [Erdős Problem #389: consecutive-product divisibility](problems/e389.html) | `e389` | 2026-08-27 | E389-HALF-WINDOW-EVICTION-DENSITY (2026-08-27) — EVICTION TURNS OUT TO BE FREE, THE WITNESS DENSITY GETS AN UNCONDITIONAL CEILING, AND THE \(m=27\) SHIFT NEIGHBOURHOOD REACHES |
+| [Erdős Problem #389: consecutive-product divisibility](problems/e389.html) | `e389` | 2026-08-28 | E389-R1-PROVED (2026-08-28) - THE FIRST RUNG OF CONJECTURE R IS NOW A THEOREM, AND THE CLAIM THAT BLOCKED IT WAS MY OWN ARITHMETIC ERROR |
 | [Hilbert's tenth problem over Q](problems/h10q.html) | `h10q` | 2026-08-26 | H10/Q (2026-08-24g) — L34 SHARP AP1 PAIR-MOMENT THRESHOLD |
 | [Irrationality of zeta(5) (Apéry-style)](problems/zeta5.html) | `zeta5` | 2026-08-26 | 2026-08-15 — Session 8: ζ(5) campaign opened (zeta5/); baseline certified, search tool validated blind |
 | [Kobon triangle problem](problems/kobon.html) | `kobon` | 2026-08-25 | KOBON (2026-08-24f) — GENERALIZED LINE-0 COVECTOR LIFT EXHAUSTED |
@@ -21,7 +21,7 @@ any word from a private, out-of-repo list appears in the output).
 | [Quantum LDPC codes: exact distance & co-design](problems/qec.html) | `qec` | 2026-08-26 | QEC (2026-08-24) — TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$ |
 | [Ramsey number R(5,5)](problems/r55.html) | `r55` | 2026-08-26 | R55 (2026-08-24d) — FIXED-FIVE CANDIDATE CENSUS EMPTY; FULL CERTIFICATION PENDING |
 | [Three-dimensional Ising model (exact solution)](problems/ising3d.html) | `ising3d` | 2026-08-27 | ISING-W26 (2026-08-24) — TRACE-NINE PROJECTION NONZERO; DEGREE <= 182400 |
-| [Union-closed sets conjecture (Frankl)](problems/uc.html) | `uc` | 2026-08-27 | UC-BRIDGE-EXHAUSTION-CAMPAIGN-K-RESUME (2026-08-27) — THE ENTROPY BRIDGE IS NOW EXHAUSTIVELY MACHINE-CHECKED, A SECOND REFEREE FINDS NO PROOF DEFECT, AND CAMPAIGN K'S THREE LOS |
+| [Union-closed sets conjecture (Frankl)](problems/uc.html) | `uc` | 2026-08-28 | UC-BRIDGE-EXHAUSTION-CAMPAIGN-K-RESUME (2026-08-27) — THE ENTROPY BRIDGE IS NOW EXHAUSTIVELY MACHINE-CHECKED, A SECOND REFEREE FINDS NO PROOF DEFECT, AND CAMPAIGN K'S THREE LOS |
 
 ## Update
 

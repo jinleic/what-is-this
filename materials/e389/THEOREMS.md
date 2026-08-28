@@ -1237,10 +1237,12 @@ results in this file are exactly what either estimate predicts.
 Open gaps:
 
 1. The exact target is a run of $\lceil m/2\rceil$ consecutive
-   $m$-compensation-good integers whose start also satisfies the exact
-   small-prime tier. No theorem proves that such a run exists for a given $m$.
-   Ceiling (26) bounds the density of the target from above but cannot
-   establish nonemptiness.
+   $m$-compensation-good integers. Section 13 removes the other half of the
+   old target: the small-prime tier fails on a set of density zero by (32), so
+   existence depends on the run alone, and no band or CRT class can obstruct.
+   No theorem proves that such a run exists for a given $m$. Ceiling (26)
+   bounds its density from above but cannot establish nonemptiness, and
+   Conjecture R of Section 13 is exactly what is missing.
 2. The Dirichlet construction proves that no fixed modulus can be sufficient;
    a successful construction must adapt to the translated bad window.
 3. Old blockers are no longer part of the difficulty. Translation (23) evicts
@@ -1255,3 +1257,1061 @@ Open gaps:
    factors of consecutive integers and is not solved here.
 5. No construction here reaches a previously unknown $m$; Erdős #389 remains
    open.
+
+## 13. The small-prime tier is asymptotically free — PROVED
+
+Section 9 splits the witness condition exactly into the small-prime tier
+$s_p(m,k)\ge0$ for $p\le m$ and a run of $\lceil m/2\rceil$ consecutive
+$m$-compensation-good bad-window terms. This section proves that the first
+half of the split is not an obstruction: for fixed $m$ the tier holds for all
+but a density-zero set of $k$, at an explicit polynomial rate. What remains of
+Erdős #389 is exactly the run.
+
+### A digit-sum identity for the slack — PROVED
+
+Write $S_p(n)$ for the base-$p$ digit sum. Kummer's theorem in Legendre form
+gives $v_p\binom{a+b}{a}=(S_p(a)+S_p(b)-S_p(a+b))/(p-1)$, so
+
+$$
+\boxed{s_p(m,k)=\frac{2S_p(m+k)-S_p(m+2k)-S_p(m)}{p-1}.}\tag{28}
+$$
+
+Indeed $s_p=v_p\binom{m+2k}{k}-v_p\binom{m+k}{m}$, the first term equals
+$(S_p(k)+S_p(m+k)-S_p(m+2k))/(p-1)$ and the second
+$(S_p(m)+S_p(k)-S_p(m+k))/(p-1)$; the two copies of $S_p(k)$ cancel. Once $m$
+and $p$ are fixed, (28) makes the slack a statement about the digits of $k$
+alone, which is what allows exact counts far beyond any enumeration.
+
+### A carry lower bound — PROVED
+
+Let $\mathrm d_j(n)$ be the $j$-th base-$p$ digit of $n$, let $D$ be the
+number of base-$p$ digits of $m$ (so $D=0$ when $m=0$), let
+
+$$
+Z=\min\{z\ge0:\ \mathrm d_{D+z}(k)\ne p-1\},\qquad
+W=\#\{j>D+Z:\ 2\,\mathrm d_j(k)\ge p\}.
+$$
+
+Then
+
+$$
+\boxed{s_p(m,k)\ \ge\ W-D-Z.}\tag{29}
+$$
+
+Write $c_1$ for the carry count of $m+k$ and $c_2$ for that of $k+(m+k)$, so
+that $s_p=c_2-c_1$ by Section 1.
+
+*Upper bound on $c_1$.* A carry leaves position $j$ of $m+k$ only when
+$\mathrm d_j(m)+\mathrm d_j(k)+\text{carry in}\ge p$. For $j\ge D$ the first
+summand vanishes, so a carry leaves position $j$ only if one enters and
+$\mathrm d_j(k)=p-1$. At $j=D+Z$ the digit is not $p-1$, so no carry leaves
+it, and by induction none leaves any higher position. Every carry therefore
+occurs at one of the $D+Z$ positions below $D+Z$, giving $c_1\le D+Z$.
+
+*Lower bound on $c_2$.* For $j>D+Z$ no carry of $m+k$ enters position $j$ and
+$\mathrm d_j(m)=0$, hence $\mathrm d_j(m+k)=\mathrm d_j(k)$. Position $j$ of
+$k+(m+k)$ then receives $2\mathrm d_j(k)+\text{carry in}\ge2\mathrm d_j(k)$,
+which emits a carry whenever $2\mathrm d_j(k)\ge p$. Hence $c_2\ge W$.
+
+Subtracting gives (29). The inequality is attained: the certificate reports
+minimum margin $0$ over its scanned rectangle, so the constants cannot be
+removed.
+
+### Exact failure counts and a closed-form bound — PROVED
+
+Put $h=\#\{d:0\le d<p,\ 2d\ge p\}$, so $h=1$ for $p=2$ and $h=(p-1)/2$ for
+odd $p$, and
+
+$$
+T(n,B)=\sum_{i=0}^{\min(B,n)}\binom{n}{i}h^i(p-h)^{\,n-i}.
+$$
+
+By (29) a failure $s_p(m,k)<0$ forces $W\le D+Z-1$. Splitting on the value of
+$Z$ and counting digits directly,
+
+$$
+\boxed{\#\{k<p^J:\ s_p(m,k)<0\}\ \le\ p^D\Bigl[(p-1)\sum_{z=0}^{J-D-1}
+T(J-D-z-1,\ D+z-1)+1\Bigr].}\tag{30}
+$$
+
+For $Z=z<J-D$ the digits below $D$ are free ($p^D$ choices), positions
+$D,\dots,D+z-1$ are pinned to $p-1$, position $D+z$ has $p-1$ admissible
+values, and the $J-D-z-1$ digits above it must carry at most $D+z-1$ high
+digits, which is exactly $T(J-D-z-1,D+z-1)$. The trailing $p^D$ covers the
+degenerate case $Z=J-D$. Dividing by $p^J$ turns the digit count into a
+binomial law:
+
+$$
+\frac{\#\{k<p^J:\ s_p<0\}}{p^J}\le
+\sum_{z\ge0}\frac{p-1}{p^{z+1}}
+\Pr\bigl[\mathrm{Bin}(J-D-z-1,\ h/p)\le D+z-1\bigr]+p^{D-J}.\tag{30a}
+$$
+
+### Exponential decay — PROVED
+
+Every prime has $h/p\ge1/3$, with equality at $p=3$ and value $1/2$ at $p=2$.
+Let $J\ge16(D+1)$. For $z\le J/16$ the binomial in (30a) has
+$n=J-D-z-1\ge\frac78J$ trials, mean $nh/p\ge0.29J$, and threshold
+$D+z-1\le J/8$, so Hoeffding's inequality gives
+$\Pr\le\exp(-2(nh/p-J/8)^2/n)\le\exp(-0.052J)$. The terms with $z>J/16$ are
+dominated by the geometric tail $p^{-J/16}\le2^{-J/16}$, and
+$p^{D-J}\le2^{-15J/16}$. Summing the three contributions,
+
+$$
+\boxed{\frac{\#\{k<p^J:\ s_p(m,k)<0\}}{p^J}\le4e^{-J/24}
+\qquad(J\ge16(D+1)),}\tag{31}
+$$
+
+equivalently $\le4X^{-1/(24\log p)}$ at $X=p^J$. The certificate checks (31)
+against the exact counts on every reported cell whose hypothesis holds.
+
+### The tier is not the obstruction — PROVED
+
+Let
+
+$$
+G_m=\{k\ge1:\ \text{every }w\in\mathcal B(m,k)\text{ is }
+m\text{-compensation-good}\}.
+$$
+
+Section 9 says $(m,k)$ is a witness exactly when $k\in G_m$ and
+$s_p(m,k)\ge0$ for every $p\le m$. By (31) the second condition fails on a set
+of density zero,
+
+$$
+\#\{k\le X:\ \exists\,p\le m,\ s_p(m,k)<0\}\le
+4\pi(m)\,m\,X^{1-1/(24\log m)}=o(X),\tag{32}
+$$
+
+so
+
+$$
+\#\{k\le X:\ (m,k)\text{ a witness}\}\ \ge\
+\#\bigl(G_m\cap[1,X]\bigr)-o(X).
+$$
+
+Two consequences. First, if $G_m$ has positive upper density then $(m,k)$ is a
+witness for infinitely many $k$. Second, the prime-power band of Section 8 and
+the small-prime CRT classes are devices for *constructing* witnesses, not
+constraints on their existence: they cannot obstruct, because their failure set
+is thin. The triple intersection that Section 12 named as the target collapses
+to a single question — does a run of $\lceil m/2\rceil$ consecutive
+$m$-compensation-good integers exist?
+
+### The reduction is finitary — PROVED
+
+(32) is an explicit power of $X$, not merely $o(X)$, so the density hypothesis
+above can be replaced by an inequality at a *single* scale.
+
+**Corollary.** Fix $m$ and put $c_m=1/(24\log m)$. If for some $X$
+
+$$
+\#\bigl(G_m\cap[1,X]\bigr)\;>\;4\pi(m)\,m\,X^{1-c_m},
+$$
+
+then $(m,k)$ is a witness for some $k\le X$; if it holds for infinitely many
+$X$, for infinitely many $k$.
+
+*Proof.* By (32) the right-hand side bounds the number of $k\le X$ carrying a
+tier failure, so some $k\in G_m\cap[1,X]$ carries none, and by Section 9 that
+$k$ is a witness. $\square$
+
+This replaces an asymptotic density hypothesis by one finite inequality, and it
+is strictly weaker: a run count $\gg X^{1-c}$ with $c<c_m$ suffices, where
+positive density demands $\gg X$. The honest cost is where it starts to bite.
+For $m=27$, $c_{27}=0.0126$ and $4\pi(m)m=972$, so the criterion is vacuous
+below $X=10^{236.3}$ — the bound exceeds $X$ itself — and it beats the measured
+run density $(0.123664)^{14}=10^{-12.71}$ only past $X=10^{1241.6}$. It is
+therefore a structural sharpening, not a computational one: it says the tier is
+free *quantitatively*, and it converts Conjecture R into a target that a single
+scale can meet, but no reachable scale meets it by counting alone.
+
+### A conditional resolution
+
+Goodness is monotone in $m$ (Section 10): a $1$-compensation-good integer is
+$m$-compensation-good for every $m\ge1$. So define
+
+> **Conjecture R($L$).** For every $L\ge1$ the set of $k$ such that
+> $k+1,\dots,k+L$ are all $1$-compensation-good has positive upper density.
+
+Conjecture R($\lceil m/2\rceil$) plus (32) gives infinitely many witnesses for
+that $m$; Conjecture R in full gives Erdős #389 for every $m$. The reduction
+is unconditional and exact — only R is open.
+
+R is a correlation statement for large prime factors of consecutive integers.
+Its first rung $R(1)$ — positive lower density for a single term — **is now
+proved in Section 17**; what follows records the two elementary routes tried
+here, one of which is genuinely closed and one of which was misread.
+
+*The union bound cannot work asymptotically.* Short-cofactor failures are
+pairwise disjoint, since two primes with $p^2,q^2>2w$ would give $pq\mid w$
+with $pq>2w$, so their total density is exactly $\log2$ by (26) and is
+irreducible. Grouping the level-failure events by their number of usable
+levels, a prime with exactly $r$ of them satisfies
+$X^{1/(r+2)}<p\le X^{1/(r+1)}$, and Mertens gives $\sum1/p=\log\frac{r+2}{r+1}$
+over that range, so the modelled level mass tends to
+
+$$
+\sum_{r\ge1}2^{-r}\log\frac{r+2}{r+1}=0.32252\ldots,
+$$
+
+for a union total $\log2+0.32252=1.01567>1$. Fixed small primes contribute
+nothing in the limit because their level counts grow with $X$. At finite scale
+the total dips below one — $0.96981$ at $1.2\cdot10^6$, $0.98660$ at
+$1.02\cdot10^7$, $1.00659$ at $10^{10}$ — but there exact counting is stronger
+than any bound, so the dip is worthless.
+
+*The obvious repair is false.* One would keep only the level failures that
+avoid the short-cofactor class, hoping for a factor $1-\log2$. Exact
+classification of every integer in a block refutes this. At $10^6$ the four
+disjoint classes have densities $0.144500$ good, $0.629345$ short-cofactor
+only, $0.172740$ level-failure only, $0.053415$ both; independence would
+predict $0.071745$ for the level-only class, so the observed value is $2.41$
+times larger ($2.35$ at $10^7$). The two failure modes are adversely
+correlated: a prime factor above $\sqrt{2w}$ leaves a cofactor below
+$\sqrt{w/2}$, which has few primes available to fail a level test.
+
+**[RETRACTED — this paragraph previously concluded "the overlap that would
+rescue the union bound does not exist". That is false, and Section 17 proves
+the opposite. The refutation above is of the *independence* prediction
+$0.071745$; the union bound needs only $0.015668$, and the measured overlap is
+$0.053415$ — already $3.4$ times enough. The two statements were conflated.]**
+
+Partitioning by the largest prime factor does remove the overlap honestly, but
+then requires equidistribution of $p$-smooth cofactors in arithmetic
+progressions modulo $p$ — moduli of size about $\sqrt X$ — which is
+Bombieri–Vinogradov-strength input and is not attempted here. Section 17 avoids
+it by bounding the overlap from below on the *prime* side instead, where a
+single-modulus exponential-sum bound suffices.
+
+### Exact evidence
+
+`data/tier_density_m1_30.json` verifies (28) and (29) at 36,400 triples over
+$1\le m\le20$, $1\le k\le400$, all $p\le m$, with minimum margin $0$; agrees
+with direct enumeration and with a second prefix-decomposition program on 137
+cells; and checks (30) on every cell and (31) on the 13 cells whose hypothesis
+holds. For $m=27$ the exact tier-failure densities are
+
+| $X$ | union over $p\le27$ | surviving |
+|---|---|---|
+| $10^6$ | $0.382703$ | $0.617297$ |
+| $5.048\,891\,644\,621\cdot10^{12}$ | $0.0132715$ | $0.9867285$ |
+| $10^{13}$ | $0.0123698$ | $0.9876302$ |
+
+and the per-prime density at $p=2$ falls $0.0569\to2.86\cdot10^{-4}\to
+1.19\cdot10^{-5}\to2.06\cdot10^{-8}\to6.18\cdot10^{-14}\to3.86\cdot10^{-23}$
+across $X=2^{20},2^{45},2^{60},2^{90},2^{150},2^{250}$ (ranges of 7, 14,
+19, 28, 46 and 76 decimal digits). Measured decay
+exponents run from $0.187$ at $p=23$ to $0.306$ at $p=2$.
+
+Two scales are worth separating. At $X=2^{250}$, a 76-digit range, the exact union
+of tier-failure densities already lies below the measured
+$(0.123664)^{14}=1.96\cdot10^{-13}$ run density, so past that point the tier
+cannot be the binding constraint; the same comparison run through the provable
+envelope (31) instead of the exact counts needs $X=2^{3343}$, a 1007-digit
+range. At the
+scale where the least $m=27$ witness is expected, near $5\cdot10^{12}$, the
+tier still removes $1.3\%$ of all $k$, so it remains a real filter for search
+even though it cannot obstruct existence.
+
+
+## 14. Congruence-forced powersmooth mass costs modulus — PROVED
+
+Sections 8 and 9 repair prescribed primes by prescribing residues. This
+section prices the *mass* such a prescription must carry. Fix a modulus
+$M=\prod_p p^{a_p}$ and an integer $k$, and split each bad-window term into
+the part that $k\bmod M$ pins and the part it leaves free:
+
+$$
+d_i=\prod_{p\mid M}p^{\min(v_p(k+i),\,a_p)},\qquad u_i=\frac{k+i}{d_i}
+\qquad(i\in I_m).
+$$
+
+Call the pair $(M,k)$ **size-forcing** when the pinned parts alone already meet
+the powersmooth threshold of (25) on every term,
+
+$$
+u_i<\sqrt{2(k+i)}\qquad\text{for every }i\in I_m,
+$$
+
+so that no unforced cofactor can carry a fatal prime whatever it turns out to
+be. This is a property of the single pair $(M,k)$; the scope note below
+separates it from the stronger reading in which one class must work for
+unbounded $k$.
+
+For every size-forcing pair, with $L=\lceil m/2\rceil$,
+
+$$
+\boxed{\log M\ \ge\ \frac L4\log\frac k2-\frac L2\bigl(\log L+1\bigr).}
+\tag{33}
+$$
+
+*Mass needed.* $u_i<\sqrt{2w_i}$ means $d_i>w_i/\sqrt{2w_i}=\sqrt{w_i/2}\ge
+\sqrt{k/2}$, so $\sum_i\log d_i>\frac L2\log\frac k2$.
+
+*Mass available.* A window of $L$ consecutive integers contains at most
+$1+L/p^j$ multiples of $p^j$, so
+
+$$
+\sum_{i\in I_m}\min(v_p(w_i),a_p)=\sum_{j=1}^{a_p}\#\{i\in I_m:p^j\mid w_i\}
+\le a_p+\frac{L}{p-1},
+$$
+
+giving $\sum_i\log d_i\le\log M+L\sum_{p\mid M}\log p/(p-1)$.
+
+*Correction.* For $p\le L$, Mertens gives
+$\sum_{p\le L}\log p/(p-1)\le\log L+1$. For $p>L$ we have $L/(p-1)\le1$, so
+those terms contribute at most $\sum_{p\mid M}\log p\le\log M$. Hence
+$\frac L2\log\frac k2<2\log M+L(\log L+1)$, which is (33).
+
+### What (33) does and does not say
+
+The hypothesis is satisfiable, so (33) is not vacuous: the certificate builds
+size-forcing moduli out of real factorizations for the 18 published witnesses
+with $k\le10^9$ and checks (33) on each.
+
+Two readings must be kept apart, and only the second is claimed here.
+
+*A fixed class with $k$ unbounded.* Nothing is left for (33) to do. Section 8
+already shows by Dirichlet that for any fixed $M$, any class $c$, and any
+single window position, the unforced cofactor takes prime values above
+$\sqrt{2w}$ for infinitely many $k\equiv c$, so no fixed class certifies even
+one term. Read this way no pair in the class is eventually size-forcing, the
+hypothesis of (33) is empty, and the inequality says nothing. That reading is
+not used.
+
+*One dyadic range $k\in[N,2N)$.* Here the hypothesis has content, because a
+class can be size-forcing at a particular $k$ of the range. Then (33) gives
+$\log M\ge\frac L4\log\frac N2-\frac L2(\log L+1)$, so $M\ge N^{L/4-o(1)}$: for
+$L\ge5$ the modulus exceeds the range, the class meets $[N,2N)$ at most once,
+and it names the witness instead of predicting it. The certificate lists the
+exact thresholds at which the right side of (33) passes $\log k$: $k\ge70{,}247$
+for $m=27$, $k\ge4{,}708{,}708$ for $m=13$, and none for $L\le4$ (that is
+$m\le8$), so cheap forcing survives only at the smallest indices. Applied to
+the published witnesses, a size-forcing modulus at
+$m=26,\ k=5{,}048{,}891{,}644{,}620$ needs $\log M\ge69.64$ — at least $30$
+decimal digits against a $13$-digit target — and every published witness with
+$m\ge13$ behaves the same way.
+
+Small moduli are not the business of (33) at all. Section 15 evicts every class
+of modulus $M\le\sqrt N/2$ from the block by an elementary construction that
+needs no prime localisation, so the surviving question for (33) is only what
+happens between $\sqrt N$ and the size-forcing scale $N^{L/4}$. Everything this
+file has to say about prime distribution now lives in Section 15; (33) is pure
+mass accounting and claims nothing about primes.
+
+What is settled is the accounting: every mechanism of Sections 8 and 9 that
+works by prescribing residues — mirror lifts (17), the repair cone (19), the
+eviction systems (20a), (20b) — pays $\frac L4\log\frac k2$ in modulus to
+force the window by size. The half-window translation (23) escapes because it
+prescribes nothing: it moves $k$ by $\lceil m/2\rceil$ and evicts by adjacency.
+
+### Exact evidence
+
+`data/forcing_mass_bound.json` verifies the counting lemma for every residue
+class on $1\le m\le30$, $p\in\{2,3,5,7,11\}$, $a\le4$ — 595,020 residues, with
+the tightest case leaving slack $0.1$ at $(m,p,a)=(1,11,4)$ — and verifies
+$\sum_{p\le P}\log p/(p-1)\le\log P+1$ at every prime $P\le2\cdot10^6$ with
+minimum margin $0.856$. For the 18 published witnesses with $k\le10^9$ it also
+builds an explicit certifying modulus from the real factorization of every
+window term and checks that it dominates (33); at $m=13$, $k=7{,}979{,}077$ the
+bracket is $10^7$ from below and $10^{33}$ from above, a factor $4.6$ in the
+logarithm, so (33) is not vacuous.
+
+
+## 15. Every long progression is evicted elementarily — PROVED
+
+Section 14 prices a class that forces its window *by size*. This section
+attacks any arithmetic progression directly and shows that no congruence
+condition protects its members for long. One theorem does all of the work, and
+it uses no prime distribution statement whatsoever — only Bertrand's postulate
+and one modular inversion.
+
+### 15.1 The class splitting — exact
+
+Fix $m$, a modulus $M=\prod_p p^{a_p}$ and a class $c\bmod M$. For $i\in I_m$
+put
+
+$$
+d_i=\prod_{p\mid M}p^{\min(v_p(c+i),\,a_p)},\qquad
+q_i=\frac M{d_i},\qquad
+a_i\equiv\frac{c+i}{d_i}\pmod{q_i}.
+\tag{34}
+$$
+
+*The splitting is a property of the class, not of $k$.* If $k\equiv c\pmod M$
+and $p^{a_p}\Vert M$ then either $p^{a_p}\mid c+i$, and then $p^{a_p}\mid k+i$,
+or $v_p(c+i)<a_p$, and then $v_p(k+i)=v_p(c+i)$. Either way
+$\min(v_p(k+i),a_p)=\min(v_p(c+i),a_p)$, so $d_i$ pins the same part of every
+term of the class. Writing $u_i=(k+i)/d_i$ for the free cofactor,
+$u_i\equiv a_i\pmod{q_i}$ and $\gcd(a_i,q_i)=1$: for $p\mid q_i$ we have
+$v_p(c+i)<a_p$, hence $v_p(d_i)=v_p(c+i)$ and $p\nmid u_i$.
+
+Note $d_iq_i=M$ for every $i$. **Choosing a different window position
+redistributes the modulus between pinned and free parts; it never lowers the
+product.** No route may expect a smaller modulus from the $i$-freedom alone.
+
+### 15.2 Fatality is a factorisation, not a primality test — PROVED
+
+**Lemma.** Let $i\in I_m$ and suppose
+
+$$
+k+i=d\,p\,t,\qquad p\ \text{prime},\qquad p>m,\qquad p>2dt .
+\tag{35}
+$$
+
+Then $k$ is not a witness at $m$.
+
+*Proof.* $p>2dt$ gives $p^2>2dpt=2(k+i)$, so $p^{v_p(k+i)}\ge p>\sqrt{2(k+i)}$,
+which violates (25) at the bad-window term $k+i$. $\square$
+
+The content of (35) is that fatality never asks for $u_i$ to *be* prime, only
+to *have* a prime factor larger than its cofactor doubled — a condition of
+positive density $\log2$ rather than density $1/\log$. That is the entire
+reason the theorem below needs no analytic input.
+
+### 15.3 The master theorem — PROVED
+
+**Theorem.** Let $m\ge1$ and let
+
+$$
+A=\{\,s+jM\ :\ 0\le j<\Lambda\,\},\qquad
+\mathrm{top}(A)=s+(\Lambda-1)M+m,
+$$
+
+be any arithmetic progression of positive integers, and let $P_0$ be the least
+prime exceeding $\sqrt{2\,\mathrm{top}(A)}$. If
+
+$$
+\boxed{\Lambda\ \ge\ P_0,\qquad
+P_0=\min\{p\ \text{prime}\ :\ p^2>2\,\mathrm{top}(A)\ \text{and}\ p>m\},}
+\tag{36}
+$$
+
+then $A$ contains an integer that is **not** a witness at $m$.
+
+*Proof.* Put $p=P_0$ and fix any $i\in I_m$. Apply (34) to the class
+$s\bmod M$: $d=d_i$, $q=M/d$, $a\equiv(s+i)/d$, and write $u_0=(s+i)/d$. The
+window terms of $A$ at position $i$ are $s+i+jM=d\,(u_0+jq)$.
+
+First, $p>M\ge q$. Indeed $(\Lambda-1)M<\mathrm{top}(A)<p^2/2$ and
+$\Lambda\ge p$ give $M<p^2/\bigl(2(p-1)\bigr)\le p$ for $p\ge3$. Hence
+$\gcd(q,p)=1$ and we may choose
+
+$$
+j\equiv-u_0\,q^{-1}\pmod p,\qquad 0\le j<p\le\Lambda .
+$$
+
+Then $p\mid u_0+jq$; set $k=s+jM\in A$, $t=(u_0+jq)/p\ge1$, so that
+$k+i=d\,p\,t$. Finally $p^2>2\,\mathrm{top}(A)\ge2(k+i)$, which is precisely
+$p>2dt$, and $p>m$ holds by the definition of $P_0$. Lemma 15.2 applies and $k$
+is not a witness. $\square$
+
+The condition $p>m$ in (36) is not decoration. It is (25)'s own hypothesis, and
+$p^2>2\,\mathrm{top}(A)$ does not imply it at small scales: at $m=5$ with
+$A=\{1,\dots,5\}$ the size condition alone offers $p=5$, which (25) says nothing
+about. The exhaustive screen of 15.8 rejected an earlier version of this proof
+at exactly that pair.
+
+The proof uses exactly two facts about primes: Bertrand's postulate, to know
+that $P_0$ exists and is at most $2\sqrt{2\,\mathrm{top}(A)}$, and the
+invertibility of $q$ modulo $p$. No prime is asked to lie in a progression, in
+a short interval, or anywhere else.
+
+### 15.4 Corollaries
+
+**(a) Effective eviction of a class.** For every $m$, $M$ and class $c\bmod M$
+there is a non-witness $k\equiv c\pmod M$ with
+
+$$
+\boxed{1\le k<2M\max(2M,m)\qquad\bigl(<4M^2\ \text{once}\ 2M\ge m\bigr).}
+\tag{37}
+$$
+
+*Proof.* Take $s\in[1,M]$ in the class, $\Lambda=p$ where $p$ is the least
+prime above $\max(2M,m)$; then $\mathrm{top}(A)<pM+M+m<p^2/2$ because $p>2M$,
+so (36) holds and the evicted $k<s+pM\le2M\max(2M,m)$ by Bertrand. $\square$
+
+**(b) Eviction inside a prescribed block.** If
+
+$$
+\boxed{M\cdot P_0(N,m)\le N,\qquad
+P_0(N,m)=\min\{p:p^2>4N+2m\ \text{and}\ p>m\},}
+\tag{38}
+$$
+
+then every class $c\bmod M$ contains a non-witness $k\in[N,2N)$: the class
+meets the block in $\Lambda\ge N/M\ge P_0$ terms with
+$\mathrm{top}\le2N+m$. Since $P_0<2\max(\sqrt{4N+2m},m)$, the condition holds
+for $M\le N/\bigl(2\max(\sqrt{4N+2m},m)\bigr)$, and in practice up to
+$M\approx\sqrt N/2$.
+
+The clause $p>m$ is not inherited automatically. When $m^2>4N+2m$ the size
+condition alone offers a prime below $m$ — at $m=100$, $N=1000$ it offers $67$ —
+and (25) exempts such a prime, so the constructed $k$ would not be evicted while
+(38) read without the clause still admits $M\le14$. Every rectangle screened in
+15.8 has $N\ge10^6\gg m^2/4$, where the clause is vacuous, so no screen could
+have exposed this; the producer has always carried it
+(`block_prime` calls `progression_prime`), and a direct test now pins the
+$m$-dominated regime.
+
+**(c) The witness set contains no long progression.** Contrapositive of the
+master theorem: for every $m$, the set of witnesses contains no arithmetic
+progression of length $P_0$ all of whose terms are at most $Y$ — *whatever the
+common difference*. Once $2Y\ge m^2$ the size clause governs and that length is
+$2\sqrt{2Y}(1+o(1))$; below it the bound is the trivial $m+O(1)$. In particular a class that is entirely
+witnesses throughout $[N,2N)$ has $M>N/P_0\sim\sqrt N/2$ and so meets the block
+in fewer than $2\sqrt N$ integers, relative density $O(N^{-1/2})$.
+
+**(d) A congruence programme needs $\sqrt N$ classes.** If
+$c_1\bmod M_1,\dots,c_r\bmod M_r$ each consist entirely of witnesses at $m$
+inside $[N,2N)$, they cover fewer than $2r\sqrt N$ integers of the block, so
+covering a proportion $\delta$ of it requires
+
+$$
+\boxed{r\ \ge\ \tfrac12\,\delta\sqrt N .}
+\tag{39}
+$$
+
+(d) is the effective replacement for the qualitative statement of Section 8.
+Section 8 says no *single* fixed class works and gives no bound; (39) prices the
+entire class-based strategy — mirror lifts (17), the repair cone (19), the
+eviction systems (20a), (20b), any CRT repair menu — at $\Omega(\sqrt N)$
+classes per block. A construction that wants positive density of witnesses
+cannot be a finite congruence system, and one that wants a single witness must
+locate it rather than prescribe it.
+
+**(e) A covering criterion — CERTIFIED FINITE per instance.** Eviction by a
+single prime uses only $p\mid k+i$, so the pinned parts of (34) cancel. In the
+coordinate $x\equiv c\,p^{-1}\pmod M$ the classes evicted by $p$ are exactly
+the union of the $L$ intervals $Z_i-i\,p^{-1}$, where
+$Z_i=\{z:N\le pz-i<2N\}$ holds $\lfloor N/p\rfloor$ integers. If that union is
+all of $\mathbb Z/M\mathbb Z$, then $p$ alone evicts **every** class. Testing it
+costs $O(L\log L)$ operations, and the union has measure at most
+$L\lfloor N/p\rfloor$, so the criterion reaches
+
+$$
+M\ \le\ L\Bigl\lfloor\frac N{P_0}\Bigr\rfloor\ \approx\
+\Bigl\lceil\frac m2\Bigr\rceil\cdot\frac{\sqrt N}2 ,
+\tag{39b}
+$$
+
+a factor $\lceil m/2\rceil$ beyond (38) — and, by the measure bound, no
+further. A sufficient deterministic form: if $\delta=p^{-1}\bmod M$ satisfies
+$\delta\le\lfloor N/p\rfloor$ and $\lfloor N/p\rfloor+(L-1)\delta\ge M$ then the
+$L$ intervals form a single chain that wraps.
+
+Bisected at $N=10^{12}$ with a budget of 2,000 primes, the criterion holds up
+to $\theta=0.5145$ for $m=5$, $0.5451$ for $m=13$, $0.5702$ for $m=27$ and $0.5926$ for
+$m=51$ — in each case $99.96\%$ of the ceiling (39b) allows, so the criterion is
+exhausted to within $0.05\%$ of its own limit. Cost grows only at the edge: at $\theta=0.52$ and $m=27$ the first admissible
+prime covers, at $0.55$ the second, at $0.565$ the 22nd, and the certified
+edge $0.5702$ the 114th. Forty sampled classes per index were re-verified end to end by
+`slack(m,k,p)<0` against the certifying prime. Each success is a theorem for that $(m,N,M)$; none of them is a theorem
+for all $N$.
+
+**Remark (self-evicting classes).** If some $d_i$ contains a prime power
+exceeding $\sqrt{2(2N+m)}$ then *every* member of the class is fatal at once by
+(25), with no construction: the class prescribes its own obstruction.
+
+**Remark (wider windows buy nothing).** Replacing $[N,2N)$ by
+$[N,N^{1+\eta})$ lengthens the progression but forces $p>\sqrt{2N^{1+\eta}}$,
+so the admissible moduli grow only to $N^{(1+\eta)/2}$: the range must reach
+$\approx M^2$, which is (37) again. Unioning adjacent blocks recovers the
+initial-segment corollary and no more.
+
+### 15.5 What this replaces
+
+*Against Dirichlet.* Section 8 proves a fixed class contains infinitely many
+fatal $k$ by taking the cofactor prime, and names no bound. (37) is the
+effective form: the first failure arrives by $4M^2$, with an exhibited witness
+of failure.
+
+*Against Linnik.* Routing the same construction through the least prime of
+$u\equiv a_i\pmod{q_i}$ gives a fatal $k\ll M^{L_0}$, $L_0\le5.18$ (Xylouris),
+and needs the strong form $\pi(x;q,a)\gg x/(\phi(q)\log x)$ to reach a prime
+above $2d_i$. Exponent $2$ from Bertrand beats exponent $5.18$ from Linnik.
+
+*Against GRH.* The localisation route asks for a prime in one progression
+inside a dyadic interval; GRH gives that for $q\le x^{1/2-\varepsilon}$ and so
+evicts $M\le N^{1/2-\varepsilon}$. (38) reaches $\sqrt N/2$ unconditionally,
+with a better constant than the conditional route. Nothing a Siegel zero could
+damage appears anywhere in Section 15: no class is ever asked to contain a
+prime.
+
+### 15.6 The minimal analytic input above $\sqrt N$ — INTERFACE
+
+Above (38) the construction does not break; only its *guarantee* does. Keeping
+$i$ and the factorisation $k+i=d_ipt$, eviction of the class from $[N,2N)$ by
+the prime $p$ is exactly the statement
+
+$$
+a_i\,p^{-1}\bmod q_i\ \in\ J_p:=\Bigl[\tfrac{N+i}{d_ip},\tfrac{2N+i}{d_ip}\Bigr)
+\pmod{q_i},\qquad |J_p|=\frac N{d_ip}.
+\tag{40}
+$$
+
+So the only missing ingredient is:
+
+> **Hypothesis IP$(q,a,P,J)$.** Some prime $p\in(P,2P]$ has
+> $a\,p^{-1}\bmod q$ inside the arc $J$.
+
+(38) is the trivial case $|J|\ge q$. Below it, completion turns IP into an
+exponential sum: with $H\asymp q$,
+
+$$
+\#\{p\sim P:\,ap^{-1}\in J\}
+=\frac{|J|}q\,\pi(P)+O\Bigl(\frac{\pi(P)}H+\sum_{0<|h|\le H}\frac1h
+\Bigl|\sum_{p\sim P}e_q\bigl(h\,a\,p^{-1}\bigr)\Bigr|\Bigr).
+\tag{41}
+$$
+
+The main term is independent of $P$: since $|J|=N/(d_iP)$ and $d_iq_i=M$,
+
+$$
+\frac{|J|}{q_i}\pi(P)\asymp\frac N{M\log P}.
+\tag{42}
+$$
+
+**Consequence (the exchange rate).** Suppose the inverse-prime sums admit
+$\bigl|\sum_{p\sim P}e_q(hp^{-1})\bigr|\ll\sqrt q\,q^{\varepsilon}$ uniformly
+in $h\not\equiv0$ — Weil strength for a complete Kloosterman sum. Then (41) and
+(42) evict every class with $N/M\gg M^{1/2+\varepsilon}$, that is
+
+$$
+\boxed{M\le N^{2/3-\varepsilon}.}
+\tag{43}
+$$
+
+More generally a saving $q^{-\delta}$ against the trivial bound $\pi(P)$ evicts
+$M\le N^{1/(2(1-\delta))-\varepsilon}$, so $\delta\to\tfrac12$ is what it takes
+to reach every class that meets the block at all. The parameter $P$ is free in
+$\bigl[\max(\sqrt{4N+2m},m),\,N/d_i\bigr]$ and may be chosen to satisfy whatever
+length-versus-modulus hypothesis a given bound requires; it cancels from (42).
+
+This is a strictly weaker demand than the one Section 14's earlier scope note
+reached for. It does not ask for a prime in a prescribed progression, nor in a
+short interval; it asks for equidistribution of $p^{-1}\bmod q$ over primes of
+a dyadic range, in arcs of relative length $N/(PM)$.
+
+### 15.7 The measured barrier
+
+`data/elementary_class_eviction.json` scans primes past (38) at $N=10^{12}$,
+$m=27$, 100 uniform classes per exponent, budget 2,000 primes. Writing
+$M=N^{\theta}$, the model that treats $p^{-1}\bmod q$ as uniform predicts
+$MP_0/(LN)$ primes before a hit. Measured means against that prediction:
+
+| $\theta$ | 0.60 | 0.65 | 0.70 | 0.75 | 0.80 |
+|---|---|---|---|---|---|
+| predicted | 2.26 | 9.01 | 35.9 | 142.9 | 568.7 |
+| measured | 2.11 | 8.81 | 38.2 | 157.5 | 470.9 |
+
+(The last column is censored by the budget, which biases it low.) Every class
+tested at $\theta\le0.75$ was evicted with an exact certificate. The residues
+$p^{-1}\bmod q$ behave here exactly like independent uniform draws, so the
+obstruction above $\sqrt N$ is the missing equidistribution theorem and nothing
+arithmetic: there is no conspiracy to find, only a bound to prove.
+
+### 15.8 Exact evidence
+
+`data/elementary_class_eviction.json` checks, without sampling inside each
+declared rectangle: (i) on $1\le m\le12$, $1\le k\le300$, every (25) violation
+located by real factorisation has negative Legendre slack at that prime, and
+none of the 58 witnesses carries one; (ii) the master theorem (36) at its exact
+minimal length on all 1,152 progressions with $1\le m\le12$, step $\le24$ and
+starts $1,10^4,10^6,10^9$ — and at one shorter length the construction fails in
+all 1,152 cases, so its hypothesis is exactly binding; (iii) Corollary 15.4(a)
+on all 65,520 classes with $1\le m\le16$, $M\le90$, worst case using $0.672$ of
+the bound (37); (iv) Corollary 15.4(b) on all 47,040 classes with
+$1\le m\le20$, $M\le48$ at $N=10^6$ and $N=10^{12}$; (v) Corollary 15.4(e)
+bisected for $m\in\{5,13,27,51\}$ at $N=10^{12}$, each certified exponent
+re-verified on 40 sampled classes end to end; (vi) the sharpness and barrier
+measurements above. Every individual eviction anywhere in the artifact is
+re-verified by `slack(m,k,p)<0`, independently of the construction that found
+it.
+
+
+## 16. The survivor route, and where the single-position argument is sharp
+
+Section 15 evicts a class by *constructing* a fatal member. There is a second,
+independent route: count the members that could survive and show there are
+fewer than the class has. It needs no prime localisation either, and the
+literature already covers the whole modulus range — what it lacks is one
+effective constant.
+
+### 16.1 The survivor reduction — PROVED
+
+For a position $i\in I_m$ write the *survivors* of the class $a\bmod M$ as
+
+$$
+S(N,M,a)=\#\bigl\{\,n\in[N,2N):n\equiv a\ (M),\ \text{$n$ satisfies (25)}\,\bigr\},
+\tag{44}
+$$
+
+where "$n$ satisfies (25)" means $p^{2v_p(n)}\le2n$ for every prime $p>m$
+dividing $n$. If
+
+$$
+S(N,M,a)\ <\ \#\{n\in[N,2N):n\equiv a\ (M)\}
+\tag{45}
+$$
+
+then some member violates (25) and the class $a-i\bmod M$ is evicted from
+$[N,2N)$. Since the survivors are exactly the $\sqrt{2n}$-powersmooth-above-$m$
+integers of the class, (45) is a statement about smooth numbers in one
+arithmetic progression, for an individual modulus, with no averaging.
+
+The margin is generous. The Dickman density of integers $n\le x$ with
+$P^+(n)\le\sqrt{x}$ is $\rho(2)=1-\log2=0.30685\ldots$, so the expected
+survivor count is about $0.307$ of the class, and (45) needs only a bound below
+$1$ — a factor $1/\rho(2)=3.26$ of room, or $1.63$ if one insists on the worst
+documented deviation mechanism (concentration into an index-two subgroup, which
+doubles the count). `LOCALIZATION.md` audits which published bound on
+$\Psi(x,y;q,a)$ covers this corner and why none of them closes it: Balog–
+Pomerance (1992) and Shiu (1980) both apply to our exact parameters for every
+individual modulus, and both carry an unspecified absolute constant.
+**This gap is one effective constant, not a missing method.**
+
+### 16.2 The single-position route is sharp at $\sqrt{2N}$ — PROVED
+
+**Proposition.** Let every prime factor of $M$ be at most $m$, and let
+$M^2\ge N$. Then every $n\in[N,2N)$ with $M\mid n$ satisfies (25).
+
+*Proof.* Let $p>m$ and $p^v=p^{v_p(n)}$. Then $p\nmid M$, so $p^v$ divides
+$j=n/M$, whence $p^v\le j\le(2N-1)/M<2M$, the last step by $M^2\ge N$.
+Therefore $p^{2v}\le j^2<j\cdot2M=2n$. $\square$
+
+The threshold is exactly the one Corollary 15.4(b) reaches: eviction is proved
+for $M\le N/P_0\approx\sqrt N/2$ and obstructed from $M\ge\sqrt N$, so the
+single-position route is sharp to within the factor $2$.
+
+So for $m$-smooth moduli beyond $\sqrt N$ the position $i$ with $M\mid k+i$
+is **permanently** non-fatal: no choice of $k$ in the class, no prime and no
+prime power can evict through it. Corollary 15.4(b)'s threshold
+$M\lesssim\sqrt N/2$ therefore cannot be pushed past $\sqrt N$ by any
+single-position argument — the barrier at $\sqrt N$ is a property of the
+problem, not an artefact of the construction. The census realises it at
+$M=4620=2^2\cdot3\cdot5\cdot7\cdot11$ with $N=10^7$: $M^2=2.13\cdot10^7\ge N$,
+and not one of the $2{,}165$ members of the class $0\bmod4620$ violates (25).
+
+The escape is that eviction needs only *one* position, and the proposition pins
+only the position divisible by $M$.
+
+**The proposition is the divisibility-side twin of (33).** Read constructively,
+16.2 says how to *manufacture* a term satisfying (25): make it divisible by an
+$m$-smooth $M$ with $M^2\ge N$. Doing that at every position at once needs
+$m$-smooth $M_i\mid k+i$ with $M_i\gtrsim\sqrt k$ for all $i\in I_m$, so CRT
+forces $k\gtrsim\prod_iM_i\ge k^{L/2}$, impossible for $L\ge3$. That is the
+same verdict (33) reaches by counting mass, obtained here by counting
+divisibility: for $m\ge5$ no congruence prescription can supply the whole
+window, whichever side one counts from.
+
+### 16.3 The multi-position interface — the weakest input so far
+
+Call an $n$-class *fatal-free* when no member violates (25). A $k$-class $c$
+survives every position exactly when $c+i$ is fatal-free for all $i\in I_m$;
+since $I_m$ is an interval of $L=\lceil m/2\rceil$ consecutive integers, the
+surviving $k$-classes are the starts of cyclic runs of $L$ fatal-free residues.
+Hence
+
+$$
+\boxed{\text{no }L\text{ consecutive residues}\bmod M\text{ are all fatal-free}
+\ \Longrightarrow\ \text{every class}\bmod M\text{ is evicted from }[N,2N).}
+\tag{46}
+$$
+
+A class containing a prime $n\in(m,2N)$ is never fatal-free — take $p=n$, so
+$p^2>2n$ — so (46) follows from: *every interval of $L$ consecutive residues
+$\bmod M$ contains one whose class holds a prime of $[N,2N)$.* That is strictly
+weaker than everything Section 15.6 asks for:
+
+* it never asks a prescribed class to hold a prime, only one class in each
+  window of $L$;
+* the union of $L$ consecutive classes is an *interval of residues*, whose
+  expected prime count is $L\cdot N/(M\log N)$ — positive up to
+  $M\approx LN/\log N$, that is, up to essentially every modulus meeting the
+  block more than once;
+* it weakens as $L=\lceil m/2\rceil$ grows, and Erdős #389 is open precisely in
+  the large-$m$ direction.
+
+The cost is that the residues $c+i$ are consecutive, so the exponential sums
+are $\sum_{p\sim N}e(hp/M)$ with $|h|\le M/L$ — Weyl sums over primes with
+rational argument, not Kloosterman sums. Vinogradov's $x^{4/5}$ term, and under
+GRH the $x^{1/2}$ term, cap that route at $M\lesssim\sqrt N$ again, so (46) is
+not yet a theorem. It is the cheapest missing statement in this file, and the
+census below shows it holding with room to spare.
+
+### 16.4 Exact evidence
+
+`data/survivor_census.json` builds the exact fatality mask of
+$[10^7,2\cdot10^7)$ — $n$ is fatal iff some prime power $p^v\mid n$ with $p>60$
+has $p^{2v}>2n$, which is conservative for every $m\le60$ — and censuses every class of 36 moduli in three shapes
+(prime, $47$-smooth, primorial) at target exponents
+$\theta=\log M/\log N$ from $0.40$ to $0.99$. Every count is exhaustive over the
+block.
+
+* Survivor density $0.31223$ against $\rho(2)=0.30685$: ratio $1.0175$.
+* Single position ($m=1$): classes evicted up to $\theta=0.85$, with the first
+  failures at $\theta=0.523$ — exactly the smooth-modulus classes of 16.2.
+* Multi-position: every $k$-class of every tested modulus is evicted up to
+  $\theta=0.858$ for $m=3$, $0.900$ for $m=5$, $0.950$ for $m=13$, and
+  $0.990$ — the largest tested — for both $m=27$ and $m=51$, with no failure at
+  any tested exponent for those two.
+
+At $m=27$, the index whose least witness is unknown, the whole interval between
+the proved threshold $\sqrt N/2$ and the trivial ceiling $N$ is therefore
+*certified finite* at $N=10^7$: no congruence class of any tested modulus
+survives its block. The gap Section 15 leaves is quantitative, and (46) is what
+would close it for every $N$.
+
+
+## 17. The compensation-good integers have positive density — PROVED
+
+Section 13 reduced Erdős #389 to Conjecture R and left R(1) — positive lower
+density for a single term — open on two grounds: the first-order union bound
+over failure events tends to $\log2+0.322521>1$, and an exact block
+classification was read as showing that *"the overlap that would rescue the
+union bound does not exist"*. **That second reading was wrong.** This section
+replaces it with a proof of R(1).
+
+What the classification actually refuted was the *independence prediction* for
+the level-failure-only class. The union bound needs far less than independence:
+it overshoots $1$ by $0.015668$, so any lower bound on the overlap above that
+number closes R(1). The same census already reported an overlap of $0.053415$
+at $10^6$ and $0.063050$ at $10^7$ in the $m=27$ census, and $0.07481$ at
+$10^6$ for $m=1$ — three to five times what is required. The
+overlap was never too small; it was only never bounded *from below*.
+
+A lower bound looked out of reach because of the direction of counting. Section
+13 partitioned by the largest prime factor, which asks for smooth numbers in
+progressions to moduli near $\sqrt X$ — Bombieri–Vinogradov strength, correctly
+declined there. Counted from the prime side the same overlap is cheap: fix the
+level-failing prime $q$ and the small cofactor $t$ and let the large prime $p$
+run. The level test becomes a congruence on $p$ modulo $q^r$, a *single* modulus
+far below the length of the $p$-range, so Vinogradov's bound for exponential
+sums over primes applies to each modulus separately. No average over moduli is
+taken, so neither Bombieri–Vinogradov nor GRH enters.
+
+### 17.1 The identity that replaces the union bound
+
+Fix $m\ge1$ and split the failures of (25) at $w$ by Section 13's dichotomy:
+
+* $A$: some prime $p>m$ has $p\mid w$ and $p^2>2w$ (*short cofactor*);
+* $B$: some prime $q>m$ has $q^e\|w$, $q^2\le2w$ and $C_q(w/q^e)<e$ (*level*).
+
+$w$ is compensation-good exactly when $w\notin A\cup B$, so on any block
+
+$$
+\#\mathrm{good}\,[x,2x)=x-\#A-\#B+\#(A\cap B).
+\tag{47}
+$$
+
+This is exact. A union bound discards the last term; (47) says that term is
+worth exactly as much as the bound overshoots.
+
+### 17.2 Short failures are large prime factors — PROVED
+
+**Lemma 17.2.** $w\in A$ iff some prime $p>m$ divides $w$ with $p^2>2w$; any
+such $p$ has $v_p(w)=1$ and $C_p(w)=0$; and $\#A\le(\log2+o(1))x$ on $[x,2x)$.
+
+*Proof.* If $p^2>2w$ and $p^e\|w$ with $e\ge2$ then $p^2\le w<p^2/2$, absurd, so
+$e=1$ and the cofactor is $c=w/p<p/2$. Then no level is usable, $C_p(w)=0<1$,
+and $p$ fails; conversely a short failure has $p^2>2w$ by definition. For the
+count, $p^2>2w\ge2x$ forces $p>\sqrt{2x}$ and $p\mid w<2x$ forces $p<2x$, and
+$p$ has at most $x/p+1$ multiples in the block, so
+$\#A\le\sum_{\sqrt{2x}<p<2x}(x/p+1)$. Mertens' second theorem gives
+$\sum_{\sqrt{2x}<p<2x}1/p=\log\frac{\log2x}{\log\sqrt{2x}}+o(1)=\log2+o(1)$, and
+$\pi(2x)=o(x)$. $\square$
+
+Only Mertens is used — no prime number theorem, no primality input.
+
+### 17.3 The level union bound — PROVED
+
+**Lemma 17.3.** $\#B\le\bigl(\Lambda_B+\varepsilon_2(x)+o(1)\bigr)x$ where
+
+$$
+\Lambda_B=\sum_{r\ge1}2^{-r}\log\frac{r+2}{r+1}=0.322521\ldots,
+\tag{48}
+$$
+
+and $\varepsilon_2(x)\to0$ collects the exponents $e\ge2$.
+
+*Proof.* For $e=1$ a prime $q$ with $q\|w$ has
+$R_q(w)=\#\{j\ge1:q^j\le2w/q\}=\lfloor\log_q 2w\rfloor-1$ usable levels, and
+$C_q(w/q)=0$ demands all $R_q$ of them in the lower half. The admissible
+residues form the set $S_R(q)$ of (50) below, of period $q^R$, so counting
+$w\in[x,2x)$ with $q\mid w$ and $w/q\in S_R(q)$ gives
+$\frac xq2^{-R}\bigl(1+O(q^R q/x)\bigr)$; since $q^{R+1}\le2w$ the relative
+error is $O(1/q)$. Grouping by $R=r$, that is
+$(2x)^{1/(r+2)}<q\le(2x)^{1/(r+1)}$, Mertens gives $\sum1/q=\log\frac{r+2}{r+1}$
+over the band and the sum telescopes to (48); the tail past $r$ terms is at most
+$2^{-r}/(r+2)$ because $\log\frac{r+2}{r+1}\le\frac1{r+1}$. For $e\ge2$ the
+density of $q^e\|w$ is at most $q^{-e}$ and the failure needs fewer than $e$ of
+the $R=\lfloor\log_q2w\rfloor-e$ levels in the upper half, costing at most
+$\sum_{i<e}\binom Ri2^{-R}$; every fixed $q$ gains levels as $x$ grows while the
+large-$q$ end is killed by $q^{-e}$, so the total is $\varepsilon_2(x)\to0$.
+$\square$
+
+### 17.4 The overlap families — PROVED
+
+For $r\ge1$ and $\eta\in(0,\tfrac1{10})$ let $D_r(x)$ be the set of
+$w\in[x,2x)$ admitting a factorisation $w=pqt$ with $p,q$ prime, $q\nmid pt$,
+
+$$
+p^2>(2w)^{1+2\eta},\qquad q^{r+1}\le2w<q^{r+2},\qquad
+q^{r(1+\eta)}\le\frac{2x}{qt},\qquad C_q(pt)=0 .
+\tag{49}
+$$
+
+**Lemma 17.4.** $D_1(x)$ and $D_2(x)$ are contained in $A\cap B$, are disjoint,
+and no element of either has two such factorisations.
+
+*Proof.* $p^2>2w$ puts $w$ in $A$ by Lemma 17.2, and $q^{r+1}\le2w$ with
+$r\ge1$ gives $q^2\le2w$, so the failure of $q$ — which is a failure, since
+$v_q(w)=1$ and $C_q(w/q)=C_q(pt)=0$ — is a level failure, putting $w$ in $B$.
+For uniqueness and disjointness, a band-$r$ prime satisfies
+$q>(2w)^{1/(r+2)}\ge(2w)^{1/4}$ for $r\le2$, so two of them together with
+$p>(2w)^{1/2}$ would give $w\ge pq_1q_2>(2w)^{1/2+1/4+1/4}=2w$. $\square$
+
+The exponent $1/2+2/(r+2)$ is at least $1$ — so that $(2w)^{1/2+2/(r+2)}\ge2w>w$
+and the contradiction closes — exactly for $r\le2$, which is why the
+certificate stops at band $2$: bands $r\ge3$ are available but would need a
+Bonferroni correction for multiplicity.
+
+### 17.5 The lower-half residue count — PROVED
+
+$$
+S_r(q)=\bigl\{\,v\bmod q^r:\ 2\,(v\bmod q^j)\le q^j\ \text{for }j=1,\dots,r\,\bigr\}.
+\tag{50}
+$$
+
+**Lemma 17.5.** $|S_r(q)|\ge q^r2^{-r}\,(1-1/q)$.
+
+*Proof.* $|S_1(q)|=\lfloor q/2\rfloor+1>q/2$. The conditions with $j<r$ cut out
+a $q^{r-1}$-periodic set meeting each period in $|S_{r-1}(q)|$ residues, and the
+condition at $j=r$ restricts $v$ to $[0,\lfloor q^r/2\rfloor]$, which contains at
+least $\lfloor q/2\rfloor$ whole periods. Hence
+$|S_r(q)|\ge\lfloor q/2\rfloor\,|S_{r-1}(q)|\ge\frac{q-1}2\,q^{r-1}2^{-(r-1)}$.
+$\square$
+
+### 17.6 Counting the overlap families — PROVED using Vinogradov
+
+**Lemma 17.6.** For $r\in\{1,2\}$ and fixed $\eta>0$,
+$\#D_r(x)\ \ge\ \bigl(\lambda_r(\eta)-o(1)\bigr)x$, where
+
+$$
+\lambda_r(\eta)=2^{-r}\int_{1/(r+2)}^{1/(r+1)}\frac1\beta\,
+\log^{+}\frac{1-\beta}{\max\bigl(\tfrac12+\eta,\ r\beta(1+\eta)\bigr)}\,d\beta .
+\tag{51}
+$$
+
+*Proof.* Write $w=pqt$ and sum over $q$ and $t$ obeying (49), counting primes
+$p\in[x/(qt),2x/(qt))$ with $pt\bmod q^r\in S_r(q)$. Expand the indicator of
+$S_r(q)$ — a product of $r$ interval conditions — in additive characters mod
+$q^r$: the constant coefficient is $|S_r(q)|/q^r\ge2^{-r}(1-1/q)$ by Lemma 17.5,
+and the remaining coefficients have $\ell^1$ norm $O(\log^rq)$. For $h\not\equiv0$
+the phase $ht/q^r$ has reduced denominator $q'\in[q,q^r]$ because $q\nmid t$, so
+Vinogradov's bound gives
+$\sum_{p\le y}e(hpt/q^r)\ll\bigl(y\,q'^{-1/2}+y^{4/5}+\sqrt{yq'}\bigr)\log^4y$
+with $y=2x/(qt)$. Summing the three error terms over all admissible $(q,t)$:
+
+* $\sum_{q,t}y\,q^{-1/2}\ll x\log x\sum_{q>x^{1/4}}q^{-3/2}\ll x^{7/8}\log x$;
+* $\sum_{q,t}y^{4/5}\ll x^{4/5}\sum_q q^{-4/5}(x^{1/2}/q)^{1/5}\ll x^{9/10}\log\log x$;
+* $\sum_{q,t}\sqrt{yq^r}$, the binding term, is for $r=1$ at most
+  $\sqrt x\sum_{q\le x^{1/2}}2\sqrt{x^{1/2-\eta}/q}\ll x^{1-\eta/2}/\log x$,
+  and for $r=2$, using $t\le x\,q^{-3-2\eta}$ from (49), at most
+  $x\sum_{q>x^{1/4}}q^{-1-\eta}\ll x^{1-\eta/4}/\eta$.
+
+All three are $o(x)$ for fixed $\eta>0$; the $\eta$-cuts in (49) exist precisely
+to make the third one so. The main term is
+$\sum_{q,t}2^{-r}\bigl(\pi(2x/(qt))-\pi(x/(qt))\bigr)$, and with
+$q=(2x)^{\beta}$, $t=(2x)^{\tau}$, $p=(2x)^{\alpha}$ the prime number theorem and
+Mertens turn it into $2^{-r}x\iint d\alpha\,d\beta/(\alpha\beta)$ over
+$\alpha\in[\max(\frac12+\eta,r\beta(1+\eta)),\,1-\beta]$ and $\beta$ in the
+band, which is (51). $\square$
+
+### 17.7 The theorem
+
+**Theorem 17.7 (Conjecture R(1)).** For every $m\ge1$,
+
+$$
+\liminf_{x\to\infty}\frac{\#\{w\in[x,2x):w\ \text{is }m\text{-compensation-good}\}}{x}
+\ \ge\ 1-\log2-\Lambda_B+\lambda_1+\lambda_2\ \ge\ 0.0293 .
+\tag{52}
+$$
+
+*Proof.* Combine (47) with Lemma 17.2, Lemma 17.3 and
+$\#(A\cap B)\ge\#D_1+\#D_2$ from Lemmas 17.4 and 17.6, then let $\eta\to0$ after
+$x\to\infty$. $\square$
+
+With $\eta=0.005$ the certified numbers are $\lambda_1\ge0.030515$,
+$\lambda_2\ge0.014505$ and $\varepsilon_2\le6\cdot10^{-6}$ at $x=10^{40}$,
+against a first-order deficit $\log2+\Lambda_B-1=0.015668$: the overlap supplies
+$0.045021$, a factor $2.87$ more than needed. The bound is uniform in
+$m\le x^{1/4}$, since every prime it names exceeds $(2x)^{1/4}$; in particular
+it holds for $m=1$, which by the monotonicity of Section 10 implies every $m$.
+
+### 17.8 What this settles and what it does not
+
+R(1) is now a theorem, so the first rung of Conjecture R is unconditional and
+the union-bound obstruction of Section 13 is dissolved rather than circumvented.
+
+It does not give a good constant: $0.0293$ is far below the measured $0.1237$,
+because all three inputs are one-sided. Adding a second Bonferroni term to
+$\Lambda_B$ itself — two band primes both failing, worth about $0.015$ — would
+raise it, at proof cost and with no new consequence.
+
+**It does not give R(2), and the reason is exact.** For $w$ and $w+1$ the four
+events $A_0,B_0,A_1,B_1$ make (47) a four-fold inclusion–exclusion, and the
+Bonferroni truncation that would replace it is $S_1-S_2+S_3\ge P(\bigcup)$.
+Writing $u=\log2+\Lambda_B$ for the single-term first-order total and
+$\pi=d(A\cap B)$, and treating the two coordinates as independent — which the
+block census below confirms to within $0.002$ — every term collapses and
+
+$$
+S_1-S_2+S_3\;=\;2u-\bigl(u^2+2\pi\bigr)+2\pi u
+\;=\;1+(u-1)\bigl(2\pi-(u-1)\bigr).
+\tag{53}
+$$
+
+So the depth-3 route closes R(2) **iff $\pi<(u-1)/2=0.007834$**. The overlap
+certified in 17.6 is $\pi\ge0.045$, and the measured value is $0.087$: too large
+by a factor between $5.7$ and $11$. *The same overlap that proves R(1) is what
+defeats R(2)*, because at one coordinate it enters as $+\pi$ against a deficit
+$u-1$, and at two coordinates as $+2\pi(u-1)$ against a budget of only
+$(u-1)^2$. Below the asymptotic regime (53) is negative — the exact block totals
+are $0.99234$ at $10^6$ and $0.99435$ at $10^7$, both under $1$ — purely because
+$u<1$ there; the finite-scale success is an artefact of $u$ not yet having
+converged, and is worthless, exactly as Section 13 said of the same dip.
+
+Even at $\pi<0.007834$ the route would still need the four cross terms of $S_2$
+from below: $d(A_0\cap A_1)$ is the density of $w$ with both $w$ and $w+1$
+carrying a prime factor above $\sqrt{2w}$, a binary problem of Chen type where
+only upper bounds (CRT plus Mertens, giving $\log^22$) are elementary. So R(2)
+fails here twice over, once numerically and once structurally, and the pivot is
+recorded rather than retried.
+
+What the section does supply is a template: **for these events the overlap is
+bounded from below on the prime side, not the smooth side.** Section 13's
+partition put the smooth cofactor in the free variable and needed
+$\Psi(x,y;q,a)$; putting the large prime there instead needs only a
+single-modulus exponential-sum bound. `LOCALIZATION.md` §5 records the same
+distinction as the reason Vinogradov's theorem is PARTIAL for input III and
+APPLIES here: what matters is $\log q'/\log y$, not the size of $q'$.
+
+### 17.9 Exact evidence
+
+`data/overlap_density_bound.json` certifies each input as a one-sided bound with
+an explicit tail — the level sum truncated with tail $2^{-r}/(r+2)$, the
+exponent tail with primes past $10^6$ discarded by $2/10^6$, and (51) as a
+right-endpoint Riemann sum over a provably decreasing integrand (monotonicity
+asserted at every step, not assumed). It then verifies on
+$[10^6,10^6+2\cdot10^5)$ and $[10^7,10^7+2\cdot10^5)$, exhaustively, that (47)
+holds exactly, that every member of $D_1\cup D_2$ lies in $A\cap B$, that no
+member is counted twice, and that the family density ($0.04871$, $0.049755$)
+stays below the overlap measured in the same run at $m=1$ ($0.07481$,
+$0.08735$). The same artifact records the four-event accounting
+behind (53): $S_1,\dots,S_4$ exactly, the verified identity
+$S_1-S_2+S_3-S_4=P(\bigcup)$, and the asymptotic depth-3 limit $1.001165$,
+asserted to exceed $1$ so that the recorded obstruction cannot go stale.
+

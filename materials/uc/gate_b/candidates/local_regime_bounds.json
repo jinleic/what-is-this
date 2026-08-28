@@ -1,0 +1,224 @@
+{
+  "certified_bases": [
+    {
+      "admissible_additions": 0,
+      "capacity_floor": "6/25",
+      "defect": "444/625",
+      "degrees_all_at_cap": true,
+      "dimension": 6,
+      "dominant_set_threshold": "96/25",
+      "is_max_admissible_size": true,
+      "largest_set": 3,
+      "name": "n6",
+      "ratio_ceiling": "120/7",
+      "size": 25,
+      "union_growth_floor": "7/25"
+    },
+    {
+      "admissible_additions": 0,
+      "capacity_floor": "-2/75",
+      "defect": "64/81",
+      "degrees_all_at_cap": true,
+      "dimension": 7,
+      "dominant_set_threshold": "112/25",
+      "is_max_admissible_size": true,
+      "largest_set": 6,
+      "name": "n7",
+      "ratio_ceiling": null,
+      "size": 45,
+      "union_growth_floor": null
+    },
+    {
+      "admissible_additions": 0,
+      "capacity_floor": "-436/405",
+      "defect": "1336/2025",
+      "degrees_all_at_cap": true,
+      "dimension": 7,
+      "dominant_set_threshold": "112/25",
+      "is_max_admissible_size": true,
+      "largest_set": 7,
+      "name": "n7lo",
+      "ratio_ceiling": null,
+      "size": 45,
+      "union_growth_floor": null
+    }
+  ],
+  "exhaustive_audits": [
+    {
+      "admissible_families": 8,
+      "capacity_active": 1,
+      "dimension": 3,
+      "tightest_capacity_slack": "0",
+      "tightest_union_growth_slack": "11/30",
+      "union_growth_active": 1,
+      "violations": []
+    },
+    {
+      "admissible_families": 358,
+      "capacity_active": 166,
+      "dimension": 4,
+      "tightest_capacity_slack": "0",
+      "tightest_union_growth_slack": "7/45",
+      "union_growth_active": 105,
+      "violations": []
+    }
+  ],
+  "no_base_admits_an_addition": true,
+  "shape_floor": {
+    "5": {
+      "dominant_set_threshold": "16/5",
+      "floor_rows": [
+        {
+          "floor": "32/55",
+          "largest_set": 0,
+          "size": 11
+        },
+        {
+          "floor": "8/13",
+          "largest_set": 0,
+          "size": 13
+        },
+        {
+          "floor": "16/25",
+          "largest_set": 0,
+          "size": 15
+        }
+      ],
+      "max_admissible_size": 15,
+      "size_ceiling_holds": true
+    },
+    "6": {
+      "dominant_set_threshold": "472/125",
+      "floor_rows": [
+        {
+          "floor": "188/315",
+          "largest_set": 0,
+          "size": 21
+        },
+        {
+          "floor": "212/345",
+          "largest_set": 0,
+          "size": 23
+        },
+        {
+          "floor": "236/375",
+          "largest_set": 0,
+          "size": 25
+        }
+      ],
+      "max_admissible_size": 25,
+      "size_ceiling_holds": true
+    },
+    "7": {
+      "dominant_set_threshold": "992/225",
+      "floor_rows": [
+        {
+          "floor": "176/287",
+          "largest_set": 0,
+          "size": 41
+        },
+        {
+          "floor": "936/1505",
+          "largest_set": 0,
+          "size": 43
+        },
+        {
+          "floor": "992/1575",
+          "largest_set": 0,
+          "size": 45
+        }
+      ],
+      "max_admissible_size": 45,
+      "size_ceiling_holds": true
+    },
+    "8": {
+      "dominant_set_threshold": "253/50",
+      "floor_rows": [
+        {
+          "floor": "119/190",
+          "largest_set": 0,
+          "size": 76
+        },
+        {
+          "floor": "41/65",
+          "largest_set": 0,
+          "size": 78
+        },
+        {
+          "floor": "253/400",
+          "largest_set": 0,
+          "size": 80
+        }
+      ],
+      "max_admissible_size": 80,
+      "size_ceiling_holds": true
+    }
+  },
+  "size_ceiling": {
+    "10": {
+      "ceiling_holds": true,
+      "max_admissible_size": 255
+    },
+    "11": {
+      "ceiling_holds": true,
+      "max_admissible_size": 445
+    },
+    "12": {
+      "ceiling_holds": true,
+      "max_admissible_size": 775
+    },
+    "13": {
+      "ceiling_holds": true,
+      "max_admissible_size": 1350
+    },
+    "14": {
+      "ceiling_holds": true,
+      "max_admissible_size": 2350
+    },
+    "15": {
+      "ceiling_holds": true,
+      "max_admissible_size": 4095
+    },
+    "16": {
+      "ceiling_holds": true,
+      "max_admissible_size": 7130
+    },
+    "3": {
+      "ceiling_holds": true,
+      "max_admissible_size": 5
+    },
+    "4": {
+      "ceiling_holds": true,
+      "max_admissible_size": 8
+    },
+    "5": {
+      "ceiling_holds": true,
+      "max_admissible_size": 15
+    },
+    "6": {
+      "ceiling_holds": true,
+      "max_admissible_size": 25
+    },
+    "7": {
+      "ceiling_holds": true,
+      "max_admissible_size": 45
+    },
+    "8": {
+      "ceiling_holds": true,
+      "max_admissible_size": 80
+    },
+    "9": {
+      "ceiling_holds": true,
+      "max_admissible_size": 145
+    }
+  },
+  "size_ceiling_all_hold": true,
+  "statements": [
+    "L7",
+    "C8",
+    "L9",
+    "L11",
+    "P12"
+  ],
+  "verdict": "ALL_BOUNDS_HOLD"
+}

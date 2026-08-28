@@ -53,11 +53,27 @@ exact feasible action set, with no interval library, no clamp classification
 and no relaxation, and returns two-sided enclosures of width below
 $6\times10^{-27}$ for both bases over all $720$ and all $5040$ coordinate
 orders.
-These two constructions rule out every fixed scalar multiple of this
-ordered-pair defect.  The same enclosures make the growth rate explicit: the
-supremum over families on at most $n$ coordinates exceeds $n/250-7/250$, while
-$Q\ge0$ and $C_+\ge0$ bound it by $n/\eps_0$ once $\eps_\vee\ge\eps_0$, so the
-divergence is exactly of order $n$ under a positive defect floor.
+These constructions rule out every fixed scalar multiple of this
+ordered-pair defect.  The numerator's growth is then closed on both sides:
+incidence is at most $n\lfloor2m/5\rfloor$ while Reimer demands at least
+$m\log_2m/2$, so every admissible family obeys the size ceiling
+$\log_2m\le4n/5$, and writing $\Lambda(n)$ for the supremum of $-A_+$ over
+families on at most $n$ coordinates,
+$\tfrac3{640}n-\tfrac3{80}\le\Lambda(n)\le\tfrac45n$.  The lower constant uses a
+cloned-coordinate base, admissible but not separating, which improves the
+published slope $1/250$ by exactly $75/64$; no step of the product argument uses
+separation, and Reimer for every power reduces to the single base inequality
+$m^m\le2^{2I}$.
+Because closure success multiplies under
+products, no Cartesian power reaches small defect, so the small-defect regime
+needs separate evidence.  We prove two defect floors --- one from the cap,
+one from downset counting, the second attained --- which together show the
+repair ratio is $O(n)$ on every family without a set of size at least
+$\tfrac85\bar s\ge\tfrac45\log_2m$.  Certified witnesses at eight coordinates
+push the least defect with $A_+<0$ down to $1144/1875=0.6101\ldots$ among
+separating families and $139/245=0.5673\ldots$ in general, and raise the repair
+ratio to $2432/58575=0.0415\ldots$ and $147/2536=0.0580\ldots$ respectively,
+above the base ratio $0.0363\ldots$.
 They neither produce a union-closed counterexample nor settle a separate
 small-defect stability question.
 \end{abstract}
@@ -320,6 +336,7 @@ Equations \eqref{eq:base-defect}, \eqref{eq:defect-product}, and
 \]
 
 \begin{theorem}[Gate B]
+\label{thm:main}
 The quantity in \eqref{eq:cstar} is infinite.
 \end{theorem}
 \begin{proof}
@@ -531,30 +548,238 @@ float64 ratio is $0.034335490331443\ldots$, below the certified seven-coordinate
 base.  This is a complete numerical result for that symmetry class, not an
 arbitrary-$n=8$ optimum.
 
+\section{The size ceiling and the local frontier}
+
+\begin{lemma}[size ceiling]
+\label{lem:ceiling}
+Every admissible $\F\subseteq2^{[n]}$ satisfies $\log_2m\le4n/5$, equivalently
+the integer inequality $m^5\le2^{4n}$.
+\end{lemma}
+
+\begin{proof}
+Incidence counted by coordinates is $\sum_{A\in\F}|A|=\sum_{i\in[n]}\deg_i$,
+and the cap bounds each degree by $\lfloor2m/5\rfloor\le2m/5$, so the incidence
+is at most $2nm/5$.  Reimer admissibility demands incidence at least
+$m\log_2m/2$.  Divide $m\log_2m/2\le2nm/5$ by $m>0$.
+\end{proof}
+
+With $Q,C_+\ge0$ this gives $-A_+\le\log_2m\le4n/5$ unconditionally, so together
+with the powers the supremum $\Lambda(n)$ of $-A_+$ over families on at most $n$
+coordinates satisfies $(7/250)\lfloor n/7\rfloor\le\Lambda(n)\le4n/5$: the
+numerator's growth is exactly of order $n$.  The bound is close to sharp; the
+largest admissible sizes are $45$ at $n=7$ and $445$ at $n=11$, against
+$2^{5.6}$ and $2^{8.8}$.
+
+\begin{lemma}[defect floors]
+\label{lem:floors}
+Write $M=\max_{A\in\F}|A|$, $\bar s=\frac1m\sum_A|A|$ and
+$N(A)=|\{B\in\F:B\subseteq A\}|$.  Then, if $M<n$,
+\[
+  \eps_\vee\ \ge\ \frac{\tfrac85\bar s-M}{n-M},
+  \qquad\text{and always}\qquad
+  \eps_\vee\ \ge\ 1-\frac1{m^2}\sum_{A\in\F}N(A)^2 .
+\]
+\end{lemma}
+
+\begin{proof}
+With $p_i=\deg_i/m\le2/5$,
+$\E|X\cup Y|=\sum_ip_i(2-p_i)\ge\tfrac85\bar s$, while a union lying in $\F$
+has size at most $M$ and any union has size at most $n$, so
+$\E|X\cup Y|\le M+\eps_\vee(n-M)$.  For the second bound, $X\cup Y=A$ forces
+$X,Y\subseteq A$ with $X,Y\in\F$, so at most $N(A)^2$ ordered pairs have union
+$A$; summing over $A\in\F$ bounds $(1-\eps_\vee)m^2$.
+\end{proof}
+
+The second bound is attained: over all $366$ admissible families with $n\le4$
+its tightest slack is exactly $0$.  Combining the first with
+Lemma~\ref{lem:ceiling}, if $M\le\theta\cdot\tfrac85\bar s$ with $\theta<1$ then
+$-A_+/\eps_\vee\le5n/(4(1-\theta))$.  Hence the repair ratio is $O(n)$ on every
+family without a dominant set, and any approach to the local regime requires a
+set of size at least $\tfrac85\bar s\ge\tfrac45\log_2m$.  Both seven-coordinate
+bases have such a set, and every eight-coordinate witness below contains $[8]$.
+
+A further consequence is that $25$ and $45$ are the largest admissible sizes at
+$n=6,7$; all three bases of at most seven coordinates attain them with every
+degree exactly at the cap, and no set whatsoever can be added to any of them.
+Lowering the defect therefore requires a larger ground set.
+
+Accordingly the complete $S_2\times S_6$ class at $n=8$ was enumerated: 2,272
+canonical admissible families, of which 21 have negative float64 objective.
+Exact rational re-evaluation of all 36 candidates with float value below
+$0.01$ certifies 20 of them and shows one, at defect $2553/3200$, is exactly
+\emph{positive}; no family that reads non-negative in float64 is exactly
+negative.  The discrepancy is not rounding: on a fixed order set the float and
+exact evaluators agree to $10^{-14}$, and the exact orbit route reproduces the
+average over all $8!$ orders exactly.  The census averages $C_{+,\pi}$ over one
+order per $S_k\times S_{8-k}$ pattern, which represents the objective only when
+the family's automorphism group \emph{is} that block group.  Here it is not:
+$|\mathrm{Aut}|=1440$ coincides with $|S_2\times S_6|$, yet only $120$ of those
+elements preserve the block partition, so the $28$ block-pattern orders cover
+only $12$ of the $28$ true orbits, six of them repeatedly.  The induced error in
+$A_+$ reaches $2.03\times10^{-3}$, and any subset average is within
+$\alpha(\max_\pi C_{+,\pi}-\min_\pi C_{+,\pi})\le5.2\times10^{-3}$ of the truth,
+which is why candidates are re-ranked exactly above a threshold of $+0.01$
+rather than $0$.  The certified
+witnesses give
+\[
+  \min\{\eps_\vee:A_+<0\}\ \le\ \frac{1144}{1875}=0.6101\ldots
+  \quad\text{(separating)},\qquad \le\ \frac{139}{245}=0.5673\ldots,
+\]
+improving $1336/2025$, and a separating $75$-row family with $\eps_\vee=468/625$
+has certified ratio at least $77/2080=0.0370\ldots$, the first here above the
+base ratio $0.0363\ldots$.  Sizes $70$ and $75$ are infeasible at $n=7$, since
+$7\lfloor2\cdot70/5\rfloor=196$ is below the Reimer threshold $215$; the eighth
+coordinate supplies the missing incidence, and in the $70$-row families it
+duplicates the first coordinate exactly.  Coordinate cloning changes neither the
+defect nor the size, so it is precisely the mechanism Lemma~\ref{lem:ceiling}
+predicts.  These two certificates use the exact symmetry quotient
+($|\mathrm{Aut}|=1440$, $28$ orbits of size $1440$), and both facts that make a
+uniform average over representatives equal to the average over all $8!$ orders
+are tested rather than assumed.
+
+\subsection{Separation is not used, and the growth constant improves}
+
+No step of Section~\ref{lem:ceiling}'s product argument uses separation.
+Lemma~1 uses only that the two block join events are independent under two
+independent uniform product rows; Lemmas~2 and~3 use only that a uniform product
+row has independent blocks, that the conditional marginals, feasible interval and
+four transition probabilities at a coordinate depend on that block's prefixes
+alone, and that the four transition probabilities sum to one; additivity of
+$A_+$ uses only $|\F\boxtimes\G|=|\F||\G|$.  Separation appears once, where it is
+\emph{concluded} for the powers of a normalized base, never assumed.
+
+Admissibility of the powers needs nothing beyond the base.  For a base with size
+$m$, incidence $I$ and every degree equal to $c$, the power $\F^{\boxtimes k}$
+has size $m^k$, degree $cm^{k-1}$ and incidence $kIm^{k-1}$.  Since
+$c\le\lfloor2m/5\rfloor\le2m/5$, the degree is an integer at most $2m^k/5$ and so
+at most $\lfloor2m^k/5\rfloor$.  For Reimer, the requirement
+$kIm^{k-1}\ge\lceil km^k\log_2(m)/2\rceil$ is met as soon as the integer left
+side dominates the real right side, which cancels to $2I\ge m\log_2m$, i.e. to
+the integer inequality
+\[
+  m^m\le2^{2I},
+\]
+and that is exactly the base condition $I\ge R_m$, because $R_m$ is the least $r$
+with $2^{2r}\ge m^m$.  \emph{One base-level Reimer check certifies every power.}
+
+Consequently a cloned-coordinate witness carries a valid infinite construction.
+The 70-row family $\mathcal C$ at $n=8$, whose coordinates $0$ and $1$ coincide,
+has $\eps_\vee(\mathcal C)=317/490$ and certified $A_+(\mathcal C)\le-3/80$, so
+its powers give
+\[
+  c^\star_{\rm cl}(n)\ \ge\ \tfrac3{80}\lfloor n/8\rfloor,
+  \qquad\text{slope } \tfrac3{640}=0.0046875,
+\]
+against $1/250=0.004$ for the seven-coordinate base: an improvement by exactly
+$75/64$.  With Lemma~\ref{lem:ceiling} the numerator is pinned between
+$\tfrac3{640}n-\tfrac3{80}$ and $\tfrac45n$.  The powers are audited by direct
+instantiation; at $k=2$ the $4{,}900$-row product rebuilt from its rows has
+defect $210171/240100=1-(173/490)^2$ exactly.
+
+The mechanism is worth isolating, because it is not structural.  Cloning a
+coordinate changes neither the size, the closure defect, nor the join structure;
+it only adds incidence.  What it buys is feasibility: size $70$ is impossible at
+seven coordinates, where $7\lfloor2\cdot70/5\rfloor=196$ falls short of
+$R_{70}=215$.  The eighth coordinate is spent entirely on clearing Reimer, and
+the reward is a base whose $-A_+$ per coordinate exceeds anything available at
+seven.  The cost is separation, for which the definitions do not charge.
+
+A further complete class, $S_3\times S_5$, adds $13{,}470$ canonical families of
+which $54$ are float-negative and $52$ are certified negative.  Its best sits at
+the maximum admissible size $m=80$ with incidence $256=8\cdot32$, and has
+certified ratio at least $2432/58575=0.0415194$, the largest among separating
+families.  That class also shows the float objective failing in both directions:
+three of its float negatives are exactly non-negative, and one family it reported
+as non-negative is exactly negative.  Every number quoted here is from the exact
+route.
+
+\subsection{Complete block-symmetric coverage at eight coordinates}
+
+Since $S_k\times S_{8-k}$ pairs $k$ with $8-k$, the classes $k\in\{1,2,3,4\}$
+exhaust every block-symmetric family on eight coordinates.  All four were
+enumerated --- $52{,}494{,}332$ raw masks, $27{,}431$ canonical admissible
+families, $150$ screen-negative --- and every candidate with screen value below
+$0.01$ was re-evaluated exactly, certifying $147$.
+
+Two further records come from $S_4\times S_4$.  The fifteen-row family
+$\mathcal T$ with all eight degrees at the cap $6$ and incidence
+$48\ge R_{15}=30$ has
+\[
+  \eps_\vee(\mathcal T)=\tfrac49=0.4444\ldots,\qquad
+  A_+(\mathcal T)\le-\tfrac1{2100},
+\]
+the lowest certified defect with $A_+<0$ anywhere, improving $139/245$.  It is
+worth noting what this does \emph{not} require: low defect needed no large
+family, since Lemma~\ref{lem:floors}'s pair bound only forces $m\ge2.12$ at this
+defect.  What it did require is the dominant set of Corollary~\ref{lem:floors}'s
+consequence, and $\mathcal T$ has one --- it contains $[8]$, against the
+threshold $\tfrac85\bar s=128/25$.
+
+The separating $75$-row family $\mathcal S$, all degrees at the cap $30$ and
+incidence $240\ge R_{75}=234$, has $\eps_\vee(\mathcal S)=284/375$ and
+$A_+(\mathcal S)\le-177/5000$, so its powers give slope
+$177/40000=0.004425$ against $1/250=0.004$.  The growth constant therefore
+improves by $10.6\%$ without admitting a non-separating base, so that
+improvement does not depend on the normalization convention; the cloned base
+retains the overall record $3/640$.  The ratio $531/11360=0.0467\ldots$ is the
+largest among separating families.
+
+Finally, the class data confirm the diagnosis of the screen: $k=1$ and $k=4$
+produce no screen error at all, while $k=2$ and $k=3$ produce four false
+negatives and one missed witness between them.  Block-pattern orders represent
+the objective exactly when the family's automorphism group is the block group,
+and not otherwise.
+
 \section{Scope and limitations}
 
-Both sequences satisfy \(\eps_\vee\to1\).  This is no limitation for the
+All three sequences satisfy \(\eps_\vee\to1\).  This is no limitation for the
 unrestricted supremum \eqref{eq:cstar}, but it means the argument does not
 settle a different local-stability problem restricted to
 $\eps_\vee\to0$.  Approximate-union-closure results such as
 Chase--Lovett~\cite{ChaseLovett} concern that small-defect regime and frequency
 bounds, not the present Bellman functional.
 
-Both bases are deliberately non-union-closed.  The theorem neither refutes the
-union-closed sets conjecture nor supplies the UC-specific structural charge
+The restriction is structural, not incidental.  Since a join fails in a product
+exactly when it fails in one block, closure success multiplies, so
+$\eps_\vee(\F\boxtimes\G)\ge\max\{\eps_\vee(\F),\eps_\vee(\G)\}$ and every
+Cartesian power has defect at least that of its base.  The mechanism of
+Theorem~\ref{thm:main} therefore cannot exhibit a single family with small
+defect.  Two elementary bounds delimit what such a family would look like:
+because $X\cup X=X$, failures occur in pairs, so a non-union-closed family has
+$\eps_\vee\ge2/m^2$, and with $-A_+\le\log_2m$ this gives
+$-A_+/\eps_\vee\le m^2\log_2(m)/2$; reaching defect $\eps$ forces
+$m\ge\sqrt{2/\eps}$.  At the other end, a family with $\eps_\vee=0$ is
+union-closed with every degree below $m/2$, i.e. a counterexample to Frankl's
+conjecture, so a universal positive defect floor at cap $2/5$ would improve the
+published frequency frontier $\psi=(3-\sqrt5)/2$ by about $0.018$.
+
+What can be certified is the upper end of the negativity region.  A third base,
+a $45$-row family on seven coordinates found by a defect-minimizing search with
+all degrees at the cap and \emph{trivial} automorphism group, has exact defect
+$1336/2025=0.6597\ldots$ and certified enclosure
+$A_+\in[-0.00085518533372314171100789579,-0.00085518533372314171100789029]$,
+hence $A_+<-1/1200$; all $5040$ orders carry distinct enclosures.  Its powers
+give a third infinite construction with $\eps_\vee=1-(689/2025)^k$.  So
+negativity survives down to defect $0.6598$, against $64/81$ and $444/625$ for
+the two block-cell bases, while the repair ratio falls from $0.03626$ to
+$27/21376$: the objective approaches zero faster than the defect does.
+
+All three bases are deliberately non-union-closed.  The theorem neither refutes
+the union-closed sets conjecture nor supplies the UC-specific structural charge
 needed by the larger entropy programme.  Its conclusion is narrower and
 complete: no fixed scalar multiple of the ordered-pair closure defect can
 repair $A_+$ over all cap/Reimer families.
 
-There are now six verified finite-base certificates covering two different
+There are now seven verified finite-base certificates covering three different
 families, and the tensorization lemmas remain human-audited mathematics
-supported by the falsification searches above.  Each family is checked by three
-arithmetically disjoint routes: a 256-bit Arb computation with clamp
-classification, a standard-library dyadic computation that avoids clamp
-decisions entirely, and an exact rational computation that additionally avoids
-every relaxation and every interval library and returns a two-sided enclosure.
-For both families the exact rational route evaluates every coordinate order
-without symmetry reduction.  None of the three is a proof-assistant artifact,
+supported by the falsification searches above.  The two block-cell families are
+each checked by three arithmetically disjoint routes: a 256-bit Arb computation
+with clamp classification, a standard-library dyadic computation that avoids
+clamp decisions entirely, and an exact rational computation that additionally
+avoids every relaxation and every interval library and returns a two-sided
+enclosure.  The third family is certified by the exact rational route alone.
+For all three the exact rational route evaluates every coordinate order without
+symmetry reduction.  None of the certificates is a proof-assistant artifact,
 and formalization remains open.
 
 \begin{thebibliography}{9}

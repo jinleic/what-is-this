@@ -134,12 +134,49 @@ pinned: \(c_{\rm cl}^\star(n)>n/250-7/250\), while \(Q\ge0\) and \(C_+\ge0\)
 give \(-A_+\le\log_2m\le n\), so the ratio is \(\Theta(n)\) whenever
 \(\varepsilon_\vee\ge\varepsilon_0>0\).
 
-This does not refute a union-closed statement: both bases are explicitly
-non-UC, and both power defects tend to one. A separate local-stability problem
-restricted to \(\varepsilon_\vee\to0\) remains open, but that restriction was
-not present in the authoritative Gate B supremum. The complete statement,
-proof, six finite-base certificates, append-only searches, and paper draft
-are in [`gate_b/`](gate_b/).
+This does not refute a union-closed statement: all three bases are explicitly
+non-UC, and every power defect exceeds its base's. The separate local-stability
+problem restricted to \(\varepsilon_\vee\to0\) remains open, but that
+restriction was not present in the authoritative Gate B supremum.
+
+**Local frontier and the size ceiling (2026-08-27).** The defect multiplies
+through success, so no Cartesian power reaches small defect and the theorem's
+mechanism says nothing about the local regime. Three new facts:
+
+*Growth closed, with an improved constant.* Incidence is at most
+\(n\lfloor2m/5\rfloor\) while Reimer demands at least \(m\log_2m/2\), so every
+admissible family obeys \(\log_2m\le4n/5\) (exactly: \(m^5\le2^{4n}\)). With
+\(Q,C_+\ge0\) this gives \(-A_+\le4n/5\) unconditionally, and a
+cloned-coordinate base at \(n=8\) raises the certified lower slope from
+\(1/250\) to \(3/640\), an improvement of exactly \(75/64\). So
+\((3/640)n-3/80\le\Lambda(n)\le4n/5\): the numerator's growth is \(\Theta(n)\)
+and only the denominator is open. The clone is legitimate because **no lemma in
+the product argument uses separation**, and Reimer for every power reduces to
+the single base-level inequality \(m^m\le2^{2I}\), i.e. to \(I\ge R_m\).
+
+*Frontier moved to eight coordinates.* The complete \(S_2\times S_6\) class at
+\(n=8\) (2,272 canonical families) yields, after exact rational re-evaluation,
+\(\min\{\varepsilon_\vee:A_+<0\}\le1144/1875=0.6101\) among separating families
+and \(\le139/245=0.5673\) among all admissible ones, down from
+\(1336/2025=0.6598\); and the first repair ratios here to beat the published
+\(0.0362591\) — \(0.0370512\) separating, \(0.0580391\) otherwise. Sizes 70 and
+75 are *infeasible* at \(n=7\) (\(196<R_{70}=215\)): the eighth coordinate
+supplies the missing incidence, and in the 70-row families it is an exact
+duplicate of the first, so coordinate cloning is what raises the ceiling.
+
+*Why low defect needs a dominant set.* The cap forces
+\(\mathbb E|X\vee Y|\ge\frac85\bar s\) while a successful union has size at most
+\(M\), so \(\varepsilon_\vee\ge(\frac85\bar s-M)/(n-M)\) and the ratio is
+\(O(n)\) whenever \(M<\frac85\bar s\). Reaching the local regime therefore
+requires a set of size \(\ge\frac45\log_2m\). Separately, 25 and 45 are the
+largest admissible sizes at \(n=6,7\) and **no set can be added to any of the
+three \(n\le7\) bases**, so adding the missing unions is empty there. Emptying
+the regime by proof would still give a \(2/5\) Frankl bound, about \(0.018\)
+beyond the published frontier.
+
+The complete statement, proof, ten exactly certified bases, append-only
+searches, and paper draft are in [`gate_b/`](gate_b/); the current verified
+state alone is in [`gate_b/CURRENT_STATUS.md`](gate_b/CURRENT_STATUS.md).
 
 Reproduce from `math/`:
 

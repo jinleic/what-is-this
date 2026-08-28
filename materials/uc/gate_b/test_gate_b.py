@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from fractions import Fraction
-from itertools import permutations
+from itertools import combinations, permutations
 from math import factorial
 import json
 from pathlib import Path
@@ -30,6 +30,9 @@ import verify_gate_b_rational as rational
 import audit_tensorization_exact as tensor_exact
 import verify_gate_b as verifier
 import shapley_n7_block_symmetric as n7
+import search_local_defect as localdefect
+import hunt_local_ratio as localratio
+import bound_local_regime as bounds
 from shapley_n6_shared_bellman import one_sided_costs
 from shapley_entropy import ALPHA as PROJECT_ALPHA
 from shapley_global_coupling import local_order_parts
@@ -62,6 +65,29 @@ RATIONAL_CERTIFICATE = (
 TENSORIZATION_EXACT_AUDIT = (
     HERE / "candidates" / "tensorization_exact_audit.json"
 )
+LOWDEFECT_CERTIFICATE = (
+    HERE / "certificates" / "gate_b_lowdefect_rational_v1.json"
+)
+N8_EXACT_FRONTIER = HERE / "candidates" / "n8_k2_exact_frontier.json"
+N8_EXACT_CHECKPOINT = (
+    HERE / "experiments" / "n8_k2_exact_checkpoint.jsonl"
+)
+N8_CERTIFICATE = (
+    HERE / "certificates" / "gate_b_n8_rational_v1.json"
+)
+CLONE_CERTIFICATE = (
+    HERE / "certificates" / "gate_b_n8_clone_rational_v1.json"
+)
+CLONE_POWER_AUDIT = HERE / "candidates" / "clone_power_audit.json"
+N8MAX_CERTIFICATE = (
+    HERE / "certificates" / "gate_b_n8_max_rational_v1.json"
+)
+N8_K3_FRONTIER = HERE / "candidates" / "n8_k3_exact_frontier.json"
+N8_K4_FRONTIER = HERE / "candidates" / "n8_k4_exact_frontier.json"
+N8_K4_CERTIFICATE = (
+    HERE / "certificates" / "gate_b_n8_k4_rational_v1.json"
+)
+CLONE_SATURATION_AUDIT = HERE / "candidates" / "clone_saturation_audit.json"
 
 
 def average_certified_cost(family: tuple[int, ...], dimension: int) -> arb:
@@ -1065,6 +1091,791 @@ class GeneralImplicationTests(unittest.TestCase):
                 self.assertGreater(ratio, previous)
                 previous = ratio
             self.assertGreater(delta * 100_000 / (1 - success**100_000), 1_000)
+
+
+class LocalRegimeTests(unittest.TestCase):
+    """The local-regime lemmas and the instruments that measure the regime."""
+
+    def test_reimer_threshold_agrees_across_implementations(self) -> None:
+        for size in range(3, 129):
+            self.assertEqual(
+                localdefect.reimer_threshold(size),
+                n7.exact_reimer_threshold(size),
+            )
+
+    def test_defect_is_zero_exactly_on_union_closed_families(self) -> None:
+        closed = (0, 1, 2, 3)  # a full sublattice on two coordinates
+        self.assertEqual(localdefect.defect_count(closed), 0)
+        open_family = (1, 2)
+        self.assertEqual(localdefect.defect_count(open_family), 2)
+
+    def test_lemma_4_failures_come_in_pairs(self) -> None:
+        random = Random(20260827)
+        checked = 0
+        for _trial in range(400):
+            size = random.randrange(3, 8)
+            rows = tuple(sorted(random.sample(range(16), size)))
+            bad = localdefect.defect_count(rows)
+            self.assertEqual(bad % 2, 0)
+            if bad:
+                self.assertGreaterEqual(bad, 2)
+                self.assertGreaterEqual(
+                    Fraction(bad, size ** 2), Fraction(2, size ** 2))
+                checked += 1
+        self.assertGreater(checked, 100)
+
+    def test_lemma_5_defect_multiplies_through_success(self) -> None:
+        left_families = ((1, 2), (0, 1, 2), (1, 2, 3))
+        right_families = ((1, 2), (0, 1, 3), (0, 1, 2, 3))
+        for left in left_families:
+            for right in right_families:
+                product = tuple(sorted(
+                    a | (b << 2) for a in left for b in right
+                ))
+                joint = Fraction(
+                    localdefect.defect_count(product), len(product) ** 2)
+                factor_left = Fraction(
+                    localdefect.defect_count(left), len(left) ** 2)
+                factor_right = Fraction(
+                    localdefect.defect_count(right), len(right) ** 2)
+                self.assertEqual(
+                    1 - joint, (1 - factor_left) * (1 - factor_right))
+                self.assertGreaterEqual(joint, factor_left)
+                self.assertGreaterEqual(joint, factor_right)
+
+    def test_certified_bases_have_the_published_defects(self) -> None:
+        base_six = localratio.known_base(6)
+        self.assertEqual(len(base_six), 25)
+        self.assertEqual(
+            Fraction(localdefect.defect_count(base_six), 625),
+            Fraction(444, 625),
+        )
+        base_seven = localratio.known_base(7)
+        self.assertEqual(len(base_seven), 45)
+        self.assertEqual(
+            Fraction(localdefect.defect_count(base_seven), 2025),
+            Fraction(64, 81),
+        )
+        for rows, dimension in ((base_six, 6), (base_seven, 7)):
+            self.assertTrue(localdefect.admissible(rows, dimension))
+            self.assertTrue(localdefect.normalized(rows, dimension))
+
+    def test_calibration_ratios_match_the_reported_constants(self) -> None:
+        for dimension, defect, expected in (
+            (6, Fraction(444, 625), 0.0192456471),
+            (7, Fraction(64, 81), 0.0362591270),
+        ):
+            rows = localratio.known_base(dimension)
+            a_plus, _q, _c = localratio.full_objective(rows, dimension)
+            self.assertLess(a_plus, 0.0)
+            self.assertAlmostEqual(
+                localratio.ratio(a_plus, defect), expected, places=7)
+
+    def test_exact_enumeration_reproduces_the_small_dimension_minima(self) -> None:
+        result = localdefect.exact_minimum(4)
+        self.assertTrue(result["complete"])
+        expected = {"3": "2/9", "5": "6/25", "8": "1/4"}
+        for size, defect in expected.items():
+            self.assertEqual(result["sizes"][size]["min_defect"], defect)
+        for entry in result["sizes"].values():
+            rows = tuple(entry["witness"])
+            self.assertTrue(localdefect.admissible(rows, 4))
+            self.assertEqual(
+                localdefect.defect_count(rows), entry["min_defect_count"])
+
+    def test_witness_reader_accepts_foreign_schema_but_rejects_bad_families(
+        self,
+    ) -> None:
+        """Schema governs work skipping; only re-verification governs evidence."""
+        good = localratio.known_base(6)
+        inadmissible = tuple(range(25))  # violates the coordinate cap
+        self.assertFalse(localdefect.admissible(inadmissible, 6))
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "checkpoint.jsonl"
+            path.write_text("\n".join(json.dumps(payload, sort_keys=True) for payload in (
+                {
+                    "schema": localdefect.RECORD_SCHEMA,
+                    "dimension": 6, "size": 25, "restart": 0,
+                    "best_family": list(inadmissible),
+                    "best_defect_count": 0,
+                },
+                {
+                    "schema": localdefect.RECORD_SCHEMA - 1,
+                    "dimension": 6, "size": 25, "restart": 1,
+                    "best_family": list(good),
+                    "best_defect_count": 444,
+                },
+            )) + "\n{ truncated")
+
+            done, foreign, truncated = localdefect.read_checkpoint(path)
+            self.assertEqual(len(done), 1)
+            self.assertEqual(foreign, 1)
+            self.assertEqual(truncated, 1)
+
+            witnesses = localdefect.read_witnesses(path, 6)
+            self.assertIn(25, witnesses)
+            self.assertEqual(witnesses[25]["family"], list(good))
+            self.assertEqual(witnesses[25]["defect_count"], 444)
+            self.assertEqual(
+                witnesses[25]["from_schema"], localdefect.RECORD_SCHEMA - 1)
+
+    def test_seeder_reaches_every_feasible_size(self) -> None:
+        for dimension in (6, 7):
+            for size in localdefect.feasible_sizes(dimension):
+                generator = Random(localdefect.restart_seed(1, dimension, size, 0))
+                degrees = localdefect.degree_sequences(size, dimension, generator)
+                rows = localdefect.seed_family(size, dimension, degrees, generator)
+                self.assertIsNotNone(rows, (dimension, size))
+                self.assertTrue(localdefect.admissible(rows, dimension))
+
+    def test_sweep_respects_the_hard_defect_cap(self) -> None:
+        budget = Fraction(3, 4)
+        outcome = localratio.sweep(
+            6, 25, budget, localratio.known_base(6),
+            Random(4242), 25, 12,
+        )
+        rows = tuple(outcome["family"])
+        self.assertTrue(localdefect.admissible(rows, 6))
+        self.assertLessEqual(Fraction(outcome["defect"]), budget)
+        self.assertEqual(
+            Fraction(localdefect.defect_count(rows), 625),
+            Fraction(outcome["defect"]),
+        )
+
+    def test_lemma_6_ratio_bound_holds_on_every_recorded_witness(self) -> None:
+        checkpoint = HERE / "experiments" / "local_defect_checkpoint.jsonl"
+        if not checkpoint.exists():
+            self.skipTest("local defect checkpoint not present")
+        for dimension in (6, 7):
+            for size, row in localdefect.read_witnesses(checkpoint, dimension).items():
+                defect = Fraction(row["defect_count"], size ** 2)
+                self.assertGreaterEqual(defect, Fraction(2, size ** 2))
+                self.assertLessEqual(
+                    Fraction(1) / defect,
+                    Fraction(size ** 2, 2),
+                )
+
+    def test_lowdefect_certificate_is_negative_at_the_claimed_defect(self) -> None:
+        """The third base must certify negativity at defect 1336/2025."""
+        certificate = json.loads(LOWDEFECT_CERTIFICATE.read_text())
+        self.assertEqual(
+            certificate["verdict"], "PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL")
+        base = certificate["bases"]["n7lo"]
+        facts = base["exact_base"]
+        rows = tuple(facts["family_rows"])
+
+        self.assertEqual(len(rows), 45)
+        self.assertTrue(localdefect.admissible(rows, 7))
+        self.assertTrue(localdefect.normalized(rows, 7))
+        self.assertEqual(facts["coordinate_counts"], [18] * 7)
+        self.assertEqual(facts["total_incidence"], 126)
+        self.assertEqual(facts["reimer_threshold"], 124)
+        self.assertEqual(facts["cap_bound"], 18)
+
+        defect = Fraction(1336, 2025)
+        self.assertEqual(Fraction(facts["closure_defect"]), defect)
+        self.assertEqual(localdefect.defect_count(rows), 1336)
+
+        # The whole point of this base is the defect, not the sharpness: it must
+        # sit strictly below both published bases.
+        self.assertLess(defect, Fraction(444, 625))
+        self.assertLess(defect, Fraction(64, 81))
+
+        consequence = base["rational_consequence"]
+        self.assertTrue(consequence["enclosure_is_negative"])
+        self.assertEqual(consequence["sharpest_frozen_target_passed"], "-1/1200")
+        lower, upper = (
+            Fraction(value)
+            for value in consequence["a_plus_two_sided_enclosure"]
+        )
+        self.assertLess(lower, upper)
+        self.assertLess(upper, Fraction(-1, 1200))
+        self.assertLess(upper - lower, Fraction(1, 10 ** 26))
+
+        evaluation = base["order_evaluation"]
+        self.assertEqual(evaluation["all_order_count"], 5040)
+        self.assertEqual(evaluation["automorphism_count"], 1)
+        self.assertEqual(evaluation["distinct_enclosure_count"], 5040)
+        self.assertFalse(evaluation["symmetry_quotient_used"])
+
+    def test_lowdefect_base_reconstructs_without_a_cell_pattern(self) -> None:
+        base = rational.BASES["n7lo"]
+        self.assertIsInstance(base, rational.ExplicitBase)
+        facts = base.exact_facts()
+        self.assertIsNone(facts["block_cells"])
+        self.assertIsNone(facts["block_partition"])
+        self.assertEqual(facts["missing_ordered_join_pairs"], 1336)
+        self.assertEqual(base.reconstruct(), tuple(sorted(base.expected_rows)))
+
+
+class SizeCeilingAndDefectFloorTests(unittest.TestCase):
+    """Lemma 9, Corollary 10, Lemma 11, Lemma 13 and Proposition 14."""
+
+    def test_size_ceiling_holds_for_every_admissible_size(self) -> None:
+        """log2 m <= 4n/5, as the exact integer test m^5 <= 2^(4n)."""
+        for dimension in range(3, 13):
+            for size in bounds.feasible_sizes(dimension):
+                self.assertTrue(
+                    bounds.size_ceiling_holds(size, dimension),
+                    f"ceiling failed at n={dimension} m={size}",
+                )
+            largest = bounds.max_admissible_size(dimension)
+            # Sharpness: one size above the ceiling must fail the integer test.
+            self.assertFalse(bounds.size_ceiling_holds(1 << dimension, dimension))
+            self.assertTrue(bounds.size_ceiling_holds(largest, dimension))
+
+    def test_size_ceiling_matches_the_reimer_witness_strings(self) -> None:
+        """Each base's reimer_witness is its instance of Lemma 9."""
+        for name, expected in (
+            ("n6", (25, 6)), ("n7", (45, 7)), ("n7lo", (45, 7)),
+            ("n8lo", (75, 8)), ("n8hi", (75, 8)),
+        ):
+            size, dimension = expected
+            base = rational.BASES[name]
+            self.assertEqual(len(base.reconstruct()), size)
+            self.assertEqual(base.dimension, dimension)
+            self.assertEqual(base.reimer_witness, f"{size}**5 < 2**{4 * dimension}")
+            self.assertLess(size ** 5, 1 << (4 * dimension))
+
+    def test_defect_floors_hold_over_every_small_admissible_family(self) -> None:
+        """Lemma 11 and Lemma 13 never exceed the true defect, and 13 is tight."""
+        tight = False
+        for dimension in (3, 4):
+            for size in bounds.feasible_sizes(dimension):
+                for rows in combinations(range(1 << dimension), size):
+                    if not bounds.admissible(rows, dimension):
+                        continue
+                    observed = bounds.defect(rows)
+                    growth = bounds.union_growth_floor(rows, dimension)
+                    if growth is not None:
+                        self.assertGreaterEqual(observed, growth)
+                    capacity = bounds.capacity_floor(rows)
+                    self.assertGreaterEqual(observed, capacity)
+                    if observed == capacity:
+                        tight = True
+        self.assertTrue(tight, "Lemma 13 should be attained with equality")
+
+    def test_certified_bases_admit_no_addition(self) -> None:
+        """Proposition 14, checked over every candidate set."""
+        for name in ("n6", "n7", "n7lo"):
+            base = rational.BASES[name]
+            rows = base.reconstruct()
+            self.assertEqual(len(rows), bounds.max_admissible_size(base.dimension))
+            self.assertEqual(
+                set(bounds.degrees(rows, base.dimension)),
+                {bounds.cap(len(rows))},
+            )
+            self.assertEqual(bounds.admissible_additions(rows, base.dimension), ())
+
+    def test_dominant_set_is_present_exactly_when_the_floor_is_vacuous(self) -> None:
+        """Corollary 12: a low-defect family needs a set of size >= (8/5) sbar."""
+        for name in ("n6", "n7", "n7lo", "n8lo", "n8hi"):
+            base = rational.BASES[name]
+            rows = base.reconstruct()
+            largest = max(bin(row).count("1") for row in rows)
+            threshold = Fraction(8, 5) * Fraction(
+                bounds.incidence(rows), len(rows)
+            )
+            floor_value = bounds.union_growth_floor(rows, base.dimension)
+            self.assertEqual(floor_value is None, largest >= threshold)
+
+    def test_bound_primitives_agree_with_the_search_module(self) -> None:
+        """The standalone checker must not drift from the search implementation."""
+        for name in ("n6", "n7", "n7lo"):
+            base = rational.BASES[name]
+            rows = base.reconstruct()
+            self.assertEqual(
+                bounds.defect_count(rows), localdefect.defect_count(rows)
+            )
+            self.assertEqual(bounds.defect(rows), localdefect.defect(rows))
+            self.assertEqual(
+                bounds.admissible(rows, base.dimension),
+                localdefect.admissible(rows, base.dimension),
+            )
+        for size in range(3, 90):
+            self.assertEqual(
+                bounds.reimer_threshold(size), localdefect.reimer_threshold(size)
+            )
+
+
+class EightCoordinateFrontierTests(unittest.TestCase):
+    """Proposition 15: the n=8 witnesses and the exact re-ranking."""
+
+    def test_n8_bases_are_admissible_normalized_and_at_the_claimed_defect(self) -> None:
+        for name, defect_value, missing in (
+            ("n8lo", Fraction(1144, 1875), 3_432),
+            ("n8hi", Fraction(468, 625), 4_212),
+        ):
+            base = rational.BASES[name]
+            rows = base.reconstruct()
+            facts = base.exact_facts()
+            self.assertEqual(len(rows), 75)
+            self.assertTrue(bounds.admissible(rows, 8))
+            self.assertTrue(localdefect.normalized(rows, 8))
+            self.assertEqual(facts["coordinate_counts"], [30] * 8)
+            self.assertEqual(facts["total_incidence"], 240)
+            self.assertEqual(facts["reimer_threshold"], 234)
+            self.assertEqual(Fraction(facts["closure_defect"]), defect_value)
+            self.assertEqual(bounds.defect_count(rows), missing)
+            self.assertEqual(facts["missing_ordered_join_pairs"], missing)
+
+    def test_size_seventy_five_is_infeasible_at_seven_coordinates(self) -> None:
+        """The eighth coordinate is what admits these sizes at all."""
+        for size in (70, 75):
+            self.assertGreater(bounds.reimer_threshold(size), 7 * bounds.cap(size))
+            self.assertLessEqual(bounds.reimer_threshold(size), 8 * bounds.cap(size))
+            self.assertNotIn(size, bounds.feasible_sizes(7))
+            self.assertIn(size, bounds.feasible_sizes(8))
+
+    def test_exact_frontier_report_improves_both_published_numbers(self) -> None:
+        report = json.loads(N8_EXACT_FRONTIER.read_text())
+        self.assertEqual(report["candidates_considered"], 36)
+        self.assertEqual(report["float_negative_count"], 21)
+        self.assertEqual(report["certified_negative_count"], 20)
+        self.assertEqual(report["foreign_schema_lines"], 0)
+        self.assertEqual(report["truncated_lines"], 0)
+        frontier = report["lowest_defect_certified_negative"]
+        self.assertTrue(frontier["certified_negative"])
+        self.assertTrue(frontier["beats_published_frontier_defect"])
+        self.assertLess(
+            Fraction(frontier["exact_facts"]["closure_defect"]), Fraction(1336, 2025)
+        )
+
+        sharpest = report["highest_ratio_certified_negative"]
+        self.assertTrue(sharpest["beats_published_ratio"])
+        self.assertGreater(
+            Fraction(sharpest["exact_ratio_lower"]),
+            Fraction(286_491, 10_000_000) / Fraction(64, 81),
+        )
+
+    def test_one_float_negative_is_exactly_positive(self) -> None:
+        """The float64 census produced a false negative; the exact route caught it.
+
+        The mirror direction matters just as much: no family that reads
+        non-negative in float64 is exactly negative, so the frontier is not
+        hiding behind a rounding error in the other direction.
+        """
+        report = json.loads(N8_EXACT_FRONTIER.read_text())
+        self.assertEqual(report["float_negative_but_exactly_nonnegative"], ["2553/3200"])
+        self.assertEqual(report["float_nonnegative_but_exactly_negative"], [])
+        self.assertGreater(
+            Fraction(report["largest_float_exact_gap_decimal"]), Fraction(1, 1000)
+        )
+
+    def test_every_certified_record_carries_an_exact_two_sided_enclosure(self) -> None:
+        records = [
+            json.loads(line)
+            for line in N8_EXACT_CHECKPOINT.read_text().splitlines()
+            if line.strip()
+        ]
+        self.assertEqual(len(records), 36)
+        for record in records:
+            lower = Fraction(record["a_plus_lower"])
+            upper = Fraction(record["a_plus_upper"])
+            self.assertLessEqual(lower, upper)
+            self.assertLess(upper - lower, Fraction(1, 10 ** 24))
+            self.assertEqual(record["certified_negative"], upper < 0)
+            facts = record["exact_facts"]
+            self.assertTrue(facts["admissible"])
+            self.assertTrue(facts["size_ceiling_holds"])
+            rows = tuple(record["family_rows"])
+            self.assertEqual(Fraction(facts["closure_defect"]), bounds.defect(rows))
+
+    def test_n8_certificate_beats_its_frozen_targets(self) -> None:
+        certificate = json.loads(N8_CERTIFICATE.read_text())
+        self.assertEqual(
+            certificate["verdict"], "PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL"
+        )
+        self.assertEqual(certificate["third_party_dependencies"], [])
+        expected = {
+            "n8lo": (Fraction(1144, 1875), "-1/500", Fraction(1336, 2025)),
+            "n8hi": (Fraction(468, 625), "-693/25000", None),
+        }
+        for name, (defect_value, target, frontier) in expected.items():
+            base = certificate["bases"][name]
+            self.assertEqual(
+                Fraction(base["exact_base"]["closure_defect"]), defect_value
+            )
+            consequence = base["rational_consequence"]
+            self.assertTrue(consequence["enclosure_is_negative"])
+            self.assertEqual(consequence["sharpest_frozen_target_passed"], target)
+            lower, upper = (
+                Fraction(value)
+                for value in consequence["a_plus_two_sided_enclosure"]
+            )
+            self.assertLess(lower, upper)
+            self.assertLess(upper, Fraction(target))
+            self.assertLess(upper - lower, Fraction(1, 10 ** 24))
+            if frontier is not None:
+                self.assertLess(defect_value, frontier)
+
+    def test_n8hi_certified_ratio_beats_the_published_base(self) -> None:
+        """The rational ratio bound, not just the decimal, must clear 0.0362591."""
+        certificate = json.loads(N8_CERTIFICATE.read_text())
+        ratio = Fraction(
+            certificate["bases"]["n8hi"]["rational_consequence"]["base_ratio_lower_gt"]
+        )
+        published = Fraction(286_491, 10_000_000) / Fraction(64, 81)
+        self.assertGreater(ratio, published)
+        self.assertEqual(ratio, Fraction(77, 2080))
+
+    def test_the_symmetry_quotient_is_exact(self) -> None:
+        """Orbits all have size |Aut| and the Bellman value is constant on them.
+
+        The n=8 certificate is the first here to use a nontrivial quotient, so
+        the two facts that make a uniform average over representatives equal to
+        the average over all n! orders are checked rather than assumed.
+        """
+        for name in ("n8lo", "n8hi"):
+            base = rational.BASES[name]
+            rows = base.reconstruct()
+            representatives, group = rational.order_orbits(rows, base.dimension)
+            self.assertEqual(
+                len(representatives) * len(group), factorial(base.dimension)
+            )
+            self.assertEqual(len(group), 1440)
+            random = Random(20260827)
+            for representative in representatives[:2]:
+                reference = rational.bellman_bounds(
+                    rows, base.dimension, representative
+                )[:2]
+                for _ in range(3):
+                    element = group[random.randrange(len(group))]
+                    mate = tuple(element[index] for index in representative)
+                    self.assertEqual(
+                        rational.bellman_bounds(rows, base.dimension, mate)[:2],
+                        reference,
+                    )
+
+    def test_n8max_sits_at_the_maximum_admissible_size(self) -> None:
+        """The best separating ratio is attained at m=80 with maximum incidence."""
+        base = rational.BASES["n8max"]
+        rows = base.reconstruct()
+        facts = base.exact_facts()
+        self.assertEqual(len(rows), 80)
+        self.assertEqual(len(rows), bounds.max_admissible_size(8))
+        self.assertTrue(bounds.admissible(rows, 8))
+        self.assertTrue(facts["separating"])
+        self.assertEqual(facts["coordinate_counts"], [32] * 8)
+        self.assertEqual(facts["cap_bound"], 32)
+        # 8 * 32 = 256 is the largest incidence any n=8 family can carry.
+        self.assertEqual(facts["total_incidence"], 256)
+        self.assertEqual(facts["total_incidence"], 8 * bounds.cap(80))
+        self.assertEqual(facts["reimer_threshold"], 253)
+        self.assertEqual(Fraction(facts["closure_defect"]), Fraction(2343, 3200))
+
+    def test_n8max_has_the_best_separating_ratio(self) -> None:
+        certificate = json.loads(N8MAX_CERTIFICATE.read_text())
+        self.assertEqual(
+            certificate["verdict"], "PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL"
+        )
+        consequence = certificate["bases"]["n8max"]["rational_consequence"]
+        ratio = Fraction(consequence["base_ratio_lower_gt"])
+        self.assertEqual(ratio, Fraction(2432, 58575))
+        # beats the published base and the earlier separating record n8hi
+        self.assertGreater(ratio, Fraction(286_491, 10_000_000) / Fraction(64, 81))
+        self.assertGreater(ratio, Fraction(693, 25_000) / Fraction(468, 625))
+        # but does not improve the asymptotic slope
+        slope = Fraction(
+            certificate["asymptotic"]["bases"]["n8max"]["asymptotic_slope"]
+        )
+        self.assertEqual(slope, Fraction(19, 5000))
+        self.assertLess(slope, Fraction(7, 250) / 7)
+        self.assertLess(slope, Fraction(3, 640))
+
+    def test_k3_class_is_exactly_re_ranked(self) -> None:
+        """k=3 exposes the float evaluator failing in *both* directions."""
+        report = json.loads(N8_K3_FRONTIER.read_text())
+        self.assertEqual(report["float_negative_count"], 54)
+        self.assertEqual(report["certified_negative_count"], 52)
+        # Three float negatives are exactly non-negative, so only 51 of the 54
+        # survive; the 52nd certified negative is a family the census called
+        # non-negative.
+        self.assertEqual(len(report["float_negative_but_exactly_nonnegative"]), 3)
+        # ... and one family the float census called non-negative is exactly
+        # negative.  That is a *missed* witness, not a false alarm, and it is why
+        # the re-ranking threshold must sit above zero.
+        self.assertEqual(
+            report["float_nonnegative_but_exactly_negative"], ["94/125"]
+        )
+        self.assertGreater(
+            Fraction(report["largest_float_exact_gap_decimal"]), Fraction(3, 1000)
+        )
+        # k=3 improves neither the defect frontier nor the slope
+        frontier = report["lowest_defect_certified_negative"]
+        self.assertFalse(frontier["beats_published_frontier_defect"])
+        self.assertGreater(
+            Fraction(frontier["exact_facts"]["closure_defect"]), Fraction(139, 245)
+        )
+
+    def test_census_block_orders_are_only_a_screen(self) -> None:
+        """The census order set is not an automorphism-orbit system.
+
+        This pins the diagnosis rather than the symptom.  The census averages
+        `C_+` over one order per `S_k x S_(8-k)` pattern, which is a valid
+        representative system only when the family's automorphism group *is* that
+        block group.  For `n8lo` the group has the same order as `S_2 x S_6` but
+        is not it, so the block orders badly mis-weight the true orbits.  If this
+        test ever starts passing trivially, the census objective has changed and
+        the screening threshold has to be revisited.
+        """
+        base = rational.BASES["n8lo"]
+        rows = base.reconstruct()
+        group = rational.automorphism_group(rows, 8)
+        self.assertEqual(len(group), 1440)
+
+        preserving = [
+            g for g in group
+            if set(g[0:2]) == {0, 1} and set(g[2:8]) == set(range(2, 8))
+        ]
+        # same order as |S_2 x S_6| = 1440, but not that group
+        self.assertEqual(len(preserving), 120)
+        self.assertLess(len(preserving), len(group))
+
+        def canonical(order):
+            return min(tuple(g[i] for i in order) for g in group)
+
+        block_orders = n8.block_order_representatives(2)
+        orbit_orders, _group = rational.order_orbits(rows, 8)
+        self.assertEqual(len(block_orders), len(orbit_orders))
+        # the honest orbit system covers every orbit exactly once ...
+        self.assertEqual(len({canonical(o) for o in orbit_orders}), 28)
+        # ... the census one covers only 12 of the 28
+        self.assertEqual(len({canonical(tuple(o)) for o in block_orders}), 12)
+
+    def test_screening_threshold_exceeds_the_census_error_bound(self) -> None:
+        """Any subset average is within alpha*(max C_+ - min C_+) of the truth."""
+        for name in ("n8lo", "n8hi", "n8clone_hi", "n8max"):
+            rows = rational.BASES[name].reconstruct()
+            representatives, _group = rational.order_orbits(rows, 8)
+            values = [
+                rational.bellman_bounds(rows, 8, order)[1]
+                for order in representatives
+            ]
+            bound = PROJECT_ALPHA * (max(values) - min(values))
+            self.assertLess(bound, Fraction(1, 100))
+
+
+class ClonedCoordinateGrowthTests(unittest.TestCase):
+    """Proposition 16: separation is unused, and the growth constant improves."""
+
+    def test_cloned_bases_are_admissible_and_not_separating(self) -> None:
+        for name, defect_value, missing in (
+            ("n8clone_lo", Fraction(139, 245), 2_780),
+            ("n8clone_hi", Fraction(317, 490), 3_170),
+        ):
+            base = rational.BASES[name]
+            rows = base.reconstruct()
+            facts = base.exact_facts()
+            self.assertEqual(len(rows), 70)
+            self.assertTrue(bounds.admissible(rows, 8))
+            self.assertFalse(facts["separating"])
+            self.assertEqual(facts["duplicate_column_pairs"], [[0, 1]])
+            self.assertTrue(facts["active"])
+            self.assertEqual(facts["coordinate_counts"], [28] * 8)
+            self.assertEqual(facts["cap_bound"], 28)
+            self.assertEqual(facts["total_incidence"], 224)
+            self.assertEqual(facts["reimer_threshold"], 215)
+            self.assertEqual(Fraction(facts["closure_defect"]), defect_value)
+            self.assertEqual(bounds.defect_count(rows), missing)
+
+    def test_a_declared_separating_base_still_asserts_separation(self) -> None:
+        """Dropping the check must not silently weaken the normalized bases."""
+        self.assertTrue(rational.Base.requires_separation)
+        self.assertTrue(rational.ExplicitBase.requires_separation)
+        self.assertFalse(rational.ClonedCoordinateBase.requires_separation)
+        for name in ("n6", "n7", "n7lo", "n8lo", "n8hi"):
+            self.assertTrue(rational.BASES[name].exact_facts()["separating"])
+            self.assertEqual(
+                rational.BASES[name].exact_facts()["duplicate_column_pairs"], []
+            )
+        # A cloned family declared as separating must fail loudly.
+        rows = rational.BASES["n8clone_hi"].reconstruct()
+        impostor = rational.ExplicitBase(
+            name="impostor", dimension=8, rows=rows,
+            expected_count=28, expected_missing=3_170,
+            reimer_witness="70**5 < 2**32",
+        )
+        with self.assertRaises(AssertionError):
+            impostor.exact_facts()
+
+    def test_reimer_for_the_base_certifies_every_power(self) -> None:
+        """m^m <= 2^(2I) is exactly I >= R_m, and it is what powers need."""
+        for name in ("n6", "n7", "n7lo", "n8lo", "n8hi", "n8clone_lo", "n8clone_hi"):
+            base = rational.BASES[name]
+            rows = base.reconstruct()
+            size = len(rows)
+            incidence = bounds.incidence(rows)
+            self.assertGreaterEqual(incidence, bounds.reimer_threshold(size))
+            self.assertLessEqual(size ** size, 1 << (2 * incidence))
+            # and the two forms agree
+            self.assertEqual(
+                incidence >= bounds.reimer_threshold(size),
+                size ** size <= 1 << (2 * incidence),
+            )
+
+    def test_clone_power_audit_admits_every_power(self) -> None:
+        report = json.loads(CLONE_POWER_AUDIT.read_text())
+        self.assertEqual(report["verdict"], "EVERY_POWER_ADMISSIBLE")
+        self.assertEqual(report["base"], "n8clone_hi")
+        self.assertTrue(report["every_power_degree_equals_cap"])
+        self.assertTrue(report["all_integer_powers_admissible"])
+        self.assertTrue(report["all_instantiated_admissible"])
+        square = next(r for r in report["instantiated"] if r["power"] == 2)
+        self.assertEqual(square["size"], 4_900)
+        self.assertTrue(square["defect_identity_holds"])
+        self.assertEqual(
+            Fraction(square["closure_defect"]),
+            1 - (1 - Fraction(317, 490)) ** 2,
+        )
+
+    def test_growth_constant_improves_on_the_seven_coordinate_base(self) -> None:
+        certificate = json.loads(CLONE_CERTIFICATE.read_text())
+        self.assertEqual(
+            certificate["verdict"], "PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL"
+        )
+        clone = certificate["asymptotic"]["bases"]["n8clone_hi"]
+        self.assertEqual(Fraction(clone["asymptotic_slope"]), Fraction(3, 640))
+        self.assertEqual(Fraction(clone["certified_threshold"]), Fraction(-3, 80))
+        self.assertEqual(clone["base_dimension"], 8)
+        published_slope = Fraction(7, 250) / 7
+        self.assertGreater(Fraction(clone["asymptotic_slope"]), published_slope)
+        self.assertEqual(
+            Fraction(clone["asymptotic_slope"]) / published_slope, Fraction(75, 64)
+        )
+        consequence = certificate["bases"]["n8clone_hi"]["rational_consequence"]
+        upper = Fraction(consequence["a_plus_two_sided_enclosure"][1])
+        self.assertLess(upper, Fraction(-3, 80))
+        self.assertGreater(
+            Fraction(consequence["base_ratio_lower_gt"]),
+            Fraction(286_491, 10_000_000) / Fraction(64, 81),
+        )
+
+
+class FourFourClassTests(unittest.TestCase):
+    """The S_4 x S_4 class closes block-symmetric coverage at n=8."""
+
+    def test_k4_class_is_exactly_re_ranked_with_no_screen_error(self) -> None:
+        report = json.loads(N8_K4_FRONTIER.read_text())
+        self.assertEqual(report["float_negative_count"], 73)
+        self.assertEqual(report["certified_negative_count"], 73)
+        self.assertEqual(report["float_negative_but_exactly_nonnegative"], [])
+        self.assertEqual(report["float_nonnegative_but_exactly_negative"], [])
+
+    def test_lowest_defect_anywhere_is_four_ninths(self) -> None:
+        base = rational.BASES["n8tiny"]
+        rows = base.reconstruct()
+        facts = base.exact_facts()
+        self.assertEqual(len(rows), 15)
+        self.assertTrue(bounds.admissible(rows, 8))
+        self.assertEqual(Fraction(facts["closure_defect"]), Fraction(4, 9))
+        self.assertEqual(bounds.defect_count(rows), 100)
+        self.assertFalse(facts["separating"])
+        self.assertEqual(
+            facts["duplicate_column_pairs"],
+            [[2, 3], [2, 4], [2, 5], [3, 4], [3, 5], [4, 5]],
+        )
+        # improves every previously certified defect
+        for previous in (Fraction(1336, 2025), Fraction(139, 245), Fraction(1144, 1875)):
+            self.assertLess(Fraction(4, 9), previous)
+        # Corollary 12 requires a dominant set, and it has one: [8] itself.
+        self.assertEqual(max(bin(row).count("1") for row in rows), 8)
+        self.assertIsNone(bounds.union_growth_floor(rows, 8))
+
+    def test_separating_base_improves_the_growth_constant(self) -> None:
+        """n8best raises the slope above 1/250 without dropping separation."""
+        certificate = json.loads(N8_K4_CERTIFICATE.read_text())
+        self.assertEqual(
+            certificate["verdict"], "PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL"
+        )
+        base = certificate["bases"]["n8best"]
+        self.assertTrue(base["exact_base"]["separating"])
+        self.assertEqual(
+            Fraction(base["exact_base"]["closure_defect"]), Fraction(284, 375)
+        )
+        slope = Fraction(
+            certificate["asymptotic"]["bases"]["n8best"]["asymptotic_slope"]
+        )
+        self.assertEqual(slope, Fraction(177, 40_000))
+        self.assertGreater(slope, Fraction(7, 250) / 7)   # beats the n=7 base
+        self.assertLess(slope, Fraction(3, 640))          # but not the clone
+        ratio = Fraction(base["rational_consequence"]["base_ratio_lower_gt"])
+        self.assertEqual(ratio, Fraction(531, 11_360))
+        self.assertGreater(ratio, Fraction(2432, 58_575))  # beats n8max
+        self.assertGreater(ratio, Fraction(286_491, 10_000_000) / Fraction(64, 81))
+
+    def test_every_registered_base_is_admissible_and_certified(self) -> None:
+        """Ten bases; each admissible, each with a frozen target it beats."""
+        self.assertEqual(len(rational.BASES), 10)
+        for name, base in rational.BASES.items():
+            rows = base.reconstruct()
+            self.assertTrue(
+                bounds.admissible(rows, base.dimension), f"{name} inadmissible"
+            )
+            self.assertIn(name, rational.RATIONAL_TARGETS)
+            self.assertTrue(bounds.size_ceiling_holds(len(rows), base.dimension))
+            facts = base.exact_facts()
+            self.assertTrue(facts["active"])
+
+
+class CloneSaturationTests(unittest.TestCase):
+    """Proposition 18: cloning is defect-free, lowers A_+, and saturates."""
+
+    def test_cloning_preserves_size_defect_and_admissibility(self) -> None:
+        report = json.loads(CLONE_SATURATION_AUDIT.read_text())
+        self.assertEqual(report["verdict"], "CLONING_IS_DEFECT_FREE_AND_SATURATES")
+        self.assertTrue(report["size_is_invariant"])
+        self.assertTrue(report["defect_is_invariant"])
+        self.assertTrue(report["admissibility_preserved_throughout"])
+        for row in report["ladder"]:
+            self.assertEqual(row["closure_defect"], "4/9")
+            self.assertEqual(row["family_size"], 15)
+            self.assertTrue(row["admissible"])
+
+    def test_the_collapsed_core_is_admissible_but_positive(self) -> None:
+        """n8tiny's clones buy negativity, not feasibility."""
+        report = json.loads(CLONE_SATURATION_AUDIT.read_text())
+        self.assertEqual(report["collapsed_dimension"], 5)
+        core = tuple(report["collapsed_rows"])
+        self.assertTrue(bounds.admissible(core, 5))
+        self.assertEqual(bounds.defect(core), Fraction(4, 9))
+        base = report["ladder"][0]
+        self.assertEqual(base["clones"], 0)
+        self.assertFalse(base["certified_negative"])
+        self.assertGreater(Fraction(base["a_plus_upper"]), 0)
+        # and the sign flips only once enough clones are added
+        self.assertEqual(report["sign_flips_at_clone_count"], 3)
+
+    def test_clones_of_the_other_two_bases_buy_feasibility_instead(self) -> None:
+        """n8clone_lo/hi collapse to inadmissible 7-coordinate families."""
+        import audit_clone_saturation as saturation
+        for name in ("n8clone_lo", "n8clone_hi"):
+            rows = rational.BASES[name].reconstruct()
+            core, kept = saturation.collapse(rows, 8)
+            self.assertEqual(len(kept), 7)
+            self.assertEqual(bounds.defect(core), bounds.defect(rows))
+            self.assertFalse(bounds.admissible(core, 7))
+            # precisely: Reimer fails, the cap does not
+            self.assertEqual(bounds.incidence(core), 196)
+            self.assertEqual(bounds.reimer_threshold(len(core)), 215)
+            self.assertLessEqual(max(bounds.degrees(core, 7)), bounds.cap(len(core)))
+
+    def test_the_cloning_gain_saturates(self) -> None:
+        report = json.loads(CLONE_SATURATION_AUDIT.read_text())
+        self.assertTrue(report["improvement_is_shrinking"])
+        ratios = [Fraction(r) for r in report["delta_ratios_decimal"]]
+        self.assertTrue(ratios)
+        for ratio in ratios:
+            self.assertLess(ratio, 1)
+        deltas = [
+            Fraction(row["delta_from_previous_decimal"])
+            for row in report["ladder"]
+            if row["delta_from_previous_decimal"] is not None
+        ]
+        for delta in deltas:
+            self.assertLess(delta, 0)          # every clone helps
+        for earlier, later in zip(deltas, deltas[1:]):
+            self.assertLess(abs(later), abs(earlier))   # but by less each time
 
 
 if __name__ == "__main__":

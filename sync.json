@@ -46,17 +46,22 @@
    "updated": "2026-08-22T05:44:40Z"
   },
   "e389": {
-   "bytes": 593055,
+   "bytes": 821316,
    "files": [
     {
+     "path": "LOCALIZATION.md",
+     "sha256": "7146da749cbb",
+     "size": 14337
+    },
+    {
      "path": "README.md",
-     "sha256": "1066d22d7444",
-     "size": 25274
+     "sha256": "f3f1fb911fd3",
+     "size": 37699
     },
     {
      "path": "THEOREMS.md",
-     "sha256": "7f56f090d5d1",
-     "size": 48857
+     "sha256": "d22347794e89",
+     "size": 97901
     },
     {
      "path": "adaptive_eviction_analysis.py",
@@ -80,8 +85,8 @@
     },
     {
      "path": "compare_atlas_classifications.py",
-     "sha256": "267fa7b63328",
-     "size": 23440
+     "sha256": "0428c79e1c2e",
+     "size": 24354
     },
     {
      "path": "compensation_run_search.py",
@@ -119,6 +124,11 @@
      "size": 20919
     },
     {
+     "path": "elementary_class_eviction.py",
+     "sha256": "d3cf1545d72d",
+     "size": 36905
+    },
+    {
      "path": "erdos389.py",
      "sha256": "28debc996b40",
      "size": 14856
@@ -129,9 +139,24 @@
      "size": 22247
     },
     {
+     "path": "forcing_mass_bound.py",
+     "sha256": "40c3ad1b8d7c",
+     "size": 13994
+    },
+    {
+     "path": "good_density_decomposition.py",
+     "sha256": "6a29fdca4137",
+     "size": 10619
+    },
+    {
      "path": "moving_bad_window_search.py",
      "sha256": "51b8dbbeb3ac",
      "size": 13383
+    },
+    {
+     "path": "overlap_density_bound.py",
+     "sha256": "739836a6c3b0",
+     "size": 19519
     },
     {
      "path": "parity_shift_certificate.py",
@@ -164,9 +189,19 @@
      "size": 22404
     },
     {
+     "path": "survivor_census.py",
+     "sha256": "e6b05bab00f5",
+     "size": 13876
+    },
+    {
      "path": "tests/test_erdos389.py",
-     "sha256": "022a54b2ee54",
-     "size": 83002
+     "sha256": "61a1a68ffe70",
+     "size": 115062
+    },
+    {
+     "path": "tier_density_dp.py",
+     "sha256": "7655dbc34b6e",
+     "size": 24568
     },
     {
      "path": "verify_known.py",
@@ -184,10 +219,10 @@
      "size": 5896
     }
    ],
-   "headline": "### E389-HALF-WINDOW-EVICTION-DENSITY (2026-08-27) — EVICTION TURNS OUT TO BE FREE, THE WITNESS DENSITY GETS AN UNCONDITIONAL CEILING, AND THE \\(m=27\\) SHIFT NEIGHBOURHOOD REACHES ",
-   "progress_header": "### E389-HALF-WINDOW-EVICTION-DENSITY (2026-08-27) — EVICTION TURNS OUT TO BE FREE, THE WITNESS DENSITY GETS AN UNCONDITIONAL CEILING, AND THE \\(m=27\\) SHIFT NEIGHBOURHOOD REACHES \\(10^9\\)",
-   "sig": "305bbc1b25811d25",
-   "updated": "2026-08-27T11:21:20Z"
+   "headline": "### E389-R1-PROVED (2026-08-28) - THE FIRST RUNG OF CONJECTURE R IS NOW A THEOREM, AND THE CLAIM THAT BLOCKED IT WAS MY OWN ARITHMETIC ERROR",
+   "progress_header": "### E389-R1-PROVED (2026-08-28) - THE FIRST RUNG OF CONJECTURE R IS NOW A THEOREM, AND THE CLAIM THAT BLOCKED IT WAS MY OWN ARITHMETIC ERROR",
+   "sig": "b60ae08fe8c47a67",
+   "updated": "2026-08-28T08:28:00Z"
   },
   "h10q": {
    "bytes": 20380068,
@@ -29428,7 +29463,7 @@
    "updated": "2026-08-26T00:05:20Z"
   },
   "uc": {
-   "bytes": 29117775,
+   "bytes": 35007945,
    "files": [
     {
      "path": "ANNOUNCEMENT.md",
@@ -29456,19 +29491,24 @@
      "size": 36073
     },
     {
+     "path": "LIU_H2_INGREDIENT_I.md",
+     "sha256": "952f32b0f4aa",
+     "size": 36612
+    },
+    {
      "path": "PROOF.md",
      "sha256": "9d8b6b758248",
      "size": 29091
     },
     {
      "path": "README.md",
-     "sha256": "a4f36828105d",
-     "size": 43672
+     "sha256": "f6d36b0a065a",
+     "size": 46042
     },
     {
      "path": "REPRODUCIBILITY.md",
-     "sha256": "e4d3de6cb6a2",
-     "size": 36138
+     "sha256": "5d005ad9b46b",
+     "size": 49098
     },
     {
      "path": "_probe.py",
@@ -30036,24 +30076,39 @@
      "size": 2459
     },
     {
+     "path": "gate_b/CURRENT_STATUS.md",
+     "sha256": "cc63961f987e",
+     "size": 14670
+    },
+    {
      "path": "gate_b/DEFINITIONS.md",
      "sha256": "2d295690e115",
      "size": 5071
     },
     {
      "path": "gate_b/EXPERIMENTS.md",
-     "sha256": "da887cb56019",
-     "size": 36073
+     "sha256": "54c35eb40f2b",
+     "size": 65565
     },
     {
      "path": "gate_b/PROOF.md",
-     "sha256": "ac7f56f9c835",
-     "size": 23618
+     "sha256": "1a8596c93a5f",
+     "size": 47399
     },
     {
      "path": "gate_b/README.md",
-     "sha256": "9ba1a7ce3e43",
-     "size": 24114
+     "sha256": "d646abe9c105",
+     "size": 44199
+    },
+    {
+     "path": "gate_b/audit_clone_power.py",
+     "sha256": "b6ad2baa8bd7",
+     "size": 10348
+    },
+    {
+     "path": "gate_b/audit_clone_saturation.py",
+     "sha256": "94939dd84e29",
+     "size": 9422
     },
     {
      "path": "gate_b/audit_n5_complete.py",
@@ -30086,6 +30141,106 @@
      "size": 14729
     },
     {
+     "path": "gate_b/bound_local_regime.py",
+     "sha256": "da4b6ca9327c",
+     "size": 15119
+    },
+    {
+     "path": "gate_b/candidates/clone_power_audit.json",
+     "sha256": "6e87bdb0a8de",
+     "size": 19432
+    },
+    {
+     "path": "gate_b/candidates/clone_saturation_audit.json",
+     "sha256": "8c7621a039c9",
+     "size": 4613
+    },
+    {
+     "path": "gate_b/candidates/local_defect_frontier_n5.json",
+     "sha256": "927f4ee03b74",
+     "size": 4872
+    },
+    {
+     "path": "gate_b/candidates/local_defect_frontier_n6.json",
+     "sha256": "fca1bd98e250",
+     "size": 10503
+    },
+    {
+     "path": "gate_b/candidates/local_defect_frontier_n7.json",
+     "sha256": "8e20e4f3a883",
+     "size": 24817
+    },
+    {
+     "path": "gate_b/candidates/local_defect_frontier_n8.json",
+     "sha256": "1c588070644d",
+     "size": 41522
+    },
+    {
+     "path": "gate_b/candidates/local_defect_n5.json",
+     "sha256": "68f16945c27b",
+     "size": 4098
+    },
+    {
+     "path": "gate_b/candidates/local_defect_n6.json",
+     "sha256": "3e61047fa16a",
+     "size": 2757
+    },
+    {
+     "path": "gate_b/candidates/local_defect_n7.json",
+     "sha256": "d021f60c26ef",
+     "size": 3056
+    },
+    {
+     "path": "gate_b/candidates/local_defect_n8.json",
+     "sha256": "1ab580a6f287",
+     "size": 4220
+    },
+    {
+     "path": "gate_b/candidates/local_defect_v2_n6.json",
+     "sha256": "77028608a210",
+     "size": 1773
+    },
+    {
+     "path": "gate_b/candidates/local_defect_v2_n7.json",
+     "sha256": "5a8434a4b951",
+     "size": 1541
+    },
+    {
+     "path": "gate_b/candidates/local_defect_v2_n8.json",
+     "sha256": "a1f06b92970e",
+     "size": 2970
+    },
+    {
+     "path": "gate_b/candidates/local_descend_n6.json",
+     "sha256": "852ad1420e30",
+     "size": 1395
+    },
+    {
+     "path": "gate_b/candidates/local_descend_n7.json",
+     "sha256": "6c73a58a5637",
+     "size": 1827
+    },
+    {
+     "path": "gate_b/candidates/local_ratio_n6.json",
+     "sha256": "2b02cc0729af",
+     "size": 1554
+    },
+    {
+     "path": "gate_b/candidates/local_ratio_n7.json",
+     "sha256": "f820991ce96d",
+     "size": 1783
+    },
+    {
+     "path": "gate_b/candidates/local_regime_bounds.json",
+     "sha256": "f8e30d7ad468",
+     "size": 4802
+    },
+    {
+     "path": "gate_b/candidates/local_sweep_n7.json",
+     "sha256": "8d8a3c9057c0",
+     "size": 2871
+    },
+    {
      "path": "gate_b/candidates/n5_complete_audit.json",
      "sha256": "14f687541884",
      "size": 1226
@@ -30106,6 +30261,41 @@
      "size": 4804
     },
     {
+     "path": "gate_b/candidates/n8_k1_exact_frontier.json",
+     "sha256": "d02d386978eb",
+     "size": 5960
+    },
+    {
+     "path": "gate_b/candidates/n8_k2_census.json",
+     "sha256": "daa3fbe2fec9",
+     "size": 4868
+    },
+    {
+     "path": "gate_b/candidates/n8_k2_exact_frontier.json",
+     "sha256": "d6d4cccf5504",
+     "size": 6008
+    },
+    {
+     "path": "gate_b/candidates/n8_k3_census.json",
+     "sha256": "5cc25f5187ba",
+     "size": 5115
+    },
+    {
+     "path": "gate_b/candidates/n8_k3_exact_frontier.json",
+     "sha256": "b7b9e46def09",
+     "size": 7284
+    },
+    {
+     "path": "gate_b/candidates/n8_k4_census.json",
+     "sha256": "d72f074e28e9",
+     "size": 4977
+    },
+    {
+     "path": "gate_b/candidates/n8_k4_exact_frontier.json",
+     "sha256": "98161d4c94df",
+     "size": 6112
+    },
+    {
      "path": "gate_b/candidates/power_admissibility_audit.json",
      "sha256": "287ee465e237",
      "size": 2303
@@ -30124,6 +30314,31 @@
      "path": "gate_b/candidates/tensorization_exact_audit.json",
      "sha256": "456520716b0c",
      "size": 24159
+    },
+    {
+     "path": "gate_b/certificates/gate_b_lowdefect_rational_v1.json",
+     "sha256": "d33e2b1ecc6d",
+     "size": 72758
+    },
+    {
+     "path": "gate_b/certificates/gate_b_n8_clone_rational_v1.json",
+     "sha256": "b57909e5ef81",
+     "size": 13542
+    },
+    {
+     "path": "gate_b/certificates/gate_b_n8_k4_rational_v1.json",
+     "sha256": "1135b741eada",
+     "size": 13673
+    },
+    {
+     "path": "gate_b/certificates/gate_b_n8_max_rational_v1.json",
+     "sha256": "79d8208483fe",
+     "size": 8541
+    },
+    {
+     "path": "gate_b/certificates/gate_b_n8_rational_v1.json",
+     "sha256": "d5f6a658329c",
+     "size": 13833
     },
     {
      "path": "gate_b/certificates/gate_b_unbounded_arb.json",
@@ -30162,8 +30377,18 @@
     },
     {
      "path": "gate_b/certificates/gate_b_unbounded_rational_v1.json",
-     "sha256": "6a04b708583e",
-     "size": 12654
+     "sha256": "0ddb6ad4c610",
+     "size": 13082
+    },
+    {
+     "path": "gate_b/certify_class_negatives.py",
+     "sha256": "ce58cfdf129b",
+     "size": 13782
+    },
+    {
+     "path": "gate_b/experiments/local_ratio_checkpoint.jsonl",
+     "sha256": "e44a0bb9be2e",
+     "size": 90643
     },
     {
      "path": "gate_b/experiments/n5_complete_checkpoint.jsonl",
@@ -30181,14 +30406,34 @@
      "size": 107994
     },
     {
+     "path": "gate_b/experiments/n8_k1_exact_checkpoint.jsonl",
+     "sha256": "59b7f7d60ef7",
+     "size": 5607
+    },
+    {
+     "path": "gate_b/experiments/n8_k2_checkpoint.jsonl",
+     "sha256": "5ddc0b92c3c6",
+     "size": 1887862
+    },
+    {
+     "path": "gate_b/experiments/n8_k2_exact_checkpoint.jsonl",
+     "sha256": "55a3c155ef97",
+     "size": 69595
+    },
+    {
+     "path": "gate_b/experiments/n8_k3_exact_checkpoint.jsonl",
+     "sha256": "f93f157b834e",
+     "size": 226360
+    },
+    {
+     "path": "gate_b/experiments/n8_k4_exact_checkpoint.jsonl",
+     "sha256": "35ee76ed0dcf",
+     "size": 263138
+    },
+    {
      "path": "gate_b/experiments/power_admissibility_checkpoint.jsonl",
      "sha256": "2695bb03ae5d",
      "size": 1591
-    },
-    {
-     "path": "gate_b/experiments/rational_certificate_checkpoint.jsonl",
-     "sha256": "35ac123d1653",
-     "size": 1463448
     },
     {
      "path": "gate_b/experiments/square_direct_checkpoint.jsonl",
@@ -30206,44 +30451,59 @@
      "size": 19248
     },
     {
+     "path": "gate_b/hunt_local_ratio.py",
+     "sha256": "8f9b22b43976",
+     "size": 33892
+    },
+    {
      "path": "gate_b/paper/main.aux",
-     "sha256": "228eb9060269",
-     "size": 2199
+     "sha256": "95e391436bb4",
+     "size": 2827
     },
     {
      "path": "gate_b/paper/main.fdb_latexmk",
-     "sha256": "0529cd7f947d",
-     "size": 16558
+     "sha256": "42aac824ebe2",
+     "size": 16999
     },
     {
      "path": "gate_b/paper/main.fls",
-     "sha256": "f9519eb1177b",
-     "size": 19690
+     "sha256": "01c56e42c0b1",
+     "size": 19980
     },
     {
      "path": "gate_b/paper/main.log",
-     "sha256": "758af4d4d641",
-     "size": 23598
+     "sha256": "49794b563fbc",
+     "size": 23716
     },
     {
      "path": "gate_b/paper/main.out",
-     "sha256": "e451a010daf4",
-     "size": 1442
+     "sha256": "9cb09b5656b3",
+     "size": 2404
+    },
+    {
+     "path": "gate_b/paper/main.pdf",
+     "sha256": "4b57f1ad03f9",
+     "size": 291115
     },
     {
      "path": "gate_b/paper/main.tex",
-     "sha256": "47e0675e663c",
-     "size": 24841
+     "sha256": "472448dc0eeb",
+     "size": 37631
+    },
+    {
+     "path": "gate_b/search_local_defect.py",
+     "sha256": "e207d5e9e452",
+     "size": 25205
     },
     {
      "path": "gate_b/search_n8_block_symmetric.py",
-     "sha256": "365a2ccb1482",
-     "size": 12951
+     "sha256": "fc07a078ee10",
+     "size": 14658
     },
     {
      "path": "gate_b/test_gate_b.py",
-     "sha256": "e1f66f4d0e3c",
-     "size": 45582
+     "sha256": "6434f78c2188",
+     "size": 85011
     },
     {
      "path": "gate_b/verify_gate_b.py",
@@ -30267,8 +30527,8 @@
     },
     {
      "path": "gate_b/verify_gate_b_rational.py",
-     "sha256": "39504e842791",
-     "size": 38747
+     "sha256": "0f024845a705",
+     "size": 51452
     },
     {
      "path": "join_dependencies.py",
@@ -30491,9 +30751,34 @@
      "size": 39948
     },
     {
+     "path": "liu9_boundary_layer.py",
+     "sha256": "4f544183c8cc",
+     "size": 49513
+    },
+    {
+     "path": "liu9_chart_centered.py",
+     "sha256": "73e7b5ea6bca",
+     "size": 52702
+    },
+    {
+     "path": "liu9_chart_cover.py",
+     "sha256": "3856e7869fa3",
+     "size": 43510
+    },
+    {
      "path": "liu9_endpoint.py",
      "sha256": "41d806fffc51",
      "size": 60150
+    },
+    {
+     "path": "liu9_mirror_layer.py",
+     "sha256": "ac130db53092",
+     "size": 49363
+    },
+    {
+     "path": "liu9_ninevar.py",
+     "sha256": "83d5216536f4",
+     "size": 49255
     },
     {
      "path": "liu9_objective.py",
@@ -30506,6 +30791,11 @@
      "size": 26765
     },
     {
+     "path": "liu9_qdegenerate.py",
+     "sha256": "19c2715f6989",
+     "size": 46666
+    },
+    {
      "path": "liu9_reduce.py",
      "sha256": "a46d2b17cfc8",
      "size": 40527
@@ -30516,9 +30806,19 @@
      "size": 13458
     },
     {
+     "path": "liu9_smooth_chart.py",
+     "sha256": "13c1a1c3b4e6",
+     "size": 33589
+    },
+    {
+     "path": "liu9_survivors.py",
+     "sha256": "8a7c71134f98",
+     "size": 40179
+    },
+    {
      "path": "liu9_tube.py",
-     "sha256": "f2013d25c944",
-     "size": 32346
+     "sha256": "a451e490fd79",
+     "size": 40365
     },
     {
      "path": "liu_R_nsd.py",
@@ -30896,6 +31196,26 @@
      "size": 14451
     },
     {
+     "path": "verification/results/.cover-1-32.checkpoint.json",
+     "sha256": "ef8251c21862",
+     "size": 185
+    },
+    {
+     "path": "verification/results/.cover-full.checkpoint.json",
+     "sha256": "8be289d90463",
+     "size": 189
+    },
+    {
+     "path": "verification/results/.cover-v2.checkpoint.json",
+     "sha256": "be2fcc94dc0b",
+     "size": 190
+    },
+    {
+     "path": "verification/results/.cover-v3.checkpoint.json",
+     "sha256": "f64db79acf3a",
+     "size": 190
+    },
+    {
      "path": "verification/results/cambie-bridge-strictness.json",
      "sha256": "9bcf381cd731",
      "size": 2178
@@ -31036,6 +31356,21 @@
      "size": 7157
     },
     {
+     "path": "verification/results/liu9-boundary-layer.json",
+     "sha256": "92e72ea49009",
+     "size": 13647
+    },
+    {
+     "path": "verification/results/liu9-chart-centered.json",
+     "sha256": "0cd9e691db43",
+     "size": 23103
+    },
+    {
+     "path": "verification/results/liu9-chart-cover.json",
+     "sha256": "a15e041d2dc8",
+     "size": 2118
+    },
+    {
      "path": "verification/results/liu9-complement-residual-rho0.1-3M.json",
      "sha256": "4b30773669e5",
      "size": 74308
@@ -31044,6 +31379,31 @@
      "path": "verification/results/liu9-complement-residual-rho0.1.json",
      "sha256": "a82fc9ec882a",
      "size": 71509
+    },
+    {
+     "path": "verification/results/liu9-mirror-layer.json",
+     "sha256": "25cf45c06ab1",
+     "size": 34158
+    },
+    {
+     "path": "verification/results/liu9-ninevar.json",
+     "sha256": "c830599c234a",
+     "size": 33613
+    },
+    {
+     "path": "verification/results/liu9-qdegenerate.json",
+     "sha256": "ab436e768216",
+     "size": 7403
+    },
+    {
+     "path": "verification/results/liu9-smooth-chart.json",
+     "sha256": "da9d210eed9c",
+     "size": 10838
+    },
+    {
+     "path": "verification/results/liu9-survivor-classification.json",
+     "sha256": "2a697a3e1fe6",
+     "size": 3325769
     },
     {
      "path": "verification/results/preflight/slice-0/events.jsonl",
@@ -31131,6 +31491,41 @@
      "size": 3406
     },
     {
+     "path": "verification/test_liu9_boundary_layer.py",
+     "sha256": "f95e532d582c",
+     "size": 7153
+    },
+    {
+     "path": "verification/test_liu9_chart_centered.py",
+     "sha256": "4302bf6cc899",
+     "size": 10433
+    },
+    {
+     "path": "verification/test_liu9_chart_cover.py",
+     "sha256": "6a76762b411e",
+     "size": 19127
+    },
+    {
+     "path": "verification/test_liu9_mirror_layer.py",
+     "sha256": "b2860b9f3c96",
+     "size": 14603
+    },
+    {
+     "path": "verification/test_liu9_ninevar.py",
+     "sha256": "9a02e83f81f4",
+     "size": 7498
+    },
+    {
+     "path": "verification/test_liu9_qdegenerate.py",
+     "sha256": "e2542389fcf6",
+     "size": 7845
+    },
+    {
+     "path": "verification/test_liu9_smooth_chart.py",
+     "sha256": "ae938f86589f",
+     "size": 8127
+    },
+    {
      "path": "yu_gap.py",
      "sha256": "9d7091dfc50f",
      "size": 7811
@@ -31138,8 +31533,8 @@
    ],
    "headline": "### UC-BRIDGE-EXHAUSTION-CAMPAIGN-K-RESUME (2026-08-27) — THE ENTROPY BRIDGE IS NOW EXHAUSTIVELY MACHINE-CHECKED, A SECOND REFEREE FINDS NO PROOF DEFECT, AND CAMPAIGN K'S THREE LOS",
    "progress_header": "### UC-BRIDGE-EXHAUSTION-CAMPAIGN-K-RESUME (2026-08-27) — THE ENTROPY BRIDGE IS NOW EXHAUSTIVELY MACHINE-CHECKED, A SECOND REFEREE FINDS NO PROOF DEFECT, AND CAMPAIGN K'S THREE LOST SLICES ARE RUNNING AGAIN",
-   "sig": "599d2e8c6d29157f",
-   "updated": "2026-08-27T11:21:20Z"
+   "sig": "59ec0a749b2f05b7",
+   "updated": "2026-08-28T08:28:00Z"
   },
   "zeta5": {
    "bytes": 27160,
@@ -31171,5 +31566,5 @@
    "updated": "2026-08-26T00:08:14Z"
   }
  },
- "updated": "2026-08-27T11:21:20Z"
+ "updated": "2026-08-28T08:28:00Z"
 }

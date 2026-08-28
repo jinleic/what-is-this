@@ -21,8 +21,9 @@
         "linear_lower_bound": "c(n) >= 7/250 * floor(n/7)"
       }
     },
-    "statement": "Write c(n) for the supremum of -A_+/eps_join over admissible families on at most n coordinates with A_+ < 0.  Cartesian powers of a certified base give c(n) >= |delta| * floor(n/d) with the base dimension d, hence c(n) = Omega(n).  Conversely Q >= 0 and C_+ >= 0 force -A_+ <= log2 m <= n, so for every family with eps_join >= eps0 the ratio is at most n/eps0.  Under a positive defect floor the growth is therefore exactly of order n.",
-    "upper_bound_reason": "h >= 0 termwise gives Q >= 0; C_+ is a maximum of sums of h, so C_+ >= 0; hence A_+ >= -log2 m and -A_+ <= log2 m <= n."
+    "size_ceiling_integer_test": "m**5 <= 2**(4*n)",
+    "statement": "Write c(n) for the supremum of -A_+/eps_join over admissible families on at most n coordinates with A_+ < 0, and Lambda(n) for the supremum of -A_+ alone.  Cartesian powers of a certified base give c(n) >= |delta| * floor(n/d) with the base dimension d, hence c(n) = Omega(n).  Conversely Q >= 0 and C_+ >= 0 force -A_+ <= log2 m, and the cap and Reimer conditions force the size ceiling log2 m <= 4n/5, so Lambda(n) <= 4n/5 unconditionally and Lambda(n) = Theta(n).  For every family with eps_join >= eps0 the ratio is at most (4n/5)/eps0, so under a positive defect floor the growth of c(n) is also exactly of order n.",
+    "upper_bound_reason": "h >= 0 termwise gives Q >= 0; C_+ is a maximum of sums of h, so C_+ >= 0; hence A_+ >= -log2 m and -A_+ <= log2 m.  Incidence is sum_i deg_i <= n*floor(2m/5) <= 2nm/5 while Reimer demands incidence >= m log2 m / 2, so log2 m <= 4n/5, tested exactly as m^5 <= 2^(4n).  See bound_local_regime.py and PROOF.md Lemma 9."
   },
   "bases": {
     "n6": {
@@ -132,7 +133,7 @@
       "order_evaluation": {
         "all_order_count": 720,
         "automorphism_count": 72,
-        "bellman_state_count": 584784,
+        "bellman_state_count": 1600,
         "distinct_enclosure_count": 10,
         "distinct_enclosure_multiplicities": [
           72,
@@ -149,10 +150,10 @@
         "evaluated_order_count": 720,
         "foreign_schema_checkpoint_lines": 0,
         "mode": "all",
-        "new_evaluations": 720,
+        "new_evaluations": 0,
         "order_orbit_count": 10,
-        "rechecked_records": 0,
-        "resumed_records": 0,
+        "rechecked_records": 2,
+        "resumed_records": 720,
         "symmetry_quotient_used": false,
         "truncated_checkpoint_lines": 0
       },
@@ -327,7 +328,7 @@
       "order_evaluation": {
         "all_order_count": 5040,
         "automorphism_count": 240,
-        "bellman_state_count": 13381680,
+        "bellman_state_count": 5266,
         "distinct_enclosure_count": 21,
         "distinct_enclosure_multiplicities": [
           240,
@@ -355,10 +356,10 @@
         "evaluated_order_count": 5040,
         "foreign_schema_checkpoint_lines": 0,
         "mode": "all",
-        "new_evaluations": 5040,
+        "new_evaluations": 0,
         "order_orbit_count": 21,
-        "rechecked_records": 0,
-        "resumed_records": 0,
+        "rechecked_records": 2,
+        "resumed_records": 5040,
         "symmetry_quotient_used": false,
         "truncated_checkpoint_lines": 0
       },

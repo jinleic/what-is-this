@@ -1,0 +1,94 @@
+{
+ "ceiling": "[0.38712508776923251553 +/- 1.83e-21]",
+ "cells": 393216,
+ "centre_identity": {
+  "collapsed_centre_gap": "[+/- 6.74e-69]",
+  "collapsed_centre_gs": "[+/- 2.02e-68]",
+  "deficit_is_all_q": true,
+  "gd_antisymmetry": {
+   "bracket": "(1-q)*(-q) + q*(1-q)",
+   "coefficients": {
+    "q^0": "0",
+    "q^1": "0",
+    "q^2": "0"
+   },
+   "identically_zero": true
+  },
+  "probe_q": [
+   "1/4096",
+   "1/256",
+   "1/64",
+   "1/4",
+   "1/2",
+   "3/4",
+   "4095/4096"
+  ],
+  "q_free_by_construction": true,
+  "q_free_gs_bound": 2.015641185323458e-68,
+  "q_free_value_bound": 6.730914798312525e-69,
+  "step_b_deficit": 7.360802668726106e-69,
+  "worst_centre_gd": 5.068091164434039e-70,
+  "worst_centre_gs": 2.0156411887779254e-68,
+  "worst_centre_value": 6.730914806948694e-69,
+  "worst_distance_centre_entry": 8.91520819167773e-70,
+  "worst_transcription_difference": 1.345999330580974e-68
+ },
+ "certified": true,
+ "delta": "1/512",
+ "elapsed_seconds": 1915.0795919590164,
+ "failures": [],
+ "falsification": {
+  "points": 1200,
+  "seed": 20260828,
+  "violations": [],
+  "worst_point": [
+   "193801/8000000",
+   "-815489/32000000",
+   "2047485671/2048000000"
+  ],
+  "worst_smallest_eigenvalue": 0.00021318681048605064
+ },
+ "geometry": {
+  "cells": 393216,
+  "contains_chart_centre": true,
+  "convex": "product of intervals",
+  "d": {
+   "abutment_checks": 15,
+   "count": 16,
+   "half": "1/512",
+   "lower": "-1/32",
+   "upper": "1/32"
+  },
+  "q": {
+   "abutment_checks": 1535,
+   "count": 1536,
+   "lower": "1/4096",
+   "upper": "4095/4096",
+   "widest_relative_width": "1/64"
+  },
+  "s": {
+   "abutment_checks": 15,
+   "count": 16,
+   "half": "1/512",
+   "lower": "-1/32",
+   "upper": "1/32"
+  }
+ },
+ "inherited_radius": "1/256",
+ "kappa": "4119063/33554432",
+ "processed": 393216,
+ "q_cells": 1536,
+ "q_floor": "1/4",
+ "q_max": "4095/4096",
+ "q_min": "1/4096",
+ "radius": "1/32",
+ "report_sha256": "410ada1675fdb8858bb11d9ed2ca13ba69b7cb6e96daf472f5f70b9eff49ecd8",
+ "subdivisions": 2,
+ "target_radius": "1/32",
+ "worst_cell": [
+  "15/512",
+  "-15/512",
+  "1/4096"
+ ],
+ "worst_margin": 2.4807559168903012e-05
+}

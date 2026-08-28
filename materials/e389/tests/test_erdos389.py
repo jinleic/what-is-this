@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 import random
 import tempfile
 import unittest
@@ -26,8 +27,22 @@ from atlas import (
 from compare_atlas_classifications import (
     build_diff,
     carry_positions as independent_carry_positions,
+    semantic_sha256,
 )
 from artifact_io import atomic_write_json
+from overlap_density_bound import (
+    band_integrand,
+    finitary_threshold,
+    pair_accounting,
+    pair_obstruction,
+    band_of,
+    band_overlap_lower_bound,
+    exponent_tail_bound,
+    level_union_bound,
+    overlap_family_member,
+    overlap_lower_bound,
+    CERTIFIED_BANDS,
+)
 from compensation_structure_analysis import (
     analyze as analyze_compensation_structure,
     blocker_eviction_crt,
@@ -51,6 +66,22 @@ from exact_eviction_certificate import (
     translation_offset,
     window_large_primes,
 )
+from good_density_decomposition import (
+    classify_term,
+    asymptotic_union_bound,
+    compensation_count,
+    decompose_block,
+    union_bound_terms,
+)
+from forcing_mass_bound import (
+    counting_lemma_bound,
+    exceeds_target_threshold,
+    greedy_size_forcing_modulus,
+    modulus_log_lower_bound,
+    verify_counting_lemma,
+    verify_mertens_constant,
+    window_multiplicity_sum,
+)
 from parity_shift_certificate import (
     classify_shift,
     shift_window_difference,
@@ -63,6 +94,21 @@ from smooth_density_analysis import (
     measure_compensation_block,
 )
 from bad_window_near_miss_analysis import analyze as analyze_bad_window_near_misses
+from elementary_class_eviction import (
+    block_prime,
+    covering_prime,
+    covering_spans,
+    union_measure,
+    evict_progression,
+    minimal_progression_length,
+    progression_prime,
+    evict_block,
+    evict_initial,
+    factor_modulus,
+    least_prime_above,
+    pinned_split,
+    verify_eviction,
+)
 from erdos389 import (
     MAX_TRIAL_FACTORIZER_VALUE,
     RatioSlackScanner,
@@ -104,6 +150,18 @@ from shift_repair_analysis import (
     odd_shift_rough_modulus,
     zero_carry_modulus,
 )
+from tier_density_dp import (
+    base_digits,
+    carry_bound_terms,
+    certified_upper_bound,
+    decay_envelope,
+    digit_sum_slack,
+    envelope_applies,
+    failure_count_enumerated,
+    failure_count_power,
+    failure_count_upto,
+    high_digit_count,
+)
 from zero_carry_corridor_search import search as search_zero_carry_corridor
 from zone_analysis import verify_zone_rectangle
 from verify_known import input_provenance, read_rows
@@ -118,6 +176,12 @@ SMOKE_ATLAS = DATA.parent / "atlas_smoke_m1_8_k500.json"
 CLASSIFICATION_DIFF = DATA.parent / "atlas_prime_key_classification_diff.json"
 CHANGED_CASES = DATA.parent / "atlas_prime_key_changed_cases.jsonl"
 SHIFT_REPAIR_ANALYSIS = DATA.parent / "shift_repair_analysis_m1_50_k50000.json"
+TIER_DENSITY = DATA.parent / "tier_density_m1_30.json"
+FORCING_MASS = DATA.parent / "forcing_mass_bound.json"
+OVERLAP_BOUND = DATA.parent / "overlap_density_bound.json"
+ELEMENTARY_EVICTION = DATA.parent / "elementary_class_eviction.json"
+SURVIVOR_CENSUS = DATA.parent / "survivor_census.json"
+GOOD_DECOMPOSITION = DATA.parent / "good_density_decomposition.json"
 
 PRIME_REPAIR_ANALYSIS = DATA.parent / "prime_repair_analysis_r64.json"
 ZONE_CERTIFICATE = DATA.parent / "zone_theorem_m1_8_k2000.json"
@@ -2036,6 +2100,634 @@ class ShiftScaleRunShardTests(unittest.TestCase):
         self.assertEqual(intervals[0][0], 5_048_891_644_619)
         self.assertEqual(intervals[-1][1], 5_049_891_644_619)
         self.assertEqual(intervals[-1][1] - intervals[0][0], 1_000_000_000)
+
+
+class TierDensityTests(unittest.TestCase):
+    def test_digit_sum_identity_matches_slack(self) -> None:
+        rng = random.Random(28)
+        for _ in range(400):
+            m = rng.randrange(0, 60)
+            k = rng.randrange(1, 10**6)
+            p = rng.choice(primes_up_to(59))
+            self.assertEqual(digit_sum_slack(m, k, p), slack(m, k, p))
+
+    def test_carry_bound_holds_and_is_attained(self) -> None:
+        attained = False
+        for m in range(1, 14):
+            for p in primes_up_to(m):
+                for k in range(1, 300):
+                    exact = slack(m, k, p)
+                    d_count, run, window = carry_bound_terms(m, k, p)
+                    margin = exact - (window - d_count - run)
+                    self.assertGreaterEqual(margin, 0)
+                    attained = attained or margin == 0
+        self.assertTrue(attained)
+
+    def test_high_digit_count_matches_definition(self) -> None:
+        for p in primes_up_to(50):
+            self.assertEqual(
+                high_digit_count(p), sum(1 for d in range(p) if 2 * d >= p)
+            )
+
+    def test_digit_program_matches_enumeration(self) -> None:
+        for m in (0, 1, 5, 12, 27):
+            for p in primes_up_to(min(max(m, 2), 11)):
+                for digits in (3, 4):
+                    if p**digits <= 2 * m or p**digits > 60_000:
+                        continue
+                    expected = failure_count_enumerated(m, p, p**digits - 1)
+                    self.assertEqual(failure_count_power(m, p, digits), expected)
+                    self.assertEqual(
+                        failure_count_upto(m, p, p**digits - 1), expected
+                    )
+
+    def test_prefix_program_matches_enumeration_off_power_boundaries(self) -> None:
+        for m in (1, 27):
+            for p in (2, 3, 5):
+                for limit in (1, 2, 999, 5_000, 12_345):
+                    self.assertEqual(
+                        failure_count_upto(m, p, limit),
+                        failure_count_enumerated(m, p, limit),
+                    )
+
+    def test_closed_form_bound_dominates_exact_count(self) -> None:
+        for m in (0, 1, 7, 27):
+            for p in primes_up_to(min(max(m, 2), 13)):
+                for digits in range(len(base_digits(m, p)) + 1, 13):
+                    self.assertGreaterEqual(
+                        certified_upper_bound(m, p, digits),
+                        failure_count_power(m, p, digits),
+                    )
+
+    def test_decay_envelope_dominates_bound_where_hypothesis_holds(self) -> None:
+        checked = 0
+        for m, p, digits in ((1, 2, 32), (1, 2, 40), (2, 3, 33), (27, 2, 96)):
+            self.assertTrue(envelope_applies(m, p, digits))
+            density = certified_upper_bound(m, p, digits) / p**digits
+            self.assertLessEqual(density, decay_envelope(digits))
+            checked += 1
+        self.assertEqual(checked, 4)
+
+    def test_tier_artifact_pins_inputs_and_records_exact_agreement(self) -> None:
+        payload = json.loads(TIER_DENSITY.read_text(encoding="utf-8"))
+        self.assertEqual(payload["status"], "PASS_EXACT_TIER_DENSITY")
+        self.assertEqual(
+            payload["implementation_sha256"]["tier_density_dp.py"],
+            hashlib.sha256((PROJECT / "tier_density_dp.py").read_bytes()).hexdigest(),
+        )
+        self.assertEqual(
+            payload["input"]["density_artifact_sha256"],
+            hashlib.sha256(
+                (PROJECT / "data" / "smooth_density_m1_20_k3000.json").read_bytes()
+            ).hexdigest(),
+        )
+        self.assertEqual(
+            payload["identity_and_inequality"]["minimum_inequality_margin"], 0
+        )
+        self.assertGreater(payload["envelope_checked_cells"], 0)
+        for row in payload["prime_decay"]:
+            densities = [cell["density"] for cell in row["cells"]]
+            self.assertLess(densities[-1], densities[0])
+            for cell in row["cells"]:
+                self.assertLessEqual(cell["density"], cell["certified_bound_density"])
+
+    def test_recorded_tier_failure_density_is_small_at_witness_scale(self) -> None:
+        payload = json.loads(TIER_DENSITY.read_text(encoding="utf-8"))
+        scale = next(
+            row for row in payload["scales"] if row["limit"] == 5_048_891_644_621
+        )
+        self.assertLess(scale["union_failure_density"], 0.02)
+        self.assertGreater(scale["surviving_density_lower_bound"], 0.98)
+        recomputed = sum(
+            failure_count_upto(payload["parameters"]["target_m"], row["p"], scale["limit"])
+            for row in scale["per_prime"]
+        )
+        self.assertEqual(recomputed, scale["union_failure_count"])
+
+
+class SemanticDigestTests(unittest.TestCase):
+    def test_semantic_digest_ignores_exactly_the_environment_blocks(self) -> None:
+        payload = json.loads(SMOKE_ATLAS.read_text(encoding="utf-8"))
+        baseline = semantic_sha256(payload)
+        for field, value in (
+            ("generated_at_utc", "1999-12-31T23:59:59Z"),
+            ("resources", {"wall_seconds": 12345.0}),
+            ("runtime", {"python": "0.0.0"}),
+        ):
+            mutated = dict(payload)
+            mutated[field] = value
+            self.assertEqual(semantic_sha256(mutated), baseline)
+        substantive = dict(payload)
+        substantive["schema_version"] = payload["schema_version"] + 1
+        self.assertNotEqual(semantic_sha256(substantive), baseline)
+
+    def test_checked_in_atlas_semantic_digest_is_pinned(self) -> None:
+        payload = json.loads(ATLAS.read_text(encoding="utf-8"))
+        self.assertEqual(
+            semantic_sha256(payload),
+            "c1d5f70d134a1544e86f000cf1c9c45df265d5778e04fef6b44cad343589505f",
+        )
+        diff = json.loads(CLASSIFICATION_DIFF.read_text(encoding="utf-8"))
+        self.assertEqual(
+            diff["artifacts"]["repaired"]["semantic_sha256"], semantic_sha256(payload)
+        )
+
+
+class ForcingMassTests(unittest.TestCase):
+    def test_counting_lemma_holds_for_every_residue(self) -> None:
+        report = verify_counting_lemma(8, (2, 3, 5), 3)
+        self.assertGreater(report["checked_residues"], 500)
+        self.assertGreaterEqual(report["tightest_case"]["slack"], 0)
+
+    def test_counting_lemma_is_nearly_attained(self) -> None:
+        self.assertEqual(window_multiplicity_sum(1, 11, 4, 11**4 - 1), 4)
+        self.assertAlmostEqual(counting_lemma_bound(1, 11, 4), 4.1)
+
+    def test_mertens_correction_bound_holds(self) -> None:
+        report = verify_mertens_constant(50_000)
+        self.assertGreater(report["tightest"]["margin"], 0)
+
+    def test_greedy_size_forcing_modulus_meets_hypothesis_and_dominates_bound(self) -> None:
+        factorizer = TrialFactorizer(10**14)
+        for m, k in ((5, 2475), (13, 7_979_077), (20, 1_019_547_824)):
+            greedy = greedy_size_forcing_modulus(m, k, factorizer)
+            bound = modulus_log_lower_bound(m, k)
+            self.assertGreater(greedy["log_modulus"], bound)
+            for row in greedy["terms"]:
+                term = row["term"]
+                self.assertEqual(term, k + row["position"])
+                forced = 10 ** (row["forced_divisor_decimal_digits"] - 1)
+                self.assertLess(term / forced, 20 * (2 * term) ** 0.5)
+
+    def test_threshold_exists_only_for_windows_of_five_or_more(self) -> None:
+        for m in range(1, 9):
+            self.assertIsNone(exceeds_target_threshold(m))
+        for m in (9, 13, 27):
+            threshold = exceeds_target_threshold(m)
+            self.assertIsNotNone(threshold)
+            self.assertGreater(modulus_log_lower_bound(m, threshold), math.log(threshold))
+            self.assertLessEqual(
+                modulus_log_lower_bound(m, threshold - 1), math.log(threshold - 1)
+            )
+
+    def test_forcing_artifact_pins_inputs_and_brackets_every_small_witness(self) -> None:
+        payload = json.loads(FORCING_MASS.read_text(encoding="utf-8"))
+        self.assertEqual(payload["status"], "PASS_EXACT_FORCING_MASS_BOUND")
+        self.assertEqual(
+            payload["implementation_sha256"]["forcing_mass_bound.py"],
+            hashlib.sha256((PROJECT / "forcing_mass_bound.py").read_bytes()).hexdigest(),
+        )
+        self.assertEqual(
+            payload["input"]["witness_csv_sha256"],
+            hashlib.sha256(DATA.read_bytes()).hexdigest(),
+        )
+        for row in payload["published_witnesses"]:
+            self.assertAlmostEqual(
+                row["log_modulus_lower_bound"],
+                modulus_log_lower_bound(row["m"], row["k"]),
+            )
+            if "greedy_size_forcing_modulus" in row:
+                self.assertGreater(
+                    row["greedy_size_forcing_modulus"]["log_modulus"],
+                    row["log_modulus_lower_bound"],
+                )
+        big = [row for row in payload["published_witnesses"] if row["m"] >= 13]
+        self.assertTrue(all(row["bound_exceeds_k"] for row in big))
+
+
+class GoodDensityDecompositionTests(unittest.TestCase):
+    def test_compensation_count_matches_independent_implementation(self) -> None:
+        factorizer = SPFFactorizer(60_000)
+        checked = 0
+        for value in range(50_000, 50_400):
+            for p, exponent in factorizer.factor(value).items():
+                cofactor = value // p**exponent
+                self.assertEqual(
+                    compensation_count(cofactor, p),
+                    compensation_levels(value, p, exponent),
+                )
+                checked += 1
+        self.assertGreater(checked, 400)
+
+    def test_classes_partition_the_block(self) -> None:
+        report = decompose_block(100_000, 2_000, 27)
+        self.assertEqual(sum(report["counts"].values()), 2_000)
+        self.assertAlmostEqual(sum(report["densities"].values()), 1.0)
+
+    def test_independence_prediction_is_refuted_on_the_artifact(self) -> None:
+        payload = json.loads(GOOD_DECOMPOSITION.read_text(encoding="utf-8"))
+        self.assertEqual(payload["status"], "PASS_EXACT_GOOD_DENSITY_DECOMPOSITION")
+        self.assertEqual(
+            payload["implementation_sha256"]["good_density_decomposition.py"],
+            hashlib.sha256(
+                (PROJECT / "good_density_decomposition.py").read_bytes()
+            ).hexdigest(),
+        )
+        for row in payload["blocks"]:
+            self.assertGreater(row["observed_over_predicted_level_only"], 2.0)
+            self.assertEqual(sum(row["counts"].values()), row["count"])
+
+    def test_asymptotic_union_bound_exceeds_one(self) -> None:
+        report = asymptotic_union_bound()
+        self.assertTrue(report["union_bound_exceeds_one"])
+        self.assertAlmostEqual(report["level_failure_sum"], 0.32252, places=4)
+        self.assertGreater(report["union_bound_total"], 1.0)
+
+    def test_union_bound_terms_refuses_unsieveable_limits(self) -> None:
+        with self.assertRaises(ValueError):
+            union_bound_terms(10**15, 27)
+
+
+class ElementaryEvictionTests(unittest.TestCase):
+    def test_class_splitting_is_determined_by_the_class(self) -> None:
+        rng = random.Random(1534)
+        for _ in range(300):
+            modulus = rng.randrange(1, 4_000)
+            residue = rng.randrange(modulus)
+            position = rng.randrange(1, 40)
+            factors = factor_modulus(modulus)
+            pinned, cofactor_modulus, cofactor_residue = pinned_split(
+                residue, position, modulus, factors
+            )
+            self.assertEqual(pinned * cofactor_modulus, modulus)
+            self.assertEqual(math.gcd(cofactor_residue, cofactor_modulus), 1)
+            for step in range(1, 6):
+                k = residue + step * modulus
+                direct = 1
+                for prime, exponent in factors.items():
+                    level = 0
+                    value = k + position
+                    while level < exponent and value % prime == 0:
+                        value //= prime
+                        level += 1
+                    direct *= prime**level
+                self.assertEqual(direct, pinned)
+                self.assertEqual(((k + position) // pinned) % cofactor_modulus,
+                                 cofactor_residue)
+
+    def test_factorisation_lemma_kills_the_pair(self) -> None:
+        rng = random.Random(35)
+        checked = 0
+        for _ in range(200):
+            m = rng.randrange(1, 40)
+            position = rng.choice(list(bad_window_positions(m)))
+            pinned = rng.randrange(1, 30)
+            cofactor = rng.randrange(1, 30)
+            prime = least_prime_above(max(2 * pinned * cofactor, m))
+            k = pinned * prime * cofactor - position
+            if k < 1:
+                continue
+            checked += 1
+            self.assertLess(slack(m, k, prime), 0)
+            if m + 2 * k <= 40_000:
+                self.assertFalse(is_witness(m, k, TrialFactorizer(m + 2 * k)))
+        self.assertGreater(checked, 150)
+
+    def test_initial_eviction_meets_its_proved_bound(self) -> None:
+        for modulus in range(1, 26):
+            factors = factor_modulus(modulus)
+            for m in range(1, 14):
+                for residue in range(modulus):
+                    record = evict_initial(m, modulus, residue, factors)
+                    verify_eviction(m, modulus, residue, record)
+                    self.assertLess(record["k"], 2 * modulus * max(2 * modulus, m))
+
+    def test_block_eviction_holds_inside_its_hypothesis(self) -> None:
+        block_start = 10**7
+        for modulus in (1, 2, 6, 30, 97, 210, 1000):
+            factors = factor_modulus(modulus)
+            for m in (1, 5, 13, 27):
+                self.assertLessEqual(modulus * block_prime(m, block_start), block_start)
+                for residue in range(0, modulus, max(1, modulus // 7)):
+                    record = evict_block(m, modulus, residue, block_start, factors)
+                    self.assertIsNotNone(record)
+                    verify_eviction(m, modulus, residue, record, block_start=block_start)
+
+    def test_block_hypothesis_is_not_vacuous(self) -> None:
+        block_start = 10**6
+        m = 3
+        modulus = 40 * math.isqrt(block_start)
+        self.assertGreater(modulus * block_prime(m, block_start), block_start)
+        factors = factor_modulus(modulus)
+        failures = sum(
+            evict_block(m, modulus, residue, block_start, factors) is None
+            for residue in range(0, modulus, modulus // 40)
+        )
+        self.assertGreater(failures, 0)
+
+    def test_progression_prime_respects_the_25_hypothesis(self) -> None:
+        # p**2 > 2*top does not imply p > m at small scales; (25) needs both.
+        self.assertGreater(progression_prime(5, 10), 5)
+        for m in range(1, 60):
+            for top in (1, 2, 7, 10, 50, 10**4, 10**9):
+                prime = progression_prime(m, top)
+                self.assertGreater(prime, m)
+                self.assertGreater(prime * prime, 2 * top)
+
+    def test_master_theorem_at_its_minimal_length(self) -> None:
+        for start in (1, 97, 10**5):
+            for step in range(1, 13):
+                for m in range(1, 13):
+                    length = minimal_progression_length(m, start, step)
+                    record = evict_progression(m, start, step, length)
+                    self.assertIsNotNone(record)
+                    k = record["k"]
+                    self.assertTrue(start <= k <= start + (length - 1) * step)
+                    self.assertEqual((k - start) % step, 0)
+                    self.assertLess(slack(m, k, record["p"]), 0)
+                    self.assertGreater(record["p"], m)
+                    self.assertGreater(record["p"] ** 2, 2 * (k + record["i"]))
+                    self.assertIsNone(evict_progression(m, start, step, length - 1))
+
+    def test_master_theorem_ignores_the_common_difference(self) -> None:
+        rng = random.Random(3663)
+        for _ in range(120):
+            m = rng.randrange(1, 50)
+            start = rng.randrange(10**6, 10**12)
+            step = rng.randrange(1, 10**6)
+            length = minimal_progression_length(m, start, step)
+            record = evict_progression(m, start, step, length)
+            self.assertIsNotNone(record)
+            self.assertEqual((record["k"] - start) % step, 0)
+            self.assertLess(slack(m, record["k"], record["p"]), 0)
+
+    def test_block_prime_carries_the_m_clause_when_m_dominates(self) -> None:
+        # If m^2 > 4N + 2m the size condition alone offers a prime <= m, which
+        # (25) exempts. Every screened rectangle has N >> m^2/4, where the clause
+        # is vacuous, so only a direct test reaches this regime.
+        self.assertLessEqual(math.isqrt(4 * 1000 + 2 * 100), 100)
+        for m, block_start in ((100, 1000), (60, 500), (31, 200), (12, 30)):
+            prime = block_prime(m, block_start)
+            self.assertGreater(prime, m)
+            self.assertGreater(prime * prime, 2 * (2 * block_start + m))
+            modulus = max(1, block_start // prime)
+            self.assertLessEqual(modulus * prime, block_start)
+            factors = factor_modulus(modulus)
+            for residue in range(modulus):
+                record = evict_block(m, modulus, residue, block_start, factors)
+                self.assertIsNotNone(record)
+                verify_eviction(m, modulus, residue, record, block_start=block_start)
+
+    def test_progression_length_bound_is_the_prime_not_the_square_root(self) -> None:
+        # Corollary (c): the threshold is P0, which equals 2*sqrt(2Y)(1+o(1))
+        # only once 2Y >= m^2.
+        for m in (5, 31, 100):
+            for top in (m, 2 * m, m * m // 2, m * m, 10 * m * m):
+                prime = progression_prime(m, top)
+                self.assertGreater(prime, m)
+                if 2 * top < m * m:
+                    self.assertEqual(prime, least_prime_above(m))
+
+    def test_covering_measure_matches_direct_enumeration(self) -> None:
+        for modulus, block_start, m in ((2_000_000, 10**10, 27), (700_000, 10**9, 13),
+                                        (999_983, 10**9, 27), (4_096, 10**7, 5)):
+            prime = block_prime(m, block_start)
+            hit = bytearray(modulus)
+            inverse = pow(prime, -1, modulus)
+            for position in bad_window_positions(m):
+                low = -(-(block_start + position) // prime)
+                high = (2 * block_start - 1 + position) // prime
+                for step in range(low, high + 1):
+                    hit[(step - position * inverse) % modulus] = 1
+            self.assertEqual(
+                union_measure(covering_spans(m, block_start, modulus, prime), modulus),
+                sum(hit),
+            )
+
+    def test_covering_certificate_evicts_every_sampled_class(self) -> None:
+        rng = random.Random(4620)
+        for block_start, m, theta in ((10**9, 27, 0.55), (10**10, 13, 0.52)):
+            modulus = int(round(block_start**theta))
+            certificate = covering_prime(m, block_start, modulus)
+            self.assertIsNotNone(certificate)
+            factors = factor_modulus(modulus)
+            for _ in range(25):
+                residue = rng.randrange(modulus)
+                record = evict_block(
+                    m, modulus, residue, block_start, factors,
+                    first_prime=certificate["p"],
+                )
+                self.assertIsNotNone(record)
+                verify_eviction(m, modulus, residue, record, block_start=block_start)
+
+    def test_covering_cannot_pass_its_measure_ceiling(self) -> None:
+        # The union of L intervals of length floor(N/p) cannot exceed L*floor(N/p).
+        block_start, m = 10**12, 27
+        window = len(list(bad_window_positions(m)))
+        ceiling = window * (block_start // block_prime(m, block_start))
+        self.assertIsNone(covering_prime(m, block_start, 3 * ceiling, prime_budget=64))
+        for row in json.loads(ELEMENTARY_EVICTION.read_text(encoding="utf-8"))[
+            "covering"
+        ]["rows"]:
+            self.assertLessEqual(row["largest_exponent_certified"],
+                                 row["measure_ceiling_exponent"])
+
+    def test_smooth_modulus_position_is_permanently_non_fatal(self) -> None:
+        # Proposition 16.2: M m-smooth with M^2 >= 2N leaves M | n non-fatal.
+        for block_start, modulus in ((10**7, 4620), (10**6, 2310), (10**5, 420)):
+            self.assertGreaterEqual(modulus * modulus, block_start)
+            largest_prime = max(factor_modulus(modulus))
+            for n in range(
+                ((block_start + modulus - 1) // modulus) * modulus,
+                2 * block_start,
+                modulus,
+            ):
+                remainder, worst = n, 1
+                for prime in sorted(factor_modulus(remainder)):
+                    power = 1
+                    while remainder % prime == 0:
+                        remainder //= prime
+                        power *= prime
+                    if prime > largest_prime:
+                        worst = max(worst, power)
+                self.assertLessEqual(worst * worst, 2 * n)
+
+    def test_census_artifact_is_exhaustive_and_certifies_large_moduli(self) -> None:
+        payload = json.loads(SURVIVOR_CENSUS.read_text(encoding="utf-8"))
+        self.assertEqual(payload["status"], "PASS_EXACT_SURVIVOR_CENSUS")
+        self.assertEqual(
+            payload["implementation_sha256"]["survivor_census.py"],
+            hashlib.sha256((PROJECT / "survivor_census.py").read_bytes()).hexdigest(),
+        )
+        self.assertAlmostEqual(payload["survivor_density_over_rho2"], 1.0, delta=0.05)
+        for m in ("27", "51"):
+            self.assertIsNone(payload["multi_position_by_m"][m]["smallest_exponent_failed"])
+            self.assertGreater(
+                payload["multi_position_by_m"][m]["largest_exponent_certified"], 0.95
+            )
+        # every single-position failure must be a smooth modulus at or past sqrt(2N)
+        for row in payload["rows"]:
+            if not row["every_class_evicted"] and row["shape"] != "prime":
+                self.assertEqual(row["worst_class"], 0)
+
+    def test_eviction_artifact_pins_its_inputs(self) -> None:
+        payload = json.loads(ELEMENTARY_EVICTION.read_text(encoding="utf-8"))
+        self.assertEqual(payload["status"], "PASS_EXACT_ELEMENTARY_CLASS_EVICTION")
+        self.assertEqual(
+            payload["implementation_sha256"]["elementary_class_eviction.py"],
+            hashlib.sha256(
+                (PROJECT / "elementary_class_eviction.py").read_bytes()
+            ).hexdigest(),
+        )
+        self.assertTrue(payload["initial_segment"]["exhaustive"])
+        self.assertLess(payload["initial_segment"]["worst_ratio_to_bound"], 1.0)
+        self.assertTrue(payload["block"]["exhaustive"])
+        self.assertTrue(payload["progression"]["exhaustive"])
+        self.assertEqual(
+            payload["progression"]["one_shorter_still_worked"], 0
+        )
+        for row in payload["barrier"]["rows"]:
+            if row["log_M_over_log_N"] <= 0.75:
+                self.assertEqual(row["successes"], row["classes_tested"])
+
+
+
+class OverlapDensityTests(unittest.TestCase):
+    def test_level_union_bound_tail_dominates_the_discarded_terms(self) -> None:
+        short, long = level_union_bound(12), level_union_bound(400)
+        self.assertGreaterEqual(short["bound"], long["partial"])
+        self.assertLess(short["bound"] - long["bound"], 1e-3)
+
+    def test_exponent_tail_vanishes_with_scale(self) -> None:
+        bounds = [exponent_tail_bound(s, 1)["bound"] for s in (1e8, 1e20, 1e40)]
+        self.assertTrue(all(a > b for a, b in zip(bounds, bounds[1:])))
+        self.assertLess(bounds[-1], 1e-4)
+
+    def test_riemann_sum_is_a_lower_bound_for_the_band_integral(self) -> None:
+        # right endpoints of a decreasing integrand under-count; left endpoints
+        # over-count. The certificate must sit below the true integral.
+        for band in CERTIFIED_BANDS:
+            eta, steps = 0.005, 4000
+            lo, hi = 1.0 / (band + 2), 1.0 / (band + 1)
+            width = (hi - lo) / steps
+            left = sum(
+                band_integrand(lo + i * width, band, eta) for i in range(steps)
+            ) * width * 2.0 ** (-band)
+            certified = band_overlap_lower_bound(band, eta, steps)["bound"]
+            self.assertLess(certified, left)
+            self.assertGreater(certified, left * 0.99)
+
+    def test_shrinking_eta_cannot_shrink_the_overlap_bound(self) -> None:
+        bounds = [overlap_lower_bound(eta)["bound"] for eta in (0.02, 0.005, 0.001)]
+        self.assertTrue(all(a < b for a, b in zip(bounds, bounds[1:])))
+
+    def test_band_of_matches_its_defining_inequality(self) -> None:
+        for value in (10**3, 10**5, 5 * 10**6):
+            for prime in (7, 31, 101, 1009, 10007):
+                band = band_of(value, prime)
+                if band is None:
+                    self.assertGreater(prime * prime, 2 * value)
+                    continue
+                self.assertLessEqual(prime ** (band + 1), 2 * value)
+                self.assertGreater(prime ** (band + 2), 2 * value)
+
+    def test_lower_half_residue_count_meets_lemma_17_5(self) -> None:
+        for q in (3, 5, 7, 11, 13, 29, 101):
+            for r in CERTIFIED_BANDS:
+                good = sum(
+                    1
+                    for v in range(q**r)
+                    if all(2 * (v % q**j) <= q**j for j in range(1, r + 1))
+                )
+                self.assertGreaterEqual(good, q**r * 2.0 ** (-r) * (1 - 1 / q))
+
+    def test_two_band_primes_cannot_share_a_short_cofactor_witness(self) -> None:
+        # Lemma 17.4: p > (2w)^(1/2) and two band-r primes with r <= 2 would
+        # force (2w)^(1/2 + 2/(r+2)) <= w. Checked as the exponent inequality.
+        # The bound is (2w)^(1/2+2/(r+2)) >= 2w > w, so exponent >= 1 suffices.
+        for band in CERTIFIED_BANDS:
+            self.assertGreaterEqual(0.5 + 2.0 / (band + 2), 1.0)
+        self.assertLess(0.5 + 2.0 / (3 + 2), 1.0)  # band 3 is not free
+
+    def test_family_membership_is_empty_when_m_exceeds_every_band_prime(self) -> None:
+        # Small-N / large-m corner: no screened block reaches it, so it needs a
+        # direct test. Every band prime of w ~ 10^3 is below m = 100, so the
+        # family must be empty and no member may be reported.
+        factorizer = SPFFactorizer(4000)
+        for value in range(1000, 3000):
+            self.assertIsNone(
+                overlap_family_member(value, 100, factorizer.factor(value))
+            )
+
+    def test_family_members_are_inside_both_failure_classes(self) -> None:
+        factorizer = SPFFactorizer(60_000)
+        seen = 0
+        for value in range(50_000, 60_000):
+            band = overlap_family_member(value, 1, factorizer.factor(value))
+            if band is None:
+                continue
+            seen += 1
+            self.assertIn(band, CERTIFIED_BANDS)
+            short, level = classify_term(value, 1, factorizer)
+            self.assertTrue(short and level)
+        self.assertGreater(seen, 100)
+
+
+    def test_pair_obstruction_matches_the_measured_accounting(self) -> None:
+        # (53) is derived under cross-term independence; the block must confirm
+        # it to within the genuine w / w+1 correlation.
+        payload = json.loads(OVERLAP_BOUND.read_text(encoding="utf-8"))
+        for row, block in zip(payload["pair_accounting"], payload["blocks"]):
+            model = pair_obstruction(block["densities"]["both"], row["S1"] / 2 - math.log(2))
+            self.assertAlmostEqual(model["depth3_limit"], row["bonferroni_depth3"], delta=3e-3)
+
+    def test_depth_three_route_does_not_close_r2(self) -> None:
+        payload = json.loads(OVERLAP_BOUND.read_text(encoding="utf-8"))
+        obstruction = payload["pair_obstruction"]
+        self.assertFalse(obstruction["closes"])
+        self.assertGreater(obstruction["depth3_limit"], 1.0)
+        self.assertGreater(obstruction["shortfall_factor"], 5.0)
+        # closure would need an overlap below (u-1)/2, which contradicts 17.6
+        self.assertLess(
+            obstruction["overlap_threshold_for_closure"],
+            payload["certificate"]["overlap_bound"],
+        )
+
+    def test_four_event_inclusion_exclusion_is_exact_on_the_block(self) -> None:
+        row = pair_accounting(200_000, 20_000, 1)
+        self.assertAlmostEqual(
+            row["S1"] - row["S2"] + row["S3"] - row["S4"], row["exact_union"], places=12
+        )
+        self.assertGreaterEqual(row["bonferroni_depth3"], row["exact_union"])
+        self.assertGreater(row["both_good"], 0.0)
+
+    def test_finitary_threshold_is_vacuous_before_its_own_scale(self) -> None:
+        report = finitary_threshold(27, 0.123664**14)
+        self.assertEqual(report["constant"], 972)
+        # below the crossover the tier bound exceeds X itself, so the criterion
+        # cannot be met; above it, it can.
+        below = report["log10_scale_nonvacuous"] - 1.0
+        above = report["log10_scale_nonvacuous"] + 1.0
+        for log_x, vacuous in ((below, True), (above, False)):
+            bound_over_x = math.log10(report["constant"]) - report["decay_exponent"] * log_x
+            self.assertEqual(bound_over_x > 0.0, vacuous)
+        self.assertGreater(
+            report["log10_scale_beats_run_density"], report["log10_scale_nonvacuous"]
+        )
+        with self.assertRaises(ValueError):
+            finitary_threshold(27, 0.0)
+
+    def test_certificate_closes_the_first_order_deficit(self) -> None:
+        payload = json.loads(OVERLAP_BOUND.read_text(encoding="utf-8"))
+        cert = payload["certificate"]
+        self.assertGreater(cert["first_order_deficit"], 0.0)
+        self.assertGreater(cert["overlap_bound"], cert["first_order_deficit"])
+        self.assertGreater(cert["certified_lower_density"], 0.0)
+        self.assertAlmostEqual(
+            cert["certified_lower_density"],
+            1.0
+            - cert["first_order_union_total"]
+            - cert["limiting_exponent_tail"]
+            + cert["overlap_bound"],
+            places=12,
+        )
+        self.assertEqual(
+            payload["implementation_sha256"]["overlap_density_bound.py"],
+            hashlib.sha256((PROJECT / "overlap_density_bound.py").read_bytes()).hexdigest(),
+        )
+        for row in payload["blocks"]:
+            self.assertTrue(row["identity_holds"])
+            self.assertLessEqual(row["family_density"], row["densities"]["both"])
 
 
 if __name__ == "__main__":

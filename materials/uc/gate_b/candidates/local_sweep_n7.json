@@ -1,0 +1,116 @@
+{
+  "coverage": "SEEDED HEURISTIC upper bound on Lambda_m(e); exact defect; A_+ recomputed over all n! orders for every reported point",
+  "curve": [
+    {
+      "defect": "314/405",
+      "defect_cap": "79/100",
+      "defect_cap_decimal": 0.79,
+      "min_A_plus": -0.01628321051152426,
+      "negative": true,
+      "ratio": 0.021002230118367278,
+      "size": 45
+    },
+    {
+      "defect": "56/81",
+      "defect_cap": "37/50",
+      "defect_cap_decimal": 0.74,
+      "min_A_plus": -0.014898992875245654,
+      "negative": true,
+      "ratio": 0.021550328980266036,
+      "size": 45
+    },
+    {
+      "defect": "56/81",
+      "defect_cap": "7/10",
+      "defect_cap_decimal": 0.7,
+      "min_A_plus": -0.014898992875245654,
+      "negative": true,
+      "ratio": 0.021550328980266036,
+      "size": 45
+    },
+    {
+      "defect": "1336/2025",
+      "defect_cap": "33/50",
+      "defect_cap_decimal": 0.66,
+      "min_A_plus": -0.0008551853337257498,
+      "negative": true,
+      "ratio": 0.0012962202850259306,
+      "size": 45
+    },
+    {
+      "defect": "1222/2025",
+      "defect_cap": "16/25",
+      "defect_cap_decimal": 0.64,
+      "min_A_plus": 0.011712038012292147,
+      "negative": false,
+      "ratio": -0.019408246296965304,
+      "size": 45
+    },
+    {
+      "defect": "1222/2025",
+      "defect_cap": "31/50",
+      "defect_cap_decimal": 0.62,
+      "min_A_plus": 0.011712038012292147,
+      "negative": false,
+      "ratio": -0.019408246296965304,
+      "size": 45
+    },
+    {
+      "defect": "1172/2025",
+      "defect_cap": "29/50",
+      "defect_cap_decimal": 0.58,
+      "min_A_plus": 0.021294403544952267,
+      "negative": false,
+      "ratio": -0.03679280475983647,
+      "size": 45
+    },
+    {
+      "defect": "206/405",
+      "defect_cap": "13/25",
+      "defect_cap_decimal": 0.52,
+      "min_A_plus": 0.04399390112063983,
+      "negative": false,
+      "ratio": -0.08649286385368511,
+      "size": 45
+    },
+    {
+      "defect": "184/405",
+      "defect_cap": "23/50",
+      "defect_cap_decimal": 0.46,
+      "min_A_plus": 0.05599498854943352,
+      "negative": false,
+      "ratio": -0.12324983892674227,
+      "size": 45
+    },
+    {
+      "defect": "796/2025",
+      "defect_cap": "2/5",
+      "defect_cap_decimal": 0.4,
+      "min_A_plus": 0.06939557318092948,
+      "negative": false,
+      "ratio": -0.17654024584344497,
+      "size": 45
+    },
+    {
+      "defect": "236/675",
+      "defect_cap": "7/20",
+      "defect_cap_decimal": 0.35,
+      "min_A_plus": 0.07951401161491578,
+      "negative": false,
+      "ratio": -0.2274235501697803,
+      "size": 45
+    }
+  ],
+  "dimension": 7,
+  "foreign_schema_lines": 0,
+  "lowest_negative_defect_cap": "33/50",
+  "mode": "sweep",
+  "restarts": 2,
+  "resumed_restarts": 0,
+  "runtime_seconds": 488.04,
+  "sizes": [
+    45
+  ],
+  "steps": 900,
+  "truncated_checkpoint_lines": 0
+}
