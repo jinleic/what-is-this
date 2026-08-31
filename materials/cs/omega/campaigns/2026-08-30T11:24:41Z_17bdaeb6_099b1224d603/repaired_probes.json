@@ -1,0 +1,130 @@
+{
+ "results": [
+  {
+   "probe": "glob_dist_r0_repaired_+",
+   "moved_small_coord": 44,
+   "moved_largest7": [
+    27,
+    26,
+    20,
+    21,
+    19,
+    32,
+    25
+   ],
+   "simplex_residual_base": -2.1449508835758024e-13,
+   "simplex_residual_repaired": -2.1449508835758024e-13,
+   "marginal_worst": 7.000036723187053e-08,
+   "ceq_max_at_repaired": 3.5953524879506205e-11,
+   "feasibility_ok": false,
+   "gate_reasons": [
+    "marginal sharing residual 7.000e-08 > 1.1e-9"
+   ]
+  },
+  {
+   "probe": "glob_dist_r0_repaired_-",
+   "moved_small_coord": 44,
+   "moved_largest7": [
+    27,
+    26,
+    20,
+    21,
+    19,
+    32,
+    25
+   ],
+   "simplex_residual_base": -2.1449508835758024e-13,
+   "simplex_residual_repaired": -2.1449508835758024e-13,
+   "marginal_worst": 7e-08,
+   "ceq_max_at_repaired": 3.5953524879506205e-11,
+   "feasibility_ok": false,
+   "gate_reasons": [
+    "marginal sharing residual 7.000e-08 > 1.1e-9"
+   ]
+  },
+  {
+   "probe": "glob_dist_r1_repaired_+",
+   "moved_small_coord": 8,
+   "moved_largest7": [
+    27,
+    20,
+    26,
+    32,
+    19,
+    21,
+    33
+   ],
+   "simplex_residual_base": 3.597122599785507e-14,
+   "simplex_residual_repaired": 3.597122599785507e-14,
+   "marginal_worst": 7.000019317665584e-08,
+   "ceq_max_at_repaired": 3.5953524879506205e-11,
+   "feasibility_ok": false,
+   "gate_reasons": [
+    "marginal sharing residual 7.000e-08 > 1.1e-9"
+   ]
+  },
+  {
+   "probe": "glob_dist_r1_repaired_-",
+   "moved_small_coord": 8,
+   "moved_largest7": [
+    27,
+    20,
+    26,
+    32,
+    19,
+    21,
+    33
+   ],
+   "simplex_residual_base": 3.597122599785507e-14,
+   "simplex_residual_repaired": 3.597122599785507e-14,
+   "marginal_worst": 7.000002211210443e-08,
+   "ceq_max_at_repaired": 3.5953524879506205e-11,
+   "feasibility_ok": false,
+   "gate_reasons": [
+    "marginal sharing residual 7.000e-08 > 1.1e-9"
+   ]
+  },
+  {
+   "probe": "glob_dist_r2_repaired_+",
+   "moved_small_coord": 0,
+   "moved_largest7": [
+    20,
+    26,
+    27,
+    32,
+    21,
+    19,
+    31
+   ],
+   "simplex_residual_base": 2.9620750296999176e-13,
+   "simplex_residual_repaired": 2.9620750296999176e-13,
+   "marginal_worst": 6.999999999999999e-08,
+   "ceq_max_at_repaired": 3.5953524879506205e-11,
+   "feasibility_ok": false,
+   "gate_reasons": [
+    "marginal sharing residual 7.000e-08 > 1.1e-9"
+   ]
+  },
+  {
+   "probe": "glob_dist_r2_repaired_-",
+   "moved_small_coord": 0,
+   "moved_largest7": [
+    20,
+    26,
+    27,
+    32,
+    21,
+    19,
+    31
+   ],
+   "simplex_residual_base": 2.9620750296999176e-13,
+   "simplex_residual_repaired": 2.9620750296999176e-13,
+   "marginal_worst": 7.000097472856237e-08,
+   "ceq_max_at_repaired": 3.5953524879506205e-11,
+   "feasibility_ok": false,
+   "gate_reasons": [
+    "marginal sharing residual 7.000e-08 > 1.1e-9"
+   ]
+  }
+ ]
+}

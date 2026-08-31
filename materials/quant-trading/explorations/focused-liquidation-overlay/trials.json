@@ -1,0 +1,168 @@
+{
+ "trial_count": 6,
+ "variants_registered_limit": 8,
+ "trials": [
+  {
+   "id": "capture-only-gate-1",
+   "registered_at": "2026-08-30T11:13:24+00:00",
+   "variant": "capture-only; no strategy variants before ten independent events",
+   "type": "capture-feasibility",
+   "attempts": [
+    {
+     "step": "source-verification",
+     "result": "pass",
+     "evidence": "Official llms-full corpus: All Market Liquidation Order Streams semantics (1 push/symbol/1000ms snapshot), payload {e,E,o{s,S,o,f,q,p,ap,X,l,z,T,ps,st}}, 2021-04-27 snapshot conversion, 2026-04-10 latest->largest change, allForceOrders retirement 2021-04-27, forceOrders 90-day user-scoped limit 2026-04-06, /market routed endpoint requirement. Live stream smoke matched schema byte-for-byte on o.* fields.",
+     "urls": [
+      "https://developers.binance.com/en/docs/llms-full.txt",
+      "https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/Liquidation-Order-Streams",
+      "https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/Important-WebSocket-Change-Notice"
+     ],
+     "retrieved_at": "2026-08-30T11:35:00Z"
+    },
+    {
+     "step": "bounded-smoke-capture",
+     "result": "pass-with-events",
+     "evidence": "45-95s bounded public smoke against wss://fstream.binance.com/market; subscription acked; 7 real !forceOrder@arr liquidation events persisted (SKRUSDT, 牛来USDT, ASTERUSDT, TRUMPUSDT, BOMEUSDC, PROMUSDT; BUY, LIMIT, IOC, FILLED), plus 20s probe with 33 aggTrade and 21 markPrice frames proving context streams work. meta sidecar records connected/force_msgs/elapsed.",
+     "artifacts": [
+      "quant-trading/data/raw/focused/live/liquidations/smoke-forceOrder-20260830.jsonl",
+      "quant-trading/data/raw/focused/live/liquidations/smoke-20260830-meta.json"
+     ]
+    },
+    {
+     "step": "replay-validation",
+     "result": "pass",
+     "evidence": "run.py replayed smoke + synthesized duplicates: schema validation, order-violation detection, duplicate-id accounting (injected duplicates reported as duplicate_event_ids without silent merge), deterministic id recomputation mismatch detection, gap summary, independence clustering (5 independent of 7 real events; duplicates do not inflate). Raw corpus semantics: AT-LEAST-ONCE; replay dedup (deterministic event ids) is authoritative. Gate refuses return metrics (needs 10 + price/OI context).",
+     "raw_semantics": "at-least-once with replay-authoritative dedup; no exactly-once claim"
+    },
+    {
+     "step": "gate-assessment",
+     "result": "not-yet-met",
+     "evidence": "independent_registered=5 < 10; price/OI context rows=0. results.json records capture_status separately; status stays inconclusive; no returns.csv created.",
+     "oi_path_added": "fetch_open_interest_snapshot() bounded (5s) unauthenticated per-event helper added; fails closed returning None on region block/timeout/schema drift; persisted only when a real sumOpenInterest row is returned (run.py enrichment)",
+     "blockers": [
+      "need >=5 more independent registered events via continued prospective capture",
+      "need lawful price/OI context source reachable from this egress (OI REST region-blocked here; helper records the failure honestly)"
+     ]
+    }
+   ],
+   "outcome": "inconclusive",
+   "capture_status": "operational-smoke-passed-persistent-launch-blocked-pending-rereview",
+   "launch_state": "smoke-only; persistent capture NOT launched; awaiting parent re-review",
+   "next_actions": [
+    "parent re-reviews repaired collector",
+    "if launched: persist=true, detached=false, pty=false, restart=no, one unique process name + dedicated dir, explicit 256MiB/day + 10GiB caps, ready timeout >=60s",
+    "register price/OI context collector only from an unauthenticated public source reachable from this egress"
+   ]
+  },
+  {
+   "id": "capture-collector-v2-repair",
+   "registered_at": "2026-08-30T12:58:00Z",
+   "variant": "capture-only; no strategy variants before ten independent events",
+   "type": "capture-feasibility",
+   "attempts": [
+    {
+     "step": "collector-implementation-v2",
+     "result": "pass",
+     "evidence": "capture.py post-review repair: sink stays OPEN across reconnects (write_line reopens/rotates on demand; failure handlers never close it before controls persist); rotate-before-every-write with cap attribution to the TARGET file day; exact ack contract {\"id\":1,\"result\":null} with no error key, bounded 30s stop-aware wait, foreign-id result frames and error frames rejected; caps terminal: after trip, accounting frozen, sink closed, exit 3 out-of-band; SIGTERM stop-aware sliced sleeps; state total floored by on-disk bytes every startup.",
+     "lifecycle_proofs": "verify_capture_lifecycle.py: reconnect_keeps_sink pass; exact_ack pass (non-null/error/wrong-id/timeout/stop-mid-ack all rejected or bounded); midnight_cap_attribution pass; cap_freeze pass (accounting frozen after trip); sigterm_stop_aware pass (exit 0, <12s); missing_state_floor pass"
+    }
+   ],
+   "outcome": "inconclusive",
+   "capture_status": "operational-smoke-passed-persistent-launch-blocked-pending-rereview",
+   "launch_state": "smoke-only; persistent capture NOT launched; awaiting parent re-review",
+   "next_actions": [
+    "parent re-reviews repaired collector",
+    "if launched: persist=true, detached=false, pty=false, restart=no, one unique process name + dedicated dir, explicit 256MiB/day + 10GiB caps, ready timeout >=60s",
+    "register price/OI context collector only from an unauthenticated public source reachable from this egress"
+   ]
+  },
+  {
+   "id": "capture-collector-v3-rereview-repair",
+   "registered_at": "2026-08-30T13:20:00Z",
+   "variant": "capture-only; rereview repair iteration (queue semantics + task coordination)",
+   "type": "capture-feasibility",
+   "attempts": [
+    {
+     "step": "rereview-block-3-repair",
+     "result": "pass",
+     "evidence": "OI queue replaced with bounded asyncio.Queue (idle-start safe: worker awaits items; no deque.popleft on empty). Connect loop and OI worker coordinated with asyncio.wait FIRST_COMPLETED: any OI-side CapExceeded becomes the shared terminal cap reason (loop stops, close+save, exit 3 immediately; never swallowed). Proofs added: oi_idle_start_then_event (worker starts empty, mid-run event recorded), worker_cap_trip_stops_collector (OI cap trip stops collector, exit 3, state==files).",
+     "proof_results": "11/11: 10 deterministic no-socket unit proofs + 1 bounded live-network smoke (separately labeled)"
+    }
+   ],
+   "outcome": "inconclusive"
+  },
+  {
+   "id": "capture-collector-v4-raw-shape-repair",
+   "registered_at": "2026-08-30T13:55:00Z",
+   "variant": "capture-only; raw/wrapped transport-shape repair from live-launch finding",
+   "type": "capture-feasibility",
+   "attempts": [
+    {
+     "step": "raw-shape-dispatch-repair",
+     "result": "pass",
+     "evidence": "P1 from actual persistent launch: dynamic SUBSCRIBE on /market/ws emits raw {e:forceOrder} payloads; the old receive loop dropped them all (unwrapped_frame controls, zero events). Repair: canonical_force_order() accepts BOTH shapes; raw maps to canonical !forceOrder@arr; identical event ids across shapes (cross-shape dedup proven); unknown raw types fail closed (unknown_raw_event_type). Replay recompute_event_id synced byte-for-byte. Live smoke gate now requires >=1 persisted kind=event: 9 real forceOrder events captured in bounded run (readiness alone insufficient).",
+     "retraction": "prior wrapper-only-fixture proofs retracted as live event-capture evidence",
+     "proofs": [
+      "raw_wrapped_equivalence (unit)",
+      "live_smoke_records_event (live, 9 events)"
+     ]
+    }
+   ],
+   "outcome": "inconclusive"
+  },
+  {
+   "id": "capture-replay-v5-normalization",
+   "registered_at": "2026-08-30T14:05:00Z",
+   "variant": "capture-only; replay normalization + inclusive date-end repair against durable artifact",
+   "type": "capture-feasibility",
+   "attempts": [
+    {
+     "step": "replay-normalization-repair",
+     "result": "pass",
+     "evidence": "run.py P1: validate/independent_events assumed payload.data, so raw canonical payloads skipped forceOrder schema/order checks and symbols became None; date-only --end was midnight-exclusive so a 2026-08-30 replay returned 0. Repair: event_body() centralizes payload.get('data', payload) for validation, order, independence, sample and symbol logic; parse_end_bound() makes date-only --end inclusive (next-day exclusive) while timestamp ends stay exact.",
+     "authoritative_artifact": {
+      "path": "quant-trading/data/raw/focused/live/liquidations/postfix-smoke-20260830/liquidation-capture-20260830.jsonl",
+      "final_bytes": 14082,
+      "sha256": "45af7e7ffdbc78fc4c2f6acd80edc7e9be6821e5cd00743108f93ef0f2939753",
+      "events": 21,
+      "controls": 5,
+      "oi_failed_closed": 10,
+      "unwrapped_frames": 0
+     },
+     "replay_result": {
+      "events_total": 21,
+      "independent_registered": 11,
+      "distinct_symbols": 10,
+      "schema_errors": 0,
+      "event_id_mismatches": 0,
+      "duplicate_event_ids": 0,
+      "order_violations": 0,
+      "returns_allowed": false,
+      "gate_decision": "refused-insufficient-context"
+     },
+     "manual_cross_check": "21 events / 11 distinct (symbol,minute) / 10 distinct symbols computed independently from the raw file",
+     "date_bound_check": "date-only end => 21 events; 2026-08-30T13:33:00Z => 20 events (exact semantics preserved)",
+     "retraction": "ephemeral 9-event smoke claim replaced by this durable 21-event artifact"
+    }
+   ],
+   "outcome": "inconclusive"
+  },
+  {
+   "id": "persistent-capture-activation",
+   "registered_at": "2026-08-30T13:53:34Z",
+   "variant": "capture-only; reviewer-cleared persistent prospective capture activation",
+   "type": "capture-feasibility",
+   "attempts": [
+    {
+     "step": "launch-activation-by-parent",
+     "result": "pass",
+     "evidence": "Parent activated process 'quant-liquidation-capture' under the harness supervisor (persist=true, detached=false, pty=false, restart=no; LIQUIDATION_CAPTURE_READY banner matched; caps 268435456/day and 10737418240 total; output liquidations-persistent). Parent snapshot at 2026-08-30T13:53:34Z: 190 events, 103 OI snapshot records, 3 controls, 122944 bytes. Agent parse-only snapshot shortly after: 201 events, 108 OI records (ALL failed-closed), 3 controls, 0 unwrapped frames, window 13:46:05Z-13:54:21Z, bytes 129808.",
+     "status_update": "launch state moved from blocked/pending to active-prospective-capture",
+     "no_claim": "OI is failed-closed, so no open-interest context and no returns/alpha claim follows; research status stays inconclusive with returns refused"
+    }
+   ],
+   "outcome": "inconclusive"
+  }
+ ],
+ "notes": "Trial budget: 2 of max 8 registered variants used (capture-only gate + collector-v2 repair iteration; no trading variants). No threshold tuning, rescue, or leverage anywhere."
+}

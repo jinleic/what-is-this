@@ -1351,7 +1351,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         f"{counterexample['mean_minus_target']}."
     )
     print(
-        "CONDITIONAL [Liu feasible half-space]: this counterexample is "
+        "SUPERSEDED [see liu9_transverse.py, 2026-08-29]: the feasible "
+        "half-space statement below is no longer conditional -- it is PROVED "
+        "on the whole interval, and for the asymmetric family too.  "
+        "Historically: this counterexample is "
         "mean-infeasible; the exact mean-preserving control at the same y has "
         "linear raw-gap pencil coefficient > "
         f"{exact['mean_preserving_leading_lower_gt']}."

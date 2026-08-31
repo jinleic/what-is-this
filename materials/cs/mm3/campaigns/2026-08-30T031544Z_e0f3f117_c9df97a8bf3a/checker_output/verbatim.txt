@@ -1,0 +1,54 @@
+== drat-trim, binary kissat proof, U ==
+c turning on binary mode checking
+c parsing input formula with 396 variables and 1440 clauses
+c finished parsing, read 719 bytes from proof file
+c UNSAT via unit propagation on the input instance
+c 13 of 1440 clauses in core                            
+c 1 of 33 lemmas in core using 13 resolution steps
+c 0 RAT lemmas in core; 0 redundant literals in core lemmas
+s VERIFIED
+c verification time: 0.020 seconds
+exit=0
+== drat-trim, binary kissat proof, V ==
+c turning on binary mode checking
+c parsing input formula with 468 variables and 1807 clauses
+c finished parsing, read 148 bytes from proof file
+c UNSAT via unit propagation on the input instance
+c 14 of 1807 clauses in core                            
+c 1 of 15 lemmas in core using 14 resolution steps
+c 0 RAT lemmas in core; 0 redundant literals in core lemmas
+s VERIFIED
+c verification time: 0.020 seconds
+exit=0
+== drat-trim, binary kissat proof, Wf ==
+c turning on binary mode checking
+c parsing input formula with 481 variables and 1820 clauses
+c finished parsing, read 668 bytes from proof file
+c UNSAT via unit propagation on the input instance
+c 14 of 1820 clauses in core                            
+c 1 of 30 lemmas in core using 14 resolution steps
+c 0 RAT lemmas in core; 0 redundant literals in core lemmas
+s VERIFIED
+c verification time: 0.020 seconds
+exit=0
+== lrat-check, U ==
+c parsed a formula with 396 variables and 1440 clauses
+c VERIFIED
+c allocated 1024 9720 3960
+c Added clauses = 1441.  Deleted clauses = 1427.  Max live clauses = 1440
+c verification time = 0.00 secs
+exit=0
+== lrat-check, V ==
+c parsed a formula with 468 variables and 1807 clauses
+c VERIFIED
+c allocated 1024 12196 4680
+c Added clauses = 1808.  Deleted clauses = 1793.  Max live clauses = 1807
+c verification time = 0.00 secs
+exit=0
+== lrat-check, Wf ==
+c parsed a formula with 481 variables and 1820 clauses
+c VERIFIED
+c allocated 1024 12285 4810
+c Added clauses = 1821.  Deleted clauses = 1806.  Max live clauses = 1820
+c verification time = 0.00 secs
+exit=0

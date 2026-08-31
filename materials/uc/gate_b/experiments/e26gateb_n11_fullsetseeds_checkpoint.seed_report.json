@@ -1,0 +1,63 @@
+{
+  "best_by_size": {
+    "13": {
+      "best_defect": "70/169",
+      "best_defect_count": 70,
+      "best_family": [
+        0,
+        2,
+        4,
+        8,
+        53,
+        64,
+        66,
+        140,
+        288,
+        901,
+        1618,
+        2043,
+        2047
+      ],
+      "dimension": 11,
+      "restarted_from_checkpoint": 0,
+      "restarts_done": 8,
+      "size": 13
+    },
+    "15": {
+      "best_defect": "34/75",
+      "best_defect_count": 102,
+      "best_family": [
+        0,
+        1,
+        2,
+        32,
+        272,
+        644,
+        652,
+        744,
+        867,
+        1049,
+        1213,
+        1282,
+        1314,
+        2015,
+        2047
+      ],
+      "dimension": 11,
+      "restarted_from_checkpoint": 0,
+      "restarts_done": 8,
+      "size": 15
+    }
+  },
+  "checkpoint": "uc/gate_b/experiments/e26gateb_n11_fullsetseeds_checkpoint.jsonl",
+  "dimension": 11,
+  "generator": "uc/gate_b/experiments/e26gateb_seed_prep.py",
+  "mode": "e26_gateb_fullset_seed_prep",
+  "restarts": 8,
+  "seed": 112358,
+  "sizes": [
+    13,
+    15
+  ],
+  "steps": 400000
+}

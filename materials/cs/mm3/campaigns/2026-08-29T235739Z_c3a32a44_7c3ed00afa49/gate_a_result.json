@@ -1,0 +1,28 @@
+{
+  "slp_gate_counts": {
+    "left": 13,
+    "right": 14,
+    "output": 28,
+    "total": 55
+  },
+  "counts_pass": true,
+  "brent_kinds": {
+    "nonzero_pass": 27,
+    "zero_pass": 702,
+    "nonzero_fail": 0,
+    "zero_fail": 0
+  },
+  "brent_failures": [],
+  "brent_all_pass": true,
+  "printed_blocks_match": {
+    "U": true,
+    "V": true,
+    "W": true
+  },
+  "ternary": true,
+  "expanded_products_mismatches": [],
+  "expanded_products_pass": true,
+  "perminov_mismatches": [],
+  "perminov_pass": true,
+  "VERDICT_GATE_A": "PASS"
+}

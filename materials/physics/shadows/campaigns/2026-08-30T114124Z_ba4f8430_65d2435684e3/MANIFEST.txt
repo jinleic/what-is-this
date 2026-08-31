@@ -1,0 +1,9 @@
+campaign 2026-08-30T114124Z_ba4f8430_65d2435684e3
+artifact_sha256_12(gates_ext): 65d2435684e3
+frozen statement: pre_statement.md Revision 2 (2026-08-30, appended before this run)
+frozen source artifact: campaigns/2026-08-29T232134Z_4f1a9cab_e274dc65db35/gates_c.json (regression-anchored, exact match)
+carrier M = cx_chain; U_ct = mesh_Z; excluded: literal cx_chain-after-U_ct composite
+verdict: EDGE-PERSISTS iff w_M(k) > w_ct(k) exact, else EDGE-VANISHES (Revision 1 semantics)
+exactness: Fraction-only verdict path, no RNG; full 3^k enumeration
+total_elapsed_s: 23.771
+wall_cap_s: 5400

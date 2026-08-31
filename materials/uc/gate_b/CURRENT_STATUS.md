@@ -25,15 +25,16 @@ classification and no relaxation of the action set.
 
 ## Certified records
 
-Ten bases are registered and exactly certified. Every number below is the upper
-endpoint of an exact rational two-sided enclosure. Normalization (active *and*
-separating) is a search and reporting condition in `DEFINITIONS.md`, not a
-condition in the displayed supremum, so both conventions are reported and every
-row says which it uses.
+Ten bases are registered and exactly certified; one additional symbolic clone
+family is certified by exact fixed-order enclosures plus Proposition 25's
+reweighting identity. Every number below is the upper endpoint of an exact
+rational two-sided enclosure. Normalization (active *and* separating) is a
+search and reporting condition in `DEFINITIONS.md`, not a condition in the
+displayed supremum, so both conventions are reported.
 
 | record | value | base | separating | certificate |
 |---|---|---|---|---|
-| **lowest defect with `A_+ < 0`** | **`4/9 = 0.444444`** | `n8tiny` | no | `gate_b_n8_k4_rational_v1.json` |
+| **lowest defect with `A_+ < 0`** | **`14/45 = 0.311111`** | `n8m15_clone_reachable`, ratio-41 symbolic clone | no | `gate_b_subtwofifths_clone_rational_v1.json` |
 | lowest defect, separating | `1144/1875 = 0.610133` | `n8lo` | yes | `gate_b_n8_rational_v1.json` |
 | highest repair ratio | `147/2536 = 0.0579653` | `n8clone_hi` | no | `gate_b_n8_clone_rational_v1.json` |
 | highest repair ratio, separating | `531/11360 = 0.0467430` | `n8best` | yes | `gate_b_n8_k4_rational_v1.json` |
@@ -45,10 +46,13 @@ Published values before this round: defect `1336/2025 = 0.659753`, ratio
 improved twice over -- once with a cloned base and once, by `10.6%`, without
 leaving the separating class.
 
-`n8tiny` is worth a second look: it reaches the lowest defect anywhere with only
-**fifteen rows**, four of whose eight coordinates coincide. Low defect did not
-require a large family; it required a dominant set, which it has (`[8]` itself,
-against the Corollary 12 threshold `128/25 = 5.12`).
+The new defect record starts from a normalized fifteen-row core on eight
+coordinates, with incidence `45 >= R_15 = 30` and defect `14/45`. Its uniform
+objective is positive, but one fixed order is exactly negative. Proposition 25
+turns that order into a finite ratio-41 clone family with exact
+`A_+ in [-0.000084288238,-0.000084288237]` at unchanged defect. The clone
+family is active but not separating, so the normalized frontier remains
+`1144/1875`.
 
 ## Growth of the numerator: settled, and the constant improved twice
 
@@ -73,39 +77,61 @@ constant improves by `10.6%` even for a reader who insists on normalized
 families. So `Lambda(n) = Theta(n)` and only the *denominator* of the repair
 ratio remains open.
 
-## What a cloned coordinate buys — two different things
+## Defect-free coordinate extensions: classified, and the old monotonicity claim retracted
 
-Duplicating a coordinate is a bijection commuting with union, so it preserves
-`m`, `eps_vee`, every degree (hence the cap), and it only raises the incidence
-while `R_m` stays put. **Cloning therefore preserves admissibility
-unconditionally and cannot move the defect.** It is free in both quantities the
-local question measures. What it moves is `A_+`, through `Q` and `C_+`, and it
-moves it *down*.
+**PROVED.** Adding a coordinate with one-rows
+\(\mathcal U\subseteq\mathcal F\) never repairs a failed join and preserves the
+defect exactly when
 
-That gives two distinct uses, and the registered bases use both:
+```text
+1_U(A union B) = 1_U(A) or 1_U(B)
+```
 
-* **Feasibility.** `n8clone_lo` and `n8clone_hi` collapse to *inadmissible*
-  seven-coordinate families: incidence 196 against `R_70 = 215`, with the cap
-  satisfied. Size 70 simply does not exist at `n=7`, and the eighth coordinate
-  is spent entirely on clearing Reimer. The reward is a base whose `-A_+` per
-  coordinate, `0.037548/8 = 0.004694`, beats anything available at seven.
-* **Negativity.** `n8tiny` is the opposite case. Its four identical coordinates
-  collapse to an admissible **five**-coordinate family of the same size 15 and
-  the same defect `4/9` — so feasibility was never the issue — but that core has
-  `A_+ = +0.010695694`, *positive*. Three clones drive it to `-0.000478465`. The
-  clones, not the ground set, are what make it a witness.
+for every successful join. Equivalently, `U` is an up-set inside the family and
+every successful join landing in `U` has a part in `U`. If `|U| <= floor(2m/5)`,
+admissibility is automatic: old degrees stay fixed, the new degree meets the
+cap, and incidence rises against a fixed `R_m` (`PROOF.md`, Lemma 19).
 
-**The gain saturates.** Successive clones of one coordinate give deltas
-`-7.22e-3, -2.71e-3, -1.25e-3, -6.59e-4`, with ratios `0.375, 0.462, 0.527`: the
-improvement is geometric and the budget is bounded, roughly `0.013` for this
-family. So cloning flips a family that is positive but *small*, and cannot
-rescue one that is far positive — the lowest-defect admissible family known at
-`n=7, m=45` has `A_+ = +0.0847`, an order of magnitude outside the budget.
+The class is larger than clones and OR-columns, but the record core is completely
+enumerated: 57 join-consistent row subsets, six usable under cap 6. They are its
+five coordinate columns and one genuinely new column. Exact objectives:
 
-This is the amplification question of the original plan answered in its sharpest
-form: the numerator *can* be amplified at zero defect cost, and the amplification
-is finite. Audited in `audit_clone_saturation.py`, verdict
-`CLONING_IS_DEFECT_FREE_AND_SATURATES`.
+| extension of the `n8tiny` core | `A_+ <=` | effect |
+|---|---:|---|
+| none | `+0.010695694102` | baseline |
+| clone coordinate 2 | `+0.003478204249` | improves |
+| clone coordinate 0, 1, 3, or 4 | `+0.012500066566` | **worsens** |
+| unique non-OR column | `+0.114769081463` | worsens sharply |
+
+So the previous statement that cloning always lowers `Q`, `C_+`, and `A_+` was
+**false**. Structural preservation is universal; objective direction is not.
+Concentrating three clones on coordinate 2 reaches `-0.000478464900`, while
+spreading one over coordinates 0, 1, and 2 leaves `+0.006494611034`, all at
+defect `4/9` (`classify_defect_free_extensions.py`).
+
+**PROVED, sharp exact closure.** Clones only reweight original fixed-order
+objectives. For multiplicities `r_i`, the collapsed first-appearance order has
+the exact Plackett--Luce law
+
+```text
+P_r(pi) = product_k r[pi[k]] / sum_{j>=k} r[pi[j]].
+```
+
+Geometric multiplicities concentrate on any chosen order, so the infimum and
+supremum over all finite clone multisets equal the minimum and maximum original
+fixed-order values. In particular, a finite clone multiset is negative **iff**
+some original fixed order is negative.
+
+For one coordinate of total multiplicity `r`, the earlier rank law remains
+
+```text
+P(first clone has rank j) = C(n+r-j-2,r-1) / C(n+r-1,r).
+```
+
+Its convergence is `O(1/r)`, not geometric. For `n8tiny` coordinate 2 the exact
+limit is `-0.002338401508...`; total multiplicity 4 first crosses zero. For the
+new `14/45` core, no one-coordinate limit is negative, but multicoordinate
+ratio `41` is. `audit_clone_limit.py` exactly reweights all 40,320 orders.
 
 ## Why the cloned bases are sound
 
@@ -126,23 +152,34 @@ certifies every power.** Audited by direct instantiation in
 product recomputed from its rows has defect `210171/240100 = 1-(173/490)^2`
 exactly).
 
-## The local regime
+## The local regime: both defect and negativity crossed `2/5`
 
-The only escape left by the theorem is `eps_vee -> 0`. Beyond the frontier rows
-above:
+The original \(n=9,10\) pipeline covered 13 and 15 sizes respectively,
+including maxima 145 and 255. A corrected minimum-fixed-order search then used
+Proposition 25's exact reachability criterion. Exact and discovery labels remain
+separate:
 
-| quantity | value | label | artifact |
-|---|---|---|---|
-| lowest defect of any admissible family, `n=7, m=45` | `692/2025 = 0.341728...` | **NUMERICAL** | `experiments/local_defect_checkpoint.jsonl` |
+| quantity | value | convention | label | artifact |
+|---|---:|---|---|---|
+| lowest searched admissible defect | `14/45 = 0.311111...` | normalized *and* displayed | exact witness / heuristic coverage | `local_defect_frontier_n9.json` |
+| **lowest certified negative defect** | **`14/45 = 0.311111...`** | displayed, non-separating | exact rational two-sided certificate | `gate_b_subtwofifths_clone_rational_v1.json` |
+| lowest certified negative, separating | `1144/1875 = 0.610133...` | normalized | exact rational | `gate_b_n8_rational_v1.json` |
 
-**The combinatorial floor is not the obstruction.** Admissible families at
-`n=7, m=45` reach defect `0.3418`, while the best *negative* one there sits at
-`0.6598`. What fails as the defect falls is negativity itself: at fixed `m=45`,
-`Q` rises through `log2 45 = 5.4919` (`5.4474` at defect `0.79`, `5.4758` at
-`0.66`, `5.5608` at `0.34`), so `A_+` turns positive. Negativity is won only at
-the maximum admissible size -- and indeed `n8max`, the best separating ratio,
-sits at `m=80` with incidence `256 = 8*32`, the largest any `n=8` family can
-have.
+Two normalized fifteen-row cores now explain the mechanism precisely. The
+earlier seven-coordinate core
+`(0,2,4,6,8,9,16,22,31,32,96,105,112,125,127)` has defect `14/45`,
+`A_+ in [0.305904110097,0.305904110098]`, and every fixed order at least
+`0.145914214376`; every defect-free extension stays positive. The new
+eight-coordinate row-changing core
+`(0,1,2,4,5,8,10,43,64,190,192,193,245,254,255)` has the same defect and
+positive average `A_+ in [0.230029313333,0.230029313334]`, but fixed order
+`(6,1,2,0,3,4,5,7)` lies in
+`[-0.003540262562,-0.003540262561]`.
+
+Geometric ratio `41` yields dimension `199623130728`, incidence
+`1197738780965`, the same `m=15` and defect, and exact
+`A_+ in [-0.000084288238,-0.000084288237]`. The row/order search is heuristic;
+the core facts, selected order, all-order reweighting, and final sign are exact.
 
 ## Structural obstructions proved this round
 
@@ -164,6 +201,38 @@ have.
   them** -- verified over all `2^n` candidates. The one amplification route that
   lowers `eps_vee` and raises `log2 m` at once, adding the missing unions, is
   therefore empty at every certified base.
+
+* **Lemma 19, defect-free extensions.** Join-consistency is necessary and
+  sufficient; the defect can never decrease by appending a coordinate. The
+  `n8tiny` core has 57 join-consistent subsets, six cap-usable, with exactly one
+  improving direction.
+* **Proposition 21, clone convex hull.** Arbitrary clone multiplicities only
+  reweight original fixed-order objectives. This corrects two earlier claims:
+  objective direction is coordinate-dependent, and one-coordinate convergence
+  is `O(1/r)`, not geometric.
+* **Proposition 22, cap-only floor is false [REPORTED source + in-repo
+  derivation].** Chase-Lovett Example 1.4 is active, separating, contains `[n]`,
+  has `eps_vee=o(1)`, and every frequency is `psi+o(1)<2/5`; it fails Reimer by
+  `h(psi)/2 - psi > 0.0977433528` per coordinate.
+* **Proposition 23, zero-defect endpoint.** Reimer's cited average-set-size
+  theorem and the dominant set are automatic for a cap union-closed family.
+  Deleting zero/duplicate columns normalizes it without changing the endpoint.
+* **Proposition 24, no robust Reimer bootstrap.** The Chase-Lovett sequence
+  refutes every inequality
+  `log2(m)/2-sbar <= n*g(eps_vee)` with `g(t)->0`, even with cap,
+  normalization, and a full set.
+* **Proposition 25, sharp clone reachability.** The exact Plackett--Luce order
+  law makes the clone infimum equal the fixed-order minimum; negative sign is
+  finitely reachable iff one fixed order is negative.
+* **Proposition 26, exact sub-`2/5` witness.** Ratio-41 multicoordinate cloning
+  of the new normalized core gives defect `14/45` and a strictly negative exact
+  two-sided `A_+` enclosure under the displayed convention.
+* **Exact iid-chain barrier.** Six of ten registered bases satisfy
+  `max_order Q_order < log2 m`; the chain fails at every order, with widest
+  exact margin `0.0393134578`. All ten bases have maximum frequency exactly
+  `2/5`. Cambie's `c* = 0.3823455333667027...` is used only as a
+  human-audited upper obstruction; its matching lower verification remains
+  **OPEN / COMPUTATIONAL-EVIDENCE** in the broader `math/uc` audit.
 
 ## The census objective is a screen, and now we know exactly why
 
@@ -207,57 +276,54 @@ The screen is exact at `k=1` and `k=4` and wrong at `k=2` and `k=3`, which is
 consistent with the diagnosis above: it is correct exactly when the family's
 automorphism group is the block group.
 
-Every record in the table at the top of this file comes from `k=2` or `k=4`.
-`k=3`'s best, `n8max`, sits at the maximum admissible size `m = 80` with
-incidence `256 = 8*32` and held the separating ratio record until `k=4`.
+The direct block-symmetric records other than the new symbolic clone family
+come from `k=2` or `k=4`. `k=3`'s best, `n8max`, sits at the maximum admissible
+size `m = 80` with incidence `256 = 8*32` and held the separating ratio record
+until `k=4`.
 
 
 ## Open
 
-* **`c_loc`, the local ratio, is undecided.** Its upper end is certified at
-  defect `4/9` (any admissible) and `1144/1875` (separating); nothing negative
-  has been found below `4/9`.
-* **Finiteness is Frankl-equivalent.** `c_cl^star` restricted to at most `n`
-  coordinates is finite exactly when no admissible family on `n` coordinates has
-  `eps_vee = 0` and `A_+ < 0`. A zero-defect admissible family is union closed
-  with every frequency at most `2/5`, so proving finiteness for all `n` gives a
-  `2/5` frequency bound, about `0.018` beyond the published `0.381966`. Frankl
-  is verified for `n <= 12` [REPORTED], which settles those dimensions only.
-* **The denominator's growth is open.** The numerator is `Theta(n)`; whether
-  `c_cl^star(n)` is `Theta(n)` depends on a positive defect floor, which is the
-  Frankl-equivalent statement above.
-* **Proof-assistant formalization.** None of the certificates is a
+* **`c_loc` is undecided.** The certified negative frontier is now `14/45` in
+  the displayed cap/Reimer class and `1144/1875` under active separation, but
+  neither gives a sequence with defect tending to zero.
+* **Further defect reduction has an exact search criterion.** A row-changing
+  core can be rescued by clones iff its minimum fixed-order objective is
+  negative. The strict search reached `14/45`; no lower-defect seed is currently
+  known. Search coverage is heuristic, not an optimality theorem.
+* **A Gate B floor must be Reimer-essential.** Proposition 22 kills cap +
+  normalization + dominant-set floors, while Proposition 24 kills every
+  pair-defect-continuous attempt to recover Reimer. A useful floor must assume
+  Reimer as a hard hypothesis or exploit stronger union-image structure.
+* **The zero endpoint is still the `2/5` frequency problem.** Proposition 23
+  shows Reimer and the dominant set add nothing there. Excluding zero defect in
+  all dimensions would beat the rigorously audited `psi = 0.381966...` frontier
+  by `0.0180`. Frankl is verified for `n <= 12` [REPORTED], settling only those
+  dimensions.
+* **The separating frontier remains open.** The core of the new witness is
+  normalized, but nontrivial cloning duplicates columns. Reaching below
+  `1144/1875` while preserving separation needs a distinct amplification or a
+  direct negative family.
+* **Proof-assistant formalization.** None of the Gate B certificates is a
   proof-assistant artifact.
 
 ## Next frontier
 
-Block-symmetric coverage at `n = 8` is complete, so the cheap seam is exhausted.
+Block-symmetric `n=8` coverage, the requested `n=9,10` low-defect sweep,
+full-order `Q` gating, defect-free extension classification, and clone
+reachability are closed. Remaining work:
 
-1. `n = 9, 10`, where the maximum admissible sizes are 145 and 255. Three
-   lessons from this round change how to search there. Corollary 12 says a
-   dominant set is *necessary*, so condition on containing `[n]` or a set of size
-   at least `(4/5) log2 m`. `n8tiny` shows the winner may be **small** -- it took
-   the defect record on fifteen rows -- so do not restrict to near-maximal sizes.
-   And by Proposition 18 the right pipeline is: enumerate low-defect admissible
-   families, rank them by `A_+`, and clone only those already within about `0.01`
-   of zero. Cloning a cheap positive is the highest-yield move available;
-   cloning an expensive one is wasted work, because the budget is finite.
-2. Measure the cloning budget per family instead of assuming `n8tiny`'s. The
-   saturation ratios `0.375 -> 0.577` are one family's; the limiting sum of
-   deltas is what decides which positives are reachable, and it is cheap to
-   compute for any candidate.
-3. Strengthen the defect lower bound for families that *do* have a dominant set.
-   Corollary 12's floor is vacuous exactly when one is present, which is exactly
-   the regime every record lives in. Proposition 18 now prices the remaining gap:
-   closing the distance from the certified `4/9` to the searched combinatorial
-   floor `0.3418` needs `0.0847` of objective, against a cloning budget of order
-   `0.013`, so a different mechanism is required and not just more cloning.
-4. Fix the screen rather than working around it. The two-stage architecture is
-   sound and every label already comes from the exact route, but the screen
-   mis-ranks by up to `3.24e-3` whenever the automorphism group is not the block
-   group. A per-family automorphism computation costs 40320 permutation tests; a
-   cheaper invariant detecting "Aut is larger than the block group" would let the
-   screen fall back to all orders only where it must.
-5. Whether `4/9` can be pushed below the cap value `2/5`. Nothing yet rules out a
-   certified negative family there, and the pair floor `2/m^2` is orders of
-   magnitude lower, so the obstruction is not combinatorial.
+1. **Search below `14/45` by the correct objective.** First produce
+   cap/Reimer/dominant-set seeds with smaller defect, then rank by sampled
+   minimum fixed-order `A_+` and certify only the selected order. Full-order
+   `Q` remains a rejection gate, not the ranking objective.
+2. **Exploit Reimer as a hard hypothesis.** Chase-Lovett misses it by
+   `0.097743... n`, but that gap cannot be bounded continuously by pair defect.
+   A useful theorem must use density/support information unavailable to their
+   construction and degrade at the exact zero-defect endpoint.
+3. **Preserve separation.** Seek row-changing cores that are already negative
+   on the uniform order average, or a non-clone reweighting that keeps columns
+   distinct; ordinary cloning cannot move the normalized frontier.
+4. **Consider a stronger union-image invariant.** Chase-Lovett is sharp for the
+   pair-weighted defect, not for the number or entropy of distinct successful
+   union values [REPORTED open direction].

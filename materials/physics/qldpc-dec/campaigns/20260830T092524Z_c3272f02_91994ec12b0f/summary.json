@@ -1,0 +1,49 @@
+{
+  "gate": "B-beam8",
+  "bposd": {
+    "arm": "bp30+osd",
+    "p": 0.001,
+    "basis": "Z",
+    "shots": 10000,
+    "failures": 0,
+    "ler": 0.0,
+    "ler_ci95": [
+      0.0,
+      0.00038399837085675273
+    ],
+    "sampling_seed": 5192065653244964556,
+    "wall_s": 660.2424499170156,
+    "circuit_sha256": "106f45471003ecdf6d843ea3b9da45d2f0a766716569a9fababaacbcdeb356db",
+    "dem_sha256": "0da75b9847b54a4c7079e8fdb8be6a2320fea0ee88caafd5f93153a76089e8e2"
+  },
+  "beam8": {
+    "arm": "beam8",
+    "p": 0.001,
+    "basis": "Z",
+    "shots": 10000,
+    "failures": 0,
+    "ler": 0.0,
+    "ler_ci95": [
+      0.0,
+      0.00038399837085675273
+    ],
+    "sampling_seed": 5538908663133261042,
+    "wall_s": 5356.807004000002,
+    "circuit_sha256": "106f45471003ecdf6d843ea3b9da45d2f0a766716569a9fababaacbcdeb356db",
+    "dem_sha256": "0da75b9847b54a4c7079e8fdb8be6a2320fea0ee88caafd5f93153a76089e8e2"
+  },
+  "verdict": {
+    "beam8_vs_bposd_ler_ratio": null,
+    "ratio_ci95": [
+      0.0,
+      Infinity
+    ],
+    "target_band": [
+      0.87,
+      1.15
+    ],
+    "in_band": null,
+    "outcome": "UNDERDETERMINED_both_arms_zero_failures",
+    "note": "0 failures in 10000 shots on both arms; both decoders below resolvable LER at this budget. Increase shots or p; band check [0.87,1.15] requires resolvable arms."
+  }
+}

@@ -1,0 +1,75 @@
+{
+ "per_k": [
+  {
+   "k": 4,
+   "w_M": "361/6561",
+   "w_ct": "353/6561",
+   "verdict": "REGRESSION-OK"
+  },
+  {
+   "k": 5,
+   "w_M": "187/6561",
+   "w_ct": "187/6561",
+   "verdict": "REGRESSION-OK"
+  },
+  {
+   "k": 6,
+   "w_M": "7937/531441",
+   "w_ct": "8177/531441",
+   "verdict": "REGRESSION-OK"
+  },
+  {
+   "k": 7,
+   "w_M": "12425/1594323",
+   "w_ct": "13385/1594323",
+   "verdict": "REGRESSION-OK"
+  },
+  {
+   "k": 8,
+   "w_M": "175321/43046721",
+   "w_ct": "198593/43046721",
+   "verdict": "REGRESSION-OK"
+  },
+  {
+   "k": 9,
+   "w_M": "274721/129140163",
+   "w_ct": "328801/129140163",
+   "verdict": "EDGE-VANISHES",
+   "diff_wM_minus_wct": "-54080/129140163"
+  },
+  {
+   "k": 10,
+   "w_M": "3875057/3486784401",
+   "w_ct": "4912337/3486784401",
+   "verdict": "EDGE-VANISHES",
+   "diff_wM_minus_wct": "-345760/1162261467"
+  },
+  {
+   "k": 11,
+   "w_M": "2024275/3486784401",
+   "w_ct": "907505/1162261467",
+   "verdict": "EDGE-VANISHES",
+   "diff_wM_minus_wct": "-698240/3486784401"
+  },
+  {
+   "k": 12,
+   "w_M": "85655881/282429536481",
+   "w_ct": "122336033/282429536481",
+   "verdict": "EDGE-VANISHES",
+   "diff_wM_minus_wct": "-36680152/282429536481"
+  }
+ ],
+ "largest_k_completed": 12,
+ "wall_s": 23.771,
+ "campaign_dir": "physics/shadows/campaigns/2026-08-30T114124Z_ba4f8430_65d2435684e3",
+ "notes": [
+  "carrier M = cx_chain (deterministic CNOT staircase); U_ct = mesh_Z;",
+  "Revision 2 appended pre-run (direction pinned per Revision 1: PERSISTS iff w_M(k) > w_ct(k), smaller shadow norm);",
+  "regression gate k=4..8 vs frozen artifact 2026-08-29T232134Z_4f1a9cab_e274dc65db35: 35/35 exact matches (cx_chain, cz_mesh, cx_mesh_lex, uct_then_cz_mesh, mesh_X/Y/Z) \u2014 PASS;",
+  "w_ct enumerated == Eq.(4) exactly at every k=9,10,11,12 (hard assert);",
+  "excluded: literal cx_chain\u2218U_ct composite \u2014 different map, w=1/81 < 353/6561 at k=4 (Revision 2 carrier-identity note);",
+  "edge k=4 (norm ratio 353/361) does NOT return: w_M(k) < w_ct(k) for all k=9..12 with widening gap; k=6,7,8 already showed the loss;",
+  "all arithmetic exact (GF(2) ints + Fraction), no RNG; floats only in this reporting; nice -n 10 single process.",
+  "budget: wall cap 5400 s pinned pre-run; used 23.8 s; no k left UNKNOWN-BUDGET."
+ ]
+}

@@ -1,0 +1,352 @@
+{
+ "claim_status": "PROVED",
+ "constants": {
+  "beta": "0.1000525598628931066646282994769475877962",
+  "m": "0.6172909120812649700696870979010273883736"
+ },
+ "corrected_form": {
+  "discharge_status": "the discharge is exactly the certified raw gap F(P_mix) of the six-atom mixture law; the universal q=1 theorem (C_m >= 0, dC_M/dM >= 0) proves F(P) >= 0 for every law of mean >= m, so the discharge is >= 0",
+  "displayed_block_status": "REFUTED",
+  "identity": "gap = (1/M) sum_{i,j<=6} w_i w_j D_M(s_i,s_j) + q(1-q) c; w = ((1-q)a_i on x-atoms, q a_i on y-atoms); D_M(s,t) = M E(s,t) - (t h(s)+s h(t))/2 = s t C_M(s,t)",
+  "q_rank": 1,
+  "remainder": "c = 2(1-beta) cross + beta(pi0+pi1) - 2 <E>_cross, q-free; c = 0 exactly on the diagonal P0 = P1"
+ },
+ "displayed_block_falsification": {
+  "records": [
+   {
+    "c_value": "0.0001262588241427319283391290726187946597231",
+    "discharge": "-0.1790231710398179642151186868137950557718",
+    "displayed_absdiff": "0.14792011",
+    "displayed_block_value": "-0.03109586355810484519397604104367488727719",
+    "identity_absdiff": "9.2045502e-92",
+    "identity_value": "-0.1790159718630404848262402590684652324761",
+    "raw_gap": "-0.1790159718630404848262402590684652324761",
+    "trial": 0,
+    "values": [
+     "0.60324137219617866516900294566",
+     "0.340864725328439168612035139607",
+     "0.939295803434633745221093258593",
+     "0.653241067811635866916900363804",
+     "0.0699431079781186134562815191077",
+     "0.957484417061915139084732726574",
+     "0.144470399653524923430750409759",
+     "0.743466071989661618514212218021",
+     "0.0340871951148619757319116448328"
+    ]
+   },
+   {
+    "c_value": "-0.005666839247091174449674120871979880079218",
+    "discharge": "0.06740062294690721525246084301587595984995",
+    "displayed_absdiff": "0.041408513",
+    "displayed_block_value": "0.02459326365435392517423654902748277258819",
+    "identity_absdiff": "1.9943192e-91",
+    "identity_value": "0.0660017768231019131304844694425221364016",
+    "raw_gap": "0.0660017768231019131304844694425221364016",
+    "trial": 1,
+    "values": [
+     "0.163800706738224392268537466926",
+     "0.439234630301400752626340566243",
+     "0.556145520913254748785194485132",
+     "0.991676505725284168314272340485",
+     "0.165365971842742370465473670435",
+     "0.56674738259349315756686694934",
+     "0.875678153011665332996332493978",
+     "0.914046749130607034379539551877",
+     "0.709528797043801633440817191141"
+    ]
+   },
+   {
+    "c_value": "-0.03850742260831210764070089716308580053423",
+    "discharge": "0.1189233475509640263270507187418324839353",
+    "displayed_absdiff": "0.16817478",
+    "displayed_block_value": "-0.05646836456031022555951564273930848025296",
+    "identity_absdiff": "1.5340917e-92",
+    "identity_value": "0.1117064109090538943949792089023016158987",
+    "raw_gap": "0.1117064109090538943949792089023016158987",
+    "trial": 2,
+    "values": [
+     "0.749473137456025294167402308545",
+     "0.0192305593570678662711638739193",
+     "0.750166411073967423883023128381",
+     "0.264755677299637713174869665106",
+     "0.320643367241653445015409284813",
+     "0.421473839616866515429764862626",
+     "0.940129650651355820226523632408",
+     "0.440503190206266246420800328995",
+     "0.870545198031806215751815451087"
+    ]
+   },
+   {
+    "c_value": "0.01819096850928994939432685540889442759775",
+    "discharge": "-0.07843543749360480499820535029793457496784",
+    "displayed_absdiff": "0.043070231",
+    "displayed_block_value": "-0.03081894148090408155735710941814991913857",
+    "identity_absdiff": "3.0681834e-92",
+    "identity_value": "-0.07388917285133860253896393104769956326764",
+    "raw_gap": "-0.07388917285133860253896393104769956326764",
+    "trial": 3,
+    "values": [
+     "0.355501514776849173130574219514",
+     "0.604716596860029575581549795893",
+     "0.509012258444145171098729839057",
+     "0.314904561305916089997377042254",
+     "0.766712966639707872562160550154",
+     "0.637426109524299761299945652044",
+     "0.896410235704849733584502857201",
+     "0.0119441332322053975110720972882",
+     "0.0672908011576770624547268708419"
+    ]
+   },
+   {
+    "c_value": "0.001133875991353040617180742645888572988214",
+    "discharge": "-0.2198932787119219005856284818932178171514",
+    "displayed_absdiff": "0.15396153",
+    "displayed_block_value": "-0.06564864770150171803397883775583652494912",
+    "identity_absdiff": "6.1363668e-92",
+    "identity_value": "-0.2196101775674868720946896251166810342308",
+    "raw_gap": "-0.2196101775674868720946896251166810342308",
+    "trial": 4,
+    "values": [
+     "0.388796597174047975464602577677",
+     "0.0818433091879527258863896301944",
+     "0.481988303960003699977503223206",
+     "0.0542957865444912461781506240266",
+     "0.553068633748836135029989822948",
+     "0.477463934855394959835760640423",
+     "0.582258671336641368247031530908",
+     "0.536959880522847090323202741158",
+     "0.0238754196240313014569418534302"
+    ]
+   },
+   {
+    "c_value": "-0.0001880094863538127169661204784446932491515",
+    "discharge": "-0.0711354870790834451577947418683564338863",
+    "displayed_absdiff": "0.0059923383",
+    "displayed_block_value": "-0.06515428641532180225355361720530166542867",
+    "identity_absdiff": "2.3011376e-91",
+    "identity_value": "-0.07114662471574933654856301524467098252044",
+    "raw_gap": "-0.07114662471574933654856301524467098252044",
+    "trial": 5,
+    "values": [
+     "0.0528521369543370962817378715179",
+     "0.493791348651730742713125784448",
+     "0.0632389200310408090945384025347",
+     "0.774217192387070968646459814811",
+     "0.711105140840148179212972670721",
+     "0.309574916964396090302687891361",
+     "0.453356515410353088641119209114",
+     "0.286953065190507037276956598551",
+     "0.677772900685865220813021964316"
+    ]
+   }
+  ],
+  "summary": "the quadratic form of the displayed kernel [[B00,B01],[B01,B11]] on alpha-masses has no cross-component product-entropy terms and differs from the raw gap at every tested configuration; the true remainder is the single q(1-q)-scalar c, not a beta q(1-q) k_pi cross block",
+  "worst_absdiff": "0.16817478"
+ },
+ "limitations": [
+  "the discharge certificate inherits the certified C_m >= 0 cover and the dC/dM >= 0 monotonicity of liu9_size_biased.py",
+  "c is sign-indefinite; its negative range is only bounded by discovery-grade sampling in this report",
+  "no transport/mass-transport argument for c is attempted here"
+ ],
+ "mutations": {
+  "drop_pi0_term": {
+   "expected": "FAIL",
+   "observed": "FAIL",
+   "ok": true,
+   "residual_sha256": "1eb488787ffb627bdd3f3894f94d9c4eaa3ac5d45d6dacb9844a5f98aecb7808",
+   "residual_term_count": 2759
+  },
+  "drop_st_factor": {
+   "expected": "FAIL",
+   "note": "the displayed kernel carries explicit 1/(s*t) denominators, so the mutated discharge is not even polynomial in the atoms; the nonzero expanded residual is the witness",
+   "observed": "FAIL",
+   "ok": true,
+   "residual_sha256": "fe8b5e139ccc5345feaca75e3ebc3bab7353c71b6582d89f6cda68f2215f1b2b"
+  },
+  "flip_beta_cross_kernel_sign": {
+   "expected": "FAIL",
+   "observed": "FAIL",
+   "ok": true,
+   "residual_sha256": "c0457cf7934ce1e495978bcba9529cbd04c2460aa1760326981436358fdee23f",
+   "residual_term_count": 7935
+  },
+  "perturbed_beta_numeric": {
+   "deviation": "1.969200538e-31",
+   "expected": "FAIL",
+   "observed": "FAIL",
+   "ok": true
+  }
+ },
+ "numeric_certification": {
+  "claim_status": "MACHINE-VERIFIED",
+  "configurations": [
+   {
+    "c_value": "0.0001262588241427319283391290726187946597231",
+    "discharge": "-0.1790231710398179642151186868137950557718",
+    "displayed_absdiff": "0.14792011",
+    "displayed_block_value": "-0.03109586355810484519397604104367488727719",
+    "identity_absdiff": "9.2045502e-92",
+    "identity_value": "-0.1790159718630404848262402590684652324761",
+    "raw_gap": "-0.1790159718630404848262402590684652324761",
+    "trial": 0,
+    "values": [
+     "0.60324137219617866516900294566",
+     "0.340864725328439168612035139607",
+     "0.939295803434633745221093258593",
+     "0.653241067811635866916900363804",
+     "0.0699431079781186134562815191077",
+     "0.957484417061915139084732726574",
+     "0.144470399653524923430750409759",
+     "0.743466071989661618514212218021",
+     "0.0340871951148619757319116448328"
+    ]
+   },
+   {
+    "c_value": "-0.005666839247091174449674120871979880079218",
+    "discharge": "0.06740062294690721525246084301587595984995",
+    "displayed_absdiff": "0.041408513",
+    "displayed_block_value": "0.02459326365435392517423654902748277258819",
+    "identity_absdiff": "1.9943192e-91",
+    "identity_value": "0.0660017768231019131304844694425221364016",
+    "raw_gap": "0.0660017768231019131304844694425221364016",
+    "trial": 1,
+    "values": [
+     "0.163800706738224392268537466926",
+     "0.439234630301400752626340566243",
+     "0.556145520913254748785194485132",
+     "0.991676505725284168314272340485",
+     "0.165365971842742370465473670435",
+     "0.56674738259349315756686694934",
+     "0.875678153011665332996332493978",
+     "0.914046749130607034379539551877",
+     "0.709528797043801633440817191141"
+    ]
+   },
+   {
+    "c_value": "-0.03850742260831210764070089716308580053423",
+    "discharge": "0.1189233475509640263270507187418324839353",
+    "displayed_absdiff": "0.16817478",
+    "displayed_block_value": "-0.05646836456031022555951564273930848025296",
+    "identity_absdiff": "1.5340917e-92",
+    "identity_value": "0.1117064109090538943949792089023016158987",
+    "raw_gap": "0.1117064109090538943949792089023016158987",
+    "trial": 2,
+    "values": [
+     "0.749473137456025294167402308545",
+     "0.0192305593570678662711638739193",
+     "0.750166411073967423883023128381",
+     "0.264755677299637713174869665106",
+     "0.320643367241653445015409284813",
+     "0.421473839616866515429764862626",
+     "0.940129650651355820226523632408",
+     "0.440503190206266246420800328995",
+     "0.870545198031806215751815451087"
+    ]
+   },
+   {
+    "c_value": "0.01819096850928994939432685540889442759775",
+    "discharge": "-0.07843543749360480499820535029793457496784",
+    "displayed_absdiff": "0.043070231",
+    "displayed_block_value": "-0.03081894148090408155735710941814991913857",
+    "identity_absdiff": "3.0681834e-92",
+    "identity_value": "-0.07388917285133860253896393104769956326764",
+    "raw_gap": "-0.07388917285133860253896393104769956326764",
+    "trial": 3,
+    "values": [
+     "0.355501514776849173130574219514",
+     "0.604716596860029575581549795893",
+     "0.509012258444145171098729839057",
+     "0.314904561305916089997377042254",
+     "0.766712966639707872562160550154",
+     "0.637426109524299761299945652044",
+     "0.896410235704849733584502857201",
+     "0.0119441332322053975110720972882",
+     "0.0672908011576770624547268708419"
+    ]
+   },
+   {
+    "c_value": "0.001133875991353040617180742645888572988214",
+    "discharge": "-0.2198932787119219005856284818932178171514",
+    "displayed_absdiff": "0.15396153",
+    "displayed_block_value": "-0.06564864770150171803397883775583652494912",
+    "identity_absdiff": "6.1363668e-92",
+    "identity_value": "-0.2196101775674868720946896251166810342308",
+    "raw_gap": "-0.2196101775674868720946896251166810342308",
+    "trial": 4,
+    "values": [
+     "0.388796597174047975464602577677",
+     "0.0818433091879527258863896301944",
+     "0.481988303960003699977503223206",
+     "0.0542957865444912461781506240266",
+     "0.553068633748836135029989822948",
+     "0.477463934855394959835760640423",
+     "0.582258671336641368247031530908",
+     "0.536959880522847090323202741158",
+     "0.0238754196240313014569418534302"
+    ]
+   },
+   {
+    "c_value": "-0.0001880094863538127169661204784446932491515",
+    "discharge": "-0.0711354870790834451577947418683564338863",
+    "displayed_absdiff": "0.0059923383",
+    "displayed_block_value": "-0.06515428641532180225355361720530166542867",
+    "identity_absdiff": "2.3011376e-91",
+    "identity_value": "-0.07114662471574933654856301524467098252044",
+    "raw_gap": "-0.07114662471574933654856301524467098252044",
+    "trial": 5,
+    "values": [
+     "0.0528521369543370962817378715179",
+     "0.493791348651730742713125784448",
+     "0.0632389200310408090945384025347",
+     "0.774217192387070968646459814811",
+     "0.711105140840148179212972670721",
+     "0.309574916964396090302687891361",
+     "0.453356515410353088641119209114",
+     "0.286953065190507037276956598551",
+     "0.677772900685865220813021964316"
+    ]
+   }
+  ],
+  "dps": 90,
+  "negative_c_observed": true,
+  "q_scan_c_values": [
+   "0.00010948361327580340987569300086213753844675160672053",
+   "0.00010948361327580340987569300086213753844675160672053",
+   "0.00010948361327580340987569300086213753844675160672053",
+   "0.00010948361327580340987569300086213753844675160672053"
+  ],
+  "q_scan_max_c_deviation": "0.0",
+  "seed": 20260829,
+  "worst_displayed_block_absdiff": "0.16817478",
+  "worst_identity_absdiff": "2.3011376e-91"
+ },
+ "reconciliation": {
+  "previous_refuted_routes[0]": "\"k_pi is PSD\"",
+  "rank_one_completion_refuted_remains": true,
+  "verdict": "SUPERSEDED as a statement about the kernel.  k_pi(x,y) = xy + x(1-x)y(1-y) = phi1(x)phi1(y) + phi2(x)phi2(y) with phi1 = x, phi2 = x(1-x) IS rank-2 positive semidefinite: <d, k_pi d> = (int x dd)^2 + (int x(1-x) dd)^2 >= 0 for every signed measure d.  What the records refuted is the DISPLAYED BLOCK ALGEBRA: the 2x2 B-quadratic form does not equal the raw gap (this report, displayed_block_falsification), because Liu's ehpi is affine in q with no cross-component pi kernel.  Block-level PSD of the displayed kernel is therefore a statement about the wrong object; k_pi's rank-2 PSD is TRUE and plays no role in the corrected reduction."
+ },
+ "refuted_routes_corrected": [
+  "the DISPLAYED 2x2 block kernel equals the raw gap quadratic form (refuted; cross-component product entropies are missing)",
+  "the k_pi cross block describes the q-dependence (refuted; ehpi is affine in q, and the true remainder is the single q(1-q)-scalar c)",
+  "m-frozen global correction is nonnegative (refuted; unchanged)"
+ ],
+ "remaining_obligation": "H2 on the paired class = the exact scalar margin condition F(P_mix) + q(1-q) c >= 0 with F(P_mix) >= 0 proved by the universal q=1 theorem.  NOT closed here: c is sign-indefinite (negative at multiple certified test points, see numeric_certification.records c_value entries), so the open step is bounding c from below or proving that the certified F(P_mix) margin always absorbs -q(1-q)c",
+ "report_sha256": "5c856c6ec95faed2e7048783fd36d19cd91c2a2fdd300f6ff007656d68842f79",
+ "statements": {
+  "block_diagonalization": {
+   "free_symbol_count": 43,
+   "log_basis_size": 33,
+   "method": "sympy multilinear expansion; all h(.)/mu(.) reduced to the canonical free log basis {log s_i, log(1-s_i), log(1-s_i s_j)}; the resulting rational-coefficient polynomial is identically zero",
+   "status": "PROVED"
+  },
+  "kernel_algebra_D_equals_st_C": {
+   "residual": "0",
+   "status": "PROVED"
+  },
+  "pair_identity_h_s_squared": {
+   "residual": "0",
+   "status": "PROVED"
+  }
+ },
+ "tool": "liu9_block_copositive.py"
+}

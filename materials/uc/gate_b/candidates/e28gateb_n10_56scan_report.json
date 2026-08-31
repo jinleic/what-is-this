@@ -1,0 +1,86 @@
+{
+  "dimension": 10,
+  "exact_arithmetic": "every exact_a_lower/exact_a_upper from audit_clone_limit.fixed_order_a_bounds; defects exactly recomputed",
+  "exactly_negative_candidates": 6,
+  "exactly_negative_lowest_defect": {
+    "critically_exact_positive": false,
+    "defect": "68/225",
+    "defect_count": 68,
+    "exact_a_lower": "-220506630532177311019110803/79228162514264337593543950336",
+    "exact_a_upper": "-27563328816522163877388849/9903520314283042199192993792",
+    "exactly_negative": true,
+    "family": [
+      0,
+      2,
+      16,
+      32,
+      128,
+      288,
+      304,
+      400,
+      432,
+      589,
+      591,
+      719,
+      751,
+      863,
+      1023
+    ],
+    "normalized": false,
+    "restart": 0,
+    "screen_best_order": [
+      2,
+      5,
+      7,
+      6,
+      9,
+      3,
+      4,
+      0,
+      8,
+      1
+    ],
+    "screen_score": -0.0027831849627020233,
+    "screen_seed_note": "screen = sampled 200 orders drawn from Random(restart_seed(20260901, 10, 0, 1))",
+    "screened_orders": 300
+  },
+  "families_scanned_total": 28320,
+  "family_size": 15,
+  "mode": "e28_56_neighborhood_negative_scan",
+  "per_restart": {
+    "0": {
+      "families": 10001,
+      "negatives": 3
+    },
+    "1": {
+      "families": 10001,
+      "negatives": 3
+    },
+    "2": {
+      "families": 8318,
+      "negatives": 0
+    }
+  },
+  "restart_count": 3,
+  "scan_depth": "Hamming-1 + Hamming-2 (10000 cap)",
+  "screen_orders_per_family": 300,
+  "seed_family": [
+    0,
+    2,
+    16,
+    32,
+    128,
+    160,
+    272,
+    304,
+    432,
+    589,
+    591,
+    719,
+    751,
+    863,
+    1023
+  ],
+  "status": "TERMINATED_EARLY_PER_MAIN: all negatives above 62/225 record; switched to e29 defect-targeted walk",
+  "verdict": "NO_CERTIFIED_NEGATIVE_FIXED_ORDER_BELOW_62_225_IN_SCAN"
+}

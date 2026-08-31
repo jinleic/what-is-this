@@ -1,0 +1,87 @@
+{
+  "best": {
+    "delta": 5,
+    "global_scope": "candidate-class upper bound; heavier/value-complement OPEN",
+    "ratio": "3/5",
+    "record_index": 6,
+    "weight": 3
+  },
+  "campaign": "2026-08-30T00-46-32Z_d7452695",
+  "code_sha256": "79e6a9a928019605305ddf883441a337a254a787bc5e10a46cdbf5146430138f",
+  "command": "/Users/jinleic/jinleic-workspace/cs/rs-pe3d/src/campaign.py --budget-seconds 120 --milp-limit 10 --weight-cap 3 --seed 0",
+  "eta": "1/32",
+  "evidence_label": "COMPUTATIONAL-EVIDENCE",
+  "feasible_t_profiles": [
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      2
+    ],
+    [
+      1,
+      1,
+      3
+    ],
+    [
+      1,
+      1,
+      4
+    ],
+    [
+      1,
+      2,
+      1
+    ],
+    [
+      1,
+      2,
+      2
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      1,
+      2,
+      4
+    ]
+  ],
+  "finished_utc": "2026-08-30T00:46:32.024881+00:00",
+  "highspy_version": "1.15.1",
+  "optimized_profile": [
+    1,
+    1,
+    1
+  ],
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "provenance": "[DERIVED] from exact F_q row reduction and solver output",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "q": 31,
+  "resource": {
+    "budget_seconds": 120.0,
+    "milp_limit_seconds": 10.0,
+    "nice": 10,
+    "threads": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "s": [
+    2,
+    3,
+    5
+  ],
+  "seed": 0,
+  "started_utc": "2026-08-30T00:46:32+00:00",
+  "weight_cap": 3
+}

@@ -1,0 +1,625 @@
+{
+  "bench_cash_sofr": {
+    "cum_return_dev": 0.06894463469117951,
+    "cum_return_val": 0.05304236218313663
+  },
+  "benchmarks": {
+    "bench_ew_bh": {
+      "dev": {
+        "ann_return": 0.7257219900495098,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 4.092308545851098,
+        "days_in_cash_with_bench_down": 0,
+        "exceed_bench_cum": -0.01225094277269978,
+        "exposure": 1.0,
+        "gross_sharpe": 1.0318432084798277,
+        "max_drawdown": -0.7625369100009565,
+        "missed_bench_cum_in_cash": 0.0,
+        "missed_upside_in_cash": 0.0,
+        "n_flips": 0,
+        "n_obs": 1248,
+        "net_sharpe": 1.0308415075392159,
+        "total_cost": 0.0024,
+        "total_turnover": 2.0
+      },
+      "val": {
+        "ann_return": 0.7591000656969333,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.8332114868287364,
+        "days_in_cash_with_bench_down": 0,
+        "exceed_bench_cum": 0.0,
+        "exposure": 1.0,
+        "gross_sharpe": 1.3582226136782491,
+        "max_drawdown": -0.3547556763962503,
+        "missed_bench_cum_in_cash": 0.0,
+        "missed_upside_in_cash": 0.0,
+        "n_flips": 0,
+        "n_obs": 366,
+        "net_sharpe": 1.3582226136782491,
+        "total_cost": 0.0,
+        "total_turnover": 0.0
+      }
+    },
+    "bench_trend31": {
+      "dev": {
+        "ann_return": 0.6116910526464707,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 4.539848865566969,
+        "days_in_cash_with_bench_down": 291,
+        "exceed_bench_cum": 0.4352893769431718,
+        "exposure": 0.5136217948717948,
+        "gross_sharpe": 1.4467734557667788,
+        "max_drawdown": -0.4647806041532754,
+        "missed_bench_cum_in_cash": 0.15709208186025375,
+        "missed_upside_in_cash": 8.296262639908573,
+        "n_flips": 98,
+        "n_obs": 1248,
+        "net_sharpe": 1.2993995952907476,
+        "total_cost": 0.23520000000000002,
+        "total_turnover": 196.0
+      },
+      "val": {
+        "ann_return": 0.3820547311783713,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.3351538105586267,
+        "days_in_cash_with_bench_down": 66,
+        "exceed_bench_cum": -0.49805767627010966,
+        "exposure": 0.6010928961748634,
+        "gross_sharpe": 1.0639692320828118,
+        "max_drawdown": -0.4261269626214582,
+        "missed_bench_cum_in_cash": 0.2964783354350512,
+        "missed_upside_in_cash": 1.707117120902197,
+        "n_flips": 34,
+        "n_obs": 366,
+        "net_sharpe": 0.876819027201317,
+        "total_cost": 0.0816,
+        "total_turnover": 68.0
+      }
+    }
+  },
+  "frozen_rules": {
+    "t1_vix30": {
+      "params": {
+        "vix_max": 30.0
+      },
+      "rule": "ON iff VIX <= 30",
+      "type": "gate",
+      "vars": [
+        "vix"
+      ]
+    },
+    "t2_vix_hyst": {
+      "params": {
+        "enter_max": 25.0,
+        "exit_min": 32.0
+      },
+      "rule": "ON when VIX <= 25; OFF when VIX >= 32; else hold previous state (init OFF)",
+      "type": "hysteresis",
+      "vars": [
+        "vix"
+      ]
+    },
+    "t3_curve_pos": {
+      "params": {
+        "min_spread": 0.0
+      },
+      "rule": "ON iff T10Y2Y >= 0 (2s10s curve non-negative)",
+      "type": "gate",
+      "vars": [
+        "t10y2y"
+      ]
+    },
+    "t4_curve_hyst": {
+      "params": {
+        "enter_min": 0.05,
+        "exit_max": -0.05
+      },
+      "rule": "ON when T10Y2Y >= +0.05; OFF when T10Y2Y <= -0.05; else hold previous state (init OFF)",
+      "type": "hysteresis",
+      "vars": [
+        "t10y2y"
+      ]
+    },
+    "t5_nfci_neg": {
+      "params": {
+        "max_nfci": 0.0
+      },
+      "rule": "ON iff NFCI < 0 (financial conditions looser than average)",
+      "type": "gate",
+      "vars": [
+        "nfci"
+      ]
+    },
+    "t6_stress_veto": {
+      "params": {
+        "spread_min": 0.0,
+        "vix_max": 30.0
+      },
+      "rule": "ON unless (VIX > 30 AND T10Y2Y < 0): step aside only in joint equity-vol stress with inverted curve",
+      "type": "conjunction-veto",
+      "vars": [
+        "vix",
+        "t10y2y"
+      ]
+    },
+    "t7_trend_veto": {
+      "params": {
+        "sma_days": 31,
+        "spread_min": 0.0,
+        "vix_max": 30.0
+      },
+      "rule": "ON iff (EW basket close > its 31-day SMA) AND NOT (VIX > 30 AND T10Y2Y < 0): price trend with macro stress veto",
+      "type": "conjunction",
+      "vars": [
+        "price",
+        "vix",
+        "t10y2y"
+      ]
+    },
+    "t8_policy_easing": {
+      "params": {
+        "window_bd": 20
+      },
+      "rule": "ON iff DFF fell over the trailing 20 US business days",
+      "type": "gate",
+      "vars": [
+        "dff"
+      ]
+    }
+  },
+  "gate": {
+    "bench_ew_bh_val_net_sharpe": 1.3582226136782491,
+    "bench_trend31_val_net_sharpe": 0.876819027201317,
+    "cash_yield_sofr_sensitivity_val": {
+      "ann_return": 0.4030383377357485,
+      "bench_ann_return": 0.7591000656969333,
+      "bench_cum_return": 0.8332114868287364,
+      "bench_max_drawdown": -0.3547556763962503,
+      "bench_net_sharpe": 1.3582226136782491,
+      "cum_return": 0.36355042385320857,
+      "days_in_cash_with_bench_down": 66,
+      "exceed_bench_cum": -0.4696610629755278,
+      "exposure": 0.6010928961748634,
+      "gross_sharpe": 1.1122956947824316,
+      "max_drawdown": -0.4168357506363668,
+      "missed_bench_cum_in_cash": 0.2964783354350512,
+      "missed_upside_in_cash": 1.707117120902197,
+      "n_flips": 34,
+      "n_obs": 366,
+      "net_sharpe": 0.9251077940995582,
+      "total_cost": 0.0816,
+      "total_turnover": 68.0
+    },
+    "cum_excess_1x": -0.49805767627010966,
+    "cum_excess_2x": -0.60290409871903,
+    "dev_selection_ranking": [
+      {
+        "dev_net_sharpe": 1.3228937180107587,
+        "id": "t7_trend_veto"
+      },
+      {
+        "dev_net_sharpe": 1.0324380520121494,
+        "id": "t6_stress_veto"
+      },
+      {
+        "dev_net_sharpe": 1.0308415075392159,
+        "id": "t5_nfci_neg"
+      },
+      {
+        "dev_net_sharpe": 0.9998694690901899,
+        "id": "t1_vix30"
+      },
+      {
+        "dev_net_sharpe": 0.9617774735807774,
+        "id": "t2_vix_hyst"
+      },
+      {
+        "dev_net_sharpe": 0.7613027690214764,
+        "id": "t4_curve_hyst"
+      },
+      {
+        "dev_net_sharpe": 0.7574259386962274,
+        "id": "t3_curve_pos"
+      },
+      {
+        "dev_net_sharpe": 0.18818767415919535,
+        "id": "t8_policy_easing"
+      }
+    ],
+    "g1_min_100_obs": true,
+    "g2_sharpe_gt_bench": false,
+    "g3_cum_excess_2x_nonneg": false,
+    "g4_no_leakage": true,
+    "g5_within_budget": true,
+    "leakage": {
+      "mismatches": {
+        "asof_values": [],
+        "panel": [],
+        "rule_state": []
+      },
+      "n_points": 12,
+      "passed": true,
+      "truncated_obs_used": {
+        "dff": 25752,
+        "effr": 1256,
+        "nfci": 2817,
+        "sofr": 1249,
+        "t10y2y": 12143,
+        "vix": 8833
+      }
+    },
+    "passed": false,
+    "selection_margin_sharpe": 0.2904556659986093,
+    "selection_rule": "Among the 8 frozen trials, pick the single highest development-window net Sharpe at 1x costs (12 bps/leg one-way); tie-break by lower total development turnover, then lexicographic id. Ties/threshold selection never uses validation data.",
+    "trial": "t7_trend_veto",
+    "val_net_sharpe": 0.876819027201317,
+    "val_net_sharpe_2x": 0.6891617032246912,
+    "validation_obs": 366
+  },
+  "lag_configuration": {
+    "dff": "FRED DFF for D publishes next US business day ~13:00 UTC; one extra bd beyond cutoff required (lag -1).",
+    "effr": "NY Fed EFFR for D publishes next US business day ~13:00 UTC; extra bd (lag -1).",
+    "nfci": "Chicago Fed NFCI is weekly (week ending Friday F) and publishes the FOLLOWING Wednesday ~14:30 UTC; +3 bd to publish, +1 for the 00:00 UTC decision boundary -> offset -4 from cutoff. Previous-week values can be revised with subsequent releases.",
+    "sofr": "NY Fed SOFR for D publishes next US business day ~13:00 UTC; extra bd (lag -1). Volume-weighted stats may be revised by NY Fed after initial publication.",
+    "t10y2y": "FRED T10Y2Y (H.15) for D publishes same day (~21:00 UTC); used with cutoff = previous US business day; holidays carry no quote (ffill). H.15 values can be retrospectively corrected; treated as final.",
+    "vix": "CBOE VIX close for date D publishes ~21:15 UTC same day; used with cutoff = previous US business day (<= ~3h slack). CBOE computes VIX from SPX options only; it is an equity-implied proxy, not a crypto-specific volatility measure."
+  },
+  "run": {
+    "cost_mult": 1.0,
+    "end": "2024-12-31",
+    "start": "2020-08-01",
+    "trial": "t7_trend_veto",
+    "unlock_flag": false
+  },
+  "selection_rule": "Among the 8 frozen trials, pick the single highest development-window net Sharpe at 1x costs (12 bps/leg one-way); tie-break by lower total development turnover, then lexicographic id. Ties/threshold selection never uses validation data.",
+  "trials": {
+    "t1_vix30": {
+      "dev": {
+        "ann_return": 0.6788836398648967,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 3.6057617050751034,
+        "days_in_cash_with_bench_down": 44,
+        "exceed_bench_cum": -0.4987977835486941,
+        "exposure": 0.9262820512820513,
+        "gross_sharpe": 1.0338002382918559,
+        "max_drawdown": -0.73533031416621,
+        "missed_bench_cum_in_cash": 0.08334866035725236,
+        "missed_upside_in_cash": 1.2479202968939933,
+        "n_flips": 32,
+        "n_obs": 1248,
+        "net_sharpe": 0.9998694690901899,
+        "total_cost": 0.07919999999999999,
+        "total_turnover": 66.0
+      },
+      "val": {
+        "ann_return": 0.7272202898139761,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.776027962418582,
+        "days_in_cash_with_bench_down": 0,
+        "exceed_bench_cum": -0.057183524410154396,
+        "exposure": 0.9972677595628415,
+        "gross_sharpe": 1.3110632091816339,
+        "max_drawdown": -0.3748828383709639,
+        "missed_bench_cum_in_cash": 0.02716711773469138,
+        "missed_upside_in_cash": 0.02716711773469138,
+        "n_flips": 2,
+        "n_obs": 366,
+        "net_sharpe": 1.3021047486987132,
+        "total_cost": 0.0048,
+        "total_turnover": 4.0
+      }
+    },
+    "t2_vix_hyst": {
+      "dev": {
+        "ann_return": 0.6275999969648313,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 3.106426073809698,
+        "days_in_cash_with_bench_down": 84,
+        "exceed_bench_cum": -0.9981334148140997,
+        "exposure": 0.8533653846153846,
+        "gross_sharpe": 0.9782155765788241,
+        "max_drawdown": -0.6826320120360543,
+        "missed_bench_cum_in_cash": 0.3018965681361063,
+        "missed_upside_in_cash": 2.6546780981608347,
+        "n_flips": 14,
+        "n_obs": 1248,
+        "net_sharpe": 0.9617774735807774,
+        "total_cost": 0.036,
+        "total_turnover": 30.0
+      },
+      "val": {
+        "ann_return": 0.6275799643407458,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.620958729915023,
+        "days_in_cash_with_bench_down": 1,
+        "exceed_bench_cum": -0.21225275691371337,
+        "exposure": 0.9918032786885246,
+        "gross_sharpe": 1.166893420375431,
+        "max_drawdown": -0.42946330699523694,
+        "missed_bench_cum_in_cash": 0.12708043040099898,
+        "missed_upside_in_cash": 0.15908299347594723,
+        "n_flips": 2,
+        "n_obs": 366,
+        "net_sharpe": 1.157792260751907,
+        "total_cost": 0.0048,
+        "total_turnover": 4.0
+      }
+    },
+    "t3_curve_pos": {
+      "dev": {
+        "ann_return": 0.46208727163404056,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 1.556435610131346,
+        "days_in_cash_with_bench_down": 277,
+        "exceed_bench_cum": -2.5481238784924516,
+        "exposure": 0.563301282051282,
+        "gross_sharpe": 0.7621294896107765,
+        "max_drawdown": -0.751062008451769,
+        "missed_bench_cum_in_cash": 0.8942140509109741,
+        "missed_upside_in_cash": 5.465138363960222,
+        "n_flips": 3,
+        "n_obs": 1248,
+        "net_sharpe": 0.7574259386962274,
+        "total_cost": 0.0096,
+        "total_turnover": 8.0
+      },
+      "val": {
+        "ann_return": 0.4349904502177159,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.4816179499904425,
+        "days_in_cash_with_bench_down": 115,
+        "exceed_bench_cum": -0.35159353683829386,
+        "exposure": 0.3333333333333333,
+        "gross_sharpe": 1.5154640264523505,
+        "max_drawdown": -0.14034937825563454,
+        "missed_bench_cum_in_cash": 0.3129975870284756,
+        "missed_upside_in_cash": 2.8039767971508898,
+        "n_flips": 5,
+        "n_obs": 366,
+        "net_sharpe": 1.4749032676880456,
+        "total_cost": 0.012,
+        "total_turnover": 10.0
+      }
+    },
+    "t4_curve_hyst": {
+      "dev": {
+        "ann_return": 0.46488912378599156,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 1.578065744053077,
+        "days_in_cash_with_bench_down": 275,
+        "exceed_bench_cum": -2.5264937445707205,
+        "exposure": 0.5665064102564102,
+        "gross_sharpe": 0.7658970119484914,
+        "max_drawdown": -0.7349620711963127,
+        "missed_bench_cum_in_cash": 0.8846340194434812,
+        "missed_upside_in_cash": 5.416737877592091,
+        "n_flips": 3,
+        "n_obs": 1248,
+        "net_sharpe": 0.7613027690214764,
+        "total_cost": 0.0096,
+        "total_turnover": 8.0
+      },
+      "val": {
+        "ann_return": 0.4974019471034003,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.5813967763642294,
+        "days_in_cash_with_bench_down": 120,
+        "exceed_bench_cum": -0.251814710464507,
+        "exposure": 0.3114754098360656,
+        "gross_sharpe": 1.7471672489384515,
+        "max_drawdown": -0.14034937825563487,
+        "missed_bench_cum_in_cash": 0.26001509974036463,
+        "missed_upside_in_cash": 2.8569434979267223,
+        "n_flips": 1,
+        "n_obs": 366,
+        "net_sharpe": 1.7403713532405867,
+        "total_cost": 0.0024,
+        "total_turnover": 2.0
+      }
+    },
+    "t5_nfci_neg": {
+      "dev": {
+        "ann_return": 0.7257219900495098,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 4.092308545851098,
+        "days_in_cash_with_bench_down": 0,
+        "exceed_bench_cum": -0.01225094277269978,
+        "exposure": 1.0,
+        "gross_sharpe": 1.0318432084798277,
+        "max_drawdown": -0.7625369100009565,
+        "missed_bench_cum_in_cash": 0.0,
+        "missed_upside_in_cash": 0.0,
+        "n_flips": 0,
+        "n_obs": 1248,
+        "net_sharpe": 1.0308415075392159,
+        "total_cost": 0.0024,
+        "total_turnover": 2.0
+      },
+      "val": {
+        "ann_return": 0.7591000656969333,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.8332114868287364,
+        "days_in_cash_with_bench_down": 0,
+        "exceed_bench_cum": 0.0,
+        "exposure": 1.0,
+        "gross_sharpe": 1.3582226136782491,
+        "max_drawdown": -0.3547556763962503,
+        "missed_bench_cum_in_cash": 0.0,
+        "missed_upside_in_cash": 0.0,
+        "n_flips": 0,
+        "n_obs": 366,
+        "net_sharpe": 1.3582226136782491,
+        "total_cost": 0.0,
+        "total_turnover": 0.0
+      }
+    },
+    "t6_stress_veto": {
+      "dev": {
+        "ann_return": 0.7257758283314855,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 4.105862755110092,
+        "days_in_cash_with_bench_down": 13,
+        "exceed_bench_cum": 0.0013032664862944188,
+        "exposure": 0.9823717948717948,
+        "gross_sharpe": 1.0374510555029497,
+        "max_drawdown": -0.7619048539532611,
+        "missed_bench_cum_in_cash": -0.009784082673714445,
+        "missed_upside_in_cash": 0.1308602673936749,
+        "n_flips": 4,
+        "n_obs": 1248,
+        "net_sharpe": 1.0324380520121494,
+        "total_cost": 0.011999999999999999,
+        "total_turnover": 10.0
+      },
+      "val": {
+        "ann_return": 0.7272202898139761,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.776027962418582,
+        "days_in_cash_with_bench_down": 0,
+        "exceed_bench_cum": -0.057183524410154396,
+        "exposure": 0.9972677595628415,
+        "gross_sharpe": 1.3110632091816339,
+        "max_drawdown": -0.3748828383709639,
+        "missed_bench_cum_in_cash": 0.02716711773469138,
+        "missed_upside_in_cash": 0.02716711773469138,
+        "n_flips": 2,
+        "n_obs": 366,
+        "net_sharpe": 1.3021047486987132,
+        "total_cost": 0.0048,
+        "total_turnover": 4.0
+      }
+    },
+    "t7_trend_veto": {
+      "dev": {
+        "ann_return": 0.6224525259678051,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 4.749233553171833,
+        "days_in_cash_with_bench_down": 293,
+        "exceed_bench_cum": 0.6446740645480356,
+        "exposure": 0.5120192307692307,
+        "gross_sharpe": 1.4672948946790492,
+        "max_drawdown": -0.44455139777618724,
+        "missed_bench_cum_in_cash": 0.12509668814785596,
+        "missed_upside_in_cash": 8.296262639908573,
+        "n_flips": 96,
+        "n_obs": 1248,
+        "net_sharpe": 1.3228937180107587,
+        "total_cost": 0.2304,
+        "total_turnover": 192.0
+      },
+      "val": {
+        "ann_return": 0.3820547311783713,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.3351538105586267,
+        "days_in_cash_with_bench_down": 66,
+        "exceed_bench_cum": -0.49805767627010966,
+        "exposure": 0.6010928961748634,
+        "gross_sharpe": 1.0639692320828118,
+        "max_drawdown": -0.4261269626214582,
+        "missed_bench_cum_in_cash": 0.2964783354350512,
+        "missed_upside_in_cash": 1.707117120902197,
+        "n_flips": 34,
+        "n_obs": 366,
+        "net_sharpe": 0.876819027201317,
+        "total_cost": 0.0816,
+        "total_turnover": 68.0
+      }
+    },
+    "t8_policy_easing": {
+      "dev": {
+        "ann_return": 0.0690198903227691,
+        "bench_ann_return": 0.7264239131264328,
+        "bench_cum_return": 4.1045594886237975,
+        "bench_max_drawdown": -0.7625369100009565,
+        "bench_net_sharpe": 1.0318432084798277,
+        "cum_return": 0.003947811078685692,
+        "days_in_cash_with_bench_down": 516,
+        "exceed_bench_cum": -4.100611677545112,
+        "exposure": 0.14022435897435898,
+        "gross_sharpe": 0.24537703814454506,
+        "max_drawdown": -0.5144620735317658,
+        "missed_bench_cum_in_cash": 2.175781425914993,
+        "missed_upside_in_cash": 13.983637497721588,
+        "n_flips": 30,
+        "n_obs": 1248,
+        "net_sharpe": 0.18818767415919535,
+        "total_cost": 0.072,
+        "total_turnover": 60.0
+      },
+      "val": {
+        "ann_return": 0.2099327635850848,
+        "bench_ann_return": 0.7591000656969333,
+        "bench_cum_return": 0.8332114868287364,
+        "bench_max_drawdown": -0.3547556763962503,
+        "bench_net_sharpe": 1.3582226136782491,
+        "cum_return": 0.21007714448481218,
+        "days_in_cash_with_bench_down": 140,
+        "exceed_bench_cum": -0.6231343423439242,
+        "exposure": 0.1830601092896175,
+        "gross_sharpe": 1.10751826354933,
+        "max_drawdown": -0.10226349387280753,
+        "missed_bench_cum_in_cash": 0.5386718700628399,
+        "missed_upside_in_cash": 3.530641215448556,
+        "n_flips": 5,
+        "n_obs": 366,
+        "net_sharpe": 1.049473500135707,
+        "total_cost": 0.012,
+        "total_turnover": 10.0
+      }
+    }
+  }
+}

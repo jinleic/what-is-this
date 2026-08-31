@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-focused-2026-08-30",
+  "created_at": "2026-08-30T11:13:24+00:00",
+  "status": "exact-rule chronological replication complete; public collectors active and nonblocking",
+  "objective": "Concentrate resources on four mechanism-first directions with the highest information value after wave-one falsification. Produce empirical falsification evidence where lawful data exists and start bounded prospective public-data capture where it does not.",
+  "authority": {
+    "prior_registry": "quant-trading/explorations/strategy-registry.json",
+    "prior_protocol": "quant-trading/explorations/protocol-amendment.json",
+    "data_manifest": "quant-trading/data/manifest.json",
+    "carry_correction": "The contract-compliant corrected carry engine terminated both sleeves in December 2020 and has 0.0% position, funding yield, and strategy return in 2024. The 12.38%-13.87% figures are arithmetic-only diagnostics for an inadmissible frozen approximately-2x-gross zero-collateral path; they are not corrected-engine economics.",
+    "corrected_audit_limitation": "The corrected-audit run.py returns SOFR rate/360 per calendar day but assigns that value to every hourly observation, over-accruing the benchmark by approximately 24x. Its benchmark and excess-return outputs are invalid. New work must independently implement and test daily-versus-hourly accrual; only its signed-funding parsing, December-2020 collateral terminations, and zero 2024 position/funding remain authoritative."
+  },
+  "epistemic_windows": {
+    "retrospective_development": [
+      "2020-08-01",
+      "2023-12-31"
+    ],
+    "retrospective_validation": [
+      "2024-01-01",
+      "2024-12-31"
+    ],
+    "retrospective_confirmation": [
+      "2025-01-01",
+      "latest available before campaign creation"
+    ],
+    "prospective_capture_start_not_before": "2026-08-30T11:13:24+00:00",
+    "rule": "Every historical window is retrospective because the direction ranking was selected in 2026 with knowledge of later evidence. Historical results may falsify or calibrate mechanics but cannot confirm durable alpha. Only append-only observations after campaign creation are prospective."
+  },
+  "global_constraints": [
+    "Research only: no live orders, account access, credentials, private endpoints, messages, or infrastructure mutation.",
+    "Use public unauthenticated sources and record source URL, retrieval time, terms, byte size, and SHA-256.",
+    "Raw downloads and live capture belong under quant-trading/data/raw/focused/ and remain ignored by Git.",
+    "No borrowing or hidden cross-margin credit. Empirical portfolios must keep spot plus derivative gross exposure <= 1.0x NAV, cash >= 0, and each venue collateral above maintenance plus a declared isolation buffer.",
+    "Funding is signed exactly. Negative funding paid by shorts remains negative. Duplicate snapped events fail closed rather than selecting a sign.",
+    "SOFR is carried forward over calendar days and accrued ACT/360 exactly once per day; hourly simulation must divide the daily accrual across hours.",
+    "Maximum eight preregistered variants per empirical direction. Do not rescue a failed gate with thresholds, leverage, longer stops, or a new benchmark.",
+    "Report 1x and 2x costs, gross and net exposure, turnover, collateral path, liquidations, benchmark excess, drawdown, and every trial.",
+    "A missing lawful dataset yields an honest feasibility/capture result, not synthetic history or an alpha claim.",
+    "Bound each agent raw-data acquisition to 1 GiB. Each prospective capture process must rotate at 256 MiB per UTC day, fail closed at 10 GiB cumulative storage, and never delete prior capture automatically."
+  ],
+  "shared_output_contract": {
+    "required_all": [
+      "strategy.json",
+      "trials.json",
+      "run.py",
+      "results.json"
+    ],
+    "required_when_returns_applicable_true": [
+      "returns.csv"
+    ],
+    "strategy_status": [
+      "validation-pass",
+      "falsified",
+      "inconclusive",
+      "blocked"
+    ],
+    "returns_columns_exact": [
+      "date",
+      "strategy_return",
+      "benchmark_return",
+      "position",
+      "turnover",
+      "cost"
+    ],
+    "capture_directions": "Use run.py for bounded smoke/replay and capture.py for the persistent collector. capture_status records the collector lifecycle separately from strategy status. A preregistered capture-backed mechanism screen may resolve falsified without a strategy-return series by setting strategy.returns_applicable=false; otherwise returns.csv is required for empirical validation-pass/falsified status. Header-only return files are prohibited.",
+    "determinism": "Fixed seeds, stable sorting, UTC timestamps, no current-time values inside computed historical results except retrieval metadata."
+  },
+  "directions": [
+    {
+      "rank": 1,
+      "id": "focused-cross-venue-carry",
+      "owner_dir": "quant-trading/explorations/focused-cross-venue-carry",
+      "raw_dir": "quant-trading/data/raw/focused/carry",
+      "question": "Can a preregistered, dynamically collateralized, signed-funding spot-perpetual portfolio earn cash excess without leverage, liquidation, or hidden cross-margin credit across Binance and OKX?",
+      "variants": [
+        "entry-and-hold",
+        "24h collateral retarget",
+        "168h collateral retarget",
+        "720h collateral retarget"
+      ],
+      "first_gate": "Zero margin calls; gross<=1x NAV; positive cash-benchmark excess at 2x costs; both venues independently reconciled. Any 2024 comparison must report corrected-engine 0.0% separately from the inadmissible frozen-path arithmetic diagnostic."
+    },
+    {
+      "rank": 2,
+      "id": "focused-crypto-cross-section",
+      "owner_dir": "quant-trading/explorations/focused-crypto-cross-section",
+      "raw_dir": "quant-trading/data/raw/focused/cross-section",
+      "question": "Do listing-aware cross-sectional funding, momentum, and carry ranks produce stable information and a net long-short spread across liquid perpetuals?",
+      "variants": [
+        "momentum",
+        "signed funding",
+        "momentum plus funding",
+        "funding change",
+        "volatility-scaled momentum",
+        "liquidity-conditioned composite"
+      ],
+      "first_gate": "At least 20 point-in-time eligible assets; purged-fold rank IC >0.02; positive 2x-cost spread; no single asset contributes >25% of PnL; delisted assets remain in history."
+    },
+    {
+      "rank": 3,
+      "id": "focused-liquidation-overlay",
+      "owner_dir": "quant-trading/explorations/focused-liquidation-overlay",
+      "raw_dir": "quant-trading/data/raw/focused/live/liquidations-persistent",
+      "question": "Can public liquidation, open-interest, and trade streams support a post-onset risk overlay without claiming unavailable complete history?",
+      "variants": [
+        "frozen BTC/ETH 5m/15m post-onset continuation screen; 20-complete-onset event stop; 90-minute hard cap"
+      ],
+      "first_gate": "The parent same-day screen reached the earliest registered 20-onset stop and all six gates were false. The exact-rule chronological replication had only 6/20 complete onsets and is inconclusive; its small positive descriptive sample cannot reverse the parent falsification."
+    },
+    {
+      "rank": 4,
+      "id": "focused-deribit-gex",
+      "owner_dir": "quant-trading/explorations/focused-deribit-gex",
+      "raw_dir": "quant-trading/data/raw/focused/live/deribit",
+      "question": "Can public Deribit option trades, instrument metadata, and greeks support taker-flow gamma-exposure regime measurement?",
+      "variants": [
+        "frozen BTC/ETH dealer-GEX versus next-15-minute realized-volatility screen; 12-transition stop; 90-minute hard cap"
+      ],
+      "first_gate": "The parent same-day screen stopped at 10/12 transitions. The exact-rule chronological replication also stopped at 10/12 and had 732/1,000 selected trades; all four replication gates were descriptively false. Status remains sample-first inconclusive with repeat negative evidence."
+    }
+  ],
+  "accelerated_intraday": {
+    "contract": "quant-trading/explorations/accelerated-intraday-contract.json",
+    "created_at_utc": "2026-08-30T17:01:13Z",
+    "hard_deadline_utc": "2026-08-30T18:31:13Z",
+    "independent_review": "cleared",
+    "liquidation": {
+      "result": "quant-trading/explorations/focused-liquidation-overlay/fast_intraday_results.json",
+      "status": "falsified",
+      "stop_utc": "2026-08-30T17:26:54.496Z",
+      "sample": "20 complete onsets; BTC 8/ETH 12; BUY 12/SELL 8; 9 nonempty blocks",
+      "gates": "all six false"
+    },
+    "deribit": {
+      "result": "quant-trading/explorations/focused-deribit-gex/fast_intraday_results.json",
+      "status": "inconclusive",
+      "stop": "90-minute hard deadline",
+      "sample": "10/12 complete transitions; 1,028 GEX-computable trades; BTC 5/ETH 5",
+      "gates_descriptive_only": "pooled, both-asset, and leave-one-out gates false; RV sign-ratio gate true"
+    },
+    "sampling_disposition": "Complete. No result requires or permits a week-long wait."
+  },
+  "chronological_replication": {
+    "classification": "outcome-blind retrospective chronological replication; not prospective, not confirmation, and not a rescue test",
+    "contract": "quant-trading/explorations/accelerated-intraday-replication-contract.json",
+    "contract_sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42",
+    "contract_frozen_at_utc": "2026-08-31T07:54:33.526Z",
+    "window_utc": "[2026-08-31T00:00:00Z, 2026-08-31T01:30:00Z)",
+    "snapshot_manifest": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
+    "snapshot_sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0",
+    "combined_result": "quant-trading/explorations/accelerated-intraday-replication-results.json",
+    "liquidation_replication": {
+      "result": "quant-trading/explorations/focused-liquidation-overlay/replication_20260831_results.json",
+      "sha256": "ed0002eb0ad7e3241c7be94d7af3bf29faf1491ad72f4227d95ed0bbc2d2f120",
+      "status": "inconclusive",
+      "sample": "6 complete onsets versus 20 required; BTC 4/5, ETH 2/5, BUY 2/5, SELL 4/5, and 3/6 nonempty blocks",
+      "descriptive_result": "Five directly evaluable gates were true, while the both-assets gate was unknown because asset sample minima failed. This small sample cannot reverse the parent falsification or promote the overlay."
+    },
+    "deribit_replication": {
+      "result": "quant-trading/explorations/focused-deribit-gex/replication_20260831_results.json",
+      "sha256": "036af8c84ad001abcb502871be537968daca6ac4fc5b77a8d5c6451121ea2677",
+      "status": "inconclusive",
+      "sample": "10 complete transitions versus 12 required and 732 selected GEX-computable trades versus 1,000 required",
+      "descriptive_result": "All four descriptive gates were false. This is repeat negative evidence, but sample-first truth remains inconclusive."
+    },
+    "claim_boundary": "The replication cannot overturn the parent liquidation falsification, establish Deribit alpha, authorize deployment, or support capital allocation."
+  },
+  "continuous_capture": {
+    "requested": true,
+    "launch_after_review": [
+      "focused-liquidation-overlay",
+      "focused-deribit-gex"
+    ],
+    "process_policy": "Run through the harness process supervisor with persistent=true only after the bounded smoke passes. Never detach, trade, authenticate, or exceed daily byte limits.",
+    "active": [
+      {
+        "id": "focused-liquidation-overlay",
+        "process": "quant-liquidation-capture",
+        "output": "quant-trading/data/raw/focused/live/liquidations-persistent",
+        "status": "active-not-blocking",
+        "persist": true,
+        "detached": false,
+        "restart": "no",
+        "day_cap_bytes": 268435456,
+        "total_cap_bytes": 10737418240
+      },
+      {
+        "id": "focused-deribit-gex",
+        "process": "quant-deribit-gex-capture",
+        "output": "quant-trading/data/raw/focused/live/deribit",
+        "status": "active-not-blocking",
+        "persist": true,
+        "detached": false,
+        "restart": "no",
+        "day_cap_bytes": 268435456,
+        "total_cap_bytes": 10737418240,
+        "configuration": "four-channel default; ticker-chain fan-out disabled"
+      }
+    ],
+    "verified_at_utc": "2026-08-31T08:17:34Z"
+  },
+  "focused_result_order": [
+    {
+      "rank": 1,
+      "id": "focused-liquidation-overlay",
+      "status": "falsified-parent-screen; replication-inconclusive"
+    },
+    {
+      "rank": 2,
+      "id": "focused-deribit-gex",
+      "status": "inconclusive-parent-and-replication"
+    },
+    {
+      "rank": 3,
+      "id": "focused-cross-venue-carry",
+      "status": "blocked"
+    },
+    {
+      "rank": 4,
+      "id": "focused-crypto-cross-section",
+      "status": "falsified-on-frozen-59-asset-subsample"
+    }
+  ]
+}

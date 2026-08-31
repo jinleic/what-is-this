@@ -1,0 +1,439 @@
+{
+ "momentum": {
+  "status": "falsified",
+  "failed_required_gates": [
+   "dev_subperiod_2_ic_gt_0.02",
+   "dev_subperiod_3_ic_gt_0.02"
+  ],
+  "unknown_gates": [
+   "dev_subperiod_1_ic_unknown",
+   "dev_subperiod_4_ic_unknown",
+   "dev_subperiod_5_ic_unknown",
+   "dev_subperiod_6_ic_unknown",
+   "confirmation_ic_unknown",
+   "confirmation_2x_spread_unknown",
+   "confirmation_concentration_unknown",
+   "confirmation_collateral_unknown"
+  ],
+  "development_subperiod_rank_ics": [
+   null,
+   -0.058964776813361396,
+   -0.10272539276369486,
+   null,
+   null,
+   null
+  ],
+  "development_subperiod_available_rows": [
+   178,
+   178,
+   128,
+   0,
+   0,
+   0
+  ],
+  "confirmation_rank_ic": null,
+  "confirmation_long_short_total_return_1x": null,
+  "confirmation_long_short_total_return_2x": null,
+  "confirmation_available_rows": 0,
+  "confirmation_benchmark_total_return": null,
+  "censored_selected_outcomes_full_sample": 2,
+  "censored_assets_at_first_stop": [
+   {
+    "day_index": 574,
+    "asset": "LINAUSDT",
+    "side": "short",
+    "held_weight": -0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   },
+   {
+    "day_index": 574,
+    "asset": "WAVESUSDT",
+    "side": "long",
+    "held_weight": 0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   }
+  ],
+  "held_assets_at_first_stop": [
+   "1000SHIBUSDT",
+   "ALICEUSDT",
+   "ALPHAUSDT",
+   "ANTUSDT",
+   "ARPAUSDT",
+   "ARUSDT",
+   "AVAXUSDT",
+   "BATUSDT",
+   "LINAUSDT",
+   "WAVESUSDT"
+  ],
+  "stop_day_index": 574,
+  "stop_day_utc": "2022-02-26",
+  "benchmark_stop_day_utc": "2022-02-26",
+  "available_rows_total": 573,
+  "final_nav_1x": 0.8810531503148156,
+  "final_nav_2x": 0.8237532316904962
+ },
+ "signed_funding": {
+  "status": "falsified",
+  "failed_required_gates": [
+   "dev_subperiod_3_ic_gt_0.02"
+  ],
+  "unknown_gates": [
+   "dev_subperiod_1_ic_unknown",
+   "dev_subperiod_4_ic_unknown",
+   "dev_subperiod_5_ic_unknown",
+   "dev_subperiod_6_ic_unknown",
+   "confirmation_ic_unknown",
+   "confirmation_2x_spread_unknown",
+   "confirmation_concentration_unknown",
+   "confirmation_collateral_unknown"
+  ],
+  "development_subperiod_rank_ics": [
+   null,
+   0.025959356048510174,
+   -0.0033508456048044685,
+   null,
+   null,
+   null
+  ],
+  "development_subperiod_available_rows": [
+   178,
+   178,
+   128,
+   0,
+   0,
+   0
+  ],
+  "confirmation_rank_ic": null,
+  "confirmation_long_short_total_return_1x": null,
+  "confirmation_long_short_total_return_2x": null,
+  "confirmation_available_rows": 0,
+  "confirmation_benchmark_total_return": null,
+  "censored_selected_outcomes_full_sample": 3,
+  "censored_assets_at_first_stop": [
+   {
+    "day_index": 574,
+    "asset": "OGNUSDT",
+    "side": "short",
+    "held_weight": -0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   },
+   {
+    "day_index": 574,
+    "asset": "UNFIUSDT",
+    "side": "short",
+    "held_weight": -0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   },
+   {
+    "day_index": 574,
+    "asset": "WAVESUSDT",
+    "side": "long",
+    "held_weight": 0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   }
+  ],
+  "held_assets_at_first_stop": [
+   "1000BTTCUSDT",
+   "1000XECUSDT",
+   "AKROUSDT",
+   "ALICEUSDT",
+   "AXSUSDT",
+   "BALUSDT",
+   "BLZUSDT",
+   "OGNUSDT",
+   "UNFIUSDT",
+   "WAVESUSDT"
+  ],
+  "stop_day_index": 574,
+  "stop_day_utc": "2022-02-26",
+  "benchmark_stop_day_utc": "2022-02-26",
+  "available_rows_total": 573,
+  "final_nav_1x": 1.4136052331935798,
+  "final_nav_2x": 1.310511475995977
+ },
+ "mom_plus_funding": {
+  "status": "falsified",
+  "failed_required_gates": [
+   "dev_subperiod_2_ic_gt_0.02",
+   "dev_subperiod_3_ic_gt_0.02"
+  ],
+  "unknown_gates": [
+   "dev_subperiod_1_ic_unknown",
+   "dev_subperiod_4_ic_unknown",
+   "dev_subperiod_5_ic_unknown",
+   "dev_subperiod_6_ic_unknown",
+   "confirmation_ic_unknown",
+   "confirmation_2x_spread_unknown",
+   "confirmation_concentration_unknown",
+   "confirmation_collateral_unknown"
+  ],
+  "development_subperiod_rank_ics": [
+   null,
+   -0.0524563837674166,
+   -0.08929479104217528,
+   null,
+   null,
+   null
+  ],
+  "development_subperiod_available_rows": [
+   178,
+   178,
+   128,
+   0,
+   0,
+   0
+  ],
+  "confirmation_rank_ic": null,
+  "confirmation_long_short_total_return_1x": null,
+  "confirmation_long_short_total_return_2x": null,
+  "confirmation_available_rows": 0,
+  "confirmation_benchmark_total_return": null,
+  "censored_selected_outcomes_full_sample": 2,
+  "censored_assets_at_first_stop": [
+   {
+    "day_index": 574,
+    "asset": "LINAUSDT",
+    "side": "short",
+    "held_weight": -0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   },
+   {
+    "day_index": 574,
+    "asset": "WAVESUSDT",
+    "side": "long",
+    "held_weight": 0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   }
+  ],
+  "held_assets_at_first_stop": [
+   "1000BTTCUSDT",
+   "1000SHIBUSDT",
+   "ALPHAUSDT",
+   "ANTUSDT",
+   "ARPAUSDT",
+   "ARUSDT",
+   "AXSUSDT",
+   "LINAUSDT",
+   "SRMUSDT",
+   "WAVESUSDT"
+  ],
+  "stop_day_index": 574,
+  "stop_day_utc": "2022-02-26",
+  "benchmark_stop_day_utc": "2022-02-26",
+  "available_rows_total": 573,
+  "final_nav_1x": 0.966488546737729,
+  "final_nav_2x": 0.9050817283801513
+ },
+ "funding_change": {
+  "status": "falsified",
+  "failed_required_gates": [
+   "dev_subperiod_2_ic_gt_0.02",
+   "dev_subperiod_3_ic_gt_0.02"
+  ],
+  "unknown_gates": [
+   "dev_subperiod_1_ic_unknown",
+   "dev_subperiod_4_ic_unknown",
+   "dev_subperiod_5_ic_unknown",
+   "dev_subperiod_6_ic_unknown",
+   "confirmation_ic_unknown",
+   "confirmation_2x_spread_unknown",
+   "confirmation_concentration_unknown",
+   "confirmation_collateral_unknown"
+  ],
+  "development_subperiod_rank_ics": [
+   null,
+   0.0037655592512223497,
+   0.013433769459137653,
+   null,
+   null,
+   null
+  ],
+  "development_subperiod_available_rows": [
+   178,
+   178,
+   128,
+   0,
+   0,
+   0
+  ],
+  "confirmation_rank_ic": null,
+  "confirmation_long_short_total_return_1x": null,
+  "confirmation_long_short_total_return_2x": null,
+  "confirmation_available_rows": 0,
+  "confirmation_benchmark_total_return": null,
+  "censored_selected_outcomes_full_sample": 2,
+  "censored_assets_at_first_stop": [
+   {
+    "day_index": 574,
+    "asset": "OGNUSDT",
+    "side": "short",
+    "held_weight": -0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   },
+   {
+    "day_index": 574,
+    "asset": "UNFIUSDT",
+    "side": "short",
+    "held_weight": -0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   }
+  ],
+  "held_assets_at_first_stop": [
+   "1000BTTCUSDT",
+   "ADAUSDT",
+   "ALICEUSDT",
+   "AUDIOUSDT",
+   "BANDUSDT",
+   "BLZUSDT",
+   "CVCUSDT",
+   "OGNUSDT",
+   "SXPUSDT",
+   "UNFIUSDT"
+  ],
+  "stop_day_index": 574,
+  "stop_day_utc": "2022-02-26",
+  "benchmark_stop_day_utc": "2022-02-26",
+  "available_rows_total": 573,
+  "final_nav_1x": 1.0400149281656268,
+  "final_nav_2x": 0.936113381912291
+ },
+ "vol_scaled_momentum": {
+  "status": "falsified",
+  "failed_required_gates": [
+   "dev_subperiod_2_ic_gt_0.02",
+   "dev_subperiod_3_ic_gt_0.02"
+  ],
+  "unknown_gates": [
+   "dev_subperiod_1_ic_unknown",
+   "dev_subperiod_4_ic_unknown",
+   "dev_subperiod_5_ic_unknown",
+   "dev_subperiod_6_ic_unknown",
+   "confirmation_ic_unknown",
+   "confirmation_2x_spread_unknown",
+   "confirmation_concentration_unknown",
+   "confirmation_collateral_unknown"
+  ],
+  "development_subperiod_rank_ics": [
+   null,
+   -0.05781709013395949,
+   -0.10812354467174927,
+   null,
+   null,
+   null
+  ],
+  "development_subperiod_available_rows": [
+   178,
+   178,
+   128,
+   0,
+   0,
+   0
+  ],
+  "confirmation_rank_ic": null,
+  "confirmation_long_short_total_return_1x": null,
+  "confirmation_long_short_total_return_2x": null,
+  "confirmation_available_rows": 0,
+  "confirmation_benchmark_total_return": null,
+  "censored_selected_outcomes_full_sample": 1,
+  "censored_assets_at_first_stop": [
+   {
+    "day_index": 574,
+    "asset": "WAVESUSDT",
+    "side": "long",
+    "held_weight": 0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   }
+  ],
+  "held_assets_at_first_stop": [
+   "1000BTTCUSDT",
+   "1000SHIBUSDT",
+   "ADAUSDT",
+   "ALICEUSDT",
+   "ALPHAUSDT",
+   "ARPAUSDT",
+   "AVAXUSDT",
+   "BATUSDT",
+   "SRMUSDT",
+   "WAVESUSDT"
+  ],
+  "stop_day_index": 574,
+  "stop_day_utc": "2022-02-26",
+  "benchmark_stop_day_utc": "2022-02-26",
+  "available_rows_total": 573,
+  "final_nav_1x": 0.8680674580389661,
+  "final_nav_2x": 0.8129655640839994
+ },
+ "liq_composite": {
+  "status": "falsified",
+  "failed_required_gates": [
+   "dev_subperiod_2_ic_gt_0.02",
+   "dev_subperiod_3_ic_gt_0.02"
+  ],
+  "unknown_gates": [
+   "dev_subperiod_1_ic_unknown",
+   "dev_subperiod_4_ic_unknown",
+   "dev_subperiod_5_ic_unknown",
+   "dev_subperiod_6_ic_unknown",
+   "confirmation_ic_unknown",
+   "confirmation_2x_spread_unknown",
+   "confirmation_concentration_unknown",
+   "confirmation_collateral_unknown"
+  ],
+  "development_subperiod_rank_ics": [
+   null,
+   -0.015570038811110467,
+   -0.07543770309136774,
+   null,
+   null,
+   null
+  ],
+  "development_subperiod_available_rows": [
+   178,
+   178,
+   128,
+   0,
+   0,
+   0
+  ],
+  "confirmation_rank_ic": null,
+  "confirmation_long_short_total_return_1x": null,
+  "confirmation_long_short_total_return_2x": null,
+  "confirmation_available_rows": 0,
+  "confirmation_benchmark_total_return": null,
+  "censored_selected_outcomes_full_sample": 2,
+  "censored_assets_at_first_stop": [
+   {
+    "day_index": 574,
+    "asset": "OGNUSDT",
+    "side": "short",
+    "held_weight": -0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   },
+   {
+    "day_index": 574,
+    "asset": "WAVESUSDT",
+    "side": "long",
+    "held_weight": 0.1,
+    "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+   }
+  ],
+  "held_assets_at_first_stop": [
+   "1000BTTCUSDT",
+   "1000SHIBUSDT",
+   "ALICEUSDT",
+   "ALPHAUSDT",
+   "ANTUSDT",
+   "ARUSDT",
+   "AXSUSDT",
+   "OGNUSDT",
+   "SRMUSDT",
+   "WAVESUSDT"
+  ],
+  "stop_day_index": 574,
+  "stop_day_utc": "2022-02-26",
+  "benchmark_stop_day_utc": "2022-02-26",
+  "available_rows_total": 573,
+  "final_nav_1x": 1.0949894497661556,
+  "final_nav_2x": 1.0219154556491408
+ }
+}

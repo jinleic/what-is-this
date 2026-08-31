@@ -1,0 +1,289 @@
+{
+ "schema_version": 1,
+ "family": "crypto-trend-vol",
+ "budget": 6,
+ "trials_used": 6,
+ "predeclared_design": "3 lookbacks (20/60/120) x 2 realized-vol windows (20/60), all with scale-down-only 50% vol target; no other variants tried",
+ "other_rules_attempted": [
+  "none beyond the six; earlier scratch experiments were data-integrity reconstruction (timestamp unit repair) and simulator correctness checks, not strategy variants",
+  "equal-gross=2 sizing variant was written and rejected as a spec violation (leverage-like gross>1) before any metric was reported"
+ ],
+ "selection_rule": "highest development net Sharpe at 1x costs, frozen before any 2024 metric was computed",
+ "selected": "trend_L120_V20",
+ "selection_rationale": {
+  "dev_net_sharpe_rank": {
+   "trend_L20_V20": 0.8717,
+   "trend_L20_V60": 0.8744,
+   "trend_L60_V20": 1.2531,
+   "trend_L60_V60": 1.3388,
+   "trend_L120_V20": 1.3447,
+   "trend_L120_V60": 1.3083
+  },
+  "note": "L120_V20 1.3447 edges L60_V60 1.3388; margins are small and both exceed benchmark 1.0323"
+ },
+ "raw_trend_attribution": {
+  "raw_L20": {
+   "dev": {
+    "n": 1227,
+    "sharpe": 0.8601286877396561,
+    "annret": 0.5087182394942593,
+    "annvol": 0.5914443347205717,
+    "cum": 2.0400379742834094,
+    "maxdd": -0.7680045430801605
+   },
+   "val": {
+    "n": 366,
+    "sharpe": 0.5025580163460939,
+    "annret": 0.2140142637558318,
+    "annvol": 0.42584986567689675,
+    "cum": 0.13219909624551573,
+    "maxdd": -0.46049219770985383
+   },
+   "val_avg_pos": 0.6557377049180327
+  },
+  "raw_L60": {
+   "dev": {
+    "n": 1187,
+    "sharpe": 1.1974737247742513,
+    "annret": 0.7323170839173905,
+    "annvol": 0.6115516931742678,
+    "cum": 4.861460916063324,
+    "maxdd": -0.6219757377272281
+   },
+   "val": {
+    "n": 366,
+    "sharpe": 0.9509175653002145,
+    "annret": 0.44225100054466787,
+    "annvol": 0.4650781694258057,
+    "cum": 0.3989123957139282,
+    "maxdd": -0.45579922970132536
+   },
+   "val_avg_pos": 0.7513661202185792
+  },
+  "raw_L120": {
+   "dev": {
+    "n": 1127,
+    "sharpe": 1.2381766915933698,
+    "annret": 0.7551127456556233,
+    "annvol": 0.6098586338948868,
+    "cum": 4.7727281199537765,
+    "maxdd": -0.5660387525872346
+   },
+   "val": {
+    "n": 366,
+    "sharpe": 1.6072452076880708,
+    "annret": 0.7422314524675707,
+    "annvol": 0.4618034939019837,
+    "cum": 0.8932582160756226,
+    "maxdd": -0.22908636699383778
+   },
+   "val_avg_pos": 0.73224043715847
+  }
+ },
+ "benchmark": {
+  "id": "equal_weight_buy_and_hold",
+  "definition": "EW BTC/ETH 50/50 rebalanced to drift, charged 12 bps one-way at inception",
+  "dev": {
+   "n": 1247,
+   "sharpe": 1.0323,
+   "annret": 0.727,
+   "annvol": 0.7043,
+   "cum": 4.0982,
+   "maxdd": -0.7625
+  },
+  "validation": {
+   "n": 366,
+   "sharpe": 1.3562643617191663,
+   "annret": 0.7579033443854581,
+   "annvol": 0.5588168249328317,
+   "cum": 0.8310917490490779,
+   "maxdd": -0.35475567639624983
+  },
+  "cash": {
+   "annret": 0.0,
+   "sharpe": null
+  }
+ },
+ "trials": [
+  {
+   "id": "trend_L20_V20",
+   "definition": {
+    "trend": "sign(Close(D)/Close(D-20) - 1), long/cash per asset",
+    "sizing": "equal-weight active assets, gross<=1; vol overlay scale=min(1, 0.50/portfolio_vol), portfolio_vol=weighted avg of {V}d realized vol (365-ann), lagged",
+    "costs": "12 bps one-way on |dw| (2x stress = 24 bps)",
+    "window": {
+     "L": 20,
+     "V": 20
+    }
+   },
+   "selected_at_build": false,
+   "development": {
+    "n": 1227,
+    "net_sharpe_1x": 0.8717,
+    "net_annret": 0.3442,
+    "net_annvol": 0.3949,
+    "net_cum": 1.4457,
+    "avg_gross": 0.4904,
+    "avg_turnover": 0.1478,
+    "net_sharpe_2x": 0.7072,
+    "net_cum_2x": 0.9666,
+    "raw_sharpe_no_overlay": 0.8601,
+    "raw_annret_no_overlay": 0.5087,
+    "raw_cum_no_overlay": 2.04,
+    "raw_avg_gross": 0.6333,
+    "overlay_sharpe_lift": 0.0116
+   },
+   "validation_note": "computable for all six via run.py; only selected variant was formally compared after dev selection"
+  },
+  {
+   "id": "trend_L20_V60",
+   "definition": {
+    "trend": "sign(Close(D)/Close(D-20) - 1), long/cash per asset",
+    "sizing": "equal-weight active assets, gross<=1; vol overlay scale=min(1, 0.50/portfolio_vol), portfolio_vol=weighted avg of {V}d realized vol (365-ann), lagged",
+    "costs": "12 bps one-way on |dw| (2x stress = 24 bps)",
+    "window": {
+     "L": 20,
+     "V": 60
+    }
+   },
+   "selected_at_build": false,
+   "development": {
+    "n": 1227,
+    "net_sharpe_1x": 0.8744,
+    "net_annret": 0.3478,
+    "net_annvol": 0.3977,
+    "net_cum": 1.4628,
+    "avg_gross": 0.4763,
+    "avg_turnover": 0.1428,
+    "net_sharpe_2x": 0.7165,
+    "net_cum_2x": 0.9949,
+    "raw_sharpe_no_overlay": 0.8601,
+    "raw_annret_no_overlay": 0.5087,
+    "raw_cum_no_overlay": 2.04,
+    "raw_avg_gross": 0.6333,
+    "overlay_sharpe_lift": 0.0143
+   },
+   "validation_note": "computable for all six via run.py; only selected variant was formally compared after dev selection"
+  },
+  {
+   "id": "trend_L60_V20",
+   "definition": {
+    "trend": "sign(Close(D)/Close(D-60) - 1), long/cash per asset",
+    "sizing": "equal-weight active assets, gross<=1; vol overlay scale=min(1, 0.50/portfolio_vol), portfolio_vol=weighted avg of {V}d realized vol (365-ann), lagged",
+    "costs": "12 bps one-way on |dw| (2x stress = 24 bps)",
+    "window": {
+     "L": 60,
+     "V": 20
+    }
+   },
+   "selected_at_build": false,
+   "development": {
+    "n": 1187,
+    "net_sharpe_1x": 1.2531,
+    "net_annret": 0.4957,
+    "net_annvol": 0.3956,
+    "net_cum": 2.8836,
+    "avg_gross": 0.4921,
+    "avg_turnover": 0.0705,
+    "net_sharpe_2x": 1.1751,
+    "net_cum_2x": 2.513,
+    "raw_sharpe_no_overlay": 1.1975,
+    "raw_annret_no_overlay": 0.7323,
+    "raw_cum_no_overlay": 4.8615,
+    "raw_avg_gross": 0.6445,
+    "overlay_sharpe_lift": 0.0556
+   },
+   "validation_note": "computable for all six via run.py; only selected variant was formally compared after dev selection"
+  },
+  {
+   "id": "trend_L60_V60",
+   "definition": {
+    "trend": "sign(Close(D)/Close(D-60) - 1), long/cash per asset",
+    "sizing": "equal-weight active assets, gross<=1; vol overlay scale=min(1, 0.50/portfolio_vol), portfolio_vol=weighted avg of {V}d realized vol (365-ann), lagged",
+    "costs": "12 bps one-way on |dw| (2x stress = 24 bps)",
+    "window": {
+     "L": 60,
+     "V": 60
+    }
+   },
+   "selected_at_build": false,
+   "development": {
+    "n": 1187,
+    "net_sharpe_1x": 1.3388,
+    "net_annret": 0.5311,
+    "net_annvol": 0.3967,
+    "net_cum": 3.3508,
+    "avg_gross": 0.4828,
+    "avg_turnover": 0.0604,
+    "net_sharpe_2x": 1.2722,
+    "net_cum_2x": 2.9925,
+    "raw_sharpe_no_overlay": 1.1975,
+    "raw_annret_no_overlay": 0.7323,
+    "raw_cum_no_overlay": 4.8615,
+    "raw_avg_gross": 0.6445,
+    "overlay_sharpe_lift": 0.1413
+   },
+   "validation_note": "computable for all six via run.py; only selected variant was formally compared after dev selection"
+  },
+  {
+   "id": "trend_L120_V20",
+   "definition": {
+    "trend": "sign(Close(D)/Close(D-120) - 1), long/cash per asset",
+    "sizing": "equal-weight active assets, gross<=1; vol overlay scale=min(1, 0.50/portfolio_vol), portfolio_vol=weighted avg of {V}d realized vol (365-ann), lagged",
+    "costs": "12 bps one-way on |dw| (2x stress = 24 bps)",
+    "window": {
+     "L": 120,
+     "V": 20
+    }
+   },
+   "selected_at_build": true,
+   "development": {
+    "n": 1127,
+    "net_sharpe_1x": 1.3447,
+    "net_annret": 0.5233,
+    "net_annvol": 0.3892,
+    "net_cum": 2.9812,
+    "avg_gross": 0.4812,
+    "avg_turnover": 0.0427,
+    "net_sharpe_2x": 1.2964,
+    "net_cum_2x": 2.7576,
+    "raw_sharpe_no_overlay": 1.2382,
+    "raw_annret_no_overlay": 0.7551,
+    "raw_cum_no_overlay": 4.7727,
+    "raw_avg_gross": 0.6415,
+    "overlay_sharpe_lift": 0.1065
+   },
+   "validation_note": "computable for all six via run.py; only selected variant was formally compared after dev selection"
+  },
+  {
+   "id": "trend_L120_V60",
+   "definition": {
+    "trend": "sign(Close(D)/Close(D-120) - 1), long/cash per asset",
+    "sizing": "equal-weight active assets, gross<=1; vol overlay scale=min(1, 0.50/portfolio_vol), portfolio_vol=weighted avg of {V}d realized vol (365-ann), lagged",
+    "costs": "12 bps one-way on |dw| (2x stress = 24 bps)",
+    "window": {
+     "L": 120,
+     "V": 60
+    }
+   },
+   "selected_at_build": false,
+   "development": {
+    "n": 1127,
+    "net_sharpe_1x": 1.3083,
+    "net_annret": 0.5049,
+    "net_annvol": 0.3859,
+    "net_cum": 2.7745,
+    "avg_gross": 0.4712,
+    "avg_turnover": 0.0343,
+    "net_sharpe_2x": 1.2695,
+    "net_cum_2x": 2.6037,
+    "raw_sharpe_no_overlay": 1.2382,
+    "raw_annret_no_overlay": 0.7551,
+    "raw_cum_no_overlay": 4.7727,
+    "raw_avg_gross": 0.6415,
+    "overlay_sharpe_lift": 0.0701
+   },
+   "validation_note": "computable for all six via run.py; only selected variant was formally compared after dev selection"
+  }
+ ]
+}

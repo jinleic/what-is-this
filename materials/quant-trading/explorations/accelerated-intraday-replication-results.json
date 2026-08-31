@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-exact-rule-chronological-replication-2026-08-31",
+  "created_at_utc": "2026-08-31T08:02:32.913Z",
+  "replication_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-replication-contract.json",
+    "sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42",
+    "created_at_utc": "2026-08-31T07:54:33.526Z",
+    "classification": "outcome-blind retrospective chronological replication; not prospective, not confirmation, and not a rescue test"
+  },
+  "parent_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-contract.json",
+    "sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+    "inheritance": "Every formula, threshold, horizon, asset, side, cost, alignment, sample condition, gate, ranking rule, and UNKNOWN truth rule is inherited byte-for-byte by reference. This contract adds only a fixed observation window and replication claim boundary."
+  },
+  "snapshot_manifest": {
+    "path": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
+    "sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0",
+    "created_at_utc": "2026-08-31T08:02:02.199Z"
+  },
+  "replication_runner": {
+    "path": "quant-trading/explorations/replicate_accelerated_intraday.py",
+    "sha256": "02b5d09aa89176e08a9f1b6ff78ef0fe8884a5e1d6d1b6333dba88fca727914c"
+  },
+  "claim_boundary": "This replication may strengthen falsification or justify future prospective capture. It cannot overturn the 2026-08-30 liquidation falsification, convert the Deribit result into durable alpha, authorize deployment, or support a capital-allocation claim.",
+  "baseline_artifacts_unchanged": {
+    "parent_contract": {
+      "expected_sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+      "observed_sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+      "unchanged": true
+    },
+    "liquidation_result": {
+      "expected_sha256": "9f5bb6d68a5f9e2725ce265e35e3bef6ff03929733fd571b297f2eff347a8e11",
+      "observed_sha256": "9f5bb6d68a5f9e2725ce265e35e3bef6ff03929733fd571b297f2eff347a8e11",
+      "unchanged": true
+    },
+    "deribit_result": {
+      "expected_sha256": "b11e0659b110cf4c2398266412ed6cf884857eaf265b5ec2acc93c86750a4c98",
+      "observed_sha256": "b11e0659b110cf4c2398266412ed6cf884857eaf265b5ec2acc93c86750a4c98",
+      "unchanged": true
+    },
+    "blinding_audit": {
+      "expected_sha256": "ace2d3b226b377ee99e8bc3828c64f957e5bed8d78149beb7ba72ab0abd25288",
+      "observed_sha256": "ace2d3b226b377ee99e8bc3828c64f957e5bed8d78149beb7ba72ab0abd25288",
+      "unchanged": true
+    }
+  },
+  "window": {
+    "start_utc_inclusive": "2026-08-31T00:00:00.000Z",
+    "end_utc_exclusive": "2026-08-31T01:30:00.000Z",
+    "selection_rule": "First calendar-aligned 90 minutes of the next UTC day after the parent screen. The window was chosen before reading any 2026-08-31 price, return, GEX, RV, correlation, gate, or verdict.",
+    "record_boundary": "Raw market records used in metric computation must have their authoritative exchange timestamp >= start and < end. Receipt timestamps never determine membership.",
+    "liquidation": {
+      "onset_clock": "Binance forceOrder body.E",
+      "onset_membership": "body.E >= start and body.E < end",
+      "outcome_membership": "P_0/P_5m/P_15m observations must each have Deribit data.timestamp < end; an onset whose complete 15-minute outcome is unavailable before end is excluded exactly as under the parent contract.",
+      "pre_window_context": "Earlier capture control and forceOrder records may be read only to establish the continuous session and immediately prior same-symbol gap. They cannot enter the replication cohort or gates."
+    },
+    "deribit": {
+      "trade_clock": "trade.timestamp",
+      "index_clock": "data.timestamp",
+      "signal_membership": "Signal block start >= start; all contributing option trades have start <= trade.timestamp < end.",
+      "outcome_membership": "All RV input observations have start <= data.timestamp < end, except the parent-permitted anchor up to 5000 ms before a block start. Outcome-block end may equal the exclusive window end because its final raw observation remains strictly before end.",
+      "metadata_context": "Captured instrument metadata may predate start and is context only. No post-window trade or index observation may influence a block, sample condition, gate, or verdict."
+    }
+  },
+  "screens": {
+    "liquidation_btc_eth_post_onset": {
+      "result": "quant-trading/explorations/focused-liquidation-overlay/replication_20260831_results.json",
+      "sha256": "ed0002eb0ad7e3241c7be94d7af3bf29faf1491ad72f4227d95ed0bbc2d2f120",
+      "status": "inconclusive",
+      "sample_all_met": false
+    },
+    "deribit_intraday_taker_gex": {
+      "result": "quant-trading/explorations/focused-deribit-gex/replication_20260831_results.json",
+      "sha256": "036af8c84ad001abcb502871be537968daca6ac4fc5b77a8d5c6451121ea2677",
+      "status": "inconclusive",
+      "sample_all_met": false
+    }
+  },
+  "decision": {
+    "prior_liquidation_falsification_unchanged": true,
+    "no_strategy_promoted": true,
+    "no_orders_or_account_access": true,
+    "no_private_data": true
+  }
+}

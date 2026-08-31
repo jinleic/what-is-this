@@ -1,0 +1,460 @@
+{
+ "beta_bracket": [
+  "1000525598628931/10000000000000000",
+  "312664249571541/3125000000000000"
+ ],
+ "c_sign_classification": {
+  "analytic_tail_7_8ths_to_1": {
+   "bound": "2h - h(pi) >= 2 eps (log 2 - 3 eps) with eps = 1-x <= 1/8, log 2 > 7/16 (Arb)",
+   "ingredients": {
+    "arb": [
+     "log(2).lower() = 0.6931471805599453 > 7/16",
+     "e < 4 (so u(\u2212log u) increasing on (0,1/4)]"
+    ],
+    "log_bounds": [
+     "d/du [u/(1-u) + log(1-u)] = u/(1-u)^2 >= 0, value at 0 = 0",
+     "d/du [-log(1-u) - u] = u/(1-u) >= 0",
+     "d/du [u + u^2 + log(1-u)] = u(1-2u)/(1-u) >= 0 for u <= 1/2"
+    ],
+    "one_minus_pi": "-(x - 1)*(x**3 - x**2 + x + 1) with inner factor positive",
+    "u_le_2eps": "2(1-x) - (1-pi(x,x)) = (x - 1)**2*(x**2 + 1)"
+   },
+   "margin_certified": "1/64",
+   "range": "[7/8, 1)"
+  },
+  "cell_band_half_to_7_8ths": {
+   "cell_width": "1/256",
+   "cells": 96,
+   "hulls": "h concave (endpoint min, straddle-safe max), pi_xx increasing (sympy: 2*x*(2*x**2 - 3*x + 2))",
+   "negative_cells": 0,
+   "range": "[1/2, 7/8]",
+   "worst_cell": [
+    95,
+    0.87109375,
+    0.875
+   ],
+   "worst_margin": 0.2159772580875007
+  },
+  "claim": "c(x) = beta (h(pi(x,x)) - 2 h(x)) < 0 for ALL x in (0,1); c(1) = 0 exactly; no crossover",
+  "discovery_sweep": {
+   "all_negative": true,
+   "note": "DISCOVERY: mpmath point evaluations",
+   "points": [
+    {
+     "c": "-3.88618e-8",
+     "x": "1e-8"
+    },
+    {
+     "c": "-0.000204276",
+     "x": "1e-4"
+    },
+    {
+     "c": "-0.00157946",
+     "x": "0.001"
+    },
+    {
+     "c": "-0.0110174",
+     "x": "0.01"
+    },
+    {
+     "c": "-0.0367041",
+     "x": "0.05"
+    },
+    {
+     "c": "-0.0559911",
+     "x": "0.1"
+    },
+    {
+     "c": "-0.0759098",
+     "x": "0.2"
+    },
+    {
+     "c": "-0.0828057",
+     "x": "0.3"
+    },
+    {
+     "c": "-0.0822602",
+     "x": "0.4"
+    },
+    {
+     "c": "-0.076561",
+     "x": "0.5"
+    },
+    {
+     "c": "-0.0666868",
+     "x": "0.6"
+    },
+    {
+     "c": "-0.0531188",
+     "x": "0.7"
+    },
+    {
+     "c": "-0.0450957",
+     "x": "0.75"
+    },
+    {
+     "c": "-0.0363745",
+     "x": "0.8"
+    },
+    {
+     "c": "-0.0271207",
+     "x": "0.85"
+    },
+    {
+     "c": "-0.0175996",
+     "x": "0.9"
+    },
+    {
+     "c": "-0.00825689",
+     "x": "0.95"
+    },
+    {
+     "c": "-0.00147433",
+     "x": "0.99"
+    },
+    {
+     "c": "-0.000718911",
+     "x": "0.995"
+    },
+    {
+     "c": "-0.000140044",
+     "x": "0.999"
+    }
+   ]
+  },
+  "endpoint": "c(1) = beta (h(1) - 2 h(1)) = 0 exactly",
+  "symbolic_piece_open_half": {
+   "chain": "pi(x,x) - x = x(x-1)(x^2-x+1) < 0 (disc -3 < 0); h strictly increasing on (0,1/2] (h' = log((1-t)/t) >= 0); h > 0 there, so h(pi) < h(x) < 2 h(x)",
+   "range": "(0, 1/2]",
+   "sympy": {
+    "h_prime": "-log(t) + log(1 - t)",
+    "h_prime_sign_half": "log((1-t)/t) >= 0 for 0 < t <= 1/2 ((1-t)/t >= 1 exact)",
+    "pi_xx_minus_x": "x*(x - 1)*(x**2 - x + 1)",
+    "x2_minus_x_plus_1_discriminant": "-3 < 0 (so x^2-x+1 > 0 on R)"
+   }
+  }
+ },
+ "claim_status": "PROVED",
+ "family_min": {
+  "a0_analytic_tail": {
+   "bound": "A0 >= t(2-t)(L - ln2 + t/2) - B t^2 (L+1) > 0 on (0, 1/64], exact margin at t = 1/64: 1393075022127999213/25600000000000000000",
+   "lemmas": {
+    "closed_forms": [
+     "h(1-t) = (1-t)(-ln(1-t)) + t ln(1/t)",
+     "x^2 T = -t(1+t) ln(1/t) + t(2-t)(ln2 - sigma)",
+     "sigma = -ln(1-t/2) in [t/2, t]"
+    ],
+    "f_increase": "f(u) = u ln(1/u) increasing on (0, 1/e): f' = ln(1/u) - 1 >= 0 for u <= 1/32",
+    "g_increase": "g(u) = (1-u) ln(1/(1-u)) increasing: g' = ln(1/(1-u)) >= 0",
+    "log_lemma": "-ln(1-u) in [u, 2u] for u <= 1/2 (exact)",
+    "one_minus_pi_xx": "t*(2-2t+2t^2-t^3)",
+    "u2_minus_u1": "t**2*(t - 1)**2"
+   },
+   "margin": "1393075022127999213/25600000000000000000",
+   "range": "[63/64, 1)"
+  },
+  "a0_cover": {
+   "cells": 512,
+   "negative_cells": 0,
+   "range": "[ML, 63/64]",
+   "worst_cell": [
+    1,
+    0.617290912081265,
+    0.6180078731904812
+   ],
+   "worst_lower": 0.000770775435046586
+  },
+  "claim": "min over the mean-feasible band of gapA = 0, attained exactly on the whole q = 1 edge",
+  "coverage_note": "q0-branch: deep (0,1/256] + strip [1/256,ML] + micro (ML,m); q=0-branch: A0 cover over [m,63/64] plus the analytic tail on [63/64,1); gapA(x,1)=0 exact on the q=1 edge",
+  "deep_tail": {
+   "arb_certificates": [
+    "log(256) > 5",
+    "log(2) > 7/16"
+   ],
+   "certificate_suffixes": {
+    "C1": "17352930046073222725310420778123/192903410025395303125000000000000",
+    "C2": "387253084553679108282740173063749/1660156250000000000000000000000000",
+    "K2p": "53294416242835453637426914396709/12056463126587206445312500000000",
+    "K3p": "632103638456885486/61729091208126497",
+    "margin_at_1_256": "2674072980877716009759665903895217626732667779309105649463563127/160124900899986335601806640625000000000000000000000000000000000000"
+   },
+   "exact_lemmas": [
+    "-log(1-u) <= u/(1-u)  (=> T <= 3, hull bounds)",
+    "pi(x,x) <= 2x^2, 1 - pi(x,x) <= 1, h >= 0",
+    "h(x) <= x(L+2), h(x) >= x*L, L = log(1/x)"
+   ],
+   "negative_cells": 0,
+   "range": "(0, 1/256]"
+  },
+  "micro_cell": {
+   "negative_cells": 0,
+   "note": "the [m, MH] sliver is covered by the A0 branch",
+   "q0_hull": "[0, 1/38270908791873503] (clamped; encloses the true (0, q0(ML)] for x in (ML, m))",
+   "range": "[ML, MH]",
+   "worst_lower": 0.0012588980577808739
+  },
+  "strip": {
+   "cells": 72,
+   "growth": "9/8",
+   "negative_cells": 0,
+   "range": "[1/256, ML]",
+   "worst_cell": [
+    49,
+    0.616763256018324,
+    0.617290912081265
+   ],
+   "worst_lower": 7.052166890137084e-06
+  }
+ },
+ "identity_checks_vs_gap_mp": {
+  "note": "DISCOVERY: mpmath point evaluations, not certificates",
+  "rows": [
+   {
+    "absdiff": "8.50803e-63",
+    "q": "q0(x)",
+    "x": "1/20"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "1/20"
+   },
+   {
+    "absdiff": "2.43087e-63",
+    "q": "9/10",
+    "x": "1/20"
+   },
+   {
+    "absdiff": "4.86173e-63",
+    "q": "q0(x)",
+    "x": "1/4"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "1/4"
+   },
+   {
+    "absdiff": "9.72346e-63",
+    "q": "9/10",
+    "x": "1/4"
+   },
+   {
+    "absdiff": "2.91704e-62",
+    "q": "q0(x)",
+    "x": "2/5"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "2/5"
+   },
+   {
+    "absdiff": "2.91704e-62",
+    "q": "2/5",
+    "x": "2/5"
+   },
+   {
+    "absdiff": "4.86173e-63",
+    "q": "9/10",
+    "x": "2/5"
+   },
+   {
+    "absdiff": "3.88938e-62",
+    "q": "q0(x)",
+    "x": "1/2"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "1/2"
+   },
+   {
+    "absdiff": "9.72346e-63",
+    "q": "2/5",
+    "x": "1/2"
+   },
+   {
+    "absdiff": "1.94469e-62",
+    "q": "9/10",
+    "x": "1/2"
+   },
+   {
+    "absdiff": "1.13035e-61",
+    "q": "q0(x)",
+    "x": "60729091208126497/100000000000000000"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "60729091208126497/100000000000000000"
+   },
+   {
+    "absdiff": "1.06958e-61",
+    "q": "1/7",
+    "x": "60729091208126497/100000000000000000"
+   },
+   {
+    "absdiff": "3.88938e-62",
+    "q": "2/5",
+    "x": "60729091208126497/100000000000000000"
+   },
+   {
+    "absdiff": "9.72346e-63",
+    "q": "9/10",
+    "x": "60729091208126497/100000000000000000"
+   },
+   {
+    "absdiff": "6.80642e-62",
+    "q": "0",
+    "x": "69078759/100000000"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "69078759/100000000"
+   },
+   {
+    "absdiff": "4.86173e-62",
+    "q": "1/7",
+    "x": "69078759/100000000"
+   },
+   {
+    "absdiff": "9.72346e-62",
+    "q": "2/5",
+    "x": "69078759/100000000"
+   },
+   {
+    "absdiff": "4.86173e-63",
+    "q": "9/10",
+    "x": "69078759/100000000"
+   },
+   {
+    "absdiff": "4.86173e-62",
+    "q": "0",
+    "x": "3/4"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "3/4"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1/7",
+    "x": "3/4"
+   },
+   {
+    "absdiff": "3.88938e-62",
+    "q": "2/5",
+    "x": "3/4"
+   },
+   {
+    "absdiff": "1.94469e-62",
+    "q": "9/10",
+    "x": "3/4"
+   },
+   {
+    "absdiff": "9.72346e-62",
+    "q": "0",
+    "x": "9/10"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "9/10"
+   },
+   {
+    "absdiff": "5.83408e-62",
+    "q": "1/7",
+    "x": "9/10"
+   },
+   {
+    "absdiff": "5.83408e-62",
+    "q": "2/5",
+    "x": "9/10"
+   },
+   {
+    "absdiff": "7.2926e-63",
+    "q": "9/10",
+    "x": "9/10"
+   },
+   {
+    "absdiff": "2.91704e-62",
+    "q": "0",
+    "x": "99/100"
+   },
+   {
+    "absdiff": "0.0",
+    "q": "1",
+    "x": "99/100"
+   },
+   {
+    "absdiff": "4.86173e-63",
+    "q": "1/7",
+    "x": "99/100"
+   },
+   {
+    "absdiff": "2.18778e-62",
+    "q": "2/5",
+    "x": "99/100"
+   },
+   {
+    "absdiff": "1.82315e-63",
+    "q": "9/10",
+    "x": "99/100"
+   }
+  ],
+  "threshold": "1e-60",
+  "worst_absdiff": "1.13035e-61"
+ },
+ "limitations": [
+  "mpmath point evaluations (identity rows, c and A0 sweeps) are DISCOVERY evidence only; all claims rest on the Arb cell/interval and exact-rational certificates",
+  "single-atom delta family with shared mass a = 1; sign-indefiniteness of c for general multi-atom paired classes is a separate open front"
+ ],
+ "m_bracket": [
+  "61729091208126497/100000000000000000",
+  "30864545604063249/50000000000000000"
+ ],
+ "method": "endpoint-pair interval arithmetic on exact-rational cells (no flint union), Arb precision 3600; kernels h (concavity + endpoint/straddle hulls) and T (strict monotone decrease); exact closed-form D(x,1;M) = (M-1/2)h(x); exact-rational deep-tail and tail-margin arithmetic with Arb logarithm certificates; identity gate against gap_mp at 60 dps",
+ "mutations": {
+  "drop_pi_factor": {
+   "expected": "FAIL",
+   "observed": "FAIL",
+   "ok": true,
+   "worst_absdiff_vs_gap_mp": "0.00226753"
+  },
+  "flip_2h_sign": {
+   "expected": "FAIL",
+   "observed": "FAIL",
+   "ok": true,
+   "worst_absdiff_vs_gap_mp": "0.0605074"
+  },
+  "shrink_m_bracket": {
+   "cells": 32768,
+   "expected": "FAIL",
+   "negative_cells": 32768,
+   "note": "half-sized m bracket forces a corrupt q0/Discharge channel; the strip checker must go negative",
+   "observed": "FAIL",
+   "ok": true,
+   "worst_lower": -0.2666894582601738
+  }
+ },
+ "region": {
+  "family": "Probe (i) delta family: P0 = delta_x, P1 = delta_1, shared mass a = 1",
+  "q_range": "[max(0, (m-x)/(1-x)), 1]",
+  "theorem": [
+   "gapA(x, q) = F(P_mix) + q(1-q) c(x) with the q-FREE channel scalar c(x) = beta (h(pi(x,x)) - 2 h(x)) < 0 on the whole (0,1), c(1) = 0; F >= 0 (q=1 theorem, PROVED); gapA is an exact concave quadratic in q with gapA(x,1) = 0, so the feasible-band minimum sits at q0(x) = (m-x)/(1-x) for x < m and at q = 0 for x >= m; the certified statement is gapA >= 0 on the entire mean-feasible set with min = 0 attained exactly on the q = 1 edge"
+  ],
+  "x_range": "(0, 1]"
+ },
+ "report_sha256": "94b5ca57b50c67db8960bd98067a08e7a5df407fb79830e8b214bda6362d2abf",
+ "structural_inputs": [
+  "block diagonalization (liu9_block_copositive.py, PROVED)",
+  "gapA exact concave quadratic in q with gapA(x,1) = 0; F >= 0 (q=1 theorem, PROVED)",
+  "D(x,1;M) = (M - 1/2) h(x) exactly (verified to ~1e-62 against gap_mp; used as exact identity)",
+  "T strictly decreasing on (0,1) (region1b precedent)",
+  "mean bracket m in [ML, MH], beta in [BL, BH]"
+ ],
+ "tool": "liu9_c_delta_family.py"
+}

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Coordinate cloning: exact effect on the Gate B objective, and its ceiling.
+"""Chosen-coordinate cloning: exact finite ladder for the Gate B objective.
 
-Duplicating a coordinate is the one transformation found so far that improves
-``A_+`` at **zero** defect cost.  This module measures it exactly.
+Duplicating a coordinate is defect-free for every coordinate, but its effect on
+``A_+`` is **not sign-definite**.  This module measures the useful coordinate 2
+of ``n8tiny``; ``audit_clone_limit.py`` gives the general order-reweighting
+theorem and exact limit.
 
 What cloning preserves, exactly
 -------------------------------
@@ -23,11 +25,12 @@ defect.  It is free in the only two quantities the local question measures.
 
 What cloning changes
 --------------------
-``log2 m`` is fixed, so ``A_+ = (1-alpha) Q + alpha C_+ - log2 m`` moves exactly
-as ``Q`` and ``C_+`` move.  Both *fall*: a clone placed after its twin has a
-deterministic conditional OR probability and contributes no entropy, while the
-prefix structure seen by every other coordinate changes.  So ``A_+`` falls, and
-cloning can turn a positive family negative at fixed defect.
+``log2 m`` is fixed, but the direction of ``A_+`` depends on which fixed-order
+objectives the clone multiplicity upweights.  On the ``n8tiny`` core, cloning
+coordinate 2 lowers ``A_+``; cloning any of coordinates 0, 1, 3, or 4 instead
+raises it from ``+0.010695694`` to ``+0.012500067``.  The earlier claim that
+cloning always lowers both ``Q`` and ``C_+`` was false.  The exact statement is:
+cloning only reweights the original fixed-order values.
 
 That is exactly how the record low-defect witness exists.  The registered base
 ``n8tiny`` has four identical coordinates; collapsing them leaves an admissible
@@ -43,12 +46,14 @@ feasibility instead.  Both effects are real and they are different.
 
 The ceiling
 -----------
-The improvement saturates geometrically, so cloning is not a route to arbitrary
-negativity.  Successive clones of one coordinate of the ``n8tiny`` core give
-deltas that roughly halve, and the total available gain is bounded.  A family
-whose ``A_+`` is far positive cannot be rescued this way: the lowest-defect
-admissible family known at ``n=7, m=45`` has ``A_+ = +0.0847``, an order of
-magnitude beyond the budget measured here.
+For the chosen coordinate, the finite deltas shrink and the objective converges
+to the exact first-rank average ``-0.002338401508...`` certified by
+``audit_clone_limit.py``.  The convergence is **not geometric**: with total
+multiplicity ``r``, the probability that another coordinate precedes the first
+clone is ``(n-1)/(n+r-1)=O(1/r)``.  The observed delta ratios therefore cannot
+prove geometric decay; they quantify only the displayed finite ladder.  The
+total available gain is bounded exactly by the convex hull of the original
+fixed-order objectives.
 
 Run:
     OMP_NUM_THREADS=1 nice -n 19 python3 -B uc/gate_b/audit_clone_saturation.py
@@ -223,13 +228,17 @@ def main() -> None:
         "size_is_invariant": len(sizes) == 1,
         "admissibility_preserved_throughout": caps_met,
         "sign_flips_at_clone_count": flip,
-        "improvement_is_shrinking": shrinking,
+        "improvement_is_shrinking_over_reported_ladder": shrinking,
         "delta_ratios_decimal": [
             decimal_upper(abs(later / earlier), 6)
             for earlier, later in zip(deltas, deltas[1:])
         ],
+        "convergence_status": (
+            "FINITE LADDER ONLY; exact limit in clone_limit_audit.json; "
+            "convergence is O(1/r), not geometric"
+        ),
         "verdict": (
-            "CLONING_IS_DEFECT_FREE_AND_SATURATES"
+            "CHOSEN_CLONE_IS_DEFECT_FREE_AND_FINITE_LADDER_SHRINKS"
             if len(defects) == 1 and len(sizes) == 1 and caps_met and shrinking
             else "UNEXPECTED"
         ),
@@ -240,7 +249,8 @@ def main() -> None:
     print(json.dumps({k: report[k] for k in (
         "base", "verdict", "collapsed_dimension", "defect_is_invariant",
         "size_is_invariant", "admissibility_preserved_throughout",
-        "sign_flips_at_clone_count", "improvement_is_shrinking",
+        "sign_flips_at_clone_count",
+        "improvement_is_shrinking_over_reported_ladder",
         "delta_ratios_decimal")}, indent=2))
     print()
     print(f"{'clones':>6} {'n':>3} {'A_+ <=':>16} {'delta':>16} {'defect':>8} {'adm':>5}")

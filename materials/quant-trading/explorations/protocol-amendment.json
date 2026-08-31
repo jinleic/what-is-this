@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-2026-08-29",
+  "recorded_before_wave_one_results": true,
+  "reason": "The research families were selected in August 2026 with knowledge of published and local 2025-2026 market evidence. Therefore 2025-01-01 through 2026-07-31 is parameter-embargoed but not an epistemically blind holdout.",
+  "terminology": {
+    "2020-08-01_to_2023-12-31": "development",
+    "2024-01-01_to_2024-12-31": "validation",
+    "2025-01-01_to_2026-07-31": "historical_confirmation",
+    "from_2026-08-29": "prospective_forward_shadow"
+  },
+  "interpretation": [
+    "Historical confirmation can falsify a frozen rule and quantify recent decay, but cannot establish an unbiased durable-alpha claim because family selection used later knowledge.",
+    "Only the prospective forward shadow is genuinely untouched after registration.",
+    "No strategy advances to capital deployment from historical confirmation alone."
+  ],
+  "candidate_groups": [
+    {
+      "id": "carry_complex",
+      "members": ["crypto-carry-decay", "crypto-basis-convergence", "funding-crowding"],
+      "maximum_historical_confirmation_candidates": 1,
+      "mechanical_selection": "Among validation-pass members, select the highest 2x-cost validation benchmark-excess Sharpe; count every member's trials. No member passes if the selected excess cumulative return is nonpositive."
+    },
+    {
+      "id": "crypto_price",
+      "members": ["crypto-trend-vol", "btc-eth-relative-value"],
+      "maximum_historical_confirmation_candidates": 1,
+      "mechanical_selection": "Among validation-pass members, select the highest 2x-cost validation benchmark-excess Sharpe after verifying gross/net exposure and benchmark comparability; otherwise select neither."
+    },
+    {
+      "id": "macro_crypto",
+      "members": ["macro-crypto-regime"],
+      "maximum_historical_confirmation_candidates": 1
+    },
+    {
+      "id": "factor_timing",
+      "members": ["factor-momentum-timing"],
+      "maximum_historical_confirmation_candidates": 1
+    },
+    {
+      "id": "cftc_positioning",
+      "members": ["cftc-positioning"],
+      "maximum_historical_confirmation_candidates": 1
+    },
+    {
+      "id": "volatility_premium",
+      "members": ["volatility-risk-premium"],
+      "maximum_historical_confirmation_candidates": 1
+    }
+  ],
+  "excluded_from_historical_confirmation": [
+    "frozen-cross-asset-trend-audit because its historical 2025-2026 metrics are already exposed",
+    "crypto-microstructure-execution because it is feasibility/execution research on a bounded sample",
+    "event-semantics because current data supports a timing/coverage audit, not a frozen return strategy"
+  ],
+  "mandatory_naive_baselines": [
+    "cash or risk-free return",
+    "equal-weight buy-and-hold for directional crypto",
+    "unconditional fully funded carry for carry variants",
+    "raw momentum for factor timing",
+    "price-only rule for macro and CFTC overlays",
+    "underlying and published methodology index for volatility-premium work"
+  ],
+  "historical_confirmation_statistics": {
+    "test_statistic": "annualized mean benchmark-excess return divided by a heteroskedasticity/autocorrelation-consistent standard error; Sharpe and drawdown remain descriptive secondary metrics",
+    "resampling": {
+      "crypto_hourly_block_hours": 168,
+      "daily_block_observations": 20,
+      "weekly_block_observations": 8,
+      "bootstrap_replicates": 10000,
+      "seed": 20260829
+    },
+    "multiple_testing": {
+      "exploratory_discovery": "Benjamini-Hochberg FDR q=0.10 across every frozen historical-confirmation candidate",
+      "strong_confirmation": "Holm-Bonferroni family-wise alpha=0.05 across every frozen historical-confirmation candidate",
+      "rule": "Report both corrections and the total frozen-candidate count; do not relabel an FDR-only result as confirmed."
+    },
+    "trial_accounting": "Deflated Sharpe and PBO use all wave-one variants plus known historical searches where the same strategy family or universe informed selection."
+  },
+  "prospective_forward_shadow": {
+    "start": "2026-08-29",
+    "minimum_duration": "six calendar months and at least 100 independent decisions; twelve months preferred for daily strategies",
+    "operations": "append-only paper signals and modeled fills; parameters, universe, costs, and benchmark remain frozen",
+    "unblinding": "one scheduled read; intermediate observations are operational diagnostics only"
+  }
+}

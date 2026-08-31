@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-exact-rule-chronological-replication-2026-08-31",
+  "created_at_utc": "2026-08-31T07:54:33.526Z",
+  "status": "frozen-before-replication-outcome-analysis",
+  "classification": "outcome-blind retrospective chronological replication; not prospective, not confirmation, and not a rescue test",
+  "objective": "Apply both existing accelerated intraday screens unchanged to one later, previously uninspected public-data window to measure repeatability and obtain another falsification opportunity.",
+  "claim_boundary": "This replication may strengthen falsification or justify future prospective capture. It cannot overturn the 2026-08-30 liquidation falsification, convert the Deribit result into durable alpha, authorize deployment, or support a capital-allocation claim.",
+  "parent_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-contract.json",
+    "sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+    "inheritance": "Every formula, threshold, horizon, asset, side, cost, alignment, sample condition, gate, ranking rule, and UNKNOWN truth rule is inherited byte-for-byte by reference. This contract adds only a fixed observation window and replication claim boundary."
+  },
+  "observation_window": {
+    "start_utc_inclusive": "2026-08-31T00:00:00.000Z",
+    "end_utc_exclusive": "2026-08-31T01:30:00.000Z",
+    "selection_rule": "First calendar-aligned 90 minutes of the next UTC day after the parent screen. The window was chosen before reading any 2026-08-31 price, return, GEX, RV, correlation, gate, or verdict.",
+    "record_boundary": "Raw market records used in metric computation must have their authoritative exchange timestamp >= start and < end. Receipt timestamps never determine membership.",
+    "liquidation": {
+      "onset_clock": "Binance forceOrder body.E",
+      "onset_membership": "body.E >= start and body.E < end",
+      "outcome_membership": "P_0/P_5m/P_15m observations must each have Deribit data.timestamp < end; an onset whose complete 15-minute outcome is unavailable before end is excluded exactly as under the parent contract.",
+      "pre_window_context": "Earlier capture control and forceOrder records may be read only to establish the continuous session and immediately prior same-symbol gap. They cannot enter the replication cohort or gates."
+    },
+    "deribit": {
+      "trade_clock": "trade.timestamp",
+      "index_clock": "data.timestamp",
+      "signal_membership": "Signal block start >= start; all contributing option trades have start <= trade.timestamp < end.",
+      "outcome_membership": "All RV input observations have start <= data.timestamp < end, except the parent-permitted anchor up to 5000 ms before a block start. Outcome-block end may equal the exclusive window end because its final raw observation remains strictly before end.",
+      "metadata_context": "Captured instrument metadata may predate start and is context only. No post-window trade or index observation may influence a block, sample condition, gate, or verdict."
+    }
+  },
+  "screens": {
+    "liquidation_btc_eth_post_onset": {
+      "parent_screen_path": "screens.liquidation_btc_eth_post_onset",
+      "trial_count": 1,
+      "output": "quant-trading/explorations/focused-liquidation-overlay/replication_20260831_results.json",
+      "unchanged_decision_rule": "Use the parent sample stop, six gates, and totalized truth table exactly. A pass is replication evidence only and cannot reverse the parent falsification."
+    },
+    "deribit_intraday_taker_gex": {
+      "parent_screen_path": "screens.deribit_intraday_taker_gex",
+      "trial_count": 1,
+      "output": "quant-trading/explorations/focused-deribit-gex/replication_20260831_results.json",
+      "unchanged_decision_rule": "Use the parent sample stop, four gates, and totalized truth table exactly. Unmet sample conditions remain inconclusive; no deadline or threshold extension."
+    }
+  },
+  "snapshot_and_execution": {
+    "rule": "Before outcome computation, stat each selected append-only JSONL file, hash and parse exactly that byte prefix, and record size, SHA-256, mtime, first/latest authoritative exchange timestamps, and trailing-partial handling.",
+    "filter_order": "Apply the fixed timestamp window at ingest before any return, GEX, RV, correlation, gate, or verdict computation. Snapshot prefixes may contain later appended rows, but later rows must be counted as excluded and never enter metric functions.",
+    "input_integrity": "Fail closed on malformed complete JSON lines, missing required BTC/ETH index series, parent/rule-file hash mismatch, or unavailable common cutoff through the fixed end.",
+    "run_budget": "Exactly one outcome-producing run per screen on the frozen prefixes. Operational failures before an output may be fixed without changing this contract. Any post-outcome code correction must retain the same prefixes and be disclosed."
+  },
+  "frozen_rule_files": {
+    "liquidation_runner": {
+      "path": "quant-trading/explorations/focused-liquidation-overlay/fast_intraday.py",
+      "size_bytes": 64391,
+      "mtime_ns": 1788114455924269795,
+      "mtime_utc": "2026-08-30T18:27:35.924270Z",
+      "birthtime_ns": 1788112018270083840,
+      "birthtime_utc": "2026-08-30T17:46:58.270084Z",
+      "sha256": "57adfde1c10f0e8c5b148e12886ea4e184612edeb7359545c3d2e26fd750df10"
+    },
+    "deribit_runner": {
+      "path": "quant-trading/explorations/focused-deribit-gex/fast_intraday.py",
+      "size_bytes": 45786,
+      "mtime_ns": 1788115005718351279,
+      "mtime_utc": "2026-08-30T18:36:45.718351Z",
+      "birthtime_ns": 1788111925366572032,
+      "birthtime_utc": "2026-08-30T17:45:25.366572Z",
+      "sha256": "ca4ce7448935196b6c8d9c703059f393df963185d76bb0a1a3b0f5415b868839"
+    },
+    "deribit_reconciliation_helpers": {
+      "path": "quant-trading/explorations/focused-deribit-gex/run.py",
+      "size_bytes": 22161,
+      "mtime_ns": 1788092054453974214,
+      "mtime_utc": "2026-08-30T12:14:14.453974Z",
+      "birthtime_ns": 1788091136503557376,
+      "birthtime_utc": "2026-08-30T11:58:56.503557Z",
+      "sha256": "dfadbe6d9e1b05a6dcfa3d7b3527dc14eecf30018087487c76ab3ccc0deadcdd"
+    }
+  },
+  "baseline_artifact_hashes": {
+    "parent_contract": {
+      "path": "quant-trading/explorations/accelerated-intraday-contract.json",
+      "size_bytes": 15346,
+      "mtime_ns": 1788110162978346030,
+      "mtime_utc": "2026-08-30T17:16:02.978346Z",
+      "birthtime_ns": 1788109328581416704,
+      "birthtime_utc": "2026-08-30T17:02:08.581417Z",
+      "sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1"
+    },
+    "liquidation_result": {
+      "path": "quant-trading/explorations/focused-liquidation-overlay/fast_intraday_results.json",
+      "size_bytes": 43913,
+      "mtime_ns": 1788114466230150147,
+      "mtime_utc": "2026-08-30T18:27:46.230150Z",
+      "birthtime_ns": 1788113235625833472,
+      "birthtime_utc": "2026-08-30T18:07:15.625834Z",
+      "sha256": "9f5bb6d68a5f9e2725ce265e35e3bef6ff03929733fd571b297f2eff347a8e11"
+    },
+    "deribit_result": {
+      "path": "quant-trading/explorations/focused-deribit-gex/fast_intraday_results.json",
+      "size_bytes": 56109,
+      "mtime_ns": 1788115011552412474,
+      "mtime_utc": "2026-08-30T18:36:51.552413Z",
+      "birthtime_ns": 1788112572508534528,
+      "birthtime_utc": "2026-08-30T17:56:12.508534Z",
+      "sha256": "b11e0659b110cf4c2398266412ed6cf884857eaf265b5ec2acc93c86750a4c98"
+    },
+    "blinding_audit": {
+      "path": "quant-trading/explorations/accelerated-intraday-blinding-audit.json",
+      "size_bytes": 34121,
+      "mtime_ns": 1788116699357026337,
+      "mtime_utc": "2026-08-30T19:04:59.357026Z",
+      "birthtime_ns": 1788116699356909824,
+      "birthtime_utc": "2026-08-30T19:04:59.356910Z",
+      "sha256": "ace2d3b226b377ee99e8bc3828c64f957e5bed8d78149beb7ba72ab0abd25288"
+    }
+  },
+  "data_access_disclosure": {
+    "inspected_before_freeze": [
+      "2026-08-30 parent outcomes and audit",
+      "collector ready logs and process state",
+      "2026-08-31 filenames, byte sizes, and liquidation collector-state byte totals",
+      "schemas and existing implementation source"
+    ],
+    "not_inspected_before_freeze": [
+      "2026-08-31 index prices or returns",
+      "2026-08-31 liquidation-aligned outcomes",
+      "2026-08-31 trade GEX or realized volatility",
+      "2026-08-31 correlations, ratios, leave-one-out values, gate comparisons, or verdicts"
+    ]
+  },
+  "independent_pre_outcome_review": {
+    "reviewer": "Claude Code fable / claude-fable-5, read-only no-tool invocation",
+    "cli_version": "2.1.239",
+    "verdict": "approve",
+    "critical_risks": [
+      "Data-revision leakage: feeds re-fetched after 01:30Z may differ from live-observable values; snapshot hash needed",
+      "Freeze timestamp not provably pre-outcome: without a commit/hash made before window close, chronology is asserted",
+      "Boundary leakage: any record timestamped exactly 01:30:00Z or clock-skewed entries slipping into the window"
+    ],
+    "required_invariants": [
+      "Replication reads only parent-SHA code; no edits to formulas, thresholds, costs, assets, gates, or UNKNOWN handling",
+      "Outputs written to separate artifact paths; prior 2026-08-30 artifacts never modified",
+      "Input data snapshotted and hashed before outcome evaluation; window filter applied at ingest, not post hoc"
+    ],
+    "wording_adjustment": "Reviewer suggested pre-registered wording; rejected as too strong because the window predates this freeze. The authoritative classification is outcome-blind retrospective chronological replication."
+  },
+  "global_rules": [
+    "No orders, account access, credentials, leverage, private data, or non-public endpoint.",
+    "Do not modify the parent contract, original scripts, original results, or original blinding audit.",
+    "Do not change the fixed window after inspecting counts or outcomes.",
+    "Report every sample condition and gate, including false and unavailable values.",
+    "No pass may promote a strategy; no failure may trigger a polarity flip or parameter search in this replication."
+  ]
+}

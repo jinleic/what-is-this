@@ -1,0 +1,31 @@
+{
+ "binding_parameters": {
+  "beta": "0.1000525598628931066646282994769475877962",
+  "m": "0.6172909120812649700696870979010273883736"
+ },
+ "claim_status": "COMPUTATIONAL EVIDENCE",
+ "escalation_dps": 200,
+ "escalations": [],
+ "independent_dps": 90,
+ "minimum_at": "polish-delta_1-delta_x-q0.1-seed",
+ "minimum_recomputed_gap": "0.0000000000000055161607645759700904074650558409930522205714739639437623931",
+ "minimum_values": [
+  "0.00000000000000795813778027682783992617320863192083344025886532113744920025",
+  "0.0",
+  "0.0000000000299522504289741827622815391144877076798347381725307059241459",
+  "0.5",
+  "0.5",
+  "1.0",
+  "0.5",
+  "0.5",
+  "0.0"
+ ],
+ "negative_mean_feasible_raw_gap_found": false,
+ "negative_witnesses": [],
+ "report_sha256": "ab7c56485dde92a73d78dd8159978f71f1c59a3f13b5fcc3f0b96c99f7da1eff",
+ "rows_authenticated": 20,
+ "rows_checked": 20,
+ "rows_infeasible": 0,
+ "tool": "independent_block_witness_check.py",
+ "worst_relative_agreement": "9.77249396590118773740353092573e-17"
+}

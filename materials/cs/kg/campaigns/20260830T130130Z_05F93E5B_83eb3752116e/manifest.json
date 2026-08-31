@@ -1,0 +1,144 @@
+{
+ "campaign": "campaigns/20260830T130130Z_05F93E5B_83eb3752116e",
+ "gate": "C (a) septic extension + (b) degree-5 affine analogue",
+ "agent": "KgGateC-2",
+ "timestamp_utc": "2026-08-30T13:01:30Z",
+ "target": "cs/kg",
+ "verdict": {
+  "a_upper_side": "CERTIFIED CAP \u2014 no septic improvement over the quintic scheme on the swept 3-D slice",
+  "a_certified_pruned_volume_full_box_depth10": 0.99998739,
+  "a_residual_after_slab_refinement": {
+   "volume": 3.088e-11,
+   "frac_of_box": 1.43e-08,
+   "hull": {
+    "s3": [
+     0.340803,
+     0.341016
+    ],
+    "s5": [
+     0.052061,
+     0.052808
+    ],
+    "s7": [
+     0.0,
+     0.002344
+    ]
+   },
+   "reference": "gamma_gateA = 0.881557917504162"
+  },
+  "a_residual_vs_quintic_head_optimum": {
+   "volume": 1.232e-13,
+   "hull": {
+    "s3": [
+     0.340987,
+     0.341012
+    ],
+    "s5": [
+     0.052681,
+     0.052766
+    ],
+    "s7": [
+     0.0,
+     0.000781
+    ]
+   },
+   "reference": "gamma_qhead = 0.881562493211119"
+  },
+  "a_triple_annihilation_delta": "-3.37826580833e-8 +/- 3.99e-20 (CERTIFIED NEGATIVE)",
+  "b_lower_side": "reduction DERIVED; ceiling lambda* = 0.93623331111986 CERTIFIED; C_lambda for 0<lambda<=lambda* OPEN (needs degree-5 fiber inequality)"
+ },
+ "anchor": {
+  "avg_leg1": 1.9391561733360843,
+  "avg_leg2": 30.359613148308657,
+  "avg_S": 123.37760876657072,
+  "B3": 14.245983003864794,
+  "targets": {
+   "avg_leg1": 1.939156,
+   "avg_leg2": 30.359613,
+   "avg_S": 123.377609,
+   "B3": 14.245983
+  },
+  "status": "PASS (all four within 9e-8 relative)"
+ },
+ "tripwires": {
+  "T1_pi_periodicity_rel": 9.93e-16,
+  "T2_reflection_worst_rel": 7.94e-15,
+  "T3_min_at_pi_over_2": 1.266545,
+  "max_S": 310.80695994744156,
+  "reference_frozen_values": {
+   "T1": 9.93e-16,
+   "T2": 7.936e-15,
+   "minS": 1.266545
+  }
+ },
+ "certified_head_anchor": {
+  "b1": "0.8815738220495995485818877 +/- 3.58e-26",
+  "head_3_to_251": "1.132885992768967e-5 +/- 1.92e-23",
+  "gamma_head": "0.8815624931896718589117068 +/- 2.49e-26",
+  "paper_prop_6_3": "b1 >= 0.881573822049, head <= 1.1328860e-5"
+ },
+ "certified_sensitivities": {
+  "db1_dV": "-0.787793605140965 +/- 5.97e-17",
+  "b7_gain_rate_per_u7": "0.885306321646 +/- 3.63e-13",
+  "u7_at_triple": "1.32852960100e-7"
+ },
+ "b5_program": {
+  "hyperplane": {
+   "b1": 1,
+   "b3": "1/6",
+   "b5": "3/40",
+   "A0": "11/6 (sharp)"
+  },
+  "C_lambda_floor": "pi/K_G_upper = 1.763115834999343717805 +/- 3.18e-22",
+  "lambda_star": "0.93623331111986 +/- 3.52e-15",
+  "swept_family_lambda_max": "9.14497596448671 (F1 c=1.0) \u2014 families do not contain the extremisers",
+  "structural_no_go": "for lambda > lambda*, pairs with A_lambda > 11/6 - 3lambda/40 must exist"
+ },
+ "scope_not_swept": [
+  "vartheta axis (needs certified A-grid regeneration; priced <= 8 h, not run)",
+  "second Hermite mixing parameter (sign-function perturbations beyond psi_3)",
+  "D beyond {3,5,7}",
+  "residual cells listed in verdict",
+  "full supremum C_lambda for the b5 strip"
+ ],
+ "labels": {
+  "MACHINE-VERIFIED": [
+   "b1",
+   "head",
+   "gamma_head",
+   "all box bounds and point deltas",
+   "hyperplane b-triple",
+   "lambda*"
+  ],
+  "CITED-DEPENDENCY": [
+   "certified A-grid grid_M251.json (sha a756496c...)",
+   "authors d3h_certificate.json B3 = 14.44243664663976457"
+  ],
+  "COMPUTATIONAL-EVIDENCE": [
+   "49-pt S(theta) sweeps and every B3/tail derived from them",
+   "Nelder-Mead search path",
+   "b5 family scan interpretation"
+  ]
+ },
+ "retractions_inline": [
+  "float Nelder-Mead apparent +2.14e-11 improvement over the paper decimals: WITHDRAWN after certified re-evaluation (-2.11e-9)"
+ ],
+ "environment": {
+  "python": "3.14.3",
+  "python-flint": "0.9.0",
+  "numpy": "2.5.2",
+  "prec_bits": {
+   "coefficient_chain": 256,
+   "b5": 300,
+   "KG_restatements": 400
+  }
+ },
+ "reproduce": [
+  "cd cs/kg/src && ../../.venv/bin/python septic_legs.py           # anchor + tripwires",
+  "cd cs/kg/src && ../../.venv/bin/python gate_c_fast.py           # certified head anchor",
+  "cd cs/kg/src && ../../.venv/bin/python gate_c_bnb.py gateA      # pre-registered depth-7 B&B",
+  "cd cs/kg/src && ../../.venv/bin/python gate_c_valley.py         # S2/S3 continuation + NM",
+  "cd cs/kg/src && ../../.venv/bin/python gate_c_certify.py        # certified comparisons",
+  "cd cs/kg/src && ../../.venv/bin/python gate_c_b5.py             # (b) families + ceiling"
+ ]
+}

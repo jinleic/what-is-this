@@ -1,0 +1,40 @@
+{
+ "created_utc": "2026-08-30T18:43:27.800581+00:00",
+ "campaign": "campaigns/20260830T184327Z_53a194ad_e663d5477de1",
+ "gate": "C-exact-ML-reference-small-instance",
+ "code": "[[36,4,4]] BB family A=x^3+y+y^2, B=y+x+x^3 (smallest same-family instance)",
+ "method": "exact coset enumeration over the FULL affine syndrome space (2^20 solutions/shot), exact rational class masses Z_c (Fractions), ML argmax, regret in nats; brute-force equality asserted per run",
+ "runner_results": {
+  "p=0.01 (2000 shots, seed 786106858562500216)": {
+   "exact_ml_ler": 0.0005,
+   "beam8": 0.004,
+   "bp30+osd": 0.0055,
+   "nms-ens24": 0.002
+  },
+  "p=0.03 (2000 shots, seed 4030327461108913685)": {
+   "exact_ml_ler": 0.0145,
+   "beam8": 0.0325,
+   "bp30+osd": 0.033,
+   "nms-ens24": 0.026
+  }
+ },
+ "owner_verification": [
+  "validate_exact_vs_bruteforce PASSED (assert-carrying) on owner seed 20260830, 5 fresh syndromes, wmax=5",
+  "dx=dz=4 independently recomputed via bb_distances",
+  "fresh-seed owner spot check 400 shots @ p=0.03, seed 987654321: ml_ler 0.020 vs agent 0.0145 at 2000 shots; arms beam8 0.030, bp30+osd 0.0425, nms-ens24 0.0225 \u2014 ML-best ordering reproduced"
+ ],
+ "scope_limits": [
+  "code-capacity Z-memory sector only; NOT the [[144,12,12]] headline configuration",
+  "circuit-level exact inference documented unreachable (cost wall) even at n=36 \u2014 field not crossed here"
+ ],
+ "headline": "exact degenerate-ML materially outperforms beam8/BP+OSD/nms-ens24 on this instance at both tested p [NUMERICAL]",
+ "files": {
+  "gatec_p0.01_2000shots.json": "bfd46f44a911",
+  "gatec_p0.03_2000shots.json": "b02219d9ab12"
+ },
+ "source_snapshot_sha12": {
+  "exact_ml.py": "108148b5eb80",
+  "run_gatec.py": "646721e17917"
+ },
+ "host": "macOS-26.5.2-arm64-arm-64bit-Mach-O"
+}

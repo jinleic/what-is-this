@@ -1,0 +1,19 @@
+{
+  "quantity": "||D^3 H||_{L2(T)} for the cubic-quintic scheme",
+  "route": "combined-kernel trace average: B3^2 <= (pi^2/6) * (1/pi) int_0^pi S(theta) dtheta",
+  "S_definition": "S = ||Phi_3||^2_{L2(gamma2)} + 4 ||dx dy Phi_3||^2, Phi_3 = sum_pa c_pa(t) G_pa",
+  "M_panels_on_0_pi": 1024,
+  "gl_points_per_panel": 4,
+  "K_bulk": 110,
+  "K_edge": 200,
+  "edge_dist": 0.55,
+  "prec_bits": 256,
+  "mu_hypothesis": "mu(theta)=A-|B|>=0.49 and |1-rho^2|>=0.3724 verified on 4000 arcs of [0,pi]",
+  "symmetry": "S(-theta)=S(theta) since all construction coefficients are real",
+  "avg_S_upper": "[126.8038522005081176757813 +/- 5.00e-23]",
+  "gl_sum": "[3.9e+2 +/- 5.96]",
+  "remainder_total_upper": "[7.21038388820518 +/- 6.44e-16]",
+  "max_panel_S8": "[6.473468291e+30 +/- 3.84e+20]",
+  "B3_upper": "[14.44243664663976446959696 +/- 2.35e-24]",
+  "seconds": 1521.2
+}

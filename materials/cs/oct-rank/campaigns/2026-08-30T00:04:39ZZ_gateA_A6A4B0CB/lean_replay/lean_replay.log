@@ -1,0 +1,76 @@
+# Lean replay log — OctRank Gate A (2026-08-30T00:03:56Z)
+toolchain: leanprover/lean4:v4.29.1
+mathlib rev: 5e932f97dd25535344f80f9dd8da3aab83df0fe6 (v4.29.1)
+repo commit: 816a01e16acb5849ba5ad9858e80cbb5a39b967d
+lean: Lean (version 4.29.1, arm64-apple-darwin24.6.0, commit f72c35b3f637c8c6571d353742168ab66cc22c00, Release)
+lake: Lake version 5.0.0-src+f72c35b (Lean version 4.29.1)
+
+== lake build: completed successfully, 2398 jobs (cache fetched via lake exe cache get, 8232 files) ==
+
+== #check (exact kernel-accepted statements) ==
+@oct_rank_ge_eighteen : ∀ {r : ℕ}, IsSlicesOfRank r T_O → 18 ≤ r
+eighteen_le_slicesRank_T_O : 18 ≤ slicesRank T_O
+@tau_rank_ge_seven : ∀ {r : ℕ}, IsSlicesOfRank r tau → 7 ≤ r
+seven_le_slicesRank_tau : 7 ≤ slicesRank tau
+@Krawczyk.krawczyk_exists : ∀ {N : ℕ} (g : (Fin N → ℝ) → Fin N → ℝ) (x₀ : Fin N → ℝ) (Y : Matrix (Fin N) (Fin N) ℝ),
+  Function.Injective Y.mulVec →
+    ∀ (ρ : ℝ),
+      ∀ K < 1,
+        Set.MapsTo (fun x => x - Y.mulVec (g x)) (Metric.closedBall x₀ ρ) (Metric.closedBall x₀ ρ) →
+          LipschitzOnWith K (fun x => x - Y.mulVec (g x)) (Metric.closedBall x₀ ρ) →
+            x₀ ∈ Metric.closedBall x₀ ρ → ∃ x ∈ Metric.closedBall x₀ ρ, g x = 0
+@Krawczyk.krawczyk_exists_of_bounds : ∀ {N : ℕ} (g : (Fin N → ℝ) → Fin N → ℝ) (x₀ : Fin N → ℝ)
+  (Y : Matrix (Fin N) (Fin N) ℝ),
+  Function.Injective Y.mulVec →
+    ∀ (ρ : ℝ),
+      ∀ K < 1,
+        Differentiable ℝ g →
+          (∀ x ∈ Metric.closedBall x₀ ρ, ‖fderiv ℝ (fun z => z - Y.mulVec (g z)) x‖₊ ≤ K) →
+            dist (x₀ - Y.mulVec (g x₀)) x₀ ≤ (1 - ↑K) * ρ → ∃ x ∈ Metric.closedBall x₀ ρ, g x = 0
+Krawczyk.slicesRank_le_of_residual_zero : ∀ (A B C : Fin 25 → Fin 8 → ℝ),
+  (∀ (p b c : Fin 8), ∑ s, A s p * B s b * C s c = Lmat8 (e8R p) b c) → IsSlicesOfRank 25 T_O
+Krawczyk.slicesRank_le_of_residual_zero_tau : ∀ (A : Fin 7 → Fin 3 → ℝ) (B C : Fin 7 → Fin 4 → ℝ),
+  (∀ (p : Fin 3) (b c : Fin 4), ∑ s, A s p * B s b * C s c = tau p b c) → IsSlicesOfRank 7 tau
+@pencil_rank_ge : ∀ {n : ℕ},
+  Even n →
+    ∀ (C : Matrix (Fin n) (Fin n) ℝ) (a b : ℝ), a ^ 2 < b → C * C - (2 * a) • C + b • 1 = 0 → n + n / 2 ≤ pencilRank 1 C
+@slicesRank_L_family_ge : ∀ {n : ℕ} (Φ : (Fin n → ℝ) → Matrix (Fin n) (Fin n) ℝ),
+  (∀ (x y : Fin n → ℝ), Φ (x + y) = Φ x + Φ y) →
+    (∀ (t : ℝ) (x : Fin n → ℝ), Φ (t • x) = t • Φ x) →
+      (∀ (x : Fin n → ℝ), Φ x = 0 ↔ x = 0) →
+        (∀ (u v : Fin n → ℝ),
+            LinearIndependent ℝ ![u, v] → ∀ {r : ℕ}, IsSlicesOfRank r (pencil (Φ u) (Φ v)) → n + n / 2 ≤ r) →
+          ∀ (k : ℕ) (w : Fin (k + 2) → Fin n → ℝ),
+            LinearIndependent ℝ w → ∀ {r : ℕ}, (IsSlicesOfRank r fun a => Φ (w a)) → n + n / 2 + k ≤ r
+@substitution_pivot_last : ∀ {k n : ℕ} (S : Fin (k + 1) → Matrix (Fin n) (Fin n) ℝ),
+  S (Fin.last k) ≠ 0 →
+    ∀ {r : ℕ}, IsSlicesOfRank r S → ∃ l, IsSlicesOfRank (r - 1) fun a => S a.castSucc - l a • S (Fin.last k)
+T_O : Fin 8 → Matrix (Fin 8) (Fin 8) ℝ
+@Krawczyk.isSlicesOfRank_transpose : ∀ {k n r : ℕ} {S : Fin k → Matrix (Fin n) (Fin n) ℝ},
+  IsSlicesOfRank r S ↔ IsSlicesOfRank r fun a => (S a).transpose
+
+== axiom audit: main headline theorems ==
+'OctoRank.oct_rank_ge_eighteen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.eighteen_le_slicesRank_T_O' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.tau_rank_ge_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.seven_le_slicesRank_tau' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.Krawczyk.krawczyk_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.Krawczyk.krawczyk_exists_of_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.Krawczyk.slicesRank_le_of_residual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+Audit.lean:9:14: error(lean.unknownIdentifier): Unknown constant `OctoRank.Oct18Identities.Lmat8_conj_mul_self`
+Audit.lean:10:14: error(lean.unknownIdentifier): Unknown constant `OctoRank.Oct18Identities.Lmat8_polar`
+
+== axiom audit: supporting theorems ==
+'OctoRank.Lmat8_conj_mul_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.Lmat8_polar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.inn8_sq_lt_of_linearIndependent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.pencil_rank_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.slicesRank_L_family_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.substitution_pivot0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.substitution_pivot_last' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.Krawczyk.isSlicesOfRank_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.Krawczyk.slicesRank_le_of_residual_zero_tau' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+== axiom audit: composition identity + polarization (Oct18Identities, via root open) ==
+'OctoRank.Lmat8_conj_mul_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OctoRank.Lmat8_polar' depends on axioms: [propext, Classical.choice, Quot.sound]

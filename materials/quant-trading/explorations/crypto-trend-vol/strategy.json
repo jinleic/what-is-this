@@ -1,0 +1,211 @@
+{
+ "schema_version": 1,
+ "id": "crypto-trend-vol",
+ "title": "Slow BTC/ETH time-series trend with scale-down-only volatility control (daily, long/cash)",
+ "status": "falsified",
+ "mechanism": {
+  "universe": [
+   "BTCUSDT",
+   "ETHUSDT"
+  ],
+  "data": "daily settlement price = Binance 1h spot close at 00:00 UTC of each date, aggregated locally from the collected monthly zips",
+  "signal": "sign(Close(D)/Close(D-120) - 1) per asset; long when positive, cash otherwise",
+  "sizing": "equal-weight across active assets (weights sum to <= 1); volatility overlay multiplies exposure by min(1, 0.50 / portfolio_vol) where portfolio_vol is the weighted average of 20-day realized vol (365-annualized). Scale-down-only: exposure is never levered above equal-weight",
+  "execution": "position decided with data through Close(D) earns the return over day D (Close(D) -> Close(D+1)); no leverage, no shorting",
+  "costs": "12 bps one-way on |delta weight| each day (contract default); stress at 24 bps",
+  "benchmark": "equal-weight BTC/ETH buy-and-hold charged 12 bps at inception; cash as secondary baseline"
+ },
+ "data_used": {
+  "source": "quant-trading/data/raw/binance/spot-1h (Binance public data.binance.vision monthly zips)",
+  "manifest_sha256_verified": "e1b760e96ba7d71a70188afdfa171db6ff33621d64f769fe182b37645f70a72d",
+  "notes": [
+   "534 fewer hourly bars than the ideal grid (0.035%); midsample gaps, all away from midnight stamps; no midnight settlement price missing",
+   "19 monthly files (2025-01 onward) use microsecond epochs; normalizing arithmetic verified against 53 ms-unit files",
+   "hour-grid repair: floor epoch to hour; 7,739 duplicate stamps in the raw concat via overlap of adjacent definitions; resolved, final hourly panel has zero duplicates and zero missing midnights"
+  ]
+ },
+ "development_window": {
+  "start": "2020-08-01",
+  "end": "2023-12-31",
+  "obs_selected_variant": 1127
+ },
+ "validation_window": {
+  "start": "2024-01-01",
+  "end": "2024-12-31",
+  "obs": 366
+ },
+ "holdout_accessed": false,
+ "trial_count": 6,
+ "parameters": {
+  "lookbacks": [
+   20,
+   60,
+   120
+  ],
+  "vol_windows": [
+   20,
+   60
+  ],
+  "vol_target_annualized": 0.5,
+  "overlay": "scale_down_only",
+  "selected": {
+   "lookback": 120,
+   "vol_window": 20
+  },
+  "selection_rule": "highest development net Sharpe at 1x costs",
+  "budget_respected": "6 of max 12"
+ },
+ "signal_timing": {
+  "formation": "daily at 00:00 UTC using Close(D) (= midnight price of D; the previous 23:00 bar's close)",
+  "returns": "strategy_return(D) = pos(D) * (Close(D+1)/Close(D) - 1) for the day D span, minus costs",
+  "next_day_execution": "positions established at the settlement price used in the signal timestamp; no same-tick data enters the signal",
+  "lag_guarantee": "momentum uses Close(D) and Close(D-120); vol uses daily returns completing at Close(D); both known at formation"
+ },
+ "cost_model": {
+  "one_way_bps": 12.0,
+  "application": "charged daily on |delta total weight|",
+  "stress_multiplier": 2.0,
+  "validation_avg_cost_bps_per_day": 0.648,
+  "benchmark_entry_cost_bps": 12.0
+ },
+ "benchmark": {
+  "id": "equal_weight_buy_and_hold",
+  "dev": {
+   "n": 1247,
+   "sharpe": 1.0323,
+   "annret": 0.727,
+   "annvol": 0.7043,
+   "cum": 4.0982,
+   "maxdd": -0.7625
+  },
+  "validation": {
+   "n": 366,
+   "sharpe": 1.3562643617191663,
+   "annret": 0.7579033443854581,
+   "annvol": 0.5588168249328317,
+   "cum": 0.8310917490490779,
+   "maxdd": -0.35475567639624983
+  },
+  "secondary": "cash (0% return)"
+ },
+ "metrics": {
+  "development_selected": {
+   "n": 1127,
+   "sharpe": 1.3446649619347886,
+   "annret": 0.5232991792597596,
+   "annvol": 0.38916696282976226,
+   "cum": 2.981150586327633,
+   "maxdd": -0.3241424747417022
+  },
+  "development_selected_2x": {
+   "n": 1127,
+   "sharpe": 1.2963945375702897,
+   "annret": 0.5045862012886488,
+   "annvol": 0.3892227147411059,
+   "cum": 2.757574608681543,
+   "maxdd": -0.3262120715358181
+  },
+  "validation_selected": {
+   "n": 366,
+   "sharpe": 1.7004096967546591,
+   "annret": 0.6755828516126785,
+   "annvol": 0.3973059274491739,
+   "cum": 0.8201771546360204,
+   "maxdd": -0.2114896853415723
+  },
+  "validation_selected_2x": {
+   "n": 366,
+   "sharpe": 1.6405721404935496,
+   "annret": 0.6519195609162826,
+   "annvol": 0.39737329729380816,
+   "cum": 0.7775085793704513,
+   "maxdd": -0.2257375315062824
+  },
+  "validation_excess_vs_benchmark": {
+   "cum_1x": -0.1277067576948414,
+   "cum_2x": -0.1481505338257716,
+   "sharpe_strategy_minus_benchmark": 0.3441356382808336
+  },
+  "development_excess_vs_benchmark": {
+   "cum_1x": -0.5192,
+   "cum_2x": -0.5462,
+   "note": "dev excess is negative: the strategy's dev Sharpe edge vs buy-and-hold comes from volatility reduction, not extra return"
+  },
+  "raw_vs_overlay_attribution": {
+   "dev_raw_L120": {
+    "n": 1127,
+    "sharpe": 1.2381766915933698,
+    "annret": 0.7551127456556233,
+    "annvol": 0.6098586338948868,
+    "cum": 4.7727281199537765,
+    "maxdd": -0.5660387525872346
+   },
+   "dev_overlay_L120_V20": {
+    "n": 1127,
+    "sharpe": 1.3446649619347886,
+    "annret": 0.5232991792597596,
+    "annvol": 0.38916696282976226,
+    "cum": 2.981150586327633,
+    "maxdd": -0.3241424747417022
+   },
+   "val_raw_L120": {
+    "n": 366,
+    "sharpe": 1.6072452076880708,
+    "annret": 0.7422314524675707,
+    "annvol": 0.4618034939019837,
+    "cum": 0.8932582160756226,
+    "maxdd": -0.22908636699383778
+   },
+   "val_overlay_L120_V20": {
+    "n": 366,
+    "sharpe": 1.7004096967546591,
+    "annret": 0.6755828516126785,
+    "annvol": 0.3973059274491739,
+    "cum": 0.8201771546360204,
+    "maxdd": -0.2114896853415723
+   },
+   "edge_before_overlay": {
+    "dev": "raw trend Sharpe 1.2382 vs benchmark 1.0323 with annret 0.7551 vs 0.7270 and maxDD -0.566 vs -0.763: raw trend has the risk-adjusted edge",
+    "validation": "raw trend Sharpe 1.6072 vs benchmark 1.3563 with annret 0.7422 vs 0.7591: edge persists one year out",
+    "overlay_contribution_dev": "Sharpe 1.2382 -> 1.3447 (+0.107), return 0.7551 -> 0.5233, maxDD -0.566 -> -0.324",
+    "overlay_contribution_val": "Sharpe 1.6072 -> 1.7004 (+0.093), return 0.7422 -> 0.6756, maxDD -0.229 -> -0.211"
+   }
+  }
+ },
+ "first_falsification_gate": {
+  "definition": "pre-registered before any 2024 observation: (a) validation net Sharpe > 0 and > named benchmark net Sharpe; AND (b) cumulative validation excess return at 2x costs >= 0; OR risk-overlay route: (a) plus lower validation maxDD at comparable return (within 5 percentage points of benchmark annret)",
+  "checked_values": {
+   "strategy_val_sharpe_2x": 1.6405721404935496,
+   "benchmark_val_sharpe": 1.3562643617191663,
+   "excess_cum_1x": -0.1277067576948414,
+   "excess_cum_2x": -0.1481505338257716,
+   "strategy_val_maxdd": -0.2114896853415723,
+   "benchmark_val_maxdd": -0.35475567639624983,
+   "strategy_val_annret_2x": 0.6519195609162826,
+   "benchmark_val_annret": 0.7579033443854581
+  },
+  "result_detail": [
+   "(a) PASS: 1.7004 (1x) / 1.6406 (2x) > 1.3563 benchmark",
+   "(b) FAIL: cumulative excess -0.1287 at 1x and -0.1482 at 2x costs",
+   "risk-overlay route FAIL: maxDD -0.211 vs -0.355 (lower, good) but return 0.652/0.676 vs 0.759 annret is not comparable (7.7-10.7 pp shortfall, > 5 pp tolerance)"
+  ]
+ },
+ "gate_result": "failed",
+ "leakage_checks": [
+  "signal inputs: Close(D) and Close(D-120) both observed at formation time; daily vol uses returns completing at Close(D): all lag-free",
+  "run.py fails closed when --end > 2024-12-31 unless QUANT_HOLDOUT_UNLOCK=1; flag never set during this work; selection and parameters independent of the flag",
+  "data manifest sha256 verified before every run",
+  " embargo discipline: no 2025+ observation was loaded into any selection or validation computation; the scratch parquet stores 2025-2026 timestamps only because aggregation was run once over the full collected archive; all masks cut at 2024-12-31 returns and no embargoed metric was computed or reported",
+  "windows: dev returns labeled 2020-08-03..2023-12-31 (1127 obs, warmup 120 trading days); validation 2024-01-01..2024-12-31 (366 obs); last validation return uses only the 2025-01-01 00:00 price, the first necessarily-required post-2024 print equal to validation-end return realization",
+  "survivorship/universe: fixed two-asset universe declared ex ante; no asset added or removed after seeing results"
+ ],
+ "risks": [
+  "single-asset concentrated crypto beta: buy-and-hold itself returned +83% in validation, so a long/cash trend overlay rides a rising market; excess-return falsification does not invalidate risk-adjusted merit",
+  "selection margin between top two dev variants is thin (1.3447 vs 1.3388): L60_V60 could have been chosen with materially similar results",
+  "dev excess return negative on all six variants vs buy-and-hold: the family's edge is volatility-reduction, fragile to the benchmark definition chosen by contract",
+  "scale-down-only overlay coupled with long/cash trend produces average exposure ~0.49-0.63: results are lever-agnostic but sensitive to target vol level (not tuned: fixed 50% by design)",
+  "midnight settlement convention vs close-auction alternatives shifts daily returns by ~0.2-6 bps/bars (mean 51.7 bps BTC per-book difference at 00:00 prints); robustness to this choice not separately tested within budget",
+  "two-asset panel with 19 missing hourly bars: negligible, but trend on stale prints during outages can flip signals"
+ ],
+ "next_experiment": "Since raw trend (no overlay) carried the entire edge and the overlay fails the contract's cumulative-excess requirement, the falsified family still motivates a follow-up: test whether raw 120d trend ON A RISK-ADJUSTED BASIS with explicit drawdown targeting (not scale-down-only) can convert vol reduction into benchmark-excess return in validation; otherwise the family should be shelved rather than re-tried with more lookbacks (trial budget discipline)."
+}

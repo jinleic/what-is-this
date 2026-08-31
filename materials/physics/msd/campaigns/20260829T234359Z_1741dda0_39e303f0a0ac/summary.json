@@ -1,0 +1,89 @@
+{
+  "schema": "msd.gate_a.campaign.v1",
+  "evidence": "NUMERICAL",
+  "run": {
+    "script": "src/run_campaign.py",
+    "requested_priority": "nice -n 10",
+    "single_core": true,
+    "shots_per_point": 200000,
+    "seed": 20260627,
+    "stop_condition": "completed exactly 1 p points x 200000 shots",
+    "label": "gate_a",
+    "p_values": [
+      0.0001
+    ],
+    "wall_seconds_by_point": {
+      "1em04": 0.21732995798811316
+    }
+  },
+  "paper_headline": {
+    "reported_coefficient_c": 300.0,
+    "pass_interval": [
+      150.0,
+      600.0
+    ],
+    "source": "arXiv:2605.21867 Fig. 10",
+    "evidence": "REPORTED"
+  },
+  "quadratic_fit_verdict": "INCONCLUSIVE",
+  "gate_a_verdict": "INCONCLUSIVE",
+  "gate_a_prime": null,
+  "comparison_scope": "The verdict applies only to this Clifford/effective-output reconstruction; the paper does not name a decoder in its text.",
+  "circuit": {
+    "sha256": "39e303f0a0ace15cbc37392211224e4047d36d537d0b8c7f7089cab69aaf07f6",
+    "per_point": {
+      "1em04": {
+        "physical_wires": 22,
+        "effective_output_wires": [
+          8,
+          9,
+          10
+        ],
+        "physical_error_rate": 0.0001,
+        "noise_model": {
+          "single_qubit_gate_and_idle": "DEPOLARIZE1(p)",
+          "two_qubit_gate": "DEPOLARIZE2(p)",
+          "reset": "basis-flip(p)",
+          "measurement": "basis-flip(p)"
+        },
+        "t_layer": "identity (Clifford-only Stim surrogate)",
+        "decoder": "detector postselection + effective X-frame parity; not paper decoder",
+        "num_qubits": 22,
+        "num_ticks": 133,
+        "num_detectors": 16,
+        "num_observables": 3,
+        "sha256": "39e303f0a0ace15cbc37392211224e4047d36d537d0b8c7f7089cab69aaf07f6",
+        "stim_filename": "circuit_p1em04.stim"
+      }
+    }
+  },
+  "estimates": [
+    {
+      "physical_error_rate": 0.0001,
+      "shots": 200000,
+      "accepted": 183998,
+      "rejected": 16002,
+      "logical_failures": 7032,
+      "acceptance_rate": 0.91999,
+      "logical_error_rate": 0.03821780671529038,
+      "evidence": "NUMERICAL",
+      "logical_error_rate_wilson95": [
+        0.03735138606239445,
+        0.03910350888477951
+      ],
+      "coefficient_c_eff": 3821780.6715290383
+    }
+  ],
+  "quadratic_fit": {
+    "status": "INSUFFICIENT_POSITIVE_POINTS",
+    "points_used": 1,
+    "slope": null,
+    "coefficient_c": null,
+    "evidence": "NUMERICAL"
+  },
+  "acceptance_ci_note": "Wilson 95% intervals can be recomputed from accepted/shots; not used in fit",
+  "artifact_files": [
+    "summary.json",
+    "circuit_p1em04.stim"
+  ]
+}

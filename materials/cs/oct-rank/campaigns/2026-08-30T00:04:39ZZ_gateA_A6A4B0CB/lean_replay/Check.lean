@@ -1,0 +1,15 @@
+import OctoRank
+open OctoRank
+#check @oct_rank_ge_eighteen
+#check @eighteen_le_slicesRank_T_O
+#check @tau_rank_ge_seven
+#check @seven_le_slicesRank_tau
+#check @Krawczyk.krawczyk_exists
+#check @Krawczyk.krawczyk_exists_of_bounds
+#check @Krawczyk.slicesRank_le_of_residual_zero
+#check @Krawczyk.slicesRank_le_of_residual_zero_tau
+#check @pencil_rank_ge
+#check @slicesRank_L_family_ge
+#check @substitution_pivot_last
+#check @T_O
+#check @Krawczyk.isSlicesOfRank_transpose

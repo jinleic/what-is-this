@@ -1,0 +1,204 @@
+{
+ "certified_axis": {
+  "cells": 1666,
+  "min_s_lower": "0",
+  "min_s_lower_cell": "[0, 1/536870912]",
+  "source": "liu9_second_order.certify_symmetric(parameters)",
+  "symmetric_certificate_keys": [
+   "cells",
+   "certified",
+   "slope_zero_exact",
+   "structural_zeros",
+   "worst_strict_cell",
+   "worst_strict_margin",
+   "x_window",
+   "x_window_minimum_curvature",
+   "x_window_minimum_curvature_lower",
+   "zero_boundary_q_over_y2",
+   "zero_boundary_q_over_y2_lower"
+  ]
+ },
+ "claim_status": "MACHINE-VERIFIED",
+ "honesty": "The per-cell S >= 0 bounds and the Chat lower bounds are the imported certified module's work.  This module's own contribution is the independent pairing loop, the exact q minimisation, the transcription check and the naive-hull diagnosis.  It supersedes the deleted liu9-sasym-4slot and liu9-sasym-4slot-cover reports, whose pencil was invented and whose cover was a float centre scan.",
+ "mutations": [
+  {
+   "expected": "FAIL",
+   "mechanism": "certified Chat lower bound multiplied by 8",
+   "mutation": "chat_scaled_by_8",
+   "observed": "FAIL",
+   "ok": true,
+   "result": {
+    "cell_pairs_checked": 60252,
+    "closes": false,
+    "early_exit": true,
+    "first_negative": {
+     "left": "[170213336450871943608374492182248993458053/320000000000000000000000000000000000000000, 85630241220373461815979319594988055531177/160000000000000000000000000000000000000000]",
+     "lower": "[-0.000104240121022 +/- 2.96e-16]",
+     "right": "[38272941726624460636771969208632175316127/320000000000000000000000000000000000000000, 9830021929124860165089029054089823230107/80000000000000000000000000000000000000000]"
+    },
+    "negative_pairs": 1,
+    "nonfinite_pairs": 0,
+    "worst_lower": "[-0.00010424012102229596658 +/- 2.33e-24]",
+    "worst_pair": [
+     "[170213336450871943608374492182248993458053/320000000000000000000000000000000000000000, 85630241220373461815979319594988055531177/160000000000000000000000000000000000000000]",
+     "[38272941726624460636771969208632175316127/320000000000000000000000000000000000000000, 9830021929124860165089029054089823230107/80000000000000000000000000000000000000000]"
+    ]
+   }
+  },
+  {
+   "expected": "FAIL",
+   "mechanism": "Chat replaced by the constant -1/2",
+   "mutation": "chat_forced_to_minus_one_half",
+   "observed": "FAIL",
+   "ok": true,
+   "result": {
+    "cell_pairs_checked": 1,
+    "closes": false,
+    "early_exit": true,
+    "first_negative": {
+     "left": "[0, 1/536870912]",
+     "lower": "-0.125000000000",
+     "right": "[0, 1/536870912]"
+    },
+    "negative_pairs": 1,
+    "nonfinite_pairs": 0,
+    "worst_lower": "-0.12500000000000000000",
+    "worst_pair": [
+     "[0, 1/536870912]",
+     "[0, 1/536870912]"
+    ]
+   }
+  },
+  {
+   "expected": "FAIL",
+   "mechanism": "local wide-ball Chat with kappa inflated eightfold",
+   "mutation": "local_chat_with_kappa_times_8",
+   "observed": "FAIL",
+   "ok": true,
+   "result": {
+    "cell_pairs_checked": 1,
+    "closes": false,
+    "early_exit": true,
+    "first_negative": {
+     "left": "[0, 1/536870912]",
+     "lower": "[-1.04771236225e-16 +/- 2.87e-28]",
+     "right": "[0, 1/536870912]"
+    },
+    "negative_pairs": 1,
+    "nonfinite_pairs": 0,
+    "worst_lower": "[-1.0477123622471375272e-16 +/- 1.11e-36]",
+    "worst_pair": [
+     "[0, 1/536870912]",
+     "[0, 1/536870912]"
+    ]
+   }
+  }
+ ],
+ "naive_hull_diagnosis": {
+  "cell_pairs_checked": 2080,
+  "cells": [
+   {
+    "cell": "[1/2, 33/64]",
+    "naive_enclosure": "[+/- 0.0881]",
+    "naive_lower": "[-0.0441821151577 +/- 3.15e-14]",
+    "naive_lower_is_negative": true,
+    "point_sample_min": "[0.0203009977052 +/- 3.65e-14]"
+   },
+   {
+    "cell": "[0, 1/64]",
+    "naive_enclosure": "[+/- 0.223]",
+    "naive_lower": "[-0.191916832156 +/- 3.79e-13]",
+    "naive_lower_is_negative": true,
+    "point_sample_min": "0"
+   },
+   {
+    "cell": "[63/64, 1]",
+    "naive_enclosure": "[+/- 0.286]",
+    "naive_lower": "[-0.175087467750 +/- 4.06e-13]",
+    "naive_lower_is_negative": true,
+    "point_sample_min": "[0.0533709832792 +/- 2.52e-14]"
+   }
+  ],
+  "closes": false,
+  "negative_pairs": 2080,
+  "uniform_axis_cells": 64,
+  "verdict": "naive wide-ball hulls do NOT close: the S enclosure radius exceeds the true cell minimum, so every pair's lower bound is negative",
+  "worst_lower": "[-0.23766659896913038560 +/- 4.48e-22]"
+ },
+ "q_direction": "exact: quadratic_minimum_lower minimises (1-q)s1 + q s2 + q(1-q) chat over q in [0,1] analytically; no q grid is used",
+ "replication_cover": {
+  "cell_pairs_checked": 1388611,
+  "closes": true,
+  "early_exit": false,
+  "first_negative": null,
+  "negative_pairs": 0,
+  "nonfinite_pairs": 0,
+  "worst_lower": "0",
+  "worst_pair": [
+   "[0, 1/536870912]",
+   "[0, 1/536870912]"
+  ]
+ },
+ "report_sha256": "1ba559e6acd6f20ab83aefe39d1f1660a860668037d36c2f535cff3f61a5f839",
+ "scope": "independent replication of the already-PROVED S_asym theorem of uc/liu9_second_order.py; NOT a new theorem",
+ "tool": "liu9_sasym_cover_check.py",
+ "transcription_check": {
+  "rows": [
+   {
+    "kind": "S",
+    "overlap": true,
+    "point": "1/8",
+    "residual": "[+/- 5.29e-68]"
+   },
+   {
+    "kind": "S",
+    "overlap": true,
+    "point": "1/4",
+    "residual": "[+/- 9.91e-68]"
+   },
+   {
+    "kind": "S",
+    "overlap": true,
+    "point": "1/2",
+    "residual": "[+/- 1.84e-67]"
+   },
+   {
+    "kind": "S",
+    "overlap": true,
+    "point": "11/16",
+    "residual": "[+/- 2.39e-67]"
+   },
+   {
+    "kind": "S",
+    "overlap": true,
+    "point": "7/8",
+    "residual": "[+/- 2.86e-67]"
+   },
+   {
+    "kind": "S",
+    "overlap": true,
+    "point": "63/64",
+    "residual": "[+/- 3.04e-67]"
+   },
+   {
+    "kind": "Chat",
+    "overlap": true,
+    "point": "1/8,7/8",
+    "residual": "[+/- 5.91e-68]"
+   },
+   {
+    "kind": "Chat",
+    "overlap": true,
+    "point": "1/4,1/2",
+    "residual": "[+/- 1.86e-68]"
+   },
+   {
+    "kind": "Chat",
+    "overlap": true,
+    "point": "1/2,63/64",
+    "residual": "[+/- 4.90e-68]"
+   }
+  ],
+  "transcription_verified": true
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "campaign": "off-diagonal sandwich census + certified decision",
+ "pre_statement": "pre_statement.md + amendment_1_honest_map.md (committed before compute)",
+ "family": "u2 = P^-1.U.Q^-T, v2 = Q^T.V.R^-T, w2 = P^T.W.R (standard matmul); == frozen sandwich at monomials bit-for-bit",
+ "convention": "frozen gatec_sweep reshape: row-major 3x3 blocks in 23x9 rows; Brent index U[r][3i+k]",
+ "array_fingerprints": {
+  "sun56_U0_int": "(0, 0, 0, 0, 1, 0, 0, 1, 1)",
+  "sun56_V0_int": "(-1, 1, 1, -1, 1, 1, 0, 0, 0)",
+  "sun56_W0_int": "(0, 0, 1, 0, 0, 0, 0, 0, 1)"
+ },
+ "factorization": {
+  "orbits": 145,
+  "orbit_size": 48,
+  "matrices": 6960,
+  "proof": "outer-monomial invisibility (structural)",
+  "subcube_controls": "42,050 direct-vs-table, zero mismatches (paper55: anchors 125 and 0); sun56 anchor 125: 281=281",
+  "random_concordance": "200/200; independent monomial tests 25/25",
+  "sigma_all_ternary_invariance": "40/40 + structural proof"
+ },
+ "census": {
+  "paper55_survivor_data_triples": 5700,
+  "sun56_survivor_data_triples": 4510,
+  "per_sigma_paper55": 630374400,
+  "per_sigma_sun56": 498769920,
+  "named_set_total_instances": 3387432960
+ },
+ "decision": {
+  "formula": "total = sum over sides of (d + [floor-impossible]) + 14",
+  "anchor_asserted": "125_125_125 totals 55 (paper55) and 55 (sun56)",
+  "paper55_histogram": {
+   "55": 1,
+   "56": 2,
+   "57": 3,
+   "58": 13,
+   "59": 26,
+   "60": 54,
+   "61": 129,
+   "62": 248,
+   "63": 388,
+   "64": 670,
+   "65": 824,
+   "66": 895,
+   "67": 829,
+   "68": 689,
+   "69": 470,
+   "70": 268,
+   "71": 126,
+   "72": 46,
+   "73": 15,
+   "74": 4
+  },
+  "paper55_min": 55,
+  "paper55_max": 74,
+  "sun56_histogram": {
+   "55": 1,
+   "56": 1,
+   "57": 6,
+   "58": 9,
+   "59": 13,
+   "60": 29,
+   "61": 62,
+   "62": 109,
+   "63": 156,
+   "64": 260,
+   "65": 364,
+   "66": 486,
+   "67": 595,
+   "68": 686,
+   "69": 583,
+   "70": 528,
+   "71": 345,
+   "72": 186,
+   "73": 76,
+   "74": 13,
+   "75": 2
+  },
+  "sun56_min": 55,
+  "sun56_max": 75,
+  "flags_le_54": 0,
+  "note_correction": "paper55 decision file originally stored side_sum in 'total'; corrected +14 applied and documented (see retractions)"
+ },
+ "independent_verification": {
+  "frozen_d_count_cross_check": "12/12",
+  "floor_verdict_rerun": "6/6",
+  "survivor_full_map_recheck": "8/8"
+ },
+ "retractions": [
+  "live '<=54' trigger fired on side-sums missing the +14 gap (paper55 pass); anchor triple falsified the field; retracted same session per rule 5",
+  "amendment 1 retracted the naive cyclic conjugation family after the A2 control caught it (10/10 Brent failures)"
+ ]
+}

@@ -1,0 +1,10 @@
+{
+  "created_utc": "2026-08-30T12:43:08.921824+00:00",
+  "host": "studio.local",
+  "gate": "B-optimal-cost-rows",
+  "producer": "NaCompilerExt (A* over pinned cost model)",
+  "verifier": "Main owner replay: legality via frozen na_compiler.conflict.compatible, duration via frozen config.move_batch_duration_us + 2x15us transfers",
+  "pair_semantics": "(atom_index, target_site) \u2014 established by exact witness replay",
+  "verifier_sha256_12": "2afb5e487a3b",
+  "policy": "immutable-after-close"
+}

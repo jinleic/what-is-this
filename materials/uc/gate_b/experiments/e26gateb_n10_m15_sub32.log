@@ -1,0 +1,182 @@
+n=10 m=15 restart=0 defect=62/225 Q=4.036136161712 Q-only=-0.014468730594 sample-A=0.140016297922 selected-order-A=0.010922710938
+n=10 m=15 restart=1 defect=8/25 Q=4.079038323114 Q-only=0.026905817837 sample-A=0.186561678154 selected-order-A=0.011166175556
+n=10 m=15 restart=2 defect=14/45 Q=4.160753461387 Q-only=0.105711333354 sample-A=0.264676779657 selected-order-A=0.058759655731
+n=10 m=15 restart=3 defect=14/45 Q=4.178496625273 Q-only=0.122822718177 sample-A=0.280631675594 selected-order-A=0.040688929642
+n=10 m=15 restart=4 defect=14/45 Q=4.103289001914 Q-only=0.050293005142 sample-A=0.208816934798 selected-order-A=0.012081104942
+n=10 m=15 restart=5 defect=8/25 Q=4.155409303358 Q-only=0.100557464225 sample-A=0.260028065596 selected-order-A=0.028106908491
+n=10 m=15 restart=6 defect=68/225 Q=4.050425647190 Q-only=-0.000688049397 sample-A=0.153997073904 selected-order-A=0.010578578693
+n=10 m=15 restart=7 defect=8/25 Q=4.184100317366 Q-only=0.128226880166 sample-A=0.288408851637 selected-order-A=0.035347855449
+n=10 m=15 restart=8 defect=8/25 Q=4.134256318604 Q-only=0.080157671684 sample-A=0.238716683672 selected-order-A=0.016498013918
+n=10 m=15 restart=9 defect=22/75 Q=4.036408631255 Q-only=-0.014205962846 sample-A=0.139189532008 selected-order-A=0.026333273329
+n=10 m=15 restart=10 defect=8/25 Q=4.055490474472 Q-only=0.004196435087 sample-A=0.161647999520 selected-order-A=0.022115458335
+n=10 m=15 restart=11 defect=8/25 Q=4.117039908615 Q-only=0.063554284683 sample-A=0.224033973261 selected-order-A=0.010750274055
+{
+  "any_finalist_has_certified_negative_fixed_order": false,
+  "any_finalist_passes_q_necessary_condition": true,
+  "best_by_size": {
+    "15": {
+      "accepted": 318,
+      "clone_witness_global_order_bounds": {
+        "derivation": "-log2(m) <= A_{+,pi} <= n-log2(m) since every entropy sum lies in [0,n]",
+        "lower": "-38691970379290337352793677249/9903520314283042199192993792",
+        "upper": "482745862108320677113090085369/79228162514264337593543950336"
+      },
+      "closure_defect": "68/225",
+      "closure_defect_count": 68,
+      "contains_full_set": true,
+      "dimension": 10,
+      "family": [
+        0,
+        4,
+        8,
+        24,
+        34,
+        193,
+        227,
+        231,
+        255,
+        499,
+        768,
+        772,
+        792,
+        796,
+        1023
+      ],
+      "finite_negative_clone_witness": null,
+      "normalized": false,
+      "q_alone_certifies_positive": false,
+      "q_lower": "320907781427437167510889957969/79228162514264337593543950336",
+      "q_lower_decimal": "4.050425647189",
+      "q_only_a_lower": "-13628222348535947825741917/19807040628566084398385987584",
+      "q_only_a_lower_decimal": "-0.000688049397",
+      "q_only_a_upper": "-54512889394143791302964597/79228162514264337593543950336",
+      "q_only_a_upper_decimal": "-0.000688049396",
+      "q_upper": "320907781427437167510889961151/79228162514264337593543950336",
+      "q_upper_decimal": "4.050425647190",
+      "restart": 6,
+      "sampled_a_lower": "3050226299481008351067150301/19807040628566084398385987584",
+      "sampled_a_lower_decimal": "0.153997073903",
+      "sampled_a_status": "DISCOVERY ONLY: exact arithmetic over sampled orders",
+      "sampled_a_upper": "12200905197924033404268604275/79228162514264337593543950336",
+      "sampled_a_upper_decimal": "0.153997073904",
+      "sampled_bellman_lower": "172093303367018431758613764069/39614081257132168796771975168",
+      "sampled_bellman_upper": "344186606734036863517227528147/79228162514264337593543950336",
+      "schema": 1,
+      "score_mode": "min-a",
+      "screen_order_count": 48,
+      "screen_score": 0.010578578692528318,
+      "seed": 20260830,
+      "selected_fixed_order": [
+        6,
+        7,
+        8,
+        4,
+        2,
+        9,
+        0,
+        1,
+        5,
+        3
+      ],
+      "selected_fixed_order_a_lower": "838121351821552987455794017/79228162514264337593543950336",
+      "selected_fixed_order_a_lower_decimal": "0.010578578692",
+      "selected_fixed_order_a_upper": "838121351821552987455794029/79228162514264337593543950336",
+      "selected_fixed_order_a_upper_decimal": "0.010578578693",
+      "selected_fixed_order_certified_negative": false,
+      "selected_fixed_order_status": "EXACT RATIONAL TWO-SIDED ENCLOSURE; order selected by discovery score",
+      "size": 15,
+      "steps": 7500,
+      "strict_defect_cap": "73/225"
+    }
+  },
+  "best_score_finalist": {
+    "accepted": 318,
+    "clone_witness_global_order_bounds": {
+      "derivation": "-log2(m) <= A_{+,pi} <= n-log2(m) since every entropy sum lies in [0,n]",
+      "lower": "-38691970379290337352793677249/9903520314283042199192993792",
+      "upper": "482745862108320677113090085369/79228162514264337593543950336"
+    },
+    "closure_defect": "68/225",
+    "closure_defect_count": 68,
+    "contains_full_set": true,
+    "dimension": 10,
+    "family": [
+      0,
+      4,
+      8,
+      24,
+      34,
+      193,
+      227,
+      231,
+      255,
+      499,
+      768,
+      772,
+      792,
+      796,
+      1023
+    ],
+    "finite_negative_clone_witness": null,
+    "normalized": false,
+    "q_alone_certifies_positive": false,
+    "q_lower": "320907781427437167510889957969/79228162514264337593543950336",
+    "q_lower_decimal": "4.050425647189",
+    "q_only_a_lower": "-13628222348535947825741917/19807040628566084398385987584",
+    "q_only_a_lower_decimal": "-0.000688049397",
+    "q_only_a_upper": "-54512889394143791302964597/79228162514264337593543950336",
+    "q_only_a_upper_decimal": "-0.000688049396",
+    "q_upper": "320907781427437167510889961151/79228162514264337593543950336",
+    "q_upper_decimal": "4.050425647190",
+    "restart": 6,
+    "sampled_a_lower": "3050226299481008351067150301/19807040628566084398385987584",
+    "sampled_a_lower_decimal": "0.153997073903",
+    "sampled_a_status": "DISCOVERY ONLY: exact arithmetic over sampled orders",
+    "sampled_a_upper": "12200905197924033404268604275/79228162514264337593543950336",
+    "sampled_a_upper_decimal": "0.153997073904",
+    "sampled_bellman_lower": "172093303367018431758613764069/39614081257132168796771975168",
+    "sampled_bellman_upper": "344186606734036863517227528147/79228162514264337593543950336",
+    "schema": 1,
+    "score_mode": "min-a",
+    "screen_order_count": 48,
+    "screen_score": 0.010578578692528318,
+    "seed": 20260830,
+    "selected_fixed_order": [
+      6,
+      7,
+      8,
+      4,
+      2,
+      9,
+      0,
+      1,
+      5,
+      3
+    ],
+    "selected_fixed_order_a_lower": "838121351821552987455794017/79228162514264337593543950336",
+    "selected_fixed_order_a_lower_decimal": "0.010578578692",
+    "selected_fixed_order_a_upper": "838121351821552987455794029/79228162514264337593543950336",
+    "selected_fixed_order_a_upper_decimal": "0.010578578693",
+    "selected_fixed_order_certified_negative": false,
+    "selected_fixed_order_status": "EXACT RATIONAL TWO-SIDED ENCLOSURE; order selected by discovery score",
+    "size": 15,
+    "steps": 7500,
+    "strict_defect_cap": "73/225"
+  },
+  "clone_reachability_convention": "A certified negative fixed order gives a finite negative clone multiset in the displayed cap/Reimer class; nontrivial cloning does not preserve separation",
+  "coverage": "SEEDED HEURISTIC; exact defect and exact full-order Q enclosure; selected fixed-order A_+ has an exact rational two-sided enclosure",
+  "dimension": 10,
+  "displayed_supremum_convention": "cap and Reimer only",
+  "dominant_full_set_required": true,
+  "lowest_defect_certified_negative_fixed_order": null,
+  "mode": "subtwofifths_min-a_search",
+  "normalization_convention": "active and separating is reported, not required by the displayed supremum",
+  "restarts": 12,
+  "score_mode": "min-a",
+  "screen_order_count": 48,
+  "sizes": [
+    15
+  ],
+  "steps": 7500,
+  "strict_defect_cap": "73/225"
+}

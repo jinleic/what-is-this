@@ -2274,22 +2274,32 @@ S_1-S_2+S_3\;=\;2u-\bigl(u^2+2\pi\bigr)+2\pi u
 \tag{53}
 $$
 
-So the depth-3 route closes R(2) **iff $\pi<(u-1)/2=0.007834$**. The overlap
-certified in 17.6 is $\pi\ge0.045$, and the measured value is $0.087$: too large
-by a factor between $5.7$ and $11$. *The same overlap that proves R(1) is what
-defeats R(2)*, because at one coordinate it enters as $+\pi$ against a deficit
-$u-1$, and at two coordinates as $+2\pi(u-1)$ against a budget of only
-$(u-1)^2$. Below the asymptotic regime (53) is negative — the exact block totals
-are $0.99234$ at $10^6$ and $0.99435$ at $10^7$, both under $1$ — purely because
-$u<1$ there; the finite-scale success is an artefact of $u$ not yet having
-converged, and is worthless, exactly as Section 13 said of the same dip.
+So **under this cross-coordinate independence model** the depth-3 route closes
+iff $\pi<(u-1)/2=0.007834$. The certified same-coordinate overlap
+$\pi\ge0.045$ makes that modelled total exceed $1$ asymptotically. At the two
+finite blocks it is $0.99234$ and $0.99435$, below $1$ only because the
+first-order total has not converged.
 
-Even at $\pi<0.007834$ the route would still need the four cross terms of $S_2$
-from below: $d(A_0\cap A_1)$ is the density of $w$ with both $w$ and $w+1$
-carrying a prime factor above $\sqrt{2w}$, a binary problem of Chen type where
-only upper bounds (CRT plus Mertens, giving $\log^22$) are elementary. So R(2)
-fails here twice over, once numerically and once structurally, and the pivot is
-recorded rather than retried.
+**Correction (2026-08-28).** This kills only the independent depth-3
+substitution; it does not give a structural obstruction to R(2). The identity
+
+$$
+d(\bar A_0\cap\bar A_1)
+=1-2\log2+d(A_0\cap A_1)
+$$
+
+shows that the missing margin can instead be obtained from consecutive smooth
+pairs. Yang and the Pascadi--Yang transfer of Section 19 prove positive density
+with both largest prime factors below $x^{3/8+\varepsilon}$, stronger than the
+critical square-root requirement. Thus the old sentence calling
+$d(A_0\cap A_1)$ an unavailable binary obstruction is retracted.
+
+The prime--prime parameterization remains parity-blocked. Chen switching does
+not by itself substitute: if the partner is $P_2=rs$, a qualifying large prime
+$r$ must satisfy $r>2bs$ when $w+1=brs$; the $P_2$ conclusion supplies no such
+factor imbalance. An unbalanced-$P_2$ lower bound could contribute, but it is
+an additional theorem, not a consequence of Chen's standard result. The active
+obstruction is now the mixed $q$-adic large-sieve Input VII of Section 20.5.
 
 What the section does supply is a template: **for these events the overlap is
 bounded from below on the prime side, not the smooth side.** Section 13's
@@ -2315,3 +2325,1319 @@ behind (53): $S_1,\dots,S_4$ exactly, the verified identity
 $S_1-S_2+S_3-S_4=P(\bigcup)$, and the asymptotic depth-3 limit $1.001165$,
 asserted to exceed $1$ so that the recorded obstruction cannot go stale.
 
+
+## 18. Conjecture R(2): four method boundaries and one corrected diagnosis
+
+Section 17 closed R(1) by buying back the union-bound overshoot $u-1$ with a
+lower bound on the Bonferroni overlap, $u=\log2+\Lambda_B$. R(2) is the named
+next rung. This section prices five proposed routes: first-order density,
+prime--prime sieving, shifted-square construction, second moments, and the
+large-$m$ full-run limit. Its first draft incorrectly promoted failure of the
+prime--prime parameterization to failure of the pair event. Section 18.4
+retracts that inference; Section 19 executes the Type-I/Type-II bypass.
+
+### 18.1 The smoothness collapse — PROVED
+
+**Lemma 18.1.** If $m\ge\sqrt{2w}$ then $w$ is $m$-compensation-good if and only
+if $P^{+}(w)\le m$.
+
+*Proof.* Let $p>m\ge\sqrt{2w}$ divide $w$. Then $p^2>2w$, so by Lemma 17.2
+$v_p(w)=1$ and $c=w/p<p/2$; (16a) gives $C_p(w)=\mathbf 1_{\{2c>p\}}=0<1$, so
+$p$ obstructs (18). Conversely if every prime factor of $w$ is at most $m$ then
+(18) quantifies over the empty set. $\square$
+
+Above $\sqrt{2w}$ the digit content of (18) vanishes completely: goodness
+degenerates to smoothness. The producer checks the equivalence exhaustively —
+not by sampling — on $40{,}000$ consecutive integers at each of
+$\alpha=0.55,0.70,0.85$, with zero mismatches.
+
+### 18.2 The union-bound threshold — PROVED
+
+**Theorem 18.2.** Let $L\ge1$, let $\tfrac12<\alpha<1$, and put
+$m=\lfloor(2X)^{\alpha}\rfloor$. Then, for sufficiently large $X$,
+
+$$
+\liminf_{X\to\infty}\frac{\#\{w\in[X,2X):\ w,\dots,w+L-1\ \text{all }
+m\text{-compensation-good}\}}{X}\ \ge\ 1-L\log\frac1\alpha .
+\tag{54}
+$$
+
+The displayed lower bound is positive exactly when $\alpha>e^{-1/L}$.
+
+*Proof.* By Lemma 18.1 a term fails only if it has a prime factor above $m$,
+and by Mertens
+$\sum_{m<p\le2X}1/p=\log\frac{\log2X}{\log m}+o(1)=\log(1/\alpha)+o(1)$, so each
+of the $L$ translates fails with density at most $\log(1/\alpha)+o(1)$. Union
+over the $L$ translates. $\square$
+
+For $L=2$ the positivity threshold is $e^{-1/2}=0.606531$; for $L=3$ it is
+$0.716531$. Four finite blocks at admissible $(\alpha,L)$ are consistency
+checks, not inputs to the proof; the producer raises if a measured run density
+falls below the asymptotic lower bound at any recorded block.
+
+This is a genuine positive-density run theorem, and it is also the exact reason
+the elementary route cannot reach Erdős #389. There $m$ is **fixed** while
+$X\to\infty$, so $\alpha\to0$ and $L\log(1/\alpha)\to\infty$. Worse, the problem
+ties the run length to $m$: with $L=\lceil m/2\rceil$ and
+$m=(2X)^{\alpha}+O(1)$, the condition $\alpha>e^{-1/L}$ gives
+
+$$
+\log(2X)<e^{1/L}\log m+o(1),
+\qquad
+X<m^{\,1+2/m+O(m^{-2})+o(1)} .
+\tag{55}
+$$
+
+For a witness scale $X\asymp k$ this is only just above $m$. Every composite
+window term below $2m$ has no prime factor exceeding $m$; only prime terms can
+fail. Thus the union bound reaches only the regime in which the large-prime
+tier has already lost all level structure and reduced to forbidding primes.
+
+### 18.3 Why Section 17 does not iterate
+
+For a run of $L$ terms the first Bonferroni sum is $S_1=Lu$, so the deficit the
+overlap must repay is $Lu-1$:
+
+| $L$ | $S_1=Lu$ | deficit $Lu-1$ |
+|---|---|---|
+| $1$ | $1.015668$ | $0.015668$ |
+| $2$ | $2.031337$ | $1.031336$ |
+
+a jump by a factor $65.825$. Section 17 delivered $\lambda_1+\lambda_2=0.045021$
+against a demand of $0.015668$, a surplus of $2.87$; the same construction at
+$L=2$ would have to deliver sixty-six times as much.
+
+The depth-4 identity is nevertheless exact, and under cross-coordinate
+independence it collapses to $(1-u+\pi)^2=g^2$ — so nothing is lost in
+principle. What is lost is access. Of the six pairwise terms in $S_2$, the two
+diagonal ones $d(A_i\cap B_i)$ are exactly what Section 17 bounds from below.
+The four cross terms are correlations between $w$ and $w+1$, and one of them is
+not merely hard but structurally out of reach.
+
+There is no second-moment shortcut around the missing cross term.
+
+**Proposition 18.3 (marginals cannot force a run).** Let $G_0,\dots,G_{L-1}$ be
+$\{0,1\}$-valued with common marginal $g$. If $g\le1-1/L$, there is a joint
+law with those marginals and
+$P(G_0=\cdots=G_{L-1}=1)=0$. Put mass $g/(L-1)$ on each of the $L$ subsets
+missing exactly one coordinate and the remaining mass
+$1-Lg/(L-1)\ge0$ on the empty subset. Each coordinate lies in $L-1$ of the
+first subsets, so its marginal is exactly $g$, while the full subset receives
+no mass.
+
+Section 11 gives the unconditional ceiling
+$g\le1-\log2=0.306853<\tfrac12\le1-1/L$ for every $L\ge2$. So individual
+densities — including any sharpening of Theorem 17.7 that stays below the
+ceiling — cannot prove a run. At $L=2$ even the advertised second-moment route
+is not a different route: for $S=G_0+G_1$,
+
+$$
+E[S^2]=E[S]+2E[G_0G_1].
+\tag{55a}
+$$
+
+A lower bound on the second moment strong enough to force $S=2$ is exactly a
+lower bound on the missing pair correlation, neither weaker nor cheaper.
+Chebyshev, Paley--Zygmund and the Selberg $\Delta$-method can repackage that
+term; they cannot manufacture it. `data/run_threshold.json` contains exact
+rational countermodels with the slightly larger marginal $31/100$ and zero
+full-run mass for $L=2,3,4$.
+
+### 18.4 The prime--prime sieve is binary; Type I/II bypasses it — CORRECTED
+
+A positive-density proof of R(2) does require a lower bound on
+$d(A_0\cap A_1)$ above the Bonferroni floor: from
+$d(\bar A_0\cap\bar A_1)=1-2\log2+d(A_0\cap A_1)$,
+
+$$
+d(A_0\cap A_1)\ >\ 2\log2-1=0.386294 .
+\tag{56}
+$$
+
+The first parameterization tried here is genuinely binary. Writing
+$w=pa$, $w+1=p'b$ with
+$p>\sqrt{2w}$ and $p'>\sqrt{2(w+1)}$ pins $w$ to one class modulo
+$pp'>2w$; equivalently it asks for $pa+1=p'b$ with two prime conditions.
+Selberg and Rosser--Iwaniec give the right upper-bound order, Chen switching
+replaces one prime by $P_2$, and parity blocks the lower bound. GRH does not
+change that statement.
+
+**The conclusion previously drawn from it was false.** A binary
+parameterization of $A_0\cap A_1$ is not the only way to prove (56): one can
+count the complement, where both consecutive integers are smooth. Yang
+(arXiv:2607.16032, Theorem 1.5) proves this with exponent
+$41/107+\varepsilon$, and Section 19 below improves it to
+$3/8+\varepsilon$ using Pascadi's $5/8$ theorem. Thus
+$\bar A_0\cap\bar A_1$ has positive lower density unconditionally, and (56)
+follows indirectly. The direct prime--prime sieve fails; the mandated
+Type-I/Type-II pivot succeeds.
+
+### 18.5 Shifted squares free both coordinates — PROVED
+
+The short-cofactor half of R(2) is, by contrast, elementary and unconditional.
+
+**Lemma 18.5.** For every $x\ge3$, neither $x^2-1$ nor $x^2$ carries a
+short-cofactor failure. Consequently
+
+$$
+\#\{w\le W:\ w\ \text{and}\ w+1\ \text{are both free of short-cofactor
+failures}\}\ \ge\ \lfloor\sqrt W\rfloor-2 .
+\tag{57}
+$$
+
+*Proof.* $x^2-1=(x-1)(x+1)$, so every prime factor of $x^2-1$ is at most $x+1$,
+and $(x+1)^2\le2(x^2-1)$ holds iff $x^2-2x-3\ge0$ iff $(x-3)(x+1)\ge0$ iff
+$x\ge3$. Every prime factor of $x^2$ is at most $x$, and $x^2<2x^2$. In both
+cases no prime $p$ dividing the term has $p^2>2\cdot(\text{term})$. $\square$
+
+So the set $A$ — the half of the failure budget that costs $\log2$ per
+coordinate — can be emptied at two consecutive coordinates simultaneously, by
+hand, for free. **Within this shifted-square construction the remaining
+obstruction is entirely the level side.** This does not remove the binary
+$A_0\cap A_1$ term from a density proof. The producer re-verifies Lemma 18.5
+term by term on $30{,}000$ consecutive $x$ rather than assuming it.
+
+### 18.6 …but Section 17 cannot count the shifted squares — FAILED APPROACH
+
+Lemma 18.5 gives $\gg\sqrt W$ pairs, not a positive density. Already for
+$q\Vert x^2-1$, a band-$r$ level test is a condition modulo $q^r$, while the
+number of parameters $x\in[X,2X)$ carrying that prime is $O(X/q)$. The band
+condition
+
+$$
+q^{r+1}\le 2(x^2-1)<q^{r+2}
+$$
+
+puts $q$ between constant multiples of $X^{2/(r+2)}$ and
+$X^{2/(r+1)}$. Hence
+
+$$
+\frac{\text{parameters carrying }q}{\text{residue modulus}}
+=O\!\left(\frac{X}{q^{r+1}}\right)
+=O\!\left(X^{-r/(r+2)}\right),
+\tag{58}
+$$
+
+and it can be as small as $O(X^{-1})$ at the upper edge of the band. For every
+fixed $r$ the available parameters occupy a vanishing fraction of one required
+period. This rules out transplanting Section 17's residue-density argument; it
+does **not** rule out a different argument exploiting the quadratic structure.
+
+The symptom is exact rather than merely a weak error term. Restrict
+$x\in[X,2X)$ and take a prime $q\in(X,\sqrt2X]$. The only parameters with
+$q\mid x^2-1$ are $x=q\pm1$, and then $(x^2-1)/q=q\pm2$, so the local $q$-test
+is decided: $c\equiv2$ lies in the lower half and $c\equiv q-2$ in the upper
+half. Every $x=q+1$ fails the $q$-test and every $x=q-1$ passes it. At
+$X=10^6$ the artifact checks all $29{,}610$ such primes: $29{,}610$ and $0$
+local failures respectively, where a residue heuristic predicts one half.
+The residues of this family are pinned, not equidistributed.
+
+Measured on $10^6\le x<1.03\cdot10^6$: $x^2-1$ is
+$1$-compensation-good for $0.39123$ of $x$, $x^2$ for $0.07183$, and both for
+$0.02553$. Thus consecutive good pairs occur abundantly in this finite
+quadratic block, but this is an **experimental observation**, not R(2) and not
+an infinitude theorem. The measured sum of level-failure events on the same
+block is $0.65470$, above the free-interval asymptotic constant
+$2\Lambda_B=0.645042$; that comparison is further evidence that Lemma 17.3
+cannot simply be transplanted to this thin family.
+
+### 18.7 What remains after the Type-I/Type-II pivot
+
+Section 19 supersedes the short-cofactor diagnosis made in the first draft of
+this section: a positive-density family with both coordinates
+short-cofactor-free exists unconditionally. The shifted squares remain useful
+as an exact algebraic example, but their thinness is no longer the active
+route.
+
+The remaining issue is to retain the $q$-adic level conditions inside the
+dense consecutive-smooth family. Pascadi distributes smooth integers through
+moduli up to $x^{5/8-\varepsilon}$. For a prime
+$q\mid n+1$, its first level condition is a half-set of lifts
+
+$$
+\mathcal H_q=\{-1+qr\bmod q^2:\ q/2<r<q\}.
+$$
+
+The $3/8$ smooth-pair theorem permits $q$ up to
+$x^{3/8+\varepsilon}$, hence $q^2$ up to $x^{3/4+2\varepsilon}$: an exponent
+gap $3/4-5/8=1/8$. Current distribution covers $q\le x^{5/16}$; the first
+uncontrolled strip is exactly
+
+$$
+x^{5/16}<q\le x^{3/8+\varepsilon},
+\qquad\text{width }\frac38-\frac5{16}=\frac1{16}.
+\tag{58a}
+$$
+
+This is now the active interface: a Type-I/Type-II or spectral estimate for
+smooth numbers in the half-lift sets $\mathcal H_q$, averaged over that
+$1/16$ strip, followed by the higher-level/exponent tail. It is narrower than
+R(2), source-backed, and no longer contains a parity obstruction.
+
+### 18.8 The large-$m$ route misses the size floor — FAILED APPROACH
+
+Theorem 18.2 attacked the whole run at once by letting the goodness cutoff grow
+with the window scale. For Erdős #389 even its positive parameter range contains
+no possible witness.
+
+**Lemma 18.8 (size floor).** Every witness $(m,k)$ satisfies
+
+$$
+k^2>(m+1)\log2 .
+\tag{59}
+$$
+
+*Proof.* Divisibility makes
+
+$$
+R_{m,k}=\frac{\binom{m+2k}{k}}{\binom{m+k}{m}}
+=\prod_{j=1}^{k}\left(1+\frac{k}{m+j}\right)
+$$
+
+an integer. It is strictly larger than $1$, hence at least $2$. But
+
+$$
+\log R_{m,k}
+<\sum_{j=1}^{k}\frac{k}{m+j}
+\le\frac{k^2}{m+1},
+$$
+
+which proves (59). $\square$
+
+**Theorem 18.9.** Let $L=\lceil m/2\rceil$ and let
+$X=k+\lfloor m/2\rfloor+1$ be the first bad-window term. For every $m\ge3$, no
+$k$ satisfying the necessary size floor (59) lies in the positive range
+
+$$
+\log(2X)<e^{1/L}\log m
+\tag{60}
+$$
+
+of the first-order run bound (54).
+
+*Proof for $m\ge2048$.* Since $1/L\le2/m$ and
+$e^t\le1+2t$ for $0\le t\le1$,
+$e^{1/L}\le1+4/m$. Put $y=4\log m/m<1$ and apply the same inequality again:
+
+$$
+m^{e^{1/L}}\le m^{1+4/m}=me^y\le m+8\log m .
+$$
+
+But $2X\ge m+2k+1$, so (60) forces $k<4\log m$. On the other hand (59) forces
+$k>\sqrt{(m+1)\log2}>4\log m$ for $m\ge2048$. The last comparison holds at
+$2048$ by exact rational enclosures of the logarithms, and
+$\sqrt m/\log m$ is increasing for $m>e^2$. Contradiction.
+
+*Finite range.* For every $3\le m\le2047$, the producer encloses every logarithm
+by the positive rational series
+
+$$
+\log z=2\sum_{j=0}^{N-1}
+\frac{u^{2j+1}}{2j+1}+R_N,\qquad
+u=\frac{z-1}{z+1},\qquad
+0<R_N<\frac{2u^{2N+1}}{(2N+1)(1-u^2)},
+\tag{61}
+$$
+
+after reducing $z$ to $[1,2)$ by powers of two; it encloses $e^{1/L}$ by its
+positive Taylor series. For each $m$ it takes the smallest integer $k$ not
+excluded by (59), then proves the reverse of (60) there. The left side only
+increases with $k$. All $2{,}045$ values pass; the smallest certified log-margin
+is $0.016972$ at $m=4$. Every comparison is between rational integers.
+
+Thus the large-$m$ ``attack the full run at once'' route does not merely lose
+asymptotically: its positive range and binomial divisibility are disjoint for
+all nontrivial $m$. Taking $m$ in an arithmetic progression or near a
+primorial cannot change this run-layer result, because (18) uses $m$ only as
+the cutoff $p>m$; such arithmetic structure can affect the separate small-prime
+tier, not compensation-goodness.
+
+### 18.9 Exact evidence
+
+`data/run_threshold.json`: the collapse of Lemma 18.1 checked exhaustively at
+three values of $\alpha$; (54) checked against measurement at four
+$(\alpha,L)$ points; exact rational moment countermodels; the deficit ladder and
+the factor $65.825$; the floor and independence value of (56); Lemma 18.5
+re-verified on every member of a $30{,}000$-term block; the deterministic local
+bias as an equality of counts; and the rational interval certificate closing
+(59)--(60) for $3\le m\le2047$, with the analytic continuation base checked at
+$m=2048$.
+
+## 19. Type I/Type II supplies dense consecutive smooth pairs — PROVED FROM A CITED THEOREM
+
+Section 18.4 initially mistook a parity obstruction in one parameterization for
+an obstruction to the event itself. The required pivot is already available in
+the recent literature. Yang's Theorem 1.5
+([arXiv:2607.16032](https://arxiv.org/abs/2607.16032)) proves a positive density
+with exponent $41/107+\varepsilon$ by combining two prime factors with
+Bombieri--Vinogradov for smooth numbers. Pascadi's stronger absolute-value
+theorem
+([arXiv:2505.00653v2, Theorem 1.5](https://arxiv.org/abs/2505.00653)) raises the
+smooth-number exponent of distribution from $66/107$ to $5/8$. Substituting it
+in Yang's argument gives a sharper corollary.
+
+### 19.1 The $3/8$ consecutive-smooth theorem
+
+**Theorem 19.1 (Pascadi--Yang transfer).** For every $\varepsilon>0$,
+
+$$
+\#\{n<x:\ P^+(n)<P^+(n+1)<x^{3/8+\varepsilon}\}
+\gg_\varepsilon x .
+\tag{62}
+$$
+
+The reversed ordering has the same conclusion.
+
+*Proof.* It is enough to take $\varepsilon$ small. Put $\eta=5/16$ and choose
+$0<\delta<\min(\varepsilon/6,1/100)$. Let
+
+$$
+\begin{aligned}
+x^{\eta-3\delta}<p_1&\le x^{\eta-2\delta},\\
+x^{\eta-2\delta}<p_2&\le x^{\eta-\delta},
+\end{aligned}
+\tag{63}
+$$
+
+with $p_1,p_2$ prime. Then
+
+$$
+p_1p_2\le x^{5/8-3\delta}<x^{5/8-2\delta},
+\qquad
+\frac{x}{p_1p_2}<x^{3/8+5\delta}<x^{3/8+\varepsilon}.
+$$
+
+Apply Pascadi's Theorem 1.5 with residue $-1$, distribution parameter
+$2\delta$, and $y=x^{1/C}$, where $C$ is enlarged so that
+$1/C<\eta-3\delta$. Summed over (63), its total progression error is
+$o(\Psi(x,y))$. Since $p_1,p_2>y$, every $y$-smooth integer is coprime to
+$p_1p_2$; Mertens and $\Psi(x,y)\sim\rho(C)x$ give the main term
+
+$$
+\frac{\rho(C)}2
+\log\frac{\eta-2\delta}{\eta-3\delta}
+\log\frac{\eta-\delta}{\eta-2\delta}\,x+o(x)>0.
+\tag{64}
+$$
+
+The factor $1/2$ removes multiplicity: because
+$\eta-3\delta>1/4$, an integer below $x$ has at most three prime factors in the
+union of the two disjoint ranges, hence at most two choices of the pair
+$(p_1,p_2)$. For every counted $n$, $n$ is $y$-smooth and
+$n+1=p_1p_2\ell$ with $\ell<x^{3/8+5\delta}$, proving the upper bounds in
+(62); moreover $P^+(n)<p_2\le P^+(n+1)$, proving the ordering. Reversing
+$n,n+1$ gives the other order. $\square$
+
+This corollary was not found stated in either source. It is a direct
+parameter substitution into Yang's printed proof: his
+$33/107+33/107=66/107$ and leftover $41/107$ become
+$5/16+5/16=5/8$ and leftover $3/8$. The external load-bearing input and every
+hypothesis are audited as input V in `LOCALIZATION.md`.
+
+### 19.2 The short-cofactor pair is no longer open
+
+Take $\varepsilon<1/8$. Discard the
+$O(x^{3/4+2\varepsilon})=o(x)$ counted integers with
+$n<x^{3/4+2\varepsilon}/2$. Every remaining pair in (62) satisfies
+
+$$
+P^+(n)^2<2n,\qquad P^+(n+1)^2<2(n+1).
+\tag{65}
+$$
+
+Therefore a positive lower density of consecutive pairs is free of class $A$
+at both coordinates. Equivalently, the strict inequality (56) is now an
+unconditional consequence rather than a missing binary input. This is exactly
+what the prime--prime Selberg sieve could not see: Pascadi's Type-I/Type-II
+dispersion counts the smooth complement instead.
+
+It does **not** prove R(2). Class $B$, the $q$-adic level condition, remains.
+
+### 19.3 The remaining analytic interface is one half-lift
+
+For $q\Vert n+1$, first-level compensation asks
+
+$$
+n\bmod q^2\in
+\mathcal H_q=\{-1+qr\bmod q^2:\ q/2<r<q\}.
+\tag{66}
+$$
+
+Pascadi's stated theorem counts a fixed residue modulo moduli through
+$x^{5/8-\varepsilon}$; it does not count this union of half the lifts. Even the
+modulus size $q^2$ lies in its range only for $q\le x^{5/16}$. Theorem 19.1
+permits $q\le x^{3/8+\varepsilon}$, so the top modulus is $x^{3/4+2\varepsilon}$
+and the exact exponent gap is
+
+$$
+\frac34-\frac58=\frac18,
+\qquad
+\frac5{16}<\frac{\log q}{\log x}\le\frac38+\varepsilon
+\quad\text{(strip width $1/16+\varepsilon$).}
+\tag{67}
+$$
+**Lemma 19.2 (the Fourier cost is logarithmic).** For odd prime $q$, center the
+half-lift indicator by
+
+$$
+F_q(a)=\mathbf1_{\mathcal H_q}(a)
+-\frac{q-1}{2q}\mathbf1_{\{a\equiv-1\pmod q\}},
+\qquad a\bmod q^2.
+$$
+
+With the unnormalised Fourier transform on $\mathbb Z/q^2\mathbb Z$,
+
+$$
+\frac1{q^2}\sum_{h\bmod q^2}|\widehat F_q(h)|
+\le H_{(q-1)/2}\le1+\log\frac{q-1}{2}.
+\tag{67c}
+$$
+
+*Proof.* Frequencies divisible by $q$ cancel by the choice of the centering
+constant. For every other $h$, put $s=h\bmod q$. The coefficient is a
+geometric sum over $(q-1)/2$ consecutive $r$ and has magnitude at most
+$q/(2\min(s,q-s))$. Each nonzero $s$ occurs for $q$ frequencies modulo $q^2$;
+summing gives exactly the harmonic bound in (67c). $\square$
+
+Consequently the selected-prime double mask costs only
+$O(\log p_1\log p_2)$ after Fourier expansion. Fourier complexity is not the
+blocker; averaging the resulting smooth exponential sums over both selected
+primes is.
+
+
+The generic half-lift is only the first diagnostic. In the actual construction
+$n+1=p_1p_2\ell$, and compensation at the two selected primes is the structured
+double mask
+
+$$
+D_{p_1,p_2}(\ell)=
+\mathbf 1_{\{2(p_2\ell\bmod p_1)>p_1\}}
+\mathbf 1_{\{2(p_1\ell\bmod p_2)>p_2\}} .
+\tag{67a}
+$$
+
+Its expected unweighted mean is $1/4$. As $\delta\to0$, each individual mask
+has period exponent $5/16$ against quotient length $3/8$, a positive $1/16$
+margin. Section 20 corrects the lifted-modulus bookkeeping: $15/16$ applies
+only to one-sided frequencies; genuinely bilinear frequencies are primitive
+modulo $p_1p_2$ in $\ell$ and modulo $(p_1p_2)^2$ in $n$.
+
+The first structured estimate required is
+
+$$
+\sum_{p_1,p_2}\ \sum_{\substack{\ell\le x/(p_1p_2)\\
+P^+(p_1p_2\ell-1)\le y}}
+D_{p_1,p_2}(\ell)
+=\left(\frac14+o(1)\right)
+\sum_{p_1,p_2}\#\{\ell\le x/(p_1p_2):
+P^+(p_1p_2\ell-1)\le y\},
+\tag{67b}
+$$
+
+over the ranges (63). Section 20 expands all four frequency classes before
+absolute values. Drappeau--Shparlinski gives an individual $1/32$ saving only
+for a one-sided generic lift; naive summation there loses $19/32$. It does not
+match the genuinely bilinear shifted-smooth sum. Parseval reaches the
+order-$x$ boundary but gives no $o(x)$ saving. The exact next input is therefore
+the averaged $q$-adic dispersion estimate (74), followed separately by prime
+factors of $\ell$, repeated primes and higher levels.
+
+### 19.4 Exact finite evidence
+
+`data/smooth_pair_transfer.json` checks every rational exponent inequality in
+the proof. At $\varepsilon=1/200$ it uses $\delta=1/1200$, puts the selected
+modulus in $[x^{149/240},x^{249/400}]$ below Pascadi's
+$x^{187/300}$ limit, and leaves cofactor exponent $91/240<19/50$.
+At those exact parameters the largest one-sided lift exponent is $1121/1200$,
+the individual one-sided saving is $79/2400$, and its naive pair summation
+still exceeds the main exponent by $283/480$.
+
+On the exact block $10^6\le n<1.5\cdot10^6$, the $3/8$ cutoff is $207$:
+$2{,}938$ consecutive smooth pairs occur, and $427$ are already
+$1$-compensation-good at both coordinates. Thus the observed conditional
+level survival is
+
+$$
+\frac{427}{2938}=0.145337\ldots,
+\tag{68}
+$$
+
+or density $0.000854$ in the full block. This is **finite machine-verified
+evidence**, not an asymptotic input. The first-obstruction census localizes the
+dominant classes to exponent-one bands $1$ and $2$ on both sides (counts
+$633,608,592,591$); it is consistent with (66)--(67) and supplies no theorem
+beyond the screened block.
+
+A second, explicitly non-asymptotic probe widens the prime ranges to
+$\delta=1/50$ so they are resolvable below $5\cdot10^6$. It finds $164$
+Yang-shaped representations. The selected-prime double mask passes on $39$,
+a rate $0.237805$ against its predicted $1/4$; $25$ representations are fully
+good overall. Among the $39$ mask-passing representations, $17$ have a good
+left coordinate, $25$ a good right coordinate, and $12$ have both. The finite
+result supports the decomposition ``double mask first, remaining factor tail
+second'';
+the friendly widths are **not** substituted into Theorem 19.1.
+
+The same artifact certifies the later analytic bookkeeping on the exact sample
+$(p_1,p_2)=(101,127)$: $1$ zero, $100$ first one-sided, $126$ second
+one-sided and $12{,}600$ primitive bilinear frequencies, totaling
+$101\cdot127=12{,}827$. It checks the primitive $M^2$ lift, paired Poisson
+reindexing and phase reduction, additive reciprocity, the $1/2\to7/8$
+support map, square-sieve and $P_2$ exclusions, all limiting and
+$\delta=1/1200$ exponents, the failed Parseval boundary, the selected-prime
+and large-repeat tails, and the fixed-$k$ fallback formulas.
+
+
+## 20. Exact double-mask expansion and the black-box barrier
+
+Section 19 identified (67b). This section performs the requested Fourier
+insertion against the primary proofs, separating the zero, one-sided and
+genuinely bilinear frequencies before any absolute value is taken.
+
+### 20.1 The four frequency classes — PROVED
+
+For odd prime $p$, put
+
+$$
+U_p=\{(p+1)/2,\ldots,p-1\},\qquad
+\alpha_p=\frac{p-1}{2p},\qquad
+c_p(h)=\frac1p\sum_{r\in U_p}e_p(-hr).
+\tag{69}
+$$
+
+Then $c_p(0)=\alpha_p$, and Fourier inversion gives
+
+$$
+\begin{aligned}
+D_{p_1,p_2}(\ell)
+&=\sum_{h_1\bmod p_1}\sum_{h_2\bmod p_2}
+c_{p_1}(h_1)c_{p_2}(h_2)\\
+&\quad{}\times
+e_{p_1p_2}\!\left(
+(h_1p_2^2+h_2p_1^2)\ell\right).
+\end{aligned}
+\tag{70}
+$$
+
+**Lemma 20.1.** The frequency grid in (70) splits exactly into
+
+| class | frequencies | quotient period |
+|---|---:|---:|
+| zero | $1$ | $1$ |
+| first one-sided | $p_1-1$ | $p_1$ |
+| second one-sided | $p_2-1$ | $p_2$ |
+| genuinely bilinear | $(p_1-1)(p_2-1)$ | $p_1p_2$ |
+
+and every genuinely bilinear numerator
+$h_1p_2^2+h_2p_1^2$ is coprime to $p_1p_2$.
+
+*Proof.* Reduction modulo $p_1$ gives $h_1p_2^2\ne0$ and reduction modulo
+$p_2$ gives $h_2p_1^2\ne0$ when $h_1h_2\ne0$. If $h_2=0$, the common factor
+$p_2$ reduces the quotient period to $p_1$, and symmetrically for $h_1=0$.
+The four counts sum to $p_1p_2$. $\square$
+
+Writing $M=p_1p_2$ and $n+1=M\ell$ shows why the classes have different
+analytic costs:
+
+$$
+\begin{aligned}
+e_{p_1}(h_1p_2\ell)
+&=e\!\left(\frac{h_1(n+1)}{p_1^2}\right),\\
+e_{M}((h_1p_2^2+h_2p_1^2)\ell)
+&=e\!\left(
+\frac{(h_1p_2^2+h_2p_1^2)(n+1)}{M^2}\right).
+\end{aligned}
+\tag{71}
+$$
+
+Together with the base condition $n\equiv-1\pmod M$, a one-sided frequency has
+lift modulus $p_1^2p_2$ or $p_1p_2^2$, tending to exponent $15/16$. A
+bilinear frequency is primitive modulo $M$ in $\ell$ but primitive modulo
+$M^2$ in $n$, tending to exponent $5/4$. The earlier discussion of a
+$15/16$ ``double-mask modulus'' was therefore imprecise: $15/16$ covers only
+the one-sided families.
+
+### 20.2 Inserting the weights into Pascadi — FAILED AS A BLACK BOX
+
+**Lemma 20.2 (the quotient character is a primitive $M^2$ lift).** If
+$(a,M)=1$, then
+
+$$
+\mathbf1_{\{s\equiv-1\pmod M\}}\,
+e_M\!\left(a\frac{s+1}{M}\right)
+=\frac1M\sum_{j\bmod M}
+e_{M^2}((a+jM)(s+1)).
+\tag{75}
+$$
+
+Every frequency $a+jM$ on the right is primitive modulo $M^2$.
+
+*Proof.* If $M\mid s+1$, all $M$ summands coincide with the left-hand
+character. Otherwise their ratio is a nontrivial $M$-th root of unity and the
+geometric sum vanishes. Coprimality follows by reducing $a+jM$ modulo every
+prime factor of $M$. $\square$
+
+Thus the bilinear mask does not merely resemble a modulus-$M^2$ condition:
+after the first Fourier step it is exactly an average of $M$ primitive
+modulus-$M^2$ characters. Pascadi's proof must be changed before this lift,
+not after it.
+
+The primary TeX makes the mismatch exact.
+
+* Pascadi's smooth-number theorem permits an arbitrary scalar outer weight
+  $\lambda_r$. Triply well-factorable outer weights belong to the *prime*
+  theorem, not the smooth theorem; asking whether the present mask remains
+  triply well-factorable is the wrong interface.
+* Proposition `prop:triple-convo` permits arbitrary inner coefficients
+  $\alpha_m\beta_n\gamma_\ell$, but they must be independent of the outer
+  modulus $r$. Here the mask depends jointly on the factorization
+  $r=p_1p_2$ and on the quotient $(n+1)/r$, so no nonzero frequency can be
+  absorbed into either $\lambda_r$ or the three inner coefficient sequences.
+* Treating a one-sided lift as a new generic progression raises the modulus
+  from limiting exponent $5/8$ to $15/16$; the range inequalities in
+  `prop:triple-convo` themselves imply $R\le x^{5/8-o(1)}$.
+* Treating a bilinear lift generically gives modulus exponent $5/4>x$.
+
+Thus the zero frequency is exactly Pascadi's theorem, while every nonzero
+frequency requires reworking the dispersion argument before the modulus and
+quotient are fused. This is a **proved mismatch of hypotheses**, not a proof
+that the desired estimate is false.
+
+### 20.3 Drappeau--Shparlinski and Parseval at the actual variables
+
+Drappeau--Shparlinski Theorem 1.1 is useful only for the one-sided generic
+lifts. In the $\delta\to0$ envelope, modulus $x^{15/16}$ makes its weakest term
+save $x^{-1/32}$; summing that individual bound over
+$x^{5/8+o(1)}$ prime pairs overshoots an order-$x$ main term by $19/32$.
+At the exact artifact parameters these numbers are $1121/1200$, $79/2400$ and
+$283/480$.
+
+For the bilinear class, the theorem has no matching formulation: in $n$ the
+modulus exceeds the summation range, while in $\ell$ the phase has modulus
+$M$ but the weight is
+$\mathbf1_{\{P^+(M\ell-1)\le y\}}$, not a smooth-number weight in $\ell$.
+
+Pure Parseval also stops at the boundary. For fixed $M$, orthogonality gives
+
+$$
+\sum_{a\bmod M}\left|
+\sum_{\substack{\ell\le x/M\\P^+(M\ell-1)\le y}}e_M(a\ell)
+\right|^2
+=M\,N_M\le x,
+\tag{72}
+$$
+
+because $x/M<M$ and
+$N_M=\#\{\ell\le x/M:P^+(M\ell-1)\le y\}$. Cauchy therefore gives
+$x^{1/2}$ per prime pair and $x^{9/8+o(1)}$ after summation. This is worse
+than the trivial order-$x$ bound obtained directly from $|D|\le1$.
+For one-sided frequencies the corresponding identity is
+$p_iN_M+N_M^2$; after summing pairs it reaches order $x$ but gives no
+$o(x)$ saving. **Parseval is a failed approach, not a weaker breakthrough.**
+
+### 20.4 The irreducible analytic estimate
+
+Define
+
+$$
+\mathcal S_M(a)=
+\sum_{\substack{\ell\le x/M\\P^+(M\ell-1)\le y}}e_M(a\ell).
+$$
+
+The three centered errors are
+
+$$
+\begin{aligned}
+\mathcal E_{10}
+&=\sum_{p_1,p_2}\alpha_{p_2}
+\sum_{h_1\ne0}c_{p_1}(h_1)
+\mathcal S_M(h_1p_2^2),\\
+\mathcal E_{01}
+&=\sum_{p_1,p_2}\alpha_{p_1}
+\sum_{h_2\ne0}c_{p_2}(h_2)
+\mathcal S_M(h_2p_1^2),\\
+\mathcal E_{11}
+&=\sum_{p_1,p_2}
+\sum_{\substack{h_1\ne0\\h_2\ne0}}
+c_{p_1}(h_1)c_{p_2}(h_2)
+\mathcal S_M(h_1p_2^2+h_2p_1^2).
+\end{aligned}
+\tag{73}
+$$
+
+Equation (67b) is equivalent to
+
+$$
+\boxed{\mathcal E_{10}+\mathcal E_{01}+\mathcal E_{11}=o(x).}
+\tag{74}
+$$
+
+The zero frequency already has Pascadi's positive main term. Individual
+absolute values, generic lifted moduli, and Parseval all fail to prove (74).
+The missing theorem is an averaged $q$-adic dispersion estimate for the
+shifted-smooth sums $\mathcal S_{p_1p_2}(a)$, retaining cancellation over
+$(p_1,p_2)$ before absolute values. Its hypotheses and deficit are now exact:
+$p_i=x^{5/16+o(1)}$, $\ell=x^{3/8+o(1)}$, primitive bilinear quotient modulus
+$p_1p_2=x^{5/8+o(1)}$, and a generic $n$-lift beyond the range at exponent
+$5/4$.
+
+### 20.5 Cancellation over $(p_1,p_2)$ — exact external blocker
+
+Pascadi's primary proof completes a Fourier variable of length
+
+$$
+H=\frac{Q^2}{x}=x^{1/4+o(1)}
+\tag{76}
+$$
+
+at $Q=x^{5/8+o(1)}$. A selected-prime half-mask has period
+$p_i=x^{5/16+o(1)}$, exceeding this native completion range by exactly $1/16$.
+Squaring (70) produces differences
+
+$$
+(h_1p_2^2+h_2p_1^2)
+-(h_1'{p_2'}^2+h_2'{p_1'}^2).
+$$
+
+After the smooth variable is factorized as in Pascadi's triple convolution,
+these coefficients are a square-supported specialization of
+
+$$
+a_n=\sum_{\substack{h,h'\sim H\\k,k'\sim K}}
+\mathbf1_{\{hk\lambda-h'k'\lambda'=n\}},
+\tag{77}
+$$
+
+with $k,k'$ supported on selected prime squares.
+
+Pascadi explicitly singles out (77) in the introduction to
+arXiv:2505.00653v2 as a sequence with mixed additive and multiplicative
+structure for which a corresponding exceptional-spectrum large-sieve
+inequality is not known. His proved additive inequality handles
+$h\lambda-h'\lambda'$; Watt's multiplicative inequality handles $hk$; neither
+handles their mixture. A search through August 2026 found no unconditional
+successor. Baier's arXiv:2503.18009 gives conditional improvements for square
+moduli under additive-energy hypotheses, not the mixed shifted-smooth estimate
+(74).
+
+Section 23 now sharpens this qualitative blocker into the exact
+mask-preserving Poisson sum (93). The required theorem is the moving-center
+bound (94), including its one-mask cross variant. The earlier $1/16$
+comparison between mask period $5/16$ and native Poisson length $1/4$ is only a
+pre-Poisson diagnostic. After Cauchy, the off-diagonal support expands from
+exponent $1/2$ to $7/8$, a $3/8$ inflation; even benchmarking it against the
+native $1/4$ additive saving leaves $1/8$. This is the precise external
+analytic estimate missing from the current literature.
+
+## 21. The selected-prime tail separates — PARTLY PROVED
+
+Equation (74), if proved, may assume the two selected primes occur to exponent
+one. This is not a heuristic squarefreeness assumption.
+
+### 21.1 Repeated selected primes are negligible — PROVED
+
+**Lemma 21.1.** In the prime ranges (63), the number of representations with
+$p_1^2p_2\mid n+1$ or $p_1p_2^2\mid n+1$ is $o(x)$.
+
+*Proof.* For the first event,
+
+$$
+\sum_{p_1,p_2}\left(\frac{x}{p_1^2p_2}+1\right)
+\ll_\delta
+x^{1-(5/16-3\delta)+o(1)}
++x^{5/8-3\delta+o(1)}
+=o(x),
+\tag{78}
+$$
+
+and the second is symmetric with the still smaller exponent
+$1-(5/16-2\delta)$. Here Mertens bounds $\sum1/p_2=O_\delta(1)$ and
+$\sum_{p>P}p^{-2}\ll P^{-1}$. $\square$
+
+Thus after (74), first-level success fully certifies $p_1,p_2$; no selected
+prime needs a hidden higher-level argument. At the artifact parameters the
+largest exponent in (78) is $69/100$; the limiting exponent is $11/16$.
+
+### 21.2 Large repeated factors in the quotient are negligible — PROVED
+
+Fix $\zeta>0$. Representations with $q^2\mid\ell$ for a prime
+$q>x^\zeta$ are bounded by
+
+$$
+\sum_{p_1,p_2}\sum_{q>x^\zeta}
+\left(\frac{x}{p_1p_2q^2}+1\right)
+\ll_{\delta,\zeta}x^{1-\zeta+o(1)}
++x^{5/8+(3/8)/2+o(1)}
+=o(x).
+\tag{79}
+$$
+
+The same elementary square-divisor bound removes $q^2\mid n$ for
+$q>x^\zeta$. At the exact artifact parameters the floor-error exponent in
+(79) is $1949/2400<1$.
+
+### 21.3 The remaining tail — OPEN INPUT
+
+Two pieces remain and are not part of (74):
+
+1. primes of the ultra-smooth coordinate
+   $n$, where $P^+(n)\le x^{1/C}$, including repeated primes
+   $q\le x^\zeta$ and their multi-level prefix automata;
+2. primes $q^e\Vert\ell$, whose compensation cofactor is
+   $p_1p_2(\ell/q^e)$. For $e=1$ this is another mixed half-lift; for
+   $e\ge2$ the small-$q$ multi-level tail remains.
+
+The finite Yang-shaped probe shows the tail is real: among $39$ selected-mask
+passes, $17$ have a good left coordinate, $25$ a good right coordinate, and
+$12$ have both. These are **finite machine-verified counts**, not asymptotic
+fractions. Input VII must be followed by a separate smooth $q$-adic automaton
+bound for these two classes.
+
+## 22. Automatic-compensation fallbacks — exact limits
+
+The mixed large-sieve obstruction motivates changing the construction. Two
+lower-complexity modifications can be ruled out exactly.
+
+### 22.1 A lower modulus cannot see the first digit — PROVED
+
+**Lemma 22.1.** Fix an odd prime $p$ and a progression compatible with
+$w\equiv-1\pmod p$. If its modulus $d$ has $v_p(d)\le1$, then the progression
+contains infinitely many terms on each side of
+
+$$
+2\left(\frac{w+1}{p}\bmod p\right)>p.
+\tag{80}
+$$
+
+Consequently any congruence condition forcing first-level compensation at $p$
+must include $p^2$ in its modulus.
+
+*Proof.* The compatible intersection is a progression of step
+$L=\operatorname{lcm}(d,p)$. Its quotient $(w+1)/p$ changes by $L/p$, which is
+a unit modulo $p$ when $v_p(d)\le1$. The next $p$ terms therefore traverse
+every residue modulo $p$, including both halves. $\square$
+
+Thus no clever choice of a residue modulo the existing selected modulus
+$p_1p_2$ can make either selected prime safe. The $q$-adic lift is logically
+necessary unless compensation is forced by a noncongruence algebraic relation.
+
+### 22.2 Size-forced compensation has density zero — PROVED
+
+When the cofactor $c=(w+1)/p$ satisfies $c<p$, (16a) makes first-level
+compensation automatic exactly on $p/2<c<p$. Then
+
+$$
+\frac{p^2}{2}<w+1<p^2.
+\tag{81}
+$$
+
+Hence $p$ is confined to the square-root scale. The number of such products
+below $x$ is at most
+
+$$
+\sum_{p\le\sqrt{2x}}O(p)=O\!\left(\frac{x}{\log x}\right)=o(x)
+\tag{82}
+$$
+
+by the prime number theorem. This may support a sparse construction, but it
+cannot preserve the positive density required by R(2).
+
+### 22.3 Splitting the selected modulus into more primes does not close
+
+Split total selected exponent $5/8$ equally among a fixed number $k\ge2$ of
+primes. Each has exponent $5/(8k)$, the quotient retains exponent $3/8$, and
+the one-sided generic lift has exponent $5/8+5/(8k)$. Drappeau--Shparlinski
+then saves
+
+$$
+\frac12\left(1-\frac58-\frac{5}{8k}\right)
+=\frac3{16}-\frac{5}{16k},
+$$
+
+so naive summation still loses
+
+$$
+\frac58-\left(\frac3{16}-\frac{5}{16k}\right)
+=\frac7{16}+\frac{5}{16k}>0.
+\tag{83}
+$$
+
+It equals $19/32$ at $k=2$, $13/24$ at $k=3$, and tends only to $7/16$.
+Meanwhile the fully nonzero quotient phase retains modulus exponent $5/8$ and
+its generic $n$-lift remains $5/4$, independent of $k$. A fixed-$k$ split also
+asks all first digits to align, with nominal mass $2^{-k}$.
+
+### 22.4 Near-diagonal prime pairs can be discarded — PROVED
+
+Uniform pairwise independence is false even without the smooth weight. Let
+$p_2=p_1+d$, $(d,p_1p_2)=1$, and let $L<p_1p_2/(2d^2)$. If
+$D_{p_1,p_2}(\ell)=1$, then
+
+$$
+\left\{\frac{d\ell}{p_1}\right\}>\frac12,
+\qquad
+\left\{\frac{d\ell}{p_2}\right\}<\frac12,
+\qquad
+0<
+\frac{d\ell}{p_1}-\frac{d\ell}{p_2}
+\le\frac{d^2L}{p_1p_2}<\frac12.
+$$
+
+The two real numbers therefore have the same integer part, and
+$\{d\ell/p_1\}$ lies within $d^2L/(p_1p_2)$ of $1/2$. Periodicity modulo
+$p_1$ gives
+
+$$
+\#\{\ell\le L:D_{p_1,p_2}(\ell)=1\}
+\le
+\left(\frac{L}{p_1}+1\right)
+\left(\frac{d^2L}{p_2}+1\right).
+\tag{84}
+$$
+
+In particular the mask density tends to zero when
+$L/p_1\to\infty$ but $d^2L/(p_1p_2)\to0$. Thus (67b) cannot be proved
+uniformly pair by pair.
+
+This resonance does not cost the main density. Discard pairs with
+
+$$
+0<p_2-p_1\le x^{5/16-\kappa}.
+$$
+
+There are at most $x^{5/16-2\delta+o(1)}$ choices of $p_1$, at most
+$x^{5/16-\kappa}$ possible integers $p_2$ for each, and at most
+$x^{3/8+5\delta+o(1)}$ quotients. Their total contribution is
+
+$$
+O\!\left(x^{1+3\delta-\kappa+o(1)}\right)=o(x)
+\qquad(\kappa>3\delta).
+\tag{85}
+$$
+
+Hence the mixed large-sieve input may assume a power-sized gap between the
+selected primes. This removes the elementary near-resonance but not the
+shifted-smooth spectral correlation.
+
+The preceding results are **failed modifications of the present analytic
+method**, not a theorem against every algebraic construction. Any successful
+automatic construction must either accept density zero, use a genuine
+noncongruence relation, or supply the mixed large-sieve input of Section 20.5.
+
+## 23. Exact mask-preserving Poisson reduction — PROVED
+
+Section 20 expanded the mask before entering Pascadi's proof. The next step can
+also be performed exactly. It reveals that the $1/16$ frequency comparison in
+Section 20.5 is only a pre-Poisson diagnostic: the load-bearing obstruction is
+a moving Poisson center tied to the complementary divisor.
+
+### 23.1 The $q$-adic Poisson identity
+
+For an $r$-periodic function $W$, use the normalizations
+
+$$
+\widehat W(a)=\frac1r\sum_{t\bmod r}W(t)e_r(-at),
+\qquad
+\widehat f(\xi)=\int_{\mathbb R}f(u)e(-u\xi)\,du.
+$$
+
+**Theorem 23.1.** Let $(k,r)=1$, and let $Kk\equiv1\pmod{r^2}$. For every
+Schwartz function $f$,
+
+$$
+\boxed{
+\sum_{\substack{m\in\mathbb Z\\mk\equiv-1\pmod r}}
+f(m)W\!\left(\frac{mk+1}{r}\right)
+=\frac1r\sum_{j\in\mathbb Z}
+\widehat f\!\left(\frac{j}{r^2}\right)
+e_{r^2}(-Kj)\widehat W(-jK\bmod r).
+}
+\tag{86}
+$$
+
+*Proof.* Write $m=-K+ru$. Since $Kk=1+r^2v$, the quotient
+$(mk+1)/r=uk-rv$ is congruent to $uk$ modulo $r$. Expand
+$W(uk)=\sum_a\widehat W(a)e_r(aku)$ and apply Poisson summation in $u$:
+
+$$
+\sum_u f(-K+ru)e_r(aku)
+=\frac1r\sum_h
+\widehat f\!\left(\frac{rh-ak}{r^2}\right)
+e_{r^2}(-K(rh-ak)).
+$$
+
+Set $j=rh-ak$. Because $k$ is a unit modulo $r$, the map
+$(a,h)\mapsto j$ is a bijection from
+$(\mathbb Z/r\mathbb Z)\times\mathbb Z$ to $\mathbb Z$, with
+$a\equiv-jK\pmod r$. This gives (86). $\square$
+
+The load-bearing first dispersion sum contains two complementary variables.
+If $k_1\equiv k_2\pmod r$, $(k_1k_2,r)=1$, and
+$K_1k_1\equiv1\pmod{r^2}$, the same proof gives the exact paired identity
+
+$$
+\begin{aligned}
+&\sum_{\substack{m\in\mathbb Z\\mk_1\equiv-1\pmod r}}
+f(m)W\!\left(\frac{mk_1+1}{r}\right)
+\overline{W\!\left(\frac{mk_2+1}{r}\right)}\\
+&\quad=\frac1r\sum_{a,b\bmod r}
+\widehat W(a)\overline{\widehat W(b)}e_{r^2}(a-b)
+\sum_{h\in\mathbb Z}
+\widehat f\!\left(\frac{rh-ak_1+bk_2}{r^2}\right)
+e_r(-hK_1).
+\end{aligned}
+\tag{86a}
+$$
+
+Indeed, the two masks twist the progression variable by
+$e_r((ak_1-bk_2)u)$. If
+$c_2=(1-K_1k_2)/r$, then
+
+$$
+e_{r^2}(-K_1(rh-ak_1+bk_2))e_r(-bc_2)
+=e_{r^2}(a-b)e_r(-hK_1),
+$$
+
+which proves (86a). This paired form, not merely the one-mask identity (86),
+is what enters Pascadi's first dispersion sum.
+
+In (86a), $a,b$ denote their fixed representatives in $[0,r)$; changing a
+representative is compensated only after the full $h$-sum and is not a
+termwise symmetry.
+
+For $W\equiv1$, only $j\equiv0\pmod r$ survives. Writing $j=rh$ recovers
+Pascadi's native term
+$\widehat f(h/r)e_r(-h\bar k)$. Thus (86) is an exact extension of the
+Poisson step in `prop:triple-convo`, not a different model.
+
+### 23.2 The mask preserves dual mass but spreads its support
+
+Let $f(u)=\Phi(u/\mathcal M)$ with $\Phi$ Schwartz and put
+$H=r/\mathcal M$. Truncating with an arbitrary $x^\varepsilon$ margin restricts
+(86) to $|j|\ll x^\varepsilon rH$. Every residue class modulo $r$ then occurs
+$O(x^\varepsilon(1+H))$ times. Consequently
+
+$$
+\begin{aligned}
+\sum_j\left|
+\widehat\Phi\!\left(\frac{j}{rH}\right)
+\widehat W(-jK)\right|
+&\ll_\varepsilon
+x^\varepsilon(1+H)\sum_{a\bmod r}|\widehat W(a)|,\\
+\sum_j\left|
+\widehat\Phi\!\left(\frac{j}{rH}\right)
+\widehat W(-jK)\right|^2
+&\ll_\varepsilon
+x^\varepsilon(1+H)\sum_{a\bmod r}|\widehat W(a)|^2.
+\end{aligned}
+\tag{87}
+$$
+
+For the double half-mask,
+
+$$
+\sum_a|\widehat W(a)|
+\ll\log p_1\log p_2,
+\qquad
+\sum_a|\widehat W(a)|^2
+=\frac1r\sum_{t\bmod r}|W(t)|^2
+=\alpha_{p_1}\alpha_{p_2}.
+$$
+
+For the paired identity (86a), the Fourier coefficients are the convolution of
+the two displayed coefficient sequences. Their $\ell^1$ norm is therefore
+$O((\log p_1\log p_2)^2)$. They are also the Fourier coefficients of the
+bounded periodic function
+$u\mapsto W(k_1u+c_1)\overline{W(k_2u+c_2)}$, so Parseval bounds their squared
+$\ell^2$ norm by $1$. After the $O(H)$ repetitions in (87), the paired dual
+$\ell^1$ cost is $O(H(\log p_1\log p_2)^2)$ and squared $\ell^2$ mass is
+$O(H)$. The difficulty is support and variable dependence, not coefficient
+mass.
+
+### 23.3 The exact moving center in Pascadi's variables
+
+Equation (86a) replaces Pascadi's native Poisson sum by
+
+$$
+\frac{\mathcal M}{r}
+\sum_{a,b\bmod r}
+\widehat W_r(a)\overline{\widehat W_r(b)}e_{r^2}(a-b)
+\sum_{h\in\mathbb Z}
+\widehat\Phi\!\left(\frac{rh-ak_1+bk_2}{rH}\right)
+e_r(-h\overline{k_1}).
+\tag{88}
+$$
+
+The $h$-interval still has length $H$, but its center is
+$(ak_1-bk_2)/r$. Pascadi's dispersion relation has
+$k_1\equiv k_2\pmod r$; after $k_2$ is split as $n\ell$, the same
+$k_1,n,\ell$ variables enter the later Kloosterman fraction. His additive
+coefficient $e=t(n'h-nh')$ therefore contains products of mask frequencies
+and complementary divisors. A translation of the existing additive sequence
+cannot remove the center because that translation depends on the later
+Kloosterman variables.
+
+For a general outer exponent $R=x^\vartheta$, Pascadi's smooth factorization
+uses
+
+$$
+\mathcal M=\mathcal L=x^{1-\vartheta},\qquad
+\mathcal N=H=x^{2\vartheta-1},\qquad K=R=x^\vartheta.
+$$
+
+Here Pascadi's auxiliary divisor variable has length
+$T=K/R=x^{o(1)}$; its exponent is absorbed below. The primary proof's
+off-diagonal spectral level and frequency supports are
+
+$$
+\begin{array}{c|c}
+\text{quantity}&\text{exponent}\\ \hline
+Q=\mathcal N^2&4\vartheta-2\\
+E_{\rm unmasked}=\mathcal N H&4\vartheta-2\\
+E_{\rm mask}=\mathcal N R&3\vartheta-1.
+\end{array}
+\tag{89}
+$$
+
+Thus the moving center enlarges the off-diagonal support by
+$E_{\rm mask}/E_{\rm unmasked}=x^{1-\vartheta}$. At
+$\vartheta=5/8$ the support moves from exponent $1/2$ to $7/8$, an inflation
+of $3/8$. The mask period $5/16$ exceeds the native Poisson length $1/4$ by
+$1/16$, but that is not the final dispersion deficit. Even benchmarking the
+new $3/8$ support cost against the native $1/4$ additive saving leaves $1/8$.
+Lowering the outer level to Drappeau's $3/5$ changes the support inflation to
+$2/5$ and the same benchmark residual to $1/5$; it worsens rather than removes
+the moving-center problem.
+Pascadi's additive large sieve does not grant that saving here, because its
+coefficient sequence must be independent of the later Kloosterman modulus.
+
+Watt's multiplicative large sieve also does not apply: it requires the same
+multiplicative sequence across spectral levels, whereas $a$, $k$, and the
+factorization $r=p_1p_2$ jointly determine the center in (88).
+
+### 23.4 Additive reciprocity changes the obstruction, not its size
+
+The primitive modulus-$r^2$ phase in (86) satisfies the exact reciprocity law
+
+$$
+e_{r^2}(-Kj)
+=e_k(j\overline{r^2})e\!\left(-\frac{j}{kr^2}\right).
+\tag{90}
+$$
+
+This follows from
+$\bar k/r^2+\overline{r^2}/k\equiv1/(kr^2)\pmod1$. It lowers the arithmetic
+modulus from $r^2$ to the complementary $k\asymp r$, but produces an
+inverse-square trace in the semiprime variable $r=p_1p_2$. Here $k$ is a
+highly composite smooth number. Drappeau--Shparlinski's nonlinear trace
+theorem assumes a prime modulus; its arbitrary-modulus theorem is only for the
+linear additive phase. Neither theorem covers this smooth-composite-modulus,
+semiprime inverse-square bilinear form.
+
+### 23.5 Generic square-moduli large sieves still stop above the target
+
+The best unconditional square-moduli large sieve gives
+
+$$
+\Delta(Q,N)
+\ll (QN)^{o(1)}
+\left(Q^3+N+\min\{Q^2N^{1/2},Q^{1/2}N\}\right).
+\tag{91}
+$$
+
+For an optimistic one-sided projection, treating the other selected-prime
+weight as a common arbitrary sequence, $Q=x^{5/16}$ and $N=x$, so
+$\Delta=x^{9/8+o(1)}$. (The actual weight depends on $p$, making the generic
+large sieve still less applicable.) Every nonzero lifted numerator is primitive
+modulo $p^2$, and the lifted Fourier coefficients have total squared mass
+
+$$
+\sum_{p}\frac1p\sum_{h\ne0}|c_p(h)|^2=x^{o(1)}.
+$$
+
+Cauchy with (91) therefore gives $x^{17/16+o(1)}$, an exact $1/16$ excess.
+Zhao's conjectural $\Delta\ll(Q^3+N)x^{o(1)}$ reaches only order $x$.
+
+For the genuinely bilinear lift the square root modulus is
+$Q=x^{5/8}$; both the best-known and conjectural generic bounds are dominated
+by $Q^3=x^{15/8}$. Cauchy gives $x^{23/16+o(1)}$, excess $7/16$. In both
+cases the generic large-sieve result is dominated by the direct order-$x$
+bound. Baier's conditional additive-energy hypotheses do not supply the
+first-moment shifted-smooth cancellation needed here.
+
+### 23.6 An unbalanced $P_2$ does not substitute
+
+Suppose a Chen switch replaces one selected prime by $P_2=rs$, with $r\ge s$,
+and write the whole number as $brs$. Then
+
+$$
+r\ \text{is a short-cofactor prime}
+\quad\Longleftrightarrow\quad r>2bs.
+\tag{92}
+$$
+
+Standard Chen supplies no such factor-ratio condition. In the direct
+prime--prime route, an additional lower bound for the unbalanced subfamily
+could address the already-discharged margin (56). In the present construction,
+if (92) holds the candidate is disqualified by a short-cofactor failure; if it
+does not hold, $r$ and $s$ contribute two $q$-adic masks in place of one. The
+double mask becomes a triple mask, while the fully nonzero generic lift remains
+at exponent $5/4$. Chen switching therefore does not reduce Input VII.
+
+### 23.7 The precise theorem-level external blocker
+
+The minimal extension of Pascadi's primary proof can now be stated directly.
+Under the same hypotheses and notation as `lem:expo-bound-convo`, the paired
+mask changes its native $h$-sum to
+
+$$
+\begin{aligned}
+\mathfrak R_W
+:={}&
+\sum_{r\sim R}\frac{\mathcal M}{r}
+\sum_{\substack{k,n,\ell\\
+d_1k\equiv d_2n\ell\pmod r\\
+(d_1k,d_2n\ell)=1}}
+u_k\beta_n\lambda_\ell\\
+&\times
+\sum_{a,b\bmod r}
+\widehat W_r(a)\overline{\widehat W_r(b)}e_{r^2}(a-b)\\
+&\times
+\sum_{h\in\mathbb Z}
+\widehat\Phi\!\left(
+\frac{rh-a d_1k+b d_2n\ell}{rH}\right)
+e_r\!\left(-hA\overline{vd_1d_2k}\right).
+\end{aligned}
+\tag{93}
+$$
+
+Here $r=p_1p_2$, $W_r=D_{p_1,p_2}$, $|u_k|\le\tau(k)$,
+$|\beta_n|,|\lambda_\ell|\le1$, and the fixed factors
+$A,v,d_1,d_2=x^{o(1)}$ obey Pascadi's coprimality hypotheses. The same estimate
+must hold with either mask replaced by $1$ for the cross dispersion sum; the
+third dispersion sum is Pascadi's unmasked case. At the target ranges
+
+$$
+\mathcal M=\mathcal L=x^{3/8+o(1)},\quad
+\mathcal N=H=x^{1/4+o(1)},\quad
+K=R=x^{5/8+o(1)},
+$$
+
+the required theorem is
+
+$$
+\boxed{
+\mathfrak R_W\ll x^{-\eta}\frac{K\mathcal M\mathcal N\mathcal L}{R}
+}
+\qquad\text{for some }\eta>0.
+\tag{94}
+$$
+
+For $W\equiv1$, (93) has only $a=b=0$ and (94) is Pascadi's proved
+`lem:expo-bound-convo`. For the double mask, (94) and its one-mask cross
+variant are not implied by his additive large sieve, Watt's multiplicative
+large sieve, the generic square-moduli large sieve,
+Drappeau--Shparlinski, Chen switching, or additive reciprocity. Proving these
+bounds with cancellation retained before absolute values is sufficient to run
+the three dispersion sums and deduce (74). No theorem with these hypotheses
+was located through August 2026.

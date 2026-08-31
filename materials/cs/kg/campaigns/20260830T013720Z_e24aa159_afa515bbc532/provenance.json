@@ -1,0 +1,36 @@
+{
+ "campaign": "20260830T013720Z_e24aa159_afa515bbc532",
+ "gate": "B (lower-bound re-verification) \u2014 PARTIAL",
+ "scope_fixed": "Interval cover of (p, c) threshold-family per pre_statement: even-coefficient box subdivision w/ Christoffel envelopes dominating odd part (Lemma D.4 monotonicity).  No sampling.",
+ "verdict": "PARTIAL: bands [1.30,1.45] (n_side=32, 856 boxes), [3.50,4.083] and [4.083,6.0] (n_side=2, 4 boxes each) CERTIFIED with J(c,p)<=d(c) confirmed; bands [1.0,1.3], [1.45,1.75], [6.0,12.0] \u2014 my Christoffel envelope WOULD NOT CLOSE the positive gap within box budget; honest verdict is OPEN at those sub-bands, NOT refuted.",
+ "why_not_refuted": "At (corners) the specific cubic with even part (a0,a2)=(-0.98,-0.05) and odd = (0,0,0,0.105) has J(c=6) = 0.0605 +/- 3.1e-14 <= d(6) = 0.0991 (checked independently).  The failure is of my box ENVELOPE, not of Lemma D.2/D.4 \u2014 my upper bound over-estimates |e| for those boxes by an amount the paper's per-cell bound does not.",
+ "bands_covered": [
+  "[1.30,1.45]",
+  "[3.50,4.083]",
+  "[4.083,6.0]"
+ ],
+ "bands_open": [
+  "[1.0,1.3]",
+  "[1.45,1.75]",
+  "[6.0,12.0]"
+ ],
+ "cover_budget_used": "depth reached n_side=64 in\u591a\u4f59\u7684 bands; n_side=32 sufficed for [1.3,1.45]",
+ "arms_to_close": "Tighten envelope (per-cell use of Christoffel along 2D box, not by 1D circumradius) \u2014 this is what the paper's D.3 does; direct port planned in Gate C if time allows.",
+ "seconds_total": "see logs (bands total ~10min)",
+ "environment": {
+  "python": "3.14.3",
+  "flint": "0.9.0",
+  "prec_bits": 256
+ },
+ "reproduced_cmd": "cd cs/kg/src && ../../.venv/bin/python gate_B.py --c-lo 1.30 --c-hi 1.45",
+ "timestamp_utc": "20260830T013720Z",
+ "campaign_uuid": "e24aa159",
+ "src_tag": "afa515bbc532",
+ "bands_open_corrected": [
+  "[1.0, 1.3]",
+  "[1.45, 1.75]",
+  "[1.75, 3.5]",
+  "[6.0, 12.0]"
+ ],
+ "inventory_correction_note": "Band [1.75,3.5] was missing from the original bands_open list due to a summarization slip after the run; it is now recorded here. No campaign artifact was edited after creation \u2014 this is an appended-only correction in provenance.json as allowed by the always-additive provenance pattern; original bands_open retained below for auditability."
+}

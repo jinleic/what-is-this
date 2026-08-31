@@ -1,0 +1,258 @@
+{
+  "benchmark_masks": {
+    "benchmark_nan_after_stop": true,
+    "benchmark_nan_on_inactive_days": true,
+    "benchmark_stop_day_index": 574,
+    "benchmark_stop_day_utc": "2022-02-26",
+    "constituents_from_signal_mask_only": true
+  },
+  "first_censor_stop": {
+    "available_rows_end_before_stop": 24,
+    "censored_assets": [
+      {
+        "asset": "A0",
+        "day_index": 25,
+        "held_weight": 0.1,
+        "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted",
+        "side": "long"
+      }
+    ],
+    "first_not_last_failure": true,
+    "held_at_stop": [
+      "A0",
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A20",
+      "A21",
+      "A22",
+      "A23",
+      "A24"
+    ],
+    "stop_day": 25,
+    "tail_all_nan_not_zero": true,
+    "tail_len": 5
+  },
+  "hand_ledger": {
+    "expected_return_w_times_tlpr": 0.0275,
+    "funding_cash": 0.25,
+    "matches_weight_identity": true,
+    "nav_close": 102.75,
+    "nav_open": 100.0,
+    "notional_after_drift": 27.500000000000004,
+    "notional_open": 25.0,
+    "price_return": 0.1,
+    "return_emitted": 0.02750000000000008,
+    "signed_funding_rate": -0.01
+  },
+  "production_impulse": {
+    "held_row_21_A0_weight": 0.1,
+    "held_row_22_A0_weight": 0.0,
+    "impulse_earned_on_row_21": true,
+    "impulse_not_deferred_to_row_22": true,
+    "interpretation": "target set at close 20 earns outcome row 21; the inactive target at close 21 explicitly closes the book, charging its closing fee in row 22",
+    "return_row_21": 0.00899100899100902,
+    "return_row_22": -0.0010000000000000009,
+    "zero_target_closed_book_row_22": true
+  },
+  "production_telescope": {
+    "abs_diff": 3.9968028886505635e-15,
+    "final_nav": 1.0949894497661556,
+    "product_1_plus_available_returns": 1.0949894497661516,
+    "representative_returns_trial": "liq_composite"
+  },
+  "tail_unavailable": {
+    "asset_pnl_tail_all_nan": true,
+    "stop_day_index": 574,
+    "strat_tail_all_nan": true,
+    "turnover_tail_all_nan": true
+  },
+  "truth_table": {
+    "funding_change": {
+      "confirmation_gate_status_after_stop": {
+        "confirmation_2x_spread": "UNKNOWN",
+        "confirmation_collateral_buffer": "UNKNOWN",
+        "confirmation_concentration": "UNKNOWN",
+        "confirmation_ic": "UNKNOWN"
+      },
+      "false": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "subperiod_ics": [
+        null,
+        0.0037655592512223497,
+        0.013433769459137653,
+        null,
+        null,
+        null
+      ],
+      "unknown": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "verdict": "falsified"
+    },
+    "liq_composite": {
+      "confirmation_gate_status_after_stop": {
+        "confirmation_2x_spread": "UNKNOWN",
+        "confirmation_collateral_buffer": "UNKNOWN",
+        "confirmation_concentration": "UNKNOWN",
+        "confirmation_ic": "UNKNOWN"
+      },
+      "false": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "subperiod_ics": [
+        null,
+        -0.015570038811110467,
+        -0.07543770309136774,
+        null,
+        null,
+        null
+      ],
+      "unknown": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "verdict": "falsified"
+    },
+    "mom_plus_funding": {
+      "confirmation_gate_status_after_stop": {
+        "confirmation_2x_spread": "UNKNOWN",
+        "confirmation_collateral_buffer": "UNKNOWN",
+        "confirmation_concentration": "UNKNOWN",
+        "confirmation_ic": "UNKNOWN"
+      },
+      "false": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "subperiod_ics": [
+        null,
+        -0.0524563837674166,
+        -0.08929479104217528,
+        null,
+        null,
+        null
+      ],
+      "unknown": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "verdict": "falsified"
+    },
+    "momentum": {
+      "confirmation_gate_status_after_stop": {
+        "confirmation_2x_spread": "UNKNOWN",
+        "confirmation_collateral_buffer": "UNKNOWN",
+        "confirmation_concentration": "UNKNOWN",
+        "confirmation_ic": "UNKNOWN"
+      },
+      "false": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "subperiod_ics": [
+        null,
+        -0.058964776813361396,
+        -0.10272539276369486,
+        null,
+        null,
+        null
+      ],
+      "unknown": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "verdict": "falsified"
+    },
+    "signed_funding": {
+      "confirmation_gate_status_after_stop": {
+        "confirmation_2x_spread": "UNKNOWN",
+        "confirmation_collateral_buffer": "UNKNOWN",
+        "confirmation_concentration": "UNKNOWN",
+        "confirmation_ic": "UNKNOWN"
+      },
+      "false": [
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "subperiod_ics": [
+        null,
+        0.025959356048510174,
+        -0.0033508456048044685,
+        null,
+        null,
+        null
+      ],
+      "unknown": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "verdict": "falsified"
+    },
+    "vol_scaled_momentum": {
+      "confirmation_gate_status_after_stop": {
+        "confirmation_2x_spread": "UNKNOWN",
+        "confirmation_collateral_buffer": "UNKNOWN",
+        "confirmation_concentration": "UNKNOWN",
+        "confirmation_ic": "UNKNOWN"
+      },
+      "false": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "subperiod_ics": [
+        null,
+        -0.05781709013395949,
+        -0.10812354467174927,
+        null,
+        null,
+        null
+      ],
+      "unknown": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "verdict": "falsified"
+    }
+  }
+}

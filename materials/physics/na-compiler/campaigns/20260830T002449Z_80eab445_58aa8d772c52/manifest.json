@@ -1,0 +1,281 @@
+{
+  "started_utc": "20260830T002449Z",
+  "uuid": "80eab445",
+  "code_hash": "58aa8d772c52",
+  "note": "gate A only freeze (B runs separately below)",
+  "host": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3",
+  "deps": {
+    "mqt.qmap": "3.9.0",
+    "qiskit": "2.5.2",
+    "networkx": "3.6.1",
+    "highspy": "1.15.1",
+    "z3-solver": "5.1.0"
+  },
+  "priority": "nice -n 10, single core",
+  "gates": {
+    "A": [
+      {
+        "gate": "A1",
+        "instance": "qft3",
+        "family": "qft",
+        "n_qubits": 3,
+        "provenance": {
+          "source": "qiskit.circuit.library.QFT",
+          "qiskit_version": "2.5.2",
+          "transpile": "basis=[u,cz], optimization_level=0, do_swaps=True"
+        },
+        "qmap_cost_us": 5541.901073786586,
+        "qmap_n_batches": 30,
+        "qmap_n_load_store": 32,
+        "cert_duration_us": 2888.2755096445453,
+        "chi_sum": 7,
+        "chi_max": 2,
+        "min_batches_lb_gap": 3.2857142857142856,
+        "gap_rel": 0.9187577692228596,
+        "qmap_wall_s": 0.00023295899154618382,
+        "transitions": [
+          {
+            "t": 0,
+            "n_moves": 2,
+            "chi": 1,
+            "chi_log": "edgeless conflict graph: chi=1",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=377.309983 obj=377.309983 nodes=1",
+            "cert_total_us": 437.3099825936364
+          },
+          {
+            "t": 2,
+            "n_moves": 2,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[0], [1]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=758.18478 obj=758.18478 nodes=0",
+            "cert_total_us": 818.1847795081817
+          },
+          {
+            "t": 4,
+            "n_moves": 2,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[0], [1]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=758.196547 obj=758.196547 nodes=0",
+            "cert_total_us": 818.1965473672726
+          },
+          {
+            "t": 6,
+            "n_moves": 2,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[0], [1]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=754.5842 obj=754.5842 nodes=0",
+            "cert_total_us": 814.5842001754545
+          }
+        ]
+      },
+      {
+        "gate": "A1",
+        "instance": "qft4",
+        "family": "qft",
+        "n_qubits": 4,
+        "provenance": {
+          "source": "qiskit.circuit.library.QFT",
+          "qiskit_version": "2.5.2",
+          "transpile": "basis=[u,cz], optimization_level=0, do_swaps=True"
+        },
+        "qmap_cost_us": 17866.609472901015,
+        "qmap_n_batches": 96,
+        "qmap_n_load_store": 112,
+        "cert_duration_us": 12369.388149393943,
+        "chi_sum": 32,
+        "chi_max": 3,
+        "min_batches_lb_gap": 2.0,
+        "gap_rel": 0.4444214424442988,
+        "qmap_wall_s": 0.0004944999818690121,
+        "transitions": [
+          {
+            "t": 0,
+            "n_moves": 2,
+            "chi": 1,
+            "chi_log": "edgeless conflict graph: chi=1",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=377.309983 obj=377.309983 nodes=1",
+            "cert_total_us": 437.3099825936364
+          },
+          {
+            "t": 2,
+            "n_moves": 3,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[0], [1], [2]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=859.034225 obj=859.034225 nodes=1",
+            "cert_total_us": 949.034225282363
+          },
+          {
+            "t": 4,
+            "n_moves": 2,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[0], [1]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=758.196702 obj=758.196702 nodes=0",
+            "cert_total_us": 818.1967016918181
+          },
+          {
+            "t": 5,
+            "n_moves": 4,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[1, 2], [0, 3]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=754.667634 obj=754.667634 nodes=1",
+            "cert_total_us": 874.6676339381818
+          },
+          {
+            "t": 6,
+            "n_moves": 4,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[1, 2], [0, 3]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=754.5842 obj=754.5842 nodes=1",
+            "cert_total_us": 874.5842001754545
+          },
+          {
+            "t": 7,
+            "n_moves": 4,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[1, 2], [0, 3]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=754.5842 obj=754.5842 nodes=1",
+            "cert_total_us": 874.5842001754545
+          },
+          {
+            "t": 8,
+            "n_moves": 3,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[1], [2], [0]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=858.940625 obj=858.940625 nodes=1",
+            "cert_total_us": 948.9406251050904
+          },
+          {
+            "t": 10,
+            "n_moves": 3,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[0], [1], [2]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=807.270274 obj=807.270274 nodes=1",
+            "cert_total_us": 897.270274008404
+          },
+          {
+            "t": 12,
+            "n_moves": 3,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[0], [1], [2]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=850.374292 obj=850.374292 nodes=1",
+            "cert_total_us": 940.3742921062681
+          },
+          {
+            "t": 13,
+            "n_moves": 4,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[3], [0], [1, 2]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=2.002e-16 dual_bound=1135.61242 obj=1135.61242 nodes=1",
+            "cert_total_us": 1255.6124185172728
+          },
+          {
+            "t": 14,
+            "n_moves": 4,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[1, 2], [0, 3]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=754.703399 obj=754.703399 nodes=1",
+            "cert_total_us": 874.7033989500001
+          },
+          {
+            "t": 15,
+            "n_moves": 4,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[1, 2], [0, 3]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=754.703399 obj=754.703399 nodes=1",
+            "cert_total_us": 874.7033989500001
+          },
+          {
+            "t": 16,
+            "n_moves": 4,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[1, 2], [0, 3]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=754.703399 obj=754.703399 nodes=1",
+            "cert_total_us": 874.7033989500001
+          },
+          {
+            "t": 17,
+            "n_moves": 4,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[1, 2], [0, 3]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=754.703399 obj=754.703399 nodes=1",
+            "cert_total_us": 874.7033989500001
+          }
+        ]
+      },
+      {
+        "gate": "A1",
+        "instance": "reg3_4_s0",
+        "family": "reg3",
+        "n_qubits": 4,
+        "provenance": {
+          "source": "networkx.random_regular_graph",
+          "networkx_version": "3.6.1",
+          "n": 4,
+          "requested_seed": 0,
+          "chosen_seed": 0,
+          "edge_order": "sorted lexicographically"
+        },
+        "qmap_cost_us": 8823.71317182326,
+        "qmap_n_batches": 48,
+        "qmap_n_load_store": 48,
+        "cert_duration_us": 5301.126607290671,
+        "chi_sum": 15,
+        "chi_max": 3,
+        "min_batches_lb_gap": 2.2,
+        "gap_rel": 0.6644977238777799,
+        "qmap_wall_s": 0.00023158302064985037,
+        "transitions": [
+          {
+            "t": 0,
+            "n_moves": 2,
+            "chi": 1,
+            "chi_log": "edgeless conflict graph: chi=1",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=377.274218 obj=377.274218 nodes=0",
+            "cert_total_us": 437.27421758181816
+          },
+          {
+            "t": 1,
+            "n_moves": 3,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[1], [2], [0]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=858.940625 obj=858.940625 nodes=1",
+            "cert_total_us": 948.9406251050904
+          },
+          {
+            "t": 2,
+            "n_moves": 3,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[0], [1], [2]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=807.270274 obj=807.270274 nodes=1",
+            "cert_total_us": 897.270274008404
+          },
+          {
+            "t": 3,
+            "n_moves": 4,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[0, 3], [2], [1]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=1135.62573 obj=1135.62573 nodes=0",
+            "cert_total_us": 1255.6257287354545
+          },
+          {
+            "t": 4,
+            "n_moves": 2,
+            "chi": 2,
+            "chi_log": "k=1 check=unsat\nk=2 check=sat\nchi=2 (sat), witness=[[0], [1]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=758.220082 obj=758.220082 nodes=0",
+            "cert_total_us": 818.2200816063637
+          },
+          {
+            "t": 5,
+            "n_moves": 3,
+            "chi": 3,
+            "chi_log": "k=1 check=unsat\nk=2 check=unsat\nk=3 check=sat\nchi=3 (sat), witness=[[1], [2], [0]]\ncertificate: unsat for every k<chi (see k lines above), sat at chi",
+            "mip_log": "highs status=Optimal mip_gap=0.000e+00 dual_bound=853.79568 obj=853.79568 nodes=1",
+            "cert_total_us": 943.7956802535408
+          }
+        ]
+      }
+    ]
+  }
+}

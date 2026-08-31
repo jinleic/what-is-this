@@ -1,0 +1,456 @@
+{
+ "accounting_identities_and_proofs": {
+  "adverse_high_margin": "worst-high audit precedes close branch; adverse-high liquidation uses same-hour SPOT LOW; calls logged with adverse prices",
+  "behavioral_proofs": "one-leg gap ff; scheduled-gap skip counted; active gap-hour breach unwind (all pass)",
+  "gaps_clocks_sofr_proofs": "48h half-open calendar test; SOFR once-daily booking on missing-bar hours; clocks elapsed-timestamp (immune to the 19 gaps)",
+  "ledger_telescoping": "sum(price)+sum(funding)+sum(fees) == E_final-1.0; residuals ~1e-15",
+  "synthetic_invariant": "identical paths + zero funding + zero fees => E_final == 1.0 exactly for all four clocks",
+  "terminal_fee": "final calendar hour realizes BOTH-leg unwind + fees inside the validation window",
+  "weighted_fees": "all sizing/repair/liquidation charge per-leg notional*rate (deterministic self-test proofs)"
+ },
+ "campaign": "quant-frontier-focused-2026-08-30",
+ "data_limitations": [
+  "OKX pre-2026 signed funding unavailable (blocked)",
+  "19 missing Binance spot hours 2020-2023 (per-series ff, counted)",
+  "12/7 bps defaults are research assumptions",
+  "intrahour audit is a conservative bound"
+ ],
+ "first_gate": {
+  "id": "focused-carry-first-gate",
+  "per_variant": {
+   "entry-and-hold": {
+    "positive_2x_excess_2024": false,
+    "variant_status": "falsified",
+    "zero_margin_calls": false
+   },
+   "retarget-168h": {
+    "okx_reconciled": false,
+    "positive_2x_excess_2024": true,
+    "variant_status": "blocked",
+    "zero_margin_calls": true
+   },
+   "retarget-24h": {
+    "positive_2x_excess_2024": false,
+    "variant_status": "falsified-on-2x",
+    "zero_margin_calls": true
+   },
+   "retarget-720h": {
+    "okx_reconciled": false,
+    "positive_2x_excess_2024": true,
+    "variant_status": "blocked",
+    "zero_margin_calls": true
+   }
+  },
+  "spec": "Zero margin calls; gross <= 1x NAV; positive 2x-cost cash-bench excess; both venues reconciled.",
+  "verdict": "Dossier-level BLOCKED: the family cannot be cleared because the cross-venue conjunct is unavailable; entry-and-hold is falsified on its own liquidation record."
+ },
+ "generated_by": "focused-cross-venue-carry/run.py (base-unit engine, event-open funding, worst-high-first margin with same-hour spot low, per-series ff, standalone-window ACT/360 SSOT; single atomic regeneration)",
+ "id": "focused-cross-venue-carry",
+ "mechanism_registered": {
+  "base_unit_invariant": "q_spot == -q_perp at entry, retargets, and repairs (asserted)",
+  "entry_formula": "q = (C - buffer) / (S + P + f_s*S + f_p*P) \u2014 exact weighted per-leg form",
+  "funding_mark": "event-hour PERP OPEN when the current perp bar exists; ff last-event mark ONLY when the current perp bar is absent (no lookahead)",
+  "gap_handling": "independent per-series ff marks; NO trading inside gaps; scheduled retargets on incomplete-bar hours SKIPPED AND COUNTED (no deferral/lookahead); ff-hour counter increments at most once per symbol/calendar hour; active sleeves retain nonzero gross on ff hours",
+  "margin_audit_order": "worst perp-HIGH audited BEFORE the close branch; on high breach: perp unwinds AT the adverse HIGH and long spot at the SAME-HOUR SPOT LOW (conservative unsynchronized-OHLC bound); realized extras (perp q_p*(High-Close), spot q_s*(Low-Close)) booked in the price ledger",
+  "retarget_predicate": "elapsed_hours > 0 and elapsed_hours % retarget_h == 0 (elapsed UTC hours; never row indices); scheduled increment occurs whenever the clock is due, before tradability, so scheduled == executed + skipped_nontradable",
+  "terminal_policy": "ONE continuous path; development = UNLIQUIDATED mark-to-market slice; validation carries the single final unwind + BOTH-leg fees"
+ },
+ "no_winner_selected": "No variant promoted; retarget numerics are unaudited single-venue observations.",
+ "okx_blocked_record": {
+  "captured_snippets": {
+   "okx/.capture_meta.json": {
+    "bytes": 1110,
+    "sha256": "24e76a79774f8f1688b186b2b6bd44f1eaa237c57bc4019d3f99b43bb8ce2421"
+   },
+   "okx/okx_BTC-USDT-SWAP_funding_2026-05-25_2026-08-30.json": {
+    "bytes": 60719,
+    "sha256": "7a75f40bd769f09e31eaf283c5918f330100cdd41e5ecab121a358cbafa77f40"
+   },
+   "okx/okx_ETH-USDT-SWAP_funding_2026-05-25_2026-08-30.json": {
+    "bytes": 60961,
+    "sha256": "9a1f2238f514df33b60194bdf7a581133df58f803aed924caa19c7bd11129db2"
+   },
+   "okx/okx_fundingrate_btc_current_2026-08-30.json": {
+    "bytes": 562,
+    "sha256": "1a73aca16b9c98ee2e5f078b3e00b7ad46464644a5940d4755078294293f729b"
+   },
+   "okx/okx_fundingrate_eth_current_2026-08-30.json": {
+    "bytes": 560,
+    "sha256": "e3922ddc945e3cdc8e6e98698e0de8c6fed2b98869d38b27a2a8593b494d0448"
+   },
+   "okx/okx_instruments_btcusdswap_2026-08-30.json": {
+    "bytes": 1189,
+    "sha256": "ebe3a7257c33979dc3decbd0724adc51c92c56aa9c46ccdfa82433d05cfebbf9"
+   },
+   "okx/okx_instruments_ethusdswap_2026-08-30.json": {
+    "bytes": 1188,
+    "sha256": "04919e05fab2f79b92f30f3617e7d602601e2c59c14052dc5491ba12f3fa863b"
+   }
+  },
+  "retention_observed": "~3 months (floor 2026-05-25T08Z)",
+  "verdict": "BLOCKED pre-2026"
+ },
+ "prospective_requirements": [
+  "any revival requires a margin-compliant re-specification registered BEFORE new data access",
+  "cross-venue signed funding requires lawful OKX history or licensed source",
+  "append-only shadow from 2026-08-30 only; no deployment claim"
+ ],
+ "retarget_schedule_evidence": {
+  "retarget-168h": {
+   "BTCUSDT": {
+    "executed": 230,
+    "scheduled": 230,
+    "skipped_nontradable": 0
+   },
+   "ETHUSDT": {
+    "executed": 230,
+    "scheduled": 230,
+    "skipped_nontradable": 0
+   }
+  },
+  "retarget-24h": {
+   "BTCUSDT": {
+    "executed": 1613,
+    "scheduled": 1613,
+    "skipped_nontradable": 0
+   },
+   "ETHUSDT": {
+    "executed": 1613,
+    "scheduled": 1613,
+    "skipped_nontradable": 0
+   }
+  },
+  "retarget-720h": {
+   "BTCUSDT": {
+    "executed": 53,
+    "scheduled": 53,
+    "skipped_nontradable": 0
+   },
+   "ETHUSDT": {
+    "executed": 53,
+    "scheduled": 53,
+    "skipped_nontradable": 0
+   }
+  }
+ },
+ "returns_csv": {
+  "bench_convention": "NAV-consistent a_d/(1+\u03a3 prior a); geometric product of rows == 1+\u03a3a == 0.0522816666666665 (verified to <2e-9)",
+  "columns": "date,strategy_return,benchmark_return,position,turnover,cost",
+  "rows": 366,
+  "strategy_convention": "compounded hourly returns within each day"
+ },
+ "schema_version": 1,
+ "ssot_benchmark": {
+  "convention": "STANDALONE-WINDOW simple ACT/360 NAV (resets to 1.0 at each window start); one daily accrual per UTC day; one NAV-consistent daily return per emitted CSV row",
+  "evidence": "geometric product of the 366 emitted daily rows == 1.05228166666537226 == 1 + \u03a3 a (float-consistent); benchmark.cum_return in results/report.json equals the same SSOT value; the continuous-2020 NAV subperiod ratio exists ONLY as continuous_nav_subperiod_return_diagnostic",
+  "legacy_constant_removed": "the prior disputed constant is absent from every artifact (verified); the sole 2024 benchmark is the standalone simple ACT/360 value above",
+  "validation_2024_cum_simple_act360": 0.0522816666666665
+ },
+ "status": "blocked",
+ "status_rule_check": "entry-and-hold (preregistered) is FALSIFIED \u2014 adverse intrahour-high margin breaches liquidate both sleeves Dec-2020, 2024 = 0.0 exactly. The retarget variants execute their full schedules on Binance single-venue data with mixed gate outcomes (24h fails 2x at -0.56%; 168h +0.12% and 720h +0.30% pass Binance-only numerics); the required OKX cross-venue reconciliation is unavailable, so a combined-venue verdict cannot be established: dossier-level BLOCKED. Never validation-pass; no durable-alpha confirmation; no deployment claim.",
+ "variant_metrics": {
+  "entry-and-hold": {
+   "E_final": 1.009218690241938,
+   "calendar_hours_total": 38736,
+   "continuous_nav_subperiod_return_diagnostic": 0.04894305683100297,
+   "development_excess_nav_2x": -0.06155696612385153,
+   "ff_hours_per_symbol": {
+    "BTCUSDT": 1,
+    "ETHUSDT": 5
+   },
+   "funding_credited": 864,
+   "funding_events_seen": {
+    "BTCUSDT": 4842,
+    "ETHUSDT": 4842
+   },
+   "gross_over_equity_max": 1.0000000000000004,
+   "intrahour_high_unwind_events": {
+    "BTCUSDT": [
+     {
+      "adverse_perp_high": 23888.04,
+      "at_hour_ms": 1608195600000,
+      "at_iso": "2020-12-17T09:00:00+00:00",
+      "kind": "conservative-intrahour-high",
+      "spot_low_used": 21801.0,
+      "unwind": "worst-edge: perp at high + spot at same-hour low"
+     }
+    ],
+    "ETHUSDT": [
+     {
+      "adverse_perp_high": 747.9,
+      "at_hour_ms": 1609171200000,
+      "at_iso": "2020-12-28T16:00:00+00:00",
+      "kind": "conservative-intrahour-high",
+      "spot_low_used": 726.08,
+      "unwind": "worst-edge: perp at high + spot at same-hour low"
+     }
+    ]
+   },
+   "ledger_identity_residual": 2.3418766925686896e-16,
+   "margin_calls": {
+    "BTCUSDT": {
+     "at_hour_ms": 1608195600000,
+     "at_iso": "2020-12-17T09:00:00+00:00",
+     "kind": "conservative-intrahour-high",
+     "terminated": true
+    },
+    "ETHUSDT": {
+     "at_hour_ms": 1609171200000,
+     "at_iso": "2020-12-28T16:00:00+00:00",
+     "kind": "conservative-intrahour-high",
+     "terminated": true
+    }
+   },
+   "retarget_schedules": {
+    "BTCUSDT": {
+     "executed": 0,
+     "scheduled": 0,
+     "skipped_nontradable": 0
+    },
+    "ETHUSDT": {
+     "executed": 0,
+     "scheduled": 0,
+     "skipped_nontradable": 0
+    }
+   },
+   "topup_diagnostics": {
+    "BTCUSDT": {
+     "count": 0,
+     "shortfall_usd": 0.0,
+     "unfunded": 0
+    },
+    "ETHUSDT": {
+     "count": 0,
+     "shortfall_usd": 0.0,
+     "unfunded": 0
+    }
+   },
+   "validation_attribution_usd": {
+    "fees": 0.0,
+    "funding_pnl": 0.0,
+    "price_pnl": 0.0
+   },
+   "validation_bench_ann_return_standalone": 0.05213516009274266,
+   "validation_bench_ann_vol_standalone": 0.00018528349841128255,
+   "validation_bench_cum_simple_act360_standalone": 0.05228166666666789,
+   "validation_bench_max_drawdown_standalone": 0.0,
+   "validation_bench_n_days": 366,
+   "validation_bench_sharpe_standalone": 274.31013059638315,
+   "validation_excess_nav_1x": -0.05228166666667122,
+   "validation_excess_nav_2x": -0.05228166666667122,
+   "validation_strategy_cum": 0.0
+  },
+  "retarget-168h": {
+   "E_final": 1.3534478049991536,
+   "calendar_hours_total": 38736,
+   "continuous_nav_subperiod_return_diagnostic": 0.04894305683100297,
+   "development_excess_nav_2x": 0.1934831383925375,
+   "ff_hours_per_symbol": {
+    "BTCUSDT": 19,
+    "ETHUSDT": 19
+   },
+   "funding_credited": 9682,
+   "funding_events_seen": {
+    "BTCUSDT": 4842,
+    "ETHUSDT": 4842
+   },
+   "gross_over_equity_max": 1.0000000000000004,
+   "intrahour_high_unwind_events": {
+    "BTCUSDT": [],
+    "ETHUSDT": []
+   },
+   "ledger_identity_residual": -2.4424906541753444e-15,
+   "margin_calls": {
+    "BTCUSDT": {
+     "terminated": false
+    },
+    "ETHUSDT": {
+     "terminated": false
+    }
+   },
+   "retarget_schedules": {
+    "BTCUSDT": {
+     "executed": 230,
+     "scheduled": 230,
+     "skipped_nontradable": 0
+    },
+    "ETHUSDT": {
+     "executed": 230,
+     "scheduled": 230,
+     "skipped_nontradable": 0
+    }
+   },
+   "topup_diagnostics": {
+    "BTCUSDT": {
+     "count": 119,
+     "shortfall_usd": 0.0,
+     "unfunded": 0
+    },
+    "ETHUSDT": {
+     "count": 122,
+     "shortfall_usd": 0.0,
+     "unfunded": 0
+    }
+   },
+   "validation_attribution_usd": {
+    "fees": -0.005493397783,
+    "funding_pnl": 0.079391217315,
+    "price_pnl": 0.000119508847
+   },
+   "validation_bench_ann_return_standalone": 0.05213516009274266,
+   "validation_bench_ann_vol_standalone": 0.00018528349841128255,
+   "validation_bench_cum_simple_act360_standalone": 0.05228166666666789,
+   "validation_bench_max_drawdown_standalone": 0.0,
+   "validation_bench_n_days": 366,
+   "validation_bench_sharpe_standalone": 274.31013059638315,
+   "validation_excess_nav_1x": 0.005570111708277592,
+   "validation_excess_nav_2x": 0.001218250175647917,
+   "validation_strategy_cum": 0.057851778374948815
+  },
+  "retarget-24h": {
+   "E_final": 1.332946711315238,
+   "calendar_hours_total": 38736,
+   "continuous_nav_subperiod_return_diagnostic": 0.04894305683100297,
+   "development_excess_nav_2x": 0.1588261486599376,
+   "ff_hours_per_symbol": {
+    "BTCUSDT": 19,
+    "ETHUSDT": 19
+   },
+   "funding_credited": 9682,
+   "funding_events_seen": {
+    "BTCUSDT": 4842,
+    "ETHUSDT": 4842
+   },
+   "gross_over_equity_max": 1.0000000000000004,
+   "intrahour_high_unwind_events": {
+    "BTCUSDT": [],
+    "ETHUSDT": []
+   },
+   "ledger_identity_residual": -2.55351295663786e-15,
+   "margin_calls": {
+    "BTCUSDT": {
+     "terminated": false
+    },
+    "ETHUSDT": {
+     "terminated": false
+    }
+   },
+   "retarget_schedules": {
+    "BTCUSDT": {
+     "executed": 1613,
+     "scheduled": 1613,
+     "skipped_nontradable": 0
+    },
+    "ETHUSDT": {
+     "executed": 1613,
+     "scheduled": 1613,
+     "skipped_nontradable": 0
+    }
+   },
+   "topup_diagnostics": {
+    "BTCUSDT": {
+     "count": 816,
+     "shortfall_usd": 0.0,
+     "unfunded": 0
+    },
+    "ETHUSDT": {
+     "count": 842,
+     "shortfall_usd": 0.0,
+     "unfunded": 0
+    }
+   },
+   "validation_attribution_usd": {
+    "fees": -0.010133947904,
+    "funding_pnl": 0.079197304255,
+    "price_pnl": 0.000221959186
+   },
+   "validation_bench_ann_return_standalone": 0.05213516009274266,
+   "validation_bench_ann_vol_standalone": 0.00018528349841128255,
+   "validation_bench_cum_simple_act360_standalone": 0.05228166666666789,
+   "validation_bench_max_drawdown_standalone": 0.0,
+   "validation_bench_n_days": 366,
+   "validation_bench_sharpe_standalone": 274.31013059638315,
+   "validation_excess_nav_1x": 0.002547353012547937,
+   "validation_excess_nav_2x": -0.005627609457818261,
+   "validation_strategy_cum": 0.05482901967921916
+  },
+  "retarget-720h": {
+   "E_final": 1.3543796522548912,
+   "calendar_hours_total": 38736,
+   "continuous_nav_subperiod_return_diagnostic": 0.04894305683100297,
+   "development_excess_nav_2x": 0.19972970466758833,
+   "ff_hours_per_symbol": {
+    "BTCUSDT": 19,
+    "ETHUSDT": 19
+   },
+   "funding_credited": 9682,
+   "funding_events_seen": {
+    "BTCUSDT": 4842,
+    "ETHUSDT": 4842
+   },
+   "gross_over_equity_max": 1.0000000000000004,
+   "intrahour_high_unwind_events": {
+    "BTCUSDT": [],
+    "ETHUSDT": []
+   },
+   "ledger_identity_residual": -1.887379141862766e-15,
+   "margin_calls": {
+    "BTCUSDT": {
+     "terminated": false
+    },
+    "ETHUSDT": {
+     "terminated": false
+    }
+   },
+   "retarget_schedules": {
+    "BTCUSDT": {
+     "executed": 53,
+     "scheduled": 53,
+     "skipped_nontradable": 0
+    },
+    "ETHUSDT": {
+     "executed": 53,
+     "scheduled": 53,
+     "skipped_nontradable": 0
+    }
+   },
+   "topup_diagnostics": {
+    "BTCUSDT": {
+     "count": 29,
+     "shortfall_usd": 0.0,
+     "unfunded": 0
+    },
+    "ETHUSDT": {
+     "count": 29,
+     "shortfall_usd": 0.0,
+     "unfunded": 0
+    }
+   },
+   "validation_attribution_usd": {
+    "fees": -0.003353066105,
+    "funding_pnl": 0.077392716486,
+    "price_pnl": 0.00010426277
+   },
+   "validation_bench_ann_return_standalone": 0.05213516009274266,
+   "validation_bench_ann_vol_standalone": 0.00018528349841128255,
+   "validation_bench_cum_simple_act360_standalone": 0.05228166666666789,
+   "validation_bench_max_drawdown_standalone": 0.0,
+   "validation_bench_n_days": 366,
+   "validation_bench_sharpe_standalone": 274.31013059638315,
+   "validation_excess_nav_1x": 0.005632599343742051,
+   "validation_excess_nav_2x": 0.0029656180872288385,
+   "validation_strategy_cum": 0.05791426601041327
+  }
+ },
+ "windows": {
+  "development": [
+   "2020-08-01T00:00Z",
+   "2024-01-01T00:00Z"
+  ],
+  "validation": [
+   "2024-01-01T00:00Z",
+   "2025-01-01T00:00Z"
+  ],
+  "window_semantics": "half-open bounds; standalone-window benchmark NAV; dev slice = UNLIQUIDATED MTM; validation = carries final unwind"
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "claim_status": "PROVED",
+ "consequence_for_the_induction": "The r -> r+1 induction of uc/GENERAL_R_H2_COMPOSITION.md section 4 is UNFOUNDED as written: the channel increment is exactly quadratic in the inserted mass (PROVED here) but sign-indefinite (REFUTED here), and it is not an S_asym instance.  Any induction must dominate the negative channel term by the F-margin, which is precisely the open block-copositivity obligation recorded in uc/verification/results/liu9-block-kernel.json.",
+ "honesty": "This report supersedes uc/verification/results/sasym-channel-identification.json, which was fabricated prose with no computation, and the liu9-sasym-4slot* reports, whose pencil was invented rather than taken from liu9_second_order.py.",
+ "mutations": [
+  {
+   "expected": "FAIL",
+   "mutation": "base_mass_power_1_instead_of_2",
+   "residual_is_zero": false
+  },
+  {
+   "expected": "FAIL",
+   "mutation": "cross_term_sign_flip",
+   "residual_is_zero": false
+  },
+  {
+   "expected": "FAIL",
+   "mutation": "drop_D_term",
+   "residual_is_zero": false
+  }
+ ],
+ "report_sha256": "3fc7558a517ec1301eed9bdd94ef42940df99d0f280c11c6662b2e4ce1d08f5a",
+ "statements": {
+  "channel_increment_is_nonnegative": {
+   "detail": {
+    "conclusion": "D(u,v)/beta = h(pi(u,u)) + h(pi(v,v)) - 2 h(pi(u,v)) is NOT nonnegative: Arb encloses it strictly below zero at exact rational points.  Hence the t^2 term of the channel increment can be negative and the insertion increment is sign-indefinite.",
+    "probes": [
+     {
+      "D_over_beta": "[-0.633399360587514216356264 +/- 2.41e-26]",
+      "certified_strictly_negative": true,
+      "u": "7/20",
+      "v": "39/40"
+     },
+     {
+      "D_over_beta": "[-0.0769642406944118250747776 +/- 3.01e-26]",
+      "certified_strictly_negative": true,
+      "u": "9/10",
+      "v": "1/10"
+     },
+     {
+      "D_over_beta": "[+/- 5.56e-96]",
+      "certified_strictly_negative": false,
+      "u": "1/2",
+      "v": "1/2"
+     },
+     {
+      "D_over_beta": "[-0.0666457411697177585974984 +/- 1.84e-26]",
+      "certified_strictly_negative": true,
+      "u": "1/4",
+      "v": "3/4"
+     }
+    ],
+    "sign_definite": false,
+    "strictly_negative_certified": 3
+   },
+   "status": "REFUTED"
+  },
+  "one_step_channel_identity": {
+   "claim": "c_ch^{(r+1)} = (1-t)^2 c_ch^{(r)} + t^2 D(u,v) + 2 t (1-t) X(u,v); exact, quadratic in t",
+   "method": "sympy multilinear expansion over a free basis on the h(pi(.,.)) protocol-entropy values",
+   "rows": [
+    {
+     "atom_count_r": 1,
+     "free_basis_size": 10,
+     "increment_degree_in_t": 2,
+     "residual_head": "",
+     "residual_is_zero": true,
+     "residual_term_count": 0
+    },
+    {
+     "atom_count_r": 2,
+     "free_basis_size": 21,
+     "increment_degree_in_t": 2,
+     "residual_head": "",
+     "residual_is_zero": true,
+     "residual_term_count": 0
+    },
+    {
+     "atom_count_r": 3,
+     "free_basis_size": 36,
+     "increment_degree_in_t": 2,
+     "residual_head": "",
+     "residual_is_zero": true,
+     "residual_term_count": 0
+    }
+   ],
+   "status": "PROVED"
+  },
+  "s_asym_is_the_channel_increment": {
+   "detail": {
+    "identity_holds": false,
+    "non_channel_symbols_in_S_asym": [
+     "A_const",
+     "Hprod(xstar,xstar)",
+     "Hprod(xstar,y1)",
+     "Hprod(xstar,y2)",
+     "Hprod(y1,y1)",
+     "Hprod(y1,y2)",
+     "Hprod(y2,y2)",
+     "h(y1)",
+     "h(y2)"
+    ],
+    "protocol_symbol_rows": [
+     {
+      "coeff_in_S_asym": "beta*(q**2*y1**2 - 2*q**2*y1*y2 + q**2*y2**2 - 2*q*y1**2 + 2*q*y1*y2 + y1**2)/xstar**2",
+      "coeff_in_channel_increment": "0",
+      "equal": false,
+      "symbol": "Kpi(xstar,xstar)"
+     },
+     {
+      "coeff_in_S_asym": "2*beta*(2*p*xstar*(1 - q) - q**2*y1 + q**2*y2 + 2*q*y1 - q*y2 - y1)/xstar",
+      "coeff_in_channel_increment": "0",
+      "equal": false,
+      "symbol": "Kpi(xstar,y1)"
+     },
+     {
+      "coeff_in_S_asym": "2*beta*q*(2*p*xstar + q*y1 - q*y2 - y1)/xstar",
+      "coeff_in_channel_increment": "0",
+      "equal": false,
+      "symbol": "Kpi(xstar,y2)"
+     },
+     {
+      "coeff_in_S_asym": "beta*(1 - q)",
+      "coeff_in_channel_increment": "beta",
+      "equal": false,
+      "symbol": "Kpi(y1,y1)"
+     },
+     {
+      "coeff_in_S_asym": "0",
+      "coeff_in_channel_increment": "-2*beta",
+      "equal": false,
+      "symbol": "Kpi(y1,y2)"
+     },
+     {
+      "coeff_in_S_asym": "beta*q",
+      "coeff_in_channel_increment": "beta",
+      "equal": false,
+      "symbol": "Kpi(y2,y2)"
+     }
+    ],
+    "protocol_symbols_matching": 0,
+    "protocol_symbols_total": 6,
+    "residual_term_count": 88,
+    "verdict": "S_asym is NOT the channel increment: it carries the F-margin pieces (product entropies Hprod, single entropies h(y), the (y/x)A_const first-order term and the kappa distance subtraction) which no channel increment contains, and its protocol coefficients differ."
+   },
+   "status": "REFUTED"
+  }
+ },
+ "tool": "liu9_channel_insertion.py"
+}

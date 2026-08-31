@@ -1,0 +1,46 @@
+{
+ "campaign": "2026-08-30T114124Z_ba4f8430_65d2435684e3",
+ "statement": "pre_statement.md Revision 2 (appended 2026-08-30, before any k > 8 run)",
+ "frozen_source": "2026-08-29T232134Z_4f1a9cab_e274dc65db35",
+ "carrier": "cx_chain",
+ "regression_gate": "PASS",
+ "per_k_extension": [
+  {
+   "k": 9,
+   "w_M": "274721/129140163",
+   "w_ct": "328801/129140163",
+   "diff": "-54080/129140163",
+   "verdict": "EDGE-VANISHES"
+  },
+  {
+   "k": 10,
+   "w_M": "3875057/3486784401",
+   "w_ct": "4912337/3486784401",
+   "diff": "-345760/1162261467",
+   "verdict": "EDGE-VANISHES"
+  },
+  {
+   "k": 11,
+   "w_M": "2024275/3486784401",
+   "w_ct": "907505/1162261467",
+   "diff": "-698240/3486784401",
+   "verdict": "EDGE-VANISHES"
+  },
+  {
+   "k": 12,
+   "w_M": "85655881/282429536481",
+   "w_ct": "122336033/282429536481",
+   "diff": "-36680152/282429536481",
+   "verdict": "EDGE-VANISHES"
+  }
+ ],
+ "largest_k_completed": 12,
+ "elapsed_regression_s": 0.37,
+ "elapsed_extension_s": 23.401,
+ "total_elapsed_s": 23.771,
+ "exactness": "GF(2) bit-label ints + fractions.Fraction only; no RNG",
+ "single_core_low_priority": "nice -n 10, one process",
+ "python": "3.14.3",
+ "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+ "artifact_sha256_12": "65d2435684e3"
+}

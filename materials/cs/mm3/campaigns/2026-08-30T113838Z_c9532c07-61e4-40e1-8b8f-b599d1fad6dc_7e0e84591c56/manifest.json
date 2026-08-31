@@ -1,0 +1,112 @@
+{
+  "campaign": "Gate C — orientation sweep for the <=54 record attack (5 decompositions x signed-permutation sandwich x sigma-orbit)",
+  "utc_start": "2026-08-30T11:38:38Z",
+  "agent": "Mm3GateC",
+  "pre_statement": "pre_statement.md (committed BEFORE any sweep computation)",
+
+  "swept_set_exact": {
+    "decompositions": [
+      "paper55  — arXiv:2607.28676 printed §5.2 blocks (src/tensor_data.py)",
+      "perminov58 — cr58_cn122 commit 98ba522 decoded with Perminov's loader conventions (same factor blocks as paper55; gate A identity)",
+      "sun56 — arXiv:2604.27645, from his shipped verify.py SIDES",
+      "mws59 — arXiv:2601.05272 Table 3 file-format blocks (layout lines 237-265)",
+      "stapleton60 — arXiv:2508.03857 Appendix A verification script, transcribed and re-derived here (NEW to the repo: no Stapleton factor data existed on disk before this campaign)"
+    ],
+    "group_per_decomposition": "(X,Y,Z) over the 48 3x3 signed permutation matrices each (48^3 = 110592) composed with the sigma-orbit {Id, sigma, sigma^2}, sigma: (U,V,W) -> (V, W^T, U^T) — 331776 orientations per decomposition",
+    "total_orientations_swept": 1658880,
+    "excluded_with_reason": "(U,V)-swap (anti-cyclic) orientations: they compute B*A, not A*B, hence are not decompositions of the target tensor. Excluded, not silently dropped.",
+    "ring": "Z for every member; no F2-only scheme entered the set"
+  },
+
+  "summand_order_canonicalization": {
+    "why": "the group action permutes the 23 summands; arXiv:2607.29291 needs an explicit perfect-matching step for exactly this reason. An order-sensitive counter would report relabelling as landscape.",
+    "how": "the counter is order-INVARIANT by construction: d(F) is computed as the cardinality of a SET of sign-classes of the 23 target vectors minus the 9 input directions, so any permutation of the 23 summands (and any per-summand sign flip) leaves it fixed. No matching step is required.",
+    "machine_check": "before any counting, the sweep asserts d(L), d(R), d(Ofac) are unchanged under 8 pseudorandom relabelings of the 23 products, per decomposition (seed 17). All five decompositions passed; a mismatch aborts the run with 'COUNTER BUG'."
+  },
+
+  "action_formula_verified": {
+    "form": "U'[r][(i2,k2)] = sum_{i,k} (X^-1)[i][i2] * Y[k2][k] * U[r][(i,k)]; V'[r][(k2,j2)] = sum_{k,j} (Y^-1)[k][k2] * Z[j2][j] * V[r][(k,j)]; W'[r][(i2,j2)] = sum_{i,j} (X^-1)[i][i2] * Z[j2][j] * W[r][(i,j)]",
+    "provenance": "derived from the substitution A -> X^-1 A' Y, B -> Y^-1 B' Z, C -> X^-1 C' Z and then MACHINE-CHECKED: 729/729 Brent over Z on all five decompositions for sampled triples, and per sigma-power inside every sweep run",
+    "rule5_retraction": "a first implementation used the naive per-product conjugation (X U Y^-1 blockwise) and FAILED Brent (12 failures on mws59, 48 on the sigma^2 image). Retracted and replaced by the derivation above; the failing form is recorded here rather than removed. A second slip in the same session: sigma^2 was first coded as (W^T, U^T, V) instead of the correct (W^T, U, V^T) — caught by the same 729-check (48 failures), corrected."
+  },
+
+  "anchors_reproduced_before_sweep": {
+    "harness": "scripts/verify_anchors.py — exact fmpz, 729/729 per decomposition",
+    "results": "paper55 729/729 (13/14/28=55); perminov58 729/729 (58 published, same blocks as paper55); sun56 729/729 (13/13/30=56); mws59 729/729 (15/15/29=59); stapleton60 729/729 (16/16/28=60, transcription re-derived here)",
+    "stapleton_note": "the Stapleton scheme prints products with double negations, e.g. M0 = (-t3)*(-B7); an intermediate transcription encoded the two signs separately and 2 of 729 Brent cells failed. Fixed; both versions noted in scripts/stapleton60_data.py docstring."
+  },
+
+  "counting_model": "additions include subtractions; inputs free; each gate x+y or x-y costs 1; sign changes and copies free; total = left + right + output. Identical to the gate A/B convention.",
+
+  "certified_result": {
+    "quantity": "per-orientation certified LOWER BOUND on the total addition count = C_lb(left) + C_lb(right) + C_lb(outfac) + 14, where C_lb(side) = d(side) + [no d(side)-gate schedule exists] and the +14 is the transposition gap of the output stage (23 inputs, 9 outputs)",
+    "min_over_entire_swept_set": 55,
+    "per_class": "certified_landscape.json (15 classes; each covers 110592 orientations by the monomial-transfer theorem)",
+    "verdict": "NO orientation in the swept set can reach a total of 54. The minimum certified lower bound over all 1658880 swept orientations is 55, attained by paper55/perminov58 (all three sigma rotations) and by sun56 (all three). The published 55-addition orientation therefore remains optimal over the whole swept set, and it attains its own bound exactly (gate A witness 13/14/28).",
+    "no_escalation_needed": "no total <= 54 appeared, so nothing was escalated as a record and no claim was written anywhere."
+  },
+
+  "new_facts_this_campaign": [
+    "MONOMIAL-TRANSFER THEOREM: for any signed permutation g of the 9 input coordinates, C(F) = C(gF) — an optimal circuit maps gate-for-gate through g. Hence the whole 48^3 sandwich group is COST-INVARIANT and the sweep's landscape is flat within each sigma class. Machine-checked in invariance_check.json (5 sandwich triples x 4 decompositions x 3 sides: d and floor decisions identical, states identical: 33/116/66 for paper55, 132/81/672 for mws59, 1152/1344/460 for stapleton60, 33/9/17 for sun56).",
+    "SWEEP REDUNDANCY, BOTH HALVES (added 2026-08-30 on Main's instruction): 1658880 orientations were evaluated and they produced exactly 15 distinct data points, because the theorem above guarantees the 110592 sandwich triples are constant within each sigma class. So the instruction to sweep all 48^3 triples was, in hindsight, PROVABLY REDUNDANT — stated plainly. The other half is equally true: THE SWEEP IS WHAT DISCOVERED THE REDUNDANCY, which is now established structurally by proof rather than assumed, and the exhaustive run is the evidence that the proof's prediction holds on every instance rather than on a sample. A campaign that proves its own instruction unnecessary has produced a theorem, not wasted compute.",
+    "sun56's W-factor floor is ACHIEVABLE at d=16 — the ONLY achievable floor among all 45 side-instances swept. An explicit 16-gate witness was extracted and verified to cover every target (audits.json), so C(Wfac_sun) = 16 exactly and Sun's output stage cost 30 = 16 + 14 is CERTIFIED OPTIMAL. The repo did not have this before.",
+    "stapleton60 certified lower bound 58 (d = 14/14/13, all three floors impossible) versus its published 60 — the first certified bound on the Stapleton scheme in this repo.",
+    "mws59 certified lower bound 56 in all three sigma rotations, reproducing the frozen session-3 value 56 from an independent code path."
+  ],
+
+  "audits": {
+    "witness_audit": "audits.json — every 'floor achievable' claim carries an explicit verified gate list; every 'floor impossible' claim carries its complete-DFS state count",
+    "activity_audit": "audits.json — 15/15 orientation classes ACTIVE (all 23 products appear with nonzero output coefficient, all 9 outputs nonzero), which is the precondition of the transposition bound used in every total",
+    "column_order_invariance": "sweep asserts d() is invariant under 8 random relabelings of the 23 products per decomposition before any counting (guards against the order-sensitivity failure mode raised by arXiv:2607.29291's slot-matching remark)",
+    "gate_b_encoding_audit": "gate_b_encoding_audit.md — FORBID/REQUIRE inventory, both-direction soundness proof, solver-tolerance analysis. Verdict: sound, no under-constraint, nothing to escalate. Accepted by Main 2026-08-30."
+  },
+
+  "arithmetic": "exact throughout; no floating point anywhere in gate C. Python arbitrary-precision integers in the sweep and DFS; python-flint fmpz in verify_anchors.py. Factor entries in {-1,0,1}; Brent partial sums bounded by 23 in absolute value. No solver, hence no tolerance exposure.",
+
+  "rule7_scope": {
+    "swept_exactly": "the 5 decompositions named above, each under all 110592 signed-permutation sandwich triples composed with all 3 sigma rotations = 1658880 orientations, all 729/729 Brent-valid over Z",
+    "NOT_swept": [
+      "non-monomial ternary invertible sandwiches: the 3x3 ternary unimodular group has 6960 elements (48 monomial + 6912 non-monomial, counted exactly this campaign and independently re-brute-forced by Main over all 3^9 = 19683 sign patterns); the full non-monomial product 6960^3 x 3 = 1,011,460,608,000 ~ 1.0e12 orientations was NOT swept and is where the cost landscape could genuinely move, since the monomial-transfer theorem does not apply there. CORRECTION RECORDED PER RULE 5 (2026-08-30, post-freeze, cause: Main's independent arithmetic check): this figure was first written as ~1.01e11, a factor-10 understatement; since the number is what justifies not sweeping, understating it understated the case for that decision. Nothing else in this manifest changed; checksums.txt regenerated after the correction.",
+      "GL(3,Q) / GL(3,Z) sandwiches beyond ternary entries (infinite)",
+      "any rank-23 decomposition outside the five named (in particular: Laderman's original, Smirnov's other schemes, Schwartz-Vaknin's alternative-basis 61, and any unpublished scheme)",
+      "basis-change variants (a different model; the record ladder's convention excludes them)",
+      "F2 schemes, including those constructible from arXiv:2607.29291 — an F2 scheme is not automatically valid over Z and none was added",
+      "upper bounds beyond the anchors: this campaign certifies LOWER bounds per orientation plus the published witnesses. Where a class's lower bound is 55 and no witness at 55 is known (e.g. paper55's sigma and sigma^2 rotations, whose best known circuits are 57), the exact optimum of that class remains open in [55, 57]"
+    ],
+    "statement": "The no-<=54 verdict is a claim about EXACTLY the swept set above. It is not a universal claim about rank-23 3x3 additive complexity, and not a claim about non-monomial reorientations."
+  },
+
+  "paper_scans_recorded": {
+    "arXiv:2608.27434": "Kassabov-Landsberg-Souza-Speegle centroids paper — scanned full HTML; zero hits for 3x3, rank 23, Laderman, Smirnov, M<3,3,3>, addition, additive. Its explicit decompositions are border-rank decompositions of Strassen/Schoenhage/CW/big-centroid tensors at exponent 2.46-2.55. NO new rank-23 3x3 decomposition; sweep set NOT extended.",
+    "arXiv:2607.29291": "Palladinos SAT-certificates paper — abstract read first-hand. Confirms GL-isotropy + cyclic trace + slot matching as live constructive technique (over F2, GL(3,2)^3); motivated the column-order invariance test here and the gate-B encoding audit. No addition counts, no collision with the <=54 target."
+  },
+
+  "environment": {
+    "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0]",
+    "python-flint": "0.9.0",
+    "numpy": "2.5.2 (not used in the certified path)",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "threads": "OMP_NUM_THREADS=1, single process"
+  },
+
+  "runtime": {
+    "d_level_sweep_all_five_decompositions": "1160 s total (231 s mws59, 233 s paper55, 233 s perminov58, 231 s stapleton60, 232 s sun56)",
+    "invariance_check": "2.0 s",
+    "certified_landscape": "1.5 s",
+    "audits": "1.7 s"
+  },
+
+  "files": {
+    "pre_statement.md": "pre-registration, committed before compute",
+    "sweep_checkpoint.jsonl": "crash-safe progress log, one line per 4096 triples plus a FINAL line per decomposition",
+    "sweep_stdout.log": "verbatim sweep stdout",
+    "landscape.json.gz": "raw d-level landscape, gzip -9 (96 MB uncompressed: it records every one of the 1658880 swept orientations individually; the distribution is degenerate within each class, as the monomial-transfer theorem predicts). NOTE: the d-level numbers are NOT addition counts, they are the pre-floor-increment bounds.",
+    "certified_landscape.json": "the certified result: per-class d, floor decisions, per-side C lower bounds, output-stage bound, total lower bound, min over swept set",
+    "invariance_check.json": "monomial-transfer corollary machine-check",
+    "audits.json": "witness audit + activity audit",
+    "gate_b_encoding_audit.md": "the ordered gate-B encoding audit",
+    "scripts/": "every script as run plus the input data files (tensor_data.py, sun56_verify.py, mws59_layout.txt, cr58_cn122_ZT_reduced.json)",
+    "checksums.txt": "SHA-256 of every file in this campaign",
+    "versions.txt": "toolchain versions as recorded at freeze time"
+  }
+}

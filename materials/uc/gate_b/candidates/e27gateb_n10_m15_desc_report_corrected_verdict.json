@@ -1,0 +1,31 @@
+{
+  "certificate": "uc/gate_b/certificates/gate_b_sub_62_225_clone_rational_v1.json",
+  "correct_value": true,
+  "correct_verdict": "PROVED_SUB_LOWER_DEFECT_NEGATIVE_EXACT_RATIONAL",
+  "corrected_field": "any_finalist_has_certified_negative_fixed_order",
+  "exact_enclosure_of_negative_order": {
+    "a_plus_lower": "-136150635048655437746231969/39614081257132168796771975168",
+    "a_plus_lower_decimal": "-0.003436925222749",
+    "a_plus_upper": "-272301270097310875492463927/79228162514264337593543950336",
+    "a_plus_upper_decimal": "-0.003436925222748",
+    "negative": true,
+    "order": [
+      8,
+      1,
+      2,
+      3,
+      7,
+      0,
+      5,
+      4,
+      6,
+      9
+    ]
+  },
+  "note": "The summary flag `any_finalist_has_certified_negative_fixed_order` in the original report is FALSE, but the report's embedded record `lowest_defect_certified_negative_fixed_order` is non-null with a certified negative witness at defect 62/225 (restart 11).  Artifact beats summary: restart 11 is a certified exactly-negative fixed order at defect 62/225 = 0.275555... < 14/45 = 0.311111..., and the record headliner (`headline`: no certified negative below 14/45) is SUPERSEDED by this correction.  The independent audit of the ordered family+order in `gate_b_sub_62_225_clone_rational_v1.json` confirms every gate row (admissible, cap 6 reimer R_15=30, defect 62/225 exactly, full set, distinct rows, cap = 6 uniform) and the explicit finite negative clone multiset (multiplicities R=15965) is exact with the same bound method the v1 certificate used.",
+  "schema": 1,
+  "search_summary_was_incorrect_because": "the writer of this sidecar (UnacceptableQuelea) mis-read the report as `{any: false}` on a fast poll; the artifact had `any: true` and the fully formed `lowest_defect_certified_negative_fixed_order` witness all along.  Correct via this sidecar; do NOT mutate the file it supersedes.",
+  "summary_field_value_in_original": false,
+  "supersedes_field_of": "uc/gate_b/candidates/e27gateb_n10_m15_desc_report.json",
+  "supersedes_field_of_sha256": "ee5e6111b47decb6adcc985c137f229848e6c6b500771725517848b8673dd59d"
+}

@@ -1,0 +1,616 @@
+{
+ "paper55": {
+  "invariant_key": [
+   [
+    12,
+    false
+   ],
+   [
+    13,
+    false
+   ],
+   [
+    13,
+    false
+   ]
+  ],
+  "rows": [
+   {
+    "triple": [
+     0,
+     0,
+     0
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 13,
+      "floor_exists": false,
+      "states": 116
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 66
+     }
+    ]
+   },
+   {
+    "triple": [
+     7,
+     13,
+     29
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 13,
+      "floor_exists": false,
+      "states": 116
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 66
+     }
+    ]
+   },
+   {
+    "triple": [
+     3,
+     40,
+     11
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 13,
+      "floor_exists": false,
+      "states": 116
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 66
+     }
+    ]
+   },
+   {
+    "triple": [
+     47,
+     2,
+     19
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 13,
+      "floor_exists": false,
+      "states": 116
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 66
+     }
+    ]
+   },
+   {
+    "triple": [
+     12,
+     12,
+     12
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 13,
+      "floor_exists": false,
+      "states": 116
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 66
+     }
+    ]
+   }
+  ]
+ },
+ "sun56": {
+  "invariant_key": [
+   [
+    12,
+    false
+   ],
+   [
+    11,
+    false
+   ],
+   [
+    16,
+    true
+   ]
+  ],
+  "rows": [
+   {
+    "triple": [
+     0,
+     0,
+     0
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 11,
+      "floor_exists": false,
+      "states": 9
+     },
+     {
+      "side": "Wfac",
+      "d": 16,
+      "floor_exists": true,
+      "states": 17
+     }
+    ]
+   },
+   {
+    "triple": [
+     7,
+     13,
+     29
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 11,
+      "floor_exists": false,
+      "states": 9
+     },
+     {
+      "side": "Wfac",
+      "d": 16,
+      "floor_exists": true,
+      "states": 17
+     }
+    ]
+   },
+   {
+    "triple": [
+     3,
+     40,
+     11
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 11,
+      "floor_exists": false,
+      "states": 9
+     },
+     {
+      "side": "Wfac",
+      "d": 16,
+      "floor_exists": true,
+      "states": 17
+     }
+    ]
+   },
+   {
+    "triple": [
+     47,
+     2,
+     19
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 11,
+      "floor_exists": false,
+      "states": 9
+     },
+     {
+      "side": "Wfac",
+      "d": 16,
+      "floor_exists": true,
+      "states": 17
+     }
+    ]
+   },
+   {
+    "triple": [
+     12,
+     12,
+     12
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 12,
+      "floor_exists": false,
+      "states": 33
+     },
+     {
+      "side": "V",
+      "d": 11,
+      "floor_exists": false,
+      "states": 9
+     },
+     {
+      "side": "Wfac",
+      "d": 16,
+      "floor_exists": true,
+      "states": 17
+     }
+    ]
+   }
+  ]
+ },
+ "mws59": {
+  "invariant_key": [
+   [
+    13,
+    false
+   ],
+   [
+    12,
+    false
+   ],
+   [
+    14,
+    false
+   ]
+  ],
+  "rows": [
+   {
+    "triple": [
+     0,
+     0,
+     0
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 13,
+      "floor_exists": false,
+      "states": 132
+     },
+     {
+      "side": "V",
+      "d": 12,
+      "floor_exists": false,
+      "states": 81
+     },
+     {
+      "side": "Wfac",
+      "d": 14,
+      "floor_exists": false,
+      "states": 672
+     }
+    ]
+   },
+   {
+    "triple": [
+     7,
+     13,
+     29
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 13,
+      "floor_exists": false,
+      "states": 132
+     },
+     {
+      "side": "V",
+      "d": 12,
+      "floor_exists": false,
+      "states": 81
+     },
+     {
+      "side": "Wfac",
+      "d": 14,
+      "floor_exists": false,
+      "states": 672
+     }
+    ]
+   },
+   {
+    "triple": [
+     3,
+     40,
+     11
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 13,
+      "floor_exists": false,
+      "states": 132
+     },
+     {
+      "side": "V",
+      "d": 12,
+      "floor_exists": false,
+      "states": 81
+     },
+     {
+      "side": "Wfac",
+      "d": 14,
+      "floor_exists": false,
+      "states": 672
+     }
+    ]
+   },
+   {
+    "triple": [
+     47,
+     2,
+     19
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 13,
+      "floor_exists": false,
+      "states": 132
+     },
+     {
+      "side": "V",
+      "d": 12,
+      "floor_exists": false,
+      "states": 81
+     },
+     {
+      "side": "Wfac",
+      "d": 14,
+      "floor_exists": false,
+      "states": 672
+     }
+    ]
+   },
+   {
+    "triple": [
+     12,
+     12,
+     12
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 13,
+      "floor_exists": false,
+      "states": 132
+     },
+     {
+      "side": "V",
+      "d": 12,
+      "floor_exists": false,
+      "states": 81
+     },
+     {
+      "side": "Wfac",
+      "d": 14,
+      "floor_exists": false,
+      "states": 672
+     }
+    ]
+   }
+  ]
+ },
+ "stapleton60": {
+  "invariant_key": [
+   [
+    14,
+    false
+   ],
+   [
+    14,
+    false
+   ],
+   [
+    13,
+    false
+   ]
+  ],
+  "rows": [
+   {
+    "triple": [
+     0,
+     0,
+     0
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1152
+     },
+     {
+      "side": "V",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1344
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 460
+     }
+    ]
+   },
+   {
+    "triple": [
+     7,
+     13,
+     29
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1152
+     },
+     {
+      "side": "V",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1344
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 460
+     }
+    ]
+   },
+   {
+    "triple": [
+     3,
+     40,
+     11
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1152
+     },
+     {
+      "side": "V",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1344
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 460
+     }
+    ]
+   },
+   {
+    "triple": [
+     47,
+     2,
+     19
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1152
+     },
+     {
+      "side": "V",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1344
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 460
+     }
+    ]
+   },
+   {
+    "triple": [
+     12,
+     12,
+     12
+    ],
+    "sides": [
+     {
+      "side": "U",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1152
+     },
+     {
+      "side": "V",
+      "d": 14,
+      "floor_exists": false,
+      "states": 1344
+     },
+     {
+      "side": "Wfac",
+      "d": 13,
+      "floor_exists": false,
+      "states": 460
+     }
+    ]
+   }
+  ]
+ },
+ "_theorem": "monomial transfer: C(F) = C(gF) for signed-permutation g; verified on 5 sandwich triples x 4 decompositions x 3 sides",
+ "_seconds": 1.9
+}

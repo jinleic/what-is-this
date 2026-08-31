@@ -1,0 +1,118 @@
+{
+  "admissibility_gates": {
+    "admissible": true,
+    "cap": 8,
+    "contains_full_set": true,
+    "distinct_rows": true,
+    "reimer_threshold": 44
+  },
+  "all_certified_negative_finalists_in_sweep": [
+    {
+      "a_plus_lower": "-1374860313803049141948589129/79228162514264337593543950336",
+      "a_plus_upper": "-343715078450762285487147279/19807040628566084398385987584",
+      "closure_defect": "13/40",
+      "restart": 4
+    }
+  ],
+  "arithmetic": "ordinary exact rational bounds; floats used for discovery only",
+  "conclusion": "A certified exactly-negative fixed order exists at defect 13/40, but 13/40 = 0.325 > 14/45 = 0.31111...; the record does not advance. This exercises the candidate -> exact-enclosure -> gate path with a rejection, as required.  No lower-defect negative was found in this sweep; the 14/45 record stands.",
+  "exact_enclosure_independently_reproduced": {
+    "a_plus_lower": "-1374860313803049141948589129/79228162514264337593543950336",
+    "a_plus_lower_decimal": "-0.017353176828",
+    "a_plus_upper": "-343715078450762285487147279/19807040628566084398385987584",
+    "a_plus_upper_decimal": "-0.017353176827",
+    "dimension": 10,
+    "exactly_negative": true,
+    "family": [
+      0,
+      1,
+      4,
+      16,
+      17,
+      32,
+      56,
+      92,
+      256,
+      257,
+      288,
+      353,
+      642,
+      658,
+      750,
+      766,
+      975,
+      991,
+      1007,
+      1023
+    ],
+    "matched_checkpoint_enclosure": true,
+    "method": "audit_clone_limit.fixed_order_a_bounds exact rational two-sided enclosure",
+    "selected_fixed_order": [
+      5,
+      0,
+      4,
+      2,
+      6,
+      8,
+      9,
+      3,
+      7,
+      1
+    ],
+    "size": 20
+  },
+  "finite_negative_clone_witness_at_defect_13_40": {
+    "a_plus_lower": "-2412478438612657148984480325/79228162514264337593543950336",
+    "a_plus_lower_decimal": "-0.030449758799",
+    "a_plus_upper": "-988823435413376431967713/39614081257132168796771975168",
+    "a_plus_upper_decimal": "-0.000024961412",
+    "bound_method": "two-sided convex envelope over exact fixed-order bounds",
+    "certified_negative": true,
+    "cloned_dimension": 17133317494515433225618002536775,
+    "geometric_ratio": 2954,
+    "multiplicities": [
+      5798076321848583529631047936,
+      1,
+      664450979318700728896,
+      8726116,
+      1962788192907441953158784,
+      17127517454740715746530115602944,
+      224932626715877024,
+      2954,
+      76145100445456,
+      25776946664
+    ],
+    "target_order": [
+      5,
+      0,
+      4,
+      2,
+      6,
+      8,
+      9,
+      3,
+      7,
+      1
+    ],
+    "target_order_probability": "1473913829930832415594545274789204273543548238008609889648167840586123986562455286029594480629256800150149158873604186120557720378181156491256391624214708224/1478411868084749201332467763760324473548376496230651006750628459712538496721606238315128435889008700224803998992725732337990649715432024510829878743004671875",
+    "target_order_probability_lower": "17075405372433472818751382444233/17127517454740715746530115602944",
+    "union_bound_probability_lower": "2945/2954"
+  },
+  "gate": "closure_defect < 14/45",
+  "observed": {
+    "closure_defect": "13/40",
+    "closure_defect_decimal": "0.325",
+    "defect_below_record": false,
+    "fourteen_forty_fifths": "14/45"
+  },
+  "schema": 1,
+  "source_run": {
+    "checkpoint": "uc/gate_b/experiments/e26gateb_n10_m20_sub34_checkpoint.jsonl",
+    "report": "uc/gate_b/candidates/e26gateb_n10_m20_sub34_report.json",
+    "restart": 4,
+    "score_mode": "min-a",
+    "seed": 20260830,
+    "strict_defect_cap": "137/400"
+  },
+  "verdict": "REJECTED_AT_DEFECT_GATE_NOT_BELOW_14_45"
+}

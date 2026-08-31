@@ -1,0 +1,186 @@
+{
+ "campaign_id": "2026-08-30T13-57Z_41B2CA1B",
+ "date_utc": "2026-08-30T13:57Z",
+ "agent": "Mceliece",
+ "gate": "A \u2014 CONSOLIDATED FINAL: certified ladder + m=12 in-progress boundary",
+ "type": "CENSUS consolidation, EXACT F_{2^m} arithmetic",
+ "HEADLINE": "Apon's waterfall mechanism is CONFIRMED BY MEASUREMENT on 13 named binary-Goppa instances, m contiguous 6..11: for every instance and every held count c in the swept range, N_fam(c) = 2t+3-c exactly, reaching 0 precisely at c = 2t+3; every per-(point, order) family-restricted block has rank EXACTLY 1; zero refutation events; the Delta_{p,q} != 0 nondegeneracy guard passes on every instance; the lower-bound certificate (T(A_S) jets inside the flags at all c = 2t+2 held points) passes on every instance.",
+ "evidence_label": "MACHINE-VERIFIED (exact arithmetic)",
+ "CLAIM_OF_RECORD": "The claim is the ENUMERATED instance list below. No universal over m or t is claimed; the phrase 'm <= N complete' is not used for any N, including m=12.",
+ "SWEPT_SET_run_with_seeds": [
+  {
+   "m": 6,
+   "n": 64,
+   "t": 3,
+   "k": 46,
+   "D": 57,
+   "2t+3": 9,
+   "seed": 1387,
+   "verdict": "PASS"
+  },
+  {
+   "m": 6,
+   "n": 64,
+   "t": 4,
+   "k": 40,
+   "D": 55,
+   "2t+3": 11,
+   "seed": 2311,
+   "verdict": "PASS"
+  },
+  {
+   "m": 6,
+   "n": 64,
+   "t": 5,
+   "k": 34,
+   "D": 53,
+   "2t+3": 13,
+   "seed": 3413,
+   "verdict": "PASS"
+  },
+  {
+   "m": 7,
+   "n": 128,
+   "t": 3,
+   "k": 107,
+   "D": 121,
+   "2t+3": 9,
+   "seed": 4421,
+   "verdict": "PASS"
+  },
+  {
+   "m": 7,
+   "n": 128,
+   "t": 6,
+   "k": 86,
+   "D": 115,
+   "2t+3": 15,
+   "seed": 5531,
+   "verdict": "PASS"
+  },
+  {
+   "m": 8,
+   "n": 256,
+   "t": 3,
+   "k": 232,
+   "D": 249,
+   "2t+3": 9,
+   "seed": 6637,
+   "verdict": "PASS"
+  },
+  {
+   "m": 8,
+   "n": 256,
+   "t": 5,
+   "k": 216,
+   "D": 245,
+   "2t+3": 13,
+   "seed": 7741,
+   "verdict": "PASS"
+  },
+  {
+   "m": 9,
+   "n": 512,
+   "t": 12,
+   "k": 404,
+   "D": 487,
+   "2t+3": 27,
+   "seed": 9109,
+   "verdict": "PASS"
+  },
+  {
+   "m": 9,
+   "n": 512,
+   "t": 24,
+   "k": 296,
+   "D": 463,
+   "2t+3": 51,
+   "seed": 9137,
+   "verdict": "PASS"
+  },
+  {
+   "m": 9,
+   "n": 512,
+   "t": 40,
+   "k": 152,
+   "D": 431,
+   "2t+3": 83,
+   "seed": 9277,
+   "verdict": "PASS"
+  },
+  {
+   "m": 10,
+   "n": 1024,
+   "t": 24,
+   "k": 784,
+   "D": 975,
+   "2t+3": 51,
+   "seed": 8001,
+   "verdict": "PASS"
+  },
+  {
+   "m": 10,
+   "n": 1024,
+   "t": 40,
+   "k": 624,
+   "D": 943,
+   "2t+3": 83,
+   "seed": 5113,
+   "verdict": "PASS"
+  },
+  {
+   "m": 11,
+   "n": 2048,
+   "t": 48,
+   "k": 1520,
+   "D": 1951,
+   "2t+3": 99,
+   "seed": 6211,
+   "verdict": "PASS"
+  }
+ ],
+ "NOT_RUN_per_m": {
+  "note": "support is always the full field n = 2^m (except the m=12 row, n=3488 < 4096); no other support sizes were tested at any m.",
+  "m=6  (n=64)": "t NOT run: 1, 2, 6, 7 (k = 64-6t > 0 allows t <= 10; window c <= 2t+4 <= n constrains the useful upper range)",
+  "m=7  (n=128)": "t NOT run: 1, 2, 4, 5, 7..18 (k = 128-7t > 0 allows t <= 18)",
+  "m=8  (n=256)": "t NOT run: 1, 2, 4, 6..31 (k = 256-8t > 0 allows t <= 31)",
+  "m=9  (n=512)": "t NOT run: 1..11, 13..23, 25..39, 41..56 (k = 512-9t > 0 allows t <= 56)",
+  "m=10 (n=1024)": "t NOT run: 1..23, 25..39, 41..102 (k = 1024-10t > 0 allows t <= 102)",
+  "m=11 (n=2048)": "t NOT run: 1..47, 49..186 (k = 2048-11t > 0 allows t <= 186)",
+  "m=12 (n=3488)": "ALL t NOT RUN. No m=12 census row reached a verdict. See m12_status."
+ },
+ "m12_status": {
+  "label": "COMPUTATIONAL-EVIDENCE-in-progress \u2014 NOT part of the certified ladder",
+  "stage_reached": "Instance build completes but measured at 1478 s for (m=12, n=3488, t=48). No family-restricted census row for any m=12 t was computed, so there is no m=12 measurement of N_fam, per-point rank, or the guards.",
+  "identified_cost": "the alpha-guard (differential identity check) evaluates all k = 2912 coordinates at all n = 3488 support points, ~34e9 table gathers. A correct fix is identified but NOT applied and therefore NOT claimed: Apon's identity Pi F' + Pi' F = G^2 F^(2) is F_2-LINEAR in the coordinate index (LHS linear; G^2 (sum c_j f_j)^2 = sum c_j G^2 f_j^2 for c_j in F_2), so the set of coordinate-combinations satisfying it is an F_2-subspace and T seeded random combinations, each checked coefficientwise in exact arithmetic, miss any failure with probability <= 2^-T.",
+  "compute_spent": "~1h54m after the m=9 freeze, at the 2h cap agreed with Main; stopped at the cap."
+ },
+ "PERFORMANCE_same_exact_arithmetic": {
+  "note": "All three speedups preserve EXACT F_{2^m} arithmetic (integer log/exp + full MUL table, no floating point anywhere, no ball arithmetic anywhere). Validation counts:",
+  "rabin_irreducibility": "65 s -> 0.1 s per degree-48 test over F_4096. Vectorized via the Frobenius-basis identity (coefficients of E are fixed by the q-Frobenius, so x -> x^q is pure exponent stretching; precompute w = Z^q mod G and the basis w^j). VALIDATED 61/61 against the scalar engine, which itself agrees with python-flint fq_default is_irreducible on the same inputs.",
+  "row_interpolation": "371 s -> 8 s at m=12 by assembling f_j = XOR_{i: Y[j,i]=1} lam_i^{-1} L_i as numpy row XORs.",
+  "guards": "vectorized; RE-VALIDATED 5/5 (all guards pass) on the previously-frozen small instances.",
+  "family_block_factorization": "the (a,j) family block factors as Psi = C @ J with J only 2R+1 = 9 jet rows, so the block reduces to (C@T)^T with <= 9 rows instead of a k x k contraction. REGRESSION-TESTED against the naive construction on 4 frozen instances: per-block ranks and stacked N_fam identical at every c."
+ },
+ "quantities_and_convention": {
+  "convention": "Apon 2026/1810 Step-3 system with perfect oracle (his section 2 protocol): true support, true derivative flags V_a^[j] = span_E{F(a),...,(d^[j]F)(a)}, true Frobenius alignment. Family rows built EXPLICITLY from Apon's Def-4 map T(A) = Q_A + rho_A Z F (eqs. 17-20); Lemma 7 is measured, not assumed.",
+  "N_fam(c)": "(2t+3) - rank of the stacked family-restricted flag blocks over the first c held points",
+  "N_eval(c)": "(2t+3) - rank of the c x (2t+3) evaluation matrix (the Lemma-7 prediction 2t+3-c)",
+  "rank(a,j)": "rank of each (a,j) family block alone; Apon predicts <= 1; measured EXACTLY 1 at even j, 0 at odd j (the (j+1) parity in (j+1) d^[j+1]F)",
+  "flag_depth_R": 4,
+  "guards": "alpha (differential identity), beta (Delta_{p,q} != 0 with exhibited pair), gamma (k = n-mt), delta (lam_i F(a_i) = Y[:,i] in F_2^k), eps (gcd of coordinates constant, max coordinate degree exactly D)"
+ },
+ "scope_limits": {
+  "finite_theorem": "This is a finite theorem about the 13 enumerated instances at flag depth R = 4. It is NOT an asymptotic statement.",
+  "not_established": "c_need > 2t+3 at cryptographic scale is NOT established here. In particular mceliece8192128 (t = 128) is untouched: no instance at t >= 49 was run at any m.",
+  "depth": "Depth-uniformity of Lemma 7 beyond R = 4 remains CITED-DEPENDENCY (Apon Lemma 7)."
+ },
+ "files": {
+  "results_m6_m7_m8.json": "7 instances, full per-instance records",
+  "results_m9.json": "3 instances, full per-instance records",
+  "results_m10_m11.json": "3 ladder rows (summary level)",
+  "PROBE_RESULTS.md": "the two self-caught algebra bugs (Rabin q^d vs 2^d; GRS multiplier lambda' vs lambda) with the earlier probe conclusion explicitly VOIDED",
+  "pre_statement_committed.md": "pre-statement snapshot (thresholds fixed before any run)",
+  "code/": "full src snapshot"
+ }
+}

@@ -1,0 +1,38 @@
+[
+ {
+  "q": 3,
+  "n": 6,
+  "d": "1/2",
+  "dense": [
+   0.4861269087352582,
+   0.4861310395537632
+  ],
+  "orbit": [
+   0.48612690873525904,
+   0.4861310395537632
+  ],
+  "overlap_len": 4.130818504144429e-06,
+  "overlapped": true,
+  "dense_width": 4.130818504977096e-06,
+  "orbit_width": 4.130818504144429e-06,
+  "both_verdicts": "CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB | CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus"
+ },
+ {
+  "q": 3,
+  "n": 7,
+  "d": "1/2",
+  "dense": [
+   0.465725968204234,
+   0.46575328765404533
+  ],
+  "orbit": [
+   0.4657259682042402,
+   0.46575328765404533
+  ],
+  "overlap_len": 2.73194498051077e-05,
+  "overlapped": true,
+  "dense_width": 2.7319449811324947e-05,
+  "orbit_width": 2.73194498051077e-05,
+  "both_verdicts": "CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB | CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus"
+ }
+]

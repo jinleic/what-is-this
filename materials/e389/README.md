@@ -158,24 +158,88 @@ Labels are literal.
   $972$) the criterion is vacuous below $X=10^{236.3}$ and beats the measured
   run density only past $X=10^{1241.6}$: a structural sharpening, not a
   computational one.
-- **FAILED APPROACH (quantified, Section 17.8):** the same Bonferroni repair
-  does *not* reach $R(2)$. Under cross-term independence the depth-3 total is
-  $1+(u-1)(2\pi-(u-1))$ with $u=\log2+\Lambda_B$, so it closes only for
-  $\pi<(u-1)/2=0.007834$ — while the overlap that proves $R(1)$ is
-  $\pi\ge0.045$, too large by a factor $5.7$. The very term that rescues one
-  coordinate defeats two. Finite blocks give $0.99234$ and $0.99435$, both
-  under $1$, purely because $u<1$ there; that dip is worthless.
+- **FAILED MODEL, NOT AN R(2) OBSTRUCTION (corrected Section 17.8):** under
+  cross-coordinate independence the depth-3 total is
+  $1+(u-1)(2\pi-(u-1))$ and closes only for
+  $\pi<0.007834$, whereas $\pi\ge0.045$. This rejects that substitution only.
+  Section 19 obtains the missing margin from consecutive $3/8$-smooth pairs,
+  so the former claim that the overlap structurally defeats R(2) is retracted.
+- **PROVED (elementary, Section 18.2):** the union-bound threshold. For
+  $m=\lfloor(2X)^\alpha\rfloor$ with $\alpha>\tfrac12$, goodness *collapses to
+  smoothness* ($m$-good $\iff P^+(w)\le m$, Lemma 18.1), and a run of $L$
+  consecutive $m$-good integers has density
+  $\ge1-L\log(1/\alpha)$ — positive exactly when $\alpha>e^{-1/L}$, so
+  $0.606531$ at $L=2$. This is a theorem for growing $m$, not R($L$).
+- **PROVED (elementary, Section 18.5):** for every $x\ge3$,
+  $P^+(x^2-1)\le x+1\le\sqrt{2(x^2-1)}$, so $x^2-1$ and $x^2$ are both
+  short-cofactor-free; hence at least $\lfloor\sqrt W\rfloor-2$ integers
+  $w\le W$ have both $w,w+1$ free of that failure class. Within this explicit
+  construction, only the level conditions remain.
+- **CORRECTED (Section 18.4):** the prime--prime parameterization
+  $pa+1=p'b$ is binary and parity-blocked, but that does **not** block the event.
+  Yang counts the smooth complement by Type-I/Type-II dispersion.
+- **PROVED FROM A CITED THEOREM (Section 19.1):** Pascadi's absolute
+  smooth-number Bombieri--Vinogradov theorem to exponent $5/8$ substitutes into
+  Yang's two-prime construction and gives
+  $\#\{n<x:P^+(n)<P^+(n+1)<x^{3/8+\varepsilon}\}\gg_\varepsilon x$.
+  This improves Yang's $41/107+\varepsilon$ exponent and proves a positive
+  density of consecutive pairs free of short-cofactor failures. Input V in
+  `LOCALIZATION.md` is discharged.
+- **FAILED APPROACH (Section 18.6):** Section 17 cannot count the shifted
+  squares. At fixed band $r$, only $O(X/q)$ parameters carry $q$, against a
+  required residue period $q^r$; their ratio is
+  $O(X/q^{r+1})=O(X^{-r/(r+2)})$. For every
+  $q\in(X,\sqrt2X]$, the local $q$-test at $x=q+1$ fails and at $x=q-1$ passes:
+  exactly $29{,}610$ and $0$ failures at $X=10^6$. On
+  $10^6\le x<1.03\cdot10^6$, the measured good densities are $0.39123$ for
+  $x^2-1$, $0.07183$ for $x^2$, and $0.02553$ for both. This is finite evidence,
+  not R(2).
+- **FAILED APPROACH (Section 18.3):** second moments do not bypass the pair
+  correlation. At $L=2$,
+  $E[(G_0+G_1)^2]=E[G_0+G_1]+2E[G_0G_1]$, so the required second-moment input is
+  exactly R(2)'s missing cross term. More generally, exact joint laws with
+  marginal $31/100>1-\log2$ and zero full-run mass exist for $L=2,3,4$.
+- **FAILED APPROACH (Theorem 18.9):** attacking
+  $L=\lceil m/2\rceil$ at once cannot produce an infinite family. Every witness
+  needs $k^2>(m+1)\log2$, while the positive parameter range of Section 18.2
+  forces the reverse scale inequality. Exact rational intervals separate them
+  for all $3\le m\le2047$ (minimum log-margin $0.016972$); an elementary
+  monotonicity argument continues from $m=2048$. Arithmetic progressions and
+  primorial values of $m$ cannot change this run-layer obstruction.
+- **PROVED (Lemmas 20.1--20.2):** the selected-prime mask splits exactly into
+  zero, two one-sided and genuinely bilinear frequencies. The bilinear
+  numerator is primitive modulo $p_1p_2$ in $\ell$, and its quotient character
+  is exactly an average of primitive characters modulo $(p_1p_2)^2$ in $n$.
+  Thus $15/16$ applies only to one-sided lifts; the bilinear $n$-lift tends to
+  $5/4$.
+- **FAILED AS BLACK BOX (Sections 20.2--20.3):** Pascadi's smooth proposition
+  allows scalar outer weights and inner coefficients independent of the
+  modulus; the mask couples both. Drappeau--Shparlinski applies individually
+  only to one-sided lifts. Parseval reaches order $x$ (one-sided) and
+  $x^{9/8}$ (bilinear), where the trivial bilinear bound is already order $x$:
+  no $o(x)$ saving.
+- **PROVED GAP REDUCTION (Theorem 23.1):** inserting the mask through Poisson
+  gives the exact paired center $(ak_1-bk_2)/r$. Dual $\ell^1$ costs only
+  logarithms and dual $\ell^2$ mass remains $O(H)$, but the off-diagonal support
+  expands from exponent $1/2$ to $7/8$. Additive reciprocity, generic
+  square-moduli large sieves, and an unbalanced Chen $P_2$ do not close it.
+- **OPEN INPUT VII (equations (93)--(94)):** prove the paired moving-center
+  extension of Pascadi's `lem:expo-bound-convo` and its one-mask cross variant.
+  The old $1/16$ period comparison is pre-Poisson; the post-Cauchy inflation is
+  $3/8$, leaving a $1/8$ benchmark gap after the native additive saving.
+- **PROVED TAIL/FALLBACK LIMITS (Sections 21--22):** repeated selected primes
+  cost $x^{11/16+o(1)}$; repeated factors above $x^\zeta$ are $o(x)$; a
+  lower-$p$-adic congruence cannot force the first digit; size forcing has only
+  $O(x/\log x)$ candidates; fixed-$k$ factor splitting retains positive loss.
 - **NOT PROVED (extrapolation):** regressing $\log k_m$ on $\lceil m/2\rceil$
   over the 26 published witnesses gives $R^2=0.989$ and predicts a least
   $m=27$ witness near $2.8\cdot10^{13}$; the independence model predicts
   $5.1\cdot10^{12}$. Both exceed every exhausted range here.
-- **OPEN:** Conjecture R($L$) for $L\ge2$ — a run of $\lceil m/2\rceil$
-  consecutive compensation-good integers. By Section 13 this is the *whole*
-  problem: the small-prime side cannot obstruct. $R(1)$ is now proved
-  (Section 17), so what remains is purely a correlation statement: the
-  inclusion–exclusion that settles one term has $4^L$ cross terms at length
-  $L$, and they are correlations between the large prime factors of
-  consecutive integers.
+- **OPEN:** Conjecture R($L$) for $L\ge2$. For $L=2$, the short-cofactor pair
+  is closed and the exact selected-prime requirement is (74), blocked on Input
+  VII plus the separate small-factor tail of Section 21. For $L\ge3$, the
+  corresponding higher-order correlations remain. By Section 13 this run
+  problem is the whole of Erdős #389; the small-prime tier cannot obstruct.
 
 ## Exact reductions
 
@@ -432,6 +496,19 @@ $4.5\%$ because the overlap can be counted on the prime side, where a
 single-modulus exponential-sum bound applies. What remains is exactly the
 correlation between consecutive terms, with no first-term obstruction left.
 
+Section 18 identifies boundaries of the failed prime--prime, shifted-square,
+second-moment and large-$m$ routes. Section 19 then executes the required
+Type-I/Type-II pivot: Pascadi--Yang gives a positive-density consecutive
+$3/8$-smooth family, so the short-cofactor pair is no longer open. What remains
+is not the binary cross term but the $q$-adic level condition on that dense
+family. Section 23 carries the double mask exactly through Pascadi's Poisson
+step. The $h$-interval keeps length $x^{1/4}$ but acquires the moving center
+$(ak_1-bk_2)/r$; off-diagonal support grows from $x^{1/2}$ to $x^{7/8}$ while
+coefficient mass stays controlled. Input VII is now precisely the masked
+Kloosterman estimate (94), including its one-mask cross variant. After it, the
+remaining open tail is confined to factors of $\ell$, ultra-small factors of
+$n$, and small repeated primes.
+
 **Second active proof task, now sharply posed:** make the Balog–Pomerance or
 Shiu upper bound for $\Psi(x,\sqrt{2x};q,a)$ effective at $u=2$, with constant
 below $1$ against a class of size $N/M$. Both theorems already cover every
@@ -480,6 +557,8 @@ conditional statement is confined to `LOCALIZATION.md`.
 | `compensation_structure_analysis.py` | Exact local-window separation, short-cofactor spikes, prefix cone, retained-prime displacement, zero-carry blocker eviction, and shift-identity certificate. |
 | `adaptive_eviction_analysis.py` | Exact first-hit search along blocker-evicting progressions through uniform local-safe classes, plus a bounded exact new-prime scan. |
 | `good_density_decomposition.py` | Exact four-way classification of why integers fail to be compensation-good, refuting the independence repair of the union bound. |
+| `run_threshold.py` | Union-bound threshold $e^{-1/L}$, smoothness collapse, deficit ladder, exact moment countermodels, shifted-square obstruction, and the large-$m$ size-floor separation. |
+| `smooth_pair_transfer.py` | $5/8\to3/8$ transfer; four-class mask and primitive lift; exact paired $q$-adic Poisson/reciprocity certificates; mixed-dispersion, square-sieve, $P_2$, Parseval, tail, and fallback ledgers; finite censuses. |
 | `overlap_density_bound.py` | Certified positive lower density for the compensation-good integers: one-sided bounds with explicit tails for both failure families and for the Section 17 overlap, plus an exhaustive block check of the inclusion–exclusion identity. |
 | `exact_eviction_certificate.py` | Exhaustive half-window translation eviction, its sharp minimal offset, and exact classification of every translated candidate. |
 | `parity_shift_certificate.py` | Exact reduction of every witness shift to its adjoined bad-window term, over a rectangle and all published witnesses. |
@@ -511,6 +590,8 @@ conditional statement is confined to `LOCALIZATION.md`.
 | `data/adaptive_eviction_m27_h200000000.json` | Exact first safe progression parameters for all 12 moving-window survivor blocker systems. |
 | `data/exact_eviction_m1_20_k5000_m27.json` | Exhaustive eviction certificate, sharpness instances, 98,706 exactly classified translated candidates, and the 12 resolved survivor systems. |
 | `data/good_density_decomposition.json` | Exact failure classes at $10^6$ and $10^7$, the asymptotic union-bound total $1.01567$, and the refuted independence prediction. |
+| `data/run_threshold.json` | Exhaustive collapse check, one-sided run-density bounds, the factor-$65.8$ deficit jump, and the deterministic bias on the shifted squares. |
+| `data/smooth_pair_transfer.json` | Transfer inequalities; frequency/lift and paired-Poisson certificates; $1/2\to7/8$ moving-support ledger; square-sieve and $P_2$ exclusions; tail/fallback ledgers; finite smooth-pair and mask probes. |
 | `data/overlap_density_bound.json` | The R(1) certificate: level union bound $0.322521$ with tail, vanishing exponent tail, overlap lower bound $0.045021$ against a deficit $0.015668$, and certified good density $\ge0.029348$. |
 | `data/compensation_run_m27_k5049*_h200000000.json` | Four contiguous exact shards extending the shift-target neighbourhood to $10^9$ candidates. |
 | `data/parity_shift_m1_20_k4000_published.json` | Exact shift reduction at 905 rectangle witness sources and all 26 published witnesses. |
@@ -554,6 +635,8 @@ done
 ./run_low_cpu.sh python3 adaptive_eviction_analysis.py
 ./run_low_cpu.sh python3 good_density_decomposition.py
 ./run_low_cpu.sh python3 overlap_density_bound.py
+./run_low_cpu.sh python3 run_threshold.py
+./run_low_cpu.sh python3 smooth_pair_transfer.py
 ./run_low_cpu.sh python3 exact_eviction_certificate.py
 ./run_low_cpu.sh python3 parity_shift_certificate.py
 ./run_low_cpu.sh python3 smooth_density_analysis.py --short-cofactor-limits 100000 1000000 2000000
@@ -587,5 +670,26 @@ vary. Producers are single-process and atomically replace the final artifact.
   The repository metadata and abstract were located; the full article has not
   yet been acquired locally, so detailed literature claims from it remain
   **UNVERIFIED HERE**.
+- Zhiyuan Yang, *An improvement on the largest prime factors of consecutive
+  integers*, [arXiv:2607.16032](https://arxiv.org/abs/2607.16032), Theorem 1.5
+  and its TeX proof: consecutive $41/107+\varepsilon$-smooth pairs.
+- Alexandru Pascadi, *On the exponents of distribution of primes and smooth
+  numbers*, [arXiv:2505.00653v2](https://arxiv.org/abs/2505.00653), Theorem 1.5,
+  `prop:triple-convo`, and `lem:expo-bound-convo`: the $5/8-\varepsilon$
+  smooth-number theorem and the primary dispersion proof reworked in
+  Sections 20 and 23.
+- Sary Drappeau, *Théorèmes de type Fouvry--Iwaniec pour les entiers
+  friables*, [arXiv:1307.7554](https://arxiv.org/abs/1307.7554), Proposition 1
+  and Theorem 3: the $3/5-\varepsilon$ predecessor and native Kloosterman
+  dispersion ranges checked against the moving mask.
+- Sary Drappeau and Igor E. Shparlinski, *Exponential sums over integers without
+  large prime divisors*,
+  [arXiv:2404.10278v2](https://arxiv.org/abs/2404.10278), Theorem 1.1:
+  individual smooth exponential-sum saving used in the Input VII fit audit.
+  It does not cover the mixed prime-pair average.
+- Stephan Baier, *The large sieve for square moduli, revisited*,
+  [arXiv:2503.18009](https://arxiv.org/abs/2503.18009): conditional
+  square-modulus improvements under additive-energy hypotheses; not a closure
+  of Input VII.
 - [FormalConjectures/ErdosProblems/389.lean](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/389.lean):
   formalized statement and the finite $m=3$, $k=207$ variant.

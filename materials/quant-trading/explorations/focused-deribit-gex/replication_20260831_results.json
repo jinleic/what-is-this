@@ -1,0 +1,655 @@
+{
+  "replication_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-replication-contract.json",
+    "sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42",
+    "created_at_utc": "2026-08-31T07:54:33.526Z",
+    "classification": "outcome-blind retrospective chronological replication; not prospective, not confirmation, and not a rescue test"
+  },
+  "parent_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-contract.json",
+    "sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+    "inheritance": "Every formula, threshold, horizon, asset, side, cost, alignment, sample condition, gate, ranking rule, and UNKNOWN truth rule is inherited byte-for-byte by reference. This contract adds only a fixed observation window and replication claim boundary."
+  },
+  "snapshot_manifest": {
+    "path": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
+    "sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0",
+    "created_at_utc": "2026-08-31T08:02:02.199Z"
+  },
+  "replication_runner": {
+    "path": "quant-trading/explorations/replicate_accelerated_intraday.py",
+    "sha256": "02b5d09aa89176e08a9f1b6ff78ef0fe8884a5e1d6d1b6333dba88fca727914c"
+  },
+  "claim_boundary": "This replication may strengthen falsification or justify future prospective capture. It cannot overturn the 2026-08-30 liquidation falsification, convert the Deribit result into durable alpha, authorize deployment, or support a capital-allocation claim.",
+  "baseline_artifacts_unchanged": {
+    "parent_contract": {
+      "expected_sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+      "observed_sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+      "unchanged": true
+    },
+    "liquidation_result": {
+      "expected_sha256": "9f5bb6d68a5f9e2725ce265e35e3bef6ff03929733fd571b297f2eff347a8e11",
+      "observed_sha256": "9f5bb6d68a5f9e2725ce265e35e3bef6ff03929733fd571b297f2eff347a8e11",
+      "unchanged": true
+    },
+    "deribit_result": {
+      "expected_sha256": "b11e0659b110cf4c2398266412ed6cf884857eaf265b5ec2acc93c86750a4c98",
+      "observed_sha256": "b11e0659b110cf4c2398266412ed6cf884857eaf265b5ec2acc93c86750a4c98",
+      "unchanged": true
+    },
+    "blinding_audit": {
+      "expected_sha256": "ace2d3b226b377ee99e8bc3828c64f957e5bed8d78149beb7ba72ab0abd25288",
+      "observed_sha256": "ace2d3b226b377ee99e8bc3828c64f957e5bed8d78149beb7ba72ab0abd25288",
+      "unchanged": true
+    }
+  },
+  "schema_version": 1,
+  "screen": "deribit_intraday_taker_gex",
+  "classification": "outcome-blind retrospective chronological replication",
+  "window": {
+    "start_utc_inclusive": "2026-08-31T00:00:00.000Z",
+    "end_utc_exclusive": "2026-08-31T01:30:00.000Z",
+    "raw_records_by_kind": {
+      "trades": 8182,
+      "instruments": 90372,
+      "index": 108062
+    },
+    "filtered_records_by_kind": {
+      "trades": 832,
+      "index": 10299,
+      "instruments": 90370
+    },
+    "filter_exclusions": {
+      "excluded_before_start_or_anchor": {
+        "trades": 5239,
+        "index": 67568,
+        "instruments": 0
+      },
+      "excluded_at_or_after_end": {
+        "trades": 2111,
+        "index": 30195,
+        "instruments": 2
+      },
+      "excluded_missing_timestamp": {
+        "trades": 0,
+        "index": 0,
+        "instruments": 0
+      }
+    },
+    "records_after_dedup": {
+      "trades": 832,
+      "instruments": 1906,
+      "index": 10299
+    },
+    "duplicate_drops": 88464
+  },
+  "parent_rules": {
+    "sample_stop": {
+      "minimum_gex_computable_trades": 1000,
+      "minimum_complete_asset_block_transitions": 12,
+      "minimum_transitions_per_asset": 4,
+      "minimum_positive_dealer_gex_blocks": 3,
+      "minimum_negative_dealer_gex_blocks": 3
+    },
+    "gates": {
+      "spearman_dealer_gex_vs_next_rv_lte": -0.25,
+      "negative_vs_positive_dealer_gex_next_rv_ratio_gte": 1.1,
+      "both_asset_spearman_lt_zero": true,
+      "leave_one_block_out_nonpositive_fraction_gte": 0.7
+    },
+    "truth_table": "fast-screen-pass iff every sample condition and gate is observed true; falsified if sample conditions pass and any gate is false; inconclusive if a sample condition is unmet."
+  },
+  "reconciliation": {
+    "instrument_metadata_rows": 1906,
+    "instrument_map_size": 1906,
+    "gex_rows": 832,
+    "gex_computable": 829,
+    "gex_excluded_by_reason": {
+      "nonpositive_iv": 3
+    },
+    "index_counts": {
+      "index_records": 10299,
+      "records_btc_usd": 5240,
+      "records_eth_usd": 5059,
+      "duplicate_exchange_timestamps_merged_btc_usd": 0,
+      "duplicate_exchange_timestamps_merged_eth_usd": 0
+    }
+  },
+  "sample_stop": {
+    "found": false,
+    "stop_outcome_end_ms": null,
+    "stop_outcome_end_utc": null,
+    "candidate_trail": [
+      {
+        "outcome_end_ms": 1788136200000,
+        "outcome_end_utc": "2026-08-31T00:30:00.000Z",
+        "cumulative": {
+          "gex_computable_trades": 259,
+          "total_transitions": 2,
+          "transitions_btc": 1,
+          "transitions_eth": 1,
+          "positive_dealer_gex_blocks": 1,
+          "negative_dealer_gex_blocks": 1
+        },
+        "all_conditions_met": false,
+        "first_unmet": "minimum_gex_computable_trades"
+      },
+      {
+        "outcome_end_ms": 1788137100000,
+        "outcome_end_utc": "2026-08-31T00:45:00.000Z",
+        "cumulative": {
+          "gex_computable_trades": 377,
+          "total_transitions": 4,
+          "transitions_btc": 2,
+          "transitions_eth": 2,
+          "positive_dealer_gex_blocks": 3,
+          "negative_dealer_gex_blocks": 1
+        },
+        "all_conditions_met": false,
+        "first_unmet": "minimum_gex_computable_trades"
+      },
+      {
+        "outcome_end_ms": 1788138000000,
+        "outcome_end_utc": "2026-08-31T01:00:00.000Z",
+        "cumulative": {
+          "gex_computable_trades": 526,
+          "total_transitions": 6,
+          "transitions_btc": 3,
+          "transitions_eth": 3,
+          "positive_dealer_gex_blocks": 3,
+          "negative_dealer_gex_blocks": 3
+        },
+        "all_conditions_met": false,
+        "first_unmet": "minimum_gex_computable_trades"
+      },
+      {
+        "outcome_end_ms": 1788138900000,
+        "outcome_end_utc": "2026-08-31T01:15:00.000Z",
+        "cumulative": {
+          "gex_computable_trades": 575,
+          "total_transitions": 8,
+          "transitions_btc": 4,
+          "transitions_eth": 4,
+          "positive_dealer_gex_blocks": 5,
+          "negative_dealer_gex_blocks": 3
+        },
+        "all_conditions_met": false,
+        "first_unmet": "minimum_gex_computable_trades"
+      },
+      {
+        "outcome_end_ms": 1788139800000,
+        "outcome_end_utc": "2026-08-31T01:30:00.000Z",
+        "cumulative": {
+          "gex_computable_trades": 732,
+          "total_transitions": 10,
+          "transitions_btc": 5,
+          "transitions_eth": 5,
+          "positive_dealer_gex_blocks": 5,
+          "negative_dealer_gex_blocks": 5
+        },
+        "all_conditions_met": false,
+        "first_unmet": "minimum_gex_computable_trades"
+      }
+    ]
+  },
+  "transitions": {
+    "eligible_before_window_end": 10,
+    "included_count": 10,
+    "included": [
+      {
+        "underlying": "BTC",
+        "signal_block": 1986816,
+        "signal_start_utc": "2026-08-31T00:00:00.000Z",
+        "outcome_block": 1986817,
+        "outcome_start_utc": "2026-08-31T00:15:00.000Z",
+        "outcome_end_utc": "2026-08-31T00:30:00.000Z",
+        "outcome_end_ms": 1788136200000,
+        "computable_trades_in_signal_block": 149,
+        "trades_in_signal_block": 152,
+        "dealer_gex": -3420654.3883104087,
+        "dealer_gex_rounded": -3420654.3883104087,
+        "next_rv": 0.0013502669206143117,
+        "next_rv_rounded": 0.001350266921,
+        "rv_n_in_block": 869,
+        "rv_max_gap_ms": 4028,
+        "rv_final_utc": "2026-08-31T00:29:59.223Z"
+      },
+      {
+        "underlying": "BTC",
+        "signal_block": 1986817,
+        "signal_start_utc": "2026-08-31T00:15:00.000Z",
+        "outcome_block": 1986818,
+        "outcome_start_utc": "2026-08-31T00:30:00.000Z",
+        "outcome_end_utc": "2026-08-31T00:45:00.000Z",
+        "outcome_end_ms": 1788137100000,
+        "computable_trades_in_signal_block": 54,
+        "trades_in_signal_block": 54,
+        "dealer_gex": 147314.0469158938,
+        "dealer_gex_rounded": 147314.0469158938,
+        "next_rv": 0.0017658622132599652,
+        "next_rv_rounded": 0.001765862213,
+        "rv_n_in_block": 871,
+        "rv_max_gap_ms": 3026,
+        "rv_final_utc": "2026-08-31T00:44:59.643Z"
+      },
+      {
+        "underlying": "BTC",
+        "signal_block": 1986818,
+        "signal_start_utc": "2026-08-31T00:30:00.000Z",
+        "outcome_block": 1986819,
+        "outcome_start_utc": "2026-08-31T00:45:00.000Z",
+        "outcome_end_utc": "2026-08-31T01:00:00.000Z",
+        "outcome_end_ms": 1788138000000,
+        "computable_trades_in_signal_block": 68,
+        "trades_in_signal_block": 68,
+        "dealer_gex": -198790.81858147625,
+        "dealer_gex_rounded": -198790.81858147625,
+        "next_rv": 0.0008793823074900424,
+        "next_rv_rounded": 0.000879382307,
+        "rv_n_in_block": 840,
+        "rv_max_gap_ms": 4029,
+        "rv_final_utc": "2026-08-31T00:59:59.336Z"
+      },
+      {
+        "underlying": "BTC",
+        "signal_block": 1986819,
+        "signal_start_utc": "2026-08-31T00:45:00.000Z",
+        "outcome_block": 1986820,
+        "outcome_start_utc": "2026-08-31T01:00:00.000Z",
+        "outcome_end_utc": "2026-08-31T01:15:00.000Z",
+        "outcome_end_ms": 1788138900000,
+        "computable_trades_in_signal_block": 24,
+        "trades_in_signal_block": 24,
+        "dealer_gex": 59296.48931737952,
+        "dealer_gex_rounded": 59296.48931737952,
+        "next_rv": 0.0015042705682920233,
+        "next_rv_rounded": 0.001504270568,
+        "rv_n_in_block": 884,
+        "rv_max_gap_ms": 2016,
+        "rv_final_utc": "2026-08-31T01:14:59.700Z"
+      },
+      {
+        "underlying": "BTC",
+        "signal_block": 1986820,
+        "signal_start_utc": "2026-08-31T01:00:00.000Z",
+        "outcome_block": 1986821,
+        "outcome_start_utc": "2026-08-31T01:15:00.000Z",
+        "outcome_end_utc": "2026-08-31T01:30:00.000Z",
+        "outcome_end_ms": 1788139800000,
+        "computable_trades_in_signal_block": 65,
+        "trades_in_signal_block": 65,
+        "dealer_gex": -58623.29015297991,
+        "dealer_gex_rounded": -58623.29015297991,
+        "next_rv": 0.0014733953568038653,
+        "next_rv_rounded": 0.001473395357,
+        "rv_n_in_block": 888,
+        "rv_max_gap_ms": 2014,
+        "rv_final_utc": "2026-08-31T01:29:59.709Z"
+      },
+      {
+        "underlying": "ETH",
+        "signal_block": 1986816,
+        "signal_start_utc": "2026-08-31T00:00:00.000Z",
+        "outcome_block": 1986817,
+        "outcome_start_utc": "2026-08-31T00:15:00.000Z",
+        "outcome_end_utc": "2026-08-31T00:30:00.000Z",
+        "outcome_end_ms": 1788136200000,
+        "computable_trades_in_signal_block": 110,
+        "trades_in_signal_block": 110,
+        "dealer_gex": 66007.49678419632,
+        "dealer_gex_rounded": 66007.49678419632,
+        "next_rv": 0.002303496199865531,
+        "next_rv_rounded": 0.0023034962,
+        "rv_n_in_block": 852,
+        "rv_max_gap_ms": 3022,
+        "rv_final_utc": "2026-08-31T00:29:59.499Z"
+      },
+      {
+        "underlying": "ETH",
+        "signal_block": 1986817,
+        "signal_start_utc": "2026-08-31T00:15:00.000Z",
+        "outcome_block": 1986818,
+        "outcome_start_utc": "2026-08-31T00:30:00.000Z",
+        "outcome_end_utc": "2026-08-31T00:45:00.000Z",
+        "outcome_end_ms": 1788137100000,
+        "computable_trades_in_signal_block": 64,
+        "trades_in_signal_block": 64,
+        "dealer_gex": 71909.68442908372,
+        "dealer_gex_rounded": 71909.68442908372,
+        "next_rv": 0.0019860147934823613,
+        "next_rv_rounded": 0.001986014793,
+        "rv_n_in_block": 834,
+        "rv_max_gap_ms": 3022,
+        "rv_final_utc": "2026-08-31T00:44:58.535Z"
+      },
+      {
+        "underlying": "ETH",
+        "signal_block": 1986818,
+        "signal_start_utc": "2026-08-31T00:30:00.000Z",
+        "outcome_block": 1986819,
+        "outcome_start_utc": "2026-08-31T00:45:00.000Z",
+        "outcome_end_utc": "2026-08-31T01:00:00.000Z",
+        "outcome_end_ms": 1788138000000,
+        "computable_trades_in_signal_block": 81,
+        "trades_in_signal_block": 81,
+        "dealer_gex": -2271.0404239733616,
+        "dealer_gex_rounded": -2271.040423973362,
+        "next_rv": 0.0013931155633956026,
+        "next_rv_rounded": 0.001393115563,
+        "rv_n_in_block": 808,
+        "rv_max_gap_ms": 4029,
+        "rv_final_utc": "2026-08-31T00:59:59.249Z"
+      },
+      {
+        "underlying": "ETH",
+        "signal_block": 1986819,
+        "signal_start_utc": "2026-08-31T00:45:00.000Z",
+        "outcome_block": 1986820,
+        "outcome_start_utc": "2026-08-31T01:00:00.000Z",
+        "outcome_end_utc": "2026-08-31T01:15:00.000Z",
+        "outcome_end_ms": 1788138900000,
+        "computable_trades_in_signal_block": 25,
+        "trades_in_signal_block": 25,
+        "dealer_gex": 23115.955241149346,
+        "dealer_gex_rounded": 23115.955241149346,
+        "next_rv": 0.0024529708298393123,
+        "next_rv_rounded": 0.00245297083,
+        "rv_n_in_block": 841,
+        "rv_max_gap_ms": 4029,
+        "rv_final_utc": "2026-08-31T01:14:59.650Z"
+      },
+      {
+        "underlying": "ETH",
+        "signal_block": 1986820,
+        "signal_start_utc": "2026-08-31T01:00:00.000Z",
+        "outcome_block": 1986821,
+        "outcome_start_utc": "2026-08-31T01:15:00.000Z",
+        "outcome_end_utc": "2026-08-31T01:30:00.000Z",
+        "outcome_end_ms": 1788139800000,
+        "computable_trades_in_signal_block": 92,
+        "trades_in_signal_block": 92,
+        "dealer_gex": -54718.59770737771,
+        "dealer_gex_rounded": -54718.59770737771,
+        "next_rv": 0.0020200281598464487,
+        "next_rv_rounded": 0.00202002816,
+        "rv_n_in_block": 857,
+        "rv_max_gap_ms": 3021,
+        "rv_final_utc": "2026-08-31T01:29:59.489Z"
+      }
+    ],
+    "rv_journal": {
+      "BTC:1986817": {
+        "underlying_index": "btc_usd",
+        "block": 1986817,
+        "start_utc": "2026-08-31T00:15:00.000Z",
+        "end_utc": "2026-08-31T00:30:00.000Z",
+        "ok": true,
+        "rv": 0.0013502669206143117,
+        "n_in_block": 869,
+        "anchor_ts": 1788135299229,
+        "anchor_utc": "2026-08-31T00:14:59.229Z",
+        "final_ts": 1788136199223,
+        "final_utc": "2026-08-31T00:29:59.223Z",
+        "max_gap_ms": 4028,
+        "reason": null
+      },
+      "BTC:1986818": {
+        "underlying_index": "btc_usd",
+        "block": 1986818,
+        "start_utc": "2026-08-31T00:30:00.000Z",
+        "end_utc": "2026-08-31T00:45:00.000Z",
+        "ok": true,
+        "rv": 0.0017658622132599652,
+        "n_in_block": 871,
+        "anchor_ts": 1788136199223,
+        "anchor_utc": "2026-08-31T00:29:59.223Z",
+        "final_ts": 1788137099643,
+        "final_utc": "2026-08-31T00:44:59.643Z",
+        "max_gap_ms": 3026,
+        "reason": null
+      },
+      "BTC:1986819": {
+        "underlying_index": "btc_usd",
+        "block": 1986819,
+        "start_utc": "2026-08-31T00:45:00.000Z",
+        "end_utc": "2026-08-31T01:00:00.000Z",
+        "ok": true,
+        "rv": 0.0008793823074900424,
+        "n_in_block": 840,
+        "anchor_ts": 1788137099643,
+        "anchor_utc": "2026-08-31T00:44:59.643Z",
+        "final_ts": 1788137999336,
+        "final_utc": "2026-08-31T00:59:59.336Z",
+        "max_gap_ms": 4029,
+        "reason": null
+      },
+      "BTC:1986820": {
+        "underlying_index": "btc_usd",
+        "block": 1986820,
+        "start_utc": "2026-08-31T01:00:00.000Z",
+        "end_utc": "2026-08-31T01:15:00.000Z",
+        "ok": true,
+        "rv": 0.0015042705682920233,
+        "n_in_block": 884,
+        "anchor_ts": 1788137999336,
+        "anchor_utc": "2026-08-31T00:59:59.336Z",
+        "final_ts": 1788138899700,
+        "final_utc": "2026-08-31T01:14:59.700Z",
+        "max_gap_ms": 2016,
+        "reason": null
+      },
+      "BTC:1986821": {
+        "underlying_index": "btc_usd",
+        "block": 1986821,
+        "start_utc": "2026-08-31T01:15:00.000Z",
+        "end_utc": "2026-08-31T01:30:00.000Z",
+        "ok": true,
+        "rv": 0.0014733953568038653,
+        "n_in_block": 888,
+        "anchor_ts": 1788138899700,
+        "anchor_utc": "2026-08-31T01:14:59.700Z",
+        "final_ts": 1788139799709,
+        "final_utc": "2026-08-31T01:29:59.709Z",
+        "max_gap_ms": 2014,
+        "reason": null
+      },
+      "BTC:1986822": {
+        "underlying_index": "btc_usd",
+        "block": 1986822,
+        "start_utc": "2026-08-31T01:30:00.000Z",
+        "end_utc": "2026-08-31T01:45:00.000Z",
+        "ok": false,
+        "reason": "no_in_block_observations"
+      },
+      "ETH:1986817": {
+        "underlying_index": "eth_usd",
+        "block": 1986817,
+        "start_utc": "2026-08-31T00:15:00.000Z",
+        "end_utc": "2026-08-31T00:30:00.000Z",
+        "ok": true,
+        "rv": 0.002303496199865531,
+        "n_in_block": 852,
+        "anchor_ts": 1788135299458,
+        "anchor_utc": "2026-08-31T00:14:59.458Z",
+        "final_ts": 1788136199499,
+        "final_utc": "2026-08-31T00:29:59.499Z",
+        "max_gap_ms": 3022,
+        "reason": null
+      },
+      "ETH:1986818": {
+        "underlying_index": "eth_usd",
+        "block": 1986818,
+        "start_utc": "2026-08-31T00:30:00.000Z",
+        "end_utc": "2026-08-31T00:45:00.000Z",
+        "ok": true,
+        "rv": 0.0019860147934823613,
+        "n_in_block": 834,
+        "anchor_ts": 1788136199499,
+        "anchor_utc": "2026-08-31T00:29:59.499Z",
+        "final_ts": 1788137098535,
+        "final_utc": "2026-08-31T00:44:58.535Z",
+        "max_gap_ms": 3022,
+        "reason": null
+      },
+      "ETH:1986819": {
+        "underlying_index": "eth_usd",
+        "block": 1986819,
+        "start_utc": "2026-08-31T00:45:00.000Z",
+        "end_utc": "2026-08-31T01:00:00.000Z",
+        "ok": true,
+        "rv": 0.0013931155633956026,
+        "n_in_block": 808,
+        "anchor_ts": 1788137098535,
+        "anchor_utc": "2026-08-31T00:44:58.535Z",
+        "final_ts": 1788137999249,
+        "final_utc": "2026-08-31T00:59:59.249Z",
+        "max_gap_ms": 4029,
+        "reason": null
+      },
+      "ETH:1986820": {
+        "underlying_index": "eth_usd",
+        "block": 1986820,
+        "start_utc": "2026-08-31T01:00:00.000Z",
+        "end_utc": "2026-08-31T01:15:00.000Z",
+        "ok": true,
+        "rv": 0.0024529708298393123,
+        "n_in_block": 841,
+        "anchor_ts": 1788137999249,
+        "anchor_utc": "2026-08-31T00:59:59.249Z",
+        "final_ts": 1788138899650,
+        "final_utc": "2026-08-31T01:14:59.650Z",
+        "max_gap_ms": 4029,
+        "reason": null
+      },
+      "ETH:1986821": {
+        "underlying_index": "eth_usd",
+        "block": 1986821,
+        "start_utc": "2026-08-31T01:15:00.000Z",
+        "end_utc": "2026-08-31T01:30:00.000Z",
+        "ok": true,
+        "rv": 0.0020200281598464487,
+        "n_in_block": 857,
+        "anchor_ts": 1788138899650,
+        "anchor_utc": "2026-08-31T01:14:59.650Z",
+        "final_ts": 1788139799489,
+        "final_utc": "2026-08-31T01:29:59.489Z",
+        "max_gap_ms": 3021,
+        "reason": null
+      },
+      "ETH:1986822": {
+        "underlying_index": "eth_usd",
+        "block": 1986822,
+        "start_utc": "2026-08-31T01:30:00.000Z",
+        "end_utc": "2026-08-31T01:45:00.000Z",
+        "ok": false,
+        "reason": "no_in_block_observations"
+      }
+    },
+    "zero_gex_blocks": []
+  },
+  "sample_conditions": {
+    "all_met": false,
+    "conditions": {
+      "minimum_gex_computable_trades": {
+        "observed": 732,
+        "minimum": 1000,
+        "pass": false
+      },
+      "minimum_complete_asset_block_transitions": {
+        "observed": 10,
+        "minimum": 12,
+        "pass": false
+      },
+      "minimum_transitions_per_asset": {
+        "observed": {
+          "BTC": 5,
+          "ETH": 5
+        },
+        "minimum": 4,
+        "pass": true
+      },
+      "minimum_positive_dealer_gex_blocks": {
+        "observed": 5,
+        "minimum": 3,
+        "pass": true
+      },
+      "minimum_negative_dealer_gex_blocks": {
+        "observed": 5,
+        "minimum": 3,
+        "pass": true
+      }
+    }
+  },
+  "gates": {
+    "evaluated": {
+      "spearman_dealer_gex_vs_next_rv_lte": {
+        "gate": "spearman_dealer_gex_vs_next_rv_lte",
+        "threshold": -0.25,
+        "n": 10,
+        "value": 0.612121212121,
+        "extended_value": null,
+        "pass": false
+      },
+      "negative_vs_positive_dealer_gex_next_rv_ratio_gte": {
+        "gate": "negative_vs_positive_dealer_gex_next_rv_ratio_gte",
+        "threshold": 1.1,
+        "n_negative_cohort": 5,
+        "n_positive_cohort": 5,
+        "median_negative_rv": 0.001393115563,
+        "median_positive_rv": 0.001986014793,
+        "value": 0.70146283299,
+        "extended_value": null,
+        "pass": false
+      },
+      "both_asset_spearman_lt_zero": {
+        "gate": "both_asset_spearman_lt_zero",
+        "btc": {
+          "n": 5,
+          "spearman": 0.9
+        },
+        "eth": {
+          "n": 5,
+          "spearman": 0.1
+        },
+        "value": {
+          "btc": 0.9,
+          "eth": 0.1
+        },
+        "extended_value": null,
+        "pass": false
+      },
+      "leave_one_block_out_nonpositive_fraction_gte": {
+        "gate": "leave_one_block_out_nonpositive_fraction_gte",
+        "threshold": 0.7,
+        "n": 10,
+        "defined_folds": 10,
+        "undefined_folds": 0,
+        "nonpositive_folds": 0,
+        "value": 0.0,
+        "extended_value": null,
+        "pass": false
+      }
+    },
+    "pooled_observations": 10,
+    "per_asset_detail": {
+      "BTC": {
+        "n": 5,
+        "spearman": 0.9,
+        "defined": true
+      },
+      "ETH": {
+        "n": 5,
+        "spearman": 0.1,
+        "defined": true
+      }
+    }
+  },
+  "decision": {
+    "verdict": "inconclusive",
+    "reasons": [
+      "sample condition not met: minimum_gex_computable_trades (observed 732 vs 1000)",
+      "sample condition not met: minimum_complete_asset_block_transitions (observed 10 vs 12)"
+    ],
+    "no_returns": true,
+    "decision_boundary": "A replication pass cannot promote alpha; unmet sample conditions remain inconclusive without extension."
+  }
+}

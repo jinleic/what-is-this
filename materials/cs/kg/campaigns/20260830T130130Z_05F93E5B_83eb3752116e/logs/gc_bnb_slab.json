@@ -1,0 +1,122 @@
+{
+ "slab_d10_gateA": {
+  "depth": 10,
+  "ref": "gateA",
+  "n_eval": 200000,
+  "n_pruned": 156582,
+  "n_surv": 18447,
+  "surv_vol": 3.0480895265936834e-05,
+  "surv_frac_of_R": 0.7620223816484218,
+  "s7max": 0.02,
+  "s3hull": [
+   0.325,
+   0.35
+  ],
+  "s5hull": [
+   0.0,
+   0.08
+  ],
+  "budget_hit": true,
+  "seconds": 132.5644359588623
+ },
+ "slab_d10_qhead": {
+  "depth": 10,
+  "ref": "qhead",
+  "n_eval": 200000,
+  "n_pruned": 153554,
+  "n_surv": 21475,
+  "surv_vol": 3.047968152910469e-05,
+  "surv_frac_of_R": 0.7619920382276182,
+  "s7max": 0.02,
+  "s3hull": [
+   0.325,
+   0.35
+  ],
+  "s5hull": [
+   0.0,
+   0.08
+  ],
+  "budget_hit": true,
+  "seconds": 132.13179802894592
+ },
+ "slab_d13_gateA": {
+  "depth": 13,
+  "ref": "gateA",
+  "n_eval": 200000,
+  "n_pruned": 174995,
+  "n_surv": 41,
+  "surv_vol": 3.055079752753952e-05,
+  "surv_frac_of_R": 0.763769938188489,
+  "s7max": 0.02,
+  "s3hull": [
+   0.325,
+   0.35
+  ],
+  "s5hull": [
+   0.0,
+   0.08
+  ],
+  "budget_hit": true,
+  "seconds": 132.20393991470337
+ },
+ "slab_d13_qhead": {
+  "depth": 13,
+  "ref": "qhead",
+  "n_eval": 200000,
+  "n_pruned": 174995,
+  "n_surv": 41,
+  "surv_vol": 3.05495550832711e-05,
+  "surv_frac_of_R": 0.7637388770817785,
+  "s7max": 0.02,
+  "s3hull": [
+   0.325,
+   0.35
+  ],
+  "s5hull": [
+   0.0,
+   0.08
+  ],
+  "budget_hit": true,
+  "seconds": 131.44568800926208
+ },
+ "slab_d16_gateA": {
+  "depth": 16,
+  "ref": "gateA",
+  "n_eval": 200000,
+  "n_pruned": 174995,
+  "n_surv": 41,
+  "surv_vol": 3.055079752753952e-05,
+  "surv_frac_of_R": 0.763769938188489,
+  "s7max": 0.02,
+  "s3hull": [
+   0.325,
+   0.35
+  ],
+  "s5hull": [
+   0.0,
+   0.08
+  ],
+  "budget_hit": true,
+  "seconds": 131.8376178741455
+ },
+ "slab_d16_qhead": {
+  "depth": 16,
+  "ref": "qhead",
+  "n_eval": 200000,
+  "n_pruned": 174995,
+  "n_surv": 41,
+  "surv_vol": 3.05495550832711e-05,
+  "surv_frac_of_R": 0.7637388770817785,
+  "s7max": 0.02,
+  "s3hull": [
+   0.325,
+   0.35
+  ],
+  "s5hull": [
+   0.0,
+   0.08
+  ],
+  "budget_hit": true,
+  "seconds": 131.75898599624634
+ }
+}

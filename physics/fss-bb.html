@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BB-code finite-size scaling — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1f2328}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px;vertical-align:top}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.4rem 0 1rem}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+.markdown-body{box-sizing:border-box;background:transparent;font-size:15px;margin:0 0 1.2rem}
+details{border:1px solid #d0d7de;border-radius:6px;padding:6px 12px;margin:8px 0;background:#fafbfc}
+summary{cursor:pointer;font-size:14px}
+ul.files{margin:8px 0;padding-left:20px;font-size:13px}
+ul.files li{margin:2px 0}
+.fsize{color:#57606a;font-size:11px}
+mjx-container{overflow-x:auto;max-width:100%}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css">
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  function renderMD(el, md) {
+    var math = [];
+    function stash(re) {
+      md = md.replace(re, function (m) {
+        math.push(m);
+        return '@@MATH' + (math.length - 1) + '@@';
+      });
+    }
+    stash(/\$\$[\s\S]+?\$\$/g);
+    stash(/\\\[[\s\S]+?\\\]/g);
+    stash(/\\\((?:[^\\]|\\[^)])+?\\\)/g);
+    stash(/\$(?=\S)(?:[^$\n]*?\S)?\$/g);
+    var out = marked.parse(md, { mangle: false, headerIds: false });
+    out = out.replace(/@@MATH(\d+)@@/g, function (_, i) {
+      return math[+i].replace(/&/g, '&amp;')
+                     .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    });
+    el.innerHTML = out;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    function rewriteLinks(el) {
+      var config = (window.__LINKS__ || {})[el.id];
+      if (!config) return;
+      var base = typeof config === 'string' ? config : config.base;
+      var root = typeof config === 'string' ? null : config.root;
+      var nodes = el.querySelectorAll('a[href], img[src]');
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        var attr = n.tagName === 'IMG' ? 'src' : 'href';
+        var h = n.getAttribute(attr);
+        if (!h) continue;
+        if (/^(?:https?:|mailto:|tel:|#|\/\/|\/)/i.test(h)) continue;
+        var prefix = root && /^(?:\.\/)?(?:README|RESULTS|PROGRESS)\.md(?:[#?].*)?$/i.test(h)
+          ? root : base;
+        n.setAttribute(attr, prefix + h);
+      }
+    }
+    var blobs = window.__MD__ || {};
+    Object.keys(blobs).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      try { renderMD(el, blobs[id]); rewriteLinks(el); }
+      catch (err) {
+        var p = document.createElement('pre');
+        p.textContent = blobs[id];
+        el.innerHTML = '';
+        el.appendChild(p);
+      }
+    });
+    if (window.MathJax) {
+      if (MathJax.typesetPromise) { MathJax.typesetPromise(); }
+      else if (MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(function () { MathJax.typesetPromise(); });
+      }
+    }
+  });
+})();
+</script>
+</head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+<h1>BB-code finite-size scaling</h1>
+<p class="tag">source <code>physics/fss-bb</code> ·
+last change 2026-08-31T08:24:29Z</p>
+<p class="tag">Domain documents: <a href="../materials/domains/physics/PROGRESS.md"><code>PROGRESS.md</code></a> · <a href="../materials/domains/physics/README.md"><code>README.md</code></a> · <a href="../materials/domains/physics/RESULTS.md"><code>RESULTS.md</code></a></p>
+<h2>Latest progress</h2><p class="tag">newest matching entry, quoted from <code>physics/PROGRESS.md</code></p><div class="markdown-body" id="md-progress"></div>
+<h2>Target README</h2><p class="tag">first lines, verbatim</p><div class="markdown-body" id="md-readme"></div>
+<h2>Code &amp; artifacts</h2>
+<p class="tag">mirrored from the source tree; oversized, raw, provisional,
+third-party, and publication-gated files are excluded</p>
+<details open><summary><code>project root</code> — 2 files, 0.0 MB</summary><ul class="files"><li><a href="../materials/physics/fss-bb/README.md">README.md</a> <span class="fsize">9 KB</span></li><li><a href="../materials/physics/fss-bb/pre_statement.md">pre_statement.md</a> <span class="fsize">8 KB</span></li></ul></details>
+<details><summary><code>campaigns/</code> — 19 files, 0.6 MB</summary><ul class="files"><li><a href="../materials/physics/fss-bb/campaigns/20260829T223700Z_c7e131a5_7f337723833e/dem/N144_p0.3720.dem">campaigns/20260829T223700Z_c7e131a5_7f337723833e/dem/N144_p0.3720.dem</a> <span class="fsize">21 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T223700Z_c7e131a5_7f337723833e/fss_fit.json">campaigns/20260829T223700Z_c7e131a5_7f337723833e/fss_fit.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T223700Z_c7e131a5_7f337723833e/manifest.json">campaigns/20260829T223700Z_c7e131a5_7f337723833e/manifest.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T223700Z_c7e131a5_7f337723833e/results.csv">campaigns/20260829T223700Z_c7e131a5_7f337723833e/results.csv</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T223700Z_c7e131a5_7f337723833e/thresholds.json">campaigns/20260829T223700Z_c7e131a5_7f337723833e/thresholds.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T224546Z_987904a9_40c474752126/dem/N144_p0.3703.dem">campaigns/20260829T224546Z_987904a9_40c474752126/dem/N144_p0.3703.dem</a> <span class="fsize">21 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T224546Z_987904a9_40c474752126/fss_fit.json">campaigns/20260829T224546Z_987904a9_40c474752126/fss_fit.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T224546Z_987904a9_40c474752126/manifest.json">campaigns/20260829T224546Z_987904a9_40c474752126/manifest.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T224546Z_987904a9_40c474752126/results.csv">campaigns/20260829T224546Z_987904a9_40c474752126/results.csv</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T224546Z_987904a9_40c474752126/thresholds.json">campaigns/20260829T224546Z_987904a9_40c474752126/thresholds.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N1296_p0.4706.dem">campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N1296_p0.4706.dem</a> <span class="fsize">203 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N144_p0.3707.dem">campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N144_p0.3707.dem</a> <span class="fsize">21 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N324_p0.4387.dem">campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N324_p0.4387.dem</a> <span class="fsize">47 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N576_p0.4456.dem">campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N576_p0.4456.dem</a> <span class="fsize">85 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N900_p0.4675.dem">campaigns/20260829T235018Z_6df86846_e8697f77b182/dem/N900_p0.4675.dem</a> <span class="fsize">134 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/fss_fit.json">campaigns/20260829T235018Z_6df86846_e8697f77b182/fss_fit.json</a> <span class="fsize">35 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/manifest.json">campaigns/20260829T235018Z_6df86846_e8697f77b182/manifest.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/results.csv">campaigns/20260829T235018Z_6df86846_e8697f77b182/results.csv</a> <span class="fsize">4 KB</span></li><li><a href="../materials/physics/fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/thresholds.json">campaigns/20260829T235018Z_6df86846_e8697f77b182/thresholds.json</a> <span class="fsize">12 KB</span></li></ul></details>
+<details><summary><code>scripts/</code> — 3 files, 0.0 MB</summary><ul class="files"><li><a href="../materials/physics/fss-bb/scripts/bench_feasibility.py">scripts/bench_feasibility.py</a> <span class="fsize">2 KB</span></li><li><a href="../materials/physics/fss-bb/scripts/campaign_runner.py">scripts/campaign_runner.py</a> <span class="fsize">9 KB</span></li><li><a href="../materials/physics/fss-bb/scripts/validate_fss_synthetic.py">scripts/validate_fss_synthetic.py</a> <span class="fsize">5 KB</span></li></ul></details>
+<details><summary><code>src/</code> — 6 files, 0.0 MB</summary><ul class="files"><li><a href="../materials/physics/fss-bb/src/__init__.py">src/__init__.py</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/fss-bb/src/bb_codes.py">src/bb_codes.py</a> <span class="fsize">5 KB</span></li><li><a href="../materials/physics/fss-bb/src/decode.py">src/decode.py</a> <span class="fsize">7 KB</span></li><li><a href="../materials/physics/fss-bb/src/dem_export.py">src/dem_export.py</a> <span class="fsize">2 KB</span></li><li><a href="../materials/physics/fss-bb/src/erasure_channel.py">src/erasure_channel.py</a> <span class="fsize">3 KB</span></li><li><a href="../materials/physics/fss-bb/src/fss_fit.py">src/fss_fit.py</a> <span class="fsize">12 KB</span></li></ul></details>
+<script>window.__MD__ = {"md-progress": "## 2026-08-30 — fss-bb 20k ladder FROZEN; paper-CI overlap on 4 of 5 sizes\n\n- Detached run completed and froze as\n  `fss-bb/campaigns/20260829T235018Z_6df86846_e8697f77b182/`\n  (thresholds.json, fss_fit.json, results.csv 41 rows, manifest; dem/\n  kept). Process 91617 exited cleanly.\n- Threshold ladder vs paper (arXiv:2603.19062 Table 1): 12×6 p*=0.3707\n  CI [0.36985, 0.37064] OVERLAPS paper 0.3701 [0.3697, 0.3703];\n  18×9 0.4387 vs 0.4386 (tight CI, consistent); 24×12 0.4456 [0.4452,\n  0.4463] vs paper 0.4608 — CI-MISS at 20k shots ⇒ INCONCLUSIVE-UNDER-\n  BUDGET per Amendment A1 (not a refutation); 30×15 0.4675 vs 0.4702;\n  36×18 0.4706 [0.4705, 0.4708] vs 0.4706 — matches to 3 decimals.\n- Point-estimate anomaly resolved: the pre-freeze quote \"0.3707 CI\n  (0.3699, 0.3706)\" was a rounded-underscore artifact; the frozen file's\n  bracket [0.37032, 0.37070] shows the point is the Illinois upper edge\n  and the bootstrap CI is the authoritative interval — self-consistency\n  hold against `thresholds.json` passes.\n- FSS fit (all windows w0.04/0.06/0.08 agree): p*_inf = 0.4980 CI\n  [0.4973, 0.4988], ν = 1.412 CI [1.391, 1.434]. Paper: 0.488±0.001,\n  ν=1.18±0.01. **ν mismatch lives at 20k budget:** 1.41 vs 1.18 is\n  outside the paper's CI, but per A1 with 20k shots (3.2× wider CIs) and\n  our CI half-width ≈0.02, this is INCONCLUSIVE-UNDER-BUDGET on the ν\n  question; the 200k-shot full ladder (221 core-h, parked) is the only\n  repo route to a real ν verdict. Falsifiable statement of record: under\n  this budget, no claim either way on ν=1.18-vs-4/3.\n", "md-readme": "# `fss-bb/` — BB-code finite-size scaling and the ν anomaly\n\n**Status: ACTIVE — Gate-A 20k-shot fallback campaign RUNNING, detached\n(launched 2026-08-29 23:50 UTC, hub process `fssbb-gateA-20k`, pid 91617,\ncampaign dir `campaigns/20260829T235018Z_6df86846` — hands-off until the\nrunners exits and renames it to `\u003cUTC>_\u003cuuid>_\u003csha12>`; ETA ~8–10 h).\nSurvives this session; monitor: `hub logs fssbb-gateA-20k` / wait-for-exit.**\nApproved scope (Main, 2026-08-29): 20,000 shots/eval — **caveat: the 20k vs 200k choice changes bootstrap CI width\n(~3.2× wider), NOT the estimator chain**, which is the paper's verbatim\n(see pre_statement.md). The 200k-shot variant (~50 h) stays PARKED pending\nexplicit user approval — that is the named next action after the 20k\nresult. Gate B remains parked with measured feasibility.\n\nIndependent finite-size-scaling study of bivariate-bicycle codes on the\nerasure channel, attacking the open question left by arXiv:2603.19062: is the\nBB-under-BP+OSD critical exponent ν ≈ 1.18 (vs random-bond Ising 4/3) a\nfinite-size artifact or a distinct effective universality class?\n\n## Reference numbers (from arXiv:2603.19062v3 — read first-hand 2026-08-29,\nHTML v3, all cited sections read directly)\n\nSingle-author paper (Tushar Pandey, Texas A&M; received 19 Mar 2026, v3 26\nApr 2026):\n\n- Erasure channel, N = 144–1296: (L,M) = (12,6), (18,9), (24,12), (30,15),\n  (36,18); A = x³+y+y², B = y³+x+x², Hx = [A|B], Hz = [Bᵀ|Aᵀ]; 200k\n  shots/evaluation, seed 12345, bootstrap 95% CIs.\n- Pseudo-thresholds (WER = 0.10, Sec 2.4, adaptive bracket-from-0.38 + Illinois\n  regula falsi to bracket \u003c 5e-4, ⩽10 evals; 5000-parametric-bootstrap CIs):\n  **0.3701 → 0.4386 → 0.4453 → 0.4674 → 0.4706** (Table 1).\n- FSS (Sec 2.5): WER ≈ f[(p−p*_inf)·N^{1/ν}], f = degree-3 polynomial,\n  window |p−p*| \u003c 0.06, 500 bootstrap datasets; **p*_inf = 0.488 ± 0.001**,\n  **ν = 1.18 ± 0.01**; window sensitivity ⩽0.004 (0.04/0.08),\n  sys ≲ 0.005; linearized companion (p*(N) ≈ p*_inf + c·N^{−1/ν})\n  gives 0.490 ± 0.003.\n- Their Sec 4.4 verdict on ν: gap to 4/3 \"could be finite-size or\n  corrections-to-scaling … or a different effective universality class … we\n  leave it open\" — hence Gate B.\n- [REPORTED] (paper's own claims, not verified by us): BB N=1296 beats toric\n  on 12× normalized overhead; uninformed MWPM = random guessing.\n\n## Gates (exact criteria also in pre_statement.md)\n\n1. **Gate A (reproduce):** re-run the erasure-channel FSS with an independent\n   harness (own scripts, same sizes, 200k-shot floor, THEIR estimator\n   definitions verbatim — see pre_statement.md for the verbatim citations).\n   CONFIRM = ≥4/5 per-size p*(N) CI-overlap AND |p*_inf − 0.488| ≤ 0.006\n   (their stat ± sys envelope) AND |Δν| ≤ 0.15; else REFUTE-claim flag.\n2. **Gate B (decide):** add (42,21) N=1764 (K=8) and (48,24) N=2304 (K=16;\n   exact GF(2) rank, corrected from an earlier Ki=12 guess) if one-core\n   feasible within a 48 h nice-10 budget (feasibility measured, see\n   campaigns-smoke/feasibility_bench.json); test whether ν drifts toward 4/3.\n   |Δν| ≥ 0.1 with disjoint CIs = drift (artifact-leaning); stable = evidence\n   for decoder-dependent universality. Hard stop conditions pre-committed.\n\n## Status detail (2026-08-29 session)\n\n- [x] arXiv:2603.19062v3 read first-hand; estimator definitions extracted\n      verbatim into `pre_statement.md` (channel, decoder, pseudo-threshold\n      search, FSS ansatz, windowing, CI method, sizes, shots, seed).\n- [x] `src/` pipeline built: BB construction (K verified vs Table 1 for all\n      five sizes), erasure sampler, per-shot-prior BP+OSD, logical-failure\n      tests, FSS fitter, bootstrap CIs, Illinois pseudo-threshold search,\n      DEM export, campaign runner.\n- [x] **FSS module validated on synthetic data with known exponents**\n      [REPRODUCED, artifact `campaigns-smoke/fss_module_validation.json`]:\n      collapse estimator recovers (p0,ν0) = (0.55, 1.35) → 0.5499\n      [0.5499, 0.5500], 1.349 [1.347, 1.351] (95% bootstrap CI); out-of-class\n      (logistic, (0.61, 1.05)) → (0.6100, 1.050) — \u003c 1% model bias. The\n      estimator needed a deterministic multi-start init; the pre-fix\n      single-init version FAILED this validation and was fixed before any\n      real sweep (history in pre_statement.md / git).\n- [x] Decode smoke, N=144, 1e3 shots: WER(0.20)=0.000, WER(0.30)=0.006,\n      WER(0.35)=0.051, WER(0.37)=0.116, WER(0.40)=0.259, WER(0.45)=0.652;\n      0.06-0.67 ms/shot both sectors — behavior concordant with\n      Table-1 p\\*(144)=0.3701.\n- [x] Campaign-runner smoke (`campaigns/20260829T223700Z_c7e131a5_7f337723833e/`,\n      N=144, 2000-shot floor, tag smoke): p\\* = 0.3720, CI95 (0.3715, 0.3719)\n      [NUMERICAL] — consistent with the paper value at the wider shot\n      noise. Full artifacts (manifest, results.csv, thresholds.json,\n      fss_fit.json, dem export).\n- [x] **Gate-A fragment at the paper floor [REPRODUCED]**\n      (`campaigns/20260829T224546Z_987904a9_40c474752126/`, 2026-08-29):\n      N=144, 200k shots/eval, exact paper estimator —\n      **p\\* = 0.37032, 95% CI (0.37004, 0.37101)** vs their Table-1\n      0.3701 [0.3697, 0.3703]: CIs overlap. Bracket closed to 2.0e-4 \u003c 5e-4\n      (Illinois), 6 evals ≤ 10, wall 326 s. Per-point seed lineage + versions\n      pinned in manifest.json (python 3.14.3, numpy 2.5.2, scipy 1.18.1,\n      stim 1.16.0, ldpc 2.4.1).\n- [x] Gate-B feasibility measured and decided\n      (`campaigns-smoke/feasibility_bench.json`): per-shot cost ≈ N²;\n      Gate-A floor run ≈ 50 h core; Gate-B both new sizes ≈ 221 h ≫ 48 h\n      ceiling ⇒ Gate B PARKED at paper floor, re-scope options with numbers\n      recorded in pre_statement.md (recommended: 20k-shot variant).\n- [x] Interface agreement with qldpc-dec recorded (below).\n- [ ] **Full Gate-A campaign (5 sizes × 200k shots ≈ 50 h core) — PENDING\n      budget decision**: a scheduled multi-session job; the 20k-shot\n      alternative (≈ 5 h, ~3.2× wider CIs) is the fallback — see\n      pre_statement.md feasibility table.\n- [ ] Gate B PARKED pending Gate-A outcome + pre-statement amendment for"};</script>
+<script>window.__LINKS__ = {"md-progress": {"base": "../materials/physics/", "root": "../materials/domains/physics/"}, "md-readme": "../materials/physics/fss-bb/"};</script>
+<hr><p class="tag">Auto-generated by tools/sync.py · public research mirror</p>
+</body></html>

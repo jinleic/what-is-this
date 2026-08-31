@@ -1,0 +1,1394 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-accelerated-intraday-2026-08-30",
+  "screen": "liquidation_btc_eth_post_onset",
+  "owner_dir": "quant-trading/explorations/focused-liquidation-overlay",
+  "contract": {
+    "path": "explorations/accelerated-intraday-contract.json",
+    "sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+    "status": "frozen-final-before-outcome-analysis",
+    "created_at_utc": "2026-08-30T17:01:13Z",
+    "semantic_amendment_created_at_utc": "2026-08-30T17:10:49Z",
+    "final_semantic_amendment_created_at_utc": "2026-08-30T17:14:49Z",
+    "final_semantic_amendment_schema_clarified_at_utc": "2026-08-30T17:15:56Z",
+    "frozen_before_outcome_analysis": true,
+    "thresholds_loaded_from_contract": {
+      "sample_stop": {
+        "minimum_complete_onsets_at_15m": 20,
+        "minimum_per_asset": 5,
+        "minimum_per_side": 5,
+        "minimum_nonempty_15m_onset_blocks": 6
+      },
+      "gate": {
+        "median_net_signed_return_5m_gt_zero": true,
+        "median_net_signed_return_15m_gt_zero": true,
+        "hit_rate_net_positive_5m_gte": 0.6,
+        "hit_rate_net_positive_15m_gte": 0.6,
+        "both_assets_median_net_15m_gt_zero": true,
+        "positive_block_median_fraction_15m_gte": 0.6
+      }
+    }
+  },
+  "run": {
+    "snapshot_wall_clock_utc": "2026-08-30T18:27:46.061Z",
+    "exit_code_semantics": "0 when the deterministic report is written (any truth status, including inconclusive); nonzero only for contract/input integrity failures",
+    "research_only": true,
+    "network_calls": 0,
+    "raw_files_mutated": 0,
+    "returns_or_deployment_claim": null
+  },
+  "inputs": {
+    "snapshot_rule": "stat byte size first, then hash and parse exactly that byte prefix; one trailing partial line ignored and counted",
+    "events": {
+      "dir": "data/raw/focused/live/liquidations-persistent",
+      "files": [
+        {
+          "path": "data/raw/focused/live/liquidations-persistent/liquidation-capture-20260830.jsonl",
+          "prefix_bytes": 3293160,
+          "sha256": "c8444ca9956756d36672eef30b6cad7a84129425e14db038a3f15d1758c4d1df",
+          "trailing_partial_line_bytes": 0,
+          "lines_total": 7827,
+          "json_objects": 7827,
+          "malformed_lines": 0,
+          "first_exchange_ts_ms": null,
+          "latest_exchange_ts_ms": null,
+          "kind": "binance_forceOrder_capture",
+          "first_exchange_E_ms": 1788097565327,
+          "first_exchange_E_utc": "2026-08-30T13:46:05.327Z",
+          "latest_exchange_E_ms": 1788114465493,
+          "latest_exchange_E_utc": "2026-08-30T18:27:45.493Z"
+        }
+      ]
+    },
+    "deribit_index": {
+      "root": "data/raw/focused/live/deribit",
+      "files": [
+        {
+          "path": "data/raw/focused/live/deribit/day20260830/index.jsonl",
+          "prefix_bytes": 7808640,
+          "sha256": "2c9151dd5bce6fdf0a1cc2dd1a3014490b779a07eefe919544f32e49df990496",
+          "trailing_partial_line_bytes": 0,
+          "lines_total": 33025,
+          "json_objects": 33025,
+          "malformed_lines": 0,
+          "first_exchange_ts_ms": null,
+          "latest_exchange_ts_ms": null,
+          "kind": "deribit_index_price_records",
+          "first_data_timestamp_ms": 1788090964804,
+          "first_data_timestamp_utc": "2026-08-30T11:56:04.804Z",
+          "latest_data_timestamp_ms": 1788114465615,
+          "latest_data_timestamp_utc": "2026-08-30T18:27:45.615Z",
+          "latest_per_asset_ms": {
+            "btc_usd": 1788114465615,
+            "eth_usd": 1788114465306
+          },
+          "latest_per_asset_utc": {
+            "btc_usd": "2026-08-30T18:27:45.615Z",
+            "eth_usd": "2026-08-30T18:27:45.306Z"
+          },
+          "first_per_asset_ms": {
+            "btc_usd": 1788090964804,
+            "eth_usd": 1788090969111
+          },
+          "first_per_asset_utc": {
+            "btc_usd": "2026-08-30T11:56:04.804Z",
+            "eth_usd": "2026-08-30T11:56:09.111Z"
+          }
+        }
+      ]
+    },
+    "common_cutoff": {
+      "rule": "minimum latest complete exchange timestamp across the event input and EACH required price input (btc_usd and eth_usd index latests); never a max over the pooled index union",
+      "latest_event_E_ms": 1788114465493,
+      "index_latest_pooled_ms": 1788114465615,
+      "latest_per_asset_ms": {
+        "btc_usd": 1788114465615,
+        "eth_usd": 1788114465306
+      },
+      "latest_per_asset_utc": {
+        "btc_usd": "2026-08-30T18:27:45.615Z",
+        "eth_usd": "2026-08-30T18:27:45.306Z"
+      },
+      "cutoff_ms": 1788114465306,
+      "cutoff_utc": "2026-08-30T18:27:45.306Z",
+      "search_deadline_ms": 1788114465306,
+      "per_asset_cutoff_ms": {
+        "btc_usd": 1788114465493,
+        "eth_usd": 1788114465306
+      },
+      "hard_deadline_utc": "2026-08-30T18:31:13.000Z",
+      "deadline_rule": "The deadline is original created_at_utc plus exactly 90 minutes. Search for each earliest stop only among observations available at or before this instant. If sample conditions first become true later, ignore the later passage and resolve inconclusive."
+    }
+  },
+  "liquidation_corpus": {
+    "parsed_events": 5150,
+    "dedup_duplicate_ids": 0,
+    "event_id_mismatch_records": 0,
+    "excluded": {
+      "non_forceOrder_records": 0,
+      "missing_exchange_E": 0,
+      "non_target_symbol": 4719,
+      "after_common_cutoff": 1,
+      "orphan_outside_connect_segment": 0,
+      "side_missing_or_unknown": 0
+    },
+    "controls": {
+      "control_connect": 1,
+      "control_session_start": 1,
+      "control_disconnect": 0,
+      "control_session_stop": 0,
+      "control_other": 1
+    },
+    "segments": [
+      {
+        "connect_ts_utc": "2026-08-30T13:45:58.772Z",
+        "connect_capture_epoch_ms": 1788097558772,
+        "forceOrder_events": 427
+      }
+    ],
+    "segment_forceOrder_events": 427
+  },
+  "deribit_index": {
+    "series": {
+      "btc_usd": {
+        "observations": 17217,
+        "duplicate_timestamp_collapses": 0
+      },
+      "eth_usd": {
+        "observations": 15807,
+        "duplicate_timestamp_collapses": 0
+      }
+    },
+    "dedup_duplicate_ids": 0,
+    "dedup_id_missing": 0,
+    "dedup_id_mismatch": 204,
+    "after_common_cutoff": 1,
+    "nonpositive_or_bad_price": 0
+  },
+  "onsets": {
+    "total_eligible": 27,
+    "by_symbol": {
+      "BTCUSDT": 11,
+      "ETHUSDT": 16
+    },
+    "by_side": {
+      "BUY": 16,
+      "SELL": 11,
+      "other": 0
+    },
+    "incomplete_alignments": {
+      "initial": 1,
+      "horizon_1m": 1,
+      "horizon_5m": 1,
+      "horizon_15m": 1
+    },
+    "incomplete_onsets": [
+      {
+        "event_id": "97e080bdd1f36e39de7e26fbab9deca2",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788114437529,
+        "missing": {
+          "1m": true,
+          "5m": true,
+          "15m": true,
+          "initial": true
+        }
+      }
+    ],
+    "eligible_detail": [
+      {
+        "event_id": "71d2a132056375e6be5d50a4cfb84de9",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788097999184,
+        "onset_utc": "2026-08-30T13:53:19.184Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788097998965,
+          "price": 2473.6
+        },
+        "P_1m": {
+          "target_ms": 1788098059184,
+          "observed_ts_ms": 1788098059417,
+          "price": 2473.64,
+          "signed_return": -1.6170763259992782e-05,
+          "net_return": -0.0002161707632599928
+        },
+        "P_5m": {
+          "target_ms": 1788098299184,
+          "observed_ts_ms": 1788098300174,
+          "price": 2476.73,
+          "signed_return": -0.0012653622250970997,
+          "net_return": -0.0014653622250970998
+        },
+        "P_15m": {
+          "target_ms": 1788098899184,
+          "observed_ts_ms": 1788098899655,
+          "price": 2475.25,
+          "signed_return": -0.0006670439844760345,
+          "net_return": -0.0008670439844760345
+        }
+      },
+      {
+        "event_id": "9d2238294292afcb854b27b4a42fde7a",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788098801494,
+        "onset_utc": "2026-08-30T14:06:41.494Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788098800564,
+          "price": 78775.9
+        },
+        "P_1m": {
+          "target_ms": 1788098861494,
+          "observed_ts_ms": 1788098862066,
+          "price": 78861.36,
+          "signed_return": -0.001084849554241929,
+          "net_return": -0.001284849554241929
+        },
+        "P_5m": {
+          "target_ms": 1788099101494,
+          "observed_ts_ms": 1788099101835,
+          "price": 78865.21,
+          "signed_return": -0.0011337223694050103,
+          "net_return": -0.0013337223694050103
+        },
+        "P_15m": {
+          "target_ms": 1788099701494,
+          "observed_ts_ms": 1788099702274,
+          "price": 78822.21,
+          "signed_return": -0.0005878701481039084,
+          "net_return": -0.0007878701481039083
+        }
+      },
+      {
+        "event_id": "13b898b9a01e8dd6d33232465a6f2b60",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788098801564,
+        "onset_utc": "2026-08-30T14:06:41.564Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788098800883,
+          "price": 2470.91
+        },
+        "P_1m": {
+          "target_ms": 1788098861564,
+          "observed_ts_ms": 1788098862380,
+          "price": 2474.06,
+          "signed_return": -0.0012748339680523912,
+          "net_return": -0.0014748339680523913
+        },
+        "P_5m": {
+          "target_ms": 1788099101564,
+          "observed_ts_ms": 1788099102130,
+          "price": 2475.03,
+          "signed_return": -0.0016674018883733321,
+          "net_return": -0.0018674018883733322
+        },
+        "P_15m": {
+          "target_ms": 1788099701564,
+          "observed_ts_ms": 1788099701656,
+          "price": 2475.44,
+          "signed_return": -0.001833332658818021,
+          "net_return": -0.002033332658818021
+        }
+      },
+      {
+        "event_id": "2690f350fd3b66191f482fc06ef64095",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788100362404,
+        "onset_utc": "2026-08-30T14:32:42.404Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788100362400,
+          "price": 2479.42
+        },
+        "P_1m": {
+          "target_ms": 1788100422404,
+          "observed_ts_ms": 1788100423844,
+          "price": 2477.94,
+          "signed_return": -0.0005969137943551139,
+          "net_return": -0.0007969137943551139
+        },
+        "P_5m": {
+          "target_ms": 1788100662404,
+          "observed_ts_ms": 1788100664634,
+          "price": 2475.68,
+          "signed_return": -0.0015084172911408178,
+          "net_return": -0.0017084172911408179
+        },
+        "P_15m": {
+          "target_ms": 1788101262404,
+          "observed_ts_ms": 1788101264966,
+          "price": 2475.41,
+          "signed_return": -0.001617313726597458,
+          "net_return": -0.001817313726597458
+        }
+      },
+      {
+        "event_id": "24c4111083874ad52839418c7d45269c",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788100713289,
+        "onset_utc": "2026-08-30T14:38:33.289Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788100712535,
+          "price": 78751.41
+        },
+        "P_1m": {
+          "target_ms": 1788100773289,
+          "observed_ts_ms": 1788100773988,
+          "price": 78717.86,
+          "signed_return": 0.0004260241181713864,
+          "net_return": 0.0002260241181713864
+        },
+        "P_5m": {
+          "target_ms": 1788101013289,
+          "observed_ts_ms": 1788101013704,
+          "price": 78761.69,
+          "signed_return": -0.00013053734529955285,
+          "net_return": -0.00033053734529955284
+        },
+        "P_15m": {
+          "target_ms": 1788101613289,
+          "observed_ts_ms": 1788101614128,
+          "price": 78788.18,
+          "signed_return": -0.0004669122749674237,
+          "net_return": -0.0006669122749674237
+        }
+      },
+      {
+        "event_id": "963a8aae5c53ac27f4bb5f5edbd9c1cb",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788100738558,
+        "onset_utc": "2026-08-30T14:38:58.558Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788100738187,
+          "price": 2473.71
+        },
+        "P_1m": {
+          "target_ms": 1788100798558,
+          "observed_ts_ms": 1788100798619,
+          "price": 2474.43,
+          "signed_return": -0.0002910607953234834,
+          "net_return": -0.0004910607953234834
+        },
+        "P_5m": {
+          "target_ms": 1788101038558,
+          "observed_ts_ms": 1788101041344,
+          "price": 2475.96,
+          "signed_return": -0.0009095649853863019,
+          "net_return": -0.001109564985386302
+        },
+        "P_15m": {
+          "target_ms": 1788101638558,
+          "observed_ts_ms": 1788101638646,
+          "price": 2477.48,
+          "signed_return": -0.0015240266644027667,
+          "net_return": -0.0017240266644027668
+        }
+      },
+      {
+        "event_id": "1d8279d64178bf47f9de49f7cba35db7",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788101059456,
+        "onset_utc": "2026-08-30T14:44:19.456Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788101057458,
+          "price": 2475.89
+        },
+        "P_1m": {
+          "target_ms": 1788101119456,
+          "observed_ts_ms": 1788101119919,
+          "price": 2474.24,
+          "signed_return": -0.0006664270222020985,
+          "net_return": -0.0008664270222020985
+        },
+        "P_5m": {
+          "target_ms": 1788101359456,
+          "observed_ts_ms": 1788101359650,
+          "price": 2476.56,
+          "signed_return": 0.00027060976053050467,
+          "net_return": 7.060976053050466e-05
+        },
+        "P_15m": {
+          "target_ms": 1788101959456,
+          "observed_ts_ms": 1788101961985,
+          "price": 2476.6,
+          "signed_return": 0.00028676556712947665,
+          "net_return": 8.676556712947664e-05
+        }
+      },
+      {
+        "event_id": "30385f68c4d44117c711af273545d54f",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788102131267,
+        "onset_utc": "2026-08-30T15:02:11.267Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788102130262,
+          "price": 2475.71
+        },
+        "P_1m": {
+          "target_ms": 1788102191267,
+          "observed_ts_ms": 1788102191748,
+          "price": 2476.65,
+          "signed_return": -0.0003796890588962931,
+          "net_return": -0.0005796890588962931
+        },
+        "P_5m": {
+          "target_ms": 1788102431267,
+          "observed_ts_ms": 1788102431502,
+          "price": 2477.56,
+          "signed_return": -0.0007472603818701185,
+          "net_return": -0.0009472603818701184
+        },
+        "P_15m": {
+          "target_ms": 1788103031267,
+          "observed_ts_ms": 1788103034111,
+          "price": 2475.06,
+          "signed_return": 0.00026255094498151,
+          "net_return": 6.255094498150998e-05
+        }
+      },
+      {
+        "event_id": "ff6ba023f749b480f75b4ff4899315a2",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788102131277,
+        "onset_utc": "2026-08-30T15:02:11.277Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788102130928,
+          "price": 78699.93
+        },
+        "P_1m": {
+          "target_ms": 1788102191277,
+          "observed_ts_ms": 1788102191414,
+          "price": 78732.74,
+          "signed_return": -0.00041689998961902397,
+          "net_return": -0.000616899989619024
+        },
+        "P_5m": {
+          "target_ms": 1788102431277,
+          "observed_ts_ms": 1788102432209,
+          "price": 78733.24,
+          "signed_return": -0.0004232532354222496,
+          "net_return": -0.0006232532354222496
+        },
+        "P_15m": {
+          "target_ms": 1788103031277,
+          "observed_ts_ms": 1788103031846,
+          "price": 78698.43,
+          "signed_return": 1.9059737410231925e-05,
+          "net_return": -0.00018094026258976808
+        }
+      },
+      {
+        "event_id": "1f30e736fd50338aa7ec02ee473e06ff",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788102547197,
+        "onset_utc": "2026-08-30T15:09:07.197Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788102546365,
+          "price": 2480.66
+        },
+        "P_1m": {
+          "target_ms": 1788102607197,
+          "observed_ts_ms": 1788102607887,
+          "price": 2477.12,
+          "signed_return": -0.001427039578176803,
+          "net_return": -0.0016270395781768031
+        },
+        "P_5m": {
+          "target_ms": 1788102847197,
+          "observed_ts_ms": 1788102847673,
+          "price": 2474.5,
+          "signed_return": -0.0024832101134374396,
+          "net_return": -0.0026832101134374397
+        },
+        "P_15m": {
+          "target_ms": 1788103447197,
+          "observed_ts_ms": 1788103448119,
+          "price": 2477.65,
+          "signed_return": -0.0012133867599750658,
+          "net_return": -0.001413386759975066
+        }
+      },
+      {
+        "event_id": "49a138e4f734cb075817bad6bbb2dce6",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788103851377,
+        "onset_utc": "2026-08-30T15:30:51.377Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788103851024,
+          "price": 2478.67
+        },
+        "P_1m": {
+          "target_ms": 1788103911377,
+          "observed_ts_ms": 1788103911471,
+          "price": 2479.22,
+          "signed_return": 0.0002218931927202572,
+          "net_return": 2.1893192720257195e-05
+        },
+        "P_5m": {
+          "target_ms": 1788104151377,
+          "observed_ts_ms": 1788104152213,
+          "price": 2477.93,
+          "signed_return": -0.0002985472047509763,
+          "net_return": -0.0004985472047509763
+        },
+        "P_15m": {
+          "target_ms": 1788104751377,
+          "observed_ts_ms": 1788104751570,
+          "price": 2479.67,
+          "signed_return": 0.0004034421685823464,
+          "net_return": 0.00020344216858234637
+        }
+      },
+      {
+        "event_id": "77be91a82811d77f336bd87c7ab3b6f4",
+        "symbol": "BTCUSDT",
+        "side": "BUY",
+        "onset_ms": 1788103916368,
+        "onset_utc": "2026-08-30T15:31:56.368Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788103915299,
+          "price": 78807.21
+        },
+        "P_1m": {
+          "target_ms": 1788103976368,
+          "observed_ts_ms": 1788103976740,
+          "price": 78804.28,
+          "signed_return": -3.7179339301696146e-05,
+          "net_return": -0.00023717933930169616
+        },
+        "P_5m": {
+          "target_ms": 1788104216368,
+          "observed_ts_ms": 1788104216537,
+          "price": 78792.75,
+          "signed_return": -0.00018348574959070607,
+          "net_return": -0.00038348574959070605
+        },
+        "P_15m": {
+          "target_ms": 1788104816368,
+          "observed_ts_ms": 1788104817197,
+          "price": 78861.71,
+          "signed_return": 0.0006915610893978297,
+          "net_return": 0.0004915610893978297
+        }
+      },
+      {
+        "event_id": "de5da74e0848c740720df60947f32f49",
+        "symbol": "BTCUSDT",
+        "side": "BUY",
+        "onset_ms": 1788104818161,
+        "onset_utc": "2026-08-30T15:46:58.161Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788104817197,
+          "price": 78861.71
+        },
+        "P_1m": {
+          "target_ms": 1788104878161,
+          "observed_ts_ms": 1788104878645,
+          "price": 78869.68,
+          "signed_return": 0.0001010629873481328,
+          "net_return": -9.893701265186722e-05
+        },
+        "P_5m": {
+          "target_ms": 1788105118161,
+          "observed_ts_ms": 1788105118259,
+          "price": 78804.57,
+          "signed_return": -0.0007245594852052228,
+          "net_return": -0.0009245594852052228
+        },
+        "P_15m": {
+          "target_ms": 1788105718161,
+          "observed_ts_ms": 1788105718216,
+          "price": 78818.19,
+          "signed_return": -0.0005518520965371865,
+          "net_return": -0.0007518520965371865
+        }
+      },
+      {
+        "event_id": "0eb713bcbc3ec2422a00a22ab5cacc39",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788104889191,
+        "onset_utc": "2026-08-30T15:48:09.191Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788104888821,
+          "price": 2482.63
+        },
+        "P_1m": {
+          "target_ms": 1788104949191,
+          "observed_ts_ms": 1788104949335,
+          "price": 2479.5,
+          "signed_return": -0.0012607597588042418,
+          "net_return": -0.001460759758804242
+        },
+        "P_5m": {
+          "target_ms": 1788105189191,
+          "observed_ts_ms": 1788105189895,
+          "price": 2478.92,
+          "signed_return": -0.0014943829728957247,
+          "net_return": -0.0016943829728957248
+        },
+        "P_15m": {
+          "target_ms": 1788105789191,
+          "observed_ts_ms": 1788105789989,
+          "price": 2482.75,
+          "signed_return": 4.8335837398161274e-05,
+          "net_return": -0.00015166416260183874
+        }
+      },
+      {
+        "event_id": "d90ebf6e33a1854d356e88823bc2d171",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788105764209,
+        "onset_utc": "2026-08-30T16:02:44.209Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788105763745,
+          "price": 2483.47
+        },
+        "P_1m": {
+          "target_ms": 1788105824209,
+          "observed_ts_ms": 1788105824274,
+          "price": 2484.06,
+          "signed_return": 0.0002375708182502656,
+          "net_return": 3.757081825026559e-05
+        },
+        "P_5m": {
+          "target_ms": 1788106064209,
+          "observed_ts_ms": 1788106065061,
+          "price": 2484.77,
+          "signed_return": 0.0005234611249582688,
+          "net_return": 0.0003234611249582688
+        },
+        "P_15m": {
+          "target_ms": 1788106664209,
+          "observed_ts_ms": 1788106664754,
+          "price": 2514.66,
+          "signed_return": 0.012559040374959363,
+          "net_return": 0.012359040374959362
+        }
+      },
+      {
+        "event_id": "50b90f119b2079282612ca622c37db40",
+        "symbol": "BTCUSDT",
+        "side": "BUY",
+        "onset_ms": 1788105765624,
+        "onset_utc": "2026-08-30T16:02:45.624Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788105765594,
+          "price": 78880.59
+        },
+        "P_1m": {
+          "target_ms": 1788105825624,
+          "observed_ts_ms": 1788105826604,
+          "price": 78901.02,
+          "signed_return": 0.0002589990769592543,
+          "net_return": 5.899907695925427e-05
+        },
+        "P_5m": {
+          "target_ms": 1788106065624,
+          "observed_ts_ms": 1788106065657,
+          "price": 78876.67,
+          "signed_return": -4.969536865784274e-05,
+          "net_return": -0.0002496953686578427
+        },
+        "P_15m": {
+          "target_ms": 1788106665624,
+          "observed_ts_ms": 1788106666045,
+          "price": 79074.2,
+          "signed_return": 0.0024544694708799053,
+          "net_return": 0.002254469470879905
+        }
+      },
+      {
+        "event_id": "1a36509fb003c040ef3e96e730c05493",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788106326179,
+        "onset_utc": "2026-08-30T16:12:06.179Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788106326121,
+          "price": 2489.58
+        },
+        "P_1m": {
+          "target_ms": 1788106386179,
+          "observed_ts_ms": 1788106386754,
+          "price": 2495.92,
+          "signed_return": 0.002546614288353899,
+          "net_return": 0.002346614288353899
+        },
+        "P_5m": {
+          "target_ms": 1788106626179,
+          "observed_ts_ms": 1788106626370,
+          "price": 2513.3,
+          "signed_return": 0.009527711501538416,
+          "net_return": 0.009327711501538416
+        },
+        "P_15m": {
+          "target_ms": 1788107226179,
+          "observed_ts_ms": 1788107226861,
+          "price": 2513.72,
+          "signed_return": 0.009696414656287455,
+          "net_return": 0.009496414656287455
+        }
+      },
+      {
+        "event_id": "e1a2bd139b966aa4403131d6d28162b4",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788107571467,
+        "onset_utc": "2026-08-30T16:32:51.467Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788107571142,
+          "price": 2516.36
+        },
+        "P_1m": {
+          "target_ms": 1788107631467,
+          "observed_ts_ms": 1788107632679,
+          "price": 2516.02,
+          "signed_return": -0.00013511580219049968,
+          "net_return": -0.00033511580219049966
+        },
+        "P_5m": {
+          "target_ms": 1788107871467,
+          "observed_ts_ms": 1788107872116,
+          "price": 2524.78,
+          "signed_return": 0.00334610310130512,
+          "net_return": 0.00314610310130512
+        },
+        "P_15m": {
+          "target_ms": 1788108471467,
+          "observed_ts_ms": 1788108471986,
+          "price": 2527.37,
+          "signed_return": 0.0043753675944617765,
+          "net_return": 0.004175367594461777
+        }
+      },
+      {
+        "event_id": "1175ac5901916a6544ba9976613d8e26",
+        "symbol": "BTCUSDT",
+        "side": "BUY",
+        "onset_ms": 1788107725355,
+        "onset_utc": "2026-08-30T16:35:25.355Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788107724713,
+          "price": 79158.78
+        },
+        "P_1m": {
+          "target_ms": 1788107785355,
+          "observed_ts_ms": 1788107785470,
+          "price": 79178.47,
+          "signed_return": 0.00024874056927104427,
+          "net_return": 4.8740569271044255e-05
+        },
+        "P_5m": {
+          "target_ms": 1788108025355,
+          "observed_ts_ms": 1788108025637,
+          "price": 79138.12,
+          "signed_return": -0.00026099442159166486,
+          "net_return": -0.00046099442159166484
+        },
+        "P_15m": {
+          "target_ms": 1788108625355,
+          "observed_ts_ms": 1788108625519,
+          "price": 79189.35,
+          "signed_return": 0.00038618584066107964,
+          "net_return": 0.00018618584066107963
+        }
+      },
+      {
+        "event_id": "5eb01beb1f45a4137cf102d7110042f3",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788109914300,
+        "onset_utc": "2026-08-30T17:11:54.300Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788109913794,
+          "price": 79130.66
+        },
+        "P_1m": {
+          "target_ms": 1788109974300,
+          "observed_ts_ms": 1788109974335,
+          "price": 79154.09,
+          "signed_return": -0.000296092563868422,
+          "net_return": -0.000496092563868422
+        },
+        "P_5m": {
+          "target_ms": 1788110214300,
+          "observed_ts_ms": 1788110215255,
+          "price": 79025.26,
+          "signed_return": 0.0013319742309745308,
+          "net_return": 0.0011319742309745307
+        },
+        "P_15m": {
+          "target_ms": 1788110814300,
+          "observed_ts_ms": 1788110814496,
+          "price": 78884.1,
+          "signed_return": 0.00311585926365332,
+          "net_return": 0.00291585926365332
+        }
+      },
+      {
+        "event_id": "8a93787623194378b680fd5b198ffcec",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788111121492,
+        "onset_utc": "2026-08-30T17:32:01.492Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788111120639,
+          "price": 2500.5
+        },
+        "P_1m": {
+          "target_ms": 1788111181492,
+          "observed_ts_ms": 1788111182092,
+          "price": 2500.07,
+          "signed_return": -0.00017196560687859908,
+          "net_return": -0.00037196560687859906
+        },
+        "P_5m": {
+          "target_ms": 1788111421492,
+          "observed_ts_ms": 1788111421940,
+          "price": 2505.69,
+          "signed_return": 0.002075584883023396,
+          "net_return": 0.0018755848830233957
+        },
+        "P_15m": {
+          "target_ms": 1788112021492,
+          "observed_ts_ms": 1788112022398,
+          "price": 2507.97,
+          "signed_return": 0.0029874025194960296,
+          "net_return": 0.0027874025194960295
+        }
+      },
+      {
+        "event_id": "3f6928c9ee42998367e567988900a242",
+        "symbol": "BTCUSDT",
+        "side": "BUY",
+        "onset_ms": 1788111124194,
+        "onset_utc": "2026-08-30T17:32:04.194Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788111123882,
+          "price": 78954.17
+        },
+        "P_1m": {
+          "target_ms": 1788111184194,
+          "observed_ts_ms": 1788111184339,
+          "price": 78953.25,
+          "signed_return": -1.165232944633221e-05,
+          "net_return": -0.00021165232944633222
+        },
+        "P_5m": {
+          "target_ms": 1788111424194,
+          "observed_ts_ms": 1788111425138,
+          "price": 79004.9,
+          "signed_return": 0.0006425246443599875,
+          "net_return": 0.0004425246443599875
+        },
+        "P_15m": {
+          "target_ms": 1788112024194,
+          "observed_ts_ms": 1788112024632,
+          "price": 79024.57,
+          "signed_return": 0.0008916565141525723,
+          "net_return": 0.0006916565141525723
+        }
+      },
+      {
+        "event_id": "d5d697957f1ac6438a6566bf5c65993f",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788111959425,
+        "onset_utc": "2026-08-30T17:45:59.425Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788111958924,
+          "price": 2508.54
+        },
+        "P_1m": {
+          "target_ms": 1788112019425,
+          "observed_ts_ms": 1788112020382,
+          "price": 2508.04,
+          "signed_return": -0.0001993191258660154,
+          "net_return": -0.0003993191258660154
+        },
+        "P_5m": {
+          "target_ms": 1788112259425,
+          "observed_ts_ms": 1788112262149,
+          "price": 2506.01,
+          "signed_return": -0.001008554776882109,
+          "net_return": -0.0012085547768821091
+        },
+        "P_15m": {
+          "target_ms": 1788112859425,
+          "observed_ts_ms": 1788112859504,
+          "price": 2506.92,
+          "signed_return": -0.0006457939678059521,
+          "net_return": -0.0008457939678059521
+        }
+      },
+      {
+        "event_id": "6a597a1442733098bb63da9a55d908cd",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788112355640,
+        "onset_utc": "2026-08-30T17:52:35.640Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788112355047,
+          "price": 78984.59
+        },
+        "P_1m": {
+          "target_ms": 1788112415640,
+          "observed_ts_ms": 1788112416499,
+          "price": 78966.83,
+          "signed_return": 0.00022485398734095607,
+          "net_return": 2.4853987340956065e-05
+        },
+        "P_5m": {
+          "target_ms": 1788112655640,
+          "observed_ts_ms": 1788112656251,
+          "price": 78981.46,
+          "signed_return": 3.9627983129286726e-05,
+          "net_return": -0.00016037201687071328
+        },
+        "P_15m": {
+          "target_ms": 1788113255640,
+          "observed_ts_ms": 1788113255669,
+          "price": 78903.2,
+          "signed_return": 0.0010304541683383572,
+          "net_return": 0.0008304541683383573
+        }
+      },
+      {
+        "event_id": "06b68773c231196cc82a93ffb86e2af6",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788113323124,
+        "onset_utc": "2026-08-30T18:08:43.124Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788113322908,
+          "price": 2500.09
+        },
+        "P_1m": {
+          "target_ms": 1788113383124,
+          "observed_ts_ms": 1788113383337,
+          "price": 2499.89,
+          "signed_return": 7.999712010375859e-05,
+          "net_return": -0.00012000287989624142
+        },
+        "P_5m": {
+          "target_ms": 1788113623124,
+          "observed_ts_ms": 1788113623127,
+          "price": 2498.39,
+          "signed_return": 0.0006799755208813929,
+          "net_return": 0.0004799755208813929
+        },
+        "P_15m": {
+          "target_ms": 1788114223124,
+          "observed_ts_ms": 1788114223497,
+          "price": 2502.34,
+          "signed_return": -0.0008999676011662849,
+          "net_return": -0.001099967601166285
+        }
+      },
+      {
+        "event_id": "b6ba18d7d22d4e11e0d7a75bf116a442",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788113383676,
+        "onset_utc": "2026-08-30T18:09:43.676Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": true,
+        "P_0": {
+          "observed_ts_ms": 1788113383575,
+          "price": 78873.92
+        },
+        "P_1m": {
+          "target_ms": 1788113443676,
+          "observed_ts_ms": 1788113444102,
+          "price": 78811.22,
+          "signed_return": 0.0007949395693784833,
+          "net_return": 0.0005949395693784833
+        },
+        "P_5m": {
+          "target_ms": 1788113683676,
+          "observed_ts_ms": 1788113683865,
+          "price": 78833.2,
+          "signed_return": 0.0005162669739249282,
+          "net_return": 0.00031626697392492817
+        },
+        "P_15m": {
+          "target_ms": 1788114283676,
+          "observed_ts_ms": 1788114284262,
+          "price": 78854.77,
+          "signed_return": 0.00024279254790426918,
+          "net_return": 4.2792547904269175e-05
+        }
+      },
+      {
+        "event_id": "97e080bdd1f36e39de7e26fbab9deca2",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788114437529,
+        "onset_utc": "2026-08-30T18:27:17.529Z",
+        "eligibility": "gap_since_prior_same_symbol",
+        "cohort_complete": false,
+        "P_0": {
+          "observed_ts_ms": 1788114437106,
+          "price": 2504.61
+        },
+        "P_1m": {
+          "target_ms": 1788114497529,
+          "observed": null,
+          "missing": "beyond_common_cutoff"
+        },
+        "P_5m": {
+          "target_ms": 1788114737529,
+          "observed": null,
+          "missing": "beyond_common_cutoff"
+        },
+        "P_15m": {
+          "target_ms": 1788115337529,
+          "observed": null,
+          "missing": "beyond_common_cutoff"
+        }
+      }
+    ]
+  },
+  "earliest_stop": {
+    "rule": "Chronologically truncate to the earliest outcome-availability time at which every registered sample condition first becomes true. Never use later observations merely because the frozen byte prefixes contain them. If no such point exists, use the full common prefix and resolve inconclusive.",
+    "search_deadline_utc": "2026-08-30T18:27:45.306Z",
+    "found": true,
+    "candidate_stop_ms": 1788110814496,
+    "candidate_stop_utc": "2026-08-30T17:26:54.496Z",
+    "candidate_attempts": [
+      {
+        "candidate_ms": 1788098899655,
+        "cohort_size": 1,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788099701656,
+        "cohort_size": 2,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788099702274,
+        "cohort_size": 3,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788101264966,
+        "cohort_size": 4,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788101614128,
+        "cohort_size": 5,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788101638646,
+        "cohort_size": 6,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788101961985,
+        "cohort_size": 7,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788103031846,
+        "cohort_size": 8,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788103034111,
+        "cohort_size": 9,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788103448119,
+        "cohort_size": 10,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788104751570,
+        "cohort_size": 11,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788104817197,
+        "cohort_size": 12,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788105718216,
+        "cohort_size": 13,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788105789989,
+        "cohort_size": 14,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788106664754,
+        "cohort_size": 15,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788106666045,
+        "cohort_size": 16,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788107226861,
+        "cohort_size": 17,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788108471986,
+        "cohort_size": 18,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788108625519,
+        "cohort_size": 19,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788110814496,
+        "cohort_size": 20,
+        "all_met": true
+      }
+    ]
+  },
+  "cohort": {
+    "definition": "The gated cohort contains exactly the eligible onsets having valid P_0, P_5m, and P_15m alignments by the candidate stop. All sample counts and every 5m/15m gate use this same cohort. A missing alignment excludes that onset and is reported; it does not poison otherwise defined cohort metrics. The 1m outcome is descriptive only and does not determine cohort membership or status.",
+    "size": 20,
+    "by_symbol": {
+      "BTCUSDT": 8,
+      "ETHUSDT": 12
+    },
+    "by_side": {
+      "BUY": 12,
+      "SELL": 8
+    },
+    "nonempty_15m_blocks": 9
+  },
+  "sample_conditions": {
+    "all_met": true,
+    "conditions": [
+      {
+        "name": "minimum_complete_onsets_at_15m",
+        "required": 20,
+        "observed": 20,
+        "met": true
+      },
+      {
+        "name": "minimum_per_asset",
+        "required": 5,
+        "observed": {
+          "BTCUSDT": 8,
+          "ETHUSDT": 12
+        },
+        "met": true
+      },
+      {
+        "name": "minimum_per_side",
+        "required": 5,
+        "observed": {
+          "BUY": 12,
+          "SELL": 8
+        },
+        "met": true
+      },
+      {
+        "name": "minimum_nonempty_15m_onset_blocks",
+        "required": 6,
+        "observed": 9,
+        "met": true
+      }
+    ]
+  },
+  "gates": {
+    "cohort_size": 20,
+    "gates": [
+      {
+        "gate": "median_net_signed_return_5m_gt_zero",
+        "threshold": true,
+        "observed": -0.0005609002200866129,
+        "result": false
+      },
+      {
+        "gate": "median_net_signed_return_15m_gt_zero",
+        "threshold": true,
+        "observed": -4.4556608810164376e-05,
+        "result": false
+      },
+      {
+        "gate": "hit_rate_net_positive_5m_gte",
+        "threshold": 0.6,
+        "observed": 0.25,
+        "result": false
+      },
+      {
+        "gate": "hit_rate_net_positive_15m_gte",
+        "threshold": 0.6,
+        "observed": 0.5,
+        "result": false
+      },
+      {
+        "gate": "both_assets_median_net_15m_gt_zero",
+        "threshold": true,
+        "observed": {
+          "BTCUSDT": 2.622789035655772e-06,
+          "ETHUSDT": -4.4556608810164376e-05
+        },
+        "result": false
+      },
+      {
+        "gate": "positive_block_median_fraction_15m_gte",
+        "threshold": 0.6,
+        "observed": 0.4444444444444444,
+        "result": false
+      }
+    ],
+    "descriptive_1m": {
+      "median_net_signed_return_1m_descriptive_only": -0.0004130882987569915,
+      "hit_rate_net_positive_1m_descriptive_only": 0.3
+    },
+    "asset_detail_15m": {
+      "BTCUSDT": {
+        "count": 8,
+        "median_net_15m": 2.622789035655772e-06,
+        "defined": true
+      },
+      "ETHUSDT": {
+        "count": 12,
+        "median_net_15m": -4.4556608810164376e-05,
+        "defined": true
+      }
+    },
+    "cohort_blocks": [
+      {
+        "block_start_ms": 1788097500000,
+        "onsets": 1,
+        "median_net_15m": -0.0008670439844760345
+      },
+      {
+        "block_start_ms": 1788098400000,
+        "onsets": 2,
+        "median_net_15m": -0.0014106014034609648
+      },
+      {
+        "block_start_ms": 1788100200000,
+        "onsets": 4,
+        "median_net_15m": -0.0011954694696850953
+      },
+      {
+        "block_start_ms": 1788102000000,
+        "onsets": 3,
+        "median_net_15m": -0.00018094026258976808
+      },
+      {
+        "block_start_ms": 1788103800000,
+        "onsets": 2,
+        "median_net_15m": 0.00034750162899008805
+      },
+      {
+        "block_start_ms": 1788104700000,
+        "onsets": 2,
+        "median_net_15m": -0.0004517581295695126
+      },
+      {
+        "block_start_ms": 1788105600000,
+        "onsets": 3,
+        "median_net_15m": 0.009496414656287455
+      },
+      {
+        "block_start_ms": 1788107400000,
+        "onsets": 2,
+        "median_net_15m": 0.0021807767175614284
+      },
+      {
+        "block_start_ms": 1788109200000,
+        "onsets": 1,
+        "median_net_15m": 0.00291585926365332
+      }
+    ],
+    "any_unknown": false,
+    "any_false": true
+  },
+  "truth": {
+    "status": "falsified",
+    "rule": "fast-screen-pass iff every sample condition and gate is observed true; falsified if sample conditions pass and any gate is false; inconclusive if a sample condition is unmet or required alignment is unavailable",
+    "reason": "sample conditions met and at least one gate observed false",
+    "no_claim": "fast screens cannot establish durable alpha, replace prospective confirmation, or authorize capital deployment; no returns or deployment promotion is implied"
+  },
+  "boundaries": {
+    "no_orders_or_account_access": true,
+    "no_credentials": true,
+    "raw_capture_untouched": true,
+    "persistent_collectors_not_restarted": true,
+    "oi_not_imputed": true,
+    "prediction_of_this_run_used_for_sampling_extension": false
+  }
+}

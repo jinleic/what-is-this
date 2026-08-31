@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-31T08:27:03Z",
+  "status": "independent-review-not-cleared; structurally-underpowered-inconclusive",
+  "classification": "post-outcome design and provenance audit; not a new trial",
+  "review": {
+    "reviewer": "independent code-reviewer ReplicationReview",
+    "verdict": "not-cleared",
+    "scope": "Replication runner, tests, contract, snapshot manifest, per-screen and combined outputs, both parent runners, and the parent contract.",
+    "high_confidence_findings": 4
+  },
+  "immutable_originals": {
+    "contract": {
+      "path": "quant-trading/explorations/accelerated-intraday-replication-contract.json",
+      "sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42"
+    },
+    "snapshot": {
+      "path": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
+      "sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0"
+    },
+    "runner": {
+      "path": "quant-trading/explorations/replicate_accelerated_intraday.py",
+      "sha256": "02b5d09aa89176e08a9f1b6ff78ef0fe8884a5e1d6d1b6333dba88fca727914c"
+    },
+    "combined_result": {
+      "path": "quant-trading/explorations/accelerated-intraday-replication-results.json",
+      "sha256": "02da7cc9f66d23ea0de1e78de608dc5c11d637ee0bffd1ca627b3742c451630b"
+    },
+    "liquidation_result": {
+      "path": "quant-trading/explorations/focused-liquidation-overlay/replication_20260831_results.json",
+      "sha256": "ed0002eb0ad7e3241c7be94d7af3bf29faf1491ad72f4227d95ed0bbc2d2f120"
+    },
+    "deribit_result": {
+      "path": "quant-trading/explorations/focused-deribit-gex/replication_20260831_results.json",
+      "sha256": "036af8c84ad001abcb502871be537968daca6ac4fc5b77a8d5c6451121ea2677"
+    }
+  },
+  "findings": {
+    "structural_feasibility": {
+      "severity": "critical",
+      "window_utc": "[2026-08-31T00:00:00Z, 2026-08-31T01:30:00Z)",
+      "block_minutes": 15,
+      "window_blocks": 6,
+      "liquidation_max_complete_onset_blocks": 5,
+      "liquidation_required_complete_onset_blocks": 6,
+      "deribit_max_complete_asset_block_transitions": 10,
+      "deribit_required_complete_asset_block_transitions": 12,
+      "minimum_aligned_window_minutes_for_reachability": 105,
+      "conclusion": "Both sample stops were mathematically unreachable before any data were read. The trial could only resolve inconclusive, so it did not provide the claimed falsification opportunity. All displayed gates are descriptive only."
+    },
+    "common_cutoff_enforcement": {
+      "severity": "important",
+      "finding": "The runner did not enforce the contract-required per-stream common cutoff before metric code.",
+      "effect_on_existing_numbers": "A reconstruction from the same frozen prefixes establishes coverage past the exclusive end for every required stream, so this omitted check does not invalidate the displayed numeric metrics for this window.",
+      "reconstructed_coverage": {
+        "liquidation_force_order": {
+          "latest_ms": 1788163296416,
+          "latest_utc": "2026-08-31T08:01:36.416Z",
+          "first_at_or_after_end_ms": 1788139803869,
+          "first_at_or_after_end_utc": "2026-08-31T01:30:03.869Z",
+          "covers_end": true
+        },
+        "deribit_option_trade": {
+          "latest_ms": 1788163320814,
+          "latest_utc": "2026-08-31T08:02:00.814Z",
+          "first_at_or_after_end_ms": 1788139816572,
+          "first_at_or_after_end_utc": "2026-08-31T01:30:16.572Z",
+          "covers_end": true
+        },
+        "btc_usd_index": {
+          "latest_ms": 1788163321552,
+          "latest_utc": "2026-08-31T08:02:01.552Z",
+          "first_at_or_after_end_ms": 1788139800716,
+          "first_at_or_after_end_utc": "2026-08-31T01:30:00.716Z",
+          "covers_end": true
+        },
+        "eth_usd_index": {
+          "latest_ms": 1788163321145,
+          "latest_utc": "2026-08-31T08:02:01.145Z",
+          "first_at_or_after_end_ms": 1788139800496,
+          "first_at_or_after_end_utc": "2026-08-31T01:30:00.496Z",
+          "covers_end": true
+        }
+      }
+    },
+    "liquidation_alignment_provenance": {
+      "severity": "important",
+      "finding": "The result reported 8 eligible onsets and a 6-onset complete cohort but omitted the two parent-required incomplete-alignment records.",
+      "incomplete_alignment_counts": {
+        "initial": 0,
+        "horizon_1m": 0,
+        "horizon_5m": 0,
+        "horizon_15m": 2
+      },
+      "incomplete_onsets": [
+        {
+          "event_id": "7174d3c524efcf884514c7890ce5928c",
+          "symbol": "ETHUSDT",
+          "side": "BUY",
+          "onset_ms": 1788139194288,
+          "onset_utc": "2026-08-31T01:19:54.288Z",
+          "alignments": {
+            "P_0": {"observed_ts_ms": 1788139193935, "price": 2420.25},
+            "P_1m": {"target_ms": 1788139254288, "observed_ts_ms": 1788139254440, "price": 2420.28},
+            "P_5m": {"target_ms": 1788139494288, "observed_ts_ms": 1788139495259, "price": 2421.72},
+            "P_15m": {"target_ms": 1788140094288, "observed": null, "missing": "beyond_common_cutoff"}
+          }
+        },
+        {
+          "event_id": "bd1d6eb8cd632034c1f88abd36ba08e9",
+          "symbol": "BTCUSDT",
+          "side": "BUY",
+          "onset_ms": 1788139202562,
+          "onset_utc": "2026-08-31T01:20:02.562Z",
+          "alignments": {
+            "P_0": {"observed_ts_ms": 1788139202087, "price": 77774.89},
+            "P_1m": {"target_ms": 1788139262562, "observed_ts_ms": 1788139262696, "price": 77769.0},
+            "P_5m": {"target_ms": 1788139502562, "observed_ts_ms": 1788139503511, "price": 77825.95},
+            "P_15m": {"target_ms": 1788140102562, "observed": null, "missing": "beyond_common_cutoff"}
+          }
+        }
+      ]
+    },
+    "instrument_timestamp_provenance": {
+      "severity": "important",
+      "finding": "The original snapshot's instrument first/latest authoritative timestamps are received_ts_ms values, not exchange-authored instrument.creation_timestamp values.",
+      "corrected_files": [
+        {
+          "path": "quant-trading/data/raw/focused/live/deribit/day20260830/instruments.jsonl",
+          "prefix_bytes": 90671288,
+          "sha256": "4005d155b58a7d712e661334e5863492252a075213553047929d29021e0708ca",
+          "exchange_clock": {"field": "instrument.creation_timestamp", "first_ms": 1758787212000, "first_utc": "2025-09-25T08:00:12.000Z", "latest_ms": 1788091620000, "latest_utc": "2026-08-30T12:07:00.000Z"},
+          "capture_availability_clock": {"field": "received_ts_ms", "first_ms": 1788090430613, "first_utc": "2026-08-30T11:47:10.613Z", "latest_ms": 1788094779681, "latest_utc": "2026-08-30T12:59:39.681Z"}
+        },
+        {
+          "path": "quant-trading/data/raw/focused/live/deribit/day20260831/instruments.jsonl",
+          "prefix_bytes": 1955530,
+          "sha256": "c0d3fc8a68f712e80fae4953fddb53426c544b7b487796b4658cc6cefbd20be7",
+          "exchange_clock": {"field": "instrument.creation_timestamp", "first_ms": 1758787212000, "first_utc": "2025-09-25T08:00:12.000Z", "latest_ms": 1788147000000, "latest_utc": "2026-08-31T03:30:00.000Z"},
+          "capture_availability_clock": {"field": "received_ts_ms", "first_ms": 1788134401262, "first_utc": "2026-08-31T00:00:01.262Z", "latest_ms": 1788162222007, "latest_utc": "2026-08-31T07:43:42.007Z"}
+        }
+      ],
+      "policy_clarification": "instrument.creation_timestamp is exchange provenance; received_ts_ms is capture availability and remains the correct no-lookahead cutoff for metadata context."
+    }
+  },
+  "decision": {
+    "original_artifacts_preserved": true,
+    "original_numeric_metrics_mechanically_consistent": true,
+    "original_trial_counts_as_falsification_opportunity": false,
+    "original_trial_can_promote_or_reverse_any_strategy": false,
+    "required_next_action": "Freeze one outcome-blind, nonoverlapping, aligned window of at least 105 minutes before inspecting its outcomes. Preserve every parent formula, asset, cost, sample minimum, gate, and UNKNOWN rule; disclose the duration correction and enforce feasibility, common-cutoff, alignment, and timestamp-provenance invariants before metric code."
+  }
+}

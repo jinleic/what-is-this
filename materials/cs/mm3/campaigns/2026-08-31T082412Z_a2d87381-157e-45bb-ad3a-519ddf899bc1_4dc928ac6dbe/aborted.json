@@ -1,0 +1,11 @@
+{
+  "status": "ABORTED_BEFORE_ANCHORS",
+  "timestamp_utc": "2026-08-31T08:25:56Z",
+  "source_sha256": "4dc928ac6dbe225ffc7a0b7406787574c9d4a27ced1642450ffac6f2bf669523",
+  "pre_statement_commit": "c7e29d1",
+  "failure": "TypeError: perminov58 META split is None; the startup anchor loop attempted to iterate it",
+  "completed_target_claims": [],
+  "new_population_counts_computed": false,
+  "record_flags_computed": false,
+  "resolution": "A new source hash and separately pre-registered campaign must handle the Perminov 58 anchor through its frozen JSON complexity field; this campaign is not resumed."
+}

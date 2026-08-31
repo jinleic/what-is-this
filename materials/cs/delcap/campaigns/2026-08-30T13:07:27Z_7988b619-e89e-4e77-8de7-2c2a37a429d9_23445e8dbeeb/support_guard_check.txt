@@ -1,0 +1,11 @@
+D'(y)=0 support-guard verification, q=2 n=10 d=1/20
+output alphabet nY = 2047
+min BA output mass = 9.765625e-14
+snap resolution 2^-40 = 9.094947e-13
+ratio (resolution / mass) = 9.313x coarser
+entries snapped to zero = 1
+of those REACHABLE (W(y|x)>0 for some x) = 1
+cert_dual on raw snap  = inf  (+inf means NO CLAIM, the safe branch)
+cert_dual on +1 bumped = 8.529977690111352
+cert_dual on uniform   = 9.672330910401481
+the row takes min over candidates, so a valid tight dual is used

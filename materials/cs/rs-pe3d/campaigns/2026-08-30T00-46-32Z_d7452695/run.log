@@ -1,0 +1,11 @@
+t=1,1,1 V_dim=22 candidates=55 supports={'1': 0, '2': 15, '3': 460}
+optimized 1/55 elapsed=0.539s
+optimized 51/55 elapsed=0.796s
+t=1,1,2 V_dim=24 candidates=55 supports={'1': 0, '2': 15, '3': 460}
+t=1,1,3 V_dim=26 candidates=295 supports={'1': 0, '2': 15, '3': 700}
+t=1,1,4 V_dim=28 candidates=1135 supports={'1': 0, '2': 135, '3': 4060}
+t=1,2,1 V_dim=26 candidates=75 supports={'1': 0, '2': 75, '3': 1900}
+t=1,2,2 V_dim=27 candidates=75 supports={'1': 0, '2': 75, '3': 1900}
+t=1,2,3 V_dim=28 candidates=2235 supports={'1': 0, '2': 75, '3': 4060}
+t=1,2,4 V_dim=29 candidates=435 supports={'1': 0, '2': 435, '3': 4060}
+witnesses=55 best={'ratio': '3/5', 'record_index': 6, 'weight': 3, 'delta': 5, 'global_scope': 'candidate-class upper bound; heavier/value-complement OPEN'}

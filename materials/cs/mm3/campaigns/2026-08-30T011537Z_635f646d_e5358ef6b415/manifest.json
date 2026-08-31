@@ -1,0 +1,37 @@
+{
+  "campaign": "Task 3 \u2014 predecessor ladder re-verification (60/59/58/56)",
+  "utc": "see dirname",
+  "agent": "Mm3",
+  "results": [
+    {
+      "scheme": "Stapleton-60 (arXiv:2508.03857)",
+      "verified": "729/729 Brent identities over Z from my own expansion of the printed Appendix-A scheme; 2000-trial randomized end-to-end PASS; ternary",
+      "count": "60 additions CONFIRMED by printed-structure recount (12 pre-gates + 20 inline operand assemblies + 9 v-gates + 19 C-assembly)",
+      "label": "MACHINE-VERIFIED [REPRODUCED]"
+    },
+    {
+      "scheme": "Martensson-Wagner-Stapleton-59 (arXiv:2601.05272)",
+      "verified": "Table 3 (the paper's own machine file format) satisfies 729/729 Brent identities over Z, ternary; ALSO my reconstruction of printed Table 2 verifies 729/729",
+      "count": "my plain-SLP recount of printed Table 2 = 57 vs paper's 59 \u2014 GAP of 2, unresolved: the paper states negation is 'avoided by rearranging terms', so the official count's schedule differs from the printed operand forms; Table 3 blocks verified as a decomposition, but their canonical scheduled cost needs their own toolchain (fmm_add_reduction), not run here",
+      "label": "MACHINE-VERIFIED (correctness) / OPEN (their 59 vs my 57 recount, flagged)"
+    },
+    {
+      "scheme": "Perminov-58 (arXiv:2512.21980)",
+      "verified": "gate A: cr58_cn122 JSON at commit 98ba522 passes his own loader validate() AND my independent Brent 729/729; tensor == the 55-paper's factors after the documented C-permutation",
+      "count": "his 'reduced: 58' is CSE accounting (nonzero-coeff count - 2m - n^2 accounting), not the three-stage split; the 55-paper reads it as 14/15/29=58",
+      "label": "MACHINE-VERIFIED [REPRODUCED] (correctness + provenance)"
+    },
+    {
+      "scheme": "Sun-56 (arXiv:2604.27645)",
+      "verified": "expanded from his shipped verify.py AND printed text: 729/729 over Z, ternary; his own verifier also passes end-to-end incl. GF(2)/GF(3)/noncommutative",
+      "count": "13/13/30 = 56 confirmed",
+      "label": "MACHINE-VERIFIED [REPRODUCED]"
+    }
+  ],
+  "ladder_verdict": "60/58/56 all double-confirmed; 59 correctness double-confirmed, its 59-count vs my 57 recount flagged OPEN pending their toolchain or clarifying correspondence",
+  "comparability": "all five rungs state the same model: additions+subtractions counted, negations free per SLP rearrangement, alphabet {-1,0,1}, 23 products counted separately \u2014 counts comparable",
+  "environment": {
+    "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O"
+  }
+}

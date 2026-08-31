@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
-"""what-is-this: passive progress tracker + static progress mirror.
+"""what-is-this: passive research progress tracker + static artifact mirror.
 
-Mirrors the math campaign workspace into the repo as a public progress
-mirror (no website hosting):
+Mirrors the workspace's mathematics, physics, theoretical-computer-science,
+and quantitative-trading research into this public repository:
 
-- one page per problem, quoting the project's README head and the newest
-  matching ``math/PROGRESS.md`` entry; both are rendered client-side
-  (markdown via marked.js, LaTeX via MathJax with math-span protection);
-- mirrors each project's core code and small artifacts (per-file size cap,
-  very large result dirs excluded);
-- incremental: a file is rewritten only when its content changed, and each
-  project keeps a "last change" timestamp that survives no-op runs, so a
-  publish is always a minimal diff;
-- private-keyword gate: words listed in a PRIVATE file that lives OUTSIDE
-  this repository must never appear in anything published.  Source files
-  containing them are withheld, rendered text is redacted, and the run
-  fails (non-zero exit) if any hit survives in the output tree.  The run
-  also refuses to start when the private list is missing (fail-closed).
+- one page per target, quoting the target README head and the newest matching
+  domain ``PROGRESS.md`` entry; both render client-side (Markdown + LaTeX);
+- one curated quantitative-trading page sourced from allowlisted status fields;
+- one copy of each domain's root README/results/progress documents;
+- each target's core code and small artifacts, subject to a per-file size cap
+  and explicit exclusions for raw, provisional, or third-party material;
+- incremental writes and stable per-target "last change" timestamps;
+- a fail-closed publication gate: private keywords live outside this repo,
+  high-confidence secret shapes are blocked, and unsafe source files are
+  withheld before anything can be published.
+
+Existing mathematics URLs remain unchanged.
 
 Usage: python3 tools/sync.py [--limit-kb N]
 """
@@ -32,12 +31,39 @@ from pathlib import Path
 
 # ---------------------------------------------------------------- topology
 TOOLS = Path(__file__).resolve()
-REPO = TOOLS.parents[1]                      # repos/what-is-this
-WORKSPACE = TOOLS.parents[3]                 # ~/jinleic-workspace
-MATH = WORKSPACE / "math"
-PROGRESS = MATH / "PROGRESS.md"
-LIMIT_KB = 5120                              # per-file cap (KB)
+REPO = TOOLS.parents[1]                          # repos/what-is-this
+WORKSPACE = TOOLS.parents[3]                     # ~/jinleic-workspace
+LIMIT_KB = 5120                                  # per-file cap (KB)
 PRIVATE_WORDS = WORKSPACE / ".sync-banned.txt"   # NEVER inside the repo
+
+DOMAINS = {
+    "math": dict(
+        name="Mathematics",
+        root=WORKSPACE / "math",
+        progress="PROGRESS.md",
+        shared_files=("README.md", "RESULTS.md", "PROGRESS.md"),
+    ),
+    "physics": dict(
+        name="Physics and quantum computing",
+        root=WORKSPACE / "physics",
+        progress="PROGRESS.md",
+        shared_files=("README.md", "RESULTS.md", "PROGRESS.md"),
+    ),
+    "cs": dict(
+        name="Theoretical computer science and information theory",
+        root=WORKSPACE / "cs",
+        progress="PROGRESS.md",
+        shared_files=("README.md", "RESULTS.md", "PROGRESS.md"),
+    ),
+    "quant-trading": dict(
+        name="Quantitative trading research",
+        root=WORKSPACE / "quant-trading",
+        progress=None,
+        shared_files=(),
+    ),
+}
+
+VERIFIED_TARGET_EXCLUDES = ("scratch", "campaigns-smoke")
 
 # ---------------------------------------------------------------- projects
 PROJECTS = [
@@ -95,7 +121,7 @@ PROJECTS = [
     dict(slug="kobon", name="Kobon triangle problem",
          dirname="kobon", session="019ff95f-d695-7000-b3d0-36dd86537081",
          keywords=("kobon", "KOBON", "K_gen", "triangle", "drat"),
-         anchor="KOBON (2026-08-21/22)",
+         anchor="KOBON",
          papers=("README.md", "report.md", "paper_capacity.md",
                  "paper_kobon_2026-08.md", "AUDIT.md",
                  "paper/kobon_broad_capacity.pdf", "paper/kobon_broad_capacity.tex",
@@ -132,6 +158,119 @@ PROJECTS = [
          keywords=("ccf", "Cordoba", "Córdoba", "tail_basis"),
          anchor="tail_basis",
          papers=("README.md",)),
+    # Physics targets. Quantum computing is owned here; there is no separate
+    # top-level quantum research directory.
+    dict(domain="physics", slug="qldpc-dec",
+         name="BB quantum-LDPC decoder reproduction",
+         dirname="qldpc-dec", session="",
+         keywords=("qldpc-dec", "beam search", "GARI", "BP+OSD"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES + ("_gateB_shard_cmd",),
+         papers=("README.md",)),
+    dict(domain="physics", slug="msd",
+         name="Zero-level CCZ reproduction",
+         dirname="msd", session="",
+         keywords=("msd", "zero-level CCZ", "magic-state"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="physics", slug="shadows",
+         name="Contractive-shadow exact census",
+         dirname="shadows", session="",
+         keywords=("shadows", "contractive-shadow", "Clifford"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="physics", slug="na-compiler",
+         name="Certified neutral-atom transport scheduling",
+         dirname="na-compiler", session="",
+         keywords=("na-compiler", "neutral-atom", "transport scheduling"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="physics", slug="fss-bb",
+         name="BB-code finite-size scaling",
+         dirname="fss-bb", session="",
+         keywords=("fss-bb", "finite-size scaling", "ν anomaly"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="physics", slug="qlops",
+         name="Fault-tolerant QLOPS arithmetic audit",
+         dirname="qlops", session="",
+         keywords=("qlops", "QLOPS", "resource-estimate"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+
+    # Theoretical computer science and information theory targets.
+    dict(domain="cs", slug="mceliece",
+         name='Classic McEliece hold-out "waterfall" dispute',
+         dirname="mceliece", session="",
+         keywords=("mceliece", "Goppa", "waterfall"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES
+                      + ("prim", "preserving_precious"),
+         papers=("README.md",)),
+    dict(domain="cs", slug="kg",
+         name="Grothendieck constant",
+         dirname="kg", session="",
+         keywords=("kg/", "Grothendieck", "K_G"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="cs", slug="omega",
+         name="Matrix multiplication exponent",
+         dirname="omega", session="",
+         keywords=("omega/", "matrix multiplication exponent", "ω"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="cs", slug="delcap",
+         name="Binary deletion-channel capacity",
+         dirname="delcap", session="",
+         keywords=("delcap", "deletion channel", "Blahut"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="cs", slug="oct-rank",
+         name="Real tensor rank of octonion multiplication",
+         dirname="oct-rank", session="",
+         keywords=("oct-rank", "octonion", "tensor rank"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="cs", slug="rs-pe3d",
+         name="Reed–Solomon three-dimensional product expansion",
+         dirname="rs-pe3d", session="",
+         keywords=("rs-pe3d", "product expansion", "Reed–Solomon"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+    dict(domain="cs", slug="mm3",
+         name="Additive complexity of rank-23 3×3 matrix multiplication",
+         dirname="mm3", session="",
+         keywords=("mm3", "rank-23", "55 additions"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
+
+    # Quantitative trading has one curated overview. Raw market data, return
+    # series, downloads, provisional outputs, and machine-local paths stay out.
+    dict(domain="quant-trading", slug="overview",
+         name="Quantitative trading research",
+         dirname=".", session="",
+         keywords=(), anchor=None, papers=(),
+         summary="quant-trading", single_page=True,
+         exclude_dirs=("data", "downloads", "output", "outputs", "artifacts",
+                       "analysis", "results", "scratch",
+                       "decomposition_output"),
+         exclude_paths=(
+             "workspace.json",
+             "explorations/accelerated-intraday-blinding-audit.json",
+         ),
+         include_exts=(".json", ".md", ".py"),
+         withhold_home_paths=True),
 ]
 
 HEADER_RE = re.compile(r"^(#{1,3})\s")
@@ -186,6 +325,51 @@ def write_if_changed(path: Path, text: str) -> bool:
     return True
 
 
+def project_domain(project: dict) -> str:
+    return project.get("domain", "math")
+
+
+def project_source(project: dict) -> Path:
+    return DOMAINS[project_domain(project)]["root"] / project["dirname"]
+
+
+def project_page(project: dict) -> str:
+    if "page" in project:
+        return project["page"]
+    domain = project_domain(project)
+    if project.get("single_page"):
+        return f"{domain}/index.html"
+    root = "problems" if domain == "math" else domain
+    return f"{root}/{project['slug']}.html"
+
+
+def project_material(project: dict) -> str:
+    if "material" in project:
+        return project["material"]
+    domain = project_domain(project)
+    if domain == "math":
+        return f"materials/{project['slug']}"
+    if project.get("single_page"):
+        return f"materials/{domain}"
+    return f"materials/{domain}/{project['slug']}"
+
+
+def project_manifest_key(project: dict) -> str:
+    domain = project_domain(project)
+    return project["slug"] if domain == "math" else f"{domain}/{project['slug']}"
+
+
+def project_source_label(project: dict) -> str:
+    domain = project_domain(project)
+    dirname = project["dirname"]
+    return domain if dirname == "." else f"{domain}/{dirname}"
+
+
+JUNK_DIRS = {"__pycache__", ".venv", "venv", ".git", "node_modules",
+             ".ipynb_checkpoints", ".pytest_cache", ".mypy_cache",
+             ".ruff_cache", "build", "dist", "egg-info"}
+JUNK_EXTS = {".pyc", ".pyo"}
+
 # ---------------------------------------------------------------- privacy
 def load_private_words() -> list[str]:
     """Words that must never be published.  Fail-closed."""
@@ -200,9 +384,33 @@ def load_private_words() -> list[str]:
     return words
 
 
+SENSITIVE_PATTERNS = (
+    re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
+    re.compile(rb"s[k]-[A-Za-z0-9_-]{20,}"),
+    re.compile(rb"g[h][pousr]_[A-Za-z0-9]{20,}"),
+    re.compile(rb"A[K]IA[0-9A-Z]{16}"),
+    re.compile(rb"https://hooks[.]slack[.]com/services/[A-Za-z0-9/_-]+"),
+)
+HOME_PATH_RE = re.compile(rb"/(?:Users|home)/[^/\s]+/")
+
+
 def private_hit(data: bytes, words: list[str]) -> bool:
     low = data.lower()
     return any(w.encode() in low for w in words)
+
+
+def sensitive_hit(data: bytes) -> bool:
+    return any(pattern.search(data) for pattern in SENSITIVE_PATTERNS)
+
+
+def publication_hit(data: bytes, words: list[str]) -> bool:
+    return private_hit(data, words) or sensitive_hit(data)
+
+
+def source_blocked(project: dict, data: bytes, words: list[str]) -> bool:
+    if publication_hit(data, words):
+        return True
+    return bool(project.get("withhold_home_paths") and HOME_PATH_RE.search(data))
 
 
 def redact(text: str, words: list[str]) -> str:
@@ -215,33 +423,47 @@ def final_gate(words: list[str]) -> int:
     """Scan everything that would be published; non-zero exit on any hit."""
     bad = []
     for f in REPO.rglob("*"):
-        if not f.is_file() or ".git" in f.parts:
+        relative = f.relative_to(REPO)
+        if not f.is_file():
             continue
-        if private_hit(f.read_bytes(), words):
-            bad.append(str(f.relative_to(REPO)))
+        if any(part in JUNK_DIRS for part in relative.parts[:-1]):
+            continue
+        if f.suffix.lower() in JUNK_EXTS:
+            continue
+        if publication_hit(f.read_bytes(), words):
+            bad.append(relative.as_posix())
     if bad:
-        print("PRIVATE-KEYWORD GATE FAILED — do not publish; offending files:")
+        print("PUBLICATION GATE FAILED — do not publish; offending files:")
         for b in bad:
             print("   ", b)
         return 1
-    print("private-keyword gate: clean")
+    print("publication gate: clean")
     return 0
 
 
 # ---------------------------------------------------------------- progress
-def newest_progress_block(project: dict) -> tuple[str, str]:
-    """Newest PROGRESS.md block for a project.
+def newest_progress_block(
+    project: dict,
+    progress: Path | None = None,
+) -> tuple[str, str]:
+    """Return the newest matching block from the project's domain ledger.
 
-    Precedence (PROGRESS.md is append-order newest-first, but campaigns
+    Precedence (each PROGRESS.md is append-order newest-first, but campaigns
     interleave, so pure keyword-first-match is unreliable):
       1. block containing the project's anchor regex (if set)
       2. block whose header line contains the slug (word-boundary)
       3. block whose body contains the slug as a path ("<slug>/")
       4. first block matching the keyword list
     """
-    if not PROGRESS.exists():
+    if progress is None:
+        domain = DOMAINS[project_domain(project)]
+        progress_name = domain["progress"]
+        if not progress_name:
+            return "", ""
+        progress = domain["root"] / progress_name
+    if not progress.exists():
         return "", ""
-    lines = PROGRESS.read_text(errors="replace").splitlines()
+    lines = progress.read_text(errors="replace").splitlines()
     blocks: list[tuple[int, str, list[str]]] = []
     start = header = None
     body: list[str] = []
@@ -261,12 +483,15 @@ def newest_progress_block(project: dict) -> tuple[str, str]:
     if anchor:
         for _, hdr, bd in blocks:
             text = "\n".join([hdr] + bd)
-            if len(text) >= 300 and re.search(anchor, text, re.I):
+            if len(text) >= 300 and re.search(re.escape(anchor), text, re.I):
                 return hdr, text[:6500]
     for _, hdr, bd in blocks:
         text = "\n".join([hdr] + bd)
         if (len(text) >= 300
-                and re.search(rf"(?<![a-z0-9]){slug}(?![a-z0-9])", hdr.lower())):
+                and re.search(
+                    rf"(?<![a-z0-9]){re.escape(slug)}(?![a-z0-9])",
+                    hdr.lower(),
+                )):
             return hdr, text[:6500]
     for _, hdr, bd in blocks:
         text = "\n".join([hdr] + bd)
@@ -280,53 +505,106 @@ def newest_progress_block(project: dict) -> tuple[str, str]:
     return "", ""
 
 
+def quant_trading_summary(words: list[str]) -> tuple[str, str, str]:
+    """Build an allowlisted public summary from the quant-trading registries."""
+    root = DOMAINS["quant-trading"]["root"]
+    workspace = json.loads((root / "workspace.json").read_text())
+    registry = json.loads(
+        (root / "explorations" / "strategy-registry.json").read_text()
+    )
+    summary = registry["summary"]
+    purpose = redact(str(workspace["purpose"]), words)
+    status = redact(str(workspace["status"]), words)
+    conclusion = redact(str(summary["final_conclusion"]), words)
+    updated = redact(str(registry["updated_at"]), words)
+    markdown = f"""# Quantitative trading research
+
+**Status (from `workspace.json`):** {status}
+
+{purpose}
+
+## Latest registered conclusion
+
+{conclusion}
+
+## Registered campaign counts
+
+- Independent wave-one directions: {summary["independent_wave_one_directions"]}
+- Wave-one selection trials: {summary["wave_one_selection_trials"]}
+- Initial validation passes: {summary["initial_validation_passes"]}
+- Final validated or deployable candidates: {summary["final_validated_or_deployable_candidates"]}
+- Focused directions: {summary["focused_directions"]}
+
+Registry updated: `{updated}`.
+
+Only allowlisted status fields are rendered here. Raw market data, CSV return
+series, active capture-process names, machine-local paths, and provisional
+output trees are not published.
+"""
+    return purpose, conclusion[:180], markdown
+
+
 # ---------------------------------------------------------------- mirror
-JUNK_DIRS = {"__pycache__", ".venv", "venv", ".git", "node_modules",
-             ".ipynb_checkpoints", ".pytest_cache", ".mypy_cache",
-             ".ruff_cache", "build", "dist", "egg-info"}
-JUNK_EXTS = {".pyc", ".pyo"}
 
 
-def collect_sources(project: dict) -> dict[str, Path]:
-    """rel-path -> source file.  Curated papers first, then the tree walk."""
-    src = MATH / project["dirname"]
+def collect_sources(
+    project: dict,
+    source: Path | None = None,
+) -> dict[str, Path]:
+    """Return public relative paths mapped to source files."""
+    src = source if source is not None else project_source(project)
     out: dict[str, Path] = {}
-    for rel in project["papers"]:
+    for rel in project.get("papers", ()):
         f = src / rel
         if not f.is_file():
             continue
         if f.stat().st_size > LIMIT_KB * 1024:
             print(f"  skip (>{LIMIT_KB}KB): {project['slug']}/{rel}")
             continue
-        out[rel] = f
-    exclude = set(project.get("exclude_dirs", ()))
-    if not src.is_dir():
+        out[Path(rel).as_posix()] = f
+    if not project.get("walk", True) or not src.is_dir():
         return out
+
+    exclude_dirs = set(project.get("exclude_dirs", ()))
+    exclude_paths = tuple(
+        Path(path).as_posix().strip("/")
+        for path in project.get("exclude_paths", ())
+    )
+    include_exts = {
+        suffix.lower() for suffix in project.get("include_exts", ())
+    }
     for f in sorted(src.rglob("*")):
         if not f.is_file():
             continue
         rel = f.relative_to(src)
-        if any(p in JUNK_DIRS or p in exclude for p in rel.parts[:-1]):
+        rel_text = rel.as_posix()
+        if any(p in JUNK_DIRS or p in exclude_dirs
+               for p in rel.parts[:-1]):
             continue
-        if f.suffix in JUNK_EXTS or f.name == ".DS_Store":
+        if any(rel_text == prefix or rel_text.startswith(prefix + "/")
+               for prefix in exclude_paths):
+            continue
+        if f.suffix.lower() in JUNK_EXTS or f.name == ".DS_Store":
+            continue
+        if include_exts and f.suffix.lower() not in include_exts:
             continue
         if f.stat().st_size > LIMIT_KB * 1024:
             continue
-        out.setdefault(str(rel), f)
+        out.setdefault(rel_text, f)
     return out
 
 
 def sync_materials(project: dict, words: list[str]) -> tuple[list[dict], dict]:
-    """Incrementally mirror one project; returns (files, stats)."""
-    dest = REPO / "materials" / project["slug"]
+    """Incrementally mirror one project; return file metadata and statistics."""
+    dest = REPO / project_material(project)
     dest.mkdir(parents=True, exist_ok=True)
     files: list[dict] = []
-    stats = dict(written=0, unchanged=0, pruned=0, private=0)
+    stats = dict(written=0, unchanged=0, pruned=0, withheld=0)
     kept: set[str] = set()
     for rel, srcf in collect_sources(project).items():
         data = srcf.read_bytes()
-        if private_hit(data, words):
-            stats["private"] += 1
+        if source_blocked(project, data, words):
+            stats["withheld"] += 1
             continue
         sha = hashlib.sha256(data).hexdigest()[:12]
         out = dest / rel
@@ -339,9 +617,9 @@ def sync_materials(project: dict, words: list[str]) -> tuple[list[dict], dict]:
             out.write_bytes(data)
             stats["written"] += 1
         files.append(dict(path=rel, size=len(data), sha256=sha))
-    # prune anything that no longer belongs to the mirror set
+    # Prune files that no longer belong to this project's public mirror.
     for f in sorted(dest.rglob("*")):
-        if f.is_file() and str(f.relative_to(dest)) not in kept:
+        if f.is_file() and f.relative_to(dest).as_posix() not in kept:
             f.unlink()
             stats["pruned"] += 1
     for d in sorted((p for p in dest.rglob("*") if p.is_dir()), reverse=True):
@@ -412,8 +690,10 @@ window.MathJax = {
   }
   document.addEventListener('DOMContentLoaded', function () {
     function rewriteLinks(el) {
-      var base = (window.__LINKS__ || {})[el.id];
-      if (!base) return;
+      var config = (window.__LINKS__ || {})[el.id];
+      if (!config) return;
+      var base = typeof config === 'string' ? config : config.base;
+      var root = typeof config === 'string' ? null : config.root;
       var nodes = el.querySelectorAll('a[href], img[src]');
       for (var i = 0; i < nodes.length; i++) {
         var n = nodes[i];
@@ -421,7 +701,9 @@ window.MathJax = {
         var h = n.getAttribute(attr);
         if (!h) continue;
         if (/^(?:https?:|mailto:|tel:|#|\\/\\/|\\/)/i.test(h)) continue;
-        n.setAttribute(attr, base + h);
+        var prefix = root && /^(?:\\.\\/)?(?:README|RESULTS|PROGRESS)\\.md(?:[#?].*)?$/i.test(h)
+          ? root : base;
+        n.setAttribute(attr, prefix + h);
       }
     }
     var blobs = window.__MD__ || {};
@@ -449,10 +731,10 @@ window.MathJax = {
 
 
 def page(title: str, body: str, md_map: dict[str, str], depth: int = 0,
-         links: dict[str, str] | None = None) -> str:
+         links: dict[str, object] | None = None) -> str:
     md_json = json.dumps(md_map, ensure_ascii=False).replace("<", "\\u003c")
     lk_json = json.dumps(links or {}, ensure_ascii=False)
-    home = "../index.html" if depth else "index.html"
+    home = "../" * depth + "index.html"
     back = f'<p><a href="{home}">&larr; index</a></p>' if depth else ""
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -464,117 +746,211 @@ def page(title: str, body: str, md_map: dict[str, str], depth: int = 0,
 {body}
 <script>window.__MD__ = {md_json};</script>
 <script>window.__LINKS__ = {lk_json};</script>
-<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+<hr><p class="tag">Auto-generated by tools/sync.py · public research mirror</p>
 </body></html>"""
 
 
-def build_problem(e: dict) -> tuple[str, dict[str, str]]:
-    mat = f"../materials/{e['slug']}/"
+def build_problem(
+    e: dict,
+) -> tuple[str, dict[str, str], dict[str, object]]:
+    mat = f"../{e['material']}/"
     groups: dict[str, list[dict]] = {}
     for f in e["files"]:
         top = f["path"].split("/", 1)[0] if "/" in f["path"] else "(root)"
         groups.setdefault(top, []).append(f)
     parts = []
-    for g in sorted(groups, key=lambda k: (k != "(root)", k.lower())):
-        fs = groups[g]
-        mb = sum(x["size"] for x in fs) / 1e6
-        lis = "".join(
-            f'<li><a href="{mat}{esc(x["path"])}">{esc(x["path"])}</a>'
-            f' <span class="fsize">{max(x["size"] // 1024, 1)} KB</span></li>'
-            for x in fs)
-        label = "project root" if g == "(root)" else g + "/"
-        op = " open" if g == "(root)" else ""
-        parts.append(f'<details{op}><summary><code>{esc(label)}</code>'
-                     f' — {len(fs)} files, {mb:.1f} MB</summary>'
-                     f'<ul class="files">{lis}</ul></details>')
+    for group in sorted(groups, key=lambda key: (key != "(root)", key.lower())):
+        files = groups[group]
+        mb = sum(item["size"] for item in files) / 1e6
+        items = "".join(
+            f'<li><a href="{mat}{esc(item["path"])}">{esc(item["path"])}</a>'
+            f' <span class="fsize">{max(item["size"] // 1024, 1)} KB</span></li>'
+            for item in files
+        )
+        label = "project root" if group == "(root)" else group + "/"
+        opened = " open" if group == "(root)" else ""
+        parts.append(
+            f'<details{opened}><summary><code>{esc(label)}</code>'
+            f' — {len(files)} files, {mb:.1f} MB</summary>'
+            f'<ul class="files">{items}</ul></details>'
+        )
     files_html = "\n".join(parts) or '<p class="tip">No artifacts copied.</p>'
+
+    domain = e["domain"]
+    domain_config = DOMAINS[domain]
+    shared_links = " · ".join(
+        f'<a href="../materials/domains/{esc(domain)}/{esc(name)}">'
+        f"<code>{esc(name)}</code></a>"
+        for name in e["shared_files"]
+    )
+    shared_html = (
+        f'<p class="tag">Domain documents: {shared_links}</p>'
+        if shared_links else ""
+    )
 
     md_map: dict[str, str] = {}
     if e["progress"]:
         md_map["md-progress"] = e["progress"]
-        prog = ('<h2>Latest progress</h2><p class="tag">newest matching entry, '
-                'quoted from <code>math/PROGRESS.md</code></p>'
-                '<div class="markdown-body" id="md-progress"></div>')
+        prog = (
+            '<h2>Latest progress</h2><p class="tag">newest matching entry, '
+            f'quoted from <code>{esc(domain)}/PROGRESS.md</code></p>'
+            '<div class="markdown-body" id="md-progress"></div>'
+        )
+    elif domain_config["progress"]:
+        prog = '<p class="tip">No PROGRESS.md entry matched this target.</p>'
     else:
-        prog = '<p class="tip">No PROGRESS.md entry matched this project.</p>'
+        prog = ""
     if e["readme_head"]:
         md_map["md-readme"] = e["readme_head"]
-        readme = ('<h2>Project README</h2><p class="tag">first lines, verbatim</p>'
-                  '<div class="markdown-body" id="md-readme"></div>')
+        if e.get("summary"):
+            heading = "Research status"
+            note = "allowlisted fields from the canonical JSON registries"
+        else:
+            heading = "Target README"
+            note = "first lines, verbatim"
+        readme = (
+            f"<h2>{heading}</h2><p class=\"tag\">{note}</p>"
+            '<div class="markdown-body" id="md-readme"></div>'
+        )
     else:
         readme = ""
+    session = (
+        f' · session <code>{esc(e["session"])}</code>'
+        if e["session"] else ""
+    )
     body = f"""<h1>{esc(e['name'])}</h1>
-<p class="tag">source <code>math/{esc(e['dirname'])}</code> ·
-session <code>{esc(e['session'])}</code> ·
+<p class="tag">source <code>{esc(e['source'])}</code>{session} ·
 last change {esc(e['updated'])}</p>
+{shared_html}
 {prog}
 {readme}
 <h2>Code &amp; artifacts</h2>
-<p class="tag">mirrored from the project tree; very large result files and campaign data excluded</p>
+<p class="tag">mirrored from the source tree; oversized, raw, provisional,
+third-party, and publication-gated files are excluded</p>
 {files_html}"""
+    progress_material = (
+        "../materials/" if domain == "math"
+        else f"../materials/{domain}/"
+    )
     return body, md_map, {
-        "md-progress": "../materials/",      # PROGRESS.md lives at math/ root
-        "md-readme": f"../materials/{e['slug']}/",
+        "md-progress": {
+            "base": progress_material,
+            "root": f"../materials/domains/{domain}/",
+        },
+        "md-readme": mat,
     }
 
 
-def build_index(entries: list[dict], session_md: str) -> tuple[str, dict[str, str]]:
-    rows = []
-    for e in entries:
-        rows.append(
-            "<tr>"
-            f'<td><a href="{e["page"]}">{esc(e["name"])}</a></td>'
-            f'<td><code>{esc(e["dirname"])}</code></td>'
-            f'<td>{esc(e["updated"][:10])}</td>'
-            f'<td>{esc(strip_md(e["headline"]))}</td>'
-            f'<td>{len(e["files"])}</td>'
-            "</tr>")
-    table = "\n".join(rows)
-    body = f"""<h1>what-is-this — math campaign progress tracker</h1>
-<p class="tag">Public mirror of the research campaigns under
-<code>~/jinleic-workspace/math</code>. One page per problem: the project's
-README head and the newest matching <code>math/PROGRESS.md</code> entry,
-quoted verbatim and rendered (markdown + LaTeX), plus a mirror of the
-project's core code and small artifacts. Very large result data stays in the
-workspace. Incremental: pages and files are rewritten only when content
-changes.</p>
+def build_index(
+    entries: list[dict],
+    session_md: str,
+    shared_files: dict[str, list[str]],
+) -> tuple[str, dict[str, str], dict[str, str]]:
+    sections = []
+    for domain, config in DOMAINS.items():
+        domain_entries = sorted(
+            (entry for entry in entries if entry["domain"] == domain),
+            key=lambda entry: entry["name"].lower(),
+        )
+        if not domain_entries:
+            continue
+        rows = []
+        for entry in domain_entries:
+            rows.append(
+                "<tr>"
+                f'<td><a href="{entry["page"]}">{esc(entry["name"])}</a></td>'
+                f'<td><code>{esc(entry["source"])}</code></td>'
+                f'<td>{esc(entry["updated"][:10])}</td>'
+                f'<td>{esc(strip_md(entry["headline"]))}</td>'
+                f'<td>{len(entry["files"])}</td>'
+                "</tr>"
+            )
+        links = " · ".join(
+            f'<a href="materials/domains/{esc(domain)}/{esc(name)}">'
+            f"<code>{esc(name)}</code></a>"
+            for name in shared_files.get(domain, [])
+        )
+        root_docs = f'<p class="tag">Root documents: {links}</p>' if links else ""
+        sections.append(
+            f"<h2>{esc(config['name'])}</h2>"
+            f"<p class=\"tag\">source <code>~/jinleic-workspace/{esc(domain)}</code></p>"
+            f"{root_docs}"
+            "<table>"
+            "<tr><th>Target</th><th>source</th><th>last change</th>"
+            "<th>latest headline</th><th>files</th></tr>"
+            f"{''.join(rows)}"
+            "</table>"
+        )
+    body = f"""<h1>what-is-this — research progress tracker</h1>
+<p class="tag">Public mirror of the tracked research under
+<code>math/</code>, <code>physics/</code>, <code>cs/</code>, and
+<code>quant-trading/</code>. Target pages quote their README and newest matching
+domain progress entry, then link core code and small result artifacts. Raw data,
+provisional trees, oversized files, and publication-gated content stay private.
+Writes are incremental.</p>
+<p class="tip">There is no separate <code>quantum/</code> source tree.
+Quantum-computing targets live under <code>physics/</code>; algebraic quantum
+LDPC work also lives at <code>math/qec/</code>.</p>
 
-<table>
-<tr><th>Problem</th><th>dir</th><th>last change</th><th>latest headline</th><th>files</th></tr>
-{table}
-</table>
+{''.join(sections)}
 
 <h2>How to update</h2>
 <pre>cd ~/jinleic-workspace/repos/what-is-this
-python3 tools/sync.py        # incremental; fails closed on the private-keyword gate
+python3 tools/sync.py        # incremental; fails closed on the publication gate
 git add -A && git commit -m "sync $(date -u +%F)" && git push</pre>
 
-<h2>Sessions</h2>
+<h2>Recorded mathematics sessions</h2>
 <div class="markdown-body" id="md-sessions"></div>"""
     return body, {"md-sessions": session_md}, {"md-sessions": ""}
 
 
-def build_readme(entries: list[dict]) -> str:
-    rows = []
-    for e in entries:
-        h = strip_md(e["headline"]).replace("|", "\\|")
-        rows.append(f"| [{e['name']}](problems/{e['slug']}.html) "
-                    f"| `{e['dirname']}` | {e['updated'][:10]} | {h} |")
-    nl = "\n"
-    return f"""# what-is-this — math campaign progress tracker
+def build_readme(
+    entries: list[dict],
+    shared_files: dict[str, list[str]],
+) -> str:
+    sections = []
+    for domain, config in DOMAINS.items():
+        domain_entries = sorted(
+            (entry for entry in entries if entry["domain"] == domain),
+            key=lambda entry: entry["name"].lower(),
+        )
+        if not domain_entries:
+            continue
+        rows = []
+        for entry in domain_entries:
+            headline = strip_md(entry["headline"]).replace("|", "\\|")
+            rows.append(
+                f"| [{entry['name']}]({entry['page']}) "
+                f"| `{entry['source']}` | {entry['updated'][:10]} | {headline} |"
+            )
+        root_links = ", ".join(
+            f"[`{name}`](materials/domains/{domain}/{name})"
+            for name in shared_files.get(domain, [])
+        )
+        root_line = f"\nRoot documents: {root_links}.\n" if root_links else ""
+        sections.append(
+            f"## {config['name']}\n\n"
+            f"Source: `~/jinleic-workspace/{domain}`.\n"
+            f"{root_line}\n"
+            "| Target | source | last change | latest headline |\n"
+            "|---|---|---|---|\n"
+            + "\n".join(rows)
+        )
+    sections_text = "\n\n".join(sections)
+    return f"""# what-is-this — research progress tracker
 
-Public progress tracker for the research campaigns under `~/jinleic-workspace/math`.
-Regenerated by `tools/sync.py` (passive: quotes each project's own README and the
-newest `math/PROGRESS.md` entry verbatim; mirrors core code + small artifacts,
-never multi-GB campaign data or single files over the size cap; incremental —
-only changed files are rewritten; private-keyword gate blocks publishing when
-any word from a private, out-of-repo list appears in the output).
+Public progress tracker for research under `math/`, `physics/`, `cs/`, and
+`quant-trading/`. Quantum-computing targets are under `physics/`; algebraic
+quantum LDPC work is also under `math/qec/`. There is no separate top-level
+`quantum/` source directory.
 
-## Problems
+Regenerated by `tools/sync.py`: target README and progress excerpts, domain root
+results/progress documents, core code, and small artifacts. Raw data,
+provisional or third-party trees, oversized files, private keywords, and
+high-confidence secret shapes are excluded. The quantitative-trading mirror
+also withholds machine-local paths. Writes are incremental.
 
-| Problem | dir | last change | latest headline |
-|---|---|---|---|
-{nl.join(rows)}
+{sections_text}
 
 ## Update
 
@@ -584,8 +960,9 @@ git add -A && git commit -m "sync $(date -u +%F)"
 git push
 ```
 
-See `session-map.md` for the session → project map and `tools/sync.py` for the
-mirror rules (per-file size cap, excluded result dirs, private-keyword gate).
+`session-map.md` records the existing mathematics session mapping.
+`tools/sync.py` is the source of truth for mirror paths, size caps, exclusions,
+and the fail-closed publication gate.
 """
 
 
@@ -630,66 +1007,184 @@ def main() -> int:
         except Exception:
             prev = {}
     prev_projects = prev.get("projects", {})
+    prev_domains = prev.get("domains", {})
 
-    entries: list[dict] = []
     total_bytes = 0
     pages_rewritten = 0
-    for p in PROJECTS:
-        slug = p["slug"]
-        readme_path = MATH / p["dirname"] / "README.md"
-        readme_head = redact(read_head(readme_path), words)
-        tagline = redact(readme_tagline(readme_path), words)
-        header, block = newest_progress_block(p)
-        header = redact(header, words)
-        block = redact(block, words)
-        files, st = sync_materials(p, words)
-        total_bytes += sum(f["size"] for f in files)
-        m = re.search(r"(?m)^#{1,3}\s+.*$", block)
-        headline = (m.group(0) if m else first_line_nonempty(block))[:180]
+    shared_files: dict[str, list[str]] = {}
+    domain_manifest: dict[str, dict] = {}
+    for domain, config in DOMAINS.items():
+        names = config["shared_files"]
+        if not names:
+            shared_files[domain] = []
+            continue
+        mirror = dict(
+            domain=domain,
+            slug="_domain",
+            dirname=".",
+            papers=names,
+            walk=False,
+            material=f"materials/domains/{domain}",
+        )
+        files, stats = sync_materials(mirror, words)
+        shared_files[domain] = [item["path"] for item in files]
+        byte_count = sum(item["size"] for item in files)
+        total_bytes += byte_count
+        sig = hashlib.sha256(
+            json.dumps(files, sort_keys=True).encode()
+        ).hexdigest()[:16]
+        previous = prev_domains.get(domain, {})
+        updated = (
+            previous.get("updated", ts)
+            if previous.get("sig") == sig else ts
+        )
+        domain_manifest[domain] = dict(
+            updated=updated,
+            sig=sig,
+            bytes=byte_count,
+            files=files,
+        )
+        print(
+            f"{domain + '/_domain':24s} files={len(files)} "
+            f"({byte_count / 1e6:.1f} MB): "
+            f"{stats['written']} written, {stats['unchanged']} unchanged, "
+            f"{stats['pruned']} pruned, {stats['withheld']} withheld"
+        )
+
+    entries: list[dict] = []
+    for project in PROJECTS:
+        domain = project_domain(project)
+        source = project_source(project)
+        if project.get("summary") == "quant-trading":
+            tagline, headline, readme_head = quant_trading_summary(words)
+            header = block = ""
+        else:
+            readme_path = source / "README.md"
+            readme_head = redact(read_head(readme_path), words)
+            tagline = redact(readme_tagline(readme_path), words)
+            header, block = newest_progress_block(project)
+            header = redact(header, words)
+            block = redact(block, words)
+            match = re.search(r"(?m)^#{1,3}\s+.*$", block)
+            headline = (
+                match.group(0) if match else first_line_nonempty(block)
+            )[:180]
+            if not headline:
+                headline = strip_md(tagline)[:180]
+
+        files, stats = sync_materials(project, words)
+        byte_count = sum(item["size"] for item in files)
+        total_bytes += byte_count
         sig = hashlib.sha256(
             (block + "\x00" + readme_head + "\x00"
-             + json.dumps(files, sort_keys=True)).encode()).hexdigest()[:16]
-        pv = prev_projects.get(slug, {})
-        updated = pv.get("updated", ts) if pv.get("sig") == sig else ts
-        e = dict(slug=slug, name=p["name"], dirname=p["dirname"],
-                 session=p["session"], tagline=tagline, headline=headline,
-                 progress_header=header, progress=block,
-                 readme_head=readme_head, files=files,
-                 updated=updated, sig=sig, page=f"problems/{slug}.html")
-        entries.append(e)
-        body, md_map, links = build_problem(e)
-        if write_if_changed(REPO / "problems" / f"{slug}.html",
-                            page(p["name"], body, md_map, depth=1, links=links)):
+             + json.dumps(files, sort_keys=True)).encode()
+        ).hexdigest()[:16]
+        key = project_manifest_key(project)
+        previous = prev_projects.get(key, {})
+        updated = (
+            previous.get("updated", ts)
+            if previous.get("sig") == sig else ts
+        )
+        entry = dict(
+            id=key,
+            slug=project["slug"],
+            domain=domain,
+            name=project["name"],
+            dirname=project["dirname"],
+            source=project_source_label(project),
+            material=project_material(project),
+            session=project.get("session", ""),
+            summary=project.get("summary"),
+            tagline=tagline,
+            headline=headline,
+            progress_header=header,
+            progress=block,
+            readme_head=readme_head,
+            files=files,
+            shared_files=shared_files.get(domain, []),
+            updated=updated,
+            sig=sig,
+            page=project_page(project),
+        )
+        entries.append(entry)
+        body, md_map, links = build_problem(entry)
+        page_path = REPO / entry["page"]
+        depth = len(page_path.relative_to(REPO).parent.parts)
+        if write_if_changed(
+            page_path,
+            page(project["name"], body, md_map, depth=depth, links=links),
+        ):
             pages_rewritten += 1
-        print(f"{slug:8s} {headline[:100] or '(no entry)'}")
-        print(f"{'':8s} files={len(files)} "
-              f"({sum(f['size'] for f in files)/1e6:.1f} MB): "
-              f"{st['written']} written, {st['unchanged']} unchanged, "
-              f"{st['pruned']} pruned, {st['private']} withheld (private)")
+        print(f"{key:24s} {headline[:100] or '(no entry)'}")
+        print(
+            f"{'':24s} files={len(files)} ({byte_count / 1e6:.1f} MB): "
+            f"{stats['written']} written, {stats['unchanged']} unchanged, "
+            f"{stats['pruned']} pruned, {stats['withheld']} withheld"
+        )
 
-    entries_sorted = sorted(entries, key=lambda e: e["name"].lower())
+    domain_rank = {name: rank for rank, name in enumerate(DOMAINS)}
+    entries_sorted = sorted(
+        entries,
+        key=lambda entry: (
+            domain_rank[entry["domain"]],
+            entry["name"].lower(),
+        ),
+    )
     session_md = build_session_map()
     write_if_changed(REPO / "session-map.md", session_md)
-    write_if_changed(REPO / "README.md", build_readme(entries_sorted))
-    idx_body, idx_md, idx_links = build_index(entries_sorted, session_md)
-    if write_if_changed(REPO / "index.html",
-                        page("what-is-this — math campaign progress tracker",
-                             idx_body, idx_md, depth=0, links=idx_links)):
+    write_if_changed(
+        REPO / "README.md",
+        build_readme(entries_sorted, shared_files),
+    )
+    idx_body, idx_md, idx_links = build_index(
+        entries_sorted,
+        session_md,
+        shared_files,
+    )
+    if write_if_changed(
+        REPO / "index.html",
+        page(
+            "what-is-this — research progress tracker",
+            idx_body,
+            idx_md,
+            depth=0,
+            links=idx_links,
+        ),
+    ):
         pages_rewritten += 1
 
+    update_times = [entry["updated"] for entry in entries]
+    update_times.extend(
+        domain["updated"] for domain in domain_manifest.values()
+    )
     manifest = dict(
-        updated=max((e["updated"] for e in entries), default=ts),
+        updated=max(update_times, default=ts),
         limit_kb=LIMIT_KB,
-        projects={e["slug"]: dict(updated=e["updated"], sig=e["sig"],
-                                  headline=e["headline"],
-                                  progress_header=e["progress_header"],
-                                  bytes=sum(f["size"] for f in e["files"]),
-                                  files=e["files"]) for e in entries})
-    write_if_changed(sj, json.dumps(manifest, indent=1, sort_keys=True,
-                                    ensure_ascii=False))
+        domains=domain_manifest,
+        projects={
+            entry["id"]: dict(
+                domain=entry["domain"],
+                updated=entry["updated"],
+                sig=entry["sig"],
+                page=entry["page"],
+                material=entry["material"],
+                headline=entry["headline"],
+                progress_header=entry["progress_header"],
+                bytes=sum(item["size"] for item in entry["files"]),
+                files=entry["files"],
+            )
+            for entry in entries
+        },
+    )
+    write_if_changed(
+        sj,
+        json.dumps(manifest, indent=1, sort_keys=True, ensure_ascii=False),
+    )
 
-    print(f"\ntotal mirrored: {total_bytes/1e6:.1f} MB; "
-          f"pages rewritten this run: {pages_rewritten}")
+    print(
+        f"\ntotal mirrored: {total_bytes / 1e6:.1f} MB; "
+        f"pages rewritten this run: {pages_rewritten}"
+    )
     rc = final_gate(words)
     if rc == 0:
         print("clean — sync with: git add -A && git commit && git push")

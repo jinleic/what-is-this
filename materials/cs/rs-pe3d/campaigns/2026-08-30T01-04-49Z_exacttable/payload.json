@@ -1,0 +1,341 @@
+{
+  "campaign": "2026-08-30T01-04-49Z_exacttable",
+  "code_sha256": "26a3725b634de9ca25573a1a6b760f39412fe95a70f075e4ae6a92530502d582",
+  "evidence_label": "per-row; see rows[].evidence_label",
+  "highspy_version": "1.15.1",
+  "mip_verification": "each witness F_q verified; optimality retained only if attained within window",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "premise_failures_documented": [
+    "q^22 full-space enumeration was infeasible; window reduced to support weight <=3",
+    "derived unit equality: one-direction cost >= delta is false (scratch/anchor1_counterexample.json)"
+  ],
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "rows": [
+    {
+      "N": 16,
+      "V_dim": 13,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 0,
+        "2": 24,
+        "3": 0
+      },
+      "candidate_count_total": 24,
+      "delta": 4,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 13,
+      "ratio": "1/2",
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "seconds": 0.129,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 0,
+        "2": 24,
+        "3": 304
+      },
+      "supports_with_nonzero_V": 328,
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 2
+    },
+    {
+      "N": 16,
+      "V_dim": 14,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 0,
+        "2": 24,
+        "3": 256
+      },
+      "candidate_count_total": 280,
+      "delta": 8,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 13,
+      "ratio": "3/8",
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "seconds": 7.953,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 0,
+        "2": 24,
+        "3": 560
+      },
+      "supports_with_nonzero_V": 584,
+      "t": [
+        1,
+        1,
+        2
+      ],
+      "weight": 3
+    },
+    {
+      "N": 16,
+      "V_dim": 16,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 16,
+        "2": 0,
+        "3": 0
+      },
+      "candidate_count_total": 16,
+      "delta": 4,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 13,
+      "ratio": "1/4",
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "seconds": 6.402,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 16,
+        "2": 120,
+        "3": 560
+      },
+      "supports_with_nonzero_V": 696,
+      "t": [
+        1,
+        1,
+        4
+      ],
+      "weight": 1
+    },
+    {
+      "N": 30,
+      "V_dim": 22,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 0,
+        "2": 15,
+        "3": 40
+      },
+      "candidate_count_total": 55,
+      "delta": 5,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 31,
+      "ratio": "3/5",
+      "s": [
+        2,
+        3,
+        5
+      ],
+      "seconds": 0.861,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 0,
+        "2": 15,
+        "3": 460
+      },
+      "supports_with_nonzero_V": 475,
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3
+    },
+    {
+      "N": 60,
+      "V_dim": 42,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 0,
+        "2": 30,
+        "3": 80
+      },
+      "candidate_count_total": 110,
+      "delta": 5,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 31,
+      "ratio": "3/5",
+      "s": [
+        2,
+        3,
+        10
+      ],
+      "seconds": 17.506,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 0,
+        "2": 30,
+        "3": 1820
+      },
+      "supports_with_nonzero_V": 1850,
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3
+    },
+    {
+      "N": 60,
+      "V_dim": 40,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 0,
+        "2": 30,
+        "3": 0
+      },
+      "candidate_count_total": 30,
+      "delta": 2,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 31,
+      "ratio": "1/1",
+      "s": [
+        2,
+        6,
+        5
+      ],
+      "seconds": 15.893,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 0,
+        "2": 30,
+        "3": 1740
+      },
+      "supports_with_nonzero_V": 1770,
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 2
+    },
+    {
+      "N": 60,
+      "V_dim": 42,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 0,
+        "2": 30,
+        "3": 80
+      },
+      "candidate_count_total": 110,
+      "delta": 5,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 31,
+      "ratio": "3/5",
+      "s": [
+        3,
+        10,
+        2
+      ],
+      "seconds": 17.93,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 0,
+        "2": 30,
+        "3": 1820
+      },
+      "supports_with_nonzero_V": 1850,
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3
+    },
+    {
+      "N": 30,
+      "V_dim": 22,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 0,
+        "2": 15,
+        "3": 40
+      },
+      "candidate_count_total": 55,
+      "delta": 5,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 61,
+      "ratio": "3/5",
+      "s": [
+        2,
+        3,
+        5
+      ],
+      "seconds": 0.849,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 0,
+        "2": 15,
+        "3": 460
+      },
+      "supports_with_nonzero_V": 475,
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3
+    },
+    {
+      "N": 60,
+      "V_dim": 36,
+      "attained_in_window": false,
+      "candidate_class": "normalized reduced basis of each V\u2229F^S",
+      "candidate_count_by_weight": {
+        "1": 0,
+        "2": 0,
+        "3": 20
+      },
+      "candidate_count_total": 20,
+      "delta": 3,
+      "evidence_label": "COMPUTATIONAL-EVIDENCE",
+      "optimality_scope": "finite-window exact; heavier supports OPEN",
+      "q": 61,
+      "ratio": "1/1",
+      "s": [
+        3,
+        4,
+        5
+      ],
+      "seconds": 15.052,
+      "support_window": "all point supports of weight <= 3",
+      "supports_by_weight": {
+        "1": 0,
+        "2": 0,
+        "3": 20
+      },
+      "supports_with_nonzero_V": 20,
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3
+    }
+  ],
+  "utc": "2026-08-30T01:04:49+00:00",
+  "window": "weight<=3 support census + reduced-basis candidates"
+}

@@ -1,0 +1,43 @@
+{
+  "gate": "B-companion-highp",
+  "companion_p": 0.003,
+  "beam8_over_bposd_ler_ratio": 0.007518796992481203,
+  "ratio_ci95": [
+    0.0,
+    0.017370807254052312
+  ],
+  "pinned_gate_band": [
+    0.87,
+    1.15
+  ],
+  "band_consistent_at_this_p": false,
+  "scope": "COMPANION at elevated p; cannot pass/fail the pinned p=1e-3 Gate B",
+  "derived_circuit_sha256": "ea2de75c77969fcbbe330b8c0bf7280497f1660025c8ba9da653e31fccf1ce1c",
+  "derived_circuit": "BB_144_144_12_memory_Z_p0.003_sr12_derived_p1e-3_rescale.stim",
+  "bposd": {
+    "arm": "bp30+osd",
+    "shots": 2000,
+    "failures": 399,
+    "ler": 0.1995,
+    "ler_ci95": [
+      0.1825693930841281,
+      0.2175827523324447
+    ],
+    "wall_s": 558.9506697499892,
+    "ms_per_shot": 279.4753348749946,
+    "seed": 6653336679181916
+  },
+  "beam8": {
+    "arm": "beam8",
+    "shots": 2000,
+    "failures": 3,
+    "ler": 0.0015,
+    "ler_ci95": [
+      0.0005102635835205426,
+      0.004401032556783964
+    ],
+    "wall_s": 4723.496726667043,
+    "ms_per_shot": 2361.7483633335214,
+    "seed": 6211945118285616066
+  }
+}

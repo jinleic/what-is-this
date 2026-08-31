@@ -139,44 +139,62 @@ non-UC, and every power defect exceeds its base's. The separate local-stability
 problem restricted to \(\varepsilon_\vee\to0\) remains open, but that
 restriction was not present in the authoritative Gate B supremum.
 
-**Local frontier and the size ceiling (2026-08-27).** The defect multiplies
-through success, so no Cartesian power reaches small defect and the theorem's
-mechanism says nothing about the local regime. Three new facts:
+**Local \(2/5\) barrier crossed (2026-08-28).** The defect multiplies through
+success, so powers do not enter the local regime. The numerator is closed:
+incidence/Reimer give \(\log_2m\le4n/5\), and the cloned base gives
+\((3/640)n-3/80\le\Lambda(n)\le4n/5\). Exact negative records are now
+\(14/45\) in the displayed cap/Reimer class and \(1144/1875\) under active
+separation; ratios remain \(147/2536\) and \(531/11360\), respectively.
 
-*Growth closed, with an improved constant.* Incidence is at most
-\(n\lfloor2m/5\rfloor\) while Reimer demands at least \(m\log_2m/2\), so every
-admissible family obeys \(\log_2m\le4n/5\) (exactly: \(m^5\le2^{4n}\)). With
-\(Q,C_+\ge0\) this gives \(-A_+\le4n/5\) unconditionally, and a
-cloned-coordinate base at \(n=8\) raises the certified lower slope from
-\(1/250\) to \(3/640\), an improvement of exactly \(75/64\). So
-\((3/640)n-3/80\le\Lambda(n)\le4n/5\): the numerator's growth is \(\Theta(n)\)
-and only the denominator is open. The clone is legitimate because **no lemma in
-the product argument uses separation**, and Reimer for every power reduces to
-the single base-level inequality \(m^m\le2^{2I}\), i.e. to \(I\ge R_m\).
+The key theorem sharpens the clone convex hull. Multiplicities \(r_i\) induce
+the exact Plackett--Luce first-appearance law
+\[
+\Pr_{\mathbf r}(\pi)=\prod_k
+\frac{r_{\pi_k}}{\sum_{j\ge k}r_{\pi_j}},
+\]
+so the clone infimum is the minimum original fixed-order objective. A finite
+clone multiset is negative iff one fixed order is negative.
 
-*Frontier moved to eight coordinates.* The complete \(S_2\times S_6\) class at
-\(n=8\) (2,272 canonical families) yields, after exact rational re-evaluation,
-\(\min\{\varepsilon_\vee:A_+<0\}\le1144/1875=0.6101\) among separating families
-and \(\le139/245=0.5673\) among all admissible ones, down from
-\(1336/2025=0.6598\); and the first repair ratios here to beat the published
-\(0.0362591\) — \(0.0370512\) separating, \(0.0580391\) otherwise. Sizes 70 and
-75 are *infeasible* at \(n=7\) (\(196<R_{70}=215\)): the eighth coordinate
-supplies the missing incidence, and in the 70-row families it is an exact
-duplicate of the first, so coordinate cloning is what raises the ceiling.
+A corrected minimum-fixed-order row search found the normalized core
+\[
+(0,1,2,4,5,8,10,43,64,190,192,193,245,254,255)\subseteq2^{[8]}
+\]
+with degrees \((6,6,6,6,4,5,6,6)\), incidence \(45\ge R_{15}=30\), full set,
+and defect \(14/45\). Its average is positive,
+\(A_+\in[0.230029313333,0.230029313334]\), but order
+\((6,1,2,0,3,4,5,7)\) is exactly negative:
+\([-0.003540262562,-0.003540262561]\).
 
-*Why low defect needs a dominant set.* The cap forces
-\(\mathbb E|X\vee Y|\ge\frac85\bar s\) while a successful union has size at most
-\(M\), so \(\varepsilon_\vee\ge(\frac85\bar s-M)/(n-M)\) and the ratio is
-\(O(n)\) whenever \(M<\frac85\bar s\). Reaching the local regime therefore
-requires a set of size \(\ge\frac45\log_2m\). Separately, 25 and 45 are the
-largest admissible sizes at \(n=6,7\) and **no set can be added to any of the
-three \(n\le7\) bases**, so adding the missing unions is empty there. Emptying
-the regime by proof would still give a \(2/5\) Frankl bound, about \(0.018\)
-beyond the published frontier.
+Ratio-41 multiplicities
+\[
+(2825761,4750104241,115856201,68921,1681,41,194754273881,1)
+\]
+give a finite symbolic family with dimension \(199623130728\), \(m=15\),
+incidence \(1197738780965\), unchanged defect, and exact
+\[
+A_+\in[-0.000084288238,-0.000084288237]<0.
+\]
+Sampling selected the core/order only; all consumed facts and the final average
+are exact rational two-sided checks. The core is normalized, but the cloned
+witness repeats columns, so the separating record does not move.
 
-The complete statement, proof, ten exactly certified bases, append-only
-searches, and paper draft are in [`gate_b/`](gate_b/); the current verified
-state alone is in [`gate_b/CURRENT_STATUS.md`](gate_b/CURRENT_STATUS.md).
+The earlier normalized \(14/45\) core and every defect-free extension of it
+remain exactly positive. That obstruction was family-specific; changing rows
+exposed the negative order. Full-order \(Q\) is now used only as a rejection
+gate, while `--score min-a` ranks the quantity cloning can reach.
+
+The natural cap-only dominant-set theorem is false. Chase--Lovett [REPORTED]
+have \(\varepsilon_\vee=o(1)\) but miss Reimer by
+\(h(\psi)/2-\psi>0.0977433528\). They also refute any pair-defect-continuous
+approximate Reimer inequality with vanishing normalized error. At exact zero
+defect, Reimer and the dominant set are automatic, so a positive floor remains
+the \(2/5\) frequency theorem. The new fixed-\(14/45\) witness does not settle
+\(c_{\rm loc}\) as defect tends to zero.
+
+The complete statement, proof, ten registered exact bases, the symbolic
+\(14/45\) clone certificate, append-only searches, and paper draft are in
+[`gate_b/`](gate_b/); current verified facts alone are in
+[`gate_b/CURRENT_STATUS.md`](gate_b/CURRENT_STATUS.md).
 
 Reproduce from `math/`:
 
@@ -225,7 +243,17 @@ eigenvalue) and Hypothesis 2 with roughly \(10^5\) MATLAB restarts.  The
 human-audited residual-kernel proof in [`../LIU_H1/AUDIT.md`](../LIU_H1/AUDIT.md)
 now supplies a candidate resolution of Hypothesis 1, with independent exact
 algebra checks. Hypothesis 2 remains open, so secondary claims that
-\(0.38271\) was already proved remain overstatements.
+\(0.38271\) was already proved remain overstatements. The H2 complement
+campaign advanced one step on 2026-08-29: the qendpoint-lift slice-1 residual
+cover (3,156 frozen boxes) is **closed machine-verified** — 2,910
+gap-cleared, 246 mean-infeasible, 0 unresolved, under the unchanged
+certified bound stack (lineage closure verifier
+[`verification/liu9_qendpoint_slice1_lineage_close.py`](verification/liu9_qendpoint_slice1_lineage_close.py),
+report
+[`verification/results/liu9-qendpoint-slice1-lineage-close.json`](verification/results/liu9-qendpoint-slice1-lineage-close.json);
+slices 02–16 never ran, and the sole full-H2 gap is unchanged: block
+copositivity, `OPEN_REDUCTION` in
+[`verification/results/liu9-block-kernel.json`](verification/results/liu9-block-kernel.json)).
 
 ## Result 0 — the OR-entropy kernel has exactly one positive square
 

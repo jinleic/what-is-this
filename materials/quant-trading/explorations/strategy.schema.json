@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quant-trading/explorations/strategy.schema.json",
+  "title": "Quant strategy exploration result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "status",
+    "mechanism",
+    "data_used",
+    "development_window",
+    "validation_window",
+    "holdout_accessed",
+    "trial_count",
+    "parameters",
+    "signal_timing",
+    "cost_model",
+    "benchmark",
+    "metrics",
+    "first_falsification_gate",
+    "gate_result",
+    "leakage_checks",
+    "risks",
+    "next_experiment"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "status": {
+      "enum": ["validation-pass", "falsified", "inconclusive", "blocked"]
+    },
+    "mechanism": {"type": ["string", "object"], "minLength": 1},
+    "data_used": {"type": "array", "minItems": 1},
+    "development_window": {"type": ["array", "object", "string"]},
+    "validation_window": {"type": ["array", "object", "string"]},
+    "holdout_accessed": {"type": "boolean"},
+    "trial_count": {"type": "integer", "minimum": 0, "maximum": 12},
+    "parameters": {"type": ["object", "array"]},
+    "signal_timing": {"type": ["string", "object"]},
+    "cost_model": {"type": ["string", "object"]},
+    "benchmark": {"type": ["string", "object", "array"]},
+    "metrics": {"type": "object"},
+    "first_falsification_gate": {"type": ["string", "object"]},
+    "gate_result": {"type": ["string", "object", "boolean"]},
+    "leakage_checks": {"type": "array"},
+    "risks": {"type": "array"},
+    "next_experiment": {"type": ["string", "object", "array"]}
+  },
+  "additionalProperties": true
+}

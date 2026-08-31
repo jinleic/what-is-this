@@ -1,0 +1,57 @@
+{
+ "layerA_per_cell": {
+  "m10_t3": {
+   "NONDEGENERATE": 25
+  },
+  "m11_t3": {
+   "NONDEGENERATE": 25
+  },
+  "m6_t2": {
+   "NONDEGENERATE": 25
+  },
+  "m6_t3": {
+   "NONDEGENERATE": 25
+  },
+  "m7_t2": {
+   "NONDEGENERATE": 25
+  },
+  "m7_t3": {
+   "NONDEGENERATE": 25
+  },
+  "m8_t2": {
+   "NONDEGENERATE": 25
+  },
+  "m8_t3": {
+   "NONDEGENERATE": 25
+  },
+  "m9_t2": {
+   "NONDEGENERATE": 25
+  },
+  "m9_t3": {
+   "NONDEGENERATE": 25
+  }
+ },
+ "layerA_N_nondegenerate": 250,
+ "layerA_degenerate_events": 0,
+ "layerA_abort_or_guardfail": 0,
+ "E1_exhaustive_G_count": 2016,
+ "E1_degenerate": 0,
+ "E2_tally_by_family": {
+  "E2i_Z3c": {
+   "REDUCIBLE_SKIPPED": 22,
+   "NONDEGENERATE": 42
+  },
+  "E2ii_Z3Zc": {
+   "REDUCIBLE_SKIPPED": 43,
+   "NONDEGENERATE": 21
+  },
+  "E2iii_Z2Zc_m7": {
+   "REDUCIBLE_SKIPPED": 64,
+   "NONDEGENERATE": 64
+  }
+ },
+ "E2_irreducible_built": 127,
+ "E2_degenerate": 0,
+ "V1_invariance_holds": true,
+ "dedup_note": "seed-1018 m11 duplicate record removed; verdicts agreed; N 251->250"
+}

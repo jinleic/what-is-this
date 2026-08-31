@@ -1,0 +1,77 @@
+[2026-08-31T08:12:13Z] stage=selfcheck; code_sha256=2733107da1fc20c3403a1e1f50d6e4539c61993e1d1ada1b36d80f7902fe0071; Arb=400 bits
+[2026-08-31T08:12:13Z] small selfcheck start
+[2026-08-31T08:12:13Z]   orbits: input g-orbits 4 of 27 words; output g-orbits (flat) 8
+[2026-08-31T08:12:13Z]   word bucketing done (27 words) [0.0s]
+[2026-08-31T08:12:13Z] structure q=3 n=3: in-g=4 out-g=8 rep-entries=25 B-slots=18 [0.0s]
+[2026-08-31T08:15:02Z] stage=selfcheck; code_sha256=99320440e877157fe6614bc187135966bf631be39231cda4a6c6653d2f459c78; Arb=400 bits
+[2026-08-31T08:15:02Z] small selfcheck start
+[2026-08-31T08:15:02Z]   orbits: input g-orbits 4 of 27 words; output g-orbits (flat) 8
+[2026-08-31T08:15:02Z]   word bucketing done (27 words) [0.0s]
+[2026-08-31T08:15:02Z] structure q=3 n=3: in-g=4 out-g=8 rep-entries=25 B-slots=18 [0.0s]
+[2026-08-31T08:15:02Z] small selfcheck PASS
+[2026-08-31T08:22:19Z] stage=selfcheck; code_sha256=10fd9a307c42d1910c80636a84e57791b55dcf1d5f7593661058cb58bdfb2901; Arb=400 bits
+[2026-08-31T08:22:19Z] small selfcheck start
+[2026-08-31T08:22:19Z]   orbits: input g-orbits 4 of 27 words; output g-orbits (flat) 8
+[2026-08-31T08:22:19Z]   word bucketing done (27 words) [0.0s]
+[2026-08-31T08:22:19Z] structure q=3 n=3: in-g=4 out-g=8 rep-entries=25 B-slots=18 [0.0s]
+[2026-08-31T08:22:19Z] small selfcheck PASS
+[2026-08-31T08:23:00Z] stage=census; code_sha256=10fd9a307c42d1910c80636a84e57791b55dcf1d5f7593661058cb58bdfb2901; Arb=400 bits
+[2026-08-31T08:23:00Z] population census stage start; no q=4 certificate row may precede it
+[2026-08-31T08:23:00Z] census q=4 n=5: words=1024 g-orbits=31 out-g=50 support=126 rep-entries=631 B-slots=332 dense-bytes=31248 [0.001s]
+[2026-08-31T08:23:00Z] census q=4 n=6: words=4096 g-orbits=107 out-g=157 support=449 rep-entries=3911 B-slots=1851 dense-bytes=384344 [0.004s]
+[2026-08-31T08:23:00Z] census q=4 n=7: words=16384 g-orbits=379 out-g=536 support=1634 rep-entries=24706 B-slots=11297 dense-bytes=4954288 [0.036s]
+[2026-08-31T08:23:00Z] census q=4 n=8: words=65536 g-orbits=1451 out-g=1987 support=6327 rep-entries=167472 B-slots=75691 dense-bytes=73443816 [0.219s]
+[2026-08-31T08:23:02Z] census q=4 n=9: words=262144 g-orbits=5611 out-g=7598 support=24665 rep-entries=1141547 B-slots=525004 dense-bytes=1107162520 [1.603s]
+[2026-08-31T08:23:06Z] census q=4 n=10: 10000/22187 reps, entries=2960028, support=61108
+[2026-08-31T08:23:11Z] census q=4 n=10: 20000/22187 reps, entries=6861065, support=88244
+[2026-08-31T08:23:13Z] census q=4 n=10: words=1048576 g-orbits=22187 out-g=29785 support=97836 rep-entries=7930847 B-slots=3754181 dense-bytes=17365498656 [11.19s]
+[2026-08-31T08:23:20Z] census q=4 n=11: 10000/87979 reps, entries=3723352, support=74946
+[2026-08-31T08:23:28Z] census q=4 n=11: 20000/87979 reps, entries=8958279, support=121071
+[2026-08-31T08:23:37Z] census q=4 n=11: 30000/87979 reps, entries=14671471, support=169593
+[2026-08-31T08:23:46Z] census q=4 n=11: 40000/87979 reps, entries=20787592, support=244327
+[2026-08-31T08:23:55Z] census q=4 n=11: 50000/87979 reps, entries=27166903, support=269839
+[2026-08-31T08:24:07Z] census q=4 n=11: 60000/87979 reps, entries=34953019, support=295517
+[2026-08-31T08:24:15Z] census q=4 n=11: 70000/87979 reps, entries=40622504, support=321315
+[2026-08-31T08:24:26Z] census q=4 n=11: 80000/87979 reps, entries=48396080, support=353611
+[2026-08-31T08:24:36Z] census q=4 n=11: words=4194304 g-orbits=87979 out-g=117764 support=388723 rep-entries=55159218 B-slots=27171877 dense-bytes=273595686536 [83.114s]
+[2026-08-31T08:24:36Z] population census stage PASS
+[2026-08-31T08:24:50Z] stage=anchors; code_sha256=10fd9a307c42d1910c80636a84e57791b55dcf1d5f7593661058cb58bdfb2901; Arb=400 bits
+[2026-08-31T08:24:50Z] anchor stage start
+[2026-08-31T08:24:50Z]   A1 EQUIVARIANCE pointwise (q=2,n=3, all sigma and rho, all (x,y)): PASS
+[2026-08-31T08:24:50Z]   A2 orbit-size closure q=3, L=0..4: PASS
+[2026-08-31T08:24:50Z]   A3 exact p-marginal D: dense vs orbit (max|diff|=0.00e+00): PASS
+[2026-08-31T08:24:50Z]   A4 KL orbit-invariance PASS; non-invariant control deviates (max 7.50e-01) => test discriminates: PASS
+[2026-08-31T08:24:50Z]   A5 Phi_{k,n} orbit route vs dense route at 5 points (<=1e-12): PASS
+[2026-08-31T08:24:50Z]   A6 primal exactness orbit vs dense word-level at (2,3),(3,3) uniform+skew (<=1e-12): PASS
+[2026-08-31T08:24:51Z]   orbits: input g-orbits 70 of 729 words; output g-orbits (flat) 113
+[2026-08-31T08:24:51Z]   word bucketing done (729 words) [0.0s]
+[2026-08-31T08:24:51Z]   merged OS done [0.0s]
+[2026-08-31T08:24:51Z]   locator: block rate 2.916761452 (0.486126909/sym) dual 2.916761452 [0.1s]
+[2026-08-31T08:24:51Z]   orbits: input g-orbits 5002 of 59049 words; output g-orbits (flat) 7566
+[2026-08-31T08:24:51Z]   word bucketing done (59049 words) [0.3s]
+[2026-08-31T08:25:01Z]   merged OS done [10.4s]
+[2026-08-31T08:26:32Z]   locator: block rate 4.236997564 (0.423699756/sym) dual 4.237042105 [101.5s]
+[2026-08-31T08:27:10Z]   orbits: input g-orbits 4 of 27 words; output g-orbits (flat) 8
+[2026-08-31T08:27:10Z]   word bucketing done (27 words) [0.0s]
+[2026-08-31T08:27:10Z] structure q=3 n=3: in-g=4 out-g=8 rep-entries=25 B-slots=18 [0.001s]
+[2026-08-31T08:28:06Z] stage=selfcheck; code_sha256=b0b4f9d7fd74bfd658bccf9a14a6609f25387aa0a1d8715157873284b9779510; Arb=400 bits
+[2026-08-31T08:28:06Z] small selfcheck start
+[2026-08-31T08:28:06Z]   orbits: input g-orbits 4 of 27 words; output g-orbits (flat) 8
+[2026-08-31T08:28:06Z]   word bucketing done (27 words) [0.0s]
+[2026-08-31T08:28:06Z] structure q=3 n=3: in-g=4 out-g=8 rep-entries=25 B-slots=18 [0.0s]
+[2026-08-31T08:28:06Z] small selfcheck PASS
+[2026-08-31T08:29:33Z] stage=anchors; code_sha256=b0b4f9d7fd74bfd658bccf9a14a6609f25387aa0a1d8715157873284b9779510; Arb=400 bits
+[2026-08-31T08:29:33Z] anchor stage start
+[2026-08-31T08:29:33Z]   A1 EQUIVARIANCE pointwise (q=2,n=3, all sigma and rho, all (x,y)): PASS
+[2026-08-31T08:29:33Z]   A2 orbit-size closure q=3, L=0..4: PASS
+[2026-08-31T08:29:33Z]   A3 exact p-marginal D: dense vs orbit (max|diff|=0.00e+00): PASS
+[2026-08-31T08:29:33Z]   A4 KL orbit-invariance PASS; non-invariant control deviates (max 7.50e-01) => test discriminates: PASS
+[2026-08-31T08:29:33Z]   A5 Phi_{k,n} orbit route vs dense route at 5 points (<=1e-12): PASS
+[2026-08-31T08:29:33Z]   A6 primal exactness orbit vs dense word-level at (2,3),(3,3) uniform+skew (<=1e-12): PASS
+[2026-08-31T08:29:34Z]   orbits: input g-orbits 70 of 729 words; output g-orbits (flat) 113
+[2026-08-31T08:29:34Z]   word bucketing done (729 words) [0.0s]
+[2026-08-31T08:29:34Z]   merged OS done [0.0s]
+[2026-08-31T08:29:34Z]   locator: block rate 2.916761452 (0.486126909/sym) dual 2.916761452 [0.1s]
+[2026-08-31T08:29:34Z]   orbits: input g-orbits 5002 of 59049 words; output g-orbits (flat) 7566
+[2026-08-31T08:29:34Z]   word bucketing done (59049 words) [0.3s]
+[2026-08-31T08:29:44Z]   merged OS done [10.6s]

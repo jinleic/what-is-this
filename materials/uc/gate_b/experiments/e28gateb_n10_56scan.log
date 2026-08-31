@@ -1,0 +1,17 @@
+restart 0: 10001 families scanned; exactly negative: 3
+restart 1: 10001 families scanned; exactly negative: 3
+Traceback (most recent call last):
+  File "/Users/jinleic/jinleic-workspace/math/uc/gate_b/experiments/e28gateb_negscan.py", line 233, in <module>
+    main()
+    ~~~~^^
+  File "/Users/jinleic/jinleic-workspace/math/uc/gate_b/experiments/e28gateb_negscan.py", line 207, in main
+    "negative_orders_by_defect": sorted(
+                                 ~~~~~~^
+        {
+        ^
+    ...<6 lines>...
+        for n in negatives
+        ^^^^^^^^^^^^^^^^^^
+    ),
+    ^
+TypeError: '<' not supported between instances of 'dict' and 'dict'

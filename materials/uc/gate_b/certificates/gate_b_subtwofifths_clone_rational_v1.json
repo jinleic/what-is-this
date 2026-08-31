@@ -1,0 +1,93 @@
+{
+  "arithmetic": "ordinary exact rational bounds; no float value or sampled order is used after selecting the certified fixed order",
+  "cloned_family": {
+    "a_plus_lower": "-3339001091075785382516669/39614081257132168796771975168",
+    "a_plus_lower_decimal": "-0.000084288238",
+    "a_plus_upper": "-3339001091075785382516663/39614081257132168796771975168",
+    "a_plus_upper_decimal": "-0.000084288237",
+    "active": true,
+    "admissible": true,
+    "bound_method": "exact reweighting of every fixed-order enclosure",
+    "cap": 6,
+    "closure_defect": "14/45",
+    "dimension": 199623130728,
+    "family_size": 15,
+    "incidence": 1197738780965,
+    "maximum_coordinate_count": 6,
+    "multiplicities": [
+      2825761,
+      4750104241,
+      115856201,
+      68921,
+      1681,
+      41,
+      194754273881,
+      1
+    ],
+    "reimer_threshold": 30,
+    "repair_ratio_lower": "150255049098410342213249835/554597137599850363154807652352",
+    "repair_ratio_upper": "150255049098410342213250105/554597137599850363154807652352",
+    "separating": false,
+    "symbolic_representation": "replace core coordinate i by multiplicities[i] identical copies",
+    "target_order_probability": "1438626275603521989270100382252682485138269921/1709031845411571405446847916475232883045979520"
+  },
+  "core": {
+    "admissible": true,
+    "cap": 6,
+    "closure_defect": "14/45",
+    "coordinate_counts": [
+      6,
+      6,
+      6,
+      6,
+      4,
+      5,
+      6,
+      6
+    ],
+    "dimension": 8,
+    "family_rows": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      8,
+      10,
+      43,
+      64,
+      190,
+      192,
+      193,
+      245,
+      254,
+      255
+    ],
+    "family_size": 15,
+    "fixed_order_a_lower": "-280488497585020501936812613/79228162514264337593543950336",
+    "fixed_order_a_upper": "-140244248792510250968406301/39614081257132168796771975168",
+    "incidence": 45,
+    "name": "n8m15_clone_reachable",
+    "negative_fixed_order": [
+      6,
+      1,
+      2,
+      0,
+      3,
+      4,
+      5,
+      7
+    ],
+    "normalized": true,
+    "reimer_threshold": 30
+  },
+  "displayed_supremum_convention": "cap and Reimer only",
+  "frozen_targets": {
+    "a_plus_upper": "0",
+    "closure_defect_upper": "2/5"
+  },
+  "normalization_convention": "the core is active and separating; the cloned witness is active but non-separating because clone columns coincide",
+  "proof_dependency": "verify_gate_b_rational fixed-order two-sided enclosures plus PROOF.md Proposition 25 exact Plackett-Luce clone reweighting",
+  "schema": 1,
+  "verdict": "PROVED_SUB_TWO_FIFTHS_NEGATIVE_EXACT_RATIONAL"
+}

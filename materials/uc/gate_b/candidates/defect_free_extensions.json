@@ -1,0 +1,340 @@
+{
+  "base": "n8tiny",
+  "classification": {
+    "cap": 6,
+    "columns": [
+      {
+        "is_join_prime": true,
+        "is_up_set": true,
+        "kind": "new: not induced by a global join-homomorphism",
+        "rows": [
+          11,
+          19,
+          25,
+          26,
+          31
+        ],
+        "weight": 5
+      },
+      {
+        "is_join_prime": true,
+        "is_up_set": true,
+        "kind": "clone of coordinate 2",
+        "rows": [
+          4,
+          5,
+          6,
+          12,
+          20,
+          31
+        ],
+        "weight": 6
+      },
+      {
+        "is_join_prime": true,
+        "is_up_set": true,
+        "kind": "clone of coordinate 0",
+        "rows": [
+          1,
+          5,
+          11,
+          19,
+          25,
+          31
+        ],
+        "weight": 6
+      },
+      {
+        "is_join_prime": true,
+        "is_up_set": true,
+        "kind": "clone of coordinate 1",
+        "rows": [
+          2,
+          6,
+          11,
+          19,
+          26,
+          31
+        ],
+        "weight": 6
+      },
+      {
+        "is_join_prime": true,
+        "is_up_set": true,
+        "kind": "clone of coordinate 3",
+        "rows": [
+          8,
+          11,
+          12,
+          25,
+          26,
+          31
+        ],
+        "weight": 6
+      },
+      {
+        "is_join_prime": true,
+        "is_up_set": true,
+        "kind": "clone of coordinate 4",
+        "rows": [
+          16,
+          19,
+          20,
+          25,
+          26,
+          31
+        ],
+        "weight": 6
+      }
+    ],
+    "join_consistent_total": 57,
+    "or_column_weights": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      10,
+      10,
+      10,
+      10,
+      11,
+      11,
+      11,
+      11,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      13,
+      13,
+      13,
+      13,
+      13,
+      14
+    ],
+    "usable_total": 6
+  },
+  "concentration": {
+    "one clone each of coordinates 0,1,2": {
+      "a_plus_upper": "257278049226725769974641339/39614081257132168796771975168",
+      "a_plus_upper_decimal": "0.006494611034",
+      "certified_negative": false,
+      "defect": "4/9",
+      "dimension": 8
+    },
+    "three clones of coordinate 2": {
+      "a_plus_upper": "-9476973725828342886985883/19807040628566084398385987584",
+      "a_plus_upper_decimal": "-0.000478464900",
+      "certified_negative": true,
+      "defect": "4/9",
+      "dimension": 8
+    }
+  },
+  "core_a_plus_upper_decimal": "0.010695694102",
+  "core_defect": "4/9",
+  "core_dimension": 5,
+  "core_rows": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    8,
+    11,
+    12,
+    16,
+    19,
+    20,
+    25,
+    26,
+    31
+  ],
+  "equivalence_audit": {
+    "join_consistent_total": 57,
+    "mismatches": 0,
+    "subsets_tested": 32768
+  },
+  "every_extension_preserved_size_defect_admissibility": true,
+  "improving_are_only_clones": true,
+  "measured": [
+    {
+      "a_plus_upper_decimal": "0.003478204249",
+      "improves": true,
+      "invariance": {
+        "admissible_after": true,
+        "admissible_before": true,
+        "defect_after": "4/9",
+        "defect_before": "4/9",
+        "defect_preserved": true,
+        "degrees_after": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "incidence_after": 36,
+        "incidence_before": 30,
+        "new_degree": 6,
+        "reimer_threshold": 30,
+        "size_after": 15,
+        "size_before": 15,
+        "size_preserved": true
+      },
+      "kind": "clone of coordinate 2",
+      "weight": 6
+    },
+    {
+      "a_plus_upper_decimal": "0.012500066566",
+      "improves": false,
+      "invariance": {
+        "admissible_after": true,
+        "admissible_before": true,
+        "defect_after": "4/9",
+        "defect_before": "4/9",
+        "defect_preserved": true,
+        "degrees_after": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "incidence_after": 36,
+        "incidence_before": 30,
+        "new_degree": 6,
+        "reimer_threshold": 30,
+        "size_after": 15,
+        "size_before": 15,
+        "size_preserved": true
+      },
+      "kind": "clone of coordinate 0",
+      "weight": 6
+    },
+    {
+      "a_plus_upper_decimal": "0.012500066566",
+      "improves": false,
+      "invariance": {
+        "admissible_after": true,
+        "admissible_before": true,
+        "defect_after": "4/9",
+        "defect_before": "4/9",
+        "defect_preserved": true,
+        "degrees_after": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "incidence_after": 36,
+        "incidence_before": 30,
+        "new_degree": 6,
+        "reimer_threshold": 30,
+        "size_after": 15,
+        "size_before": 15,
+        "size_preserved": true
+      },
+      "kind": "clone of coordinate 1",
+      "weight": 6
+    },
+    {
+      "a_plus_upper_decimal": "0.012500066566",
+      "improves": false,
+      "invariance": {
+        "admissible_after": true,
+        "admissible_before": true,
+        "defect_after": "4/9",
+        "defect_before": "4/9",
+        "defect_preserved": true,
+        "degrees_after": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "incidence_after": 36,
+        "incidence_before": 30,
+        "new_degree": 6,
+        "reimer_threshold": 30,
+        "size_after": 15,
+        "size_before": 15,
+        "size_preserved": true
+      },
+      "kind": "clone of coordinate 3",
+      "weight": 6
+    },
+    {
+      "a_plus_upper_decimal": "0.114769081463",
+      "improves": false,
+      "invariance": {
+        "admissible_after": true,
+        "admissible_before": true,
+        "defect_after": "4/9",
+        "defect_before": "4/9",
+        "defect_preserved": true,
+        "degrees_after": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          5
+        ],
+        "incidence_after": 35,
+        "incidence_before": 30,
+        "new_degree": 5,
+        "reimer_threshold": 30,
+        "size_after": 15,
+        "size_before": 15,
+        "size_preserved": true
+      },
+      "kind": "new: not induced by a global join-homomorphism",
+      "weight": 5
+    },
+    {
+      "a_plus_upper_decimal": "0.012500066566",
+      "improves": false,
+      "invariance": {
+        "admissible_after": true,
+        "admissible_before": true,
+        "defect_after": "4/9",
+        "defect_before": "4/9",
+        "defect_preserved": true,
+        "degrees_after": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "incidence_after": 36,
+        "incidence_before": 30,
+        "new_degree": 6,
+        "reimer_threshold": 30,
+        "size_after": 15,
+        "size_before": 15,
+        "size_preserved": true
+      },
+      "kind": "clone of coordinate 4",
+      "weight": 6
+    }
+  ],
+  "verdict": "DEFECT_FREE_EXTENSIONS_CLASSIFIED_ONLY_CLONES_IMPROVE"
+}

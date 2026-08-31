@@ -1,0 +1,254 @@
+{
+ "claim": "at the frozen witness fiber (persisted supports of random-111143, q = 65519/65536), the raw gap is an exact quadratic in the shared masses (a1, a2); its closed-form KKT minimum over {triangle} intersect {mean >= M_UNDER} with M_UNDER <= m is Arb-certified positive, so the mass-worst-case gap over the TRUE feasible set {triangle} intersect {mean >= m} is positive as well (superset argument)",
+ "claim_status": "MACHINE-VERIFIED",
+ "coverage_statement": "a margin certificate for THIS (geometry, q) fiber only; the q direction and the four support degrees of freedom stay open - one point of the (P0, P1, q) space, not a universal H2 proof",
+ "evaluator": "liu9_objective.evaluate_arb (gap = numerator - ehx), ctx.prec = 320; discovery scans use liu9_boundary_layer.gap_mp at the stated workdps (DISCOVERY evidence only, labelled so)",
+ "independent_argmin_check": {
+  "discovery_only": true,
+  "gap_mp_200dps": "0.0000450358022343784543835623462272",
+  "mean_ge_M_UNDER": true,
+  "mean_mp_200dps": "0.617290912",
+  "note": "mpmath point evaluation at the certified argmin (exact u3 vertex, 200-dps context): DISCOVERY-grade agreement check, not a certificate"
+ },
+ "mass_qp": {
+  "M_UNDER": "19290341/31250000",
+  "M_UNDER_lt_m_arb": true,
+  "candidates": [
+   {
+    "a1": "0",
+    "a2": "[0.6173149938624214 +/- 2.63e-17]",
+    "inside_feasible_set": true,
+    "name": "V_chord_left",
+    "note": "chord meets a1=0",
+    "value": "[6.0751960892360540157312114e-5 +/- 2.49e-31]"
+   },
+   {
+    "a1": "[0.3826036268276025 +/- 5.51e-18]",
+    "a2": "[0.6173963731723975 +/- 5.51e-18]",
+    "inside_feasible_set": true,
+    "name": "V_chord_cap",
+    "note": "chord meets a1+a2=1; mean(a) = M_UNDER exactly there",
+    "value": "[4.5035802234378454383562346e-5 +/- 2.29e-31]"
+   },
+   {
+    "a1": "0",
+    "a2": "1.000000000000000",
+    "inside_feasible_set": true,
+    "name": "V_top",
+    "note": "a1=0 meets a1+a2=1",
+    "value": "[0.00039846128741635524601368076 +/- 1.98e-31]"
+   },
+   {
+    "a1": "[8.237356490316231 +/- 3.14e-16]",
+    "a2": "[1.589075844683942 +/- 4.33e-16]",
+    "inside_feasible_set": false,
+    "name": "interior_critical",
+    "note": "2x2 KKT solve; Hessian indefinite here (saddle, not a min)",
+    "value": "[0.00018085103626894990234021141 +/- 2.94e-30]"
+   },
+   {
+    "a1": "0",
+    "a2": "[0.08735456642111847 +/- 1.66e-18]",
+    "inside_feasible_set": false,
+    "name": "E_a1z_crit",
+    "note": "a1=0 edge critical point",
+    "value": "[-0.00011105501724271023230851539 +/- 4.41e-30]"
+   },
+   {
+    "a1": "[0.01516855602397358 +/- 4.80e-18]",
+    "a2": "[0.9848314439760264 +/- 1.53e-17]",
+    "inside_feasible_set": true,
+    "name": "E_sum1_crit",
+    "note": "a1+a2=1 edge critical point",
+    "value": "[0.00037970766185791766028720796 +/- 2.40e-30]"
+   },
+   {
+    "a1": "[1.476437537407190 +/- 2.38e-16]",
+    "a2": "[0.6176290302687495 +/- 2.25e-17]",
+    "inside_feasible_set": false,
+    "name": "E_chord_crit",
+    "note": "mean-chord critical point",
+    "value": "[2.5914340171451506607973215e-5 +/- 3.04e-31]"
+   }
+  ],
+  "feasible_polygon": "{a1 >= 0, a2 >= 0, a1+a2 <= 1} intersect {mean(a) >= M_UNDER} with a1, a2 >= 0 and a1 + a2 <= 1 kept explicit; chord a2 = alpha + beta_line a1; cap vertex at u3",
+  "hessian_determinant": "[-1.0526434334752e-8 +/- 1.21e-23]",
+  "hessian_indefinite": true,
+  "mean_line": {
+   "alpha": "370543143793631507308334773105748075/600249706353662677010676363419084907",
+   "beta_line": "127672357215911055978826894251925/600249706353662677010676363419084907",
+   "c0": "15320684962517326717459227310231/72057594037927936000000000000000000",
+   "c1": "-15320682865909326717459227310231/72057594037927936000000000000000000",
+   "c2": "1800749119060988031032029090257254721/1801439850948198400000000000000000000",
+   "u3": "27383156127933403218071650304/71570560778484176166850947179"
+  },
+  "min_arg": [
+   "[0.3826036268276025 +/- 5.51e-18]",
+   "[0.6173963731723975 +/- 5.51e-18]"
+  ],
+  "min_lower": "[4.50358022343784543835623457710e-5 +/- 4e-39]",
+  "min_name": "V_chord_cap",
+  "min_value": "[4.5035802234378454383562346e-5 +/- 2.30e-31]",
+  "ok": true,
+  "superset_argument": "M_UNDER <= m, so {mean >= M_UNDER} is a SUPERSET of {mean >= m}; the certified minimum over the superset LOWER-bounds the true mass-worst-case gap over {mean >= m}: certified positive => the true worst case is positive too"
+ },
+ "mutations": [
+  {
+   "expected": "FAIL",
+   "mechanism": "A22 -> A22 + 1e-6 must move the KKT minimum",
+   "mutation": "coef_perturbed_1e-6",
+   "observed": "FAIL",
+   "ok": true,
+   "value_mutated": "[4.5416980515984884702e-5 +/- 1.88e-25]",
+   "value_reference": "[4.5035802234378454384e-5 +/- 4.38e-25]"
+  },
+  {
+   "constrained_min_lower": "[4.50358022343784543835623457710e-5 +/- 4e-39]",
+   "expected": "FAIL (dips below the constrained certified min)",
+   "mechanism": "triangle-only minimum A0 - A2^2/(4 A22) over the a1 = 0 edge, unconstrained by the mean chord",
+   "mutation": "drop_mean_constraint",
+   "observed": "FAIL",
+   "ok": true,
+   "triangle_only_arg_a2": "[0.08735456642111847 +/- 1.66e-18]",
+   "triangle_only_min": "[-0.00011105501724271023231 +/- 1.49e-24]"
+  }
+ ],
+ "parameters": {
+  "M_UNDER": "19290341/31250000",
+  "M_UNDER_lt_m_arb": true,
+  "beta": "[0.1000525598628931066646282994769475877962 +/- 6.19e-42]",
+  "m_lower": "[0.6172909120812649700696870979010273883736 +/- 1.86e-41]",
+  "m_upper": "[0.6172909120812649700696870979010273883736 +/- 1.86e-41]"
+ },
+ "quadratic_extraction": {
+  "coefficient_widths_float": [
+   7.943053184876774e-68,
+   1.8958066196568436e-67,
+   2.177681690527242e-67,
+   3.139462867234001e-67,
+   1.55676631717521e-67,
+   1.5568585818546917e-67
+  ],
+  "coefficients": {
+   "A0": "[-0.000106387078579919324335291695265 +/- 7.05e-35]",
+   "A1": "[9.03574015586413948048662121530e-5 +/- 5.0e-37]",
+   "A11": "[1.60289420448185898194861066653e-5 +/- 2.79e-35]",
+   "A12": "[-0.000223041349672465489798579009012 +/- 4.65e-34]",
+   "A2": "[-0.000106873374891193021920146385742 +/- 2.56e-34]",
+   "A22": "[0.000611721740887467592269118841204 +/- 2.96e-34]"
+  },
+  "degree_two_verified": true,
+  "design_points": [
+   [
+    "1/5",
+    "7/10"
+   ],
+   [
+    "21/100",
+    "7/10"
+   ],
+   [
+    "19/100",
+    "7/10"
+   ],
+   [
+    "1/5",
+    "71/100"
+   ],
+   [
+    "1/5",
+    "69/100"
+   ],
+   [
+    "21/100",
+    "71/100"
+   ]
+  ],
+  "max_coefficient_width_float": 3.139462867234001e-67,
+  "ok": true,
+  "validation": [
+   {
+    "a1": "3/20",
+    "a2": "4/5",
+    "contains_zero": true,
+    "ok": true,
+    "residual": "[+/- 2.12e-67]",
+    "residual_radius_float": 4.229072512513118e-67
+   },
+   {
+    "a1": "7/20",
+    "a2": "13/20",
+    "contains_zero": true,
+    "ok": true,
+    "residual": "[+/- 2.22e-67]",
+    "residual_radius_float": 4.436098700898659e-67
+   },
+   {
+    "a1": "3/25",
+    "a2": "3/5",
+    "contains_zero": true,
+    "ok": true,
+    "residual": "[+/- 1.57e-67]",
+    "residual_radius_float": 3.137404070976241e-67
+   },
+   {
+    "a1": "2/5",
+    "a2": "3/5",
+    "contains_zero": true,
+    "ok": true,
+    "residual": "[+/- 2.22e-67]",
+    "residual_radius_float": 4.4223139222448373e-67
+   }
+  ],
+  "validation_threshold": "1/1000000000000000000000000000000000000000000000000000000000000",
+  "worst_residual_radius_float": 4.436098700898659e-67
+ },
+ "report_sha256": "03fcbe529e46446c1f8f149a648401132eadeda7a1f3a28ed88c9b3373aa24bf",
+ "tool": "liu9_witness_qp.py",
+ "verdict": "MARGIN-CERTIFIED",
+ "witness_1_92e_4": "UNRECOVERED",
+ "witness_1_92e_4_status": "the ~1.92e-4 total-gap point of the 2026-08-29 search is not persisted anywhere (Main: in-memory only; only the summary line survived).  Structural note from the ledger: near the zero-support face pi(x,1)=x kills the beta-gain, so the c-channel -2h(x) dominates near-1 asymptotics - consistent with danger concentrated at that face.  The persisted fallback anchor geometry is used for the QP per Main's instruction",
+ "witness_fiber": {
+  "anchor_gap_arb": "[0.000112191086531961602113879 +/- 8.64e-29]",
+  "anchor_masses": [
+   "20323585489734297127/100000000000000000000",
+   "70894899911375863777/100000000000000000000"
+  ],
+  "anchor_mean_exact": "15961805749191704756928884671187558175145050994132622849/22517998136852480000000000000000000000000000000000000000",
+  "description": "persisted deep-search point random-111143: P0 = masses a on (b0, b2, b4), P1 = same masses on (b1, b3, b5); q frozen at the recorded dyadic value",
+  "q": "65519/65536",
+  "supports": {
+   "b0": "0",
+   "b1": "1/34359738368",
+   "b2": "5405342124545604171/12500000000000000000",
+   "b3": "24999410146995917903/25000000000000000000",
+   "b4": "3278607482574459997/4000000000000000000",
+   "b5": "1/288230376151711744"
+  }
+ },
+ "witness_scan": {
+  "anchor_gap": "0.000112191086531961602113879",
+  "descent_best_gap": "0.000000516836228126086215249138",
+  "descent_best_mean": "0.64228141618331838698",
+  "descent_best_point_20digits": [
+   "0.26990245489734297127",
+   "0.64228239911375863777",
+   "0.9999972005859375",
+   "0.0",
+   "0.36576076996364833368",
+   "0.88631847064361499925",
+   "2.9103830456733703613e-11",
+   "0.99999990587983671612",
+   "3.4694469519536141888e-18"
+  ],
+  "descent_negative_found": false,
+  "descent_note": "the coordinate descent slides toward the b3 -> 1 mirror face with the gap shrinking but staying positive; its endpoint is a neighborhood local minimum, not a certified one",
+  "discovery_only": true,
+  "dps": 100,
+  "evaluations": 775,
+  "q_refine_best": {
+   "gap": "0.0000667343712215206641050102",
+   "q": "0.9999906005859375"
+  }
+ }
+}

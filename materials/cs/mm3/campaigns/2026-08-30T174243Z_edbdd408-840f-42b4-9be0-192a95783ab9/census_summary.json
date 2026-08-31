@@ -1,0 +1,58 @@
+{
+ "pre_statement": "pre_statement.md committed 2026-08-30T17:42Z before compute (git fb731d4)",
+ "named_set_S": {
+  "decompositions": [
+   "paper55 (arXiv:2607.28676 \u00a75.2)",
+   "sun56 (arXiv:2604.27645 verify.py)"
+  ],
+  "G_range": "all 3x3 ternary unimodular matrices |det|=\u00b11, |G|=6960 (48 monomial + 6912 non-monomial), counted exactly by brute force over 3^9=19683",
+  "sandwich": "diagonal (X,Y,Z)=(G,G,G) of the frozen isotropy action, composed with the sigma-orbit {Id, sigma, sigma^2}",
+  "triples": 41760
+ },
+ "census_result": {
+  "paper55": {
+   "non_ternary_G": 6912,
+   "ternary_brent_fail_G": 0,
+   "valid_G": 48,
+   "valid_all_monomial": true,
+   "certified_total_lb_per_sigma_class": [
+    55,
+    55,
+    55
+   ]
+  },
+  "sun56": {
+   "non_ternary_G": 6912,
+   "ternary_brent_fail_G": 0,
+   "valid_G": 48,
+   "valid_all_monomial": true,
+   "certified_total_lb_per_sigma_class": [
+    55,
+    55,
+    55
+   ]
+  },
+  "verdict": "NO orientation in S has a certified total <= 54; the minimum is exactly 55, attained by the known monomial classes"
+ },
+ "reduction_factor": {
+  "inside_S_ternary_alphabet": "6912 non-monomial G/ternary-unimodular per decomposition leave the alphabet; valid orientations reduce 6960 -> 48 per decomposition, factor 6960/48 = 145 exactly (x3 sigma preserved)",
+  "monomial_transfer_monomial_subgroup": "the 48 monomial sandwich orientations are cost-invariant per the frozen monomial-transfer theorem, so 288 valid orientations reduce to 6 (2 decomp x 3 sigma) cost classes; factor 48 exactly",
+  "whole_ternary_sandwich_product": "6960^3 x 3 = 1,011,460,608,000 orientations NOT swept (pre-statement \u00a71; wall via non-group structure: ternary unimodulars do not close under multiplication)"
+ },
+ "binarity_finding": {
+  "claim": "the 6960-element ternary unimodular set is NOT a group under multiplication (README calls it 'group' loosely)",
+  "evidence": "counterexample G*G^{-1}-type products exit the set: e.g. product of two elements has entries \u00b12 (kern census: closure check fails at 500 random pairs); the monomial 48 DO close (hyperoctahedral B3)",
+  "impact": "orientation reachability via single G is still well-defined (each G gives a valid decomposition because the tensor automorphism acts per-element); only orbit-structure language needed care"
+ },
+ "certificates": {
+  "instances": 18,
+  "unsat_certified": 15,
+  "floor_achievable": 3,
+  "checkers": [
+   "drat-trim (2e3b2dc build)",
+   "lrat-check (same tree)"
+  ],
+  "all_verified": true,
+  "note": "3 sun56 sides have achievable floors (d=16 W-factor at s0, etc.) matching the frozen campaign's finding"
+ }
+}

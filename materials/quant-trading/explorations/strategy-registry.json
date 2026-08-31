@@ -1,0 +1,522 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-2026-08-29",
+  "updated_at": "2026-08-31T08:06:17+00:00",
+  "summary": {
+    "independent_wave_one_directions": 12,
+    "wave_one_selection_trials": 66,
+    "initial_validation_passes": 2,
+    "final_validated_or_deployable_candidates": 0,
+    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. The parent same-day screen falsified the BTC/ETH post-liquidation continuation overlay at its registered 20-onset stop; an exact-rule chronological replication was inconclusive at 6/20 and cannot reverse that falsification. The parent Deribit taker-GEX screen and its exact-rule replication were both sample-first inconclusive at 10/12 transitions; the replication also missed its 1,000-trade minimum at 732 and all four descriptive gates were false. Public collectors remain active for separately frozen future mechanisms, not retrospective rescue.",
+    "historical_confirmation_is_not_blind": true,
+    "genuine_forward_start": "2026-08-29",
+    "focused_directions": 4,
+    "active_prospective_collectors": 2
+  },
+  "evidence_ranking": [
+    {
+      "rank": 1,
+      "id": "crypto-carry-corrected-audit",
+      "direction": "Fully collateralized spot-perpetual funding carry",
+      "final_status": "falsified-under-registered-gate; monitor mechanism only",
+      "artifacts": "quant-trading/explorations/crypto-carry-corrected-audit/",
+      "positive_evidence": [
+        "Signed funding remains an economically real premium.",
+        "An arithmetic-only repair of the inadmissible frozen position gives 2024 signed funding of 12.38%-13.87% of actual short notional; this is a counterfactual diagnostic, not corrected-engine economics."
+      ],
+      "negative_evidence": [
+        "Original >15% funding-yield gate fails.",
+        "Frozen engine clipped every negative rate, used the wrong yield denominator, mis-accrued SOFR, and reserved no independent perpetual collateral.",
+        "The corrected gross<=1x independently collateralized entry-and-hold engine terminated both sleeves in December 2020, so its 2024 funding yield and strategy return are 0.0%.",
+        "The 2025 and 2026 signed-funding decay figures are counterfactual rate diagnostics for a hypothetical surviving short, not corrected-engine portfolio economics."
+      ],
+      "decision": "Do not use the frozen validation/confirmation returns. Reopen only as a new preregistered cross-venue collateral-management study; no leverage or threshold rescue."
+    },
+    {
+      "rank": 2,
+      "id": "crypto-trend-vol",
+      "direction": "Slow BTC/ETH trend as a risk overlay",
+      "final_status": "falsified as benchmark-excess alpha; retained as risk-control evidence",
+      "artifacts": "quant-trading/explorations/crypto-trend-vol/",
+      "positive_evidence": [
+        "2024 net Sharpe 1.70 versus 1.36 equal-weight buy-and-hold.",
+        "2024 max drawdown -21.2% versus -35.5%.",
+        "Raw trend showed risk-adjusted improvement before the volatility overlay."
+      ],
+      "negative_evidence": [
+        "2024 cumulative excess was -12.9% at 1x and -14.8% at 2x costs.",
+        "Absolute return was not comparable to the benchmark under the registered gate."
+      ],
+      "decision": "Use only as a candidate drawdown/exposure primitive after an independent alpha engine exists; do not count it as return alpha."
+    },
+    {
+      "rank": 3,
+      "id": "volatility-risk-premium",
+      "direction": "Index-level put-write/volatility premium",
+      "final_status": "falsified versus market; positive cash premium only",
+      "artifacts": "quant-trading/explorations/volatility-risk-premium/",
+      "positive_evidence": [
+        "Validation excess over cash approximately +12.3%/year under the index-level model.",
+        "Low volatility and drawdown in 2024."
+      ],
+      "negative_evidence": [
+        "Validation market-relative excess approximately -8.4%/year and -9.1%/year at 2x drag.",
+        "Published methodology indices are not executable custom-option returns; broad historical chain/fill data is absent."
+      ],
+      "decision": "Treat as a defensive risk-premium/diversification direction, not alpha or a 40% return engine."
+    },
+    {
+      "rank": 4,
+      "id": "crypto-microstructure-execution",
+      "direction": "Execution-cost and adverse-selection measurement",
+      "final_status": "inconclusive; data-feasible only prospectively",
+      "artifacts": "quant-trading/explorations/crypto-microstructure-execution/",
+      "positive_evidence": [
+        "Bounded official samples can estimate spread and short-horizon impact.",
+        "At a $10k decision size, measured 5-second impact was much smaller than the conservative taker-fee assumption."
+      ],
+      "negative_evidence": [
+        "No common 2024 calendar sample paired trades and quotes in official archives.",
+        "Maker advantage is unmeasured without queue position; the zero-queue bound is explicitly unattainable."
+      ],
+      "decision": "Capture trades and quotes prospectively only after a lower-frequency signal survives; measure implementation shortfall, never classification accuracy alone."
+    },
+    {
+      "rank": 5,
+      "id": "factor-momentum-timing",
+      "direction": "Volatility-managed Ken French momentum factor",
+      "final_status": "falsified and non-investable as tested",
+      "artifacts": "quant-trading/explorations/factor-momentum-timing/",
+      "positive_evidence": [
+        "Reported 2010-2024 risk-adjusted improvement and drawdown reduction versus raw momentum."
+      ],
+      "negative_evidence": [
+        "Statistical review found validation arithmetic benchmark excess approximately -0.19%/year with HAC t=-0.06; the pass label was driven by path-dependent cumulative differences rather than a stable mean edge.",
+        "2025-2026 historical-confirmation excess was -25.3% at 1x and -36.2% at 2x.",
+        "Ken French long-short factor returns omit an investable wrapper, underlying turnover, borrow, and capacity."
+      ],
+      "decision": "Do not advance. Reopen only on an actual investable momentum vehicle with real costs and a new forward registration."
+    },
+    {
+      "rank": 6,
+      "id": "funding-crowding",
+      "direction": "Extreme funding as crash/crowding signal",
+      "final_status": "falsified as a risk-off signal; mechanism folded into carry research",
+      "artifacts": "quant-trading/explorations/funding-crowding/",
+      "evidence": [
+        "All eight registered risk-off variants failed.",
+        "Extreme positive funding instead persisted positively over the next 8-24 hours; directional returns were not predictable."
+      ],
+      "decision": "No standalone strategy. Preserve the persistence finding as a carry-mechanism diagnostic."
+    },
+    {
+      "rank": 7,
+      "id": "frozen-cross-asset-trend-audit",
+      "direction": "Local GLD/GOOGL/NVDA/UUP trend system",
+      "final_status": "ineligible/inconclusive; published headline contaminated",
+      "artifacts": "quant-trading/explorations/frozen-cross-asset-trend-audit/",
+      "evidence": [
+        "The published engine used same-close information; a causal one-bar lag lowers metrics.",
+        "Most 2024 performance was basket beta, while volatility targeting primarily reduced drawdown.",
+        "Reproduction depended on an undocumented common-start anchor.",
+        "The 29-candidate UUP screen and approximately 46,000-search history lack complete artifacts; UUP data was committed after the dated headline report."
+      ],
+      "decision": "Do not continue the current result. Any restart must use a predeclared broad universe, causal next-day signals, point-in-time data, and a prospective holdout."
+    },
+    {
+      "rank": 8,
+      "id": "event-semantics",
+      "direction": "Replay-safe GDELT/SEC event semantics",
+      "final_status": "blocked",
+      "artifacts": "quant-trading/explorations/event-semantics/",
+      "evidence": [
+        "GDELT DATEADDED can support replay timing.",
+        "Existing local data has zero development/validation coverage and high within-slice duplication; SEC requires a real declared identity."
+      ],
+      "decision": "No return test. Backfill only after a narrow event hypothesis and lawful point-in-time price source are fixed."
+    },
+    {
+      "rank": 9,
+      "id": "crypto-basis-convergence",
+      "direction": "Spot-perpetual basis z-score convergence",
+      "final_status": "falsified",
+      "artifacts": "quant-trading/explorations/crypto-basis-convergence/",
+      "evidence": [
+        "All eight signal variants were net-negative; selected validation Sharpe -16.23 and 2x excess versus carry -0.74.",
+        "Zero-cost pair PnL was already negative over development."
+      ],
+      "decision": "Stop this family under current horizons; do not rescue with longer stops or leverage."
+    },
+    {
+      "rank": 10,
+      "id": "btc-eth-relative-value",
+      "direction": "BTC/ETH relative momentum and mean reversion",
+      "final_status": "falsified",
+      "artifacts": "quant-trading/explorations/btc-eth-relative-value/",
+      "evidence": [
+        "Validation Sharpe 1.10 versus benchmark 1.37; 2x cumulative excess -16.5%.",
+        "Dollar-neutral variants were already negative in development."
+      ],
+      "decision": "Stop at the registered trial budget."
+    },
+    {
+      "rank": 11,
+      "id": "macro-crypto-regime",
+      "direction": "VIX/curve/NFCI/rate-conditioned BTC/ETH allocation",
+      "final_status": "falsified",
+      "artifacts": "quant-trading/explorations/macro-crypto-regime/",
+      "evidence": [
+        "Selected 2024 Sharpe 0.88 versus buy-and-hold 1.36; 2x cumulative excess -60.3%.",
+        "The macro veto changed no positions beyond the price-trend condition."
+      ],
+      "decision": "Stop simple macro gates; do not add models to rescue them."
+    },
+    {
+      "rank": 12,
+      "id": "cftc-positioning",
+      "direction": "CFTC crowdedness/positioning timing",
+      "final_status": "falsified with proxy-data caveat",
+      "artifacts": "quant-trading/explorations/cftc-positioning/",
+      "evidence": [
+        "Selected validation Sharpe -1.24 and 2x excess -43.7% versus gold buy-and-hold.",
+        "Price-only trend beat positioning variants.",
+        "Local proxies lack futures roll and financing."
+      ],
+      "decision": "Stop weekly positioning family; reopen only with real futures total-return/roll data and one preregistered overlay."
+    }
+  ],
+  "historical_confirmation": {
+    "artifacts": "quant-trading/explorations/historical-confirmation/",
+    "factor_momentum_timing": "falsified: benchmark-excess cumulative -25.3% at 1x and -36.2% at 2x; data ended 2026-06-30.",
+    "crypto_carry_decay": "The frozen run appeared positive but is invalid for interpretation because post-run review found signed-funding clipping, wrong yield denominator, no independent margin collateral, gross leverage, and SOFR benchmark errors. The corrected audit supersedes only the signed-funding, collateral-termination, and zero-position findings; its benchmark/excess series is also invalid because it applies each ACT/360 daily SOFR accrual to every hourly observation.",
+    "multiple_testing": "BH/Holm over two frozen candidates cannot cover the 66 wave-one variants, historical family selection, or approximately 46,000 prior local searches."
+  },
+  "review_findings": [
+    {
+      "severity": "critical",
+      "finding": "Frozen carry parser max(rate,0) clips every negative funding rate.",
+      "path": "quant-trading/explorations/crypto-carry-decay/run.py:152"
+    },
+    {
+      "severity": "critical",
+      "finding": "Frozen carry reported funding yield against sleeve equity/2 rather than actual short notional.",
+      "path": "quant-trading/explorations/crypto-carry-decay/run.py:518-526"
+    },
+    {
+      "severity": "critical",
+      "finding": "Frozen carry invests the full sleeve in spot while reserving no separate USD-M margin; gross exposure starts near 2x and grows with price.",
+      "path": "quant-trading/explorations/crypto-carry-decay/run.py:356-369"
+    },
+    {
+      "severity": "high",
+      "finding": "Frozen carry SOFR benchmark drops weekends/holidays and uses ACT/365 instead of carried-forward ACT/360.",
+      "path": "quant-trading/explorations/crypto-carry-decay/run.py:448"
+    },
+    {
+      "severity": "critical",
+      "finding": "Corrected-audit production code returns a daily SOFR rate/360 but applies it at every hourly observation, over-accruing the cash benchmark by approximately 24x. Its report/returns benchmark and excess metrics are invalid; this does not change the observed December-2020 collateral terminations or zero 2024 position/funding.",
+      "path": "quant-trading/explorations/crypto-carry-corrected-audit/run.py:281-293,599"
+    },
+    {
+      "severity": "high",
+      "finding": "Factor pass gate tests a validation effect statistically indistinguishable from zero and uses a non-investable factor return.",
+      "path": "quant-trading/explorations/factor-momentum-timing/strategy.json"
+    }
+  ],
+  "next_round_directions": [
+    {
+      "rank": 1,
+      "id": "liquidation-post-onset-overlay",
+      "prerequisite": "None for the frozen continuation screen; it is complete and must not be extended or rescued.",
+      "mechanism": "Post-onset BTC/ETH continuation in forceOrder pressure direction after a 300-second same-symbol quiet period.",
+      "first_gate": "Twenty complete onsets with per-asset, per-side, and block minima; then six registered 5m/15m continuation gates.",
+      "current_state": "falsified at the earliest registered stop: all sample conditions met and all six gates were false"
+    },
+    {
+      "rank": 2,
+      "id": "deribit-taker-flow-gex",
+      "prerequisite": "None for the frozen same-day screen; any new test needs a separately preregistered mechanism and event-count stop.",
+      "mechanism": "Dealer-mirror taker-flow gamma versus immediately following non-overlapping 15-minute realized volatility.",
+      "first_gate": "At least 1,000 GEX-computable trades and 12 complete asset-block transitions with per-asset and per-sign minima, within a 90-minute hard cap.",
+      "current_state": "inconclusive at the hard cap: 10/12 transitions; three of four descriptive gates false; no week-long wait or promotion"
+    },
+    {
+      "rank": 3,
+      "id": "cross-venue-collateralized-carry",
+      "prerequisite": "Lawful independent 2020-2024 OKX spot, perpetual, signed-funding, fee, collateral-haircut, and settlement history.",
+      "mechanism": "Cross-venue funding term structure with preregistered collateral rebalancing, gross<=1x NAV, and independent venue collateral.",
+      "first_gate": "Positive standalone cash-benchmark excess at 2x costs with zero margin calls and both venues independently reconciled.",
+      "current_state": "blocked: entry-and-hold and 24h retarget are falsified; Binance-only 168h and 720h margins are +0.12% and +0.30%, but the required OKX conjunct is unavailable"
+    },
+    {
+      "rank": 4,
+      "id": "clean-broad-universe-trend",
+      "prerequisite": "Lawful point-in-time adjusted prices, delistings, fixed universe, and causal next-day execution.",
+      "mechanism": "Long-horizon cross-asset trend without selecting recent winners or reusing the contaminated local test.",
+      "first_gate": "Benchmark-relative mean excess and drawdown improvement on a prospective forward window; zero test-selected parameters.",
+      "current_state": "not started in the focused campaign"
+    },
+    {
+      "rank": 5,
+      "id": "investable-momentum-risk-overlay",
+      "prerequisite": "Actual ETF/futures wrapper with total returns, turnover, borrow, fees, tax, and capacity.",
+      "mechanism": "Test whether the academic factor timing result survives implementation.",
+      "first_gate": "Positive mean excess versus the actual wrapper at 2x costs; no inference from Ken French factor returns alone.",
+      "current_state": "not started in the focused campaign"
+    }
+  ],
+  "focused_campaign": {
+    "campaign": "quant-frontier-focused-2026-08-30",
+    "status": "exact-rule chronological replication complete; collectors active and nonblocking",
+    "durable_alpha_candidates": 0,
+    "ranking_basis": "information value and next falsification speed, not historical CAGR",
+    "ranked_results": [
+      {
+        "rank": 1,
+        "id": "focused-liquidation-overlay",
+        "research_status": "falsified",
+        "capture_status": "active-not-blocking",
+        "evidence": "The parent audited screen reached its registered 20-onset stop and falsified the overlay with all six gates false. The exact-rule 2026-08-31 chronological replication had 6/20 complete onsets; five directly evaluable gates were descriptively true and the both-assets gate was unknown, but sample-first truth is inconclusive and cannot reverse the parent falsification.",
+        "next_gate": "Do not extend or threshold-rescue either frozen window. The public collector may support a separately frozen future mechanism with an explicit claim boundary."
+      },
+      {
+        "rank": 2,
+        "id": "focused-deribit-gex",
+        "research_status": "inconclusive",
+        "capture_status": "active-not-blocking",
+        "evidence": "The parent audited screen stopped at 10/12 complete transitions with 1,028 GEX-computable trades and remained inconclusive. The exact-rule 2026-08-31 chronological replication again had 10/12 transitions, missed the separate 1,000-trade minimum at 732, and had all four descriptive gates false. Repeat negative evidence does not override sample-first truth.",
+        "next_gate": "Do not pool, extend, or tune the two frozen windows after outcome access. Any further test requires a separately frozen mechanism, window, stopping rule, and multiplicity boundary."
+      },
+      {
+        "rank": 3,
+        "id": "focused-cross-venue-carry",
+        "research_status": "blocked",
+        "capture_status": "not-applicable",
+        "evidence": "Corrected entry-and-hold liquidates both sleeves in December 2020 and has 0.0% 2024 position/funding/return. The 24h retarget has -0.56% 2024 2x cash excess; Binance-only 168h/720h have thin +0.12%/+0.30% margins, but required historical OKX reconciliation is unavailable.",
+        "next_gate": "No further Binance tuning. Resume only if independent lawful OKX history becomes available."
+      },
+      {
+        "rank": 4,
+        "id": "focused-crypto-cross-section",
+        "research_status": "falsified",
+        "capture_status": "not-applicable",
+        "evidence": "All six variants have an observed false development-subperiod rank-IC gate on the frozen 59-asset Binance subsample. The first held censor on 2022-02-26 makes confirmation, 2x spread, concentration, and collateral gates unknown.",
+        "next_gate": "Stop this frozen sample; do not threshold-rescue or generalize the result to the full liquid-perpetual universe."
+      }
+    ],
+    "accelerated_intraday": {
+      "contract": "quant-trading/explorations/accelerated-intraday-contract.json",
+      "hard_deadline_utc": "2026-08-30T18:31:13Z",
+      "review_status": "independently-cleared",
+      "liquidation_result": "quant-trading/explorations/focused-liquidation-overlay/fast_intraday_results.json",
+      "liquidation_status": "falsified",
+      "deribit_result": "quant-trading/explorations/focused-deribit-gex/fast_intraday_results.json",
+      "deribit_status": "inconclusive",
+      "sampling_disposition": "Complete. Neither result waits for a week: liquidation stopped at the earliest registered event-count gate; Deribit stopped at the frozen 90-minute deadline."
+    },
+    "chronological_replication": {
+      "classification": "outcome-blind retrospective chronological replication; not prospective, not confirmation, and not a rescue test",
+      "contract": "quant-trading/explorations/accelerated-intraday-replication-contract.json",
+      "contract_sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42",
+      "snapshot_manifest": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
+      "snapshot_sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0",
+      "window_utc": "[2026-08-31T00:00:00Z, 2026-08-31T01:30:00Z)",
+      "combined_result": "quant-trading/explorations/accelerated-intraday-replication-results.json",
+      "liquidation_result": "quant-trading/explorations/focused-liquidation-overlay/replication_20260831_results.json",
+      "liquidation_status": "inconclusive",
+      "deribit_result": "quant-trading/explorations/focused-deribit-gex/replication_20260831_results.json",
+      "deribit_status": "inconclusive",
+      "decision": "No status promotion. The liquidation parent remains falsified; Deribit remains inconclusive with repeat negative descriptive evidence."
+    },
+    "active_processes": [
+      {
+        "name": "quant-liquidation-capture",
+        "output": "quant-trading/data/raw/focused/live/liquidations-persistent",
+        "persist": true,
+        "detached": false,
+        "restart": "no"
+      },
+      {
+        "name": "quant-deribit-gex-capture",
+        "output": "quant-trading/data/raw/focused/live/deribit",
+        "persist": true,
+        "detached": false,
+        "restart": "no"
+      }
+    ]
+  },
+  "forty_percent_disposition": "No explored result supports a 40% net annual-return claim. Searching further against historical CAGR is prohibited; future strategies advance only through mechanism, benchmark excess, cost/collateral realism, and prospective forward evidence.",
+  "freeze_disposition": {
+    "freeze_artifact": "quant-trading/explorations/freeze.json",
+    "freeze_sha256_at_creation": "f4ffef40ae43c9037c4bd4d0649a8f5c576ea6672cce6d8af1c2fe239ed3749a",
+    "frozen_files_mutated": false,
+    "surviving_candidates": 0,
+    "candidates": {
+      "crypto-carry-decay": {
+        "disposition": "invalidated",
+        "reason": "Post-freeze audit found negative-rate clipping, wrong notional denominator, missing independent margin collateral, gross leverage, and SOFR accrual errors. The corrected engine terminated both sleeves in December 2020 and therefore has 0.0% funding yield in 2024; the 12.38%-13.87% figures belong only to an inadmissible arithmetic-only frozen-path counterfactual. The corrected-audit benchmark/excess series is separately invalid because a daily SOFR accrual is applied hourly.",
+        "superseding_artifact": "quant-trading/explorations/crypto-carry-corrected-audit/results.json"
+      },
+      "factor-momentum-timing": {
+        "disposition": "falsified",
+        "reason": "Historical-confirmation benchmark excess was negative and the validation mean excess was statistically indistinguishable from zero; the tested return is not directly investable.",
+        "superseding_artifact": "quant-trading/explorations/historical-confirmation/results.json"
+      }
+    }
+  },
+  "artifact_index": [
+    {
+      "id": "btc-eth-relative-value",
+      "directory": "quant-trading/explorations/btc-eth-relative-value",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 8,
+      "return_rows": 366,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "cftc-positioning",
+      "directory": "quant-trading/explorations/cftc-positioning",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 8,
+      "return_rows": 53,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "crypto-basis-convergence",
+      "directory": "quant-trading/explorations/crypto-basis-convergence",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 9,
+      "return_rows": 8760,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "crypto-carry-corrected-audit",
+      "directory": "quant-trading/explorations/crypto-carry-corrected-audit",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 4,
+      "return_rows": 577,
+      "disposition": "Corrected restatement falsifies the unchanged funding gate and records the collateral terminations/zero 2024 position, but its SOFR benchmark and excess-return series are invalid because daily accrual is applied hourly."
+    },
+    {
+      "id": "crypto-carry-decay",
+      "directory": "quant-trading/explorations/crypto-carry-decay",
+      "artifact_status": "validation-pass",
+      "final_status": "invalidated",
+      "trial_count": 4,
+      "return_rows": 366,
+      "disposition": "Frozen files preserved; superseded by corrected accounting audit."
+    },
+    {
+      "id": "crypto-microstructure-execution",
+      "directory": "quant-trading/explorations/crypto-microstructure-execution",
+      "artifact_status": "inconclusive",
+      "final_status": "inconclusive",
+      "trial_count": 3,
+      "return_rows": 4,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "crypto-trend-vol",
+      "directory": "quant-trading/explorations/crypto-trend-vol",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 6,
+      "return_rows": 366,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "event-semantics",
+      "directory": "quant-trading/explorations/event-semantics",
+      "artifact_status": "blocked",
+      "final_status": "blocked",
+      "trial_count": 4,
+      "return_rows": 0,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "factor-momentum-timing",
+      "directory": "quant-trading/explorations/factor-momentum-timing",
+      "artifact_status": "validation-pass",
+      "final_status": "falsified",
+      "trial_count": 8,
+      "return_rows": 3774,
+      "disposition": "Validation-pass label overturned by statistical review and historical confirmation."
+    },
+    {
+      "id": "frozen-cross-asset-trend-audit",
+      "directory": "quant-trading/explorations/frozen-cross-asset-trend-audit",
+      "artifact_status": "inconclusive",
+      "final_status": "ineligible",
+      "trial_count": 0,
+      "return_rows": 3174,
+      "disposition": "Audit found causal-signal and provenance defects; no candidate."
+    },
+    {
+      "id": "funding-crowding",
+      "directory": "quant-trading/explorations/funding-crowding",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 8,
+      "return_rows": 8784,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "macro-crypto-regime",
+      "directory": "quant-trading/explorations/macro-crypto-regime",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 8,
+      "return_rows": 1614,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "volatility-risk-premium",
+      "directory": "quant-trading/explorations/volatility-risk-premium",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 4,
+      "return_rows": 1109,
+      "disposition": "Use the ranked evidence decision."
+    },
+    {
+      "id": "focused-cross-venue-carry",
+      "directory": "quant-trading/explorations/focused-cross-venue-carry",
+      "artifact_status": "blocked",
+      "final_status": "blocked",
+      "trial_count": 4,
+      "return_rows": 366,
+      "disposition": "Mixed Binance-only retarget results; required OKX reconciliation unavailable. No durable-alpha claim."
+    },
+    {
+      "id": "focused-crypto-cross-section",
+      "directory": "quant-trading/explorations/focused-crypto-cross-section",
+      "artifact_status": "falsified",
+      "final_status": "falsified",
+      "trial_count": 6,
+      "return_rows": 2190,
+      "disposition": "Falsified only on the frozen 59-asset subsample by observed development rank-IC failures; confirmation gates are unknown after censoring."
+    },
+    {
+      "id": "focused-liquidation-overlay",
+      "directory": "quant-trading/explorations/focused-liquidation-overlay",
+      "artifact_status": "falsified",
+      "final_status": "falsified-parent-screen; replication-inconclusive",
+      "trial_count": 6,
+      "return_rows": 0,
+      "disposition": "The parent registered screen met every sample condition and all six gates were false. The exact-rule chronological replication had only 6/20 complete onsets and cannot reverse that falsification; do not pool, extend, or threshold-rescue either window."
+    },
+    {
+      "id": "focused-deribit-gex",
+      "directory": "quant-trading/explorations/focused-deribit-gex",
+      "artifact_status": "inconclusive",
+      "final_status": "inconclusive-parent-and-replication",
+      "trial_count": 0,
+      "return_rows": 0,
+      "disposition": "Both frozen 90-minute windows stopped at 10/12 transitions. The replication also missed its 1,000-trade minimum at 732 and all four descriptive gates were false; sample-first truth remains inconclusive, with no promotion or retrospective extension."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+ "artifact": "stage-a float64 reproduction of Alman25 SODA25 verifier at released point W1.00_2.371339.mat",
+ "params_sha256": "f23369136314cc51497d0c468c00d69a02b74d2b665073b9f934240ab428b46f",
+ "n_params": 24855,
+ "omega_in_file": 2.3713389005434182,
+ "published": 2.371339,
+ "abs_delta": 9.94565816370141e-08,
+ "max_c_violation": 1.1374110912366195e-10,
+ "max_ceq_violation": 2.389974329553013e-11,
+ "combined_max_violation": 1.1374110912366195e-10,
+ "verdict_tolerances": {
+  "verify_1.1e-6": "OK",
+  "refine_1.1e-9": "OK"
+ },
+ "schonhage_line": "value - 2^(L-1)*ln(q+2) = -6.2e-15 (REQUIRED >= 0; violated at half-ulp float noise; part of the feasibility gap per pre_statement Addendum A3)"
+}

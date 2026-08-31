@@ -1,0 +1,41 @@
+{
+  "campaign": "Task0 witness resolution + Task1 cross-encodings",
+  "utc": "2026-08-30T010534Z",
+  "agent": "Mm3",
+  "priority_zero_outcome": {
+    "question": "Does Sun's 13-addition left circuit realize the 55-paper's V factor map (refuting C(V)=14)?",
+    "witness_test": "Sun's printed left SLP (his shipped verify.py SIDES + his printed Section 4 text) expanded through an independent Brent check: 729/729 identities over Z, all-ternary \u2014 the circuit is real and correct",
+    "target_identity": "Sun's U-map set != paper U/V/W maps (false as sets, as sign-free multisets, under the T involution, under entry-transposition); product triples share 0 common elements with sigma=(V,W^T,U^T) of the paper's factors up to per-vector signs",
+    "resolution": "CONVENTION/DECOMPOSITION mismatch: Sun optimizes a DIFFERENT rank-23 decomposition of the same tensor, not a reorientation. His 13 'left' = HIS U-map. The 55-paper's V=14 claim is untouched. NO published contradiction.",
+    "independent_confirmation_of_sun": "my DFS on Sun's own factors: U d=12 floor-impossible (lb=13, matches his claim); V d=11 pure-impossible AND aux-1-at-12 impossible (338 aux candidates exhaustive), matching his verifier's 'V_aux1_at_12_possible: False'"
+  },
+  "self_correction": {
+    "found": "aux-1 extension run exhaustively on the 55-paper's blocks: aux1-possible=True for paperU/paperV/paperW",
+    "implication": "floor argument gives C>d(F); achievability at d+1 from the paper's circuits (gate A-verified). Combined: C=d+1 stands. Recorded sharpening: the gate-B lower-bound proof is floor-impossibility + explicit witness (not aux-impossibility).",
+    "verdict_unchanged": "C(U)=13, C(V)=14, C(W factor)=14"
+  },
+  "cross_encodings_at_T_exactly_d": {
+    "U": {
+      "dF": 12,
+      "HiGHS": "Infeasible",
+      "CaDiCaL153": "UNSAT (vars 396, clauses 1440)"
+    },
+    "V": {
+      "dF": 13,
+      "HiGHS": "Infeasible",
+      "CaDiCaL153": "UNSAT (vars 468, clauses 1807)"
+    },
+    "Wf": {
+      "dF": 13,
+      "HiGHS": "Infeasible",
+      "CaDiCaL153": "UNSAT (vars 481, clauses 1820)"
+    },
+    "note": "three independent decision procedures (subset-DFS, HiGHS ILP, CaDiCaL153 SAT) AGREE on all three floor-impossibility results"
+  },
+  "environment": {
+    "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "highspy": "installed",
+    "pysat": "1.9.dev15 CaDiCaL153"
+  }
+}

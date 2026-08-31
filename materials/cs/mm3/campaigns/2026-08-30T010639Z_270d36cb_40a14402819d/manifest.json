@@ -1,0 +1,28 @@
+{
+  "campaign": "Gate C orientation sweep (Task 2) under frozen pre-statement budget",
+  "utc": "see dirname",
+  "agent": "Mm3",
+  "sweep_set_statement": "The cyclic automorphism sigma=(U,V,W)->(V,W^T,U^T) has order 3; pure (U,V)-swap variants are NOT valid decompositions of A\u00b7B (they compute B\u00b7A) and are excluded. Swept set = {Id, sigma, sigma^2} acting on the 55-paper's cr58 factors. This is the complete valid sigma-orbit of the decomposition \u2014 a PARTIAL sweep of the abstract orientation space; per repo rule 7 no universal claim.",
+  "method": "per rotation: three factor maps; per map: exact d(F) + complete floor-DFS + (where needed) transposition of certified circuit costs; totals = sum of certified per-side optima",
+  "results": {
+    "r0_Id": {
+      "total_certified": 55,
+      "split": "13/14/28"
+    },
+    "r1_sigma^1": {
+      "total_certified": 57,
+      "split": "14/14/29"
+    },
+    "r2_sigma^2": {
+      "total_certified": 57,
+      "split": "14/13/30"
+    }
+  },
+  "verdict": "NEGATIVE for the record: no swept orientation admits a certified total <= 54. The 55-addition orientation is the certified optimum of its own sigma-orbit. The certified per-orientation landscape {55, 57, 57} is, to repo knowledge, the first machine-checked map of its kind for rank-23 3x3.",
+  "evidence_label": "MACHINE-VERIFIED (per-side: complete floor-DFS + gate-A-verified witnesses + transposition principle; totals therefore certified)",
+  "scope_limits": "swaps excluded (invalid); other decompositions (e.g., Sun's) not swept for <=54 here \u2014 Sun's own totals 13+13+30=56 certified for HIS factors",
+  "environment": {
+    "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O"
+  }
+}

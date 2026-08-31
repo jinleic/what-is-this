@@ -1,0 +1,547 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-2026-08-29",
+  "evaluator": "historical-confirmation/evaluate.py (deterministic, stdlib-only)",
+  "protocol": {
+    "source": "explorations/freeze.json + explorations/protocol-amendment.json",
+    "window_semantics": "historical confirmation (parameter-embargoed, NOT epistemically blind); only the forward shadow from 2026-08-29 is genuinely untouched",
+    "requested_window": [
+      "2025-01-01",
+      "2026-07-31"
+    ],
+    "candidates_m": 2,
+    "test_statistic": "HAC (Newey-West) annualized mean benchmark-excess return",
+    "bootstrap": {
+      "replicates": 10000,
+      "seed": 20260829,
+      "block_daily_observations": 20,
+      "block_hourly_hours": 168
+    },
+    "corrections": {
+      "benjamini_hochberg_q": 0.1,
+      "holm_alpha": 0.05
+    }
+  },
+  "hash_integrity": {
+    "freeze_json": {
+      "expected": "f4ffef40ae43c9037c4bd4d0649a8f5c576ea6672cce6d8af1c2fe239ed3749a",
+      "actual": "f4ffef40ae43c9037c4bd4d0649a8f5c576ea6672cce6d8af1c2fe239ed3749a",
+      "match": true
+    },
+    "protocol_amendment.json": {
+      "expected": "42c3306d1b5d614bf5561c3e89e0182026a6e8001c41c1c130b5b989a5662567",
+      "actual": "42c3306d1b5d614bf5561c3e89e0182026a6e8001c41c1c130b5b989a5662567",
+      "match": true
+    },
+    "pre_run_record": {
+      "schema_version": 1,
+      "performed_at": "2026-08-29",
+      "verify_command": "cd quant-trading/explorations && shasum -a 256 freeze.json protocol-amendment.json ../data/manifest.json <per-candidate files> (shasum output shown in session log; recomputed independently by evaluate.py at every invocation)",
+      "verified_before_run": true,
+      "rejected_before_run": false,
+      "freeze_json": {
+        "expected_canonical_sha256": "f4ffef40ae43c9037c4bd4d0649a8f5c576ea6672cce6d8af1c2fe239ed3749a",
+        "actual_sha256": "f4ffef40ae43c9037c4bd4d0649a8f5c576ea6672cce6d8af1c2fe239ed3749a",
+        "match": true
+      },
+      "protocol_amendment.json": {
+        "expected_from_freeze": "42c3306d1b5d614bf5561c3e89e0182026a6e8001c41c1c130b5b989a5662567",
+        "actual_sha256": "42c3306d1b5d614bf5561c3e89e0182026a6e8001c41c1c130b5b989a5662567",
+        "match": true
+      },
+      "data_manifest.json": {
+        "expected_from_contract": "e1b760e96ba7d71a70188afdfa171db6ff33621d64f769fe182b37645f70a72d",
+        "actual_sha256": "e1b760e96ba7d71a70188afdfa171db6ff33621d64f769fe182b37645f70a72d",
+        "match": true
+      },
+      "candidates": {
+        "crypto-carry-decay": {
+          "strategy.json": {
+            "expected": "fb1c9f941f8affbdc9f2d7e69d54e52a1706e6bd07e6d076db932681ca128cd0",
+            "match": true
+          },
+          "trials.json": {
+            "expected": "bc131e5e769be7fe50f59b10c93ceef2acddbbf841834002ada6183c075ca27e",
+            "match": true
+          },
+          "run.py": {
+            "expected": "dc596e477faba10ee5b758f1a4ee183780007789c72195562c64e93a63e943d2",
+            "match": true
+          },
+          "returns.csv": {
+            "expected": "3935135bab3d1292f6347fea51cb1f94952711f41aa9e7f1b6080778797f4f70",
+            "match": true
+          },
+          "all_match": true
+        },
+        "factor-momentum-timing": {
+          "strategy.json": {
+            "expected": "c7f9997479871e68831979bc00acad0557b3e4e2734f45bde9ae30912df16a45",
+            "match": true
+          },
+          "trials.json": {
+            "expected": "9caabf5abd8449cf8a1bb43dc05f35fee8a673c349543d9a0f35e9557380251e",
+            "match": true
+          },
+          "run.py": {
+            "expected": "9313a81d264968417b357f0c290426cb73b13c7ba7d5230f51097f91adce5f4f",
+            "match": true
+          },
+          "returns.csv": {
+            "expected": "4dfe6055c94c1ab348785aab856681acb93dcd49a645209011263a521e216b73",
+            "match": true
+          },
+          "all_match": true
+        }
+      },
+      "unlock_decision": "All 11 hashes verified before QUANT_HOLDOUT_UNLOCK=1 was set; both candidates then ran exactly once with the freeze.json documented commands."
+    },
+    "all_candidates_verified": true,
+    "per_candidate": {
+      "crypto-carry-decay": {
+        "strategy.json": {
+          "expected": "fb1c9f941f8affbdc9f2d7e69d54e52a1706e6bd07e6d076db932681ca128cd0",
+          "actual": "fb1c9f941f8affbdc9f2d7e69d54e52a1706e6bd07e6d076db932681ca128cd0",
+          "match": true
+        },
+        "trials.json": {
+          "expected": "bc131e5e769be7fe50f59b10c93ceef2acddbbf841834002ada6183c075ca27e",
+          "actual": "bc131e5e769be7fe50f59b10c93ceef2acddbbf841834002ada6183c075ca27e",
+          "match": true
+        },
+        "run.py": {
+          "expected": "dc596e477faba10ee5b758f1a4ee183780007789c72195562c64e93a63e943d2",
+          "actual": "dc596e477faba10ee5b758f1a4ee183780007789c72195562c64e93a63e943d2",
+          "match": true
+        },
+        "returns.csv": {
+          "expected": "3935135bab3d1292f6347fea51cb1f94952711f41aa9e7f1b6080778797f4f70",
+          "actual": "3935135bab3d1292f6347fea51cb1f94952711f41aa9e7f1b6080778797f4f70",
+          "match": true
+        }
+      },
+      "factor-momentum-timing": {
+        "strategy.json": {
+          "expected": "c7f9997479871e68831979bc00acad0557b3e4e2734f45bde9ae30912df16a45",
+          "actual": "c7f9997479871e68831979bc00acad0557b3e4e2734f45bde9ae30912df16a45",
+          "match": true
+        },
+        "trials.json": {
+          "expected": "9caabf5abd8449cf8a1bb43dc05f35fee8a673c349543d9a0f35e9557380251e",
+          "actual": "9caabf5abd8449cf8a1bb43dc05f35fee8a673c349543d9a0f35e9557380251e",
+          "match": true
+        },
+        "run.py": {
+          "expected": "9313a81d264968417b357f0c290426cb73b13c7ba7d5230f51097f91adce5f4f",
+          "actual": "9313a81d264968417b357f0c290426cb73b13c7ba7d5230f51097f91adce5f4f",
+          "match": true
+        },
+        "returns.csv": {
+          "expected": "4dfe6055c94c1ab348785aab856681acb93dcd49a645209011263a521e216b73",
+          "actual": "4dfe6055c94c1ab348785aab856681acb93dcd49a645209011263a521e216b73",
+          "match": true
+        }
+      }
+    },
+    "note": "verification performed before QUANT_HOLDOUT_UNLOCK=1 (recorded in hash_verification.json) and recomputed at evaluate time; both passed so both candidates ran once"
+  },
+  "data_coverage_note": "crypto-carry-decay ran the full requested window (emitted through 2026-07-31). factor-momentum-timing ran the full requested window through the last observation in its hash-frozen data vintage (2026-06-30); the frozen run.py caps parsed data at HARD_DATA_MAX=20260630. No frozen file was altered and no rerun was performed.",
+  "candidates": {
+    "crypto-carry-decay": {
+      "group": "carry_complex",
+      "directory": "quant-trading/explorations/crypto-carry-decay",
+      "evaluation_command": "QUANT_HOLDOUT_UNLOCK=1 python run.py --start 2025-01-01 --end 2026-07-31 --output-dir ../historical-confirmation/crypto-carry-decay",
+      "run_outputs": {
+        "exit_status": 0,
+        "invoked": "python3 run.py --start 2025-01-01 --end 2026-07-31 --output-dir ../historical-confirmation/crypto-carry-decay",
+        "stdout_log": "historical-confirmation/crypto-carry-decay.stdout.log",
+        "stderr_log": "historical-confirmation/crypto-carry-decay.stderr.log",
+        "reruns_for_metrics": 0
+      },
+      "window": {
+        "requested": [
+          "2025-01-01",
+          "2026-07-31"
+        ],
+        "actual_first_date": "2025-01-01",
+        "actual_last_date": "2026-07-31",
+        "n_observations_daily": 577,
+        "note": null
+      },
+      "cost_model_frozen": {
+        "spot_one_way_bps": 12.0,
+        "perp_one_way_bps": 7.0,
+        "stress_multiplier": 2.0,
+        "application": "One-way taker fees incl. slippage on traded notional, charged to sleeve cash at entry (both legs), scheduled rebalance opens (delta notional, both legs), and final liquidation (both legs). Stressed run doubles all fees. Funding is never a 'cost' line: it is strategy income with exact short sign.",
+        "entry_fee_note": "Entry sized so sleeve cash is exactly zero after fees: K = sleeve_equity/(1+spot+perp fee fraction), i.e. fees reduce invested notional, not borrowed cash.",
+        "source": "quant-trading/explorations/contract.json default_costs"
+      },
+      "metrics_1x": {
+        "ann_return_strategy_geo": 0.08064644293302536,
+        "ann_return_benchmark_geo": 0.02782811101094418,
+        "strategy_sharpe_ann": 14.225466340047621,
+        "strategy_max_drawdown": -0.0019507343016264,
+        "excess_cum_geo": 0.08243952922802089,
+        "excess_cum_arith": 0.0792465779898528,
+        "mean_position_col": 3.1935866464471405,
+        "total_cost_col": 0.001976
+      },
+      "hac": {
+        "n_obs": 577,
+        "mean_daily_excess": 0.0001373424228593636,
+        "mean_annualized_excess": 0.05012998434366771,
+        "newey_west_lag": 5,
+        "hac_se_daily": 1.6800484200858365e-05,
+        "hac_se_annualized": 0.00032097279997672916,
+        "t_stat": 8.174908604857146,
+        "p_value_two_sided": 2.9609023204268314e-16
+      },
+      "bootstrap": {
+        "block_size_daily_obs": 20,
+        "hourly_equivalent_note": "protocol hourly block 168h ~ 7.0 days; daily series uses the frozen daily_block_observations=20",
+        "replicates": 10000,
+        "seed": 20260829,
+        "rng_sequence": "single shared Random(20260829); consumed: carry-MBB, carry-stationary, factor-MBB, factor-stationary",
+        "moving_block": {
+          "ci95_annualized_mean_excess": [
+            0.03298659021695476,
+            0.06801432320701482
+          ],
+          "median_annualized_mean_excess": 0.04962800437983424,
+          "replicates_le_0": 0,
+          "p_bootstrap_one_sided_mean_le_0": 0.0
+        },
+        "stationary": {
+          "ci95_annualized_mean_excess": [
+            0.03070614012078757,
+            0.07171347088354223
+          ],
+          "median_annualized_mean_excess": 0.05019224893503205,
+          "replicates_le_0": 0,
+          "p_bootstrap_one_sided_mean_le_0": 0.0
+        }
+      },
+      "trial_accounting": {
+        "trial_count": 4,
+        "wave_one_budget": 4,
+        "pbo": "not computable: no per-trial return matrix exists in frozen artifacts",
+        "dsr": {
+          "sr_daily": 0.47750704949971146,
+          "sr_annualized": 9.122759371347067,
+          "skew": -0.07693768985544325,
+          "kurtosis": 15.452091671004446,
+          "psr_sr_gt_0": 1.0,
+          "full_dsr_note": "DSR requires the cross-trial variance of Sharpe ratios from per-trial return series, which the frozen artifacts do not contain; PSR(SR*=0) with skew/kurtosis correction is reported and the trial count above is the deflation input"
+        }
+      },
+      "regime_attribution": {
+        "2025H1": {
+          "window": [
+            "2025-01-01",
+            "2025-06-30"
+          ],
+          "n_obs": 181,
+          "excess_cum_geo": 0.029062355097658088,
+          "strategy_cum": 0.044173385296804035,
+          "benchmark_cum": 0.014684270709439229,
+          "strategy_sharpe": 19.298327200465817
+        },
+        "2025H2": {
+          "window": [
+            "2025-07-01",
+            "2025-12-31"
+          ],
+          "n_obs": 184,
+          "excess_cum_geo": 0.04553992126083806,
+          "strategy_cum": 0.06067407093565902,
+          "benchmark_cum": 0.014474961086680338,
+          "strategy_sharpe": 17.102938241237368
+        },
+        "2026H1": {
+          "window": [
+            "2026-01-01",
+            "2026-06-30"
+          ],
+          "n_obs": 181,
+          "excess_cum_geo": 0.005127103423459234,
+          "strategy_cum": 0.017526064128680963,
+          "benchmark_cum": 0.012335714222600602,
+          "strategy_sharpe": 12.303770915725151
+        },
+        "2026H2_to_07-31": {
+          "window": [
+            "2026-07-01",
+            "2026-07-31"
+          ],
+          "n_obs": 31,
+          "excess_cum_geo": 0.0009222617991644366,
+          "strategy_cum": 0.0031080221355055393,
+          "benchmark_cum": 0.002183746350503224,
+          "strategy_sharpe": 5.030333367202807
+        }
+      },
+      "extras": {
+        "window_hours_emitted": 13848,
+        "position_gross_notional_over_initial_capital": {
+          "mean_reported": 3.1935866457601394,
+          "semantics": "settle-to-market accounting: long spot + matched USD-M perp short; net directional delta ~0, gross = sleeve notional / initial capital"
+        },
+        "turnover_annualized_notional_turns": 1.3164619912093611,
+        "pnl_attribution_usd_per_initial_dollar": {
+          "price_pnl": -0.0019705303866643428,
+          "funding_pnl": 0.6171133937393367,
+          "fees": -0.01035642604507392,
+          "funding_plus_price_plus_fees": 0.6047864373075984
+        },
+        "funding_decay_evidence_pct_of_notional_annualized": {
+          "validation_2024": {
+            "BTCUSDT": 45.02603442267286,
+            "ETHUSDT": 47.869266908957556
+          },
+          "confirmation_2025_2026": {
+            "BTCUSDT": 19.860951109839196,
+            "ETHUSDT": 12.841595079974407
+          }
+        },
+        "reviewer_interpretation_warning": {
+          "source": "read-only reviewer agent CarryAccountingReview (2026-08-29); cited code sites independently re-verified in the frozen run.py by the evaluator; sign wording corrected per reviewer follow-up",
+          "severity": "interpretation-affecting; does not alter the frozen strategy, run, or emitted outputs",
+          "run.py:152 funding clip": "parse_funding keeps max(rate, 0.0) per standalone 8h funding event (reviewer confirms ZERO snap collisions across BTC/ETH raw files, so first_seen semantics are irrelevant): each standalone negative rate is clipped to 0. Sign convention (funding payment = -q_p*P*r with short q_p<0): SHORT RECEIVES when r>0, SHORT PAYS when r<0. Clipping negative rates to 0 therefore suppresses payments the short would make in negative-funding regimes, which OVERSTATES P&L (income is not affected; the error removes a cost). Reviewer's 2024 overstatement recompute: BTC +0.00722824, ETH +0.00427122 (quantified in the reviewer's own writeup)",
+          "run.py:518,526-528 yield denominator": "funding_ann_pct_of_notional divides PnL by eq_close/2 (half current equity), not the actual fixed |q_p|*P perp-leg notional; because equity compounds, the reported 45.0%/47.9% (validation) and 19.9%/12.8% (confirmation) annualized funding-yield figures are not true per-notional yields",
+          "reviewer_recomputation": "raw 2024 funding yields recompute to BTC 12.382%, ETH 13.867%, pair 13.13-13.28% (as reported in the reviewer message), not the reported ~46%; the reviewer flags the wave-one 15% funding-yield gate as effectively reversed by this"
+        },
+        "identity_residuals": {
+          "gross": 2.930988785010413e-14,
+          "net": -2.5757174171303632e-14,
+          "stress_2x": 8.881784197001252e-16
+        },
+        "fee_events": 4,
+        "funding_events": {
+          "credited": 13142,
+          "dropped": 4
+        },
+        "cost_stress_2x": {
+          "excess_cum_geo": 0.0838616692283447,
+          "excess_cum_arith": 0.07739136464618618,
+          "sharpe": 5.52085350701091,
+          "max_drawdown": -0.004072898362775246,
+          "turnover_annualized_notional_turns": 1.319068389395949,
+          "note": "simulated inside the frozen run.py (STRESS_MULT=2.0); evaluator did not re-run"
+        },
+        "carry_family_trial_accounting_note": "carry_complex family trials: crypto-carry-decay 4 + crypto-basis-convergence 9 + funding-crowding 8 = 21 (family members were falsified in wave one and contribute trials under the protocol trial-accounting rule)"
+      },
+      "multiple_testing": {
+        "m_candidates": 2,
+        "raw_p_value_two_sided": 2.9609023204268314e-16,
+        "holm_adjusted_p": 5.921804640853663e-16,
+        "holm_alpha": 0.05,
+        "holm_reject_zero_mean_excess": true,
+        "bh_adjusted_p": 5.921804640853663e-16,
+        "bh_q": 0.1,
+        "bh_discover": true,
+        "caution": "FDR-only rejection (BH) is discovery, not strong confirmation; Holm family-wise is the strong-confirmation criterion per protocol-amendment.json. BH treats rejection either direction (the two-sided HAC p-value): a rejected NEGATIVE mean excess is evidence of underperformance, not alpha."
+      },
+      "verdict": "confirmed_under_holm_within_historical_confirmation",
+      "verdict_basis": "HAC raw p=2.96e-16 rejects zero mean excess at Holm alpha=0.05 across m=2 candidates; excess positive at both 1x and frozen-run 2x cost"
+    },
+    "factor-momentum-timing": {
+      "group": "factor_timing",
+      "directory": "quant-trading/explorations/factor-momentum-timing",
+      "evaluation_command": "QUANT_HOLDOUT_UNLOCK=1 python run.py --start 2025-01-01 --end 2026-07-31 --output-dir ../historical-confirmation/factor-momentum-timing",
+      "run_outputs": {
+        "exit_status": 0,
+        "invoked": "python3 run.py --start 2025-01-01 --end 2026-07-31 --output-dir ../historical-confirmation/factor-momentum-timing",
+        "stdout_log": "historical-confirmation/factor-momentum-timing.stdout.log",
+        "stderr_log": "historical-confirmation/factor-momentum-timing.stderr.log",
+        "reruns_for_metrics": 0
+      },
+      "window": {
+        "requested": [
+          "2025-01-01",
+          "2026-07-31"
+        ],
+        "actual_first_date": "2025-01-02",
+        "actual_last_date": "2026-06-30",
+        "n_observations_daily": 373,
+        "note": "frozen inputs end at data-vintage boundary 2026-06-30; candidate ran to the last observation its frozen data contains - no code or data changes were made"
+      },
+      "cost_model_frozen": {
+        "one_way_bps": 5.0,
+        "application": "cost_t = |w_t - w_{t-1}| * 5bps, charged on NAV",
+        "stress": "2x => 10bps per unit turnover",
+        "turnover_validation": {
+          "ann_turnover_1w": 1.6,
+          "state_flips_per_year": 1.27,
+          "ann_cost_drag_pct": 0.0801
+        },
+        "note": "Cost is on the overlay rebalance weight change, not notional-pair turnover of an underlying stock portfolio; factor spreads internally rebalance continuously. This understates live implementation cost if the vehicle is a high-spread ETP; state flips are only 1.27/yr so the drag is small at the modeled level."
+      },
+      "metrics_1x": {
+        "ann_return_strategy_geo": 0.06155978437003262,
+        "ann_return_benchmark_geo": 0.41193523189206505,
+        "strategy_sharpe_ann": 1.1217256433011,
+        "strategy_max_drawdown": -0.04631688228242936,
+        "excess_cum_geo": -0.2528381024149705,
+        "excess_cum_arith": -0.2741150889617263,
+        "mean_position_col": 0.16273619302949063,
+        "total_cost_col": 0.00177772
+      },
+      "hac": {
+        "n_obs": 373,
+        "mean_daily_excess": -0.0007348929998973896,
+        "mean_annualized_excess": -0.2682359449625472,
+        "newey_west_lag": 5,
+        "hac_se_daily": 0.0004312990256155837,
+        "hac_se_annualized": 0.008239956314592175,
+        "t_stat": -1.7039060054645216,
+        "p_value_two_sided": 0.0883986488875714
+      },
+      "bootstrap": {
+        "block_size_daily_obs": 20,
+        "hourly_equivalent_note": "protocol hourly block 168h ~ 7.0 days; daily series uses the frozen daily_block_observations=20",
+        "replicates": 10000,
+        "seed": 20260829,
+        "rng_sequence": "single shared Random(20260829); consumed: carry-MBB, carry-stationary, factor-MBB, factor-stationary",
+        "moving_block": {
+          "ci95_annualized_mean_excess": [
+            -0.5333132080205764,
+            0.005076937185704133
+          ],
+          "median_annualized_mean_excess": -0.25299341401390024,
+          "replicates_le_0": 9723,
+          "p_bootstrap_one_sided_mean_le_0": 0.9723
+        },
+        "stationary": {
+          "ci95_annualized_mean_excess": [
+            -0.5412900147166608,
+            -0.015304397425109787
+          ],
+          "median_annualized_mean_excess": -0.2644976330950299,
+          "replicates_le_0": 9815,
+          "p_bootstrap_one_sided_mean_le_0": 0.9815
+        }
+      },
+      "trial_accounting": {
+        "trial_count": 8,
+        "wave_one_budget": 8,
+        "pbo": "not computable: no per-trial return matrix exists in frozen artifacts",
+        "dsr": {
+          "sr_daily": -0.0762007787697995,
+          "sr_annualized": -1.4558138342762899,
+          "skew": 0.6378350849822609,
+          "kurtosis": 4.4011686131017695,
+          "psr_sr_gt_0": 0.07608975497077577,
+          "full_dsr_note": "DSR requires the cross-trial variance of Sharpe ratios from per-trial return series, which the frozen artifacts do not contain; PSR(SR*=0) with skew/kurtosis correction is reported and the trial count above is the deflation input"
+        }
+      },
+      "regime_attribution": {
+        "2025H1": {
+          "window": [
+            "2025-01-02",
+            "2025-06-30"
+          ],
+          "n_obs": 122,
+          "excess_cum_geo": -0.07445024560316793,
+          "strategy_cum": -0.011949878875226139,
+          "benchmark_cum": 0.06752783027712184,
+          "strategy_sharpe": -0.8005071903597463
+        },
+        "2025H2": {
+          "window": [
+            "2025-07-01",
+            "2025-12-31"
+          ],
+          "n_obs": 128,
+          "excess_cum_geo": 0.009649728469699914,
+          "strategy_cum": 0.03182677487933261,
+          "benchmark_cum": 0.021965089262437454,
+          "strategy_sharpe": 2.002612461267043
+        },
+        "2026H1": {
+          "window": [
+            "2026-01-02",
+            "2026-06-30"
+          ],
+          "n_obs": 123,
+          "excess_cum_geo": -0.2004526030579442,
+          "strategy_cum": 0.04262307958844902,
+          "benchmark_cum": 0.30401660186257895,
+          "strategy_sharpe": 1.7820991739233152
+        },
+        "2026H2_to_07-31": {
+          "n_obs": 0,
+          "note": "no emitted observations in this segment (data vintage gap)"
+        }
+      },
+      "extras": {
+        "position_weight": {
+          "mean": 0.163,
+          "frac_days_at_full": 0.0,
+          "range": [
+            0.0,
+            0.496
+          ],
+          "semantics": "fraction of NAV in the vol-managed gated MOM sleeve; remainder in RF cash"
+        },
+        "turnover": {
+          "ann_turnover_1w": 2.4021,
+          "sum_emitted_csv": 3.555474
+        },
+        "cost_stress_2x": {
+          "excess_cum": -0.361587,
+          "note": "simulated inside the frozen run.py (COST_BPS*2 = 10bps); evaluator did not re-run"
+        },
+        "first_falsification_gate": {
+          "sharpe_exceeds_benchmark": false,
+          "excess_positive_at_2x_costs": false,
+          "dd_below_benchmark_and_vol_within_target_tol": true,
+          "overall": "fail"
+        },
+        "selection_vs_outcome": {
+          "validation_2010_2024_excess_cum": 0.497119,
+          "note": "strategy.json validation cum 0.91977 vs benchmark 0.422651 (positive excess); confirmation window flips excess negative - recent-horizon deterioration"
+        },
+        "factor_investability_note": "strategy and benchmark returns are Ken French research factor returns (RF cash + MOM long-short sleeve); underlying portfolio turnover and borrow costs are not directly investable (frozen review list)"
+      },
+      "multiple_testing": {
+        "m_candidates": 2,
+        "raw_p_value_two_sided": 0.0883986488875714,
+        "holm_adjusted_p": 0.0883986488875714,
+        "holm_alpha": 0.05,
+        "holm_reject_zero_mean_excess": false,
+        "bh_adjusted_p": 0.0883986488875714,
+        "bh_q": 0.1,
+        "bh_discover": true,
+        "caution": "FDR-only rejection (BH) is discovery, not strong confirmation; Holm family-wise is the strong-confirmation criterion per protocol-amendment.json. BH treats rejection either direction (the two-sided HAC p-value): a rejected NEGATIVE mean excess is evidence of underperformance, not alpha."
+      },
+      "verdict": "falsified",
+      "verdict_basis": "confirmation-window benchmark-excess cumulative return is negative (1x: -0.2528, frozen 2x-cost stress: -0.3616)"
+    }
+  },
+  "overall": {
+    "multiple_testing": {
+      "m": 2,
+      "raw_p_values": {
+        "crypto-carry-decay": 2.9609023204268314e-16,
+        "factor-momentum-timing": 0.0883986488875714
+      },
+      "holm_adjusted": {
+        "crypto-carry-decay": 5.921804640853663e-16,
+        "factor-momentum-timing": 0.0883986488875714
+      },
+      "bh_adjusted": {
+        "factor-momentum-timing": 0.0883986488875714,
+        "crypto-carry-decay": 5.921804640853663e-16
+      },
+      "holm_reject_set": [
+        "crypto-carry-decay"
+      ],
+      "bh_discovery_set": [
+        "crypto-carry-decay",
+        "factor-momentum-timing"
+      ]
+    },
+    "epistemic_status": "Historical confirmation may falsify a frozen rule but CANNOT establish prospective durable alpha: candidate families were selected in 2026 with knowledge of published and local 2025-2026 market evidence (protocol-amendment.json). Decisions to deploy require the append-only prospective forward shadow beginning 2026-08-29.",
+    "deployment_conclusion": "no candidate advances to capital deployment from historical confirmation alone"
+  }
+}

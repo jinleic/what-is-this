@@ -1,0 +1,690 @@
+{
+  "schema_version": 1,
+  "id": "focused-crypto-cross-section",
+  "title": "Listing-aware cross-sectional funding, momentum, and carry ranks on liquid Binance USD-M perpetuals",
+  "status": "falsified",
+  "mechanism": {
+    "summary": "At each UTC close, rank only point-in-time eligible perpetuals. Form a 0.5x-gross equal-weight long basket from the top five and a 0.5x-gross short basket from the bottom five; execute one day later. Six frozen score definitions are evaluated without threshold rescue.",
+    "registered_variants": [
+      "momentum",
+      "signed funding",
+      "momentum plus funding",
+      "funding change",
+      "volatility-scaled momentum",
+      "liquidity-conditioned composite"
+    ],
+    "portfolio": "Dollar-neutral top-five/bottom-five, gross <=1.0x NAV, explicit fully collateralized Binance venue pool."
+  },
+  "data_used": {
+    "source": "Official unauthenticated Binance public data archive (data.binance.vision)",
+    "datasets": [
+      "USD-M perpetual 1h klines with quote volume",
+      "USD-M signed funding events"
+    ],
+    "period": "2020-08-01 through 2026-07-31",
+    "official_symbol_prefix_snapshot": 986,
+    "usdt_symbol_prefix_snapshot": 832,
+    "coverage_probe_symbols": 135,
+    "study_assets": 59,
+    "max_point_in_time_eligible_assets": 41,
+    "raw_downloaded_bytes": 80268850,
+    "provenance": "quant-trading/data/raw/focused/cross-section/provenance/"
+  },
+  "development_window": [
+    "2020-08-01",
+    "2023-12-31"
+  ],
+  "validation_window": [
+    "2024-01-01",
+    "2024-12-31"
+  ],
+  "holdout_accessed": true,
+  "trial_count": 6,
+  "parameters": {
+    "momentum_lookback_days": 21,
+    "signed_funding_mean_days": 3,
+    "funding_change_recent_days": 3,
+    "funding_change_prior_days": 7,
+    "realized_volatility_days": 21,
+    "liquidity_lookback_days": 20,
+    "liquidity_min_observed_days": 20,
+    "liquidity_min_mean_quote_volume_usd": 5000000,
+    "minimum_cross_section_assets": 20,
+    "long_assets": 5,
+    "short_assets": 5,
+    "long_gross": 0.5,
+    "short_gross": 0.5,
+    "maximum_gross": 1.0,
+    "purge_days": 30,
+    "chronological_partitions": 6,
+    "liquidity_requires_complete_window": true,
+    "momentum_requires_complete_21_day_path": true,
+    "volatility_requires_complete_21_returns": true,
+    "funding_lookback_completeness": "fund3 requires 3/3 observed funding days; fundchg requires 10/10",
+    "dev_subperiods_non_training": true,
+    "purge_days_between_adjacent_partitions": 30
+  },
+  "signal_timing": "At close t-1 the drifted book is rebalanced/fee-solved into target[t-1] (a zero target explicitly closes the book); that exact quantity vector earns outcome day t (price return plus signed funding). The same held vector drives censoring, concentration and the collateral audit. The boundary rebalance fee is charged in period t.",
+  "cost_model": {
+    "one_x_one_way_bps_per_unit_turnover": 4.0,
+    "two_x_one_way_bps_per_unit_turnover": 8.0,
+    "funding": "Each signed event is mapped by ts//86400000 to its UTC outcome day and summed exactly. Long total return subtracts signed funding; negative funding paid by shorts remains negative in portfolio PnL.",
+    "turnover": "Drift-aware and self-financing from the explicit quantity/notional + cash/NAV ledger: fees are charged on |target notional - current drifted notional| at each close boundary, including explicit closes; emitted returns telescope exactly to final NAV.",
+    "censor_rule": "First held incomplete outcome only: all held censored assets are recorded, row t and the entire tail are marked unavailable (NaN), and the path breaks. No zero-imputation, no trade-out at an unavailable close, no finite zero tail."
+  },
+  "benchmark": {
+    "name": "Per-variant equal-weight benchmark over the identical per-asset causal signal mask",
+    "constituents": "exactly signal_opportunity[t-1]; no ex-post filtering on outcome completeness",
+    "path_stop": "benchmark path stops (NaN row and tail) if any held constituent outcome at t is incomplete",
+    "return_definition": "mean total long-perp return (price return minus signed funding) of those constituents"
+  },
+  "metrics": {
+    "rank_ic_outcome": "tie-corrected average-rank Spearman of score[t-1] vs outcome t total long-perp return (price minus signed funding); observed-pair mask = per-asset signal opportunity at t-1 AND complete outcome t; constant cross-section -> NaN",
+    "development_subperiod_rank_ics": {
+      "momentum": [
+        null,
+        -0.058964776813361396,
+        -0.10272539276369486,
+        null,
+        null,
+        null
+      ],
+      "signed_funding": [
+        null,
+        0.025959356048510174,
+        -0.0033508456048044685,
+        null,
+        null,
+        null
+      ],
+      "mom_plus_funding": [
+        null,
+        -0.0524563837674166,
+        -0.08929479104217528,
+        null,
+        null,
+        null
+      ],
+      "funding_change": [
+        null,
+        0.0037655592512223497,
+        0.013433769459137653,
+        null,
+        null,
+        null
+      ],
+      "vol_scaled_momentum": [
+        null,
+        -0.05781709013395949,
+        -0.10812354467174927,
+        null,
+        null,
+        null
+      ],
+      "liq_composite": [
+        null,
+        -0.015570038811110467,
+        -0.07543770309136774,
+        null,
+        null,
+        null
+      ]
+    },
+    "development_subperiod_available_rows": {
+      "momentum": [
+        178,
+        178,
+        128,
+        0,
+        0,
+        0
+      ],
+      "signed_funding": [
+        178,
+        178,
+        128,
+        0,
+        0,
+        0
+      ],
+      "mom_plus_funding": [
+        178,
+        178,
+        128,
+        0,
+        0,
+        0
+      ],
+      "funding_change": [
+        178,
+        178,
+        128,
+        0,
+        0,
+        0
+      ],
+      "vol_scaled_momentum": [
+        178,
+        178,
+        128,
+        0,
+        0,
+        0
+      ],
+      "liq_composite": [
+        178,
+        178,
+        128,
+        0,
+        0,
+        0
+      ]
+    },
+    "confirmation_rank_ic": {
+      "momentum": null,
+      "signed_funding": null,
+      "mom_plus_funding": null,
+      "funding_change": null,
+      "vol_scaled_momentum": null,
+      "liq_composite": null
+    },
+    "confirmation_2x_total_return": {
+      "momentum": null,
+      "signed_funding": null,
+      "mom_plus_funding": null,
+      "funding_change": null,
+      "vol_scaled_momentum": null,
+      "liq_composite": null
+    },
+    "first_censor_stop_utc": {
+      "momentum": "2022-02-26",
+      "signed_funding": "2022-02-26",
+      "mom_plus_funding": "2022-02-26",
+      "funding_change": "2022-02-26",
+      "vol_scaled_momentum": "2022-02-26",
+      "liq_composite": "2022-02-26"
+    },
+    "benchmark_stop_utc": {
+      "momentum": "2022-02-26",
+      "signed_funding": "2022-02-26",
+      "mom_plus_funding": "2022-02-26",
+      "funding_change": "2022-02-26",
+      "vol_scaled_momentum": "2022-02-26",
+      "liq_composite": "2022-02-26"
+    },
+    "available_rows_total": {
+      "momentum": 573,
+      "signed_funding": 573,
+      "mom_plus_funding": 573,
+      "funding_change": 573,
+      "vol_scaled_momentum": 573,
+      "liq_composite": 573
+    },
+    "censored_selected_outcomes": {
+      "momentum": 2,
+      "signed_funding": 3,
+      "mom_plus_funding": 2,
+      "funding_change": 2,
+      "vol_scaled_momentum": 1,
+      "liq_composite": 2
+    },
+    "final_nav_1x": {
+      "momentum": 0.8810531503148156,
+      "signed_funding": 1.4136052331935798,
+      "mom_plus_funding": 0.966488546737729,
+      "funding_change": 1.0400149281656268,
+      "vol_scaled_momentum": 0.8680674580389661,
+      "liq_composite": 1.0949894497661556
+    },
+    "detail": "trials.json, results.json, explore1_results.json, review_proofs.json"
+  },
+  "first_falsification_gate": {
+    "definition": "At least 20 point-in-time eligible assets; purged-fold rank IC >0.02; positive long-short spread at 2x costs; no asset above 25% of PnL; delisted histories retained; explicit collateral buffer has no breach.",
+    "frozen_before_confirmation": true,
+    "no_threshold_rescue": true
+  },
+  "gate_result": {
+    "result": "failed",
+    "status": "falsified",
+    "truth_table": "pass iff all required gates true; falsified if any required gate observably false (false dominates unknown); inconclusive only if no false and >=1 unknown",
+    "direction_falsified_solely_because": "every variant has an observed false development-subperiod IC gate (valid observation at or below 0.02)",
+    "confirmation_gate_status_after_stop": {
+      "note": "The first held incomplete outcome on 2022-02-26 stops every variant path; row 574 and the tail are NaN/unavailable, so these gates are UNKNOWN, not pass.",
+      "confirmation_ic": "UNKNOWN",
+      "confirmation_2x_spread": "UNKNOWN",
+      "confirmation_concentration": "UNKNOWN",
+      "confirmation_collateral_buffer": "UNKNOWN"
+    },
+    "observably_false_required_gates": {
+      "momentum": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "signed_funding": [
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "mom_plus_funding": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "funding_change": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "vol_scaled_momentum": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "liq_composite": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ]
+    },
+    "unknown_required_gates": {
+      "momentum": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "signed_funding": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "mom_plus_funding": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "funding_change": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "vol_scaled_momentum": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "liq_composite": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ]
+    },
+    "development_subperiod_rank_ics": {
+      "momentum": [
+        null,
+        -0.058964776813361396,
+        -0.10272539276369486,
+        null,
+        null,
+        null
+      ],
+      "signed_funding": [
+        null,
+        0.025959356048510174,
+        -0.0033508456048044685,
+        null,
+        null,
+        null
+      ],
+      "mom_plus_funding": [
+        null,
+        -0.0524563837674166,
+        -0.08929479104217528,
+        null,
+        null,
+        null
+      ],
+      "funding_change": [
+        null,
+        0.0037655592512223497,
+        0.013433769459137653,
+        null,
+        null,
+        null
+      ],
+      "vol_scaled_momentum": [
+        null,
+        -0.05781709013395949,
+        -0.10812354467174927,
+        null,
+        null,
+        null
+      ],
+      "liq_composite": [
+        null,
+        -0.015570038811110467,
+        -0.07543770309136774,
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  "leakage_checks": [
+    "Universe selection uses the frozen official archive prefix snapshot and deterministic archive-age/lexicographic rule, never today-listed winners.",
+    "Only unavailable funding asset-months fail closed; future missing months do not retrospectively remove earlier complete history.",
+    "Funding events use ts//86400000: exact 00:00 UTC events belong to that outcome day and never leak into prior-close features.",
+    "Signals formed at close t are applied only to next-day outcomes; minimum cross-section breadth is checked before target construction.",
+    "Rank IC outcome is next-day price return minus same-day exact signed funding, matching the perpetual mechanism before fees.",
+    "All six registered variants are enumerable; no threshold, leverage, benchmark, stop, or extra variant was introduced after gate inspection.",
+    "holdout_accessed=true because the retrospective 2025-01-01..2026-07-31 confirmation window was deliberately evaluated; no blind or prospective holdout claim is made."
+  ],
+  "risks": [
+    "137 monthly funding archive URLs returned HTTP 404 across 15 symbols; unknown funding is NaN and never imputed.",
+    "The first held incomplete outcome (2022-02-26) truncates every variant path, so validation and confirmation gates are unknown rather than measured.",
+    "Official archive first/last months are a listing/delisting proxy, not an announcement-time instrument master.",
+    "Collateral audit uses simultaneous daily long lows and short highs on available rows only; it is conservative but not a tick-level replay.",
+    "No comparable point-in-time OKX archive was obtained; adding current OKX instruments would survivor-filter.",
+    "The 59-asset sample is frozen, deterministic and nonrepresentative (no BTCUSDT/ETHUSDT); every verdict is scoped to it.",
+    "All windows are retrospective; they cannot establish durable alpha."
+  ],
+  "next_experiment": "No threshold rescue and no new variants. A future prospective campaign would need an append-only announcement-time instrument master (to avoid censor truncation) plus forward price/funding capture after 2026-08-30, then re-test the same six frozen mechanisms.",
+  "direction": "focused-crypto-cross-section",
+  "question": "Do listing-aware cross-sectional funding, momentum, and carry ranks produce stable information and a net long-short spread across liquid perpetuals?",
+  "holdout_note": "The retrospective 2025-01-01..2026-07-31 confirmation window was deliberately evaluated; it is not a blind or prospective holdout. Scope: frozen 59-asset subsample; no current winners included.",
+  "epistemic_note": "All windows are retrospective; development was performed in 2026 with knowledge of later evidence. Results may falsify mechanics but cannot confirm durable alpha.",
+  "universe": {
+    "source": "Binance official public data bucket (data.binance.vision), USD-M monthly 1h klines listing per symbol, S3 ListObjectsV2 XML preserved",
+    "delisted_retained": [
+      "1000BTTCUSDT",
+      "AKROUSDT",
+      "ANCUSDT",
+      "ANTUSDT",
+      "AUDIOUSDT",
+      "SRMUSDT"
+    ],
+    "survivor_filter": "none; assets remain in panel after last kline (delisting evidence = official archive ends)",
+    "point_in_time_rule": "Eligible at signal time t iff the complete 20-observation price/volume window ending at t is observed (no NaN, listed throughout) with mean quote volume >= $5M (complete-20 SSOT, provenance/universe_frame_note.json), AND day-t signed funding is observed, AND the variant score is finite (which requires its full registered lookback). Portfolio and benchmark constituents are drawn only from this per-asset causal signal mask.",
+    "listing_source_xml": "quant-trading/data/raw/focused/cross-section/listing/klines-symbols-page-001.xml",
+    "coverage_probe": "quant-trading/data/raw/focused/cross-section/provenance/coverage_probe_120.json",
+    "okx": "Not added: the bounded frozen acquisition did not obtain an official point-in-time listing/delisting archive comparable to Binance. Adding current OKX instruments would impose survivor filtering.",
+    "raw_study_assets": 59,
+    "official_usdm_symbol_prefixes_snapshot": 986,
+    "official_usdt_symbol_prefixes_snapshot": 832,
+    "coverage_probed_symbols": 135,
+    "selection_rule": "Within the deterministic 135-symbol official-archive coverage probe, include every USDT symbol first archived by 2022-12 plus the first 20 later symbols in lexicographic order. This uses archive age/order, not current winners. Unavailable funding asset-months alone fail closed; earlier complete histories remain eligible, so future data completeness cannot survivor-filter the past.",
+    "distinct_assets_evaluated": 59,
+    "assets_with_missing_funding_months": [
+      "1000WHYUSDT",
+      "1000XUSDT",
+      "42USDT",
+      "A2ZUSDT",
+      "ALPHAUSDT",
+      "ATAUSDT",
+      "BAKEUSDT",
+      "BALUSDT",
+      "BLZUSDT",
+      "BNXUSDT",
+      "BTCSTUSDT",
+      "LINAUSDT",
+      "SXPUSDT",
+      "UNFIUSDT",
+      "WAVESUSDT"
+    ],
+    "seasoning_rule": "complete 20 observations (canonical; identical in code, provenance and this dossier)",
+    "delisting_retention_invariant": "Delisted and failed histories are retained in the panel rows and never filtered by present-day listing status; failure evidence (archive end months) is documented in delisted_archive_end_months. This is a data invariant of the frozen universe; it is not a truth-table gate."
+  },
+  "variants": [
+    "momentum",
+    "signed_funding",
+    "mom_plus_funding",
+    "funding_change",
+    "vol_scaled_momentum",
+    "liq_composite"
+  ],
+  "method": {
+    "features": "21d return momentum, 3d mean of exact summed signed funding events, 3d-versus-prior-7d funding change, 21d realized volatility, past-20d dollar-volume liquidity; cross-sectional z-scores for composite.",
+    "execution": "signal at close t-1 -> position t (1-day delay); dollar-neutral equal-weight top5/bot5",
+    "costs": "1x: 4bp taker per unit turnover; 2x: 8bp. Every funding event is summed with its original sign: positive paid by longs/received by shorts; negative paid by shorts.",
+    "folds": "Six consecutive chronological purged subperiods over the development window (each subperiod test start advanced 30 days past its partition start; nothing is fitted, so subperiods are non-training partitions). Window rank IC uses only dates with >=20 eligible assets. The confirmation window is evaluated separately as a full-window IC.",
+    "windows": {
+      "development": "2020-08-01..2023-12-31",
+      "validation": "2024-01-01..2024-12-31",
+      "confirmation": "2025-01-01..2026-07-31"
+    },
+    "accounting": "Single Binance venue, explicit fully collateralized venue pool, derivative gross <=1.0x NAV, no borrowing, net target 0, maintenance 10% plus declared 20% isolation buffer audited against simultaneous daily extrema; no buffer breaches or liquidations.",
+    "rank_ic_outcome": "Score at close t-1 versus close[t-1] to close[t] long-perpetual price return minus every exact signed funding event timestamped on UTC day t (including 00:00, 08:00 and 16:00), before fees."
+  },
+  "gates_registered": {
+    "a_dev_subperiod_rank_ic_gt_0.02_at_every_subperiod_with_observation": true,
+    "b_confirmation_rank_ic_gt_0.02_with_observation": true,
+    "c_confirmation_2x_long_short_spread_positive": true,
+    "d_confirmation_max_single_asset_pnl_share_le_25pct": true,
+    "e_confirmation_collateral_buffer_breaches_zero": true,
+    "f_point_in_time_breadth_days_ge_20_at_least_once": true,
+    "note": "Missing or censored evidence makes a gate UNKNOWN, never false. Truth table: pass iff all gates observed true; falsified if any gate observably false; inconclusive only if no false and >=1 unknown. Delisting retention is a universe/data invariant (see universe section), not a truth-table gate."
+  },
+  "gate_outcome": {
+    "source": "regenerated from the corrected result object (results.json / explore1_results.json)",
+    "distinct_assets_evaluated": 59,
+    "max_point_in_time_eligible_assets": 41,
+    "first_censor_stop_utc": {
+      "momentum": "2022-02-26",
+      "signed_funding": "2022-02-26",
+      "mom_plus_funding": "2022-02-26",
+      "funding_change": "2022-02-26",
+      "vol_scaled_momentum": "2022-02-26",
+      "liq_composite": "2022-02-26"
+    },
+    "available_rows_total": {
+      "momentum": 573,
+      "signed_funding": 573,
+      "mom_plus_funding": 573,
+      "funding_change": 573,
+      "vol_scaled_momentum": 573,
+      "liq_composite": 573
+    },
+    "observably_false_required_gates": {
+      "momentum": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "signed_funding": [
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "mom_plus_funding": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "funding_change": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "vol_scaled_momentum": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ],
+      "liq_composite": [
+        "dev_subperiod_2_ic_gt_0.02",
+        "dev_subperiod_3_ic_gt_0.02"
+      ]
+    },
+    "unknown_required_gates": {
+      "momentum": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "signed_funding": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "mom_plus_funding": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "funding_change": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "vol_scaled_momentum": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ],
+      "liq_composite": [
+        "dev_subperiod_1_ic_unknown",
+        "dev_subperiod_4_ic_unknown",
+        "dev_subperiod_5_ic_unknown",
+        "dev_subperiod_6_ic_unknown",
+        "confirmation_ic_unknown",
+        "confirmation_2x_spread_unknown",
+        "confirmation_concentration_unknown",
+        "confirmation_collateral_unknown"
+      ]
+    },
+    "development_subperiod_rank_ics": {
+      "momentum": [
+        null,
+        -0.058964776813361396,
+        -0.10272539276369486,
+        null,
+        null,
+        null
+      ],
+      "signed_funding": [
+        null,
+        0.025959356048510174,
+        -0.0033508456048044685,
+        null,
+        null,
+        null
+      ],
+      "mom_plus_funding": [
+        null,
+        -0.0524563837674166,
+        -0.08929479104217528,
+        null,
+        null,
+        null
+      ],
+      "funding_change": [
+        null,
+        0.0037655592512223497,
+        0.013433769459137653,
+        null,
+        null,
+        null
+      ],
+      "vol_scaled_momentum": [
+        null,
+        -0.05781709013395949,
+        -0.10812354467174927,
+        null,
+        null,
+        null
+      ],
+      "liq_composite": [
+        null,
+        -0.015570038811110467,
+        -0.07543770309136774,
+        null,
+        null,
+        null
+      ]
+    },
+    "confirmation_rank_ic": {
+      "momentum": null,
+      "signed_funding": null,
+      "mom_plus_funding": null,
+      "funding_change": null,
+      "vol_scaled_momentum": null,
+      "liq_composite": null
+    },
+    "confirmation_2x_spread": {
+      "momentum": null,
+      "signed_funding": null,
+      "mom_plus_funding": null,
+      "funding_change": null,
+      "vol_scaled_momentum": null,
+      "liq_composite": null
+    },
+    "concentration_gate": "0.25 max single-asset PnL share (unknown after censor stop for all variants)",
+    "collateral_gate": "zero buffer breaches (unknown after censor stop for all variants)"
+  },
+  "verdict_basis": "Frozen truth table applied once to the production engine: direction status is falsified solely because every variant has an observed false development-subperiod IC gate. The 2022-02-26 first held incomplete outcome stops every variant path; row 574 and the tail are NaN/unavailable, so confirmation IC, 2x spread, concentration and collateral gates are UNKNOWN, not pass. Scope: frozen 59-asset subsample; retrospective evidence only; no durable-alpha or deployment claim.",
+  "benchmarks": {
+    "definition": "causal equal-weight long-only of prior-close eligible assets; detailed window values in trials.json",
+    "note": "benchmark excess is reported separately and is not the positive-spread gate"
+  },
+  "files": {
+    "strategy": "strategy.json",
+    "trials": "trials.json",
+    "runner": "run.py",
+    "returns": "returns.csv",
+    "results": "results.json",
+    "explorer": "explore1_cross_section.py"
+  },
+  "data_provenance": {
+    "raw_root": "quant-trading/data/raw/focused/cross-section",
+    "kline_zips": 2678,
+    "funding_zips_ok": 2543,
+    "funding_404_recorded": 137,
+    "bytes_downloaded": 80268850,
+    "checksums": "Computed SHA-256, byte size, URL and retrieval UTC recorded for every successful raw archive in provenance/*.json; HTTP 404s preserved as records.",
+    "retrieval_policy": "Official data.binance.vision keyless GETs; URL, retrieval UTC, bytes, SHA-256 and HTTP errors recorded in provenance/*.json; no further retries after frozen capture.",
+    "funding_incomplete_assets": 15,
+    "terms": "Binance public unauthenticated data for internal research; raw archives are not republished."
+  }
+}

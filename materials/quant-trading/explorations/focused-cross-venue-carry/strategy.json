@@ -1,0 +1,144 @@
+{
+ "benchmark": {
+  "ann_sharpe_source": "standalone daily series: n=n_days; cum=product(daily)-1; ann_return=(1+cum)**(365/n_days)-1; ann_vol=sample_std(daily)*sqrt(365); Sharpe=mean(daily)/sample_std*sqrt(365); daily max drawdown",
+  "convention_note": "no 24-way compounding; no cross-window NAV ratios; no legacy constant anywhere",
+  "name": "SOFR cash (USD) \u2014 STANDALONE-window simple ACT/360 NAV (resets to 1.0; accrues once per UTC day)",
+  "returns_csv_convention": "NAV-consistent a_d/(1 + \u03a3 prior a); geometric product of rows == 1 + \u03a3 a == SSOT exactly",
+  "validation_2024_ann_return_standalone": 0.05213516009274133,
+  "validation_2024_bench_n_days": 366,
+  "validation_2024_cum_simple_act360": 0.0522816666666665
+ },
+ "cost_model": {
+  "application": "One-way taker fees incl. slippage on traded notional: entry (both legs), retarget realignment (both legs), gross-law BOTH-leg repairs, margin-call and final-hour liquidations. The 2x stress doubles every fee. Funding is signed income, never a cost line."
+ },
+ "cross_venue_status": {
+  "binance": "complete empirical evidence 2020-08..2024-12",
+  "okx": "BLOCKED pre-2026 (retention ~3 months); supplementary 2026-05-25..2026-08-30 history captured with SHA-256 metadata"
+ },
+ "data_used": {
+  "binance_official_archives": "data/raw/binance/{funding-rate,spot-1h,um-perp-1h}/{BTCUSDT,ETHUSDT} monthly zips 2020-08..2026-07, sha256-verified against upstream .CHECKSUM at load; 4842 signed funding events per symbol in-window; full UTC calendar 38,736 hours (per-series ff for the 19 missing 2020-2023 spot hours)",
+  "nyfed_sofr": "data/raw/macro/nyfed_sofr_2020-01-01_2026-08-28.csv (1662 publications); last published SOFR carried forward over non-publication calendar days, accrued ACT/360 exactly once per day, split as daily/24 into hourly rows",
+  "okx_blocked": "OKX official funding-rate-history retains only ~3 months (oldest reachable 2026-05-25T08:00Z): pre-2026 OKX signed funding is NOT lawfully downloadable, so the cross-venue 2020-2024 reconciliation is blocked and recorded as blocked data, never substituted.",
+  "okx_public_captured": "data/raw/focused/carry/okx/ (git-ignored): full available OKX funding history 2026-05-25T08:00Z..2026-08-30 (291 x 8h events per BTC/ETH-USDT-SWAP), instrument metadata, current funding snapshots; SHA-256 + byte size for each file in results.json.data.okx_cross_venue_feasibility.capture_files"
+ },
+ "development_window": [
+  "2020-08-01",
+  "2023-12-31"
+ ],
+ "first_falsification_gate": {
+  "authority_note": "2024 corrected-engine 0.0% reported separately; 12.38%/13.87% remains an inadmissible arithmetic-only frozen-path counterfactual, never a corrected yield.",
+  "id": "focused-carry-first-gate",
+  "per_variant": {
+   "entry-and-hold": {
+    "positive_2x_excess_2024": false,
+    "variant_status": "falsified",
+    "zero_margin_calls": false
+   },
+   "gross_le_1x_all_variants": true,
+   "retarget-168h": {
+    "okx_reconciled": false,
+    "positive_2x_excess_2024": true,
+    "variant_status": "blocked",
+    "zero_margin_calls": true
+   },
+   "retarget-24h": {
+    "positive_2x_excess_2024": false,
+    "variant_status": "falsified-on-2x",
+    "zero_margin_calls": true
+   },
+   "retarget-720h": {
+    "okx_reconciled": false,
+    "positive_2x_excess_2024": true,
+    "variant_status": "blocked",
+    "zero_margin_calls": true
+   }
+  },
+  "result": "Dossier: BLOCKED (mixed variants + unavailable OKX reconciliation). Variants: entry-and-hold FAILS zero-margin-calls (adverse intrahour-high Dec-2020 liquidations; 2024 excess -5.23% vs NAV). retarget-24h FAILS positive-2x (-0.56%). retarget-168h passes Binance-only numerics (+0.12% 2x) \u2014 OKX conjunct unavailable => blocked. retarget-720h passes Binance-only numerics (+0.30% 2x) \u2014 OKX conjunct unavailable => blocked. No winner; no deployment claim.",
+  "spec": "Zero margin calls; gross <= 1x NAV; positive cash-benchmark excess at 2x costs; both venues independently reconciled (pre-registered in focused-campaign.json)."
+ },
+ "gate_result": "blocked: mixed-variant gate outcomes (entry-and-hold falsified on zero-margin-calls; retarget-24h falsified on 2x excess; retarget-168h/720h pass Binance-only numerics but OKX cross-venue reconciliation is unavailable, so a combined-venue verdict cannot be established)",
+ "holdout_accessed": false,
+ "id": "focused-cross-venue-carry",
+ "leakage_checks": [
+  "Only point-in-time data used; funding credited solely to positions held at the event instant",
+  "Four preregistered variants run once; the base-unit invariant and BOTH-leg repair were source-correctness fixes (parent-directed), not performance tuning",
+  "validation read once after all variants fully specified; every trial recorded",
+  "holdout_accessed=false (2025-01..2026-07 never evaluated)",
+  "All variants share one frozen grid; window slicing after continuous evolution"
+ ],
+ "mechanism": "Two independent fully funded isolated-margin sleeves (BTCUSDT, ETHUSDT), 50/50 initial NAV. BASE-UNIT INVARIANT: q_spot == -q_perp (same quantity of the underlying), never USD-notional equalization. Entry: q = (C - buffer) / (S + P + f_s*S + f_p*P) \u2014 the EXACT weighted per-leg fee equation (never the factored (S+P)(1+f_s+f_p) form) \u2014 so that spot principal, perp collateral, and both fees plus a 2%-of-sleeve buffer exhaust initial equity exactly. Funding settles at each 8h event on perp notional marked at the perp open, signed EXACTLY (short flow = -q_p * P * r, q_p < 0: receives when r > 0, pays when r < 0; duplicate snapped 8h events fail closed). Perp MTM settles hourly into the isolated collateral account; margin call when account equity falls below 0.5% of short notional terminates the sleeve. Gross law: spot notional + |perp notional| <= 1.0x NAV at every hour; breach repaired by PROPORTIONAL BOTH-LEG reduction (sell spot AND cover the same base units of perp, fees on both legs, pro-rata isolated-account release) preserving the base-unit invariant. Preregistered retarget clocks (24/168/720h) retarget the common base quantity to the entry construction (buffer re-declared), tradING both legs together, then re-target isolated collateral to 1x of short notional: sweep from posted collateral to cash or top up from cash only; shortfalls are cash-bounded and logged, never borrowed. Margin is audited every hour at BOTH the close mark AND the adverse intrahour perp HIGH (conservative: a breach at the adverse edge unwinds immediately at that edge; intrahour recovery may not be exploited).",
+ "metrics": {
+  "development_excess_vs_simple_nav_2x": {
+   "entry-and-hold": -0.06155696612385153,
+   "retarget-168h": 0.1934831383925375,
+   "retarget-24h": 0.1588261486599376,
+   "retarget-720h": 0.19972970466758833
+  },
+  "identity_residuals": {
+   "entry-and-hold": 2.3418766925686896e-16,
+   "retarget-168h": -2.4424906541753444e-15,
+   "retarget-24h": -2.55351295663786e-15,
+   "retarget-720h": -1.887379141862766e-15
+  },
+  "validation_2024_excess_vs_simple_nav": {
+   "entry-and-hold": {
+    "1x": -0.05228166666667122,
+    "2x": -0.05228166666667122
+   },
+   "retarget-168h": {
+    "1x": 0.005570111708277592,
+    "2x": 0.001218250175647917
+   },
+   "retarget-24h": {
+    "1x": 0.002547353012547937,
+    "2x": -0.005627609457818261
+   },
+   "retarget-720h": {
+    "1x": 0.005632599343742051,
+    "2x": 0.0029656180872288385
+   }
+  }
+ },
+ "next_experiment": "No variant advances. If the direction is ever revived, a liquidation-hazard re-specification (wider buffers, dynamic notional caps tied to adverse-edge moves) must be registered before any new data access, and the same intrahour audit applied. Otherwise the append-only prospective forward shadow from 2026-08-30 remains the only path.",
+ "parameters": {
+  "canonical_weighted_entry_formula": "q = (C - buffer) / (S_open + P_open + f_s*S_open + f_p*P_open)  # EXACT weighted per-leg form matching run.py (NOT (S+P)(1+f_s+f_p))",
+  "canonical_weighted_repair_formula": "u = (gross - equity) / ((S + P) - (f_s*S + f_p*P))  # BOTH-leg proportional release, base units",
+  "initial_collateral_frac_of_entry_short_notional": 1.0,
+  "maintenance_margin_frac_of_short_notional": 0.005,
+  "margin_buffer_frac_of_initial_sleeve_equity": 0.02,
+  "perp_one_way_bps": 7.0,
+  "position_invariant": "q_spot == -q_perp in base units at entry, every retarget, and every repair",
+  "primary_variant_for_returns_csv": "entry-and-hold (frozen-rule restatement; preregistered; no winner promoted)",
+  "retarget_clocks_preregistered": {
+   "entry-and-hold": null,
+   "retarget-168h": 168,
+   "retarget-24h": 24,
+   "retarget-720h": 720
+  },
+  "sleeve_weight": 0.5,
+  "spot_one_way_bps": 12.0,
+  "stress_multiplier": 2.0,
+  "universe": [
+   "BTCUSDT",
+   "ETHUSDT"
+  ],
+  "variants_run_once_no_post_hoc_tuning": true
+ },
+ "protocol_amendment_ack": "All historical windows are retrospective; only append-only observations after 2026-08-30T11:13:24Z are prospective; no deployment claim.",
+ "risks": [
+  "The fully funded 1x isolated construction cannot survive a ~+100% BTC / ~+200% ETH advance without the intrahour edge breaching maintenance; the preregistered question therefore FAILS on its own 'no liquidation' term",
+  "Intrahour audit is conservative but hostile-edge-only; real liquidation engines (fair-price bands, tiered maintenance) could differ in either direction",
+  "Evidence is Binance single-venue; OKX pre-2026 signed funding is unlawfully inaccessible",
+  "Historical windows are retrospective; they falsify, never confirm, durable alpha"
+ ],
+ "schema_version": 1,
+ "signal_timing": "Unconditional always-on carry: entry fills at the first common tradable 1h open; funding credited only to positions held at the event instant; entry orders at the same open fill after the snapshot (no lookahead); no future bars used anywhere.",
+ "status": "blocked",
+ "status_note": "BLOCKED at dossier level: entry-and-hold (preregistered) is FALSIFIED \u2014 adverse intrahour-high margin breaches liquidate both sleeves Dec-2020 with 2024 = 0.0 exactly (authority preserved); retarget variants execute their full schedules on Binance single-venue data with mixed gate outcomes (24h fails 2x at -0.56%; 168h +0.12% and 720h +0.30% pass Binance-only numerics); the required OKX cross-venue reconciliation is unavailable, so a combined-venue verdict is not establishable. Never validation-pass; no durable-alpha confirmation; no deployment claim.",
+ "title": "Base-unit signed-funding spot-perpetual carry with isolated collateral (BTCUSDT/ETHUSDT Binance; OKX blocked), intrahour-high conservative margin audit",
+ "trial_count": 4,
+ "validation_window": [
+  "2024-01-01",
+  "2024-12-31"
+ ]
+}

@@ -1,0 +1,24 @@
+import json
+from fractions import Fraction
+from math import gcd
+GB = Path_ = "campaigns/2026-08-30T11-43-59Z_50595CC9_fffe84b0_gateB"
+pay = json.loads(open(f"{GB}/payload.json").read())
+coprime_ids = set(pay["coprime_rows"])
+
+add = json.loads(open(f"{GB}/pattern_P_rowwise_addendum.json").read())
+oc2 = {"coprime": {}, "non_coprime": {}}
+for row in add["rows"]:
+    rid, s, rho = row["id"], row["s"], row["rho"]
+    pairwise = gcd(s[0], s[1]) == 1 and gcd(s[0], s[2]) == 1 and gcd(s[1], s[2]) == 1
+    cls = "coprime" if pairwise else "non_coprime"
+    assert (rid in coprime_ids) == pairwise, (rid, "payload flag mismatch", s)
+    oc2[cls][rid] = {"s": s, "rho": rho, "contains_2_and_3": (2 in s and 3 in s)}
+for cls in ("coprime", "non_coprime"):
+    rows = oc2[cls]
+    ok_within = all((v["contains_2_and_3"] == (v["rho"] == "3/5")) for v in rows.values())
+    vals = sorted({v["rho"] for v in rows.values()}, key=Fraction)
+    sub1 = sorted({v["rho"] for v in rows.values() if Fraction(v["rho"]) < 1}, key=Fraction)
+    print(f"OC2 {cls}: n={len(rows)} P_holds_within_class={ok_within} distinct_values={vals} distinct_sub1_values={sub1}")
+    for rid, v in sorted(rows.items()):
+        print("   ", rid, tuple(v["s"]), "rho=", v["rho"], "contains23=", v["contains_2_and_3"])
+json.dump(oc2, open("scratch/p2_oc2.json","w"), indent=2)

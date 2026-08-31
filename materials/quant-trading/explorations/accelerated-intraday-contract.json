@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-accelerated-intraday-2026-08-30",
+  "created_at_utc": "2026-08-30T17:01:13Z",
+  "status": "frozen-final-before-outcome-analysis",
+  "reason": "Replace calendar-week waiting with event-count and non-overlapping-block stopping rules. Current sample counts and schemas were inspected before this freeze; no post-event returns, GEX/volatility relation, or gate outcome was inspected.",
+  "claim_boundary": "Fast screens can falsify or prioritize mechanisms today. They cannot establish durable alpha, replace genuinely prospective confirmation, or authorize capital deployment.",
+  "hard_time_limit": {
+    "additional_sampling_minutes": 90,
+    "rule": "Stop as soon as the registered sample-count conditions are met. Never wait a week for either fast screen. If conditions remain unmet after 90 additional minutes, report inconclusive rather than extending the clock."
+  },
+  "observed_pre_freeze_sample_rates": {
+    "liquidation": {
+      "events": 3795,
+      "independent_symbol_minutes": 2203,
+      "span_hours": 3.224760277777778,
+      "events_per_hour": 1176.8316628531475,
+      "independent_per_hour": 683.1515555376769
+    },
+    "deribit": {
+      "option_trades": 2215,
+      "span_hours": 4.847173333333333,
+      "trades_per_hour": 456.967359670791
+    }
+  },
+  "screens": {
+    "liquidation_btc_eth_post_onset": {
+      "owner_dir": "quant-trading/explorations/focused-liquidation-overlay",
+      "question": "After a public BTC or ETH forced-liquidation cascade begins, does price continue in the liquidation-pressure direction over 5 and 15 minutes strongly enough to justify a post-onset risk reduction?",
+      "sources": {
+        "events": "quant-trading/data/raw/focused/live/liquidations-persistent",
+        "price_proxy": "concurrent public Deribit btc_usd and eth_usd index records",
+        "limitation": "Deribit index is a cross-venue BTC/ETH price proxy, not Binance execution price. OI remains unavailable and is not silently imputed."
+      },
+      "event_definition": "For each BTCUSDT or ETHUSDT symbol, an onset is the first forceOrder event after at least 300 seconds without another captured forceOrder event for that symbol. Binance BUY forceOrder closes a short and defines upward pressure; SELL closes a long and defines downward pressure.",
+      "price_alignment": "Initial price is the latest matching Deribit index observation at or before the onset, no older than 5 seconds. Horizon price is the first observation at or after +1, +5, or +15 minutes, no more than 5 seconds late. Missing alignment fails that onset/horizon closed.",
+      "outcome": "Signed continuation return: raw index return for BUY liquidations and its negative for SELL liquidations. Net continuation subtracts 2 basis points implementation haircut.",
+      "sample_stop": {
+        "minimum_complete_onsets_at_15m": 20,
+        "minimum_per_asset": 5,
+        "minimum_per_side": 5,
+        "minimum_nonempty_15m_onset_blocks": 6
+      },
+      "gate": {
+        "median_net_signed_return_5m_gt_zero": true,
+        "median_net_signed_return_15m_gt_zero": true,
+        "hit_rate_net_positive_5m_gte": 0.6,
+        "hit_rate_net_positive_15m_gte": 0.6,
+        "both_assets_median_net_15m_gt_zero": true,
+        "positive_block_median_fraction_15m_gte": 0.6
+      },
+      "truth_table": "fast-screen-pass iff every sample condition and gate is observed true; falsified if sample conditions pass and any gate is false; inconclusive if a sample condition is unmet or required alignment is unavailable."
+    },
+    "deribit_intraday_taker_gex": {
+      "owner_dir": "quant-trading/explorations/focused-deribit-gex",
+      "question": "Does dealer-mirror option taker-flow GEX condition next-15-minute BTC/ETH index realized volatility within the captured intraday sample?",
+      "sources": {
+        "trades": "captured public Deribit option trades",
+        "metadata": "captured day-scoped instrument metadata",
+        "prices": "captured Deribit btc_usd and eth_usd index records"
+      },
+      "block_definition": "Aggregate taker-signed GEX by underlying and non-overlapping UTC 15-minute block; dealer-mirror GEX is the negative. Next-block realized volatility is sqrt(sum(log index return)^2) from observations inside the next 15-minute block. No overlapping outcomes.",
+      "sample_stop": {
+        "minimum_gex_computable_trades": 1000,
+        "minimum_complete_asset_block_transitions": 12,
+        "minimum_transitions_per_asset": 4,
+        "minimum_positive_dealer_gex_blocks": 3,
+        "minimum_negative_dealer_gex_blocks": 3
+      },
+      "gate": {
+        "spearman_dealer_gex_vs_next_rv_lte": -0.25,
+        "negative_vs_positive_dealer_gex_next_rv_ratio_gte": 1.1,
+        "both_asset_spearman_lt_zero": true,
+        "leave_one_block_out_nonpositive_fraction_gte": 0.7
+      },
+      "truth_table": "fast-screen-pass iff every sample condition and gate is observed true; falsified if sample conditions pass and any gate is false; inconclusive if a sample condition is unmet."
+    }
+  },
+  "semantic_amendment": {
+    "created_at_utc": "2026-08-30T17:10:49Z",
+    "reason": "Independent pre-analysis review found undefined clock, live-prefix, reconnect, cohort, completeness, tie, zero-denominator, leave-one-out, and unavailable-value semantics. This amendment freezes them before either screen reads or computes an outcome.",
+    "authority": "These rules resolve ambiguities in the screen definitions above without changing any threshold, horizon, asset, cost, or mechanism.",
+    "immutable_input_prefix": {
+      "rule": "For every live JSONL input, stat the byte size before reading, then hash and parse exactly that byte prefix. Ignore one trailing partial line. Record path, prefix bytes, SHA-256, first/latest parsed exchange timestamps, and snapshot wall-clock time.",
+      "common_cutoff": "Use the minimum latest complete exchange timestamp across required event/trade and price inputs. Observations or horizons after that common cutoff are unavailable.",
+      "earliest_stop": "Chronologically truncate to the earliest outcome-availability time at which every registered sample condition first becomes true. Never use later observations merely because the frozen byte prefixes contain them. If no such point exists, use the full common prefix and resolve inconclusive."
+    },
+    "clock_semantics": {
+      "liquidation_onset_ms": "Binance forceOrder body.E exchange event time. body.o.T is retained as an execution audit field but never substitutes for E. Receipt timestamps are provenance only.",
+      "deribit_trade_ms": "Deribit trade.timestamp exchange time.",
+      "deribit_index_ms": "Deribit index data.timestamp exchange time.",
+      "block_clock": "UTC exchange timestamps only; receipt timestamps never assign blocks or horizons."
+    },
+    "liquidation": {
+      "dedup": "Deduplicate deterministic event_id before onset construction.",
+      "continuous_session": "A forceOrder can qualify as an onset only after 300 seconds of continuously captured session time following session_start or the latest connect/reconnect control. The first event in a session segment cannot use silence before that segment. A disconnect resets all per-symbol silence clocks; after reconnect each symbol needs 300 seconds of continuous capture before a new onset can qualify.",
+      "silence_rule": "Within a continuous session segment, onset for a symbol requires body.E minus the immediately prior deduplicated forceOrder body.E for that symbol to be at least 300000 ms. If no prior same-symbol event exists in the segment, body.E minus segment connect time must be at least 300000 ms.",
+      "cohort_and_blocks": "A complete onset cohort is fixed at the earliest +15-minute outcome-availability time satisfying all sample counts. Assign onset blocks by floor(body.E / 900000). Multiple valid onsets in one block remain separate onset observations; the block gate uses the median of their net 15-minute signed returns. Nonempty-block count and fraction use only blocks containing at least one complete cohort onset.",
+      "price_alignment": "Initial proxy price is the latest same-underlying Deribit exchange-timestamped index observation <= body.E and no more than 5000 ms old. Horizon price is the first observation >= body.E+horizon and <= body.E+horizon+5000 ms. No interpolation, nearest-future initial mark, or receipt-time alignment.",
+      "strict_comparisons": "Net-positive hit means return > 0; a zero return is not a hit. Asset medians require at least the registered five complete onsets for that asset. Side counts use forceOrder body.o.S exactly.",
+      "unavailable": "Any undefined alignment, median, asset cohort, side cohort, or block fraction is UNKNOWN. With all sample conditions true: any observed false gate => falsified; all true => fast-screen-pass; otherwise inconclusive. With any sample condition false or unknown => inconclusive."
+    },
+    "deribit": {
+      "unit_of_observation": "One underlying-by-signal-block transition. Underlying comes from the BTC- or ETH- instrument prefix. Each transition has one dealer-mirror GEX signal block and the immediately following 15-minute realized-volatility outcome block. Pool observations equally; never weight by trades, GEX, or asset.",
+      "signal_eligibility": "Signal block must contain at least one deduplicated GEX-computable trade and nonzero dealer-mirror GEX. Zero-GEX blocks are reported and excluded from positive/negative sign counts and correlations.",
+      "rv_completeness": "For each outcome block, require an anchor index observation at or before block start no more than 5000 ms old, a final observation at or after block end minus 5000 ms and before block end, at least 720 in-block observations, and no consecutive exchange-timestamp gap greater than 5000 ms. Compute sqrt(sum(log(p_i/p_(i-1))^2)) from the anchor through all ordered in-block observations. Duplicate timestamps keep the last stable input order; nonpositive prices make the block unavailable.",
+      "earliest_stop": "Order transition availability by outcome-block end UTC. Use the earliest outcome-block end where total included GEX-computable trades, total transitions, per-asset transitions, and positive/negative dealer-GEX block counts all meet the registered minima.",
+      "spearman": "Use deterministic average ranks for ties and ordinary Pearson correlation of ranks. Return UNKNOWN for fewer than two observations or a constant rank vector.",
+      "sign_ratio": "Ratio is median(next RV | dealer GEX < 0) divided by median(next RV | dealer GEX > 0). If the denominator is zero and numerator > 0, ratio is +infinity and the threshold is true; if both are zero or either cohort is empty, ratio is UNKNOWN.",
+      "per_asset_gate": "both_asset_spearman_lt_zero requires defined Spearman < 0 separately for BTC and ETH, each already meeting the registered minimum four transitions.",
+      "leave_one_out": "For each pooled underlying-block transition, remove exactly that observation and recompute pooled Spearman using the same average-rank rule. The fraction denominator is the number of defined leave-one-out correlations; if any fold is undefined or the denominator is zero, this gate is UNKNOWN. Nonpositive means correlation <= 0.",
+      "unavailable": "With all sample conditions true: any observed false gate => falsified; all true => fast-screen-pass; otherwise inconclusive. With any sample condition false or unknown => inconclusive."
+    }
+  },
+  "final_semantic_amendment": {
+    "created_at_utc": "2026-08-30T17:14:49Z",
+    "schema_clarified_at_utc": "2026-08-30T17:15:56Z",
+    "reason": "Final independent pre-analysis review identified four remaining degrees of freedom. This amendment closes them before either outcome run and supersedes any conflicting earlier wording.",
+    "deadline_utc": "2026-08-30T18:31:13Z",
+    "deadline_rule": "The deadline is original created_at_utc plus exactly 90 minutes. Search for each earliest stop only among observations available at or before this instant. If sample conditions first become true later, ignore the later passage and resolve inconclusive.",
+    "liquidation": {
+      "return_formula": "For horizon h, net_h = direction * (P_h / P_0 - 1) - 0.0002, where direction is +1 for forceOrder side BUY and -1 for side SELL. Compute with unrounded input prices and do not round before comparisons.",
+      "single_cohort": "The gated cohort contains exactly the eligible onsets having valid P_0, P_5m, and P_15m alignments by the candidate stop. All sample counts and every 5m/15m gate use this same cohort. A missing alignment excludes that onset and is reported; it does not poison otherwise defined cohort metrics. The 1m outcome is descriptive only and does not determine cohort membership or status.",
+      "session_boundary_clock_exception": "A capture segment begins only at a top-level record with kind=control and control.type=connect; convert that record's top-level ts_utc ISO-8601 UTC value to connect_capture_epoch_ms. A top-level kind=control record with control.type in {disconnect, session_stop}, or a later control.type=connect, ends and resets the segment. A session_start record resets state but does not begin an eligible segment. This capture clock is permitted only to enforce initial post-connect eligibility; body.E remains authoritative for events, same-symbol gaps, onset blocks, and horizons. For the first forceOrder of a symbol in a segment, require body.E - connect_capture_epoch_ms >= 300000. For later same-symbol events, require body.E minus the immediately prior deduplicated same-symbol body.E in that segment >= 300000."
+    },
+    "deribit": {
+      "gex_formula": "Use only the sources named in this contract. Parse underlying, strike, and UTC expiry from captured instrument metadata. Let S=trade.index_price, sigma=trade.iv/100, tau=max((expiry_ms-trade.timestamp)/31536000000, 0), r=0, q=0, d1=(ln(S/K)+(0.5*sigma^2)*tau)/(sigma*sqrt(tau)), unit_gamma=normal_pdf(d1)/(S*sigma*sqrt(tau)), contracts=trade.amount, coins=contracts*metadata.contract_size, taker_direction=+1 for direction=buy and -1 for direction=sell, and taker_gex=taker_direction*coins*unit_gamma*S^2*0.01. Dealer-mirror block GEX is negative sum(taker_gex). Require finite S,K,sigma,tau,amount,contract_size with S,K,sigma,tau,contract_size strictly positive and amount nonnegative. Missing or nonfinite inputs are excluded and counted. Finite zero amount or gamma is GEX-computable. Never use ticker gamma or another gamma policy.",
+      "json_infinity": "If the sign-ratio denominator is zero and numerator is positive, serialize numeric value as null, extended_value as the exact string +infinity, and comparison as true. Never emit a non-standard JSON Infinity token."
+    }
+  },
+  "global_rules": [
+    "Use only observations captured before the analysis invocation; never extend sampling after seeing a gate outcome.",
+    "No threshold, horizon, clustering, asset, side, block, or cost changes after this freeze.",
+    "Deduplicate using the existing deterministic event/trade IDs.",
+    "Report every registered sample condition and gate, including failures and unavailable values.",
+    "No orders, account access, credentials, leverage, or deployment claim."
+  ]
+}

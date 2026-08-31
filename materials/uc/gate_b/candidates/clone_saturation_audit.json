@@ -27,13 +27,14 @@
     26,
     31
   ],
+  "convergence_status": "FINITE LADDER ONLY; exact limit in clone_limit_audit.json; convergence is O(1/r), not geometric",
   "defect_is_invariant": true,
   "delta_ratios_decimal": [
     "0.374901",
     "0.462270",
     "0.526663"
   ],
-  "improvement_is_shrinking": true,
+  "improvement_is_shrinking_over_reported_ladder": true,
   "ladder": [
     {
       "a_plus_lower": "847400190500899143462520619/79228162514264337593543950336",
@@ -178,5 +179,5 @@
   ],
   "sign_flips_at_clone_count": 3,
   "size_is_invariant": true,
-  "verdict": "CLONING_IS_DEFECT_FREE_AND_SATURATES"
+  "verdict": "CHOSEN_CLONE_IS_DEFECT_FREE_AND_FINITE_LADDER_SHRINKS"
 }

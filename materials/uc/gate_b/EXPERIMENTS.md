@@ -1288,14 +1288,14 @@ families, incidence 196 against `R_70 = 215`, with the cap satisfied — so the 
 uses of a clone are genuinely different and both occur among the registered
 bases.
 
-### Result 3 — the amplification saturates geometrically
+### Result 3 — the chosen finite ladder shrinks; the exact limit is algebraic
 
 ```sh
 OMP_NUM_THREADS=1 nice -n 19 python3 -B uc/gate_b/audit_clone_saturation.py \
     --max-clones 4
 ```
 
-| clones | n | `A_+ <=` | delta | defect | admissible |
+| added clones | n | `A_+ <=` | delta | defect | admissible |
 |---|---|---|---|---|---|
 | 0 | 5 | `+0.010695694` | | `4/9` | yes |
 | 1 | 6 | `+0.003478204` | `-0.007217490` | `4/9` | yes |
@@ -1303,26 +1303,25 @@ OMP_NUM_THREADS=1 nice -n 19 python3 -B uc/gate_b/audit_clone_saturation.py \
 | 3 | 8 | `-0.000478465` | `-0.001250827` | `4/9` | yes |
 | 4 | 9 | `-0.001137229` | `-0.000658764` | `4/9` | yes |
 
-Delta ratios `0.375, 0.462, 0.527` (and `0.577` at the fifth clone, measured
-separately at `n=10` with 210 orbit representatives). The improvement is
-geometric and the total budget is bounded, roughly `0.013` for this family.
-Verdict `CLONING_IS_DEFECT_FREE_AND_SATURATES`.
+The ratios `0.375, 0.462, 0.527` describe only this finite ladder. Calling them
+geometric was an error. The exact clone-order law found in E24 gives
+`P(first clone is not first) = (n-1)/(n+r-1) = O(1/r)`, so convergence is
+algebraic. Coordinate 2 has exact limit `A_+ <= -0.002338401508`.
+Verdict `CHOSEN_CLONE_IS_DEFECT_FREE_AND_FINITE_LADDER_SHRINKS`.
 
-### Interpretation
+### Correction to the interpretation
 
-This answers the original plan's amplification question in its sharpest
-available form. *Can the numerator be amplified faster than the closure defect?*
-Yes — at **zero** defect cost, since cloning cannot move the defect at all. But
-the amplification is finite, so cloning flips a family whose objective is
-positive but small and cannot rescue one that is far positive: the lowest-defect
-admissible family known at `n=7, m=45` has `A_+ = +0.0847`, an order of magnitude
-outside the budget. That is the honest reason the local frontier sits at `4/9`
-and not at the combinatorial floor.
+Cloning preserves size, defect, cap, and admissibility universally. Its
+**objective direction is not universal**. On this same core, cloning coordinate
+2 lowers the objective, while cloning any of coordinates 0, 1, 3, or 4 raises
+the exact upper endpoint from `+0.010695694102` to `+0.012500066566`. The E23
+claim that cloning always lowers `Q`, `C_+`, and `A_+` is retracted.
 
-The actionable consequence for `n = 9, 10` is concrete: rank low-defect
-admissible families by `A_+`, and clone only those already within about `0.01`
-of zero. Cloning cheap positives is the highest-yield move available, and
-cloning expensive ones is wasted work.
+The correct actionable rule is not “clone every cheap positive.” Compute the
+original fixed-order profile first: cloning only reweights those values. If all
+orders are positive, no clone multiplicities can help; if some are negative,
+the exact rank law prices each coordinate and multiplicity. E24 applies this
+criterion to the `n=9,10` local search.
 
 Suite: 87 tests pass, including four new ones pinning that cloning preserves
 size, defect and admissibility at every rung; that the collapsed core is
@@ -1331,6 +1330,417 @@ Reimer but not for the cap; and that every delta is negative and strictly
 smaller than the one before.
 
 
+
+## E24 — below `2/5` exists, below `2/5` and negative does not (2026-08-28)
+
+Goal: either certify `A_+ < 0` at defect below `2/5`, or prove the dominant-set
+floor that Corollary 12 could not see. Outcome: the computational search crossed
+`2/5` decisively, but exact objective and extension audits kept every survivor
+positive; the natural cap-only floor is false by a published sharp example.
+The remaining blocker is specifically Reimer.
+
+### Literature first — the cap-only target is false
+
+Chase-Lovett, arXiv:2211.11689v1, Definition 1.2 and Example 1.4 [REPORTED],
+use exactly the Gate B ordered-pair defect and construct
+
+```text
+F1 = {A : |A| = psi*n + n^(2/3)}
+F2 = {A : |A| >= (1-psi)*n}
+F  = F1 union F2,                       psi = (3-sqrt(5))/2.
+```
+
+They prove `eps_vee(F)=o(1)` and every frequency is `psi+o(1)<2/5`. For large
+`n` this family is active, separating, and contains `[n]`. Therefore **cap,
+normalization, and a dominant set do not imply any positive pair-defect floor**.
+That proposed theorem is false under both conventions.
+
+It is not Gate B admissible. Since `F1` dominates,
+
+```text
+log2 |F| / n -> h(psi),        sbar / n -> psi,
+```
+
+while Reimer needs `sbar/n >= h(psi)/2`. The exact stdlib enclosure in
+`barrier_sawin_cambie.py` gives
+
+```text
+h(psi)/2 - psi > 0.0977433528.
+```
+
+So the example misses Reimer by a linear amount. Any actual Gate B floor must
+use Reimer essentially; pair defect and frequencies have reached a published
+hard barrier.
+
+The same source audit corrected another tempting overclaim. Gate B's `Q` is the
+Sawin-Cambie iid term and its Bellman action interval starts at the identical
+`s*(p,r)`, but `C_+` is a **causal Bellman upper envelope**, not literally one
+greedy coupling term. Cambie's two-atom upper obstruction is exactly enclosed at
+
+```text
+c* in [0.382345533366702721, 0.382345533366702722].
+```
+
+All ten registered negative bases have maximum frequency exactly `2/5`.
+Cambie's matching lower direction remains **OPEN / COMPUTATIONAL-EVIDENCE** in
+the broader `math/uc` audit and is not promoted here.
+
+### Search stage 1 — combinatorial defect
+
+One worker, `nice -n 19`, four deterministic restarts and 2,500 steps: 13
+sizes at `n=9`, 15 at `n=10`, including both maxima `145,255`:
+
+```sh
+python3 -B uc/gate_b/search_local_defect.py --mode search --dimension 9 \
+  --sizes 15,20,25,30,35,40,45,50,60,75 --restarts 4 --steps 2500 \
+  --checkpoint uc/gate_b/experiments/local_defect_n9_checkpoint.jsonl
+python3 -B uc/gate_b/search_local_defect.py --mode search --dimension 10 \
+  --sizes 15,20,25,30,35,40,45,50,60,75 --restarts 4 --steps 2500 \
+  --checkpoint uc/gate_b/experiments/local_defect_n10_checkpoint.jsonl
+python3 -B uc/gate_b/search_local_defect.py --mode search --dimension 9 \
+  --sizes 100,125,145 --restarts 4 --steps 2500 \
+  --checkpoint uc/gate_b/experiments/local_defect_n9_checkpoint.jsonl
+python3 -B uc/gate_b/search_local_defect.py --mode search --dimension 10 \
+  --sizes 100,125,150,200,255 --restarts 4 --steps 2500 \
+  --checkpoint uc/gate_b/experiments/local_defect_n10_checkpoint.jsonl
+```
+
+| dimension | size | best exact defect | normalized search row |
+|---:|---:|---:|---|
+| 9 | 15 | **`14/45 = 0.311111...`** | no (one zero + one duplicate column) |
+| 9 | 20 | `17/50 = 0.34` | yes |
+| 9 | 30 | `19/50 = 0.38` | yes |
+| 10 | 15 | `8/25 = 0.32` | no (one duplicate column) |
+| 10 | 20 | `17/50 = 0.34` | yes |
+| 9 | 145 | `13828/21025 = 0.65769...` | yes |
+| 10 | 255 | `2918/3825 = 0.76287...` | yes |
+
+Removing inert/duplicate columns from the first row gives the normalized
+seven-coordinate core
+
+```text
+R = (0,2,4,6,8,9,16,22,31,32,96,105,112,125,127),
+degrees = (5,5,6,6,6,6,5), incidence = 39 >= R_15 = 30,
+eps_vee = 14/45, [7] in R.
+```
+
+Thus the former `692/2025=0.341728` floor was not structural, while every added
+size `>=100` stayed above `0.59`; the two maximum sizes produced no new gate candidate.
+
+### Search stage 2 — exact full-order `Q` gate
+
+The next walk kept `eps_vee<2/5`, `[n] in F`, cap, and Reimer as hard
+constraints, minimized sampled `Q`, then enclosed the full Shapley order average
+exactly. Since `C_+>=0`,
+
+```text
+A_+ >= (1-alpha)Q - log2 m;
+```
+
+only a finalist with a nonpositive right side merits Bellman certification.
+At `n=10` none passed. At `n=9` exactly one passed: `m=20`, defect `19/50`,
+Q-only lower endpoint `-0.003072867378`. Its sampled Bellman objective was
+`+0.168611231079` (DISCOVERY ONLY).
+
+This is the decisive diagnostic: the Q-only room was only `-0.003072867378`,
+while the sampled Bellman contribution was `+0.171684...`
+(`C_+ ~= 4.82`). **`C_+` is binding in the sub-`2/5` region, not `Q`.** A
+Q-only score is useful as a necessary rejection gate, but it ranks survivors
+that the Bellman audit then kills.
+
+After removing its one duplicate column, exact evaluation of all 40,320 orders
+gives
+
+```text
+A_+ in [0.172732849547, 0.172732849548],
+minimum fixed-order lower endpoint >= 0.042394032883.
+```
+
+So arbitrary clones cannot rescue the only `Q`-gate survivor.
+
+### Search stage 3 — sampled full objective
+
+A final walk optimized sampled `A_+` itself, seeded from the `Q` survivor:
+
+```text
+best sampled A_+ upper = +0.128833928729
+defect                  = 86/225 = 0.382222...
+full-order Q-only lower = -0.028680508564
+```
+
+The Bellman number is explicitly **DISCOVERY ONLY**. It stayed more than twelve
+times the predeclared `+0.01` threshold for exact cloning follow-up, so no
+candidate was silently promoted or expensively cloned.
+
+Future walks should therefore rank by the fast sampled one-sided cost or sampled
+full objective (`search_subtwofifths_q.py --score a`) from the start. Keep the
+full-order `Q` enclosure as a cheap necessary gate and evidence boundary, not as
+the main optimization score. A greedy fixed-order one-sided policy is an even
+cheaper proxy if the optimized shared-DAG evaluator becomes the bottleneck.
+
+### Defect-free extensions — complete on the best exact core
+
+For any row subset `U`, appending its indicator column never repairs a failed
+join and preserves defect iff
+
+```text
+1_U(A union B) = 1_U(A) or 1_U(B)
+```
+
+on every successful join. This class is exactly “up-set and join-prime,” checked
+with zero mismatches over all 32,768 subsets of each 15-row core.
+
+* `n8tiny` core: 57 join-consistent, six usable. Only coordinate-2 cloning
+  improves; four other clones and the unique non-OR extension worsen `A_+`.
+* `R`: 74 join-consistent, eight usable -- seven coordinate columns and one new
+  column. `A_+(R) in [0.305904110097,0.305904110098]`, and all 5,040 fixed
+  orders are positive, minimum `>=0.145914214376`. After the one new column,
+  `A_+ in [0.295857317023,0.295857317024]` and all 40,320 orders remain
+  positive, minimum `>=0.122963869853`.
+
+A defect-free extension preserves the successful-join relation, so after the
+one new column every further usable extension is a clone.
+
+### Exact clone law — the final correction
+
+Delete every duplicate after the first occurrence in a cloned coordinate order.
+It is deterministic and changes no fiber, so the fixed-order `Q`, `C_+`, and
+`A_+` equal the collapsed original-order values. Cloning only reweights a finite
+set; every clone configuration lies in its convex hull. For total multiplicity
+`r`,
+
+```text
+P(first clone rank = j) = C(n+r-j-2,r-1)/C(n+r-1,r).
+```
+
+This proves all defect-free extensions of `R` positive. It also explains the
+record: `n8tiny` has negative fixed orders and coordinate 2 biases toward them.
+Its exact limit is `-0.002338401508...`; multiplicity 4 first crosses zero.
+Convergence is `O(1/r)`, not geometric.
+
+### Hard blocker
+
+**Superseded by E25.** At this stage no certified negative family below `2/5`
+had been found. The alternatives then exhausted were: all block-symmetric
+`n=8` classes; defect-only `n=9,10` across
+all selected sizes through the admissible maxima `145,255`; full-order `Q` gating; sampled full-objective descent;
+all defect-free coordinate extensions of the best exact core; and arbitrary
+clones of the one `Q`-gate survivor. The remaining route must **change rows and
+use Reimer quantitatively**. A positive floor at zero defect is the `2/5`
+frequency theorem; the work stops at that named open blocker rather than
+manufacturing it.
+
+### Verification
+
+* `test_gate_b.py`: **100 tests pass** in 86.5 s.
+* Authoritative manifest: **91 entries, zero mismatches** after adding 18 paths.
+* Byte stability: 11 new reports/checkpoints matched across the complete 1,216 s
+  replay; after the ceiling-size extension, the four changed local-defect
+  frontier/checkpoint files matched across two consecutive resumed generations.
+* Paper: `latexmk -pdf` twice, **13 pages**, no undefined references or LaTeX
+  warnings.
+* Resource policy: one low-priority worker per heavy job; measured machine CPU
+  13.3% during the exact audits, below the 50% ceiling.
+
+
+## E25 — a row-changing core plus sharp clone reachability crosses `2/5` (2026-08-28)
+
+Goal: meet the prior hard target, not merely improve a discovery score: either
+certify `A_+ < 0` below defect `2/5`, prove a Reimer-essential floor, or close a
+named mechanism class unconditionally. Outcome: **the first target is met** in
+the displayed cap/Reimer class. The exact clone law also closes the entire
+cloning mechanism, and the Reimer endpoint is now stated sharply.
+
+### Mathematical step — the clone convex hull is sharp
+
+For clone multiplicities `r_i >= 1`, collapse a uniform order of all copies by
+keeping the first copy in each class. Its exact first-appearance law is
+
+```text
+P_r(pi) = product_k r[pi[k]] / sum_{j>=k} r[pi[j]].
+```
+
+This is the Plackett--Luce/exponential-race law: the minimum of `r_i`
+independent rate-one clocks is exponential with rate `r_i`. Every cloned
+fixed-order `Q`, `C_+`, and `A_+` equals the collapsed original value, hence
+the cloned average is this exact convex combination.
+
+Conversely, for any target order `pi`, setting
+`r[pi[k]] = R^(n-k-1)` gives
+
+```text
+P_r(pi) >= (1-1/R)^(n-1) >= 1-(n-1)/R -> 1.
+```
+
+Therefore
+
+```text
+inf over finite clone multisets A_+ = min_pi A_{+,pi},
+sup over finite clone multisets A_+ = max_pi A_{+,pi}.
+```
+
+The extrema need not be attained at finite multiplicity, but negativity is:
+some finite clone multiset is negative **iff** some original fixed order is
+negative. `test_gate_b.py` checks the probability formula exactly against all
+uniform multiset words with multiplicities `(2,1,3)`.
+
+### Search — rank the quantity cloning can actually reach
+
+E24 ranked the full sampled average and stopped at `+0.1288`; that was the wrong
+target for cloning. `search_subtwofifths_q.py --score min-a` now minimizes the
+least sampled fixed-order objective, then runs an exact rational two-sided
+enclosure on the selected order. Sampling chooses a candidate; it never proves
+the sign.
+
+The first pass used one low-priority worker, 32 sampled orders, 5,000 steps,
+and eight deterministic restarts per size:
+
+```sh
+nice -n 19 ../../.venv/bin/python -B search_subtwofifths_q.py \
+  --dimension 9 --sizes 15,20,30 --restarts 8 --steps 5000 \
+  --screen-orders 32 --seed 20260828 --score min-a --defect-cap 2/5 \
+  --defect-checkpoint experiments/local_defect_n9_checkpoint.jsonl \
+  --extra-seed-checkpoint experiments/subtwofifths_a_n9_checkpoint.jsonl \
+  --checkpoint experiments/subtwofifths_min_a_n9_checkpoint.jsonl \
+  --report candidates/subtwofifths_min_a_n9.json
+```
+
+It found certified negative fixed orders at defects `16/45`, `82/225`,
+`86/225`, `88/225`, and `39/100`. The corresponding `n=10`, sizes `15,20`,
+eight-restart pass also found negative fixed orders, but no lower defect.
+
+A stricter follow-up imposed defect `<16/45`, used 48 sampled orders, 7,500
+steps, and twelve restarts:
+
+```sh
+nice -n 19 ../../.venv/bin/python -B search_subtwofifths_q.py \
+  --dimension 9 --sizes 15 --restarts 12 --steps 7500 \
+  --screen-orders 48 --seed 20260829 --score min-a --defect-cap 16/45 \
+  --defect-checkpoint experiments/local_defect_n9_checkpoint.jsonl \
+  --extra-seed-checkpoint experiments/subtwofifths_min_a_n9_checkpoint.jsonl \
+  --checkpoint experiments/subtwofifths_min_a_n9_under_16_45_checkpoint.jsonl \
+  --report candidates/subtwofifths_min_a_n9_under_16_45.json
+```
+
+The lowest-defect exact negative order occurs at the earlier searched
+combinatorial floor `14/45`, not merely below `2/5`.
+
+### Exact core and finite negative family
+
+Deleting one duplicate column from the searched representation gives the
+normalized core
+
+```text
+V = (0,1,2,4,5,8,10,43,64,190,192,193,245,254,255) in 2^[8],
+degrees = (6,6,6,6,4,5,6,6), incidence = 45 >= R_15 = 30,
+defect = 14/45, [8] in V.
+```
+
+Its uniform objective is positive:
+
+```text
+A_+(V) in [0.230029313333, 0.230029313334].
+```
+
+But exact rational evaluation of all 40,320 fixed orders finds order
+`(6,1,2,0,3,4,5,7)` with
+
+```text
+A_{+,pi}(V) in
+[-280488497585020501936812613 / 79228162514264337593543950336,
+ -140244248792510250968406301 / 39614081257132168796771975168]
+subset (-infinity,0).
+```
+
+Geometric ratio `R=41` gives multiplicities
+
+```text
+(2825761,4750104241,115856201,68921,1681,41,194754273881,1).
+```
+
+Exact reweighting of all 40,320 two-sided enclosures certifies the resulting
+symbolic family:
+
+```text
+dimension = 199623130728, m = 15, incidence = 1197738780965,
+cap = 6, R_15 = 30, defect = 14/45,
+A_+ in
+[-3339001091075785382516669 / 39614081257132168796771975168,
+ -3339001091075785382516663 / 39614081257132168796771975168]
+= [-0.000084288238, -0.000084288237].
+```
+
+Verdict:
+`PROVED_SUB_TWO_FIFTHS_NEGATIVE_EXACT_RATIONAL`. The frozen targets are the
+exact rationals `A_+ < 0` and `eps_vee < 2/5`; no float value is frozen or used
+after order selection.
+
+**Convention:** the core is active and separating, but the finite cloned family
+has duplicate columns. Thus `14/45` is the new lowest certified negative defect
+for the **displayed cap/Reimer supremum**. The normalized/separating negative
+frontier remains `1144/1875`.
+
+### Reimer endpoint — essential, discontinuous, and still open
+
+At zero defect, Reimer adds no hypothesis: by Reimer's cited average-set-size
+theorem, every union-closed family already satisfies it. The union of all rows
+is present, and the cap gives `sbar <= 2|T|/5`, so the dominant set is automatic.
+Deleting zero and duplicate columns preserves union closure, row identities,
+defect, and cap; Reimer then holds again. A positive floor reaching zero would
+therefore prove the `2/5` frequency theorem under either reporting convention.
+
+Nor can Reimer be recovered continuously from pair defect. Chase--Lovett
+[REPORTED] have `eps_vee -> 0` while the normalized Reimer deficit tends to
+`h(psi)/2-psi > 0.0977433528`. Hence no bound
+
+```text
+log2(m)/2 - sbar <= n*g(eps_vee),  g(t) -> 0,
+```
+
+follows from cap, normalization, a full set, and pair defect. The `14/45`
+witness crosses the requested finite barrier; the limit `c_loc` as defect tends
+to zero remains open.
+
+
+### Verification
+
+* `test_gate_b.py`: **106 tests pass** in 87.924 s.
+* Independent read-only review reported zero critical findings. Its two
+  important findings — cached restarts beyond the declared count and the
+  trivial-family strict inequality — were fixed and regression-tested.
+* Full `audit_clone_limit.py` replayed twice consecutively. Both the audit and
+  certificate were byte-identical:
+  `8e137be51dc5d5a4ee2503e3a3296ef2b35e3a04111c85a166c9391b46765d28`
+  and
+  `858956af05f30a856d325b08856b5df50190a661fa164c0d947737a0f9685b13`.
+* All three search reports and append-only checkpoints matched across two
+  consecutive resumed generations; report hashes begin `a133012b`,
+  `161c0a71`, `dd67af83`, checkpoint hashes `39cc7434`, `21b2e4d4`,
+  `83084c01`.
+* `sawin_cambie_barrier.json` matched across consecutive reruns at
+  `0e55257b443239dbe2effa644596d4f80cb8d58cb80237380a91ff39effd22e9`.
+* Authoritative manifest: **98 entries, zero mismatches** after adding seven
+  paths.
+* Paper built twice to **14 pages**; final log has no warnings, undefined
+  references, overfull boxes, or underfull boxes.
+* Every heavy command used one `nice -n 19` worker. Measured machine CPU was
+  13.4%, below the 50% ceiling.
+
+### Authoritative artifacts
+
+* `certificates/gate_b_subtwofifths_clone_rational_v1.json` — compact exact
+  two-sided certificate for the finite symbolic clone family.
+* `candidates/clone_limit_audit.json` — all-order sharp clone audit, including
+  the positive `14/45` extension-closed core from E24 and the new negative-order
+  core.
+* `candidates/subtwofifths_min_a_n9.json`,
+  `candidates/subtwofifths_min_a_n10.json`, and
+  `candidates/subtwofifths_min_a_n9_under_16_45.json` — exact selected-order
+  enclosures and discovery metadata.
+* Matching `experiments/*checkpoint.jsonl` files — append-only,
+  restart/config-indexed search records. Resume keys now include score, steps,
+  sampled-order count, seed, and strict defect cap, preventing one mode from
+  silently reusing another mode's records.
 
 ## Failed or superseded routes
 

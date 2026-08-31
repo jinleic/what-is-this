@@ -1,0 +1,380 @@
+{
+  "certified_negative_finalists_all": [
+    {
+      "a_plus_lower": "-1374860313803049141948589129/79228162514264337593543950336",
+      "a_plus_upper": "-343715078450762285487147279/19807040628566084398385987584",
+      "closure_defect": "13/40",
+      "restart": 4,
+      "sweep": "n10 m20"
+    }
+  ],
+  "coverage_label": "COMPUTATIONAL-EVIDENCE; SEEDED HEURISTIC; exact per-finalist enclosures",
+  "evidence_levels": {
+    "defects_and_enclosures": "EXACT RATIONAL (admissible(), defect_count(), fixed_order_a_bounds())",
+    "frontier_ranking": "EXACT (Fraction comparisons of defects)",
+    "search_coverage": "DISCOVERY ONLY (sampled orders, annealing)"
+  },
+  "frontier_defects_seen": {
+    "n10 m13": {
+      "below_14_45": false,
+      "certified_negatives": 0,
+      "lowest": "64/169",
+      "lowest_decimal": "0.378698"
+    },
+    "n10 m15": {
+      "below_14_45": true,
+      "certified_negatives": 0,
+      "lowest": "62/225",
+      "lowest_decimal": "0.275556"
+    },
+    "n10 m20": {
+      "below_14_45": false,
+      "certified_negatives": 1,
+      "lowest": "13/40",
+      "lowest_decimal": "0.325000"
+    },
+    "n11 m13": {
+      "below_14_45": false,
+      "certified_negatives": 0,
+      "lowest": "62/169",
+      "lowest_decimal": "0.366864"
+    }
+  },
+  "lowest_defect_family_seen": {
+    "defect": "62/225",
+    "note": "62/225 = 0.275555... at n=10, m=15, restart 0 - a NEW LOWEST-DEFECT ADMISSIBLE FAMILY with full set, well below the 14/45 record, but its least sampled fixed order is exactly POSITIVE (A_+ in [0.010922710937, 0.010922710938]); no negative order found there.",
+    "sweep": "n10 m15"
+  },
+  "mode": "e26_gateb_low_defect_negative_sweep",
+  "record": {
+    "existing_record_defect": "14/45",
+    "record_decimal": "0.311111...",
+    "record_source": "GATE-B-SUB-TWO-FIFTHS-CERTIFIED (2026-08-28)"
+  },
+  "resume_contract": "Each sweep resumes by rerunning its exact command line; resume keys are (dimension, size, restart, score_mode, steps, screen_order_count, seed, strict_defect_cap) as encoded in the append-only checkpoints; completed restarts are skipped deterministically.",
+  "schema": 1,
+  "sweeps": {
+    "n10 m13": {
+      "certified_negative_finalists": 0,
+      "checkpoint": "uc/gate_b/experiments/e26gateb_n10_m13_sub40_checkpoint.jsonl",
+      "checkpoint_sha256": "d4fac13c942371a90b62932399544844882f0b3c2392746892d03cc295345acd",
+      "defects_per_restart": [
+        {
+          "defect": "64/169",
+          "restart": 3
+        },
+        {
+          "defect": "64/169",
+          "restart": 6
+        },
+        {
+          "defect": "66/169",
+          "restart": 0
+        },
+        {
+          "defect": "66/169",
+          "restart": 1
+        },
+        {
+          "defect": "66/169",
+          "restart": 2
+        },
+        {
+          "defect": "66/169",
+          "restart": 4
+        },
+        {
+          "defect": "66/169",
+          "restart": 5
+        },
+        {
+          "defect": "66/169",
+          "restart": 7
+        },
+        {
+          "defect": "66/169",
+          "restart": 8
+        },
+        {
+          "defect": "66/169",
+          "restart": 9
+        },
+        {
+          "defect": "66/169",
+          "restart": 10
+        },
+        {
+          "defect": "66/169",
+          "restart": 11
+        }
+      ],
+      "dimension": 10,
+      "lowest_defect": "64/169",
+      "lowest_defect_decimal": "0.378698",
+      "report": "uc/gate_b/candidates/e26gateb_n10_m13_sub40_report.json",
+      "restarts": 12,
+      "restarts_completed": 12,
+      "resume_key_fields": [
+        "dimension",
+        "size",
+        "restart",
+        "score_mode",
+        "steps",
+        "screen_order_count",
+        "seed",
+        "strict_defect_cap"
+      ],
+      "score_mode": "min-a",
+      "screen_order_count": 48,
+      "seed": 20260830,
+      "seed_checkpoint": "uc/gate_b/experiments/e26gateb_n10_m13_fullsetseeds_checkpoint.jsonl",
+      "sizes": [
+        13
+      ],
+      "steps": 7500,
+      "strict_defect_cap": "2/5"
+    },
+    "n10 m15": {
+      "certified_negative_finalists": 0,
+      "checkpoint": "uc/gate_b/experiments/e26gateb_n10_m15_sub32_checkpoint.jsonl",
+      "checkpoint_sha256": "164bc8e324c31b3af2a6bedc50c190ceff1bff7f210f6c3c852fd276c9a5f44a",
+      "defects_per_restart": [
+        {
+          "defect": "62/225",
+          "restart": 0
+        },
+        {
+          "defect": "22/75",
+          "restart": 9
+        },
+        {
+          "defect": "68/225",
+          "restart": 6
+        },
+        {
+          "defect": "14/45",
+          "restart": 2
+        },
+        {
+          "defect": "14/45",
+          "restart": 3
+        },
+        {
+          "defect": "14/45",
+          "restart": 4
+        },
+        {
+          "defect": "8/25",
+          "restart": 1
+        },
+        {
+          "defect": "8/25",
+          "restart": 5
+        },
+        {
+          "defect": "8/25",
+          "restart": 7
+        },
+        {
+          "defect": "8/25",
+          "restart": 8
+        },
+        {
+          "defect": "8/25",
+          "restart": 10
+        },
+        {
+          "defect": "8/25",
+          "restart": 11
+        }
+      ],
+      "dimension": 10,
+      "lowest_defect": "62/225",
+      "lowest_defect_decimal": "0.275556",
+      "report": "uc/gate_b/candidates/e26gateb_n10_m15_sub32_report.json",
+      "restarts": 12,
+      "restarts_completed": 12,
+      "resume_key_fields": [
+        "dimension",
+        "size",
+        "restart",
+        "score_mode",
+        "steps",
+        "screen_order_count",
+        "seed",
+        "strict_defect_cap"
+      ],
+      "score_mode": "min-a",
+      "screen_order_count": 48,
+      "seed": 20260830,
+      "seed_checkpoint": null,
+      "sizes": [
+        15
+      ],
+      "steps": 7500,
+      "strict_defect_cap": "73/225"
+    },
+    "n10 m20": {
+      "certified_negative_finalists": 1,
+      "checkpoint": "uc/gate_b/experiments/e26gateb_n10_m20_sub34_checkpoint.jsonl",
+      "checkpoint_sha256": "24dc348fdb4ef63d32c420fcd983acfcd98e83f869d61577c7eae02d05145652",
+      "defects_per_restart": [
+        {
+          "defect": "13/40",
+          "restart": 2
+        },
+        {
+          "defect": "13/40",
+          "restart": 4
+        },
+        {
+          "defect": "33/100",
+          "restart": 10
+        },
+        {
+          "defect": "33/100",
+          "restart": 11
+        },
+        {
+          "defect": "67/200",
+          "restart": 1
+        },
+        {
+          "defect": "17/50",
+          "restart": 0
+        },
+        {
+          "defect": "17/50",
+          "restart": 3
+        },
+        {
+          "defect": "17/50",
+          "restart": 5
+        },
+        {
+          "defect": "17/50",
+          "restart": 6
+        },
+        {
+          "defect": "17/50",
+          "restart": 7
+        },
+        {
+          "defect": "17/50",
+          "restart": 8
+        },
+        {
+          "defect": "17/50",
+          "restart": 9
+        }
+      ],
+      "dimension": 10,
+      "lowest_defect": "13/40",
+      "lowest_defect_decimal": "0.325000",
+      "report": "uc/gate_b/candidates/e26gateb_n10_m20_sub34_report.json",
+      "restarts": 12,
+      "restarts_completed": 12,
+      "resume_key_fields": [
+        "dimension",
+        "size",
+        "restart",
+        "score_mode",
+        "steps",
+        "screen_order_count",
+        "seed",
+        "strict_defect_cap"
+      ],
+      "score_mode": "min-a",
+      "screen_order_count": 48,
+      "seed": 20260830,
+      "seed_checkpoint": null,
+      "sizes": [
+        20
+      ],
+      "steps": 7500,
+      "strict_defect_cap": "137/400"
+    },
+    "n11 m13": {
+      "certified_negative_finalists": 0,
+      "checkpoint": "uc/gate_b/experiments/e26gateb_n11_m13_sub40b_checkpoint.jsonl",
+      "checkpoint_sha256": "bdfde2362b5d76af9cba73e3e0eb623fe55ca4c4a4d22af8628c7e4e4b560268",
+      "defects_per_restart": [
+        {
+          "defect": "62/169",
+          "restart": 4
+        },
+        {
+          "defect": "62/169",
+          "restart": 6
+        },
+        {
+          "defect": "64/169",
+          "restart": 2
+        },
+        {
+          "defect": "64/169",
+          "restart": 3
+        },
+        {
+          "defect": "64/169",
+          "restart": 7
+        },
+        {
+          "defect": "64/169",
+          "restart": 8
+        },
+        {
+          "defect": "64/169",
+          "restart": 10
+        },
+        {
+          "defect": "64/169",
+          "restart": 11
+        },
+        {
+          "defect": "66/169",
+          "restart": 0
+        },
+        {
+          "defect": "66/169",
+          "restart": 1
+        },
+        {
+          "defect": "66/169",
+          "restart": 5
+        },
+        {
+          "defect": "66/169",
+          "restart": 9
+        }
+      ],
+      "dimension": 11,
+      "lowest_defect": "62/169",
+      "lowest_defect_decimal": "0.366864",
+      "report": "uc/gate_b/candidates/e26gateb_n11_m13_sub40b_report.json",
+      "restarts": 12,
+      "restarts_completed": 12,
+      "resume_key_fields": [
+        "dimension",
+        "size",
+        "restart",
+        "score_mode",
+        "steps",
+        "screen_order_count",
+        "seed",
+        "strict_defect_cap"
+      ],
+      "score_mode": "min-a",
+      "screen_order_count": 48,
+      "seed": 20260830,
+      "seed_checkpoint": "uc/gate_b/experiments/e26gateb_n11_m13_fullsetseeds_c_checkpoint.jsonl",
+      "sizes": [
+        13
+      ],
+      "steps": 7500,
+      "strict_defect_cap": "2/5"
+    }
+  },
+  "verdict": "NEGATIVE_FOUND_BUT_NOT_BELOW_14_45_NO_RECORD_ADVANCE",
+  "verdict_detail": "48/48 restarts across four sweeps.  One certified exactly-negative fixed order at defect 13/40 = 0.325 > 14/45: does not advance the record.  One new lowest-defect admissible family at 62/225 = 0.275556 (n=10, m=15, seed 20260830 restart 0), far below 14/45, whose selected order is exactly positive; its other fixed orders are not certified negative and no negative order exists on it per the sampled screen.  The 14/45 certificate stands as the lowest certified negative defect."
+}

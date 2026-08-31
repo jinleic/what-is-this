@@ -1,0 +1,39 @@
+{
+  "campaign_grid_membership": "OUT_OF_GRID_CONTROL",
+  "d": "1/2",
+  "dense_interval": [
+    0.5944062247804219,
+    0.5944062608210557
+  ],
+  "float_locator_evidence_label": "COMPUTATIONAL-EVIDENCE",
+  "guarded_dense_overlap_length": 3.888112387606668e-09,
+  "guarded_dual_from": "ba_invariant_round",
+  "guarded_interval": [
+    0.5944062247804219,
+    0.5944062286685343
+  ],
+  "guarded_invariance_checks": {
+    "ba_invariant_round": 120,
+    "ba_orbit": 120,
+    "uniform": 120
+  },
+  "integer_and_Arb_checks_evidence_label": "MACHINE-VERIFIED",
+  "legacy_dual_from": "ba_word",
+  "legacy_interval": [
+    0.5944062247804219,
+    0.5944062242709663
+  ],
+  "legacy_width": -5.09455588826313e-10,
+  "legacy_word_snap_guard": {
+    "admission_rule": "STRUCTURAL_G_INVARIANCE_ONLY_not_objective_value",
+    "disposition": "DISCARDED_NONINVARIANT",
+    "first_mixed_orbits": [
+      6
+    ],
+    "mixed_orbits": 1,
+    "word_count": 40
+  },
+  "n": 3,
+  "q": 3,
+  "status": "REGRESSION_PASS"
+}

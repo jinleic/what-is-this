@@ -1,0 +1,292 @@
+{
+  "cost_model": {
+    "application": "entry open, scheduled rebalance opens, final liquidation; cash outflow on traded notional",
+    "perp_one_way_bps": 7.0,
+    "spot_one_way_bps": 12.0,
+    "stress_multiplier": 2.0
+  },
+  "fee_events": 4,
+  "funding_events": {
+    "credited": 13142,
+    "dropped": 4
+  },
+  "id": "crypto-carry-decay",
+  "identity_residuals": {
+    "gross": 2.930988785010413e-14,
+    "net": -2.5757174171303632e-14,
+    "stress_2x": 8.881784197001252e-16
+  },
+  "loaded_history": {
+    "end": "2026-07-31",
+    "start": "2020-08-01"
+  },
+  "rebalance_hours": 0,
+  "requested_window": {
+    "end": "2026-07-31",
+    "start": "2025-01-01"
+  },
+  "schema_version": 1,
+  "windows": {
+    "development": {
+      "attribution": {
+        "check_sum_pnl_usd": 2.646655621177048,
+        "fees_usd": -0.0018963968459926137,
+        "funding_pnl_usd": 2.6504461872605067,
+        "per_symbol": {
+          "BTCUSDT": {
+            "basis_annualized_premium_pct": 16.21384019663682,
+            "fees_ann_pct_of_notional": 0.04884870531033387,
+            "fees_usd": 0.0009481984229963068,
+            "funding_ann_pct_of_notional": 48.18077356023191,
+            "funding_pnl_usd": 0.9352332516966316,
+            "held_frac_of_hours": 1.0,
+            "price_pnl_usd": 9.017690180038174e-06,
+            "private_price_ann_pct_of_notional": 0.00046456783675360747
+          },
+          "ETHUSDT": {
+            "basis_annualized_premium_pct": -37.83987094273705,
+            "fees_ann_pct_of_notional": 0.034150110541684375,
+            "fees_usd": 0.0009481984229963068,
+            "funding_ann_pct_of_notional": 61.774740319581234,
+            "funding_pnl_usd": 1.7152129355638752,
+            "held_frac_of_hours": 1.0,
+            "price_pnl_usd": -0.0019031869276464643,
+            "private_price_ann_pct_of_notional": -0.06854477120435853
+          }
+        },
+        "price_pnl_usd": -0.001894169237466426
+      },
+      "benchmark": {
+        "ann_return": 0.013419528266095649,
+        "ann_vol": 0.00021801940869540173,
+        "best_hour": 6.164383561643836e-06,
+        "cum_return": 0.04688925076768258,
+        "max_drawdown": 0.0,
+        "n_hours": 29933,
+        "sharpe": 61.55198909306409,
+        "worst_hour": 0.0
+      },
+      "costs_ann_pct": 0.0002783052906060049,
+      "excess_cum_arith": 1.2574088122189768,
+      "excess_cum_geo": 2.5997663704089256,
+      "gross_strategy": {
+        "ann_return": 0.38221195971959465,
+        "ann_vol": 0.07433472945432128,
+        "best_hour": 0.05003636943311052,
+        "cum_return": 2.6535842668568055,
+        "max_drawdown": -0.04675101149655003,
+        "n_hours": 29933,
+        "sharpe": 5.14176835680103,
+        "worst_hour": -0.03195266665364571
+      },
+      "n_hours": 29933,
+      "pos_frac_mean": 3.2202114302030798,
+      "strategy": {
+        "ann_return": 0.38165677972473827,
+        "ann_vol": 0.07434465488166522,
+        "best_hour": 0.05003636943311052,
+        "cum_return": 2.6466556211766084,
+        "max_drawdown": -0.0467510114965497,
+        "n_hours": 29933,
+        "sharpe": 5.133614250173377,
+        "worst_hour": -0.03195266665364571
+      },
+      "stress_2x": {
+        "costs_ann_pct": 0.0005566105812120098,
+        "excess_cum_arith": 1.255520232174059,
+        "excess_cum_geo": 2.592863953912331,
+        "strategy": {
+          "ann_return": 0.38110370142741606,
+          "ann_vol": 0.07436861430748909,
+          "best_hour": 0.050036369433110295,
+          "cum_return": 2.6397532046800136,
+          "max_drawdown": -0.04675101149654981,
+          "n_hours": 29933,
+          "sharpe": 5.124523362122643,
+          "worst_hour": -0.03195266665364582
+        },
+        "turnover_notional_turns": 0.2929529374800052
+      },
+      "turnover_notional_turns": 0.2929529374800052,
+      "window": [
+        "1596240000000",
+        "1704063600000"
+      ],
+      "years": 3.414670317134383
+    },
+    "requested": {
+      "attribution": {
+        "check_sum_pnl_usd": 0.6047864373075984,
+        "fees_usd": -0.01035642604507392,
+        "funding_pnl_usd": 0.6171133937393367,
+        "per_symbol": {
+          "BTCUSDT": {
+            "basis_annualized_premium_pct": 429.48553322466944,
+            "fees_ann_pct_of_notional": 0.33506237139921463,
+            "fees_usd": 0.005258235764125488,
+            "funding_ann_pct_of_notional": 19.860951109839196,
+            "funding_pnl_usd": 0.3116839500633614,
+            "held_frac_of_hours": 1.0,
+            "price_pnl_usd": -0.0009391221116925677,
+            "private_price_ann_pct_of_notional": -0.059842216266520434
+          },
+          "ETHUSDT": {
+            "basis_annualized_premium_pct": 459.3083430592916,
+            "fees_ann_pct_of_notional": 0.2143503076869548,
+            "fees_usd": 0.005098190280948433,
+            "funding_ann_pct_of_notional": 12.841595079974407,
+            "funding_pnl_usd": 0.3054294436759753,
+            "held_frac_of_hours": 1.0,
+            "price_pnl_usd": -0.001031408274971775,
+            "private_price_ann_pct_of_notional": -0.04336493322292054
+          }
+        },
+        "price_pnl_usd": -0.0019705303866643428
+      },
+      "benchmark": {
+        "ann_return": 0.02746680693715724,
+        "ann_vol": 0.00020201352130701122,
+        "best_hour": 5.1484018264840185e-06,
+        "cum_return": 0.04434543455830697,
+        "max_drawdown": 0.0,
+        "n_hours": 13848,
+        "sharpe": 135.96519064391933,
+        "worst_hour": 0.0
+      },
+      "costs_ann_pct": 0.0012507999734968263,
+      "excess_cum_arith": 0.07936334523522898,
+      "excess_cum_geo": 0.08609535084547737,
+      "gross_strategy": {
+        "ann_return": 0.07895333684584056,
+        "ann_vol": 0.013481128279895564,
+        "best_hour": 0.001861973073670864,
+        "cum_return": 0.13267446702089014,
+        "max_drawdown": -0.0034005906590059976,
+        "n_hours": 13848,
+        "sharpe": 5.856582268680274,
+        "worst_hour": -0.0028174868733114034
+      },
+      "n_hours": 13848,
+      "pos_frac_mean": 3.1935866457601394,
+      "strategy": {
+        "ann_return": 0.07770504237418911,
+        "ann_vol": 0.013575805011609782,
+        "best_hour": 0.001861973073671086,
+        "cum_return": 0.13044078540378434,
+        "max_drawdown": -0.0034005906590061086,
+        "n_hours": 13848,
+        "sharpe": 5.723788925057274,
+        "worst_hour": -0.0028174868733115144
+      },
+      "stress_2x": {
+        "costs_ann_pct": 0.0025065527413841862,
+        "excess_cum_arith": 0.07739136464618618,
+        "excess_cum_geo": 0.0838616692283447,
+        "strategy": {
+          "ann_return": 0.07645674790252899,
+          "ann_vol": 0.013848718826796773,
+          "best_hour": 0.001861973073671086,
+          "cum_return": 0.12820710378665168,
+          "max_drawdown": -0.004072898362775246,
+          "n_hours": 13848,
+          "sharpe": 5.52085350701091,
+          "worst_hour": -0.003975100107264318
+        },
+        "turnover_notional_turns": 1.319068389395949
+      },
+      "turnover_notional_turns": 1.3164619912093611,
+      "window": [
+        "1735689600000",
+        "1785538800000"
+      ],
+      "years": 1.5797399041752225
+    },
+    "validation": {
+      "attribution": {
+        "check_sum_pnl_usd": 0.98982702062459,
+        "fees_usd": 0.0,
+        "funding_pnl_usd": 0.9806273920568278,
+        "per_symbol": {
+          "BTCUSDT": {
+            "basis_annualized_premium_pct": -40.214768112740074,
+            "fees_ann_pct_of_notional": -0.0,
+            "fees_usd": -0.0,
+            "funding_ann_pct_of_notional": 45.02603442267286,
+            "funding_pnl_usd": 0.36694566061211753,
+            "held_frac_of_hours": 1.0,
+            "price_pnl_usd": 0.0041648923937049566,
+            "private_price_ann_pct_of_notional": 0.5110527481722045
+          },
+          "ETHUSDT": {
+            "basis_annualized_premium_pct": -9.762460236065216,
+            "fees_ann_pct_of_notional": -0.0,
+            "fees_usd": -0.0,
+            "funding_ann_pct_of_notional": 47.869266908957556,
+            "funding_pnl_usd": 0.6136817314447103,
+            "held_frac_of_hours": 1.0,
+            "price_pnl_usd": 0.005034736174057317,
+            "private_price_ann_pct_of_notional": 0.3927265834763524
+          }
+        },
+        "price_pnl_usd": 0.009199628567762273
+      },
+      "benchmark": {
+        "ann_return": 0.03519102683584101,
+        "ann_vol": 0.00025734894885482866,
+        "best_hour": 6.164383561643836e-06,
+        "cum_return": 0.03589230290342216,
+        "max_drawdown": 0.0,
+        "n_hours": 8784,
+        "sharpe": 136.7443970237173,
+        "worst_hour": 0.0
+      },
+      "costs_ann_pct": 0.0,
+      "excess_cum_arith": 0.20513464657779307,
+      "excess_cum_geo": 0.23554188870941029,
+      "gross_strategy": {
+        "ann_return": 0.23990531553130193,
+        "ann_vol": 0.022297068876290183,
+        "best_hour": 0.003844831360045431,
+        "cum_return": 0.2714341916128282,
+        "max_drawdown": -0.004964660970197432,
+        "n_hours": 8784,
+        "sharpe": 10.759500132611947,
+        "worst_hour": -0.004698225747905904
+      },
+      "n_hours": 8784,
+      "pos_frac_mean": 3.475489951518938,
+      "strategy": {
+        "ann_return": 0.2399053155313026,
+        "ann_vol": 0.022297068876289624,
+        "best_hour": 0.003844831360045431,
+        "cum_return": 0.27143419161283244,
+        "max_drawdown": -0.004964660970197543,
+        "n_hours": 8784,
+        "sharpe": 10.759500132612246,
+        "worst_hour": -0.004698225747906015
+      },
+      "stress_2x": {
+        "costs_ann_pct": 0.0,
+        "excess_cum_arith": 0.20513464657777952,
+        "excess_cum_geo": 0.23554188870939674,
+        "strategy": {
+          "ann_return": 0.23990531553128908,
+          "ann_vol": 0.022297068876289926,
+          "best_hour": 0.003844831360045209,
+          "cum_return": 0.2714341916128189,
+          "max_drawdown": -0.004964660970197654,
+          "n_hours": 8784,
+          "sharpe": 10.759500132611494,
+          "worst_hour": -0.004698225747906015
+        },
+        "turnover_notional_turns": 0.0
+      },
+      "turnover_notional_turns": 0.0,
+      "window": [
+        "1704067200000",
+        "1735686000000"
+      ],
+      "years": 1.002053388090349
+    }
+  }
+}

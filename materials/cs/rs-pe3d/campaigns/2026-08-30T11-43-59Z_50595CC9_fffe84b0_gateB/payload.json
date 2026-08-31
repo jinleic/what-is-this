@@ -1,0 +1,1287 @@
+{
+  "agent": "RsPe3dGateB",
+  "analysis": {
+    "EXCLUSION_E": {
+      "extreme_point": "beta grows 3.2x from 5/3 to 16/3 at q=241 with rho 1 -> 1, while intermediate beta=5/2 sits at 3/5",
+      "monotone_excluding_interleavings": {
+        "13": [],
+        "241": [
+          {
+            "betas": [
+              "5/3",
+              "5/2",
+              "8/3"
+            ],
+            "rhos": [
+              "1/1",
+              "3/5",
+              "1/1"
+            ],
+            "rows": [
+              "B13",
+              "B12",
+              "B10"
+            ],
+            "shape": "valley"
+          },
+          {
+            "betas": [
+              "5/3",
+              "5/2",
+              "16/3"
+            ],
+            "rhos": [
+              "1/1",
+              "3/5",
+              "1/1"
+            ],
+            "rows": [
+              "B13",
+              "B12",
+              "B11"
+            ],
+            "shape": "valley"
+          }
+        ],
+        "31": [
+          {
+            "betas": [
+              "5/2",
+              "3/1",
+              "5/1"
+            ],
+            "rhos": [
+              "3/5",
+              "1/1",
+              "3/5"
+            ],
+            "rows": [
+              "B03",
+              "B05",
+              "B04"
+            ],
+            "shape": "peak"
+          },
+          {
+            "betas": [
+              "5/2",
+              "3/1",
+              "5/1"
+            ],
+            "rhos": [
+              "3/5",
+              "1/1",
+              "3/5"
+            ],
+            "rows": [
+              "B03",
+              "B05",
+              "B06"
+            ],
+            "shape": "peak"
+          }
+        ],
+        "61": []
+      },
+      "same_beta_different_rho": [
+        {
+          "beta": "5/2",
+          "rows": [
+            "B01 (61,(2,3,5)) = 3/5",
+            "B03 (31,(2,3,5)) = 3/5",
+            "B12 (241,(2,3,5)) = 3/5"
+          ]
+        },
+        {
+          "beta": "5/3",
+          "rows": [
+            "B02 (61,(3,4,5)) = 1",
+            "B13 (241,(3,4,5)) = 1"
+          ]
+        }
+      ],
+      "statement": "On the swept set, rho^window is NOT a function of beta: no monotone (indeed no single-valued-in-beta) dependence fits.",
+      "status": "CONCLUSION from exact data; independent of B11; B11 strengthens it at the extreme point"
+    },
+    "PATTERN_P": {
+      "fit": "perfect on all 13 rows (5 contain both 2 and 3 and all are 3/5; 8 do not and none is 3/5)",
+      "honest_summary": "P survived its first prospective test. P is NOT established.",
+      "in_sample_rows": 12,
+      "in_sample_separation_statistic": {
+        "LABEL": "IN-SAMPLE figure only - the pattern was found by inspecting 12 of these rows. It is NOT a prospective p-value and must never be quoted as one.",
+        "meaning": "probability that a uniformly random choice of which 5 of 13 rows carry the 3/5 label coincides exactly with the {2,3}-membership split",
+        "value": "1/1287 = 7.77e-04"
+      },
+      "known_limits_of_P": [
+        "P is a statement about ORDERS at t=(1,1,1) only, on 13 points at four values of q",
+        "rho varies with t at FIXED orders: the three q=13 rows (2,2,4) give 1/2, 3/8, 1/4 at t=(1,1,1),(1,1,2),(1,1,4), so P as stated says nothing about t-dependence and cannot be the whole story",
+        "window-restricted (weight<=3 supports, reduced-basis candidates); says nothing about global rho_inst"
+      ],
+      "out_of_sample_detail": "B11 = (241,(3,5,16)), beta=16/3, predicted 1 by P and <1/4 by beta-degradation; observed 1. Prediction committed mid-census with cryptographic order proof (prediction_order_proof.json).",
+      "out_of_sample_rows": 1,
+      "provenance": "pattern suggested by Main from my completed rows, flagged as a hypothesis to kill; recorded in pre_statement GB9.1 before B11 landed",
+      "statement": "At t=(1,1,1), Lambda=Id, in this window: {2,3} subseteq orders(s)  <=>  rho^window = 3/5",
+      "status": "EVIDENCE, not a theorem",
+      "what_would_kill_P": [
+        "any triple containing both 2 and 3 whose exact window rho != 3/5",
+        "any triple lacking the pair {2,3} whose exact window rho = 3/5",
+        "one counterexample ends it"
+      ]
+    },
+    "VERDICT": {
+      "answer": "NEITHER graceful-degradation NOR collapse-at-beta*",
+      "escalation": "no hypothesis-correction claim about TR26-150 arises from the numbers; the only statement touching the paper is finding 2 (a provenance reading), reported to Main before being written",
+      "grid_resolution_uncertainty": "applies vacuously (no threshold); the swept beta values are 5/3, 2, 5/2, 8/3, 3, 5, 16/3, so any future threshold claim on this grid would carry at least those gaps as uncertainty",
+      "reason": "the contract's dichotomy presupposes rho depends on beta; exclusion E shows it does not on the swept set",
+      "threshold_beta_star": "none exists to locate on this grid"
+    },
+    "b11_prediction_test": {
+      "beta_degradation_predicted": "< 1/4 (strictly below the grid minimum)",
+      "branch_taken": "GB9.2 branch 1 - P survives, beta-degradation falsified",
+      "note": "beta-degradation predicted the grid FLOOR; the observed value is the grid CEILING",
+      "observed": "1/1",
+      "order_proof": "prediction_order_proof.json: pre_statement sha256 53bab658175b647455483e71b5f3c1b4fcf6ca8d7d9b84484d22da50f48aa46a, census 1350000/2304200, b11_result_file_exists=false",
+      "pattern_P_predicted": "1/1"
+    },
+    "beta_grid_swept": [
+      "5/3",
+      "2/1",
+      "5/2",
+      "8/3",
+      "3/1",
+      "5/1",
+      "16/3"
+    ],
+    "per_q_sorted_by_beta": {
+      "13": [
+        {
+          "N": 16,
+          "beta": "2/1",
+          "delta": 4,
+          "id": "B07",
+          "rho": "1/2",
+          "s": [
+            2,
+            2,
+            4
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 2
+        },
+        {
+          "N": 16,
+          "beta": "2/1",
+          "delta": 8,
+          "id": "B08",
+          "rho": "3/8",
+          "s": [
+            2,
+            2,
+            4
+          ],
+          "t": [
+            1,
+            1,
+            2
+          ],
+          "weight": 3
+        },
+        {
+          "N": 16,
+          "beta": "2/1",
+          "delta": 4,
+          "id": "B09",
+          "rho": "1/4",
+          "s": [
+            2,
+            2,
+            4
+          ],
+          "t": [
+            1,
+            1,
+            4
+          ],
+          "weight": 1
+        }
+      ],
+      "241": [
+        {
+          "N": 60,
+          "beta": "5/3",
+          "delta": 3,
+          "id": "B13",
+          "rho": "1/1",
+          "s": [
+            3,
+            4,
+            5
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        },
+        {
+          "N": 30,
+          "beta": "5/2",
+          "delta": 5,
+          "id": "B12",
+          "rho": "3/5",
+          "s": [
+            2,
+            3,
+            5
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        },
+        {
+          "N": 120,
+          "beta": "8/3",
+          "delta": 3,
+          "id": "B10",
+          "rho": "1/1",
+          "s": [
+            3,
+            5,
+            8
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        },
+        {
+          "N": 240,
+          "beta": "16/3",
+          "delta": 3,
+          "id": "B11",
+          "rho": "1/1",
+          "s": [
+            3,
+            5,
+            16
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        }
+      ],
+      "31": [
+        {
+          "N": 30,
+          "beta": "5/2",
+          "delta": 5,
+          "id": "B03",
+          "rho": "3/5",
+          "s": [
+            2,
+            3,
+            5
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        },
+        {
+          "N": 60,
+          "beta": "3/1",
+          "delta": 2,
+          "id": "B05",
+          "rho": "1/1",
+          "s": [
+            2,
+            6,
+            5
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 2
+        },
+        {
+          "N": 60,
+          "beta": "5/1",
+          "delta": 5,
+          "id": "B04",
+          "rho": "3/5",
+          "s": [
+            2,
+            3,
+            10
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        },
+        {
+          "N": 60,
+          "beta": "5/1",
+          "delta": 5,
+          "id": "B06",
+          "rho": "3/5",
+          "s": [
+            3,
+            10,
+            2
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        }
+      ],
+      "61": [
+        {
+          "N": 60,
+          "beta": "5/3",
+          "delta": 3,
+          "id": "B02",
+          "rho": "1/1",
+          "s": [
+            3,
+            4,
+            5
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        },
+        {
+          "N": 30,
+          "beta": "5/2",
+          "delta": 5,
+          "id": "B01",
+          "rho": "3/5",
+          "s": [
+            2,
+            3,
+            5
+          ],
+          "t": [
+            1,
+            1,
+            1
+          ],
+          "weight": 3
+        }
+      ]
+    },
+    "unswept_extension_price": {
+      "estimated_census_hours": 36.0,
+      "estimated_census_seconds": 129556,
+      "measured_supports_per_second": 650,
+      "note": "single-threaded, census only; MILP + per-witness closure extra. This is the price of closing the q=421 tier at the same window, and it is why that tier is OPEN rather than attempted.",
+      "per_triple": [
+        {
+          "N": 30,
+          "s": [
+            2,
+            3,
+            5
+          ],
+          "supports_weight_le_3": 4525
+        },
+        {
+          "N": 42,
+          "s": [
+            2,
+            3,
+            7
+          ],
+          "supports_weight_le_3": 12383
+        },
+        {
+          "N": 210,
+          "s": [
+            2,
+            3,
+            35
+          ],
+          "supports_weight_le_3": 1543675
+        },
+        {
+          "N": 70,
+          "s": [
+            2,
+            5,
+            7
+          ],
+          "supports_weight_le_3": 57225
+        },
+        {
+          "N": 210,
+          "s": [
+            2,
+            5,
+            21
+          ],
+          "supports_weight_le_3": 1543675
+        },
+        {
+          "N": 210,
+          "s": [
+            2,
+            7,
+            15
+          ],
+          "supports_weight_le_3": 1543675
+        },
+        {
+          "N": 60,
+          "s": [
+            3,
+            4,
+            5
+          ],
+          "supports_weight_le_3": 36050
+        },
+        {
+          "N": 84,
+          "s": [
+            3,
+            4,
+            7
+          ],
+          "supports_weight_le_3": 98854
+        },
+        {
+          "N": 420,
+          "s": [
+            3,
+            4,
+            35
+          ],
+          "supports_weight_le_3": 12348350
+        },
+        {
+          "N": 105,
+          "s": [
+            3,
+            5,
+            7
+          ],
+          "supports_weight_le_3": 193025
+        },
+        {
+          "N": 210,
+          "s": [
+            3,
+            5,
+            14
+          ],
+          "supports_weight_le_3": 1543675
+        },
+        {
+          "N": 420,
+          "s": [
+            3,
+            5,
+            28
+          ],
+          "supports_weight_le_3": 12348350
+        },
+        {
+          "N": 210,
+          "s": [
+            3,
+            7,
+            10
+          ],
+          "supports_weight_le_3": 1543675
+        },
+        {
+          "N": 420,
+          "s": [
+            3,
+            7,
+            20
+          ],
+          "supports_weight_le_3": 12348350
+        },
+        {
+          "N": 140,
+          "s": [
+            4,
+            5,
+            7
+          ],
+          "supports_weight_le_3": 457450
+        },
+        {
+          "N": 420,
+          "s": [
+            4,
+            5,
+            21
+          ],
+          "supports_weight_le_3": 12348350
+        },
+        {
+          "N": 420,
+          "s": [
+            4,
+            7,
+            15
+          ],
+          "supports_weight_le_3": 12348350
+        },
+        {
+          "N": 210,
+          "s": [
+            5,
+            6,
+            7
+          ],
+          "supports_weight_le_3": 1543675
+        },
+        {
+          "N": 420,
+          "s": [
+            5,
+            7,
+            12
+          ],
+          "supports_weight_le_3": 12348350
+        }
+      ],
+      "total_supports": 84211662,
+      "triples": 19
+    }
+  },
+  "anchors": {
+    "gate_A_rows_reproduced": {
+      "B01": {
+        "agree": true,
+        "frozen": "3/5",
+        "recomputed": "3/5"
+      },
+      "B02": {
+        "agree": true,
+        "frozen": "1/1",
+        "recomputed": "1/1"
+      },
+      "B03": {
+        "agree": true,
+        "frozen": "3/5",
+        "recomputed": "3/5"
+      },
+      "B04": {
+        "agree": true,
+        "frozen": "3/5",
+        "recomputed": "3/5"
+      },
+      "B05": {
+        "agree": true,
+        "frozen": "1/1",
+        "recomputed": "1/1"
+      },
+      "B06": {
+        "agree": true,
+        "frozen": "3/5",
+        "recomputed": "3/5"
+      },
+      "B07": {
+        "agree": true,
+        "frozen": "1/2",
+        "recomputed": "1/2"
+      },
+      "B08": {
+        "agree": true,
+        "frozen": "3/8",
+        "recomputed": "3/8"
+      },
+      "B09": {
+        "agree": true,
+        "frozen": "1/4",
+        "recomputed": "1/4"
+      }
+    },
+    "unit_exhaustive": {
+      "V_nonzero_count": 78124,
+      "anchor_ok": true,
+      "rho_exact": "1/3",
+      "status": "MACHINE-VERIFIED"
+    },
+    "unit_second_route": {
+      "method": "V-basis coefficient enumeration over rref'd lift bases + DeltaEngine ascending-cost closure; structurally distinct from units.anchor2's numpy min-plus DP over component arrays",
+      "nonzero_V_count": 78124,
+      "rho_exact": "1/3",
+      "seconds": 535.73
+    }
+  },
+  "campaign": "2026-08-30T11-43-59Z_50595CC9_fffe84b0_gateB",
+  "code_sha256_at_freeze": "a9ff7e0ae1a716640c249f63baf4cd8ba774d6e7763822a7ce32d8fca6fde810",
+  "code_sha256_at_pre_statement_commit": "fffe84b00b9ca48ba5b3a6970b5523c9063bb61a559a88f81328a501e7b8bd56",
+  "coprime_rows": [
+    "B01",
+    "B02",
+    "B03",
+    "B10",
+    "B11",
+    "B12",
+    "B13"
+  ],
+  "evidence_labels": {
+    "all_13_rows": "MACHINE-VERIFIED (finite window): exact rationals end to end, exact F_q witness verification, exhaustive cheaper-tuple closure per witness",
+    "finding2_quotes": "[REPRODUCED] from hashed PDFs; the K-exponent value is [DERIVED]",
+    "float_rows": "none - no floating point anywhere in the computation chain"
+  },
+  "fixed_parameters": {
+    "Lambda": "identity on every axis",
+    "eta": "1/32",
+    "milp_limit_seconds": 120,
+    "t": [
+      1,
+      1,
+      1
+    ]
+  },
+  "gate": "B",
+  "non_coprime_rows_flagged": [
+    {
+      "id": "B04",
+      "s": [
+        2,
+        3,
+        10
+      ],
+      "why": "gcd(2,10)=2 - outside Conjecture 4.2's pairwise-coprime hypothesis; kept as a shape probe inherited from gate A"
+    },
+    {
+      "id": "B05",
+      "s": [
+        2,
+        6,
+        5
+      ],
+      "why": "gcd(2,6)=2 - same"
+    },
+    {
+      "id": "B06",
+      "s": [
+        3,
+        10,
+        2
+      ],
+      "why": "gcd(2,10)=2 - same"
+    },
+    {
+      "id": "B07",
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "why": "gcd(2,2)=2 - same"
+    },
+    {
+      "id": "B08",
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "why": "gcd(2,2)=2 - same"
+    },
+    {
+      "id": "B09",
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "why": "gcd(2,2)=2 - same"
+    }
+  ],
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "pre_statement": "pre_statement.md (GB1-GB8 committed before compute; GB9 addendum committed mid-census with order proof)",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "rows": [
+    {
+      "N": 30,
+      "V_dim": 22,
+      "beta": "5/2",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 55,
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B01",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 61,
+      "ratio": "3/5",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 0.68,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/90",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "3/5",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.58888888888888890616",
+        "width_exact": "53/90"
+      },
+      "s": [
+        2,
+        3,
+        5
+      ],
+      "seconds": 0.68,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 60,
+      "V_dim": 36,
+      "beta": "5/3",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 20,
+      "delta": 3,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B02",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 61,
+      "ratio": "1/1",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 14.26,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/180",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "1/1",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.99444444444444446418",
+        "width_exact": "179/180"
+      },
+      "s": [
+        3,
+        4,
+        5
+      ],
+      "seconds": 14.259,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 30,
+      "V_dim": 22,
+      "beta": "5/2",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 55,
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B03",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 31,
+      "ratio": "3/5",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 0.68,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/90",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "3/5",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.58888888888888890616",
+        "width_exact": "53/90"
+      },
+      "s": [
+        2,
+        3,
+        5
+      ],
+      "seconds": 0.694,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 60,
+      "V_dim": 42,
+      "beta": "5/1",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 110,
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B04",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 31,
+      "ratio": "3/5",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 15.18,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/180",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "3/5",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.59444444444444444198",
+        "width_exact": "107/180"
+      },
+      "s": [
+        2,
+        3,
+        10
+      ],
+      "seconds": 15.129,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 60,
+      "V_dim": 40,
+      "beta": "3/1",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 30,
+      "delta": 2,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B05",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 31,
+      "ratio": "1/1",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 14.67,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/180",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "1/1",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.99444444444444446418",
+        "width_exact": "179/180"
+      },
+      "s": [
+        2,
+        6,
+        5
+      ],
+      "seconds": 14.487,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 2,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 60,
+      "V_dim": 42,
+      "beta": "5/1",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 110,
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B06",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 31,
+      "ratio": "3/5",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 15.8,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/180",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "3/5",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.59444444444444444198",
+        "width_exact": "107/180"
+      },
+      "s": [
+        3,
+        10,
+        2
+      ],
+      "seconds": 15.727,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 16,
+      "V_dim": 13,
+      "beta": "2/1",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 24,
+      "delta": 4,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B07",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 13,
+      "ratio": "1/2",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 0.1,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/48",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "1/2",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.47916666666666668517",
+        "width_exact": "23/48"
+      },
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "seconds": 0.097,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 2,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 16,
+      "V_dim": 14,
+      "beta": "2/1",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 280,
+      "delta": 8,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B08",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 13,
+      "ratio": "3/8",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 5.81,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/48",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "3/8",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.35416666666666668517",
+        "width_exact": "17/48"
+      },
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "seconds": 5.809,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        2
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 16,
+      "V_dim": 16,
+      "beta": "2/1",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 16,
+      "delta": 4,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": true,
+      "id": "B09",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 13,
+      "ratio": "1/4",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 6.22,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/48",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "1/4",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.22916666666666665741",
+        "width_exact": "11/48"
+      },
+      "s": [
+        2,
+        2,
+        4
+      ],
+      "seconds": 6.176,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        4
+      ],
+      "weight": 1,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 120,
+      "V_dim": 64,
+      "beta": "8/3",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 40,
+      "delta": 3,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": null,
+      "id": "B10",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 241,
+      "ratio": "1/1",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 402.4,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/360",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "1/1",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.99722222222222223209",
+        "width_exact": "359/360"
+      },
+      "s": [
+        3,
+        5,
+        8
+      ],
+      "seconds": 403.633,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 240,
+      "V_dim": 120,
+      "beta": "16/3",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 80,
+      "delta": 3,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": null,
+      "id": "B11",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 241,
+      "ratio": "1/1",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 3448.74,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/720",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "1/1",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.99861111111111111605",
+        "width_exact": "719/720"
+      },
+      "s": [
+        3,
+        5,
+        16
+      ],
+      "seconds": 3448.74,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 30,
+      "V_dim": 22,
+      "beta": "5/2",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 55,
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": null,
+      "id": "B12",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 241,
+      "ratio": "3/5",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 0.75,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/90",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "3/5",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.58888888888888890616",
+        "width_exact": "53/90"
+      },
+      "s": [
+        2,
+        3,
+        5
+      ],
+      "seconds": 0.754,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 60,
+      "V_dim": 36,
+      "beta": "5/3",
+      "candidate_class": "normalized reduced basis of each V n F^S",
+      "candidate_count_total": 20,
+      "delta": 3,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "expect_match": null,
+      "id": "B13",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 241,
+      "ratio": "1/1",
+      "rerun_fresh_process_agree": true,
+      "rerun_seconds": 14.25,
+      "rho_inst_certified_interval": {
+        "exactness": "both endpoints exact rationals; width is exact, zero-uncertainty arithmetic",
+        "lower": "1/180",
+        "lower_source": "delta(M) <= 3N for every M in V (parent pre-statement; gate-C manifest)",
+        "upper": "1/1",
+        "upper_source": "this campaign: exact best-in-window witness, delta closed exhaustively",
+        "width_decimal_20dp": "0.99444444444444446418",
+        "width_exact": "179/180"
+      },
+      "s": [
+        3,
+        4,
+        5
+      ],
+      "seconds": 14.255,
+      "support_window": "all point supports of weight <= 3",
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    }
+  ],
+  "rule7_not_swept": [
+    "supports of weight >= 4",
+    "non-basis field values inside dim>1 intersections",
+    "t profiles other than (1,1,1) except the two q=13 rows listed",
+    "eta != 1/32",
+    "non-identity Lambda (the conjecture's forall-Lambda quantifier is untouched)",
+    "primes outside {13, 31, 61, 241}",
+    "the q=421 nineteen-triple census (priced in analysis.unswept_extension_price)",
+    "continuous beta - only the discrete grid was swept",
+    "any asymptotic statement in beta, q, or N",
+    "global rho_inst: each row certifies only the interval [1/(3N), rho^window]"
+  ],
+  "rule7_swept_set": "{(q,s,t,eta,Lambda)}: eta=1/32, t=(1,1,1) except the two extra q=13 t-rows, Lambda=Id, (q,s) in {(13,(2,2,4)) at t=(1,1,1),(1,1,2),(1,1,4); (31,(2,3,5)), (31,(2,3,10)), (31,(2,6,5)), (31,(3,10,2)); (61,(2,3,5)), (61,(3,4,5)); (241,(2,3,5)), (241,(3,4,5)), (241,(3,5,8)), (241,(3,5,16))}; witnesses restricted to weight<=3 supports and the normalized reduced-basis candidate class",
+  "tool_versions": {
+    "highspy": "1.15.1",
+    "numpy": "2.5.2",
+    "python": "3.14.3",
+    "python-flint": "0.9.0",
+    "solver": "HiGHS via highspy, exact modular MILP model, every solution re-checked in F_q",
+    "sympy": "1.14.0"
+  },
+  "utc_frozen": "2026-08-30T14:06:26.008103+00:00",
+  "window": "all point supports of weight <= 3 (complete census); candidates = normalized reduced basis of each nonzero V n F^S; per-witness delta closed by exhaustive line-tuple sweep (every cheaper cost proved absent, >=1 tuple present at the cost)"
+}

@@ -184,6 +184,14 @@ class _JetOps(_ScalarOps):
     @staticmethod
     def _entropy(argument: Jet) -> Jet:
         lo, hi = _semantic_bounds(argument.value, ZERO, ONE)
+        if (argument.value == ZERO or argument.value == ONE):
+            if all(entry == ZERO for entry in argument.gradient):
+                # A fixed entropy endpoint is a constant, not a singular
+                # direction.  This is load-bearing on reduced boundary faces:
+                # h(0)=h(1)=0 and every argument derivative is exactly zero.
+                return Jet.constant(0, len(argument.gradient))
+            raise GradientUnavailable(
+                "entropy endpoint has a nonzero derivative direction")
         if not (lo > ZERO and hi < ONE):
             raise GradientUnavailable("entropy derivative is unbounded at 0 or 1")
         # h'(z)=log((1-z)/z), decreasing on (0,1).
@@ -283,7 +291,8 @@ def _gap_mean_gradient(box: Box, beta: arb) -> tuple[tuple[arb, ...],
     jets = []
     for index, value in enumerate(_box_arbs(box)):
         gradient = [ZERO] * dimension
-        gradient[index] = ONE
+        if box[index][0] != box[index][1]:
+            gradient[index] = ONE
         jets.append(Jet(value, tuple(gradient)))
     ops = _JetOps(dimension)
     terms = _formula(tuple(jets), beta, ops)
@@ -342,7 +351,8 @@ def box_bound(box: Box, target: Fraction, beta_fraction: Fraction,
     # Weight/mixture coordinates may still be wider: entropy singularities
     # occur only in the six support coordinates.
     if (max(hi - lo for lo, hi in box[3:]) <= 0.25
-            and all(lo > 0.0 and hi < 1.0 for lo, hi in box[3:])):
+            and all(lo == hi or (lo > 0.0 and hi < 1.0)
+                    for lo, hi in box[3:])):
         try:
             gradients = _gap_mean_gradient(box, beta)
             centered_usable = True

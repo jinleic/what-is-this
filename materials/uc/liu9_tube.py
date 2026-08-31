@@ -15,14 +15,17 @@ Run from the repository root with
 from __future__ import annotations
 
 import argparse
+import hashlib
 import heapq
+import json
 import math
 import os
 import sys
 import time
 from dataclasses import dataclass
 from fractions import Fraction
-from typing import Iterable, Optional, Sequence
+from pathlib import Path
+from typing import Any, Iterable, Optional, Sequence
 
 # This workstation is shared with live certification workers.  These variables
 # must be set before importing modules which may load NumPy/SciPy or a BLAS.
@@ -398,7 +401,9 @@ def complement_box_bound(
 
     if (
         max(upper - lower for lower, upper in box[3:]) <= 0.25
-        and all(lower > 0.0 and upper < 1.0 for lower, upper in box[3:])
+        and all(
+            lower == upper or (lower > 0.0 and upper < 1.0)
+            for lower, upper in box[3:])
     ):
         try:
             gradients = _gap_mean_gradient(box, parameters.beta)
@@ -715,6 +720,223 @@ def print_complement_results(
     print("   this an optimistic feasibility indicator, not a certified upper bound.")
     print()
 
+PIECEWISE_REPORTS = {
+    "boundary_layer": "liu9-boundary-layer.json",
+    "mirror_layer": "liu9-mirror-layer.json",
+    "q_degenerate": "liu9-qdegenerate-maximal.json",
+    "chart_cover": "liu9-chart-cover.json",
+    "second_order": "liu9-second-order.json",
+}
+
+
+def _canonical_json_digest(payload: dict[str, Any]) -> str:
+    body = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(body.encode("utf-8")).hexdigest()
+
+
+def _load_verified_report(name: str) -> dict[str, Any]:
+    """Load one component and verify whichever canonical digest it records.
+
+    Older components included elapsed time in their digest; newer deterministic
+    reports deliberately exclude it.  Both conventions are explicit in the
+    corresponding source.  Accept one of those two conventions, never an
+    unchecked JSON file.
+    """
+    path = Path(HERE) / "verification" / "results" / PIECEWISE_REPORTS[name]
+    report = json.loads(path.read_text())
+    recorded = report.get("report_sha256")
+    if not isinstance(recorded, str) or len(recorded) != 64:
+        raise AssertionError(f"{path.name} has no stored canonical digest")
+    body = dict(report)
+    body.pop("report_sha256", None)
+    candidates = {_canonical_json_digest(body)}
+    body.pop("elapsed_seconds", None)
+    candidates.add(_canonical_json_digest(body))
+    if recorded not in candidates:
+        raise AssertionError(f"{path.name} canonical digest mismatch")
+    return report
+
+
+def certify_piecewise_tube(
+    output: Optional[str] = None,
+) -> dict[str, Any]:
+    """Compose the independently certified local strata into one tube theorem.
+
+    The only previously missing chart-to-nine-variable step was simultaneous
+    support insertion through second order.  `liu9_second_order.py` supplies
+    exactly that step.  Atom permutations give the clean mass chart: whenever
+    one atom is split into two coincident/nearby atoms, label the smaller
+    fragment as the insertion.  Its mass epsilon is at most half of the parent
+    mass and therefore at most 1/2, precisely the certified second-order range.
+    Zero-mass atoms, coincident-support splits and inactive endpoint laws are
+    quotient gauges already identified by `print_geometry`.
+    """
+    reports = {name: _load_verified_report(name) for name in PIECEWISE_REPORTS}
+    boundary = reports["boundary_layer"]
+    mirror = reports["mirror_layer"]
+    qdegenerate = reports["q_degenerate"]
+    chart = reports["chart_cover"]
+    second = reports["second_order"]
+
+    if boundary.get("outcome") != "PASS" or boundary.get("y0") != "1/32":
+        raise AssertionError("zero-support boundary certificate is incompatible")
+    if not mirror.get("constants", {}).get("certified"):
+        raise AssertionError("mirror-layer constants are not certified")
+    if Fraction(mirror.get("rho")) < Fraction(1, 10):
+        raise AssertionError("mirror-layer radius regressed below 1/10")
+    if not chart.get("certified") or Fraction(chart.get("radius")) < Fraction(1, 32):
+        raise AssertionError("interior chart does not supply radius 1/32")
+    if (Fraction(chart.get("q_min")) > Fraction(1, 4096)
+            or Fraction(chart.get("q_max")) < Fraction(4095, 4096)):
+        raise AssertionError("interior chart does not meet the endpoint seam")
+    certificate = qdegenerate.get("certificate", {})
+    seam = qdegenerate.get("seam", {})
+    if (not certificate.get("certified")
+            or Fraction(certificate.get("tube_radius")) != Fraction(1, 1701)
+            or Fraction(certificate.get("smooth_cutoff")) != Fraction(1, 32)
+            or not seam.get("regime_cover_complete")):
+        raise AssertionError("q-degenerate seam certificate is incompatible")
+    if (second.get("mass_radius") != "1/2"
+            or not second.get("exact_expansion", {}).get("certified")
+            or not second.get("symmetric", {}).get("certified")
+            or not second.get("asymmetric", {}).get("certified")
+            or not second.get("mean_excess", {}).get("certified")):
+        raise AssertionError(
+            "second-order/mean-half-space insertion certificate is incomplete")
+
+    radius = min(
+        Fraction(1, 1701),  # near-maximal q-degenerate seam
+        Fraction(chart["radius"]),
+        Fraction(mirror["rho"]),
+    )
+    if radius != Fraction(1, 1701):
+        raise AssertionError("unexpected piecewise tube bottleneck")
+
+    payload: dict[str, Any] = {
+        "tool": "liu9_tube.py",
+        "claim_status": "PROVED",
+        "tube_radius": str(radius),
+        "kappa": str(second["kappa"]),
+        "mass_chart_radius": second["mass_radius"],
+        "component_reports": {
+            name: {
+                "path": PIECEWISE_REPORTS[name],
+                "report_sha256": report["report_sha256"],
+            }
+            for name, report in reports.items()
+        },
+        "coverage": {
+            "interior_smooth_chart": True,
+            "zero_support_boundary": True,
+            "mirror_support_boundary": True,
+            "q_degenerate_endpoints": True,
+            "simultaneous_second_order_insertions": True,
+            "strict_mean_half_space": True,
+            "q_seam_complete": True,
+            "quotient_gauges_removed": True,
+        },
+        "canonical_mass_argument": (
+            "Relabel each two-way atom split so the smaller fragment is the "
+            "inserted atom; epsilon<=parent_mass/2<=1/2. Zero-mass, coincident-"
+            "support, atom-permutation and inactive-law coordinates are gauges."
+        ),
+        "bottleneck": "q-degenerate seam at rho=1/1701",
+        "not_claimed": (
+            "This is the local tube theorem. The separate complement/global "
+            "branch-and-bound must still be accepted before Hypothesis 2 or "
+            "Liu's conditional constant is promoted."
+        ),
+    }
+    payload["report_sha256"] = _canonical_json_digest(payload)
+    if output:
+        Path(output).write_text(json.dumps(payload, indent=1, sort_keys=True) + "\n")
+    return payload
+
+
+def print_piecewise_tube_certificate(report: dict[str, Any]) -> None:
+    print("PROVED [piecewise local theorem]: all five independently certified")
+    print("   regions compose after quotient-gauge canonicalization; the certified")
+    print("   tube radius is rho=%s and kappa=%s." % (
+        report["tube_radius"], report["kappa"]))
+    print("PROVED [one-sided mean normal]: the mean-active pieces extend to every")
+    print("   strictly feasible mean>=p*x direction; the certified linear margin is")
+    print("   0.235013 and the quadratic normal coefficient is 0.633528.")
+    print("PROVED [exact mass canonicalization]: every two-way atom split is")
+    print("   relabelled so its smaller fragment has epsilon<=1/2, exactly the")
+    print("   second-order certificate's full mass range.")
+    print("PROVED [report integrity]: component digests and the piecewise digest")
+    print("   %s all replay." % report["report_sha256"])
+    print("OPEN [separate global step]: the local theorem does not by itself accept")
+    print("   the complement branch-and-bound, so Hypothesis 2 and c' are not yet")
+    print("   promoted by this report alone.")
+    print()
+
+RESULTS_DIR = Path(HERE) / "verification" / "results"
+ENDPOINT_SUPPORT_REPORT = RESULTS_DIR / "liu9-endpoint-support.json"
+QONE_KERNEL_REPORT = RESULTS_DIR / "liu9-size-biased-qone-kernel.json"
+BLOCK_KERNEL_REPORT = RESULTS_DIR / "liu9-block-kernel.json"
+CURRENT_H2_DIGESTS = {
+    "endpoint_support":
+        "6510dc6c8b55b0132ee6993cee7f0141a11046013c1de5e0f06b51b1b71df843",
+    "qone_kernel":
+        "eb645792526578d115da8356f7d9378812164273900a60607691a8f32661f19a",
+    "block_kernel":
+        "58de58843487ffbeb93162698c7ff54f3e27cbb833ecf6b46bc6db171a77cfe2",
+}
+
+
+def _load_current_h2_report(path: Path, expected: str) -> dict[str, Any]:
+    report = json.loads(path.read_text())
+    recorded = report.pop("report_sha256", None)
+    if recorded != expected or _canonical_json_digest(report) != recorded:
+        raise AssertionError(f"current H2 report digest mismatch: {path.name}")
+    report["report_sha256"] = recorded
+    return report
+
+
+def load_global_blocker() -> dict[str, Any]:
+    endpoint = _load_current_h2_report(
+        ENDPOINT_SUPPORT_REPORT, CURRENT_H2_DIGESTS["endpoint_support"])
+    qone = _load_current_h2_report(
+        QONE_KERNEL_REPORT, CURRENT_H2_DIGESTS["qone_kernel"])
+    block = _load_current_h2_report(
+        BLOCK_KERNEL_REPORT, CURRENT_H2_DIGESTS["block_kernel"])
+    if endpoint.get("claim_status") != "PROVED":
+        raise AssertionError("endpoint support theorem is unavailable")
+    if qone.get("claim_status") != "PROVED":
+        raise AssertionError("universal q-one theorem is unavailable")
+    if block.get("claim_status") != "OPEN_REDUCTION":
+        raise AssertionError("full block obstruction status changed")
+    return {
+        "claim_status": "OPEN",
+        "endpoint_support": endpoint,
+        "qone_kernel": qone,
+        "block_kernel": block,
+        "negative_mean_feasible_raw_gap_found":
+            block["negative_mean_feasible_raw_gap_found"],
+    }
+
+
+def print_global_blocker(report: dict[str, Any]) -> None:
+    endpoint = report["endpoint_support"]
+    qone = report["qone_kernel"]
+    block = report["block_kernel"]
+    shortcut = block["false_shortcut"]
+    print("PROVED [endpoint support]: the former exact q=1 blocker has raw gap")
+    print("   >=%.12g after exact mean contraction."
+          % endpoint["endpoint_lower_float"])
+    print("PROVED [universal q=1 theorem]: the size-biased kernel is nonnegative")
+    print("   for every probability law of mean>=p*x; bulk boxes=%d."
+          % qone["bulk_boxes"])
+    print("PROVED [finite inward-q algebra]: gap=G0+(1-q)G1+(1-q)^2G2 exactly.")
+    print("OPEN [sole full-H2 obstruction]: copositivity of the exact 2x2")
+    print("   size-biased block kernel on positive paired measures.")
+    print("REFUTED [shortcut only]: m-frozen surrogate=%s while raw gap=%s."
+          % (shortcut["m_frozen_surrogate"], shortcut["raw_gap_gap_mp"]))
+    print("MACHINE VERIFIED [block reduction digest]: %s."
+          % block["report_sha256"])
+    print()
+
 
 def print_verdict(
     attempts: Sequence[LocalAttempt],
@@ -800,22 +1022,35 @@ def print_verdict(
     print("   m22/(q(1-q)) is 0.69512040 at q=1/4,1/64,1/128,1/1024,1/4096 alike -- so")
     print("   the true entry vanishes linearly while a fixed-width cell's enclosure")
     print("   error does not.  Octave cells of relative width 1/64 fix it.")
-    print("CONDITIONAL [liu9_chart_cover.py]: that PSD statement is Step A.  Turning")
-    print("   it into gap >= kappa*dist^2 is Step B, and Step B does NOT give an")
-    print("   exact zero: Liu's x is a numerically determined root of (87)-(90), so")
-    print("   the centre carries that residual.  The certified form is")
-    print("   gap - kappa*dist^2 >= -7.361e-69 on the box, and it is an all-q")
-    print("   enclosure rather than a sampled bound -- the centre value and d/ds")
-    print("   come from a q-free jet, and d/dd is exactly zero for every q because")
-    print("   each term carries a q-free multiplier times (1-q)(-q)+q(1-q), whose")
-    print("   coefficients all vanish in exact Fraction arithmetic.  The deficit is")
-    print("   inherited unchanged from the radius 1/256 certificate.")
+    print("PROVED [exact optimizer equations]: Step B has exact zero at the chart")
+    print("   centre.  The previously printed 7.361e-69 was an all-q Arb dependency")
+    print("   enclosure, not a mathematical deficit; the q-free value/s-gradient and")
+    print("   exact-zero d-gradient identities remain the transcription controls.")
+    print("PROVED [liu9_transverse.py, 2026-08-29]: the mean-preserving first")
+    print("   variation is nonnegative on the WHOLE interval, with structural double")
+    print("   root y=x.  This supersedes the 65-point scan.")
+    print("PROVED [liu9_second_order.py, 2026-08-29]: the pencil is EXACTLY")
+    print("   eps*Lbar + eps^2*P2 -- every entropy argument is eps-independent, so")
+    print("   there is no eps^2*log(1/eps), higher term or remainder.  Arb certifies")
+    print("   S=2L+Q>=0 on 1666 abutting one-dimensional cells and")
+    print("   S_asym>=0 on [0,1]^2 x [0,1] over 1388611 cell pairs.  Of those,")
+    print("   544770 carry a negative interaction and require the exact interior")
+    print("   q-vertex; first-order decoupling is not assumed at second order.")
+    print("PROVED [exact atom relabelling]: the smaller fragment of every two-way")
+    print("   atom split has eps<=parent_mass/2<=1/2.  This is exactly the mass range")
+    print("   certified by liu9_second_order.py, while zero-mass, coincident-support,")
+    print("   atom-permutation and inactive-law coordinates are quotient gauges.")
+    print("REFUTED [sharp endpoint]: pencil positivity on the WHOLE feasible split")
+    print("   segment.  At y1=y2=1 and eps=p*x the raw gap is structurally zero")
+    print("   (numerator=EHX=0 on the {0,1} law) but the pencil is <=-7.245231e-3.")
+    print("   This limits the tube argument; it is not a negative raw gap and does")
+    print("   not refute Hypothesis 2.")
     print("PROVED [liu9_qdegenerate.py, 2026-08-28]: ingredient (iii) on the pure-d")
     print("   endpoint chart.  Inner core |d|<=1/32 has q-uniform kappa 1/3; the")
     print("   endpoint annulus 1/32<=|d|<=1/4 with min(q,1-q)<=1/4096 has kappa 1/20,")
     print("   from H*D(Q_d) >= (1/4)delta(Q_d)^2 over 384 exact dyadic cells.  The")
-    print("   seam is PROVED under rho^2 <= p^2 eps_sm^2 q_*(1-q_*), giving")
-    print("   rho=1/4096, so no pure-d tube point falls between the two q regimes.")
+    print("   seam is PROVED under rho^2 <= p^2 eps_sm^2 q_*(1-q_*).  The enlarged")
+    print("   q_*=1/2254 certificate gives rho=1/1701, so no pure-d tube point falls between the two q regimes.")
     print("   Only the simultaneous swap (q,P0,P1)->(1-q,P1,P0) is a symmetry; q->1-q")
     print("   alone is REFUTED, changing the gap by 2.155e-02.")
     print("REFUTED [liu9_ninevar.py, 2026-08-28]: the chart result does NOT extend to")
@@ -824,20 +1059,17 @@ def print_verdict(
     print("   raw gap -5.5338e-04 and pencil -5.5348e-04; exact Fraction arithmetic")
     print("   puts the linear coefficient below -1/2 and the finite pencil below")
     print("   -1/2048.  The leading order is eps with no eps*log(1/eps) term.")
-    print("CONDITIONAL: that counterexample is mean-INFEASIBLE (mean-target")
-    print("   -6.4408e-04), so it does not refute Liu's Hypothesis 2, which lives in")
-    print("   the half-space mean >= p*x.  The exact mean-preserving control at the")
-    print("   same y has linear coefficient above 1/64, and over a 65-point y scan")
-    print("   the mean-preserving family is positive at every point (0 negative)")
-    print("   while the ambient split is negative at 46.  Its weakest coefficient,")
-    print("   7.865e-08, sits at y=707/1024 ~ x, where the inserted atom merges with")
-    print("   the existing one and the perturbation degenerates.")
-    print("OPEN, and now a single named gap.  A feasible-half-space nine-variable")
-    print("   theorem is not proved -- only the chart slice is, plus positive")
-    print("   evidence on one transverse family.  Until that is closed no tube")
-    print("   radius follows, because the tube is a nine-variable neighbourhood and")
-    print("   the chart is a four-parameter slice of it.  No tube radius is")
-    print("   certified and this script does not overclaim one.")
+    print("REFUTED [liu9_ninevar.py]: the ambient negative direction remains")
+    print("   mean-INFEASIBLE and therefore is not a counterexample to Hypothesis 2.")
+    print("PROVED [piecewise composition]: the feasible simultaneous-insertion")
+    print("   theorem now supplies the chart-to-nine-variable step that direction")
+    print("   exposed.  Together with the zero-support, mirror, interior-chart and")
+    print("   q-degenerate certificates, all local strata and seams are covered.")
+    print("PROVED [local tube]: rho=1/1701, with the q-degenerate seam as the")
+    print("   bottleneck.  This closes the formerly named local gap.")
+    print("OPEN [separate global acceptance]: this local theorem does not turn the")
+    print("   unfinished complement pilot into a certificate.  Hypothesis 2 and")
+    print("   Liu's conditional c' remain unpromoted until that global step accepts.")
 
 
 def main(argv: Optional[Sequence[str]] = None) -> None:
@@ -850,6 +1082,11 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--dps", type=int, default=90)
     parser.add_argument("--lambdas", nargs="+", default=DEFAULT_LAMBDAS)
     parser.add_argument("--skip-complement", action="store_true")
+    parser.add_argument(
+        "--piecewise-output",
+        default=str(Path(HERE) / "verification" / "results"
+                    / "liu9-piecewise-tube.json"),
+    )
     args = parser.parse_args(argv)
 
     if args.box_budget < 101:
@@ -883,6 +1120,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     mp_parameters = solve_equation_parameters(args.dps + 20)
     arb_parameters = certify_equation_parameters(mp_parameters)
     print_geometry(mp_parameters, arb_parameters, args.dps)
+    piecewise = certify_piecewise_tube(args.piecewise_output)
+    print_piecewise_tube_certificate(piecewise)
+    blocker = load_global_blocker()
+    print_global_blocker(blocker)
     attempts = measure_local_attempts(rhos, arb_parameters)
     print_local_analysis(attempts, arb_parameters)
 

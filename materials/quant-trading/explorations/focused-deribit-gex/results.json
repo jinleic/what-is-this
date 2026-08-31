@@ -1,0 +1,239 @@
+{
+ "schema_version": 1,
+ "direction_id": "focused-deribit-gex",
+ "status": "inconclusive",
+ "capture_status": "active-not-blocking",
+ "created_utc": "2026-08-30",
+ "summary": "The audited frozen same-day Deribit screen stopped at its 90-minute hard deadline with 10 complete BTC/ETH asset-block transitions versus 12 required and 1,028 GEX-computable trades. Sample-first truth is inconclusive. Descriptively, pooled Spearman (+0.0667), both per-asset correlations (+0.4/+0.2), and leave-one-out stability (0.2) failed; only the negative/positive dealer-GEX next-RV ratio (1.1669) passed. No week-long wait, alpha, return, or deployment claim.",
+ "observed_evidence": {
+  "official_semantics_verified": {
+   "trade_channel_canonical": "trades.option.BTC.100ms / trades.option.ETH.100ms — ack result echoes exactly these names; this is the configured default",
+   "trade_channel_dash_form_superseded": "trades.option-btc_usd.100ms acks WITHOUT error but returns an EMPTY result array (subscribes nothing). It is a REJECTION, not success; not used anywhere.",
+   "raw_interval_rejected": "any .raw channel inside a subscribe batch fails the whole batch with error 13778 raw_subscriptions_not_available_for_unauthorized (public floor is 100ms)",
+   "trade_fields": "trade_id (unique per currency), trade_seq (per instrument), direction (TAKER buy/sell), tick_direction (last-price tick rule 0..3, NOT taker side), amount in base coin, price = option premium in coin (inverse), index_price USD embedded per trade, iv percent, optional liquidation / block_trade_id / combo ids",
+   "instrument_fields": "strike, option_type, expiration_timestamp, contract_size=1.0 (coin per contract), lot_size, tick_size, settlement_currency, price_index, is_active",
+   "index_channel": "deribit_price_index.btc_usd / eth_usd push {timestamp, price, index_name}; REST public/get_index_price cross-checked (78153.81 USD at retrieval)",
+   "heartbeat": "public/set_heartbeat REQUIRES params {interval: N}; params {} returns -32602 Invalid params {reason: value required, param: interval}. With interval=10 the reply is result: ok and the client answers heartbeat notifications with public/test.",
+   "ticker_fields_optional_path": "greeks{delta,gamma,theta,vega,rho} (standard Black-Scholes; theta = min(1-day, lifetime) caveat), index_price, underlying_price, mark_iv, open_interest (coin), state, timestamp ms — only collected when --capture-tickers is explicitly enabled",
+   "cannot_reconstruct": [
+    "1 ms raw aggregation (authorized users only; public floor 100 ms)",
+    "user.* private channels (out of scope; research-only)",
+    "unbounded historical trade tape (venue retention undocumented)",
+    "Starbase feed carries no greeks/IV at all"
+   ],
+   "instrument_lifecycle": "startup + reconnect + daily 00:00 UTC reseed via public/get_instruments REST; no instrument.creation/instrument.state subscription in the default configuration"
+  },
+  "default_configuration": {
+   "channels": [
+    "trades.option.BTC.100ms",
+    "trades.option.ETH.100ms",
+    "deribit_price_index.btc_usd",
+    "deribit_price_index.eth_usd"
+   ],
+   "channel_count": 4,
+   "chain_ticker_capture": "opt-in via --capture-tickers only; NOT default; default readiness contains NO ticker channels",
+   "why": "the chain-wide ticker fan-out (1882 instrument channels) wrote ~166 MiB in 60 s and would exhaust a 256 MiB UTC-day cap within minutes",
+   "gamma_default_path": "descriptive gamma is computed at replay from each trade's embedded iv (%), the instrument strike and expiration_timestamp, and S = trade index_price (labeled greeks_source = bs_from_trade_iv, model-derived, NOT a venue value); missing iv or missing strike/expiry fails closed and is counted in coverage"
+  },
+  "bounded_live_smoke_default_channels": {
+   "station": "darwin arm64, Python stdlib only (no third-party deps)",
+   "windows_run": "60 s and 75 s bounded runs plus a 30 s restart run, all on the 4-channel default",
+   "subscription_ack": "ok=True; ack result contained exactly the 4 requested channels; DERIBIT_CAPTURE_READY printed only after that equality held",
+   "option_trades_captured_live": 39,
+   "index_records_captured": 141,
+   "instrument_rows_written": 0,
+   "server_error_notifications": 0,
+   "heartbeats_handled": 6,
+   "clean_stop": "max-minutes bound and SIGTERM both print DERIBIT_CAPTURE_STOPPED with exit code 0",
+   "live_trade_sample_fields": "instrument_name, direction (taker), amount (coin), price (coin premium), index_price (USD), iv (%), trade_id, trade_seq — parsed from real public WebSocket messages",
+   "day_rotation": "dayYYYYMMDD/ groups per UTC day; append-only; nothing auto-deleted"
+  },
+  "restart_safety_proofs": {
+   "state_rehydration": "rehydrate_state() runs BEFORE the first REST seed and subscription: it loads persisted instrument names from the active-day instruments.jsonl and the newest bounded window of trade dedup ids from the active-day trades.jsonl",
+   "unit_proof": {
+    "rehydrated_instrument_ids": 1884,
+    "rehydrated_trade_ids": 1,
+    "instrument_rows_written_after_restart": 0,
+    "instrument_file_bytes_delta": 0,
+    "injected_repeated_trade": "suppressed (deduper duplicates=1, trades.jsonl bytes delta 0)",
+    "positive_control_new_trade": "accepted and appended"
+   },
+   "live_proof": {
+    "restart_event_logged": "restart_state_rehydrated {instrument_ids: 1884, trade_ids: 81, day: 20260830, malformed: 0}",
+    "instrument_bytes_delta_across_restart": 0,
+    "trade_bytes_delta_across_restart": 1891,
+    "trade_records_on_disk": 98,
+    "unique_trade_dedup_ids_on_disk": 98,
+    "duplicate_trade_records_on_disk": 0,
+    "unique_instrument_and_trade_id_pairs": 98,
+    "restart_events_logged": 2,
+    "last_restart_event": {
+     "instrument_ids": 1884,
+     "trade_ids": 85,
+     "day": "20260830",
+     "malformed": 0
+    }
+   },
+   "byte_caps": {
+    "accounting": "exact encoded payload bytes; flush + os.fsync on every record",
+    "startup": "reconcile_existing() sums every dayYYYYMMDD directory except today's; today's existing bytes are loaded into the active-day counter at first rotate; rotation folds active bytes into the prior pool exactly once",
+    "rotation_record": "the day_rotation_open event is itself checked against both caps, so a restart cannot bypass them",
+    "unit_proofs": [
+     "in-session day cap fired at 958 of 1000 bytes",
+     "restart with 918 pre-existing bytes blocked immediately with zero debris bytes written",
+     "cumulative cap across restart blocked",
+     "normal restart below cap continues writing"
+    ],
+    "cap_exit": "DERIBIT_CAPTURE_CAP_EXCEEDED printed to stdout (never written through the exhausted sink), then DERIBIT_CAPTURE_STOPPED with exit code 0"
+   },
+   "ack_set_equality_proofs": {
+    "exact_result": "ok_all=True, all 4 channels held; ready path opens",
+    "result_missing_one_channel": "ok_all=False, zero channels held, no banner",
+    "empty_result_array": "ok_all=False (this is the old failure mode: no error but nothing subscribed)",
+    "explicit_error_13778": "ok_all=False",
+    "superset_result": "ok_all=False (extra channels are a failure, not tolerated)",
+    "result_empty": "ok_all=False (rejection: nothing subscribed)",
+    "partial_result": "ok_all=False",
+    "error_result": "ok_all=False",
+    "heartbeat_error_or_timeout": "ok_all=False"
+   },
+   "no_network_proof_harness": {
+    "file": "proofs_capture.py",
+    "checks": 20,
+    "failed": 0,
+    "scenarios": [
+     "midnight rotate-before-write",
+     "day cap",
+     "cumulative cap across restart",
+     "rotation event blocked at pre-existing cap",
+     "ack matrix exact/empty/partial/superset/error",
+     "heartbeat setup error blocks readiness",
+     "failed subscribe no-ready",
+     "backoff escalation 1->2->4",
+     "SIGTERM stop-aware sleep latency 0ms",
+     "SIGTERM REST abort immediate",
+     "day-scoped metadata rollover"
+    ]
+   },
+   "startup_sigterm_tests": [
+    {
+     "scenario": "SIGTERM ~1.2 s after launch (inside startup REST seed)",
+     "exit_code": 0,
+     "stop_banner": true,
+     "traceback": false,
+     "exit_seconds": 1.45
+    },
+    {
+     "scenario": "SIGTERM while instruments.jsonl mid-seed (partial file visible)",
+     "exit_code": 0,
+     "stop_banner": true,
+     "traceback": false,
+     "exit_seconds": 0.01
+    }
+   ]
+  },
+  "replay_reconciliation": {
+   "deterministic_ordering": "(received_ts_ms, file sequence, dedup_id)",
+   "lines_read": 185751,
+   "duplicate_drops": 86596,
+   "unique_records": 99155,
+   "malformed_lines": 0,
+   "instruments_joined": 1884,
+   "option_trades_replayed": 125,
+   "gex_computable": 125,
+   "missing_inputs": {},
+   "sum_gex_usd_per_1pct": 1193346.272285,
+   "greeks_source_split": {
+    "deribit_ticker": 125,
+    "bs_from_trade_iv": 0,
+    "note": "the venue-gamma count comes entirely from the superseded optional ticker-heavy smoke data still present on disk; with the 4-channel default and no ticker capture, replay uses the model-derived bs_from_trade_iv path, which is exercised and labeled per trade"
+   },
+   "fixture_unit_test": {
+    "description": "20 real REST-fetched option trades replayed through the capture record schema",
+    "trades": 20,
+    "gex_computable": 20,
+    "missing": {},
+    "sum_gex_usd_per_1pct": -51111.172817,
+    "buy_sell": "15/5",
+    "hand_verified_samples": 4
+   }
+  },
+  "superseded_optional_data": {
+   "what": "day20260830 ticker.jsonl (~78 MiB, 96327 records) and the bulk of instruments.jsonl were produced by the earlier ticker-heavy configuration",
+   "status": "SUPERSEDED optional smoke data — retained as evidence, never deleted, and NOT part of the default configuration",
+   "gamma_zero_note": "13475 of those 96327 ticker records carry gamma == 0.0 from the venue's 1e-5 quantization on deep-OTM / short-dated rows: valid data contributing exactly 0.0, not a missing greek"
+  }
+ },
+ "counterfactual_diagnostics": {
+  "no_backtest_possible": "taker-flow GEX cannot be backtested from public streams alone: no authorized 1 ms raw access, undocumented venue retention, and no lawful complete historical taker-level option tape in the local dataset",
+  "two_sided_flow_caveat": "100 ms aggregation can merge a taker buy and a taker sell into one print; without raw 1 ms the intra-window split is unobservable (affects sub-100 ms structure, not daily aggregates)",
+  "model_derived_gamma": "under the default configuration gamma is model-derived: standard Black-Scholes gamma from the trade's own exchange-published iv (%), instrument strike and expiration_timestamp, and S = trade index_price. It is labeled greeks_source = bs_from_trade_iv and is explicitly NOT a venue greek; it inherits Black-Scholes assumptions and the venue's IV convention.",
+  "venue_gamma_join_tolerance": "when ticker records exist (optional flag or superseded data) gamma is joined from the nearest ticker within a 2 h tolerance and labeled greeks_source = deribit_ticker"
+ },
+ "data_limitations": {
+  "prospective_only": "The same-day screen used only capture after campaign creation and stopped at the frozen 2026-08-30T18:31:13Z deadline. Ten transitions are below the registered twelve-transition minimum.",
+  "trade_arrival_is_bursty": "Option prints arrive in bursts. The final frozen prefix held 2,794 raw trade records; 2,770 were at or before the deadline-clamped cutoff, 2,768 were GEX-computable, and 1,028 belonged to the ten complete included transitions.",
+  "storage": "256 MiB per UTC day with fail-closed shutdown; cumulative default 10 GiB via --max-total-bytes; prior capture is never auto-deleted",
+  "no_intraday_greek_surface_by_default": "without --capture-tickers there is no stored venue greek surface; only per-trade model-derived gamma is available",
+  "raw_once_semantics": "raw JSONL is AT-LEAST-ONCE across restarts (bounded trades rehydrate window); every record carries a deterministic dedup id and run.py's replay dedup is the authoritative exactly-once view. The raw layer itself never claims to prevent restart duplicates."
+ },
+ "prospective_requirements": {
+  "contract": "quant-trading/explorations/accelerated-intraday-contract.json",
+  "result": "quant-trading/explorations/focused-deribit-gex/fast_intraday_results.json",
+  "review_status": "independently-cleared",
+  "hard_deadline_utc": "2026-08-30T18:31:13Z",
+  "sample": {
+   "gex_computable_trades": 1028,
+   "complete_transitions": 10,
+   "required_transitions": 12,
+   "BTC": 5,
+   "ETH": 5
+  },
+  "sampling_disposition": "Complete at the 90-minute hard cap. Do not wait a week or extend this frozen screen."
+ },
+ "decisions": {
+  "status": "inconclusive",
+  "status_why": "Only the registered twelve-transition condition failed (10 observed). Three of four descriptive gates were false, but sample-first truth remains inconclusive.",
+  "returns_csv": "Absent by contract: realized volatility is a risk descriptive, not a tradable return.",
+  "variants": "No promotion or rescue. Any new test needs a separately preregistered mechanism and event-count stop."
+ },
+ "verification_traces": {
+  "replay_results": "explorations/focused-deribit-gex/results/results.json (deterministic, regenerated by run.py)",
+  "source_notes": "explorations/focused-deribit-gex/source_verification.md (section 8 records the corrective round)",
+  "raw_capture": "quant-trading/data/raw/focused/live/deribit/day20260830/ (git-ignored, preserved)"
+ },
+ "launch_state": {
+  "verified_at_utc": "2026-08-30T13:53:34Z",
+  "verification_note": "verified_at_utc is the parent's supervision verification snapshot; the exact collector launch timestamp is not asserted",
+  "process_name": "quant-deribit-gex-capture",
+  "output_root": "quant-trading/data/raw/focused/live/deribit",
+  "supervisor": {
+   "persist": true,
+   "detached": false,
+   "pty": false,
+   "restart": "no"
+  },
+  "configuration": {
+   "channels_default": [
+    "trades.option.BTC.100ms",
+    "trades.option.ETH.100ms",
+    "deribit_price_index.btc_usd",
+    "deribit_price_index.eth_usd"
+   ],
+   "ticker_capture": "disabled (opt-in only, not used)",
+   "readiness": "DERIBIT_CAPTURE_READY matched (exact ack set + heartbeat ack)",
+   "day_cap_bytes": 268435456,
+   "total_cap_bytes": 10737418240
+  },
+  "ground_snapshot_2026_08_30T13_53_34Z": {
+   "index_rows": 4725,
+   "index_bytes": 1117939,
+   "trades_rows": 437,
+   "trades_bytes": 208854,
+   "events_rows": 377,
+   "events_bytes": 71588,
+   "heartbeat_events_current": true,
+   "note": "counts are an operational snapshot, not an alpha claim; directory also contains superseded older ticker-heavy smoke data"
+  }
+ }
+}

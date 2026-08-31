@@ -705,7 +705,7 @@ Canonical digests `7a1f903031ca0fd2` (q-degenerate) and `c5a0ff94d59f44a6`
 | The centre `d`-gradient bound needs sampling in `q` | REFUTED -- `(1-q)*(-q)+q*(1-q)` is the zero polynomial in exact `Fraction` |
 | Ambient nine-variable extension of the chart result | REFUTED at `(y,eps,q)=(1/32,1/1024,1/2)` |
 | That counterexample refutes Liu's Hypothesis 2 | REFUTED -- it is mean-infeasible, `mean-target = -6.4408e-04` |
-| Feasible-half-space nine-variable extension | CONDITIONAL; 0 of 65 scanned mean-preserving `y` are negative |
+| Feasible-half-space nine-variable extension | **PROVED for the one-new-support-per-component family** by `liu9_transverse.py`; the former 65-point scan is superseded by a universal enclosure |
 | A positive tube radius | OPEN -- not certified, and `liu9_tube.py` does not claim one |
 
 `h'''(u) = (1-2u)/(u^2(1-u)^2)`.  The task specification that commissioned the
@@ -752,7 +752,278 @@ $PY -I -B uc/verification/test_liu9_ninevar.py
 
 **OPEN:** the ambient refutation is real but mean-infeasible, so the question
 that decides Liu's Hypothesis 2 -- positivity over the feasible half-space
-`mean >= p*x` -- is not settled.  The 65-point scan is evidence, not a proof:
+`mean >= p*x` -- is settled for this family by `liu9_transverse.py`.  Superseded note: the 65-point scan was evidence, not a proof:
 it covers one transverse family, the single-atom insertion, at sampled `y`.
 Nothing here certifies a tube radius.
 
+## Liu H2 transverse first variation
+
+Not part of the UC certificate chain. This is the answer, for the family the
+nine-variable refutation actually exploited, to whether a feasible-half-space
+theorem holds.
+
+```bash
+cd ~/jinleic-workspace/math
+OMP_NUM_THREADS=1 ./.venv/bin/python -I -B uc/liu9_transverse.py \
+  --bulk-cells 16384 --octaves 200 --window-cells 4096 \
+  --output uc/verification/results/liu9-transverse.json
+```
+
+Single core, about 1 s. Report `sha256 = 153fb77bbe2ae4eff027c9d3d80c9e1d905c4480db288be386649c21671534f8`.
+
+| Claim | Status |
+|---|---|
+| Liu eq. (87) is the protocol identity `prot(x,x) = 1 - x^2` | PROVED -- read from the primary source; the quartic never appears in the paper |
+| `prot(z,z) - (1-z^2)` is the quartic, coefficient for coefficient | PROVED -- exact integer polynomials |
+| `K(x,x) = h(x^2)` for every beta, and `p*K(x,x) = h(x)` | PROVED -- entropy symmetry about 1/2 |
+| `L(x) = 0` | PROVED -- rational-function identity, exact `Fraction`, entropy values free |
+| `L'(x) = 0` | PROVED -- needs (87) AND the beta-system (89)-(90) |
+| `L'(x) = 0` holds for every beta | REFUTED -- beta +/- 1e-6 gives slope 2.12e-7; beta = 0 gives 2.12e-2 |
+| `L''(x) = 1.2289613682...` | PROVED -- reproduced by an independent derivation |
+| `L` is globally convex | REFUTED -- `L'' < 0` on roughly [0.01, 0.43] |
+| `L(y) >= -4.562e-136` on all of (0,1) | PROVED -- five exactly abutting regions |
+| That bound is sampled | REFUTED -- it is a universal enclosure; it replaces a 65-point scan |
+| `L_asym(y1,y2,q) = (1-q)L(y1) + q L(y2)` | PROVED (measure algebra); MACHINE VERIFIED to 9.68e-32 |
+| The bound on all of (0,1)^2 x [0,1] | PROVED -- convex combination, no extra certification |
+| A tube radius | OPEN -- not certified; this is first order only |
+| Liu's Hypothesis 2 | OPEN -- not claimed |
+
+Two traps this module records rather than hides.
+
+The Arb enclosure of `L(x)` is `2.708e-68`, which is **dependency error**: Arb
+computes `y*(A/x)` and `K(x,y)` from separate sub-expressions and cannot cancel
+them. It is excluded from the Taylor bound, where it would have dominated the
+true deficit by sixty-eight orders. The structural zero is certified
+symbolically instead.
+
+`_ScalarOps(entropy, one)` takes the **entropy function** first. Passing
+`mpmath.mpf` makes "entropy(u) = u" and yields a plausible but entirely wrong
+sign -- it produced 586 spurious negative configurations the first time the
+asymmetric family was scanned, and the identical mistake was made in the
+previous session. Calibrating against the known zero at `y = x` caught it both
+times. `_pencil_mp` now routes through `gap_mp` and `distance_squared` only,
+and a mutation test asserts the pencil vanishes at the optimizer.
+
+## Liu H2 exact second order and composed local tube
+
+```bash
+cd ~/jinleic-workspace/math
+OMP_NUM_THREADS=1 ./.venv/bin/python -I -B uc/liu9_second_order.py \
+  --output uc/verification/results/liu9-second-order.json
+./.venv/bin/python -I -B uc/verification/test_liu9_second_order.py
+./.venv/bin/python -I -B uc/verification/independent_second_order_check.py
+./.venv/bin/python -I -B uc/liu9_tube.py --rhos 1/4096 \
+  --box-budget 101 --seconds-per-rho 1 --wall-seconds 5 --skip-complement
+./.venv/bin/python -I -B uc/verification/test_liu9_piecewise_tube.py
+```
+
+Production second-order cover: 61.9 s, one core. Report
+`sha256 = 0b1b5bfc11313af7c97224e06b14532fd3da647141bc6b1be7045cde536d2958`. Piecewise local tube report
+`sha256 = 4651ad293d5205a9ba416a3474fbc0b4ee6e553c762d4790f2ce7ccc83612742`. The mirror report was regenerated after
+fixing its writer to store, rather than merely print, its canonical digest:
+`sha256 = 722e52bc21b930dfad1bf000f1b16d5e7bc26f4e91ef80631b733d9a147d088b`.
+
+| Claim | Status |
+|---|---|
+| Pencil degree in epsilon | PROVED exactly 2; all entropy arguments epsilon-independent |
+| $\varepsilon^2\log(1/\varepsilon)$ coefficient | PROVED exactly 0 |
+| $S(y)=2L(y)+Q(y)\ge0$ on $[0,1]$ | PROVED, 1,666 abutting cells |
+| Simultaneous $S_{\rm asym}\ge0$ | PROVED, 1,388,611 cell pairs |
+| Strict mean excess $\delta\ge0$ | PROVED -- linear margin 0.235013, quadratic coefficient 0.633528 |
+| Interaction is nonnegative | REFUTED -- 544,770 pairs need interior q vertex |
+| Pencil for $0\le\varepsilon\le1/2$ | PROVED |
+| Pencil over the whole feasible split segment | REFUTED -- raw gap 0 but pencil -0.007245231 at the binary endpoint |
+| Raw gap negative at that endpoint | REFUTED -- numerator and EHX are both structurally 0 |
+| Piecewise local tube | PROVED at $\rho=1/1701$ |
+| Liu Hypothesis 2 globally | OPEN -- complement not accepted |
+
+Independent checker: 36 configurations, five epsilon scales, maximum
+reconstruction residual `3.285e-111`; 420,004 seeded configurations, zero
+negative raw-gap screens, and the sharp endpoint obstruction reproduced.
+
+Novelty audit (primary source plus ten citing works; absence deliberately
+bounded by the stated search):
+[`liu9-second-order-novelty.json`](verification/results/liu9-second-order-novelty.json),
+`sha256 = f4785245764c57ce2663c1531a1e9d2a92fe7eb897584307917491e33659b871`.
+
+### Global complement blocker at the proved radius
+
+```bash
+OMP_NUM_THREADS=1 ./.venv/bin/python -I -B uc/liu9_residual.py \
+  --rho 1/4096 --box-budget 100001 --seconds 300 \
+  --output uc/verification/results/liu9-complement-residual-rho1-4096-100k.json
+```
+
+Observed 284.0 s, one core. `claim_status=NUMERICAL`: each discard is
+Arb-certified, but the unfinished frontier is not a theorem. Counts:
+100,001 processed, 234
+mean-infeasible, 0 objective-cleared,
+49,767 residual; 49,718
+wholly outside the tube and 48,996 pinned at
+$q=1$. Report `sha256 = 1c5f1b29368c22ec3cd215fab058e8a10436113a2a111629694ec394a71613ec`.
+
+The four-run constrained global search is evidence only:
+177,871 differential-evolution evaluations, no negative
+raw gap, but boundary zeros were not reliably recovered and no exhaustiveness
+claim is made. Report `sha256 = 847e09422e55765f0e8cc1b777e454bbada80263ef794e0dd3762fdc86cb864a`.
+
+Exact retained wholly-outside cell from that report:
+
+```text
+a1 [0,1/2]  a2 [1/2,1]  q [1/2,1]
+b0,b2,b4,b1,b3 [1/4,1/2]  b5 [1/2,1]
+dist^2 >= 1.3524936813e-4 > (1/4096)^2
+gap lower = -2.062290692; objective lower = 0.008247823; method = direct
+```
+
+This is the precise current failing interval cell. It is not a counterexample:
+the lower bound is negative, not an evaluated negative raw gap.
+
+## Liu H2 global complement: enlarged seam and q=1 face
+
+### Near-maximal seam
+
+```bash
+./.venv/bin/python -I -B uc/liu9_qdegenerate.py \
+  --q-star 1/2254 --interior-q-min 1/4096 \
+  --tube-radius 1/1701 --smooth-cutoff 1/32 \
+  --output uc/verification/results/liu9-qdegenerate-maximal.json
+./.venv/bin/python -I -B uc/verification/test_liu9_seam_enlarged.py
+```
+
+**PROVED:** $q_*=1/2254$, $\rho=1/1701$. Report
+`sha256 = 353131d9124516841fe32da2a8f09829d401f9304890a604d91ff544ca693107`. Piecewise tube report
+`sha256 = 4651ad293d5205a9ba416a3474fbc0b4ee6e553c762d4790f2ce7ccc83612742`. Current seam ceiling is approximately
+`5.8815684209e-4`; the selected rational is near-maximal under this proof.
+
+### Conservative complement and q=1 quotient
+
+```bash
+./.venv/bin/python -I -B uc/liu9_residual.py \
+  --rho 1/1728 --box-budget 100001 --seconds 300 \
+  --output uc/verification/results/liu9-complement-residual-rho1-1728-100k.json
+./.venv/bin/python -I -B uc/liu9_qone_face.py \
+  --budget 100001 --seconds 420 \
+  --output uc/verification/results/liu9-qone-face-rho1-1728-corrected-100k.json
+./.venv/bin/python -I -B uc/verification/test_liu9_qone_face.py
+./.venv/bin/python -I -B uc/verification/independent_qone_face_check.py
+```
+
+The $1/1728$ complement is conservative because its tube is smaller than the
+proved $1/1701$ tube. Its 48,996 q-at-one boxes are ordered coordinate-identical
+to the earlier source. Exact q=1 gauges reduce them to 230 active boxes.
+
+Corrected q-face run: 100,001 processed,
+5,717 mean-infeasible,
+7,988 gap-cleared, 66,520
+residual. Report `sha256 = 25be9be12e4cc6e527b4bb6367d5eb9cab6cd62ffd9fa68a58bf3a559df02914`.
+
+A pre-correction implementation checked only simplex intersection rather than
+`mean>=px`; its impossible `mean_infeasible=0` count was caught by a mutation.
+Those frontiers are superseded NUMERICAL diagnostics and are not accepted.
+
+Exact current q=1 blocker:
+
+```text
+a1 [13/32,7/16]  a2 [0,1/32]
+b1 [1/32,1/16]   b3 [13/32,7/16]  b5 [15/16,1]
+gap lower = -0.2037688248083236
+objective lower = 0.2237783743514587
+method = direct
+```
+
+Independent search: 230 feasible starts, 4,965 feasible gap evaluations, 4,465
+invalid rejects, minimum raw gap 0, no feasible negative. Report
+`sha256 = 690d0b48c7d7df8d773815e5a7198b37d7545f37223bdd381e05c022a4fb8690`. Integrated blocker report
+`sha256 = 74dc16b22a7274d9ba0a705598a1ec9b551a7f0e8236f8f1a2d9c2616cf60aea`.
+
+
+### Endpoint support and universal q=1 theorem
+
+```bash
+./.venv/bin/python -I -B uc/liu9_endpoint_support.py
+./.venv/bin/python -I -B \
+  uc/verification/independent_endpoint_support_check.py
+./.venv/bin/python -I -B uc/liu9_size_biased.py --certify
+./.venv/bin/python -I -B uc/verification/test_liu9_qendpoint_lift.py
+./.venv/bin/python -I -B uc/verification/test_liu9_size_biased.py
+```
+
+The first command closes the former exact blocker with an outward-Arb raw-gap
+lower bound `0.01232508028745`; report
+`sha256 = 6510dc6c8b55b0132ee6993cee7f0141a11046013c1de5e0f06b51b1b71df843`.
+The independent reconstruction obtains `0.0120289787046` and reproduces the
+exact inward-q polynomial to `1.57e-102`; report
+`sha256 = 7b97e2d4e3936c248ef70f76431fbcab082186cf781a810341c9e59317221837`.
+
+The size-biased certificate proves the whole q=1 face for arbitrary probability
+laws of mean at least `px`, not only the 230 active boxes. It checks 524,800
+bulk boxes, the exact small-support inequality, a positive-definite optimizer
+Hessian cover, finite endpoint shells through `2^-300`, and symmetric,
+asymmetric and strip tail inequalities. Report
+`sha256 = eb645792526578d115da8356f7d9378812164273900a60607691a8f32661f19a`.
+The endpoint suite passes 19/19 mutations and the q-one kernel suite passes 4/4.
+
+The full two-component theorem remains open at one exact block-copositivity
+condition. The inward-q algebra is nevertheless finite and exact:
+`gap(q)=G0+(1-q)G1+(1-q)^2G2`. The explicitly refuted `m`-frozen shortcut for
+`P0=delta_x, P1=delta_1, q>0.7237` has a negative *surrogate* but positive raw
+gap; it is not a counterexample to H2.
+
+Exact block reduction report:
+`uc/verification/results/liu9-block-kernel.json`,
+`sha256 = 58de58843487ffbeb93162698c7ff54f3e27cbb833ecf6b46bc6db171a77cfe2`.
+
+### Mean-feasible raw-gap witness search (block kernel)
+
+```bash
+./.venv/bin/python -I -B uc/liu9_block_witness.py --stage deep
+./.venv/bin/python -I -B \
+  uc/verification/independent_block_witness_check.py
+```
+
+Discovery-only staged search over the mean-feasible nine-variable family
+(structured corners including the m-frozen shortcut family, 330,000
+component-biased random draws across the standard (30,000) and deep
+(300,000) budgets, and constrained SLSQP polish of the best points).  No
+negative raw gap was found: the minimum across every accepted point is the
+EHX-to-zero boundary value `5.516160764576e-15 > 0` (EHX itself `5.5e-15`:
+a zero-support face point); the best strictly interior point has raw gap
+`7.6126989687e-5`.  Gaps are evaluated at the declared 50-decimal mpmath
+context (`Evaluator.gap` wraps its feasibility and gap calls in
+`mpmath.workdps`, matching `evaluate_mpmath`'s discipline).  The independent
+checker re-authenticates the report digest, re-derives every recorded gap at
+90 independent decimals (worst relative agreement `9.8e-17`), re-checks
+exact mean feasibility (20/20), and escalates any point below `-1e-12` to
+200 decimals; zero escalations, zero witnesses.  Mutations: a planted
+`-5.0` gap fails the digest gate; the evaluator alarm and escalation
+thresholds fire on artificial negatives.  Search report
+`uc/verification/results/liu9-block-witness-search.json`,
+`sha256 = adf08e4e36d882cbb22129fdc31b7016a7c60fe8c2488d2834a412450eea43db`;
+independent check report
+`uc/verification/results/liu9-block-witness-check.json`,
+`sha256 = 69e074b757dca3889ac9f9231349a06137a794bda37bf2d3f9148524c4abb989`.
+Both carry their own internal canonical `report_sha256`.  This remains
+COMPUTATIONAL EVIDENCE: it strengthens `negative_mean_feasible_raw_gap_found:
+false` in the block-kernel report but proves neither copositivity nor H2.
+
+### Slice-1 residual lineage closure (qendpoint lift)
+
+```bash
+./.venv/bin/python -I -B \
+  uc/verification/liu9_qendpoint_slice1_lineage_close.py
+```
+
+The `liu9_qendpoint_lift.py run()` slice-01-of-16 pass (5,000,001 processed,
+2,500,016 splits over 31,264 active groups of the rho=1/1728 complement
+cover) stopped at box budget with 3,156 residual boxes (median depth 0).
+Lineage-resolved depth-first closure drives every frozen residual box to a
+definite verdict under the unchanged certified bound stack (Arb precision
+480): 2,910 gap-cleared, 246 mean-infeasible, 0 unresolved, worst case 19
+generations.  This is a MACHINE-VERIFIED finite statement about slice 1's
+frozen residual only: slices 02-16 were never run, and this is not a proof
+of Hypothesis 2 or of block copositivity.  Closure report
+`uc/verification/results/liu9-qendpoint-slice1-lineage-close.json` (canonical
+internal `report_sha256 = 8fdd36c9e6b2c17a26a3960e22801270cf91143ba242ed118f90b784ec1fb1d1`;
+raw-file SHA-256 =
+`ca0d52d4aaa167def9a9bcd0c65613415687203d87b5b1cd17d6df642b91ce66`).

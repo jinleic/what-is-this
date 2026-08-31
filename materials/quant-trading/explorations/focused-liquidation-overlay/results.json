@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "direction": "focused-liquidation-overlay",
+  "generated_utc": "2026-08-30T18:38:07Z",
+  "status": "falsified",
+  "capture_status": "active-not-blocking",
+  "replay": {
+    "capture_files_considered": [
+      "liquidation-capture-20260830.jsonl"
+    ],
+    "skipped_outside_window": 0,
+    "lines_total": 36,
+    "events_total": 21,
+    "oi_snapshots_ok": 0,
+    "oi_snapshots_failed_closed": 10,
+    "controls_total": 5,
+    "invalid_total": 0,
+    "schema_errors": [],
+    "missing_payload_fields": [],
+    "event_id_mismatches": [],
+    "duplicate_event_ids": {},
+    "order_violations": []
+  },
+  "coverage": {
+    "per_stream": {
+      "!forceOrder@arr": {
+        "events": 21,
+        "first": "2026-08-30T13:32:16.275000+00:00",
+        "last": "2026-08-30T13:33:30.286000+00:00",
+        "span_seconds": 74.011,
+        "gaps_over_300s": 0
+      }
+    },
+    "gaps": []
+  },
+  "event_independence": {
+    "independent_registered": 11,
+    "distinct_symbols": 10,
+    "independent_sample": [
+      {
+        "event_id": "8a2a5b2141be11c548a66bc39f469233",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:16.275Z",
+        "symbol": "SOLUSDT"
+      },
+      {
+        "event_id": "4b5432dc15bf081b1e95a16d4079b4bf",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:20.756Z",
+        "symbol": "BNBUSDT"
+      },
+      {
+        "event_id": "c992a75ebbaa734a4fd2d1135d6ad5f5",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:21.520Z",
+        "symbol": "SOLUSD_PERP"
+      },
+      {
+        "event_id": "04c599b6774c93bc1d475c70106d992f",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:21.713Z",
+        "symbol": "HYPEUSDT"
+      },
+      {
+        "event_id": "398992cab90a30a94a259101dfcf069c",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:23.382Z",
+        "symbol": "1000PEPEUSDT"
+      },
+      {
+        "event_id": "406932d20746bc1bad105cdf83c9fbe1",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:25.155Z",
+        "symbol": "ADAUSDT"
+      },
+      {
+        "event_id": "0bb689a54417ef914d61fa281d1b2034",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:32.818Z",
+        "symbol": "SKRUSDT"
+      },
+      {
+        "event_id": "33ae0b1fb3ce871db496138aea715c2e",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:35.162Z",
+        "symbol": "ZKCUSDT"
+      },
+      {
+        "event_id": "2ad20de929c8071b1c082959e794fbe4",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:35.776Z",
+        "symbol": "INJUSDT"
+      },
+      {
+        "event_id": "66c225651de0e5200dc67f7d96ad699d",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:32:58.855Z",
+        "symbol": "JUPUSDT"
+      },
+      {
+        "event_id": "f20088c45e6597dbaf33667f9cf74684",
+        "stream": "!forceOrder@arr",
+        "ts_utc": "2026-08-30T13:33:30.286Z",
+        "symbol": "INJUSDT"
+      }
+    ]
+  },
+  "price_oi_context": {
+    "price_context_present": false,
+    "price_rows": 0,
+    "open_interest_context_present": false,
+    "open_interest_rows": 0
+  },
+  "collector_accounting_proof": {
+    "raw_delivery_semantics": "at-least-once; replay-side dedup on deterministic event ids is authoritative (no exactly-once claim)",
+    "day_bytes_ownership": "single owner: collector-state.json day_bytes, reconciled every startup via per-day max(persisted, actual capture-file size); only-raise; cumulative total floored by on-disk bytes (missing-state safe)",
+    "rotation_ordering": "rotate-before-every-write: write_line opens target-day file before writing; explicit open_for re-pins the sink; rotation controls land in the NEW day file",
+    "cap_attribution": "caps checked against the TARGET file day (not wall clock); midnight control writes cannot exceed the old day's budget",
+    "cap_terminal_semantics": "once CapExceeded trips: accounting frozen (day/total unchanged by further attempts), sink closed, exit 3 out-of-band, no capped writes through the sink",
+    "ack_contract": "readiness requires exact {\"id\":1,\"result\":null} with no error key; bounded 30s stop-aware wait; error frames, non-null results, and foreign-id result frames rejected; readiness alone is insufficient - live smoke requires >=1 persisted kind=event",
+    "transport_shapes": "BOTH wrapped {stream,data} and raw {e:forceOrder} accepted; raw maps to canonical !forceOrder@arr; identical event ids across shapes (cross-shape dedup proven); unknown raw event types fail closed as unknown_raw_event_type controls",
+    "live_event_gate": "bounded real smoke requires >=1 persisted kind=event record. AUTHORITATIVE artifact: quant-trading/data/raw/focused/live/liquidations/postfix-smoke-20260830/liquidation-capture-20260830.jsonl (14082 bytes, sha256 45af7e7ffdbc78fc4c2f6acd80edc7e9be6821e5cd00743108f93ef0f2939753) with 21 real forceOrder events, 10 failed-closed OI records, 5 controls, 0 unwrapped frames; replay --start 2026-08-30 --end 2026-08-30 => 21 events, 11 independent over 10 symbols, 0 schema/id/order errors. The earlier ephemeral 9-event claim is retracted.",
+    "replay_normalization": "event_body(payload)=payload.get('data', payload) centralizes body extraction for validation, order checks, independence, sample and symbol logic so RAW canonical payloads validate; date-only --end is inclusive of the whole UTC day (next-day exclusive bound) while timestamp ends keep exact semantics",
+    "lifecycle_suite": "verify_capture_lifecycle.py: 10/10 deterministic no-socket unit proofs pass (reconnect_keeps_sink, exact_ack, midnight_cap_attribution, cap_freeze, missing_state_floor, near_cap_startup, near_cap_sigterm, oi_worker_unit, oi_idle_start_then_event, worker_cap_trip_stops_collector) plus 1/1 bounded live-network smoke (sigterm_live_smoke) reported separately",
+    "restart_equivalence_test": {
+      "day_bytes_equals_file_sizes": true,
+      "total_bytes_equals_sum_of_files": true,
+      "restart_delta_exact": true,
+      "missing_state_floored_by_files": true,
+      "per_day_cap_trips_on_real_write": true,
+      "cumulative_cap_trips_on_real_write": true,
+      "caps_not_weakened": true
+    },
+    "oi_enrichment_wired": {
+      "collector": "schedule_oi_snapshot on every liquidation event; bounded asyncio.Queue(64) true-waiting semantics (idle-start safe); 60s per-symbol rate limit; oi_snapshot records (ok/failed-closed) persist through the cap-checked sink; coordinated with the connect loop via FIRST_COMPLETED so an OI-side cap trip is the shared terminal reason (immediate exit 3, never swallowed)",
+      "gate_integration": "successful oi_snapshot rows count as open_interest context; failed-closed rows do not"
+    },
+    "open_interest_context_path": {
+      "helper": "fetch_open_interest_snapshot(): bounded 5s unauthenticated per-event helper; fails closed (None) on region block/timeout/schema drift",
+      "this_egress": "OI REST returns restricted-location message; helper returns None; absence recorded honestly rather than fabricated"
+    }
+  },
+  "gate": {
+    "contract": "quant-trading/explorations/accelerated-intraday-contract.json",
+    "result": "quant-trading/explorations/focused-liquidation-overlay/fast_intraday_results.json",
+    "review_status": "independently-cleared",
+    "sample_conditions_all_met": true,
+    "complete_onsets": 20,
+    "earliest_stop_utc": "2026-08-30T17:26:54.496Z",
+    "false_gates": 6,
+    "decision": "falsified"
+  },
+  "persistent_capture_live": {
+    "process": "quant-liquidation-capture",
+    "status": "active-not-blocking",
+    "session_start_utc": "2026-08-30T13:45:58.148Z",
+    "output_dir": "quant-trading/data/raw/focused/live/liquidations-persistent",
+    "supervisor": {
+      "persist": true,
+      "detached": false,
+      "pty": false,
+      "restart": "no"
+    },
+    "parent_snapshot_2026-08-30T13:53:34Z": {
+      "events": 190,
+      "oi_snapshot_records": 103,
+      "controls": 3,
+      "bytes": 122944
+    },
+    "note": "Point-in-time operational snapshot only. Continued capture does not extend or rescue the falsified registered mechanism."
+  },
+  "returns": null,
+  "note": "No returns.csv exists and none is written. The fast result is a same-day mechanism falsification screen, not a tradable return or deployment claim."
+}

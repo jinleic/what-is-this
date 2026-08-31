@@ -1,0 +1,35 @@
+{
+  "campaign_id": "20260829T224546Z_987904a9",
+  "tag": "gateA-fragment",
+  "paper": "arXiv:2603.19062v3",
+  "mode": "threshold",
+  "shots_per_eval": 200000,
+  "seed_base": 20260829,
+  "seed_lineage": "point_seed = sha256(seed_base|tag|LxM|p)[:16]",
+  "decoder": {
+    "bp_method": "ms",
+    "osd_method": "osd_cs",
+    "osd_order": 10,
+    "max_iter": 50,
+    "ms_scaling_factor": 1.0,
+    "schedule": "parallel",
+    "impl": "ldpc.BpOsdDecoder (bposd core)"
+  },
+  "channel": "erasure: mask~Bern(p); erased: X,Z indep Bern(0.5); priors 0.5/1e-10 per shot",
+  "pack_versions": {
+    "python": "3.14.3",
+    "numpy": "2.5.2",
+    "scipy": "1.18.1",
+    "stim": "1.16.0",
+    "ldpc": "2.4.1"
+  },
+  "host": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "timing_total_s": 326.2851536250091,
+  "timing_meb": {
+    "12x6": {
+      "per_shot_ms_mean": 0.2700342164583465,
+      "per_shot_ms_max": 0.33075547125015875,
+      "n_evals": 6
+    }
+  }
+}

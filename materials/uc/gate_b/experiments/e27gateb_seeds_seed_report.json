@@ -1,0 +1,148 @@
+{
+  "checkpoint": "/Users/jinleic/jinleic-workspace/math/uc/gate_b/experiments/e27gateb_seeds_checkpoint.jsonl",
+  "generator": "uc/gate_b/experiments/e27gateb_seed_write.py",
+  "mode": "e27_gateb_seed_write",
+  "seeds_by_dimension_size": [
+    {
+      "dimension": 10,
+      "pool": [
+        {
+          "defect": "64/169",
+          "defect_count": 64,
+          "family": [
+            0,
+            1,
+            4,
+            32,
+            64,
+            65,
+            422,
+            481,
+            530,
+            562,
+            668,
+            991,
+            1023
+          ],
+          "generator": "uc/gate_b/experiments/e27gateb_seed_write.py",
+          "name": "e26_n10_m13_r3_defect64",
+          "normalized": false
+        }
+      ],
+      "size": 13
+    },
+    {
+      "dimension": 10,
+      "pool": [
+        {
+          "defect": "62/225",
+          "defect_count": 62,
+          "family": [
+            0,
+            16,
+            32,
+            72,
+            128,
+            160,
+            272,
+            304,
+            432,
+            518,
+            591,
+            719,
+            895,
+            975,
+            1023
+          ],
+          "generator": "uc/gate_b/experiments/e27gateb_seed_write.py",
+          "name": "e26_n10_m15_r0_defect62",
+          "normalized": false
+        },
+        {
+          "defect": "60/225",
+          "defect_count": 60,
+          "family": [
+            0,
+            16,
+            32,
+            73,
+            128,
+            160,
+            272,
+            304,
+            432,
+            518,
+            591,
+            719,
+            895,
+            975,
+            1023
+          ],
+          "generator": "uc/gate_b/experiments/e27gateb_seed_write.py",
+          "name": "e27_hamming1_defect60",
+          "normalized": false
+        },
+        {
+          "defect": "56/225",
+          "defect_count": 56,
+          "family": [
+            0,
+            16,
+            32,
+            73,
+            128,
+            160,
+            272,
+            304,
+            432,
+            518,
+            591,
+            719,
+            863,
+            751,
+            1023
+          ],
+          "generator": "uc/gate_b/experiments/e27gateb_seed_write.py",
+          "name": "e27_hamming2_defect56",
+          "normalized": false
+        }
+      ],
+      "size": 15
+    },
+    {
+      "dimension": 10,
+      "pool": [
+        {
+          "defect": "130/400",
+          "defect_count": 130,
+          "family": [
+            0,
+            1,
+            32,
+            41,
+            48,
+            68,
+            128,
+            258,
+            386,
+            387,
+            454,
+            511,
+            512,
+            529,
+            569,
+            580,
+            637,
+            966,
+            1022,
+            1023
+          ],
+          "generator": "uc/gate_b/experiments/e27gateb_seed_write.py",
+          "name": "e26_n10_m20_r2_defect130",
+          "normalized": false
+        }
+      ],
+      "size": 20
+    }
+  ]
+}

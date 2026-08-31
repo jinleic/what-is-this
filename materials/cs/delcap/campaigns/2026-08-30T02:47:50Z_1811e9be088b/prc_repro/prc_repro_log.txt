@@ -1,0 +1,9 @@
+table 1024x1024x128...
+Generating cache table of size 1024x1024x128 (~27.0 bits)...
+  0%|          | 0/1023 [00:00<?, ?it/s]100%|██████████| 1023/1023 [00:00<00:00, 11600.60it/s]
+Done. Table generation took 1.9 seconds
+optimizing distribution (step_limit=10000)...
+RESULT_RATE=np.float64(0.12213624912193806)
+PAPER_CONSTANT=0.1221
+THEIR_NOTEBOOK_VALUE=0.12208469671934222
+elapsed=19s

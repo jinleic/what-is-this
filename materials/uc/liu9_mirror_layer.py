@@ -1142,11 +1142,13 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if args.output:
         digest_payload = dict(payload)
         digest_payload.pop("elapsed_seconds", None)
+        digest = _canonical_digest(digest_payload)
+        payload["report_sha256"] = digest
         text = json.dumps(payload, indent=1, sort_keys=True)
         with open(args.output, "w", encoding="utf-8") as handle:
             handle.write(text + "\n")
         print(f"\nreport written to {args.output}")
-        print(f"report_sha256 {_canonical_digest(digest_payload)}")
+        print(f"report_sha256 {digest}")
     return 0
 
 

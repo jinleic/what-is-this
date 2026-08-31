@@ -1,0 +1,165 @@
+{
+ "certificates": {
+  "all_points_positive": true,
+  "box_widths": {
+   "2^-10": {
+    "cleared": 6692,
+    "failed_sample": [
+     {
+      "a1": "1/8",
+      "a2": "3/8",
+      "gap": "[+/- 0.0182]",
+      "geometry": [
+       "1/8",
+       "1/4",
+       "3/8",
+       "1/8",
+       "5/8",
+       "3/4"
+      ],
+      "q0": "1831/1875"
+     },
+     {
+      "a1": "1/8",
+      "a2": "1/2",
+      "gap": "[+/- 0.0188]",
+      "geometry": [
+       "1/8",
+       "1/4",
+       "3/8",
+       "1/4",
+       "5/8",
+       "3/4"
+      ],
+      "q0": "611/625"
+     },
+     {
+      "a1": "1/8",
+      "a2": "3/8",
+      "gap": "[+/- 0.0201]",
+      "geometry": [
+       "1/8",
+       "1/4",
+       "3/8",
+       "3/8",
+       "5/8",
+       "3/4"
+      ],
+      "q0": "12817/14375"
+     },
+     {
+      "a1": "1/8",
+      "a2": "1/2",
+      "gap": "[+/- 0.0189]",
+      "geometry": [
+       "1/8",
+       "1/4",
+       "3/8",
+       "3/8",
+       "5/8",
+       "3/4"
+      ],
+      "q0": "13442/14375"
+     }
+    ],
+    "of": 7644
+   },
+   "2^-12": {
+    "cleared": 7644,
+    "failed_sample": [],
+    "of": 7644
+   },
+   "2^-14": {
+    "cleared": 7644,
+    "failed_sample": [],
+    "of": 7644
+   }
+  },
+  "feasible_points": 7644,
+  "geometries_with_feasible_points": 1062,
+  "geometry_pairs_enumerated": 1225,
+  "mass_grid_points": 21,
+  "nonpositive_sample": [],
+  "points_with_nonpositive_gap": 0,
+  "worst_point": {
+   "a1": "1/8",
+   "a2": "3/4",
+   "geometry": [
+    "1/2",
+    "5/8",
+    "3/4",
+    "3/8",
+    "1/2",
+    "5/8"
+   ],
+   "q0": "77/1250"
+  },
+  "worst_point_gap": "[0.0036722296453203775540 +/- 3.64e-23]"
+ },
+ "claim": "for every ordered three-atom geometry on the k/8 support grid and every mass point on the k/8 simplex grid, the exact rational pinch configuration with mean M_TARGET = 6173/10000 >= m has strictly positive gap (Arb-certified), and the gap stays nonnegative on boxes of half width 2^-14 around every such point",
+ "claim_status": "MACHINE-VERIFIED finite",
+ "evaluator": "liu9_objective.evaluate_arb, gap = numerator - ehx; ctx.prec = 320",
+ "feasibility": {
+  "M_TARGET": "6173/10000",
+  "arb_comparison_M_TARGET_gt_m": true,
+  "m_enclosure": "[0.617290912081264970069687 +/- 9.80e-26]",
+  "mechanism": "q0 chosen as an exact rational so the mixture mean equals M_TARGET identically"
+ },
+ "full_simplex_branch_and_bound_diagnosis": {
+  "budget": 1500,
+  "cleared": 0,
+  "closes": false,
+  "geometry": [
+   "1/4",
+   "3/8",
+   "3/4",
+   "1/4",
+   "3/8",
+   "3/4"
+  ],
+  "mean_infeasible": 280,
+  "processed": 1501,
+  "reason": "interval arithmetic treats the 36 mass-weight products as independent, losing a1 + a2 + a3 = 1, so the wide-box gap enclosure is orders of magnitude wider than the gap itself",
+  "root_box_gap_radius": "[9.6287708 +/- 2.83e-8]",
+  "splits": 754,
+  "unresolved": 467
+ },
+ "mutations": [
+  {
+   "detail": {
+    "arb_comparison_M_target_gt_m": false
+   },
+   "expected": "FAIL",
+   "mechanism": "M_TARGET = 61/100, which is below m",
+   "mutation": "mean_target_below_m",
+   "observed": "FAIL",
+   "ok": true
+  },
+  {
+   "detail": {
+    "nonpositive": 8,
+    "points": 7644
+   },
+   "expected": "FAIL",
+   "mechanism": "evaluate ehx - numerator instead of numerator - ehx",
+   "mutation": "gap_sign_flipped",
+   "observed": "FAIL",
+   "ok": true
+  },
+  {
+   "detail": {
+    "cleared": 0,
+    "of": 7644
+   },
+   "expected": "FAIL",
+   "mechanism": "neighbourhood boxes 64 times wider than the working width",
+   "mutation": "box_half_width_2^-6",
+   "observed": "FAIL",
+   "ok": true
+  }
+ ],
+ "report_sha256": "d7647bfc888b39b735d42fd3c4c59e755c1051074bd03ae4511fac1cf4e67020",
+ "scope_limits": "finite and pointwise-plus-neighbourhood: exact rational supports on a k/8 grid, exact rational masses on a k/8 grid, mean pinned to M_TARGET; NOT a theorem about all three-atom paired laws, and NOT a cover of the (a1, a2, q) simplex -- see the diagnosis section",
+ "supersedes": "the retracted point-scan version of this file, whose a1v cell variable was never used and whose MACHINE-VERIFIED label was overstated",
+ "tool": "liu9_scalar_margin_r3.py"
+}

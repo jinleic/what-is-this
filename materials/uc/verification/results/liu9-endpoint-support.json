@@ -1,0 +1,74 @@
+{
+ "blocker": [
+  [
+   0.40625,
+   0.4375
+  ],
+  [
+   0.0,
+   0.03125
+  ],
+  [
+   0.03125,
+   0.0625
+  ],
+  [
+   0.40625,
+   0.4375
+  ],
+  [
+   0.9375,
+   1.0
+  ]
+ ],
+ "claim_status": "PROVED",
+ "contracted_blocker": [
+  [
+   0.40625,
+   0.4082230271133174
+  ],
+  [
+   0.0,
+   0.03125
+  ],
+  [
+   0.05794686050772915,
+   0.0625
+  ],
+  [
+   0.40625,
+   0.4375
+  ],
+  [
+   0.9968846940316041,
+   1.0
+  ]
+ ],
+ "endpoint_lower": "[0.012325080287544663452401896804991864916553778452742141248453769509511318878914788434106994945965 +/- 3.78e-97]",
+ "endpoint_lower_float": 0.012325080287544664,
+ "endpoint_method": "endpoint(lambda=-1/64)",
+ "mean_contractions": 3,
+ "quotient_used": false,
+ "report_sha256": "6510dc6c8b55b0132ee6993cee7f0141a11046013c1de5e0f06b51b1b71df843",
+ "sanctioned_gap_mp_control": {
+  "mean": "0.61729091208126497006968709790102738837361856749424241279908650508092016677388268",
+  "raw_gap": "0.022893131713558035813881145897991404912949523972313412757365061350746711226635706",
+  "values": [
+   "0.40625",
+   "0.0",
+   "1.0",
+   "0.5",
+   "0.5",
+   "0.5",
+   "0.0625",
+   "0.40625",
+   "0.99688469403160416011736774383330928568188390314819774787214569276786554404022346"
+  ]
+ },
+ "scope": "exact q=1 feasible subset of the blocker in (a1,a2,b1,b3,b5); raw gap only",
+ "sharp_single_zero_margin_y0_1_16": "[0.0624973624290116603545765124200132680488385732019920866665131406213 +/- 5.12e-68]",
+ "theorem": "mean deficit contracts the blocker to b1>0.0579 and b5>0.9968; the factored s*log(s) endpoint extension plus a nonpositive mean multiplier gives raw gap >= endpoint_lower > 0",
+ "tool": "liu9_endpoint_support.py",
+ "uncontracted_mutation_lower": "[-0.030161352762692482855231376100418970042097512831224635418027615555863118778624279818341404562708 +/- 3.71e-98]",
+ "uncontracted_mutation_method": "endpoint(lambda=-1)"
+}

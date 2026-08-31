@@ -1,0 +1,21 @@
+{
+  "campaign": "gate_A confirmation harness",
+  "utc": "2026-08-29T235739Z",
+  "target": "mm3 / arXiv:2607.28676 rank-23 55-addition scheme",
+  "agent": "Mm3",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "flint": "python-flint 0.9.0 (fmpz exact arithmetic)",
+  "source_paper": "arXiv:2607.28676v1 (fetch log in pre_statement section 0)",
+  "perminov_artifact": "schemes/results/addition_reduced_ZT/3x3x3_m23_cr58_cn122_ZT_reduced.json @ commit 98ba522db92b74f1f8c561a78038ff3091356d73",
+  "checks": {
+    "A1_slp_expansion": "13/14/28 = 55 additions, gates match printed SLP",
+    "A2_printed_blocks": "SLP-derived U,V,W == Section 5.2 blocks exactly",
+    "A3_expanded_products": "Section 5.1 p01..p23 and c11..c33 match factors exactly",
+    "A4_brent_729": "all 729 identities over Z in fmpz: 27 nonzero + 702 zero, 0 failures",
+    "A5_perminov_provenance": "independent re-implementation of Perminov's Scheme.from_reduced; tensor identical after C-permutation [0,3,6,1,4,7,2,5,8]; his loader + validate() also PASS on the artifact",
+    "perminov_convention_note": "artifact 'complexity' {naive:122, reduced:58} is Perminov's CSE accounting (nonzero coeffs - 2m - n^2), NOT the left/right/output split"
+  },
+  "verdict": "GATE A PASS [REPRODUCED]",
+  "evidence_label": "MACHINE-VERIFIED [REPRODUCED]"
+}

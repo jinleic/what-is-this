@@ -1,0 +1,174 @@
+{
+ "claim_status": "PROVED",
+ "concavity_probe": {
+  "a2_direction_samples": [],
+  "quadratic_in_q_max_deviation": "0.0"
+ },
+ "constants": {
+  "beta": "0.1000525598628931066646282994769475877962",
+  "m": "0.6172909120812649700696870979010273883736"
+ },
+ "danger_scan": {
+  "negative_found": false,
+  "restarts": 8,
+  "worst_total_gap": "0.00584319531818",
+  "worst_values": [
+   "0.8990764411",
+   "0.6876811151",
+   "0.7221861376",
+   "0.2749672816",
+   "0.6412026225",
+   "0.1420005514"
+  ]
+ },
+ "label_scope": "the PROVED label covers the two symbolic statements only -- the two-atom diagonalization and the channel decomposition, both sympy zero-residual identities.  The concavity probe, the numeric certification and the danger scan are deterministic high-precision mpmath computations and are DISCOVERY-grade evidence, not certificates; the interval certificates for these curve families are liu9_scalar_margin_region2hulls.py and liu9_scalar_margin_region2_curve2.py",
+ "limitations": [
+  "two-atom paired class only (shared masses a1 + a2 = 1)",
+  "no certified Region-2 cell cover yet: this report proves the exact reduction + channel decomposition, verifies numerically, and maps the danger; the cover is the next deliverable"
+ ],
+ "numeric_certification": {
+  "claim_status": "MACHINE-VERIFIED",
+  "configurations": [
+   {
+    "c_two": "-0.03713519420931346897471383499887370694564",
+    "discharge": "-0.1193016371455793221738147978817587731548",
+    "identity_absdiff": "0.0",
+    "raw_gap": "-0.1263842200189280697593208872368214424045",
+    "trial": 0,
+    "values": [
+     "0.144470399653524923430750409759",
+     "0.743466071989661618514212218021",
+     "0.0340871951148619757319116448328",
+     "0.964384869214465696060268601721",
+     "0.597345620234038702163323444005",
+     "0.163800706738224392268537466926"
+    ]
+   },
+   {
+    "c_two": "0.001170301941055337403472121379845926900112",
+    "discharge": "0.0613155041634571740324330741837677396617",
+    "identity_absdiff": "1.0738642e-91",
+    "raw_gap": "0.06160439048306953992042201860655573948909",
+    "trial": 1,
+    "values": [
+     "0.439234630301400752626340566243",
+     "0.556145520913254748785194485132",
+     "0.991676505725284168314272340485",
+     "0.165365971842742370465473670435",
+     "0.56674738259349315756686694934",
+     "0.875678153011665332996332493978"
+    ]
+   },
+   {
+    "c_two": "0.000184794658885251398599608355355278826328",
+    "discharge": "0.08065358544688061848505097385976205772364",
+    "identity_absdiff": "4.6022751e-92",
+    "raw_gap": "0.08069167119794633598340634851242389209119",
+    "trial": 2,
+    "values": [
+     "0.914046749130607034379539551877",
+     "0.709528797043801633440817191141",
+     "0.749473137456025294167402308545",
+     "0.0192305593570678662711638739193",
+     "0.750166411073967423883023128381",
+     "0.264755677299637713174869665106"
+    ]
+   },
+   {
+    "c_two": "0.02793123503707944916347899946497110407907",
+    "discharge": "-0.2134283772365484313063214009880624756622",
+    "identity_absdiff": "6.1363668e-92",
+    "raw_gap": "-0.2120301734472250307224595740630229907485",
+    "trial": 3,
+    "values": [
+     "0.0238754196240313014569418534302",
+     "0.0528521369543370962817378715179",
+     "0.493791348651730742713125784448",
+     "0.0632389200310408090945384025347",
+     "0.774217192387070968646459814811",
+     "0.711105140840148179212972670721"
+    ]
+   },
+   {
+    "c_two": "0.005689998146777974896319932137622550332025",
+    "discharge": "0.07031953677608135446871620536083022529014",
+    "identity_absdiff": "1.2272734e-91",
+    "raw_gap": "0.07174049949655155329256808852464190005262",
+    "trial": 4,
+    "values": [
+     "0.331614526818781552631444887646",
+     "0.483565560161654400662722879327",
+     "0.7258107226663028937144848505",
+     "0.871693804667859140558249890895",
+     "0.0217268851441600669194133757876",
+     "0.889815233331601963152758791032"
+    ]
+   },
+   {
+    "c_two": "-0.01121281030273100607351126786736286415522",
+    "discharge": "0.1169667422595023830208827268005388987626",
+    "identity_absdiff": "1.5340917e-92",
+    "raw_gap": "0.1164915922119125587870233899375417772673",
+    "trial": 5,
+    "values": [
+     "0.368398465255080289896262611908",
+     "0.955658157937775988526425704832",
+     "0.808359147523626243910116539444",
+     "0.961469640429657627941649901548",
+     "0.8773757560001094660791987083",
+     "0.634111036371677140510548789779"
+    ]
+   },
+   {
+    "c_two": "-0.01730836730819122715003304747404722487768",
+    "discharge": "-0.02937561326394452729679515349265520805046",
+    "identity_absdiff": "5.7528439e-92",
+    "raw_gap": "-0.02956250778108284188079211264774928311308",
+    "trial": 6,
+    "values": [
+     "0.710373034538427072854794253068",
+     "0.0109171120960882883755021885394",
+     "0.62843334091168656784920998336",
+     "0.468080126478303494934685261568",
+     "0.822610839568052213123237171719",
+     "0.976681535954970846546365383265"
+    ]
+   },
+   {
+    "c_two": "-0.007363618462332634849884956803243686953872",
+    "discharge": "0.114632720112770501780296941194001457089",
+    "identity_absdiff": "4.6022751e-92",
+    "raw_gap": "0.1127918155087692404343727888982032094683",
+    "trial": 7,
+    "values": [
+     "0.112021665445586802676177671146",
+     "0.500039659224441833137485311398",
+     "0.826258357813234823029055541545",
+     "0.829042294724315747719159063864",
+     "0.71732898472997732228759041819",
+     "0.631638464723490861419566606998"
+    ]
+   }
+  ],
+  "dps": 90,
+  "most_negative_c_two": "-0.03713519420931346897471383499887370694564",
+  "seed": 20260829,
+  "worst_identity_absdiff": "1.2272734e-91"
+ },
+ "remaining_obligation": "Region 2 reduces exactly to F(P_mix) + beta q(1-q) E_K >= 0 with F(P_mix) >= 0 certified for every mixture mean >= m (universal q=1 theorem).  Open: certified absorption of -beta q(1-q) E_K by the F-margins (kappa dist^2 near the optimizer box; face lemmas).  Cover plan mirrors region1/region1b: exact concave quadratic in q gives an endpoint-only reduction PER (a1, geometry) fiber; the a2 direction is probed but not yet certified",
+ "report_sha256": "9a24d025fc70bb3026db600af516108b3a84cda250f52e0e51fe257b033e9193",
+ "statements": {
+  "channel_decomposition": {
+   "channels": 4,
+   "note": "c_two decomposes exactly into the four (i, j) rectangle channels, each a second difference of K = h o pi across {x_i, x_j} x {y_i, y_j}; every channel vanishes when y_i = x_i and y_j = x_j (diagonal-collapse)",
+   "status": "PROVED"
+  },
+  "corrected_form": "gap = F(P_mix) + beta q(1-q) E_{h o pi}(P0 - P1) with the four-atom mixture law; c_two = beta sum_{i,j<=2} a_i a_j [K(x_i,x_j) + K(y_i,y_j) - 2K(x_i,y_j)], K = h o pi; each (i,j) term is a rectangle second-difference CHANNEL that vanishes on the diagonal-collapse y = x",
+  "two_atom_diagonalization": {
+   "log_basis_size": 28,
+   "method": "sympy multilinear expansion in the canonical free log basis of the two-atom family; zero residual",
+   "status": "PROVED"
+  }
+ },
+ "tool": "liu9_scalar_margin_region2.py"
+}

@@ -32,7 +32,11 @@ import verify_gate_b as verifier
 import shapley_n7_block_symmetric as n7
 import search_local_defect as localdefect
 import hunt_local_ratio as localratio
+import search_subtwofifths_q as subtwo_search
 import bound_local_regime as bounds
+import barrier_sawin_cambie as entropy_barrier
+import classify_defect_free_extensions as extensions
+import audit_clone_limit as clone_limit
 from shapley_n6_shared_bellman import one_sided_costs
 from shapley_entropy import ALPHA as PROJECT_ALPHA
 from shapley_global_coupling import local_order_parts
@@ -88,6 +92,21 @@ N8_K4_CERTIFICATE = (
     HERE / "certificates" / "gate_b_n8_k4_rational_v1.json"
 )
 CLONE_SATURATION_AUDIT = HERE / "candidates" / "clone_saturation_audit.json"
+BARRIER_AUDIT = HERE / "candidates" / "sawin_cambie_barrier.json"
+EXTENSION_AUDIT = HERE / "candidates" / "defect_free_extensions.json"
+CLONE_LIMIT_AUDIT = HERE / "candidates" / "clone_limit_audit.json"
+SUBTWO_Q_N9 = HERE / "candidates" / "subtwofifths_q_n9.json"
+SUBTWO_Q_N10 = HERE / "candidates" / "subtwofifths_q_n10.json"
+QGATE_CLONE_AUDIT = HERE / "candidates" / "qgate_clone_limit.json"
+SUBTWO_A_N9 = HERE / "candidates" / "subtwofifths_a_n9.json"
+SUBTWO_MIN_A_N9 = HERE / "candidates" / "subtwofifths_min_a_n9.json"
+SUBTWO_MIN_A_N10 = HERE / "candidates" / "subtwofifths_min_a_n10.json"
+SUBTWO_MIN_A_STRICT_N9 = (
+    HERE / "candidates" / "subtwofifths_min_a_n9_under_16_45.json"
+)
+SUBTWO_CLONE_CERTIFICATE = (
+    HERE / "certificates" / "gate_b_subtwofifths_clone_rational_v1.json"
+)
 
 
 def average_certified_cost(family: tuple[int, ...], dimension: int) -> arb:
@@ -1548,7 +1567,7 @@ class EightCoordinateFrontierTests(unittest.TestCase):
                     )
 
     def test_n8max_sits_at_the_maximum_admissible_size(self) -> None:
-        """The best separating ratio is attained at m=80 with maximum incidence."""
+        """The intermediate n8max record is attained at maximum size/incidence."""
         base = rational.BASES["n8max"]
         rows = base.reconstruct()
         facts = base.exact_facts()
@@ -1564,7 +1583,7 @@ class EightCoordinateFrontierTests(unittest.TestCase):
         self.assertEqual(facts["reimer_threshold"], 253)
         self.assertEqual(Fraction(facts["closure_defect"]), Fraction(2343, 3200))
 
-    def test_n8max_has_the_best_separating_ratio(self) -> None:
+    def test_n8max_beats_the_earlier_separating_ratios(self) -> None:
         certificate = json.loads(N8MAX_CERTIFICATE.read_text())
         self.assertEqual(
             certificate["verdict"], "PROVED_GATE_B_UNBOUNDED_EXACT_RATIONAL"
@@ -1762,7 +1781,7 @@ class FourFourClassTests(unittest.TestCase):
         self.assertEqual(report["float_negative_but_exactly_nonnegative"], [])
         self.assertEqual(report["float_nonnegative_but_exactly_negative"], [])
 
-    def test_lowest_defect_anywhere_is_four_ninths(self) -> None:
+    def test_lowest_certified_negative_defect_is_four_ninths(self) -> None:
         base = rational.BASES["n8tiny"]
         rows = base.reconstruct()
         facts = base.exact_facts()
@@ -1775,7 +1794,9 @@ class FourFourClassTests(unittest.TestCase):
             facts["duplicate_column_pairs"],
             [[2, 3], [2, 4], [2, 5], [3, 4], [3, 5], [4, 5]],
         )
-        # improves every previously certified defect
+        # Improves every previously certified *negative* defect.  It is not the
+        # combinatorial defect minimum: the new n9m15 core reaches 14/45 but is
+        # certified positive at every fixed order.
         for previous in (Fraction(1336, 2025), Fraction(139, 245), Fraction(1144, 1875)):
             self.assertLess(Fraction(4, 9), previous)
         # Corollary 12 requires a dominant set, and it has one: [8] itself.
@@ -1819,11 +1840,14 @@ class FourFourClassTests(unittest.TestCase):
 
 
 class CloneSaturationTests(unittest.TestCase):
-    """Proposition 18: cloning is defect-free, lowers A_+, and saturates."""
+    """Proposition 18: cloning is defect-free; coordinate 2 has a shrinking ladder."""
 
     def test_cloning_preserves_size_defect_and_admissibility(self) -> None:
         report = json.loads(CLONE_SATURATION_AUDIT.read_text())
-        self.assertEqual(report["verdict"], "CLONING_IS_DEFECT_FREE_AND_SATURATES")
+        self.assertEqual(
+            report["verdict"],
+            "CHOSEN_CLONE_IS_DEFECT_FREE_AND_FINITE_LADDER_SHRINKS",
+        )
         self.assertTrue(report["size_is_invariant"])
         self.assertTrue(report["defect_is_invariant"])
         self.assertTrue(report["admissibility_preserved_throughout"])
@@ -1860,9 +1884,10 @@ class CloneSaturationTests(unittest.TestCase):
             self.assertEqual(bounds.reimer_threshold(len(core)), 215)
             self.assertLessEqual(max(bounds.degrees(core, 7)), bounds.cap(len(core)))
 
-    def test_the_cloning_gain_saturates(self) -> None:
+    def test_the_chosen_clone_ladder_shrinks_but_is_not_geometric(self) -> None:
         report = json.loads(CLONE_SATURATION_AUDIT.read_text())
-        self.assertTrue(report["improvement_is_shrinking"])
+        self.assertTrue(report["improvement_is_shrinking_over_reported_ladder"])
+        self.assertIn("not geometric", report["convergence_status"])
         ratios = [Fraction(r) for r in report["delta_ratios_decimal"]]
         self.assertTrue(ratios)
         for ratio in ratios:
@@ -1873,9 +1898,385 @@ class CloneSaturationTests(unittest.TestCase):
             if row["delta_from_previous_decimal"] is not None
         ]
         for delta in deltas:
-            self.assertLess(delta, 0)          # every clone helps
+            self.assertLess(delta, 0)  # every displayed clone of coordinate 2 helps
         for earlier, later in zip(deltas, deltas[1:]):
-            self.assertLess(abs(later), abs(earlier))   # but by less each time
+            self.assertLess(abs(later), abs(earlier))
+
+
+class LocalBarrierAndExtensionTests(unittest.TestCase):
+    """Propositions 19--22: the local blocker and all zero-defect amplifiers."""
+
+    def test_six_registered_bases_defeat_the_iid_chain_at_every_order(self) -> None:
+        report = json.loads(BARRIER_AUDIT.read_text())
+        self.assertEqual(
+            report["verdict"],
+            "CAP_ONLY_DEFECT_FLOOR_FALSE_REIMER_ESSENTIAL_AND_IID_CHAIN_HAS_EXACT_BARRIERS",
+        )
+        self.assertEqual(report["barrier_witness_count"], 6)
+        self.assertEqual(
+            report["barrier_witnesses"],
+            ["n6", "n7", "n8hi", "n8clone_lo", "n8max", "n8best"],
+        )
+        for name, base in report["bases"].items():
+            self.assertEqual(Fraction(base["maximum_frequency"]), Fraction(2, 5), name)
+        for name in report["barrier_witnesses"]:
+            base = report["bases"][name]
+            self.assertLess(
+                Fraction(base["order_maximum_upper_rational"]),
+                Fraction(base["log2_size_lower_rational"]),
+            )
+
+    def test_cambie_lower_direction_is_not_promoted(self) -> None:
+        report = json.loads(BARRIER_AUDIT.read_text())
+        obstruction = report["cambie_upper_obstruction"]
+        self.assertIn("MATCHING LOWER DIRECTION OPEN", obstruction["source_status"])
+        self.assertLess(
+            Fraction(obstruction["ceiling_upper_rational"]), Fraction(2, 5)
+        )
+        self.assertEqual(
+            Fraction(obstruction["repository_alpha"]), Fraction(356069, 10_000_000)
+        )
+        self.assertTrue(report["candidate_and_reported_exclusion_lists_coincide"])
+        self.assertEqual(report["excluded_multiples_of_five"], [])
+
+    def test_chase_lovett_cap_only_example_fails_reimer_linearly(self) -> None:
+        facts = json.loads(BARRIER_AUDIT.read_text())["chase_lovett_example"]
+        self.assertTrue(facts["rates_are_asymptotic_leading_terms"])
+        self.assertFalse(facts["reimer_satisfied_at_leading_order"])
+        self.assertGreater(
+            Fraction(facts["reimer_required_rate_lower_rational"]),
+            Fraction(facts["psi_upper_rational"]),
+        )
+        self.assertGreater(Fraction(facts["reimer_deficit_rate_lower_rational"]), 0)
+        endpoint = json.loads(BARRIER_AUDIT.read_text())[
+            "reimer_zero_defect_endpoint"
+        ]
+        self.assertTrue(endpoint["reimer_is_automatic_at_zero_defect"])
+        self.assertTrue(endpoint["dominant_set_is_automatic_under_cap"])
+        self.assertTrue(endpoint["pair_defect_continuous_reimer_bound_refuted"])
+        self.assertIn("2/5 union-closed frequency theorem", endpoint["endpoint_consequence"])
+
+    def test_join_consistency_is_exactly_up_set_and_join_prime(self) -> None:
+        rows = clone_limit.N9_M15_ROWS
+        audit = extensions.equivalence_audit(rows)
+        classification = extensions.classify_columns(rows, 7)
+        self.assertEqual(audit["subsets_tested"], 1 << 15)
+        self.assertEqual(audit["mismatches"], 0)
+        self.assertEqual(classification["join_consistent_total"], 74)
+        self.assertEqual(classification["usable_total"], 8)
+        nonclones = [
+            candidate
+            for candidate in classification["_usable"]
+            if candidate not in classification["_clones"]
+            and candidate not in classification["_ors"]
+        ]
+        self.assertEqual(len(nonclones), 1)
+
+    def test_record_core_has_one_useful_defect_free_direction(self) -> None:
+        report = json.loads(EXTENSION_AUDIT.read_text())
+        self.assertEqual(
+            report["verdict"], "DEFECT_FREE_EXTENSIONS_CLASSIFIED_ONLY_CLONES_IMPROVE"
+        )
+        self.assertEqual(report["equivalence_audit"]["mismatches"], 0)
+        self.assertEqual(report["classification"]["usable_total"], 6)
+        improving = [entry for entry in report["measured"] if entry["improves"]]
+        self.assertEqual(len(improving), 1)
+        self.assertEqual(improving[0]["kind"], "clone of coordinate 2")
+        new = [
+            entry
+            for entry in report["measured"]
+            if entry["kind"] == "new: not induced by a global join-homomorphism"
+        ]
+        self.assertEqual(len(new), 1)
+        self.assertFalse(new[0]["improves"])
+
+    def test_concentrated_clones_beat_spread_clones_at_fixed_defect(self) -> None:
+        concentration = json.loads(EXTENSION_AUDIT.read_text())["concentration"]
+        repeated = concentration["three clones of coordinate 2"]
+        spread = concentration["one clone each of coordinates 0,1,2"]
+        self.assertEqual(Fraction(repeated["defect"]), Fraction(4, 9))
+        self.assertEqual(Fraction(spread["defect"]), Fraction(4, 9))
+        self.assertTrue(repeated["certified_negative"])
+        self.assertFalse(spread["certified_negative"])
+        self.assertLess(
+            Fraction(repeated["a_plus_upper"]), Fraction(spread["a_plus_upper"])
+        )
+
+    def test_clone_multiplicity_is_an_exact_rank_distribution(self) -> None:
+        for multiplicity in (1, 2, 4, 9):
+            weights = clone_limit.multiplicity_weights(7, multiplicity)
+            self.assertEqual(sum(weights), 1)
+            self.assertEqual(len(weights), 7)
+        self.assertEqual(
+            clone_limit.multiplicity_weights(7, 1),
+            (Fraction(1, 7),) * 7,
+        )
+        self.assertGreater(
+            clone_limit.multiplicity_weights(7, 9)[0],
+            clone_limit.multiplicity_weights(7, 2)[0],
+        )
+
+    def test_clone_first_appearance_law_matches_uniform_multiset_orders(self) -> None:
+        multiplicities = (2, 1, 3)
+        words = set(permutations((0, 0, 1, 2, 2, 2)))
+        counts: dict[tuple[int, ...], int] = {}
+        for word in words:
+            order = tuple(dict.fromkeys(word))
+            counts[order] = counts.get(order, 0) + 1
+        expected = {
+            order: Fraction(count, len(words)) for order, count in counts.items()
+        }
+        actual = dict(clone_limit.collapsed_order_distribution(multiplicities))
+        self.assertEqual(actual, expected)
+
+    def test_geometric_clone_weights_concentrate_on_any_order(self) -> None:
+        order = (2, 0, 3, 1)
+        ratio = 7
+        multiplicities = clone_limit.geometric_multiplicities(order, ratio)
+        probability = clone_limit.collapsed_order_probability(
+            order, multiplicities
+        )
+        self.assertGreaterEqual(
+            probability, Fraction(ratio - 1, ratio) ** (len(order) - 1)
+        )
+        self.assertGreaterEqual(
+            probability, 1 - Fraction(len(order) - 1, ratio)
+        )
+
+    def test_negative_fixed_order_has_a_finite_negative_clone_witness(self) -> None:
+        witness = clone_limit.finite_negative_clone_witness(
+            (1, 0, 2),
+            Fraction(-1, 50),
+            Fraction(-1, 100),
+            Fraction(-2),
+            Fraction(3, 2),
+        )
+        self.assertIsNotNone(witness)
+        self.assertTrue(witness["certified_negative"])
+        self.assertLess(Fraction(witness["a_plus_upper"]), 0)
+        self.assertLessEqual(
+            Fraction(witness["a_plus_lower"]),
+            Fraction(witness["a_plus_upper"]),
+        )
+        self.assertGreaterEqual(min(witness["multiplicities"]), 1)
+
+    def test_sub_two_fifths_checkpoints_separate_score_configurations(self) -> None:
+        common = {
+            "schema": subtwo_search.SCHEMA,
+            "dimension": 9,
+            "size": 15,
+            "restart": 0,
+            "steps": 10,
+            "screen_order_count": 4,
+            "seed": 7,
+        }
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "checkpoint.jsonl"
+            rows = [
+                {**common, "score_mode": "q"},
+                {**common, "score_mode": "min-a"},
+                {
+                    **common,
+                    "score_mode": "min-a",
+                    "strict_defect_cap": "16/45",
+                },
+                {**common, "score_mode": "min-a", "restart": 5},
+            ]
+            path.write_text(
+                "".join(json.dumps(row, sort_keys=True) + "\n" for row in rows)
+            )
+            done = subtwo_search.read_checkpoint(path)
+        self.assertEqual(len(done), 4)
+        self.assertEqual({key[3] for key in done}, {"q", "min-a"})
+        self.assertEqual({key[7] for key in done}, {"2/5", "16/45"})
+        matching = subtwo_search.matching_checkpoint_records(
+            done,
+            dimension=9,
+            sizes=(15,),
+            restarts=1,
+            score="min-a",
+            steps=10,
+            screen_orders=4,
+            seed=7,
+            defect_cap=Fraction(2, 5),
+        )
+        self.assertEqual([row["restart"] for row in matching], [0])
+        self.assertEqual(
+            subtwo_search.strict_bad_limit(15, Fraction(2, 5)), 89
+        )
+        self.assertEqual(
+            subtwo_search.strict_bad_limit(15, Fraction(16, 45)), 79
+        )
+
+    def test_sub_two_fifths_core_is_positive_under_every_extension(self) -> None:
+        report = json.loads(CLONE_LIMIT_AUDIT.read_text())
+        self.assertEqual(
+            report["verdict"],
+            "SUB_TWO_FIFTHS_NEGATIVE_CLONE_WITNESS_CERTIFIED_AND_EXTENSION_CLOSURE_CLASSIFIED",
+        )
+        entries = {entry["name"]: entry for entry in report["candidates"]}
+        low = entries["n9m15_lowdefect"]
+        plus = entries["n9m15_plus_new"]
+        self.assertEqual(Fraction(low["closure_defect"]), Fraction(14, 45))
+        self.assertLess(Fraction(low["closure_defect"]), Fraction(2, 5))
+        self.assertTrue(low["normalized"])
+        self.assertTrue(low["admissible"])
+        self.assertIn((1 << low["dimension"]) - 1, low["family_rows"])
+        self.assertEqual(low["order_count"], 5040)
+        self.assertEqual(plus["order_count"], 40320)
+        self.assertGreater(Fraction(low["fixed_order_minimum_lower"]), 0)
+        self.assertGreater(Fraction(plus["fixed_order_minimum_lower"]), 0)
+        self.assertTrue(
+            report["n9m15_every_defect_free_extension_sequence_positive"]
+        )
+
+    def test_sharp_cloning_certifies_a_sub_two_fifths_negative_family(self) -> None:
+        report = json.loads(CLONE_LIMIT_AUDIT.read_text())
+        self.assertTrue(
+            report["sub_two_fifths_negative_clone_witness_certified"]
+        )
+        entry = next(
+            row
+            for row in report["candidates"]
+            if row["name"] == "n8m15_clone_reachable"
+        )
+        self.assertTrue(entry["normalized"])
+        self.assertTrue(entry["admissible"])
+        self.assertEqual(Fraction(entry["closure_defect"]), Fraction(14, 45))
+        self.assertLess(Fraction(entry["fixed_order_minimum_upper"]), 0)
+        witness = entry["finite_negative_clone_witness"]
+        self.assertEqual(
+            witness["bound_method"],
+            "exact reweighting of every fixed-order enclosure",
+        )
+        self.assertLessEqual(
+            Fraction(witness["a_plus_lower"]),
+            Fraction(witness["a_plus_upper"]),
+        )
+        self.assertLess(Fraction(witness["a_plus_upper"]), 0)
+
+        certificate = json.loads(SUBTWO_CLONE_CERTIFICATE.read_text())
+        self.assertEqual(
+            certificate["verdict"],
+            "PROVED_SUB_TWO_FIFTHS_NEGATIVE_EXACT_RATIONAL",
+        )
+        cloned = certificate["cloned_family"]
+        self.assertEqual(Fraction(cloned["closure_defect"]), Fraction(14, 45))
+        self.assertTrue(cloned["admissible"])
+        self.assertFalse(cloned["separating"])
+        self.assertLessEqual(
+            Fraction(cloned["a_plus_lower"]),
+            Fraction(cloned["a_plus_upper"]),
+        )
+        self.assertLess(Fraction(cloned["a_plus_upper"]), 0)
+
+    def test_clone_convex_hull_explains_n8tiny_sign_flip(self) -> None:
+        report = json.loads(CLONE_LIMIT_AUDIT.read_text())
+        tiny = next(
+            entry for entry in report["candidates"] if entry["name"] == "n8tiny_core"
+        )
+        self.assertLess(Fraction(tiny["fixed_order_minimum_lower"]), 0)
+        self.assertEqual(tiny["best_limit_coordinate"], 2)
+        ladder = tiny["profiles"]["2"]["multiplicity_ladder"]
+        by_multiplicity = {row["total_multiplicity"]: row for row in ladder}
+        self.assertFalse(by_multiplicity[3]["certified_negative"])
+        self.assertTrue(by_multiplicity[4]["certified_negative"])
+
+    def test_clone_direction_can_raise_the_objective(self) -> None:
+        report = json.loads(CLONE_LIMIT_AUDIT.read_text())
+        tiny = next(
+            entry for entry in report["candidates"] if entry["name"] == "n8tiny_core"
+        )
+        base_upper = Fraction(tiny["a_plus_upper"])
+        for coordinate in ("0", "1", "3", "4"):
+            rung = tiny["profiles"][coordinate]["multiplicity_ladder"][1]
+            self.assertGreater(Fraction(rung["a_plus_lower"]), base_upper)
+
+    def test_sub_two_fifths_q_frontiers_keep_evidence_levels_separate(self) -> None:
+        n9 = json.loads(SUBTWO_Q_N9.read_text())
+        n10 = json.loads(SUBTWO_Q_N10.read_text())
+        self.assertEqual(n9["displayed_supremum_convention"], "cap and Reimer only")
+        self.assertIn("not required", n9["normalization_convention"])
+        for report in (n9, n10):
+            self.assertTrue(report["dominant_full_set_required"])
+            for row in report["best_by_size"].values():
+                self.assertLess(Fraction(row["closure_defect"]), Fraction(2, 5))
+                self.assertTrue(row["contains_full_set"])
+                self.assertLessEqual(Fraction(row["q_lower"]), Fraction(row["q_upper"]))
+                self.assertIn("DISCOVERY ONLY", row["sampled_a_status"])
+        self.assertTrue(n9["any_finalist_passes_q_necessary_condition"])
+        self.assertFalse(n10["any_finalist_passes_q_necessary_condition"])
+        survivor = n9["best_by_size"]["20"]
+        self.assertFalse(survivor["q_alone_certifies_positive"])
+        self.assertGreater(Fraction(survivor["sampled_a_lower"]), Fraction(1, 10))
+
+
+    def test_min_order_search_separates_discovery_from_exact_certification(self) -> None:
+        reports = [
+            json.loads(SUBTWO_MIN_A_N9.read_text()),
+            json.loads(SUBTWO_MIN_A_N10.read_text()),
+        ]
+        for report in reports:
+            self.assertEqual(report["score_mode"], "min-a")
+            self.assertEqual(report["strict_defect_cap"], "2/5")
+            self.assertIn("exact rational two-sided", report["coverage"])
+            for row in report["best_by_size"].values():
+                lower = Fraction(row["selected_fixed_order_a_lower"])
+                upper = Fraction(row["selected_fixed_order_a_upper"])
+                self.assertLessEqual(lower, upper)
+                self.assertLess(Fraction(row["closure_defect"]), Fraction(2, 5))
+                self.assertIn("EXACT RATIONAL", row["selected_fixed_order_status"])
+                witness = row["finite_negative_clone_witness"]
+                if upper < 0:
+                    self.assertIsNotNone(witness)
+                    self.assertLessEqual(
+                        Fraction(witness["a_plus_lower"]),
+                        Fraction(witness["a_plus_upper"]),
+                    )
+                    self.assertLess(Fraction(witness["a_plus_upper"]), 0)
+        n9 = reports[0]
+        self.assertTrue(n9["any_finalist_has_certified_negative_fixed_order"])
+        n9_negative_defects = [
+            Fraction(row["closure_defect"])
+            for row in n9["best_by_size"].values()
+            if row["selected_fixed_order_certified_negative"]
+        ]
+        self.assertLessEqual(min(n9_negative_defects), Fraction(16, 45))
+        strict = json.loads(SUBTWO_MIN_A_STRICT_N9.read_text())
+        self.assertEqual(strict["strict_defect_cap"], "16/45")
+        frontier = strict["lowest_defect_certified_negative_fixed_order"]
+        self.assertEqual(Fraction(frontier["closure_defect"]), Fraction(14, 45))
+        self.assertLess(Fraction(frontier["selected_fixed_order_a_upper"]), 0)
+        self.assertLessEqual(
+            Fraction(frontier["finite_negative_clone_witness"]["a_plus_lower"]),
+            Fraction(frontier["finite_negative_clone_witness"]["a_plus_upper"]),
+        )
+
+    def test_q_gate_survivor_is_positive_at_every_fixed_order(self) -> None:
+        report = json.loads(QGATE_CLONE_AUDIT.read_text())
+        self.assertEqual(len(report["candidates"]), 1)
+        survivor = report["candidates"][0]
+        self.assertEqual(survivor["name"], "n9m20_qgate")
+        self.assertEqual(Fraction(survivor["closure_defect"]), Fraction(19, 50))
+        self.assertEqual(survivor["order_count"], 40320)
+        self.assertGreater(Fraction(survivor["fixed_order_minimum_lower"]), 0)
+        self.assertTrue(survivor["every_clone_configuration_certified_positive"])
+
+    def test_full_objective_search_stays_far_positive_below_two_fifths(self) -> None:
+        report = json.loads(SUBTWO_A_N9.read_text())
+        self.assertEqual(report["score_mode"], "a")
+        self.assertEqual(report["displayed_supremum_convention"], "cap and Reimer only")
+        best_sampled_lower = min(
+            Fraction(row["sampled_a_lower"])
+            for row in report["best_by_size"].values()
+        )
+        self.assertGreater(best_sampled_lower, Fraction(1, 10))
+        for row in report["best_by_size"].values():
+            self.assertLess(Fraction(row["closure_defect"]), Fraction(2, 5))
+            self.assertTrue(row["contains_full_set"])
+            self.assertIn("DISCOVERY ONLY", row["sampled_a_status"])
+
+
 
 
 if __name__ == "__main__":

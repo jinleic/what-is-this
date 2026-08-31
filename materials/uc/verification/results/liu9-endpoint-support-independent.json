@@ -1,0 +1,13 @@
+{
+ "claim_status": "PASS",
+ "imports_production_endpoint_module": false,
+ "imports_production_q_lift_module": false,
+ "independent_blocker_lower": "[0.012028978704609313090290257165337696551158836842558760842677456853710601348334763438434256031192 +/- 3.19e-97]",
+ "independent_blocker_lower_float": 0.012028978704609313,
+ "production_report_sha256": "6510dc6c8b55b0132ee6993cee7f0141a11046013c1de5e0f06b51b1b71df843",
+ "q_polynomial_max_residual": "1.5626780740187353272e-102",
+ "q_polynomial_points": 4,
+ "report_sha256": "7b97e2d4e3936c248ef70f76431fbcab082186cf781a810341c9e59317221837",
+ "tool": "independent_endpoint_support_check.py",
+ "uses_sanctioned_gap_mp": true
+}

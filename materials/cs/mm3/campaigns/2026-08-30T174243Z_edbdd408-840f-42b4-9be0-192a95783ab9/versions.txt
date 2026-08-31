@@ -1,0 +1,11 @@
+python: /Users/jinleic/jinleic-workspace/cs/.venv/bin/python — Python 3.14.3
+python-flint: 0.9.0 (fmpz Brent + bound-layer path)
+sympy: 1.14.0 (present, not used)
+kissat: 4.0.4 (Homebrew; binary DRAT proofs)
+cadical: 3.0.1 (cross-solver check)
+drat-trim: built from frozen tools_snapshot/drat-trim.c ("Last edit: April 21, 2024"), git tree 2e3b2dc
+  binary sha256 111b0405566d55629f5d391b80b3220cc7a3ebc3cd406a35895ff65cc9acd5e4
+lrat-check: same frozen source tree 2e3b2dc
+  binary sha256 b4bdebfcc40da664be2fd416451b43f9e764e5e92383ce2b4e9d1f05148e9b07
+platform: macOS-26.5.2-arm64 (Apple M3 Ultra), nice -n 10, single-threaded
+run window: 2026-08-30T17:42Z .. 2026-08-30T18:05Z

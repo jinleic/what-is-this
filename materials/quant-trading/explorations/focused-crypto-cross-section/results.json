@@ -1,0 +1,522 @@
+{
+  "schema_version": 1,
+  "id": "focused-crypto-cross-section",
+  "direction": "focused-crypto-cross-section",
+  "status": "falsified",
+  "holdout_accessed": true,
+  "evaluated_variants": 6,
+  "retrospective_windows": {
+    "development": [
+      "2020-08-01",
+      "2023-12-31"
+    ],
+    "validation": [
+      "2024-01-01",
+      "2024-12-31"
+    ],
+    "confirmation": [
+      "2025-01-01",
+      "2026-07-31"
+    ]
+  },
+  "rank_ic_outcome_definition": "Close[t-1] to close[t] long-perpetual price return minus the exact signed funding events timestamped on UTC day t (00:00/08:00/16:00 as observed), before fees.",
+  "observed_evidence": {
+    "official_usdm_symbol_prefixes_snapshot": 986,
+    "official_usdt_symbol_prefixes_snapshot": 832,
+    "coverage_probed_symbols": 135,
+    "raw_study_assets": 59,
+    "distinct_assets_evaluated": 59,
+    "assets_with_missing_funding_months": [
+      "1000WHYUSDT",
+      "1000XUSDT",
+      "42USDT",
+      "A2ZUSDT",
+      "ALPHAUSDT",
+      "ATAUSDT",
+      "BAKEUSDT",
+      "BALUSDT",
+      "BLZUSDT",
+      "BNXUSDT",
+      "BTCSTUSDT",
+      "LINAUSDT",
+      "SXPUSDT",
+      "UNFIUSDT",
+      "WAVESUSDT"
+    ],
+    "delisted_archive_end_months": {
+      "1000BTTCUSDT": "2022-04",
+      "AKROUSDT": "2022-05",
+      "ANCUSDT": "2022-05",
+      "ANTUSDT": "2024-05",
+      "AUDIOUSDT": "2024-05",
+      "SRMUSDT": "2024-05"
+    },
+    "max_point_in_time_eligible_assets": 41,
+    "selection_rule": "Within the deterministic 135-symbol official-archive coverage probe, include every USDT symbol first archived by 2022-12 plus the first 20 later symbols in lexicographic order; then fail closed on any missing funding month. No current winner or current-listing filter is used.",
+    "variants": {
+      "momentum": {
+        "status": "falsified",
+        "failed_required_gates": [
+          "dev_subperiod_2_ic_gt_0.02",
+          "dev_subperiod_3_ic_gt_0.02"
+        ],
+        "unknown_gates": [
+          "dev_subperiod_1_ic_unknown",
+          "dev_subperiod_4_ic_unknown",
+          "dev_subperiod_5_ic_unknown",
+          "dev_subperiod_6_ic_unknown",
+          "confirmation_ic_unknown",
+          "confirmation_2x_spread_unknown",
+          "confirmation_concentration_unknown",
+          "confirmation_collateral_unknown"
+        ],
+        "development_subperiod_rank_ics": [
+          null,
+          -0.058964776813361396,
+          -0.10272539276369486,
+          null,
+          null,
+          null
+        ],
+        "development_subperiod_available_rows": [
+          178,
+          178,
+          128,
+          0,
+          0,
+          0
+        ],
+        "confirmation_rank_ic": null,
+        "confirmation_long_short_total_return_1x": null,
+        "confirmation_long_short_total_return_2x": null,
+        "confirmation_available_rows": 0,
+        "confirmation_benchmark_total_return": null,
+        "censored_selected_outcomes_full_sample": 2,
+        "censored_assets_at_first_stop": [
+          {
+            "day_index": 574,
+            "asset": "LINAUSDT",
+            "side": "short",
+            "held_weight": -0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          },
+          {
+            "day_index": 574,
+            "asset": "WAVESUSDT",
+            "side": "long",
+            "held_weight": 0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          }
+        ],
+        "held_assets_at_first_stop": [
+          "1000SHIBUSDT",
+          "ALICEUSDT",
+          "ALPHAUSDT",
+          "ANTUSDT",
+          "ARPAUSDT",
+          "ARUSDT",
+          "AVAXUSDT",
+          "BATUSDT",
+          "LINAUSDT",
+          "WAVESUSDT"
+        ],
+        "stop_day_index": 574,
+        "stop_day_utc": "2022-02-26",
+        "benchmark_stop_day_utc": "2022-02-26",
+        "available_rows_total": 573,
+        "final_nav_1x": 0.8810531503148156,
+        "final_nav_2x": 0.8237532316904962
+      },
+      "signed_funding": {
+        "status": "falsified",
+        "failed_required_gates": [
+          "dev_subperiod_3_ic_gt_0.02"
+        ],
+        "unknown_gates": [
+          "dev_subperiod_1_ic_unknown",
+          "dev_subperiod_4_ic_unknown",
+          "dev_subperiod_5_ic_unknown",
+          "dev_subperiod_6_ic_unknown",
+          "confirmation_ic_unknown",
+          "confirmation_2x_spread_unknown",
+          "confirmation_concentration_unknown",
+          "confirmation_collateral_unknown"
+        ],
+        "development_subperiod_rank_ics": [
+          null,
+          0.025959356048510174,
+          -0.0033508456048044685,
+          null,
+          null,
+          null
+        ],
+        "development_subperiod_available_rows": [
+          178,
+          178,
+          128,
+          0,
+          0,
+          0
+        ],
+        "confirmation_rank_ic": null,
+        "confirmation_long_short_total_return_1x": null,
+        "confirmation_long_short_total_return_2x": null,
+        "confirmation_available_rows": 0,
+        "confirmation_benchmark_total_return": null,
+        "censored_selected_outcomes_full_sample": 3,
+        "censored_assets_at_first_stop": [
+          {
+            "day_index": 574,
+            "asset": "OGNUSDT",
+            "side": "short",
+            "held_weight": -0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          },
+          {
+            "day_index": 574,
+            "asset": "UNFIUSDT",
+            "side": "short",
+            "held_weight": -0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          },
+          {
+            "day_index": 574,
+            "asset": "WAVESUSDT",
+            "side": "long",
+            "held_weight": 0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          }
+        ],
+        "held_assets_at_first_stop": [
+          "1000BTTCUSDT",
+          "1000XECUSDT",
+          "AKROUSDT",
+          "ALICEUSDT",
+          "AXSUSDT",
+          "BALUSDT",
+          "BLZUSDT",
+          "OGNUSDT",
+          "UNFIUSDT",
+          "WAVESUSDT"
+        ],
+        "stop_day_index": 574,
+        "stop_day_utc": "2022-02-26",
+        "benchmark_stop_day_utc": "2022-02-26",
+        "available_rows_total": 573,
+        "final_nav_1x": 1.4136052331935798,
+        "final_nav_2x": 1.310511475995977
+      },
+      "mom_plus_funding": {
+        "status": "falsified",
+        "failed_required_gates": [
+          "dev_subperiod_2_ic_gt_0.02",
+          "dev_subperiod_3_ic_gt_0.02"
+        ],
+        "unknown_gates": [
+          "dev_subperiod_1_ic_unknown",
+          "dev_subperiod_4_ic_unknown",
+          "dev_subperiod_5_ic_unknown",
+          "dev_subperiod_6_ic_unknown",
+          "confirmation_ic_unknown",
+          "confirmation_2x_spread_unknown",
+          "confirmation_concentration_unknown",
+          "confirmation_collateral_unknown"
+        ],
+        "development_subperiod_rank_ics": [
+          null,
+          -0.0524563837674166,
+          -0.08929479104217528,
+          null,
+          null,
+          null
+        ],
+        "development_subperiod_available_rows": [
+          178,
+          178,
+          128,
+          0,
+          0,
+          0
+        ],
+        "confirmation_rank_ic": null,
+        "confirmation_long_short_total_return_1x": null,
+        "confirmation_long_short_total_return_2x": null,
+        "confirmation_available_rows": 0,
+        "confirmation_benchmark_total_return": null,
+        "censored_selected_outcomes_full_sample": 2,
+        "censored_assets_at_first_stop": [
+          {
+            "day_index": 574,
+            "asset": "LINAUSDT",
+            "side": "short",
+            "held_weight": -0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          },
+          {
+            "day_index": 574,
+            "asset": "WAVESUSDT",
+            "side": "long",
+            "held_weight": 0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          }
+        ],
+        "held_assets_at_first_stop": [
+          "1000BTTCUSDT",
+          "1000SHIBUSDT",
+          "ALPHAUSDT",
+          "ANTUSDT",
+          "ARPAUSDT",
+          "ARUSDT",
+          "AXSUSDT",
+          "LINAUSDT",
+          "SRMUSDT",
+          "WAVESUSDT"
+        ],
+        "stop_day_index": 574,
+        "stop_day_utc": "2022-02-26",
+        "benchmark_stop_day_utc": "2022-02-26",
+        "available_rows_total": 573,
+        "final_nav_1x": 0.966488546737729,
+        "final_nav_2x": 0.9050817283801513
+      },
+      "funding_change": {
+        "status": "falsified",
+        "failed_required_gates": [
+          "dev_subperiod_2_ic_gt_0.02",
+          "dev_subperiod_3_ic_gt_0.02"
+        ],
+        "unknown_gates": [
+          "dev_subperiod_1_ic_unknown",
+          "dev_subperiod_4_ic_unknown",
+          "dev_subperiod_5_ic_unknown",
+          "dev_subperiod_6_ic_unknown",
+          "confirmation_ic_unknown",
+          "confirmation_2x_spread_unknown",
+          "confirmation_concentration_unknown",
+          "confirmation_collateral_unknown"
+        ],
+        "development_subperiod_rank_ics": [
+          null,
+          0.0037655592512223497,
+          0.013433769459137653,
+          null,
+          null,
+          null
+        ],
+        "development_subperiod_available_rows": [
+          178,
+          178,
+          128,
+          0,
+          0,
+          0
+        ],
+        "confirmation_rank_ic": null,
+        "confirmation_long_short_total_return_1x": null,
+        "confirmation_long_short_total_return_2x": null,
+        "confirmation_available_rows": 0,
+        "confirmation_benchmark_total_return": null,
+        "censored_selected_outcomes_full_sample": 2,
+        "censored_assets_at_first_stop": [
+          {
+            "day_index": 574,
+            "asset": "OGNUSDT",
+            "side": "short",
+            "held_weight": -0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          },
+          {
+            "day_index": 574,
+            "asset": "UNFIUSDT",
+            "side": "short",
+            "held_weight": -0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          }
+        ],
+        "held_assets_at_first_stop": [
+          "1000BTTCUSDT",
+          "ADAUSDT",
+          "ALICEUSDT",
+          "AUDIOUSDT",
+          "BANDUSDT",
+          "BLZUSDT",
+          "CVCUSDT",
+          "OGNUSDT",
+          "SXPUSDT",
+          "UNFIUSDT"
+        ],
+        "stop_day_index": 574,
+        "stop_day_utc": "2022-02-26",
+        "benchmark_stop_day_utc": "2022-02-26",
+        "available_rows_total": 573,
+        "final_nav_1x": 1.0400149281656268,
+        "final_nav_2x": 0.936113381912291
+      },
+      "vol_scaled_momentum": {
+        "status": "falsified",
+        "failed_required_gates": [
+          "dev_subperiod_2_ic_gt_0.02",
+          "dev_subperiod_3_ic_gt_0.02"
+        ],
+        "unknown_gates": [
+          "dev_subperiod_1_ic_unknown",
+          "dev_subperiod_4_ic_unknown",
+          "dev_subperiod_5_ic_unknown",
+          "dev_subperiod_6_ic_unknown",
+          "confirmation_ic_unknown",
+          "confirmation_2x_spread_unknown",
+          "confirmation_concentration_unknown",
+          "confirmation_collateral_unknown"
+        ],
+        "development_subperiod_rank_ics": [
+          null,
+          -0.05781709013395949,
+          -0.10812354467174927,
+          null,
+          null,
+          null
+        ],
+        "development_subperiod_available_rows": [
+          178,
+          178,
+          128,
+          0,
+          0,
+          0
+        ],
+        "confirmation_rank_ic": null,
+        "confirmation_long_short_total_return_1x": null,
+        "confirmation_long_short_total_return_2x": null,
+        "confirmation_available_rows": 0,
+        "confirmation_benchmark_total_return": null,
+        "censored_selected_outcomes_full_sample": 1,
+        "censored_assets_at_first_stop": [
+          {
+            "day_index": 574,
+            "asset": "WAVESUSDT",
+            "side": "long",
+            "held_weight": 0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          }
+        ],
+        "held_assets_at_first_stop": [
+          "1000BTTCUSDT",
+          "1000SHIBUSDT",
+          "ADAUSDT",
+          "ALICEUSDT",
+          "ALPHAUSDT",
+          "ARPAUSDT",
+          "AVAXUSDT",
+          "BATUSDT",
+          "SRMUSDT",
+          "WAVESUSDT"
+        ],
+        "stop_day_index": 574,
+        "stop_day_utc": "2022-02-26",
+        "benchmark_stop_day_utc": "2022-02-26",
+        "available_rows_total": 573,
+        "final_nav_1x": 0.8680674580389661,
+        "final_nav_2x": 0.8129655640839994
+      },
+      "liq_composite": {
+        "status": "falsified",
+        "failed_required_gates": [
+          "dev_subperiod_2_ic_gt_0.02",
+          "dev_subperiod_3_ic_gt_0.02"
+        ],
+        "unknown_gates": [
+          "dev_subperiod_1_ic_unknown",
+          "dev_subperiod_4_ic_unknown",
+          "dev_subperiod_5_ic_unknown",
+          "dev_subperiod_6_ic_unknown",
+          "confirmation_ic_unknown",
+          "confirmation_2x_spread_unknown",
+          "confirmation_concentration_unknown",
+          "confirmation_collateral_unknown"
+        ],
+        "development_subperiod_rank_ics": [
+          null,
+          -0.015570038811110467,
+          -0.07543770309136774,
+          null,
+          null,
+          null
+        ],
+        "development_subperiod_available_rows": [
+          178,
+          178,
+          128,
+          0,
+          0,
+          0
+        ],
+        "confirmation_rank_ic": null,
+        "confirmation_long_short_total_return_1x": null,
+        "confirmation_long_short_total_return_2x": null,
+        "confirmation_available_rows": 0,
+        "confirmation_benchmark_total_return": null,
+        "censored_selected_outcomes_full_sample": 2,
+        "censored_assets_at_first_stop": [
+          {
+            "day_index": 574,
+            "asset": "OGNUSDT",
+            "side": "short",
+            "held_weight": -0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          },
+          {
+            "day_index": 574,
+            "asset": "WAVESUSDT",
+            "side": "long",
+            "held_weight": 0.1,
+            "reason": "held outcome incomplete (price and/or signed funding unobserved); row t and entire tail marked unavailable (NaN); no finite return emitted"
+          }
+        ],
+        "held_assets_at_first_stop": [
+          "1000BTTCUSDT",
+          "1000SHIBUSDT",
+          "ALICEUSDT",
+          "ALPHAUSDT",
+          "ANTUSDT",
+          "ARUSDT",
+          "AXSUSDT",
+          "OGNUSDT",
+          "SRMUSDT",
+          "WAVESUSDT"
+        ],
+        "stop_day_index": 574,
+        "stop_day_utc": "2022-02-26",
+        "benchmark_stop_day_utc": "2022-02-26",
+        "available_rows_total": 573,
+        "final_nav_1x": 1.0949894497661556,
+        "final_nav_2x": 1.0219154556491408
+      }
+    }
+  },
+  "retrieval_provenance": {
+    "official_source": "https://data.binance.vision",
+    "downloaded_raw_bytes": 80268850,
+    "kline_archives_ok": 2678,
+    "funding_archives_ok": 2543,
+    "funding_http_404_records": 137,
+    "integrity": "Computed SHA-256, byte size, URL, retrieval UTC and ZIP CRC recorded under raw/focused/cross-section/provenance.",
+    "raw_plus_derived_bytes": 248860544,
+    "raw_cap_bytes": 1073741824
+  },
+  "gate_conclusion": "Direction status is falsified solely because every variant has an observed false development-subperiod IC gate (a valid observation at or below 0.02). The 2022-02-26 first-censor stop makes ALL confirmation gates UNKNOWN - including concentration and collateral, which are NOT marked pass - and unknown gates cannot rescue an observed false conjunct.",
+  "confirmation_gate_status_after_stop": {
+    "note": "The first held incomplete outcome on 2022-02-26 stops every variant path; row 574 and the tail are NaN/unavailable, so these gates are UNKNOWN, not pass.",
+    "confirmation_ic": "UNKNOWN",
+    "confirmation_2x_spread": "UNKNOWN",
+    "confirmation_concentration": "UNKNOWN",
+    "confirmation_collateral_buffer": "UNKNOWN"
+  },
+  "data_limitations": {
+    "binance_funding": "137 requested monthly funding archive URLs returned HTTP 404 across 15 symbols. Only unavailable asset-months are fail-closed; earlier complete history remains, and no missing rate is imputed as zero.",
+    "okx": "No comparable official point-in-time listing/delisting archive was obtained in the frozen bounded acquisition. Adding current OKX instruments would survivor-filter, so OKX is excluded rather than substituted.",
+    "terminal_delisting": "With no announcement metadata, the frozen censor rule stops the variant path at the prior known close when any held asset outcome is incomplete; no unobserved return is invented and no trade-out at an unavailable close occurs."
+  },
+  "counterfactual_diagnostics": "Positive one-window returns and 1x versus 2x cost differences are retrospective diagnostics only; they do not confirm durable alpha and do not change the falsified status.",
+  "prospective_requirement": "A new preregistered prospective campaign would require an append-only point-in-time instrument master and future funding/price capture. This dossier makes no deployment claim.",
+  "representative_returns_trial": "liq_composite"
+}

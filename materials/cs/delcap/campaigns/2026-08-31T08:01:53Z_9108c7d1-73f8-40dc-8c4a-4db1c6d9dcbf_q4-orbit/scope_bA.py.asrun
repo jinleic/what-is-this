@@ -1,0 +1,87 @@
+"""SCOPING dry-run (pre-registration): orbit-native B_A vs frozen merged_OS."""
+import sys, itertools, math, time
+from fractions import Fraction as Fr
+CAMP='/Users/jinleic/jinleic-workspace/cs/delcap/campaigns/2026-08-30T17:50:25Z_ddd57c90-d088-47c1-acda-dcb54bcf3555'
+SRC='/Users/jinleic/jinleic-workspace/cs/delcap/src'
+sys.path.insert(0,CAMP); sys.path.insert(0,SRC)
+import gate_c_orbit as go
+from flint import fmpq
+
+def rgs_native_F(OD):
+    """B_A[j][t_flat] = F_j(y0_t) = sum_{x in O_j} A(x, y0_t), via
+    F_j(y0) = (|O_j|/|T_t|) * sum_{y' in T_t} A(rep_j, y').  Exact ints."""
+    q = OD.q; G = math.factorial(q) * 2
+    out = []
+    t0=time.time()
+    for j, rep in enumerate(OD.gin.reps):
+        dd = go.dpdict(rep, OD.n)
+        agg = {}
+        for y, v in dd.items():
+            t = OD.flat_of_word(y)
+            agg[t] = agg.get(t, 0) + v
+        rowB = {}
+        oj = OD.gin.sizes[j]
+        for t, s in agg.items():
+            T = OD._osize_flat(t)
+            num = s * oj
+            assert num % T == 0, (j, t, s, oj, T)
+            rowB[t] = num // T
+        out.append(rowB)
+    log=lambda *a:None
+    print(f'  rgs_native_F built [{time.time()-t0:.1f}s]')
+    return out
+
+def check(q, n, dn, dd):
+    d = fmpq(dn, dd)
+    OD = go.OrbitData(q, n, d, log=lambda *a: None)
+    OS = go.merged_OS(OD)
+    B = rgs_native_F(OD)
+    a, b, Dden = OD.a, OD.b, OD.Dden
+    # equality 1: every canonical output word, every j: OS_j[y0] == B[j][t]*coeff
+    bad = 0
+    for k in range(n+1):
+        og = OD.gout[k]
+        for gi, y0 in enumerate(og.reps):
+            t = OD.base[k] + gi
+            coeff = a**(n-k) * b**k
+            for j in range(len(OD.gin.reps)):
+                frozen_v = OS[j].get(y0, 0)
+                bV = B[j].get(t, 0) * coeff
+                if frozen_v != bV:
+                    bad += 1
+                    if bad < 5: print('  MISMATCH', q,n,j,t,k,frozen_v,bV)
+    print(f'  P1 canonical-rep equality ({q},{n}): mismatches={bad}')
+    # equality 2: per-word for a sample of js across ALL words
+    import random; random.seed(20260831)
+    allx = [w for w in itertools.product(range(q), repeat=n)]
+    sample = random.sample(range(len(OD.gin.reps)), min(6, len(OD.gin.reps)))
+    bad2 = 0; checked=0
+    for j in sample:
+        for y in itertools.chain.from_iterable(itertools.product(range(q), repeat=k) for k in range(n+1)):
+            checked += 1
+            coeff = a**(n-len(y)) * b**len(y)
+            fv = OS[j].get(y, 0)
+            bv = B[j].get(OD.flat_of_word(y), 0) * coeff
+            if fv != bv:
+                bad2 += 1
+                if bad2 < 5: print('  P2 MISMATCH', j, y, fv, bv)
+    print(f'  P2 per-word equality ({q},{n}) js={sample}: checked={checked} mismatches={bad2}')
+    # P3 closure: sum_t |T_t| * B[j][t] * coeff(t) == |O_j| * (a+b)^n
+    bad3=0
+    for j in range(len(OD.gin.reps)):
+        tot = 0
+        for t, v in B[j].items():
+            k = next(k for k in range(n+1) if OD.base[k] <= t < OD.base[k]+len(OD.gout[k].reps))
+            tot += OD._osize_flat(t) * v * a**(n-k) * b**k
+        if tot != OD.gin.sizes[j] * (a+b)**n:
+            bad3 += 1
+    print(f'  P3 closure sum_t|T|B*coeff == |O|(a+b)^n ({q},{n}): mismatches={bad3}')
+    # P4 F_j orbit-constancy spot check (dense word-level vs formula)
+    x0 = allx[0]
+    return bad == 0 and bad2 == 0 and bad3 == 0
+
+ok = True
+for (q,n,dn,dd) in ((2,3,1,2),(3,3,1,2),(3,4,1,5),(2,5,1,20)):
+    print(f'CHECK (q={q},n={n},d={dn}/{dd})')
+    ok = ok and check(q,n,dn,dd)
+print('ALL PASS' if ok else 'FAILURES PRESENT')

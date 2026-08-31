@@ -1,0 +1,281 @@
+# Theoretical CS / information-theory open-problem attack repository
+
+**Start here:** [`RESULTS.md`](RESULTS.md) is the authoritative current-results
+index. This README is the repository map. Provisional claims and candidate
+results live in a non-authoritative `<target>/scratch/` subfolder until verified.
+
+## Mission
+
+Attack open problems in **theoretical computer science and information
+theory** — complexity, algorithms, coding, proof complexity, cryptographic
+hardness — with the same verification discipline as the sibling `../math/` and
+`../physics/` repositories.
+
+The selection bias is explicit and load-bearing: prefer problems whose progress
+is expressible as a **machine-checkable finite certificate** (DRAT/LRAT, VeriPB,
+exact rational LP/SDP dual, exhaustive census with a completeness argument) on a
+single workstation, over problems whose only currency is asymptotic argument or
+floating-point benchmark. A solo repo cannot win a scaling race; it can own the
+certification niche that funded groups have no incentive to build.
+
+## Tracking contract (SSOT)
+
+One fact, one owner. Four layers, no duplication:
+
+| layer | owner | contents |
+|---|---|---|
+| authoritative results index | [`RESULTS.md`](RESULTS.md) | one row per target: status, headline result, evidence pointer; campaign ladder; adopted next targets |
+| chronological ledger | [`PROGRESS.md`](PROGRESS.md) | dated, newest-first session entries; every claim carries its verification; retractions inline |
+| current state per target | `<target>/README.md` | what is PROVED / CONDITIONAL / NUMERICAL right now, gates, file inventory, how to run |
+| run artifacts | `<target>/campaigns/<UTC-timestamp>_<uuid>_<code-hash12>/` | immutable frozen snapshots + committed results; inventoried in `<target>/campaigns/README.md` |
+
+Naming rules:
+
+* **One problem, one top-level folder**, short lowercase name. No dated
+  top-level folders, no second folder for the same problem.
+* Campaign directories are producer-generated (`<UTC>Z_<uuid>_<hash>`); never
+  hand-created, never edited after launch. Disposable rehearsals go under
+  `<target>/campaigns-smoke/`.
+* Update the ledger and the owning README **in the same session** as the work;
+  a result that is not in `PROGRESS.md` does not exist.
+* Unverified/candidate material lives under `<target>/scratch/`
+  (non-authoritative); promotion to a README requires the evidence labels below.
+* `docs/scan-raw/` holds raw subagent scan output verbatim. It is
+  **non-authoritative** and is never cited as evidence; the distilled,
+  owner-checked scan document is.
+* **Target READMEs are append-only below the contract.** A target's
+  `README.md` serves two roles at once: it is the authoritative gate contract
+  (claim, gate ladder, pre-campaign requirements, disjointness) and it is the
+  per-target current-state document in the table above. An owning agent
+  **appends** a `## Current state (agent <Name>, <date>)` section carrying
+  verdicts, frozen campaign paths, evidence labels, honest gaps and how-to-run.
+  It never deletes, replaces or truncates the contract. If a gate's premise is
+  wrong, a correction note goes *beside* it, never in place of it.
+  Established 2026-08-30 after agent `Mm3` replaced `mm3/README.md` with a
+  campaign summary, deleting the gate ladder; the ladder was restored and the
+  agent's content retained verbatim beneath it.
+* **Corrections carry attribution, in both directions.** When an owning agent
+  shows that something in a gate ladder is wrong, the owner fixes it inline and
+  names the agent. Four such corrections landed on 2026-08-30: `omega/`'s
+  "published constants are all float-only" line (wrong — the three predecessor
+  rungs released parameters on OSF), `rs-pe3d/`'s "$12\mid q-1$" instance
+  condition (wrong — the requirement is three pairwise coprime divisors of
+  $q-1$), `mceliece/`'s instance ladder (infeasible — violated $k=n-mt>0$), and
+  `kg/`'s gate-A runtime estimate (optimistic). Conversely, when an agent
+  misattributes its own premise to the owner, that is corrected too:
+  `rs-pe3d/`'s false "Anchor 1" equality was its own derived unit premise, not
+  a README claim.
+
+## Targets
+
+All seven opened 2026-08-29 from the ranked shortlist in
+[`docs/CS_FRONTIER_SCAN_2026-08-29.md`](docs/CS_FRONTIER_SCAN_2026-08-29.md).
+Per-target state, gates and pre-campaign requirements live in each
+`README.md`; verdicts are collected in [`RESULTS.md`](RESULTS.md).
+
+**The third column below is the problem framing as each target was OPENED on 2026-08-29. It is
+deliberately not maintained.** Current status is owned by [`RESULTS.md`](RESULTS.md) and by each
+`<target>/README.md`; duplicating it here would create a second authority for one fact, which the
+tracking contract above forbids. So `BENCHMARK` in this table means "this is what the target was
+opened to do", never "this is where the target is now" — several have since passed gates A, B
+and C. Read the column for the *problem*, follow the link for the *state*.
+
+| directory | problem | framing at opening (2026-08-29) — NOT current status |
+|---|---|---|
+| [`mceliece/`](mceliece/README.md) | **Classic McEliece hold-out "waterfall" dispute** — is the derivative-flag collapse at $c=2t+3$ real on binary Goppa? | BENCHMARK. Live four-paper ePrint dispute (2026/1747 → 2026/1810 → 2026/1786 → v2), all abstracts owner-read. Gate A is a nine-instance exact $\mathbb F_{2^m}$ nullity census, under an hour, decisive either way. |
+| [`kg/`](kg/README.md) | **Grothendieck constant $K_G$** | BENCHMARK. Triple-arrival target. $6\pi/11\le K_G\le\pi/(2\log(1+\sqrt2))-3.47\times10^{-4}$ (arXiv:2608.11158, owner-read); the tenths-digit corollary is already re-derived here in Arb. Both bounds reduce to finite interval-arithmetic inequalities; gate C attempts a certified improvement. |
+| [`omega/`](omega/README.md) | **matrix multiplication exponent $\omega$** | BENCHMARK. $\omega<2.371177$ (arXiv:2608.16884, owner-read) comes from an ML+AlphaEvolve numerical optimum with no published rigorous enclosure. Gate A asks whether the record is rigorously established as stated. |
+| [`delcap/`](delcap/README.md) | **binary deletion channel capacity bounds** | BENCHMARK. Whole published constant chain (0.1185, 0.4143, 0.3745, 0.1221, 0.3578, small-$d$ expansions) is floating-point Blahut–Arimoto; none ever enclosed rigorously. Rubinstein–Con owner-read. |
+| [`oct-rank/`](oct-rank/README.md) | **real tensor rank of octonion multiplication** | BENCHMARK. $18\le\mathrm R_{\mathbb R}(T_{\mathbb O})\le25$ (arXiv:2608.16649, owner-read), narrowed from 15–30 twelve days ago. Gate B attacks rank 24 by Krawczyk certification; lower-bound search is explicitly ruled unsound. |
+| [`rs-pe3d/`](rs-pe3d/README.md) | **high-dimensional product expansion for Reed–Solomon tensor codes** | BENCHMARK. ECCC TR26-150 Conjecture 4.2 (owner-read abstract); lowest duplication risk in the scan — the only existing attempt is an AI proof the authors state is unverified. Near-linear private PCPs depend on it. |
+| [`mm3/`](mm3/README.md) | **additive complexity of rank-23 $3\times3$ matmul** | BENCHMARK. 55 additions (arXiv:2607.28676, owner-read); the "provably optimal for this fixed orientation" claim is ILP/SAT-decidable, and 54 would break the record. |
+
+## Target-selection surveys
+
+* [`docs/CS_FRONTIER_SCAN_2026-08-29.md`](docs/CS_FRONTIER_SCAN_2026-08-29.md)
+  — six-scout parallel frontier scan (meta-complexity, fine-grained complexity,
+  information/coding theory, proof complexity + certified search, cryptographic
+  hardness, learning/communication complexity), with the ranked candidate
+  shortlist and the first falsifiable gate per candidate.
+* `docs/scan-raw/` — the six raw scout reports, verbatim, non-authoritative.
+
+## Discipline
+
+Rules 1–7 inherited from `../math/README.md` without modification; 8–13 are TCS-specific;
+17b. **A count is not evidence until its pattern is anchored.**
+    Added 2026-08-30. Bare substring counts inflate reference counts with ordinary words —
+    `ns` matched 140 lines of *constraints*/*functions*, `dist` matched *distance*/*distinct*;
+    both were 0 when anchored to `` `t/` ``. Anchor the pattern, then report the count. And
+    before calling a difference a defect, check whether the difference is **declared**: an
+    audit that flags a documented, deliberate divergence is measuring the wrong thing. Both
+    failures occurred in one owner check on the same day, and the earlier observation that
+    opened that thread had used the same unanchored method — right by luck, wrong in detail.
+
+17c. **Verify provenance before attribution. A correct measurement of the wrong object is
+    still an attribution error — and a clean number is what disguises it.**
+    Added 2026-08-30. The owner audited a vendored external Lean checkout competently (492
+    files, zero `axiom` declarations, zero `sorry` in the load-bearing chain, `sorry`s confined
+    to unimported challenge files) and then added it to a sibling repository's Targets table —
+    which would have attributed an outside unconditional formalization of $H_1\le246$ to that
+    repository. The directory was **already documented** as third-party, in a section the owner
+    had written hours earlier, saying explicitly *"do not cite as a result of this repository."*
+    Before attributing an artifact: check for a vendored `.git/`, an upstream URL, a
+    `lean-toolchain` or lockfile you did not author, and read the existing documentation of the
+    thing you are about to describe. Rules 14-17b guard the instrument and the domain; this one
+    guards the **object**, and it is the one that turns good arithmetic into a false claim.
+
+**14–17c were added 2026-08-30 and are the ones this repository learned the hard way** — each
+records a real failure from that session, two of them in the owner's own reasoning.
+
+1. Read primaries first-hand; quote verbatim. Secondary summaries are not evidence.
+2. Every quantitative claim is machine-checked by a script in this repo.
+3. Distinguish PROVED / CONDITIONAL / NUMERICAL at every step, always.
+4. Verify by hand anything an optimiser reports before believing it.
+5. Record retractions inline rather than silently editing claims away.
+6. A theorem is not proved because its asserts pass — asserts check arithmetic at
+   the points you chose.
+7. **Never promote a sampled parameter check to a universal claim.** Where the
+   quantity is monotone or affine in the parameter, solve for the boundary and
+   assert the equivalence. Sampling a range is evidence, never a quantifier.
+
+TCS-specific additions:
+
+8. **Every complexity claim states its model exactly**: machine model,
+   uniformity, alphabet, worst-case vs average-case, and — for an asymptotic
+   claim — the regime and whether constants are hidden.
+9. **Finite-n verification is never an asymptotic claim.** "Checked for all
+   $n\le N$" is a finite theorem; extrapolating it is a conjecture, and a fitted
+   exponent is not a bound. State $N$, state the conjecture separately.
+10. **Every implemented algorithm's claimed complexity is measured, not
+    assumed**: report an operation counter, not wall-clock alone; any wall-clock
+    number names CPU, thread count, and toolchain version.
+11. **Search results carry their certificate.** UNSAT ⇒ a DRAT/LRAT or VeriPB
+    proof accepted by a pinned checker, with the checker version recorded;
+    exhaustive census ⇒ an explicit canonical-form/orbit completeness argument;
+    heuristic search ⇒ `COMPUTATIONAL-EVIDENCE` only, never a bound.
+12. **Conditional results keep their hypothesis in every restatement.** Name the
+    conjecture (SETH, ETH, 3SUM, LWE, ...); a result that drops its assumption
+    in the abstract is a different, false result.
+13. **Reproduction is not re-derivation.** Tag a reproduced published number
+    `[REPRODUCED]` (same inputs, same stated pipeline) versus `[DERIVED]`
+    (independent implementation from the definition). They are different claims.
+14. **THE INSTRUMENT MUST BE ABLE TO ESTABLISH THE CLAIM, NOT MERELY BE CONSISTENT
+    WITH IT.** Added 2026-08-30 after this failure shape appeared **four times in one
+    session**, twice in the owner's own reasoning. Before believing any check, ask what
+    it *could not* have detected:
+    * **Shared component.** A validation that shares machinery with the thing it
+      validates cannot see a defect in that machinery. `kg/`'s finite-difference audit
+      checked a wrong function against the analytic derivative of *that same wrong
+      function* and passed by construction. Corollary: $k$ solvers over **one** encoding
+      are $k$ checks of the encoding's *consequences*, not of the encoding.
+    * **Partial coverage stated as complete.** Finitely many rejected directions say
+      nothing about a positive-dimensional space; an *inscribed* region is not its
+      circumscribing one. A no-go over a set of directions is worth exactly the **rank
+      argument** behind it — if the rank equals the coordinate count the feasible set is a
+      point and no probe is needed; if it is less, no finite number of probes settles
+      anything. There is no middle case, and *"the mechanism looks structural"* is not a
+      substitute for the count.
+    * **Representation artifacts.** A round number in a scaling factor is a basis artifact
+      until proven geometry. An inscribed cube in an unnormalized basis certifies a domain
+      shrunk by roughly the dimension.
+    * **Tolerance versus quantity.** A solver whose feasibility tolerance equals the
+      magnitude being constrained certifies nothing: HiGHS at its default $10^{-7}$, asked
+      to respect bounds of size $10^{-7}$, returned a point violating them by 100% with a
+      plausible objective 14% off. **Non-dimensionalize**; never merely tighten tolerances.
+      And **re-verify every solver's returned point against its own constraints in
+      independent arithmetic** — a solver's reported objective and its reported feasibility
+      are both claims, not evidence.
+15. **Name the certified domain in every certified sentence.** "Certified" without a named
+    domain is how overclaims enter. If the domain is an inner approximation, state the
+    uncovered remainder explicitly. Added 2026-08-30 after a local-optimality claim was
+    written and retracted the same day.
+16. **Domain-shopping is prohibited.** A domain, box, search space, or candidate set is
+    fixed *before* the run and reported with every outcome including misses. Moving or
+    shrinking it after seeing the result — until the bound closes, or until the target
+    value is hit — is the numerology failure mode at the level of search spaces, and it is
+    prohibited whether or not a citation is attached. If a region must change, the new
+    region is a **separate** pre-registered statement reported alongside the original and
+    its outcome.
+17a. **Sources without a dated API are tracked by CONTENT HASH, not by a listing date.**
+    Added 2026-08-30. Rule 14's companion for provenance: the arXiv API gives a per-version
+    `updated` field, so arXiv sources can be re-checked by date. IACR ePrint and ECCC do not
+    expose an equivalent, and a listing date can lag or be absent. So **cache the artifact and
+    compare bytes on every re-check** — size, hash, and text line count. This is strictly
+    stronger than a date, because it detects a silent in-place revision that no date would
+    reveal. It caught a real one the day it was adopted: ePrint 2026/1747 was revised in place
+    on 2026-08-30, detected as 245,667 bytes / md5 `cd044d4c…` becoming 264,802 bytes / md5
+    `f27d10be…`, text growing 1633 to 1835 lines. **Keep the superseded copy alongside the new
+    one under a VERSION-STAMPED filename** (e.g. `pe1747_v3_2026-08-30.pdf` beside `pe1747.pdf`),
+    never overwriting a cached primary — so that the **diff stays reproducible later**, not merely
+    the detection. Refinement contributed by agent `Mceliece` from applying the rule.)
+    **2026-08-31 clarification after the rule itself was misapplied:** the unqualified
+    canonical path (for example `pe1747.pdf`) MUST contain the current fetched bytes.
+    Every displaced content version gets its own source-version or timestamp-stamped path;
+    the stamp is archival identity, not a synonym for “current.” `mceliece/` had these roles
+    reversed for `1747`, and the error survived because both bytes were retained but the
+    README named the wrong one canonical. “Never overwriting” above is a **byte-retention**
+    invariant, not a frozen-path invariant: first archive and hash the displaced bytes, then
+    replace the canonical path with the current bytes. Both versions remain addressable and
+    checksum-verifiable. At campaign startup, also inspect any source-provided
+    version history: this caught four later `1786` revisions after a byte-stable cached
+    `20260828:000118` copy. Record SHA-256, byte count, and source revision timestamp where
+    available. Retain every materially used version; never repair provenance by deletion.
+17. **Owner-supplied figures are inputs, not evidence.** A number handed down by the
+    session owner carries no more authority than one from a paper: re-derive it before any
+    claim rests on it. Added 2026-08-30 after two owner figures propagated through agents
+    unchecked in a single session — one a structural hypothesis, one a rank count that was
+    wrong.
+
+## Evidence labels
+
+Literal, as in `../math/RESULTS.md`:
+
+* **MACHINE-VERIFIED** — a named executable fact: a script in this repo, or a
+  pinned external checker, accepts it.
+* **HUMAN-AUDITED** — ordinary checked mathematics, line by line.
+* **COMPUTATIONAL-EVIDENCE** — non-proof numerical evidence.
+* **CITED-DEPENDENCY** — imported from a primary, with the primary read.
+* **OPEN** — unresolved.
+* **FAILED** — the wording or inference is not established (retraction).
+
+Plus the provenance tags `[REPRODUCED]`, `[DERIVED]`, `[REPORTED]` (not read
+first-hand), `[INFERENCE]` (inferred, not read), `UNVERIFIABLE` (citation could
+not be fetched).
+
+## Resource policy
+
+- One low-priority process (`nice -n 10`) at a time.
+- Pin OMP, OpenBLAS, MKL, vecLib, and NumExpr to one thread.
+- Bounded searches with explicit stop conditions; no daemonized CPU loops.
+- Randomized search: fixed seed per run, seed recorded in the campaign
+  inventory; repeated-seed policy defined before the first run.
+- Every SAT/PB run records solver version, encoding hash, and checker version.
+- Run prior-art review before announcing novelty. Keep failed routes and
+  corrections in the chronological ledger.
+
+## Layout
+
+| Path | Contents |
+|---|---|
+| `RESULTS.md` | Authoritative per-target results index. |
+| `PROGRESS.md` | Chronological session ledger (newest first). |
+| `<target>/` | One folder per problem, when open. |
+| `<target>/README.md` | Per-target authoritative state and gates. |
+| `<target>/campaigns/` | Frozen run snapshots, producer-generated names. |
+| `<target>/scratch/` | Non-authoritative candidate material. |
+| `docs/` | Frontier scans and background reading. |
+| `docs/scan-raw/` | Raw subagent scan output, non-authoritative. |
+
+## Evidence discipline
+
+1. Every claim carries a source: arXiv ID, ECCC report number, DOI, or an
+   in-repo derivation with committed campaign artifacts.
+2. Numbers copied from papers name the figure/table and the identifier.
+3. Not personally verified against a primary source → tag `[REPORTED]`.
+4. Inferred rather than read → tag `[INFERENCE]`.
+5. Conflicting values are recorded as conflicts, not silently resolved.
+6. Numerical candidates remain `NUMERICAL`; only exact/verifiable evidence
+   (proof certificate accepted by a pinned checker, exact rational arithmetic,
+   Lean proof, machine-checked replay of a full campaign) promotes to `PROVED`.
+7. **A no-go theorem is worth exactly its hypotheses.** Transcribe them; the
+   surviving hypotheses are where a construction can live.

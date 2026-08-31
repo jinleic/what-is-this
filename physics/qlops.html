@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fault-tolerant QLOPS arithmetic audit — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1f2328}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px;vertical-align:top}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.4rem 0 1rem}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+.markdown-body{box-sizing:border-box;background:transparent;font-size:15px;margin:0 0 1.2rem}
+details{border:1px solid #d0d7de;border-radius:6px;padding:6px 12px;margin:8px 0;background:#fafbfc}
+summary{cursor:pointer;font-size:14px}
+ul.files{margin:8px 0;padding-left:20px;font-size:13px}
+ul.files li{margin:2px 0}
+.fsize{color:#57606a;font-size:11px}
+mjx-container{overflow-x:auto;max-width:100%}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css">
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  function renderMD(el, md) {
+    var math = [];
+    function stash(re) {
+      md = md.replace(re, function (m) {
+        math.push(m);
+        return '@@MATH' + (math.length - 1) + '@@';
+      });
+    }
+    stash(/\$\$[\s\S]+?\$\$/g);
+    stash(/\\\[[\s\S]+?\\\]/g);
+    stash(/\\\((?:[^\\]|\\[^)])+?\\\)/g);
+    stash(/\$(?=\S)(?:[^$\n]*?\S)?\$/g);
+    var out = marked.parse(md, { mangle: false, headerIds: false });
+    out = out.replace(/@@MATH(\d+)@@/g, function (_, i) {
+      return math[+i].replace(/&/g, '&amp;')
+                     .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    });
+    el.innerHTML = out;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    function rewriteLinks(el) {
+      var config = (window.__LINKS__ || {})[el.id];
+      if (!config) return;
+      var base = typeof config === 'string' ? config : config.base;
+      var root = typeof config === 'string' ? null : config.root;
+      var nodes = el.querySelectorAll('a[href], img[src]');
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        var attr = n.tagName === 'IMG' ? 'src' : 'href';
+        var h = n.getAttribute(attr);
+        if (!h) continue;
+        if (/^(?:https?:|mailto:|tel:|#|\/\/|\/)/i.test(h)) continue;
+        var prefix = root && /^(?:\.\/)?(?:README|RESULTS|PROGRESS)\.md(?:[#?].*)?$/i.test(h)
+          ? root : base;
+        n.setAttribute(attr, prefix + h);
+      }
+    }
+    var blobs = window.__MD__ || {};
+    Object.keys(blobs).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      try { renderMD(el, blobs[id]); rewriteLinks(el); }
+      catch (err) {
+        var p = document.createElement('pre');
+        p.textContent = blobs[id];
+        el.innerHTML = '';
+        el.appendChild(p);
+      }
+    });
+    if (window.MathJax) {
+      if (MathJax.typesetPromise) { MathJax.typesetPromise(); }
+      else if (MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(function () { MathJax.typesetPromise(); });
+      }
+    }
+  });
+})();
+</script>
+</head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+<h1>Fault-tolerant QLOPS arithmetic audit</h1>
+<p class="tag">source <code>physics/qlops</code> ·
+last change 2026-08-31T08:24:29Z</p>
+<p class="tag">Domain documents: <a href="../materials/domains/physics/PROGRESS.md"><code>PROGRESS.md</code></a> · <a href="../materials/domains/physics/README.md"><code>README.md</code></a> · <a href="../materials/domains/physics/RESULTS.md"><code>RESULTS.md</code></a></p>
+<h2>Latest progress</h2><p class="tag">newest matching entry, quoted from <code>physics/PROGRESS.md</code></p><div class="markdown-body" id="md-progress"></div>
+<h2>Target README</h2><p class="tag">first lines, verbatim</p><div class="markdown-body" id="md-readme"></div>
+<h2>Code &amp; artifacts</h2>
+<p class="tag">mirrored from the source tree; oversized, raw, provisional,
+third-party, and publication-gated files are excluded</p>
+<details open><summary><code>project root</code> — 4 files, 0.1 MB</summary><ul class="files"><li><a href="../materials/physics/qlops/README.md">README.md</a> <span class="fsize">6 KB</span></li><li><a href="../materials/physics/qlops/gate_a_results.json">gate_a_results.json</a> <span class="fsize">19 KB</span></li><li><a href="../materials/physics/qlops/gate_b_results.json">gate_b_results.json</a> <span class="fsize">37 KB</span></li><li><a href="../materials/physics/qlops/pre_statement.md">pre_statement.md</a> <span class="fsize">5 KB</span></li></ul></details>
+<details><summary><code>campaigns/</code> — 10 files, 0.1 MB</summary><ul class="files"><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/fig1_exp_fit_downloaded.png">campaigns/20260829T223540Z_dcf693ab/artifacts/fig1_exp_fit_downloaded.png</a> <span class="fsize">18 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/formulas.py">campaigns/20260829T223540Z_dcf693ab/artifacts/formulas.py</a> <span class="fsize">5 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/gate_a_reproduce.py">campaigns/20260829T223540Z_dcf693ab/artifacts/gate_a_reproduce.py</a> <span class="fsize">10 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/gate_a_results.json">campaigns/20260829T223540Z_dcf693ab/artifacts/gate_a_results.json</a> <span class="fsize">19 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/gate_a_stdout.txt">campaigns/20260829T223540Z_dcf693ab/artifacts/gate_a_stdout.txt</a> <span class="fsize">3 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/gate_b_results.json">campaigns/20260829T223540Z_dcf693ab/artifacts/gate_b_results.json</a> <span class="fsize">37 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/gate_b_stdout.txt">campaigns/20260829T223540Z_dcf693ab/artifacts/gate_b_stdout.txt</a> <span class="fsize">1 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/gate_b_sweep.py">campaigns/20260829T223540Z_dcf693ab/artifacts/gate_b_sweep.py</a> <span class="fsize">7 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/paper_data.py">campaigns/20260829T223540Z_dcf693ab/artifacts/paper_data.py</a> <span class="fsize">12 KB</span></li><li><a href="../materials/physics/qlops/campaigns/20260829T223540Z_dcf693ab/artifacts/test_reproduction.py">campaigns/20260829T223540Z_dcf693ab/artifacts/test_reproduction.py</a> <span class="fsize">4 KB</span></li></ul></details>
+<details><summary><code>src/</code> — 5 files, 0.0 MB</summary><ul class="files"><li><a href="../materials/physics/qlops/src/formulas.py">src/formulas.py</a> <span class="fsize">5 KB</span></li><li><a href="../materials/physics/qlops/src/gate_a_reproduce.py">src/gate_a_reproduce.py</a> <span class="fsize">10 KB</span></li><li><a href="../materials/physics/qlops/src/gate_b_sweep.py">src/gate_b_sweep.py</a> <span class="fsize">7 KB</span></li><li><a href="../materials/physics/qlops/src/paper_data.py">src/paper_data.py</a> <span class="fsize">13 KB</span></li><li><a href="../materials/physics/qlops/src/test_reproduction.py">src/test_reproduction.py</a> <span class="fsize">4 KB</span></li></ul></details>
+<script>window.__MD__ = {"md-progress": "## 2026-08-29 — first worker verdicts integrated\n\n- `Qlops` completed Gate A and Gate B. Owner rerun of\n  `qlops/src/gate_a_reproduce.py` and `gate_b_sweep.py` passed (both exit 0):\n  81 Gate-A checks, 0 hard failures; QLOPS Table-5 rows reproduce to ≤4e-8\n  after the paper's Table-2a `t_r` one-slot correction. The printed table\n  has a 33–43% `t_r` row-shift error for d≥17; the correction is recorded,\n  not silently applied. Latency sensitivity max = 1.82× (\u003c2×), while the\n  7-T ↔ zero-level-CCZ magic-state swap gives 193×–29,944× spread and\n  falsifies comparability on that axis. Artifacts:\n  `qlops/campaigns/20260829T223540Z_dcf693ab/`.\n- `QldpcDec` completed the receiver-side BB decoder harness and smoke\n  validation. Gate A was corrected after first-hand reads: no published\n  BP+OSD LER curve exists at the originally assumed p values; the published\n  gate quantities are runtime (arXiv:2512.07057 Table II/III). The smoke\n  timing anchor reproduced p99.9 = 272.2 ms vs 272.5 ms (0.1%); BP+OSD,\n  beam-search, and NMS arms decode end-to-end. Three smoke campaigns and\n  frozen DEM provenance are in `qldpc-dec/`; full campaigns remain pending\n  because measured costs are ≈10.7 core-hours for Gate A and ≈15–30 hours\n  for the numpy beam arm.\n- These are **smoke/benchmark verdicts**, not universal QEC theorems.\n  RESULTS.md now records both rows; the five remaining workers/long runs\n  stay in progress.\n", "md-readme": "# `qlops/` — FTQC resource-estimate arithmetic audit\n\n**Status: BENCHMARK (gate A complete: reproduced; gate B complete: latency robust,\nmagic-state-swap falsifies comparability; msd-dependent parts await `../msd/`).**\nReuse published fault-tolerant QC resource/benchmark estimates from their stated\nformulas, reproduce their numbers, then run sensitivity sweeps. Pure arithmetic;\nminutes per run.\n\n## Reference\n\n- **Primary (read first-hand 2026-08-29, arXiv HTML v2):** Kong, Zhang &\n  Chen, *Benchmarking fault-tolerant quantum computing hardware via QLOPS*,\n  arXiv:2507.12024v2 [quant-ph, 22 Apr 2026]; ACM TQC 7(2):14, DOI\n  10.1145/3797968. Every formula/constant transcribed in\n  `src/paper_data.py` (anchors = arXiv HTML LaTeX ids, e.g. `S2.E2` =\n  Eq. (2), `S3.T5` = Table 5).\n- CS-challenges white paper (arXiv:2601.20247): names evaluation as a\n  first-class bottleneck for early FTQC. (Not yet read first-hand.)\n- Litinski 2019b (arXiv:1905.06903v3, read 2026-08-29): 15-to-1 protocol\n  behind the paper's Table 6 (space formula its Fig. 11; time cost\n  6·d_m/(1−p_fail)).\n- Itogawa et al., zero-level CCZ (arXiv:2605.21867, abstract read\n  2026-08-29): gate-B replacement constants, [REPORTED] until `../msd/`\n  gate A verifies c≈300 within 2×.\n\n## Transcription (gate A input registry)\n\nAll constants live in `src/paper_data.py`, one entry per printed value:\nTable 1 (SC hardware, current/future), t_SEC = 0.86/0.40 µs (component sums\nre-verified exactly), Table 2a/2b (PyMatching t_r for d = 5..27), Table 3\n(NA hardware), move model √(6Δx/a_p), Table 4 (GB codes: p_L, t_r, t_SEC),\nTable 5 (QLOPS + density, 6 codes × 3 rows), §3.5 RSA-2048 constants,\nTable 6 (18 Litinski 15-to-1 rows), plus the zero-level CCZ constants.\nFloat policy: exact ints/Fractions where the paper's inputs allow; Decimal\nceilings (never float ceil — see `src/test_reproduction.py::\ntest_rsa_exact_vs_float_ceil`); printed 4–6-sig-fig values reproduced to\ntheir own printing precision.\n\n## Gate A — verdict: REPRODUCED (81 checks, 0 hard failures)\n\nRun: `python3 src/gate_a_reproduce.py \u003cout.json>` (≈1 s, single core).\nArtifacts: `campaigns/20260829T223540Z_dcf693ab/artifacts/`\n(`gate_a_results.json`, `gate_a_stdout.txt`, frozen `src/` copies).\nTolerance: ≤5 % relative (the paper states none); every reproduced number\nis in fact ≤0.02 % except two `~N` prose roundings.\n\n| quantity | verdict |\n| --- | --- |\n| Eq. (1) p₀, 6 codes (S3.T5 col 2) | PROVED-reproduced (≤0.02 %) |\n| Eq. (2) Q, NA rows, 6 codes | PROVED-reproduced (≤0.02 %) |\n| QLOPS density, NA + N=2n convention | PROVED-reproduced (≤0.02 %) |\n| SC matched rows, 12 sub-rows, qubit counts N=k(2d²−1) | PROVED-reproduced (≤0.02 %) |\n| SC matched rows, current-hw d∈{17,19} (3 Q values) | PROVED-reproduced **[with correction]** — see finding F1 |\n| RSA-2048: Q_SC=4.0314e7, 714 019 data qubits, 56.4611, Q_NA=6.8089e6, 0.7626, Eq. (3) 5.244, Eq. (4) 2.4204, ~110/~270 | PROVED-reproduced (≤4.3 %; `~270` is prose) |\n| Table 6: 18 unit-qubit counts, 18 total = unit × integer | PROVED-reproduced (exact) |\n| Table 6: distillation error, cycles | NOT-REPRODUCED-from-inputs [REPORTED] — produced by the paper's 5-qubit density-matrix sim under unstated noise inputs; cycles inverted to implied p_fail ∈ [4e-4, 3.7e-3] ([DERIVED]) |\n| Fig. 1 fit constants | NOT-REPRODUCED-from-inputs — not printed; only visual read-offs (image in campaign artifacts) |\n\n**Paper-internal findings (evidence in campaign artifacts):**\n\n- **F1 — Table 2(a) t_r appears shifted by one slot for d ≥ 17.** The\n  printed d=17 entry (9.7008e-5) is out-of-trend, and Table 5's current-SC\n  QLOPS for d=17/19 reproduce the published values exactly (dev ≤ 4×10⁻⁸)\n  only when t_r is taken from the *next* d row (d=19→4.8795e-5,\n  d=21→6.9903e-5). Using entries as printed: deviations +43 %/+33 % (far\n  outside 5 %). [DERIVED]\n- **F2 — ceil boundary trap.** [[288,12,18]] current-SC row implies\n  ⌈t_r/t_SEC⌉ = 259 while t_r/t_SEC = 2.2188e-4 / 0.86e-6 = 258.0 exactly;\n  paper value sits one unit high (0.35 % effect, within tolerance). The\n  same one-unit float-ceil error appears in `ceil(1e-5/1e-6) = 11`; our\n  harness takes ceilings on exact rationals. [DERIVED]\n\n## Gate B — sensitivity (sweep completed; verdicts below)\n\nRun: `python3 src/gate_b_sweep.py \u003cout.json>`; artifacts\n`campaigns/20260829T223540Z_dcf693ab/artifacts/gate_b_results.json`.\n\n- **Latency axis (0.5×–2× all published t_r, 100 evals): ROBUST.** Max\n  shift 1.82× (\u003c 2× falsifier), analytically bounded by\n  (⌈m·r⌉+d)/(⌈r⌉+d) ≤ (2r+1+d)/(r+d) \u003c 2 for m ≤ 2. Largest jumps at the\n  ⌈·⌉ boundaries (e.g. SC [[288,12,18]] at m=0.5: 1.82×). No latency\n  factor within ±2× falsifies the benchmark's outputs. [PROVED for the\n  implemented formula; sampled over the paper's own 13 (k,d,t_r)\n  configurations]\n- **Magic-state swap (7-T Litinski 15-to-1 → zero-level CCZ, constants\n  [REPORTED] pending `../msd/`): COMPARABILITY FALSIFIED on this axis.**\n  Space-time per CCZ drops 193×–29 944× (ratio range 3.3e-5–5.2e-3,\n  T→CCZ scaling ×7 stated); accuracy-wise the zero-level rule p_L=300p²\n  violates the paper's own p_out ≤ p₀ matching rule at p=1e-4 for 11/18\n  Table-6 targets (at p=1e-3, 16/16). QLOPS-style headline numbers are\n  therefore not invariant under this protocol substitution. [REPORTED\n  inputs; DERIVED verdict]\n\n## How to run\n\n```\npython3 src/gate_a_reproduce.py out.json      # gate A, ~1 s\npython3 src/gate_b_sweep.py out.json          # gate B axes\npython3 src/test_reproduction.py              # 6 behavioral tests\n```"};</script>
+<script>window.__LINKS__ = {"md-progress": {"base": "../materials/physics/", "root": "../materials/domains/physics/"}, "md-readme": "../materials/physics/qlops/"};</script>
+<hr><p class="tag">Auto-generated by tools/sync.py · public research mirror</p>
+</body></html>

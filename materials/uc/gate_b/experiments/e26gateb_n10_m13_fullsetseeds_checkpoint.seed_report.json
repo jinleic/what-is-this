@@ -1,0 +1,37 @@
+{
+  "best_by_size": {
+    "13": {
+      "best_defect": "64/169",
+      "best_defect_count": 64,
+      "best_family": [
+        0,
+        1,
+        7,
+        32,
+        144,
+        253,
+        256,
+        362,
+        511,
+        512,
+        656,
+        834,
+        1023
+      ],
+      "dimension": 10,
+      "restarted_from_checkpoint": 0,
+      "restarts_done": 12,
+      "size": 13
+    }
+  },
+  "checkpoint": "uc/gate_b/experiments/e26gateb_n10_m13_fullsetseeds_checkpoint.jsonl",
+  "dimension": 10,
+  "generator": "uc/gate_b/experiments/e26gateb_seed_prep.py",
+  "mode": "e26_gateb_fullset_seed_prep",
+  "restarts": 12,
+  "seed": 271828,
+  "sizes": [
+    13
+  ],
+  "steps": 300000
+}

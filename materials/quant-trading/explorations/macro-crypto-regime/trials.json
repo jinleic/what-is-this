@@ -1,0 +1,442 @@
+{
+  "baselines": {
+    "bench_cash_sofr": {
+      "development_cum_return": 0.0689,
+      "note": "Cash-period opportunity cost check: forfeited SOFR was small vs missed crypto upside.",
+      "rule": "SOFR accrual while state OFF (sensitivity/benchmark only; not traded)",
+      "validation_cum_return": 0.053
+    },
+    "bench_ew_bh": {
+      "development": {
+        "ann_return": 0.726,
+        "cum_return": 4.092,
+        "exposure": 1.0,
+        "max_drawdown": -0.7625,
+        "net_sharpe": 1.031,
+        "total_cost": 0.0024,
+        "total_turnover_two_legs": 2.0
+      },
+      "params": {},
+      "rule": "hold basket every day (equal-weight buy-and-hold)",
+      "validation_2024": {
+        "ann_return": 0.759,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": 0.0,
+        "cum_return": 0.833,
+        "days_in_cash_with_bench_down": 0,
+        "exposure": 1.0,
+        "flips": 0,
+        "max_drawdown": -0.3548,
+        "missed_bench_cum_in_cash": 0.0,
+        "missed_upside_in_cash": 0.0,
+        "n_obs": 366,
+        "net_sharpe": 1.358
+      },
+      "variables": []
+    },
+    "bench_trend31": {
+      "development": {
+        "ann_return": 0.612,
+        "cum_return": 4.54,
+        "exposure": 0.514,
+        "max_drawdown": -0.4648,
+        "net_sharpe": 1.299,
+        "total_cost": 0.2352,
+        "total_turnover_two_legs": 196.0
+      },
+      "params": {
+        "sma_days": 31
+      },
+      "rule": "hold basket iff prior-day basket close > its 31-day SMA (price-only internal baseline)",
+      "validation_2024": {
+        "ann_return": 0.382,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": -0.4981,
+        "cum_return": 0.335,
+        "days_in_cash_with_bench_down": 66,
+        "exposure": 0.601,
+        "flips": 34,
+        "max_drawdown": -0.4261,
+        "missed_bench_cum_in_cash": 0.2965,
+        "missed_upside_in_cash": 1.7071,
+        "n_obs": 366,
+        "net_sharpe": 0.877
+      },
+      "variables": [
+        "price"
+      ]
+    }
+  },
+  "budget": {
+    "budget_respected": true,
+    "max_rules_predelared": 8,
+    "note": "No thresholds, windows, universes, or rules were added after seeing validation output; the 8 rules below were frozen before the single 2024 evaluation pass.",
+    "rules_declared": 8
+  },
+  "first_falsification_gate": {
+    "cash_yield_sofr_sensitivity_selected_trial_1x": {
+      "cum_excess_1x": -0.4697,
+      "max_drawdown": -0.4168,
+      "net_sharpe": 0.925
+    },
+    "definition": "Contract gate on the dev-selected rule, validation window: (G1) >=100 net observations; (G2) validation net Sharpe > 0 and > named benchmark (equal-weight BTC/ETH buy-and-hold); (G3) cumulative validation excess >= 0 at 2x costs; (G4) point-in-time/leakage checks pass; (G5) trial budget respected. A risk-overlay pass additionally requires lower drawdown at comparable return (not met by any trial; see trials).",
+    "result": {
+      "g1_min_100_obs": true,
+      "g2_sharpe_gt_bench": false,
+      "g3_cum_excess_2x_nonneg": false,
+      "g4_no_leakage": true,
+      "g5_within_budget": true,
+      "passed": false
+    },
+    "selected_trial_validation": {
+      "bench_ew_bh_net_sharpe": 1.358,
+      "bench_trend31_net_sharpe": 0.877,
+      "cum_excess_1x": -0.4981,
+      "cum_excess_2x": -0.6029,
+      "net_sharpe": 0.877,
+      "net_sharpe_2x": 0.689
+    }
+  },
+  "id": "macro-crypto-regime",
+  "schema_version": 1,
+  "selection_outcome": {
+    "dev_ranking": [
+      {
+        "dev_net_sharpe": 1.323,
+        "id": "t7_trend_veto"
+      },
+      {
+        "dev_net_sharpe": 1.032,
+        "id": "t6_stress_veto"
+      },
+      {
+        "dev_net_sharpe": 1.031,
+        "id": "t5_nfci_neg"
+      },
+      {
+        "dev_net_sharpe": 1.0,
+        "id": "t1_vix30"
+      },
+      {
+        "dev_net_sharpe": 0.962,
+        "id": "t2_vix_hyst"
+      },
+      {
+        "dev_net_sharpe": 0.761,
+        "id": "t4_curve_hyst"
+      },
+      {
+        "dev_net_sharpe": 0.757,
+        "id": "t3_curve_pos"
+      },
+      {
+        "dev_net_sharpe": 0.188,
+        "id": "t8_policy_easing"
+      }
+    ],
+    "selected": "t7_trend_veto",
+    "selection_margin_dev_sharpe_vs_runner_up": 0.2905
+  },
+  "selection_rule": "Among the 8 frozen trials, pick the single highest development-window net Sharpe at 1x costs (12 bps/leg one-way); tie-break by lower total development turnover, then lexicographic id. Ties/threshold selection never uses validation data.",
+  "trial_count": 8,
+  "trials": {
+    "t1_vix30": {
+      "decision": "falsified: not selected in development; validation did not beat the equal-weight buy-and-hold benchmark under the frozen gate",
+      "development": {
+        "ann_return": 0.679,
+        "cum_return": 3.606,
+        "exposure": 0.926,
+        "max_drawdown": -0.7353,
+        "net_sharpe": 1.0,
+        "total_cost": 0.0792,
+        "total_turnover_two_legs": 66.0
+      },
+      "params": {
+        "vix_max": 30.0
+      },
+      "rule": "ON iff VIX <= 30",
+      "selected_in_development": false,
+      "validation_2024": {
+        "ann_return": 0.727,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": -0.0572,
+        "cum_return": 0.776,
+        "days_in_cash_with_bench_down": 0,
+        "exposure": 0.997,
+        "flips": 2,
+        "max_drawdown": -0.3749,
+        "missed_bench_cum_in_cash": 0.0272,
+        "missed_upside_in_cash": 0.0272,
+        "n_obs": 366,
+        "net_sharpe": 1.302
+      },
+      "validation_gate_passed": false,
+      "variables": [
+        "vix"
+      ]
+    },
+    "t2_vix_hyst": {
+      "decision": "falsified: not selected in development; validation did not beat the equal-weight buy-and-hold benchmark under the frozen gate",
+      "development": {
+        "ann_return": 0.628,
+        "cum_return": 3.106,
+        "exposure": 0.853,
+        "max_drawdown": -0.6826,
+        "net_sharpe": 0.962,
+        "total_cost": 0.036,
+        "total_turnover_two_legs": 30.0
+      },
+      "params": {
+        "enter_max": 25.0,
+        "exit_min": 32.0
+      },
+      "rule": "ON when VIX <= 25; OFF when VIX >= 32; else hold previous state (init OFF)",
+      "selected_in_development": false,
+      "validation_2024": {
+        "ann_return": 0.628,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": -0.2123,
+        "cum_return": 0.621,
+        "days_in_cash_with_bench_down": 1,
+        "exposure": 0.992,
+        "flips": 2,
+        "max_drawdown": -0.4295,
+        "missed_bench_cum_in_cash": 0.1271,
+        "missed_upside_in_cash": 0.1591,
+        "n_obs": 366,
+        "net_sharpe": 1.158
+      },
+      "validation_gate_passed": false,
+      "variables": [
+        "vix"
+      ]
+    },
+    "t3_curve_pos": {
+      "decision": "falsified: not selected in development; validation did not beat the equal-weight buy-and-hold benchmark under the frozen gate",
+      "development": {
+        "ann_return": 0.462,
+        "cum_return": 1.556,
+        "exposure": 0.563,
+        "max_drawdown": -0.7511,
+        "net_sharpe": 0.757,
+        "total_cost": 0.0096,
+        "total_turnover_two_legs": 8.0
+      },
+      "params": {
+        "min_spread": 0.0
+      },
+      "rule": "ON iff T10Y2Y >= 0 (2s10s curve non-negative)",
+      "selected_in_development": false,
+      "validation_2024": {
+        "ann_return": 0.435,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": -0.3516,
+        "cum_return": 0.482,
+        "days_in_cash_with_bench_down": 115,
+        "exposure": 0.333,
+        "flips": 5,
+        "max_drawdown": -0.1403,
+        "missed_bench_cum_in_cash": 0.313,
+        "missed_upside_in_cash": 2.804,
+        "n_obs": 366,
+        "net_sharpe": 1.475
+      },
+      "validation_gate_passed": false,
+      "variables": [
+        "t10y2y"
+      ]
+    },
+    "t4_curve_hyst": {
+      "decision": "falsified: not selected in development; validation did not beat the equal-weight buy-and-hold benchmark under the frozen gate",
+      "development": {
+        "ann_return": 0.465,
+        "cum_return": 1.578,
+        "exposure": 0.567,
+        "max_drawdown": -0.735,
+        "net_sharpe": 0.761,
+        "total_cost": 0.0096,
+        "total_turnover_two_legs": 8.0
+      },
+      "params": {
+        "enter_min": 0.05,
+        "exit_max": -0.05
+      },
+      "rule": "ON when T10Y2Y >= +0.05; OFF when T10Y2Y <= -0.05; else hold previous state (init OFF)",
+      "selected_in_development": false,
+      "validation_2024": {
+        "ann_return": 0.497,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": -0.2518,
+        "cum_return": 0.581,
+        "days_in_cash_with_bench_down": 120,
+        "exposure": 0.311,
+        "flips": 1,
+        "max_drawdown": -0.1403,
+        "missed_bench_cum_in_cash": 0.26,
+        "missed_upside_in_cash": 2.8569,
+        "n_obs": 366,
+        "net_sharpe": 1.74
+      },
+      "validation_gate_passed": false,
+      "variables": [
+        "t10y2y"
+      ]
+    },
+    "t5_nfci_neg": {
+      "decision": "falsified: not selected in development; validation did not beat the equal-weight buy-and-hold benchmark under the frozen gate",
+      "development": {
+        "ann_return": 0.726,
+        "cum_return": 4.092,
+        "exposure": 1.0,
+        "max_drawdown": -0.7625,
+        "net_sharpe": 1.031,
+        "total_cost": 0.0024,
+        "total_turnover_two_legs": 2.0
+      },
+      "params": {
+        "max_nfci": 0.0
+      },
+      "rule": "ON iff NFCI < 0 (financial conditions looser than average)",
+      "selected_in_development": false,
+      "validation_2024": {
+        "ann_return": 0.759,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": 0.0,
+        "cum_return": 0.833,
+        "days_in_cash_with_bench_down": 0,
+        "exposure": 1.0,
+        "flips": 0,
+        "max_drawdown": -0.3548,
+        "missed_bench_cum_in_cash": 0.0,
+        "missed_upside_in_cash": 0.0,
+        "n_obs": 366,
+        "net_sharpe": 1.358
+      },
+      "validation_gate_passed": false,
+      "variables": [
+        "nfci"
+      ]
+    },
+    "t6_stress_veto": {
+      "decision": "falsified: not selected in development; validation did not beat the equal-weight buy-and-hold benchmark under the frozen gate",
+      "development": {
+        "ann_return": 0.726,
+        "cum_return": 4.106,
+        "exposure": 0.982,
+        "max_drawdown": -0.7619,
+        "net_sharpe": 1.032,
+        "total_cost": 0.012,
+        "total_turnover_two_legs": 10.0
+      },
+      "params": {
+        "spread_min": 0.0,
+        "vix_max": 30.0
+      },
+      "rule": "ON unless (VIX > 30 AND T10Y2Y < 0): step aside only in joint equity-vol stress with inverted curve",
+      "selected_in_development": false,
+      "validation_2024": {
+        "ann_return": 0.727,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": -0.0572,
+        "cum_return": 0.776,
+        "days_in_cash_with_bench_down": 0,
+        "exposure": 0.997,
+        "flips": 2,
+        "max_drawdown": -0.3749,
+        "missed_bench_cum_in_cash": 0.0272,
+        "missed_upside_in_cash": 0.0272,
+        "n_obs": 366,
+        "net_sharpe": 1.302
+      },
+      "validation_gate_passed": false,
+      "variables": [
+        "vix",
+        "t10y2y"
+      ]
+    },
+    "t7_trend_veto": {
+      "decision": "falsified: development-selected overall winner; failed validation gate G2 (Sharpe 0.877 <= benchmark 1.358) and G3 (2x-cost cumulative excess -0.603 < 0)",
+      "development": {
+        "ann_return": 0.622,
+        "cum_return": 4.749,
+        "exposure": 0.512,
+        "max_drawdown": -0.4446,
+        "net_sharpe": 1.323,
+        "total_cost": 0.2304,
+        "total_turnover_two_legs": 192.0
+      },
+      "params": {
+        "sma_days": 31,
+        "spread_min": 0.0,
+        "vix_max": 30.0
+      },
+      "rule": "ON iff (EW basket close > its 31-day SMA) AND NOT (VIX > 30 AND T10Y2Y < 0): price trend with macro stress veto",
+      "selected_in_development": true,
+      "validation_2024": {
+        "ann_return": 0.382,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": -0.4981,
+        "cum_return": 0.335,
+        "days_in_cash_with_bench_down": 66,
+        "exposure": 0.601,
+        "flips": 34,
+        "max_drawdown": -0.4261,
+        "missed_bench_cum_in_cash": 0.2965,
+        "missed_upside_in_cash": 1.7071,
+        "n_obs": 366,
+        "net_sharpe": 0.877
+      },
+      "validation_gate_passed": false,
+      "variables": [
+        "price",
+        "vix",
+        "t10y2y"
+      ]
+    },
+    "t8_policy_easing": {
+      "decision": "falsified: not selected in development; validation did not beat the equal-weight buy-and-hold benchmark under the frozen gate",
+      "development": {
+        "ann_return": 0.069,
+        "cum_return": 0.004,
+        "exposure": 0.14,
+        "max_drawdown": -0.5145,
+        "net_sharpe": 0.188,
+        "total_cost": 0.072,
+        "total_turnover_two_legs": 60.0
+      },
+      "params": {
+        "window_bd": 20
+      },
+      "rule": "ON iff DFF fell over the trailing 20 US business days",
+      "selected_in_development": false,
+      "validation_2024": {
+        "ann_return": 0.21,
+        "bench_cum_return": 0.833,
+        "bench_max_drawdown": -0.3548,
+        "cum_excess_2x_cost": -0.6231,
+        "cum_return": 0.21,
+        "days_in_cash_with_bench_down": 140,
+        "exposure": 0.183,
+        "flips": 5,
+        "max_drawdown": -0.1023,
+        "missed_bench_cum_in_cash": 0.5387,
+        "missed_upside_in_cash": 3.5306,
+        "n_obs": 366,
+        "net_sharpe": 1.049
+      },
+      "validation_gate_passed": false,
+      "variables": [
+        "dff"
+      ]
+    }
+  }
+}

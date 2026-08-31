@@ -1,0 +1,33 @@
+{
+ "unimod_count": 6960,
+ "per_decomposition": {
+  "paper55": {
+   "verdict": {
+    "non_ternary": 6912,
+    "ternary_brent_fail": 0,
+    "valid": 48
+   },
+   "survivor_count": 48,
+   "survivors_all_monomial": true,
+   "certified_totals_set": [
+    55
+   ],
+   "min_certified_total": 55,
+   "elapsed_s": 16.5
+  },
+  "sun56": {
+   "verdict": {
+    "non_ternary": 6912,
+    "ternary_brent_fail": 0,
+    "valid": 48
+   },
+   "survivor_count": 48,
+   "survivors_all_monomial": true,
+   "certified_totals_set": [
+    55
+   ],
+   "min_certified_total": 55,
+   "elapsed_s": 17.6
+  }
+ }
+}

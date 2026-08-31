@@ -1,0 +1,56 @@
+{
+ "claim_scope": "Exact degree-two expansion and universal nonnegativity of the mean-preserving simultaneous-insertion pencil for 0 <= epsilon <= 1/2; sharp negative-pencil/raw-gap-zero endpoint outside that local mass range.",
+ "literature_search": {
+  "date": "2026-08-29",
+  "label": "ABSENCE AFTER STATED SEARCH, not proof of absolute absence",
+  "limitations": [
+   "The CISS 2024 full text is paywalled; its abstract matches arXiv v1, but content differences cannot be excluded.",
+   "Semantic Scholar and web search can miss citations; the absence label is intentionally bounded by the stated search.",
+   "Google Scholar was not directly queried."
+  ],
+  "result": "No checked source contains a first- or second-order transverse analysis of Liu's nine-dimensional optimizer, the exact epsilon quadratic, the asymmetric interaction term, the epsilon<=1/2 theorem, or the sharp raw-gap-zero/negative-pencil endpoint obstruction. The ten citing works do not engage with the optimizer's local structure.",
+  "search_terms": [
+   "0.690787593924988",
+   "x^4-2x^3+3x^2-1",
+   "Liu union-closed nine-dimensional second order",
+   "Liu union-closed first variation",
+   "Liu Hypothesis 2 transverse",
+   "mean-preserving atom insertion entropy"
+  ],
+  "sources_checked": [
+   "arXiv:2306.08824v1 full text and TeX source",
+   "Semantic Scholar citation lists for arXiv:2306.08824 and DOI 10.1109/CISS59072.2024.10480167",
+   "arXiv:2306.12351",
+   "arXiv:2312.14743 / Journal of Combinatorial Theory A (2025)",
+   "arXiv:2405.10639",
+   "arXiv:2412.03862",
+   "arXiv:2412.18740",
+   "arXiv:2504.13454",
+   "arXiv:2507.11008",
+   "arXiv:2511.19833",
+   "arXiv:2212.12500",
+   "OEIS searches for 0.690787593924988, 0.382709087918741, and 0.893604513905457",
+   "web searches for the spaced and unspaced quartic and 9-16 digit prefixes of its root"
+  ]
+ },
+ "novelty_assessment": {
+  "absence_after_search": "The exact second-order theorem and sharp obstruction were not found in the checked literature.",
+  "claim_wording": "NOVEL [absence after stated search]",
+  "not_claimed": "No claim of absolute priority beyond the stated source and citation search.",
+  "verified_from_source": "Liu states the optimization and candidate but does not supply this expansion or certificate."
+ },
+ "primary_source": {
+  "arxiv": "2306.08824v1",
+  "author": "Jingbo Liu",
+  "local_pdf": "math/LIU_H1/literature/pdfs/liu_2023_arxiv_2306.08824v1.pdf",
+  "published": "2024 58th Annual Conference on Information Sciences and Systems (CISS), DOI 10.1109/CISS59072.2024.10480167",
+  "verified_from_source": [
+   "Section V-B states the nine-dimensional optimization and the conjectured global minimizer structure.",
+   "Equation (87) states x*^2 + x*^2(1+xbar*^2)=1, i.e. prot(x*,x*)=1-x*^2.",
+   "The paper reports numerical optimization, not a transverse epsilon expansion.",
+   "No epsilon^2 coefficient, simultaneous-insertion cross term, local mass radius, or divided-difference interval certificate appears in the arXiv text.",
+   "The string 'quartic' occurs zero times in text extracted from the local arXiv PDF."
+  ]
+ },
+ "report_sha256": "f4785245764c57ce2663c1531a1e9d2a92fe7eb897584307917491e33659b871"
+}

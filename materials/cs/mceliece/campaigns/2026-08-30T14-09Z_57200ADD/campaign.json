@@ -1,0 +1,158 @@
+{
+ "campaign_id": "2026-08-30T14-09Z_57200ADD",
+ "date_utc": "2026-08-30T14:09Z",
+ "agent": "Mceliece",
+ "gate": "A \u2014 UNIFORM delta re-run across all 13 certified instances (one code path)",
+ "supersedes": "the delta guard reported in campaigns 2026-08-30T01-42Z_9D0FC9E7 (full k x n grid, m=6,7,8) and 2026-08-30T12-03Z_DCAB8F20 (row-wise pivot+8-sample, m=9 onward). Those two implementations are REPLACED by one. The census verdicts themselves are unchanged.",
+ "why_this_run_exists": "SELF-REPORTED DEFECT: when speeding up the build before running m=9, I moved the delta guard from the full k x n grid to a row-wise pivot+8-sample check WITHOUT flagging it. That left m=9/10/11 carrying a weaker delta than m=6/7/8 while the index asserted a single uniform standard. This run repairs the ladder through ONE implementation for all 13 rows, per pre_statement.md ADDENDUM 2 committed BEFORE the run.",
+ "method": {
+  "route": "EXACT Lagrange route. F is built as f_j = SUM_i Y[j,i] lam_i^{-1} L_i with L_i = Pi/(Z-a_i)/Pi'(a_i). Off-diagonal vanishing L_i(a_l) = 0 (l != i) is structural (the factor (Z-a_l) is retained and the division is exact). Hence lam_l f_j(a_l) = Y[j,l] for ALL (j,l) follows EXACTLY from the n scalar checks L_i(a_i) = 1.",
+  "cost": "O(n D) per instance instead of O(k n D); exact, not Monte Carlo",
+  "load_bearing_degree_condition": "max_j deg(f_j) <= D, machine-checked per instance, ABORT (not warn) on failure. This is the entire licence for the Lemma-2 degree argument: f and f + Pi agree at every support point yet differ (deg(f+Pi) = n), so without deg <= D the agreement-at-n-points reasoning collapses. Verified TRUE on all 13 instances; no instance aborted.",
+  "redundancy_checks": "seeded off-diagonal probes (200/instance) and assembly spot-checks (3 rows/instance)"
+ },
+ "RESULT": {
+  "instances": 13,
+  "delta_exact_all": true,
+  "aborts": 0,
+  "lagrange_unit_check_failures_total": 0,
+  "offdiag_violations_total": 0,
+  "assembly_spotcheck_failures_total": 0,
+  "per_instance": [
+   {
+    "m": 6,
+    "n": 64,
+    "t": 3,
+    "unit_checks": 64,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 0.03
+   },
+   {
+    "m": 6,
+    "n": 64,
+    "t": 4,
+    "unit_checks": 64,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 0.02
+   },
+   {
+    "m": 6,
+    "n": 64,
+    "t": 5,
+    "unit_checks": 64,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 0.02
+   },
+   {
+    "m": 7,
+    "n": 128,
+    "t": 3,
+    "unit_checks": 128,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 0.08
+   },
+   {
+    "m": 7,
+    "n": 128,
+    "t": 6,
+    "unit_checks": 128,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 0.08
+   },
+   {
+    "m": 8,
+    "n": 256,
+    "t": 3,
+    "unit_checks": 256,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 0.53
+   },
+   {
+    "m": 8,
+    "n": 256,
+    "t": 5,
+    "unit_checks": 256,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 0.5
+   },
+   {
+    "m": 9,
+    "n": 512,
+    "t": 12,
+    "unit_checks": 512,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 3.79
+   },
+   {
+    "m": 9,
+    "n": 512,
+    "t": 24,
+    "unit_checks": 512,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 5.17
+   },
+   {
+    "m": 9,
+    "n": 512,
+    "t": 40,
+    "unit_checks": 512,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 13.79
+   },
+   {
+    "m": 10,
+    "n": 1024,
+    "t": 24,
+    "unit_checks": 1024,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 30.11
+   },
+   {
+    "m": 10,
+    "n": 1024,
+    "t": 40,
+    "unit_checks": 1024,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 42.15
+   },
+   {
+    "m": 11,
+    "n": 2048,
+    "t": 48,
+    "unit_checks": 2048,
+    "delta_exact": true,
+    "alpha_measured": true,
+    "s": 285.91
+   }
+  ],
+  "note_m6_m7_m8_reproduced": "the three m=6, two m=7 and two m=8 rows \u2014 which previously used the full k x n grid \u2014 REPRODUCE under the new route. No finding, no escalation needed."
+ },
+ "EVIDENCE_LABELS_by_row": {
+  "delta (lam_i F(a_i) = Y[:,i])": "MACHINE-VERIFIED EXACT on all 13 instances, one code path",
+  "alpha (Pi F' + Pi' F = G^2 F^(2))": "MEASURED per instance on all 13 \u2014 NOT relabelled. This measurement is an INDEPENDENT CHECK ON APON LEMMA 3 ITSELF and is the evidence behind the headline phrase 'confirmed by measurement'. Deriving it from the cited lemma instead would silently turn 'Apon's mechanism confirmed by independent measurement' into 'our data is consistent with Apon's lemma', with no number moving.",
+  "beta (Delta_{p,q} != 0)": "MEASURED per instance with the exhibited pair recorded",
+  "gamma, eps": "MEASURED per instance",
+  "m=12_policy_if_ever_run": "alpha MAY be derived from exact delta + Apon Lemma 3 at m=12 if and only if measurement proves unaffordable there, and that row's alpha would then be labelled CITED-DEPENDENCY \u2014 a different KIND of evidence, not a different confidence level. In one sentence: at m <= 11 the mechanism is MEASURED; at m = 12 it would be INFERRED from a cited lemma given a measured delta. No m=12 row exists at this time."
+ },
+ "headline_unchanged": "13 instances, m contiguous 6..11: N_fam(c) = 2t+3-c exactly, reaching 0 at c = 2t+3; every per-(point,order) family-restricted block of rank exactly 1; zero refutation events. The ladder now rests on ONE delta implementation with alpha measured throughout.",
+ "source_tracking_note": "Vedenev 2026/1747 was found REVISED IN PLACE on 2026-08-30 by content-hash comparison (245,667 B / md5 cd044d4c3b7e560eeea8ed43a6f75a10 -> 264,802 B / md5 f27d10be655ddca288d127c3dacf892e; 1633 -> 1835 text lines). The new Section 9 (extended multiplicity shortening + Frobenius alignment via dim D^{*2}) changes the COST framing of the alignment enumeration \u2014 removing the m^{c-1} factor from Step 3 and leaving q^{m(c-2)} \u2014 and credits Saarinen 2026/1786 (Remark 11) for observing the factor may be removable. Section 8.1 is intact: c* = 2delta+3 still asserted, Apon Theorem 1 still the quoted lower bound, criterion (24) and Conjecture 5 unchanged. The disputed object this census measures is therefore UNCHANGED and none of v3 is folded into the verdict. Superseded v2 copy retained alongside v3, not overwritten.",
+ "files": {
+  "delta_uniform_13instances.json": "per-instance uniform delta records (this run)",
+  "results_m6_m7_m8.json / results_m9.json / results_m10_m11.json": "the census records these guards belong to",
+  "pre_statement_with_addendum2.md": "pre-statement INCLUDING ADDENDUM 2, committed before this run",
+  "eprint_1747_v3_text.txt": "extracted text of the 2026-08-30 revision (evidence for the source-tracking note)",
+  "code/": "src snapshot incl. verify_delta_uniform.py \u2014 the single code path used here"
+ }
+}

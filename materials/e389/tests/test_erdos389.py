@@ -8,6 +8,7 @@ import random
 import tempfile
 import unittest
 from unittest.mock import patch
+from fractions import Fraction
 from pathlib import Path
 
 import compare_atlas_classifications as compare_module
@@ -30,6 +31,36 @@ from compare_atlas_classifications import (
     semantic_sha256,
 )
 from artifact_io import atomic_write_json
+from run_threshold import (
+    deficit_ladder,
+    deterministic_bias,
+    is_good as threshold_is_good,
+    largest_prime_factor,
+    large_m_at_once_certificate,
+    moment_obstruction,
+    parity_requirement,
+    run_density,
+    smoothness_collapse,
+)
+from smooth_pair_transfer import (
+    measure_block as measure_smooth_pair_transfer,
+    double_mask_frequency_classes,
+    analytic_fit_report,
+    parseval_pair_bound,
+    q_adic_lift_report,
+    q_adic_poisson_reindex_report,
+    mixed_dispersion_exponents,
+    square_moduli_large_sieve_ledger,
+    unbalanced_p2_report,
+    drappeau_shparlinski_linear_saving,
+    remaining_tail_report,
+    automatic_compensation_report,
+    k_factor_construction_report,
+    level_interface,
+    half_lift_fourier_l1_bound,
+    rational_power_floor,
+    transfer_parameters,
+)
 from overlap_density_bound import (
     band_integrand,
     finitary_threshold,
@@ -179,6 +210,8 @@ SHIFT_REPAIR_ANALYSIS = DATA.parent / "shift_repair_analysis_m1_50_k50000.json"
 TIER_DENSITY = DATA.parent / "tier_density_m1_30.json"
 FORCING_MASS = DATA.parent / "forcing_mass_bound.json"
 OVERLAP_BOUND = DATA.parent / "overlap_density_bound.json"
+RUN_THRESHOLD = DATA.parent / "run_threshold.json"
+SMOOTH_PAIR_TRANSFER = DATA.parent / "smooth_pair_transfer.json"
 ELEMENTARY_EVICTION = DATA.parent / "elementary_class_eviction.json"
 SURVIVOR_CENSUS = DATA.parent / "survivor_census.json"
 GOOD_DECOMPOSITION = DATA.parent / "good_density_decomposition.json"
@@ -2728,6 +2761,443 @@ class OverlapDensityTests(unittest.TestCase):
         for row in payload["blocks"]:
             self.assertTrue(row["identity_holds"])
             self.assertLessEqual(row["family_density"], row["densities"]["both"])
+
+
+
+
+class RunThresholdTests(unittest.TestCase):
+    def test_collapse_equivalence_is_exhaustive_and_clean(self) -> None:
+        payload = json.loads(RUN_THRESHOLD.read_text(encoding="utf-8"))
+        for row in payload["smoothness_collapse"]:
+            self.assertEqual(row["mismatches"], 0)
+            self.assertEqual(row["checked"], row["span"])
+            self.assertGreaterEqual(row["m"] ** 2, 2 * (row["start"] + row["span"]))
+
+    def test_collapse_hypothesis_is_binding(self) -> None:
+        # Failure regime OUTSIDE the screened rectangle: below sqrt(2w) the
+        # equivalence of Lemma 18.1 must actually break, or the hypothesis
+        # would be decorative.
+        factorizer = SPFFactorizer(200_000)
+        small_m, broken = 30, 0
+        for value in range(100_000, 140_000):
+            factorisation = factorizer.factor(value)
+            smooth = largest_prime_factor(factorisation) <= small_m
+            if smooth != threshold_is_good(value, factorisation, small_m):
+                broken += 1
+        self.assertGreater(broken, 100)
+        with self.assertRaises(ValueError):
+            smoothness_collapse(10**6, 100, 0.4)
+
+    def test_run_bound_is_one_sided_and_threshold_is_sharp(self) -> None:
+        payload = json.loads(RUN_THRESHOLD.read_text(encoding="utf-8"))
+        for row in payload["run_threshold"]:
+            self.assertGreaterEqual(row["measured_run_density"], row["proved_lower_bound"])
+            self.assertEqual(
+                row["bound_is_positive"], row["alpha"] > row["threshold_alpha"]
+            )
+        # the named threshold is exactly where the bound vanishes
+        for length in (1, 2, 3, 7):
+            alpha = math.exp(-1.0 / length)
+            self.assertAlmostEqual(1.0 - length * math.log(1.0 / alpha), 0.0, places=12)
+
+    def test_run_density_producer_refuses_an_unsupported_alpha(self) -> None:
+        with self.assertRaises(ValueError):
+            run_density(10**6, 100, 0.45, 2)
+
+    def test_deficit_jump_is_two_orders_of_magnitude(self) -> None:
+        ladder = deficit_ladder(3)
+        first, second = ladder["rungs"][0], ladder["rungs"][1]
+        self.assertLess(first["deficit"], 0.02)
+        self.assertGreater(second["deficit"], 1.0)
+        self.assertAlmostEqual(ladder["jump_factor_L1_to_L2"], 65.8250, places=3)
+        # Section 17 cleared L=1 with room; the same surplus cannot clear L=2.
+        overlap = json.loads(OVERLAP_BOUND.read_text(encoding="utf-8"))
+        supplied = overlap["certificate"]["overlap_bound"]
+        self.assertGreater(supplied, first["deficit"])
+        self.assertLess(supplied, second["deficit"])
+
+    def test_parity_floor_sits_below_the_independence_value(self) -> None:
+        report = parity_requirement()
+        self.assertAlmostEqual(report["bonferroni_floor"], 2 * math.log(2) - 1, places=12)
+        self.assertGreater(report["required_gap_over_floor"], 0.09)
+        self.assertTrue(report["moduli_exceed_range"])
+
+    def test_lemma_18_5_holds_from_three_and_fails_below_it(self) -> None:
+        factorizer = SPFFactorizer(20_002)
+        for x in range(3, 20_000):
+            value = x * x - 1
+            factorisation = dict(factorizer.factor(x - 1))
+            for prime, exponent in factorizer.factor(x + 1).items():
+                factorisation[prime] = factorisation.get(prime, 0) + exponent
+            self.assertLessEqual(largest_prime_factor(factorisation) ** 2, 2 * value)
+            self.assertLessEqual(largest_prime_factor(factorizer.factor(x)) ** 2, 2 * x * x)
+        # x = 2 is genuinely excluded: w = 3 is prime with 3^2 > 2*3.
+        self.assertGreater(3**2, 2 * 3)
+
+    def test_bias_on_the_thin_family_is_total_not_statistical(self) -> None:
+        payload = json.loads(RUN_THRESHOLD.read_text(encoding="utf-8"))
+        bias = payload["deterministic_bias"]
+        self.assertTrue(bias["deterministic"])
+        self.assertEqual(bias["x_eq_q_plus_1_failures"], bias["primes_tested"])
+        self.assertEqual(bias["x_eq_q_minus_1_failures"], 0)
+        self.assertGreater(bias["primes_tested"], 1000)
+        fresh = deterministic_bias(20_000)
+        self.assertEqual(fresh["x_eq_q_plus_1_failures"], fresh["primes_tested"])
+        self.assertEqual(fresh["x_eq_q_minus_1_failures"], 0)
+
+    def test_thin_family_is_short_cofactor_free_but_over_budget(self) -> None:
+        payload = json.loads(RUN_THRESHOLD.read_text(encoding="utf-8"))
+        family = payload["shifted_square_family"]
+        self.assertTrue(family["short_cofactor_free_both_coordinates"])
+        self.assertGreater(family["density_both_good"], 0.02)
+        self.assertTrue(family["measured_union_exceeds_free_interval_constant"])
+        self.assertGreater(
+            family["union_terms_per_x"],
+            family["free_interval_level_constant_2_lambda_b"],
+        )
+
+    def test_marginal_countermodels_have_no_full_run(self) -> None:
+        report = moment_obstruction(8)
+        self.assertLess(report["proved_density_ceiling"], 0.31)
+        for row in report["rows"]:
+            length = row["length"]
+            marginal = Fraction(row["marginal"])
+            subset_weight = Fraction(row["weight_each_subset_missing_one"])
+            empty_weight = Fraction(row["empty_weight"])
+            self.assertEqual((length - 1) * subset_weight, marginal)
+            self.assertEqual(length * subset_weight + empty_weight, 1)
+            self.assertEqual(row["all_ones_weight"], "0")
+            self.assertGreaterEqual(empty_weight, 0)
+
+    def test_second_moment_identity_is_the_pair_correlation(self) -> None:
+        # Exhaust all four laws on {0,1}^2. This is the exact obstruction to
+        # treating a second-moment argument as independent of R(2).
+        for g0, g1 in ((0, 0), (0, 1), (1, 0), (1, 1)):
+            total = g0 + g1
+            self.assertEqual(total * total, total + 2 * g0 * g1)
+
+    def test_large_m_run_threshold_never_reaches_size_floor(self) -> None:
+        payload = json.loads(RUN_THRESHOLD.read_text(encoding="utf-8"))
+        report = payload["large_m_at_once"]
+        self.assertEqual(report["finite_range"], [3, 2047])
+        self.assertEqual(report["checked_m"], 2045)
+        self.assertGreater(report["minimum_log_margin_decimal"], 0.016)
+        self.assertTrue(report["analytic_base_inequality"])
+        fresh = large_m_at_once_certificate(100)
+        self.assertEqual(fresh["checked_m"], 98)
+        self.assertGreater(fresh["minimum_log_margin_decimal"], 0.0)
+
+    def test_factorisation_predicate_agrees_with_classify_term(self) -> None:
+        # is_good takes a supplied factorisation so it can run on x^2 - 1, which
+        # no sieve reaches; it must still agree with the block classifier where
+        # both are defined.
+        factorizer = SPFFactorizer(200_000)
+        for value in range(100_000, 130_000):
+            short, level = classify_term(value, 1, factorizer)
+            self.assertEqual(
+                threshold_is_good(value, factorizer.factor(value), 1),
+                not short and not level,
+            )
+
+
+    def test_run_threshold_artifact_pins_all_code_inputs(self) -> None:
+        payload = json.loads(RUN_THRESHOLD.read_text(encoding="utf-8"))
+        for name in (
+            "run_threshold.py",
+            "erdos389.py",
+            "good_density_decomposition.py",
+        ):
+            actual = hashlib.sha256((PROJECT / name).read_bytes()).hexdigest()
+            self.assertEqual(payload["implementation_sha256"][name], actual)
+
+
+class SmoothPairTransferTests(unittest.TestCase):
+    def test_transfer_exponents_close_exactly(self) -> None:
+        report = transfer_parameters(Fraction(1, 200))
+        p1_lower, p1_upper = map(Fraction, report["p1_exponents"])
+        p2_lower, p2_upper = map(Fraction, report["p2_exponents"])
+        modulus_lower, modulus_upper = map(Fraction, report["modulus_exponents"])
+        self.assertEqual(p1_upper, p2_lower)
+        self.assertEqual(modulus_lower, p1_lower + p2_lower)
+        self.assertEqual(modulus_upper, p1_upper + p2_upper)
+        self.assertLess(modulus_upper, Fraction(report["pascadi_distribution_limit"]))
+        self.assertLess(
+            Fraction(report["cofactor_upper_exponent"]),
+            Fraction(report["target_smooth_exponent"]),
+        )
+        self.assertTrue(report["improves_yang_exponent_at_this_epsilon"])
+        self.assertTrue(all(report["checks"].values()))
+        self.assertGreater(report["main_coefficient_without_dickman"], 0.0)
+        self.assertEqual(Fraction(report["max_bilinear_lift_exponent"]), Fraction(249, 200))
+        self.assertEqual(Fraction(report["bilinear_lift_excess_over_n_range"]), Fraction(49, 200))
+        self.assertEqual(Fraction(report["max_one_sided_lift_exponent"]), Fraction(1121, 1200))
+        self.assertEqual(Fraction(report["one_sided_individual_sum_saving"]), Fraction(79, 2400))
+        self.assertEqual(Fraction(report["one_sided_naive_sum_excess_over_main"]), Fraction(283, 480))
+
+
+    def test_drappeau_shparlinski_exact_factor_boundaries(self) -> None:
+        self.assertEqual(
+            drappeau_shparlinski_linear_saving(Fraction(15, 16)),
+            Fraction(1, 32),
+        )
+        self.assertEqual(
+            drappeau_shparlinski_linear_saving(Fraction(1, 2)),
+            Fraction(1, 5),
+        )
+        self.assertIsNone(
+            drappeau_shparlinski_linear_saving(Fraction(5, 4))
+        )
+        with self.assertRaises(ValueError):
+            drappeau_shparlinski_linear_saving(Fraction(0))
+
+    def test_rational_power_floor_has_exact_boundary(self) -> None:
+        for value in (1, 2, 10, 10**6, 1_500_001):
+            result = rational_power_floor(value, 3, 8)
+            self.assertLessEqual(result**8, value**3)
+            self.assertGreater((result + 1) ** 8, value**3)
+
+    def test_level_interface_is_the_exact_one_eighth_gap(self) -> None:
+        report = level_interface()
+        self.assertEqual(Fraction(report["modulus_range_reaches_q_squared_through"]), Fraction(5, 16))
+        self.assertEqual(Fraction(report["largest_first_digit_modulus_exponent"]), Fraction(3, 4))
+        self.assertEqual(Fraction(report["distribution_gap_at_top"]), Fraction(1, 8))
+        self.assertEqual(Fraction(report["uncontrolled_strip_width"]), Fraction(1, 16))
+        self.assertEqual(Fraction(report["quotient_over_prime_period_margin"]), Fraction(1, 16))
+        self.assertEqual(Fraction(report["limiting_one_sided_n_lift_modulus"]), Fraction(15, 16))
+        self.assertEqual(Fraction(report["limiting_one_sided_lift_beyond_pascadi"]), Fraction(5, 16))
+        self.assertEqual(Fraction(report["limiting_one_sided_ds_saving"]), Fraction(1, 32))
+        self.assertEqual(Fraction(report["limiting_one_sided_naive_excess"]), Fraction(19, 32))
+        self.assertEqual(Fraction(report["limiting_bilinear_quotient_modulus"]), Fraction(5, 8))
+        self.assertEqual(Fraction(report["limiting_bilinear_n_lift_modulus"]), Fraction(5, 4))
+
+    def test_half_lift_fourier_cost_is_logarithmic(self) -> None:
+        for prime in (3, 5, 11, 101):
+            bound = half_lift_fourier_l1_bound(prime)
+            self.assertLessEqual(float(bound), 1.0 + math.log((prime - 1) / 2))
+        with self.assertRaises(ValueError):
+            half_lift_fourier_l1_bound(4)
+
+
+    def test_double_mask_frequency_partition_is_exact(self) -> None:
+        report = double_mask_frequency_classes(101, 127)
+        self.assertEqual(
+            report["classes"],
+            {
+                "zero": 1,
+                "one_sided_first": 100,
+                "one_sided_second": 126,
+                "genuinely_bilinear": 12_600,
+            },
+        )
+        self.assertEqual(sum(report["classes"].values()), 101 * 127)
+        self.assertTrue(report["bilinear_frequencies_primitive_mod_product"])
+        self.assertEqual(report["bilinear_quotient_period"], 101 * 127)
+        self.assertEqual(report["bilinear_n_lift_modulus"], (101 * 127) ** 2)
+        with self.assertRaises(ValueError):
+            double_mask_frequency_classes(4, 7)
+
+
+    def test_analytic_fit_rejects_coupled_mask_as_black_box_input(self) -> None:
+        report = analytic_fit_report()
+        pascadi = report["pascadi_smooth_proposition"]
+        self.assertTrue(pascadi["zero_frequency"].startswith("APPLIES"))
+        self.assertTrue(pascadi["nonzero_frequency"].startswith("DOES_NOT_APPLY"))
+        self.assertIn("15/16 > 5/8", pascadi["direct_one_sided_lift"])
+        self.assertIn("5/4 > 1", pascadi["direct_bilinear_lift"])
+        self.assertTrue(
+            report["drappeau_shparlinski"]["bilinear"].startswith("DOES NOT MATCH")
+        )
+        completion = report["pascadi_completion"]
+        self.assertEqual(
+            Fraction(completion["native_poisson_length_exponent"]),
+            Fraction(1, 4),
+        )
+        self.assertEqual(
+            Fraction(completion["pre_poisson_frequency_gap"]),
+            Fraction(1, 16),
+        )
+        self.assertEqual(
+            Fraction(completion["post_cauchy_support_inflation"]),
+            Fraction(3, 8),
+        )
+        self.assertEqual(
+            Fraction(completion["support_gap_after_native_additive_benchmark"]),
+            Fraction(1, 8),
+        )
+        self.assertTrue(completion["primary_source_verdict"].startswith("OPEN"))
+
+    def test_selected_prime_repetitions_are_a_strict_tail(self) -> None:
+        report = remaining_tail_report(Fraction(1, 200))
+        self.assertEqual(
+            Fraction(report["selected_prime_repetition_exponent"]),
+            Fraction(69, 100),
+        )
+        self.assertEqual(
+            Fraction(report["large_repeated_factor_floor_error_exponent"]),
+            Fraction(1949, 2400),
+        )
+        self.assertTrue(report["selected_prime_repetition_is_negligible"])
+        self.assertTrue(
+            report["large_repeated_factor_floor_error_is_negligible"]
+        )
+
+
+    def test_automatic_compensation_fallbacks_keep_a_positive_loss(self) -> None:
+        two = k_factor_construction_report(2)
+        three = k_factor_construction_report(3)
+        eight = k_factor_construction_report(8)
+        self.assertEqual(Fraction(two["one_sided_naive_excess"]), Fraction(19, 32))
+        self.assertEqual(Fraction(three["one_sided_naive_excess"]), Fraction(13, 24))
+        self.assertEqual(Fraction(eight["one_sided_naive_excess"]), Fraction(61, 128))
+        self.assertFalse(two["closes"])
+        report = automatic_compensation_report()
+        self.assertEqual(
+            report["minimum_congruence_modulus"]["prime_adic_exponent"], 2
+        )
+        self.assertFalse(report["size_forced"]["positive_density"])
+        self.assertEqual(
+            report["near_diagonal_cut"]["discarded_representation_exponent"],
+            "1+3*delta-kappa",
+        )
+
+    def test_q_adic_lift_identity_has_exact_support(self) -> None:
+        modulus, frequency = 15, 2
+        report = q_adic_lift_report(modulus, frequency)
+        self.assertEqual(report["lift_modulus"], modulus**2)
+        self.assertEqual(report["lift_frequency_count"], modulus)
+        self.assertTrue(report["all_lift_frequencies_primitive"])
+        for value in range(modulus**2):
+            step = modulus * (value + 1)
+            if (value + 1) % modulus == 0:
+                self.assertEqual(step % (modulus**2), 0)
+            else:
+                self.assertNotEqual(step % (modulus**2), 0)
+                self.assertEqual((modulus * step) % (modulus**2), 0)
+        with self.assertRaises(ValueError):
+            q_adic_lift_report(15, 3)
+
+    def test_q_adic_poisson_reindex_and_reciprocity_are_exact(self) -> None:
+        report = q_adic_poisson_reindex_report(15, 2, 60)
+        self.assertEqual(report["lift_modulus"], 225)
+        self.assertEqual(report["dual_count"], 121)
+        self.assertEqual(report["max_repetitions_per_mask_frequency"], 9)
+        self.assertEqual(report["min_repetitions_per_mask_frequency"], 8)
+        self.assertTrue(report["all_dual_frequencies_reindexed"])
+        self.assertTrue(report["additive_reciprocity_verified"])
+        self.assertTrue(report["pair_poisson_phase_verified"])
+        with self.assertRaises(ValueError):
+            q_adic_poisson_reindex_report(15, 3, 60)
+
+    def test_mixed_dispersion_has_post_cauchy_one_eighth_deficit(self) -> None:
+        report = mixed_dispersion_exponents(Fraction(5, 8))
+        expected = {
+            "native_poisson_length_exponent": Fraction(1, 4),
+            "spectral_level_Q_exponent": Fraction(1, 2),
+            "masked_moving_center_support_exponent": Fraction(7, 8),
+            "post_cauchy_support_inflation": Fraction(3, 8),
+            "support_gap_after_native_additive_benchmark": Fraction(1, 8),
+        }
+        for key, value in expected.items():
+            self.assertEqual(Fraction(report[key]), value)
+        self.assertFalse(report["existing_additive_large_sieve_applies"])
+        self.assertFalse(report["existing_watt_large_sieve_applies"])
+        lower = mixed_dispersion_exponents(Fraction(3, 5))
+        self.assertEqual(
+            Fraction(lower["post_cauchy_support_inflation"]),
+            Fraction(2, 5),
+        )
+        self.assertEqual(
+            Fraction(lower["support_gap_after_native_additive_benchmark"]),
+            Fraction(1, 5),
+        )
+        with self.assertRaises(ValueError):
+            mixed_dispersion_exponents(Fraction(1, 2))
+
+    def test_generic_square_moduli_sieves_stop_at_or_above_boundary(self) -> None:
+        report = square_moduli_large_sieve_ledger()
+        self.assertEqual(
+            Fraction(report["one_sided_best_known_delta_exponent"]),
+            Fraction(9, 8),
+        )
+        self.assertEqual(
+            Fraction(report["one_sided_cauchy_error_exponent"]),
+            Fraction(17, 16),
+        )
+        self.assertEqual(
+            Fraction(report["one_sided_zhao_conjectural_error_exponent"]), 1
+        )
+        self.assertEqual(
+            Fraction(report["bilinear_cauchy_error_exponent"]),
+            Fraction(23, 16),
+        )
+        self.assertEqual(Fraction(report["bilinear_excess"]), Fraction(7, 16))
+
+    def test_unbalanced_p2_does_not_reduce_input_vii(self) -> None:
+        report = unbalanced_p2_report()
+        self.assertFalse(report["substitutes_for_input_vii"])
+        self.assertEqual(report["mask_count_change"], "two selected-prime masks become three")
+        self.assertEqual(
+            Fraction(report["fully_nonzero_lift_exponent_after_replacement"]),
+            Fraction(5, 4),
+        )
+
+
+    def test_parseval_reaches_no_power_saving(self) -> None:
+        report = parseval_pair_bound()
+        self.assertEqual(Fraction(report["one_sided_parseval_exponent"]), 1)
+        self.assertEqual(Fraction(report["one_sided_off_diagonal_exponent"]), Fraction(31, 32))
+        self.assertEqual(Fraction(report["bilinear_per_pair_exponent"]), Fraction(1, 2))
+        self.assertEqual(Fraction(report["bilinear_parseval_exponent"]), Fraction(9, 8))
+        self.assertEqual(Fraction(report["bilinear_parseval_excess"]), Fraction(1, 8))
+        self.assertEqual(Fraction(report["effective_bilinear_exponent"]), 1)
+        self.assertEqual(Fraction(report["effective_bilinear_excess"]), 0)
+        self.assertFalse(report["parseval_beats_trivial"])
+
+    def test_finite_smooth_pairs_retain_level_survival(self) -> None:
+        payload = json.loads(SMOOTH_PAIR_TRANSFER.read_text(encoding="utf-8"))
+        finite = payload["finite_evidence"]
+        self.assertEqual(finite["theta"], "3/8")
+        self.assertGreater(finite["smooth_pairs"], 2_000)
+        self.assertGreater(finite["smooth_good_pairs"], 300)
+        self.assertGreater(finite["conditional_good_given_smooth_pair"], 0.14)
+        self.assertEqual(finite["failure_patterns"][0]["pattern"], "good/good")
+
+    def test_constructed_probe_separates_mask_from_tail(self) -> None:
+        payload = json.loads(SMOOTH_PAIR_TRANSFER.read_text(encoding="utf-8"))
+        probe = payload["constructed_probe"]
+        self.assertEqual(probe["status"], "FINITE_EXPERIMENT_NOT_THEOREM_PARAMETERS")
+        self.assertGreater(probe["representations"], 100)
+        self.assertAlmostEqual(probe["selected_prime_pass_rate"], 0.25, delta=0.02)
+        self.assertGreater(probe["selected_and_fully_good"], 0)
+
+        self.assertLessEqual(
+            probe["selected_and_fully_good"], probe["selected_and_left_good"]
+        )
+        self.assertLessEqual(
+            probe["selected_and_fully_good"], probe["selected_and_right_good"]
+        )
+        self.assertLessEqual(
+            probe["selected_and_right_good"], probe["selected_prime_passes"]
+        )
+
+    def test_transfer_artifact_pins_all_code_inputs(self) -> None:
+        payload = json.loads(SMOOTH_PAIR_TRANSFER.read_text(encoding="utf-8"))
+        for name in (
+            "smooth_pair_transfer.py",
+            "erdos389.py",
+            "good_density_decomposition.py",
+        ):
+            actual = hashlib.sha256((PROJECT / name).read_bytes()).hexdigest()
+            self.assertEqual(payload["implementation_sha256"][name], actual)
+        self.assertEqual(
+            payload["theorem"]["status"],
+            "PROVED_FROM_CITED_PASCADI_THEOREM_1_5",
+        )
+
+    def test_small_fresh_census_is_nonempty(self) -> None:
+        report = measure_smooth_pair_transfer(start=100_000, count=20_000)
+        self.assertGreater(report["smooth_pairs"], 20)
+        self.assertGreater(report["smooth_good_pairs"], 0)
 
 
 if __name__ == "__main__":

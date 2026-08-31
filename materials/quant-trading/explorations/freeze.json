@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-2026-08-29",
+  "frozen_at": "2026-08-30T00:41:52+00:00",
+  "protocol_amendment_sha256": "42c3306d1b5d614bf5561c3e89e0182026a6e8001c41c1c130b5b989a5662567",
+  "historical_confirmation_window": [
+    "2025-01-01",
+    "2026-07-31"
+  ],
+  "interpretation": "Parameter-embargoed historical confirmation, not an epistemically blind holdout. It may falsify but cannot establish prospective durable alpha.",
+  "mechanical_selection": {
+    "candidate_count": 2,
+    "carry_complex": "crypto-carry-decay was the only validation-pass member; crypto-basis-convergence and funding-crowding were falsified.",
+    "crypto_price": "No candidate: crypto-trend-vol and btc-eth-relative-value were falsified.",
+    "macro_crypto": "No candidate: macro-crypto-regime was falsified.",
+    "factor_timing": "factor-momentum-timing passed validation and 2x-cost criteria.",
+    "cftc_positioning": "No candidate: cftc-positioning was falsified.",
+    "volatility_premium": "No candidate: volatility-risk-premium was falsified against the named market benchmark.",
+    "excluded_feasibility_or_audit": [
+      "frozen-cross-asset-trend-audit",
+      "crypto-microstructure-execution",
+      "event-semantics"
+    ]
+  },
+  "candidates": [
+    {
+      "group": "carry_complex",
+      "id": "crypto-carry-decay",
+      "directory": "quant-trading/explorations/crypto-carry-decay",
+      "files": {
+        "strategy.json": "fb1c9f941f8affbdc9f2d7e69d54e52a1706e6bd07e6d076db932681ca128cd0",
+        "trials.json": "bc131e5e769be7fe50f59b10c93ceef2acddbbf841834002ada6183c075ca27e",
+        "run.py": "dc596e477faba10ee5b758f1a4ee183780007789c72195562c64e93a63e943d2",
+        "returns.csv": "3935135bab3d1292f6347fea51cb1f94952711f41aa9e7f1b6080778797f4f70"
+      },
+      "validation_evidence": {
+        "net_annual_return": 0.2363,
+        "net_sharpe": 10.47,
+        "cumulative_excess_vs_sofr": 0.2309,
+        "cumulative_excess_2x_cost": 0.2262,
+        "trials": 4
+      },
+      "mandatory_review_before_interpretation": [
+        "gross-exposure and collateral accounting",
+        "funding-rate units/sign/timestamp",
+        "spot-perp basis identity",
+        "negative-cash financing and collateral haircuts",
+        "exchange default/depeg/liquidation stress"
+      ],
+      "evaluation_command": "QUANT_HOLDOUT_UNLOCK=1 python run.py --start 2025-01-01 --end 2026-07-31 --output-dir ../historical-confirmation/crypto-carry-decay"
+    },
+    {
+      "group": "factor_timing",
+      "id": "factor-momentum-timing",
+      "directory": "quant-trading/explorations/factor-momentum-timing",
+      "files": {
+        "strategy.json": "c7f9997479871e68831979bc00acad0557b3e4e2734f45bde9ae30912df16a45",
+        "trials.json": "9caabf5abd8449cf8a1bb43dc05f35fee8a673c349543d9a0f35e9557380251e",
+        "run.py": "9313a81d264968417b357f0c290426cb73b13c7ba7d5230f51097f91adce5f4f",
+        "returns.csv": "4dfe6055c94c1ab348785aab856681acb93dcd49a645209011263a521e216b73"
+      },
+      "validation_evidence": {
+        "net_annual_return": 0.044512,
+        "net_sharpe": 0.9927,
+        "benchmark_sharpe": 0.3016,
+        "cumulative_excess_2x_cost": 0.221092,
+        "trials": 8
+      },
+      "mandatory_review_before_interpretation": [
+        "factor return is not directly investable",
+        "underlying long-short portfolio turnover and borrow omitted",
+        "2026 source vintage/revision effects",
+        "volatility/state signal timing"
+      ],
+      "evaluation_command": "QUANT_HOLDOUT_UNLOCK=1 python run.py --start 2025-01-01 --end 2026-07-31 --output-dir ../historical-confirmation/factor-momentum-timing"
+    }
+  ],
+  "statistics": {
+    "candidate_tests": 2,
+    "test_statistic": "HAC annualized mean benchmark-excess return, with stationary/moving-block bootstrap sensitivity",
+    "block_sizes": {
+      "crypto_hourly_hours": 168,
+      "daily_observations": 20
+    },
+    "bootstrap_replicates": 10000,
+    "seed": 20260829,
+    "corrections": {
+      "exploratory": "Benjamini-Hochberg q=0.10 over both candidates",
+      "strong": "Holm-Bonferroni alpha=0.05 over both candidates"
+    },
+    "rule": "Report raw and corrected p-values, block-bootstrap intervals, DSR trial counts, PBO where a return matrix exists, 1x/2x costs, benchmark excess, gross/net exposure, drawdown, and regime attribution."
+  },
+  "immutability": "Evaluator must verify every listed SHA-256 before setting QUANT_HOLDOUT_UNLOCK. Any mismatch invalidates the run until explicitly re-frozen.",
+  "prospective_requirement": "Neither candidate is deployment evidence without the append-only forward shadow beginning 2026-08-29."
+}

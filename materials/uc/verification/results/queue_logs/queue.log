@@ -1,0 +1,17 @@
+error: command not found: setsid
+2026-08-29T14:56:43-0700 queue start: slices 2..16, 5 workers, budget 5000001
+2026-08-29T14:56:43-0700 pending after resume scan: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+2026-08-29T14:56:43-0700 slice 02: worker pid 85306 launched
+2026-08-29T14:56:43-0700 slice 03: worker pid 85307 launched
+2026-08-29T14:56:43-0700 slice 04: worker pid 85308 launched
+2026-08-29T14:56:43-0700 slice 05: worker pid 85309 launched
+2026-08-29T14:56:43-0700 slice 06: worker pid 85310 launched
+2026-08-30T03:05:06-0700 slice 07: worker pid 7917 launched
+2026-08-30T04:44:39-0700 slice 08: worker pid 10653 launched
+2026-08-30T05:10:10-0700 slice 09: worker pid 12028 launched
+2026-08-30T05:13:55-0700 slice 10: worker pid 12197 launched
+2026-08-30T07:15:44-0700 slice 11: worker pid 17093 launched
+2026-08-30T13:04:26-0700 slice 12: worker pid 24450 launched
+2026-08-30T15:12:15-0700 slice 13: worker pid 25918 launched
+2026-08-30T16:24:02-0700 slice 14: worker pid 26650 launched
+2026-08-30T20:00:40-0700 slice 15: worker pid 29751 launched

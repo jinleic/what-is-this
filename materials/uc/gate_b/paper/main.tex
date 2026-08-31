@@ -23,7 +23,7 @@
 \title{A Tensorization Obstruction to a Scalar\\
 Closure-Defect Repair for a Union-Closed Entropy Functional}
 \author{Research draft}
-\date{26 August 2026}
+\date{28 August 2026}
 
 \begin{document}
 \maketitle
@@ -69,13 +69,22 @@ products, no Cartesian power reaches small defect, so the small-defect regime
 needs separate evidence.  We prove two defect floors --- one from the cap,
 one from downset counting, the second attained --- which together show the
 repair ratio is $O(n)$ on every family without a set of size at least
-$\tfrac85\bar s\ge\tfrac45\log_2m$.  Certified witnesses at eight coordinates
-push the least defect with $A_+<0$ down to $1144/1875=0.6101\ldots$ among
-separating families and $139/245=0.5673\ldots$ in general, and raise the repair
-ratio to $2432/58575=0.0415\ldots$ and $147/2536=0.0580\ldots$ respectively,
-above the base ratio $0.0363\ldots$.
-They neither produce a union-closed counterexample nor settle a separate
-small-defect stability question.
+$\tfrac85\bar s\ge\tfrac45\log_2m$.  Exact direct witnesses push the least
+certified negative defect to $1144/1875$ among separating families and $4/9$
+without separation, with best ratios $531/11360$ and $147/2536$ respectively.
+We then prove a sharp clone-order theorem: clone multiplicities induce the exact
+Plackett--Luce law on original fixed orders, and their infimum is the minimum
+fixed-order objective.  A row-changing search finds a normalized
+eight-coordinate core at defect $14/45$ with a negative fixed order; exact
+reweighting yields a finite non-separating negative witness at the same defect,
+crossing $2/5$.  A different $14/45$ core and all its defect-free extensions
+remain certified positive, illustrating why the fixed-order criterion is
+necessary.
+Finally, the Chase--Lovett approximate-union-closed construction rules out any defect floor
+from frequency cap and a dominant set alone, but violates Reimer by
+$(h(\psi)/2-\psi)n>0.0977n$.  Thus a Gate B local floor, if true, must use
+Reimer essentially.  None of these statements produces a union-closed
+counterexample or settles the remaining Reimer-admissible local question.
 \end{abstract}
 
 \section{Problem and definitions}
@@ -224,8 +233,10 @@ the predecessor-subset Shapley formula, and exactly partitions all 5,040
 orders into the 21 equal orbits of the verified 240-element automorphism
 group.  It obtains the outward upper endpoints
 \[
- Q(\B)<5.447354977380321988160699884419,\qquad
- \E_\pi W_\pi<5.933885055704082998831935023544,
+\begin{aligned}
+ Q(\B)&<5.447354977380321988160699884419,\\
+ \E_\pi W_\pi&<5.933885055704082998831935023544,
+\end{aligned}
 \]
 which imply \eqref{eq:independent-base}.  Natural logarithms use a rational
 atanh series with an exact tail bound; exponentials use range reduction, a
@@ -590,6 +601,20 @@ $X,Y\subseteq A$ with $X,Y\in\F$, so at most $N(A)^2$ ordered pairs have union
 $A$; summing over $A\in\F$ bounds $(1-\eps_\vee)m^2$.
 \end{proof}
 
+\paragraph{A third base.}
+A defect-minimizing search at $n=7,m=45$ produced a normalized family
+$\mathcal L$ (machine-readable rows in
+\path{certificates/gate_b_lowdefect_rational_v1.json}) with every degree at the
+cap $18$, incidence $126\ge R_{45}=124$, and defect $1336/2025$.  Its
+automorphism group is trivial, so no quotient is available and all $5040$
+fixed-order enclosures are distinct; the exact rational certificate proves
+$A_+(\mathcal L)<-1/1200$, hence base ratio
+$-A_+/\eps_\vee>27/21376$.  Its powers satisfy
+$\eps_\vee(\mathcal L^{\boxprod k})=1-(689/2025)^k$ and
+$A_+(\mathcal L^{\boxprod k})=kA_+(\mathcal L)$, giving the third explicit
+diverging sequence.  It is not needed for the main theorem, but makes the
+local-frontier and ``all three bases'' statements below self-contained.
+
 The second bound is attained: over all $366$ admissible families with $n\le4$
 its tightest slack is exactly $0$.  Combining the first with
 Lemma~\ref{lem:ceiling}, if $M\le\theta\cdot\tfrac85\bar s$ with $\theta<1$ then
@@ -676,13 +701,15 @@ $\tfrac3{640}n-\tfrac3{80}$ and $\tfrac45n$.  The powers are audited by direct
 instantiation; at $k=2$ the $4{,}900$-row product rebuilt from its rows has
 defect $210171/240100=1-(173/490)^2$ exactly.
 
-The mechanism is worth isolating, because it is not structural.  Cloning a
-coordinate changes neither the size, the closure defect, nor the join structure;
-it only adds incidence.  What it buys is feasibility: size $70$ is impossible at
-seven coordinates, where $7\lfloor2\cdot70/5\rfloor=196$ falls short of
-$R_{70}=215$.  The eighth coordinate is spent entirely on clearing Reimer, and
-the reward is a base whose $-A_+$ per coordinate exceeds anything available at
-seven.  The cost is separation, for which the definitions do not charge.
+The mechanism is worth isolating.  Cloning a coordinate changes neither size,
+defect, nor join structure, and it raises incidence.  For the 70-row bases it
+buys feasibility: size 70 is impossible at seven coordinates, where
+$7\lfloor2\cdot70/5\rfloor=196<R_{70}=215$.  For the fifteen-row base it buys
+negativity instead: the collapsed five-coordinate core is already admissible
+but has positive objective, and three copies of one distinguished coordinate
+make it negative.  The objective direction is not universal --- cloning any of
+the other four core coordinates raises $A_+$ --- and the exact order-reweighting
+law below replaces the earlier false monotonicity claim.
 
 A further complete class, $S_3\times S_5$, adds $13{,}470$ canonical families of
 which $54$ are float-negative and $52$ are certified negative.  Its best sits at
@@ -708,7 +735,8 @@ $48\ge R_{15}=30$ has
   \eps_\vee(\mathcal T)=\tfrac49=0.4444\ldots,\qquad
   A_+(\mathcal T)\le-\tfrac1{2100},
 \]
-the lowest certified defect with $A_+<0$ anywhere, improving $139/245$.  It is
+the lowest certified defect produced directly on eight coordinates, improving
+\(139/245\).  It is
 worth noting what this does \emph{not} require: low defect needed no large
 family, since Lemma~\ref{lem:floors}'s pair bound only forces $m\ge2.12$ at this
 defect.  What it did require is the dominant set of Corollary~\ref{lem:floors}'s
@@ -730,63 +758,237 @@ negatives and one missed witness between them.  Block-pattern orders represent
 the objective exactly when the family's automorphism group is the block group,
 and not otherwise.
 
+\subsection{All defect-free extensions and the local hard blocker}
+
+There is a complete replacement for the earlier informal cloning heuristic.
+Given $\mathcal U\subseteq\F$, append a coordinate whose one-rows are exactly
+$\mathcal U$.  Projection onto the old coordinates shows that no failed union
+can be repaired.  If $Z=A\cup B\in\F$, the old success remains a success exactly
+when
+\[
+ {\bf1}_{\mathcal U}(Z)
+ ={\bf1}_{\mathcal U}(A)\vee{\bf1}_{\mathcal U}(B).
+ \tag{22}\label{eq:join-consistent}
+\]
+Thus the defect is preserved precisely for the \emph{join-consistent} row
+subsets satisfying \eqref{eq:join-consistent}.  Equivalently, $\mathcal U$ is an up-set inside
+$(\F,\subseteq)$ and every successful join landing in $\mathcal U$ has a part
+in $\mathcal U$.  If $|\mathcal U|\le\lfloor2m/5\rfloor$, admissibility is
+automatic: old degrees are fixed, the new degree is $|\mathcal U|$, and
+incidence increases against a fixed $R_m$.
+
+Global Boolean join-homomorphisms are only constants and ORs of coordinates,
+but \eqref{eq:join-consistent} sees only successful joins of this particular family, so its
+class can be larger.  Exhausting all $2^{15}$ row subsets of the five-coordinate
+`n8tiny` core finds $57$ join-consistent subsets and six usable under the cap:
+the five old columns and one genuinely new column.  Exact evaluation shows that
+only cloning coordinate 2 improves $A_+$; cloning any of the other four raises
+it, and the new column raises it to $+0.114769081463$.  Three concentrated
+copies of coordinate 2 make the objective negative, whereas spreading the same
+three copies over distinct coordinates leaves it $+0.006494611034$.
+
+The general cloning law is sharper.  In an order of a family with arbitrary
+clone multiplicities, keep the first copy in each class and delete the rest.
+Later copies are deterministic, contribute zero entropy, and leave every row
+fiber unchanged.  If coordinate \(i\) has multiplicity \(r_i\), the collapsed
+original order has the exact exponential-race (Plackett--Luce) law
+\[
+ \Pr_{\mathbf r}(\pi)
+ =\prod_{k=1}^n\frac{r_{\pi_k}}{\sum_{j=k}^n r_{\pi_j}},
+ \qquad
+ A_+(\widetilde\F_{\mathbf r})
+ =\sum_{\pi\in S_n}\Pr_{\mathbf r}(\pi)A_{+,\pi}(\F).
+ \tag{23}
+\]
+For any target order, choosing \(r_{\pi_k}=R^{n-k}\) gives it probability at
+least \((1-1/R)^{n-1}\ge1-(n-1)/R\).  Hence
+\[
+ \inf_{\mathbf r}A_+(\widetilde\F_{\mathbf r})=\min_\pi A_{+,\pi}(\F),
+ \qquad
+ \sup_{\mathbf r}A_+(\widetilde\F_{\mathbf r})=\max_\pi A_{+,\pi}(\F).
+ \tag{24}
+\]
+The extrema need not be attained at finite multiplicity, but sign reachability
+is finite: some clone multiset is negative if and only if some original fixed
+order is negative.  For one cloned coordinate, the earlier rank law is
+\[
+ \Pr_r[j]=
+ \frac{\binom{n+r-j-2}{r-1}}{\binom{n+r-1}{r}},
+\]
+whose mass outside rank zero is \((n-1)/(n+r-1)\).  Thus convergence is
+\(O(1/r)\), not geometric; for the record core, the coordinate-2 limit is
+\(-0.002338401508\ldots\).
+
+The $n=9,10$ local search covered 13 and 15 selected sizes respectively,
+including the admissible maxima $145$ and $255$; every added size at least 100
+had defect above $0.59$.  It found a normalized core
+\[
+ \mathcal R=(0,2,4,6,8,9,16,22,31,32,96,105,112,125,127)
+ \subseteq2^{[7]}
+\]
+with degrees $(5,5,6,6,6,6,5)$, incidence $39\ge R_{15}=30$, the full set,
+and defect $14/45<2/5$.  It is not negative:
+\[
+ A_+(\mathcal R)\in[0.305904110097,0.305904110098],
+ \qquad \min_\pi A_{+,\pi}(\mathcal R)\ge0.145914214376 .
+\]
+Its join-consistent class has seven old columns and exactly one new usable
+column.  Adding that column leaves every one of the resulting $40320$ fixed
+orders positive, with minimum at least $0.122963869853$.  Since the successful
+join relation is invariant under a defect-free extension, these two convex-hull
+certificates cover every finite extension sequence: the sub-$2/5$ family cannot
+be rescued by any defect-free coordinate mechanism.
+
+A separate $Q$-minimizing walk found one $n=9,m=20$ family at defect $19/50$
+passing the necessary condition $(1-\alpha)Q-\log_2m\le0$. Its Q-only room was
+$-0.003072867378$, but sampled $C_+\approx4.82$ contributed
+$+0.171684\ldots$, moving sampled $A_+$ to $+0.168611231079$.
+Thus $C_+$, not $Q$, is binding on this survivor. Removing its one duplicate
+column gives a normalized eight-coordinate core with
+\[
+ A_+\in[0.172732849547,0.172732849548],\qquad
+ \min_\pi A_{+,\pi}\ge0.042394032883,
+\]
+so every clone configuration is again excluded. A sampled-order full-average
+walk remained at $A_+\ge0.128833928728$ on its reported frontier; this is
+discovery evidence only.  It nevertheless identified the scoring error:
+full-order $Q$ is only a rejection gate, and a full average hides the negative
+fixed orders that Proposition~25 can amplify.
+
+A subsequent minimum-fixed-order walk succeeded.  After removing its one
+duplicate column, its normalized core is
+\[
+ \mathcal V=(0,1,2,4,5,8,10,43,64,190,192,193,245,254,255)
+ \subseteq2^{[8]}.
+\]
+It has degrees $(6,6,6,6,4,5,6,6)$, incidence $45\ge R_{15}=30$, contains
+$[8]$, and has defect $14/45$.  Its uniform order average is positive,
+$A_+(\mathcal V)\in[0.230029313333,0.230029313334]$, but the exact rational
+enclosure at order $(6,1,2,0,3,4,5,7)$ lies in
+\[
+ [-0.003540262562,-0.003540262561].
+\]
+Using the geometric clone ratio $R=41$, equivalently multiplicities
+\[
+ (2825761,4750104241,115856201,68921,1681,41,194754273881,1),
+\]
+and reweighting all $40320$ exact fixed-order enclosures gives a
+$199623130728$-coordinate family with the same $15$ rows and defect, incidence
+$1197738780965$, and
+\[
+ A_+\in[-0.000084288238,-0.000084288237]<0.
+\]
+Thus the certified negative defect in the displayed cap/Reimer class is now
+\[
+ \boxed{14/45=0.3111\ldots<2/5},
+\]
+not $4/9$.  The core is normalized, but the cloned witness has repeated
+columns; the separating negative frontier remains $1144/1875$.  The exact
+two-sided certificate is
+\path{certificates/gate_b_subtwofifths_clone_rational_v1.json}.
+
+Finally, the natural cap-only floor is false.  Chase--Lovett
+\cite{ChaseLovett} construct
+\[
+ \F_n=\{A:|A|=\psi n+n^{2/3}\}
+ \cup\{A:|A|\ge(1-\psi)n\},\qquad
+ \psi=\frac{3-\sqrt5}{2},
+\]
+which has $\eps_\vee=o(1)$ and every frequency at most $\psi+o(1)<2/5$.
+For large $n$ it is active and separating and contains $[n]$, so neither
+normalization nor a dominant set yields a positive floor.  It is excluded here
+only by Reimer:
+\[
+ \frac{\bar s}{n}\to\psi,\qquad
+ \frac{\log_2|\F_n|}{2n}\to\frac{h(\psi)}2,\qquad
+ \frac{h(\psi)}2-\psi>0.0977433528 .
+\]
+Thus any floor for the actual Gate B class must use Reimer essentially.
+
+The role of Reimer has two exact limits.  First, at zero defect it is automatic:
+Reimer's average-set-size theorem \cite{Reimer} applies to every union-closed
+family.  Such a family contains \(T=\bigcup_{A\in\F}A\); on its active support,
+the cap gives \(\bar s\le2|T|/5\), so \(T\) is automatically stronger than the
+dominant set required above.  Deleting zero and duplicate columns preserves
+row identities, union closure, and the cap, so normalization adds no escape.
+A positive floor reaching zero would therefore prove the \(2/5\) frequency
+theorem under either convention.
+
+Second, Reimer cannot be recovered continuously from pair defect.  With
+\(\Delta_R=\frac12\log_2|\F|-\bar s\), the same Chase--Lovett sequence has
+\[
+ \frac{\Delta_R(\F_n)}n\longrightarrow\frac{h(\psi)}2-\psi>0.0977433528
+ \quad\text{while}\quad\eps_\vee(\F_n)\longrightarrow0.
+\]
+Thus no inequality
+\(\Delta_R\le n\,g(\eps_\vee)\) with \(g(t)\to0\) follows even after imposing
+the cap, normalization, and a full set.  Any successful positive-defect
+argument must use Reimer as a hard hypothesis or add structure beyond the
+ordered-pair defect.
+Cambie's two-strategy ceiling $c^\star\approx0.3823455333667027$
+\cite{Cambie} is a closely related obstruction, but its matching lower
+verification is numerical/graphical in the cited source; the exact two-atom
+upper obstruction is all that is used here.
+
 \section{Scope and limitations}
 
-All three sequences satisfy \(\eps_\vee\to1\).  This is no limitation for the
-unrestricted supremum \eqref{eq:cstar}, but it means the argument does not
-settle a different local-stability problem restricted to
-$\eps_\vee\to0$.  Approximate-union-closure results such as
-Chase--Lovett~\cite{ChaseLovett} concern that small-defect regime and frequency
-bounds, not the present Bellman functional.
+Every Cartesian-power sequence used for the unrestricted theorem satisfies
+\(\eps_\vee\to1\).  This is no limitation for the supremum
+\eqref{eq:cstar}, but it is why that theorem does not settle the distinct local
+question \(\eps_\vee\to0\).  The restriction is structural: closure success
+multiplies, so
+\[
+ \eps_\vee(\F\boxtimes\G)
+ \ge\max\{\eps_\vee(\F),\eps_\vee(\G)\},
+\]
+and no power can dilute the defect.  Failures also occur in off-diagonal pairs,
+so \(\eps_\vee\ge2/m^2\) for a non-union-closed family and
+\(-A_+/\eps_\vee\le m^2\log_2(m)/2\).
 
-The restriction is structural, not incidental.  Since a join fails in a product
-exactly when it fails in one block, closure success multiplies, so
-$\eps_\vee(\F\boxtimes\G)\ge\max\{\eps_\vee(\F),\eps_\vee(\G)\}$ and every
-Cartesian power has defect at least that of its base.  The mechanism of
-Theorem~\ref{thm:main} therefore cannot exhibit a single family with small
-defect.  Two elementary bounds delimit what such a family would look like:
-because $X\cup X=X$, failures occur in pairs, so a non-union-closed family has
-$\eps_\vee\ge2/m^2$, and with $-A_+\le\log_2m$ this gives
-$-A_+/\eps_\vee\le m^2\log_2(m)/2$; reaching defect $\eps$ forces
-$m\ge\sqrt{2/\eps}$.  At the other end, a family with $\eps_\vee=0$ is
-union-closed with every degree below $m/2$, i.e. a counterexample to Frankl's
-conjecture, so a universal positive defect floor at cap $2/5$ would improve the
-published frequency frontier $\psi=(3-\sqrt5)/2$ by about $0.018$.
+The exact local conclusions have deliberately different scopes.  The least
+certified negative defects are \(14/45\) in the displayed cap/Reimer class and
+\(1144/1875\) when active separation is also required.  The first normalized
+\(14/45\) core \(\mathcal R\) and every defect-free extension of it are
+certified positive; the row-changing search found a different normalized core
+\(\mathcal V\) with a negative fixed order, and the exact clone law turns that
+order into the certified non-separating witness above.  Sampling selected the
+core and order but proves nothing: the final fixed-order and cloned averages are
+two-sided rational enclosures.  The defect remains the fixed value \(14/45\),
+so this still does not determine the limit \(c_{\rm loc}\) as
+\(\eps_\vee\to0\).
 
-What can be certified is the upper end of the negativity region.  A third base,
-a $45$-row family on seven coordinates found by a defect-minimizing search with
-all degrees at the cap and \emph{trivial} automorphism group, has exact defect
-$1336/2025=0.6597\ldots$ and certified enclosure
-$A_+\in[-0.00085518533372314171100789579,-0.00085518533372314171100789029]$,
-hence $A_+<-1/1200$; all $5040$ orders carry distinct enclosures.  Its powers
-give a third infinite construction with $\eps_\vee=1-(689/2025)^k$.  So
-negativity survives down to defect $0.6598$, against $64/81$ and $444/625$ for
-the two block-cell bases, while the repair ratio falls from $0.03626$ to
-$27/21376$: the objective approaches zero faster than the defect does.
+Proposition 22 also explains why a theorem from cap and dominant-set data alone
+cannot close the local problem: the Chase--Lovett construction refutes exactly
+that statement under both normalization conventions.  Reimer excludes the
+construction, leaving a sharply stated open problem rather than a plausible
+but false floor.  At the endpoint, a zero-defect admissible family would be
+union-closed with every frequency at most \(2/5\), so a universal positive
+Gate B floor would prove a \(2/5\) frequency theorem.  This paper does not claim
+that result.
 
-All three bases are deliberately non-union-closed.  The theorem neither refutes
-the union-closed sets conjecture nor supplies the UC-specific structural charge
-needed by the larger entropy programme.  Its conclusion is narrower and
-complete: no fixed scalar multiple of the ordered-pair closure defect can
-repair $A_+$ over all cap/Reimer families.
-
-There are now seven verified finite-base certificates covering three different
-families, and the tensorization lemmas remain human-audited mathematics
-supported by the falsification searches above.  The two block-cell families are
-each checked by three arithmetically disjoint routes: a 256-bit Arb computation
-with clamp classification, a standard-library dyadic computation that avoids
-clamp decisions entirely, and an exact rational computation that additionally
-avoids every relaxation and every interval library and returns a two-sided
-enclosure.  The third family is certified by the exact rational route alone.
-For all three the exact rational route evaluates every coordinate order without
-symmetry reduction.  None of the certificates is a proof-assistant artifact,
-and formalization remains open.
+The finite negative bases are independently checked by 256-bit Arb,
+standard-library dyadic intervals, and exact rational arithmetic where those
+routes apply.  The exact rational route uses the true action interval and no
+interval library; all \(n\le7\) orders are evaluated directly, while the
+eight-coordinate certificates use exact automorphism orbits whose equal-size
+property and group action are tested.  The tensorization lemmas and the
+extension/convex-hull arguments remain human mathematics with exhaustive
+finite falsification controls.  None of the certificates is a proof-assistant
+artifact, and formalization remains open.
 
 \begin{thebibliography}{9}
+\bibitem{Reimer}
+D.~Reimer,
+\emph{An average set size theorem},
+Combinatorics, Probability and Computing 12(1) (2003), 89--93.
 \bibitem{ChaseLovett}
 Z.~Chase and S.~Lovett,
 \emph{Approximate union closed conjecture},
 arXiv:2211.11689 (2022).
+\bibitem{Cambie}
+S.~Cambie,
+\emph{Better bounds for the union-closed sets conjecture using the entropy approach},
+arXiv:2212.12500v2 (2025).
 \end{thebibliography}
 
 \end{document}

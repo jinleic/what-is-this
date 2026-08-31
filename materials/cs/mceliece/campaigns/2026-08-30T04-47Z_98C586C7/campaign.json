@@ -1,0 +1,110 @@
+{
+ "campaign_id": "2026-08-30T04-47Z_98C586C7",
+ "date_utc": "2026-08-30T04:47Z",
+ "agent": "Mceliece",
+ "gate": "A addendum: ladder rows (m in {10, 11}) + frozen small-t record reference",
+ "type": "CENSUS \u2014 family-restricted waterfall measurement, EXACT arithmetic",
+ "scope_statement": "FINITE THEOREM: adds ladder rows (m=10, t in {24,40}), (m=11, t=48) \u2014 full-field supports, same engine/seeds/rules as the small-t artifact. Together with the small-t artifact the census now covers N = 10 instances over m in {6,7,8,10,11}. The two m=12 rows (3488, t in {48,64,96}) are compute-bound at ~1h/row in the current engine and CONTINUE in the next artifact; infeasibility so far is a performance budget issue, not an algebraic one. c_need > 2t+3 at mceliece8192128 scale remains NOT established.",
+ "convention": "Apon 2026/1810 Step-3 system with perfect oracle (his \u00a72 protocol): Sol(S) per eqs. (6)/(8) with TRUE support, TRUE derivative flags V_a^[j] = span_E{F(a),...,(\u2202[j]F)(a)}, TRUE Frobenius alignment. Family-restricted rows built EXPLICITLY from Apon's Def-4 map T(A) = Q_A + rho_A Z F eqs. (17)-(20) \u2014 Lemma 7's claim (flag conditions on the family reduce to A(a) = 0) is DERVED-BY-MEASUREMENT here, not assumed.",
+ "arithmetic": {
+  "representation": "F_{2^m} elements as uint16 bitmasks; multiplication table MUL[q,q] + inverse table; exact by construction",
+  "cross_validation_vs_python_flint": "scalar mult 500/500, poly mult 100/100, irreducibility 8/8 agreement on F64 and F4096 degree-8 cases (fq_default FQ_ZECH)",
+  "rabin_test": "fixed to Z^{q^d} Frobenius (q = 2^m), NOT Z^{2^d}; the F2-variant silently passed split polynomials over extension fields (PROBE_RESULTS.md Finding 1)",
+  "no_ball_arithmetic": true,
+  "flint_version": "0.9.0",
+  "numpy_version": "2.5.2",
+  "python": "3.14.3"
+ },
+ "quantities_measured": {
+  "N_fam(c)": "(2t+3) - rank of ALL explicitly-built family-restricted flag rows for first c held points (columns = (2t+3) family coordinates A = Z^m, m = 0..2t+2; rows = (a, j, b) with b over complement-basis rows of V_a^[j])",
+  "N_eval(c)": "(2t+3) - rank of the c x (2t+3) evaluation/Vandermonde matrix on the family \u2014 the Lemma-7 prediction 2t+3-c",
+  "rank_point_order": "rank of each (a,j) family flag-block alone; Apon predicts <= 1",
+  "jetprof(a)": "dim V_a^[j] for j = 0..R (this also detects F(a) = 0 points \u2014 required for validity checks)",
+  "guards": "alpha (differential identity Pi F' + Pi' F = G^2 F^2 coefficientwise), beta (Delta_{p,q} != 0 for exhibited pair, machine-checked, pair recorded), gamma (k = n-mt), delta (lambda_i F(a_i) in F_2^k exactly equals public Y columns), eps (gcd of coordinates constant; max coordinate degree exactly D)"
+ },
+ "results_summary": [
+  {
+   "m": 10,
+   "t": 24,
+   "2t+3": 51,
+   "N_fam(2t+3)": 0,
+   "N_fam(2t+4)": 0,
+   "N_eval==N_fam at all c": true,
+   "max_family_rank": 1,
+   "refutation_events": 0,
+   "Delta_nz": true,
+   "lb_cert": true,
+   "s": 314.0
+  },
+  {
+   "m": 10,
+   "t": 40,
+   "2t+3": 83,
+   "N_fam(2t+3)": 0,
+   "N_fam(2t+4)": 0,
+   "N_eval==N_fam at all c": true,
+   "max_family_rank": 1,
+   "refutation_events": 0,
+   "Delta_nz": true,
+   "lb_cert": true,
+   "s": 438.3
+  },
+  {
+   "m": 11,
+   "t": 48,
+   "2t+3": 99,
+   "N_fam(2t+3)": 0,
+   "N_fam(2t+4)": 0,
+   "N_eval==N_fam at all c": true,
+   "max_family_rank": 1,
+   "refutation_events": 0,
+   "Delta_nz": true,
+   "lb_cert": true,
+   "s": 2931.7
+  }
+ ],
+ "verdict": {
+  "gate_A_ladder_partial": "PASS (Apon mechanism confirmed at m in {10, 11})",
+  "evidence_label": "MACHINE-VERIFIED (exact arithmetic)",
+  "refutation_events": 0
+ },
+ "reproducibility": {
+  "seeds": {
+   "(6,64,3)": 1387,
+   "(6,64,4)": 2311,
+   "(6,64,5)": 3413,
+   "(7,128,3)": 4421,
+   "(7,128,6)": 5531,
+   "(8,256,3)": 6637,
+   "(8,256,5)": 7741
+  },
+  "G_polys_per_seed_recorded_in": "results.json (full vector of E-coefficients of monic G, per instance)",
+  "supports_recorded_in": "results.json support field (full ordered list)",
+  "run_command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 nice -n 10 ~/.venv/bin/python mceliece/src/census_small.py",
+  "runtime": "7 instances total 7 seconds on one M3 Ultra core",
+  "provenance_tags": {
+   "Goppa multiplier lambda'": "[REPRODUCED] from Apon 2026/1810 eq. (1) (already fetched; consistent with GIJS 2026/1630 Fact 2.3)",
+   "Hasse jets": "[REPRODUCED] from Apon \u00a71.2 / GIJS Def 2.7",
+   "Def-4 map": "[REPRODUCED] from Apon eqs. (17)-(20)",
+   "Lemma-7 law": "[DERIVED by measurement] on family rows (not assumed)",
+   "prediction 2t+3-c": "[REPRODUCED] from Apon Thm 1 statement + Vedenev v2 Theorem 1 quote"
+  }
+ },
+ "artifacts_in_this_dir": {
+  "results_small_t.json": "copy of the 7-instance small-t record (full per-instance data)",
+  "ladder_rows_partial.json": "the 3 ladder rows above (summary-level; the raw JSON was lost with the timed-out bash job \u2014 rows were parsed from its stdout snapshot; per-row full records reproducible from seeds)",
+  "campaign.json": "this file",
+  "code/": "src snapshot (census_small.py run script)"
+ },
+ "open_items": [
+  "ladder rows (m=10..12) running \u2014 will freeze as a separate addendum artifact (same script)",
+  "the full-Sol ambient system (k(D+1) at m=6 is 2668) is TOO SLOW in current Python-loop form \u2014 not needed for the structural claim; a vectorized rewrite is queued (not blocking)",
+  "Gate B reframed per Main directive: measure the genericity of Delta_{p,q} != 0 across seeds/orderings; per Finding 3 the evaluation map injectivity (D < n) forces F unique and F' not identically zero on nonzero rows, so Delta != 0 is a genuine genericity condition with a measurable failure rate"
+ ],
+ "measurement_note": "rank of the family-restricted stack is capped at 2t+3 (column count); per-point rank pattern on every instance: rank(a, j) = [j even] with j < R \u2014 exactly 1 at even j, 0 at odd j. This confirms Apon's odd-jet mechanism (odd-jet rows live in the flag by the parity (j+1) \u2261 0 in (j+1)\u2202^[j+1]F) and Remark-8 rank-exactly-1 at order 0. Cap-corrected law N_fam(c) = 2t+3 \u2212 min(#contributing points in S_c, 2t+3) matches N_eval(c) exactly on all 7 instances; an uncapped derived formula in stdout differed only past c = 2t+3 (bug in the CHECK, not the measurement; corrected check machine-verified on all records).",
+ "reproducibility_seeds": {
+  "(10,1024,24)": 8001,
+  "(10,1024,40)": 5113,
+  "(11,2048,48)": 6211
+ }
+}

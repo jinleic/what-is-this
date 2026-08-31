@@ -1,0 +1,36 @@
+{
+  "created_utc": "2026-08-31T08:36:47.059394+00:00",
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateD_gross_corrected_ais_calibration",
+    "scope": "BB [[144,12,12]] derived p=0.003 circuit; 13 candidate classes",
+    "shots": 200,
+    "T": 64,
+    "K": 64,
+    "B": 2500,
+    "q0": 0.02,
+    "delta": 0.05,
+    "base_seed": 20260830,
+    "ais_weight_scheme": "forward pre-transition path product"
+  },
+  "config_hash12": "26199282c466",
+  "evidence_status": "corrected gross calibration rerun",
+  "supersedes": "scratch/gateD_cert/gross_result.json produced with endpoint-only AIS weights",
+  "versions": {
+    "numpy": "2.5.2",
+    "stim": "1.16.0"
+  },
+  "source_and_input_sha256": {
+    "src/gateD_cert/run_pilot.py": "b505e2d4cbca4c8abfc2af1e310ec0d01e3bc6e2034c55b5bc2f113e49ec7225",
+    "src/gateD_cert/ais.py": "999136a0f9556ba6872cc45d37903fa7bc030ded0bac753221926627577ead45",
+    "src/gateD_cert/certificate.py": "8164adc22418433959d6c6a86c01e2b44c4752dfc03d86472fc6ec33cbea396b",
+    "src/gateD_cert/model.py": "07521f9d2e42d66710780d378dcd8aaa8951e086159da58e6df01c328a963bb5",
+    "src/gateD_cert/gf2.py": "a715b7e511cec8c9e76e6a7b02e6c0b8ff032e836a3f4ef4ce92db4ca6e3da36",
+    "src/qldpc_dec/beam_search.py": "d2e66cb678a7bf22508d6400a0fe6c02f9ade5fd7bcacb98e60058859cfafc09",
+    "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/circuits/BB_144_144_12_memory_Z_p0.003_sr12_derived_p1e-3_rescale.stim": "ea2de75c77969fcbbe330b8c0bf7280497f1660025c8ba9da653e31fccf1ce1c",
+    "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/scratch/gateD_cert/gross_sparse_basis.npz": "8db91ced992141898ad349cfcb50430ad47c833e7dbd69015519b86c6dbb5e97",
+    "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/scratch/gateD_cert/gross_l_shifts.npy": "08b8ed083d186f20eebfa63c8519c2c0c7ffae1dbee55a2a9875417625ac2f22"
+  }
+}

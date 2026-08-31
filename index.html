@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>what-is-this — math campaign progress tracker — what-is-this</title>
+<title>what-is-this — research progress tracker — what-is-this</title>
 <style>
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
 max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1f2328}
@@ -58,8 +58,10 @@ window.MathJax = {
   }
   document.addEventListener('DOMContentLoaded', function () {
     function rewriteLinks(el) {
-      var base = (window.__LINKS__ || {})[el.id];
-      if (!base) return;
+      var config = (window.__LINKS__ || {})[el.id];
+      if (!config) return;
+      var base = typeof config === 'string' ? config : config.base;
+      var root = typeof config === 'string' ? null : config.root;
       var nodes = el.querySelectorAll('a[href], img[src]');
       for (var i = 0; i < nodes.length; i++) {
         var n = nodes[i];
@@ -67,7 +69,9 @@ window.MathJax = {
         var h = n.getAttribute(attr);
         if (!h) continue;
         if (/^(?:https?:|mailto:|tel:|#|\/\/|\/)/i.test(h)) continue;
-        n.setAttribute(attr, base + h);
+        var prefix = root && /^(?:\.\/)?(?:README|RESULTS|PROGRESS)\.md(?:[#?].*)?$/i.test(h)
+          ? root : base;
+        n.setAttribute(attr, prefix + h);
       }
     }
     var blobs = window.__MD__ || {};
@@ -94,38 +98,27 @@ window.MathJax = {
 </head>
 <body>
 
-<h1>what-is-this — math campaign progress tracker</h1>
-<p class="tag">Public mirror of the research campaigns under
-<code>~/jinleic-workspace/math</code>. One page per problem: the project's
-README head and the newest matching <code>math/PROGRESS.md</code> entry,
-quoted verbatim and rendered (markdown + LaTeX), plus a mirror of the
-project's core code and small artifacts. Very large result data stays in the
-workspace. Incremental: pages and files are rewritten only when content
-changes.</p>
+<h1>what-is-this — research progress tracker</h1>
+<p class="tag">Public mirror of the tracked research under
+<code>math/</code>, <code>physics/</code>, <code>cs/</code>, and
+<code>quant-trading/</code>. Target pages quote their README and newest matching
+domain progress entry, then link core code and small result artifacts. Raw data,
+provisional trees, oversized files, and publication-gated content stay private.
+Writes are incremental.</p>
+<p class="tip">There is no separate <code>quantum/</code> source tree.
+Quantum-computing targets live under <code>physics/</code>; algebraic quantum
+LDPC work also lives at <code>math/qec/</code>.</p>
 
-<table>
-<tr><th>Problem</th><th>dir</th><th>last change</th><th>latest headline</th><th>files</th></tr>
-<tr><td><a href="problems/ccf.html">Cordoba-Cordoba-Fontelos 1D inviscid model</a></td><td><code>ccf</code></td><td>2026-08-22</td><td>Salvage from the paused subproject</td><td>7</td></tr>
-<tr><td><a href="problems/e389.html">Erdős Problem #389: consecutive-product divisibility</a></td><td><code>e389</code></td><td>2026-08-28</td><td>E389-R1-PROVED (2026-08-28) - THE FIRST RUNG OF CONJECTURE R IS NOW A THEOREM, AND THE CLAIM THAT BLOCKED IT WAS MY OWN ARITHMETIC ERROR</td><td>34</td></tr>
-<tr><td><a href="problems/h10q.html">Hilbert&#x27;s tenth problem over Q</a></td><td><code>h10q</code></td><td>2026-08-26</td><td>H10/Q (2026-08-24g) — L34 SHARP AP1 PAIR-MOMENT THRESHOLD</td><td>219</td></tr>
-<tr><td><a href="problems/zeta5.html">Irrationality of zeta(5) (Apéry-style)</a></td><td><code>zeta5</code></td><td>2026-08-26</td><td>2026-08-15 — Session 8: ζ(5) campaign opened (zeta5/); baseline certified, search tool validated blind</td><td>4</td></tr>
-<tr><td><a href="problems/kobon.html">Kobon triangle problem</a></td><td><code>kobon</code></td><td>2026-08-25</td><td>KOBON (2026-08-24f) — GENERALIZED LINE-0 COVECTOR LIFT EXHAUSTED</td><td>173</td></tr>
-<tr><td><a href="problems/liu_h1.html">Liu Hypothesis 1: entropy-kernel theorem</a></td><td><code>LIU_H1</code></td><td>2026-08-27</td><td>UC-LIU-AUDIT-REPLAY-SUBMISSION (2026-08-26) — HYBRID PROOF STATUS FIXED, TWO FULL REPLAYS PASS, LIU H1 PACKAGED</td><td>15</td></tr>
-<tr><td><a href="problems/ns.html">Navier-Stokes existence &amp; smoothness (route work)</a></td><td><code>ns</code></td><td>2026-08-22</td><td>2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim</td><td>24</td></tr>
-<tr><td><a href="problems/qec.html">Quantum LDPC codes: exact distance &amp; co-design</a></td><td><code>qec</code></td><td>2026-08-26</td><td>QEC (2026-08-24) — TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$</td><td>2456</td></tr>
-<tr><td><a href="problems/r55.html">Ramsey number R(5,5)</a></td><td><code>r55</code></td><td>2026-08-26</td><td>R55 (2026-08-24d) — FIXED-FIVE CANDIDATE CENSUS EMPTY; FULL CERTIFICATION PENDING</td><td>1437</td></tr>
-<tr><td><a href="problems/ising3d.html">Three-dimensional Ising model (exact solution)</a></td><td><code>ising3d</code></td><td>2026-08-27</td><td>ISING-W26 (2026-08-24) — TRACE-NINE PROJECTION NONZERO; DEGREE &lt;= 182400</td><td>1511</td></tr>
-<tr><td><a href="problems/uc.html">Union-closed sets conjecture (Frankl)</a></td><td><code>uc</code></td><td>2026-08-28</td><td>UC-BRIDGE-EXHAUSTION-CAMPAIGN-K-RESUME (2026-08-27) — THE ENTROPY BRIDGE IS NOW EXHAUSTIVELY MACHINE-CHECKED, A SECOND REFEREE FINDS NO PROOF DEFECT, AND CAMPAIGN K&#x27;S THREE LOS</td><td>413</td></tr>
-</table>
+<h2>Mathematics</h2><p class="tag">source <code>~/jinleic-workspace/math</code></p><p class="tag">Root documents: <a href="materials/domains/math/PROGRESS.md"><code>PROGRESS.md</code></a> · <a href="materials/domains/math/README.md"><code>README.md</code></a> · <a href="materials/domains/math/RESULTS.md"><code>RESULTS.md</code></a></p><table><tr><th>Target</th><th>source</th><th>last change</th><th>latest headline</th><th>files</th></tr><tr><td><a href="problems/ccf.html">Cordoba-Cordoba-Fontelos 1D inviscid model</a></td><td><code>math/ccf</code></td><td>2026-08-22</td><td>Salvage from the paused subproject</td><td>7</td></tr><tr><td><a href="problems/e389.html">Erdős Problem #389: consecutive-product divisibility</a></td><td><code>math/e389</code></td><td>2026-08-31</td><td>E389-SHIU-EFFECTIVE-MARGIN (2026-08-29) — SHIU&#x27;S PER-CLASS THEOREM EFFECTIVIZED AT SOURCE: NO INEFFECTIVE CONSTANT EXISTS, MARGIN NEVER BELOW 1 AT ANY SIEVE DEPTH (57.7 CONCRET</td><td>38</td></tr><tr><td><a href="problems/h10q.html">Hilbert&#x27;s tenth problem over Q</a></td><td><code>math/h10q</code></td><td>2026-08-26</td><td>H10/Q (2026-08-24g) — L34 SHARP AP1 PAIR-MOMENT THRESHOLD</td><td>219</td></tr><tr><td><a href="problems/zeta5.html">Irrationality of zeta(5) (Apéry-style)</a></td><td><code>math/zeta5</code></td><td>2026-08-31</td><td>ZETA5-GATE2-SWEEP (2026-08-29) — THE TRIAGE&#x27;S FOUR-WEEK GATE IS ANSWERED FOR THE SWEPT LADDER: ZERO SURVIVORS IN 44 PROBES; BASELINE μ2 = 0.337537 NEVER BEATEN BY A NONDEGENERA</td><td>5</td></tr><tr><td><a href="problems/kobon.html">Kobon triangle problem</a></td><td><code>math/kobon</code></td><td>2026-08-31</td><td>KOBON (2026-08-24f) — GENERALIZED LINE-0 COVECTOR LIFT EXHAUSTED</td><td>173</td></tr><tr><td><a href="problems/liu_h1.html">Liu Hypothesis 1: entropy-kernel theorem</a></td><td><code>math/LIU_H1</code></td><td>2026-08-31</td><td>MAP AUDIT (2026-08-30) — one row added, one row added AND RETRACTED THE SAME MINUTE</td><td>15</td></tr><tr><td><a href="problems/ns.html">Navier-Stokes existence &amp; smoothness (route work)</a></td><td><code>math/ns</code></td><td>2026-08-22</td><td>2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim</td><td>24</td></tr><tr><td><a href="problems/qec.html">Quantum LDPC codes: exact distance &amp; co-design</a></td><td><code>math/qec</code></td><td>2026-08-26</td><td>QEC (2026-08-24) — TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$</td><td>2456</td></tr><tr><td><a href="problems/r55.html">Ramsey number R(5,5)</a></td><td><code>math/r55</code></td><td>2026-08-26</td><td>R55 (2026-08-24d) — FIXED-FIVE CANDIDATE CENSUS EMPTY; FULL CERTIFICATION PENDING</td><td>1437</td></tr><tr><td><a href="problems/ising3d.html">Three-dimensional Ising model (exact solution)</a></td><td><code>math/ising3d</code></td><td>2026-08-27</td><td>ISING-W26 (2026-08-24) — TRACE-NINE PROJECTION NONZERO; DEGREE &lt;= 182400</td><td>1511</td></tr><tr><td><a href="problems/uc.html">Union-closed sets conjecture (Frankl)</a></td><td><code>math/uc</code></td><td>2026-08-31</td><td>UC-SLICE-QUEUE-REPAIR (2026-08-30) — SCHEDULER LINEAGE-CLOSE BUG FOUND AND FIXED (MODULE PATH; TRANSIENT EDIT FIXED TWICE); SLICES 02 AND 05 RESIDUALS CLOSED MACHINE-VERIFIED (</td><td>638</td></tr></table><h2>Physics and quantum computing</h2><p class="tag">source <code>~/jinleic-workspace/physics</code></p><p class="tag">Root documents: <a href="materials/domains/physics/PROGRESS.md"><code>PROGRESS.md</code></a> · <a href="materials/domains/physics/README.md"><code>README.md</code></a> · <a href="materials/domains/physics/RESULTS.md"><code>RESULTS.md</code></a></p><table><tr><th>Target</th><th>source</th><th>last change</th><th>latest headline</th><th>files</th></tr><tr><td><a href="physics/qldpc-dec.html">BB quantum-LDPC decoder reproduction</a></td><td><code>physics/qldpc-dec</code></td><td>2026-08-31</td><td>2026-08-31 — qldpc-dec absolute LER normalization corrected (Gate B ratios unchanged)</td><td>120</td></tr><tr><td><a href="physics/fss-bb.html">BB-code finite-size scaling</a></td><td><code>physics/fss-bb</code></td><td>2026-08-31</td><td>2026-08-30 — fss-bb 20k ladder FROZEN; paper-CI overlap on 4 of 5 sizes</td><td>30</td></tr><tr><td><a href="physics/na-compiler.html">Certified neutral-atom transport scheduling</a></td><td><code>physics/na-compiler</code></td><td>2026-08-31</td><td>2026-08-30 — na-compiler cost rows upgraded to GLOBAL µs optima (and a heap bug I wrote, caught by arithmetic)</td><td>36</td></tr><tr><td><a href="physics/shadows.html">Contractive-shadow exact census</a></td><td><code>physics/shadows</code></td><td>2026-08-31</td><td>2026-08-30 — shadows gate-C k-extension: edge VANISHES at k≥9</td><td>19</td></tr><tr><td><a href="physics/qlops.html">Fault-tolerant QLOPS arithmetic audit</a></td><td><code>physics/qlops</code></td><td>2026-08-31</td><td>2026-08-29 — first worker verdicts integrated</td><td>19</td></tr><tr><td><a href="physics/msd.html">Zero-level CCZ reproduction</a></td><td><code>physics/msd</code></td><td>2026-08-31</td><td>2026-08-30 — msd floor EXPLAINED from first principles; output-side armoring provably cannot fix it</td><td>56</td></tr></table><h2>Theoretical computer science and information theory</h2><p class="tag">source <code>~/jinleic-workspace/cs</code></p><p class="tag">Root documents: <a href="materials/domains/cs/PROGRESS.md"><code>PROGRESS.md</code></a> · <a href="materials/domains/cs/README.md"><code>README.md</code></a> · <a href="materials/domains/cs/RESULTS.md"><code>RESULTS.md</code></a></p><table><tr><th>Target</th><th>source</th><th>last change</th><th>latest headline</th><th>files</th></tr><tr><td><a href="cs/mm3.html">Additive complexity of rank-23 3×3 matrix multiplication</a></td><td><code>cs/mm3</code></td><td>2026-08-31</td><td>mm3/ off-diagonal programme COMPLETE — the &quot;wall&quot; was never there, 2026-08-30</td><td>199</td></tr><tr><td><a href="cs/delcap.html">Binary deletion-channel capacity</a></td><td><code>cs/delcap</code></td><td>2026-08-31</td><td>Three campaigns landed 2026-08-30 — delcap resolved, mm3 off-diagonal counted, oct-rank S3 filed</td><td>124</td></tr><tr><td><a href="cs/mceliece.html">Classic McEliece hold-out &quot;waterfall&quot; dispute</a></td><td><code>cs/mceliece</code></td><td>2026-08-31</td><td>mceliece/ live-source event — ePrint 1786 changed route four revisions after cache, 2026-08-31</td><td>79</td></tr><tr><td><a href="cs/kg.html">Grothendieck constant</a></td><td><code>cs/kg</code></td><td>2026-08-31</td><td>kg/ gate B — an unsound bound found, and two of this repo&#x27;s own PASSes retracted, 2026-08-30</td><td>168</td></tr><tr><td><a href="cs/omega.html">Matrix multiplication exponent</a></td><td><code>cs/omega</code></td><td>2026-08-31</td><td>omega/ gate C — second FAILURE TO CERTIFY, three defects fixed, and an owner arithmetic catch, 2026-08-30</td><td>115</td></tr><tr><td><a href="cs/oct-rank.html">Real tensor rank of octonion multiplication</a></td><td><code>cs/oct-rank</code></td><td>2026-08-31</td><td>Three campaigns landed 2026-08-30 — delcap resolved, mm3 off-diagonal counted, oct-rank S3 filed</td><td>102</td></tr><tr><td><a href="cs/rs-pe3d.html">Reed–Solomon three-dimensional product expansion</a></td><td><code>cs/rs-pe3d</code></td><td>2026-08-31</td><td>rs-pe3d/ P2 battery COMPLETE — one owner hypothesis killed, one confirmed prospectively, 2026-08-30</td><td>88</td></tr></table><h2>Quantitative trading research</h2><p class="tag">source <code>~/jinleic-workspace/quant-trading</code></p><table><tr><th>Target</th><th>source</th><th>last change</th><th>latest headline</th><th>files</th></tr><tr><td><a href="quant-trading/index.html">Quantitative trading research</a></td><td><code>quant-trading</code></td><td>2026-08-31</td><td>No explored strategy supports a prospective alpha or capital-deployment claim. The parent same-day screen falsified the BTC/ETH post-liquidation continuation overlay at its registe</td><td>91</td></tr></table>
 
 <h2>How to update</h2>
 <pre>cd ~/jinleic-workspace/repos/what-is-this
-python3 tools/sync.py        # incremental; fails closed on the private-keyword gate
+python3 tools/sync.py        # incremental; fails closed on the publication gate
 git add -A && git commit -m "sync $(date -u +%F)" && git push</pre>
 
-<h2>Sessions</h2>
+<h2>Recorded mathematics sessions</h2>
 <div class="markdown-body" id="md-sessions"></div>
 <script>window.__MD__ = {"md-sessions": "# Session → project map\n\nomp session IDs in `~/.omp/agent/sessions/-jinleic-workspace/\u003ctimestamp>_\u003cid>.jsonl`\n(head record: title + cwd; first user message names the problem).\n\n| Session | Started | Problem |\n|---|---|---|\n| `019ff0a0-6557-7000-8b8c-9bdbccb719e4` | 2026-08-11 | union-closed (uc); Millennium/NS prelude; ccf subagents |\n| `019ff186-f657-7000-85d0-6d52723bfb5c` | 2026-08-11 | 3D Ising (ising3d) |\n| `019ff1a6-af1a-7000-b0e9-223c45ae0a3c` | 2026-08-11 | quantum LDPC / QEC |\n| `019ff95f-d695-7000-b3d0-36dd86537081` | 2026-08-13 | Kobon triangles |\n| `019ff957-1ed4-7000-8941-f92f3002c676` | 2026-08-13 | Hilbert's tenth over Q (h10q) |\n| `019ffb23-9512-7000-8c79-32667475fc6c` | 2026-08-13 | R(5,5) + zeta(5) triage (r55, zeta5) |\n| `01a03c0c-c36d-73b7-96b7-f1203909eb76` | 2026-08-25 | Erdős Problem #389 (e389) |\n| `01a03b5f-2600-7019-adf6-b03bd015c2ce` | 2026-08-25 | UC audit + Liu Hypothesis 1 submission package (liu_h1) |\n\n`ns` and `ccf` have no dedicated root session: NS route work happened inside the\n`019ff0a0` prelude, and ccf inside its subagents.\n"};</script>
 <script>window.__LINKS__ = {"md-sessions": ""};</script>
-<hr><p class="tag">Auto-generated by tools/sync.py · sources under ~/jinleic-workspace/math</p>
+<hr><p class="tag">Auto-generated by tools/sync.py · public research mirror</p>
 </body></html>

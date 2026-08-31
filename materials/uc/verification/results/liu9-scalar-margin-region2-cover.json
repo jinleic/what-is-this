@@ -1,0 +1,90 @@
+{
+ "claim_status": "MACHINE-VERIFIED",
+ "constants": {
+  "beta": "0.1000525598628931066646282994769475877962",
+  "m": "0.6172909120812649700696870979010273883736"
+ },
+ "corner_lemma": {
+  "corner_min": -1.0,
+  "interior_min": -1.0,
+  "lemma_holds": true,
+  "lemma_statement": "separately concave on a rectangle => min over the box is attained on the boundary; iterated 1D concave minimization gives min = min over corners.  For the mean-cut feasible set (linear M >= m cut), the same reduction gives two exposed x-only curve families (q = 1 edge, pinch q0(a1))",
+  "toy": "f(x,y) = -x^2 - y^2 + 3xy (separately concave, Hessian indefinite)"
+ },
+ "cover_design": {
+  "hazard_check": "separately concave does need the corner-lemma reduction (verified on the toy); joint concavity is NOT claimed \u2014 the Hessian of the q-quadratic x a1-quadratic composition is generally indefinite; the iterated 1D argument does not need joint concavity",
+  "next_session": "full Arb hull covers of curve I and curve II over the (x1, x2, y1, y2) geometry grid using the region1 machinery restricted to four slots",
+  "shape": "per-fiber two-curve certificate mirroring region1: curve I (q = 1 edge, exact quadratic in a1, edge check) and curve II (mean = m pinch, endpoint-pair hulls); the corner lemma (separately concave \u21d2 min at boundary, iterated 1D concave minimization) is the rigorous composition; the feasible set is the rectangle intersected with the half-plane M(a1, q) >= m (M linear), so the exposed boundary is exactly the two curve families plus the a1 = const edge checks"
+ },
+ "curve_II_pinch_fibers": {
+  "geom_A": {
+   "pinch_min_a1": "1",
+   "pinch_min_gap": "0.0312293373435",
+   "pinch_positive": true
+  },
+  "geom_B": {
+   "pinch_min_a1": "1",
+   "pinch_min_gap": "0.0349589183849",
+   "pinch_positive": true
+  }
+ },
+ "curve_I_fibers": {
+  "geom_A (x=(1/5,19/20), y=(24/25,9/10))": {
+   "band_min_at": "1",
+   "band_min_gap": "0.106534891425",
+   "band_positive": true,
+   "band_sample_count": 65,
+   "concave_in_a1": true,
+   "edge_values": {
+    "aL": "0.157705343815",
+    "aM": "0.141858217202",
+    "aR": "0.114978615915"
+   },
+   "feasible_band": [
+    "0",
+    "1"
+   ],
+   "note": "positivity is asserted only on the mean-feasible band a1 y1 + (1-a1) y2 >= M_UNDER = 19290341/31250000 <= m; samples outside it are out of scope for Hypothesis 2",
+   "quad_max_deviation": "3.0681834e-92",
+   "quadratic_fit_verified": true,
+   "second_difference_coeff": "-0.06895296672"
+  },
+  "geom_B (x=(7/20,19/20), y=(19/20,7/20))": {
+   "band_min_at": "8352841/18750000",
+   "band_min_gap": "0.0475474667529",
+   "band_positive": true,
+   "band_sample_count": 65,
+   "concave_in_a1": true,
+   "edge_values": {
+    "aL": "-0.176193580581",
+    "aM": "0.0703503362453",
+    "aR": "0.133430564825"
+   },
+   "feasible_band": [
+    "8352841/18750000",
+    "1"
+   ],
+   "note": "positivity is asserted only on the mean-feasible band a1 y1 + (1-a1) y2 >= M_UNDER = 19290341/31250000 <= m; samples outside it are out of scope for Hypothesis 2",
+   "quad_max_deviation": "1.2272734e-91",
+   "quadratic_fit_verified": true,
+   "second_difference_coeff": "-1.146648052"
+  }
+ },
+ "gate": {
+  "corner_lemma_toy_holds": true,
+  "curveII_A_positive": true,
+  "curveII_B_positive": true,
+  "curveI_A_band_positive": true,
+  "curveI_A_fit": true,
+  "curveI_B_band_positive": true,
+  "curveI_B_fit": true
+ },
+ "limitations": [
+  "curve II values here are discovery-grade (point scans), the hull certificate is the next deliverable",
+  "two-atom paired class only"
+ ],
+ "precision_note": "all fiber evaluations here are deterministic mpmath point evaluations at 90 dps and the corner-lemma toy is a sampled check, so the honest label is MACHINE-VERIFIED, not PROVED; interval certification of these two curve families lives in liu9_scalar_margin_region2hulls.py (curve I, Arb) and liu9_scalar_margin_region2_curve2.py (curve II, Arb hulls)",
+ "report_sha256": "36f8a98ce9b674c0a931bff7b6eeaca4d89956ca8685da26cf67e21e3046fac7",
+ "seed": 20260829,
+ "tool": "liu9_scalar_margin_region2cover.py"
+}

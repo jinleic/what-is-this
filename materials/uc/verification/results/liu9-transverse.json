@@ -1,0 +1,242 @@
+{
+ "asymmetric_decoupling": {
+  "certified": true,
+  "endpoint_reduction_invariant": true,
+  "rows": [
+   {
+    "coefficient": "0.0478603375879949",
+    "difference": "3.277e-32",
+    "q": "1/2",
+    "y1": "1/5",
+    "y2": "9/10"
+   },
+   {
+    "coefficient": "0.0384850984642332",
+    "difference": "1.281e-32",
+    "q": "1/8",
+    "y1": "1/20",
+    "y2": "19/20"
+   },
+   {
+    "coefficient": "0.00511365960339688",
+    "difference": "2.696e-33",
+    "q": "7/8",
+    "y1": "3/10",
+    "y2": "7/10"
+   },
+   {
+    "coefficient": "0.0861122213926636",
+    "difference": "9.68e-32",
+    "q": "1/2",
+    "y1": "1/100",
+    "y2": "99/100"
+   },
+   {
+    "coefficient": "0.0479581977881099",
+    "difference": "4.074e-32",
+    "q": "3/8",
+    "y1": "9/10",
+    "y2": "1/5"
+   },
+   {
+    "coefficient": "0.00946128616321869",
+    "difference": "4.266e-33",
+    "q": "1/4",
+    "y1": "2/3",
+    "y2": "1/3"
+   },
+   {
+    "coefficient": "0.00835698494672816",
+    "difference": "6.023e-33",
+    "q": "1/2",
+    "y1": "1/1000",
+    "y2": "1/2"
+   },
+   {
+    "coefficient": "0.08298199078379",
+    "difference": "7.732e-32",
+    "q": "5/8",
+    "y1": "999/1000",
+    "y2": "1/50"
+   }
+  ],
+  "tolerance": 1e-25,
+  "worst_difference": 9.679754843699001e-32,
+  "worst_second_difference_in_q": 5.199577358896726e-33
+ },
+ "beta_sensitivity": {
+  "beta_is_load_bearing": true,
+  "liu_slope": -1.2272733663244316e-91,
+  "rows": [
+   {
+    "beta": "liu",
+    "slope": "-1.22727336632e-91",
+    "slope_float": -1.2272733663244316e-91
+   },
+   {
+    "beta": "liu + 1e-6",
+    "slope": "-2.12166500236e-7",
+    "slope_float": -2.12166500235779e-07
+   },
+   {
+    "beta": "liu - 1e-6",
+    "slope": "2.12166500236e-7",
+    "slope_float": 2.12166500235779e-07
+   },
+   {
+    "beta": "0",
+    "slope": "0.0212278014657",
+    "slope_float": 0.0212278014657408
+   },
+   {
+    "beta": "1/2",
+    "slope": "-0.0848554486521",
+    "slope_float": -0.0848554486521487
+   },
+   {
+    "beta": "1",
+    "slope": "-0.19093869877",
+    "slope_float": -0.1909386987700382
+   }
+  ],
+  "smallest_perturbed_slope": 2.12166500235779e-07
+ },
+ "boundary_layer": {
+  "certified": true,
+  "octaves": 200,
+  "smallest_covered_y": "1/51422017416287688817342786954917203280710495801049370729644032",
+  "tail_bound": "[33.137669599551929818 +/- 4.59e-19]",
+  "tail_bound_lower": 33.13766959955193,
+  "tail_cell": [
+   "0",
+   "1/51422017416287688817342786954917203280710495801049370729644032"
+  ],
+  "uniform_log_coefficient": "[0.23458182416252994014 +/- 6.27e-22]",
+  "uniform_log_coefficient_lower": 0.23458182416252993,
+  "worst_cell": [
+   "1/64",
+   "1/32"
+  ],
+  "worst_layer_bound": "[0.7 +/- 0.0791]",
+  "worst_layer_bound_lower": 0.7149606416605387,
+  "worst_log_coefficient": "[0.272 +/- 4.17e-4]",
+  "worst_log_coefficient_lower": 0.27158310084303783,
+  "y0": "1/32"
+ },
+ "bulk": {
+  "cells": 11777,
+  "certified": true,
+  "window": "1/8",
+  "worst_cell": [
+   "below",
+   "24773166050005600199579126039999106582591571/43790000000000000000000000000000000000000000",
+   "2828937969624940070752441023181352812903/5000000000000000000000000000000000000000"
+  ],
+  "worst_margin": "[0.0074 +/- 7.90e-5]",
+  "worst_margin_lower": 0.007321078281451851,
+  "y0": "1/32"
+ },
+ "constant_a": {
+  "beta_free_diagonal": 5.519977529785367e-70,
+  "constant_a": "[0.61846904466169065417 +/- 2.42e-22]",
+  "difference": "[+/- 1.37e-68]",
+  "difference_upper": 1.3676158680631494e-68,
+  "entropy_at_x": "[0.61846904466169065417 +/- 2.42e-22]",
+  "kernel_diagonal_minus_h_x_squared": "[+/- 5.52e-70]"
+ },
+ "coverage": {
+  "abutting": true,
+  "pieces": [
+   [
+    "A tail",
+    "0",
+    "1/51422017416287688817342786954917203280710495801049370729644032"
+   ],
+   [
+    "A octaves",
+    "1/51422017416287688817342786954917203280710495801049370729644032",
+    "1/32"
+   ],
+   [
+    "B below",
+    "1/32",
+    "2828937969624940070752441023181352812903/5000000000000000000000000000000000000000"
+   ],
+   [
+    "C window",
+    "2828937969624940070752441023181352812903/5000000000000000000000000000000000000000",
+    "4078937969624940070752441023181352812903/5000000000000000000000000000000000000000"
+   ],
+   [
+    "B above",
+    "4078937969624940070752441023181352812903/5000000000000000000000000000000000000000",
+    "1"
+   ]
+  ],
+  "spans_unit_interval": true
+ },
+ "double_root": {
+  "curvature": "[1.2289613682116872847 +/- 4.88e-20]",
+  "curvature_lower": 1.2289613682116873,
+  "slope": "[+/- 2.14e-68]",
+  "slope_upper": 2.1304540929999862e-68,
+  "structural_zero": true,
+  "value": "[+/- 2.71e-68]",
+  "value_enclosure_is_dependency_error": true,
+  "value_upper": 2.708358027529612e-68
+ },
+ "dps": 90,
+ "elapsed_seconds": 0.507,
+ "global_deficit": 4.561831946917053e-136,
+ "kappa": "4119063/33554432",
+ "perturbation_decomposition": {
+  "arithmetic": "exact Fraction",
+  "atoms_match_exactly": true,
+  "samples": 12
+ },
+ "protocol_identity": {
+  "difference": [
+   -1,
+   0,
+   3,
+   -2,
+   1
+  ],
+  "entropy_reflection_of_x_squared": [
+   1,
+   0,
+   -1
+  ],
+  "identity_holds": true,
+  "liu_quartic": [
+   -1,
+   0,
+   3,
+   -2,
+   1
+  ],
+  "prot_diagonal": [
+   0,
+   0,
+   2,
+   -2,
+   1
+  ]
+ },
+ "report_sha256": "153fb77bbe2ae4eff027c9d3d80c9e1d905c4480db288be386649c21671534f8",
+ "structural_zero": {
+  "all_exactly_zero": true,
+  "arithmetic": "exact Fraction, entropy values treated as free symbols",
+  "samples": 12
+ },
+ "tool": "liu9_transverse.py",
+ "window": {
+  "cells": 4096,
+  "certified": true,
+  "deficit": 4.561831946917053e-136,
+  "minimum_curvature": "[0.50 +/- 2.53e-3]",
+  "minimum_curvature_lower": 0.49747937837208134,
+  "radius": "1/8",
+  "slope_bound": 2.1304540929999862e-68
+ }
+}

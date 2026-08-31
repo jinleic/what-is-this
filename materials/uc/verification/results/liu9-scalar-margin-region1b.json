@@ -1,0 +1,61 @@
+{
+ "beta_bracket": [
+  "0.10005255986289310",
+  "0.10005255986289312"
+ ],
+ "cells_used": 1600,
+ "certified_ratio_lower": "[0.415327575850254824095380535523906827215435015422699358862537294398395113608823343143131479667142476213432440795952729544388690339216329290723311854814941201996345924160524440664418065324037403419327927556712311850941364792619984986706584917794531452082163169196522823008722257222517812260570679692960260810940381448556146302951402996238871410026192795064854216923832848445699692210723672789655825654474552418265566997846544078254561486749667029608116322901236103240797301536382062182354135339302186356625401397457924818865773995520895613226401289875693659656005139295956131891450573386027247531753743890940322766747448615484459914213371301176152934581967726599773662476666835872709390156764651564174743296935066590316543963199137392529283699463341436674105869365566332714939093819373116360966697889511046068065871222070327248788917330802247196091100500041150097385965874614051700114775860499666434825682343118995273989047806602330668198098074116495566735503872041173812674807897443358436636023646903856965693900877860543677998256319574624738893116085521671899030720034454684649235831 +/- 2.39e-1084]",
+ "certified_ratio_threshold": "0.02",
+ "claim_status": "PROVED",
+ "closed_form_checks_vs_gap_mp": [
+  {
+   "absdiff": "5.19289e-67",
+   "x": "1e-6"
+  },
+  {
+   "absdiff": "7.59645e-65",
+   "x": "1e-3"
+  },
+  {
+   "absdiff": "3.03858e-63",
+   "x": "0.01"
+  },
+  {
+   "absdiff": "1.21543e-62",
+   "x": "0.1"
+  },
+  {
+   "absdiff": "1.45852e-62",
+   "x": "0.2"
+  }
+ ],
+ "limitations": [
+  "Family A only (single-atom components with shared mass a = 1)",
+  "the ratio certificate decays with x log(1/x): it proves nonnegativity with a margin that vanishes geometrically as x -> 0, matching the true gapA ~ 0.044 x log(1/x) shape",
+  "multi-atom paired class (Region 2) is a separate open front"
+ ],
+ "m_bracket": [
+  "0.61729091208126497",
+  "0.61729091208126498"
+ ],
+ "method": "endpoint-pair interval arithmetic on exact-rational geometric cells, no flint union; ratio form divides by the strictly increasing x log(1/x) hull; kernels by monotonicity (T) and concavity (h) hulls; Arb precision 320",
+ "negative_cells": 0,
+ "region": {
+  "family": "Family A small-x strip: P0 = delta_x, P1 = delta_1, shared mass a = 1",
+  "q_range": "[(m-x)/(1-x), 1]",
+  "theorem": "gapA(x, q) is an exact concave quadratic in q with gapA(x, 1) = 0 and A0(x) < 0 on the strip, so the band minimum sits at q0 = (m-x)/(1-x), M = m; the certified statement is the ratio form gapA >= 0.02 * x * log(1/x) on every geometric cell",
+  "x_range": "(0, 1/4] (geometric cells from 2^-80 upward, factor 9/8)"
+ },
+ "report_sha256": "841a351a0af9b0e7fb9825e0c8ec077c611afd5d70b3eed853fec22c8c174a03",
+ "structural_inputs": [
+  "block diagonalization (liu9_block_copositive.py, PROVED)",
+  "concave-quadratic-in-q with gapA(x, 1) = 0",
+  "A0(x) < 0 on the strip (verified numerically; band minimum at the q0 endpoint)"
+ ],
+ "tool": "liu9_scalar_margin_region1b.py",
+ "worst_cell": [
+  0,
+  9.332636185032189e-302,
+  1.0499215708161212e-301
+ ]
+}

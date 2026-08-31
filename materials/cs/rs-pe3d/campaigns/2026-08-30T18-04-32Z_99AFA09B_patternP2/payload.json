@@ -1,0 +1,918 @@
+{
+  "agent": "RsPe3dPatternP",
+  "campaign": "2026-08-30T18-04-32Z_99AFA09B_patternP2",
+  "code_sha256": "a9ff7e0ae1a716640c249f63baf4cd8ba774d6e7763822a7ce32d8fca6fde810",
+  "evidence_labels": {
+    "empty_rows": "MACHINE-VERIFIED (empty-window census): complete censuses, zero nonzero supports",
+    "float_rows": "none",
+    "landing_rows": "MACHINE-VERIFIED (finite window): exact F_q verification + exhaustive per-witness cheaper-tuple closure",
+    "oc_checks": "MACHINE-VERIFIED on frozen witnesses"
+  },
+  "fixed_parameters": {
+    "Lambda": "identity on every axis",
+    "milp_limit_seconds": 120,
+    "t": [
+      1,
+      1,
+      1
+    ],
+    "window": "weight<=3 supports, reduced-basis candidate class"
+  },
+  "gate": "B-extension (P2 battery)",
+  "inheritance_disclosure": "battery reuses the frozen gate-B instrument (census->MILP->closure code, unchanged sha256 a9ff7e0a...); OC1/OC2/OC4 re-derived from frozen witnesses, not payload strings; PN1-PN3+PP* witnesses regenerated fresh inside this campaign; PN6/PN7 via vectorized kernel cross-checked against the frozen census on PN6/PP2.",
+  "owner_checks": {
+    "OC1_rho_equals_wt_over_delta": {
+      "confirmed": true,
+      "detail": "13/13 frozen witnesses re-verified in exact F_q (verify_record) and every recorded ratio equals Fraction(weight, delta) recomputed from the witness",
+      "per_row": {
+        "B01": {
+          "delta": 5,
+          "ratio_from_witness_Fraction_wt_delta": "3/5",
+          "recorded_addendum_ratio": "3/5",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B02": {
+          "delta": 3,
+          "ratio_from_witness_Fraction_wt_delta": "1/1",
+          "recorded_addendum_ratio": "1/1",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B03": {
+          "delta": 5,
+          "ratio_from_witness_Fraction_wt_delta": "3/5",
+          "recorded_addendum_ratio": "3/5",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B04": {
+          "delta": 5,
+          "ratio_from_witness_Fraction_wt_delta": "3/5",
+          "recorded_addendum_ratio": "3/5",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B05": {
+          "delta": 2,
+          "ratio_from_witness_Fraction_wt_delta": "1/1",
+          "recorded_addendum_ratio": "1/1",
+          "verified_ok": true,
+          "weight": 2
+        },
+        "B06": {
+          "delta": 5,
+          "ratio_from_witness_Fraction_wt_delta": "3/5",
+          "recorded_addendum_ratio": "3/5",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B07": {
+          "delta": 4,
+          "ratio_from_witness_Fraction_wt_delta": "1/2",
+          "recorded_addendum_ratio": "1/2",
+          "verified_ok": true,
+          "weight": 2
+        },
+        "B08": {
+          "delta": 8,
+          "ratio_from_witness_Fraction_wt_delta": "3/8",
+          "recorded_addendum_ratio": "3/8",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B09": {
+          "delta": 4,
+          "ratio_from_witness_Fraction_wt_delta": "1/4",
+          "recorded_addendum_ratio": "1/4",
+          "verified_ok": true,
+          "weight": 1
+        },
+        "B10": {
+          "delta": 3,
+          "ratio_from_witness_Fraction_wt_delta": "1/1",
+          "recorded_addendum_ratio": "1/1",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B11": {
+          "delta": 3,
+          "ratio_from_witness_Fraction_wt_delta": "1/1",
+          "recorded_addendum_ratio": "1/1",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B12": {
+          "delta": 5,
+          "ratio_from_witness_Fraction_wt_delta": "3/5",
+          "recorded_addendum_ratio": "3/5",
+          "verified_ok": true,
+          "weight": 3
+        },
+        "B13": {
+          "delta": 3,
+          "ratio_from_witness_Fraction_wt_delta": "1/1",
+          "recorded_addendum_ratio": "1/1",
+          "verified_ok": true,
+          "weight": 3
+        }
+      }
+    },
+    "OC2_P_within_coprimality_classes": {
+      "confirmed": true,
+      "labels": {
+        "coprime": "7 rows (B01,B02,B03,B10,B11,B12,B13): 3/5 iff contains {2,3} (3 rows 3/5, 4 rows 1)",
+        "non_coprime": "6 rows (B04,B05,B06,B07,B08,B09): 3/5 iff contains {2,3} (2 rows 3/5, 4 rows not)"
+      },
+      "per_class": {
+        "coprime": {
+          "B01": {
+            "contains_2_and_3": true,
+            "rho": "3/5",
+            "s": [
+              2,
+              3,
+              5
+            ]
+          },
+          "B02": {
+            "contains_2_and_3": false,
+            "rho": "1/1",
+            "s": [
+              3,
+              4,
+              5
+            ]
+          },
+          "B03": {
+            "contains_2_and_3": true,
+            "rho": "3/5",
+            "s": [
+              2,
+              3,
+              5
+            ]
+          },
+          "B10": {
+            "contains_2_and_3": false,
+            "rho": "1/1",
+            "s": [
+              3,
+              5,
+              8
+            ]
+          },
+          "B11": {
+            "contains_2_and_3": false,
+            "rho": "1/1",
+            "s": [
+              3,
+              5,
+              16
+            ]
+          },
+          "B12": {
+            "contains_2_and_3": true,
+            "rho": "3/5",
+            "s": [
+              2,
+              3,
+              5
+            ]
+          },
+          "B13": {
+            "contains_2_and_3": false,
+            "rho": "1/1",
+            "s": [
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "non_coprime": {
+          "B04": {
+            "contains_2_and_3": true,
+            "rho": "3/5",
+            "s": [
+              2,
+              3,
+              10
+            ]
+          },
+          "B05": {
+            "contains_2_and_3": false,
+            "rho": "1/1",
+            "s": [
+              2,
+              6,
+              5
+            ]
+          },
+          "B06": {
+            "contains_2_and_3": true,
+            "rho": "3/5",
+            "s": [
+              3,
+              10,
+              2
+            ]
+          },
+          "B07": {
+            "contains_2_and_3": false,
+            "rho": "1/2",
+            "s": [
+              2,
+              2,
+              4
+            ]
+          },
+          "B08": {
+            "contains_2_and_3": false,
+            "rho": "3/8",
+            "s": [
+              2,
+              2,
+              4
+            ]
+          },
+          "B09": {
+            "contains_2_and_3": false,
+            "rho": "1/4",
+            "s": [
+              2,
+              2,
+              4
+            ]
+          }
+        }
+      }
+    },
+    "OC4_ratio_set_observation": {
+      "coprime_values": [
+        "3/5",
+        "1/1"
+      ],
+      "description_confirmed": true,
+      "label": "owner observation confirmed as a DESCRIPTION of the frozen 13; its generalization (H-COP) was pre-registered and FALSIFIED",
+      "non_coprime_values": [
+        "1/4",
+        "3/8",
+        "1/2",
+        "3/5",
+        "1/1"
+      ]
+    }
+  },
+  "pattern_HCOP": {
+    "H-COP.a": {
+      "all_in_{1,3/5}": true,
+      "coprime_landed_rows": {
+        "PN1": "1/1",
+        "PN2": "1/1",
+        "PN3": "1/1",
+        "PN7": "1/1",
+        "PP1": "3/5",
+        "PP2": "3/5",
+        "PP3": "3/5",
+        "PP4": "3/5",
+        "PP5": "3/5",
+        "PP6": "3/5",
+        "PP7": "3/5",
+        "PP8": "3/5",
+        "PP9": "3/5"
+      },
+      "no_pair_coprime_exactly_1": true,
+      "rows_with_empty_window": [
+        "PN4",
+        "PN10"
+      ]
+    },
+    "H-COP.b": {
+      "count": 0,
+      "distinct_sub1_values": [],
+      "holds": false,
+      "needed_ge_3": true,
+      "noncoprime_landed_rows": {
+        "PN6": "1/1"
+      }
+    },
+    "caveat": "H-COP.b's battery rows skew to t=landing small-N instances; PN4/PN5/PN10 (the larger non-coprime/cop-row heavies) are untestable-in-window. Falsification is on the landed set.",
+    "owner_record_note": "Main's structural-hypothesis ledger: this falsifies H-COP (reframed from Main's OC4 observation). OC4's description of the frozen 13 was exact (scratch/p2_oc4.json); its generalization to new rows fails.",
+    "verdict": "FALSIFIED: H-COP.a holds (all coprime landed rows in {1, 3/5}, the no-pair ones exactly 1), but H-COP.b FAILS - all landed non-coprime rows are at 1 or 3/5, only ONE distinct sub-1 value instead of >= 3. The frozen-table five-value richness {1/4, 3/8, 1/2, 3/5, 1} did NOT reproduce on new non-coprime battery rows."
+  },
+  "pattern_HGATE": {
+    "battery_verdict": "CONFIRMED on the battery: 3/3 empty at min(s)>=4, 3/3 non-empty at min(s)<=3 (PN1 min=2, PN2 min=2, PN3 min=3, PN6 min=2 also landed non-empty).",
+    "frozen_table_consistency": "all 13 frozen rows have min(s) <= 3 and all have non-empty windows",
+    "prediction_source": "Main message, committed as addendum_HGATE_prediction.md + scratch/p2_hgate_order_proof.json BEFORE PN10 census finished",
+    "prospective_test": {
+      "census_supports": 3658900,
+      "min_s": 5,
+      "nonzero_supports": 0,
+      "outcome": "EMPTY as predicted",
+      "row": "PN10",
+      "s": [
+        5,
+        7,
+        8
+      ]
+    },
+    "retro_labeled": {
+      "PN4": {
+        "empty": true,
+        "min_s": 4,
+        "s": [
+          4,
+          5,
+          7
+        ]
+      },
+      "PN5": {
+        "empty": true,
+        "min_s": 4,
+        "s": [
+          4,
+          5,
+          6
+        ]
+      },
+      "PN6": {
+        "empty": false,
+        "min_s": 2,
+        "s": [
+          2,
+          6,
+          7
+        ]
+      },
+      "PN7": {
+        "empty": false,
+        "min_s": 3,
+        "s": [
+          3,
+          4,
+          7
+        ]
+      }
+    },
+    "significance": "If it holds, the gate-B programme's effective domain is exactly {instances with an order <= 3}: every ratio this target ever reported is conditional on that predicate (rule-15 named domain).",
+    "statement": "weight<=3 window non-empty iff min(s) <= 3 (min(s) >= 4 => empty)",
+    "status": "EVIDENCE (15 rows consistent, one prospective confirmation); mechanism from the dual product code NOT yet derived - OPEN; Main's caveats (single prior empty point, possible confound) inherited"
+  },
+  "pattern_P": {
+    "arm_PN": {
+      "detail": {
+        "PN1": "1/1",
+        "PN2": "1/1",
+        "PN3": "1/1",
+        "PN6": "1/1",
+        "PN7": "1/1"
+      },
+      "hits": 5,
+      "label": "WEAK prediction (anything but 3/5); empty-window rows untestable",
+      "misses": 0,
+      "rows_empty_window": 3,
+      "rows_landed": 5
+    },
+    "arm_PP": {
+      "detail": {
+        "PP1": "3/5",
+        "PP2": "3/5",
+        "PP3": "3/5",
+        "PP4": "3/5",
+        "PP5": "3/5",
+        "PP6": "3/5",
+        "PP7": "3/5",
+        "PP8": "3/5",
+        "PP9": "3/5"
+      },
+      "hits": 9,
+      "label": "STRONG prediction (exactly 3/5, one of five observed values)",
+      "misses": 0,
+      "rows": 9
+    },
+    "falsification_condition_restated": "any PP row != 3/5 or any PN row == 3/5 ends P (none occurred)",
+    "not_a_theorem": "P remains a window-level order-pattern hypothesis at t=(1,1,1), Lambda=Id; every value here is rho^window, not rho_inst.",
+    "overall": "P SURVIVES THE SECOND BATTERY: 9/9 on the discriminating arm, 3/3 landed on the weak arm, 3 untestable-in-window (PN4, PN5, PN10). P is NOT falsified. Out-of-sample record now 2 batteries + B11.",
+    "uniform_null_context": "(1/5)^9 ~ 2.0e-7 on the PP arm if the five observed corpus values were equally likely - an ILLUSTRATIVE figure, not a rigorously defined null; labeled as such"
+  },
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "pre_statement": "pre_statement.md committed as this directory's FIRST file (git bf541f0) BEFORE any battery computation; order proof scratch/p2_hgate_order_proof.json + prediction_order proof inside pre_statement",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "rows": [
+    {
+      "N": 24,
+      "P_match": true,
+      "beta": "2/1",
+      "candidate_count_total": 44,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP1",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 13,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        4
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 42,
+      "P_match": true,
+      "beta": "7/2",
+      "candidate_count_total": 77,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP2",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 43,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        7
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 48,
+      "P_match": true,
+      "beta": "4/1",
+      "candidate_count_total": 88,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP3",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 97,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        8
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 54,
+      "P_match": true,
+      "beta": "9/2",
+      "candidate_count_total": 99,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP4",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 109,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        9
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 66,
+      "P_match": true,
+      "beta": "11/2",
+      "candidate_count_total": 121,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP5",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 67,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        11
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 78,
+      "P_match": true,
+      "beta": "13/2",
+      "candidate_count_total": 143,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP6",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 157,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        13
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 96,
+      "P_match": true,
+      "beta": "8/1",
+      "candidate_count_total": 176,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP7",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 97,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        16
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 150,
+      "P_match": true,
+      "beta": "25/2",
+      "candidate_count_total": 275,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP8",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 601,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        25
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 192,
+      "P_match": true,
+      "beta": "16/1",
+      "candidate_count_total": 352,
+      "coprime": [
+        6
+      ],
+      "delta": 5,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PP9",
+      "prediction": "3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 193,
+      "rho_window": "3/5",
+      "s": [
+        2,
+        3,
+        32
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 40,
+      "P_match": true,
+      "beta": "5/2",
+      "candidate_count_total": 20,
+      "coprime": [
+        4
+      ],
+      "delta": 2,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PN1",
+      "prediction": "!3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 41,
+      "rho_window": "1/1",
+      "s": [
+        2,
+        4,
+        5
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 2,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 70,
+      "P_match": true,
+      "beta": "7/2",
+      "candidate_count_total": 35,
+      "coprime": [
+        10
+      ],
+      "delta": 2,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PN2",
+      "prediction": "!3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 71,
+      "rho_window": "1/1",
+      "s": [
+        2,
+        5,
+        7
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 2,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 105,
+      "P_match": true,
+      "beta": "7/3",
+      "candidate_count_total": 35,
+      "coprime": [
+        15
+      ],
+      "delta": 3,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PN3",
+      "prediction": "!3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 211,
+      "rho_window": "1/1",
+      "s": [
+        3,
+        5,
+        7
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 84,
+      "P_match": true,
+      "beta": "7/2",
+      "candidate_count_total": 42,
+      "census_method": "vectorized kernel over V-basis, cross-checked vs frozen _profile_census on PN6/PP2",
+      "coprime": false,
+      "delta": 2,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PN6",
+      "prediction": "!3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 43,
+      "rho_window": "1/1",
+      "s": [
+        2,
+        6,
+        7
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 2,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 84,
+      "P_match": true,
+      "beta": "7/3",
+      "candidate_count_total": 28,
+      "census_method": "vectorized kernel over V-basis, cross-checked vs frozen _profile_census on PN6/PP2",
+      "coprime": true,
+      "delta": 3,
+      "delta_proven_exact_for_best_witness": true,
+      "evidence_label": "MACHINE-VERIFIED (finite window)",
+      "id": "PN7",
+      "prediction": "!3/5",
+      "proof_cheaper_hit": null,
+      "proof_equal_hits": 1,
+      "q": 337,
+      "rho_window": "1/1",
+      "s": [
+        3,
+        4,
+        7
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "weight": 3,
+      "witness_verified_in_freeze": true
+    },
+    {
+      "N": 140,
+      "P_match": "UNTESTABLE-in-window (window empty; NOT a miss, NOT a confirmation)",
+      "beta": "7/4",
+      "coprime": true,
+      "empty_census_complete": true,
+      "empty_census_method": "vectorized kernel over V-basis (rref), complete over all supports of weight<=3; cross-checked against frozen _profile_census on non-empty instances PN6 (3486=3486) and PP2 (917=917)",
+      "empty_census_supports": 457450,
+      "evidence_label": "MACHINE-VERIFIED (empty-window census fact)",
+      "id": "PN4",
+      "outcome": "UNTESTABLE-in-window",
+      "prediction": "!3/5 (UNTESTABLE-in-window)",
+      "q": 421,
+      "rho_window": null,
+      "s": [
+        4,
+        5,
+        7
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "window_empty": true
+    },
+    {
+      "N": 120,
+      "P_match": "UNTESTABLE-in-window (window empty; NOT a miss, NOT a confirmation)",
+      "beta": "3/2",
+      "coprime": false,
+      "empty_census_complete": true,
+      "empty_census_method": "vectorized kernel over V-basis (rref), complete over all supports of weight<=3; cross-checked against frozen _profile_census on non-empty instances PN6 (3486=3486) and PP2 (917=917)",
+      "empty_census_supports": 288100,
+      "evidence_label": "MACHINE-VERIFIED (empty-window census fact)",
+      "id": "PN5",
+      "outcome": "UNTESTABLE-in-window",
+      "prediction": "!3/5 (UNTESTABLE-in-window)",
+      "q": 61,
+      "rho_window": null,
+      "s": [
+        4,
+        5,
+        6
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "window_empty": true
+    },
+    {
+      "N": 280,
+      "P_match": "UNTESTABLE-in-window (window empty; NOT a miss, NOT a confirmation)",
+      "beta": "8/5",
+      "coprime": true,
+      "empty_census_complete": true,
+      "empty_census_method": "vectorized kernel over V-basis (rref), complete over all supports of weight<=3; cross-checked against frozen _profile_census on non-empty instances PN6 (3486=3486) and PP2 (917=917)",
+      "empty_census_supports": 3658900,
+      "evidence_label": "MACHINE-VERIFIED (empty-window census fact)",
+      "id": "PN10",
+      "outcome": "UNTESTABLE-in-window",
+      "prediction": "!3/5 (UNTESTABLE-in-window)",
+      "q": 281,
+      "rho_window": null,
+      "s": [
+        5,
+        7,
+        8
+      ],
+      "t": [
+        1,
+        1,
+        1
+      ],
+      "window_empty": true
+    }
+  ],
+  "rule7_not_swept": [
+    "supports of weight >= 4 (OPEN everywhere; H-GATE evidence suggests weight-4 supports are where the action is at min(s)>=4)",
+    "non-basis field values inside dim>1 intersections",
+    "t != (1,1,1); eta binding constraints; non-identity Lambda",
+    "all (q,s) pairs not in the 19-row list; the frozen 13 rows NOT re-run (non-goal)",
+    "global rho_inst: each landing row certifies only [1/(3N), rho^window]",
+    "continuous beta; every asymptotic statement; TR26-150's truth itself (untouched)"
+  ],
+  "rule7_swept_set": "t=(1,1,1), Lambda=Id, the 19 pre-registered (q,s) pairs q in {11,13,17,41,43,61,67,71,97,109,157,193,211,281,337,421,601} with s as fixed in pre_statement P2-2; witnesses restricted to weight<=3 supports (complete census per instance) and the normalized reduced-basis candidate class; per-witness delta exactly closed at the best witness (all cheaper line-tuples absent, >=1 present). PN4/PN5/PN10 windows are EMPTY (complete censuses 457,450 / 288,100 / 3,658,900 supports, zero nonzero V n F^S) so they certify the emptiness fact, not a ratio.",
+  "tool_versions": {
+    "highspy": "1.15.1",
+    "numpy": "2.4.3 (kernel) / 2.5.2 (venv runs)",
+    "python": "3.14.3",
+    "python-flint": "0.9.0",
+    "solver": "HiGHS via highspy, exact modular MILP, every solution re-checked in F_q",
+    "sympy": "1.14.0"
+  },
+  "utc_frozen": "2026-08-30T23:08:16.796686+00:00"
+}

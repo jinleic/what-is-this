@@ -1,0 +1,60 @@
+{
+ "analytic_lemmas": {
+  "asymmetric_near_one_tail": "If t=min(1-x,1-y)<=delta and s=max(1-x,1-y)<=1/1024, T<=t[3+log(s/t)] and protocol_gain>=-h(st). The certified wedge_t_monotonicity shows the lower bound is minimized at t=delta. Writing s=delta*r, wedge_r_monotonicity includes both -m/r and the full -beta*m*delta*(2L-log r) derivative term and proves increase for r>=1; the r=1 value is wedge_tail_margin>0. This covers the asymmetric infinite wedge beyond the finite geometric shells.",
+  "mean_monotonicity": "Writing D_M=M E-A/2 with A=yh(x)+xh(y)>=0, D_m>=0 implies E=(D_m+A/2)/m>=0; therefore D_M>=D_m for every M>=m.",
+  "near_one_strip_tail": "At y=1, D_m(x,1)=(m-1/2)h(x). On x in [1/32,1-1/1024], entropy continuity and T<=mu(y) bound the total change for 1-y<=delta by 20[h(delta)+delta], below strip_tail_margin. The omitted small-x and near-(1,1) corners are covered separately.",
+  "near_one_tail": "For s=1-x<=t=1-y<=delta, the exact positive series for T gives T<=s[3+log(t/s)]; entropy continuity gives protocol_gain>=-h(st), with h(z)<=z(log(1/z)+1). After h(s)>=s log(1/s), the lower bracket is increasing in u=log(t/s) and its u=0 value is tail_margin>0.",
+  "optimizer": "The defining equality and stationarity equations (87)-(90) give D_m(x*,x*)=grad D_m(x*,x*)=0 exactly. The certified positive-definite Hessian on [17/25,7/10]^2 makes x* its minimum throughout the local box.",
+  "small_support": "For 0<=x<=1/32 and arbitrary 0<=y<=1, y[1+(1-x)(1-y)]<=1 gives pi(x,y)<=x<1/2 and protocol_gain>=0; mu decreasing gives T<=mu(y); concavity makes h(x)/x decreasing. Hence D_m>=xy[(m-1/2)h(1/32)/(1/32)-1/2], the certified small_boundary_margin."
+ },
+ "bulk_analytic_discharged": 3172,
+ "bulk_boxes": 524800,
+ "bulk_cells_per_axis": 1024,
+ "bulk_machine_unresolved_raw": 3172,
+ "bulk_unresolved_after_composition": 0,
+ "claim_status": "PROVED",
+ "identity": "F(P)=M E_{QxQ} D_M(x,y)/(xy), Q(dx)=xP(dx)/M",
+ "mirror_corner": {
+  "checked": 42486,
+  "machine_unresolved": 0
+ },
+ "mirror_strip": {
+  "analytic_discharged": 873,
+  "checked": 297984,
+  "first_power": 10,
+  "last_power": 300,
+  "machine_unresolved": 873,
+  "unresolved_after_composition": 0
+ },
+ "optimizer": {
+  "box": [
+   "17/25",
+   "7/10"
+  ],
+  "center_gradient": [
+   "[+/- 1.19e-69]",
+   "[+/- 1.19e-69]"
+  ],
+  "center_value": "[+/- 4.91e-70]",
+  "determinant_lower": 0.053300690692116466,
+  "hxx": "[0.5 +/- 0.0940]",
+  "hxy": "[-0.3 +/- 0.0340]",
+  "hyy": "[0.5 +/- 0.0940]",
+  "subdivisions": 32,
+  "third_suprema": {
+   "tddd": 4.185169605437005,
+   "tsdd": 1.277836784547746,
+   "tssd": 1.2778367850134074,
+   "tsss": 4.185169605437005
+  }
+ },
+ "report_sha256": "eb645792526578d115da8356f7d9378812164273900a60607691a8f32661f19a",
+ "small_boundary_cells": 32,
+ "small_boundary_margin": "[0.02193817233617755105377041082958045878461774217052762821008071797091 +/- 4.46e-69]",
+ "strip_tail_margin": "[0.00090842995373089452029835161585281025644239759904973998323482742166018 +/- 4.95e-72]",
+ "tail_delta": "2^-300",
+ "tail_margin": "[46.928046272416149626047717652971959221154421432341654585495822293775 +/- 2.23e-67]",
+ "wedge_r_monotonicity": "[0.07773742389385025450246932777090467933124635496879051865004586810851 +/- 7.17e-69]",
+ "wedge_t_monotonicity": "[0.19485348006885048275660577883210112713652819304731484452511520549678 +/- 3.90e-69]",
+ "wedge_tail_margin": "[22.514268448257730119376234049289382355464890639765975205861833595414 +/- 1.73e-67]"
+}

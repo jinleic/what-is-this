@@ -1,0 +1,113 @@
+{
+ "best_raw_gap": 0.0012589116172460058,
+ "beta": "0.100052559862893106664628299476947587796206184712648019054525",
+ "bounds": "[0,1]^9",
+ "calibration": {
+  "interpretation": "candidate calibration is float roundoff around structural zero",
+  "liu_candidate_raw_gap_float": -1.1102230246251565e-16
+ },
+ "claim_status": "COMPUTATIONAL EVIDENCE",
+ "constraints": [
+  "a1+a2<=1",
+  "mean>=p*x"
+ ],
+ "dps_parameter_solve": 80,
+ "mean_target": "0.617290912081264970069687097901027388373618567494242412799087",
+ "negative_raw_gap_found": false,
+ "not_claimed": "No exhaustive guarantee; differential evolution did not converge to every boundary zero and cannot prove Hypothesis 2.",
+ "report_sha256": "847e09422e55765f0e8cc1b777e454bbada80263ef794e0dd3762fdc86cb864a",
+ "runs": [
+  {
+   "elapsed": 3.7115709169884212,
+   "fun": 0.0012589130787500347,
+   "mean": 0.6172909264472237,
+   "message": "Maximum number of iterations has been exceeded.",
+   "nfev": 37279,
+   "seed": 20260829,
+   "simplex": 0.5621731969153411,
+   "success": false,
+   "x": [
+    0.22969159355016808,
+    0.332481603365173,
+    0.5400366447167303,
+    0.6172910923062214,
+    0.6172908735070336,
+    0.6172913080495509,
+    0.6172902178131923,
+    0.617290940406578,
+    0.6172909227182137
+   ]
+  },
+  {
+   "elapsed": 4.381496709014755,
+   "fun": 0.0012589246736335324,
+   "mean": 0.6172909375365676,
+   "message": "Maximum number of iterations has been exceeded.",
+   "nfev": 55688,
+   "seed": 20260830,
+   "simplex": 0.47936005601073567,
+   "success": false,
+   "x": [
+    0.21548646024904305,
+    0.2638735957616926,
+    0.22326553316338077,
+    0.6172911177736313,
+    0.617290888184523,
+    0.6172909935496955,
+    0.6172908480503472,
+    0.6172908422798581,
+    0.6172906554793526
+   ]
+  },
+  {
+   "elapsed": 4.101107500027865,
+   "fun": 0.0012589477986671982,
+   "mean": 0.6172909596532612,
+   "message": "Maximum number of iterations has been exceeded.",
+   "nfev": 44841,
+   "seed": 20260831,
+   "simplex": 0.553403472186881,
+   "success": false,
+   "x": [
+    0.13163788328196085,
+    0.42176558890492016,
+    0.21124751325161756,
+    0.6172907238785769,
+    0.6172908592060874,
+    0.617291032263371,
+    0.6172917872769202,
+    0.6172908214678684,
+    0.6172911887763465
+   ]
+  },
+  {
+   "elapsed": 3.8085909580113366,
+   "fun": 0.0012589116172460058,
+   "mean": 0.6172909250494898,
+   "message": "Maximum number of iterations has been exceeded.",
+   "nfev": 40063,
+   "seed": 20260832,
+   "simplex": 0.5831852006636924,
+   "success": false,
+   "x": [
+    0.3380802358964953,
+    0.24510496476719706,
+    0.5855928059613169,
+    0.6172909989223767,
+    0.6172909814282136,
+    0.617290915027088,
+    0.6172908645347969,
+    0.6172908834665178,
+    0.61729093981417
+   ]
+  }
+ ],
+ "seeds": [
+  20260829,
+  20260830,
+  20260831,
+  20260832
+ ],
+ "tool": "scipy.optimize.differential_evolution",
+ "total_evaluations": 177871
+}

@@ -1,0 +1,15 @@
+{
+ "linear_system_shape": [
+  192,
+  39
+ ],
+ "linear_feasibility_for_fixed_generic_factors": {
+  "rank_A": 39,
+  "rank_aug": 40,
+  "consistent": false,
+  "note": "NECESSARY-ONLY diagnostic: feasibility of THIS fixed factor family. NOT a bound on the tensor rank; the true Groebner question (312 unknowns) is beyond any exact solver here, as pre-registered."
+ },
+ "seconds": 0.24687790870666504,
+ "pre_registered_expected_verdict": "BUDGET-FAIL",
+ "verdict": "BUDGET-FAIL"
+}

@@ -1,0 +1,20 @@
+{
+  "note": "Proof-of-order artifact for the GB9 addendum: the B11 prediction was committed while the census was still running and BEFORE any B11 ratio existed.",
+  "committed_utc": "2026-08-30T13:39Z",
+  "pre_statement_sha256_at_commit": "53bab658175b647455483e71b5f3c1b4fcf6ca8d7d9b84484d22da50f48aa46a",
+  "census_state_at_commit": {
+    "phase": "census-running",
+    "supports_done": 1350000,
+    "supports_total": 2304200,
+    "percent": 58.6,
+    "candidates_found_so_far": "recorded in scratch/gateB_B11_census.json (values not inspected for ratio)"
+  },
+  "b11_result_file_exists_at_commit": false,
+  "b11_result_path": "cs/rs-pe3d/scratch/gateB_b11_result.json",
+  "predictions": {
+    "pattern_P": "rho(B11) = 1  (orders (3,5,16) contain 3 but not 2)",
+    "beta_degradation": "rho(B11) < 1/4  (beta = 16/3 is the grid maximum, so it must be the grid minimum ratio)",
+    "third_branch": "any other exact rational falsifies both"
+  },
+  "exclusion_E_independent_of_B11": "monotone-in-beta is excluded by the interleaved exact rows at q=31 (5/2 -> 3/5, 3 -> 1, 5 -> 3/5) and q=241 (5/3 -> 1, 5/2 -> 3/5, 8/3 -> 1)"
+}

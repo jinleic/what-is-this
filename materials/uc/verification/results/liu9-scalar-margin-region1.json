@@ -1,0 +1,101 @@
+{
+ "A0_branch": {
+  "hull_band": {
+   "cell": [
+    0,
+    0.6172909120812649,
+    0.6173042443781199
+   ],
+   "negative_cells": 0,
+   "worst_lower": "[0.0012498270826332400776264287263723350989383510412238136704097380842743787869091677453787971088864 +/- 1.91e-98]",
+   "x": "[m, 0.6205]"
+  },
+  "mean_value_lemma_band": {
+   "combined_bilinear_pointwise_failures": 0,
+   "lemma": "A0 >= combined - B L(x) x^2 (1-x)^2 with L(x) = log((1-x^2')/x^2')^-1 style mean-value bound on h(pi(x,x)) - h(x^2); combined >= 0 certified pointwise and the lemma tail is dominated by the certified margin",
+   "smallest_combined_lower": 0.0006135157996604731,
+   "worst_lemma_margin": 0.0,
+   "x": "[0.6205, 1]"
+  }
+ },
+ "beta_bracket": [
+  "0.10005255986289310",
+  "0.10005255986289312"
+ ],
+ "boundary_branch": {
+  "negative_cells": 0,
+  "worst_cell": [
+   4095,
+   0.6172012414484325,
+   0.6172909120812649
+  ],
+  "worst_lower": "[0.0010456427652659775188011965506604601646066534293987824328455527063734694320821812765847966213945 +/- 1.78e-98]",
+  "x": "[1/4, m]"
+ },
+ "claim_status": "PROVED",
+ "closed_form_checks_vs_gap_mp": [
+  {
+   "absdiff": "1.94469e-62",
+   "q": "0.7",
+   "x": "0.3"
+  },
+  {
+   "absdiff": "9.72346e-63",
+   "q": "0.49",
+   "x": "0.25"
+  },
+  {
+   "absdiff": "2.18778e-62",
+   "q": "0.34",
+   "x": "0.99"
+  },
+  {
+   "absdiff": "3.6463e-62",
+   "q": "0.158",
+   "x": "0.5454"
+  },
+  {
+   "absdiff": "0.0",
+   "q": "0.5",
+   "x": "0.7"
+  }
+ ],
+ "grid": {
+  "x_cells": 4096
+ },
+ "limitations": [
+  "Family A only (single-atom components, shared mass a=1)",
+  "x in [1/4, 1]; the small-x frontier adjoins the already-proved zero-support endpoint theorem"
+ ],
+ "m_bracket": [
+  "0.61729091208126497",
+  "0.61729091208126498"
+ ],
+ "method": "endpoint-pair interval arithmetic (lo, hi) arb pairs, no flint union; 4-corner products; concavity hulls for h; strict monotonicity for T; mean-value lemma near the x = 1 endpoint where naive hulls decorrelate; Arb precision 320",
+ "mutations": {
+  "flip_T_sign_hull_band": {
+   "expected": "FAIL",
+   "note": "a flipped T breaks the hull-band A0 lower bounds",
+   "observed": "PASSED",
+   "ok": false
+  },
+  "shrink_m_boundary": {
+   "expected": "FAIL",
+   "note": "halving the certified m bracket collapses the boundary-branch discharge to negative hulls",
+   "observed": "FAIL",
+   "ok": true
+  }
+ },
+ "region": {
+  "family": "Family A: P0 = delta_x, P1 = delta_1, shared mass a=1",
+  "q_range": "[max(0, (m-x)/(1-x)), 1]",
+  "theorem": "gapA is an exact concave quadratic in q with gapA(x,1)=0, so its feasible-band minimum sits at q_lo(x) (or equals 0); the region reduces to the two x-only curves A0(x) >= 0 on [m, 1] and gapA(x, q_lo) >= 0 on [1/4, m]",
+  "x_range": "[1/4, 1]"
+ },
+ "report_sha256": "31e13a8d9e3f80d68fa2eba8c4198dc660682948c548371843dd4623b20056cb",
+ "structural_inputs": [
+  "block diagonalization (liu9_block_copositive.py, PROVED)",
+  "gapA concave quadratic in q with gapA(x, 1) = 0"
+ ],
+ "tool": "liu9_scalar_margin_region1.py"
+}

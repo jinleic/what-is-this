@@ -1,0 +1,30 @@
+{
+ "block_kernel": {
+  "B00": "((1-q)^2/M) C_M + beta*q*(1-q)*k_pi",
+  "B01": "(q*(1-q)/M) C_M - beta*q*(1-q)*k_pi",
+  "B11": "(q^2/M) C_M + beta*q*(1-q)*k_pi",
+  "measures": "alpha_i(dx)=x P_i(dx)"
+ },
+ "claim_status": "OPEN_REDUCTION",
+ "equivalence": "The full raw gap equals <alpha0^2,B00>+<alpha1^2,B11>+2<alpha0 alpha1,B01>; H2 is exactly block copositivity on the positive paired measures with shared masses.",
+ "false_shortcut": {
+  "P0": "delta_0.063",
+  "P1": "delta_1",
+  "interpretation": "Refutes freezing C_M to C_m inside the full correction; does not refute H2 because the true raw gap is positive.",
+  "m_frozen_surrogate": "-0.0002420318687201133779224151881831721083995082240896829142485227691108510738056605",
+  "mean": "0.95315",
+  "q": "0.95",
+  "raw_gap_gap_mp": "0.0086245325020125083615462988566201990366931943779895024972112439424042055015232634"
+ },
+ "negative_mean_feasible_raw_gap_found": false,
+ "qone_kernel_report_sha256": "eb645792526578d115da8356f7d9378812164273900a60607691a8f32661f19a",
+ "refuted_routes": [
+  "k_pi is PSD",
+  "cross product kernel dominates both component diagonals",
+  "rank-one square completion",
+  "m-frozen global correction is nonnegative"
+ ],
+ "remaining_obligation": "Prove the displayed 2x2 block kernel copositive for every q in [0,1], mixture mean M>=m, and positive paired measures, or exhibit a negative raw-gap configuration.",
+ "report_sha256": "58de58843487ffbeb93162698c7ff54f3e27cbb833ecf6b46bc6db171a77cfe2",
+ "tool": "liu9_block_kernel.py"
+}

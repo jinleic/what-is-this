@@ -1,0 +1,43 @@
+{
+ "bottleneck": "q-degenerate seam at rho=1/1701",
+ "canonical_mass_argument": "Relabel each two-way atom split so the smaller fragment is the inserted atom; epsilon<=parent_mass/2<=1/2. Zero-mass, coincident-support, atom-permutation and inactive-law coordinates are gauges.",
+ "claim_status": "PROVED",
+ "component_reports": {
+  "boundary_layer": {
+   "path": "liu9-boundary-layer.json",
+   "report_sha256": "6b6f85dc91e113822e238574f2dfae1de1435a891e6d64ff7cd408bc9652fbdc"
+  },
+  "chart_cover": {
+   "path": "liu9-chart-cover.json",
+   "report_sha256": "410ada1675fdb8858bb11d9ed2ca13ba69b7cb6e96daf472f5f70b9eff49ecd8"
+  },
+  "mirror_layer": {
+   "path": "liu9-mirror-layer.json",
+   "report_sha256": "722e52bc21b930dfad1bf000f1b16d5e7bc26f4e91ef80631b733d9a147d088b"
+  },
+  "q_degenerate": {
+   "path": "liu9-qdegenerate-maximal.json",
+   "report_sha256": "353131d9124516841fe32da2a8f09829d401f9304890a604d91ff544ca693107"
+  },
+  "second_order": {
+   "path": "liu9-second-order.json",
+   "report_sha256": "0b1b5bfc11313af7c97224e06b14532fd3da647141bc6b1be7045cde536d2958"
+  }
+ },
+ "coverage": {
+  "interior_smooth_chart": true,
+  "mirror_support_boundary": true,
+  "q_degenerate_endpoints": true,
+  "q_seam_complete": true,
+  "quotient_gauges_removed": true,
+  "simultaneous_second_order_insertions": true,
+  "strict_mean_half_space": true,
+  "zero_support_boundary": true
+ },
+ "kappa": "4119063/33554432",
+ "mass_chart_radius": "1/2",
+ "not_claimed": "This is the local tube theorem. The separate complement/global branch-and-bound must still be accepted before Hypothesis 2 or Liu's conditional constant is promoted.",
+ "report_sha256": "4651ad293d5205a9ba416a3474fbc0b4ee6e553c762d4790f2ce7ccc83612742",
+ "tool": "liu9_tube.py",
+ "tube_radius": "1/1701"
+}

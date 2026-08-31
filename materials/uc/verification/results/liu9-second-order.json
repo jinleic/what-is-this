@@ -1,0 +1,129 @@
+{
+ "asymmetric": {
+  "axis_cells": 1666,
+  "certified": true,
+  "failures": [],
+  "negative_chat_cells": 544770,
+  "triangular_pairs": 1388611,
+  "worst_lower_bound": "0",
+  "worst_pair": [
+   [
+    "0",
+    "1/536870912",
+    "zero-tail"
+   ],
+   [
+    "0",
+    "1/536870912",
+    "zero-tail"
+   ],
+   "0"
+  ]
+ },
+ "dps": 90,
+ "elapsed_seconds": 61.249,
+ "endpoint_obstruction": {
+  "distance_squared": "[0.059020611324319776016 +/- 2.18e-22]",
+  "epsilon": "[0.61729091208126497007 +/- 3.14e-22]",
+  "interpretation": "pencil obstruction only; EHX=numerator=0 on {0,1}",
+  "pencil": "[-0.0072452311618145283924 +/- 1.25e-24]",
+  "pencil_upper": -0.0072452311618145275,
+  "q": "1/2",
+  "raw_gap": "0",
+  "raw_gap_structural_zero": true,
+  "y1": "1",
+  "y2": "1"
+ },
+ "exact_expansion": {
+  "certified": true,
+  "epsilon_dependent_entropy_arguments": 0,
+  "epsilon_squared_log_coefficient": "0",
+  "exact_degree": 2,
+  "probes": [
+   {
+    "q": "1/2",
+    "residuals": {
+     "distance_linear": "[+/- 6.22e-70]",
+     "distance_quadratic": "[+/- 5.58e-71]",
+     "linear": "[+/- 2.27e-68]",
+     "quadratic": "[+/- 2.75e-68]"
+    },
+    "y1": "1/5",
+    "y2": "9/10"
+   },
+   {
+    "q": "1/8",
+    "residuals": {
+     "distance_linear": "[+/- 3.77e-70]",
+     "distance_quadratic": "[+/- 8.23e-72]",
+     "linear": "[+/- 5.44e-69]",
+     "quadratic": "[+/- 7.79e-69]"
+    },
+    "y1": "1/100",
+    "y2": "99/100"
+   },
+   {
+    "q": "7/8",
+    "residuals": {
+     "distance_linear": "[+/- 3.93e-71]",
+     "distance_quadratic": "[+/- 4.36e-72]",
+     "linear": "[+/- 2.82e-68]",
+     "quadratic": "[+/- 2.79e-68]"
+    },
+    "y1": "3/5",
+    "y2": "7/10"
+   },
+   {
+    "q": "1/4",
+    "residuals": {
+     "distance_linear": "[+/- 2.22e-70]",
+     "distance_quadratic": "[+/- 1.51e-71]",
+     "linear": "[+/- 2.38e-68]",
+     "quadratic": "[+/- 1.75e-68]"
+    },
+    "y1": "1/3",
+    "y2": "2/3"
+   }
+  ],
+  "worst_residual": 2.8131085201666486e-68
+ },
+ "kappa": "4119063/33554432",
+ "mass_radius": "1/2",
+ "mean_excess": {
+  "cells": 1666,
+  "certified": true,
+  "delta_domain": "delta>=0 subject only to simplex feasibility",
+  "linear_margin": "[0.24 +/- 4.99e-3]",
+  "linear_margin_lower": 0.23501274656824525,
+  "mean_increase": "delta*x",
+  "quadratic_coefficient": "[0.63352758585746772652 +/- 4.56e-21]",
+  "quadratic_coefficient_lower": 0.6335275858574676,
+  "worst_cell": [
+   "1023/1024",
+   "1",
+   "one-tail"
+  ]
+ },
+ "report_sha256": "0b1b5bfc11313af7c97224e06b14532fd3da647141bc6b1be7045cde536d2958",
+ "symmetric": {
+  "cells": 1666,
+  "certified": true,
+  "slope_zero_exact": true,
+  "structural_zeros": [
+   "0",
+   "x"
+  ],
+  "worst_strict_cell": [
+   "3453327618062440070752441023181352812903/5000000000000000000000000000000000000000",
+   "3453632793843690070752441023181352812903/5000000000000000000000000000000000000000",
+   "x-window"
+  ],
+  "worst_strict_margin": "[2.6201652382899748821e-9 +/- 4.98e-29]",
+  "x_window": "1/32",
+  "x_window_minimum_curvature": "[1.4066905010714361354 +/- 3.69e-20]",
+  "x_window_minimum_curvature_lower": 1.406690501071436,
+  "zero_boundary_q_over_y2": "[+/- 0.196]",
+  "zero_boundary_q_over_y2_lower": 0.09106635180885411
+ },
+ "tool": "liu9_second_order.py"
+}

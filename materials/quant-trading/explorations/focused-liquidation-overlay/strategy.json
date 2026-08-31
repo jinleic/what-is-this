@@ -1,0 +1,256 @@
+{
+ "schema_version": 1,
+ "id": "focused-liquidation-overlay",
+ "title": "Frozen BTC/ETH post-onset liquidation-continuation screen on public Binance force-order events and Deribit index context",
+ "status": "falsified",
+ "returns_applicable": false,
+ "mechanism": "After 300 seconds of same-symbol liquidation silence within a continuous capture segment, test whether BTCUSDT or ETHUSDT price continues in the forceOrder pressure direction over 5 and 15 minutes. BUY liquidations define upward pressure and SELL liquidations downward pressure. Net continuation is direction*(P_h/P_0-1)-2bp. The frozen same-day screen met its event-count sample conditions and all six gates were false.",
+ "data_used": {
+  "primary_stream": {
+   "exchange": "Binance USD(S)-M Futures",
+   "stream": "!forceOrder@arr (All Market Liquidation Order Streams) and <symbol>@forceOrder",
+   "endpoint": "wss://fstream.binance.com/market using routed public/market websocket endpoints",
+   "unauthenticated": true,
+   "semantics": {
+    "push_behavior": "Snapshot streams: at most one push per symbol per 1000 ms; the 2026-04-10 changelog (effective 2026-04-14) changed the pushed snapshot from the latest to the LARGEST liquidation order within 1000 ms, meaning intra-second smaller liquidations are not observable on the stream at all.",
+    "payload_schema": "{\"e\":\"forceOrder\",\"E\":<event ms>,\"o\":{\"s\",\"S\",\"o\",\"f\",\"q\",\"p\",\"ap\",\"X\",\"l\",\"z\",\"T\"[,\"ps\",\"st\"]}} verified from official docs and live smoke frames",
+    "sampling_loss": "Documented and accepted: complete liquidation history is unavailable; only per-1s largest-order snapshots survive 2021-04-27 (snapshot push replaced realtime order data) and 2026-04-14 (largest-not-latest selection).",
+    "historical_availability": "GET /fapi/v1/allForceOrders stopped being maintained 2021-04-27; forceOrders REST query is user-scoped and limited to the past 90 days (2026-04-06 note). Therefore NO free complete historical liquidation dataset is claimed anywhere in this dossier."
+   },
+   "source_evidence": [
+    {
+     "url": "https://developers.binance.com/en/docs/llms-full.txt",
+     "retrieved_at": "2026-08-30T11:35:00Z",
+     "sha256": "computed at retrieval; 8,000,456 bytes",
+     "excerpt_citations": [
+      "USD(S)-M WebSocket Market Streams 1.0.0 spec: 'The All Liquidation Order Snapshot Streams push force liquidation order information for all symbols in the market. For each symbol, only the latest one liquidation order within 1000ms will be pushed as the snapshot. If no liquidation happens in the interval of 1000ms, no stream will be pushed.' (updated 2026-04-10 effective 2026-04-14: latest -> largest)",
+      "Changelog 2021-04-27: 'The following liquidation orders streams do not push realtime order data anymore. Instead, they push snapshot order data at a maximum frequency of 1 order push per second.' and 'GET /fapi/v1/allForceOrders stop being maintained and no longer accepts request.'",
+      "Changelog 2026-04-06: forceOrders endpoints 'Only support querying data in the past 90 days.'",
+      "Important-WebSocket-Change-Notice: forceOrder belongs to the /market routed endpoint; legacy unrouted URLs decommission after 2026-04-23."
+     ]
+    },
+    {
+     "url": "https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/Liquidation-Order-Streams",
+     "retrieved_at": "2026-08-30T11:40:00Z",
+     "note": "Canonical page (WAF-challenged HTML for plain fetchers; payload example confirmed via official llms-full corpus and search index): payload e/E/o{s,S,o,f,q,p,ap,X,l,z,T}"
+    }
+   ]
+  },
+  "context_streams_registered": [
+   {
+    "name": "Open interest (daily/5m statistics)",
+    "endpoints": [
+     "https://fapi.binance.com/futures/data/openInterestHist?symbol=...&period=5m",
+     "https://fapi.binance.com/fapi/v1/openInterest?symbol=..."
+    ],
+    "unauthenticated": true,
+    "note": "Restricted-region responses were received from this workstation (proxy egress refusal code 0/msg restricted-location), so OI capture is planned but not yet exercised from this host; run.py gate treats OI context as absent until real rows exist.",
+    "source_evidence": [
+     {
+      "url": "https://developers.binance.com/en/docs/llms-full.txt",
+      "retrieved_at": "2026-08-30T11:42:00Z",
+      "excerpt_citations": [
+       "GET /fapi/v1/openInterest - Open Interest: 'Get present open interest of a specific symbol.' (introduced 2019-12-19)",
+       "GET /futures/data/openInterestHist - Open Interest Statistics: 'Query open interest stats' (MARKET_DATA)"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "Aggregate trade stream (price/pressure context)",
+    "endpoint": "<symbol>@aggTrade on the same routed websocket",
+    "unauthenticated": true,
+    "note": "Live-verified during smoke: btcusdt@aggTrade frames received with documented fields (p,q,T,m)."
+   },
+   {
+    "name": "Mark price stream (mark context for overlay triggers)",
+    "endpoint": "<symbol>@markPrice@1s / !markPrice@arr",
+    "unauthenticated": true,
+    "note": "Live-verified during smoke: markPriceUpdate frames show p/ap/P/i/r/T/st fields exactly as documented."
+   }
+  ],
+  "forbidden": "Ordinary trade streams are NOT treated as liquidations; no inference of complete liquidations from trades is permitted per direction contract."
+ },
+ "development_window": null,
+ "validation_window": null,
+ "holdout_accessed": false,
+ "trial_count": 6,
+ "parameters": {
+  "capture_streams": [
+   "!forceOrder@arr"
+  ],
+  "capture_url": "wss://fstream.binance.com/market/ws",
+  "max_bytes_per_day": 268435456,
+  "max_total_bytes_cumulative": 10737418240,
+  "event_id": "sha256(stream|o.E|s|S|o|f|q|p|ap|X|l|z|T)[:32] hex",
+  "independence_definition": "distinct (symbol, UTC minute) and not within the same 1000ms push window for that symbol; duplicated deliveries collapse to the first occurrence while remaining visible as duplicate_event_ids in replay",
+  "gate_min_independent_events": 10,
+  "overlay_rule": "Frozen in accelerated-intraday-contract.json: BTC/ETH onsets after 300s same-symbol silence; one P0/P5m/P15m cohort; direction-adjusted continuation less 2bp; 20-onset event stop and 90-minute hard cap",
+  "accelerated_contract": "quant-trading/explorations/accelerated-intraday-contract.json"
+ },
+ "signal_timing": "Prospective-only exchange clocks. Binance body.E defines onset; Deribit data.timestamp aligns P0/P5m/P15m within frozen 5-second tolerances. Earliest registered stop was 2026-08-30T17:26:54.496Z.",
+ "cost_model": "Fixed 2bp implementation haircut per registered horizon; no leverage, order, fill, or deployable-return claim.",
+ "benchmark": "Zero net signed continuation after the 2bp haircut; this is a same-day mechanism falsification screen, not a strategy return series.",
+ "metrics": {
+  "returns": "No tradable return stream or returns.csv. Registered net signed continuation medians were -0.0561% at 5m and -0.00446% at 15m; screen status falsified.",
+  "smoke_capture": {
+   "file": "quant-trading/data/raw/focused/live/liquidations/smoke-forceOrder-20260830.jsonl",
+   "events": 7,
+   "span_seconds": 29.459,
+   "symbols_observed": [
+    "SKRUSDT",
+    "牛来USDT",
+    "ASTERUSDT",
+    "TRUMPUSDT"
+   ],
+   "connected": true,
+   "subscription_acked": true,
+   "frames_exactly_matched_documented_schema": true
+  },
+  "collector_selftests": {
+   "lifecycle_suite": "verify_capture_lifecycle.py all proofs pass",
+   "proofs": [
+    "reconnect_keeps_sink",
+    "exact_ack",
+    "midnight_cap_attribution",
+    "cap_freeze",
+    "sigterm_stop_aware",
+    "missing_state_floor"
+   ],
+   "sigterm_clean_exit_zero": true,
+   "ready_banner_exact_ascii_after_subscribe_ack": true
+  },
+  "oi_snapshot_helper": {
+   "function": "fetch_open_interest_snapshot() bounded 5s unauthenticated per-event helper; fails closed (None) on region block/timeout/schema drift",
+   "tested_from_this_egress": "OI REST returns restricted-location message; helper returns None and honest absence is recorded (no fabricated context)"
+  },
+  "fast_intraday": {
+   "contract": "quant-trading/explorations/accelerated-intraday-contract.json",
+   "result": "quant-trading/explorations/focused-liquidation-overlay/fast_intraday_results.json",
+   "review_status": "independently-cleared",
+   "earliest_stop_utc": "2026-08-30T17:26:54.496Z",
+   "cohort": "20 complete onsets; BTC 8/ETH 12; BUY 12/SELL 8; 9 nonempty 15m blocks",
+   "gate_outcome": "all six registered gates false",
+   "status": "falsified"
+  }
+ },
+ "first_falsification_gate": "Frozen accelerated screen: at least 20 complete P0/P5m/P15m onsets, at least five per asset and side, and six nonempty onset blocks; then require positive 5m/15m medians, at least 60% hit rates, positive medians for both assets, and at least 60% positive block medians.",
+ "gate_result": {
+  "sample_conditions_all_met": true,
+  "earliest_stop_utc": "2026-08-30T17:26:54.496Z",
+  "complete_onsets": 20,
+  "by_asset": {
+   "BTCUSDT": 8,
+   "ETHUSDT": 12
+  },
+  "by_side": {
+   "BUY": 12,
+   "SELL": 8
+  },
+  "nonempty_15m_blocks": 9,
+  "median_net_5m": -0.0005609002200866129,
+  "median_net_15m": -0.000044556608810164376,
+  "hit_rate_5m": 0.25,
+  "hit_rate_15m": 0.5,
+  "asset_median_15m": {
+   "BTCUSDT": 0.000002622789035655772,
+   "ETHUSDT": -0.000044556608810164376
+  },
+  "positive_block_fraction_15m": 0.4444444444444444,
+  "false_gates": 6,
+  "verdict": "falsified"
+ },
+ "leakage_checks": [
+  "No embargoed or historical liquidation data was downloaded or claimed; no allForceOrders-style historical scrapes were attempted.",
+  "No current-time values enter any computed historical result; only retrieval metadata and prospective capture timestamps exist.",
+  "The overlay rule, thresholds, clocks, cohort, stopping rule, and unavailable-value semantics were frozen before outcome analysis; no post-outcome rescue was permitted.",
+  "Replay recomputes event ids independently from the exchange payload and reports any mismatch rather than trusting the collector."
+ ],
+ "risks": [
+  "Sampling loss is structural: per 1000ms per symbol only the LARGEST order is published (since 2026-04-14); earlier it was the latest. Any overlay definition must be robust to unobserved intra-second liquidations.",
+  "No complete history exists (allForceOrders retired 2021; forceOrders user-scoped 90 days), so any claim of historical completeness would be fabrication; this dossier refuses such claims.",
+  "Open interest REST returns a restricted-location message from this egress; OI context may need an alternative lawful public source or server-side capture.",
+  "Single venue (Binance) initially; cross-venue semantics are consolidated in the UM+CM merged streams post-CM-migration (st/ps fields) and must be re-verified after future exchange changes.",
+  "Liquidation prints can be revision-sensitive: ps/pair and st fields were appended in the CM migration; schema drift must be detected by replay validation, which recomputes canonical ids.",
+  "Raw capture is at-least-once: re-delivery across reconnects/restarts is possible and dedup is enforced at replay time, not in raw storage.",
+  "Persistent live capture is ACTIVE: Li quantities/OI counts change continuously; all numbers in persistent_launch_snapshot are point-in-time parse-only snapshots. All 108 OI snapshots so far are failed-closed (no OI context; no returns implication)."
+ ],
+ "next_experiment": "Stop this continuation mechanism. Do not extend sampling, change thresholds, or reinterpret the active capture as a reason to rescue it. fast_context.py is available only for a separately preregistered mechanism with a new event-count stopping rule.",
+ "collector_guarantees": {
+  "raw_delivery": "at-least-once across reconnects/restarts (in-process dedup best-effort; replay-side dedup on deterministic event ids is authoritative)",
+  "reconnect": "sink stays open across reconnects; write_line reopens/rotates on demand; failure handlers persist controls before retrying",
+  "ack_contract": "SUBSCRIBE ready only on exact {\"id\":1,\"result\":null} with no error key; bounded (30s) stop-aware wait; foreign-id result frames and error frames rejected",
+  "caps": "256 MiB/day + 10 GiB cumulative, fail-closed; caps checked against TARGET file day; rotate-before-every-write; once tripped, accounting frozen, sink closed, exit 3 out-of-band; state total floored by on-disk bytes each startup",
+  "rotation": "daily UTC; rotation controls written into the NEW day file before ordinary writes",
+  "sigterm": "stop-aware sliced sleeps; bounded exit",
+  "exactly_once_claim_removed": true,
+  "lifecycle_proofs": {
+   "suite": "verify_capture_lifecycle.py",
+   "split": "deterministic no-socket unit proofs vs bounded live-network smoke, reported separately",
+   "unit_proofs_deterministic_no_socket": [
+    "reconnect_keeps_sink",
+    "exact_ack",
+    "midnight_cap_attribution",
+    "cap_freeze",
+    "missing_state_floor",
+    "near_cap_startup",
+    "near_cap_sigterm",
+    "oi_worker_unit",
+    "oi_idle_start_then_event",
+    "worker_cap_trip_stops_collector"
+   ],
+   "live_smoke_real_network": [
+    "sigterm_live_smoke"
+   ],
+   "latest_results": "11/11 pass (10 unit + 1 live)"
+  },
+  "oi_enrichment": {
+   "wired": true,
+   "queue": "bounded asyncio.Queue(64) with true waiting semantics (idle-start safe; no popleft-on-empty)",
+   "rate_limit": "60s per symbol; counted drops when full",
+   "records": "per-event oi_snapshot lines (status ok or failed-closed) through the same cap-checked sink",
+   "coordination": "connect loop and OI worker coordinated via FIRST_COMPLETED wait; any OI-side CapExceeded becomes the shared terminal cap reason: loop stops, close+save, exit 3; cap never swallowed"
+  },
+  "transport_shapes": {
+   "accepted": [
+    "wrapped {\"stream\":\"!forceOrder@arr\",\"data\":{...}} (combined subscriptions)",
+    "raw {\"e\":\"forceOrder\",...} (dynamic SUBSCRIBE on /market/ws — this is what the persistent launch actually emits)"
+   ],
+   "canonicalization": "raw forceOrder maps to canonical !forceOrder@arr; wrapped/raw of the same event produce the IDENTICAL deterministic event id (cross-shape dedup proven); unknown/ambiguous raw event types fail closed as unknown_raw_event_type controls (never guessed into events)",
+   "bug_history": "P1 defect from actual persistent launch: receive loop previously dropped every raw payload (control.type=unwrapped_frame, zero events). Fixed; prior smoke evidence that used wrapper-only fixtures is RETRACTED as proof of live event capture. Live raw-path capture is now proven by a REAL bounded smoke requiring >=1 persisted kind=event (9 real events captured in the latest run)."
+  },
+  "authoritative_capture_artifact": {
+   "path": "quant-trading/data/raw/focused/live/liquidations/postfix-smoke-20260830/liquidation-capture-20260830.jsonl",
+   "final_bytes": 14082,
+   "sha256": "45af7e7ffdbc78fc4c2f6acd80edc7e9be6821e5cd00743108f93ef0f2939753",
+   "events": 21,
+   "oi_snapshots_failed_closed": 10,
+   "oi_snapshots_ok": 0,
+   "controls": 5,
+   "unwrapped_frames": 0,
+   "supersedes": "the earlier ephemeral 9-event live smoke claim is REPLACED by this durable 21-event artifact",
+   "replay": {
+    "events_total": 21,
+    "independent_registered": 11,
+    "distinct_symbols": 10,
+    "schema_errors": 0,
+    "event_id_mismatches": 0,
+    "duplicate_event_ids": 0,
+    "order_violations": 0,
+    "gate": "refused-insufficient-context",
+    "returns": null
+   },
+   "manual_cross_check": {
+    "events": 21,
+    "distinct_symbol_minute": 11,
+    "distinct_symbols": 10
+   }
+  },
+  "replay_normalization": {
+   "event_body": "run.py event_body(payload) = payload.get('data', payload) is the single source of truth used by validation, order checks, independence, sample and all symbol logic, so RAW canonical payloads are fully validated (previously they bypassed forceOrder schema/order checks and symbols resolved to None)",
+   "date_bounds": "date-only --end is inclusive of that whole UTC day via a next-day exclusive bound; --end values with a time component keep exact semantics (verified: 2026-08-30 => 21 events; 2026-08-30T13:33:00Z => 20 events)"
+  }
+ },
+ "persistent_launch": "active but non-blocking; no result waits on continued capture",
+ "capture_status": "active-not-blocking"
+}

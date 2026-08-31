@@ -1,0 +1,59 @@
+{
+ "budget": 5000001,
+ "max_concurrent": 5,
+ "slice_count": 16,
+ "slices": {
+  "10": {
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "11": {
+   "stage": "running"
+  },
+  "12": {
+   "stage": "running"
+  },
+  "13": {
+   "stage": "running"
+  },
+  "14": {
+   "stage": "running"
+  },
+  "15": {
+   "stage": "running"
+  },
+  "2": {
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "3": {
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "4": {
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "5": {
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "6": {
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "7": {
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "8": {
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "9": {
+   "exit_code": 1,
+   "stage": "done"
+  }
+ },
+ "started_utc": "2026-08-29T14:56:43-0700"
+}
