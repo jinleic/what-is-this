@@ -1,0 +1,82 @@
+{
+  "artifact_path": "static_guard.json",
+  "campaign_id": "2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_q4-total-output-orbit-mass",
+  "completed_utc": "2026-08-31T10:27:58Z",
+  "cpu_s": 0.382562,
+  "dual_candidates": [
+    "ba_total_orbit_mass",
+    "uniform"
+  ],
+  "evidence_label": "MACHINE-VERIFIED",
+  "forbidden_dual_candidates": [
+    "ba_word"
+  ],
+  "manifest_sha256": "8767ef7549c6682fb3b7c955b5158a503c47149f924ee809e5e1d0476cc059ac",
+  "negative_width_plant_rejected": true,
+  "q3_n11_excluded": true,
+  "q4_n5_census_anchor": {
+    "evidence_label": "MACHINE-VERIFIED",
+    "input_orbit_size_sum": 1024,
+    "n": 5,
+    "observed": [
+      31,
+      50,
+      631,
+      332,
+      963
+    ],
+    "output_orbit_size_sum": 1365,
+    "status": "PASS"
+  },
+  "q4_value_equivariance_and_position_plant": {
+    "position_control": {
+      "A_original": 1,
+      "A_position_permuted": 2,
+      "position_permuted_x": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "status": "BREAKS_AS_REQUIRED",
+      "x": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "y": [
+        1,
+        0
+      ]
+    },
+    "q4_joint_equivariance_checks": 130560
+  },
+  "resume_rows_validated": 0,
+  "row_box_rows": 24,
+  "schema": "delcap-q4-total-output-orbit-mass-v1",
+  "source_sha256": "469e31a7cb59712d0eea6e5d932681fce63ff8eecd78b093d2da37be89ae09d7",
+  "split_output_counterfactual": {
+    "candidate_rejected_before_KL": true,
+    "evidence_label": "MACHINE-VERIFIED",
+    "orbit_total_uniform_control": "PASS",
+    "planted_counts": {
+      "(0,)": 3,
+      "(1,)": 1,
+      "all_other_words": 2
+    },
+    "split_audit": {
+      "evidence_label": "MACHINE-VERIFIED",
+      "first_mixed_output_orbit": 1,
+      "generator_checks": 4095,
+      "generator_failures": 5,
+      "mixed_output_orbits": 1,
+      "status": "SPLIT_REJECT"
+    },
+    "status": "BREAKS_AS_REQUIRED"
+  },
+  "status": "PASS",
+  "timing_evidence_label": "COMPUTATIONAL-EVIDENCE",
+  "wall_s": 0.382709,
+  "zero_support_dual_returns_infinity": "PASS"
+}

@@ -1,0 +1,194 @@
+{
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateB-gb6-mechanism",
+    "p": 0.003,
+    "basis": "Z",
+    "rounds": 12,
+    "base_seed": 20260829,
+    "shots_shared": 200000,
+    "design": "one shared seeded stream decoded by all four decoders (paired)",
+    "shared_arm": "gb6-shared",
+    "rungs": {
+      "beam8": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "beam32": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "beam64": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 1
+      }
+    },
+    "bposd": {
+      "max_iter": 30,
+      "bp_method": "ms",
+      "schedule": "parallel",
+      "osd_method": "osd_cs",
+      "osd_order": 10,
+      "prior_model": "merged DEM heterogeneous error_channel",
+      "shards": 48,
+      "workers": 10
+    },
+    "clauses": {
+      "M1": "f(beam8) >= f(beam32) >= f(beam64) and beam8/beam64 ratio CI excludes 1",
+      "M2": "beam8/bp30+osd ratio CI excludes 1 with the same direction as the frozen 1e-3 point (<1)",
+      "M3": "f(beam64) <= f(beam32)"
+    },
+    "bootstrap": {
+      "draws": 100000
+    },
+    "pre_statement": "GB6 + GB5a"
+  },
+  "config_hash12": "bd658a8a9711",
+  "circuit_sha256": "690b3b4450ea9cc20bd17d69a5b27379817c705eff7c04860eb0e072010e5e8f",
+  "dem_sha256": "e9109c1a3f920b742386467ead012f4f33de41d667494dd01cfbab5c2614466e",
+  "circuit_file": "BB_144_144_12_memory_Z_p0.003_sr12_derived_p1e-3_argrescale.stim",
+  "circuit_derivation": "noise-argument-only rescale (0.001)->(0.003) of the pinned IonQ Z p=1e-3 circuit",
+  "dem_dimensions": {
+    "detectors": 936,
+    "errors": 8784,
+    "observables": 12
+  },
+  "sampling_seed": 9102658219668206669,
+  "runner_sha256": "cabcd2a7cc87025b3c1d8c008a3a539e13bdb5404b7b9533149ccf4266357997",
+  "ladder_runner_sha256": "1bc294c81d5fc612664795a0bf50cf9f83038d0e157127b20a548924951fdeea",
+  "bootstrap_source_sha256": "b6a9729b7f126f597131f0bda535d91e547d136a205eed35a085c49c7d11bb5c",
+  "bp_osd_source_sha256": "3a753f46bf404b4bcf07111bfe22c76bf4f3c901b758caa65738e6c6b28055aa",
+  "beam_source_sha256": "f7da2cacdf01164702feaca32062fe5966602a19d14f19e4394fa0016406d104",
+  "beam_binary_sha256": "a480050b204112655f6c1939227f963420b0fbf060e55911d0189f6f15278b55",
+  "beam_equivalence_evidence": [
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam8_p0.001_n2000.json",
+      "sha256": "68c97758f93fe418b961548c2191131ef3a8fb0154160b144f428b68facf708e",
+      "rung": "beam8",
+      "p": 0.001,
+      "shots": 2000,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam8_p0.003_n300.json",
+      "sha256": "233e79422faa7b7580afc65d31ba2041b00d15fc931872016864d72e9ca0edd1",
+      "rung": "beam8",
+      "p": 0.003,
+      "shots": 300,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam32_p0.001_n2000.json",
+      "sha256": "c21c7bbb0bbf1a62ba3b3f94d67fefae8ce6e4f18ebf68172c5cc2cb73c53a1b",
+      "rung": "beam32",
+      "p": 0.001,
+      "shots": 2000,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=32 initial_iters=40 iters_per_round=30 max_rounds=10 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam32_p0.003_n300.json",
+      "sha256": "0f720641978b6020019a38af4148f45b29939d658ce72eae0578982bf2348a3b",
+      "rung": "beam32",
+      "p": 0.003,
+      "shots": 300,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=32 initial_iters=40 iters_per_round=30 max_rounds=10 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam64_p0.001_n2000.json",
+      "sha256": "cb25c6fbf0a40283b39d4c0b30e86282067f7ae311b3afea95c98cea6b737e9b",
+      "rung": "beam64",
+      "p": 0.001,
+      "shots": 2000,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=64 initial_iters=40 iters_per_round=30 max_rounds=20 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam64_p0.003_n300.json",
+      "sha256": "595d6f5a92cc0bfa2dc52d74923f29580b6672a2f101c6fa8639b4afac85ac6d",
+      "rung": "beam64",
+      "p": 0.003,
+      "shots": 300,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=64 initial_iters=40 iters_per_round=30 max_rounds=20 num_results=1"
+    }
+  ],
+  "bposd_prior_check": {
+    "columns": 8784,
+    "distinct_probabilities": 9,
+    "minimum": 0.0015999999999997986,
+    "maximum": 0.011094623648486429,
+    "sha256_float64": "9f6d4fc722b351fd588627dc7118c8ea46e4c03476f2e08f62db9594945db86c",
+    "configured_channel_exact": true
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "stim": "1.16.0",
+    "ldpc": "2.4.1"
+  },
+  "pre_statement": "pre_statement.md Gate B revisions GB6 + GB5a",
+  "run_id": "20260901T135902Z_71377291_ddeb5cde09fe",
+  "target": "physics/qldpc-dec",
+  "gate": "gateB-gb6-mechanism",
+  "agent": "jinleic",
+  "prereg_sha256": "754de6894b9854626e3eedd243b79462c53c8a0504d92e1daa27af8b980f974f",
+  "status": "RUNNING",
+  "control_plane_created_utc": "2026-09-01T13:59:02Z",
+  "harness_created_utc": "2026-09-01T13:59:11.065674+00:00"
+}

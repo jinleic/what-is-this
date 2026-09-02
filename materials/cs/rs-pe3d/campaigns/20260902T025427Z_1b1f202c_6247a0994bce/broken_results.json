@@ -1,0 +1,14 @@
+{
+  "CPU_seconds": 0.00010000000000000286,
+  "checks_passed_before_failure": {
+    "runtime.nice": {
+      "detail": 15,
+      "pass": true
+    }
+  },
+  "error": "AssertionError(\"runtime.bytecode: {'sys': True, 'env': '1'}\")",
+  "gate": "H-3ROW-DETERMINANTAL",
+  "run_id": "20260902T025427Z_1b1f202c_6247a0994bce",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/jinleic/jinleic-workspace/cs/rs-pe3d/campaigns/20260902T025427Z_1b1f202c_6247a0994bce/run_determinantal.py\", line 821, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/jinleic/jinleic-workspace/cs/rs-pe3d/campaigns/20260902T025427Z_1b1f202c_6247a0994bce/run_determinantal.py\", line 770, in main\n    check(\"runtime.bytecode\", sys.dont_write_bytecode and os.environ.get(\"PYTHONDWRITEBYTECODE\") == \"1\",\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n          {\"sys\": sys.dont_write_bytecode, \"env\": os.environ.get(\"PYTHONDONTWRITEBYTECODE\")})\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jinleic/jinleic-workspace/cs/rs-pe3d/campaigns/20260902T025427Z_1b1f202c_6247a0994bce/run_determinantal.py\", line 59, in check\n    raise AssertionError(f\"{name}: {detail!r}\")\nAssertionError: runtime.bytecode: {'sys': True, 'env': '1'}\n",
+  "wall_seconds": 9.691703598946333e-05
+}

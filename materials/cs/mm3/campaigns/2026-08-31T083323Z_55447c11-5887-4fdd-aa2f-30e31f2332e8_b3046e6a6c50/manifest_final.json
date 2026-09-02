@@ -1,0 +1,147 @@
+{
+  "campaign": "2026-08-31T083323Z_55447c11-5887-4fdd-aa2f-30e31f2332e8_b3046e6a6c50",
+  "status": "FROZEN_COMPLETE_NO_LE54",
+  "freeze_utc": "2026-08-31T18:41:35Z",
+  "historical_precompute_state": {
+    "manifest_path": "manifest.json",
+    "manifest_sha256": "a8bd32dc8e69812d6e5f1d3d46c100584707e7f754a9a8511df145a4c4f763bf",
+    "manifest_status_preserved": "COMPUTE_PENDING",
+    "precompute_ledger_path": "checksums_precompute.sha256",
+    "precompute_ledger_sha256": "89fbcf283566eafa9af8b449530f1e4aea149798dbf9baa5bafa2d0a4336a9f4",
+    "precompute_ledger_rows_verified": 17
+  },
+  "pre_registration": {
+    "pre_statement_first_file": true,
+    "pre_statement_path": "pre_statement.md",
+    "pre_statement_sha256": "82e5668564d13ecca94629472de511cfd9e10624f78d230de4cb2f3e43ef0c78",
+    "pre_statement_commit": "5be2dd3",
+    "amendment_1_path": "amendment_1_reporting_only.md",
+    "amendment_1_sha256": "de6f009eae6fe10e282a2b97414558f7768f337625355a350bfeaadbdbef2bd4",
+    "amendment_1_commit": "83a0f8b",
+    "amendment_2_path": "amendment_2_precompute_asrun.md",
+    "amendment_2_sha256": "efa3b3cb187065202b1ec945aca2d0e2188eb8b8cc2667dd7f604f9f6a33e675"
+  },
+  "as_run": {
+    "source_sha256": "b3046e6a6c506ffd5c78871a9f057770a552968314ac6fd225ad60e2b1d4e77c",
+    "frozen_command_path": "asrun/frozen_command.sh.asrun",
+    "frozen_command_sha256": "55c23029adc490179f934fa87b6225127457901f5c1e40e2699d8f7b7ca952cf",
+    "frozen_launcher_path": "asrun/frozen_launcher.py.asrun",
+    "frozen_launcher_sha256": "f94f57c5e723923abd6dcac28b07e758d19b8de817805d6134cbc6381a6ad14d",
+    "command": "/Users/jinleic/jinleic-workspace/cs/mm3/campaigns/2026-08-31T083323Z_55447c11-5887-4fdd-aa2f-30e31f2332e8_b3046e6a6c50/asrun/frozen_command.sh.asrun",
+    "release_gate": {"MM3_CAMPAIGN_RELEASED": "1"},
+    "resource_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "nice": 10,
+    "debug_required_and_observed": true,
+    "all_frozen_dependency_hashes_verified_before_import": true
+  },
+  "domain": {
+    "decompositions": ["mws59", "stapleton60"],
+    "T_size": 6960,
+    "data_nodes": 145,
+    "full_raw_scheme_instances": 2022921216000,
+    "data_triples_enumerated": 6097250,
+    "fiber_multiplier_per_sigma": 110592,
+    "sigma_multiplier": 3,
+    "alphabet": [-1, 0, 1],
+    "action_standard": "U'=P^-1 U Q^-T; V'=Q^T V R^-T; W'=P^T W R"
+  },
+  "per_decomposition": {
+    "mws59": {
+      "survivor_data_triples": 5796,
+      "valid_scheme_instances_all_sigma": 1922973696,
+      "min_total_lb": 56,
+      "max_total_lb": 74,
+      "upper_median_total_lb": 67,
+      "minimizer_count_data_triples": 2,
+      "nonmonomial_involving_min_total_lb": 56,
+      "flags_le_54": 0,
+      "all_monomial_data_total_lb": 56
+    },
+    "stapleton60": {
+      "survivor_data_triples": 4800,
+      "valid_scheme_instances_all_sigma": 1592524800,
+      "min_total_lb": 58,
+      "max_total_lb": 76,
+      "upper_median_total_lb": 67,
+      "minimizer_count_data_triples": 9,
+      "nonmonomial_involving_min_total_lb": 58,
+      "flags_le_54": 0,
+      "all_monomial_data_total_lb": 58
+    }
+  },
+  "aggregate": {
+    "survivor_data_triples": 10596,
+    "valid_scheme_instances_all_sigma": 3515498496,
+    "min_total_lb": 56,
+    "max_total_lb": 76,
+    "upper_median_total_lb": 67,
+    "minimizer_count_data_triples": 2,
+    "nonmonomial_involving_min_total_lb": 56,
+    "flags_le_54": 0,
+    "escalation_triggered": false
+  },
+  "evidence": {
+    "strength": "MACHINE-VERIFIED exact integer census and complete finite subset DFS; no float",
+    "lower_bounds_not_upper_bound_circuits": true,
+    "solver_statuses": {
+      "SAT": "not invoked",
+      "SMT": "not invoked",
+      "ILP": "not invoked",
+      "floating_point_optimizer": "not invoked"
+    }
+  },
+  "toolchain_and_machine": {
+    "python": "3.14.3",
+    "numpy": "2.5.2",
+    "os": "Darwin 25.5.0",
+    "architecture": "arm64",
+    "cpu": "Apple M3 Ultra"
+  },
+  "timing_computational_evidence_only": {
+    "campaign_seconds": 215.63207066606265,
+    "source": "campaign_result.json",
+    "used_for_adjudication": false
+  },
+  "report_amendment_compliance": {
+    "amendment_1_applied": true,
+    "retracted_unique_lower_bound_minimizer_headline_not_used": true,
+    "headline": "No new lower-bound-55 data triple enters from mws59 or stapleton60; paper55 remains the only verified 55-addition circuit in the expanded swept set, while sun56 remains LB 55 / UB 56."
+  },
+  "postcompute_validation": {
+    "status": "PASS",
+    "checks_passed": 476,
+    "validator_path": "postcompute_validate.py",
+    "validator_sha256": "7d0881584bbff9c52893acc1d7cfd6ff40379628d372a83e37624af603df3c7a",
+    "failed_first_output_path": "postcompute_validation.json",
+    "failed_first_output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "failed_first_attempt_reason": "owner validator expected fiber_total_lb in all 24 fresh checks; frozen schema provides it in the first 12",
+    "retry_result_path": "postcompute_validation_retry1.json",
+    "retry_result_sha256": "0c8ea1daf0ed61772415fc1a4be5a7b680f090f8741b0ddc6bc59c21fd2882a8"
+  },
+  "run_output_hashes": {
+    "campaign_result.json": "15fd54df45709a33996a6b9853e978b5fc047e7e789f080a945b7d9e6a7259a6",
+    "decision_mws59.npz": "a768b87c3db088c76a9729ec09b855d8026f3ae42f8de91e1c44f1e6374cec4a",
+    "decision_mws59_summary.json": "ac36545f52390dfc8ad5bb01a2dd867c6581bee63bd59a5b20374faab3063c67",
+    "decision_stapleton60.npz": "21361c9ab9352ee6295539823ac1c41096dff703eb2bc7398ab43a61df7b8cd0",
+    "decision_stapleton60_summary.json": "6e7b669416f108370265c16f6e22ed09f5952ed85499765077b47c1db78d0988",
+    "pair_tables.npz": "58ae4b97dc911adbe0248de72ccc00e58679b2ca8edb394b1861f6b876dd7634",
+    "phaseA_controls.json": "80a1ecd4fe7adea7d4ce297a55255a3552aba163f4ca3d2110ab67e3d33a66e1",
+    "run.log": "5c79c3df9b3eac1c22feb997ad435f5556983314b35ee8f4689a0520fae28ceb",
+    "report.md": "0dd61fce80b597e7c2093fd6f1d6413dc8c48da704a4fc58776272e47de37c88"
+  },
+  "first_aborted_campaign": {
+    "path": "../2026-08-31T082412Z_a2d87381-157e-45bb-ad3a-519ddf899bc1_4dc928ac6dbe/",
+    "status": "PRE-ANCHOR ABORT / NO TARGET CLAIM",
+    "elapsed_seconds_computational_evidence_only": 0.26
+  },
+  "rule7_sentence": "This campaign swept exactly the two decompositions `mws59` and `stapleton60` under every independent (P,Q,R) in T^3, where T is the exactly enumerated 6960-element set of ternary 3x3 integer determinant-+/-1 matrices, followed by all three post-sandwich sigma powers, for 2,022,921,216,000 raw scheme-instances represented without sampling by the proved 145^3 data-node factorization per decomposition; it admitted exactly 10,596 ternary data-triples (3,515,498,496 orientations after the 48^3 and 3-sigma multiplicities), and decided every admitted data-triple with exact integer d-counting, complete subset-DFS floor census, and the rank-audited +14 transposition gap under the standard action U'=P^-1 U Q^-T, V'=Q^T V R^-T, W'=P^T W R; the alphabet was exactly {-1,0,1}, parameters were the two fixed decompositions, all 6960 choices for each of P,Q,R, and sigma=0,1,2, radii were none, and no instance in that named domain was sampled or left undecided; it did not sweep paper55/sun56 beyond startup controls, any decomposition outside the five named public ones (including Laderman, other Smirnov schemes, Schwartz-Vaknin, unpublished, or F2-only constructions), non-ternary factor alphabets, GL(3,Q) or GL(3,Z) sandwiches beyond T, actions outside the proved family, anti-cyclic swaps that compute B*A, or upper-bound circuit synthesis, so it establishes no universal no-54 claim outside the named domain.",
+  "final_checksums": "checksums.sha256",
+  "immutable_after_checksums": true
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "weekday-participation-premium",
+  "created_at_utc": "2026-09-01T12:29:00Z",
+  "status": "draft-before-outcome-access; independent review required before campaign init",
+  "classification": "retrospective literature-informed two-window market-structure replication on reused historical calendars; not fresh, blind, prospective, academically novel, predictive alpha, a return strategy, or a deployment claim",
+  "hypothesis": {
+    "causal_story": "Human and institution-linked trading schedules, staffed risk desks, and business-week capital flows concentrate participation on Monday-Friday even though crypto trades continuously. Within a complete Monday-Sunday UTC week, weekday minutes should therefore have more trades and more quote notional than the same full set of minute-of-day slots on Saturday-Sunday.",
+    "primary_claim": "On Binance BTCUSDT and ETHUSDT USD-M perpetuals, complete UTC weekdays exhibit a persistent participation premium over weekends in both one-minute trade arrivals and quote volume.",
+    "checkable_edge": "In both frozen half-year windows, the pooled median weekday/weekend trade-count ratio is at least 1.15, each asset's median is at least 1.10, the pooled median quote-volume ratio is at least 1.15, both asset-specific quote-volume ratios are positive, at least 80% of included Monday-month groups are positive for both endpoints, and both paired week-block bootstrap p-values are below cycle alpha 0.008333333333333333.",
+    "source_context": "Petukhina, Reule, and Hardle, Rise of the Machines? Intraday High-Frequency Trading Patterns of Cryptocurrencies, arXiv:2009.04200, documents temporal trading patterns and motivates a human-schedule interpretation. This contract is a narrower local day-of-week replication; it does not test directional returns or claim independent discovery.",
+    "distinct_from_closed_families": {
+      "liquidation_gex_carry_funding_basis": "No event, option, gamma, funding, basis, collateral, convergence, or carry return appears.",
+      "trend_relative_value_macro_positioning_options": "No directional position, return predictor, momentum, asset selection, macro state, CFTC report, or option premium appears.",
+      "perp_spot_activity_volatility": "That closed rule used a trailing daily spot/perpetual quote-volume ratio to predict next-day volatility. This rule uses perpetual data only, forms a contemporaneous within-week weekday/weekend contrast, and has no forward outcome.",
+      "taker_imbalance_semivariance": "No taker share, signed flow, or future semivariance appears.",
+      "quarter_hour_algorithmic_burst": "That closed rule conditioned on minute 15/30/45 versus other five-minute boundaries and tested trade count plus absolute return. This rule conditions only on UTC day-of-week, uses every minute, tests quote volume rather than return, and never changes or reuses the quarter-hour clock contrast.",
+      "microstructure_execution": "No spread, order book, impact, fill, queue, or execution-cost estimate appears."
+    }
+  },
+  "novelty_and_consumption": {
+    "prior_window_audit": "weekday-participation-prior-window-audit.json",
+    "prior_window_audit_sha256": "6f28e1dbf7ad315853544c7f3f447eda4cdda14cec97042a3c66da4514f6f2cf",
+    "registry_coverage": "All 21 strategy-registry artifact_index entries and four cross-direction artifacts are enumerated with exact file + field citations.",
+    "calendar_disjointness_claim": "No global disjointness: older registered historical artifacts consumed both 2024 half-years. Both candidate windows end before all three state.json-prohibited campaign primary spans.",
+    "rule_level_claim": "No registered mechanism conditions on UTC day-of-week or forms a complete within-week weekday/weekend participation contrast.",
+    "information_channel": "First registered use of complete Binance USD-M 1-minute weeks to compare weekday/weekend number_of_trades and quote_asset_volume.",
+    "allowed_wording": "Rule-level and day-of-week information-channel novelty on reused historical calendars; literature-informed retrospective replication; never fresh, blind, prospective, predictive alpha, return, or deployment evidence."
+  },
+  "loop_multiplicity": {
+    "policy": "frontier-loop-policy.json",
+    "policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0",
+    "cycle_ordinal_k": 2,
+    "alpha_k": 0.008333333333333333,
+    "alpha_formula": "0.05 / (k * (k + 1))",
+    "interpretation": "Both endpoints, both assets, stability, primary, and replication are conjunctive requirements. Failure of any one closes the mechanism. Ordinal k=2 and its alpha are spent even on missing data or integrity failure.",
+    "familywise_scope": "The 0.05 budget covers only cycles minted under frontier-loop-policy.json after its effective time, not earlier 2026-09-01 campaigns."
+  },
+  "assets_and_data": {
+    "assets": ["BTCUSDT", "ETHUSDT"],
+    "source": "quant-trading/data/raw/binance/um-perp-1m/{asset}/{asset}-1m-{month}.zip",
+    "fields": {"open_time": 0, "quote_asset_volume": 7, "number_of_trades": 8},
+    "input_inventory": "weekday-participation-inputs.json",
+    "input_inventory_sha256": "3693f50afb60c3a789db21ba3cdd95ca13cab3676b9860d8a30be1aaf6829a04",
+    "integrity": "Before candidate parsing, re-verify the contract, audit, loop-policy, and inventory hashes plus every listed archive hash, byte size, sidecar-file hash, sidecar-declared archive hash/name, single member, exact header, and CRC. Any mismatch aborts and writes no result artifact.",
+    "validation": "Normalize open_time as microseconds divided by 1000 iff the raw integer is greater than 100000000000000, otherwise milliseconds. Require unique exact UTC-minute timestamps, finite nonnegative quote_asset_volume, and nonnegative integer number_of_trades. A missing minute or any zero trade count or zero quote volume rejects that asset-week and is counted; malformed schema aborts the invocation without an artifact.",
+    "lawfulness": "Keyless Binance Data Vision public archives, internal research only; raw redistribution remains subject to Binance terms recorded in quant-trading/data/manifest.json source_policies.binance."
+  },
+  "frozen_rule": {
+    "week": "A week is Monday 00:00:00 UTC through the following Monday exclusive. Include only weeks fully contained in the requested window. The primary has 26 complete weeks. The replication has 26 complete weeks; 2024-12-30 and 2024-12-31 are boundary days outside any complete included week.",
+    "groups": "Weekday W contains all 7,200 one-minute bars from Monday-Friday. Weekend E contains all 2,880 one-minute bars from Saturday-Sunday. Because each category contains every minute-of-day equally often within a complete week, arithmetic category means are minute-of-day matched. No hour, holiday, event, or volatility filter is permitted.",
+    "weekly_observation": "For each asset-week, require all 10,080 unique minute bars. w_count/e_count are arithmetic means of number_of_trades over W/E; w_quote/e_quote are arithmetic means of quote_asset_volume over W/E. x_count = log(w_count/e_count); x_quote = log(w_quote/e_quote). All four components must be positive. No winsorization, weighting, transform variant, alternative weekend definition, or subset selection.",
+    "sampling": "One paired observation per asset per complete week. Only weeks complete for both BTC and ETH enter pooled, per-asset, month-stability, or bootstrap statistics; both assets move together in every resample.",
+    "statistics": "Report pooled and per-asset medians of x_count and x_quote. Assign each week to the calendar month containing its Monday. An included Monday-month contains at least one complete paired week; stability is the fraction of included Monday-months whose pooled median is strictly positive.",
+    "bootstrap": "20,000 circular moving-block resamples of sorted complete week starts using Python standard-library random.Random (MT19937), seed 20260902, block length 2 weeks, randrange(n_weeks) starts, whole circular blocks truncated to exactly n_weeks, and both assets kept paired. Each endpoint starts a fresh generator at the same seed and therefore receives identical week draws. For endpoint e, p_e = (1 + count(pooled_median_e_boot <= 0)) / 20001."
+  },
+  "windows": {
+    "primary": {"start_utc_inclusive": "2024-01-01T00:00:00Z", "end_utc_exclusive": "2024-07-01T00:00:00Z", "expected_complete_weeks": 26, "expected_pooled_observations": 52},
+    "replication": {"start_utc_inclusive": "2024-07-01T00:00:00Z", "end_utc_exclusive": "2025-01-01T00:00:00Z", "expected_complete_weeks": 26, "expected_pooled_observations": 52}
+  },
+  "minimum_sample": {
+    "primary": {"paired_weeks": 24, "per_asset": 24, "pooled": 48, "included_monday_months": 5},
+    "replication": {"paired_weeks": 24, "per_asset": 24, "pooled": 48, "included_monday_months": 5},
+    "complete_case_only": true
+  },
+  "declared_power_limit": "The independent unit is a UTC week, not 10,080 minute bars or two correlated assets. At least 24 weeks gives roughly 12 two-week dependence blocks per window. This design targets a persistent 15% activity gap; it can miss smaller, seasonal, venue-specific, day-specific, or intraday-only effects. A failure falsifies only this coarse two-asset weekday/weekend contrast. A pass establishes a replicated participation regularity consistent with human/institutional scheduling, not its cause.",
+  "gates": {
+    "G1_count_magnitude": "pooled median x_count >= log(1.15)",
+    "G2_count_asset_consistency": "BTCUSDT median x_count >= log(1.10) AND ETHUSDT median x_count >= log(1.10)",
+    "G3_quote_magnitude": "pooled median x_quote >= log(1.15)",
+    "G4_quote_asset_consistency": "BTCUSDT median x_quote > 0 AND ETHUSDT median x_quote > 0",
+    "G5_month_stability": "For both x_count and x_quote, at least 80% of included Monday-month groups have strictly positive pooled medians",
+    "G6_dependence_robustness": "p_count < 0.008333333333333333 AND p_quote < 0.008333333333333333 under the frozen paired week-block bootstrap",
+    "pass_rule": "A window passes only if its minimum sample is met and G1 through G6 are all true; all gates are conjunctive.",
+    "fail_rule": "If minimum sample is met and any gate is false, the mechanism is falsified on that window.",
+    "inconclusive_rule": "Only frozen missing/zero-bar rejections reducing the paired sample below minimum yield an inconclusive result. Contract, audit, policy, inventory, checksum, CRC, member, header, or schema failures abort without an artifact. UNKNOWN never passes."
+  },
+  "stopping_and_replication": {
+    "campaign_mint": "After independent read-only approval, mint exactly one campaign with scripts/campaign.py init and this file's final SHA-256.",
+    "primary_run": "Exactly one outcome-producing primary execution after campaign mint.",
+    "on_primary_fail": "Write and publish negative evidence, close FROZEN-NEGATIVE, never run replication, and never tune, pool, extend, redefine weekends, or re-window this mechanism.",
+    "on_primary_inconclusive": "Write evidence, close FROZEN-INCONCLUSIVE, spend cycle ordinal 2, and do not reinterpret missingness.",
+    "on_primary_pass": "Commit the write-once primary artifact, then run the already frozen replication exactly once with identical contract, code hash, formulas, thresholds, seed, and alpha.",
+    "survival_rule": "Survival requires both primary and replication to meet minimum sample and pass G1-G6. Then close FROZEN-CERTIFIED. Replication failure closes FROZEN-NEGATIVE; replication sample failure closes FROZEN-INCONCLUSIVE.",
+    "write_once": "The runner refuses an existing output path. Replication requires --primary-artifact and its SHA-256; it refuses unless role, pass status, contract, runner, audit, policy, and inventory hashes all match."
+  },
+  "multiplicity_boundary": {
+    "mechanisms_in_cycle": 1,
+    "day_of_week_contrasts": 1,
+    "endpoints": 2,
+    "assets": 2,
+    "windows": 2,
+    "variants": 0,
+    "parameter_search": "none",
+    "interpretation": "Trade count, quote volume, both assets, magnitude, stability, bootstrap evidence, primary, and replication are an intersection-union claim: all must pass. No individual weekdays, hours, holidays, other assets, alternative weekends, return analyses, or post-outcome thresholds are permitted."
+  },
+  "claim_boundary": "A two-window pass supports only a replicated Binance BTC/ETH one-minute weekday participation regularity consistent with human/institutional scheduling. Familywise-error language is scoped only to post-policy cycles. It does not prove causality and does not establish directional predictability, executable alpha, net return, implementation advantage, deployment readiness, capital allocation, or an absolute breakthrough."
+}

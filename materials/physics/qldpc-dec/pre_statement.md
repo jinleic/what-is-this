@@ -218,3 +218,513 @@ stream, or LER-ratio definition changes.
   promoting a point estimate alone.
 - Record both raw shot-failure probability and per-round LER (raw/12). Their
   beam8/BP+OSD ratio is identical, so this clarification cannot move Gate B.
+
+## Revision GB2 — sparse-ratio bootstrap tail correction (2026-08-31, pre-data)
+
+Recorded while the million-shot decode was still running, before any shard
+result or arm failure count existed. No circuit, sample, decoder, shot count,
+seed, point estimate, target band, or three-way decision rule changes.
+
+- Bug: the frozen helper dropped every non-finite bootstrap ratio. That
+  incorrectly removes positive-numerator/zero-denominator draws and truncates
+  the upper tail when observed failures are sparse. Reproduction:
+  5/1 failures in 1e6 shots with the frozen 100000-draw design returned the
+  finite CI [0.667, 9.0], even though denominator-zero draws occur often
+  enough that the 97.5th percentile is unbounded.
+- Correction: retain positive/zero draws as `+inf`; discard only zero/zero
+  draws, whose ratio is undefined. Encode an unbounded JSON endpoint as
+  `null`. Keep the same independent-binomial draws, draw count, derived seed,
+  and percentile rule.
+- The already-running campaign imported the old helper at process start.
+  Its samples, decoder outputs, failure masks, raw counts, and rates remain
+  authoritative, but its ratio CI/verdict will be marked superseded. A
+  separate immutable amendment will recompute only the CI/verdict from those
+  raw counts under this pre-data correction; the original campaign directory
+  will not be edited.
+
+## Revision GB3 — BP+OSD heterogeneous-prior correction (2026-08-31, post-interim)
+
+Recorded after the beam8 output and 14 of 20 BP+OSD shards from the
+million-shot campaign existed. This is therefore a disclosed post-interim
+protocol correction, not a pre-data amendment. No circuit, sample stream,
+decoder iteration/OSD parameter, shot count, target band, bootstrap seed, or
+decision rule changes.
+
+- Source audit: the paper pins `stimbposd==0.1.0`. In its tagged source
+  (commit `7921f5eb1b358ff616f9822280c9961e83df06cb`),
+  `stimbposd.BPOSD` constructs `ldpc.BpOsdDecoder` with
+  `error_channel=list(priors)`. The local adapter instead averaged the merged
+  DEM priors and passed that scalar as `error_rate`.
+- The distinction is material and structural: the pinned p=1e-3 Z DEM has
+  8784 merged columns and 9 distinct prior probabilities, ranging from
+  0.000533333333333148 to 0.003721584619834077. A scalar mean is not the
+  published baseline. The adapter now passes the full vector exactly; an
+  explicit scalar override remains experimental only.
+- The original million-shot campaign is retained as invalidated evidence; its
+  scalar-prior BP+OSD counts cannot decide Gate B. The corrected replacement
+  independently regenerates the same two seeded sample streams and reruns both
+  arms under the corrected sources. Acceptance requires both regenerated
+  sample-file hashes to equal the original pre-decode hashes.
+- Revision GB2 still governs sparse ratio tails. The replacement campaign
+  snapshots the corrected bootstrap helper and emits the final Gate B verdict
+  directly, so no GB2-only amendment is needed for the valid replacement.
+
+## Revision GA1 — apply the heterogeneous-prior correction to Gate A (2026-08-31)
+
+Recorded after the GB3 source correction, while the corrected descriptive
+accuracy companion was running and before any corrected Gate-A timing sample
+existed. At recording time, only its first row was available: X memory at
+p=3e-4 had 0 failures in 100000 shots. Gate-A accuracy has no published
+acceptance target, so that interim count cannot move a reproduction verdict.
+
+- Retract the historical scalar-prior Gate-A accuracy and timing rows. Reuse
+  the frozen circuits, DEMs, shot counts, seeds, decoder parameters, per-round
+  normalization, published timing references, and factor-2 timing bar.
+- The corrected accuracy companion uses the full merged-DEM heterogeneous
+  channel and snapshots every relevant local source. It remains descriptive.
+- Run the corrected 10000-shot single-decode timing arm only after other
+  decoder campaigns leave the host, so campaign contention does not bias the
+  hardware-coupled measurement. The timing artifact must record both a source
+  snapshot and an exact configured-channel audit before it can decide Gate A.
+
+## Revision GA2 — basis-correct the derived p=3e-4 companion (2026-08-31)
+
+Recorded after both corrected 100000-shot p=3e-4 accuracy rows had completed,
+and before the remaining four companion rows or any corrected timing sample
+were available. Both observed rows had zero failures; accuracy remains
+descriptive and has no reproduction acceptance target.
+
+- Bug: for p=3e-4, `load_circuit(p, basis)` appended the derived **Z** circuit
+  regardless of `basis`. The row labeled X therefore sampled and decoded a Z
+  memory circuit; it is invalid. The Z row is basis-correct and remains valid.
+- Correction: derive an X-memory p=3e-4 artifact by applying the same exact
+  textual noise-argument rescale `(0.001)` to `(0.0003)` to the committed
+  IonQ X-memory p=1e-3 circuit. The circuit sha256 is
+  `300f8625ac81c9bf35f16b85b3bebf6aa087947650209387ab0f688168f372a2`;
+  its 936-by-8784, 12-observable DEM sha256 is
+  `d1d6fdb838d407155ec1a5940b8e1d32b7f2c32d5661dea84dad3feb8f4d4579`.
+- Freeze a focused 100000-shot replacement of only the invalid X row, using
+  the original X sampling seed and corrected vector prior. Do not mutate the
+  in-flight six-row campaign. Any combined Gate-A accuracy table must take
+  p=3e-4 X from the focused replacement and the other five rows from the
+  original corrected-prior campaign.
+
+## Revision GB4 — recover the NumPy-bool close failure (2026-08-31)
+
+Recorded after all scalar-prior BP shards and all corrected-prior BP shards
+had completed, while the corrected beam subprocess was still running. This is
+an artifact-serialization correction only; it cannot alter samples, decoder
+outputs, failure counts, rates, bootstrap draws, target band, or verdict rule.
+
+- Bug: the ratio helper could return NumPy scalar booleans. Both arm results
+  were appended successfully, but `json.dump(summary)` rejected
+  `ci_inside_band` during campaign close, leaving a truncated summary and no
+  immutable inventory.
+- Correction: force percentile endpoints and verdict flags to built-in Python
+  scalar types. For a process that imported the old code before launch, use
+  `gateb_pinned.py --recover <campaign>` only after its parent exits. Recovery
+  must validate both sample hashes, all shard ranges and aggregate fields,
+  beam predictions and failure mask, snapshot the recovery sources, then
+  write the summary and inventory. It refuses an already-closed or live
+  campaign.
+- The scalar-prior campaign is closed with outcome
+  `INVALIDATED_GB3_scalar_prior`; no ratio is evaluated. A corrected-prior
+  campaign uses the unchanged GB2/GB3 ratio computation.
+
+## Revision GA3 — repair the p=5e-4 timing verdict key (2026-08-31)
+
+Recorded after the isolated corrected timing campaign closed. The measured
+values were mean/p99.9 = 10.994574/307.796416 ms at p=1e-3 and
+3.842129/303.766792 ms at p=5e-4. The campaign's decoder outputs and timing
+rows are valid, but its summary omitted the p=5e-4 verdict.
+
+- Bug: measurements used `f"{p:g}"`, producing key `"0.0005"`, while the
+  reference table used `"5e-04"`. The join silently skipped that point.
+- Correction: give measured values and references one canonical key set,
+  require exact set equality, and compute both factor-2 decisions. Do not
+  rerun or select timing samples.
+- Freeze a separate immutable amendment that hashes and copies the closed
+  source campaign, reuses its two timing rows unchanged, and recomputes only
+  the reference ratios and verdict map under the original factor-2 rule.
+
+## Revision GA4 — correct the historical OSD0 attribution (2026-08-31)
+
+Recorded after GA3 and after the corrected-prior timing outcome was known.
+This is an interpretation and reporting correction; it changes no arm,
+sample, reference value, threshold, or verdict.
+
+- The 2026-08-30 OSD0 diagnostic used the scalar-mean BP prior invalidated by
+  GB3. Its 3.54 ms mean bypassed the costly CS10 behavior observed with that
+  wrong channel and does not identify the paper's decoder semantics.
+- The authoritative timing arm is, and was in its frozen source,
+  OSD-CS10/order-10/max-iter-30 with the exact heterogeneous channel. It
+  reproduces both published means and both p99.9 values under the GA3
+  factor-2 criterion.
+- A post-outcome diagnostic changed only that corrected decoder to OSD0 on
+  3,000 shots from each frozen seeded stream. Mean/p99.9 were
+  1.208/5.986 ms at p=5e-4 and 1.875/6.147 ms at p=1e-3, far below the
+  published tails. Retract the historical claim that Table II represented
+  OSD0 or OSD-skipping semantics.
+- Diagnostic artifact: `scratch/gatea_vector_prior_osd0_probe.json`
+  (sha256 `da48383e483f4291c14d066c4eb3aaaa0a1cc383b4fc85840497d6e68589695d`).
+- Gate B keeps the separately pinned OSD-CS10/order-10/max-iter-30
+  denominator required for Fig. 2. The completed campaign closes only the
+  beam8 band; beam32 and beam64 remain unevaluated under the frozen ladder.
+
+## Revision GB5 — resolve the ladder: empirical sizing + fixed companion N (2026-08-31, pre-decode)
+
+Recorded after the beam8 band closed INCONCLUSIVE, before any GB5 decode
+run. No pinned decoder parameter, circuit, DEM, seeded sample stream, or
+published target changes.
+
+- Motivation: the frozen ladder stopped after beam8 because its decision
+  band [0.87, 1.15] overlaps its sparse-rate bootstrap CI at 1e6 shots.
+  beam32/beam64 remain unevaluated, so Gate B cannot produce its
+  end-to-end reproduction-or-refutation verdict. GB5 resolves the two
+  remaining ladder rungs AND upgrades the beam8 determination.
+- One-time empirical sizing (probing a side stream only, decoder
+  unchanged): for each rung r in {beam32, beam64}, measure the failure
+  count on an independent 1000-shot probe stream
+  (sampling_seed(20260829, p, basis, "<arm>-gb5-probe") at p=1e-3 Z).
+  A free parameter s_r = max(4, ceil(log4(0.25 / (f_r + 1)))) is derived,
+  where f_r is the probe failure count; the pre-decode, per-rung shot
+  commitment is N_r = s_r * 10^6 (s_8 := 1 is frozen without re-probing;
+  the ladder's original stream and count are retained). Scalloped counts
+  N_r pity both arms: denominator BP+OSD decodes exactly N_r of its OWN
+  frozen stream and each beam arm decodes exactly N_r of its OWN seeded
+  stream. Bootstrap draws, seed, and the three-way inside/outside/overlap
+  rule (GB1/GB2 semantics) are unchanged.
+- The three rung verdicts (beam8, beam32, beam64) are each decided
+  independently against that rung's published band; the end-to-end
+  ladder verdict combines them (REPRODUCED iff all three bands close
+  inside band; REFUTED iff at least one band closes wholly outside its
+  band; otherwise INCONCLUSIVE). This is the terminal Gate-B decision:
+  no further beam arm is added.
+- Resolution promise: in the sparse regime where the beam8 CI crossed
+  the band, larger N concentrates the ratio CI: for the beam32 target
+  band [4.5, 7.0] and beam64 band [11, 22] the s_r sizing is engineered
+  so that a true published-claim outcome (ratio near 5.6x / 17x) yields
+  CIs that no longer straddle the band boundaries.
+- BP+OSD sharding and shot-file checks reuse the frozen GB1/GB3
+  machinery verbatim: independent arm streams, bit-packed frozen shot
+  files, shard manifests hashed before any decode.
+- Probe outcome recorded before any ladder decode: f_probe = 0 failures
+  in 1000 shots for BOTH beam32 and beam64 side streams => s_32 = s_64 =
+  max(4, ceil(log4(0.25/1))) = 4 => N_32 = N_64 = 4,000,000 shots per
+  arm. Frozen probe artifact with seeds, hashes, and stderr stats:
+  `scratch/gb5_probe_result.json` (beam binary sha256
+  `ee19398def9ca3a07536bb39c6193fdb9f5f27dd71dfd2ca146b1f39f3eab549`).
+
+## Revision GB6 — beam-expansion mechanism companion (2026-08-31, pre-decode)
+
+Recorded alongside GB5, before any GB6 decode run. No published target,
+circuit, DEM, decoder parameter, or GB5 protocol element changes. GB6
+answers the question the beam8 point ratio (0.25 with CI [0,2]) cannot:
+is the observed beam-vs-BP+OSD order-of-magnitude rate spread a
+statistical fluke of sparse failures, or a structural decoder property?
+
+- Quantity: dense-count failure-count ratios at p=3e-3 Z, using the
+  committed derived circuit
+  `circuits/BB_144_144_12_memory_Z_p0.003_sr12_derived_p1e-3_rescale.stim`
+  (full sha256 in the GB6 manifest; DEM by the pinned decomp convention,
+  also hashed). At 3e-3 the 12-observable memory experiment produces
+  enough failures per 2e5 shots that binomial relative errors land at
+  the few-percent level.
+- Design: four arms at fixed N=2e5 shots each, independent seeded
+  streams sampling_seed(20260829, 3e-3, "Z", arm + "-gb6") for
+  arms ∈ {bp30+osd, beam8, beam32, beam64}. Failure counts, Wilson 95%
+  CIs, and pairwise ratio CIs are frozen at run time using the same
+  ratio_ci helper (GB2 semantics).
+- Pre-decode prediction bindings, frozen before any GB6 sample is
+  taken; these decide the mechanism verdicts, not post-hoc narrative:
+  - M1 (expansion monotonicity): beam8 failures >= beam32 failures >=
+    beam64 failures, AND the beam64-vs-beam8 failure-count ratio CI
+    must exclude 1 (point ratio > 1). A monotone ordering alone is
+    compatible with noise; the improvement must clear the noise floor.
+  - M2 (sign stability): the beam8-vs-BP+OSD failure-count ratio CI at
+    3e-3 must exclude 1, AND its direction must match the frozen 1e-3
+    point ratio direction (0.25 < 1). A stable sign across two error
+    rates is evidence of structure, not a small-count coin flip.
+  - M3 (ladder sanity): beam64 failure count <= beam32 failure count
+    at 3e-3 (width monotonicity in the dense regime), catching a
+    grossly wrong expansion ladder without positioning the GB5 sparse
+    bands.
+- GB6 is a mechanism companion, NOT a replacement of any GB1-GB5 band
+  decision. Its verdicts are recorded as PASS/FAIL per clause with the
+  campaign sha256 frozen at run time; FAIL on a clause does not
+  retroactively alter a GB5 band outcome and is reported as written.
+
+## Revision GB5a — supersede GB5 sizing; wire the beam parameters; add the paired instrument (2026-08-31, pre-decode)
+
+Recorded after the GB5/GB6 text above and BEFORE any ladder or companion
+decode. No gate quantity, published target, band, decoder pin, or sampling
+seed derivation changes. Three defects and one design upgrade, all found by
+pre-decode instrument characterisation on throwaway streams (seeds 4242,
+5150, 99 — none of them a gate stream).
+
+- **Defect 1 (decisive, in the frozen C++ port).** `beam8_cpp` parsed
+  `--beam-width`, `--initial-iters`, `--iters-per-round` and `--max-rounds`
+  but never assigned them to its `Engine`. Every invocation silently decoded
+  with the beam8 defaults (8/30/20/10). A beam32/beam64 ladder run on the
+  unfixed binary would have produced three copies of beam8 wearing three
+  labels. Evidence: on 20,000 shared shots at p=1e-3 all three parameter
+  sets returned byte-identical predictions AND identical work counters
+  (`bp_runs=21006`, `bp_iters=226332`). Fix: the four parameters are now
+  wired, validated (>=1), and echoed to stderr as a `config:` line that every
+  campaign log retains. Post-fix the work counters separate
+  (beam8 `bp_runs=21006` vs beam32/beam64 `bp_runs=20514` on the same shots).
+  GB1-GB3 beam8 evidence is UNAFFECTED: the defaults it ran under are exactly
+  the pinned beam8 parameters.
+- **Defect 2 (repo artifact).** The committed
+  `..._p0.003_sr12_derived_p1e-3_rescale.stim` scaled every parenthesised
+  literal by 3, which also relabelled `OBSERVABLE_INCLUDE` indices 0..11 to
+  0,3,..,33 — a 34-observable circuit. A clean artifact rescaling ONLY the
+  noise arguments, `(0.001)->(0.003)`, is committed as
+  `BB_144_144_12_memory_Z_p0.003_sr12_derived_p1e-3_argrescale.stim`
+  (sha256 `690b3b4450ea9cc20bd17d69a5b27379817c705eff7c04860eb0e072010e5e8f`,
+  DEM sha256 `e9109c1a3f920b742386467ead012f4f33de41d667494dd01cfbab5c2614466e`,
+  936 detectors / 8784 errors / 12 observables, textually identical to the
+  pinned p=1e-3 Z circuit modulo the noise argument). GB6 uses the clean
+  artifact; the old file is retained only as history for the equivalence
+  reports that used it.
+- **Defect 3 (statement).** GB5's bands must be read in ONE convention. All
+  decisions use ratio := (beam raw failure rate) / (BP+OSD raw failure rate).
+  In that convention the published Fig.-2 targets are
+  beam8 [0.87, 1.15]; beam32 [1/7, 1/4.5] = [0.142857, 0.222222];
+  beam64 [1/22, 1/11] = [0.045455, 0.090909]. The "5.6x / 17x lower"
+  phrasing earlier in this file denotes the reciprocals of these bands.
+- **Sizing supersede.** GB5's probe rule (f_probe = 0 for both rungs =>
+  N = 4e6) is withdrawn as underpowered: at the harness BP+OSD rate of
+  4e-6 it yields ~16 denominator failures. Measured single-thread costs on
+  this host (M3 Ultra, 28 cores) are 3.17 ms/shot for every beam parameter
+  set at p=1e-3 (the beam engages on ~5% of shots) and 13.1 ms/shot/core for
+  BP+OSD. The ladder is therefore frozen at **N = 2e7 shots per arm**
+  (~179 core-hours total, ~7 h wall), giving ~80 expected BP+OSD failures
+  and ~20 expected beam failures per arm at the GB3 point rates. The BP+OSD
+  denominator is decoded ONCE on its frozen stream and reused by all three
+  rung ratios; that shared denominator makes the three rung tests
+  statistically dependent, which is disclosed here and in the summary rather
+  than hidden.
+- **Paired instrument (supersedes the GB6 independent-arm design).** Because
+  the three rungs agree on almost every shot, independent arms waste their
+  power on shot-to-shot noise. GB6 is therefore run as a PAIRED study on one
+  shared stream — the frozen `bp30+osd` stream, already decoded by BP+OSD for
+  the ladder — decoded additionally by all three beam parameter sets. It
+  reports, on identical shots: per-decoder failure sets, the pairwise
+  discordance counts n(A fails, B succeeds), exact McNemar binomial p-values,
+  and prediction-file identity hashes. Pre-decode prediction: the published
+  ladder requires beam32 to fix ~82% of beam8's failures and beam64 ~94%; at
+  N = 2e7 those correspond to ~16 and ~19 discordant shots. Observing zero
+  discordance refutes the width-expansion claim structurally (an identity on
+  the sample, not a CI), while any nonzero discordance measures the true
+  in-harness width benefit directly.
+- The dense-count companion at p=3e-3 keeps its GB6 M1-M3 clauses but runs
+  in the same paired form (one shared stream, N = 2e5, four decoders) on the
+  clean argrescale artifact.
+- Prerequisite before any ladder decode: bit-exactness of the fixed binary
+  against the Python `BeamSearchBatchDecoder` at EACH rung's parameters
+  (GB1 only ever validated beam8, and only against the unfixed binary).
+  Reports are frozen under `src/beam_cpp/scratch/gb5eq_*.json` and hashed
+  into the campaign manifest; zero mismatches is a launch gate.
+
+## Revision GB7 — paired expansion escalation: resolve the measured-vs-published gap (2026-09-01, pre-decode)
+
+Recorded after the GB5a BP+OSD, beam8, and beam32 raw counts were frozen,
+while beam64 and the paired decode were still running, and BEFORE any GB7
+sample is drawn. No published target, band, decoder pin, circuit, DEM, or
+seed derivation changes. GB7 adds ONE new determination: the size of the
+beam-expansion effect, measured paired.
+
+- **Why.** The GB5a ladder (2e7 shots/arm, p=1e-3 Z) measured BP+OSD 41,
+  beam8 42, beam32 10 failures. beam8/BP+OSD = 1.024 reproduces the paper's
+  "beam8 has the same LER as bp30+osd". beam32/BP+OSD = 0.244 is a 4.1x
+  reduction where the paper claims 5.6x. The beam8 and beam32
+  independent-arm band CIs are wide because both arms carry independent
+  Poisson noise; both verdicts are INCONCLUSIVE, with beam64 still running.
+  This independent-arm design cannot resolve a 4.1x-vs-5.6x discrepancy.
+- **Instrument.** On ONE shared stream the concordant failures cancel: with
+  beam32's failures largely a subset of beam8's, R32 := f(beam32)/f(beam8)
+  is a binomial proportion on f(beam8) trials rather than a ratio of two
+  independent Poisson counts. Its interval therefore tightens with f(beam8),
+  not with the much slower joint-noise rate.
+- **Design.** Shared stream = the frozen
+  sampling_seed(20260829, 1e-3, "Z", "bp30+osd") stream, first **N = 1e8**
+  shots. Arms: beam8, beam32, beam64 at their pinned Table-I parameters,
+  decoded with the parameter-wired, equivalence-gated C++ binary. BP+OSD is
+  NOT re-decoded at 1e8 (16 h of denominator for a quantity that does not
+  need it); the beam8-vs-BP+OSD anchor stays the frozen GB5a 2e7 result, and
+  this scope limit is disclosed in the summary.
+- **Prefix continuity check (required).** The first 2e7 shots of the GB7
+  stream are exactly the GB5a paired stream. GB7's beam predictions MUST
+  byte-match the GB5a paired predictions over that prefix; a mismatch voids
+  the run.
+- **Why that prefix identity holds, and its enforced precondition.**
+  `write_shots` draws in CHUNK-sized sampler calls (CHUNK = 1e6), so a
+  freshly seeded sampler reproduces an earlier run's stream verbatim only
+  when both shot counts are whole multiples of CHUNK: 2e7 = 20 chunks and
+  1e8 = 100 chunks, so GB7's first 20 calls are call-for-call the GB5a
+  sequence. Unaligned counts silently draw a DIFFERENT stim stream, so the
+  runner now refuses to start unless both counts are chunk-aligned. This was
+  found pre-decode by a deliberately unaligned rehearsal, which the byte
+  check caught and voided exactly as specified above.
+- **Cross-writer equivalence (pre-decode, verified).** GB5a sampled with the
+  accumulating `write_shots`; GB7 samples with a bounded-memory streaming
+  rewrite. Running the GB5a campaign's own frozen `gateb_ladder.py` snapshot
+  against the new writer on the pinned p=1e-3 Z circuit and seed gives
+  byte-identical files at multi-chunk scale, and the frozen writer's
+  N-chunk output is a byte-exact prefix of the new writer's 2N-chunk output
+  for both the detector and the observable region. The two regions sit at
+  different offsets in files of different length, so this is the exact
+  production topology, not an analogy.
+- **Pre-frozen decision rule** for each rung r in {beam32, beam64}, on the
+  paired ratio Rr := f(r)/f(beam8):
+  - point estimate and 95% interval: Wilson on m/(m+b) when the discordance
+    cell c = 0 (exact binomial case), otherwise a 100000-draw multinomial
+    percentile bootstrap over the four-cell paired table with a seed derived
+    from (20260829, "gb7-paired-ratio", rung, N);
+  - WIDTH_EFFECT_CONFIRMED iff the exact two-sided McNemar test on (b, c)
+    has p < 0.05 and b > c. McNemar is the width-effect decision.
+  - INTERVAL_EXCLUDES_ONE iff the paired-ratio interval excludes 1.0; this
+    is a separate quantitative bound required for a GAP claim.
+  - PUBLISHED_FACTOR_EXCLUDED iff the interval excludes the published
+    reciprocal (1/5.6 = 0.178571 for beam32, 1/17 = 0.058824 for beam64);
+  - all three true => the rung carries a statistically confirmed width
+    effect whose measured factor is quantitatively incompatible with the
+    published one, reported as GAP_CONFIRMED with the factor and interval;
+  - otherwise each satisfied condition is reported as written, with no GAP
+    claim; if none is satisfied the outcome is UNRESOLVED_AT_N.
+- **Sizing, computed before the run from the frozen GB5a independent-arm
+  rates** (beam8 raw 2.1e-6; planning proxy R32 = 10/42 = 0.238, not yet a
+  paired estimate): expected f(beam8) = 210 and f(beam32) = 50 at N = 1e8,
+  whose Wilson interval [0.186, 0.300] excludes both 1.0 and 0.178571. The
+  minimum f(beam8) that excludes the published factor at this planning proxy
+  is 145 (N = 6.9e7); N = 1e8 is chosen for
+  margin. beam64's interval is reported at whatever precision N = 1e8
+  affords and is NOT expected to exclude 1/17.
+- **Artifact relocation (no content change).** The Gate-B runners were
+  promoted from `scratch/` to `src/` (`gateb_gb5a_ladder.py`,
+  `gateb_gb6_mechanism.py`, `gateb_gb7_paired.py`, `verify_gateb_gb5.py`,
+  `gb5_equiv_width.py`), and the six GB5a equivalence reports were COPIED
+  byte-identically from `src/beam_cpp/scratch/` to `src/beam_cpp/evidence/`.
+  Content and sha256s are unchanged, the GB5a manifest's `scratch/` paths
+  still resolve, and GB7's launch gate reads the `evidence/` copies. The gate
+  additionally pins each report's rung, p, basis, shot count, circuit sha,
+  DEM sha, beam source sha, and `num_results`, so a report cannot satisfy the
+  gate for parameters it did not validate.
+- **Resource envelope, measured before launch.** The decoder holds the whole
+  shot file resident: at N = 1e8 that is 12.0 GB of detector bits, 2.4 GB of
+  per-shot stats, and 0.8 GB each of observables, predictions, and output
+  buffer, ~17 GB peak for one sequential rung against 96 GiB of host RAM.
+  The frozen shot file is 12.8 GB on disk against 187 GB free. The GB5a
+  beam64 rung at N = 2e7 was measured at 3.26 GB resident, which is the
+  anchor this 5x extrapolation rests on.
+- GB7 changes no GB5a band verdict. The GB5a rung verdicts stand exactly as
+  frozen; GB7 answers the separate, sharper question of how large the
+  
+## Amendment — GB5a control-plane activation (2026-09-01, pre-GB7-decode)
+
+The GB5a ladder ran inside a live effective claim on another target
+(`physics/fss-bb`), so its own control plane was never activated during
+sampling or decode. This amendment activates it AFTER the evidence was
+already produced and runner-closed, and BEFORE any GB6 or GB7 sampling.
+
+- The frozen campaign is `campaigns/20260901T040018Z_55e4ac01_f81265905380`,
+  closed by its runner at ladder end with
+  `ladder_outcome: INCONCLUSIVE_no_band_excluded_or_recovered_for_every_rung`
+  (all three rung bands overlap their ratio CIs).
+- Its launch-time `pre_statement.md` hash is
+  `bc05af28...b6f4b` (the working copy at init had since gained Revision GB7
+  and these amendments; the GB7 launch pins the CURRENT checksum, not the
+  older one, and knowingly differs because GB7 was preregistered by design
+  before GB7 sampling, not before GB5a sampling).
+- `campaign.py init` was first invoked against a fresh empty run directory
+  while the evidence already existed; that empty dir
+  `20260901T135335Z_a6c566e6_18335b73a17d` contains no evidence artifacts and
+  was closed immediately as REHEARSAL per the control-plane audit rule. It is
+  not a second ladder and carries no evidential weight.
+- The control manifest now merged into the frozen campaign carries gate
+  `gateB-gb5a-ladder`, agent `jinleic`, and the launch-time prereg hash
+  `bc05af28...b6f4b` (not the post-GB7 working checksum).
+- Freeze then writes `sha256s.txt` over every frozen artifact, and close
+  records terminal verdict `FROZEN-INCONCLUSIVE`. GB7's `validate_prefix_campaign`
+  demand for `FROZEN-*` is thereby satisfied without any artifact changing
+  content: only `manifest.json` gains the control fields and `sha256s.txt` /
+  `status.json` / README row are added.
+
+## Revision GB8 — beam64 target correction: the 17x was never ours to test (2026-09-02, no sampling)
+
+Recorded after GB7 closed (FROZEN-NEGATIVE) and before any further sample.
+Documentation-only revision: no decoder, DEM, seed, circuit, rule, frozen
+artifact, or earlier revision changes. It re-interprets one frozen decision.
+
+- **Finding (first-hand re-read of arXiv:2512.07057, v1 2025-12-08 and v2
+  2025-12-17, identical on every point below; independently re-extracted by a
+  second reader the same day).** Table 1 has FOUR configurations, not three:
+  `beam8_230iters` (10, 8, 30, 20, num_results=1), `beam32_340iters`
+  (10, 32, 40, 30, 1), `beam64_640iters` (20, 64, 40, 30, 1) and
+  `beam64_32res_640iters` (20, 64, 40, 30, **32**). Section III, paragraph 2
+  (Fig. 2 discussion, p=1e-3), verbatim: "beam32_340iters and beam64_640iters
+  reduce the logical error rate by factors of 5.6x and 7.0x, respectively.
+  Notably, the most advanced configuration, beam64_32res_640iters, achieves a
+  17x improvement over BP-OSD." The abstract's "a beam width of 64 achieves a
+  17x reduction" refers to the `_32res` row. `num_results` is a different
+  termination rule (Appendix B): 1 returns the first valid solution; 32 keeps
+  collecting valid solutions and returns the minimum-weight one.
+- **Our rung.** `RUNGS['beam64']` = (64, 40, 30, 20) with `num_results=1`,
+  pinned in every frozen manifest (`cpp_config_line ... num_results=1`) and in
+  the C++ binary, which has no `num_results` flag. That is `beam64_640iters`.
+  Its published factor is **7.0x**, not 17x. The original Gate B section of
+  this pre-statement (frozen 2026-08-29; "Pinned published quantities" table,
+  row `beam64_640iters | 17x lower`, and the [11, 22] band below it)
+  transcribed the abstract's sentence onto the wrong Table-1 row; GB5a's band
+  and GB7's `PUBLISHED_RECIPROCALS['beam64'] = 1/17` inherited the error. This
+  is a prereg transcription error, not a version drift. (Provenance corrected
+  same-day by an independent read-only audit: a first draft of this revision
+  attributed the transcription to Revision GB1, which pins beam8 only.)
+- **Consequence for GB7.** Its beam64 `GAP_CONFIRMED` is arithmetically
+  correct and stands as frozen, but it refutes a target the paper does not
+  make for that configuration. Re-applying GB7's own three-condition rule to
+  the FROZEN beam64 interval with the corrected factor: reciprocal 1/7.0 =
+  0.1429 lies inside the frozen paired CI95 [0.0791, 0.1674], so
+  `PUBLISHED_FACTOR_EXCLUDED` is false and the outcome is
+  `NO_GAP_WIDTH_EFFECT_CONFIRMED_AND_INTERVAL_EXCLUDES_ONE` — identical to
+  beam32's. Measured 8.26x [5.97, 12.65] contains 7.0x. Against the
+  2026-08-29 band edges and point: 11x lies inside the interval (band not
+  excluded), 17x and 22x lie above it (excluded); the band question is void
+  under the corrected target, not answered. **Verdict for
+  beam64_640iters: CONSISTENT with the published point value for the
+  configuration actually run.** The paper publishes no shots, failure counts
+  or error bars for any point, so "consistent within published uncertainty"
+  cannot be stated literally; only the point value is available.
+- **The 17x claim is untested.** `beam64_32res_640iters` was never run; it is
+  neither reproduced nor refuted. The headline "beam64 17x refuted" recorded
+  on 2026-09-01 is **retracted** in README/RESULTS/PROGRESS.
+- **Recorded source conflict (not resolved).** The abstract says beam8
+  reaches "the same logical error rate as BP-OSD"; Section III says beam8
+  "yields a 1.3x improvement". The 2026-08-29 pre-statement and GB7 use the abstract reading (beam8 ==
+  bp30+osd denominator), which our own GB5a measurement supports (42/41 =
+  1.024, CI [0.660, 1.593]). Under the Section III reading the paper-implied
+  rung/beam8 factors are 5.6/1.3 = 4.31x and 7.0/1.3 = 5.38x; our intervals
+  contain 4.31x and exclude 5.38x from **above** (lower bound 5.97x), i.e. the
+  measured beam64 benefit exceeds the implied one. Two curve read-outs with no
+  stated uncertainty cannot support a claim in either direction; the
+  sensitivity is recorded, no verdict is drawn from it.
+- **Reanalysis artifact (deterministic, no sampling).**
+  `src/gateb_gb8_retarget.py` reads only the frozen GB7 `summary.json`
+  (hash re-checked against `sha256s.txt`), replays the rule under the targets
+  as run by GB7 (must reproduce both frozen outcomes exactly, else it aborts), then
+  under the corrected target and the 1.3x sensitivity, and writes
+  `src/evidence/gb8_retarget.json`
+  (sha256 `d432ea399707112075e2e66b763b66fe41ad9fe05b1343e9c6003a3a949c8dd1`).
+  `src/verify_gateb_gb5.py` re-derives every number in it from the frozen
+  summary (`gb8.*` checks).
+- **GB5a band.** The beam64 band [1/22, 1/11] is void for the same reason.
+  GB5a's beam64 rung verdict (`INCONCLUSIVE_ratio_CI_crosses_band`) does not
+  change: its independent-arm CI [0.025, 0.263] contains 1/7.0 as it contains
+  every candidate. No corrected band is registered here; any future
+  beam64_640iters band must be pre-registered before sampling.
+- **What would test the 17x.** A new rung `beam64_32res` (num_results=32)
+  needs (a) a `--num-results` path in `beam8_cpp` plus a fresh equivalence
+  gate against the Python reference, (b) a pre-registered target of 17x with
+  its band, (c) a paired stream design like GB7. None of that is launched by
+  this revision.

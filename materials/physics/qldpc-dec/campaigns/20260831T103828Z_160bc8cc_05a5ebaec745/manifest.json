@@ -1,0 +1,83 @@
+{
+  "created_utc": "2026-08-31T10:38:28.543191+00:00",
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateA_accuracy_GA2_amendment",
+    "revision": "pre_statement.md GA1-GA2",
+    "primary_campaign": "20260831T094401Z_0f49b4d1_f812a85d3f70",
+    "replacement_campaign": "20260831T100414Z_6d776e6c_06409bae84aa",
+    "shots_per_point": 100000,
+    "base_seed": 20260829,
+    "decoder_rerun": false,
+    "selected_rows": 6
+  },
+  "config_hash12": "05a5ebaec745",
+  "primary_closed_utc": "2026-08-31T10:38:13.302503+00:00",
+  "replacement_closed_utc": "2026-08-31T10:06:38.130418+00:00",
+  "input_sha256": {
+    "primary_manifest.json": "e4d9a7622d0bc757164ef81428cbaee78f9700cf7b0d599ebde43017c565b18c",
+    "primary_summary.json": "1409610e66d99885072df2f6eb3f67279e73926dad7b070b41a62d7606b21b60",
+    "primary_inventory.json": "358dd4ec4b7ed0f8aae8e6945b737a0272417f7dbab6cd5b0d8436d3ed4e35ad",
+    "primary_results.json.gz": "ed0de02381687659bbb940cb3917fdeb5650ca9d7372763640b903aa34da5f16",
+    "replacement_manifest.json": "18e0942dd621d51a7256b34d1dd73e1e4f0c661ec38b6552e353072d7ec9e149",
+    "replacement_summary.json": "59728242af002e42c3e7d53be2b709107470f21839f8eb6bc78e6ea7ecb8c0a3",
+    "replacement_inventory.json": "ab79b554533bf29ead9f25e89b5051cf86ccfd608fb6e42de0bcc997c16a744e",
+    "replacement_results.json.gz": "00d9aa1b3509ed178ac971e411361f5d9b4f0e20772cc1852feaffc1df5b9b7b"
+  },
+  "source_sha256": {
+    "source_gatea_ga2_amendment.py": "868c6287b5a3287cdfdcbe80e8c395b6d0d0fb703789ca55226baa12749f396e",
+    "source_qldpc_dec_run_gate.py": "50521a69e378b1847d0dcd8c57884141cef8eb6dc84d052c4f0fa872bda96747",
+    "source_qldpc_dec_bp_osd.py": "3a753f46bf404b4bcf07111bfe22c76bf4f3c901b758caa65738e6c6b28055aa",
+    "source_qldpc_dec_circuits.py": "19ab69a72fb3bae6b07f064cc019659908c16afd40d24d8a37812dab044c9948",
+    "source_qldpc_dec_seeds.py": "4d4fcd915da2b6bec86b0d367f20be3d3b1e1d05eebe72fbe2d715dd9a0c74f0",
+    "source_qldpc_dec_runner.py": "f768547d49e0b1a1216a0c64fe0e9190fb359e2d032086eaf87bcca905b47011",
+    "pre_statement.md": "419238508a562b14fa5473d47f7062006649b27ec06d998e200b96ad3dfabfef"
+  },
+  "invalidated_primary_summary": {
+    "gate": "A-accuracy-companion",
+    "total_ler_by_p": {
+      "0.0003": {
+        "total_ler": 0.0
+      },
+      "0.0005": {
+        "total_ler": 0.0
+      },
+      "0.001": {
+        "total_ler": 0.0
+      }
+    }
+  },
+  "replacement_summary": {
+    "gate": "A-accuracy-companion-GA2-replacement",
+    "replacement": {
+      "arm": "bp30+osd",
+      "p": 0.0003,
+      "basis": "X",
+      "shots": 100000,
+      "failures": 0,
+      "raw_logical_failure_rate": 0.0,
+      "raw_ler_ci95": [
+        0.0,
+        3.841311260106779e-05
+      ],
+      "ler": 0.0,
+      "ler_ci95": [
+        0.0,
+        3.2010927167556495e-06
+      ],
+      "ler_normalization_rounds": 12,
+      "sampling_seed": 5713767636760819950,
+      "wall_s": 143.51849383302033,
+      "circuit_sha256": "300f8625ac81c9bf35f16b85b3bebf6aa087947650209387ab0f688168f372a2",
+      "dem_sha256": "d1d6fdb838d407155ec1a5940b8e1d32b7f2c32d5661dea84dad3feb8f4d4579",
+      "bposd_prior_model": "merged DEM heterogeneous error_channel",
+      "bposd_reference": {
+        "package": "stimbposd==0.1.0",
+        "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+      }
+    },
+    "replaces": "20260831T094401Z_0f49b4d1_f812a85d3f70 p=3e-4 X row"
+  }
+}

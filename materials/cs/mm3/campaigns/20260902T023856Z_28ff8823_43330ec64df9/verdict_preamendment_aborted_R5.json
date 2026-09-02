@@ -1,0 +1,51 @@
+{
+ "gate": "laderman23-ladder-total",
+ "run_id": "20260902T023856Z_28ff8823_43330ec64df9",
+ "verdict": "INCONCLUSIVE",
+ "reason": "R5: a trivially schedulable instance (d+5 slots) came back UNSAT from the CNF instrument - the encoder is over-constrained",
+ "phases": {
+  "A-anchors": {
+   "triple_sha256": "522ba07f4f1784ac8c31631030027acfe4ee72d166f315ac15044520e7b81b84",
+   "brent": {
+    "int": 0,
+    "fmpz": 0
+   },
+   "sides": {
+    "U": {
+     "d": 14,
+     "floor_achievable": false,
+     "states": 2401
+    },
+    "V": {
+     "d": 14,
+     "floor_achievable": false,
+     "states": 2401
+    },
+    "WFac": {
+     "d": 14,
+     "floor_achievable": false,
+     "states": 2401
+    }
+   },
+   "preconditions": {
+    "U": {
+     "nonzero_rows": 23
+    },
+    "V": {
+     "nonzero_rows": 23
+    },
+    "WFac": {
+     "nonzero_rows": 23
+    },
+    "rank_WFac": 9
+   },
+   "printed_basic_form": {
+    "left": 28,
+    "right": 28,
+    "output": 42,
+    "total": 98
+   },
+   "seconds": 0.18
+  }
+ }
+}

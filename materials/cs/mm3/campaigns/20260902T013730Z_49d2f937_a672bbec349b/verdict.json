@@ -1,0 +1,175 @@
+{
+ "gate": "mws59-bit-58vs59",
+ "run_id": "20260902T013730Z_49d2f937_a672bbec349b",
+ "prereg_sha256": "aede812c76cbea46bbceeffb737f95de6d197e0f42b7e847466de546041f5e6c",
+ "decomposition": "mws59 (fixed orientation, sigma^0, all-monomial triple)",
+ "question": "is the fixed-orientation minimum 58 or 59?",
+ "inherited_frozen": {
+  "C_U": 14,
+  "C_V_lower": 15,
+  "C_Wfac": 15,
+  "output_lower": 29,
+  "total_lower": 58
+ },
+ "controls": {
+  "A3": "pass (DFS+kissat+CaDiCaL)",
+  "R1": "REJECTED",
+  "R2": "REJECTED",
+  "R4_cert": {
+   "cnf_sha256": "6169710f9fc3f8eb5cd5ce21c13a7010683fac6a7ca449c4c2efa7842f24b0ed",
+   "lrat_sha256": "d1c126878761ab0565a848331a74604766401a36820ee33e0ae3b4ba27438394",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "lratcheck_rc": 0,
+   "drattrim_out": "edundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.023 seconds",
+   "lratcheck_out": "Deleted clauses = 2072.  Max live clauses = 2085\nc verification time = 0.00 secs"
+  },
+  "R5": "fired",
+  "seconds": 0.79,
+  "R3": "REJECTED (swapped-label correspondence, amended space)"
+ },
+ "route_P": {
+  "status": "OK",
+  "recount": {
+   "left": 15,
+   "right": 15,
+   "output": 29,
+   "printed_total": 59
+  },
+  "coord_maps": {
+   "A": "id",
+   "B": "id",
+   "C": "id"
+  },
+  "correspondence": {
+   "0": [
+    0,
+    1,
+    1
+   ],
+   "1": [
+    1,
+    1,
+    1
+   ],
+   "2": [
+    2,
+    -1,
+    1
+   ],
+   "3": [
+    3,
+    1,
+    1
+   ],
+   "4": [
+    4,
+    -1,
+    1
+   ],
+   "5": [
+    5,
+    1,
+    1
+   ],
+   "6": [
+    6,
+    1,
+    1
+   ],
+   "7": [
+    7,
+    -1,
+    -1
+   ],
+   "8": [
+    8,
+    1,
+    -1
+   ],
+   "9": [
+    9,
+    1,
+    1
+   ],
+   "10": [
+    10,
+    1,
+    -1
+   ],
+   "11": [
+    11,
+    1,
+    1
+   ],
+   "12": [
+    12,
+    1,
+    1
+   ],
+   "13": [
+    13,
+    -1,
+    1
+   ],
+   "14": [
+    14,
+    1,
+    -1
+   ],
+   "15": [
+    15,
+    -1,
+    -1
+   ],
+   "16": [
+    16,
+    -1,
+    -1
+   ],
+   "17": [
+    17,
+    -1,
+    1
+   ],
+   "18": [
+    18,
+    1,
+    -1
+   ],
+   "19": [
+    19,
+    -1,
+    -1
+   ],
+   "20": [
+    20,
+    -1,
+    -1
+   ],
+   "21": [
+    21,
+    -1,
+    -1
+   ],
+   "22": [
+    22,
+    -1,
+    1
+   ]
+  },
+  "assembled_total": 58,
+  "C_V_exact": 15,
+  "C_output_exact": 29,
+  "brent": [
+   729,
+   729
+  ],
+  "seconds": 0.03
+ },
+ "cpu_seconds_total": 1.0,
+ "verdict": "CERTIFIED-58",
+ "claim": "Route P verified the printed Table-2 stages by exact expansion under a verified 23-product correspondence: the right stage costs exactly 15 additions and reproduces all 23 Table-3 V rows, so C(V) = 15 exactly (frozen lower bound 15 from the complete aux-1 and aux-2 scans); the output stage costs exactly 29 and reproduces all 9 C-entries, so C(output) = 29 exactly (frozen lower bound 29). With the frozen 14-gate U witness (C(U) = 14 exact) the assembled scheme totals 14 + 15 + 29 = 58 additions, matching the frozen certified lower bound: mws59's fixed-orientation minimum is EXACTLY 58 (LB = UB = 58). The published 59-addition scheme is therefore one addition above the optimum of its own orientation - its left stage spends 15 where 14 suffices. No published claim is contradicted: 59 additions do suffice.",
+ "LB_after": 58,
+ "UB_after": 58
+}

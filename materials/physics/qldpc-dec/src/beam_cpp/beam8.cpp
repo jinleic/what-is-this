@@ -18,8 +18,16 @@
 //     scans, (path, val)-order expansion, and the first converged+valid
 //     early return. No RNG (the Python decoder has none; seeds only feed the
 //     Stim sampler, which runs on the harness side).
+//   * --num-results=K (Revision GB9, 2026-09-02): Algorithm 3 step 3 / 17-18
+//     verbatim. A converged seed is the first result and the search
+//     continues; every converged+valid child appends (duplicates count, as in
+//     the authors' code); the minimum-weight result (sequential index-order
+//     sum of |lam|, strict '<' keeps the first) is returned once K results
+//     exist or after max_rounds. K=1 is byte-identical to the frozen path.
 //
-// Build: clang++ -O3 -std=c++17 -Wall -Wextra beam8.cpp -o beam8_cpp
+// Build: clang++ -O3 -std=c++17 -Wall -Wextra beam8.cpp -o beam_nr_cpp
+//   (src/beam_cpp/beam8_cpp is the frozen GB5a/GB6/GB7 binary, hash-pinned in
+//    their manifests; it is never rebuilt. New builds go to beam_nr_cpp.)
 // Run:   ./beam8_cpp --dem dem.txt [--lam lam.npy] --shots shots.bin
 //                   --out preds.bin [--limit N] [--repeats K] [...]
 //        (exact commands in README.md / benchmark.sh)
@@ -252,7 +260,7 @@ struct Engine {
     CSR A;                                   // nobs x nerr pattern
     // pinned parameters (CLI-overridable; see README)
     int32_t beam_width = 8, initial_iters = 30, iters_per_round = 20;
-    int32_t max_rounds = 10;
+    int32_t max_rounds = 10, num_results = 1;
 };
 
 // One beam path. Mirrors the path dict in Python decode().
@@ -455,10 +463,28 @@ ShotStat decode_shot(Engine& e, const std::vector<uint8_t>& syndrome,
     std::vector<uint8_t> syn64((size_t)ndet);
     for (int32_t i = 0; i < ndet; ++i) syn64[(size_t)i] = (uint8_t)(syndrome[(size_t)i] ? 1 : 0);
 
-    // results: (weight, e_full) list; num_results=1 -> return first valid
+    // results: (weight, e_full) list mirrored as running (best_wt, best_e);
+    // strict '<' keeps the first minimum == Python min() over insertion order.
     double best_wt = 0.0;
     std::vector<uint8_t> best_e;
     bool have_result = false;
+    int32_t nresults = 0;
+    auto weight_of = [&](const std::vector<uint8_t>& ev) {
+        // wt = sum_j e_j |lam_j|, sequential float64 in index order
+        // (== BeamSearchDecoder._weight)
+        double wt = 0.0;
+        for (int32_t j = 0; j < nerr; ++j)
+            if (ev[(size_t)j]) wt += std::fabs(e.lam[(size_t)j]);
+        return wt;
+    };
+    auto emit_obs = [&](const std::vector<uint8_t>& ev) {
+        for (int32_t o = 0; o < e.nobs; ++o) {
+            int par = 0;
+            for (int32_t k = e.A.indptr[(size_t)o]; k < e.A.indptr[(size_t)o + 1]; ++k)
+                par ^= ev[(size_t)e.A.indices[(size_t)k]];
+            obs_out[(size_t)o] = (uint8_t)par;
+        }
+    };
 
     // ---------- seed: standard BP (no masked nodes) ----------
     Bp seed;
@@ -469,15 +495,17 @@ ShotStat decode_shot(Engine& e, const std::vector<uint8_t>& syndrome,
     st.bp_iters += seed_iters;
     if (conv) {
         st.seed_conv = true;
-        // return e_hat directly (masked empty -> e_full == e_hat)
-        // observable prediction: (A @ e_hat) % 2
-        for (int32_t o = 0; o < e.nobs; ++o) {
-            int par = 0;
-            for (int32_t k = e.A.indptr[(size_t)o]; k < e.A.indptr[(size_t)o + 1]; ++k)
-                par ^= seed.e_hat[(size_t)e.A.indices[(size_t)k]];
-            obs_out[(size_t)o] = (uint8_t)par;
+        if (e.num_results <= 1) {
+            // return e_hat directly (masked empty -> e_full == e_hat)
+            emit_obs(seed.e_hat);
+            return st;
         }
-        return st;
+        // Algorithm 3 step 3: the seed solution is the first result; the
+        // beam search continues from the converged state.
+        best_wt = weight_of(seed.e_hat);
+        best_e = seed.e_hat;
+        have_result = true;
+        nresults = 1;
     }
 
     // seed warm-start messages: per active err j, mean of nu over its pairs
@@ -536,25 +564,20 @@ ShotStat decode_shot(Engine& e, const std::vector<uint8_t>& syndrome,
                         if ((uint8_t)par != syndrome[(size_t)i]) ok = false;
                     }
                     if (ok) {
-                        // wt = float(np.dot(e_full, self.weight)); results.append
-                        double wt = 0.0;
-                        for (int32_t j = 0; j < nerr; ++j)
-                            if (e_full[(size_t)j]) wt += std::fabs(e.lam[(size_t)j]);
+                        // results.append((wt, e_full)); return min once
+                        // len(results) >= num_results (Algorithm 3, 17-18)
+                        const double wt = weight_of(e_full);
                         if (!have_result || wt < best_wt) {
                             best_wt = wt;
                             best_e = e_full;
                         }
                         have_result = true;
-                        // num_results == 1 -> return immediately
-                        st.returned_early = true;
-                        // obs_out from best_e
-                        for (int32_t o = 0; o < e.nobs; ++o) {
-                            int par = 0;
-                            for (int32_t k = e.A.indptr[(size_t)o]; k < e.A.indptr[(size_t)o + 1]; ++k)
-                                par ^= best_e[(size_t)e.A.indices[(size_t)k]];
-                            obs_out[(size_t)o] = (uint8_t)par;
+                        ++nresults;
+                        if (nresults >= e.num_results) {
+                            st.returned_early = true;
+                            emit_obs(best_e);
+                            return st;
                         }
-                        return st;
                     }
                     st.converged_invalid = true;
                 }
@@ -619,14 +642,8 @@ ShotStat decode_shot(Engine& e, const std::vector<uint8_t>& syndrome,
     }
     if (have_result) {
         st.fallback = false;
-        // min(results) by weight -- with num_results=1 we already returned,
-        // but keep the branch for num_results>1 future-proofing
-        for (int32_t o = 0; o < e.nobs; ++o) {
-            int par = 0;
-            for (int32_t k = e.A.indptr[(size_t)o]; k < e.A.indptr[(size_t)o + 1]; ++k)
-                par ^= best_e[(size_t)e.A.indices[(size_t)k]];
-            obs_out[(size_t)o] = (uint8_t)par;
-        }
+        // min(results) by weight after max_rounds (1 <= found < num_results)
+        emit_obs(best_e);
         return st;
     }
     // no valid solution: best-effort (paths[0].masked)
@@ -654,11 +671,12 @@ ShotStat decode_shot(Engine& e, const std::vector<uint8_t>& syndrome,
 
 struct Args {
     std::string dem, lam, shots, out;
+    std::string shot_times;    // optional: per-shot decode ms, float64 LE per shot
     int64_t limit = -1;        // decode first N shots (-1: all)
     int32_t repeats = 1;       // repeat whole batch (timing); decode count scaled
     int32_t threads = 1;       // harness-level parallelism: split shoot range
     int32_t beam_width = 8, initial_iters = 30, iters_per_round = 20;
-    int32_t max_rounds = 10;   // num_results pinned to 1 (companion arm)
+    int32_t max_rounds = 10, num_results = 1;
     bool check_lam = false;
     bool verbose = false;
 };
@@ -689,13 +707,15 @@ Args parse_args(int argc, char** argv) {
         else if (s == "--repeats") a.repeats = std::stoi(need_val("--repeats"));
         else if (s.rfind("--repeats=", 0) == 0) a.repeats = std::stoi(eqval("--repeats"));
         else if (s == "--threads") a.threads = std::stoi(need_val("--threads"));
-        else if (s.rfind("--threads=", 0) == 0) a.threads = std::stoi(eqval("--threads"));
-        else if (s == "--check-lam") a.check_lam = true;
-        else if (s == "--verbose") a.verbose = true;
+        else if (s == "--out") a.out = need_val("--out");
+        else if (s.rfind("--out=", 0) == 0) a.out = eqval("--out");
+        else if (s == "--shot-times") a.shot_times = need_val("--shot-times");
+        else if (s.rfind("--shot-times=", 0) == 0) a.shot_times = eqval("--shot-times");
         else if (s.rfind("--beam-width=", 0) == 0) a.beam_width = std::stoi(eqval("--beam-width"));
         else if (s.rfind("--initial-iters=", 0) == 0) a.initial_iters = std::stoi(eqval("--initial-iters"));
         else if (s.rfind("--iters-per-round=", 0) == 0) a.iters_per_round = std::stoi(eqval("--iters-per-round"));
         else if (s.rfind("--max-rounds=", 0) == 0) a.max_rounds = std::stoi(eqval("--max-rounds"));
+        else if (s.rfind("--num-results=", 0) == 0) a.num_results = std::stoi(eqval("--num-results"));
         else fail("unknown argument: " + s);
     }
     if (a.dem.empty() || a.shots.empty() || a.out.empty())
@@ -714,6 +734,24 @@ int main(int argc, char** argv) {
         eng.ndet = dem.ndet;
         eng.nerr = dem.nerr;
         eng.nobs = dem.nobs;
+        // Decoder-shape parameters come from the CLI (defaults = the pinned
+        // beam8 arm: 8/30/20/10, num_results=1). They MUST be wired here:
+        // without this the binary silently decodes every arm as beam8.
+        if (args.beam_width < 1) fail("--beam-width must be >= 1");
+        if (args.initial_iters < 1) fail("--initial-iters must be >= 1");
+        if (args.iters_per_round < 1) fail("--iters-per-round must be >= 1");
+        if (args.max_rounds < 1) fail("--max-rounds must be >= 1");
+        if (args.num_results < 1) fail("--num-results must be >= 1");
+        eng.beam_width = args.beam_width;
+        eng.initial_iters = args.initial_iters;
+        eng.iters_per_round = args.iters_per_round;
+        eng.max_rounds = args.max_rounds;
+        eng.num_results = args.num_results;
+        std::fprintf(stderr,
+                     "config: beam_width=%d initial_iters=%d iters_per_round=%d "
+                     "max_rounds=%d num_results=%d\n",
+                     eng.beam_width, eng.initial_iters, eng.iters_per_round,
+                     eng.max_rounds, eng.num_results);
 
         // ---- lam ----
         if (!args.lam.empty()) {
@@ -743,6 +781,8 @@ int main(int argc, char** argv) {
         const uint64_t nshot_f = get_u64((const uint8_t*)hdr + 16);
         if (ndet_f != (uint64_t)eng.ndet)
             fail("shots ndet " + std::to_string(ndet_f) + " != DEM ndet " + std::to_string(eng.ndet));
+        if (nobs_f != (uint64_t)eng.nobs)
+            fail("shots nobs " + std::to_string(nobs_f) + " != DEM nobs " + std::to_string(eng.nobs));
         const int64_t nshot = (int64_t)nshot_f;
         const int64_t limit = args.limit >= 0 ? std::min<int64_t>(args.limit, nshot) : nshot;
         const size_t det_bytes = (size_t)nshot * (size_t)((ndet_f + 63) / 64 * 8);  // u64-LE rows
@@ -758,6 +798,9 @@ int main(int argc, char** argv) {
                          "dem: dets=%d errs=%d obs=%d | shots=%lld limit=%lld repeats=%d threads=%d\n",
                          eng.ndet, eng.nerr, eng.nobs, (long long)nshot, (long long)limit,
                          args.repeats, args.threads);
+
+        std::vector<double> shot_ms;
+        if (!args.shot_times.empty()) shot_ms.assign((size_t)limit, 0.0);
 
         std::vector<ShotStat> stats((size_t)limit);
         std::mutex stats_mu;
@@ -781,7 +824,15 @@ int main(int argc, char** argv) {
                         syn[(size_t)d] = (row[byte_idx] >> (d & 7)) & 1u;
                     }
                     std::vector<uint8_t> ob((size_t)nobs_f, 0);  // unpacked per-obs
-                    ShotStat st = decode_shot(local, syn, ob);
+                    ShotStat st;
+                    if (args.shot_times.empty()) {
+                        st = decode_shot(local, syn, ob);
+                    } else {
+                        const auto shot_t0 = std::chrono::steady_clock::now();
+                        st = decode_shot(local, syn, ob);
+                        shot_ms[(size_t)k] = std::chrono::duration<double, std::milli>(
+                            std::chrono::steady_clock::now() - shot_t0).count();
+                    }
                     // decode_shot fills obs_out UNPACKED: one byte per observable.
                     for (uint64_t o = 0; o < nobs_f; ++o)
                         if (o < (uint64_t)ob.size() && ob[(size_t)o]) {
@@ -825,6 +876,14 @@ int main(int argc, char** argv) {
         }
         out.write((const char*)outbuf.data(), (std::streamsize)outbuf.size());
         out.close();
+        if (!args.shot_times.empty()) {
+            std::ofstream tf(args.shot_times, std::ios::binary);
+            if (!tf) fail("cannot write shot-times output: " + args.shot_times);
+            tf.write((const char*)shot_ms.data(), (std::streamsize)(shot_ms.size() * 8));
+            tf.close();
+            if (!tf) fail("failed writing shot-times payload: " + args.shot_times);
+        }
+
 
         // ---- stats to stderr ----
         ShotStat agg{};

@@ -1,0 +1,22 @@
+{
+  "schema": "target-state/1",
+  "id": "cs/rs-pe3d",
+  "problem": "High-dimensional product expansion for RS tensor codes",
+  "status": "active",
+  "current_gate": "H-33ROW-SIZE8-RESIDUAL FROZEN-CERTIFIED: every tied-three-row all-distinct size-8 circuit is either an oriented exact-degree-2 rational graph or the reduced base locus of a unique fixed-component-free (2,2)-curve pencil; the prior 560/416 residuals are all complete intersections.",
+  "latest_campaign": "20260902T041030Z_64e0c4ef_b5de16e49f8a",
+  "latest_campaign_verdict": "FROZEN-CERTIFIED",
+  "headline": "For (1,x,x^2) tensor (1,y,y^2), sizes 4-7 are completely classified; the all-distinct size-8 channel is exactly degree-2 graphs plus reduced (2,2) complete intersections. At n=8 the graph terms vanish and all 560 GF(11)/416 GF(13) circuits are complete intersections; bare rank 7 overaccepts 1632/928 common-(1,1)-component noncircuits. Sizes 9-10 retain exact minimal curve/deletion predicates.",
+  "next_action": "Target rests for the remainder of this session. Future work, if reopened, is limited to repeated-index tied-three-row size-8 templates, structural counts for sizes 9-10, the unequal 2-by-3-row determinant sums, and the spark-2 converse boundary.",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-02T05:12:54Z",
+  "open_questions": [
+    "Theorem X spark-2 boundary branches (d_A=2 and/or d_B=2), including possible permutation-shaped supports.",
+    "Closed evaluations or injective geometric parameterizations for the unequal 2-by-3-row size-7 q=5,6,7 determinant sums.",
+    "A structural classification of repeated-index tied-three-row size-8 circuit templates; the all-distinct channel is now closed.",
+    "Structural parameterizations and closed incidence counts for tied-three-row size-9 and size-10 circuits beyond the exact curve/deletion predicates."
+  ],
+  "sources": [
+    "cs/RESULTS.md rs-pe3d section"
+  ]
+}

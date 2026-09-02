@@ -1,0 +1,16 @@
+{
+  "change": "break immediately after first strict-negative rung; record actual attempted prefix",
+  "corrected_source": "gate_c_candidate_witness_corrected.py.asrun",
+  "objective_evaluations_before_correction": 0,
+  "protocol_unchanged": [
+    "exact direction",
+    "five-rung order",
+    "branch-safe full objective",
+    "common-expression comparison",
+    "decision inequality",
+    "six-point maximum",
+    "900-second cap"
+  ],
+  "status": "PRE-COMPUTE CORRECTION APPLIED; OBJECTIVE COMPUTE STILL PENDING",
+  "superseded_source": "gate_c_candidate_witness.py.asrun (STATIC GUARDS ONLY)"
+}

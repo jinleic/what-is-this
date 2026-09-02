@@ -1,0 +1,248 @@
+{
+ "all_mutations_caught": true,
+ "bound_directions": {
+  "D_rule": "MVT: (gamma(s)-gamma(t))/(t-s) = |gamma'(xi)| >= inf over [s_lo,t_hi]; (1+ab) >= 1+(1-s_hi)(1-t_hi); product of lower bounds of nonnegative quantities",
+  "L5": "numerator N is increasing so N(l) is its minimum; denominator pi_d h(pi_d) <= pi_d(r) * max h on the image interval",
+  "N0": "numerator uses -log(1-pi)>=pi and pi_d'>=2x(2-3x0); denominator uses h(pi)<=pi(log(1/pi)+1), pi_d<=2x^2, u(log(1/u)+1) increasing, x(2log(1/x)+c) increasing below exp(-(1+log2)/2)",
+  "N1": "numerator uses pi_d'>=pi_d'(x1) on [x1,1] (x1>=3/4) and ell/(ell+1) increasing; denominator uses pi<=1 and h(pi)<=(1-pi)(log(1/(1-pi))+1)",
+  "Q_rule": "gamma(s)>=gamma(s_hi), gamma(t)<=gamma(t_lo) (gamma decreasing), 0<t-s<=t_hi-s_lo; requires s_hi<t_lo so the numerator lower bound is positive",
+  "identity_middle_term": "dropped term is (log(1+delta)-M_mu)/2*(Lam_st+Lbar) with log(1+delta)>=0, -M_mu>=0 (L0f), Lam>=0 (L0g): dropping it lowers Phi",
+  "sinh": "sinh x >= x for x >= 0 gives kappa_sinh >= kappa/2; used in L2 only"
+ },
+ "cell_cover": {
+  "acceptance": "lower endpoint of the Arb bound (D) or (Q) strictly exceeds theta",
+  "accepted_by_D": 792,
+  "accepted_by_Q": 14687,
+  "accepted_cells_meeting_residual_layer": 24,
+  "discarded_cells": 17,
+  "max_depth": 23,
+  "min_certified_bound": "[2.25000083641726214447916879426 +/- 3.80e-30]",
+  "min_certified_cell": {
+   "depth": 23,
+   "s": [
+    "2167/4096",
+    "271/512"
+   ],
+   "t": [
+    "139/256",
+    "1113/2048"
+   ]
+  },
+  "numerical_minimum_of_kappa_DISCOVERY": "2.394 at s=t=0.54 (float scan, not load-bearing)",
+  "processed_cells": 30974,
+  "region": "closed triangle 0<=s<=t<=1; only points with 0<s<t<1 need kappa (L3 handles the rest); cells with s_lo>=t_hi are discarded",
+  "theta": "9/4"
+ },
+ "claim": "Phi(s,t) = h(pi(s,t))^2 - h(pi(s,s))*h(pi(t,t)) >= 0 for all (s,t) in [0,1]^2, with pi(s,t)=s*t*(1+(1-s)*(1-t))",
+ "claim_status": "PROVED",
+ "consequences": {
+  "B_nonnegative": "B = beta*(h(pi_st) - sqrt(h(pi_ss) h(pi_tt))) >= 0 on [0,1]^2 (beta>0 below)",
+  "binding_parameters": {
+   "beta_decimal_40": "[0.1000525598628931066646282994769475877962 +/- 6.19e-42]",
+   "beta_exact_binary_fraction_bits": 337,
+   "conversion": "mpf -> exact Fraction via the stored (sign, mantissa, exponent); no mpf() re-rounding",
+   "m_decimal_40": "[0.6172909120812649700696870979010273883736 +/- 1.86e-41]",
+   "role": "beta is only the positive prefactor in B = beta*(h(pi_st) - sqrt(h(pi_ss) h(pi_tt))); Phi itself is parameter-free; m and xstar are unused",
+   "source": "liu9_binding.solve_equation_parameters(100), fields beta, mean, x",
+   "status": "PROVED (beta > 0 as an exact rational)",
+   "xstar_decimal_40": "[0.6907875939249880141504882046362705625806 +/- 2.82e-41]"
+  },
+  "combined_with": [
+   "uc/verification/results/liu9-h2-reduction.json (chain C1-C6)",
+   "uc/verification/results/liu9-h2-twovar.json (A>=0 and R>=0 on [0,1]^2)"
+  ],
+  "yields": "T >= 0 hence gap >= 0 for every q, every mass vector, every admissible M >= m, arbitrarily many atoms, with NO support restriction"
+ },
+ "definitions": {
+  "Lam": "h(u)/u = log(1/u) + mu(u)",
+  "g": "Lam(pi_d(x))",
+  "gamma": "log g(x)",
+  "h": "-u*log(u) - (1-u)*log(1-u), h(0)=h(1)=0",
+  "kappa": "(1+(1-s)(1-t)) * (gamma(s)-gamma(t))/(t-s) for 0<s<t<1",
+  "mu": "-(1-u)*log(1-u)/u",
+  "pi": "s*t*(1+(1-s)*(1-t))",
+  "pi_d": "pi(x,x) = x^2*(2-2x+x^2)"
+ },
+ "determinism": "no timestamps; deterministic depth-first traversal; Arb strings at fixed digit counts",
+ "lemmas": {
+  "L0a_derivative_identity": {
+   "algebra": "u*h' = u log(1-u) - u log u; -h = u log u + (1-u) log(1-u); sum = log(1-u)",
+   "max_abs_residual_upper": "[6.41882111733e-119 +/- 1.30e-131]",
+   "statement": "u*h'(u) - h(u) == log(1-u); hence Lam'(u) = log(1-u)/u^2 < 0",
+   "status": "PROVED"
+  },
+  "L0b_pi_d_monotone": {
+   "proof": "discriminants 9-16=-7<0 and 9-12=-3<0 with positive leading coefficients",
+   "statement": "pi_d'(x)=2x(2-3x+2x^2)>0 on (0,1]; pi_d''(x)=4(1-3x+3x^2)>0",
+   "status": "PROVED"
+  },
+  "L0c_gamma_decreasing": {
+   "proof": "Lam' < 0 by L0a, pi_d' > 0 by L0b, chain rule",
+   "statement": "g = Lam o pi_d and gamma = log g are strictly decreasing on (0,1); gamma' = log(1-pi_d) pi_d' /(pi_d h(pi_d))",
+   "status": "PROVED"
+  },
+  "L0d_mu_shape": {
+   "proof": "-(1-u)log(1-u) = u - sum_{k>=2} u^k/(k(k-1)) by multiplying the log series by (1-u); all derivative coefficients are negative on (0,1); mu(1)=0 by continuity; mu>=0 since -(1-u)log(1-u)>=0",
+   "statement": "mu(u) = 1 - sum_{k>=2} u^{k-1}/(k(k-1)); mu decreasing, concave, 0<=mu<=1 on [0,1]",
+   "status": "PROVED"
+  },
+  "L0e_polynomial_identity": {
+   "degree_bound": "<= 4 in each variable, so a 5x5 grid already suffices",
+   "grid": "s,t in {1/7,...,6/7}",
+   "max_abs_residual_exact": "0/1",
+   "statement": "pi(s,s)*pi(t,t) - pi(s,t)^2 == s^2*t^2*(s-t)^2",
+   "status": "PROVED"
+  },
+  "L0f_M_mu_nonpositive": {
+   "proof": "L0e gives pi_st <= sqrt(pi_ss pi_tt) <= (pi_ss+pi_tt)/2; mu decreasing then mu concave (L0d)",
+   "statement": "mu(pi_ss)+mu(pi_tt)-2mu(pi_st) <= 0",
+   "status": "PROVED"
+  },
+  "L1_identity": {
+   "M_mu_max_upper_at_points": "[-9.0949209969639964705e-13 +/- 1.83e-33]",
+   "max_abs_residual_upper": "[1.12831881916e-119 +/- 3.21e-131]",
+   "middle_term_min_lower_at_points": "[3.3444453236000882893e-12 +/- 2.35e-32]",
+   "points": 14,
+   "residual_tolerance": "1e-100",
+   "status": "MACHINE-VERIFIED at the listed rational points; the identity itself is the algebra in the module docstring (L1)"
+  },
+  "L2_master": {
+   "proof": "drop the nonnegative middle term of L1; g(s)-g(t) = 2 sqrt(g(s)g(t)) sinh((gamma(s)-gamma(t))/2); sinh x >= x for x >= 0",
+   "statement": "for 0<s<t<1, Phi >= s^2 t^2 (s-t)^2 g(s) g(t) (kappa^2/4 - 1); kappa>=2 implies Phi>=0",
+   "status": "PROVED"
+  },
+  "L3_boundary": {
+   "statement": "Phi(s,s)=0; Phi(0,t)=0; Phi(s,1)=h(s)^2>=0 since pi(s,1)=s and pi(1,1)=1; Phi symmetric",
+   "status": "PROVED"
+  },
+  "L4_endpoint_bounds": {
+   "N0": {
+    "statement": "0<x<=x0<exp(-(1+log2)/2): |gamma'(x)| >= (2-3x0)/(x0(2log(1/x0)+1-log2))",
+    "validity_certified": true,
+    "value": "[2.9110543666162264118 +/- 1.57e-20]",
+    "x0_used": "1/8"
+   },
+   "N1": {
+    "statement": "3/4<=x1<=x<1: |gamma'(x)| >= pi_d'(x1)/(1-pi_d(x1)) * ell1/(ell1+1), ell1=log(1/(1-pi_d(x1)))",
+    "value": "[4.2820481048836026963 +/- 3.22e-20]",
+    "x1_used": "7/8"
+   },
+   "samples": {
+    "note": "samples confirm the closed-form gamma' exceeds the analytic bounds; the bounds themselves are proved in L4",
+    "nu0_at_X0": "[2.9110543666162264118 +/- 1.57e-20]",
+    "nu1_at_X1": "[4.2820481048836026963 +/- 3.22e-20]",
+    "samples_above_X1": {
+     "18446744073709551615/18446744073709551616": "[1.80337721119e+19 +/- 5.56e+6]",
+     "255/256": "[213.258197204 +/- 6.54e-11]",
+     "4294967295/4294967296": "[4103974285.76 +/- 3.68e-3]",
+     "65535/65536": "[59786.8196481 +/- 3.11e-9]",
+     "7/8": "[5.78535625913 +/- 8.65e-14]"
+    },
+    "samples_below_X0": {
+     "1/16": "[5.26432320481 +/- 3.63e-12]",
+     "1/18446744073709551616": "[4.14395325281e+17 +/- 4.69e+5]",
+     "1/256": "[44.8209234838 +/- 1.52e-11]",
+     "1/4294967296": "[192305055.337 +/- 4.37e-4]",
+     "1/65536": "[5828.59571939 +/- 3.75e-9]"
+    }
+   },
+   "status": "PROVED (proofs in module docstring)"
+  },
+  "L5_interior_bound": {
+   "statement": "N(x)=-log(1-pi_d(x))pi_d'(x) is positive increasing; inf_[l,r]|gamma'| >= N(l)/(pi_d(r) max_[pi_d(l),pi_d(r)] h)",
+   "status": "PROVED"
+  }
+ },
+ "mutations": [
+  {
+   "caught": true,
+   "failing_cell": {
+    "depth": 29,
+    "s": [
+     "15415/32768",
+     "1927/4096"
+    ],
+    "t": [
+     "1951/4096",
+     "7805/16384"
+    ]
+   },
+   "mutation": "theta_2.4_above_true_minimum",
+   "observed": "cell budget 123896 exhausted",
+   "processed_cells": 123897,
+   "refutation_witness": {
+    "certified_below_12/5": true,
+    "kappa_enclosure": "[2.394193379778020415966765 +/- 3.03e-25]",
+    "point": [
+     "27/50",
+     "540001/1000000"
+    ]
+   },
+   "theta": "12/5"
+  },
+  {
+   "caught": true,
+   "failing_cell": {
+    "depth": 60,
+    "s": [
+     "268435455/1073741824",
+     "1/4"
+    ],
+    "t": [
+     "532295267/1073741824",
+     "133073817/268435456"
+    ]
+   },
+   "mutation": "drop_(1+(1-s)(1-t))_factor",
+   "observed": "max depth 60 reached",
+   "processed_cells": 49497,
+   "reason": "the diagonal limit of the factor-free condition is |gamma'(x)|>=2, which fails at x=9/20",
+   "refutation_witness": {
+    "abs_dgamma_enclosure": "[1.910518707203791212162174 +/- 3.80e-25]",
+    "certified_below_2": true,
+    "point": "9/20"
+   },
+   "theta": "2"
+  },
+  {
+   "caught": true,
+   "mutation": "identity_with_protocol_s+t-st",
+   "observed": "L1 identity residual excludes zero at 1/3,2/3: [0.35401550230522834246320767965501145823479521001984638989007545223671712199541084383757212879541994625910883543"
+  },
+  {
+   "caught": true,
+   "mutation": "identity_quarter_replaced_by_half",
+   "observed": "L1 identity residual excludes zero at 1/3,2/3: [-0.0331698698013441661730216854901038985115495443397267559963161337590695741017052402842749257295726260530894098"
+  },
+  {
+   "caught": true,
+   "mutation": "N0_applied_at_x0=1/2_beyond_validity",
+   "observed": "N0 hypothesis x0 < exp(-(1+log2)/2) is not certified"
+  }
+ ],
+ "natural_log": true,
+ "parameter_independence": "Phi contains no parameter; beta, m, xstar do not enter the certificate.  beta>0 is recorded only to conclude B>=0.",
+ "precision_bits": 400,
+ "quantitative_form": {
+  "sanity": {
+   "coefficient": "17/64",
+   "min_ratio_Phi_over_bound_at_points": "[6.24643746413157 +/- 3.65e-16]",
+   "note": "sanity only; the bound is a theorem once the cover certifies kappa >= theta"
+  },
+  "statement": "for 0<s<t<1: Phi >= (theta^2/4 - 1) * s^2 t^2 (s-t)^2 g(s) g(t) with theta = 9/4, i.e. coefficient 17/64, where g(x) = h(pi(x,x))/pi(x,x) > 0"
+ },
+ "report_sha256": "389804b249cd8b16a47f3c6ab64a70ad4a9afe78097b4a8c6739759804c9eaaa",
+ "report_sha256_scope": "SHA-256 of canonical sorted-key compact JSON with report_sha256 omitted",
+ "residual_layer_of_liu9_h2_phi": {
+  "a": "1/16384",
+  "exact_area": "16383/67108864",
+  "set": "([0,a) x [0,1] union (1-a,1] x [0,1] union [a,1-a] x ([0,a) union (1-a,1])) minus ({s=0} union {t=0} union {s=t})",
+  "status": "PROVED by inclusion in [0,1]^2; no separate endpoint remainder lemma is needed because kappa -> +infinity at every boundary (L4)"
+ },
+ "single_core_environment": {
+  "FLINT_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1"
+ },
+ "tool": "liu9_h2_boundary_layer.py (python-flint Arb)",
+ "tool_sha256": "fcb3ed55e8bd9ad6d2f180f5ffa79f192dacc940a5c7506eca2a85aa612905e6"
+}

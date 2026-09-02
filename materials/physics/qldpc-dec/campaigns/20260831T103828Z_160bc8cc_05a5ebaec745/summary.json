@@ -1,0 +1,206 @@
+{
+  "gate": "A-accuracy-companion-GA2-amended",
+  "status": "DESCRIPTIVE_NO_PUBLISHED_ACCURACY_TARGET",
+  "selected_rows": [
+    {
+      "arm": "bp30+osd",
+      "p": 0.0003,
+      "basis": "X",
+      "shots": 100000,
+      "failures": 0,
+      "raw_logical_failure_rate": 0.0,
+      "raw_ler_ci95": [
+        0.0,
+        3.841311260106779e-05
+      ],
+      "ler": 0.0,
+      "ler_ci95": [
+        0.0,
+        3.2010927167556495e-06
+      ],
+      "ler_normalization_rounds": 12,
+      "sampling_seed": 5713767636760819950,
+      "wall_s": 143.51849383302033,
+      "circuit_sha256": "300f8625ac81c9bf35f16b85b3bebf6aa087947650209387ab0f688168f372a2",
+      "dem_sha256": "d1d6fdb838d407155ec1a5940b8e1d32b7f2c32d5661dea84dad3feb8f4d4579",
+      "bposd_prior_model": "merged DEM heterogeneous error_channel",
+      "bposd_reference": {
+        "package": "stimbposd==0.1.0",
+        "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+      },
+      "source_campaign": "20260831T100414Z_6d776e6c_06409bae84aa",
+      "selection": "GA2 basis-correct replacement"
+    },
+    {
+      "arm": "bp30+osd",
+      "p": 0.0003,
+      "basis": "Z",
+      "shots": 100000,
+      "failures": 0,
+      "raw_logical_failure_rate": 0.0,
+      "raw_ler_ci95": [
+        0.0,
+        3.841311260106779e-05
+      ],
+      "ler": 0.0,
+      "ler_ci95": [
+        0.0,
+        3.2010927167556495e-06
+      ],
+      "ler_normalization_rounds": 12,
+      "sampling_seed": 4303674255448198600,
+      "wall_s": 191.47399941598997,
+      "circuit_sha256": "c179efd32e7244460c4b59d0a4d200e753469214efc692c389cb3bb4b2523439",
+      "dem_sha256": "c81c2944ab1efc5c2253a927dfd668aa3638fb3bed1d013a0de7c64e778b984e",
+      "bposd_prior_model": "merged DEM heterogeneous error_channel",
+      "bposd_reference": {
+        "package": "stimbposd==0.1.0",
+        "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+      },
+      "source_campaign": "20260831T094401Z_0f49b4d1_f812a85d3f70",
+      "selection": "unchanged valid primary row"
+    },
+    {
+      "arm": "bp30+osd",
+      "p": 0.0005,
+      "basis": "X",
+      "shots": 100000,
+      "failures": 0,
+      "raw_logical_failure_rate": 0.0,
+      "raw_ler_ci95": [
+        0.0,
+        3.841311260106779e-05
+      ],
+      "ler": 0.0,
+      "ler_ci95": [
+        0.0,
+        3.2010927167556495e-06
+      ],
+      "ler_normalization_rounds": 12,
+      "sampling_seed": 6058570714269728388,
+      "wall_s": 343.6843964580912,
+      "circuit_sha256": "a6e914fda0f2a63599b7f72fa367ad26f4ba2bca7f2dc4f0152fc100a8041925",
+      "dem_sha256": "c2b8122abba324fd66d40b125158170bf11eec2796c13e0ea2bf9e4d24ad6cb4",
+      "bposd_prior_model": "merged DEM heterogeneous error_channel",
+      "bposd_reference": {
+        "package": "stimbposd==0.1.0",
+        "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+      },
+      "source_campaign": "20260831T094401Z_0f49b4d1_f812a85d3f70",
+      "selection": "unchanged valid primary row"
+    },
+    {
+      "arm": "bp30+osd",
+      "p": 0.0005,
+      "basis": "Z",
+      "shots": 100000,
+      "failures": 0,
+      "raw_logical_failure_rate": 0.0,
+      "raw_ler_ci95": [
+        0.0,
+        3.841311260106779e-05
+      ],
+      "ler": 0.0,
+      "ler_ci95": [
+        0.0,
+        3.2010927167556495e-06
+      ],
+      "ler_normalization_rounds": 12,
+      "sampling_seed": 7807697191082687897,
+      "wall_s": 364.84987475001253,
+      "circuit_sha256": "8b3e741ea2f99ea0516ee82ee720aa34e4548b2671da5e2d4417a212a197c887",
+      "dem_sha256": "477cb3a7c611b3f2c9eb61a97ca827d81a271358d13a46d5c0219905dce01d5d",
+      "bposd_prior_model": "merged DEM heterogeneous error_channel",
+      "bposd_reference": {
+        "package": "stimbposd==0.1.0",
+        "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+      },
+      "source_campaign": "20260831T094401Z_0f49b4d1_f812a85d3f70",
+      "selection": "unchanged valid primary row"
+    },
+    {
+      "arm": "bp30+osd",
+      "p": 0.001,
+      "basis": "X",
+      "shots": 100000,
+      "failures": 0,
+      "raw_logical_failure_rate": 0.0,
+      "raw_ler_ci95": [
+        0.0,
+        3.841311260106779e-05
+      ],
+      "ler": 0.0,
+      "ler_ci95": [
+        0.0,
+        3.2010927167556495e-06
+      ],
+      "ler_normalization_rounds": 12,
+      "sampling_seed": 1373290830000561672,
+      "wall_s": 1020.0541296249721,
+      "circuit_sha256": "6628d4483489cd8ea792da846274e8e245c7168c3560bf4c5e1cd2b3fb736dc3",
+      "dem_sha256": "9977f6e7c1bd59f52ddb91d33c590169a2751cec62cd37a81aacd7b35db87513",
+      "bposd_prior_model": "merged DEM heterogeneous error_channel",
+      "bposd_reference": {
+        "package": "stimbposd==0.1.0",
+        "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+      },
+      "source_campaign": "20260831T094401Z_0f49b4d1_f812a85d3f70",
+      "selection": "unchanged valid primary row"
+    },
+    {
+      "arm": "bp30+osd",
+      "p": 0.001,
+      "basis": "Z",
+      "shots": 100000,
+      "failures": 0,
+      "raw_logical_failure_rate": 0.0,
+      "raw_ler_ci95": [
+        0.0,
+        3.841311260106779e-05
+      ],
+      "ler": 0.0,
+      "ler_ci95": [
+        0.0,
+        3.2010927167556495e-06
+      ],
+      "ler_normalization_rounds": 12,
+      "sampling_seed": 5192065653244964556,
+      "wall_s": 1134.6278987500118,
+      "circuit_sha256": "106f45471003ecdf6d843ea3b9da45d2f0a766716569a9fababaacbcdeb356db",
+      "dem_sha256": "0da75b9847b54a4c7079e8fdb8be6a2320fea0ee88caafd5f93153a76089e8e2",
+      "bposd_prior_model": "merged DEM heterogeneous error_channel",
+      "bposd_reference": {
+        "package": "stimbposd==0.1.0",
+        "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+      },
+      "source_campaign": "20260831T094401Z_0f49b4d1_f812a85d3f70",
+      "selection": "unchanged valid primary row"
+    }
+  ],
+  "total_ler_by_p": {
+    "0.0003": {
+      "x_failures": 0,
+      "z_failures": 0,
+      "total_raw_ler_x_plus_z": 0.0,
+      "total_per_round_ler_x_plus_z": 0.0
+    },
+    "0.0005": {
+      "x_failures": 0,
+      "z_failures": 0,
+      "total_raw_ler_x_plus_z": 0.0,
+      "total_per_round_ler_x_plus_z": 0.0
+    },
+    "0.001": {
+      "x_failures": 0,
+      "z_failures": 0,
+      "total_raw_ler_x_plus_z": 0.0,
+      "total_per_round_ler_x_plus_z": 0.0
+    }
+  },
+  "invalidated_primary_row": {
+    "p": 0.0003,
+    "basis_label": "X",
+    "actual_circuit_sha256": "c179efd32e7244460c4b59d0a4d200e753469214efc692c389cb3bb4b2523439",
+    "reason": "old loader silently fell back to the derived Z-memory circuit"
+  }
+}

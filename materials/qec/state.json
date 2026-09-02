@@ -1,0 +1,19 @@
+{
+  "schema": "target-state/1",
+  "id": "math/qec",
+  "runs_dir": "experiments",
+  "problem": "Automated co-design of quantum LDPC codes (non-CSS PBB programme)",
+  "status": "active",
+  "current_gate": "Fixed-point closure certified through n=234; next gate n=270: collapse (15,9)/(45,3), screen 5024 noncyclic + 688 cyclic (27,5) classes",
+  "latest_campaign": null,
+  "latest_campaign_verdict": null,
+  "headline": "Published [[234,8,18]] prior art repaired; dX=dZ=18 exact; suite 1026 green",
+  "next_action": "n=270 gate: presentation collapse then two-root screening",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-01T08:26:03Z",
+  "updated_by": "workspace-architecture-fix",
+  "sources": [
+    "math/PROGRESS.md:4018-4074",
+    "math/qec/README.md"
+  ]
+}

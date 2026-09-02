@@ -1,0 +1,56 @@
+{
+  "run_id": "20260901T123618Z_3f41e268_0264d9d39939",
+  "gate": "sun56-gap-total55",
+  "prereg": {
+    "file": "sun56_gap_pre_statement.md",
+    "source_commit": "d6a54b8938dfbbad4d3d791302a293aed29e4fd3",
+    "sha256": "7854d469467bf3337dfa76841208194afbb24979f85fdd0a6e36f613a4f4d660",
+    "run_dir_copy": "pre_statement.md (byte-identical, cmp-verified)"
+  },
+  "frozen_dependencies": {
+    "sun56_verify.py": "3b7fb40aae051fcc2236dd151ad60f802fb68244df296686667d9a313fb18033",
+    "tensor_data.py": "b55b18a8eb95fb950973b944a2e8c703bbba78d020a83a6ef3a32c36f9f8a793",
+    "gate_b_floor.py": "c8caffa8fb48de6d3542a5439f84c35e4d74f1b1cab6710a154842ce20002c1a",
+    "gate_b_encodings.py": "24783a9b9049563d6be8ad354274571ad90a0bc8fa989e15a5cd8140846b1ed1",
+    "certified_landscape.json": "11fcddd1bc5d8adc56b4793cbb4ae85c80b62c97f209e4d4a1b3da42d865b1f9",
+    "decision_sun56.json": "dc5c2fdf6e3ad5b2a20cc683d2cb6f1d6d9ea4a66be35aa3a97016acc8eedf2b",
+    "frozen_record_attack_lrat": "3c85daba49dc905d258a1749d4a8269b167d0551fbaf398f779c6ca2f272e612"
+  },
+  "question": "55-addition circuit for sun56 fixed orientation?",
+  "reduction": "total = 13 + C(V) + 16 + 14; 55-move iff C(V) <= 12 iff single-aux extension schedulable at T=12",
+  "search_space": {
+    "aux_universe_size": 338,
+    "aux_universe_csv_sha256": "c10bdeeae74b601dc063cb935f7c7baca79a637cab52a7e2f85d16a46f84f813",
+    "tau_csv_sha256": "65e4879839d168f93cd714a89c3c48f6930d3533f6326586281ce5ab6dad7e25",
+    "T": 12
+  },
+  "result": {
+    "instances": 338,
+    "admitted": 0,
+    "instrument_agreement": "338/338",
+    "instruments": ["subset_dfs complete census", "fresh CNF + kissat 4.0.4"],
+    "cpu_seconds_measured": 73.5,
+    "cpu_budget_seconds": 10800
+  },
+  "certificates": {
+    "R3_floor11_T11": "cnf+drat+lrat in certificates/, dual-checker accepted in-run",
+    "sun_aux1_T12": {
+      "cnf_sha256": "cd27491c7893d964115850034bdebbe732eec004a4de861b514957831be41548",
+      "lrat_sha256": "c4067622a7811ade795607d064d5a35437f9f53d1a7bb0ad9bb79851656e9a2e"
+    }
+  },
+  "controls": {
+    "ACCEPT": ["A1 brent 729/729 fmpz+int", "A2 witness U/V exact expansion 13/13/30",
+               "A3 two-aux T=13 achievable both instruments", "A4 frozen-row values 33/9/17 + total_lb 55"],
+    "REJECT": ["R1 delete-V-gate-6 plant", "R2 flip-V-gate-3-operand plant",
+               "R3 floor@11 infeasible + dual-checker certificates", "R4 d-planter assert fires"]
+  },
+  "independent_audit": {"file": "independent_audit.py", "result": "11/11 pass"},
+  "instrument_defects": [
+    "D1: fresh-encoder draft under-constrained slot-0 availability (39 spurious SAT); fixed pre-registration, never verdict-bearing",
+    "D2: checker rebuild path-dependence (__FILE__); byte-identical binaries frozen instead",
+    "D3: runner cosmetic KeyError defects caught by own aborts; fixed pre-verdict"
+  ],
+  "verdict": "FROZEN-NEGATIVE (bounded: the named 338-element aux universe, fully enumerated, dual-instrument zero-admission)",
+  "frontier_move": "sun56 fixed-orientation LB 55 -> LB=UB=56 exactly; no 55-addition circuit exists in the pre-registered model"
+}

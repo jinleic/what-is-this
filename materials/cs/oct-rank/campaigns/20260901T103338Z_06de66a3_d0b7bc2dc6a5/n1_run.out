@@ -1,0 +1,222 @@
+[ANCHOR-TBL] cd==gateA: True | cd==upstream: True | ALL: True
+[ANCHOR-TBL] e0 unit: True | norm mult 20pts: True
+[ANCHOR] table ok; TF nonzero=24
+[N1-TAU7] rank(J)@1e-9=48/77 rule=qrcp {'min_pivot': 0.1590166606469516}
+[N1-TAU7] exact inverse ok=True (0.24s cpu)
+[N1-TAU7] exact rank(J_F)=29/29
+[N1-TAU7] rho=1e+00 contain=0/48 excl=0/48
+[N1-TAU7] rho=1e-01 contain=1/48 excl=0/48
+[N1-TAU7] rho=1e-02 contain=45/48 excl=0/48
+[N1-TAU7] rho=1e-03 contain=48/48 excl=0/48
+[CONTROL] TAU7 verdict=CONTAINMENT pass_rung=1/1000
+[N1-TAU6] round 1: rel=2.774e-01 nfev=5000
+[N1-TAU6] round 2: rel=2.774e-01 nfev=5000
+[N1-TAU6] round 3: rel=2.774e-01 nfev=5000
+[N1-TAU6] rank(J)@1e-9=48/66 rule=qrcp {'min_pivot': 2.7455822006221975e-07}
+[N1-TAU6] exact inverse ok=True (0.20s cpu)
+[N1-TAU6] exact rank(J_F)=18/18
+[N1-TAU6] rho=1e+00 contain=0/48 excl=0/48
+[N1-TAU6] rho=1e-01 contain=0/48 excl=0/48
+[N1-TAU6] rho=1e-02 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-03 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-04 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-05 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-06 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-07 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-08 contain=0/48 excl=48/48
+[N1-TAU6] rho=3e-09 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-09 contain=0/48 excl=48/48
+[N1-TAU6] rho=3e-10 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-10 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-11 contain=0/48 excl=48/48
+[N1-TAU6] rho=1e-12 contain=0/48 excl=48/48
+[CONTROL] TAU6 verdict=NO-CONTAINMENT-ANY-RUNG
+[N1-PPOS] rank(J)@1e-9=192/247 rule=qrcp {'min_pivot': 0.03301675898658126}
+[N1-PPOS] exact inverse ok=True (35.21s cpu)
+[N1-PPOS] exact rank(J_F)=55/55
+[N1-PPOS] rho=1e+00 contain=0/192 excl=0/192
+[N1-PPOS] rho=1e-01 contain=0/192 excl=0/192
+[N1-PPOS] rho=1e-02 contain=1/192 excl=0/192
+[N1-PPOS] rho=1e-03 contain=150/192 excl=0/192
+[N1-PPOS] rho=1e-04 contain=192/192 excl=0/192
+[CONTROL] PPOS verdict=CONTAINMENT pass_rung=1/10000
+[N1-PWRNG] rank(J)@1e-9=192/247 rule=qrcp {'min_pivot': 7.902410587925349e-07}
+[N1-PWRNG] exact inverse ok=True (30.38s cpu)
+[N1-PWRNG] exact rank(J_F)=55/55
+[N1-PWRNG] rho=1e+00 contain=0/192 excl=0/192
+[N1-PWRNG] rho=1e-01 contain=0/192 excl=0/192
+[N1-PWRNG] rho=1e-02 contain=0/192 excl=0/192
+[N1-PWRNG] rho=1e-03 contain=0/192 excl=191/192
+[N1-PWRNG] rho=1e-04 contain=0/192 excl=192/192
+[N1-PWRNG] rho=1e-05 contain=0/192 excl=192/192
+[N1-PWRNG] rho=1e-06 contain=0/192 excl=192/192
+[N1-PWRNG] rho=1e-07 contain=0/192 excl=192/192
+[N1-PWRNG] rho=1e-08 contain=0/192 excl=192/192
+[N1-PWRNG] rho=3e-09 contain=0/192 excl=192/192
+[N1-PWRNG] rho=1e-09 contain=0/192 excl=192/192
+[N1-PWRNG] rho=3e-10 contain=0/192 excl=192/192
+[N1-PWRNG] rho=1e-10 contain=0/192 excl=192/192
+[N1-PWRNG] rho=1e-11 contain=0/192 excl=192/192
+[N1-PWRNG] rho=1e-12 contain=0/192 excl=192/192
+[CONTROL] PWRNG verdict=NO-CONTAINMENT-ANY-RUNG
+[N1-R00] round 1: rel=2.605e-05 nfev=5000
+[N1-R00] round 2: rel=1.355e-05 nfev=5000
+[N1-R00] round 3: rel=1.152e-05 nfev=5000
+[N1-R00] cls=R rel_final=1.152e-05 gmax_exact=2605538469476990194841647458014690463034423/182687704666362864775460604089535377456991567872 admitted=False
+[N1-R01] round 1: rel=9.294e-06 nfev=5000
+[N1-R01] round 2: rel=5.913e-06 nfev=5000
+[N1-R01] round 3: rel=4.813e-06 nfev=5000
+[N1-R01] cls=R rel_final=4.813e-06 gmax_exact=1142642096870463679984607148582158186349/178405961588244985132285746181186892047843328 admitted=False
+[N1-R02] round 1: rel=3.379e-05 nfev=5000
+[N1-R02] round 2: rel=2.147e-05 nfev=5000
+[N1-R02] round 3: rel=1.746e-05 nfev=5000
+[N1-R02] cls=R rel_final=1.746e-05 gmax_exact=265729072253723809932486613479663884447031/11417981541647679048466287755595961091061972992 admitted=False
+[N1-R03] round 1: rel=4.633e-05 nfev=5000
+[N1-R03] round 2: rel=2.405e-05 nfev=5000
+[N1-R03] round 3: rel=1.646e-05 nfev=5000
+[N1-R03] cls=R rel_final=1.646e-05 gmax_exact=5675672552334915893135644186288624524079/356811923176489970264571492362373784095686656 admitted=False
+[N1-R04] round 1: rel=1.870e-05 nfev=5000
+[N1-R04] round 2: rel=1.487e-05 nfev=5000
+[N1-R04] round 3: rel=1.019e-05 nfev=5000
+[N1-R04] cls=R rel_final=1.019e-05 gmax_exact=74068865627235024179940115348536743083615/5708990770823839524233143877797980545530986496 admitted=False
+[N1-R05] round 1: rel=2.580e-05 nfev=5000
+[N1-R05] round 2: rel=1.345e-05 nfev=5000
+[N1-R05] round 3: rel=1.044e-05 nfev=5000
+[N1-R05] cls=R rel_final=1.044e-05 gmax_exact=220094413295538333301880804818252022733107/11417981541647679048466287755595961091061972992 admitted=False
+[N1-R06] round 1: rel=1.329e-05 nfev=5000
+[N1-R06] round 2: rel=6.454e-06 nfev=5000
+[N1-R06] round 3: rel=3.371e-06 nfev=5000
+[N1-R06] cls=R rel_final=3.371e-06 gmax_exact=36892093404926874347334837839933783540673/11417981541647679048466287755595961091061972992 admitted=False
+[N1-R07] round 1: rel=4.705e-05 nfev=5000
+[N1-R07] round 2: rel=1.651e-05 nfev=5000
+[N1-R07] round 3: rel=1.343e-05 nfev=5000
+[N1-R07] cls=R rel_final=1.343e-05 gmax_exact=327036820662104370470250975221669937106257/22835963083295358096932575511191922182123945984 admitted=False
+[N1-R08] round 1: rel=1.104e-05 nfev=5000
+[N1-R08] round 2: rel=5.769e-06 nfev=5000
+[N1-R08] round 3: rel=3.959e-06 nfev=5000
+[N1-R08] cls=R rel_final=3.959e-06 gmax_exact=3091644390185379277577827158538325858807/713623846352979940529142984724747568191373312 admitted=False
+[N1-R09] round 1: rel=2.311e-05 nfev=5000
+[N1-R09] round 2: rel=1.203e-05 nfev=5000
+[N1-R09] round 3: rel=8.245e-06 nfev=5000
+[N1-R09] cls=R rel_final=8.245e-06 gmax_exact=60179457510343249886553901657917488686377/5708990770823839524233143877797980545530986496 admitted=False
+[N1-R10] round 1: rel=1.507e-05 nfev=5000
+[N1-R10] round 2: rel=1.225e-05 nfev=5000
+[N1-R10] round 3: rel=8.401e-06 nfev=5000
+[N1-R10] cls=R rel_final=8.401e-06 gmax_exact=483489818363578733403553845244891216561855/45671926166590716193865151022383844364247891968 admitted=False
+[N1-R11] round 1: rel=3.190e-05 nfev=5000
+[N1-R11] round 2: rel=1.660e-05 nfev=5000
+[N1-R11] round 3: rel=1.137e-05 nfev=5000
+[N1-R11] cls=R rel_final=1.137e-05 gmax_exact=256245315741139411687325483311193606858507/22835963083295358096932575511191922182123945984 admitted=False
+[N1-R12] round 1: rel=1.772e-05 nfev=5000
+[N1-R12] round 2: rel=1.195e-05 nfev=5000
+[N1-R12] round 3: rel=9.786e-06 nfev=5000
+[N1-R12] cls=R rel_final=9.786e-06 gmax_exact=1280000014562614022461807402441090112879513/91343852333181432387730302044767688728495783936 admitted=False
+[N1-R13] round 1: rel=5.162e-05 nfev=5000
+[N1-R13] round 2: rel=2.869e-05 nfev=5000
+[N1-R13] round 3: rel=2.229e-05 nfev=5000
+[N1-R13] cls=R rel_final=2.229e-05 gmax_exact=174157738976014057094248710583323240239119/5708990770823839524233143877797980545530986496 admitted=False
+[N1-R14] round 1: rel=2.593e-05 nfev=5000
+[N1-R14] round 2: rel=1.351e-05 nfev=5000
+[N1-R14] round 3: rel=1.050e-05 nfev=5000
+[N1-R14] cls=R rel_final=1.050e-05 gmax_exact=20289656900210121247690866199452522962437/1427247692705959881058285969449495136382746624 admitted=False
+[N1-R15] round 1: rel=2.386e-05 nfev=5000
+[N1-R15] round 2: rel=1.243e-05 nfev=5000
+[N1-R15] round 3: rel=9.801e-06 nfev=5000
+[N1-R15] cls=R rel_final=9.801e-06 gmax_exact=28647043227833241840004246611412519255181/2854495385411919762116571938898990272765493248 admitted=False
+[N1-R16] round 1: rel=4.044e-05 nfev=5000
+[N1-R16] round 2: rel=3.282e-05 nfev=5000
+[N1-R16] round 3: rel=2.240e-05 nfev=5000
+[N1-R16] cls=R rel_final=2.240e-05 gmax_exact=392710320334399230530768749203429240956659/11417981541647679048466287755595961091061972992 admitted=False
+[N1-R17] round 1: rel=4.956e-05 nfev=5000
+[N1-R17] round 2: rel=2.554e-05 nfev=5000
+[N1-R17] round 3: rel=2.217e-05 nfev=5000
+[N1-R17] cls=R rel_final=2.217e-05 gmax_exact=351803833287725142844489919020955806594387/11417981541647679048466287755595961091061972992 admitted=False
+[N1-R18] round 1: rel=3.901e-05 nfev=5000
+[N1-R18] round 2: rel=2.389e-05 nfev=5000
+[N1-R18] round 3: rel=1.415e-05 nfev=5000
+[N1-R18] cls=R rel_final=1.415e-05 gmax_exact=100087131338736750813123623219451739170869/5708990770823839524233143877797980545530986496 admitted=False
+[N1-R19] round 1: rel=1.462e-05 nfev=5000
+[N1-R19] round 2: rel=7.632e-06 nfev=5000
+[N1-R19] round 3: rel=5.235e-06 nfev=5000
+[N1-R19] cls=R rel_final=5.235e-06 gmax_exact=13338469973186538367855686484334050531/2787593149816327892691964784081045188247552 admitted=False
+[N1-R20] round 1: rel=3.845e-05 nfev=5000
+[N1-R20] round 2: rel=1.995e-05 nfev=5000
+[N1-R20] round 3: rel=1.366e-05 nfev=5000
+[N1-R20] cls=R rel_final=1.366e-05 gmax_exact=6564451902390727098299346717359527992643391/365375409332725729550921208179070754913983135744 admitted=False
+[N1-R21] round 1: rel=3.099e-05 nfev=5000
+[N1-R21] round 2: rel=1.094e-05 nfev=5000
+[N1-R21] round 3: rel=8.902e-06 nfev=5000
+[N1-R21] cls=R rel_final=8.902e-06 gmax_exact=142744583389483535827127966035086137155725/11417981541647679048466287755595961091061972992 admitted=False
+[N1-R22] round 1: rel=4.914e-06 nfev=5000
+[N1-R22] round 2: rel=1.737e-06 nfev=5000
+[N1-R22] round 3: rel=1.414e-06 nfev=5000
+[N1-R22] cls=R rel_final=1.414e-06 gmax_exact=693373791690457772969524577308718684421/356811923176489970264571492362373784095686656 admitted=False
+[N1-R23] round 1: rel=4.782e-05 nfev=5000
+[N1-R23] round 2: rel=3.271e-05 nfev=5000
+[N1-R23] round 3: rel=1.700e-05 nfev=5000
+[N1-R23] cls=R rel_final=1.700e-05 gmax_exact=2098414976893681121537608682589695636451405/91343852333181432387730302044767688728495783936 admitted=False
+[N1-R24] round 1: rel=7.955e-05 nfev=5000
+[N1-R24] round 2: rel=2.782e-05 nfev=5000
+[N1-R24] round 3: rel=2.261e-05 nfev=5000
+[N1-R24] cls=R rel_final=2.261e-05 gmax_exact=67873562991517091942842704330221481289353/2854495385411919762116571938898990272765493248 admitted=False
+[N1-R25] round 1: rel=5.466e-05 nfev=5000
+[N1-R25] round 2: rel=3.577e-05 nfev=5000
+[N1-R25] round 3: rel=1.955e-05 nfev=5000
+[N1-R25] cls=R rel_final=1.955e-05 gmax_exact=59659147609388121417055397175387169474793/2854495385411919762116571938898990272765493248 admitted=False
+[N1-R26] round 1: rel=1.672e-05 nfev=5000
+[N1-R26] round 2: rel=7.478e-06 nfev=5000
+[N1-R26] round 3: rel=3.949e-06 nfev=5000
+[N1-R26] cls=R rel_final=3.949e-06 gmax_exact=11409852915209237518209179742612475105973/2854495385411919762116571938898990272765493248 admitted=False
+[N1-R27] round 1: rel=3.229e-05 nfev=5000
+[N1-R27] round 2: rel=1.681e-05 nfev=5000
+[N1-R27] round 3: rel=1.508e-05 nfev=5000
+[N1-R27] cls=R rel_final=1.508e-05 gmax_exact=8126742277807246911626392115232187916000043/365375409332725729550921208179070754913983135744 admitted=False
+[N1-R28] round 1: rel=4.211e-05 nfev=5000
+[N1-R28] round 2: rel=2.884e-05 nfev=5000
+[N1-R28] round 3: rel=1.502e-05 nfev=5000
+[N1-R28] cls=R rel_final=1.502e-05 gmax_exact=539499251300172700582184552181689208873055/22835963083295358096932575511191922182123945984 admitted=False
+[N1-R29] round 1: rel=3.391e-05 nfev=5000
+[N1-R29] round 2: rel=2.755e-05 nfev=5000
+[N1-R29] round 3: rel=1.885e-05 nfev=5000
+[N1-R29] cls=R rel_final=1.885e-05 gmax_exact=930185317378141349807645313175762347068379/45671926166590716193865151022383844364247891968 admitted=False
+[N1-R30] round 1: rel=1.397e-05 nfev=5000
+[N1-R30] round 2: rel=1.120e-05 nfev=5000
+[N1-R30] round 3: rel=7.683e-06 nfev=5000
+[N1-R30] cls=R rel_final=7.683e-06 gmax_exact=32230386945899214930820840092599720316115/2854495385411919762116571938898990272765493248 admitted=False
+[N1-R31] round 1: rel=2.679e-05 nfev=5000
+[N1-R31] round 2: rel=1.394e-05 nfev=5000
+[N1-R31] round 3: rel=9.551e-06 nfev=5000
+[N1-R31] cls=R rel_final=9.551e-06 gmax_exact=33865218191508449917436367314435640119063/2854495385411919762116571938898990272765493248 admitted=False
+[N1-M0] round 1: rel=2.776e-05 nfev=5000
+[N1-M0] round 2: rel=1.921e-05 nfev=5000
+[N1-M0] round 3: rel=1.316e-05 nfev=5000
+[N1-M0] cls=M rel_final=1.316e-05 gmax_exact=9624250046163054326091682465092890359342715/730750818665451459101842416358141509827966271488 admitted=False
+[N1-M1] round 1: rel=8.394e-06 nfev=5000
+[N1-M1] round 2: rel=5.320e-06 nfev=5000
+[N1-M1] round 3: rel=2.779e-06 nfev=5000
+[N1-M1] cls=M rel_final=2.779e-06 gmax_exact=3949792515618439210249560875424966478659/1427247692705959881058285969449495136382746624 admitted=False
+[N1-M2] round 1: rel=4.034e-05 nfev=5000
+[N1-M2] round 2: rel=2.097e-05 nfev=5000
+[N1-M2] round 3: rel=1.630e-05 nfev=5000
+[N1-M2] cls=M rel_final=1.630e-05 gmax_exact=1771035748151985376762779619337358706879063/91343852333181432387730302044767688728495783936 admitted=False
+[N1-M3] round 1: rel=3.499e-05 nfev=5000
+[N1-M3] round 2: rel=2.291e-05 nfev=5000
+[N1-M3] round 3: rel=1.862e-05 nfev=5000
+[N1-M3] cls=M rel_final=1.862e-05 gmax_exact=12473148048539606153475390474735260301211/713623846352979940529142984724747568191373312 admitted=False
+[N1-M4] round 1: rel=5.636e-05 nfev=5000
+[N1-M4] round 2: rel=4.560e-05 nfev=5000
+[N1-M4] round 3: rel=3.224e-05 nfev=5000
+[N1-M4] cls=M rel_final=3.224e-05 gmax_exact=5787235094720645498172944586554941612381/178405961588244985132285746181186892047843328 admitted=False
+[N1-M5] round 1: rel=6.101e-05 nfev=5000
+[N1-M5] round 2: rel=4.938e-05 nfev=5000
+[N1-M5] round 3: rel=3.943e-05 nfev=5000
+[N1-M5] cls=M rel_final=3.943e-05 gmax_exact=3028377758684777228153807983042770848858216493/93536104789177786765035829293842113257979682750464 admitted=False
+[N1-M6] round 1: rel=1.043e-05 nfev=5000
+[N1-M6] round 2: rel=4.733e-06 nfev=5000
+[N1-M6] round 3: rel=2.472e-06 nfev=5000
+[N1-M6] cls=M rel_final=2.472e-06 gmax_exact=12761286781282684063926477138780862335953/5708990770823839524233143877797980545530986496 admitted=False
+[N1-F_frozen] round 1: rel=7.903e-06 nfev=5000
+[N1-F_frozen] round 2: rel=7.085e-06 nfev=5000
+[N1-F_frozen] round 3: rel=6.886e-06 nfev=5000
+[N1-F_frozen] cls=F rel_final=6.886e-06 gmax_exact=1355853648607852221737625492360129728171/178405961588244985132285746181186892047843328 admitted=False
+[DONE] verdict=FAILURE TO CERTIFY cpu=3769.7s

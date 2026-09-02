@@ -626,7 +626,8 @@ def heavy_processes() -> list[str]:
         is_qec_experiment = (
             "python" in lower
             and ("experiments/exp" in lower or (
-                "qec-codesign" in lower and "pytest" not in lower
+                ("qec-codesign" in lower or "math/qec" in lower)
+                and "pytest" not in lower
                 and "oh-my-pi" not in lower and "omp" not in lower
             ))
         )

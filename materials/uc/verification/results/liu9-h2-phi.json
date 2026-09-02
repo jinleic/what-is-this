@@ -1,0 +1,408 @@
+{
+ "all_mutations_caught": true,
+ "certified_area": {
+  "axes_added_area": "0",
+  "compact_cover_complete": true,
+  "fraction_decimal": "0.99975587427616119",
+  "fraction_exact": "67092481/67108864",
+  "of_unit_square": true
+ },
+ "claim": "Phi(s,t)=h(pi(s,t))^2-h(pi(s,s))*h(pi(t,t)) >= 0 on [0,1]^2",
+ "claim_status": "PARTIAL",
+ "coverage_statement": "Certified on the closed compact square [a,1-a]^2 and exactly on both zero axes and the entire diagonal.  Positive-width endpoint layers off those zero sets are NOT certified, so this artifact does not claim the global theorem.",
+ "ctx_prec": 320,
+ "derivative_validation": {
+  "agreement": "at least 80 decimal digits",
+  "formulas": {
+   "h_prime": "log((1-u)/u)",
+   "h_second": "-1/(u*(1-u))",
+   "pi_s": "t*(1+(1-t)*(1-2*s))",
+   "pi_ss": "-2*t*(1-t)",
+   "pi_st": "2*(1-s-t+2*s*t)"
+  },
+  "maximum_absolute_error": "2.52623402402e-92",
+  "method": "mpmath 100-decimal numerical differentiation, discovery/validation only; exact Arb formal jets are the certificate",
+  "rows": [
+   {
+    "kind": "entropy",
+    "max_abs_error": "0.0",
+    "u": "0.123"
+   },
+   {
+    "kind": "entropy",
+    "max_abs_error": "7.14367119551e-102",
+    "u": "0.371"
+   },
+   {
+    "kind": "entropy",
+    "max_abs_error": "1.4287342391e-101",
+    "u": "0.813"
+   },
+   {
+    "kind": "protocol",
+    "max_abs_error": "1.4287342391e-101",
+    "s": "0.17",
+    "t": "0.29"
+   },
+   {
+    "kind": "protocol",
+    "max_abs_error": "7.14367119551e-102",
+    "s": "0.43",
+    "t": "0.71"
+   },
+   {
+    "kind": "protocol",
+    "max_abs_error": "1.4287342391e-101",
+    "s": "0.82",
+    "t": "0.64"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "kind": "assembled_Phi_gradient",
+    "max_abs_error": "5.38762287182e-97",
+    "s": "0.16",
+    "t": "0.33"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "kind": "assembled_Phi_gradient",
+    "max_abs_error": "2.11503030269e-96",
+    "s": "0.41",
+    "t": "0.67"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "kind": "assembled_Phi_gradient",
+    "max_abs_error": "5.61593996098e-96",
+    "s": "0.74",
+    "t": "0.91"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "c": "0.13",
+    "kind": "assembled_diagonal_g_second",
+    "max_abs_error": "5.13662819845e-96"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "c": "0.52",
+    "kind": "assembled_diagonal_g_second",
+    "max_abs_error": "5.597037807e-96"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "c": "0.87",
+    "kind": "assembled_diagonal_g_second",
+    "max_abs_error": "2.63278001683e-95"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "c": "0.19",
+    "e": "0.023",
+    "kind": "formal_fourth_jet",
+    "max_abs_error": "7.78061692113e-94"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "c": "0.47",
+    "e": "0.031",
+    "kind": "formal_fourth_jet",
+    "max_abs_error": "1.23644901307e-93"
+   },
+   {
+    "agrees_within_1e-85": true,
+    "c": "0.83",
+    "e": "0.011",
+    "kind": "formal_fourth_jet",
+    "max_abs_error": "2.52623402402e-92"
+   }
+  ]
+ },
+ "determinism": {
+  "randomness": "none",
+  "serialization": "json.dumps(indent=1,sort_keys=True)+newline",
+  "timings_in_payload": false
+ },
+ "domain": {
+  "c_bands": 481,
+  "compact_square": [
+   "1/16384",
+   "16383/16384"
+  ],
+  "corner_crossover_radius_c": "1/128",
+  "corner_factorization": "Phi=s^2*t^2*G",
+  "symmetry_reduction": "Phi(s,t)=Phi(t,s) exactly; the c,e cover certifies the upper triangle e=(t-s)/2>=0 and reflection certifies the lower triangle"
+ },
+ "inequality_direction_audit": {
+  "Taylor_remainder": "upper magnitude is subtracted",
+  "coverage": "only fully cleared compact domain receives area credit",
+  "curvature": "lower endpoint",
+  "direct_drift": "upper magnitude is subtracted from lower centre",
+  "fourth_derivative_absolute_value": "upper endpoint",
+  "normalized_curvature_denominator": "upper c^4 endpoint"
+ },
+ "mutations": [
+  {
+   "c_cell": [
+    "1/16384",
+    "33/524288"
+   ],
+   "caught": true,
+   "mutant_factor_lower": "[645156678.035460748724131 +/- 4.83e-16]",
+   "mutation": "remainder_denominator_24_to_48",
+   "observed": "mutant accepts a radius whose sound whole-cell Taylor factor is negative",
+   "sound_factor_upper": "[-677771129.276717670166463 +/- 3.82e-16]",
+   "test_e_radius": "625/268435456"
+  },
+  {
+   "caught": true,
+   "lost_corner_area": "16129/134217728",
+   "mutant_compact_area": "134168833/134217728",
+   "mutation": "drop_origin_corner_stratum",
+   "observed": "certified compact-domain area decreases",
+   "sound_compact_area": "67092481/67108864"
+  },
+  {
+   "caught": true,
+   "cell": {
+    "s": [
+     "1/16384",
+     "2269151264672059693/25529573222073640157184"
+    ],
+    "t": [
+     "5846582033149201462763/229766158998662761414656",
+     "1464991421990771827739/57441539749665690353664"
+    ]
+   },
+   "mutant_center_upper": "[-4.80683010950590411276126e-10 +/- 3.8e-37]",
+   "mutation": "flip_Phi_sign",
+   "observed": "sign-flipped centre value is strictly negative",
+   "sound_lower": "[2.17666065929545085969587e-14 +/- 4.18e-38]"
+  }
+ ],
+ "natural_log": true,
+ "report_sha256": "149e60da8d5c03d2e7be7f52cba4dbe079cd39e9171f0cd9f5a62b2232777aaa",
+ "single_core_environment": {
+  "MKL_NUM_THREADS": "1",
+  "NUMEXPR_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1",
+  "OPENBLAS_NUM_THREADS": "1",
+  "VECLIB_MAXIMUM_THREADS": "1"
+ },
+ "soundness_argument": "Arb certificate for the two-variable Liu-H2 kernel inequality.\n\nThe certified function is\n\n    Phi(s,t) = h(pi(s,t))^2 - h(pi(s,s))*h(pi(t,t)),\n    pi(s,t) = s*t*(1 + (1-s)*(1-t)),\n\nwith natural-log binary entropy.  The zero axes and diagonal are handled\nsymbolically.  The positive-dimensional part of the cover has three strata:\n\n* off diagonal: adaptive branch-and-bound on Phi itself;\n* near diagonal: the exact even Taylor expansion in e for\n  (s,t)=(c-e,c+e), with |g''''| bounded on every whole cell;\n* the origin corner: the even Taylor step is applied after the exact\n  factorization Phi=s^2*t^2*G (removing the vanishing curvature), while its\n  off-diagonal boxes remain direct Phi bounds.\n\nArb is the sole source of certified numerical inequalities.  mpmath is used\nonly for deterministic, high-precision derivative cross-checks and never as a\ncertificate gate.  Endpoint boundary layers thinner than INNER_CUTOFF are\nreported honestly as unresolved; consequently the default artifact is a\nPARTIAL certificate, not a global proof.\n\nRun (single core, lowered priority):\n\n    nice -n 19 .venv/bin/python -I -B uc/liu9_h2_phi_certificate.py\n",
+ "strata": {
+  "near_diagonal": {
+   "cell_constants_sha256": "5e6ea120750bb96b7db01d1dde9451d4ed1e79080f2baf608bdd022d370a0e52",
+   "cells": 323,
+   "direction_check": "g'' uses a LOWER endpoint; |g''''| uses an UPPER endpoint over the whole cell; subtracting M4*e^2/24 therefore lowers g/e^2",
+   "max_depth": 2,
+   "maximum_abs_g_fourth_upper": "[419325822187.301962479584 +/- 1.93e-13]",
+   "maximum_strip_e_radius": "1/128",
+   "maximum_strip_s_minus_t_radius": "1/64",
+   "minimum_factor_lower_for_g_over_e_squared": "[0.000200902901306729936473067 +/- 5.00e-28]",
+   "minimum_g_second_lower": "[0.000794974780381905270886348 +/- 2.14e-29]",
+   "minimum_strip_e_radius": "1/393216",
+   "minimum_strip_s_minus_t_radius": "1/196608",
+   "worst_certified_function_lower": "0 (attained on diagonal)"
+  },
+  "off_diagonal": {
+   "bound_direction": "centre LOWER minus WHOLE-box gradient absolute UPPER times radii",
+   "cells": 170677,
+   "function": "Phi",
+   "max_depth": 23,
+   "unresolved_cells": 0,
+   "worst_cell": {
+    "c": [
+     "59604644775390625/4674604471815241728",
+     "22947788238525390625/1795048117177052823552"
+    ],
+    "e": [
+     "2916894533149201462763/229766158998662761414656",
+     "243554066119319775913/19147179916555230117888"
+    ],
+    "lower": "[2.17666065929545085969587e-14 +/- 4.18e-38]",
+    "s": [
+     "1/16384",
+     "2269151264672059693/25529573222073640157184"
+    ],
+    "t": [
+     "5846582033149201462763/229766158998662761414656",
+     "1464991421990771827739/57441539749665690353664"
+    ]
+   },
+   "worst_certified_lower": "[2.17666065929545085969587e-14 +/- 4.18e-38]"
+  },
+  "origin_corner": {
+   "c_range": [
+    "1/16384",
+    "1/128"
+   ],
+   "cells": 626282,
+   "certified_crossover_radius": "1/128",
+   "direct_cells": 626124,
+   "direction_after_factorization": "s^2*t^2>0 on the computational corner, so the Taylor LOWER bound G>=0 implies the same sign for Phi; direct boxes use Phi itself and axes are exactly zero",
+   "inner_unresolved_radius": "1/16384",
+   "max_depth": 18,
+   "method": "exact factor Phi=s^2*t^2*G; the even Taylor bound is applied to G, whose transverse curvature does not vanish, while off-diagonal boxes are certified directly on Phi",
+   "taylor": {
+    "cell_constants_sha256": "f58630e0bd4848e558f4fda3f1b56ebf53177c84222d5c83027a397897893620",
+    "cells": 158,
+    "direction_check": "g'' uses a LOWER endpoint; |g''''| uses an UPPER endpoint over the whole cell; subtracting M4*e^2/24 therefore lowers g/e^2",
+    "max_depth": 3,
+    "maximum_abs_g_fourth_upper": "[18437560497882125620905.4 +/- 0.0454]",
+    "maximum_strip_e_radius": "25508713779830470051969037438269895448818882854065586244095075594335670251800535554461793136777663993469524265063004529962292703781119927038756457741355485406528317452727635306753865696442295765673760479278021122255234753826136840914234273/106688230926077668385277628651540124754316133157054530566340124988224595805082113144342915213944868651886878569494931847134220826465909841285813696837293280737522521272224232935409252574589024395663440258174185631707051968599623380658622038016",
+    "maximum_strip_s_minus_t_radius": "25508713779830470051969037438269895448818882854065586244095075594335670251800535554461793136777663993469524265063004529962292703781119927038756457741355485406528317452727635306753865696442295765673760479278021122255234753826136840914234273/53344115463038834192638814325770062377158066578527265283170062494112297902541056572171457606972434325943439284747465923567110413232954920642906848418646640368761260636112116467704626287294512197831720129087092815853525984299811690329311019008",
+    "minimum_factor_lower_for_g_over_e_squared": "[2180.37976415476063830534 +/- 6.09e-22]",
+    "minimum_g_second_lower": "[457323.488577130542305734 +/- 1.55e-19]",
+    "minimum_strip_e_radius": "3169/4294967296",
+    "minimum_strip_s_minus_t_radius": "3169/2147483648",
+    "worst_certified_function_lower": "0 (attained on diagonal)"
+   },
+   "unresolved_cells": 0,
+   "worst_certified_lower": "0 (attained on diagonal/axes)",
+   "worst_direct_Phi_lower": "[1.07516524888423444454686e-24 +/- 2.88e-48]",
+   "worst_direct_cell": {
+    "c": [
+     "147737007/2199023255552",
+     "9235809/137438953472"
+    ],
+    "e": [
+     "36121735/35184372088832",
+     "18541575/17592186044416"
+    ],
+    "lower": "[1.07516524888423444454686e-24 +/- 2.88e-48]",
+    "s": [
+     "1163354481/17592186044416",
+     "2328245369/35184372088832"
+    ],
+    "t": [
+     "2399913847/35184372088832",
+     "1200725127/17592186044416"
+    ]
+   }
+  }
+ },
+ "structural_validation": {
+  "axes": {
+   "arb_endpoint_checks": [
+    {
+     "Phi_0_t": "0",
+     "Phi_t_0": "0",
+     "t": "0"
+    },
+    {
+     "Phi_0_t": "0",
+     "Phi_t_0": "0",
+     "t": "1/7"
+    },
+    {
+     "Phi_0_t": "0",
+     "Phi_t_0": "0",
+     "t": "1/2"
+    },
+    {
+     "Phi_0_t": "0",
+     "Phi_t_0": "0",
+     "t": "1"
+    }
+   ],
+   "classification": "identically zero boundary components",
+   "identity": "pi(0,t)=pi(t,0)=pi(0,0)=0 and h(0)=0"
+  },
+  "diagonal": {
+   "arb_checks": [
+    {
+     "Phi_c_c_arb": "[+/- 3.63e-99]",
+     "c": "1/100"
+    },
+    {
+     "Phi_c_c_arb": "[+/- 4.24e-97]",
+     "c": "1/10"
+    },
+    {
+     "Phi_c_c_arb": "[+/- 3.93e-96]",
+     "c": "1/2"
+    },
+    {
+     "Phi_c_c_arb": "[+/- 2.36e-95]",
+     "c": "69/100"
+    },
+    {
+     "Phi_c_c_arb": "[+/- 6.54e-96]",
+     "c": "99/100"
+    }
+   ],
+   "classification": "double zero: g(0)=g'(0)=0",
+   "identity": "pi(s,t)|s=t=pi(s,s), hence h(pi)^2-h(pi)*h(pi)=0 identically"
+  },
+  "evenness": {
+   "arb_difference_checks": [
+    "[+/- 4.04e-96]",
+    "[+/- 3.03e-95]",
+    "[+/- 4.99e-95]"
+   ],
+   "classification": "g(-e)=g(e), so all odd derivatives at 0 vanish",
+   "identity": "pi(c-e,c+e)=(c^2-e^2)*(1+(1-c)^2-e^2); the two diagonal entropy factors swap under e->-e"
+  },
+  "normalization_note": "The five values in the task brief were Phi/(s-t)^2=g''(0)/8. For the stated e-coordinate, V=Phi/e^2=g''(0)/2 is exactly four times larger; the artifact uses the latter convention.",
+  "transverse_curvatures": [
+   {
+    "V_equals_g2_over_2_arb": "[0.00155119813421232214782543595793 +/- 2.16e-33]",
+    "absolute_difference_upper": "[1.87677852175e-13 +/- 4.36e-25]",
+    "c": "1/100",
+    "comparison_tolerance": "2e-7 (brief values were rounded)",
+    "main_supplied_value_was_V_over_4": "0.0003877995336",
+    "normalization_agrees_after_times_4": true
+   },
+   {
+    "V_equals_g2_over_2_arb": "[0.118012103105246886440630867562 +/- 2.15e-31]",
+    "absolute_difference_upper": "[1.47531135594e-11 +/- 3.09e-23]",
+    "c": "1/10",
+    "comparison_tolerance": "2e-7 (brief values were rounded)",
+    "main_supplied_value_was_V_over_4": "0.02950302578",
+    "normalization_agrees_after_times_4": true
+   },
+   {
+    "V_equals_g2_over_2_arb": "[1.55373927691865250452276341034 +/- 1.13e-30]",
+    "absolute_difference_upper": "[1.18652504523e-10 +/- 2.37e-22]",
+    "c": "1/2",
+    "comparison_tolerance": "2e-7 (brief values were rounded)",
+    "main_supplied_value_was_V_over_4": "0.3884348192",
+    "normalization_agrees_after_times_4": true
+   },
+   {
+    "V_equals_g2_over_2_arb": "[4.40007375466622494726048272488 +/- 2.26e-30]",
+    "absolute_difference_upper": "[1.33377505274e-9 +/- 4.83e-22]",
+    "c": "69/100",
+    "comparison_tolerance": "2e-7 (brief values were rounded)",
+    "main_supplied_value_was_V_over_4": "1.100018439",
+    "normalization_agrees_after_times_4": true
+   },
+   {
+    "V_equals_g2_over_2_arb": "[80.7644673877449980205333921643 +/- 4.80e-29]",
+    "absolute_difference_upper": "[1.22550019795e-8 +/- 3.34e-20]",
+    "c": "99/100",
+    "comparison_tolerance": "2e-7 (brief values were rounded)",
+    "main_supplied_value_was_V_over_4": "20.19111685",
+    "normalization_agrees_after_times_4": true
+   }
+  ]
+ },
+ "tool": "uc/liu9_h2_phi_certificate.py",
+ "uncovered_regions": [
+  {
+   "a": "1/16384",
+   "best_certified_lower": "[-0.480453013918201424667103 +/- 4.74e-25]",
+   "exact_area": "16383/67108864",
+   "location": "([0,a) x [0,1] union (1-a,1] x [0,1] union [a,1-a] x ([0,a) union (1-a,1])) minus ({s=0} union {t=0} union {s=t}), whose removed zero sets are certified symbolically",
+   "reason": "The universal entropy-range bound Phi>=-(ln 2)^2 is valid here but does not prove nonnegativity.  h' and higher derivatives are singular at entropy arguments 0 or 1; no endpoint asymptotic remainder lemma is asserted by this artifact"
+  }
+ ],
+ "zero_set": {
+  "nowhere_else": "strict positivity certified only inside the covered compact square; not globally claimed",
+  "one_one": "diagonal/endpoint intersection",
+  "s_equals_0": "identically zero boundary axis",
+  "s_equals_t": "identically zero, double transverse zero",
+  "t_equals_0": "identically zero boundary axis"
+ }
+}

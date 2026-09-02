@@ -1,0 +1,20 @@
+{
+  "schema": "target-state/1",
+  "id": "cs/mm3",
+  "problem": "Additive complexity of rank-23 3x3 matmul",
+  "status": "active",
+  "current_gate": "All named decompositions closed exact: paper55 55 (x3 orientations), sun56 56, mws59 58, stapleton60 60, laderman23 62.",
+  "latest_campaign": "20260902T023856Z_28ff8823_43330ec64df9",
+  "latest_campaign_verdict": "FROZEN-CERTIFIED",
+  "headline": "laderman23 CLOSED EXACT at 62 = 16+16+30 (LB=UB) for Laderman's printed orientation, from a complete 1,224-instance hash-pinned dual-instrument aux-1 census with 1,224 dual-checked DRAT->LRAT certificates plus three explicit 16-gate circuits verified independently of the search and an end-to-end 81-monomial check (9/9). Laderman's printed basic form is exactly 98 = 28+28+42, so the slack his paper advertises as 'greatly reducible' is exactly 36 additions and 62 is the floor. Exact ladder: paper55 55 (three orientations, record), sun56 56, mws59 58, stapleton60 60, laderman23 62.",
+  "next_action": "Owner re-adjudication of the void session-3 transpose_check.py; the global sub-55 question (untouched, needs a genuinely different search space and its own prereg).",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-02T05:12:55Z",
+  "updated_by": "agent-Mm3NextGap",
+  "sources": [
+    "cs/RESULTS.md mm3 section",
+    "cs/mm3/campaigns/20260902T023856Z_28ff8823_43330ec64df9/report.md",
+    "cs/mm3/campaigns/20260902T022208Z_8c279ad1_d0276dfee63d/report.md",
+    "cs/mm3/campaigns/20260902T015158Z_c0bea75d_761cb990fc40/report.md"
+  ]
+}

@@ -1,0 +1,8 @@
+launch-context RLIMIT_CPU soft/hard: 7200 9223372036854775807
+post-setrlimit RLIMIT_CPU soft/hard: 9223372036854775807 9223372036854775807
+built; cpu 1964.89
+build checkpoint written
+coeff nz slots: 3392
+alpha done: 798.7 s; fails: 0
+alpha checkpointed
+VERDICT delta_exact= True  alpha_measured= True  max_deg_f= 3391 / 3391  budget_ok= True

@@ -1,0 +1,40 @@
+{
+  "created_utc": "2026-08-31T09:35:03.734600+00:00",
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateC-exact-GB3-corrected",
+    "basis": "Z",
+    "points": [
+      0.01,
+      0.03
+    ],
+    "shots_per_point": 2000,
+    "base_seed": 20260830,
+    "scope": "BB [[36,4,4]] code-capacity exact reference",
+    "bposd_prior_model": "merged DEM heterogeneous error_channel",
+    "correction": "pre_statement.md Revision GB3",
+    "supersedes_bposd_column_in": "20260830T184327Z_53a194ad_e663d5477de1"
+  },
+  "config_hash12": "884b7d216c6f",
+  "source_sha256": {
+    "source_gatec_exact_run_campaign.py": "0b11cde08975871ebb2ae6cd249525c12b679646100136b4aa9574427afdda61",
+    "source_gatec_exact_run_gatec.py": "3a745987b8c56c4603578eef5e6de1ccfb52b36c900f0d26e7d5158f68581421",
+    "source_gatec_exact_exact_ml.py": "f506a3bbdf0985138d1dbb6f1642d8ee4a9b514964e0d71b398649f91efb7b4f",
+    "source_qldpc_dec_bp_osd.py": "3a753f46bf404b4bcf07111bfe22c76bf4f3c901b758caa65738e6c6b28055aa",
+    "source_qldpc_dec_dem_matrices.py": "7a73360ab83b6a06a1251a6a02ab0cfb1ce901568af8e1f765a2252c3a246e8d",
+    "source_qldpc_dec_beam_search.py": "d2e66cb678a7bf22508d6400a0fe6c02f9ade5fd7bcacb98e60058859cfafc09",
+    "source_qldpc_dec_nms.py": "cbffe69742b118b96bddda0bde59dbc7da4108b8f44e09818df55933e6745211"
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "stim": "1.16.0",
+    "ldpc": "2.4.1"
+  },
+  "bposd_reference": {
+    "package": "stimbposd==0.1.0",
+    "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb",
+    "constructor_argument": "error_channel=list(priors)"
+  }
+}

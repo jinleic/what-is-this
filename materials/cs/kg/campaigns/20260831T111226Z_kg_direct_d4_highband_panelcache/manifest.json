@@ -1,0 +1,181 @@
+{
+  "campaign": "20260831T111226Z_kg_direct_d4_highband_panelcache",
+  "target": "kg",
+  "status": "PRODUCTION COMPLETE; FAILURE TO CERTIFY / OPEN 0 OF 20 TILES",
+  "result": {
+    "verdict": "FAILURE TO CERTIFY / OPEN",
+    "band_passed": false,
+    "tiles_total": 20,
+    "tiles_certified_count": 0,
+    "tiles_open_count": 20,
+    "envelope_evals": 14047,
+    "seconds_recorded": 377.6085958480835,
+    "closest_open_margin": "-1.97261882086860844646460017699e-7",
+    "most_negative_open_margin": "-6.11764205222077346950093761451e-6",
+    "smallest_positive_certified_leaf_margin": "1.47986526495143912484556916321e-8",
+    "open_depth": 22,
+    "open_panels": 32768,
+    "result_path": "logs/band_4p083_6_panelcache_result.json",
+    "result_sha256": "7e144344c11127ef3a069ca28053719b50ba1b9d730de616c22981c349f61b3c",
+    "progress_sha256": "b9912bcef000f73e8eebea237ee3822f14539f3d9351fd9aaf0c0852eb70a00c",
+    "stdout_sha256": "c429c2aeed1ea598163a06859af1df48cf938719825aa8deb1e0647209c58152",
+    "interpretation": "upper-envelope failure at registered caps; not a refutation or lower bound on J-d"
+  },
+  "pre_statement_first_file": true,
+  "agent": "KgHighRefine",
+  "staged_utc": "2026-08-31T11:12:26Z",
+  "refreeze_utc": "2026-08-31T13:22:27Z",
+  "refreeze_reason": "owner audit; source mathematical instrument unchanged; release gate, fixed invocation, non-overwrite output perimeter, atomic checkpoints, and stdout noclobber added; no compute run",
+  "nature": "same-domain instrument refinement: panel-cache reuse + finer subdivision floor only; NOT a new result, NOT a new domain",
+  "fixed_domain": {
+    "c_lo": "4.083",
+    "c_hi": "6.0",
+    "cells": "full even unit disk (a0,a2) with odd part via sqrt(1-dist(0,B)^2)",
+    "root_cover": "exact rational 12x12 partition, 132 disk-intersecting boxes, binary longer-axis splits, depth max 40",
+    "c_tiling": "fixed adjacent geometric ratio-1.02 tiles, endpoint clamped exactly to c_hi",
+    "panels": "[0, 8], S_MAX=8, ladder 4096 *4 capped once at 32768",
+    "panel_cap": 32768,
+    "tail": "closed [8, infinity), core.tail_account majorant",
+    "envelope": "monotone combined hinge f(E,W;t) = (E+W-t)_+ + (|E-W|-t)_+, with U(B,cL) = sum_P [Phi(b)-Phi(a)] G_P + Tail_8",
+    "precision": {
+      "backend": "python-flint Arb",
+      "python_flint_version": "0.9.0",
+      "bits": 256
+    },
+    "budget_envelope_evals": 260000,
+    "acceptance": "leaf: d(cU).lower() - U(B,cL).upper() > 0; band: every leaf in every tile passes; else FAILURE TO CERTIFY"
+  },
+  "machinery_deltas_vs_20260831T082425Z_kg_direct_d4_restart": [
+    "panel-only Arb quantities cached once per (bits, n_panels): endpoints, panel unions, psi0, psi2, sqrt(K(b)), sqrt(K_o(b)), Gaussian CDF mass Phi(b)-Phi(a); outward Arb enclosures only, never midpoint floats; cache key is (precision bits, panel count) -> dict of per-kind arb-ball lists",
+    "BOX_FLOOR_Q 1/1024 -> 1/16384 (sole domain-facing lever; cap, ladder, tiling, envelope, acceptance unchanged)"
+  ],
+  "unchanged_semantics": [
+    "inequality (56) route and f(E,W;t) combined hinge",
+    "c tiling generation and cover assertion",
+    "panel cap 32768 and ladder starts",
+    "Tail_8 closed [8,inf) account",
+    "132-box root cover construction and count assert",
+    "strict endpoint separation acceptance rule",
+    "cdf_weight function retained (inherited startup controls import it)"
+  ],
+  "cache_guarantees": {
+    "entry_type": "outward Arb ball enclosures",
+    "key": "(precision bits, n_panels) -> dict of per-kind arb-ball lists (fields: left, right, panels, psi0, psi2, kk, kko, mass)",
+    "midpoint_floats_used": false,
+    "bit_equivalence_claim": "cached values are the byte-identical frozen expressions under the same Prec context; rerun outputs are bit-identical to an uncached recomputation at the same (bits, n) in the certified .upper() extraction",
+    "source_assertions": "import-time static asserts on PREC/S_MAX/N_SIDE/PANEL_CAP/BOX_DEPTH_MAX/BOX_FLOOR_Q/domain strings/tile ratio; main() rejects optimized Python and enforces KG_HIGHBAND_RELEASED=1, niceness >=10, the frozen band/budget/tag/output directory, and five single-thread environment variables before run_band; pre-existing progress/result/temp files are refused"
+  },
+  "startup_controls": {
+    "rerun": false,
+    "reason": "PASS inherited from parent campaign 20260831T082425Z_kg_direct_d4_restart, whose covered machinery this instrument reproduces bit-for-bit; no control code altered",
+    "released": "logs/startup_controls.json of the parent campaign"
+  },
+  "parent_campaign": {
+    "name": "20260831T082425Z_kg_direct_d4_restart",
+    "untouched": true,
+    "band_4p083_6_result_json_sha256": "079209b23c4ca7bb2225afc516196bf1d9f062561bc0f25a9cc243e60d650457",
+    "verdict_inherited": "FAILURE TO CERTIFY (20/20 tiles open at depth 14, floor 1/1024, cap 32768)"
+  },
+  "release_command": {
+    "frozen": true,
+    "cwd": "cs/kg/campaigns/20260831T111226Z_kg_direct_d4_highband_panelcache/code",
+    "shell": "set -o noclobber; nice -n10 env KG_HIGHBAND_RELEASED=1 PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 ../../../../.venv/bin/python gate_direct_cached.py --c-lo 4.083 --c-hi 6.0 --budget 260000 --out-dir ../logs --tag band_4p083_6_panelcache > ../logs/band_4p083_6_panelcache_stdout.log 2>&1",
+    "argv": [
+      "nice",
+      "-n10",
+      "env",
+      "KG_HIGHBAND_RELEASED=1",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "OMP_NUM_THREADS=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "VECLIB_MAXIMUM_THREADS=1",
+      "NUMEXPR_NUM_THREADS=1",
+      "PYTHONHASHSEED=0",
+      "../../../../.venv/bin/python",
+      "gate_direct_cached.py",
+      "--c-lo",
+      "4.083",
+      "--c-hi",
+      "6.0",
+      "--budget",
+      "260000",
+      "--out-dir",
+      "../logs",
+      "--tag",
+      "band_4p083_6_panelcache"
+    ],
+    "expected_stdout": "logs/band_4p083_6_panelcache_stdout.log (shell noclobber; combined stdout/stderr)",
+    "expected_files_on_success": [
+      "logs/band_4p083_6_panelcache_progress.json",
+      "logs/band_4p083_6_panelcache_result.json",
+      "logs/band_4p083_6_panelcache_stdout.log"
+    ],
+    "interpreter": "cs/.venv/bin/python (python 3.14.3, python-flint 0.9.0)",
+    "executed": true,
+    "release_conditions": [
+      "Main releases the single CPU slot after baseline band [1.75,3.5] completes",
+      "baseline band [3.5,4.083] completes and is inspected before this same-domain refinement",
+      "no other compute is active when this command starts"
+    ]
+  },
+  "asrun": [
+    "asrun/gate_direct_cached.py.asrun",
+    "asrun/core.py.asrun",
+    "asrun/gate_direct_cached.patch"
+  ],
+  "source_copies": [
+    "code/gate_direct_cached.py",
+    "code/core.py"
+  ],
+  "derived_sources": [
+    "cs/kg/src/gate_direct_cached.py (the only cs/kg/src mutation; byte-identical to code/ copy)"
+  ],
+  "reports": [
+    "pre_statement.md",
+    "manifest.json"
+  ],
+  "protocol_correction": {
+    "location": "pre_statement.md section 9 (additive; sections 1-8 preserved unedited)",
+    "discloses": [
+      "8 staging probes including 3 envelope evaluations on the single anchor cell",
+      "anchor decisions and timing benchmark",
+      "source/ledger refreeze chronology v1->v2->v3 before first freeze",
+      "unauthorized deletion of 3 agent-generated __pycache__ bytecode files",
+      "explicit statement that no high-band tile, frontier, or result was evaluated and official compute remains pending"
+    ]
+  },
+  "checksum_file": "checksums.sha256",
+  "notes": [
+    "CORRECTION (refreeze): this manifest was first written before any compute, but the staging agent then ran limited validation probes; full disclosure is in pre_statement.md section 9, which supersedes any bare before-any-compute claim in earlier text.",
+    "The diff audit asrun/gate_direct_cached.patch (260 lines, diff -u against the frozen runner) is the complete and only source delta; every changed line is caching, finer subdivision floor, provenance, or reporting.",
+    "audit lineage: frozen runner sha256 8b364078e83223f5ac9ff8c3001d370ffea588376fce3c0f2abea2e1e26a4cb5 -> this instrument; core.py copied unmodified (88c3cac0433105df58e9fbe2f597d0d21d94d2a67c950d09627233e70e5f4037).",
+    "Refreeze source fixes applied: KG_ALLOW_ANY_THREADS bypass deleted; resource gate asserted before run_band with all five thread variables; cache key annotation corrected to (bits, n_panels) with precisions/resolutions reporting; CACHED_BITS removed; pre-statement correction pointer added; stdout artifact expectation replaced by run-handler note.",
+    "Owner release-perimeter refreeze after bcb6fe98: mathematical instrument unchanged; see pre_statement.md section 10. The historical minimal diff intentionally remains preserved but is not a complete current-source diff.",
+    "Static release-guard checks are disclosed in pre_statement.md section 11; no interval or high-band compute occurred."
+  ],
+  "owner_release_perimeter": {
+    "location": "pre_statement.md sections 10-11 (additive; earlier sections preserved)",
+    "source_semantics": "interval/cache/domain mathematics unchanged",
+    "guards": [
+      "KG_HIGHBAND_RELEASED=1",
+      "normal Python assertion mode",
+      "niceness >= 10",
+      "five thread pools exactly 1",
+      "fixed band, budget, tag, and campaign logs directory"
+    ],
+    "artifact_policy": "refuse pre-existing progress/result/temp; exclusive temp + file fsync + atomic rename + parent directory fsync; shell noclobber stdout/stderr",
+    "minimal_diff_scope_correction": "asrun/gate_direct_cached.patch is historical evidence for the preceding mathematical-instrument refreeze, not a complete diff of the current release perimeter",
+    "compute_performed": false,
+    "static_checks": {
+      "syntax_from_text": "PASS for all three copies; no bytecode written",
+      "byte_identity": "PASS for campaign code, as-run copy, and canonical live copy",
+      "unreleased_invocation": "PASS; refused before run_band",
+      "wrong_budget": "PASS; refused before preflight/run_band",
+      "off_campaign_output": "PASS; /tmp refused before run_band",
+      "interval_or_band_compute": false,
+      "artifacts_created": false
+    }
+  },
+  "production_integration_utc": "2026-08-31T15:24:47Z"
+}

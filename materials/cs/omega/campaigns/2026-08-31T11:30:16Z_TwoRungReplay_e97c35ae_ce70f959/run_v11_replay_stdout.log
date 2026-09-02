@@ -1,0 +1,22 @@
+perimeter OK: 5 envs=1, nice=10, __debug__=True
+frozen dep hashes: {
+ "interval_core.py": "ce70f959",
+ "alman25_float.py": "02910b11",
+ "vxxz24_float.py": "dd8edaa6",
+ "stage_b_rung1_certified.py": "10f0396d",
+ "stage_b_rung2.py": "442f6b80",
+ "K100_2.37155181.mat": "f15684a4",
+ "W1.00_2.371339.mat": "783353fd",
+ "W1.00_2.371339.mat.params_bytes": "f2336913",
+ "K100_2.37155181.mat.params_bytes": "df75ae3a"
+}
+Traceback (most recent call last):
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/launcher.py", line 308, in <module>
+    main()
+    ~~~~^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/launcher.py", line 289, in main
+    comparison = _compare(r1, r2_with)
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/launcher.py", line 228, in _compare
+    o1 = out1[key1]
+         ~~~~^^^^^^
+KeyError: 'omega_cert_upper'

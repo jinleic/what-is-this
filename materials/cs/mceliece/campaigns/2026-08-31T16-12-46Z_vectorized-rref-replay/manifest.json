@@ -1,0 +1,65 @@
+{
+  "campaign": "2026-08-31T16-12-46Z_vectorized-rref-replay",
+  "status": "CODE FROZEN; STATIC COMPILATION PASS; COMPUTE HELD UNTIL PARENT TERMINATES",
+  "pre_statement_first_file": true,
+  "pre_statement_sha256": "aa89dee0ab2238240a1439920c4adba93e9b617eba878bdc6e660ad1fe77f925",
+  "source_ledger_sha256": "368d1db28855f45581feec3423c06e8578e43833e8b3f6ef6175ba90ed5830ca",
+  "source_sha256": {
+    "toy_census.py": "3fd89fd7d4af94a77d82835796c5d560a574cf366f85e5f80622e8a31c467436",
+    "toy_static_guards.py": "9a433a2cfb75eeb2a09ba212a3afc8444ebb2d62d04e274aa83b3e6e432db673",
+    "run_toy_census.py": "1faac0381530322659e2dba82cf9f35a1bc990046b0e9a0ced77c07539171d73",
+    "fastfield_frozen.py": "209fe885f3d7837650e03fb63350d73a20492b96a17467969ac4ccf3ce62e560",
+    "gfield_frozen.py": "69c6920e7775f80fd14d8d05166e5da6155c8fa778948f324d96bbaaef1fa6ae"
+  },
+  "parent": {
+    "campaign": "2026-08-31T08-44Z_DA168C79",
+    "controls_result_sha256": "41652388f5ce7b7c8db82648e06be56bf21c7a0fe0e56e9b4020b1f61ccc8570",
+    "cell_8_sha256": "b7c4d97607f43385f14b4d9b1e1cf43734b809727214176b4f5e1881c075edaa",
+    "required_state_before_release": "process terminated; no overlap"
+  },
+  "implementation_delta": {
+    "arithmetic": "exact uint16 NumPy indexing into frozen GF(32) MUL/INV tables",
+    "pivot_order": "unchanged first nonzero row",
+    "row_operation": "unchanged full-row Gauss-Jordan XOR",
+    "per_cell_cache": "one immutable E and ker(E), shared by P4/public/P1",
+    "mathematical_semantics_changed": false
+  },
+  "mandatory_release_controls": {
+    "require_parent_controls_replay": true,
+    "require_scalar_vectorized_random_systems_min": 1000,
+    "require_full_rref_tuple_exact_equality": true,
+    "require_nullspace_basis_order_exact_equality": true,
+    "require_rank_exact_equality": true,
+    "require_wrong_table_counterfactual": true,
+    "require_parent_beta8_semantic_exact_equality": true,
+    "require_cached_uncached_beta8_semantic_exact_equality": true,
+    "controls_executed": false
+  },
+  "domain": {
+    "betas": "8..31 inclusive",
+    "count": 24,
+    "tuple": "(m,n,t,k,ell,n_ell,k_ell,D_ell,d,s,h)=(5,8,1,3,0,8,3,5,7,5,4)",
+    "support": "(0,1,2,3,4,5,6,7)",
+    "holdouts": "(0,1,2,3)",
+    "schema": "toy-m5-n8-t1-k3-s5-h4-v4-vectorized-rref"
+  },
+  "release_perimeter": {
+    "env": "TOY_FAST_CENSUS_RELEASED=1",
+    "parent_env": "PARENT_CENSUS_TERMINATED=1",
+    "cli": "--i-have-main-release",
+    "debug_required": true,
+    "nice_at_least": 10,
+    "five_thread_envs_equal_one": true,
+    "wall_cap_seconds": 7200,
+    "state_write_once": true,
+    "resume_controls": "reuse only after source-map and all plant hashes match"
+  },
+  "registered_command_from_cs": "set -o noclobber; nice -n10 env TOY_FAST_CENSUS_RELEASED=1 PARENT_CENSUS_TERMINATED=1 PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 ./.venv/bin/python mceliece/campaigns/2026-08-31T16-12-46Z_vectorized-rref-replay/code/run_toy_census.py --i-have-main-release > mceliece/campaigns/2026-08-31T16-12-46Z_vectorized-rref-replay/run_production_stdout.log 2>&1",
+  "static_checks": {
+    "source_text_compile": "PASS: all five files",
+    "unreleased_runner_refusal": "PASS before source import or state creation",
+    "development_probe": "300/300 small random RREF tuples matched before campaign; not campaign evidence",
+    "control_or_census_arithmetic": false,
+    "state_present": false
+  }
+}

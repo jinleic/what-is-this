@@ -4,6 +4,337 @@ Newest first. One entry per session. Every claim links to its verification.
 
 ---
 
+## 2026-09-02 — RETRACTION: "beam64 17x refuted" was a prereg mis-attribution; beam64_640iters is CONSISTENT with its published 7.0x (Revision GB8, no sampling)
+
+- Trigger: GB7 refuted the 17x point but its interval's upper edge (12.65x)
+  overlapped the GB5a band [11, 22] — against 11x/17x/22x the measured 8.26x
+  [5.97, 12.65] contains 11x and excludes 17x and 22x, so the band was not
+  excluded. Before sizing a band-exclusion campaign,
+  the paper (arXiv:2512.07057) was re-read first-hand, v1 (2025-12-08) and
+  v2 (2025-12-17), plus an independent second extraction; both agree.
+- Finding: Table 1 has FOUR rows. Section III, para. 2: "beam32_340iters and
+  beam64_640iters reduce the logical error rate by factors of 5.6x and 7.0x,
+  respectively. Notably, the most advanced configuration,
+  beam64_32res_640iters, achieves a 17x improvement over BP-OSD." Our beam64
+  rung (64, 40, 30, 20, num_results=1, pinned in every frozen manifest and
+  in the C++ binary) is `beam64_640iters` → published **7.0x**. The 17x is
+  `beam64_32res_640iters` (num_results=32: collect 32 valid solutions,
+  return the minimum-weight one), never run. The original Gate B section of
+  the pre-statement (frozen 2026-08-29) transcribed the abstract's "beam
+  width of 64 achieves 17x" onto the wrong row; the GB5a band [11, 22] and
+  GB7's 1/17 target inherited it. Not a version drift. (A first draft of
+  this entry attributed the transcription to Revision GB1, which pins beam8
+  only; corrected the same day by an independent read-only audit.)
+- Re-target (`qldpc-dec/src/gateb_gb8_retarget.py`, reads only the frozen
+  GB7 summary, hash-checked; replays GB7's rule under the targets as run and
+  must reproduce both frozen outcomes or abort): with 7.0x, reciprocal
+  0.1429 ∈ frozen CI95 [0.0791, 0.1674] → beam64 outcome
+  `NO_GAP_WIDTH_EFFECT_CONFIRMED_AND_INTERVAL_EXCLUDES_ONE`, identical to
+  beam32's. Measured 8.26x [5.97, 12.65] contains 7.0x. Artifact
+  `qldpc-dec/src/evidence/gb8_retarget.json`, sha256
+  `d432ea399707112075e2e66b763b66fe41ad9fe05b1343e9c6003a3a949c8dd1`.
+- Verdict: beam64_640iters **CONSISTENT with the published point value**.
+  The paper publishes no shots, failure counts or error bars, so nothing
+  tighter than the point value can be claimed. 17x: NOT TESTED. The
+  2026-09-01 entry below stands as the frozen record; its heading carries an
+  in-place retraction annotation (original text preserved), its body is
+  unchanged.
+- Recorded source conflict (unresolved): abstract "same LER" vs Section III
+  "1.3x" for beam8 vs bp30+osd. The 2026-08-29 pre-statement and GB7 use the abstract reading (GB5a
+  measured 1.024 [0.660, 1.593]). Under 1.3x the implied factors vs beam8 are
+  4.31x (inside our beam32 interval) and 5.38x (below our beam64 lower bound
+  5.97x — measured benefit exceeds implied). No verdict drawn from it.
+- Unchanged: every frozen artifact, GB7's rule and FROZEN-NEGATIVE label,
+  all counts, cells and intervals; GB5a's beam64 INCONCLUSIVE (its CI
+  contains 1/7.0 as it contains everything; the [11, 22] band is void).
+  Source constants `RUNGS['beam64']` / `PUBLISHED_RECIPROCALS['beam64']`
+  keep their values (the verifier's frozen-decision replay pins them) and
+  now carry a GB8 pointer comment.
+- Acceptance re-run with six new `gb8.*` re-derivation checks and the
+  Revision-GB8 presence check: `qldpc-dec/scratch/verify_gb8.log`,
+  QLDPC_GATEB_ACCEPTANCE_PASS, **87 PASS / 0 FAIL / 0 SKIP**.
+- Step 2 of the planned band-exclusion campaign (3e8-4e8 shots) is NOT
+  launched: the question it would answer no longer exists. What would test
+  the 17x is a new `beam64_32res` rung (binary `--num-results` path + fresh
+  equivalence gate + its own pre-registration).
+
+## 2026-09-01 — Gate B decided: beam32 5.6x reproduced, beam64 17x refuted (GB7 paired 1e8) — beam64 headline RETRACTED 2026-09-02 (Revision GB8, see above)
+
+- GB7 closed **FROZEN-NEGATIVE** (verdict keyed on the beam32 gap hypothesis,
+  which is refuted): `qldpc-dec/campaigns/20260901T145247Z_b7ea9ac4_ac3f6689e03b/`.
+  100,000,000 shots of the frozen bp30+osd stream; the first 2e7 shots, all
+  three beam prediction files, and all three failure masks byte-matched the
+  frozen GB5a paired artifacts (prefix failures 40/8/5 recovered exactly).
+  Failures per 1e8: beam8 223, beam32 41, beam64 27.
+- beam32 (paired vs beam8, four-cell bootstrap 100,000 draws): R32 = 0.1839,
+  CI [0.1325, 0.2400]; the published 1/5.6 = 0.1786 is INSIDE. Measured
+  factor **5.44x [4.17, 7.55]** vs published 5.6x — the published beam32
+  expansion is quantitatively reproduced. Width effect: b=193 fixed, c=11
+  reversed, exact McNemar 4.0e-44. Outcome
+  `NO_GAP_WIDTH_EFFECT_CONFIRMED_AND_INTERVAL_EXCLUDES_ONE`.
+- beam64: R64 = 0.1211, CI [0.0791, 0.1674]; the published 1/17 = 0.0588 is
+  BELOW the interval. Measured factor **8.26x [5.97, 12.65]** vs published
+  17x — **GAP_CONFIRMED**. b=202, c=6, McNemar 5.2e-52. beam64's failures are
+  a strict subset of beam32's (14 fixed, 0 reversed, McNemar 1.2e-4): the
+  32->64 step is real but ~1.5x, not the ~3x the published ladder implies.
+- Every determinism assumption was backstopped: a deliberately unaligned
+  rehearsal was voided by the byte check pre-launch, the runner now refuses
+  non-chunk-aligned shot counts, and the frozen GB5a `gateb_ladder.py`
+  snapshot was shown byte-equivalent to the streaming rewrite at multi-chunk
+  scale before any GB7 sample was drawn.
+- Independent acceptance over all three frozen campaigns (raw masks
+  recomputed from predictions, 529 + 128 + 30 frozen hashes re-checked,
+  decisions re-bootstrapped from re-derived cells):
+  `qldpc-dec/scratch/verify_final_gateb.log` —
+  QLDPC_GATEB_ACCEPTANCE_PASS, 80 PASS / 0 FAIL / 0 SKIP.
+- Verifier fix made during closure: its "control plane frozen" check was an
+  existence test that could only pass post-close; replaced by a
+  lifecycle-aware check that visibly SKIPs pre-close and, post-close,
+  re-hashes every file in `sha256s.txt` (strictly stronger). No prereg rule
+  or frozen artifact was touched.
+
+## 2026-09-01 — Gate B ladder frozen INCONCLUSIVE; mechanism companion certified; GB7 escalation running
+
+- The GB5a 2e7-shot ladder closed **FROZEN-INCONCLUSIVE**: BP+OSD 41,
+  beam8 42 (ratio 1.024, CI [0.660,1.593]), beam32 10 (0.244, [0.102,0.452]),
+  beam64 5 (0.122, [0.025,0.263]). No published band was recovered or
+  excluded — independent-arm Poisson noise binds both sides of every ratio,
+  which cannot separate the measured 4.1x/8.2x reductions (vs BP+OSD) from the published
+  5.6x/17x. Frozen campaign: `qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/`.
+- The embedded paired instrument (same-stream decode) found a real width
+  effect: beam32 resolves 35 of beam8's 40 shared failures (3 reverse,
+  exact McNemar 6.7e-8); beam64 36 (1 reverse, 5.5e-10). On identical shots
+  R32 = 8/40 = 0.200 vs published 0.1786; R64 = 5/40 = 0.125 vs 0.0588.
+- Control-plane activation was post-hoc for GB5a (it ran inside a sibling
+  target's claim); frozen manifest merged, 529 artifacts hashed,
+  `FROZEN-INCONCLUSIVE` recorded; the accidental empty mint dir was closed
+  REHEARSAL. Disclosed in `qldpc-dec/pre_statement.md` Amendment.
+- GB6 dense paired companion at p=3e-3 (2e5 shared shots, argrescale
+  circuit) closed **FROZEN-CERTIFIED**: failures 654 (BP+OSD) / 464 (beam8)
+  / 145 (beam32) / 80 (beam64); M1-M3 PASS; verdict EXPANSION_EFFECT_PRESENT —
+  the width effect is structural, not sparse-count noise:
+  `qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/`.
+- GB7 paired escalation (1e8 shots of the GB5a frozen stream prefix +
+  8e7 more, revisions GB1-GB7, `src/gateb_gb7_paired.py`) is RUNNING:
+  `qldpc-dec/campaigns/20260901T145247Z_b7ea9ac4_ac3f6689e03b/`. Decision
+  rule: exact McNemar width effect AND paired-ratio interval excluding 1.0
+  AND excluding the published reciprocal (1/5.6, 1/17) => GAP_CONFIRMED.
+  Shot/prediction/mask prefix must byte-match the frozen GB5a artifacts;
+  mismatch voids the run. Pre-launch verification: cross-writer byte
+  equivalence (frozen campaign snapshot vs streaming rewrite) at
+  multi-chunk scale, 6/6 equivalence reports re-hashed, independent read-only
+  review with NO_HIGH_CONFIDENCE_ISSUES.
+
+## 2026-08-31 — GB3 overturns the historical OSD0 timing attribution
+
+- The 2026-08-30 timing forensics below used the now-invalid scalar-mean BP
+  prior. Under that prior, OSD-CS10 exhibited an expensive fallback mode on
+  many shots while OSD0 bypassed that cost, leading to the incorrect
+  inference that the paper's Table-II mean represented OSD0 semantics.
+- The authoritative corrected-prior OSD-CS10 campaign instead reproduces both
+  means and both tails: mean/p99.9 ratios versus the paper are 1.082/1.115 at
+  p=5e-4 and 1.038/1.065 at p=1e-3.
+- A focused 3,000-decode diagnostic on the first shots of those same seeded
+  streams kept the exact heterogeneous channel but changed only to OSD0. It
+  produced mean/p99.9 = **1.208/5.986 ms** at p=5e-4 and
+  **1.875/6.147 ms** at p=1e-3 — respectively 0.34/0.022 and 0.18/0.021
+  times the published values. OSD0 therefore does not reproduce the
+  published tail protocol under the corrected prior.
+- Correction: retract the claim that the published timing row is BP+OSD0.
+  The evidence supports the published OSD-CS10/max-iter-30 semantics once the
+  full prior vector is supplied. Gate B independently retains exactly that
+  OSD-CS10/order-10/max-iter-30 denominator for Fig. 2 comparability.
+- The live harness now uses one `IONQ_BPOSD_DECODER_CONFIG` value for its
+  timing and ordinary BP+OSD LER arms and records the resolved configuration
+  in manifests/results. An end-to-end smoke verified the exact five fields;
+  the frozen Gate-B manifest independently records the same values.
+- Diagnostic artifact:
+  `qldpc-dec/scratch/gatea_vector_prior_osd0_probe.json`; authoritative timing
+  amendment:
+  `qldpc-dec/campaigns/20260831T111233Z_755b3791_641ea5506f3b/`.
+
+
+## 2026-08-31 — Corrected Gate A closed: timing reproduced, accuracy descriptive
+
+- Repeated the paper-pinned BP+OSD timing protocol after isolating all other
+  decoder campaigns: one compiled decoder and 10,000 individual
+  `perf_counter` calls per point, with the full 8784-value heterogeneous
+  channel asserted exactly.
+- At p=5e-4, mean/p99.9 are **3.842/303.767 ms** versus paper
+  3.55/272.5 ms (ratios **1.082/1.115**). At p=1e-3 they are
+  **10.995/307.796 ms** versus 10.59/289.0 ms (ratios **1.038/1.065**).
+  Both satisfy the frozen symmetric factor-2 criterion: **REPRODUCED**.
+- The source summary omitted the p=5e-4 verdict because its reference key was
+  `"5e-04"` while the measurement key was `"0.0005"`. Revision GA3 disclosed
+  the bug after measurement, required exact key-set equality, and froze a
+  hash-checked amendment without rerunning or selecting samples.
+- Corrected accuracy is descriptive because no matching published target
+  exists: all six X/Z rows at p=3e-4, 5e-4, and 1e-3 observed **0/100,000**
+  failures; each per-round 95% Wilson upper bound is 3.2011e-6.
+- The primary p=3e-4 X row was invalid because the old loader silently used
+  the derived Z circuit. GA2 replaced only that row, under the same seed, with
+  a separately derived and provenance-hashed X circuit/DEM.
+- Frozen evidence: timing source
+  `qldpc-dec/campaigns/20260831T110541Z_e3e01d3d_774ea68fcaa7/`, authoritative
+  GA3 verdict
+  `qldpc-dec/campaigns/20260831T111233Z_755b3791_641ea5506f3b/`, and
+  authoritative GA2 accuracy
+  `qldpc-dec/campaigns/20260831T103828Z_160bc8cc_05a5ebaec745/`.
+
+## 2026-08-31 — Corrected Gate B beam8 band closed inconclusive
+
+- The corrected p=1e-3 Z campaign completed 1,000,000 deterministic shots per
+  arm. Its denominator kept the published OSD-CS10/order-10/max-iter-30
+  configuration. BP+OSD had **4 failures** (3.3333e-7 per round); bit-exact
+  C++ beam8 had **1 failure** (8.3333e-8 per round).
+- The beam8/BP+OSD point ratio is **0.25**. The frozen 100,000-draw
+  independent-binomial bootstrap interval is **[0, 2]**, which overlaps the
+  published-equivalence band [0.87, 1.15]. The pre-stated beam8-band decision
+  is **INCONCLUSIVE**, not confirmation or refutation.
+- Beam32 and beam64 remain unrun because the frozen ladder gated them on
+  beam8 passing. The 20 concurrent BP shard times are aggregate throughput,
+  not Gate-A single-shot latency evidence.
+- All 20 BP shard ranges, failure masks, hashes, counts, and the beam
+  prediction/mask hashes were independently recomputed. The source samples
+  are byte-identical to the invalidated scalar-prior campaign; only the BP
+  decoder channel changed.
+- Frozen evidence:
+  `qldpc-dec/campaigns/20260831T091453Z_fd47e8d5_f3b51514a09e/`. The original
+  scalar-prior run remains at
+  `qldpc-dec/campaigns/20260831T075902Z_a34b4014_b5d11010cd55/` with outcome
+  `INVALIDATED_GB3_scalar_prior`; its 66 BP failures support no ratio claim.
+
+## 2026-08-31 — Campaign closure made fail-closed and immutable
+
+- A NumPy scalar boolean made the original Gate-B JSON close fail after all
+  results existed. GB4 disclosed the recovery; verdict booleans are now
+  converted to Python `bool` before serialization.
+- Campaign writes now reject non-finite JSON before opening a destination,
+  use deterministic gzip metadata, refuse an existing campaign directory,
+  require the manifest before results/close, and reject every mutation after
+  close. Config is deep-copied at creation, re-hashed before manifest freeze,
+  and canonical manifest fields cannot be overridden through extras.
+  Regression checks covered strict JSON, external/direct config mutation,
+  reserved-field overrides, create collisions, deterministic compressed
+  bytes, and lifecycle transitions.
+
+## 2026-08-31 — Gate C BP comparators restored under GB3
+
+- Added `gatec_exact.run_campaign`, which freezes pre-run config/source
+  snapshots, circuit/DEM hashes, exact BP channel assertions, per-shot CSVs,
+  compressed results, and immutable-close inventory.
+- Reran both Z and X memory at p=0.01/0.03, 2000 shots per point. Every
+  exact-ML, beam8, BP+OSD, and NMS count matches the previous campaigns.
+  All four corrected per-shot CSVs are byte-identical to their historical
+  counterparts.
+- Reason: these code-capacity DEMs have 36 mechanisms with one uniform prior
+  q=2p/3, so the former scalar mean equals the full vector exactly. This
+  restores the Gate-C BP rows; it does not rescue heterogeneous circuit-level
+  Gate-A/B runs.
+- Corrected rates remain:
+  - Z p=0.03/0.01: exact ML 0.0145/0.0005, beam 0.0325/0.0040,
+    BP+OSD 0.0330/0.0055, NMS 0.0260/0.0020;
+  - X p=0.03/0.01: exact ML 0.0145/0.0005, beam 0.0370/0.0045,
+    BP+OSD 0.0365/0.0025, NMS 0.0230/0.0010.
+- Frozen evidence: Z
+  `qldpc-dec/campaigns/20260831T093503Z_2f2ed071_884b7d216c6f/`; X
+  `qldpc-dec/campaigns/20260831T093513Z_3039c8d0_4a350b3b0b06/`.
+
+## 2026-08-31 — Corrected Gate D gross calibration closed
+
+- Reran the [[144,12,12]] derived p=0.003 gross calibration with the corrected
+  forward pre-transition AIS path product, 13 candidate classes, T=64, K=64,
+  q0=0.02, B=2500, and the frozen base seed.
+- Result: **200/200** beam seeds syndrome-consistent, **200/200** decisions
+  certified, **199/200** certified decisions observable-correct. All 200 chose
+  candidate class 0. Margins: minimum 46.52 nats, mean 71.63; median wall
+  time 13.43 s/shot.
+- Verification read all 200 JSONL records: shot indices are exactly 0…199,
+  aggregates reproduce the summary, the compressed result has one matching
+  record, and every copied source/input hash matches the pre-run manifest.
+- Scope remains deliberately narrow: this is a candidate-set calibration,
+  not a global-ML proof. Because no shot selected a nonzero class, it still
+  does not exercise contested-class arbitration. The prior endpoint-weight
+  artifacts remain retracted rather than being overwritten.
+- Frozen evidence:
+  `qldpc-dec/campaigns/20260831T083647Z_51cd3b47_26199282c466/`
+  (manifest, copied source and inputs, 200 per-shot records, summary,
+  compressed result, immutable-close inventory).
+
+## 2026-08-31 — BP+OSD prior bug corrected; GB3 replacement launched
+
+- First-hand source audit of the paper-pinned `stimbposd==0.1.0` tag (commit
+  `7921f5eb1b358ff616f9822280c9961e83df06cb`) found that
+  `stimbposd.BPOSD` passes the merged DEM prior vector as
+  `error_channel=list(priors)`. The local adapter instead averaged that vector
+  and passed one scalar `error_rate`.
+- This is not an equivalent parameterization. The pinned p=1e-3 Z DEM has
+  8784 merged columns, 9 distinct probabilities, and range
+  [0.000533333333333148, 0.003721584619834077]. A deterministic two-column
+  regression now observes configured priors [0.1, 0.2], not the former
+  [0.15, 0.15], and the full configured channel equals the merged vector
+  element-for-element.
+- Impact at this ledger point: every historical local BP+OSD accuracy/runtime
+  value used the wrong scalar channel. Gate A's BP+OSD claims and the BP
+  comparator rows in the Gate-C exact campaigns were retracted pending the
+  corrected reruns now closed above. Exact-ML, beam, and NMS outputs were
+  unaffected. The original Gate-B million-shot campaign could not decide the
+  gate.
+- `qldpc-dec/pre_statement.md` Revision GB3 discloses that this correction was
+  found after interim Gate-B output existed. No gate threshold or stochastic
+  input changed. At this ledger point, corrected campaign
+  `qldpc-dec/campaigns/20260831T091453Z_fd47e8d5_f3b51514a09e/` was running
+  with source snapshots and an exact prior-channel assertion; it is closed
+  as the inconclusive beam8-band result above.
+- The corrected campaign's independently regenerated sample files are
+  byte-identical to the original frozen streams: BP sha256
+  `fd0e018d…f06788`, beam sha256 `ba9d9696…e4c5fe`. A 200-shot smoke campaign
+  closed immutably with all 8784 configured priors verified.
+- Separate backend validation on the actual million-shot beam stream checked
+  199 uniformly spaced shots plus every C++ logical-failure shot: 0/200
+  Python/C++ prediction mismatches; both backends fail the same selected shot
+  (campaign index 280665).
+
+## 2026-08-31 — Gate C exact reference completed in X memory
+
+- Extended the [[36,4,4]] exact code-capacity runner from Z-only to an
+  explicit `--basis X|Z` contract. Z memory uses X errors with `(Hz,Lz)`;
+  X memory uses the Hadamard-dual Z errors with `(Hx,Lx)`.
+- Regression proof: the refactored Z circuit string is byte-for-byte equal to
+  the frozen 2026-08-30 implementation. X DEM dimensions are 18 detectors ×
+  36 mechanisms with 4 observables and every prior equal to q=2p/3.
+- Frozen X campaign, 2000 shots/point:
+  - p=0.03: exact ML **0.0145** vs beam8 0.0370 / bp30+osd 0.0365 /
+    nms-ens24 0.0230;
+  - p=0.01: exact ML **0.0005** vs beam8 0.0045 / bp30+osd 0.0025 /
+    nms-ens24 0.0010.
+- Exact ML therefore beats every heuristic arm at both points in both CSS
+  sectors. This remains same-family small-code code-capacity evidence, not a
+  [[144,12,12]] circuit-level claim.
+- Evidence:
+  `qldpc-dec/campaigns/20260831T085112Z_df905ed6_9b30cfe313ed/`
+  (pre-run manifest, source hashes/snapshots, two aggregate JSONs, two
+  per-shot CSVs, compressed results, immutable-close inventory).
+
+## 2026-08-31 — Gate B sparse-ratio bootstrap tail bug fixed pre-outcome (GB2)
+
+- `qldpc_dec.bootstrap.ratio_ci()` dropped all non-finite bootstrap ratios.
+  In sparse data this conditions away positive-numerator/zero-denominator
+  draws and can replace an unbounded upper endpoint with a falsely finite one.
+- Deterministic reproduction with the frozen 100000-draw design:
+  beam/BP counts 5/1 in 1e6 returned **[0.667, 9.0]**; corrected handling
+  returns **[1.0, +inf]**. Failure count, not total shots, controls this edge
+  probability.
+- Fix retains positive/zero as `+inf`, discards only undefined zero/zero
+  draws, and uses an infinity-safe linear percentile. Dense 50/50 check stays
+  finite at [0.672, 1.487]; finite-only percentiles match NumPy exactly.
+- Revision GB2 was appended to `qldpc-dec/pre_statement.md` before any
+  million-shot shard result existed. Samples, decodes, target band, 100000
+  draws, bootstrap seed, and three-way verdict rule are unchanged.
+- The active process already imported the old helper. Its raw counts remain
+  evidence; after immutable close, a separate campaign amendment will apply
+  GB2 and supersede only the original ratio CI/verdict.
+
 ## 2026-08-31 — Gate D gross evidence retracted; corrected AIS closes the small-code exact check
 
 - Root cause: `AISEngine.run()` used
@@ -343,28 +674,18 @@ Newest first. One entry per session. Every claim links to its verification.
   extrapolated from the 9.0 ms/shot 10-shot p=3e-3 measurement), and
   BP+OSD **279 ms/shot ⇒ ≈78 single-core-h**, which is the gating cost.
 
-## 2026-08-30 — Gate-B companion CLOSED at p=3e-3: 133× accuracy gap, not equality
+## 2026-08-30 — historical p=3e-3 companion (BP side retracted by GB3)
 
-- Full companion (2,000 shots/arm, campaign
-  `qldpc-dec/campaigns/20260830T125840Z_9d7bc086_87ca0ed14eac`):
-  **bp30+osd LER 0.1995 (399/2000, 279 ms/shot)** vs **beam8 LER 0.0015
-  (3/2000, 2362 ms/shot)** → ratio **0.00752**, CI95 [0, 0.0174]. The
-  200-shot smoke (0.215 vs ~0.005) is confirmed and tightened: at
-  p=3e-3 beam-search-8 is **~133× more accurate** than the BP+OSD
-  baseline in this harness, not equal to it.
-- What this does and does not establish. It does NOT pass or fail the
-  pinned Gate B, which is defined at p=1e-3 (the band [0.87, 1.15] is an
-  equal-accuracy claim at that p, and both arms are unresolvable there
-  at 1e4 shots). It DOES establish that the beam8-vs-BP+OSD accuracy
-  relation is strongly p-dependent in this harness, and it sets the
-  direction: wherever the arms are resolvable, beam8 dominates by orders
-  of magnitude rather than matching. Any future reading of the pinned
-  gate must account for that gradient. [NUMERICAL]
-- Cost note for the parked pinned run: beam8 measured 2.36 s/shot here,
-  so ≥1e6 shots/arm at p=1e-3 is ≈650 core-h for the beam arm alone —
-  substantially worse than the ≈71 core-h previously quoted from the
-  1e-3 rate. The C++ beam port is therefore the gating decision for the
-  pinned gate, not extra wall-clock. Estimate corrected in the record.
+- This 2,000-shot companion used the scalar BP prior later invalidated by
+  GB3. Its raw output was BP 399/2000 versus beam8 3/2000, but the BP rate,
+  0.00752 ratio, confidence interval, and inferred p-dependence are all
+  **RETRACTED**. They compare beam8 to a semantically wrong denominator and
+  do not pass or fail the p=1e-3 beam8 band.
+- The unaffected beam arm remains historical pipeline/performance evidence:
+  3/2000 failures and 2.36 s/shot for the Python implementation at p=3e-3.
+  That cost motivated the bit-exact C++ port; it is not an accuracy verdict.
+  Campaign:
+  `qldpc-dec/campaigns/20260830T125840Z_9d7bc086_87ca0ed14eac`.
 - Circuit provenance unchanged and explicit: derived-by-rescale from the
   committed IonQ p=1e-3 Z circuit, sha256 ea2de75c77969fcb…, labelled
   DERIVED, campaign labelled `B-companion-highp`.
@@ -638,51 +959,34 @@ cited source, then keyword-sweep the target's object and check each hit against 
   improvement carrier; literal cx_chain∘U_ct composition is a different
   map, w=1/81 at k=4, excluded).
 
-## 2026-08-30 — mean-gap CONFIRMED as OSD-postprocessing protocol mismatch
+## 2026-08-30 — historical scalar-prior OSD diagnostic (attribution retracted)
 
-- Decisive reproduction (3,000 timed decodes, identical sampler seed):
-  osd0 (OSD order 0, i.e. BP estimate projected without combination
-  sweep): **mean 3.54 ms** — within 0.3% of the paper's published 3.55 ms
-  mean. Pure BP (no OSD stage at all): mean 3.36 ms. With the pinned
-  osd_cs-10: 65.8 ms mean, 28% of shots in the ≈150–380 ms OSD slice.
-  ⇒ The published Table-II mean is a **BP+OSD0 number** (or
-  OSD-skipping-equivalent), not a BP+OSD-CS10 number. The 6.4× "miss" is
-  a decoder-configuration mismatch, now explained end-to-end: same
-  machine, same BP stage, same tail for the full-OSD arm.
-- Repo consequence recorded in qldpc-dec/README gate table [next edit]:
-  Gate A timing means are only comparable under a stated OSD protocol.
-  Our frozen `within_factor2:false` stands as measured (osd_cs-10 was the
-  frozen, pre-declared protocol); the ATTRIBUTION of the miss is now
-  [DERIVED]-grade: OSD post-processing cost, not machine/BP difference.
-  This also propagates to every 2025–26 paper quoting mean time without
-  an OSD-protocol column — the exact fair-baseline class the repo exists
-  to audit. Candidate RESULTS row: first quantified instance.
+- This 3,000-decode diagnostic used the scalar-mean BP prior later invalidated
+  by Revision GB3. Under that wrong prior, OSD0 had mean 3.54 ms, pure BP had
+  mean 3.36 ms, and OSD-CS10 had mean 65.8 ms with 28% of shots in the
+  approximately 150–380 ms fallback slice.
+- The measurements remain useful evidence that the scalar-prior decoder
+  exercised the costly CS10 path far more often than OSD0. The original
+  inference that the paper's Table-II mean was an OSD0 or OSD-skipping number
+  is **RETRACTED**:
+  corrected heterogeneous-prior OSD-CS10 subsequently reproduced both means
+  and p99.9 tails, while corrected-prior OSD0 fell far below every published
+  tail. See the 2026-08-31 correction at the top of this ledger.
 
-## 2026-08-30 — mean-timing 6.4× gap ROOT-CAUSED: bimodal, not overhead
+## 2026-08-30 — historical scalar-prior bimodality (attribution retracted)
 
-- Forensics (4,000 timed decodes, same seed/DEM/kwargs as the frozen
-  timing campaign; script
-  `qldpc-dec/src/qldpc_dec/timing_forensics.py`): the single-decode time
-  distribution is **sharply bimodal** — median 3.19 ms, 71.7% of decodes
-  below 5.9 ms (mean 2.6 ms), 28.3% above ≈150 ms (mean 225.6 ms), gap
-  width 144 ms. ldpc omp_thread_count=1, env threads=1 (H3 dead); warmup
-  is a modest 50→63 ms drift on the upper mode, not the driver; failure/
-  success split uninformative (0 failures in 4k). H1 dead as well: the
-  2.6 ms lower mode ≈ the paper's published 3.55 ms mean.
-- Interpretation [DERIVED, forensics-backed]: the published mean ≈3.55 ms
-  corresponds to the *BP-converged* mode; our harness pays an extra
-  ≈150–380 ms slice on 28% of shots (mode centered ≈225 ms) — consistent
-  with **OSD post-processing triggering on every decode**: ldpc's
-  `BpOsdDecoder` runs OSD unconditionally per shot, whereas the gap-vs-
-  paper hypothesis is that the reference protocol skips/times OSD only
-  when BP converges (or the reference used osd_0/OSD-off for the mean
-  row). This is now a *named, testable* protocol difference: re-run the
-  mean with osd_method="osd0" and/or OSD-skip-if-converged semantics; if
-  the mean collapses to ≈3 ms, the 6.4× gap is a protocol mismatch, NOT
-  a machine mismatch, and the published mean row is conditional on
-  OSD-skipping — worth reporting upstream.
-- Tail coherence cross-check: p99.9 in forensics (320.8 ms) matches the
-  frozen timing campaign (326.7) — same tail, same story.
+- Four thousand timed decodes under the scalar-mean prior later invalidated by
+  GB3 were sharply bimodal: median 3.19 ms; 71.7% below 5.9 ms with mean
+  2.6 ms; 28.3% in an approximately 150–380 ms fallback mode with mean
+  225.6 ms. The p99.9 of 320.8 ms matched the invalidated timing campaign's
+  326.7 ms tail.
+- Those measurements isolate the behavior of the wrong-prior run: it
+  exhibited frequent expensive OSD fallback. They do not establish that the
+  paper skipped OSD. The former OSD-skipping attribution is
+  **RETRACTED** because corrected-prior OSD-CS10 reproduces the published
+  mean and tail while corrected-prior OSD0 does not. The live
+  `timing_forensics.py` now uses the corrected vector prior; the numbers above
+  are retained only as the historical scalar-prior record.
 
 ## 2026-08-30 — qldpc-dec Gate B first pass: UNDERDETERMINED at 1e4 shots
 

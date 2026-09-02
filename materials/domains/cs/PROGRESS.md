@@ -4,6 +4,1224 @@ Newest first. One entry per session. Every claim links to its verification.
 
 ---
 
+### Session 2026-09-01/02 — 36 lifecycle campaigns, 17 certified, every artifact owner-verified, 2026-09-02
+
+One entry for the whole autonomous session, newest first within the results
+index; each item links to the campaign directory and its checksum ledger via
+[`RESULTS.md`](RESULTS.md). Every subagent artifact below was verified by the
+owner independently: checksum ledgers replayed, prereg binding checked against
+the manifest (and both hashes where a prereg was amended), and the headline
+mathematics cross-checked in the owner's own kernel with a from-scratch
+instrument. Session-wide integrity pass at close: **36 campaigns, 0 checksum
+mismatches**, verdicts 17 FROZEN-CERTIFIED / 7 FROZEN-NEGATIVE /
+4 FROZEN-INCONCLUSIVE / 1 CRASHED / 1 REJECTED / 1 REHEARSAL, plus the live
+kg band, mceliece `t=48` and delcap `n=13` runs.
+
+**Theorems (sharp hypotheses, closed-form counts, exhaustive verification).**
+`rs-pe3d/`: H-MINLINE **falsified** at $q=13,s=(2,2,4)$ (24 = 16 lines + 8
+diagonals, explicit witness); **T-DGE** certified (spark of a Kronecker product
+is the minimum spark; size-$d$ dependent sets are axis fibers iff at most one
+factor has spark 2 — sharper than "$d\ge3$"); at $|S|=d+1$ the fiber picture
+**collapses** (156 size-4 circuits, none fibers), **Thm-CRIT** $d_A+d_B\le d+3$,
+**Thm-FIB**, the **crossing** theorem with count $d_Ad_BC_AC_B$ and its
+converse completed by **H2**, the **cross-ratio** law for the all-distinct
+channel and its **PGL(2,p)** closed forms, the **$n$-factor** theorem (at most
+two varying coordinates at size $d+1$; all fibers for $d\ge4$), the complete
+**size-5** classification (degree-$\le2$ bipartite graphs with minor
+conditions), the **two-row completeness** capstone (circuit size
+$\le r_Ar_B+1$), the mixed and tied three-row layers, and the size-8 residual
+explained as **complete intersections of two $(2,2)$-curves**. Twelve campaigns;
+the target rests.
+
+**Frontier moves with replayable certificates.** `mm3/`: the fixed-orientation
+ladder is now exact at every rung — `paper55` $\sigma^{0/1/2}=55$,
+`sun56`$=56$, `mws59`$=\mathbf{58}$ (an explicit 58-addition circuit, one
+below the published 59, re-expanded by the owner over all 81 monomials),
+`stapleton60`$=60$, `laderman23`$=62$ from the source-locked 1976 primary
+(printed basic form 98). `kg/`: tile 3 of $[4.083,6.0]$ certifies at cap
+$2^{19}$ (owner recompute agrees to $10^{-35}$); band $[1.75,3.5]$ measured to
+close at $2^{17}$ and its campaign is running. `delcap/`: the $q=3,n=12$ box
+complete, 4/4 rows beating both published endpoints. `mceliece/`: the
+$t=96$ row at $m=12$ with $\alpha$ measured on all 3488 points; `t=48` running.
+
+**First-class negatives.** `omega/`: $\varepsilon$-freezing and kernel-ray
+restriction both falsified with measured factors (355.9× and 223× signal; the
+straddle is not a box artifact), one Tier-2 exclusion certified, $\varepsilon_0$
+proved bit-constant; the 21-dimensional question stays open and no record is
+implied. `oct-rank/`: N1 (0/40 seeds at the exact gate) and N2 (F4 blows a
+30-minute cap on a system four times smaller than the target, $8\text{M}\times74\text{M}$
+matrix, 22.65 GB) — both routes to $\{13,14\}$ closed with costs; the frontier
+is unchanged and the absence sentences stand verbatim.
+
+**Corrections to frozen evidence, owner-adjudicated.** The session-3
+`mm3/` `transpose_check.py` was found self-circular (its `chain` dict never
+populated; its own stdout contradicts its JSON) — the number it supported is
+correct and now independently established, the artifact is void. Two `omega/`
+provenance records read misleadingly after prereg amendments; corrected at
+target level with the rule that amended preregs carry both hashes, which every
+later campaign then honoured.
+
+**Process facts worth keeping.** Pre-commit compute was caught and forced into
+REHEARSAL/REJECTED restarts three times (mceliece, kg twice); every
+subagent-reported "throttling" this session was either a 600 s / 7200 s
+`RLIMIT_CPU` in the eval kernel (exit 152 = SIGXCPU) or nice-15 priority
+starvation against a nice-10 C++ enumeration at load ~50 — priority is not a
+scientific knob and was disclosed wherever changed. Bytecode was never written
+into a frozen directory by the owner; one `__pycache__` created by a sibling at
+05:28Z inside campB's code dir is recorded as a hygiene defect, not deleted.
+
+---
+
+### `mceliece/` m=12 REACHED at a real NIST cell; alpha measured, not derived; the section-3.6 hole stays BOUNDED, 2026-09-01
+
+Agent `MceliecelM12`, campaign
+`mceliece/campaigns/2026-09-01T03-28-10Z_M12ALPHA_DIVONLY/` (commits `7fb44ae`
+pre-statement before compute, `30b6c8f` AMENDMENT_1+2 with calibration, `6ac1e44`
+anchors + AMENDMENT_3, `fc88126` plants, `240820d` freeze, `6027427` checksum
+ledger 17/17, `bd74601` README append). Owner-verified from `verdict.json`.
+
+**`m=12` was UNREACHED and frozen as such; it is now reached, and at a real
+Classic McEliece parameter set rather than a toy.** Instance
+`(m, n, t, seed) = (12, 3488, 64, 16384)`, i.e. the `mceliece348864` cell.
+Owner cross-checks of the frame: `k = 3488 - 12*64 = 2720` matches the artifact,
+and `D = n - 2t - 1 = 3488 - 128 - 1 = 3359` matches both the artifact's `D` and
+its `max_deg_f`, so the degree gate closes exactly rather than with slack.
+
+**alpha is MEASURED, not derived — the load-bearing distinction.** ADDENDUM 2
+pre-registered two paths: measure alpha, or fall back to a derived
+**CITED-DEPENDENCY** value if the measurement exceeded budget. The derive fork was
+never reached. `alpha_check_kind` reads *"MEASURED (all n=3488 support points,
+unmodified m<=11 instrument ops, exact table arithmetic)"*, with
+`alpha_grid_points_checked = 3488`, `alpha_failures = []` and
+`alpha_identity_measured_full_grid = true`. What licenses "identical instrument"
+is the anchor set: 3/3 byte-equal against the frozen gate-A records at
+`(11,2048,48,6211)`, `(10,1024,40,5113)` and `(6,64,3,1387)`, with only
+`elapsed_s` excluded (declared) and an additive `guards_build` field disclosed. A
+derived alpha presented as measured is precisely the defect this target recorded
+once before; it did not recur.
+
+**delta is exact, and the one component I suspected of being sampled is not.**
+The chain: exact division `3488/3488`, Lagrange unit checks `3488/3488` with no
+failures, `offdiag_probes = 200` with `0` violations, assembly `3/3`, degree gate
+`3359 = 3359`. The `200` probes initially read like a sample of roughly `6.08e6`
+off-diagonal pairs, which would have undercut the exactness claim — but
+`delta_scope` states the off-diagonal vanishing is STRUCTURAL, and that is
+correct: for a Lagrange basis, `L_i(a_l) = 0` at `l != i` is definitional, since
+the numerator carries the factor `(a_l - a_l)`. So the exhaustive content is
+`L_i(a_i) = 1` at all `3488` points plus the assembly and degree gate, and the
+probes are a redundant control. The **MACHINE-VERIFIED** label holds.
+
+**Counterfactual plants 3/3 REJECTED**, each by a different mechanism: CF-1
+duplicate support (`Pi' = 0` at `[10,11]`); CF-2 `f0 + Pi` triggering a
+degree-gate ABORT at `2048 > 1951`, with value-invisibility separately CONFIRMED
+`0/22`; CF-3 `row0 -> 3*f0` failing the alpha value check (`c^2 = 5 != 3`).
+
+**Scope, stated exactly and not inflated.** This is a BOUNDED FINITE statement
+about ONE instance. `t = 48` and `t = 96` at `m = 12` remain **UNREACHED**; no
+`n != 3488`, no other orderings, no `m > 12`, no `m = 12` census rows, and no `G`
+population exhausted. It is not an `m=12`-complete result and not a NIST
+attack-cost verification, and **Apon's section-3.6 hole remains BOUNDED, not
+closed**. Cost measured in-process only per rule 17e: per-point alpha `0.1504`
+CPU-s, alpha grid `700.53` CPU-s, build `2175.43`, total `2893.37` of the
+registered `10800` budget, wall about 51 minutes.
+
+**Six defects disclosed**, including three amendments made and committed BEFORE
+the verdict compute (AMENDMENT_1 recording that the measured projection `524.6`
+CPU-s beat the `10800` budget so path-1 applied; AMENDMENT_2 correcting the
+agent's own CF-2 expectation; AMENDMENT_3 replacing an inert CF-3 mechanism), a
+disclosed `1.33x` under-projection of the alpha grid absorbed by headroom, a
+`3600`-s tool cap hit that forced split stages with no partial verdict used, and a
+briefly overwritten checksum ledger corrected in-run to a complete 17/17.
+
+Named next action: a second `m=12` row at `t = 96` under a fresh pre-statement,
+budgeted from the measured rates (build about `2175` s, alpha about `700` s, delta
+about `15` s per row).
+
+### `kg/` the pre-registered subdivision is PROVABLY DEGENERATE; the obstruction identifies the real binding constraint, 2026-09-01
+
+Agent `KgCampB`, campaign `kg/campaigns/20260901T051620Z_KgCampB_subdiv_env/`
+(pre-statement `d557e70` before compute, skeleton `01bd720`, freeze `f744dd2`,
+checksum replay 11/11 OK). Phase-1 FAIL by the pre-registered threshold; Phase 2
+correctly NOT run.
+
+**The refinement kg had carried as its named next job was never going to work,
+and now that is a certified fact.** The `mq = t^2` panel subdivision recovers
+**exactly zero** on Campaign A's failing tile-3 cell: `V - U = 0 +/- 2.36e-73`.
+Mechanism, owner-checked by hand: the crossing set
+`{s > 0 : odd2 * (5/2 - s^2 + s^4/6) = c_L^2}` has its unique root above
+`sqrt(3)` at `s* = 45.703407790989350730` (certified bracket) — far outside the
+`[0,8]` range — and no in-range root below `sqrt(3)` exists because
+`(5/2) * odd2 = 5.93e-5` is dwarfed by `c_L^2 = 17.21`. Reconstructing
+independently: `odd2 ~ 2.372e-5` forces `(5/2 - s^2 + s^4/6) ~ 7.26e5`, hence
+`s ~ 45.7`, matching the certified root. The certified second-hinge kill fires
+only on panels where A's bound is already zero. So the mechanism targets
+structure that is absent from the domain — a **quantified degeneracy**, not a
+tuning shortfall.
+
+**Bit-exact cross-campaign reproduction.** B re-derived A's tile-3 margin as
+`-1.76291787028287693244667476546e-5 +/- 4.20e-35`, identical to A's frozen
+value, with `recovery_vs_A = -4.19e-35` (i.e. zero) and the reconciliation gate
+reporting `reproduces_A_frozen = true`. Two campaigns, two instruments, the same
+number to the last digit.
+
+**The obstruction is constructive, and it reframes A's failure.** The frozen
+decomposition, with the owner re-checking both additions:
+`D1 = -1.76291787028287693e-5` at cap `2^17`; `D2` fold recovery `= 0`;
+`D3` panel-sup gain `2^17 -> 2^19 = +2.20922696204705e-5`, and
+`-1.76291787028287693e-5 + 2.20922696204705e-5 = +4.4630909176417e-6`, matching
+the frozen `D3_margin_cap_2p19 = +4.46309091764170239642742026145e-6` exactly;
+a further `2^19 -> 2^21` gain of `+5.52295164708941e-6` gives
+`+9.98604256473110786e-6`, again matching. `D4` shows a coefficient-space
+disk-feasibility diagnostic with leverage `4.94055685681106e-4` = **28x the
+deficit**, correctly **NOT adopted** because it needs a sound joint
+`(even, odd)` re-derivation first — the firewall held. `D5` tail
+`3.6353172540086755822e-13` is identical across all variants. Measured
+single-cell cost at cap `2^19`: about `68` s CPU.
+**Consequence: the cell is not intrinsically hard.** Panel-sup gains alone
+(`2.76e-5` across `2^17 -> 2^21`) exceed the deficit, the frontier leaf is depth
+`14/40` and not floor-bound, and A's stop reason was the panel cap. A's own
+disclosed addendum had weakened the cap from its originally pre-registered
+`2^19 = 524288` down to `2^17 = 131072` — a weakening in the SAFE direction,
+since a weaker instrument can only fail to certify and never manufacture a PASS,
+but it is what cost the band.
+
+Standing status unchanged by this campaign: band `[4.083, 6.0]` remains **FAILURE
+TO CERTIFY** at tile 3 of 49, A's tiles 1-2 PASSes stand, the `kgcloseB3`
+retraction **STANDS**, and nothing here bears on the paper. One mid-campaign
+defect disclosed (a first-hinge `W`-drop) was caught by the agent's own
+reconciliation gate and fixed before any verdict existed.
+
+Next: Campaign C dispatched with the MINIMAL attribution-clean change — tile 3
+re-run entirely at cap `2^19` with every other setting byte-identical and one
+knob moved, gated on a bit-exact reproduction of A's cap-`2^17` margin first,
+then tiles 4-49 with a pre-registered global budget, incremental per-tile freezes
+and tile-granular resumability. B's `D4` diagnostic may be adopted only after a
+sound joint `(even, odd)` derivation that admits the paper's kernel point and
+passes the same counterfactual battery; a 28x-leverage diagnostic is not a bound
+until it survives that.
+
+### `kg/` band [4.083, 6.0] under the corrected envelope: FAILURE TO CERTIFY at tile 3 of 49; the retraction stands, 2026-09-01
+
+Agent `KgEvenBoxRerun`, campaign
+`kg/campaigns/20260831T231500Z_KgEvenBoxRerun_campA_corr_env/` (commit chain
+`e4e8416` -> `4f4594d` -> `c72be46` -> `f6c8c36` -> `d3a1a44` -> `0f494f3` ->
+`8d2cb26`). Every number below was owner-re-derived from
+`logs/startup_controls.json` and the per-tile artifacts.
+
+**This is the outcome a SOUND envelope should produce where an unsound one had
+manufactured a PASS.** The predecessor `kgcloseB3` band PASSes were retracted
+because its `j_integrand_bound` capped `|e| <= 1` while the paper's own D.4
+reproducing kernel reaches `|e(0)| = sqrt(3/2)`, and because it used 3-D
+circumradius inflation instead of the paper's 2-D even-box form. Both defects are
+corrected here, and the corrected instrument does NOT reproduce the retracted
+PASS. The retraction therefore **STANDS** (rule 5); no new PASS has been earned.
+
+**Verdict: tiles 1-2 PASS, tile 3 OPEN, band FAILURE TO CERTIFY.** Tile 1
+`[4.0830000000, 4.1156640000]` margin `+1.04499016763434518123845756638e-6 +/-
+4.27e-36`; tile 2 `[4.1156640000, 4.1485893120]` margin
+`+4.71904853878616890385690164962e-6 +/- 3.07e-36` — both strictly positive with
+radii near `1e-36` (**MACHINE-VERIFIED**, Arb 256). Tile 3
+`[4.1485893120, 4.1817780265]` has an open leaf at margin
+`-1.76291787028287693244667476546e-5 +/- 4.20e-35` with `95/251` leaves certified
+at depth 14 and the panel cap `131072` reached; frontier
+`a0 in [-0.830729166666666666666667, -0.829427083333333333333333]`,
+`a2 in [+0.558593750000000000000000, +0.559895833333333333333333]`. Per the
+pre-registered stop-at-first-failing-tile rule, tiles 4-49 were NOT run. The cell
+is a disk-ring where `r_o -> 0` and the binding cost is panel-sup `|e|`-hinge
+slack. Correctly scoped by the agent and confirmed by the owner: the negative
+margin is a failure of the panel-sup envelope at the caps — it is **not** a lower
+bound on `J - d` and **not** a paper refutation.
+
+**The startup battery is the strongest instrument validation in this target, and
+it validates the verdict predicate itself, not just the envelope.** 16/16 PASS:
+`e(0) = 1.2247448713915890490986420373529457 +/- 4.02e-36`, equal to `sqrt(3/2)`
+to every shown digit; the envelope ADMITS that kernel point and is TIGHT there
+(slack `1.87e-96 < 2^-260`); the cap-at-1 counterfactual is rejected with the
+clipping quantified as `sqrt(3/2) - 1 = 0.224744871391589049098642037353`; the
+3-D-inflation counterfactual confirms the OLD form was looser
+(`1.65423992279850488104968` versus corner-exact `1.32426406871192851464051`,
+slack `0.32997585`); the 2-D envelope is corner-exact at `s = 0`; the authors'
+`d3h` certificate is byte-verified (`sha256 80e945589b...`) and its `B3` is
+imported UPWARD (`14.4424366466397645700000000000` above the certificate's lower
+end); and the margin predicate is validated three ways — a straddling ball is
+rejected, a separated ball accepted, an upper-above-`d` ball rejected. The cited
+tail `4.5756855097934878218797010998724522e-6 +/- 4.62e-41` is consumed as a
+cited constant, independent of the new envelope.
+
+**One precision correction to the agent's own harness note, recorded rather than
+adopted.** The report attributes six earlier detached launches producing zero
+verdicts to "an env artifact ~40-50x". That cause was never established: per rule
+17e the `ps`-derived rate readings on this box are unreliable, no `/usr/bin/sample`
+stack was retained before those runs were abandoned, and the in-session tile walls
+(`2665`/`3455`/`863` s) mean a detached launch would need over 44 minutes to
+produce even tile 1, so "zero verdicts" is consistent with several causes. The
+honest record is: six detached launches yielded nothing, the cause is
+**UNDIAGNOSED**, and the verdict run completed in-session. Campaign B's dispatch
+carries an explicit instruction to retain a stack before killing anything.
+
+Also disclosed and accepted: pre-statement addenda superseding ratio `1.02` with
+`1.008` (the former is arithmetically impossible — certified `-1.06e-3` at the
+kernel) and panel cap `524288` with `131072`, both before the verdict run.
+
+Next: Campaign B is dispatched — the pre-registered `mq = t^2` panel subdivision,
+validated FIRST on exactly this tile-3 frontier (mechanism validation on the
+known-failing cell, with the deficit accounting reported whatever happens), and
+only on a strictly positive margin does it continue tiles 3-49 of the band. The
+three never-run bands `[1.0, 1.3]`, `[1.45, 1.75]`, `[1.75, 3.5]` are Campaign C,
+deliberately withheld: deploying an unvalidated mechanism on fresh bands before
+testing it where the current instrument demonstrably fails is backwards.
+
+### `oct-rank/` Route F: FAILURE TO CERTIFY with a certified local negative; the instrument proved it can discriminate, 2026-09-01
+
+Agent `OctRankRouteF`, campaign
+`oct-rank/campaigns/2026-09-01T04:30:00Z_routeF_kraw/` (git `739e63f`
+pre-registration before compute, `15e1c95`, `77fbe24`, `3074618` freeze,
+`1245009` hygiene, `d505584` README append).
+
+**The agent caught a rule-14 defect in the plan the owner relayed, before
+spending compute.** The inherited `af-triple13-existence` sketch specified a
+"20-variable symmetric-real / symmetrized-Jacobian" Krawczyk. That instrument
+cannot establish the claim: a gradient-system Krawczyk certifies CRITICAL POINTS
+of the residual, a positive-residual local minimum is not a decomposition, and no
+interval method can prove a residual is exactly zero. The agent documented the
+diagnosis in the pre-registration and substituted an existence-carrying
+instrument instead of proceeding. Owner authorized the swap with four conditions:
+state the square-system counts, plant a genuine NEAR-MISS rather than an
+obviously-bad candidate, run `tau` in BOTH directions including required failure
+on the known-impossible case, and fix the outcome vocabulary in advance. All four
+were met.
+
+**Counts balance, owner-checked:** `247` parameters (`13` rank-one terms
+`x 19`) minus `55` frozen gauge coordinates `= 192` equations `= 8 x 8 x 3`
+tensor entries. A square system with an isolated root is what existence requires.
+
+**Result: FAILURE TO CERTIFY, with a certified local negative attached.** The
+pre-registered `5 x 5000`-nfev polish bottoms at relative `8.816619e-06` —
+roughly four orders above the certified window, which is empty at that residual
+because containment needs `||Y g0|| < rho` while the quadratic margin needs
+`rho <~ 1.9e-5`-ish. Containment is `0/192` at all 15 fixed rungs
+(`1e-2 .. 1e-12`), and certified exclusion grows `44/192` at `rho=1e-4`,
+`190/192` at `1e-5`, and COMPLETE `192/192` for every `rho <= 1e-6`. So the
+campaign certifies that no exact on-slice rank-13 decomposition lies within
+`1e-6` of either polished candidate (**MACHINE-VERIFIED**, exact `fmpq` with
+outward-`arb` re-verification of every passing comparison). Correctly scoped: this
+is **not** a rank-13 impossibility — off-slice roots are not excluded, exact
+transversality is `rank(J_F) = 55/55`, and nothing global is claimed. At the
+partial `1e-5` rung the two non-excluded coordinates are `c`-block `(7,6)` and
+`b`-block `(4,8)`.
+
+**The instrument was proved able to discriminate, which is the whole point of
+rule 14.** Owner replayed `rf_replay.py` from the frozen bytes: checksums OK,
+15/15 PASS, 42.6 s CPU. `tau`-7 containment climbs `1/48` at `rho=1e-1` to
+`45/48` at `1e-2` to `48/48` at `1e-3` — it ACCEPTS a known-true case and thereby
+independently re-certifies the frozen `tau_r7` certificate as an existence
+statement. The globally infeasible `tau`-6 plant is REJECTED with complete
+certified exclusion at `rho <= 1e-3`; the synthetic rank-13 positive control is
+ACCEPTED at `1e-4`; and the near-miss corrupted-target candidate (entry
+`[0,0,0]=2`) is REJECTED everywhere. Five cases, five correct directions:
+the instrument does not certify proximity into existence.
+
+**Verdict and absences, stated with their exact meaning.**
+`rank((L_1, L_i, L_j))` stays **OPEN in {13,14}**, the same certified interval as
+before the campaign. Absence of a 13-witness is NOT evidence for 14; absence of an
+impossibility argument is NOT evidence for 13; and the certified local exclusions
+are not evidence for 14 either. The published window
+`18 <= R_R(T_O) <= 25` is untouched and no published work is refuted.
+
+**Four defects disclosed, every one caught by a pre-registered control before
+certification data existed:** a run-1 target-convention error (raw slices versus
+blockdiag-conjugated target) caught by the seed-reproduction anchors, with seeds
+then reproducing bit-exactly on the corrected target; an entrywise-false first
+anchor-block formulation caught by the instrument's own startup halts; a singular
+`tau`-7 natural slice re-run under the registered `qrcp` rule; and two count/scale
+slips (`64` vs `48` equations, P-pos `1e-6` vs `1e-8`) corrected pre-compute in
+`REFINEMENT_LOG` R3/R6/R7. Cost reported via `time.process_time()` only, per rule
+17e — `415.5` s instrument, `42.8` s replay, no `ps`-derived numbers.
+
+Named next actions, both requiring owner re-scoping per rule 16: N1 exact
+CP-completion downward, N2 Groebner infeasibility upward.
+
+### `rs-pe3d/` Theorem T re-derived in corrected form with a commit-anchored pre-statement; owner verification by a second instrument, plus a sharper new finding, 2026-09-01
+
+Agent `RsPe3dMW` (two campaigns, then a clean budget handback). Campaign M:
+`campaigns/2026-09-01T02-33-35Z_mech2_mechanismCorrected/` (git `29b0dfe`
+pre-statement committed BEFORE compute — this closes the predecessor campaign's
+**REPORTED**-grade chronology gap — then `e117ae2`, `d45174a`). Campaign W:
+`campaigns/2026-09-01T20-30-00Z_win4_pn4/`, pre-statement `8114a8f`, frozen
+mid-flight at budget with validation and resume complete.
+
+**Theorem T, corrected form (HUMAN-AUDITED derivation + MACHINE-VERIFIED
+controls, 16/16 exact `F_q`).** (1) For EVERY support with `|S| < d`,
+`V cap F^S = {0}`. (2) There EXISTS a support of size `d` carrying a codeword.
+(3) NO per-support claim at `|S| >= d` — clause C-1, honored explicitly. Census
+semantics: the union window is empty iff `w < d`, first nonempty exactly at `d`.
+At `t=(1,1,1)`, `d = min_i s_i`, so H-GATE's min-form is a **theorem** on that
+slice, and the `(4,5,7)` class the P2 battery could not test is inside its grip.
+
+**Owner audit of the mathematics, by hand.** L5 is the load-bearing step and it
+is valid: build `y = phi_0 (x) phi_1 (x) phi_2` with each `phi_i` killing `C_i`,
+so `y` annihilates every generator of `V` (each has one dead factor); the
+existence of each `phi_i` needs exactly
+`pi_i(e_{x_i}) not in span{pi_i(e_a) : a in T_i \ {x_i}}`, which L3 supplies
+because `|T_i| <= 1 + (w-1) = w < d <= d_i`; then
+`0 = <y,v> = v_x != 0`. Induction-free and correct. Restated, Theorem T says
+`d(V) = min_i d(C_i)`: the `<=` direction is trivial from each slice, and L5 is
+the real content — no cancellation across the three summands lightens a word.
+
+**Owner verification by a DIFFERENT instrument.** The agent builds `V` as an rref
+of stacked line classes; the owner built it as
+`V = ker(H_0 (x) H_1 (x) H_2)` from GRS parity checks and tested emptiness via
+`dim(V cap F^S) = |S| - rank(pi[:,S])`. Reproduced exactly: PN4 `dim V = 68`; the
+`w <= 3` census `457,450` supports with `0` nonzero (agent: 862 s, owner: 9.4 s);
+`35/35` direction-0 minimum lines carrying codewords. Counting cross-checks all
+consistent by inspection: `457,450 = 140 + 9,730 + 447,580`, `43,744 = 64 + 2,016
++ 41,664`, `85,400 = 80 + 3,160 + 82,160`, `C(61,2) = 1,830`, `C(63,2) = 1,953`,
+corner censuses `14` and `41`. The owner also EXTENDED the anchoring: every
+emptiness control in the campaign was `t=(1,1,1)`, so parts 1 and 2 were tested
+at `(13,(5,4,4),(2,2,2))`, `(13,(4,4,4),(2,1,3))` and `(31,(5,5,6),(3,2,2))` with
+random `Lambda` — all PASS, so the theorem's machine anchoring is no longer
+`t=1`-only. Two false FAILs appeared first and were the OWNER's bug (a leaked
+loop variable made `d_i` wrong whenever the `t_i` differ), the same class as three
+of the agent's five disclosed watch-points; the dependent triples my buggy run
+flagged were exactly part 2's predicted witnesses.
+
+**New owner finding, sharper than clause (3): "H-MINLINE".** At weight exactly
+`d`, exhaustive exact censuses return candidate sets SET-EQUAL to the minimum
+lines in argmin-`d` directions, with ZERO non-line dependencies — PN4 `35 = 35`
+over all `C(140,4) = 15,329,615` supports; `(17,(4,4,4))` `48 = 48` with all three
+directions minimum; `(41,(4,4,5))` `40 = 40` with directions 0 and 1 only and
+direction 2 correctly absent because `s_2 = 5 > d`. Status stated exactly:
+**MACHINE-VERIFIED** as a finite statement about those three instances,
+**CONJECTURE** as a general claim. If proved it upgrades clause (2) from
+existence to exact identification. The proof attack was handed to the target with
+its binding step named — run L5 in reverse, where `|S| = d` forces every valid
+axis-assignment to leave some axis with `|T_i| >= d_i`, which pins all of
+`S \ {x}` onto one argmin axis with `d` distinct coordinates; whether that forces
+a full line is where it closes or fails. It is pre-registered as its OWN campaign,
+deliberately not folded into W.
+
+**Instrument evidence, and a methodological win.** Two independently built kernels
+agree `15/15` on the 13 frozen gate-B candidate tallies plus `PN6 3486` and
+`PP2 917`, with B11's `2,304,200`-support census landing in 75 s against the
+frozen 3,449 s. The owner ruled two process questions during the run: the census
+and the pre-registered ladder are independent computations, so they run
+CONCURRENTLY rather than trading off (the agent had framed it as a 40-minute
+delay); and the pre-registered V-basis ladder was NOT killed when an interim
+result made its remaining rows look redundant, because **pre-registered evidence
+must not be dropped on a prediction of its own outcome** — self-sealing reasoning
+that costs nothing if right and destroys the only informative evidence if wrong.
+
+Next: a finishing agent holds W's resume protocol (parity primary over the
+remaining supports, element-wise candidate-SET comparison against the V-basis
+full-space census, exact `rho` closure over the candidates, P and H-GATE verdicts,
+ladder rows folded into the freeze). One correction carried into that dispatch:
+the first landed line-support hit is an instance of Theorem T part **2**
+(existence at weight `d`), not part 1, which is emptiness strictly below `d`.
+
+### `oct-rank/` Route A CLOSED-NEGATIVE with the Strassen 1983 primary read first-hand; the 16-route dies twice, 2026-09-01
+
+Agent `OctRankRouteA`, campaign
+`oct-rank/campaigns/2026-09-01T03:21:00Z_routeA_prov/` (commits `dd40d2b`
+pre-statement pre-compute, `076a4dd` freeze, `c8defdc` Route F status note).
+
+**The provenance gate that killed the predecessor is now genuinely cleared.**
+Route AF had closed Route A using Landsberg's survey and Koiran's restatement
+while flagging Strassen primary provenance **UNESTABLISHED** — and the earlier
+`16 >= at n=38` claim had failed precisely on that unread source. This campaign
+obtained the primary: ScienceDirect 403 (even via a 2024 Wayback capture), EuDML
+searched and recorded as a **content-layer** negative (rule 17d applied by the
+agent unprompted — the page text was read, not a status code), then
+scholar.archive.org -> CORE 82110360 -> a 2019-04-16 Wayback
+`application/pdf` capture. Owner verification of identity, from the retained text
+layer rather than the report: title page reads *Rank and Optimal Computation of
+Generic Tensors / V. Strassen / Institut f[ue]r Angewandte Mathematik /
+Universit[ae]t Z[ue]rich*, running head `52/53:645-685 (1983)`, Elsevier, with a
+period-correct bibliography (Alder-Strassen 1981, Atkinson-Lloyd 1980, Kruskal
+1977); retained publisher metadata matches DOI
+`10.1016/0024-3795(83)80041-X`, first page 645. PDF sha256
+`f8481709de3a93e5747ce45e5c19aae81225139f39db347ef373a82df5bd0376`
+(1,936,012 bytes); text layer sha256 `b138a8b8...`.
+
+**Verdict: the theorem family caps at 12, below our certified floor of 13.**
+Theorem 4.1's display carries Strassen's border-rank `R` with underbar while the
+proof's `(4.2)` step establishes the plain-rank form, and the form carries a
+**one-half** factor: `rank >= n + (1/2) rank(comm)`. Applied to the 3-slice
+`(L_u, L_v, L_w)` families this gives `8 + 8/2 = 12`. Owner strengthening,
+communicated to the agent: the closure does not need the campaign's `M^2`
+identity at all, because `comm` is an `8x8` matrix so `rank(comm) <= 8`
+trivially, capping the family at `12 < 13` unconditionally.
+
+**The naked `n + rank(comm) = 16` reading dies twice.** First on provenance: it
+does not exist in the primary text — Section 4 contains only Theorem 4.1 and
+Corollary 4.2, Blaeser is uncited (the paper is 1983), "commutator" is never used
+as a name, and Lickteig appears only as an independent announcement. Second, and
+independently of any source, on arithmetic: applied to the `tau` control it would
+assert `4 + 4 = 8` while `tau`'s true rank is `7`, and a lower bound cannot exceed
+the true rank. The `tau` control was mandated in the dispatch precisely because it
+had already refuted an earlier reading, and it did so again. Corollary 4.2 is
+inapplicable to the octonions because its associativity clause fails — octonions
+are non-associative, a definitional check.
+
+**Controls, all PASS (47/47, exact `fmpq`, exit 0):** `L_conj(u) L_u = N(u) I`
+exactly on all eight basis units and a generic triple; generic Gram determinant
+`39 > 0`; `tau` bound `4 + 4/2 = 6 <= 7`; `tau-box-s` bound `8 + 8/2 = 12 <= 13`.
+
+**A label nuance the owner flagged — and then RETRACTED, because the owner was
+wrong (recorded inline per rule 5).** C3 verifies
+`M^2 = -4 detGram/N(u)^3 I` exactly at five basis triples plus one generic
+triple, and the owner objected that six exact points cannot establish a
+polynomial identity in the 24 entries of `(u,v,w)`, citing the target's earlier
+`173/173`-is-not-a-quantifier defect. The agent pushed back with evidence rather
+than complying: the universal statement is proved in a DIFFERENT frozen campaign,
+`campaigns/2026-08-31T08:02:18Z_routeAF/commutator_derivation.txt`. The owner then
+audited that derivation line by line and it is valid:
+`L_x^T = L_conj(x)` and `L_conj(x)L_y + L_conj(y)L_x = 2<x,y>I` are **bilinear**,
+so basis-coefficient anchors plus bilinearity do give them for all `x,y`; from
+`<u,z> = 0` one gets `L_z L_conj(u) = -L_u L_conj(z)`, hence `P^2 = -alpha I`,
+`Q^2 = -beta I`, `PQ + QP = -2 gamma I`; therefore `C = 2(PQ + gamma I)` and
+`(PQ + gamma I)^2 = -P^2 Q^2 + gamma^2 I = (gamma^2 - alpha beta) I`, giving
+`C^2 = -4(alpha beta - gamma^2) I`; the Gram block form supplies
+`alpha beta - gamma^2 = detGram/U^3`, so `D^2 = -4 U detGram I`, whose scalar is
+strictly negative exactly on linearly independent real triples — so `rank(D) = 8`
+**universally**, as a human proof with bilinear machine anchors. The six C3 points
+are cross-check anchors, not the basis of the quantifier. The owner's flag is
+withdrawn; the agent additionally restricted C3's own wording to the six swept
+triples, which is fine but was not required. Independently, the same derivation
+reproduces the `1/2` factor through Landsberg's `rank([...]) <= 2(r - b)` with
+`b = 8`, giving `r >= 12`, and the `tau` calibration `b = 4`, comm rank `4`,
+`r >= 6` against a true rank of `7`.
+
+**Scope preserved.** S3 stays OPEN at 13 with gap exactly 1. The published window
+`18 <= R_R(T_O) <= 25` is untouched, no published work is refuted, and nothing
+required escalation. Route F was NOT computed — the agent hit its budget cap right
+after the freeze and chose to freeze a status note rather than half-launch a
+certification it could not finish, which is the correct call. That note is the
+handoff and a fresh agent now holds the `af-triple13-existence` plan: an exact
+20-variable symmetric-real Krawczyk existence attempt seeded from the two frozen
+numerical candidates, with a `tau` control and a counterfactual plant required.
+
+### `omega/` branch-and-bound feasibility gate: SPREAD, frozen as a quantified obstruction; stage 2 never opened, 2026-09-01
+
+Agent `OmegaPenaltyProbe`, campaign
+`omega/campaigns/2026-09-01T03:15:00Z_OmegaGateCBnBGate_9d2e4a7c/` (pre-statement
+`f8b9ca7` committed BEFORE compute, GATE-Z amendment `532781d` pre-verdict, freeze
+`4ba4c38`, manifest `ffae3cf`, README append `90cbe00`). The gate was designed so
+the campaign could only spend budget if the width was concentrated; it was not,
+so it spent none.
+
+**Why the gate existed.** Closing the root box's `73.85977508485684x`
+width/signal by uniform refinement needs about `log2(74) = 6.2` bisections per
+binding coordinate, i.e. `~2^(6.2k)` subboxes over a `k`-dimensional binding set
+in a 21-dimensional kernel. Concentration of the width was therefore the
+load-bearing empirical question, and the threshold — at most 6 named coordinates
+carrying at least 90% of the L1 width — was fixed in the pre-statement before any
+measurement.
+
+**Measured, and owner-re-derived from `stage1_decomposition.json` rather than the
+report.** The per-coordinate widths sum to `113.66562530936517`, matching
+`GATE_Z.live_l1` exactly (difference 0). Sorted shares run from `4.08%` down to
+`0.58%`: the top six carry only `21.8493%`, `40` of 45 coordinates each carry at
+least `1%`, `23` carry at least `2%`, and **`k* = 36` coordinates are needed to
+reach 90%** — reproduced independently. Threshold FAILS decisively (36 > 6), so
+the pre-registered branch is SPREAD. Implied cost at that binding-set size:
+`2^(6.2 x 36) = 2^223.2 ~ 1.548e67` subboxes (`~3.9e33` on the agent's milder
+reading). Frozen verdict sentence: branch-and-bound over D at this enclosure
+technology is **INFEASIBLE AT THIS COST**. Stage 2 never opened and zero subbox
+compute was performed — the threshold was honored rather than renegotiated after
+seeing the numbers (rule 16).
+
+**Straddle quantified.** Every R branch's minimizer identity is undecided (three
+candidate slots live on 6 of 7 branches); the widest candidate interval span is
+`R_glob[0]` at `3.2123059392596964e-05`, which owner arithmetic confirms is
+`203.1x` the `1.5816497000997742e-7` signal — consistent with the frozen
+CandidateWitness picture. One prose correction: the agent described the widths as
+"nearly uniform"; they actually span `6.99x` (`0.6639861348561744` to
+`4.640574461822501`). The verdict is unaffected, because what defeats
+branch-and-bound is diffuseness, not uniformity.
+
+**Disclosed amendment, accepted.** GATE-Z was pre-registered as bit-equality but
+attempt 1 measured `1.2e-14` last-digit replay drift, making bit-equality
+unachievable; the tolerance was amended to `1e-12`/`1e-6` in a pre-verdict commit
+with the live arrays as single source of truth. The achieved agreement is
+`3.552713678800501e-13`, inside the amended tolerance by a factor of ~3, with
+gradient endpoint deviations `1.2e-14` and `1.78e-15`. The amendment was declared
+before the verdict and changed no decision threshold.
+
+**Scope of the negative, stated exactly.** The obstruction binds *this* enclosure
+technology over `D = {delta : A.delta = 0 exactly, |delta|_inf <= 1e-7}` on the
+region-0 glob dist block. It does **not** bound a different certified-gradient
+technology, nor analytic branch-pinning — those remain the honest openings. Gate
+C stays **PARTIAL**; the 21-dimensional kernel question is **UNCHANGED and
+OPEN**; the `12.808x` guardrail is carried verbatim, so nothing here bears on the
+published `2.37155181` or the record `2.371177`.
+
+### Phantom 40x CPU clamp: three agents and the owner chased a broken measuring instrument, 2026-09-01
+
+No research content changed; the cost was hours of agent time and one owner
+diagnostic prescription that was itself wrong, so it is recorded as a
+methodological failure rather than dropped.
+
+`KgEvenBoxRerun` and `RsPe3dMW` independently reported their compute pinned at
+`~2.4%` CPU, cross-confirmed each other, and began restructuring around it - kg
+moving to foreground chunked execution after three zero-verdict launches, rs-pe3d
+killing and relaunching a ladder. Owner tests appeared to show no clamp
+(foreground `1.07` cores, async `0.999`, async while printing 20,000 progress
+lines `0.970`, file-redirect `0.912`, plus delcap's historical 19-minute async
+run at `0.9994`), which refuted the two cheap hypotheses - background QoS via
+`taskpolicy -b`, and stdout pipe backpressure, the owner's own leading candidate.
+The owner then prescribed `delta_cpu/delta_wall` from `ps -o time` as the
+discriminator, and both agents dutifully measured `0.044` and `0.022` cores with
+it.
+
+`RsPe3dMW` settled it with a stack: `/usr/bin/sample` on pid 85270 showed
+`2287/2287 ms` inside numpy `LONG_remainder` under its rref loop - a full core,
+burning continuously - while `ps` time deltas read `0->1 s` across repeated 25 s
+windows. Throughput agreed with the sample and not with `ps`: 9/13 exact gate-B
+rows in ~65 s wall is unreachable at 0.04 cores. **There was never a clamp.** The
+owner's prescribed instrument was the defective one; the owner's own A/B tests
+were right only because they used in-process `resource.getrusage`, never
+touching the broken path. The tell was visible early and missed: four unrelated
+processes reporting *exactly* `2.4%` meant the instrument was constant, not the
+load.
+
+Two artifacts survive. Rule 17e (`README.md`): a rate is a claim about an
+accounting source, so name it - in-process `ru_utime`/`process_time` first, then
+`/usr/bin/sample` thread time, then throughput against calibration; never `ps`
+deltas for framework-Python children; and never restructure a campaign around an
+unexplained performance observation. Second: the causes of both original stalls
+are now **unrecoverable**, because each agent killed its process before taking a
+stack - the evidence died twice in one session, which is why the rule mandates
+retaining `sample` output before any kill.
+
+### `omega/` gate C V1 CLOSED under the corrected v11 interval core; LP stage returns FAILURE TO CERTIFY; my dispatch premise was stale, 2026-09-01
+
+Agent `OmegaPenaltyProbe`, campaign
+`omega/campaigns/2026-08-31T02:40:00Z_OmegaGateCFinish_v1_4c8a2f1b/` (commits
+`ec16efe` pre-statement before compute, `d72d8d6`, `c807f74`, `23c1451`,
+provenance addendum `13c27d8`). Every number below was owner-re-derived before
+this entry.
+
+**V1 PASSES.** Slope replay raw `2.3715538358350807` vs frozen raw
+`2.3715538358350803`: residual `4.440892098500626e-16`, which `math.ulp`
+confirms is **exactly one ULP** at that magnitude, against a `5e-13` gate. All
+seven R branches, `R_sum=2.8170035674609757` and `M_low=2.0942543887102634`
+are float-equal to the frozen record (**MACHINE-VERIFIED**). Rule 14 checked at
+source, not from the report: in `run_v1_v11.py` step 1 `importlib`-loads the
+frozen `stage_b_rung2.py` from the 2026-08-30 campaign while step 2 calls
+`gate_c_slope_pass.run_slope_pass`, with SHA-256 asserts pinning the slope-pass
+and endgame sources — the two paths are genuinely distinct, so their agreement
+is informative rather than tautological.
+
+**The penalty diagnostic I ordered is answered, and the answer is (b).** The
+Lemma-1-off control shifts the raw by `2.029648699330977e-6`, reproduced here to
+the last digit; no `~2.9e5` amplification exists anywhere in the chain, so the
+`lam_sum` penalty path never carried a 0.9-scale residual.
+
+**LP/ANY-y stage: FAILURE TO CERTIFY**, correctly labelled. The rigorous Arb
+enclosure `[-5.841014555620028e-6, +5.841014555620028e-6]` straddles zero at
+`73.85977508485684x` the `1.5816497000997742e-7` signal; the enclosure is
+**MACHINE-VERIFIED**, the ratio is **INFERENCE**, and the midpoint LP candidate
+`-1.5773329015168567e-7` stays **COMPUTATIONAL-EVIDENCE**. Owner arithmetic
+checks: `width = 2 x swing` exactly, and the swing is outward of
+`L1 x radius` by `5.5e-20` — the conservative direction. Gate C stays
+**PARTIAL**; the 21-dimensional kernel question is **UNCHANGED and OPEN**; six
+LP probes cannot certify 21 dimensions. Guardrail re-verified rather than
+quoted: the gap to the published `2.37155181` is `2.0258350805768544e-6`, i.e.
+`12.808x` the best available signal, and even the full `|LP min|` would leave
+`1.868e-6` above published — this route can never produce a record.
+
+**My dispatch premise was stale, and that is my error.** The dispatch ordered a
+diagnostic against `Om_raw = 3.272425321778391`, residual
+`+0.9008714859433109`. That premise had already been retracted at
+`omega/README.md:590-599` BEFORE the dispatch went out: the advertised source
+(SHA-256 `4504365a…`) raises `NameError: name 's_const' is not defined` at line
+191 before its first aggregate checkpoint, so those values have no reproducible
+producer and survive as **REPORTED** history only. I carried a dead number into
+an instruction as live. The agent detected it, disclosed it instead of quietly
+skipping, and executed the handoff order on the live tree anyway — which closed
+the one genuinely open item: no slope-replay V1 had ever run under the corrected
+v11 core. This is the fourth owner-premise defect today, after the `rs-pe3d`
+`min(s)<=3`/PN4 conflation, the `kg` `paper_full.txt` path, and my own reading
+of an ECCC soft-404 as a status code. The pattern is unchanged and now
+well-evidenced: the least reliable part of an owner instruction is its stated
+reason, and agents are right to treat every premise as a hypothesis.
+
+Bookkeeping defects, both disclosed by the agent and now recorded append-only in
+`omega/README.md` (`13c27d8`, prefix byte-identical, frozen dir and its
+`checksums.sha256` untouched, directory NOT renamed): the campaign directory
+name carries UTC `2026-08-31T02:40:00Z` while the run executed
+`2026-09-01T02:47-02:53Z` (~24 h stale, ordering vs the 08-31T07:57 GateCDiag
+campaign now spelled out), and aborted attempts' stderr was overwritten by
+successive redirects — forward rule is per-attempt stderr under distinct
+filenames.
+
+Next named action, unchanged and requiring its own pre-registered campaign:
+certified subdivision (branch-and-bound) of the box so each subbox pins its
+R-branch and Lemma-1 structure, or a tighter certified gradient enclosure. The
+`12.8x` guardrail is carried verbatim into that campaign.
+
+### Monday 2026-08-31 frontier window swept and owner-re-derived; zero collisions; third coverage defect found in our own instrument
+
+Window closed. Agent `SweepAug31` swept it; every load-bearing number below was
+re-derived by the owner from the live sources before this entry, not taken from
+the report. Raw non-authoritative notes:
+[`docs/scan-raw/frontier_2026-08-31_arxiv-cscc.md`](docs/scan-raw/frontier_2026-08-31_arxiv-cscc.md),
+[`…_arxiv-csit.md`](docs/scan-raw/frontier_2026-08-31_arxiv-csit.md),
+[`…_eccc.md`](docs/scan-raw/frontier_2026-08-31_eccc.md).
+
+**arXiv** (Atom `published`, the v1 submission timestamp, bounds the sweep — not
+announcement day, not `updated`): `cs.CC` totalResults 16, max published
+`2026-08-31T12:04:08Z` (`2608.30664v1`); `cs.IT` totalResults 37, max published
+`2026-08-31T11:03:56Z` (`2608.30586v1`). Owner re-query reproduced both counts
+and both maxima exactly. **ECCC** (the PUBLICATION date bounds it, cutoff
+`2026-08-30T15:05:01Z` = TR26-162's `30 Aug 2026 18:05:01 +0300`; the paper date
+differs by a day and report numbers are not chronological): **zero new reports**,
+feed `lastBuildDate` = max `pubDate` = TR26-162, no `TR26-163+` present.
+**Ceiling after sweep: TR26-162, unchanged.** Triage of all new items against all
+seven targets: **no collision, no gate affected, no target opened.** Two genre
+adjacencies flagged for an owner read, both no-collision: `2608.30238`
+(unrestricted multiplicative complexity of 4-term polynomial multiplication,
+MC = 9, Lean 4 — a different tensor and a different measure than
+$M\langle3,3,3\rangle$) and `2608.30273` ($\Theta(C_7)\ge3.25883262$ — a
+lower-bound-only explicit construction in kg's theta neighborhood with no
+theta/SDP upper bound; $K_G$ untouched).
+
+**Third coverage defect in our own sweep instrument, and the sharpest yet.** The
+2026-08-30 sweep printed ONE `max published` (`2026-08-27T17:53:45Z`) for a
+TWO-category sweep. Owner re-derivation: that is exactly `cs.CC`'s 08-27 stratum
+maximum, while `cs.IT`'s 08-27 maximum is `2026-08-27T20:14:37Z`. Three `cs.IT`
+submissions sat in that 2 h 21 min shadow — `2608.27565` (`18:00:04Z`, four
+seconds past the 14:00 ET cutoff), `2608.27635` (`19:19:19Z`), `2608.27682`
+(`20:14:37Z`) — and the Monday morning query then excluded the entire 08-27 day
+through its `202608280000` lower bound. Verified property: all three are
+simultaneously **after** the prior sweep's printed maximum and **below** the next
+query's lower bound, so two instruments missed the same three items for two
+different reasons. All three triage clean (surface-code neural BP decoder,
+Siamese-net interference, bivariate bicycle codes — quantum/wireless, no Goppa,
+no target), so no result is affected; the defect is coverage bookkeeping. Second
+instrument finding: `eccc.weizmann.ac.il/report/2026/163` answers **HTTP 200**
+with a `404 PAGE NOT FOUND` body, so a status-based absence probe would have
+reported the report as existing; the content discriminator (`TR26-\d+`
+identifiers present for 162, absent for 163) is what settles it. The agent's
+report described the body correctly; the owner's first reading of it as a status
+code was wrong and is corrected here. Both lessons are now rule 17d in
+`README.md`. Sweep bookkeeping additions: ECCC publishes on some weekend days
+(TR26-153, a Saturday), so weekday assumptions may never bound a sweep; and
+weekend-DATED submissions exist while weekend ANNOUNCEMENTS do not — the sharper
+phrasing replaces the 2026-08-30 entry's looser wording, which stands as written
+per the running-tally rule.
+
+Next window: Tuesday 2026-09-01, arXiv `cs.CC`/`cs.IT` bounded per category with
+a printed boundary each, ECCC from ceiling TR26-162 bounded by publication date.
+
+### Ledger-entry verification made mechanical before the next sweep, 2026-08-31
+
+The gap was narrower than "unverified claims" and worse than it looked. Row
+integrity was genuinely machine-checked all along — `--validate-resume`,
+per-line hashes, the static guard, the checksum ledgers. But the **aggregate**
+counts every ledger sentence cites were summed once in an ephemeral owner
+session, written into `manifest_final.json` and `report.md`, and only then
+hashed. Searching the runner-produced artifacts for those aggregates returns
+zero hits in `summary.json`, `static_guard.json`, `run.log` and
+`orbit_rows.jsonl`: the runner emits per-row components and a status/timing
+summary, never the totals. So the checksum chain **froze the owner's
+arithmetic without ever checking it**, and a derived file became an
+independent authority for numbers whose only source is the canonical rows —
+the SSOT inversion, not a trust failure.
+
+[`tools/verify_campaign.py`](tools/verify_campaign.py) closes it, as owner-only
+infrastructure that reads finished artifacts and is imported by no campaign
+runner. It re-derives checksum ledgers, per-line row hashes and their key
+bijection, declared source hashes, outward-decimal/binary-rational identity,
+Arb-ball enclosure by the archived outward endpoints and width, CSV tables as
+order-independent row-wise projections with every candidate source field named,
+and the sums/maxima/histograms of every leaf shared by all rows. `--claims`
+diffs stated numbers against derived ones and exits non-zero on disagreement.
+
+Applied to the three current `delcap/` campaigns: `q3-invariance-correction`,
+`q4-total-output-orbit-mass`, and `q3-n11-total-output-orbit-mass` all return
+`PASS`. The 52 numbers this session published for `q=3,n=11` across
+`RESULTS.md`, `PROGRESS.md` and `delcap/README.md`—row and status counts, the
+four interval triples, 1,417,176 dual evaluations as 708,588 per candidate,
+634,415,384 dual terms as 317,207,692 per candidate, 316,716,419 primal
+conditional entries, 2,125,764 input and 9,565,920 output generator checks,
+zero overlap failures on the primal and each dual separately, 828 skipped
+zero-mass words, the bump counts 5,448/0/1/4, max RSS 929,677,312, the census
+tuple, and three file hashes—were re-derived from the frozen artifacts and all
+52 match
+(`MACHINE-VERIFIED`). Claims file:
+[`delcap/scratch/claims_q3_n11_ledger.json`](delcap/scratch/claims_q3_n11_ledger.json).
+
+Negative controls, both on copies, never on frozen evidence: perturbed claims
+(off-by-one count, wrong row total, wrong file hash) were each rejected with
+the artifact value printed; one flipped byte inside a canonical row was caught
+three times over, by the file ledger, the per-line hash, and the CSV
+projection. The superseded 2026-08-30 `delcap/` campaign is correctly reported
+as having no per-line ledger — file-level integrity only — which is a fact
+about that older artifact, not a repair target.
+
+Trimmed on review rather than defended: a `sums_by_leaf` namespace was cut. It
+produced 74,720 leaf keys for a four-row campaign and merged distinct
+quantities that share a leaf name — the single claim using it had silently
+pooled the primal and both dual overlap counters, now three explicit paths. The
+order-independent CSV matcher was kept because it is load-bearing on existing
+evidence: `q3-invariance-correction`'s table is a genuine projection whose row
+order differs from its canonical `.jsonl`, so positional comparison falsely
+failed it. No `n=12` tooling was written; none is needed until that campaign
+is frozen.
+
+Standing protocol for the next multi-target sweep, unchanged from the launch
+contract and now enforced: Main is the single writer of `README.md`,
+`RESULTS.md`, `PROGRESS.md` and `docs/`; each agent writes only its own
+`cs/<target>/`; sweep output lands non-authoritative; and each campaign's
+numbers pass `verify_campaign.py --claims` before its ledger sentence is
+written, one campaign at a time.
+
+### `delcap/` q=3,n=11 extension completed; 4/4 strict finite-$n$ improvements, 2026-08-31
+
+The named successor to the q=4 grid is closed. The frozen `08ecbc49…`
+runner certified all four registered `q=3`, `n=11` rows at
+`d in {1/2,1/5,1/10,1/20}`. Every row is `CERTIFIED`, every selected dual is
+`ba_total_orbit_mass`, and every conservative Arb interval strictly beats
+both published Tavakoli-Nguyen-Bose finite-$n$ endpoints. Outward width upper
+bounds range from `1.7049647766059455e-06` at $d=1/20$ to
+`7.068320598920295e-06` at $d=1/5$.
+
+All four rows reproduce the exact census tuple
+`(14884, 22450, 6148309, 3573542, 9721851)` and the independent Burnside
+counts 14,884 input and 22,450 output orbits. The rows record 1,417,176
+direct full-input dual evaluations, 634,415,384 positive-$W$/positive-$D$
+dual term checks, 316,716,419 direct primal conditional entries, and
+11,691,684 expanded input/output generator checks, with zero
+representative/full-word overlap failures. Immutable-resume validation
+passed with exactly four rows; owner checks re-derived every
+newline-inclusive row hash, re-verified each outward decimal against its
+archived exact binary rational, and confirmed the exact CSV projection
+(`MACHINE-VERIFIED`).
+
+Production took `1151.072 s` wall / `1150.401 s` CPU; maximum row-recorded
+RSS was `929,677,312` bytes and no resource stop fired
+(`COMPUTATIONAL-EVIDENCE`). Pre-statement and static evidence remain
+byte-preserved; additive final manifest/checksum artifacts close the
+campaign. Verification:
+[`report.md`](delcap/campaigns/2026-08-31T20-34-52Z_04ed25bd-455f-4814-8288-5ee0106e0db8_q3-n11-total-output-orbit-mass/report.md).
+Final checksum-ledger SHA-256 `0ba5629a…`; all 20 entries pass. Scope is
+only the registered four-cell `q=3,n=11` box—no q>=4, `n!=11`, other-$d$, or
+asymptotic claim. Named next campaign: `q=3,n=12`
+total-output-orbit-mass extension under a separate prospective freeze.
+
+### `delcap/` q=4 grid completed; 24/24 strict finite-$n$ improvements, 2026-08-31
+
+The frozen total-output-orbit-mass runner completed all 24 registered cells
+for `q=4`, `n=5..10`, and
+`d in {1/2,1/5,1/10,1/20}`. Every row is `CERTIFIED`, every selected
+dual is `ba_total_orbit_mass`, and every conservative Arb interval strictly
+beats both published Tavakoli-Nguyen-Bose finite-$n$ endpoints. Outward width
+upper bounds range from `6.165071504436472e-09` through
+`2.3125135592425783e-05` bits/symbol.
+
+The rows record 11,182,080 direct full-input dual evaluations,
+3,585,643,216 positive-$W$/positive-$D$ dual term checks,
+1,792,821,608 direct primal conditional entries, and 61,501,392 expanded
+input/output generator checks, with zero representative/full-word overlap
+failures. Immutable-resume validation passed with exactly 24 rows. Owner
+checks verified every newline-inclusive row hash and the exact CSV projection
+(`MACHINE-VERIFIED`).
+
+Production took `4651.466 s` wall / `4649.094 s` CPU; maximum row-recorded
+RSS was `1,441,169,408` bytes and no resource stop fired
+(`COMPUTATIONAL-EVIDENCE`). Historical pre-production evidence remains
+unchanged; additive final-manifest/checksum artifacts close the campaign.
+Verification:
+[`report.md`](delcap/campaigns/2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_q4-total-output-orbit-mass/report.md).
+Final checksum-ledger SHA-256 `d2660432…`; all 23 entries pass. Scope is
+only the registered 24-cell q=4 box—no q=3, q>=5, n>=11, other-$d$, or
+asymptotic claim. Named next campaign: `q=3,n=11`
+total-output-orbit-mass extension under a separate prospective freeze.
+
+### `mm3/` new-decomposition landscape exhausted; minima 56 and 58, 2026-08-31
+
+The frozen standard-action census reproduced all five startup totals
+55/58/56/59/60 and every 729-entry Brent tensor before enumerating
+`mws59` and `stapleton60`. It admitted 5,796 and 4,800 data triples,
+corresponding to 1,922,973,696 and 1,592,524,800 valid orientations. Every
+admitted triple received an exact integer lower bound and complete subset-DFS
+floor decision.
+
+`mws59` has certified range 56–74, upper median 67, two minimizing triples,
+and nonmonomial-involving minimum 56. `stapleton60` has range 58–76, upper
+median 67, nine minimizing triples, and nonmonomial-involving minimum 58.
+There are zero lower bounds at most 54. Hence no new LB-55 triple enters from
+either decomposition. `paper55` remains the only verified 55-addition circuit
+in the expanded swept set, while `sun56` remains LB 55 / UB 56; this is not a
+claim that `paper55` is the unique LB-55 data-triple minimizer.
+
+An independent postcompute validator regenerated the pair masks, all survivor
+sets, side bounds, totals, histograms, medians, minimizers, crosschecks, and
+aggregate counts; 476 assertions pass. Its first attempt made a schema
+assumption, aborted without a verdict, and left an empty write-once output;
+the corrected retry and failed attempt are preserved. Precompute checksums
+pass 17/17 and final checksums pass 31/31. Final-manifest SHA-256
+`f33c4161…`. Scope is only the two named decompositions, ternary
+determinant-`+/-1` `T^3`, all sigma powers, and the registered standard
+action; no universal no-54 or upper-bound synthesis claim follows.
+
+### `mceliece/` exact direct-route toy census exhausted; P2–P4 fail 24/24, 2026-08-31
+
+The released scalar campaign passed every control and durably completed the
+contiguous `beta=8,...,21` prefix before its registered 7,200-second wall cap
+interrupted `beta=22`. Its 14-cell prefix is preserved as partial evidence;
+the 22-row partial checksum ledger passes.
+
+The separately preregistered exact table-indexed continuation then passed
+26/26 controls and exhausted all 24 GF(32) cells in 1,622.94 seconds. Exact
+RREF return tuples, nullspace basis order, and ranks matched the scalar
+reference on 1,004 systems; a wrong multiplication table was detected; and
+cached/uncached `beta=8` matched the parent semantic anchor. P1_U3 and P1_U4
+pass in every cell and all 120 branches of each size. P2 fails 24/24 with 33
+accepted labels against five expected; P3 fails 24/24 with 28 unmapped
+labels; P4 fails 24/24 with `rank(E)=36`, `nullity=244`, and both admission
+predicates false. Registered toy `genericity_pass` is therefore false.
+
+Frozen C26 removed `complete` in addition to the two permitted provenance
+fields. The deviation is preserved. A post-run corrective audit removes only
+`header,t_utc` and compares all 14 parent-prefix cells, including
+`complete=true`; every semantic payload matches exactly. This is not
+retroactively called a pre-production control. Successor report SHA-256
+`662e6024…`; state manifest SHA-256 `ac21cdf3…`; all static, state, final, and
+parent-partial ledgers pass.
+Exact census, predicate, control, and equality statements are
+`MACHINE-VERIFIED`; wall times are `COMPUTATIONAL-EVIDENCE` only.
+Verification:
+[`report.json`](mceliece/campaigns/2026-08-31T16-12-46Z_vectorized-rref-replay/report.json).
+Scope remains the one toy population outside
+current ePrint 1786 Table 1 and Assumption 1; no paper-scale premise is
+verified or refuted.
+
+### `omega/`, `kg/`, and `delcap/` follow-on campaigns integrated, 2026-08-31
+
+- **`omega/` two-rung replay:** all three corrected-core child commands
+  completed, then the frozen aggregate launcher exited 1 on
+  `KeyError: 'omega_cert_upper'`. The rung-1 schema instead has separate raw
+  (`2.371340083602922`) and absorbed-slack (`2.3713411672715115`) values. A
+  preregistered hash-gated recovery compared both against rung 2 with Lemma
+  (`2.3715538358544617`): both orderings hold and all values are below
+  `2.371866`. The failed key was not replaced; formal status remains
+  **SUSPENDED** for the two original proof blockers. Recovered artifact
+  SHA-256 `8160e846…`; all 22 checksum entries pass.
+- **`kg/` midband refinement:** 6/12 tiles certified after 56,451 envelope
+  evaluations. Five adjacent tiles extend the `[1.75,3.5]` certified prefix
+  through `3.107728208020454953573248`; one terminal tile through `3.5` also
+  certifies. Six tiles remain OPEN, leaving contiguous gap
+  `[3.107728208020454953573248,3.49980671715929653996950394581]`. Result
+  SHA-256 `f9760458…`; all nine checksum entries pass. Full band remains
+  **PARTIAL**. Static source audit also retracts the proposed panel-wise `K_o`
+  radius as a new mechanism: it was already present.
+- **`delcap/` $q=4$ anchor:** the released `n=5,d=1/2` startup anchor passed
+  with outward interval
+  `[0.6664806108007938,0.6664806978587714]`, all registered group checks, and
+  both dual candidates evaluated on all 1,024 inputs. Anchor SHA-256
+  `c47aeb35…`; all 14 current checksum entries pass. It intentionally wrote no
+  row artifact, so the full 24-row grid remains **COMPUTE PENDING**.
+
+Process disclosures remain active: the high-band staging agent deleted three
+agent-generated bytecode caches without required confirmation; they were not
+restored and no claim depends on them. The earlier octonion agent's two
+untracked-draft deletions were restored byte-exactly.
+
+### `omega/` repaired candidate-ray replay complete; all five moves worsen, 2026-08-31
+
+Campaign
+`omega/campaigns/2026-08-31T14:29:40Z_OmegaGateCEntropySolver_v12_d2d3d4d5/`
+replayed the base and all divisors `16,8,4,2,1` under the repaired outward
+interval core. It hard-hashes local dependencies, converts exact finite Arb
+dyadics without binary64 rounding, uses L-BFGS-B only as a warm start, and
+accepts entropy multipliers only through an outward Arb KKT certificate.
+
+All 1,152 entropy certificates passed; the largest KKT upper bound was
+`1.4456822252392066e-10 < 1/2^32`. Every full-objective moved-minus-base
+interval is strictly positive, from
+`[6.475289389514407e-9,6.475289390521749e-9]` at `R/16` through
+`[1.0365687869954472e-7,1.0365687870055208e-7]` at `R`. Thus the named ray
+contains no descent at the five registered points. Status remains **OPEN**:
+the ray preserves a mass strictly below one and one worsening ray proves
+neither constrained local optimality nor an exponent bound. Result SHA-256:
+`0403e652099a217d421c9bb1aa7fd56f07fb6daff72ddf14273d6a6dff063122`.
+
+The v11 production is preserved as **ABORTED** at its stale old-objective raw
+anchor. A fresh Fable audit of v12 reported no release blocker; owner checks
+resolved its two residual dependency questions, and the 16-entry checksum
+ledger passes. Only the candidate-ray statements are restored. The historical
+two-rung and box enclosures remain **SUSPENDED** pending their own corrected
+replay.
+
+### `kg/` direct Lemma-D.4 restart partially re-certifies four bands, 2026-08-31
+
+Campaign `kg/campaigns/20260831T082425Z_kg_direct_d4_restart/` removes the stale
+startup anchor and applies the direct 256-bit Lemma-D.4 envelope. Bands
+`[1,1.3]`, `[1.30,1.45]`, and `[1.45,1.75]` pass on all 14, 6, and 10 tiles,
+with worst certified margins `+9.495739844715277e-7`,
+`+1.95705024245827645e-6`, and `+3.10559377267758493e-6`.
+
+Band `[1.75,3.5]` is **PARTIAL**: 25/36 tiles pass, covering a continuous
+prefix through `2.81476518658164445646615405049` and the disjoint terminal
+tile beginning `3.49980671715929653996950394581`. The 11 open interior tiles
+hit depth 14 and 32,768 panels. Their negative upper-envelope lower margins
+are failures to certify, not counterexamples; no refutation trigger fired.
+
+The `[3.5,4.083]` baseline completed with 0/8 tiles certified after 3,900
+envelope evaluations: all eight reached the panel cap. The closest open
+upper-envelope lower margin is `-1.59862092695915505593006178343e-5`; the
+most negative is `-1.12004131907617617264576323118e-4`. These remain
+upper-envelope failures only, not refutations. Result SHA-256:
+`35030d91f4a220f348991cd6731951118f8b7887d5bd47991e219b510980968e`.
+
+The `[4.083,6]` panel-cache refinement completed with 0/20 tiles certified
+after 14,047 evaluations. All reached depth 22 and the panel cap. The closest
+open margin improved to `-1.97261882086860844646460017699e-7`, but no tile
+closed; result SHA-256 is
+`7e144344c11127ef3a069ca28053719b50ba1b9d730de616c22981c349f61b3c`.
+This is again an upper-envelope failure, not a refutation.
+
+The widened unresolved-interior refinement is now the sole low-priority,
+thread-one CPU process. Its static refreeze corrected decimal `fmpq`
+construction before release, passed its 12-tile cover and release-refusal
+checks with zero cache entries/results, and passed its six-file checksum
+ledger. Full Gate B remains open.
+
+Process disclosure: the highband staging agent deleted three agent-generated
+`__pycache__` files without the required confirmation. They were compiled
+cache artifacts and were not restored; the deletion and all staging probes are
+preserved in the campaign's additive correction. No claim depends on them.
+
+### Held extension campaigns pass static gates only, 2026-08-31
+
+The deletion-channel $q=4$ campaign
+`delcap/campaigns/2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_q4-total-output-orbit-mass/`
+passed a fresh no-iteration guard: the $q=4,n=5$ census anchor, 130,560 joint
+equivariance checks, required breaking plants, and exclusion of the old
+$q=3,n=11$ path. It created no anchor, BA iteration, or result row; production
+remains held.
+
+The McEliece exhaustive-genericity campaign
+`mceliece/campaigns/2026-08-31T08-44Z_DA168C79/` was refrozen with explicit wall
+caps and passed its released `--check-only` path plus all five static hashes.
+No state directory, control result, C9 census, or production result exists.
+The MM3 different-decomposition campaign
+`mm3/campaigns/2026-08-31T083323Z_55447c11-5887-4fdd-aa2f-30e31f2332e8_b3046e6a6c50/`
+passes all 17 precompute checksums and its released `--check-only` perimeter;
+that mode imported no target module and created no result.
+
+All three campaigns remain pending the exclusive CPU slot. These are
+preflight facts, not new theorem or certificate claims.
+
+### `omega/` outward-enclosure defect found; rigorous labels suspended, 2026-08-31
+
+Independent frozen-source review found a load-bearing defect in the shared
+endpoint-pair interval kernel: `from_two(a, b)` takes `b.lower()` as its upper
+endpoint.  The owner confirmed the code path in the live and frozen copies.
+Nonzero-radius Arb upper expressions can therefore be rounded inward.  The
+two-rung endpoints, certified-box/full-box enclosures, and candidate-ray
+differences are preserved as old-code outputs but **SUSPENDED as formal
+interval certificates** pending corrected replay.  Float reproductions and
+exact integer/rational checks are unaffected.
+
+The v9 generalized-entropy run independently aborted at the base point on a
+transposed feature matrix before its first certificate.  v10 repaired that
+shape but was rejected without a production run: its binary64-only converter
+would abort on the registered higher-precision dyadics, and its dependency
+still carried the enclosure bug.  A clean v11 freeze is in progress with
+`b.upper()`, exact Arb `man_exp()` extraction, true-Arb $1/e$, a production
+`__debug__` gate, residual-system-aware cache keys, frozen code and data
+inputs, and explicit regression plants.  No strict sign has been established.
+
+### `oct-rank/` Route A closed at 12; Route F isolated to 13-or-14, 2026-08-31
+
+The former commutator “16” route is now algebraically and source-theoretically
+closed. Exact coefficient identities plus a human derivation prove
+
+$$[L_{\bar u}L_v,L_{\bar u}L_w]^2
+=-4N(u)\det\operatorname{Gram}(u,v,w)I,$$
+
+so every independent real octonion triple has commutator rank eight. Direct
+owner reading of Landsberg Theorem 6.1.1 confirms the factor-$1/2$ inequality:
+rank eight implies only $r\ge12$. The naked $r\ge8+8=16$ paraphrase is false;
+its quaternion analogue gives eight against known rank seven.
+
+For the fixed $(1,i,j)$ triple, exact global conjugation gives two shared-first-
+factor quaternion blocks. The known $\tau$ witness gives upper 14 and the
+substitution/pencil chain gives lower 13. Applicable direct-sum or
+multiplicativity machinery was not found; five CP and three
+commuting-extension numerical searches missed but prove nothing. Correct
+status: **OPEN in $\{13,14\}$**, with precisely a rank-13 witness or a rank-13
+impossibility proof missing.
+
+Campaign:
+`oct-rank/campaigns/2026-08-31T08:02:18Z_routeAF/`; owner checksums accepted
+23 payloads. The full octonion multiplication interval is unchanged at
+$[18,25]$.
+
+Two process breaches are part of the evidence record. The numerical searches
+overlapped `kg/`'s exclusive slot for 105.30 s and 32.67 s, so no timing claim
+is admissible. The agent also deleted two untracked drafts without the
+required user confirmation; both were restored byte-exactly from the edit
+transcript, marked `UNEXECUTED / NOT EVIDENCE`, and no lasting file loss was
+found.
+
+### `omega/` slope replay closed; direct candidate witness queued, 2026-08-31
+
+The Gate-C diagnostic campaign repaired the endpoint replay and passed the
+frozen V1 gate. All seven $R$ branches match, with
+$R=2.8170035674609757$, $M=2.0942543887102634$, and raw
+$\Omega=2.3715538358350807$; residual
+$4.440892098500626\times10^{-16}$.
+
+The preserved $+0.9008715$ failure is now retracted as nonreproducible. Its
+advertised source crashes on undefined `s_const` before the first aggregate
+checkpoint. The owner-suggested penalty explanation is also falsified:
+zeroing the narrow Lemma-1 contribution moves the endpoint by only
+$2.029648699330977\times10^{-6}$.
+
+Before the decision pass, four independent bugs were removed: extra radius
+scaling, wrong LP-dual dimensions, substitution of a dense SVD basis for the
+exact integer kernel, and omission of the arbitrary-$y$ full-box instrument.
+Binary64 inward endpoints and single-argmin branch pinning were replaced by
+exact Arb endpoint formation and hulls of every possible minimizing branch.
+
+The midpoint LP now supplies a numerical candidate
+$-1.577332901516852\times10^{-7}$, but the rigorous full-box slope enclosure
+is $[-5.841014555619999,5.841014555619999]\times10^{-6}$. It straddles zero:
+**FAILURE TO CERTIFY / OPEN**, not local optimality and not an improving
+witness. Frozen campaign:
+`omega/campaigns/2026-08-31T07:57:00Z_OmegaGateCDiag_4859327/`; owner
+checksums passed all 17 payloads.
+
+The next bounded question is prepared as `OmegaGateCCandidateWitness`: lift
+the single LP direction through the exact integer kernel, predeclare a dyadic
+step ladder, and directly compare the full branch-safe Arb objective at the
+center and moved points. It is held behind the single-heavy-process slot.
+
+### `delcap/` symmetry-certificate defect found — 19 $q=3$ rows suspended, 2026-08-31
+
+**A full-alphabet regression stopped the extension campaign before any new
+$q=4$ row.** The old dual path rounded each entry of the output reference
+distribution $D$ independently, then maximized KL divergence only on input
+orbit representatives. At $(q,n,d)=(3,6,1/5)$, the exact denominator-$2^{30}$
+snap split flat output orbit 51 (size 12): its entries contain both $578{,}028$
+and $578{,}029$. The representative reduction is therefore inadmissible.
+
+The failure is material, not cosmetic. A planted $(3,3,1/2)$ case gives a
+strictly smaller representative-only maximum than the true full-alphabet dual.
+The audit's first frozen row, $(3,6,1/2)$, did pass exact orbit equality,
+$3{,}279$ generator checks, all $729$ input divergences, and equality of
+representative/full maxima. The second row failed; the mandatory stop left
+18 unrun. Status of the old 20-row ladder: **1 re-certified, 19 suspended**.
+
+Evidence:
+`delcap/campaigns/2026-08-31T08:01:53Z_9108c7d1-73f8-40dc-8c4a-4db1c6d9dcbf_q4-orbit/frozen_snap_invariance_audit_v3_failure.json`.
+The target README and root results ledger now retract the unsupported
+certification immediately; no Tavakoli–Nguyen–Bose claim is affected.
+
+**Repair in progress:** snap total masses in exact **output-orbit**
+coordinates and set $D_y=D(O)/|O|$, then prove positivity, normalization,
+output-orbit invariance, and agreement between representative and every-input
+dual maxima. Any symmetry-compressed primal gets an independent
+full-alphabet equality check. All prior 20 rows must pass this corrected path
+before the held $q=4$ extension can start.
+
+### `delcap/` corrected replay complete — 20/20 $q=3$ rows restored, 2026-08-31
+
+The repair above has landed as a replacement campaign:
+`delcap/campaigns/2026-08-31T09:13:25Z_7dc5babe-5e1b-44fa-a9e5-03d2f10183b6_q3-invariance-correction/`.
+It snaps total input- and output-orbit masses exactly, proves normalization
+and $G$-invariance, and compares the compressed primal and dual against direct
+full-alphabet evaluations. All 20 fixed rows at
+$q=3$, $n=6,\ldots,10$, and
+$d\in\{1/2,1/5,1/10,1/20\}$ now certify strict improvements over both
+published sandwich endpoints.
+
+The replay found 16/20 old `ba_word` candidates non-invariant; the corrected
+candidate is `ba_total_orbit_mass` in every row. It checked 1,058,508 direct
+input KL values, 5,821,704 exact group actions, and 237,744,816
+positive-$W$/positive-$D$ terms, skipping no positive-mass input. Owner
+`sha256sum -c` verification passed all 17 payloads. The certified outward
+widths span $1.2226475645090283\times10^{-8}$ through
+$2.220013228610702\times10^{-5}$.
+
+Status: the old 19-row suspension is closed by new certificates; the
+defective endpoints remain retracted. The $q=4$ extension is separately
+frozen but **NOT RUN**, and no asymptotic or published-theorem claim changes.
+
+### `rs-pe3d/` H-GATE mechanism proved — exact distance of the lifted-line sum code, 2026-08-31
+
+**Correct theorem (HUMAN-AUDITED, machine-anchored):** let
+$A_i=\mathbb F_q^{s_i}$, let $C_i\subseteq A_i$ be the stated
+$\Lambda_i$-diagonal generalized Reed–Solomon code of dimension $t_i$, and let
+
+$$V=\sum_i A_0\otimes\cdots\otimes C_i\otimes\cdots\otimes A_2.$$
+
+For distinct evaluation points, nonzero diagonal entries, and
+$1\le t_i\le s_i$,
+
+$$d_{\rm Ham}(V)=\min_i d(C_i)=\min_i(s_i-t_i+1).$$
+
+Equivalently, **every** point support $S$ with $|S|<d_{\rm Ham}(V)$ has
+$V\cap\mathbb F_q^S=\{0\}$, while **some** line support of size
+$d_{\rm Ham}(V)$ contains a nonzero word. Therefore the union window over all
+supports of weight at most $w$ is empty iff $w<d_{\rm Ham}(V)$. This is not an
+individual-support biconditional for $|S|\ge d$.
+
+**Proof mechanism, owner-derived and independently re-derived by the target
+agent.** With $Q_i=A_i/C_i$, right exactness gives
+$V=\ker(\pi_0\otimes\pi_1\otimes\pi_2)$. Any fewer than $d(C_i)$ coordinate
+cosets in $Q_i$ are independent, since an arbitrary relation would produce a
+nonzero $C_i$ word on smaller support. For a target point in a support of size
+$w<\min_i d(C_i)$, assign every other point to one coordinate where it differs;
+on the resulting **sets** of coordinate cosets, quotient-dual functionals
+separate the target. Their tensor pullback annihilates $V$ and isolates the
+target coefficient, forcing the supported word to vanish. Sharpness uses a
+degree-$(t_i-1)$ GRS polynomial vanishing at exactly $t_i-1$ evaluation
+points, lifted on one line.
+
+**H-GATE is now resolved on its actual slice.** At $t=(1,1,1)$,
+$d_{\rm Ham}(V)=\min_i s_i$: the weight-$\le3$ window is empty exactly when
+$\min_i s_i\ge4$, and a line word makes it nonempty when $\min_i s_i\le3$.
+For general positive $t$, the predicate is
+$\min_i(s_i-t_i+1)$, **not** $\min(s)$. Pairwise coprimality and nonidentity
+$\Lambda$ do not affect this distance statement. The $t_i=0$ zero-code case
+is separate.
+
+**Exact controls reported by the frozen campaign:** dimensions $13,22,37$;
+quotient-kernel dimension $37=64-3^3$; complete below-distance emptiness over
+$16$, $30$, and $1{,}830$ supports; $82{,}160$ weight-3 supports empty at
+$(41,(4,4,5))$; $5{,}050$ weight-$\le2$ supports empty at
+$(61,(4,5,5))$; all $14/14$ and $41/41$ corner supports nonempty when an
+order is one; prior nonempty anchors $3486=3486$ and $917=917$; exact line-word
+$\delta$ controls $4$ and $2$. Frozen at
+`rs-pe3d/campaigns/2026-08-31T08-26-54Z_hgateMechanism/`; owner
+`sha256sum -c` accepted all four checksummed files. The consolidated replay is
+CPU-bound and remains queued behind the repository's single-heavy-process
+slot.
+
+**The frozen prose must be cited only through the target README's owner
+correction.** Owner review found seven errors: per-support “iff” instead of
+union-window semantics; `1_T` instead of an arbitrary relation vector;
+$s_i-1$ instead of $t_i-1$ roots; $N-\prod t_i$ instead of
+$N-\prod(s_i-t_i)$; a false uniqueness claim for the triple-sum
+representation; no separate git commit proving the claimed preregistration;
+and PP2 mistyped as $(2,3,4)$ instead of the actually replayed $(2,3,7)$.
+The immutable campaign preserves every original; the appended README
+corrections supersede them. One 52.9-second census also overlapped `kg/`'s
+heavy slot, a recorded resource-contract breach; its wall time is not
+performance evidence.
+
+**Rule-7 boundary:** this proves the support-distance mechanism, not
+Conjecture 4.2, not any global $\rho_{\rm inst}$, and not an optimal ratio in
+the weight-$\ge4$ window. At $\min(s)\ge4$ and $t=(1,1,1)$,
+$\rho^{\rm window}$ for the old weight-$\le3$ program is **undefined**, not
+zero. The first nonempty window starts at weight $d$; optimizing there remains
+OPEN.
+
 ### `mceliece/` live-source event — ePrint 1786 changed route four revisions after cache, 2026-08-31
 
 **The source audit changed the question before the new campaign began.** At 07:56 UTC, live

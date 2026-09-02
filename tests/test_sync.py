@@ -72,6 +72,9 @@ class ProgressSelectionTest(unittest.TestCase):
         registered = {project["slug"] for project in sync.PROJECTS}
         self.assertTrue({"e389", "liu_h1"} <= registered)
 
+    def test_math_domain_mirror_includes_research_status(self) -> None:
+        self.assertIn("RESEARCH_STATUS.md", sync.DOMAINS["math"]["shared_files"])
+
 
 class DomainSyncTest(unittest.TestCase):
     def test_research_domains_and_targets_are_registered(self) -> None:

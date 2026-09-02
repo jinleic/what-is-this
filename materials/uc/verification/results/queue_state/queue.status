@@ -1,5 +1,7 @@
 {
  "budget": 5000001,
+ "composite": "INCOMPLETE",
+ "finished_utc": "2026-08-31T11:08:39-0700",
  "max_concurrent": 5,
  "slice_count": 16,
  "slices": {
@@ -8,19 +10,28 @@
    "stage": "done"
   },
   "11": {
-   "stage": "running"
+   "exit_code": 1,
+   "stage": "done"
   },
   "12": {
-   "stage": "running"
+   "exit_code": 1,
+   "stage": "done"
   },
   "13": {
-   "stage": "running"
+   "exit_code": 1,
+   "stage": "done"
   },
   "14": {
-   "stage": "running"
+   "exit_code": 1,
+   "stage": "done"
   },
   "15": {
-   "stage": "running"
+   "exit_code": 1,
+   "stage": "done"
+  },
+  "16": {
+   "exit_code": 1,
+   "stage": "done"
   },
   "2": {
    "exit_code": 1,

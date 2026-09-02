@@ -1,0 +1,86 @@
+{
+  "artifact_path": "static_guard.json",
+  "burnside_input_orbits": 14884,
+  "burnside_output_orbits": 22450,
+  "campaign_id": "2026-08-31T20-34-52Z_04ed25bd-455f-4814-8288-5ee0106e0db8_q3-n11-total-output-orbit-mass",
+  "completed_utc": "2026-08-31T21:10:33Z",
+  "cpu_s": 7.512062,
+  "dual_candidates": [
+    "ba_total_orbit_mass",
+    "uniform"
+  ],
+  "evidence_label": "MACHINE-VERIFIED",
+  "forbidden_dual_candidates": [
+    "ba_word"
+  ],
+  "manifest_sha256": "198cb863a104857dfd7b067e2035ebca9b08c6c0400e043c01508d95666a183a",
+  "maximum_rss_bytes": 944291840,
+  "negative_width_plant_rejected": true,
+  "q3_n11_census_anchor": {
+    "evidence_label": "MACHINE-VERIFIED",
+    "input_orbit_size_sum": 177147,
+    "n": 11,
+    "observed": [
+      14884,
+      22450,
+      6148309,
+      3573542,
+      9721851
+    ],
+    "output_orbit_size_sum": 265720,
+    "status": "PASS"
+  },
+  "q3_value_equivariance_and_position_plant": {
+    "evidence_label": "MACHINE-VERIFIED",
+    "position_control": {
+      "A_original": 1,
+      "A_position_permuted": 2,
+      "position_permuted_x": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "status": "BREAKS_AS_REQUIRED",
+      "x": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "y": [
+        1,
+        0
+      ]
+    },
+    "q3_joint_equivariance_checks": 6480
+  },
+  "q4_and_non_n11_excluded": true,
+  "resume_rows_validated": 0,
+  "row_box_rows": 4,
+  "schema": "delcap-q3-n11-total-output-orbit-mass-v1",
+  "source_sha256": "08ecbc493e1c5c674f04ea4a0d0c9c6efd9ac2254fe9d6513db90933b3cdf114",
+  "split_output_counterfactual": {
+    "candidate_rejected_before_KL": true,
+    "evidence_label": "MACHINE-VERIFIED",
+    "orbit_total_uniform_control": "PASS",
+    "planted_counts": {
+      "(0,)": 3,
+      "(1,)": 1,
+      "all_other_words": 2
+    },
+    "split_audit": {
+      "evidence_label": "MACHINE-VERIFIED",
+      "first_mixed_output_orbit": 1,
+      "generator_checks": 1092,
+      "generator_failures": 5,
+      "mixed_output_orbits": 1,
+      "status": "SPLIT_REJECT"
+    },
+    "status": "BREAKS_AS_REQUIRED"
+  },
+  "status": "PASS",
+  "timing_evidence_label": "COMPUTATIONAL-EVIDENCE",
+  "wall_s": 7.517722,
+  "zero_support_dual_returns_infinity": "PASS"
+}

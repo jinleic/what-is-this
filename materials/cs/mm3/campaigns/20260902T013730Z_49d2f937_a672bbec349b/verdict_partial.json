@@ -1,0 +1,38 @@
+{
+ "phases": {
+  "A-anchors": {
+   "brent": [
+    0,
+    0
+   ],
+   "frozen_row": {
+    "U": {
+     "d": 13,
+     "floor": false,
+     "states": 132
+    },
+    "V": {
+     "d": 12,
+     "floor": false,
+     "states": 81
+    },
+    "Wfac": {
+     "d": 14,
+     "floor": false,
+     "states": 672
+    }
+   },
+   "frozen_witnesses_ok": true,
+   "preconditions": {
+    "nonzero": {
+     "U": 23,
+     "V": 23,
+     "W": 23
+    },
+    "rank": 9
+   },
+   "seconds": 0.2
+  }
+ },
+ "defects": []
+}

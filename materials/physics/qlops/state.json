@@ -1,0 +1,18 @@
+{
+  "schema": "target-state/1",
+  "id": "physics/qlops",
+  "problem": "FTQC resource-estimate arithmetic audit (QLOPS)",
+  "status": "active",
+  "current_gate": "Gate A reproduced (81 checks, 0 hard failures); Gate B magic-state axis falsifies comparability",
+  "latest_campaign": null,
+  "latest_campaign_verdict": null,
+  "headline": "Table-5 QLOPS to <=4e-8; magic-state swap yields 193x-29944x spread",
+  "next_action": "Discharge ZERO_LEVEL_CCZ REPORTED tag from paper's own numbers",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-01T07:34:05Z",
+  "updated_by": "workspace-architecture-fix",
+  "sources": [
+    "physics/RESULTS.md",
+    "physics/qlops/README.md"
+  ]
+}

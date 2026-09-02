@@ -1,0 +1,12 @@
+{
+  "run_id": "20260902T041030Z_64e0c4ef_b5de16e49f8a",
+  "gate": "H-33ROW-SIZE8-RESIDUAL",
+  "stage": "first instrument invocation before Python module execution",
+  "error": "SyntaxError: unexpected character after line continuation character",
+  "location": "run_size8_residual.py:499",
+  "cause": "A surgical edit accidentally wrote escaped quote characters into a Python dictionary literal.",
+  "parameter_dependent_computation_started": false,
+  "checks_passed_before_failure": 0,
+  "preserved_source": "run_size8_residual_syntax_error.py",
+  "resolution_required": "Remove the accidental escape characters, scan the source for the same lexical defect, and rerun the complete preregistered family."
+}

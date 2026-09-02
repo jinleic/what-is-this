@@ -1,0 +1,18 @@
+{
+  "schema": "target-state/1",
+  "id": "math/ising3d",
+  "problem": "Exact 3D Ising model program",
+  "status": "active",
+  "current_gate": "Wave 26 done; primitive norm and emptiness of open-2x4 degree-182400 q polynomial remain open",
+  "latest_campaign": null,
+  "latest_campaign_verdict": null,
+  "headline": "26 verified waves; first nonplanar fixed-Walsh boundary matchgate defect",
+  "next_action": "Wave 27: primitive norm of the wave-26 polynomial or an emptiness argument",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-01T07:34:05Z",
+  "updated_by": "workspace-architecture-fix",
+  "sources": [
+    "math/ising3d/README.md",
+    "math/ising3d/checkpoints/current_state.md"
+  ]
+}

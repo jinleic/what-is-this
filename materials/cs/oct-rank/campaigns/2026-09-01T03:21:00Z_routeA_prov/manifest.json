@@ -1,0 +1,33 @@
+{
+ "campaign": "2026-09-01T03:21:00Z_routeA_prov",
+ "target": "oct-rank",
+ "owner_agent": "OctRankRouteA",
+ "frozen_utc": "2026-09-01",
+ "verdict": "Route A CLOSED-NEGATIVE provenance-clean: Strassen 1983 primary obtained first-hand (CORE 82110360 via Wayback 2019 PDF capture); Theorem 4.1/(4.2) with the 1/2 factor universal bound 12 < 13 on every independent triple; naked 16 reading has no primary source; tau control 6<=7 passes; 18<=R_R(T_O)<=25 untouched",
+ "pre_statement_commit": "dd40d2b",
+ "files": [
+  "pre_statement.md",
+  "VERDICT.md",
+  "theorem_import.md",
+  "clause_check.md",
+  "clause_check.out",
+  "routeA_clause_check.py",
+  "checksums.sha256",
+  "manifest.json",
+  "sources/ACQUISITION_LOG.md",
+  "sources/Strassen_1983_Rank_and_optimal_computation_of_generic_tensors_LAA52-53.pdf",
+  "sources/Strassen_1983_text.txt",
+  "evidence_eudml_search_negative.md",
+  "evidence_eudml_search_negative.html",
+  "verification_images/R_compare.png",
+  "verification_images/lineA_thm_disp.png",
+  "verification_images/lineB_42_disp.png",
+  "verification_images/micro_R.png",
+  "verification_images/p32-32.png",
+  "verification_images/p33-33.png",
+  "verification_images/thm_R_tight.png",
+  "verification_images/thm_disp-29.png",
+  "verification_images/thm_display_wide.png",
+  "ADDENDUM_main_verification.md"
+ ]
+}

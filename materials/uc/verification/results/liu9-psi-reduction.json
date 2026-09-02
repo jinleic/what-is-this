@@ -1,0 +1,353 @@
+{
+ "arb_precision_bits": 320,
+ "audit_role": "independent adversarial verification of Main's candidate reduction ref_liu_hypothesis_2 (9-var + q -> Psi_m >= 0 on [0,1]^4); no Main arithmetic reused",
+ "binding_constants": {
+  "beta_head": "0.1000525598628931066646282994769475877962",
+  "beta_rational": "28011524361793105372602416928690825706147104729221190789458531837539278166578396884221667254400611443/279968092772225526319680285071055534765205687154331191862498637620473983897520118172609686658950889472",
+  "m_head": "0.6172909120812649700696870979010273883736",
+  "m_rational": "86410879670509651045578867419858441625384618059623663402198081830259073758168013505991445502983016997/139984046386112763159840142535527767382602843577165595931249318810236991948760059086304843329475444736",
+  "source": "liu9_binding.solve_equation_parameters(100)"
+ },
+ "claim_status": "PROVED",
+ "claim_status_note": "PROVED covers Claims 1-4 (+ kernel collapse, mu-lemma, numeric certificate, all mutations firing) AND the independent re-certification of the REFUTATION of the entrywise target Psi_m >= 0 on [0,1]^4 (witness below); the live obligation is LEMMA A + LEMMA C only (chain5_corrected_verdict, both PENDING_USER_TARGET).",
+ "honesty": "All symbolic residuals herein are exact canonical polynomial numerators over an independent free log basis; any nonzero residual is a formal contradiction of the corresponding claim, not a float artifact. The float64 companion numbers are DISCOVERY only.",
+ "mutations": [
+  {
+   "attack_surface": "claim1_route_A_discharge",
+   "expected": "FAIL",
+   "fired": true,
+   "mutant_residual_is_zero": false,
+   "mutant_residual_term_count": 11880,
+   "mutation": "m1_drop_beta_protocol_from_e_kernel",
+   "sound_control_residual_is_zero": true
+  },
+  {
+   "attack_surface": "chain3_diagonal_slice",
+   "expected": "FAIL",
+   "fired": true,
+   "mutant_residual_is_zero": false,
+   "mutant_residual_term_count": 23,
+   "mutation": "m2_swap_cross_pairs_in_psi",
+   "sound_control_residual_is_zero": true
+  },
+  {
+   "attack_surface": "claim1_route_B_decomposition",
+   "expected": "FAIL",
+   "fired": true,
+   "mutant_residual_is_zero": false,
+   "mutant_residual_term_count": 48182,
+   "mutation": "m3_replace_M_by_m_in_T",
+   "sound_control_residual_is_zero": true
+  },
+  {
+   "attack_surface": "claim1_route_B_decomposition",
+   "expected": "FAIL",
+   "fired": true,
+   "mutant_residual_is_zero": false,
+   "mutant_residual_term_count": 504,
+   "mutation": "m4_misindex_c_protocol_pairs",
+   "sound_control_residual_is_zero": true
+  }
+ ],
+ "report_sha256": "405eea478f2146fde762f749dd4a8f6986be79f0be47f56cb2cc24daf64b2af0",
+ "statements": {
+  "chain1_all_q_identity": {
+   "claim": "gap == ((1-q)^2 I00 + q^2 I11)/M + q(1-q) T for all q, M = (1-q)M0 + qM1 the mixture mean",
+   "route_A": {
+    "method": "route A: M*gap - q(1-q)c vs w_i w_j [M e(x_i,x_j) - (z_j h(z_i) + z_i h(z_j))/2], M = mixture mean",
+    "residual_is_zero": true,
+    "residual_str": "0",
+    "residual_str_head": "",
+    "residual_term_count": 1,
+    "status": "PROVED"
+   },
+   "route_B": {
+    "method": "route B: direct D-kernel decomposition ((1-q)^2 I00 + q^2 I11)/M + q(1-q)(2 I01/M + c)",
+    "residual_is_zero": true,
+    "residual_str": "0",
+    "residual_str_head": "",
+    "residual_term_count": 1,
+    "status": "PROVED"
+   },
+   "status": "PROVED"
+  },
+  "chain2_matrix_representation": {
+   "entry_rows": [
+    {
+     "i": 0,
+     "j": 0,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 0,
+     "j": 1,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 0,
+     "j": 2,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 1,
+     "j": 0,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 1,
+     "j": 1,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 1,
+     "j": 2,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 2,
+     "j": 0,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 2,
+     "j": 1,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 2,
+     "j": 2,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    }
+   ],
+   "method": "T(g) = 2*I01(g)/M + c(g) with g the free mass vector; A_ij = d^2 T/dg_i dg_j / 2 vs Psi_M(x_i,x_j,y_i,y_j); plus Psi-matrix symmetry check",
+   "status": "PROVED",
+   "symmetry_rows": [
+    {
+     "i": 0,
+     "j": 1,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 0,
+     "j": 2,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    },
+    {
+     "i": 1,
+     "j": 2,
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1
+    }
+   ]
+  },
+  "chain3_diagonal_slice": {
+   "method": "Psi(s,t,s,t) - 2 D_M(s,t)/M expanded canonically",
+   "rows": [
+    {
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1,
+     "s": "x1",
+     "t": "x2"
+    },
+    {
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1,
+     "s": "x3",
+     "t": "y3"
+    },
+    {
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1,
+     "s": "x1",
+     "t": "x1"
+    },
+    {
+     "residual_is_zero": true,
+     "residual_str": "0",
+     "residual_str_head": "",
+     "residual_term_count": 1,
+     "s": "y2",
+     "t": "y2"
+    }
+   ],
+   "status": "PROVED"
+  },
+  "chain4_monotonicity_in_M": {
+   "method": "exact sympy differentiation in the independent basis; sign transported by the listed monotonicity facts",
+   "rows": [
+    {
+     "dD_residual_is_zero": true,
+     "dD_residual_str": "0",
+     "dR_residual_is_zero": true,
+     "dR_residual_str": "0",
+     "s": "x1",
+     "t": "x2"
+    },
+    {
+     "dD_residual_is_zero": true,
+     "dD_residual_str": "0",
+     "dR_residual_is_zero": true,
+     "dR_residual_str": "0",
+     "s": "x1",
+     "t": "y1"
+    },
+    {
+     "dD_residual_is_zero": true,
+     "dD_residual_str": "0",
+     "dR_residual_is_zero": true,
+     "dR_residual_str": "0",
+     "s": "x1",
+     "t": "x1"
+    },
+    {
+     "dD_residual_is_zero": true,
+     "dD_residual_str": "0",
+     "dR_residual_is_zero": true,
+     "dR_residual_str": "0",
+     "s": "y3",
+     "t": "x2"
+    }
+   ],
+   "sign_facts_used": [
+    "h(u) >= 0 for u in [0,1] (natural-log binary entropy), so t*h(s) + s*h(t) >= 0 for s,t in [0,1]",
+    "pi(s,t) = st(1+(1-s)(1-t)) in [0,1] (Liu's protocol map), so h(pi(s,t)) >= 0",
+    "d/dk D_k(s,t) = (1-beta)h(st)+beta h(pi(s,t)) >= 0 for k > 0 => k -> D_k(s,t) nondecreasing on [m, M], M >= m",
+    "d/dk (D_k(s,t)/k) = (t h(s)+s h(t))/(2 k^2) >= 0 for k > 0 => k -> D_k(s,t)/k nondecreasing on [m, M]",
+    "Psi_M = (D_M(s,tau)+D_M(t,sig))/M + beta*(pi-block free of M); combining the two monotonicities gives Psi_M >= Psi_m for M >= m"
+   ],
+   "status": "PROVED"
+  },
+  "chain5_corrected_verdict": {
+   "formula": "Psi_M(s,t,sig,tau) = A_M(s,tau) + A_M(t,sig) + beta*(h(pi(s,t)) + h(pi(sig,tau)) - h(pi(s,tau)) - h(pi(t,sig))) + beta*(h(pi(s,tau)) + h(pi(t,sig))), A_M(u,v) = (1-beta) h(u v) - (v h(u) + u h(v))/(2M); that is P2(s,tau) + P2(t,sig) + Q2(s,t) + Q2(sig,tau) with P2(s,t) = (1-beta) h(s t) - (t h(s) + s h(t))/(2M), Q2(s,t) = beta h(pi(s,t)) (U-cross terms cancel exactly; machine-checked: psi_decomposition_residual_zero). At M = m the entry is (M_T)_ij = P2(x_i,y_j)+P2(x_j,y_i)+Q2(x_i,x_j)+Q2(y_i,y_j)",
+   "lemma_a": {
+    "discovery_support": "worst D_m = +5.850360114e-4 at s = t = 3/4 (k/8 grid, DISCOVERY only)",
+    "id": "LEMMA A",
+    "role": "((1-q)^2 I00 + q^2 I11)/M is a convex combination of the R(s,t) values, so it inherits Lemma A's nonnegativity and lifts to M >= m via Claim 4 (D_M/M >= D_m/m)",
+    "statement": "R(s,t) = D_m(s,t)/m >= 0 on [0,1]^2",
+    "status": "PENDING_USER_TARGET"
+   },
+   "lemma_c": {
+    "id": "LEMMA C",
+    "role": "T = a^T M_T a for a in the simplex (Claim 2), so Lemma A + Lemma C + Claim 4 give T >= 0 at every M >= m",
+    "statement": "M_T(x,y) is COPOSITIVE for all (x,y) in [0,1]^6, (M_T)_ij = P2(x_i,y_j) + P2(x_j,y_i) + Q2(x_i,y_j) + Q2(x_j,y_i) + Q2(x_i,x_j) + Q2(y_i,y_j)",
+    "status": "PENDING_USER_TARGET",
+    "strictly_weaker_than_entrywise": true,
+    "survives_witness": "at (x1,x2,y1,y2) = (0, 1/2, 1/2, 0) the 2x2 block [[0.062146, -0.05537], [-0.05537, 0.062146]] has simplex-minimum +0.003388 > 0"
+   },
+   "open_obligations": [
+    "LEMMA A: R(s,t) = D_m(s,t)/m >= 0 on [0,1]^2 (PENDING_USER_TARGET)",
+    "LEMMA C: copositivity of M_T for all (x,y) in [0,1]^6 (PENDING_USER_TARGET)"
+   ],
+   "psi_decomposition_residual_zero": true,
+   "status": "PENDING_USER_TARGET",
+   "sufficiency_argument": [
+    "Step 1 (Claim 3 + Claim 4): Psi_m(s,t,s,t) = 2 D_m(s,t)/m; if Lemma A holds then D_m >= 0, and Claim 4 lifts D_M/M >= D_m/m for M >= m; masses a_i a_j >= 0 make I00, I11 >= 0 entrywise.",
+    "Step 2 (Claim 2): T = a^T M_T a exactly; if Lemma C holds then T >= 0 for every a in the simplex and every (x,y) in [0,1]^6.",
+    "Step 3 (Claim 4): T evaluated at mixture parameter M satisfies T(M) >= T(m): 2 I01/M >= 2 I01(m)/m termwise (\u63d0\u5347 per pair) and c is M-free.",
+    "Step 4: all decomposition coefficients (1-q)^2, q^2, q(1-q) are nonnegative for q in [0,1]; the I00/I11 term is nonnegative by Lemma A and T(M) >= 0 by Steps 2-3, so gap >= 0."
+   ],
+   "witness_coexistence_note": "the pointwise witness Psi(0,1/2,1/2,0) numbers a P2 minimum; co-positivity of the 2x2 block is a DIFFERENT, weaker condition that the witness does not refute"
+  },
+  "chain5_refutation_check": {
+   "certified_strictly_negative": true,
+   "d_m_half": "[0.00417935023599757949917550349224083774578652483745284596968981493064909633119750797517970327608 +/- 3.38e-96]",
+   "probe": "Psi_m(0, 1/2, 1/2, 0)",
+   "reduces_to": "D_m(1/2, 1/2) / m (all Q2 terms vanish on s = tau = 0)",
+   "value": "[-0.05537081064237194943491542930841679830043625214916795054955969240245926168218383237724530562557 +/- 4.48e-96]"
+  },
+  "chain5_sufficiency_refuted": {
+   "reason_refuted": "\uff1a(s,t,sig,tau) = (0, 1/2, 1/2, 0) is feasible; by the P2/Q2 decomposition every Q2-protocol term carries one of the zero factors and Psi restricts to a sign-indefinite two-variable function; the certified value is strictly negative.",
+   "refutation_witness": "SELF-REPRODUCED (certified in this audit): see chain5_refutation_check",
+   "status": "REFUTED",
+   "sufficiency_logic_of_the_refuted_route": [
+    "Step 1 (Claim 3 + Claim 4): Psi_m >= 0 on [0,1]^4 would imply D_m >= 0 on [0,1]^2 (diagonal slice Psi_m(s,t,s,t)=2D_m/M); Claim 4 lifts D_M >= D_m >= 0 and D_M/M >= D_m/m for M >= m.",
+    "Step 2 (Claim 2): T = a^T Psi_matrix a; entrywise P >= 0 would give T >= 0 for a in the simplex.",
+    "Step 3 (Claim 4): T(M) >= T(m) since 2 I01/M >= 2 I01(m)/m termwise and c is M-free.",
+    "Step 4: (1-q)^2, q^2, q(1-q) >= 0 gives gap >= q(1-q) T >= 0."
+   ],
+   "target_under_refutation": "Psi_m >= 0 ENTRYWISE on [0,1]^4: superseded; superseded_by = LEMMA A + LEMMA C (chain5_corrected_verdict); DO NOT cite as a live obligation"
+  },
+  "kernel_collapse_e_equals_direct_kernel": {
+   "claim": "e(s,t) == (1-beta) h(s t) + beta h(pi(s,t)) where e(s,t) = t h(s) + s h(t) - s t (mu(s)+mu(t)-mu(st)) + beta (h(pi(s,t)) - h(s*t)); equivalently the mu-lemma t h(s)+s h(t) - s t (mu(s)+mu(t)-mu(st)) == h(s t)",
+   "kernel_collapse_residual_failures": [],
+   "method": "independent canonical expansion of e against (1-beta)h(st)+beta h(pi(s,t)) and of the raw mu-lemma against h(st), over all 21 unordered atom pairs (equivalent to 36 ordered by symmetry)",
+   "mu_lemma_residual_failures": [],
+   "rows_checked": 21,
+   "status": "PROVED"
+  },
+  "numeric_claim1_arb": {
+   "all_residuals_certified": true,
+   "arb_precision_bits": 320,
+   "draws": 288,
+   "float64_companion": {
+    "label": "DISCOVERY (double-precision logits, not a certificate)",
+    "max_abs_residual": "2.7582103268031233e-16"
+   },
+   "label": "MACHINE-CHECKED (Arb balls at 320-bit precision on exact rational inputs; float64 companion is DISCOVERY only)",
+   "lifted_draws": 226,
+   "max_abs_residual": "[+/- 4.61e-95]",
+   "min_M": "86410879670509651045578867419858441625384618059623663402198081830259073758168013505991445502983016997/139984046386112763159840142535527767382602843577165595931249318810236991948760059086304843329475444736",
+   "residual_bound": "2^-250",
+   "seed": 20260901,
+   "worst_draw": {
+    "M": "86410879670509651045578867419858441625384618059623663402198081830259073758168013505991445502983016997/139984046386112763159840142535527767382602843577165595931249318810236991948760059086304843329475444736",
+    "gap_lhs": "[0.0089207839712693061450022777283625502838680766593940087627885915393238125999566624431997883681 +/- 5.06e-95]",
+    "masses_a1": "417790854918148/569370829160145",
+    "masses_a2": "502715542830064/2163609150808551",
+    "masses_a3": "122147265482541/3606015251347585",
+    "q": "360067684297647/9007199254740992",
+    "residual": "[+/- 4.61e-95]",
+    "rhs_decomposed": "[0.0089207839712693061450022777283625502838680766593940087627885915393238125999566624431997883681 +/- 3.90e-95]",
+    "x1": "90240319631318164485060442495851697134191104817944285789100150836152620662401611775589801191408660049743781393063681897595230455583/160804471700024488544318200319273858291782327308021198845444167452076394766119115235960584850664950395678367649962324441960932179968",
+    "x2": "6248180942770167021998774200214494699081335649395099964844081542797250865875180917456961229139953864905011261945165329784656273547691/8361832528401273404304546416602240631172681020017102339963096707507972527838193992269950412234577420575275117798040870981968473358336",
+    "x3": "3946370039942673100656352310173376675551416258277416874342026484690773848810871692589110237919989786547224319340490651833079174286473/4180916264200636702152273208301120315586340510008551169981548353753986263919096996134975206117288710287637558899020435490984236679168",
+    "y1": "5243811312723757147717217447567410660353033254360872282269463805395723744124856168721730567020233106792614248524742503356826637074861/8361832528401273404304546416602240631172681020017102339963096707507972527838193992269950412234577420575275117798040870981968473358336",
+    "y2": "2329610854509238056045833381515199887518395811274868797433944361219577730383807229904680372239919698594701980074819379375414474677803/4180916264200636702152273208301120315586340510008551169981548353753986263919096996134975206117288710287637558899020435490984236679168",
+    "y3": "6347212415870280272083721891825446624603999119312598392808596124328860243777025019209922023726179180998391416636187016667867690308521/8361832528401273404304546416602240631172681020017102339963096707507972527838193992269950412234577420575275117798040870981968473358336"
+   },
+   "worst_draw_index": 220
+  }
+ },
+ "tool": "uc/liu9_psi_reduction_audit.py"
+}

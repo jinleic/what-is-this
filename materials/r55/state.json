@@ -1,0 +1,19 @@
+{
+  "schema": "target-state/1",
+  "id": "math/r55",
+  "problem": "Ramsey number R(5,5) <= 45",
+  "status": "active",
+  "current_gate": "VeriPB/CakePB certificate coverage 1/550 W-negative supports; 549 + 155 deeper cases uncertified",
+  "latest_campaign": null,
+  "latest_campaign_verdict": null,
+  "headline": "Zero Ramsey-good orbits at candidate level; not theorem-grade",
+  "next_action": "Extend deletion-free DFS beyond source 0",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-01T07:34:05Z",
+  "updated_by": "workspace-architecture-fix",
+  "sources": [
+    "math/PROGRESS.md:3843-3881",
+    "math/r55/README.md",
+    "math/dist/MANIFEST.md"
+  ]
+}

@@ -1,0 +1,9 @@
+=== msolve 0.8.0 build record ===
+date: 2026-09-01T11:58:36Z
+source sha256 (expected): 319ba0de67dca967dea40cb6e4dacf44eab387c2f0c2416b71842c11affbadfd
+1e8a6725f0eef8d0c158f432eaad1e4bb4539205f50827048612fa778225bc21  msolve_build/msolve-0.8.0/.libs/msolve
+2e2944a0eec3415d70ff3530b50e4fbe74240a0d97e9c93284ff0d813568742a  msolve_build/msolve-0.8.0/msolve
+configure: OK (flint 3.6.0 headers + built dylib, gmp/mpfr homebrew)
+make: exit 0
+smoke test (Sage spkg-configure vector): PASS — output byte-matches the expected [0,[1,[[[-1,-1],[-1,-1]],[[1,1],[1,1]]]]]
+build tree moved to /tmp/n2_msolve_build_frozen_20260901 (binary sha256 recorded in BUILD_LOG; tarball sha256 pinned)

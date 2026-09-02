@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "weekday-participation-premium-certification-audit",
+  "campaign_run": "20260901T124115Z_6a5ffe70_d81efa8ef732",
+  "programmatic_verification": {
+    "manifest_contract_sha256": "d9df02d7de44fc3e9f9cedff050f89d61434a0f815a03897abd5dc7e73ce5fef",
+    "runner_sha256": "dbdf6c74ff5a109cc6a4cc79931f6def7d74a8fdd8f503cbbf905ce163788878",
+    "input_inventory_sha256": "3693f50afb60c3a789db21ba3cdd95ca13cab3676b9860d8a30be1aaf6829a04",
+    "prior_window_audit_sha256": "6f28e1dbf7ad315853544c7f3f447eda4cdda14cec97042a3c66da4514f6f2cf",
+    "loop_policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0",
+    "primary_sha256": "be76f3364d9bc64f8adb51242b0c852e68d1da7f967c642cab5d9c83dd1b3824",
+    "replication_sha256": "2b716019208b1afc8ca91e5850852f65c2b8d80270726d3228357828eb2308c8",
+    "replication_recorded_primary_sha256_matches": true,
+    "primary_status": "pass-on-this-sample",
+    "replication_status": "pass-on-this-sample",
+    "primary_gates_passed": 6,
+    "replication_gates_passed": 6,
+    "primary_paired_weeks": 26,
+    "replication_paired_weeks": 25,
+    "all_sample_minima_met": true
+  },
+  "independent_post_run_review": {
+    "reviewer": "claude-fable-5 (local Claude CLI alias fable)",
+    "mode": "read-only; no candidate rerun",
+    "verdict": "CERTIFY",
+    "blockers": [],
+    "finding": "No contract/hash/sample/gate/order/code defect capable of invalidating the two-window certification was found."
+  },
+  "verification_commands": {
+    "behavioral_tests": "python3 -m unittest test_weekday_participation.py",
+    "behavioral_result": "14 tests passed",
+    "static_integrity": "24 archives, contract, inventory, audit, policy, sidecars, byte sizes, members, headers, and CRC verified without recomputing candidate outcomes"
+  },
+  "frozen_verdict": "FROZEN-CERTIFIED",
+  "claim_boundary": "Certifies only a replicated retrospective Binance BTC/ETH weekday participation regularity in trade count and quote volume. It is not causal, predictive alpha, a return strategy, fresh or blind evidence, deployment readiness, capital allocation support, or an absolute breakthrough. Familywise control applies only to cycles under frontier-loop-policy.json."
+}

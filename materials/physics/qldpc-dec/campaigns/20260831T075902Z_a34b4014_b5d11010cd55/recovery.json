@@ -1,0 +1,11 @@
+{
+  "recovered_utc": "2026-08-31T10:01:23.438108+00:00",
+  "reason": "initial close failed because NumPy bool values in the verdict were not JSON serializable",
+  "runner_sha256": "2e0fb52d09a53316ae633a371ce389e639607575e36488012deb38138645774f",
+  "bootstrap_source_sha256": "b6a9729b7f126f597131f0bda535d91e547d136a205eed35a085c49c7d11bb5c",
+  "validated_before_close": [
+    "both frozen sample hashes",
+    "all BP+OSD shard ranges and aggregate fields",
+    "beam prediction, mismatch, and failure-mask hashes"
+  ]
+}

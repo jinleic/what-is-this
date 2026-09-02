@@ -1,0 +1,378 @@
+"""Repair Gate C point certificates with arbitrary-dual entropy bounds."""
+import json
+import signal
+import sys
+import time
+from fractions import Fraction
+
+import numpy as np
+from flint import arb
+from scipy.io import loadmat
+from scipy.optimize import minimize
+from sympy import Matrix
+
+SRC = "/Users/jinleic/jinleic-workspace/cs/omega/src"
+sys.path.insert(0, SRC)
+import gate_c_candidate_witness as W
+
+I = W.I
+IC = W.IC
+F = W.F
+OUT = sys.argv[1] if len(sys.argv) > 1 else "/tmp/gate_c_entropy_repair.json"
+PREPARE_ONLY = "--prepare-only" in sys.argv[2:]
+CAMP_PARENT = ("/Users/jinleic/jinleic-workspace/cs/omega/campaigns/"
+               "2026-08-31T09:18:39Z_OmegaGateCCandidateWitness_e9c6414")
+KKT_LIMIT = 2.0 ** -32
+T0 = time.time()
+checkpoint = {}
+CURRENT_POINT = None
+CERT_LOG = []
+CERT_CACHE = {}
+PLANT_DONE = False
+
+
+def save(key, value):
+    checkpoint[key] = value
+    with open(OUT, "w") as fh:
+        json.dump(checkpoint, fh, indent=1)
+    print("CKPT", key, json.dumps(value)[:240])
+    sys.stdout.flush()
+
+
+def iv_from_render(pair):
+    return I(IC.const(float(pair[0])).lo, IC.const(float(pair[1])).hi)
+
+
+def exact_feature_matrix(branch):
+    matrix = np.vstack(branch.j2m.mats)
+    integer = np.asarray(matrix, dtype=np.int64)
+    assert np.array_equal(matrix, integer)
+    assert set(np.unique(integer)) <= {0, 1}
+    return integer
+
+
+def branch_lambdas(branch, region):
+    values = []
+    for dim in range(3):
+        values.extend(float(W.as_iv(z).lo) for z in
+                      branch.lam_margin[(region, dim)].v)
+    return np.asarray(values)
+
+
+def independent_rows(matrix):
+    key = (matrix.shape, matrix.tobytes())
+    cached = CERT_CACHE.get(("rows", key))
+    if cached is not None:
+        return cached
+    pivots = tuple(int(i) for i in Matrix(matrix.T.tolist()).rref()[1])
+    CERT_CACHE[("rows", key)] = pivots
+    return pivots
+
+
+def dual_float(matrix, b, start):
+    def objective_gradient(y):
+        theta = matrix.T @ y
+        shift = float(np.max(theta))
+        weights = np.exp(theta - shift)
+        partition = float(np.sum(weights))
+        q = weights / partition
+        value = shift + np.log(partition) - float(y @ b)
+        gradient = matrix @ q - b
+        return value, gradient
+
+    result = minimize(
+        lambda y: objective_gradient(y), start, jac=True,
+        method="L-BFGS-B",
+        options={"maxiter": 2000, "gtol": 1e-13,
+                 "ftol": 1e-15, "maxls": 50})
+    return np.asarray(result.x), result
+
+
+def interval_dual(matrix, b_intervals, y,
+                  residual_matrix=None, residual_b=None):
+    theta = []
+    for col in range(matrix.shape[1]):
+        value = IC.const(0.0)
+        for row in np.flatnonzero(matrix[:, col]):
+            value = value + IC.const(float(y[row]))
+        theta.append(value)
+    shift = max(float((z.lo + z.hi) / 2) for z in theta)
+    shift_iv = IC.const(shift)
+    partition = IC.const(0.0)
+    for value in theta:
+        partition = partition + IC.exp_iv(value - shift_iv)
+    log_partition = IC.ln_iv(partition) + shift_iv
+    linear = IC.const(0.0)
+    for row, value in enumerate(y):
+        linear = linear + IC.const(float(value)) * b_intervals[row]
+    upper = log_partition - linear
+    q = [IC.exp_iv(value - shift_iv) / partition for value in theta]
+    check_matrix = matrix if residual_matrix is None else residual_matrix
+    check_b = b_intervals if residual_b is None else residual_b
+    residuals = []
+    for row in range(check_matrix.shape[0]):
+        marginal = IC.const(0.0)
+        for col in np.flatnonzero(check_matrix[row]):
+            marginal = marginal + q[col]
+        residuals.append(marginal - check_b[row])
+    max_residual = max(float(z.pos().hi) for z in residuals)
+    return upper, max_residual
+
+
+def entropy_certificate(branch, region, distribution, distribution_max, kind):
+    matrix_full = exact_feature_matrix(branch)
+    p = [W.as_iv(z) for z in distribution.v]
+    assert len(p) == matrix_full.shape[1]
+    b_full = []
+    for row in range(matrix_full.shape[0]):
+        value = IC.const(0.0)
+        for col in np.flatnonzero(matrix_full[row]):
+            value = value + p[col]
+        b_full.append(value)
+
+    forced_columns = set()
+    for row, value in enumerate(b_full):
+        if value.lo == 0 and value.hi == 0:
+            forced_columns.update(int(i) for i in np.flatnonzero(matrix_full[row]))
+    active = [i for i in range(matrix_full.shape[1]) if i not in forced_columns]
+    assert active
+    matrix_active_full = matrix_full[:, active]
+    nonzero_rows = [i for i in range(matrix_active_full.shape[0])
+                    if np.any(matrix_active_full[i])]
+    reduced_full = matrix_active_full[nonzero_rows]
+    pivots_local = independent_rows(reduced_full)
+    selected_rows = [nonzero_rows[i] for i in pivots_local]
+    matrix = matrix_active_full[selected_rows]
+    b_intervals = [b_full[i] for i in selected_rows]
+    b_mid = np.array([float((z.lo + z.hi) / 2) for z in b_intervals])
+    stored = branch_lambdas(branch, region)[selected_rows]
+
+    cache_key = (
+        "dual", matrix.shape, matrix.tobytes(),
+        tuple((str(z.lo), str(z.hi)) for z in b_intervals))
+    cached = CERT_CACHE.get(cache_key)
+    residual_matrix = matrix_active_full[nonzero_rows]
+    residual_b = [b_full[i] for i in nonzero_rows]
+    if cached is None:
+        y, solver = dual_float(matrix, b_mid, stored)
+        upper, kkt = interval_dual(
+            matrix, b_intervals, y, residual_matrix, residual_b)
+        cached = (y, upper, kkt, {
+            "success": bool(solver.success), "status": int(solver.status),
+            "iterations": int(solver.nit), "message": str(solver.message),
+            "objective": float(solver.fun)})
+        CERT_CACHE[cache_key] = cached
+    y, upper, kkt, solver_record = cached
+
+    h_dist = W.as_iv(distribution.entropy().v)
+    primal = h_dist
+    primal_source = "distribution itself"
+    pmax = [W.as_iv(z) for z in distribution_max.v]
+    pmax_ok = all(z.lo >= 0 for z in pmax)
+    sum_pmax = IC.const(0.0)
+    for value in pmax:
+        sum_pmax = sum_pmax + value
+    pmax_ok = pmax_ok and sum_pmax.lo <= 1 <= sum_pmax.hi
+    if pmax_ok:
+        for row in range(matrix_full.shape[0]):
+            marginal = IC.const(0.0)
+            for col in np.flatnonzero(matrix_full[row]):
+                marginal = marginal + pmax[col]
+            if not (marginal.lo <= b_full[row].lo
+                    and b_full[row].hi <= marginal.hi):
+                pmax_ok = False
+                break
+    if pmax_ok:
+        primal = W.as_iv(distribution_max.entropy().v)
+        primal_source = "stored dist_max (interval-feasible)"
+
+    gap_lo = max(arb(0), primal.lo - h_dist.hi)
+    gap_hi = max(arb(0), upper.hi - h_dist.lo)
+    gap = I(gap_lo, gap_hi)
+    accepted = bool(kkt <= KKT_LIMIT)
+    metadata = {
+        "point": CURRENT_POINT, "kind": kind, "region": region,
+        "support_size": len(active), "full_support_size": len(p),
+        "independent_rows": selected_rows,
+        "multipliers_hex": [float(v).hex() for v in y],
+        "dual_upper": W.render_iv(upper),
+        "entropy_distribution": W.render_iv(h_dist),
+        "entropy_primal_lower_source": primal_source,
+        "entropy_gap": W.render_iv(gap),
+        "kkt_max_abs_upper": kkt,
+        "kkt_limit": KKT_LIMIT,
+        "accepted": accepted,
+        "solver_COMPUTATIONAL_EVIDENCE": solver_record,
+    }
+
+    global PLANT_DONE
+    if CURRENT_POINT == "base" and kind == "glob" and region == 0 and not PLANT_DONE:
+        planted = y.copy()
+        planted[0] += 0.125
+        plant_upper, plant_kkt = interval_dual(
+            matrix, b_intervals, planted, residual_matrix, residual_b)
+        caught = bool(plant_kkt > KKT_LIMIT and plant_upper.lo > upper.hi)
+        plant = {
+            "perturbation": "first independent multiplier + 1/8 exactly",
+            "real_kkt_upper": kkt,
+            "planted_kkt_upper": plant_kkt,
+            "threshold": KKT_LIMIT,
+            "real_dual_upper": W.render_iv(upper),
+            "planted_dual_upper": W.render_iv(plant_upper),
+            "caught": caught,
+        }
+        save("bad_multiplier_plant", plant)
+        if not caught:
+            raise RuntimeError("bad-multiplier control was not caught")
+        PLANT_DONE = True
+
+    CERT_LOG.append(metadata)
+    return gap, metadata
+
+
+def repaired_gm_penalty(gm, region):
+    gap, _ = entropy_certificate(
+        gm, region, gm.dist[region], gm.dist_max[region], "glob")
+    return W.as_iv(gm.region_prop[region].item()) * gap
+
+
+def repaired_part_penalty(part, region):
+    gap, _ = entropy_certificate(
+        part, region, part.split_dist[region], part.split_dist_max[region],
+        "part")
+    scale = (W.as_iv(part.part_frac.item())
+             * W.as_iv(part.region_prop[region].item()))
+    return scale * gap
+
+
+def evaluate_repaired(params, target_start, direction, step, label):
+    global CURRENT_POINT, CERT_LOG
+    CURRENT_POINT = label
+    CERT_LOG = []
+    internal, record = W.evaluate_point(params, target_start, direction, step)
+    constraint_abs = iv_from_render(record["constraint_abs"])
+    line_abs = iv_from_render(record["line_abs"])
+    repaired_defect = (constraint_abs + line_abs) / internal["M"]
+    legacy_equality = record["equality_abs"]
+    internal["defect"] = repaired_defect
+    internal["full"] = internal["raw"] + repaired_defect
+    record["legacy_stored_multiplier_equality_abs_report_only"] = legacy_equality
+    record["equality_abs"] = [0.0, 0.0]
+    record["defect"] = W.render_iv(repaired_defect)
+    record["full"] = W.render_iv(internal["full"])
+    record["entropy_certificates"] = CERT_LOG
+    record["entropy_branch_count"] = len(CERT_LOG)
+    record["all_entropy_multipliers_accepted"] = all(
+        item["accepted"] for item in CERT_LOG)
+    return internal, record
+
+
+def exact_ratio(value):
+    return [value.numerator, value.denominator]
+
+
+def prepare():
+    params = np.asarray(loadmat(W.MAT)["params"]).flatten()
+    basis_json = json.load(open(f"{W.CAMP0}/kernel_basis_V_exact_rational.json"))
+    assert all(den == 1 for col in basis_json.values() for _, den in col)
+    basis = np.column_stack([
+        [num // den for num, den in basis_json[str(j)]] for j in range(21)
+    ]).astype(np.int64)
+    margins = np.load(f"{W.CAMP0}/margin_matrix_M.npy").astype(np.int64)
+    assert Matrix(basis.tolist()).rank() == 21
+    direction = basis @ W.COEFF
+    assert np.array_equal(direction, W.EXPECTED_D)
+    assert np.array_equal(margins @ direction, np.zeros(27, dtype=np.int64))
+    assert int(direction.sum()) == 0
+
+    pm = F.ParamManager()
+    ws = F.Workspace(pm, 5.0, 1.0, 0.0, 3)
+    pm.set_value(params)
+    gid = ws.globstage.dist_id[0]
+    target_start = pm.start[gid]
+    centers = [Fraction.from_float(float(params[target_start + i]))
+               for i in range(45)]
+    radius = Fraction.from_float(W.RADIUS)
+    steps = [radius / divisor for divisor in W.STEP_DIVISORS]
+    points = []
+    for divisor, step in zip(W.STEP_DIVISORS, steps):
+        moved = [centers[i] + step * int(direction[i]) for i in range(45)]
+        assert all(value > 0 for value in moved)
+        assert sum(moved) == sum(centers)
+        assert all(sum(int(margins[row, i]) * step * int(direction[i])
+                       for i in range(45)) == 0 for row in range(27))
+        points.append({"divisor": divisor, "step": exact_ratio(step),
+                       "coordinates": [exact_ratio(v) for v in moved]})
+    guards = {
+        "evidence": "MACHINE-VERIFIED exact integer/rational arithmetic",
+        "direction": direction.tolist(), "A_times_direction": [0] * 27,
+        "direction_sum": 0, "point_order": ["base", 16, 8, 4, 2, 1],
+        "points": points, "kkt_limit": KKT_LIMIT,
+        "branch_equation": "U(y)=logsumexp(B_ind^T y)-y^T b_ind",
+    }
+    return params, target_start, direction, steps, guards
+
+
+def main():
+    if not PREPARE_ONLY:
+        signal.alarm(900)
+    params, target_start, direction, steps, guards = prepare()
+    save("protocol_guards", guards)
+    if PREPARE_ONLY:
+        print("PREPARE ONLY — no entropy solve or objective evaluation")
+        return
+
+    W.gm_penalty = repaired_gm_penalty
+    W.part_penalty = repaired_part_penalty
+    with IC.prec():
+        base, base_record = evaluate_repaired(
+            params, target_start, direction, 0.0, "base")
+        raw_anchor = IC.const(W.FROZEN_RAW)
+        assert base["raw"].lo <= raw_anchor.lo <= base["raw"].hi
+        save("base", {"evidence": "MACHINE-VERIFIED", **base_record,
+                      "raw_anchor_enclosed": True})
+        attempted = []
+        witness = None
+        all_base_accepted = base_record["all_entropy_multipliers_accepted"]
+        for divisor, step_fraction in zip(W.STEP_DIVISORS, steps):
+            moved, moved_record = evaluate_repaired(
+                params, target_start, direction, float(step_fraction),
+                f"R_over_{divisor}")
+            raw_difference = (
+                ((base["target"] - moved["R"]) * base["M"]
+                 - (base["target"] - base["R"]) * moved["M"])
+                / (moved["M"] * base["M"]))
+            full_difference = raw_difference + moved["defect"] - base["defect"]
+            accepted = (all_base_accepted
+                        and moved_record["all_entropy_multipliers_accepted"])
+            strict = bool(accepted and full_difference.hi < 0)
+            result = {
+                "divisor": divisor, "evidence": "MACHINE-VERIFIED",
+                "point": moved_record,
+                "raw_difference_common": W.render_iv(raw_difference),
+                "full_difference_common": W.render_iv(full_difference),
+                "all_required_multipliers_accepted": accepted,
+                "strict_upper_below_zero": strict,
+            }
+            attempted.append(divisor)
+            save(f"step_R_over_{divisor}", result)
+            if strict:
+                witness = divisor
+                break
+
+    decision = {
+        "evidence": "MACHINE-VERIFIED",
+        "status": ("WITNESS: scoped counterexample to local optimality"
+                   if witness is not None else
+                   "OPEN: no accepted registered rung has strict negative upper bound"),
+        "first_witness_divisor": witness,
+        "evaluated_divisors": attempted,
+        "all_base_multipliers_accepted": all_base_accepted,
+        "elapsed_seconds": time.time() - T0,
+    }
+    save("decision", decision)
+    print(decision["status"])
+
+
+if __name__ == "__main__":
+    main()

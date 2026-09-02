@@ -1,0 +1,233 @@
+{
+ "box_widths": {
+  "2^-10": {
+   "cleared": 6993,
+   "covered_volume_absolute": "3199/4611686018427387904",
+   "covered_volume_float": 6.936725499562257e-16,
+   "failed_sample": [
+    {
+     "bound": "[-0.001736307021899715 +/- 5.73e-20]",
+     "cell": "g2|q8",
+     "drift": "[0.002411379380183745 +/- 2.68e-19]"
+    },
+    {
+     "bound": "[-0.001755885623575030 +/- 3.07e-19]",
+     "cell": "g6|q8",
+     "drift": "[0.002430957981859060 +/- 9.66e-20]"
+    },
+    {
+     "bound": "[-0.002006611861148368 +/- 3.60e-19]",
+     "cell": "g9|q8",
+     "drift": "[0.002524141719592546 +/- 4.34e-20]"
+    },
+    {
+     "bound": "[-3.411228890798546e-6 +/- 4.49e-22]",
+     "cell": "g12|q7",
+     "drift": "[0.004115093067048752 +/- 9.43e-20]"
+    },
+    {
+     "bound": "[-0.005576691878134728 +/- 3.97e-19]",
+     "cell": "g12|q8",
+     "drift": "[0.004370873201294615 +/- 1.19e-19]"
+    },
+    {
+     "bound": "[-0.006192417373281226 +/- 4.79e-19]",
+     "cell": "g13|q8",
+     "drift": "[0.004867283699084943 +/- 4.86e-19]"
+    },
+    {
+     "bound": "[-0.001623759616882169 +/- 4.69e-19]",
+     "cell": "g16|q8",
+     "drift": "[0.002436056766776715 +/- 1.31e-19]"
+    },
+    {
+     "bound": "[-0.002011710646066022 +/- 4.14e-19]",
+     "cell": "g19|q8",
+     "drift": "[0.002529240504510201 +/- 1.84e-19]"
+    }
+   ],
+   "half_width": "1/1024",
+   "of": 9747,
+   "worst_bound": {
+    "bound": "[-0.006980271976395967 +/- 9.79e-20]",
+    "bound_f": -0.006980271976395967,
+    "c0_lower_f": -0.0014213833652324463,
+    "cell": "g1120|q0",
+    "drift_f": 0.0055588886111635205
+   }
+  },
+  "2^-12": {
+   "cleared": 8954,
+   "covered_volume_absolute": "2019/37778931862957161709568",
+   "covered_volume_float": 5.344248501582601e-20,
+   "failed_sample": [
+    {
+     "bound": "[-0.0001107618966730052 +/- 1.02e-21]",
+     "cell": "g12|q8",
+     "drift": "[0.001061159053129462 +/- 4.12e-19]"
+    },
+    {
+     "bound": "[-0.0002582141329889786 +/- 4.34e-20]",
+     "cell": "g13|q8",
+     "drift": "[0.001178691410835507 +/- 3.65e-19]"
+    },
+    {
+     "bound": "[-8.270881256586791e-5 +/- 1.01e-21]",
+     "cell": "g23|q8",
+     "drift": "[0.001197879919773177 +/- 1.78e-19]"
+    },
+    {
+     "bound": "[-1.073591453299793e-5 +/- 6.86e-22]",
+     "cell": "g28|q8",
+     "drift": "[0.001129083479695691 +/- 4.16e-20]"
+    },
+    {
+     "bound": "[-0.0001689959724224979 +/- 1.55e-20]",
+     "cell": "g29|q8",
+     "drift": "[0.001257767600789939 +/- 2.44e-19]"
+    },
+    {
+     "bound": "[-0.0003193597721094713 +/- 6.13e-21]",
+     "cell": "g31|q8",
+     "drift": "[0.001218597507330773 +/- 9.93e-20]"
+    },
+    {
+     "bound": "[-0.0004882823624300272 +/- 1.69e-21]",
+     "cell": "g32|q8",
+     "drift": "[0.001357033922208134 +/- 4.08e-19]"
+    },
+    {
+     "bound": "[-0.0001102180806426673 +/- 1.88e-20]",
+     "cell": "g47|q8",
+     "drift": "[0.001061120449191269 +/- 3.42e-19]"
+    }
+   ],
+   "half_width": "1/4096",
+   "of": 9747,
+   "worst_bound": {
+    "bound": "[-0.0004882823624496781 +/- 4.93e-20]",
+    "bound_f": -0.0004882823624496782,
+    "c0_lower_f": 0.0008687515597781072,
+    "cell": "g1120|q0",
+    "drift_f": 0.0013570339222277854
+   }
+  },
+  "2^-14": {
+   "cleared": 9747,
+   "covered_volume_absolute": "4331/1237940039285380274899124224",
+   "covered_volume_float": 3.498553938444495e-24,
+   "failed_sample": [],
+   "half_width": "1/16384",
+   "of": 9747,
+   "worst_bound": {
+    "bound": "[0.001102931331349883 +/- 1.68e-19]",
+    "bound_f": 0.0011029313313498832,
+    "c0_lower_f": 0.0014401529616400305,
+    "cell": "g1120|q0",
+    "drift_f": 0.0003372216302901474
+   }
+  },
+  "2^-8": {
+   "cleared": 939,
+   "covered_volume_absolute": "417/281474976710656",
+   "covered_volume_float": 1.4814816040598089e-12,
+   "failed_sample": [
+    {
+     "bound": "[-0.01310622713640389 +/- 2.16e-18]",
+     "cell": "g2|q8",
+     "drift": "[0.01075218591423954 +/- 2.62e-18]"
+    },
+    {
+     "bound": "[-0.007057053682849009 +/- 1.13e-19]",
+     "cell": "g3|q6",
+     "drift": "[0.01302383222755141 +/- 1.88e-18]"
+    },
+    {
+     "bound": "[-0.008002829325536895 +/- 2.72e-20]",
+     "cell": "g3|q7",
+     "drift": "[0.01350445027960772 +/- 1.12e-19]"
+    },
+    {
+     "bound": "[-0.006103715239015541 +/- 4.71e-19]",
+     "cell": "g3|q8",
+     "drift": "[0.01233910605122226 +/- 3.26e-18]"
+    },
+    {
+     "bound": "[-0.01327485901193691 +/- 3.12e-18]",
+     "cell": "g6|q8",
+     "drift": "[0.01092081778977256 +/- 2.65e-18]"
+    },
+    {
+     "bound": "[-0.007445016206053643 +/- 2.42e-19]",
+     "cell": "g7|q6",
+     "drift": "[0.01341179475075604 +/- 2.48e-18]"
+    },
+    {
+     "bound": "[-0.008818637829539799 +/- 3.78e-20]",
+     "cell": "g7|q7",
+     "drift": "[0.01432025878361062 +/- 3.90e-18]"
+    },
+    {
+     "bound": "[-0.007037549112818891 +/- 3.23e-19]",
+     "cell": "g7|q8",
+     "drift": "[0.01327293992502561 +/- 4.05e-18]"
+    }
+   ],
+   "half_width": "1/256",
+   "of": 9747,
+   "worst_bound": {
+    "bound": "[-0.03703842905051505 +/- 1.67e-19]",
+    "bound_f": -0.03703842905051505,
+    "c0_lower_f": -0.011692767297829759,
+    "cell": "g1129|q1",
+    "drift_f": 0.02534566175268529
+   }
+  }
+ },
+ "cells_evaluated": 9747,
+ "claim": "SOUND BOX COVER: for each evaluated cell of the H2 mass-QP sweep grid and half-width 2^-w, gap >= 0 on the whole box {supports +- 2^-w} x {q +- 2^-w clipped} against the TRUE per-fibre feasible mass sets, certified by BOUND = c0lo - D with D a UNIFORM drift over the superset mass polygon (never a single-mass-point radius)",
+ "claim_scope": "per-cell neighbourhood certificates around exact grid fibres; the union of boxes does not fill the ambient parameter space, so this is NOT a continuum theorem. INTERIOR SUPPORT BOXES ONLY: the support envelope is undefined where a support box touches 0 or 1 (h' blows up), so every half-width must satisfy h < 1/8 for the k/8 grid; cover_cell RAISES rather than skipping, and cells_evaluated equals the 'of' count at every width, so no cell is silently excluded. A boundary stratum with supports at 0 or 1 would need its own one-sided treatment and is NOT covered here. q boxes MAY touch {0,1}: they are clipped one-sided, which is sound because q never enters an entropy argument. Every L_k and L_q is recomputed per cell from that cell's own support boxes, q box and exact polygon triangles; no constant from any wider intake box is reused",
+ "claim_status": "ENVELOPE-COVER-CERTIFIED",
+ "evaluator": "liu9_objective.evaluate_arb via liu9_h2_qp_sweep.extract_quadratic; partials via liu9_h2_support_envelope.support_partial_arb and liu9_h2_q_envelope.q_lipschitz; Bernstein hulls via liu9_h2_envelope_common; ctx.prec = 320",
+ "largest_fully_clearing_half_width": "2^-14",
+ "mutation_cell": "g9|q8",
+ "mutations": [
+  {
+   "caught": true,
+   "expected": "fail",
+   "mutant_bound": "[0.001546444099934665 +/- 3.85e-19]",
+   "mutation": "drop_support_drift",
+   "note": "omitting the support term makes the bound strictly larger, i.e. unsound; the term is load-bearing",
+   "observed": "fail",
+   "sound_bound": "[0.001410418245524411 +/- 8.88e-20]"
+  },
+  {
+   "caught": true,
+   "expected": "fail",
+   "mutant_bound": "[0.001478431172729538 +/- 2.37e-19]",
+   "mutation": "halve_support_lipschitz",
+   "note": "understating every L_k by a factor 2 inflates the bound; the envelope magnitudes are load-bearing",
+   "observed": "fail",
+   "sound_bound": "[0.001410418245524411 +/- 8.88e-20]"
+  },
+  {
+   "caught": true,
+   "expected": "fail",
+   "mutant_bound": "[-0.2918575350595372 +/- 4.08e-17]",
+   "mutation": "drop_mean_constraint",
+   "note": "dropping the mean half-space widens the mass polygon, so the certified minimum must dip; the mean floor is load-bearing",
+   "observed": "fail",
+   "sound_bound": "[0.001410418245524411 +/- 8.88e-20]"
+  }
+ ],
+ "report_sha256": "1cacd377a2f4dc27d2c53cf71172cfc14f39977be8c2589d7dff5911dd625531",
+ "soundness_argument": "H2 ENVELOPE COVER: a SOUND box certificate for the paired r = 3 scalar\nmargin, replacing the retracted uc/liu9_h2_box_cover.py.\n\nWHY THIS MODULE EXISTS.  liu9_h2_box_cover.py was retracted in full on\n2026-09-01 (PROGRESS.md RETRACTION-H2-BOX-COVER).  Its chain asserted\n\n    min_P quad_{A(s,q)} >= quad_{A(s,q)}(a*) - R\n\nand justified it with \"the min over P is <= its value at the P-point\" --\nthe opposite inequality.  Its radius R came from ONE evaluate_arb call at\nthe FIXED mass point a*, so it bounded the gap's oscillation at a single\nmass and never the movement of the fiber minimizer in the mass\ndirections.  Its sound sibling (c0lo - sum_j width(band_j)) is vacuous:\nthe 1/400-spaced Cramer extraction amplifies interval width by ~400^2, so\nthe band sum is 21651.78 at h = 2^-10 and still 1.3215 at 2^-24 against a\n1.6e-3 margin.\n\nTHE BOUND CERTIFIED HERE.  Fix a cell (geometry, q0) of the sweep grid and\na half-width h.  Let\n\n    B = prod_k [b_k - h, b_k + h]  x  ([q0 - h, q0 + h] cap [0,1])\n\nwith centre (s_c, q_c) = (geometry, q0).\n\n(1) SUPERSET MASS POLYGON.  The mixture mean is\n    mean(s, q, a) = c0(s,q) + c1(s,q) a1 + c2(s,q) a2,\n    c0 = (1-q) b4 + q b5,\n    c1 = (1-q)(b0 - b4) + q(b1 - b5),\n    c2 = (1-q)(b2 - b4) + q(b3 - b5),\n    each multilinear in (q, supports) and each depending on only three of\n    them, so its exact maximum over B is attained at one of 8 corners and\n    is computed by exact-rational enumeration.  With C_i = max_B c_i and\n    a1, a2 >= 0,\n        mean(s, q, a) <= C0 + C1 a1 + C2 a2   for every (s,q) in B.\n    Hence every mass feasible at ANY fibre of B (mean >= m) satisfies\n        C1 a1 + C2 a2 >= m_lo - C0,\n    and P := triangle cap {that half-space} is a certified SUPERSET of\n    every per-fibre feasible mass set.  m_lo is an exact rational strictly\n    below the certified m, so {mean >= m_lo} is itself a superset.\n\n(2) CENTRE MINIMUM.  At the centre fibre the gap is exactly quadratic in\n    (a1, a2) (bidegree-(2,2) structure theorem), so the sweep's own\n    6-point exact-rational extraction plus its closed-form KKT candidate\n    list give a certified ball c0 for min_P gap(s_c, q_c, .).  Take\n    c0lo = c0.lower().\n\n(3) UNIFORM DRIFT -- the step the retracted module got wrong.  L_k is a\n    certified uniform bound on |d gap/d b_k| over B x P, obtained per fan\n    triangle of P from six Arb node balls and the degree-2 Bernstein\n    convex-hull property, then maximised over triangles and directions.\n    L_q is the analogous uniform bound on |d gap/d q| over B x T (T the\n    full mass simplex, a superset of P).  Set\n\n        D = sum_k L_k (hi_k - lo_k) + L_q (q_hi - q_lo).\n\n(4) THE CERTIFICATE.  For every (s,q) in B and every mass a feasible at\n    that fibre: a lies in P by (1); walking from (s_c, q_c) to (s, q) one\n    coordinate at a time stays inside the product box B, and the mean\n    value theorem on each segment with the matching uniform bound gives\n        |gap(s, q, a) - gap(s_c, q_c, a)| <= D\n    UNIFORMLY IN a in P.  Therefore\n        gap(s, q, a) >= gap(s_c, q_c, a) - D >= c0lo - D =: BOUND.\n    BOUND >= 0 certifies gap >= 0 on the whole box against the TRUE\n    per-fibre feasible mass sets.  Nothing here is evaluated at a single\n    mass point, which is precisely the defect that voided the old module.\n\nMUTATIONS (both must be CAUGHT, i.e. must produce a strictly larger and\ntherefore unsound bound):\n  * drop_support_drift -- omit sum_k L_k (hi_k - lo_k) from D;\n  * single_point_radius -- rebuild the drift the retracted way, as the\n    value-bracket radius at the centre KKT argmin only.  This reproduces\n    the retracted defect and must be strictly weaker (larger bound) than\n    the uniform envelope.\n\nRunner:  math/.venv/bin/python -I -B uc/liu9_h2_envelope_cover.py\nOutput:  uc/verification/results/liu9-h2-envelope-cover.json (byte-stable:\nno timings, no randomness).\n",
+ "supersedes": "uc/liu9_h2_box_cover.py, RETRACTED 2026-09-01 (inverted inequality; radius measured at one fixed mass point)",
+ "tool": "uc/liu9_h2_envelope_cover.py",
+ "width_ladder": [
+  "2^-8",
+  "2^-10",
+  "2^-12",
+  "2^-14"
+ ]
+}

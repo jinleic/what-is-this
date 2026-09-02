@@ -1,0 +1,23 @@
+{
+  "sampling_frozen_before_decode": true,
+  "arms": {
+    "bp30+osd": {
+      "path": "shots_bposd.bin",
+      "shots": 1000000,
+      "sampling_seed": 5192065653244964556,
+      "bytes": 128000024,
+      "sha256": "fd0e018dad2b15aa088b6e50110aad2ab598c9f08d73a5ec6391464318f06788",
+      "detector_row_bytes": 120,
+      "observable_row_bytes": 8
+    },
+    "beam8": {
+      "path": "shots_beam8.bin",
+      "shots": 1000000,
+      "sampling_seed": 5538908663133261042,
+      "bytes": 128000024,
+      "sha256": "ba9d9696d69b49a984a6fbe15b5214abeb82b9f39944d3b25f533f2c9ee4c5fe",
+      "detector_row_bytes": 120,
+      "observable_row_bytes": 8
+    }
+  }
+}

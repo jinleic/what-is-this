@@ -1,0 +1,113 @@
+ROUTE A UNIVERSAL COMMUTATOR DERIVATION
+
+Evidence strength: HUMAN ALGEBRAIC PROOF, anchored by exact coefficient checks
+in commutator_proof.out.  The script checks the two universal quadratic matrix
+identities coefficient by coefficient, but the deductions below are written
+out here and are not overlabelled as wholly machine-proved.
+
+Convention and domain.
+Use real Cayley--Dickson octonions with positive norm N(x)=<x,x> in the ordered
+basis (1,i,j,k,l,il,jl,kl).  L_x[c,b]=(x*e_b)_c.  Let u,v,w be linearly
+independent real octonions.  Put U=N(u)>0, uv=<u,v>, uw=<u,w>, and vw=<v,w>.
+The exact basis-coefficient anchors establish, for all real x,y by bilinearity,
+
+  L_x^T = L_conj(x),
+  L_conj(x)L_y + L_conj(y)L_x = 2<x,y>I.                 (1)
+
+In particular L_conj(x)L_x=L_xL_conj(x)=N(x)I.  No
+replacement of a product of left-multiplication matrices by one octonion
+product is made; that would be invalid outside an associative subalgebra.
+
+Orthogonal decomposition.
+Set
+
+  a=uv/U,       v_perp=v-a u,
+  b=uw/U,       w_perp=w-b u.
+
+Then <u,v_perp>=<u,w_perp>=0.  Define
+
+  P=U^{-1} L_conj(u)L_vperp,
+  Q=U^{-1} L_conj(u)L_wperp,
+  alpha=N(v_perp)/U=(U N(v)-uv^2)/U^2,
+  beta =N(w_perp)/U=(U N(w)-uw^2)/U^2,
+  gamma=<v_perp,w_perp>/U=(U vw-uv uw)/U^2.
+
+Let X=U^{-1}L_conj(u)L_v=aI+P and
+Y=U^{-1}L_conj(u)L_w=bI+Q.  Scalar parts commute, so [X,Y]=[P,Q].
+
+Consequences of (1).
+Apply (1) to conjugated arguments to obtain
+L_z L_conj(u)=-L_u L_conj(z) whenever <u,z>=0.  Therefore
+
+  P^2=-U^{-2}L_conj(u)L_u L_conj(v_perp)L_vperp
+     =-alpha I,
+  Q^2=-beta I.
+
+Using the same relation once in each product and then (1),
+
+  PQ+QP
+   =-U^{-1}(L_conj(v_perp)L_wperp
+             +L_conj(w_perp)L_vperp)
+   =-2 gamma I.                                          (2)
+
+Commutator square.
+Let C=[P,Q].  Equation (2) gives QP=-2 gamma I-PQ and hence
+
+  C=PQ-QP=2(PQ+gamma I).
+
+Moreover
+
+  (PQ+gamma I)^2
+   =P(QP)Q+2 gamma PQ+gamma^2 I
+   =-P^2Q^2+gamma^2 I
+   =(gamma^2-alpha beta)I.
+
+Thus
+
+  C^2=-4(alpha beta-gamma^2)I.                           (3)
+
+Adding multiples of u to v and w does not change the Gram determinant.  Its
+orthogonal block form gives
+
+  det Gram(u,v,w)
+    =U (N(v_perp)N(w_perp)-<v_perp,w_perp>^2),
+
+so alpha beta-gamma^2=det Gram(u,v,w)/U^3.  If
+D=[L_conj(u)L_v,L_conj(u)L_w], then D=U^2 C, and (3) rescales to
+
+  D^2=-4 U det Gram(u,v,w) I.                            (4)
+
+Why this is invertible on exactly the declared domain.
+The octonion norm inner product is positive definite over R.  Its Gram
+determinant is strictly positive exactly when u,v,w are linearly independent,
+and is zero exactly when they are dependent.  Therefore on every independent
+real triple, the scalar in (4) is strictly negative and nonzero, D is
+invertible, and rank(D)=8.  For a dependent triple (with an invertible slice
+chosen where possible), (4) gives D^2=0, hence image(D) is contained in
+kernel(D) and rank(D)<=4; such triples cannot improve the universal floor.
+
+Order and conjugacy to the imported theorem.
+With the slice convention above, identify the theorem's input columns and
+output rows so T_alpha=L_u.  Landsberg Theorem 6.1.1 uses
+T_{alpha,alpha_j}=T_{alpha_j}T_alpha^{-1}=L_v L_u^{-1}.  The matrices used
+above are X=L_u^{-1}L_v and Y=L_u^{-1}L_w, because
+L_u^{-1}=U^{-1}L_conj(u).  They have the same commutator rank: explicitly
+
+  L_vL_u^{-1}=L_u X L_u^{-1},
+  L_wL_u^{-1}=L_u Y L_u^{-1},
+
+so the theorem-order commutator is L_u[X,Y]L_u^{-1}.  This establishes the
+order convention rather than relying on letter transcription.
+
+Imported lower-bound conclusion.
+The theorem import is CITED-DEPENDENCY; Strassen-primary provenance is
+UNESTABLISHED.  Landsberg's exact inequality is
+
+  rank([T_{alpha,alpha_1},T_{alpha,alpha_2}]) <= 2(r-b).
+
+Here b=8 and the human proof above gives commutator rank 8, so
+8<=2(r-8), equivalently r>=8+8/2=12.  It does not yield 16.  The quaternion
+tau calibration has b=4 and commutator rank 4, hence only r>=4+4/2=6,
+consistent with (but not proving) true rank 7.  The calibration's role is to
+refute the missing-factor reading r>=b+rank(commutator), which would falsely
+produce 8.

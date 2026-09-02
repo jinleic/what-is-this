@@ -1,0 +1,551 @@
+{
+ "run_id": "20260901T124213Z_b77f0809_378bd1faf353",
+ "gate": "H-DP1-CIRCUIT",
+ "O1_witness": {
+  "sum_is_zero": true,
+  "rank": 3,
+  "all_3subsets_indep": true,
+  "uniform_coeffs_work": true,
+  "u_distinct": true,
+  "v_distinct": true,
+  "sparkA": 3,
+  "sparkB": 3,
+  "circA": {
+   "3": 4
+  },
+  "circB": {
+   "3": 4
+  },
+  "pclassB_singletons": true
+ },
+ "controls": {
+  "C1a.m3.circuits": {
+   "got": 32,
+   "want": 32,
+   "pass": true
+  },
+  "C1a.m3.fibers": {
+   "got": 32,
+   "want": 32,
+   "pass": true
+  },
+  "C1a.m3.fiberA": {
+   "got": 16,
+   "want": 16,
+   "pass": true
+  },
+  "C1a.m3.fiberB": {
+   "got": 16,
+   "want": 16,
+   "pass": true
+  },
+  "C1a.m3.subsets_swept_incl_below": {
+   "got": 680,
+   "want": 680,
+   "pass": true
+  },
+  "C1a.m4.circuits": {
+   "got": 156,
+   "want": 156,
+   "pass": true
+  },
+  "C1a.m4.fibers": {
+   "got": 0,
+   "want": 0,
+   "pass": true
+  },
+  "C1a.m4.prof33": {
+   "got": 144,
+   "want": 144,
+   "pass": true
+  },
+  "C1a.m4.prof44": {
+   "got": 12,
+   "want": 12,
+   "pass": true
+  },
+  "C1a.m4.no_other_prof": {
+   "got": 0,
+   "want": 0,
+   "pass": true
+  },
+  "C1a.m4.subsets": {
+   "got": 1940,
+   "want": 1940,
+   "pass": true
+  },
+  "C1b.m3.circuits": {
+   "got": 100,
+   "want": 100,
+   "pass": true
+  },
+  "C1b.m3.fibers": {
+   "got": 100,
+   "want": 100,
+   "pass": true
+  },
+  "C1b.m3.fiberA": {
+   "got": 50,
+   "want": 50,
+   "pass": true
+  },
+  "C1b.m3.fiberB": {
+   "got": 50,
+   "want": 50,
+   "pass": true
+  },
+  "C1b.m4.circuits": {
+   "got": 984,
+   "want": 984,
+   "pass": true
+  },
+  "C1b.m4.fibers": {
+   "got": 0,
+   "want": 0,
+   "pass": true
+  },
+  "C1b.m4.prof33": {
+   "got": 900,
+   "want": 900,
+   "pass": true
+  },
+  "C1b.m4.prof44": {
+   "got": 84,
+   "want": 84,
+   "pass": true
+  },
+  "C1b.m4.subsets": {
+   "got": 12950,
+   "want": 12950,
+   "pass": true
+  },
+  "C2a.m4.circuits": {
+   "got": 20,
+   "want": 20,
+   "pass": true
+  },
+  "C2a.m4.fibers": {
+   "got": 20,
+   "want": 20,
+   "pass": true
+  },
+  "C2a.m4.fiberA": {
+   "got": 20,
+   "want": 20,
+   "pass": true
+  },
+  "C2a.m4.prof41": {
+   "got": 20,
+   "want": 20,
+   "pass": true
+  },
+  "C2b.m4.circuits": {
+   "got": 0,
+   "want": 0,
+   "pass": true
+  },
+  "C2c.m5.circuits": {
+   "got": 0,
+   "want": 0,
+   "pass": true
+  },
+  "C2d.m4.circuits": {
+   "got": 36,
+   "want": 36,
+   "pass": true
+  },
+  "C2d.m4.fibers": {
+   "got": 0,
+   "want": 0,
+   "pass": true
+  },
+  "C2d.m4.prof33": {
+   "got": 36,
+   "want": 36,
+   "pass": true
+  },
+  "C2e.m4.circuits": {
+   "got": 0,
+   "want": 0,
+   "pass": true
+  },
+  "C3a.m3.circuits": {
+   "got": 28,
+   "want": 28,
+   "pass": true
+  },
+  "C3a.m3.fibers": {
+   "got": 28,
+   "want": 28,
+   "pass": true
+  },
+  "C3a.m3.fiberA": {
+   "got": 8,
+   "want": 8,
+   "pass": true
+  },
+  "C3a.m3.fiberB": {
+   "got": 20,
+   "want": 20,
+   "pass": true
+  },
+  "C3a.m4.circuits": {
+   "got": 76,
+   "want": 76,
+   "pass": true
+  },
+  "C3a.m4.fibers": {
+   "got": 4,
+   "want": 4,
+   "pass": true
+  },
+  "C3a.m4.fiberA": {
+   "got": 4,
+   "want": 4,
+   "pass": true
+  },
+  "C3a.m4.prof33": {
+   "got": 72,
+   "want": 72,
+   "pass": true
+  },
+  "C3a.m4.prof41": {
+   "got": 4,
+   "want": 4,
+   "pass": true
+  },
+  "C3b.m2.pairs": {
+   "got": 10,
+   "want": 10,
+   "pass": true
+  },
+  "C3b.m2.fibers": {
+   "got": 8,
+   "want": 8,
+   "pass": true
+  },
+  "C3b.m3.circuits": {
+   "got": 40,
+   "want": 40,
+   "pass": true
+  },
+  "C3b.m3.fibers": {
+   "got": 16,
+   "want": 16,
+   "pass": true
+  },
+  "C3b.m3.fiberA": {
+   "got": 8,
+   "want": 8,
+   "pass": true
+  },
+  "C3b.m3.fiberB": {
+   "got": 8,
+   "want": 8,
+   "pass": true
+  },
+  "C3c.m2.pairs": {
+   "got": 23,
+   "want": 23,
+   "pass": true
+  },
+  "C3c.m2.fibers": {
+   "got": 17,
+   "want": 17,
+   "pass": true
+  },
+  "C3c.m3.circuits": {
+   "got": 88,
+   "want": 88,
+   "pass": true
+  },
+  "C3c.m3.fibers": {
+   "got": 22,
+   "want": 22,
+   "pass": true
+  },
+  "C3d.m2.pairs": {
+   "got": 9,
+   "want": 9,
+   "pass": true
+  },
+  "C3d.m2.fibers": {
+   "got": 9,
+   "want": 9,
+   "pass": true
+  },
+  "C3d.m2.fiberA": {
+   "got": 9,
+   "want": 9,
+   "pass": true
+  },
+  "C3d.m3.circuits": {
+   "got": 38,
+   "want": 38,
+   "pass": true
+  },
+  "C3d.m3.fibers": {
+   "got": 14,
+   "want": 14,
+   "pass": true
+  },
+  "C4a.m3.circuits": {
+   "got": 4,
+   "want": 4,
+   "pass": true
+  },
+  "C4a.m3.fibers": {
+   "got": 4,
+   "want": 4,
+   "pass": true
+  },
+  "C4a.m3.fiberB": {
+   "got": 4,
+   "want": 4,
+   "pass": true
+  },
+  "C4a.m4.circuits": {
+   "got": 3,
+   "want": 3,
+   "pass": true
+  },
+  "C4a.m4.fibers": {
+   "got": 3,
+   "want": 3,
+   "pass": true
+  },
+  "C4a.m4.fiberA": {
+   "got": 3,
+   "want": 3,
+   "pass": true
+  },
+  "C4b.(3, 3, 4)t(1, 1, 1).census": {
+   "got": 24,
+   "want": 24,
+   "pass": true
+  },
+  "C4b.(3, 3, 4)t(1, 1, 1).fiber_formula": {
+   "got": 24,
+   "want": 24,
+   "pass": true
+  },
+  "C4b.(3, 4, 4)t(1, 1, 1).census": {
+   "got": 16,
+   "want": 16,
+   "pass": true
+  },
+  "C4b.(3, 4, 4)t(1, 1, 1).fiber_formula": {
+   "got": 16,
+   "want": 16,
+   "pass": true
+  },
+  "C4b.(3, 3, 3)t(1, 1, 1).census": {
+   "got": 27,
+   "want": 27,
+   "pass": true
+  },
+  "C4b.(3, 3, 3)t(1, 1, 1).fiber_formula": {
+   "got": 27,
+   "want": 27,
+   "pass": true
+  },
+  "C4b.(4, 4, 4)t(1, 1, 1).census": {
+   "got": 48,
+   "want": 48,
+   "pass": true
+  },
+  "C4b.(4, 4, 4)t(1, 1, 1).fiber_formula": {
+   "got": 48,
+   "want": 48,
+   "pass": true
+  }
+ },
+ "C5a": {
+  "planted_nonfiber_triples": 5,
+  "pristine_nonfiber_triples": 0,
+  "witness": [
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    3,
+    1
+   ]
+  ]
+ },
+ "C5b": {
+  "Bdup_spark": 2,
+  "Bdup_pclasses": [
+   [
+    0,
+    4
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ]
+  ],
+  "dependent_pairs": 4
+ },
+ "C6.p7": {
+  "m3": {
+   "circuits": 32,
+   "fibers": 32,
+   "profiles": {
+    "(1, 3)": 16,
+    "(3, 1)": 16
+   }
+  },
+  "m4": {
+   "circuits": 152,
+   "fibers": 0,
+   "profiles": {
+    "(3, 3)": 144,
+    "(4, 4)": 8
+   }
+  },
+  "circA": {
+   "3": 4
+  },
+  "circB": {
+   "3": 4
+  }
+ },
+ "C6.p31": {
+  "m3": {
+   "circuits": 32,
+   "fibers": 32,
+   "profiles": {
+    "(1, 3)": 16,
+    "(3, 1)": 16
+   }
+  },
+  "m4": {
+   "circuits": 148,
+   "fibers": 0,
+   "profiles": {
+    "(3, 3)": 144,
+    "(4, 4)": 4
+   }
+  },
+  "circA": {
+   "3": 4
+  },
+  "circB": {
+   "3": 4
+  }
+ },
+ "C6.p7.5col": {
+  "circuits": 1020,
+  "fibers": 0
+ },
+ "C6.p31.5col": {
+  "circuits": 936,
+  "fibers": 0
+ },
+ "census_details": {
+  "C1a": {
+   "m3": {
+    "m": 3,
+    "N": 16,
+    "d": 3,
+    "n_subsets": 680,
+    "below_d_violation": null,
+    "dep_total": 32,
+    "circuits": 32,
+    "fibers": 32,
+    "fiberA": 16,
+    "fiberB": 16,
+    "profiles": {
+     "(1, 3)": 16,
+     "(3, 1)": 16
+    },
+    "reldims": {
+     "1": 32
+    },
+    "corner": 0,
+    "nocorner": 32,
+    "kernel_dim_identity": true
+   },
+   "m4": {
+    "m": 4,
+    "N": 16,
+    "d": 3,
+    "n_subsets": 1940,
+    "below_d_violation": null,
+    "dep_total": 548,
+    "circuits": 156,
+    "fibers": 0,
+    "fiberA": 0,
+    "fiberB": 0,
+    "profiles": {
+     "(3, 3)": 144,
+     "(4, 4)": 12
+    },
+    "reldims": {
+     "1": 156
+    },
+    "corner": 0,
+    "nocorner": 156,
+    "kernel_dim_identity": true
+   }
+  },
+  "C1b": {
+   "m3": {
+    "m": 3,
+    "N": 25,
+    "d": 3,
+    "n_subsets": 2600,
+    "below_d_violation": null,
+    "dep_total": 100,
+    "circuits": 100,
+    "fibers": 100,
+    "fiberA": 50,
+    "fiberB": 50,
+    "profiles": {
+     "(1, 3)": 50,
+     "(3, 1)": 50
+    },
+    "reldims": {
+     "1": 100
+    },
+    "corner": 0,
+    "nocorner": 100,
+    "kernel_dim_identity": true
+   },
+   "m4": {
+    "m": 4,
+    "N": 25,
+    "d": 3,
+    "n_subsets": 12950,
+    "below_d_violation": null,
+    "dep_total": 3034,
+    "circuits": 984,
+    "fibers": 0,
+    "fiberA": 0,
+    "fiberB": 0,
+    "profiles": {
+     "(3, 3)": 900,
+     "(4, 4)": 84
+    },
+    "reldims": {
+     "1": 984
+    },
+    "corner": 0,
+    "nocorner": 984,
+    "kernel_dim_identity": true
+   }
+  }
+ },
+ "elapsed_seconds": 34.7
+}

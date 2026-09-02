@@ -1,22 +1,14 @@
-"""Diagnose the 6.4x mean-timing gap: distribution + protocol forensics.
+"""Inspect the corrected-prior BP+OSD single-decode timing distribution.
 
-Gate A timing closed with p99.9 REPRODUCED (1.13x) but mean MISSED (6.4x)
-at p=1e-3. This script isolates WHY by decomposing the single-decode time
-distribution into its regime structure, then testing the four named
-hypotheses from PROGRESS.md:
+The original 2026-08-30 use of this script diagnosed a 6.4x mean gap under
+the scalar-mean channel later invalidated by pre-statement Revision GB3.
+Its inference that the paper used OSD0 semantics is retracted: with the full
+heterogeneous channel, the published OSD-CS10 configuration reproduces both
+mean and p99.9, while a focused corrected-prior OSD0 probe does not.
 
-  H1 (call floor): per-decode call has a fixed Python/binding floor; the
-     mean is floor-dominated, the tail is solver-dominated.
-  H2 (solution path): failures (nontrivial OSD work) cost differently
-     from successes; heavy failures inflate the tail only.
-  H3 (OMP/threading): omp_thread_count / BLAS threads inflate the mean
-     via spin-waits; tail unaffected (single dominant solve).
-  H4 (allocator/cache): first-touch pages + cold caches inflate a
-     transient initial (warmup) segment, dragging the mean.
-
-Protocol mirrors run_gate.run_timing_point (same seed derivation, same
-DEM, same decoder kwargs) so numbers are comparable to frozen campaign
-20260830T071750Z_00327d68_a05388ffcf42.
+The live function uses the current full-vector decoder and asserts that
+channel before timing. It does not reconstruct the invalidated historical
+campaign; those measurements remain documented in ``physics/PROGRESS.md``.
 """
 from __future__ import annotations
 
@@ -37,6 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from qldpc_dec.bp_osd import make_bp_osd_decoder  # noqa: E402
 from qldpc_dec.circuits import circuit_sha, dem_sha, load_circuit, load_dem  # noqa: E402
 from qldpc_dec.dem_matrices import dem_to_matrices  # noqa: E402
+from qldpc_dec.run_gate import IONQ_BPOSD_DECODER_CONFIG  # noqa: E402
 from qldpc_dec.seeds import sampling_seed  # noqa: E402
 
 
@@ -51,10 +44,13 @@ def timing_distribution(p: float, basis: str, num: int = 4000) -> dict:
 
     # same prediction mapping as the batch adapter: correction vector ->
     # observable frame via the merged-convention A matrix
-    _H, A, _p = dem_to_matrices(dem, merge=True)
+    _H, A, priors = dem_to_matrices(dem, merge=True)
     A = A.tocsr()
 
-    dec = make_bp_osd_decoder(dem, max_iter=30)
+    dec = make_bp_osd_decoder(dem, **IONQ_BPOSD_DECODER_CONFIG)
+    configured = np.asarray(dec.channel_probs, dtype=np.float64)
+    priors = np.asarray(priors, dtype=np.float64)
+    np.testing.assert_array_equal(configured, priors)
     times = np.empty(num)
     preds = np.empty((num, A.shape[0]), dtype=np.int64)
     for i in range(num):
@@ -99,7 +95,18 @@ def timing_distribution(p: float, basis: str, num: int = 4000) -> dict:
         )
         stats["first100_mean_ms"] = float(sol[:100].mean())
         stats["last1000_mean_ms"] = float(sol[-1000:].mean())
-    return {"p": p, "basis": basis, "num": num, **stats}
+    return {
+        "p": p,
+        "basis": basis,
+        "num": num,
+        "decoder": dict(IONQ_BPOSD_DECODER_CONFIG),
+        "bposd_prior_check": {
+            "columns": int(priors.size),
+            "distinct_probabilities": int(np.unique(priors).size),
+            "configured_channel_exact": True,
+        },
+        **stats,
+    }
 
 
 def omp_probe(p: float, basis: str = "Z", num: int = 600) -> dict:

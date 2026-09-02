@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "id": "persistent-funding-premium",
+  "title": "Preregistered persistent-funding-premium cash-and-carry test on fresh 2024H2/2025H1 Binance samples",
+  "status": "falsified",
+  "returns_applicable": false,
+  "mechanism": {
+    "hypothesis": "Funding-rate persistence is exploitable: after 18 consecutive strictly positive 8h funding events, a long spot 0.5x + short perpetual 0.5x cash-and-carry pair earns positive net premium over the next 240 hours, after 7 bps per side per leg at entry and exit.",
+    "registered_rule": "Signal at funding event i requires events i-17..i all strictly positive. Entry at the first 1h spot bar open strictly after the event and within 2h. Exit at the 1h bar open 240h after entry, or earlier only on the frozen hard liquidation gate (perp HIGH above 2x perp entry unwinds at that hour's perp HIGH and same-hour spot LOW). Signed funding accrues on the 0.5x short leg at every exchange boundary strictly after entry through exit. Gross exposure 1.0x NAV; no leverage, no hidden cross-margin credit.",
+    "distinct_from_prior_mechanisms": "funding-crowding tested extreme funding percentiles as a crash/risk-off signal and was falsified; crypto-carry-decay and focused-cross-venue-carry tested unconditional or collateral-rebalanced carry and are invalidated/blocked; crypto-basis-convergence tested basis z-score convergence. This test conditions entry solely on a fixed 18-event positivity run and measures a fixed-horizon net premium on windows none of those studies used.",
+    "no_alpha_claim": "A pass would have been a sample-conditional statement only. The observed outcome is a falsification."
+  },
+  "data_used": {
+    "sources": [
+      "quant-trading/data/raw/binance/funding-rate/{BTCUSDT,ETHUSDT}/ monthly archives (calc_time, funding_interval_hours, last_funding_rate)",
+      "quant-trading/data/raw/binance/spot-1h/{BTCUSDT,ETHUSDT}/ monthly klines (open_time, open, high, low)",
+      "quant-trading/data/raw/binance/um-perp-1h/{BTCUSDT,ETHUSDT}/ monthly klines (open_time, open, high, low)"
+    ],
+    "checksum_binding": "All 84 consumed archives passed their upstream .CHECKSUM SHA-256 verification inside the runner before any gate computation.",
+    "adapter_semantics": "Historical CSV rows, not capture JSONL: dedup identity is (source_file, row_index); no receipt clock exists; exchange calc_time and bar open_time are the only clocks; 2025+ archives use microsecond epochs and are normalized to UTC milliseconds; one context month before each window supplies trailing-signal history only.",
+    "sample_novelty_corrected": "RETRACTED AND CORRECTED. The contract's original 'untouched by every prior tested mechanism' claim was false for the development window: focused-cross-venue-carry (run.py:113-114, results.json windows.validation) and funding-crowding (strategy.json data_used.windows_used.validation) both evaluated calendar 2024, which contains 2024-07..2024-12, and crypto-carry-corrected-audit inspected 2025-01..2026-07 as a flat-position retrospective diagnostic. The defensible claim is rule-level and parameter-level novelty: no prior mechanism selected, tuned, or evaluated this 18-consecutive-positive-funding timing rule on any window, and both persistence counts were frozen before outcome access.",
+    "errata": "quant-trading/explorations/persistent-funding-premium-freshness-errata.json"
+  },
+  "development_window": "2024-07-01T00:00:00Z..2025-01-01T00:00:00Z",
+  "validation_window": "2025-01-01T00:00:00Z..2025-07-01T00:00:00Z",
+  "holdout_accessed": true,
+  "holdout_access_note": "The preregistered 2025-01..2025-06 out-of-sample window was accessed exactly once to resolve the frozen verdict, after the development window. That is this contract's design, and it makes the direction ineligible for any later blind historical confirmation on the same window.",
+  "trial_count": 2,
+  "parameters": {
+    "persistence_count_primary": 18,
+    "persistence_count_robustness_diagnostic": 21,
+    "holding_hours": 240,
+    "spot_nav_fraction": 0.5,
+    "perp_nav_fraction": 0.5,
+    "entry_lag_limit_hours": 2,
+    "exit_lag_limit_hours": 2,
+    "parameter_search": "none; both counts were frozen in the contract before outcome access and the 21-event variant cannot change the verdict"
+  },
+  "signal_timing": "All signal inputs precede the entry bar open strictly. Entry uses the first hourly bar open after the completing funding event; exits and funding accrual use only exchange timestamps inside the frozen window; entries whose full 240h outcome would fall outside the window are skipped and counted.",
+  "cost_model": {
+    "fee_bps_per_side_per_leg": 7,
+    "application": "Entry and exit each charge both legs on their 0.5x NAV notional, so every completed cycle pays 14 bps of NAV in fees.",
+    "funding": "Signed exactly; negative funding remains a charge to the short leg."
+  },
+  "benchmark": {
+    "gate_reference": "Zero: the contract requires strictly positive pooled mean and median per-cycle net fraction after costs.",
+    "note": "No cash or carry benchmark excess is claimed because the mechanism was falsified against the weaker zero threshold."
+  },
+  "metrics": {
+    "development_pooled_entries": 24,
+    "development_pooled_mean_net_fraction": 0.00024376568823155923,
+    "development_pooled_median_net_fraction": 2.8546669754297006e-05,
+    "development_worst_entry": -0.0012048139034782415,
+    "holdout_pooled_entries": 15,
+    "holdout_per_asset_entries": {
+      "BTCUSDT": 7,
+      "ETHUSDT": 8
+    },
+    "holdout_pooled_mean_net_fraction": -0.0005534300046712066,
+    "holdout_pooled_median_net_fraction": -0.0005076539042636308,
+    "holdout_worst_entry": -0.001430958617983516,
+    "holdout_forced_unwinds": 0,
+    "robustness_diagnostic_holdout_pooled_entries": 12,
+    "robustness_diagnostic_holdout_mean": -0.00045169455137831875,
+    "robustness_diagnostic_holdout_median": -0.0004850843351707988
+  },
+  "first_falsification_gate": {
+    "spec": "With the frozen 18/18 rule and minima met (>=8 pooled entries, >=4 per asset), pooled mean and pooled median per-cycle net fraction must both exceed 0; a worst entry at or below -0.10 rejects the mechanism regardless.",
+    "minima_met": true
+  },
+  "gate_result": {
+    "development": "pass (mean +2.4 bps, median +0.3 bps per cycle)",
+    "holdout": "fail (mean -5.5 bps, median -5.1 bps per cycle; both gates false, tail gate true)",
+    "verdict": "falsified",
+    "replication_triggered": false,
+    "replication_rule": "The preregistered single replication on 2025-07-01..2026-01-01 activates only on a holdout pass and was therefore not run."
+  },
+  "leakage_checks": [
+    "Signal uses only funding events at or before the signal instant; the entry bar open is strictly later.",
+    "Trailing-signal history may come from one context month before the window, but entries, exits, funding, and gates use only in-window exchange timestamps.",
+    "Entries lacking a complete in-window 240h outcome are skipped and counted rather than truncated.",
+    "Perp and spot bars must share the identical exchange open timestamp at entry and exit, otherwise the candidate is skipped.",
+    "All archives are checksum-verified before use; the runner refuses to run if the frozen contract hash changes.",
+    "skipped_no_bar counters include qualifying signals from the pre-window context month whose entry bars precede the loaded bar floor; they are bookkeeping, not exchange data gaps. The 18-event and 21-event variants differ by exactly the extra trailing events consumed."
+  ],
+  "risks": [
+    "Fifteen pooled holdout cycles is a small sample; the falsification is sample-conditional and does not prove a negative expected premium in all regimes.",
+    "The 2025H1 funding environment was near the exchange floor, so positive-run entries earned little premium against fixed 14 bps round-trip fees.",
+    "Overlapping-cycle correlation is limited by the per-asset cooldown but BTC and ETH cycles can still overlap in calendar time.",
+    "No slippage, borrow, or margin-buffer modeling beyond the frozen fee and gross-exposure rules."
+  ],
+  "next_experiment": "Do not tune this rule, extend its windows, or pool it with prior carry work. A future test must preregister a genuinely different mechanism (for example an options-demand or flow-timing state variable), a fresh window, its own stopping rule, and its own multiplicity boundary."
+}

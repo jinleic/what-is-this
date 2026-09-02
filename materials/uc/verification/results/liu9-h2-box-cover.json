@@ -1,0 +1,208 @@
+{
+ "box_widths": {
+  "2^-10": {
+   "cleared": 5666,
+   "failed_sample": [
+    {
+     "bound": "[-0.003508300662790264 +/- 1.19e-19]",
+     "bound_f": -0.0035083006627902643,
+     "cell": "g2|q8",
+     "q": "1"
+    },
+    {
+     "bound": "[-0.003508300662790264 +/- 1.19e-19]",
+     "bound_f": -0.0035083006627902643,
+     "cell": "g6|q8",
+     "q": "1"
+    },
+    {
+     "bound": "[-0.003774568242754264 +/- 1.18e-20]",
+     "bound_f": -0.003774568242754264,
+     "cell": "g9|q8",
+     "q": "1"
+    },
+    {
+     "bound": "[-0.003328048314142842 +/- 4.59e-19]",
+     "bound_f": -0.0033280483141428425,
+     "cell": "g12|q7",
+     "q": "7/8"
+    }
+   ],
+   "half_width": "1/1024",
+   "of": 9747,
+   "worst_bound": {
+    "bound": "[-0.009550926062296139 +/- 1.45e-19]",
+    "bound_f": -0.009550926062296138,
+    "cell": "g397|q7",
+    "q": "7/8"
+   }
+  },
+  "2^-12": {
+   "cleared": 8502,
+   "failed_sample": [
+    {
+     "bound": "[-0.0005687178485610329 +/- 3.09e-20]",
+     "bound_f": -0.0005687178485610329,
+     "cell": "g12|q8",
+     "q": "1"
+    },
+    {
+     "bound": "[-0.0006285477071630944 +/- 4.89e-20]",
+     "bound_f": -0.0006285477071630944,
+     "cell": "g13|q8",
+     "q": "1"
+    },
+    {
+     "bound": "[-0.0003571997545889217 +/- 2.99e-20]",
+     "bound_f": -0.00035719975458892167,
+     "cell": "g22|q8",
+     "q": "1"
+    },
+    {
+     "bound": "[-0.0004159485732585889 +/- 2.17e-20]",
+     "bound_f": -0.0004159485732585889,
+     "cell": "g23|q8",
+     "q": "1"
+    }
+   ],
+   "half_width": "1/4096",
+   "of": 9747,
+   "worst_bound": {
+    "bound": "[-0.001149668848917543 +/- 4.42e-19]",
+    "bound_f": -0.0011496688489175426,
+    "cell": "g1117|q7",
+    "q": "7/8"
+   }
+  },
+  "2^-14": {
+   "cleared": 9747,
+   "failed_sample": [],
+   "half_width": "1/16384",
+   "of": 9747,
+   "worst_bound": {
+    "bound": "[0.0009357364757194093 +/- 1.71e-20]",
+    "bound_f": 0.0009357364757194093,
+    "cell": "g1117|q2",
+    "q": "1/4"
+   }
+  }
+ },
+ "claim": "RETRACTED - BOX COVER: every nonvacuous cell of the H2 mass-QP sweep grid (9,747 of 11,025; support triples from the k/8 grid, q from the k/8 grid) certifies gap >= 0 on the BOX {supports +- 2^-w} x {q +- 2^-w clipped} x {masses feasible for the TRUE mean at that box point}, at the largest half-width 2^-14 for which ALL cells clear; per-cell certificate = value-bracket radius around the cell's exact KKT argmin re-solved on the tilted-chord polygon (exact rational drift dilation of the mean line; see relaxation.soundness_argument)",
+ "claim_scope": "per-cell box certificates: ONE certificate = one (x-triple, y-triple, q) grid cell's neighborhood, NOT a continuum theorem; the union of boxes does not fill the ambient parameter space",
+ "claim_status": "RETRACTED",
+ "escalation": [],
+ "evaluator": "liu9_objective.evaluate_arb, gap = numerator - ehx, ctx.prec = 320; KKT/candidates via uc/liu9_h2_qp_sweep.solve_cell - exact same code path as the frozen sweep; band via exact_inverse Cramer products",
+ "feasibility": {
+  "M_FLOOR": "6172909120812649700696870979010273883736185674942424127990865050809187/10000000000000000000000000000000000000000000000000000000000000000000000",
+  "M_FLOOR_lt_m_arb": true,
+  "M_UNDER": "19290341/31250000",
+  "M_UNDER_lt_M_FLOOR_exact": true,
+  "M_UNDER_lt_m_arb": true,
+  "beta": "[0.1000525598628931066646282994769475877962 +/- 6.19e-42]",
+  "m_enclosure": "[0.6172909120812649700696870979010273883736 +/- 1.86e-41]",
+  "m_lower_str": "[0.617290912081264970069687097901027388373618567494242412799087 +/- 4.95e-61]",
+  "superset_argument": "M_FLOOR < m (Arb), so each cell polygon {mean >= M_FLOOR} is a SUPERSET of the true {mean >= m}; the certified per-cell minimum lower-bounds the true mass-worst-case gap"
+ },
+ "grid": {
+  "cells_excluded_vacuous": 1278,
+  "cells_nonvacuous": 9747,
+  "cells_total": 11025,
+  "lineage": "uc/liu9_h2_qp_sweep.py report (frozen; the sweep module sha256 pinned next); 11,025 cells, 9,747 nonvacuous, worst cell g9|q8 certified min +1.6305e-3",
+  "sweep_module_sha256_live": "66305dedf82389597ef082e4d8fa6f6b0b9420a76847c53c9cf716f0ec65b5ac",
+  "sweep_module_sha256_pinned": "66305dedf82389597ef082e4d8fa6f6b0b9420a76847c53c9cf716f0ec65b5ac",
+  "sweep_report_sha256": "80006dad6dec04817f839f72bf8cf34a44c6788c6541b379d42d789fde068efd"
+ },
+ "largest_fully_clearing_half_width": "2^-14",
+ "limitations": [
+  "BETWEEN-BOX GAPS: the cover is the union of 9,747 box neighborhoods per width; the ambient parameter space between adjacent boxes (up to ~1/8 minus two half-widths per support direction, ~1/8 minus two half-widths in q) is NOT covered by this module.",
+  "r >= 4 (more than three supports per side) is untouched here.",
+  "The certificate speaks of the WIDENED per-cell polygon P_box (FLOOR_BOX = FLOOR_HI - drift_total, exact rational), a certified superset of the true per-point feasible sets; the 1,278 infeasible-geometry cells certify nothing (empty FLOOR_HI polygon at the cell center), exactly as in the sweep.",
+  "The band relaxation wastes slack: the certificate now uses the value-bracket radius (a single point evaluation per box), but the band accounting module (cramer_band) remains a diagnostic; the radius is a rigorous over-estimate of the oscillation affecting sharpness only, never soundness.",
+  "q-endpoint columns (q0 in {0, 1}) use one-sided q boxes of width h after clipping to [0, 1].",
+  "beta is the certified ball (interval), not a point; the ambiguity propagates rigorously through the value boxes (evaluate_arb ball-input contract).",
+  "This is a NEIGHBORHOOD certificate around 9,747 certified grid cells, NOT a continuum theorem between cells; the absolute covered-volume sum is an upper estimate (overlapping boxes double-counted)."
+ ],
+ "measure_covered": {
+  "ambient_fraction": "4331/1237940039285380274899124224",
+  "ambient_fraction_float": 3.498553938444495e-24,
+  "covered_volume_absolute": "4331/1237940039285380274899124224",
+  "covered_volume_float": 3.498553938444495e-24,
+  "grid_fraction_nonvacuous": "9747/9747",
+  "grid_fraction_total": "9747/11025",
+  "largest_fully_clearing_width": "2^-14",
+  "note": "Per cleared (cell, w): box volume (2h)^6 * qlen, qlen = 2h for interior q0, h for q0 in {0, 1} (clipped).  The absolute covered-volume sum OVERCOUNTS the union when adjacent boxes overlap; the true union fraction is NOT computed here (disjointization would need cross-cell boundary bookkeeping over 1225 geometries x 9 columns).  The grid fractions cleared/9,747 and cleared/11,025 are exact counts."
+ },
+ "mutations": [
+  {
+   "cell": "g9|q8",
+   "expected": "FAIL",
+   "mechanism": "A22 -> A22 + 1e-6 on the exact center quadratic: the value at the same exact mean-face point must move and the KKT re-solve min must differ",
+   "mutation": "coef_perturbed_1e-6",
+   "observed": "FAIL",
+   "ok": true,
+   "reference_point": [
+    "77090879187350299303129020989726116263814325057575872009134949190813/10000000000000000000000000000000000000000000000000000000000000000000000",
+    "77090879187350299303129020989726116263814325057575872009134949190813/2500000000000000000000000000000000000000000000000000000000000000000000"
+   ],
+   "value_at_ref": "[0.0016521262253596958623 +/- 7.38e-24]",
+   "value_mutated_at_ref": "[0.0016521271762402804829 +/- 2.51e-23]",
+   "value_mutated_ksolve": "[0.0016305232476149465929718326 +/- 2.69e-29]",
+   "value_reference_ksolve": "[0.0016305194440926081106425247 +/- 4.42e-29]"
+  },
+  {
+   "cell": "g9|q8",
+   "constrained_min_lower": "[0.0016305194440926081106425247 +/- 4.42e-29]",
+   "constrained_min_upper": "[0.0016305194440926081106425247 +/- 4.42e-29]",
+   "expected": "FAIL (dips below the constrained certified min)",
+   "mechanism": "certify over the bare triangle (no mean floor chord); the minimum must dip below the same cell's constrained certified min",
+   "mutation": "drop_mean_chord_constraint",
+   "observed": "FAIL",
+   "ok": true,
+   "triangle_only_arg": [
+    "1.000000000000000",
+    "0"
+   ],
+   "triangle_only_min": "[-0.29170592609767724447568935 +/- 1.31e-27]"
+  }
+ ],
+ "relaxation": {
+  "mean_drift_note": "mean is multilinear in (q, supports); drift bracket from exact corner enumeration; the TILTED-CHORD half-space dilation keeps the superset polygon uniformly tight (no full chord shift)",
+  "name": "value-bracket radius + tilted-chord KKT bound",
+  "soundness_argument": "RELAXATION (value-bracket radius + widened-KKT\nbound; the certified claim of this module).  (i) At every real fiber\n(s, q) of the closed box the support triples stay strictly ordered\n(h <= 2^-10 < 1/16 < min gap 1/8), so the paired r = 3 raw gap is\na well-defined real F(s, q; a1, a2).  (ii) Main's structure theorem\n(PROVED, cited): at EVERY frozen fiber the gap is an EXACT quadratic\nin (a1, a2).  (iii) WIDENED POLYGON: the mixture mean is exact\nrational-multilinear; the drift bracket (mean_drift) bounds\n|mean(s,q,a) - mean(center,a)| <= DT on the mass square; FLOOR_BOX =\nFLOOR_HI - DT (exact rational) with FLOOR_HI < m certified makes the\nfrozen polygon P_box = {a1>=0, a2>=0, a1+a2<=1, center line >=\nFLOOR_BOX} a SUPERSET of every true per-point feasible set {mean >=\nm} over the box.  (iv) KKT OVER THE WIDENED POLYGON: the sweep's\nexact candidate list (vertices, interior critical, edge criticals,\nmean-chord critical) re-solved on the center quadratic A0 over P_box\ngives the certified minimum ball c0_box with argmin (a1*, a2*) in\nP_box, feasible within the widened discipline.  (v) VALUE BOX AT THE\nARGMIN: evaluate_arb at the box balls (six support balls, q ball) and\nthe exact rational masses (a1*, a2*) returns a rigorous enclosure\n[A.lo, A.hi] of {gap(s, q, a1*, a2*) : (s, q) in box} (ball-input\ncontract: monotone corner brackets on the H-atom terms plus a\nmonotonically-bracketed h-map; no unverified unions).  (vi) THE\nCHAIN: for every box fiber (s, q) and every mass a FEASIBLE for the\nfiber (mean(s,q,a) >= m):\n  gap(s,q,a) = quad_{A(s,q)}(a)      [structure theorem, exact]\n             >= min_P_box quad_{A(s,q)}\n                        [fiber-feasible a in P_box by (iii)]\n             >= quad_{A(s,q)}(a1*, a2*) - R\n                        [P_box-argmin optimality of the fiber\n                         quadratic: min <= value at any P_box point]\n             >= A.lo - R             [(v) value box]\n             >= c0_box.lower() - R,\nwith the RADIUS R = max(A.hi - c0_box.lower(), c0_box.lower() - A.lo)\n(a rigorous ball difference; the max over the two directions covers\nthe value-box uncertainty on both sides).  Taking the infimum over\nbox fibers and fiber-feasible masses:\n  inf gap >= c0_box.lower() - R =: BOXBOUND.\n(vii) PROMOTION: if the P_box argmin (the midpoint rational of the\ncertified candidate ball) is FEASIBLE AT THE FIBER (mean(s,q,a*) >=\nm), then quad_{A(s,q)}(a*) = gap(s, q, a*) lies in the SAME value\nbox A, and the chain additionally gives\n  min over fiber-feasible a of gap(s,q,a) >= A.lo - R >= BOXBOUND.\nFor fibers where a* is not fiber-feasible, step (vi) still holds\nthrough the widened polygon: P_box is a certified superset of the\nfiber-feasible set, so min_P_box quad_{A(s,q)} <= min over the\nfiber-feasible set, hence the inequality direction is PRESERVED\n(lower-bounding).  The certified quantity is therefore exactly the\nmission's positive-measure statement over each box.  (viii) The\nVACUOUS columns are excluded (empty FLOOR_HI polygon at the cell\ncenter), exactly as in the sweep; nothing uses grid structure beyond\nthe box endpoints being exact rationals.  (ix) Sharpness note: R is\nfirst-order in h (the gap variation over the box at fixed masses),\nso BOXBOUND = (cell certified margin) - O(h): the width ladder marks\nwhere the oscillation exhausts the margin."
+ },
+ "report_sha256": "b898bbce16bfc076b9280dc3fa49d9546343aac544f18eba3f7085702fe7aa45",
+ "retraction": "RETRACTED 2026-09-01: this module's per-cell certificate is not a lower bound (inverted inequality in radius_certificate / SOUNDNESS_ARGUMENT step (vi): the value-bracket radius R is measured at ONE fixed mass point a*, so it cannot bound the fiber quadratic's minimum over the mass polygon). Its sound sibling c0lo - sum_j width(band_j) is vacuous at every affordable width (21651.78 at 2^-10, 1.3215 at 2^-24, against a 1.6e-3 margin). No clearing count, worst bound, or covered volume from this module may be cited. See PROGRESS.md RETRACTION-H2-BOX-COVER (2026-09-01).",
+ "tool": "uc/liu9_h2_box_cover.py",
+ "verdict": "RETRACTED - ALL 9747 nonvacuous cells box-certified at half-width 2^-14",
+ "worst_box_certificate": {
+  "bound": "[-0.009550926062296139 +/- 1.45e-19]",
+  "bound_f": -0.009550926062296138,
+  "c0_lower": "[-0.0048259633569415866126405451 +/- 2.92e-31]",
+  "cell": "g397|q7",
+  "chord_constraint": [
+   "-2607/4096",
+   "-311/2048",
+   "-940820959648343937064455638118578822664890203161/6250000000000000000000000000000000000000000000000"
+  ],
+  "geometry": [
+   "1/8",
+   "1/2",
+   "7/8",
+   "1/8",
+   "5/8",
+   "3/4"
+  ],
+  "kkt_arg": [
+   "0",
+   "[0.9912804246224095 +/- 4.25e-17]"
+  ],
+  "kkt_src": "V1",
+  "mean_drift_total": "11/1024",
+  "q": "7/8",
+  "radius": "[0.004724962705354552 +/- 2.44e-19]",
+  "radius_f": 0.004724962705354553,
+  "value_box_hi": "[-0.0001010006515870344 +/- 3.04e-20]",
+  "value_box_lo": "[-0.009543617967968109 +/- 1.43e-19]",
+  "width": 10
+ }
+}

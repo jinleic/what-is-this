@@ -1,0 +1,18 @@
+{
+  "schema": "target-state/1",
+  "id": "physics/na-compiler",
+  "problem": "Certified-optimal neutral-atom transport baselines",
+  "status": "active",
+  "current_gate": "Gate B 4x4 full exhaustion complete; global microsecond optima certified",
+  "latest_campaign": "20260830T021851Z_6e74b176_4683ec3d3949",
+  "latest_campaign_verdict": "RUNNING",
+  "headline": "n=5/n=6 global optima closed; consistent-A* dependency dropped",
+  "next_action": "Optional n=7 if wall-time budget allows",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-01T07:34:05Z",
+  "updated_by": "workspace-architecture-fix",
+  "sources": [
+    "physics/RESULTS.md",
+    "physics/PROGRESS.md:72-103"
+  ]
+}

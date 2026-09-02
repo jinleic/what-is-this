@@ -41,7 +41,8 @@ DOMAINS = {
         name="Mathematics",
         root=WORKSPACE / "math",
         progress="PROGRESS.md",
-        shared_files=("README.md", "RESULTS.md", "PROGRESS.md"),
+        shared_files=("README.md", "RESULTS.md", "PROGRESS.md",
+                      "RESEARCH_STATUS.md"),
     ),
     "physics": dict(
         name="Physics and quantum computing",

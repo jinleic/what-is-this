@@ -1,0 +1,33 @@
+{
+  "created_utc": "2026-08-31T11:05:41.916534+00:00",
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateA_timing",
+    "num_timed": 10000,
+    "base_seed": 20260829,
+    "bposd_prior_model": "merged DEM heterogeneous error_channel"
+  },
+  "config_hash12": "774ea68fcaa7",
+  "source_sha256": {
+    "source_qldpc_dec_run_gate.py": "50521a69e378b1847d0dcd8c57884141cef8eb6dc84d052c4f0fa872bda96747",
+    "source_qldpc_dec_bp_osd.py": "3a753f46bf404b4bcf07111bfe22c76bf4f3c901b758caa65738e6c6b28055aa",
+    "source_qldpc_dec_dem_matrices.py": "7a73360ab83b6a06a1251a6a02ab0cfb1ce901568af8e1f765a2252c3a246e8d",
+    "source_qldpc_dec_bootstrap.py": "b6a9729b7f126f597131f0bda535d91e547d136a205eed35a085c49c7d11bb5c",
+    "source_qldpc_dec_circuits.py": "19ab69a72fb3bae6b07f064cc019659908c16afd40d24d8a37812dab044c9948",
+    "source_qldpc_dec_seeds.py": "4d4fcd915da2b6bec86b0d367f20be3d3b1e1d05eebe72fbe2d715dd9a0c74f0",
+    "source_qldpc_dec_runner.py": "d57f4a74d8b2d047cf06a93572d4693e075d3c456e012e4c61f9bcb5fbc31906"
+  },
+  "pre_statement_sha256": "419238508a562b14fa5473d47f7062006649b27ec06d998e200b96ad3dfabfef",
+  "bposd_prior_model": "merged DEM heterogeneous error_channel",
+  "bposd_reference": {
+    "package": "stimbposd==0.1.0",
+    "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "stim": "1.16.0",
+    "ldpc": "2.4.1"
+  }
+}

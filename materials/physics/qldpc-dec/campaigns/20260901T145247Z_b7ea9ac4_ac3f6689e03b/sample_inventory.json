@@ -1,0 +1,24 @@
+{
+  "sampling_frozen_before_decode": true,
+  "shared_stream": {
+    "path": "shots_bposd.bin",
+    "shots": 100000000,
+    "sampling_seed": 5192065653244964556,
+    "bytes": 12800000024,
+    "sha256": "7030e816dcd41c74bcdcacbf04370d49cf707bec6059d5e63d8ced0d6111ac3b",
+    "detector_row_bytes": 120,
+    "observable_row_bytes": 8
+  },
+  "prefix_continuity": {
+    "detectors": {
+      "bytes": 2400000000,
+      "sha256": "f15c88b762704349c447520f5811de286467affdc36f745f7c85f45015dede51",
+      "byte_match": true
+    },
+    "observables": {
+      "bytes": 160000000,
+      "sha256": "be09017e1e7ff6fbd669b8eb22cb42016a4103411152f9aa761a24f0af208e82",
+      "byte_match": true
+    }
+  }
+}

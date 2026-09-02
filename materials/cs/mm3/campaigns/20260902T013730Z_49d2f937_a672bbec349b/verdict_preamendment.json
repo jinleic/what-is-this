@@ -1,0 +1,42 @@
+{
+ "gate": "mws59-bit-58vs59",
+ "run_id": "20260902T013730Z_49d2f937_a672bbec349b",
+ "prereg_sha256": "aede812c76cbea46bbceeffb737f95de6d197e0f42b7e847466de546041f5e6c",
+ "decomposition": "mws59 (fixed orientation, sigma^0, all-monomial triple)",
+ "question": "is the fixed-orientation minimum 58 or 59?",
+ "inherited_frozen": {
+  "C_U": 14,
+  "C_V_lower": 15,
+  "C_Wfac": 15,
+  "output_lower": 29,
+  "total_lower": 58
+ },
+ "controls": {
+  "A3": "pass (DFS+kissat+CaDiCaL)",
+  "R1": "REJECTED",
+  "R2": "REJECTED",
+  "R4_cert": {
+   "cnf_sha256": "6169710f9fc3f8eb5cd5ce21c13a7010683fac6a7ca449c4c2efa7842f24b0ed",
+   "lrat_sha256": "d1c126878761ab0565a848331a74604766401a36820ee33e0ae3b4ba27438394",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "lratcheck_rc": 0,
+   "drattrim_out": "edundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.020 seconds",
+   "lratcheck_out": "Deleted clauses = 2072.  Max live clauses = 2085\nc verification time = 0.00 secs"
+  },
+  "R5": "fired",
+  "seconds": 1.78
+ },
+ "route_P": {
+  "status": "FAILED-no-correspondence",
+  "recount": [
+   15,
+   15,
+   29
+  ],
+  "seconds": 0.0
+ },
+ "cpu_seconds_total": 2.0,
+ "verdict": "INCONCLUSIVE-ROUTE-P-FAILED",
+ "claim": "Route P did not verify; per the pre-registered rule no bit claim is made and Route S was not entered within this campaign's budget. LB 58 / UB 59 stand."
+}

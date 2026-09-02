@@ -416,3 +416,178 @@ identity is `15=dD+1-t`, `s-1=2` is a power of two, the public jet matrix is
 only `21 x 60`, and every locator block has size 9. This replaces the old
 `Delta`-extension campaign; no matrix was constructed before the new
 pre-statement.
+
+## Current state (2026-08-31, Main) — direct-route toy census exhausted; registered genericity fails
+
+The scalar parent campaign
+`campaigns/2026-08-31T08-44Z_DA168C79/` passed all mandatory controls and
+durably completed the contiguous `beta=8,...,21` prefix. Its registered
+7,200-second wall cap then interrupted `beta=22` inside the public-phase exact
+RREF. The 14 complete cells all pass P1_U3 and P1_U4 and all fail P2, P3, and
+P4. This prefix is preserved as **COMPUTATIONAL-EVIDENCE / NOT EXHAUSTIVE** in
+`partial_result.json`; `checksums_partial.sha256` verifies all 22 result,
+control, log, and plant artifacts.
+
+The separately preregistered exact continuation
+`campaigns/2026-08-31T16-12-46Z_vectorized-rref-replay/` replaced only scalar
+finite-field elimination with table-indexed `uint16` Gauss–Jordan operations
+and cached each cell's unchanged `E` and `ker(E)`. All 26 controls passed.
+In particular, the complete RREF tuple, nullspace basis order, and rank agree
+on 1,004 deterministic systems; a wrong multiplication table is detected;
+and cached and uncached `beta=8` payloads agree with the hard-hashed parent.
+An additive strict audit also compares the full completed parent prefix
+`beta=8,...,21`, removing only `header` and `t_utc`: all 14 semantic payloads,
+including `complete=true`, are exactly equal.
+
+The continuation exhausts all 24 registered monic degree-one polynomials over
+the fixed GF(32) support. P1_U3 and P1_U4 pass in all 24 cells and all 120
+branches of each size. P2 fails in all 24: every cell accepts 33 projective
+labels rather than the expected five. P3 fails in all 24 with 28 unmapped
+labels per cell. P4 fails in all 24 with
+`rank(E)=36`, `nullity=244`, and both the full and block predicates false.
+Therefore the conjunction of P1–P4, and hence registered `genericity_pass`,
+is **false in every cell of this toy population**. Runner exit code 4 is the
+predefined mathematical-failure exit, not an instrument or integrity failure.
+Exact result: `report.json`; state manifest SHA-256
+`ac21cdf3d11cb2844138e0bf459f6b53df3b457b78b81ab27285a40173ee0a79`;
+all static, state, and final checksum ledgers pass.
+
+**Protocol disclosure.** Frozen control C26 removed `complete` together with
+`header` and `t_utc`, while the pre-statement permitted removal of only the
+last two fields. The frozen control is not relabeled. Final assembly already
+requires `complete=true` in every successor cell, and the additive post-run
+strict audit checks `complete` across all 14 parent-prefix cells and passes.
+This repairs the omitted comparison after the run; it is not represented as a
+retroactive pre-production control.
+
+**Rule-7 boundary.** The exhausted domain is only the 24 polynomials
+`G_beta=Z+beta`, `beta=8,...,31`, on ordered support `(0,...,7)` at
+`(m,n,t,k,ell,n_ell,k_ell,D_ell,d,s,h)=(5,8,1,3,0,8,3,5,7,5,4)`.
+It is outside current ePrint 1786 Table 1 and Assumption 1's five Classic
+McEliece cells. The result validates and falsifies predicates only on this toy
+population; it does **not** refute the paper's conditional assumption, verify
+any NIST cell, or close Apon's unrelated all-`Delta`-zero hole.
+
+**Evidence grade.** The successor's exact finite-field census, predicate
+verdicts, controls, and equality audits are **MACHINE-VERIFIED**. Parent and
+successor wall times are **COMPUTATIONAL-EVIDENCE** only.
+
+## Current state (2026-09-01, agent `MceliecelM12`) — m=12 counter-swept at the NIST cell; alpha MEASURED, not derived
+
+**Verdict.** The pre-registered bounded m=12 campaign
+`campaigns/2026-09-01T03-28-10Z_M12ALPHA_DIVONLY/` (pre-statement committed
+`7fb44ae` BEFORE any m=12 compute) ran and PASSED at the single registered
+instance $(m,n,t,\text{seed}) = (12, 3488, 64, 16384)$ ($k=n-mt=2720$,
+$D=n-2t-1=3359$, $2t+3=131$). Exact result artifacts: `verdict.json`
+(fields `alpha_identity_measured_full_grid=true`,
+`alpha_grid_points_checked=3488`, `alpha_failures=[]`,
+`delta_chain.delta_exact=true`), incremental checkpoints
+`m12_build_checkpoint.json` / `m12_alpha_result.json`, all inside
+`campaigns/2026-09-01T03-28-10Z_M12ALPHA_DIVONLY/` with `checksums.sha256`
+(17/17 verified).
+
+**ADDENDUM 2 relationship — implemented as written, fork resolved by
+measurement, no amendment to the design itself.** Clause (iii)'s first
+path was AFFORDABLE at the NIST cell: in-process calibration
+(`calib.json`, CPU by `time.process_time()` only, per Main's steering
+that `ps`-based rates are broken on this box) measured the unmodified
+alpha instrument at 0.1504 CPU s per support point at m=12 scale,
+projecting 524.6 CPU s for the full 3488-point grid — inside the
+pre-registered 10,800 CPU-s budget with 20x headroom, so the DERIVE
+fork (alpha as CITED-DEPENDENCY) was NEVER reached and NEVER used. The
+fork resolution (`AMENDMENT_1_fork_resolution.md`, committed `30b6c8f`)
+records the measured numbers BEFORE the verdict compute. Two further
+amendments, both committed before the corresponding compute: AMENDMENT_2
+corrected my own CF-2 plant expectation pre-run (F+Pi is INVISIBLE to
+the value-level alpha check at support points — both cross terms cancel
+in char-2 and Pi vanishes on the support — so its rejection is the
+DEGREE-GATE ABORT, exactly ADDENDUM 2 clause (i)'s load-bearing
+warning), and AMENDMENT_3 proved the originally registered CF-3 plant
+(row-XOR) mathematically inert a priori (both sides of the identity are
+F_2-additive in each coordinate, so no row-XOR can fail alpha) and
+substituted a scalar-multiply plant (row 0 -> 3*f_0; 3^2=5!=3 verified
+in-run). All three amendments are quoted-and-reasoned files in the
+campaign dir, dated, checksummed, committed before their targets ran.
+
+**alpha at m=12 is MEASURED (MACHINE-VERIFIED arithmetic) — the headline
+defect does not occur here.** The m<=11 alpha instrument is
+`cs/mceliece/src/instance.py::_guards`, step (alpha): for each support
+point, the k-vector LHS $\Pi(a)F'(a)+\Pi'(a)F(a)$ and RHS
+$G(a)^2F(a)^2$ are evaluated by exact uint16 log-table gathers
+(`fastfield.EField.MUL`), vectorized over all k coordinates; char-2
+derivative = shift-left with odd-coefficient parity. This campaign ran
+that IDENTICAL operation sequence over ALL n=3488 support points —
+byte-identical code path to m=6..11: the code snapshot in the campaign
+dir's `code/` is byte-diffed against the frozen 14-09Z snapshot
+(`campaigns/2026-08-30T14-09Z_57200ADD/code/`) and differs only by
+`instance.py`'s inert `forced_G` ctor parameter (line-range 84-91), an
+unused-input artifact of the Gate-B tooling; `fastfield.py`, `gfield.py`,
+`census.py`, `verify_delta_uniform.py` are byte-identical. Result:
+identity holds at every support point, 0 failures
+(`verdict.json:alpha_failures=[]`), 700.53 CPU s measured
+(`verdict.json:alpha_grid_cpu_s`). The label is MEASURED, not
+CITED-DEPENDENCY and not derived-imported-relabelled; the one-sentence
+addendum sentence is therefore NOT needed for m=12, and no m<=11 row's
+label moved.
+
+**delta at m=12: MACHINE-VERIFIED exact.** The full ADDENDUM-2(i)
+5-part chain (exact division Pi=(Z-a_i)q_i zero-remainder on all 3488,
+n unit checks L_i(a_i)=1 3488/3488 pass, 200 off-diagonal probes 0
+violations, 3/3 assembly spot-checks, degree gate max_j deg f_j = 3359
+= 3359 exactly) — `verdict.json:delta_chain.*`, each part with its own
+measured CPU cost. Hypothesis hygiene also machine-checked: gcd(G,G')
+constant (square-free), lam recomputation byte-equal, F_2-linearity
+control on 4 seeded selectors.
+
+**Anchors (hard gate, pre-statement section 2): 3/3 byte-equal.** Rows
+(11,2048,48,6211), (10,1024,40,5113), (6,64,3,1387) re-run through THIS
+campaign's code path and compared field-by-field against the frozen
+14-09Z records
+(`campaigns/2026-08-30T14-09Z_57200ADD/delta_uniform_13instances.json`):
+every field byte-equal except `elapsed_s` (declared timing exclusion);
+one additive field `guards_build` disclosed and not part of the frozen
+set. Artifacts: `anchor_11_2048_48_6211.json`,
+`anchor_10_1024_40_5113.json`, `anchor_6_64_3_1387.json` (field
+`byte_equal_vs_frozen=true` in each; independently re-derived 26/26 in
+the owner-side cross-check).
+
+**Counterfactual plants (rule 14): 3/3 REJECTED**
+(`plants_result.json`). CF-1 duplicate-support: Pi'(a)=0 at positions
+[10,11] after the registered duplication a_12:=a_11 — the build's
+distinct-support guard fires. CF-2 f_0 -> f_0 + Pi: deg 2048 > 1951 = D
+— degree-gate ABORT, NO delta verdict produced, and the value-level
+invisibility prediction CONFIRMED (0 failures / 22 probe points), a
+live demonstration that the ADDENDUM-2(i) degree condition is
+load-bearing. CF-3 row_0 -> 3*f_0: alpha value check FAILS on row 0
+(first failing points 1, 2, 5), c^2=5!=3 in-run.
+
+**Budget (registered pre-compute, measured in-process).** Build 2175.43
+CPU s (`verdict.json:build_cpu_s`), alpha grid 700.53
+(`verdict.json:alpha_grid_cpu_s`), delta chain 15.0
+(`verdict.json:delta_chain.*` CPU fields), total 2893.37
+(`verdict.json:total_cpu_s`) of the registered 10,800 CPU-s budget
+(`verdict.json:within_registered_budget=true`); wall ~51 min. One
+disclosed calibration miss: the AMENDMENT-1 projection under-estimated
+the alpha grid (524.6 vs actual 700.53, factor 1.33); absorbed by
+budget headroom, recorded for future calibration honesty.
+
+**Rule-7 scope.** Swept: the single instance (12,3488,64) at seed 16384
+with alpha over the FULL support (3488 points, identical instrument as
+the certified ladder) and the exact 5-part delta chain; the 3 anchor
+rows in byte-equality mode; 3 counterfactual plants. NOT swept: ANY
+other t at m=12 (t=48 and t=96 remain UNREACHED), any n != 3488, any
+support ordering other than the single seed-16384 shuffle, any m > 12,
+any census row (N_fam / per-point rank / held-count c-ladder) at m=12,
+any sub-support construct, any non-irreducible G, no G population
+exhausted (one seeded irreducible, scalar-Rabin-confirmed). This is a
+BOUNDED FINITE statement about ONE instance: NOT "m=12 complete", NOT a
+verification of any NIST attack-cost figure, and it does NOT close
+Apon's section-3.6 all-Delta-zero hole (still BOUNDED by the Gate-B
+rates, not closed).
+
+**Named next action.** Second m=12 row at t=96 (the README ladder's
+probe-above-ship row), fresh pre-statement, budgeted from this
+campaign's measured rates (build ~2175 s, alpha grid ~700 s, delta
+chain ~15 s => ~1 h CPU per row at t=96 scale).
+
+— `MceliecelM12`, 2026-09-01T06:09Z; campaign frozen at commit `240820d` + ledger fix `6027427`.

@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-feasibility-corrected-chronological-test-2026-08-31",
+  "created_at_utc": "2026-08-31T08:48:28.506818Z",
+  "status": "frozen-before-corrected-outcome-analysis",
+  "classification": "outcome-blind retrospective feasibility-corrected chronological test; not prospective, not confirmation, and not a rescue test",
+  "objective": "Replace the structurally unreachable 90-minute replication with one nonoverlapping minimum-feasible window while preserving every parent formula, asset, cost, sample minimum, gate, ranking rule, and UNKNOWN truth rule.",
+  "claim_boundary": "This protocol correction can provide one valid later falsification opportunity. It cannot overturn the 2026-08-30 liquidation falsification, promote Deribit to durable alpha, pool with the structurally invalid 90-minute replication, authorize deployment, or support capital allocation.",
+  "parent_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-contract.json",
+    "size_bytes": 15346,
+    "mtime_ns": 1788110162978346030,
+    "mtime_utc": "2026-08-30T17:16:02.978Z",
+    "sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1"
+  },
+  "superseded_replication_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-replication-contract.json",
+    "size_bytes": 10223,
+    "mtime_ns": 1788162873527081359,
+    "mtime_utc": "2026-08-31T07:54:33.527Z",
+    "sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42"
+  },
+  "source_snapshot": {
+    "path": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
+    "size_bytes": 7478,
+    "mtime_ns": 1788163322200696691,
+    "mtime_utc": "2026-08-31T08:02:02.200Z",
+    "sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0",
+    "file_count": 8,
+    "created_at_utc": "2026-08-31T08:02:02.199Z",
+    "use": "Read and hash exactly the already-frozen byte prefixes; no live-tail bytes may enter this test."
+  },
+  "review_audit": {
+    "path": "quant-trading/explorations/accelerated-intraday-replication-review-audit.json",
+    "size_bytes": 8252,
+    "mtime_ns": 1788164888820662144,
+    "mtime_utc": "2026-08-31T08:28:08.820Z",
+    "sha256": "31a9d4e1fbe44bc2e69f6b11e96df80c7d6bc24fc903eeb45844058864989df8"
+  },
+  "runner": {
+    "path": "quant-trading/explorations/replicate_accelerated_intraday_corrected.py",
+    "size_bytes": 22007,
+    "mtime_ns": 1788166036522428222,
+    "mtime_utc": "2026-08-31T08:47:16.522Z",
+    "sha256": "939d15a9fb4fc6601403512d7aae574f650dafa7fd2e2dc0c4f1e445dcde6768"
+  },
+  "protocol_correction": {
+    "trigger": "Independent post-outcome review proved the prior 90-minute window could supply at most five complete liquidation onset blocks and ten two-asset Deribit transitions versus registered minima of six and twelve.",
+    "superseded_trial_disposition": "Preserved as structurally-underpowered inconclusive. Its numeric gates remain descriptive only and it does not count as a falsification opportunity.",
+    "single_changed_dimension": "Observation duration increases from 90 to 105 minutes solely because seven aligned 15-minute blocks are the mathematical minimum that leaves six signal/onset blocks with complete next-15-minute outcomes.",
+    "nonoverlap": "The corrected window starts exactly at the prior window exclusive end and shares no market-data membership with it.",
+    "unchanged": "Parent formulas, assets, sides, costs, horizons, event/session rules, alignments, sample minima, gates, rankings, zero rules, UNKNOWN rules, and claim boundaries remain unchanged.",
+    "multiplicity": "Exactly one corrected outcome run. Do not pool with, extend from, or threshold-tune after either replication outcome."
+  },
+  "observation_window": {
+    "start_utc_inclusive": "2026-08-31T01:30:00.000Z",
+    "end_utc_exclusive": "2026-08-31T03:15:00.000Z",
+    "duration_minutes": 105,
+    "selection_rule": "The immediately following nonoverlapping aligned window, using the mathematical minimum seven 15-minute blocks. Selection used no candidate-window price, return, cohort, GEX, RV, gate, or verdict.",
+    "record_boundary": "Metric records use authoritative exchange timestamps >= start and < end. Deribit outcome-block end may equal end only because every raw RV observation remains < end. Receipt time is capture availability, not exchange time.",
+    "liquidation": {
+      "onset_clock": "Binance forceOrder body.E",
+      "onset_membership": "body.E >= start and body.E < end",
+      "outcome_membership": "P_0/P_5m/P_15m raw index observations must be < end; an onset without complete +15m alignment before end is excluded and reported.",
+      "pre_window_context": "Earlier control and forceOrder rows may establish continuous session and immediately prior same-symbol gap only; they never enter cohort counts or gates."
+    },
+    "deribit": {
+      "trade_clock": "trade.timestamp",
+      "index_clock": "data.timestamp",
+      "signal_membership": "Signal block start >= start and every contributing option trade timestamp is < end.",
+      "outcome_membership": "Every RV input observation is >= start and < end except the parent-permitted pre-block anchor up to 5000 ms; outcome-block end may equal end.",
+      "metadata_context": "instrument.creation_timestamp is exchange provenance; received_ts_ms is capture availability and must be < end for metadata eligibility."
+    }
+  },
+  "feasibility_proof": {
+    "block_minutes": 15,
+    "window_blocks": 7,
+    "complete_signal_or_onset_blocks": 6,
+    "liquidation_max_complete_onset_blocks": 6,
+    "liquidation_required_nonempty_onset_blocks": 6,
+    "deribit_max_complete_asset_block_transitions": 12,
+    "deribit_required_asset_block_transitions": 12,
+    "event_and_trade_count_note": "The 20-onset and 1,000-trade minima depend on observed public activity and are not guaranteed; unlike block counts, they are not structurally capped below their minima.",
+    "machine_enforcement": "The runner rejects misaligned, overlapping, or structurally unreachable windows before loading metric modules."
+  },
+  "screens": {
+    "liquidation_btc_eth_post_onset": {
+      "output": "quant-trading/explorations/focused-liquidation-overlay/feasibility_corrected_replication_20260831_results.json",
+      "trial_count": 1,
+      "unchanged_decision_rule": "Use the parent sample stop, six gates, and totalized truth table exactly. A pass cannot reverse the parent falsification."
+    },
+    "deribit_intraday_taker_gex": {
+      "output": "quant-trading/explorations/focused-deribit-gex/feasibility_corrected_replication_20260831_results.json",
+      "trial_count": 1,
+      "unchanged_decision_rule": "Use the parent sample stop, four gates, and totalized truth table exactly. Any unmet sample condition remains inconclusive."
+    }
+  },
+  "snapshot_and_execution": {
+    "combined_output": "quant-trading/explorations/accelerated-intraday-feasibility-corrected-results.json",
+    "input_integrity": "Before metric code, verify contract, runner, parent rules, baseline artifacts, source manifest, every frozen prefix hash, structural feasibility, nonoverlap, and forceOrder/trade/BTC-index/ETH-index coverage through the exclusive end.",
+    "filter_order": "Timestamp-filter the fixed window before return, GEX, RV, correlation, gate, or verdict computation. Post-window rows can establish input coverage only.",
+    "provenance": "Emit every incomplete liquidation alignment with exact reason and keep instrument.creation_timestamp separate from received_ts_ms.",
+    "run_budget": "Exactly one outcome-producing run per screen. Existing output paths are write-once and must never be overwritten."
+  },
+  "frozen_rule_files": {
+    "replication_helper_runner": {
+      "path": "quant-trading/explorations/replicate_accelerated_intraday.py",
+      "size_bytes": 28656,
+      "mtime_ns": 1788163266293044119,
+      "mtime_utc": "2026-08-31T08:01:06.293Z",
+      "sha256": "02b5d09aa89176e08a9f1b6ff78ef0fe8884a5e1d6d1b6333dba88fca727914c"
+    },
+    "liquidation_runner": {
+      "path": "quant-trading/explorations/focused-liquidation-overlay/fast_intraday.py",
+      "size_bytes": 64391,
+      "mtime_ns": 1788114455924269795,
+      "mtime_utc": "2026-08-30T18:27:35.924Z",
+      "sha256": "57adfde1c10f0e8c5b148e12886ea4e184612edeb7359545c3d2e26fd750df10"
+    },
+    "deribit_runner": {
+      "path": "quant-trading/explorations/focused-deribit-gex/fast_intraday.py",
+      "size_bytes": 45786,
+      "mtime_ns": 1788115005718351279,
+      "mtime_utc": "2026-08-30T18:36:45.718Z",
+      "sha256": "ca4ce7448935196b6c8d9c703059f393df963185d76bb0a1a3b0f5415b868839"
+    },
+    "deribit_reconciliation_helpers": {
+      "path": "quant-trading/explorations/focused-deribit-gex/run.py",
+      "size_bytes": 22161,
+      "mtime_ns": 1788092054453974214,
+      "mtime_utc": "2026-08-30T12:14:14.453Z",
+      "sha256": "dfadbe6d9e1b05a6dcfa3d7b3527dc14eecf30018087487c76ab3ccc0deadcdd"
+    }
+  },
+  "baseline_artifact_hashes": {
+    "parent_contract": {
+      "path": "quant-trading/explorations/accelerated-intraday-contract.json",
+      "size_bytes": 15346,
+      "mtime_ns": 1788110162978346030,
+      "mtime_utc": "2026-08-30T17:16:02.978Z",
+      "sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1"
+    },
+    "parent_liquidation_result": {
+      "path": "quant-trading/explorations/focused-liquidation-overlay/fast_intraday_results.json",
+      "size_bytes": 43913,
+      "mtime_ns": 1788114466230150147,
+      "mtime_utc": "2026-08-30T18:27:46.230Z",
+      "sha256": "9f5bb6d68a5f9e2725ce265e35e3bef6ff03929733fd571b297f2eff347a8e11"
+    },
+    "parent_deribit_result": {
+      "path": "quant-trading/explorations/focused-deribit-gex/fast_intraday_results.json",
+      "size_bytes": 56109,
+      "mtime_ns": 1788115011552412474,
+      "mtime_utc": "2026-08-30T18:36:51.552Z",
+      "sha256": "b11e0659b110cf4c2398266412ed6cf884857eaf265b5ec2acc93c86750a4c98"
+    },
+    "blinding_audit": {
+      "path": "quant-trading/explorations/accelerated-intraday-blinding-audit.json",
+      "size_bytes": 34121,
+      "mtime_ns": 1788116699357026337,
+      "mtime_utc": "2026-08-30T19:04:59.357Z",
+      "sha256": "ace2d3b226b377ee99e8bc3828c64f957e5bed8d78149beb7ba72ab0abd25288"
+    },
+    "superseded_replication_contract": {
+      "path": "quant-trading/explorations/accelerated-intraday-replication-contract.json",
+      "size_bytes": 10223,
+      "mtime_ns": 1788162873527081359,
+      "mtime_utc": "2026-08-31T07:54:33.527Z",
+      "sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42"
+    },
+    "superseded_combined_result": {
+      "path": "quant-trading/explorations/accelerated-intraday-replication-results.json",
+      "size_bytes": 5337,
+      "mtime_ns": 1788163352913761880,
+      "mtime_utc": "2026-08-31T08:02:32.913Z",
+      "sha256": "02da7cc9f66d23ea0de1e78de608dc5c11d637ee0bffd1ca627b3742c451630b"
+    },
+    "superseded_liquidation_result": {
+      "path": "quant-trading/explorations/focused-liquidation-overlay/replication_20260831_results.json",
+      "size_bytes": 16030,
+      "mtime_ns": 1788163352913174336,
+      "mtime_utc": "2026-08-31T08:02:32.913Z",
+      "sha256": "ed0002eb0ad7e3241c7be94d7af3bf29faf1491ad72f4227d95ed0bbc2d2f120"
+    },
+    "superseded_deribit_result": {
+      "path": "quant-trading/explorations/focused-deribit-gex/replication_20260831_results.json",
+      "size_bytes": 22640,
+      "mtime_ns": 1788163352913474379,
+      "mtime_utc": "2026-08-31T08:02:32.913Z",
+      "sha256": "036af8c84ad001abcb502871be537968daca6ac4fc5b77a8d5c6451121ea2677"
+    },
+    "review_audit": {
+      "path": "quant-trading/explorations/accelerated-intraday-replication-review-audit.json",
+      "size_bytes": 8252,
+      "mtime_ns": 1788164888820662144,
+      "mtime_utc": "2026-08-31T08:28:08.820Z",
+      "sha256": "31a9d4e1fbe44bc2e69f6b11e96df80c7d6bc24fc903eeb45844058864989df8"
+    }
+  },
+  "data_access_disclosure": {
+    "inspected_before_freeze": [
+      "All parent and structurally underpowered 00:00-01:30 trial outcomes and its independent review.",
+      "Source manifest paths, sizes, prefix hashes, first/latest timestamps, and parse counts.",
+      "Required-stream observation counts and first timestamps at or after the candidate 03:15 exclusive end, solely to establish input coverage.",
+      "Instrument creation and receipt timestamps needed to correct provenance labels.",
+      "Schemas and runner source."
+    ],
+    "not_inspected_before_freeze": [
+      "Candidate-window index prices or returns.",
+      "Candidate-window forceOrder or option-trade membership and counts.",
+      "Candidate-window onset outcomes, GEX, RV, correlations, sample conditions, gates, or verdicts."
+    ],
+    "metric_functions_invoked_for_candidate_window_before_freeze": false
+  },
+  "pre_freeze_review": {
+    "reviewer": "local Claude CLI fable (claude-fable-5), read-only",
+    "initial_verdict": "REJECT: required nonoverlap enforcement, relative contract-path normalization, and one shared liquidation filename predicate.",
+    "corrections": "All three issues were fixed and covered by the safeguard tests.",
+    "final_verdict": "APPROVE",
+    "final_evidence": "Nonoverlap is derived from the hash-pinned superseded contract and enforced before outcomes; paths are resolved; coverage and metric code share _is_liquidation_capture; no new blocker found."
+  }
+}

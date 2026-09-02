@@ -37,25 +37,72 @@ def _nice_bounded(cmd: list[str]) -> list[str]:
 
 
 def config_hash(config: dict) -> str:
-    blob = json.dumps(config, sort_keys=True, separators=(",", ":")).encode()
+    blob = json.dumps(
+        config, sort_keys=True, separators=(",", ":"), allow_nan=False
+    ).encode()
     return hashlib.sha256(blob).hexdigest()[:12]
 
 
+def _json_text(value: object, *, indent: int) -> str:
+    return json.dumps(value, indent=indent, allow_nan=False) + "\n"
+
+
 class Campaign:
-    def __init__(self, config: dict, root: Path | None = None, dry_name: str | None = None):
-        self.config = config
+    """Immutable campaign snapshot.
+
+    ``adopt`` points at a run directory already minted by the workspace
+    control plane (``scripts/campaign.py init``), which has written a
+    manifest carrying run_id / gate / agent / prereg_sha256 / status. In that
+    mode the harness writes into the existing directory and MERGES its own
+    provenance into that manifest instead of overwriting it, so
+    ``campaign.py freeze`` and ``close`` keep working on the same run.
+    """
+
+    CONTROL_PLANE_KEYS = ("run_id", "target", "gate", "agent", "prereg_sha256", "status")
+
+    def __init__(self, config: dict, root: Path | None = None,
+                 dry_name: str | None = None, adopt: Path | None = None):
         self.hash12 = config_hash(config)
-        stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        uuid8 = uuid.uuid4().hex[:8]
-        base = root or CAMPAIGNS_ROOT()
-        self.dir = base / f"{stamp}_{uuid8}_{self.hash12}"
-        if dry_name:
-            self.dir = base / dry_name
-        self.dir.mkdir(parents=True, exist_ok=True)
+        self.config = json.loads(json.dumps(config, allow_nan=False))
+        self._adopted: dict | None = None
+        if adopt is not None:
+            self.dir = Path(adopt).resolve()
+            if not self.dir.is_dir():
+                raise FileNotFoundError(f"adopted campaign dir missing: {self.dir}")
+            control = self.dir / "manifest.json"
+            if not control.is_file():
+                raise FileNotFoundError(
+                    f"adopted dir has no control-plane manifest: {control}")
+            self._adopted = json.loads(control.read_text())
+        else:
+            stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+            uuid8 = uuid.uuid4().hex[:8]
+            base = root or CAMPAIGNS_ROOT()
+            self.dir = base / f"{stamp}_{uuid8}_{self.hash12}"
+            if dry_name:
+                self.dir = base / dry_name
+            self.dir.mkdir(parents=True, exist_ok=False)
         self.results_path = self.dir / "results.json.gz"
         self._results: list[dict] = []
+        self._manifest_written = False
+        self._closed = False
+
+    def _ensure_open(self) -> None:
+        if self._closed:
+            raise RuntimeError(f"campaign is already closed: {self.dir}")
+
 
     def write_manifest(self, extra: dict | None = None):
+        self._ensure_open()
+        if self._manifest_written:
+            raise RuntimeError(f"campaign manifest is already frozen: {self.dir}")
+        if config_hash(self.config) != self.hash12:
+            raise RuntimeError("campaign config was mutated after creation")
+        reserved = {"created_utc", "host", "platform", "python", "config", "config_hash12"}
+        collisions = reserved.intersection(extra or ())
+        if collisions:
+            names = ", ".join(sorted(collisions))
+            raise ValueError(f"manifest extras cannot override canonical fields: {names}")
         man = {
             "created_utc": datetime.now(timezone.utc).isoformat(),
             "host": platform.node(),
@@ -66,28 +113,47 @@ class Campaign:
         }
         if extra:
             man.update(extra)
-        with open(self.dir / "manifest.json", "w") as f:
-            json.dump(man, f, indent=2)
+        if self._adopted is not None:
+            # Preserve the control-plane identity written by campaign.py init;
+            # harness provenance is merged around it, never over it.
+            # `created_utc` is control-plane owned: campaign.py ranks runs by
+            # it, so it must survive adoption. The harness stamp is kept
+            # separately as `harness_created_utc`.
+            man["harness_created_utc"] = man.pop("created_utc")
+            for key in (*self.CONTROL_PLANE_KEYS, "created_utc"):
+                if key in self._adopted:
+                    man[key] = self._adopted[key]
+        (self.dir / "manifest.json").write_text(_json_text(man, indent=2))
+        self._manifest_written = True
         return man
 
     def append_result(self, result: dict):
-        self._results.append(result)
-        with gzip.open(self.results_path, "wt") as f:
-            json.dump(self._results, f, indent=1)
+        self._ensure_open()
+        if not self._manifest_written:
+            raise RuntimeError("write the campaign manifest before appending results")
+        updated = [*self._results, result]
+        payload = _json_text(updated, indent=1)
+        compressed = gzip.compress(payload.encode(), mtime=0)
+        self.results_path.write_bytes(compressed)
+        self._results = updated
 
     def close(self, summary: dict):
-        with open(self.dir / "summary.json", "w") as f:
-            json.dump(summary, f, indent=2)
+        self._ensure_open()
+        if not self._manifest_written:
+            raise RuntimeError("write the campaign manifest before closing")
+        summary_payload = _json_text(summary, indent=2)
+        files = {p.name for p in self.dir.iterdir() if p.name != "inventory.json"}
+        files.update(("summary.json", "inventory.json"))
         inv = {
-            "files": sorted(
-                p.name for p in self.dir.iterdir() if p.name != "inventory.json"
-            ) + ["inventory.json"],
+            "files": sorted(files),
             "closed_utc": datetime.now(timezone.utc).isoformat(),
             "results_count": len(self._results),
             "policy": "immutable-after-close",
         }
-        with open(self.dir / "inventory.json", "w") as f:
-            json.dump(inv, f, indent=2)
+        inventory_payload = _json_text(inv, indent=2)
+        (self.dir / "summary.json").write_text(summary_payload)
+        (self.dir / "inventory.json").write_text(inventory_payload)
+        self._closed = True
 
 
 def CAMPAIGNS_ROOT() -> Path:

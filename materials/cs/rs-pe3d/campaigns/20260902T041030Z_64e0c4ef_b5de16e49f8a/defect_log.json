@@ -1,0 +1,28 @@
+{
+  "gate": "H-33ROW-SIZE8-RESIDUAL",
+  "run_id": "20260902T041030Z_64e0c4ef_b5de16e49f8a",
+  "prereg_amended": false,
+  "defects": [
+    {
+      "stage": "first instrument invocation before Python module execution",
+      "symptom": "Python raised SyntaxError at run_size8_residual.py:499: unexpected character after line continuation character.",
+      "cause": "A surgical edit accidentally wrote escaped quote characters into one dictionary literal.",
+      "impact": "The module did not execute, no parameter-dependent computation began, and zero controls ran. No census or mathematical output existed to invalidate.",
+      "preserved_outputs": [
+        "run_size8_residual_syntax_error.py",
+        "broken_results_syntax_error.json"
+      ],
+      "resolution": "Removed the three accidental escape sequences, searched the complete source for the same lexical defect, parsed the repaired source without executing it, and reran the entire preregistered plants-plus-two-prime family."
+    }
+  ],
+  "final_instrument_sha256": "b19bc352bd4135f559496c683db3d75514cd8dc6918a279c91f262d9e594f8b4",
+  "final_result": {
+    "artifact": "controls_results.json",
+    "assertions_passed": 72,
+    "CPU_seconds": 18.887597,
+    "wall_seconds": 19.621288208989426,
+    "CPU_cap_seconds": 5400.0,
+    "wall_cap_seconds": 6000.0,
+    "complete_family_rerun": true
+  }
+}

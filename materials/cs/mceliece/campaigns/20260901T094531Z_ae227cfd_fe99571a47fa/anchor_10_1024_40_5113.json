@@ -1,0 +1,102 @@
+{
+ "anchors": {
+  "10_1024_40_5113": {
+   "byte_equal_vs_frozen": true,
+   "extra_fields_this_run": [
+    "guards_build"
+   ],
+   "extra_fields_consistent": true,
+   "record": {
+    "m": 10,
+    "n": 1024,
+    "t": 40,
+    "k": 624,
+    "D": 943,
+    "seed": 5113,
+    "G": [
+     182,
+     926,
+     186,
+     170,
+     767,
+     277,
+     203,
+     385,
+     809,
+     448,
+     677,
+     434,
+     924,
+     415,
+     508,
+     754,
+     684,
+     512,
+     608,
+     972,
+     356,
+     284,
+     52,
+     206,
+     775,
+     177,
+     571,
+     506,
+     168,
+     21,
+     768,
+     59,
+     572,
+     90,
+     1007,
+     154,
+     791,
+     659,
+     941,
+     871,
+     1
+    ],
+    "max_deg_f": 943,
+    "deg_ok": true,
+    "guards_build": {
+     "delta_yi_binary": true,
+     "delta_check_count": 5392,
+     "alpha_identity": true,
+     "beta_delta_nonzero": true,
+     "beta_pair": [
+      0,
+      1
+     ],
+     "beta_delta_deg": 1884,
+     "gamma_k": true,
+     "eps_gcd_const": true,
+     "eps_maxdeg_is_D": true,
+     "eps_degs_min_max": [
+      942,
+      943
+     ],
+     "d_uniform_input": null
+    },
+    "exact_div_ok": true,
+    "lagrange_unit_ok": true,
+    "lagrange_unit_failures": [],
+    "lagrange_unit_checks": 1024,
+    "offdiag_probes": 200,
+    "offdiag_violations": 0,
+    "assembly_spotcheck_rows": 3,
+    "assembly_ok": true,
+    "delta_exact": true,
+    "delta_scope": "EXACT for ALL (j,l): lam_l f_j(a_l) = Y[j,l], implied by L_i(a_i)=1 (n checks) + structural off-diagonal vanishing + assembly",
+    "alpha_identity_measured": true,
+    "beta_delta_nonzero": true,
+    "beta_pair": [
+     0,
+     1
+    ],
+    "eps_maxdeg_is_D": true,
+    "gamma_k": true,
+    "elapsed_s": 54.84
+   }
+  }
+ }
+}

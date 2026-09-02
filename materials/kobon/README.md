@@ -101,6 +101,24 @@ verdicts were independently re-derived by two literature scouts (2026-08-13).
 | Independent faces-only refutation at target 26 | **CERTIFIED** | `ladder_n10_t26_faces.drat` checked `s VERIFIED`: 131,314 variables / 792,462 clauses; 52,808 formula clauses and 40,395,481 lemmas in core; record `scratch/kobon/ladder_n10_t26_faces_certificate.json` |
 | $K_{\rm gen}(10)=25$ | **THEOREM — fully certified** | every row above green; verdict sealed in [`AUDIT.md`](AUDIT.md) |
 
+## Canonical release
+
+The canonical release archive is **`math/kobon/release/kobon-2026-08.zip`**
+(19,286,189 bytes, SHA-256
+`51e3789d1bb7b571302e6ab990f5a31d0b21790a316484cb83fdd2a984fca70d`, pinned by
+the sidecar `math/kobon/release/kobon-2026-08.zip.sha256`), together with its
+unpacked mirror `math/kobon/release/kobon-2026-08/` (133-file
+`MANIFEST.sha256`, all 133 verified). This is a ruling, not a convention:
+`math/kobon/docs/INDEX.md` §"Canonical release snapshot" and
+`math/kobon/docs/ARTIFACTS.md` both name it canonical, and
+`math/PROGRESS.md` records its packaging (2026-08-21, 44/44 manifest
+verified). All earlier packaging zips — `kobon-2026-08-v1` through
+`kobon-2026-08-v8` and the three `kobon-2026-08-obsolete-structure*`
+archives — are superseded packaging history, not alternate authorities, and
+live in `math/kobon/release/superseded/` (see that directory's
+`MANIFEST.md` for hashes, provenance, and per-file restore commands).
+No zips are deleted; nothing here changes any result.
+
 ## Layout
 
 | path | contents |

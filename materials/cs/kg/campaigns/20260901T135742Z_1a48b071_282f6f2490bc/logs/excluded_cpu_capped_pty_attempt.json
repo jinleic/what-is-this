@@ -1,0 +1,13 @@
+{
+  "excluded": true,
+  "launcher": "bash tool call with requested PTY and timeout 3600; PTY unavailable, niceness 15",
+  "reason": "the harness terminated the worker with status 152 after 647.80 seconds wall during tile 1",
+  "last_heartbeat": {"box": 287, "envelope_evals_before_box": 733},
+  "tiles_completed": 0,
+  "tile_artifacts_written": 0,
+  "verdict_weight": "none",
+  "measured_cpu_seconds": null,
+  "conservative_budget_charge_seconds": 648.0,
+  "budget_note": "full observed wall interval is charged, strictly upper-bounding single-process CPU use",
+  "correction": "use plain bash with timeout 0, as independently measured on this host; per-tile atomic freeze and start-tile resume remain in force"
+}

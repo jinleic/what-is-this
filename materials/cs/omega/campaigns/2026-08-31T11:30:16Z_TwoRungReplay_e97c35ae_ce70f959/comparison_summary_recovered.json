@@ -1,0 +1,44 @@
+{
+  "campaign": "2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959",
+  "comparisons": {
+    "rung1_absorbed_below_target": true,
+    "rung1_absorbed_gap_to_rung2_with": "0.0002126685829502",
+    "rung1_absorbed_less_than_rung2_with": true,
+    "rung1_raw_below_target": true,
+    "rung1_raw_gap_to_rung2_with": "0.0002137522515397",
+    "rung1_raw_less_than_rung2_with": true,
+    "rung2_with_below_target": true,
+    "target": "2.371866"
+  },
+  "evidence_label": "COMPUTATIONAL-EVIDENCE",
+  "formal_blockers": [
+    "outward end-to-end aggregate rewrite removing decision-relevant float extraction",
+    "proof that the feasibility-absorption term covers the omitted true defect"
+  ],
+  "formal_status": "SUSPENDED",
+  "input_sha256": {
+    "run_v11_replay_stdout.log": "af88e102fbc65d3d9ff1910550fa79904503417e965c1f42a983187caeda7330",
+    "rung1_replay.json": "62e764f21554bc7355a45ab51bfb59690d3e9f59f2c1fc36383f861c9b9b88b5",
+    "rung2_with_replay.json": "c5687a48d6a6e30038452997d1fda0b7e2a9c2259994242dce35d999a0fd6967",
+    "rung2_without_replay.json": "3bd20c1bf2009e6a20e9b850bf3a50b00f7f305a386f07163cb17b6b58e079bf"
+  },
+  "interpretation": "Both available rung-1 quantities are numerically below the rung-2 with-Lemma quantity and all are below the comparison target. The failed frozen key remains unresolved; this recovery chooses neither rung-1 quantity as its replacement and establishes no formal omega bound.",
+  "launcher_abort": {
+    "abort_log_sha256": "af88e102fbc65d3d9ff1910550fa79904503417e965c1f42a983187caeda7330",
+    "all_three_children_completed_and_parsed": true,
+    "comparison_summary_json_written": false,
+    "missing_frozen_key": "omega_cert_upper"
+  },
+  "rung1_available_values": {
+    "omega_cert_upper_raw": "2.371340083602922",
+    "omega_cert_with_absorbed_slack": "2.3713411672715115"
+  },
+  "rung2_with_lemma": {
+    "omega_with_absorbed_defects": "2.3715538358544617"
+  },
+  "rung2_without_lemma_diagnostic": {
+    "omega_with_absorbed_defects": "2.3715518062057623",
+    "with_minus_without": "0.0000020296486994"
+  },
+  "status": "RECOVERED_COMPUTATIONAL_DIAGNOSTIC_AFTER_LAUNCHER_KEY_ABORT"
+}

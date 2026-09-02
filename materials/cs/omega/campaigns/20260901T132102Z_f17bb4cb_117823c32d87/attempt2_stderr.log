@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/20260901T132102Z_f17bb4cb_117823c32d87/pcpen.py", line 621, in <module>
+    ws3, gm3, pm3 = run_pass(params0, box_delta=delta_exact)
+                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/20260901T132102Z_f17bb4cb_117823c32d87/pcpen.py", line 479, in run_pass
+    h_iv = frac_dyadic(hfrac)   # dyadic RADIUS enclosing |delta_i|
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/20260901T132102Z_f17bb4cb_117823c32d87/pcpen.py", line 345, in frac_dyadic
+    assert q > 0
+           ^^^^^
+AssertionError

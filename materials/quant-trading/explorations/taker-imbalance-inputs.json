@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-09-01T10:08:00Z",
+  "purpose": "Pre-outcome immutable input inventory for taker-imbalance -> semivariance-asymmetry test",
+  "outcome_accessed": false,
+  "coverage": {
+    "months": [
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07"
+    ],
+    "series": [
+      "spot-1h/BTCUSDT",
+      "spot-1h/ETHUSDT",
+      "um-perp-1h/BTCUSDT",
+      "um-perp-1h/ETHUSDT"
+    ],
+    "files": 32,
+    "total_bytes": 1278023
+  },
+  "verification": "Every zip SHA-256 equals its upstream .CHECKSUM sidecar before contract freeze.",
+  "files": [
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2025-12.zip",
+      "sha256": "d546c6e44b443e34cef5122043c5cdd3b9c76980e23cc408dafd9f6f76d65c05",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2025-12.zip.CHECKSUM",
+      "size_bytes": 43894
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-01.zip",
+      "sha256": "a40e86beb4f1e6d4b19ca022c87b8b2f0e4e40874d349a5a75b27baa9634c858",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-01.zip.CHECKSUM",
+      "size_bytes": 43807
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-02.zip",
+      "sha256": "0be4e5c92892495c5da5b371fe8755f2d508b28a58414b4171284480806ed6c4",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-02.zip.CHECKSUM",
+      "size_bytes": 40150
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-03.zip",
+      "sha256": "44f383f9423f96cdc29e03b4ba8062296763dd740ab1d93f04b62c88bac30aa6",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-03.zip.CHECKSUM",
+      "size_bytes": 44392
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-04.zip",
+      "sha256": "9f8e49b70978177414a005a6e84b1cf891f97b0196526cbd579535449c14b6f6",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-04.zip.CHECKSUM",
+      "size_bytes": 42394
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-05.zip",
+      "sha256": "11b8537dc1769a7de9d6cb2e0354dd4a376018986a826c67d1078e25fbf8fb80",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-05.zip.CHECKSUM",
+      "size_bytes": 43547
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-06.zip",
+      "sha256": "7c446aee297f382ee92b8d9b3300a1d7c21bed8166118f3bb261275bed5e308e",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-06.zip.CHECKSUM",
+      "size_bytes": 42265
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-07.zip",
+      "sha256": "ec98553c10acdbf3f210c55045614e8d3daf616e407c36718269361b1e972b16",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/BTCUSDT/BTCUSDT-1h-2026-07.zip.CHECKSUM",
+      "size_bytes": 43238
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2025-12.zip",
+      "sha256": "7a7a35ce7b9be9bafa0a00c47370acc57a48329a3289c21cb19f1185f6430fdb",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2025-12.zip.CHECKSUM",
+      "size_bytes": 42005
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-01.zip",
+      "sha256": "eb060da7fb1adc65c7999f7d1f4f3b004edf2335311bb32d05a86f9577c21106",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-01.zip.CHECKSUM",
+      "size_bytes": 41945
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-02.zip",
+      "sha256": "8c8c6e664688497711832add90349b8617caf7e8892f085e97fe4290989fe78b",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-02.zip.CHECKSUM",
+      "size_bytes": 38274
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-03.zip",
+      "sha256": "0bf4dc37f2b201a8891f63dd76164742ed7d4fa24c24065a2e7709f34488ff74",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-03.zip.CHECKSUM",
+      "size_bytes": 41894
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-04.zip",
+      "sha256": "46d62ed100717d8195bce4c07a41dc7606f41abc491ca71f9bfe653d2b92bfc0",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-04.zip.CHECKSUM",
+      "size_bytes": 40057
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-05.zip",
+      "sha256": "8c4cef22ad7046183621f1a41155e91301780a3c9f377d7770763027b08e2462",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-05.zip.CHECKSUM",
+      "size_bytes": 41042
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-06.zip",
+      "sha256": "e24954ab4ada9dc5f6bbf9ac30275d459a5729fb522f045f627296b4ad7ee985",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-06.zip.CHECKSUM",
+      "size_bytes": 40134
+    },
+    {
+      "path": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-07.zip",
+      "sha256": "5e8c974c008689943b473ccc5890707d0c2cd0b7e71bdb28c0ad65a87abde338",
+      "checksum_sidecar": "quant-trading/data/raw/binance/spot-1h/ETHUSDT/ETHUSDT-1h-2026-07.zip.CHECKSUM",
+      "size_bytes": 40988
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2025-12.zip",
+      "sha256": "41e977a06b7806ce1398aca5f9075befffd1e6303db891795f3b179c762709ec",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2025-12.zip.CHECKSUM",
+      "size_bytes": 38148
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-01.zip",
+      "sha256": "6c15ac5fd895f26bf8e12b99df6ab9aff637dc94b37128e92c75c19887d0e3b3",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-01.zip.CHECKSUM",
+      "size_bytes": 38152
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-02.zip",
+      "sha256": "886fca9764139a1d71d97ca28e0a2cb30fe7d6f44df9be2539452c02e3c4e775",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-02.zip.CHECKSUM",
+      "size_bytes": 35154
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-03.zip",
+      "sha256": "41199df2dd62c333ea306d28de331bfffbbfed03609d100c63b2de1d173f7414",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-03.zip.CHECKSUM",
+      "size_bytes": 38671
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-04.zip",
+      "sha256": "c822801b16eb317f4672e376a73664f2e5f9180409c57b6c7517707f4f873e8c",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-04.zip.CHECKSUM",
+      "size_bytes": 36965
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-05.zip",
+      "sha256": "9a367708c90de999a7a9d3114fd111ff28203b13c8daef77d154b5216fb571f7",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-05.zip.CHECKSUM",
+      "size_bytes": 37968
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-06.zip",
+      "sha256": "30bba473837a672a6a00a181a447446852414e6927bbda6684f873571788e9aa",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-06.zip.CHECKSUM",
+      "size_bytes": 37239
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-07.zip",
+      "sha256": "a09f135066ace6925ce051ddbbdd4345c103423fbe35d32b568942de978dcc7c",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/BTCUSDT/BTCUSDT-1h-2026-07.zip.CHECKSUM",
+      "size_bytes": 37864
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2025-12.zip",
+      "sha256": "80080e1303ab2c291e53103d703b5364ef7a3da36dff5eaf45044cca74e764ca",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2025-12.zip.CHECKSUM",
+      "size_bytes": 39357
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-01.zip",
+      "sha256": "d710e68cf0dc90759814647dff64be482b4ddd05bf332adb73126885cb2979d7",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-01.zip.CHECKSUM",
+      "size_bytes": 39239
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-02.zip",
+      "sha256": "97a6c569361290917a525d54d5f964af1642dc2d281e162834b4685157016540",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-02.zip.CHECKSUM",
+      "size_bytes": 36046
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-03.zip",
+      "sha256": "9ec5e28db1e0cf093d5c756b85329b43db730d6f95d6ed142a9717044b1423c2",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-03.zip.CHECKSUM",
+      "size_bytes": 39550
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-04.zip",
+      "sha256": "b72f5a102bd468d1e3d0c3b88619f1354a29e81616f9a55935d2e00837958e4b",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-04.zip.CHECKSUM",
+      "size_bytes": 37859
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-05.zip",
+      "sha256": "5353c7cd71f610eca5a58824606ba1016efe34ea62fd6e6cd4b7be4b99277915",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-05.zip.CHECKSUM",
+      "size_bytes": 38839
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-06.zip",
+      "sha256": "138bcb6c7c8be4c5bdd8048fa417be551fbeffe4024f64e5bef5ed30d3069d8c",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-06.zip.CHECKSUM",
+      "size_bytes": 38024
+    },
+    {
+      "path": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-07.zip",
+      "sha256": "2036043c65c50a1d9c817db4c93db0c97366851d7cc972efb8c5e951cb3b5cdd",
+      "checksum_sidecar": "quant-trading/data/raw/binance/um-perp-1h/ETHUSDT/ETHUSDT-1h-2026-07.zip.CHECKSUM",
+      "size_bytes": 38922
+    }
+  ]
+}

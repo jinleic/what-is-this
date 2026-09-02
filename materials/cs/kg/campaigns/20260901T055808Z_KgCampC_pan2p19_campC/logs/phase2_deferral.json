@@ -1,0 +1,25 @@
+{
+  "phase2_deferred": "BY OWNER DECISION ON COST GROUNDS (Main IRC 2026-09-01); NOT an instrument failure \u2014 tile 3 certified 484/484 leaves",
+  "measured_inputs": {
+    "tile3_this_campaign_cap2p19_cpu_seconds": 12329.9,
+    "tile3_boxes": 1120,
+    "tile3_leaves_certified": 484,
+    "tile3_evals": 4140,
+    "A_cap2p17_tile1_wall_seconds": 2665,
+    "A_cap2p17_tile2_wall_seconds": 3455,
+    "A_cap2p17_tile3_wall_seconds": 863,
+    "this_campaign_full_ladder_hard_box_cpu_seconds": 17.9,
+    "max_single_524288_eval_cpu_seconds": 11.14
+  },
+  "projection": {
+    "tile_count_remaining": 46,
+    "half_hardness_scenario_cpu_hours": 78.8,
+    "like_tile3_scenario_cpu_hours": 157.6,
+    "measured_multiplier_scenario_cpu_hours": 265.0,
+    "pre_registered_budget_cpu_hours": 40,
+    "min_overage_multiplier": 1.97,
+    "verdict": "INFEASIBLE within pre-registered 40 CPU-h under every measured/scenario bound (min 1.97x over budget)"
+  },
+  "why_not_attempted": "pre-statement \u00a76 fixed the stop rule: budget exhaustion mid-tile freezes at the last completed tile \u2014 a budget-bound partial band with 30-55 tiles OPEN-unreached, worth less than a clean single-tile certified verdict plus this quantified deferral; owner decision took the same view before any Phase-2 compute (zero Phase-2 CPU spent)",
+  "phase2_rerun_requirements": "a fresh pre-statement: raise the CPU budget to >= 160 CPU-h (the optimistic bound + margin), or shrink the frontier ring further via a jointly-derived coefficient-space tightening (B's D4 route), or both; tile granularity resumability is already implemented and demonstrated (c_tile3_state.json checkpoints)"
+}

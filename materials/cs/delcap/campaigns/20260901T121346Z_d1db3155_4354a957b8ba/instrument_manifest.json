@@ -1,0 +1,119 @@
+{
+  "ba_iterations": 4000,
+  "campaign_id": "20260901T121346Z_d1db3155_4354a957b8ba",
+  "canonical_outputs": {
+    "controls_accept": "control_accept_n11.json",
+    "controls_inrun": "control_inrun.json",
+    "failure": "FAILURE.json",
+    "log": "run.log",
+    "row_hashes": "orbit_rows.line_checksums.json",
+    "rows": "orbit_rows.jsonl",
+    "summary": "summary.json",
+    "table": "TABLE_q3_n12_conservative_intervals.csv"
+  },
+  "census_anchor": {
+    "11": [
+      14884,
+      22450
+    ],
+    "12": [
+      44530,
+      66980
+    ]
+  },
+  "dual_candidates": [
+    "ba_total_orbit_mass",
+    "uniform"
+  ],
+  "dual_selection_rule": "minimum finite direct-full-alphabet Arb upper endpoint; fixed tie order ba_total_orbit_mass then uniform",
+  "forbidden_dual_candidates": [
+    "ba_word"
+  ],
+  "frozen_utc": "2026-09-01T12:26:00Z",
+  "group": "S_3 x C_2 on symbol values and whole-word reversal",
+  "input_snap": 1073741824,
+  "output_snap": 1073741824,
+  "precision_bits": 400,
+  "prereg_sha256": "d3b2b01493928e486f9c2bcce06aae20c93e3408cdca1e60010118a7e07e7081",
+  "preregistered_orbit_counts": {
+    "burnside_series_B0_to_B12": [
+      1,
+      1,
+      2,
+      4,
+      10,
+      25,
+      70,
+      196,
+      574,
+      1681,
+      5002,
+      14884,
+      44530
+    ],
+    "input_orbits": 44530,
+    "input_words": 531441,
+    "mismatch_policy": "STOP_AND_REPORT_CRASHED",
+    "output_orbits": 66980,
+    "output_words": 797161
+  },
+  "release_key": "DELCAP_Q3_N12_RELEASED",
+  "resource_caps": {
+    "niceness_minimum": 15,
+    "one_sequential_process": true,
+    "platform": "darwin",
+    "python_dont_write_bytecode": true,
+    "row_wall_seconds": 5400,
+    "rss_bytes": 103079215104,
+    "stage_cpu_budget_seconds": 21600,
+    "stage_wall_seconds": 21600,
+    "thread_env_value": "1"
+  },
+  "row_box": [
+    {
+      "d": "1/2",
+      "n": 12,
+      "ordinal": 0,
+      "q": 3
+    },
+    {
+      "d": "1/5",
+      "n": 12,
+      "ordinal": 1,
+      "q": 3
+    },
+    {
+      "d": "1/10",
+      "n": 12,
+      "ordinal": 2,
+      "q": 3
+    },
+    {
+      "d": "1/20",
+      "n": 12,
+      "ordinal": 3,
+      "q": 3
+    }
+  ],
+  "schema": "delcap-q3-n12-total-output-orbit-mass-v1",
+  "scope_exclusions": [
+    "q=4 or q>=4",
+    "q=3 with n!=12 (except the single preregistered n=11 ACCEPT control)",
+    "deletion probabilities outside 1/2,1/5,1/10,1/20",
+    "ba_word or any non-G-invariant candidate",
+    "position/type reduction",
+    "published-rounding cause",
+    "Morozov-Duman or Pinto-Ribeiro claims",
+    "all asymptotic-capacity claims"
+  ],
+  "source_hashes": {
+    "gate_c_dhalf_dependency.py.asrun": "9bee55a5e137ae065a83271586284fa9624cffbfbc7c8d416f7a62ad86a71db9",
+    "gate_c_orbit_dependency.py.asrun": "d17c2b438840bd91e84b775e096d43c60c419ade8ff2ee1ff6e6095694eca9f9",
+    "gate_c_q3_n12_total_orbit.py.asrun": "08836f43adbffcbf35da90feb140ca030e387605043802243dd3dac4e6cc6718",
+    "gate_c_q4_structure_dependency.py.asrun": "6d12cc77cefe4ff7cce1efa7770e69cb5c470ca6797f66446756bd4d2b141cdd",
+    "orbit_rows.jsonl": "71430c7a812621d5dc3440c3faf4b7733657ae429bd4b5f5c58e07e440237b6a",
+    "orbit_rows.line_checksums.json": "4c6e114a5dcc437f18509253307221d2fac354f9a9b822b271de8478df425712"
+  },
+  "status": "FROZEN_PRE_RESULT",
+  "width_target": "1/500"
+}

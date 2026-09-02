@@ -1,13 +1,14 @@
 {
   "schema_version": 1,
   "campaign": "quant-frontier-2026-08-29",
-  "updated_at": "2026-08-31T08:06:17+00:00",
+  "updated_at": "2026-09-02T09:58:21+00:00",
   "summary": {
     "independent_wave_one_directions": 12,
     "wave_one_selection_trials": 66,
     "initial_validation_passes": 2,
     "final_validated_or_deployable_candidates": 0,
-    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. The parent same-day screen falsified the BTC/ETH post-liquidation continuation overlay at its registered 20-onset stop; an exact-rule chronological replication was inconclusive at 6/20 and cannot reverse that falsification. The parent Deribit taker-GEX screen and its exact-rule replication were both sample-first inconclusive at 10/12 transitions; the replication also missed its 1,000-trade minimum at 732 and all four descriptive gates were false. Public collectors remain active for separately frozen future mechanisms, not retrospective rescue.",
+    "frozen_certified_descriptive_mechanisms": 1,
+    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. Nine frozen mechanisms are recorded: eight are negative, inconclusive, blocked, or invalidated, and one descriptive market-structure mechanism is FROZEN-CERTIFIED. Weekday-participation-premium passed its frozen 2024H1 primary and 2024H2 replication on BTCUSDT and ETHUSDT: all six conjunctive trade-count, quote-volume, asset-consistency, month-stability, and paired week-block dependence gates passed in both windows. This is a literature-informed retrospective participation regularity on reused calendars, not directional predictability, return alpha, causality, or deployment evidence. Public collectors remain active only for separately frozen future mechanisms.",
     "historical_confirmation_is_not_blind": true,
     "genuine_forward_start": "2026-08-29",
     "focused_directions": 4,
@@ -267,7 +268,7 @@
   ],
   "focused_campaign": {
     "campaign": "quant-frontier-focused-2026-08-30",
-    "status": "exact-rule chronological replication complete; collectors active and nonblocking",
+    "status": "event-count-stopped Deribit trial complete (falsified); both focused screens now falsified; collectors active and nonblocking",
     "durable_alpha_candidates": 0,
     "ranking_basis": "information value and next falsification speed, not historical CAGR",
     "ranked_results": [
@@ -276,16 +277,16 @@
         "id": "focused-liquidation-overlay",
         "research_status": "falsified",
         "capture_status": "active-not-blocking",
-        "evidence": "The parent audited screen reached its registered 20-onset stop and falsified the overlay with all six gates false. The exact-rule 2026-08-31 chronological replication had 6/20 complete onsets; five directly evaluable gates were descriptively true and the both-assets gate was unknown, but sample-first truth is inconclusive and cannot reverse the parent falsification.",
-        "next_gate": "Do not extend or threshold-rescue either frozen window. The public collector may support a separately frozen future mechanism with an explicit claim boundary."
+        "evidence": "The parent audited screen met every sample condition and falsified the overlay with all six gates false. Independent review excluded the later 90-minute replication because its design could not reach the registered block minimum. A hash-frozen nonoverlapping 105-minute correction was valid but inconclusive at 5/20 complete onsets; five evaluable gates were descriptively true and the both-assets gate was unknown. It cannot reverse the parent falsification.",
+        "next_gate": "Do not pool, extend, or threshold-rescue either replication. The public collector may support a separately frozen different mechanism with an explicit multiplicity and claim boundary."
       },
       {
         "rank": 2,
         "id": "focused-deribit-gex",
-        "research_status": "inconclusive",
+        "research_status": "falsified",
         "capture_status": "active-not-blocking",
-        "evidence": "The parent audited screen stopped at 10/12 complete transitions with 1,028 GEX-computable trades and remained inconclusive. The exact-rule 2026-08-31 chronological replication again had 10/12 transitions, missed the separate 1,000-trade minimum at 732, and had all four descriptive gates false. Repeat negative evidence does not override sample-first truth.",
-        "next_gate": "Do not pool, extend, or tune the two frozen windows after outcome access. Any further test requires a separately frozen mechanism, window, stopping rule, and multiplicity boundary."
+        "evidence": "The parent audited screen stopped inconclusive at 10/12 transitions with 1,028 GEX-computable trades. Independent review excluded the later 90-minute replication because it was structurally capped at 10 transitions. A hash-frozen nonoverlapping 105-minute correction was valid but inconclusive at 4/12 transitions and 214/1,000 selected trades; pooled and both-asset gates were false, while RV sign-ratio and leave-one-out gates were true. On 2026-09-02 an owner-authorized, separately frozen event-count-stopped trial (campaign 20260902T095715Z_1772ff9e_65cee1db82fa) on the untouched prefix from 2026-08-31T03:15Z met every sample condition at the earliest stop 2026-08-31T13:00Z (15 transitions, BTC 7/ETH 8, 1,040 GEX-computable trades, 5 positive/10 negative blocks) and observed all four gates false: pooled Spearman +0.154 (<= -0.25 required), negative/positive RV ratio 0.695 (>= 1.1), BTC +0.286/ETH -0.143 (both < 0), leave-one-block-out non-positive fraction 0.0 (>= 0.7). FROZEN-NEGATIVE.",
+        "next_gate": "Closed. Do not pool, extend, tune, or re-window any of the four observed windows. The owner authorization that permitted the same-mechanism event-stop retest is spent; any further Deribit work requires a genuinely different mechanism with its own preregistration."
       },
       {
         "rank": 3,
@@ -314,19 +315,132 @@
       "deribit_status": "inconclusive",
       "sampling_disposition": "Complete. Neither result waits for a week: liquidation stopped at the earliest registered event-count gate; Deribit stopped at the frozen 90-minute deadline."
     },
-    "chronological_replication": {
+    "superseded_chronological_replication": {
       "classification": "outcome-blind retrospective chronological replication; not prospective, not confirmation, and not a rescue test",
       "contract": "quant-trading/explorations/accelerated-intraday-replication-contract.json",
       "contract_sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42",
-      "snapshot_manifest": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
-      "snapshot_sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0",
       "window_utc": "[2026-08-31T00:00:00Z, 2026-08-31T01:30:00Z)",
-      "combined_result": "quant-trading/explorations/accelerated-intraday-replication-results.json",
-      "liquidation_result": "quant-trading/explorations/focused-liquidation-overlay/replication_20260831_results.json",
+      "review_audit": "quant-trading/explorations/accelerated-intraday-replication-review-audit.json",
+      "review_audit_sha256": "31a9d4e1fbe44bc2e69f6b11e96df80c7d6bc24fc903eeb45844058864989df8",
+      "status": "structurally-underpowered-inconclusive",
+      "decision": "Preserve outputs as descriptive only. This trial did not provide a valid falsification opportunity and is not pooled."
+    },
+    "feasibility_corrected_chronological_test": {
+      "classification": "outcome-blind retrospective feasibility-corrected chronological test; not prospective, not confirmation, and not a rescue test",
+      "contract": "quant-trading/explorations/accelerated-intraday-feasibility-corrected-contract.json",
+      "contract_sha256": "13bbd65f2910992110812a42baaa4c838fe6b1f22f3e648076fa40ab09f25273",
+      "source_snapshot": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
+      "source_snapshot_sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0",
+      "window_utc": "[2026-08-31T01:30:00Z, 2026-08-31T03:15:00Z)",
+      "combined_result": "quant-trading/explorations/accelerated-intraday-feasibility-corrected-results.json",
+      "combined_result_sha256": "71da31465da32ab2ecc99a4a9a1e288e4b1add13a6d626c1a3be522e2c680342",
+      "liquidation_result": "quant-trading/explorations/focused-liquidation-overlay/feasibility_corrected_replication_20260831_results.json",
       "liquidation_status": "inconclusive",
-      "deribit_result": "quant-trading/explorations/focused-deribit-gex/replication_20260831_results.json",
+      "deribit_result": "quant-trading/explorations/focused-deribit-gex/feasibility_corrected_replication_20260831_results.json",
       "deribit_status": "inconclusive",
-      "decision": "No status promotion. The liquidation parent remains falsified; Deribit remains inconclusive with repeat negative descriptive evidence."
+      "review_status": "independently-approved",
+      "decision": "No status promotion. The liquidation parent remains falsified and Deribit remains inconclusive."
+    },
+    "persistent_funding_premium": {
+      "classification": "preregistered retrospective falsification test; rule-level and parameter-level novelty, not virgin-sample novelty; not prospective, not confirmation, and not a rescue",
+      "contract": "quant-trading/explorations/persistent-funding-premium-contract.json",
+      "contract_frozen_sha256": "04319eaef33f933c767b20dd896c711b065b7d02861f6861cb0c910227d3ad5e",
+      "runner": "quant-trading/explorations/run_persistent_funding_premium.py",
+      "result": "quant-trading/explorations/persistent-funding-premium/results.json",
+      "result_sha256": "241bf445300e1568288660c3e4d8b6961fbb0a850bfc84407ab02fc0041b05ec",
+      "windows_utc": "dev [2024-07-01, 2025-01-01); holdout [2025-01-01, 2025-07-01). The development span was already evaluated by focused-cross-venue-carry and funding-crowding as part of their 2024 validation windows, so the contract's original disjointness claim is retracted; see the errata.",
+      "mechanism": "Long spot 0.5x + short perp 0.5x after 18 consecutive positive funding events; 240h exit; 7 bps per side per leg at entry/exit; signed funding on the short leg",
+      "development": "24 pooled entries (BTC 11, ETH 13); mean +0.000244; median +0.0000285; tail gate true",
+      "holdout": "15 pooled entries (BTC 7, ETH 8); mean -0.000553; median -0.000508; worst -0.00143; mean and median gates false; tail gate true",
+      "status": "falsified-on-holdout",
+      "freshness_errata": "quant-trading/explorations/persistent-funding-premium-freshness-errata.json",
+      "verdict_integrity": "Verdict unchanged. The development window only served the dev-consent gate and descriptive context; both persistence counts were frozen pre-outcome, and no prior mechanism selected or fitted any rule on the verdict-carrying 2025H1 holdout.",
+      "replication_disposition": "Preregistered single replication not triggered. No third window, no re-freeze onto later windows after the outcome, no parameter search, no pooling with prior mechanisms."
+    },
+    "perp_spot_activity_volatility": {
+      "classification": "preregistered retrospective falsification test minted through scripts/campaign.py; rule-level and information-channel novelty on reused calendars; not fresh-sample, not prospective, not a return strategy",
+      "campaign_run": "quant-trading/explorations/campaigns/20260901T100003Z_57bfa07a_d4b29ad62376",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "contract": "quant-trading/explorations/pre_statement.json",
+      "contract_frozen_sha256": "032e133aca39f510f6bec6224e3261676456251aa22f5ef845742cff83c49ddd",
+      "runner": "quant-trading/explorations/run_perp_spot_activity_volatility.py",
+      "result": "quant-trading/explorations/campaigns/20260901T100003Z_57bfa07a_d4b29ad62376/primary_results.json",
+      "result_sha256": "1492da8f078b2ea0b9e33ec5f077c0b84f32200aae79a12c63d0f70bcb961309",
+      "prior_window_audit": "quant-trading/explorations/prior-window-consumption-audit.json",
+      "windows_utc": "primary [2025-07-01, 2026-01-01); replication [2026-01-01, 2026-07-01) frozen but never spent. No calendar-freshness claim: the audit proves both spans were consumed by historical-confirmation and other mechanisms.",
+      "mechanism": "Daily 00:00 UTC signal x = log(sum USD-M perpetual quote volume / sum spot quote volume) over [t-24h,t); outcome y = log(next-24h spot realized volatility / trailing-24h spot realized volatility) on BTCUSDT and ETHUSDT",
+      "primary_result": "368/368 expected observations, zero rejected days. Pooled Spearman rho -0.0657 versus the required +0.08; BTC -0.1285 and ETH -0.0109, so both per-asset signs were negative; upper-minus-lower quintile median gap -0.1942 versus the required +0.0953; one-sided block-bootstrap p 0.9488 versus the required <0.05. All four conjunctive gates false.",
+      "status": "falsified-on-primary-window",
+      "interpretation_boundary": "The contract disclosed pre-freeze (frozen_rule.known_estimator_bias) that sharing the [t-24h,t) span between the signal and the outcome denominator biases rho negative. That disclosure was made before outcome access and may not be used to relitigate this negative verdict; it does bound the claim to this conservative test rather than to the general economic proposition.",
+      "replication_disposition": "Not triggered and refused by construction: --window replication aborts unless a committed primary artifact shows status pass-on-this-sample. No replication artifact exists. No tuning, extension, pooling, or re-windowing is permitted.",
+      "independent_review": "Pre-freeze read-only review REJECTED on a stopping-protocol mismatch plus four minor defects (bootstrap n inflation, undisclosed estimator bias, single-member archive assumption, missing audit hash in the replication artifact). All five were corrected before freeze; the closure review returned APPROVE with no new blocker.",
+      "verification": "10 behavioral tests pass, including frozen hour-set boundaries, fail-closed missing hours, deterministic paired bootstrap with exact resample length, write-once refusal, and both replication refusal paths. All 56 input archives matched their upstream .CHECKSUM sidecars before any outcome value was computed."
+    },
+    "taker_imbalance_semivariance_asymmetry": {
+      "classification": "preregistered retrospective falsification test minted through scripts/campaign.py; rule-level and column-level novelty on reused calendars; not fresh-sample, not prospective, not a return strategy",
+      "campaign_run": "quant-trading/explorations/campaigns/20260901T101229Z_1cc45862_c69537283467",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "contract": "quant-trading/explorations/pre_statement_taker_imbalance.json",
+      "contract_frozen_sha256": "13f907beef8bc4dfeb3585168d9573079a9effdd6746815ab101339431a6c56a",
+      "runner": "quant-trading/explorations/run_taker_imbalance_asymmetry.py",
+      "result": "quant-trading/explorations/campaigns/20260901T101229Z_1cc45862_c69537283467/primary_results.json",
+      "result_sha256": "dfe7c9b543113ec401db9f74c76820032224e2b943c51054fd36fb0a63b355e9",
+      "windows_utc": "primary [2026-01-01, 2026-04-01); replication [2026-04-01, 2026-07-01) frozen but never spent. No calendar-freshness claim; this session had observed no outcome statistic on 2026-01..2026-07 before the run.",
+      "mechanism": "x = trailing perpetual taker-buy quote-volume share minus spot taker-buy share over bars t-25h..t-2h; y = log(downside semivariance / upside semivariance) over the 24 forward hourly returns anchored at the close of the embargo bar t-1h",
+      "primary_result": "180/180 expected observations, zero rejected days. Pooled Spearman rho -0.0019 versus the required +0.08; quintile median gap -0.0180 versus the required +0.0953; one-sided block-bootstrap p 0.5172 versus the required <0.05. All four conjunctive gates false.",
+      "per_asset_split": "BTCUSDT rho +0.3017 on 90 observations; ETHUSDT rho -0.1193 on 90 observations. The assets disagree in sign, so G2 failed. This is the substantive finding: a BTC-only reading would have looked like a discovery at roughly 2.8 date-level standard errors, and the frozen per-asset consistency gate is what refused to promote it.",
+      "status": "falsified-on-primary-window",
+      "post_outcome_discipline": "The BTC-only positive is NOT a result and is not promoted, pooled, or re-tested here. Selecting one asset after seeing the split would be textbook post-outcome selection. Any follow-up must be a separately frozen contract with its own single-asset hypothesis, its own multiplicity boundary, and windows disjoint from 2026-01..2026-04.",
+      "known_design_limitation": "Pooling rank correlations across two assets whose x distributions differ in scale (median x 1.13e-07 for BTC versus 1.57e-06 for ETH) makes the pooled statistic a weak aggregate of the per-asset relationships. This was frozen pre-outcome and is recorded, not rescued.",
+      "declared_power_limitation": "Contract disclosed pre-freeze that the effective sample is about 90 dates, giving a Spearman standard error near 0.106, so the 0.08 gate sits below one standard error. A failure here is not evidence the effect is exactly zero.",
+      "replication_disposition": "Not triggered and refused by construction; no replication artifact exists. No tuning, extension, pooling, or re-windowing permitted.",
+      "independent_review": "Pre-freeze read-only review REJECTED on six findings, the material one being that the anchor bar t-1h fed both the signal volumes and the first forward return, an impact-reversal channel that could have manufactured a positive rho. Corrected by excluding t-1h from the signal as an explicit embargo hour, making the x and y bar sets provably disjoint; the power claim was restated in date-effective terms, the integrity-abort semantics aligned, and quintile tie-breaking made deterministic. Closure review returned APPROVE with no new blocker.",
+      "verification": "12 behavioral tests pass, including an adversarial embargo-hour fixture that places a million-unit lopsided taker print in bar t-1h and asserts the signal is unmoved, fail-closed missing anchor and earliest-signal bars, deterministic tie-broken quintiles, exact-length paired bootstrap, and replication refusal. All 32 input archives matched their upstream .CHECKSUM sidecars before any outcome value was computed."
+    },
+    "quarter_hour_algorithmic_burst": {
+      "classification": "preregistered retrospective external chronological replication minted through scripts/campaign.py; rule-level, clock-phase, and 1-minute data-resolution novelty on historically consumed calendars; not fresh, blind, prospective, predictive alpha, a return strategy, or a deployment claim",
+      "campaign_run": "quant-trading/explorations/campaigns/20260901T122711Z_8e36366e_8b38bc9b20b1",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "contract": "quant-trading/explorations/pre_statement_quarter_hour.json",
+      "contract_frozen_sha256": "42bb3e3c8698a534cf159c9c317567bb10710b2c95e724283bec4a22454e2d22",
+      "runner": "quant-trading/explorations/run_quarter_hour_algorithmic_burst.py",
+      "result": "quant-trading/explorations/campaigns/20260901T122711Z_8e36366e_8b38bc9b20b1/primary_results.json",
+      "result_sha256": "09b7140d06a1a88d728f8e8de262e580365b4109ebbe518702d41a64eaea037f",
+      "prior_window_audit": "quant-trading/explorations/quarter-hour-prior-window-audit.json",
+      "loop_policy": "quant-trading/explorations/frontier-loop-policy.json cycle k=1, alpha=0.025; budget scoped only to cycles minted after the policy effective time",
+      "windows_utc": "primary [2025-01-01, 2025-07-01); replication [2026-04-01, 2026-08-01) frozen but never spent. Both deliberately exclude the campaign primary spans whose reuse state.json prohibits. No global calendar-freshness claim: older historical artifacts consumed these calendars.",
+      "mechanism": "Within each UTC date and asset, compare Binance USD-M perpetual 1-minute bars opening at minute 15/30/45 with bars at minute 5/10/20/25/35/40/50/55. Test quarter/control log ratios for number of trades and absolute close/open log return; minute 0 is excluded.",
+      "primary_result": "180 paired dates and 360 observations met the frozen minimum. G1 failed: pooled median log trade-count ratio 0.07822 versus log(1.10)=0.09531. G2 failed: BTC 0.08485 passed log(1.08)=0.07696, but ETH 0.07462 did not. G3-G6 passed: pooled median log absolute-return ratio 0.07914 versus log(1.05)=0.04879, both assets positive, all six months positive for both endpoints, and both one-sided paired block-bootstrap p-values 0.000050 versus alpha 0.025. The observed regularity is real under this estimator but smaller than the frozen count-magnitude claim, so the campaign is negative.",
+      "status": "falsified-on-primary-window",
+      "replication_disposition": "Not triggered and refused by construction because the primary did not pass every conjunctive gate. The 2026-04..2026-07 replication remains unspent. No threshold relaxation, tuning, pooling, extension, alternative clock controls, or re-windowing is permitted.",
+      "independent_review": "Read-only fable review was reopened after a material window revision, then REJECTED on three certification-test gaps (gate/status paths, hand-checkable bootstrap behavior, and timestamp-unit parsing). All blockers were fixed; the final re-review returned APPROVE with no blockers before campaign mint and before outcome access.",
+      "verification": "17 behavioral tests pass, including all-six-gates promotion, one-gate falsification, insufficient-sample inconclusive, bootstrap add-one/tail/exact-length/two-asset behavior, millisecond/microsecond parser equivalence, integrity-before-outcome, schema-failure no-write, write-once refusal, and replication refusal. All 20 listed archives matched the frozen inventory and upstream sidecars, size, member, header, CRC, audit, and loop-policy hashes before candidate parsing.",
+      "interpretation_boundary": "This is a contemporaneous two-asset clock-phase regularity consistent with scheduled execution, not proof of algorithm identity or causality. It contains no directional prediction, return, cost model, executable alpha, or deployment evidence."
+    },
+    "weekday_participation_premium": {
+      "classification": "preregistered retrospective literature-informed two-window market-structure replication minted through scripts/campaign.py; rule-level and day-of-week information-channel novelty on historically consumed calendars; not fresh, blind, prospective, predictive alpha, a return strategy, or a deployment claim",
+      "campaign_run": "quant-trading/explorations/campaigns/20260901T124115Z_6a5ffe70_d81efa8ef732",
+      "campaign_verdict": "FROZEN-CERTIFIED",
+      "contract": "quant-trading/explorations/pre_statement_weekday_participation.json",
+      "contract_frozen_sha256": "d9df02d7de44fc3e9f9cedff050f89d61434a0f815a03897abd5dc7e73ce5fef",
+      "runner": "quant-trading/explorations/run_weekday_participation.py",
+      "primary_result": "quant-trading/explorations/campaigns/20260901T124115Z_6a5ffe70_d81efa8ef732/primary_results.json",
+      "primary_result_sha256": "be76f3364d9bc64f8adb51242b0c852e68d1da7f967c642cab5d9c83dd1b3824",
+      "replication_result": "quant-trading/explorations/campaigns/20260901T124115Z_6a5ffe70_d81efa8ef732/replication_results.json",
+      "replication_result_sha256": "2b716019208b1afc8ca91e5850852f65c2b8d80270726d3228357828eb2308c8",
+      "certification_audit": "quant-trading/explorations/campaigns/20260901T124115Z_6a5ffe70_d81efa8ef732/certification-audit.json",
+      "certification_audit_sha256": "17881167469d237ae08b2bb06abe6fa26d3654be01181500e1c61cef1164cafd",
+      "prior_window_audit": "quant-trading/explorations/weekday-participation-prior-window-audit.json",
+      "loop_policy": "quant-trading/explorations/frontier-loop-policy.json cycle k=2, alpha=0.008333333333333333; familywise budget scoped only to cycles minted after policy effective time",
+      "windows_utc": "primary [2024-01-01, 2024-07-01); replication [2024-07-01, 2025-01-01). Both are historical and overlap older registered calendars, but end before every prohibited campaign primary span.",
+      "mechanism": "Within complete Monday-Sunday UTC weeks, compare all Monday-Friday one-minute Binance USD-M perpetual bars with all Saturday-Sunday bars. x_count and x_quote are log weekday/weekend arithmetic-mean ratios for number of trades and quote volume; BTC and ETH are paired by week.",
+      "primary_evidence": "26 paired weeks/52 observations, no rejected weeks. All six gates passed: pooled median x_count 0.68782 and x_quote 0.79725 versus log(1.15)=0.13976; both assets exceeded their frozen consistency gates; all six Monday-month groups were positive for both endpoints; both paired two-week block-bootstrap p-values were 0.000050 versus alpha 0.008333.",
+      "replication_evidence": "25 paired weeks/50 observations after one symmetric zero-trade week rejection per asset, still above every minimum. All six gates passed: pooled median x_count 0.63292 and x_quote 0.74130; both assets passed; all six Monday-month groups were positive for both endpoints; both p-values were 0.000050. The replication artifact binds the exact primary SHA-256 and identical contract/runner/audit/policy/inventory hashes.",
+      "status": "frozen-certified-descriptive-market-structure-mechanism",
+      "independent_review": "Read-only pre-freeze fable review returned APPROVE with no blockers before campaign mint and candidate outcome access. After both passes, a separate read-only certification audit returned CERTIFY with no blockers; programmatic verification independently recomputed the artifact hash chain and all sample/gate conditions.",
+      "verification": "14 behavioral tests pass, including complete-week boundaries, 7,200/2,880 group cardinality, all-six-gates promotion, one-gate falsification, inconclusive sample, bootstrap add-one/tail/exact-length/two-asset behavior, timestamp-unit parser equivalence, write-once refusal, integrity-before-outcome, and replication hash/pass refusal. All 24 archives passed the frozen inventory and upstream sidecar, size, member, header, CRC, audit, and policy checks.",
+      "interpretation_boundary": "Certified only as a replicated retrospective BTC/ETH weekday participation regularity. It does not prove human/institutional causality and contains no directional forecast, return, execution advantage, net-alpha estimate, deployment readiness, capital-allocation support, or absolute breakthrough claim.",
+      "next_disposition": "Preserve the frozen result. Do not tune weekdays, isolate hours/days, add assets, or re-window it under this campaign. Any return or execution hypothesis requires a separately frozen prospective mechanism and its own multiplicity budget."
     },
     "active_processes": [
       {
@@ -343,7 +457,24 @@
         "detached": false,
         "restart": "no"
       }
-    ]
+    ],
+    "deribit_eventstop_trial": {
+      "classification": "owner-authorized event-count-stopped fast-screen trial on append-only public capture; outcome-blind at registration; not confirmation, not a rescue",
+      "campaign_run_id": "20260902T095715Z_1772ff9e_65cee1db82fa",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "contract": "quant-trading/explorations/campaigns/20260902T095715Z_1772ff9e_65cee1db82fa/deribit-gex-eventstop-contract.json",
+      "contract_sha256": "318eb91f90f18167b497a9dcfb94bc15de5f3a19d5cc10e48c4963df05679f6a",
+      "runner": "quant-trading/explorations/run_deribit_gex_eventstop.py",
+      "input_snapshot_sha256": "1ae77e2397f967242a23fb7ab4c1554b1ca983dc70f30bdaa8d280f7089bee4d",
+      "window_utc": "[2026-08-31T03:15:00Z, 2026-09-02T09:30:00Z) derived from frozen byte prefixes; earliest stop 2026-08-31T13:00:00Z",
+      "result": "quant-trading/explorations/campaigns/20260902T095715Z_1772ff9e_65cee1db82fa/deribit_gex_eventstop_results.json",
+      "result_sha256": "cc8f9c0e4cf27adf3d7f4345084f17436fad8344c697295f0fa0ca2d4a59d68b",
+      "owner_dir_copy": "quant-trading/explorations/focused-deribit-gex/deribit_gex_eventstop_2026-09-02_results.json",
+      "deribit_status": "falsified",
+      "review_status": "independent read-only pre-freeze review NOT CLEARED on the first draft (six findings); all corrected or disclosed before minting; review recorded in the run directory",
+      "governance_note": "The prior next_gate wording (\"separately frozen different mechanism, stopping rule, multiplicity boundary, and input-continuity plan\") was resolved by owner directive on 2026-09-02 to permit one same-mechanism retest with a different stopping rule; the directive and the conflict are recorded in the contract governance section.",
+      "decision": "Deribit taker-GEX is falsified on its registered gates at full registered sample. No alpha, return, deployment, or capital-allocation claim. Both focused public-capture screens are now closed negative."
+    }
   },
   "forty_percent_disposition": "No explored result supports a 40% net annual-return claim. Searching further against historical CAGR is prohibited; future strategies advance only through mechanism, benchmark excess, cost/collateral realism, and prospective forward evidence.",
   "freeze_disposition": {
@@ -504,19 +635,68 @@
       "id": "focused-liquidation-overlay",
       "directory": "quant-trading/explorations/focused-liquidation-overlay",
       "artifact_status": "falsified",
-      "final_status": "falsified-parent-screen; replication-inconclusive",
+      "final_status": "falsified-parent-screen; corrected-test-inconclusive",
       "trial_count": 6,
       "return_rows": 0,
-      "disposition": "The parent registered screen met every sample condition and all six gates were false. The exact-rule chronological replication had only 6/20 complete onsets and cannot reverse that falsification; do not pool, extend, or threshold-rescue either window."
+      "disposition": "The parent registered screen met every sample condition and all six gates were false. The 90-minute replication is excluded as structurally invalid; its valid 105-minute correction had 5/20 complete onsets and remains inconclusive. Do not pool, extend, or threshold-rescue."
     },
     {
       "id": "focused-deribit-gex",
       "directory": "quant-trading/explorations/focused-deribit-gex",
-      "artifact_status": "inconclusive",
-      "final_status": "inconclusive-parent-and-replication",
-      "trial_count": 0,
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-owner-authorized-eventstop-trial",
+      "trial_count": 1,
       "return_rows": 0,
-      "disposition": "Both frozen 90-minute windows stopped at 10/12 transitions. The replication also missed its 1,000-trade minimum at 732 and all four descriptive gates were false; sample-first truth remains inconclusive, with no promotion or retrospective extension."
+      "disposition": "The parent stopped at 10/12 transitions. The 90-minute replication is excluded as structurally invalid; its valid 105-minute correction had 4/12 transitions, 214/1,000 selected trades, and mixed descriptive gates. Sample-first truth remains inconclusive. The 2026-09-02 event-count-stopped trial reached full registered sample (15 transitions, 1,040 trades) at 2026-08-31T13:00Z and observed all four gates false; the family is closed FROZEN-NEGATIVE."
+    },
+    {
+      "id": "persistent-funding-premium",
+      "directory": "quant-trading/explorations/persistent-funding-premium",
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-holdout",
+      "trial_count": 2,
+      "return_rows": 0,
+      "disposition": "Preregistered 18/18 persistence carry rule passed on the 2024-07..2024-12 development window but failed both mean and median gates on the 2025-01..2025-06 holdout (15 pooled entries, mean -5.5 bps, median -5.1 bps per cycle). The development span overlapped two prior mechanisms' 2024 validation windows; that claim is retracted in the freshness errata and does not change the out-of-sample falsification. No replication triggered; no parameter search or pooling."
+    },
+    {
+      "id": "perp-spot-activity-volatility",
+      "directory": "quant-trading/explorations/campaigns/20260901T100003Z_57bfa07a_d4b29ad62376",
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-primary-window",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "trial_count": 1,
+      "return_rows": 0,
+      "disposition": "Daily perpetual/spot quote-volume ratio versus next-day spot volatility surprise on BTCUSDT and ETHUSDT, primary window 2025-07..2025-12. Complete sample (368/368, zero rejected days) and all four gates false: pooled rho -0.0657 against +0.08, both per-asset signs negative, quintile median gap -0.1942 against +0.0953, bootstrap p 0.9488 against <0.05. The pre-freeze-disclosed negative estimator bias bounds the claim to this conservative test and may not be used to relitigate the verdict. Replication refused by construction; no tuning, pooling, or re-windowing."
+    },
+    {
+      "id": "taker-imbalance-semivariance-asymmetry",
+      "directory": "quant-trading/explorations/campaigns/20260901T101229Z_1cc45862_c69537283467",
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-primary-window",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "trial_count": 1,
+      "return_rows": 0,
+      "disposition": "Signed perpetual-minus-spot taker-buy share versus next-day downside/upside semivariance asymmetry, primary window 2026-01..2026-03. Complete sample (180/180, zero rejected days) and all four gates false: pooled rho -0.0019 against +0.08, quintile gap -0.0180 against +0.0953, bootstrap p 0.5172 against <0.05, and the assets disagreed in sign (BTC +0.3017, ETH -0.1193) so the consistency gate failed. The BTC-only positive is explicitly not promoted; any follow-up needs its own frozen single-asset contract on disjoint windows. Replication refused by construction."
+    },
+    {
+      "id": "quarter-hour-algorithmic-burst",
+      "directory": "quant-trading/explorations/campaigns/20260901T122711Z_8e36366e_8b38bc9b20b1",
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-primary-window",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "trial_count": 1,
+      "return_rows": 0,
+      "disposition": "Non-hour quarter-boundary one-minute trade-count and absolute-return bursts on BTCUSDT/ETHUSDT, primary 2025-01..2025-06. Sample met minimum (180 paired dates, 360 observations). The absolute-return, stability, and dependence gates passed, but the pooled log trade-count burst 0.07822 missed log(1.10)=0.09531 and ETH 0.07462 missed log(1.08)=0.07696. Because all six gates were conjunctive, the primary was falsified and the frozen 2026-04..2026-07 replication was not run. No threshold relaxation or re-windowing."
+    },
+    {
+      "id": "weekday-participation-premium",
+      "directory": "quant-trading/explorations/campaigns/20260901T124115Z_6a5ffe70_d81efa8ef732",
+      "artifact_status": "certified-descriptive",
+      "final_status": "frozen-certified-market-structure",
+      "campaign_verdict": "FROZEN-CERTIFIED",
+      "trial_count": 2,
+      "return_rows": 0,
+      "disposition": "Complete-week BTCUSDT/ETHUSDT weekday-versus-weekend participation contrast. Primary 2024H1 passed all six frozen gates on 26 paired weeks; the single preregistered 2024H2 replication passed all six on 25 paired weeks. Pooled log weekday/weekend trade-count medians were 0.68782 and 0.63292; quote-volume medians were 0.79725 and 0.74130; both assets and all six Monday-month groups were positive in both windows; all four endpoint/window block-bootstrap p-values were 0.000050 below cycle-k=2 alpha 0.008333. Certified only as retrospective descriptive market structure, not alpha, return, causality, or deployment evidence."
     }
   ]
 }

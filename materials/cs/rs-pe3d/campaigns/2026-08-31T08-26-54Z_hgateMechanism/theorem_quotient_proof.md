@@ -114,6 +114,24 @@ checked (A1a/A1b/A1c): the DIMENSION identity
 dim V = N − Π_i (s_i − t_i) at t=(1,1,1), pre-registered as checkable in the
 pre-statement and anchored by A1.
 
+Three further controls, added after the operator post-mortem (all exact F_q,
+run in the cheap-control window):
+
+| id | check | instance(s) | result |
+|----|-------|-------------|--------|
+| T1 | V equals the triple-sum space {x0(a1,a2)+x1(a0,a2)+x2(a0,a1)}: dims equal AND every V-basis vector contained | (13,(2,2,4)) | dim 13 = 13, containment holds, set equality PASS |
+| D1 | min-word delta closure: all-ones 4-line word has delta exactly 4, components ((0,),(),()), exhaustive ascending-cost sweep found nothing cheaper | (17,(4,4,4)) | PASS |
+| D2 | line-word delta closure at a corner | (5,(1,2,2)) dir-1 line word, delta = 2, components ((),(0,),()) | PASS |
+
+Post-mortem resolution: my in-head derivation "D_i kills 2 of the 3
+summands" was simply false (each x_i depends on the two NON-i axes, so D_i
+annihilates only the ONE summand missing axis i; consequently
+ker D0 ∩ ker D1 ∩ ker D2 = constants, matching the measured dim 1 at
+(13,(2,2,4))). The recorded structural characterizations of V are exactly
+the two machine-verified ones: the quotient kernel identity (K1) and the
+triple-sum set equality (T1). No operator-based characterization is claimed
+anywhere in this campaign.
+
 **Label discipline.** E1/E2/E3/E4/C1/C2/A0: MACHINE-VERIFIED (exact F_q
 arithmetic end to end; semantics audited). A1/L1/K1: MACHINE-VERIFIED. The
 THEOREM itself: proven by the audited argument above (steps 1-5, each link
@@ -123,6 +141,17 @@ the enumerated slices listed). Not swept, plainly: full P1/P3 censuses beyond
 the partial controls above; the general-t boundary at t_i = s_i exactly
 (corner where C_i = A_i, d = 1, handled by theorem but not enumerated);
 t_i = 0 (out of scope per Main: d = ∞ convention, not applied anywhere).
+
+**Resource-contract breach, recorded (Main-ordered, verbatim fact):** the E3
+control (full w=3 census at (41,(4,4,5)), 82,160 supports) took 52.9 s and
+therefore was NOT a sub-second cheap control; it ran during a window when
+KgBandClose owned the heavy slot. A consolidated replay of all controls was
+then started and cancelled mid-run (A0 block uncompleted in the replay;
+E3/E2/E4/L1 blocks had already re-landed identical results before the
+cancellation). All CPU-bound work by this agent is STOPPED as of
+2026-08-31; the frozen per-job outputs in the transcript are the snapshots
+of record, and P1/P3 confirmatory censuses stay HELD (unnecessary to the
+proof). Concurred with Main on the breach and the stop.
 
 ## 4. What remains for the heavy slot (pre-registered, held)
 
@@ -145,9 +174,11 @@ matches the theorem's hypothesis class (C_i exactly the GRS codes).
   (empty window) at min(s) ≥ 4** there; measuring rho at such instances
   requires the weight-≥4 window, still OPEN everywhere.
 - The general-t form: window emptiness threshold = min_i (s_i − t_i + 1).
-  The three frozen q=13 t-profiles (1/2, 3/8, 1/4 at wt 2/3/1... README rows)
-  are consistent with this reading at d = min(2,2,4−t_2+1): t=(1,1,4) gives
-  d = 2 (still wt-1 witness... [[INFERENCE — the frozen rows' wt/delta
-  pattern is quoted from README lines 172-174 and was NOT re-derived here;
-  treat the t>1 slice as COROLLARY-CONSISTENT, not machine-verified in this
-  campaign]]).
+  The three frozen q=13 t-profile rows (README lines 172-174: ratios 1/2, 3/8,
+  1/4 at t=(1,1,1),(1,1,2),(1,1,4) respectively) are consistent with this
+  reading: at t=(1,1,2) and t=(1,1,4), d stays min(2, 2, 4−t_2+1) = 2, i.e.
+  the distance stays pinned by the s=(2,2) axes and the wt-2 ratio story is
+  untouched by the t_2 growth.
+  [INFERENCE — the frozen rows' wt/delta values are quoted from the README,
+  NOT re-derived in this campaign; the t>1 slice is COROLLARY-CONSISTENT, not
+  machine-verified here.]

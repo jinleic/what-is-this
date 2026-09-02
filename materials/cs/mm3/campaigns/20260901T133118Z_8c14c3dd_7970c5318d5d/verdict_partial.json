@@ -1,0 +1,132 @@
+{
+ "phases": {
+  "A-anchor": {
+   "output_recount": [
+    9,
+    20,
+    29
+   ],
+   "frozen_row": {
+    "U": {
+     "d": 13,
+     "floor_achievable": false,
+     "states": 132
+    },
+    "V": {
+     "d": 12,
+     "floor_achievable": false,
+     "states": 81
+    },
+    "Wfac": {
+     "d": 14,
+     "floor_achievable": false,
+     "states": 672
+    }
+   },
+   "brent": {
+    "int": 0,
+    "fmpz": 0
+   },
+   "seconds": 0.14
+  },
+  "B-controls": {
+   "witness_wfac_adds": 15,
+   "witness_wfac_exact": true,
+   "witness_aux": [
+    0,
+    0,
+    -1,
+    0,
+    -1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "A3": "pass (cross-solver)",
+   "R1": "REJECTED by exact expansion",
+   "R2": "REJECTED by exact expansion",
+   "R3_cert": {
+    "cnf_sha256": "c1490f0e377ad4504f7c0e05a864cf992d8bc89d2735b6464290915d5b8f5048",
+    "lrat_sha256": "4a68140643f4445e9983b8d99f66329cb3c74e6998b0cf5ffa8fb3211e76b96c",
+    "drattrim_conv_rc": 0,
+    "drattrim_rc": 0,
+    "drattrim_out": " lemmas in core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.035 seconds",
+    "lratcheck_rc": 0,
+    "lratcheck_out": "ed clauses = 1915.  Deleted clauses = 1902.  Max live clauses = 1914\nc verification time = 0.00 secs"
+   },
+   "R4": "fired",
+   "seconds": 0.52
+  },
+  "C-ScanU": {
+   "agreed": 389,
+   "hits": [
+    [
+     0,
+     0,
+     0,
+     -1,
+     1,
+     1,
+     -1,
+     0,
+     1
+    ]
+   ],
+   "seconds": 30.17
+  },
+  "D-ScanV1": {
+   "agreed": 366,
+   "hits": [],
+   "seconds": 23.68
+  },
+  "E-ScanV2": {
+   "agreed": 79728,
+   "pairs": 79728,
+   "hits": [],
+   "seconds": 4740.68,
+   "complete": true
+  },
+  "F-certificates": {
+   "floorU_T13": {
+    "cnf_sha256": "3f584563dea799716f0c4931f384fda473285d878218767822edc312516b8913",
+    "lrat_sha256": "6a29dae881cd43cbf8c6556fde8a95cf4ab7e8cedb2243acb69f7516aac5bc2c",
+    "drattrim_conv_rc": 0,
+    "drattrim_rc": 0,
+    "drattrim_out": " lemmas in core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.025 seconds",
+    "lratcheck_rc": 0,
+    "lratcheck_out": "ed clauses = 2701.  Deleted clauses = 2686.  Max live clauses = 2700\nc verification time = 0.00 secs"
+   },
+   "floorV_T12": {
+    "cnf_sha256": "6169710f9fc3f8eb5cd5ce21c13a7010683fac6a7ca449c4c2efa7842f24b0ed",
+    "lrat_sha256": "d1c126878761ab0565a848331a74604766401a36820ee33e0ae3b4ba27438394",
+    "drattrim_conv_rc": 0,
+    "drattrim_rc": 0,
+    "drattrim_out": " lemmas in core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+    "lratcheck_rc": 0,
+    "lratcheck_out": "ed clauses = 2086.  Deleted clauses = 2072.  Max live clauses = 2085\nc verification time = 0.00 secs"
+   },
+   "U_boundary_first_infeasible": {
+    "cnf_sha256": "7e310ec98cefb70f831203ba6eef7924b48e28588cb62900e2ff3cd917fb4ec0",
+    "lrat_sha256": "d4240e273d226961dc6a10ba5091dd073ab7ec1257fea6358eda0b490e6cdb0a",
+    "drattrim_conv_rc": 0,
+    "drattrim_rc": 0,
+    "drattrim_out": " lemmas in core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.021 seconds",
+    "lratcheck_rc": 0,
+    "lratcheck_out": "ed clauses = 3146.  Deleted clauses = 3130.  Max live clauses = 3145\nc verification time = 0.01 secs"
+   },
+   "V1_boundary_first_infeasible": {
+    "cnf_sha256": "28e0dd7f9f0b8a6c4317f39f05a633631ba6d1053eaa48e5c5f2308eeb8f6400",
+    "lrat_sha256": "56fe2c45e7ae4fe7aded876b8cfa7777f283c0932a84da6886763a09ce97b61c",
+    "drattrim_conv_rc": 0,
+    "drattrim_rc": 0,
+    "drattrim_out": " lemmas in core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+    "lratcheck_rc": 0,
+    "lratcheck_out": "ed clauses = 2519.  Deleted clauses = 2504.  Max live clauses = 2518\nc verification time = 0.00 secs"
+   },
+   "seconds": 0.73
+  },
+  "G-verdict": {}
+ },
+ "defects": []
+}

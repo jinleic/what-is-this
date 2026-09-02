@@ -1,8 +1,10 @@
 # Theoretical CS results — authoritative index
 
-**Current through 2026-08-31.** Repository opened 2026-08-29; a second wave of gate-C
+**Current through 2026-09-01.** Repository opened 2026-08-29; a second wave of gate-C
 campaigns and a repo-wide source audit landed 2026-08-30, followed by the dated
-frontier and mutable-source audit on 2026-08-31. Evidence labels
+frontier and mutable-source audit on 2026-08-31, and on 2026-09-01 the
+`rs-pe3d/` H-MINLINE falsification with the certified T-DGE replacement and the
+`omega/` branch-pinning closure. Evidence labels
 are literal and defined in [`README.md`](README.md#evidence-labels):
 **MACHINE-VERIFIED** is a named executable fact; **HUMAN-AUDITED** is ordinary
 checked mathematics; **COMPUTATIONAL-EVIDENCE** is non-proof numerical
@@ -136,9 +138,12 @@ inside $(1.7,1.8)$.
 wave of gate-C campaigns has landed.** `mm3/` and `oct-rank/` are complete
 through gate C — `oct-rank/` additionally closed its **gate C4** $n=8$
 peeling-constant probe, which had stood as the repo's last `HUMAN-AUDIT-PENDING`
-item with *nothing filed*, as a certified negative. `omega/` has gate A's verdict,
-**both** gate-B rungs certified, and gate C **PARTIAL** (a wider local-optimality
-claim was written and retracted the same day — see the `omega/` section).
+item with *nothing filed*, as a certified negative. `omega/` has gate A's
+verdict and gate C **PARTIAL**, but both historical gate-B rung certificates
+are **SUSPENDED** after an outward-upper defect. Its separately repaired
+five-point fixed-m ray replay is **MACHINE-VERIFIED**: every move worsens and
+the verdict remains **OPEN**. It is not a feasible construction or exponent
+result.
 `mceliece/` has gate A on **13** instances with $m$ now **contiguous** $6$–$11$,
 after the owner found and the agent closed a hole at $m=9$. `kg/` has gate A plus
 an independently corroborated tail, and its gate C was held on a methodological
@@ -146,14 +151,13 @@ collision with newly-found literature, then cleared. `rs-pe3d/` has the first
 exact 3-D expansion table; `delcap/` has a certified Blahut–Arimoto pipeline plus
 two documented negative findings.
 
-**Four results are, to repo knowledge, firsts:** the $K_G$ bound above; the
-first rigorous interval enclosure of any rung of the combination-loss ladder
-for $\omega$ (`omega/`); the first machine-checked per-orientation
-optimality map for rank-23 $3\times3$ matrix multiplication (`mm3/`); and — added
-2026-08-30 — `mm3/`'s **monomial-transfer theorem**, that $C(F)=C(gF)$ for every
-signed permutation $g$ of the 9 input coordinates, which makes the entire $48^3$
-sandwich group cost-invariant. It is proved structurally (sign-classes map
-bijectively, input directions are fixed, the synthesis problem is isomorphic) and
+**Three currently accepted results are, to repo knowledge, firsts:** the
+$K_G$ bound above; the first machine-checked per-orientation optimality map for
+rank-23 $3\times3$ matrix multiplication (`mm3/`); and — added 2026-08-30 —
+`mm3/`'s **monomial-transfer theorem**, that $C(F)=C(gF)$ for every
+signed permutation $g$ of the 9 input coordinates, which makes the entire
+$48^3$ sandwich group cost-invariant. Structurally, sign classes map
+bijectively, input directions are fixed, and synthesis problems are isomorphic;
 machine-confirmed by identical $d$, identical floor verdicts and identical DFS
 state counts across 1,658,880 swept orientations. It discharges the monomial half
 of gate C's contract **by proof** and localizes the remaining open direction to
@@ -520,6 +524,321 @@ intermediates are exactly $u_{12}=A_1-A_4$ and $v_9=v_5+B_7$.
 | [`mm3/`](mm3/README.md) | additive complexity of rank-23 $3\times3$ matmul; is the per-orientation optimality claim correct, and can 55 be beaten? | **gates A+B+C complete; UNSATs checker-certified; gate C extended with a THEOREM; OFF-DIAGONAL PROGRAMME COMPLETE 2026-08-30 — 3,387,432,960 valid orientations all certified $\ge55$, zero $\le54$, and the published orientation is the UNIQUE minimizer** | **Gate A — arXiv:2607.28676 reproduced exactly** `[REPRODUCED]`: all 729 Brent identities over $\mathbb Z$ (27 unit, 702 zero, **0 failures**), counts $13/14/28=55$, three independent presentations agreeing, Perminov's `cr58_cn122` provenance closed to 0 mismatches. Full predecessor ladder also re-verified in one fixed convention: Stapleton-60 (729/729 + 2000-trial randomized end-to-end, printed-structure recount exactly 60), MWS-59 (729/729 on both their Table-3 artifact and a reconstruction of printed Table 2), Perminov-58, Sun-56. **Gate B — the paper's "provably optimal for this fixed orientation" claim is machine-decided, CONFIRMED, and now CERTIFIED.** $C(U)=13$, $C(V)=14$, $C(W\text{-factor})=14$, output $=28$, established by **three independent decision procedures** (exhaustive floor DFS, HiGHS ILP infeasible, CaDiCaL 1.5.3 UNSAT) plus the paper's own circuits as $d(F)+1$ witnesses, and since 2026-08-30 by **kissat 4.0.4 DRAT proofs accepted by drat-trim and `lrat-check`** (see [Proof-log certification](#proof-log-certification-2026-08-30)). Certificate structure after the agent's own retraction of an over-reading: **[no circuit at the floor $d(F)$] + [witness at $d(F)+1$]** $\Rightarrow C(F)=d(F)+1$; aux-1 at $d+1$ *is* possible, as the witnesses require and as the SAT control confirms. **Gate C — no $\le54$ total exists in the valid orientation orbit, and the landscape is mapped.** Swept set stated exactly: the $\sigma$-orbit $\{\mathrm{Id},\sigma,\sigma^2\}$, $\sigma:(U,V,W)\mapsto(V,W^\top,U^\top)$ of order 3; pure $(U,V)$ swaps **excluded by proof, not budget** ($B\cdot A\ne A\cdot B$). Certified totals: $\mathrm{Id}\to13/14/28=\mathbf{55}$, $\sigma\to14/14/29=57$, $\sigma^2\to14/13/30=57$ — the paper's orientation is the **certified optimum of its own orbit**, and $\{55,57,57\}$ is the **first machine-checked per-orientation optimality map for rank-23 $3\times3$**. Sun's decomposition separately certified on *his* factors at $13/13/30=56$. **Two cross-paper alarms raised and both dissolved:** Sun-56 is a *different* rank-23 decomposition, not a reorientation (zero common product triples, and multiset equality fails up to signs, under the $T$ involution, and transposed); and the 59-vs-57 flag was the agent's **own tally slip**, machine-recounted to exactly $15+15+29=59$, retracted inline, with record history $60\to59\to58\to56\to55$ unchanged. Bonus: the same procedure independently confirms Sun's own lower bounds, including his reported `V_aux1_at_12_possible: False` over all 338 auxiliary directions. | Gates A/B/C MACHINE-VERIFIED across **six** frozen campaigns, the last being `mm3/campaigns/2026-08-30T031544Z_e0f3f117_c9df97a8bf3a/` (CNFs, binary + LRAT proofs, verbatim checker output, checksums, tool sources, manifest) and `2026-08-30T012035Z_a7ea8e8e_cbdf8e63fa94/` (the 59-vs-57 resolution). **Scope, per rule 7:** gate C is *complete* over the valid $\sigma$-orbit but *partial* over abstract orientation space, so "no 54" is not a universal claim. **Certification gap CLOSED:** the UNSATs no longer rest on procedure agreement alone. VeriPB v0.1.0's `recordclass` API break made the pseudo-Boolean route a fallback; the DRAT route carried it instead, with cadical 3.0.1 as a second solver on paper-$U$. |
 | [`delcap/`](delcap/README.md) | binary/$q$-ary deletion channel: is the published constant chain rigorously enclosable, and can the finite-length bounds be tightened? | **gate A closed at max certifiable $n$; gate B enclosure table delivered; **Open Item 1 RESOLVED 2026-08-30 — 20/20 $q{=}3$ rows strictly improve BOTH ends of the published TNB sandwich**; gate C TARGET ACHIEVED — certified improvement on the published $d=1/2$ sandwich, both ends, all 13 rows** (agents `Delcap`, `DelcapGateC`) — **row added 2026-08-30: this target had NO row in this table while the summary above asserted its evidence, the same SSOT drift found in `../physics/` the same day** | **GATE C TARGET HIT: a certified finite-blocklength improvement on Tavakoli–Nguyen–Bose's published $d=1/2$ sandwich, at BOTH ends, on all 13 rows** ($q\in\{2,3,4\}$, $n$ up to 8). Truncation order **NONE** — the full exact $q^n\times\sum_k q^k$ channel enumerated, no window, no alphabet cut — and tail bound **exactly $0$**, Arb 400 bits. Their sandwich is $\mathrm{LB}_1=(1-d)\log_2q-h_2(d)$, $\mathrm{LB}^+$ their Cor. 1 tightening, $\mathrm{UB}=(1-d)\log_2q$. Example rows: $q{=}2,n{=}2$ their $[0.375,0.5]$ against certified $[0.415241012,0.415241013]$ (width $6.7\times10^{-10}$); $q{=}2,n{=}8$ their $[0.18324295,0.5]$ against $[0.265375771,0.265382499]$; $q{=}4,n{=}4$ their $[0.63826289,1.0]$ against $[0.707114444,0.707114895]$. Verdict on every row `CERT_LOWER_BEATS_LBplus` **and** `CERT_UPPER_BEATS_UB`, decided by Arb-endpoint inequalities with margins $0.04$–$0.08$ and $0.08$–$0.29$ bits/symbol — four to six orders above the widths. `MACHINE-VERIFIED`. **Owner-verified at 300 bits:** $h_2(1/2)=1$ exactly, their closed forms reproduce their printed $\mathrm{UB}$/$\mathrm{LB}_1$ columns for $q=2,3,4$, and three spot-checked rows match the reported gains to the printed digit with the certified interval strictly inside $[\mathrm{LB}^+,\mathrm{UB}]$. Their own points: 15 further rows, every certified interval strictly inside their sandwich, **zero exclusions**. Extension rows with no printed analogue (MD show these $\delta$ only as Fig. 2 curves): **30** LO-CVB rows at $\delta\in\{1/20,1/2,4/5\}$, ball radius $\le2.84\times10^{-120}$, plus **30** Pinto–Ribeiro $C_{n,k}$ rows at $n=6..9$ — first certified values, explicitly *not* comparisons. **Rule 7 on the extension rows:** only the top 24 $\Lambda$ subsets per row are Arb-certified, so each is a *valid* converse bound but **not** a proven global optimum over $\Lambda$; $E(m,w)$ is `CITED-DEPENDENCY` except $w\in\{0,1,2,m\}$, re-derived and matching. **Also first rigorous interval enclosure of the published deletion-channel constants.** **And tighter certified lower bounds than the published BA column:** TNB's $C_{q,n}$ column sits below our certified enclosure in **9 of 15** rows by more than one 3-dp ulp ($+1.3\times10^{-3}$ to $+1.1\times10^{-2}$), from the primal certificate alone. **No theorem is contradicted** — their ordering $\mathrm{LB}_1\le\mathrm{LB}^+\le C_{q,n}\le\mathrm{UB}$ holds and our intervals lie strictly inside their own sandwich in all 15 rows, confirming it. The excess is monotone increasing in **both** $n$ and $d$ (owner-verified), the signature of an unconverged Blahut–Arimoto whose primal climbs to capacity **from below** — so their $C$ column is an unconverged *estimate*, not a claim to printed precision (`INFERENCE`). Certified-Arb Blahut–Arimoto: mpmath 150-dps locating step $\to$ exact rational snap on the simplex $\to$ outward-rounded Arb evaluation of **both** the primal $I(p^*)$ and the Csiszár–Tusnády dual $\max_x \mathrm{KL}(W(\cdot\mid x)\Vert D_{p^*})$, so the interval $[\text{primal},\text{dual}]$ contains the true capacity **regardless of BA convergence** — convergence controls only tightness. 12 Fertonani–Duman Table II entries enclosed exactly, plus a new certified $U(28,0.68)=0.13168$. Gate C: **all 36 Morozov–Duman Table III LO-CVB rows independently recomputed and certified**, zero-width intervals at 400 bits, agreeing with the published values to within $7.1\times10^{-7}$ absolute under the paper's evident **round-up** printing convention — the conservative and correct convention for an upper bound. `MACHINE-VERIFIED` for our values; the convention identification is `INFERENCE`. **No published claim is contradicted.** Two negative findings recorded: the proposed type-channel symmetry reduction was **falsified by the target itself** ($S_n$-equivariance of the channel law fails), and the Fertonani–Duman apparent discrepancy dissolved into their stated round-up rule on an unconverged dual. Solver audit clean — zero LP/QP/MILP in the certified path — and a **live invalid-certificate branch was caught before it bit**: at $q=2,n=10,d=1/20$ the empty-output mass $\sim10^{-13}$ sits *below* the snap resolution $2^{-40}=9.09\times10^{-13}$, so $D'(y)$ would have snapped to zero where $W(y\mid x)>0$, making $\mathrm{KL}=+\infty$; silently skipping that term would have produced a too-small "upper bound". `cert_dual` returns $+\infty$ (no claim) instead, with full support guaranteed two ways. |
 
+
+**Current-status override for the table (2026-08-31).** The historical
+`omega/` gate-B rung labels in the row above are **SUSPENDED** after the shared
+outward-upper defect; only the separately replayed five-point candidate ray is
+restored, with all five moves strictly worsening and an **OPEN** verdict. The
+two historical rungs and box enclosures await corrected replay. For `kg/`, the
+direct-D.4 restart has now re-certified `[1,1.3]`, `[1.30,1.45]`, and
+`[1.45,1.75]`; `[1.75,3.5]` is partial with 25/36 tiles,
+`[3.5,4.083]` and the refined `[4.083,6]` remain open at their panel caps, and
+the widened interior refinement is running. Later correction sections below
+are the controlling evidence.
+
+## `oct-rank/` Routes A/F closed to their honest boundary, 2026-08-31
+
+**Route A is dead as a route to 14.** For every linearly independent real
+octonion triple $(u,v,w)$,
+
+$$[L_{\bar u}L_v,L_{\bar u}L_w]^2
+  =-4N(u)\det\operatorname{Gram}(u,v,w)\,I.$$
+
+The Gram determinant is positive, so the commutator has rank eight. The proof
+uses the coefficientwise polar identity
+$L_{\bar x}L_y+L_{\bar y}L_x=2\langle x,y\rangle I$, orthogonally decomposes
+$v,w$ from $u$, and squares the normalized commutator. Exact rational
+coefficient controls cover all basis pairs, 56 independent triples, 28
+dependent plants, and the quaternion calibration; the universal deduction is
+**HUMAN-AUDITED**, not overlabelled as a machine proof.
+
+Owner first-hand reading of Landsberg §6.1, Theorem 6.1.1 confirms the actual
+Strassen-form inequality
+
+$$\operatorname{rank}[T_{\alpha,\alpha_1},T_{\alpha,\alpha_2}]
+  \le 2(r-b).$$
+
+Thus $b=8$ and commutator rank eight give only $r\ge12$, **not 16**. The
+quaternion control gives $r\ge6$, consistent with true rank seven; the naked
+$b+\operatorname{rank}$ reading would falsely give eight and is retracted.
+Landsberg and Koiran were read first-hand; attribution to Strassen's 1983
+primary remains `CITED-DEPENDENCY / PRIMARY UNESTABLISHED`.
+
+**Route F remains exactly $\{13,14\}$.** The conjugated $(1,i,j)$ tensor is
+the shared-first-factor block duplication
+$\tau\boxtimes(e_0\otimes I_2)$: two identical $4\times4$ quaternion slice
+blocks. The frozen rank-seven $\tau$ witness supplies upper 14, while the
+existing substitution/pencil chain supplies lower 13. Five numerical CP
+starts and three commuting-extension starts found no witness; their best
+relative residuals, $1.33\times10^{-3}$ and $1.00\times10^{-4}$, are
+`COMPUTATIONAL-EVIDENCE`, never infeasibility. Ordinary direct-sum additivity
+does not apply after identifying the first factors, and the available
+matrix-pencil multiplicativity theorem has first dimension two over
+$\mathbb C$, not three over $\mathbb R$.
+
+Frozen campaign:
+`oct-rank/campaigns/2026-08-31T08:02:18Z_routeAF/`; owner checksums passed all
+23 listed payloads. Two numerical searches violated `kg/`'s exclusive CPU
+slot (105.30 s and 32.67 s wall), so timing/performance interpretation is
+forbidden. The agent also deleted two untracked drafts without required user
+confirmation; both were restored byte-exactly from the edit transcript and
+are explicitly `UNEXECUTED / NOT EVIDENCE`. No lasting file loss was found.
+The full octonion multiplication window remains
+$18\le R_{\mathbb R}(T_{\mathbb O})\le25$.
+
+## `omega/` Gate-C slope replay repaired — V1 passes; full-box sign remains OPEN, 2026-08-31
+
+**The old $+0.9008715$ residual is retracted as nonreproducible.** The
+advertised frozen source, SHA-256
+`4504365a7917f80362424a7252203cd770b7c51392061e517f8c10e62fc946fa`,
+raises `NameError: s_const` before its first aggregate checkpoint; no frozen
+producer for raw $3.272425321778391$ exists. The corrected replay matches all
+seven frozen $R$ branches, $R=2.8170035674609757$,
+$M=2.0942543887102634$, and raw
+$\Omega=2.3715538358350807$, residual
+$4.440892098500626\times10^{-16}$: **V1 PASS**.
+
+The inherited penalty hypothesis was false. Zeroing only the stated Lemma-1
+contribution shifts raw $\Omega$ by
+$2.029648699330977\times10^{-6}$, not $0.9008715$; there is no $3\times10^5$
+amplification. The old number is `REPORTED` history only, and its implied
+$R=0.9303495043602614$ is `INFERENCE`.
+
+Four certificate-path defects were fixed before decision: an extra $/r$
+shrunk the effective LP radius from $10^{-7}$ to $10^{-14}$; 21
+variable-bound marginals were incorrectly treated as a 45-coordinate dual;
+the dense SVD basis was loaded instead of the exact integer JSON kernel basis;
+and the arbitrary-$y$ full-box instrument was absent. Exact Arb endpoints now
+replace inward binary64 subtraction, and every interval-overlapping minimum
+branch is hulled.
+
+**Honest result:** the exact-basis midpoint LP gives a numerical candidate
+$-1.577332901516852\times10^{-7}$ (`COMPUTATIONAL-EVIDENCE`). The rigorous
+arbitrary-$y$ enclosure over the complete named 45-coordinate box is
+$[-5.841014555619999,\,5.841014555619999]\times10^{-6}$, width
+$1.168202911124\times10^{-5}$ (`MACHINE-VERIFIED`), so it straddles zero.
+Verdict: **FAILURE TO CERTIFY / OPEN**—neither an improving witness nor local
+optimality.
+
+Campaign:
+`omega/campaigns/2026-08-31T07:57:00Z_OmegaGateCDiag_4859327/`; owner
+`sha256sum -c` accepted all 17 payloads. Scope is only the region-0
+`glob dist[0]` nullspace at radius $10^{-7}$ in the transcribed
+$q=5$, max-level-3 program. It bears on neither the published
+$2.37155181$ endpoint nor the $2.371177$ record. A held successor will test
+the single numerical direction with exact dyadic feasibility and direct Arb
+point comparisons.
+
+### Correction — the registered ray preserves a non-unit center mass
+
+The held successor described above did run its five fixed points and remained
+**OPEN**, but “exact dyadic feasibility” was too strong.  Its exact guard
+proves `A*d=0`, `sum(d)=0`, positivity, and preservation of the released
+center's mass.  It does not prove that mass is one.  Exact summation of the
+registered coordinates in
+`omega/campaigns/2026-08-31T09:18:39Z_OmegaGateCCandidateWitness_e9c6414/protocol_static_corrected.json`
+gives
+
+$$
+\sum_i p_i
+=\frac{37778931862949057407573}{37778931862957161709568}
+=1-\frac{8104301995}{37778931862957161709568}
+<1.
+$$
+
+All five old interval differences still contain zero, so their **OPEN**
+verdict is unchanged and no false witness was promoted.  The points form a
+fixed-mass affine ray at the released binary64 center, not a feasible ray for
+the registered sum-one constraint.  Any later strict sign on those same
+points can establish only descent of the explicitly repaired
+generalized-entropy/absorbed-defect objective; it is not a feasible
+construction, a constrained-local-optimality counterexample, or an exponent
+improvement.
+
+### Correction — shared Omega interval enclosures suspended
+
+Frozen-source audit found that `omega/src/interval_core.py::from_two` used
+`b.lower()` for its upper endpoint instead of `b.upper()`.  A nonzero-radius
+Arb upper expression can therefore be rounded inward before later buffering.
+Pending a corrected replay, all Omega results whose rigorous label depends on
+that core are **SUSPENDED**: the two-rung interval endpoints, certified-box
+endpoints, full-box sign enclosure, and five candidate-ray interval
+differences.  Stored numerical outputs remain evidence of what the old code
+computed, not accepted formal enclosures.  Float reproductions and exact
+integer/rational rank, mass, and feasibility statements are unaffected.
+
+The first generalized-entropy repair run (v9) aborted at the base point on a
+transposed feature matrix before producing any certificate.  Its static v10
+successor fixed that interface but was rejected before production: its
+binary64-only exact-point converter cannot represent the registered moved
+dyadics, and it retained the defective interval dependency.  Neither campaign
+established a sign.  Restoration requires an outward-upper fix, exact Arb
+dyadic extraction without binary64 rounding, a fully frozen code/input
+perimeter, and replay.
+
+### Partial restoration — candidate ray replayed under repaired core
+
+Campaign
+`omega/campaigns/2026-08-31T14:29:40Z_OmegaGateCEntropySolver_v12_d2d3d4d5/`
+replays the base and all five registered divisors with the outward-upper fix,
+exact finite-Arb dyadic extraction, hard-hashed local inputs, and an
+independently checked KKT gate. The intervening v11 production is preserved as
+**ABORTED** at a stale old-objective raw anchor; its diagnostics motivated a
+least-squares residual solve after the L-BFGS-B warm start.
+
+All 1,152 entropy certificates passed. The maximum outward KKT upper bound is
+`1.4456822252392066e-10 < 1/2^32`. The repaired full-objective differences
+(moved minus base), in divisor order 16, 8, 4, 2, 1, are strictly positive:
+`[6.475289389514407e-9,6.475289390521749e-9]`,
+`[1.2954036629144681e-8,1.2954036630152025e-8]`,
+`[2.5911541940662355e-8,2.5911541941669702e-8]`,
+`[5.182659614230212e-8,5.182659614330947e-8]`, and
+`[1.0365687869954472e-7,1.0365687870055208e-7]`
+(`MACHINE-VERIFIED`). Thus none of these five moves is a descent direction for
+the repaired fixed-m objective.
+
+Verdict remains **OPEN**: the fixed-mass points are not sum-one feasible, and
+one worsening ray proves neither local optimality nor an exponent bound.
+Result SHA-256 is
+`0403e652099a217d421c9bb1aa7fd56f07fb6daff72ddf14273d6a6dff063122`.
+This restores only the candidate-ray statements. The historical two-rung and
+box enclosures remain **SUSPENDED** pending their separate corrected replay.
+
+### Corrected-core two-rung replay measured, but formal endpoints remain suspended
+
+The separate two-rung campaign ran all three frozen child computations. Its
+aggregate launcher then aborted with `KeyError: 'omega_cert_upper'` because the
+rung-1 schema contains distinct raw and absorbed-slack fields, not that key. A
+hash-gated additive recovery compared both without silently selecting a
+replacement: rung 1 raw/absorbed are `2.371340083602922` /
+`2.3713411672715115`, while rung 2 with Lemma is
+`2.3715538358544617`; both orderings hold and all are below `2.371866`.
+Recovered artifact SHA-256:
+`8160e846c4b64a167624dad8460e83bc29c4e69ac16115a7015da208a838adda`.
+
+This is **COMPUTATIONAL-EVIDENCE**, not restoration. The original launcher
+abort is preserved, its missing field is unresolved, and the formal two-rung
+endpoints stay **SUSPENDED** pending an end-to-end outward aggregate free of
+decision-relevant float extraction and a proof for the feasibility-absorption
+term.
+
+## `delcap/` orbit-invariance correction — 19 prior $q=3$ rows suspended, 2026-08-31
+
+**Repository-certificate defect found:** the frozen largest-remainder
+per-output-word snap can split an output orbit, while the old dual certificate
+then maximized only one input representative per orbit. At $(q,n,d)=(3,6,1/5)$,
+flat output orbit 51 (size 12) receives exact integer counts $578{,}028$ and
+$578{,}029$ at denominator $2^{30}$. The reference law $D$ is therefore not
+output-orbit invariant, so the representative-only maximum is inadmissible. A separate
+$(3,3,1/2)$ plant proves the failure can be permissive: the compressed value is
+strictly smaller than the true full-alphabet dual.
+
+Mandatory audit stopped at the first failure: $(3,6,1/2)$ passed exact orbit
+equality, $3{,}279$ generator checks, all $729$ inputs, and full-versus-
+representative agreement; $(3,6,1/5)$ failed; the other 18 rows did not run.
+Consequently only the first row currently retains certification. The other
+19 intervals in the table and summary are preserved but **RETRACTED /
+SUSPENDED** until replay from exact orbit-coordinate masses. No external
+published claim is affected.
+
+The clean fix is not a filter: snap total dual-reference mass in
+**output-orbit** coordinates, set $D_y=D(O)/|O|$ exactly, prove positivity,
+normalization, and invariance, then compare the representative maximum with
+every full-alphabet input. If the primal is symmetry-compressed, its input
+distribution and full-alphabet value need separate equality checks. The replacement
+campaign must re-certify all prior 20 rows before extending to $q=4$.
+
+### Correction replay complete — all 20 $q=3$ rows restored, 2026-08-31
+
+**The suspension above is resolved by a replacement certificate, not by
+reinstating the defective endpoints.** Campaign
+`delcap/campaigns/2026-08-31T09:13:25Z_7dc5babe-5e1b-44fa-a9e5-03d2f10183b6_q3-invariance-correction/`
+snaps exact total mass in input- and output-orbit coordinates, expands each
+mass uniformly within its orbit, and directly replays the primal and dual on
+every positive-mass input word. All 20 replacement rows at
+$n\in\{6,7,8,9,10\}$ and
+$d\in\{1/2,1/5,1/10,1/20\}$ certify both
+`CERT_LOWER_BEATS_LBplus` and `CERT_UPPER_BEATS_UB`.
+
+The old defect was widespread: 16/20 accepted `ba_word` vectors split an
+output orbit; only four were invariant. Every corrected row instead selects
+`ba_total_orbit_mass`. The replay performed 1,058,508 direct full-input KL
+evaluations, 5,821,704 exact generator checks, and 237,744,816
+positive-$W$/positive-$D$ term checks, with zero positive-mass words skipped.
+Owner verification accepted all 17 checksummed payloads. Conservative
+400-bit-Arb interval widths range from
+$1.2226475645090283\times10^{-8}$ to
+$2.220013228610702\times10^{-5}$; binary64 fields remain report-only.
+
+**Scope:** this restores exactly the 20 finite-$n$, $q=3$ statements above.
+It does not restore the old endpoints, prove an asymptotic capacity claim, or
+certify any $q=4$ row. The separately frozen $q=4$, $n=5,\ldots,10$ extension
+remains **NOT RUN / FAILURE TO CERTIFY** pending its released compute slot.
+
+### $q=4$ startup anchor released and passed
+
+The frozen extension has now completed its mandatory
+`q=4,n=5,d=1/2` anchor. Its 400-bit outward per-symbol interval is
+`[0.6664806108007938,0.6664806978587714]`, width upper
+`8.705797740570955e-8`; all 3,072 input and 4,095-per-candidate output
+generator checks passed, and both dual candidates were evaluated on all 1,024
+inputs. Verdict:
+`CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB` (**MACHINE-VERIFIED**).
+Anchor SHA-256:
+`c47aeb35250eade511e3cfe8e65701e9302545b18d46d995952cdd5f073b794b`.
+The anchor writes no row artifact, so the fixed 24-row `n=5..10` grid remains
+**COMPUTE PENDING**; no other $q=4$ row or asymptotic claim is certified.
+
+## `rs-pe3d/` H-GATE — support-window mechanism proved, 2026-08-31 (owner-derived, agent-audited)
+
+**Outcome:** for the implemented lifted-line sum of diagonal generalized
+Reed–Solomon codes,
+
+$$d_{\rm Ham}(V)=\min_i(s_i-t_i+1).$$
+
+Hypotheses: distinct evaluation points, nonzero diagonal entries, and
+$1\le t_i\le s_i$; a zero component code is handled separately. Precisely:
+every support $S$ smaller than this distance has
+$V\cap\mathbb F_q^S=\{0\}$, and a minimum GRS word lifted on one line supplies
+**some** support at equality. Hence the **union** of all supports of weight at
+most $w$ is empty iff $w<d_{\rm Ham}(V)$. No individual-support “iff” is
+claimed above the threshold.
+
+At $t=(1,1,1)$ this proves the observed H-GATE exactly: the weight-$\le3$
+window is empty iff $\min_i s_i\ge4$. It also replaces the sampled predictor
+outside that slice: the general predicate is $\min_i(s_i-t_i+1)$, not
+$\min(s)$. Pairwise coprimality, repeated/equal orders, $s_i=1$, and any
+nonzero $\Lambda$ do not change the distance theorem.
+
+**Proof:** put $Q_i=A_i/C_i$. Right exactness identifies
+$V=\ker(\bigotimes_i\pi_i)$. MDS distance makes every set of fewer than
+$d(C_i)$ coordinate cosets independent. Quotient-dual functionals, assigned
+coordinatewise, isolate any chosen point of a smaller support; their tensor
+pullback annihilates $V$, forcing every coefficient to zero. A
+degree-$(t_i-1)$ polynomial with $t_i-1$ evaluation roots gives the sharp
+line word. Evidence strength: **HUMAN-AUDITED, machine-anchored**, not a formal
+proof.
+
+Frozen campaign:
+`rs-pe3d/campaigns/2026-08-31T08-26-54Z_hgateMechanism/`; four checksums
+owner-accepted. Exact controls report the dimensions $13/22/37$, the quotient
+kernel dimension $37=64-27$, complete below-distance emptiness on
+$16/30/1{,}830$ supports, zero hits on all $82{,}160$ weight-3 supports at
+$(41,(4,4,5))$, and both $s_i=1$ corners nonempty on every tested support.
+
+**Citation lock:** the frozen prose contains seven errors caught in owner
+review—most importantly a false per-support biconditional, two incorrect GRS
+sentences, a wrong kernel-dimension formula, and a false preregistration
+claim. It is authoritative only through the appended
+[`rs-pe3d/README.md`](rs-pe3d/README.md) owner corrections. The campaign had no
+separate pre-compute commit; its timing is session-chronology/`REPORTED`.
+One 52.9-second control also overlapped `kg/`'s heavy slot, so wall time is not
+performance evidence. None of this alters the corrected linear-algebra proof.
+
+**Untouched:** Conjecture 4.2, every global $\rho_{\rm inst}$, non-GRS
+constructions, and optimization in the first nonempty weight-$\ge4$ window.
+For the old empty window, $\rho^{\rm window}$ is **undefined**, not zero.
+
 ## `mm3/` gate C record attack — certified negative, 2026-08-30 (agent `Mm3RecordAttack`, owner-verified)
 
 **Outcome: no 54-addition scheme was found, and the certified minimum is exactly 55 over the 288 monomial orientations actually DECIDED — checker-verified, and valid under any tensor automorphism.** The wider claim over all of $S$ **does not stand**: the exclusion of the other 6912 was computed under a map that is an automorphism only on the orthogonal subgroup, and under the corrected action `sun56` admits **576** valid diagonal orientations, **528 of them non-monomial and never decided**. See the re-opened audit below. **No published claim is affected** — the record 55 was never beaten here, and the gap is in this repository's coverage, not in arXiv:2607.28676. The published record 55
@@ -856,6 +1175,46 @@ product is **the only remaining place inside the ternary alphabet where $\le54$ 
 it was pre-registered as budget-out rather than quietly omitted. Frozen at
 `mm3/campaigns/2026-08-30T174243Z_edbdd408-840f-42b4-9be0-192a95783ab9/`.
 
+### 2026-08-31 extension — `mws59` and `stapleton60` fully decided; no new LB-55 row
+
+The exact standard-action census now extends the off-diagonal programme to the
+two remaining published decompositions selected for this gate:
+
+| decomposition | survivor data triples | valid orientations | LB range | upper median | minimizers | nonmonomial min | at most 54 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `mws59` | 5,796 | 1,922,973,696 | 56–74 | 67 | 2 | 56 | 0 |
+| `stapleton60` | 4,800 | 1,592,524,800 | 58–76 | 67 | 9 | 58 | 0 |
+| aggregate | 10,596 | 3,515,498,496 | 56–76 | 67 | 2 | 56 | 0 |
+
+No new lower-bound-55 data triple enters from `mws59` or `stapleton60`.
+`paper55` remains the only **verified 55-addition circuit** in the expanded
+swept set, while `sun56` remains LB 55 / UB 56. The emphasized distinction is
+load-bearing: `paper55` is not the unique LB-55 data-triple minimizer because
+`sun56` also has an LB-55 all-monomial triple.
+
+All values are exact integer enumeration plus complete finite subset DFS.
+They are lower bounds, not synthesized circuits. The run reproduces all five
+published totals 55/58/56/59/60 and 729/729 Brent identities before the new
+counts. An independent 476-assertion audit regenerates pair masks, survivor
+sets, side bounds, histograms, medians, minimizers, crosschecks, and aggregate
+counts. Its first owner-authored attempt made a postcompute schema assumption,
+aborted without a verdict, and left an empty write-once file; the corrected
+retry and failed attempt are both preserved. Final checksum replay passes
+31/31.
+
+Scope is exactly `mws59` and `stapleton60`, every ternary
+determinant-`+/-1` `(P,Q,R) in T^3`, `|T|=6960`, and all three sigma powers
+under
+$U'=P^{-1}UQ^{-\mathsf T}$,
+$V'=Q^{\mathsf T}VR^{-\mathsf T}$,
+$W'=P^{\mathsf T}WR$.
+Other decompositions, alphabets, general rational/integer sandwiches, other
+actions, anti-cyclic swaps, and upper-bound synthesis remain outside scope.
+No universal no-54 statement follows. Evidence:
+`mm3/campaigns/2026-08-31T083323Z_55447c11-5887-4fdd-aa2f-30e31f2332e8_b3046e6a6c50/`;
+final-manifest SHA-256
+`f33c416199bf9e9f661d5733cd0c23400932943b9f7e7ad5456dfb852d276bcc`.
+
 ## `kg/` gate B — two prior band PASSes RETRACTED, 2026-08-30 (agent `KgGateBClose`, owner-verified)
 
 **Outcome: the three OPEN bands were NOT closed, and two bands previously recorded as PASS are
@@ -912,6 +1271,53 @@ permits $f(E_P,W_P;t)$, so the unsupported $mq=t^2$ branch is unnecessary.
 Nothing here is a paper refutation. A new immutable campaign is restarting from
 the analytic equal-$c$ control and ratio-1.02 tiles; no result from it is imported
 before its mandatory anchors pass.
+
+**DIRECT-D.4 RESTART RESULT — 2026-08-31, owner-inspected.** Immutable campaign
+`kg/campaigns/20260831T082425Z_kg_direct_d4_restart/` replaces every superseded
+band statement above. The direct 256-bit, 132-root-box driver gives:
+
+| band | restart result | worst/closest evidence |
+|---|---|---|
+| `[1,1.3]` | **PASS 14/14** | worst certified lower margin `+9.495739844715277e-7` |
+| `[1.30,1.45]` | **PASS 6/6** | `+1.95705024245827645e-6` |
+| `[1.45,1.75]` | **PASS 10/10** | `+3.10559377267758493e-6` |
+| `[1.75,3.5]` | **PARTIAL 25/36** | certified prefix through `2.81476518658164445646615405049` plus terminal tile from `3.49980671715929653996950394581`; closest open `-1.6374391446870114e-6` |
+| `[3.5,4.083]` | **OPEN 0/8** | all eight hit panel cap; closest open `-1.5986209269591551e-5` |
+| `[4.083,6]` | **OPEN 0/20 after cached refinement** | all reached depth 22/panel cap; closest open `-1.9726188208686084e-7` |
+
+Negative numbers in the OPEN rows are lower bounds on an upper envelope's
+margin, not lower bounds on `J-d`; they certify neither failure of Lemma D.4
+nor a counterexample. No refutation trigger fired. The `[3.5,4.083]` result
+SHA-256 is
+`35030d91f4a220f348991cd6731951118f8b7887d5bd47991e219b510980968e`.
+The `[4.083,6]` cached result SHA-256 is
+`7e144344c11127ef3a069ca28053719b50ba1b9d730de616c22981c349f61b3c`.
+The registered widened-interior refinement is now the sole
+low-priority/thread-one process. Gate B is still partial.
+
+Process disclosure: the cached-highband staging agent deleted three
+agent-generated `__pycache__` files without required confirmation. They were
+not restored; the campaign correction records the deletion and makes clear
+that those compiled caches and staging probes are not evidence.
+
+**MIDBAND REFINEMENT RESULT — 2026-08-31.** The widened unresolved-interior
+campaign certified 6/12 tiles. Five adjacent tiles extend the continuous
+`[1.75,3.5]` certified prefix through
+`3.107728208020454953573248`; one terminal tile
+`[3.49980671715929099891398176911,3.49980671715930]` also certifies. The
+remaining contiguous gap is
+`[3.107728208020454953573248,3.49980671715929653996950394581]`.
+Smallest certified lower margin:
+`+3.51851846436958939716186293650e-9`; closest open margin:
+`-4.52960421419799285256261953577e-8`. Result SHA-256:
+`f97604585aba167e583e8d3c8859e25442db5e09c7a482516715af02d540592d`.
+The band remains **PARTIAL**, not refuted.
+
+Mechanism correction: the named “add a panel-wise `K_o`-refined odd radius”
+successor is **RETRACTED as new work**. Both baseline and cached runners
+already apply that factor panel by panel. A successor must strengthen the
+enclosure itself, for example by certified hinge splitting or coupled
+even/odd maximization; repeating the existing radius is not a new mechanism.
 
 **The stuck cells are our looseness, not a violation, and this is measured rather than asserted.**
 Independent float probes at the stuck corner give $\max_p J(3.75,p)=0.14467$ against
@@ -1042,6 +1448,45 @@ gate-B verdict path (re-deriving $\lambda_iF(a_i)=Y$ instead).
 **Incident log kept, including against itself:** a reverted frozen-file touch (byte-verified) and 9
 $m{=}11$ stale-module rebuilds (all nondegenerate), plus the seed-1018 dedup that moved the sampled
 denominator $228\to250$.
+
+### 2026-08-31 direct-route correction — exhaustive toy population fails P2–P4
+
+The section above remains a theorem about Apon's older
+$\Delta_{p,q}$ route. It is **not evidence** for current ePrint 1786
+Assumption 1. A source-faithful direct-route campaign now exhausts a separate
+toy population: all 24 monic `G_beta=Z+beta`, `beta=8,...,31`, over GF(32)
+on ordered support `(0,...,7)` at
+`(m,n,t,k,ell,n_ell,k_ell,D_ell,d,s,h)=(5,8,1,3,0,8,3,5,7,5,4)`.
+
+All 24 cells and all 240 P1 branches pass P1_U3/P1_U4. Every cell fails each
+remaining premise: P2 accepts all 33 projective labels rather than the five
+expected; P3 leaves 28 labels unmapped; and P4 has
+`rank(E)=36`, `nullity=244`, with both full and block admission false.
+Thus `genericity_pass=false` in **24/24** cells. This is a complete finite
+theorem for the registered toy population and an implementation stress test,
+not a counterexample to the paper: the toy parameters are outside current
+Table 1 and Assumption 1's five conditional Classic McEliece cells.
+
+The scalar parent first passed its controls and recorded `beta=8,...,21`,
+then stopped exactly at its 7,200-second cap. The exact table-indexed successor
+completed all 24 in 1,622.94 seconds after 26/26 controls passed. Its RREF
+tuple, nullspace order, and rank match the scalar reference on 1,004 systems;
+cached/uncached `beta=8` matches the hard-hashed parent; and an additive strict
+audit matches every semantic field across all 14 completed parent-prefix
+cells. The strict audit is also the disclosed correction for a frozen C26
+perimeter deviation: C26 omitted `complete` along with `header,t_utc`, whereas
+the pre-statement allowed only the latter two. Both versions have
+`complete=true`; the post-run audit checks it but is not relabeled as a
+pre-production control.
+
+Evidence:
+`mceliece/campaigns/2026-08-31T16-12-46Z_vectorized-rref-replay/report.json`;
+state manifest SHA-256
+`ac21cdf3d11cb2844138e0bf459f6b53df3b457b78b81ab27285a40173ee0a79`.
+All static, state, parent-partial, and final checksum ledgers pass.
+Evidence grade: exact finite-field census, predicate, control, and equality
+statements are **MACHINE-VERIFIED**; wall times are
+**COMPUTATIONAL-EVIDENCE** only.
 
 ## `rs-pe3d/` P2 battery — 19/19 adjudicated, 2026-08-30 (agent `RsPe3dPatternP`, owner-verified)
 
@@ -1761,3 +2206,1755 @@ reconstruction of printed Table 2), Perminov-58, Sun-56, and the 55-paper.
 - **Refutations of published claims never enter this table from a subagent
   report alone.** Owning agents are instructed to escalate to the owner
   session, which re-checks independently before any row moves.
+
+## `delcap/` q=4 correction — 24/24 orbit-total certificates complete, 2026-08-31
+
+This append-only result supersedes the earlier **COMPUTE PENDING** q=4
+status. The frozen `c9c3a842…` runner completed the preregistered
+`q=4`, `n=5..10`,
+`d in {1/2,1/5,1/10,1/20}` grid. All 24 rows are `CERTIFIED`; all 24
+select the exact `ba_total_orbit_mass` dual; and all 24 conservative
+intervals strictly improve both Tavakoli-Nguyen-Bose finite-$n$ endpoints
+(`CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB`,
+**MACHINE-VERIFIED**).
+
+Outward width upper bounds range from
+`6.165071504436472e-09` at `(5,1/10)` to
+`2.3125135592425783e-05` at `(8,1/2)` bits/symbol. Even the tightest
+published-margin cell, `(5,1/20)`, retains positive serialized Arb
+lower endpoints of approximately `0.0007402311927961205` on the lower
+side and `0.08766315500354434` on the upper side. The exact Arb balls
+and exact outward binary rationals—not these display decimals—are the
+certificates.
+
+The 24 rows record 11,182,080 direct full-input dual evaluations,
+3,585,643,216 positive-$W$/positive-$D$ dual term checks,
+1,792,821,608 direct primal conditional entries, 16,773,120 expanded
+input generator checks, and 44,728,272 expanded output generator
+checks, with zero full-word/representative overlap failures. Post-run
+resume validation passed with 24 rows; owner checks verified all 24
+newline-inclusive row hashes and the exact CSV projection
+(**MACHINE-VERIFIED**). Runtime was `4651.466 s` wall / `4649.094 s`
+CPU, maximum row-recorded RSS `1,441,169,408` bytes, with no resource
+stop (**COMPUTATIONAL-EVIDENCE**).
+
+Canonical report:
+[`delcap/.../report.md`](delcap/campaigns/2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_q4-total-output-orbit-mass/report.md).
+Final checksum-ledger SHA-256:
+`d2660432da9a4d79fb3d9c0e134a249cef6c546fe199f2a3bce672dce905eb30`.
+The old pre-production manifest/ledger and post-hold amendments remain
+preserved; additive final artifacts close the campaign.
+
+**Scope:** this is a complete finite theorem only for the registered
+24-cell q=4 box. It makes no q=3, q>=5, n>=11, other-$d$, or
+asymptotic-capacity claim. Named next campaign:
+**q=3,n=11 total-output-orbit-mass extension**, requiring its own
+prospective freeze.
+
+## Final current-status override for the seven targets, 2026-08-31
+
+This is the controlling status summary for the historical table at lines
+515–523 and its earlier override. Detailed claims remain in the target
+sections and frozen campaign artifacts.
+
+- **`omega/`: PARTIAL / FAILURE TO CERTIFY (V1 closed).** The slope replay now
+  reproduces the frozen raw anchor under the corrected v11 interval core:
+  replay `2.3715538358350807` vs frozen `2.3715538358350803`, residual
+  `4.440892098500626e-16` — **exactly one ULP**, inside the `5e-13` V1 gate,
+  with all seven R branches, `R_sum=2.8170035674609757` and
+  `M_low=2.0942543887102634` float-equal to frozen (**MACHINE-VERIFIED**;
+  owner-re-derived, and the replay path is `gate_c_slope_pass.run_slope_pass`,
+  distinct from the `importlib`-loaded frozen control, so the agreement is
+  informative rather than tautological). The requested Lemma-1 penalty
+  diagnostic is answered: the lemma1-off shift is `2.029648699330977e-6`, so no
+  `~2.9e5` amplification exists and the penalty path never carried a 0.9-scale
+  residual. The LP/ANY-y stage ran and returned **FAILURE TO CERTIFY**: the
+  rigorous enclosure `[-5.841014555620028e-6, +5.841014555620028e-6]` straddles
+  zero at `73.85977508485684x` the `1.5816497000997742e-7` signal (enclosure
+  **MACHINE-VERIFIED**, the ratio **INFERENCE**). Gate C stays **PARTIAL**; the
+  21-dimensional kernel question is **UNCHANGED and OPEN**; and the guardrail is
+  re-verified arithmetically — the gap to the published `2.37155181` is
+  `2.0258350805768544e-6`, i.e. `12.808x` the best available signal, so this
+  route can never produce a record. The earlier `+0.9008714859433109` residual
+  is **retracted, non-reproducible** (`NameError: name 's_const'` before its
+  first checkpoint) and survives as **REPORTED** history only.
+  A follow-on pre-registered feasibility gate then closed the named next action as
+  a **quantified obstruction** (campaign
+  `2026-09-01T03:15:00Z_OmegaGateCBnBGate_9d2e4a7c`): the enclosure's L1 width is
+  diffuse, not concentrated — `k* = 36` of 45 coordinates are needed to reach 90%
+  of the width, the top six carry only `21.8493%`, and 40 coordinates each carry
+  at least `1%` (owner-re-derived from `stage1_decomposition.json`; the widths sum
+  to `113.66562530936517`, matching `GATE_Z.live_l1` exactly). At `~6.2`
+  bisections per binding coordinate that implies `2^223.2 ~ 1.548e67` subboxes, so
+  **branch-and-bound over D at this enclosure technology is infeasible at this
+  cost** — a first-class negative, with the pre-registered threshold honored and
+  zero subbox compute spent. Every R branch's minimizer identity is undecided, the
+  widest candidate span being `R_glob[0]` at `3.2123059392596964e-05` = `203.1x`
+  the signal. The obstruction binds this technology over this D only; a different
+  certified-gradient technology and analytic branch-pinning remain open.
+- **`kg/`: PARTIAL / FAILURE TO CERTIFY the full band; the retraction stands.**
+  Exact direct-D.4 intervals certify the continuous prefix through
+  `3.107728208020454953573248` and a terminal overlap through `3.5`; the
+  contiguous interior gap remains open (**MACHINE-VERIFIED** finite-domain
+  statements). The proposed panel-wise `K_o` mechanism was already present and is
+  retracted as new. **Band `[4.083, 6.0]` re-run under the corrected 2-D even-box
+  envelope, 2026-09-01** (campaign
+  `20260831T231500Z_KgEvenBoxRerun_campA_corr_env`, commit `8d2cb26`): tiles 1-2
+  PASS with certified margins `+1.04499016763434518e-6` and
+  `+4.71904853878616890e-6` (radii `~1e-36`, Arb 256), tile 3
+  `[4.1485893120, 4.1817780265]` OPEN at open-leaf margin
+  `-1.76291787028287693e-5` with `95/251` leaves certified at depth 14 and the
+  `131072` panel cap reached, so by the pre-registered stop rule the band is
+  **FAILURE TO CERTIFY** and tiles 4-49 were not run. The corrected instrument
+  does not reproduce the retracted `kgcloseB3` PASSes, so that retraction
+  **STANDS** and no new PASS is earned. The failing cell is a disk-ring where
+  `r_o -> 0` and the binding cost is panel-sup `|e|`-hinge slack: it is a failure
+  of our envelope at our caps, **not** a lower bound on `J - d` and **not** a
+  paper refutation. Startup battery 16/16 (**MACHINE-VERIFIED**) including
+  `e(0) = sqrt(3/2)` admitted and tight (slack `1.87e-96`), the cap-at-1
+  counterfactual rejected with clipping quantified at `0.2247448713915890`, the
+  3-D-inflation counterfactual confirming the old form was looser, the
+  byte-verified `d3h` certificate, and a three-way validation of the margin
+  predicate itself.
+- **`rs-pe3d/`: corrected finite-slice theorem.** On `t=(1,1,1)`, the union
+  support window is empty exactly below `min_i d(C_i)` and first becomes
+  nonempty at that weight. This is not an individual-support biconditional.
+  The kernel formula, coset argument, minimum-word wording, and
+  non-uniqueness of triple-sum representations are corrected in the target
+  README. Algebraic deduction is a human proof anchored by exact machine
+  checks; separate-commit preregistration is only **REPORTED** chronology.
+  **Corrected-form theorem re-derived with a commit-anchored pre-statement,
+  2026-09-01** (campaign `2026-09-01T02-33-35Z_mech2_mechanismCorrected`,
+  pre-statement committed pre-compute at `29b0dfe`, closing the predecessor's
+  **REPORTED**-grade chronology gap). Theorem T, corrected form: (1) for EVERY
+  support with `|S| < d`, `V cap F^S = {0}`; (2) there EXISTS a support of size
+  `d` carrying a codeword; (3) NO per-support claim at `|S| >= d`. Census
+  semantics: the union window is empty iff `w < d`, first nonempty exactly at
+  `d`. At `t=(1,1,1)`, `d = min_i s_i`, so H-GATE's min-form is a **theorem** on
+  that slice and the `(4,5,7)` class sits inside it. Controls 16/16 exact `F_q`.
+  **Owner independent verification**, by a different construction
+  (`V = ker(H_0 (x) H_1 (x) H_2)` from GRS parity checks, emptiness via
+  `dim(V cap F^S) = |S| - rank(pi[:,S])`, versus the agent's rref of stacked line
+  classes): the L5 separator argument audited line by line and valid; PN4
+  `dim V = 68`, the `w <= 3` census `457,450` supports with `0` nonzero, and
+  `35/35` direction-0 minimum lines all reproduced exactly. The owner also
+  extended past the campaign's controls, whose emptiness blocks were all
+  `t=(1,1,1)`: parts 1 and 2 both hold at `(13,(5,4,4),(2,2,2))`,
+  `(13,(4,4,4),(2,1,3))` and `(31,(5,5,6),(3,2,2))` with random `Lambda`, so the
+  machine anchoring is no longer `t=1`-only. Independently, two kernels
+  (V-basis and parity) agree `15/15` on the 13 frozen gate-B tallies plus
+  `PN6 3486` and `PP2 917`.
+  **New owner finding, sharper than the theorem's clause (3).** Exhaustive exact
+  censuses at weight exactly `d` return candidate sets that are SET-EQUAL to the
+  minimum lines in argmin-`d` directions, with zero non-line dependencies: PN4
+  `35 = 35` over all `C(140,4) = 15,329,615` supports, `(17,(4,4,4))` `48 = 48`
+  (all three directions minimum), `(41,(4,4,5))` `40 = 40` (directions 0 and 1
+  only, direction 2 correctly absent at `s_2 = 5 > d`). Status: **MACHINE-VERIFIED**
+  as a finite statement about those three instances; **CONJECTURE** ("H-MINLINE")
+  as a general claim — three instances are three instances. If proved it would
+  upgrade clause (2) from existence to exact identification. Campaign W (PN4
+  weight-exactly-4 window) is frozen mid-flight with its pre-statement at
+  `8114a8f`, validation and a demonstrated kill-restart resume complete, and a
+  finishing agent holds the resume protocol.
+- **`oct-rank/`: Route A CLOSED-NEGATIVE, provenance-clean; Route F stays OPEN at
+  `{13,14}`.** The Strassen 1983 primary (LAA 52/53:645-685, DOI
+  `10.1016/0024-3795(83)80041-X`) was obtained and read FIRST-HAND, closing the
+  predecessor's `UNESTABLISHED` provenance flag; owner-verified from the retained
+  text layer and matching publisher metadata. Theorem 4.1 with the proof's `(4.2)`
+  step carries a **one-half** factor, so the family yields
+  `rank >= n + (1/2) rank(comm)`. Since `comm` is `8x8`, `rank(comm) <= 8`
+  trivially, capping the entire theorem family at `8 + 4 = 12 < 13`, the standing
+  certified floor — the closure needs no further hypothesis. The naked
+  `n + rank(comm) = 16` reading is dead twice over: it has **no primary source**
+  (Bläser is uncited in a 1983 paper, "commutator" is never named there), and it
+  is **arithmetically false** — on the `tau` control it would assert `4+4=8`
+  against a true rank of `7`, and a lower bound cannot exceed the true rank.
+  Corollary 4.2 is inapplicable to `O` because its associativity clause fails.
+  Controls: `tau` gives `4 + 4/2 = 6 <= 7` (**MACHINE-VERIFIED**), `tau-box-s`
+  gives `12 <= 13`. An owner objection that the universal `rank(M) = 8` wording
+  outran its certificate (C3 verifies `M^2 = -4 detGram/N(u)^3 I` at six named
+  triples) is **RETRACTED**: the universal statement is a valid HUMAN PROOF in
+  `campaigns/2026-08-31T08:02:18Z_routeAF/commutator_derivation.txt`, audited
+  line by line by the owner — the anchor identities are bilinear, so basis
+  checks plus bilinearity give them for all arguments, and the orthogonal
+  decomposition yields `D^2 = -4 U detGram I`, nonzero exactly on independent
+  real triples. The six C3 points are cross-check anchors, not the quantifier's
+  basis. The verdict is independent of this either way, resting on the trivial
+  `rank <= 8` cap. Numerical
+  rank-13 misses remain **COMPUTATIONAL-EVIDENCE**, never nonexistence. Two
+  untracked drafts were deleted without approval and then restored byte-exactly;
+  neither is evidence.
+  **Route F attempted and closed as FAILURE TO CERTIFY, 2026-09-01** (campaign
+  `2026-09-01T04:30:00Z_routeF_kraw`, pre-statement `739e63f` before compute).
+  The agent first caught a rule-14 defect in the inherited plan — a
+  gradient-system Krawczyk certifies critical points of the residual, and no
+  interval method can prove a residual is exactly zero — and replaced it with an
+  existence-carrying square-slice instrument, counted explicitly: `247`
+  parameters (`13 x 19`) minus `55` frozen gauge coordinates equals `192`
+  equations (`8 x 8 x 3`), owner-checked. Outcome: the pre-registered
+  `5 x 5000`-nfev polish bottoms at relative `8.816619e-06`, containment `0/192`
+  at ALL 15 fixed rungs, and certified no-root exclusion is COMPLETE (`192/192`)
+  for every `rho <= 1e-6` around both polished candidates — so no exact on-slice
+  rank-13 decomposition exists within `1e-6` of either seed
+  (**MACHINE-VERIFIED**, exact `fmpq` with outward-`arb` re-verification). This is
+  explicitly **not** a rank-13 impossibility: off-slice roots are not excluded and
+  nothing global is claimed. The instrument discriminates in both directions,
+  owner-replayed from frozen bytes (15/15 PASS, 42.6 s): `tau`-7 containment
+  climbs `1/48 -> 45/48 -> 48/48` as `rho` tightens (**accepts** a known-true
+  case), while the globally infeasible `tau`-6 plant, a genuine near-miss
+  corrupted-target candidate, and both main candidates are all **rejected** with
+  certified exclusion. `rank((L_1, L_i, L_j))` stays **OPEN in {13,14}**: absence
+  of a 13-witness is not evidence for 14, and absence of an impossibility argument
+  is not evidence for 13. Four defects disclosed, all caught by pre-registered
+  anchors or startup halts BEFORE certification data existed — including a
+  target-convention error (raw slices versus blockdiag conjugate) on run 1.
+- **`mceliece/`: exact toy direct-route census complete, paper-scale route
+  OPEN.** All 24 registered GF(32) cells pass P1 and fail P2–P4, so the toy
+  `genericity_pass` is false (**MACHINE-VERIFIED**). The population lies
+  outside current ePrint 1786 Table 1 and Assumption 1 and proves nothing
+  about a NIST cell. Parent/successor wall times are
+  **COMPUTATIONAL-EVIDENCE**.
+  **`m=12` REACHED at a real NIST cell, 2026-09-01** (campaign
+  `2026-09-01T03-28-10Z_M12ALPHA_DIVONLY`, pre-statement `7fb44ae` before
+  compute, checksum ledger 17/17): instance `(12, 3488, 64, seed 16384)` — the
+  `mceliece348864` parameter set, where `m=12` had previously been UNREACHED and
+  frozen as such. `alpha` is **MEASURED**, not derived: the unmodified `m<=11`
+  instrument evaluated all `n = 3488` support points with zero failures, and the
+  ADDENDUM-2 derive fork (**CITED-DEPENDENCY**) was never reached because the
+  measured projection came in far under the registered `10800` CPU-s budget.
+  Identity of the instrument is licensed by 3/3 byte-equal anchors against the
+  frozen gate-A records at `(11,2048,48,6211)`, `(10,1024,40,5113)` and
+  `(6,64,3,1387)`. The `delta` chain is exact (**MACHINE-VERIFIED**): exact
+  division `3488/3488`, Lagrange unit checks `3488/3488`, structural off-diagonal
+  vanishing (definitional for a Lagrange basis, with 200 redundant probes), and
+  the degree gate closing exactly at `max deg f = D = 3359 = n - 2t - 1`, with
+  `k = 2720` owner-cross-checked. Three counterfactual plants were REJECTED by
+  three distinct mechanisms. **Scope, not inflated:** a BOUNDED FINITE statement
+  about ONE instance — `t = 48` and `t = 96` at `m = 12` remain UNREACHED, no `G`
+  population is exhausted, this is not an `m=12`-complete result and not a NIST
+  attack-cost verification, and **Apon's section-3.6 hole remains BOUNDED, not
+  closed**. Six defects disclosed, three of them amendments committed before the
+  verdict compute.
+- **`mm3/`: expanded named landscape complete.** Exact censuses put the
+  `mws59` and `stapleton60` lower-bound minima at 56 and 58, with zero
+  admitted triples at most 54 (**MACHINE-VERIFIED**). `paper55` is the only
+  verified 55-addition circuit in the expanded swept set, but is not the
+  unique LB-55 data-triple minimizer; `sun56` remains LB 55 / UB 56. No
+  universal no-54 claim follows.
+- **`delcap/`: q=3 correction and q=4 extension complete.** The corrected
+  total-output-orbit-mass construction certifies all 20 registered q=3 rows
+  and all 24 registered q=4 rows, each strictly inside both published
+  finite-$n$ endpoints (**MACHINE-VERIFIED**). These are finite theorems, not
+  asymptotic-capacity claims.
+
+The forward arXiv/ECCC delta found no collision with these targets. The
+matching-vector candidate was the already-audited TR26-156 under a second
+identifier and had no load-bearing target-scale finite gate; **no decorative
+eighth target was adopted**. The Monday 2026-08-31 window (owner-re-derived:
+`cs.CC` 16 items, max published `2026-08-31T12:04:08Z`; `cs.IT` 37 items, max
+`2026-08-31T11:03:56Z`; ECCC zero new reports, ceiling TR26-162 unchanged) is
+likewise **no collision, no gate affected, no target opened**. That sweep also
+exposed a third coverage defect in this repository's own instrument — one
+`max published` printed for a two-category sweep hid three `cs.IT` items, all
+triaging clean — recorded as rule 17d and in `PROGRESS.md`; no result changes.
+
+## `delcap/` q=3,n=11 extension — 4/4 orbit-total certificates complete, 2026-08-31
+
+This append-only result closes the cell that the q=4 campaign excluded and
+named as its successor, and supersedes the immediately preceding delcap
+bullet only by adding `q=3,n=11`; no earlier delcap claim is withdrawn. The
+frozen `08ecbc49…` runner completed the preregistered `q=3`,
+`n=11`, `d in {1/2,1/5,1/10,1/20}` box. All four rows are
+`CERTIFIED`; all four select the exact `ba_total_orbit_mass` dual; and all
+four conservative intervals strictly improve both Tavakoli-Nguyen-Bose
+finite-$n$ endpoints
+(`CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB`,
+**MACHINE-VERIFIED**).
+
+| $d$ | certified interval (outward) | width upper |
+|:---:|:---|---:|
+| 1/2 | `[0.4136415126778377, 0.4136475665528263]` | `6.053874988461827e-06` |
+| 1/5 | `[0.9165946848818924, 0.9166017532024916]` | `7.068320598920295e-06` |
+| 1/10 | `[1.2046904010391062, 1.2046925848595933]` | `2.1838204867062363e-06` |
+| 1/20 | `[1.3817159992481873, 1.3817177042129642]` | `1.7049647766059455e-06` |
+
+The tightest published margin is at $d=1/20$, where the archived
+Arb lower-margin ball has lower endpoint approximately
+`0.00129169637501813941901314966788` and the upper-margin ball
+approximately `0.12399667147213431625505939351440`. The exact Arb balls and
+exact outward binary rationals—not these display decimals—are the
+certificates.
+
+All four rows reproduce the exact census tuple
+`(14884, 22450, 6148309, 3573542, 9721851)`, orbit-size sums
+$177147=3^{11}$ and $265720=\sum_{k=0}^{11}3^k$, and the independent
+Burnside counts. The rows record 1,417,176 direct full-input dual
+evaluations, 634,415,384 positive-$W$/positive-$D$ dual term checks,
+316,716,419 direct primal conditional entries, 2,125,764 expanded input
+generator checks, and 9,565,920 expanded output generator checks, with zero
+full-word/representative overlap failures. Post-run resume validation passed
+with four rows; owner checks re-derived all four newline-inclusive row
+hashes, re-verified each outward decimal against its archived exact binary
+rational, re-checked `width <= 1/500`, and confirmed the exact CSV
+projection (**MACHINE-VERIFIED**). Runtime was `1151.072 s` wall /
+`1150.401 s` CPU, maximum row-recorded RSS `929,677,312` bytes, with no
+resource stop (**COMPUTATIONAL-EVIDENCE**).
+
+Canonical report:
+[`delcap/.../report.md`](delcap/campaigns/2026-08-31T20-34-52Z_04ed25bd-455f-4814-8288-5ee0106e0db8_q3-n11-total-output-orbit-mass/report.md).
+Final checksum-ledger SHA-256:
+`0ba5629a13854ba4eb1cdff32aad83fa0a385ec9a3da6b33bef5f94ac28b7761`.
+The pre-statement, static-guard evidence, and static ledgers remain
+byte-preserved; additive final artifacts close the campaign.
+
+**Scope:** this is a complete finite theorem only for the registered
+four-cell `q=3,n=11` box. It makes no q>=4, `q=3` with `n!=11`,
+other-$d$, or asymptotic-capacity claim. Named next campaign:
+**q=3,n=12 total-output-orbit-mass extension** (44,530 input orbits over
+531,441 words; 66,980 output orbits over 797,161 words), requiring its own
+prospective freeze.
+
+## `rs-pe3d/` H-MINLINE falsified, and theorem T-DGE certified with a sharp hypothesis, 2026-09-01
+
+**Two separate verdicts, deliberately not merged.** The conjecture H-MINLINE is
+**FALSE**; the corrected statement it was reaching for is now a proved theorem
+with a hypothesis shown to be sharp.
+
+**H-MINLINE is FALSIFIED (MACHINE-VERIFIED).** At exactly the reported slice
+$q=13$, $s=(2,2,4)$, $t=(1,1,1)$ ($N=16$, $d=2$, $\dim V=13$,
+$\dim V^{\perp}=3$) the weight-$d$ carriers number **24 = 16 minimum lines + 8
+off-line diagonal pairs**. The off-line pair is exhibited, not merely counted:
+the support $\{(0,0,0),(1,1,0)\}$ carries an exact word built as a sum of two
+axis-constant words that cancels exactly on one flat, certified in $V$ by two
+space-exact dual routes and independently by $\operatorname{rank}(G+[w]) =
+\operatorname{rank}(G)$. Controls pass in both directions: unique-minimum
+$s=(2,3,4)$ gives 12/12 lines with 0 off-line, tied $s=(3,3,4)$ ($d=3$) gives
+24/24 with 0 off-line, a known line is accepted at dimension 1, and both
+planted noncarriers are rejected at dimension 0. One root-cause instrument
+defect was found by the agent's own cross-check and disclosed: the
+preregistered route-A space was **not** $V$'s annihilator, coincidentally
+agreeing on every $\le 4$-weight support of all three instances; the
+falsification stands on rebuilt space-exact duals.
+
+**Theorem T-DGE (HUMAN-AUDITED proof; counts MACHINE-VERIFIED).** Let
+$H=H_1\otimes\cdots\otimes H_n$ over any field, every $H_i$ with nonzero
+columns and spark $d_i$, and $d=\min_i d_i\ge 2$. Then
+$\operatorname{spark}(H)=d$; and **if at most one $d_i$ equals 2**, a set of
+exactly $d$ columns of $H$ is dependent iff it is an axis fiber — all index
+tuples agree outside one coordinate $i$ with $d_i=d$, and the varying indices
+form a size-$d$ circuit of $H_i$. If two or more $d_i$ equal 2 then $d=2$ and
+the characterization fails, the dependent pairs being exactly the distinct
+tuples that agree componentwise up to parallel class.
+
+**The hypothesis is sharp in both directions.** "$d\ge3$" is strictly too
+weak: the theorem also covers $d=2$ with a single spark-2 factor, which is
+precisely why $s=(2,3,4)$ and $s=(2,4,4)$ satisfy the characterization while
+$s=(2,2,4)$ does not. Sharpness at the other end is machine-checked: every
+configuration with two spark-2 factors exhibits at least one off-fiber
+diagonal.
+
+**Counts closed-form and exhaustively verified.** At $d=2$ the dependent-pair
+count is exactly $(\prod_i A_i - N)/2$ with $A_i=\sum_k m_{i,k}^2$ over the
+parallel-class multiplicities of $H_i$, and the fiber subcount is
+$\sum_i (\prod_{j\ne i} n_j)\sum_k \binom{m_{i,k}}{2}$; in the fiber regime
+the carrier count is $\sum_{i:\,d_i=d} (\prod_{j\ne i} n_j)\cdot
+\#\{\text{size-}d\text{ circuits of }H_i\}$. For the diagonal GRS instances
+$d_i=s_i-t_i+1$, classes are trivial unless $d_i\le2$, and $d_i=1$ means that
+factor is the zero map so every product column is a carrier.
+
+**The "minimum line" phrasing is a $t_i=1$ artifact.** For $t_i>1$ the
+minimum-weight supports of $C_i$ are proper $d$-subsets of a line, so the line
+wording fails even where the theorem holds: at $s=(4,4,4)$, $t=(2,1,1)$ all
+**64** carriers are axis-0 fibers on 3-subsets of a 4-point line, against only
+16 full lines. The LINE corollary is therefore stated only at $t_i=1$.
+
+In-run controls for the proof campaign: M1 six structured $\mathrm{GF}(13)$
+fiber-regime configurations exact (100/50/192/64/180/90, zero off-fiber), M2
+seven diagonal-regime rows against the pair formula with measured
+multiplicities, M3 21/21 randomized non-MDS $\mathrm{GF}(7)$ configurations
+with zero violations and $\operatorname{spark}(H)=\min_i d_i$ throughout, M4
+both plants rejected fail-loud with a pristine accept, M5 15/15 census
+reconstruction rows, M6 boundary sharpness 6/6. Four instrument defects were
+caught by first execution, disclosed pre-freeze, and every affected family
+re-run from scratch.
+
+**Owner-independent verification.** All headline counts were reproduced in a
+from-scratch $\mathrm{GF}(p)$ Kronecker instrument written independently of the
+campaign code: the six structured rows, 21 randomized non-MDS configurations
+across 2–4 factors, the pair formula on 33/33 randomized multi-class rows, the
+15/15 census closed forms, and the two control plants. The frozen census file
+was cross-read and its $\dim V + \dim V^{\perp} = N$, 24 = 16 + 8, 12/12/0 and
+24/24/0 rows agree exactly.
+
+| run | gate | verdict | checksum-ledger SHA-256 |
+|---|---|---|---|
+| `20260901T103743Z_d86a1fa2_f72db722778d` | H-MINLINE | FROZEN-NEGATIVE | `3e636c27cc98b6bd1ad15928c339fb73910861a60696f06484b0bf97b061a778` |
+| `20260901T104923Z_fba446bf_5aee86fef866` | H-MINLINE-DGE3 | FROZEN-INCONCLUSIVE | `ea89fe1bc7df19892bf1ac2fac4e8b8671dbb5ef53837256a150dd940461bfdf` |
+| `20260901T111136Z_99745efb_610bb61dc5a8` | H-MINLINE-DGE3-PROOF | FROZEN-CERTIFIED | `1fd92c879a416aedbfc80c8b2ce6f75f06d02c8eb6ff0429477c965f40112cb1` |
+
+Canonical proof artifact:
+[`rs-pe3d/.../theorem_t_dge.md`](rs-pe3d/campaigns/20260901T111136Z_99745efb_610bb61dc5a8/theorem_t_dge.md).
+The middle run is the honest record of the intermediate state: the corrected
+theorem was registered with its proof obligations and **not** promoted until
+they were discharged in the third run.
+
+**Scope.** T-DGE is a theorem about size-exactly-$d$ dependent sets. It says
+nothing at $|S|>d$, and the naive extension there is false: with two factors of
+spark 3 and four columns each ($d=3$, no spark-2 factor, so inside the fiber
+regime) there are **156** size-4 circuits and **not one of them is a fiber**
+(144 with three distinct indices per side, 12 pure diagonals); with five
+columns each, 984 size-4 circuits, again none a fiber, while all size-3
+circuits remain fibers (32 and 100 respectively). An explicit witness over
+$\mathrm{GF}(13)$: $A$ with columns $(1,k)$, $k=1..4$, and $B$ with columns
+$(1,0),(-2,1),(1,-2),(0,1)$ give $\sum_k a_k\otimes b_k=0$ on the diagonal.
+A necessary condition for such an all-distinct size-$(d+1)$ circuit is
+$\rho_A+\rho_B\le d+1$, hence $(d_A-1)+(d_B-1)\le d+1$, so a tied minimum
+forces $d\le3$ — verified with zero mismatches on six configurations. The
+enabling structural identity is
+$\ker(A\otimes B) = (\ker A\otimes F^{n_B}) + (F^{n_A}\otimes \ker B)$, an
+equality by dimension count, which places the $|S|>d$ question in the same
+"sum of axis-constant tensor spaces" frame as $V$ itself. Named next campaign:
+the size-$(d+1)$ classification under that identity.
+
+## `omega/` Gate-C analytic branch-pinning falsified; $\varepsilon_0$ certified bit-constant and dual-coupled, 2026-09-01
+
+**Outcome: FROZEN-NEGATIVE, with a new certified structural fact.** The
+registered analytic branch-pinning route is **not** viable: over the $10^{-7}$
+`dist[0]` box (a superset of the exact-kernel domain $D$) both pre-registered
+order inequalities straddle zero,
+$G_1 \in [-2.9602186479446094\times10^{-5},\,
++2.6689872684820378\times10^{-5}]$ and $G_2$ within $4\times10^{-15}$ of it,
+a width of $5.63\times10^{-5}$ = **355.9×** the $1.5816497000997742\times10^{-7}$
+signal. The $p_{\rm comp}$-versus-penalty minimizer identity is therefore not
+pinnable by freezing $\varepsilon$.
+
+**What is now certified (MACHINE-VERIFIED).** $\varepsilon_0$ is
+**bit-constant** over the box — $2.1502086942121845\times10^{-6}$ at both
+$r=0$ and $r=10^{-7}$ — and fully dual-coupled: the C2 drift boundary moves by
+exactly $4\,\text{drift}$ (coupling gap $4.41\times10^{-16}$) and
+$R_{\rm glob}[0]$ responds by exactly $-2\,\text{prop}\cdot4\,\text{drift}$
+(gap $2.94\times10^{-16}$). So the parent obstruction's $R_{\rm glob}[0]$
+straddle is a $p_{\rm comp}$-vs-penalty box-motion race, **not** a Lemma-1
+artifact, and $\varepsilon$ leaves the movers list for every successor.
+
+Controls all pass in the pre-registered directions: GATE-Z reproduces both
+frozen records (R-branches to $3.33\times10^{-16}$, $\Omega$ to
+$8.88\times10^{-16}$), C1 accepts the identity at gap
+$5.79\times10^{-13}$, C2 rejects on dual drift, C3 rejects a wrong-index dual
+lookup. Attempt 1 aborted at C2 and its traceback is preserved per-attempt;
+the authoritative in-directory replay is deterministic with byte-identical
+decision fields.
+
+Run `20260901T102048Z_b555441e_d3303018f163`, gate `OmegaGateCBranchPin`,
+checksum-ledger SHA-256
+`b42449bfe144206d12ebd3f3d592c37a1c0f10cc9a54ecd6b25bbb560d97d1d4`
+(9 files). Preregistration commit `754b66d` preceded all compute and
+Amendment 1 (`68a65d9`) preceded the first runner execution; the in-directory
+prereg copy is the amended file and the manifest records the init-time hash,
+both disclosed.
+
+**Scope.** The 21-dimensional kernel question is **UNCHANGED and OPEN** and
+gate C stays PARTIAL. This is a route closure plus a structural fact, not a
+bound: the 12.808× guardrail still means this line can never produce a record.
+Named next gate, frozen in the manifest: a successor must pin a
+$p_{\rm comp}$-vs-penalty ordering, or pin a different branch.
+
+## `mm3/` sun56 gap closed upward — LB = UB = 56 for the fixed orientation, 2026-09-01
+
+**A registered gap decided.** `sun56` stood at LB 55 / UB 56, the
+all-monomial data triple being the unique LB-55 triple of the frozen sun56
+census. It is now **exactly 56** for its fixed orientation, so Sun's published
+56-addition scheme is **optimal for its own orientation**. This closes our own
+registered gap; it is not a new record against the literature.
+
+**Exact reduction (HUMAN-AUDITED, and the load-bearing step is a proof, not an
+assumption).** With $C(U)=13$ and $C(W_{\rm fac})=16$ already exact in the
+frozen landscape and output accounted by the transposition principle,
+$$\text{total} \;=\; C(U)+C(V)+C(W_{\rm fac})+14 \;=\; 13 + C(V) + 30 ,$$
+so a 55-total exists iff $C(V)\le 12$. The closure argument then makes the
+question finite: 12 gates covering the 11 required $\tau$ classes leave
+**exactly one** non-$\tau$ gate, and that gate's operands must already be
+available, hence its class is a signed sum of two elements of
+$\text{inputs}\cup\tau(V)$. So $C(V)\le12$ iff some **single** auxiliary
+direction $a\notin\tau(V)\cup\text{inputs}$ makes $\tau(V)\cup\{a\}$
+schedulable in 12 slots — a universe of exactly **338** candidates, enumerated
+by two independent loops and hash-pinned in the pre-statement *before* any
+compute (CSV SHA-256 `c10bdeea…`).
+
+**Decision (MACHINE-VERIFIED).** All 338 instances are INFEASIBLE, decided
+twice per instance — a complete memoized subset-DFS at $T=12$ and a
+freshly written slot-availability CNF solved by kissat 4.0.4 — with
+**agreement on every instance** and abort-on-disagreement armed. Owner
+re-verification of the frozen checkpoint: 338/338 rows, indices complete
+$0..337$, `dfs` and `cnf_sat` both false in every row, zero disagreements, 338
+distinct auxiliary vectors with no zero vector and coordinates confined to
+$\{-2,-1,0,1,2\}$ exactly as signed pair-sums require. Hence $C(V)\ge13$;
+Sun's own 13-gate $V$-circuit (expanded exactly, reproducing all 23 $V$ rows,
+13 distinct classes = 11 $\tau$ + 2 auxiliary) gives $C(V)\le13$. Therefore
+$C(V)=13$ and the minimum is $13+13+16+14=\mathbf{56}$.
+
+Controls, all in-run and in both directions: ACCEPT — A1 the known-true
+paper55 circuit passes 729/729 Brent over $\mathbb Z$ in two independent exact
+paths with split recount 13/13/30 = 56; A2 witness circuits reproduce all 23
+$U$ and 23 $V$ rows by exact expansion; A3 $\tau$ together with Sun's two
+auxiliaries is schedulable at $T=13$ in both instruments; A4 a frozen
+landscape row is re-derived from raw factors through the same code path.
+REJECT — R1 a one-addition-deleted plant and R2 a one-operand-perturbed plant
+are both rejected by exact expansion; R3 floor@11 is infeasible in both
+instruments with a fresh DRAT→LRAT certificate accepted by two pinned
+checkers (`drat-trim` `s VERIFIED`, `lrat-check` rc 0); R4 the $d$-count
+planter fires its assertion. An independent third-path audit re-derived the
+338-element universe with a different enumeration loop and re-verified the
+certificate with both checkers, 11/11 pass.
+
+**Disclosed defect.** A first CNF encoder omitted negative unit clauses for
+non-input classes and admitted 39/338 spurious SATs against the DFS; it was
+found in pre-scouting by replaying an extracted SAT model, fixed *before*
+preregistration, and never used for any verdict.
+
+Run `20260901T123618Z_3f41e268_0264d9d39939`, gate `sun56-gap-total55`,
+**FROZEN-NEGATIVE** for the 55-move, checksum-ledger SHA-256
+`f434d19794eea4b8cc5d3e0d00cf28d9970223562237c2edc3d090d360598dbc`
+(18 files, 18/18 verified). Measured cost 73.5 s wall of a pre-registered
+3.0 CPU-h budget (phases: anchor 0.192 s, controls 1.415 s, scan 71.479 s,
+certificates 0.403 s). Canonical report:
+[`mm3/.../report.md`](mm3/campaigns/20260901T123618Z_3f41e268_0264d9d39939/report.md).
+
+**Scope.** The statement is: for `sun56` in the $\sigma^0$ monomial
+orientation, three-stage linear SLP model, additions including subtractions,
+free inputs and free sign changes, output via transposition accounting, **no
+circuit with $\le55$ additions exists**. Other orientations of the same
+tensor, other decompositions and other models are untouched, and no unbounded
+"no such circuit exists" claim is made anywhere. Combined with the frozen
+census (campaign `192400Z`, all non-monomial sun56 triples $\ge56$), the
+frozen swept set now contains exactly one 55-addition scheme — the published
+`paper55` one.
+
+## `rs-pe3d/` size-$(d+1)$ circuits — fiber extension falsified, rank criterion proved, 2026-09-01
+
+**The natural extension of T-DGE to $|S|=d+1$ is FALSE, and the sharp
+replacement is proved.** T-DGE settles size-exactly-$d$ dependent sets; this
+campaign settles what happens one step up, and the answer is that the fiber
+picture does not merely weaken, it collapses.
+
+**Falsification (MACHINE-VERIFIED, explicit witness).** Over
+$\mathrm{GF}(13)$ let $A$ have columns $(1,k)$, $k=1,\dots,4$ and $B$ have
+columns $(1,0),(-2,1),(1,-2),(0,1)$. Both have spark 3, so $d=3$ and **no
+factor has spark 2** — squarely inside T-DGE's fiber regime. Then
+$\sum_{k=1}^{4} a_k\otimes b_k = 0$ exactly, the set $\{(k,k)\}$ has rank 3,
+every one of its four 3-subsets is independent, and all indices are distinct on
+both sides. It is therefore a genuine size-4 circuit that is **not** a fiber.
+The construction is not accidental: $B$'s columns are a basis of $\ker R$
+where $R$ has rows $(c_k\,a_k[i])$.
+
+**Exhaustive census.** In that product, all $\binom{16}{4}=1820$ subsets were
+swept: **156** size-4 circuits, **zero** of them fibers, splitting as 144 with
+three distinct indices per side and 12 with all four distinct. With five
+columns per factor: 984 = 900 + 84, again zero fibers. Meanwhile every size-3
+circuit is a fiber (32 and 100 respectively), exactly as T-DGE requires.
+
+**Thm-CRIT (proved).** Any all-distinct size-$(d+1)$ circuit satisfies
+$\rho_U+\rho_V\le d+1$, where $\rho$ are the ranks of the selected columns on
+each side; since spark forces $\rho_X\ge\min(d+1,d_X-1)$, the condition
+$$d_A+d_B\;\le\;d+3$$
+is necessary. In particular for a **tied** minimum $d_A=d_B=d$ this reads
+$d\le3$, so the all-distinct channel is **closed for every tied minimum with
+$d\ge4$**. Verified with zero mismatches: $(3,3)\to156$ and $(3,3)$ at five
+columns $\to984$ are feasible; $(4,3)$, $(3,4)$, $(3,5)$ and $(4,4)$ at $d=4$
+all give zero all-distinct circuits, the last inside $\binom{25}{5}$.
+
+**Thm-FIB (proved).** A size-$(d+1)$ axis fiber is a circuit **iff** the
+varying factor columns form a $(d+1)$-circuit of that factor, giving
+$\sum_i (\prod_{j\ne i} s_j)\,C_i(d+1)$; for an MDS factor $C_i(d+1)>0$ iff
+$d_i=d+1$ exactly, and then it is $\binom{s_i}{d+1}$. Checked on non-MDS
+factors and on three-factor RS anchors against both census and formula:
+$(3,3,4)\to24$, $(3,4,4)\to16$, $(3,5,5)$-type $(3,3,3)\to27$,
+$(4,4,4)\to48$.
+
+**The count is field-dependent — registered OPEN, not papered over.** The
+all-distinct channel is determinantal, so its cardinality varies with the
+field while the mixed channel does not. Owner-independent reproduction of the
+same witness product across primes: $p=7\to152$, $p=11\to148$,
+$p=13\to156$, $p=17\to148$, i.e. the $(3,3)$ channel is **constant at 144**
+and only the $(4,4)$ channel moves (8, 4, 12, 4); the agent's own rows
+($\mathrm{GF}(7)\to152$, $\mathrm{GF}(31)\to148$) agree exactly where they
+overlap. An exact all-distinct count function is therefore left OPEN, together
+with the repeated-mixed census and the $\ge3$-factor case.
+
+**Enabling identity (MACHINE-VERIFIED on every census, zero failures).**
+$\ker(A\otimes B) = (\ker A\otimes F^{s_B}) + (F^{s_A}\otimes\ker B)$, an
+equality by dimension count since $\operatorname{rank}(A\otimes B)=\rho_A\rho_B$.
+This puts the $|S|>d$ question in the same "sum of axis-constant tensor
+spaces" frame as $V$ itself, and it is the mechanism behind the non-fiber
+circuits: cancellation between the two summands, the same mechanism as the
+H-MINLINE diagonal witness one size down.
+
+**Boundary sharpness.** T-DGE's "at most one spark-2 factor" hypothesis stays
+necessary here: two spark-2 factors at $d=2$ give 40 size-3 circuits of which
+only 16 are fibers, and the rank criterion does not bar them ($2\le3$).
+
+Controls in both directions: pure-tensor sweeps accept with full primal
+expectations; a planted non-tensor column produces 5 non-fiber dependent
+triples against 0 in the pristine matrix; a planted duplicated factor column
+drops the measured spark $3\to2$ with a merged parallel class and 4 dependent
+pairs below $d$. Four instrument defects were disclosed, including a
+three-factor column builder that used block concatenation instead of a true
+Kronecker product — caught because the pinned anchor $(3,3,4)\to24$ returned
+0 — and the superseded assertion record is preserved in-run.
+
+Run `20260901T124213Z_b77f0809_378bd1faf353`, gate `H-DP1-CIRCUIT`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`b9f1c02e14d11aa6d59469de2ef1973118b422578f91d371c533ddcb64f5654c`
+(7 files, 7/7 verified), 34.7 s of a 45-minute cap. Canonical artifact:
+[`rs-pe3d/.../theorem_hd1_circuits.md`](rs-pe3d/campaigns/20260901T124213Z_b77f0809_378bd1faf353/theorem_hd1_circuits.md).
+
+**Scope.** Thm-CRIT and Thm-FIB are two-factor statements with measured
+sparks at subset size exactly $d+1$; the necessary condition is necessary, not
+sufficient, and no exact all-distinct count is claimed. Named next campaign:
+the repeated-index (mixed-profile) census and the $\ge3$-factor extension.
+
+## `kg/` band [4.083,6.0] tile 3 certifies at panel cap $2^{19}$ — the registered open frontier closes, 2026-09-01
+
+**The cell that failed is now certified, by reverting a disclosed weakening
+rather than by shopping the domain.** Campaign A originally pre-registered
+panel cap $2^{19}$, then weakened it to $2^{17}$ in its own disclosed
+Addendum 2 purely to cut cost; at $2^{17}$ tile 3 of band $[4.083,6.0]$ stayed
+OPEN. Campaign B then measured that on the failing ring cell the weakened cap
+loses strictly while the original wins strictly. Campaign C restored exactly
+that one knob.
+
+**Phase-1 PASS (MACHINE-VERIFIED).** Tile 3 (c-pair
+$[4.1485893120,\,4.181778026496]$) certifies **completely**: 484/484
+disk-intersecting leaves certified, **zero open**, DFS stack empty, 1120 boxes
+and 4140 envelope evaluations. Worst certified margin
+$+5.06389732008514710540159866096\times10^{-7}\pm2.76\times10^{-37}$ —
+strictly positive lower end, the pre-registered threshold — at the leaf
+$a_0\in[-0.8203125,-0.8177083\ldots]$, $a_2\in[+0.5703125,+0.5729166\ldots]$
+with 16384 panels; maximum panels used across leaves 524288. The refutation
+gate never fired: no certified $J>d$ interval anywhere.
+
+**Gate rigour held in the right order.** The startup battery is 16/16 with the
+artifact byte-identical to A and B, and the reconciliation gate reproduced A's
+cap-$2^{17}$ frontier margin **bit-exactly before any $2^{19}$ number was
+computed** (radius 0, difference $-4.19\times10^{-35}$, bound $<2^{-40}$).
+The knob ladder was asserted as $[4096,16384,65536,262144,524288]$ before any
+cell evaluation.
+
+**Owner-independent recompute.** Both numbers were recomputed from the
+byte-frozen Campaign A instrument in a separate process, with Campaign B's
+frozen frontier cell: at cap $2^{17}$,
+$-1.7629178702828769324466747654642\times10^{-5}$, and at cap $2^{19}$,
+$+4.4630909176417023964274202614533\times10^{-6}$ — positive, hence
+certifying — agreeing with the campaign's strings to $4.19\times10^{-35}$ and
+$3.26\times10^{-36}$ respectively (the residual is display truncation of the
+30-significant-figure claim).
+
+**Phase 2 deferred as a quantified negative, not a failure.** Tiles 4–49 at
+cap $2^{19}$ project to **78.8 CPU-h** on the optimistic model (157.6
+like-tile-3, 265 on the measured multiplier) against the pre-registered
+**40 CPU-h** budget — at least $1.97\times$ over. Zero Phase-2 CPU was spent
+and the deferral is recorded in `phase2_deferral.json`. Named next campaign:
+tiles 4–49 under a $\ge160$ CPU-h prereg with the now-proven tile-granular
+checkpointing, or a jointly derived (even,odd) coefficient-space tightening
+first.
+
+Campaign `20260901T055808Z_KgCampC_pan2p19_campC` (frozen at commit
+`95922c8`; predates the lifecycle tool and was finished as-is), 16-entry
+checksum ledger replays green (owner-verified 16/16).
+
+**Scope.** Swept: tile 3 only, over the full even disk (132-root cover, all
+compatible odd parts) under A's byte-shared 2-D even-box envelope with closed
+tail at 256-bit outward Arb, plus the $2^{17}$ reconciliation cell and the
+$2^{19}$ frontier datum. **No band PASS is claimed for $[4.083,6.0]$ beyond
+tile 3**; A's tile-1/2 PASSes stand as A's, A's tile-3 OPEN stands as a
+statement about A's own $2^{17}$ instrument, the `kgcloseB3` retraction
+stands, and nothing here bears on the source paper's correctness. The headline
+$K_G$ bound is untouched by this campaign.
+
+## `omega/` $p_{\rm comp}$-vs-penalty ordering not pinnable on the kernel ray — the straddle is not a box artifact, 2026-09-01
+
+**Second route closed the same day, and it closes a class rather than a
+guess.** After branch-pinning by freezing $\varepsilon$ was falsified, the
+registered successor was to pin the $p_{\rm comp}$-versus-penalty ordering.
+Restricting the domain from the whole $10^{-7}$ box to the **certified
+exact-kernel ray** $\{p^*+\rho s:\rho\in[0,10^{-7}]\}$ — with $s$ the frozen
+candidate direction, $A s=0$ over $\mathbb Z$, $\sum s=0$, kernel membership
+re-proved in-run on all 27 rows with $A$'s rank re-established as exactly 24
+over $\mathbb Q$ — does **not** pin it. At the certified endpoint both order
+inequalities straddle zero:
+$G_1\in[-1.8897456060889468\times10^{-5},\,+1.6396874550250076\times10^{-5}]$,
+width $3.5294330611\times10^{-5}$ = **223.15×** the
+$1.5816497000997742\times10^{-7}$ signal, and $G_2$ within $4\times10^{-15}$
+of it.
+
+**The decisive quantity is the survival fraction.** The kernel ray retains
+**62.7%** of the parent's whole-box $G_1$ width
+($3.5294\times10^{-5}$ of $5.6292\times10^{-5}$) and the candidate hull span
+drops only $1.52\times$ ($3.2123\times10^{-5}\to2.1109\times10^{-5}$, still
+133.46× signal). So the parent obstruction was **not** an artifact of taking
+the whole box, and domain restriction is removed as a mover. All four ratios
+were recomputed independently by the owner and match to the digits quoted.
+
+$\varepsilon_0$ is again bit-constant along the ray
+($2.1502086942121845\times10^{-6}$ at both $\rho=0$ and $\rho=10^{-7}$), a
+third independent confirmation, so $\varepsilon$ is exonerated for every
+future analysis and the straddle is carried by $p_{\rm comp}$-vs-penalty
+motion itself. Controls pass in both directions: GATE-Z reproduces both frozen
+records, C1 accepts the identity at gap $5.79\times10^{-13}$, C2 rejects a
+wrong-index dual lookup, C3 rejects dual drift with exact $4\,$drift coupling.
+Five runner defects were disclosed with per-attempt logs, and Amendment 1
+(commit `2bc7628`) — which corrected a transcription error in the expected
+positivity wall — was committed **before** any verdict compute; the exact wall
+was then re-derived from first principles as
+$\mathrm{Fraction}(4771454744492531,\,295147905179352825856)$, bit-identical
+to the frozen record.
+
+Run `20260901T132102Z_f17bb4cb_117823c32d87`, gate `OmegaPcVersusPen`,
+**FROZEN-NEGATIVE**, checksum-ledger SHA-256
+`025b41b85135c0bbee32ab7fc4fdbae3c8cd9c1dca3f6b523ae4b5c32f2d6d8b`
+(18 files, owner-verified 18/18).
+
+**Provenance correction (owner-found).** That run's
+`PREREG_PROVENANCE.json` records the init-time prereg hash `443fc302…` with
+`byte_identical: true`, but the in-directory `pre_statement.md` hashes
+`03fae37c…` because Amendment 1 edited it after the copy. The frozen
+`sha256s.txt` pins the amended bytes, so no evidence is lost and the chain is
+reconstructible, but the provenance file reads misleadingly on its face. Rule
+going forward: **a prereg amended after `campaign.py init` must have both
+hashes recorded in the provenance.**
+
+**Scope.** The 21-dimensional kernel question is **UNCHANGED and OPEN**, gate
+C stays PARTIAL, and the 12.808× guardrail means this line still cannot
+produce a record. What is now certified is narrower and more useful than a
+guess: two movers ($\varepsilon$-freezing, domain restriction) are eliminated
+with measured factors. Named next route: a certified derivative-sign attack,
+or the other six branches, whose whole-box spans are $\le2.06\times10^{-6}$ —
+roughly 13× signal, about 15× narrower than $R_{\rm glob}[0]$.
+
+## `rs-pe3d/` the crossing channel — closed-form count, field-independence, and coherence with Thm-CRIT, 2026-09-01
+
+**The third and structurally decisive channel at $|S|>d$ is now classified.**
+T-DGE handles $|S|=d$; run 4 falsified the fiber picture at $|S|=d+1$ and
+proved the rank criterion; this run explains *where* the non-fiber circuits
+come from and counts them exactly.
+
+**Construction.** Using the kernel identity
+$\ker(A\otimes B)=(\ker A\otimes F^{s_B})+(F^{s_A}\otimes\ker B)$, take one
+column supported on a $d_A$-circuit $R$ of $A$ and one row supported on a
+$d_B$-circuit $J$ of $B$; if the crossing row $i_0\in R$ and crossing column
+$j_0\in J$, the scaling $\sigma=-c_{i_0}/\delta_{j_0}$ (available over any
+field, both entries being nonzero) cancels the centre cell exactly.
+
+**Theorem X (proved directions).** The resulting support has
+$$|S| \;=\; (d_A-1)+(d_B-1) \;=\; d_A+d_B-2 \;=:\; m_*$$
+with profile exactly $(d_A,d_B)$, is a genuine circuit with a
+1-dimensional relation space, distinct parameter tuples give distinct
+supports, and the count is
+$$N_{\rm mix} \;=\; d_A\,d_B\,C_A(d_A)\,C_B(d_B).$$
+**Field-independence** holds for fixed factor circuit spectra, because the
+construction uses only the existence and full support of factor circuit
+relations, a scaling possible in any field, and a field-free injectivity
+argument.
+
+**Coherence — the two channels meet exactly at the criterion's boundary.**
+The crossing channel emits at its own size $m_*$, so it lands in the
+$|S|=d+1$ window **iff** $d_A+d_B-2=d+1$, i.e. **iff $d_A+d_B=d+3$** — which
+is precisely the tightness case of run 4's necessary condition
+$d_A+d_B\le d+3$. For tied factors this is $2d-2=d+1$, i.e. $d=3$, which is
+why the earlier tied-$d{=}4$ configuration had *no* size-5 circuits at all:
+the all-distinct channel is barred by Thm-CRIT and the crossing channel sits
+at size 6 instead.
+
+**Set equality, not merely matching counts.** At six configurations the
+census population with profile $(d_A,d_B)$ was proved **equal as a set of
+supports** to the constructed family: the witness 144, a $2\times3$
+Vandermonde row 36, $2\times5$ 900, $2\times6$ 3600, the $3\times4$ MDS pair
+16, and a composite regrouping 36; the relation-space dimension $m_*-1$ was
+verified on every member. Owner-independent reproduction: $9\binom{n}{3}^2$
+gives 144, 900 and 3600 at $n=4,5,6$, and the $3\times4$ pair at $d=4$ has
+**zero** size-5 circuits with exactly **16** $=4\cdot4\cdot1\cdot1$ size-6
+circuits, all of profile $(4,4)$.
+
+**Cross-prime contrast, independently reproduced.** At
+$p\in\{7,11,13,17,31\}$ the factor spectra stay $\{3\!:\!4\}$ and the mixed
+population is **144 at every prime**, while the all-distinct residual varies
+$8/4/12/4/4$ with totals $152/148/156/148/148$. The owner's own sweep gives
+$p=7\to152\,(8)$, $p=11\to148\,(4)$, $p=13\to156\,(12)$, $p=17\to148\,(4)$ —
+agreeing exactly. This is the sharp separation between a field-free
+combinatorial channel and a determinantal one.
+
+Controls, 66/66 pinned asserts with zero failures over $\ge163{,}000$
+enumerated subsets: **T3a** perturbs each of the 144 crossing relations in
+every single coefficient (6336 perturbations) and *all* destroy dependence,
+proving the cancellation is essential rather than cosmetic; **T3c** rejects a
+duplicated factor column (spark $3\to2$, four size-2 dependent pairs below
+$d$); **T3d** rejects a non-tensor column plant (5 non-fiber dependent
+triples against 0 pristine); **T8** is a dedicated guard against the
+block-concatenation-versus-Kronecker defect that bit the previous run, and it
+separates them cleanly (true 3-factor anchors 24/16/27/48 versus the defect
+path's divergent 0/0/1/1732). Four instrument/pin defects were disclosed,
+including three mis-stated sweep constants in the committed prereg.
+
+Run `20260901T132343Z_4f169cbb_2f81dd8f2d8d`, gate `H-MIX-CROSSING`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`7afdc91a1701e86a65a054965f5aab77321f32361201b72daa418cf61f957c15`
+(8 files, owner-verified 8/8), 50.3 s of a 3600 s cap.
+
+**Scope, stated at the boundary the proof actually reaches.** The forward
+construction, the closed form, the injectivity and the field-independence
+claim are general. The **converse** — that every size-$m_*$ circuit of
+profile $(d_A,d_B)$ is of this form — is proved for $d_A,d_B\ge3$ by Lemmas
+P, Q, Q2 and R **except one corner**: $(d_A,d_B)=(3,3)$ with a
+$(2,2)$-decomposition, where Lemma Q3 does not discharge the case
+analytically. That corner is closed **by exhaustive census at every swept
+$(3,3)$ configuration** (set equality, not counts) and is registered as
+**Hypothesis H2**; the general $(3,3)$ converse is therefore **OPEN**. The
+spark-2 boundary branches, all-distinct closed forms, $\ge3$-factor general
+theorems, characteristic 2, and $|S|$ beyond the swept rows are all out of
+scope.
+
+## `oct-rank/` both registered routes to $\{13,14\}$ closed with quantified evidence, 2026-09-01/02
+
+**The frontier did not move, and that is now a measured fact rather than a
+lack of trying.** $\operatorname{rank}((L_1,L_i,L_j))$ stays **OPEN in
+$\{13,14\}$**: floor 13 and upper 14 both certified, Route A's $12<13$
+closure intact, the published window $18\le R_{\mathbb R}(T_O)\le25$
+untouched. What changed is that the two routes the owner re-scoped — exact
+CP completion downward and Gröbner infeasibility upward — are each frozen with
+the exact cost at which they fail.
+
+**N1, exact CP completion (FROZEN-INCONCLUSIVE, MACHINE-VERIFIED
+negative-of-search).** Does an exact rank-13 CP decomposition of
+$T_F=\operatorname{blockdiag}(\tau,\tau)$ — rank-equivalent to
+$(L_1,L_i,L_j)$ by two frozen entrywise diagonal-similitude identities — exist,
+findable from 40 declared seeds (32 random, 7 $\tau_{r7}$-merge, 1 frozen
+restart) via $3\times5000$-nfev TRF followed by exact $\mathbb Q$ Newton
+admission? **No candidate was admitted**: 40/40 seeds completed in 3769.7 s
+CPU, exact residual range $1.4\times10^{-5}$ to $7.8\times10^{-4}$, best
+relative residual $1.414\times10^{-6}$ — four orders above the pre-registered
+exact gate $\|g_0\|_{\max}\le10^{-7}$ — and the E4 kill criterion fired
+exactly as registered. Owner re-read of the frozen `n1_results.json`: 40
+seeds, minimum `rel_final` $1.413946\times10^{-6}$, zero at or below the gate.
+All four controls in their expected directions through the byte-identical
+frozen instrument: $\tau_7$ CONTAINMENT at $\rho=10^{-3}$ (accepts a known
+decomposition), $\tau_6$ NO-CONTAINMENT at every rung (rejects a globally
+infeasible one), synthetic P-POS CONTAINMENT at $10^{-4}$, and P-WRNG
+NO-CONTAINMENT with complete certified exclusion for a one-coordinate
+perturbation. A pre-outcome instrument defect ($\tau^{\mathsf T}$ builder
+emitting 4-vectors) was fixed and disclosed with the broken output preserved.
+Run `20260901T103338Z_06de66a3_d0b7bc2dc6a5`, checksum-ledger SHA-256
+`a137e5eae5ea5d15b37c7a6c9f7170d8e72a3d92578da6a48f8bdb543203a510` (11 files,
+owner-verified).
+
+**N2, Gröbner infeasibility (FROZEN-NEGATIVE as a quantified resource
+negative).** The pre-registered protocol required calibrating msolve on
+known-status systems before touching the 273-variable gauge-extended rank-13
+systems $E$ (218 equations) and $E_1$ (220). The **smallest** calibration
+system, the known-infeasible $\tau$ at $r=6$ with 66 variables and 48
+equations — four times smaller than the main systems — blew its 30-minute S1
+cap while still inside F4 degree 9: matrix $8{,}080{,}476\times74{,}499{,}764$,
+22.65 GB RSS at kill (35.93 GB in an earlier attempt), degree 8 alone costing
+3802 s wall / 3593 s CPU, i.e. more than twice the whole cap in a single
+round. Three attempts, all 0-byte output; K-1 ($\tau$ at $r=7$) had already
+exceeded its 120 s probe. Per the registered S1 rule, S2 on $E$ and $E_1$ at
+primes 32003, 65537 and 2147483647 was **not run**; primes, monomial order,
+systems and caps are unchanged from the prereg. Frozen for reproduction:
+msolve 0.8.0 pinned to the Sage 10.7 tarball (SHA-256 `319ba0de…badfd`,
+binary `1e8a6725…bc21`), build logs, all serialized integer systems with
+hashes (owner-verified 8/8), the deterministic generator with generation-time
+anchors, exact commands, full F4 traces, an OS memory snapshot, and the
+0-byte outputs as witnesses of non-termination (owner-verified: 5 present).
+Disclosed: $E_1$ has 273 variables, the prereg's "275" being a miscount; and
+the verdict label FROZEN-NEGATIVE was set by owner instruction where the
+prereg had registered FROZEN-INCONCLUSIVE for the same BUDGET-FAIL semantics
+— recorded in `VERDICT.md` rather than silently substituted. Run
+`20260901T115801Z_8d6683fb_39c752e7eadd`, checksum-ledger SHA-256
+`c8d027ac1b8728faff08ae9a91be0204c0fbf953f2e355c76242328c1328c891` (47 files,
+owner-verified).
+
+**Scope, verbatim from the frozen verdict.** "Absence of a 13-witness is NOT
+evidence for 14; absence of an impossibility argument is NOT evidence for
+13." A resource negative is not a rank claim. What the two runs establish is
+narrower and useful: local TRF-plus-exact-Newton from 40 seeds does not reach
+the exact gate, and F4 Gröbner elimination is infeasible by orders of
+magnitude even on a system four times smaller than the target. Any successor
+must change technology — structured or symmetry-reduced elimination, or a
+different certificate of infeasibility — rather than rerun either route.
+
+## `mm3/` mws59 lower bound 56 → 58 — and a correction to frozen session-3 evidence, 2026-09-02
+
+**Frontier move.** `mws59`, the widest remaining gap in the frozen landscape
+at $[56,59]$, is now **$\{58,59\}$** for its fixed orientation. Nothing here
+improves on the published 59-addition scheme; the lower bound moved up by two
+with certificates.
+
+**Exact stagewise decision (MACHINE-VERIFIED).** With
+$\text{total}=C(U)+C(V)+C(W_{\rm fac})+14$ and output bounded by the
+transposition principle (preconditions audited in-run: 23/23 nonzero rows per
+side, $\operatorname{rank}(W_{\rm fac})=9$ exact over $\mathbb Q$):
+- $C(U)=14$ **exactly**: floor@13 re-certified impossible in-run, and the
+  single admitted auxiliary among 389 hash-pinned candidates yields a 14-gate
+  witness verified by exact expansion (owner re-read of the frozen scan: 389
+  rows, exactly 1 feasible).
+- $C(W_{\rm fac})=15$ **exactly**: floor@14 impossible, and a 15-gate witness
+  synthesized in-run from the Table-3 $W$ and verified by exact expansion.
+- $C(V)\ge15$: single-auxiliary scan 0/366 at $T=13$ and a **complete**
+  two-auxiliary pair scan 0/79,728 at $T=14$ (owner re-read: 366 outer rows,
+  79,728 pairs done, 0 hits).
+Hence LB $=14+15+15+14=58$ and UB $=59$ (published 15/15/29 recounted in-run).
+
+Every one of the 80,483 instances was decided twice — the frozen memoized
+subset-DFS and a fresh slot-availability CNF under kissat 4.0.4 — with
+**zero disagreements**; five DRAT→LRAT certificates for the load-bearing
+UNSATs were accepted by both pinned checkers; controls A1–A4 accept and R1–R4
+reject all pass, including a cross-solver CaDiCaL confirmation of the SAT
+control; an independent post-run audit passed 7/7 (third-path universe
+re-enumeration, independent pair count 79,728, checkpoint completeness,
+boundary and random DFS re-runs, verdict arithmetic, witness re-verification,
+certificate replay). Cost 1.33 of a 24.0 CPU-h budget.
+
+Run `20260901T133118Z_8c14c3dd_7970c5318d5d`, gate `mws59-gap-total59`,
+**FROZEN-NEGATIVE** for the 59-total question as registered, checksum-ledger
+SHA-256 `d9075921dc4fbc23c029c4dd6d50a0d313a67fecf1a263770c039e2c1457e7a4`
+(37 files, owner-verified 37/37).
+
+**CORRECTION to frozen evidence (owner-adjudicated).** The session-3
+campaign `2026-08-30T012035Z_a7ea8e8e_cbdf8e63fa94` supplied
+$C(W_{\rm fac}^{\rm mws59})\le15$ through a "constructive transposition
+check", `transpose_check.py`, whose `mws59_resolution.json` and manifest
+record "15 additions, `computes_Wfac_exactly: true`". That script is
+**self-circular**: its `chain` dictionary is created and never populated
+(owner-verified: five references, no item assignment), so it registers no
+output consumers, and its own stdout reports "transposed gates: 0 / Wfac
+circuit additions = 0 / computes exactly the W factor map: False". The frozen
+verification was therefore **void**. The number 15 happens to be correct and
+is now established independently by this run's exact-expansion-verified
+witness; the frozen directory is untouched, and this paragraph is the
+authoritative adjudication of that artifact. Lesson recorded: a verifier's
+own stdout must be compared against the JSON it emits before either is
+frozen.
+
+**Scope.** Fixed orientation, three-stage linear SLP model, additions
+including subtractions, free inputs and sign changes, output via transposition
+accounting. The residual 58-versus-59 decision needs a $U$ two-auxiliary or
+$V$ three-auxiliary scan at $T=15$ — projected $10^6$–$10^7$ instances at the
+measured 21 ms each, explicitly unregistered, and possibly infeasible; if so
+it is to be frozen as a measured negative. `laderman23` is not decidable by
+this machinery at all (no verified factors). Next on the ladder:
+`stapleton60` at $[58,60]$.
+
+## `rs-pe3d/` Theorem X's converse completed (H2), and the all-distinct channel is cross-ratio preservation, 2026-09-02
+
+**Two certified closures finish the size-$(d+1)$ theory for two-factor
+products with sparks $\ge3$.**
+
+**H2 discharged (HUMAN-AUDITED proof, MACHINE-VERIFIED sweeps).** The one
+corner the crossing theorem's converse had left to census — $(d_A,d_B)=(3,3)$
+with a $(2,2)$-decomposition, two $\ker A$ columns at $v_1\ne v_2$ and two
+$\ker B$ rows at $u_1\ne u_2$ — is now proved to produce **no new support**.
+The argument is a tight count: every cancellation cell lies in
+$X=\{u_1,u_2\}\times\{v_1,v_2\}$ (a cell outside $S$ where $C_1\ne0$ forces
+$C_2\ne0$ there); $|\operatorname{supp}C_1|,|\operatorname{supp}C_2|\ge6$
+with intersection inside $X$, so $|S|\ge(6-4)+(6-4)=4=m_*$ is tight;
+equality forces both column supports to be $\{u_1,u_2,w_i\}$ and both row
+supports $\{v_1,v_2,x_i\}$ with all four cells of $X$ cancelling; profile
+$(3,3)$ then forces $w_1=w_2=w$ and $x_1=x_2=x$; and
+$S=\{(w,v_1),(w,v_2),(u_1,x),(u_2,x)\}=S(T,w,Z,x)$ with $T=\{u_1,u_2,w\}$ a
+3-circuit of $A$ and $Z=\{v_1,v_2,x\}$ a 3-circuit of $B$ — exactly a
+crossing support, with the relation proportional to the crossing relation
+because a circuit's relation space is one-dimensional. Owner derivation
+confirmed numerically before dispatch (forced $\Gamma$ has support identical
+to $S(T,w,Z,x)$, $A\Gamma B^{\mathsf T}=0$, genuine circuit); the campaign
+discharged all five steps including the inside-$S$ overlap and the
+spark-to-circuit step, with 170 exact asserts, six exhaustive $(2,2)$ sweeps
+over $p\in\{7,11,13\}$ and two factor pairs giving profile-$(3,3)$ set
+equality (144 and 90) with zero new supports, both plants rejected and the
+concat guard passing. **Theorem X's converse is therefore complete for all
+$d_A,d_B\ge3$.** Run `20260901T135534Z_5678c46e_232421125d33`, gate
+`H-MIX-H2-CLOSURE`, **FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`389a74dc3b38bdccf0bc7680c300e6d240472c648860854e7df5a981fbf52e1a` (6 files,
+owner-verified); `SCOPE_NOTE_H_MIX_CROSSING.md` and `state.json` updated at
+target level.
+
+**The all-distinct channel is cross-ratio preservation (HUMAN-AUDITED proof,
+MACHINE-VERIFIED set equalities).** For $2\times n$ GRS factors with columns
+$(1,x_u)$ and $(1,y_v)$ and distinct evaluation points, $r_Ar_B=4=d+1$, so
+an all-distinct size-4 support $\{(u_k,v_k)\}$ carries a circuit iff a single
+determinant vanishes, $\det[1,\;y_k,\;x_k,\;x_ky_k]=0$, and the chain of
+equivalences is now proved:
+$$\det=0 \iff \exists\,F=c_0+c_1y+c_2x+c_3xy\ne0 \text{ vanishing at the four points}
+\iff \text{the pairs lie on one nondegenerate Möbius graph } y=-\tfrac{c_2x+c_0}{c_3x+c_1}
+\iff \operatorname{CR}(x_{u_1},\dots,x_{u_4})=\operatorname{CR}(y_{v_1},\dots,y_{v_4}),$$
+with the three degeneracies handled explicitly: $D=c_3x+c_1\not\equiv0$, the
+factor-degenerate case $c_1c_2=c_0c_3$ (a vertical-plus-horizontal line pair
+that cannot hold four points with distinct coordinates), and the absence of a
+selected pole; conversely every nondegenerate Möbius map $y=(ax+b)/(cx+d)$
+with $ad-bc\ne0$ yields such an $F$. Triple-independence of the three
+proper subsets gives circuitness, so the predicate is exactly "the pairing is
+a Möbius restriction". Hence
+$$N_{\rm all\text{-}distinct}=\#\{(U,\sigma):\operatorname{CR}(U)=\operatorname{CR}(\sigma(U))\},$$
+and the field dependence of this channel is **exactly** the field dependence
+of cross-ratio coincidences — a field equation, which is why the crossing
+channel is field-free and this one is not. Owner-independent verification
+preceded dispatch: the determinantal count reproduces the frozen $(4,4)$
+census exactly at $p=7,11,13,17$ (8/4/12/4) and predicts 4 at $p=31$ where
+the frozen total is $148=144+4$; cross-ratio equality agreed with
+$\det=0$ on all 120 bijections across those five primes and on all 600
+$(U,\sigma)$ pairs of an asymmetric $5\times5$ configuration at $p=13$ and
+$17$, zero disagreements. In-run: 176 exact asserts; determinant, cross-ratio
+and census populations equal as **sets** on five symmetric primes (8/4/12/4/4)
+and two asymmetric $5\times5$ runs (84 and 40); on every accepted support a
+nonzero bilinear left-null vector was solved and its $\Delta\ne0$, pole-free
+Möbius values and line-or-hyperbola normal form asserted; every planted
+cross-ratio mismatch, non-tensor column, duplicated column and concat guard
+fired. A launch-wrapper defect (shell `exec` unavailable, exit 127, before
+any Python ran) was disclosed and the unchanged run replayed. Run
+`20260902T011204Z_7ece99fe_a108b246f87d`, gate `H-ALLDISTINCT-CROSSRATIO`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`53eea991a0a4634dcaf5eb73fb3819fe28ca928aa0fa8e50ed1c0e1885c37e01` (7
+files, owner-verified).
+
+**The two-factor picture, now complete for sparks $\ge3$.** At $|S|=d$:
+fibers over factor circuits (T-DGE). At $|S|=d+1$: fibers over
+$(d+1)$-circuits (Thm-FIB); crossing supports of size $d_A+d_B-2$, counted by
+$d_Ad_BC_AC_B$, field-free, present iff $d_A+d_B=d+3$ (Theorem X with H2);
+and, for $2\times n$ GRS factors, all-distinct supports exactly when the
+pairing preserves cross-ratio, field-dependent (this run). The rank criterion
+$d_A+d_B\le d+3$ (Thm-CRIT) is the boundary all three respect.
+
+**Scope.** Registered open, in `state.json`: the spark-2 boundary branches
+of Theorem X; a simpler closed evaluation of the cross-ratio coincidence count
+for arbitrary point sets and any analogue for higher-row bi-Vandermonde
+factors, where $r_Ar_B>d+1$ makes the predicate a rank condition on
+$\operatorname{span}\{x^iy^j:i<r_A,\,j<r_B\}$ rather than one determinant;
+and three or more tensor factors.
+
+## `mm3/` stapleton60 gap closed — LB = UB = 60 for the fixed orientation, 2026-09-02
+
+**Second published scheme certified optimal for its own orientation.**
+`stapleton60` in the $\sigma^0$ orientation goes from $[58,60]$ to
+**exactly 60**. The frozen lower bound 58 was valid but not tight: both
+side-stage $d{+}1$ values (15, 15) are unattainable.
+
+**Reduction and decisions (MACHINE-VERIFIED).** $\text{total}=C(U)+C(V)+
+C(\text{output})$ with $C(\text{output})=28$ exact (frozen floor@13 on
+$W_{\rm fac}$ gives output $\ge C(W_{\rm fac})+14\ge28$; the printed output
+stage re-expands in-run to exactly 28, reproducing all 9 $C$-entries over the
+23 products). That reduces the whole gap to two single-auxiliary questions at
+$T=d+1=15$, with the closure argument pre-registered: a 15-gate circuit for
+14 $\tau$ classes has at most one non-$\tau$ gate value, duplicate-class gates
+are deletable, and zero auxiliaries would strip to the refuted 14-gate floor.
+Results: $C(U)=16$ exact (0 of 428 admitted at $T=15$; the printed 16-gate
+left stage re-expanded exactly), $C(V)=16$ exact (0 of 426), and
+$C(W_{\rm fac})=14$ exact (8 of 398 admitted at $T=14$; the first admission
+replayed as an explicit 14-gate circuit and verified by exact expansion,
+`witness_Wfac_14gates.json`). Owner re-read of the frozen checkpoints:
+428/0, 426/0, 398/8, total 1,252 instances, **zero disagreements** between
+the frozen subset-DFS and the fresh kissat 4.0.4 CNF.
+
+Universes were hash-pinned before the prereg commit by enumeration only, with
+**zero** feasibility instances decided pre-commit. Controls A1–A4 accept and
+R1–R4 reject all pass on the first pass, including a tri-instrument SAT
+control (DFS / kissat / CaDiCaL 3.0.1), exact transposition preconditions
+($\operatorname{rank}(W_{\rm fac})=9$ over $\mathbb Q$), and 729/729 Brent in
+both `fmpz` and pure integers; **37 DRAT→LRAT certificates** each accepted by
+both pinned checkers and replayed post-run (owner count: 74 certificate
+files); independent post-run audit 7/7. Cost 110.7 CPU-s of a 6.0 CPU-h cap,
+so the negative is complete, not truncated. No transposition-derived witness
+is used anywhere, honouring the session-3 defect lesson structurally.
+
+Run `20260902T012056Z_25e1634d_f146ed17f287`, gate
+`stapleton60-gap-total60`, **FROZEN-NEGATIVE** for the sub-60 question,
+checksum-ledger SHA-256
+`129ee31432ab78f94b7d5b8b37f28dc8a26d4a67e16520ce034b92c615b5a858`
+(129 files, owner-verified 129/129).
+
+**Fixed-orientation ladder after today.** `paper55` $55=55$ (the record,
+untouched), `sun56` $56=56$, `mws59` $\in\{58,59\}$ (LB 58 certified),
+`stapleton60` $60=60$. Two published schemes are now certified optimal for
+their own orientations. **Scope** as before: fixed orientation, three-stage
+linear SLP model; other orientations, decompositions and models are
+untouched. Remaining: the mws59 58-versus-59 bit, `paper55` $\sigma^1/\sigma^2$
+at $[55,57]$, and `laderman23` (no verified factors).
+
+## `rs-pe3d/` the all-distinct count in closed form — a $\mathrm{PGL}(2,p)$ sum, 2026-09-02
+
+**The registered open item "a closed evaluation of the cross-ratio
+coincidence count" is resolved for full-support GRS factors.** Since each
+all-distinct size-4 circuit support is the graph of a **unique** Möbius map
+restricted to its four $x$-points (existence by the cross-ratio theorem,
+uniqueness because three points determine a Möbius map), and conversely each
+pair $(M,U)$ with $U\subseteq X$, $|U|=4$, $M(U)\subseteq Y$ and no pole in
+$U$ yields a distinct support,
+$$N_{\rm all\text{-}distinct}(X,Y)\;=\;\sum_{M\in\mathrm{PGL}(2,p)}\binom{|X\cap M^{-1}(Y)|}{4},$$
+with $M^{-1}(Y)$ excluding the pole, $|\mathrm{PGL}(2,p)|=p(p^2-1)$, and
+exactly $p-1$ maps for each ordered pair of distinct (pole, zero) in
+$\mathbb P^1$. Classifying maps by where their pole and zero fall relative to
+the point set gives two closed forms (HUMAN-AUDITED, MACHINE-VERIFIED):
+- full field $X=Y=\mathbb F_p$: the $p(p-1)$ affine maps keep all $p$
+  points and the other $p^2(p-1)$ lose their finite pole, so
+  $$N=p(p-1)\binom{p}{4}+p^2(p-1)\binom{p-1}{4};$$
+- multiplicative group $X=Y=\mathbb F_p^*$, $q=p-1$: classes of size $2q$,
+  $4q^2$, $q^2(q-1)$ by the number $k\in\{0,1,2\}$ of $\{\text{pole},\text{zero}\}$
+  inside $\mathbb F_p^*$, summing to $p(p^2-1)$, each keeping $q-k$ points, so
+  $$N=2q\binom{q}{4}+4q^2\binom{q-1}{4}+q^2(q-1)\binom{q-2}{4}.$$
+
+Owner-independent verification preceded dispatch: brute-force product census
+with full $2\times p$ Vandermonde factors gives 200 at $p=5$ and 5880 at
+$p=7$, equal to the first form; on $\mathbb F_p^*$ the census gives 8, 1080
+and 117600 at $p=5,7,11$, equal to the second form **and** to a direct
+enumeration of every Möbius map (336 at $p=7$, 1320 at $p=11$) under the
+principle. An owner hand-derivation slip — $q^2(q-2)$ for the $k=2$ class,
+giving 1044 instead of 1080 at $p=7$ — was caught by that brute force and
+turned into a control: in-run the wrong coefficient is rejected by the
+class-size identity ($300\ne336$) and by the count ($1044\ne1080$). In-run:
+151 exact asserts, zero failures; PGL sizes and class sizes at
+$p=5,7,11,13$; three-route support-set equality (census, cross-ratio
+predicate, PGL enumeration) at 200/5880 and 8/1080/117600, including
+1,058,400 pairings at $p=11$; selected-pole, non-tensor, duplicated-column
+and concat guards all fired.
+
+Run `20260902T012629Z_2eb59adb_0aa7425efe1b`, gate
+`H-ALLDISTINCT-PGLCOUNT`, **FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`1ff319febd6d3da614513981b9bf265b88012057b3f0c091f3bc5c8b26df6096` (6 files,
+owner-verified).
+
+**Scope.** Two $2$-row GRS factors with evaluation sets inside $\mathbb F_p$;
+the sum is general in $X,Y$, the closed forms are for the two full supports.
+With this, the field dependence of the all-distinct channel is fully
+explained: it enters only through $p$ and the point sets, via
+$\mathrm{PGL}(2,p)$. Still open: the spark-2 boundary branches of Theorem X,
+higher-row bi-Vandermonde factors, and three or more tensor factors.
+
+## `mceliece/` second $m=12$ row reached: $t=96$ with $\alpha$ measured, not derived, 2026-09-02
+
+**A bounded finite statement about one more instance, exactly as registered.**
+At $(m,n,t,\text{seed})=(12,3488,96,16384)$ — $k=n-mt=2336$,
+$D=n-2t-1=3295$, $2t+3=195$ (owner-recomputed) — the binary-Goppa Guard-A
+construction passes with the same standard as the $t=64$ NIST cell:
+- $G$ monic irreducible of degree 96 (312 seeded tries, scalar-Rabin
+  confirmed), square-free by $\gcd(G,G')=0$;
+- **$\alpha$ MEASURED**: the fork resolved at the pre-registered gate on
+  measured cumulative CPU $3353.46\ll24300$, so the unmodified $m\le11$
+  instrument ran over **all 3488 support points with 0 failures** (648.43
+  CPU-s); the DERIVE branch (Apon Lemma 3 as CITED-DEPENDENCY) was never
+  entered;
+- $\delta$ chain **exact** 5/5: zero-remainder division 3488/3488, unit
+  checks $L_i(a_i)=1$ 3488/3488, 0/200 off-diagonal violations, 3/3 assembly,
+  degree gate $\max_j\deg f_j=3295=D$ exactly;
+- controls: $\lambda$ recompute byte-equal, four-selector $\mathbb F_2$
+  linearity, $\beta$ pair $(0,1)$, $\varepsilon$ max-degree; anchors 3/3
+  byte-equal against the frozen $m\le11$ records at $(11,2048,48)$,
+  $(10,1024,40)$, $(6,64,3)$; plants 4/4 rejected by the same verifier —
+  duplicated support ($\Pi'=0$), $f_0+\Pi$ caught by the degree-gate abort
+  ($2048>1951$) with value-level invisibility confirmed 0/22, row-0 $\times3$
+  failing $\alpha$ ($c^2=5$), and a $t{=}96$-native $\times3$ probe failing
+  60/128 corrupted against 0 clean.
+Cost 4017.55 of a 32400 CPU-s budget. Run
+`20260901T100025Z_bd55fdfd_8fbba9be5ab3`, **FROZEN-CERTIFIED**,
+checksum-ledger SHA-256
+`f8e7d407ef9d121a4a37b91fe34f04b35c5a1b3569144c5ea8684d0c64c936d0`
+(20 files, owner-verified 20/20; `verdict.json` fields
+`alpha_identity_measured_full_grid: true`, `alpha_failures: []`).
+
+**Governance.** An earlier same-cell run, `20260901T094531Z_ae227cfd_fe99571a47fa`,
+was closed **REHEARSAL** and all its outputs discarded because tool-level
+$t{=}96$ probes preceded the prereg commit; its `REHEARSAL_PROVENANCE.md`
+records the timeline. The certified run above started its first $t=96$
+computation only after commit, init and claim.
+
+**Scope.** ONE instance, one seeded $G$, one seeded support ordering.
+**Not** "$m=12$ complete"; $t=48$ remains unreached and is the named next
+row; no census rows at $m=12$; the Apon section-3.6 hole remains **bounded,
+not closed**; no NIST-cost claim.
+
+## `mm3/` the mws59 bit is 58 — an explicit 58-addition circuit, one below the published 59, 2026-09-02
+
+**The ladder is now exact at every rung.** `mws59`'s fixed orientation has
+minimum **exactly 58** additions: $C(U)+C(V)+C(\text{output})=14+15+29$. The
+published 59-addition scheme is therefore **one addition above the optimum of
+its own orientation** — its left stage spends 15 where 14 suffice. No
+published claim is contradicted (59 additions do suffice) and 58 is **not a
+record**: `paper55`'s 55 stands untouched.
+
+**How the two sides met.** Lower bounds are entirely the frozen previous run:
+$C(U)=14$ exact, $C(V)\ge15$ (single-auxiliary 0/366 and complete
+two-auxiliary 0/79,728), $C(W_{\rm fac})=15$ exact, output $\ge29$. The upper
+bound became a certified object by assembling session-10's frozen 14-gate
+left circuit with the paper's printed 15-addition right stage and 29-addition
+output stage (Table 2, transcribed verbatim from the pinned layout, recounted
+in the fixed model as $15+15+29=59$, and matched to the Table-3 blocks by an
+exact product correspondence: identity coordinate maps, a bijection on the 23
+products, per-product signs, nine negated products compensated in the output
+column, all 621 entry equalities exact). The decisive artifact
+`assembled_58_endtoend.json` expands the assembled circuit **symbolically over
+all 81 monomials** $A_iB_j$ and finds all nine outputs equal to
+$C[i][j]=\sum_l A[3i+l]B[3l+j]$ exactly, with the total recounted from
+explicit gate lists as 58 — independent of the DFS/CNF searches, of the Brent
+check on the factor blocks, and of any transposition argument.
+
+**Owner-independent re-expansion.** With a fresh expander over exact
+integers: the published Table 2 gives 9/9 outputs exact at $15+15+29=59$; the
+frozen 14-gate witness (`witness_U_14gates.json`, each recorded gate value
+re-derived from its operands) realises all 23 left operands of the printed
+products, 19 exactly and 4 (products 15, 16, 18, 21) up to sign; absorbing
+those signs into the output stage, which is free in the model, the assembled
+algorithm gives **9/9 outputs exact at $14+15+29=58$**.
+
+**Route S never ran, by its own pre-registered numbers.** The registered
+fallback — a three-auxiliary closure enumeration — projected $6.30\times10^7$
+ordered chains at the measured 59–120 ms per instance, i.e. 173–2,100 CPU-h
+against a 4.0 CPU-h cap; Route P settled the bit first, so no prefix was run,
+nothing was sampled, and no Route-S claim exists. Measured cost 2.2 CPU-s.
+
+**Amendment 1, disclosed and committed before the amended compute.** The
+first correspondence matcher forced $\varepsilon\varepsilon'=+1$, forbade a
+compensating output-column sign and assumed one shared $3\times3$ flattening,
+and found no correspondence although it recounted 15/15/29 correctly. It was
+widened to $\sigma_{A,B,C}\in\{\mathrm{id},T\}$ with independent per-product
+signs, accepting only on exact equality of every entry, with the
+wrong-correspondence plant strengthened to the widened space; the failed
+attempt is preserved verbatim (`verdict_preamendment.json`). Only the
+$\varepsilon\varepsilon'=-1$ case was needed. `PREREG_PROVENANCE.json`
+records both prereg hashes (owner-verified).
+
+Controls A1–A4 accept (729/729 Brent in `fmpz` and integers, frozen row, both
+session-10 witnesses re-verified by exact expansion, tri-instrument SAT
+control, transposition preconditions) and R1–R5 reject (gate deleted,
+operand perturbed, wrong correspondence, frozen floor@12 re-certified with a
+fresh dual-checker DRAT→LRAT, $d$-count planter); independent post-run audit
+6/6. Run `20260902T013730Z_49d2f937_a672bbec349b`, gate
+`mws59-bit-58vs59`, **FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`59718ab491e66b196ddd8f79f1eb33880f04fe859fe9290b8d8f03b0ddd8d661` (22
+files, owner-verified 22/22).
+
+**Exact fixed-orientation ladder, published → certified minimum.**
+`paper55` $55\to55$ (the record), `sun56` $56\to56$ (published optimal),
+`mws59` $59\to\mathbf{58}$ (published $+1$), `stapleton60` $60\to60$
+(published optimal). **Scope** unchanged: fixed orientations, three-stage
+linear SLP model; other orientations, decompositions and the global sub-55
+question are untouched. Remaining in `mm3/`: `paper55` $\sigma^1/\sigma^2$
+at $[55,57]$ and `laderman23` (no verified factors).
+
+## `rs-pe3d/` size-$(d+1)$ circuits of $n$-fold products vary in at most two coordinates, 2026-09-02
+
+**The capstone of today's Kronecker-circuit theory, and it closed a gap I
+had flagged as the honest risk.** For $H=H_1\otimes\cdots\otimes H_n$ with
+every spark $d_i\ge3$ and $d=\min_i d_i$: **every size-$(d+1)$ circuit
+varies in at most two coordinates.** It is either a fiber over a
+$(d+1)$-circuit of a single factor, or a regrouped two-factor circuit —
+crossing or all-distinct — with every other coordinate fixed. No genuinely
+three-dimensional $(d+1)$-circuit exists. Corollary: for **$d\ge4$** every
+size-$(d+1)$ circuit is a fiber.
+
+**Completeness of the two-factor classification, proved in general
+(HUMAN-AUDITED).** The step the earlier campaigns had certified only by
+census at $d=3$ is now analytic: a non-fiber two-factor circuit must use at
+least $d_A$ distinct $A$-indices and $d_B$ distinct $B$-indices (dual
+isolation, as in T-DGE); writing the dependency as
+$A_E\,\operatorname{diag}(\gamma)\,B_E^{\mathsf T}=0$ gives
+$\rho_A+\rho_B\le d+1$, hence $d_A+d_B\le d+3$, which with $d_A,d_B\ge3$
+forces $d=d_A=d_B=3$. The residual profiles $(3,4)$ and $(4,3)$ are then
+excluded using the two singleton rows and the one-dimensional factor-circuit
+kernel, leaving exactly the crossing profile $(3,3)$ and the all-distinct
+profile $(4,4)$. The $n$-factor statement follows by induction through the
+composite $B=\bigotimes_{j\ge2}H_j$, with the branches $d_B=d$, $d_B=d+1$ and
+$d_B>d+1$ handled separately, using T-DGE on $B$ to force a size-$d_B$
+circuit of $B$ to be an axis fiber and the rank inequality to force the
+all-distinct $B$-columns onto one axis line.
+
+**Exact count, with a real double-counting trap avoided.** The number of
+size-$(d+1)$ circuits is the sum over factors of fiber counts plus the sum
+over unordered pairs $\{i,j\}$ of $(\prod_{k\ne i,j}s_k)\cdot
+N^{\rm nonfiber}_2(H_i,H_j)$; using all-pair counts instead of non-fiber pair
+counts double-counts fibers, and the planted "all-pair" route is rejected
+in-run at raw 656 versus the true 624 with the 32-element duplicate excess
+identified.
+
+**Owner-independent evidence preceded and followed dispatch.** Three
+$2\times3$ Vandermonde factors over $\mathrm{GF}(7)$: 27 size-3 circuits all
+fibers, and **81** size-4 circuits of profiles $(1,3,3)/(3,1,3)/(3,3,1)$, 27
+each, $=3$ pairs $\times$ 3 fixed indices $\times$ 9 crossings, zero
+three-dimensional. Three $2\times4$ factors: **1824** size-4 circuits,
+$576\times3$ crossings and $32\times3$ all-distinct, $=3\times4\times152$
+exactly, zero three-dimensional. Post-freeze, a $3\times4$ MDS factor with
+two $2\times4$ factors: **624** $=576$ crossings $+32$ all-distinct $+16$
+fibers over the $3\times4$ factor's single 4-circuit, zero
+three-dimensional. In-run: 78 exact asserts after amendment, support-set
+equality at 81 (+27 fibers), 1824, 624 and 156 ($3\times4$ with
+$2\times3$ and $2\times4$), every plant fired.
+
+**Amendment, scope-only, both preregs bound.** The original prereg's P1
+sentence over-scoped the frozen GRS Möbius normal form to arbitrary spark-3
+factors; the general theorem needs only the abstract all-distinct two-factor
+channel. The sentence was narrowed without changing theorem, pins,
+instrument or promotion rule; the original prereg (commit `1b90473`, hash
+`209c0f6a…`, bound in the manifest) and the amended one (commit `0cc460f`,
+hash `a34cf7a7…`) are both preserved in the run directory with the
+pre-amendment controls file, and `provenance.txt` records both — exactly the
+rule set after the omega provenance defect.
+
+Run `20260902T014115Z_25757c71_9c6065a4173c`, gate `H-DP1-THREEFACTOR`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`acd1866f611cb5612f46885d9ec310bf6be8fb7ff0e21770c54c6dc7f6e28303`
+(9 files, owner-verified).
+
+**State of the theory after one day.** Size $d$: T-DGE (fibers iff at most
+one spark-2 factor). Size $d+1$, all sparks $\ge3$: at most two varying
+coordinates; the two-factor channels are fibers (Thm-FIB), crossings (Theorem
+X with H2, count $d_Ad_BC_AC_B$, field-free, present iff $d_A+d_B=d+3$) and,
+at $d=3$ only, all-distinct pairs (Thm-CRIT; for $2\times n$ GRS exactly
+cross-ratio preservation, counted by a $\mathrm{PGL}(2,p)$ sum). Registered
+open: spark-2 boundary branches, higher-row bi-Vandermonde all-distinct
+counts, and sizes $\ge d+2$.
+
+## `mm3/` paper55's $\sigma^1$ and $\sigma^2$ orientations both exactly 55 — the ladder is complete, 2026-09-02
+
+**Not a new record; the record value at two further orientations of the
+same tensor.** The frozen $[55,57]$ intervals for `paper55` in the
+$\sigma^1=(V,T(W),T(U))$ and $\sigma^2=(T(W),U,T(V))$ orientations both
+collapse to $\{55\}$: $\sigma^1=14+14+27$, $\sigma^2=14+13+28$. The "best
+known 57" rows are superseded by 2; $\sigma^0$'s 55 stands and nothing
+sub-55 is claimed.
+
+**Why only the output stages were open.** Gate B's frozen exact side costs
+($C(U)=13$, $C(V)=14$, $C(W_{\rm fac})=14$) transport to the $\sigma$
+orientations by the free-relabelling symmetry $C(T(X))=C(X)$ — a fixed
+input-coordinate permutation renames free wires at zero cost, re-checked
+numerically in-run for all three blocks — so each orientation's only open
+quantity was whether its output stage attains its bound (27 and 28). Both do.
+
+**Constructed and verified (MACHINE-VERIFIED).** A 14-gate $W_{\rm fac}$
+circuit was **synthesized in-run** by the aux-1 dual instrument over a
+hash-pinned 391-element universe (two independent enumeration loops
+agreeing), admitted at instance 307 and verified by exact expansion — so no
+transposition-derived witness is used anywhere, honouring the session-3
+lesson; owner re-read: 391 distinct instances, three passes each, exactly
+instance 307 feasible in every pass, zero instrument disagreements, and all
+14 recorded gate values re-derived exactly from their operands. The printed
+13-gate left and 14-gate right SLPs are reused under free renaming and
+re-verified; each output stage is built by reverse-mode transposition as
+explicit adjoint accumulations with additions counted exactly and checked
+entry-by-entry ($23\times9$ equalities) against its orientation's
+$W$-combination map; and each assembled scheme is expanded **end-to-end over
+all 81 monomials** with 9/9 outputs exact, both orientations.
+
+Controls A1–A5 accept (729/729 Brent in `fmpz` and integers for all three
+orientations, printed-SLP recount $13/14/28=55$, frozen landscape rows,
+relabelling symmetry, transposition preconditions, tri-instrument SAT
+control) and R1–R5 reject (gate deleted, operand perturbed, frozen
+$W_{\rm fac}$ floor@13 re-certified infeasible with a fresh dual-checker
+DRAT→LRAT, $d$-count planter); independent audit 6/6 including a
+from-scratch re-derivation of both assemblies. Two instrument defects were
+caught by pre-registered checks before any claim — a relabelling that
+rewrote stored values (refused by the exact-expansion verifier) and
+transposed outputs emerging in wire order rather than coordinate order
+(caught by the output-map equality check) — with the intermediate
+INCONCLUSIVE verdict preserved verbatim. Cost about 81 CPU-s of a 2.0 CPU-h
+cap. Run `20260902T015158Z_c0bea75d_761cb990fc40`, gate
+`paper55-sigma12-total55`, **FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`70818358cf61d1a454e7f6710ccbe30157c249197c29346f276b7bad7362c5c2`
+(23 files, owner-verified 23/23).
+
+**The fixed-orientation ladder, complete.** `paper55`
+$\sigma^0/\sigma^1/\sigma^2=55$ (the record, three orientations),
+`sun56`$=56$ (published optimal), `mws59`$=58$ (published 59 is $+1$),
+`stapleton60`$=60$ (published optimal). Every named orientation with a frozen
+gap now has an exact per-orientation minimum. **Scope** unchanged; the
+global sub-55 question is untouched by any campaign here, and `laderman23`
+remains undecidable without verified factors.
+
+## `rs-pe3d/` size $d+2$ classified completely for $2\times n$ GRS pairs — circuits are degree-$\le2$ bipartite graphs with minor conditions, 2026-09-02
+
+**A complete characterization one size further, and it changes the
+language.** For two $2\times n$ GRS factors ($d=3$), a 5-set of product
+columns is a circuit **iff** (i) its bipartite support graph has maximum
+row and column degree $\le2$, (ii) it contains no 4-edge crossing, and
+(iii) every all-distinct 4-minor is nonzero. Exhaustive templates by profile:
+$(3,3)$ a 4-cycle plus an edge; $(3,4)$ a 5-path plus an edge; $(3,5)$ two
+same-side 3-paths plus an edge, with mirrors; $(4,4)$ a 4-path plus two
+edges carrying one minor; $(4,5)/(5,4)$ a 3-path plus three edges carrying
+two minors; $(5,5)$ a perfect matching carrying five minors.
+
+**Closed forms (HUMAN-AUDITED, MACHINE-VERIFIED).** The field-free
+$(1,2)/(2,1)$-decomposition channels — one $\ker A$ column on a 3-circuit
+$R$ and two $\ker B$ rows at $u_1,u_2\in R$ on 3-circuits $Z_1,Z_2\ni j_0$
+with both crossings cancelled — give, with injectivity proved,
+$$N_{33}=9\binom{n}{3}^2,\qquad N_{34}=N_{43}=72\binom{n}{3}\binom{n}{4},\qquad
+N_{35}=N_{53}=18n\binom{n}{3}\binom{n-1}{4},$$
+according to $Z_1=Z_2$, $|Z_1\cap Z_2|=2$, $|Z_1\cap Z_2|=1$, and the
+coincidence $N_{33}$ = the size-4 crossing count is given a structural
+reason. The determinantal channels are exact sums: $N_{44}=12(M_4-N_{\rm all4})$
+in terms of the 4-matchings and the all-distinct size-4 count, with explicit
+$P_{45}$ and $P_{55}$ minor sums, and canonical decompositions
+$(T_1,T_2,r,c)$ for every survivor — $(6,6,4,3)$ for $(4,4)$, $(6,7,4,4)$
+for $(4,5)$, $(9,8,6,6)$ for $(5,5)$. The general size law is
+$|S|=T_1+T_2-r-c$ with $r$ the support overlap and $c$ the cancelled
+overlap; the owner's proposed $-2c$ law is only the tight full-cancellation
+corollary, corrected in-run and turned into a "wrong-law" plant.
+
+**A sharpness result inside the result.** The factor-rank criterion
+$\rho_A+\rho_B\le5$ is **insufficient** for the all-distinct $(5,5)$
+channel: at $n=5$, $p=13$, all 120 matchings satisfy it while only 60 are
+circuits — the five 4-minors are load-bearing.
+
+**Owner-independent evidence.** Pre-dispatch censuses: $2\times4$ over
+$\mathrm{GF}(13)$ 864 with $(3,3)$:144, $(3,4)$:288, $(4,3)$:288, $(4,4)$:144;
+over $\mathrm{GF}(7)$ 912 with $(4,4)$:192; $2\times5$ over $\mathrm{GF}(13)$
+17880 with $(3,3)$:900, $(3,4)$:3600, $(3,5)$:900, $(4,4)$:6192,
+$(4,5)$:864, $(5,5)$:60 — and the three closed forms above derived and
+matched before dispatch. Post-freeze: $2\times4$ over $\mathrm{GF}(11)$ gives
+**960** with $(4,4)$:240, matching the run's new anchor; every one of the 864
+circuits at $p=13$ has maximum degree $\le2$ and contains no dependent
+4-subset. In-run: 170 exact asserts; direct, structural and constructed
+**set** equality at $p\in\{7,11,13\}$ for $n=4,5$; new totals $n=5$:
+17124/17560/17880 at $p=7/11/13$ with only the determinantal profiles
+varying; every plant fired including an inserted size-4 crossing and the
+wrong-law route.
+
+Run `20260902T021721Z_7629001e_215016bf40c3`, gate `H-DP2-SIZE5`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`e5d03e06999d18b67de989074955ae1e39c7b111fb594b7e271168f58567c82c` (6
+files, owner-verified).
+
+**Scope.** Two $2\times n$ GRS factors at $d=3$, size exactly 5. The
+degree-$\le2$ condition is the general face of "no factor circuit inside"
+($\deg\le d-1$), which suggests the general-size statement; that is the
+named next gate, not a claim.
+
+## `delcap/` q=3,n=12 box complete — 4/4 orbit-total certificates, every row beats both published endpoints, 2026-09-02
+
+**A parameter frontier moved with replayable certificates.** The registered
+$q=3$, $n=12$ extension is complete: all four cells are CERTIFIED with
+conservative outward intervals that **strictly beat both** published
+Tavakoli–Nguyen–Bose endpoints, exactly as the $n=11$ box did.
+
+| $d$ | certified interval (outward, bits/symbol) | width upper |
+|:---:|:---|---:|
+| 1/2 | `[0.40486950906723745, 0.4048828292730583]` | `1.332e-05` |
+| 1/5 | `[0.9060415197452321, 0.9060644026068896]` | `2.288e-05` |
+| 1/10 | `[1.1968923784214915, 1.1968988416160002]` | `6.463e-06` |
+| 1/20 | `[1.376928469567818, 1.3769335302038865]` | `5.061e-06` |
+
+All widths inside the $1/500$ target; every dual is `ba_total_orbit_mass`;
+LB$^+$ margins $\ge9.77\times10^{-2}$ / $2.10\times10^{-2}$ /
+$5.29\times10^{-3}$ / $1.31\times10^{-3}$ and UB margins
+$\ge3.88\times10^{-1}$ / $3.62\times10^{-1}$ / $2.30\times10^{-1}$ /
+$1.29\times10^{-1}$, all as Arb lower bounds $>0$ (**MACHINE-VERIFIED**; the
+exact Arb balls and outward binary rationals in `orbit_rows.jsonl` are the
+certificates, not these display decimals).
+
+**Pre-registered counts asserted, not adjusted.** 44,530 input orbits over
+$3^{12}=531{,}441$ words and 66,980 output orbits over 797,161; Burnside
+$B(0..12)=1,1,2,4,10,25,70,196,574,1681,5002,14884,44530$ reproduces both
+(owner check: $\sum_{k\le12}B(k)=66{,}980$ and the $k\le11$ prefix
+$22{,}450$ equals the frozen $n=11$ anchor); census tuple
+$(44530,66980,30666848,18311678,48978526)$ identical across both static
+guards and all four rows. Exact orbit-mass identities verified per row
+(input numerators sum to $2^{30}$ exactly; the full-support bump fires as
+$2^{30}+66{,}980$ where expected; orbit-uniform dual sums to 797,161).
+
+**Controls in both directions, in each campaign.** ACCEPT: the frozen
+$n=11$ row $0{:}3{:}11{:}1/2$ reproduced **bit-exactly** on all 35
+certificate fields — census tuple, all 14,884 input and 22,450 output
+numerators, every Arb ball, the whole conservative interval as exact binary
+rationals, the verdict, even the BA float locator. REJECT: R1a mass total
+$2^{30}+1$, R1b/R1c negative numerators, R2 negative width, R3 a planted
+split output law rejected before compression while orbit-uniform is
+admitted — each at its pre-registered assertion point. A 180-assertion
+independent re-derivation from the frozen bytes passed; both `--validate-resume`
+checks PASS.
+
+**Two campaigns, one of them CRASHED and closed honestly.** The first run
+`20260901T121346Z_d1db3155_4354a957b8ba` certified and byte-pinned rows 0–1
+($d=1/2,1/5$), then died mid-row-2 with `BrokenPipeError` because its
+launcher piped stdout through `tail`, deviating from the frozen command;
+`FAILURE.json` is preserved, its rule forbade a rerun under the same
+prereg, and it was frozen and closed **CRASHED** (13 files,
+checksum-ledger SHA-256 `5c4094b5c6ad580be6a6eb81162a62df3040556637b3c80a51a589930cb1f460`).
+The continuation `20260902T010546Z_adc6518e_e85083dd9888`, gate
+`delcap-q3-n12-continuation-d10-d20-v1`, certified rows 2–3 under its own
+prereg and closed **FROZEN-CERTIFIED** (17 files, checksum-ledger SHA-256
+`1ff2b5edecf9c7bc0b4b4918e4291d98ee3131a2dc6354c98dfc904a5f918867`;
+owner-verified both ledgers clean, both preregs bound). Row CPU 7664.5 s =
+2.13 CPU-h of a 6 CPU-h budget; max RSS 4.40 GB of a 96 GiB cap; no
+resource stop (**COMPUTATIONAL-EVIDENCE**). Two close-out checking errors by
+the agent (width versus display-double difference; post-bump denominator)
+are disclosed in its report.
+
+**Scope.** A finite-$n$ theorem for exactly these four $q=3,n=12$ cells.
+**No asymptotic-capacity claim.** Named next campaign: $q=3,n=13$
+($B(13)=133{,}225$ input orbits over $3^{13}$; 200,205 output orbits over
+2,391,484), estimated 6–12 CPU-h and 12–14 GiB, requiring its own prereg
+with a larger budget and never a resume under changed caps.
+
+## `rs-pe3d/` the two-row theory is complete; the three-row frontier is opened and honestly left open, 2026-09-02
+
+**Certified subresult (HUMAN-AUDITED, MACHINE-VERIFIED).** Product columns
+of $A\otimes B$ live in $F^{r_Ar_B}$, so every set of $r_Ar_B+1$ columns is
+dependent and **no circuit has size $>r_Ar_B+1$**, with equality
+attainable. For two $2\times n$ GRS factors this caps circuits at size 5,
+and the classification is therefore exhaustive: size 3 fibers (T-DGE), size
+4 crossing and all-distinct (Theorem X with H2, Thm-CRIT, cross-ratio,
+PGL count), size 5 the six templates (H-DP2-SIZE5) — and nothing else.
+Owner check: all $\binom{16}{5}=4368$ 5-sets of the $2\times4$ pair are
+dependent, so size-6 circuits are empty. The degree bound is scoped
+precisely: for the tied two-row layer at sizes $>3$ every circuit has
+maximum degree $\le d-1$; in the unequal $(d_A,d_B)=(3,4)$ case the
+non-fiber bounds are $A$-vertex degree $\le d_B-1=3$ and $B$-vertex degree
+$\le d_A-1=2$, the size-4 $B$-fiber being the expected exception.
+
+**Three-row frontier, opened.** For $(2\times n)\otimes(3\times n)$ GRS
+pairs — $d_A=3$, $d_B=4$, $d=3$, ambient dimension 6, circuit sizes 3..7 —
+exact censuses at $n=4,5$ over $\mathrm{GF}(7)$ and $\mathrm{GF}(13)$
+passed 121 asserts, and the field-free channels were proved: the size-5
+crossing at profile $(3,4)$ with count $3\cdot4\cdot C_A(3)\,C_B(4)$ (owner
+check: exactly 48 size-5 circuits for the $2\times4\otimes3\times4$ pair,
+all of profile $(3,4)$, $=3\cdot4\cdot4\cdot1$); three field-free size-6
+families with counts $18\binom{n}{3}\binom{n}{4}$, $144\binom{n}{4}^2$ and
+$180\binom{n}{5}\binom{n}{4}$; and the size-7 $K_{2,3}+K_2$ family with
+$12\binom{n}{3}\binom{n}{4}$.
+
+**Left OPEN, by verdict.** The whole gate closed **FROZEN-INCONCLUSIVE**
+because the determinantal channels — size-5 $(5,5)$, size-6 $(4,5)$ and
+$(5,5)$, and the residual size-7 channels — were not characterised by
+explicit minor conditions in-window. Nothing incomplete was promoted; the
+two-row capstone inside the run is fully proved.
+
+Run `20260902T023120Z_8ac826db_96f766bfe6cc`, gate
+`H-2ROW-COMPLETE-3ROW-OPEN`, checksum-ledger SHA-256
+`d2a2177a0f8f6cf4656834918ba32dd78482481b0cd6b84435525af1824624b5` (7
+files, owner-verified); target scope note and `state.json` updated.
+
+**Where the theory stands after nine campaigns in one day.** Kronecker
+circuits are now understood completely for two-row GRS pairs (sizes
+$3,4,5$; field-free versus determinantal channels separated; the
+determinantal ones reduced to cross-ratio and $\mathrm{PGL}(2,p)$ counting),
+for $n$-fold products at size $d+1$ under sparks $\ge3$ (at most two varying
+coordinates), and partially for mixed two/three-row pairs. Named next gate:
+minor characterisations of the three-row determinantal channels, in the
+style of the size-5 $(4,4)$ and $(5,5)$ treatment.
+
+## `mm3/` laderman23 source-locked from the primary and its ladder closed at exactly 62, 2026-09-02
+
+**The item blocked since session 8 is resolved, in two lifecycle
+campaigns.**
+
+**Phase 1, source lock (CITED-DEPENDENCY for the text, MACHINE-VERIFIED
+for validity).** The factors come from the **primary**: Laderman, *Bull.
+Amer. Math. Soc.* 82(1), 1976, 126–128, open-access publisher PDF, 236,490
+bytes, SHA-256 `a1deb200f2e270b13b870bbcf8ce8c669d7a09a4acdeddc012df5d6c90042a5b`
+(owner-verified), pinned with 300/400 dpi rasterisations. All 23 products
+and 9 output equations were transcribed verbatim and the paper's own
+criterion — "729 nonlinear algebraic equations involving 621 unknowns" —
+machine-verified: 729/729 Brent over $\mathbb Z$ in pure integers and
+`fmpz`, agreeing on every identity; owner re-check on
+`laderman23_factors.json`: 23 products, **0/729 failures**. Page fidelity
+verified twice, and an independent pinned reproduction (arXiv:1108.2830
+§2.4, SHA-256 `d768596b…`) also verifies 729/729 with 9/9 identical output
+supports, differing only by free per-product signs — strong corroboration
+that the object is Laderman's. Defect D1: `pdftotext` truncated the
+$m_3/m_{11}$ tails at the page edge and one entry was typed as $b_{33}$
+where the scan prints $b_{32}$; caught by control A1 at 727/729 with no
+verdict, and Amendment 1 (committed before the amended run) made the
+rasterised scan authoritative. The prereg's FROZEN-NEGATIVE branch was
+deliberately not invoked: the typing failed, not the source. Run
+`20260902T022208Z_8c279ad1_d0276dfee63d`, gate `laderman23-source-lock`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`081df488e998a2d06974a951a1087365805ba8d76dfb04407ec3f3a349dee0a6`
+(33 files, owner-verified; provenance carries both prereg hashes).
+
+**Phase 2, the ladder (MACHINE-VERIFIED).** Laderman's printed "basic form"
+recounts to exactly **98** additions $=28+28+42$ (recounted twice
+independently). The certified minimum for the fixed orientation is exactly
+**62** $=16+16+30$, LB $=$ UB. So the certified minimum beats the printed
+count by exactly 36 — the honest framing being that it **quantifies the
+slack the paper itself advertises** ("the number of additions could be
+greatly reduced, but it is being given in its more basic form"): the
+reducible amount is exactly 36 and 62 is the floor; no claim that Laderman
+erred. Per side $C(U)=C(V)=C(W_{\rm fac})=16$ exactly: floors at 14 all
+impossible, then the complete hash-pinned single-auxiliary census at $T=15$
+admitted **zero of $3\times408=1{,}224$** instances, memoized subset-DFS
+and a fresh kissat 4.0.4 CNF agreeing on every one, universes pinned before
+any feasibility compute and re-derived by two enumeration loops, and all
+1,224 infeasibilities carrying DRAT→LRAT certificates accepted by both
+pinned checkers (1,224/1,224 at rc 0/0; retention policy disclosed). Upper
+bounds by randomized greedy common-subexpression elimination (240 restarts
+per side, 240/240 proposals verified, 0 discarded) at 16 gates per side,
+each verified by exact expansion in code sharing nothing with the search;
+the output stage constructed by reverse-mode transposition at exactly 30
+additions and checked against all 207 $W_{\rm fac}$ map entries; the
+assembled scheme expanded over all 81 monomials with 9/9 outputs exact. No
+transposition-derived witness anywhere. Controls A1–A6 accept and R1–R5
+reject; CaDiCaL cross-solver agreement; independent audit 8/8 with its own
+re-transposition and end-to-end expansion; about 7.5 CPU-min of a 2.0 CPU-h
+cap. Defect D1: control R5 was mis-specified by the agent (UNSAT exactly
+because the floor is), the first run aborted with no verdict, and
+Amendment 1 replaced it with a construction-known-SAT chain required to
+pass in both instruments; both aborted artifacts preserved. The unrun
+two-auxiliary route is quantified (~90,000 pairs per side, ~2.0 CPU-h per
+side) and nothing is claimed from it. Run
+`20260902T023856Z_28ff8823_43330ec64df9`, gate `laderman23-ladder-total`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`5d91d160b1bd963e6b559712fab0e9a9ce578bfd53f8ed497829b4aa44a9a28d`
+(68 files, owner-verified).
+
+**The exact fixed-orientation ladder, every named decomposition.**
+`paper55` $\sigma^{0/1/2}=55$ (record), `sun56`$=56$, `mws59`$=58$,
+`stapleton60`$=60$, `laderman23`$=62$ (printed 98). Laderman's 62 is above
+the record and not a competitor for it. **Scope** unchanged; what remains in
+`mm3/` is the global sub-55 question, which needs a genuinely different
+search space and its own prereg, and the standing owner adjudication of the
+void session-3 `transpose_check.py` recorded above.
+
+## `rs-pe3d/` the three-row determinantal channels characterised — Möbius again, one row up, 2026-09-02
+
+**The residual left open one campaign earlier is closed.** For
+$(2\times n)\otimes(3\times n)$ GRS pairs the determinantal channels now
+have explicit predicates and counts (HUMAN-AUDITED, MACHINE-VERIFIED as
+sets):
+- **size 5, profile $(5,5)$**: five all-distinct $B$-coordinates reduce,
+  via Vandermonde-kernel barycentric weights, to a **unique Möbius graph**,
+  so a matching is a circuit iff its pairing is a Möbius restriction and
+  $N_{55}=\sum_{M\in\mathrm{PGL}(2,p)}\binom{k_M}{5}$ with
+  $k_M=|X\cap M^{-1}(Y)|$ — the same law as the two-row case, one size up.
+  Owner check: the $(2\times5)\otimes(3\times5)$ pair over $\mathrm{GF}(13)$
+  has exactly 6 such circuits and the PGL sum gives 6;
+- **size 6, one repeated $B$-coordinate**: the singular determinant
+  factors as $(-1)^{b-a-1}(x_b-x_a)\prod(y_i-y_0)\,D_4(R)$ on the four
+  singleton edges, giving $N_{45}=6(|Y|-4)\sum_M\binom{k_M}{4}$ and
+  $N_{55}=4\sum_M\binom{k_M}{4}\big((|X|-4)(|Y|-4)-(k_M-4)\big)$ with a
+  central-deletion exclusion;
+- **size 7**: fully counted at $q=4$; for $q=5,6,7$ exact necessary-and-
+  sufficient deletion-minor lists.
+Direct and predicted populations agree as **sets** — overall, by profile,
+and across all 17 size-7 signatures — for $n=4,5$ and $p\in\{7,11,13\}$;
+261 exact asserts; 83 CPU-s. Two instrument defects were preserved,
+disclosed and fixed with all families rerun.
+
+Run `20260902T025427Z_1b1f202c_6247a0994bce`, gate `H-3ROW-DETERMINANTAL`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`a564b92bfa62440465cfc3c9f212a88c98fc88df42e69833792d4f113f871843`
+(10 files, owner-verified).
+
+**Scope and next gate.** Two-row and mixed two/three-row GRS pairs are now
+classified with the field-free/determinantal separation explicit at every
+size, and the recurring principle is that all-distinct channels are Möbius
+restrictions counted through $\mathrm{PGL}(2,p)$. Named next gate, not a
+claim: $(3\times n)\otimes(3\times n)$ pairs ($d=4$, ambient dimension 9,
+circuit sizes 4..10), where a second-order analogue of the Möbius law is
+expected but unproved.
+
+## `rs-pe3d/` tied three-row pairs: sizes 4–7 settled, the Möbius law holds at size 6, size 8 is the first open layer, 2026-09-02
+
+**Layer-by-layer, promoted only where proved.** For $(3\times n)\otimes(3\times n)$
+GRS pairs ($d_A=d_B=d=4$, ambient dimension 9, circuit sizes 4..10):
+- **size 4**: fibers only, $N_4=2n\binom{n}{4}$ (T-DGE);
+- **size 5 $=d+1$**: **empty** — exactly Thm-CRIT's prediction for a tied
+  minimum with $d\ge4$, now confirmed in the first configuration where the
+  crossing channel sits strictly above $d+1$;
+- **size 6**: **complete** — crossings $16\,C_A(4)\,C_B(4)$ plus the
+  all-distinct channel, which is again a **unique Möbius graph** with count
+  $\sum_{M\in\mathrm{PGL}(2,p)}\binom{k_M}{6}$, every other profile excluded.
+  The analytic route: for six distinct $y$, the Vandermonde-kernel form gives
+  $q_0,q_1,q_2$ of degree $\le2$ with $q_1^2=q_0q_2$, forcing $x=q_1/q_0$ to
+  be linear-fractional; the converse restricts the bidegree-$(2,2)$ space to
+  a 4-dimensional one, so any five of the six points are independent;
+- **size 7**: **empty**;
+- **size 8**: an exact injective reduced rational-degree-2 subfamily is
+  proved, but a **residual** remains — dedicated full-matching sweeps at
+  $n=8$ leave 560 and 416 unexplained circuits at $\mathrm{GF}(11)$ and
+  $\mathrm{GF}(13)$ — so this is the first unresolved structural layer;
+- **sizes 9 and 10**: exact curve-plus-deletion and deletion-determinant
+  predicates.
+Owner check on the $(3\times4)\otimes(3\times4)$ pair over $\mathrm{GF}(13)$:
+size-5 circuits $=0$, size-6 circuits $=16$, all of profile $(4,4)$,
+$=16\binom{4}{4}^2$ crossings with the all-distinct channel structurally
+empty at $n=4$ (six distinct indices cannot fit in four).
+
+In-run: the final corrected full matrix passed 143 assertions in 618 CPU-s;
+a first pass and a cancelled partial are preserved and disclosed with the
+complete matrix rerun; independent math and compliance audits found no
+missing obligations. Run `20260902T031527Z_2d19c5c4_718416983678`, gate
+`H-33ROW-OPEN`, **FROZEN-INCONCLUSIVE** for the whole gate with sizes 4–7
+certified inside, checksum-ledger SHA-256
+`43707d2c02a25f24aa46ff7e2440c7962a7a25f88f52144bd011a30bece7b53c`
+(11 files, owner-verified).
+
+**Recurring principle, now seen four times.** For GRS factor pairs, the
+first all-distinct channel at each row-configuration is a Möbius
+restriction counted through $\mathrm{PGL}(2,p)$: two-row at size 4, mixed
+two/three-row at size 5, tied three-row at size 6. Named next gate: the
+size-8 residual.
+
+## `rs-pe3d/` the size-8 residual is a complete intersection — the second-order Möbius law, 2026-09-02
+
+**The last open layer of the tied three-row theory is explained, and the
+explanation is geometry.** For $(3\times n)\otimes(3\times n)$ GRS pairs,
+an **all-distinct size-8 circuit** is exactly one of two things: an
+exact-degree-2 graph of class $(1,2)$ or $(2,1)$, or a **reduced complete
+intersection of two bidegree-$(2,2)$ curves** — eight points whose pencil of
+$(2,2)$-curves is two-dimensional with **no fixed component**, and whose two
+normalised resultants equal the 8-node projection polynomials. Bézout on the
+bidegree gives $(2,2)\cdot(2,2)=8$, so there is no ninth point. On the
+$n=8$ point sets both graph orientations are empty, so the residual —
+**560 at $\mathrm{GF}(11)$ and 416 at $\mathrm{GF}(13)$** — equals the
+complete-intersection family as exact support sets.
+
+**Why rank alone is not the predicate.** "Evaluation matrix of rank 7"
+over-accepts: 2192 and 1344 pencils, of which exactly 1632 and 928 are the
+common-$(1,1)$-component sets — pencils whose base locus contains a
+six-point Möbius subcircuit. The size-6 Möbius law and the size-8
+complete-intersection law are thus the first- and second-order rungs of one
+ladder: a $(1,1)$-curve through six points, a pencil of $(2,2)$-curves
+through eight.
+
+In-run: 72 controls in 18.9 CPU-s, including a wrong-degree predicate, an
+inserted lower-size circuit, the ambient plant and the concat guard; a
+pre-execution syntax error was preserved and disclosed with the complete
+family rerun; independent proof and compliance audits found no substantive
+issue. Run `20260902T041030Z_64e0c4ef_b5de16e49f8a`, gate
+`H-33ROW-SIZE8-RESIDUAL`, **FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`bbd14c3bea49a1a1850eaf0a0dae4889049d72f6e7fc5416aefb3ffaabd836cd`
+(10 files, owner-verified; anchors 560/416/2192/1344/1632/928 present).
+
+**Scope.** The all-distinct size-8 gate of the tied three-row pair;
+repeated-index size-8 supports are outside it. **The target rests** for
+this session after twelve campaigns: eleven certified statements and one
+honestly inconclusive gate, from the falsification of H-MINLINE at
+$q=13,s=(2,2,4)$ this morning to complete intersections of $(2,2)$-curves
+tonight.
+
+## `mceliece/` third $m=12$ row: $t=48$ — the ladder's last unreached cell, $\alpha$ measured, 2026-09-02
+
+**Three bounded instances now sit at $m=12$: $t\in\{48,64,96\}$, one seed
+each.** At $(m,n,t,\text{seed})=(12,3488,48,16384)$ — $k=2912$, $D=3391$,
+$2t+3=99$ (owner-recomputed) — the Guard-A construction passes with the same
+standard as the two earlier rows: $G$ monic irreducible of degree 48 (17
+seeded tries, scalar-Rabin), square-free; **$\alpha$ MEASURED** on all 3488
+support points with 0 failures (798.70 CPU-s), the fork resolved at the
+registered gate on measured cumulative CPU $1966.59\ll24300$ so the DERIVE
+branch was never entered; $\delta$ chain exact 5/5 with the degree gate
+closing at $\max_j\deg f_j=3391=D$ exactly; controls, anchors 3/3
+byte-equal against the frozen $m\le11$ records, and plants 4/4 rejected
+including a $t{=}48$-native probe failing 66/128 corrupted against 0 clean.
+Cost 2781.02 of a 32400 CPU-s budget. Run
+`20260902T014243Z_340fc591_5101c05ab359`, **FROZEN-CERTIFIED**,
+checksum-ledger SHA-256
+`a096403d55136cad7e4a28fa8c11cfeee555e6ccabeca7dd2a63aa228978a78d`
+(24 files, owner-verified 24/24; `verdict.json`
+`alpha_identity_measured_full_grid: true`, `alpha_failures: []`,
+`alpha_grid_points_checked: 3488`).
+
+**Process note, disclosed in `RLIMIT_DIAGNOSIS.md`.** Two silent deaths of
+the verdict stage at exactly 7200 s CPU were SIGXCPU from a soft
+`RLIMIT_CPU` in tool-spawned contexts, not memory pressure as first
+suspected; the fix was an exec wrapper raising the soft limit to the hard
+limit, with the stage code unchanged and no amendment needed.
+
+**Scope.** Still **not** "$m=12$ complete"; no $m=12$ waterfall census rows
+exist; the Apon section-3.6 hole remains **bounded, not closed**; no
+NIST-cost claim. Owner decision: the target stands down for this session with
+the three bounded instances; the named next campaign, if any, is the $m=12$
+waterfall census under its own prereg and a budget sized from the measured
+rates recorded in these three runs.

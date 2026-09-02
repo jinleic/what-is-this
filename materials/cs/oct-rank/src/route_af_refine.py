@@ -121,7 +121,7 @@ def main() -> None:
         out = CAMPAIGN / f"rank13_refined_{label}.npz"
         np.savez(out, x=x, selected=selected, target=T, rel=rel,
                  trace=json.dumps(trace),
-                 convention="T[p,b,c]=sum_s A[p,s]B[b,s]C[c,s]; globally conjugated Route-F target tau direct-sum tau")
+                 convention="T[p,b,c]=sum_s A[p,s]B[b,s]C[c,s]; globally conjugated Route-F target is the shared-first-factor block duplication tau boxtimes (1 x I2)")
         row = {"label": label, "path": str(out), "rel": rel,
                "selected_count": int(len(selected)), **factor_stats(x)}
         print("AF_REFINE_RESULT " + json.dumps(row), flush=True)
@@ -136,3 +136,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-09-02T09:57:28.496Z",
+  "contract_sha256": "318eb91f90f18167b497a9dcfb94bc15de5f3a19d5cc10e48c4963df05679f6a",
+  "snapshot_rule": "byte prefixes pinned in the contract before campaign init; hash verified; one trailing partial line ignored; malformed complete lines fail",
+  "metric_order": "manifest published after every precondition held and before any GEX, RV, correlation, gate, or verdict computation",
+  "files": [
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260830/instruments.jsonl",
+      "prefix_bytes": 90671288,
+      "sha256": "4005d155b58a7d712e661334e5863492252a075213553047929d29021e0708ca",
+      "parse": {
+        "complete_lines": 88464,
+        "blank_lines": 0,
+        "records": 88464,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "instrument.creation_timestamp",
+        "first_ms": 1758787212000,
+        "first_utc": "2025-09-25T08:00:12.000Z",
+        "latest_ms": 1788091620000,
+        "latest_utc": "2026-08-30T12:07:00.000Z"
+      },
+      "capture_availability_clock": {
+        "field": "received_ts_ms",
+        "first_ms": 1788090430613,
+        "first_utc": "2026-08-30T11:47:10.613Z",
+        "latest_ms": 1788094779681,
+        "latest_utc": "2026-08-30T12:59:39.681Z"
+      },
+      "metadata_cutoff_policy": "Exchange creation time is provenance. received_ts_ms is capture availability and determines no-lookahead metadata eligibility."
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260831/trades.jsonl",
+      "prefix_bytes": 4824852,
+      "sha256": "980e9395c63bfdd547729133556eeaa232ebc4a996662937f66073ea9a2345ec",
+      "parse": {
+        "complete_lines": 10106,
+        "blank_lines": 0,
+        "records": 10106,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "trade.timestamp",
+        "first_ms": 1788134400750,
+        "first_utc": "2026-08-31T00:00:00.750Z",
+        "latest_ms": 1788220766372,
+        "latest_utc": "2026-08-31T23:59:26.372Z"
+      }
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260831/index.jsonl",
+      "prefix_bytes": 33500403,
+      "sha256": "d97b36f21c6b94d553427e0b41dd106f796246f39af3974c1f79e33f641a0c7b",
+      "parse": {
+        "complete_lines": 141704,
+        "blank_lines": 0,
+        "records": 141704,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "data.timestamp",
+        "first_ms": 1788134400125,
+        "first_utc": "2026-08-31T00:00:00.125Z",
+        "latest_ms": 1788220799224,
+        "latest_utc": "2026-08-31T23:59:59.224Z"
+      }
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260831/instruments.jsonl",
+      "prefix_bytes": 1955530,
+      "sha256": "c0d3fc8a68f712e80fae4953fddb53426c544b7b487796b4658cc6cefbd20be7",
+      "parse": {
+        "complete_lines": 1908,
+        "blank_lines": 0,
+        "records": 1908,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "instrument.creation_timestamp",
+        "first_ms": 1758787212000,
+        "first_utc": "2025-09-25T08:00:12.000Z",
+        "latest_ms": 1788147000000,
+        "latest_utc": "2026-08-31T03:30:00.000Z"
+      },
+      "capture_availability_clock": {
+        "field": "received_ts_ms",
+        "first_ms": 1788134401262,
+        "first_utc": "2026-08-31T00:00:01.262Z",
+        "latest_ms": 1788162222007,
+        "latest_utc": "2026-08-31T07:43:42.007Z"
+      },
+      "metadata_cutoff_policy": "Exchange creation time is provenance. received_ts_ms is capture availability and determines no-lookahead metadata eligibility."
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260901/trades.jsonl",
+      "prefix_bytes": 5392317,
+      "sha256": "16faa68536cd89224ffa68b0d60c26359ea3191e8f4bbb29e859523d2804ab38",
+      "parse": {
+        "complete_lines": 11331,
+        "blank_lines": 0,
+        "records": 11331,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "trade.timestamp",
+        "first_ms": 1788220805944,
+        "first_utc": "2026-09-01T00:00:05.944Z",
+        "latest_ms": 1788307103162,
+        "latest_utc": "2026-09-01T23:58:23.162Z"
+      }
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260901/index.jsonl",
+      "prefix_bytes": 35340272,
+      "sha256": "86e48ad8bb931bec3c129039a3709b25fb81487d8272810be998cedc24b0f930",
+      "parse": {
+        "complete_lines": 149483,
+        "blank_lines": 0,
+        "records": 149483,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "data.timestamp",
+        "first_ms": 1788220799916,
+        "first_utc": "2026-08-31T23:59:59.916Z",
+        "latest_ms": 1788307199548,
+        "latest_utc": "2026-09-01T23:59:59.548Z"
+      }
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260901/instruments.jsonl",
+      "prefix_bytes": 1994305,
+      "sha256": "9860f2a357e112af9f266e64d3c020144d85f49730d1b81ab3a08200dac95b1f",
+      "parse": {
+        "complete_lines": 1946,
+        "blank_lines": 0,
+        "records": 1946,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "instrument.creation_timestamp",
+        "first_ms": 1758787212000,
+        "first_utc": "2025-09-25T08:00:12.000Z",
+        "latest_ms": 1788295140000,
+        "latest_utc": "2026-09-01T20:39:00.000Z"
+      },
+      "capture_availability_clock": {
+        "field": "received_ts_ms",
+        "first_ms": 1788220800463,
+        "first_utc": "2026-09-01T00:00:00.463Z",
+        "latest_ms": 1788298248281,
+        "latest_utc": "2026-09-01T21:30:48.281Z"
+      },
+      "metadata_cutoff_policy": "Exchange creation time is provenance. received_ts_ms is capture availability and determines no-lookahead metadata eligibility."
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260902/trades.jsonl",
+      "prefix_bytes": 1830614,
+      "sha256": "5917314d6dccfbb26695c44c0894a84fc76adcbf4b86ab2b6a292ac4137b6f1e",
+      "parse": {
+        "complete_lines": 3850,
+        "blank_lines": 0,
+        "records": 3850,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "trade.timestamp",
+        "first_ms": 1788307200112,
+        "first_utc": "2026-09-02T00:00:00.112Z",
+        "latest_ms": 1788341405082,
+        "latest_utc": "2026-09-02T09:30:05.082Z"
+      }
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260902/index.jsonl",
+      "prefix_bytes": 13881988,
+      "sha256": "216c3d46c735886fd3e71bebb35e60f1ad358754388036b69da34f85236bac84",
+      "parse": {
+        "complete_lines": 58720,
+        "blank_lines": 0,
+        "records": 58720,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "data.timestamp",
+        "first_ms": 1788307200416,
+        "first_utc": "2026-09-02T00:00:00.416Z",
+        "latest_ms": 1788341404569,
+        "latest_utc": "2026-09-02T09:30:04.569Z"
+      }
+    },
+    {
+      "path": "quant-trading/data/raw/focused/live/deribit/day20260902/instruments.jsonl",
+      "prefix_bytes": 1867521,
+      "sha256": "854b16bc2ff1fcb2415ccb336d21216e6b93fa5a3479131bf093db38453333a7",
+      "parse": {
+        "complete_lines": 1822,
+        "blank_lines": 0,
+        "records": 1822,
+        "trailing_partial_line_bytes_ignored": 0,
+        "malformed_complete_lines": 0
+      },
+      "exchange_clock": {
+        "field": "instrument.creation_timestamp",
+        "first_ms": 1758787212000,
+        "first_utc": "2025-09-25T08:00:12.000Z",
+        "latest_ms": 1788300060000,
+        "latest_utc": "2026-09-01T22:01:00.000Z"
+      },
+      "capture_availability_clock": {
+        "field": "received_ts_ms",
+        "first_ms": 1788307200481,
+        "first_utc": "2026-09-02T00:00:00.481Z",
+        "latest_ms": 1788307200481,
+        "latest_utc": "2026-09-02T00:00:00.481Z"
+      },
+      "metadata_cutoff_policy": "Exchange creation time is provenance. received_ts_ms is capture availability and determines no-lookahead metadata eligibility."
+    }
+  ]
+}

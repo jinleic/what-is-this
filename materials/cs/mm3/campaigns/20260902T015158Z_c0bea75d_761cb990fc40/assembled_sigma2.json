@@ -1,0 +1,8 @@
+{
+ "orientation": "sigma^2 = (T(W), U, T(V))",
+ "left_additions": 14,
+ "right_additions": 13,
+ "output_additions": 28,
+ "total": 55,
+ "note": "left = in-run synthesized Wfac circuit with T-permuted inputs; right = printed LEFT_SLP under input renaming; output = reverse-mode transposition of the printed RIGHT_SLP with T-permuted inputs, verified by exact expansion and by end-to-end 81-monomial expansion"
+}

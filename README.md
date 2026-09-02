@@ -15,21 +15,21 @@ also withholds machine-local paths. Writes are incremental.
 
 Source: `~/jinleic-workspace/math`.
 
-Root documents: [`PROGRESS.md`](materials/domains/math/PROGRESS.md), [`README.md`](materials/domains/math/README.md), [`RESULTS.md`](materials/domains/math/RESULTS.md).
+Root documents: [`PROGRESS.md`](materials/domains/math/PROGRESS.md), [`README.md`](materials/domains/math/README.md), [`RESEARCH_STATUS.md`](materials/domains/math/RESEARCH_STATUS.md), [`RESULTS.md`](materials/domains/math/RESULTS.md).
 
 | Target | source | last change | latest headline |
 |---|---|---|---|
-| [Cordoba-Cordoba-Fontelos 1D inviscid model](problems/ccf.html) | `math/ccf` | 2026-08-22 | Salvage from the paused subproject |
-| [Erdős Problem #389: consecutive-product divisibility](problems/e389.html) | `math/e389` | 2026-08-31 | E389-SHIU-EFFECTIVE-MARGIN (2026-08-29) — SHIU'S PER-CLASS THEOREM EFFECTIVIZED AT SOURCE: NO INEFFECTIVE CONSTANT EXISTS, MARGIN NEVER BELOW 1 AT ANY SIEVE DEPTH (57.7 CONCRET |
-| [Hilbert's tenth problem over Q](problems/h10q.html) | `math/h10q` | 2026-08-26 | H10/Q (2026-08-24g) — L34 SHARP AP1 PAIR-MOMENT THRESHOLD |
-| [Irrationality of zeta(5) (Apéry-style)](problems/zeta5.html) | `math/zeta5` | 2026-08-31 | ZETA5-GATE2-SWEEP (2026-08-29) — THE TRIAGE'S FOUR-WEEK GATE IS ANSWERED FOR THE SWEPT LADDER: ZERO SURVIVORS IN 44 PROBES; BASELINE μ2 = 0.337537 NEVER BEATEN BY A NONDEGENERA |
-| [Kobon triangle problem](problems/kobon.html) | `math/kobon` | 2026-08-31 | KOBON (2026-08-24f) — GENERALIZED LINE-0 COVECTOR LIFT EXHAUSTED |
-| [Liu Hypothesis 1: entropy-kernel theorem](problems/liu_h1.html) | `math/LIU_H1` | 2026-08-31 | MAP AUDIT (2026-08-30) — one row added, one row added AND RETRACTED THE SAME MINUTE |
-| [Navier-Stokes existence & smoothness (route work)](problems/ns.html) | `math/ns` | 2026-08-22 | 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim |
-| [Quantum LDPC codes: exact distance & co-design](problems/qec.html) | `math/qec` | 2026-08-26 | QEC (2026-08-24) — TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$ |
-| [Ramsey number R(5,5)](problems/r55.html) | `math/r55` | 2026-08-26 | R55 (2026-08-24d) — FIXED-FIVE CANDIDATE CENSUS EMPTY; FULL CERTIFICATION PENDING |
-| [Three-dimensional Ising model (exact solution)](problems/ising3d.html) | `math/ising3d` | 2026-08-27 | ISING-W26 (2026-08-24) — TRACE-NINE PROJECTION NONZERO; DEGREE <= 182400 |
-| [Union-closed sets conjecture (Frankl)](problems/uc.html) | `math/uc` | 2026-08-31 | UC-SLICE-QUEUE-REPAIR (2026-08-30) — SCHEDULER LINEAGE-CLOSE BUG FOUND AND FIXED (MODULE PATH; TRANSIENT EDIT FIXED TWICE); SLICES 02 AND 05 RESIDUALS CLOSED MACHINE-VERIFIED ( |
+| [Cordoba-Cordoba-Fontelos 1D inviscid model](problems/ccf.html) | `math/ccf` | 2026-09-02 | Salvage from the paused subproject |
+| [Erdős Problem #389: consecutive-product divisibility](problems/e389.html) | `math/e389` | 2026-09-02 | E389-SHIU-EFFECTIVE-MARGIN (2026-08-29) — SHIU'S PER-CLASS THEOREM EFFECTIVIZED AT SOURCE: NO INEFFECTIVE CONSTANT EXISTS, MARGIN NEVER BELOW 1 AT ANY SIEVE DEPTH (57.7 CONCRET |
+| [Hilbert's tenth problem over Q](problems/h10q.html) | `math/h10q` | 2026-09-02 | H10/Q (2026-08-24g) — L34 SHARP AP1 PAIR-MOMENT THRESHOLD |
+| [Irrationality of zeta(5) (Apéry-style)](problems/zeta5.html) | `math/zeta5` | 2026-09-02 | ZETA5-GATE2-SWEEP (2026-08-29) — THE TRIAGE'S FOUR-WEEK GATE IS ANSWERED FOR THE SWEPT LADDER: ZERO SURVIVORS IN 44 PROBES; BASELINE μ2 = 0.337537 NEVER BEATEN BY A NONDEGENERA |
+| [Kobon triangle problem](problems/kobon.html) | `math/kobon` | 2026-09-02 | KOBON (2026-08-24f) — GENERALIZED LINE-0 COVECTOR LIFT EXHAUSTED |
+| [Liu Hypothesis 1: entropy-kernel theorem](problems/liu_h1.html) | `math/LIU_H1` | 2026-09-02 | MAP AUDIT (2026-08-30) — one row added, one row added AND RETRACTED THE SAME MINUTE |
+| [Navier-Stokes existence & smoothness (route work)](problems/ns.html) | `math/ns` | 2026-09-02 | 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim |
+| [Quantum LDPC codes: exact distance & co-design](problems/qec.html) | `math/qec` | 2026-09-02 | QEC (2026-08-24) — TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$ |
+| [Ramsey number R(5,5)](problems/r55.html) | `math/r55` | 2026-09-02 | R55 (2026-08-24d) — FIXED-FIVE CANDIDATE CENSUS EMPTY; FULL CERTIFICATION PENDING |
+| [Three-dimensional Ising model (exact solution)](problems/ising3d.html) | `math/ising3d` | 2026-09-02 | ISING-W26 (2026-08-24) — TRACE-NINE PROJECTION NONZERO; DEGREE <= 182400 |
+| [Union-closed sets conjecture (Frankl)](problems/uc.html) | `math/uc` | 2026-09-02 | UC-SLICE-QUEUE-REPAIR (2026-08-30) — SCHEDULER LINEAGE-CLOSE BUG FOUND AND FIXED (MODULE PATH; TRANSIENT EDIT FIXED TWICE); SLICES 02 AND 05 RESIDUALS CLOSED MACHINE-VERIFIED ( |
 
 ## Physics and quantum computing
 
@@ -39,12 +39,12 @@ Root documents: [`PROGRESS.md`](materials/domains/physics/PROGRESS.md), [`README
 
 | Target | source | last change | latest headline |
 |---|---|---|---|
-| [BB quantum-LDPC decoder reproduction](physics/qldpc-dec.html) | `physics/qldpc-dec` | 2026-08-31 | 2026-08-31 — qldpc-dec absolute LER normalization corrected (Gate B ratios unchanged) |
-| [BB-code finite-size scaling](physics/fss-bb.html) | `physics/fss-bb` | 2026-08-31 | 2026-08-30 — fss-bb 20k ladder FROZEN; paper-CI overlap on 4 of 5 sizes |
-| [Certified neutral-atom transport scheduling](physics/na-compiler.html) | `physics/na-compiler` | 2026-08-31 | 2026-08-30 — na-compiler cost rows upgraded to GLOBAL µs optima (and a heap bug I wrote, caught by arithmetic) |
-| [Contractive-shadow exact census](physics/shadows.html) | `physics/shadows` | 2026-08-31 | 2026-08-30 — shadows gate-C k-extension: edge VANISHES at k≥9 |
-| [Fault-tolerant QLOPS arithmetic audit](physics/qlops.html) | `physics/qlops` | 2026-08-31 | 2026-08-29 — first worker verdicts integrated |
-| [Zero-level CCZ reproduction](physics/msd.html) | `physics/msd` | 2026-08-31 | 2026-08-30 — msd floor EXPLAINED from first principles; output-side armoring provably cannot fix it |
+| [BB quantum-LDPC decoder reproduction](physics/qldpc-dec.html) | `physics/qldpc-dec` | 2026-09-02 | 2026-08-31 — qldpc-dec absolute LER normalization corrected (Gate B ratios unchanged) |
+| [BB-code finite-size scaling](physics/fss-bb.html) | `physics/fss-bb` | 2026-09-02 | 2026-08-30 — fss-bb 20k ladder FROZEN; paper-CI overlap on 4 of 5 sizes |
+| [Certified neutral-atom transport scheduling](physics/na-compiler.html) | `physics/na-compiler` | 2026-09-02 | 2026-08-30 — na-compiler cost rows upgraded to GLOBAL µs optima (and a heap bug I wrote, caught by arithmetic) |
+| [Contractive-shadow exact census](physics/shadows.html) | `physics/shadows` | 2026-09-02 | 2026-08-30 — shadows gate-C k-extension: edge VANISHES at k≥9 |
+| [Fault-tolerant QLOPS arithmetic audit](physics/qlops.html) | `physics/qlops` | 2026-09-02 | 2026-08-29 — first worker verdicts integrated |
+| [Zero-level CCZ reproduction](physics/msd.html) | `physics/msd` | 2026-09-02 | 2026-08-30 — msd floor EXPLAINED from first principles; output-side armoring provably cannot fix it |
 
 ## Theoretical computer science and information theory
 
@@ -54,13 +54,13 @@ Root documents: [`PROGRESS.md`](materials/domains/cs/PROGRESS.md), [`README.md`]
 
 | Target | source | last change | latest headline |
 |---|---|---|---|
-| [Additive complexity of rank-23 3×3 matrix multiplication](cs/mm3.html) | `cs/mm3` | 2026-08-31 | mm3/ off-diagonal programme COMPLETE — the "wall" was never there, 2026-08-30 |
-| [Binary deletion-channel capacity](cs/delcap.html) | `cs/delcap` | 2026-08-31 | Three campaigns landed 2026-08-30 — delcap resolved, mm3 off-diagonal counted, oct-rank S3 filed |
-| [Classic McEliece hold-out "waterfall" dispute](cs/mceliece.html) | `cs/mceliece` | 2026-08-31 | mceliece/ live-source event — ePrint 1786 changed route four revisions after cache, 2026-08-31 |
-| [Grothendieck constant](cs/kg.html) | `cs/kg` | 2026-08-31 | kg/ gate B — an unsound bound found, and two of this repo's own PASSes retracted, 2026-08-30 |
-| [Matrix multiplication exponent](cs/omega.html) | `cs/omega` | 2026-08-31 | omega/ gate C — second FAILURE TO CERTIFY, three defects fixed, and an owner arithmetic catch, 2026-08-30 |
-| [Real tensor rank of octonion multiplication](cs/oct-rank.html) | `cs/oct-rank` | 2026-08-31 | Three campaigns landed 2026-08-30 — delcap resolved, mm3 off-diagonal counted, oct-rank S3 filed |
-| [Reed–Solomon three-dimensional product expansion](cs/rs-pe3d.html) | `cs/rs-pe3d` | 2026-08-31 | rs-pe3d/ P2 battery COMPLETE — one owner hypothesis killed, one confirmed prospectively, 2026-08-30 |
+| [Additive complexity of rank-23 3×3 matrix multiplication](cs/mm3.html) | `cs/mm3` | 2026-09-02 | mm3/ new-decomposition landscape exhausted; minima 56 and 58, 2026-08-31 |
+| [Binary deletion-channel capacity](cs/delcap.html) | `cs/delcap` | 2026-09-02 | delcap/ q=3,n=11 extension completed; 4/4 strict finite-$n$ improvements, 2026-08-31 |
+| [Classic McEliece hold-out "waterfall" dispute](cs/mceliece.html) | `cs/mceliece` | 2026-09-02 | mceliece/ m=12 REACHED at a real NIST cell; alpha measured, not derived; the section-3.6 hole stays BOUNDED, 2026-09-01 |
+| [Grothendieck constant](cs/kg.html) | `cs/kg` | 2026-09-02 | kg/ the pre-registered subdivision is PROVABLY DEGENERATE; the obstruction identifies the real binding constraint, 2026-09-01 |
+| [Matrix multiplication exponent](cs/omega.html) | `cs/omega` | 2026-09-02 | omega/ branch-and-bound feasibility gate: SPREAD, frozen as a quantified obstruction; stage 2 never opened, 2026-09-01 |
+| [Real tensor rank of octonion multiplication](cs/oct-rank.html) | `cs/oct-rank` | 2026-09-02 | oct-rank/ Route F: FAILURE TO CERTIFY with a certified local negative; the instrument proved it can discriminate, 2026-09-01 |
+| [Reed–Solomon three-dimensional product expansion](cs/rs-pe3d.html) | `cs/rs-pe3d` | 2026-09-02 | rs-pe3d/ Theorem T re-derived in corrected form with a commit-anchored pre-statement; owner verification by a second instrument, plus a sharper new finding, 2026-09-01 |
 
 ## Quantitative trading research
 
@@ -68,7 +68,7 @@ Source: `~/jinleic-workspace/quant-trading`.
 
 | Target | source | last change | latest headline |
 |---|---|---|---|
-| [Quantitative trading research](quant-trading/index.html) | `quant-trading` | 2026-08-31 | No explored strategy supports a prospective alpha or capital-deployment claim. The parent same-day screen falsified the BTC/ETH post-liquidation continuation overlay at its registe |
+| [Quantitative trading research](quant-trading/index.html) | `quant-trading` | 2026-09-02 | No explored strategy supports a prospective alpha or capital-deployment claim. Nine frozen mechanisms are recorded: eight are negative, inconclusive, blocked, or invalidated, and o |
 
 ## Update
 

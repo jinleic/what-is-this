@@ -1,0 +1,48 @@
+{
+ "mode": "gross_pilot",
+ "circuit": "BB_144_144_12_memory_Z_p0.003_sr12_derived_p1e-3_rescale.stim",
+ "num_generators": 7842,
+ "num_mechanisms": 8784,
+ "num_detectors": 936,
+ "mean_generator_weight": 4.046544248916093,
+ "n_classes": 13,
+ "ais": {
+  "T": 64,
+  "K": 64,
+  "q0": 0.02,
+  "B": 2500,
+  "delta": 0.05,
+  "bonf_competitors": 12
+ },
+ "n_shots": 200,
+ "n_decoded": 200,
+ "n_beam_inconsistent": 0,
+ "certified_fraction": 1.0,
+ "certified": 200,
+ "mean_margin_nats": 71.62575173378545,
+ "median_wall_s": 13.42538058757782,
+ "certified_and_obs_correct": 199,
+ "certified_obs_fail_rate": 0.0050000000000000044,
+ "decision_hist": {
+  "0": 200,
+  "1": 0,
+  "2": 0,
+  "3": 0,
+  "4": 0,
+  "5": 0,
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0,
+  "10": 0,
+  "11": 0,
+  "12": 0
+ },
+ "basis_seconds": 0.4627666473388672,
+ "wall_s_total": 2919.986878156662,
+ "seed_base": 20260830,
+ "versions": {
+  "numpy": "2.5.2",
+  "stim": "1.16.0"
+ }
+}

@@ -1,0 +1,363 @@
+{
+  "gate": "B-gb6-mechanism-paired",
+  "p": 0.003,
+  "basis": "Z",
+  "shots_shared": 200000,
+  "arms": {
+    "bp30+osd": {
+      "arm": "bp30+osd",
+      "shots": 200000,
+      "failures": 654,
+      "raw_logical_failure_rate": 0.00327,
+      "raw_ler_ci95_wilson": [
+        0.0030291563677338016,
+        0.0035299249441748176
+      ],
+      "per_round_ler": 0.0002725,
+      "decode_core_s": 19437.794820790994,
+      "decode_ms_per_shot": 97.18897410395498,
+      "wall_s": 2045.7550474159652,
+      "shards": 48,
+      "decoder": {
+        "max_iter": 30,
+        "bp_method": "ms",
+        "schedule": "parallel",
+        "osd_method": "osd_cs",
+        "osd_order": 10
+      }
+    },
+    "beam8": {
+      "arm": "beam8-cpp-bit-exact",
+      "rung": "beam8",
+      "shots": 200000,
+      "failures": 464,
+      "raw_logical_failure_rate": 0.00232,
+      "raw_ler_ci95_wilson": [
+        0.002118494789699943,
+        0.002540623015366556
+      ],
+      "per_round_ler": 0.00019333333333333333,
+      "observable_mismatch_counts": [
+        239,
+        229,
+        228,
+        217,
+        238,
+        238,
+        225,
+        238,
+        222,
+        220,
+        228,
+        239
+      ],
+      "decoder_params": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10
+      },
+      "decode": {
+        "rung": "beam8",
+        "shots_file": "shots_shared.bin",
+        "predictions": "beam8_predictions.bin",
+        "predictions_sha256": "17908eba4afa47507398d7a2f20bc2edc1bbcbebade6ecd9c803bb105c440abe",
+        "beam_binary_sha256": "a480050b204112655f6c1939227f963420b0fbf060e55911d0189f6f15278b55",
+        "source_shots_sha256": "a2c01e8f961c70c2f5da896462510f3b0f2d28239990ec6767601de8b539f9ee",
+        "config_line": "config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=576526 bp_iters=11231055 rounds=134773",
+        "threads": 12,
+        "wall_s": 329.54862066707574,
+        "ms_per_shot_reported": 1.648,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/shots_shared.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/beam8_predictions.bin",
+          "--beam-width=8",
+          "--initial-iters=30",
+          "--iters-per-round=20",
+          "--max-rounds=10",
+          "--threads",
+          "12"
+        ]
+      },
+      "failure_mask": "beam8_failmask.bin",
+      "failure_mask_sha256": "d1869e819c1617b3e0d5a5e4a16613317a854f40016bfcb7e6e2be61c0c2e4d4"
+    },
+    "beam32": {
+      "arm": "beam32-cpp-bit-exact",
+      "rung": "beam32",
+      "shots": 200000,
+      "failures": 145,
+      "raw_logical_failure_rate": 0.000725,
+      "raw_ler_ci95_wilson": [
+        0.0006162388537596147,
+        0.0008529402213982701
+      ],
+      "per_round_ler": 6.041666666666666e-05,
+      "observable_mismatch_counts": [
+        67,
+        62,
+        71,
+        60,
+        67,
+        60,
+        55,
+        81,
+        71,
+        74,
+        73,
+        84
+      ],
+      "decoder_params": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10
+      },
+      "decode": {
+        "rung": "beam32",
+        "shots_file": "shots_shared.bin",
+        "predictions": "beam32_predictions.bin",
+        "predictions_sha256": "acd91b6563bede9acb4668dc144aefb01b45adf9aef61cd451a94e6698ae1181",
+        "beam_binary_sha256": "a480050b204112655f6c1939227f963420b0fbf060e55911d0189f6f15278b55",
+        "source_shots_sha256": "a2c01e8f961c70c2f5da896462510f3b0f2d28239990ec6767601de8b539f9ee",
+        "config_line": "config: beam_width=32 initial_iters=40 iters_per_round=30 max_rounds=10 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=504737 bp_iters=13419934 rounds=91379",
+        "threads": 12,
+        "wall_s": 345.4931444589747,
+        "ms_per_shot_reported": 1.727,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/shots_shared.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/beam32_predictions.bin",
+          "--beam-width=32",
+          "--initial-iters=40",
+          "--iters-per-round=30",
+          "--max-rounds=10",
+          "--threads",
+          "12"
+        ]
+      },
+      "failure_mask": "beam32_failmask.bin",
+      "failure_mask_sha256": "ecb7fcccd4493bad4cae8f27d0bf041e2a3356c8a4d2fc58e733932195df5849"
+    },
+    "beam64": {
+      "arm": "beam64-cpp-bit-exact",
+      "rung": "beam64",
+      "shots": 200000,
+      "failures": 80,
+      "raw_logical_failure_rate": 0.0004,
+      "raw_ler_ci95_wilson": [
+        0.00032143810312319613,
+        0.0004977534565360684
+      ],
+      "per_round_ler": 3.3333333333333335e-05,
+      "observable_mismatch_counts": [
+        28,
+        33,
+        36,
+        33,
+        33,
+        30,
+        31,
+        43,
+        33,
+        43,
+        40,
+        42
+      ],
+      "decoder_params": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20
+      },
+      "decode": {
+        "rung": "beam64",
+        "shots_file": "shots_shared.bin",
+        "predictions": "beam64_predictions.bin",
+        "predictions_sha256": "00a2ffd9c719f4d07c68e6bdd245c39bb85a6a5b5e50d7dbf99f37f1bcf2e888",
+        "beam_binary_sha256": "a480050b204112655f6c1939227f963420b0fbf060e55911d0189f6f15278b55",
+        "source_shots_sha256": "a2c01e8f961c70c2f5da896462510f3b0f2d28239990ec6767601de8b539f9ee",
+        "config_line": "config: beam_width=64 initial_iters=40 iters_per_round=30 max_rounds=20 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=559158 bp_iters=15051724 rounds=91526",
+        "threads": 12,
+        "wall_s": 352.0352885420434,
+        "ms_per_shot_reported": 1.76,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/shots_shared.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T135902Z_71377291_ddeb5cde09fe/beam64_predictions.bin",
+          "--beam-width=64",
+          "--initial-iters=40",
+          "--iters-per-round=30",
+          "--max-rounds=20",
+          "--threads",
+          "12"
+        ]
+      },
+      "failure_mask": "beam64_failmask.bin",
+      "failure_mask_sha256": "3f7bed74d8c7e901360cdb65dc2a01cb61daaf8854e0c919f8d327c42b821d79"
+    }
+  },
+  "failures": {
+    "bp30+osd": 654,
+    "beam8": 464,
+    "beam32": 145,
+    "beam64": 80
+  },
+  "paired_discordance": {
+    "bp30+osd|beam8": {
+      "a_fails_b_ok": 482,
+      "b_fails_a_ok": 292,
+      "both_fail": 172,
+      "mcnemar_exact_p": 8.657488029990378e-12
+    },
+    "bp30+osd|beam32": {
+      "a_fails_b_ok": 573,
+      "b_fails_a_ok": 64,
+      "both_fail": 81,
+      "mcnemar_exact_p": 3.4283793912018515e-103
+    },
+    "bp30+osd|beam64": {
+      "a_fails_b_ok": 602,
+      "b_fails_a_ok": 28,
+      "both_fail": 52,
+      "mcnemar_exact_p": 2.0215541749779465e-141
+    },
+    "beam8|beam32": {
+      "a_fails_b_ok": 347,
+      "b_fails_a_ok": 28,
+      "both_fail": 117,
+      "mcnemar_exact_p": 3.898866732756246e-71
+    },
+    "beam8|beam64": {
+      "a_fails_b_ok": 402,
+      "b_fails_a_ok": 18,
+      "both_fail": 62,
+      "mcnemar_exact_p": 1.3801179091616451e-95
+    },
+    "beam32|beam64": {
+      "a_fails_b_ok": 65,
+      "b_fails_a_ok": 0,
+      "both_fail": 80,
+      "mcnemar_exact_p": 5.421010862427522e-20
+    }
+  },
+  "prediction_identity": {
+    "beam8|beam32": {
+      "identical_predictions": false,
+      "sha256_a": "17908eba4afa47507398d7a2f20bc2edc1bbcbebade6ecd9c803bb105c440abe",
+      "sha256_b": "acd91b6563bede9acb4668dc144aefb01b45adf9aef61cd451a94e6698ae1181"
+    },
+    "beam8|beam64": {
+      "identical_predictions": false,
+      "sha256_a": "17908eba4afa47507398d7a2f20bc2edc1bbcbebade6ecd9c803bb105c440abe",
+      "sha256_b": "00a2ffd9c719f4d07c68e6bdd245c39bb85a6a5b5e50d7dbf99f37f1bcf2e888"
+    },
+    "beam32|beam64": {
+      "identical_predictions": false,
+      "sha256_a": "acd91b6563bede9acb4668dc144aefb01b45adf9aef61cd451a94e6698ae1181",
+      "sha256_b": "00a2ffd9c719f4d07c68e6bdd245c39bb85a6a5b5e50d7dbf99f37f1bcf2e888"
+    }
+  },
+  "ratios_vs_bposd": {
+    "beam8": {
+      "ratio": 0.709480122324159,
+      "ci95": [
+        0.62882096069869,
+        0.7981366459627329
+      ],
+      "ci95_upper_unbounded": false,
+      "excludes_one": true,
+      "numerator_failures": 464,
+      "denominator_failures": 654,
+      "bootstrap_seed": 8641109728504725958
+    },
+    "beam32": {
+      "ratio": 0.2217125382262997,
+      "ci95": [
+        0.1836734693877551,
+        0.26339969372128635
+      ],
+      "ci95_upper_unbounded": false,
+      "excludes_one": true,
+      "numerator_failures": 145,
+      "denominator_failures": 654,
+      "bootstrap_seed": 5168530093391695348
+    },
+    "beam64": {
+      "ratio": 0.12232415902140673,
+      "ci95": [
+        0.0953757225433526,
+        0.15213946117274169
+      ],
+      "ci95_upper_unbounded": false,
+      "excludes_one": true,
+      "numerator_failures": 80,
+      "denominator_failures": 654,
+      "bootstrap_seed": 5327717254471551143
+    }
+  },
+  "clauses": {
+    "M1_expansion_monotonicity": {
+      "pass": true,
+      "ordering_ok": true,
+      "beam8_over_beam64": {
+        "ratio": 5.8,
+        "ci95": [
+          4.635416666666667,
+          7.484848484848484
+        ],
+        "ci95_upper_unbounded": false,
+        "excludes_one": true,
+        "numerator_failures": 464,
+        "denominator_failures": 80,
+        "bootstrap_seed": 4610682209974819656
+      }
+    },
+    "M2_sign_stability": {
+      "pass": true,
+      "beam8_over_bposd": {
+        "ratio": 0.709480122324159,
+        "ci95": [
+          0.62882096069869,
+          0.7981366459627329
+        ],
+        "ci95_upper_unbounded": false,
+        "excludes_one": true,
+        "numerator_failures": 464,
+        "denominator_failures": 654,
+        "bootstrap_seed": 8641109728504725958
+      },
+      "frozen_1e-3_point_ratio": 0.25,
+      "direction_matches": true
+    },
+    "M3_ladder_sanity": {
+      "pass": true,
+      "beam64_failures": 80,
+      "beam32_failures": 145
+    }
+  },
+  "mechanism_verdict": "EXPANSION_EFFECT_PRESENT",
+  "scope": "mechanism companion; no GB5 band decision is altered by these clauses"
+}

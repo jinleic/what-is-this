@@ -35,6 +35,15 @@
   "num_obs": 12,
   "origin": "ionq-repo"
  },
+ "X@0.0003": {
+  "dem_file": "gross_mem_X_p0.0003.dem",
+  "dem_sha256": "d1d6fdb838d407155ec1a5940b8e1d32b7f2c32d5661dea84dad3feb8f4d4579",
+  "circuit_sha256": "300f8625ac81c9bf35f16b85b3bebf6aa087947650209387ab0f688168f372a2",
+  "num_dets": 936,
+  "num_errors": 8784,
+  "num_obs": 12,
+  "origin": "derived: uniform rescale 0.001->0.0003 of ionq X p1e-3 circuit"
+ },
  "Z@0.0003": {
   "dem_file": "gross_mem_Z_p0.0003.dem",
   "dem_sha256": "c81c2944ab1efc5c2253a927dfd668aa3638fb3bed1d013a0de7c64e778b984e",
@@ -43,5 +52,14 @@
   "num_errors": 8784,
   "num_obs": 12,
   "origin": "derived: uniform rescale 0.001->0.0003 of ionq Z p1e-3 circuit"
+ },
+ "Z@0.003": {
+  "dem_file": "gross_mem_Z_p0.003.dem",
+  "dem_sha256": "e9109c1a3f920b742386467ead012f4f33de41d667494dd01cfbab5c2614466e",
+  "circuit_sha256": "690b3b4450ea9cc20bd17d69a5b27379817c705eff7c04860eb0e072010e5e8f",
+  "num_dets": 936,
+  "num_errors": 8784,
+  "num_obs": 12,
+  "origin": "derived: noise-argument-only rescale (0.001)->(0.003) of ionq Z p1e-3 circuit; supersedes BB_144_144_12_memory_Z_p0.003_sr12_derived_p1e-3_rescale.stim, whose uniform x3 of every parenthesised literal also relabelled OBSERVABLE_INCLUDE indices 0..11 -> 0,3,..,33 (34 observables)"
  }
 }

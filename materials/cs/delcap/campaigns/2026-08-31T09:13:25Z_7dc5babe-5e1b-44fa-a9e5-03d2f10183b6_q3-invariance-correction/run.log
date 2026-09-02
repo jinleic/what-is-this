@@ -1,0 +1,117 @@
+[2026-08-31T09:26:56Z] stage=selfcheck; code_sha256=222f3656205fc1551c782dfb597d444a1704e5d0441bfa66df54d4e03f197e7e; Arb=400 bits
+[2026-08-31T09:28:03Z] stage=selfcheck; code_sha256=ed84c1a3982f243e49e8f8f35367ee9e8788bb3c8a47fed16b883bd9da9efa21; Arb=400 bits
+[2026-08-31T09:28:54Z] stage=run; code_sha256=ed84c1a3982f243e49e8f8f35367ee9e8788bb3c8a47fed16b883bd9da9efa21; Arb=400 bits
+[2026-08-31T09:28:54Z]   A1 EQUIVARIANCE pointwise (q=2,n=3, all sigma and rho, all (x,y)): PASS
+[2026-08-31T09:28:54Z]   A2 orbit-size closure q=3, L=0..4: PASS
+[2026-08-31T09:28:54Z]   A3 exact p-marginal D: dense vs orbit (max|diff|=0.00e+00): PASS
+[2026-08-31T09:28:54Z]   A4 KL orbit-invariance PASS; non-invariant control deviates (max 7.50e-01) => test discriminates: PASS
+[2026-08-31T09:28:54Z]   A5 Phi_{k,n} orbit route vs dense route at 5 points (<=1e-12): PASS
+[2026-08-31T09:28:54Z]   A6 primal exactness orbit vs dense word-level at (2,3),(3,3) uniform+skew (<=1e-12): PASS
+[2026-08-31T09:28:55Z]   orbits: input g-orbits 70 of 729 words; output g-orbits (flat) 113
+[2026-08-31T09:28:55Z]   word bucketing done (729 words) [0.0s]
+[2026-08-31T09:28:55Z] structure q=3 n=6: in-g=70 out-g=113 rep-entries=2203 B-slots=1221 [0.005s]
+[2026-08-31T09:28:55Z] corrected q=3 n=6 d=1/2: old=[0.48612690873525904, 0.4861310395537632] new=[0.486126908735,0.486127268366] legacy_mixed=0 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [0.269s wall/0.269s cpu]
+[2026-08-31T09:28:55Z] corrected q=3 n=6 d=1/5: old=[0.9992805994038764, 0.9992807615729179] new=[0.999280599404,0.999280618595] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [0.272s wall/0.272s cpu]
+[2026-08-31T09:28:56Z] corrected q=3 n=6 d=1/10: old=[1.2624515385268185, 1.2624516450349905] new=[1.262451538527,1.262451550973] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [0.273s wall/0.273s cpu]
+[2026-08-31T09:28:56Z] corrected q=3 n=6 d=1/20: old=[1.4158072326903548, 1.4158073313105772] new=[1.415807232690,1.415807244917] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [0.273s wall/0.272s cpu]
+[2026-08-31T09:28:56Z]   orbits: input g-orbits 196 of 2187 words; output g-orbits (flat) 309
+[2026-08-31T09:28:56Z]   word bucketing done (2187 words) [0.0s]
+[2026-08-31T09:28:56Z] structure q=3 n=7: in-g=196 out-g=309 rep-entries=10399 B-slots=5711 [0.018s]
+[2026-08-31T09:28:57Z] corrected q=3 n=7 d=1/2: old=[0.4657259682042402, 0.46575328765404533] new=[0.465725968204,0.465732048571] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [0.88s wall/0.88s cpu]
+[2026-08-31T09:28:58Z] corrected q=3 n=7 d=1/5: old=[0.9769505177740003, 0.9769508993374995] new=[0.976950517774,0.976950563791] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [0.889s wall/0.887s cpu]
+[2026-08-31T09:28:59Z] corrected q=3 n=7 d=1/10: old=[1.2473597256274753, 1.2473599906772777] new=[1.247359725627,1.247359775851] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [0.887s wall/0.887s cpu]
+[2026-08-31T09:29:00Z] corrected q=3 n=7 d=1/20: old=[1.4070914100656966, 1.40709164898683] new=[1.407091410066,1.407091450122] legacy_mixed=0 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [0.897s wall/0.896s cpu]
+[2026-08-31T09:29:00Z]   orbits: input g-orbits 574 of 6561 words; output g-orbits (flat) 883
+[2026-08-31T09:29:00Z]   word bucketing done (6561 words) [0.0s]
+[2026-08-31T09:29:00Z] structure q=3 n=8: in-g=574 out-g=883 rep-entries=50938 B-slots=27916 [0.078s]
+[2026-08-31T09:29:04Z] corrected q=3 n=8 d=1/2: old=[0.4491602653164888, 0.4492922601763715] new=[0.449160265316,0.449182465449] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [3.95s wall/3.945s cpu]
+[2026-08-31T09:29:08Z] corrected q=3 n=8 d=1/5: old=[0.9582453246473194, 0.9582467564944788] new=[0.958245324647,0.958245533703] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [3.946s wall/3.943s cpu]
+[2026-08-31T09:29:12Z] corrected q=3 n=8 d=1/10: old=[1.2344520895003903, 1.2344530557652682] new=[1.234452089500,1.234452180512] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [3.957s wall/3.953s cpu]
+[2026-08-31T09:29:16Z] corrected q=3 n=8 d=1/20: old=[1.3995415062373293, 1.3995424502513716] new=[1.399541506237,1.399541571855] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [4.019s wall/4.014s cpu]
+[2026-08-31T09:29:16Z]   orbits: input g-orbits 1681 of 19683 words; output g-orbits (flat) 2564
+[2026-08-31T09:29:16Z]   word bucketing done (19683 words) [0.1s]
+[2026-08-31T09:29:16Z] structure q=3 n=9: in-g=1681 out-g=2564 rep-entries=249474 B-slots=138672 [0.348s]
+[2026-08-31T09:29:21Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:29:24Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:29:26Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:29:39Z] corrected q=3 n=9 d=1/2: old=[0.4353814110192391, 0.4353857919473774] new=[0.435381411019,0.435381787598] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [23.282s wall/23.265s cpu]
+[2026-08-31T09:29:45Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:29:47Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:29:49Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:30:03Z] corrected q=3 n=9 d=1/5: old=[0.9423194816428749, 0.942324555218804] new=[0.942319481643,0.942320029051] legacy_mixed=0 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [23.38s wall/23.358s cpu]
+[2026-08-31T09:30:08Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:30:10Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:30:13Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:30:26Z] corrected q=3 n=9 d=1/10: old=[1.2232499579738394, 1.2232523623416272] new=[1.223249957974,1.223250217640] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [23.439s wall/23.426s cpu]
+[2026-08-31T09:30:32Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:30:34Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:30:36Z]   full KL q=3 n=9: 10000/19683 inputs
+[2026-08-31T09:30:50Z] corrected q=3 n=9 d=1/20: old=[1.3929068203510149, 1.39290943510016] new=[1.392906820351,1.392907024252] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [23.661s wall/23.646s cpu]
+[2026-08-31T09:30:50Z]   orbits: input g-orbits 5002 of 59049 words; output g-orbits (flat) 7566
+[2026-08-31T09:30:50Z]   word bucketing done (59049 words) [0.2s]
+[2026-08-31T09:30:51Z] structure q=3 n=10: in-g=5002 out-g=7566 rep-entries=1238471 B-slots=702109 [1.642s]
+[2026-08-31T09:31:15Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:31:17Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:31:18Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:31:20Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:31:22Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:31:26Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:31:28Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:31:30Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:31:32Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:31:34Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:31:38Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:31:40Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:31:42Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:31:43Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:31:45Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:33:48Z] corrected q=3 n=10 d=1/2: old=[0.42369975643641544, 0.4237122878711516] new=[0.423699756436,0.423701554033] legacy_mixed=0 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [176.835s wall/176.398s cpu]
+[2026-08-31T09:34:12Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:34:14Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:34:15Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:34:17Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:34:19Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:34:23Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:34:25Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:34:27Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:34:29Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:34:31Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:34:35Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:34:37Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:34:39Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:34:41Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:34:43Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:36:55Z] corrected q=3 n=10 d=1/5: old=[0.9285797540357409, 0.9285961038799806] new=[0.928579754036,0.928582240378] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [187.068s wall/186.554s cpu]
+[2026-08-31T09:37:20Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:37:22Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:37:23Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:37:25Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:37:27Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:37:32Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:37:34Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:37:35Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:37:37Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:37:39Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:37:43Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:37:45Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:37:47Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:37:49Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:37:51Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:39:54Z] corrected q=3 n=10 d=1/10: old=[1.213412964521387, 1.2134231653523089] new=[1.213412964521,1.213413699885] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [179.173s wall/178.623s cpu]
+[2026-08-31T09:40:19Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:40:21Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:40:23Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:40:25Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:40:27Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:40:32Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:40:34Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:40:35Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:40:37Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:40:39Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:40:44Z]   full KL q=3 n=10: 10000/59049 inputs
+[2026-08-31T09:40:46Z]   full KL q=3 n=10: 20000/59049 inputs
+[2026-08-31T09:40:47Z]   full KL q=3 n=10: 30000/59049 inputs
+[2026-08-31T09:40:49Z]   full KL q=3 n=10: 40000/59049 inputs
+[2026-08-31T09:40:51Z]   full KL q=3 n=10: 50000/59049 inputs
+[2026-08-31T09:42:55Z] corrected q=3 n=10 d=1/20: old=[1.3870088535516936, 1.3870161689880416] new=[1.387008853552,1.387009425127] legacy_mixed=1 CERT_UPPER_BEATS_UB+CERT_LOWER_BEATS_LBplus [180.701s wall/180.043s cpu]
+[2026-08-31T09:42:55Z] correction stage PASS {'status': 'PASS', 'rows': 20, 'legacy_split_rows': 16, 'both_end_improvements': 20, 'max_n': 10, 'wall_s': 841.039, 'cpu_s': 838.785, 'completed_utc': '2026-08-31T09:42:55Z', 'evidence_label': 'MACHINE-VERIFIED', 'timing_evidence_label': 'COMPUTATIONAL-EVIDENCE'}

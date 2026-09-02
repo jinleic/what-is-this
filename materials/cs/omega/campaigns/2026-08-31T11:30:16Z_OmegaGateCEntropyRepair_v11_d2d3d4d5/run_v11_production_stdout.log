@@ -1,0 +1,10 @@
+CKPT protocol_guards {"evidence": "MACHINE-VERIFIED exact integer/rational arithmetic", "direction": [0, 1, 1, -1, -1, -1, 1, 0, 0, -1, -1, 1, 0, 1, 1, -1, 0, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 0, 1, -1, 1, -1, -1, 1, 0, 1, -1, 0, 0, 1, -1, 0, -1, 1, 0], "A_times
+CKPT bad_multiplier_plant {"perturbation": "first independent multiplier + 1/8 exactly", "perturbation_as_dyadic": "0x1p-3, binary64-exact", "validity_check": "planted KKT residual must exceed 2^-32", "real_kkt_upper": {"arb": "[2.93834191166568744180588663710105270
+Traceback (most recent call last):
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T11:30:16Z_OmegaGateCEntropyRepair_v11_d2d3d4d5/gate_c_entropy_repair.py.asrun_v11", line 1837, in <module>
+    main()
+    ~~~~^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T11:30:16Z_OmegaGateCEntropyRepair_v11_d2d3d4d5/gate_c_entropy_repair.py.asrun_v11", line 1769, in main
+    assert base["raw"].lo <= raw_anchor.lo <= base["raw"].hi
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

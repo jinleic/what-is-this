@@ -1,0 +1,48 @@
+ROUTE F THEOREM AUDIT — 2026-08-31
+
+Exact tensor shape after the frozen global conjugation:
+T_F = tau boxtimes s, where tau is the real 3 x 4 x 4 tensor
+(L_1,L_i,L_j) and s = e_0 tensor (f_1 tensor f_1 + f_2 tensor f_2)
+is a 1 x 2 x 2 rank-2 matrix tensor.  Regrouping leaves the first factor
+three-dimensional and makes the last two factors 4*2=8 dimensional.  Equivalently,
+all three slices are blockdiag(tau_slice,tau_slice).  This is a shared-first-
+factor block tensor, not the ordinary direct sum tau direct-sum tau in which
+all three factors are independently doubled.
+
+Source-backed positive result checked, but NOT applicable:
+M. Christandl, A. K. Jensen, J. Zuiddam, "Tensor rank is not multiplicative
+under the tensor product", arXiv:1705.09379v4, Proposition 22, PDF page 10.
+Over C it proves multiplicativity when one factor is a matrix tensor
+C tensor C^d tensor C^d and the other is a matrix pencil
+C^2 tensor C^n tensor C^m.  Here the nonmatrix factor tau has first dimension
+3, not 2, and the requested rank is over R, not C.  The authors explicitly
+describe their 2-dimensional result as the essentially minimal positive case.
+It cannot be invoked for T_F.
+
+Ordinary direct-sum additivity is also inapplicable.  Its input has tensor
+space (A1 direct-sum A2) tensor (B1 direct-sum B2) tensor (C1 direct-sum C2).
+T_F instead has A tensor (B1 direct-sum B2) tensor (C1 direct-sum C2), with
+the same three coefficient directions acting on both diagonal blocks.  A
+lower bound for the full direct sum does not survive identifying A1 with A2.
+
+Exact equivalence that DOES apply:
+Pascal Koiran, "On tensor rank and commuting matrices",
+arXiv:2006.02374v2, Theorem 4, PDF page 4.  For an n x n x p tensor over a
+subfield K of C whose slice span contains an invertible matrix, rank(T)<=r iff
+T embeds in an r x r x p tensor whose normalized slices commute and are
+diagonalizable over K.  With the identity slice fixed, the real r=13 case can
+be parameterized as
+  P Q = I_8,
+  P diag(d) Q = A,
+  P diag(e) Q = B,
+where P is 8 x 13, Q is 13 x 8, and all entries/d,e are real.  Completing P,Q
+to an invertible S gives P=E S and Q=S^{-1} E^T.  Thus route_af_extension.py
+searches an exact-characterization model, not merely a necessary condition.
+A numerical miss in this noncompact model is still not an infeasibility proof.
+
+Conclusion of source audit:
+No source-backed additivity/multiplicativity theorem found in this campaign
+covers a real 3 x 4 x 4 tensor boxtimes a rank-2 matrix tensor.  The first
+missing upward certificate is a proof that the above real r=13 commuting-
+diagonalizable extension does not exist.  The first missing downward
+certificate is an exact rank-13 CP witness or certified existence box.

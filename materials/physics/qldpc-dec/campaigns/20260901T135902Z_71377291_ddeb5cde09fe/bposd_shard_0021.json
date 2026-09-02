@@ -1,0 +1,26 @@
+{
+  "arm": "bp30+osd",
+  "shard": 21,
+  "start": 87507,
+  "shots": 4167,
+  "failures": 10,
+  "observable_mismatch_counts": [
+    4,
+    4,
+    5,
+    4,
+    3,
+    3,
+    6,
+    4,
+    6,
+    2,
+    6,
+    5
+  ],
+  "wall_s": 408.7374793329509,
+  "ms_per_shot": 98.08914790807557,
+  "source_shots_sha256": "a2c01e8f961c70c2f5da896462510f3b0f2d28239990ec6767601de8b539f9ee",
+  "failure_mask": "bposd_failmask_0021.bin",
+  "failure_mask_sha256": "87c93b63eb9744d58d0912fe3c36ce1a124b896bb3f752a580a87e68fef11db3"
+}

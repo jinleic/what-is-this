@@ -1,0 +1,17 @@
+{
+  "schema": "target-state/1",
+  "id": "physics/shadows",
+  "problem": "Contractive-shadow exact census (11520 two-qubit Cliffords)",
+  "status": "active",
+  "current_gate": "Gate C k-extension EDGE-VANISHES (35/35 regression)",
+  "latest_campaign": null,
+  "latest_campaign_verdict": null,
+  "headline": "Gates A+B+C closed; k-extension regression confined boundary",
+  "next_action": "Decide whether higher-k extension is worth a further campaign",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-01T07:34:05Z",
+  "updated_by": "workspace-architecture-fix",
+  "sources": [
+    "physics/RESULTS.md"
+  ]
+}

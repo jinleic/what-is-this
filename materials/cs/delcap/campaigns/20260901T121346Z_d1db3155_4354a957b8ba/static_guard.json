@@ -1,0 +1,73 @@
+{
+  "artifact_path": "static_guard.json",
+  "campaign_id": "20260901T121346Z_d1db3155_4354a957b8ba",
+  "completed_utc": "2026-09-01T12:30:35Z",
+  "cpu_s": 49.272224,
+  "dual_candidates": [
+    "ba_total_orbit_mass",
+    "uniform"
+  ],
+  "evidence_label": "MACHINE-VERIFIED",
+  "forbidden_dual_candidates": [
+    "ba_word"
+  ],
+  "instrument_manifest_sha256": "13edfc2d899fa9af12b0cc5dd642a4ed7248c6a1689de390fcdb0ae65a1c4dd0",
+  "maximum_rss_bytes": 4404002816,
+  "n11_frozen_row_binding": {
+    "control_row_key": "0:3:11:1/2",
+    "line_sha256": "71430c7a812621d5dc3440c3faf4b7733657ae429bd4b5f5c58e07e440237b6a",
+    "row_keys_in_ledger": [
+      "0:3:11:1/2",
+      "1:3:11:1/5",
+      "2:3:11:1/10",
+      "3:3:11:1/20"
+    ]
+  },
+  "negative_width_plant_rejected": true,
+  "preregistered_orbit_counts": {
+    "burnside_series_B0_to_B12": [
+      1,
+      1,
+      2,
+      4,
+      10,
+      25,
+      70,
+      196,
+      574,
+      1681,
+      5002,
+      14884,
+      44530
+    ],
+    "input_orbits": 44530,
+    "input_words": 531441,
+    "output_orbits": 66980,
+    "output_words": 797161
+  },
+  "q3_n12_census_anchor": {
+    "burnside_input": 44530,
+    "burnside_output_sum": 66980,
+    "evidence_label": "MACHINE-VERIFIED",
+    "input_orbit_size_sum": 531441,
+    "input_orbits": 44530,
+    "input_words": 531441,
+    "n": 12,
+    "orbit_slots": 18311678,
+    "output_orbit_size_sum": 797161,
+    "output_orbits": 66980,
+    "output_words": 797161,
+    "representative_entries": 30666848,
+    "status": "PASS",
+    "total_sparse_slots": 48978526
+  },
+  "q3_n12_structure_build_wall_s": 56.292,
+  "q4_and_non_n12_excluded": true,
+  "resume_rows_validated": 0,
+  "row_box_rows": 4,
+  "schema": "delcap-q3-n12-total-output-orbit-mass-v1",
+  "source_sha256": "08836f43adbffcbf35da90feb140ca030e387605043802243dd3dac4e6cc6718",
+  "status": "PASS",
+  "timing_evidence_label": "COMPUTATIONAL-EVIDENCE",
+  "wall_s": 57.133089
+}

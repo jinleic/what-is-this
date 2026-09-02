@@ -1,0 +1,487 @@
+{
+  "gate": "B-gb5a-ladder+paired",
+  "p": 0.001,
+  "basis": "Z",
+  "shots_per_arm": 20000000,
+  "bposd": {
+    "arm": "bp30+osd",
+    "shots": 20000000,
+    "failures": 41,
+    "raw_logical_failure_rate": 2.05e-06,
+    "raw_ler_ci95_wilson": [
+      1.5112356401270165e-06,
+      2.7808364766069223e-06
+    ],
+    "per_round_ler": 1.7083333333333332e-07,
+    "per_round_ler_ci95_wilson": [
+      1.2593630334391805e-07,
+      2.3173637305057685e-07
+    ],
+    "observable_mismatch_counts": [
+      14,
+      12,
+      13,
+      14,
+      10,
+      21,
+      19,
+      24,
+      21,
+      18,
+      16,
+      23
+    ],
+    "decode_core_s": 276027.70710537967,
+    "decode_ms_per_shot": 13.801385355268982,
+    "wall_s": 11593.147630416905,
+    "shards": 240,
+    "workers": 24,
+    "decoder": {
+      "max_iter": 30,
+      "bp_method": "ms",
+      "schedule": "parallel",
+      "osd_method": "osd_cs",
+      "osd_order": 10
+    },
+    "failure_mask": "bposd_failmask.bin",
+    "failure_mask_sha256": "7e32a2ff76fb8ca881c3010baf40477d51f86af549de829cd1ddffebc0490a76",
+    "source_shots_sha256": "4518cd6ec455b049ee99f8de5cf909ac23c9985e6c2c474d3c0610e45ea2840f"
+  },
+  "rung_arms": {
+    "beam8": {
+      "arm": "beam8-cpp-bit-exact",
+      "rung": "beam8",
+      "shots": 20000000,
+      "failures": 42,
+      "raw_logical_failure_rate": 2.1e-06,
+      "raw_ler_ci95_wilson": [
+        1.5537158992198576e-06,
+        2.8383561983067906e-06
+      ],
+      "per_round_ler": 1.75e-07,
+      "per_round_ler_ci95_wilson": [
+        1.2947632493498813e-07,
+        2.3652968319223254e-07
+      ],
+      "observable_mismatch_counts": [
+        20,
+        20,
+        19,
+        14,
+        23,
+        20,
+        20,
+        21,
+        22,
+        20,
+        23,
+        23
+      ],
+      "decoder_params": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10
+      },
+      "decode": {
+        "rung": "beam8",
+        "shots_file": "shots_beam8.bin",
+        "predictions": "beam8_predictions.bin",
+        "predictions_sha256": "e40427a6feea217c9c98fd8a8705358ff682073ac9f029dabcf1d13bced1028d",
+        "config_line": "config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=21065135 bp_iters=226457240 rounds=848715",
+        "threads": 26,
+        "wall_s": 3939.1995616670465,
+        "ms_per_shot_reported": 0.197,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/shots_beam8.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/beam8_predictions.bin",
+          "--beam-width=8",
+          "--initial-iters=30",
+          "--iters-per-round=20",
+          "--max-rounds=10",
+          "--threads",
+          "26"
+        ]
+      },
+      "failure_mask": "beam8_failmask.bin",
+      "failure_mask_sha256": "85469f711361642e659ab81f33d76e8c12296e3b76d06a1b5889077b647152ea",
+      "source_shots_sha256": "02a9201f44e1bd28bbcf8231830d4cd5fc1d0f57580e58ce76ef17dd6788daf6"
+    },
+    "beam32": {
+      "arm": "beam32-cpp-bit-exact",
+      "rung": "beam32",
+      "shots": 20000000,
+      "failures": 10,
+      "raw_logical_failure_rate": 5e-07,
+      "raw_ler_ci95_wilson": [
+        2.715993270784773e-07,
+        9.204733850814649e-07
+      ],
+      "per_round_ler": 4.166666666666666e-08,
+      "per_round_ler_ci95_wilson": [
+        2.2633277256539774e-08,
+        7.670611542345541e-08
+      ],
+      "observable_mismatch_counts": [
+        2,
+        3,
+        5,
+        4,
+        7,
+        6,
+        4,
+        7,
+        7,
+        6,
+        3,
+        7
+      ],
+      "decoder_params": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10
+      },
+      "decode": {
+        "rung": "beam32",
+        "shots_file": "shots_beam32.bin",
+        "predictions": "beam32_predictions.bin",
+        "predictions_sha256": "279799d78c8efc11b796b644cf160c71c80af73516b8a762100534a4be12edf2",
+        "config_line": "config: beam_width=32 initial_iters=40 iters_per_round=30 max_rounds=10 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=20537726 bp_iters=228891117 rounds=437344",
+        "threads": 26,
+        "wall_s": 3807.245917291031,
+        "ms_per_shot_reported": 0.19,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/shots_beam32.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/beam32_predictions.bin",
+          "--beam-width=32",
+          "--initial-iters=40",
+          "--iters-per-round=30",
+          "--max-rounds=10",
+          "--threads",
+          "26"
+        ]
+      },
+      "failure_mask": "beam32_failmask.bin",
+      "failure_mask_sha256": "63ecf44219a308c01f9c2c2da2e52f108b9460af1a85750de7f3e13a2c564bb3",
+      "source_shots_sha256": "f26df9e87a3159e9d736ca234fa2e4c89af04f8184e5b4c55e3380749a4d7811"
+    },
+    "beam64": {
+      "arm": "beam64-cpp-bit-exact",
+      "rung": "beam64",
+      "shots": 20000000,
+      "failures": 5,
+      "raw_logical_failure_rate": 2.5e-07,
+      "raw_ler_ci95_wilson": [
+        1.0678506143578431e-07,
+        5.852877467606099e-07
+      ],
+      "per_round_ler": 2.083333333333333e-08,
+      "per_round_ler_ci95_wilson": [
+        8.898755119648693e-09,
+        4.8773978896717495e-08
+      ],
+      "observable_mismatch_counts": [
+        3,
+        3,
+        1,
+        2,
+        3,
+        2,
+        3,
+        4,
+        1,
+        2,
+        3,
+        2
+      ],
+      "decoder_params": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20
+      },
+      "decode": {
+        "rung": "beam64",
+        "shots_file": "shots_beam64.bin",
+        "predictions": "beam64_predictions.bin",
+        "predictions_sha256": "757d826b6e27618f9a85e5376f0e430d9c28609ad30d3efb246ff077c646e524",
+        "config_line": "config: beam_width=64 initial_iters=40 iters_per_round=30 max_rounds=20 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=20538926 bp_iters=228825294 rounds=437329",
+        "threads": 26,
+        "wall_s": 3945.3828919579973,
+        "ms_per_shot_reported": 0.197,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/shots_beam64.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/beam64_predictions.bin",
+          "--beam-width=64",
+          "--initial-iters=40",
+          "--iters-per-round=30",
+          "--max-rounds=20",
+          "--threads",
+          "26"
+        ]
+      },
+      "failure_mask": "beam64_failmask.bin",
+      "failure_mask_sha256": "f0af7789b24412d27e4725e2dbb1f26dff2f22ff3b866df3658f2044eda8e518",
+      "source_shots_sha256": "f0992cb39986eaaa6265292baed721f99a44449ef4e936e244eed8aa078b4689"
+    }
+  },
+  "rung_verdicts": {
+    "beam8": {
+      "target_band": [
+        0.87,
+        1.15
+      ],
+      "bootstrap": {
+        "method": "independent-binomial percentile (frozen harness helper)",
+        "draws": 100000,
+        "seed": 7565086469086718159
+      },
+      "outcome": "INCONCLUSIVE_ratio_CI_crosses_band",
+      "beam_over_bposd_ratio": 1.024390243902439,
+      "ratio_ci95": [
+        0.6595744680851063,
+        1.5925925925925926
+      ],
+      "ratio_ci95_upper_unbounded": false,
+      "point_in_band": true,
+      "ci_inside_band": false,
+      "ci_overlaps_band": true
+    },
+    "beam32": {
+      "target_band": [
+        0.14285714285714285,
+        0.2222222222222222
+      ],
+      "bootstrap": {
+        "method": "independent-binomial percentile (frozen harness helper)",
+        "draws": 100000,
+        "seed": 5365662820720211116
+      },
+      "outcome": "INCONCLUSIVE_ratio_CI_crosses_band",
+      "beam_over_bposd_ratio": 0.24390243902439024,
+      "ratio_ci95": [
+        0.1016949152542373,
+        0.45161290322580644
+      ],
+      "ratio_ci95_upper_unbounded": false,
+      "point_in_band": false,
+      "ci_inside_band": false,
+      "ci_overlaps_band": true
+    },
+    "beam64": {
+      "target_band": [
+        0.045454545454545456,
+        0.09090909090909091
+      ],
+      "bootstrap": {
+        "method": "independent-binomial percentile (frozen harness helper)",
+        "draws": 100000,
+        "seed": 1412568580469120870
+      },
+      "outcome": "INCONCLUSIVE_ratio_CI_crosses_band",
+      "beam_over_bposd_ratio": 0.12195121951219512,
+      "ratio_ci95": [
+        0.025,
+        0.2631578947368421
+      ],
+      "ratio_ci95_upper_unbounded": false,
+      "point_in_band": false,
+      "ci_inside_band": false,
+      "ci_overlaps_band": true
+    }
+  },
+  "ladder_verdict": {
+    "ladder_outcome": "INCONCLUSIVE_no_band_excluded_or_recovered_for_every_rung",
+    "rung_outcomes": {
+      "beam8": "INCONCLUSIVE_ratio_CI_crosses_band",
+      "beam32": "INCONCLUSIVE_ratio_CI_crosses_band",
+      "beam64": "INCONCLUSIVE_ratio_CI_crosses_band"
+    }
+  },
+  "paired_instrument": {
+    "shared_stream": "shots_bposd.bin",
+    "shared_stream_sha256": "4518cd6ec455b049ee99f8de5cf909ac23c9985e6c2c474d3c0610e45ea2840f",
+    "shots": 20000000,
+    "failures": {
+      "bp30+osd": 41,
+      "beam8": 40,
+      "beam32": 8,
+      "beam64": 5
+    },
+    "discordance": {
+      "bp30+osd|beam8": {
+        "a_fails_b_ok": 31,
+        "b_fails_a_ok": 30,
+        "both_fail": 10,
+        "mcnemar_exact_p": 1.0
+      },
+      "bp30+osd|beam32": {
+        "a_fails_b_ok": 37,
+        "b_fails_a_ok": 4,
+        "both_fail": 4,
+        "mcnemar_exact_p": 1.0258372640237212e-07
+      },
+      "bp30+osd|beam64": {
+        "a_fails_b_ok": 37,
+        "b_fails_a_ok": 1,
+        "both_fail": 4,
+        "mcnemar_exact_p": 2.837623469531536e-10
+      },
+      "beam8|beam32": {
+        "a_fails_b_ok": 35,
+        "b_fails_a_ok": 3,
+        "both_fail": 5,
+        "mcnemar_exact_p": 6.677873898297548e-08
+      },
+      "beam8|beam64": {
+        "a_fails_b_ok": 36,
+        "b_fails_a_ok": 1,
+        "both_fail": 4,
+        "mcnemar_exact_p": 5.529727786779404e-10
+      },
+      "beam32|beam64": {
+        "a_fails_b_ok": 3,
+        "b_fails_a_ok": 0,
+        "both_fail": 5,
+        "mcnemar_exact_p": 0.25
+      }
+    },
+    "prediction_identity": {
+      "beam8|beam32": {
+        "identical_predictions": false,
+        "sha256_a": "a59d7684c4f21a94d8f364525feca0887e608d5a96b76d7f92b7f94d67862b32",
+        "sha256_b": "29fca2177e32238cc75f74ce6d552fd3e4bda2634171f3a53f49e184ad3c7aed"
+      },
+      "beam8|beam64": {
+        "identical_predictions": false,
+        "sha256_a": "a59d7684c4f21a94d8f364525feca0887e608d5a96b76d7f92b7f94d67862b32",
+        "sha256_b": "95ca66880a48b8393f46af0b22c4b3a30a0fb73d7a86cd2d5adecd897cc0c7cb"
+      },
+      "beam32|beam64": {
+        "identical_predictions": false,
+        "sha256_a": "29fca2177e32238cc75f74ce6d552fd3e4bda2634171f3a53f49e184ad3c7aed",
+        "sha256_b": "95ca66880a48b8393f46af0b22c4b3a30a0fb73d7a86cd2d5adecd897cc0c7cb"
+      }
+    },
+    "decode_meta": {
+      "beam8": {
+        "rung": "beam8",
+        "shots_file": "shots_bposd.bin",
+        "predictions": "paired_beam8_predictions.bin",
+        "predictions_sha256": "a59d7684c4f21a94d8f364525feca0887e608d5a96b76d7f92b7f94d67862b32",
+        "config_line": "config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=21064680 bp_iters=226386589 rounds=849397",
+        "threads": 26,
+        "wall_s": 3981.4497254589805,
+        "ms_per_shot_reported": 0.199,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/shots_bposd.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/paired_beam8_predictions.bin",
+          "--beam-width=8",
+          "--initial-iters=30",
+          "--iters-per-round=20",
+          "--max-rounds=10",
+          "--threads",
+          "26"
+        ]
+      },
+      "beam32": {
+        "rung": "beam32",
+        "shots_file": "shots_bposd.bin",
+        "predictions": "paired_beam32_predictions.bin",
+        "predictions_sha256": "29fca2177e32238cc75f74ce6d552fd3e4bda2634171f3a53f49e184ad3c7aed",
+        "config_line": "config: beam_width=32 initial_iters=40 iters_per_round=30 max_rounds=10 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=20536392 bp_iters=228790992 rounds=437036",
+        "threads": 26,
+        "wall_s": 3915.7586355420062,
+        "ms_per_shot_reported": 0.196,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/shots_bposd.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/paired_beam32_predictions.bin",
+          "--beam-width=32",
+          "--initial-iters=40",
+          "--iters-per-round=30",
+          "--max-rounds=10",
+          "--threads",
+          "26"
+        ]
+      },
+      "beam64": {
+        "rung": "beam64",
+        "shots_file": "shots_bposd.bin",
+        "predictions": "paired_beam64_predictions.bin",
+        "predictions_sha256": "95ca66880a48b8393f46af0b22c4b3a30a0fb73d7a86cd2d5adecd897cc0c7cb",
+        "config_line": "config: beam_width=64 initial_iters=40 iters_per_round=30 max_rounds=20 num_results=1",
+        "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=0 bp_runs=20536025 bp_iters=228779936 rounds=437028",
+        "threads": 26,
+        "wall_s": 4192.534690917004,
+        "ms_per_shot_reported": 0.21,
+        "command": [
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam8_cpp",
+          "--dem",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned.dem",
+          "--lam",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/pinned_lam.npy",
+          "--shots",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/shots_bposd.bin",
+          "--out",
+          "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260901T040018Z_55e4ac01_f81265905380/paired_beam64_predictions.bin",
+          "--beam-width=64",
+          "--initial-iters=40",
+          "--iters-per-round=30",
+          "--max-rounds=20",
+          "--threads",
+          "26"
+        ]
+      }
+    },
+    "interpretation": "published ladder implies beam32 fixes ~82% and beam64 ~94% of beam8 failures; zero discordance is a sample identity refuting that, any nonzero discordance measures the in-harness width benefit"
+  },
+  "rate_semantics": {
+    "raw_logical_failure_rate": "any-observable failure / shots",
+    "per_round_ler": "raw_logical_failure_rate / 12",
+    "ratio": "beam raw rate / BP+OSD raw rate; identical under per-round convention",
+    "ratio_ci": "independent-binomial percentile; positive/zero draws retained as +inf"
+  },
+  "dependence_disclosure": "all three rung ratios share one BP+OSD denominator sample, so the three band decisions are statistically dependent",
+  "scope": "terminal Gate-B ladder decision per Revisions GB5/GB5a"
+}

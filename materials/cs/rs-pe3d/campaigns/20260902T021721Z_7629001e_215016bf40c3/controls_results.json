@@ -1,0 +1,1948 @@
+{
+  "arithmetic": "exact Python integers modulo p; product columns (1,y,x,xy)",
+  "assertion_count": 170,
+  "budget": {
+    "CPU_cap_seconds": 600.0,
+    "CPU_seconds": 8.590610999999999,
+    "wall_cap_seconds": 900.0,
+    "wall_seconds": 9.510507417027839,
+    "within_cap": true
+  },
+  "controls": {
+    "anchors.n4.p13.profiles": {
+      "detail": {
+        "got": {
+          "(3, 3)": 144,
+          "(3, 4)": 288,
+          "(4, 3)": 288,
+          "(4, 4)": 144
+        },
+        "want": {
+          "(3, 3)": 144,
+          "(3, 4)": 288,
+          "(4, 3)": 288,
+          "(4, 4)": 144
+        }
+      },
+      "pass": true
+    },
+    "anchors.n4.p13.total": {
+      "detail": {
+        "got": 864,
+        "want": 864
+      },
+      "pass": true
+    },
+    "anchors.n4.p7.profiles": {
+      "detail": {
+        "got": {
+          "(3, 3)": 144,
+          "(3, 4)": 288,
+          "(4, 3)": 288,
+          "(4, 4)": 192
+        },
+        "want": {
+          "(3, 3)": 144,
+          "(3, 4)": 288,
+          "(4, 3)": 288,
+          "(4, 4)": 192
+        }
+      },
+      "pass": true
+    },
+    "anchors.n4.p7.total": {
+      "detail": {
+        "got": 912,
+        "want": 912
+      },
+      "pass": true
+    },
+    "anchors.n5.p13.profiles": {
+      "detail": {
+        "got": {
+          "(3, 3)": 900,
+          "(3, 4)": 3600,
+          "(3, 5)": 900,
+          "(4, 3)": 3600,
+          "(4, 4)": 6192,
+          "(4, 5)": 864,
+          "(5, 3)": 900,
+          "(5, 4)": 864,
+          "(5, 5)": 60
+        },
+        "want": {
+          "(3, 3)": 900,
+          "(3, 4)": 3600,
+          "(3, 5)": 900,
+          "(4, 3)": 3600,
+          "(4, 4)": 6192,
+          "(4, 5)": 864,
+          "(5, 3)": 900,
+          "(5, 4)": 864,
+          "(5, 5)": 60
+        }
+      },
+      "pass": true
+    },
+    "anchors.n5.p13.total": {
+      "detail": {
+        "got": 17880,
+        "want": 17880
+      },
+      "pass": true
+    },
+    "budget.CPU": {
+      "detail": {
+        "cap": 600.0,
+        "used": 8.590610999999999
+      },
+      "pass": true
+    },
+    "budget.wall": {
+      "detail": {
+        "cap": 900.0,
+        "used": 9.510507417027839
+      },
+      "pass": true
+    },
+    "n4.p11.P44_canonical_decompositions": {
+      "detail": {
+        "ok": 240,
+        "total": 240
+      },
+      "pass": true
+    },
+    "n4.p11.P44_closed_reduction": {
+      "detail": {
+        "M4": 24,
+        "N_all4": 4,
+        "got": 240,
+        "want": 240
+      },
+      "pass": true
+    },
+    "n4.p11.P44_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n4.p11.P44_set_equality": {
+      "detail": {
+        "constructed": 240,
+        "measured": 240
+      },
+      "pass": true
+    },
+    "n4.p11.P45_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p11.P45_set_equality": {
+      "detail": {
+        "candidates": 0,
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p11.P54_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p11.P54_set_equality": {
+      "detail": {
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p11.P55_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p11.P55_set_equality": {
+      "detail": {
+        "candidates": 0,
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p11.direct_structural_set_equality": {
+      "detail": {
+        "direct_only": 0,
+        "structural_only": 0
+      },
+      "pass": true
+    },
+    "n4.p11.family12_all_relations": {
+      "detail": {
+        "ok": 432,
+        "parameters": 432
+      },
+      "pass": true
+    },
+    "n4.p11.family12_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n4.p11.fieldfree_cols3_set_equality": {
+      "detail": {
+        "constructed": 432,
+        "measured": 432
+      },
+      "pass": true
+    },
+    "n4.p11.fieldfree_rows3_set_equality": {
+      "detail": {
+        "constructed": 432,
+        "measured": 432
+      },
+      "pass": true
+    },
+    "n4.p11.formula.(3, 3)": {
+      "detail": {
+        "got": 144,
+        "want": 144
+      },
+      "pass": true
+    },
+    "n4.p11.formula.(3, 4)": {
+      "detail": {
+        "got": 288,
+        "want": 288
+      },
+      "pass": true
+    },
+    "n4.p11.formula.(3, 5)": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "n4.p11.formula.(4, 3)": {
+      "detail": {
+        "got": 288,
+        "want": 288
+      },
+      "pass": true
+    },
+    "n4.p11.formula.(5, 3)": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "n4.p11.profile33_orientation_coincides": {
+      "detail": 144,
+      "pass": true
+    },
+    "n4.p11.templates_expected": {
+      "detail": {
+        "33:C4+K2": 144,
+        "34:P5+K2": 288,
+        "43:P5+K2": 288,
+        "44:P4+2K2": 240
+      },
+      "pass": true
+    },
+    "n4.p13.P44_canonical_decompositions": {
+      "detail": {
+        "ok": 144,
+        "total": 144
+      },
+      "pass": true
+    },
+    "n4.p13.P44_closed_reduction": {
+      "detail": {
+        "M4": 24,
+        "N_all4": 12,
+        "got": 144,
+        "want": 144
+      },
+      "pass": true
+    },
+    "n4.p13.P44_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n4.p13.P44_set_equality": {
+      "detail": {
+        "constructed": 144,
+        "measured": 144
+      },
+      "pass": true
+    },
+    "n4.p13.P45_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p13.P45_set_equality": {
+      "detail": {
+        "candidates": 0,
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p13.P54_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p13.P54_set_equality": {
+      "detail": {
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p13.P55_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p13.P55_set_equality": {
+      "detail": {
+        "candidates": 0,
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p13.direct_structural_set_equality": {
+      "detail": {
+        "direct_only": 0,
+        "structural_only": 0
+      },
+      "pass": true
+    },
+    "n4.p13.family12_all_relations": {
+      "detail": {
+        "ok": 432,
+        "parameters": 432
+      },
+      "pass": true
+    },
+    "n4.p13.family12_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n4.p13.fieldfree_cols3_set_equality": {
+      "detail": {
+        "constructed": 432,
+        "measured": 432
+      },
+      "pass": true
+    },
+    "n4.p13.fieldfree_rows3_set_equality": {
+      "detail": {
+        "constructed": 432,
+        "measured": 432
+      },
+      "pass": true
+    },
+    "n4.p13.formula.(3, 3)": {
+      "detail": {
+        "got": 144,
+        "want": 144
+      },
+      "pass": true
+    },
+    "n4.p13.formula.(3, 4)": {
+      "detail": {
+        "got": 288,
+        "want": 288
+      },
+      "pass": true
+    },
+    "n4.p13.formula.(3, 5)": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "n4.p13.formula.(4, 3)": {
+      "detail": {
+        "got": 288,
+        "want": 288
+      },
+      "pass": true
+    },
+    "n4.p13.formula.(5, 3)": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "n4.p13.profile33_orientation_coincides": {
+      "detail": 144,
+      "pass": true
+    },
+    "n4.p13.templates_expected": {
+      "detail": {
+        "33:C4+K2": 144,
+        "34:P5+K2": 288,
+        "43:P5+K2": 288,
+        "44:P4+2K2": 144
+      },
+      "pass": true
+    },
+    "n4.p7.P44_canonical_decompositions": {
+      "detail": {
+        "ok": 192,
+        "total": 192
+      },
+      "pass": true
+    },
+    "n4.p7.P44_closed_reduction": {
+      "detail": {
+        "M4": 24,
+        "N_all4": 8,
+        "got": 192,
+        "want": 192
+      },
+      "pass": true
+    },
+    "n4.p7.P44_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n4.p7.P44_set_equality": {
+      "detail": {
+        "constructed": 192,
+        "measured": 192
+      },
+      "pass": true
+    },
+    "n4.p7.P45_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p7.P45_set_equality": {
+      "detail": {
+        "candidates": 0,
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p7.P54_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p7.P54_set_equality": {
+      "detail": {
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p7.P55_canonical_decompositions": {
+      "detail": {
+        "ok": 0,
+        "total": 0
+      },
+      "pass": true
+    },
+    "n4.p7.P55_set_equality": {
+      "detail": {
+        "candidates": 0,
+        "constructed": 0,
+        "measured": 0
+      },
+      "pass": true
+    },
+    "n4.p7.direct_structural_set_equality": {
+      "detail": {
+        "direct_only": 0,
+        "structural_only": 0
+      },
+      "pass": true
+    },
+    "n4.p7.family12_all_relations": {
+      "detail": {
+        "ok": 432,
+        "parameters": 432
+      },
+      "pass": true
+    },
+    "n4.p7.family12_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n4.p7.fieldfree_cols3_set_equality": {
+      "detail": {
+        "constructed": 432,
+        "measured": 432
+      },
+      "pass": true
+    },
+    "n4.p7.fieldfree_rows3_set_equality": {
+      "detail": {
+        "constructed": 432,
+        "measured": 432
+      },
+      "pass": true
+    },
+    "n4.p7.formula.(3, 3)": {
+      "detail": {
+        "got": 144,
+        "want": 144
+      },
+      "pass": true
+    },
+    "n4.p7.formula.(3, 4)": {
+      "detail": {
+        "got": 288,
+        "want": 288
+      },
+      "pass": true
+    },
+    "n4.p7.formula.(3, 5)": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "n4.p7.formula.(4, 3)": {
+      "detail": {
+        "got": 288,
+        "want": 288
+      },
+      "pass": true
+    },
+    "n4.p7.formula.(5, 3)": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "n4.p7.profile33_orientation_coincides": {
+      "detail": 144,
+      "pass": true
+    },
+    "n4.p7.templates_expected": {
+      "detail": {
+        "33:C4+K2": 144,
+        "34:P5+K2": 288,
+        "43:P5+K2": 288,
+        "44:P4+2K2": 192
+      },
+      "pass": true
+    },
+    "n5.p11.P44_canonical_decompositions": {
+      "detail": {
+        "ok": 6000,
+        "total": 6000
+      },
+      "pass": true
+    },
+    "n5.p11.P44_closed_reduction": {
+      "detail": {
+        "M4": 600,
+        "N_all4": 100,
+        "got": 6000,
+        "want": 6000
+      },
+      "pass": true
+    },
+    "n5.p11.P44_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n5.p11.P44_set_equality": {
+      "detail": {
+        "constructed": 6000,
+        "measured": 6000
+      },
+      "pass": true
+    },
+    "n5.p11.P45_canonical_decompositions": {
+      "detail": {
+        "ok": 800,
+        "total": 800
+      },
+      "pass": true
+    },
+    "n5.p11.P45_set_equality": {
+      "detail": {
+        "candidates": 1200,
+        "constructed": 800,
+        "measured": 800
+      },
+      "pass": true
+    },
+    "n5.p11.P54_canonical_decompositions": {
+      "detail": {
+        "ok": 800,
+        "total": 800
+      },
+      "pass": true
+    },
+    "n5.p11.P54_set_equality": {
+      "detail": {
+        "constructed": 800,
+        "measured": 800
+      },
+      "pass": true
+    },
+    "n5.p11.P55_canonical_decompositions": {
+      "detail": {
+        "ok": 60,
+        "total": 60
+      },
+      "pass": true
+    },
+    "n5.p11.P55_set_equality": {
+      "detail": {
+        "candidates": 120,
+        "constructed": 60,
+        "measured": 60
+      },
+      "pass": true
+    },
+    "n5.p11.direct_structural_set_equality": {
+      "detail": {
+        "direct_only": 0,
+        "structural_only": 0
+      },
+      "pass": true
+    },
+    "n5.p11.family12_all_relations": {
+      "detail": {
+        "ok": 5400,
+        "parameters": 5400
+      },
+      "pass": true
+    },
+    "n5.p11.family12_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n5.p11.fieldfree_cols3_set_equality": {
+      "detail": {
+        "constructed": 5400,
+        "measured": 5400
+      },
+      "pass": true
+    },
+    "n5.p11.fieldfree_rows3_set_equality": {
+      "detail": {
+        "constructed": 5400,
+        "measured": 5400
+      },
+      "pass": true
+    },
+    "n5.p11.formula.(3, 3)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p11.formula.(3, 4)": {
+      "detail": {
+        "got": 3600,
+        "want": 3600
+      },
+      "pass": true
+    },
+    "n5.p11.formula.(3, 5)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p11.formula.(4, 3)": {
+      "detail": {
+        "got": 3600,
+        "want": 3600
+      },
+      "pass": true
+    },
+    "n5.p11.formula.(5, 3)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p11.profile33_orientation_coincides": {
+      "detail": 900,
+      "pass": true
+    },
+    "n5.p11.templates_expected": {
+      "detail": {
+        "33:C4+K2": 900,
+        "34:P5+K2": 3600,
+        "35:2P3(row)+K2": 900,
+        "43:P5+K2": 3600,
+        "44:P4+2K2": 6000,
+        "45:P3(row)+3K2": 800,
+        "53:2P3(col)+K2": 900,
+        "54:P3(col)+3K2": 800,
+        "55:5K2": 60
+      },
+      "pass": true
+    },
+    "n5.p13.P44_canonical_decompositions": {
+      "detail": {
+        "ok": 6192,
+        "total": 6192
+      },
+      "pass": true
+    },
+    "n5.p13.P44_closed_reduction": {
+      "detail": {
+        "M4": 600,
+        "N_all4": 84,
+        "got": 6192,
+        "want": 6192
+      },
+      "pass": true
+    },
+    "n5.p13.P44_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n5.p13.P44_set_equality": {
+      "detail": {
+        "constructed": 6192,
+        "measured": 6192
+      },
+      "pass": true
+    },
+    "n5.p13.P45_canonical_decompositions": {
+      "detail": {
+        "ok": 864,
+        "total": 864
+      },
+      "pass": true
+    },
+    "n5.p13.P45_set_equality": {
+      "detail": {
+        "candidates": 1200,
+        "constructed": 864,
+        "measured": 864
+      },
+      "pass": true
+    },
+    "n5.p13.P54_canonical_decompositions": {
+      "detail": {
+        "ok": 864,
+        "total": 864
+      },
+      "pass": true
+    },
+    "n5.p13.P54_set_equality": {
+      "detail": {
+        "constructed": 864,
+        "measured": 864
+      },
+      "pass": true
+    },
+    "n5.p13.P55_canonical_decompositions": {
+      "detail": {
+        "ok": 60,
+        "total": 60
+      },
+      "pass": true
+    },
+    "n5.p13.P55_set_equality": {
+      "detail": {
+        "candidates": 120,
+        "constructed": 60,
+        "measured": 60
+      },
+      "pass": true
+    },
+    "n5.p13.direct_structural_set_equality": {
+      "detail": {
+        "direct_only": 0,
+        "structural_only": 0
+      },
+      "pass": true
+    },
+    "n5.p13.family12_all_relations": {
+      "detail": {
+        "ok": 5400,
+        "parameters": 5400
+      },
+      "pass": true
+    },
+    "n5.p13.family12_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n5.p13.fieldfree_cols3_set_equality": {
+      "detail": {
+        "constructed": 5400,
+        "measured": 5400
+      },
+      "pass": true
+    },
+    "n5.p13.fieldfree_rows3_set_equality": {
+      "detail": {
+        "constructed": 5400,
+        "measured": 5400
+      },
+      "pass": true
+    },
+    "n5.p13.formula.(3, 3)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p13.formula.(3, 4)": {
+      "detail": {
+        "got": 3600,
+        "want": 3600
+      },
+      "pass": true
+    },
+    "n5.p13.formula.(3, 5)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p13.formula.(4, 3)": {
+      "detail": {
+        "got": 3600,
+        "want": 3600
+      },
+      "pass": true
+    },
+    "n5.p13.formula.(5, 3)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p13.profile33_orientation_coincides": {
+      "detail": 900,
+      "pass": true
+    },
+    "n5.p13.templates_expected": {
+      "detail": {
+        "33:C4+K2": 900,
+        "34:P5+K2": 3600,
+        "35:2P3(row)+K2": 900,
+        "43:P5+K2": 3600,
+        "44:P4+2K2": 6192,
+        "45:P3(row)+3K2": 864,
+        "53:2P3(col)+K2": 900,
+        "54:P3(col)+3K2": 864,
+        "55:5K2": 60
+      },
+      "pass": true
+    },
+    "n5.p7.P44_canonical_decompositions": {
+      "detail": {
+        "ok": 5760,
+        "total": 5760
+      },
+      "pass": true
+    },
+    "n5.p7.P44_closed_reduction": {
+      "detail": {
+        "M4": 600,
+        "N_all4": 120,
+        "got": 5760,
+        "want": 5760
+      },
+      "pass": true
+    },
+    "n5.p7.P44_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n5.p7.P44_set_equality": {
+      "detail": {
+        "constructed": 5760,
+        "measured": 5760
+      },
+      "pass": true
+    },
+    "n5.p7.P45_canonical_decompositions": {
+      "detail": {
+        "ok": 720,
+        "total": 720
+      },
+      "pass": true
+    },
+    "n5.p7.P45_set_equality": {
+      "detail": {
+        "candidates": 1200,
+        "constructed": 720,
+        "measured": 720
+      },
+      "pass": true
+    },
+    "n5.p7.P54_canonical_decompositions": {
+      "detail": {
+        "ok": 720,
+        "total": 720
+      },
+      "pass": true
+    },
+    "n5.p7.P54_set_equality": {
+      "detail": {
+        "constructed": 720,
+        "measured": 720
+      },
+      "pass": true
+    },
+    "n5.p7.P55_canonical_decompositions": {
+      "detail": {
+        "ok": 24,
+        "total": 24
+      },
+      "pass": true
+    },
+    "n5.p7.P55_set_equality": {
+      "detail": {
+        "candidates": 120,
+        "constructed": 24,
+        "measured": 24
+      },
+      "pass": true
+    },
+    "n5.p7.direct_structural_set_equality": {
+      "detail": {
+        "direct_only": 0,
+        "structural_only": 0
+      },
+      "pass": true
+    },
+    "n5.p7.family12_all_relations": {
+      "detail": {
+        "ok": 5400,
+        "parameters": 5400
+      },
+      "pass": true
+    },
+    "n5.p7.family12_parameter_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "n5.p7.fieldfree_cols3_set_equality": {
+      "detail": {
+        "constructed": 5400,
+        "measured": 5400
+      },
+      "pass": true
+    },
+    "n5.p7.fieldfree_rows3_set_equality": {
+      "detail": {
+        "constructed": 5400,
+        "measured": 5400
+      },
+      "pass": true
+    },
+    "n5.p7.formula.(3, 3)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p7.formula.(3, 4)": {
+      "detail": {
+        "got": 3600,
+        "want": 3600
+      },
+      "pass": true
+    },
+    "n5.p7.formula.(3, 5)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p7.formula.(4, 3)": {
+      "detail": {
+        "got": 3600,
+        "want": 3600
+      },
+      "pass": true
+    },
+    "n5.p7.formula.(5, 3)": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "n5.p7.profile33_orientation_coincides": {
+      "detail": 900,
+      "pass": true
+    },
+    "n5.p7.templates_expected": {
+      "detail": {
+        "33:C4+K2": 900,
+        "34:P5+K2": 3600,
+        "35:2P3(row)+K2": 900,
+        "43:P5+K2": 3600,
+        "44:P4+2K2": 5760,
+        "45:P3(row)+3K2": 720,
+        "53:2P3(col)+K2": 900,
+        "54:P3(col)+3K2": 720,
+        "55:5K2": 24
+      },
+      "pass": true
+    },
+    "plants.accept.(3, 3).all_minors": {
+      "detail": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "pass": true
+    },
+    "plants.accept.(3, 3).direct": {
+      "detail": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "pass": true
+    },
+    "plants.accept.(3, 3).structural": {
+      "detail": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "pass": true
+    },
+    "plants.accept.(3, 4).all_minors": {
+      "detail": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "pass": true
+    },
+    "plants.accept.(3, 4).direct": {
+      "detail": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "pass": true
+    },
+    "plants.accept.(3, 4).structural": {
+      "detail": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "pass": true
+    },
+    "plants.accept.(3, 5).all_minors": {
+      "detail": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "pass": true
+    },
+    "plants.accept.(3, 5).direct": {
+      "detail": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "pass": true
+    },
+    "plants.accept.(3, 5).structural": {
+      "detail": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "pass": true
+    },
+    "plants.duplicate.pair": {
+      "detail": [
+        [
+          0,
+          5
+        ]
+      ],
+      "pass": true
+    },
+    "plants.duplicate.spark2": {
+      "detail": 2,
+      "pass": true
+    },
+    "plants.general_law.correct": {
+      "detail": {
+        "stats": {
+          "T1": 6,
+          "T2": 6,
+          "c": 3,
+          "r": 4
+        },
+        "value": 5
+      },
+      "pass": true
+    },
+    "plants.general_law.tight_misuse_reject": {
+      "detail": 6,
+      "pass": true
+    },
+    "plants.inserted_crossing.direct_reject": {
+      "detail": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "pass": true
+    },
+    "plants.inserted_crossing.proper_minor": {
+      "detail": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "plants.inserted_crossing.structural_reject": {
+      "detail": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "pass": true
+    },
+    "plants.kron_guard.coordinate_reject": {
+      "detail": {
+        "concat": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "true": [
+          3,
+          4,
+          6,
+          8
+        ]
+      },
+      "pass": true
+    },
+    "plants.kron_guard.dimension_collision": {
+      "detail": {
+        "concat": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "true": [
+          3,
+          4,
+          6,
+          8
+        ]
+      },
+      "pass": true
+    },
+    "plants.non_tensor.actual_reject": {
+      "detail": 4,
+      "pass": true
+    },
+    "plants.non_tensor.labels_accept": {
+      "detail": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "pass": true
+    },
+    "plants.rank_sum_only.all_candidates": {
+      "detail": 120,
+      "pass": true
+    },
+    "plants.rank_sum_only.factor_ranks": {
+      "detail": true,
+      "pass": true
+    },
+    "plants.rank_sum_only.insufficient": {
+      "detail": {
+        "accepted_by_rank_sum": 120,
+        "circuits": 60
+      },
+      "pass": true
+    },
+    "runtime.dont_write_bytecode": {
+      "detail": true,
+      "pass": true
+    },
+    "runtime.env.MKL_NUM_THREADS": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.env.OMP_NUM_THREADS": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.env.OPENBLAS_NUM_THREADS": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.env.PYTHONDONTWRITEBYTECODE": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.env.VECLIB_MAXIMUM_THREADS": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.nice": {
+      "detail": 15,
+      "pass": true
+    }
+  },
+  "gate": "H-DP2-SIZE5",
+  "plants": {
+    "duplicate": {
+      "dependent_pairs": [
+        [
+          0,
+          5
+        ]
+      ],
+      "spark": 2
+    },
+    "general_law": {
+      "T1": 6,
+      "T2": 6,
+      "c": 3,
+      "correct": 5,
+      "r": 4,
+      "wrong_minus_2c": 6
+    },
+    "inserted_crossing": {
+      "rejected": true,
+      "support": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    "known_accepts": {
+      "(3, 3)": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "(3, 4)": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "(3, 5)": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "kronecker_guard": {
+      "concat": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "coordinates_differ": true,
+      "same_dimension": true,
+      "true": [
+        3,
+        4,
+        6,
+        8
+      ]
+    },
+    "non_tensor": {
+      "actual_rejected": true,
+      "labels_accept": true,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    "rank_sum_only": {
+      "circuits": 60,
+      "matching_candidates": 120,
+      "rejected_as_sufficient": true
+    }
+  },
+  "run_id": "20260902T021721Z_7629001e_215016bf40c3",
+  "runs": [
+    {
+      "P44": {
+        "M4": 24,
+        "N_all4": 8,
+        "count": 192,
+        "decompositions": 192,
+        "formula": 192
+      },
+      "P45": {
+        "candidate_graphs": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "P54": {
+        "candidate_graphs": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "P55": {
+        "candidate_matchings": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "fieldfree": {
+        "N33": 144,
+        "N34=N43": 288,
+        "N35=N53": 0,
+        "constructed_supports_12": 432
+      },
+      "full_set_equality": true,
+      "n": 4,
+      "prime": 7,
+      "profiles": {
+        "(3, 3)": 144,
+        "(3, 4)": 288,
+        "(4, 3)": 288,
+        "(4, 4)": 192
+      },
+      "templates": {
+        "33:C4+K2": 144,
+        "34:P5+K2": 288,
+        "43:P5+K2": 288,
+        "44:P4+2K2": 192
+      },
+      "total": 912,
+      "universe": 4368
+    },
+    {
+      "P44": {
+        "M4": 24,
+        "N_all4": 4,
+        "count": 240,
+        "decompositions": 240,
+        "formula": 240
+      },
+      "P45": {
+        "candidate_graphs": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "P54": {
+        "candidate_graphs": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "P55": {
+        "candidate_matchings": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "fieldfree": {
+        "N33": 144,
+        "N34=N43": 288,
+        "N35=N53": 0,
+        "constructed_supports_12": 432
+      },
+      "full_set_equality": true,
+      "n": 4,
+      "prime": 11,
+      "profiles": {
+        "(3, 3)": 144,
+        "(3, 4)": 288,
+        "(4, 3)": 288,
+        "(4, 4)": 240
+      },
+      "templates": {
+        "33:C4+K2": 144,
+        "34:P5+K2": 288,
+        "43:P5+K2": 288,
+        "44:P4+2K2": 240
+      },
+      "total": 960,
+      "universe": 4368
+    },
+    {
+      "P44": {
+        "M4": 24,
+        "N_all4": 12,
+        "count": 144,
+        "decompositions": 144,
+        "formula": 144
+      },
+      "P45": {
+        "candidate_graphs": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "P54": {
+        "candidate_graphs": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "P55": {
+        "candidate_matchings": 0,
+        "count": 0,
+        "decompositions": 0
+      },
+      "fieldfree": {
+        "N33": 144,
+        "N34=N43": 288,
+        "N35=N53": 0,
+        "constructed_supports_12": 432
+      },
+      "full_set_equality": true,
+      "n": 4,
+      "prime": 13,
+      "profiles": {
+        "(3, 3)": 144,
+        "(3, 4)": 288,
+        "(4, 3)": 288,
+        "(4, 4)": 144
+      },
+      "templates": {
+        "33:C4+K2": 144,
+        "34:P5+K2": 288,
+        "43:P5+K2": 288,
+        "44:P4+2K2": 144
+      },
+      "total": 864,
+      "universe": 4368
+    },
+    {
+      "P44": {
+        "M4": 600,
+        "N_all4": 120,
+        "count": 5760,
+        "decompositions": 5760,
+        "formula": 5760
+      },
+      "P45": {
+        "candidate_graphs": 1200,
+        "count": 720,
+        "decompositions": 720
+      },
+      "P54": {
+        "candidate_graphs": 1200,
+        "count": 720,
+        "decompositions": 720
+      },
+      "P55": {
+        "candidate_matchings": 120,
+        "count": 24,
+        "decompositions": 24
+      },
+      "fieldfree": {
+        "N33": 900,
+        "N34=N43": 3600,
+        "N35=N53": 900,
+        "constructed_supports_12": 5400
+      },
+      "full_set_equality": true,
+      "n": 5,
+      "prime": 7,
+      "profiles": {
+        "(3, 3)": 900,
+        "(3, 4)": 3600,
+        "(3, 5)": 900,
+        "(4, 3)": 3600,
+        "(4, 4)": 5760,
+        "(4, 5)": 720,
+        "(5, 3)": 900,
+        "(5, 4)": 720,
+        "(5, 5)": 24
+      },
+      "templates": {
+        "33:C4+K2": 900,
+        "34:P5+K2": 3600,
+        "35:2P3(row)+K2": 900,
+        "43:P5+K2": 3600,
+        "44:P4+2K2": 5760,
+        "45:P3(row)+3K2": 720,
+        "53:2P3(col)+K2": 900,
+        "54:P3(col)+3K2": 720,
+        "55:5K2": 24
+      },
+      "total": 17124,
+      "universe": 53130
+    },
+    {
+      "P44": {
+        "M4": 600,
+        "N_all4": 100,
+        "count": 6000,
+        "decompositions": 6000,
+        "formula": 6000
+      },
+      "P45": {
+        "candidate_graphs": 1200,
+        "count": 800,
+        "decompositions": 800
+      },
+      "P54": {
+        "candidate_graphs": 1200,
+        "count": 800,
+        "decompositions": 800
+      },
+      "P55": {
+        "candidate_matchings": 120,
+        "count": 60,
+        "decompositions": 60
+      },
+      "fieldfree": {
+        "N33": 900,
+        "N34=N43": 3600,
+        "N35=N53": 900,
+        "constructed_supports_12": 5400
+      },
+      "full_set_equality": true,
+      "n": 5,
+      "prime": 11,
+      "profiles": {
+        "(3, 3)": 900,
+        "(3, 4)": 3600,
+        "(3, 5)": 900,
+        "(4, 3)": 3600,
+        "(4, 4)": 6000,
+        "(4, 5)": 800,
+        "(5, 3)": 900,
+        "(5, 4)": 800,
+        "(5, 5)": 60
+      },
+      "templates": {
+        "33:C4+K2": 900,
+        "34:P5+K2": 3600,
+        "35:2P3(row)+K2": 900,
+        "43:P5+K2": 3600,
+        "44:P4+2K2": 6000,
+        "45:P3(row)+3K2": 800,
+        "53:2P3(col)+K2": 900,
+        "54:P3(col)+3K2": 800,
+        "55:5K2": 60
+      },
+      "total": 17560,
+      "universe": 53130
+    },
+    {
+      "P44": {
+        "M4": 600,
+        "N_all4": 84,
+        "count": 6192,
+        "decompositions": 6192,
+        "formula": 6192
+      },
+      "P45": {
+        "candidate_graphs": 1200,
+        "count": 864,
+        "decompositions": 864
+      },
+      "P54": {
+        "candidate_graphs": 1200,
+        "count": 864,
+        "decompositions": 864
+      },
+      "P55": {
+        "candidate_matchings": 120,
+        "count": 60,
+        "decompositions": 60
+      },
+      "fieldfree": {
+        "N33": 900,
+        "N34=N43": 3600,
+        "N35=N53": 900,
+        "constructed_supports_12": 5400
+      },
+      "full_set_equality": true,
+      "n": 5,
+      "prime": 13,
+      "profiles": {
+        "(3, 3)": 900,
+        "(3, 4)": 3600,
+        "(3, 5)": 900,
+        "(4, 3)": 3600,
+        "(4, 4)": 6192,
+        "(4, 5)": 864,
+        "(5, 3)": 900,
+        "(5, 4)": 864,
+        "(5, 5)": 60
+      },
+      "templates": {
+        "33:C4+K2": 900,
+        "34:P5+K2": 3600,
+        "35:2P3(row)+K2": 900,
+        "43:P5+K2": 3600,
+        "44:P4+2K2": 6192,
+        "45:P3(row)+3K2": 864,
+        "53:2P3(col)+K2": 900,
+        "54:P3(col)+3K2": 864,
+        "55:5K2": 60
+      },
+      "total": 17880,
+      "universe": 53130
+    }
+  ],
+  "runtime": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "dont_write_bytecode": true,
+    "max_rss": 52232192,
+    "nice": 15,
+    "thread_caps": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  }
+}

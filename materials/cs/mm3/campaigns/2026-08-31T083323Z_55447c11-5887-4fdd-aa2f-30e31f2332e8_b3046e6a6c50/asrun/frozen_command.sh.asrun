@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+CAMPAIGN='/Users/jinleic/jinleic-workspace/cs/mm3/campaigns/2026-08-31T083323Z_55447c11-5887-4fdd-aa2f-30e31f2332e8_b3046e6a6c50'
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export VECLIB_MAXIMUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export MM3_CAMPAIGN_RELEASED=1
+export PYTHONDONTWRITEBYTECODE=1
+exec nice -n 10 /Users/jinleic/jinleic-workspace/cs/.venv/bin/python "$CAMPAIGN/asrun/frozen_launcher.py.asrun"

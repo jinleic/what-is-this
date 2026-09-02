@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-09-01T03:15:00Z_OmegaGateCBnBGate_9d2e4a7c/stage1_decompose.py", line 80, in <module>
+    "live_l1": live_l1, "frozen_l1": FROZEN_L1,
+               ^^^^^^^
+NameError: name 'live_l1' is not defined

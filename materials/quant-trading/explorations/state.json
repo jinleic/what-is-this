@@ -1,0 +1,24 @@
+{
+  "schema": "target-state/1",
+  "id": "quant-trading/explorations",
+  "problem": "Falsification-first quant research: closed liquidation, GEX (event-stop trial falsified 2026-09-02), carry, funding, activity, taker-asymmetry, and quarter-hour mechanisms; one certified weekday participation regularity",
+  "status": "active",
+  "current_gate": "Owner-authorized Deribit taker-GEX event-count-stopped trial, campaign 20260902T095715Z_1772ff9e_65cee1db82fa, closed FROZEN-NEGATIVE on 2026-09-02: the parent screen's sample conditions were met at the earliest stop 2026-08-31T13:00Z (15 transitions, BTC 7/ETH 8, 1,040 GEX-computable trades, 5 positive/10 negative blocks) inside a frozen-prefix window [2026-08-31T03:15Z, 2026-09-02T09:30Z), and all four registered gates were false (pooled Spearman +0.154, RV ratio 0.695, BTC +0.286/ETH -0.143, leave-one-out non-positive fraction 0.0). Both focused public-capture screens are now closed negative. The frontier-loop stopping condition is met by weekday-participation-premium, campaign 20260901T124115Z_6a5ffe70_d81efa8ef732, closed FROZEN-CERTIFIED. The frozen primary [2024-01-01, 2024-07-01) passed all six conjunctive gates on 26 paired weeks/52 observations; the single preregistered replication [2024-07-01, 2025-01-01) passed all six on 25 paired weeks/50 observations. Primary/replication pooled median log weekday/weekend ratios were 0.68782/0.63292 for trade count and 0.79725/0.74130 for quote volume; both assets, all six Monday-month groups, and both paired two-week block-bootstrap p gates passed in both windows. The result is descriptive retrospective market structure only. Nine frozen mechanisms are recorded; zero predictive-alpha or deployable candidates and zero live orders.",
+  "latest_campaign": "20260902T095715Z_1772ff9e_65cee1db82fa",
+  "latest_campaign_verdict": "FROZEN-NEGATIVE",
+  "headline": "Ten frozen mechanisms recorded: nine negative or inconclusive-closed, one FROZEN-CERTIFIED descriptive regularity (weekday participation). The Deribit dealer-GEX mechanism is falsified on its registered gates at full registered sample. Zero predictive-alpha, return, causality, deployment, capital-allocation, or absolute-breakthrough claims.",
+  "next_action": "No open trial. Deribit taker-GEX and liquidation overlay are closed negative; the 2026-09-02 owner authorization for a same-mechanism retest is spent and any Deribit options work requires a genuinely different mechanism with its own preregistration, stopping rule, multiplicity boundary, and claim boundary. Preserve weekday-participation-premium without tuning, individual-day/hour selection, asset expansion, pooling, extension, or re-windowing. The user-requested frontier loop stops here because primary plus the one preregistered replication passed every frozen gate. Any attempt to turn the descriptive regularity into a directional, execution, or return hypothesis requires a separate prospective contract, new information not consumed here, its own multiplicity ordinal k=3, realistic costs, and independent review; no automatic deployment or capital allocation. The two public collectors remain append-only and do not upgrade this historical result.",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-02T10:00:12Z",
+  "updated_by": "quant-focused-eventstop: semantic fields rewritten after deribit-gex-eventstop closed FROZEN-NEGATIVE; mechanical fields recomputed by scripts/campaign.py state refresh",
+  "runs_dir_note": "Deliberately unset, so discovery uses the default campaigns/ convention and this target is excluded from campaign.py inventory --all. latest_campaign=null is correct, not a gap: no campaign has ever been minted here. Do NOT set runs_dir to \".\" to make the tool see the 20 flat mechanism directories under explorations/. They carry no manifest.json and no status.json, so inventory would derive UNRECORDED for every one of them and write a generated explorations/README.md that competes with the certified artifact_index in strategy-registry.json, reproducing the exact prepend-over-certified-index incident AGENT_BRIEFING.md records. The override exists for a named run subdirectory, as math/qec uses experiments/. The next frozen mechanism must be minted by campaign.py init, which creates the default campaigns/ tree.",
+  "human_owned_files": [
+    "quant-trading/explorations/focused-deribit-gex/source_verification.md carries no INVENTORY:BEGIN marker, so it is human-owned: never overwrite it and never adopt it with campaign.py inventory --force."
+  ],
+  "sources": [
+    "quant-trading/workspace.json",
+    "quant-trading/explorations/strategy-registry.json",
+    "quant-trading/explorations/focused-campaign.json",
+    "quant-trading/explorations/persistent-funding-premium-freshness-errata.json"
+  ]
+}

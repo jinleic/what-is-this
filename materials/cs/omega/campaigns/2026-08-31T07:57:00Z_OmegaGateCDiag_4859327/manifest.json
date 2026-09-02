@@ -1,0 +1,131 @@
+{
+  "any_y_certificate": {
+    "decision": "FAILURE TO CERTIFY: enclosure straddles zero; neither no-improvement nor an improving witness is established.",
+    "imported_signal": 1.5816497000997742e-07,
+    "imported_signal_label": "CITED-DEPENDENCY",
+    "label": "MACHINE-VERIFIED",
+    "linear_lower": -5.841014555619999e-06,
+    "linear_upper": 5.841014555619999e-06,
+    "width": 1.168202911124e-05,
+    "width_over_signal": 73.85977508485647,
+    "width_over_signal_label": "INFERENCE",
+    "zero_y_control_swing_upper": 1.3787196625196844e-05
+  },
+  "authoritative_V1": {
+    "M_low": 2.0942543887102634,
+    "R_sum": 2.8170035674609757,
+    "all_7_R_branches_float_equal_to_frozen": true,
+    "delta": 4.440892098500626e-16,
+    "label": "MACHINE-VERIFIED",
+    "lemma1_only_all_7_R_branches_R_M_raw_equal_to_frozen_without_lemma1": true,
+    "lemma1_only_zero_raw": 2.3715518061863814,
+    "lemma1_only_zero_shift_real_minus_zeroed": 2.029648699330977e-06,
+    "raw": 2.3715538358350807,
+    "registered_anchor": 2.3715538358350803
+  },
+  "campaign": "2026-08-31T07:57:00Z_OmegaGateCDiag_4859327",
+  "certified_domain": {
+    "D": "delta in R^45, A delta = 0 exactly, |delta_i| <= r for i=0..44",
+    "box_arithmetic": "IC.const(center_i) +/- IC.const(radius), exact Arb",
+    "center": "45 binary64 region-0 glob dist[0] coordinates from frozen K100_2.37155181 MATLAB params; hex vector frozen in final artifact",
+    "fixed_program": "transcribed 3-region single-p_comp program, max_level=3, q=5",
+    "radius_binary64_hex": "0x1.ad7f29abcaf48p-24",
+    "radius_display": 1e-07
+  },
+  "diagnostic_only": {
+    "all_hash_penalties_zero_raw_COMPUTATIONAL_EVIDENCE": 2.3715518061842102,
+    "artifact": "diagnostic_zero_all_hash_penalties.json",
+    "label": "DIAGNOSTIC ONLY \u2014 NOT A CERTIFIED PATH",
+    "real_raw_COMPUTATIONAL_EVIDENCE": 2.371553835835081,
+    "shift_COMPUTATIONAL_EVIDENCE": -2.029650870927213e-06,
+    "toggle_scope": "Overbroad first successful control: all Part and glob hash penalties zeroed; correction ledger retracts its identification with lam_sum-only."
+  },
+  "execution": {
+    "command": "nice -n 10 ./.venv/bin/python omega/src/gate_c_endgame.py omega/scratch/endgame_gatecdiag_final.json",
+    "script_elapsed_seconds_COMPUTATIONAL_EVIDENCE": 227.37331819534302,
+    "thread_pools": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "wall_seconds_COMPUTATIONAL_EVIDENCE": 229.47
+  },
+  "freeze_commits": {
+    "branch_safe_full_box_source_as_run": "e9c6414",
+    "campaign_prestatement_copy_before_final_authoritative_replay": "256e22f",
+    "original_prestatement_before_any_compute": "4859327",
+    "replay_and_LP_repairs": "5b1e327"
+  },
+  "headline": "V1 replay repaired and machine-equal; full-box rigorous sign remains uncertified and OPEN",
+  "midpoint_candidate": {
+    "interpretation": "Numerical candidate direction only; not a rigorous sign.",
+    "label": "COMPUTATIONAL-EVIDENCE",
+    "max_kernel_residual_float": 0.0,
+    "max_scaled_primal_violation": 0.0,
+    "minimum": -1.577332901516852e-07
+  },
+  "next_campaign": {
+    "action": "lift the midpoint LP candidate through the exact integer kernel basis to an exact dyadic feasible delta, scale inward if needed, and directly Arb-certify the moved endpoint against the frozen center",
+    "estimated_cost": "two certified point evaluations plus exact feasibility checks; approximately 2\u20135 CPU-minutes, no full-box sweep",
+    "name": "OmegaGateCCandidateWitness"
+  },
+  "protocol_note": "The original prestatement was committed before every computation at omega/pre_statement.md. Its campaign-directory byte-copy was committed only after the initial DIAGNOSTIC ONLY pass but before the final authoritative replay; this timing deviation is disclosed, not backdated.",
+  "question_status": "OPEN",
+  "record_claim": false,
+  "repairs_and_counterfactuals": {
+    "LP_duals": {
+      "V_transpose_shape": [
+        21,
+        45
+      ],
+      "correct_row_duals": 90,
+      "old_matmul_shape_invalid": true,
+      "old_variable_marginals": 21
+    },
+    "LP_units_COMPUTATIONAL_EVIDENCE": {
+      "correct_effective_radius": 1e-07,
+      "correct_min": -1.577332901516852e-07,
+      "old_effective_radius": 9.999999999999998e-15,
+      "old_min": -1.577332255043032e-14
+    },
+    "basis": {
+      "actual": "exact rational JSON with entries -1/0/1 and A*V=0 exactly",
+      "dense_SVD_equal": false,
+      "dense_SVD_max_abs_A_V_COMPUTATIONAL_EVIDENCE": 4.127839899618667e-15
+    },
+    "box_endpoints_MACHINE_VERIFIED": {
+      "construction": "exact Arb center +/- binary64 radius",
+      "old_lower_inward_coordinate_count": 24,
+      "old_upper_inward_coordinate_count": 25
+    },
+    "branch_semantics": "Every interval-overlapping possible minimizer of each R and M minimum is hulled; endpoint argmin pinning is not consumed.",
+    "endpoint_formula": "Omega=(T-R)/M differentiated directly by interval slope quotient rule",
+    "hard_gate": "No LP before V1 pass"
+  },
+  "scope_exclusions": [
+    "regions 1 and 2 glob dist blocks",
+    "all part/split/lambda/region_prop and other parameter blocks",
+    "multi-block and cross-block directions",
+    "other q or max_level regimes",
+    "points outside D",
+    "subdivision and Monte Carlo",
+    "unpublished omega<2.371177 parameters",
+    "other constructions including asymptotic-rank/centroid-based improvements"
+  ],
+  "stale_provenance": {
+    "executed_failure": "NameError: name 's_const' is not defined at line 191 before first aggregate checkpoint",
+    "executed_failure_label": "COMPUTATIONAL-EVIDENCE",
+    "inferred_R_deficit": 1.8866540631007143,
+    "inferred_stale_R": 0.9303495043602614,
+    "inferred_stale_R_label": "INFERENCE",
+    "prior_manifest_values_label": "REPORTED",
+    "prior_raw": 3.272425321778391,
+    "prior_residual": 0.9008714859433109,
+    "stale_source_sha256": "4504365a7917f80362424a7252203cd770b7c51392061e517f8c10e62fc946fa",
+    "verdict": "The +0.9008715 value has no reproducible producer among the advertised frozen bytes and is not retrofitted to repaired code."
+  },
+  "status": "FAILURE TO CERTIFY",
+  "target": "omega Gate C, 21-dimensional region-0 glob dist[0] nullspace"
+}

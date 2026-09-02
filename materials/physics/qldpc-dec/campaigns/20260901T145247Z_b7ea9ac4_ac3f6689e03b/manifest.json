@@ -1,0 +1,192 @@
+{
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateB-gb7-paired-expansion",
+    "p": 0.001,
+    "basis": "Z",
+    "rounds": 12,
+    "base_seed": 20260829,
+    "sampling_seed": 5192065653244964556,
+    "shots_shared": 100000000,
+    "prefix_shots": 20000000,
+    "prefix_campaign_id": "20260901T040018Z_55e4ac01_f81265905380",
+    "rungs": {
+      "beam8": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "beam32": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "beam64": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 1
+      }
+    },
+    "decision": {
+      "width_effect": "exact two-sided McNemar p<0.05 and b>c",
+      "paired_ratio": "Wilson when c=0; otherwise 100000-draw four-cell bootstrap",
+      "gap": "McNemar width effect and paired CI excludes both 1 and published reciprocal"
+    },
+    "beam_threads": 26,
+    "pre_statement": "GB7"
+  },
+  "config_hash12": "4e33874a5911",
+  "circuit_sha256": "106f45471003ecdf6d843ea3b9da45d2f0a766716569a9fababaacbcdeb356db",
+  "dem_sha256": "0da75b9847b54a4c7079e8fdb8be6a2320fea0ee88caafd5f93153a76089e8e2",
+  "dem_dimensions": {
+    "detectors": 936,
+    "errors": 8784,
+    "observables": 12
+  },
+  "runner_sha256": "4ad272167b6dc6b7e87ba745a304636bb0dc4e5b7c3ce688617d766839d2dfec",
+  "ladder_runner_sha256": "1bc294c81d5fc612664795a0bf50cf9f83038d0e157127b20a548924951fdeea",
+  "beam_source_sha256": "f7da2cacdf01164702feaca32062fe5966602a19d14f19e4394fa0016406d104",
+  "beam_binary_sha256": "a480050b204112655f6c1939227f963420b0fbf060e55911d0189f6f15278b55",
+  "beam_equivalence_evidence": [
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam8_p0.001_n2000.json",
+      "sha256": "68c97758f93fe418b961548c2191131ef3a8fb0154160b144f428b68facf708e",
+      "rung": "beam8",
+      "p": 0.001,
+      "shots": 2000,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam8_p0.003_n300.json",
+      "sha256": "233e79422faa7b7580afc65d31ba2041b00d15fc931872016864d72e9ca0edd1",
+      "rung": "beam8",
+      "p": 0.003,
+      "shots": 300,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam32_p0.001_n2000.json",
+      "sha256": "c21c7bbb0bbf1a62ba3b3f94d67fefae8ce6e4f18ebf68172c5cc2cb73c53a1b",
+      "rung": "beam32",
+      "p": 0.001,
+      "shots": 2000,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=32 initial_iters=40 iters_per_round=30 max_rounds=10 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam32_p0.003_n300.json",
+      "sha256": "0f720641978b6020019a38af4148f45b29939d658ce72eae0578982bf2348a3b",
+      "rung": "beam32",
+      "p": 0.003,
+      "shots": 300,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=32 initial_iters=40 iters_per_round=30 max_rounds=10 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam64_p0.001_n2000.json",
+      "sha256": "cb25c6fbf0a40283b39d4c0b30e86282067f7ae311b3afea95c98cea6b737e9b",
+      "rung": "beam64",
+      "p": 0.001,
+      "shots": 2000,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=64 initial_iters=40 iters_per_round=30 max_rounds=20 num_results=1"
+    },
+    {
+      "path": "src/beam_cpp/evidence/gb5eq_beam64_p0.003_n300.json",
+      "sha256": "595d6f5a92cc0bfa2dc52d74923f29580b6672a2f101c6fa8639b4afac85ac6d",
+      "rung": "beam64",
+      "p": 0.003,
+      "shots": 300,
+      "mismatched_shots": 0,
+      "parameters": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 1
+      },
+      "cpp_config_line": "config: beam_width=64 initial_iters=40 iters_per_round=30 max_rounds=20 num_results=1"
+    }
+  ],
+  "prefix_campaign": {
+    "run_id": "20260901T040018Z_55e4ac01_f81265905380",
+    "terminal_verdict": "FROZEN-INCONCLUSIVE",
+    "sha256s_txt_sha256": "5a7ab1f371c18b72ef2ebb0e248041eeec84180e3156aa2810b3eacc7b5881e7",
+    "verified_files": {
+      "manifest.json": "b1a8be2281343d1f0b8c6de3b8d0222eb34f2b32462045bf34e382cce14f15be",
+      "summary.json": "2b697a285168d6f8f397604e9803b08e8915577c44e1c457c0186f7440faf622",
+      "shots_bposd.bin": "4518cd6ec455b049ee99f8de5cf909ac23c9985e6c2c474d3c0610e45ea2840f",
+      "paired_beam8_predictions.bin": "a59d7684c4f21a94d8f364525feca0887e608d5a96b76d7f92b7f94d67862b32",
+      "paired_beam32_predictions.bin": "29fca2177e32238cc75f74ce6d552fd3e4bda2634171f3a53f49e184ad3c7aed",
+      "paired_beam64_predictions.bin": "95ca66880a48b8393f46af0b22c4b3a30a0fb73d7a86cd2d5adecd897cc0c7cb",
+      "paired_beam8_failmask.bin": "d56120b55cb2775eb267be50029cd953cfd56176424e1e948b1f6fd3f91c2608",
+      "paired_beam32_failmask.bin": "96f13b101cadacf3118456a24e0a13aa6fa4cc500612ac4287d9210c518b1d41",
+      "paired_beam64_failmask.bin": "a67625102edcb712a0d70feb30d4e7cf2838cd232bc1e361ec70ab5dbfe26486"
+    },
+    "paired_failures": {
+      "bp30+osd": 41,
+      "beam8": 40,
+      "beam32": 8,
+      "beam64": 5
+    }
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "stim": "1.16.0",
+    "ldpc": "2.4.1"
+  },
+  "pre_statement": "pre_statement.md Revision GB7",
+  "run_id": "20260901T145247Z_b7ea9ac4_ac3f6689e03b",
+  "target": "physics/qldpc-dec",
+  "gate": "gateB-gb7-paired-expansion",
+  "agent": "jinleic",
+  "prereg_sha256": "754de6894b9854626e3eedd243b79462c53c8a0504d92e1daa27af8b980f974f",
+  "status": "RUNNING",
+  "control_plane_created_utc": "2026-09-01T14:52:47Z",
+  "harness_created_utc": "2026-09-01T14:53:13.530556+00:00"
+}

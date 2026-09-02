@@ -1,0 +1,2 @@
+CKPT GATE_Z {"live_l1": 113.66562530936517, "frozen_l1": 113.66562530936552, "bit_equal_l1": false, "live_wmax": 4.640574461822501, "frozen_wmax": 4.640574461822503, "bit_equal_wmax": false, "max_abs_grad_lo_dev": 1.199040866595169e-14, "max_abs_grad_hi_dev": 1.7763568394002505e-15}
+CKPT verdict {"branch": "GATE_Z_FAIL", "reason": "live recompute != frozen checkpoint"}

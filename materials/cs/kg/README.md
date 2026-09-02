@@ -1036,3 +1036,174 @@ six full bands with strict endpoint signs and the direct `f(E_P,W_P;t)`
 envelope.  Priced at less than 1 CPU-hour for provenance/anchor work and
 2–6 CPU-hours for the six bands if that new anchor passes (INFERENCE from the
 frozen 231-second predecessor partial run).
+
+## Current state — direct D.4 restart partial certification (2026-08-31)
+
+Campaign `campaigns/20260831T082425Z_kg_direct_d4_restart/` replaced the stale
+startup anchor with the direct Lemma D.4 envelope and ran the frozen
+256-bit, 132-root-box adaptive driver. These are interval certificates; only
+the timing from runs that overlapped another campaign process is invalid.
+
+| c-domain | certified tiles | open tiles | current verdict |
+|---|---:|---:|---|
+| `[1.0,1.3]` | 14/14 | 0 | PASS; worst certified lower margin `+9.495739844715277e-7`; timing invalid due overlap |
+| `[1.30,1.45]` | 6/6 | 0 | PASS; worst certified lower margin `+1.95705024245827645e-6` |
+| `[1.45,1.75]` | 10/10 | 0 | PASS; worst certified lower margin `+3.10559377267758493e-6` |
+| `[1.75,3.5]` | 25/36 | 11 | PARTIAL: continuous 24-tile prefix through `2.81476518658164445646615405049`, plus one disjoint terminal tile `[3.49980671715929653996950394581,3.5]` |
+| `[3.5,4.083]` | 0 | 0 | NOT RUN |
+| `[4.083,6.0]` initial baseline | 0/20 | 20 | OPEN at depth/panel limits; timing invalid due overlap; clean cached refinement pending |
+
+The `[1.75,3.5]` run evaluated 57,551 envelopes in 9,640.884 seconds. Its
+smallest certified-leaf lower margin was
+`+2.30038358179570808985477029928e-7`. All 11 unresolved tiles form the
+contiguous interior interval
+`[2.81476518658164445646615405049,3.49980671715929653996950394581]`
+and stopped at depth 14 with 32,768 panels. Their least-negative observed
+upper-envelope lower margin was
+`-1.63743914468701138232158863988e-6`; the most negative was
+`-1.07096659996921571889512310197e-4`. These are failures to prove an upper
+bound, not lower bounds on `J-d`; no refutation or paper-disagreement trigger
+fired.
+
+Machine artifacts:
+
+- `[1.0,1.3]`: `e97bfe0fdca2b126b00139f0b9dd239900018b04c78cd84d341d353812192bdd`
+- `[1.30,1.45]`: `e523bb6d1a2dd7ac4e5b3ccef296003acc08c18eba830c186310371b84e83e1d`
+- `[1.45,1.75]`: `1f60fdd7aa672f5ff0de9d14131c057a3d0cfe6b71884fc209eac39b568a5922`
+- `[1.75,3.5]`: `324a44396ca0ea388e327059028b935dc37e3ca95471a88041a2e30454241347`
+- initial `[4.083,6.0]`: `079209b23c4ca7bb2225afc516196bf1d9f062561bc0f25a9cc243e60d650457`
+
+Next release order is the untouched baseline band `[3.5,4.083]`, then the
+frozen panel-cache refinement of `[4.083,6.0]`, then a targeted refinement of
+the 11-tile interior gap. Until those runs complete, this is a partial
+certification, not a full Gate B close-out.
+
+
+## Current state — Gate B direct-D4 restart, full six-band sweep (agent KgBandClose, 2026-08-31)
+
+Campaign `campaigns/20260831T082425Z_kg_direct_d4_restart/`; pre-statement
+first-file commit `87a43d2b9a9cd30a58b8ecdad74375719d0635aa`.  The stopped
+anchor campaign above remains immutable.  STARTUP CONTROLS ALL PASSED
+(MACHINE-VERIFIED): the center cubic `p=(4/5)psi_0-(3/5)psi_2` itself gives
+the closed-form `J(1.30,p) = 0.37483055...` with `d(1.45)-J = -0.00214885...`,
+so the historical coarse-pair "+0.1930" anchor is mathematically impossible;
+equal-c margin `d(1.30)-J = +0.03223652...` and exact 132-root cover count,
+signed active regions, and strict-margin plants all assert.  Independent
+80-digit mpmath quadrature and an external no-tool audit cross-checked the
+cubic but carry no campaign evidence.
+
+**Band table (all certified margins Arb 256, MACHINE-VERIFIED; run counters
+COMPUTATIONAL-EVIDENCE):**
+
+| band | verdict | worst certified leaf margin | tiles C/O | evals |
+|---|---|---|---|---|
+| `[1.0,1.3]` | PASS | `+9.4957398447e-7` | 14/0 | 13,718 |
+| `[1.30,1.45]` | PASS | `+1.95705024245827645178e-6` | 6/0 | 6,340 |
+| `[1.45,1.75]` | PASS | `+3.10559377267758493230e-6` | 10/0 | 11,650 |
+| `[1.75,3.5]` | PARTIAL (11 OPEN at panel cap) | `+2.30038358179570808985e-7` | 25/11 | 57,551 |
+| `[3.50,4.083]` | FAILURE TO CERTIFY | --- | 0/8 | 3,900 |
+| `[4.083,6.0]` | FAILURE TO CERTIFY | --- | 0/20 | 6,016 |
+
+Totals across bands: 99,175 envelope evaluations, satisfying the predeclared
+`260000` per-band cap.  The three PASS bands were confirmed by title-specific
+ratio-1.02 exact-CDF tiling with c-monotonicity applied per tile, not across
+the full named band.  A PASS band needs no post-message justification; the
+three non-PASS bands have unresolved leaves from the direct Lemma-D.4 panel
+envelope, and no single leaf in this campaign ever produced a certified
+`J>d` interval, so the paper refutation trigger never fired.
+
+**Timing confounds (NOT performance evidence):** band `[1.0,1.3]`
+2583.990 s with a disclosed approximately-4-minute McEliece overlap; band
+`[4.083,6.0]` 1482.250 s with a disclosed 52.9-second RS census overlap and
+Oct Route-F searches; all other runs ran under single-slot ownership
+confirmed before launch.  All runs `nice -n 10`, OMP/OpenBLAS/MKL/vecLib/
+NumExpr threads pinned at 1.  Report and progress files preserve unmodified
+timestamps.
+
+**What was NOT swept (Rule 7):** c in `[0.993405,1.0)`, c above 6, and all
+named non-target domains are outside this campaign's fixed cover.  The three
+non-PASS bands do not show the envelope is unsound; they record the exact
+unresolved rectangles and the panel-envelope floor where the fix should go.
+No paper-side disagreement with Lemma D.2/D.4 arose anywhere in this
+campaign; every certified `J<=d` comparison that the paper also asserts
+agrees.  [RETRACTION of my wording above, recorded per rule 5:] this
+subsection first appeared as 'the seed-unit c in [0.993405,1.0)' with 'The
+three SBT non-PASS bands' and 'A PASS band needs no post-message
+justification' -- all three phrases were wrong or meaningless; 'SBT' was an
+undefined token.  The parenthetical '(plus optional 16-bit refinement...)' in
+the named next campaign below was likewise spurious; the actual refinement
+intended is panel-cap/box-floor deepening, and '16-bit' there is RETRACTED.
+
+**NAMED NEXT CAMPAIGN (`kg_gateband_ring`).**  Close the
+`[3.5,4.083]` plus `[4.083,6.0]` unresolved rectangles by adding a panel-wise
+`K_o`-refined odd radius at the same floor side `1/1024` with 32768 as the
+panel cap (plus optional 16-bit refinement inside a tile where the cap bound
+is tight).  Based on this campaign's floor depths: cost ~2-4 CPU-hours for a
+per-leaf run (COMPUTATIONAL-EVIDENCE projection; not measured here).
+
+## Corrected high-band refinement result and mechanism audit (owner, 2026-08-31)
+
+Campaign
+`campaigns/20260831T111226Z_kg_direct_d4_highband_panelcache/` reran the full
+`[4.083,6]` domain with byte-frozen cached outward Arb panel quantities and a
+box floor refined from `1/1024` to `1/16384`. The exact registered command ran
+alone at niceness 10 with all five thread pools pinned to one.
+
+All 20 ratio-1.02 tiles remained OPEN: 0/20 certified after 14,047 envelope
+evaluations. Every open leaf reached depth 22 and 32,768 panels. The closest
+open upper-envelope lower margin was
+`-1.97261882086860844646460017699e-7`; the most negative was
+`-6.11764205222077346950093761451e-6`. The smallest positive certified-leaf
+margin was `+1.47986526495143912484556916321e-8`, but no whole tile passed.
+This is **FAILURE TO CERTIFY / OPEN**, not a lower bound on `J-d` and not a
+paper refutation. Result SHA-256:
+`7e144344c11127ef3a069ca28053719b50ba1b9d730de616c22981c349f61b3c`;
+the finalized ten-entry campaign checksum replay passes.
+
+The named-next text immediately above also proposes “adding a panel-wise
+`K_o`-refined odd radius.” Source audit shows that lever was already active:
+both the baseline and cached runners compute, on every panel,
+`odd_upper = sqrt(1-dist(0,B)^2) * sqrt(K_o(b))`. It is therefore
+**RETRACTED as a new mechanism**. The cached campaign changed only reuse and
+the box floor; it did not add a missing `K_o` term. An honest successor must
+change the enclosure itself—such as certified adaptive splitting at hinge
+crossings or a stronger coupled even/odd maximization—not rerun a mechanism
+already present. No such successor is claimed or run here.
+
+Process disclosure: the staging agent deleted three agent-generated
+`__pycache__` files without the required confirmation. They were not restored.
+The campaign's additive correction preserves that event and the bounded
+staging probes; neither the cache files nor those probes support this result.
+
+## Midband panel-cache refinement extends the certified prefix (owner, 2026-08-31)
+
+Campaign
+`campaigns/20260831T145732Z_kg_direct_d4_midband_panelcache/` reran the exact
+widened unresolved interior `[2.81476518658164,3.49980671715930]` with the
+same byte-frozen cached outward Arb panel quantities, 256-bit precision,
+32,768-panel cap, and `1/16384` box floor. It was released only after the
+baseline and high-band runs completed.
+
+Six of 12 ratio-1.02 tiles certified and six remained OPEN after 56,451
+envelope evaluations and `1314.9180881977081` recorded seconds. The first five
+adjacent tiles extend the continuous `[1.75,3.5]` certified prefix from
+`2.81476518658164445646615405049` through
+`3.107728208020454953573248`. A sixth terminal tile,
+`[3.49980671715929099891398176911,3.49980671715930]`, overlaps the parent's
+certified terminal tile through `3.5`. The remaining contiguous gap is
+`[3.107728208020454953573248,3.49980671715929653996950394581]`.
+
+The smallest certified lower margin was
+`+3.51851846436958939716186293650e-9`; the closest open upper-envelope lower
+margin was `-4.52960421419799285256261953577e-8`, and the most negative was
+`-6.84818667525655502520446653037e-6`. Result SHA-256:
+`f97604585aba167e583e8d3c8859e25442db5e09c7a482516715af02d540592d`;
+the finalized nine-entry checksum ledger passes.
+
+This is a strict **MACHINE-VERIFIED** extension of the direct-D.4 certified
+subdomain, but the full band remains **PARTIAL / FAILURE TO CERTIFY**. Negative
+open margins remain failures of this upper enclosure at the registered caps,
+not lower bounds on `J-d` and not a paper refutation. Together with the
+high-band mechanism audit, the next honest route must strengthen the
+even/odd enclosure or split certified hinge geometry; deeper reuse of the
+already-present `K_o` radius is not a new mechanism.

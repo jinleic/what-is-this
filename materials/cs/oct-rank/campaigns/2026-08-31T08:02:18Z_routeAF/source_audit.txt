@@ -1,0 +1,59 @@
+ROUTE A SOURCE AUDIT — 2026-08-31
+
+First-hand source actually read:
+J. M. Landsberg, "Geometry and the Complexity of Matrix Multiplication",
+PDF at https://people.tamu.edu/~jml/msurvey0407.pdf, section 6.1,
+Theorem 6.1.1, PDF page 13 (the next page marker is Page 14).
+
+Exact transcription (line breaks normalized; `P` is the survey's printed
+projectivization symbol):
+"Theorem 6.1.1 (Strassen [52]). Let 3 ≤ a ≤ b = c ≤ r. Let
+T ∈ σ_r(Seg(PA × PB × PC)) and α ∈ A* be such that
+T_α := T(α) ∈ B⊗C, considered as a map T_α:C*→B, is of full rank.
+For each α¹,α² ∈ A*, define the linear map T_{α,α_j}:B→B by
+T_{α,α_j}=T_{α_j}T_α^{-1}. Then
+Rank[T_{α,α_1},T_{α,α_2}] ≤ 2(r−b),
+where [S,T]=ST−TS is the commutator of endomorphisms."
+
+A second first-hand source was read:
+Pascal Koiran, "On tensor rank and commuting matrices",
+arXiv:2006.02374v2, PDF page 1, Theorem 1.  It states directly
+rank(T) >= n + (1/2) rank(A2 A1^{-1} A3 - A3 A1^{-1} A2)
+for a complex n x n x 3 tensor with invertible A1, and attributes the result
+to Strassen.  PDF page 9, Lemma 6 gives the elementary block proof of the
+factor 1/2.  Koiran is an accessible secondary restatement, not the 1983
+primary source.
+
+The same survey attributes this theorem to reference [52]:
+V. Strassen, "Rank and optimal computation of generic tensors",
+Linear Algebra and its Applications 52/53 (1983), 645-685,
+DOI 10.1016/0024-3795(83)80041-X.
+Crossref and OpenAlex metadata were read and agree on title, author, venue,
+year, pages, DOI, and the ScienceDirect PII 002437958380041X.
+
+PRIMARY-PROVENANCE STATUS: NOT ESTABLISHED FIRST-HAND.
+The Strassen article itself was not successfully opened.  Reader/download
+attempts at ScienceDirect returned HTTP 403; CORE reader/download attempts
+returned HTTP 500/400.  Therefore this campaign does not claim to have read
+Strassen's original wording, theorem number, field convention, or page.  The
+attribution remains CITED-DEPENDENCY, UNVERIFIED at the primary-source layer.
+
+Blaser status:
+Landsberg section 6.2 says its proof of Blaser's matrix-multiplication lower
+bound uses Theorem 6.1.1; it is not a separate 3-slice theorem.  No primary
+Blaser source was found that supports the proposed r >= b+rank(commutator)
+formula.  The prior phrase "Strassen/Blaser/Lickteig 3-slice twin" is therefore
+withdrawn as unsupported provenance.
+
+Application to this campaign:
+The survey works over the complex numbers.  Any real rank-r decomposition
+complexifies to complex border rank at most r, so its inequality is still a
+valid lower-bound obstruction for real rank.
+For p=3 and b=c=8, a full-rank slice exists whenever u != 0.  The matrices
+T_{alpha,alpha_j}=L_v L_u^{-1} are simultaneously conjugate by L_u to the
+campaign's L_u^{-1}L_v=N(u)^{-1}L_bar(u)L_v, so commutator rank is unchanged.
+The exact universal identity in commutator_proof.out gives rank 8 on every
+independent (u,v,w).  The quoted inequality therefore yields
+8 <= 2(r-8), i.e. r >= 12, not 16.  At the mandatory quaternion control it
+yields 4 <= 2(r-4), i.e. r >= 6, consistent with true rank 7.  The naked
+r >= b+rank(commutator) reading would yield 8 at tau and is refuted.

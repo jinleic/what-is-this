@@ -1,0 +1,16 @@
+run_id=20260902T031527Z_2d19c5c4_718416983678
+gate=H-33ROW-OPEN
+agent=RsPe3dH2
+source_prereg=cs/rs-pe3d/prereg/H_33ROW_OPEN_PREREG_2026-09-02.md
+source_commit=c1ff0216e7e0bdddf6ab89d082db3fcef6e1aa86
+source_sha256=adfccb116b4ebde7ed6847fbbb7afca7424ef444694a566bc224fe9f3f8e2dc8
+run_copy=pre_statement.md
+run_copy_sha256=adfccb116b4ebde7ed6847fbbb7afca7424ef444694a566bc224fe9f3f8e2dc8
+precompute_state=no parameter-dependent computation performed before source commit and run initialization
+prereg_amendments=none
+first_complete_pass=135 assertions passed; preserved as controls_results_preplant_audit.json and checkpoint_preplant_audit.json after plant-coverage audit
+superseded_rerun=stopped after 19.049235 CPU seconds when further plant-coverage omissions were found; partial checkpoint preserved as checkpoint_cancelled_plant_audit.json
+defect_record=defect_log.json
+final_instrument_sha256=d5c5d265e3a3d0bf8869e3accde393c2801c82cf6b42da62ac13c6c098da7828
+final_complete_rerun=143 assertions passed; CPU 618.124829 seconds; wall 706.9142427500337 seconds
+cumulative_all_invocations=CPU 1256.758397 seconds; wall 1434.3297473749844 seconds; within registered caps even when summed

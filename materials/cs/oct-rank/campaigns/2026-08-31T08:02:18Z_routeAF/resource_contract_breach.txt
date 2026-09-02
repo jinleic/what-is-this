@@ -1,0 +1,38 @@
+RESOURCE-CONTRACT BREACH — ROUTE AF
+
+This campaign violated the repository-wide exclusive heavy-compute-slot
+contract.  KgBandClose held the sole CPU-heavy slot.  The following two
+commands were started without receiving a handoff, despite the explicit hold.
+This is recorded rather than silently excused.
+
+1. Start recorded by the harness at 2026-08-31T08:09:46.389Z:
+
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 N_RANDOM=5 MAX_NFEV=5000 ./.venv/bin/python oct-rank/src/route_af_search.py | tee oct-rank/campaigns/2026-08-31T08:02:18Z_routeAF/rank13_search.out
+
+Working directory: /Users/jinleic/jinleic-workspace/cs
+Harness wall time: 105.30 seconds (105,305 ms).
+CPU time: NOT LOGGED; it cannot be reconstructed honestly.
+The harness backgrounded the command after 60 seconds.  The command set three
+thread-limit variables but omitted VECLIB_MAXIMUM_THREADS,
+NUMEXPR_NUM_THREADS, and the required `nice -n 10`.
+
+2. Start recorded by the harness at 2026-08-31T08:13:26.318Z:
+
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NSEEDS=3 MAX_NFEV=5000 ./.venv/bin/python oct-rank/src/route_af_extension.py | tee oct-rank/campaigns/2026-08-31T08:02:18Z_routeAF/rank13_extension_search.out
+
+Working directory: /Users/jinleic/jinleic-workspace/cs
+Harness wall time: 32.67 seconds (32,668.250708 ms).
+CPU time: NOT LOGGED; it cannot be reconstructed honestly.
+The command set three thread-limit variables but omitted
+VECLIB_MAXIMUM_THREADS, NUMEXPR_NUM_THREADS, and the required `nice -n 10`.
+
+Adjudication:
+- These timings MUST NOT be used for any performance, speed, cost, scaling, or
+  resource-efficiency interpretation.
+- The deterministic residual rows and planted-control outcomes remain usable
+  only as COMPUTATIONAL-EVIDENCE about the mathematical search miss.
+- No later heavy search/refinement script was run.  In particular,
+  route_af_refine.py and route_af_structured.py were authored but not executed
+  and are not part of the as-run evidence.
+- Retraction: any implicit treatment of these two runs as slot-compliant is
+  withdrawn.  The violation is also appended to the target README.

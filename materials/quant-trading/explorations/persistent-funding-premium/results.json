@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "campaign": "quant-frontier-persistent-funding-premium-2026-08-31",
+  "created_at_utc": "2026-09-01T02:35:12.676Z",
+  "contract_sha256": "04319eaef33f933c767b20dd896c711b065b7d02861f6861cb0c910227d3ad5e",
+  "classification": "preregistered retrospective falsification test on a fresh sample window; not prospective, not confirmation of any prior result, and not a rescue of any falsified mechanism",
+  "claim_boundary": "This contract does not authorize deployment, account access, live orders, or capital allocation. A pass is a sample-conditional result, not durable-alpha proof. No pooling with prior mechanisms, no threshold tuning, no re-running on previously tested samples, no search over the persistence count (18 and 21 are both frozen), and no additional windows beyond the single preregistered replication.",
+  "windows": {
+    "development": {
+      "start": "2024-07-01T00:00:00.000Z",
+      "end_exclusive": "2025-01-01T00:00:00.000Z"
+    },
+    "holdout": {
+      "start": "2025-01-01T00:00:00.000Z",
+      "end_exclusive": "2025-07-01T00:00:00.000Z"
+    }
+  },
+  "development": {
+    "primary": {
+      "persistence_count": 18,
+      "per_asset": {
+        "BTCUSDT": {
+          "entries": 11,
+          "skipped_no_bar": 67,
+          "skipped_outside_window": 6,
+          "forced_unwinds": 0
+        },
+        "ETHUSDT": {
+          "entries": 13,
+          "skipped_no_bar": 67,
+          "skipped_outside_window": 28,
+          "forced_unwinds": 0
+        }
+      },
+      "gates": {
+        "status": "validation-pass-on-this-sample",
+        "minima_met": true,
+        "pooled_entries": 24,
+        "per_asset_entries": {
+          "BTCUSDT": 11,
+          "ETHUSDT": 13
+        },
+        "pooled_mean": 0.00024376568823155923,
+        "pooled_median": 2.8546669754297006e-05,
+        "worst_entry": -0.0012048139034782415,
+        "mean_gate": true,
+        "median_gate": true,
+        "tail_gate": true,
+        "tail_floor": -0.1
+      }
+    },
+    "robustness_diagnostic": {
+      "persistence_count": 21,
+      "per_asset": {
+        "BTCUSDT": {
+          "entries": 11,
+          "skipped_no_bar": 64,
+          "skipped_outside_window": 6,
+          "forced_unwinds": 0
+        },
+        "ETHUSDT": {
+          "entries": 13,
+          "skipped_no_bar": 64,
+          "skipped_outside_window": 25,
+          "forced_unwinds": 0
+        }
+      },
+      "gates": {
+        "status": "validation-pass-on-this-sample",
+        "minima_met": true,
+        "pooled_entries": 24,
+        "per_asset_entries": {
+          "BTCUSDT": 11,
+          "ETHUSDT": 13
+        },
+        "pooled_mean": 0.00020027247035368857,
+        "pooled_median": 3.410405080836779e-05,
+        "worst_entry": -0.0012048139034782415,
+        "mean_gate": true,
+        "median_gate": true,
+        "tail_gate": true,
+        "tail_floor": -0.1
+      }
+    }
+  },
+  "holdout": {
+    "primary": {
+      "persistence_count": 18,
+      "per_asset": {
+        "BTCUSDT": {
+          "entries": 7,
+          "skipped_no_bar": 70,
+          "skipped_outside_window": 0,
+          "forced_unwinds": 0
+        },
+        "ETHUSDT": {
+          "entries": 8,
+          "skipped_no_bar": 70,
+          "skipped_outside_window": 6,
+          "forced_unwinds": 0
+        }
+      },
+      "gates": {
+        "status": "falsified",
+        "minima_met": true,
+        "pooled_entries": 15,
+        "per_asset_entries": {
+          "BTCUSDT": 7,
+          "ETHUSDT": 8
+        },
+        "pooled_mean": -0.0005534300046712066,
+        "pooled_median": -0.0005076539042636308,
+        "worst_entry": -0.001430958617983516,
+        "mean_gate": false,
+        "median_gate": false,
+        "tail_gate": true,
+        "tail_floor": -0.1
+      }
+    },
+    "robustness_diagnostic": {
+      "persistence_count": 21,
+      "per_asset": {
+        "BTCUSDT": {
+          "entries": 6,
+          "skipped_no_bar": 67,
+          "skipped_outside_window": 0,
+          "forced_unwinds": 0
+        },
+        "ETHUSDT": {
+          "entries": 6,
+          "skipped_no_bar": 67,
+          "skipped_outside_window": 6,
+          "forced_unwinds": 0
+        }
+      },
+      "gates": {
+        "status": "falsified",
+        "minima_met": true,
+        "pooled_entries": 12,
+        "per_asset_entries": {
+          "BTCUSDT": 6,
+          "ETHUSDT": 6
+        },
+        "pooled_mean": -0.00045169455137831875,
+        "pooled_median": -0.0004850843351707988,
+        "worst_entry": -0.0013196186566424178,
+        "mean_gate": false,
+        "median_gate": false,
+        "tail_gate": true,
+        "tail_floor": -0.1
+      }
+    }
+  },
+  "primary_status": "falsified"
+}

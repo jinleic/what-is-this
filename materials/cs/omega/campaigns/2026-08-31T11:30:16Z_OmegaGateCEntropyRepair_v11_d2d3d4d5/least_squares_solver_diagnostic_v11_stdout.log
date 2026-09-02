@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 78, in <module>
+    'max_final_float_residual': max(item['final_max_abs_residual'] for item in solver_paths),
+                                ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: max() iterable argument is empty

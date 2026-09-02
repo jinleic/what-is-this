@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "quarter-hour-algorithmic-burst",
+  "created_at_utc": "2026-09-01T12:05:37Z",
+  "status": "draft-before-outcome-access; independent review required before campaign init",
+  "classification": "retrospective external chronological replication and rule-level falsification on reused local calendars; not fresh, blind, prospective, academically novel, predictive alpha, a return strategy, or a deployment claim",
+  "hypothesis": {
+    "causal_story": "Trading systems synchronize to standardized 15-minute bars. Their scheduled executions should create a recurring burst in trade arrivals and price variation in the opening one-minute bar of non-hour quarter boundaries. Comparing minute 15/30/45 with other five-minute boundaries inside the same UTC hours removes the generic minute and five-minute clock effects while excluding top-of-hour funding, macro-release, and hourly-bar confounds.",
+    "primary_claim": "On Binance BTCUSDT and ETHUSDT USD-M perpetuals after the source paper's disclosed sample, one-minute bars opening at minute 15, 30, or 45 have persistently higher trade count and within-bar absolute log return than bars opening at minute 5, 10, 20, 25, 35, 40, 50, or 55.",
+    "checkable_edge": "In both primary and replication windows, the pooled median quarter/control trade-count ratio is at least 1.10, each asset's median is at least 1.08, the pooled median absolute-return ratio is at least 1.05, both asset-specific absolute-return ratios are positive, and both date-block bootstrap p-values are below cycle alpha 0.025.",
+    "source_context": "Kim and Hansen, The Quarter-Hour Effect, arXiv:2607.09426v2, report 10-second trade/return bursts on six Binance perpetuals over 2021-01-01..2024-10-31. This contract is a deliberately narrower 1-minute replication on 2025-01-01..2025-06-30 and 2026-04-01..2026-07-31; it does not test the paper's predictive regressions or claim independent discovery.",
+    "distinct_from_closed_families": {
+      "liquidation_and_gex": "No forceOrder event, option trade, gamma estimate, or post-event continuation appears.",
+      "carry_funding_basis": "No funding rate, spot-perpetual basis, margin, collateral, convergence, or carry return appears.",
+      "trend_relative_value_macro_positioning": "No directional position, momentum, asset selection, macro state, CFTC report, or benchmark return appears.",
+      "perp_spot_activity_volatility": "That closed rule compared trailing daily spot/perpetual quote-volume levels with next-day volatility. This rule uses only perpetual 1-minute clock phase, compares contemporaneous boundary classes within each date, and reads trade count rather than quote-volume ratios.",
+      "taker_imbalance_semivariance": "That closed rule used signed taker-share divergence and a future downside/upside ratio. This rule reads neither taker volume nor future directional dispersion; clock phase is the sole conditioning variable.",
+      "crypto_microstructure_execution": "That feasibility probe measured spread and five-second adverse selection on isolated 2024 samples. This rule estimates no spread, impact, fill, or execution cost."
+    }
+  },
+  "novelty_and_consumption": {
+    "prior_window_audit": "quarter-hour-prior-window-audit.json",
+    "prior_window_audit_sha256": "9f97259c40f3c87ab58bfe1882b786a32e31baa62ba35f130679c37c97d8eb55",
+    "calendar_disjointness_claim": "No global disjointness: the calendars remain consumed by older registered historical artifacts. The selected windows are, however, disjoint from the two campaign.py primary windows whose reuse state.json.next_action expressly prohibits.",
+    "calendar_reuse": "The audit enumerates all 20 registered directions and four cross-direction artifacts. Primary [2025-01-01, 2025-07-01) ends when the prohibited [2025-07-01, 2026-01-01) span starts; replication [2026-04-01, 2026-08-01) starts when the prohibited [2026-01-01, 2026-04-01) span ends. This contract claims only rule, clock-phase, and data-resolution novelty.",
+    "rule_level_claim": "No registered mechanism conditions on minute-of-hour or compares non-hour quarter boundaries with other five-minute boundaries.",
+    "information_channel": "First registered use of Binance USD-M 1-minute kline number_of_trades and within-bar close/open absolute log return as a clock-phase contrast.",
+    "external_sample_boundary": "The proposed dates follow the source paper's disclosed 2021-01..2024-10 sample, but they are historical and locally dirty. Permitted wording is external post-source-sample replication, never fresh, untouched, blind, prospective, or novel discovery."
+  },
+  "loop_multiplicity": {
+    "policy": "frontier-loop-policy.json",
+    "policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0",
+    "cycle_ordinal_k": 1,
+    "alpha_k": 0.025,
+    "alpha_formula": "0.05 / (k * (k + 1))",
+    "interpretation": "Both endpoints and both assets are conjunctive requirements, not selectable alternatives. Failure of any one closes the window. This ordinal and alpha are spent even on missing data or integrity failure.",
+    "familywise_scope": "The 0.05 budget covers only cycles minted under frontier-loop-policy.json from its 2026-09-01T12:05:37Z effective time. It does not retroactively cover the two earlier 2026-09-01 campaigns."
+  },
+  "assets_and_data": {
+    "assets": ["BTCUSDT", "ETHUSDT"],
+    "source": "quant-trading/data/raw/binance/um-perp-1m/{asset}/{asset}-1m-{month}.zip",
+    "fields": {"open_time": 0, "open": 1, "close": 4, "number_of_trades": 8},
+    "input_inventory": "quarter-hour-inputs.json",
+    "input_inventory_sha256": "f27622d3f7dd70c6114c9e712f6cfbae64edcc14f715fa999a1513d883efff71",
+    "integrity": "All 20 listed immutable zip SHA-256 values matched upstream .CHECKSUM sidecars and every archive passed CRC with exactly one member before this draft. The runner must re-verify the inventory hash, audit hash, loop-policy hash, every archive hash, sidecar-file hash, sidecar-declared archive hash, byte size, member name/count, header form, and CRC before parsing any candidate value. Any integrity failure aborts and writes no result artifact.",
+    "validation": "Deterministically normalize exchange open_time as microseconds divided by 1000 when the raw integer is greater than 100000000000000, otherwise as milliseconds. Require unique timestamps aligned to exact UTC minutes, positive finite open/close, and nonnegative integer number_of_trades. A required bar with zero trades, or any daily q_trades, c_trades, q_absret, or c_absret that is nonpositive, rejects that asset-date and is counted.",
+    "lawfulness": "Keyless Binance Data Vision public archives, internal research only; raw redistribution remains subject to Binance terms recorded in quant-trading/data/manifest.json source_policies.binance."
+  },
+  "frozen_rule": {
+    "clock": "Exchange open_time in UTC. Quarter set Q contains bars whose minute is 15, 30, or 45 in every hour. Matched five-minute control set C contains minute 5, 10, 20, 25, 35, 40, 50, or 55. Minute 0 is excluded from both sets to remove top-of-hour and eight-hour funding-boundary effects; non-five-minute bars are never used.",
+    "daily_observation": "For each asset-date, require all 72 Q bars and all 192 C bars. q_trades and c_trades are arithmetic means of number_of_trades over Q and C. q_absret and c_absret are arithmetic means of abs(log(close/open)) over Q and C. x_count = log(q_trades/c_trades); x_absret = log(q_absret/c_absret). No winsorization, standardization, threshold selection, hour filtering, weighting, alternative return estimator, or subset selection.",
+    "sampling": "One paired observation per asset per complete UTC date. Only dates complete for both BTC and ETH enter any pooled, per-asset, monthly-stability, or bootstrap calculation. Assets remain paired by date in every resample.",
+    "statistics": "Report pooled and per-asset medians of x_count and x_absret. An included calendar month is one contributing at least one complete paired date; calendar-month stability is the fraction of those months whose pooled median is strictly positive. No mean, alternative quantile, regression, or predictive-return statistic can determine status.",
+    "bootstrap": "20,000 circular moving-block resamples of complete UTC dates using Python standard-library random.Random (MT19937), seed 20260901, block length 7 dates, and randrange(n_dates) starts in sorted-date order; whole circular blocks are drawn and truncated to exactly the observed date count. Both assets move together. Each endpoint starts a fresh generator at the same seed; because date count and block length are identical, x_count and x_absret receive exactly identical date resamples. Compute pooled median x_count and x_absret in each resample. For endpoint e, one-sided p_e = (1 + count(median_e_boot <= 0)) / 20001."
+  },
+  "windows": {
+    "primary": {"start_utc_inclusive": "2025-01-01T00:00:00Z", "end_utc_exclusive": "2025-07-01T00:00:00Z", "expected_dates": 181, "expected_pooled_observations": 362},
+    "replication": {"start_utc_inclusive": "2026-04-01T00:00:00Z", "end_utc_exclusive": "2026-08-01T00:00:00Z", "expected_dates": 122, "expected_pooled_observations": 244}
+  },
+  "minimum_sample": {
+    "primary": {"paired_dates": 175, "per_asset": 175, "pooled": 350, "included_calendar_months": 6},
+    "replication": {"paired_dates": 115, "per_asset": 115, "pooled": 230, "included_calendar_months": 4},
+    "complete_case_only": true
+  },
+  "declared_power_limit": "The independent unit is the UTC date, not 72 quarter bars, 192 control bars, or two correlated assets. With at least 175 primary and 115 replication dates (approximately 25 and 16 seven-date dependence blocks), the contract is designed for a persistent 10% trade-count and 5% absolute-return burst; it can miss smaller, intermittent, asset-specific, or sub-minute effects, especially in the shorter replication. One-minute klines cannot identify algorithms, trade-size roundness, opening-ten-second dynamics, or the source paper's predictive regressions. A failure falsifies only this coarse two-asset contrast; a pass establishes a replicated clock-phase regularity consistent with synchronized execution, not causality.",
+  "gates": {
+    "G1_count_magnitude": "pooled median x_count >= log(1.10)",
+    "G2_count_asset_consistency": "BTCUSDT median x_count >= log(1.08) AND ETHUSDT median x_count >= log(1.08)",
+    "G3_absret_magnitude": "pooled median x_absret >= log(1.05)",
+    "G4_absret_asset_consistency": "BTCUSDT median x_absret > 0 AND ETHUSDT median x_absret > 0",
+    "G5_month_stability": "For both x_count and x_absret, at least 75% of included calendar months (a month is included iff it contributes at least one complete paired date) have strictly positive pooled medians",
+    "G6_dependence_robustness": "p_count < 0.025 AND p_absret < 0.025 under the frozen paired date-block bootstrap",
+    "pass_rule": "A window passes only if its minimum sample is met and G1 through G6 are all true. Gates are conjunctive; no endpoint, asset, month, or diagnostic can rescue another.",
+    "fail_rule": "If the minimum sample is met and any gate is false, the mechanism fails on that window.",
+    "inconclusive_rule": "Only missing required bars that reduce the paired sample below minimum yields an inconclusive result artifact. Contract, audit, loop-policy, inventory, checksum, CRC, member-shape, or schema failures abort fail-closed and write no artifact. UNKNOWN never passes."
+  },
+  "stopping_and_replication": {
+    "campaign_mint": "After independent read-only approval, mint exactly one campaign with scripts/campaign.py init and this file's final SHA-256.",
+    "primary_run": "Exactly one outcome-producing primary execution after campaign mint and code freeze.",
+    "on_primary_fail": "Write and publish the negative evidence, close FROZEN-NEGATIVE, never run replication, and never tune, pool, extend, re-window, or change this mechanism.",
+    "on_primary_inconclusive": "Write evidence, close FROZEN-INCONCLUSIVE, spend cycle ordinal 1, and do not reinterpret missingness.",
+    "on_primary_pass": "Commit the write-once primary artifact, then run the already frozen replication window exactly once with identical code, formulas, thresholds, seed, and alpha.",
+    "survival_rule": "The mechanism survives only if both primary and replication meet their sample minima and pass G1 through G6. Then close FROZEN-CERTIFIED. Replication failure closes FROZEN-NEGATIVE; replication sample failure closes FROZEN-INCONCLUSIVE.",
+    "write_once": "The runner refuses an existing output path. Replication is a separate invocation requiring --primary-artifact; it refuses unless that artifact has role primary, the same contract/audit/policy/inventory hashes, and status pass-on-this-sample."
+  },
+  "multiplicity_boundary": {
+    "mechanisms_in_cycle": 1,
+    "clock_contrasts": 1,
+    "endpoints": 2,
+    "assets": 2,
+    "windows": 2,
+    "variants": 0,
+    "parameter_search": "none",
+    "interpretation": "Trade count and absolute return, BTC and ETH, effect magnitudes, monthly stability, and both bootstrap p-values are an intersection-union claim: all must pass. No minute-0 inclusion, alternative controls, other assets, horizons, statistics, transforms, or predictive-return analyses are permitted under this campaign."
+  },
+  "claim_boundary": "A two-window pass supports only a replicated Binance BTC/ETH one-minute clock-phase regularity consistent with scheduled algorithmic execution. Any familywise-error statement is scoped only to cycles minted under frontier-loop-policy.json after its effective time. It does not prove algorithm identity or causality and does not establish directional predictability, executable alpha, net return, cross-venue portability, deployment readiness, capital allocation, or an absolute breakthrough."
+}

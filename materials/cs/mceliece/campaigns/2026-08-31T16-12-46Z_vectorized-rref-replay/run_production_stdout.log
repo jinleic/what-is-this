@@ -1,0 +1,43 @@
+{
+ "status": "CENSUS_FAILED",
+ "summary": {
+  "cells": 24,
+  "P1_U3": {
+   "pass": 24,
+   "fail": 0,
+   "inconclusive": 0
+  },
+  "P1_U4": {
+   "pass": 24,
+   "fail": 0,
+   "inconclusive": 0
+  },
+  "P2": {
+   "pass": 0,
+   "fail": 24,
+   "inconclusive": 0
+  },
+  "P3": {
+   "pass": 0,
+   "fail": 24,
+   "inconclusive": 0
+  },
+  "P4": {
+   "pass": 0,
+   "fail": 24,
+   "inconclusive": 0
+  },
+  "P1_U3_branches": {
+   "pass": 120,
+   "fail": 0,
+   "inconclusive": 0
+  },
+  "P1_U4_branches": {
+   "pass": 120,
+   "fail": 0,
+   "inconclusive": 0
+  },
+  "genericity_pass": false
+ },
+ "manifest_path": "/Users/jinleic/jinleic-workspace/cs/mceliece/campaigns/2026-08-31T16-12-46Z_vectorized-rref-replay/state/manifest.json"
+}

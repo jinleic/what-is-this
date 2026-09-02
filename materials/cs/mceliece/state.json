@@ -1,0 +1,18 @@
+{
+  "schema": "target-state/1",
+  "id": "cs/mceliece",
+  "problem": "Classic McEliece waterfall dispute (derivative-flag collapse at c=2t+3)",
+  "status": "active",
+  "current_gate": "m=12 REACHED at the NIST cell (12,3488,64); alpha MEASURED and delta exact; Apon section-3.6 hole remains BOUNDED, not closed.",
+  "latest_campaign": "20260902T014243Z_340fc591_5101c05ab359",
+  "latest_campaign_verdict": "FROZEN-CERTIFIED",
+  "headline": "alpha measured by the UNMODIFIED m<=11 instrument over all 3488 support points with 3/3 byte-equal anchors; delta chain exact with the degree gate closing at max deg f = D = 3359. A BOUNDED FINITE statement about ONE instance.",
+  "next_action": "Second m=12 row at t=96 under a fresh pre-statement, budgeted from measured rates (build ~2175 s, alpha ~700 s, delta ~15 s). t=48 and t=96 remain UNREACHED.",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-02T07:25:31Z",
+  "updated_by": "owner-main",
+  "sources": [
+    "cs/mceliece/README.md",
+    "cs/RESULTS.md"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "created_utc": "2026-08-31T11:12:33.632027+00:00",
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateA_timing_GA3_amendment",
+    "revision": "pre_statement.md GA3",
+    "source_campaign": "20260831T110541Z_e3e01d3d_774ea68fcaa7",
+    "source_config_hash12": "774ea68fcaa7",
+    "decoder_rerun": false,
+    "timing_samples_reused": 20000
+  },
+  "config_hash12": "641ea5506f3b",
+  "source_campaign_closed_utc": "2026-08-31T11:08:11.145600+00:00",
+  "source_file_sha256": {
+    "manifest.json": "c25d4ca68bd7c1ec09cdb1d6a4213beab4731a18546ddcd0837ff6eae97c1625",
+    "summary.json": "cf03d09fda5473b4792791b805bf8ebf289da4ce2601ddde69ab4b42bbd0c27a",
+    "inventory.json": "ad764cc8af4b43d5d1e3d395ad44a6f1c8f798ed884b37bb204b4a7c0c36b5d7",
+    "results.json.gz": "8c49013f9cae40bb81334f348f5f2ef996732276afc930655bc2a17f019b9f8f"
+  },
+  "source_sha256": {
+    "source_gatea_timing_ga3_amendment.py": "2be1e5fe71b7a9a4431989a78737d97791e25b66e470cc7993c324f30a2e746b",
+    "source_qldpc_dec_run_gate.py": "2b69e49905b41c33bb49ab221953668b0a2bc2bee54d65d05059509c4063b053",
+    "source_qldpc_dec_runner.py": "d57f4a74d8b2d047cf06a93572d4693e075d3c456e012e4c61f9bcb5fbc31906",
+    "pre_statement.md": "cebc6f8b198fb39ed8d45fae42c55517aa6a3a404eec74eeb15ae836112d2751"
+  },
+  "scope": "reference-key verdict repair only; no timing sample rerun"
+}

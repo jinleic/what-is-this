@@ -1,0 +1,37 @@
+{
+  "scope": "BB [[36,4,4]] code-capacity X-memory; not [[144,12,12]] evidence",
+  "basis": "X",
+  "points": {
+    "0.03": {
+      "shots": 2000,
+      "exact_ml_block_failure_rate": 0.0145,
+      "exact_ml_failures": 29,
+      "decoder_block_failure_rates": {
+        "beam8": 0.037,
+        "bp30+osd": 0.0365,
+        "nms-ens24": 0.023
+      },
+      "decoder_exact_ml_mismatch_rates": {
+        "beam8": 0.034,
+        "bp30+osd": 0.032,
+        "nms-ens24": 0.021
+      }
+    },
+    "0.01": {
+      "shots": 2000,
+      "exact_ml_block_failure_rate": 0.0005,
+      "exact_ml_failures": 1,
+      "decoder_block_failure_rates": {
+        "beam8": 0.0045,
+        "bp30+osd": 0.0025,
+        "nms-ens24": 0.001
+      },
+      "decoder_exact_ml_mismatch_rates": {
+        "beam8": 0.005,
+        "bp30+osd": 0.003,
+        "nms-ens24": 0.0015
+      }
+    }
+  },
+  "scope_note": "same-family small-code extension only; no headline Gate-C claim"
+}

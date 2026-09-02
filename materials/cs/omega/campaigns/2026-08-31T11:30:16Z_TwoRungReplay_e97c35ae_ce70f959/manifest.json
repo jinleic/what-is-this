@@ -1,0 +1,84 @@
+{
+  "campaign": "2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959",
+  "input_provenance": {
+    "K100_2.37155181.mat": {
+      "file_sha256": "f15684a43d0193fdd2c1ceba9e1001192f7b2bad36f0ca715636dcecf9e66eba",
+      "params_bytes_sha256": "df75ae3acaa5b1388bd2f17cce266aec169d874c9fea1eb0722c3e25871da93d"
+    },
+    "W1.00_2.371339.mat": {
+      "file_sha256": "783353fda82acb3fb93c247dcad857b2db5f61944f5d0e91ae5f9e5a6c7feec3",
+      "params_bytes_sha256": "f23369136314cc51497d0c468c00d69a02b74d2b665073b9f934240ab428b46f"
+    },
+    "note": "file sha and params bytes sha are distinct concepts; historical docs mislabeled df75ae3a as file sha.  Not inherited."
+  },
+  "intended_interval_core_sha": "ce70f959\u2026",
+  "interval_core_hash": "ce70f95922f3d5098e892e1b7047570ebb5267826b51f2776c91b56d9934adb5",
+  "launcher_perimeter": {
+    "__debug__": true,
+    "five_envs_pinned_1": true,
+    "hardcoded_dependency_hashes_verified_at_launch": true,
+    "nice_at_least_10_asserted": true,
+    "outputs_atomic_write_once": true,
+    "params_bytes_verification": true,
+    "per_rung_cap_seconds": 900,
+    "refuses_pre_existing": true,
+    "stderr_preserved_to_logfiles": true,
+    "stdout_capture_with_json_extraction": true,
+    "three_rung_sequential": true,
+    "main_release_env_required": true,
+    "exact_direct_output_names": true,
+    "preflight_includes_temp_paths": true,
+    "stderr_file_and_directory_fsync": true,
+    "python_bytecode_writes_disabled": true
+  },
+  "parent_campaign_rung1": "2026-08-30T03:20:00Z_c9d4e2a8",
+  "parent_campaign_rung2": "2026-08-30T05:20:00Z_e97c35ae_70c28fc61780",
+  "rule_7": "Two-rung replay only (rung1 2.371339 + rung2 2.37155181) under corrected core; no other scope.",
+  "run_command_on_release_from_cs": "cd cs && set -o noclobber && OMEGA_TWO_RUNG_RELEASED=1 PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 10 ./.venv/bin/python omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/launcher.py omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/rung1_replay.json omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/rung2_with_replay.json omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/rung2_without_replay.json omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/comparison_summary.json > omega/campaigns/2026-08-31T11:30:16Z_TwoRungReplay_e97c35ae_ce70f959/run_v11_replay_stdout.log 2>&1",
+  "rung2_diagnostic_off": "stage_b_rung2.py without is a separate bounded 900s-invocation as a third run; with-Lemma participates in ordering; without recorded only",
+  "acceptance_semantics": "COMPUTATIONAL corrected-core diagnostic only; historical certified field names are source schema, not formal omega bounds",
+  "formal_status": "SUSPENDED",
+  "formal_blockers": [
+    "outward end-to-end aggregate rewrite removing decision-relevant float extraction",
+    "proof that the feasibility-absorption term covers the omitted true defect"
+  ],
+  "owner_launcher_repair": {
+    "launcher_sha256": "988055d274ef983d480abd264a357ae00d574f820f3aacfda7b9c47dfaafbc12",
+    "reason": "The delegated v5 completion report was false on disk: the launcher still used per-line parsing for indented child JSON and omitted the claimed raw-output and atomic-write repairs. Main repaired the executed source directly.",
+    "behavior_check": "PASS: source invoked via runpy; indented trailing JSON parsed, trailing junk rejected, source compiled",
+    "real_child_compute": false
+  },
+  "owner_release_perimeter_refreeze": {
+    "launcher_sha256": "3da22d832bdbd762807c896f1a4b48e33d543215ced1a711f86b801f53fbc236",
+    "reason": "Owner found that the static-v6 launcher lacked a Main release gate, accepted arbitrary nested campaign-local output names, did not preflight temp paths, and resolved internal relative log names against cwd=cs so the authoritative command would refuse before rung1.",
+    "fixes": "Require OMEGA_TWO_RUNG_RELEASED=1; lock ten outputs/logs to exact direct campaign names; resolve internal logs under HERE; use lexists/exclusive temps and target-race refusal; fsync stderr and directory.",
+    "child_or_interval_compute": false,
+    "formal_status_unchanged": "SUSPENDED",
+    "static_checks": {
+      "source_syntax": "PASS",
+      "released_perimeter": "PASS: 9 frozen hashes/params hashes, 10 exact reserved paths",
+      "authoritative_cwd_cs_paths": "PASS: all 4 argv output paths resolve exactly",
+      "child_or_interval_compute": false,
+      "artifacts_created": false
+    }
+  },
+  "released_run": {
+    "children_completed": 3,
+    "comparison_summary_json_written": false,
+    "launcher_exit_code": 1,
+    "launcher_abort": "KeyError: 'omega_cert_upper'",
+    "abort_log_sha256": "af88e102fbc65d3d9ff1910550fa79904503417e965c1f42a983187caeda7330",
+    "rung1_replay_sha256": "62e764f21554bc7355a45ab51bfb59690d3e9f59f2c1fc36383f861c9b9b88b5",
+    "rung2_with_replay_sha256": "c5687a48d6a6e30038452997d1fda0b7e2a9c2259994242dce35d999a0fd6967",
+    "rung2_without_replay_sha256": "3bd20c1bf2009e6a20e9b850bf3a50b00f7f305a386f07163cb17b6b58e079bf"
+  },
+  "post_abort_recovery": {
+    "verifier_sha256": "6a9121f5e73115727fb5a29ca0186e11d495ea9cd2956312cf0301a6922e5957",
+    "result_sha256": "8160e846c4b64a167624dad8460e83bc29c4e69ac16115a7015da208a838adda",
+    "result": "Both available rung-1 values are below rung 2 with Lemma; all three are below 2.371866.",
+    "failed_key_replaced": false,
+    "evidence_label": "COMPUTATIONAL-EVIDENCE",
+    "formal_status": "SUSPENDED"
+  },
+  "status": "THREE CHILDREN COMPLETE; LAUNCHER COMPARISON ABORTED; ADDITIVE DIAGNOSTIC RECOVERY COMPLETE; FORMAL STATUS SUSPENDED"
+}

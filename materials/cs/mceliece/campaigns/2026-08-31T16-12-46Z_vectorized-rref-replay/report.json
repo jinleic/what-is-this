@@ -1,0 +1,74 @@
+{
+  "schema": "mceliece-toy-exhaustive-genericity-report-v1",
+  "status": "COMPLETE / GENERICITY FAILS ON THE REGISTERED TOY POPULATION",
+  "evidence_label": "MACHINE-VERIFIED exact finite-field census; wall time is COMPUTATIONAL-EVIDENCE",
+  "runner_exit_code": 4,
+  "runner_exit_meaning": "Expected mathematical CENSUS_FAILED exit because genericity_pass is false; not an instrument or integrity failure.",
+  "domain": {
+    "field": "GF(32)",
+    "support": [0, 1, 2, 3, 4, 5, 6, 7],
+    "goppa_polynomials": "G_beta=Z+beta",
+    "betas": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    "cells": 24,
+    "parameter_tuple": {
+      "m": 5,
+      "n": 8,
+      "t": 1,
+      "k": 3,
+      "ell": 0,
+      "n_ell": 8,
+      "k_ell": 3,
+      "D_ell": 5,
+      "d": 7,
+      "s": 5,
+      "h": 4
+    }
+  },
+  "controls": {
+    "ALL_OK": true,
+    "artifact_sha256": "0f61a929a41b295490df3ada42d4c4612678467e57281aff1c7dfda4c416007d",
+    "C25_vectorized_rref_equivalence": {
+      "systems": 1004,
+      "full_tuple_equal": true,
+      "nullspace_basis_equal": true,
+      "rank_equal": true,
+      "wrong_table_detected": true
+    },
+    "C26_parent_beta8_semantic_anchor": {
+      "cached_equals_parent": true,
+      "uncached_equals_parent": true,
+      "parent_cell8_sha256": "b7c4d97607f43385f14b4d9b1e1cf43734b809727214176b4f5e1881c075edaa",
+      "parent_controls_sha256": "41652388f5ce7b7c8db82648e06be56bf21c7a0fe0e56e9b4020b1f61ccc8570",
+      "semantic_sha256": "5a4315ee2d5fecc0c8f239988d408e529147293825d38887f4573207223624a0"
+    }
+  },
+  "summary": {
+    "all_cells_complete": true,
+    "P1_U3": {"pass": 24, "fail": 0, "inconclusive": 0, "branch_pass": 120},
+    "P1_U4": {"pass": 24, "fail": 0, "inconclusive": 0, "branch_pass": 120},
+    "P2": {"pass": 0, "fail": 24, "inconclusive": 0, "accepted_per_cell": 33, "expected_per_cell": 5},
+    "P3": {"pass": 0, "fail": 24, "inconclusive": 0, "unmapped_per_cell": 28, "missing_mapped_branches_per_cell": 0},
+    "P4": {"pass": 0, "fail": 24, "inconclusive": 0, "rank_E_per_cell": 36, "nullity_per_cell": 244, "passes_full_per_cell": false, "passes_block_per_cell": false},
+    "genericity_pass": false
+  },
+  "adjudication": "The conjunction of the registered P1-P4 predicates fails in every one of the 24 toy cells: P1_U3 and P1_U4 hold, but P2, P3, and P4 fail. This exhausts the preregistered toy population only.",
+  "scope_limit": "This does not refute Assumption 1, any Classic McEliece Table-1 cell, or the paper's genericity claim. The toy GF(32), n=8, t=1 population is outside those parameters.",
+  "wall_seconds": 1622.9356970787048,
+  "protocol_deviation": {
+    "description": "Frozen C26 removed complete as well as header and t_utc, although the pre-statement permitted removal of only header and t_utc. The frozen control and result are preserved without relabeling.",
+    "impact": "Both parent and successor complete fields are true, and final assembly independently requires complete=true for every successor cell. An additive post-run corrective audit removed only header and t_utc and compared all 14 completed parent-prefix cells, including complete; all 14 were exactly equal. This is post-run validation, not a retroactive pre-production control.",
+    "corrective_audit": {
+      "status": "PASS",
+      "script_sha256": "dac57a33450cccfb0707410493a2020295d872e35df27eae57ee467a2eb8abf1",
+      "result_sha256": "c95f8fb47d2dc61053142f0eca9386fef43a083ca40dff80ac925e649fc0503f",
+      "betas": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+      "all_strict_semantic_equal": true,
+      "all_complete_equal_true": true
+    }
+  },
+  "artifacts": {
+    "state_manifest_sha256": "ac21cdf3d11cb2844138e0bf459f6b53df3b457b78b81ab27285a40173ee0a79",
+    "state_checksum_ledger_sha256": "0d3abbcb7d8795c6034cd20f9fd8125fe338a6a784305e2e3af69b52c3993937",
+    "run_stdout_sha256": "8bb46471d27e85c6c6458050be7df20f341d983dfe1af4b7f7e62dca059c158d"
+  }
+}

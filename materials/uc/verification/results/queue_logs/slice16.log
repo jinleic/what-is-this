@@ -1,0 +1,13 @@
+
+===== lift slice 16 =====
+Traceback (most recent call last):
+  File "/Users/jinleic/jinleic-workspace/math/uc/liu9_qendpoint_lift.py", line 1013, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/jinleic/jinleic-workspace/math/uc/liu9_qendpoint_lift.py", line 997, in main
+    report = run(
+        args.source, args.budget, args.seconds, args.checkpoint,
+        args.slice_index, args.slice_count)
+  File "/Users/jinleic/jinleic-workspace/math/uc/liu9_qendpoint_lift.py", line 861, in run
+    raise ValueError("slice requires 0 <= index < count")
+ValueError: slice requires 0 <= index < count

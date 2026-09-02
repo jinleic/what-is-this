@@ -1,0 +1,105 @@
+{
+  "status": "NOT CLEARED",
+  "findings": [
+    {
+      "priority": 1,
+      "severity": "Critical",
+      "confidence": 100,
+      "title": "Snapshot handling violates the one-shot, fail-before-output contract",
+      "evidence": [
+        "quant-trading/explorations/deribit-gex-eventstop-contract.json:252-257 - The snapshot is a named output, all output paths are declared write-once, and any failure after the snapshot must close CRASHED rather than be rerun.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:233-240 - A matching existing snapshot is accepted and returned, so a later invocation resumes instead of refusing the existing output.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:254-268 - Preflight excludes snapshot_path; load_or_create_snapshot can write it before missing-stream window derivation, structural feasibility, and instrument-provenance validation run.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:75-88 - Missing required streams and inadequate derived coverage are detected only by derive_window_end, after snapshot publication in main.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:125-134 - Structural infeasibility likewise raises only after the snapshot has been written."
+      ],
+      "impact": "A first invocation can publish the snapshot and then fail on an integrity precondition or during outcome computation; a second invocation can resume and produce a result even though the first may already have accessed outcomes. This defeats the registered single-run budget, and missing-stream/infeasible cases leave a trial artifact rather than aborting before output.",
+      "minimal_correction": "Split snapshot preparation from publication. Read and hash all prefixes in memory, derive the timestamp-only window, validate feasibility and instrument provenance, then exclusively publish the snapshot immediately before metric computation. Include snapshot_path in output preflight, remove the existing-snapshot resume branch, and treat any existing snapshot as CRASHED."
+    },
+    {
+      "priority": 2,
+      "severity": "Critical",
+      "confidence": 98,
+      "title": "The same-mechanism retest conflicts with the canonical next gate, and its cited permission is not integrity-bound",
+      "evidence": [
+        "quant-trading/explorations/README.md:5-10 - strategy-registry.json, not a per-strategy file or generated state, owns registered directions, verdicts, and the current conclusion.",
+        "quant-trading/explorations/strategy-registry.json:285-289 - The canonical focused-deribit-gex next_gate requires a separately frozen different mechanism, as well as a stopping rule, multiplicity boundary, and input-continuity plan.",
+        "quant-trading/explorations/deribit-gex-eventstop-contract.json:43-49 - The contract instead cites focused-deribit-gex/strategy.json and says restating the existing mechanism satisfies permission.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:156-163 - Runtime explicitly requires screen_definition to equal the parent screen, confirming this is the same mechanism rather than the canonically required different one.",
+        "quant-trading/explorations/deribit-gex-eventstop-contract.json:43-49 - registered_permission contains source text but no size or SHA-256 binding for strategy.json.",
+        "quant-trading/explorations/deribit-gex-eventstop-contract.json:206-248 - The frozen-rule and baseline hash lists pin the policy and audit but do not include focused-deribit-gex/strategy.json.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:150-154 - The loader verifies only the two lineage hashes plus records listed under frozen_rule_files and baseline_artifact_hashes, so the cited strategy permission is never verified."
+      ],
+      "impact": "The current canonical governance does not authorize another test of the identical GEX mechanism, while the noncanonical permission source could also change or be revoked without aborting the run. Minting now would make the trial's no-revival/permission claim unsupported.",
+      "minimal_correction": "Do not mint this contract. Either redesign the trial around a genuinely different mechanism satisfying the canonical next_gate, or obtain an explicit owner-authorized canonical governance change before freeze. Then add the exact governing authority as a SHA-256 record and verify it at runner load."
+    },
+    {
+      "priority": 3,
+      "severity": "Important",
+      "confidence": 91,
+      "title": "Raw RV-input values can change transition membership and therefore the event stop",
+      "evidence": [
+        "quant-trading/explorations/deribit-gex-eventstop-contract.json:103-122 - The stop is declared to depend on timestamp/count/gap completeness and never on realized-volatility values.",
+        "quant-trading/explorations/accelerated-intraday-contract.json:106 - The pinned parent completeness implementation also makes a block unavailable for nonpositive prices, a value-dependent condition not included in the new contract's allowed counts/gaps list.",
+        "quant-trading/explorations/focused-deribit-gex/fast_intraday.py:337-347 - rv_for_block inspects every price and returns ok=false for None, nonnumeric, nonfinite, or nonpositive values.",
+        "quant-trading/explorations/focused-deribit-gex/fast_intraday.py:383-401 - build_transitions appends a transition only when that value-dependent rv_for_block result has ok=true.",
+        "quant-trading/explorations/focused-deribit-gex/fast_intraday.py:447-465 - find_earliest_stop counts the resulting transition list, so removing a timestamp-complete block due solely to its price value can delay or eliminate the stop."
+      ],
+      "impact": "Two captures with identical timestamps, observation counts, gaps, GEX counts, assets, and GEX signs can select different cohorts/stops solely because an outcome price is invalid or nonpositive. That contradicts the requested counts/gaps-only outcome-blind stopping property, even though ordinary positive RV magnitudes and gate statistics are not read by find_earliest_stop.",
+      "minimal_correction": "Resolve this incompatibility before freeze. To preserve counts/gaps-only stopping, determine transition availability and the stop from timestamps/counts/gaps alone; compute RV only for the fixed cohort, with a preregistered UNKNOWN or whole-trial integrity-abort rule for invalid selected prices rather than silently advancing to a later stop. If value validity is intentionally allowed to select membership, the outcome-blindness claim must say so, but that would not meet the stated acceptance rule."
+    },
+    {
+      "priority": 4,
+      "severity": "Important",
+      "confidence": 97,
+      "title": "There is no atomic, revalidated integrity commit before result publication",
+      "evidence": [
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:147-154 - Runner, lineage, rule, and baseline hashes are verified only near initial contract load.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:257-271 - Frozen prefixes and preconditions are processed before fast_intraday.py is later loaded again from its filesystem path, leaving a check/use interval for parent-module drift.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:292-295 - The final field named baseline_artifacts_unchanged records observed hashes but neither compares them to expected hashes nor aborts on a mismatch; frozen rule files are not rechecked there at all.",
+        "quant-trading/explorations/replicate_accelerated_intraday.py:237-245 - write_json_new performs a non-atomic exists check followed by ordinary write_text, not an exclusive or atomic install.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:298-300 - The result is written first and then shutil.copyfile publishes the owner copy without an exclusive final check or hash verification."
+      ],
+      "impact": "A rule file changed after initial verification can be loaded and used, and a baseline changed during the run can still be labeled unchanged. Concurrent invocation or interruption can overwrite an artifact or leave a partial result/copy, contrary to write-once and fail-closed guarantees.",
+      "minimal_correction": "Create a final commit barrier: reverify the manifest and every pinned contract/rule/baseline immediately before publication (or execute from the already-hashed bytes), serialize complete artifacts to same-directory temporary files, fsync them, and atomically install each destination with no-replace semantics. Publish the owner copy exclusively and verify its hash."
+    },
+    {
+      "priority": 5,
+      "severity": "Important",
+      "confidence": 100,
+      "title": "Tests do not defend the preregistration's critical integrity or multi-day contracts",
+      "evidence": [
+        "quant-trading/explorations/test_run_deribit_gex_eventstop.py:8-14 - The runner tests import only BLOCK_MS, derive_window_end, floor_block, and validate_feasibility; they never exercise contract/hash verification, manifest binding, prefix verification, snapshot lifecycle, output preflight/publication, instrument provenance, or main.",
+        "quant-trading/explorations/test_run_deribit_gex_eventstop.py:97-119 - The outcome-blindness test changes next_rv only by a common positive scale factor; that preserves every rank correlation, sign-cohort median ratio, and leave-one-out correlation, so it would still pass if the stop incorrectly consulted those gate statistics.",
+        "quant-trading/explorations/test_run_deribit_gex_eventstop.py:25-34 - Window fixtures use one synthetic trades path and one synthetic index path; no multi-day sequence, cross-file duplicate, equal receipt-time tie, repeated instrument metadata, or received_ts_ms=end boundary is covered.",
+        "quant-trading/explorations/test_run_deribit_gex_eventstop.py:23-129 - The nine-test file contains only window derivation, arithmetic feasibility, and direct parent-stop tests; none asserts that a failed precondition leaves every trial output absent or that an existing snapshot refuses rerun."
+      ],
+      "impact": "The passing suite can coexist with the critical snapshot retry bug, the value-dependent membership path, hash/manifest drift, nonexclusive writes, and regressions in multi-day replay or metadata eligibility. Its RV test does not defend the stated prohibition on correlation/ratio/gate-dependent stopping.",
+      "minimal_correction": "After correcting the design, add synthetic temporary-directory tests for every hash/manifest/output failure and assert no trial artifact is created; assert an existing snapshot aborts; permute RV assignments so correlations and sign ratios change while counts/signs/completeness remain fixed; and cover multi-day replay, cross-file dedupe/ties, latest-wins instruments, and the received_ts_ms < end boundary."
+    },
+    {
+      "priority": 6,
+      "severity": "Minor",
+      "confidence": 99,
+      "title": "The contract overstates the scope of verbatim restatement and machine checking",
+      "evidence": [
+        "quant-trading/explorations/deribit-gex-eventstop-contract.json:43-49 - how_satisfied claims the mechanism, formulas, RV rules, sample minima, gates, and truth table are all restated verbatim and machine-checked.",
+        "quant-trading/explorations/deribit-gex-eventstop-contract.json:78-100 - screen_definition contains the screen summary, sample minima, gates, and truth table, but not the detailed GEX formula, RV availability semantics, rank/tie rules, ratio edge cases, or leave-one-out rules.",
+        "quant-trading/explorations/accelerated-intraday-contract.json:106-112 - Detailed RV, rank, ratio, per-asset, leave-one-out, and UNKNOWN semantics remain in the parent semantic amendment.",
+        "quant-trading/explorations/accelerated-intraday-contract.json:126-128 - The detailed GEX formula and JSON infinity rule remain in the parent final semantic amendment.",
+        "quant-trading/explorations/run_deribit_gex_eventstop.py:156-163 - The explicit equality check compares only parent.screens[deribit_intraday_taker_gex] with screen_definition."
+      ],
+      "impact": "Execution still receives these rules from hash-pinned parent files, but the preregistration inaccurately presents itself as a self-contained verbatim copy and overstates what the equality check proves.",
+      "minimal_correction": "Reword how_satisfied to state that screen_definition alone is copied and equality-checked, while detailed formulas/completeness/edge cases remain single-sourced in the named hash-pinned parent contract and module. Do not duplicate those clauses unless every duplicated representation is also machine-compared."
+    }
+  ],
+  "cleared_areas": [
+    "Screen thresholds and truth-table execution are unchanged: quant-trading/explorations/deribit-gex-eventstop-contract.json:78-100 matches quant-trading/explorations/accelerated-intraday-contract.json:54-77, the equality is enforced at quant-trading/explorations/run_deribit_gex_eventstop.py:156-163, and quant-trading/explorations/replicate_accelerated_intraday.py:506-522 takes stop/gate configuration from that parent screen.",
+    "Apart from the invalid-price availability exception in finding 3, outcome selection is value-blind: quant-trading/explorations/run_deribit_gex_eventstop.py:57-93 derives the end only from exchange timestamps; quant-trading/explorations/focused-deribit-gex/fast_intraday.py:403-465 derives conditions/stop only from counts, assets, and GEX signs; quant-trading/explorations/replicate_accelerated_intraday.py:506-522 truncates to the stop before evaluating gates.",
+    "Pre-existing contract, runner, parent/rule, baseline, and manifest mismatches are rejected before the snapshot: quant-trading/explorations/run_deribit_gex_eventstop.py:143-179 performs those checks, and quant-trading/explorations/run_deribit_gex_eventstop.py:181-213 verifies exact prefix length/hash and complete-line parsing before snapshot publication. Existing result and owner-copy paths are preflighted at quant-trading/explorations/run_deribit_gex_eventstop.py:252-255; findings 1 and 4 cover the remaining lifecycle/race defects.",
+    "Prior audit findings are otherwise honored before metric code: structural reachability/nonoverlap is enforced at quant-trading/explorations/run_deribit_gex_eventstop.py:102-134; the per-stream common cutoff is derived and checked at quant-trading/explorations/run_deribit_gex_eventstop.py:69-93; liquidation alignment provenance is inapplicable because main calls only BASE.run_deribit at quant-trading/explorations/run_deribit_gex_eventstop.py:270-271; instrument creation and receipt clocks are separated at quant-trading/explorations/run_deribit_gex_eventstop.py:189-211 and emitted at line 268, while metadata eligibility uses received_ts_ms < end at quant-trading/explorations/replicate_accelerated_intraday.py:363-388.",
+    "No concrete multi-day ordering/deduplication defect was found in the implementation: quant-trading/explorations/replicate_accelerated_intraday.py:390-397 combines matching day files in sorted-path order; quant-trading/explorations/focused-deribit-gex/fast_intraday.py:139-159 globally orders by received_ts_ms/sequence/dedup_id and deduplicates; quant-trading/explorations/focused-deribit-gex/fast_intraday.py:162-174 applies deterministic latest-wins metadata; quant-trading/explorations/replicate_accelerated_intraday.py:363-388 excludes metadata received at or after end. Finding 5 records the absence of regression coverage for these boundaries.",
+    "The no-p-value and terminal-verdict claims are consistent in isolation: quant-trading/explorations/frontier-loop-policy.json:13 applies alpha_k only to inferential p-value gates; quant-trading/explorations/deribit-gex-eventstop-contract.json:94-99 contains only deterministic thresholds; quant-trading/explorations/state.json:6-10 records that the requested frontier loop already stopped; and every mapping at quant-trading/explorations/deribit-gex-eventstop-contract.json:58-64 is in the lifecycle vocabulary at docs/knowledge-system/WORKSPACE_CONTROL_PLANE.md:60-63. The canonical same-mechanism authorization conflict remains finding 2."
+  ],
+  "unit_test_result": "9 passed / 0 failed"
+}

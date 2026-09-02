@@ -1,0 +1,61 @@
+{
+  "phase1_verdict": "FAIL",
+  "phase2_ran": false,
+  "frontier_cell": {
+    "a0": [
+      "-638/768",
+      "-637/768"
+    ],
+    "a2": [
+      "429/768",
+      "430/768"
+    ],
+    "a0_display": [
+      "-0.830729166666666666666667",
+      "-0.829427083333333333333333"
+    ],
+    "a2_display": [
+      "+0.558593750000000000000000",
+      "+0.559895833333333333333333"
+    ]
+  },
+  "c_pair": [
+    "4.1485893120",
+    "4.181778026496"
+  ],
+  "crossing_s_star_certified": "45.703407790989350730 +/- 4.17e-19",
+  "mechanism": {
+    "mq_t2_subdivision_recovery_on_cell": "[0 +/- 2.36e-73] (V-U displayed)",
+    "margin_V_cap131072": "-1.76291787028287693244667476546e-5 +/- 4.20e-35",
+    "margin_A_cap131072": "-1.76291787028287693244667476546e-5 +/- 4.20e-35"
+  },
+  "deficit": "-1.76291787028287693244667476546e-5",
+  "decomposition": {
+    "D1_margin_cap131072": "-1.76291787028287693244667476546e-5 +/- 4.20e-35",
+    "D2_fold_second_hinge_recovery": "0",
+    "D3_panel_sup_gain_2p17_to_2p19": "2.20922696204705e-5 +/- 2.83e-20",
+    "D3_margin_cap_2p19": "4.46309091764170239642742026145e-6 +/- 3.26e-36",
+    "D3_panel_sup_gain_2p19_to_2p21": "5.52295164708941e-6 +/- 4.54e-21",
+    "D3_margin_cap_2p21": "9.98604256473110786419709073044e-6 +/- 3.90e-36",
+    "D4_disk_feasible_even_sup_margin": "4.76426506978277455332095285560e-4 +/- 3.89e-34",
+    "D4_even_hinge_recovery": "4.94055685681106e-4 +/- 2.25e-19",
+    "D5_tail": "3.6353172540086755822e-13 +/- 3.81e-33"
+  },
+  "implied_knobs": {
+    "panel_cap_to_close_cell": 524288,
+    "panel_cap_margin_at_2p19": "4.46309091764170239642742026145e-6 +/- 3.26e-36",
+    "depth_needed": "none (frontier leaf depth 14/40, not floor-bound)",
+    "coefficient_space_mechanism": "joint (even, odd) disk-feasibility: measured leverage 28x deficit (D4)"
+  },
+  "artifacts": [
+    "logs/phase1_frontier_cell.json",
+    "logs/phase1_tile3.json",
+    "logs/decomposition_tile3.json",
+    "logs/startup_controls.json"
+  ],
+  "labels": {
+    "all_margins": "MACHINE-VERIFIED (Arb 256 outward)",
+    "crossing_root": "MACHINE-VERIFIED certified bracket",
+    "cpu_seconds": "COMPUTATIONAL-EVIDENCE (time.process_time)"
+  }
+}

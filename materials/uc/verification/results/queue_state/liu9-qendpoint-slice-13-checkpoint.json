@@ -1,28 +1,28 @@
 {
  "current_box": [
   [
-   0.5,
-   0.515625
+   0.515625,
+   0.53125
   ],
   [
-   0.0,
-   0.015625
+   0.015625,
+   0.03125
   ],
   [
-   0.9140625,
-   0.91796875
-  ],
-  [
-   0.375,
-   0.390625
+   0.95703125,
+   0.9609375
   ],
   [
    0.46875,
    0.484375
   ],
   [
-   0.25,
-   0.265625
+   0.40625,
+   0.421875
+  ],
+  [
+   0.3125,
+   0.328125
   ],
   [
    0.296875,
@@ -38,15 +38,15 @@
   ]
  ],
  "current_depth": 42,
- "current_gap_lower": -0.002663607335219051,
- "current_method": "qone-decomposition",
- "elapsed_seconds": 37849.93882279203,
- "endpoint_cleared": 322179,
- "frontier": 3116,
- "gap_cleared": 1434029,
+ "current_gap_lower": -0.0005592852899500494,
+ "current_method": "qendpoint(lambda=-1)",
+ "elapsed_seconds": 39005.48127666698,
+ "endpoint_cleared": 323814,
+ "frontier": 3112,
+ "gap_cleared": 1479748,
  "maximum_depth": 46,
- "mean_infeasible": 985956,
- "processed": 4840000,
- "split": 2420015,
+ "mean_infeasible": 1005239,
+ "processed": 4970000,
+ "split": 2485013,
  "tube_cleared": 0
 }

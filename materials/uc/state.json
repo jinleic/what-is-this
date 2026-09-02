@@ -1,0 +1,25 @@
+{
+ "schema": "target-state/1",
+ "id": "math/uc",
+ "problem": "Union-closed sets conjecture (Frankl 1979)",
+ "status": "active",
+ "current_gate": "Campaign K CERTIFIED (COMPOSITE CERTIFICATE, exit 0, 16/16 traces replayed, 805,542,368 boxes re-proved in Arb) | live gate is Liu H2, now reduced analytically to TWO two-variable inequalities on [0,1]^2 and almost fully proved: R>=0 and A>=0 are PROVED on all of [0,1]^2 (400-bit Arb, exhaustive strata, no unresolved cell); B>=0 is PROVED on 99.9756% of the square plus the whole diagonal and both axes. ALL THAT REMAINS OF H2 is an endpoint layer of width 2^-14, exact area 16383/67108864",
+ "latest_campaign": "cert3_20260822T015019Z_41f2e119129446d3b1a936d66bbe7683_b49a21ec80ba",
+ "latest_campaign_verdict": "FROZEN-CERTIFIED",
+ "headline": "Certified psi+3e-4 at rational t=0.3822660112501052 (Campaign K, 2026-08-31). Liu H2 reduced EXACTLY from 9 variables + q + the mean constraint to two two-variable inequalities: with phi(s)=sqrt(Q2(s,s)), A=P2+phi(x)phi and B=Q2-phi(x)phi satisfy R=A+B and T=<mu,B mu>+<nu,B nu>+2<mu,A nu>+(<mu,phi>-<nu,phi>)^2, while gap=((1-q)^2 I00+q^2 I11)/M+q(1-q)T for EVERY q; hence A>=0 and B>=0 imply H2 for arbitrarily many atoms (rank-one Diananda splitting). R>=0 and A>=0 are PROVED on all of [0,1]^2; B>=0 is PROVED on [2^-14,1-2^-14]^2 plus the diagonal and axes (area 67092481/67108864). x* is ALGEBRAIC of degree 4, the root of x^4-2x^3+3x^2-1=0 (equivalently pi(x,x)=1-x^2, whence h(pi)=h(x^2) and D(x*,x*)=0 exactly), and m=x*h(x*)/h(x*^2). Reduction MACHINE-VERIFIED in Arb at 480 bits and independently re-derived symbolically with exact zero residuals",
+ "next_action": "Close the endpoint boundary layer of Phi(s,t)=h(pi(s,t))^2-h(pi(s,s))h(pi(t,t))>=0 (equivalent to B>=0): the residual set is ([0,a)x[0,1]) u ((1-a,1]x[0,1]) u ([a,1-a]x([0,a) u (1-a,1])) minus {s=0} u {t=0} u {s=t}, a=1/16384, exact area 16383/67108864. It needs an endpoint asymptotic remainder lemma because h' is singular at entropy arguments 0 and 1. Matched asymptotics are derived: (i) both coordinates small -> Phi ~ (2 s t log(s/t))^2, a PERFECT SQUARE from the exact cancellation (X+Y-L)^2-(2X-L)(2Y-L)=(X-Y)^2; (ii) one small, other interior -> Phi/s^2 ~ log(1/s)[t^2(2-t)^2 log(1/s) - 4 h(pi(t,t))], threshold blowing up like 4log2/t^2 as t->0, so it MUST be matched to (i); (iii) near s=1, pi(1,t)=t exactly so Phi(1,t)=h(t)^2, and with alpha=1-s, 1-pi(s,s) ~ 2alpha. The four corners are the hard points. DO NOT retry: entrywise nonnegativity / Psi>=0 on [0,1]^4 (REFUTED, witness Psi(0,1/2,1/2,0) = (1-beta)h(1/4)-h(1/2)/(2m) = -0.0553708106423719494349154), interior-restricted Psi (tight not strict: min is exactly 0 at (x*,x*,x*,x*) for r <= 1-x*), the L_st<=0 shortcut for B (REFUTED, 17,906/249,001 points violate), conditional PSD of K (REFUTED, witness delta_3/8-delta_7/8), spectral truncation (needs ~2e9 terms for a 1e-3 tail and inf T=0 anyway), the activation lemma, the active-face q* elimination, the Delta=0 case split, box covers of [0,1]^7, 3x3 copositivity, 6-dimensional branch-and-bound",
+ "owner": "jinleic",
+ "updated_utc": "2026-09-01T00:00:00Z",
+ "updated_by": "h2-reduced-to-boundary-layer",
+ "sources": [
+  "math/RESULTS.md",
+  "math/PROGRESS.md",
+  "math/uc/campaigns/README.md",
+  "math/uc/verification/results/liu9-h2-reduction.json",
+  "math/uc/verification/results/liu9-psi-reduction.json",
+  "math/uc/verification/results/liu9-h2-twovar.json",
+  "math/uc/verification/results/liu9-h2-phi.json",
+  "math/uc/verification/results/liu9-psi-hunt.json",
+  "math/uc/H2_CHANNEL_THEORY.md"
+ ]
+}

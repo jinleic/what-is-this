@@ -1,0 +1,834 @@
+{
+  "corrected_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-feasibility-corrected-contract.json",
+    "sha256": "13bbd65f2910992110812a42baaa4c838fe6b1f22f3e648076fa40ab09f25273",
+    "created_at_utc": "2026-08-31T08:48:28.506818Z",
+    "classification": "outcome-blind retrospective feasibility-corrected chronological test; not prospective, not confirmation, and not a rescue test"
+  },
+  "parent_contract": {
+    "path": "quant-trading/explorations/accelerated-intraday-contract.json",
+    "size_bytes": 15346,
+    "mtime_ns": 1788110162978346030,
+    "mtime_utc": "2026-08-30T17:16:02.978Z",
+    "sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1"
+  },
+  "source_snapshot": {
+    "path": "quant-trading/data/derived/accelerated-intraday-replication-20260831/snapshot.json",
+    "size_bytes": 7478,
+    "mtime_ns": 1788163322200696691,
+    "mtime_utc": "2026-08-31T08:02:02.200Z",
+    "sha256": "eb0cf681d5e2ee5dec83a03f33f1814555e471e2f28312dd3c57404b7d3275f0",
+    "file_count": 8,
+    "created_at_utc": "2026-08-31T08:02:02.199Z",
+    "use": "Read and hash exactly the already-frozen byte prefixes; no live-tail bytes may enter this test."
+  },
+  "review_audit": {
+    "path": "quant-trading/explorations/accelerated-intraday-replication-review-audit.json",
+    "size_bytes": 8252,
+    "mtime_ns": 1788164888820662144,
+    "mtime_utc": "2026-08-31T08:28:08.820Z",
+    "sha256": "31a9d4e1fbe44bc2e69f6b11e96df80c7d6bc24fc903eeb45844058864989df8"
+  },
+  "replication_runner": {
+    "path": "quant-trading/explorations/replicate_accelerated_intraday_corrected.py",
+    "size_bytes": 22007,
+    "mtime_ns": 1788166036522428222,
+    "mtime_utc": "2026-08-31T08:47:16.522Z",
+    "sha256": "939d15a9fb4fc6601403512d7aae574f650dafa7fd2e2dc0c4f1e445dcde6768"
+  },
+  "protocol_correction": {
+    "trigger": "Independent post-outcome review proved the prior 90-minute window could supply at most five complete liquidation onset blocks and ten two-asset Deribit transitions versus registered minima of six and twelve.",
+    "superseded_trial_disposition": "Preserved as structurally-underpowered inconclusive. Its numeric gates remain descriptive only and it does not count as a falsification opportunity.",
+    "single_changed_dimension": "Observation duration increases from 90 to 105 minutes solely because seven aligned 15-minute blocks are the mathematical minimum that leaves six signal/onset blocks with complete next-15-minute outcomes.",
+    "nonoverlap": "The corrected window starts exactly at the prior window exclusive end and shares no market-data membership with it.",
+    "unchanged": "Parent formulas, assets, sides, costs, horizons, event/session rules, alignments, sample minima, gates, rankings, zero rules, UNKNOWN rules, and claim boundaries remain unchanged.",
+    "multiplicity": "Exactly one corrected outcome run. Do not pool with, extend from, or threshold-tune after either replication outcome."
+  },
+  "claim_boundary": "This protocol correction can provide one valid later falsification opportunity. It cannot overturn the 2026-08-30 liquidation falsification, promote Deribit to durable alpha, pool with the structurally invalid 90-minute replication, authorize deployment, or support capital allocation.",
+  "integrity_preconditions": {
+    "window_feasibility": {
+      "block_ms": 900000,
+      "window_duration_ms": 6300000,
+      "window_minutes": 105,
+      "window_blocks": 7,
+      "max_complete_liquidation_onset_blocks": 6,
+      "required_complete_liquidation_onset_blocks": 6,
+      "max_complete_deribit_asset_block_transitions": 12,
+      "required_complete_deribit_asset_block_transitions": 12,
+      "not_before_ms": 1788139800000,
+      "not_before_utc": "2026-08-31T01:30:00.000Z",
+      "nonoverlap_with_prior_window": true,
+      "all_registered_stops_reachable": true
+    },
+    "common_cutoff": {
+      "required_end_ms": 1788146100000,
+      "required_end_utc": "2026-08-31T03:15:00.000Z",
+      "common_cutoff_ms": 1788163296416,
+      "common_cutoff_utc": "2026-08-31T08:01:36.416Z",
+      "all_required_streams_cover_end": true,
+      "streams": {
+        "liquidation_force_order": {
+          "observations": 37883,
+          "latest_ms": 1788163296416,
+          "latest_utc": "2026-08-31T08:01:36.416Z",
+          "first_at_or_after_end_ms": 1788146105853,
+          "first_at_or_after_end_utc": "2026-08-31T03:15:05.853Z",
+          "covers_end": true
+        },
+        "deribit_option_trade": {
+          "observations": 8182,
+          "latest_ms": 1788163320814,
+          "latest_utc": "2026-08-31T08:02:00.814Z",
+          "first_at_or_after_end_ms": 1788146137785,
+          "first_at_or_after_end_utc": "2026-08-31T03:15:37.785Z",
+          "covers_end": true
+        },
+        "btc_usd_index": {
+          "observations": 55569,
+          "latest_ms": 1788163321552,
+          "latest_utc": "2026-08-31T08:02:01.552Z",
+          "first_at_or_after_end_ms": 1788146100837,
+          "first_at_or_after_end_utc": "2026-08-31T03:15:00.837Z",
+          "covers_end": true
+        },
+        "eth_usd_index": {
+          "observations": 52493,
+          "latest_ms": 1788163321145,
+          "latest_utc": "2026-08-31T08:02:01.145Z",
+          "first_at_or_after_end_ms": 1788146100289,
+          "first_at_or_after_end_utc": "2026-08-31T03:15:00.289Z",
+          "covers_end": true
+        }
+      }
+    },
+    "instrument_clock_provenance": [
+      {
+        "path": "quant-trading/data/raw/focused/live/deribit/day20260830/instruments.jsonl",
+        "prefix_bytes": 90671288,
+        "sha256": "4005d155b58a7d712e661334e5863492252a075213553047929d29021e0708ca",
+        "exchange_clock": {
+          "field": "instrument.creation_timestamp",
+          "first_ms": 1758787212000,
+          "first_utc": "2025-09-25T08:00:12.000Z",
+          "latest_ms": 1788091620000,
+          "latest_utc": "2026-08-30T12:07:00.000Z"
+        },
+        "capture_availability_clock": {
+          "field": "received_ts_ms",
+          "first_ms": 1788090430613,
+          "first_utc": "2026-08-30T11:47:10.613Z",
+          "latest_ms": 1788094779681,
+          "latest_utc": "2026-08-30T12:59:39.681Z"
+        },
+        "metadata_cutoff_policy": "Exchange creation time is provenance. received_ts_ms is capture availability and determines no-lookahead metadata eligibility."
+      },
+      {
+        "path": "quant-trading/data/raw/focused/live/deribit/day20260831/instruments.jsonl",
+        "prefix_bytes": 1955530,
+        "sha256": "c0d3fc8a68f712e80fae4953fddb53426c544b7b487796b4658cc6cefbd20be7",
+        "exchange_clock": {
+          "field": "instrument.creation_timestamp",
+          "first_ms": 1758787212000,
+          "first_utc": "2025-09-25T08:00:12.000Z",
+          "latest_ms": 1788147000000,
+          "latest_utc": "2026-08-31T03:30:00.000Z"
+        },
+        "capture_availability_clock": {
+          "field": "received_ts_ms",
+          "first_ms": 1788134401262,
+          "first_utc": "2026-08-31T00:00:01.262Z",
+          "latest_ms": 1788162222007,
+          "latest_utc": "2026-08-31T07:43:42.007Z"
+        },
+        "metadata_cutoff_policy": "Exchange creation time is provenance. received_ts_ms is capture availability and determines no-lookahead metadata eligibility."
+      }
+    ]
+  },
+  "baseline_artifacts_unchanged": {
+    "parent_contract": {
+      "expected_sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+      "observed_sha256": "600c0952ebbba20090768f62884214bd988b39ce1c8e730d8de63dc4bf4c1ef1",
+      "unchanged": true
+    },
+    "parent_liquidation_result": {
+      "expected_sha256": "9f5bb6d68a5f9e2725ce265e35e3bef6ff03929733fd571b297f2eff347a8e11",
+      "observed_sha256": "9f5bb6d68a5f9e2725ce265e35e3bef6ff03929733fd571b297f2eff347a8e11",
+      "unchanged": true
+    },
+    "parent_deribit_result": {
+      "expected_sha256": "b11e0659b110cf4c2398266412ed6cf884857eaf265b5ec2acc93c86750a4c98",
+      "observed_sha256": "b11e0659b110cf4c2398266412ed6cf884857eaf265b5ec2acc93c86750a4c98",
+      "unchanged": true
+    },
+    "blinding_audit": {
+      "expected_sha256": "ace2d3b226b377ee99e8bc3828c64f957e5bed8d78149beb7ba72ab0abd25288",
+      "observed_sha256": "ace2d3b226b377ee99e8bc3828c64f957e5bed8d78149beb7ba72ab0abd25288",
+      "unchanged": true
+    },
+    "superseded_replication_contract": {
+      "expected_sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42",
+      "observed_sha256": "cbbfcd06e137eae2d67a83e7ddbc6d58c401bb7ef69cac1a6c4791e25286ba42",
+      "unchanged": true
+    },
+    "superseded_combined_result": {
+      "expected_sha256": "02da7cc9f66d23ea0de1e78de608dc5c11d637ee0bffd1ca627b3742c451630b",
+      "observed_sha256": "02da7cc9f66d23ea0de1e78de608dc5c11d637ee0bffd1ca627b3742c451630b",
+      "unchanged": true
+    },
+    "superseded_liquidation_result": {
+      "expected_sha256": "ed0002eb0ad7e3241c7be94d7af3bf29faf1491ad72f4227d95ed0bbc2d2f120",
+      "observed_sha256": "ed0002eb0ad7e3241c7be94d7af3bf29faf1491ad72f4227d95ed0bbc2d2f120",
+      "unchanged": true
+    },
+    "superseded_deribit_result": {
+      "expected_sha256": "036af8c84ad001abcb502871be537968daca6ac4fc5b77a8d5c6451121ea2677",
+      "observed_sha256": "036af8c84ad001abcb502871be537968daca6ac4fc5b77a8d5c6451121ea2677",
+      "unchanged": true
+    },
+    "review_audit": {
+      "expected_sha256": "31a9d4e1fbe44bc2e69f6b11e96df80c7d6bc24fc903eeb45844058864989df8",
+      "observed_sha256": "31a9d4e1fbe44bc2e69f6b11e96df80c7d6bc24fc903eeb45844058864989df8",
+      "unchanged": true
+    }
+  },
+  "schema_version": 1,
+  "screen": "liquidation_btc_eth_post_onset",
+  "classification": "outcome-blind retrospective feasibility-corrected chronological test; not prospective, not confirmation, and not a rescue test",
+  "window": {
+    "start_utc_inclusive": "2026-08-31T01:30:00.000Z",
+    "end_utc_exclusive": "2026-08-31T03:15:00.000Z",
+    "event_rows_before_window_filter": 54239,
+    "event_context_rows_before_end": 46651,
+    "eligible_onsets_all_context": 85,
+    "eligible_onsets_in_window": 13,
+    "index_rows_in_anchor_or_window": 8047,
+    "index_exclusions": {
+      "before_anchor_context": 77858,
+      "at_or_after_end": 22157,
+      "missing_timestamp": 0
+    }
+  },
+  "parent_rules": {
+    "sample_stop": {
+      "minimum_complete_onsets_at_15m": 20,
+      "minimum_per_asset": 5,
+      "minimum_per_side": 5,
+      "minimum_nonempty_15m_onset_blocks": 6
+    },
+    "gates": {
+      "median_net_signed_return_5m_gt_zero": true,
+      "median_net_signed_return_15m_gt_zero": true,
+      "hit_rate_net_positive_5m_gte": 0.6,
+      "hit_rate_net_positive_15m_gte": 0.6,
+      "both_assets_median_net_15m_gt_zero": true,
+      "positive_block_median_fraction_15m_gte": 0.6
+    },
+    "truth_table": "fast-screen-pass iff every sample condition and gate is observed true; falsified if sample conditions pass and any gate is false; inconclusive if a sample condition is unmet or required alignment is unavailable."
+  },
+  "sample_stop": {
+    "found": false,
+    "stop_ms": null,
+    "stop_utc": null,
+    "candidate_attempts": [
+      {
+        "candidate_ms": 1788140841924,
+        "cohort_size": 1,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788140955020,
+        "cohort_size": 2,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788141898777,
+        "cohort_size": 3,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788145342733,
+        "cohort_size": 4,
+        "all_met": false
+      },
+      {
+        "candidate_ms": 1788145364408,
+        "cohort_size": 5,
+        "all_met": false
+      }
+    ]
+  },
+  "sample_conditions": {
+    "all_met": false,
+    "conditions": [
+      {
+        "name": "minimum_complete_onsets_at_15m",
+        "required": 20,
+        "observed": 5,
+        "met": false
+      },
+      {
+        "name": "minimum_per_asset",
+        "required": 5,
+        "observed": {
+          "BTCUSDT": 2,
+          "ETHUSDT": 3
+        },
+        "met": false
+      },
+      {
+        "name": "minimum_per_side",
+        "required": 5,
+        "observed": {
+          "BUY": 0,
+          "SELL": 5
+        },
+        "met": false
+      },
+      {
+        "name": "minimum_nonempty_15m_onset_blocks",
+        "required": 6,
+        "observed": 3,
+        "met": false
+      }
+    ],
+    "by_symbol": {
+      "BTCUSDT": 2,
+      "ETHUSDT": 3
+    },
+    "by_side": {
+      "BUY": 0,
+      "SELL": 5
+    },
+    "nonempty_15m_blocks": 3
+  },
+  "alignment_provenance": {
+    "eligible_onsets": 13,
+    "complete_onsets": 5,
+    "incomplete_onsets_count": 8,
+    "incomplete_alignment_counts": {
+      "initial": 5,
+      "horizon_1m": 5,
+      "horizon_5m": 3,
+      "horizon_15m": 5
+    },
+    "incomplete_onsets": [
+      {
+        "event_id": "a3bcedac8ff63933095fcfa9150034ff",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788142793350,
+        "onset_utc": "2026-08-31T02:19:53.350Z",
+        "alignments": {
+          "P_0": {
+            "observed": null,
+            "missing": "no_index_observation_within_5000ms_before"
+          },
+          "P_1m": {
+            "target_ms": 1788142853350,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          },
+          "P_5m": {
+            "target_ms": 1788143093350,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          },
+          "P_15m": {
+            "target_ms": 1788143693350,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          }
+        }
+      },
+      {
+        "event_id": "e38282283c1c5a6f69e7c3a5f220190d",
+        "symbol": "BTCUSDT",
+        "side": "BUY",
+        "onset_ms": 1788142835522,
+        "onset_utc": "2026-08-31T02:20:35.522Z",
+        "alignments": {
+          "P_0": {
+            "observed": null,
+            "missing": "no_index_observation_within_5000ms_before"
+          },
+          "P_1m": {
+            "target_ms": 1788142895522,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          },
+          "P_5m": {
+            "target_ms": 1788143135522,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          },
+          "P_15m": {
+            "target_ms": 1788143735522,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          }
+        }
+      },
+      {
+        "event_id": "a62fdf86bff770d9cbc86eaef6570848",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788143206289,
+        "onset_utc": "2026-08-31T02:26:46.289Z",
+        "alignments": {
+          "P_0": {
+            "observed": null,
+            "missing": "no_index_observation_within_5000ms_before"
+          },
+          "P_1m": {
+            "target_ms": 1788143266289,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          },
+          "P_5m": {
+            "target_ms": 1788143506289,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          },
+          "P_15m": {
+            "target_ms": 1788144106289,
+            "observed_ts_ms": 1788144106846,
+            "price": 77713.18
+          }
+        }
+      },
+      {
+        "event_id": "2cf45a7b2465ccb1fd00bb6751120d7e",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788143765188,
+        "onset_utc": "2026-08-31T02:36:05.188Z",
+        "alignments": {
+          "P_0": {
+            "observed": null,
+            "missing": "no_index_observation_within_5000ms_before"
+          },
+          "P_1m": {
+            "target_ms": 1788143825188,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          },
+          "P_5m": {
+            "target_ms": 1788144065188,
+            "observed_ts_ms": 1788144065543,
+            "price": 77740.21
+          },
+          "P_15m": {
+            "target_ms": 1788144665188,
+            "observed_ts_ms": 1788144666117,
+            "price": 77503.91
+          }
+        }
+      },
+      {
+        "event_id": "7de32f298d0cdf07f55d187f35677951",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788143765188,
+        "onset_utc": "2026-08-31T02:36:05.188Z",
+        "alignments": {
+          "P_0": {
+            "observed": null,
+            "missing": "no_index_observation_within_5000ms_before"
+          },
+          "P_1m": {
+            "target_ms": 1788143825188,
+            "observed": null,
+            "missing": "no_index_observation_in_5s_window"
+          },
+          "P_5m": {
+            "target_ms": 1788144065188,
+            "observed_ts_ms": 1788144066175,
+            "price": 2413.92
+          },
+          "P_15m": {
+            "target_ms": 1788144665188,
+            "observed_ts_ms": 1788144665644,
+            "price": 2404.25
+          }
+        }
+      },
+      {
+        "event_id": "58838047358db62f90d430445729d84c",
+        "symbol": "BTCUSDT",
+        "side": "BUY",
+        "onset_ms": 1788145393670,
+        "onset_utc": "2026-08-31T03:03:13.670Z",
+        "alignments": {
+          "P_0": {
+            "observed_ts_ms": 1788145393635,
+            "price": 77559.61
+          },
+          "P_1m": {
+            "target_ms": 1788145453670,
+            "observed_ts_ms": 1788145456086,
+            "price": 77585.08
+          },
+          "P_5m": {
+            "target_ms": 1788145693670,
+            "observed_ts_ms": 1788145693823,
+            "price": 77524.39
+          },
+          "P_15m": {
+            "target_ms": 1788146293670,
+            "observed": null,
+            "missing": "beyond_common_cutoff"
+          }
+        }
+      },
+      {
+        "event_id": "eec2bf790167f68fe3fca4acae31183b",
+        "symbol": "ETHUSDT",
+        "side": "BUY",
+        "onset_ms": 1788145770216,
+        "onset_utc": "2026-08-31T03:09:30.216Z",
+        "alignments": {
+          "P_0": {
+            "observed_ts_ms": 1788145769854,
+            "price": 2412.45
+          },
+          "P_1m": {
+            "target_ms": 1788145830216,
+            "observed_ts_ms": 1788145830316,
+            "price": 2414.12
+          },
+          "P_5m": {
+            "target_ms": 1788146070216,
+            "observed_ts_ms": 1788146071074,
+            "price": 2416.06
+          },
+          "P_15m": {
+            "target_ms": 1788146670216,
+            "observed": null,
+            "missing": "beyond_common_cutoff"
+          }
+        }
+      },
+      {
+        "event_id": "7213151f386df7c78b5bea9103857852",
+        "symbol": "BTCUSDT",
+        "side": "BUY",
+        "onset_ms": 1788145774481,
+        "onset_utc": "2026-08-31T03:09:34.481Z",
+        "alignments": {
+          "P_0": {
+            "observed_ts_ms": 1788145774426,
+            "price": 77578.9
+          },
+          "P_1m": {
+            "target_ms": 1788145834481,
+            "observed_ts_ms": 1788145834869,
+            "price": 77581.81
+          },
+          "P_5m": {
+            "target_ms": 1788146074481,
+            "observed_ts_ms": 1788146074648,
+            "price": 77651.99
+          },
+          "P_15m": {
+            "target_ms": 1788146674481,
+            "observed": null,
+            "missing": "beyond_common_cutoff"
+          }
+        }
+      }
+    ]
+  },
+  "cohort": {
+    "size": 5,
+    "event_ids": [
+      "bc0605f25391ebee764e557b9c4a33a1",
+      "cdffbc9b07aa9af57fe453495da30b1c",
+      "0660cfed96c3012216de894383f0b8e9",
+      "ac9d3321f5e0aa518c6bf3378fe62518",
+      "198ea514bc45850c0cdc4de1331b7ead"
+    ],
+    "detail": [
+      {
+        "event_id": "bc0605f25391ebee764e557b9c4a33a1",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788139941096,
+        "segment_connect_ms": 1788097558772,
+        "eligibility": "gap_since_prior_same_symbol",
+        "prior_same_symbol_E_ms": 1788139425464,
+        "descriptive_only_horizons": [
+          "1m"
+        ],
+        "P_1m": {
+          "target_ms": 1788140001096,
+          "observed_ts_ms": 1788140001276,
+          "price": 2419.84,
+          "signed_return": -0.0015603852537384721,
+          "net_return": -0.0017603852537384722
+        },
+        "P_5m": {
+          "target_ms": 1788140241096,
+          "observed_ts_ms": 1788140241164,
+          "price": 2419.94,
+          "signed_return": -0.001601774783015264,
+          "net_return": -0.001801774783015264
+        },
+        "P_15m": {
+          "target_ms": 1788140841096,
+          "observed_ts_ms": 1788140841924,
+          "price": 2418.06,
+          "signed_return": -0.0008236516326098897,
+          "net_return": -0.0010236516326098898
+        },
+        "P_0": {
+          "observed_ts_ms": 1788139940792,
+          "price": 2416.07
+        },
+        "cohort_complete": true,
+        "availability_ms": 1788140841924
+      },
+      {
+        "event_id": "cdffbc9b07aa9af57fe453495da30b1c",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788140054545,
+        "segment_connect_ms": 1788097558772,
+        "eligibility": "gap_since_prior_same_symbol",
+        "prior_same_symbol_E_ms": 1788139409303,
+        "descriptive_only_horizons": [
+          "1m"
+        ],
+        "P_1m": {
+          "target_ms": 1788140114545,
+          "observed_ts_ms": 1788140115190,
+          "price": 77721.51,
+          "signed_return": -0.0009718459599681317,
+          "net_return": -0.0011718459599681318
+        },
+        "P_5m": {
+          "target_ms": 1788140354545,
+          "observed_ts_ms": 1788140355119,
+          "price": 77724.15,
+          "signed_return": -0.0010058464017164148,
+          "net_return": -0.001205846401716415
+        },
+        "P_15m": {
+          "target_ms": 1788140954545,
+          "observed_ts_ms": 1788140955020,
+          "price": 77715.39,
+          "signed_return": -0.0008930267540976367,
+          "net_return": -0.0010930267540976367
+        },
+        "P_0": {
+          "observed_ts_ms": 1788140053695,
+          "price": 77646.05
+        },
+        "cohort_complete": true,
+        "availability_ms": 1788140955020
+      },
+      {
+        "event_id": "0660cfed96c3012216de894383f0b8e9",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788140998697,
+        "segment_connect_ms": 1788097558772,
+        "eligibility": "gap_since_prior_same_symbol",
+        "prior_same_symbol_E_ms": 1788140651463,
+        "descriptive_only_horizons": [
+          "1m"
+        ],
+        "P_1m": {
+          "target_ms": 1788141058697,
+          "observed_ts_ms": 1788141059494,
+          "price": 2418.8,
+          "signed_return": 0.0002934478468781254,
+          "net_return": 9.344784687812541e-05
+        },
+        "P_5m": {
+          "target_ms": 1788141298697,
+          "observed_ts_ms": 1788141299281,
+          "price": 2415.64,
+          "signed_return": 0.0015994974188989763,
+          "net_return": 0.0013994974188989763
+        },
+        "P_15m": {
+          "target_ms": 1788141898697,
+          "observed_ts_ms": 1788141898777,
+          "price": 2414.43,
+          "signed_return": 0.0020995986790715016,
+          "net_return": 0.0018995986790715015
+        },
+        "P_0": {
+          "observed_ts_ms": 1788140998035,
+          "price": 2419.51
+        },
+        "cohort_complete": true,
+        "availability_ms": 1788141898777
+      },
+      {
+        "event_id": "ac9d3321f5e0aa518c6bf3378fe62518",
+        "symbol": "ETHUSDT",
+        "side": "SELL",
+        "onset_ms": 1788144442167,
+        "segment_connect_ms": 1788142198295,
+        "eligibility": "gap_since_prior_same_symbol",
+        "prior_same_symbol_E_ms": 1788144061837,
+        "descriptive_only_horizons": [
+          "1m"
+        ],
+        "P_1m": {
+          "target_ms": 1788144502167,
+          "observed_ts_ms": 1788144502397,
+          "price": 2409.79,
+          "signed_return": 0.0003982163227211899,
+          "net_return": 0.0001982163227211899
+        },
+        "P_5m": {
+          "target_ms": 1788144742167,
+          "observed_ts_ms": 1788144742253,
+          "price": 2404.19,
+          "signed_return": 0.002721144871927761,
+          "net_return": 0.002521144871927761
+        },
+        "P_15m": {
+          "target_ms": 1788145342167,
+          "observed_ts_ms": 1788145342733,
+          "price": 2407.57,
+          "signed_return": 0.001319091569013775,
+          "net_return": 0.001119091569013775
+        },
+        "P_0": {
+          "observed_ts_ms": 1788144441950,
+          "price": 2410.75
+        },
+        "cohort_complete": true,
+        "availability_ms": 1788145342733
+      },
+      {
+        "event_id": "198ea514bc45850c0cdc4de1331b7ead",
+        "symbol": "BTCUSDT",
+        "side": "SELL",
+        "onset_ms": 1788144463498,
+        "segment_connect_ms": 1788142198295,
+        "eligibility": "gap_since_prior_same_symbol",
+        "prior_same_symbol_E_ms": 1788144084424,
+        "descriptive_only_horizons": [
+          "1m"
+        ],
+        "P_1m": {
+          "target_ms": 1788144523498,
+          "observed_ts_ms": 1788144523898,
+          "price": 77649.23,
+          "signed_return": 0.0004100097475473463,
+          "net_return": 0.0002100097475473463
+        },
+        "P_5m": {
+          "target_ms": 1788144763498,
+          "observed_ts_ms": 1788144763832,
+          "price": 77482.92,
+          "signed_return": 0.0025509429065611045,
+          "net_return": 0.0023509429065611044
+        },
+        "P_15m": {
+          "target_ms": 1788145363498,
+          "observed_ts_ms": 1788145364408,
+          "price": 77496.58,
+          "signed_return": 0.0023750957118515714,
+          "net_return": 0.0021750957118515713
+        },
+        "P_0": {
+          "observed_ts_ms": 1788144463472,
+          "price": 77681.08
+        },
+        "cohort_complete": true,
+        "availability_ms": 1788145364408
+      }
+    ]
+  },
+  "gates": {
+    "cohort_size": 5,
+    "gates": [
+      {
+        "gate": "median_net_signed_return_5m_gt_zero",
+        "threshold": true,
+        "observed": 0.0013994974188989763,
+        "result": true
+      },
+      {
+        "gate": "median_net_signed_return_15m_gt_zero",
+        "threshold": true,
+        "observed": 0.001119091569013775,
+        "result": true
+      },
+      {
+        "gate": "hit_rate_net_positive_5m_gte",
+        "threshold": 0.6,
+        "observed": 0.6,
+        "result": true
+      },
+      {
+        "gate": "hit_rate_net_positive_15m_gte",
+        "threshold": 0.6,
+        "observed": 0.6,
+        "result": true
+      },
+      {
+        "gate": "both_assets_median_net_15m_gt_zero",
+        "threshold": true,
+        "observed": {
+          "BTCUSDT": 0.0005410344788769673,
+          "ETHUSDT": 0.001119091569013775
+        },
+        "result": null
+      },
+      {
+        "gate": "positive_block_median_fraction_15m_gte",
+        "threshold": 0.6,
+        "observed": 0.6666666666666666,
+        "result": true
+      }
+    ],
+    "descriptive_1m": {
+      "median_net_signed_return_1m_descriptive_only": 9.344784687812541e-05,
+      "hit_rate_net_positive_1m_descriptive_only": 0.6
+    },
+    "asset_detail_15m": {
+      "BTCUSDT": {
+        "count": 2,
+        "median_net_15m": 0.0005410344788769673,
+        "defined": false
+      },
+      "ETHUSDT": {
+        "count": 3,
+        "median_net_15m": 0.001119091569013775,
+        "defined": false
+      }
+    },
+    "cohort_blocks": [
+      {
+        "block_start_ms": 1788139800000,
+        "onsets": 2,
+        "median_net_15m": -0.0010583391933537633
+      },
+      {
+        "block_start_ms": 1788140700000,
+        "onsets": 1,
+        "median_net_15m": 0.0018995986790715015
+      },
+      {
+        "block_start_ms": 1788144300000,
+        "onsets": 2,
+        "median_net_15m": 0.0016470936404326731
+      }
+    ],
+    "any_unknown": true,
+    "any_false": false
+  },
+  "truth": {
+    "status": "inconclusive",
+    "rule": "fast-screen-pass iff every sample condition and gate is observed true; falsified if sample conditions pass and any gate is false; inconclusive if a sample condition is unmet or required alignment is unavailable",
+    "reason": "registered sample condition unmet or unknown",
+    "no_claim": "fast screens cannot establish durable alpha, replace prospective confirmation, or authorize capital deployment; no returns or deployment promotion is implied"
+  },
+  "decision_boundary": "A pass cannot reverse the parent falsification or promote alpha. This protocol correction replaces only the structurally unreachable replication."
+}

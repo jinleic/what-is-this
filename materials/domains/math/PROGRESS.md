@@ -5,6 +5,1319 @@ cost. "Verified" means a command ran and its output was observed, or a primary
 source was read directly — not that something looks right.
 
 
+### H2-REDUCED-TO-A-2^-14-BOUNDARY-LAYER (2026-09-01) — THE CONTINUUM IS ELIMINATED ANALYTICALLY AND THEN ALMOST ENTIRELY PROVED. LIU H2 REDUCES EXACTLY FROM 9 VARIABLES + q + THE MEAN CONSTRAINT TO **TWO TWO-VARIABLE INEQUALITIES** `A >= 0` AND `B >= 0` ON [0,1]^2, VALID FOR ARBITRARILY MANY ATOMS (RANK-ONE DIANANDA SPLITTING). **`R >= 0` AND `A >= 0` ARE PROVED ON ALL OF [0,1]^2** (400-BIT ARB, EXHAUSTIVE STRATA, NO UNRESOLVED CELL); **`B >= 0` IS PROVED ON 99.9756%** OF THE SQUARE PLUS THE WHOLE DIAGONAL AND BOTH AXES. ALL THAT REMAINS OF H2 IS AN ENDPOINT LAYER OF WIDTH 2^-14. x* IS ALGEBRAIC OF DEGREE 4 (x^4-2x^3+3x^2-1=0) AND m = x*h(x*)/h(x*^2). FOUR ROUTES REFUTED WITH EXACT WITNESSES
+
+* **Outcome first.** New module `uc/liu9_h2_reduction.py` ->
+  [`liu9-h2-reduction.json`](uc/verification/results/liu9-h2-reduction.json),
+  `claim_status: REDUCTION-CERTIFIED`, Arb `ctx.prec = 480`, all six chain
+  claims PROVED, four mutations caught, two runs byte-identical
+  (file sha256 `c63ae94e4fbd2397e19ea9e2a4e2c155f1e02265852d0aacad5c97d70f078e3a`,
+  internal digest
+  `c40d27be152217bd0d862bf54c4a957ab7bcad22e6b2f7747cf7462e9bc7a397`).
+  Independently re-derived from scratch by a second worker in its own canonical
+  free-log basis with **exact zero residuals** and 4/4 mutations fired
+  ([`liu9-psi-reduction.json`](uc/verification/results/liu9-psi-reduction.json),
+  file sha256 `9fb5766f1c3110cce9b231d2f2f1b7c1eec67bc3d6ac7602be50fc72b00c07a3`,
+  internal digest
+  `405eea478f2146fde762f749dd4a8f6986be79f0be47f56cb2cc24daf64b2af0`,
+  both recomputed by me, not taken on report. Its FIRST delivery, file sha256
+  `deac6188...`, is **SUPERSEDED and must not be cited**: it carried
+  float64-truncated constants (see the incident bullet below).
+* **WHAT IS NOW UNCONDITIONALLY PROVED — the quotable statement.** Because
+  `A >= 0` and `R >= 0` are certified on ALL of `[0,1]^2`, and `B` is only ever
+  evaluated at SAME-COMPONENT pairs `(x_i,x_j)` and `(y_i,y_j)` while the
+  cross pairs `(x_i,y_j)` go through `A`, the partial `B` certificate suffices
+  outright once every support lies in the certified square. Hence:
+  > **Theorem (this session).** Liu Hypothesis 2 holds for the three-atom
+  > paired class — for every mixture weight `q in [0,1]`, every mass vector,
+  > and every admissible mean `M >= m` — whenever all six supports lie in
+  > `{0} u [2^-14, 1 - 2^-14]`. The argument is dimension-free, so the same
+  > conclusion holds for paired classes with arbitrarily many atoms.
+  Sanity check on 1,382 mean-feasible random configurations with supports in
+  `[2^-14, 1-2^-14]`: min gap `+0.005872297344`, min `T` `+0.002883181798`,
+  min `A` over cross pairs `+7.832645853e-6`, min `B` over same-component pairs
+  `-9.723461372e-63` (roundoff on the exact diagonal zero). The ONLY thing
+  separating this from full H2 is the width-`2^-14` endpoint layer.
+* **Evidence on the residual layer itself (DISCOVERY, float64 — not a
+  certificate).** I scanned the uncovered layer directly: log-spaced points
+  down to `2^-40` inside `(0,a)` and up from `1-a`, crossed against 2,079
+  partner values (log-clustered at both ends plus a uniform `1/2000` grid),
+  excluding only the exact diagonal. **166,240 points, ZERO strictly
+  negative**; worst value `+1.167917e-63` at
+  `s = 2.22044604925031308e-16`, `t = 1.11022302462515654e-16`. The
+  both-small asymptotic is confirmed to converge exactly: the ratio
+  `Phi/(2 s t log(s/t))^2` runs `0.9414418744` at `s=1e-2`, `0.9994163409` at
+  `1e-4`, `0.9999941791` at `1e-6`, `0.9999999418` at `1e-8`,
+  `0.9999999994` at `1e-10`, `1.0000000000` at `1e-12`. And near `s=1` the
+  exact identity holds: `Phi(1,t) = h(t)^2` reproduces to all printed digits
+  (`0.48045301392` at `t=1/2`), with `alpha = 1-s` perturbations lowering it
+  only in the 6th significant figure at `alpha = 1e-6`. So the layer is very
+  likely fine; it is simply **not certified**, and I am not recording it as
+  anything stronger.
+* **Two workers failed to deliver on this layer** (`CopositiveCert` produced no
+  artifact at all; `BoundaryLayer` returned empty). The task is genuinely hard
+  for the reason the `PhiCertifier` artifact names: `h'` and every higher
+  derivative blow up at entropy arguments `0` and `1`, so an interval method
+  needs a bespoke endpoint remainder lemma rather than more subdivision. The
+  matched asymptotics above are the route; they are derived and numerically
+  confirmed but not yet turned into rigorous two-sided remainders.
+* **Pre-test of the two candidate sufficient conditions, and the exact status
+  of `I01` (prompted by review; both settled).** The inherited ledger phrasing
+  "the first three terms are nonnegative" was never used here — I flagged it as
+  unverified on first reading and built nothing on it. What the shipped chain
+  actually says is `R = A + B` gives `I00, I11 >= 0`, resting on the now-PROVED
+  `R >= 0`; `I01` appears ONLY inside `T = 2 I01/M + c`, so **its sign is not
+  load-bearing**. For the record it is nonetheless nonnegative, and provably so
+  rather than by assumption: `I01 = <mu, D_m nu>` and `D_m >= 0` is certified on
+  all of `[0,1]^2`, cross pairs included. Measured `min I01 = +5.850360113815e-4`
+  over the grid, 0 negatives.
+  Both candidate conditions were then pre-tested at float cost before any
+  certificate work, over `1,225` geometries x `91` simplex mass points
+  (`111,475` evaluations):
+  * PLAIN `2 I01 + m c` (`= m T`, the 3x3-copositivity target): **0 negatives**,
+    `min = +1.170072022763e-3`;
+  * AM-GM `2 I01 + 2 sqrt(I00 I11) + m c` (the weaker 2x2 form): **0
+    negatives**, `min = +2.340144045526e-3`.
+  So the STRONGER condition already holds and the weaker fallback is
+  unnecessary. The relation is exact rather than coincidental: the minimum sits
+  at `x = y`, where the channel vanishes (`c = 0`) and `a` is at a vertex, so
+  `m T = 2 D(3/4,3/4) = 1.170072022763e-3` and the AM-GM form is precisely
+  twice it. A 40,000-draw continuum probe over `[0,1]^6 x` simplex gives
+  `min PLAIN = +1.364020228761e-3`. All DISCOVERY (float64); the certified
+  statement is `T >= 0`, which the shipped `A >= 0` / `B >= 0` route delivers
+  directly and which is exactly the PLAIN condition. Note the old domination
+  ratio `0.8389` used a different normalisation and is evidence for neither.
+* **Notation.** All logs natural. `h(u) = -u log u - (1-u) log(1-u)`,
+  `pi(s,t) = s t (1 + (1-s)(1-t))` is Liu's protocol,
+  `D_M(s,t) = M[(1-b) h(st) + b h(pi)] - (t h(s) + s h(t))/2`, and
+  ```
+  P2(s,t) = (1-b) h(st) - (t h(s) + s h(t))/(2m)      sign-indefinite
+  Q2(s,t) = b h(pi(s,t))                              >= 0 always
+  R(s,t)  = P2 + Q2 = D_m(s,t)/m
+  ```
+* **The kernel collapse (PROVED, exact).** The discharge kernel of
+  `liu9_paired_class_c` collapses: because `h(u) = u(mu(u) - log u)` with
+  `mu(u) = -(1-u)log(1-u)/u`, one has
+  `t h(s) + s h(t) - s t (mu(s)+mu(t)-mu(st)) = h(st)` identically, so the
+  nine-symbol `e_kernel` is just `(1-b) h(st) + b h(pi(s,t))`. Every `mu` term
+  cancels. This is what makes the whole reduction algebraic.
+* **C1, the all-q identity (PROVED).** With `M = (1-q)M0 + q M1`,
+  `I00 = <mu,D_M mu>`, `I11 = <nu,D_M nu>`, `I01 = <mu,D_M nu>`,
+  `c = b <mu-nu, K (mu-nu)>` the channel (`K = h o pi`), and `T = 2 I01/M + c`:
+  ```
+  gap = ((1-q)^2 I00 + q^2 I11)/M + q(1-q) T
+  ```
+  for **every** q, with no mean constraint and no case split. Cross-checked
+  against the repository's own `liu9_objective.evaluate_arb`, max residual
+  `1.0802191e-68`. The three coefficients `(1-q)^2, q^2, q(1-q)` are all `>= 0`
+  on `[0,1]`, which is the entire point: q disappears as a quantifier.
+* **C4, monotonicity (PROVED) — direction checked, since the last retraction
+  here was an inverted bound.** `d/dM D_M = (1-b)h(st) + b h(pi) >= 0` and
+  `d/dM (D_M/M) = (t h(s)+s h(t))/(2M^2) >= 0`, so raising `M` raises every
+  coefficient and `M = m` is the WORST case; the certified quantity is a LOWER
+  bound at `M = m`. Consequence measured, not assumed:
+  `min (G - G_m) = +8.5010340079884988e-4` over the mean-feasible
+  configurations, **0 violations**. So the mean constraint is discharged by
+  monotonicity rather than by an activation lemma.
+* **C6, the rank-one splitting — this is the step that closes the continuum
+  (PROVED).** Put `phi(s) = sqrt(Q2(s,s))` and split both kernels:
+  ```
+  A(s,t) = P2(s,t) + phi(s) phi(t)
+  B(s,t) = Q2(s,t) - phi(s) phi(t)        R = A + B
+  ```
+  Then for ANY nonnegative measures `mu, nu`:
+  ```
+  T = <mu,B mu> + <nu,B nu> + 2 <mu,A nu> + (<mu,phi> - <nu,phi>)^2
+  ```
+  identity residual `3.1822442e-68`, `R = A+B` residual `2.1225741e-68`,
+  minimum individual summand `+2.4181027e-4`. Every summand is an integral of
+  its kernel against **nonnegative** measures, plus a square. This is
+  Diananda's `N + PSD` decomposition with a **rank-one** PSD part, made
+  explicit; because it never mentions the number of atoms it is
+  **dimension-free**. An independent worker (`ChannelTheory`) reached the same
+  decomposition from the opposite direction (route 2 of its brief) at
+  essentially the same time, which is corroboration rather than an echo, and
+  supplied the matrix form `M_ij = N_ij + v_i v_j`,
+  `v_i = phi(x_i) - phi(y_i)`.
+* **The reduction, stated.** Since `R = A + B` gives `I00, I11 >= 0`, and C6
+  gives `T >= 0`, and C1 has nonnegative q-coefficients, and C4 makes `M = m`
+  the worst case:
+  ```
+  LIU H2   <==   A >= 0  and  B >= 0  on [0,1]^2
+  ```
+  equivalently the single sandwich
+  `0 <= Q2(s,t) - sqrt(Q2(s,s) Q2(t,t)) <= R(s,t)`.
+  **No longer required:** the activation lemma `min{M>=m} = min{M=m}` (whose
+  off-grid gap was the standing conditional), the active-face `q*` elimination,
+  the `Delta = 0` four-case analysis, any box cover of `[0,1]^7`, any 3x3
+  copositivity decision procedure, any 6-dimensional branch-and-bound.
+* **No uniform rescaling of phi survives, and phi is pinned exactly on
+  `{0, x*, 1}` — with genuine slack elsewhere (verified; an earlier wording of
+  mine overclaimed).** The splitting identity is phi-independent algebra, so a
+  phi perturbation cannot break it; what the specific phi buys is
+  nonnegativity. A UNIFORM rescale is squeezed out from both sides: scaling
+  `phi` up by 1.05 drives `B(0.5,0.5)` to `-0.0063694814`, and scaling down by
+  0.95 drives `A(x*,x*)` to `-0.0067515802`, the latter because `R(x*,x*) = 0`
+  exactly. But pointwise the diagonal constraint is
+  `-P2(s,s) <= phi(s)^2 <= Q2(s,s)`, a window of width exactly `R(s,s)`, so
+  `phi(s)` is forced **precisely where `R(s,s) = 0`**, i.e. on `{0, x*, 1}`
+  (at `x*` the admissible isolated rescale is `r = 1.0000000000000 +/- 3e-19`),
+  and elsewhere admits slack: `r >= 0.94395292747338` at `s = 1/2`
+  (`R = 0.0067704710`) and `r >= 0.78999067713931` at `s = 0.3`
+  (`R = 0.014822849`). The slack was found by the `ChannelTheory` worker and
+  re-verified here; it matters, because a pointwise-varying phi could buy
+  margin at the tight points and make certification easier. Recorded as
+  `phi_sharpness` with `no_uniform_rescaling_survives: true`,
+  `phi_forced_on: [0, x*, 1]`, `phi_has_slack_elsewhere: true`.
+* **The two-atom comparison constant `kappa`: a certified LOWER bound only —
+  the two-atom case is NOT closed (`ChannelTheory`; my earlier wording of this
+  bullet claimed closure and was wrong).** For the sharp `kappa` in
+  `b(K(s,s)+K(t,t)-2K(s,t)) >= -kappa R(s,t)`, the boundary stratum gives the
+  exact limit: `R(s,1) = a h(s)` with `a = 1 - 1/(2m)`, and
+  `-c(s,1)/R(s,1) = 2b/a - b K(s,s)/(a h(s))`, which tends as `s -> 0+` to
+  ```
+  kappa >= 4 m b/(2m-1) = 1.0531342085743043601638640074372288821919403566786
+  ```
+  Arb-certified strictly between 1 and 2 at both 320 and 512 bits. The local
+  ratio at `x*` is only `0.510077050329622505330909558687923343343235616`, so
+  **`x*` is not the sharp stratum** — the boundary is. What is NOT established
+  is a continuum global UPPER bound on the ratio, so `kappa <= 2` is a
+  candidate, not a theorem, and the two-atom route does not close. Even if it
+  did, it would not tensorize: the general-measure discrepancy is
+  `[<mu,B mu> - Var_mu(phi)] + [<nu,B nu> - Var_nu(phi)]`, equal to
+  `-0.01553532041755397813` for `(delta_0 + delta_{1/2})/2`. No general-measure
+  counterexample was found, so this is OPEN-WITH-OBSTRUCTION, not refuted.
+* **The channel is genuinely not conditionally PSD, with an Arb-certified
+  two-point witness — and I was wrong to tell the worker no such witness
+  existed.** `d = delta_{3/8} - delta_{7/8}`, `sum d = 0`, gives
+  `<d,K d> = -0.2753615762514741428518548157942339566375095606` and
+  `b<d,K d> = -0.0275506305918412215023630885861205200390352255`, certified at
+  320 and 512 bits. So the repository's long-standing grid figure `-0.02755`
+  **is** exactly this two-point value, not merely a grid artifact as I asserted
+  mid-session. The CONTINUUM channel minimum is considerably worse:
+  `c = -0.0833094851299377315809525733666532908267079424956522645` at supports
+  `(0.3394785412226446979055410682280141874415645346938292545, 1)`. The
+  `g`-log-complement midpoint-convexity characterization I proposed is also
+  incomplete: `w_st` is not the midpoint (`w_st - midpoint = 0.42383003012882`
+  at `(3/8,7/8)`), which contributes an independent displacement term.
+* **Spectral truncation (route 3) is hopeless, quantified.** With the rigorous
+  uniform tail `eps_T(n) = 2h(1/sqrt n) + 2h(1/(2 sqrt n))/m + log2/(m sqrt n)`,
+  reaching a tail below `1e-1` needs `n = 67,540`; below `1e-2`, `12,569,023`;
+  below `1e-3`, `1,991,043,446`. And no finite positive additive tail can ever
+  work because `inf T = 0` exactly at the zeros. The finite block is not PSD
+  either (`lambda_min(R_grid) = -12.468076358775775`). Recorded so it is not
+  retried.
+* **Why every box cover was doomed, quantified.** `R` has an **interior** zero
+  at `(x*,x*)`, `x* = 0.6907875939249880141505` (Liu's critical support): the
+  Arb enclosures of both `R` and `grad R` there contain 0, and the Hessian is
+  `[[0.753195722058, -0.496377629111], [-0.496377629111, 0.753195722058]]`
+  with eigenvalues `0.256818092947273160483638` and `1.249573351` — a
+  **nondegenerate interior minimum with value exactly 0**. A function that
+  genuinely touches zero cannot be certified by interval subdivision at any
+  depth. That, not dimension, is why the cover programme could never terminate.
+  Note this is a zero of the m-NORMALIZED kernel, not of `F`: the gap at the
+  all-x* configuration is `F(delta_x*) = h(x*)(x*-m)/m ~ 0.0736 > 0`,
+  consistent with the earlier `+1.35e-3` continuum search minimum.
+* **The channel cancels in the critical direction (PROVED).** Near the diagonal
+  the channel is second order, `c ~ b K12 Delta^2` with
+  `K12 = d^2K/ds dt at (x*,x*) = -1.59260964939` and `b|K12| = 0.159344672284`,
+  so `c < 0` there — the dangerous case. But writing the local second-order
+  form of `T` as `(H11 - z)(A^2+B^2) + 2(H12 + z) A B` with `z = b|K12|`, the
+  symmetric eigenvalue is `H11 + H12 = 0.256818092947273160483638`, **free of
+  z**, because `c` is proportional to `(B-A)^2` and vanishes in that direction;
+  the antisymmetric eigenvalue keeps `0.930884006601312428371020` of `2.4991`.
+  Both positive, so `T >= 0` has a genuine second-order margin at the tight
+  point.
+* **REFUTED route 1: entrywise nonnegativity.** Substituting `D` into the
+  four-variable entry form makes the cross-protocol terms cancel **identically**,
+  `Psi(s,t,sig,tau) = P2(s,tau) + P2(t,sig) + Q2(s,t) + Q2(sig,tau)`, so on the
+  stratum `s = tau = 0` every `Q2` vanishes and `Psi = P2(t,sig)`, which is
+  negative. Exact witness
+  `Psi(0, 1/2, 1/2, 0) = -0.0553708106423719494349154`
+  (Arb 480 bits; independently confirmed at mpmath dps 340 by `PsiHunt`, and
+  raw and split forms agree to `3e-341`). `min P2 = -0.0693028554493` at
+  `s = t = 0.680688509846052185`. Copositivity is strictly weaker and survives
+  the witness: there the `2x2` block
+  `[[0.062146, -0.05537], [-0.05537, 0.062146]]` has simplex-minimum
+  `+0.003385235514`. **The entrywise route must not be retried,** and any
+  artifact naming `Psi >= 0 on [0,1]^4` as the live obligation is superseded.
+* **REFUTED route 2: the mixed-partial shortcut for `B >= 0`.** With
+  `L = log h(pi)`, `F(s,t) = L - (L(s,s)+L(t,t))/2` satisfies `F(s,s) = 0` and
+  `dF/dt = -integral_s^t L_st(sig,t) dsig`, so `L_st <= 0` would give `B >= 0`
+  in one line. **It fails:** 17,906 of 249,001 interior grid points have
+  `L_st > 0`, worst `+0.07848962385` at `(0.17, 0.998)`; and restricting to
+  `sig <= t` buys nothing because `L_st` is symmetric. My algebra for the
+  numerator was validated against direct numerical differentiation to
+  `1.2446e-59` first, so the refutation is of the route, not of my formula.
+  `B >= 0` itself is untouched by this — the condition was only sufficient.
+* **NEW STRUCTURAL FACT: `x*` is ALGEBRAIC of degree 4, and `m` has a closed
+  form. The interior zero is exact algebra, not a numerical coincidence.**
+  (Quartic found by `PsiHunt`; I re-derived and verified all four facts
+  independently at dps 80.)
+  ```
+  x* is the unique root in (0,1) of   x^4 - 2x^3 + 3x^2 - 1 = 0
+  m = x* h(x*) / h(x*^2)
+  ```
+  The mechanism: `pi(x,x) = 2x^2 - 2x^3 + x^4`, so the quartic is *exactly* the
+  statement `pi(x,x) = 1 - x^2`; then `h(pi(x*,x*)) = h(x*^2)` by the entropy
+  symmetry `h(u) = h(1-u)`, and
+  `D(x,x) = m[(1-b)h(x^2) + b h(pi(x,x))] - x h(x)` collapses at `x = x*` to
+  `m h(x*^2) - x* h(x*) = 0`.
+  Verification: the quartic evaluated at the repository's `x*` gives
+  `-1.159641774e-80`; the quartic's own root agrees with the repository `x*` to
+  `4.7520814e-81`; `pi(x*,x*)` and `1 - x*^2` agree to all 30 printed digits
+  (`0.522812500079325862446665800367`); `h(pi) - h(x^2) = 2.1084396e-81`; and
+  `x* h(x*)/h(x*^2) - m = -5.1717432e-61`. The quartic has no rational root and
+  does not factor over `Q` into quadratics, so `x*` has degree exactly 4.
+  **Why this matters:** the tight point of the whole problem is now an exact
+  algebraic number with an isolating interval, not a numerically-solved
+  decimal, which removes the constants-defect risk class for it entirely (see
+  the float64-constants incident recorded below). It also explains *why* Liu's
+  parameters are what they are: `x*` is pinned by `pi(x,x) = 1 - x^2` and `m`
+  follows.
+* **`D`'s Hessian at `(x*,x*)`, independently reproduced.** `PsiHunt` reports
+  `Dss = Dtt = 0.464940874244851837649`,
+  `Dst = -0.306409399410458505864`, eigenvalues
+  `0.158531474834393331785` (symmetric) and `0.771350273655310343513`
+  (antisymmetric), both positive. Dividing by `m` reproduces my `R` values
+  exactly: `0.464940874/m = 0.753196` and `0.158531475/m = 0.256818` — three
+  independent computations of the same Hessian now agree. An `801^2` scan off
+  the four zero families gives `min D = +3.1030e-6 > 0`, so `inf D = 0` is
+  attained only on those families.
+* **The global minimum of `Psi` is exactly `min P2`, and it lives on a
+  codimension-2 boundary stratum (`PsiHunt`).**
+  `min Psi = -0.06930285544930247833037896625451`, attained at `(z2,0,0,z2)`
+  and `(0,z2,z2,0)` with `z2 = 0.680688509846052184954726239367`. My earlier
+  `-0.06930259908` was `P2` at the ROUNDED point `(0.68,0.68)`; the true argmin
+  is `z2`. Exact strata: `{s=tau=0}` and `{t=sig=0}` give `Psi == P2` (negative
+  exactly on the lens `N = {P2 < 0}`, coordinate range
+  `[0.004460652839, 0.997275039552]`); `{s=sig=0}` and `{t=tau=0}` give
+  `Psi == 0` identically; all 16 corners are exact zeros; all 8 facets go
+  negative, the four `=0` facets reaching `-0.069302855449` and the four `=1`
+  facets `-0.012927805583178568`.
+* **An interior-restricted version of the refuted route does NOT rescue it.**
+  `Psi >= 0` on `[r,1-r]^4` holds only for `r >= r* = 0.14468477999328934476`
+  (dps-340 Newton, independent DE bisection agreeing to `1.2e-10`; active
+  stratum `s=tau=r`, `t=sig=0.636469848906571651798737330274`, KKT verified
+  with free gradients `-3.3e-81` and inward face gradients `+0.11672`). But the
+  bound is **tight, not strict**: for `r* <= r <= 1-x* = 0.309212406075012` the
+  minimum over `[r,1-r]^4` is **exactly 0**, attained at the interior point
+  `(x*,x*,x*,x*)` because `Psi(u,u,u,u) = (2/m) D(u,u)`. Strict positivity
+  needs `r > 1-x*`, which excludes the supports the problem actually requires.
+  So no interior restriction saves the entrywise route.
+* **`B >= 0` is PROVED on 99.9756% of `[0,1]^2`; only endpoint layers of width
+  `2^-14` remain. This is now the ENTIRE remaining content of Liu H2.** Worker
+  `PhiCertifier` built `uc/liu9_h2_phi_certificate.py` ->
+  [`liu9-h2-phi.json`](uc/verification/results/liu9-h2-phi.json),
+  `claim_status: PARTIAL`, `ctx.prec >= 320`, file sha256
+  `dfc0cf7bbb25dd6e4e1f49cc1d6124af4e21eaff948b3fa7e4b3f06d399e10c3`
+  (recomputed by me). It certifies `Phi >= 0` on the closed square
+  `[a,1-a]^2` with `a = 1/16384`, plus exactly on both axes and the **entire
+  diagonal**; certified area `67092481/67108864 = 0.99975587427616119`, with
+  `compact_cover_complete: true` and **zero unresolved cells in all three
+  strata**:
+  * off-diagonal branch-and-bound, `170,677` cells, depth 23, worst certified
+    lower bound `+2.17666065930e-14`;
+  * near-diagonal even-Taylor, `323` cells, `min g''/2 >= 0.000794974780382`,
+    `max|g''''| <= 419325822188`, `e`-radius from `1/393216` to `1/128`;
+  * origin corner via the exact factorization `Phi = s^2 t^2 G`, crossover
+    `c = 1/128`, `626,282` cells (`626,124` direct + `158` Taylor), depth 18,
+    `min normalized g'' >= 457323.4885771305`,
+    `max|normalized g''''| <= 18437560497882125620906`.
+  Mutations `remainder_denominator_24_to_48` and `drop_origin_corner_stratum`
+  both fired. It also independently confirmed my normalisation correction: its
+  `V` values (`0.00155119813421` at `c=0.01` up to `80.7644673877` at
+  `c=0.99`) are exactly `4x` the ones I supplied, since mine were
+  `Phi/(s-t)^2 = g''(0)/8`. Derivatives validated against 100-decimal numerical
+  differentiation to `2.53e-92`.
+* **The residual region, stated exactly.** Uncovered is
+  `([0,a) x [0,1]) u ((1-a,1] x [0,1]) u ([a,1-a] x ([0,a) u (1-a,1]))` minus
+  `{s=0} u {t=0} u {s=t}`, exact area `16383/67108864`. The artifact's own best
+  bound there is only the universal `Phi >= -(log 2)^2`, which proves nothing.
+  Its stated blocker is honest and correct: `h'` and all higher derivatives are
+  singular at entropy arguments `0` and `1`, so an **endpoint asymptotic
+  remainder lemma** is required and it asserted none.
+* **Matched asymptotics for the residual layer (mine; DISCOVERY, dispatched for
+  certification).** With `X = log(1/s)`, `Y = log(1/t)`, `L = log 2`:
+  * *both coordinates small*: `pi(s,t) ~ 2st`, `pi(s,s) ~ 2s^2`,
+    `pi(t,t) ~ 2t^2`, and the bracket collapses to a **perfect square**,
+    `(X+Y-L)^2 - (2X-L)(2Y-L) = (X-Y)^2`, so
+    `Phi ~ 4 s^2 t^2 (X-Y)^2 = (2 s t log(s/t))^2 >= 0` structurally, vanishing
+    only on `s=t`;
+  * *one small, one interior*: `Phi/s^2 ~ log(1/s)[t^2(2-t)^2 log(1/s) - 4
+    h(pi(t,t))]`, so positivity needs
+    `log(1/s) > 4 h(pi(t,t))/(t^2(2-t)^2)` — a threshold that **blows up like
+    `4 log2/t^2` as `t -> 0`**, which is exactly why this regime cannot reach
+    `t = a` alone and must be matched against the first;
+  * *near `s = 1`*: exactly `pi(1,t) = t`, so `Phi(1,t) = h(t)^2 >= 0`, and
+    with `alpha = 1-s`, `1 - pi(s,s) ~ 2 alpha` gives
+    `Phi ~ h(pi(s,t))^2 - 2 alpha log(1/(2 alpha)) h(pi(t,t))`.
+  The genuinely hard points are the four corners, where two degeneracies
+  collide. Certification of this layer is dispatched to `BoundaryLayer`; it is
+  **NOT claimed here**.
+* **`A >= 0` on `[0,1]^2` is now ALSO PROVED — H2 rests on the single
+  inequality `B >= 0`.** Same certifier, added as a third lemma
+  (`LEMMA_A2 PROVED`), Arb `ctx.prec = 400`: local `x*` square of half-width
+  `2/125` with Euclidean radius `0.0226274169979695` inside
+  `rho = 0.0238832436058480`; value and both gradients enclose 0;
+  `lambda_min >= 0.25681809294727316048363783526859825845`;
+  `C3 <= 32.2591977688142292` (from `max|3rd partial| <= 11.4053487489832426`);
+  margin coefficient `+0.00675199315114866`; `(1,1)` corner with
+  `delta = 1e-8` and coefficient `0.223274370624363029`; faces
+  `A(1,t) = c0 h(t) >= 0` with certified `c0 > 0` and `A(0,t) = 0` exactly;
+  global branch-and-bound `16,928` processed `= 8,471` accepted `+ 8,457`
+  split (**no unresolved cell**), max depth 48, worst certified lower bound
+  `+9.6007009608e-19`.
+  **The `x*` centre is now exact algebra, not a decimal:** the certifier
+  bisects the quartic for 220 steps, certifying `f(lo) = -5.2695290e-70 < 0`,
+  `f(hi) = +1.0161608e-69 > 0`, `f' > 0` on the bracket (so the enclosed root
+  is unique), bracket width `5.93472984e-70`; the partition centre is at
+  certified distance `1.1869459694e-69` from that ball and the displacement is
+  ADDED to the square radius. It derives `m = x* h(x*)/h(x*^2)` and
+  cross-checks against `liu9_binding`'s stored values: `x` difference
+  `[+/-3.91e-70]` and `mean` difference `[+/-2.56e-69]`, both containing 0.
+  Byte-identical across two runs, file sha256
+  `a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb`
+  (recomputed by me), internal digest
+  `4ddbf0f38ca881dde204f086076424617edcdbe6a2826dfa945ef963ebdf70c6`.
+* **An elegant consistency check that fell out, verified three independent
+  ways.** `A` and `R` have the SAME symmetric Hessian eigenvalue at `(x*,x*)`:
+  `0.25681809294727316048363783526859825845`. The reason is structural — since
+  `B = (s-t)^2 W` vanishes to second order on the diagonal, its Hessian there
+  is `2W [[1,-1],[-1,1]]`, which is supported entirely on the ANTISYMMETRIC
+  direction. Hence
+  `Hss(A) = Hss(R) - 2W`, `Hst(A) = Hst(R) + 2W`, and `W` cancels in
+  `lambda_min = Hss + Hst`. Checked numerically: `W(x*) = 0.079896070584722`
+  (matching my independently measured `0.07989607057`), and both predicted
+  entries reproduce the certifier's `Hss = 0.593403580888494054`,
+  `Hst = -0.336585487941220894` to `1.3e-51`. This is the same cancellation
+  mechanism as the channel's: the dangerous term lives only in the
+  antisymmetric direction.
+* **One mechanical fix I made to a worker's file (no mathematics touched).**
+  The certifier acquired a deferred `from liu9_binding import ...` inside its
+  new cross-check, but carried no `sys.path` guard; since `python -I` omits the
+  script's own directory from `sys.path`, the module stopped running under the
+  invocation used everywhere else here (`./.venv/bin/python -I -B uc/<mod>.py`)
+  — a reproducibility break in a certificate about to be recorded as PROVED.
+  I added the standard three-line `HERE`/`sys.path.insert` guard used by every
+  other module in this directory, re-ran twice (byte-identical), and confirmed
+  all three lemmas still PROVED. The report's `tool_sha256` and therefore the
+  file digest changed accordingly, which is why the hashes above supersede the
+  worker's reported `22da09c4...`.
+* **`R >= 0` on `[0,1]^2` is now PROVED (MACHINE-VERIFIED, and I verified it
+  myself rather than on report).** Worker `TwoVarCertifier` built
+  `uc/liu9_h2_twovar_lemmas.py` ->
+  [`liu9-h2-twovar.json`](uc/verification/results/liu9-h2-twovar.json),
+  `claim_status: CERTIFIED_PROVED`, Arb `ctx.prec = 400`, byte-identical across
+  two runs (file sha256
+  `a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb`,
+  recomputed by me; internal digest
+  `4ddbf0f38ca881dde204f086076424617edcdbe6a2826dfa945ef963ebdf70c6`;
+  these supersede the pre-path-fix `afde6a68...`/`feedba79...` pair, see the
+  mechanical-fix bullet below).
+  Architecture, three strata, exhaustive:
+  * **near-zero strip** `min(s,t) <= 1e-8`:
+    `R >= s t (c0 log(1/(st)) - 1/m) >= s t * 0.0370796159068 >= 0`;
+  * **local `x*` square**, half-width `9/500`, Euclidean radius
+    `0.0254558441227` inside the certified `rho = 3 lambda/C3 = 0.0269694962`:
+    value and both gradient components enclose 0 (`+/-4.6e-68`, `+/-6.7e-69`),
+    `lambda_min >= 0.2568180929472731604836378`,
+    `C3 <= 28.5676185231313394458`, giving margin coefficient
+    `+0.00720690579329692`;
+  * **`(1,1)` corner**, `delta = 1e-4`: with `u = (1-s)+(1-t)`,
+    `R >= u(0.189954132102 log(1/u) - (log2+1)/(2m)) >= u * 0.2464422908096`;
+  * **faces**: `R(1,t) = c1 h(t) >= 0` with certified `c1 > 0`;
+    `R(0,t) = 0` exactly;
+  * **global**: the remaining `4x4 - 2 = 14` exact rational rectangles cleared
+    by Arb branch-and-bound, `7,462` processed `= 3,738` accepted `+ 3,724`
+    split (so **every leaf certified, no unresolved cell**), max depth 43,
+    worst certified lower bound `+1.0134687879508e-18`.
+  Exhaustiveness is machine-guarded: the code asserts the cut list
+  `[1e-8, x*-0.018, x*+0.018, 1-1e-4, 1]` is sorted and distinct and that
+  exactly 14 boxes remain. Three mutations fired per lemma, including
+  `understate_c3_by_factor_16` and `drop_xstar_local_stratum`.
+  **My independent checks, in the conservative direction:** my measured
+  `max|3rd partial|` on the radius-`0.018` box is `5.878477841`, BELOW their
+  upper bound `10.100178390028297`, so their `C3 = 28.5676` exceeds my
+  `16.6268` — correct for an upper bound; their margin `+0.0072069` is smaller
+  than my `+0.0578673` — correct for a lower bound. `lambda_min` agrees with my
+  value to 20 digits. Strip and corner spot-checks are all strictly positive.
+  **Consequence:** `I00, I11 >= 0` unconditionally, so `G(q) >= q(1-q) T` for
+  every `q` and every `M >= m`; the whole of H2 is now the single statement
+  `T >= 0`.
+* **Also PROVED: `Lam(s,t) = 2 P2 + Q2(s,s) + Q2(t,t) >= 0`** (the diagonal of
+  `M_T`), same certificate, `lambda_min >= 0.513636185894546`,
+  `C3 <= 65.7337354245209`, `rho = 0.0234416703650`, corner coefficient
+  `0.492884581619`, 5,408 processed `= 2,711 + 2,697`, depth 45, worst
+  `+1.92014019216e-18`. **But note the direction:** by AM-GM
+  `Lam = 2 P2 + phi(s)^2 + phi(t)^2 >= 2 P2 + 2 phi(s) phi(t) = 2 A`, so
+  `Lam >= 0` is strictly WEAKER than `A >= 0` and does **not** deliver it.
+  `A >= 0` remains a genuinely separate lemma.
+* **The square-root-free form of `B >= 0`, which is what a certificate should
+  target.** `B` carries a square root, which wrecks interval arithmetic. Use
+  instead
+  ```
+  Phi(s,t) = h(pi(s,t))^2 - h(pi(s,s)) h(pi(t,t))
+  ```
+  since `B = b Phi/(h(pi(s,t)) + sqrt(h(pi(s,s)) h(pi(t,t))))`, whose
+  denominator is positive off `{s=0} u {t=0} u {(1,1)}` and where `B = 0`
+  outright on that set. Sign equivalence checked on 4,000 random draws with
+  **0 failures**. `Phi >= 0` has a clean reading: **every `2x2` minor of the
+  kernel `h o pi` has `det <= 0`** (measured `max det = 0.0` over a `500^2`
+  grid), i.e. `h o pi` has at most one positive eigenvalue in the two-point
+  sense.
+* **Near the origin `Phi` is asymptotically a PERFECT SQUARE.** With
+  `X = log(1/s)`, `Y = log(1/t)`, expanding `h(pi) ~ -2st log(2st)` gives
+  `Phi ~ 4 s^2 t^2 [(X+Y-L)^2 - (2X-L)(2Y-L)] = 4 s^2 t^2 (X-Y)^2`
+  with `L = log 2`, i.e.
+  ```
+  Phi ~ (2 s t log(s/t))^2
+  ```
+  Verified ratio `Phi/approx` = `0.9414` at `s=1e-2`, `0.99412` at `1e-3`,
+  `0.99942` at `1e-4`, `0.999942` at `1e-5` (with `t = 3s`). So the triple
+  degeneracy at the origin (diagonal plus both axes) is a square, not a sign
+  problem. Transverse curvature `lim Phi/(s-t)^2` on the diagonal, strictly
+  positive throughout: `0.0003877995336` at `s=0.01`, `0.02950302578` at `0.1`,
+  `0.3884348192` at `0.5`, `1.100018439` at `0.69`, `20.19111685` at `0.99`
+  — matching the `4s^2` prediction near `0` (`0.000388` vs `0.0004`).
+  **Normalisation warning:** these are `Phi/(s-t)^2`; in the `e`-coordinate
+  `s = c-e, t = c+e` one has `s-t = -2e`, so `g''(0)/2 = lim Phi/e^2` is **4x**
+  these values. `PhiCertifier` caught my brief conflating the two.
+* **A worker's first artifact had float64-truncated constants, and the exact
+  witness digits are what exposed it — recording the mechanism.** The
+  independent audit's first delivery called `mpmath.mpf()` on an already-`mpf`
+  value inside `_mpf_frac()`, which re-rounds at ambient `dps = 15`; `m` became
+  literally `5560062243256757/2^53`. Every Arb ball in that artifact was a
+  correct ball around **wrong constants**. It surfaced only because its witness
+  value `-0.055370810642371947620` disagreed with mine at `1.8e-18`, far
+  outside its own `+/-4.2e-96` radius — a gap that can only be a constants
+  defect, never a precision one. Fixed by reading the stored mantissa directly;
+  the constants now agree with a `dps=150` re-solve to all 58 digits. Lesson
+  worth keeping: **a self-consistent narrow Arb ball proves nothing about the
+  constants it was built from**; cross-check the digits against an independent
+  computation. The corrected artifact is byte-identical across two runs, file
+  sha256 `9fb5766f1c3110cce9b231d2f2f1b7c1eec67bc3d6ac7602be50fc72b00c07a3`
+  (recomputed by me), internal digest
+  `405eea478f2146fde762f749dd4a8f6986be79f0be47f56cb2cc24daf64b2af0`.
+* **The refuting witness has a closed form.** Because
+  `Psi(0,t,sig,0) = P2(t,sig)`, the witness is exactly
+  ```
+  Psi(0,1/2,1/2,0) = (1-b) h(1/4) - h(1/2)/(2m)
+  ```
+  which I re-verified independently in Arb at 512 bits:
+  `[-0.05537081064237194943491542930841679830044 +/- 3.75e-42]`, strictly
+  negative. Three independent computations now agree to 40+ digits (my Arb 480,
+  the audit's Arb 320 after its fix, and this closed form).
+* **OPEN, and this is now the whole of H2 — narrowed to one two-sided
+  statement.** With `R >= 0` PROVED above and `R = A + B`, the requirement
+  `A >= 0 and B >= 0` is exactly the **sandwich**
+  ```
+  0 <= B(s,t) <= R(s,t)   on [0,1]^2,     B = Q2 - phi(s)phi(t)
+  ```
+  (the right half is `A >= 0`). So H2 rests on a single function `B` being
+  trapped between `0` and an already-certified nonnegative function. Status
+  **COMPUTATIONAL-EVIDENCE only**: an adversarial float64 hunt (uniform
+  `1200^2`, boundary-clustered log grids down to `1e-8`, 6,000 multistart
+  descents, plus targeted strips `t -> 1` and `s -> 0`) found
+  `min A = -3.608224830032e-16` at `s,t ~ x*` and
+  `min B = -1.421117997585e-16` on the diagonal — both float64 roundoff at the
+  known exact zeros, with every boundary strip returning exactly 0. No
+  counterexample. Dense mpmath scans give `min A = min B = 0` on a `600^2`
+  grid. **Neither half is proved.** Certificates are in flight: `A >= 0` with
+  `TwoVarCertifier` (extending the machinery that just proved `R >= 0`, same
+  zero structure), `B >= 0` with `PhiCertifier` via the square-root-free `Phi`.
+* **Zero sets any certificate must stratify around.** `A` vanishes on `{s=0}`,
+  `{t=0}`, at `(1,1)`, and at the interior `(x*,x*)`; it factors as
+  `A = s t Acheck`, which removes both axes. `B` vanishes on the **entire
+  diagonal with vanishing gradient** (`d/dt B(s,t)|_{t=s} = 0` identically,
+  since `g'(s) = 2 dQ2/dt(s,s)` by symmetry) and on both axes; it factors as
+  `B = (s-t)^2 W`, and the transverse curvature `W(s,s)` is strictly positive
+  on every sample, from `0.01419167347` at `s=0.05` to `10.38462551` at
+  `s=0.99`.
+* **A structural obstruction worth recording.** `pi(s,t)^2 <= pi(s,s) pi(t,t)`
+  **always** (with `a=1-s, b=1-t` it is `(1+ab)^2 <= (1+a^2)(1+b^2)`, i.e.
+  `-(a-b)^2 <= 0`), so `pi` runs the wrong way and `B >= 0`, equivalently
+  `h(pi(s,t))^2 >= h(pi(s,s)) h(pi(t,t))`, must come from the **shape of `h`**,
+  not from any monotonicity of `pi`. Also `h(pi(s,t)) >= max` fails
+  (at `s=0.1, t=0.9`: `0.3216` against `0.4757`), so the geometric mean is
+  genuinely the right comparison.
+* **Cost and verification.** All numbers above were produced this session by
+  `uc/liu9_h2_reduction.py` (Arb 480 bits, 1.9 s), the independent
+  `uc/liu9_psi_reduction_audit.py`, and discovery scans whose float64 status is
+  labelled inline. Certificates for `A >= 0` and `B >= 0` are in flight with
+  three workers and are NOT claimed here.
+
+### H2-ENVELOPE-COVER-SOUND (2026-09-01) — THE RETRACTED COVER IS REBUILT WITH A VALID PROOF AND RECOVERS ITS FULL HEADLINE: ALL 9,747 NON-VACUOUS CELLS CLEAR AT HALF-WIDTH 2^-14 (WORST +1.1029e-3, BETTER THAN THE WITHDRAWN +9.357e-4), COVERED VOLUME 3.4986e-24; THE DRIFT IS NOW UNIFORM OVER THE WHOLE MASS POLYGON INSTEAD OF ONE MASS POINT; THREE MUTATIONS CAUGHT; TWO FULL RUNS BYTE-IDENTICAL — H2 STILL OPEN
+
+* **Outcome first.** The measure lost in `RETRACTION-H2-BOX-COVER` (same
+  day, entry below) is recovered **soundly**. New module
+  `uc/liu9_h2_envelope_cover.py` ->
+  [`liu9-h2-envelope-cover.json`](uc/verification/results/liu9-h2-envelope-cover.json),
+  `claim_status: ENVELOPE-COVER-CERTIFIED`. It certifies exactly what the
+  retracted module only asserted, and the worst bound is *better*, because
+  a uniform envelope over the polygon beats the old single-point radius at
+  the binding cell.
+* **The fix, precisely where the old one broke.** The retracted chain
+  needed `min_P quad_{A(s,q)} >= (something) - R` with `R` measured at the
+  single mass `a*`. Here the drift is uniform in the mass:
+  `L_k` is a certified bound on `|d gap/d b_k|` over
+  (support boxes) x (q box) x (the superset polygon `P`), built per fan
+  triangle of `P` from six Arb node balls via the degree-2 Bernstein
+  convex-hull property and maximised over triangles and directions;
+  `L_q` is the analogous uniform bound on `|d gap/d q|`. With
+  `D = sum_k L_k (hi_k - lo_k) + L_q (q_hi - q_lo)` and `c0lo` the
+  certified KKT minimum of the exact centre-fibre quadratic over `P`,
+  `BOUND = c0lo - D`. For any `(s,q)` in the box and any mass feasible at
+  that fibre, the mass lies in `P`, and walking coordinate-by-coordinate
+  from the centre stays inside the product box, so the mean value theorem
+  gives `|gap(s,q,a) - gap(s_c,q_c,a)| <= D` **uniformly in `a`** — the
+  quantifier the old argument never had.
+* **Superset polygon, exactly.** The mean is multilinear and each of its
+  three line coefficients depends on only `q` and two supports, so its
+  maximum over the box is attained at one of 8 corners and is enumerated
+  in exact rationals. With `C_i` those maxima and `a1, a2 >= 0`,
+  `mean(s,q,a) <= C0 + C1 a1 + C2 a2` for every fibre, so
+  `P = triangle AND {C1 a1 + C2 a2 >= m_lo - C0}` contains every
+  per-fibre feasible mass set; `m_lo` is an exact rational strictly below
+  the certified `m`.
+* **Width ladder over all 9,747 non-vacuous cells** (partials kept, r3
+  discipline): `2^-8` clears 939 (worst `-3.703843e-2`, cell `g1129|q1`);
+  `2^-10` clears 6,993 (worst `-6.980272e-3`, `g1120|q0`); `2^-12` clears
+  8,954 (worst `-4.882824e-4`, `g1120|q0`); **`2^-14` clears 9,747 of
+  9,747, worst `+1.102931e-3`** at `g1120|q0`. Largest fully-clearing
+  half-width **2^-14**, covered volume **3.498553938444495e-24** of
+  `[0,1]^7` (upper estimate; overlaps not disjointised). That is the same
+  box geometry as the withdrawn claim — the measure was never the issue,
+  the certificate was.
+* **Mutations, all three CAUGHT** (at the sweep's worst cell `g9|q8`):
+  `drop_support_drift` (omitting `sum_k L_k * width` inflates the bound to
+  `+1.546444e-3` against the sound `+1.410418e-3`);
+  `halve_support_lipschitz` (`+1.478431e-3` vs `+1.410418e-3`, so the
+  envelope magnitudes are load-bearing); `drop_mean_constraint` (widening
+  `P` to the bare triangle dips the bound to **`-0.2918575`**, so the mean
+  floor is load-bearing). Recorded as a DIAGNOSTIC and explicitly **not** a
+  gate: the retracted single-point radius, for comparison. My first attempt
+  made that a gate and it did not fire — at that cell the old radius
+  happens to be numerically smaller than the honest uniform drift. That is
+  a useful reminder that the retraction rests on the inverted inequality,
+  not on the old number being large.
+* **Byte stability and cost.** Two consecutive full runs of the final code
+  (1180.3 s for the pair, single core, `nice -n 19`) are **cmp
+  byte-identical**, file sha256
+  `105185e431bdef1bb00268a934608b9af005ee7f39025d24db969aec597ad040`,
+  internal digest
+  `1cacd377a2f4dc27d2c53cf71172cfc14f39977be8c2589d7dff5911dd625531`. No
+  timings or randomness enter the payload. (An earlier pair of full runs,
+  before the interior-box guard and scope text were added, was likewise
+  byte-identical at `f7ab8e2c...` / `62aa358c...` with identical clearing
+  counts and bounds; only the scope string changed.)
+* **Two soundness questions I was challenged on, both checked rather than
+  asserted.** (i) *Are the Lipschitz constants recomputed per box, or
+  reused from a wide intake?* Recomputed: `cover_cell` calls
+  `support_uniform_bounds(beta, geom_box, q_box, superset_tris)` and
+  `q_lipschitz(beta, geom_box, q_box)` fresh with that cell's own boxes and
+  that cell's exact polygon triangles. Measured proof that nothing is
+  frozen: at `g1117|q2`, `L_q` runs 0.214968 -> 0.140010 -> 0.121349 ->
+  0.116689 across `2^-8, 2^-10, 2^-12, 2^-14`, and `L_support` moves
+  `[0.4496, 0.8415, 0.6251, ...]` -> `[0.3939, 0.7775, 0.5157, ...]`; at
+  `g9|q8` the profile is completely different (`L_5 = 1.0366`, `L_0 ~ 0`).
+  None of these is the wide-intake `L_2 = [+/- 40.9]` or `L_q = 1.5375`
+  reported by the standalone envelope runners — those constants never enter
+  this cover. Reusing variation measured at one region is precisely the
+  error class just retracted, so it was worth falsifying explicitly.
+  (ii) *Does the interior-only support envelope silently drop boundary
+  cells?* No cell is dropped at any width in the ladder: grid supports are
+  `k/8` for `k = 1..7` and `h <= 2^-8 = 1/256`, so every support box stays
+  strictly inside `(0,1)`, and `cells_evaluated = 9,747` equals the `of`
+  count at every width. The requirement is now ENFORCED rather than
+  assumed: `cover_cell` raises `ValueError` if any support box touches 0 or
+  1 (verified: it fires at `h = 1/8` and not at `h = 1/256`), so the
+  method can never silently skip a cell. A genuine boundary stratum with
+  supports at 0 or 1 needs its own one-sided treatment and is explicitly
+  **not** covered; this is now stated in the report's `claim_scope`. `q`
+  boxes may touch `{0,1}` and are clipped one-sided, which is sound because
+  `q` never enters an entropy argument.
+* **Scope, unchanged and stated plainly.** These are neighbourhood
+  certificates around exact grid fibres. The union of `2^-14` boxes covers
+  `3.5e-24` of the ambient box, so the between-box continuum — support gaps
+  of roughly `1/8` minus two half-widths — is still open, and `r >= 4` is
+  untouched. **H2 is not proved.** The adopted route remains the exact
+  active-face `q` elimination recorded in the entry below, not further
+  subdivision.
+
+### RETRACTION-H2-BOX-COVER + EXACT q-ELIMINATION (2026-09-01) — THE "POSITIVE-MEASURE COVER" IS WITHDRAWN IN FULL (INVERTED INEQUALITY; ITS SOUND SIBLING IS VACUOUS AT 21652 FOR h=2^-10 AND 1.32 EVEN AT 2^-24). SELF-CORRECTION: MY MONOTONICITY CENSUS WAS BUGGY (DROPPED FACTOR 2 IN d pi/dx) — CORRECTED TO 56.997% ALL-SIX-DEFINITE WITH NO DIRECTION EVER DECREASING. THE RADIAL ACTIVATION LEMMA IS REFUTED (3,925/12,383 TRIANGLES NEGATIVE, WORST -0.1024); THE EXISTENTIAL FORM IS ARB-CERTIFIED ON 12,383/12,383 TRIANGLES (0 FAILURES) AND YIELDS THE EXACT ACTIVE-FACE IDENTITY Delta^2 G(q*) = u^2 F0 + v^2 F1 + u v T, VERIFIED TO 5.7e-17
+
+* **Outcome first — what is retracted.** The H2-BOX-COVER entry
+  (2026-08-31) claimed the 11,025 point certificates became a cover of a
+  positive-measure set: "all 9,747 non-vacuous cells clear at half-width
+  2^-14 (worst bound +9.36e-4); 2^-12 clears 8,502 and 2^-10 clears
+  5,666", covered volume 3.4986e-24. **Every one of those clearing
+  claims is withdrawn.** The per-cell certificate is not a lower bound.
+  `uc/liu9_h2_box_cover.py` certifies nothing about any box.
+* **The defect, exactly.** The function `radius_certificate` and the
+  `SOUNDNESS_ARGUMENT` string's step (vi) (line numbers as of the
+  pre-retraction file; the module now carries a banner docstring that
+  shifts them) assert, for each box
+  fiber `(s,q)`,
+  `min_P quad_{A(s,q)} >= quad_{A(s,q)}(a1*,a2*) - R`,
+  and justify it in-line with "the fiber quadratic's min over P is **<=**
+  its value at the P-point (a1*,a2*)". That justification proves the
+  **opposite** inequality: `min <= value at a point` yields no lower
+  bound whatsoever. `R = max(A.hi - c0lo, c0lo - A.lo)` is built from
+  `A = evaluate_arb(support box balls, q box ball, exact rational
+  (a1*,a2*))` — the oscillation of the gap over the box at the **single
+  fixed mass point** `a*`, the center fiber's argmin. Nothing in the
+  chain bounds the movement of the fiber quadratic's *minimizer* in the
+  mass directions, which is the whole content of the needed step. This is
+  an inequality-direction error, the same class as RETRACTION-H2-SASYM-CHAIN.
+* **Its own sound sibling is vacuous — measured, not asserted.** The
+  module's docstring step (6) states a genuinely sound bound,
+  `BOXBOUND := c0lo - sum_j width(band_j)` (sound because `A0` lies in
+  the band componentwise and `max|e_j| = 1` for `1, a1, a2, a1a2, a1^2,
+  a2^2` on `[0,1]^2`), but the code never uses it: `cramer_band` is
+  demoted to "a diagnostic", with the note "the radius is a rigorous
+  over-estimate of the oscillation affecting sharpness only, never
+  soundness". **That note is false.** I computed both bounds through the
+  module's own functions at cell `g1117|q2` (its 2^-14 worst cell):
+
+  | half-width | `c0_lower` (Arb) | `sum_j width(band_j)` | sound band bound | retracted radius bound |
+  |---|---|---|---|---|
+  | 2^-10 | -0.0047319090 | 21651.78 | -21651.79 | -0.0095069924 |
+  | 2^-12 | +0.0000451378 | 5412.80 | -5412.80 | -0.0011496688 |
+  | 2^-14 | +0.0012345006 | 1353.19 | -1353.19 | **+0.0009357365** |
+  | 2^-16 | +0.0015315352 | 338.30 | -338.30 | +0.0014568402 |
+  | 2^-18 | +0.0016057746 | 84.57 | -84.57 | +0.0015871007 |
+  | 2^-20 | +0.0016243333 | 21.14 | -21.14 | +0.0016196648 |
+  | 2^-24 | +0.0016301328 | 1.3215 | -1.3198 | +0.0016298410 |
+
+  Same shape at `g397|q7` (band 21816.93 at 2^-10, 1.3316 at 2^-24) and
+  at the sweep's worst cell `g9|q8` (13326.46 / 0.8131). **Cause:** the
+  quadratic is extracted by Cramer inversion of a 6-point design at
+  spacing `H_STEP = 1/400`, so the inverse entries carry `~400^2 = 1.6e5`
+  and every interval width is amplified by that factor. Against a margin
+  of `1.6e-3`, the sound bound needs `h ~ 2^-34`; box volume
+  `(2^-33)^7 ~ 1e-70`. There is no affordable width at which the sound
+  form of this method certifies anything, so the retraction is total, not
+  a narrowing of the width ladder.
+* **What is NOT affected.** The underlying point sweep
+  `uc/liu9_h2_qp_sweep.py` -> `liu9-h2-qp-sweep.json` (11,025 cells,
+  9,747 non-vacuous, worst certified min **+1.6305194440926081e-3** at
+  `g1117|q2`) stands unchanged: it fixes supports and q at **exact
+  rationals**, so no box relaxation enters, and its mass polygon
+  `{triangle} AND {mean >= FLOOR_HI}` is a genuine superset of
+  `{mean >= m}`. H2's status is unchanged by this retraction — it was
+  open before and is open now — but the certified set drops back to
+  measure zero.
+* **Replacement machinery: sound design, honest reach.** I built and
+  measured a first-order envelope that never bounds mass behavior at a
+  single mass point. Per box: (i) enclose each support/q partial over the
+  box; (ii) pick, per direction, the support endpoint dictated by the
+  certified derivative sign (lower endpoint where the partial is >= 0),
+  giving an EXACT rational reference geometry at which the sweep's KKT
+  machinery runs unmodified; (iii) for the masses, use the exact
+  **two-polygon** superset — `q` at each of its two box endpoints with
+  all six supports at their UPPER endpoints — which is valid because the
+  mixture mean is coordinatewise increasing in every support and affine
+  in `q` at fixed supports, so all other corner half-spaces are
+  dominated (128 corner polygons collapse to 2, exactly); (iv)
+  triangulate each polygon at its exact rational vertices and bound each
+  mixed-sign direction by a Bernstein quadratic-form penalty over the
+  triangle. **The reach numbers I first recorded here are withdrawn** —
+  see the self-correction bullet below: the support-endpoint selection in
+  step (ii) was driven by a derivative formula of mine that was wrong, so
+  the figures `+5.85e-4 at 2^-11` / `-4.63e-4 at 2^-10` for cell
+  `g1117|q2` are not valid and the design's true reach is unmeasured. The
+  design itself — endpoint selection under a certified sign, exact
+  two-polygon mass superset, per-triangle Bernstein penalty — is
+  unaffected and remains sound.
+* **The dominant loss is mean/objective decoupling, not derivative
+  slack.** The mechanism is independent of any derivative sign: the
+  superset polygon must take the box's UPPER support endpoints (to keep
+  `{mean >= m}` a superset) while the objective is evaluated wherever the
+  signs send it, and at half-width 1/16 those differ by a mean shift of
+  1/8, which swamps a margin of 1.6e-3. Fixing that decoupling — not
+  shrinking boxes — is the live lever; the specific `-0.1306` figure I
+  first recorded is withdrawn with the rest of the buggy-sign numbers.
+* **Lagrange dualization of the mean constraint is REFUTED as a route.**
+  Replacing `{M >= m}` by `G - lambda(M - m)` keeps correlation and
+  leaves a mass quadratic, but the quadratic is nonconvex, so duality has
+  a gap: at `g1117|q2` with the KKT-implied `lambda = 0.9979366976`, the
+  Lagrangian's minimum over the full simplex is **-0.0210236600** at the
+  vertex `(0,0)`, against the primal cell minimum `+1.63e-3`. Recorded so
+  it is not retried.
+* **Two structural facts that survive and are worth proving.**
+  (a) **Support monotonicity is FALSE universally; the existential form is
+  now MACHINE-VERIFIED in Arb.** My first census here claimed all six
+  partials weakly nonnegative on all 12,383 triangles (`{+1: 12383}`);
+  **that was my own bug and is retracted** (see the self-correction
+  bullet). `SupportEnvelope` then ran the definitive census in Arb at
+  `ctx.prec >= 320`, at exact point supports and exact point `q`, over all
+  9,747 non-vacuous cells and all 12,383 fan triangles of the exact mass
+  polygons — no boxes, so no interval slack to fight. Results, and they
+  supersede my float64 numbers wherever they differ (Arb is the
+  authority and is strictly more conservative):
+  * **Partial `d gap/d b_k`** (the object the lemma consumes): `k=0,3` ->
+    12,383 weakly nonnegative, 0 undecided; `k=1,4` -> 11,145 nonnegative,
+    1,238 undecided; `k=2,5` -> 6,871 nonnegative, 5,512 undecided.
+    Totals: 60,798 definite, 13,500 undecided, 9,030 degenerate-zero
+    (1,505 per direction: every `k<3` at `q=1` and every `k>=3` at `q=0`,
+    where the component weights vanish identically).
+  * **Weight-cleared `G_k`** (the monotonicity object, and not implied by
+    the partial's sign when `w_k` varies): `k=0,3` -> 12,383 nonnegative,
+    0 undecided; `k=1,4` -> 11,030 / 1,353; `k=2,5` -> 8,688 / 3,695;
+    64,202 definite, 10,096 undecided, zero degenerate (`G_k` carries no
+    weight factor, so it is never identically zero).
+  * **`nonpos = 0` in every direction in both censuses** — no direction is
+    ever certified decreasing — yet **no direction is sign-definite over
+    the whole grid either**, so universal support monotonicity is FALSE.
+  * Worst nondegenerate margin exactly **0** (cell `g2|q8`, `k=3`), the
+    deflation boundary where `w_j` vanishes on a simplex edge.
+  * 64 undecided entries are listed with full exact coordinates (cell,
+    `q`, geometry, triangle vertices, node values, Bernstein
+    coefficients, hull endpoints), `truncated = true`.
+  **The EXISTENTIAL statement the activation lemma actually needs holds
+  with zero failures:** on **12,383 of 12,383** triangles there exists `k`
+  with `w_k > 0` on the triangle and Bernstein lower bound of
+  `d gap/d b_k` at least 0 — `ok = 12383, fail = 0`. This is Arb, not
+  float64, and it is the load-bearing input. The `q`-derivative census is
+  independent of my bug (computed from gap values) and stands at
+  10,721/12,383 = **86.58%** (DISCOVERY, float64).
+  (b) **The mean constraint is ACTIVE at the minimum.** Two independent
+  lines. From the certified sweep artifact itself (so this part rests on
+  Arb, not on a float search): of the 9,747 non-vacuous cells, **9,670
+  (99.21%) attain their certified minimum on the mean face**, and **all
+  9,747 attain it at a polygon vertex** (`min_family` is `vertex` for
+  every cell); the 77 exceptions are consistent, because at frozen
+  supports the mean constraint may be slack — the lemma below acts across
+  the support directions, not within a fiber. From a 9-variable projected
+  continuum search (600 restarts, mean-feasible throughout; DISCOVERY):
+  minimum gap **+1.3536588647160563e-3** at mean slack **2.1498e-6**,
+  numerically zero. Together with (a) this gives an **activation lemma**,
+  and the correct form is a statement about VALUES, not about uniqueness:
+  the feasible set is compact and `G` continuous, so a minimizer exists;
+  from any minimizer with `M > m`, pick a direction `k` with `w_k > 0` and
+  `d gap/d b_k >= 0` — which exists at every point by the existential
+  census in (a) — and lower `b_k` continuously toward 0; masses and `q`
+  are untouched so feasibility is retained, `gap` is nonincreasing along
+  the path, and `M` strictly decreases. Repeat across directions if one
+  coordinate bottoms out; since lowering all supports to 0 drives `M` to
+  `0 < m`, the intermediate value theorem puts a point of the path on
+  `{M = m}`. Hence a minimizer exists on `{M = m}` and
+  `min over {M >= m} = min over {M = m}`.
+  Only the weak, EXISTENTIAL sign statement is needed (`>= 0`, admitting
+  the exact zeros where a weight vanishes); neither strictness nor uniform
+  monotonicity in all six directions is required, which is precisely why
+  the corrected census in (a) still supports the lemma. Two honest gaps
+  remain in it: the chosen `k` must also have `b_k > 0` to be lowerable,
+  so the exact hypothesis is "at every feasible point with `M > m` there
+  exists `k` with `w_k > 0`, `b_k > 0` and `d gap/d b_k >= 0`"; and the
+  existential census is grid-only, so the path leaves the measured set as
+  soon as supports move off the `k/8` grid.
+* **The RADIAL form of the lemma is REFUTED — recorded so it is not
+  retried.** A subagent proposed the cleaner deformation `b(t) = (1-t)b`,
+  which scales all supports at once and gives `M(t) = (1-t)M`, hitting
+  `M = m` exactly at `t = 1 - m/M`. Its derivative is
+  `dG/dt = -sum_j b_j (d gap/d b_j)`, so it needs only the single scalar
+  Euler condition `sum_j b_j (d gap/d b_j) >= 0` — strictly weaker than
+  all six signs. **It fails.** Because that Euler sum is an exact
+  quadratic in the masses at frozen supports and `q`, I minimized it
+  EXACTLY per triangle (three vertices + three edge criticals + interior
+  critical; quadratic-fit residual `5.55e-16`, confirming exactness rather
+  than relying on a Bernstein hull): **3,925 of 12,383 triangles have a
+  strictly negative minimum**, global worst **-0.10240072439008191** at
+  cell `g4|q8`, geometry `(1/8,1/4,3/8 | 1/8,1/4,7/8)`, `q = 1` — the same
+  cell that produced the individual negative partial. So radial shrinking
+  can strictly increase the gap, and only the greedy one-coordinate-at-a-
+  time path remains viable.
+* **Exact `q` elimination on the active face (subagent derivation, my
+  independent re-verification).** With `Delta = M1 - M0`, `u = M1 - m`,
+  `v = m - M0`, the mean equation pins `q* = (m - M0)/Delta` (admissible
+  iff `(M0 - m)(M1 - m) <= 0`) and clearing the denominator gives the
+  denominator-free identity
+  `Delta^2 G(q*) = Phi = u^2 F0 + v^2 F1 + u v T`,
+  where `F0`, `F1` are the endpoint gaps and
+  `T = 2(1-beta)A01 + beta(B00 + B11) - H0 - H1 = 2 F01 + c`. I checked it
+  numerically and independently: `max |Delta^2 G(q*) - Phi| = 5.72e-17`
+  over 400 random admissible draws. So the correct mean-aware bound is
+  `T >= -(u/v) F0 - (v/u) F1` at the single ratio `u/v` fixed by the
+  endpoint means — NOT the all-`q` Cauchy bound `T >= -2 sqrt(F0 F1)`,
+  which is false on this domain (exact one-atom refutation
+  `P0 = delta_{3/4}`, `P1 = delta_0`: `F0 = 0.121842098573...`, `F1 = 0`,
+  `T = -0.494904667954...`, and the polynomial only goes negative outside
+  the feasible window `q <= 1 - 4m/3 = 0.176945...`; Arb gives
+  `G(1/6) = +0.0158758` at mean `5/8 > m` and `G(1/5) = -0.00120580` at
+  mean `3/5 < m`). In size-biased form
+  `Phi = (u^2 I00 + 2 u v I01 + v^2 I11)/m + u v c` with
+  `c = beta(B00 + B11 - 2 B01)`; the first three terms are nonnegative for
+  `u, v >= 0`, so the sole unresolved absorption is the sign-indefinite
+  channel term `u v c`. At fixed supports
+  `Phi = a^T (u^2 L_x + u v R + v^2 L_y) a` is a homogeneous ternary
+  QUARTIC in the masses (since `u`, `v` are affine on the simplex), which
+  is the natural target for a rational degree-4 Handelman/Bernstein
+  copositivity certificate on the polygon
+  `{a_i >= 0, sum a_i = 1, u >= 0, v >= 0}` — not for joint SOS, because
+  `h(x_i x_j)` and `h(pi(x_i,x_j))` stay transcendental in the supports.
+  The `Delta = 0` stratum is separately exact: the mean is `q`-free, and
+  with `d = F0 + F1 - T`, `b = T - 2 F0` the four cases are `d <= 0` ->
+  `min(F0,F1)`; `d > 0, b >= 0` -> `F0`; `d > 0, b + 2d <= 0` -> `F1`;
+  and the interior vertex `d > 0, b < 0 < b + 2d` -> value
+  `(4 F0 F1 - T^2)/(4(F0 + F1 - T))`. Cases 1-3 are already discharged by
+  the universal size-biased theorem (`F(P) >= 0` for every law of mean
+  `>= m`, and the channel vanishes at `q in {0,1}`), so the only new
+  `Delta = 0` obligation is `4 F0 F1 - T^2 >= 0` on `M0 = M1 >= m` under
+  the interior-vertex sign conditions. The continuum minimum `+1.354e-3`
+  is consistent with the tightest grid cell `+1.6305e-3`.
+* **Why brute force cannot close the continuum.** The sound envelope's
+  reach is now unmeasured (my reach figures are withdrawn above), so the
+  precise box count is unknown; but the order of magnitude is not in
+  doubt. At any half-width `2^-w` the cover from the 1/8 grid costs
+  `(2^w/2^4)^7` boxes per macro cell — `128^7 ~ 5.6e14` at `w = 11`, and
+  even restricted by the activation lemma to the 6-dimensional surface
+  `{M = m}` it is `128^6 ~ 4.4e12`. The continuum extension needs an
+  analytic reduction, not more compute — which is why the `q`-elimination
+  route (below) is the adopted direction rather than subdivision.
+* **SELF-CORRECTION (found by my own subagent, not by me).** The first
+  version of this entry claimed uniform support monotonicity, `{+1:
+  12383}` on all six directions, and used it to pick support endpoints in
+  the replacement envelope. `SupportEnvelope`, running an independent Arb
+  port of `liu9_boundary_layer.closed_form_partial`, refused to reproduce
+  it and produced a counterexample: cell `g4|q8`, geometry
+  `(1/8,1/4,3/8 | 1/8,1/4,7/8)`, `q = 1`, masses `(0,0,1)`. I adjudicated
+  it against the repository's own authority and the subagent was right:
+  `closed_form_partial` gives `d gap/d b5 = -0.117029399303`,
+  `closed_form_factor` gives the same (the weight is 1 there), and a
+  25-digit central finite difference of `gap_mp` returns
+  `-0.117029399303`. **My probe had used
+  `d pi/dx = y(2 - 2x - y + xy)` when the correct derivative of
+  `pi(x,y) = xy + x(1-x)y(1-y)` is
+  `d pi/dx = y[1 + (1-2x)(1-y)] = y(2 - y - 2x + 2xy)`** — a dropped
+  factor 2 on the `xy` term. With the factor restored my own hand
+  computation reproduces `-0.117019` at that point. Everything downstream
+  of the buggy sign is withdrawn above (the `{+1: 12383}` census, the
+  `2^-11`/`2^-10` reach figures, the `-0.1306` decoupling figure, and a
+  full-simplex `31.16%` comparison). Unaffected, because they never
+  touched that formula: the box-cover retraction itself (a code-reading
+  and interval-width argument), the `q`-derivative census, the mean-face
+  counts from the sweep artifact, the Lagrange-duality refutation, and the
+  corrected existential census that now carries the activation lemma.
+* **New artifacts, each re-run and verified by me (not taken on report).**
+  (1) `uc/liu9_h2_envelope_common.py` — the shared exact degree-2
+  Bernstein layer: nodal->Bernstein map, `simplex_range`,
+  `simplex_abs_upper`, and `triangle_nodes(triangle)` mapping the six
+  nodes barycentrically onto an arbitrary exact-rational triangle
+  (Fraction in, Fraction out; zero-area triangles raise). Exact when all
+  inputs are rational, Arb under a `ctx.prec >= 320` guard otherwise. My
+  run: **13/13 self-checks True, `selfcheck OK`, exit 0**, including
+  `triangle_nodes_reproduces_mass_nodes`, a containment grid on the
+  non-dyadic triangle `(1/3,2/5),(1,2/5),(1/3,7/5)`, and three mutations
+  rejected (edge-coefficient factor, node ordering, midpoint order).
+  Barycentric invariance is what licenses per-triangle use: the degree-2
+  basis is nonnegative and sums to 1 on any barycentric triple, so the
+  convex-hull bound holds per triangle and a union over a triangulation
+  bounds the whole polygon.
+  (2) `uc/liu9_h2_support_envelope.py` ->
+  `liu9-h2-support-envelope.json` — an Arb interval port of
+  `closed_form_partial` (monotone-corner exact ranges for `h'`, `pi`,
+  `pi_1`). My run: exit 0, **6/6 point probes contained** at 100 dps, both
+  mutations caught (`wrong_cross_factor`, `paired_component_swap_plus_pi_sign_flip`),
+  interior rejection enforced. Its first delivery covered only ONE frozen
+  geometry, which I rejected as too narrow; the module now carries the
+  **full-grid census** over all 9,747 cells and 12,383 triangles reported
+  in (a) above. My independent re-run: exit 0, 54.1 s single core,
+  `existential ok=12383 fail=0`, `report_sha256
+  60c5ce99f35fdf055a61af73326b0e90fd8048868a48797470b359211b02597d`
+  matching its reported digest, byte-stable. Its wide-box Lipschitz
+  constants remain vacuous by its own admission (`L_2 = [+/- 40.9]`,
+  box-crossing drift `[+/- 21.7]`) and are explicitly labelled not
+  load-bearing — correctly, since the certificate that matters is the
+  boxless per-triangle sign census at exact supports and `q`.
+  (3) `uc/liu9_h2_q_envelope.py` -> `liu9-h2-q-envelope.json` — the `q`
+  direction: exact per-fiber `q`-quadratic by 3-point Vandermonde on
+  certified balls with residual containment at `q = 1/3, 2/3` on two mass
+  fibers (widths ~1e-94), a dual-Arb `q` partial through
+  `liu9_objective._formula` (no finite difference in any claim path),
+  uniform `q` Lipschitz `L = [1.5375227174441131 +/- 2.7e-26]` over the
+  full mass simplex, drift `[0.19219033968051414 +/- 2.0e-21]` on span
+  1/8, and exact `q`-point minimization. My run: exit 0, `claim_status
+  Q-ENVELOPE-CERTIFIED`, **both mutations FAIL as required**
+  (`drop_cross_component_q_derivative`, `coef_perturbed_1e-6`),
+  `report_sha256 1c9cacfc...` matching its reported digest. It found and
+  fixed two real bugs mid-build (a wrong `C`-coefficient row of the
+  Vandermonde inverse, and per-fiber extraction) via its own residual
+  guard. Its drift is `q`-direction only, uniform over masses.
+  I also corrected a false citation it was about to ship: it had written
+  `c_ch >= 0`, which is refuted — the certified most-negative channel
+  scalar is `c = -0.02755` at a mass vertex on all 1,225 geometries. The
+  correct endpoint authority is that `q(1-q)` vanishes exactly at
+  `q in {0,1}` plus the universal size-biased theorem, which covers BOTH
+  endpoint faces.
+* **Cost and verification.** All numbers above were produced this session
+  by running the repo's own modules (`liu9_h2_box_cover.radius_certificate`,
+  `cramer_band`, `band_width_sum`, `design_value_boxes`,
+  `liu9_h2_qp_sweep.extract_quadratic` / `kkt_candidates` / `kkt_min`,
+  `liu9_objective.evaluate_float64` / `evaluate_arb`) at `ctx.prec = 320`;
+  the retraction itself rests on reading the `radius_certificate` body and
+  the `SOUNDNESS_ARGUMENT` text, not on a numerical disagreement.
+* **Artifact disposition.** `uc/liu9_h2_box_cover.py` now opens with a
+  RETRACTED banner, imports `Optional`/`Sequence`, and its `main` refuses
+  to run without `--retracted-replay` (bare run prints the notice and
+  exits 3; observed). The replay was executed once (181.8 s, exit 3) to
+  overwrite the stale artifact
+  [`liu9-h2-box-cover.json`](uc/verification/results/liu9-h2-box-cover.json),
+  which previously carried `claim_status:
+  ALL-CELLS-BOX-COVER-CERTIFIED`; it now carries `claim_status:
+  RETRACTED`, a `retraction` field, `RETRACTED - ` prefixes on `claim`
+  and `verdict`, and internal digest
+  `b898bbce16bfc076b9280dc3fa49d9546343aac544f18eba3f7085702fe7aa45`. The
+  clearing counts remain in the payload for audit, explicitly labelled
+  "RETRACTED, not a bound".
+
+### H2-C-CHARACTERIZED (2026-08-31) — THE q-FREE SCALAR IS EXACTLY A MASS QUADRATIC FORM c = beta<a,Ha> (PROVED r=2 AND r=3, RESIDUAL 0); DIAGONAL VANISHING PROVED; CERTIFIED MOST-NEGATIVE c = -0.02755 ATTAINED AT A MASS VERTEX ON ALL 1,225 GEOMETRIES; AND THE DOMINATION RATIO q(1-q)|c|/MARGIN IS CERTIFIED <= 0.8389 WITH ZERO DANGER CELLS
+
+* **Outcome first.** The advisory's ask — characterize c exactly, bound
+  |c| against the F margin — is now a certified artifact.
+  `uc/liu9_c_characterization.py` (1,068 lines, tool sha
+  894f7e6f9bbd316a) ->
+  [`liu9-c-characterization.json`](uc/verification/results/liu9-c-characterization.json)
+  (file sha afe085c9ab8b9a72, internal canonical digest
+  10b44257c84922e43e1d17dcbce0e158ce7636966c3234bc90771611b4a204bc).
+  Main re-ran it: exit 0, 25 s, **byte-identical**, and independently
+  **recomputed the canonical digest from the payload — it matches**.
+* **(1) Matrix form PROVED, residual exactly 0.**
+  `c = beta <a, H a>` with `H_ij = K(x_i,x_j) + K(y_i,y_j) - 2K(x_i,y_j)`,
+  `K = h o pi`: proved at **r = 2** by a fresh four-atom raw-gap +
+  discharge derivation in a 28-symbol canonical free log basis, and at
+  **r = 3** in the 54-symbol basis, where it also reduces to the
+  already-certified `liu9_paired_class_c` remainder with residual 0.
+* **Correction to my own brief (the agent was right).** I told it `H` is
+  symmetric. **It is not:** `K(x_i,y_j) != K(x_j,y_i)` in general, so
+  `H_ij != H_ji`; the quadratic form only ever reads the **pair sums**
+  `H_ij + H_ji`, and the pair-sum coefficients were verified against
+  direct bilinear evaluation to radius 2.7e-95. Anyone building on the
+  matrix form must symmetrise explicitly.
+* **(2) Diagonal vanishing PROVED, not sampled.** At r = 2 and r = 3 the
+  duplicated-atom collapse makes every entry
+  `K_ij + K_ij - 2K_ij = 0` identically, so `c ≡ 0` on `y = x`. The
+  q-independence consequence is Arb-certified: the q and q^2 coefficients
+  of the certified gap are **exact zero balls** on five diagonal
+  geometries, including `(0,1/2,1)` and `(0,1/4,1)` and including vertex
+  masses. Honesty note kept from the report: my own 60-dps spreads were
+  bitwise `0.0`, but the 200-dps k/8 spreads are ~1e-201 **roundoff, not
+  bitwise zero** — the symbolic identity is the proof, the numerics are
+  corroboration.
+* **(3) Closed-form simplex extremes of c, certified on 1,225
+  geometries.** Candidate classes: vertices + 1D edge criticals +
+  interior stationary point (6,271 candidates, 3,815 feasible).
+  Certified **most negative c = -0.027550630591841221502363089
+  +/- 4.14e-28** at geometry `(1/8,1/4,3/8 | 1/8,1/4,7/8)` with argmin
+  `a = (0,0,1)` — a **mass vertex**, not interior; most positive
+  `+0.014700654085885541783238127` at `(1/8,1/4,3/8 | 5/8,3/4,7/8)`.
+  **Structural finding:** the minimising family is `vertex` for **all
+  1,225** geometries — on this grid the channel's simplex minimum always
+  concentrates mass on a single atom. Cross-artifact consistency: the
+  minimiser puts all mass on the largest support (y3 = 7/8), the
+  D-floor configuration, and -0.02755 sits inside the independently
+  certified D-cover envelope (-0.0833 beta-scaled).
+* **(4) The domination ratio — the advisory's second ask, answered.**
+  Over the 9,747 solved sweep cells (1,278 infeasible skipped), the
+  worst certified ratio `q(1-q)|c| / margin` is **0.838883838221919 < 1**,
+  attained at cells `g1117|q4` and `g1151|q4` (q = 1/2, geometry
+  `(1/2,5/8,3/4 | 1/2,5/8,7/8)` and its x<->y mirror); third place
+  `g1098|q4` at 0.8212. **Zero danger cells: no ratio reaches 1 anywhere
+  on the certified grid.** Worst absolute channel damage
+  `q(1-q)|c| = 6.887535095401706e-3` at `g4|q4`.
+* **Read the ratio precisely (my caveat, not the agent's).** The
+  numerator is the max over masses of the channel magnitude; the
+  denominator is the sweep's per-cell certified **min over masses of the
+  total gap**. The two are attained at different mass points, so the
+  ratio is a **headroom diagnostic**, not an independent proof of the
+  margin — the margin itself is proved by the sweep and box cover. What
+  it does establish quantitatively: even the worst-case channel damage
+  available anywhere on the mass simplex stays ~16% below the certified
+  total margin on the tightest certified cell, which is the first
+  quantitative statement of the form "the channel cannot eat the F
+  margin" on this grid.
+* **Mutations 3/3 detected:** `M1_r2_diagonal_cross3` (residual_terms 6),
+  `M2_r3_gap_atom_swap_y2y3` (residual_terms 1,770),
+  `M3_nondiagonal_not_q_independent` (q/q^2 no longer zero balls).
+* **Reporting defect, recorded.** The agent's own IRC summary quoted
+  `report_sha256 = 76f4375c...`, which does not resolve against the
+  artifact; the true internal digest is `10b44257...` (recomputed by
+  Main from the payload). The artifact is sound; the message was stale.
+  Same class as the earlier fabrication episode, caught the same way —
+  by recomputing rather than trusting a quoted hash.
+* **What is still open on this front.** Everything above is the k/8
+  ordered grid, pointwise in the support directions (the box cover
+  supplies 2^-14 neighbourhoods for the margin, not for these c
+  extremes), and r <= 3. The ratio's headroom is not a proof of
+  domination in the continuum, and `H`'s non-symmetry means any
+  eigenvalue-style argument must work with the symmetrised pair-sum
+  matrix.
+
+### CITATION-CORRECTION-H2-LIVE-TARGET (2026-08-31) — MY REMEDIATION ENTRY REPEATED A SUPERSEDED OBLIGATION STRING; THE LIVE WALL IS THE SCALAR MARGIN, NOT THE REFUTED BLOCK KERNEL. PLUS TWO CROSS-CHECKS: DIAGONAL q-CONSTANCY CONFIRMED EXACTLY, AND THE SHORTCUT c = -Q2 IS REFUTED
+
+* **Correction.** The REMEDIATION-VERIFIED entry (2026-08-30) closed item
+  (a) by quoting the channel-insertion report's own sentence, which
+  points at "the open block-copositivity obligation recorded in
+  `liu9-block-kernel.json`". That JSON's `remaining_obligation` field is
+  the **SUPERSEDED** framing: per
+  [`uc/LIU9_BLOCK_COPOSITIVE_2026-08-29.md`](uc/LIU9_BLOCK_COPOSITIVE_2026-08-29.md)
+  section 6, the displayed 2x2 block kernel is not an identity of the raw
+  gap (worst mismatch 0.168, missing every cross-component entropy
+  h(x_i y_j)), and that file's `refuted_routes[0] = "k_pi is PSD"`
+  conflated kernel-level PSD with block-level PSD. A copositivity
+  certificate for the displayed kernel would be **true-but-irrelevant**,
+  the same error as the k_pi/PSD precedent. **The live target is and
+  remains the scalar margin `F(P_mix) + q(1-q)c >= 0` with c the q-free
+  scalar.** No work in this session targeted the refuted object — the
+  sweep, box cover, face, c(x) family and D-cover all certify the scalar
+  margin or its ingredients — but the citation was wrong and is corrected
+  here. `liu9-block-kernel.json` is a frozen artifact and is NOT edited;
+  its `remaining_obligation` string must not be cited as live.
+* **Cross-check 1 (CONFIRMED, exact).** On diagonal geometries y = x the
+  gap is **exactly q-constant**: spread 0.0 bitwise at 60 dps for
+  geometries (1/4,1/2,3/4) and (1/8,5/8,7/8) at masses (3/10,2/5) over
+  q in {1/10,1/2,9/10}. This is the sharp form of "c vanishes on the
+  diagonal": P0 = P1 makes the mixture q-independent, so the channel can
+  contribute nothing.
+* **Cross-check 2 (REFUTES a shortcut before it could be used).** The
+  identification `c = -Q2` (the q^2 coefficient of the gap) is **FALSE**.
+  The H-form `c = beta<a,Ha>`, `H_ij = K(x_i,x_j)+K(y_i,y_j)-2K(x_i,y_j)`,
+  gives -1.0087e-3 / -2.4524e-3 / -1.2917e-3 / -1.7699e-3 on four
+  configurations where `-Q2` gives +9.9244e-3 / +2.44205e-2 /
+  +1.24669e-2 / +1.67340e-2 — ratio near -beta but off by 1.5%, 0.3%,
+  3.4% and ~6%. Conclusion: **`F(P_mix(q))` is not affine in q**; it
+  carries its own q^2 curvature, so the gap's q-quadratic coefficients
+  mix F and channel and cannot be used to read off c. Certified
+  extraction must go through `F(P_mix)` explicitly (the
+  `liu9_block_copositive.py` / `liu9_paired_class_c.py` method) or verify
+  the H-form in the free log basis. Note this does NOT affect
+  `liu9_zerosup_face.py`, which used the gap's own q-quadratic as a
+  quadratic and never identified Q2 with the channel.
+* **Adopted next action (unchanged in kind, sharpened).** Characterize c
+  exactly for r <= 3: the H-form identity with residual, diagonal
+  vanishing as an identity, closed-form extremes of the pure quadratic
+  form `beta<a,Ha>` over the mass simplex, and the certified ratio
+  `q(1-q)|c| / F(P_mix)` per geometry cell — i.e. bound |c| against the
+  F margin, which is the memo's probes (i)-(iii) in certified form.
+  Dispatched to a dedicated agent this session.
+
+### H2-BOX-COVER (2026-08-31) — **RETRACTED 2026-09-01, IN FULL** — THE 11,025 POINT CERTIFICATES BECOME A POSITIVE-MEASURE COVER: ALL 9,747 NON-VACUOUS CELLS CLEAR AT HALF-WIDTH 2^-14 (WORST BOUND +9.36e-4); 2^-12 CLEARS 8,502 AND 2^-10 CLEARS 5,666, BOTH PARTIALS REPORTED; COVERED VOLUME IS 3.5e-24 OF THE AMBIENT BOX — H2 REMAINS OPEN
+
+> **RETRACTED — do not cite any clearing count, bound, or volume below.**
+> The per-cell certificate is not a lower bound: `radius_certificate` /
+> `SOUNDNESS_ARGUMENT` step (vi) asserts `min_P quad_{A(s,q)} >=
+> quad_{A(s,q)}(a*) - R` while justifying it with "the min over P is
+> **<=** its value at the P-point", an inverted inequality; `R` bounds
+> the gap's oscillation only at the single fixed mass point `a*`, never
+> the movement of the fiber minimizer in the mass directions. The
+> module's sound alternative (`c0lo - sum_j width(band_j)`) is vacuous at
+> every affordable width (band width 21651.78 at 2^-10, 1.3215 at 2^-24,
+> against a 1.6e-3 margin), because the 1/400-spaced Cramer extraction
+> amplifies interval width by ~400^2. See `RETRACTION-H2-BOX-COVER`
+> (2026-09-01) at the head of this ledger. The point sweep
+> `liu9-h2-qp-sweep.json` it was built on is unaffected.
+
+* **Outcome first.** The grid-point weakness named in the previous entry
+  is now partially repaired: every one of the 9,747 non-vacuous sweep
+  cells carries a **certified box** in the seven directions
+  (x1,x2,x3,y1,y2,y3,q) at half-width 2^-14, so the certified set has
+  **positive measure** instead of measure zero. It is still a vanishing
+  fraction of the parameter space (3.5e-24), so **H2 is not closed** —
+  but the statement changed kind, from "point certificates" to "a cover
+  of a positive-measure subset".
+* **Artifact.** `uc/liu9_h2_box_cover.py` (891 lines, sha
+  248c3fb55910d96e) ->
+  [`liu9-h2-box-cover.json`](uc/verification/results/liu9-h2-box-cover.json)
+  (sha 2fcfb59839cf79ae, internal
+  fa24727e3c52f1f0d5c319ee93da8118e4c000bd2dbee443b8d1599fb523294b).
+  Main re-ran it: exit 0, 163 s, **byte-identical** report.
+* **Why the bound is sound (the part that could have been faked and
+  was not).** With supports and q ranging over a box the six mass-quadratic
+  coefficients become intervals, so the midpoint KKT value is NOT a
+  certificate. The module instead: (i) computes the exact-rational mean
+  **drift** triple over the box by corner enumeration of the multilinear
+  mean; (ii) builds a **tilted-chord superset polygon**
+  `P = triangle AND {(c1+D1)a1 + (c2+D2)a2 >= M_LO - (c0+D0)}` with
+  `M_LO < m.lower()` exact rational, which contains every true
+  per-point feasible set over the box; (iii) KKT-solves the cell's exact
+  centre quadratic over `P` (the sweep's candidate list, ball-verified);
+  (iv) encloses the **value box** by Arb-evaluating the gap with support
+  and q as balls at the exact argmin, giving radius
+  `R = max(A.hi - c0lo, c0lo - A.lo)`; (v) certifies
+  `BOXBOUND = c0lo - R >= 0`. The radius scales linearly in the
+  half-width, which is exactly why 2^-10 fails and 2^-14 clears.
+* **Per-width table, reported in the r3 discipline (partials kept, not
+  dropped).** 2^-14: **9,747/9,747 cleared**, worst bound
+  **+0.0009357364757194093** at cell g1117|q2 (q = 1/4). 2^-12: 8,502 /
+  9,747, worst -0.0011496688 at g1117|q7. 2^-10: 5,666 / 9,747, worst
+  -0.0095509261 at g397|q7. The failures are interval slack, not
+  negative gaps — no box bound at the clearing width is negative, so the
+  200-dps `gap_mp` escalation path never fired and **no candidate
+  counterexample exists**.
+* **Measure accounting, stated without flattery.** Covered volume
+  = 4331/1237940039285380274899124224 = **3.4986e-24** of [0,1]^7
+  (upper estimate of the union; overlaps not disjointised). Grid
+  coverage 9,747/9,747 non-vacuous, 9,747/11,025 of all cells. The
+  between-box gaps — roughly 1/8 minus two half-widths per support
+  direction — remain uncovered, and r >= 4 is untouched.
+* **Mutations.** `coef_perturbed_1e-6` and `drop_mean_chord_constraint`
+  both FAIL as required at the worst-margin cell.
+* **Where H2 now stands.** Certified: exact structure (bidegree-(2,2)),
+  exact mass/q argmin machinery, 9,747 positive-measure boxes with zero
+  negatives, the zero-support face on two reduced families, Family A,
+  curve-II, the c(x) < 0 classification, the D-channel cover. Open: the
+  between-box continuum (needs either a Lipschitz/monotone envelope in
+  the support directions strong enough to bridge 1/8-wide gaps, or a
+  refined grid at 2^-14 spacing — the latter is ~2^11 times more cells
+  per direction and is not affordable as written), and r >= 4.
+
+### CAMPAIGN-K-CERTIFIED (2026-08-31) — `COMPOSITE CERTIFICATE` PRINTED, EXIT 0: ALL 16 TRACES REPLAYED, 805,542,368 BOXES RE-DERIVED AND RE-PROVED IN ARB; THE CERTIFIED CONSTANT STRENGTHENS FROM $\psi+10^{-4}$ TO $\psi+3\times10^{-4}$ AT RATIONAL t = 0.3822660112501052
+
+* **Outcome first.** The frozen collector finished and printed
+  `COMPOSITE CERTIFICATE: Phi >= 0 on the feasible 5-parameter family at
+  certified rational t = 0.3822660112501052 >= exact psi + 0.0003 over
+  w in [1/2,1]`, with the proved orbit-swap symmetry extending the
+  statement to w in [0,1]. Exit code 0. This is the headline the campaign
+  ladder has been chasing since Campaign J closed with NO CERTIFICATE.
+* **What the checker actually verified** (its own printed list): exactly
+  one fresh run-unique result per slice 0..15; exact non-overlapping
+  dyadic partition of w in [1/2,1]; frozen executable/review hashes and
+  launch/result hashes match; every worker exited 0 and returned
+  normally; every verdict COMPLETE with processed > 0 and no
+  residual/budget; every committed trace re-hashes to its record with
+  size equal to the processed tally; and **every trace REPLAYED — boxes
+  re-derived from the exact dyadic root and every claimed discharge
+  re-proved in Arb arithmetic**.
+* **Replay evidence, tallied from the persisted transcript.** 16/16
+  slices PASS, total `processed` = **805,542,368** boxes (matches the
+  committed tally exactly), total replay time 117,615 s
+  (32.7 h single-core). Per-slice replay times ranged 1,245 s (slice 0)
+  to 25,328 s (slice 12, 166,211,875 boxes — the monster).
+  CHECKER_SHA256 `6a2ae5ea065ffbc1f35456ee8bf953af15831d146b9b0e18a8bdb8b3e5ee34e3`,
+  CAMPAIGN_ID `20260822T015019Z_41f2e119129446d3b1a936d66bbe7683`,
+  CODE_SHA256 `b49a21ec80ba28ae7ec4021e87c6915e74c5b19d722d1a4049a14b3d263d71f4`,
+  LAUNCH_SHA256 `2170d56f651cd038de5ad37010587d6aa21ba9fd502e7242537a6fc7360f91ba`.
+* **Process history, recorded because it nearly cost the verdict.** The
+  original collector (PID 78877, launched 2026-08-29 05:44 from a
+  terminal) died between 14:13 and 14:23 on 2026-08-30 after ~33 h of
+  replay **without ever writing its verdict to disk** — its stdout went
+  to a terminal, and the campaign's `collect_output.txt` still held the
+  2026-08-24 rejection (13/16, when slices 10/12/13 were missing). Main
+  relaunched the identical frozen checker under supervision
+  (`hub` process `k-collector`, restart on-failure, 0 restarts needed)
+  so the transcript was captured to a file this time; it ran 1 d 8 h and
+  exited 0. The old rejection transcript is preserved as
+  `collect_output_2026-08-24_rejection.txt`; the new verdict transcript
+  is `collect_output.txt`
+  (sha256 `e4e799a8261b8ffde7d8993d570eb7399816e7873433dd26bf2ebb732e454602`).
+  **Lesson for future long runs: a verdict that exists only on a
+  terminal does not exist.**
+* **Scope discipline — what this does NOT say.** The certificate is the
+  explicit-constant frequency statement at the stated rational t; it is
+  **not** Frankl's conjecture, not 1/2, and it does not touch Liu's
+  Hypothesis 2 (whose scalar-margin obstruction remains open in the
+  continuum directions — see the preceding entry). The improvement over
+  the previously certified $\psi+10^{-4}$ is $2\times10^{-4}$ in the
+  certified constant, bought with 805.5 M boxes of verified work.
+
+### H2-QP-SWEEP-AND-ZERO-SUPPORT-FACE (2026-08-31) — BIDEGREE-(2,2) STRUCTURE PROVED SYMBOLICALLY BY MAIN; 11,025-CELL CLOSED-FORM KKT SWEEP ALL-NONNEGATIVE (WORST +1.63e-3, ZERO NEGATIVE CELLS); ZERO-SUPPORT FACE CERTIFIED SAFE ON TWO REDUCED FAMILIES; NO NEGATIVE WITNESS ANYWHERE — H2 STILL NOT PROVED (GRID POINTS, NOT CONTINUUM)
+
+* **Outcome first.** The two-step mission ran as two parallel agents with
+  Main verifying. Both artifacts re-ran BYTE-IDENTICAL under Main's own
+  hand. **No negative witness exists anywhere in the certified sets**, so
+  no refutation; and H2 is **still open**, because everything certified
+  is a finite set of grid points, not a continuum cover.
+* **Main's structure theorem (PROVED, symbolic — upgrades the earlier
+  1e-90 numeric discovery).** Feeding sympy symbols (a1, a2, q) with
+  frozen exact-rational supports through the SAME `liu9_objective._formula`
+  and treating each entropy value `H(arg)` as a ring generator, the raw
+  gap expands to exactly **18 monomials with per-variable degree <= 2**
+  in (a1, a2, q); zero monomials violate the bound, and the top cross
+  coefficients (a1^2q^2, a2^2q^2, a1a2q) are all nonzero. Reason it is
+  structural, not incidental: `ehxy` carries the component weights as
+  ((1-q)a, qa) pairs -> `(1-q)^2 Q00 + 2q(1-q) Q01 + q^2 Q11` with each
+  `Q` quadratic in the masses; `ehpi` is `(1-q)Q_0 + q Q_1`; `ehx` is
+  bilinear. Consequently the per-fiber mass-argmin is a CLOSED FORM
+  (each partial derivative is linear in its own variable), which is what
+  makes the sweep below possible without branch-and-bound.
+* **(QPSweep) 11,025-cell certified sweep — zero negative cells.**
+  `uc/liu9_h2_qp_sweep.py` (sha 66305dedf8238959) ->
+  [`liu9-h2-qp-sweep.json`](uc/verification/results/liu9-h2-qp-sweep.json)
+  (sha ed705da30c6d2009, internal 80006dad6dec0481; 54 s; Main re-ran:
+  byte-identical, exit 0). Grid: 35 sorted support triples per side on
+  the k/8 values -> 1,225 ordered geometry pairs x 9 q columns
+  (including q = 0 and q = 1) = 11,025 cells. Per cell: exact quadratic
+  extraction in (a1,a2), then the closed-form KKT candidate list
+  (3 vertices + interior critical via Cramer + 3 edge criticals +
+  mean-chord candidates) — 45,822 candidates, 33,239 feasible, each an
+  Arb enclosure. Result: **9,747 cells certified nonnegative, 1,278
+  vacuous/infeasible, 0 negative, 0 near-zero straddle, 0 degree
+  failures**; worst certified min **+0.0016305194440926081106425247**
+  at cell `g9|q8` (x = 1/8,1/4,3/8; y = 1/8,1/2,5/8; q = 1), argmin
+  (a1,a2) = (0, 0.06167270334988). The mean floor is the conservative
+  `M_FLOOR < m`, so each per-cell claim transfers to the TRUE feasible
+  set by the superset argument. Mutations `coef_perturbed_1e-6` and
+  `drop_mean_chord_constraint` (triangle-only min dips to -0.3199 vs
+  constrained +0.0094) both FAIL as required.
+* **Honesty note that matters for reading the sweep.** The worst cell
+  sits in the **q = 1 column**, where the channel term q(1-q)c vanishes
+  identically and the gap IS F(P1) — i.e. inside the certified set the
+  binding case is the already-proved universal q=1 theorem, not a
+  channel-driven one. And the most dangerous known fiber (the persisted
+  witness anchor, QP min +4.5e-5) is **NOT on the k/8 grid**, so the
+  sweep does not cover it; that fiber's certificate remains the separate
+  `liu9-witness-qp.json`. The sweep therefore raises confidence over a
+  broad discrete set but does not touch the thin regions where the
+  margin is smallest.
+* **(ZeroSupFace) the zero-support face is safe on the reduced
+  families.** `uc/liu9_zerosup_face.py` (sha f6a9e15b1ea13d90) ->
+  [`liu9-zerosup-face.json`](uc/verification/results/liu9-zerosup-face.json)
+  (sha 9d9d063be71478f7, internal dbd74c5369dc459a; 2.4 s; Main re-ran:
+  byte-identical, exit 0; claim_status PROVED for the certified
+  families). Mechanism settled: writing `Gap(q) = Q0 + Q1 q + Q2 q^2`
+  (the bidegree restriction) with coefficients from exact-rational
+  Cramer inversion of three 320-bit certified evaluations, the feasible
+  band is [q_lo, 1] over the whole m-bracket, and on all nine anchor
+  fibers `Q2` certifies **negative (-0.376, concave)** so the band
+  minimum sits at an endpoint. Both endpoints certified: worst band
+  minimum **+6.049194250261234e-5** at the q = 1 edge, and the approach
+  is certified NON-DECREASING inward — `gap(1 - 2^-24)_lower >=
+  gap(1)_lower` on every fiber. Reason the feared mechanism dies:
+  `c(1) = 0` exactly (pi(1,1) = 1), so the c-channel drag and the F(P1)
+  margin vanish **compatibly**, with q(1-q) attenuation dominating.
+  The delta-family leg re-derives region1's two curves (A0 hull worst
+  1.2498e-3; mean-value lemma worst 3.3957e-7; boundary band worst
+  1.0456e-3, all 0 negative cells).
+* **Three defects recorded against the face report, none fatal.**
+  (1) Its scope is TWO reduced families — a 3x3 exact-rational fiber
+  grid of point certificates around the anchor plus the c-delta curve —
+  **not a box cover and not the whole face**; the agent labels this
+  itself. (2) Its six-atom identity gate is fp-noise-limited: worst
+  absdiff 1.67e-16 at 60 dps against a 1e-12 threshold, far weaker than
+  the 1e-40 gates used elsewhere in the programme (DISCOVERY rows).
+  (3) Mutation `flip_T_sign_a0_hull` **PASSED instead of failing**
+  (flipping T adds +x^2 T > 0 and strengthens the hull); the agent
+  followed region1's precedent, excluded it from the gating conjunction,
+  and said so — acceptable but it means only four of five mutations are
+  live gates.
+* **Status after this session, stated exactly.** PROVED: the
+  diagonalization, the channel formula through r = 3, the bidegree-(2,2)
+  structure, Family A, curve-II, the c(x) < 0 classification, the
+  D-channel sign cover, the zero-support-face reduction on its two
+  families. MACHINE-VERIFIED FINITE: the 11,025-cell sweep and the
+  witness-fiber QP. **OPEN, unchanged in kind:** every certificate is
+  pointwise on grids — no positive-measure cover in the four support
+  directions, no continuum q, no r >= 4. The conditional constant
+  0.3827090879... gains confidence, not a proof.
+* **Next step that would actually close it** (recorded, not started):
+  attach positive-measure boxes to the sweep exactly as `liu9_scalar_margin_r3.py`
+  did in the mass directions — certify each grid cell's neighbourhood in
+  the (x1..y3, q) directions with the Lipschitz/monotone envelopes the
+  region-1 machinery already provides, which converts 11,025 point
+  certificates into a genuine cover of a positive-measure subset of the
+  paired class.
+
 ### PARALLEL-ATTACK-VERIFIED (2026-08-30) — THREE CONCURRENT AGENTS ON THE SCALAR-MARGIN OBSTRUCTION ALL DELIVER (C(x) SIGN FAMILY, CHANNEL-D 512x512 COVER, WITNESS-FIBER QP MARGIN); PLUS MAIN'S OWN STRUCTURE RESULT: GAP IS EXACTLY BIDEGREE-(2,2) IN ((a1,a2),q) — THE MASS-WORST-CASE IS A CLOSED-FORM QUADRATIC PROGRAM
 
 * **Outcome first.** Following the user's directive to parallelize, three
@@ -687,10 +2000,13 @@ correctly explained for two of the three — `dist/` and `prime-gaps/` are docum
   channel formula at each r — the identification proof pattern extends),
   NOT new certified computation.
 * **Artifacts.** report
-  [`liu9-sasym-4slot-cover.json`](uc/verification/results/liu9-sasym-4slot-cover.json)
+  `liu9-sasym-4slot-cover.json`
+  [report not retained; retracted and deleted per
+  REMEDIATION-VERIFIED 2026-08-30; recorded 2026-09-01]
   (file sha 7e8d3807ce7b9f6c3b300ac9d95b73c87e7854262877bcb870a08b99378171d8,
   byte-identical on Main re-run, exit 0), tool
-  [`uc/liu9_sasym_4slot.py`](uc/liu9_sasym_4slot.py) (sha
+  `uc/liu9_sasym_4slot.py` [artifact not retained; retracted and deleted
+  per REMEDIATION-VERIFIED 2026-08-30; recorded 2026-09-01] (sha
   11931004e4590251f7b37c84783dab54ab56074343b969f3661cb2f747dc7a55),
   notes Addendum 12. Eleven committed reports on the H2 front this
   session, all digest-clean; Campaign K PID 78877 untouched; zero SSOT
@@ -717,10 +2033,14 @@ correctly explained for two of the three — `dist/` and `prime-gaps/` are docum
   honesty: PROVED at DISCOVERY level (point-check soundness only) —
   the region1-style Arb cell cover on (y1, y2, q) is the remaining
   certification step before the general-r H2 citation chain closes.
-* **Artifacts.** [`uc/liu9_sasym_4slot.py`](uc/liu9_sasym_4slot.py)
+* **Artifacts.** `uc/liu9_sasym_4slot.py`
+  [artifact not retained; retracted and deleted per
+  RETRACTION-H2-SASYM-CHAIN 2026-08-30; recorded 2026-09-01]
   (sha 7dee5c441954cebb00d18e3025ff0509867adee2408dc276c9d7b88c31882e86),
   report
-  [`liu9-sasym-4slot.json`](uc/verification/results/liu9-sasym-4slot.json)
+  `liu9-sasym-4slot.json`
+  [report not retained; retracted and deleted with the identified module
+  per RETRACTION-H2-SASYM-CHAIN 2026-08-30; recorded 2026-09-01]
   (file sha 5b9e128d0f2fe0af57f91c925ea887afb5db1b987da9458461ae65b3e18dc270,
   internal e4ba6669f6b4298c060a327861c04da3ff8a7efb370403d94c22e3a7301c2770),
   notes Addendum 11. Campaign K untouched; zero SSOT edits.
@@ -764,13 +2084,18 @@ correctly explained for two of the three — `dist/` and `prime-gaps/` are docum
   (not channel quantities; discarded from the comparison).
   Process lesson: every circulated coefficient must carry its exact
   functional + point + grid in the same message as the number.
-* **Artifacts.** [`uc/sasym_channel_identification.py`](uc/sasym_channel_identification.py)
+* **Artifacts.** `uc/sasym_channel_identification.py`
+  [artifact not retained; retracted and deleted per
+  RETRACTION-H2-SASYM-CHAIN 2026-08-30; recorded 2026-09-01]
   (sha 6df031e88e0903491206e641b281542a22ad6a3765de7ddcef83ccb2994fabab),
   report
-  [`sasym-channel-identification.json`](uc/verification/results/sasym-channel-identification.json)
+  `sasym-channel-identification.json`
+  [report not retained; retracted and deleted with the identified module
+  per RETRACTION-H2-SASYM-CHAIN 2026-08-30; recorded 2026-09-01]
   (file sha 08f3a022953edb3a462d2b12ce67e3528371ac76cbd627254f1c7bafc375eaaf),
-  proposal draft
-  [`uc/GENERAL_R_INDUCTION_PROPOSAL.md`](uc/GENERAL_R_INDUCTION_PROPOSAL.md)
+  proposal draft `uc/GENERAL_R_INDUCTION_PROPOSAL.md`
+  [artifact not retained; deleted per the 2026-08-30 remediation and
+  superseded by uc/GENERAL_R_H2_COMPOSITION.md; recorded 2026-09-01]
   (rewritten Per review still pending — flagged for the clean rewrite).
   Campaign K PID 78877 alive 12h20m, untouched; zero SSOT edits.
 * **Next action (adopted).** The 4-slot S_asym extension: same
@@ -1364,7 +2689,7 @@ correctly explained for two of the three — `dist/` and `prime-gaps/` are docum
   (Main-verified symbolically and numerically) — but IRRELEVANT: no k_pi
   bilinear enters the raw gap. The old "k_pi is not PSD and rank-one
   square completion is impossible" phrasing is corrected in
-  [`math/RESULTS.md`](math/RESULTS.md) row 416 (superseded-display note);
+  [`math/RESULTS.md`](RESULTS.md) row 416 (superseded-display note);
   other rows pointing at that display inherit the correction through it.
 * **Independent Main audit before integration.** Trial-0 gap_mp re-derived
   at 200 dps: -0.1790159718630404848262402590682140187144 vs the recorded

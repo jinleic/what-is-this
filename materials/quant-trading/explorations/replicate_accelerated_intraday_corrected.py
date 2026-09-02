@@ -33,12 +33,17 @@ CLASSIFICATION = (
 def _is_int(value: Any) -> bool:
     return isinstance(value, int) and not isinstance(value, bool)
 
+def _is_liquidation_capture(name: str) -> bool:
+    return name.startswith("liquidation-capture-") or name == "liquidation-capture.jsonl"
+
 
 def validate_window_feasibility(
     start_ms: int,
     end_ms: int,
     required_liquidation_blocks: int,
     required_deribit_transitions: int,
+    *,
+    not_before_ms: int | None = None,
 ) -> dict[str, Any]:
     """Prove both parent sample stops are reachable before any outcome access."""
     if end_ms <= start_ms:
@@ -48,6 +53,10 @@ def validate_window_feasibility(
     duration_ms = end_ms - start_ms
     if duration_ms % BLOCK_MS:
         raise ValueError("window duration must contain whole parent blocks")
+    if not_before_ms is not None and start_ms < not_before_ms:
+        raise ValueError(
+            f"candidate window overlaps prior replication: {start_ms} < {not_before_ms}"
+        )
 
     window_blocks = duration_ms // BLOCK_MS
     complete_signal_blocks = max(0, window_blocks - 1)
@@ -62,6 +71,11 @@ def validate_window_feasibility(
         "required_complete_liquidation_onset_blocks": required_liquidation_blocks,
         "max_complete_deribit_asset_block_transitions": max_deribit_transitions,
         "required_complete_deribit_asset_block_transitions": required_deribit_transitions,
+        "not_before_ms": not_before_ms,
+        "not_before_utc": BASE.iso_ms(not_before_ms),
+        "nonoverlap_with_prior_window": (
+            not_before_ms is None or start_ms >= not_before_ms
+        ),
         "all_registered_stops_reachable": (
             max_liquidation_blocks >= required_liquidation_blocks
             and max_deribit_transitions >= required_deribit_transitions
@@ -109,7 +123,7 @@ def validate_common_cutoffs(
 
     for path, rows in records.items():
         name = Path(path).name
-        if name.startswith("liquidation-capture-") or name == "liquidation-capture.jsonl":
+        if _is_liquidation_capture(name):
             for row in rows:
                 timestamp = BASE.force_order_event_ms(row)
                 if _is_int(timestamp):
@@ -252,15 +266,28 @@ def load_and_verify_contract(path: Path) -> tuple[dict, dict, str, int, int, dic
     runner = contract["runner"]
     if _resolve(runner) != RUNNER_PATH or BASE.sha256_file(RUNNER_PATH) != runner["sha256"]:
         raise ValueError("corrected runner hash mismatch")
-    for key in ("parent_contract", "source_snapshot", "review_audit"):
+    for key in (
+        "parent_contract",
+        "superseded_replication_contract",
+        "source_snapshot",
+        "review_audit",
+    ):
         _verify_hash_record(contract[key])
     for section in ("frozen_rule_files", "baseline_artifact_hashes"):
         for record in contract[section].values():
             _verify_hash_record(record)
 
     parent = json.loads(_resolve(contract["parent_contract"]).read_text(encoding="utf-8"))
+    superseded = json.loads(
+        _resolve(contract["superseded_replication_contract"]).read_text(
+            encoding="utf-8"
+        )
+    )
     start_ms = BASE.parse_iso_ms(contract["observation_window"]["start_utc_inclusive"])
     end_ms = BASE.parse_iso_ms(contract["observation_window"]["end_utc_exclusive"])
+    not_before_ms = BASE.parse_iso_ms(
+        superseded["observation_window"]["end_utc_exclusive"]
+    )
     liquidation_blocks = parent["screens"]["liquidation_btc_eth_post_onset"]["sample_stop"][
         "minimum_nonempty_15m_onset_blocks"
     ]
@@ -268,7 +295,11 @@ def load_and_verify_contract(path: Path) -> tuple[dict, dict, str, int, int, dic
         "minimum_complete_asset_block_transitions"
     ]
     feasibility = validate_window_feasibility(
-        start_ms, end_ms, liquidation_blocks, deribit_transitions
+        start_ms,
+        end_ms,
+        liquidation_blocks,
+        deribit_transitions,
+        not_before_ms=not_before_ms,
     )
     return contract, parent, contract_sha256, start_ms, end_ms, feasibility
 
@@ -316,7 +347,7 @@ def run_liquidation(
     event_rows = [
         row
         for path, rows in sorted(records.items())
-        if Path(path).name.startswith("liquidation-capture-")
+        if _is_liquidation_capture(Path(path).name)
         for row in rows
     ]
     context_rows = BASE.filter_liquidation_context(event_rows, end_ms)
@@ -409,6 +440,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--combined-output", type=Path, default=DEFAULT_COMBINED)
     parser.add_argument("--verify-inputs", action="store_true")
     args = parser.parse_args(argv)
+    args.contract = args.contract.resolve()
+    args.combined_output = args.combined_output.resolve()
 
     (
         contract,

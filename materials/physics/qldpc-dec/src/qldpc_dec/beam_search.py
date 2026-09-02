@@ -178,6 +178,18 @@ class BeamSearchDecoder:
         self.num_results = num_results
         self.weight = np.abs(lam)
 
+    def _weight(self, e_full: np.ndarray) -> float:
+        """Appendix B: wt(e) = sum_j e_j log((1-p_j)/p_j).
+
+        Sequential float64 sum in index order so that the C++ mirror
+        (beam_cpp/beam8.cpp) is bit-exact; np.dot would delegate to BLAS with
+        an unspecified summation order. Only compared when num_results > 1.
+        """
+        wt = 0.0
+        for j in np.flatnonzero(e_full):
+            wt += float(self.weight[j])
+        return wt
+
     def decode(self, syndrome: np.ndarray) -> np.ndarray:
         syndrome = np.asarray(syndrome).astype(np.int64)
         results: list[tuple[float, np.ndarray]] = []
@@ -186,7 +198,13 @@ class BeamSearchDecoder:
         eng = _MaskedBP(self.H, self.lam, {}, syndrome)
         conv, e_hat, sum_llr, iters, nu, dop, eop, epi = eng.run(None or np.zeros(self.num_errs), self.initial_iters)
         if conv:
-            return e_hat
+            if self.num_results <= 1:
+                return e_hat
+            # Algorithm 3 step 3: "Insert the decoding result into results if
+            # BP succeeds, and return this result if num_results=1" -- for
+            # num_results > 1 the seed solution is the first result and the
+            # beam search continues from the converged state.
+            results.append((self._weight(e_hat), e_hat.copy()))
         seed_msgs = np.zeros(self.num_errs)
         for j in eng.act:
             ks = epi[j]
@@ -209,8 +227,7 @@ class BeamSearchDecoder:
                         for j, v in masked.items():
                             e_full[j] = v
                         if np.array_equal((self.H @ e_full.astype(np.int64)) % 2, syndrome):
-                            wt = float(np.dot(e_full, self.weight))
-                            results.append((wt, e_full))
+                            results.append((self._weight(e_full), e_full))
                             if len(results) >= self.num_results:
                                 return min(results, key=lambda r: r[0])[1]
                     unmasked = [j for j in range(self.num_errs) if j not in masked]

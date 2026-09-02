@@ -1,0 +1,141 @@
+{
+  "archives_verified": 24,
+  "claim_boundary": "A two-window pass supports only a replicated Binance BTC/ETH one-minute weekday participation regularity consistent with human/institutional scheduling. Familywise-error language is scoped only to post-policy cycles. It does not prove causality and does not establish directional predictability, executable alpha, net return, implementation advantage, deployment readiness, capital allocation, or an absolute breakthrough.",
+  "contract_sha256": "d9df02d7de44fc3e9f9cedff050f89d61434a0f815a03897abd5dc7e73ce5fef",
+  "created_at_utc": "2026-09-01T12:41:34Z",
+  "id": "weekday-participation-premium",
+  "input_inventory_sha256": "3693f50afb60c3a789db21ba3cdd95ca13cab3676b9860d8a30be1aaf6829a04",
+  "loop_policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0",
+  "prior_window_audit_sha256": "6f28e1dbf7ad315853544c7f3f447eda4cdda14cec97042a3c66da4514f6f2cf",
+  "result": {
+    "gate_descriptions": {
+      "G1_count_magnitude": "pooled median x_count >= log(1.15)",
+      "G2_count_asset_consistency": "BTCUSDT median x_count >= log(1.10) AND ETHUSDT median x_count >= log(1.10)",
+      "G3_quote_magnitude": "pooled median x_quote >= log(1.15)",
+      "G4_quote_asset_consistency": "BTCUSDT median x_quote > 0 AND ETHUSDT median x_quote > 0",
+      "G5_month_stability": "For both x_count and x_quote, at least 80% of included Monday-month groups have strictly positive pooled medians",
+      "G6_dependence_robustness": "p_count < 0.008333333333333333 AND p_quote < 0.008333333333333333 under the frozen paired week-block bootstrap",
+      "fail_rule": "If minimum sample is met and any gate is false, the mechanism is falsified on that window.",
+      "inconclusive_rule": "Only frozen missing/zero-bar rejections reducing the paired sample below minimum yield an inconclusive result. Contract, audit, policy, inventory, checksum, CRC, member, header, or schema failures abort without an artifact. UNKNOWN never passes.",
+      "pass_rule": "A window passes only if its minimum sample is met and G1 through G6 are all true; all gates are conjunctive."
+    },
+    "gate_results": {
+      "G1_count_magnitude": {
+        "pass": true,
+        "pooled_median_x_count": 0.687818265715429,
+        "threshold": 0.13976194237515863
+      },
+      "G2_count_asset_consistency": {
+        "pass": true,
+        "per_asset_median_x_count": {
+          "BTCUSDT": 0.7323226758951152,
+          "ETHUSDT": 0.652533625605848
+        },
+        "threshold": 0.09531017980432493
+      },
+      "G3_quote_magnitude": {
+        "pass": true,
+        "pooled_median_x_quote": 0.7972465109992171,
+        "threshold": 0.13976194237515863
+      },
+      "G4_quote_asset_consistency": {
+        "pass": true,
+        "per_asset_median_x_quote": {
+          "BTCUSDT": 0.8718839981571721,
+          "ETHUSDT": 0.7620983106630482
+        },
+        "threshold": 0.0
+      },
+      "G5_month_stability": {
+        "pass": true,
+        "threshold": 0.8,
+        "x_count": {
+          "included_monday_months": 6,
+          "monthly_pooled_medians": {
+            "2024-01": 0.7024866158820775,
+            "2024-02": 0.49922418203932417,
+            "2024-03": 0.6816162053933064,
+            "2024-04": 0.5589030792103715,
+            "2024-05": 0.7392645872996224,
+            "2024-06": 0.8570435253343529
+          },
+          "positive_fraction": 1.0,
+          "positive_months": 6
+        },
+        "x_quote": {
+          "included_monday_months": 6,
+          "monthly_pooled_medians": {
+            "2024-01": 0.8522416924875187,
+            "2024-02": 0.5559330647947014,
+            "2024-03": 0.7715823239871944,
+            "2024-04": 0.6659863665951109,
+            "2024-05": 0.8410728122150608,
+            "2024-06": 0.9375756477691148
+          },
+          "positive_fraction": 1.0,
+          "positive_months": 6
+        }
+      },
+      "G6_dependence_robustness": {
+        "alpha": 0.008333333333333333,
+        "block_weeks": 2,
+        "one_sided_block_bootstrap_p_count": 4.999750012499375e-05,
+        "one_sided_block_bootstrap_p_quote": 4.999750012499375e-05,
+        "pass": true,
+        "replicates": 20000,
+        "seed": 20260902
+      }
+    },
+    "per_asset": {
+      "BTCUSDT": {
+        "median_x_count": 0.7323226758951152,
+        "median_x_quote": 0.8718839981571721,
+        "observations": 26
+      },
+      "ETHUSDT": {
+        "median_x_count": 0.652533625605848,
+        "median_x_quote": 0.7620983106630482,
+        "observations": 26
+      }
+    },
+    "pooled": {
+      "median_x_count": 0.687818265715429,
+      "median_x_quote": 0.7972465109992171
+    },
+    "reason": null,
+    "sample": {
+      "expected_complete_weeks": 26,
+      "included_monday_months": 6,
+      "minimum": {
+        "included_monday_months": 5,
+        "paired_weeks": 24,
+        "per_asset": 24,
+        "pooled": 48
+      },
+      "paired_weeks": 26,
+      "per_asset_observations": {
+        "BTCUSDT": 26,
+        "ETHUSDT": 26
+      },
+      "pooled_observations": 52,
+      "rejected_asset_weeks": {
+        "BTCUSDT": {},
+        "ETHUSDT": {}
+      },
+      "unpaired_complete_weeks": {
+        "BTCUSDT": 0,
+        "ETHUSDT": 0
+      }
+    },
+    "status": "pass-on-this-sample",
+    "window": {
+      "end_utc_exclusive": "2024-07-01T00:00:00Z",
+      "expected_complete_weeks": 26,
+      "expected_pooled_observations": 52,
+      "start_utc_inclusive": "2024-01-01T00:00:00Z"
+    }
+  },
+  "role": "primary",
+  "runner_sha256": "dbdf6c74ff5a109cc6a4cc79931f6def7d74a8fdd8f503cbbf905ce163788878",
+  "schema_version": 1
+}

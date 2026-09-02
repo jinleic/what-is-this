@@ -1434,7 +1434,7 @@ def render_report(processed: dict[str, Any], paths: dict[str, str]) -> str:
         "## Reproduction",
         "",
         "```bash",
-        "cd /Users/jinleic/jinleic-workspace/qec-codesign",
+        "cd /Users/jinleic/jinleic-workspace/math/qec",
         "PYTHONPATH=src .venv/bin/python experiments/exp023_light_gensets.py",
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_exp023_light_gensets.py",
         "PYTHONPATH=src .venv/bin/python experiments/exp023_verify_artifact.py",

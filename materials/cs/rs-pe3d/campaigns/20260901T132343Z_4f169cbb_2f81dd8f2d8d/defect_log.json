@@ -1,0 +1,45 @@
+{
+ "run_id": "20260901T132343Z_4f169cbb_2f81dd8f2d8d",
+ "defects": [
+  {
+   "id": "D1",
+   "stage": "O1 explicit instance (pre-census)",
+   "error": "KeyError 0 in o1['all_3subsets_indep']: combinations(range(len(sup)),3) fed positional indices into colsP keyed by product-grid (u,v)",
+   "classification": "instrument indexing defect, in-run, discovered at first execution",
+   "resolution": "combinations(sup, 3) over support keys",
+   "preserved_broken_output": "stderr traceback in run transcript (KeyError 0 / line 456); no partial controls_results.json written",
+   "affected_families": "O1 asserts only (single local expression); no census or count affected",
+   "rerun": "full instrument re-run from scratch after fix"
+  },
+  {
+   "id": "D2",
+   "stage": "T5/T6/T9 sweep-count bookkeeping",
+   "error": "PINNED MISMATCH T5.m4.subsets_swept: got 59535, want 66675",
+   "classification": "author-side constant error inside prereg section 3 and instrument: for d=3 the census below-d pass sweeps k in {2} (pairs) only; the k=3=d layer is the m=3 circuit population, not part of the m=4 sweep. Same factor-of-7140 slip carried into T5, T6 (120+560+1820 invented), T9",
+   "resolution": "corrected constants: T5/T9 m4 sweep = C(36,4) + C(36,2) = 58905 + 630; T6.m5 = 4368 (already correct; swept below-d = C(16,2)+C(16,3) = 680); T6.m6 sweep = C(16,6) + 680 = 8688. Prereg section 3 T5 line's 7140 disclosed as arithmetic slip; census semantics (range(2,d)) unchanged from certified run-4 instrument",
+   "preserved_broken_output": "traceback above (PINNED MISMATCH T5.m4.subsets_swept)",
+   "affected_families": "sweep-count bookkeeping ONLY; every circuit/profile/fiber count pin matched exactly before this assert (T2 156/144/12, T4 984/900/84, plants T3c/T3d REJECT fired)",
+   "rerun": "full instrument re-run from scratch after fix"
+  },
+  {
+   "id": "D3",
+   "stage": "T6.m5.dep_total",
+   "error": "PINNED MISMATCH T6.m5.dep_total: got 96, want 0",
+   "classification": "author control-constant overreach, NOT an instrument or theory failure: the steering/prereg anchor 'm=5 -> 0' is about CIRCUITS (c_m5['circuits'] - that assert passed). dep_total counts dependent 5-subsets: the 3x4-MDS pair has 8 size-4 fiber circuits (4 per axis, from factor 4-circuits C(4)=1 each), each extendable by any of the 12 other columns -> 8*12 = 96 dependent 5-sets, every one containing a dependent 4-subset, hence 0 circuits. Below-d emptiness pass (k in {2,3}: 680 subsets) passed: no dependent set of size < d=4",
+   "resolution": "pin corrected to the derived value 96 = 8 * 12, with the derivation recorded; circuits==0 pin unchanged and discharged. Prereg section 3 T6's '0 dependent' clause disclosed as author overreach beyond the steering anchor",
+   "preserved_broken_output": "traceback above",
+   "affected_families": "T6 bookkeeping only; theory unaffected (mixed cockpit lands at m = d_A+d_B-2 = 6)",
+   "rerun": "full instrument re-run from scratch after fix"
+  },
+  {
+   "id": "D4",
+   "stage": "T6.m5.subsets",
+   "error": "PINNED MISMATCH T6.m5.subsets: got 5048, want 4368",
+   "classification": "same bookkeeping family as D2: n_subsets = C(16,5) + below-d sweep C(16,2)+C(16,3) = 4368 + 680 = 5048; my pin quoted only the C(16,5) layer",
+   "resolution": "pin corrected to 4368 + 680 = 5048 (prereg section 3 T6 lists both numbers separately; the assert wrongly summed only one)",
+   "preserved_broken_output": "traceback above",
+   "affected_families": "counting bookkeeping only; T6 circuit pins (m5 circuits 0, m6 circuits 16 all (4,4)) already matched",
+   "rerun": "full instrument re-run from scratch after fix"
+  }
+ ]
+}

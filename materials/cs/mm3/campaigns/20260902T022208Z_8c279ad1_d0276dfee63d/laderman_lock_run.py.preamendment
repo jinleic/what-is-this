@@ -1,0 +1,484 @@
+#!/usr/bin/env python3
+"""laderman23-source-lock - Phase 1 runner (pre-registered; prereg sha 154f8078...).
+
+Implements pre_statement.md exactly:
+  A anchors: verbatim transcription -> Brent 729 in pure int AND fmpz
+  B controls: A2 frozen-row re-verification, A3 printed-page fingerprint,
+              A4 alphabet/rank audit, R1-R4 plants
+  C cross-check: the independent reproduction, transcribed separately
+  D verdict: exactly one terminal verdict
+No search, no circuit model, no addition counts (out of scope by prereg 2/6).
+"""
+import os
+os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
+import sys
+sys.dont_write_bytecode = True
+import hashlib
+import json
+import time
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+MM3 = os.path.abspath(os.path.join(HERE, "..", ".."))
+FROZEN_SCRIPTS = os.path.join(
+    MM3, "campaigns",
+    "2026-08-30T113838Z_c9532c07-61e4-40e1-8b8f-b599d1fad6dc_7e0e84591c56",
+    "scripts")
+
+R, N = 23, 9
+RESULT = {"gate": "laderman23-source-lock", "run_id": os.path.basename(HERE),
+          "prereg_sha256": "154f807854c7335587aea99a9427b128a801dfc6cbe2626297ee9597c2210c79",
+          "phases": {}}
+
+
+def die(msg):
+    print("FATAL:", msg)
+    blob = {"gate": RESULT["gate"], "run_id": RESULT["run_id"],
+            "verdict": "INCONCLUSIVE", "reason": msg, "phases": RESULT["phases"]}
+    with open(os.path.join(HERE, "verdict.json"), "w") as f:
+        json.dump(blob, f, indent=1)
+    sys.exit(1)
+
+
+def phase(name):
+    def deco(fn):
+        def wrapped(*a, **k):
+            print(f"== phase {name} ==")
+            t0 = time.time()
+            out = fn(*a, **k)
+            RESULT["phases"].setdefault(name, {})
+            if isinstance(RESULT["phases"][name], dict):
+                RESULT["phases"][name]["seconds"] = round(time.time() - t0, 2)
+            return out
+        return wrapped
+    return deco
+
+
+# =============================== VERBATIM TRANSCRIPTION ======================
+# Typed from the pinned primary PDF (sha256 a1deb200...), Laderman 1976,
+# Bull. AMS 82(1):126-128, pages 127-128, with the printed sign of every term.
+# Notation: ("a", i, k) means a_{ik}; ("b", k, j) means b_{kj}; 1-indexed as
+# printed.  Each product is (left terms, right terms); a bare single factor is
+# printed without parentheses in the paper and transcribed as a 1-term list.
+A, B = "a", "b"
+PRIMARY_PRODUCTS = {
+    1:  ([(+1, A, 1, 1), (+1, A, 1, 2), (+1, A, 1, 3),
+          (-1, A, 2, 1), (-1, A, 2, 2), (-1, A, 3, 2), (-1, A, 3, 3)],
+         [(+1, B, 2, 2)]),
+    2:  ([(+1, A, 1, 1), (-1, A, 2, 1)],
+         [(-1, B, 1, 2), (+1, B, 2, 2)]),
+    3:  ([(+1, A, 2, 2)],
+         [(-1, B, 1, 1), (+1, B, 1, 2), (+1, B, 2, 1),
+          (-1, B, 2, 2), (-1, B, 2, 3), (-1, B, 3, 1), (+1, B, 3, 3)]),
+    4:  ([(-1, A, 1, 1), (+1, A, 2, 1), (+1, A, 2, 2)],
+         [(+1, B, 1, 1), (-1, B, 1, 2), (+1, B, 2, 2)]),
+    5:  ([(+1, A, 2, 1), (+1, A, 2, 2)],
+         [(-1, B, 1, 1), (+1, B, 1, 2)]),
+    6:  ([(+1, A, 1, 1)], [(+1, B, 1, 1)]),
+    7:  ([(-1, A, 1, 1), (+1, A, 3, 1), (+1, A, 3, 2)],
+         [(+1, B, 1, 1), (-1, B, 1, 3), (+1, B, 2, 3)]),
+    8:  ([(-1, A, 1, 1), (+1, A, 3, 1)],
+         [(+1, B, 1, 3), (-1, B, 2, 3)]),
+    9:  ([(+1, A, 3, 1), (+1, A, 3, 2)],
+         [(-1, B, 1, 1), (+1, B, 1, 3)]),
+    10: ([(+1, A, 1, 1), (+1, A, 1, 2), (+1, A, 1, 3),
+          (-1, A, 2, 2), (-1, A, 2, 3), (-1, A, 3, 1), (-1, A, 3, 2)],
+         [(+1, B, 2, 3)]),
+    11: ([(+1, A, 3, 2)],
+         [(-1, B, 1, 1), (+1, B, 1, 3), (+1, B, 2, 1),
+          (-1, B, 2, 2), (-1, B, 2, 3), (-1, B, 3, 1), (+1, B, 3, 3)]),
+    12: ([(-1, A, 1, 3), (+1, A, 3, 2), (+1, A, 3, 3)],
+         [(+1, B, 2, 2), (+1, B, 3, 1), (-1, B, 3, 2)]),
+    13: ([(+1, A, 1, 3), (-1, A, 3, 3)],
+         [(+1, B, 2, 2), (-1, B, 3, 2)]),
+    14: ([(+1, A, 1, 3)], [(+1, B, 3, 1)]),
+    15: ([(+1, A, 3, 2), (+1, A, 3, 3)],
+         [(-1, B, 3, 1), (+1, B, 3, 2)]),
+    16: ([(-1, A, 1, 3), (+1, A, 2, 2), (+1, A, 2, 3)],
+         [(+1, B, 2, 3), (+1, B, 3, 1), (-1, B, 3, 3)]),
+    17: ([(+1, A, 1, 3), (-1, A, 2, 3)],
+         [(+1, B, 2, 3), (-1, B, 3, 3)]),
+    18: ([(+1, A, 2, 2), (+1, A, 2, 3)],
+         [(-1, B, 3, 1), (+1, B, 3, 3)]),
+    19: ([(+1, A, 1, 2)], [(+1, B, 2, 1)]),
+    20: ([(+1, A, 2, 3)], [(+1, B, 3, 2)]),
+    21: ([(+1, A, 2, 1)], [(+1, B, 1, 3)]),
+    22: ([(+1, A, 3, 1)], [(+1, B, 1, 2)]),
+    23: ([(+1, A, 3, 3)], [(+1, B, 3, 3)]),
+}
+# The nine printed output equations, page 127-128, verbatim (all signs +).
+PRIMARY_OUTPUTS = {
+    (1, 1): [(+1, 6), (+1, 14), (+1, 19)],
+    (1, 2): [(+1, 1), (+1, 4), (+1, 5), (+1, 6), (+1, 12), (+1, 14), (+1, 15)],
+    (1, 3): [(+1, 6), (+1, 7), (+1, 9), (+1, 10), (+1, 14), (+1, 16), (+1, 18)],
+    (2, 1): [(+1, 2), (+1, 3), (+1, 4), (+1, 6), (+1, 14), (+1, 16), (+1, 17)],
+    (2, 2): [(+1, 2), (+1, 4), (+1, 5), (+1, 6), (+1, 20)],
+    (2, 3): [(+1, 14), (+1, 16), (+1, 17), (+1, 18), (+1, 21)],
+    (3, 1): [(+1, 6), (+1, 7), (+1, 8), (+1, 11), (+1, 12), (+1, 13), (+1, 14)],
+    (3, 2): [(+1, 12), (+1, 13), (+1, 14), (+1, 15), (+1, 22)],
+    (3, 3): [(+1, 6), (+1, 7), (+1, 8), (+1, 9), (+1, 23)],
+}
+
+# ---- independent reproduction (CONTROL ONLY): arXiv:1108.2830 sec 2.4, Maple
+# form, sha256 d768596b...  Transcribed separately, signs exactly as printed.
+REPRO_PRODUCTS = {
+    1:  ([(+1, A, 1, 1), (-1, A, 1, 2), (-1, A, 1, 3), (+1, A, 2, 1),
+          (-1, A, 2, 2), (-1, A, 3, 2), (-1, A, 3, 3)], [(-1, B, 2, 2)]),
+    2:  ([(+1, A, 1, 1), (+1, A, 2, 1)], [(+1, B, 1, 2), (+1, B, 2, 2)]),
+    3:  ([(+1, A, 2, 2)],
+         [(+1, B, 1, 1), (-1, B, 1, 2), (+1, B, 2, 1),
+          (-1, B, 2, 2), (-1, B, 2, 3), (+1, B, 3, 1), (-1, B, 3, 3)]),
+    4:  ([(-1, A, 1, 1), (-1, A, 2, 1), (+1, A, 2, 2)],
+         [(-1, B, 1, 1), (+1, B, 1, 2), (+1, B, 2, 2)]),
+    5:  ([(-1, A, 2, 1), (+1, A, 2, 2)], [(-1, B, 1, 1), (+1, B, 1, 2)]),
+    6:  ([(+1, A, 1, 1)], [(-1, B, 1, 1)]),
+    7:  ([(+1, A, 1, 1), (+1, A, 3, 1), (+1, A, 3, 2)],
+         [(+1, B, 1, 1), (-1, B, 1, 3), (+1, B, 2, 3)]),
+    8:  ([(+1, A, 1, 1), (+1, A, 3, 1)], [(-1, B, 1, 3), (+1, B, 2, 3)]),
+    9:  ([(+1, A, 3, 1), (+1, A, 3, 2)], [(+1, B, 1, 1), (-1, B, 1, 3)]),
+    10: ([(+1, A, 1, 1), (+1, A, 1, 2), (-1, A, 1, 3), (-1, A, 2, 2),
+          (+1, A, 2, 3), (+1, A, 3, 1), (+1, A, 3, 2)], [(+1, B, 2, 3)]),
+    11: ([(+1, A, 3, 2)],
+         [(-1, B, 1, 1), (+1, B, 1, 3), (+1, B, 2, 1),
+          (-1, B, 2, 2), (-1, B, 2, 3), (-1, B, 3, 1), (+1, B, 3, 2)]),
+    12: ([(+1, A, 1, 3), (+1, A, 3, 2), (+1, A, 3, 3)],
+         [(+1, B, 2, 2), (+1, B, 3, 1), (-1, B, 3, 2)]),
+    13: ([(+1, A, 1, 3), (+1, A, 3, 3)], [(-1, B, 2, 2), (+1, B, 3, 2)]),
+    14: ([(+1, A, 1, 3)], [(+1, B, 3, 1)]),
+    15: ([(-1, A, 3, 2), (-1, A, 3, 3)], [(-1, B, 3, 1), (+1, B, 3, 2)]),
+    16: ([(+1, A, 1, 3), (+1, A, 2, 2), (-1, A, 2, 3)],
+         [(+1, B, 2, 3), (-1, B, 3, 1), (+1, B, 3, 3)]),
+    17: ([(-1, A, 1, 3), (+1, A, 2, 3)], [(+1, B, 2, 3), (+1, B, 3, 3)]),
+    18: ([(+1, A, 2, 2), (-1, A, 2, 3)], [(+1, B, 3, 1), (-1, B, 3, 3)]),
+    19: ([(+1, A, 1, 2)], [(+1, B, 2, 1)]),
+    20: ([(+1, A, 2, 3)], [(+1, B, 3, 2)]),
+    21: ([(+1, A, 2, 1)], [(+1, B, 1, 3)]),
+    22: ([(+1, A, 3, 1)], [(+1, B, 1, 2)]),
+    23: ([(+1, A, 3, 3)], [(+1, B, 3, 3)]),
+}
+REPRO_OUTPUTS = {
+    (1, 1): [(-1, 6), (+1, 14), (+1, 19)],
+    (1, 2): [(+1, 1), (-1, 4), (+1, 5), (-1, 6), (-1, 12), (+1, 14), (+1, 15)],
+    (1, 3): [(-1, 6), (-1, 7), (+1, 9), (+1, 10), (+1, 14), (+1, 16), (+1, 18)],
+    (2, 1): [(+1, 2), (+1, 3), (+1, 4), (+1, 6), (+1, 14), (+1, 16), (+1, 17)],
+    (2, 2): [(+1, 2), (+1, 4), (-1, 5), (+1, 6), (+1, 20)],
+    (2, 3): [(+1, 14), (+1, 16), (+1, 17), (+1, 18), (+1, 21)],
+    (3, 1): [(+1, 6), (+1, 7), (-1, 8), (+1, 11), (+1, 12), (+1, 13), (-1, 14)],
+    (3, 2): [(+1, 12), (+1, 13), (-1, 14), (-1, 15), (+1, 22)],
+    (3, 3): [(+1, 6), (+1, 7), (-1, 8), (-1, 9), (+1, 23)],
+}
+
+
+def build_triple(products, outputs):
+    """Frozen convention: U[r][3i+k] = coeff of a_{i+1,k+1}; V[r][3k+j] =
+    coeff of b_{k+1,j+1}; W[r][3i+j] = coeff of product r in C_{i+1,j+1}.
+    Indices here are the printed 1-based ones, so subtract 1."""
+    U = [[0] * N for _ in range(R)]
+    V = [[0] * N for _ in range(R)]
+    W = [[0] * N for _ in range(R)]
+    for m, (left, right) in products.items():
+        for (s, kind, x, y) in left:
+            assert kind == A, (m, kind)
+            U[m - 1][3 * (x - 1) + (y - 1)] += s
+        for (s, kind, x, y) in right:
+            assert kind == B, (m, kind)
+            V[m - 1][3 * (x - 1) + (y - 1)] += s
+    for (i, j), terms in outputs.items():
+        for (s, m) in terms:
+            W[m - 1][3 * (i - 1) + (j - 1)] += s
+    return [tuple(r) for r in U], [tuple(r) for r in V], [tuple(r) for r in W]
+
+
+# ================================== INSTRUMENTS ==============================
+def brent_failures_int(U, V, W):
+    """Instrument 1: pure Python int, exact. Returns (fails, first_examples)."""
+    fails, examples = 0, []
+    for i in range(3):
+        for j in range(3):
+            for k in range(3):
+                for ip in range(3):
+                    for jp in range(3):
+                        for kp in range(3):
+                            s = 0
+                            for r in range(R):
+                                ur = U[r][3 * i + k]
+                                if not ur:
+                                    continue
+                                vr = V[r][3 * kp + j]
+                                if not vr:
+                                    continue
+                                wr = W[r][3 * ip + jp]
+                                if wr:
+                                    s += ur * vr * wr
+                            expect = 1 if (i == ip and j == jp and k == kp) else 0
+                            if s != expect:
+                                fails += 1
+                                if len(examples) < 5:
+                                    examples.append(
+                                        {"i": i, "j": j, "k": k, "ip": ip,
+                                         "jp": jp, "kp": kp,
+                                         "got": s, "expect": expect})
+    return fails, examples
+
+
+def brent_failures_fmpz(U, V, W):
+    """Instrument 2: python-flint fmpz, an independent arithmetic."""
+    from flint import fmpz
+    fails, examples = 0, []
+    for i in range(3):
+        for j in range(3):
+            for k in range(3):
+                for ip in range(3):
+                    for jp in range(3):
+                        for kp in range(3):
+                            s = fmpz(0)
+                            for r in range(R):
+                                ur, vr, wr = (U[r][3 * i + k], V[r][3 * kp + j],
+                                              W[r][3 * ip + jp])
+                                if ur and vr and wr:
+                                    s += fmpz(ur) * fmpz(vr) * fmpz(wr)
+                            expect = 1 if (i == ip and j == jp and k == kp) else 0
+                            if int(s) != expect:
+                                fails += 1
+                                if len(examples) < 5:
+                                    examples.append(
+                                        {"i": i, "j": j, "k": k, "ip": ip,
+                                         "jp": jp, "kp": kp,
+                                         "got": int(s), "expect": expect})
+    return fails, examples
+
+
+def dual_brent(tag, U, V, W):
+    """Both instruments must agree, per prereg section 3."""
+    f1, e1 = brent_failures_int(U, V, W)
+    f2, e2 = brent_failures_fmpz(U, V, W)
+    if f1 != f2 or e1 != e2:
+        die(f"{tag}: INSTRUMENT DISAGREEMENT int={f1} fmpz={f2}")
+    print(f"  {tag}: Brent failures int={f1} fmpz={f2} (agree) -> "
+          f"{729 - f1}/729 identities hold")
+    return f1, e1
+
+
+# ==================================== PHASES =================================
+@phase("A-anchors")
+def phase_A():
+    U, V, W = build_triple(PRIMARY_PRODUCTS, PRIMARY_OUTPUTS)
+    fails, ex = dual_brent("A1 primary transcription", U, V, W)
+    blob = {"brent_failures": fails, "identities_holding": 729 - fails,
+            "instruments_agree": True, "examples": ex}
+    if fails:
+        RESULT["phases"]["A-anchors"] = blob
+        die(f"A1: the primary transcription FAILS Brent ({fails} of 729); "
+            f"source lock fails, Phase 2 must not start")
+    # hash the transcription itself so the object is pinnable
+    tri_sha = hashlib.sha256(
+        json.dumps({"U": U, "V": V, "W": W}, sort_keys=True).encode()).hexdigest()
+    blob["triple_sha256"] = tri_sha
+    print(f"A1 [PASS] 729/729 in BOTH arithmetics; triple sha256 {tri_sha[:16]}...")
+    RESULT["phases"]["A-anchors"] = blob
+    return U, V, W
+
+
+@phase("B-controls")
+def phase_B(U, V, W):
+    out = {}
+    # ---- A2: frozen-row re-verification through the SAME code path
+    sys.path.insert(0, FROZEN_SCRIPTS)
+    from gatec_decomps import load_paper55
+    fU, fV, fW = load_paper55()
+    ffails, _ = dual_brent("A2 frozen paper55 row", fU, fV, fW)
+    if ffails:
+        die(f"A2: the frozen paper55 triple failed this verifier ({ffails}); "
+            f"the instrument itself is broken")
+    out["A2_frozen_paper55_729"] = 729 - ffails
+    print("A2 [PASS] frozen paper55 triple accepted 729/729 by the same path")
+
+    # ---- A3: structural fingerprint against the printed page
+    singles = {6: ("a", 1, 1, "b", 1, 1), 14: ("a", 1, 3, "b", 3, 1),
+               19: ("a", 1, 2, "b", 2, 1), 20: ("a", 2, 3, "b", 3, 2),
+               21: ("a", 2, 1, "b", 1, 3), 22: ("a", 3, 1, "b", 1, 2),
+               23: ("a", 3, 3, "b", 3, 3)}
+    for m, (_, ai, ak, _, bk, bj) in singles.items():
+        left, right = PRIMARY_PRODUCTS[m]
+        if (left != [(+1, A, ai, ak)]) or (right != [(+1, B, bk, bj)]):
+            die(f"A3: printed single-product fingerprint mismatch at m{m}")
+    printed_supports = {
+        (1, 1): {6, 14, 19}, (1, 2): {1, 4, 5, 6, 12, 14, 15},
+        (1, 3): {6, 7, 9, 10, 14, 16, 18}, (2, 1): {2, 3, 4, 6, 14, 16, 17},
+        (2, 2): {2, 4, 5, 6, 20}, (2, 3): {14, 16, 17, 18, 21},
+        (3, 1): {6, 7, 8, 11, 12, 13, 14}, (3, 2): {12, 13, 14, 15, 22},
+        (3, 3): {6, 7, 8, 9, 23}}
+    for cell, want in printed_supports.items():
+        got = {m for (_, m) in PRIMARY_OUTPUTS[cell]}
+        if got != want:
+            die(f"A3: printed output support mismatch at C{cell}: {got} != {want}")
+    out["A3_fingerprint"] = "7 single products + 9 output supports match the page"
+    print("A3 [PASS] 7 single products and all 9 output supports match the "
+          "printed page")
+
+    # ---- A4: alphabet / rank audit
+    vals = {v for M in (U, V, W) for row in M for v in row}
+    if not vals <= {-1, 0, 1}:
+        die(f"A4: alphabet escape {sorted(vals)}")
+    if not (len(U) == len(V) == len(W) == 23):
+        die("A4: not 23 products")
+    for nm, M in (("U", U), ("V", V), ("W", W)):
+        z = [r for r in range(R) if not any(M[r])]
+        if z:
+            die(f"A4: all-zero {nm} rows {z}")
+    out["A4_audit"] = {"alphabet": sorted(vals), "products": 23,
+                       "zero_rows": 0}
+    print(f"A4 [PASS] alphabet {sorted(vals)}, 23 products, no zero rows")
+
+    # ---- R1: one sign flipped in one U entry -> must FAIL
+    U1 = [list(r) for r in U]
+    U1[0][0] = -U1[0][0] if U1[0][0] else 1
+    f_r1, _ = dual_brent("R1 sign-flip plant", [tuple(r) for r in U1], V, W)
+    if f_r1 == 0:
+        die("R1: sign-flip plant was ACCEPTED (verifier insensitive)")
+    out["R1_sign_flip"] = {"failures": f_r1, "rejected": True}
+    print(f"R1 [PASS] sign-flip plant rejected ({f_r1} identities broken)")
+
+    # ---- R2: one product deleted -> must FAIL
+    W2 = [list(r) for r in W]
+    W2[5] = [0] * N          # delete m6's output contribution entirely
+    f_r2, _ = dual_brent("R2 product-deletion plant", U, V, [tuple(r) for r in W2])
+    if f_r2 == 0:
+        die("R2: product-deletion plant was ACCEPTED")
+    out["R2_product_deleted"] = {"failures": f_r2, "rejected": True}
+    print(f"R2 [PASS] product-deletion plant rejected ({f_r2} identities broken)")
+
+    # ---- R3: two V rows swapped -> must FAIL
+    V3 = [list(r) for r in V]
+    V3[1], V3[2] = V3[2], V3[1]
+    f_r3, _ = dual_brent("R3 V-row-swap plant", U, [tuple(r) for r in V3], W)
+    if f_r3 == 0:
+        die("R3: V-row-swap plant was ACCEPTED (verifier ignores product "
+            "identity)")
+    out["R3_v_row_swap"] = {"failures": f_r3, "rejected": True}
+    print(f"R3 [PASS] V-row-swap plant rejected ({f_r3} identities broken)")
+
+    # ---- R4: a planted wrong expectation must fire the harness's own assert
+    fired = False
+    try:
+        assert 729 - phase_A_dummy_count() == 0, "planted wrong 729 count"
+    except AssertionError:
+        fired = True
+    if not fired:
+        die("R4: planted assertion did not fire; harness asserts are dead")
+    out["R4_planter_fired"] = True
+    print("R4 [PASS] planted assertion fired")
+    RESULT["phases"]["B-controls"] = out
+    return out
+
+
+def phase_A_dummy_count():
+    """Deliberately wrong count used only by control R4."""
+    return 728
+
+
+@phase("C-repro-crosscheck")
+def phase_C(U, V, W):
+    rU, rV, rW = build_triple(REPRO_PRODUCTS, REPRO_OUTPUTS)
+    fails, ex = dual_brent("C reproduction (arXiv:1108.2830 sec 2.4)",
+                           rU, rV, rW)
+    # support agreement with the PRIMARY printed page (signs may differ freely)
+    sup_p = {c: {m for (_, m) in PRIMARY_OUTPUTS[c]} for c in PRIMARY_OUTPUTS}
+    sup_r = {c: {m for (_, m) in REPRO_OUTPUTS[c]} for c in REPRO_OUTPUTS}
+    agree = [c for c in sup_p if sup_p[c] == sup_r[c]]
+    # per-product sign relation: is repro product m equal to +/- primary m?
+    sign_rel = {}
+    for m in range(1, 24):
+        for sgn in (1, -1):
+            if ([(s * sgn, kind, x, y) for (s, kind, x, y) in REPRO_PRODUCTS[m][0]]
+                    == PRIMARY_PRODUCTS[m][0]):
+                sign_rel[m] = f"left x{sgn}"
+                break
+    blob = {"brent_failures": fails, "identities_holding": 729 - fails,
+            "instruments_agree": True,
+            "output_supports_matching_primary": f"{len(agree)}/9",
+            "supports_identical": len(agree) == 9,
+            "examples": ex[:3],
+            "note": ("independent reproduction, transcribed separately; it is a "
+                     "CONTROL and gates nothing. Per-product signs differ from "
+                     "the primary as expected (negating a product's operand and "
+                     "its output coefficients is a free equivalence).")}
+    RESULT["phases"]["C-repro-crosscheck"] = blob
+    print(f"C reproduction: {729 - fails}/729 identities; output supports match "
+          f"the primary {len(agree)}/9")
+    return blob
+
+
+@phase("D-verdict")
+def phase_D(U, V, W, ctrl, repro):
+    a = RESULT["phases"]["A-anchors"]
+    ok = (a["brent_failures"] == 0 and ctrl.get("R1_sign_flip", {}).get("rejected")
+          and ctrl.get("R2_product_deleted", {}).get("rejected")
+          and ctrl.get("R3_v_row_swap", {}).get("rejected")
+          and ctrl.get("R4_planter_fired"))
+    if not ok:
+        die("D: verdict preconditions unmet")
+    blob = {
+        "gate": "laderman23-source-lock", "run_id": RESULT["run_id"],
+        "prereg_sha256": RESULT["prereg_sha256"],
+        "verdict": "CERTIFIED-SOURCE-LOCK",
+        "claim": (
+            "The factor triple transcribed VERBATIM from the hash-pinned primary "
+            "(Laderman 1976, Bull. AMS 82(1):126-128, PDF sha256 a1deb200f2e2"
+            "70b13b870bbcf8ce8c669d7a09a4acdeddc012df5d6c90042a5b) is a rank-23 "
+            "decomposition of the 3x3 matrix-multiplication tensor over Z: all "
+            "729 Brent identities hold exactly, verified in two independent "
+            "arithmetics (pure Python int and python-flint fmpz) that agree on "
+            "every identity. This is the paper's OWN stated criterion (p.128). "
+            "Alphabet is {-1,0,1}; 23 products; no zero rows."),
+        "provenance": {
+            "source_text_is_ladermans_published_scheme": "CITED-DEPENDENCY "
+                "(hash-pinned open-access publisher PDF; authorship and "
+                "publication are cited, not machine-verified)",
+            "triple_is_a_valid_rank23_decomposition_over_Z": "MACHINE-VERIFIED "
+                "(in-run, 729/729, dual arithmetic)",
+            "printed_page_fingerprint": "MACHINE-VERIFIED (7 single products "
+                "and all 9 output supports equal the printed equations)",
+            "independent_reproduction_agreement": "MACHINE-VERIFIED "
+                f"(arXiv:1108.2830 sec 2.4: {repro['identities_holding']}/729, "
+                f"output supports {repro['output_supports_matching_primary']} "
+                "identical to the primary's printed page)"},
+        "triple_sha256": a["triple_sha256"],
+        "factors": {"U": U, "V": V, "W": W},
+        "controls": ctrl,
+        "reproduction_crosscheck": repro,
+        "phase_2_unlocked": True,
+        "explicitly_not_claimed": [
+            "any addition count or stage cost for this decomposition",
+            "any optimality or minimality statement",
+            "any comparison to the published operation count",
+            "authorship verification of the source text"],
+    }
+    with open(os.path.join(HERE, "verdict.json"), "w") as f:
+        json.dump(blob, f, indent=1)
+    with open(os.path.join(HERE, "laderman23_factors.json"), "w") as f:
+        json.dump({"source": "Laderman 1976 Bull. AMS 82(1):126-128, PDF sha256 "
+                             "a1deb200f2e270b13b870bbcf8ce8c669d7a09a4acdeddc0"
+                             "12df5d6c90042a5b",
+                   "convention": "U[r][3i+k]=coeff a_{i+1,k+1}; "
+                                 "V[r][3k+j]=coeff b_{k+1,j+1}; "
+                                 "W[r][3i+j]=coeff of product r in C_{i+1,j+1}",
+                   "brent": "729/729 over Z, int and fmpz, in-run",
+                   "triple_sha256": a["triple_sha256"],
+                   "U": U, "V": V, "W": W,
+                   "printed_products": {str(k): v for k, v in
+                                        PRIMARY_PRODUCTS.items()},
+                   "printed_outputs": {f"C{i}{j}": v for (i, j), v in
+                                       PRIMARY_OUTPUTS.items()}}, f, indent=1)
+    print("D verdict:", blob["verdict"])
+    print("  ", blob["claim"][:200], "...")
+    return blob
+
+
+if __name__ == "__main__":
+    U, V, W = phase_A()
+    ctrl = phase_B(U, V, W)
+    repro = phase_C(U, V, W)
+    phase_D(U, V, W, ctrl, repro)
+    with open(os.path.join(HERE, "runner_output.json"), "w") as f:
+        json.dump(RESULT, f, indent=1, default=str)
+    print("\nRUNNER COMPLETE")

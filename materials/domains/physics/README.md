@@ -20,6 +20,12 @@ One fact, one owner. Four layers, no duplication:
 | chronological ledger | [`PROGRESS.md`](PROGRESS.md) | dated, newest-first session entries; every claim carries its verification; retractions inline |
 | current state per target | `<target>/README.md` | what is PROVED / CONDITIONAL / NUMERICAL right now, file inventory, how to run |
 | run artifacts | `<target>/campaigns/<UTC-timestamp>_<uuid>_<code-hash12>/` | immutable frozen snapshots + committed results; inventoried in `<target>/campaigns/README.md` |
+| generated compact state, per target | `<target>/state.json` | owner-maintained semantic fields (`problem`, `current_gate`, `headline`, `next_action`); mechanics refreshed by `scripts/campaign.py state refresh` |
+
+Generated, not narrative: when the one-line summary in `<target>/state.json` and an
+owner document above disagree, the owner document wins — fix [`RESULTS.md`](RESULTS.md),
+`<target>/README.md`, or [`PROGRESS.md`](PROGRESS.md) first, then re-run
+`scripts/campaign.py state refresh` so the generated copy follows.
 
 Naming rules:
 

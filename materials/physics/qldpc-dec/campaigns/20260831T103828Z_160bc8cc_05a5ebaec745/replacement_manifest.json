@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-08-31T10:04:14.262120+00:00",
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateA_accuracy_GA2_X_p3e-4_replacement",
+    "p": 0.0003,
+    "basis": "X",
+    "shots": 100000,
+    "base_seed": 20260829,
+    "bposd_prior_model": "merged DEM heterogeneous error_channel",
+    "replaces": "20260831T094401Z_0f49b4d1_f812a85d3f70 p=3e-4 X row"
+  },
+  "config_hash12": "06409bae84aa",
+  "source_sha256": {
+    "source_qldpc_dec_run_gate.py": "c25bdf8b4dd786ca70fbbb055cfa3cbb486845be23e603c0013819d5a7d55dcd",
+    "source_qldpc_dec_bp_osd.py": "3a753f46bf404b4bcf07111bfe22c76bf4f3c901b758caa65738e6c6b28055aa",
+    "source_qldpc_dec_dem_matrices.py": "7a73360ab83b6a06a1251a6a02ab0cfb1ce901568af8e1f765a2252c3a246e8d",
+    "source_qldpc_dec_bootstrap.py": "b6a9729b7f126f597131f0bda535d91e547d136a205eed35a085c49c7d11bb5c",
+    "source_qldpc_dec_circuits.py": "8a5e6d35a29ca396528187622d553ee029dc7b3f58f8982629ffdd5126e1aca5",
+    "source_qldpc_dec_seeds.py": "4d4fcd915da2b6bec86b0d367f20be3d3b1e1d05eebe72fbe2d715dd9a0c74f0",
+    "source_qldpc_dec_runner.py": "740c124f5302af1f58b1da8a9b77bd5ed4e5b39518080b749dc6c6c3144c9816"
+  },
+  "pre_statement_sha256": "6ede81331bc6b92506392821438e32dc785f3b8c3389d46221940a911827fa19",
+  "bposd_prior_model": "merged DEM heterogeneous error_channel",
+  "bposd_reference": {
+    "package": "stimbposd==0.1.0",
+    "commit": "7921f5eb1b358ff616f9822280c9961e83df06cb"
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "stim": "1.16.0",
+    "ldpc": "2.4.1"
+  },
+  "revision": "pre_statement.md GA2",
+  "replacement_reason": "original row labeled X silently loaded the derived Z-memory circuit"
+}

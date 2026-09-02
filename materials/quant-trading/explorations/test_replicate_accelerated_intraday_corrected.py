@@ -28,6 +28,18 @@ class FeasibilitySafeguardTests(unittest.TestCase):
         self.assertEqual(report["max_complete_deribit_asset_block_transitions"], 12)
         self.assertTrue(report["all_registered_stops_reachable"])
 
+    def test_window_must_not_overlap_prior_replication(self) -> None:
+        with self.assertRaisesRegex(ValueError, "overlaps"):
+            validate_window_feasibility(
+                0, 7 * BLOCK_MS, 6, 12, not_before_ms=BLOCK_MS
+            )
+
+        report = validate_window_feasibility(
+            BLOCK_MS, 8 * BLOCK_MS, 6, 12, not_before_ms=BLOCK_MS
+        )
+        self.assertTrue(report["nonoverlap_with_prior_window"])
+        self.assertEqual(report["not_before_ms"], BLOCK_MS)
+
     def test_window_must_be_aligned_to_parent_blocks(self) -> None:
         with self.assertRaisesRegex(ValueError, "aligned"):
             validate_window_feasibility(1, 7 * BLOCK_MS + 1, 6, 12)

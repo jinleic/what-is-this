@@ -1,0 +1,13 @@
+{
+ "verdict": "PASS",
+ "blocks": 6,
+ "detail": [
+  "A floors re-derived: d=(12,13,13), all impossible => C=(13,14,14) with the printed witnesses",
+  "B C(T(X))=C(X) symmetry re-checked numerically (d and floor verdict invariant)",
+  "C synthesized 14-gate Wfac circuit re-verified by exact expansion",
+  "D both assemblies re-derived: 14+14+27=55 and 14+13+28=55, 9/9 outputs each",
+  "E 1 certificate(s) accepted by both pinned checkers on replay",
+  "F Wfac scan complete (1173 rows = 3 complete passes, 3 admissions); verdict consistent"
+ ],
+ "seconds": 0.38
+}

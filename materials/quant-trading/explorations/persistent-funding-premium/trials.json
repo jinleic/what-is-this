@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "persistent-funding-premium",
+  "trial_count": 2,
+  "selection_policy": "Both variants were frozen in the contract before outcome access. The holdout verdict uses only the 18-event primary variant; the 21-event variant is a robustness diagnostic that cannot replace, rescind, or upgrade that verdict. No other parameterization was computed.",
+  "trials": [
+    {
+      "trial": 1,
+      "variant": "persistent-positive-18",
+      "role": "primary",
+      "persistence_count": 18,
+      "holding_hours": 240,
+      "development": {
+        "pooled_entries": 24,
+        "per_asset_entries": {
+          "BTCUSDT": 11,
+          "ETHUSDT": 13
+        },
+        "pooled_mean_net_fraction": 0.00024376568823155923,
+        "pooled_median_net_fraction": 2.8546669754297006e-05,
+        "worst_entry": -0.0012048139034782415,
+        "status": "validation-pass-on-this-sample"
+      },
+      "holdout": {
+        "pooled_entries": 15,
+        "per_asset_entries": {
+          "BTCUSDT": 7,
+          "ETHUSDT": 8
+        },
+        "pooled_mean_net_fraction": -0.0005534300046712066,
+        "pooled_median_net_fraction": -0.0005076539042636308,
+        "worst_entry": -0.001430958617983516,
+        "mean_gate": false,
+        "median_gate": false,
+        "tail_gate": true,
+        "status": "falsified"
+      }
+    },
+    {
+      "trial": 2,
+      "variant": "persistent-positive-21",
+      "role": "robustness-diagnostic-only",
+      "persistence_count": 21,
+      "holding_hours": 240,
+      "development": {
+        "pooled_entries": 24,
+        "per_asset_entries": {
+          "BTCUSDT": 11,
+          "ETHUSDT": 13
+        },
+        "status": "diagnostic-only"
+      },
+      "holdout": {
+        "pooled_entries": 12,
+        "per_asset_entries": {
+          "BTCUSDT": 6,
+          "ETHUSDT": 6
+        },
+        "pooled_mean_net_fraction": -0.00045169455137831875,
+        "pooled_median_net_fraction": -0.0004850843351707988,
+        "worst_entry": -0.0013196186566424178,
+        "mean_gate": false,
+        "median_gate": false,
+        "tail_gate": true,
+        "status": "falsified"
+      }
+    }
+  ],
+  "replication": {
+    "preregistered_second_window_utc": "2025-07-01T00:00:00Z..2026-01-01T00:00:00Z",
+    "triggered": false,
+    "reason": "The holdout verdict was falsified; the contract activates the single replication only on a holdout pass."
+  }
+}

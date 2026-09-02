@@ -1,0 +1,48 @@
+{
+  "battery": "decomposition on A frontier cell (pre-statement \u00a74)",
+  "c_pair": [
+    "[4.14858931200000000000000000000 +/- 1e-34]",
+    "[4.18177802649600000000000000000 +/- 3e-34]"
+  ],
+  "frozen_a_margin": "-1.76291787028287693244667476546e-5",
+  "D1_baseline_cap131072": {
+    "upper": "[0.141128570218581708861750983106 +/- 6.70e-32]",
+    "margin": "[-1.76291787028287693244667476546e-5 +/- 4.20e-35]",
+    "margin_radius": "0",
+    "reproduces_A_frozen": true,
+    "process_seconds": 2.68039
+  },
+  "D2_V_kill_subdivision_cap131072": {
+    "upper": "[0.141128570218581708861750983106 +/- 6.70e-32]",
+    "margin": "[-1.76291787028287693244667476546e-5 +/- 4.20e-35]",
+    "margin_radius": "0",
+    "fold_second_hinge_recovery": "0",
+    "margin_delta_vs_A": "0"
+  },
+  "D3_panel_sup_series": {
+    "cap_2p19_upper": "[0.141106477948961238390030088938 +/- 1.70e-32]",
+    "cap_2p19_margin": "[4.46309091764170239642742026145e-6 +/- 3.26e-36]",
+    "cap_2p21_upper": "[0.141100954997314148984562319268 +/- 4.53e-31]",
+    "cap_2p21_margin": "[9.98604256473110786419709073044e-6 +/- 3.90e-36]",
+    "gain_2p17_to_2p19": "[2.20922696204705e-5 +/- 2.83e-20]",
+    "gain_2p19_to_2p21": "[5.52295164708941e-6 +/- 4.54e-21]",
+    "panel_sup_total_2p17_to_2p21": "[2.76152212675599e-5 +/- 2.29e-20]"
+  },
+  "D4_disk_feasible_even_sup_diagnostic": {
+    "note": "NOT a verdict mechanism (pre-statement \u00a74 firewall): certified envelope with Esup replaced by the certified sup of e over the disk-feasible part of B; measures the |e|-hinge coefficient-space excess",
+    "feasible_candidate_count": 3,
+    "upper": "[0.140634514532900602637094421073 +/- 2.82e-31]",
+    "margin": "[0.000476426506978277455332095285560 +/- 3.89e-34]",
+    "even_hinge_recovery_vs_A_cap": "[0.000494055685681106 +/- 2.25e-19]",
+    "margin_delta_vs_A": "[0.000494055685681106 +/- 2.25e-19]"
+  },
+  "D5_tail_ball": {
+    "value": "[3.6353172540086755822e-13 +/- 3.81e-33]",
+    "note": "identical in every variant; differential exactly 0"
+  },
+  "D6_within_panel_skew": {
+    "note": "captured by D3's 2^19\u21922^21 delta; restated",
+    "delta_2p19_to_2p21": "[5.52295164708941e-6 +/- 4.54e-21]"
+  },
+  "process_seconds_total": 62.46134
+}

@@ -714,3 +714,392 @@ separate pre-registration would be required before running them — rule 16).
 `C_{3,10}(d)` now has certified two-sided brackets at four `d` values.
 Escalation to Main: none triggered — no interval excluded any published
 value.
+
+## Owner correction — 2026-08-31: prior $q=3$ representative certificates suspended
+
+The “20 certified rows” claim immediately above is **RETRACTED pending
+orbit-safe replay**. A mandatory full-alphabet audit found that the frozen
+largest-remainder snap need not preserve input-orbit invariance, although the
+subsequent dual maximization compressed to one representative per orbit.
+
+The first audited row, $(q,n,d)=(3,6,1/2)$, passed: exact orbit equality,
+$3{,}279$ generator checks, all $729$ input divergences, zero
+full-versus-representative overlap failures, and identical representative/full
+maxima. The second row, $(3,6,1/5)$, failed **before** any new bound was
+accepted: the frozen `ba_word` integer vector at denominator $2^{30}$ split
+flat output orbit 51 (size 12) into counts $578{,}028$ and $578{,}029$.
+Therefore that candidate's output law is not constant on output orbits, and a
+representative-only maximum is not a valid upper certificate for it.
+
+Audit status: **1/20 re-certified, 1/20 failed, 18/20 not run** under the
+mandatory stop rule. Until a new campaign constructs probabilities in exact
+input-orbit coordinates and replays the full alphabet, only the
+$(3,6,1/2)$ row retains certification from this table. The other 19 displayed
+intervals remain preserved as historical outputs but are **UNVERIFIED /
+SUSPENDED**, not machine-certified results. This is a repository-certificate
+defect; it neither refutes nor changes any Tavakoli–Nguyen–Bose theorem or
+published bound.
+
+The proving counterexample is independently visible already at
+$(q,n,d)=(3,3,1/2)$: a split snap makes the inadmissible representative-only
+dual strictly smaller than the true full-alphabet maximum. The replacement
+must snap orbit masses first, distribute each exact mass uniformly within its
+orbit, assert exact output-orbit invariance, and compare the compressed
+maximum against every full-alphabet input before any row can be promoted.
+
+**Correction to the correction:** the demonstrated split is in the
+$1{,}093$-entry **output reference distribution $D$**, not in the input
+distribution $p$. The dual may use any positive normalized $D$; its safe
+replacement is to snap total **output-orbit** masses and set
+$D_y=D(O)/|O|$ exactly (or to induce $D$ exactly from an invariant input).
+Input-orbit snapping is required only when the primal itself is compressed by
+input symmetry. The mandatory full-alphabet dual comparison and the
+suspension verdict above are unchanged.
+
+## Completed correction — 2026-08-31: exact orbit-total replay restores all 20 $q=3$ rows
+
+Campaign:
+`campaigns/2026-08-31T09:13:25Z_7dc5babe-5e1b-44fa-a9e5-03d2f10183b6_q3-invariance-correction/`;
+manifest: `manifest.json`. Frozen correction runner SHA-256
+`ed84c1a3982f243e49e8f8f35367ee9e8788bb3c8a47fed16b883bd9da9efa21`;
+frozen conservative renderer SHA-256
+`bc8901f1038d09650fae9dea1caaaab25861f5102ae595efa3e17601782e1b15`.
+
+**MACHINE-VERIFIED correction verdict:** exact audit found that 16/20 frozen
+accepted `ba_word` vectors split an output orbit; those 16
+representative-compressed upper endpoints remain retracted. The other four
+legacy vectors were invariant. The replacement snaps total input-orbit masses
+for the primal and total output-orbit masses for the dual, distributes each
+mass uniformly inside its orbit, proves exact invariance, and compares both
+the primal and dual orbit evaluations against direct evaluation over every
+word of the full alphabet. Every chosen dual was
+`ba_total_orbit_mass`. All 20 replacements certify
+`CERT_LOWER_BEATS_LBplus + CERT_UPPER_BEATS_UB`; no
+Tavakoli–Nguyen–Bose theorem or printed sandwich value is refuted.
+
+The table below uses only conservative outward decimals derived from the full
+400-bit per-symbol Arb balls. The binary64 `cert_lo_per_symbol`,
+`cert_hi_per_symbol`, and width fields in the detailed JSONL are
+**REPORT-ONLY**, not certificate endpoints.
+
+| $n$ | $d$ | corrected certified interval (outward) | width upper (outward) | legacy $D$ split? |
+|---:|:---:|:---|---:|:---:|
+| 6 | 1/2 | `[0.48612690873525893, 0.48612726836569464]` | `3.5963043559742424e-07` | no |
+| 6 | 1/5 | `[0.9992805994038761, 0.9992806185950381]` | `1.919116167554878e-08` | yes |
+| 6 | 1/10 | `[1.262451538526818, 1.2624515509732321]` | `1.2446413657816448e-08` | yes |
+| 6 | 1/20 | `[1.4158072326903546, 1.4158072449168306]` | `1.2226475645090283e-08` | yes |
+| 7 | 1/2 | `[0.46572596820424017, 0.46573204857053757]` | `6.080366297333852e-06` | yes |
+| 7 | 1/5 | `[0.9769505177740003, 0.976950563790745]` | `4.6016744441483404e-08` | yes |
+| 7 | 1/10 | `[1.2473597256274749, 1.247359775851469]` | `5.022399355970927e-08` | yes |
+| 7 | 1/20 | `[1.4070914100656966, 1.4070914501217517]` | `4.005605471757835e-08` | no |
+| 8 | 1/2 | `[0.4491602653164887, 0.44918246544877494]` | `2.220013228610702e-05` | yes |
+| 8 | 1/5 | `[0.9582453246473193, 0.9582455337027981]` | `2.09055478620426e-07` | yes |
+| 8 | 1/10 | `[1.23445208950039, 1.2344521805124733]` | `9.101208270304075e-08` | yes |
+| 8 | 1/20 | `[1.399541506237329, 1.399541571855359]` | `6.56180294580417e-08` | yes |
+| 9 | 1/2 | `[0.43538141101923905, 0.4353817875980781]` | `3.765788389715567e-07` | yes |
+| 9 | 1/5 | `[0.9423194816428748, 0.9423200290509085]` | `5.474080334643068e-07` | no |
+| 9 | 1/10 | `[1.2232499579738394, 1.2232502176397095]` | `2.5966586972603587e-07` | yes |
+| 9 | 1/20 | `[1.3929068203510147, 1.3929070242522732]` | `2.03901257961709e-07` | yes |
+| 10 | 1/2 | `[0.4236997564364154, 0.42370155403328696]` | `1.7975968714839528e-06` | no |
+| 10 | 1/5 | `[0.9285797540357409, 0.9285822403778092]` | `2.4863420681301732e-06` | yes |
+| 10 | 1/10 | `[1.2134129645213867, 1.2134136998846528]` | `7.353632655671914e-07` | yes |
+| 10 | 1/20 | `[1.3870088535516931, 1.387009425126998]` | `5.715753042954663e-07` | yes |
+
+The replay performed 1,058,508 direct full-input KL evaluations, 5,821,704
+exact group-generator checks, and 237,744,816 positive-$W$/positive-$D$ term
+checks (`MACHINE-VERIFIED` counts); zero positive-mass input words were
+skipped. Runtime `841.039 s` wall / `838.785 s` CPU is
+`COMPUTATIONAL-EVIDENCE`.
+
+**Rule-7 scope sentence.** The correction sweep is exactly $q=3$ with
+$(n,d)$ in
+`{6,7,8,9,10} x {1/2,1/5,1/10,1/20}`, using
+$G=S_3\times C_2$ on symbol VALUES and reversal, exact total input-orbit mass
+snap $2^{30}$, exact total output-orbit mass snap $2^{30}$, full finite
+channel support for every dual candidate, direct full input alphabets of size
+$3^n$, and Arb 400-bit outward rounding. **NOT swept:** $q=4$ or $q\ge4$;
+$q=3,n\ge11$; other $d$; per-word tie-breaking as an admitted bound;
+non-$G$-invariant correction candidates; the cause of Tavakoli–Nguyen–Bose
+rounding; Morozov–Duman, Pinto–Ribeiro, and every $n\to\infty$/asymptotic
+capacity claim. Every replacement is only a finite-$n$ theorem.
+
+Disproved premises: equal orbit-invariant float inputs do **not**
+automatically remain equal under stable per-word largest-remainder snapping,
+and only 4—not 20—of the frozen accepted `ba_word` vectors were invariant.
+The hazard was found retrospectively in the parent $q=4$ startup audit; the
+separate correction box, orbit-total formulas, exact checks, candidate order,
+and endpoint rule were prospectively frozen before its runner.
+
+The parent $q=4$ campaign remains **FAILURE TO CERTIFY / NOT RUN**: zero
+$q=4$ certificate rows executed, pending owner integration. Named next
+campaign: **q4-total-output-orbit-mass restart**, replaying $q=4,n=5..10$ at
+the four fixed $d$ values and then separately adjudicating $q=3,n=11$.
+**INFERENCE cost:** 6–10 single-thread CPU hours under the existing 96 GiB,
+90-minute-per-row, and 10-hour-stage caps.
+
+## $q=4$ total-output-orbit-mass restart — static freeze, 2026-08-31
+
+Campaign:
+`campaigns/2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_q4-total-output-orbit-mass/`.
+The exact 24-row box is preregistered and runnable, but remains **NOT RUN**:
+zero BA iterations, zero deferred-anchor rows, and zero $q=4$ certificate rows
+were executed while another target owned the heavy CPU slot
+(`COMPUTATIONAL-EVIDENCE`). The frozen authoritative runner SHA-256 is
+`469e31a7cb59712d0eea6e5d932681fce63ff8eecd78b093d2da37be89ae09d7`;
+the static checksum-ledger SHA-256 is
+`906702e1d649cda653a7058792d274fe7b3cbdc88b830f793daa5a6d80aa999d`
+(`MACHINE-VERIFIED` hashes).
+
+The construction admits only the corrected input-orbit-total primal and
+output-orbit-total dual candidates `(ba_total_orbit_mass, uniform)`;
+`ba_word` is forbidden. Every future row requires exact sum,
+positivity/support and $S_4\times C_2$ invariance checks, direct
+full-alphabet KL comparison over all $4^n$ inputs, 400-bit Arb evaluation,
+and exact containment by conservative outward decimals.
+
+The sub-second static guard passed (`MACHINE-VERIFIED`): the $q=4,n=5$
+census tuple is `(31,50,631,332,963)`, 130,560 value/reversal equivariance
+checks passed, the position plant broke with $A=1$ versus $A=2$, the planted
+split output law was rejected before KL, zero support returned infinity, and
+the negative-width plant was rejected. Empty resume validation found exactly
+zero rows.
+
+Provenance correction: the row JSONL and checksum-ledger replacements are
+each independently atomic and `fsync`ed, but the **pair is not
+crash-atomic**. A crash between them preserves a mismatch and hard-aborts
+resume; it is never accepted or repaired. Failed temporary evidence is never
+unlinked and its exact path is reported.
+
+**Rule-7 scope sentence.** The intended sweep is exactly $q=4$ with
+$(n,d)$ in
+`{5,6,7,8,9,10} x {1/2,1/5,1/10,1/20}`, using
+$G=S_4\times C_2$ on symbol VALUES and reversal, total input-orbit and
+output-orbit snaps $2^{30}$, the two fixed dual candidates above, direct
+full-alphabet KL, full support, and Arb 400-bit outward rounding. **NOT
+swept:** $q=3,n=11$ or any q=3 row; $q\ge5$; $q=4,n\ge11$; other $d$;
+`ba_word`; non-invariant candidates; the falsified position/type reduction;
+the cause of Tavakoli–Nguyen–Bose rounding; Morozov–Duman, Pinto–Ribeiro, and
+every asymptotic-capacity claim. The deferred next action is the frozen
+$q=4,n=5,d=1/2$ full startup anchor after Main releases the heavy slot,
+followed only on PASS by the fixed 24-row run. **INFERENCE cost:** 6–10
+single-thread CPU hours.
+
+## $q=4$ released anchor passes; 24-row grid still pending (owner, 2026-08-31)
+
+The registered full startup anchor in
+`campaigns/2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_q4-total-output-orbit-mass/`
+has now run under the final source hash `c9c3a842…`. A fresh release-time
+static guard passed first. The exact census again matched
+`(31,50,631,332,963)`; input/output orbit sizes sum to 1,024/1,365.
+
+For `q=4,n=5,d=1/2`, the admitted exact total-orbit primal and
+`ba_total_orbit_mass` dual give the outward per-symbol interval
+
+`[0.6664806108007938, 0.6664806978587714]`,
+
+width upper `8.705797740570955e-8 < 1/500`. All 3,072 input generator checks
+and 4,095 checks for each output candidate passed, and both dual candidates
+were evaluated on all 1,024 inputs. Verdict:
+`CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB`
+(**MACHINE-VERIFIED**).
+
+Anchor SHA-256:
+`c47aeb35250eade511e3cfe8e65701e9302545b18d46d995952cdd5f073b794b`.
+The anchor deliberately wrote no row artifact. Therefore this restores only
+the registered anchor: the full 24-row
+`n=5..10`, `d in {1/2,1/5,1/10,1/20}` production grid remains
+**COMPUTE PENDING**, and no asymptotic claim changes.
+
+## $q=4$ 24-row grid completed — exact orbit-total certificates (owner, 2026-08-31)
+
+This append-only result supersedes the immediately preceding
+**COMPUTE PENDING** status. The frozen `c9c3a842…` runner completed all 24
+registered rows in
+`campaigns/2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_q4-total-output-orbit-mass/`.
+Every row is `CERTIFIED`; every selected dual is
+`ba_total_orbit_mass`; and every conservative interval strictly beats both
+published finite-$n$ endpoints
+(`CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB`,
+**MACHINE-VERIFIED**).
+
+The complete interval table is
+`TABLE_q4_conservative_intervals.csv`. Width upper bounds range from
+`6.165071504436472e-09` at $(n,d)=(5,1/10)$ through
+`2.3125135592425783e-05` at $(8,1/2)$ bits/symbol. The tightest published
+margin remains positive at $(5,1/20)$: the serialized Arb lower-margin ball
+has lower endpoint approximately `0.0007402311927961205436222872684`, and
+the upper-margin ball has lower endpoint approximately
+`0.08766315500354434284029482356`. The archived exact Arb balls, not these
+decimal summaries, certify the strict inequalities.
+
+Across the fixed pair of dual candidates, the rows record 11,182,080 direct
+full-input evaluations and 3,585,643,216 positive-$W$/positive-$D$ term
+checks. The primal side records 1,792,821,608 direct conditional entries.
+All 16,773,120 expanded input and 44,728,272 expanded output generator
+checks passed; there were zero full-word/representative overlap failures.
+Post-run immutable-resume validation returned `PASS` with 24 rows. An
+independent owner check verified all 24 newline-inclusive row hashes and
+that the CSV is an exact projection of the canonical JSONL
+(**MACHINE-VERIFIED**).
+
+The one-process production run took `4651.466 s` wall / `4649.094 s` CPU;
+maximum row-recorded RSS was `1,441,169,408` bytes and no resource stop
+fired (**COMPUTATIONAL-EVIDENCE**). Full report:
+`report.md`; additive final manifest:
+`manifest_final.json`; final checksum-ledger SHA-256:
+`d2660432da9a4d79fb3d9c0e134a249cef6c546fe199f2a3bce672dce905eb30`.
+The historical manifest, interim ledger, and post-hold provenance amendments
+remain byte-preserved; import-generated `__pycache__/` files are preserved
+but excluded from evidence ledgers.
+
+**Rule-7 scope sentence.** This proves only the registered finite-$n$ box
+$q=4$, $n=5..10$, and
+$d\in\{1/2,1/5,1/10,1/20\}$ under the frozen
+$S_4\times C_2$ exact-orbit protocol. It does **not** sweep $q=3,n=11$,
+$q\ge5$, $q=4,n\ge11$, other deletion probabilities, non-invariant
+candidates, or any asymptotic-capacity statement. Named next campaign:
+**$q=3,n=11$ total-output-orbit-mass extension**, with a separate
+prospective freeze required before computation.
+
+## $q=3,n=11$ extension completed — 4/4 orbit-total certificates (owner, 2026-08-31)
+
+The named successor campaign is complete. The frozen
+`08ecbc49…` runner certified all four registered rows in
+`campaigns/2026-08-31T20-34-52Z_04ed25bd-455f-4814-8288-5ee0106e0db8_q3-n11-total-output-orbit-mass/`.
+Every row is `CERTIFIED`, every selected dual is
+`ba_total_orbit_mass`, and every conservative interval strictly beats both
+published Tavakoli–Nguyen–Bose finite-$n$ endpoints
+(`CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB`, **MACHINE-VERIFIED**):
+
+| $d$ | certified interval (outward) | width upper |
+|:---:|:---|---:|
+| 1/2 | `[0.4136415126778377, 0.4136475665528263]` | `6.053874988461827e-06` |
+| 1/5 | `[0.9165946848818924, 0.9166017532024916]` | `7.068320598920295e-06` |
+| 1/10 | `[1.2046904010391062, 1.2046925848595933]` | `2.1838204867062363e-06` |
+| 1/20 | `[1.3817159992481873, 1.3817177042129642]` | `1.7049647766059455e-06` |
+
+All four rows reproduce the exact census tuple
+`(14884, 22450, 6148309, 3573542, 9721851)` with orbit-size sums
+$177147=3^{11}$ and $265720=\sum_{k=0}^{11}3^k$, matching independent
+Burnside counts. The rows record 1,417,176 direct full-input dual
+evaluations, 634,415,384 positive-$W$/positive-$D$ dual terms,
+316,716,419 direct primal conditional entries, 2,125,764 expanded input
+generator checks, and 9,565,920 expanded output generator checks, with zero
+full-word/representative overlap failures. The frozen full-support bump
+fired on `ba_total_orbit_mass` at $d=1/2,1/10,1/20$
+(5,448/1/4 zero orbit masses) and not at $d=1/5$. The tightest published
+margin is at $d=1/20$, where the archived Arb lower-margin ball has lower
+endpoint approximately `0.00129169637501813941901314966788`.
+
+Post-run immutable resume returned `PASS` with four rows; an independent
+owner check re-derived all four newline-inclusive row hashes, re-verified
+every outward decimal against its archived exact binary rational, re-checked
+`width <= 1/500`, and confirmed the CSV is an exact projection
+(**MACHINE-VERIFIED**). The one-process run took `1151.072 s` wall /
+`1150.401 s` CPU with maximum row-recorded RSS `929,677,312` bytes and no
+resource stop (**COMPUTATIONAL-EVIDENCE**). Report: `report.md`; additive
+`manifest_final.json`; final checksum-ledger SHA-256
+`0ba5629a13854ba4eb1cdff32aad83fa0a385ec9a3da6b33bef5f94ac28b7761`, all 20
+entries passing. No `__pycache__` exists: bytecode writing is refused before
+the first campaign import.
+
+**Rule-7 scope sentence.** This proves only the registered finite-$n$ box
+$q=3$, $n=11$,
+$d\in\{1/2,1/5,1/10,1/20\}$ under the frozen
+$S_3\times C_2$ exact-orbit protocol. It does **not** sweep any $q\ge4$ row,
+$q=3$ with $n\ne11$, other deletion probabilities, `ba_word`, non-invariant
+candidates, or any asymptotic-capacity statement. Named next campaign:
+**$q=3,n=12$ total-output-orbit-mass extension** (input orbits 44,530 over
+$3^{12}=531441$ words; output orbits 66,980 over
+$\sum_{k=0}^{12}3^k=797161$ words), requiring its own prospective freeze.
+**INFERENCE cost:** about 1.0–1.5 single-thread CPU hours for its four rows
+under the same caps.
+
+## Current state (agent DelcapN12, 2026-09-02) — $q=3,n=12$ box COMPLETE, 4/4 certified
+
+The $q=3,n=12$ extension named above is **done**: all four registered rows
+are `CERTIFIED` and **every one strictly beats BOTH published
+Tavakoli–Nguyen–Bose finite-$n$ endpoints**
+(`CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB`, `MACHINE-VERIFIED`). Finite-$n$
+theorem for exactly those four cells; **no asymptotic-capacity claim.**
+
+Two campaigns, because the first crashed on a launcher defect (below):
+
+* `campaigns/20260901T121346Z_d1db3155_4354a957b8ba/` — gate
+  `delcap-q3-n12-total-output-orbit-mass-v1`, verdict **CRASHED**. Box rows 0–1
+  ($d=1/2,1/5$) certified and ledger-validated before the crash.
+* `campaigns/20260902T010546Z_adc6518e_e85083dd9888/` — gate
+  `delcap-q3-n12-continuation-d10-d20-v1`, verdict **FROZEN-CERTIFIED**. Box
+  rows 2–3 ($d=1/10,1/20$). Canonical report: that dir's `report.md`.
+
+| box row | $d$ | certified interval (outward) | width upper | $LB^+$ margin $\ge$ | $UB$ margin $\ge$ |
+|---:|:---:|:---|---:|---:|---:|
+| 0 | 1/2 | `[0.40486950906723745, 0.4048828292730583]` | `1.3320205820702559e-05` | `9.774185e-02` | `3.875984e-01` |
+| 1 | 1/5 | `[0.9060415197452321, 0.9060644026068896]` | `2.2882861657318862e-05` | `2.095869e-02` | `3.619056e-01` |
+| 2 | 1/10 | `[1.1968923784214915, 1.1968988416160002]` | `6.4631945083381036e-06` | `5.290779e-03` | `2.295674e-01` |
+| 3 | 1/20 | `[1.376928469567818, 1.3769335302038865]` | `5.060636068201896e-06` | `1.314571e-03` | `1.287808e-01` |
+
+Every selected dual is the exact `ba_total_orbit_mass` candidate; exact
+orbit-uniform was evaluated over the full input alphabet in every row and never
+selected. All four widths are inside the registered $1/500$ target.
+
+**Pre-registered orbit counts asserted, never adjusted** (`MACHINE-VERIFIED`):
+input $S_3\times C_2$ orbits $44{,}530$ over $3^{12}=531{,}441$ words; output
+orbits $66{,}980$ over $\sum_{k=0}^{12}3^k=797{,}161$; independent Burnside
+closed form $B(k)=(3^k+3+\mathrm{rev}(k))/12$ reproduces both, with series
+$B(0..12)=1,1,2,4,10,25,70,196,574,1681,5002,14884,44530$ whose $k\le11$ prefix
+is $22{,}450$ — the frozen $n=11$ anchor. Full census tuple
+$(44530, 66980, 30666848, 18311678, 48978526)$, identical across both static
+guards and all four rows. **Exact orbit-mass identities:** input numerators sum
+to exactly $2^{30}$; the BA dual sums to $2^{30}$ with no bump ($d=1/5$) and to
+$2^{30}+66{,}980=1{,}073{,}808{,}804$ where the frozen full-support bump fires
+($30904$, $2$, $8$ zero masses at $d=1/2,1/10,1/20$); the orbit-uniform dual's
+numerators sum to the total output word count $797{,}161$.
+
+**Controls, in-run, both directions.** ACCEPT: the frozen $n=11$ row
+`0:3:11:1/2` was re-executed through the $n=12$ code path and reproduced
+**bit-exactly on all 35 compared certificate fields** — census tuple, all
+$14{,}884$ input and $22{,}450$ output mass numerators, every archived Arb ball,
+the whole `conservative_interval` block with its exact binary rationals, the
+verdict, and even the float BA locator values — zero mismatches, in both
+campaigns. REJECT: five plants each fired at their pre-registered assertion
+point (`R1a` mass total $2^{30}+1$; `R1c` negative input numerator; `R1b`
+negative output numerator; `R2` dual-below-primal negative width; `R3` planted
+split non-invariant output law rejected before compression with 5 failing
+generator equalities, while the exact orbit-uniform control was admitted).
+
+Aggregate exact work over the four rows: $1{,}553{,}383{,}596$ direct primal
+conditional entries, $4{,}251{,}528$ direct full-alphabet dual word evaluations,
+$6{,}377{,}292$ expanded input generator checks, $28{,}697{,}796$ expanded output
+generator checks, zero overlap failures, $32{,}442$ zero-mass input words
+accounted for at $d=1/2$. Row CPU $7664.5$ s $=2.13$ CPU-hours inside the
+pre-registered 6-CPU-hour budget; max row RSS $4{,}398{,}972{,}928$ bytes against
+the 96 GiB cap; no resource stop (`COMPUTATIONAL-EVIDENCE`). A 180-assertion
+independent re-derivation from the frozen bytes of both campaigns passed at
+close-out (line hashes, canonical-JSON equality, outward-rational ↔ decimal
+identity, outward containment against the archived Arb balls, width $\le 1/500$,
+both-endpoint strict improvement, census determinism, mass identities).
+
+**Instrument defect disclosed.** The first campaign died mid-row-2 with
+`BrokenPipeError(32)` raised inside the runner's `log()` `print`: the launcher
+piped stdout through `tail`, deviating from the frozen command, and the read end
+closed. Root cause is the launcher, not the mathematics; the runner's frozen
+semantics correctly hard-aborted, archived `FAILURE.json`, and forbade rerun, so
+that campaign was frozen and closed `CRASHED` with its two valid rows intact and
+byte-pinned. The residual defect worth carrying forward: `log()` is fatal on a
+broken stdout even though all evidence is already durable on disk. The
+continuation excludes the mode by contract (stdout to a file, supervised
+process) rather than by patching frozen mathematics. Also disclosed: two
+close-out *checking* errors of mine (comparing the archived outward width to the
+difference of display doubles, ~2 ULP larger than the true Arb difference the
+width bounds; and expecting the post-bump denominator to be $2^{30}+z_{\text{zeros}}$
+rather than $2^{30}+n_{\text{out}}$) — both were wrong checks, not wrong evidence.
+
+**Next gate:** $q=3,n=13$ total-output-orbit-mass extension under its own
+prospective freeze — input orbits $B(13)=133{,}225$ over $3^{13}=1{,}594{,}323$
+words, output orbits $\sum_{k=0}^{13}B(k)=200{,}205$ over
+$\sum_{k=0}^{13}3^k=2{,}391{,}484$ words. **INFERENCE cost:** the measured
+$n{=}11\to n{=}12$ row-CPU step was $1150\,\mathrm{s}\to 7664\,\mathrm{s}$
+(6.7x), so $n=13$ needs about $6$–$12$ single-thread CPU-hours for four rows and
+roughly $12$–$14$ GiB peak RSS; it must be pre-registered with a larger budget,
+never resumed under changed caps.

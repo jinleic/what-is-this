@@ -28,6 +28,12 @@ One fact, one owner. Four layers, no duplication:
 | chronological ledger | [`PROGRESS.md`](PROGRESS.md) | dated, newest-first session entries; every claim carries its verification; retractions inline |
 | current state per target | `<target>/README.md` | what is PROVED / CONDITIONAL / NUMERICAL right now, gates, file inventory, how to run |
 | run artifacts | `<target>/campaigns/<UTC-timestamp>_<uuid>_<code-hash12>/` | immutable frozen snapshots + committed results; inventoried in `<target>/campaigns/README.md` |
+| generated compact state, per target | `<target>/state.json` | owner-maintained semantic fields (`problem`, `current_gate`, `headline`, `next_action`); mechanics refreshed by `scripts/campaign.py state refresh` |
+
+Generated, not narrative: when the one-line summary in `<target>/state.json` and an
+owner document above disagree, the owner document wins — fix [`RESULTS.md`](RESULTS.md),
+`<target>/README.md` (its append-only rule is unaffected), or [`PROGRESS.md`](PROGRESS.md)
+first, then re-run `scripts/campaign.py state refresh` so the generated copy follows.
 
 Naming rules:
 
@@ -225,6 +231,72 @@ TCS-specific additions:
     claim rests on it. Added 2026-08-30 after two owner figures propagated through agents
     unchecked in a single session — one a structural hypothesis, one a rank count that was
     wrong.
+17d. **A boundary is per-instrument, and an absence probe must name what it bounds.**
+    Two distinct failures, both found 2026-08-31 in this repository's own sweeps, both
+    invisible to arithmetic checking:
+    * **One boundary per category, printed.** The 2026-08-30 sweep printed a single
+      `max published` (`2026-08-27T17:53:45Z`) for a **two-category** sweep. That value is
+      `cs.CC`'s stratum maximum — re-verified exactly — while `cs.IT`'s 08-27 maximum is
+      `2026-08-27T20:14:37Z`. Three `cs.IT` submissions lived in the 2 h 21 min shadow
+      (`2608.27565`, `2608.27635`, `2608.27682`), and the following window's query then
+      excluded the whole 08-27 day by its own lower bound, so **two instruments missed the
+      same items for two different reasons**. A sweep over $k$ sources or categories owes
+      $k$ printed boundaries; a maximum generalized across categories is a coverage defect,
+      not a summary. This is rule 17b's anchoring requirement applied to the boundary itself.
+    * **Soft-404: status is not content.** `eccc.weizmann.ac.il/report/2026/163` returns
+      **HTTP 200** carrying a `404 PAGE NOT FOUND` body. A status-based absence probe
+      concludes the report EXISTS; only a content discriminator settles it (TR26-162's page
+      carries `TR26-\d+` identifiers, TR26-163's carries none). State which layer the probe
+      reads — transport status or document content — in the absence claim itself.
+17e. **A rate is a claim about an accounting source; name it.** Added 2026-09-01
+    after a 40x phantom CPU clamp cost three agents and the owner real hours. On this
+    workstation `ps -o time` / `%cpu` for framework-Python (`Python.app`) children
+    quantizes and defers CPU-time accounting: repeated 25 s windows read `0->1 s`
+    while `/usr/bin/sample` showed the same thread at `2287/2287 ms` inside a numpy
+    ufunc, i.e. a full core, with throughput independently confirming it. Four
+    unrelated processes all reporting exactly `2.4%` was the tell that the
+    *instrument* was constant, not the load. Trustworthy sources, in order:
+    in-process `resource.getrusage(...).ru_utime` or `time.process_time()`; then
+    `/usr/bin/sample <pid> N` thread time and state; then throughput against a
+    calibration run. The owner's own prescribed discriminator (`delta_cpu/delta_wall`
+    from `ps`) was the broken one, and the owner's A/B tests were right only because
+    they happened to use in-process accounting. Corollary, and the reason this is a
+    rule: **never restructure a campaign around an unexplained performance
+    observation** - get a stack first, and retain it before killing the process, or
+    the evidence dies with it (it did, twice, that day).
+
+### Verify before record — the mechanism, not the intention
+
+Rules 2, 17 and 17c are enforced at the moment a number enters a ledger, which is
+where they historically failed: under batch load the owner records a returned
+figure instead of re-deriving it. The standing protocol, unchanged since the
+seven-target launch, is that **this session (Main) is the single writer** of
+`README.md`, `RESULTS.md`, `PROGRESS.md` and `docs/`; an agent writes only inside
+its own `cs/<target>/`, and `docs/scan-raw/` output is non-authoritative because a
+scout tag is subagent-verified, not owner-verified.
+
+Recording is gated by [`tools/verify_campaign.py`](tools/verify_campaign.py), an
+owner-only reader of finished artifacts (no campaign runner may import it). Given
+a campaign directory it re-derives, from bytes on disk: every checksum-ledger
+entry; every newline-inclusive row hash against the per-line ledger, with the
+row/ledger key bijection and ordinal order; the declared source hashes against the
+files that carry them; the outward decimal ↔ archived binary-rational identity and
+the enclosure of each archived Arb ball by the outward endpoints and width; each
+presentation CSV as an order-independent row-wise projection of a canonical
+`.jsonl`, reporting **every** row field a column could have come from; and the
+sums, maxima and histograms of every leaf shared by all rows. `--claims FILE`
+diffs stated numbers against those derived values and exits non-zero on the first
+disagreement, so a ledger sentence is written only after the numbers in it have
+been reproduced from the frozen files.
+
+Two negative controls were run when it was introduced, both on copies: perturbed
+claims (an off-by-one count, a wrong row total, a wrong file hash) were each
+reported with the artifact value, and a single flipped byte inside a canonical row
+was caught independently by the file ledger, the per-line hash, and the CSV
+projection. Unlisted campaign files are always reported, so an artifact that no
+ledger covers cannot quietly back a claim. A campaign whose runner never promised
+sorted-compact canonical rows is reported, not failed — rule 17b: a declared
+difference is not a defect.
 
 ## Evidence labels
 

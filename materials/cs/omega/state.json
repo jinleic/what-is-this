@@ -1,0 +1,18 @@
+{
+  "schema": "target-state/1",
+  "id": "cs/omega",
+  "problem": "Matrix multiplication exponent omega rigorous enclosure",
+  "status": "active",
+  "current_gate": "Gate C PARTIAL. V1 PASS; LP/ANY-y FAILURE TO CERTIFY; B&B infeasible-at-cost; R_glob[0] whole-box and kernel-ray order pins FROZEN-NEGATIVE; OmegaBranchSix FROZEN-CERTIFIED (R_glob[2] cand_2 excluded on the kernel ray family, gap low +4.55e-12; five branches Tier-3).",
+  "latest_campaign": "20260901T133130Z_f4779759_b81dc930e87c",
+  "latest_campaign_verdict": "FROZEN-CERTIFIED",
+  "headline": "OmegaBranchSix 20260901T133130Z_f4779759_b81dc930e87c FROZEN-CERTIFIED: on the exact-kernel ray family {p*+rho*s, rho in [0,1e-7]}, R_glob[2]'s candidate 2 is CERTIFIED excluded from the possible-minimizer set (outward gap [+4.5483061219230014e-12, +2.0511278540081266e-06] at both endpoints); R_comp[0,3]/[1,3]/[2,3]/[0,2] and R_glob[1] Tier-3 (closest miss R_glob[1] straddle lo -2.54e-12 = 16.1x signal). 21-dim kernel question UNCHANGED and OPEN; 12.808x guardrail carried; no record claim.",
+  "next_action": "omega rests per Main steering (one-more-attempt consumed). Any future campaign: certified derivative signs of the difference functionals along kernel directions, or R_glob[1] exclusion with a tighter hull (miss by 16.1x signal).",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-02T05:12:54Z",
+  "updated_by": "owner-main",
+  "sources": [
+    "cs/omega/README.md",
+    "cs/RESULTS.md"
+  ]
+}

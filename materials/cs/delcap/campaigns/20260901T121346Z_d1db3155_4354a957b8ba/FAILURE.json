@@ -1,0 +1,14 @@
+{
+  "campaign_id": "20260901T121346Z_d1db3155_4354a957b8ba",
+  "completed_rows": 2,
+  "d": "1/10",
+  "error": "BrokenPipeError(32, 'Broken pipe')",
+  "n": 12,
+  "ordinal": 2,
+  "q": 3,
+  "schema": "delcap-q3-n12-total-output-orbit-mass-v1",
+  "source_sha256": "08836f43adbffcbf35da90feb140ca030e387605043802243dd3dac4e6cc6718",
+  "status": "FAIL",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/jinleic/jinleic-workspace/cs/delcap/campaigns/20260901T121346Z_d1db3155_4354a957b8ba/gate_c_q3_n12_total_orbit.py.asrun\", line 1445, in rows_stage\n    row = certificate_row(current_structure, d, ordinal, source_hash)\n  File \"/Users/jinleic/jinleic-workspace/cs/delcap/campaigns/20260901T121346Z_d1db3155_4354a957b8ba/gate_c_q3_n12_total_orbit.py.asrun\", line 857, in certificate_row\n    primal_check = kl_evaluation(structure, induced, d, input_masses=input_masses)\n  File \"/Users/jinleic/jinleic-workspace/cs/delcap/campaigns/20260901T121346Z_d1db3155_4354a957b8ba/gate_c_q3_n12_total_orbit.py.asrun\", line 710, in kl_evaluation\n    log(\n    ~~~^\n        f\"  full KL q={structure.q} n={structure.n}: \"\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        f\"{index}/{structure.q**structure.n}\"\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/jinleic/jinleic-workspace/cs/delcap/campaigns/20260901T121346Z_d1db3155_4354a957b8ba/gate_c_q3_n12_total_orbit.py.asrun\", line 219, in log\n    print(line, flush=True)\n    ~~~~~^^^^^^^^^^^^^^^^^^\nBrokenPipeError: [Errno 32] Broken pipe\n",
+  "utc": "2026-09-01T14:05:14Z"
+}

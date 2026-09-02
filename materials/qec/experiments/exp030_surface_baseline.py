@@ -646,7 +646,7 @@ def make_report(result: dict[str, Any]) -> str:
             "## Reproduction",
             "",
             "```bash",
-            "cd /Users/jinleic/jinleic-workspace/qec-codesign",
+            "cd /Users/jinleic/jinleic-workspace/math/qec",
             "PYTHONPATH=src .venv/bin/python experiments/exp030_surface_baseline.py",
             "```",
             "",

@@ -2,8 +2,19 @@
   "completed_utc": "2026-08-31T08:24:36Z",
   "known_anchor_q3_n10_flat_output_g_orbits": 7566,
   "known_anchor_q3_n10_input_g_orbits": 5002,
+  "metric_correction": {
+    "correct_total_fields": [
+      "sparse_locator_nonzero_visits_per_iteration",
+      "sparse_locator_nonzero_visits_4000"
+    ],
+    "evidence_label": "MACHINE-VERIFIED",
+    "legacy_field_retained": "sparse_locator_value_passes_4000",
+    "reason": "one BA iteration visits every nonzero CSR marginal slot and every representative conditional KL entry",
+    "status": "PASS"
+  },
   "rows": [
     {
+      "RETRACTION_sparse_locator_value_passes_4000": "legacy field counts only representative KL-entry visits; it omits the CSR marginal orbit-sum visits and is not the total per-iteration cost",
       "census_wall_s": 0.001,
       "dense_locator_bytes_float64": 31248,
       "dense_locator_cells": 3906,
@@ -21,9 +32,12 @@
       "representative_subsequence_entries": 631,
       "rgs_classes": 51,
       "self_reverse_rgs_classes": 11,
+      "sparse_locator_nonzero_visits_4000": 3852000,
+      "sparse_locator_nonzero_visits_per_iteration": 963,
       "sparse_locator_value_passes_4000": 2524000
     },
     {
+      "RETRACTION_sparse_locator_value_passes_4000": "legacy field counts only representative KL-entry visits; it omits the CSR marginal orbit-sum visits and is not the total per-iteration cost",
       "census_wall_s": 0.004,
       "dense_locator_bytes_float64": 384344,
       "dense_locator_cells": 48043,
@@ -41,9 +55,12 @@
       "representative_subsequence_entries": 3911,
       "rgs_classes": 187,
       "self_reverse_rgs_classes": 27,
+      "sparse_locator_nonzero_visits_4000": 23048000,
+      "sparse_locator_nonzero_visits_per_iteration": 5762,
       "sparse_locator_value_passes_4000": 15644000
     },
     {
+      "RETRACTION_sparse_locator_value_passes_4000": "legacy field counts only representative KL-entry visits; it omits the CSR marginal orbit-sum visits and is not the total per-iteration cost",
       "census_wall_s": 0.036,
       "dense_locator_bytes_float64": 4954288,
       "dense_locator_cells": 619286,
@@ -61,9 +78,12 @@
       "representative_subsequence_entries": 24706,
       "rgs_classes": 715,
       "self_reverse_rgs_classes": 43,
+      "sparse_locator_nonzero_visits_4000": 144012000,
+      "sparse_locator_nonzero_visits_per_iteration": 36003,
       "sparse_locator_value_passes_4000": 98824000
     },
     {
+      "RETRACTION_sparse_locator_value_passes_4000": "legacy field counts only representative KL-entry visits; it omits the CSR marginal orbit-sum visits and is not the total per-iteration cost",
       "census_wall_s": 0.219,
       "dense_locator_bytes_float64": 73443816,
       "dense_locator_cells": 9180477,
@@ -81,9 +101,12 @@
       "representative_subsequence_entries": 167472,
       "rgs_classes": 2795,
       "self_reverse_rgs_classes": 107,
+      "sparse_locator_nonzero_visits_4000": 972652000,
+      "sparse_locator_nonzero_visits_per_iteration": 243163,
       "sparse_locator_value_passes_4000": 669888000
     },
     {
+      "RETRACTION_sparse_locator_value_passes_4000": "legacy field counts only representative KL-entry visits; it omits the CSR marginal orbit-sum visits and is not the total per-iteration cost",
       "census_wall_s": 1.603,
       "dense_locator_bytes_float64": 1107162520,
       "dense_locator_cells": 138395315,
@@ -101,9 +124,12 @@
       "representative_subsequence_entries": 1141547,
       "rgs_classes": 11051,
       "self_reverse_rgs_classes": 171,
+      "sparse_locator_nonzero_visits_4000": 6666204000,
+      "sparse_locator_nonzero_visits_per_iteration": 1666551,
       "sparse_locator_value_passes_4000": 4566188000
     },
     {
+      "RETRACTION_sparse_locator_value_passes_4000": "legacy field counts only representative KL-entry visits; it omits the CSR marginal orbit-sum visits and is not the total per-iteration cost",
       "census_wall_s": 11.19,
       "dense_locator_bytes_float64": 17365498656,
       "dense_locator_cells": 2170687332,
@@ -121,9 +147,12 @@
       "representative_subsequence_entries": 7930847,
       "rgs_classes": 43947,
       "self_reverse_rgs_classes": 427,
+      "sparse_locator_nonzero_visits_4000": 46740112000,
+      "sparse_locator_nonzero_visits_per_iteration": 11685028,
       "sparse_locator_value_passes_4000": 31723388000
     },
     {
+      "RETRACTION_sparse_locator_value_passes_4000": "legacy field counts only representative KL-entry visits; it omits the CSR marginal orbit-sum visits and is not the total per-iteration cost",
       "census_wall_s": 83.114,
       "dense_locator_bytes_float64": 273595686536,
       "dense_locator_cells": 34199460817,
@@ -141,6 +170,8 @@
       "representative_subsequence_entries": 55159218,
       "rgs_classes": 175275,
       "self_reverse_rgs_classes": 683,
+      "sparse_locator_nonzero_visits_4000": 329324380000,
+      "sparse_locator_nonzero_visits_per_iteration": 82331095,
       "sparse_locator_value_passes_4000": 220636872000
     }
   ],

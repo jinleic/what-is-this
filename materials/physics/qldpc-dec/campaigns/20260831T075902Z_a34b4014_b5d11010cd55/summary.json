@@ -1,0 +1,101 @@
+{
+  "gate": "B-beam8-pinned",
+  "p": 0.001,
+  "basis": "Z",
+  "shots_per_arm": 1000000,
+  "bposd": {
+    "arm": "bp30+osd",
+    "shots": 1000000,
+    "failures": 66,
+    "raw_logical_failure_rate": 6.6e-05,
+    "raw_ler_ci95_wilson": [
+      5.1882801140398245e-05,
+      8.395813585473298e-05
+    ],
+    "per_round_ler": 5.500000000000001e-06,
+    "per_round_ler_ci95_wilson": [
+      4.323566761699854e-06,
+      6.996511321227748e-06
+    ],
+    "observable_mismatch_counts": [
+      30,
+      25,
+      23,
+      29,
+      26,
+      31,
+      31,
+      38,
+      34,
+      30,
+      32,
+      29
+    ],
+    "decode_core_s": 73531.39803375013,
+    "decode_ms_per_shot": 73.53139803375014,
+    "shards": 20
+  },
+  "beam8": {
+    "arm": "beam8-cpp-bit-exact",
+    "shots": 1000000,
+    "failures": 1,
+    "raw_logical_failure_rate": 1e-06,
+    "per_round_ler": 8.333333333333333e-08,
+    "observable_mismatch_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "subprocess_wall_s": 7048.48326008406,
+    "decode_ms_per_shot": 3.702,
+    "source_shots_sha256": "ba9d9696d69b49a984a6fbe15b5214abeb82b9f39944d3b25f533f2c9ee4c5fe",
+    "predictions": "beam8_predictions.bin",
+    "predictions_sha256": "7cac8fa5ea4df76d5f231e925e8045b3f92d8f7196f266ebe60f307b0c4e666b",
+    "failure_mask": "beam8_failmask.bin",
+    "failure_mask_sha256": "97dbb9dca763316aa1c9785d2ac2dec9522bcb13521a00781d039da5a7e47292",
+    "raw_ler_ci95_wilson": [
+      1.7652457668738261e-07,
+      5.664911806172367e-06
+    ],
+    "per_round_ler_ci95_wilson": [
+      1.4710381390615217e-08,
+      4.720759838476973e-07
+    ]
+  },
+  "verdict": {
+    "outcome": "INVALIDATED_GB3_scalar_prior",
+    "ratio_not_evaluated": true,
+    "target_band": [
+      0.87,
+      1.15
+    ],
+    "reason": "BP+OSD used a scalar mean prior instead of the paper-pinned merged DEM heterogeneous error_channel"
+  },
+  "scope": "beam8 first falsification target only; beam32/beam64 remain gated on this result per frozen pre_statement.md",
+  "rate_semantics": {
+    "raw_logical_failure_rate": "any-observable failure / shots",
+    "per_round_ler": "raw_logical_failure_rate / 12",
+    "ratio": "same under either convention; factor 1/12 cancels",
+    "ratio_ci": "independent-binomial percentile bootstrap; positive/zero draws retained as +inf"
+  },
+  "closure_recovery": {
+    "recovered_utc": "2026-08-31T10:01:23.438108+00:00",
+    "reason": "initial close failed because NumPy bool values in the verdict were not JSON serializable",
+    "runner_sha256": "2e0fb52d09a53316ae633a371ce389e639607575e36488012deb38138645774f",
+    "bootstrap_source_sha256": "b6a9729b7f126f597131f0bda535d91e547d136a205eed35a085c49c7d11bb5c",
+    "validated_before_close": [
+      "both frozen sample hashes",
+      "all BP+OSD shard ranges and aggregate fields",
+      "beam prediction, mismatch, and failure-mask hashes"
+    ]
+  }
+}

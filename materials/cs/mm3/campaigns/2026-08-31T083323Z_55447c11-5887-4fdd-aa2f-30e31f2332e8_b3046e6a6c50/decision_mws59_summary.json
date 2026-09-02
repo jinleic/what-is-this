@@ -1,0 +1,454 @@
+{
+  "all_monomial_data_triple": {
+    "asserted_before_histogram": true,
+    "index": 4753,
+    "total_lb": 56
+  },
+  "decision_formula": "U_lb + V_lb + Wfac_lb + 14, side_lb=d+[floor impossible]",
+  "decomposition": "mws59",
+  "flags_le_54": 0,
+  "fresh_total_crosschecks": [
+    {
+      "fiber_total_lb": 70,
+      "sigma_totals": [
+        70,
+        70,
+        70
+      ],
+      "survivor_index": 3633,
+      "total_lb": 70
+    },
+    {
+      "fiber_total_lb": 66,
+      "sigma_totals": [
+        66,
+        66,
+        66
+      ],
+      "survivor_index": 3991,
+      "total_lb": 66
+    },
+    {
+      "fiber_total_lb": 61,
+      "sigma_totals": [
+        61,
+        61,
+        61
+      ],
+      "survivor_index": 4241,
+      "total_lb": 61
+    },
+    {
+      "fiber_total_lb": 63,
+      "sigma_totals": [
+        63,
+        63,
+        63
+      ],
+      "survivor_index": 3131,
+      "total_lb": 63
+    },
+    {
+      "fiber_total_lb": 71,
+      "sigma_totals": [
+        71,
+        71,
+        71
+      ],
+      "survivor_index": 5684,
+      "total_lb": 71
+    },
+    {
+      "fiber_total_lb": 67,
+      "sigma_totals": [
+        67,
+        67,
+        67
+      ],
+      "survivor_index": 4830,
+      "total_lb": 67
+    },
+    {
+      "fiber_total_lb": 66,
+      "sigma_totals": [
+        66,
+        66,
+        66
+      ],
+      "survivor_index": 3718,
+      "total_lb": 66
+    },
+    {
+      "fiber_total_lb": 69,
+      "sigma_totals": [
+        69,
+        69,
+        69
+      ],
+      "survivor_index": 5361,
+      "total_lb": 69
+    },
+    {
+      "fiber_total_lb": 65,
+      "sigma_totals": [
+        65,
+        65,
+        65
+      ],
+      "survivor_index": 2094,
+      "total_lb": 65
+    },
+    {
+      "fiber_total_lb": 66,
+      "sigma_totals": [
+        66,
+        66,
+        66
+      ],
+      "survivor_index": 1208,
+      "total_lb": 66
+    },
+    {
+      "fiber_total_lb": 69,
+      "sigma_totals": [
+        69,
+        69,
+        69
+      ],
+      "survivor_index": 4891,
+      "total_lb": 69
+    },
+    {
+      "fiber_total_lb": 66,
+      "sigma_totals": [
+        66,
+        66,
+        66
+      ],
+      "survivor_index": 1561,
+      "total_lb": 66
+    },
+    {
+      "survivor_index": 5605,
+      "total_lb": 63
+    },
+    {
+      "survivor_index": 344,
+      "total_lb": 66
+    },
+    {
+      "survivor_index": 2118,
+      "total_lb": 60
+    },
+    {
+      "survivor_index": 1580,
+      "total_lb": 64
+    },
+    {
+      "survivor_index": 3594,
+      "total_lb": 70
+    },
+    {
+      "survivor_index": 5016,
+      "total_lb": 63
+    },
+    {
+      "survivor_index": 3628,
+      "total_lb": 72
+    },
+    {
+      "survivor_index": 4091,
+      "total_lb": 66
+    },
+    {
+      "survivor_index": 165,
+      "total_lb": 67
+    },
+    {
+      "survivor_index": 1507,
+      "total_lb": 70
+    },
+    {
+      "survivor_index": 5774,
+      "total_lb": 63
+    },
+    {
+      "survivor_index": 5058,
+      "total_lb": 64
+    }
+  ],
+  "histogram": {
+    "56": 2,
+    "57": 1,
+    "58": 9,
+    "59": 17,
+    "60": 56,
+    "61": 106,
+    "62": 199,
+    "63": 301,
+    "64": 510,
+    "65": 642,
+    "66": 785,
+    "67": 827,
+    "68": 808,
+    "69": 667,
+    "70": 448,
+    "71": 259,
+    "72": 122,
+    "73": 33,
+    "74": 4
+  },
+  "independent_pair_crosschecks": [
+    {
+      "a": 1,
+      "b": 143,
+      "d": 18,
+      "floor_exists": false,
+      "side": "U"
+    },
+    {
+      "a": 71,
+      "b": 109,
+      "d": 18,
+      "floor_exists": false,
+      "side": "V"
+    },
+    {
+      "a": 93,
+      "b": 127,
+      "d": 18,
+      "floor_exists": false,
+      "side": "W"
+    },
+    {
+      "a": 45,
+      "b": 24,
+      "d": 18,
+      "floor_exists": false,
+      "side": "U"
+    },
+    {
+      "a": 117,
+      "b": 51,
+      "d": 17,
+      "floor_exists": true,
+      "side": "W"
+    },
+    {
+      "a": 54,
+      "b": 55,
+      "d": 15,
+      "floor_exists": false,
+      "side": "W"
+    },
+    {
+      "a": 71,
+      "b": 93,
+      "d": 16,
+      "floor_exists": false,
+      "side": "U"
+    },
+    {
+      "a": 80,
+      "b": 51,
+      "d": 18,
+      "floor_exists": false,
+      "side": "W"
+    },
+    {
+      "a": 51,
+      "b": 117,
+      "d": 18,
+      "floor_exists": false,
+      "side": "U"
+    },
+    {
+      "a": 128,
+      "b": 141,
+      "d": 16,
+      "floor_exists": true,
+      "side": "U"
+    },
+    {
+      "a": 31,
+      "b": 70,
+      "d": 19,
+      "floor_exists": false,
+      "side": "V"
+    },
+    {
+      "a": 124,
+      "b": 129,
+      "d": 16,
+      "floor_exists": false,
+      "side": "U"
+    },
+    {
+      "a": 93,
+      "b": 127,
+      "d": 17,
+      "floor_exists": true,
+      "side": "V"
+    },
+    {
+      "a": 109,
+      "b": 133,
+      "d": 19,
+      "floor_exists": false,
+      "side": "U"
+    },
+    {
+      "a": 142,
+      "b": 9,
+      "d": 18,
+      "floor_exists": false,
+      "side": "W"
+    },
+    {
+      "a": 25,
+      "b": 31,
+      "d": 19,
+      "floor_exists": false,
+      "side": "U"
+    },
+    {
+      "a": 29,
+      "b": 71,
+      "d": 18,
+      "floor_exists": false,
+      "side": "U"
+    },
+    {
+      "a": 82,
+      "b": 125,
+      "d": 17,
+      "floor_exists": false,
+      "side": "V"
+    }
+  ],
+  "max_total_lb": 74,
+  "min_total_lb": 56,
+  "minimizer_count_data_triples": 2,
+  "minimizer_survivor_indices": [
+    3934,
+    4753
+  ],
+  "nonmonomial_involving_min_total_lb": 56,
+  "pair_decisions": {
+    "U": {
+      "d_histogram": {
+        "12": 1,
+        "13": 6,
+        "14": 29,
+        "15": 73,
+        "16": 145,
+        "17": 204,
+        "18": 187,
+        "19": 89,
+        "20": 2
+      },
+      "floor_exists": 56,
+      "floor_impossible_exact_census": 680,
+      "max_dfs_states": 33768,
+      "ternary_pairs": 736
+    },
+    "V": {
+      "d_histogram": {
+        "12": 1,
+        "13": 2,
+        "14": 5,
+        "15": 13,
+        "16": 31,
+        "17": 101,
+        "18": 92,
+        "19": 90,
+        "20": 14
+      },
+      "floor_exists": 37,
+      "floor_impossible_exact_census": 312,
+      "max_dfs_states": 21320,
+      "ternary_pairs": 349
+    },
+    "W": {
+      "d_histogram": {
+        "13": 1,
+        "14": 9,
+        "15": 60,
+        "16": 142,
+        "17": 229,
+        "18": 217,
+        "19": 110,
+        "20": 16
+      },
+      "floor_exists": 124,
+      "floor_impossible_exact_census": 660,
+      "max_dfs_states": 35840,
+      "ternary_pairs": 784
+    }
+  },
+  "seconds": 94.6823611248983,
+  "survivor_brent_crosschecks": [
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 3992
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 3725
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 3296
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 4027
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 1922
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 1288
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 4781
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 2732
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 4504
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 1434
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 1867
+    },
+    {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "survivor_index": 2956
+    }
+  ],
+  "survivors_decided": 5796,
+  "upper_median_total_lb": 67
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "id": "perp-spot-activity-volatility",
+  "created_at_utc": "2026-09-01T10:00:15Z",
+  "contract_sha256": "032e133aca39f510f6bec6224e3261676456251aa22f5ef845742cff83c49ddd",
+  "input_inventory_sha256": "7818443a027016b6d8cfd8784b7bd42cd5d91870f05bbae3599088f58cfc8274",
+  "prior_window_audit_sha256": "bd4fa74af764f03572f1607dc5a2f6929591b2559ade6f66ede9cdef2868d2a2",
+  "archives_verified": 56,
+  "role": "primary",
+  "result": {
+    "window": {
+      "start_utc_inclusive": "2025-07-01T00:00:00Z",
+      "end_utc_exclusive": "2026-01-01T00:00:00Z",
+      "expected_dates": 184,
+      "expected_pooled_observations": 368
+    },
+    "status": "falsified",
+    "reason": "at least one frozen gate is false",
+    "pooled_observations": 368,
+    "minimum_sample": {
+      "pooled": 360,
+      "per_asset": 180
+    },
+    "pooled_spearman_rho": -0.06571631111406481,
+    "per_asset": {
+      "BTCUSDT": {
+        "observations": 184,
+        "spearman_rho": -0.12846602839475255,
+        "median_x": 2.0958531311066757,
+        "median_y": 0.09964538435581158,
+        "rejected": {}
+      },
+      "ETHUSDT": {
+        "observations": 184,
+        "spearman_rho": -0.010882086648301901,
+        "median_x": 2.2419053609690143,
+        "median_y": 0.028500154583204627,
+        "rejected": {}
+      }
+    },
+    "gate_results": {
+      "G1_pooled_effect": {
+        "rho": -0.06571631111406481,
+        "threshold": 0.08,
+        "pass": false
+      },
+      "G2_asset_consistency": {
+        "per_asset_rho": {
+          "BTCUSDT": -0.12846602839475255,
+          "ETHUSDT": -0.010882086648301901
+        },
+        "pass": false
+      },
+      "G3_economic_magnitude": {
+        "tail_size": 73,
+        "lower_median_y": 0.1845472566987292,
+        "upper_median_y": -0.009622955107946583,
+        "gap": -0.1941702118066758,
+        "threshold": 0.09531017980432493,
+        "pass": false
+      },
+      "G4_dependence_robustness": {
+        "one_sided_block_bootstrap_p": 0.9488051194880512,
+        "replicates": 10000,
+        "seed": 20260901,
+        "block_dates": 7,
+        "pass": false
+      }
+    },
+    "gate_descriptions": {
+      "G1_pooled_effect": "pooled Spearman rho(x,y) >= 0.08",
+      "G2_asset_consistency": "BTCUSDT rho > 0 AND ETHUSDT rho > 0",
+      "G3_economic_magnitude": "pooled upper-minus-lower x-quintile median y gap >= log(1.10) = 0.09531017980432493",
+      "G4_dependence_robustness": "one-sided 7-date block-bootstrap p < 0.05",
+      "pass_rule": "A window passes only if its minimum sample is met and G1 through G4 are all true. Gates are conjunctive; a large value on one cannot rescue another.",
+      "fail_rule": "If minimum sample is met and any gate is false, the mechanism fails on that window.",
+      "inconclusive_rule": "Only integrity failure, unavailable required hours, or unmet sample minimum can produce inconclusive. UNKNOWN never passes."
+    }
+  },
+  "claim_boundary": "A two-window pass supports only a retrospective incremental volatility-risk signal on these Binance BTC/ETH calendars. It does not establish tradable alpha, net return, causality, portability, deployment readiness, or a capital-allocation claim. Any trading implementation requires a separate preregistered contract and untouched prospective evidence."
+}

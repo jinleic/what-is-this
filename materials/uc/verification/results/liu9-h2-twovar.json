@@ -1,0 +1,363 @@
+{
+ "artifact": "liu9-h2-twovar",
+ "binding_parameter_crosscheck": {
+  "binding_mean_enclosure": "[0.61729091208126497006968709790102738837361856749424 +/- 2.42e-51]",
+  "binding_mean_exact_stored_mpf_fraction": "86410879670509651045578867419858441625384618059623663402198081830259073758168013505991445502983016997/139984046386112763159840142535527767382602843577165595931249318810236991948760059086304843329475444736",
+  "binding_x_enclosure": "[0.69078759392498801415048820463627056258062817709687 +/- 2.93e-51]",
+  "binding_x_exact_stored_mpf_fraction": "24174810647736687342301329030133392408028327211721353455990738600269646103021745937512285413793531637/34996011596528190789960035633881941845650710894291398982812329702559247987190014771576210832368861184",
+  "closed_form_mean_minus_binding_mean_enclosure": "[+/- 2.56e-69]",
+  "solver": "liu9_binding.solve_equation_parameters(100)",
+  "status": "AGREES: both certified Arb difference enclosures contain zero",
+  "xstar_minus_binding_x_enclosure": "[+/- 3.91e-70]"
+ },
+ "bound_directions": {
+  "a2_gradient_lower": "On strict interior boxes phi>0 and phi'=beta*q'(s)*h'(q(s))/(2*phi).  Arb encloses this derivative on the whole box before applying the centered first-order lower bound.",
+  "corner_lower": "positive h terms use lower bounds; the subtracted weighted entropies use h(a)+h(b)<=a*log(1/a)+b*log(1/b)+a+b and the coefficient multiplying their upper bound is negative",
+  "entropy_lower": "h(u)>=-u*log(u); the omitted term -(1-u)log(1-u) is nonnegative",
+  "entropy_upper": "h(u)<=-u*log(u)+u; this is equivalent to -(1-u)log(1-u)<=u",
+  "global_lower": "Each accepted box uses a certified lower bound: either the analytic logarithmic-product bound, the lower endpoint of the raw Arb range, or f(mid)-sup|f_s|*halfwidth_s-sup|f_t|*halfwidth_t.  The strongest certified bound is used; entropy ranges use endpoint values and log(2) exactly when the argument interval crosses 1/2.",
+  "hessian_lower": "lambda_min is bounded from below by min(Hss-|Hst|,Htt-|Hst|), with diagonal lower endpoints and the off-diagonal absolute upper endpoint",
+  "local_root_center": "All local values, gradients, Hessians, and derivative boxes are evaluated at or around the Arb ball bounded by the certified quartic isolating endpoints, never a decimal approximation.  The rational partition center is derived just left of that bracket; its reported displacement upper bound is added to the square half-width before the Taylor distance is bounded above.",
+  "parameter_crosscheck": "The stored binary mpf values returned by liu9_binding.solve_equation_parameters(100) are converted to exact rationals and then to Arb.  Agreement means the Arb enclosures of isolated-root minus binding x and closed-form mean minus binding mean both contain zero.",
+  "protocol_range": "pi is coordinatewise nondecreasing because pi_s>=t^2 and pi_t>=s^2; q(s)=pi(s,s) is increasing since q'=2s(2-3s+2s^2)>0",
+  "square_root_range": "beta*h(pi(s,s)) is nonnegative.  Since sqrt is increasing, phi interval lower=sqrt(max(0,radicand lower)) and upper=sqrt(radicand upper); products use nonnegative interval factors. A2 corner and near-zero lower bounds only drop this positive term.",
+  "strip_lower": "all positive entropy terms not displayed are dropped, and h(s),h(t) in the subtracted term use upper bounds",
+  "taylor_lower": "Remainder magnitude is at most C3*||d||_2^3/6, hence f>=||d||_2^2*(lambda_min/2-C3*||d||_2/6)",
+  "third_derivative_upper": "C3=2*sqrt(2)*max|partial_ijk| uses Arb absolute upper endpoints on each reported whole derivative box (radius 0.03 for R/Lam, 0.025 for A2)"
+ },
+ "claim_status": "CERTIFIED_PROVED",
+ "constants": {
+  "beta_enclosure": "[0.10005255986289310666462829947694758779620618471265 +/- 1.99e-51]",
+  "c0_equals_1_minus_beta_minus_1_over_2m_enclosure": "[0.089956574867125214782626403885906372883982621102491 +/- 7.19e-53]",
+  "c1_equals_1_minus_1_over_2m_enclosure": "[0.19000913473001832144725470336285396068018880581514 +/- 1.06e-51]",
+  "m_closed_form": "xstar*h(xstar)/h(xstar^2)",
+  "m_closed_form_derivation": "p=h(xstar)/h(xstar^2) and m=p*xstar",
+  "m_enclosure": "[0.61729091208126497006968709790102738837361856749424 +/- 2.42e-51]",
+  "p_enclosure": "[0.89360451390546544647677001903876959717867771034844 +/- 1.12e-51]",
+  "root_polynomial_hi_enclosure": "[1.0161607617386284783284420780181314662261211012677e-69 +/- 8.73e-120]",
+  "root_polynomial_lo_enclosure": "[-5.2695290436021934227871215737218128409718506554001e-70 +/- 5.99e-120]",
+  "root_uniqueness": "f'(z)=2z(2(z-3/4)^2+15/8)>0 on (0,1]; the certified endpoint signs therefore isolate the unique root",
+  "xstar_defining_polynomial": "x^4-2*x^3+3*x^2-1",
+  "xstar_enclosure": "[0.69078759392498801415048820463627056258062817709687 +/- 2.93e-51]",
+  "xstar_isolating_interval_width_enclosure": "[5.9347298410998742171707764184762232213881036460125e-70 +/- 3.45e-120]",
+  "xstar_root_hi": "116397479315918688508867405637403076916519587463353427839105355336939/168499666669691498716668844293872691710232152640878578006897564057600",
+  "xstar_root_lo": "1163974793159186885088674056374030769165195874633534278391053553369389/1684996666696914987166688442938726917102321526408785780068975640576000"
+ },
+ "coverage": "Near-zero strips cover min(s,t)<=epsilon.  On [epsilon,1]^2, each lemma's local xstar square and (1,1) corner square are certified analytically (corner delta 1/10000 for R/Lam and 1/100000000 for A2).  For each lemma, the sorted distinct cut list gives 16 rectangles; removing exactly the local and corner rectangles leaves 14 exact rational rectangles exhausted by deterministic Arb branch-and-bound.",
+ "identities": {
+  "a2_rank_one_identity_max_residual_enclosure": "[1.7030452569424558838865187563379433017619106066159e-67 +/- 2.15e-117]",
+  "face_identity_max_residual_enclosure": "[1.2737602965669559453050771286955304317825410509627e-67 +/- 1.95e-118]",
+  "grid_point_count": 81,
+  "lam_decomposition_max_residual_enclosure": "[1.7234110388232709845616235596260188867989592278427e-67 +/- 4.40e-117]",
+  "r_equals_st_rcheck_max_residual_enclosure": "[6.8565760869551981096030638270172045197158828388048e-68 +/- 2.44e-118]",
+  "xstar_exact_zero_derivation_lemma_a": "The quartic is pi(x,x)+x^2-1=0, hence h(pi(x,x))=h(x^2). With p=h(x)/h(x^2) and m=p*x this gives R(x,x)=0. The definition of beta sets the diagonal derivative to zero; symmetry then gives R_s=R_t=0.",
+  "xstar_exact_zero_derivation_lemma_a2": "A2(s,s)=P2(s,s)+phi(s)^2=R(s,s) on the whole diagonal. Also A2_s=R_s there because phi*phi' is half the diagonal derivative of Q2.  Thus A2(x,x)=A2_s=A2_t=0.",
+  "xstar_exact_zero_derivation_lemma_b": "Lam(x,x)=2*R(x,x)=0 and, on the diagonal, Lam_s=Lam_t=2*R_s=0.",
+  "xstar_quartic_protocol_residual_enclosure": "[+/- 1.20e-69]"
+ },
+ "lemma_a": {
+  "claim": "R(s,t)>=0 on [0,1]^2",
+  "corner_1_1": {
+   "bound": "For a=1-s,b=1-t,u=a+b in (0,2delta], R>=u*(log_coefficient*log(1/u)-(log(2)+1)/(2m))>=u*lower_coefficient>=0; u=0 is the exact corner zero",
+   "delta": "1/10000",
+   "derivation": "Let W=1-s*t=u-a*b and V=1-pi(s,t)=W-a*b*s*t. Then W>=u*(1-delta/2), V>=u*(1-delta), and both log(1/W),log(1/V)>=log(1/u).  Also, with A=a*log(1/a)+b*log(1/b), A<=u*(log(1/u)+log(2)) and (1-b)h(a)+(1-a)h(b)<=A+u.  Applying h(z)>=z*log(1/z) to the positive terms and h(z)<=z*(log(1/z)+1) to the subtracted terms gives the bound.",
+   "log_1_over_2delta_enclosure": "[8.5171931914162374266547336972792802623289058201548 +/- 3.67e-50]",
+   "log_coefficient_enclosure": "[0.18995413210202517679192147194788011330079899550590 +/- 3.32e-51]",
+   "lower_coefficient_enclosure": "[0.24644229080956936883932643812154063815765914069649 +/- 3.12e-51]"
+  },
+  "faces": {
+   "s_or_t_one": "R(1,t)=R(t,1)=c1*h(t)>=0 with certified c1>0",
+   "s_or_t_zero": "R(0,t)=R(s,0)=0 exactly"
+  },
+  "global_branch_and_bound": {
+   "accepted_cells": 3738,
+   "max_depth": 43,
+   "processed_cells": 7462,
+   "split_cells": 3724,
+   "worst_box": {
+    "depth": "25",
+    "s_hi": "885767868152821530958025381133980309202448389308128342182076126276359047/10783978666860255917866806034807852269454857769016228992441444099686400000000",
+    "s_lo": "1/100000000",
+    "t_hi": "177142789651897445935687209420761253988220223003856652207422783811172123/1078397866686025591786680603480785226945485776901622899244144409968640000000",
+    "t_lo": "1/100000000"
+   },
+   "worst_certified_lower_enclosure": "[1.0134687879508244854658688268762608017022483778227e-18 +/- 4.67e-68]"
+  },
+  "local_xstar": {
+   "c3_upper_enclosure": "[28.567618523131339445807475958537314323907007106171 +/- 1.95e-49]",
+   "chosen_euclidean_distance_upper_enclosure": "[0.025455844122715710878430397035774565414254093756785 +/- 6.54e-53]",
+   "chosen_square_half_width": "9/500",
+   "derivative_box_radius_enclosure": "[0.030000000000000000000000000000000000000000000000000 +/- 1e-56]",
+   "distance_bound_direction": "sqrt(2)*(square half-width + sup|xstar-partition center|)",
+   "gradient_s_enclosure": "[+/- 6.68e-69]",
+   "gradient_t_enclosure": "[+/- 6.68e-69]",
+   "hessian_ss_enclosure": "[0.75319572205793855886057114622448252063653899291511 +/- 3.41e-51]",
+   "hessian_st_enclosure": "[-0.49637762911066539837693331095588426218201486776726 +/- 4.99e-51]",
+   "hessian_tt_enclosure": "[0.75319572205793855886057114622448252063653899291511 +/- 3.41e-51]",
+   "lambda_min_lower_enclosure": "[0.25681809294727316048363783526859825845452412514786 +/- 1.61e-51]",
+   "max_third_partial_upper_enclosure": "[10.100178390028296994630552597477188989941936841796 +/- 9.05e-50]",
+   "partition_center_to_xstar_distance_upper_enclosure": "[1.1869459693599490927066219742462430901672734725898e-69 +/- 5.07e-120]",
+   "partition_square_center": "290993698289796721272168514093507692291298968658383569597763388342347/421249166674228746791672110734681729275580381602196445017243910144000",
+   "proof_center": "the certified Arb isolating ball for the unique quartic root xstar",
+   "quadratic_minus_remainder_coefficient_lower_enclosure": "[0.0072069057932970163062522864645728613479588204723783 +/- 1.93e-53]",
+   "rho_equals_3lambda_over_c3_enclosure": "[0.026969496187369588069038972314960993671072388079470 +/- 9.20e-53]",
+   "third_partial_enclosures": [
+    "[+/- 10.2]",
+    "[+/- 4.80]",
+    "[+/- 4.80]",
+    "[+/- 10.2]"
+   ],
+   "value_enclosure": "[+/- 4.61e-68]"
+  },
+  "mutations": [
+   {
+    "mutant_depth": 14,
+    "mutant_zero_cell": {
+     "depth": "14",
+     "s_hi": "11644486984716953924288146874986072861106309025628367493916979527683/16849966666969149871666884429387269171023215264087857800689756405760",
+     "s_lo": "290993698289796721272168514093507692291298968658383569597763388342347/421249166674228746791672110734681729275580381602196445017243910144000",
+     "t_hi": "11644486984716953924288146874986072861106309025628367493916979527683/16849966666969149871666884429387269171023215264087857800689756405760",
+     "t_lo": "290993698289796721272168514093507692291298968658383569597763388342347/421249166674228746791672110734681729275580381602196445017243910144000"
+    },
+    "mutant_zero_cell_enclosure": "[+/- 2.85e-4]",
+    "name": "drop_xstar_local_stratum",
+    "reason": "the nested cell still contains R(x*,x*)=0 and cannot have a strictly positive lower bound",
+    "sound_local_coefficient_lower_enclosure": "[0.0072069057932970163062522864645728613479588204723783 +/- 1.93e-53]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_margin_enclosure": "[-3.2770430769867261207173363618805653391926507029680 +/- 2.54e-50]",
+    "name": "flip_near_zero_log_term_sign",
+    "reason": "the flipped-sign lower coefficient is certified negative",
+    "sound_margin_enclosure": "[0.037079615906799406506355175331981181913405926228581 +/- 1.53e-52]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_c3_enclosure": "[1.7854761576957087153629672474085821452441879441357 +/- 2.47e-50]",
+    "name": "understate_c3_by_factor_16",
+    "pointwise_required_c3_lower_enclosure": "[5.1935586022133676438660632134059605950280246476948 +/- 2.30e-50]",
+    "reason": "the mutant is below a certified pointwise third-derivative requirement at xstar",
+    "sound_c3_upper_enclosure": "[28.567618523131339445807475958537314323907007106171 +/- 1.95e-49]",
+    "status": "FAILED_AS_REQUIRED"
+   }
+  ],
+  "near_zero_strip": {
+   "bound": "If min(s,t)<=epsilon, R>=s*t*(c0*log(1/(s*t))-1/m)>=s*t*lower_coefficient>=0; endpoint faces are exact zeros",
+   "epsilon": "1/100000000",
+   "log_1_over_epsilon_enclosure": "[18.420680743952365472143931637474913660808811909030 +/- 1.84e-49]",
+   "lower_coefficient_enclosure": "[0.037079615906799406506355175331981181913405926228581 +/- 1.53e-52]"
+  },
+  "status": "PROVED"
+ },
+ "lemma_a2": {
+  "claim": "A2(s,t)=P2(s,t)+phi(s)*phi(t)>=0 on [0,1]^2",
+  "corner_1_1": {
+   "bound": "For u in (0,2delta], A2>=P2>=u*(log_coefficient*log(1/u)-(log(2)+1)/(2m))>=u*lower_coefficient>=0; u=0 is the exact corner zero.",
+   "delta": "1/100000000",
+   "derivation": "For a=1-s,b=1-t,u=a+b and W=1-s*t=u-a*b, h(W)>=u*(1-delta/2)*log(1/u).  With A=a*log(1/a)+b*log(1/b)<=u*(log(1/u)+log(2)), the subtracted weighted entropies are at most A+u. Dropping phi(s)*phi(t)>=0 therefore gives the bound.",
+   "log_1_over_2delta_enclosure": "[17.727533563392420162726699516016737092733311774670 +/- 7.15e-50]",
+   "log_coefficient_enclosure": "[0.089956570367388014097091937209047870268720560083522 +/- 1.49e-52]",
+   "lower_coefficient_enclosure": "[0.22327437062436302916004201096808872683775150811277 +/- 1.97e-51]"
+  },
+  "definition": "phi(s)=sqrt(beta*h(pi(s,s)))",
+  "faces": {
+   "s_or_t_one": "A2(1,t)=A2(t,1)=c0*h(t)>=0 with certified c0>0",
+   "s_or_t_zero": "A2(0,t)=A2(t,0)=0 exactly"
+  },
+  "global_branch_and_bound": {
+   "accepted_cells": 8471,
+   "max_depth": 48,
+   "processed_cells": 16928,
+   "split_cells": 8457,
+   "worst_box": {
+    "depth": "25",
+    "s_hi": "888400675444535460625473331826072070010420766693142069963433900714759047/10783978666860255917866806034807852269454857769016228992441444099686400000000",
+    "s_lo": "1/100000000",
+    "t_hi": "177669351110240231869176799559179606149814698480859397763694338698852123/1078397866686025591786680603480785226945485776901622899244144409968640000000",
+    "t_lo": "1/100000000"
+   },
+   "worst_certified_lower_enclosure": "[9.6007009608171788925131169853290898234771625167475e-19 +/- 1.78e-69]"
+  },
+  "local_xstar": {
+   "c3_upper_enclosure": "[32.259197768814229184121443821636588873866855693458 +/- 1.74e-49]",
+   "chosen_euclidean_distance_upper_enclosure": "[0.022627416997969520780827019587355169257114750006031 +/- 1.70e-52]",
+   "chosen_square_half_width": "2/125",
+   "derivative_box_radius_enclosure": "[0.025000000000000000000000000000000000000000000000000 +/- 1e-56]",
+   "distance_bound_direction": "sqrt(2)*(square half-width + sup|xstar-partition center|)",
+   "gradient_s_enclosure": "[+/- 8.32e-69]",
+   "gradient_t_enclosure": "[+/- 8.32e-69]",
+   "hessian_ss_enclosure": "[0.59340358088849405416555981100350637368735912751239 +/- 2.91e-51]",
+   "hessian_st_enclosure": "[-0.33658548794122089368192197573490811523283500236453 +/- 1.30e-51]",
+   "hessian_tt_enclosure": "[0.59340358088849405416555981100350637368735912751239 +/- 2.91e-51]",
+   "lambda_min_lower_enclosure": "[0.25681809294727316048363783526859825845452412514786 +/- 1.61e-51]",
+   "max_third_partial_upper_enclosure": "[11.405348748983242634154953437855345529321223129230 +/- 1.61e-49]",
+   "partition_center_to_xstar_distance_upper_enclosure": "[1.1869459693599490927066219742462430901672734725898e-69 +/- 5.07e-120]",
+   "partition_square_center": "290993698289796721272168514093507692291298968658383569597763388342347/421249166674228746791672110734681729275580381602196445017243910144000",
+   "proof_center": "the certified Arb isolating ball for the unique quartic root xstar",
+   "quadratic_minus_remainder_coefficient_lower_enclosure": "[0.0067519931511486588108327476305087769145023491954742 +/- 4.54e-53]",
+   "rho_equals_3lambda_over_c3_enclosure": "[0.023883243605848030197536007559823081067068929225336 +/- 4.23e-52]",
+   "third_partial_enclosures": [
+    "[+/- 11.5]",
+    "[+/- 3.19]",
+    "[+/- 3.19]",
+    "[+/- 11.5]"
+   ],
+   "value_enclosure": "[+/- 4.61e-68]"
+  },
+  "mutations": [
+   {
+    "mutant_depth": 14,
+    "mutant_zero_cell": {
+     "depth": "14",
+     "s_hi": "291099010581465278458866432121191362723617863753784118709017699319883/421249166674228746791672110734681729275580381602196445017243910144000",
+     "s_lo": "290993698289796721272168514093507692291298968658383569597763388342347/421249166674228746791672110734681729275580381602196445017243910144000",
+     "t_hi": "291099010581465278458866432121191362723617863753784118709017699319883/421249166674228746791672110734681729275580381602196445017243910144000",
+     "t_lo": "290993698289796721272168514093507692291298968658383569597763388342347/421249166674228746791672110734681729275580381602196445017243910144000"
+    },
+    "mutant_zero_cell_enclosure": "[+/- 2.54e-4]",
+    "name": "drop_xstar_local_stratum",
+    "reason": "the nested cell contains A2(x*,x*)=0 and cannot have a strictly positive lower bound",
+    "sound_local_coefficient_lower_enclosure": "[0.0067519931511486588108327476305087769145023491954742 +/- 4.54e-53]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_depth": 14,
+    "mutant_zero_cell": {
+     "depth": "14",
+     "s_hi": "1/1",
+     "s_lo": "12799999999/12800000000",
+     "t_hi": "1/1",
+     "t_lo": "12799999999/12800000000"
+    },
+    "mutant_zero_cell_enclosure": "[+/- 3.69e-9]",
+    "name": "drop_corner_1_1_stratum",
+    "reason": "the nested cell contains A2(1,1)=0 and cannot have a strictly positive lower bound",
+    "sound_corner_coefficient_lower_enclosure": "[0.22327437062436302916004201096808872683775150811277 +/- 1.97e-51]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_c3_enclosure": "[2.0161998605508893240075902388522868046166784808411 +/- 3.59e-50]",
+    "name": "understate_c3_by_factor_16",
+    "pointwise_required_c3_lower_enclosure": "[3.6829734236898879423633584331411273060899529511882 +/- 2.60e-50]",
+    "reason": "the mutant is below a certified pure-coordinate third derivative at xstar",
+    "sound_c3_upper_enclosure": "[32.259197768814229184121443821636588873866855693458 +/- 1.74e-49]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_margin_enclosure": "[-3.2770430769867261207173363618805653391926507029680 +/- 2.54e-50]",
+    "name": "flip_near_zero_log_term_sign",
+    "reason": "the flipped-sign lower coefficient is certified negative",
+    "sound_margin_enclosure": "[0.037079615906799406506355175331981181913405926228581 +/- 1.53e-52]",
+    "status": "FAILED_AS_REQUIRED"
+   }
+  ],
+  "near_zero_strip": {
+   "bound": "Dropping phi(s)*phi(t)>=0 gives A2>=P2>=s*t*(c0*log(1/(s*t))-1/m).  If min(s,t)<=epsilon this is >=s*t*lower_coefficient>=0; endpoint faces are exact zeros.",
+   "epsilon": "1/100000000",
+   "log_1_over_epsilon_enclosure": "[18.420680743952365472143931637474913660808811909030 +/- 1.84e-49]",
+   "lower_coefficient_enclosure": "[0.037079615906799406506355175331981181913405926228581 +/- 1.53e-52]"
+  },
+  "status": "PROVED"
+ },
+ "lemma_b": {
+  "claim": "Lam(s,t)>=0 on [0,1]^2",
+  "corner_1_1": {
+   "auxiliary_entropy_coefficient_enclosure": "[-1.4198966213261497223975669199802922925647692601814 +/- 3.15e-50]",
+   "bound": "For a=1-s,b=1-t,u=a+b in (0,2delta], Lam>=u*(log_coefficient*log(1/u)-(log(2)+1)/m)>=u*lower_coefficient>=0; u=0 is the exact corner zero",
+   "delta": "1/10000",
+   "derivation": "Let W=1-s*t=u-a*b and A=a*log(1/a)+b*log(1/b). Then W>=u*(1-delta/2), A<=u*(log(1/u)+log(2)), and the subtracted weighted entropies are at most A+u. For U_a=1-pi(1-a,1-a), (2-2delta)*a<=U_a<=2a, so h(U_a)>=(2-2delta)*a*(log(1/a)-log(2)), and similarly for b. The certified auxiliary entropy coefficient is negative, so substituting the upper bound on A is the correct lower-bound direction and simplifies to the displayed bound.",
+   "log_1_over_2delta_enclosure": "[8.5171931914162374266547336972792802623289058201548 +/- 3.67e-50]",
+   "log_coefficient_enclosure": "[0.37990826420405035358384294389576022660159799101181 +/- 3.38e-51]",
+   "lower_coefficient_enclosure": "[0.49288458161913873767865287624308127631531828139299 +/- 3.78e-51]"
+  },
+  "faces": {
+   "corner_zeros": "the four corners are exact zeros of the displayed face formulas",
+   "s_or_t_one": "Lam(1,t)=Lam(t,1)=2*c0*h(t)+beta*h(pi(t,t))>=0",
+   "s_or_t_zero": "Lam(0,t)=Lam(t,0)=beta*h(pi(t,t))>=0"
+  },
+  "global_branch_and_bound": {
+   "accepted_cells": 2711,
+   "max_depth": 45,
+   "processed_cells": 5408,
+   "split_cells": 2697,
+   "worst_box": {
+    "depth": "25",
+    "s_hi": "888400675444535460625473331826072070010420766693142069963433900714759047/10783978666860255917866806034807852269454857769016228992441444099686400000000",
+    "s_lo": "1/100000000",
+    "t_hi": "177669351110240231869176799559179606149814698480859397763694338698852123/1078397866686025591786680603480785226945485776901622899244144409968640000000",
+    "t_lo": "1/100000000"
+   },
+   "worst_certified_lower_enclosure": "[1.9201401921634357785026233970658179646954325033495e-18 +/- 3.55e-69]"
+  },
+  "local_xstar": {
+   "c3_upper_enclosure": "[65.733735424520885718484529256651752922533714381215 +/- 1.72e-49]",
+   "chosen_euclidean_distance_upper_enclosure": "[0.022627416997969520780827019587355169257114750006031 +/- 1.70e-52]",
+   "chosen_square_half_width": "2/125",
+   "derivative_box_radius_enclosure": "[0.030000000000000000000000000000000000000000000000000 +/- 1e-56]",
+   "distance_bound_direction": "sqrt(2)*(square half-width + sup|xstar-partition center|)",
+   "gradient_s_enclosure": "[+/- 1.34e-68]",
+   "gradient_t_enclosure": "[+/- 1.34e-68]",
+   "hessian_ss_enclosure": "[1.1877020995485855888546582410482929902342945132514 +/- 1.54e-50]",
+   "hessian_st_enclosure": "[-0.67406591365403926788738257051109647332524626295567 +/- 2.14e-51]",
+   "hessian_tt_enclosure": "[1.1877020995485855888546582410482929902342945132514 +/- 1.54e-50]",
+   "lambda_min_lower_enclosure": "[0.51363618589454632096727567053719651690904825029572 +/- 3.22e-51]",
+   "max_third_partial_upper_enclosure": "[23.240385035700548790365462521526293205779773492604 +/- 4.02e-49]",
+   "partition_center_to_xstar_distance_upper_enclosure": "[1.1869459693599490927066219742462430901672734725898e-69 +/- 5.07e-120]",
+   "partition_square_center": "290993698289796721272168514093507692291298968658383569597763388342347/421249166674228746791672110734681729275580381602196445017243910144000",
+   "proof_center": "the certified Arb isolating ball for the unique quartic root xstar",
+   "quadratic_minus_remainder_coefficient_lower_enclosure": "[0.0089206525664673067197395683723177975928732078934200 +/- 4.28e-54]",
+   "rho_equals_3lambda_over_c3_enclosure": "[0.023441670365028859181956192873260689805133328741523 +/- 3.19e-52]",
+   "third_partial_enclosures": [
+    "[+/- 23.3]",
+    "[+/- 6.90]",
+    "[+/- 6.90]",
+    "[+/- 23.3]"
+   ],
+   "value_enclosure": "[+/- 9.21e-68]"
+  },
+  "mutations": [
+   {
+    "mutant_depth": 14,
+    "mutant_zero_cell": {
+     "depth": "14",
+     "s_hi": "1/1",
+     "s_lo": "1279999/1280000",
+     "t_hi": "1/1",
+     "t_lo": "1279999/1280000"
+    },
+    "mutant_zero_cell_enclosure": "[+/- 4.50e-5]",
+    "name": "drop_corner_1_1_stratum",
+    "reason": "the nested cell still contains Lam(1,1)=0 and cannot have a strictly positive lower bound",
+    "sound_corner_coefficient_lower_enclosure": "[0.49288458161913873767865287624308127631531828139299 +/- 3.78e-51]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_c3_enclosure": "[4.1083584640325553574052830785407345576583571488259 +/- 4.82e-50]",
+    "name": "understate_c3_by_factor_16",
+    "pointwise_required_c3_lower_enclosure": "[7.5129412877104576128606754183190244235274202581578 +/- 7.13e-51]",
+    "reason": "the mutant is below a certified pointwise third-derivative requirement at xstar",
+    "sound_c3_upper_enclosure": "[65.733735424520885718484529256651752922533714381215 +/- 1.72e-49]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_margin_enclosure": "[-6.5540861539734522414346727237611306783853014059361 +/- 4.93e-50]",
+    "name": "flip_near_zero_log_term_sign",
+    "reason": "the flipped-sign lower coefficient is certified negative",
+    "sound_margin_enclosure": "[0.074159231813598813012710350663962363826811852457162 +/- 3.05e-52]",
+    "status": "FAILED_AS_REQUIRED"
+   }
+  ],
+  "near_zero_strip": {
+   "bound": "If min(s,t)<=epsilon, Lam>=2*s*t*(c0*log(1/(s*t))-1/m)>=s*t*lower_coefficient>=0",
+   "epsilon": "1/100000000",
+   "log_1_over_epsilon_enclosure": "[18.420680743952365472143931637474913660808811909030 +/- 1.84e-49]",
+   "lower_coefficient_enclosure": "[0.074159231813598813012710350663962363826811852457162 +/- 3.05e-52]"
+  },
+  "status": "PROVED"
+ },
+ "precision_bits": 400,
+ "report_sha256": "4ddbf0f38ca881dde204f086076424617edcdbe6a2826dfa945ef963ebdf70c6",
+ "report_sha256_scope": "SHA-256 of canonical sorted-key compact JSON with report_sha256 omitted",
+ "tool": "liu9_h2_twovar_lemmas.py (python-flint Arb)",
+ "tool_sha256": "2afe8e242aa5f506c6d54967a133fe246a7e5cb8bad4961b9860e93b86f67163"
+}

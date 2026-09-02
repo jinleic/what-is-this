@@ -1,0 +1,25 @@
+{
+ "what": "W-kernel (parity instrument) rerun of the owner-INPUT line facts",
+ "d0": {
+  "lines": 35,
+  "size": 4,
+  "full_line_dependent": 35,
+  "dim_each": 1,
+  "any_proper_4subset_independent": true
+ },
+ "d1": {
+  "lines": 28,
+  "size": 5,
+  "full_line_dependent": 28,
+  "dim_each": 1,
+  "consistent_with": "d1=5 (4-subsets independent)"
+ },
+ "d2": {
+  "lines": 20,
+  "size": 7,
+  "full_line_dependent": 20,
+  "dim_each": 1,
+  "consistent_with": "d2=7 (4-subsets independent)"
+ },
+ "note": "owner figures treated as INPUT and reproduced by our instrument before entering the record; owner had a leaked-loop-variable bug earlier today, so nothing owner-stated is relied on unverified"
+}

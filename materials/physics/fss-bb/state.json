@@ -1,0 +1,18 @@
+{
+  "schema": "target-state/1",
+  "id": "physics/fss-bb",
+  "problem": "BB erasure finite-size scaling + nu anomaly",
+  "status": "active",
+  "current_gate": "20k ladder frozen; nu INCONCLUSIVE-UNDER-BUDGET; 200k ladder parked pending user approval (~221 core-h)",
+  "latest_campaign": "20260829T235018Z_6df86846_e8697f77b182",
+  "latest_campaign_verdict": "RUNNING",
+  "headline": "nu=1.412 [1.391,1.434] measured; CIs 3.2x too wide to adjudicate",
+  "next_action": "Approve (or decline) the 200k full-ladder campaign",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-01T07:34:05Z",
+  "updated_by": "workspace-architecture-fix",
+  "sources": [
+    "physics/RESULTS.md",
+    "physics/fss-bb/README.md"
+  ]
+}

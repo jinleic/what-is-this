@@ -1,0 +1,75 @@
+{
+  "campaign_id": "2026-08-31T20-34-52Z_04ed25bd-455f-4814-8288-5ee0106e0db8_q3-n11-total-output-orbit-mass",
+  "schema": "delcap-q3-n11-total-output-orbit-mass-v1",
+  "status": "FROZEN_PRE_RESULT",
+  "frozen_utc": "2026-08-31T20:43:39Z",
+  "pre_statement_sha256": "dec5f47f6c52f7476059f4a9564c70fc6e2e9720a4b16a9e8e5e69f4980cded1",
+  "source_hashes": {
+    "gate_c_q3_n11_total_orbit.py.asrun": "08ecbc493e1c5c674f04ea4a0d0c9c6efd9ac2254fe9d6513db90933b3cdf114",
+    "gate_c_orbit_dependency.py.asrun": "d17c2b438840bd91e84b775e096d43c60c419ade8ff2ee1ff6e6095694eca9f9",
+    "gate_c_dhalf_dependency.py.asrun": "9bee55a5e137ae065a83271586284fa9624cffbfbc7c8d416f7a62ad86a71db9",
+    "gate_c_q4_structure_dependency.py.asrun": "6d12cc77cefe4ff7cce1efa7770e69cb5c470ca6797f66446756bd4d2b141cdd"
+  },
+  "dependency_parent": "../2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_q4-total-output-orbit-mass",
+  "row_box": [
+    {"ordinal": 0, "q": 3, "n": 11, "d": "1/2"},
+    {"ordinal": 1, "q": 3, "n": 11, "d": "1/5"},
+    {"ordinal": 2, "q": 3, "n": 11, "d": "1/10"},
+    {"ordinal": 3, "q": 3, "n": 11, "d": "1/20"}
+  ],
+  "group": "S_3 x C_2 on symbol values and whole-word reversal",
+  "precision_bits": 400,
+  "ba_iterations": 4000,
+  "input_snap": 1073741824,
+  "output_snap": 1073741824,
+  "dual_candidates": ["ba_total_orbit_mass", "uniform"],
+  "forbidden_dual_candidates": ["ba_word"],
+  "dual_selection_rule": "minimum finite direct-full-alphabet Arb upper endpoint; fixed tie order ba_total_orbit_mass then uniform",
+  "width_target": "1/500",
+  "census_anchor": {
+    "n": 11,
+    "input_g_orbits": 14884,
+    "output_g_orbits": 22450,
+    "representative_entries": 6148309,
+    "orbit_slots": 3573542,
+    "total_sparse_slots": 9721851,
+    "input_orbit_size_sum": 177147,
+    "output_orbit_size_sum": 265720,
+    "provenance": "RETROSPECTIVE DESIGN EVIDENCE plus independent Burnside check; no BA or result row"
+  },
+  "resource_caps": {
+    "rss_bytes": 103079215104,
+    "row_wall_seconds": 5400,
+    "stage_wall_seconds": 21600,
+    "niceness_minimum": 10,
+    "thread_env_value": "1",
+    "python_dont_write_bytecode": true,
+    "platform": "darwin",
+    "one_sequential_process": true
+  },
+  "release_key": "DELCAP_Q3_N11_RELEASED",
+  "canonical_outputs": {
+    "rows": "orbit_rows.jsonl",
+    "row_hashes": "orbit_rows.line_checksums.json",
+    "summary": "summary.json",
+    "table": "TABLE_q3_n11_conservative_intervals.csv",
+    "failure": "FAILURE.json",
+    "log": "run.log"
+  },
+  "pre_result_assertions": {
+    "ba_iterations_run": 0,
+    "certificate_rows_written": 0,
+    "summary_written": false,
+    "table_written": false
+  },
+  "scope_exclusions": [
+    "q=4 or q>=4",
+    "q=3 with n!=11",
+    "deletion probabilities outside 1/2,1/5,1/10,1/20",
+    "ba_word or any non-G-invariant candidate",
+    "position/type reduction",
+    "published-rounding cause",
+    "Morozov-Duman or Pinto-Ribeiro claims",
+    "all asymptotic-capacity claims"
+  ]
+}

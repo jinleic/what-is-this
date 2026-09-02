@@ -1,0 +1,24 @@
+{
+  "excluded": true,
+  "attempts": [
+    {
+      "launcher": "parent main-agent plain bash timeout 0, niceness 15",
+      "observed_after": "1m44s wall",
+      "ps_cpu_time": "00:02",
+      "ps_percent_cpu": 2.2,
+      "conservative_budget_charge_seconds": 3.0
+    },
+    {
+      "launcher": "parent main-agent diagnostic relaunch at niceness 0",
+      "observed_wall_upper_bound_seconds": 75.0,
+      "measured_cpu_seconds": null,
+      "conservative_budget_charge_seconds": 75.0
+    }
+  ],
+  "reason": "background Python.app scheduling/QoS diagnosis; neither attempt completed a tile",
+  "tiles_completed": 0,
+  "tile_artifacts_written": 0,
+  "verdict_weight": "none",
+  "correction": "foreground eval kernel, niceness 15, after raising its 600-second soft RLIMIT_CPU to the unlimited hard bound",
+  "budget_note": "all observed wall time is charged, strictly upper-bounding single-process CPU use"
+}

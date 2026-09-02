@@ -1,0 +1,2587 @@
+{
+  "arithmetic": "exact Python integers modulo p; true 3-by-3 row-major Kronecker columns",
+  "assertion_count": 143,
+  "budget": {
+    "CPU_cap_seconds": 7200.0,
+    "CPU_seconds": 618.124829,
+    "wall_cap_seconds": 8000.0,
+    "wall_seconds": 706.9142427500337,
+    "within_cap": true
+  },
+  "controls": {
+    "budget.CPU": {
+      "detail": {
+        "cap": 7200.0,
+        "used": 618.124829
+      },
+      "pass": true
+    },
+    "budget.wall": {
+      "detail": {
+        "cap": 8000.0,
+        "used": 706.9142427500337
+      },
+      "pass": true
+    },
+    "fullmatching.n8.p11.m8.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "pass": true
+    },
+    "fullmatching.n8.p11.m8.rational2_subset": {
+      "detail": {
+        "bad": 0,
+        "direct": 560,
+        "rational2": 0
+      },
+      "pass": true
+    },
+    "fullmatching.n8.p13.m8.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "pass": true
+    },
+    "fullmatching.n8.p13.m8.rational2_subset": {
+      "detail": {
+        "bad": 0,
+        "direct": 416,
+        "rational2": 0
+      },
+      "pass": true
+    },
+    "fullmatching.n9.p11.m9.curve_predicate": {
+      "detail": {
+        "circuits": 13248,
+        "dependent": 71160
+      },
+      "pass": true
+    },
+    "fullmatching.n9.p11.m9.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "pass": true
+    },
+    "fullmatching.n9.p13.m9.curve_predicate": {
+      "detail": {
+        "circuits": 14214,
+        "dependent": 50210
+      },
+      "pass": true
+    },
+    "fullmatching.n9.p13.m9.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "pass": true
+    },
+    "grid.n4.p11.m10.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p11.m5.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p11.m6.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p11.m7.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p11.m8.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p11.m9.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p11.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pass": true
+    },
+    "grid.n4.p11.size4.fiber_set_equality": {
+      "detail": {
+        "constructed": 8,
+        "direct": 8
+      },
+      "pass": true
+    },
+    "grid.n4.p11.size4.formula": {
+      "detail": 8,
+      "pass": true
+    },
+    "grid.n4.p11.size5.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p11.size6.crossing_formula": {
+      "detail": 16,
+      "pass": true
+    },
+    "grid.n4.p11.size6.crossing_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "grid.n4.p11.size6.crossing_set_equality": {
+      "detail": {
+        "constructed": 16,
+        "direct": 16
+      },
+      "pass": true
+    },
+    "grid.n4.p11.spark_lower": {
+      "detail": 560,
+      "pass": true
+    },
+    "grid.n4.p13.m10.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p13.m5.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p13.m6.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p13.m7.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p13.m8.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p13.m9.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p13.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pass": true
+    },
+    "grid.n4.p13.size4.fiber_set_equality": {
+      "detail": {
+        "constructed": 8,
+        "direct": 8
+      },
+      "pass": true
+    },
+    "grid.n4.p13.size4.formula": {
+      "detail": 8,
+      "pass": true
+    },
+    "grid.n4.p13.size5.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p13.size6.crossing_formula": {
+      "detail": 16,
+      "pass": true
+    },
+    "grid.n4.p13.size6.crossing_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "grid.n4.p13.size6.crossing_set_equality": {
+      "detail": {
+        "constructed": 16,
+        "direct": 16
+      },
+      "pass": true
+    },
+    "grid.n4.p13.spark_lower": {
+      "detail": 560,
+      "pass": true
+    },
+    "grid.n4.p7.m10.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p7.m5.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p7.m6.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p7.m7.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p7.m8.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p7.m9.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p7.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pass": true
+    },
+    "grid.n4.p7.size4.fiber_set_equality": {
+      "detail": {
+        "constructed": 8,
+        "direct": 8
+      },
+      "pass": true
+    },
+    "grid.n4.p7.size4.formula": {
+      "detail": 8,
+      "pass": true
+    },
+    "grid.n4.p7.size5.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n4.p7.size6.crossing_formula": {
+      "detail": 16,
+      "pass": true
+    },
+    "grid.n4.p7.size6.crossing_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "grid.n4.p7.size6.crossing_set_equality": {
+      "detail": {
+        "constructed": 16,
+        "direct": 16
+      },
+      "pass": true
+    },
+    "grid.n4.p7.spark_lower": {
+      "detail": 560,
+      "pass": true
+    },
+    "grid.n5.p11.m5.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p11.m6.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p11.m7.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p11.m8.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p11.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pass": true
+    },
+    "grid.n5.p11.size4.fiber_set_equality": {
+      "detail": {
+        "constructed": 50,
+        "direct": 50
+      },
+      "pass": true
+    },
+    "grid.n5.p11.size4.formula": {
+      "detail": 50,
+      "pass": true
+    },
+    "grid.n5.p11.size5.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p11.size6.crossing_formula": {
+      "detail": 400,
+      "pass": true
+    },
+    "grid.n5.p11.size6.crossing_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "grid.n5.p11.size6.crossing_set_equality": {
+      "detail": {
+        "constructed": 400,
+        "direct": 400
+      },
+      "pass": true
+    },
+    "grid.n5.p11.spark_lower": {
+      "detail": 2300,
+      "pass": true
+    },
+    "grid.n5.p13.m5.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p13.m6.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p13.m7.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p13.m8.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p13.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pass": true
+    },
+    "grid.n5.p13.size4.fiber_set_equality": {
+      "detail": {
+        "constructed": 50,
+        "direct": 50
+      },
+      "pass": true
+    },
+    "grid.n5.p13.size4.formula": {
+      "detail": 50,
+      "pass": true
+    },
+    "grid.n5.p13.size5.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p13.size6.crossing_formula": {
+      "detail": 400,
+      "pass": true
+    },
+    "grid.n5.p13.size6.crossing_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "grid.n5.p13.size6.crossing_set_equality": {
+      "detail": {
+        "constructed": 400,
+        "direct": 400
+      },
+      "pass": true
+    },
+    "grid.n5.p13.spark_lower": {
+      "detail": 2300,
+      "pass": true
+    },
+    "grid.n5.p7.m10.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p7.m5.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p7.m6.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p7.m7.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p7.m8.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p7.m9.degree_bounds": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p7.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pass": true
+    },
+    "grid.n5.p7.size4.fiber_set_equality": {
+      "detail": {
+        "constructed": 50,
+        "direct": 50
+      },
+      "pass": true
+    },
+    "grid.n5.p7.size4.formula": {
+      "detail": 50,
+      "pass": true
+    },
+    "grid.n5.p7.size5.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "grid.n5.p7.size6.crossing_formula": {
+      "detail": 400,
+      "pass": true
+    },
+    "grid.n5.p7.size6.crossing_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "grid.n5.p7.size6.crossing_set_equality": {
+      "detail": {
+        "constructed": 400,
+        "direct": 400
+      },
+      "pass": true
+    },
+    "grid.n5.p7.spark_lower": {
+      "detail": 2300,
+      "pass": true
+    },
+    "matching.n6.p11.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pass": true
+    },
+    "matching.n6.p11.size6.pgl_formula": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "matching.n6.p11.size6.pgl_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "matching.n6.p11.size6.pgl_set_equality": {
+      "detail": {
+        "direct": 4,
+        "direct_only": 0,
+        "pgl": 4,
+        "pgl_only": 0
+      },
+      "pass": true
+    },
+    "matching.n6.p13.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pass": true
+    },
+    "matching.n6.p13.size6.pgl_formula": {
+      "detail": {
+        "got": 2,
+        "want": 2
+      },
+      "pass": true
+    },
+    "matching.n6.p13.size6.pgl_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "matching.n6.p13.size6.pgl_set_equality": {
+      "detail": {
+        "direct": 2,
+        "direct_only": 0,
+        "pgl": 2,
+        "pgl_only": 0
+      },
+      "pass": true
+    },
+    "matching.n6.p7.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pass": true
+    },
+    "matching.n6.p7.size6.pgl_formula": {
+      "detail": {
+        "got": 12,
+        "want": 12
+      },
+      "pass": true
+    },
+    "matching.n6.p7.size6.pgl_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "matching.n6.p7.size6.pgl_set_equality": {
+      "detail": {
+        "direct": 12,
+        "direct_only": 0,
+        "pgl": 12,
+        "pgl_only": 0
+      },
+      "pass": true
+    },
+    "matching.n7.p11.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pass": true
+    },
+    "matching.n7.p11.size6.pgl_formula": {
+      "detail": {
+        "got": 72,
+        "want": 72
+      },
+      "pass": true
+    },
+    "matching.n7.p11.size6.pgl_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "matching.n7.p11.size6.pgl_set_equality": {
+      "detail": {
+        "direct": 72,
+        "direct_only": 0,
+        "pgl": 72,
+        "pgl_only": 0
+      },
+      "pass": true
+    },
+    "matching.n7.p11.size7.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "matching.n7.p13.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pass": true
+    },
+    "matching.n7.p13.size6.pgl_formula": {
+      "detail": {
+        "got": 42,
+        "want": 42
+      },
+      "pass": true
+    },
+    "matching.n7.p13.size6.pgl_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "matching.n7.p13.size6.pgl_set_equality": {
+      "detail": {
+        "direct": 42,
+        "direct_only": 0,
+        "pgl": 42,
+        "pgl_only": 0
+      },
+      "pass": true
+    },
+    "matching.n7.p13.size7.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "matching.n7.p7.points_distinct": {
+      "detail": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "pass": true
+    },
+    "matching.n7.p7.size6.pgl_formula": {
+      "detail": {
+        "got": 588,
+        "want": 588
+      },
+      "pass": true
+    },
+    "matching.n7.p7.size6.pgl_injective": {
+      "detail": 1,
+      "pass": true
+    },
+    "matching.n7.p7.size6.pgl_set_equality": {
+      "detail": {
+        "direct": 588,
+        "direct_only": 0,
+        "pgl": 588,
+        "pgl_only": 0
+      },
+      "pass": true
+    },
+    "matching.n7.p7.size7.empty": {
+      "detail": 0,
+      "pass": true
+    },
+    "plants.A_fiber_accept": {
+      "detail": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "plants.B_fiber_accept": {
+      "detail": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "pass": true
+    },
+    "plants.ambient10_accept": {
+      "detail": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "plants.ambient10_dependent": {
+      "detail": 8,
+      "pass": true
+    },
+    "plants.ambient10_nonminimal_reject": {
+      "detail": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "pass": true
+    },
+    "plants.corrupted_actual_reject": {
+      "detail": {
+        "coordinate": 0,
+        "delta": 1,
+        "rank": 6
+      },
+      "pass": true
+    },
+    "plants.crossing_accept": {
+      "detail": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "plants.degree3_eight_independent": {
+      "detail": 8,
+      "pass": true
+    },
+    "plants.degree3_not_rational2_reject": {
+      "detail": [
+        [
+          1,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          27,
+          3
+        ],
+        [
+          64,
+          4
+        ],
+        [
+          24,
+          5
+        ],
+        [
+          14,
+          6
+        ],
+        [
+          40,
+          7
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "pass": true
+    },
+    "plants.five_with_fiber_reject": {
+      "detail": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "plants.generic_five_independent": {
+      "detail": 5,
+      "pass": true
+    },
+    "plants.generic_five_reject": {
+      "detail": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "pass": true
+    },
+    "plants.inserted_crossing_reject": {
+      "detail": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "plants.kron_guard.concat_reject": {
+      "detail": {
+        "concat": [
+          1,
+          2,
+          4,
+          1,
+          3,
+          9
+        ],
+        "true": [
+          1,
+          3,
+          9,
+          2,
+          6,
+          5,
+          4,
+          12,
+          10
+        ]
+      },
+      "pass": true
+    },
+    "plants.kron_guard.true_dimension": {
+      "detail": [
+        1,
+        3,
+        9,
+        2,
+        6,
+        5,
+        4,
+        12,
+        10
+      ],
+      "pass": true
+    },
+    "plants.mobius6_accept": {
+      "detail": 6,
+      "pass": true
+    },
+    "plants.nonmobius6_independent": {
+      "detail": 6,
+      "pass": true
+    },
+    "plants.nonmobius6_reject": {
+      "detail": {
+        "x": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "y": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "pass": true
+    },
+    "plants.rational_degree2_8_accept": {
+      "detail": {
+        "x": [
+          1,
+          4,
+          9,
+          16,
+          25,
+          36,
+          49,
+          64
+        ],
+        "y": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "pass": true
+    },
+    "plants.rational_degree2_fit_accept": {
+      "detail": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          16,
+          4
+        ],
+        [
+          25,
+          5
+        ],
+        [
+          36,
+          6
+        ],
+        [
+          49,
+          7
+        ],
+        [
+          64,
+          8
+        ]
+      ],
+      "pass": true
+    },
+    "plants.wrong_curve7_dependent": {
+      "detail": 5,
+      "pass": true
+    },
+    "plants.wrong_curve7_reject": {
+      "detail": 7,
+      "pass": true
+    },
+    "runtime.env_dont_write_bytecode": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.nice": {
+      "detail": 15,
+      "pass": true
+    },
+    "runtime.sys_dont_write_bytecode": {
+      "detail": true,
+      "pass": true
+    },
+    "runtime.thread_caps": {
+      "detail": {
+        "MKL_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "pass": true
+    }
+  },
+  "full_matching_configurations": [
+    {
+      "circuits": 560,
+      "curve_dependent": 2264,
+      "n": 8,
+      "prime": 11,
+      "rational_degree2_circuits": 0,
+      "residual_circuits": 560,
+      "size": 8,
+      "universe": 40320
+    },
+    {
+      "circuits": 416,
+      "curve_dependent": 1380,
+      "n": 8,
+      "prime": 13,
+      "rational_degree2_circuits": 0,
+      "residual_circuits": 416,
+      "size": 8,
+      "universe": 40320
+    },
+    {
+      "circuits": 13248,
+      "curve_dependent": 71160,
+      "n": 9,
+      "prime": 11,
+      "rational_degree2_circuits": 0,
+      "residual_circuits": 13248,
+      "size": 9,
+      "universe": 362880
+    },
+    {
+      "circuits": 14214,
+      "curve_dependent": 50210,
+      "n": 9,
+      "prime": 13,
+      "rational_degree2_circuits": 0,
+      "residual_circuits": 14214,
+      "size": 9,
+      "universe": 362880
+    }
+  ],
+  "gate": "H-33ROW-OPEN",
+  "grid_configurations": [
+    {
+      "max_size": 10,
+      "n": 4,
+      "prime": 7,
+      "rank_crosschecks": 50506,
+      "rank_implementations_agree": true,
+      "size4_fibers": 8,
+      "size6_crossings": 16,
+      "sizes": {
+        "10": {
+          "circuit_count": 16,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 16
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 3, 3, 1), (3, 3, 3, 1), ((9, 3, 3, 4, (3, 3, 3), (3, 3, 3)), (1, 1, 1, 0, (1,), (1,))))": 16
+          },
+          "universe": 8008
+        },
+        "4": {
+          "circuit_count": 8,
+          "degree_violations": 0,
+          "profiles": {
+            "(1, 4)": 4,
+            "(4, 1)": 4
+          },
+          "signature_count": 2,
+          "signature_counts": {
+            "((1, 4), (4,), (1, 1, 1, 1), ((4, 1, 4, 0, (4,), (1, 1, 1, 1)),))": 4,
+            "((4, 1), (1, 1, 1, 1), (4,), ((4, 4, 1, 0, (1, 1, 1, 1), (4,)),))": 4
+          },
+          "universe": 1820
+        },
+        "5": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 4368
+        },
+        "6": {
+          "circuit_count": 16,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 16
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 1, 1, 1), (3, 1, 1, 1), ((3, 3, 1, 0, (1, 1, 1), (3,)), (3, 1, 3, 0, (3,), (1, 1, 1))))": 16
+          },
+          "universe": 8008
+        },
+        "7": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 11440
+        },
+        "8": {
+          "circuit_count": 66,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 66
+          },
+          "signature_count": 3,
+          "signature_counts": {
+            "((4, 4), (2, 2, 2, 2), (2, 2, 2, 2), ((4, 2, 2, 1, (2, 2), (2, 2)), (4, 2, 2, 1, (2, 2), (2, 2))))": 18,
+            "((4, 4), (2, 2, 2, 2), (3, 3, 1, 1), ((6, 3, 2, 2, (2, 2, 2), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 24,
+            "((4, 4), (3, 3, 1, 1), (2, 2, 2, 2), ((6, 2, 3, 2, (3, 3), (2, 2, 2)), (2, 2, 1, 0, (1, 1), (2,))))": 24
+          },
+          "universe": 12870
+        },
+        "9": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 11440
+        }
+      }
+    },
+    {
+      "max_size": 10,
+      "n": 4,
+      "prime": 11,
+      "rank_crosschecks": 50506,
+      "rank_implementations_agree": true,
+      "size4_fibers": 8,
+      "size6_crossings": 16,
+      "sizes": {
+        "10": {
+          "circuit_count": 16,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 16
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 3, 3, 1), (3, 3, 3, 1), ((9, 3, 3, 4, (3, 3, 3), (3, 3, 3)), (1, 1, 1, 0, (1,), (1,))))": 16
+          },
+          "universe": 8008
+        },
+        "4": {
+          "circuit_count": 8,
+          "degree_violations": 0,
+          "profiles": {
+            "(1, 4)": 4,
+            "(4, 1)": 4
+          },
+          "signature_count": 2,
+          "signature_counts": {
+            "((1, 4), (4,), (1, 1, 1, 1), ((4, 1, 4, 0, (4,), (1, 1, 1, 1)),))": 4,
+            "((4, 1), (1, 1, 1, 1), (4,), ((4, 4, 1, 0, (1, 1, 1, 1), (4,)),))": 4
+          },
+          "universe": 1820
+        },
+        "5": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 4368
+        },
+        "6": {
+          "circuit_count": 16,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 16
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 1, 1, 1), (3, 1, 1, 1), ((3, 3, 1, 0, (1, 1, 1), (3,)), (3, 1, 3, 0, (3,), (1, 1, 1))))": 16
+          },
+          "universe": 8008
+        },
+        "7": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 11440
+        },
+        "8": {
+          "circuit_count": 66,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 66
+          },
+          "signature_count": 3,
+          "signature_counts": {
+            "((4, 4), (2, 2, 2, 2), (2, 2, 2, 2), ((4, 2, 2, 1, (2, 2), (2, 2)), (4, 2, 2, 1, (2, 2), (2, 2))))": 18,
+            "((4, 4), (2, 2, 2, 2), (3, 3, 1, 1), ((6, 3, 2, 2, (2, 2, 2), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 24,
+            "((4, 4), (3, 3, 1, 1), (2, 2, 2, 2), ((6, 2, 3, 2, (3, 3), (2, 2, 2)), (2, 2, 1, 0, (1, 1), (2,))))": 24
+          },
+          "universe": 12870
+        },
+        "9": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 11440
+        }
+      }
+    },
+    {
+      "max_size": 10,
+      "n": 4,
+      "prime": 13,
+      "rank_crosschecks": 50506,
+      "rank_implementations_agree": true,
+      "size4_fibers": 8,
+      "size6_crossings": 16,
+      "sizes": {
+        "10": {
+          "circuit_count": 16,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 16
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 3, 3, 1), (3, 3, 3, 1), ((9, 3, 3, 4, (3, 3, 3), (3, 3, 3)), (1, 1, 1, 0, (1,), (1,))))": 16
+          },
+          "universe": 8008
+        },
+        "4": {
+          "circuit_count": 8,
+          "degree_violations": 0,
+          "profiles": {
+            "(1, 4)": 4,
+            "(4, 1)": 4
+          },
+          "signature_count": 2,
+          "signature_counts": {
+            "((1, 4), (4,), (1, 1, 1, 1), ((4, 1, 4, 0, (4,), (1, 1, 1, 1)),))": 4,
+            "((4, 1), (1, 1, 1, 1), (4,), ((4, 4, 1, 0, (1, 1, 1, 1), (4,)),))": 4
+          },
+          "universe": 1820
+        },
+        "5": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 4368
+        },
+        "6": {
+          "circuit_count": 16,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 16
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 1, 1, 1), (3, 1, 1, 1), ((3, 3, 1, 0, (1, 1, 1), (3,)), (3, 1, 3, 0, (3,), (1, 1, 1))))": 16
+          },
+          "universe": 8008
+        },
+        "7": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 11440
+        },
+        "8": {
+          "circuit_count": 66,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 66
+          },
+          "signature_count": 3,
+          "signature_counts": {
+            "((4, 4), (2, 2, 2, 2), (2, 2, 2, 2), ((4, 2, 2, 1, (2, 2), (2, 2)), (4, 2, 2, 1, (2, 2), (2, 2))))": 18,
+            "((4, 4), (2, 2, 2, 2), (3, 3, 1, 1), ((6, 3, 2, 2, (2, 2, 2), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 24,
+            "((4, 4), (3, 3, 1, 1), (2, 2, 2, 2), ((6, 2, 3, 2, (3, 3), (2, 2, 2)), (2, 2, 1, 0, (1, 1), (2,))))": 24
+          },
+          "universe": 12870
+        },
+        "9": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 11440
+        }
+      }
+    },
+    {
+      "max_size": 10,
+      "n": 5,
+      "prime": 7,
+      "rank_crosschecks": 3850430,
+      "rank_implementations_agree": true,
+      "size4_fibers": 50,
+      "size6_crossings": 400,
+      "sizes": {
+        "10": {
+          "circuit_count": 181960,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 400,
+            "(4, 5)": 20400,
+            "(5, 4)": 20400,
+            "(5, 5)": 140760
+          },
+          "signature_count": 26,
+          "signature_counts": {
+            "((4, 4), (3, 3, 3, 1), (3, 3, 3, 1), ((9, 3, 3, 4, (3, 3, 3), (3, 3, 3)), (1, 1, 1, 0, (1,), (1,))))": 400,
+            "((4, 5), (3, 3, 2, 2), (2, 2, 2, 2, 2), ((10, 4, 5, 2, (3, 3, 2, 2), (2, 2, 2, 2, 2)),))": 3600,
+            "((4, 5), (3, 3, 2, 2), (3, 2, 2, 2, 1), ((10, 4, 5, 2, (3, 3, 2, 2), (3, 2, 2, 2, 1)),))": 7200,
+            "((4, 5), (3, 3, 2, 2), (3, 3, 2, 1, 1), ((10, 4, 5, 2, (3, 3, 2, 2), (3, 3, 2, 1, 1)),))": 3600,
+            "((4, 5), (3, 3, 3, 1), (3, 2, 2, 2, 1), ((9, 3, 4, 3, (3, 3, 3), (3, 2, 2, 2)), (1, 1, 1, 0, (1,), (1,))))": 2400,
+            "((4, 5), (3, 3, 3, 1), (3, 3, 2, 1, 1), ((9, 3, 4, 3, (3, 3, 3), (3, 3, 2, 1)), (1, 1, 1, 0, (1,), (1,))))": 3600,
+            "((5, 4), (2, 2, 2, 2, 2), (3, 3, 2, 2), ((10, 5, 4, 2, (2, 2, 2, 2, 2), (3, 3, 2, 2)),))": 3600,
+            "((5, 4), (3, 2, 2, 2, 1), (3, 3, 2, 2), ((10, 5, 4, 2, (3, 2, 2, 2, 1), (3, 3, 2, 2)),))": 7200,
+            "((5, 4), (3, 2, 2, 2, 1), (3, 3, 3, 1), ((9, 4, 3, 3, (3, 2, 2, 2), (3, 3, 3)), (1, 1, 1, 0, (1,), (1,))))": 2400,
+            "((5, 4), (3, 3, 2, 1, 1), (3, 3, 2, 2), ((10, 5, 4, 2, (3, 3, 2, 1, 1), (3, 3, 2, 2)),))": 3600,
+            "((5, 4), (3, 3, 2, 1, 1), (3, 3, 3, 1), ((9, 4, 3, 3, (3, 3, 2, 1), (3, 3, 3)), (1, 1, 1, 0, (1,), (1,))))": 3600,
+            "((5, 5), (2, 2, 2, 2, 2), (2, 2, 2, 2, 2), ((10, 5, 5, 1, (2, 2, 2, 2, 2), (2, 2, 2, 2, 2)),))": 288,
+            "((5, 5), (2, 2, 2, 2, 2), (2, 2, 2, 2, 2), ((6, 3, 3, 1, (2, 2, 2), (2, 2, 2)), (4, 2, 2, 1, (2, 2), (2, 2))))": 180,
+            "((5, 5), (2, 2, 2, 2, 2), (3, 2, 2, 2, 1), ((10, 5, 5, 1, (2, 2, 2, 2, 2), (3, 2, 2, 2, 1)),))": 6768,
+            "((5, 5), (2, 2, 2, 2, 2), (3, 3, 2, 1, 1), ((10, 5, 5, 1, (2, 2, 2, 2, 2), (3, 3, 2, 1, 1)),))": 4680,
+            "((5, 5), (3, 2, 2, 2, 1), (2, 2, 2, 2, 2), ((10, 5, 5, 1, (3, 2, 2, 2, 1), (2, 2, 2, 2, 2)),))": 6768,
+            "((5, 5), (3, 2, 2, 2, 1), (3, 2, 2, 2, 1), ((10, 5, 5, 1, (3, 2, 2, 2, 1), (3, 2, 2, 2, 1)),))": 33120,
+            "((5, 5), (3, 2, 2, 2, 1), (3, 2, 2, 2, 1), ((7, 3, 3, 2, (3, 2, 2), (3, 2, 2)), (3, 2, 2, 0, (2, 1), (2, 1))))": 4680,
+            "((5, 5), (3, 2, 2, 2, 1), (3, 2, 2, 2, 1), ((9, 4, 4, 2, (3, 2, 2, 2), (3, 2, 2, 2)), (1, 1, 1, 0, (1,), (1,))))": 4896,
+            "((5, 5), (3, 2, 2, 2, 1), (3, 3, 2, 1, 1), ((10, 5, 5, 1, (3, 2, 2, 2, 1), (3, 3, 2, 1, 1)),))": 15840,
+            "((5, 5), (3, 2, 2, 2, 1), (3, 3, 2, 1, 1), ((9, 4, 4, 2, (3, 2, 2, 2), (3, 3, 2, 1)), (1, 1, 1, 0, (1,), (1,))))": 11160,
+            "((5, 5), (3, 3, 2, 1, 1), (2, 2, 2, 2, 2), ((10, 5, 5, 1, (3, 3, 2, 1, 1), (2, 2, 2, 2, 2)),))": 4680,
+            "((5, 5), (3, 3, 2, 1, 1), (3, 2, 2, 2, 1), ((10, 5, 5, 1, (3, 3, 2, 1, 1), (3, 2, 2, 2, 1)),))": 15840,
+            "((5, 5), (3, 3, 2, 1, 1), (3, 2, 2, 2, 1), ((9, 4, 4, 2, (3, 3, 2, 1), (3, 2, 2, 2)), (1, 1, 1, 0, (1,), (1,))))": 11160,
+            "((5, 5), (3, 3, 2, 1, 1), (3, 3, 2, 1, 1), ((8, 3, 3, 3, (3, 3, 2), (3, 3, 2)), (1, 1, 1, 0, (1,), (1,)), (1, 1, 1, 0, (1,), (1,))))": 540,
+            "((5, 5), (3, 3, 2, 1, 1), (3, 3, 2, 1, 1), ((9, 4, 4, 2, (3, 3, 2, 1), (3, 3, 2, 1)), (1, 1, 1, 0, (1,), (1,))))": 20160
+          },
+          "universe": 3268760
+        },
+        "4": {
+          "circuit_count": 50,
+          "degree_violations": 0,
+          "profiles": {
+            "(1, 4)": 25,
+            "(4, 1)": 25
+          },
+          "signature_count": 2,
+          "signature_counts": {
+            "((1, 4), (4,), (1, 1, 1, 1), ((4, 1, 4, 0, (4,), (1, 1, 1, 1)),))": 25,
+            "((4, 1), (1, 1, 1, 1), (4,), ((4, 4, 1, 0, (1, 1, 1, 1), (4,)),))": 25
+          },
+          "universe": 12650
+        },
+        "5": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 53130
+        },
+        "6": {
+          "circuit_count": 400,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 400
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 1, 1, 1), (3, 1, 1, 1), ((3, 3, 1, 0, (1, 1, 1), (3,)), (3, 1, 3, 0, (3,), (1, 1, 1))))": 400
+          },
+          "universe": 177100
+        },
+        "7": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 480700
+        },
+        "8": {
+          "circuit_count": 6030,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 1650,
+            "(4, 5)": 1800,
+            "(5, 4)": 1800,
+            "(5, 5)": 780
+          },
+          "signature_count": 7,
+          "signature_counts": {
+            "((4, 4), (2, 2, 2, 2), (2, 2, 2, 2), ((4, 2, 2, 1, (2, 2), (2, 2)), (4, 2, 2, 1, (2, 2), (2, 2))))": 450,
+            "((4, 4), (2, 2, 2, 2), (3, 3, 1, 1), ((6, 3, 2, 2, (2, 2, 2), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 600,
+            "((4, 4), (3, 3, 1, 1), (2, 2, 2, 2), ((6, 2, 3, 2, (3, 3), (2, 2, 2)), (2, 2, 1, 0, (1, 1), (2,))))": 600,
+            "((4, 5), (3, 3, 1, 1), (2, 2, 2, 1, 1), ((6, 2, 4, 1, (3, 3), (2, 2, 1, 1)), (2, 2, 1, 0, (1, 1), (2,))))": 1800,
+            "((5, 4), (2, 2, 2, 1, 1), (3, 3, 1, 1), ((6, 4, 2, 1, (2, 2, 1, 1), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 1800,
+            "((5, 5), (2, 2, 2, 1, 1), (2, 2, 2, 1, 1), ((4, 3, 2, 0, (2, 1, 1), (2, 2)), (4, 2, 3, 0, (2, 2), (2, 1, 1))))": 720,
+            "((5, 5), (2, 2, 2, 1, 1), (2, 2, 2, 1, 1), ((6, 3, 3, 1, (2, 2, 2), (2, 2, 2)), (1, 1, 1, 0, (1,), (1,)), (1, 1, 1, 0, (1,), (1,))))": 60
+          },
+          "universe": 1081575
+        },
+        "9": {
+          "circuit_count": 36378,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 5)": 7200,
+            "(5, 4)": 7200,
+            "(5, 5)": 21978
+          },
+          "signature_count": 11,
+          "signature_counts": {
+            "((4, 5), (3, 2, 2, 2), (3, 2, 2, 1, 1), ((9, 4, 5, 1, (3, 2, 2, 2), (3, 2, 2, 1, 1)),))": 7200,
+            "((5, 4), (3, 2, 2, 1, 1), (3, 2, 2, 2), ((9, 5, 4, 1, (3, 2, 2, 1, 1), (3, 2, 2, 2)),))": 7200,
+            "((5, 5), (2, 2, 2, 2, 1), (2, 2, 2, 2, 1), ((6, 3, 3, 1, (2, 2, 2), (2, 2, 2)), (3, 2, 2, 0, (2, 1), (2, 1))))": 360,
+            "((5, 5), (2, 2, 2, 2, 1), (2, 2, 2, 2, 1), ((8, 4, 4, 1, (2, 2, 2, 2), (2, 2, 2, 2)), (1, 1, 1, 0, (1,), (1,))))": 198,
+            "((5, 5), (2, 2, 2, 2, 1), (3, 2, 2, 1, 1), ((5, 3, 2, 1, (2, 2, 1), (3, 2)), (4, 2, 3, 0, (2, 2), (2, 1, 1))))": 2160,
+            "((5, 5), (2, 2, 2, 2, 1), (3, 2, 2, 1, 1), ((8, 4, 4, 1, (2, 2, 2, 2), (3, 2, 2, 1)), (1, 1, 1, 0, (1,), (1,))))": 1080,
+            "((5, 5), (3, 2, 2, 1, 1), (2, 2, 2, 2, 1), ((5, 2, 3, 1, (3, 2), (2, 2, 1)), (4, 3, 2, 0, (2, 1, 1), (2, 2))))": 2160,
+            "((5, 5), (3, 2, 2, 1, 1), (2, 2, 2, 2, 1), ((8, 4, 4, 1, (3, 2, 2, 1), (2, 2, 2, 2)), (1, 1, 1, 0, (1,), (1,))))": 1080,
+            "((5, 5), (3, 2, 2, 1, 1), (3, 2, 2, 1, 1), ((7, 3, 3, 2, (3, 2, 2), (3, 2, 2)), (1, 1, 1, 0, (1,), (1,)), (1, 1, 1, 0, (1,), (1,))))": 540,
+            "((5, 5), (3, 2, 2, 1, 1), (3, 2, 2, 1, 1), ((8, 4, 4, 1, (3, 2, 2, 1), (3, 2, 2, 1)), (1, 1, 1, 0, (1,), (1,))))": 2880,
+            "((5, 5), (3, 2, 2, 1, 1), (3, 2, 2, 1, 1), ((9, 5, 5, 0, (3, 2, 2, 1, 1), (3, 2, 2, 1, 1)),))": 11520
+          },
+          "universe": 2042975
+        }
+      }
+    },
+    {
+      "max_size": 8,
+      "n": 5,
+      "prime": 11,
+      "rank_crosschecks": 1807455,
+      "rank_implementations_agree": true,
+      "size4_fibers": 50,
+      "size6_crossings": 400,
+      "sizes": {
+        "4": {
+          "circuit_count": 50,
+          "degree_violations": 0,
+          "profiles": {
+            "(1, 4)": 25,
+            "(4, 1)": 25
+          },
+          "signature_count": 2,
+          "signature_counts": {
+            "((1, 4), (4,), (1, 1, 1, 1), ((4, 1, 4, 0, (4,), (1, 1, 1, 1)),))": 25,
+            "((4, 1), (1, 1, 1, 1), (4,), ((4, 4, 1, 0, (1, 1, 1, 1), (4,)),))": 25
+          },
+          "universe": 12650
+        },
+        "5": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 53130
+        },
+        "6": {
+          "circuit_count": 400,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 400
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 1, 1, 1), (3, 1, 1, 1), ((3, 3, 1, 0, (1, 1, 1), (3,)), (3, 1, 3, 0, (3,), (1, 1, 1))))": 400
+          },
+          "universe": 177100
+        },
+        "7": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 480700
+        },
+        "8": {
+          "circuit_count": 5950,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 1650,
+            "(4, 5)": 1800,
+            "(5, 4)": 1800,
+            "(5, 5)": 700
+          },
+          "signature_count": 7,
+          "signature_counts": {
+            "((4, 4), (2, 2, 2, 2), (2, 2, 2, 2), ((4, 2, 2, 1, (2, 2), (2, 2)), (4, 2, 2, 1, (2, 2), (2, 2))))": 450,
+            "((4, 4), (2, 2, 2, 2), (3, 3, 1, 1), ((6, 3, 2, 2, (2, 2, 2), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 600,
+            "((4, 4), (3, 3, 1, 1), (2, 2, 2, 2), ((6, 2, 3, 2, (3, 3), (2, 2, 2)), (2, 2, 1, 0, (1, 1), (2,))))": 600,
+            "((4, 5), (3, 3, 1, 1), (2, 2, 2, 1, 1), ((6, 2, 4, 1, (3, 3), (2, 2, 1, 1)), (2, 2, 1, 0, (1, 1), (2,))))": 1800,
+            "((5, 4), (2, 2, 2, 1, 1), (3, 3, 1, 1), ((6, 4, 2, 1, (2, 2, 1, 1), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 1800,
+            "((5, 5), (2, 2, 2, 1, 1), (2, 2, 2, 1, 1), ((4, 3, 2, 0, (2, 1, 1), (2, 2)), (4, 2, 3, 0, (2, 2), (2, 1, 1))))": 600,
+            "((5, 5), (2, 2, 2, 1, 1), (2, 2, 2, 1, 1), ((6, 3, 3, 1, (2, 2, 2), (2, 2, 2)), (1, 1, 1, 0, (1,), (1,)), (1, 1, 1, 0, (1,), (1,))))": 100
+          },
+          "universe": 1081575
+        }
+      }
+    },
+    {
+      "max_size": 8,
+      "n": 5,
+      "prime": 13,
+      "rank_crosschecks": 1807455,
+      "rank_implementations_agree": true,
+      "size4_fibers": 50,
+      "size6_crossings": 400,
+      "sizes": {
+        "4": {
+          "circuit_count": 50,
+          "degree_violations": 0,
+          "profiles": {
+            "(1, 4)": 25,
+            "(4, 1)": 25
+          },
+          "signature_count": 2,
+          "signature_counts": {
+            "((1, 4), (4,), (1, 1, 1, 1), ((4, 1, 4, 0, (4,), (1, 1, 1, 1)),))": 25,
+            "((4, 1), (1, 1, 1, 1), (4,), ((4, 4, 1, 0, (1, 1, 1, 1), (4,)),))": 25
+          },
+          "universe": 12650
+        },
+        "5": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 53130
+        },
+        "6": {
+          "circuit_count": 400,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 400
+          },
+          "signature_count": 1,
+          "signature_counts": {
+            "((4, 4), (3, 1, 1, 1), (3, 1, 1, 1), ((3, 3, 1, 0, (1, 1, 1), (3,)), (3, 1, 3, 0, (3,), (1, 1, 1))))": 400
+          },
+          "universe": 177100
+        },
+        "7": {
+          "circuit_count": 0,
+          "degree_violations": 0,
+          "profiles": {},
+          "signature_count": 0,
+          "signature_counts": {},
+          "universe": 480700
+        },
+        "8": {
+          "circuit_count": 5814,
+          "degree_violations": 0,
+          "profiles": {
+            "(4, 4)": 1650,
+            "(4, 5)": 1800,
+            "(5, 4)": 1800,
+            "(5, 5)": 564
+          },
+          "signature_count": 7,
+          "signature_counts": {
+            "((4, 4), (2, 2, 2, 2), (2, 2, 2, 2), ((4, 2, 2, 1, (2, 2), (2, 2)), (4, 2, 2, 1, (2, 2), (2, 2))))": 450,
+            "((4, 4), (2, 2, 2, 2), (3, 3, 1, 1), ((6, 3, 2, 2, (2, 2, 2), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 600,
+            "((4, 4), (3, 3, 1, 1), (2, 2, 2, 2), ((6, 2, 3, 2, (3, 3), (2, 2, 2)), (2, 2, 1, 0, (1, 1), (2,))))": 600,
+            "((4, 5), (3, 3, 1, 1), (2, 2, 2, 1, 1), ((6, 2, 4, 1, (3, 3), (2, 2, 1, 1)), (2, 2, 1, 0, (1, 1), (2,))))": 1800,
+            "((5, 4), (2, 2, 2, 1, 1), (3, 3, 1, 1), ((6, 4, 2, 1, (2, 2, 1, 1), (3, 3)), (2, 1, 2, 0, (2,), (1, 1))))": 1800,
+            "((5, 5), (2, 2, 2, 1, 1), (2, 2, 2, 1, 1), ((4, 3, 2, 0, (2, 1, 1), (2, 2)), (4, 2, 3, 0, (2, 2), (2, 1, 1))))": 504,
+            "((5, 5), (2, 2, 2, 1, 1), (2, 2, 2, 1, 1), ((6, 3, 3, 1, (2, 2, 2), (2, 2, 2)), (1, 1, 1, 0, (1,), (1,)), (1, 1, 1, 0, (1,), (1,))))": 60
+          },
+          "universe": 1081575
+        }
+      }
+    }
+  ],
+  "matching_configurations": [
+    {
+      "n": 6,
+      "prime": 7,
+      "size6_pgl": {
+        "count": 12,
+        "formula": 12,
+        "group_size": 336,
+        "k_histogram": {
+          "4": 180,
+          "5": 144,
+          "6": 12
+        }
+      },
+      "sizes": {
+        "6": {
+          "circuits": 12,
+          "universe": 720
+        }
+      }
+    },
+    {
+      "n": 6,
+      "prime": 11,
+      "size6_pgl": {
+        "count": 4,
+        "formula": 4,
+        "group_size": 1320,
+        "k_histogram": {
+          "0": 4,
+          "1": 48,
+          "2": 312,
+          "3": 592,
+          "4": 312,
+          "5": 48,
+          "6": 4
+        }
+      },
+      "sizes": {
+        "6": {
+          "circuits": 4,
+          "universe": 720
+        }
+      }
+    },
+    {
+      "n": 6,
+      "prime": 13,
+      "size6_pgl": {
+        "count": 2,
+        "formula": 2,
+        "group_size": 2184,
+        "k_histogram": {
+          "0": 26,
+          "1": 228,
+          "2": 774,
+          "3": 824,
+          "4": 294,
+          "5": 36,
+          "6": 2
+        }
+      },
+      "sizes": {
+        "6": {
+          "circuits": 2,
+          "universe": 720
+        }
+      }
+    },
+    {
+      "n": 7,
+      "prime": 7,
+      "size6_pgl": {
+        "count": 588,
+        "formula": 588,
+        "group_size": 336,
+        "k_histogram": {
+          "6": 294,
+          "7": 42
+        }
+      },
+      "sizes": {
+        "6": {
+          "circuits": 588,
+          "universe": 35280
+        },
+        "7": {
+          "circuits": 0,
+          "universe": 5040
+        }
+      }
+    },
+    {
+      "n": 7,
+      "prime": 11,
+      "size6_pgl": {
+        "count": 72,
+        "formula": 72,
+        "group_size": 1320,
+        "k_histogram": {
+          "2": 36,
+          "3": 288,
+          "4": 588,
+          "5": 348,
+          "6": 58,
+          "7": 2
+        }
+      },
+      "sizes": {
+        "6": {
+          "circuits": 72,
+          "universe": 35280
+        },
+        "7": {
+          "circuits": 0,
+          "universe": 5040
+        }
+      }
+    },
+    {
+      "n": 7,
+      "prime": 13,
+      "size6_pgl": {
+        "count": 42,
+        "formula": 42,
+        "group_size": 2184,
+        "k_histogram": {
+          "0": 2,
+          "1": 28,
+          "2": 282,
+          "3": 780,
+          "4": 780,
+          "5": 282,
+          "6": 28,
+          "7": 2
+        }
+      },
+      "sizes": {
+        "6": {
+          "circuits": 42,
+          "universe": 35280
+        },
+        "7": {
+          "circuits": 0,
+          "universe": 5040
+        }
+      }
+    }
+  ],
+  "plants": {
+    "A_fiber": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "B_fiber": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "ambient10_nonminimal_reject": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        1
+      ]
+    ],
+    "corruption": {
+      "coordinate": 0,
+      "delta": 1,
+      "rank": 6
+    },
+    "crossing": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "degree3_not_rational2_reject": {
+      "x": [
+        1,
+        8,
+        27,
+        64,
+        24,
+        14,
+        40,
+        7
+      ],
+      "y": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "five_with_fiber_reject": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "generic_five_reject": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        3
+      ]
+    ],
+    "inserted_crossing_reject": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "kron_guard": {
+      "concat": [
+        1,
+        2,
+        4,
+        1,
+        3,
+        9
+      ],
+      "true": [
+        1,
+        3,
+        9,
+        2,
+        6,
+        5,
+        4,
+        12,
+        10
+      ]
+    },
+    "nonmobius6_reject": {
+      "x": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "y": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "rational_degree2_8_accept": {
+      "x": [
+        1,
+        4,
+        9,
+        16,
+        25,
+        36,
+        49,
+        64
+      ],
+      "y": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  },
+  "prime_comparisons": [
+    {
+      "n": 4,
+      "pairs": [
+        {
+          "primes": [
+            7,
+            11
+          ],
+          "sizes": {
+            "10": {
+              "(4, 4)": {
+                "intersection": 16,
+                "left": 16,
+                "left_only": 0,
+                "right": 16,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "4": {
+              "(1, 4)": {
+                "intersection": 4,
+                "left": 4,
+                "left_only": 0,
+                "right": 4,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 1)": {
+                "intersection": 4,
+                "left": 4,
+                "left_only": 0,
+                "right": 4,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "5": {},
+            "6": {
+              "(4, 4)": {
+                "intersection": 16,
+                "left": 16,
+                "left_only": 0,
+                "right": 16,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "7": {},
+            "8": {
+              "(4, 4)": {
+                "intersection": 66,
+                "left": 66,
+                "left_only": 0,
+                "right": 66,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "9": {}
+          }
+        },
+        {
+          "primes": [
+            7,
+            13
+          ],
+          "sizes": {
+            "10": {
+              "(4, 4)": {
+                "intersection": 16,
+                "left": 16,
+                "left_only": 0,
+                "right": 16,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "4": {
+              "(1, 4)": {
+                "intersection": 4,
+                "left": 4,
+                "left_only": 0,
+                "right": 4,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 1)": {
+                "intersection": 4,
+                "left": 4,
+                "left_only": 0,
+                "right": 4,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "5": {},
+            "6": {
+              "(4, 4)": {
+                "intersection": 16,
+                "left": 16,
+                "left_only": 0,
+                "right": 16,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "7": {},
+            "8": {
+              "(4, 4)": {
+                "intersection": 66,
+                "left": 66,
+                "left_only": 0,
+                "right": 66,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "9": {}
+          }
+        },
+        {
+          "primes": [
+            11,
+            13
+          ],
+          "sizes": {
+            "10": {
+              "(4, 4)": {
+                "intersection": 16,
+                "left": 16,
+                "left_only": 0,
+                "right": 16,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "4": {
+              "(1, 4)": {
+                "intersection": 4,
+                "left": 4,
+                "left_only": 0,
+                "right": 4,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 1)": {
+                "intersection": 4,
+                "left": 4,
+                "left_only": 0,
+                "right": 4,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "5": {},
+            "6": {
+              "(4, 4)": {
+                "intersection": 16,
+                "left": 16,
+                "left_only": 0,
+                "right": 16,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "7": {},
+            "8": {
+              "(4, 4)": {
+                "intersection": 66,
+                "left": 66,
+                "left_only": 0,
+                "right": 66,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "9": {}
+          }
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "pairs": [
+        {
+          "primes": [
+            7,
+            11
+          ],
+          "sizes": {
+            "4": {
+              "(1, 4)": {
+                "intersection": 25,
+                "left": 25,
+                "left_only": 0,
+                "right": 25,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 1)": {
+                "intersection": 25,
+                "left": 25,
+                "left_only": 0,
+                "right": 25,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "5": {},
+            "6": {
+              "(4, 4)": {
+                "intersection": 400,
+                "left": 400,
+                "left_only": 0,
+                "right": 400,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "7": {},
+            "8": {
+              "(4, 4)": {
+                "intersection": 1650,
+                "left": 1650,
+                "left_only": 0,
+                "right": 1650,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 5)": {
+                "intersection": 1800,
+                "left": 1800,
+                "left_only": 0,
+                "right": 1800,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(5, 4)": {
+                "intersection": 1800,
+                "left": 1800,
+                "left_only": 0,
+                "right": 1800,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(5, 5)": {
+                "intersection": 236,
+                "left": 780,
+                "left_only": 544,
+                "right": 700,
+                "right_only": 464,
+                "sets_equal": false
+              }
+            }
+          }
+        },
+        {
+          "primes": [
+            7,
+            13
+          ],
+          "sizes": {
+            "4": {
+              "(1, 4)": {
+                "intersection": 25,
+                "left": 25,
+                "left_only": 0,
+                "right": 25,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 1)": {
+                "intersection": 25,
+                "left": 25,
+                "left_only": 0,
+                "right": 25,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "5": {},
+            "6": {
+              "(4, 4)": {
+                "intersection": 400,
+                "left": 400,
+                "left_only": 0,
+                "right": 400,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "7": {},
+            "8": {
+              "(4, 4)": {
+                "intersection": 1650,
+                "left": 1650,
+                "left_only": 0,
+                "right": 1650,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 5)": {
+                "intersection": 1800,
+                "left": 1800,
+                "left_only": 0,
+                "right": 1800,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(5, 4)": {
+                "intersection": 1800,
+                "left": 1800,
+                "left_only": 0,
+                "right": 1800,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(5, 5)": {
+                "intersection": 236,
+                "left": 780,
+                "left_only": 544,
+                "right": 564,
+                "right_only": 328,
+                "sets_equal": false
+              }
+            }
+          }
+        },
+        {
+          "primes": [
+            11,
+            13
+          ],
+          "sizes": {
+            "4": {
+              "(1, 4)": {
+                "intersection": 25,
+                "left": 25,
+                "left_only": 0,
+                "right": 25,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 1)": {
+                "intersection": 25,
+                "left": 25,
+                "left_only": 0,
+                "right": 25,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "5": {},
+            "6": {
+              "(4, 4)": {
+                "intersection": 400,
+                "left": 400,
+                "left_only": 0,
+                "right": 400,
+                "right_only": 0,
+                "sets_equal": true
+              }
+            },
+            "7": {},
+            "8": {
+              "(4, 4)": {
+                "intersection": 1650,
+                "left": 1650,
+                "left_only": 0,
+                "right": 1650,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(4, 5)": {
+                "intersection": 1800,
+                "left": 1800,
+                "left_only": 0,
+                "right": 1800,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(5, 4)": {
+                "intersection": 1800,
+                "left": 1800,
+                "left_only": 0,
+                "right": 1800,
+                "right_only": 0,
+                "sets_equal": true
+              },
+              "(5, 5)": {
+                "intersection": 236,
+                "left": 700,
+                "left_only": 464,
+                "right": 564,
+                "right_only": 328,
+                "sets_equal": false
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "run_id": "20260902T031527Z_2d19c5c4_718416983678",
+  "runtime": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "dont_write_bytecode": true,
+    "max_rss": 200818688,
+    "nice": 15,
+    "thread_caps": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  }
+}

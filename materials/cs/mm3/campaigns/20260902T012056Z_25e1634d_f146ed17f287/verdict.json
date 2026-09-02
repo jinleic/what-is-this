@@ -1,0 +1,848 @@
+{
+ "gate": "stapleton60-gap-total60",
+ "run_id": "20260902T012056Z_25e1634d_f146ed17f287",
+ "prereg_sha256": "c0203bb05df042570d2f3da40a0d59109f4603618de4f27c86300fd2e494f707",
+ "decomposition": "stapleton60 (Stapleton's fixed orientation, sigma^0, all-monomial triple)",
+ "question": "decide the fixed-orientation minimum in the frozen gap [58, 60]",
+ "reduction": "total = C(U) + C(V) + C(output); C(output) = 28 exact (frozen floor@13 on Wfac => >= 28; printed output stage recounted in-run by exact expansion = 28); the gap is exactly the two single-aux questions C(U) <= 15?, C(V) <= 15?",
+ "stage_values": {
+  "C_U": 16,
+  "C_V": 16,
+  "C_Wfac": 14,
+  "output": 28
+ },
+ "search_space": {
+  "U": {
+   "instances": 428,
+   "T": 15,
+   "tau_sha256": "3b1ec60de0117cc24f2b5e7100e2deac5f72320afd39743508e3b37974528c72",
+   "au_sha256": "9cb18bc76cc897e5c1de0995b37008418df062deebd034f7f4bfeeded681eb68",
+   "agreed": 428,
+   "hits": []
+  },
+  "V": {
+   "instances": 426,
+   "T": 15,
+   "tau_sha256": "3d8092f303264f77cf4e83a81cf97a63fc0a5675c9c4b4c78d10821baa3c0dc4",
+   "au_sha256": "b01988694358e18db31feb9cd3c782ca5614d1f4bd09bd6720e8fc00cf93256d",
+   "agreed": 426,
+   "hits": []
+  },
+  "Wfac": {
+   "instances": 398,
+   "T": 14,
+   "tau_sha256": "c7c79f0aa65f0e3242d243023cd1f6ae54e42a7fcd11040c91c887a9dfa6a7c3",
+   "au_sha256": "29f85ab1084e9799c0f864ca903c2c83181bc7d0abd4dca25ef092d3558f5693",
+   "agreed": 398,
+   "hits": [
+    [
+     -2,
+     1,
+     -1,
+     -1,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     -1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     -1,
+     1,
+     -1,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     -1,
+     1,
+     0,
+     -1,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     -1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     -1,
+     -1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     -1,
+     0,
+     0,
+     0,
+     0,
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     -1,
+     0,
+     0,
+     -1,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "instruments": [
+  "subset_dfs (complete census)",
+  "fresh slot-availability CNF + kissat 4.0.4",
+  "CaDiCaL 3.0.1 (control cross-solve)"
+ ],
+ "certificates": {
+  "floor_U_T14": {
+   "cnf_sha256": "bec3675cddee232e08e637304ea7f0f048dec29fca7f3509b4b02fd1c2f0b9b2",
+   "lrat_sha256": "7e0a61d7c0e7fae08a399e1711c07b2387a40479a6299bdd28120465530250ab",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.026 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3230.  Deleted clauses = 3214.  Max live clauses = 3229\nc verification time = 0.00 secs"
+  },
+  "floor_V_T14": {
+   "cnf_sha256": "8f55b50c12cb6ef61b4b3e245c5ea67a9e3c641eeb2242d64e24ae5be4dce57f",
+   "lrat_sha256": "103da4e81bec91323e19a1423f97922c223b107f58caa2bc9c0622d8cd0d3bc3",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3398.  Deleted clauses = 3382.  Max live clauses = 3397\nc verification time = 0.00 secs"
+  },
+  "floor_Wfac_T13": {
+   "cnf_sha256": "998b8f43bcb6200db9ff4c8c919141a23fe1295c0867959d16e44d121df0ee0a",
+   "lrat_sha256": "369da5ab234a42b92a43a2a70e7ab05203742cf333616d3d0fa3451b6706bd6b",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.025 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 2753.  Deleted clauses = 2738.  Max live clauses = 2752\nc verification time = 0.00 secs"
+  },
+  "U_infeas_00": {
+   "aux": [
+    -2,
+    0,
+    -2,
+    2,
+    0,
+    2,
+    -2,
+    0,
+    -2
+   ],
+   "cnf_sha256": "2010c29b74bc54a47d13a475b04b5c9b6378343e4036a353403db382a6e02893",
+   "lrat_sha256": "4efab776aa801ea36ee3ceda19359ee93e6d5fc0b52e8fd2fa2685284651d210",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3790.  Deleted clauses = 3773.  Max live clauses = 3789\nc verification time = 0.01 secs"
+  },
+  "U_infeas_01": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    -1,
+    -1
+   ],
+   "cnf_sha256": "546c0d3ee46b9781d6cb445495fe0ed11a8438fb8c374ca8f09e70c1d086cd1a",
+   "lrat_sha256": "7a8bbcde02863c854117ca6dea4d6ee32325d44c198304ad1d4ef6f3179b698b",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.026 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3820.  Deleted clauses = 3803.  Max live clauses = 3819\nc verification time = 0.00 secs"
+  },
+  "U_infeas_02": {
+   "aux": [
+    -1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    -1,
+    0,
+    0
+   ],
+   "cnf_sha256": "f4a293ccdc84246d161a102cbdc9df0456af91f5f87699ceb07bfed39f2406d5",
+   "lrat_sha256": "ef29466e8b28284f6c9f6d474ee8f304e0c3a42a4f06f49b532ee9be3003204a",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.026 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3820.  Deleted clauses = 3803.  Max live clauses = 3819\nc verification time = 0.00 secs"
+  },
+  "U_infeas_03": {
+   "aux": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    -1
+   ],
+   "cnf_sha256": "ac6b5cde5f746736259fa53acdcdcae0f0312996f7837fd339eafbf862e31d80",
+   "lrat_sha256": "7a8bbcde02863c854117ca6dea4d6ee32325d44c198304ad1d4ef6f3179b698b",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.021 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3820.  Deleted clauses = 3803.  Max live clauses = 3819\nc verification time = 0.01 secs"
+  },
+  "U_infeas_04": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    -1,
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "cnf_sha256": "badb52d4a988359efb2c1446340d6f9b7ca8b53b69327c80547a6cf5948f6bff",
+   "lrat_sha256": "e803bc5c1f1510b206ca3cf3ebe5b471b369a68d09b5fa520e47db5a4dc0e036",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.023 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3820.  Deleted clauses = 3803.  Max live clauses = 3819\nc verification time = 0.00 secs"
+  },
+  "U_infeas_05": {
+   "aux": [
+    -1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "cnf_sha256": "45c3b05798dff5650c0401b4dbb5f6a8fc5a7a634cd20e953ba7841fdb6de780",
+   "lrat_sha256": "309d5e32f9990c34beccb2df00d7f6c55679688180bf9d3c0ccca5316493ffc8",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.025 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3880.  Deleted clauses = 3863.  Max live clauses = 3879\nc verification time = 0.01 secs"
+  },
+  "U_infeas_06": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    -2
+   ],
+   "cnf_sha256": "a02b6164e8171de33f4685c2ff0fb961b3ff38ef1a4a926fff9c9b0fc5ca0cfc",
+   "lrat_sha256": "7a8bbcde02863c854117ca6dea4d6ee32325d44c198304ad1d4ef6f3179b698b",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.031 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3820.  Deleted clauses = 3803.  Max live clauses = 3819\nc verification time = 0.01 secs"
+  },
+  "U_infeas_07": {
+   "aux": [
+    -2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    -2,
+    0,
+    -1
+   ],
+   "cnf_sha256": "ccaf63ac8dcc540780e3768ae080176f20f1117d8cad617da200731bcf05735c",
+   "lrat_sha256": "2271204f7a7b738660c853318a53a4c6cfb24b563f14a03e4a9c5c515b09ada9",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.022 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3880.  Deleted clauses = 3863.  Max live clauses = 3879\nc verification time = 0.00 secs"
+  },
+  "U_infeas_08": {
+   "aux": [
+    0,
+    -1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    -1
+   ],
+   "cnf_sha256": "c7840c99bfd5465846f2c723e14f478796418421864a353bcc093c3faea1eee8",
+   "lrat_sha256": "13e5e639c37a9085cf3bcabd0443b5488c91e0cc93eba3d33bcf9034344d03b6",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3820.  Deleted clauses = 3803.  Max live clauses = 3819\nc verification time = 0.00 secs"
+  },
+  "U_infeas_09": {
+   "aux": [
+    -1,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "cnf_sha256": "15e01138c2d4fda6dd5776f0ba862dad2f8b3d1271c94efc61bb43bac07ed1f0",
+   "lrat_sha256": "0d6ce723bcab54fe48f4c5bb8bf2dfcae002f370dbd1f649723c134c39d6862c",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3940.  Deleted clauses = 3923.  Max live clauses = 3939\nc verification time = 0.00 secs"
+  },
+  "U_infeas_10": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    1
+   ],
+   "cnf_sha256": "726c161e61b75b9017ebb8e1fb790ab067074cf822bb4c3714d44f07dfaea1be",
+   "lrat_sha256": "a6ae60f5ebb77ea4915d8a57d910165bf1edb971e77135918776149ea94f99a3",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3760.  Deleted clauses = 3743.  Max live clauses = 3759\nc verification time = 0.01 secs"
+  },
+  "V_infeas_00": {
+   "aux": [
+    -2,
+    -2,
+    2,
+    -2,
+    -2,
+    2,
+    2,
+    2,
+    -2
+   ],
+   "cnf_sha256": "67740e08e3571cd73e2765379c75fb010b064f84924c0404f5ddca7360074372",
+   "lrat_sha256": "b3c6e0df8d6a8934f813307ef525ef9573892f9d9a5a73d79dd4999def0704d8",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.023 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3970.  Deleted clauses = 3953.  Max live clauses = 3969\nc verification time = 0.01 secs"
+  },
+  "V_infeas_01": {
+   "aux": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1
+   ],
+   "cnf_sha256": "13d55bdeff5190ad788f673bae283db40a803f47b6dc71b6c214a7130b27e175",
+   "lrat_sha256": "796583e7eeff458baf1c2b269308fddd5a6f0f2c323c7cb0cb64d735d811c0e3",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4360.  Deleted clauses = 4343.  Max live clauses = 4359\nc verification time = 0.01 secs"
+  },
+  "V_infeas_02": {
+   "aux": [
+    -1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0
+   ],
+   "cnf_sha256": "1e00d383926e756aa8ebe8899ba2b157905e50ce7f43c8c2dd034008360c3ce2",
+   "lrat_sha256": "80a69adc796778f0e63047b887eb85c7ac4fb0c8b07905b0098c0b63aeba598f",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.021 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4240.  Deleted clauses = 4223.  Max live clauses = 4239\nc verification time = 0.01 secs"
+  },
+  "V_infeas_03": {
+   "aux": [
+    -2,
+    -1,
+    1,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "cnf_sha256": "4b8c715dd133b57f2ede09a04db3050a6ee350393be7eb87c5da0d333c2bc593",
+   "lrat_sha256": "39173f0d66a05a50b031cbb6eacaa423fc97cf77c44404015d2046a6a1dd26c1",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4000.  Deleted clauses = 3983.  Max live clauses = 3999\nc verification time = 0.01 secs"
+  },
+  "V_infeas_04": {
+   "aux": [
+    0,
+    0,
+    -1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "cnf_sha256": "5f7acca66ef02b14b52a30d2ae5b970d3c170565a1f12aea650ce4e284388a95",
+   "lrat_sha256": "02f822888ef45bee914de8d133be6e9aaba41565b852402a2ac65f05b8c7fd75",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4000.  Deleted clauses = 3983.  Max live clauses = 3999\nc verification time = 0.01 secs"
+  },
+  "V_infeas_05": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    -1,
+    -1,
+    0,
+    -1,
+    0
+   ],
+   "cnf_sha256": "4728b68118b7faa70b7a151396a01660a9380033637aeccf6022049b68f84f18",
+   "lrat_sha256": "1ff1034a4752a93012f48c2a8db10920078aec7ac34196f82ec81566cabf2289",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.022 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4120.  Deleted clauses = 4103.  Max live clauses = 4119\nc verification time = 0.01 secs"
+  },
+  "V_infeas_06": {
+   "aux": [
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    1
+   ],
+   "cnf_sha256": "9ad2835879bbe047f9d80de580a35092939538719452bb3a85bfb4f3f86463fa",
+   "lrat_sha256": "475c8af6451679ccfbc193cd8fa12222d1909d99deaf41dba65068129915ad73",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.021 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4000.  Deleted clauses = 3983.  Max live clauses = 3999\nc verification time = 0.00 secs"
+  },
+  "V_infeas_07": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    -2,
+    -2,
+    0,
+    0,
+    0
+   ],
+   "cnf_sha256": "011f56c6867541839c04ca97ead451cf63f0b03c603f9207d686385ea32e1bb1",
+   "lrat_sha256": "82258c9c440cfbf3326ff6972206fec49505dbed5fea2270423affb89c4ec510",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.020 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3970.  Deleted clauses = 3953.  Max live clauses = 3969\nc verification time = 0.00 secs"
+  },
+  "V_infeas_08": {
+   "aux": [
+    0,
+    -1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "cnf_sha256": "02d2814266527c511b80c7c83025d0e586a7294ec0acd7371c331b989f147f0f",
+   "lrat_sha256": "f4dc774944774fa3fd065b5bdf9fa400f2325ae99a9a853dda49e33846fa308d",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.021 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4000.  Deleted clauses = 3983.  Max live clauses = 3999\nc verification time = 0.01 secs"
+  },
+  "V_infeas_09": {
+   "aux": [
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1
+   ],
+   "cnf_sha256": "ebc72af2b5bbeea658998317528939f9731fc8d1cce77f6e91df6750d98167af",
+   "lrat_sha256": "475c8af6451679ccfbc193cd8fa12222d1909d99deaf41dba65068129915ad73",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.025 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4000.  Deleted clauses = 3983.  Max live clauses = 3999\nc verification time = 0.00 secs"
+  },
+  "V_infeas_10": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    -1,
+    -1,
+    0,
+    0,
+    -1
+   ],
+   "cnf_sha256": "b53b92f468b4ccc8c52673f067d5184c7fe0d2b2b4d974521e79baa65294a75b",
+   "lrat_sha256": "f4dc774944774fa3fd065b5bdf9fa400f2325ae99a9a853dda49e33846fa308d",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.020 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 4000.  Deleted clauses = 3983.  Max live clauses = 3999\nc verification time = 0.00 secs"
+  },
+  "Wfac_infeas_00": {
+   "aux": [
+    -2,
+    0,
+    -2,
+    -2,
+    0,
+    -2,
+    0,
+    0,
+    0
+   ],
+   "cnf_sha256": "0350e4dfe533138eb80113d1909d7c9985be7696f705aeba0494fc2068e6057a",
+   "lrat_sha256": "7fd4e44f93faa541323f88a9942c0e45d29931f6ca658b6396d8c636c586e7e9",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.021 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3258.  Deleted clauses = 3242.  Max live clauses = 3257\nc verification time = 0.01 secs"
+  },
+  "Wfac_infeas_01": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    -1,
+    0
+   ],
+   "cnf_sha256": "7f7873eaaa00566ae96ba07388c596a469eeb232d37c1f8e7d949537d86d7b6a",
+   "lrat_sha256": "8e6dc3b636f8d147831cf9760d6263b9238a7e0eb21612bb99c3d25ddf9ff2f5",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3230.  Deleted clauses = 3214.  Max live clauses = 3229\nc verification time = 0.01 secs"
+  },
+  "Wfac_infeas_02": {
+   "aux": [
+    -1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    -1
+   ],
+   "cnf_sha256": "16700c662d8aee0e32269fee34b8d927086eb0776fc9269aa1a5c0408ba1a5c0",
+   "lrat_sha256": "80a9f69ec028bb988615595df1996b8f3067d3c5627e2f4757d789639dbc3433",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3342.  Deleted clauses = 3234.  Max live clauses = 3341\nc verification time = 0.01 secs"
+  },
+  "Wfac_infeas_03": {
+   "aux": [
+    -1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "cnf_sha256": "71ea9f4452920588be89d44658de7fa79753057606c963ec9ae12538620fc2d1",
+   "lrat_sha256": "8fb5854e0a1828fe76fd13b63d900a4034b859ef5cb705b0100fac31d70df9d5",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3286.  Deleted clauses = 3270.  Max live clauses = 3285\nc verification time = 0.01 secs"
+  },
+  "Wfac_infeas_04": {
+   "aux": [
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    -1
+   ],
+   "cnf_sha256": "08ac962f586b8e7430337a545a165a8a986a00803b8b10a17031c35f96df46ba",
+   "lrat_sha256": "e4c121af563706b8bd1fcb4285b211342b335a476f6b91c77d8bcc60e3fc80fd",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3286.  Deleted clauses = 3270.  Max live clauses = 3285\nc verification time = 0.00 secs"
+  },
+  "Wfac_infeas_05": {
+   "aux": [
+    -1,
+    0,
+    -1,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "cnf_sha256": "3e52778d7a4bfaac0539baf6764dfbe501ccdab780c30c3b094da0e4ef3182cb",
+   "lrat_sha256": "8fb5854e0a1828fe76fd13b63d900a4034b859ef5cb705b0100fac31d70df9d5",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3286.  Deleted clauses = 3270.  Max live clauses = 3285\nc verification time = 0.00 secs"
+  },
+  "Wfac_infeas_06": {
+   "aux": [
+    -1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "cnf_sha256": "508029e6af2f69ac1cb1111b26b752b4450893d31831804b7640221a3874889b",
+   "lrat_sha256": "80a9f69ec028bb988615595df1996b8f3067d3c5627e2f4757d789639dbc3433",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.023 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3342.  Deleted clauses = 3234.  Max live clauses = 3341\nc verification time = 0.00 secs"
+  },
+  "Wfac_infeas_07": {
+   "aux": [
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "cnf_sha256": "1a08aa108071eb0d122d6dc5c6af609f14f82912acc4cf02c193fa753c2f6dd1",
+   "lrat_sha256": "8e6dc3b636f8d147831cf9760d6263b9238a7e0eb21612bb99c3d25ddf9ff2f5",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3230.  Deleted clauses = 3214.  Max live clauses = 3229\nc verification time = 0.01 secs"
+  },
+  "Wfac_infeas_08": {
+   "aux": [
+    0,
+    0,
+    0,
+    0,
+    -1,
+    1,
+    0,
+    -2,
+    2
+   ],
+   "cnf_sha256": "16e247810cb45ab68a057b8e173cdec398290d427d46c1cb0ec8ff49379586dd",
+   "lrat_sha256": "73f5a9b1cd287083489836b110b4bc1e254824070da19ead5fe58de588065839",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.024 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3342.  Deleted clauses = 3326.  Max live clauses = 3341\nc verification time = 0.01 secs"
+  },
+  "Wfac_infeas_09": {
+   "aux": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    -1
+   ],
+   "cnf_sha256": "be04a0dd670b26ef851c9ff9c2847f6d00bbb45046cb4d3d2ab8d80410e6bbf4",
+   "lrat_sha256": "bd8897dfe9cdd68faea98ddaf1f730f42ee96b5a9a9be8c7b9a1282fada7dd08",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.025 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3286.  Deleted clauses = 3270.  Max live clauses = 3285\nc verification time = 0.01 secs"
+  },
+  "Wfac_infeas_10": {
+   "aux": [
+    -1,
+    0,
+    -1,
+    -1,
+    0,
+    0,
+    0,
+    1,
+    -1
+   ],
+   "cnf_sha256": "8d3166633984d8f5ac68c91acc442b3519301f78c25e13aa3287123eb894728d",
+   "lrat_sha256": "433e0b99f587022aaf74e8781105b3e42e907bd83ca58eba1ae7eb4dae98d662",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.020 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 3342.  Deleted clauses = 3326.  Max live clauses = 3341\nc verification time = 0.01 secs"
+  },
+  "seconds": 4.59
+ },
+ "controls": {
+  "A3": "pass (DFS + kissat + CaDiCaL)",
+  "carrier_gates": 16,
+  "R1": "REJECTED by exact expansion",
+  "R2": "REJECTED by exact expansion",
+  "R3_cert": {
+   "cnf_sha256": "283435f46aac1f0a80ef0dae0edc0b10cdddabe0796dda1e3495ea5deba80c4f",
+   "lrat_sha256": "0a20115b0e18fa72e3c5f424edf2bc3651477dc48808b9c7e4915d1c57bab291",
+   "drattrim_conv_rc": 0,
+   "drattrim_rc": 0,
+   "drattrim_out": " core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 0.028 seconds",
+   "lratcheck_rc": 0,
+   "lratcheck_out": " = 2544.  Deleted clauses = 2530.  Max live clauses = 2543\nc verification time = 0.00 secs"
+  },
+  "R4": "fired",
+  "seconds": 0.93
+ },
+ "brent": [
+  729,
+  729
+ ],
+ "cpu_seconds_total": 110.7,
+ "verdict": "NEGATIVE-PUBLISHED-OPTIMAL",
+ "claim": "C(U) = C(V) = 16 exactly (floors@14 impossible, re-certified; 0 of 428 and 0 of 426 single-aux extensions admitted at T = 15, both instruments agreeing on every instance; printed 16-gate stages verified by exact expansion) and output = 28 exactly, so total = 16 + 16 + 28 = 60 EXACTLY: Stapleton's published 60-addition scheme is optimal for its own fixed orientation, and the frozen certified LB 58 was not tight. LB = UB = 60."
+}

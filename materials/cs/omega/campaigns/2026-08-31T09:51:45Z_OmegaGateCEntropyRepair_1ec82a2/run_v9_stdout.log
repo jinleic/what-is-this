@@ -1,0 +1,37 @@
+CKPT protocol_guards {"evidence": "MACHINE-VERIFIED exact integer/rational arithmetic", "direction": [0, 1, 1, -1, -1, -1, 1, 0, 0, -1, -1, 1, 0, 1, 1, -1, 0, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 0, 1, -1, 1, -1, -1, 1, 0, 1, -1, 0, 0, 1, -1, 0, -1, 1, 0], "A_times
+Traceback (most recent call last):
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T09:51:45Z_OmegaGateCEntropyRepair_1ec82a2/gate_c_entropy_repair.py.asrun_v9", line 1420, in <module>
+    main()
+    ~~~~^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T09:51:45Z_OmegaGateCEntropyRepair_1ec82a2/gate_c_entropy_repair.py.asrun_v9", line 1349, in main
+    base, base_record = evaluate_repaired(
+                        ~~~~~~~~~~~~~~~~~^
+        params, target_start, direction, 0.0, "base")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T09:51:45Z_OmegaGateCEntropyRepair_1ec82a2/gate_c_entropy_repair.py.asrun_v9", line 889, in evaluate_repaired
+    internal, record = W.evaluate_point(
+                       ~~~~~~~~~~~~~~~~^
+        params, target_start, direction, step)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T09:51:45Z_OmegaGateCEntropyRepair_1ec82a2/gate_c_candidate_witness_dependency.py.asrun", line 168, in evaluate_point
+    constraints, equalities, value = ws.evaluate()
+                                     ~~~~~~~~~~~^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T09:51:45Z_OmegaGateCEntropyRepair_1ec82a2/vxxz24_float.py.asrun", line 1157, in evaluate
+    t.evaluate_post()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T09:51:45Z_OmegaGateCEntropyRepair_1ec82a2/gate_c_entropy_repair.py.asrun_v9", line 856, in patched_part_evaluate_post
+    installed_repair_certificate(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, region, "split_dist", "split_dist_max", "part")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T09:51:45Z_OmegaGateCEntropyRepair_1ec82a2/gate_c_entropy_repair.py.asrun_v9", line 836, in installed_repair_certificate
+    gap, metadata = entropy_certificate(
+                    ~~~~~~~~~~~~~~~~~~~^
+        obj, region, getattr(obj, distribution_field)[region],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        getattr(obj, max_field)[region], kind)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/2026-08-31T09:51:45Z_OmegaGateCEntropyRepair_1ec82a2/gate_c_entropy_repair.py.asrun_v9", line 604, in entropy_certificate
+    assert len(p) == matrix_full.shape[1]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,201 @@
+"""Gate C stage 3 — DIAGNOSTIC ONLY (Main Amendment-2 one-line test).
+
+Zero the Part-level (lam_sum) penalty contribution in the slope replay's
+aggregation and re-run V1 against frozen RAW 2.3715538358350803.
+
+  collapse toward ~3e-6  => the penalty aggregation is the blocker
+  no movement (O(0.9))   => penalty exonerated => stage bisection next
+
+This is a DIAGNOSTIC on the replay arithmetic; it is NOT a certified
+path and produces NO certified number. Anchors asserted at startup.
+"""
+import sys, os, json, time
+import numpy as np
+
+SRC = "/Users/jinleic/jinleic-workspace/cs/omega/src"
+sys.path.insert(0, SRC)
+import interval_core as IC
+import vxxz24_float as F
+import gate_c_slope_core as SC
+import gate_c_slope_pass as SP
+from flint import arb
+from scipy.io import loadmat
+
+I = IC.Ival
+FROZEN_RAW = 2.3715538358350803
+FROZEN_R_SUM = 2.817003567460976
+FROZEN_M_LOW = 2.0942543887102634
+TOL = 5e-13
+TGT_HI = float((arb(7).log() * 4).upper())   # ln 7^4 upper endpoint
+
+assert FROZEN_M_LOW * FROZEN_RAW < TGT_HI and \
+    abs(FROZEN_R_SUM - (TGT_HI - FROZEN_RAW * FROZEN_M_LOW)) < 1e-9, \
+    "anchor consistency: frozen R/M/raw triangle"
+
+params = np.asarray(loadmat(SP.MAT)["params"]).flatten()
+ZERO_PEN = os.environ.get("GATEC_DIAG_ZERO_PEN", "0") == "1"
+print(f"DIAGNOSTIC ONLY — GATEC_DIAG_ZERO_PEN={int(ZERO_PEN)}")
+sys.stdout.flush()
+
+
+def as_lohi(z, which):
+    """Extract float lo/hi from Slope / SlopeG / Ival / G / float."""
+    if isinstance(z, SP.SlopeG):
+        z = z.v
+    if isinstance(z, SC.Slope):
+        z = z.val
+    if hasattr(z, "v"):
+        z = z.v
+    if isinstance(z, IC.Ival):
+        return float(z.lo) if which == "lo" else float(z.hi)
+    if isinstance(z, (int, float)):
+        return float(z)
+    v = float(np.asarray(z).reshape(-1)[0])
+    return v
+
+
+def main_prec():
+    t0 = time.time()
+    out0 = SP.run_slope_pass(params, radius=0.0, verbose=False)
+    ws = out0["ws"]
+    gm = ws.globstage
+    n = SP.NSLOPE
+
+    # ---------------- per-block candidate tables (mirror endgame.aggregate)
+    def blocks(zero_pen):
+        pen_parts, pc_parts, nb_parts = {}, {}, {}
+        for l in range(3, 4):
+            for r in range(3):
+                nb = [SC.Slope(SC.ZERO, np.array([SC.ZERO] * n, dtype=object))
+                      for _ in range(3)]
+                pen = SC.s_const(0.0, n)
+                pc = SC.s_const(0.0, n)
+                for t in ws.parts[l - 1]:
+                    nbc = getattr(t, "num_block_contribution", None)
+                    if nbc is None or nbc[r] is None:
+                        continue
+                    for tt in range(3):
+                        nb[tt] = SC.s_add(nb[tt], nbc[r][tt])
+                    if isinstance(t, F.Part):
+                        p = (t.hash_penalty_term[r].v
+                             if isinstance(t.hash_penalty_term[r], SP.SlopeG)
+                             else t.hash_penalty_term[r])
+                        if zero_pen:
+                            p = SC.s_const(0.0, n)
+                        pen = SC.s_add(pen, p)
+                        pc = SC.s_add(pc, t.p_comp[r].v
+                                      if isinstance(t.p_comp[r], SP.SlopeG)
+                                      else t.p_comp[r])
+                pen_parts[(l, r)] = pen
+                pc_parts[(l, r)] = pc
+                for tt in range(3):
+                    nb_parts[(l, r, tt)] = nb[tt]
+
+        def agg_report():
+            rep = {}
+            total_R = 0.0
+            for (l, r), pc in pc_parts.items():
+                cand = []
+                for tt in range(3):
+                    nbl = nb_parts[(l, r, tt)].val.lo
+                    rhs = pc_parts[(l, r)].val.hi if tt == r \
+                        else pen_parts[(l, r)].val.hi
+                    cand.append(float(nbl - float(rhs)))
+                R_low = min(cand)
+                rep[f"L3 r{r}"] = {
+                    "nb_lo": [float(nb_parts[(l, r, tt)].val.lo)
+                              for tt in range(3)],
+                    "pen_hi": float(pen_parts[(l, r)].val.hi),
+                    "pc_hi": float(pc_parts[(l, r)].val.hi),
+                    "cand": cand,
+                    "argmin": int(np.argmin(cand)),
+                    "included": bool(R_low > 0),
+                    "R_low": float(max(R_low, 0.0)),
+                }
+                if R_low > 0:
+                    total_R += R_low
+            nb2 = [SC.s_const(0.0, n) for _ in range(3)]
+            for t in ws.parts[1]:
+                nbc = getattr(t, "num_block_contribution", None)
+                if nbc is None:
+                    continue
+                for tt in range(3):
+                    e = nbc[tt]
+                    if isinstance(e, SP.SlopeG):
+                        e = e.v
+                    nb2[tt] = SC.s_add(nb2[tt], e)
+            nb2_lo = [float(e.val.lo) for e in nb2]
+            R2_low = min(nb2_lo)
+            rep["L2"] = {"cand": nb2_lo, "argmin": int(np.argmin(nb2_lo)),
+                         "included": bool(R2_low > 0),
+                         "R_low": float(max(R2_low, 0.0))}
+            if R2_low > 0:
+                total_R += R2_low
+            for r in range(3):
+                cand = []
+                for tt in range(3):
+                    nbG = gm.num_block[r][tt]
+                    nbG = nbG.v if isinstance(nbG, SP.SlopeG) else nbG
+                    pcG = gm.p_comp[r]
+                    pcG = pcG.v if isinstance(pcG, SP.SlopeG) else pcG
+                    penG = gm.hash_penalty_term[r]
+                    penG = penG.v if isinstance(penG, SP.SlopeG) else penG
+                    rhs = pcG.val.hi if tt == r else \
+                        (arb(0) if zero_pen else penG.val.hi)
+                    cand.append(float(nbG.val.lo) - float(rhs))
+                R_low = min(cand)
+                pcG = gm.p_comp[r]
+                pcG = pcG.v if isinstance(pcG, SP.SlopeG) else pcG
+                penG = gm.hash_penalty_term[r]
+                penG = penG.v if isinstance(penG, SP.SlopeG) else penG
+                rep[f"G r{r}"] = {
+                    "nb_lo": [float((x.v if isinstance(x, SP.SlopeG)
+                                     else x).val.lo)
+                              for x in gm.num_block[r]],
+                    "pen_hi": 0.0 if zero_pen else float(penG.val.hi),
+                    "pc_hi": float(pcG.val.hi),
+                    "cand": cand,
+                    "argmin": int(np.argmin(cand)),
+                    "included": bool(R_low > 0),
+                    "R_low": float(max(R_low, 0.0)),
+                }
+                if R_low > 0:
+                    total_R += R_low
+            rep["total_R"] = float(total_R)
+            return rep
+
+        return agg_report()
+
+    print("--- REAL penalties (repaired replay state) ---")
+    rep_real = blocks(zero_pen=False)
+    print(json.dumps(rep_real, indent=1, default=str))
+    ms_iv = [z.val for z in gm.mat_size.v]
+    M_low = min(float(z.lo) for z in ms_iv)
+    M_arg = int(np.argmin([float(z.lo) for z in ms_iv]))
+    Om_raw_real = (TGT_HI - rep_real["total_R"]) / M_low
+    print(f"M_low={M_low!r} M_arg={M_arg} total_R={rep_real['total_R']!r}")
+    print(f"Om_raw(real) = {Om_raw_real!r}  residual vs frozen = "
+          f"{Om_raw_real - FROZEN_RAW:+.16f}")
+
+    print("--- ZEROED all hash penalties (Part + glob; p_comp unchanged) ---")
+    rep_zero = blocks(zero_pen=True)
+    print(json.dumps(rep_zero, indent=1, default=str))
+    Om_raw_zero = (TGT_HI - rep_zero["total_R"]) / M_low
+    print(f"Om_raw(zeroed) = {Om_raw_zero!r}  residual vs frozen = "
+          f"{Om_raw_zero - FROZEN_RAW:+.16f}")
+    print(f"elapsed: {time.time()-t0:.1f}s")
+    json.dump({"zero_pen": int(ZERO_PEN), "real": rep_real,
+               "zeroed": rep_zero, "M_low": M_low, "M_arg": M_arg,
+               "Om_raw_real": Om_raw_real, "Om_raw_zeroed": Om_raw_zero,
+               "frozen_raw": FROZEN_RAW},
+              open("/tmp/gatec_diag_penalty.json", "w"), indent=1,
+              default=str)
+
+
+def main():
+    with IC.prec():
+        main_prec()
+
+
+if __name__ == "__main__":
+    main()

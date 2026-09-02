@@ -1105,7 +1105,7 @@ def make_report(payload: dict[str, Any]) -> str:
         "## Reproduce",
         "",
         "```bash",
-        "cd /Users/jinleic/jinleic-workspace/qec-codesign",
+        "cd /Users/jinleic/jinleic-workspace/math/qec",
         "PYTHONPATH=src .venv/bin/python experiments/exp027_delta_audit.py",
         "```",
         "",

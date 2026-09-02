@@ -1,0 +1,64 @@
+{
+ "anchors": {
+  "6_64_3_1387": {
+   "byte_equal_vs_frozen": true,
+   "extra_fields_this_run": [
+    "guards_build"
+   ],
+   "record": {
+    "m": 6,
+    "n": 64,
+    "t": 3,
+    "k": 46,
+    "D": 57,
+    "seed": 1387,
+    "G": [
+     58,
+     59,
+     20,
+     1
+    ],
+    "max_deg_f": 57,
+    "deg_ok": true,
+    "guards_build": {
+     "delta_yi_binary": true,
+     "delta_check_count": 386,
+     "alpha_identity": true,
+     "beta_delta_nonzero": true,
+     "beta_pair": [
+      0,
+      1
+     ],
+     "beta_delta_deg": 112,
+     "gamma_k": true,
+     "eps_gcd_const": true,
+     "eps_maxdeg_is_D": true,
+     "eps_degs_min_max": [
+      56,
+      57
+     ],
+     "d_uniform_input": null
+    },
+    "exact_div_ok": true,
+    "lagrange_unit_ok": true,
+    "lagrange_unit_failures": [],
+    "lagrange_unit_checks": 64,
+    "offdiag_probes": 200,
+    "offdiag_violations": 0,
+    "assembly_spotcheck_rows": 3,
+    "assembly_ok": true,
+    "delta_exact": true,
+    "delta_scope": "EXACT for ALL (j,l): lam_l f_j(a_l) = Y[j,l], implied by L_i(a_i)=1 (n checks) + structural off-diagonal vanishing + assembly",
+    "alpha_identity_measured": true,
+    "beta_delta_nonzero": true,
+    "beta_pair": [
+     0,
+     1
+    ],
+    "eps_maxdeg_is_D": true,
+    "gamma_k": true,
+    "elapsed_s": 0.02
+   }
+  }
+ }
+}

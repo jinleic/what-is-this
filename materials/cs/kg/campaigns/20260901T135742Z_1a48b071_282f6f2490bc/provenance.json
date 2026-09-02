@@ -1,0 +1,40 @@
+{
+  "run_id": "20260901T135742Z_1a48b071_282f6f2490bc",
+  "gate": "band-1p75-3p5-corr-cap2p17",
+  "prereg_source": "cs/kg/prereg/20260901_band175_v2/pre_statement.md",
+  "prereg_source_commit": "862a999",
+  "prereg_sha256_manifest": "5189a90c2152a5755920e309b3ee95ab246aad4fd609d9221896f124bc486df7",
+  "prereg_copy_sha256": "5189a90c2152a5755920e309b3ee95ab246aad4fd609d9221896f124bc486df7",
+  "prereg_amended_after_init": false,
+  "protocol_predecessor": {
+    "run_id": "20260901T134705Z_9da59c74_a3bb7abdb738",
+    "verdict": "REJECTED",
+    "reason": "precommit read-only scouting violated strict prereg order; no controls or band tiles ran"
+  },
+  "excluded_scouting": {
+    "tile_count": 87,
+    "near_miss_32768": "[-4.14781740358947041431994319933e-8 +/- 3.81e-38]",
+    "near_miss_131072": "[8.72566255993993200750351436424e-5 +/- 4.25e-35]",
+    "adaptation_impossible": "Every knob, exact control cell, expected flip direction, planted-failure direction, budget, and verdict rule was fixed by the assignment before these excluded checks."
+  },
+  "instruments": {
+    "code/gate_corr_env.py": {
+      "sha256": "94c07adf14fbd860c54c5a59f5430dafe9125a86107c1f0b0f85da441d9eee30",
+      "source": "Campaign A frozen code/gate_corr_env.py"
+    },
+    "code/startup_controls.py": {
+      "sha256": "cf7d57fbb3052cb09fc719cafda6eb6de6830ce826b5f4ad1d8211cb7e965ac3",
+      "source": "Campaign C copy, byte-identical to Campaign A"
+    },
+    "code/decompose_cell.py": {
+      "sha256": "291eddc1d76b5a60338855012629077a7d5799db9c7434e07b18ae19df6204ff",
+      "source": "Campaign B frozen code/decompose_cell.py; escalation template only"
+    },
+    "code/gate_subdiv.py": {
+      "sha256": "6f1b8ee0f4bd11e3a3dec1c0a584dfe72975c9b91ab53ff2b26366cb2e0b5df5",
+      "source": "Campaign B frozen code/gate_subdiv.py; dependency of decompose_cell.py"
+    }
+  },
+  "shared_dependency": "cs/kg/campaigns/20260831T082425Z_kg_direct_d4_restart/code/core.py",
+  "bytecode_policy": "PYTHONDONTWRITEBYTECODE=1 and sys.dont_write_bytecode=True before any frozen import"
+}

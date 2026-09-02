@@ -1,0 +1,295 @@
+{
+ "ab_zero_structure": {
+  "A": {
+   "A_at_one_one": "0",
+   "A_at_origin": "0",
+   "A_at_xstar": "[+/- 7.37e-69]",
+   "A_at_xstar_encloses_zero": true,
+   "A_on_axis_s_half_t_zero": "0",
+   "definition": "A(s,t) = P2(s,t) + sqrt(Q2(s,s) Q2(t,t))",
+   "factorization": "A = s*t*Acheck, since P2 = s*t*(...) and Q2(s,s) = s^2*(...), which removes both axis zeros; (1,1) and (x*,x*) remain",
+   "interior_zero_is_nondegenerate": true,
+   "zeros": [
+    "{s=0}",
+    "{t=0}",
+    "(1,1)",
+    "(x*,x*) interior"
+   ]
+  },
+  "B": {
+   "definition": "B(s,t) = Q2(s,t) - sqrt(Q2(s,s) Q2(t,t))",
+   "diagonal_samples": [
+    {
+     "B_on_diagonal": "[+/- 2.96e-70]",
+     "s": "0.05"
+    },
+    {
+     "B_on_diagonal": "[+/- 3.87e-69]",
+     "s": "0.3"
+    },
+    {
+     "B_on_diagonal": "[+/- 6.09e-69]",
+     "s": "0.5"
+    },
+    {
+     "B_on_diagonal": "[+/- 6.79e-69]",
+     "s": "0.680688509846052185"
+    },
+    {
+     "B_on_diagonal": "[+/- 6.25e-69]",
+     "s": "0.8"
+    },
+    {
+     "B_on_diagonal": "[+/- 3.09e-69]",
+     "s": "0.95"
+    }
+   ],
+   "equivalent_form": "h(pi(s,t))^2 >= h(pi(s,s)) h(pi(t,t))",
+   "factorization": "B = (s-t)^2 * W, certify W >= 0",
+   "gradient_vanishes_on_diagonal": "d/dt B(s,t)|_{t=s} = 0 identically, because g'(s) = 2 dQ2/dt(s,s) by symmetry of Q2",
+   "obstruction_note": "pi(s,t)^2 <= pi(s,s) pi(t,t) ALWAYS (with a=1-s, b=1-t it is (1+ab)^2 <= (1+a^2)(1+b^2) <=> -(a-b)^2 <= 0), so pi runs the wrong way and B >= 0 must come from the shape of h, not monotonicity",
+   "zeros": [
+    "the ENTIRE diagonal {s=t}, with vanishing gradient",
+    "{s=0}",
+    "{t=0}"
+   ]
+  }
+ },
+ "arb_precision_bits": 480,
+ "claim_status": "REDUCTION-CERTIFIED",
+ "claims": [
+  {
+   "claim": "C1 all-q identity vs liu9_objective.evaluate_arb",
+   "configurations": 48,
+   "every_residual_encloses_zero": true,
+   "max_residual_upper": "[1.0802191e-68 +/- 4.00e-76]",
+   "verdict": "PROVED",
+   "worst_configuration": {
+    "a": [
+     "1/2",
+     "1/4",
+     "1/4"
+    ],
+    "q": "1/8",
+    "x": [
+     "5/7",
+     "2/7",
+     "9/10"
+    ],
+    "y": [
+     "1/10",
+     "3/7",
+     "6/7"
+    ]
+   }
+  },
+  {
+   "claim": "C2 T = a^T M_T a",
+   "every_residual_encloses_zero": true,
+   "max_residual_upper": "[2.0741657e-68 +/- 4.68e-76]",
+   "verdict": "PROVED"
+  },
+  {
+   "cancellation_max_residual_upper": "[2.7271573e-68 +/- 3.87e-76]",
+   "claim": "C3 cross-protocol cancellation and diagonal slice",
+   "diagonal_slice_max_residual_upper": "[2.9158257e-68 +/- 2.99e-77]",
+   "points": 121,
+   "verdict": "PROVED"
+  },
+  {
+   "claim": "C4 monotonicity in M; M = m is the worst case",
+   "d_dM_D_lower_bound": "[0.027342675696484277649637204489358479381775161849186286087253349636658717229215019131003419106324445742336262065548564773744020496339431589523570 +/- 2.47e-145]",
+   "d_dM_DoverM_numerator_lower_bound": "[0.014611978669153706299854637582392969508732929365966127574271043870711299188150237602418001695965314487769725796880556473923801379920673497421073 +/- 1.66e-145]",
+   "direction_note": "d/dM D_M = (1-b)h(st) + b h(pi) >= 0 and d/dM (D_M/M) = (t h(s)+s h(t))/(2M^2) >= 0, so raising M can only raise every coefficient; the certified quantity is a LOWER bound at M = m",
+   "mean_feasible_configurations": 7,
+   "min_G_minus_Gm_lower": "[0.00085010340079884988365828327218105249521395439686447607317035353567166978707047704965616063461453570396445043879390651742449880598323541006933738 +/- 1.75e-148]",
+   "verdict": "PROVED",
+   "violations": 0
+  },
+  {
+   "claim": "C5 T = c + 2 <mu, R nu>",
+   "every_residual_encloses_zero": true,
+   "max_residual_upper": "[2.2181067e-68 +/- 1.45e-76]",
+   "verdict": "PROVED"
+  },
+  {
+   "R_equals_A_plus_B_max_residual_upper": "[2.1225741e-68 +/- 2.08e-76]",
+   "claim": "C6 rank-one splitting: T = <mu,B mu>+<nu,B nu>+2<mu,A nu>+sq",
+   "consequence": "A >= 0 and B >= 0 imply T >= 0 for ARBITRARY nonnegative measures (dimension-free); and R = A + B implies LEMMA A, so both LEMMA A and LEMMA C follow from the two two-variable inequalities",
+   "identity_max_residual_upper": "[3.1822442e-68 +/- 1.03e-76]",
+   "min_summand_lower_bound": "[0.00024181027315327331467000859501256189059011481875903134776008758562502061100519239594962758460463886666321672447207128824045174035383740302932077 +/- 3.25e-148]",
+   "verdict": "PROVED"
+  }
+ ],
+ "constants": {
+  "beta": "[0.100052559862893106664628 +/- 3.00e-25]",
+  "m": "[0.617290912081264970069687 +/- 9.80e-26]",
+  "x_star": "[0.690787593924988014150488 +/- 2.05e-25]"
+ },
+ "limitations": [
+  "LEMMA A' (A >= 0) and LEMMA B' (B >= 0) are NOT proved here; this module certifies only the exact reduction to them.  Both are OPEN, and both are supported so far only by dense scans (DISCOVERY): min A = 0 and min B = 0 on a 600^2 grid of [0,1]^2.",
+  "A vanishes at the interior point (x*,x*) with vanishing gradient, and B vanishes on the whole diagonal with vanishing gradient, so neither can be certified by interval subdivision alone; the factorizations A = s*t*Acheck and B = (s-t)^2*W plus local strata are mandatory.",
+  "The identities are verified on a fixed finite configuration lattice.  They are exact algebraic identities in Arb, so the lattice demonstrates them rather than quantifying over the continuum; the reduction's validity rests on the symbolic derivation, independently re-derived in liu9_psi_reduction_audit.",
+  "The reduction is a SUFFICIENT direction only: A >= 0 and B >= 0 imply H2, but H2 does not require them.  A failure of either would not refute H2."
+ ],
+ "local_data": {
+  "H11": "[0.753195722057938558860571 +/- 1.47e-25]",
+  "H12": "[-0.496377629110665398376933 +/- 3.11e-25]",
+  "K12": "[-1.59260964938831675827994 +/- 5.00e-24]",
+  "R_encloses_zero": true,
+  "R_value": "[+/- 7.37e-69]",
+  "beta_abs_K12": "[0.159344672283645764433242 +/- 2.58e-26]",
+  "channel_sign_near_diagonal": "NEGATIVE",
+  "grad_encloses_zero": true,
+  "grad_value": "[+/- 1.02e-69]",
+  "hessian_positive_definite": true,
+  "lambda_max": "[1.24957335116860395723750 +/- 4.46e-24]",
+  "lambda_min": "[0.256818092947273160483638 +/- 1.65e-25]",
+  "local_T_antisymmetric_eigenvalue": "[0.930884006601312428371020 +/- 4.06e-25]",
+  "local_T_positive_definite": true,
+  "local_T_symmetric_eigenvalue": "[0.256818092947273160483638 +/- 1.65e-25]",
+  "note": "c ~ beta*K12*Delta^2 vanishes in the symmetric direction, so the symmetric eigenvalue of the local form of T equals lambda_min(Hess R) exactly, independent of the channel strength beta|K12|",
+  "point": "(x*, x*)",
+  "x_star": "[0.690787593924988014150488 +/- 2.05e-25]"
+ },
+ "mutations": [
+  {
+   "caught": true,
+   "expected": "fail",
+   "mutant": "[-0.06431173835 +/- 2.78e-12]",
+   "mutation": "drop_protocol_in_D",
+   "reference": "[-0.009065373669 +/- 2.61e-13]",
+   "sound": "[-0.009065373669 +/- 2.61e-13]",
+   "target": "C1"
+  },
+  {
+   "caught": true,
+   "expected": "fail",
+   "mutant": "[0.02988291494 +/- 2.57e-12]",
+   "mutation": "freeze_kernel_mean_at_m",
+   "reference": "[-0.009065373669 +/- 2.61e-13]",
+   "sound": "[-0.009065373669 +/- 2.61e-13]",
+   "target": "C1"
+  },
+  {
+   "caught": true,
+   "expected": "fail",
+   "mutant": "[-0.009116660614 +/- 6.01e-14]",
+   "mutation": "drop_channel_from_T",
+   "reference": "[-0.009065373669 +/- 2.61e-13]",
+   "sound": "[-0.009065373669 +/- 2.61e-13]",
+   "target": "C1/C5"
+  },
+  {
+   "caught": true,
+   "expected": "fail",
+   "mutant": "[-0.003536906336 +/- 2.89e-14]",
+   "mutation": "halve_channel_cross_term",
+   "reference": "[-0.009065373669 +/- 2.61e-13]",
+   "sound": "[-0.009065373669 +/- 2.61e-13]",
+   "target": "C5"
+  }
+ ],
+ "phi_sharpness": {
+  "no_uniform_rescaling_survives": true,
+  "note": "the splitting identity is phi-independent; these probes show no UNIFORM rescaling of phi survives, and separately that phi is forced pointwise exactly where R(s,s) = 0",
+  "phi_forced_on": [
+   "0",
+   "x*",
+   "1"
+  ],
+  "phi_has_slack_elsewhere": true,
+  "pointwise_window": [
+   {
+    "R_on_diagonal": "0",
+    "min_admissible_isolated_rescale_r": "0",
+    "phi_forced_here": true,
+    "phi_sq_window_width_equals_R": "0",
+    "s": "0"
+   },
+   {
+    "R_on_diagonal": "[+/- 7.37e-69]",
+    "min_admissible_isolated_rescale_r": "[1.0000000000000 +/- 3e-19]",
+    "phi_forced_here": true,
+    "phi_sq_window_width_equals_R": "[+/- 7.37e-69]",
+    "s": "x*"
+   },
+   {
+    "R_on_diagonal": "0",
+    "min_admissible_isolated_rescale_r": "0",
+    "phi_forced_here": true,
+    "phi_sq_window_width_equals_R": "0",
+    "s": "1"
+   },
+   {
+    "R_on_diagonal": "[0.0067704710 +/- 2.79e-11]",
+    "min_admissible_isolated_rescale_r": "[0.94395292747338 +/- 3.50e-15]",
+    "phi_forced_here": false,
+    "phi_sq_window_width_equals_R": "[0.0067704710 +/- 2.79e-11]",
+    "s": "1/2"
+   },
+   {
+    "R_on_diagonal": "[0.014822849 +/- 4.60e-10]",
+    "min_admissible_isolated_rescale_r": "[0.78999067713931 +/- 1.20e-15]",
+    "phi_forced_here": false,
+    "phi_sq_window_width_equals_R": "[0.014822849 +/- 4.60e-10]",
+    "s": "0.3"
+   }
+  ],
+  "probes": [
+   {
+    "A_at_xstar": "[0.0070978151 +/- 3.03e-11]",
+    "B_on_diagonal_at_0.5": "[-0.0063694814 +/- 2.89e-11]",
+    "caught": true,
+    "expected": "fail",
+    "mutation": "scale_phi_up_1.05",
+    "target": "nonnegativity of the split kernels (not the identity)"
+   },
+   {
+    "A_at_xstar": "[-0.0067515802 +/- 4.59e-11]",
+    "B_on_diagonal_at_0.5": "[0.0060587750 +/- 3.72e-11]",
+    "caught": true,
+    "expected": "fail",
+    "mutation": "scale_phi_down_0.95",
+    "target": "nonnegativity of the split kernels (not the identity)"
+   }
+  ]
+ },
+ "refuted_routes": [
+  {
+   "P2_at_half_half": "[-0.0553708106423719494349154 +/- 2.94e-26]",
+   "Psi_raw": "[-0.0553708106423719494349154 +/- 2.94e-26]",
+   "Psi_split": "[-0.0553708106423719494349154 +/- 2.94e-26]",
+   "consequence": "LEMMA C must be stated as COPOSITIVITY of M_T, which is strictly weaker and survives this point; the entrywise route must not be retried",
+   "mechanism": "at s = tau = 0 every Q2 term vanishes and Psi reduces to P2(t,sig); P2 is sign-indefinite with minimum -0.0693028554493 at s = t = 0.680688509846052185",
+   "raw_and_split_agree": true,
+   "route": "entrywise nonnegativity of M_T, i.e. Psi >= 0 on [0,1]^4",
+   "strictly_negative": true,
+   "verdict": "REFUTED",
+   "witness": "(s,t,sig,tau) = (0, 1/2, 1/2, 0)"
+  }
+ ],
+ "report_sha256": "c40d27be152217bd0d862bf54c4a957ab7bcad22e6b2f7747cf7462e9bc7a397",
+ "statement": {
+  "eliminated_exactly": [
+   "q (all q in [0,1], no case split)",
+   "the three masses (rank-one splitting C6, valid for arbitrarily many atoms)",
+   "the mean constraint (monotonicity in M)"
+  ],
+  "equivalently": "the single sandwich  0 <= Q2(s,t) - sqrt(Q2(s,s) Q2(t,t)) <= R(s,t)  on [0,1]^2",
+  "not_required": [
+   "the activation lemma min{M>=m} = min{M=m}",
+   "the active-face q* elimination",
+   "the Delta = 0 case analysis",
+   "any box cover of [0,1]^7",
+   "any 3x3 copositivity decision procedure",
+   "any 6-dimensional branch-and-bound"
+  ],
+  "reduces": "Liu H2 for the three-atom paired class: 9 variables (3 shared masses, 6 supports, q) with the mean constraint M >= m",
+  "superseded": "earlier framings of this target -- 'Psi >= 0 on [0,1]^4' (REFUTED, see refuted_routes) and 'M_T copositive on [0,1]^6' (true but unnecessary, implied by C6) -- must not be cited as the live obligation",
+  "to": [
+   "LEMMA A': A(s,t) = P2(s,t) + sqrt(Q2(s,s) Q2(t,t)) >= 0",
+   "LEMMA B': B(s,t) = Q2(s,t) - sqrt(Q2(s,s) Q2(t,t)) >= 0"
+  ]
+ }
+}

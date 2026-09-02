@@ -1,0 +1,18 @@
+{
+  "schema": "target-state/1",
+  "id": "cs/oct-rank",
+  "problem": "Real tensor rank of octonion multiplication",
+  "status": "active",
+  "current_gate": "Route A CLOSED-NEGATIVE (provenance-clean); Route F FAILURE TO CERTIFY; rank((L_1,L_i,L_j)) OPEN in {13,14}.",
+  "latest_campaign": "20260901T115801Z_8d6683fb_39c752e7eadd",
+  "latest_campaign_verdict": "FROZEN-NEGATIVE",
+  "headline": "Strassen 1983 primary read FIRST-HAND: the family caps at n + (1/2)rank(comm) <= 12 < 13 (comm is 8x8, so rank <= 8 trivially). The naked 16 reading is unsourced AND refuted by the tau control (would assert 8 > true rank 7).",
+  "next_action": "Owner re-scoping required before any run: N1 exact CP-completion downward, N2 Groebner infeasibility upward. Published window 18<=R_R(T_O)<=25 untouched.",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-02T05:12:55Z",
+  "updated_by": "owner-main",
+  "sources": [
+    "cs/oct-rank/README.md",
+    "cs/RESULTS.md"
+  ]
+}

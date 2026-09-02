@@ -1,0 +1,3300 @@
+{
+  "T1_PGL_structure": [
+    {
+      "PGL_size": 120,
+      "class_sizes": {
+        "0": 8,
+        "1": 64,
+        "2": 48
+      },
+      "class_sum": 120,
+      "maps_per_pair": 4,
+      "ordered_pole_zero_pairs": 30,
+      "prime": 5
+    },
+    {
+      "PGL_size": 336,
+      "class_sizes": {
+        "0": 12,
+        "1": 144,
+        "2": 180
+      },
+      "class_sum": 336,
+      "maps_per_pair": 6,
+      "ordered_pole_zero_pairs": 56,
+      "prime": 7
+    },
+    {
+      "PGL_size": 1320,
+      "class_sizes": {
+        "0": 20,
+        "1": 400,
+        "2": 900
+      },
+      "class_sum": 1320,
+      "maps_per_pair": 10,
+      "ordered_pole_zero_pairs": 132,
+      "prime": 11
+    },
+    {
+      "PGL_size": 2184,
+      "class_sizes": {
+        "0": 24,
+        "1": 576,
+        "2": 1584
+      },
+      "class_sum": 2184,
+      "maps_per_pair": 12,
+      "ordered_pole_zero_pairs": 182,
+      "prime": 13
+    }
+  ],
+  "T2_full_field": [
+    {
+      "PGL_count": 200,
+      "PGL_valid_domain_histogram": {
+        "4": 100,
+        "5": 20
+      },
+      "all_distinct_pairings": 600,
+      "cross_ratio_count": 200,
+      "formula": 200,
+      "prime": 5,
+      "product_census_subsets": 12650,
+      "product_count": 200,
+      "product_profile_counts": {
+        "(3, 3)": 900,
+        "(4, 4)": 200
+      },
+      "set_equality": true
+    },
+    {
+      "PGL_count": 5880,
+      "PGL_valid_domain_histogram": {
+        "6": 294,
+        "7": 42
+      },
+      "all_distinct_pairings": 29400,
+      "cross_ratio_count": 5880,
+      "formula": 5880,
+      "prime": 7,
+      "product_census_subsets": 211876,
+      "product_count": 5880,
+      "product_profile_counts": {
+        "(3, 3)": 11025,
+        "(4, 4)": 5880
+      },
+      "set_equality": true
+    }
+  ],
+  "T3_multiplicative": [
+    {
+      "PGL_count": 8,
+      "PGL_valid_domain_histogram": {
+        "2": 48,
+        "3": 64,
+        "4": 8
+      },
+      "all_distinct_pairings": 24,
+      "cross_ratio_count": 8,
+      "formula": 8,
+      "prime": 5,
+      "product_count": 8,
+      "set_equality": true
+    },
+    {
+      "PGL_count": 1080,
+      "PGL_valid_domain_histogram": {
+        "4": 180,
+        "5": 144,
+        "6": 12
+      },
+      "all_distinct_pairings": 5400,
+      "cross_ratio_count": 1080,
+      "formula": 1080,
+      "prime": 7,
+      "product_count": 1080,
+      "set_equality": true
+    },
+    {
+      "PGL_count": 117600,
+      "PGL_valid_domain_histogram": {
+        "10": 20,
+        "8": 900,
+        "9": 400
+      },
+      "all_distinct_pairings": 1058400,
+      "cross_ratio_count": 117600,
+      "formula": 117600,
+      "prime": 11,
+      "product_count": 117600,
+      "set_equality": true
+    }
+  ],
+  "T4_plants": {
+    "concat": {
+      "Kronecker_dim": 6,
+      "concat_dim": 5,
+      "rejected": true
+    },
+    "duplicate": {
+      "dependent_pairs": [
+        [
+          0,
+          7
+        ]
+      ],
+      "spark": 2
+    },
+    "non_tensor": {
+      "planted_rank": 4,
+      "pristine_rank": 3,
+      "rejected": true
+    },
+    "selected_pole": {
+      "map": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "planted_U": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "pole": 0,
+      "rejected": true,
+      "valid_domain": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "zero": 7
+    },
+    "wrong_class": {
+      "q": 6,
+      "rejected": true,
+      "true_PGL_size": 336,
+      "true_formula": 1080,
+      "wrong_class_sum": 300,
+      "wrong_formula": 1044,
+      "wrong_k2": 144
+    }
+  },
+  "arithmetic": "exact Python integers modulo p; canonical PGL matrices",
+  "assertion_count": 151,
+  "budget": {
+    "CPU_cap_seconds": 600.0,
+    "CPU_seconds": 15.577791,
+    "wall_cap_seconds": 900.0,
+    "wall_seconds": 16.88564,
+    "within_cap": true
+  },
+  "controls": {
+    "T1.p11.PGL_size": {
+      "detail": {
+        "got": 1320,
+        "want": 1320
+      },
+      "pass": true
+    },
+    "T1.p11.class_size_identity": {
+      "detail": {
+        "got": 1320,
+        "want": 1320
+      },
+      "pass": true
+    },
+    "T1.p11.maps_per_pole_zero_pair": {
+      "detail": {
+        "got": [
+          10
+        ],
+        "want": [
+          10
+        ]
+      },
+      "pass": true
+    },
+    "T1.p11.multiplicative_class_sizes": {
+      "detail": {
+        "got": {
+          "0": 20,
+          "1": 400,
+          "2": 900
+        },
+        "want": {
+          "0": 20,
+          "1": 400,
+          "2": 900
+        }
+      },
+      "pass": true
+    },
+    "T1.p11.ordered_pole_zero_pairs": {
+      "detail": {
+        "got": 132,
+        "want": 132
+      },
+      "pass": true
+    },
+    "T1.p13.PGL_size": {
+      "detail": {
+        "got": 2184,
+        "want": 2184
+      },
+      "pass": true
+    },
+    "T1.p13.class_size_identity": {
+      "detail": {
+        "got": 2184,
+        "want": 2184
+      },
+      "pass": true
+    },
+    "T1.p13.maps_per_pole_zero_pair": {
+      "detail": {
+        "got": [
+          12
+        ],
+        "want": [
+          12
+        ]
+      },
+      "pass": true
+    },
+    "T1.p13.multiplicative_class_sizes": {
+      "detail": {
+        "got": {
+          "0": 24,
+          "1": 576,
+          "2": 1584
+        },
+        "want": {
+          "0": 24,
+          "1": 576,
+          "2": 1584
+        }
+      },
+      "pass": true
+    },
+    "T1.p13.ordered_pole_zero_pairs": {
+      "detail": {
+        "got": 182,
+        "want": 182
+      },
+      "pass": true
+    },
+    "T1.p5.PGL_size": {
+      "detail": {
+        "got": 120,
+        "want": 120
+      },
+      "pass": true
+    },
+    "T1.p5.class_size_identity": {
+      "detail": {
+        "got": 120,
+        "want": 120
+      },
+      "pass": true
+    },
+    "T1.p5.maps_per_pole_zero_pair": {
+      "detail": {
+        "got": [
+          4
+        ],
+        "want": [
+          4
+        ]
+      },
+      "pass": true
+    },
+    "T1.p5.multiplicative_class_sizes": {
+      "detail": {
+        "got": {
+          "0": 8,
+          "1": 64,
+          "2": 48
+        },
+        "want": {
+          "0": 8,
+          "1": 64,
+          "2": 48
+        }
+      },
+      "pass": true
+    },
+    "T1.p5.ordered_pole_zero_pairs": {
+      "detail": {
+        "got": 30,
+        "want": 30
+      },
+      "pass": true
+    },
+    "T1.p7.PGL_size": {
+      "detail": {
+        "got": 336,
+        "want": 336
+      },
+      "pass": true
+    },
+    "T1.p7.class_size_identity": {
+      "detail": {
+        "got": 336,
+        "want": 336
+      },
+      "pass": true
+    },
+    "T1.p7.maps_per_pole_zero_pair": {
+      "detail": {
+        "got": [
+          6
+        ],
+        "want": [
+          6
+        ]
+      },
+      "pass": true
+    },
+    "T1.p7.multiplicative_class_sizes": {
+      "detail": {
+        "got": {
+          "0": 12,
+          "1": 144,
+          "2": 180
+        },
+        "want": {
+          "0": 12,
+          "1": 144,
+          "2": 180
+        }
+      },
+      "pass": true
+    },
+    "T1.p7.ordered_pole_zero_pairs": {
+      "detail": {
+        "got": 56,
+        "want": 56
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.A.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p5.full_field.A.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p5.full_field.A.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p5.full_field.B.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p5.full_field.B.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p5.full_field.B.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p5.full_field.PGL_support_uniqueness": {
+      "detail": {
+        "got": 200,
+        "want": 200
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.affine_map_count": {
+      "detail": {
+        "got": 20,
+        "want": 20
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.all_pairings_CR_scanned": {
+      "detail": {
+        "got": 600,
+        "want": 600
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.all_product_subsets_scanned": {
+      "detail": {
+        "got": 12650,
+        "want": 12650
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.finite_pole_map_count": {
+      "detail": {
+        "got": 100,
+        "want": 100
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.formula_anchor": {
+      "detail": {
+        "got": 200,
+        "want": 200
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.product_equals_CR": {
+      "detail": {
+        "left": 200,
+        "left_only": [],
+        "right": 200,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.product_equals_PGL": {
+      "detail": {
+        "left": 200,
+        "left_only": [],
+        "right": 200,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.spark_A": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.spark_B": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T2.p5.full_field.three_route_count": {
+      "detail": {
+        "got": 200,
+        "want": 200
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.A.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p7.full_field.A.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p7.full_field.A.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p7.full_field.B.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p7.full_field.B.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p7.full_field.B.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T2.p7.full_field.PGL_support_uniqueness": {
+      "detail": {
+        "got": 5880,
+        "want": 5880
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.affine_map_count": {
+      "detail": {
+        "got": 42,
+        "want": 42
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.all_pairings_CR_scanned": {
+      "detail": {
+        "got": 29400,
+        "want": 29400
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.all_product_subsets_scanned": {
+      "detail": {
+        "got": 211876,
+        "want": 211876
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.finite_pole_map_count": {
+      "detail": {
+        "got": 294,
+        "want": 294
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.formula_anchor": {
+      "detail": {
+        "got": 5880,
+        "want": 5880
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.product_equals_CR": {
+      "detail": {
+        "left": 5880,
+        "left_only": [],
+        "right": 5880,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.product_equals_PGL": {
+      "detail": {
+        "left": 5880,
+        "left_only": [],
+        "right": 5880,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.spark_A": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.spark_B": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T2.p7.full_field.three_route_count": {
+      "detail": {
+        "got": 5880,
+        "want": 5880
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.A.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p11.multiplicative.A.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p11.multiplicative.A.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p11.multiplicative.B.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p11.multiplicative.B.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p11.multiplicative.B.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p11.multiplicative.PGL_support_uniqueness": {
+      "detail": {
+        "got": 117600,
+        "want": 117600
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.all_CR_pairings_scanned": {
+      "detail": {
+        "got": 1058400,
+        "want": 1058400
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.all_product_pairings_scanned": {
+      "detail": {
+        "got": 1058400,
+        "want": 1058400
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.formula_anchor": {
+      "detail": {
+        "got": 117600,
+        "want": 117600
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.k0_valid_domain_class": {
+      "detail": {
+        "got": 20,
+        "want": 20
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.k1_valid_domain_class": {
+      "detail": {
+        "got": 400,
+        "want": 400
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.k2_valid_domain_class": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.product_equals_CR": {
+      "detail": {
+        "left": 117600,
+        "left_only": [],
+        "right": 117600,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.product_equals_PGL": {
+      "detail": {
+        "left": 117600,
+        "left_only": [],
+        "right": 117600,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.pure_tensor_coordinates": {
+      "detail": {
+        "got": {
+          "(0, 0)": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "(0, 1)": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "(0, 2)": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "(0, 3)": [
+            1,
+            4,
+            1,
+            4
+          ],
+          "(0, 4)": [
+            1,
+            5,
+            1,
+            5
+          ],
+          "(0, 5)": [
+            1,
+            6,
+            1,
+            6
+          ],
+          "(0, 6)": [
+            1,
+            7,
+            1,
+            7
+          ],
+          "(0, 7)": [
+            1,
+            8,
+            1,
+            8
+          ],
+          "(0, 8)": [
+            1,
+            9,
+            1,
+            9
+          ],
+          "(0, 9)": [
+            1,
+            10,
+            1,
+            10
+          ],
+          "(1, 0)": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "(1, 1)": [
+            1,
+            2,
+            2,
+            4
+          ],
+          "(1, 2)": [
+            1,
+            3,
+            2,
+            6
+          ],
+          "(1, 3)": [
+            1,
+            4,
+            2,
+            8
+          ],
+          "(1, 4)": [
+            1,
+            5,
+            2,
+            10
+          ],
+          "(1, 5)": [
+            1,
+            6,
+            2,
+            1
+          ],
+          "(1, 6)": [
+            1,
+            7,
+            2,
+            3
+          ],
+          "(1, 7)": [
+            1,
+            8,
+            2,
+            5
+          ],
+          "(1, 8)": [
+            1,
+            9,
+            2,
+            7
+          ],
+          "(1, 9)": [
+            1,
+            10,
+            2,
+            9
+          ],
+          "(2, 0)": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "(2, 1)": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "(2, 2)": [
+            1,
+            3,
+            3,
+            9
+          ],
+          "(2, 3)": [
+            1,
+            4,
+            3,
+            1
+          ],
+          "(2, 4)": [
+            1,
+            5,
+            3,
+            4
+          ],
+          "(2, 5)": [
+            1,
+            6,
+            3,
+            7
+          ],
+          "(2, 6)": [
+            1,
+            7,
+            3,
+            10
+          ],
+          "(2, 7)": [
+            1,
+            8,
+            3,
+            2
+          ],
+          "(2, 8)": [
+            1,
+            9,
+            3,
+            5
+          ],
+          "(2, 9)": [
+            1,
+            10,
+            3,
+            8
+          ],
+          "(3, 0)": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "(3, 1)": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "(3, 2)": [
+            1,
+            3,
+            4,
+            1
+          ],
+          "(3, 3)": [
+            1,
+            4,
+            4,
+            5
+          ],
+          "(3, 4)": [
+            1,
+            5,
+            4,
+            9
+          ],
+          "(3, 5)": [
+            1,
+            6,
+            4,
+            2
+          ],
+          "(3, 6)": [
+            1,
+            7,
+            4,
+            6
+          ],
+          "(3, 7)": [
+            1,
+            8,
+            4,
+            10
+          ],
+          "(3, 8)": [
+            1,
+            9,
+            4,
+            3
+          ],
+          "(3, 9)": [
+            1,
+            10,
+            4,
+            7
+          ],
+          "(4, 0)": [
+            1,
+            1,
+            5,
+            5
+          ],
+          "(4, 1)": [
+            1,
+            2,
+            5,
+            10
+          ],
+          "(4, 2)": [
+            1,
+            3,
+            5,
+            4
+          ],
+          "(4, 3)": [
+            1,
+            4,
+            5,
+            9
+          ],
+          "(4, 4)": [
+            1,
+            5,
+            5,
+            3
+          ],
+          "(4, 5)": [
+            1,
+            6,
+            5,
+            8
+          ],
+          "(4, 6)": [
+            1,
+            7,
+            5,
+            2
+          ],
+          "(4, 7)": [
+            1,
+            8,
+            5,
+            7
+          ],
+          "(4, 8)": [
+            1,
+            9,
+            5,
+            1
+          ],
+          "(4, 9)": [
+            1,
+            10,
+            5,
+            6
+          ],
+          "(5, 0)": [
+            1,
+            1,
+            6,
+            6
+          ],
+          "(5, 1)": [
+            1,
+            2,
+            6,
+            1
+          ],
+          "(5, 2)": [
+            1,
+            3,
+            6,
+            7
+          ],
+          "(5, 3)": [
+            1,
+            4,
+            6,
+            2
+          ],
+          "(5, 4)": [
+            1,
+            5,
+            6,
+            8
+          ],
+          "(5, 5)": [
+            1,
+            6,
+            6,
+            3
+          ],
+          "(5, 6)": [
+            1,
+            7,
+            6,
+            9
+          ],
+          "(5, 7)": [
+            1,
+            8,
+            6,
+            4
+          ],
+          "(5, 8)": [
+            1,
+            9,
+            6,
+            10
+          ],
+          "(5, 9)": [
+            1,
+            10,
+            6,
+            5
+          ],
+          "(6, 0)": [
+            1,
+            1,
+            7,
+            7
+          ],
+          "(6, 1)": [
+            1,
+            2,
+            7,
+            3
+          ],
+          "(6, 2)": [
+            1,
+            3,
+            7,
+            10
+          ],
+          "(6, 3)": [
+            1,
+            4,
+            7,
+            6
+          ],
+          "(6, 4)": [
+            1,
+            5,
+            7,
+            2
+          ],
+          "(6, 5)": [
+            1,
+            6,
+            7,
+            9
+          ],
+          "(6, 6)": [
+            1,
+            7,
+            7,
+            5
+          ],
+          "(6, 7)": [
+            1,
+            8,
+            7,
+            1
+          ],
+          "(6, 8)": [
+            1,
+            9,
+            7,
+            8
+          ],
+          "(6, 9)": [
+            1,
+            10,
+            7,
+            4
+          ],
+          "(7, 0)": [
+            1,
+            1,
+            8,
+            8
+          ],
+          "(7, 1)": [
+            1,
+            2,
+            8,
+            5
+          ],
+          "(7, 2)": [
+            1,
+            3,
+            8,
+            2
+          ],
+          "(7, 3)": [
+            1,
+            4,
+            8,
+            10
+          ],
+          "(7, 4)": [
+            1,
+            5,
+            8,
+            7
+          ],
+          "(7, 5)": [
+            1,
+            6,
+            8,
+            4
+          ],
+          "(7, 6)": [
+            1,
+            7,
+            8,
+            1
+          ],
+          "(7, 7)": [
+            1,
+            8,
+            8,
+            9
+          ],
+          "(7, 8)": [
+            1,
+            9,
+            8,
+            6
+          ],
+          "(7, 9)": [
+            1,
+            10,
+            8,
+            3
+          ],
+          "(8, 0)": [
+            1,
+            1,
+            9,
+            9
+          ],
+          "(8, 1)": [
+            1,
+            2,
+            9,
+            7
+          ],
+          "(8, 2)": [
+            1,
+            3,
+            9,
+            5
+          ],
+          "(8, 3)": [
+            1,
+            4,
+            9,
+            3
+          ],
+          "(8, 4)": [
+            1,
+            5,
+            9,
+            1
+          ],
+          "(8, 5)": [
+            1,
+            6,
+            9,
+            10
+          ],
+          "(8, 6)": [
+            1,
+            7,
+            9,
+            8
+          ],
+          "(8, 7)": [
+            1,
+            8,
+            9,
+            6
+          ],
+          "(8, 8)": [
+            1,
+            9,
+            9,
+            4
+          ],
+          "(8, 9)": [
+            1,
+            10,
+            9,
+            2
+          ],
+          "(9, 0)": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "(9, 1)": [
+            1,
+            2,
+            10,
+            9
+          ],
+          "(9, 2)": [
+            1,
+            3,
+            10,
+            8
+          ],
+          "(9, 3)": [
+            1,
+            4,
+            10,
+            7
+          ],
+          "(9, 4)": [
+            1,
+            5,
+            10,
+            6
+          ],
+          "(9, 5)": [
+            1,
+            6,
+            10,
+            5
+          ],
+          "(9, 6)": [
+            1,
+            7,
+            10,
+            4
+          ],
+          "(9, 7)": [
+            1,
+            8,
+            10,
+            3
+          ],
+          "(9, 8)": [
+            1,
+            9,
+            10,
+            2
+          ],
+          "(9, 9)": [
+            1,
+            10,
+            10,
+            1
+          ]
+        },
+        "want": {
+          "(0, 0)": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "(0, 1)": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "(0, 2)": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "(0, 3)": [
+            1,
+            4,
+            1,
+            4
+          ],
+          "(0, 4)": [
+            1,
+            5,
+            1,
+            5
+          ],
+          "(0, 5)": [
+            1,
+            6,
+            1,
+            6
+          ],
+          "(0, 6)": [
+            1,
+            7,
+            1,
+            7
+          ],
+          "(0, 7)": [
+            1,
+            8,
+            1,
+            8
+          ],
+          "(0, 8)": [
+            1,
+            9,
+            1,
+            9
+          ],
+          "(0, 9)": [
+            1,
+            10,
+            1,
+            10
+          ],
+          "(1, 0)": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "(1, 1)": [
+            1,
+            2,
+            2,
+            4
+          ],
+          "(1, 2)": [
+            1,
+            3,
+            2,
+            6
+          ],
+          "(1, 3)": [
+            1,
+            4,
+            2,
+            8
+          ],
+          "(1, 4)": [
+            1,
+            5,
+            2,
+            10
+          ],
+          "(1, 5)": [
+            1,
+            6,
+            2,
+            1
+          ],
+          "(1, 6)": [
+            1,
+            7,
+            2,
+            3
+          ],
+          "(1, 7)": [
+            1,
+            8,
+            2,
+            5
+          ],
+          "(1, 8)": [
+            1,
+            9,
+            2,
+            7
+          ],
+          "(1, 9)": [
+            1,
+            10,
+            2,
+            9
+          ],
+          "(2, 0)": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "(2, 1)": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "(2, 2)": [
+            1,
+            3,
+            3,
+            9
+          ],
+          "(2, 3)": [
+            1,
+            4,
+            3,
+            1
+          ],
+          "(2, 4)": [
+            1,
+            5,
+            3,
+            4
+          ],
+          "(2, 5)": [
+            1,
+            6,
+            3,
+            7
+          ],
+          "(2, 6)": [
+            1,
+            7,
+            3,
+            10
+          ],
+          "(2, 7)": [
+            1,
+            8,
+            3,
+            2
+          ],
+          "(2, 8)": [
+            1,
+            9,
+            3,
+            5
+          ],
+          "(2, 9)": [
+            1,
+            10,
+            3,
+            8
+          ],
+          "(3, 0)": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "(3, 1)": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "(3, 2)": [
+            1,
+            3,
+            4,
+            1
+          ],
+          "(3, 3)": [
+            1,
+            4,
+            4,
+            5
+          ],
+          "(3, 4)": [
+            1,
+            5,
+            4,
+            9
+          ],
+          "(3, 5)": [
+            1,
+            6,
+            4,
+            2
+          ],
+          "(3, 6)": [
+            1,
+            7,
+            4,
+            6
+          ],
+          "(3, 7)": [
+            1,
+            8,
+            4,
+            10
+          ],
+          "(3, 8)": [
+            1,
+            9,
+            4,
+            3
+          ],
+          "(3, 9)": [
+            1,
+            10,
+            4,
+            7
+          ],
+          "(4, 0)": [
+            1,
+            1,
+            5,
+            5
+          ],
+          "(4, 1)": [
+            1,
+            2,
+            5,
+            10
+          ],
+          "(4, 2)": [
+            1,
+            3,
+            5,
+            4
+          ],
+          "(4, 3)": [
+            1,
+            4,
+            5,
+            9
+          ],
+          "(4, 4)": [
+            1,
+            5,
+            5,
+            3
+          ],
+          "(4, 5)": [
+            1,
+            6,
+            5,
+            8
+          ],
+          "(4, 6)": [
+            1,
+            7,
+            5,
+            2
+          ],
+          "(4, 7)": [
+            1,
+            8,
+            5,
+            7
+          ],
+          "(4, 8)": [
+            1,
+            9,
+            5,
+            1
+          ],
+          "(4, 9)": [
+            1,
+            10,
+            5,
+            6
+          ],
+          "(5, 0)": [
+            1,
+            1,
+            6,
+            6
+          ],
+          "(5, 1)": [
+            1,
+            2,
+            6,
+            1
+          ],
+          "(5, 2)": [
+            1,
+            3,
+            6,
+            7
+          ],
+          "(5, 3)": [
+            1,
+            4,
+            6,
+            2
+          ],
+          "(5, 4)": [
+            1,
+            5,
+            6,
+            8
+          ],
+          "(5, 5)": [
+            1,
+            6,
+            6,
+            3
+          ],
+          "(5, 6)": [
+            1,
+            7,
+            6,
+            9
+          ],
+          "(5, 7)": [
+            1,
+            8,
+            6,
+            4
+          ],
+          "(5, 8)": [
+            1,
+            9,
+            6,
+            10
+          ],
+          "(5, 9)": [
+            1,
+            10,
+            6,
+            5
+          ],
+          "(6, 0)": [
+            1,
+            1,
+            7,
+            7
+          ],
+          "(6, 1)": [
+            1,
+            2,
+            7,
+            3
+          ],
+          "(6, 2)": [
+            1,
+            3,
+            7,
+            10
+          ],
+          "(6, 3)": [
+            1,
+            4,
+            7,
+            6
+          ],
+          "(6, 4)": [
+            1,
+            5,
+            7,
+            2
+          ],
+          "(6, 5)": [
+            1,
+            6,
+            7,
+            9
+          ],
+          "(6, 6)": [
+            1,
+            7,
+            7,
+            5
+          ],
+          "(6, 7)": [
+            1,
+            8,
+            7,
+            1
+          ],
+          "(6, 8)": [
+            1,
+            9,
+            7,
+            8
+          ],
+          "(6, 9)": [
+            1,
+            10,
+            7,
+            4
+          ],
+          "(7, 0)": [
+            1,
+            1,
+            8,
+            8
+          ],
+          "(7, 1)": [
+            1,
+            2,
+            8,
+            5
+          ],
+          "(7, 2)": [
+            1,
+            3,
+            8,
+            2
+          ],
+          "(7, 3)": [
+            1,
+            4,
+            8,
+            10
+          ],
+          "(7, 4)": [
+            1,
+            5,
+            8,
+            7
+          ],
+          "(7, 5)": [
+            1,
+            6,
+            8,
+            4
+          ],
+          "(7, 6)": [
+            1,
+            7,
+            8,
+            1
+          ],
+          "(7, 7)": [
+            1,
+            8,
+            8,
+            9
+          ],
+          "(7, 8)": [
+            1,
+            9,
+            8,
+            6
+          ],
+          "(7, 9)": [
+            1,
+            10,
+            8,
+            3
+          ],
+          "(8, 0)": [
+            1,
+            1,
+            9,
+            9
+          ],
+          "(8, 1)": [
+            1,
+            2,
+            9,
+            7
+          ],
+          "(8, 2)": [
+            1,
+            3,
+            9,
+            5
+          ],
+          "(8, 3)": [
+            1,
+            4,
+            9,
+            3
+          ],
+          "(8, 4)": [
+            1,
+            5,
+            9,
+            1
+          ],
+          "(8, 5)": [
+            1,
+            6,
+            9,
+            10
+          ],
+          "(8, 6)": [
+            1,
+            7,
+            9,
+            8
+          ],
+          "(8, 7)": [
+            1,
+            8,
+            9,
+            6
+          ],
+          "(8, 8)": [
+            1,
+            9,
+            9,
+            4
+          ],
+          "(8, 9)": [
+            1,
+            10,
+            9,
+            2
+          ],
+          "(9, 0)": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "(9, 1)": [
+            1,
+            2,
+            10,
+            9
+          ],
+          "(9, 2)": [
+            1,
+            3,
+            10,
+            8
+          ],
+          "(9, 3)": [
+            1,
+            4,
+            10,
+            7
+          ],
+          "(9, 4)": [
+            1,
+            5,
+            10,
+            6
+          ],
+          "(9, 5)": [
+            1,
+            6,
+            10,
+            5
+          ],
+          "(9, 6)": [
+            1,
+            7,
+            10,
+            4
+          ],
+          "(9, 7)": [
+            1,
+            8,
+            10,
+            3
+          ],
+          "(9, 8)": [
+            1,
+            9,
+            10,
+            2
+          ],
+          "(9, 9)": [
+            1,
+            10,
+            10,
+            1
+          ]
+        }
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.spark_A": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.spark_B": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T3.p11.multiplicative.three_route_count": {
+      "detail": {
+        "got": 117600,
+        "want": 117600
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.A.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p5.multiplicative.A.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p5.multiplicative.A.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p5.multiplicative.B.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p5.multiplicative.B.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p5.multiplicative.B.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p5.multiplicative.PGL_support_uniqueness": {
+      "detail": {
+        "got": 8,
+        "want": 8
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.all_CR_pairings_scanned": {
+      "detail": {
+        "got": 24,
+        "want": 24
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.all_product_pairings_scanned": {
+      "detail": {
+        "got": 24,
+        "want": 24
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.formula_anchor": {
+      "detail": {
+        "got": 8,
+        "want": 8
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.k0_valid_domain_class": {
+      "detail": {
+        "got": 8,
+        "want": 8
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.k1_valid_domain_class": {
+      "detail": {
+        "got": 64,
+        "want": 64
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.k2_valid_domain_class": {
+      "detail": {
+        "got": 48,
+        "want": 48
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.product_equals_CR": {
+      "detail": {
+        "left": 8,
+        "left_only": [],
+        "right": 8,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.product_equals_PGL": {
+      "detail": {
+        "left": 8,
+        "left_only": [],
+        "right": 8,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.pure_tensor_coordinates": {
+      "detail": {
+        "got": {
+          "(0, 0)": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "(0, 1)": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "(0, 2)": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "(0, 3)": [
+            1,
+            4,
+            1,
+            4
+          ],
+          "(1, 0)": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "(1, 1)": [
+            1,
+            2,
+            2,
+            4
+          ],
+          "(1, 2)": [
+            1,
+            3,
+            2,
+            1
+          ],
+          "(1, 3)": [
+            1,
+            4,
+            2,
+            3
+          ],
+          "(2, 0)": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "(2, 1)": [
+            1,
+            2,
+            3,
+            1
+          ],
+          "(2, 2)": [
+            1,
+            3,
+            3,
+            4
+          ],
+          "(2, 3)": [
+            1,
+            4,
+            3,
+            2
+          ],
+          "(3, 0)": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "(3, 1)": [
+            1,
+            2,
+            4,
+            3
+          ],
+          "(3, 2)": [
+            1,
+            3,
+            4,
+            2
+          ],
+          "(3, 3)": [
+            1,
+            4,
+            4,
+            1
+          ]
+        },
+        "want": {
+          "(0, 0)": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "(0, 1)": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "(0, 2)": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "(0, 3)": [
+            1,
+            4,
+            1,
+            4
+          ],
+          "(1, 0)": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "(1, 1)": [
+            1,
+            2,
+            2,
+            4
+          ],
+          "(1, 2)": [
+            1,
+            3,
+            2,
+            1
+          ],
+          "(1, 3)": [
+            1,
+            4,
+            2,
+            3
+          ],
+          "(2, 0)": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "(2, 1)": [
+            1,
+            2,
+            3,
+            1
+          ],
+          "(2, 2)": [
+            1,
+            3,
+            3,
+            4
+          ],
+          "(2, 3)": [
+            1,
+            4,
+            3,
+            2
+          ],
+          "(3, 0)": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "(3, 1)": [
+            1,
+            2,
+            4,
+            3
+          ],
+          "(3, 2)": [
+            1,
+            3,
+            4,
+            2
+          ],
+          "(3, 3)": [
+            1,
+            4,
+            4,
+            1
+          ]
+        }
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.spark_A": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.spark_B": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T3.p5.multiplicative.three_route_count": {
+      "detail": {
+        "got": 8,
+        "want": 8
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.A.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p7.multiplicative.A.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p7.multiplicative.A.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p7.multiplicative.B.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p7.multiplicative.B.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p7.multiplicative.B.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T3.p7.multiplicative.PGL_support_uniqueness": {
+      "detail": {
+        "got": 1080,
+        "want": 1080
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.all_CR_pairings_scanned": {
+      "detail": {
+        "got": 5400,
+        "want": 5400
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.all_product_pairings_scanned": {
+      "detail": {
+        "got": 5400,
+        "want": 5400
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.formula_anchor": {
+      "detail": {
+        "got": 1080,
+        "want": 1080
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.k0_valid_domain_class": {
+      "detail": {
+        "got": 12,
+        "want": 12
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.k1_valid_domain_class": {
+      "detail": {
+        "got": 144,
+        "want": 144
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.k2_valid_domain_class": {
+      "detail": {
+        "got": 180,
+        "want": 180
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.product_equals_CR": {
+      "detail": {
+        "left": 1080,
+        "left_only": [],
+        "right": 1080,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.product_equals_PGL": {
+      "detail": {
+        "left": 1080,
+        "left_only": [],
+        "right": 1080,
+        "right_only": []
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.pure_tensor_coordinates": {
+      "detail": {
+        "got": {
+          "(0, 0)": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "(0, 1)": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "(0, 2)": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "(0, 3)": [
+            1,
+            4,
+            1,
+            4
+          ],
+          "(0, 4)": [
+            1,
+            5,
+            1,
+            5
+          ],
+          "(0, 5)": [
+            1,
+            6,
+            1,
+            6
+          ],
+          "(1, 0)": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "(1, 1)": [
+            1,
+            2,
+            2,
+            4
+          ],
+          "(1, 2)": [
+            1,
+            3,
+            2,
+            6
+          ],
+          "(1, 3)": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "(1, 4)": [
+            1,
+            5,
+            2,
+            3
+          ],
+          "(1, 5)": [
+            1,
+            6,
+            2,
+            5
+          ],
+          "(2, 0)": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "(2, 1)": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "(2, 2)": [
+            1,
+            3,
+            3,
+            2
+          ],
+          "(2, 3)": [
+            1,
+            4,
+            3,
+            5
+          ],
+          "(2, 4)": [
+            1,
+            5,
+            3,
+            1
+          ],
+          "(2, 5)": [
+            1,
+            6,
+            3,
+            4
+          ],
+          "(3, 0)": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "(3, 1)": [
+            1,
+            2,
+            4,
+            1
+          ],
+          "(3, 2)": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "(3, 3)": [
+            1,
+            4,
+            4,
+            2
+          ],
+          "(3, 4)": [
+            1,
+            5,
+            4,
+            6
+          ],
+          "(3, 5)": [
+            1,
+            6,
+            4,
+            3
+          ],
+          "(4, 0)": [
+            1,
+            1,
+            5,
+            5
+          ],
+          "(4, 1)": [
+            1,
+            2,
+            5,
+            3
+          ],
+          "(4, 2)": [
+            1,
+            3,
+            5,
+            1
+          ],
+          "(4, 3)": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "(4, 4)": [
+            1,
+            5,
+            5,
+            4
+          ],
+          "(4, 5)": [
+            1,
+            6,
+            5,
+            2
+          ],
+          "(5, 0)": [
+            1,
+            1,
+            6,
+            6
+          ],
+          "(5, 1)": [
+            1,
+            2,
+            6,
+            5
+          ],
+          "(5, 2)": [
+            1,
+            3,
+            6,
+            4
+          ],
+          "(5, 3)": [
+            1,
+            4,
+            6,
+            3
+          ],
+          "(5, 4)": [
+            1,
+            5,
+            6,
+            2
+          ],
+          "(5, 5)": [
+            1,
+            6,
+            6,
+            1
+          ]
+        },
+        "want": {
+          "(0, 0)": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "(0, 1)": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "(0, 2)": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "(0, 3)": [
+            1,
+            4,
+            1,
+            4
+          ],
+          "(0, 4)": [
+            1,
+            5,
+            1,
+            5
+          ],
+          "(0, 5)": [
+            1,
+            6,
+            1,
+            6
+          ],
+          "(1, 0)": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "(1, 1)": [
+            1,
+            2,
+            2,
+            4
+          ],
+          "(1, 2)": [
+            1,
+            3,
+            2,
+            6
+          ],
+          "(1, 3)": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "(1, 4)": [
+            1,
+            5,
+            2,
+            3
+          ],
+          "(1, 5)": [
+            1,
+            6,
+            2,
+            5
+          ],
+          "(2, 0)": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "(2, 1)": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "(2, 2)": [
+            1,
+            3,
+            3,
+            2
+          ],
+          "(2, 3)": [
+            1,
+            4,
+            3,
+            5
+          ],
+          "(2, 4)": [
+            1,
+            5,
+            3,
+            1
+          ],
+          "(2, 5)": [
+            1,
+            6,
+            3,
+            4
+          ],
+          "(3, 0)": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "(3, 1)": [
+            1,
+            2,
+            4,
+            1
+          ],
+          "(3, 2)": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "(3, 3)": [
+            1,
+            4,
+            4,
+            2
+          ],
+          "(3, 4)": [
+            1,
+            5,
+            4,
+            6
+          ],
+          "(3, 5)": [
+            1,
+            6,
+            4,
+            3
+          ],
+          "(4, 0)": [
+            1,
+            1,
+            5,
+            5
+          ],
+          "(4, 1)": [
+            1,
+            2,
+            5,
+            3
+          ],
+          "(4, 2)": [
+            1,
+            3,
+            5,
+            1
+          ],
+          "(4, 3)": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "(4, 4)": [
+            1,
+            5,
+            5,
+            4
+          ],
+          "(4, 5)": [
+            1,
+            6,
+            5,
+            2
+          ],
+          "(5, 0)": [
+            1,
+            1,
+            6,
+            6
+          ],
+          "(5, 1)": [
+            1,
+            2,
+            6,
+            5
+          ],
+          "(5, 2)": [
+            1,
+            3,
+            6,
+            4
+          ],
+          "(5, 3)": [
+            1,
+            4,
+            6,
+            3
+          ],
+          "(5, 4)": [
+            1,
+            5,
+            6,
+            2
+          ],
+          "(5, 5)": [
+            1,
+            6,
+            6,
+            1
+          ]
+        }
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.spark_A": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.spark_B": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T3.p7.multiplicative.three_route_count": {
+      "detail": {
+        "got": 1080,
+        "want": 1080
+      },
+      "pass": true
+    },
+    "T4.concat_guard.concat_dim": {
+      "detail": {
+        "got": [
+          5
+        ],
+        "want": [
+          5
+        ]
+      },
+      "pass": true
+    },
+    "T4.concat_guard.coordinates": {
+      "detail": {
+        "got": {
+          "(0, 0)": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "(0, 1)": [
+            1,
+            2,
+            4,
+            1,
+            2,
+            4
+          ],
+          "(0, 2)": [
+            1,
+            3,
+            2,
+            1,
+            3,
+            2
+          ],
+          "(0, 3)": [
+            1,
+            5,
+            4,
+            1,
+            5,
+            4
+          ],
+          "(1, 0)": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "(1, 1)": [
+            1,
+            2,
+            4,
+            2,
+            4,
+            1
+          ],
+          "(1, 2)": [
+            1,
+            3,
+            2,
+            2,
+            6,
+            4
+          ],
+          "(1, 3)": [
+            1,
+            5,
+            4,
+            2,
+            3,
+            1
+          ],
+          "(2, 0)": [
+            1,
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "(2, 1)": [
+            1,
+            2,
+            4,
+            4,
+            1,
+            2
+          ],
+          "(2, 2)": [
+            1,
+            3,
+            2,
+            4,
+            5,
+            1
+          ],
+          "(2, 3)": [
+            1,
+            5,
+            4,
+            4,
+            6,
+            2
+          ],
+          "(3, 0)": [
+            1,
+            1,
+            1,
+            6,
+            6,
+            6
+          ],
+          "(3, 1)": [
+            1,
+            2,
+            4,
+            6,
+            5,
+            3
+          ],
+          "(3, 2)": [
+            1,
+            3,
+            2,
+            6,
+            4,
+            5
+          ],
+          "(3, 3)": [
+            1,
+            5,
+            4,
+            6,
+            2,
+            3
+          ]
+        },
+        "want": {
+          "(0, 0)": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "(0, 1)": [
+            1,
+            2,
+            4,
+            1,
+            2,
+            4
+          ],
+          "(0, 2)": [
+            1,
+            3,
+            2,
+            1,
+            3,
+            2
+          ],
+          "(0, 3)": [
+            1,
+            5,
+            4,
+            1,
+            5,
+            4
+          ],
+          "(1, 0)": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "(1, 1)": [
+            1,
+            2,
+            4,
+            2,
+            4,
+            1
+          ],
+          "(1, 2)": [
+            1,
+            3,
+            2,
+            2,
+            6,
+            4
+          ],
+          "(1, 3)": [
+            1,
+            5,
+            4,
+            2,
+            3,
+            1
+          ],
+          "(2, 0)": [
+            1,
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "(2, 1)": [
+            1,
+            2,
+            4,
+            4,
+            1,
+            2
+          ],
+          "(2, 2)": [
+            1,
+            3,
+            2,
+            4,
+            5,
+            1
+          ],
+          "(2, 3)": [
+            1,
+            5,
+            4,
+            4,
+            6,
+            2
+          ],
+          "(3, 0)": [
+            1,
+            1,
+            1,
+            6,
+            6,
+            6
+          ],
+          "(3, 1)": [
+            1,
+            2,
+            4,
+            6,
+            5,
+            3
+          ],
+          "(3, 2)": [
+            1,
+            3,
+            2,
+            6,
+            4,
+            5
+          ],
+          "(3, 3)": [
+            1,
+            5,
+            4,
+            6,
+            2,
+            3
+          ]
+        }
+      },
+      "pass": true
+    },
+    "T4.concat_guard.kron_dim": {
+      "detail": {
+        "got": [
+          6
+        ],
+        "want": [
+          6
+        ]
+      },
+      "pass": true
+    },
+    "T4.concat_guard.rejects_block_concat": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.duplicate.B.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.duplicate.B.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.duplicate.B.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.duplicate.dependent_pair_detected": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.duplicate.spark_drop": {
+      "detail": {
+        "got": 2,
+        "want": 2
+      },
+      "pass": true
+    },
+    "T4.guard.A2.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.guard.A2.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.guard.A2.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.guard.B3.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.guard.B3.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.guard.B3.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.selected_pole.U_rejected": {
+      "detail": {
+        "U": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "valid_domain": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "pass": true
+    },
+    "T4.selected_pole.at_zero": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "T4.selected_pole.map_in_PGL": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.selected_pole.maps_to_infinity": {
+      "detail": {
+        "got": 7,
+        "want": 7
+      },
+      "pass": true
+    },
+    "T4.tensor.A.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.tensor.A.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.tensor.A.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.tensor.B.no_zero_columns": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.tensor.B.nonempty": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.tensor.B.rectangular": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.tensor.identity_accept": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "T4.tensor.labels_still_accept": {
+      "detail": {
+        "got": 6,
+        "want": 6
+      },
+      "pass": true
+    },
+    "T4.tensor.non_tensor_reject": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "T4.wrong_class.count_reject": {
+      "detail": null,
+      "pass": true
+    },
+    "T4.wrong_class.identity_reject": {
+      "detail": {
+        "PGL_size": 336,
+        "planted": 300
+      },
+      "pass": true
+    },
+    "T4.wrong_class.planted_formula": {
+      "detail": {
+        "got": 1044,
+        "want": 1044
+      },
+      "pass": true
+    },
+    "T4.wrong_class.planted_sum": {
+      "detail": {
+        "got": 300,
+        "want": 300
+      },
+      "pass": true
+    },
+    "T4.wrong_class.true_formula": {
+      "detail": {
+        "got": 1080,
+        "want": 1080
+      },
+      "pass": true
+    },
+    "runtime.MKL_NUM_THREADS": {
+      "detail": {
+        "got": "1",
+        "want": "1"
+      },
+      "pass": true
+    },
+    "runtime.OMP_NUM_THREADS": {
+      "detail": {
+        "got": "1",
+        "want": "1"
+      },
+      "pass": true
+    },
+    "runtime.OPENBLAS_NUM_THREADS": {
+      "detail": {
+        "got": "1",
+        "want": "1"
+      },
+      "pass": true
+    },
+    "runtime.VECLIB_MAXIMUM_THREADS": {
+      "detail": {
+        "got": "1",
+        "want": "1"
+      },
+      "pass": true
+    },
+    "runtime.nice_at_least_15": {
+      "detail": {
+        "nice": 15
+      },
+      "pass": true
+    },
+    "runtime.no_bytecode_env": {
+      "detail": {
+        "got": "1",
+        "want": "1"
+      },
+      "pass": true
+    },
+    "runtime.no_bytecode_interpreter": {
+      "detail": null,
+      "pass": true
+    }
+  },
+  "failures": 0,
+  "gate": "H-ALLDISTINCT-PGLCOUNT",
+  "prereg_commit": "bddaa259bc2e7f175453c42e978d91159fc8ac73",
+  "run_id": "20260902T012629Z_2eb59adb_0aa7425efe1b",
+  "runtime": {
+    "CPU_cap_seconds": 600.0,
+    "bytecode_env": "1",
+    "nice": 15,
+    "sys_dont_write_bytecode": true,
+    "threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "wall_cap_seconds": 900.0
+  },
+  "schema": "h-alldistinct-pglcount-controls/1"
+}

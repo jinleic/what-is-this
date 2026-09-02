@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-08-31T08:51:12.724381+00:00",
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateC_exact_X_memory_extension",
+    "scope": "BB [[36,4,4]] code-capacity X-memory; not [[144,12,12]] evidence",
+    "basis": "X",
+    "p_points": [
+      0.03,
+      0.01
+    ],
+    "shots_per_point": 2000,
+    "base_seed": 20260830,
+    "decoder_arms": [
+      "beam8",
+      "bp30+osd",
+      "nms-ens24"
+    ],
+    "exact_arithmetic": "Fraction full affine class masses"
+  },
+  "config_hash12": "9b30cfe313ed",
+  "evidence_status": "X-memory same-family exact extension",
+  "z_memory_regression": "current Z circuit string equals frozen 20260830 source output",
+  "versions": {
+    "numpy": "2.5.2",
+    "stim": "1.16.0"
+  },
+  "source_sha256": {
+    "src/gatec_exact/run_gatec.py": "0208035c1bc333c1f5cc0cf54701d5c007f6a847b72f1b6a37f865c21353d8ca",
+    "src/gatec_exact/exact_ml.py": "f506a3bbdf0985138d1dbb6f1642d8ee4a9b514964e0d71b398649f91efb7b4f",
+    "src/qldpc_dec/beam_search.py": "d2e66cb678a7bf22508d6400a0fe6c02f9ade5fd7bcacb98e60058859cfafc09",
+    "src/qldpc_dec/bp_osd.py": "ca92d7c92501f296d3e4844808aa40987ae5f9ead6decae4618c65c3bf223c7d",
+    "src/qldpc_dec/nms.py": "cbffe69742b118b96bddda0bde59dbc7da4108b8f44e09818df55933e6745211"
+  }
+}

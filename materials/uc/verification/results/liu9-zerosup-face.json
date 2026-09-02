@@ -1,0 +1,264 @@
+{
+ "anchor_fiber_family": {
+  "all_positive": true,
+  "family": "witness-anchor fiber: frozen six supports (B0,B2,B4)/(B1,B3,B5), exact-rational (a1,a2) grid around the persisted anchor, +/- 1/100",
+  "grid": "3x3",
+  "rows": [
+   {
+    "band_min_lower": 6.049194250261234e-05,
+    "band_min_positive": true,
+    "d_a1": "-1/100",
+    "d_a2": "-1/100",
+    "gap_at_1_minus_2^-24_lower": 6.050233420819996e-05,
+    "gap_at_q1_lower": 6.049194250261234e-05,
+    "q2_sign": "negative",
+    "q_lo": "77885056710745596365409942861399676062719019057152/105936895479121598183523045662019184928668090585359",
+    "regime": "concave-certified"
+   },
+   {
+    "band_min_lower": 6.502438488469026e-05,
+    "band_min_positive": true,
+    "d_a1": "-1/100",
+    "d_a2": "0",
+    "gap_at_1_minus_2^-24_lower": 6.503536969908357e-05,
+    "gap_at_q1_lower": 6.502438488469026e-05,
+    "q2_sign": "negative",
+    "q_lo": "79215549964049905638204598220375676062719019057152/110703281500446324085641120875133059928668090585359",
+    "regime": "concave-certified"
+   },
+   {
+    "band_min_lower": 6.966027533720583e-05,
+    "band_min_positive": true,
+    "d_a1": "-1/100",
+    "d_a2": "1/100",
+    "gap_at_1_minus_2^-24_lower": 6.967185760407518e-05,
+    "gap_at_q1_lower": 6.966027533720583e-05,
+    "q2_sign": "negative",
+    "q_lo": "80546043217354214910999253579351676062719019057152/115469667521771049987759196088246934928668090585359",
+    "regime": "concave-certified"
+   },
+   {
+    "band_min_lower": 6.049194542761761e-05,
+    "band_min_positive": true,
+    "d_a1": "0",
+    "d_a2": "-1/100",
+    "gap_at_1_minus_2^-24_lower": 6.0502201196999454e-05,
+    "gap_at_q1_lower": 6.049194542761761e-05,
+    "q2_sign": "negative",
+    "q_lo": "80701359093561235479804994483799676062719019057152/108753197862037237285997168329341059928668090585359",
+    "regime": "concave-certified"
+   },
+   {
+    "band_min_lower": 6.502438795672594e-05,
+    "band_min_positive": true,
+    "d_a1": "0",
+    "d_a2": "0",
+    "gap_at_1_minus_2^-24_lower": 6.503523170858364e-05,
+    "gap_at_q1_lower": 6.502438795672594e-05,
+    "q2_sign": "negative",
+    "q_lo": "82031852346865544752599649842775676062719019057152/113519583883361963188115243542454934928668090585359",
+    "regime": "concave-certified"
+   },
+   {
+    "band_min_lower": 6.96602785562719e-05,
+    "band_min_positive": true,
+    "d_a1": "0",
+    "d_a2": "1/100",
+    "gap_at_1_minus_2^-24_lower": 6.967171463427585e-05,
+    "gap_at_q1_lower": 6.96602785562719e-05,
+    "q2_sign": "negative",
+    "q_lo": "83362345600169854025394305201751676062719019057152/118285969904686689090233318755568809928668090585359",
+    "regime": "concave-certified"
+   },
+   {
+    "band_min_lower": 6.0491948352622886e-05,
+    "band_min_positive": true,
+    "d_a1": "1/100",
+    "d_a2": "-1/100",
+    "gap_at_1_minus_2^-24_lower": 6.05020689206623e-05,
+    "gap_at_q1_lower": 6.0491948352622886e-05,
+    "q2_sign": "negative",
+    "q_lo": "83517661476376874594200046106199676062719019057152/111569500244952876388471290996662934928668090585359",
+    "regime": "concave-certified"
+   },
+   {
+    "band_min_lower": 6.502439102876162e-05,
+    "band_min_positive": true,
+    "d_a1": "1/100",
+    "d_a2": "0",
+    "gap_at_1_minus_2^-24_lower": 6.503509445294708e-05,
+    "gap_at_q1_lower": 6.502439102876162e-05,
+    "q2_sign": "negative",
+    "q_lo": "84848154729681183866994701465175676062719019057152/116335886266277602290589366209776809928668090585359",
+    "regime": "concave-certified"
+   },
+   {
+    "band_min_lower": 6.966028177533799e-05,
+    "band_min_positive": true,
+    "d_a1": "1/100",
+    "d_a2": "1/100",
+    "gap_at_1_minus_2^-24_lower": 6.967157239933987e-05,
+    "gap_at_q1_lower": 6.966028177533799e-05,
+    "q2_sign": "negative",
+    "q_lo": "12311235426140784734255622403450239437531288436736/17300324612514618313243920203270097846952584369337",
+    "regime": "concave-certified"
+   }
+  ],
+  "worst_band_min_lower": 6.049194250261234e-05
+ },
+ "beta_bracket": [
+  "1000525598628931/10000000000000000",
+  "312664249571541/3125000000000000"
+ ],
+ "claim_status": "PROVED",
+ "closed_form_band_min": {
+  "min_regime_anchor_fiber": "band-endpoint (q = 1 edge)",
+  "q2_sign_anchor_fiber": "negative (concave; -0.3762 certified)",
+  "statement": "At frozen supports/masses gap is the exact quadratic Gap(q) = Q0 + Q1 q + Q2 q^2 (bidegree-(2,2) restriction, memo step 3).  Coefficients are certified as interval enclosures by exact-rational Cramer inversion of three certified point evaluations (evaluate_arb, 320-bit, monotone corners) at dyadic q in {1/2, 3/4, 7/8}.  Band: q in [q_lo, 1], q_lo = max(0, (MLF - mu0)/(mu1 - mu0)) \u2014 the union of feasible bands over the certified m-bracket (superset direction, honest).  Minimum: min(max(lo Gap(q_lo), lo Gap(1))) if Q2 < 0 certified (concave; min at an endpoint); else with Q2 > 0 certified, vertex q* = -Q1/(2Q2) pinned by exact rationals q*[lo,hi] (pad 2^-40) and min >= lo Gap(q*_hi) - L (q*_hi - q*_lo), L = |Q1| + 2|Q2| certified slope envelope; if the Q2 enclosure straddles 0 the fiber is recorded OPEN."
+ },
+ "delta_family": {
+  "a0_hull_band_x_in_ML_CI_to_crossover": {
+   "negative_cells": 0,
+   "range": [
+    "MLF",
+    "6719/10000"
+   ],
+   "worst_lower": 0.001249827082633418
+  },
+  "a0_lemma_branch": {
+   "pointwise_failures": 0,
+   "range": [
+    "6719/10000",
+    "1"
+   ],
+   "smallest_combined": 0.0006135157996604731,
+   "worst_margin": 3.3956894676000963e-07
+  },
+  "boundary_band": {
+   "cell": [
+    4095,
+    0.6172012414484327,
+    0.617290912081265
+   ],
+   "negative_cells": 0,
+   "note": "M = m-bracket hull; the q0 = (m - x)/(1 - x) interval hull covers the union band over [MLF, MHF] at once",
+   "range": [
+    "1/4",
+    "MHF"
+   ],
+   "worst_lower": 0.0010456427652654006
+  },
+  "family": "c-delta: P0 = delta_x, P1 = delta_1, shared mass 1, x in [1/4, 1]",
+  "mutations": {
+   "flip_T_sign_a0_hull": {
+    "expected": "FAIL",
+    "negative_cells": 0,
+    "observed": "PASSED"
+   },
+   "shrink_m_boundary": {
+    "expected": "FAIL",
+    "negative_cells": 4096,
+    "observed": "FAIL",
+    "worst_lower": -3.9403378099181787
+   }
+  }
+ },
+ "face": "EHX -> 0 with P1 = (0, ~1, 0)-shaped, q -> 1 (zero-support face)",
+ "identity_checks_vs_gap_mp": {
+  "note": "DISCOVERY: mpmath rows, threshold 1e-40",
+  "rows": [
+   {
+    "absdiff": "7.11237e-17",
+    "q": "1/2"
+   },
+   {
+    "absdiff": "6.93889e-18",
+    "q": "3/4"
+   },
+   {
+    "absdiff": "6.93889e-18",
+    "q": "7/8"
+   },
+   {
+    "absdiff": "8.32667e-17",
+    "q": "1/3"
+   },
+   {
+    "absdiff": "1.66533e-16",
+    "q": "1/5"
+   },
+   {
+    "absdiff": "2.01933e-18",
+    "q": "65519/65536"
+   }
+  ],
+  "worst_absdiff": "1.66533e-16"
+ },
+ "limitations": [
+  "certified families only: the witness-anchor fiber grid (exact-rational point certificates, NOT a box cover) and the c-delta curve (x in [1/4, 1], shared mass 1); NOT all of P0 x P1 x q",
+  "mpmath rows are DISCOVERY evidence only; claims rest on the Arb/interval certificates",
+  "the convex-vertex branch of the closed form is implemented and certified but no anchor-fiber fiber exercises it (all grid fibers certify concave); its discharge is recorded as the exact bracketed-vertex inequality"
+ ],
+ "m_bracket": [
+  "61729091208126497/100000000000000000",
+  "30864545604063249/50000000000000000"
+ ],
+ "method": "endpoint-pair interval arithmetic (arb lo/hi pairs, no flint union), 4-corner products, concavity hulls for h, strict monotone T; certified point evaluation via liu9_objective.evaluate_arb (monotone corners) at exact rationals; interval Cramer extraction of (Q0, Q1, Q2); certified band-minimum closed form; mpmath identity gates against gap_mp (DISCOVERY rows); Arb precision 320",
+ "mutations": {
+  "c_channel_drop": {
+   "expected": "FAIL",
+   "observed": "FAIL",
+   "worst_absdiff_vs_gap_mp": "0.00942754"
+  },
+  "cross_kernel_product": {
+   "expected": "FAIL",
+   "observed": "FAIL",
+   "worst_absdiff_vs_gap_mp": "2.31578e-8"
+  },
+  "flip_T_sign_a0_hull": {
+   "expected": "FAIL",
+   "negative_cells": 0,
+   "observed": "PASSED"
+  },
+  "negate_q1_anchor": {
+   "expected": "FAIL",
+   "mutated_gap_at_q1_lower_bracket": -6.502438795672594e-05,
+   "mutated_gap_at_q1_upper": 6.502438795672594e-05,
+   "note": "mutated Q~(1) = Q(1) - 2F1 with Q(1) = F1 > 0 certified gives Q~(1) <= -F1 < 0: the band minimum crosses zero, so the certificate genuinely tracks the q = 1 anchor",
+   "observed": "FAIL"
+  },
+  "shrink_m_boundary": {
+   "expected": "FAIL",
+   "negative_cells": 4096,
+   "observed": "FAIL",
+   "worst_lower": -3.9403378099181787
+  }
+ },
+ "report_sha256": "dbd74c5369dc459a5a027717e311026d4db03b38f24db95f0852f9070a733e66",
+ "structural_inputs": [
+  "block diagonalization gap = (1/M) sum w w D_M + q(1-q)c (liu9_block_copositive, PROVED; memo lines 26-36)",
+  "universal q=1 theorem F(P) >= 0 for mean >= m (PROVED)",
+  "gapA concave quadratic in q with gapA(x, 1) = 0 (region1)",
+  "D(x,1;M) = (M - 1/2) h(x) exact (memo Addendum 2)",
+  "c(x) = beta (h(pi(x,x)) - 2 h(x)) < 0 on (0,1), c(1) = 0 exact (liu9-c-delta-family, PROVED for the delta family)",
+  "m bracket [MLF, MHF], beta bracket [BLF, BH] certified"
+ ],
+ "theorem": "On both reduced face families the certified band minimum of gap(q) = F(P_mix(q)) + q(1-q)c over the feasible band q in [q_lo, 1] is STRICTLY POSITIVE, and gap(1) = F(P1) >= 0 is certified directly at the q = 1 edge (concave branch: min at a band endpoint, both endpoints certified; convex branch: interior vertex bracketed by exact rationals with a certified slope envelope).  The c-channel drag q(1-q)c and the thin F-margin vanish compatibly at the face: c(1) = 0 exactly (pi(1,1) = 1) and F(P_mix) -> F(P1) >= 0.",
+ "tool": "liu9_zerosup_face.py",
+ "witness_anchor": {
+  "masses": [
+   "20323585489734297127/100000000000000000000",
+   "70894899911375863777/100000000000000000000",
+   "1097689324861229887/12500000000000000000"
+  ],
+  "q": "65519/65536",
+  "supports": [
+   "0",
+   "5405342124545604171/12500000000000000000",
+   "3278607482574459997/4000000000000000000",
+   "1/34359738368",
+   "24999410146995917903/25000000000000000000",
+   "1/288230376151711744"
+  ]
+ }
+}

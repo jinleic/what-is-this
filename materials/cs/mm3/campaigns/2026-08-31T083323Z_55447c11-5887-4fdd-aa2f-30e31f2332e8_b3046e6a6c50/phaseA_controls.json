@@ -1,0 +1,664 @@
+{
+  "anchors": {
+    "certified": {
+      "mws59": {
+        "all_monomial_data_total_lb": 56,
+        "sigma_classes": [
+          {
+            "d": [
+              13,
+              12,
+              14
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 0,
+            "states_own": [
+              132,
+              81,
+              672
+            ],
+            "total_lb": 56
+          },
+          {
+            "d": [
+              12,
+              14,
+              13
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 1,
+            "states_own": [
+              81,
+              672,
+              132
+            ],
+            "total_lb": 56
+          },
+          {
+            "d": [
+              14,
+              13,
+              12
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 2,
+            "states_own": [
+              672,
+              132,
+              81
+            ],
+            "total_lb": 56
+          }
+        ]
+      },
+      "paper55": {
+        "all_monomial_data_total_lb": 55,
+        "sigma_classes": [
+          {
+            "d": [
+              12,
+              13,
+              13
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 0,
+            "states_own": [
+              33,
+              116,
+              66
+            ],
+            "total_lb": 55
+          },
+          {
+            "d": [
+              13,
+              13,
+              12
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 1,
+            "states_own": [
+              116,
+              66,
+              33
+            ],
+            "total_lb": 55
+          },
+          {
+            "d": [
+              13,
+              12,
+              13
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 2,
+            "states_own": [
+              66,
+              33,
+              116
+            ],
+            "total_lb": 55
+          }
+        ]
+      },
+      "stapleton60": {
+        "all_monomial_data_total_lb": 58,
+        "sigma_classes": [
+          {
+            "d": [
+              14,
+              14,
+              13
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 0,
+            "states_own": [
+              1152,
+              1344,
+              460
+            ],
+            "total_lb": 58
+          },
+          {
+            "d": [
+              14,
+              13,
+              14
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 1,
+            "states_own": [
+              1344,
+              460,
+              1152
+            ],
+            "total_lb": 58
+          },
+          {
+            "d": [
+              13,
+              14,
+              14
+            ],
+            "floor_exists": [
+              false,
+              false,
+              false
+            ],
+            "sigma": 2,
+            "states_own": [
+              460,
+              1152,
+              1344
+            ],
+            "total_lb": 58
+          }
+        ]
+      },
+      "sun56": {
+        "all_monomial_data_total_lb": 55,
+        "sigma_classes": [
+          {
+            "d": [
+              12,
+              11,
+              16
+            ],
+            "floor_exists": [
+              false,
+              false,
+              true
+            ],
+            "sigma": 0,
+            "states_own": [
+              33,
+              9,
+              17
+            ],
+            "total_lb": 55
+          },
+          {
+            "d": [
+              11,
+              16,
+              12
+            ],
+            "floor_exists": [
+              false,
+              true,
+              false
+            ],
+            "sigma": 1,
+            "states_own": [
+              9,
+              17,
+              33
+            ],
+            "total_lb": 55
+          },
+          {
+            "d": [
+              16,
+              12,
+              11
+            ],
+            "floor_exists": [
+              true,
+              false,
+              false
+            ],
+            "sigma": 2,
+            "states_own": [
+              17,
+              33,
+              9
+            ],
+            "total_lb": 55
+          }
+        ]
+      }
+    },
+    "frozen_vs_standard_letter_controls": {
+      "checks": 25,
+      "rule": "frozen (X,Y,Z) == standard honest (P,Q,R)=(X^T,Y^T,Z^T) on monomials"
+    },
+    "mandatory_55_anchor_asserted_before_new_counts": true,
+    "published": {
+      "mws59": {
+        "brent_fmpz": 729,
+        "brent_frozen": 729,
+        "brent_int": 729,
+        "count_provenance": {
+          "kind": "recounted left/right/output split"
+        },
+        "published_split": [
+          15,
+          15,
+          29
+        ],
+        "published_total": 59,
+        "ternary": true
+      },
+      "paper55": {
+        "brent_fmpz": 729,
+        "brent_frozen": 729,
+        "brent_int": 729,
+        "count_provenance": {
+          "kind": "recounted left/right/output split"
+        },
+        "published_split": [
+          13,
+          14,
+          28
+        ],
+        "published_total": 55,
+        "ternary": true
+      },
+      "perminov58": {
+        "brent_fmpz": 729,
+        "brent_frozen": 729,
+        "brent_int": 729,
+        "count_provenance": {
+          "complexity": {
+            "naive": 122,
+            "reduced": 58
+          },
+          "decoded_factor_mismatches": 0,
+          "kind": "Perminov pinned JSON complexity field"
+        },
+        "published_split": null,
+        "published_total": 58,
+        "ternary": true
+      },
+      "stapleton60": {
+        "brent_fmpz": 729,
+        "brent_frozen": 729,
+        "brent_int": 729,
+        "count_provenance": {
+          "kind": "recounted left/right/output split"
+        },
+        "published_split": [
+          16,
+          16,
+          28
+        ],
+        "published_total": 60,
+        "ternary": true
+      },
+      "sun56": {
+        "brent_fmpz": 729,
+        "brent_frozen": 729,
+        "brent_int": 729,
+        "count_provenance": {
+          "kind": "recounted left/right/output split"
+        },
+        "published_split": [
+          13,
+          13,
+          30
+        ],
+        "published_total": 56,
+        "ternary": true
+      }
+    }
+  },
+  "canonical_data_node_anchors": {
+    "mws59": 56,
+    "paper55": 55,
+    "stapleton60": 58,
+    "sun56": 55
+  },
+  "data_factorization": {
+    "data_nodes": 145,
+    "monomial_data_node": 125,
+    "partition_size": 6960,
+    "representative_rule": "lexicographically least flattened matrix in each right-monomial orbit",
+    "right_orbit_size": 48,
+    "unique_factorization": true
+  },
+  "seconds": 4.3613260419806466,
+  "semantic_controls": {
+    "activity": {
+      "mws59": [
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 0
+        },
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 1
+        },
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 2
+        }
+      ],
+      "paper55": [
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 0
+        },
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 1
+        },
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 2
+        }
+      ],
+      "stapleton60": [
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 0
+        },
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 1
+        },
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 2
+        }
+      ],
+      "sun56": [
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 0
+        },
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 1
+        },
+        {
+          "ok": true,
+          "sides": [
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            },
+            {
+              "nonzero_columns": 9,
+              "nonzero_rows": 23,
+              "rank_Q": 9
+            }
+          ],
+          "sigma": 2
+        }
+      ]
+    },
+    "direct_brent_corruption_plant": {
+      "brent_failures": 18,
+      "changed": [
+        0,
+        2,
+        1,
+        -1
+      ]
+    },
+    "fixed_G": [
+      [
+        -1,
+        -1,
+        -1
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "honest_final_family": {
+      "brent_fmpz": 729,
+      "brent_int": 729,
+      "ternary": true
+    },
+    "nonunimodular_det2_rejected": true,
+    "transpose_as_inverse_plant": {
+      "brent_failures": 728
+    },
+    "wrong_W_plant": {
+      "brent_failures": 120,
+      "max_abs_entry": 4
+    }
+  },
+  "ternary_matrix_census": {
+    "inverse_ternary": 4656,
+    "inverse_ternary_nonmonomial": 4608,
+    "invertible": 11808,
+    "monomial": 48,
+    "nonmonomial_unimodular": 6912,
+    "ternary_matrices": 19683,
+    "unimodular": 6960
+  }
+}

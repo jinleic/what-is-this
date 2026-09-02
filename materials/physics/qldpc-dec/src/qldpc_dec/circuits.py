@@ -29,7 +29,7 @@ def load_circuit(p: float, basis: str = "Z") -> stim.Circuit:
 
     basis in {"X", "Z"}; primary convention: committed IonQ circuits
     (github.com/ionq-publications/beamsearchdecoder). p=3e-4 has no upstream
-    circuit (verified 404); the derived p1e-3-rescale artifact is used there.
+    circuit (verified 404); basis-specific p1e-3-rescale artifacts are used.
     """
     tag = {"X": "X", "Z": "Z"}[basis.upper()]
     candidates = [
@@ -38,9 +38,21 @@ def load_circuit(p: float, basis: str = "Z") -> stim.Circuit:
     ]
     if p == 3e-4:
         # no upstream circuit at p=3e-4 (IonQ repo, verified 404 on 2026-08-29);
-        # derived artifact rescales every noise arg (0.001)->(0.0003)
+        # basis-specific artifact rescales every noise arg (0.001)->(0.0003)
         candidates.append(
-            CIRCUIT_DIR / "BB_144_144_12_memory_Z_p0.0003_sr12_derived_p1e-3_rescale.stim"
+            CIRCUIT_DIR
+            / f"BB_144_144_12_memory_{tag}_p0.0003_sr12_derived_p1e-3_rescale.stim"
+        )
+    if p == 3e-3:
+        # no upstream circuit at p=3e-3 either. NOTE: the older
+        # ..._derived_p1e-3_rescale.stim artifact scaled EVERY parenthesised
+        # literal by 3, which also relabelled OBSERVABLE_INCLUDE indices
+        # (0..11 -> 0,3,..,33; 34 observables). The argrescale artifact below
+        # replaces only the noise arguments "(0.001)"->"(0.003)" and keeps the
+        # pinned 12-observable convention.
+        candidates.append(
+            CIRCUIT_DIR
+            / f"BB_144_144_12_memory_{tag}_p0.003_sr12_derived_p1e-3_argrescale.stim"
         )
     for path in candidates:
         if path.exists():
@@ -56,7 +68,13 @@ def circuit_sha(p: float, basis: str = "Z") -> str:
     ]
     if p == 3e-4:
         candidates.append(
-            CIRCUIT_DIR / "BB_144_144_12_memory_Z_p0.0003_sr12_derived_p1e-3_rescale.stim"
+            CIRCUIT_DIR
+            / f"BB_144_144_12_memory_{tag}_p0.0003_sr12_derived_p1e-3_rescale.stim"
+        )
+    if p == 3e-3:
+        candidates.append(
+            CIRCUIT_DIR
+            / f"BB_144_144_12_memory_{tag}_p0.003_sr12_derived_p1e-3_argrescale.stim"
         )
     for path in candidates:
         if path.exists():

@@ -1,0 +1,794 @@
+{
+ "claim": "the channel scalar c of the r <= 3 paired class is EXACTLY c = beta <a, H a> with H_ij = K(x_i,x_j) + K(y_i,y_j) - 2 K(x_i,y_j) (symbolic, r = 2 and r = 3, zero residual; r = 3 form equals the certified liu9_paired_class_c remainder); c vanishes identically on y = x; on diagonal geometries the gap is q-constant with Q1 = Q2 = 0 certified zero balls (Arb); simplex extremes of c over 1225 k/8 geometries are certified closed-form candidate lists; per-cell q(1-q)|c| vs F-margin ratios certified against the published 11,025-cell sweep",
+ "claim_scope": "r in {2, 3}; k/8 ordered geometry grid (7 support values, C(7,3)=35 triples per side) x k/8 q grid, pointwise cells; symbolic statements exact and q-free; Arb statements at 320-bit ball precision; mpmath rows labelled DISCOVERY",
+ "claim_status": "MACHINE-VERIFIED",
+ "diagonal_vanishing": {
+  "r2": {
+   "log_basis_size": 24,
+   "method": "on the duplicated atom tuple (x1..xr, x1..xr) the argument-named kernel symbols coincide: h(pi(x_i,x_j)) appears identically in K(x_i,x_j) and K(y_i,y_j), and K(x_i,y_j) = K(x_j,y_i) with y=x; each H entry is K_ij + K_ij - 2 K_ij = 0 exactly (identity, not a sample)",
+   "r": 2,
+   "residual": "0",
+   "residual_terms": 0,
+   "status": "PROVED"
+  },
+  "r3": {
+   "log_basis_size": 48,
+   "method": "on the duplicated atom tuple (x1..xr, x1..xr) the argument-named kernel symbols coincide: h(pi(x_i,x_j)) appears identically in K(x_i,x_j) and K(y_i,y_j), and K(x_i,y_j) = K(x_j,y_i) with y=x; each H entry is K_ij + K_ij - 2 K_ij = 0 exactly (identity, not a sample)",
+   "r": 3,
+   "residual": "0",
+   "residual_terms": 0,
+   "status": "PROVED"
+  },
+  "scope": "r in {2, 3}; exact symbolic identity",
+  "statement": "c vanishes identically on y = x: every H entry is K_ij + K_ij - 2 K_ij = 0 (identity in the argument-named kernel symbols, not a sample)"
+ },
+ "evaluator": "liu9_objective.evaluate_arb (gap = numerator - ehx), ctx.prec = 320; mpmath appears only in labelled DISCOVERY sections via liu9_boundary_layer.gap_mp",
+ "limitations": [
+  "r is fixed at 2 and 3; no claim about r >= 4",
+  "geometry grid is the k/8 ordered grid (35 x 35); support directions between grid points stay open",
+  "q grid is k/8; q-between-grid-points stays open except where a statement is q-free (the c form) or polynomial-exact (diagonal q-scan)",
+  "the displayed 2x2 block kernel is NOT revisited here (refuted object; see LIU9_BLOCK_COPOSITIVE section 6)",
+  "ratio >= 1 cells are danger flags, not counterexamples: F is certified at the cell's gap minimiser, |c| maximised elsewhere"
+ ],
+ "mutations": [
+  {
+   "expected": "nonzero residual (diagonal vanishing broken)",
+   "mutation": "M1_r2_diagonal_cross3",
+   "ok": true,
+   "residual_terms": 6
+  },
+  {
+   "expected": "nonzero residual (split identity broken)",
+   "mutation": "M2_r3_gap_atom_swap_y2y3",
+   "ok": true,
+   "residual_terms": 1770
+  },
+  {
+   "expected": "q1/q2 coefficients NOT zero balls",
+   "mutation": "M3_nondiagonal_not_q_independent",
+   "ok": true,
+   "q1": "[0.13356146 +/- 1.69e-9]",
+   "q2": "[-0.00784434464662182393 +/- 2.34e-21]"
+  }
+ ],
+ "mutations_all_fail_detected": true,
+ "numeric_identity_discovery": {
+  "dps": 200,
+  "label": "DISCOVERY",
+  "r2": {
+   "all_ok": true,
+   "rows": [
+    {
+     "config": [
+      "0.392",
+      "0.127",
+      "0.955",
+      "0.432",
+      "0.131",
+      "0.606"
+     ],
+     "gap": "0.0363116591061489851041735",
+     "mean": "0.609429568",
+     "ok": true,
+     "residual": "-4.08256e-202"
+    },
+    {
+     "config": [
+      "0.867",
+      "0.824",
+      "0.432",
+      "0.131",
+      "0.606",
+      "0.305"
+     ],
+     "gap": "-0.0800770089672315119296134",
+     "mean": "0.535343",
+     "ok": true,
+     "residual": "-1.53096e-201"
+    },
+    {
+     "config": [
+      "0.344",
+      "0.301",
+      "0.131",
+      "0.606",
+      "0.305",
+      "0.78"
+     ],
+     "gap": "-0.0983606079099330382871924",
+     "mean": "0.494974",
+     "ok": true,
+     "residual": "-1.02064e-201"
+    },
+    {
+     "config": [
+      "0.043",
+      "0.998",
+      "0.606",
+      "0.305",
+      "0.78",
+      "0.479"
+     ],
+     "gap": "-0.130472748223383797402441",
+     "mean": "0.491595",
+     "ok": true,
+     "residual": "0.0"
+    },
+    {
+     "config": [
+      "0.518",
+      "0.475",
+      "0.305",
+      "0.78",
+      "0.479",
+      "0.954"
+     ],
+     "gap": "0.0344712700096723451535194",
+     "mean": "0.6166",
+     "ok": true,
+     "residual": "-1.02064e-202"
+    }
+   ]
+  },
+  "r3": {
+   "all_ok": true,
+   "rows": [
+    {
+     "config": [
+      "0.86",
+      "0.08",
+      "0.075",
+      "0.95",
+      "0.427",
+      "0.126",
+      "0.601",
+      "0.3",
+      "0.775"
+     ],
+     "gap": "0.129881100686381333117487",
+     "mean": "0.838368",
+     "ok": true,
+     "residual": "0.0"
+    },
+    {
+     "config": [
+      "0.337",
+      "0.43",
+      "0.772",
+      "0.427",
+      "0.126",
+      "0.601",
+      "0.3",
+      "0.775",
+      "0.474"
+     ],
+     "gap": "-0.0951795964663557936075455",
+     "mean": "0.49766896",
+     "ok": true,
+     "residual": "1.02064e-202"
+    },
+    {
+     "config": [
+      "0.036",
+      "0.339",
+      "0.249",
+      "0.126",
+      "0.601",
+      "0.3",
+      "0.775",
+      "0.474",
+      "0.949"
+     ],
+     "gap": "-0.0873945099339620641678871",
+     "mean": "0.491873064",
+     "ok": true,
+     "residual": "-3.06192e-202"
+    },
+    {
+     "config": [
+      "0.511",
+      "0.038",
+      "0.946",
+      "0.601",
+      "0.3",
+      "0.775",
+      "0.474",
+      "0.949",
+      "0.648"
+     ],
+     "gap": "-0.032518103653734519138321",
+     "mean": "0.575789648",
+     "ok": true,
+     "residual": "5.61352e-202"
+    },
+    {
+     "config": [
+      "0.21",
+      "0.513",
+      "0.423",
+      "0.3",
+      "0.775",
+      "0.474",
+      "0.949",
+      "0.648",
+      "0.125"
+     ],
+     "gap": "-0.00978216923351470422107481",
+     "mean": "0.581072118",
+     "ok": true,
+     "residual": "-6.50658e-202"
+    }
+   ]
+  },
+  "scope": "5 deterministic r=3 and 5 deterministic r=2 configurations, pointwise residual at 200 dps",
+  "tolerance": "1.0e-45"
+ },
+ "q_independence_on_diagonals": {
+  "checks": [
+   {
+    "both_coefficients_zero_balls": true,
+    "gap_at_midpoint_q12": "[-0.10099573317132886687176506 +/- 2.34e-27]",
+    "geometry": [
+     "1/4",
+     "1/2",
+     "3/4"
+    ],
+    "interior_validation": [
+     {
+      "contains_zero": true,
+      "q": "1/8",
+      "residual_radius_float": 1.7629177670473763e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "3/8",
+      "residual_radius_float": 3.59112879592117e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "5/8",
+      "residual_radius_float": 5.941685831317386e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "7/8",
+      "residual_radius_float": 8.814588868054322e-68
+     }
+    ],
+    "interior_validation_ok": true,
+    "masses": [
+     "3/10",
+     "2/5",
+     "3/10"
+    ],
+    "q1_coefficient": "[+/- 5.23e-68]",
+    "q1_straddles_zero": true,
+    "q2_coefficient": "[+/- 4.18e-68]",
+    "q2_straddles_zero": true,
+    "status": "PROVED (Arb)"
+   },
+   {
+    "both_coefficients_zero_balls": true,
+    "gap_at_midpoint_q12": "[0.019413246314521711548535660 +/- 9.84e-30]",
+    "geometry": [
+     "1/8",
+     "5/8",
+     "7/8"
+    ],
+    "interior_validation": [
+     {
+      "contains_zero": true,
+      "q": "1/8",
+      "residual_radius_float": 1.5155347015143588e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "3/8",
+      "residual_radius_float": 3.0872003221857183e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "5/8",
+      "residual_radius_float": 5.107913259841175e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "7/8",
+      "residual_radius_float": 7.577673516207963e-68
+     }
+    ],
+    "interior_validation_ok": true,
+    "masses": [
+     "2/7",
+     "1/5",
+     "18/35"
+    ],
+    "q1_coefficient": "[+/- 4.50e-68]",
+    "q1_straddles_zero": true,
+    "q2_coefficient": "[+/- 3.60e-68]",
+    "q2_straddles_zero": true,
+    "status": "PROVED (Arb)"
+   },
+   {
+    "both_coefficients_zero_balls": true,
+    "gap_at_midpoint_q12": "0",
+    "geometry": [
+     "0",
+     "1/2",
+     "1"
+    ],
+    "interior_validation": [
+     {
+      "contains_zero": true,
+      "q": "1/8",
+      "residual_radius_float": 0.0
+     },
+     {
+      "contains_zero": true,
+      "q": "3/8",
+      "residual_radius_float": 0.0
+     },
+     {
+      "contains_zero": true,
+      "q": "5/8",
+      "residual_radius_float": 0.0
+     },
+     {
+      "contains_zero": true,
+      "q": "7/8",
+      "residual_radius_float": 0.0
+     }
+    ],
+    "interior_validation_ok": true,
+    "masses": [
+     "1",
+     "0",
+     "0"
+    ],
+    "q1_coefficient": "0",
+    "q1_straddles_zero": true,
+    "q2_coefficient": "0",
+    "q2_straddles_zero": true,
+    "status": "PROVED (Arb)"
+   },
+   {
+    "both_coefficients_zero_balls": true,
+    "gap_at_midpoint_q12": "[-0.31992787618631844323851718 +/- 3.89e-27]",
+    "geometry": [
+     "0",
+     "1/4",
+     "1"
+    ],
+    "interior_validation": [
+     {
+      "contains_zero": true,
+      "q": "1/8",
+      "residual_radius_float": 9.152019287155944e-69
+     },
+     {
+      "contains_zero": true,
+      "q": "3/8",
+      "residual_radius_float": 1.8643002282960053e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "5/8",
+      "residual_radius_float": 3.0845694757953776e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "7/8",
+      "residual_radius_float": 4.576009662577543e-68
+     }
+    ],
+    "interior_validation_ok": true,
+    "masses": [
+     "0",
+     "1",
+     "0"
+    ],
+    "q1_coefficient": "[+/- 2.72e-68]",
+    "q1_straddles_zero": true,
+    "q2_coefficient": "[+/- 2.17e-68]",
+    "q2_straddles_zero": true,
+    "status": "PROVED (Arb)"
+   },
+   {
+    "both_coefficients_zero_balls": true,
+    "gap_at_midpoint_q12": "[-0.098555765731932287835403406 +/- 4.77e-28]",
+    "geometry": [
+     "1/4",
+     "1/2",
+     "3/4"
+    ],
+    "interior_validation": [
+     {
+      "contains_zero": true,
+      "q": "1/8",
+      "residual_radius_float": 1.7407210848998388e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "3/8",
+      "residual_radius_float": 3.5459133340145313e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "5/8",
+      "residual_radius_float": 5.86687479321403e-68
+     },
+     {
+      "contains_zero": true,
+      "q": "7/8",
+      "residual_radius_float": 8.703605465952803e-68
+     }
+    ],
+    "interior_validation_ok": true,
+    "masses": [
+     "1/3",
+     "1/3",
+     "1/3"
+    ],
+    "q1_coefficient": "[+/- 5.16e-68]",
+    "q1_straddles_zero": true,
+    "q2_coefficient": "[+/- 4.13e-68]",
+    "q2_straddles_zero": true,
+    "status": "PROVED (Arb)"
+   }
+  ],
+  "claim": "when P0 = P1 the mixture is q-independent, so the raw gap is CONSTANT in q: exact q^2 and q coefficients of the certified gap are zero balls (Q1 = Q2 = 0)",
+  "numeric_spread_60dps_main_configs_discovery": [
+   "0.0",
+   "0.0"
+  ],
+  "numeric_spread_max_discovery": [
+   "1.633e-201",
+   "8.1651e-202",
+   "4.0826e-202"
+  ],
+  "numeric_spread_note": "mpmath max-min spread of the raw gap across q, masses (3/10, 2/5).  At 200 dps over q in {k/8}, k=0..8, the spread is roundoff-level (~1e-201), NOT bitwise zero.  At 60 dps over Main's configs (q in {1/10, 1/2, 9/10}, diagonals (1/4,1/2,3/4) and (1/8,5/8,7/8)) the spread is 0.0 bitwise, reproducing the published spread-0.0 observation (DISCOVERY)",
+  "scope": "exact-rational diagonal geometries incl. 0/1 supports and vertex masses; Arb ball containment at 320 bits; grid q in {k/8}",
+  "status": "PROVED (Arb)"
+ },
+ "ratio_table": {
+  "cells_checked": 9747,
+  "cells_skipped": 1278,
+  "closest_to_one_top10": [
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g1117|q4",
+    "geometry": [
+     "1/2",
+     "5/8",
+     "3/4",
+     "1/2",
+     "5/8",
+     "7/8"
+    ],
+    "margin_f": 0.0016305194440926082,
+    "margin_min_lower": "[0.0016305194440926081106425247 +/- 4.42e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.838883838221919,
+    "ratio_simplex_f": 0.838883838221919
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g1151|q4",
+    "geometry": [
+     "1/2",
+     "5/8",
+     "7/8",
+     "1/2",
+     "5/8",
+     "3/4"
+    ],
+    "margin_f": 0.0016305194440926082,
+    "margin_min_lower": "[0.0016305194440926081106425247 +/- 4.42e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.838883838221919,
+    "ratio_simplex_f": 0.838883838221919
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g1098|q4",
+    "geometry": [
+     "1/2",
+     "5/8",
+     "3/4",
+     "1/8",
+     "5/8",
+     "7/8"
+    ],
+    "margin_f": 0.001665617852080091,
+    "margin_min_lower": "[0.0016656178520800909416823914 +/- 4.99e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.8212066218236628,
+    "ratio_simplex_f": 0.8212066218236628
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g1132|q4",
+    "geometry": [
+     "1/2",
+     "5/8",
+     "7/8",
+     "1/8",
+     "5/8",
+     "3/4"
+    ],
+    "margin_f": 0.001665617852080091,
+    "margin_min_lower": "[0.0016656178520800909416823914 +/- 4.99e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.8212066218236628,
+    "ratio_simplex_f": 0.8212066218236628
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g452|q4",
+    "geometry": [
+     "1/8",
+     "5/8",
+     "3/4",
+     "1/2",
+     "5/8",
+     "7/8"
+    ],
+    "margin_f": 0.001665617852080091,
+    "margin_min_lower": "[0.0016656178520800909416823914 +/- 4.99e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.8212066218236628,
+    "ratio_simplex_f": 0.8212066218236628
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g486|q4",
+    "geometry": [
+     "1/8",
+     "5/8",
+     "7/8",
+     "1/2",
+     "5/8",
+     "3/4"
+    ],
+    "margin_f": 0.001665617852080091,
+    "margin_min_lower": "[0.0016656178520800909416823914 +/- 4.99e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.8212066218236628,
+    "ratio_simplex_f": 0.8212066218236628
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g433|q4",
+    "geometry": [
+     "1/8",
+     "5/8",
+     "3/4",
+     "1/8",
+     "5/8",
+     "7/8"
+    ],
+    "margin_f": 0.0016702975278488556,
+    "margin_min_lower": "[0.0016702975278488555823553183 +/- 3.68e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.8189058456653897,
+    "ratio_simplex_f": 0.8189058456653897
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g467|q4",
+    "geometry": [
+     "1/8",
+     "5/8",
+     "7/8",
+     "1/8",
+     "5/8",
+     "3/4"
+    ],
+    "margin_f": 0.0016702975278488556,
+    "margin_min_lower": "[0.0016702975278488555823553183 +/- 3.68e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.8189058456653897,
+    "ratio_simplex_f": 0.8189058456653897
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g1027|q4",
+    "geometry": [
+     "3/8",
+     "5/8",
+     "7/8",
+     "1/8",
+     "5/8",
+     "3/4"
+    ],
+    "margin_f": 0.0017247885646206169,
+    "margin_min_lower": "[0.0017247885646206167679445670 +/- 3.62e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.7930342522051337,
+    "ratio_simplex_f": 0.7930342522051337
+   },
+   {
+    "c_cell_lower": -0.005471265638223507,
+    "c_simplex_lower": -0.005471265638223507,
+    "cell": "g449|q4",
+    "geometry": [
+     "1/8",
+     "5/8",
+     "3/4",
+     "3/8",
+     "5/8",
+     "7/8"
+    ],
+    "margin_f": 0.0017247885646206169,
+    "margin_min_lower": "[0.0017247885646206167679445670 +/- 3.62e-29]",
+    "q": "1/2",
+    "qfac_c_simplex_f": 0.0013678164095558768,
+    "ratio_cell_f": 0.7930342522051337,
+    "ratio_simplex_f": 0.7930342522051337
+   }
+  ],
+  "danger_cells": [],
+  "danger_count": 0,
+  "note": "a ratio >= 1 is NOT a counterexample: the sweep's per-cell margin lower-bounds F(P_mix) at the cell's gap minimiser, while |c| is maximised over a different mass set; such cells are flagged DANGER for follow-up",
+  "scope": "certified Arb balls for c; margins parsed from the published sweep balls; pointwise cells",
+  "source": "liu9-h2-qp-sweep.json per-cell min_lower margins; 11025-cell k/8 x k/8 grid",
+  "worst_cell": {
+   "c_cell_lower": -0.005471265638223507,
+   "c_simplex_lower": -0.005471265638223507,
+   "cell": "g1117|q4",
+   "geometry": [
+    "1/2",
+    "5/8",
+    "3/4",
+    "1/2",
+    "5/8",
+    "7/8"
+   ],
+   "margin_f": 0.0016305194440926082,
+   "margin_min_lower": "[0.0016305194440926081106425247 +/- 4.42e-29]",
+   "q": "1/2",
+   "qfac_c_simplex_f": 0.0013678164095558768,
+   "ratio_cell_f": 0.838883838221919,
+   "ratio_simplex_f": 0.838883838221919
+  },
+  "worst_qfac_times_abs_c": 0.006887657647960305,
+  "worst_qfac_times_abs_c_cell": "g4|q4",
+  "worst_simplex": {
+   "c_cell_lower": -0.005471265638223507,
+   "c_simplex_lower": -0.005471265638223507,
+   "cell": "g1117|q4",
+   "geometry": [
+    "1/2",
+    "5/8",
+    "3/4",
+    "1/2",
+    "5/8",
+    "7/8"
+   ],
+   "margin_f": 0.0016305194440926082,
+   "margin_min_lower": "[0.0016305194440926081106425247 +/- 4.42e-29]",
+   "q": "1/2",
+   "qfac_c_simplex_f": 0.0013678164095558768,
+   "ratio_cell_f": 0.838883838221919,
+   "ratio_simplex_f": 0.838883838221919
+  }
+ },
+ "report_sha256": "10b44257c84922e43e1d17dcbce0e158ce7636966c3234bc90771611b4a204bc",
+ "simplex_extremes": {
+  "candidates": "vertex + edge-critical + interior-critical (closed form; certified Arb balls, exact-rational vertices)",
+  "grid": "k/8 ordered pairs, 35 x 35 = 1225 geometries",
+  "min_family_counts": {
+   "vertex": 1225
+  },
+  "scope": "per-geometry certified min/max over the full simplex {a >= 0, sum a = 1}; pointwise grid (support directions between grid points stay open)",
+  "total_candidates": 6271,
+  "total_feasible": 3815,
+  "worst_max": {
+   "candidate": {
+    "a1": "1.000000000000000",
+    "a2": "0",
+    "c": "[0.014700654085885541783238127 +/- 7.86e-29]",
+    "c_lower": "[0.014700654085885541783238127 +/- 7.86e-29]",
+    "c_upper": "[0.014700654085885541783238127 +/- 7.86e-29]",
+    "family": "vertex",
+    "geometry": [
+     "1/8",
+     "1/4",
+     "3/8",
+     "5/8",
+     "3/4",
+     "7/8"
+    ],
+    "interior": false,
+    "name": "V2",
+    "which": "max"
+   },
+   "geometry": [
+    "1/8",
+    "1/4",
+    "3/8",
+    "5/8",
+    "3/4",
+    "7/8"
+   ],
+   "upper_f": 0.014700654085885542
+  },
+  "worst_min": {
+   "candidate": {
+    "a1": "0",
+    "a2": "0",
+    "c": "[-0.027550630591841221502363089 +/- 4.14e-28]",
+    "c_lower": "[-0.027550630591841221502363089 +/- 4.14e-28]",
+    "c_upper": "[-0.027550630591841221502363089 +/- 4.14e-28]",
+    "family": "vertex",
+    "geometry": [
+     "1/8",
+     "1/4",
+     "3/8",
+     "1/8",
+     "1/4",
+     "7/8"
+    ],
+    "interior": false,
+    "name": "V0",
+    "which": "min"
+   },
+   "geometry": [
+    "1/8",
+    "1/4",
+    "3/8",
+    "1/8",
+    "1/4",
+    "7/8"
+   ],
+   "lower_f": -0.02755063059184122
+  }
+ },
+ "symbolic_identity": {
+  "r2_matrix_form": {
+   "log_basis_size": 28,
+   "method": "sympy multilinear expansion in the canonical index-named free log basis (L_, K_, PR_, TQ_) of the r-pair paired class",
+   "r": 2,
+   "residual": "0",
+   "residual_terms": 0,
+   "status": "PROVED"
+  },
+  "r3_matrix_equals_certified_remainder": {
+   "log_basis_size": 54,
+   "method": "sympy equality of the matrix form against the certified remainder_expr inside liu9_paired_class_c's canonical 54-symbol free log basis",
+   "r": 3,
+   "residual": "0",
+   "residual_terms": 0,
+   "status": "PROVED"
+  },
+  "r3_matrix_form": {
+   "log_basis_size": 54,
+   "method": "sympy multilinear expansion in the canonical index-named free log basis (L_, K_, PR_, TQ_) of the r-pair paired class",
+   "r": 3,
+   "residual": "0",
+   "residual_terms": 0,
+   "status": "PROVED"
+  },
+  "scope": "r in {2, 3}; exact symbolic identity in (q, masses, supports)",
+  "statement": "c = beta <a, H a> with H_ij = K(x_i,x_j) + K(y_i,y_j) - 2 K(x_i,y_j), K(s,t) = h(pi(s,t)), pi(s,t) = st(1+(1-s)(1-t)); residual exactly 0 in the canonical free log basis.  H_ij itself is not symmetric; the form only reads the pair sums H_ij + H_ji."
+ },
+ "verdict": "C-FORM-CHARACTERIZED"
+}

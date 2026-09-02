@@ -1,0 +1,101 @@
+[ANCHOR-TBL] cd==gateA: True | cd==upstream: True | ALL: True
+[ANCHOR-TBL] e0 unit: True | norm mult 20pts: True
+[ANCHOR] table 3-way byte-exact + unit + norm: True
+[ANCHOR-BLK] slice 0: L==blk(Lq,S2LqS2)=True Sbig=True
+[ANCHOR-BLK] slice 1: L==blk(Lq,S2LqS2)=True Sbig=True
+[ANCHOR-BLK] slice 2: L==blk(Lq,S2LqS2)=True Sbig=True
+[ANCHOR-BLK] equivalence chain holds on 3 slices: True
+TF_NONZERO 24
+[MAIN] seed rel: CP=1.325206034428e-03 (stored 1.3252060344282049e-3) EXT=9.998744945848e-05 (stored 9.99874493968644e-5)
+[MAIN] seed rel anchors: True True
+[MAIN-CP] round 1: rel=5.568e-05 nfev=5000
+[MAIN-CP] round 2: rel=1.953e-05 nfev=5000
+[MAIN-CP] round 3: rel=1.336e-05 nfev=5000
+[MAIN-CP] round 4: rel=1.085e-05 nfev=5000
+[MAIN-CP] round 5: rel=8.817e-06 nfev=5000
+[MAIN-EXT] round 1: rel=6.762e-05 nfev=5000
+[MAIN-EXT] round 2: rel=6.445e-05 nfev=5000
+[MAIN-EXT] round 3: rel=6.167e-05 nfev=5000
+[MAIN-EXT] round 4: rel=5.919e-05 nfev=5000
+[MAIN-EXT] round 5: rel=5.695e-05 nfev=5000
+[MAIN] polished rel: CP=8.816619e-06 EXT=5.694968e-05
+[MAIN] selected pipeline: CP rel=8.816619e-06 maxentry=3.240e+01
+[MAIN] rank(J)@1e-9=192/247 rule=qrcp {'min_pivot': 7.902410587925349e-07}
+[MAIN] exact inverse ok=True (29.83s cpu)
+[MAIN] exact rank(J_F)=55/55
+[MAIN] rho=1e+00 contain=0/192 excl=0/192
+[MAIN] rho=1e-01 contain=0/192 excl=0/192
+[MAIN] rho=1e-02 contain=0/192 excl=0/192
+[MAIN] rho=1e-03 contain=0/192 excl=0/192
+[MAIN] rho=1e-04 contain=0/192 excl=44/192
+[MAIN] rho=1e-05 contain=0/192 excl=190/192
+[MAIN] rho=1e-06 contain=0/192 excl=192/192
+[MAIN] rho=1e-07 contain=0/192 excl=192/192
+[MAIN] rho=1e-08 contain=0/192 excl=192/192
+[MAIN] rho=3e-09 contain=0/192 excl=192/192
+[MAIN] rho=1e-09 contain=0/192 excl=192/192
+[MAIN] rho=3e-10 contain=0/192 excl=192/192
+[MAIN] rho=1e-10 contain=0/192 excl=192/192
+[MAIN] rho=1e-11 contain=0/192 excl=192/192
+[MAIN] rho=1e-12 contain=0/192 excl=192/192
+[TAU7] natural-slice attempt would be singular (rank(J)=48/77); using the registered qrcp rule (identical path)
+[TAU7] rank(J)@1e-9=48/77 rule=qrcp {'min_pivot': 0.1590166606469516}
+[TAU7] exact inverse ok=True (0.26s cpu)
+[TAU7] exact rank(J_F)=29/29
+[TAU7] rho=1e+00 contain=0/48 excl=0/48
+[TAU7] rho=1e-01 contain=1/48 excl=0/48
+[TAU7] rho=1e-02 contain=45/48 excl=0/48
+[TAU7] rho=1e-03 contain=48/48 excl=0/48
+[TAU6] round 1: rel=2.774e-01 nfev=5000
+[TAU6] round 2: rel=2.774e-01 nfev=5000
+[TAU6] round 3: rel=2.774e-01 nfev=5000
+[TAU6] round 4: rel=2.774e-01 nfev=5000
+[TAU6] round 5: rel=2.774e-01 nfev=5000
+[TAU6] polished rel=2.774273e-01
+[TAU6] rank(J)@1e-9=48/66 rule=qrcp {'min_pivot': 1.512215022444511e-08}
+[TAU6] exact inverse ok=True (0.20s cpu)
+[TAU6] exact rank(J_F)=18/18
+[TAU6] rho=1e+00 contain=0/48 excl=0/48
+[TAU6] rho=1e-01 contain=0/48 excl=0/48
+[TAU6] rho=1e-02 contain=0/48 excl=40/48
+[TAU6] rho=1e-03 contain=0/48 excl=48/48
+[TAU6] rho=1e-04 contain=0/48 excl=48/48
+[TAU6] rho=1e-05 contain=0/48 excl=48/48
+[TAU6] rho=1e-06 contain=0/48 excl=48/48
+[TAU6] rho=1e-07 contain=0/48 excl=48/48
+[TAU6] rho=1e-08 contain=0/48 excl=48/48
+[TAU6] rho=3e-09 contain=0/48 excl=48/48
+[TAU6] rho=1e-09 contain=0/48 excl=48/48
+[TAU6] rho=3e-10 contain=0/48 excl=48/48
+[TAU6] rho=1e-10 contain=0/48 excl=48/48
+[TAU6] rho=1e-11 contain=0/48 excl=48/48
+[TAU6] rho=1e-12 contain=0/48 excl=48/48
+[PPOS] plant rel=1.969312e-08 (S-only perturbation 1e-8)
+[PPOS] rank(J)@1e-9=192/247 rule=qrcp {'min_pivot': 0.03301675898658126}
+[PPOS] exact inverse ok=True (34.91s cpu)
+[PPOS] exact rank(J_F)=55/55
+[PPOS] rho=1e+00 contain=0/192 excl=0/192
+[PPOS] rho=1e-01 contain=0/192 excl=0/192
+[PPOS] rho=1e-02 contain=1/192 excl=0/192
+[PPOS] rho=1e-03 contain=150/192 excl=0/192
+[PPOS] rho=1e-04 contain=192/192 excl=0/192
+[PWRNG] rank(J)@1e-9=192/247 rule=qrcp {'min_pivot': 7.902410587925349e-07}
+[PWRNG] exact inverse ok=True (30.13s cpu)
+[PWRNG] exact rank(J_F)=55/55
+[PWRNG] rho=1e+00 contain=0/192 excl=0/192
+[PWRNG] rho=1e-01 contain=0/192 excl=0/192
+[PWRNG] rho=1e-02 contain=0/192 excl=0/192
+[PWRNG] rho=1e-03 contain=0/192 excl=191/192
+[PWRNG] rho=1e-04 contain=0/192 excl=192/192
+[PWRNG] rho=1e-05 contain=0/192 excl=192/192
+[PWRNG] rho=1e-06 contain=0/192 excl=192/192
+[PWRNG] rho=1e-07 contain=0/192 excl=192/192
+[PWRNG] rho=1e-08 contain=0/192 excl=192/192
+[PWRNG] rho=3e-09 contain=0/192 excl=192/192
+[PWRNG] rho=1e-09 contain=0/192 excl=192/192
+[PWRNG] rho=3e-10 contain=0/192 excl=192/192
+[PWRNG] rho=1e-10 contain=0/192 excl=192/192
+[PWRNG] rho=1e-11 contain=0/192 excl=192/192
+[PWRNG] rho=1e-12 contain=0/192 excl=192/192
+[MAIN] no containment at any rung -> FAILURE TO CERTIFY
+[DONE] cpu=415.46s behavior_ok=True

@@ -1,0 +1,8 @@
+# Inherited instrument copies forCampaign D (KgBand175) — byte-verified against
+# A/B/C frozen ledgers at copy time:
+#   gate_corr_env.py    == A's checksums.sha256 / B+C addendum (94c07adf...)
+#   startup_controls.py == A's checksums.sha256 / B+C addendum (cf7d57fb...)
+#   decompose_cell.py   == B's checksums_addendum.sha256      (291eddc1...)
+94c07adf14fbd860c54c5a59f5430dafe9125a86107c1f0b0f85da441d9eee30  code/gate_corr_env.py
+cf7d57fbb3052cb09fc719cafda6eb6de6830ce826b5f4ad1d8211cb7e965ac3  code/startup_controls.py
+291eddc1d76b5a60338855012629077a7d5799db9c7434e07b18ae19df6204ff  code/decompose_cell.py

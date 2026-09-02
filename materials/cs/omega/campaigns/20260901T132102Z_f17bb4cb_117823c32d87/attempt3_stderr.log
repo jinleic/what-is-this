@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/jinleic/jinleic-workspace/cs/omega/campaigns/20260901T132102Z_f17bb4cb_117823c32d87/pcpen.py", line 680, in <module>
+    report["P"]["failing_terms"] = ft
+    ~~~~~~^^^^^
+KeyError: 'P'

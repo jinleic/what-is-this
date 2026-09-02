@@ -1,0 +1,19 @@
+{
+  "defects": [
+    {
+      "id": "D1-prereg-GRS-overreach",
+      "stage": "post-init proof audit after first complete control pass",
+      "symptom": "Original P1 said the frozen all-distinct cross-ratio/PGL theorems identify every arbitrary-factor profile-(4,4) circuit as a bilinear/Moebius support.",
+      "cause": "Those frozen theorems assume two 2-row GRS factors. The n-factor theorem assumes only nonzero columns and sparks at least 3.",
+      "impact": "No numeric pin, instrument path, candidate at-most-two-coordinate theorem, or count formula depended on the overbroad sentence. The general proof needs only that profile (4,4) is the abstract all-distinct two-factor channel counted by N_nf; the Moebius normal form is used only for the GRS census anchors.",
+      "resolution": "Amended the prereg to retain arbitrary profile-(4,4) circuits abstractly in N_nf and restrict the Moebius classification to the 2-row GRS controls. Preserved original prereg and first-pass results; provenance records both commits and hashes. Reran the complete unchanged T1-T5 family after amendment.",
+      "original_commit": "1b904736706e7e248b723de05e945576f09d4fdf",
+      "original_sha256": "209c0f6a94e6fc5781b9d53853bcdb678b2e6ce94fe2e16891c7639194dbd442",
+      "amended_commit": "0cc460f9100402c222964cd011afa80599df8b0e",
+      "amended_sha256": "a34cf7a7622507815f0883eda549564e5b98e7fdd2f13457ec14515718c36b8c",
+      "preserved_original_prereg": "pre_statement_original_preserved.md",
+      "preserved_first_pass": "controls_results_pre_prereg_amendment_preserved.json",
+      "status": "resolved"
+    }
+  ]
+}

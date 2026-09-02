@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "persistent-funding-premium-freshness-errata",
+  "created_at_utc": "2026-08-31T10:02:00Z",
+  "classification": "post-outcome factual correction of a preregistration claim; not a re-freeze, not a re-run, not a window change",
+  "subject": {
+    "contract": "quant-trading/explorations/persistent-funding-premium-contract.json",
+    "contract_sha256": "04319eaef33f933c767b20dd896c711b065b7d02861f6861cb0c910227d3ad5e",
+    "result": "quant-trading/explorations/persistent-funding-premium/results.json",
+    "result_sha256": "241bf445300e1568288660c3e4d8b6961fbb0a850bfc84407ab02fc0041b05ec",
+    "run_state_at_errata": "executed; holdout verdict already resolved as falsified before this errata was written"
+  },
+  "false_claim": {
+    "location": "contract.sample.fresh_data_disjointness and the same sentence echoed in the direction strategy.json and the session report",
+    "quoted": "2024-07..2024-12 and 2025-01..2025-06 are untouched by every prior tested mechanism",
+    "why_false": "The 2024-07..2024-12 development window lies entirely inside the 2024 validation windows that two prior mechanisms already evaluated. The claim was also internally inconsistent: the same sentence stated that funding-crowding used 2020-08..2024-12, which contains the development window."
+  },
+  "evidence": [
+    {
+      "artifact": "quant-trading/explorations/focused-cross-venue-carry/run.py",
+      "lines": "113-114, 1351",
+      "fact": "DEV_START/DEV_END = 2020-08-01..2023-12-31 and VAL_START/VAL_END = 2024-01-01..2024-12-31; the windows block is emitted into results.json."
+    },
+    {
+      "artifact": "quant-trading/explorations/focused-cross-venue-carry/results.json",
+      "field": "windows.validation = [2024-01-01T00:00Z, 2025-01-01T00:00Z); variant_metrics.*.validation_attribution_usd, validation_excess_nav_1x/2x, validation_bench_* present for all four variants",
+      "fact": "Calendar 2024, including its second half, was evaluated with funding and price attribution."
+    },
+    {
+      "artifact": "quant-trading/explorations/funding-crowding/strategy.json",
+      "field": "data_used.windows_used.validation = 2024-01-01..2024-12-31",
+      "fact": "The falsified funding-crowding family also consumed calendar 2024 as its validation window using the same Binance funding and hourly archives."
+    },
+    {
+      "artifact": "quant-trading/explorations/crypto-carry-corrected-audit/results.json",
+      "field": "windows.historical_confirmation = [2025-01-01, 2026-07-31]",
+      "fact": "2025-01..2026-07 was deliberately inspected as a retrospective diagnostic (flat, terminated position; n_hours 13848). No historical band in the current manifest is therefore literally never-accessed, so absolute freshness cannot be claimed for 2025 or 2026 H1 either."
+    }
+  ],
+  "corrected_statement": "No prior mechanism selected, tuned, or evaluated this 18-consecutive-positive-funding timing rule on any window. The rule and both frozen persistence counts are new. However, the calendar spans themselves are not virgin data: 2024-07..2024-12 was evaluated by focused-cross-venue-carry and funding-crowding as part of their 2024 validation windows, and 2025-01..2026-07 was inspected by the corrected carry audit as a flat-position retrospective diagnostic. The correct novelty claim is rule-level and parameter-level, not sample-level.",
+  "verdict_impact": {
+    "holdout_verdict": "unchanged: falsified",
+    "reasoning": [
+      "The development window influenced only two things: the dev-consent gate (does the rule fire at all) and descriptive direction context. It selected nothing.",
+      "Both persistence counts (18 primary, 21 diagnostic) were frozen in the contract before any outcome access, so a contaminated development window could not tune a parameter.",
+      "The verdict-carrying window is the 2025-01..2025-06 holdout. No prior mechanism selected or fitted any rule there; the only prior contact was the carry audit's flat-position diagnostic, which produced no funding-timing statistic and no parameter.",
+      "The falsification therefore rests on out-of-sample gate failure (pooled mean -5.5 bps, median -5.1 bps over 15 cycles with minima met), which the development overlap cannot manufacture."
+    ],
+    "what_is_retracted": "The words 'fresh sample' and 'untouched by every prior tested mechanism' as applied to the development window, in the contract, the direction strategy.json, and the prior session report.",
+    "what_is_not_retracted": "The frozen rule, the gate thresholds, the checksum-verified inputs, the write-once outputs, the determinism check, and the falsified holdout verdict."
+  },
+  "actions_refused": {
+    "refreeze_with_2025_plus_windows": "Refused. The run is already executed and the verdict recorded. Moving windows after observing an unfavourable outcome is post-outcome window shopping, structurally identical to the rescue behaviour this campaign prohibits and to the 90-minute replication episode that was preserved rather than re-rolled earlier today.",
+    "rerun_on_shifted_windows_under_the_same_contract": "Refused. The contract permits exactly one holdout resolution and one pass-triggered replication; the replication window remains unspent because the holdout failed.",
+    "silent_edit_of_the_frozen_contract": "Refused. The contract and results files are evidence and remain byte-identical; this errata is the correction record."
+  },
+  "binding_constraint_for_next_contract": {
+    "rule": "Before freezing any future contract, enumerate every prior artifact's consumed windows with file and field citations, and state disjointness only for spans that survive that enumeration.",
+    "least_consumed_historical_band": "2026-01-01..2026-07-31, touched only by the corrected carry audit's flat-position retrospective diagnostic; no mechanism was selected or evaluated on it.",
+    "strictly_prospective_alternative": "Append-only collector captures after 2026-08-30, which no retrospective study can have consumed.",
+    "wording_rule": "Prefer 'no prior mechanism evaluated this rule on this span' over 'untouched data' unless the enumeration proves the stronger claim."
+  }
+}

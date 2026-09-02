@@ -1,0 +1,602 @@
+# Perturbing a bivariate-bicycle code cannot buy distance for free
+
+**An exact, perturbation-independent rate–distance obstruction for perturbed bivariate-bicycle (PBB) codes, with machine-checked certificates**
+
+*Status: publication-ready draft. Every numerical claim in this file is produced by a
+committed experiment in this repository and is reproducible from a clean checkout; the
+provenance table in §8 gives the exact artifact path for each one.*
+
+---
+
+## Abstract
+
+Perturbed bivariate-bicycle (PBB) codes are non-CSS stabilizer codes obtained from a CSS
+bivariate-bicycle (BB) parent $P$ by adding a $Z$-type perturbation $[C\;D]$ to the
+$X$-check block. They have been proposed as a route past the CSS BB rate–distance
+envelope, on the strength of a published catalogue of $368$ codes including a non-CSS
+$[[144,12,12]]$ and a $[[360,12,\le 24]]$ candidate.
+
+We prove that the perturbation degree of freedom is not free. Let
+$\Delta=\{\lambda[C\;D] : \lambda[A;B]=0\}$ be the *dressing space* of the perturbation.
+We show (i) $\Delta$ is an $R$-submodule of the $Z$-sector for
+$R=\mathbb{F}_2[x,y]/(x^{\ell}-1,y^{m}-1)$, (ii) the PBB dimension obeys the exact
+identity $k_Q = k_P - \dim\bar\Delta$, and (iii) any minimum-weight $Z$-logical of the
+parent that is *not* absorbed by $\Delta$ survives as a logical of $Q$, certifying
+$d_Q \le d_Z(P)$.
+
+Because $\Delta$ is a submodule, absorbing one minimum-weight parent logical absorbs its
+entire translation orbit. This upgrades the per-perturbation criterion to a
+**parent-level no-go theorem**: with
+$T(P)=\dim\big(M(P)+S_Z\big)/S_Z$, where $M(P)$ is the span of the translation orbits of
+*all* minimum-weight $Z$-logicals of $P$,
+
+$$\boxed{\;d_Q > d_Z(P)\ \Longrightarrow\ k_Q \le k_P - T(P)\quad\text{for \emph{every} perturbation } [C\;D]\;}$$
+
+$T(P)$ depends only on the parent and is computed *exactly* — not bounded — by a SAT
+enumeration that terminates in a certified UNSAT. When $T(P)=k_P$ the entire family is
+closed: no PBB over $P$ retains a single logical qubit while exceeding $d_Z(P)$.
+
+We compute $T$ exactly for $134$ of the $202$ distinct parents in the published
+catalogue — exhaustively for every parent at $n\le 144$. **$61$ parents are family-closed**, including the Gross code
+$A=x^3+y+y^2,\;B=y^3+x+x^2$ itself ($T=12=k_P$) and all $11$ distinct catalogue
+$[[144,12,12]]$ parents. This settles $249$ of the $368$ catalogue rows with no per-row
+search at all, and it forecloses the headline direction of the construction over the
+most important parent in the family.
+
+The bound is not merely valid but *exact*.  A second elementary identity — the
+dressing space is the image of the left kernel of $[A\;B]$, whose dimension is
+$k_P/2$ on every BB parent — caps $\dim\bar\Delta\le k_P/2$.  Whenever
+$T(P)\ge k_P/2$, which holds on $133$ of the $134$ certified parents, the two
+bounds **sandwich**:
+
+$$\boxed{\;d_Q > d_Z(P)\ \text{and}\ T(P)\ge k_P/2\quad\Longrightarrow\quad
+k_Q = k_P - T(P)\ \text{exactly}\;}$$
+
+Perturbation does not just pay at least $T$ logical qubits for distance; on
+every parent in the theorem's class it pays *precisely* $T$, no more and no
+less.  All $7$ independently certified distance-increasing perturbations sit on
+the law exactly (slack $0$, hypotheses replay-certified), and a controlled
+small-lattice probe — $64$ sampled parents across four lattices, $26{,}898$
+valid $\delta>0$ perturbations of $Z$-support $\le 4$, distances decided by
+exact symplectic meet-in-the-middle — found $496$ further
+strict increases, **every one on the law, zero above it**: instances we now
+know were theorem-forced rather than lucky.
+
+---
+
+## 1. Setting and conventions
+
+Let $R=\mathbb{F}_2[x,y]/(x^{\ell}-1,\,y^{m}-1)$ and let $n=2\ell m$. A polynomial
+$f\in R$ acts as an $\ell m\times \ell m$ binary matrix via the commuting cyclic shifts
+$x,y$. For $A,B\in R$ the CSS **bivariate-bicycle** parent is
+
+$$H_X=[\,A\;\;B\,],\qquad H_Z=[\,B^{\mathsf T}\;\;A^{\mathsf T}\,],$$
+
+on $n$ qubits split into two blocks of $\ell m$. Commutation is
+$H_XH_Z^{\mathsf T}=AB+BA=0$, automatic since $R$ is commutative.
+
+A **perturbed bivariate-bicycle** (PBB) code adds a $Z$-type perturbation $[C\;D]$,
+$C,D\in R$, to the $X$-check block:
+
+$$H_Q=\begin{pmatrix} A & B & \big|\ & C & D\\[2pt] 0 & 0 & \big|\ & B^{\mathsf T} & A^{\mathsf T}\end{pmatrix},$$
+
+in the binary symplectic representation $(x\,|\,z)$ with symplectic product
+$\langle (x|z),(x'|z')\rangle_s = xz'^{\mathsf T}+zx'^{\mathsf T}$. Validity requires
+$M+M^{\mathsf T}=0$ with $M=AC^{\mathsf T}+BD^{\mathsf T}$, i.e. **symmetry of $M$**, not
+its vanishing. (This is stated as $AC^{\mathsf T}+BD^{\mathsf T}=0$ in some summaries; the
+weaker symmetric condition is the correct one and is what we verify.)
+
+Throughout, $S_Z=\operatorname{rowspace}(H_Z)\subseteq\mathbb{F}_2^{\,n}$ is the parent's
+pure-$Z$ stabilizer space, $k_P=n-\operatorname{rank}H_X-\operatorname{rank}H_Z$ is the
+parent dimension, $k_Q$ the PBB dimension, and
+
+$$d_Z(P)=\min\{\,\mathrm{wt}(z) : z\in\ker[A\;B]\setminus S_Z\,\}$$
+
+is the parent's $Z$-distance. We write $d_Q$ for the (symplectic) distance of $Q$ and
+reserve *code distance* strictly for the algebraic quantity — never a decoder estimate,
+never a circuit or detector-graph distance.
+
+**Terminology.** $C=D=0$ recovers the CSS parent. We call a catalogue row a *reversal*
+when $d_Q > d_Z(P)$ is certified, and say the perturbation is *dominated* when
+$d_Q \le d_Z(P)$ is certified.
+
+---
+
+## 2. The dressing space and the dimension identity
+
+Define the **dressing space**
+
+$$\Delta \;=\; \big\{\, \lambda[C\;D] \;:\; \lambda\in\mathbb{F}_2^{\,\ell m},\ \lambda[A;B]=0 \,\big\} \;\subseteq\; \mathbb{F}_2^{\,n},$$
+
+the set of $Z$-parts of those first-block row combinations whose $X$-part cancels, and
+write $\bar\Delta=(\Delta+S_Z)/S_Z$.
+
+**Theorem G.** *For every parent $P$ and every valid perturbation $[C\;D]$:*
+
+1. *(Centralizer invariance.)* The pure-$Z$ centralizer of $Q$ equals that of $P$, namely
+   $\ker[A\;B]$.
+2. *(Dimension identity.)* The pure-$Z$ stabilizer group of $Q$ is $S_Z+\Delta$, and
+   $$k_Q \;=\; k_P - \dim\bar\Delta .$$
+3. *(Survival criterion.)* If some minimum-weight $z\in\ker[A\;B]\setminus S_Z$ satisfies
+   $z\notin S_Z+\Delta$, then $(0|z)$ is a nontrivial logical of $Q$ of weight $d_Z(P)$,
+   hence $d_Q\le d_Z(P)$.
+
+*Proof.* (i) A vector $(0|z)$ commutes with every second-block row automatically ($Z$
+against $Z$). Against a first-block row $(a\,|\,c)$ the symplectic product is $a\cdot z$.
+Hence $(0|z)$ is in the centralizer iff $[A\;B]z=0$ — no dependence on $[C\;D]$.
+
+(ii) A combination $\lambda$ of first-block rows is pure $Z$ iff its $X$-part
+$\lambda[A;B]$ vanishes, in which case it contributes exactly its $Z$-part
+$\lambda[C\;D]$. Adding the second block gives pure-$Z$ stabilizer space $S_Z+\Delta$.
+For the dimension, project the row space onto the $X$-coordinate: the image is
+$\operatorname{rowspace}[A\;B]$ for both codes, while the kernel is $\{0\}\times S_Z$
+for $H_P$ and $\{0\}\times(S_Z+\Delta)$ for $H_Q$ — the pure-$Z$ stabilizer space,
+by the first part of (ii). Hence
+$\operatorname{rank}H_Q=\operatorname{rank}H_P+\dim\bar\Delta$, and $k=n-\operatorname{rank}H$
+gives $k_Q=k_P-\dim\bar\Delta$. (Note that $\operatorname{rowspace}H_P$ is **not**
+contained in $\operatorname{rowspace}H_Q$ — parent $X$-stabilizers are demoted —
+so the rank identity, not a containment, is what makes the count work.)
+Equivalently, via the sector identity valid for every
+stabilizer code, $\dim(\mathrm{Xcen}/S_X)=\dim(\mathrm{Zcen}/S_Z)=k$: the unchanged
+pure-$Z$ centralizer (i) minus the enlarged stabilizers $S_Z+\Delta$ is directly
+$k_P-\dim\bar\Delta$. (The shortcut "the $X$-sector of the quotient is unchanged, so only
+the pure-$Z$ quotient loses dimension" is *false as an argument*: the pure-$X$
+centralizer also shrinks, $\mathrm{Xcen}(Q)=\mathrm{Xcen}(P)\cap\ker[C\;D]$ — e.g. from
+dimension $40$ to $12$ on `phase2_58` — and both the rank identity and the sector
+identity are what make the count work; `notes/theorem_j_xsector.md`, J.1–J.3.)
+
+(iii) Immediate from (i) and (ii): $z\in\ker[A\;B]$ by (i), and $z\notin S_Z+\Delta$
+means its class is nontrivial in the quotient of (ii). $\square$
+
+Part (iii) is the operational content: **a single unabsorbed minimum-weight parent
+logical caps the PBB distance**, with no search over PBB codewords. Machine checks of
+(i)–(iii) on catalogue instances are in `tests/test_pbb_survival.py`; the dimension
+identity (ii) holds exactly on all tested catalogue rows (§8).
+
+---
+
+## 3. From per-perturbation to parent-level: the module structure
+
+The step that makes a family-wide theorem possible is the following.
+
+**Lemma 1 (submodule).** *$\Delta$ is an $R$-submodule of $\mathbb{F}_2^{\,n}$; so is
+$S_Z$, and hence so is $S_Z+\Delta$.*
+
+*Proof.* The coefficient set $L=\{\lambda : \lambda[A;B]=0\}$ is an ideal of $R$: if
+$\lambda A=\lambda B=0$ then $(x^ay^b\lambda)A = x^ay^b(\lambda A)=0$ and likewise for
+$B$, using commutativity of $R$. Since $\Delta=L\cdot[C\;D]$ and multiplication by
+$[C\;D]$ is $R$-linear, $\Delta$ is closed under the translations $x^ay^b$, i.e. is a
+submodule. $S_Z=\operatorname{rowspace}[B^{\mathsf T}\;A^{\mathsf T}]$ is a submodule for
+the same reason. $\square$
+
+**Corollary 2 (orbit absorption).** If $\Delta$ absorbs a minimum-weight $Z$-logical $z$
+(i.e. $z\in S_Z+\Delta$) then it absorbs the entire translation orbit
+$\{x^ay^b z\}$ of $z$. Translations preserve weight and map $\ker[A\;B]$ to itself, so
+every orbit element is again a minimum-weight $Z$-logical.
+
+Now define, **from the parent alone**,
+
+$$M(P)=\operatorname{span}\Big(\bigcup\nolimits_{z}\ \mathrm{orbit}(z)\ :\ z \text{ a minimum-weight } Z\text{-logical of } P\Big),\qquad T(P)=\dim\frac{M(P)+S_Z}{S_Z}.$$
+
+**Theorem H (parent-level no-go).** *For every parent $P$ and every valid perturbation
+$[C\;D]$,*
+
+$$d_Q > d_Z(P)\quad\Longrightarrow\quad k_Q \;\le\; k_P - T(P).$$
+
+*In particular, if $T(P)=k_P$ then no perturbation of $P$ retains a logical qubit while
+exceeding $d_Z(P)$: the whole family over $P$ is closed.*
+
+*Proof.* Suppose $d_Q>d_Z(P)$. By Theorem G(iii), contrapositively, **every**
+minimum-weight $Z$-logical $z$ of $P$ must be absorbed: $z\in S_Z+\Delta$. By
+Corollary 2 the whole orbit of each such $z$ is absorbed, so
+$M(P)\subseteq S_Z+\Delta$, whence $\bar M\subseteq\bar\Delta$ and
+$\dim\bar\Delta\ge T(P)$. Theorem G(ii) gives
+$k_Q=k_P-\dim\bar\Delta\le k_P-T(P)$. The final sentence is the case $T=k_P$, forcing
+$k_Q\le 0$. $\square$
+
+Three features are worth emphasising. First, the hypothesis is *only* a distance
+increase — no assumption on $C,D$, on weight, or on locality. Second, $T(P)$ is a
+property of the parent, so one computation covers the infinite family of perturbations
+over $P$, including every $[C\;D]$ nobody has enumerated. Third, the conclusion bounds
+$k_Q$, not $d_Q$: the theorem does not forbid distance increase, it *prices* it.
+
+### 3.1 Computing $T$ exactly
+
+$T$ is obtained by a monotone SAT enumeration rather than estimated. Maintain
+$W=S_Z+M$, initially $S_Z$, and repeatedly ask a solver for
+$z\in\ker[A\;B]$ with $\mathrm{wt}(z)\le d_Z(P)$ and $z\notin W$. Nontriviality with
+respect to $W$ is encoded exactly as ordinary logical nontriviality — pair $z$ against a
+basis of $W^{\perp}$, since $\exists f\in W^{\perp}: f\cdot z=1$ iff $z\notin W$. Each
+SAT hit is necessarily a *minimum-weight* logical (nothing outside $S_Z$ has weight below
+$d_Z$), and its full orbit is adjoined to $M$. The enumeration terminates in UNSAT, which
+certifies that $W$ contains every minimum-weight $Z$-logical; therefore the resulting $T$
+is **exact**, not a lower bound. If the budget is exhausted first, the partial $T$ is a
+certified *lower* bound — the sound direction, since Theorem H only needs
+$\dim\bar\Delta\ge T$.
+
+Two soundness details are enforced in code. (a) Every SAT witness is re-verified through
+two independent GF(2) paths and its weight is checked to equal the supplied
+$d_Z(P)$ exactly; a mismatch is raised, never absorbed. (b) A translation symmetry break
+(anchor support at index $0$ of one block) is applied to the decision queries. This is
+satisfiability-preserving precisely because $\ker[A\;B]$, $S_Z$ and every $M$ built from
+full orbits are translation invariant — the solution set of each query is translation
+invariant, so any solution can be translated to the anchored form. The premise is
+machine-validated in `tests/test_translation_symmetry_break.py` (automorphism action,
+transitivity, and $30$ differential SAT/UNSAT agreements); it buys $6.2\times$ on the
+decisive UNSAT proofs ($77.8$ s $\to$ $12.5$ s on the $[[144,12,12]]$ cap-$11$ instance).
+
+### 3.2 The trade is exact: forced saturation
+
+Theorem H bounds $k_Q$ from above. A second, independent observation bounds
+$\dim\bar\Delta$ from above — and for most parents the two meet.
+
+**Lemma 2 (left-kernel identity).** *For every CSS BB parent, with
+$L=\{\lambda:\lambda A=\lambda B=0\}$ the left kernel of $[A\;B]$,
+$k_P = 2\dim L$.*
+
+*Proof.* $\operatorname{rank}H_X=\ell m-\dim L$ ($L$ is the left nullspace of
+$H_X$). The left nullspace of $H_Z=[B^{\mathsf T}\,A^{\mathsf T}]$ is the
+transpose of $K=\ker A\cap\ker B$, so $\operatorname{rank}H_Z=\ell m-\dim K$,
+and $k_P=\dim L+\dim K$. The coordinate-reversal map conjugates each cyclic
+shift to its transpose, so $\dim L=\dim K$. $\square$
+
+*(Verified on all $202$ distinct parents, `tests/test_pbb_theorems.py`.)*
+
+**Lemma 3 (dressing ceiling).** *$\Delta=L\cdot[C\;D]$ is the image of a
+linear map on $L$, so $\dim\bar\Delta\le\dim L=k_P/2$ for every valid
+perturbation.* *(Verified on all $368$ catalogue rows via
+$\dim\bar\Delta=k_P-k_Q$.)*
+
+> **Theorem I (forced saturation).** *If $T(P)\ge k_P/2$ and $d_Q>d_Z(P)$, then
+> $\dim\bar\Delta=T(P)$ and $k_Q=k_P-T(P)$ **exactly**.*
+
+*Proof.* Theorem H gives $\dim\bar\Delta\ge T$; Lemma 3 gives
+$\dim\bar\Delta\le k_P/2\le T$. Squeeze, then apply Theorem G(ii). $\square$
+
+**Scope.** $T\ge k_P/2$ holds on $133$ of $134$ certified parents. The single
+exception is `9a7638586033` ($n=144$, $k_P=12$, $T=4$, not family-closed),
+where increase is only sandwiched to $4\le\dim\bar\Delta\le 6$. On every other
+certified parent the exact trade law is a theorem: a distance increase pays
+precisely $T(P)$ logical qubits. This subsumes the empirical saturation of §5.2
+— all $7$ reversals have $T=k_P/2$ — and, retroactively, explains the
+small-lattice probe of §7: its $64$ parents all have $T\in\{k_P/2,k_P\}$, so
+its $496$ strict increases could not have landed anywhere but on the law.
+
+---
+
+## 4. The Gross code: its entire perturbation family is closed
+
+The canonical Gross code (Bravyi et al., arXiv:2308.07915) is the BB code with
+$\ell=12$, $m=6$, $A=x^3+y+y^2$, $B=y^3+x+x^2$, giving $[[144,12,12]]$. Running the
+enumeration of §3.1 on it:
+
+| parent | catalogue row | $\ell,m$ | $A$ | $B$ | $k_P$ | $d_Z(P)$ | $T$ | $T$ exact | family closed |
+|---|---|---|---|---|---|---|---|---|---|
+| `aebb649586c1f5ab` | `12_6_0194` | $12,6$ | $x^3+y+y^2$ | $y^3+x+x^2$ | $12$ | $12$ | $\mathbf{12}$ | yes (UNSAT) | **yes** |
+
+$T=k_P=12$, so by Theorem H:
+
+> **Corollary 3 (Gross closure).** No perturbed bivariate-bicycle code built on the Gross
+> code retains a single logical qubit while exceeding $Z$-distance $12$. The entire
+> perturbation family over the Gross code — not merely the catalogued members — is closed.
+
+The same holds for **all $11$ distinct $[[144,12,12]]$ parents present in the published
+catalogue**, each with $T=12=k_P$ certified by a terminating UNSAT, including
+`4c7eb964a6a3e38c`, the parent of the benchmark non-CSS PBB $[[144,12,12]]$
+(`12_6_0193`, $220.4$ s, $3$ witnesses). That benchmark code is independently interesting
+— we certify it is *genuinely* non-CSS (not CSS after row operations, any qubit
+permutation, or any local Hadamard; a $19$-parity-mask plus one-hot certificate is
+CP-SAT infeasible) and that its exact distance is $d=12$, two-sided: weights $\le 5$
+excluded by exact meet-in-the-middle, weight $6$ by a complete classification (all
+$72/72$ zero-syndrome vectors coincide with the stored pure-$Z$ checks, so no weight-$6$
+logical exists), weights $7$–$11$ by four CaDiCaL UNSAT sector proofs
+($502/674/422/576$ s), and a weight-$12$ witness verified through two independent GF(2)
+paths. It matches the Gross code's $[[144,12,12]]$
+parameters; Corollary 3 shows that no sibling perturbation over the same parent can
+improve on them without giving up all $12$ logical qubits.
+
+---
+
+## 5. Catalogue-scale results
+
+The published catalogue (arXiv:2606.02418) contains $368$ PBB rows over $202$ distinct
+CSS BB parents. Applying §3.1 to the parents:
+
+| quantity | value |
+|---|---|
+| distinct parents | $202$ |
+| parents with **exact** $T$ (terminating UNSAT) | $134$ |
+| parents **family-closed** ($T=k_P$) | $\mathbf{61}$ |
+| catalogue rows capped *a priori* ($k_Q>k_P-T$, no per-row work) | $\mathbf{249}$ of $368$ |
+| catalogue rows Theorem H permits, of the $279$ classified (candidates for a genuine increase) | $30$ |
+
+The per-length breakdown matters more than the totals, because the enumeration is
+**complete at every length up to $n=144$**:
+
+| $n$ | parents | certified | family-closed | rows | capped *a priori* |
+|---|---|---|---|---|---|
+| $36$ | $3$ | $3/3$ | $3$ | $47$ | $47$ |
+| $72$ | $8$ | $8/8$ | $5$ | $34$ | $32$ |
+| $108$ | $68$ | $68/68$ | $28$ | $107$ | $80$ |
+| $144$ | $38$ | $38/38$ | $21$ | $66$ | $65$ |
+| **$\le 144$** | **$117$** | **$117/117$** | **$57$** | **$254$** | **$224$** |
+| $180$ | $46$ | $16/46$ | $4$ | $64$ | $24$ |
+| $360$ | $39$ | $1/39$ | $0$ | $50$ | $1$ |
+
+So over the entire catalogue at $n\le 144$ — which contains every $[[144,12,12]]$
+candidate and both $[[72,\cdot,\cdot]]$ reversals — the classification is exhaustive: all
+$117$ parents have an exact $T$, $57$ of them are family-closed, and $224$ of $254$ rows
+are settled with no per-row search. The $68$ uncertified parents are exactly the $n=180$
+and $n=360$ ones, where a single terminating UNSAT can cost hours (the slowest completed
+parent took $16{,}493$ s); that sweep continues, and because $T$ is monotone under further
+enumeration these figures are lower bounds on the final closure count, never upper bounds.
+
+### 5.1 A structural confinement
+
+Cross-tabulating the $134$ certified parents against their $279$ catalogue rows exposes a
+sharp pattern. Only four ratios $k_Q/k_P$ occur, and only three ratios $T/k_P$:
+
+| $k_Q/k_P$ | $T/k_P=1$ | $T/k_P=1/2$ | $T/k_P=1/3$ | capped *a priori* |
+|---|---|---|---|---|
+| $1$ | $109$ | $67$ | $1$ | yes |
+| $5/6$ | $11$ | $10$ | — | yes |
+| $3/4$ | $25$ | $13$ | — | yes |
+| $1/2$ | $13$ | $\mathbf{30}$ | — | $13$ yes / $\mathbf{30}$ **no** |
+
+Every row that keeps more than half of the parent's logical qubits is capped
+*a priori*: $d_Q\le d_Z(P)$ with no search. The only rows Theorem H permits to increase
+distance are the $k$-halving ones with $T/k_P=1/2$ — exactly $30$ of $279$. The observed
+distance-increasing perturbations are confined to a $k$-halving class, and this is now a
+proved confinement rather than an empirical regularity.
+
+### 5.2 The bound is saturated, not merely valid
+
+The catalogue contains $7$ perturbations for which we hold a certified reversal
+$d_Q>d_Z(P)$. Theorem H must permit every one of them or it is refuted. A refutation
+requires *both* halves — hypothesis and violated conclusion — so we verify the hypothesis
+independently by a replayed UNSAT lower bound on $d_Q$, and count any check whose
+hypothesis is not independently established as vacuous rather than as support.
+
+| row | $n$ | $k_P$ | $k_Q$ | $d_Z(P)$ | certified $d_Q>$ | $T$ | ceiling $k_P-T$ | slack | hypothesis |
+|---|---|---|---|---|---|---|---|---|---|
+| `12_6_0217` | $144$ | $8$ | $4$ | $8$ | $9$ | $4$ | $4$ | $\mathbf{0}$ | certified |
+| `phase2_58` | $72$ | $8$ | $4$ | $4$ | $4$ | $4$ | $4$ | $\mathbf{0}$ | certified |
+| `phase2_60` | $72$ | $8$ | $4$ | $4$ | $4$ | $4$ | $4$ | $\mathbf{0}$ | certified |
+| `phase2_71` | $108$ | $12$ | $6$ | $4$ | $5$ | $6$ | $6$ | $\mathbf{0}$ | certified |
+| `phase2_72` | $108$ | $12$ | $6$ | $4$ | $5$ | $6$ | $6$ | $\mathbf{0}$ | certified |
+| `phase2_88` | $108$ | $4$ | $2$ | $4$ | $5$ | $2$ | $2$ | $\mathbf{0}$ | certified |
+| `9_6_0183` | $108$ | $4$ | $2$ | $8$ | $9$ | $2$ | $2$ | $\mathbf{0}$ | certified |
+
+$7/7$ checked, $7/7$ non-vacuous, $0$ violations, and **slack exactly $0$ in every
+case**: $k_Q = k_P - T(P)$ identically. Every certified distance increase pays exactly
+the price Theorem H charges, never less and never more — and Theorem I (§3.2)
+proves they never could: all seven have $T=k_P/2$, inside the theorem's class, so
+equality was forced before it was observed.
+
+> **Observation 4 (saturation — now a theorem for $T\ge k_P/2$).** On every
+> certified reversal in the published catalogue, $k_Q = k_P - T(P)$. Theorem I
+> (§3.2) proves this is forced for every parent with $T\ge k_P/2$ — all
+> certified parents except `9a7638586033`; §7 carries the residual.
+
+The gate is executable: `experiments/exp039_nogo_module.py gate` re-derives the table and
+exits nonzero on any violation, and is locked by `tests/test_pbb_nogo.py`.
+
+---
+
+## 6. What this does and does not settle
+
+**Settled.** Over the $61$ family-closed parents — including the Gross code and every
+catalogue $[[144,12,12]]$ parent — the perturbation degree of freedom cannot produce a
+code that beats the parent's $Z$-distance while retaining a logical qubit. This is a
+theorem about all $[C\;D]$, not a search result, and it is certified by terminating UNSAT
+proofs with hash-bound, replayable CNFs.
+
+**Priced, not forbidden.** For the remaining parents, distance increase is possible but
+pays at least $T(P)$ logical qubits, and — by Theorem I — pays *exactly* $T(P)$ on
+every parent with $T\ge k_P/2$, which is every certified parent but one. It would be
+wrong to claim the trade is always unprofitable *relative to the parent*: on five of the
+seven certified reversals it is mildly profitable in $kd^2/n$, because $+2$ distance at
+$d_Z(P)=4$ outweighs halving $k$ (e.g. `phase2_71`: parent $12\cdot 4^2/108=1.78$ versus
+PBB $6\cdot 6^2/108=2.00$). The correct comparison is not the parent but the CSS envelope
+at the same length, and there the reversals lose decisively — every one of the seven is
+dominated at equal $n$ by a CSS BB code with $k_C\ge k_Q$ and certified exact
+$d_C\ge$ the PBB's upper bound (all seven machine-checked in `results/processed/exp036_envelope_check.json`, schema
+`exp036-envelope-check-v2`, against $162$ certified-exact CSS candidates; the dominator
+shown is the strongest at that length by $kd^2$):
+
+| reversal | $[[n,k_Q,d_Q{\le}]]$ | $kd^2/n$ | dominating CSS | $kd^2/n$ | factor |
+|---|---|---|---|---|---|
+| `12_6_0217` | $[[144,4,10]]$ | $2.78$ | $[[144,12,12]]$ | $12.00$ | $4.3\times$ |
+| `9_6_0183` | $[[108,2,10]]$ | $1.85$ | $[[108,8,10]]$ | $7.41$ | $4.0\times$ |
+| `phase2_71`, `phase2_72` | $[[108,6,6]]$ | $2.00$ | $[[108,8,10]]$ | $7.41$ | $3.7\times$ |
+| `phase2_88` | $[[108,2,6]]$ | $0.67$ | $[[108,8,10]]$ | $7.41$ | $11.1\times$ |
+| `phase2_58`, `phase2_60` | $[[72,4,6]]$ | $2.00$ | $[[72,12,6]]$ | $6.00$ | $3.0\times$ |
+
+So the perturbation can beat *its own parent*, but never the best CSS code of the same
+length: the reversals trade a $3.0$–$11.1\times$ deficit against the envelope for a $\le 1.13\times$
+gain against the parent.
+
+**The $X$ sector.** The full analysis is in `notes/theorem_j_xsector.md`; what the main
+results need is: $d_X(P)=d_Z(P)$ for every BB parent (reversal symmetry, J.0), so the
+$Z$-side framing loses no generality; the pure-$X$ centralizer of $Q$ shrinks by
+$\rho_X=\dim((R_{CD}+S_Z)/S_Z)\ge\dim\bar\Delta$ (J.1); and $Q$'s pure-$X$ logicals are
+either survivors of weight $\ge d_X(P)$ or demoted parent stabilizers paired with
+parent $Z$-logicals (J.4). Whether $d_X(Q)\ge d_X(P)$ holds unconditionally is **open**:
+zero violations in $6.47$M valid perturbations across $12$ lattices (counts after a
+GF(2)-matmul correction of an earlier uint8 filter bug, `notes/theorem_j_xsector.md` §3);
+on the $221$ catalogue rows where both $d_X(Q)$ (exact) and $d_X(P)=d_Z(P)$ (certified)
+are known, $17$ at equality and $0$ violations ($d_X(Q)$ exact on $276$ of $368$ rows);
+and on the **$116$ parents at $n\le144$** — every parent at $n\le144$ — EXP-044 checked
+$5{,}483$ valid instances against certified $d_Z(P)$: $4{,}009$ provably non-decreasing,
+$1{,}474$ honestly capped-unresolved (kernel dimension $>18$), and **zero** decrease
+witnesses, with $\min(w_{\rm dem}-d_Z(P))=0$ attained but never negative —
+but no proof yet. The caps in Theorems G/H/I do not require it: they cap
+$d_Q$ through pure-$Z$ survivors only.
+
+**The residual class is small.** The known violation of $T\ge k_P/2$ might still be the
+tip of a large uncharted class. It is not, at least at small lattice size: among
+$10{,}645$ distinct connected $k_P\ge2$ parents with $A,B$ each of weight $\le3$
+(support families $2{\times}2$, $2{\times}3$, $3{\times}3$), exhaustive over all $43$
+ordered lattices with $\ell\cdot m\le 40$ and quotiented by independent block
+translations with $\{A,B\}$ unordered ($4{,}621$ parents for $\ell\cdot m\le24$ plus
+$6{,}024$ for $24<\ell\cdot m\le40$; lattices $6{\times}7$ and larger skipped by an
+extrapolated budget model), **none** has $T<k_P/2$ — in every case computed,
+$T\in\{k_P/2,\,k_P\}$ exactly. The only known exception (`9a7638586033`, $k_P{=}12$,
+$T{=}4$) sits at $\ell\cdot m=72$, outside this scope. Whether the residual class
+(parents with $T<k_P/2$) is empty beyond `9a7638586033` at larger lattices is under
+computation; Conjecture B$'$ (§7) governs what happens on any residual parent that
+does exist.
+
+**Not settled by this paper.** (i) Whether *every* $\delta>0$ PBB is dominated by *some*
+CSS code — the universal envelope statement — remains open; $60$ catalogue rows are
+pending and $30$ are flagged as candidate escapees — all pool-coverage artifacts
+(no certified same-length CSS code exists at that $k$ in our pool yet) rather than
+verified escapes; the pending count only decreases, and the escapee count shrinks as
+the CSS pool grows — both are provisional. (ii) The $n=360$ parents remain open ($38$ of $39$ not yet certified). (iii) Everything here is
+a *code-level* statement. Circuit-level cost is a separate axis: our detector-error-model
+mechanism-distance intervals for the two $[[144,12,12]]$ circuits are tied at the
+certified interval $[5,12]$ on each — weight-$4$ exclusion completed on both circuits
+(perfect-matching class by meet-in-the-middle, star class by exact cover; no logical
+failure from any set of $\le4$ DEM mechanisms; structural-probability DEM), with
+weight-$12$ data-logical witnesses as upper bounds (EXP-029/EXP-040) — the PBB
+schedule is $\approx 6$–$17\times$ slower on an idle machine ($p_{50}$ $10.3\times$,
+$p_{95}$ $16.6\times$, $p_{99}$ $6.3\times$), and no circuit-level result has favoured the
+PBB candidate. A verified one-ancilla mixed-stabilizer syndrome-extraction circuit for
+the non-CSS PBB, benchmarked against the Gross code under identical noise, remains the
+decisive end-to-end experiment.
+
+**Honest limitations.** $T$ is exact only where the enumeration terminated in UNSAT
+($134/202$ parents; all $117$ at $n\le 144$); elsewhere it is a certified lower bound, which is the sound
+direction. $d_Z(P)$ is used as supplied and is independently certified for the parents
+in the table. Catalogue-reported distances are treated as untrusted throughout; where we
+quote a distance we quote our own two-sided certificate, and one catalogue heuristic
+bound was found to be $\ge 2.5\times$ loose ($d\le 40$ advertised, $\le 16$ re-verified).
+
+---
+
+## 7. The exact trade law, its residual, and remaining conjectures
+
+**Theorem I (restated; proved in §3.2).** If $T(P)\ge k_P/2$ and $d_Q>d_Z(P)$,
+then $k_Q=k_P-T(P)$ exactly. This covers $133$ of $134$ certified parents and
+all $57$ family-closed ones at $n\le 144$; the saturation observed in §5.2 and
+the $496/496$ small-lattice increases are instances of it.
+
+Three layers of machine evidence now sit beneath the theorem and delimit its
+residual:
+
+1. *Catalogue upper law.* On all $279$ classified rows,
+   $\dim\bar\Delta\le T(P)$ with zero exceptions (spread of
+   $\dim\bar\Delta-T$ only non-positive, down to $-24$). For $T\ge k_P/2$
+   parents this is Lemma 3; the law holding also on the one $T<k_P/2$ parent's
+   rows is evidence the residual class is benign.
+2. *Small-lattice probe (EXP-040).* $64$ parents across four lattices,
+   $26{,}898$ unseen $\delta>0$ perturbations: $\dim\bar\Delta<T$ on $23{,}634$,
+   $=T$ on $3{,}264$, $>T$ on **zero**; all $496$ strict increases at $=T$, with
+   actual containment $\bar M=\bar\Delta$ verified, not just dimensions. All
+   probed parents had $T\in\{k_P/2,k_P\}$, so these are theorem-forced.
+3. *Reversals.* All $7$ catalogue reversals at $\dim\bar\Delta=T=k_P/2$ with
+   $\bar M=\bar\Delta$.
+
+**Conjecture B′ (residual saturation).** For parents with $T<k_P/2$ (one known:
+`9a7638586033`, where increase sandwiches to $4\le\dim\bar\Delta\le 6$),
+distance increase still forces $\dim\bar\Delta=T$. *Evidence:* the catalogue
+upper law above, and the probe's zero violations; *the proof must beat Lemma 3's
+ceiling, which is no longer tight there.*
+
+**Conjecture C ($k$-halving confinement).** Any perturbation with $d_Q>d_Z(P)$
+has $k_Q/k_P=1/2$. On every $T=k_P/2$ parent this is immediate from
+Theorem I; the conjecture is residual exactly on $T<k_P/2$ parents and on the
+$68$ uncertified ones ($n\in\{180,360\}$). Every one of the $279$ classified
+rows with $k_Q/k_P\in\{1,3/4,5/6\}$ is capped *a priori* (§5.1, zero
+exceptions).
+
+**Conjecture D (distance parity).** Certified reversals gain exactly $+2$ in
+distance. *Evidence:* the uniform gap $d_Q-d_Z(P)=2$ across all $7$ reversals,
+whose exact $d_Q$ values are certified; consistent with $d_Z$ even throughout.
+(The probe stores only the increase decision, not the achieved $d_Q$, so its
+$496$ increases are not parity evidence.)
+
+The open problem that remains is not *whether* perturbation pays — it pays
+exactly $T$ — but *whether anything on the CSS side of the envelope can ever be
+beaten this way*: §6's domination table says no for all seven known increases.
+
+---
+
+## 8. Reproduction and provenance
+
+Environment: macOS Darwin $25.5.0$ arm64, Apple M3 Ultra, $28$ logical CPUs, $96$ GiB;
+Python $3.13.9$ in `.venv`; `numpy 2.4.6`, `scipy 1.18.0`, `stim 1.16.0`,
+`pymatching 2.4.0`, `sinter 1.16.0`, `ldpc 2.4.1`, `galois 0.4.11`, `ortools 9.15.6755`,
+`python-sat 1.9.dev13`; solver CaDiCaL $1.9.5$ via PySAT. Full suite: $898$ passing tests, $1$ skipped ($899$ collected).
+
+| claim | artifact | experiment |
+|---|---|---|
+| Theorem G, machine-checked on catalogue rows | `src/qec_research/codes/pbb_survival.py`, `tests/test_pbb_survival.py` ($15$ checks) | EXP-038 |
+| Theorem H, module + exact $T$ enumeration | `src/qec_research/codes/pbb_nogo.py`, `tests/test_pbb_nogo.py` ($17$ checks) | EXP-039 |
+| Gross closure, $61$ closed parents, $249$ rows capped, complete at $n\le 144$ | `results/partial_runs/exp039_nogo_module.json` | EXP-039 |
+| Saturation table, $7/7$ non-vacuous, gate | `exp039_nogo_module.py gate` | EXP-039 |
+| Certified $d_Q$ lower bounds for reversals | `results/partial_runs/exp037/row_*.json` | EXP-037 |
+| Theorem I legs: $k_P=2\dim L$ (202 parents), $\dim\bar\Delta\le k_P/2$ (368 rows), scope exception | `tests/test_pbb_theorems.py`, `results/processed/exp040_saturation_probe.json` | EXP-039/040 |
+| All $7$ reversals CSS-dominated at equal $n$ ($162$ exact candidates) | `results/processed/exp036_envelope_check.json` | EXP-036/037 |
+| $5$ certified reversals, $41$ dominations of $87$ | `results/partial_runs/exp036_delta_closure.json` | EXP-036 |
+| Exact $d=12$ for `12_6_0193`, two-sided | `results/certificates/pbb_12_6_0193_distance.json` | EXP-035 |
+| Genuinely non-CSS (`12_6_0193`) | `notes/novelty_matrix.md`, EXP-034 records | EXP-034 |
+| Catalogue-wide CSS-envelope classification | `results/partial_runs/exp037_envelope_classification.json` | EXP-037 |
+| Strict-provenance $\delta>0$ audit ($155$ rows) | `results/processed/exp027_delta_audit.json` | EXP-027 |
+| Translation symmetry break soundness, $6.2\times$ | `tests/test_translation_symmetry_break.py` | FR-022 |
+| DEM mechanism-distance intervals, LER, latency | `reports/technical_report.md` §5–6 | EXP-016/029 |
+
+Every SAT decision records its canonical CNF SHA-256 and encoding version; verdicts are
+re-derived from rebuilt matrices on replay, and stamps that fail to hash-bind are
+rejected rather than trusted. Forgery regression tests confirm that crude tampering dies
+arithmetically or under replay.
+
+**Reproduce the headline result:**
+
+```bash
+cd math/qec
+PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py run --ns 144
+PYTHONPATH=src .venv/bin/python experiments/exp039_nogo_module.py gate
+PYTHONPATH=src .venv/bin/python -m pytest tests/test_pbb_nogo.py tests/test_pbb_survival.py -q
+```
+
+---
+
+## 9. Related work and novelty
+
+Bivariate-bicycle codes and the Gross code are due to Bravyi et al.
+(arXiv:2308.07915). The PBB construction and the $368$-row catalogue are from
+arXiv:2606.02418. Cruz-Benito et al. (arXiv:2606.02418 v1, Sec. III.2, Lemma 0) give the
+validity condition; we derive it independently from the binary symplectic Gram matrix and
+confirm the correct condition is *symmetry* of $AC^{\mathsf T}+BD^{\mathsf T}$, not its
+vanishing. Multivariate bicycle generalisations are in arXiv:2406.19151; existence and
+characterisation results for BB codes in arXiv:2502.17052. ASC (arXiv:2603.21499) certifies
+no-depth-$6$ for IBM BB codes; our depth criterion is independent and basis-independent.
+
+To our knowledge the following are new here: (a) the identification of $\Delta$ as an
+$R$-submodule and the resulting orbit-absorption argument; (b) the exact dimension
+identity $k_Q=k_P-\dim\bar\Delta$ as a certified structural fact rather than an observed
+coincidence; (c) the perturbation-independent no-go bound (Theorem H) and its exact
+$T$ enumeration with a terminating UNSAT certificate; (d) the closure of the entire
+perturbation family over the Gross code; (e) the saturation observation $k_Q=k_P-T$ on
+all certified reversals; and (f) the proved confinement of distance increase to a
+$k$-halving class.
+
+---
+
+## 10. Conclusion
+
+The PBB construction's extra freedom is real but not free. It is governed by a single
+submodule $\Delta$ whose dimension is exactly the dimension deficit, and whose module
+structure forces any distance increase to absorb entire translation orbits of the
+parent's minimum-weight logicals. This yields a computable, perturbation-independent
+obstruction that closes $61$ of $202$ published parents outright — the Gross code among
+them — caps $249$ of $368$ catalogue rows with no search, confines distance increase to a
+$k$-halving class, and is saturated with slack exactly zero on all $7$ certified
+distance-increasing perturbations known to us.
+
+The abstract $[[n,k,d]]$ route past the CSS bivariate-bicycle envelope is, over these
+parents, closed by theorem. What remains genuinely open is the circuit-level question:
+whether a verified fault-tolerant syndrome-extraction circuit for a non-CSS PBB can beat
+the Gross code end-to-end under identical noise. Nothing in our circuit-level evidence so
+far favours it.

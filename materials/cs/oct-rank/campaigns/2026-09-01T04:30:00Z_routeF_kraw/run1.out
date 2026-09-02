@@ -1,0 +1,5 @@
+[ANCHOR-TBL] cd==gateA: True | cd==upstream: True | ALL: True
+[ANCHOR-TBL] e0 unit: True | norm mult 20pts: True
+[ANCHOR] table 3-way byte-exact + unit + norm: True
+[ANCHOR-BLK] T_sim L T_sim == blockdiag(tau,tau) on 3 slices: False
+[ANCHOR-BLK] FAIL — HALT (conjugation anchor)

@@ -1,0 +1,1052 @@
+{
+  "T1_V3_cubed": {
+    "m3": {
+      "count": 27,
+      "profiles": {
+        "(1, 1, 3)": 9,
+        "(1, 3, 1)": 9,
+        "(3, 1, 1)": 9
+      },
+      "universe": 2925
+    },
+    "m4": {
+      "all_coordinates_vary_count": 0,
+      "ambient_dim": 8,
+      "circuit_count": 81,
+      "constructed_components": {
+        "pair:0,1": 27,
+        "pair:0,2": 27,
+        "pair:1,2": 27
+      },
+      "factor_circuits_at_m": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      },
+      "factor_names": [
+        "V3a",
+        "V3b",
+        "V3c"
+      ],
+      "factor_sizes": [
+        3,
+        3,
+        3
+      ],
+      "factor_sparks": [
+        3,
+        3,
+        3
+      ],
+      "n_columns": 27,
+      "pair_references": {
+        "0,1": {
+          "all": 9,
+          "fiber": 0,
+          "nonfiber": 9,
+          "profiles": {
+            "(3, 3)": 9
+          }
+        },
+        "0,2": {
+          "all": 9,
+          "fiber": 0,
+          "nonfiber": 9,
+          "profiles": {
+            "(3, 3)": 9
+          }
+        },
+        "1,2": {
+          "all": 9,
+          "fiber": 0,
+          "nonfiber": 9,
+          "profiles": {
+            "(3, 3)": 9
+          }
+        }
+      },
+      "profiles": {
+        "(1, 3, 3)": 27,
+        "(3, 1, 3)": 27,
+        "(3, 3, 1)": 27
+      },
+      "set_equality": true,
+      "universe": 17550
+    }
+  },
+  "T2_V4_cubed": {
+    "all_coordinates_vary_count": 0,
+    "ambient_dim": 8,
+    "circuit_count": 1824,
+    "constructed_components": {
+      "pair:0,1": 608,
+      "pair:0,2": 608,
+      "pair:1,2": 608
+    },
+    "factor_circuits_at_m": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "factor_names": [
+      "V4a",
+      "V4b",
+      "V4c"
+    ],
+    "factor_sizes": [
+      4,
+      4,
+      4
+    ],
+    "factor_sparks": [
+      3,
+      3,
+      3
+    ],
+    "n_columns": 64,
+    "pair_references": {
+      "0,1": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "0,2": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "1,2": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      }
+    },
+    "profiles": {
+      "(1, 3, 3)": 576,
+      "(1, 4, 4)": 32,
+      "(3, 1, 3)": 576,
+      "(3, 3, 1)": 576,
+      "(4, 1, 4)": 32,
+      "(4, 4, 1)": 32
+    },
+    "set_equality": true,
+    "universe": 635376
+  },
+  "T3_M34_V4_V4": {
+    "all_coordinates_vary_count": 0,
+    "ambient_dim": 12,
+    "circuit_count": 624,
+    "constructed_components": {
+      "pair:1,2": 608,
+      "single:0": 16
+    },
+    "factor_circuits_at_m": {
+      "0": 1,
+      "1": 0,
+      "2": 0
+    },
+    "factor_names": [
+      "M34",
+      "V4b",
+      "V4c"
+    ],
+    "factor_sizes": [
+      4,
+      4,
+      4
+    ],
+    "factor_sparks": [
+      4,
+      3,
+      3
+    ],
+    "n_columns": 64,
+    "pair_references": {
+      "0,1": {
+        "all": 4,
+        "fiber": 4,
+        "nonfiber": 0,
+        "profiles": {
+          "(4, 1)": 4
+        }
+      },
+      "0,2": {
+        "all": 4,
+        "fiber": 4,
+        "nonfiber": 0,
+        "profiles": {
+          "(4, 1)": 4
+        }
+      },
+      "1,2": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      }
+    },
+    "profiles": {
+      "(1, 3, 3)": 576,
+      "(1, 4, 4)": 32,
+      "(4, 1, 1)": 16
+    },
+    "set_equality": true,
+    "universe": 635376
+  },
+  "T4_M34_V3_V4": {
+    "all_coordinates_vary_count": 0,
+    "ambient_dim": 12,
+    "circuit_count": 156,
+    "constructed_components": {
+      "pair:1,2": 144,
+      "single:0": 12
+    },
+    "factor_circuits_at_m": {
+      "0": 1,
+      "1": 0,
+      "2": 0
+    },
+    "factor_names": [
+      "M34",
+      "V3b",
+      "V4c"
+    ],
+    "factor_sizes": [
+      4,
+      3,
+      4
+    ],
+    "factor_sparks": [
+      4,
+      3,
+      3
+    ],
+    "n_columns": 48,
+    "pair_references": {
+      "0,1": {
+        "all": 3,
+        "fiber": 3,
+        "nonfiber": 0,
+        "profiles": {
+          "(4, 1)": 3
+        }
+      },
+      "0,2": {
+        "all": 4,
+        "fiber": 4,
+        "nonfiber": 0,
+        "profiles": {
+          "(4, 1)": 4
+        }
+      },
+      "1,2": {
+        "all": 36,
+        "fiber": 0,
+        "nonfiber": 36,
+        "profiles": {
+          "(3, 3)": 36
+        }
+      }
+    },
+    "profiles": {
+      "(1, 3, 3)": 144,
+      "(4, 1, 1)": 12
+    },
+    "set_equality": true,
+    "universe": 194580
+  },
+  "T5_plants": {
+    "duplicate": {
+      "dependent_pairs": [
+        [
+          0,
+          4
+        ]
+      ],
+      "spark": 2
+    },
+    "formula_semantics": {
+      "correct_count": 624,
+      "duplicate_excess": 32,
+      "supports_with_multiplicity_3": 16,
+      "wrong_raw_count": 656,
+      "wrong_unique_count": 624
+    },
+    "genuine_3D": {
+      "profile": [
+        4,
+        4,
+        4
+      ],
+      "rank": 4,
+      "rejected": true,
+      "support": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          3,
+          3,
+          3
+        ]
+      ]
+    },
+    "known_crossing": {
+      "accepted": true,
+      "rank": 3,
+      "support": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ]
+    },
+    "kronecker_guard": {
+      "concat_dim": 6,
+      "dropped_dim": 4,
+      "true_dim": 8
+    },
+    "non_tensor": {
+      "actual_rank": 4,
+      "labeled_support": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "rejected": true
+    }
+  },
+  "arithmetic": "exact Python integers modulo 7; true nested row-major Kronecker columns",
+  "assertion_count": 78,
+  "budget": {
+    "CPU_cap_seconds": 600.0,
+    "CPU_seconds": 24.281886,
+    "wall_cap_seconds": 900.0,
+    "wall_seconds": 26.388917707954533,
+    "within_cap": true
+  },
+  "controls": {
+    "T1.m3.all_fibers": {
+      "detail": true,
+      "pass": true
+    },
+    "T1.m3.count": {
+      "detail": 27,
+      "pass": true
+    },
+    "T1.m3.profiles": {
+      "detail": {
+        "(1, 1, 3)": 9,
+        "(1, 3, 1)": 9,
+        "(3, 1, 1)": 9
+      },
+      "pass": true
+    },
+    "T1.m3.universe": {
+      "detail": 2925,
+      "pass": true
+    },
+    "T1.m4.constructed_unique": {
+      "detail": {
+        "max_multiplicity": 1
+      },
+      "pass": true
+    },
+    "T1.m4.count": {
+      "detail": 81,
+      "pass": true
+    },
+    "T1.m4.no_genuine_3D": {
+      "detail": 0,
+      "pass": true
+    },
+    "T1.m4.pair_0,1_nonfiber": {
+      "detail": {
+        "all": 9,
+        "fiber": 0,
+        "nonfiber": 9,
+        "profiles": {
+          "(3, 3)": 9
+        }
+      },
+      "pass": true
+    },
+    "T1.m4.pair_0,2_nonfiber": {
+      "detail": {
+        "all": 9,
+        "fiber": 0,
+        "nonfiber": 9,
+        "profiles": {
+          "(3, 3)": 9
+        }
+      },
+      "pass": true
+    },
+    "T1.m4.pair_1,2_nonfiber": {
+      "detail": {
+        "all": 9,
+        "fiber": 0,
+        "nonfiber": 9,
+        "profiles": {
+          "(3, 3)": 9
+        }
+      },
+      "pass": true
+    },
+    "T1.m4.pair_formula": {
+      "detail": {
+        "pair:0,1": 27,
+        "pair:0,2": 27,
+        "pair:1,2": 27
+      },
+      "pass": true
+    },
+    "T1.m4.profiles": {
+      "detail": {
+        "(1, 3, 3)": 27,
+        "(3, 1, 3)": 27,
+        "(3, 3, 1)": 27
+      },
+      "pass": true
+    },
+    "T1.m4.support_set_equality": {
+      "detail": {
+        "constructed_only": 0,
+        "measured_only": 0
+      },
+      "pass": true
+    },
+    "T1.m4.universe": {
+      "detail": 17550,
+      "pass": true
+    },
+    "T2.m4.constructed_unique": {
+      "detail": {
+        "max_multiplicity": 1
+      },
+      "pass": true
+    },
+    "T2.m4.count": {
+      "detail": 1824,
+      "pass": true
+    },
+    "T2.m4.formula": {
+      "detail": 1824,
+      "pass": true
+    },
+    "T2.m4.no_genuine_3D": {
+      "detail": 0,
+      "pass": true
+    },
+    "T2.m4.pair_0,1_split": {
+      "detail": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "pass": true
+    },
+    "T2.m4.pair_0,1_total": {
+      "detail": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "pass": true
+    },
+    "T2.m4.pair_0,2_split": {
+      "detail": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "pass": true
+    },
+    "T2.m4.pair_0,2_total": {
+      "detail": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "pass": true
+    },
+    "T2.m4.pair_1,2_split": {
+      "detail": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "pass": true
+    },
+    "T2.m4.pair_1,2_total": {
+      "detail": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "pass": true
+    },
+    "T2.m4.profiles": {
+      "detail": {
+        "(1, 3, 3)": 576,
+        "(1, 4, 4)": 32,
+        "(3, 1, 3)": 576,
+        "(3, 3, 1)": 576,
+        "(4, 1, 4)": 32,
+        "(4, 4, 1)": 32
+      },
+      "pass": true
+    },
+    "T2.m4.support_set_equality": {
+      "detail": {
+        "constructed_only": 0,
+        "measured_only": 0
+      },
+      "pass": true
+    },
+    "T2.m4.universe": {
+      "detail": 635376,
+      "pass": true
+    },
+    "T3.m4.constructed_unique": {
+      "detail": {
+        "max_multiplicity": 1
+      },
+      "pass": true
+    },
+    "T3.m4.count": {
+      "detail": 624,
+      "pass": true
+    },
+    "T3.m4.no_genuine_3D": {
+      "detail": 0,
+      "pass": true
+    },
+    "T3.m4.profiles": {
+      "detail": {
+        "(1, 3, 3)": 576,
+        "(1, 4, 4)": 32,
+        "(4, 1, 1)": 16
+      },
+      "pass": true
+    },
+    "T3.m4.single_factor_component": {
+      "detail": {
+        "pair:1,2": 608,
+        "single:0": 16
+      },
+      "pass": true
+    },
+    "T3.m4.support_set_equality": {
+      "detail": {
+        "constructed_only": 0,
+        "measured_only": 0
+      },
+      "pass": true
+    },
+    "T3.m4.tied_pair_12": {
+      "detail": {
+        "all": 152,
+        "fiber": 0,
+        "nonfiber": 152,
+        "profiles": {
+          "(3, 3)": 144,
+          "(4, 4)": 8
+        }
+      },
+      "pass": true
+    },
+    "T3.m4.unequal_pair_01_no_nonfiber": {
+      "detail": {
+        "all": 4,
+        "fiber": 4,
+        "nonfiber": 0,
+        "profiles": {
+          "(4, 1)": 4
+        }
+      },
+      "pass": true
+    },
+    "T3.m4.unequal_pair_02_no_nonfiber": {
+      "detail": {
+        "all": 4,
+        "fiber": 4,
+        "nonfiber": 0,
+        "profiles": {
+          "(4, 1)": 4
+        }
+      },
+      "pass": true
+    },
+    "T3.m4.universe": {
+      "detail": 635376,
+      "pass": true
+    },
+    "T4.m4.constructed_unique": {
+      "detail": {
+        "max_multiplicity": 1
+      },
+      "pass": true
+    },
+    "T4.m4.count": {
+      "detail": 156,
+      "pass": true
+    },
+    "T4.m4.formula": {
+      "detail": {
+        "pair:1,2": 144,
+        "single:0": 12
+      },
+      "pass": true
+    },
+    "T4.m4.no_genuine_3D": {
+      "detail": 0,
+      "pass": true
+    },
+    "T4.m4.pair_12": {
+      "detail": {
+        "all": 36,
+        "fiber": 0,
+        "nonfiber": 36,
+        "profiles": {
+          "(3, 3)": 36
+        }
+      },
+      "pass": true
+    },
+    "T4.m4.profiles": {
+      "detail": {
+        "(1, 3, 3)": 144,
+        "(4, 1, 1)": 12
+      },
+      "pass": true
+    },
+    "T4.m4.support_set_equality": {
+      "detail": {
+        "constructed_only": 0,
+        "measured_only": 0
+      },
+      "pass": true
+    },
+    "T4.m4.universe": {
+      "detail": 194580,
+      "pass": true
+    },
+    "T5.duplicate_reject.pair": {
+      "detail": [
+        [
+          0,
+          4
+        ]
+      ],
+      "pass": true
+    },
+    "T5.duplicate_reject.spark2": {
+      "detail": 2,
+      "pass": true
+    },
+    "T5.formula_semantics_reject.duplicate_excess": {
+      "detail": 32,
+      "pass": true
+    },
+    "T5.formula_semantics_reject.raw_count": {
+      "detail": 656,
+      "pass": true
+    },
+    "T5.formula_semantics_reject.triple_count": {
+      "detail": 16,
+      "pass": true
+    },
+    "T5.formula_semantics_reject.unique_count": {
+      "detail": 624,
+      "pass": true
+    },
+    "T5.genuine_3D_reject.not_constructed": {
+      "detail": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          3,
+          3,
+          3
+        ]
+      ],
+      "pass": true
+    },
+    "T5.genuine_3D_reject.not_measured": {
+      "detail": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          3,
+          3,
+          3
+        ]
+      ],
+      "pass": true
+    },
+    "T5.genuine_3D_reject.profile": {
+      "detail": [
+        4,
+        4,
+        4
+      ],
+      "pass": true
+    },
+    "T5.genuine_3D_reject.rank4": {
+      "detail": 4,
+      "pass": true
+    },
+    "T5.known_crossing_accept.circuit": {
+      "detail": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "T5.known_crossing_accept.constructed": {
+      "detail": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "T5.known_crossing_accept.rank": {
+      "detail": 3,
+      "pass": true
+    },
+    "T5.kronecker_guard.concat_reject": {
+      "detail": {
+        "concat": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "true": [
+          1,
+          4,
+          6,
+          3,
+          2,
+          1,
+          5,
+          6
+        ]
+      },
+      "pass": true
+    },
+    "T5.kronecker_guard.coordinates": {
+      "detail": {
+        "direct": [
+          1,
+          4,
+          6,
+          3,
+          2,
+          1,
+          5,
+          6
+        ],
+        "nested": [
+          1,
+          4,
+          6,
+          3,
+          2,
+          1,
+          5,
+          6
+        ]
+      },
+      "pass": true
+    },
+    "T5.kronecker_guard.dropped_reject": {
+      "detail": {
+        "dropped": [
+          3,
+          4,
+          6,
+          1
+        ],
+        "true": [
+          1,
+          4,
+          6,
+          3,
+          2,
+          1,
+          5,
+          6
+        ]
+      },
+      "pass": true
+    },
+    "T5.kronecker_guard.true_dim": {
+      "detail": 8,
+      "pass": true
+    },
+    "T5.non_tensor_reject.labels_still_predicted": {
+      "detail": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "T5.non_tensor_reject.not_circuit": {
+      "detail": 4,
+      "pass": true
+    },
+    "T5.non_tensor_reject.rank4": {
+      "detail": 4,
+      "pass": true
+    },
+    "budget.CPU": {
+      "detail": {
+        "cap": 600.0,
+        "used": 24.281886
+      },
+      "pass": true
+    },
+    "budget.wall": {
+      "detail": {
+        "cap": 900.0,
+        "used": 26.388917707954533
+      },
+      "pass": true
+    },
+    "factors.M34.four_circuit_count": {
+      "detail": 1,
+      "pass": true
+    },
+    "factors.M34.spark": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "factors.V3a.spark": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "factors.V4a.spark": {
+      "detail": {
+        "got": 3,
+        "want": 3
+      },
+      "pass": true
+    },
+    "runtime.dont_write_bytecode": {
+      "detail": true,
+      "pass": true
+    },
+    "runtime.env.MKL_NUM_THREADS": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.env.OMP_NUM_THREADS": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.env.OPENBLAS_NUM_THREADS": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.env.PYTHONDONTWRITEBYTECODE": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.env.VECLIB_MAXIMUM_THREADS": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.nice": {
+      "detail": 15,
+      "pass": true
+    }
+  },
+  "gate": "H-DP1-THREEFACTOR",
+  "run_id": "20260902T014115Z_25757c71_9c6065a4173c",
+  "runtime": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "dont_write_bytecode": true,
+    "max_rss": 24297472,
+    "nice": 15,
+    "thread_caps": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  }
+}

@@ -75,3 +75,28 @@
 [2026-08-31T08:29:34Z]   orbits: input g-orbits 5002 of 59049 words; output g-orbits (flat) 7566
 [2026-08-31T08:29:34Z]   word bucketing done (59049 words) [0.3s]
 [2026-08-31T08:29:44Z]   merged OS done [10.6s]
+[2026-08-31T08:49:20Z] stage=selfcheck; code_sha256=6d12cc77cefe4ff7cce1efa7770e69cb5c470ca6797f66446756bd4d2b141cdd; Arb=400 bits
+[2026-08-31T08:49:20Z] small selfcheck start
+[2026-08-31T08:49:20Z]   orbits: input g-orbits 4 of 27 words; output g-orbits (flat) 8
+[2026-08-31T08:49:20Z]   word bucketing done (27 words) [0.0s]
+[2026-08-31T08:49:20Z] structure q=3 n=3: in-g=4 out-g=8 rep-entries=25 B-slots=18 [0.0s]
+[2026-08-31T08:49:20Z] small selfcheck PASS
+[2026-08-31T09:06:08Z] stage=anchors; code_sha256=6d12cc77cefe4ff7cce1efa7770e69cb5c470ca6797f66446756bd4d2b141cdd; Arb=400 bits
+[2026-08-31T09:06:08Z] anchor stage start
+[2026-08-31T09:06:08Z]   A1 EQUIVARIANCE pointwise (q=2,n=3, all sigma and rho, all (x,y)): PASS
+[2026-08-31T09:06:08Z]   A2 orbit-size closure q=3, L=0..4: PASS
+[2026-08-31T09:06:08Z]   A3 exact p-marginal D: dense vs orbit (max|diff|=0.00e+00): PASS
+[2026-08-31T09:06:08Z]   A4 KL orbit-invariance PASS; non-invariant control deviates (max 7.50e-01) => test discriminates: PASS
+[2026-08-31T09:06:08Z]   A5 Phi_{k,n} orbit route vs dense route at 5 points (<=1e-12): PASS
+[2026-08-31T09:06:08Z]   A6 primal exactness orbit vs dense word-level at (2,3),(3,3) uniform+skew (<=1e-12): PASS
+[2026-08-31T09:06:08Z]   orbits: input g-orbits 70 of 729 words; output g-orbits (flat) 113
+[2026-08-31T09:06:08Z]   word bucketing done (729 words) [0.0s]
+[2026-08-31T09:06:08Z]   merged OS done [0.0s]
+[2026-08-31T09:06:08Z]   locator: block rate 2.916761452 (0.486126909/sym) dual 2.916761452 [0.1s]
+[2026-08-31T09:06:09Z]   orbits: input g-orbits 5002 of 59049 words; output g-orbits (flat) 7566
+[2026-08-31T09:06:09Z]   word bucketing done (59049 words) [0.2s]
+[2026-08-31T09:06:18Z]   merged OS done [9.3s]
+[2026-08-31T09:07:45Z]   locator: block rate 4.236997564 (0.423699756/sym) dual 4.237042105 [96.3s]
+[2026-08-31T09:08:17Z]   orbits: input g-orbits 4 of 27 words; output g-orbits (flat) 8
+[2026-08-31T09:08:17Z]   word bucketing done (27 words) [0.0s]
+[2026-08-31T09:08:17Z] structure q=3 n=3: in-g=4 out-g=8 rep-entries=25 B-slots=18 [0.001s]

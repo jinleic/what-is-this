@@ -1,0 +1,11 @@
+{
+ "verdict": "PASS",
+ "blocks": 4,
+ "detail": [
+  "independent from-scratch Brent loop over the frozen factors JSON: 0 failures",
+  "independent SYMBOLIC expansion: each printed output equation expands to exactly sum_k a_ik b_kj",
+  "alphabet ternary, 23 products",
+  "audit path shares no code with the runner's evaluators"
+ ],
+ "seconds": 0.2
+}

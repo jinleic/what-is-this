@@ -1,0 +1,45 @@
+{
+  "root_boxes": 132,
+  "tiles_total_in_band": 49,
+  "tile_index_1based": 3,
+  "boxes_evaluated": 1120,
+  "certified_leaves": 484,
+  "worst_certified_cell": "[-0.82031250000000000000000 +/- 6.00e-24]|[-0.81770833333333333333333 +/- 7.72e-24]|[0.57031250000000000000000 +/- 5.95e-24]|[0.57291666666666666666667 +/- 4.24e-24]",
+  "worst_certified_panels": 16384,
+  "passed": true,
+  "open_reason": null,
+  "open_cell": null,
+  "open_depth": null,
+  "open_panels": null,
+  "open_margin": null,
+  "open_margin_radius": null,
+  "remaining_stack_boxes": 0,
+  "c_lo": "[4.14858931200000000000000000000 +/- 3e-34]",
+  "c_hi": "[4.18177802649600000000000000000 +/- 3e-34]",
+  "certified_margin_min": "[5.06389732008514710540159866096e-7 +/- 2.76e-37]",
+  "certified_margin_min_radius": "0",
+  "certified_margin_max": "[0.137227085185149483156129358866 +/- 1.09e-32]",
+  "envelope_evals": 4140,
+  "budget": 260000,
+  "panel_histogram": {
+    "4096": 1120,
+    "16384": 908,
+    "65536": 784,
+    "262144": 682,
+    "524288": 646
+  },
+  "process_seconds": 12329.886994000006,
+  "runner": "in-session eval kernel (chunked DFS with c_tile3_state.json checkpoints; two detached nohup launches were throttled ~40x by the macOS QoS/Python.app mechanism Campaign A documented \u2014 killed, zero verdicts produced, samples kept in logs/sample_*.txt), identical instrument bytes",
+  "knob": {
+    "PANEL_CAP_from": 131072,
+    "PANEL_CAP_to": 524288,
+    "ladder": [
+      4096,
+      16384,
+      65536,
+      262144,
+      524288
+    ],
+    "deltas_vs_A_elsewhere": "NONE \u2014 code bytes, tiling, ladder \u00d74 rule, floor 1/1024, depth 40, budget semantics, DFS order, margin predicate all byte-shared with A"
+  }
+}

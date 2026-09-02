@@ -1,0 +1,15 @@
+{
+ "verification": "end-to-end symbolic expansion of the assembled circuit",
+ "left_additions": 14,
+ "right_additions": 15,
+ "output_additions": 29,
+ "total_additions": 58,
+ "outputs_matching_AB_exactly": 9,
+ "coord_maps": {
+  "A": "id",
+  "B": "id",
+  "C": "id"
+ },
+ "target_convention": "C[i][j] = sum_l A[3i+l]*B[3l+j], output index c = 3i+j",
+ "note": "all 9 outputs equal the matrix-product bilinear forms as exact 81-monomial coefficient matrices; independent of the DFS/CNF search and of the factor-block Brent check"
+}

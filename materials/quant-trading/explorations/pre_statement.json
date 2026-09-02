@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "perp-spot-activity-volatility",
+  "created_at_utc": "2026-09-01T09:52:00Z",
+  "status": "draft-before-outcome-access; independent review required before campaign freeze",
+  "classification": "retrospective rule-level falsification on reused calendars; not a fresh sample, not prospective, not a return strategy, and not a deployment claim",
+  "hypothesis": {
+    "causal_story": "USD-M perpetual trading is a leveraged speculative-demand channel. When perpetual quote-volume activity is high relative to spot activity, dealer inventory transfer and leveraged-position turnover should increase next-day spot realized volatility beyond what trailing-day volatility persistence alone predicts.",
+    "primary_claim": "Across BTCUSDT and ETHUSDT daily UTC decisions, log(perpetual/spot trailing-24h quote-volume ratio) has a positive monotone association with log(next-24h spot realized volatility / trailing-24h spot realized volatility).",
+    "checkable_edge": "Pooled Spearman rho >= 0.08, positive rho for each asset, upper-minus-lower signal-quintile median volatility surprise >= log(1.10), and one-sided 7-day date-block bootstrap p < 0.05.",
+    "source_context": "He, Manela, Ross and von Wachter, Fundamentals of Perpetual Futures, arXiv:2212.06888, documents perpetual markets as a leveraged speculative channel and a persistent multiple of spot volume. The paper motivates the channel; it does not supply or validate this exact rule."
+  },
+  "novelty_and_consumption": {
+    "prior_window_audit": "prior-window-consumption-audit.json",
+    "prior_window_audit_sha256": "bd4fa74af764f03572f1607dc5a2f6929591b2559ade6f66ede9cdef2868d2a2",
+    "calendar_disjointness_claim": "none",
+    "calendar_reuse": "Both test windows were already consumed by historical-confirmation/results.json and unrelated registered mechanisms. No historical Binance span is virgin.",
+    "rule_level_claim": "No registered artifact computes the daily USD-M-perpetual/spot quote-volume ratio or tests it against forward spot volatility surprise. focused-crypto-cross-section used quote volume only as a liquidity filter; crypto-microstructure-execution measured execution feasibility on isolated 2024 days.",
+    "retracted_inherited_claim": "persistent-funding-premium-freshness-errata.json called 2026-01..2026-07 touched only by the corrected carry audit; historical-confirmation/results.json fields candidates.crypto-carry-decay.window and candidates.factor-momentum-timing.window prove that false. This contract makes no freshness claim."
+  },
+  "assets_and_data": {
+    "assets": ["BTCUSDT", "ETHUSDT"],
+    "sources": [
+      "quant-trading/data/raw/binance/spot-1h/{asset}/{asset}-1h-{month}.zip",
+      "quant-trading/data/raw/binance/um-perp-1h/{asset}/{asset}-1h-{month}.zip"
+    ],
+    "fields": {"open_time": 0, "close": 4, "quote_volume": 7},
+    "input_inventory": "perp-spot-activity-inputs.json",
+    "input_inventory_sha256": "7818443a027016b6d8cfd8784b7bd42cd5d91870f05bbae3599088f58cfc8274",
+    "integrity": "All 56 immutable zip SHA-256 values matched their upstream .CHECKSUM sidecars before this draft. The runner must re-verify the inventory file hash, every archive hash, and every sidecar value before parsing outcomes.",
+    "timestamp_rule": "Normalize seconds/milliseconds/microseconds to UTC milliseconds by magnitude. Reject duplicate or non-hour-aligned open times, nonpositive prices, negative volume, missing required hours, and disagreeing spot/perpetual hourly keys.",
+    "lawfulness": "Keyless Binance public archives, internal research only; raw redistribution subject to Binance terms as recorded in quant-trading/data/manifest.json source_policies.binance."
+  },
+  "frozen_rule": {
+    "decision_clock": "00:00:00 UTC each calendar day; outcome membership uses exchange open_time, never file order or receipt time.",
+    "signal": "At decision t, sum quote_volume over exactly 24 complete hourly bars [t-24h,t) separately for USD-M perpetual and spot. x_t = log(perp_quote_volume_sum / spot_quote_volume_sum). No winsorization, standardization, percentile trigger, or threshold.",
+    "trailing_baseline": "Use 25 spot closes from hourly bars t-25h through t-1h to form exactly 24 close-to-close log returns. trailing_rv = sqrt(sum(r_i^2)).",
+    "outcome": "Use the last known close at t-1h plus 24 spot closes from bars [t,t+24h) to form exactly 24 future close-to-close log returns. future_rv = sqrt(sum(r_i^2)). y_t = log(max(future_rv,1e-12) / max(trailing_rv,1e-12)).",
+    "sampling": "One observation per asset per UTC day. Outcomes do not overlap within an asset. BTC and ETH observations on the same date remain paired for bootstrap resampling.",
+    "statistics": "Average-rank Spearman correlation. Quintiles use pooled x ranks with floor(0.20*n) observations in each tail; gap is median(y | upper tail) - median(y | lower tail).",
+    "bootstrap": "10,000 circular moving-block resamples of UTC dates, fixed seed 20260901, block length 7 dates; resample dates and preserve both assets together. Each replicate draws whole 7-date blocks and is then truncated to exactly the original number of dates, so resampled n equals observed n. One-sided p = (1 + count(rho_boot <= 0)) / 10001.",
+    "known_estimator_bias": "The signal window [t-24h,t) is the same span used for trailing_rv, and trailing_rv is the denominator of y. Because volume and volatility co-move, realized-volatility mean reversion biases pooled rho NEGATIVE. This bias is conservative for the positive claim: it cannot manufacture a pass. It also means a failure of this contract falsifies THIS conservative test, not the general economic proposition that leveraged activity precedes volatility. That asymmetry is declared here, before outcome access, and may not be raised afterwards to relitigate a negative verdict."
+  },
+  "windows": {
+    "primary": {"start_utc_inclusive": "2025-07-01T00:00:00Z", "end_utc_exclusive": "2026-01-01T00:00:00Z", "expected_dates": 184, "expected_pooled_observations": 368},
+    "replication": {"start_utc_inclusive": "2026-01-01T00:00:00Z", "end_utc_exclusive": "2026-07-01T00:00:00Z", "expected_dates": 181, "expected_pooled_observations": 362},
+    "context_only": "2025-06 and 2026-07 archives supply trailing or terminal hourly bars only. Context rows cannot become decisions outside the frozen windows."
+  },
+  "minimum_sample": {
+    "primary": {"pooled": 360, "per_asset": 180},
+    "replication": {"pooled": 354, "per_asset": 177},
+    "complete_case_only": true
+  },
+  "gates": {
+    "G1_pooled_effect": "pooled Spearman rho(x,y) >= 0.08",
+    "G2_asset_consistency": "BTCUSDT rho > 0 AND ETHUSDT rho > 0",
+    "G3_economic_magnitude": "pooled upper-minus-lower x-quintile median y gap >= log(1.10) = 0.09531017980432493",
+    "G4_dependence_robustness": "one-sided 7-date block-bootstrap p < 0.05",
+    "pass_rule": "A window passes only if its minimum sample is met and G1 through G4 are all true. Gates are conjunctive; a large value on one cannot rescue another.",
+    "fail_rule": "If minimum sample is met and any gate is false, the mechanism fails on that window.",
+    "inconclusive_rule": "Only integrity failure, unavailable required hours, or unmet sample minimum can produce inconclusive. UNKNOWN never passes."
+  },
+  "stopping_and_replication": {
+    "primary_run": "Exactly one outcome-producing execution on the primary window after freeze.",
+    "on_primary_fail": "Write the negative evidence, close FROZEN-NEGATIVE, never run replication, tune, extend, pool, or re-window this mechanism.",
+    "on_primary_inconclusive": "Write evidence, close FROZEN-INCONCLUSIVE, and do not reinterpret missingness as failure or success.",
+    "on_primary_pass": "Run the already frozen replication window exactly once with identical code, statistic, gates, seed, and costs (none: this is not a traded-return rule).",
+    "survival_rule": "The mechanism survives only if both primary and replication pass every gate. A replication failure closes FROZEN-NEGATIVE; a replication integrity/sample failure closes FROZEN-INCONCLUSIVE.",
+    "write_once": "The runner refuses if a requested output path already exists. Primary and replication are separate invocations: --window replication requires --primary-artifact pointing at the committed primary file, refuses unless its role is primary, its contract hash matches, and its status is pass-on-this-sample."
+  },
+  "multiplicity_boundary": {
+    "mechanisms": 1,
+    "signals": 1,
+    "horizons": 1,
+    "outcomes": 1,
+    "assets": 2,
+    "variants": 0,
+    "parameter_search": "none",
+    "interpretation": "Per-asset signs and effect/bootstrap checks are frozen conjunctive diagnostics, not selectable trials. No alternative volume field, lookback, outcome horizon, transform, threshold, asset pool, or cost/return conversion may be evaluated under this contract."
+  },
+  "claim_boundary": "A two-window pass supports only a retrospective incremental volatility-risk signal on these Binance BTC/ETH calendars. It does not establish tradable alpha, net return, causality, portability, deployment readiness, or a capital-allocation claim. Any trading implementation requires a separate preregistered contract and untouched prospective evidence."
+}

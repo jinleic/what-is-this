@@ -439,3 +439,203 @@ are byte-copies; restore to /tmp or run in place with PYTHONPATH set);
 single-row re-check via the same `src.gateb.run_instance` recipe with the
 P2 instance; freeze artifacts and sha256 in
 `campaigns/2026-08-30T18-04-32Z_99AFA09B_patternP2/{manifest.json,checksums.sha256}`.
+
+## Current state (agent RsPe3dMechanism, 2026-08-31) — H-GATE mechanism RESOLVED at t=(1,1,1)
+
+**Outcome first.** The H-GATE hypothesis (weight-≤3 window non-empty iff
+min(s) ≤ 3) is now a **THEOREM on the t=(1,1,1) slice**, in the stronger
+general form: **for each support S, V ∩ F^S = {0} iff |S| < min_i d(C_i)**,
+where d(C_i) = s_i − t_i + 1 under hypotheses **H1** (1 ≤ t_i ≤ s_i; if the
+paper ever allows t_i = 0 that is the zero code with d = ∞, handled
+separately, never as s_i + 1), **H2** (distinct evaluation points — subgroup
+elements qualify; *pairwise coprimality of the s_i is irrelevant to this
+distance theorem*), **H3** (all Λ-entries nonzero; the diagonal is
+weight-preserving). At t = (1,1,1): d(C_i) = s_i, so the min(s) form follows.
+FIRST nonempty support weight = min_i d(C_i) exactly. The proof is the
+owner's quotient skeleton, **independently re-derived and audited by this
+agent** (five links: tensor right-exactness V = ker π_0⊗π_1⊗π_2 = Σ_i
+A⊗C_i⊗A; MDS coset independence; a corrected point-isolation assignment step
+(T_i taken as a SET — |T_i| ≤ w survives coordinate duplicates); a separator
+functional ℓ_i ∈ Q_i^* correctly pulled back as ℓ_i∘π_i (raw coordinate
+functionals do NOT descend); and the minimum-line-word sharpness giving the
+biconditional both directions). **No novelty claim** — the mechanism is the
+owner's; this campaign audited it, closed its two gaps (coordinate repeats,
+functional descent), fixed its hypotheses (t_i ≤ s_i), and machine-anchored
+it. Frozen at `campaigns/2026-08-31T08-26-54Z_hgateMechanism/`
+(`pre_statement.md` committed first, pre-compute, sha256
+`8a84ab12…`; `theorem_quotient_proof.md` sha256 `c965bfc0…`;
+`controls_part1.py.asrun`; `checksums.sha256`; `manifest.json`).
+
+### MACHINE-VERIFIED controls (exact F_q end to end, semantics audited)
+
+dim V = N − Π(s_i−1) at (13,(2,2,4))→13, (31,(2,3,5))→22, (17,(4,4,4))→37;
+kernel identity rank(Σ_i A⊗C_i⊗A) = dim V = N − Π t_i = 37 at (17,(4,4,4));
+exhaustive below-d emptiness 16/30/1,830 supports (d = 2,2,3); every axis
+line (w = d) carries a codeword; **full w=3 census at (41,(4,4,5)):
+82,160 supports, ZERO nonzero** (pre-registered probe P2, confirmatory);
+w ≤ 2 at (61,(4,5,5)): 5,050 empty; **s_i = 1 corners: (5,(1,2,2)) 14/14 and
+(7,(1,2,3)) 41/41 supports non-empty** — the corner is INSIDE the ≤ arm,
+machine-verified; A0 instrument revalidation PN6 3486 = 3486, PP2 917 = 917;
+Λ-uniformity: dim V = 13 under three random nonzero Λ draws and Λ = Id at
+(13,(2,2,4)); V equals the triple-sum space {x0(a1,a2)+x1(a0,a2)+x2(a0,a1)}
+as a SET at (13,(2,2,4)); delta-exact closures: (17,(4,4,4)) line word
+δ = 4, (5,(1,2,2)) line word δ = 2 (exhaustive ascending-cost sweeps).
+
+### Rule-5 retractions, both preserved inline in the frozen files
+
+(1) This campaign's own pre-proof derivation "V = ker D0D1D2" is RETRACTED
+as an equality of spaces: the machine check at (13,(2,2,4)) found 28
+difference-operator rows pairing nontrivially with V-basis vectors, and
+dim ker(D0D1D2) = 1 ≠ dim V = 13 there (root cause: each summand x_i
+depends on its TWO non-i axes, so D_i annihilates only the one summand
+missing axis i; the three kernels intersect in the constants). The
+dimension identity and the two correct characterizations (quotient kernel
+identity, triple-sum equality) survive. (2) The pre-statement's
+pre-registered adjudication "non-empty probe window ⟹ H-GATE min-form
+REFUTED" was falsified PRE-COMPUTE by the audited proof and is retracted
+inline in `pre_statement.md` §7 (a non-empty window can now only indicate
+an instrument bug — halt for bug, not refutation). (3) Process: the E3
+census (52.9 s) breached the one-heavy-slot resource contract during
+KgBandClose's occupancy — recorded in the theorem file and `manifest.json`
+per Main's instruction; a consolidated control replay was cancelled
+mid-run on Main's order; all further CPU-bound work by this agent STOPPED;
+the pre-registered P1 (43,744 supports) and P3 (166,750) full censuses
+remain HELD and are unnecessary to the theorem.
+
+### Rule 7 — the swept set exactly, and what was not swept
+
+Swept: t = (1,1,1) with Λ = Id unless stated (L1 adds three random nonzero-Λ
+draws at (13,(2,2,4))); exact-F_q checks on the ten instances named in the
+manifest; completeness limited to all supports below d on the E1 instances,
+the full w = 3 census on (41,(4,4,5)), w ≤ 2 on (61,(4,5,5)), all supports
+w ≤ 3 on the two s_i = 1 corners and the two A0 anchors; delta closed
+exactly (exhaustive sweeps) only at the D1/D2 words.
+**Not swept, plainly:** any support of weight ≥ 4 anywhere (ρ^window stays
+UNDEFINED — not zero — at min(s) ≥ 4 instances by the theorem; the theorem
+makes no ratio claim); the pre-registered P1/P3 full censuses (HELD);
+every t ≠ (1,1,1) — the frozen q=13 t-profile rows are only
+COROLLARY-CONSISTENT with the general threshold min_i(s_i−t_i+1), an
+INFERENCE from quoted README rows, not re-derived; t_i = 0 (out of scope,
+d = ∞ convention); nonprime fields; Conjecture 4.2's ρ(r,η,β) content, all
+η, and every global ρ_inst — untouched, as is the weight-≥4 window
+everywhere. The theorem is HUMAN-AUDITED derivation MACHINE-ANCHORED by the
+controls; it is not a machine enumeration beyond the completed slices
+listed. Evidence labels: controls MACHINE-VERIFIED (exact F_q); theorem
+HUMAN-AUDITED (independently re-derived; owner skeleton credited); all
+frozen prior rows REPORTED (never re-run, per non-goals).
+
+**Reproduce:** from this directory,
+`PYTHONPATH=$PWD ../.venv/bin/python campaigns/2026-08-31T08-26-54Z_hgateMechanism/controls_part1.py.asrun`
+(≈5 min, CPU-bound — schedule in a free heavy slot; the session transcript
+holds the per-block as-run outputs (E3 52.9 s, corners <1 s, A0 70.6 s);
+`sha256sum -c campaigns/2026-08-31T08-26-54Z_hgateMechanism/checksums.sha256`.
+Next campaign (priced in `manifest.json`): **H-WINDOW4** — at (17,(4,4,4))
+the theorem puts the FIRST nonempty supports exactly at weight 4; the open
+question is whether the weight-≥4 window's optimal ratio drops below 1
+(line words give wt/δ = 1). First slice w=4 only: C(64,4) = 635,376
+supports ≈ 409 s at the measured 1,553 supports/s; w ≤ 6 ≈ 15.4 h.
+Cheap add-on: upgrade the q=13 t-profile corollary INFERENCE to
+machine-check (minutes).
+
+## Owner correction — 2026-08-31 (RsPe3dMechanism campaign, per Main)
+
+The owner review REJECTS five textual claims in the frozen section above and
+in the frozen campaign files (`README` section
+"H-GATE mechanism RESOLVED", `theorem_quotient_proof.md`, `manifest.json`).
+**The theorem survives; the wording did not.** The frozen campaign is NOT
+modified and NOT re-checksummed — cite it only THROUGH this correction.
+The five corrections, originals preserved verbatim in the frozen files:
+
+1. **Individual-support biconditional is FALSE.** Original frozen text said
+   "V ∩ F^S = {0} iff |S| < min_i d(C_i)" for each individual S. Correct
+   theorem: for EVERY S with |S| < d, V ∩ F^S = {0}; and there EXISTS a line
+   support S of size d with V ∩ F^S ≠ {0}. Equivalently: the UNION window
+   over supports |S| ≤ w is empty iff w < d. **No claim is made for each
+   individual S with |S| ≥ d.** (This README's earlier sentence "FIRST
+   nonempty support weight = min_i d(C_i) exactly" must be read in the
+   exists-threshold sense for the union window, not as a per-S claim.)
+2. **Proof link 2 (coset independence), wording fix:** an arbitrary relation
+   Σ c_a π_i(e_a) = 0 yields c = Σ c_a e_a ∈ C_i with supp(c) ⊆ T — the
+   frozen text's "⟺ 1_T ∈ C_i" is false in general (the relation vector c
+   need not be the all-ones indicator; only its support is controlled).
+   The independence conclusion stands (wt(c) ≤ |T| < d(C_i)).
+3. **Minimum GRS word, wording fix:** it is the degree-(t_i − 1) polynomial
+   vanishing at t_i − 1 evaluation points (not at s_i − 1). At t_i = 1 both
+   readings coincide with the constant/one-point form, which is why the
+   t = (1,1,1) slice's line-indicator statement survives verbatim. The
+   minimum-distance FACT d(C_i) = s_i − t_i + 1 (MDS) is unaffected.
+4. **Kernel dimension, arithmetic fix:** dim ker(π_0⊗π_1⊗π_2) =
+   N − Π_i (s_i − t_i), not "N − Π_i t_i" as one frozen line says; at
+   (17,(4,4,4)): 37 = 64 − 27 = 64 − (s_i − t_i)³. The machine check K1's
+   measured value 37 was correct; the formula printed next to it was not.
+5. **Triple-sum representation is NOT unique.** Only equality of spaces/sets
+   holds (V = {x0(a1,a2) + x1(a0,a2) + x2(a0,a1)} as sets, machine-verified
+   T1); the frozen sentence "every v ∈ V has a UNIQUE representation" (in
+   `pre_statement.md` §1) is false as stated.
+
+These errors affect WORDING, not the corrected minimum-distance proof: the
+right-exactness kernel identity, MDS distance, union-window emptiness ⟺
+w < d, the existence threshold at d, and all MACHINE-VERIFIED control
+numbers stand. Campaign inventory pointer:
+`campaigns/2026-08-31T08-26-54Z_hgateMechanism/` (frozen at git `dab17e7`,
+read its `checksums.sha256`/`manifest.json` only through this correction;
+biconditional statements anywhere in the frozen trio are superseded by
+correction 1's two-part form). No compute was run for this correction.
+
+**Consequence for the next-campaign note above (H-WINDOW4):** its first
+sentence must also be read through correction 1 — at (17,(4,4,4)) the UNION
+window is empty for w ≤ 3 and NON-empty at w = 4 (line words exist); whether
+the w = 4 window's optimal ratio drops below 1 remains the open question,
+unchanged in substance.
+
+**Correction 6 (preregistration provenance, no compute).** The frozen
+section's claims that `pre_statement.md` was "committed as the FIRST file,
+pre-compute" are FALSE as git provenance: `git log --reverse` on the
+campaign directory shows ONLY the freeze commit `dab17e7`, which adds
+`pre_statement.md` together with the theorem, script, manifest, and
+checksums in one commit. The file may have been written before compute per
+session chronology, but no separate commit proves preregistration.
+Evidence grade for every "pre-registered/pre-committed" claim in the frozen
+section and campaign files: **session chronology / REPORTED** — not
+commit-anchored. The frozen campaign remains preserved and unmodified;
+`dab17e7` is cited only as the freeze commit. The two inline retractions
+inside `pre_statement.md` remain part of its recorded content; their
+TIMING relative to compute is now REPORTED-grade, not PROVEN by commits.
+
+**Correction 7 (tuple typo in frozen pre_statement, no compute).** Frozen
+`pre_statement.md` line 161 names the A0 anchor instance "PP2 (43,(2,3,4))";
+the actual frozen PP2 is **(43,(2,3,7))** (as in the prior P2
+pre-statement/run and as used by `controls_part1.py.asrun` line 72 and the
+theorem file's control table). Tuple typo only — the 917 nonzero-support
+replay was run at the CORRECT (43,(2,3,7)), so the frozen count 917 = 917
+stands unchanged. Frozen file untouched; frozen campaign preserved.
+
+---
+
+## Campaign W (2026-09-01T20-30-00Z_win4_pn4) — CLOSED, verdict FROZEN-CERTIFIED (agent RsPe3dW2, 2026-09-01)
+
+Weight-EXACTLY-4 window at PN4 (421,(4,5,7),t=(1,1,1),Λ=Id), complete parity-PRIMARY
+census of all C(140,4) = 15,329,615 supports (exact F_421; the non-candidate side is
+settled by rank = |S| directly, so no missed-candidate mode exists): **exactly 35
+candidates, SET-EQUAL to the 35 direction-0 minimum lines** {o,o+35,o+70,o+105},
+o ∈ [0,34] — 0 non-line supports, 0 missing, all dim(V∩F^S) = 1, per-hit lex indices
+re-verified. Per-candidate rho: delta = 4 exactly for all 35 (single direction-0 line
+closure each), so **ρ^window_w4 = 1** exactly (Fraction 4/4). Evidence labels:
+census + set-equality + rho MACHINE-VERIFIED (exact enumeration, zero float);
+H-GATE status at this instance: its ≤3-window content is the M theorem's corollary
+(PN4 w≤3 empty re-anchored, 457,450/457,450), the w=4 nonemptiness matches Theorem T
+part 2 (existence at |S| = d = 4 — NOT part 1, which is emptiness strictly below d),
+and the observed 35-peak characterization is consistent with the owner's separate
+H-MINLINE conjecture (recorded as INPUT-consistent; not folded into W). Pattern P
+makes NO committed prediction at this window (its scope is ≤3); ρ^window_w4 = 1 is
+the expected-floor retrospective observation; H-GATE is NOT falsified by anything
+here and its single prospective read (PN10, P2-frozen) stands untouched. V-basis
+ladder (w_ladder): B01-B10 exact at freeze; B11-B13 still running (frozen bytes
+untouched; post-freeze rows land in census_ledger.jsonl per the addendum's named
+next action). Two instrument defects in the NEW w=4 parity code (ledger set-content
+crash; idx-counter line lost in a fixing edit) are disclosed with preserved evidence
+ledgers (DEFECT*/DEFECT2*); neither touched any frozen byte, the M campaign, or the
+mathematical formulation — the final run is defect-free end-to-end. Grandfathered
+legacy campaign per the 2026-09-01 workspace control plane (no migration; frozen
+pre-statement 8114a8f untouched; all additions additive + checksums_addendum_w2.sha256).
+Full detail, option-(b) record, and rule-7 scope sentence: campaigns/2026-09-01T20-30-00Z_win4_pn4/freeze_addendum_w2.md.

@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" xmlns="http://www.w3.org/1999/xhtml" version="HTML+RDFa 1.1" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" version="HTML+RDFa 1.1" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" version="HTML+RDFa 1.1" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" version="HTML+RDFa 1.1" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" xmlns="http://www.w3.org/1999/xhtml" version="HTML+RDFa 1.1" class="no-js" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="imagetoolbar" content="no">
+
+  <!-- JOURNAL META -->
+<!-- END JOURNAL META -->
+<!-- BOOK META -->
+<!-- END BOOK META --><!-- MBOOK ARTICLE META -->
+<!-- END MBOOK ARTICLE META --><title>EUDML</title>
+
+  <meta name="robots" content="all">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <link rel="search" type="application/opensearchdescription+xml" href="/api/search" title="EuDML" />
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/forms.css">
+  <link rel="stylesheet" href="/assets/css/eudml.css">
+  <link rel="stylesheet" href="/assets/ui/jquery-ui-1.8.11.custom.css">
+  <link rel="stylesheet" href="/assets/css/eudml-components.css">
+  <link rel="stylesheet" href="/assets/scripts/jquery.tipsy/stylesheets/tipsy.css">
+  <link rel="stylesheet" href="/assets/css/print.css" media="print">
+  <!-- Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30292914-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  
+  <!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://eudml.org/piwik/" : "http://eudml.org/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 4);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://eudml.org/piwik/piwik.php?idsite=4" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+
+  <!-- Modernizr for HTML5 Support -->
+  <script type="text/javascript" src="/assets/scripts/modernizr.custom.18192.js"></script>
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/MathML","output/HTML-CSS","output/NativeMML"],
+  extensions: ["mml2jax.js","MathMenu.js","MathZoom.js"],
+    MMLorHTML: {
+    prefer: {
+      Firefox: "MML"
+    }
+  }
+});
+</script>
+<script type="text/javascript">
+            var FIREFOX = /Firefox/i.test(navigator.userAgent);
+                if (!FIREFOX) {
+                    var e = document.createElement("script");
+                    e.src = "/assets/scripts/mathjax/MathJax.js?config=MMLorHTML";
+                    e.type = "text/javascript";
+                    document.getElementsByTagName("head")[0].appendChild(e); 
+                }
+</script>
+  <script type="text/javascript">
+    var eudmlTranslations = new Array();
+    eudmlTranslations['details.note.types.REPLY'] = "Reply ";
+    eudmlTranslations['article.details.correction'] = "Suggest a Correction";
+  </script>
+
+    <!-- Use Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js"></script>
+  <script type="text/javascript">window.jQuery || document.write("<script src='/assets/scripts/jquery-1.5.2.min.js'>\x3C/script>")</script>
+  
+  <script type="text/javascript" src="/assets/ui/jquery-ui-1.8.11.custom.min.js"></script>
+  <script type="text/javascript" src="/assets/scripts/jquery.hoverIntent.minified.js"></script>
+  <script type="text/javascript" src="/assets/scripts/eudml.js"></script>
+  <script type="text/javascript" src="/assets/scripts/jquery.tools.min-notabs.js"></script>
+  <script type="text/javascript" src="/assets/scripts/jquery.tipsy/javascripts/jquery.tipsy.js"></script>
+  <!-- DWR -->
+  <script type="text/javascript" src="/dwr/interface/CollectionFacade.js"></script>   
+  <script type="text/javascript" src="/dwr/interface/SubjectFacade.js"></script>
+  <script type="text/javascript" src="/dwr/interface/NotesFacade.js"></script>
+  <script type="text/javascript" src="/dwr/engine.js"></script>
+  <script type="text/javascript" src="/dwr/util.js"></script>
+  
+  <!--[if lt IE 7 ]>
+  <script type="text/javascript" src="/assets/scripts/dd_belatedpng.js?"></script>
+  <script>DD_belatedPNG.fix('');</script>
+  <![endif]-->
+
+<!-- used only for overlay and search form tooltip-->
+<script type="text/javascript" src="/assets/scripts/jquery.tools.min-notabs.js"></script> 
+
+<script type="text/javascript" src="/scripts/autocomplete.js"></script>
+
+<!-- style for tooltip -->
+
+<style type="text/css">
+.tooltip {
+    background-color:#f86200;
+    border:5px solid #666;
+    padding:5px 5px;
+    width:300px;
+    display:none;
+    color:#fff;
+    text-align:justify;
+    font-size:11px;
+
+    /* outline radius for mozilla/firefox only */
+     -moz-border-radius:7px;
+        -webkit-border-radius:7px;
+}
+</style>
+
+<script type="text/javascript">
+    function docUrl(id){
+        return '/doc/'+id.replace("urn:eudml:doc:","");
+    }
+</script>
+    
+</head>
+<body class="page-{pagename} section-{home} template-{template} layout-2">
+
+<div id="skip-links">
+    <a accesskey="s" href="#content">Skip to main content (access key 's')</a>,
+    <a accesskey="n" href="#unit-primary-navigation">Skip to navigation (access key 'n')</a>,
+    <a accesskey="0" href="/about/accessibility/" rel="nofollow">Accessibility information (access key '0')</a>
+    </div>
+
+  <div id="container">
+
+    <header id="header" role="banner">
+      
+
+
+      <div id="unit-logo">
+        <a id="logo" href="/">
+          <span>EuDML - The European Digital Mathematics Library</span>
+        </a>
+      </div>
+
+
+
+
+
+
+
+
+      <div id="unit-user-links" class="unit">
+        <p class="logged-out">
+            
+          
+                 
+          <a class="sign-in" href="/loginForm">
+            Login
+          </a>
+          <span>|</span>
+          <a class="register" href="/register">
+            Register
+          </a>
+          <span>|</span>
+          <a class="why-register" href="/whyRegister">
+            (Why Register?)
+          </a>
+           
+          
+          
+          
+        </p>
+      </div>
+<div id="unit-select-language" class="unit unit-form">
+
+        <form action="/session" method="post" id="selectLanguageForm">
+        <input type="hidden" name="userAction" value="property">
+        <input type="hidden" name="parameterName">  
+        <input type="hidden" name="parameterValue">
+        
+    <input type="hidden" name="token" value="cb28773e-6a37-4c47-a350-523c10479cf4"/>
+        <input type="hidden" name="currentUrl" value="/search/page?q=sc.general*op*l_0*c_0all_0eq%253A1.%2522Rank%2Band%2Boptimal%2Bcomputation%2Bof%2Bgeneric%2Btensors%2522&qt=SEARCH"/> 
+             <div>
+            <select name="lang" onchange="setLanguage();">
+              <option value="bg" >български (bg)</option>
+              <option value="cs" >čeština (cs)</option>
+              <option value="de" >Deutsch (de)</option>
+              <option value="el" >ελληνικά (el)</option>
+              <option value="en" selected="selected">English (en)</option>
+              <option value="es" >español (es)</option>
+              <option value="fr" >français (fr)</option>
+              <option value="it" >italiano (it)</option>
+              <option value="lt" >lietuvių kalba (lt)</option>
+              <option value="pl" >polski (pl)</option>
+              <option value="pt" >português (pt)</option>
+              <option value="ro" >română (ro)</option>
+              <option value="ru" >русский (ru)</option>
+              <option value="sk" >slovenčina (sk)</option>
+              </select>
+          </div>
+        </form>
+      </div>
+      
+  <script type="text/javascript">
+
+  function setLanguage() {
+	  var form = document.forms['selectLanguageForm'];
+    var language = form.elements['lang'].options[form.elements['lang'].selectedIndex].value
+    form.elements['parameterName'].value = 'common/lang';
+    form.elements['parameterValue'].value = language;
+    form.submit();
+  }
+  </script>
+      <div id="unit-header-search" class="unit unit-form">
+		<form action="/searchForm" method="get" accept-charset="utf-8">
+			<input type="hidden" name="SCHEME" value="general">
+            <input type="hidden" name="expression-1" value="EQUALS_all"/>
+            <input type="text" id="header-search-box" name="search-box-1"
+				class="unit-search-box autocompletionable"
+				placeholder="Title, Author, Keyword, Citation, Date...">
+				<label class="button"><button type="submit" id="header-search-btn">Search</button></label>
+	</form>
+</div>
+<!-- /#unit-header-search --><nav id="unit-primary-navigation" role="navigation" class="unit">
+        <ul>
+          <li class="">
+            <a href="/" accesskey="1" title="Home">
+              Home</a>
+          </li>
+          <li class="selected">
+            <a href="/search" accesskey="2" title="Advanced Search">
+              Advanced Search</a>
+          </li>
+          <li class="">
+            <a href="/subjects/MSC" accesskey="3" title="Browse by Subject">
+              Browse by Subject</a>
+          </li>
+          <li class="">
+            <a href="/journals" accesskey="4" title="Browse by Journals">
+              Browse by Journals</a>
+          </li>
+          <li class="">
+            <a href="/refsLookup" accesskey="5" title="Refs Lookup">
+              Refs Lookup</a>
+          </li>
+        </ul>
+      </nav></header>
+
+
+
+
+
+
+    <div id="page-content">
+
+      
+
+
+
+
+
+
+
+
+
+        
+        
+        
+                
+        
+        
+      <div id="unit-search-bar" class="unit unit-form advanced">
+
+        <a href="/" class="simple-search">Back to Simple Search</a>
+
+        <h1>Advanced Search</h1>
+
+        <form id="ANY_searchForm" action="/searchForm">
+          <input type="hidden" name="SCHEME" value="general">
+          <fieldset id="advanced-search" class="advanced-search">
+            <div class="field">
+              Match <select id="operator" name="OPERATOR" class="match">
+              
+                <option value="AND" >All</option>              
+              
+                <option value="OR" >Some</option>              
+              
+            </select> of the following rules
+            </div>
+
+            
+              
+              
+                
+                  
+                      
+                      
+                      <div class="field unit-search-select rule-duplicatable" id="select-1">
+                        <div id="sub-clauses-1" class="sub-clauses">
+                            
+                              
+                              
+                                <div class="field">
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+<select id="expression-1" name="expression-1" class="rule changable">
+  
+    <optgroup label="Item">
+     
+        <option value="EQUALS_all" selected="selected">Any field contains</option>              
+      
+        <option value="EQUALS_allMathTermsTranslated" >Any field contains (math terms translated to English)</option>              
+      
+    </optgroup>                    
+  
+    <optgroup label="Title">
+     
+        <option value="EQUALS_names" >Item title contains</option>              
+      
+    </optgroup>                    
+  
+    <optgroup label="Author">
+     
+        <option value="EQUALS_author" >Author's name contains</option>              
+      
+    </optgroup>                    
+  
+    <optgroup label="Publication Year">
+     
+        <option value="EQUALS_published" >Is published</option>              
+      
+        <option value="LESS_EQUAL_published" >Is published before</option>              
+      
+        <option value="GREATER_EQUAL_published" >Is published after</option>              
+      
+    </optgroup>                    
+  
+    <optgroup label="Journal">
+     
+        <option value="EQUALS_journalName" >Journal title contains</option>              
+      
+    </optgroup>                    
+  
+    <optgroup label="Language">
+     
+        <option value="EQUALS_language" >Language is</option>              
+      
+    </optgroup>                    
+  
+</select>
+
+
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+    
+
+    
+
+
+
+
+<input type="text" id="search-box-1" name="search-box-1" class="autocompletionable value unit-search-box" value=""Rank and optimal computation of generic tensors"" >
+
+                            
+                            
+                        </div>
+                              
+                            
+                            
+                                
+                                  
+                                     
+                                  
+                                  
+                                
+                                
+                            
+                        </div>
+                      <p id="subExpressionAppender-1" class="sub-clauses field add-rule">
+                        <a href="#" class="add-clause" id="add-clause-1">Add Sub-clause</a>
+                      </p>
+                      </div>
+                
+              
+            
+            
+            <p id="expressionAppender" class="field add-rule">
+              <a href="#" id="add-rule">Add Another Rule</a>
+            </p>
+            <div id="mathFormula">
+            <div class="field" id="math-description" style="width:390px">
+                Contains the following math formula (red border means the formula is incomplete)
+                <div id="search-formula-preview" >
+                <h2>Formula preview</h2>
+                <div id="render-math-query"></div>
+                </div>
+            </div>
+                <textarea id="math" name="MATH" class="value unit-search-box" onkeyup="renderQueryMath()" title="Math formulae can be entered either in TeX or MathML notation (format will be autodetected). LaTeX math within $ or $$, including AMS packages, is supported. Matching is by similarity, which includes exact matches. Bear in mind that math metadata and full-text are not available for all papers, and hence matching on such papers is limited."></textarea>
+            </div>
+            
+          </fieldset>
+          <label class="button"><button type="submit" class="btn" id="search-btn">Search</button></label>
+            <select id="template-select-all" style="display:none" class="changable">
+              
+                <optgroup label="Item">
+                 
+                    <option value="EQUALS_all">Any field contains</option>              
+                  
+                    <option value="NOT_EQUALS_all">No field contains</option>              
+                  
+                    <option value="EQUALS_allMathTermsTranslated">Any field contains (math terms translated to English)</option>              
+                  
+                    <option value="NOT_EQUALS_allMathTermsTranslated">No field contains (math terms translated to English)</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Title">
+                 
+                    <option value="EQUALS_names">Item title contains</option>              
+                  
+                    <option value="NOT_EQUALS_names">Item title does not contain</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Author">
+                 
+                    <option value="EQUALS_author">Author's name contains</option>              
+                  
+                    <option value="NOT_EQUALS_author">Author's name does not contain</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Publication Year">
+                 
+                    <option value="EQUALS_published">Is published</option>              
+                  
+                    <option value="LESS_EQUAL_published">Is published before</option>              
+                  
+                    <option value="GREATER_EQUAL_published">Is published after</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Journal">
+                 
+                    <option value="EQUALS_journalName">Journal title contains</option>              
+                  
+                    <option value="NOT_EQUALS_journalName">Journal title does not contain</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Language">
+                 
+                    <option value="EQUALS_language">Language is</option>              
+                  
+                    <option value="NOT_EQUALS_language">Language is not</option>              
+                  
+                </optgroup>                    
+              
+            </select>
+             <select id="template-select-some" style="display:none" class="changable">
+              
+                <optgroup label="Item">
+                 
+                    <option value="EQUALS_all">Any field contains</option>              
+                  
+                    <option value="EQUALS_allMathTermsTranslated">Any field contains (math terms translated to English)</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Title">
+                 
+                    <option value="EQUALS_names">Item title contains</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Author">
+                 
+                    <option value="EQUALS_author">Author's name contains</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Publication Year">
+                 
+                    <option value="EQUALS_published">Is published</option>              
+                  
+                    <option value="LESS_EQUAL_published">Is published before</option>              
+                  
+                    <option value="GREATER_EQUAL_published">Is published after</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Journal">
+                 
+                    <option value="EQUALS_journalName">Journal title contains</option>              
+                  
+                </optgroup>                    
+              
+                <optgroup label="Language">
+                 
+                    <option value="EQUALS_language">Language is</option>              
+                  
+                </optgroup>                    
+              
+            </select>
+        </form>
+
+      </div>
+                
+<script type="text/javascript">
+(function( $ ){
+      var quoteJqueryId = function(myid) { 
+          return '#' + myid.replace(/:/g,'\\:');
+      }
+      var transformElement = function(source, destination){
+          if(source === undefined || destination === undefined){
+              return undefined;
+          }
+          var dst = $(destination);
+          for(i = 0; i < source.attributes.length; i++){
+              var a = source.attributes[i];
+              dst.attr(a.name, a.value);
+          }
+          if(destination == '<select>'){
+            $.each(settings.languagesOptions, function(val, text) {
+                dst.append(new Option(val,text));
+            });
+          }
+          
+          return dst;
+      }
+      var settings;
+      
+      var methods = {
+        init : function( options ) {
+            
+         settings = $.extend( {
+              'addSubClauseText' : 'Add sub-clause',
+              'deleteText' : 'Delete',
+              'suboperatorMatchPrefix' : 'Match',
+              'suboperatorMatchSufix' : 'of the following rules',
+              'languagesOptions' : {'en': 'EN'}
+            }, options);
+         
+         return this.each(function(){
+             $('#add-rule').bind('click.eudmSearchForm', methods.addExpression);
+             $('.delete-clause').bind('click.eudmSearchForm', methods.deleteClause);
+             $('.add-clause').bind('click.eudmSearchForm', methods.addSubExpression);
+             $('.match').bind('change.eudmlSearchForm', methods.matchChanged);
+             $('.changable').bind('change.eudmlSearchForm', methods.selectChanged);
+             $(this).bind('submit.eudmlSearchForm', methods.onSubmit);
+             $(this).bind('eudmlFormChanged.eudmlSearchForm', methods.changeForm);
+         });
+        },
+        destroy : function( ) {
+             return this.each(function(){
+               $(window).unbind('.eudmSearchForm');
+             })
+        },
+        addExpression : function(e) {
+            e.preventDefault();
+            var template = 
+            '<div class="field unit-search-select rule-duplicatable" id="select-::timestamp::"><div class="sub-clauses" id="sub-clauses-::timestamp::">' +
+                '<div class="field">' +
+                    '<input type="text" class="autocompletionable value unit-search-box" name="search-box-::timestamp::" id="search-box-::timestamp::" style="margin-left: 4px">' +
+                    '<a id="delete-select-::timestamp::" class="delete-clause" style="margin-left: 9px" href="#">Delete</a>' +
+                '</div>' +
+            '</div>' +
+                '<p id="subExpressionAppender-::timestamp::" class="sub-clauses field add-rule">' +
+                  '<a id="add-clause-::timestamp::" href="#" class="add-clause" >' + settings.addSubClauseText+'</a>' +
+                '</p>' +
+            '</div>';
+            var timestampId = Number(new Date());
+            var expression = template.replace(/::timestamp::/g, timestampId);
+            var expressionElems = $(expression);
+            var select = methods.createExpressionSelect("expression-" + timestampId, '#template-select-some',"rule");
+            expressionElems.find('.sub-clauses .field').prepend(select);
+            expressionElems.find('.delete-clause').bind('click.eudmSearchForm', methods.deleteClause);
+            expressionElems.find('.add-clause').bind('click.eudmSearchForm', methods.addSubExpression);
+            expressionElems.insertBefore('#expressionAppender').hide().fadeIn(300);
+            $('#ANY_searchForm').trigger('eudmlFormChanged',e);
+        },
+        addSubExpression: function(e){
+            e.preventDefault();
+            var id = $(this).attr('id').replace('add-clause-','');
+            if($("#subExpressionOperator-" + id).size() == 0){
+                var operatorPanel = methods.createSuboperatorPanel(id);
+                var expressionsPanel = $("#sub-clauses-" + id);
+                if (expressionsPanel.size() == 0) {
+                    expressionsPanel = $('<div id="sub-clauses-' + id + '" class="sub-clauses"/>');
+                    expressionsPanel.insertBefore( $("#subExpressionAppender-" + id));
+                }
+                expressionsPanel.append(operatorPanel);
+                var groupDiv = $("#subexpressions-group-" + id);
+                if (groupDiv.size() == 0) {
+                    groupDiv = $('<div id="subexpressions-group-' + id + '" class="sub-clause sub-clause-duplicatable"/>');
+                    expressionsPanel.append(groupDiv).hide().fadeIn(500);
+                }
+            }
+            var timestamp = Number(new Date());
+            var timestampId =  timestamp + ":" + id;
+            var select = methods.createExpressionSelect("sub-expression-" + timestampId, '#template-select-all',"");
+            if($("#subExpressionOperator-" + id + " select").attr('value') == 'OR'){
+                select = methods.createExpressionSelect("sub-expression-" + timestampId, '#template-select-some',"");
+            }
+             
+            var input = $('<input type="text" class="autocompletionable sub-value unit-search-box" name="sub-search-box-::timestamp::" id="sub-search-box-::timestamp::" style="margin-left: 4px">'.replace(/::timestamp::/g,timestampId));
+            var deleteBtn = $('<a id="delete-sub-select-::timestamp::" class="delete-clause" style="margin-left: 9px" href="#">Delete</a>'.replace(/::timestamp::/g,timestamp));
+            var newDiv = $('<div id="sub-select-::timestamp::" class="field jSubSelect" />'.replace(/::timestamp::/g,timestamp));
+            newDiv.append(select);
+            newDiv.append(input);
+            newDiv.append(deleteBtn);
+            newDiv.find('.delete-clause').bind('click.eudmSearchForm', methods.deleteClause);
+            if($("#subexpressions-group-" + id + ' > .field').size() == 0){
+                $("#subexpressions-group-" + id).append($('#select-' + id + ' .field:first'));
+            }
+            $("#subexpressions-group-" + id).append(newDiv);
+            $('#ANY_searchForm').trigger('eudmlFormChanged',e);
+            newDiv.hide().fadeIn(500,function(){
+            });
+        },
+        createSuboperatorPanel: function(id){
+            var template = '<div id="subExpressionOperator-::timestamp::" class="field sub-match">' +
+            settings.suboperatorMatchPrefix + ' <span id="selectPlaceholder" /> ' +
+            settings.suboperatorMatchSufix + ' </div>';
+            var operatorTemplate = template.replace(/::timestamp::/g, id);
+            var operatorPanel = $(operatorTemplate);
+            
+            var subSelect = $('#operator').clone(true);
+            subSelect.attr("name", "sub-operator-" + id);
+            subSelect.attr("id", "sub-operator-" + id);
+            subSelect.insertBefore(operatorPanel.find('#selectPlaceholder'));
+            operatorPanel.find('#selectPlaceholder').remove();
+            return operatorPanel;
+        },
+        createExpressionSelect: function(id, templateSelectId,  cssClass){
+            var select = $(templateSelectId).clone(true);
+            select.show();
+            select.attr("id", id).attr("name", id).attr("class", cssClass).addClass('changable').selectedIndex = 0;
+            return select;
+            
+        },
+        deleteClause: function(e){
+            e.preventDefault();
+            var toRemovePanelId = quoteJqueryId($(this).attr('id').replace('delete-',''));
+            $(toRemovePanelId).fadeOut(300, function(){
+                $(this).remove();
+                $('#ANY_searchForm').trigger('eudmlFormChanged',[e]);
+            });
+        },
+        changeForm: function(e,cause){
+            $('#ANY_searchForm .sub-clause').each(function(){
+                var v = $(this).find('div').size();
+                if(v == 1){
+                    $(this).parent().find('.sub-clause .field .delete-clause').show();
+                    $(this).parent().append($(this).parent().find('.sub-clause .field'));
+                    $(this).parent().find('.sub-match').remove();
+                    $(this).parent().find('.sub-clause').remove();
+                }else{
+                    $(this).find('.field:not(.jSubSelect) .delete-clause').hide();
+                }
+            });
+            if($('#ANY_searchForm .value').length == 2 && $('#ANY_searchForm .sub-value').length == 0){
+                $('#ANY_searchForm .value').each(function(){
+                       $(this).removeClass('error').attr('placeholder','');
+                });
+            }
+            renderAutocompletion();
+        },
+        matchChanged: function(e){
+            var v = $(e.target);
+            if(v.attr('id') == 'operator'){
+                return;
+            }
+            var value = v.attr('value');
+            var clauses = v.parent().parent().find('.sub-clause select');
+            if(value == 'OR'){
+                clauses.each(function(){
+                    if($(this).find('option').size() == $('#template-select-all option').size()){
+                        // workaround to fix bug in removing and adding opt group
+                        var cloned = $(this).clone(true);
+                        cloned.children().remove();
+                        cloned.append($('#template-select-some').children().clone(true));
+                        $(this).parent().prepend(cloned);
+                        $(this).remove();
+                    }
+                });
+            }else{
+                clauses.each(function(index){
+                    if(index == 0){
+                        return;
+                    }
+                    if($(this).find('option').size() == $('#template-select-some option').size()){
+                        var cloned = $(this).clone(true);
+                        cloned.children().remove();
+                        cloned.append($('#template-select-all').children().clone(true));
+                        $(this).parent().prepend(cloned);
+                        $(this).remove();
+                    }
+                });
+            }
+        },
+        selectChanged: function(e){
+            var op = e.target;
+            var input = $(op).parent().find('input');
+            var isTransformableToDropdown = jQuery.inArray($(op).val(), ["EQUALS_language","NOT_EQUALS_language",""]);
+            if(isTransformableToDropdown >= 0){
+                var dropdown = transformElement(input[0], '<select>');
+                if(dropdown !== undefined){
+                    input.before(dropdown);
+                    input.remove();
+                }
+            }else{
+                var dropdown = $(op).parent().find('select.value,select.sub-value');
+                var input = transformElement(dropdown[0], '<input>');
+                if(input !== undefined){
+                    dropdown.before(input);
+                    dropdown.remove();
+                }
+            }
+            
+            var allowedAutoCompletitionOptions = ["EQUALS_all","NOT_EQUALS_all","EQUALS_names","NOT_EQUALS_names","EQUALS_allMathTermsTranslated","NOT_EQUALS_allMathTermsTranslated",""];
+            var isAutocompleteEnabled = jQuery.inArray($(op).val(), allowedAutoCompletitionOptions) ;
+            
+            var autocompletionableInput = $(op).parent().find('input.value,input.sub-value,select.value,select.sub-value');
+            if(isAutocompleteEnabled >= 0){
+                $(autocompletionableInput).addClass("autocompletionable");
+            }else{
+                $(autocompletionableInput).removeClass("autocompletionable");
+                $(autocompletionableInput).autocomplete({ disabled: true });
+            }
+            renderAutocompletion();
+        },
+        onSubmit : function(e){
+            $('#ANY_searchForm .value').filter(function(){
+                var id = $(this).attr('id');
+                if(id == 'math'){
+                    return false;
+                }
+                if(id  == 'search-box-1'){
+                    return ($(this).parent().parent().find('.sub-value').length > 0 || $('#ANY_searchForm .value').length > 2);
+                }
+                return true;
+            }).each(function(){
+                if($(this).val().length == 0){
+                    $(this).addClass('error').attr('placeholder','This field can not be empty.');
+                    $(this).bind('focus', function(){
+                        $(this).removeClass('error').attr('placeholder','');
+                    });
+                    e.preventDefault();
+                }else{
+                    $(this).removeClass('error');
+                }
+            });
+            return true;
+        }
+
+      };
+
+      $.fn.eudmlSearchForm = function( method ) {
+        // Method calling logic
+        if ( methods[method] ) {
+          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+          return methods.init.apply( this, arguments );
+        } else {
+          $.error( 'Method ' +  method + ' does not exist on jQuery.eudmlSearchForm' );
+        }    
+      
+      };
+
+})( jQuery );
+
+$(document).ready(function() {
+    $('#ANY_searchForm').eudmlSearchForm({
+        suboperatorMatchPrefix: 'Match',
+        suboperatorMatchSufix: 'of the following rules',
+        addSubClauseText: 'Add Sub-clause',
+        languagesOptions: {'bg' : 'bg', 'ca' : 'ca', 'zh' : 'zh', 'cs' : 'cs', 'nl' : 'nl', 'en' : 'en', 'eo' : 'eo', 'fr' : 'fr', 'de' : 'de', 'el' : 'el', 'hr' : 'hr', 'hu' : 'hu', 'it' : 'it', 'la' : 'la', 'pl' : 'pl', 'pt' : 'pt', 'ru' : 'ru', 'sk' : 'sk', 'sl' : 'sl', 'es' : 'es', 'sr' : 'sr', 'sv' : 'sv' }
+    });
+});
+</script>
+
+
+<!-- script for search form tooltip -->
+<script type="text/javascript">
+var showTooltip;
+$(document).ready(function() {
+	$("#math").tooltip({
+
+                // place tooltip on the right edge
+                position: "center right",
+
+                // a little tweaking of the position
+                offset: [-2, 10],
+
+                // use the built-in fadeIn/fadeOut effect
+                effect: "fade",
+
+                // custom opacity setting
+                opacity: 0.7,
+                
+                layout: '<div id="tooltip"></div>',
+                
+                onBeforeShow: function(args){
+                   if(showTooltip)
+                      return false;
+                    return true;
+                  },
+                
+    });
+	
+	$("#math").focus(function() {
+		if ($.trim($(this).val()) == ""){
+			   $(this).val("$");		
+		} 
+	});
+	
+	$("#math").blur(function() {
+        if ($.trim($(this).val()) == "$" || $.trim($(this).val()) == "$$"){
+               $(this).val(""); 
+               showTooltip=null;
+               $('#search-formula-preview').hide();
+        } 
+    });
+}); 
+</script> 	
+
+
+<script type="text/javascript">
+
+function renderQueryMath() {
+	var $visualQueryDiv = $('#search-formula-preview');
+	var $visualQuery = $('#render-math-query');
+	var $mathInput = $('textarea[name=MATH]');
+	var query=$mathInput.val();
+	
+	$.get('/renderTex',{'query':query}, function(responseText) {
+		if (responseText) {
+			  showTooltip=responseText;
+			  $('#math').data('tooltip').hide();
+			  if (responseText == "parse_error") {
+				  $mathInput.addClass("error-highlight");
+	          } else {
+	        	  $mathInput.removeClass("error-highlight");
+	        	  
+		          $visualQuery.empty();
+		          $visualQueryDiv.fadeIn();
+		          
+		          
+		          $(responseText).appendTo($visualQuery);
+		          MathJax.Hub.Queue(["Typeset",MathJax.Hub,"render-math-query"]);
+	         }
+	   } else {
+		 $mathInput.removeClass("error-highlight");  
+	     showTooltip=null;
+	     $visualQueryDiv.hide();
+	     $('#math').data('tooltip').show();
+	   }
+    });
+}
+
+$(document).ready(function() {
+	if ($("#math").val()){
+	    renderQueryMath();
+	}
+});
+
+var tagsToReplace = {
+    '&': '&amp;'
+};
+
+function replaceTag(tag) {
+    return tagsToReplace[tag] || tag;
+}
+
+function safe_tags_replace(str) {
+    return str.replace(/[&<>]/g, replaceTag);
+}
+</script>
+      
+      <div id="primary-content" role="main">
+      
+                     
+          
+            
+            
+                <p>Your search did not match any documents.<BR>Suggestions:<BR>*
+                EuDML PROVENANCE NOTE (campaign OwnerNote): the exact-phrase query
+                "Rank and optimal computation of generic tensors" returned ZERO
+                documents in EuDML (both the /search/page?q= endpoint and the
+                /searchForm redirect). This is a CONTENT-LAYER negative (document
+                text read, not transport status): EuDML does not carry the
+                digitized Strassen 1983 LAA 52/53 article. Retained as
+                content-hash evidence of the miss.
+            
+                      
+                           
+        
+      
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div><!-- /#primary-content -->
+
+      <aside id="secondary-content" role="complementary" class="unit">
+
+        
+
+
+
+
+
+
+
+
+
+
+      </aside><!-- /#secondary-content -->
+
+    </div><!-- /#page-content -->
+
+<footer id="footer" role="contentinfo">
+      
+
+
+      <div id="unit-footer-logos" class="unit">
+        <a class="logo-eudml" href="http://initiative.eudml.org/" title="" target="_blank" rel="nofollow">
+          <span>EuDML</span>
+        </a>
+      </div>
+<div id="unit-footer-links" class="unit unit-list">
+	<ul>
+		<li><a href="http://initiative.eudml.org/" title="" target="_blank" rel="nofollow">About EuDML initiative</a></li>
+		<li><a href="mailto:helpdesk@eudml.org" title="">Feedback</a></li>
+		<li>&nbsp;version 2.1.7</li>
+	</ul>
+</div>
+</footer>
+</div><!-- #container -->
+
+</body>
+
+</html>

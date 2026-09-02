@@ -1,0 +1,193 @@
+{
+  "gb7_campaign": "20260901T145247Z_b7ea9ac4_ac3f6689e03b",
+  "kind": "post-hoc re-targeting of frozen decisions; no sampling; no decoding",
+  "not_tested": {
+    "beam64_32res_640iters": {
+      "beam_width": 64,
+      "harness_gap": "beam8_cpp pins num_results=1 with no CLI flag",
+      "initial_iters": 40,
+      "iters_per_round": 30,
+      "max_rounds": 20,
+      "num_results": 32,
+      "published_factor_vs_bposd": 17.0,
+      "status": "NOT_TESTED_configuration_never_run"
+    }
+  },
+  "paper": {
+    "abstract_beam8_factor_vs_bposd": 1.0,
+    "arxiv": "2512.07057",
+    "published_uncertainty": "none: no shots, failure counts, or error bars anywhere",
+    "section3_factors_vs_bposd": {
+      "beam32_340iters": 5.6,
+      "beam64_32res_640iters": 17.0,
+      "beam64_640iters": 7.0,
+      "beam8_230iters": 1.3
+    },
+    "table1_rows": {
+      "beam32_340iters": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "beam64_32res_640iters": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 32
+      },
+      "beam64_640iters": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 1
+      },
+      "beam8_230iters": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10,
+        "num_results": 1
+      }
+    },
+    "versions_read": [
+      "v1 2025-12-08",
+      "v2 2025-12-17"
+    ]
+  },
+  "revision": "GB8",
+  "rungs": {
+    "beam32": {
+      "corrected_target": {
+        "measured_factor_minus_published": -0.1609756097560977,
+        "note": "published factor for the configuration actually run (Table 1 + Section III), beam8 == bp30+osd denominator per the 2026-08-29 pre-statement and the abstract",
+        "outcome": "NO_GAP_WIDTH_EFFECT_CONFIRMED_AND_INTERVAL_EXCLUDES_ONE",
+        "published_factor": 5.6,
+        "published_factor_excluded": false,
+        "published_reciprocal": 0.17857142857142858,
+        "reciprocal_inside_ci95": true
+      },
+      "frozen_gb7": {
+        "ci95": [
+          0.13247863247863248,
+          0.24
+        ],
+        "gb7_outcome": "NO_GAP_WIDTH_EFFECT_CONFIRMED_AND_INTERVAL_EXCLUDES_ONE",
+        "interval_excludes_one": true,
+        "mcnemar_exact_two_sided_p": 3.997037899389134e-44,
+        "measured_factor_beam8_over_rung": 5.439024390243902,
+        "measured_factor_ci95": [
+          4.166666666666667,
+          7.548387096774193
+        ],
+        "paired_cells": {
+          "both_fail": 30,
+          "neither_fails": 99999766,
+          "reference_fails_candidate_ok": 193,
+          "reference_ok_candidate_fails": 11
+        },
+        "ratio_rung_over_beam8": 0.18385650224215247,
+        "width_effect_confirmed": true
+      },
+      "gb7_target_as_run": {
+        "measured_factor_minus_published": -0.1609756097560977,
+        "note": "target pinned 2026-08-29 and applied by GB7 (frozen)",
+        "outcome": "NO_GAP_WIDTH_EFFECT_CONFIRMED_AND_INTERVAL_EXCLUDES_ONE",
+        "published_factor": 5.6,
+        "published_factor_excluded": false,
+        "published_reciprocal": 0.17857142857142858,
+        "reciprocal_inside_ci95": true
+      },
+      "paper_configuration": "beam32_340iters",
+      "paper_parameters": {
+        "beam_width": 32,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 10,
+        "num_results": 1
+      },
+      "sensitivity_beam8_1p3x_denominator": {
+        "direction": "measured factor exceeds implied published factor",
+        "implied_factor_vs_beam8": 4.3076923076923075,
+        "measured_factor_minus_published": 1.1313320825515945,
+        "note": "Section III beam8 = 1.3x reading; implied rung/beam8 factor = F/1.3",
+        "outcome": "NO_GAP_WIDTH_EFFECT_CONFIRMED_AND_INTERVAL_EXCLUDES_ONE",
+        "published_factor": 4.3076923076923075,
+        "published_factor_excluded": false,
+        "published_reciprocal": 0.23214285714285715,
+        "reciprocal_inside_ci95": true
+      }
+    },
+    "beam64": {
+      "corrected_target": {
+        "measured_factor_minus_published": 1.2592592592592595,
+        "note": "published factor for the configuration actually run (Table 1 + Section III), beam8 == bp30+osd denominator per the 2026-08-29 pre-statement and the abstract",
+        "outcome": "NO_GAP_WIDTH_EFFECT_CONFIRMED_AND_INTERVAL_EXCLUDES_ONE",
+        "published_factor": 7.0,
+        "published_factor_excluded": false,
+        "published_reciprocal": 0.14285714285714285,
+        "reciprocal_inside_ci95": true
+      },
+      "frozen_gb7": {
+        "ci95": [
+          0.07906976744186046,
+          0.16740088105726872
+        ],
+        "gb7_outcome": "GAP_CONFIRMED",
+        "interval_excludes_one": true,
+        "mcnemar_exact_two_sided_p": 5.238429916348986e-52,
+        "measured_factor_beam8_over_rung": 8.25925925925926,
+        "measured_factor_ci95": [
+          5.973684210526316,
+          12.647058823529411
+        ],
+        "paired_cells": {
+          "both_fail": 21,
+          "neither_fails": 99999771,
+          "reference_fails_candidate_ok": 202,
+          "reference_ok_candidate_fails": 6
+        },
+        "ratio_rung_over_beam8": 0.1210762331838565,
+        "width_effect_confirmed": true
+      },
+      "gb7_target_as_run": {
+        "measured_factor_minus_published": -8.74074074074074,
+        "note": "target pinned 2026-08-29 and applied by GB7 (frozen)",
+        "outcome": "GAP_CONFIRMED",
+        "published_factor": 17.0,
+        "published_factor_excluded": true,
+        "published_reciprocal": 0.058823529411764705,
+        "reciprocal_inside_ci95": false
+      },
+      "paper_configuration": "beam64_640iters",
+      "paper_parameters": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 1
+      },
+      "sensitivity_beam8_1p3x_denominator": {
+        "direction": "measured factor exceeds implied published factor",
+        "implied_factor_vs_beam8": 5.384615384615384,
+        "measured_factor_minus_published": 2.8746438746438754,
+        "note": "Section III beam8 = 1.3x reading; implied rung/beam8 factor = F/1.3",
+        "outcome": "GAP_CONFIRMED",
+        "published_factor": 5.384615384615384,
+        "published_factor_excluded": true,
+        "published_reciprocal": 0.18571428571428572,
+        "reciprocal_inside_ci95": false
+      }
+    }
+  },
+  "source": {
+    "campaign": "20260901T145247Z_b7ea9ac4_ac3f6689e03b",
+    "summary_sha256": "bcbf72f4f7bce33c1c53f0875630ad086ae9322a5cefbd266dbc8310fbcd66f0",
+    "terminal_verdict": "FROZEN-NEGATIVE"
+  },
+  "what_changes": "interpretation only: the GB7 beam64 GAP_CONFIRMED refutes the mis-attributed 17x target, not the paper's claim for beam64_640iters",
+  "what_does_not_change": "every frozen artifact, the GB7 pre-registered rule and its FROZEN-NEGATIVE verdict, all failure counts, cells and intervals"
+}
