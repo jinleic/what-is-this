@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "utc-2100-2300-net-premium-prefreeze-review",
+  "reviewed_before_candidate_outcome_access": true,
+  "reviewer": {
+    "model": "claude-fable-5 (local Claude CLI alias fable)",
+    "mode": "independent read-only; tools restricted to Read,Grep; no candidate analysis executed; no raw data under quant-trading/data/ inspected"
+  },
+  "pass_1": {
+    "verdict": "REJECT",
+    "blockers": [
+      "Duplicate-bar handling contradicted the contract: the runner aborted on a duplicated timestamp while the contract text said a duplicate bar rejects that asset-date and is counted."
+    ],
+    "nonblocking_notes": [
+      "record renewed owner authorization for continuing the loop",
+      "inventory carried unused 2022Q1 archives",
+      "G3 float 0.60 comparison",
+      "no G3-only or end-to-end replication test",
+      "thresholds hardcoded rather than read from free-text gates (acceptable)"
+    ]
+  },
+  "fixes_applied_before_pass_2": [
+    "_parse_archive collects duplicated_days; load_asset_days returns (days, duplicated_days); run_window counts duplicate-timestamp-bar rejections; two new tests cover it",
+    "G3 uses exact rational arithmetic positive_quarters*5 >= included_quarters*3; boundary 3-of-5 test added",
+    "inventory narrowed to the 45 consumed months (90 archives)",
+    "contract governance section records the 2026-09-02 owner directive and its relation to state.json next_action",
+    "G3-only falsification test and end-to-end main() primary-then-replication tests added (26 tests total)"
+  ],
+  "pass_2": {
+    "verdict": "APPROVE",
+    "blockers": [],
+    "nonblocking_notes": [
+      "first occurrence of a duplicated timestamp remains stored in days but the date is rejected, so it is dead data",
+      "rejection categories are prioritized, not exclusive: a date with both a duplicate and a missing bar counts only as duplicate-timestamp-bar (deterministic, recorded here)",
+      "audit information-channel clause says 24:00 where the contract says the 23:00 close; same meaning",
+      "G1 compares a binary float to 0.0003 as the contract specifies",
+      "bootstrap block-count guard is unreachable behind the 500-date minimum",
+      "inventory tail entries verified by schema and by the runner per-entry checks rather than read individually"
+    ]
+  },
+  "hashes_at_approval": {
+    "contract_sha256": "3453467440b2dd62d60688c5e28c6faddc49f5b6cda299fe5f13a9dc85e3eb13",
+    "runner_sha256": "f6eecb9662598f556c5b84c28b73e071ab2d27150bf0b72c6cf67f262da1a1c8",
+    "tests_sha256": "3bd8dd11156315c622a4cfe40a15b7c370ab6c2fd8a6423fa74bf219f6549e85",
+    "input_inventory_sha256": "d60bb2d212933244d1b6630b8d7ec5a46bae71f9eaef7395b18772a571214393",
+    "prior_window_audit_sha256": "27a29b2b2df50053bbc08dc364e08a77f54fe80f29ec4921316523bd985f3d71",
+    "loop_policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0"
+  },
+  "candidate_outcomes_accessed": false,
+  "final_verdict": "APPROVE",
+  "blocking_findings_remaining": 0
+}

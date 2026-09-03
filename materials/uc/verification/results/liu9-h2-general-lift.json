@@ -1,0 +1,438 @@
+{
+ "all_mutations_caught": true,
+ "artifact": "liu9-h2-general-lift",
+ "claim": "at the exact constants (beta*, m*): for all Borel probability measures mu, nu on [0,1] and q in [0,1] with (1-q)<mu,x> + q<nu,x> >= m*: gap(mu,nu,q) >= 0",
+ "claim_status": "PROVED",
+ "claims": [
+  {
+   "label": "PROVED",
+   "name": "L0_regularity",
+   "statement": "h continuous on [0,1], 0 <= h <= log 2; pi([0,1]^2) subset [0,1]; hence h(xy), K, D_M, R, P2, Q2, phi, A, B continuous on [0,1]^2 and every pairing finite; f'(z) = 2z(2(z-3/4)^2+15/8) so the quartic has exactly one root in (0,1)",
+   "sympy": {
+    "h_half_minus_log2": "0",
+    "h_minus_h_of_1mu": "0",
+    "h_second_derivative_plus_1_over_u_1mu": "0",
+    "limit_h_at_0_plus": "0",
+    "limit_h_at_1_minus": "0",
+    "one_minus_pi_1ma_1mb_minus_nonnegative_sum": "0",
+    "quartic_derivative_minus_2z_2_z_minus_3_4_sq_plus_15_8": "0"
+   },
+   "why_bounded": "concave (h'' < 0), symmetric, maximum h(1/2) = log 2, limits 0 at both ends; each term of a(1-b) + b(1-a) + ab(a+b-ab) is >= 0 on [0,1]^2 so 0 <= pi <= 1"
+  },
+  {
+   "label": "MACHINE-VERIFIED",
+   "name": "L1_free_algebra_chain_identity",
+   "pairing_facts_used": [
+    "<P(x)P, k> = (1-q)^2 <mu(x)mu,k> + 2q(1-q) <mu(x)nu,k> + q^2 <nu(x)nu,k> for symmetric k (bilinearity + symmetry)",
+    "<mu(x)nu, t h(s)> = <mu,h><nu,x> and <mu(x)nu, s h(t)> = <mu,x><nu,h> (product rule / Fubini, bounded continuous factors)",
+    "<mu(x)mu, (t h(s) + s h(t))/2> = <mu,x><mu,h>"
+   ],
+   "residual": "0",
+   "statement": "gap = ((1-q)^2 I00 + q^2 I11)/M + q(1-q)(2 I01/M + c) with M = (1-q)M0 + qM1, I_ab = <.,D_M>, c = beta<(mu-nu)^(x)2, K>, as an identity in the pairings E_ab, K_ab, H_a, M_a"
+  },
+  {
+   "label": "PROVED",
+   "name": "L2_mean_monotonicity",
+   "residual": "0",
+   "statement": "D_M/M - D_m/m = (t h(s) + s h(t))(M - m)/(2 M m) >= 0 pointwise on [0,1]^2 whenever M >= m > 0 (h >= 0, s,t >= 0)"
+  },
+  {
+   "label": "MACHINE-VERIFIED",
+   "name": "L3_rank_one_splitting",
+   "residual": "0",
+   "statement": "c + 2<mu(x)nu,R> = <mu(x)mu,B> + <nu(x)nu,B> + 2<mu(x)nu,A> + (<mu,phi> - <nu,phi>)^2 with A = P2 + phi(x)phi, B = Q2 - phi(x)phi, <mu(x)nu, phi(x)phi> = <mu,phi><nu,phi>"
+  },
+  {
+   "beta_star_positive_certified": true,
+   "degenerate_case": "if K_st + sqrt(K_ss K_tt) = 0 then K_st = 0 and K_ss K_tt = 0, so B = 0",
+   "factorisation_residual": "0",
+   "label": "PROVED",
+   "name": "L4_B_nonnegative_from_Phi",
+   "statement": "Phi = (K_st - sqrt(K_ss K_tt))(K_st + sqrt(K_ss K_tt)); B = beta (K_st - sqrt(K_ss K_tt)); K >= 0 and beta* > 0, so Phi >= 0 on [0,1]^2 implies B >= 0 on [0,1]^2"
+  },
+  {
+   "general_argument": "sum_j a_i b_j f(x_i) = a_i f(x_i) sum_j b_j = a_i f(x_i), and likewise for every pairing; the paired formula depends only on the marginals",
+   "label": "PROVED",
+   "name": "a_product_coupling",
+   "statement": "for mu with n atoms (masses a_i) and nu with m atoms (masses b_j), the nm-atom paired configuration g_ij = a_i b_j, x_i, y_j has the same gap and mean; polynomial identity in the masses modulo sum a = sum b = 1, with all function values free symbols",
+   "symbolic_checks": [
+    {
+     "atoms_paired": 1,
+     "gap_residual": "0",
+     "mean_residual": "0",
+     "ok": true,
+     "sizes": [
+      1,
+      1
+     ]
+    },
+    {
+     "atoms_paired": 2,
+     "gap_residual": "0",
+     "mean_residual": "0",
+     "ok": true,
+     "sizes": [
+      1,
+      2
+     ]
+    },
+    {
+     "atoms_paired": 2,
+     "gap_residual": "0",
+     "mean_residual": "0",
+     "ok": true,
+     "sizes": [
+      2,
+      1
+     ]
+    },
+    {
+     "atoms_paired": 4,
+     "gap_residual": "0",
+     "mean_residual": "0",
+     "ok": true,
+     "sizes": [
+      2,
+      2
+     ]
+    },
+    {
+     "atoms_paired": 6,
+     "gap_residual": "0",
+     "mean_residual": "0",
+     "ok": true,
+     "sizes": [
+      2,
+      3
+     ]
+    },
+    {
+     "atoms_paired": 6,
+     "gap_residual": "0",
+     "mean_residual": "0",
+     "ok": true,
+     "sizes": [
+      3,
+      2
+     ]
+    },
+    {
+     "atoms_paired": 9,
+     "gap_residual": "0",
+     "mean_residual": "0",
+     "ok": true,
+     "sizes": [
+      3,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "draws": 40,
+   "label": "MACHINE-VERIFIED",
+   "name": "arb_crosschecks_against_audited_evaluator",
+   "parameters": "TEST rationals (the identities checked are parameter-free)",
+   "statement": "the general functional coincides with liu9_objective.evaluate_arb (numerator - ehx) on three-atom paired inputs and on product-coupled (3,1)/(1,3) inputs, and L1 holds in Arb at unequal atom counts",
+   "tolerance": "1/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+   "worst_abs_diff_general_gap_vs_chain_rhs": "[2.72700849554e-119 +/- 2.26e-131]",
+   "worst_abs_diff_paired3_vs_evaluate_arb": "[4.33519976905e-119 +/- 1.62e-131]",
+   "worst_abs_diff_product_coupling_31_13_vs_evaluate_arb": "[4.07212163784e-119 +/- 4.54e-131]"
+  }
+ ],
+ "composition": {
+  "constants": "the theorem is about the root-defined (beta*, m*) only; W1b shows it fails for the 100-digit truncations, so perturbing the constants cannot be assumed harmless; they are certified as balls, never as decimals",
+  "finite_support_special_case": "mu = sum a_i delta_x_i, nu = sum b_j delta_y_j with any atom counts and masses (claim (a) shows this is also the paired class via the product coupling)",
+  "label": "PROVED",
+  "liu_nine_parameter_case": "shared masses a_i, three atoms each: liu9_objective._formula; the audited evaluator agrees with the general functional there (arb_crosschecks)",
+  "name": "b_general_measures",
+  "proof": [
+   "L1: gap = (1-q)^2 <mu(x)mu, D_M/M> + q^2 <nu(x)nu, D_M/M> + q(1-q)[2 <mu(x)nu, D_M/M> + c]",
+   "L2 with M >= m*: each D_M/M pairing >= the same pairing of R (integrand difference >= 0, product probability measures); (1-q)^2, q^2, q(1-q) >= 0",
+   "R >= 0 pointwise at (beta*, m*) (liu9-h2-twovar.json): the first two terms are >= 0",
+   "L3: 2 <mu(x)nu, R> + c = <mu(x)mu,B> + <nu(x)nu,B> + 2<mu(x)nu,A> + (<mu,phi>-<nu,phi>)^2",
+   "A >= 0 pointwise at (beta*, m*) (liu9-h2-twovar.json); B >= 0 pointwise by L4 from Phi >= 0 (liu9-h2-boundary.json) and beta* > 0; a square is >= 0",
+   "L0: every kernel is continuous on [0,1]^2, so every pairing exists, is finite, and the pairing of a nonnegative kernel against a product probability measure is nonnegative"
+  ],
+  "statement": "at the exact constants (beta*, m*): for all Borel probability measures mu, nu on [0,1] and q in [0,1] with (1-q)<mu,x> + q<nu,x> >= m*: gap(mu,nu,q) >= 0",
+  "weak_density_remark": {
+   "label": "PROVED (elementary), not load-bearing",
+   "statement": "finitely supported laws are weakly dense in the probability measures on [0,1], and gap(mu,nu,q) is jointly weakly continuous in (mu,nu) because every kernel is continuous on the compact square; hence the general theorem is also the weak closure of the finitely supported one. The direct proof above never takes a limit, so no modulus of continuity of h (which is not Lipschitz at 0, 1) is needed."
+  }
+ },
+ "constants": {
+  "binding_propagation_overlaps_own_propagation": true,
+  "definitions": {
+   "beta*": "((h'(x*) + h(x*)/x*)/p* - a')/(b' - a'), a' = h'(x*^2) 2x*, b' = h'(pi(x*,x*)) (2x + 2x(1-x)^2 - 2x^2(1-x))|_{x*} (Liu (89)-(90), the binding's closed form)",
+   "m*": "p* x*;  c' = 1 - m*",
+   "p*": "h(x*)/h(x*^2) (Liu (88))",
+   "x*": "unique root in (0,1) of z^4 - 2 z^3 + 3 z^2 - 1 (Liu (87)); f(0) = -1 < 0 < f(1) = 1 and f'(z) = 2z(2(z-3/4)^2 + 15/8) > 0 on (0,1]"
+  },
+  "exact_balls_45_digits": {
+   "beta*": "[0.100052559862893106664628299476947587796206185 +/- 2.88e-46]",
+   "c'": "[0.382709087918735029930312902098972611626381433 +/- 4.95e-46]",
+   "m*": "[0.617290912081264970069687097901027388373618567 +/- 4.95e-46]",
+   "p*": "[0.893604513905465446476770019038769597178677710 +/- 3.49e-46]",
+   "x*": "[0.690787593924988014150488204636270562580628177 +/- 9.69e-47]"
+  },
+  "exact_bracket_of_xstar": {
+   "f_lo_negative_and_f_hi_positive_certified": true,
+   "f_prime_positive_on_bracket_certified": true,
+   "hi": "3453937969624940070752441023181352812903140885484335356434089254276873/5000000000000000000000000000000000000000000000000000000000000000000000",
+   "lo": "1381575187849976028300976409272541125161256354193734142573635701710749/2000000000000000000000000000000000000000000000000000000000000000000000",
+   "width": "1/10000000000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "sign_claims_use": "EXACT balls for every theorem-validity sign claim (W1a, W2, W3, the sample, the drop-mean-constraint and reversed-monotonicity mutations); W1b is deliberately the TEST rationals declared exact; parameter-free identity checks (arb_crosschecks, the wrong-protocol mutation) use TEST rationals",
+  "test_rationals": {
+   "beta_t": "28011524361793105372602416928690825706147104729221190789458531837539278166578396884221667254400611443/279968092772225526319680285071055534765205687154331191862498637620473983897520118172609686658950889472",
+   "beta_t_inside_exact_ball": true,
+   "m_t": "86410879670509651045578867419858441625384618059623663402198081830259073758168013505991445502983016997/139984046386112763159840142535527767382602843577165595931249318810236991948760059086304843329475444736",
+   "m_t_inside_exact_ball": true,
+   "one_minus_c_t_minus_m_t_is_zero": true,
+   "quartic_residual_at_x_t": "[-6.85557960040e-102 +/- 3.66e-114]",
+   "role": "test points for parameter-free identities ONLY; within 1e-100 of the constants; NOT the constants (see W1b)",
+   "source": "liu9_binding.solve_equation_parameters(100), stored mpf converted exactly (sign, mantissa, exponent)",
+   "x_t": "24174810647736687342301329030133392408028327211721353455990738600269646103021745937512285413793531637/34996011596528190789960035633881941845650710894291398982812329702559247987190014771576210832368861184",
+   "x_t_inside_exact_ball": true
+  },
+  "twovar_uses_the_same_definitions": {
+   "beta_enclosure_overlaps": true,
+   "m_closed_form": true,
+   "m_enclosure_overlaps": true,
+   "polynomial": true,
+   "xstar_bracket_overlaps_twovar_bracket": true,
+   "xstar_enclosure_overlaps": true
+  }
+ },
+ "definitions": {
+  "A": "P2 + phi (x) phi",
+  "B": "Q2 - phi (x) phi",
+  "D_M": "M[(1-beta) h(st) + beta h(pi)] - (t h(s) + s h(t))/2",
+  "K": "h(pi(s,t))",
+  "Phi": "h(pi(s,t))^2 - h(pi(s,s)) h(pi(t,t))",
+  "R": "D_m/m = P2 + Q2, P2 = (1-beta) h(st) - (t h(s) + s h(t))/(2m), Q2 = beta h(pi)",
+  "gap": "(1-beta)<P(x)P,h(xy)> + beta[(1-q)<mu(x)mu,K> + q<nu(x)nu,K>] - <P,h>, P = (1-q)mu + q nu",
+  "h": "-u log u - (1-u) log(1-u), natural log, h(0) = h(1) = 0",
+  "mean_constraint": "M = <P,x> >= m*",
+  "phi": "sqrt(Q2(s,s))",
+  "pi": "s t (1 + (1-s)(1-t))"
+ },
+ "dependencies": {
+  "liu9-h2-boundary": {
+   "claim_status_expected": "PROVED",
+   "claim_status_on_disk": "PROVED",
+   "match": true,
+   "path": "verification/results/liu9-h2-boundary.json",
+   "provides": "Phi(s,t) = h(pi(s,t))^2 - h(pi(s,s)) h(pi(t,t)) >= 0 on all of [0,1]^2 (parameter-free; kappa >= 9/4)",
+   "sha256_expected": "e4d6d96df3ae435800cef5739fb1ae45b98febf539ab418df116ceb03bd481c9",
+   "sha256_on_disk": "e4d6d96df3ae435800cef5739fb1ae45b98febf539ab418df116ceb03bd481c9"
+  },
+  "liu9-h2-reduction": {
+   "claim_status_expected": "REDUCTION-CERTIFIED",
+   "claim_status_on_disk": "REDUCTION-CERTIFIED",
+   "match": true,
+   "path": "verification/results/liu9-h2-reduction.json",
+   "provides": "the chain C1-C5 at the nine-variable level (re-derived here in the free pairing algebra, so cited, not load-bearing)",
+   "sha256_expected": "c63ae94e4fbd2397e19ea9e2a4e2c155f1e02265852d0aacad5c97d70f078e3a",
+   "sha256_on_disk": "c63ae94e4fbd2397e19ea9e2a4e2c155f1e02265852d0aacad5c97d70f078e3a"
+  },
+  "liu9-h2-twovar": {
+   "claim_status_expected": "CERTIFIED_PROVED",
+   "claim_status_on_disk": "CERTIFIED_PROVED",
+   "match": true,
+   "path": "verification/results/liu9-h2-twovar.json",
+   "provides": "R >= 0 and A >= 0 on all of [0,1]^2 at the exact (beta*, m*) (400-bit Arb, exhaustive strata; exact algebra at (x*,x*))",
+   "sha256_expected": "a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb",
+   "sha256_on_disk": "a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb"
+  },
+  "liu9_binding.py": {
+   "claim_status_expected": null,
+   "claim_status_on_disk": null,
+   "match": true,
+   "path": "liu9_binding.py",
+   "provides": "the 70-digit rational bracket of x* and the 100-digit test solution of (87)-(90); its formulas are re-implemented here and cross-checked",
+   "sha256_expected": "feb3a1aaded3cff0805d852c4349ff7142c55e24be4b2da3c0a27f8e7f58cac6",
+   "sha256_on_disk": "feb3a1aaded3cff0805d852c4349ff7142c55e24be4b2da3c0a27f8e7f58cac6"
+  },
+  "liu9_objective.py": {
+   "claim_status_expected": null,
+   "claim_status_on_disk": null,
+   "match": true,
+   "path": "liu9_objective.py",
+   "provides": "h_arb and the audited nine-variable transcription evaluate_arb",
+   "sha256_expected": "f043b8c99cb26c62804c6f4f29190065a7a876e47d5e7c27c9e6f555c4098c6c",
+   "sha256_on_disk": "f043b8c99cb26c62804c6f4f29190065a7a876e47d5e7c27c9e6f555c4098c6c"
+  }
+ },
+ "determinism": "no timestamps; fixed seed; sympy residuals as strings; Arb strings at fixed digit counts; byte-identical under the recorded single-thread environment (thread variables are set with setdefault, so a pre-set value is inherited and recorded)",
+ "failed_claims": [],
+ "labels": {
+  "COMPUTATIONAL-EVIDENCE": "random sample, not a proof",
+  "MACHINE-VERIFIED": "exact symbolic residual 0, or Arb-certified comparison at the listed points",
+  "OPEN": "not established",
+  "PROVED": "complete argument, elementary steps machine-checked where stated"
+ },
+ "mutations": [
+  {
+   "caught": true,
+   "mutation": "L1_mixture_form_protocol_term",
+   "observed": "residual beta*q*(K00*q - K00 - 2*K01*q + 2*K01 + K11*q - K11)"
+  },
+  {
+   "caught": true,
+   "mutation": "L3_drop_square_term",
+   "observed": "residual F0**2 - 2*F0*F1 + F1**2"
+  },
+  {
+   "caught": true,
+   "mutation": "a_wrong_coupling_masses_(a_i+b_j)/(n+m)",
+   "observed": "gap residual 16*K_x0_x0*a1**2*beta*q/25 - 16*K_x0_x0*a1**2*beta/25 - 6*K_x0_x0*a1*beta*q/25 + 6*K_x0_x0*a1*beta/25 - K_x0_x0*beta*q/2"
+  },
+  {
+   "caught": true,
+   "mutation": "drop_mean_constraint_(claim gap>=0 for all mu,nu,q)",
+   "observed": "gap(delta_1/2, delta_1/2) = [-0.124933824990903 +/- 2.16e-17] certified < 0 at the exact balls, mean 1/2 < m*"
+  },
+  {
+   "caught": true,
+   "mutation": "wrong_protocol_s+t-st_vs_evaluate_arb",
+   "observed": "largest |diff| [0.04689574190 +/- 3.73e-12] (certified > 1e-6 at some draw)"
+  },
+  {
+   "caught": true,
+   "mutation": "L2_reversed_monotonicity_(claim D_M/M <= R for M > m)",
+   "observed": "D_1/1 - R at (1/2,1/2) = [0.214869294261226 +/- 3.30e-16] certified > 0 at the exact balls"
+  },
+  {
+   "caught": true,
+   "mutation": "declare_the_100_digit_truncations_to_be_the_constants",
+   "observed": "W1b: gap at Liu's minimiser with (beta_t, m_t, x_t) = [-5.95480136844935114e-102 +/- 9.25e-120] certified < 0"
+  }
+ ],
+ "natural_log": true,
+ "precision_bits": 400,
+ "random_sample": {
+  "certified_mean_feasible": 100,
+  "certified_negative": 0,
+  "certified_positive": 100,
+  "draws": 300,
+  "label": "COMPUTATIONAL-EVIDENCE",
+  "min_at": {
+   "mu": [
+    [
+     "16/29",
+     "5/8"
+    ],
+    [
+     "8/29",
+     "2/125"
+    ],
+    [
+     "5/29",
+     "61/100"
+    ]
+   ],
+   "nu": [
+    [
+     "2/13",
+     "0"
+    ],
+    [
+     "15/26",
+     "1"
+    ],
+    [
+     "7/26",
+     "1"
+    ]
+   ],
+   "q": "49/50"
+  },
+  "min_certified_lower_bound": "[0.0058665482456832993845 +/- 3.55e-23]",
+  "name": "random_sample_mean_feasible_nonnegativity",
+  "parameters": "EXACT balls",
+  "sign_undecided": 0,
+  "statement": "sanity sample only; the theorem is proved by composition, not by this sample"
+ },
+ "report_sha256": "3ff1e797cd5dbcc4273d9f002b9e540b58829d237b2d344f266e0bea46c02bc8",
+ "report_sha256_scope": "SHA-256 of canonical sorted-key compact JSON plus newline with report_sha256 omitted",
+ "seed": 20260902,
+ "single_core_environment": {
+  "FLINT_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1"
+ },
+ "sympy_version": "1.14.0",
+ "tool": "liu9_h2_general_lift.py (sympy exact identities + python-flint Arb)",
+ "tool_sha256": "b265e726d110098a09c00de331c4433454973ba741966b3018b77afcc225b5c3",
+ "witnesses": [
+  {
+   "enclosure_contains_zero": true,
+   "gap_enclosure": "[+/- 4.53e-69]",
+   "label": "PROVED",
+   "mu_eq_nu": [
+    [
+     "1 - m*/x*",
+     "0"
+    ],
+    [
+     "m*/x*",
+     "x*"
+    ]
+   ],
+   "name": "W1a_liu_minimiser_exact_zero",
+   "parameters": "EXACT balls",
+   "proof_of_equality": "mean = m* exactly; gap = I00/m* with I00 = p^2 D_{m*}(x*,x*) + 2p(1-p) D_{m*}(0,x*) + (1-p)^2 D_{m*}(0,0); D_{m*}(0,.) = 0 since h(0) = 0 and pi(0,.) = 0; D_{m*}(x*,x*) = m* h(x*^2) - x* h(x*) = 0 by h(pi(x*,x*)) = h(1 - x*^2) = h(x*^2) (Liu (87)) and m* = x* h(x*)/h(x*^2) (Liu (88))",
+   "statement": "equality is a theorem, not a numerical fact; the enclosure is the consistency check"
+  },
+  {
+   "certified_negative": true,
+   "gap_enclosure": "[-5.95480136844935114e-102 +/- 9.25e-120]",
+   "label": "MACHINE-VERIFIED",
+   "mean_equals_m_t_exactly": true,
+   "name": "W1b_truncated_constants_certified_negative",
+   "parameters": "TEST rationals declared exact (beta_t, m_t, x_t)",
+   "statement": "with the 100-digit truncations in place of the constants the theorem is FALSE (by ~6e-102): the interior zero of R at (x*,x*) is nondegenerate and exact, so perturbing (beta*, m*, x*) cannot be assumed harmless (this joint truncation lowers R near (x*,x*); raising m alone would keep R >= 0 by L2). Recorded from the independent review's counterexample. This is why every sign claim here uses the exact balls."
+  },
+  {
+   "gap": "[-0.12493382499090302150 +/- 1.17e-21]",
+   "label": "MACHINE-VERIFIED",
+   "mean": "1/2",
+   "mean_below_m_certified": true,
+   "mu_eq_nu": [
+    [
+     "1",
+     "1/2"
+    ]
+   ],
+   "name": "W2_mean_constraint_load_bearing_paired",
+   "parameters": "EXACT balls",
+   "statement": "gap < 0 certified: the theorem is false without M >= m*"
+  },
+  {
+   "gap": "[-0.13445134161326671059 +/- 3.04e-21]",
+   "label": "MACHINE-VERIFIED",
+   "mean": "43/90",
+   "mean_below_m_certified": true,
+   "mu": [
+    [
+     "1/3",
+     "1/5"
+    ],
+    [
+     "2/3",
+     "3/5"
+    ]
+   ],
+   "name": "W3_mean_constraint_load_bearing_general",
+   "nu": [
+    [
+     "1",
+     "1/2"
+    ]
+   ],
+   "parameters": "EXACT balls",
+   "q": "1/3",
+   "statement": "gap < 0 certified at a two-atom / one-atom pair with mean below m*"
+  }
+ ]
+}

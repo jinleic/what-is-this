@@ -1,18 +1,25 @@
 {
   "schema_version": 1,
   "campaign": "quant-frontier-2026-08-29",
-  "updated_at": "2026-09-02T09:58:21+00:00",
+  "updated_at": "2026-09-02T15:12:00+00:00",
   "summary": {
     "independent_wave_one_directions": 12,
     "wave_one_selection_trials": 66,
     "initial_validation_passes": 2,
     "final_validated_or_deployable_candidates": 0,
     "frozen_certified_descriptive_mechanisms": 1,
-    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. Nine frozen mechanisms are recorded: eight are negative, inconclusive, blocked, or invalidated, and one descriptive market-structure mechanism is FROZEN-CERTIFIED. Weekday-participation-premium passed its frozen 2024H1 primary and 2024H2 replication on BTCUSDT and ETHUSDT: all six conjunctive trade-count, quote-volume, asset-consistency, month-stability, and paired week-block dependence gates passed in both windows. This is a literature-informed retrospective participation regularity on reused calendars, not directional predictability, return alpha, causality, or deployment evidence. Public collectors remain active only for separately frozen future mechanisms.",
+    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. Seven scripts/campaign.py campaigns have closed with terminal verdicts (6 FROZEN-NEGATIVE, 1 FROZEN-CERTIFIED) over six distinct mechanisms; every other registry entry is falsified, inconclusive, blocked, invalidated, or ineligible. Weekday-participation-premium passed its frozen 2024H1 primary and 2024H2 replication on BTCUSDT and ETHUSDT (descriptive participation regularity, not alpha). utc-2100-2300-net-premium (cycle 3) was falsified on 2020-2021 by its net-return bootstrap gate. perp-cross-section-daily-reversal (cycle 4, the first full 652-symbol USDT-perpetual cross-section channel) was falsified on 2022-2023 with all four gates false: net spread -5.22 bps/date, gross +4.77 bps insignificant, prior-day losers continued to underperform. Post-policy alpha spent 0.04 of 0.05. Public collectors remain active only for separately frozen future mechanisms.",
     "historical_confirmation_is_not_blind": true,
     "genuine_forward_start": "2026-08-29",
     "focused_directions": 4,
-    "active_prospective_collectors": 2
+    "active_prospective_collectors": 2,
+    "terminal_campaigns": {
+      "total": 7,
+      "frozen_negative": 6,
+      "frozen_certified": 1,
+      "distinct_mechanisms": 6,
+      "source": "quant-trading/explorations/campaigns/README.md"
+    }
   },
   "evidence_ranking": [
     {
@@ -473,7 +480,83 @@
       "deribit_status": "falsified",
       "review_status": "independent read-only pre-freeze review NOT CLEARED on the first draft (six findings); all corrected or disclosed before minting; review recorded in the run directory",
       "governance_note": "The prior next_gate wording (\"separately frozen different mechanism, stopping rule, multiplicity boundary, and input-continuity plan\") was resolved by owner directive on 2026-09-02 to permit one same-mechanism retest with a different stopping rule; the directive and the conflict are recorded in the contract governance section.",
-      "decision": "Deribit taker-GEX is falsified on its registered gates at full registered sample. No alpha, return, deployment, or capital-allocation claim. Both focused public-capture screens are now closed negative."
+      "decision": "Deribit taker-GEX is falsified on its registered gates at full registered sample. No alpha, return, deployment, or capital-allocation claim. Both focused public-capture screens are now closed negative.",
+      "post_outcome_audit": {
+        "path": "quant-trading/explorations/deribit-eventstop-post-outcome-audit.json",
+        "sha256": "df026bd09bdd9d0bf413e0ca5281561038059d663a4ad8fd9326c6787bdbe231",
+        "agent": "EventStopPostOutcomeAudit (read-only; no raw data)",
+        "status": "VERDICT STANDS",
+        "summary": "Independent recomputation of all four gates from the 15 included transitions matched the reported values; six pre-freeze findings rated implemented (1,4,6), disclosed (2,3), partial-unverified (5, tests not re-read inside the time-box). Its unevaluated items were closed by the owner-side agent: sha256s.txt re-hashed with zero mismatches, owner copy byte-identical to run-dir results, the five status files were written from the results values, 16/16 tests pass, and rv_journal contains zero value-validity exclusions (69 pre-stop blocks: 15 complete, 54 failed on gap >5000 ms or <720 observations only). The audit JSON is stored verbatim; its trailing placeholder entry (finding 0) is auditor noise.",
+        "process_gap": "The corrected contract was minted after fixing the six pre-freeze findings without a second independent pass; this post-outcome audit is the compensating independent check."
+      }
+    },
+    "utc_2100_2300_net_premium": {
+      "classification": "preregistered retrospective literature-informed net-of-taker-fee return replication minted through scripts/campaign.py under frontier-loop-policy.json cycle k=3; rule-level and hour-of-day information-channel novelty on historically consumed 2020-2023 calendars; not fresh, blind, prospective, academically novel, or a deployment claim",
+      "campaign_run": "quant-trading/explorations/campaigns/20260902T125230Z_9329d0b8_e7db49e940ad",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "contract": "quant-trading/explorations/pre_statement_utc_2100_2300.json",
+      "contract_frozen_sha256": "3453467440b2dd62d60688c5e28c6faddc49f5b6cda299fe5f13a9dc85e3eb13",
+      "runner": "quant-trading/explorations/run_utc_2100_2300_net_premium.py",
+      "runner_sha256": "f6eecb9662598f556c5b84c28b73e071ab2d27150bf0b72c6cf67f262da1a1c8",
+      "result": "quant-trading/explorations/campaigns/20260902T125230Z_9329d0b8_e7db49e940ad/primary_results.json",
+      "result_sha256": "8ceda44dd940e4b1f2a9b61bcf173b678a0af6781961a7619ff11c94cdaa34c0",
+      "prior_window_audit": "quant-trading/explorations/utc-2100-2300-prior-window-audit.json",
+      "input_inventory": "quant-trading/explorations/utc-2100-2300-inputs.json",
+      "prefreeze_review": "quant-trading/explorations/utc-2100-2300-prefreeze-review.json",
+      "loop_policy": "quant-trading/explorations/frontier-loop-policy.json cycle k=3, alpha_3 = 0.05/12 = 0.004167; cumulative post-policy alpha spent 0.025 + 0.008333 + 0.004167 = 0.0375 of the 0.05 budget",
+      "owner_authorization": "2026-09-02 owner directive reopening the loop for exactly one cycle-3 campaign with a net-return-after-taker-fee claim; recorded verbatim in the contract governance section",
+      "windows_utc": "primary [2020-01-01, 2022-01-01) inside the published sample; replication [2022-04-01, 2024-01-01) strictly post-publication, frozen but never spent. Both end before every spent frozen-campaign span (2024-01..2026-08 and the 2026-08-31..09-02 Deribit trial). No global calendar-freshness claim: registered daily-bar directions consumed these calendars.",
+      "mechanism": "Padysak and Vojtko (Quantpedia, 2022-02-18) buy-21:00/sell-23:00 UTC Bitcoin seasonality, tested on Binance BTCUSDT and ETHUSDT USD-M perpetual hourly klines as a long from the 21:00 bar open to the 23:00 bar open, net of two 0.05% taker fees (no funding crosses the window), plus a drift-neutral concentration contrast x = ln(P_23/P_21) - (2/24) ln(P_24/P_0).",
+      "primary_result": "731 paired dates and 1,462 observations met the frozen minimum with zero rejected asset-dates. G1 passed: pooled mean net return 5.17 bps per date versus the 3.00 bps floor. G2 passed: BTC 3.77 bps, ETH 6.57 bps. G3 passed: 6/8 quarters positive (2020Q1 and 2021Q4 negative). G4 passed: pooled mean concentration 11.47 bps (BTC 11.12, ETH 11.82). G5 failed: one-sided paired 7-date block-bootstrap p_net = 0.08370 versus alpha_3 = 0.004167, while p_x = 0.00065 passed. The two-hour window carried a significant excess over its pro-rata day share, but the net-of-fee expected return was not distinguishable from zero at the cycle alpha, so the conjunctive rule is falsified.",
+      "status": "falsified-on-primary-window",
+      "replication_disposition": "Not triggered and refused by construction because G5 failed on the primary. The 2022-04..2023-12 replication remains unspent. No fee-tier, maker-execution, window, threshold, pooling, extension, or re-windowing rescue is permitted.",
+      "descriptive_note": "The gross regularity direction matched the published one on both assets (positive concentration, p_x below alpha), and the point estimate of the net return was positive on 6 of 8 quarters; none of this is promotable. Under the frozen rule the net-of-cost claim failed its only inferential gate, and the loop policy forbids reinterpreting a falsified conjunctive rule as partial support.",
+      "independent_review": "Read-only fable review pass 1 REJECTED on one blocker (runner aborted on duplicated timestamps while the contract counted them as per-date rejections); fixed with two new tests, G3 exact rational arithmetic, inventory narrowed to consumed months, and owner authorization recorded; pass 2 returned APPROVE with no blockers before campaign mint and before outcome access.",
+      "verification": "26 behavioral tests pass, including all-five-gates promotion, single-gate falsifications for G1, G2, G3, and G4/G5, insufficient-sample inconclusive, duplicate-date rejection, exact three-fifths stability boundary, deterministic paired bootstrap, archive first-row-form and sidecar/size drift refusal, write-once refusal, contract-hash and static-integrity no-write, and end-to-end primary-then-replication lifecycle. All 90 listed archives matched the frozen inventory and upstream sidecars, size, member, first-row form, CRC, audit, and loop-policy hashes before candidate parsing."
+    },
+    "perp_cross_section_daily_reversal": {
+      "classification": "preregistered retrospective two-window cross-sectional net-return test minted through scripts/campaign.py; first registered use of the full Binance USDT-perpetual cross-section (652 symbols, point-in-time eligibility); rule-level and channel novelty on reused historical calendars; not fresh, blind, prospective, predictive alpha, a return strategy, or a deployment claim",
+      "campaign_run": "quant-trading/explorations/campaigns/20260902T145246Z_0e7153fc_e8afb1b09af8",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "contract": "quant-trading/explorations/pre_statement_perp_cross_section_reversal.json",
+      "contract_frozen_sha256": "6862c08a196354923ca1dfb7e5e6aec0fdd695b039ee18b9c481d96b9bfa1ee4",
+      "runner": "quant-trading/explorations/run_perp_cross_section_daily_reversal.py",
+      "runner_sha256": "e1f4ec197b4e1be45add3a80acd30c4fe00afa9ace64c0fff60f5c29a404e9fc",
+      "result": "quant-trading/explorations/campaigns/20260902T145246Z_0e7153fc_e8afb1b09af8/primary_results.json",
+      "result_sha256": "834c900fd4130cd117d3706e643d88b8f0da1652e95efd00f85b6a5a080d0a0c",
+      "input_inventory": "quant-trading/explorations/perp-cross-section-inputs.json",
+      "input_inventory_sha256": "0c7d5acd497cdf5499e795e06bc73ee1a0f5f47bb2454141e381dd4afbc00013",
+      "prior_window_audit": "quant-trading/explorations/perp-cross-section-prior-window-audit.json",
+      "prefreeze_review": "quant-trading/explorations/perp-cross-section-prefreeze-review.json (APPROVE, no blockers)",
+      "loop_policy": "quant-trading/explorations/frontier-loop-policy.json cycle k=4, alpha_4=0.0025; post-policy alpha spent 0.0375 + 0.0025 = 0.04 of 0.05",
+      "mechanism": "Daily dollar-neutral decile long-short: long the bottom decile and short the top decile of point-in-time eligible USDT perpetuals ranked by the prior UTC day open-to-close return; entry at the 00:00 UTC bar open, exit at the next 00:00 UTC bar open; two 0.05% taker fees per position; funding crossings counted (3 per position-date upper bound) and never subtracted; eligibility 20 complete days with mean quote volume >= 5,000,000 USD; minimum 50 eligible symbols per date.",
+      "windows_utc": "primary [2022-01-01, 2024-01-01) run once; replication [2024-01-01, 2026-01-01) registered, correctly not run after the primary was falsified",
+      "universe": "652 USDT-form Binance USD-M symbols with any 1h archive dated 2021-12..2026-01 in the 2026-09-02 Data Vision listing snapshot; 14,535 archives, 435,906,303 bytes, every archive sidecar-verified; the owner-directive \">= 24 months\" wording was replaced by point-in-time eligibility to avoid survivorship conditioning (disclosed in the contract and audit)",
+      "primary_result": "730/730 dates included, 21,990 positions (10,994 long / 10,996 short) over 252 distinct symbols, mean eligible cross-section 155.8, mean leg size 15.1. Mean net spread -5.22 bps/date against the 5 bps floor (G1 false); long-leg excess -20.77 bps and short-leg excess +10.33 bps (G2 false: prior-day losers kept underperforming); 3/8 quarters positive (G3 false); one-sided 7-date block-bootstrap p 0.8636 against alpha_4 0.0025 (G4 false). Gross spread before fees +4.77 bps/date (diagnostic p 0.162); one-hour-lagged net spread -5.86 bps (diagnostic). Daily spread sd 154 bps.",
+      "quarterly_mean_spread_net_bps": {
+        "2022Q1": 6.52,
+        "2022Q2": -1.98,
+        "2022Q3": 19.89,
+        "2022Q4": -29.03,
+        "2023Q1": -17.35,
+        "2023Q2": -9.52,
+        "2023Q3": 2.45,
+        "2023Q4": -12.78
+      },
+      "rejections": {
+        "early-exit-last-bar": 29,
+        "empty-leg": 0,
+        "insufficient-cross-section": 0,
+        "lag-early-exit-last-bar": 29,
+        "lag-exit-at-next-midnight": 0,
+        "lag-missing-entry-bar": 0,
+        "lag-unvaluable-exit": 0,
+        "missing-entry-bar": 26,
+        "unvaluable-exit": 0
+      },
+      "disposition": "FALSIFIED on the primary window: every one of the four conjunctive gates was false. The published short-term reversal premium (Bianchi, Babiak and Dickerson 2022) does not exist as a net-of-taker-fee decile spread on the liquid Binance USDT-perpetual cross-section in 2022-2023; even before fees the spread is small and insignificant, and prior-day losers continued to underperform the universe. No threshold relaxation, universe change, pooling, re-windowing, or diagnostic reinterpretation is permitted; the family is closed.",
+      "claim_boundary": "A two-window pass supports only a replicated net-of-taker-fee one-day cross-sectional reversal spread on Binance USDT perpetuals at a bar-open execution proxy over two reused historical calendars. Familywise-error language is scoped to post-policy cycles only. It does not establish causality, deployability, capacity, slippage-inclusive profitability, funding-inclusive profitability, or an absolute breakthrough, and nothing here bears on the 40% annual-return aspiration.",
+      "post_closure_universe_sensitivity": "Post-closure descriptive check (not part of the frozen run, not a claim): re-aggregating the same frozen archives on the owner's literal universe of 321 symbols with >= 24 monthly 1h archives at inventory time gives, for the same primary window and rule, mean net spread -4.03 bps/date (gross +5.96, long excess -17.23, short excess +9.17, 4/8 quarters positive, bootstrap p 0.811, t = -0.71); every gate would still be false. The 331 symbols with fewer than 24 archives that the wording excludes (of which 20 were delisted young and 15 were actually held: LUNAUSDT, ANCUSDT, COCOSUSDT, RNDRUSDT, FOOTBALLUSDT and others) supplied 454 of 21,990 position-dates (2.1%) in the frozen run and moved the spread by about -1.2 bps; the broadened universe therefore biased against the mechanism, and the falsification holds under either universe definition."
     }
   },
   "forty_percent_disposition": "No explored result supports a 40% net annual-return claim. Searching further against historical CAGR is prohibited; future strategies advance only through mechanism, benchmark excess, cost/collateral realism, and prospective forward evidence.",
@@ -697,6 +780,26 @@
       "trial_count": 2,
       "return_rows": 0,
       "disposition": "Complete-week BTCUSDT/ETHUSDT weekday-versus-weekend participation contrast. Primary 2024H1 passed all six frozen gates on 26 paired weeks; the single preregistered 2024H2 replication passed all six on 25 paired weeks. Pooled log weekday/weekend trade-count medians were 0.68782 and 0.63292; quote-volume medians were 0.79725 and 0.74130; both assets and all six Monday-month groups were positive in both windows; all four endpoint/window block-bootstrap p-values were 0.000050 below cycle-k=2 alpha 0.008333. Certified only as retrospective descriptive market structure, not alpha, return, causality, or deployment evidence."
+    },
+    {
+      "id": "utc-2100-2300-net-premium",
+      "directory": "quant-trading/explorations/campaigns/20260902T125230Z_9329d0b8_e7db49e940ad",
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-primary-window",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "trial_count": 1,
+      "return_rows": 0,
+      "disposition": "Published 21:00-23:00 UTC Bitcoin seasonality tested net of Binance taker fees on BTCUSDT/ETHUSDT perpetual hourly klines, primary 2020-01..2021-12. Complete sample (731/731 paired dates, 1,462 observations). Magnitude, asset-consistency, quarter-stability, and concentration gates passed (pooled net 5.17 bps/date, concentration 11.47 bps/date, p_x 0.00065), but the net-return bootstrap p_net 0.08370 missed alpha_3 0.004167. Because all five gates were conjunctive, the primary was falsified and the frozen 2022-04..2023-12 replication was not run. No fee, window, threshold, or re-windowing rescue."
+    },
+    {
+      "id": "perp-cross-section-daily-reversal",
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-primary-window",
+      "directory": "quant-trading/explorations/campaigns/20260902T145246Z_0e7153fc_e8afb1b09af8",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "trial_count": 1,
+      "return_rows": 0,
+      "disposition": "One-day cross-sectional reversal decile long-short on 652 Binance USDT perpetuals net of two taker fees, primary 2022-01..2023-12. Complete sample (730/730 dates, 21,990 positions) and all four gates false: mean net spread -5.22 bps/date against +5 bps, long-leg excess -20.77 bps (losers kept losing) and short-leg excess +10.33 bps, 3/8 quarters positive, bootstrap p 0.8636 against alpha_4 0.0025. Gross spread before fees +4.77 bps/date (p 0.162). Because all gates were conjunctive, the primary was falsified and the frozen 2024-01..2025-12 replication was not run. No threshold relaxation, universe change, or re-windowing is permitted."
     }
   ]
 }

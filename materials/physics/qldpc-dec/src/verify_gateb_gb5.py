@@ -32,6 +32,11 @@ from gateb_gb7_paired import (  # noqa: E402
 from gateb_gb8_retarget import (  # noqa: E402
     ARTIFACT as GB8_ARTIFACT, PAPER as GB8_PAPER, retarget_all,
 )
+from gateb_gb7_paired import sha256_region  # noqa: E402
+from gateb_gb9_32res import (  # noqa: E402
+    ARMS as GB9_ARMS, BEAM_NR_BINARY, GB7_CAMPAIGN as GB9_PREFIX, SHOTS as GB9_SHOTS,
+    decide as gb9_decide, frozen_checksums as gb9_frozen_checksums,
+)
 from qldpc_dec.seeds import derive_seed  # noqa: E402
 
 BASE_SEED = 20260829
@@ -320,15 +325,105 @@ def verify_gb8(gb7_summary: dict, gb7_dir: Path) -> dict:
     return redone
 
 
+def verify_gb9(cdir: Path) -> dict:
+    """Revision GB9: re-derive every reported number from the frozen raw
+    artifacts of the beam64_32res paired campaign."""
+    summary = json.loads((cdir / "summary.json").read_text())
+    manifest = json.loads((cdir / "manifest.json").read_text())
+    check("gb9.campaign_closed", (cdir / "inventory.json").exists(), cdir.name)
+    check_frozen_hashes("gb9", cdir)
+    shots = int(summary["shots_shared"])
+    check("gb9.shots_pinned", shots == GB9_SHOTS, str(shots))
+    check("gb9.binary_hash",
+          manifest["beam_binary"] == BEAM_NR_BINARY.name
+          and manifest["beam_binary_sha256"] == sha256_file(BEAM_NR_BINARY),
+          manifest["beam_binary_sha256"][:12])
+    eq = manifest["beam_equivalence_evidence"]
+    check("gb9.equivalence_gate",
+          len(eq["beam64_32res"]) == 2
+          and all(r["mismatched_shots"] == 0 for r in eq["beam64_32res"])
+          and len(eq["k1_regression"]) == 6
+          and all(r["identical_to_frozen_binary"] for r in eq["k1_regression"]),
+          "2 x 32res zero-mismatch, 6 x K=1 byte-identical")
+    gb7_sums = gb9_frozen_checksums(GB9_PREFIX)
+    shot_path = cdir / "shots_bposd.bin"
+    check("gb9.stream_identity_with_gb7",
+          sha256_file(shot_path) == gb7_sums["shots_bposd.bin"],
+          gb7_sums["shots_bposd.bin"][:12])
+    nobs = int(manifest["dem_dimensions"]["observables"])
+    row_bytes = ((nobs + 63) // 64) * 8
+    inv = json.loads((cdir / "shards" / "inventory.json").read_text())
+    masks: dict[str, np.ndarray] = {}
+    for arm in GB9_ARMS:
+        assembled = cdir / f"{arm}_predictions.bin"
+        expected_cfg = (
+            f"config: beam_width={GB9_ARMS[arm]['beam_width']} "
+            f"initial_iters={GB9_ARMS[arm]['initial_iters']} "
+            f"iters_per_round={GB9_ARMS[arm]['iters_per_round']} "
+            f"max_rounds={GB9_ARMS[arm]['max_rounds']} "
+            f"num_results={GB9_ARMS[arm]['num_results']}")
+        ok = True
+        for s in inv["shards"]:
+            k = int(s["index"])
+            part = cdir / "shards" / f"{arm}_{k:02d}_predictions.bin"
+            meta = json.loads((cdir / "shards" / f"{arm}_{k:02d}_predictions.bin.meta.json").read_text())
+            size = int(s["shots"]) * row_bytes
+            ok = ok and (
+                meta["config_line"] == expected_cfg
+                and meta["beam_binary_sha256"] == manifest["beam_binary_sha256"]
+                and meta["source_shots_sha256"] == s["sha256"]
+                and sha256_region(part, 12, size)
+                == sha256_region(assembled, 12 + int(s["start"]) * row_bytes, size))
+        check(f"gb9.shards_assembled[{arm}]", ok, f"{len(inv['shards'])} shards: config, binary, rows")
+        recomputed, _po = failure_mask_from_predictions(shot_path, assembled)
+        masks[arm] = recomputed
+        check(f"gb9.failures_recomputed[{arm}]",
+              int(recomputed.sum()) == int(summary["arms"][arm]["failures"]),
+              f"{int(recomputed.sum())} of {shots}")
+        check(f"gb9.failure_mask_stored[{arm}]",
+              np.array_equal(recomputed, read_failmask(cdir / f"{arm}_failmask.bin", shots)))
+    check("gb9.beam8_identity_with_gb7",
+          sha256_file(cdir / "beam8_predictions.bin") == gb7_sums["beam8_predictions.bin"]
+          and np.array_equal(masks["beam8"], read_failmask(GB9_PREFIX / "beam8_failmask.bin", shots)),
+          gb7_sums["beam8_predictions.bin"][:12])
+    frozen64 = read_failmask(GB9_PREFIX / "beam64_failmask.bin", shots)
+    gb7_summary = json.loads((GB9_PREFIX / "summary.json").read_text())
+    k1_ratio = float(gb7_summary["decisions"]["beam64"]["paired_ratio_rung_over_beam8"]["ratio"])
+    redone = gb9_decide(paired_cells(masks["beam8"], masks["beam64_32res"]),
+                        paired_cells(frozen64, masks["beam64_32res"]), shots, k1_ratio)
+    stored = summary["decision"]
+    same = (
+        redone["outcome"] == stored["outcome"]
+        and redone["band_outcome"] == stored["band_outcome"]
+        and redone["paired_cells_vs_beam8"] == stored["paired_cells_vs_beam8"]
+        and redone["paired_ratio_rung_over_beam8"]["ci95"] == stored["paired_ratio_rung_over_beam8"]["ci95"]
+        and redone["mcnemar_vs_beam8"]["exact_two_sided_p"] == stored["mcnemar_vs_beam8"]["exact_two_sided_p"]
+        and redone["vs_beam64_640iters"] == stored["vs_beam64_640iters"]
+        and redone["terminal_verdict_by_prereg_mapping"] == stored["terminal_verdict_by_prereg_mapping"]
+    )
+    check("gb9.decision_reproducible", same,
+          f"{redone['outcome']} ratio={redone['paired_ratio_rung_over_beam8']['ratio']} "
+          f"CI={redone['paired_ratio_rung_over_beam8']['ci95']} band={redone['band_outcome']}")
+    status_path = cdir / "status.json"
+    if status_path.is_file():
+        check("gb9.verdict_matches_prereg_mapping",
+              json.loads(status_path.read_text()).get("verdict")
+              == stored["terminal_verdict_by_prereg_mapping"],
+              stored["terminal_verdict_by_prereg_mapping"])
+    return summary
+
+
 def main() -> None:
     ladder_dir = Path(sys.argv[1]).resolve()
     ladder = verify_ladder(ladder_dir)
     mech = verify_mechanism(Path(sys.argv[2]).resolve()) if len(sys.argv) > 2 else None
     gb7 = verify_gb7(Path(sys.argv[3]).resolve()) if len(sys.argv) > 3 else None
     gb8 = verify_gb8(gb7, Path(sys.argv[3]).resolve()) if gb7 is not None else None
+    gb9 = verify_gb9(Path(sys.argv[4]).resolve()) if len(sys.argv) > 4 else None
     ps = (TARGET / "pre_statement.md").read_text()
-    for rev in ("Revision GB5 ", "Revision GB5a ", "Revision GB6 ", "Revision GB7 ",
-                "Revision GB8 "):
+    revisions = ["Revision GB5 ", "Revision GB5a ", "Revision GB6 ", "Revision GB7 ",
+                 "Revision GB8 "] + (["Revision GB9 "] if gb9 is not None else [])
+    for rev in revisions:
         check(f"pre_statement.contains[{rev.strip()}]", rev in ps)
 
     print()
@@ -357,6 +452,16 @@ def main() -> None:
             rung: {"published_factor": r["corrected_target"]["published_factor"],
                    "outcome": r["corrected_target"]["outcome"]}
             for rung, r in gb8["rungs"].items()
+        }
+    if gb9 is not None:
+        d = gb9["decision"]
+        payload["gb9"] = {
+            "failures": {arm: v["failures"] for arm, v in gb9["arms"].items()},
+            "outcome": d["outcome"],
+            "band": d["band_outcome"],
+            "measured_factor_ci95": d["measured_factor_ci95"],
+            "improvement_over_k1": d["vs_beam64_640iters"]["improvement_over_k1_confirmed"],
+            "verdict": d["terminal_verdict_by_prereg_mapping"],
         }
     print("QLDPC_GATEB_ACCEPTANCE_PASS " + json.dumps(payload, sort_keys=True))
 

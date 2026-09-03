@@ -1,0 +1,3 @@
+config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1
+decoded 5000000 shots x 1 reps in 955647.3 ms => 0.191 ms/shot
+stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=5265709 bp_iters=56600986 rounds=211613

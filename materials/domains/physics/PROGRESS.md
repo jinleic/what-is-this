@@ -4,6 +4,37 @@ Newest first. One entry per session. Every claim links to its verification.
 
 ---
 
+## 2026-09-02 — GB9 launched: the paper's actual 17x (beam64_32res, num_results=32), paired 1e8, RUNNING
+
+- Decoder built and proven before any sample. The paper's Algorithm 3 step 3
+  inserts the seed-BP solution and returns it only if num_results=1; the
+  harness Python reference returned on seed convergence regardless — the
+  one deviation, fixed (`qldpc-dec/src/qldpc_dec/beam_search.py`). Weight is
+  now a sequential index-order sum (np.dot delegates to BLAS, unmirrorable).
+  `beam8.cpp` gained `--num-results`; built to a NEW binary `beam_nr_cpp`
+  (sha `297db977a57b…`); the frozen `beam8_cpp` (`a480050b2041…`) is untouched.
+- Equivalence gate: `beam64_32res` **2000/2000 identical at p=1e-3, 300/300
+  at p=3e-3** vs the Python reference (21 s/shot, sharded over processes).
+  K=1 regression on the six frozen gate points: zero mismatches and the C++
+  prediction files byte-identical to the frozen binary's (six of six).
+- The authors' code (github ionq-publications/BeamSearchDecoder,
+  `beam_search.hpp`) agrees with the pseudocode on seed insertion, duplicate
+  counting, sequential weight, strict `<`, best-so-far after max_rounds, but
+  carries two undisclosed heuristics (converged-branch skip; Tanner-degree
+  <=2 exclusion) — pre-registered as first suspects if 17x fails.
+- Cost: num_results=32 is 188 ms/shot/thread (42 BP runs, 465 iterations per
+  shot; every shot enters the search). Sizing from frozen GB7 rates
+  (`qldpc-dec/src/evidence/gb9_sizing.json`, sha `5777193c…`): N = 1e8
+  pinned — P(refute 17x | K=1-level) = 0.88, P(exclude K=1 baseline | true
+  17x) = 0.915; the +-30% band needs ~5.6e8 shots and is disclosed as
+  unreachable. ~220 h of decoding.
+- Revision GB9 recorded 2026-09-02T10:56Z; `campaign.py init` minted
+  `qldpc-dec/campaigns/20260902T114747Z_69eba724_61e9fe30ba5d` (prereg sha
+  `45d7a47f…`) at 11:47Z; runner `src/gateb_gb9_32res.py` launched under
+  the process supervisor (shard-wise decoding, resumable). Hard voids:
+  stream byte-identity with GB7; beam8 predictions byte-identity with GB7;
+  beam8 mask identity. No terminal verdict yet.
+
 ## 2026-09-02 — RETRACTION: "beam64 17x refuted" was a prereg mis-attribution; beam64_640iters is CONSISTENT with its published 7.0x (Revision GB8, no sampling)
 
 - Trigger: GB7 refuted the 17x point but its interval's upper edge (12.65x)

@@ -324,6 +324,25 @@ The proof was independently re-derived and reviewed. Its theorem envelope matche
 - Liu's “codimension two” is correct inside the probability simplex; homogeneous signed tangent directions impose three constraints.
 - The printed decimal `0.382709087918741` is conditional and is a rounding of the equation-defined value.
 
+### LIU-H2-PROVED-AND-THE-CONSTANT-UNCONDITIONAL (2026-09-02) - EVERYTHING BELOW IN THIS SECTION IS HISTORY
+
+**PROVED [machine-verified algebra + human-audited chain; two internal adversarial reviews SOUND; external refereeing open].**
+Liu Hypothesis 2 holds for the paired class, for all Borel probability
+measures, and for every conditionally i.i.d. coupling, at the exact
+root-defined constants \((\beta^*,m^*)\): \(\mathrm{numerator}\ge(M/m^*)\,E_\mu[h]\)
+with no mean constraint. Consequently Liu's Proposition 3 applies with
+\(C=(1-c)/m^*>1\) for every \(c<c'\), both of Liu's hypotheses are bypassed, and
+**the union-closed constant \(c'=1-m^*=0.38270908791873502993\ldots\) is
+unconditional** (certified enclosure \(\pm4.95\times10^{-46}\); Liu's printed
+\(0.382709087918741\) is wrong in its last two digits). Authority: `RESULTS.md`
+Fourth result and open-problems row 509;
+[`uc/UC_CONSTANT_UNCONDITIONAL_2026-09-02.md`](uc/UC_CONSTANT_UNCONDITIONAL_2026-09-02.md);
+certificates `liu9-h2-general-lift.json` (sha256 `eb4874d39904593bddc3f2ae638d1bad6756a19d4ebf6e06a60427b6bb7ac1ce`) and
+`liu9-h2-mixture-theorem.json` (sha256 `329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3`) composing
+`liu9-h2-twovar.json` and `liu9-h2-boundary.json`. The block-copositivity,
+scalar-margin, tube, and cover framings recorded below were the road; none is
+the live obligation, and none should be cited as such.
+
 ### LIU-H2-SIZE-BIASED-QONE-THEOREM (2026-08-29) - THE ENTIRE Q=1 FACE IS PROVED; FULL H2 REDUCED TO ONE EXACT BLOCK-COPOSITIVITY INEQUALITY
 
 **The near-maximal local theorem is unchanged.** The q-degenerate seam
@@ -741,7 +760,7 @@ reported 103 records and no item posted after the full-audit cutoff; no new
 Liu-H1 collision appeared.  This one-index refresh does not broaden the
 universal-priority claim.
 
-Liu's Section V-B global-minimizer hypothesis remains **OPEN**. Therefore `0.382709087918741` remains conditional and is not an unconditional union-closed bound from this work.
+**Superseded 2026-09-02:** Liu's Section V-B hypothesis is PROVED and the constant \(c'=1-m^*=0.38270908791873502993\ldots\) is unconditional (see LIU-H2-PROVED-AND-THE-CONSTANT-UNCONDITIONAL above and `RESULTS.md`, Fourth result); the printed `0.382709087918741` is wrong in its last two digits. The paragraph that stood here read: "Liu's Section V-B global-minimizer hypothesis remains OPEN. Therefore `0.382709087918741` remains conditional and is not an unconditional union-closed bound from this work." — historical.
 
 The 2026-08-27 measurement sharpens where that gap sits. At tube radius
 \(\rho=0.1\) the complement branch-and-bound leaves 71, 76, and 79 residual
@@ -955,22 +974,22 @@ complement, not the chart-to-nine-variable extension.
 | Project | Mathematical readiness | Computational readiness | Literature readiness | Current verdict |
 |---|---|---|---|---|
 | UC explicit constant | Human audit plus two independent read-only referees, the second finding no proof defect in the entropy bridge or the support reduction; eight minor exposition defects repaired; external specialist/journal review open | Structural, two same-source full replays, and secure source-independent byte-zero replay pass; the entropy bridge is additionally exhausted for every family with \(n\le4\) and sampled to \(n=8\); 343-file/runtime-image evidence pinned | Bounded audit plus 2026-08-26 arXiv refresh, no collision found | Independently reproduced subject to listed trace/Arb/runtime/custody assumptions; strong candidate pending external mathematical review |
+| Union-closed constant \(c'=1-m^*\) (unconditional, 2026-09-02) | Machine-verified algebra (two certificates, constants as balls) plus a human-audited information-theoretic chain re-derived by two adversarial readers; external referee open | Both certificates byte-identical across runs and reviewer reproductions; 27,006-configuration independent attack found no negative | Bounded search; no priority claim | PROVED in-repo; strongest bound in this ledger pending external review |
 | Liu Hypothesis 1 | Complete human-audited proof; two fresh read-only referee passes found no blocker or major defect; external journal/expert review remains open | Clean isolated reproduction and independent exact checker pass | Bounded audit plus 2026-08-26 arXiv refresh, no collision found | Submission-ready candidate manuscript with explicit non-formal/non-priority qualifications |
 
 ## Concrete next actions
 
 1. Ask an external union-closed/entropy specialist to referee the UC support reduction and entropy bridge.  This is the only remaining blocker on the UC theorem and it cannot be discharged inside the repository; two independent model referees have now found no proof defect.
 2. Ask a kernel/functional-analysis specialist to referee the Liu Taylor--Lorentz--Gram proof.
-3. Submit the Liu-H1 manuscript only with the candidate/priority qualifications retained; do not attach a claim about Liu Hypothesis 2.
+3. Submit the Liu-H1 manuscript with the candidate/priority qualifications retained. Liu Hypothesis 2 is now PROVED and the constant \(c'\) unconditional (2026-09-02); H1 is no longer load-bearing for \(c'\), so the H1 manuscript should say so rather than claim the constant.
 4. Campaign K is fully committed (16/16 slices COMPLETE with residual = stack
    = `budget_time` = 0, 805,542,368 boxes).  Run the frozen collector to term;
    an exit-0 `COMPOSITE CERTIFICATE` there would raise the certified constant
    to \(0.3822660112501052\).  Nothing weaker may be reported as a certificate.
-5. For Liu H2, three of the four local ingredients are
-   supplied.  The chart radius is limited by interval dependency, not
-   geometry; the remaining global task is block copositivity or a certified
-   complement, and subdivision of the residual volume is refuted as a
-   completion route.
+5. Liu H2 is PROVED (2026-09-02) and the constant \(c'\) is unconditional.
+   Next: external refereeing of `uc/UC_CONSTANT_UNCONDITIONAL_2026-09-02.md`
+   and the two certificates; then, as DISCOVERY only, whether a three-protocol
+   combination (Liu Lemma 8) or another protocol family raises \(c'\).
 6. Treat formal proof-assistant verification, hardware-backed execution
    attestation, and removal of the remaining trace/Arb/OS trust assumptions as
    strengthening work; the independent interval implementation itself is

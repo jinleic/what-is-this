@@ -30,11 +30,11 @@
   "step2_residue_and_mu": {
    "identity_residuals": {
     "M_mu_max_upper_at_points": "[-6.4645803538052919562e-25 +/- 1.54e-45]",
-    "backends": "python-flint arb 400 bits (certified) and mpmath 100 digits (corroboration)",
-    "max_abs_residual_mpmath": "1.584285e-16",
+    "backends": "python-flint arb 400 bits (certified) and mpmath 100 digits (corroboration, gated < 1e-70, evaluated at workdps=100)",
+    "max_abs_residual_mpmath": "1.2646182e-101",
     "max_abs_residual_upper": "[9.31702885734e-120 +/- 1.56e-132]",
     "middle_term_min_lower_at_points": "[2.3369813326658666744e-24 +/- 2.73e-44]",
-    "mpmath_tolerance": "1e-70",
+    "mpmath_within_tolerance": true,
     "point_list_summary": "near-0 (2^-14..2^-40), near-1 (1-2^-14..1-2^-21), near-diagonal (2^-20..2^-40 and 27/50,27/50+1e-6), mid-grid, flipped-order pairs",
     "points": 22,
     "status": "MACHINE-VERIFIED at the listed points; the identity itself is the expansion re-derived by the auditor (log-form Lam, L1 algebra) \u2014 see sub_claim L1_expansion"
@@ -64,6 +64,7 @@
    }
   },
   "step3_independent_cover": {
+   "accepted_area_exact": "2151/4096",
    "accepted_by_D": 1458,
    "accepted_by_Q": 42800,
    "derivative_bound": "L5a inf bound over whole hull intervals + auditor strip lemmas",
@@ -86,7 +87,7 @@
      "221/512"
     ]
    },
-   "partition_area_exact": "6041/4096",
+   "partition_ledger": "accepted_area + discarded_area == 1 exactly (exact Fractions, asserted in cover_grid); discarded cells satisfy s_lo >= t_hi so they contain no point with s < t, where kappa is undefined; every point with s > t is covered by mirror symmetry kappa(s,t) = kappa(t,s) (the factor (1+(1-s)(1-t)) and |gamma(s)-gamma(t)|/|t-s| are symmetric), whose mirror lies in the certified triangle 0 <= s <= t; together with the L3 boundary lemmas this covers [0,1]^2",
    "processed_cells": 88390,
    "strip_cutoffs": [
     "1/16",
@@ -217,33 +218,64 @@
    "observed": "uncertified acceptance detected: min_certified [0.00274068158048 +/- 1.32e-15] not > theta",
    "processed_cells": 36,
    "target": "auditor cover acceptance rule"
+  },
+  {
+   "caught": true,
+   "label": "CAUGHT",
+   "mutation": "forced_step2_failure_is_recorded_not_raised",
+   "observed": "recorded status 'FAILED', failure_record sub_claim 'L1_identity_residuals_forced'",
+   "target": "fail-soft run_checked wrapper (build_audit contract)"
   }
  ],
  "precision_bits": 400,
- "report_sha256": "4ea733f3e5b5ce1bb202f71f76bc6c3254c237e5b2f6198a19d6db7767ebe84e",
+ "report_sha256": "a515102c1807849b606bf4a681bd0a67173445b1a22610d397bb779440222cab",
  "report_sha256_scope": "SHA-256 of canonical sorted-key compact JSON with report_sha256 omitted",
- "tool": "liu9_h2_phi_audit.py (independent auditor; python-flint Arb + mpmath cross-check)",
- "witnesses": [
+ "sub_claims": [
   {
-   "certified_below_threshold": true,
-   "kappa_upper": "[2.394193379778020415966765 +/- 3.03e-25]",
-   "label": "MACHINE-VERIFIED",
-   "name": "kappa_27_50_delta_1e-6_below_12_5",
-   "point": [
-    "27/50",
-    "540001/1000000"
-   ],
-   "role": "witness for mutation theta_12_5 (kappa < 12/5 => no uniform cover at 12/5)",
-   "threshold": "12/5"
+   "name": "polynomial_identity_e",
+   "statement": "pi(s,s)pi(t,t) - pi(s,t)^2 = s^2 t^2 (s-t)^2 exactly (bidegree (4,4), 5x5 distinct-rational grid)",
+   "status": "PROVED"
   },
   {
-   "abs_dgamma_upper": "[1.910518707203791212162174 +/- 3.80e-25]",
-   "certified_below_threshold": true,
-   "label": "MACHINE-VERIFIED",
-   "name": "abs_dgamma_9_20_below_2",
-   "point": "9/20",
-   "role": "witness for mutation drop_factor at theta = 2",
-   "threshold": "2"
+   "name": "boundary_values_L3",
+   "statement": "Phi(s,s)=0; Phi(0,t)=Phi(s,0)=0; Phi(s,1)=Phi(1,t)=h(s)^2>=0; Phi symmetric",
+   "status": "PROVED"
+  },
+  {
+   "name": "L1_identity_residuals",
+   "statement": "Phi - RHS(L1) encloses 0 at 22 auditor points (arb 400 bits, |res| < 1e-80; mpmath 100 digits, < 1e-70); middle term >= 0 and M_mu <= 0 at all points",
+   "status": "MACHINE-VERIFIED at the listed points; the identity itself is the expansion re-derived by the auditor (log-form Lam, L1 algebra) \u2014 see sub_claim L1_expansion"
+  },
+  {
+   "name": "mu_series_shape",
+   "statement": "mu(u) = 1 - sum_{k>=2} u^{k-1}/(k(k-1)) with certified tails at 9 points; decreasing/concave/0<=mu<=1 by coefficient signs",
+   "status": "MACHINE-VERIFIED identity at the sample points (certified tails); shape PROVED by coefficient signs"
+  },
+  {
+   "name": "setup_certificates",
+   "statement": "N monotonicity (PROVED + 1/4096 screen), pi_d(15/16) >= 1/2, diagonal-limit screen (1+(1-x)^2)|gamma'(x)| >= 2 at 63 points, Lam two-form agreement",
+   "status": "MACHINE-VERIFIED (setup certificates)"
+  },
+  {
+   "name": "independent_kappa_cover_theta_23_10",
+   "statement": "kappa(s,t) >= 23/10 for all (s,t) in [0,1]^2 via independent cover (88390 cells, exact area ledger, certified min [2.3000007536784592849 +/- 1.68e-20])",
+   "status": "MACHINE-VERIFIED"
+  },
+  {
+   "name": "witnesses_kappa_dgamma",
+   "statement": "kappa(27/50, 27/50+1e-6) certified < 12/5; |gamma'(9/20)| certified < 2",
+   "status": "MACHINE-VERIFIED"
+  },
+  {
+   "name": "mutations_of_audit_caught",
+   "statement": "6 mutations of the audit's own checks (wrong protocol, quarter->half, drop factor, theta 12/5, inverted acceptance, forced step-2 failure recorded not raised) all caught",
+   "status": "MACHINE-VERIFIED"
+  },
+  {
+   "name": "module_reproduction",
+   "statement": "module/artifact hashes recomputed and match expected; module re-run twice, byte-identical to each other and to the on-disk artifact; internal report_sha256 matches canonical-bytes recomputation",
+   "status": "MACHINE-VERIFIED"
   }
- ]
+ ],
+ "tool": "liu9_h2_phi_audit.py (independent auditor; python-flint Arb + mpmath cross-check)"
 }

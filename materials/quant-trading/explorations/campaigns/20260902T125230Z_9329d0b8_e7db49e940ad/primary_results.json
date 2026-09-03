@@ -1,0 +1,131 @@
+{
+  "archives_verified": 90,
+  "claim_boundary": "A two-window pass supports only a replicated Binance BTC/ETH 21:00-23:00 UTC expected-return regularity net of standard taker fees on frozen 2020-2021 and 2022Q2-2023 calendars. Familywise-error language is scoped only to post-policy cycles. It does not prove causality, does not establish future persistence, live executability, slippage-inclusive profitability, deployment readiness, capital allocation, or an absolute breakthrough, and does not by itself reach the 40%-per-year program target.",
+  "contract_sha256": "3453467440b2dd62d60688c5e28c6faddc49f5b6cda299fe5f13a9dc85e3eb13",
+  "created_at_utc": "2026-09-02T12:52:41Z",
+  "id": "utc-2100-2300-net-premium",
+  "input_inventory_sha256": "d60bb2d212933244d1b6630b8d7ec5a46bae71f9eaef7395b18772a571214393",
+  "loop_policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0",
+  "prior_window_audit_sha256": "27a29b2b2df50053bbc08dc364e08a77f54fe80f29ec4921316523bd985f3d71",
+  "result": {
+    "cost_model": {
+      "funding_crossed": false,
+      "round_trip_fee_drag": 0.001,
+      "taker_fee_per_side": 0.0005
+    },
+    "gate_descriptions": {
+      "G1_net_magnitude": "pooled mean net >= 0.0003 (three basis points per date; roughly 11% simple annual sum, more than one quarter of the 40%-per-year program target must survive costs)",
+      "G2_net_asset_consistency": "BTCUSDT mean net > 0 AND ETHUSDT mean net > 0",
+      "G3_quarter_stability": "at least 60% of included calendar quarters have strictly positive pooled mean net",
+      "G4_concentration": "pooled mean x > 0 AND BTCUSDT mean x > 0 AND ETHUSDT mean x > 0",
+      "G5_dependence_robustness": "p_net < 0.004166666666666667 AND p_x < 0.004166666666666667 under the frozen paired date-block bootstrap",
+      "fail_rule": "If minimum sample is met and any gate is false, the mechanism is falsified on that window.",
+      "inconclusive_rule": "Only frozen missing/duplicate/nonpositive-bar rejections reducing the paired sample below minimum yield an inconclusive result. Contract, audit, policy, inventory, checksum, CRC, member, first-row form, or schema failures abort without an artifact. UNKNOWN never passes.",
+      "pass_rule": "A window passes only if its minimum sample is met and G1 through G5 are all true; all gates are conjunctive."
+    },
+    "gate_results": {
+      "G1_net_magnitude": {
+        "pass": true,
+        "pooled_mean_net": 0.0005172335753902628,
+        "threshold": 0.0003
+      },
+      "G2_net_asset_consistency": {
+        "pass": true,
+        "per_asset_mean_net": {
+          "BTCUSDT": 0.00037717207429672096,
+          "ETHUSDT": 0.0006572950764838044
+        },
+        "threshold": 0.0
+      },
+      "G3_quarter_stability": {
+        "net": {
+          "included_quarters": 8,
+          "positive_fraction": 0.75,
+          "positive_quarters": 6,
+          "quarterly_pooled_means": {
+            "2020Q1": -0.00014289480335566245,
+            "2020Q2": 0.0015916748518102356,
+            "2020Q3": 0.00019632395203408146,
+            "2020Q4": 0.00018631489766428734,
+            "2021Q1": 0.000678508311088606,
+            "2021Q2": 0.0007463671665806674,
+            "2021Q3": 0.001160672641721635,
+            "2021Q4": -0.00026859845833195365
+          }
+        },
+        "pass": true,
+        "threshold": 0.6
+      },
+      "G4_concentration": {
+        "pass": true,
+        "per_asset_mean_x": {
+          "BTCUSDT": 0.0011118065857044222,
+          "ETHUSDT": 0.0011819516947119315
+        },
+        "pooled_mean_x": 0.0011468791402081768,
+        "threshold": 0.0
+      },
+      "G5_dependence_robustness": {
+        "alpha": 0.004166666666666667,
+        "block_dates": 7,
+        "one_sided_block_bootstrap_p_net": 0.08369581520923954,
+        "one_sided_block_bootstrap_p_x": 0.0006499675016249188,
+        "pass": false,
+        "replicates": 20000,
+        "seed": 20260902
+      }
+    },
+    "per_asset": {
+      "BTCUSDT": {
+        "mean_net": 0.00037717207429672096,
+        "mean_x": 0.0011118065857044222,
+        "observations": 731
+      },
+      "ETHUSDT": {
+        "mean_net": 0.0006572950764838044,
+        "mean_x": 0.0011819516947119315,
+        "observations": 731
+      }
+    },
+    "pooled": {
+      "mean_net": 0.0005172335753902628,
+      "mean_x": 0.0011468791402081768
+    },
+    "reason": "at least one frozen gate is false",
+    "sample": {
+      "expected_dates": 731,
+      "included_quarters": 8,
+      "minimum": {
+        "included_quarters": 6,
+        "paired_dates": 500,
+        "per_asset": 500,
+        "pooled": 1000
+      },
+      "paired_dates": 731,
+      "per_asset_observations": {
+        "BTCUSDT": 731,
+        "ETHUSDT": 731
+      },
+      "pooled_observations": 1462,
+      "rejected_asset_dates": {
+        "BTCUSDT": {},
+        "ETHUSDT": {}
+      },
+      "unpaired_complete_dates": {
+        "BTCUSDT": 0,
+        "ETHUSDT": 0
+      }
+    },
+    "status": "falsified",
+    "window": {
+      "end_utc_exclusive": "2022-01-01T00:00:00Z",
+      "expected_dates": 731,
+      "expected_pooled_observations": 1462,
+      "relation_to_source": "inside the published 2015-10..2022-02 sample; different venue, instrument, and costs",
+      "start_utc_inclusive": "2020-01-01T00:00:00Z"
+    }
+  },
+  "role": "primary",
+  "runner_sha256": "f6eecb9662598f556c5b84c28b73e071ab2d27150bf0b72c6cf67f262da1a1c8",
+  "schema_version": 1
+}

@@ -36,8 +36,9 @@ Checks (labels on each sub-claim in the report):
   4. Reproduction: module/artifact sha256 recomputed; the artifact's internal
      report_sha256 recomputed from canonical bytes (report_sha256 key omitted); module
      re-run TWICE with --output into /tmp; runs and on-disk artifact byte-compared.
-  5. Five mutations of THIS audit's own checks (wrong protocol, quarter->half, dropped
-     (1+(1-s)(1-t)) factor, theta = 12/5, inverted acceptance comparison) must be caught.
+  5. Six mutations of THIS audit's own checks (wrong protocol, quarter->half, dropped
+     (1+(1-s)(1-t)) factor, theta = 12/5, inverted acceptance comparison, and a forced
+     step-2 failure exercised through the fail-soft wrapper) must be caught.
 
 Direction discipline: lower bounds are whole-cell/strip infima certified by Arb balls;
 acceptance requires the certified lower endpoint to be strictly above the EXACT
@@ -45,9 +46,10 @@ threshold (certified comparison via .lower() contrasted against a zero-radius ba
 Nothing is ever certified from a sample point, a cell centre, or a float.  No
 mpmath.mpf() on an existing mpf occurs; exact rationals enter Arb via arb(num)/den.
 
-Audit outcome uses FAILED (not OPEN) for any sub-claim this audit could not establish.
-On failure the failing sub-claim and its witness are recorded and the remaining steps
-still run, so the report is complete either way.
+Fail-soft contract: every step runs through run_checked, which catches AssertionError,
+records {"sub_claim", "error"} as the first failure_record, labels that sub-claim
+"FAILED: <error>" in sub_claims (FAILED, never OPEN), and CONTINUES with the remaining
+steps; the report is written no matter what, with claim_status AUDIT-FAILED.
 
 Run:  nice -n 19 ./.venv/bin/python -I -B uc/liu9_h2_phi_audit.py
 """
@@ -411,14 +413,16 @@ def mu_series_check() -> dict[str, object]:
     }
 
 
-def identity_checks() -> dict[str, object]:
-    """(L1) residual, middle term sign, M_mu <= 0 at all AUDIT_POINTS, two backends."""
+def identity_checks(mutate: str | None = None) -> dict[str, object]:
+    """(L1) residual, middle term sign, M_mu <= 0 at all AUDIT_POINTS, two backends.
+    mutate='wrong_protocol' (or 'quarter_half') applies the mutation to every point;
+    used by the forced-failure mutation M6 through the fail-soft wrapper."""
     worst = ZERO
     small = mp.mpf(0)
     min_middle: arb | None = None
     max_m_mu: arb | None = None
     for s, t in AUDIT_POINTS:
-        residual = identity_residual_arb(s, t)
+        residual = identity_residual_arb(s, t, mutate)
         if not residual.contains(ZERO):
             raise AssertionError(f"L1 residual excludes zero at {s},{t}: {residual}")
         if residual.__abs__().upper() >= RESIDUAL_TOL:
@@ -434,7 +438,6 @@ def identity_checks() -> dict[str, object]:
             raise AssertionError(f"M_mu not certified <= 0 at {s},{t}")
         min_middle = mid.lower() if min_middle is None else exact_min([min_middle, mid.lower()])
         max_m_mu = m_mu.upper() if max_m_mu is None else exact_max([max_m_mu, m_mu.upper()])
-        _ = h_arb  # keep linters quiet about conditional defs above
     if small >= mp.mpf("1e-70"):
         raise AssertionError(f"mpmath residual exceeds 1e-70: {mp.nstr(small, 8)}")
     return {
@@ -741,14 +744,16 @@ def diag_limit_point(x: Fraction) -> arb:
 
 
 def setup_certificates() -> dict[str, object]:
-    """One-time certified facts used by the cover: pi_d(15/16) >= 1/2, the N
-    monotonicity screen, the diagonal-limit screen, gamma two-form agreement, and
-    h plain-vs-shifted agreement."""
+    """One-time certified facts used by the cover: pi_d(15/16) >= 1/2, N
+    monotonicity (PROVED + screen), the diagonal-limit screen (1+(1-x)^2|gamma'(x)| >= 2
+    at 63 interior points), the Lam two-form agreement, and the h shifted-vs-plain
+    agreement at 5 interior rationals."""
     p1616 = frac_arb(pid_frac(Fraction(15, 16)))
     if p1616.lower() < frac_arb(HALF):
         raise AssertionError("pi_d(15/16) >= 1/2 failed")
     minh = ZERO
     ming = ZERO
+    maxh = ZERO
     for k in (3, 7, 9, 27, 71, 211, 601):
         x = Fraction(k, 1013)
         u = frac_arb(pid_frac(x))
@@ -759,7 +764,7 @@ def setup_certificates() -> dict[str, object]:
     for k in (1, 5, 17, 83, 333):
         u = frac_arb(Fraction(k, 1000))
         d = (h_arb(u) - (-(u * u.log() + (ONE - u) * (ONE - u).log()))).__abs__().upper()
-        minh = exact_max([minh, d])
+        maxh = exact_max([maxh, d])
     mono = n_increasing_check()
     lim_records = []
     minlim: arb | None = None
@@ -770,10 +775,11 @@ def setup_certificates() -> dict[str, object]:
         minlim = v.lower() if minlim is None else exact_min([minlim, v.lower()])
         lim_records.append(format_fraction(x))
     return {
-        "pi_d_15_16_lower": format_arb(p1616.lower(), 12),
-        "N_monotonicity": mono,
         "lam_two_form_max_abs_diff_upper": format_arb(minh, 8),
         "gamma_two_form_max_abs_diff_upper": format_arb(ming, 8),
+        "h_shifted_vs_plain_max_abs_diff_upper": format_arb(maxh, 8),
+        "pi_d_15_16_lower": format_arb(p1616.lower(), 12),
+        "N_monotonicity": mono,
         "diagonal_limit_screen_points": len(lim_records),
         "diagonal_limit_min_lower_at_63_points": format_arb(minlim, 12),
         "status": "MACHINE-VERIFIED (setup certificates)",
@@ -913,6 +919,40 @@ def run_mutations(legit_cells: int) -> list[dict[str, object]]:
         "observed": observed5,
         "processed_cells": m5.processed,
         "label": "CAUGHT" if caught5 else "NOT-CAUGHT",
+    })
+
+    # M6: a forced step-2 failure (wrong-protocol identity check) run through the
+    # SAME fail-soft wrapper build_audit uses must be RECORDED as a FAILED status
+    # with a failure_record naming the sub-claim, with NO exception escaping.
+    forced_failure: dict[str, object] | None = None
+    forced_result: dict[str, object] | None = None
+    raised = False
+    try:
+        _res, forced_failure, _err = run_checked(
+            "L1_identity_residuals_forced", lambda: identity_checks(mutate="wrong_protocol"),
+            None, {"status": "FAILED"})
+        forced_result = _res
+    except Exception as error:  # must not happen: the wrapper swallows
+        raised = True
+        observed6 = f"wrapper leaked exception: {error}"
+    if raised:
+        caught6 = False
+    else:
+        status6 = str(forced_result.get("status", "")) if forced_result else ""
+        recorded6 = (forced_failure is not None
+                     and forced_failure.get("sub_claim") == "L1_identity_residuals_forced"
+                     and bool(forced_failure.get("error"))
+                     and status6.startswith("FAILED"))
+        caught6 = recorded6
+        observed6 = (f"recorded status '{status6[:60]}', failure_record sub_claim "
+                     f"'{forced_failure.get('sub_claim')}'" if recorded6
+                     else f"forced failure not recorded as FAILED ({status6[:60]})")
+    mutations.append({
+        "mutation": "forced_step2_failure_is_recorded_not_raised",
+        "target": "fail-soft run_checked wrapper (build_audit contract)",
+        "caught": caught6,
+        "observed": observed6,
+        "label": "CAUGHT" if caught6 else "NOT-CAUGHT",
     })
     return mutations
 
@@ -1074,6 +1114,25 @@ def transition_check(cover: CoverResult, theta: Fraction) -> None:
         raise AssertionError(f"certified min {cover.min_certified} does not exceed theta {theta}")
 
 
+def run_checked(step: str, fn, failure: dict[str, object] | None,
+                fallback: object) -> tuple[object, dict[str, object] | None, str | None]:
+    """Fail-soft contract (item 6): run fn(); on AssertionError (or any exception)
+    return the fallback value plus a failure record {"sub_claim", "error"}; never
+    raise past this point, so the remaining steps still run and the report is
+    written with the sub-claim labelled "FAILED: <error>".  The first failure wins
+    for failure_record; later failures are recorded in sub_claims statuses."""
+    try:
+        value = fn()
+        error_text = None
+    except AssertionError as error:
+        value, error_text = fallback, f"{type(error).__name__}: {error}"
+    except Exception as error:  # defensive: report still gets written
+        value, error_text = fallback, f"{type(error).__name__}: {error}"
+    if error_text is not None and failure is None:
+        failure = {"sub_claim": step, "error": error_text}
+    return value, failure, error_text
+
+
 def cell_record(cell: Cell | None) -> dict[str, object] | None:
     if cell is None:
         return None
@@ -1085,12 +1144,22 @@ def cell_record(cell: Cell | None) -> dict[str, object] | None:
 def build_audit() -> dict[str, object]:
     steps: dict[str, object] = {}
     failure: dict[str, object] | None = None
-
-    polynomial = polynomial_identity_exact()
-    boundary = boundary_values_exact()
-    series = mu_series_check()
-    identities = identity_checks()
-    setup = setup_certificates()
+    polynomial, failure, err_poly = run_checked(
+        "polynomial_identity_e", polynomial_identity_exact, failure, {"status": "FAILED"})
+    boundary, failure, err_bnd = run_checked(
+        "boundary_values_L3", boundary_values_exact, failure, {"status": "FAILED"})
+    series, failure, err_ser = run_checked(
+        "mu_series_shape", mu_series_check, failure, {"status": "FAILED"})
+    identities, failure, err_id = run_checked(
+        "L1_identity_residuals", identity_checks, failure, {"status": "FAILED"})
+    setup, failure, err_setup = run_checked(
+        "setup_certificates", setup_certificates, failure, {"status": "FAILED"})
+    # annotate FAILED statuses with the recorded error for the sub_claims list
+    for record, err in ((polynomial, err_poly), (boundary, err_bnd), (series, err_ser),
+                        (identities, err_id), (setup, err_setup)):
+        if err is not None:
+            record["status"] = f"FAILED: {err}"
+            record["error"] = err
     steps["step1_exact_identities"] = {
         "polynomial_identity": polynomial,
         "boundary_values": boundary,
@@ -1104,18 +1173,32 @@ def build_audit() -> dict[str, object]:
                    "mu_series": series["status"]},
     }
 
-    wit = witnesses()
-    theta_arb = frac_arb(THETA)
-    cover = cover_grid(THETA, init=16)
-    diag_limit = None
-    try:
-        transition_check(cover, THETA)
-        cover_status = "MACHINE-VERIFIED"
-    except AssertionError as error:
-        cover_status = f"FAILED: {error}"
-        failure = {"sub_claim": "independent_kappa_cover_theta_23_10",
-                   "error": str(error),
-                   "failing_cell": cell_record(cover.failing_cell) if cover.failing_cell else None}
+    wit, failure, err_wit = run_checked("witnesses_kappa_dgamma", witnesses, failure, [])
+    if err_wit is not None:
+        wit = [{"name": "witnesses", "certified_below_threshold": False, "label": f"FAILED: {err_wit}"}]
+
+    def _cover() -> CoverResult:
+        return cover_grid(THETA, init=16)
+
+    cover, failure, err_cover = run_checked(
+        "independent_kappa_cover_theta_23_10", _cover, failure,
+        CoverResult(ok=False, failure="exception in cover construction"))
+    if err_cover is not None:
+        cover_status_pre = f"FAILED: {err_cover}"
+    else:
+        cover_status_pre = None
+    if cover_status_pre is not None:
+        cover_status = cover_status_pre
+    else:
+        try:
+            transition_check(cover, THETA)
+            cover_status = "MACHINE-VERIFIED"
+        except AssertionError as error:
+            cover_status = f"FAILED: {error}"
+            if failure is None:
+                failure = {"sub_claim": "independent_kappa_cover_theta_23_10",
+                           "error": str(error),
+                           "failing_cell": cell_record(cover.failing_cell) if cover.failing_cell else None}
 
     # certified pointwise diagonal-limit screen (min over 63 interior points;
     # the cover itself certifies the limit via cells D and Q, this is documentation)
@@ -1136,11 +1219,20 @@ def build_audit() -> dict[str, object]:
         "partition_ledger": "accepted_area + discarded_area == 1 exactly (exact Fractions, asserted in cover_grid); discarded cells satisfy s_lo >= t_hi so they contain no point with s < t, where kappa is undefined; every point with s > t is covered by mirror symmetry kappa(s,t) = kappa(t,s) (the factor (1+(1-s)(1-t)) and |gamma(s)-gamma(t)|/|t-s| are symmetric), whose mirror lies in the certified triangle 0 <= s <= t; together with the L3 boundary lemmas this covers [0,1]^2",
         "labels": {"cover": cover_status},
     }
+    def _mutations() -> list[dict[str, object]]:
+        return run_mutations(cover.processed)
 
-    mutations = run_mutations(cover.processed)
-    all_caught = all(m["caught"] for m in mutations)
-    repro = module_reproduction()
-    provenance = binding_provenance()
+    def _repro() -> dict[str, object]:
+        return module_reproduction()
+
+    def _prov() -> dict[str, object]:
+        return binding_provenance()
+
+    mutations, failure, err_mut = run_checked("mutations_of_audit_caught", _mutations, failure, [])
+    repro, failure, err_rep = run_checked("module_reproduction", _repro, failure, {})
+    provenance, failure, err_prov = run_checked(
+        "binding_parameters_provenance", _prov, failure, {"status": "FAILED"})
+    all_caught = bool(mutations) and all(m["caught"] for m in mutations)
 
     hashes = {
         "tool_sha256": EXPECTED_TOOL_SHA256,
@@ -1155,19 +1247,48 @@ def build_audit() -> dict[str, object]:
         and bool(repro.get("regenerated_matches_artifact"))
     )
 
-    module_claim = "PROVED"
-    overall = "AUDIT-PASSED"
-    if failure is not None:
+    sub_claims: list[dict[str, object]] = [
+        {"name": "polynomial_identity_e",
+         "statement": "pi(s,s)pi(t,t) - pi(s,t)^2 = s^2 t^2 (s-t)^2 exactly (bidegree (4,4), 5x5 distinct-rational grid)",
+         "status": polynomial["status"]},
+        {"name": "boundary_values_L3",
+         "statement": "Phi(s,s)=0; Phi(0,t)=Phi(s,0)=0; Phi(s,1)=Phi(1,t)=h(s)^2>=0; Phi symmetric",
+         "status": boundary["status"]},
+        {"name": "L1_identity_residuals",
+         "statement": "Phi - RHS(L1) encloses 0 at 22 auditor points (arb 400 bits, |res| < 1e-80; mpmath 100 digits, < 1e-70); middle term >= 0 and M_mu <= 0 at all points",
+         "status": identities["status"]},
+        {"name": "mu_series_shape",
+         "statement": "mu(u) = 1 - sum_{k>=2} u^{k-1}/(k(k-1)) with certified tails at 9 points; decreasing/concave/0<=mu<=1 by coefficient signs",
+         "status": series["status"]},
+        {"name": "setup_certificates",
+         "statement": "N monotonicity (PROVED + 1/4096 screen), pi_d(15/16) >= 1/2, diagonal-limit screen (1+(1-x)^2)|gamma'(x)| >= 2 at 63 points, Lam two-form agreement",
+         "status": setup["status"]},
+        {"name": "independent_kappa_cover_theta_23_10",
+         "statement": f"kappa(s,t) >= 23/10 for all (s,t) in [0,1]^2 via independent cover ({cover.processed} cells, exact area ledger, certified min {format_arb(cover.min_certified, 20) if cover.min_certified is not None else None})",
+         "status": cover_status},
+        {"name": "witnesses_kappa_dgamma",
+         "statement": "kappa(27/50, 27/50+1e-6) certified < 12/5; |gamma'(9/20)| certified < 2",
+         "status": "MACHINE-VERIFIED" if all(w["certified_below_threshold"] for w in wit) else "FAILED"},
+        {"name": "mutations_of_audit_caught",
+         "statement": "6 mutations of the audit's own checks (wrong protocol, quarter->half, drop factor, theta 12/5, inverted acceptance, forced step-2 failure recorded not raised) all caught",
+         "status": "MACHINE-VERIFIED" if all_caught else "FAILED"},
+        {"name": "module_reproduction",
+         "statement": "module/artifact hashes recomputed and match expected; module re-run twice, byte-identical to each other and to the on-disk artifact; internal report_sha256 matches canonical-bytes recomputation",
+         "status": "MACHINE-VERIFIED" if hashes_ok else "FAILED"},
+    ]
+    any_failed = any(sc["status"] == "FAILED" or str(sc["status"]).startswith("FAILED") for sc in sub_claims)
+    if any_failed:
         overall = "AUDIT-FAILED"
-    elif not all_caught:
+    elif not (all_caught and hashes_ok):
         overall = "AUDIT-FAILED"
-        failure = {"sub_claim": "mutations", "error": "an auditor mutation escaped"}
-    elif not hashes_ok:
-        overall = "AUDIT-FAILED"
-        failure = {"sub_claim": "module_reproduction", "error": "hash or byte-identity mismatch",
-                   "details": {k: repro.get(k) for k in ("module_tool_sha256_recomputed", "artifact_file_sha256_recomputed", "artifact_report_sha256_recomputed", "byte_identical_runs", "regenerated_matches_artifact", "run1_returncode", "run2_returncode")}}
-    if overall != "AUDIT-PASSED":
-        module_claim = "PROVED (module) -- audit FAILED above"
+    else:
+        overall = "AUDIT-PASSED"
+    if overall != "AUDIT-PASSED" and failure is None:
+        failing = [sc["name"] for sc in sub_claims if str(sc["status"]).startswith("FAILED")]
+        failure = {"sub_claim": failing[0] if failing else "unknown",
+                   "error": "sub_claims failed; see sub_claims statuses"}
+    module_claim = "PROVED" if overall == "AUDIT-PASSED" else "PROVED (module) -- audit FAILED above"
+
 
     report: dict[str, object] = {
         "tool": "liu9_h2_phi_audit.py (independent auditor; python-flint Arb + mpmath cross-check)",
@@ -1178,7 +1299,7 @@ def build_audit() -> dict[str, object]:
         "module_verdict": module_claim,
         "failure_record": failure,
         "audit_steps": steps,
-        "witnesses": wit,
+        "sub_claims": sub_claims,
         "mutations_of_audit": mutations,
         "all_mutations_of_audit_caught": all_caught,
         "module_reproduction": repro,
@@ -1215,8 +1336,6 @@ def main() -> int:
     args = parse_args()
     report = build_audit()
     output = args.output
-    if list(output.parents)[-3:] != output.parents[-3:] or False:
-        pass
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, sort_keys=True, indent=1) + "\n", encoding="utf-8")
     print(f"AUDIT {report['audit_outcome']}")

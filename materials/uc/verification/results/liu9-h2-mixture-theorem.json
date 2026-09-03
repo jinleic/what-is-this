@@ -1,0 +1,298 @@
+{
+ "all_mutations_caught": true,
+ "artifact": "liu9-h2-mixture-theorem",
+ "claim": "at the exact constants (beta*, m*): for every Borel probability law mu on [0,1] and every conditionally i.i.d. coupling Gamma = int nu_u (x) nu_u dP_U (mu = int nu_u dP_U): (1-beta*)<mu(x)mu,h(xy)> + beta* int <nu_u(x)nu_u, h o pi> dP_U >= (M/m*) <mu,h>, M = <mu,x>",
+ "claim_status": "PROVED",
+ "claims": [
+  {
+   "checks": [
+    {
+     "components": 2,
+     "ok": true,
+     "residual_III": "0",
+     "residual_I_II": "0",
+     "residual_quantitative": "0"
+    },
+    {
+     "components": 3,
+     "ok": true,
+     "residual_III": "0",
+     "residual_I_II": "0",
+     "residual_quantitative": "0"
+    },
+    {
+     "components": 4,
+     "ok": true,
+     "residual_III": "0",
+     "residual_I_II": "0",
+     "residual_quantitative": "0"
+    }
+   ],
+   "general_K": "the three displayed lines of the docstring proof; K = 2,3,4 exercise every term; the continuum case is the same computation with int dP_U (Fubini, bounded continuous integrands)",
+   "label": "MACHINE-VERIFIED",
+   "name": "X1_mixture_identities_free_algebra",
+   "statement": "for K = 2,3,4: gap = <mu(x)mu,R> + (beta/2) sum w_k w_l <(nu_k-nu_l)^(x)2,K> + ((M-m)/m) ehx, and <mu(x)mu,R> + channel = sum w_k w_l <nu_k(x)nu_l,A> + sum w_k <nu_k(x)nu_k,B> + Var_w(F); equivalently numerator - (M/m) ehx = that nonnegative form"
+  },
+  {
+   "atoms_per_component_up_to": 4,
+   "components_up_to": 6,
+   "draws": 60,
+   "draws_with_mean_below_m": 47,
+   "label": "MACHINE-VERIFIED",
+   "min_lower_bound_of_nonnegative_form_over_sample": "[0.000779711449325568 +/- 3.01e-19]",
+   "name": "X2_identities_in_arb_random_mixtures",
+   "note": "the identity is certified at every draw; the form's lower bounds are a sanity sample (its nonnegativity is the theorem, from A >= 0, B >= 0 pointwise and Var >= 0)",
+   "parameters": "TEST rationals (identity is parameter-free)",
+   "tolerance": "1/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+   "worst_abs_residual_numerator_minus_Mm_ehx_minus_form": "[7.34864155222e-119 +/- 9.61e-132]"
+  },
+  {
+   "draws": 30,
+   "label": "MACHINE-VERIFIED",
+   "name": "X3_agreement_with_audited_evaluator",
+   "parameters": "TEST rationals (agreement is parameter-free)",
+   "statement": "this module's numerator and ehx coincide with liu9_objective.evaluate_arb at three-atom shared-mass two-component mixtures (Liu's nine-parameter objective), and the one-component case is Gilmer + protocol with no channel",
+   "worst_abs_diff_K1_vs_direct": "[1.20637188825e-119 +/- 3.58e-131]",
+   "worst_abs_diff_ehx_vs_evaluate_arb": "[1.06590415954e-119 +/- 2.21e-131]",
+   "worst_abs_diff_numerator_vs_evaluate_arb": "[3.57544692244e-119 +/- 4.72e-131]"
+  }
+ ],
+ "constants": {
+  "binding_propagation_overlaps_own_propagation": true,
+  "c_prime": {
+   "certified_enclosure_45": "[0.382709087918735029930312902098972611626381433 +/- 4.95e-46]",
+   "definition": "c' = 1 - m* = 1 - p* x*",
+   "exceeds_0.38270908791873": true,
+   "exceeds_sawin_yu_cambie_0.3823455": true,
+   "liu_printed_93_decimal": "0.382709087918741",
+   "liu_printed_93_is_above_certified_value": true,
+   "lower_bound_decimal_40": "0.3827090879187350299303129020989726116264",
+   "note": "Liu's (93) prints 0.382709087918741; the root-defined constant is 0.38270908791873502993... so the printed value is wrong in its 14th-15th digits and must not be cited as the bound"
+  },
+  "definitions": {
+   "beta*": "((h'(x*) + h(x*)/x*)/p* - a')/(b' - a'), a' = h'(x*^2) 2x*, b' = h'(pi(x*,x*)) (2x + 2x(1-x)^2 - 2x^2(1-x))|_{x*} (Liu (89)-(90), the binding's closed form)",
+   "m*": "p* x*;  c' = 1 - m*",
+   "p*": "h(x*)/h(x*^2) (Liu (88))",
+   "x*": "unique root in (0,1) of z^4 - 2 z^3 + 3 z^2 - 1 (Liu (87)); f(0) = -1 < 0 < f(1) = 1 and f'(z) = 2z(2(z-3/4)^2 + 15/8) > 0 on (0,1]"
+  },
+  "exact_balls_45_digits": {
+   "beta*": "[0.100052559862893106664628299476947587796206185 +/- 2.88e-46]",
+   "c'": "[0.382709087918735029930312902098972611626381433 +/- 4.95e-46]",
+   "m*": "[0.617290912081264970069687097901027388373618567 +/- 4.95e-46]",
+   "p*": "[0.893604513905465446476770019038769597178677710 +/- 3.49e-46]",
+   "x*": "[0.690787593924988014150488204636270562580628177 +/- 9.69e-47]"
+  },
+  "exact_bracket_of_xstar": {
+   "f_lo_negative_and_f_hi_positive_certified": true,
+   "f_prime_positive_on_bracket_certified": true,
+   "hi": "3453937969624940070752441023181352812903140885484335356434089254276873/5000000000000000000000000000000000000000000000000000000000000000000000",
+   "lo": "1381575187849976028300976409272541125161256354193734142573635701710749/2000000000000000000000000000000000000000000000000000000000000000000000",
+   "width": "1/10000000000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "sign_claims_use": "EXACT balls for every theorem-validity sign claim (W_liu_minimiser_equality_exact, W_five_component_mixture_ratio_above_M_over_m, the reversed-bound mutation, beta* > 0); W_truncated_constants_certified_negative deliberately declares the TEST rationals exact; X2, X3 and the wrong-protocol mutation are parameter-free checks at TEST rationals",
+  "test_rationals": {
+   "beta_t": "28011524361793105372602416928690825706147104729221190789458531837539278166578396884221667254400611443/279968092772225526319680285071055534765205687154331191862498637620473983897520118172609686658950889472",
+   "beta_t_inside_exact_ball": true,
+   "m_t": "86410879670509651045578867419858441625384618059623663402198081830259073758168013505991445502983016997/139984046386112763159840142535527767382602843577165595931249318810236991948760059086304843329475444736",
+   "m_t_inside_exact_ball": true,
+   "one_minus_c_t_minus_m_t_is_zero": true,
+   "quartic_residual_at_x_t": "[-6.85557960040e-102 +/- 3.66e-114]",
+   "role": "test points for parameter-free identities ONLY; within 1e-100 of the constants; NOT the constants (see W1b)",
+   "source": "liu9_binding.solve_equation_parameters(100), stored mpf converted exactly (sign, mantissa, exponent)",
+   "x_t": "24174810647736687342301329030133392408028327211721353455990738600269646103021745937512285413793531637/34996011596528190789960035633881941845650710894291398982812329702559247987190014771576210832368861184",
+   "x_t_inside_exact_ball": true
+  },
+  "twovar_uses_the_same_definitions": {
+   "beta_enclosure_overlaps": true,
+   "m_closed_form": true,
+   "m_enclosure_overlaps": true,
+   "polynomial": true,
+   "xstar_bracket_overlaps_twovar_bracket": true,
+   "xstar_enclosure_overlaps": true
+  }
+ },
+ "definitions": {
+  "R": "D_m/m = P2 + Q2; P2 = (1-beta) h(xy) - (y h(x) + x h(y))/(2m); Q2 = beta h(pi)",
+  "h": "-u log u - (1-u) log(1-u), natural log",
+  "numerator": "(1-beta) ehxy + beta ehpi with ehxy the barycenter pairing of h(xy) and ehpi the P_U-average of the component pairings of h(pi)",
+  "phi, A, B": "phi(x) = sqrt(Q2(x,x)); A = P2 + phi(x)phi; B = Q2 - phi(x)phi",
+  "pi": "x y (1 + (1-x)(1-y)) = Liu Example 5 with f(x) = x(1-x): Pi_{s,t}(0,0) with x = 1-s"
+ },
+ "dependencies": {
+  "liu9-h2-boundary": {
+   "claim_status_expected": "PROVED",
+   "claim_status_on_disk": "PROVED",
+   "match": true,
+   "path": "verification/results/liu9-h2-boundary.json",
+   "provides": "Phi >= 0 on all of [0,1]^2, hence B >= 0 (beta > 0)",
+   "sha256_expected": "e4d6d96df3ae435800cef5739fb1ae45b98febf539ab418df116ceb03bd481c9",
+   "sha256_on_disk": "e4d6d96df3ae435800cef5739fb1ae45b98febf539ab418df116ceb03bd481c9"
+  },
+  "liu9-h2-general-lift": {
+   "claim_status_expected": "PROVED",
+   "claim_status_on_disk": "PROVED",
+   "match": true,
+   "path": "verification/results/liu9-h2-general-lift.json",
+   "provides": "the two-component general-measure theorem, L0 (kernel regularity), L4 (B >= 0 from Phi >= 0), and the exact-constant discipline; this module is its K-component extension",
+   "sha256_expected": "eb4874d39904593bddc3f2ae638d1bad6756a19d4ebf6e06a60427b6bb7ac1ce",
+   "sha256_on_disk": "eb4874d39904593bddc3f2ae638d1bad6756a19d4ebf6e06a60427b6bb7ac1ce"
+  },
+  "liu9-h2-twovar": {
+   "claim_status_expected": "CERTIFIED_PROVED",
+   "claim_status_on_disk": "CERTIFIED_PROVED",
+   "match": true,
+   "path": "verification/results/liu9-h2-twovar.json",
+   "provides": "A >= 0 (and R >= 0) on all of [0,1]^2 with beta, m as Arb balls around the exact root-defined constants",
+   "sha256_expected": "a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb",
+   "sha256_on_disk": "a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb"
+  },
+  "liu9_binding.py": {
+   "claim_status_expected": null,
+   "claim_status_on_disk": null,
+   "match": true,
+   "path": "liu9_binding.py",
+   "provides": "the 70-digit rational bracket of x* and the 100-digit test solution of (87)-(90)",
+   "sha256_expected": "feb3a1aaded3cff0805d852c4349ff7142c55e24be4b2da3c0a27f8e7f58cac6",
+   "sha256_on_disk": "feb3a1aaded3cff0805d852c4349ff7142c55e24be4b2da3c0a27f8e7f58cac6"
+  },
+  "liu9_h2_general_lift.py": {
+   "claim_status_expected": null,
+   "claim_status_on_disk": null,
+   "match": true,
+   "path": "liu9_h2_general_lift.py",
+   "provides": "the shared `Constants` (exact balls from the 70-digit bracket of x*; TEST rationals) and its twovar cross-checks",
+   "sha256_expected": "b265e726d110098a09c00de331c4433454973ba741966b3018b77afcc225b5c3",
+   "sha256_on_disk": "b265e726d110098a09c00de331c4433454973ba741966b3018b77afcc225b5c3"
+  },
+  "liu9_objective.py": {
+   "claim_status_expected": null,
+   "claim_status_on_disk": null,
+   "match": true,
+   "path": "liu9_objective.py",
+   "provides": "h_arb and the audited nine-variable transcription evaluate_arb",
+   "sha256_expected": "f043b8c99cb26c62804c6f4f29190065a7a876e47d5e7c27c9e6f555c4098c6c",
+   "sha256_on_disk": "f043b8c99cb26c62804c6f4f29190065a7a876e47d5e7c27c9e6f555c4098c6c"
+  }
+ },
+ "determinism": "no timestamps; fixed seed; sympy residuals as strings; Arb strings at fixed digit counts; byte-identical under the recorded single-thread environment (thread variables are set with setdefault, so a pre-set value is inherited and recorded)",
+ "failed_claims": [],
+ "labels": {
+  "COMPUTATIONAL-EVIDENCE": "sample only",
+  "MACHINE-VERIFIED": "exact symbolic residual 0 or Arb-certified comparison at the listed points",
+  "OPEN": "not established",
+  "PROVED": "complete argument"
+ },
+ "mutations": [
+  {
+   "caught": true,
+   "mutation": "X1_drop_variance_term",
+   "observed": "first nonzero residual at K=2: -F1**2*w1**2 + F1**2*w1 + 2*F1*F2*w1**2 - 2*F1*F2*w1 - F2**2*w1**2 + F2**2*w1"
+  },
+  {
+   "caught": true,
+   "mutation": "X1_mixture_protocol_term",
+   "observed": "first nonzero residual at K=2: K11*beta*w1**2 - K11*beta*w1 - 2*K12*beta*w1**2 + 2*K12*beta*w1 + K22*beta*w1**2 - K22*beta*w1"
+  },
+  {
+   "caught": true,
+   "mutation": "X1_drop_half_in_channel",
+   "observed": "first nonzero residual at K=2: K11*beta*w1**2 - K11*beta*w1 - 2*K12*beta*w1**2 + 2*K12*beta*w1 + K22*beta*w1**2 - K22*beta*w1"
+  },
+  {
+   "caught": true,
+   "mutation": "reversed_bound_numerator_le_Mm_ehx",
+   "observed": "numerator - (M/m*) ehx = [0.0104822862209832 +/- 1.78e-17] certified > 0 at the two-point mixture (4/5, 9/10), exact balls"
+  },
+  {
+   "caught": true,
+   "mutation": "wrong_protocol_s+t-st_vs_evaluate_arb",
+   "observed": "worst |numerator diff| [0.0438481936238 +/- 2.42e-14]"
+  },
+  {
+   "caught": true,
+   "mutation": "declare_the_100_digit_truncations_to_be_the_constants",
+   "observed": "at Liu's minimiser with (beta_t, m_t, x_t): numerator - (M/m_t) ehx = [-5.95480136845e-102 +/- 6.50e-115] certified < 0"
+  }
+ ],
+ "natural_log": true,
+ "precision_bits": 400,
+ "report_sha256": "b108b781224dff601ffcf3f562703d3b620e7da6d89cf6d000b6ccbd06a4773b",
+ "report_sha256_scope": "SHA-256 of canonical sorted-key compact JSON plus newline with report_sha256 omitted",
+ "seed": 20260903,
+ "single_core_environment": {
+  "FLINT_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1"
+ },
+ "sympy_version": "1.14.0",
+ "theorem": {
+  "consequences": [
+   "Liu H2 for every mixture: gap >= 0 whenever M >= m",
+   "uniform strictness for Liu's Proposition 3: for laws with mean(S) <= c < c' = 1 - m, i.e. M >= 1 - c > m, the ratio numerator/ehx is >= (1-c)/m > 1",
+   "the trivial laws on {0,1} have numerator = ehx = 0; they do not affect Proposition 3 because H(X^n) > 0 forces some coordinate with ehx > 0"
+  ],
+  "label": "PROVED",
+  "proof": [
+   "(I) sum_k w_k K_kk - sum_kl w_k w_l K_kl = (1/2) sum_kl w_k w_l (K_kk + K_ll - 2K_kl)  [sum w = 1]",
+   "(II) <mu(x)mu,(1-beta)h(xy)+beta K> - <mu,h> = <mu(x)mu,R> + ((M-m)/m)<mu,h>  [<mu(x)mu,(y h(x)+x h(y))/(2m)> = M<mu,h>/m]",
+   "(III) <mu(x)mu,R> + channel = sum_kl w_k w_l <nu_k(x)nu_l,A> + sum_k w_k <nu_k(x)nu_k,B> + Var_w(<nu_k,phi>)",
+   "A >= 0, B >= 0 pointwise on [0,1]^2 at the exact (beta*, m*) (pinned artifacts; beta* > 0 certified), Var >= 0; every pairing finite (kernels continuous on the compact square, general-lift L0); Fubini for a general P_U",
+   "hence numerator - (M/m*) ehx >= 0; R >= 0 is not used",
+   "perturbing the constants cannot be assumed harmless (W_truncated_constants_certified_negative refutes the 100-digit joint truncation); they are certified as balls, never as decimals"
+  ],
+  "statement": "at the exact constants (beta*, m*): for every Borel probability law mu on [0,1] and every conditionally i.i.d. coupling Gamma = int nu_u (x) nu_u dP_U (mu = int nu_u dP_U): (1-beta*)<mu(x)mu,h(xy)> + beta* int <nu_u(x)nu_u, h o pi> dP_U >= (M/m*) <mu,h>, M = <mu,x>"
+ },
+ "tool": "liu9_h2_mixture_theorem.py (sympy exact identities + python-flint Arb)",
+ "tool_sha256": "3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab",
+ "witnesses": [
+  {
+   "ehx": "0",
+   "label": "MACHINE-VERIFIED",
+   "name": "W_trivial_law_on_01_p_0",
+   "numerator": "0",
+   "parameters": "EXACT balls",
+   "statement": "laws supported on {0,1}: numerator = ehx = 0 exactly (Liu's trivial equality case; h(0) = h(1) = 0, xy and pi(x,y) in {0,1})"
+  },
+  {
+   "ehx": "0",
+   "label": "MACHINE-VERIFIED",
+   "name": "W_trivial_law_on_01_p_1/3",
+   "numerator": "0",
+   "parameters": "EXACT balls",
+   "statement": "laws supported on {0,1}: numerator = ehx = 0 exactly (Liu's trivial equality case; h(0) = h(1) = 0, xy and pi(x,y) in {0,1})"
+  },
+  {
+   "ehx": "0",
+   "label": "MACHINE-VERIFIED",
+   "name": "W_trivial_law_on_01_p_1",
+   "numerator": "0",
+   "parameters": "EXACT balls",
+   "statement": "laws supported on {0,1}: numerator = ehx = 0 exactly (Liu's trivial equality case; h(0) = h(1) = 0, xy and pi(x,y) in {0,1})"
+  },
+  {
+   "enclosure_contains_zero": true,
+   "label": "PROVED",
+   "name": "W_liu_minimiser_equality_exact",
+   "numerator_minus_ehx_enclosure": "[+/- 4.53e-69]",
+   "parameters": "EXACT balls",
+   "proof_of_equality": "mean = m*; numerator - ehx = gap = I00/m* with D_{m*}(0,.) = 0 and D_{m*}(x*,x*) = m* h(x*^2) - x* h(x*) = 0 by Liu (87)-(88)",
+   "statement": "at Liu's minimiser the bound numerator >= (M/m*) ehx is an equality (M = m*): the theorem is sharp; equality is proved by algebra, never numerically"
+  },
+  {
+   "certified_negative": true,
+   "label": "MACHINE-VERIFIED",
+   "name": "W_truncated_constants_certified_negative",
+   "numerator_minus_Mm_ehx": "[-5.95480136845e-102 +/- 6.50e-115]",
+   "parameters": "TEST rationals declared exact (beta_t, m_t, x_t)",
+   "statement": "with the 100-digit truncations in place of the constants the bound is FALSE at Liu's minimiser (~ -6e-102): perturbing the constants cannot be assumed harmless (this joint truncation breaks the bound; raising m alone would not), which is why all sign claims use the exact balls"
+  },
+  {
+   "M_over_m": "[1.2878854757792708689 +/- 1.14e-21]",
+   "label": "MACHINE-VERIFIED",
+   "mean": "159/200",
+   "name": "W_five_component_mixture_ratio_above_M_over_m",
+   "parameters": "EXACT balls",
+   "ratio": "[1.3634525567028621352 +/- 1.87e-20]",
+   "statement": "certified ratio > M/m > 1 at a five-component mixture with unequal atom counts and an atom at 1"
+  }
+ ]
+}

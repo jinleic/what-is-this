@@ -1103,3 +1103,87 @@ $n{=}11\to n{=}12$ row-CPU step was $1150\,\mathrm{s}\to 7664\,\mathrm{s}$
 (6.7x), so $n=13$ needs about $6$–$12$ single-thread CPU-hours for four rows and
 roughly $12$–$14$ GiB peak RSS; it must be pre-registered with a larger budget,
 never resumed under changed caps.
+
+## Current state (agent DelcapN12, 2026-09-02b) — $q=3,n=13$ box COMPLETE, 4/4 certified
+
+The $q=3,n=13$ extension named above is **done**: all four registered rows are
+`CERTIFIED` and **every one strictly beats BOTH published Tavakoli–Nguyen–Bose
+finite-$n$ endpoints** (`CERT_LOWER_BEATS_LBplus+CERT_UPPER_BEATS_UB`,
+`MACHINE-VERIFIED`). Finite-$n$ theorem for exactly those four cells; **no
+asymptotic-capacity claim.** One campaign, single clean run, no crash, budget
+not binding:
+
+* `campaigns/20260902T024656Z_90c757de_c4e9905d05a1/` — gate
+  `delcap-q3-n13-total-output-orbit-mass-v1`, verdict **FROZEN-CERTIFIED**.
+  Canonical report: that dir's `report.md`.
+
+| $d$ | certified interval (outward) | width upper | $LB^+$ margin $\ge$ | $UB$ margin $\ge$ |
+|:---:|:---|---:|---:|---:|
+| 1/2 | `[0.39713666568100003, 0.397161636764393]` | `2.4971083392840876e-05` | `9.859301e-02` | `3.953196e-01` |
+| 1/5 | `[0.8966732662961678, 0.8967669676702715]` | `9.370137410351712e-05` | `2.129289e-02` | `3.712030e-01` |
+| 1/10 | `[1.1898717660767768, 1.1898901620041096]` | `1.8395927332359186e-05` | `5.372100e-03` | `2.365761e-01` |
+| 1/20 | `[1.3725688358567392, 1.3725840117520043]` | `1.5175895264739525e-05` | `1.333958e-03` | `1.331304e-01` |
+
+Every selected dual is the exact `ba_total_orbit_mass` candidate; exact
+orbit-uniform was evaluated over the full input alphabet in every row and never
+selected. All four widths inside the registered $1/500$ target.
+
+**Pre-registered orbit counts asserted, never adjusted** (`MACHINE-VERIFIED`):
+input orbits $B(13)=133{,}225$ over $3^{13}=1{,}594{,}323$ words; output orbits
+$\sum_{k=0}^{13}B(k)=200{,}205$ over $\sum_{k=0}^{13}3^k=2{,}391{,}484$;
+Burnside series $B(0..13)$ reproduces both, and its $k\le11$/$k\le12$ prefixes
+($22{,}450$/$66{,}980$) reproduce the frozen $n=11$/$n=12$ anchors. Measured
+dense census tuple $(133225, 200205, 152963378, 93991184, 246954562)$,
+byte-identical across the static guard, both production structure builds, and
+all four rows; the pre-registered projection ($\sim$1.53e8/9.4e7/2.5e8) matched
+to $\le$0.2%. **Exact orbit-mass identities:** input numerators sum to $2^{30}$;
+BA dual sums to $2^{30}$ (no bump, $d=1/5$) or $2^{30}+200{,}205=1{,}073{,}942{,}029$
+where the full-support bump fires ($131{,}380$/$4$/$18$ zeros at
+$d=1/2,1/10,1/20$); orbit-uniform numerators sum to the total output word count
+$2{,}391{,}484$.
+
+**Controls, in-run, both directions:** ACCEPT — the frozen $n=12$ row
+`0:3:12:1/10` re-executed through the $n=13$ code path reproduced **bit-exactly
+on all 41 compared certificate fields** (census tuple, all $44{,}530$ input and
+$66{,}980$ output numerators, every Arb ball, the whole conservative-interval
+block with exact binary rationals, the verdict, even the float BA locator
+$14.362708541093044$), zero mismatches; its line hash was ledger-verified
+first. REJECT — R1a ($2^{30}+1$ input total), R1b (negative output numerator),
+R1c (negative input numerator), R2 (negative width), R3 (planted split output
+law, rejected before compression with failing generator equalities while the
+orbit-uniform control was admitted) — each fired at its pre-registered
+assertion point.
+
+Aggregate exact work: $7{,}446{,}791{,}969$ direct primal conditional entries,
+$19{,}131{,}876$ expanded input and $86{,}093{,}424$ expanded output generator
+checks, zero overlap failures, $289{,}980$ zero-mass input words accounted at
+$d=1/2$. Stage $38{,}668.4$ s CPU = **10.74 of the registered 24 CPU-hours**,
+wall 11.28 h of 26, max row RSS $16{,}669{,}851{,}648$ bytes of the 32 GiB cap
+(48.5%); static-guard build peak $16.83$ GB (49.0%) — **the budget did not
+bind and no resource stop occurred.** The pre-registered launcher rule (no
+stdout piping; the $n=12$ BrokenPipe lesson) was obeyed and the failure mode
+never recurred: single clean run, exit 0, no `FAILURE.json`. A 180-assertion
+independent re-derivation from the frozen bytes passed at close-out; both
+freeze ledgers re-derive with zero mismatches. A per-function AST diff proves
+22 certificate/ledger functions byte-identical to the $n=12$ instrument
+(changed only: `rows_stage` row-count assertion and the census-target
+constants; new: the $n=12$ ACCEPT loader/comparator and the census-pin
+helper).
+
+**Next gate: $q=3,n=14$ — evaluated, NOT opened.** Measured row-CPU scaling
+$287.6$ s ($n{=}11$) $\to$ $1{,}916.1$ s ($n{=}12$) $\to$ $9{,}573.8$ s
+($n{=}13$) projects $n=14$ at $\sim$$13.9$ h/row, $\sim$$55.5$ CPU-hours for
+four rows, multi-day stage wall, and a $\sim$$35$–$40$ GB live-structure peak
+(measured $n{=}13$ RSS $16.67$ GB at $2.47\times10^8$ sparse slots) — above
+the 32 GiB envelope this workstation campaign family pre-registers, with real
+thrash risk against sibling campaigns. Structural targets if it is ever
+opened: $B(14)=399{,}310$ input orbits over $3^{14}=4{,}782{,}969$ words,
+$\sum_{k=0}^{14}B(k)=599{,}515$ output orbits over
+$\sum_{k=0}^{14}3^k=7{,}174{,}453$ (machine-recomputed; an earlier draft of
+this line said $394{,}024$/$594{,}229$, wrong, corrected). Opening $n=14$
+requires a fresh preregistration with a $\sim$64 GiB RSS envelope (probe and
+resource-stop rule retained), a $\sim$64 CPU-h budget, and a stated position
+on the multi-day single-thread wall — or a separately frozen instrument
+change (chunked/array-backed structure build). Per the pre-registered rule,
+the projection is recorded and the campaign family stops here at a complete
+certified box.

@@ -3,31 +3,31 @@
   "c_lo": "1.75",
   "c_hi": "3.5",
   "tiles_total": 87,
-  "tiles_processed": 24,
-  "tiles_certified": 24,
+  "tiles_processed": 73,
+  "tiles_certified": 73,
   "all_passed": false,
-  "certified_prefix_right": "[2.11880417155567176338784787863 +/- 2.82e-30]",
+  "certified_prefix_right": "[3.13081130025724269924510624075 +/- 4.78e-30]",
   "frontier": null,
-  "envelope_evals": 30120,
+  "envelope_evals": 113934,
   "panel_histogram": {
-    "1024": 10454,
-    "4096": 6028,
-    "16384": 4796,
-    "65536": 4456,
-    "131072": 4386
+    "1024": 36504,
+    "4096": 24150,
+    "16384": 19398,
+    "65536": 17192,
+    "131072": 16690
   },
-  "cpu_seconds": 23158.143662999995,
+  "cpu_seconds": 87384.73347199999,
   "campaign_budget": {
     "cpu_budget_seconds": 216000,
     "wall_ceiling_seconds": 259200,
     "controls_cpu_seconds": 9.494744,
     "excluded_launch_cpu_seconds": 800.0,
     "tile_cpu_seconds_by_tag": {
-      "band_1p75_3p5": 23158.143662999995
+      "band_1p75_3p5": 87384.73347199999
     },
-    "cpu_used_seconds": 23967.638406999995,
-    "wall_used_seconds": 69316.044776,
-    "cpu_remaining_seconds": 192032.361593,
-    "wall_remaining_seconds": 189883.955224
+    "cpu_used_seconds": 88194.22821599999,
+    "wall_used_seconds": 136505.740059,
+    "cpu_remaining_seconds": 127805.77178400001,
+    "wall_remaining_seconds": 122694.259941
   }
 }

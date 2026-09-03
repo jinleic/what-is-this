@@ -1,0 +1,13 @@
+run_id              : 20260902T113614Z_a999d1b0_5daa598b6a04
+gate                : H-GRS-GENERAL-SIZE
+agent               : RsPe3dH2
+source_prereg       : prereg/H_GRS_GENERAL_SIZE_PREREG_2026-09-02.md
+source_commit       : af2274660a3b0efcfb38c0f4e7499292fee27894
+source_sha256       : 94bbc88be7d500b303dfd95656953045a19f7bda9be52c835bb454acd48210b9
+run_copy            : pre_statement.md
+run_copy_sha256     : 94bbc88be7d500b303dfd95656953045a19f7bda9be52c835bb454acd48210b9
+precompute_state    : no parameter-dependent compute before prereg commit af22746
+predecessor_run     : 20260902T041030Z_64e0c4ef_b5de16e49f8a (H-33ROW-SIZE8-RESIDUAL, FROZEN-CERTIFIED)
+prereg_amendments   : none
+first_invocation    : 6 abortive launches on instrument bugs (preserved); complete run with 97 asserts + complete second run with 103 asserts (exit 0)
+defect_record       : defect_log.json — two disclosed developments; both fully remediated before freeze

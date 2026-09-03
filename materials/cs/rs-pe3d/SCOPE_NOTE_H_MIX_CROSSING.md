@@ -9,16 +9,25 @@
 # 2-by-3-row determinantal closure run `20260902T025427Z_1b1f202c_6247a0994bce`
 # tied 3-row-by-3-row open run `20260902T031527Z_2d19c5c4_718416983678`
 # tied 3-row all-distinct size-8 residual run `20260902T041030Z_64e0c4ef_b5de16e49f8a`
+# tied four-row layer prediction test run `20260902T135324Z_516630ab_ed03d008f0f6`
 
-Status: the first six gates, the eighth gate, and the tenth gate are
+Status: the first six gates, the eighth gate, the tenth gate, the
+general-size unification gate, and the tied four-row layer gate are
 FROZEN-CERTIFIED; the seventh exploratory gate and ninth tied-three-row gate
-remain historically FROZEN-INCONCLUSIVE (2026-09-01/02 UTC). All ten runs are
-frozen and untouched. The eighth superseded the seventh gate's 2-by-3-row
-determinant gaps. The ninth closed tied-three-row sizes four through seven and
-recorded exact predicates through the ambient cap; the tenth now explains its
-registered all-distinct size-eight residual as the reduced complete-
-intersection channel. Repeated-index size-eight templates and structural
-counts above size eight remain outside that final gate. This target-level note
+remain historically FROZEN-INCONCLUSIVE (2026-09-01/02 UTC). All twelve runs
+are frozen and untouched. The eighth superseded the seventh gate's 2-by-3-row
+determinant gaps. The ninth closed tied-three-row sizes four through seven
+and recorded exact predicates through the ambient cap; the tenth explains
+its registered all-distinct size-eight residual as the reduced complete-
+intersection channel; the eleventh unifies those channels as general-size
+GRS transport with per-prime PGL equalities, proved C2 at the ambient top,
+and the C3 complete-intersection direction; the twelfth prediction-tests
+the tied four-row layers 5 through 8 exactly as the general theorem
+predicts. Repeated-index size-eight templates, tied four-row size-8
+exhaustiveness at n >= 6, four-row sizes 9 through 17, and structural
+counts above size ten remain outside the frozen gates; C1's converse,
+general all-distinct emptiness below $r_A+r_B$, and a no-fixed-component C3
+characterization are recorded as scoped open leads. This target-level note
 supersedes prior open-frontier caveats without rewriting any frozen theorem
 file.
 
@@ -203,6 +212,45 @@ dependence)
   point because $(2,2)\cdot(2,2)=8$. The gate is FROZEN-CERTIFIED for this
   all-distinct channel; it does not silently classify repeated-index
   size-eight templates. The target rests for the remainder of this session.
+- **General-size GRS transport unified as C1/C2/C3.** Eleventh gate
+  H-GRS-GENERAL-SIZE (run `20260902T113614Z_a999d1b0_5daa598b6a04`,
+  FROZEN-CERTIFIED) proves the row-major Kronecker transport for
+  $r_A\times n$ by $r_B\times n$ GRS/Vandermonde factors: the column of
+  $A\otimes B$ at $(x,y)$ is a nonzero scalar times $(x^iy^j)$, the identity
+  $(A\otimes B)\operatorname{vec}(\Gamma)=0\iff A\Gamma B^{\mathsf T}=0$
+  holds in that ordering, and circuit/minimality predicates transport to the
+  evaluation matrix $E_S$. The all-distinct size-$(r_A+r_B)$ forward law
+  (Möbius-graph dependence) and its per-prime support-set PGL equality
+  $\sum_M\binom{|D_M|}{k}$ were verified at 15 anchor cells over
+  GF(7)/GF(11)/GF(13) — including the owner anchors $(2,4)$: $n=6\to2$,
+  $n=7\to42$ (GF(13)) and $(3,4,7)\to2$, with $(3,3)$ reproducing gate 9's
+  12/4/2 and 588/72/42. C2 is proved at sizes $r_A r_B$ and
+  $r_A r_B+1$ (corank-one with independent deletions; all deletion minors)
+  and re-expresses gate 9's predicates (13)/(14); the $5\times5$ GF(7)
+  censuses 36378/181960 reproduce exactly. C3's no-common-component pencil
+  direction is proved with the gate-10 bootstrap (560/416 CI, 2192/1344
+  rank-7 pencils, 1632/928 common-$(1,1)$ noncircuits). Scoped open leads:
+  C1's converse, general all-distinct emptiness below $r_A+r_B$ (slice
+  boundary $k>\deg R\deg R'+1$ under $r_Ar_B-3r_A-3r_B+7\le0$), and the C3
+  no-fixed-component characterization (converse fails at $(3,3)$).
+- **Tied four-row layers 5–8 prediction-tested.** Twelfth gate
+  H-44ROW-LAYER (run `20260902T135324Z_516630ab_ed03d008f0f6`,
+  FROZEN-CERTIFIED) tests $(4\times n)\otimes(4\times n)$,
+  $d_A=d_B=5$, ambient 16, exactly as the general theorem predicts.
+  Size 5 is exactly the fibers $2n\binom n5$ (support-set equality at
+  $n=5,6$, GF(11)+GF(13): 10 and 72). Size 6 is empty at $n=5,6$: the only
+  dependent sets are 5-fiber + lone cell (200/2160), all rejected by
+  deletion witnesses — the Thm-CRIT tied channel needs $d_A+d_B-2=8\ne6$
+  and fiber lifts need factor 6-circuits, impossible at spark 5. Size 7 is
+  empty at $n=5,6$ including the full $\binom{36}{7}$ sweep (1900/31320
+  dependent, all fiber-containing and nonminimal). Size 8 is exactly
+  crossings $25\binom n5^2$ plus the all-distinct Möbius-8 restrictions:
+  the $n=5$ exhaustive census (1,081,575) yields 25 circuits = 25 crossings
+  and nothing else; all 900 constructed $n=6$ crossings are circuits;
+  the $n=8$ bijection sweep gives set equality with
+  $\sum_M\binom{k_M}{8}$ — 8 over GF(11), 4 over GF(13) — with
+  restriction-minimality controls. Scoped out as non-claims: tied size-8
+  exhaustiveness at $n\ge6$, all of sizes 9–17.
 - **Swept-config certification.** At every configuration actually enumerated
   in-run (see run `controls_results.json`, T2/T3b/T4/T5/T6/T9 set-equality
   blocks and T7 prime sweep), the machinery verified: measured circuits of
@@ -215,20 +263,24 @@ Read the predecessor theorem files together with the two records in the
 seventh run, the determinantal theorem in the eighth, and the two tied-three-
 row records in the ninth and tenth: original `theorem_crossing.md`, H2
 successor `theorem_h2_closure.md`, cross-ratio successor
-`theorem_alldistinct_crossratio.md`, PGL-count successor
 `theorem_alldistinct_pglcount.md`, n-factor successor
-`theorem_dp1_threefactor.md`, size-five successor
-`theorem_dp2_size5.md`, seventh-run `theorem_2row_complete.md` and
-`frontier_2x3row_open.md`, eighth-run `theorem_3row_determinantal.md`,
-ninth-run `theorem_33row_open.md`, and tenth-run
-`theorem_size8_residual.md`. The original H2/open-frontier wording is
+`theorem_dp1_threefactor.md`, size-five successor `theorem_dp2_size5.md`,
+determinantal successor `theorem_3row_determinantal.md`, ninth-run
+`theorem_33row_open.md`, tenth-run `theorem_size8_residual.md`,
+eleventh-run `theorem_grs_general_size.md`, and twelfth-run
+`theorem_44row_layer.md`. The original H2/open-frontier wording is
 historical: for $d_A,d_B\ge3$, Theorem X has an unconditional crossing
 converse; the two-2-row classification is complete through its ambient cap;
 the 2-row-by-3-row GRS residual through size seven has exact graph/minor/PGL
 predicates; tied three-row products are structurally complete through size
-seven with exact decision predicates through size ten; and their all-distinct
-size-eight channel is exactly degree-two graphs plus reduced $(2,2)$ complete
-intersections. Still open are the spark-2 converse branches, closed
+seven with exact decision predicates through size ten, and their
+all-distinct size-eight channel is exactly degree-two graphs plus reduced
+$(2,2)$ complete intersections; the general-size gate unifies these as
+Kronecker transport with C1 forward/PGL equalities, C2 at the ambient top,
+and C3's CI direction; and the tied four-row layers 5 through 8 match the
+general theorem's predictions exactly at the registered $n$'s and primes.
+Still open are the spark-2 converse branches, C1's converse and general
+emptiness boundary, the C3 no-fixed-component characterization, closed
 simplifications of the unequal 2-by-3-row field-dependent size-seven
 determinant sums, repeated-index tied-three-row size-eight templates,
 structural parameterizations/counts for tied-three-row sizes nine and ten,

@@ -1,0 +1,35 @@
+{
+  "run_id": "20260902T113614Z_a999d1b0_5daa598b6a04",
+  "gate": "H-GRS-GENERAL-SIZE",
+  "defects": [
+    {
+      "occurrence": 1,
+      "stage": "instrument development, pre-freeze",
+      "description": "Five launch attempts aborted on instrument bugs before any certified output: (1) diagonal-tie stage-A probe assumed rank 6 but a tied support folds to a 5-dimensional span; (2) graph supports in mobius_graph_sets were emitted as bare x-tuples instead of (x, M(x)) pairs; (3) a want-map KeyError 13 for p=13 in the (2,4) anchors; (4) variable shadowing made an int subscripted in the (2,4) summary print; (5) the p=7 expectations were pinned from a probe that compared residues against {1..7} instead of F_7, so n=7 k=6 at p=7 is 588 (not 84) and (3,4) n=7 p=7 k=7 is 42 (not 0). No census had been recorded when each defect was found; each fix was piloted standalone, and the complete instrument was then rerun from the beginning. The sixth launch completed with 97 asserts and exit 0."
+    },
+    {
+      "occurrence": 2,
+      "stage": "post-run control audit",
+      "description": "The preregistered control battery item 5 requires replays of the gate-PGL wrong-coefficient REJECT q^2(q-2) and the selected-pole REJECT, plus the pure-tensor identity-graph (2,2) ACCEPT/REJECT. These were absent from the first complete run. Per the defect policy the affected family (the control battery only) was rerun with the replays added; the censuses of stages C/D/E are unaffected because no census computation depends on the replays. The complemented battery passes (see second_complete run records).",
+      "resolution": "The complemented battery was rerun as part of a complete second full-run invocation (not a family-only patch): 103 asserts, exit 0, CPU 1627.5s (cap 5400), wall 1756.1s (cap 6000). All preregistered controls pass, including the wrong-coefficient and selected-pole replays and the (2,2) pure-tensor pair."
+    }
+  ],
+  "affected_families_rerun": [
+    "control battery (stage F + stage F2 replays)"
+  ],
+  "censuses_unaffected": true,
+  "broken_outputs_preserved": [
+    "broken_results_first_launch.json",
+    "broken_results_second_launch.json",
+    "broken_results_third_launch.json",
+    "broken_results_fourth_launch.json",
+    "broken_results_fifth_launch.json"
+  ],
+  "disclosure": "No assertion weakened; no count repinned without recomputation; prereg was not amended (the p=7 pin corrections fixed the INSTRUMENT's expected-value table, not the preregistered anchors: at p=7 n=7 the residues of 1..7 are 1..6,0 and the certified PGL-domain convention applies).",
+  "second_complete_run": {
+    "asserts": 103,
+    "exit": 0,
+    "CPU_seconds": 1627.5,
+    "wall_seconds": 1756.1
+  }
+}

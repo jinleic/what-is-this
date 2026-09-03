@@ -1,0 +1,658 @@
+{
+  "L5_records": [
+    {
+      "circuits": 10,
+      "n": 5,
+      "p": 11
+    },
+    {
+      "circuits": 72,
+      "n": 6,
+      "p": 11
+    },
+    {
+      "circuits": 10,
+      "n": 5,
+      "p": 13
+    },
+    {
+      "circuits": 72,
+      "n": 6,
+      "p": 13
+    }
+  ],
+  "L6_records": [
+    {
+      "circuits": 0,
+      "dependent": 200,
+      "fiber_extra": 200,
+      "n": 5,
+      "other": 0,
+      "p": 11
+    },
+    {
+      "circuits": 0,
+      "dependent": 2160,
+      "fiber_extra": 2160,
+      "n": 6,
+      "other": 0,
+      "p": 11
+    },
+    {
+      "circuits": 0,
+      "dependent": 200,
+      "fiber_extra": 200,
+      "n": 5,
+      "other": 0,
+      "p": 13
+    },
+    {
+      "circuits": 0,
+      "dependent": 2160,
+      "fiber_extra": 2160,
+      "n": 6,
+      "other": 0,
+      "p": 13
+    }
+  ],
+  "L7_records": [
+    {
+      "circuits": 0,
+      "dependent": 1900,
+      "fiber_extra": 1900,
+      "n": 5,
+      "other": 0,
+      "p": 11
+    },
+    {
+      "circuits": 0,
+      "dependent": 31320,
+      "fiber_extra": 31320,
+      "n": 6,
+      "other": 0,
+      "p": 11
+    },
+    {
+      "circuits": 0,
+      "dependent": 1900,
+      "fiber_extra": 1900,
+      "n": 5,
+      "other": 0,
+      "p": 13
+    },
+    {
+      "circuits": 0,
+      "dependent": 31320,
+      "fiber_extra": 31320,
+      "n": 6,
+      "other": 0,
+      "p": 13
+    }
+  ],
+  "L8_records": [
+    {
+      "circuits": 25,
+      "dependent": 11425,
+      "fiber_extra": 11400,
+      "other": 25,
+      "p": 11,
+      "part": "n5_census"
+    },
+    {
+      "circuits": 900,
+      "p": 11,
+      "part": "n6_crossings"
+    },
+    {
+      "circuits": 8,
+      "dependent": 8,
+      "graph_sets": 8,
+      "p": 11,
+      "part": "n8_all_distinct",
+      "pgl_sum": 8
+    },
+    {
+      "circuits": 25,
+      "dependent": 11425,
+      "fiber_extra": 11400,
+      "other": 25,
+      "p": 13,
+      "part": "n5_census"
+    },
+    {
+      "circuits": 900,
+      "p": 13,
+      "part": "n6_crossings"
+    },
+    {
+      "circuits": 4,
+      "dependent": 4,
+      "graph_sets": 4,
+      "p": 13,
+      "part": "n8_all_distinct",
+      "pgl_sum": 4
+    }
+  ],
+  "arithmetic": "exact Python integers modulo p; true row-major Kronecker columns",
+  "assertion_count": 49,
+  "budget": {
+    "CPU_cap_seconds": 5400.0,
+    "CPU_seconds": 2463.767625,
+    "wall_cap_seconds": 6000.0,
+    "wall_seconds": 2562.979334958014,
+    "within_cap": true
+  },
+  "control_facts": {
+    "crossing": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "fiber5": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ]
+    ]
+  },
+  "controls": {
+    "L5.n5.p11.count": {
+      "detail": {
+        "got": 10,
+        "want": 10
+      },
+      "pass": true
+    },
+    "L5.n5.p11.set_equality": {
+      "detail": {
+        "circuits": 10,
+        "extra": 0,
+        "fibers": 10,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "L5.n5.p13.count": {
+      "detail": {
+        "got": 10,
+        "want": 10
+      },
+      "pass": true
+    },
+    "L5.n5.p13.set_equality": {
+      "detail": {
+        "circuits": 10,
+        "extra": 0,
+        "fibers": 10,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "L5.n6.p11.count": {
+      "detail": {
+        "got": 72,
+        "want": 72
+      },
+      "pass": true
+    },
+    "L5.n6.p11.set_equality": {
+      "detail": {
+        "circuits": 72,
+        "extra": 0,
+        "fibers": 72,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "L5.n6.p13.count": {
+      "detail": {
+        "got": 72,
+        "want": 72
+      },
+      "pass": true
+    },
+    "L5.n6.p13.set_equality": {
+      "detail": {
+        "circuits": 72,
+        "extra": 0,
+        "fibers": 72,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "L6.n5.p11.empty": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "L6.n5.p13.empty": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "L6.n6.p11.empty": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "L6.n6.p13.empty": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "L7.n5.p11.empty": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "L7.n5.p13.empty": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "L7.n6.p11.empty": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "L7.n6.p13.empty": {
+      "detail": {
+        "got": 0,
+        "want": 0
+      },
+      "pass": true
+    },
+    "L8.n5.p11.crossings_only": {
+      "detail": {
+        "got": 25,
+        "want": 25
+      },
+      "pass": true
+    },
+    "L8.n5.p13.crossings_only": {
+      "detail": {
+        "got": 25,
+        "want": 25
+      },
+      "pass": true
+    },
+    "L8.n6.p11.crossings_all_circuits": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "L8.n6.p13.crossings_all_circuits": {
+      "detail": {
+        "got": 900,
+        "want": 900
+      },
+      "pass": true
+    },
+    "L8.n8.p11.pgl_sum_count": {
+      "detail": {
+        "got": 8,
+        "want": 8
+      },
+      "pass": true
+    },
+    "L8.n8.p11.restriction_independent": {
+      "detail": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "pass": true
+    },
+    "L8.n8.p11.set_equality": {
+      "detail": {
+        "circuits": 8,
+        "extra": 0,
+        "graphs": 8,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "L8.n8.p13.pgl_sum_count": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "L8.n8.p13.restriction_independent": {
+      "detail": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "pass": true
+    },
+    "L8.n8.p13.set_equality": {
+      "detail": {
+        "circuits": 4,
+        "extra": 0,
+        "graphs": 4,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "budget.CPU": {
+      "detail": {
+        "cap": 5400.0,
+        "used": 2463.767625
+      },
+      "pass": true
+    },
+    "budget.wall": {
+      "detail": {
+        "cap": 6000.0,
+        "used": 2562.979334958014
+      },
+      "pass": true
+    },
+    "controls.ambient17.exact_rank_16": {
+      "detail": {
+        "got": 16,
+        "want": 16
+      },
+      "pass": true
+    },
+    "controls.base4.spark4": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "controls.basis16.rank": {
+      "detail": {
+        "got": 16,
+        "want": 16
+      },
+      "pass": true
+    },
+    "controls.crossing.circuit": {
+      "detail": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "pass": true
+    },
+    "controls.fiber5.circuit": {
+      "detail": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "pass": true
+    },
+    "controls.fiber5.rank": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "controls.fiber5_corrupt_reject": {
+      "detail": {
+        "delta": 1,
+        "rank": 5
+      },
+      "pass": true
+    },
+    "controls.kron_guard.concat_reject": {
+      "detail": {
+        "len_concat": 7
+      },
+      "pass": true
+    },
+    "controls.kron_guard.true_dimension": {
+      "detail": 16,
+      "pass": true
+    },
+    "controls.mobius8_minimal_deferred_to_stageE": {
+      "detail": null,
+      "pass": true
+    },
+    "controls.nonmobius_deferred_to_stageE": {
+      "detail": null,
+      "pass": true
+    },
+    "controls.wrong16.deldup_nondip": {
+      "detail": {
+        "got": 15,
+        "want": 15
+      },
+      "pass": true
+    },
+    "controls.wrong16.rank15": {
+      "detail": {
+        "got": 15,
+        "want": 15
+      },
+      "pass": true
+    },
+    "controls.wrong16.reject": {
+      "detail": 14,
+      "pass": true
+    },
+    "runtime.env_dont_write_bytecode": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.nice": {
+      "detail": 10,
+      "pass": true
+    },
+    "runtime.rlimit_cpu": {
+      "detail": [
+        5400,
+        5400
+      ],
+      "pass": true
+    },
+    "runtime.sys_dont_write_bytecode": {
+      "detail": true,
+      "pass": true
+    },
+    "runtime.thread_caps": {
+      "detail": {
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "pass": true
+    },
+    "stageB.pgl_count.p11": {
+      "detail": {
+        "got": 1320,
+        "want": 1320
+      },
+      "pass": true
+    },
+    "stageB.pgl_count.p13": {
+      "detail": {
+        "got": 2184,
+        "want": 2184
+      },
+      "pass": true
+    }
+  },
+  "gate": "H-44ROW-LAYER",
+  "pgl_counts": {
+    "11": 1320,
+    "13": 2184
+  },
+  "run_id": "20260902T135324Z_516630ab_ed03d008f0f6",
+  "runtime": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "dont_write_bytecode": true,
+    "max_rss": 24707072,
+    "nice": 10,
+    "rlimit_cpu": [
+      5400,
+      5400
+    ],
+    "thread_caps": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "scope_note": "sizes 9-17 and the n=6 size-8 tied exhaustiveness are out of scope per prereg section 0/4; non-claims only"
+}

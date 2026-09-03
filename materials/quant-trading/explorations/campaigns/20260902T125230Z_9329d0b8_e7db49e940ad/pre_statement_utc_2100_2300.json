@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "id": "utc-2100-2300-net-premium",
+  "created_at_utc": "2026-09-02T10:50:00Z",
+  "status": "draft-before-outcome-access; independent review required before campaign init (revision 2 after first review: duplicate-bar rejection implemented, exact G3 arithmetic, inventory narrowed to consumed months, owner authorization recorded)",
+  "classification": "retrospective literature-informed two-window net-of-cost return replication on reused historical calendars; not fresh, blind, prospective, academically novel, or a deployment claim; a pass would be replicated expected-return evidence after taker fees, not deployable alpha",
+  "hypothesis": {
+    "causal_story": "Padysak and Vojtko (Quantpedia, 2022-02-18) report that Bitcoin's 22:00 and 23:00 UTC hourly returns are the largest and most statistically significant of the day on Gemini spot data, during the only hours when every major traditional exchange (NYSE, Tokyo, Hong Kong, India, Australia, London, continental Europe) is closed, and propose buying at 21:00 UTC and selling at 23:00 UTC. If the regularity reflects a persistent liquidity/flow structure rather than sample noise, a long position over the same two UTC hours on Binance USD-M perpetuals should earn a positive expected return even after paying two taker fees, and the window should carry more return than its pro-rata share of the same UTC day.",
+    "primary_claim": "On Binance BTCUSDT and ETHUSDT USD-M perpetuals, a long position entered at the 21:00 UTC bar open and exited at the 23:00 UTC bar open earns a positive expected simple return net of two 0.05% taker fees, and the 21:00-23:00 log return exceeds 2/24 of the same UTC day's log return.",
+    "checkable_edge": "In both frozen windows, the pooled mean net return per date is at least 0.0003, each asset's mean net return is strictly positive, at least 60% of included calendar quarters have a strictly positive pooled mean net return, the pooled and both per-asset mean concentration contrasts are strictly positive, and both paired date-block bootstrap p-values are below cycle alpha 0.004166666666666667.",
+    "source_context": "Padysak, M. and Vojtko, R., Are There Seasonal Intraday or Overnight Anomalies in Bitcoin?, Quantpedia, 2022-02-18, https://quantpedia.com/are-there-seasonal-intraday-or-overnight-anomalies-in-bitcoin/. Reported on Gemini hourly BTC 2015-10-09..2022-02-03: hours 22:00 and 23:00 UTC significant at 5%; buy-21:00/sell-23:00 annualized return 33%, volatility 20.93%, maximum drawdown -22.45%; no transaction costs stated [REPORTED]. This contract adds taker costs, a second asset, a different venue and instrument, and a strictly post-publication replication window; it does not claim independent discovery.",
+    "distinct_from_closed_families": {
+      "liquidation_gex_carry_funding_basis": "No event, option, gamma, funding payment, basis, collateral, convergence, or carry return appears; the 21:00-23:00 window crosses no Binance funding timestamp (00:00, 08:00, 16:00 UTC), so no funding accrues to the position.",
+      "trend_relative_value_macro_positioning_options": "No trailing signal, momentum, spread, asset selection, macro state, CFTC report, or option premium appears; the position is unconditional on every date.",
+      "perp_spot_activity_volatility_and_taker_imbalance": "No quote-volume ratio, taker share, signed flow, volatility surprise, or semivariance appears; those closed rules predicted next-day volatility from activity, this rule tests a fixed clock-window return.",
+      "quarter_hour_algorithmic_burst": "That closed rule conditioned on minute-of-hour boundaries and tested 1-minute trade count and absolute return. This rule uses hourly open prices at fixed UTC hours, tests signed net return, and never touches the quarter-hour contrast.",
+      "weekday_participation_premium": "That certified rule contrasted weekday and weekend trade counts and quote volume with no price or return. This rule uses every calendar day, no day-of-week conditioning, and tests signed price returns net of costs.",
+      "microstructure_execution": "No spread, order book, impact, fill, queue, or execution-cost estimate appears; costs are the fixed published taker fee."
+    }
+  },
+  "novelty_and_consumption": {
+    "prior_window_audit": "utc-2100-2300-prior-window-audit.json",
+    "prior_window_audit_sha256": "27a29b2b2df50053bbc08dc364e08a77f54fe80f29ec4921316523bd985f3d71",
+    "registry_coverage": "All 22 strategy-registry artifact_index entries, the weekday-participation and Deribit event-stop campaigns, and four cross-direction artifacts are enumerated with exact file + field citations.",
+    "calendar_disjointness_claim": "No global disjointness: registered daily-bar directions consumed 2020-2023 calendars. Both candidate windows end on or before 2024-01-01, which precedes every spent or registered frozen-campaign span (2024-01..2025-01, 2025-01..2025-07, 2025-07..2026-01, 2026-01..2026-04, 2026-04..2026-08, 2026-08-31..2026-09-02).",
+    "rule_level_claim": "No registered mechanism conditions on UTC hour-of-day, forms an intraday clock-window return, or tests any return net of exchange taker fees inside the frontier loop.",
+    "information_channel": "First registered use of Binance USD-M 1-hour kline open/close prices at fixed UTC clock hours (00:00, 21:00, 23:00, and the 23:00 close) to form a net-of-taker-fee two-hour return and a within-day concentration contrast.",
+    "allowed_wording": "Rule-level and hour-of-day information-channel novelty on reused historical calendars; literature-informed retrospective replication with taker costs; never fresh, blind, prospective, academically novel, or deployment evidence."
+  },
+  "loop_multiplicity": {
+    "policy": "frontier-loop-policy.json",
+    "policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0",
+    "cycle_ordinal_k": 3,
+    "alpha_k": 0.004166666666666667,
+    "alpha_formula": "0.05 / (k * (k + 1))",
+    "ordinal_basis": "Policy-minted cycles so far: k=1 quarter-hour-algorithmic-burst (FROZEN-NEGATIVE), k=2 weekday-participation-premium (FROZEN-CERTIFIED). The owner-authorized Deribit event-stop retest was governed by its own contract outside the ordinal sequence. This candidate is k=3.",
+    "interpretation": "Both endpoints, both assets, stability, primary, and replication are conjunctive requirements. Failure of any one closes the mechanism. Ordinal k=3 and its alpha are spent even on missing data or integrity failure.",
+    "familywise_scope": "The 0.05 budget covers only cycles minted under frontier-loop-policy.json after its effective time."
+  },
+  "assets_and_data": {
+    "assets": [
+      "BTCUSDT",
+      "ETHUSDT"
+    ],
+    "source": "quant-trading/data/raw/binance/um-perp-1h/{asset}/{asset}-1h-{month}.zip",
+    "fields": {
+      "open_time": 0,
+      "open": 1,
+      "close": 4
+    },
+    "input_inventory": "utc-2100-2300-inputs.json",
+    "input_inventory_sha256": "d60bb2d212933244d1b6630b8d7ec5a46bae71f9eaef7395b18772a571214393",
+    "integrity": "Before candidate parsing, re-verify the contract, audit, loop-policy, and inventory hashes plus every listed archive hash, byte size, sidecar-file hash, sidecar-declared archive hash/name, single member, first-row form (header present or absent exactly as inventoried), and CRC. Any mismatch aborts and writes no result artifact.",
+    "validation": "Normalize open_time as microseconds divided by 1000 iff the raw integer is greater than 100000000000000, otherwise milliseconds. Require exact UTC-hour timestamps and finite positive open and close prices. A UTC date is complete for an asset only if all 24 hourly bars are present exactly once; a missing bar, a duplicated timestamp inside that date, or a nonpositive price rejects that asset-date and is counted under incomplete-hourly-grid, duplicate-timestamp-bar, or nonpositive-price-required-bar. Non-hour timestamps, wrong column counts, non-numeric values, or a first-row form that contradicts the inventory abort the invocation without an artifact.",
+    "lawfulness": "Keyless Binance Data Vision public archives, internal research only; raw redistribution remains subject to Binance terms recorded in quant-trading/data/manifest.json source_policies.binance."
+  },
+  "frozen_rule": {
+    "prices": "For asset a and UTC date d with all 24 hourly bars: P_in = open of the bar whose open_time is d 21:00:00 UTC; P_out = open of the bar whose open_time is d 23:00:00 UTC; P_0 = open of the d 00:00:00 UTC bar; P_24 = close of the d 23:00:00 UTC bar. Entry and exit are taker fills at the first trade at or after the clock time, represented by the bar open; no slippage beyond the fee is modeled.",
+    "costs": "taker_fee f = 0.0005 per side (Binance USD-M standard taker rate, no VIP or BNB discount). Fees are charged on entry notional and on exit notional. No funding accrues because no funding timestamp lies inside [21:00, 23:00) UTC. No borrowing, margin interest, or slippage is modeled.",
+    "daily_observation": "net = (P_out / P_in) * (1 - f) - (1 + f), the simple return net of both taker fees per unit of entry notional for a long held from 21:00 to 23:00 UTC. x = ln(P_out / P_in) - (2 / 24) * ln(P_24 / P_0), the two-hour log return minus its pro-rata share of the same UTC day's log return (zero in expectation if returns accrue uniformly across the day, regardless of drift). Every calendar day is used; no weekday, holiday, event, or volatility filter is permitted.",
+    "sampling": "One paired observation per asset per complete UTC date. Only dates complete for both BTCUSDT and ETHUSDT enter pooled, per-asset, quarter-stability, or bootstrap statistics; both assets move together in every resample.",
+    "statistics": "Report pooled and per-asset arithmetic means of net and x. Assign each date to its calendar quarter (YYYYQn). An included quarter contains at least one complete paired date; stability is the fraction of included quarters whose pooled mean net is strictly positive, and the G3 comparison is exact rational arithmetic (positive_quarters * 5 >= included_quarters * 3), never a floating-point fraction.",
+    "bootstrap": "20,000 circular moving-block resamples of sorted complete paired dates using Python standard-library random.Random (MT19937), seed 20260902, block length 7 dates, randrange(n_dates) starts, whole circular blocks truncated to exactly n_dates, and both assets kept paired. Each endpoint starts a fresh generator at the same seed and therefore receives identical date draws. For endpoint e in {net, x}, p_e = (1 + count(pooled_mean_e_boot <= 0)) / 20001."
+  },
+  "windows": {
+    "primary": {
+      "start_utc_inclusive": "2020-01-01T00:00:00Z",
+      "end_utc_exclusive": "2022-01-01T00:00:00Z",
+      "expected_dates": 731,
+      "expected_pooled_observations": 1462,
+      "relation_to_source": "inside the published 2015-10..2022-02 sample; different venue, instrument, and costs"
+    },
+    "replication": {
+      "start_utc_inclusive": "2022-04-01T00:00:00Z",
+      "end_utc_exclusive": "2024-01-01T00:00:00Z",
+      "expected_dates": 640,
+      "expected_pooled_observations": 1280,
+      "relation_to_source": "strictly after the 2022-02-18 publication; 2022Q1 deliberately skipped so no post-publication bar mixes with pre-publication bars and both windows are quarter-aligned"
+    }
+  },
+  "minimum_sample": {
+    "primary": {
+      "paired_dates": 500,
+      "per_asset": 500,
+      "pooled": 1000,
+      "included_quarters": 6
+    },
+    "replication": {
+      "paired_dates": 500,
+      "per_asset": 500,
+      "pooled": 1000,
+      "included_quarters": 6
+    },
+    "complete_case_only": true
+  },
+  "declared_power_limit": "The independent unit is a UTC date; the two assets are correlated and are paired in every resample, so effective sample size is near the date count, not twice it. With roughly 700 dates per window and a two-hour return standard deviation near 1% [INFERENCE], the standard error of the pooled mean is roughly 4 basis points, so at one-sided alpha 0.004167 the design has power only against net effects near 10 basis points per date (about 20 basis points gross). The published gross magnitude (33% annualized, about 9 basis points per date) minus 10 basis points of taker fees is approximately zero net, so this design is expected to falsify the tradability claim unless the Binance perpetual effect is materially larger than the published Gemini spot effect. A failure falsifies only this two-asset net-of-taker-fee two-hour rule on these windows; it does not refute the published gross regularity. A pass establishes a replicated net-of-cost expected-return regularity, not its cause or its future persistence.",
+  "gates": {
+    "G1_net_magnitude": "pooled mean net >= 0.0003 (three basis points per date; roughly 11% simple annual sum, more than one quarter of the 40%-per-year program target must survive costs)",
+    "G2_net_asset_consistency": "BTCUSDT mean net > 0 AND ETHUSDT mean net > 0",
+    "G3_quarter_stability": "at least 60% of included calendar quarters have strictly positive pooled mean net",
+    "G4_concentration": "pooled mean x > 0 AND BTCUSDT mean x > 0 AND ETHUSDT mean x > 0",
+    "G5_dependence_robustness": "p_net < 0.004166666666666667 AND p_x < 0.004166666666666667 under the frozen paired date-block bootstrap",
+    "pass_rule": "A window passes only if its minimum sample is met and G1 through G5 are all true; all gates are conjunctive.",
+    "fail_rule": "If minimum sample is met and any gate is false, the mechanism is falsified on that window.",
+    "inconclusive_rule": "Only frozen missing/duplicate/nonpositive-bar rejections reducing the paired sample below minimum yield an inconclusive result. Contract, audit, policy, inventory, checksum, CRC, member, first-row form, or schema failures abort without an artifact. UNKNOWN never passes."
+  },
+  "stopping_and_replication": {
+    "campaign_mint": "After independent read-only approval, mint exactly one campaign with scripts/campaign.py init and this file's final SHA-256.",
+    "primary_run": "Exactly one outcome-producing primary execution after campaign mint.",
+    "on_primary_fail": "Write and publish negative evidence, close FROZEN-NEGATIVE, never run replication, and never tune the window, fee, thresholds, assets, or calendars of this mechanism.",
+    "on_primary_inconclusive": "Write evidence, close FROZEN-INCONCLUSIVE, spend cycle ordinal 3, and do not reinterpret missingness.",
+    "on_primary_pass": "Commit the write-once primary artifact, then run the already frozen replication exactly once with identical contract, code hash, formulas, thresholds, seed, and alpha.",
+    "survival_rule": "Survival requires both primary and replication to meet minimum sample and pass G1-G5. Then close FROZEN-CERTIFIED. Replication failure closes FROZEN-NEGATIVE; replication sample failure closes FROZEN-INCONCLUSIVE.",
+    "write_once": "The runner refuses an existing output path. Replication requires --primary-artifact and its SHA-256; it refuses unless role, pass status, contract, runner, audit, policy, and inventory hashes all match."
+  },
+  "multiplicity_boundary": {
+    "mechanisms_in_cycle": 1,
+    "clock_windows": 1,
+    "endpoints": 2,
+    "assets": 2,
+    "windows": 2,
+    "variants": 0,
+    "parameter_search": "none; the 21:00-23:00 UTC window, the taker fee, and every threshold are fixed from the published rule and this contract before any outcome access",
+    "interpretation": "Net return, concentration, both assets, magnitude, stability, bootstrap evidence, primary, and replication are an intersection-union claim: all must pass. No other hours, windows, fee tiers, maker execution, leverage, holidays, weekdays, other assets, or post-outcome thresholds are permitted."
+  },
+  "claim_boundary": "A two-window pass supports only a replicated Binance BTC/ETH 21:00-23:00 UTC expected-return regularity net of standard taker fees on frozen 2020-2021 and 2022Q2-2023 calendars. Familywise-error language is scoped only to post-policy cycles. It does not prove causality, does not establish future persistence, live executability, slippage-inclusive profitability, deployment readiness, capital allocation, or an absolute breakthrough, and does not by itself reach the 40%-per-year program target.",
+  "governance": {
+    "owner_authorization": "2026-09-02 owner directive (verbatim clauses): 'run ONE cycle-3 campaign end to end'; 'Select ONE mechanism distinct from all 22 entries that (a) makes a NET-RETURN claim after Binance taker fees, not a descriptive one, (b) has >=500 independent observations per window on lawful data (Binance Data Vision or collector capture after 2026-08-30), (c) needs only counts/timestamps/prices already in hand'; 'next cycle k=3, alpha_3 = 0.05/12 = 0.004167'; 'Never modify closed families, frozen run dirs, or the running collectors'; 'No threshold tuning, pooling, re-windowing, or alpha/deployment claims beyond the contract.'",
+    "relation_to_state_next_action": "state.json next_action, written by the agent after cycle k=2, says the user-requested loop 'stops here' and that any return hypothesis needs 'its own multiplicity ordinal k=3, realistic costs, and independent review'. The 2026-09-02 owner directive above reopens the loop for exactly one further ordinal; this contract satisfies the k=3, realistic-cost, and independent-review conditions and is bound to the campaign at init via --prereg.",
+    "independent_review": "Read-only pre-freeze review by the local Claude CLI (fable) before campaign init; blockers must be fixed and re-reviewed to APPROVE before any outcome access. The review record is stored beside the contract as utc-2100-2300-prefreeze-review.json.",
+    "post_outcome_updates": "After the terminal verdict: strategy-registry.json artifact_index and focused_campaign entries, state.json semantic fields plus scripts/campaign.py state refresh, workspace.json status/next_action, campaigns/README.md via campaign.py close, and a screens report in ~/repos/quant-lab/reports/screens/. No frozen run file is ever edited."
+  }
+}

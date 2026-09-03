@@ -1,0 +1,83 @@
+{
+  "status": "VERDICT STANDS",
+  "recomputed_gates": {
+    "pooled_spearman": 0.15357142857142855,
+    "rv_ratio": 0.6952240095,
+    "btc_spearman": 0.2857142857142857,
+    "eth_spearman": -0.14285714285714285,
+    "loo_nonpositive_fraction": 0,
+    "match_reported": true
+  },
+  "findings": [
+    {
+      "priority": 1,
+      "severity": "Minor",
+      "confidence": 80,
+      "title": "Cohort is availability-selected inside the stop window, but only via counts/gaps rules that the frozen contract discloses and the review permitted; no value-magnitude or correlation influence on the stop was evidenced",
+      "evidence": [
+        "rv_journal inside the stop window contains ok=false blocks with outcome_end <= stop (e.g. BTC blocks ending 05:15, 06:00, 06:30, 06:45, 08:30, 08:45, 09:15, 09:45-12:30; deribit_gex_eventstop_results.json:855-1208) whose reasons are exclusively consecutive_gap_gt_5000ms, too_few_in_block_observations_lt_720 — count/timestamp-based; no nonpositive_or_invalid_price or other value-based reason observed in journal entries dated before the 2026-08-31T13:00Z stop (results:841-1208)",
+        "disclosure is explicit in run-dir contract: deribit-gex-eventstop-contract.json stopping_rule.inputs_the_stop_may_read lists the parent RV availability rule verbatim incl. 'every price in the block finite and positive', and stopping_rule.note discloses validity-based membership",
+        "all four gate recomputations from the 15 included transitions match the reported values exactly (see recomputed_gates), so within the availability-defined cohort no arithmetic manipulation exists"
+      ],
+      "impact": "Does not flip the falsified verdict; the falsification restates on four independently recomputed gates. Residual risk is confined to the ETH-side journal segment before the stop and the unverified presence/absence of nonpositive_or_invalid_price reasons (see unevaluated)."
+    },
+    {
+      "priority": 2,
+      "severity": "Important",
+      "confidence": 85,
+      "title": "Finding 2 (same-mechanism retest vs canonical next_gate) was resolved by owner authorization and disclosure, not by a pre-freeze canonical governance change",
+      "evidence": [
+        "contract governance.owner_authorization.conflict_disclosed: 'strategy-registry.json focused_campaign.ranked_results[1].next_gate reads Any further work requires a separately frozen different mechanism... The owner directive retests the SAME mechanism with a different stopping rule. This trial proceeds on the owner's authority'",
+        "contract governing_authority pins strategy.json and strategy-registry.json; runner verify_pins iterates PIN_SECTIONS incl. governing_authority at load (run_deribit_gex_eventstop.py:171, 141-157) and twice before publication (:313, :318); results JSON pins_verified_at_publication contains both governing_authority entries with unchanged=true (results:336-347)",
+        "minimal_correction's alternative 'obtain an explicit owner-authorized canonical governance change before freeze' was NOT performed on the registry before freeze; update was deferred post-outcome per governance.post_outcome_updates"
+      ],
+      "impact": "A governance/authority question, not a numerical one: it bears on whether the trial should have been minted, not on whether the executed arithmetic falsified the registered truth table. It cannot flip falsified to pass/inconclusive."
+    }
+  ],
+  "review_findings_implemented": [
+    {
+      "finding": 1,
+      "implemented": "yes",
+      "evidence": "In-memory prepare before any write (runner L260-288 prepare(); L308 called after preflight); existing snapshot aborts CRASHED before input read (L303-306); outputs preflighted (L307); snapshot published exclusively immediately before metric computation (L313-315); write_bytes_exclusive uses os.open O_WRONLY|O_CREAT|O_EXCL with fsync write loop (L258-273); no resume branch exists; run_budget text in contract outputs restates the aborted-rerun rule."
+    },
+    {
+      "finding": 2,
+      "implemented": "disclosed",
+      "evidence": "Owner authorization + exact conflict disclosure in contract governance.owner_authorization; governing_authority SHA-256 records added and verified at runner load (PIN_SECTIONS includes 'governing_authority', L40, L141-157) and before module load (L313) and publication (L318); pins_verified_at_publication shows both unchanged=true. Canonical registry next_gate itself not changed pre-freeze (deferred by design)."
+    },
+    {
+      "finding": 3,
+      "implemented": "disclosed",
+      "evidence": "Contract stopping_rule.inputs_the_stop_may_read final bullet now states the parent availability rule 'AND every price in the block finite and positive (a nonpositive, nonnumeric, or nonfinite captured price marks the block unavailable, no imputation)'; stopping_rule.note discloses that availability inspects price values (validity, not magnitude) and that exclusions are recorded in rv_journal. Code path unchanged (fast_intraday.py:331-335 value checks, :389-397 append-only-if-ok, :447-465 counts transitions). Stop semantics remained unchanged; the review's preferred counts/gaps-only redesign was not adopted — the second disclosure branch was taken."
+    },
+    {
+      "finding": 4,
+      "implemented": "yes",
+      "evidence": "Commit barrier: pins re-verified immediately before parent-module load (runner L313) and immediately before publication (L318, emitted as pins_verified_at_publication); all three outputs written create-only + fsync via write_bytes_exclusive (L349-352) with no-replace O_EXCL semantics; owner copy published exclusively and its sha256 compared to the results sha (L350-352)."
+    },
+    {
+      "finding": 5,
+      "implemented": "partial",
+      "evidence": "Contract governance.independent_review claims 'tests -> fail-closed lifecycle, RV-permutation stop invariance, multi-day dedupe, metadata boundary' were added and tests file sha b75867ff... is recorded in sha256s.txt, but the frozen test file content was NOT re-audited before the time-box; see unevaluated. Rated partial (unverified claim) rather than yes."
+    },
+    {
+      "finding": 6,
+      "implemented": "yes",
+      "evidence": "Contract lineage.registered_permission.how_satisfied reworded exactly per minimal correction: 'Only screen_definition ... is copied from the parent contract and equality-checked at runner load. The GEX formula, RV completeness and validity rules, rank/tie, ratio, per-asset, leave-one-out, and UNKNOWN semantics are NOT duplicated here: they remain single-sourced in the hash-pinned parent contract ... and the hash-pinned parent module focused-deribit-gex/fast_intraday.py.'"
+    },
+    {
+      "finding": 0,
+      "implemented": "no",
+      "evidence": "placeholder - remove"
+    }
+  ],
+  "status_edit_discrepancies": [],
+  "unevaluated": [
+    "Status-edit consistency (change item 4): focused_campaign.ranked_results[1], deribit_eventstop_trial, artifact_index in strategy-registry.json; deribit_eventstop_trial and focused_result_order in focused-campaign.json; status/trial_count/gate_result/next_experiment in focused-deribit-gex/strategy.json; focused-deribit-gex/trials.json; state.json — none of the five edited status files were read before the time-box, so neither consistency nor discrepancies are asserted (status_edit_discrepancies is empty only because nothing was compared)",
+    "Frozen test suite (review finding 5): test_run_deribit_gex_eventstop.py content (test count, fail-closed lifecycle, RV-permutation invariance, multi-day/dedupe/metadata-boundary coverage) not re-audited",
+    "rv_journal completeness check for value-validity exclusions: no 'nonpositive_or_invalid_price' reason was observed in journal entries with outcome_end <= stop on the BTC segment (results:841-1208), but the ETH journal segment before the stop and the remaining journal through line ~5475 were not exhaustively scanned for value-based exclusion reasons",
+    "Independent recomputation of SHA-256 digests (no shell/execution available in this audit): integrity-chain checks were string-consistency only — manifest.prereg_sha256 == results.eventstop_contract.sha256 == sha256s.txt 'deribit-gex-eventstop-contract.json' line (318eb91f90f18167b497a9dcfb94bc15de5f3a19d5cc10e48c4963df05679f6a); results.input_snapshot.sha256 == sha256s.txt 'deribit-eventstop-snapshot.json' line (1ae77e2397f967242a23fb7ab4c1554b1ca983dc70f30bdaa8d280f7089bee4d); all 11 pins_verified_at_publication entries observed == expected with unchanged=true (results:250-347); bytes were not re-hashed",
+    "Owner-copy file (quant-trading/explorations/focused-deribit-gex/deribit_gex_eventstop_2026-09-02_results.json) existence/content not compared against the run-dir results",
+    "sample_conditions block and zero_gex_blocks/excluded_after_stop detail in the results JSON (regions adjacent to L5470) not read"
+  ]
+}

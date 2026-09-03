@@ -1,0 +1,31 @@
+{
+  "rung": "beam32",
+  "parameters": {
+    "beam_width": 32,
+    "initial_iters": 40,
+    "iters_per_round": 30,
+    "max_rounds": 10,
+    "num_results": 1
+  },
+  "binary": "beam_nr_cpp",
+  "cpp_threads": 8,
+  "python_workers": 20,
+  "cpp_config_line": "config: beam_width=32 initial_iters=40 iters_per_round=30 max_rounds=10 num_results=1",
+  "p": 0.001,
+  "basis": "Z",
+  "shots": 2000,
+  "seed": 3127552329434732600,
+  "ndet": 936,
+  "nobs": 12,
+  "circuit_sha256": "106f45471003ecdf6d843ea3b9da45d2f0a766716569a9fababaacbcdeb356db",
+  "dem_sha256": "0da75b9847b54a4c7079e8fdb8be6a2320fea0ee88caafd5f93153a76089e8e2",
+  "beam_binary_sha256": "297db977a57bd384100b2f033080ac33213caf4925c7eba8acea89e656b29023",
+  "beam_source_sha256": "8af248032fb5ddfd1d97956ea028fe005aa0bd5c739e8eddc0d3438ea8cfee01",
+  "python_ms_per_shot": 32.17441604152555,
+  "cpp_ms_per_shot": 0.484,
+  "cpp_subprocess_s": 0.9760945830494165,
+  "mismatched_shots": 0,
+  "mismatched_shot_ids": [],
+  "shots_sha256": "99a513a5eb8980254cdd6f5676457a441727a9d59ef980094a6dcb23807b122e",
+  "cpp_predictions_sha256": "3e228a449b48d9ad9bd1e032e4dce093c0f23a8fbbf0fc8b5028b71cb25ae189"
+}

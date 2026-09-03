@@ -1,0 +1,605 @@
+{
+  "CPU_seconds": 40.502004,
+  "checkpoint": {
+    "CPU_seconds": 40.501625,
+    "completed_layers": [
+      {
+        "obligations": [
+          "a",
+          "b",
+          "c"
+        ],
+        "stage": "A"
+      },
+      {
+        "controls": 28,
+        "stage": "F"
+      },
+      {
+        "pgl_counts": {
+          "7": 336,
+          "11": 1320,
+          "13": 2184
+        },
+        "stage": "B"
+      },
+      {
+        "p": 7,
+        "part": "33row",
+        "stage": "C"
+      },
+      {
+        "p": 11,
+        "part": "33row",
+        "stage": "C"
+      },
+      {
+        "p": 13,
+        "part": "33row",
+        "stage": "C"
+      },
+      {
+        "empty": {
+          "5": 0
+        },
+        "p": 13,
+        "part": "24row",
+        "stage": "C"
+      }
+    ],
+    "run_id": "20260902T113614Z_a999d1b0_5daa598b6a04",
+    "wall_seconds": 43.849823666969314
+  },
+  "checks_passed_before_failure": {
+    "controls.ambient10.exact_rank": {
+      "detail": {
+        "got": 9,
+        "want": 9
+      },
+      "pass": true
+    },
+    "controls.base.spark4": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "controls.c2_accept10_exists": {
+      "detail": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "pass": true
+    },
+    "controls.ci.kernel_dim": {
+      "detail": {
+        "got": 2,
+        "want": 2
+      },
+      "pass": true
+    },
+    "controls.ci.no_common_component": {
+      "detail": {
+        "res_x": [
+          9,
+          4,
+          4,
+          7,
+          3,
+          5,
+          0,
+          2,
+          5
+        ],
+        "res_y": [
+          12,
+          1,
+          1,
+          5,
+          4,
+          11,
+          0,
+          7,
+          11
+        ]
+      },
+      "pass": true
+    },
+    "controls.ci_accept": {
+      "detail": [
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          8,
+          7
+        ]
+      ],
+      "pass": true
+    },
+    "controls.corrupted_reject": {
+      "detail": {
+        "coordinate": 0,
+        "delta": 1,
+        "rank": 6
+      },
+      "pass": true
+    },
+    "controls.dup.spark4": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "controls.kron_guard.concat_reject": {
+      "detail": {
+        "concat": [
+          1,
+          2,
+          1,
+          3,
+          9
+        ],
+        "true": [
+          1,
+          3,
+          9,
+          1,
+          2,
+          6,
+          5,
+          2
+        ]
+      },
+      "pass": true
+    },
+    "controls.kron_guard.true_dimension": {
+      "detail": [
+        1,
+        3,
+        9,
+        1,
+        2,
+        6,
+        5,
+        2
+      ],
+      "pass": true
+    },
+    "controls.nine.all_deletions": {
+      "detail": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "pass": true
+    },
+    "controls.nine.circuit_rank": {
+      "detail": {
+        "got": 8,
+        "want": 8
+      },
+      "pass": true
+    },
+    "controls.nonmobius_independent": {
+      "detail": {
+        "points": [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            5
+          ]
+        ],
+        "rank": 6
+      },
+      "pass": true
+    },
+    "controls.shared_component_reject": {
+      "detail": {
+        "res_x": [
+          0
+        ]
+      },
+      "pass": true
+    },
+    "controls.tensor_accept": {
+      "detail": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          9
+        ]
+      ],
+      "pass": true
+    },
+    "controls.witness9.dependent": {
+      "detail": 5,
+      "pass": true
+    },
+    "runtime.env_dont_write_bytecode": {
+      "detail": "1",
+      "pass": true
+    },
+    "runtime.nice": {
+      "detail": 10,
+      "pass": true
+    },
+    "runtime.rlimit_cpu": {
+      "detail": [
+        5400,
+        5400
+      ],
+      "pass": true
+    },
+    "runtime.sys_dont_write_bytecode": {
+      "detail": true,
+      "pass": true
+    },
+    "runtime.thread_caps": {
+      "detail": {
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "pass": true
+    },
+    "stageA.head_full_rank_6": {
+      "detail": {
+        "got": 6,
+        "want": 6
+      },
+      "pass": true
+    },
+    "stageA.multipliers_rank_free": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "stageA.obligation_b_identity.p11": {
+      "detail": 11,
+      "pass": true
+    },
+    "stageA.obligation_b_identity.p13": {
+      "detail": 13,
+      "pass": true
+    },
+    "stageA.obligation_b_identity.p7": {
+      "detail": 7,
+      "pass": true
+    },
+    "stageA.tie_collapses_rank": {
+      "detail": {
+        "got": 5,
+        "want": 5
+      },
+      "pass": true
+    },
+    "stageA.transport_circuit_independent": {
+      "detail": 6,
+      "pass": true
+    },
+    "stageB.pgl_count.p11": {
+      "detail": {
+        "got": 1320,
+        "want": 1320
+      },
+      "pass": true
+    },
+    "stageB.pgl_count.p13": {
+      "detail": {
+        "got": 2184,
+        "want": 2184
+      },
+      "pass": true
+    },
+    "stageB.pgl_count.p7": {
+      "detail": {
+        "got": 336,
+        "want": 336
+      },
+      "pass": true
+    },
+    "stageC.24.anchor.n6.p13": {
+      "detail": {
+        "got": 2,
+        "want": 2
+      },
+      "pass": true
+    },
+    "stageC.24.anchor.n7.p13": {
+      "detail": {
+        "got": 42,
+        "want": 42
+      },
+      "pass": true
+    },
+    "stageC.24.n6.p13.eq_a_support_set": {
+      "detail": {
+        "circuits": 2,
+        "extra": 0,
+        "graphs": 2,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "stageC.24.n6.p13.eq_b_count": {
+      "detail": {
+        "got": 2,
+        "want": 2
+      },
+      "pass": true
+    },
+    "stageC.24.n7.p13.eq_a_support_set": {
+      "detail": {
+        "circuits": 42,
+        "extra": 0,
+        "graphs": 42,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "stageC.24.n7.p13.eq_b_count": {
+      "detail": {
+        "got": 42,
+        "want": 42
+      },
+      "pass": true
+    },
+    "stageC.33.anchor.n6.p11": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "stageC.33.anchor.n6.p13": {
+      "detail": {
+        "got": 2,
+        "want": 2
+      },
+      "pass": true
+    },
+    "stageC.33.anchor.n6.p7": {
+      "detail": {
+        "got": 12,
+        "want": 12
+      },
+      "pass": true
+    },
+    "stageC.33.anchor.n7.p11": {
+      "detail": {
+        "got": 72,
+        "want": 72
+      },
+      "pass": true
+    },
+    "stageC.33.anchor.n7.p13": {
+      "detail": {
+        "got": 42,
+        "want": 42
+      },
+      "pass": true
+    },
+    "stageC.33.anchor.n7.p7": {
+      "detail": {
+        "got": 588,
+        "want": 588
+      },
+      "pass": true
+    },
+    "stageC.33.n6.p11.eq_a_support_set": {
+      "detail": {
+        "circuits": 4,
+        "extra": 0,
+        "graphs": 4,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "stageC.33.n6.p11.eq_b_count": {
+      "detail": {
+        "got": 4,
+        "want": 4
+      },
+      "pass": true
+    },
+    "stageC.33.n6.p13.eq_a_support_set": {
+      "detail": {
+        "circuits": 2,
+        "extra": 0,
+        "graphs": 2,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "stageC.33.n6.p13.eq_b_count": {
+      "detail": {
+        "got": 2,
+        "want": 2
+      },
+      "pass": true
+    },
+    "stageC.33.n6.p7.eq_a_support_set": {
+      "detail": {
+        "circuits": 12,
+        "extra": 0,
+        "graphs": 12,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "stageC.33.n6.p7.eq_b_count": {
+      "detail": {
+        "got": 12,
+        "want": 12
+      },
+      "pass": true
+    },
+    "stageC.33.n7.p11.eq_a_support_set": {
+      "detail": {
+        "circuits": 72,
+        "extra": 0,
+        "graphs": 72,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "stageC.33.n7.p11.eq_b_count": {
+      "detail": {
+        "got": 72,
+        "want": 72
+      },
+      "pass": true
+    },
+    "stageC.33.n7.p13.eq_a_support_set": {
+      "detail": {
+        "circuits": 42,
+        "extra": 0,
+        "graphs": 42,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "stageC.33.n7.p13.eq_b_count": {
+      "detail": {
+        "got": 42,
+        "want": 42
+      },
+      "pass": true
+    },
+    "stageC.33.n7.p7.eq_a_support_set": {
+      "detail": {
+        "circuits": 588,
+        "extra": 0,
+        "graphs": 588,
+        "missing": 0
+      },
+      "pass": true
+    },
+    "stageC.33.n7.p7.eq_b_count": {
+      "detail": {
+        "got": 588,
+        "want": 588
+      },
+      "pass": true
+    }
+  },
+  "error": "TypeError(\"'int' object is not subscriptable\")",
+  "gate": "H-GRS-GENERAL-SIZE",
+  "run_id": "20260902T113614Z_a999d1b0_5daa598b6a04",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/jinleic/jinleic-workspace/cs/rs-pe3d/campaigns/20260902T113614Z_a999d1b0_5daa598b6a04/run_grs_general_size.py\", line 959, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/jinleic/jinleic-workspace/cs/rs-pe3d/campaigns/20260902T113614Z_a999d1b0_5daa598b6a04/run_grs_general_size.py\", line 843, in main\n    print(f\"[stage C] (2,4) p={p}: n6={want[6]} n7={want[7]} k5empty={empt[5]}\")\n                                       ~~~~^^^\nTypeError: 'int' object is not subscriptable\n",
+  "wall_seconds": 43.85020020895172
+}

@@ -1,0 +1,1219 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xurl}
+\Urlmuskip=0mu
+\urlstyle{tt}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\pr}[2]{\langle #1,\,#2\rangle}
+\newcommand{\gap}{\operatorname{gap}}
+\newcommand{\num}{\operatorname{num}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Lam}{\Lambda}
+\newcommand{\hash}[1]{{\footnotesize\path{#1}}}
+\newcommand{\lbl}[1]{\textsc{#1}}
+\newcommand{\cert}[1]{\par\smallskip\noindent{\normalfont\textit{Certificate.} #1}}
+
+\title{Liu's Second Hypothesis Holds, and the Union-Closed Constant\\
+$c'=1-m^\ast=0.38270908791873502993\ldots$ Is Unconditional:\\
+a Machine-Checked Proof}
+\author{J.\ Chen\thanks{Repository manuscript package:
+\texttt{math/uc/H2\_PAPER/}.  Every theorem carries a status label
+(\lbl{proved} / \lbl{machine-verified} / \lbl{computational-evidence} /
+\lbl{open}), and every machine-assisted theorem cites the artifact and
+SHA-256 that certifies it; Section~\ref{sec:verification} explains how to
+replay the whole chain.}}
+\date{September 2, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Liu (arXiv:2306.08824) showed that the union-closed sets conjecture holds with
+constant $c'=1-p^\ast x^\ast\approx0.38271$ under two hypotheses: a
+positive-semidefiniteness statement (Section V-A) and the assertion that a
+nine-parameter optimisation attains its global minimum at an explicit
+two-point law (Section V-B, ``Hypothesis~2'').  We prove that the two-protocol
+entropy inequality underlying Hypothesis~2 holds for \emph{every} pair of
+Borel probability measures on $[0,1]$ and, more generally, for every
+conditionally i.i.d.\ coupling, with the uniform constant $M/m^\ast$ and no
+mean constraint.  The inequality Liu's Proposition~3 needs therefore holds
+outright, both hypotheses are bypassed, and $c'$ is an unconditional lower
+bound for the union-closed constant.  Exact identities in the algebra of
+pairings reduce the proof to a sufficient pair of inequalities between
+explicit continuous kernels on the unit square, $A\ge0$ and $B\ge0$;
+$A\ge0$ (together with the
+tight inequality $R=A+B\ge0$, which has a nondegenerate interior zero) is
+certified by stratified analytic estimates and a finite Arb branch-and-bound
+cover, while $B\ge0$ is equivalent to a parameter-free inequality
+$\Phi\ge0$ that follows from an exact identity and a one-variable condition
+$\kappa\ge2$ with uniform margin.  Every non-elementary step is a
+machine-checked artifact with pinned hashes; a replay driver re-runs the
+seven artifacts and asserts byte-identity.  The bound is sharp along a
+one-parameter family, and Liu's printed decimal $0.382709087918741$ is
+incorrect in its last two digits.  The result concerns the constant only and
+says nothing about the conjectured value $1/2$.
+\end{abstract}
+
+\section{Introduction and main results}\label{sec:intro}
+
+Let $\mathcal F$ be a union-closed family of subsets of a finite set $E$,
+with $\mathcal F\neq\emptyset$ and $\mathcal F\neq\{\emptyset\}$.  Frankl's
+conjecture asserts that some element of $E$ belongs to at least half of the
+members of $\mathcal F$.  Gilmer~\cite{Gil22} proved the first constant bound
+by an entropy argument; the sharp form of his inequality gives
+$(3-\sqrt5)/2$~\cite{CL22,AHS22,Saw22}, Sawin's max-entropy coupling improves
+it, and the best value obtainable along that route, $c^\ast\approx0.3823455$,
+was computed by Yu~\cite{Yu23} and Cambie~\cite{Cam22}.  Liu~\cite{Liu23}
+introduced conditionally i.i.d.\ couplings and showed that, with the
+specific coupling of his Example~5 (with $f(x)=x(1-x)$) mixed with Gilmer's
+independent coupling, the constant improves to
+\begin{equation}\label{eq:cprime}
+  c' \;=\; 1-m^\ast, \qquad m^\ast=p^\ast x^\ast,
+\end{equation}
+where $x^\ast$ and $p^\ast$ are the root-defined numbers of his equations
+(87)--(88) (Section~\ref{sec:constants}), \emph{provided} two hypotheses
+hold (his Theorem~13): the positive semidefiniteness of Section V-A
+(``Hypothesis~1''), which drives a Krein--Milman reduction of the admissible
+couplings to three shared-mass atoms, and the global-minimiser structure of
+Section V-B (``Hypothesis~2''), which asserts that the resulting
+nine-parameter optimisation (his (81)--(84)) has optimal value at least $1$.
+
+This paper proves the inequality behind Hypothesis~2 in a form strong enough
+to make Hypothesis~1 unnecessary.  Throughout, $\log$ is natural,
+\begin{equation}\label{eq:defs}
+  h(u)=-u\log u-(1-u)\log(1-u),\quad h(0)=h(1)=0,\qquad
+  \pi(s,t)=st\bigl(1+(1-s)(1-t)\bigr),\qquad K=h\circ\pi .
+\end{equation}
+For a Borel probability measure $\mu$ on $[0,1]$ write $M=\pr{\mu}{x}$ for
+its mean and $\pr{\mu}{h}=\int h\,d\mu$.
+
+\begin{definition}[conditionally i.i.d.\ coupling]\label{def:ciid}
+Let $(\Omega,P)$ be a probability space and $u\mapsto\nu_u$ a Markov kernel
+from $\Omega$ to $[0,1]$.  The measure
+$\Gamma=\int\nu_u\otimes\nu_u\,dP(u)$ on $[0,1]^2$ is a
+\emph{conditionally i.i.d.\ coupling} of its barycentre
+$\mu=\int\nu_u\,dP(u)$ with itself.  Its \emph{numerator} at the parameter
+$\beta\in(0,1)$ is
+\begin{equation}\label{eq:num}
+  \num(\Gamma)=(1-\beta)\pr{\mu\otimes\mu}{h(xy)}
+  +\beta\int\pr{\nu_u\otimes\nu_u}{K}\,dP(u).
+\end{equation}
+\end{definition}
+
+\begin{theorem}[mixture theorem; \lbl{proved}, Theorem~\ref{thm:mixture}]\label{thm:A}
+Let $\beta=\beta^\ast$ and $m=m^\ast$ be the constants of
+Section~\ref{sec:constants}.  For every Borel probability measure $\mu$ on
+$[0,1]$ and every conditionally i.i.d.\ coupling $\Gamma$ of $\mu$,
+\[
+  \num(\Gamma)\;\ge\;\frac{M}{m^\ast}\,\pr{\mu}{h}.
+\]
+The inequality is an equality along the whole family
+$\mu_w=(1-w)\delta_0+w\delta_{x^\ast}$, $0\le w\le1$, $\Gamma=\mu_w\otimes\mu_w$.
+\end{theorem}
+
+For the two-component couplings $\Gamma=(1-q)\,\mu\otimes\mu+q\,\nu\otimes\nu$
+this is Liu's two-protocol objective with the mean constraint removed:
+
+\begin{theorem}[Hypothesis~2 for general measures; \lbl{proved}, Theorem~\ref{thm:lift}]\label{thm:B}
+For all Borel probability measures $\mu,\nu$ on $[0,1]$ and all
+$q\in[0,1]$, with $P=(1-q)\mu+q\nu$ and $M=\pr{P}{x}$,
+\[
+  \gap(\mu,\nu,q):=(1-\beta^\ast)\pr{P\otimes P}{h(xy)}
+  +\beta^\ast\bigl[(1-q)\pr{\mu\otimes\mu}{K}+q\pr{\nu\otimes\nu}{K}\bigr]
+  -\pr{P}{h}\;\ge\;\frac{M-m^\ast}{m^\ast}\pr{P}{h},
+\]
+so $\gap\ge0$ whenever $M\ge m^\ast$.  Liu's nine-parameter optimisation
+(81)--(84) at $c=c'$ is the case of finitely supported $\mu,\nu$ with three
+shared masses; its optimal value is therefore $\ge1$, i.e.\ Hypothesis~2
+holds, with equality at his minimiser $q=0$,
+$\mu=(1-p^\ast)\delta_0+p^\ast\delta_{x^\ast}$.
+\end{theorem}
+
+\begin{theorem}[the constant is unconditional; \lbl{proved}, Theorem~\ref{thm:uc}]\label{thm:C}
+Every union-closed family $\mathcal F\notin\{\emptyset,\{\emptyset\}\}$ of
+subsets of a finite set has an element contained in at least
+$c'\,|\mathcal F|$ of its members, where
+\[
+  c'=1-m^\ast\in\bigl[0.382709087918735029930312902098972611626381433
+  \pm4.95\times10^{-46}\bigr].
+\]
+\end{theorem}
+
+The proof of Theorem~\ref{thm:C} re-derives Liu's Proposition~3 from his
+definitions (Section~\ref{sec:prop3}); the only inputs are Gilmer's
+independent protocol and Liu's Example~5, and Theorem~\ref{thm:A} applied
+coordinate by coordinate to the couplings those protocols actually induce.
+Liu's Theorem~9 (two-mixture sufficiency), Lemma~11 and Theorem~12 (the
+Krein--Milman reduction, which is where Hypothesis~1 enters), and Section
+V-A are not used.  Theorem~\ref{thm:A} also supplies the strict constant
+$C=(1-c)/m^\ast>1$ that Proposition~3 requires for every $c<c'$, with no
+limiting argument.
+
+\paragraph{How the proof is organised.}
+Section~\ref{sec:constants} fixes notation and proves the exact structure of
+the constants: $x^\ast$ is the unique root in $(0,1)$ of
+$z^4-2z^3+3z^2-1$, which is precisely the relation $\pi(x,x)=1-x^2$, so
+that $K(x^\ast,x^\ast)=h(x^{\ast2})$ and the kernel
+$R=D_{m^\ast}/m^\ast$ vanishes to second order at $(x^\ast,x^\ast)$.
+Section~\ref{sec:reduction} proves the reduction: three identities in the
+algebra of pairings express $\gap$ through the kernels
+\[
+  P_2,\;Q_2,\;R=P_2+Q_2,\;\varphi=\sqrt{Q_2(s,s)},\;
+  A=P_2+\varphi\otimes\varphi,\; B=Q_2-\varphi\otimes\varphi,
+\]
+and show that $A\ge0$ and $B\ge0$ pointwise on $[0,1]^2$ imply
+Theorem~\ref{thm:B}.  Section~\ref{sec:twovar} proves $R\ge0$ and $A\ge0$ by
+stratified analytic estimates plus a finite certified cover.
+Section~\ref{sec:phi} proves the parameter-free inequality
+$\Phi=K_{st}^2-K_{ss}K_{tt}\ge0$, which is equivalent to $B\ge0$, from an
+exact identity and a one-variable condition $\kappa\ge2$.
+Section~\ref{sec:lift} composes these into Theorem~\ref{thm:B}, and
+Section~\ref{sec:mixture} proves Theorem~\ref{thm:A}.
+Section~\ref{sec:prop3} proves Theorem~\ref{thm:C}, Section~\ref{sec:value}
+discusses the value of $c'$, and Section~\ref{sec:verification} lists the
+artifacts, their hashes, the replay procedure, and the scope of the result.
+
+\paragraph{Labels.}
+\lbl{proved} means a complete argument is given here or in the cited
+artifact's certificate; \lbl{machine-verified} means an identity or
+inequality checked by exact symbolic algebra or by Arb ball arithmetic with
+the stated precision, on the stated set; \lbl{computational-evidence} means
+a floating-point or sampled observation that carries no weight in any proof;
+\lbl{open} means not established.  Nothing labelled
+\lbl{computational-evidence} is used in the proofs.
+
+\paragraph{Pairings.}
+For finite signed Borel measures $\alpha,\beta$ on $[0,1]$ and bounded Borel
+$k$ on $[0,1]^2$ we write $\pr{\alpha\otimes\beta}{k}=\iint k(s,t)\,
+d\alpha(s)\,d\beta(t)$ and $\pr{\alpha}{f}=\int f\,d\alpha$.  Three facts are
+used throughout: bilinearity; symmetry, $\pr{\alpha\otimes\beta}{k}=
+\pr{\beta\otimes\alpha}{k}$ whenever $k(s,t)=k(t,s)$; and the product rule
+$\pr{\alpha\otimes\beta}{f(s)g(t)}=\pr{\alpha}{f}\pr{\beta}{g}$.  With
+subscripts $0,1$ for $\mu,\nu$ we abbreviate
+$E_{ab}=\pr{\cdot}{h(xy)}$, $K_{ab}=\pr{\cdot}{K}$, $H_a=\pr{\cdot}{h}$,
+$M_a=\pr{\cdot}{x}$, $F_a=\pr{\cdot}{\varphi}$.
+
+\section{Notation, the constants, and the structure at \texorpdfstring{$(x^\ast,x^\ast)$}{(x*,x*)}}\label{sec:constants}
+
+\begin{lemma}[regularity; \lbl{proved}]\label{lem:L0}
+$h$ is continuous on $[0,1]$, $0\le h\le\log2$, $h(u)=h(1-u)$, and
+$\pi$ maps $[0,1]^2$ into $[0,1]$.  Consequently every kernel appearing in
+this paper ($h(xy)$, $K$, $D_M$, $P_2$, $Q_2$, $R$, $\varphi$, $A$, $B$,
+$\Phi$) is continuous on the compact square, and every pairing below is
+finite.
+\end{lemma}
+\begin{proof}
+$h''(u)=-1/(u(1-u))<0$, $h(1/2)=\log2$, $u\log u\to0$, and the symmetry is
+visible from the definition.  With $a=1-s$, $b=1-t$,
+$1-\pi(s,t)=a(1-b)+b(1-a)+ab(a+b-ab)$, a sum of nonnegative terms, and
+$\pi\ge0$; so $\pi\in[0,1]$.  Compositions and products of continuous
+functions are continuous, and $\varphi=\sqrt{\beta K(s,s)}$ is continuous
+because $K(s,s)\ge0$.
+\end{proof}
+
+\begin{definition}[the constants; Liu (87)--(90)]\label{def:constants}
+Let $f(z)=z^4-2z^3+3z^2-1$ and let $x^\ast$ be its unique root in $(0,1)$.
+Put
+\[
+  p^\ast=\frac{h(x^\ast)}{h(x^{\ast2})},\qquad m^\ast=p^\ast x^\ast,\qquad
+  c'=1-m^\ast,\qquad
+  \beta^\ast=\frac{\bigl(h'(x^\ast)+h(x^\ast)/x^\ast\bigr)/p^\ast-a'}{b'-a'},
+\]
+where $a'=2x^\ast h'(x^{\ast2})$, $b'=h'(\pi(x^\ast,x^\ast))\,\pi_d'(x^\ast)$,
+$\pi_d(x)=\pi(x,x)=x^2(2-2x+x^2)$ and $\pi_d'(x)=2x(2-3x+2x^2)$.
+\end{definition}
+
+\begin{lemma}[\lbl{proved}; enclosures \lbl{machine-verified}]\label{lem:constants}
+\leavevmode
+\begin{enumerate}[label=(\alph*),nosep]
+\item $f$ has exactly one root in $(0,1)$: $f(0)=-1<0<f(1)=1$ and
+$f'(z)=2z\bigl(2(z-\tfrac34)^2+\tfrac{15}8\bigr)>0$ on $(0,1]$.
+\item $f(x)=0$ is the relation $x^2+\pi(x,x)=1$, i.e.\ Liu's (87).  Hence
+$\pi(x^\ast,x^\ast)=1-x^{\ast2}$ and $K(x^\ast,x^\ast)=h(x^{\ast2})$.
+\item Liu's (88), $p^2h(x^2)-ph(x)=0$ with $p\neq0$, is $p^\ast=h(x^\ast)/h(x^{\ast2})$;
+and $\beta^\ast$ is the unique $\beta$ for which the stationarity conditions
+(89)--(90) hold at $(p^\ast,x^\ast)$, equivalently (Lemma~\ref{lem:tight}) for
+which $\frac{d}{dx}R_\beta(x,x)\big|_{x^\ast}=0$.
+\item Certified enclosures (Arb, 400 bits, propagated from a rational bracket
+of $x^\ast$ of width $10^{-70}$ on which $f(\mathrm{lo})<0<f(\mathrm{hi})$
+is certified):
+\begin{align*}
+x^\ast&\in[0.690787593924988014150488204636270562580628177\pm9.69\times10^{-47}],\\
+p^\ast&\in[0.893604513905465446476770019038769597178677710\pm3.49\times10^{-46}],\\
+m^\ast&\in[0.617290912081264970069687097901027388373618567\pm4.95\times10^{-46}],\\
+\beta^\ast&\in[0.100052559862893106664628299476947587796206185\pm2.88\times10^{-46}],\\
+c'&\in[0.382709087918735029930312902098972611626381433\pm4.95\times10^{-46}].
+\end{align*}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) is the displayed computation.  (b): $\pi(x,x)=x^2(1+(1-x)^2)=2x^2-2x^3+x^4$,
+so $x^2+\pi(x,x)-1=f(x)$; then $h(1-x^{\ast2})=h(x^{\ast2})$ by the symmetry
+of $h$.  (c): the objective at the two-point law $p\delta_x+(1-p)\delta_0$
+with $q=0$ is $G(p,x)=(1-\beta)p^2h(x^2)+\beta p^2h(\pi_d(x))-ph(x)$, and
+(89)--(90) ask that $dG=0$ along $d(px)=0$, i.e.\ $dp=-(p/x)dx$.  Writing
+out $-(p/x)\partial_pG+\partial_xG=0$, using $h(\pi_d(x^\ast))=h(x^{\ast2})$
+and $p^\ast h(x^{\ast2})=h(x^\ast)$, one obtains
+$(1-\beta)a'+\beta b'=(h'(x^\ast)+h(x^\ast)/x^\ast)/p^\ast$, whose unique
+solution is the displayed $\beta^\ast$.  (d) is the content of the
+\texttt{constants} blocks of the artifacts of Sections~\ref{sec:twovar},
+\ref{sec:lift} and \ref{sec:mixture}, which agree with one another and with
+the independent solver \path{uc/liu9_binding.py} (difference enclosures
+containing $0$).
+\end{proof}
+
+From now on $\beta=\beta^\ast$ and $m=m^\ast$ unless a formula displays
+$\beta,m$ as free parameters.  Define, for $(s,t)\in[0,1]^2$ and $M>0$,
+\begin{align}
+D_M(s,t)&=M\bigl[(1-\beta)h(st)+\beta K(s,t)\bigr]-\tfrac12\bigl(t\,h(s)+s\,h(t)\bigr),\label{eq:DM}\\
+P_2(s,t)&=(1-\beta)h(st)-\frac{t\,h(s)+s\,h(t)}{2m},\qquad
+Q_2(s,t)=\beta K(s,t)\ge0,\qquad R=P_2+Q_2=\frac{D_m}{m},\label{eq:R}\\
+\varphi(s)&=\sqrt{Q_2(s,s)},\qquad A=P_2+\varphi\otimes\varphi,\qquad
+B=Q_2-\varphi\otimes\varphi,\qquad R=A+B,\label{eq:AB}\\
+\Phi(s,t)&=K(s,t)^2-K(s,s)K(t,t).\label{eq:Phi}
+\end{align}
+$P_2$ is sign-indefinite (numerically its minimum on the square is
+$\approx-0.0693$, on the diagonal near $s=t\approx0.6807$;
+\lbl{computational-evidence}, not used); $Q_2\ge0$; $\Phi$ contains no
+parameter.
+
+\begin{lemma}[the tight point; \lbl{proved}, Hessian \lbl{machine-verified}]\label{lem:tight}
+$R(x^\ast,x^\ast)=0$ and $\nabla R(x^\ast,x^\ast)=0$; the Hessian of $R$ at
+$(x^\ast,x^\ast)$ has certified entries
+$R_{ss}=R_{tt}\in[0.75319572205793855886\pm10^{-20}]$,
+$R_{st}\in[-0.49637762911066539838\pm10^{-20}]$ (the artifact's radii are
+$\sim10^{-51}$; every enclosure quoted in this paper is the artifact's ball
+rounded to the printed digits with the radius enlarged to cover the
+rounding), hence
+$\lambda_{\min}\ge0.25681809294727316048$ and the zero is a nondegenerate
+interior minimum.  Likewise $A(x^\ast,x^\ast)=0$ and $\nabla A(x^\ast,x^\ast)=0$,
+since $A(s,s)=R(s,s)$ on the diagonal and $\partial_sA(s,s)=\partial_sR(s,s)$
+for $0<s<1$; the Hessian of $A$ there is different,
+$A_{ss}=A_{tt}\in[0.59340358088849405417\pm10^{-20}]$,
+$A_{st}\in[-0.33658548794122089368\pm10^{-20}]$, but has the same
+certified $\lambda_{\min}\ge0.25681809294727316048$ (the off-diagonal shift
+$\varphi'(x^\ast)^2$ cancels in $A_{ss}+A_{st}$).
+Moreover $R(0,t)=R(s,0)=0$ and $R(1,t)=(1-\tfrac1{2m})h(t)$ with
+$1-\tfrac1{2m}\in[0.19000913473001832145\pm10^{-20}]$.
+\end{lemma}
+\begin{proof}
+On the diagonal, $r(x):=R(x,x)=(1-\beta)h(x^2)+\beta h(\pi_d(x))-x\,h(x)/m$.
+At $x^\ast$, Lemma~\ref{lem:constants}(b) gives
+$(1-\beta)h(x^{\ast2})+\beta h(\pi_d(x^\ast))=h(x^{\ast2})$ for \emph{every}
+$\beta$, and $x^\ast h(x^\ast)/m^\ast=h(x^{\ast2})$ by the definition of
+$m^\ast$; so $r(x^\ast)=0$.  Next
+$r'(x)=(1-\beta)\,2xh'(x^2)+\beta h'(\pi_d)\pi_d'-(h(x)+xh'(x))/m$, and at
+$x^\ast$, with $m^\ast=p^\ast x^\ast$, the condition $r'(x^\ast)=0$ is exactly
+$(1-\beta)a'+\beta b'=(h'(x^\ast)+h(x^\ast)/x^\ast)/p^\ast$, which defines
+$\beta^\ast$.  Since $R$ is symmetric, $R_s=R_t$ on the diagonal and
+$r'=R_s+R_t=2R_s$, so $\nabla R(x^\ast,x^\ast)=0$.  For $A$:
+$A(s,s)=P_2(s,s)+\varphi(s)^2=R(s,s)$, and
+$\partial_sA(s,s)=\partial_sP_2(s,s)+\varphi'(s)\varphi(s)
+=\partial_sP_2(s,s)+\tfrac12\tfrac{d}{ds}Q_2(s,s)=\partial_sP_2(s,s)+\partial_sQ_2(s,s)$
+by symmetry of $Q_2$, valid for $0<s<1$ where $\varphi>0$ is smooth.  The
+faces: $h(0)=0$, $\pi(0,t)=0$, $\pi(1,t)=t$.
+The Hessian entries and the face constant are Arb enclosures evaluated at
+the ball of $x^\ast$ (artifact \path{liu9-h2-twovar.json}).
+\end{proof}
+
+\begin{remark}[why the constants are exact objects]\label{rem:exact}
+Because $R\ge0$ (Theorem~\ref{thm:twovar}) is \emph{tight} at
+$(x^\ast,x^\ast)$ with a positive-definite Hessian, the inequality is a
+statement about the exact $(\beta^\ast,m^\ast)$: lowering $m$ makes
+$R(x^\ast,x^\ast)$ negative to first order in the perturbation, and moving
+$\beta$ at fixed $m$ leaves $R(x^\ast,x^\ast)=0$ (Lemma~\ref{lem:tight}) but
+destroys the stationarity, so $R$ becomes negative near $(x^\ast,x^\ast)$
+(to second order).  A
+first version of the artifact of Section~\ref{sec:lift} declared $100$-digit
+rational truncations of the constants to be ``the constants''; at those
+rationals Liu's minimiser has a \emph{certified negative} gap,
+$[-5.9548013684\times10^{-102}\pm10^{-112}]$ (witness W1b of
+\path{liu9-h2-general-lift.json}).  All sign claims in this paper are
+therefore evaluated at Arb balls that contain the exact constants, and the
+enclosures are how those constants are represented, never a licence to
+perturb them.
+\end{remark}
+
+\section{The reduction: identities in the algebra of pairings}\label{sec:reduction}
+
+Let $\mu,\nu$ be Borel probability measures on $[0,1]$, $q\in[0,1]$,
+$P=(1-q)\mu+q\nu$, $M=\pr{P}{x}=(1-q)M_0+qM_1$, and assume $M>0$ (if $M=0$
+then $P=\delta_0$ and $\gap=0$).  Let
+\[
+  I_{ab}=\pr{\cdot\otimes\cdot}{D_M}\ \ (a,b\in\{0,1\}),\qquad
+  c=\beta\pr{(\mu-\nu)\otimes(\mu-\nu)}{K}=\beta(K_{00}+K_{11}-2K_{01}),
+\]
+and $T=2I_{01}/M+c$.
+
+\begin{theorem}[reduction; \lbl{proved}, \lbl{machine-verified}]\label{thm:reduction}
+\leavevmode
+\begin{enumerate}[label=(C\arabic*),nosep]
+\item $\displaystyle \gap(\mu,\nu,q)=\frac{(1-q)^2I_{00}+q^2I_{11}}{M}+q(1-q)\,T$
+for every $q\in[0,1]$, with no constraint on $M$.
+\item[(C4)] $\displaystyle \frac{D_M}{M}-\frac{D_m}{m}=\frac{(t\,h(s)+s\,h(t))(M-m)}{2Mm}\ge0$
+pointwise whenever $M\ge m>0$.
+\item[(C5)] At $M=m$: $T_m:=c+2\pr{\mu\otimes\nu}{R}$.
+\item[(C6)] $T_m=\pr{\mu\otimes\mu}{B}+\pr{\nu\otimes\nu}{B}+2\pr{\mu\otimes\nu}{A}+(F_0-F_1)^2$.
+\end{enumerate}
+\cert{\path{liu9-h2-reduction.json}, sha256
+\hash{c63ae94e4fbd2397e19ea9e2a4e2c155f1e02265852d0aacad5c97d70f078e3a}
+(Arb, 480 bits: (C1) against Liu's audited Matlab transcription
+\path{uc/liu9_objective.py} on the nine-variable class, (C4)--(C6), and the
+two nine-variable statements (C2) $T=a^{\mathsf T}\mathsf M_Ta$ and (C3)
+$\Psi_M(s,t,s,t)=2D_M(s,t)/M$ used only in Remark~\ref{rem:refuted}; four
+mutations caught); independently re-derived in a different free-log basis
+with exact zero residuals and 4/4 mutations in \path{liu9-psi-reduction.json},
+sha256 \hash{9fb5766f1c3110cce9b231d2f2f1b7c1eec67bc3d6ac7602be50fc72b00c07a3};
+(C1), (C6) as sympy identities with $\beta,m$ free symbols in
+\path{liu9-h2-general-lift.json} (claims L1, L3).}
+\end{theorem}
+\begin{proof}
+(C1).  Expand both sides in the pairings.
+$\pr{P\otimes P}{h(xy)}=(1-q)^2E_{00}+2q(1-q)E_{01}+q^2E_{11}$ and
+$\pr{P}{h}=(1-q)H_0+qH_1$.  By the product rule,
+$\pr{\mu\otimes\nu}{t\,h(s)+s\,h(t)}=M_1H_0+M_0H_1$, so
+$I_{01}=M[(1-\beta)E_{01}+\beta K_{01}]-\tfrac12(M_1H_0+M_0H_1)$,
+$I_{00}=M[(1-\beta)E_{00}+\beta K_{00}]-M_0H_0$, and similarly $I_{11}$.
+On the right-hand side of (C1) the $E$-terms assemble to
+$(1-\beta)\pr{P\otimes P}{h(xy)}$; the $K$-terms are
+$\beta[(1-q)^2K_{00}+q^2K_{11}+2q(1-q)K_{01}]+q(1-q)\beta[K_{00}+K_{11}-2K_{01}]
+=\beta[(1-q)K_{00}+qK_{11}]$; and the $H$-terms are
+$-\frac1M[(1-q)H_0((1-q)M_0+qM_1)+qH_1(qM_1+(1-q)M_0)]=-(1-q)H_0-qH_1$.
+This is $\gap$.
+
+(C4) is immediate from \eqref{eq:DM}: the bracketed term cancels and
+$\tfrac12(t\,h(s)+s\,h(t))(\tfrac1m-\tfrac1M)\ge0$.
+
+(C5).  $2I_{01}/m=2\pr{\mu\otimes\nu}{D_m/m}=2\pr{\mu\otimes\nu}{R}$.
+
+(C6).  $c+2\pr{\mu\otimes\nu}{R}=\beta(K_{00}+K_{11})-2\beta K_{01}+2\pr{\mu\otimes\nu}{P_2}+2\beta K_{01}
+=\beta K_{00}+\beta K_{11}+2\pr{\mu\otimes\nu}{P_2}$.  On the other hand, by
+the product rule $\pr{\mu\otimes\mu}{\varphi\otimes\varphi}=F_0^2$ etc., so
+$\pr{\mu\otimes\mu}{B}+\pr{\nu\otimes\nu}{B}+2\pr{\mu\otimes\nu}{A}+(F_0-F_1)^2
+=\beta K_{00}-F_0^2+\beta K_{11}-F_1^2+2\pr{\mu\otimes\nu}{P_2}+2F_0F_1+(F_0-F_1)^2$,
+and the $F$-terms cancel.
+\end{proof}
+
+\begin{corollary}[\lbl{proved}]\label{cor:reduction}
+If $A\ge0$ and $B\ge0$ pointwise on $[0,1]^2$, then for all $\mu,\nu,q$ with
+$M\ge m$,
+\[
+  \gap(\mu,\nu,q)\;\ge\;(1-q)^2\pr{\mu\otimes\mu}{R}+q^2\pr{\nu\otimes\nu}{R}+q(1-q)T_m\;\ge\;0 .
+\]
+\end{corollary}
+\begin{proof}
+By (C1), $\gap=(1-q)^2\pr{\mu\otimes\mu}{D_M/M}+q^2\pr{\nu\otimes\nu}{D_M/M}
++q(1-q)[2\pr{\mu\otimes\nu}{D_M/M}+c]$.  Since $(1-q)^2,q^2,q(1-q)\ge0$ and
+the measures are positive, (C4) applied pointwise gives the first inequality
+(with (C5) for the last bracket).  $R=A+B\ge0$ handles the first two terms,
+and (C6) writes $T_m$ as a sum of pairings of $A$ and $B$ against positive
+product measures plus a square.
+\end{proof}
+
+\begin{remark}[what is false, and why the splitting is rank-one]\label{rem:refuted}
+On the nine-variable class, $T=a^{\mathsf T}\mathsf M_Ta$ with
+$(\mathsf M_T)_{ij}=P_2(x_i,y_j)+P_2(x_j,y_i)+Q_2(x_i,x_j)+Q_2(y_i,y_j)$ (claim C2
+of the reduction artifact), so what is needed is \emph{copositivity} of
+$\mathsf M_T$.  Entrywise nonnegativity is false: at $s=\tau=0$ every $Q_2$
+term vanishes and the entry reduces to $P_2(t,\sigma)$, with certified
+witness $P_2(\tfrac12,\tfrac12)\in[-0.055370810642371949\pm10^{-18}]$.
+Identity (C6) sidesteps copositivity: it is Diananda's decomposition of a
+copositive form into a nonnegative part ($A$ on cross pairs, $B$ on
+same-component pairs) plus a rank-one positive semidefinite part
+$(F_0-F_1)^2$, made explicit by the choice $\varphi(s)=\sqrt{Q_2(s,s)}$.  That
+choice saturates $B$ on the whole diagonal ($B(s,s)=0$) and is forced at the
+diagonal zeros of $R$, i.e.\ at $s\in\{0,x^\ast,1\}$ (the reduction artifact's
+\texttt{phi\_sharpness} block records slack elsewhere but no uniform
+rescaling that survives), which is why $B\ge0$ had to be proved through the
+parameter-free $\Phi$ (Section~\ref{sec:phi}).
+\end{remark}
+
+\section{\texorpdfstring{$R\ge0$ and $A\ge0$}{R>=0 and A>=0} on the unit square}\label{sec:twovar}
+
+\begin{theorem}[\lbl{proved} with \lbl{machine-verified} strata]\label{thm:twovar}
+At $(\beta^\ast,m^\ast)$, $R(s,t)\ge0$ and $A(s,t)\ge0$ for all
+$(s,t)\in[0,1]^2$.
+\cert{\path{liu9-h2-twovar.json}, sha256
+\hash{a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb},
+internal digest \hash{4ddbf0f38ca881dde204f086076424617edcdbe6a2826dfa945ef963ebdf70c6},
+module \path{uc/liu9_h2_twovar_lemmas.py} sha256
+\hash{2afe8e242aa5f506c6d54967a133fe246a7e5cb8bad4961b9860e93b86f67163};
+Arb at 400 bits; the artifact also certifies
+$\Lambda(s,t)=2P_2(s,t)+\beta h(\pi(s,s))+\beta h(\pi(t,t))\ge0$, which is not
+used here.}
+\end{theorem}
+
+The proof is stratified, because both functions have exact zeros: on the
+faces $\{s=0\}\cup\{t=0\}$, at the corner $(1,1)$, and at the interior point
+$(x^\ast,x^\ast)$ (Lemma~\ref{lem:tight}).  A function that touches zero cannot
+be certified positive by interval subdivision alone, so every zero is handled
+analytically and the certified cover runs only on the compact remainder.
+Let $F\in\{R,A\}$ and $c_0=1-\beta-\tfrac1{2m}$, $c_1=1-\tfrac1{2m}$; certified
+$c_0\in[0.08995657486712521478\pm10^{-20}]$ and
+$c_1\in[0.19000913473001832145\pm10^{-20}]$.
+
+\begin{lemma}[faces; \lbl{proved}]\label{lem:faces}
+$F(0,t)=F(s,0)=0$; $R(1,t)=R(t,1)=c_1h(t)\ge0$ and $A(1,t)=A(t,1)=c_0h(t)\ge0$.
+\end{lemma}
+\begin{proof}
+$h(0)=0$, $\pi(0,t)=0$ and $\varphi(0)=0$ give the zero faces.  $\pi(1,t)=t$
+and $h(1)=0$ give $R(1,t)=(1-\beta)h(t)+\beta h(t)-h(t)/(2m)$;
+$\varphi(1)=\sqrt{\beta h(\pi(1,1))}=\sqrt{\beta h(1)}=0$ gives
+$A(1,t)=P_2(1,t)=(1-\beta)h(t)-h(t)/(2m)$.
+\end{proof}
+
+\begin{lemma}[near-zero strip; \lbl{proved}]\label{lem:strip}
+For $0<u<1$, $u\log(1/u)\le h(u)\le u\log(1/u)+u$.  Consequently
+\[
+  F(s,t)\ \ge\ P_2(s,t)\ \ge\ st\Bigl[c_0\log\frac1{st}-\frac1m\Bigr]
+  \qquad(0<s,t\le1),
+\]
+and if $\min(s,t)\le\varepsilon=10^{-8}$ then
+$F(s,t)\ge st\,[c_0\log(1/\varepsilon)-1/m]\ge0$, the bracket being certified
+$\ge0.03707961590679940650$.
+\end{lemma}
+\begin{proof}
+The two-sided bound is $0\le-(1-u)\log(1-u)\le u$.  Both $Q_2=\beta K$ and
+$\varphi\otimes\varphi$ are nonnegative, so $F\ge P_2$.  Apply the lower bound
+to $h(st)$ and the upper bound to $h(s),h(t)$:
+$t\,h(s)+s\,h(t)\le st(\log\tfrac1{st}+2)$, whence
+$P_2\ge(1-\beta)st\log\tfrac1{st}-\tfrac{st}{2m}(\log\tfrac1{st}+2)$.
+If $\min(s,t)\le\varepsilon$ then $st\le\varepsilon$ and, as $c_0>0$,
+$c_0\log\frac1{st}\ge c_0\log\frac1\varepsilon$.
+\end{proof}
+
+\begin{lemma}[corner $(1,1)$; \lbl{proved}]\label{lem:corner}
+Let $a=1-s$, $b=1-t$, $u=a+b\in(0,2\delta]$.  Then, with $\mathcal
+A=a\log\tfrac1a+b\log\tfrac1b\le u(\log\tfrac1u+\log2)$,
+\[
+  R\ \ge\ u\Bigl[\bigl((1-\beta)(1-\tfrac\delta2)+\beta(1-\delta)-\tfrac1{2m}\bigr)\log\tfrac1u-\tfrac{\log2+1}{2m}\Bigr],
+  \qquad
+  A\ \ge\ u\Bigl[\bigl((1-\beta)(1-\tfrac\delta2)-\tfrac1{2m}\bigr)\log\tfrac1u-\tfrac{\log2+1}{2m}\Bigr].
+\]
+With $\delta=10^{-4}$ for $R$ and $\delta=10^{-8}$ for $A$ the brackets are
+certified $\ge0.24644229080956936883$ and $\ge0.22327437062436302916$
+respectively on $u\in(0,2\delta]$, so $F\ge0$ there; $u=0$ is the exact corner
+zero.
+\end{lemma}
+\begin{proof}
+$W:=1-st=u-ab$ and $V:=1-\pi(s,t)=W-ab\,st$ satisfy $ab\le u^2/4\le u\delta/2$,
+hence $u(1-\delta/2)\le W\le u$ and $u(1-\delta)\le V\le u$.  By the symmetry
+$h(z)=h(1-z)$ and the lower bound of Lemma~\ref{lem:strip},
+$h(st)=h(W)\ge W\log\tfrac1W\ge u(1-\tfrac\delta2)\log\tfrac1u$ and
+$K(s,t)=h(V)\ge u(1-\delta)\log\tfrac1u$.  The subtracted term is
+$t\,h(s)+s\,h(t)=(1-b)h(a)+(1-a)h(b)\le h(a)+h(b)\le\mathcal A+u$ by the upper
+bound of Lemma~\ref{lem:strip}, and $\mathcal A=u\log\tfrac1u+u\,H_e(a/u)\le
+u(\log\tfrac1u+\log2)$ with $H_e$ the binary entropy.  For $A$ drop
+$\varphi\otimes\varphi\ge0$ and use only the $h(st)$ term.
+\end{proof}
+
+\begin{lemma}[the interior zero; \lbl{proved}, constants \lbl{machine-verified}]\label{lem:local}
+Let $z^\ast=(x^\ast,x^\ast)$, let $r_0>0$, and suppose that on the box
+$\{z:|z-z^\ast|_\infty\le r_0\}$ all third partial derivatives of $F$ are
+bounded in absolute value by $T_3$, and that $\lambda_{\min}(\nabla^2F(z^\ast))\ge\lambda>0$.
+Then with $C_3=2\sqrt2\,T_3$ and $\rho=3\lambda/C_3$,
+$F(z^\ast+d)\ge\tfrac\lambda2|d|^2-\tfrac{C_3}6|d|^3\ge0$ for all $d$ with
+$|d|_2\le\rho$ and $|d|_\infty\le r_0$.  Certified data: for $R$,
+$r_0=0.03$, $\lambda=0.25681809294727316048$, $C_3\le28.567618523131339446$,
+$\rho\ge0.026969496187369588069$; for $A$, $r_0=0.025$, the same $\lambda$,
+$C_3\le32.259197768814229185$, $\rho\ge0.023883243605848030197$.  The squares
+$[x^\ast-w,x^\ast+w]^2$ with $w=9/500$ ($R$) and $w=2/125$ ($A$) satisfy
+$\sqrt2\,(w+\eta)\le\rho$ (hence also $w+\eta\le r_0$), where
+$\eta\le1.19\times10^{-69}$ is the distance from $x^\ast$ to the rational
+centre used by the cover; hence $F\ge0$ on those squares.
+\end{lemma}
+\begin{proof}
+$F(z^\ast)=0$ and $\nabla F(z^\ast)=0$ by Lemma~\ref{lem:tight} (exact algebra;
+the Arb enclosures of the value and of the gradient components, of radius
+below $5\times10^{-68}$ and $10^{-68}$ respectively, contain $0$ and serve as
+consistency checks).  Taylor's theorem with Lagrange remainder along the
+segment from $z^\ast$ to $z^\ast+d$ gives
+$F(z^\ast+d)=\tfrac12d^{\mathsf T}\nabla^2F(z^\ast)d+\tfrac16\sum_{ijk}F_{ijk}(\xi)d_id_jd_k$
+with $|\sum_{ijk}F_{ijk}(\xi)d_id_jd_k|\le T_3(|d_1|+|d_2|)^3\le2\sqrt2\,T_3|d|^3$.
+The quadratic form is $\ge\lambda|d|^2$, and
+$\tfrac\lambda2|d|^2-\tfrac{C_3}6|d|^3\ge0$ iff $|d|\le3\lambda/C_3$.
+$\lambda$ is bounded below by $\min(F_{ss}-|F_{st}|,F_{tt}-|F_{st}|)$ evaluated
+on the artifact's unrounded Hessian enclosures of $F$ (radius $\sim10^{-51}$;
+Lemma~\ref{lem:tight} prints them rounded, which would only give
+$\lambda\ge0.25681809294727316046$); $T_3$ is the upper endpoint of the Arb
+enclosure of the third partials over the box; $\varphi$ is smooth near
+$z^\ast$ because $K(s,s)>0$ for $0<s<1$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:twovar}]
+Lemma~\ref{lem:strip} covers $\{\min(s,t)\le\varepsilon\}$ (and the zero
+faces), Lemma~\ref{lem:corner} the corner square $\{a+b\le2\delta\}\supseteq
+[1-\delta,1]^2$, and Lemma~\ref{lem:local} the local square around
+$z^\ast$.  For each $F$ the remaining set, $[\varepsilon,1]^2$ minus the local
+and corner squares, is the union of $14$ exact rational rectangles (the
+$4\times4$ grid generated by the cut coordinates, minus the two removed
+cells).  On each rectangle a deterministic Arb branch-and-bound certifies
+$F>0$: a cell is accepted when one of three certified lower bounds is
+positive --- the analytic product bound of Lemma~\ref{lem:strip}, the lower
+endpoint of the direct Arb range of $F$ on the cell (with the range of $h$
+taken from endpoint values and $\log2$ exactly when the argument interval
+crosses $\tfrac12$), or the centred first-order bound
+$F(\mathrm{mid})-\sup|F_s|\,w_s-\sup|F_t|\,w_t$ with derivative enclosures over
+the whole cell --- and is bisected along its longer side otherwise.  The run
+terminates with every cell accepted: for $R$, $7{,}462$ cells processed,
+$3{,}738$ accepted, maximal depth $43$, worst certified lower bound at least
+$1.01\times10^{-18}$ (on a cell adjacent to the $\varepsilon$-strip); for $A$,
+$16{,}928$ processed, $8{,}471$ accepted, depth $48$.  Three (for $R$) and four
+(for $A$) mutations of the certificate --- dropping the local stratum,
+dropping the corner stratum, understating $C_3$ by a factor $16$, flipping the
+sign of the logarithmic term in Lemma~\ref{lem:strip} --- each make the run
+fail, as required.
+\end{proof}
+
+\section{\texorpdfstring{$\Phi\ge0$}{Phi>=0} on the unit square, hence \texorpdfstring{$B\ge0$}{B>=0}}\label{sec:phi}
+
+Write $\Lam(u)=h(u)/u=\log\tfrac1u+\mu(u)$ for $0<u\le1$, with
+$\mu(u)=-(1-u)\log(1-u)/u$, $\mu(0)=1$, $\mu(1)=0$; $\pi_d(x)=\pi(x,x)$;
+$g=\Lam\circ\pi_d$ and $\gamma=\log g$ on $(0,1)$; subscripts
+$\pi_{st}=\pi(s,t)$, $\Lam_{ss}=\Lam(\pi_{ss})$, etc.; $a=1-s$, $b=1-t$.
+Lemmas~\ref{lem:phi-L1} and \ref{lem:phi-L2} are statements on the open
+square $0<s,t<1$, where every $\pi$ argument lies in $(0,1]$ and $\Lam$ is
+finite; the closed square is handled by Lemma~\ref{lem:phi-L3}.
+
+\begin{lemma}[elementary facts; \lbl{proved}]\label{lem:phi-L0}
+\leavevmode
+\begin{enumerate}[label=(\alph*),nosep]
+\item $u\,h'(u)-h(u)=\log(1-u)$, hence $\Lam'(u)=\log(1-u)/u^2<0$ on $(0,1)$.
+\item $\pi_d'(x)=2x(2-3x+2x^2)>0$ on $(0,1]$ (discriminant $-7$) and
+$\pi_d''(x)=4(1-3x+3x^2)>0$ (discriminant $-3$): $\pi_d$ and $\pi_d'$ are increasing.
+\item $g$ and $\gamma$ are strictly decreasing on $(0,1)$, and
+$\gamma'(x)=\log(1-\pi_d(x))\,\pi_d'(x)/(\pi_d(x)\,h(\pi_d(x)))$.
+\item $\mu(u)=1-\sum_{k\ge2}u^{k-1}/(k(k-1))$ on $[0,1)$: $\mu$ is
+decreasing and concave, $0\le\mu\le1$, continuous on $[0,1]$.
+\item $\pi_{ss}\pi_{tt}-\pi_{st}^2=s^2t^2(s-t)^2$.
+\item $M_\mu:=\mu(\pi_{ss})+\mu(\pi_{tt})-2\mu(\pi_{st})\le0$.
+\item $\Lam\ge0$ on $(0,1]$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) $h'(u)=\log\frac{1-u}u$, so $uh'-h=u\log(1-u)-u\log u+u\log u+(1-u)\log(1-u)$.
+(b) is a direct computation.  (c) chain rule with (a), (b), and
+$\Lam(\pi_d)=h(\pi_d)/\pi_d$.  (d) $-(1-u)\log(1-u)=u-\sum_{k\ge2}u^k/(k(k-1))$
+from the series of $-\log(1-u)$; all coefficients after the constant are
+negative.  (e) $\pi_{ss}=s^2(1+a^2)$, $\pi_{tt}=t^2(1+b^2)$,
+$\pi_{st}=st(1+ab)$, and $(1+a^2)(1+b^2)-(1+ab)^2=(a-b)^2=(s-t)^2$.
+(f) by (e), $\pi_{st}\le\sqrt{\pi_{ss}\pi_{tt}}\le\tfrac12(\pi_{ss}+\pi_{tt})$;
+$\mu$ decreasing gives $\mu(\pi_{st})\ge\mu(\tfrac12(\pi_{ss}+\pi_{tt}))$ and
+concavity gives $\mu(\tfrac12(\pi_{ss}+\pi_{tt}))\ge\tfrac12(\mu(\pi_{ss})+\mu(\pi_{tt}))$.
+(g) $h\ge0$.
+\end{proof}
+
+\begin{lemma}[exact identity; \lbl{proved}]\label{lem:phi-L1}
+For $0<s,t<1$, with $\delta=(s-t)^2/(1+ab)^2$ (so $\pi_{ss}\pi_{tt}=\pi_{st}^2(1+\delta)$) and
+$\bar\Lam=\tfrac12(\Lam_{ss}+\Lam_{tt})$,
+\[
+  \Phi=\pi_{st}^2\Bigl[\tfrac14(\Lam_{ss}-\Lam_{tt})^2
+  +\tfrac12\bigl(\log(1+\delta)-M_\mu\bigr)(\Lam_{st}+\bar\Lam)\Bigr]
+  -s^2t^2(s-t)^2\Lam_{ss}\Lam_{tt},
+\]
+and therefore, since the middle term is nonnegative,
+\begin{equation}\label{eq:dagger}
+  \Phi\ \ge\ s^2t^2\Bigl[\tfrac14(1+ab)^2\bigl(g(s)-g(t)\bigr)^2-(s-t)^2g(s)g(t)\Bigr].
+\end{equation}
+\end{lemma}
+\begin{proof}
+$K=\pi\Lam(\pi)$, so $\Phi=\pi_{st}^2(\Lam_{st}^2-\Lam_{ss}\Lam_{tt})
+-(\pi_{ss}\pi_{tt}-\pi_{st}^2)\Lam_{ss}\Lam_{tt}$, and
+$\Lam_{st}^2-\Lam_{ss}\Lam_{tt}=\tfrac14(\Lam_{ss}-\Lam_{tt})^2+(\Lam_{st}-\bar\Lam)(\Lam_{st}+\bar\Lam)$.
+Since $\Lam=\log\frac1\cdot+\mu$,
+$2(\Lam_{st}-\bar\Lam)=\log\frac{\pi_{ss}\pi_{tt}}{\pi_{st}^2}-M_\mu=\log(1+\delta)-M_\mu$,
+and Lemma~\ref{lem:phi-L0}(e) gives $\pi_{ss}\pi_{tt}-\pi_{st}^2=s^2t^2(s-t)^2$
+and $\delta=s^2t^2(s-t)^2/\pi_{st}^2$.  The middle term is $\ge0$ by
+$\log(1+\delta)\ge0$, (f) and (g).  Dropping it and writing
+$\pi_{st}=st(1+ab)$, $\Lam_{ss}=g(s)$, $\Lam_{tt}=g(t)$ gives
+\eqref{eq:dagger}.
+\end{proof}
+
+\begin{lemma}[master condition; \lbl{proved}]\label{lem:phi-L2}
+For $0<s<t<1$ put $\kappa(s,t)=(1+ab)\,\dfrac{\gamma(s)-\gamma(t)}{t-s}>0$.  Then
+\[
+  \Phi(s,t)\ \ge\ s^2t^2(s-t)^2g(s)g(t)\Bigl(\frac{\kappa^2}4-1\Bigr);
+\]
+in particular $\kappa\ge2$ implies $\Phi\ge0$, and $\kappa\ge\tfrac94$ implies
+$\Phi\ge\tfrac{17}{64}s^2t^2(s-t)^2g(s)g(t)$.
+\end{lemma}
+\begin{proof}
+With $x=\tfrac12(\gamma(s)-\gamma(t))>0$, $g(s)-g(t)=e^{\gamma(s)}-e^{\gamma(t)}
+=2\sqrt{g(s)g(t)}\sinh x$, so the bracket in \eqref{eq:dagger} equals
+$(s-t)^2g(s)g(t)\bigl[((1+ab)\sinh x/(t-s))^2-1\bigr]$, and $\sinh x\ge x$
+gives $(1+ab)\sinh x/(t-s)\ge\kappa/2$.
+\end{proof}
+
+\begin{lemma}[boundary and symmetry; \lbl{proved}]\label{lem:phi-L3}
+$\Phi(s,s)=0$, $\Phi(0,t)=\Phi(s,0)=0$, $\Phi(s,1)=\Phi(1,s)=h(s)^2\ge0$, and
+$\Phi(s,t)=\Phi(t,s)$.  Hence $\Phi\ge0$ on $[0,1]^2$ follows from
+$\kappa\ge2$ on the open triangle $0<s<t<1$.
+\end{lemma}
+\begin{proof}
+$\pi(0,t)=0$, $\pi(s,1)=s$, $\pi(1,1)=1$ and $h(0)=h(1)=0$.
+\end{proof}
+
+\begin{lemma}[derivative bounds; \lbl{proved}]\label{lem:phi-L45}
+\leavevmode
+\begin{enumerate}[label=(N\arabic*),start=0,nosep]
+\item For $0<x\le x_0<e^{-(1+\log2)/2}$:
+$|\gamma'(x)|\ge\nu_0(x_0):=\dfrac{2-3x_0}{x_0\,(2\log(1/x_0)+1-\log2)}$.
+\item For $\tfrac34\le x_1\le x<1$, with $\ell_1=\log\frac1{1-\pi_d(x_1)}$:
+$|\gamma'(x)|\ge\nu_1(x_1):=\dfrac{\pi_d'(x_1)}{1-\pi_d(x_1)}\cdot\dfrac{\ell_1}{\ell_1+1}$.
+\end{enumerate}
+\begin{enumerate}[label=(L5),nosep]
+\item $N(x):=-\log(1-\pi_d(x))\,\pi_d'(x)$ is positive and strictly increasing
+on $(0,1)$, so for $[l,r]\subset(0,1)$:
+$\inf_{[l,r]}|\gamma'|\ge N(l)\big/\bigl(\pi_d(r)\max_{[\pi_d(l),\pi_d(r)]}h\bigr)$,
+where the maximum of $h$ over an interval is $\log2$ if the interval
+contains $\tfrac12$ and the larger endpoint value otherwise.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(N0) $-\log(1-\pi)\ge\pi$; $\pi_d'(x)\ge2x(2-3x_0)$ for $x\le x_0$;
+$h(\pi)\le\pi(\log\frac1\pi+1)$ (Lemma~\ref{lem:strip}); $\pi_d(x)\le2x^2$ and
+$u\mapsto u(\log\frac1u+1)$ is increasing on $(0,1)$, so
+$h(\pi_d(x))\le2x^2(2\log\frac1x-\log2+1)$; hence
+$|\gamma'(x)|\ge\pi_d'/h(\pi_d)\ge(2-3x_0)/(x(2\log\frac1x+1-\log2))$, and the
+denominator is increasing for $x<e^{-(1+\log2)/2}$ (its derivative is
+$2\log\frac1x-1-\log2$), so it is at most its value at $x_0$.
+(N1) $\pi_d\le1$ and $h(\pi)=h(1-\pi)\le(1-\pi)(\log\frac1{1-\pi}+1)$, so
+$|\gamma'|\ge\frac{\ell\,\pi_d'}{(1-\pi_d)(\ell+1)}$ with $\ell=\log\frac1{1-\pi_d}$;
+on $[\tfrac34,1]$ the factor $2-3x+2x^2$ increases (vertex at $\tfrac34$), so
+$\pi_d'\ge\pi_d'(x_1)$; $\ell/(\ell+1)$ increases in $\ell$, and $\ell$ and
+$1/(1-\pi_d)$ increase in $x$.
+(L5) $N$ is a product of positive increasing functions
+(Lemma~\ref{lem:phi-L0}(b)); $|\gamma'(\xi)|=N(\xi)/(\pi_d(\xi)h(\pi_d(\xi)))$ and
+$h$ increases on $[0,\tfrac12]$ and decreases after.
+\end{proof}
+
+\begin{theorem}[\lbl{proved} with a \lbl{machine-verified} finite cover]\label{thm:phi}
+$\Phi(s,t)\ge0$ on $[0,1]^2$; quantitatively,
+$\Phi\ge\tfrac{17}{64}s^2t^2(s-t)^2g(s)g(t)$ for $0<s,t<1$.
+\cert{\path{liu9-h2-boundary.json}, sha256
+\hash{e4d6d96df3ae435800cef5739fb1ae45b98febf539ab418df116ceb03bd481c9},
+internal digest \hash{389804b249cd8b16a47f3c6ab64a70ad4a9afe78097b4a8c6739759804c9eaaa},
+module \path{uc/liu9_h2_boundary_layer.py} sha256
+\hash{fcb3ed55e8bd9ad6d2f180f5ffa79f192dacc940a5c7506eca2a85aa612905e6}
+(Arb, 400 bits).  Independent constructive audit, own cover at
+$\theta=23/10$: \path{liu9-h2-phi-audit.json}, sha256
+\hash{f2359fa3b3b08bab29965253d777dcf32e4b1aee1e0bacbfb0924b86ac163996},
+internal digest \hash{a515102c1807849b606bf4a681bd0a67173445b1a22610d397bb779440222cab},
+module \path{uc/liu9_h2_phi_audit.py} sha256
+\hash{b1d9ed3d9da9e7c99c026843b683447809fb38d28dba4c49a087729bf66cb50c}.}
+\end{theorem}
+\begin{proof}
+By Lemmas~\ref{lem:phi-L2} and \ref{lem:phi-L3} it suffices to certify
+$\kappa\ge\theta:=\tfrac94$ on $0<s<t<1$.  For a rational cell
+$C=[s_1,s_2]\times[t_1,t_2]$ with $s_1<t_2$, every $(s,t)\in C$ with
+$0<s<t<1$ satisfies, by the mean value theorem and
+Lemma~\ref{lem:phi-L0}(c),
+\begin{itemize}[nosep]
+\item[(D)] $\kappa\ge(1+(1-s_2)(1-t_2))\cdot\inf_{\xi\in[s_1,t_2]\cap(0,1)}|\gamma'(\xi)|$,
+the infimum being bounded below by the minimum of $\nu_0(\min(t_2,x_0))$ on
+$(0,x_0]$, $\nu_1(\max(s_1,x_1))$ on $[x_1,1)$, and (L5) on the middle piece,
+whichever apply (with $x_0=\tfrac18$, $x_1=\tfrac78$);
+\item[(Q)] if $s_2<t_1$: $\kappa\ge(1+(1-s_2)(1-t_2))\,(\gamma(s_2)-\gamma(t_1))/(t_2-s_1)$.
+\end{itemize}
+Starting from the single cell $[0,1]^2$, a cell is accepted when the lower
+endpoint of the Arb enclosure of (D) or (Q) exceeds $\theta$, discarded
+when $s_1\ge t_2$ (it contains no point with $s<t$), and bisected along its
+longer side otherwise.  The run terminates: $30{,}974$ cells processed, $792$
+accepted by (D), $14{,}687$ by (Q), $17$ discarded, maximal depth $23$, minimum
+certified bound $[2.2500008364172621445\pm10^{-19}]>\theta$.  Five
+mutations are caught: raising $\theta$ to $12/5$ (above the true minimum of
+$\kappa$; witness $\kappa(\tfrac{27}{50},\tfrac{27}{50}+10^{-6})\in
+[2.3941933797780204\pm10^{-16}]<12/5$, so the cover cannot be
+tightened past the true minimum); dropping the factor $(1+ab)$ (witness
+$|\gamma'(\tfrac9{20})|\in[1.9105187072037912\pm10^{-16}]<2$, so the
+factor is load-bearing); the wrong protocol $s+t-st$; $\tfrac14$ replaced by
+$\tfrac12$ in Lemma~\ref{lem:phi-L1}; and (N0) applied at $x_0=\tfrac12$
+beyond its validity.  The audit artifact re-derives Lemma~\ref{lem:phi-L1}
+in its own basis (residuals at most $9.4\times10^{-120}$ in Arb and
+$1.3\times10^{-101}$ in $100$-digit mpmath at $22$ points down to $2^{-40}$
+from the edges and the diagonal), builds an independent cover at
+$\theta=23/10$ from a $16\times16$ grid with its own strip lemmas at
+$\tfrac1{16}$ and $\tfrac{15}{16}$ ($88{,}390$ cells, depth $17$, accepted
+area $2151/4096$ plus discarded $1945/4096$ equal to $1$ exactly, minimum
+certified bound $\ge2.30000075$), reproduces both witnesses, and catches
+$6/6$ of its own mutations.
+\end{proof}
+
+\begin{remark}
+$\kappa$ diverges to $+\infty$ at every boundary point of the square
+(Lemma~\ref{lem:phi-L45}), so the singularity of $h'$ at entropy arguments
+$0$ and $1$ --- which defeats direct interval subdivision of $\Phi$ near the
+edges --- never enters: the endpoint strips are the easy part of the cover.
+The numerical minimum of $\kappa$ is $\approx2.394$ at $s=t\approx0.54$
+(\lbl{computational-evidence}), a uniform margin of $20\%$ over the
+threshold $2$.
+\end{remark}
+
+\begin{corollary}[$B\ge0$; \lbl{proved}]\label{cor:B}
+For every $\beta>0$, $B=\beta\bigl(K_{st}-\sqrt{K_{ss}K_{tt}}\bigr)\ge0$ on $[0,1]^2$.
+\end{corollary}
+\begin{proof}
+$\Phi=(K_{st}-\sqrt{K_{ss}K_{tt}})(K_{st}+\sqrt{K_{ss}K_{tt}})$ with $K\ge0$.
+If the second factor is positive, $B=\beta\Phi/(K_{st}+\sqrt{K_{ss}K_{tt}})\ge0$;
+if it vanishes then $K_{st}=0=K_{ss}K_{tt}$ and $B=0$.
+\end{proof}
+
+\section{Hypothesis 2 for all Borel probability measures}\label{sec:lift}
+
+\begin{theorem}[\lbl{proved}, conditional only on the cited artifacts]\label{thm:lift}
+Theorem~\ref{thm:B} holds: for all Borel probability measures $\mu,\nu$ on
+$[0,1]$ and all $q\in[0,1]$, $\gap(\mu,\nu,q)\ge\frac{M-m^\ast}{m^\ast}\pr{P}{h}$,
+and in particular $\gap\ge0$ when $M\ge m^\ast$.
+\cert{\path{liu9-h2-general-lift.json}, sha256
+\hash{eb4874d39904593bddc3f2ae638d1bad6756a19d4ebf6e06a60427b6bb7ac1ce},
+internal digest \hash{3ff1e797cd5dbcc4273d9f002b9e540b58829d237b2d344f266e0bea46c02bc8},
+module \path{uc/liu9_h2_general_lift.py} sha256
+\hash{b265e726d110098a09c00de331c4433454973ba741966b3018b77afcc225b5c3}
+(Arb 400 bits and sympy; seven mutations caught; pins the artifacts of
+Sections~\ref{sec:reduction}--\ref{sec:phi} by hash and claim status and
+checks that they use the same definitions of the constants).}
+\end{theorem}
+\begin{proof}
+The statement with $\gap\ge0$ for $M\ge m^\ast$ is Corollary~\ref{cor:reduction}
+with Theorem~\ref{thm:twovar} ($A\ge0$, $R\ge0$) and Corollary~\ref{cor:B}
+($B\ge0$).  The quantitative form follows from Theorem~\ref{thm:mixture}
+below (the two-component case), or directly: by (C4),
+$\gap-\frac{M-m}{m}\pr{P}{h}$ equals the expression obtained from
+\eqref{eq:DM} with $M$ replaced by $m$ in the bracket, i.e.\ the right-hand
+side of Corollary~\ref{cor:reduction}, which is $\ge0$.
+Lemma~\ref{lem:L0} guarantees that all pairings are finite and that
+integrating a pointwise inequality between continuous kernels against a
+positive product measure preserves it; no density or continuity argument in
+the measures is needed, so the fact that $h$ is not Lipschitz at $0,1$ is
+irrelevant.
+\end{proof}
+
+\begin{remark}[Liu's nine-parameter form; product coupling; witnesses]
+Liu's (81)--(84) is $\gap\ge0$ restricted to
+$\mu=\sum_{i=1}^3a_i\delta_{x_i}$, $\nu=\sum_{i=1}^3a_i\delta_{y_i}$ (shared
+masses) with $M\ge1-c$; Hypothesis~2 at $c=c'$ is the statement that the
+minimum of the ratio $\num/\pr{P}{h}$ over this class is $\ge1$, and
+Theorem~\ref{thm:lift} gives ratio $\ge M/m^\ast\ge1$ for every $\mu,\nu$ with
+$\pr{P}{h}>0$ (when $\pr{P}{h}=0$, i.e.\ $P$ is supported on $\{0,1\}$, the
+numerator vanishes too and the cross-multiplied inequality reads $0\ge0$).
+Conversely, any finitely supported pair $\mu=\sum_ia_i\delta_{x_i}$,
+$\nu=\sum_jb_j\delta_{y_j}$ is the paired configuration with shared masses
+$g_{ij}=a_ib_j$ and supports $(x_i,y_j)$, because $\gap$ depends on the
+configuration only through its marginals (a polynomial identity in the
+masses, checked by sympy at seven sizes in the artifact).  The artifact
+records four witnesses at the exact balls: W1a, $\gap=0$ at Liu's minimiser
+(equality by the algebra of Lemma~\ref{lem:tight}: $D_{m^\ast}(0,\cdot)=0$
+and $D_{m^\ast}(x^\ast,x^\ast)=m^\ast h(x^{\ast2})-x^\ast h(x^\ast)=0$); W1b,
+the certified negative gap at the truncated constants of
+Remark~\ref{rem:exact}; and W2, W3, certified negative gaps
+($\gap\le-0.1249$ at $\mu=\nu=\delta_{1/2}$ and $\gap\le-0.1344$ at a
+two-atom/one-atom pair with mean $43/90$) showing that the mean constraint
+$M\ge m^\ast$ is load-bearing.  A sample of $100$ certified mean-feasible
+random pairs (minimum certified gap $\ge0.0058665$) is recorded as
+\lbl{computational-evidence} only.
+\end{remark}
+
+\section{The mixture theorem}\label{sec:mixture}
+
+\begin{theorem}[\lbl{proved}, identities \lbl{machine-verified}]\label{thm:mixture}
+Let $\Gamma=\int\nu_u\otimes\nu_u\,dP(u)$ be a conditionally i.i.d.\ coupling
+of $\mu=\int\nu_u\,dP(u)$, and let $M=\pr{\mu}{x}$.  At $(\beta^\ast,m^\ast)$,
+\begin{multline*}
+  \num(\Gamma)-\pr{\mu}{h}
+  \;=\;\iint\pr{\nu_u\otimes\nu_v}{A}\,dP(u)\,dP(v)
+  +\int\pr{\nu_u\otimes\nu_u}{B}\,dP(u)\\
+  +\Var_P\bigl(\pr{\nu_U}{\varphi}\bigr)
+  +\frac{M-m^\ast}{m^\ast}\pr{\mu}{h},
+\end{multline*}
+and consequently $\num(\Gamma)\ge\frac{M}{m^\ast}\pr{\mu}{h}$.
+\cert{\path{liu9-h2-mixture-theorem.json}, sha256
+\hash{329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3},
+internal digest \hash{b108b781224dff601ffcf3f562703d3b620e7da6d89cf6d000b6ccbd06a4773b},
+module \path{uc/liu9_h2_mixture_theorem.py} sha256
+\hash{3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab}:
+the identities (I)--(III) below as exact rational-function identities in the
+free pairing algebra for $2,3,4$ components with symbolic weights (sympy
+residual $0$), in Arb to $10^{-100}$ at $60$ random mixtures with up to $6$
+components and up to $4$ atoms each (atoms at $0$ and $1$ included), agreement
+with Liu's audited transcription at two components to $10^{-100}$, six
+mutations caught.}
+\end{theorem}
+\begin{proof}
+Write $K_{uv}=\pr{\nu_u\otimes\nu_v}{K}$, $P_{uv}=\pr{\nu_u\otimes\nu_v}{P_2}$,
+$F_u=\pr{\nu_u}{\varphi}$, $H=\pr{\mu}{h}$.  All integrands below are bounded
+and measurable ($u\mapsto\nu_u$ is a Markov kernel and every kernel is
+bounded continuous, Lemma~\ref{lem:L0}), so Fubini applies, and by
+bilinearity $\pr{\mu\otimes\mu}{k}=\iint\pr{\nu_u\otimes\nu_v}{k}\,dP\,dP$ for
+every kernel $k$.  Three identities:
+\begin{align*}
+\text{(I)}\quad&\int K_{uu}\,dP-\iint K_{uv}\,dP\,dP=\tfrac12\iint(K_{uu}+K_{vv}-2K_{uv})\,dP\,dP,\\
+\text{(II)}\quad&\pr{\mu\otimes\mu}{(1-\beta)h(xy)+\beta K}-H=\pr{\mu\otimes\mu}{R}+\tfrac{M-m}{m}H,\\
+\text{(III)}\quad&\pr{\mu\otimes\mu}{R}+\tfrac\beta2\iint(K_{uu}+K_{vv}-2K_{uv})\,dP\,dP\\
+&\qquad=\iint\pr{\nu_u\otimes\nu_v}{A}\,dP\,dP+\int\pr{\nu_u\otimes\nu_u}{B}\,dP+\Var_P(F_U).
+\end{align*}
+(I) uses only $\int dP=1$.  (II): $R=(1-\beta)h(xy)+\beta K-\frac{y\,h(x)+x\,h(y)}{2m}$
+and, by the product rule, $\pr{\mu\otimes\mu}{y\,h(x)+x\,h(y)}=2MH$.
+(III): the left side is $\iint(P_{uv}+\beta K_{uv})\,dP\,dP+\beta\int K_{uu}\,dP
+-\beta\iint K_{uv}\,dP\,dP=\iint P_{uv}\,dP\,dP+\beta\int K_{uu}\,dP$; the right
+side is $\iint P_{uv}\,dP\,dP+(\int F_u\,dP)^2+\beta\int K_{uu}\,dP-\int F_u^2\,dP
++\int F_u^2\,dP-(\int F_u\,dP)^2$, by the product rule for
+$\varphi\otimes\varphi$.  Now
+$\num(\Gamma)-H=\pr{\mu\otimes\mu}{(1-\beta)h(xy)+\beta K}-H+\beta\bigl[\int K_{uu}dP-\iint K_{uv}dPdP\bigr]$,
+and (I), (II), (III) in turn give the displayed identity.  The first two
+terms are $\ge0$ by Theorem~\ref{thm:twovar} and Corollary~\ref{cor:B}
+integrated against positive product measures, and the third is a variance.
+$R\ge0$ is not used.
+\end{proof}
+
+\begin{remark}[two components; the paired chain]
+For $P=(1-q)\delta_0+q\delta_1$, $\nu_0=\mu$, $\nu_1=\nu$, the variance is
+$q(1-q)(F_0-F_1)^2$ and the channel $\frac\beta2\iint(\cdots)$ is
+$q(1-q)\,c$; the displayed identity is then (C1)+(C4)+(C6) of
+Theorem~\ref{thm:reduction}, and Theorem~\ref{thm:lift} is the special case.
+\end{remark}
+
+\begin{lemma}[sharpness; \lbl{proved}]\label{lem:sharp}
+For $\mu_w=(1-w)\delta_0+w\delta_{x^\ast}$, $0\le w\le1$, and the one-component
+coupling $\Gamma=\mu_w\otimes\mu_w$: $\num(\Gamma)=\frac{M}{m^\ast}\pr{\mu_w}{h}$
+exactly.  Laws supported on $\{0,1\}$ give $\num=\pr{\mu}{h}=0$.  Hence the
+constant $M/m^\ast$ in Theorem~\ref{thm:mixture} is attained at every mean
+$M\in[0,x^\ast]$, and $c'=1-m^\ast$ is the largest constant obtainable from
+this two-protocol inequality at $\beta^\ast$.
+\end{lemma}
+\begin{proof}
+Cross terms vanish because $h(0\cdot x)=0$ and $K(0,x)=h(0)=0$, so
+$\num=w^2\bigl[(1-\beta)h(x^{\ast2})+\beta K(x^\ast,x^\ast)\bigr]=w^2h(x^{\ast2})$
+by Lemma~\ref{lem:constants}(b).  Also $\pr{\mu_w}{h}=w\,h(x^\ast)$ and
+$M=wx^\ast$, so $\frac{M}{m^\ast}\pr{\mu_w}{h}=w^2\frac{x^\ast h(x^\ast)}{m^\ast}=w^2h(x^{\ast2})$.
+For laws on $\{0,1\}$ every entropy vanishes.  Arb enclosures of the
+residual at the exact balls contain $0$ at $w=\tfrac3{10},\tfrac12,\tfrac9{10},1$.
+\end{proof}
+
+\begin{remark}
+Liu's minimiser is $w=p^\ast$ ($M=m^\ast$); Lemma~\ref{lem:sharp} shows the
+equality is not a property of that single point but of the ray through
+$\delta_{x^\ast}$.  The artifact also certifies a five-component mixture with
+$M>m^\ast$ whose ratio exceeds $M/m^\ast$ strictly, and, by
+Remark~\ref{rem:exact}, that at the $100$-digit truncations the bound is
+false at $w=p^\ast$ (certified $-5.95\times10^{-102}$).
+\end{remark}
+
+\section{From union-closed families to the constant}\label{sec:prop3}
+
+This section re-derives Liu's Proposition~3 from his Definition~1 and
+Example~5 so that the dependence on his paper is limited to definitions.
+Every step is elementary; it is labelled \lbl{proved} (human argument,
+re-derived independently by two readers, cf.\ Section~\ref{sec:verification}).
+Entropies may be taken in any base: the accounting below is base-free, and
+the inequality of Theorem~\ref{thm:mixture} is homogeneous in the base.
+
+\paragraph{Setting.}
+Identify subsets of $E=\{1,\dots,n\}$ with $0/1$ vectors and let
+$X^n=(X_1,\dots,X_n)$ be uniform on $\mathcal F$, so $H(X^n)=\log|\mathcal F|$.
+For $i\ge1$ and a past $x^{i-1}$ of positive probability write
+$\sigma_i(x^{i-1})=\Prob(X_i=1\mid X^{i-1}=x^{i-1})$.
+
+\begin{definition}[protocol; Liu, Definition~1]
+A protocol $\Pi$ assigns to each $(s,t)\in[0,1]^2$ a law $\Pi_{s,t}$ on
+$\{0,1\}^2$ with marginal means $s$ and $t$.  Given $\Pi$, generate
+$(\tilde X^n,\tilde Y^n)$ sequentially: at step $i$, with
+$S_i=\sigma_i(\tilde X^{i-1})$ and $T_i=\sigma_i(\tilde Y^{i-1})$, draw
+$(\tilde X_i,\tilde Y_i)\sim\Pi_{S_i,T_i}$ using randomness independent of
+everything before.
+\end{definition}
+
+\begin{lemma}[\lbl{proved}]\label{lem:protocol}
+For every protocol: (i) $\tilde X^n\sim X^n$ and $\tilde Y^n\sim X^n$, and only
+pasts of positive probability are visited; (ii) the law of $S_i$ is the law
+$\mu_i$ of $\sigma_i(X^{i-1})$, with $\E S_i=\Prob(X_i=1)$; (iii)
+\[
+  H(\tilde X^n\vee\tilde Y^n)\ \ge\ \sum_{i=1}^n\E\bigl[h\bigl(\Pi_{S_i,T_i}(0,0)\bigr)\bigr],
+  \qquad H(X^n)=\sum_{i=1}^n\E\bigl[h(S_i)\bigr],
+\]
+where $\vee$ is the coordinatewise maximum; and (iv) if $\mathcal F$ is
+union-closed then $H(\tilde X^n\vee\tilde Y^n)\le H(X^n)$.
+\end{lemma}
+\begin{proof}
+(i) $\Prob(\tilde X_i=1\mid\tilde X^{i-1},\tilde Y^{i-1})=S_i=\sigma_i(\tilde X^{i-1})$
+by the marginal condition, so by induction on $i$ the law of $\tilde X^i$ is
+that of $X^i$; likewise for $\tilde Y$.  (ii) follows from (i), and
+$\E S_i=\E\,\Prob(X_i=1\mid X^{i-1})=\Prob(X_i=1)$.  (iii) By the chain rule and
+because $(\tilde X\vee\tilde Y)^{i-1}$ is a function of
+$(\tilde X^{i-1},\tilde Y^{i-1})$,
+$H(\tilde X^n\vee\tilde Y^n)=\sum_iH\bigl((\tilde X\vee\tilde Y)_i\mid(\tilde X\vee\tilde Y)^{i-1}\bigr)
+\ge\sum_iH\bigl((\tilde X\vee\tilde Y)_i\mid\tilde X^{i-1},\tilde Y^{i-1}\bigr)$;
+conditionally on the pasts, $(\tilde X_i,\tilde Y_i)\sim\Pi_{S_i,T_i}$, so
+$(\tilde X\vee\tilde Y)_i$ is Bernoulli with
+$\Prob(=0\mid\text{pasts})=\Pi_{S_i,T_i}(0,0)$ and the conditional entropy is
+$\E[h(\Pi_{S_i,T_i}(0,0))]$, using $h(u)=h(1-u)$.  The second formula is the
+chain rule for $X^n$ with (ii).  (iv) $\tilde X^n\vee\tilde Y^n$ is the
+indicator of the union of two members of $\mathcal F$, hence takes values in
+$\mathcal F$, and the uniform law maximises entropy on a given support.
+\end{proof}
+
+\paragraph{The two protocols.}
+\begin{enumerate}[label=(\roman*),nosep]
+\item Gilmer's protocol $\Pi^{(1)}_{s,t}=\mathrm{Ber}(s)\otimes\mathrm{Ber}(t)$,
+$\Pi^{(1)}_{s,t}(0,0)=(1-s)(1-t)$.  The two coordinates use independent
+randomness at every step, so $\tilde X^{i-1}$ and $\tilde Y^{i-1}$ are
+independent and $(S_i,T_i)\sim\mu_i\otimes\mu_i$.
+\item Liu's Example~5 with $f(x)=x(1-x)$.  Let $U$ be uniform on $[0,1]$ and
+$\sigma(U)=+1$ if $U>\tfrac12$, $-1$ otherwise.  Given $(s,t)$ and $U$, set
+$\tilde X=0$ with probability $(1-s)+f(1-s)\sigma(U)=(1-s)(1+s\sigma(U))$
+using $\tilde X$'s local randomness, and $\tilde Y=0$ with probability
+$(1-t)(1+t\sigma(U))$ using $\tilde Y$'s local randomness and the same $U$.
+These are probabilities ($0\le(1-s)(1\pm s)\le1$), the means are $s$ and $t$
+($\E\sigma(U)=0$), and
+\[
+  \Pi^{(2)}_{s,t}(0,0)=\E\bigl[(1-s)(1+s\sigma)(1-t)(1+t\sigma)\bigr]
+  =(1-s)(1-t)(1+st)=\pi(1-s,1-t),
+\]
+since $\E\sigma=0$ and $\sigma^2=1$.  In the sequential construction a fresh
+$U_i$ is drawn at step $i$ and shared by the two coordinates.  Each
+$\tilde X_j$ is the same measurable function $G_j$ of
+$(\tilde X^{j-1},U_j,\xi_j)$ as $\tilde Y_j$ is of $(\tilde Y^{j-1},U_j,\eta_j)$,
+where $(\xi_j)$, $(\eta_j)$ are the local randomness and $(\xi_j)$, $(\eta_j)$,
+$(U_j)$ are independent.  Hence, conditionally on $U^{i-1}$, $\tilde X^{i-1}$
+and $\tilde Y^{i-1}$ are i.i.d., and so are $S_i=\sigma_i(\tilde X^{i-1})$ and
+$T_i=\sigma_i(\tilde Y^{i-1})$: the law of $(S_i,T_i)$ is
+$\Gamma_i=\int\nu_u\otimes\nu_u\,dP_{U^{i-1}}(u)$, with $\nu_u$ the regular
+conditional law of $S_i$ given $U^{i-1}=u$ and barycentre $\mu_i$.  This is
+Liu's observation after his Example~5.
+\end{enumerate}
+
+\begin{theorem}[\lbl{proved}]\label{thm:uc}
+Theorem~\ref{thm:C} holds.
+\end{theorem}
+\begin{proof}
+If $|\mathcal F|=1$ then $\mathcal F=\{A\}$ with $A\neq\emptyset$ and every
+element of $A$ has frequency $1$.  Let $|\mathcal F|\ge2$, so
+$H(X^n)>0$.  Fix $c<c'$ and suppose, for contradiction, that
+$\Prob(X_i=1)<c$ for every $i$.  Let $\bar\mu_i$, $\bar\Gamma_i$, $\bar\nu_u$
+denote the images of $\mu_i$, $\Gamma_i$, $\nu_u$ under $s\mapsto1-s$; then
+$\bar\Gamma_i=\int\bar\nu_u\otimes\bar\nu_u\,dP_{U^{i-1}}$ is a conditionally
+i.i.d.\ coupling of $\bar\mu_i$, whose mean is
+$M_i=\E[1-S_i]=1-\Prob(X_i=1)>1-c$, and $\pr{\bar\mu_i}{h}=\E[h(S_i)]$ by
+the symmetry of $h$.  By Lemma~\ref{lem:protocol}(iii) for the two protocols,
+\begin{align*}
+&(1-\beta^\ast)\,H(\tilde X^{(1)n}\vee\tilde Y^{(1)n})+\beta^\ast H(\tilde X^{(2)n}\vee\tilde Y^{(2)n})\\
+&\qquad\ge\sum_i\Bigl[(1-\beta^\ast)\pr{\bar\mu_i\otimes\bar\mu_i}{h(xy)}
++\beta^\ast\!\int\!\pr{\bar\nu_u\otimes\bar\nu_u}{K}\,dP_{U^{i-1}}\Bigr]
+=\sum_i\num(\bar\Gamma_i)\\
+&\qquad\ge\sum_i\frac{M_i}{m^\ast}\,\E[h(S_i)]
+\ \ge\ \frac{1-c}{m^\ast}\sum_i\E[h(S_i)]=\frac{1-c}{m^\ast}\,H(X^n),
+\end{align*}
+by Theorem~\ref{thm:mixture} for each $i$ and $\E[h(S_i)]\ge0$.  By
+Lemma~\ref{lem:protocol}(iv) the left side is at most
+$(1-\beta^\ast)H(X^n)+\beta^\ast H(X^n)=H(X^n)$.  Since $H(X^n)>0$ this forces
+$(1-c)/m^\ast\le1$, i.e.\ $c\ge1-m^\ast=c'$, contradicting $c<c'$.  Hence for
+every $c<c'$ some $i$ has $\Prob(X_i=1)\ge c$; as the $n$ frequencies are
+fixed numbers, $\max_i\Prob(X_i=1)\ge c'$, i.e.\ some $i\in E$ lies in at
+least $c'|\mathcal F|$ members.
+\end{proof}
+
+\begin{remark}[on Liu's argument, and what is not used]
+Liu's Proposition~3 asks, for every $c<c'$, for a constant $C>1$ in
+$\sum_kw_k\inf_{P_{ST}\in\mathcal C_k(\mu)}\E[h(\Pi^{(k)}_{S,T}(0,0))]\ge C\,\E[h(S)]$
+over all laws $\mu$ with mean $\le c$; Theorem~\ref{thm:mixture} gives it with
+the explicit $C=(1-c)/m^\ast$, which exceeds $1$ precisely when $c<c'$, so no
+limiting or separate strictness argument is needed.  The
+couplings that actually occur are the mixtures $\bar\Gamma_i$, so
+Theorem~\ref{thm:mixture} is applied to them directly; Liu's
+Theorem~9 (reduction to two-point mixing laws), Lemma~11 (the
+positive-semidefiniteness of Section V-A, ``Hypothesis~1'') and Theorem~12 (the
+Krein--Milman reduction to three shared-mass atoms) are not invoked, and
+neither is the weak closure $\mathcal C_3(\mu)$.  Section~V-B's assertion that
+the nine-parameter optimum is $\ge1$ is replaced by Theorem~\ref{thm:lift}.
+Laws supported on $\{0,1\}$ (his Lemma~7) need no separate treatment: they
+contribute $0\ge0$.
+\end{remark}
+
+\section{The value of \texorpdfstring{$c'$}{c'}}\label{sec:value}
+
+\begin{theorem}[\lbl{machine-verified}]\label{thm:value}
+\[
+  c'=1-m^\ast\in\bigl[0.382709087918735029930312902098972611626381433\pm4.95\times10^{-46}\bigr];
+\]
+in particular $c'>0.38270908791873$.
+\cert{\path{liu9-h2-mixture-theorem.json} and \path{liu9-h2-general-lift.json}
+(Table~\ref{tab:artifacts}), \texttt{constants.exact\_balls\_45\_digits}.}
+\end{theorem}
+
+The enclosure is propagated in Arb from the certified rational bracket of
+$x^\ast$ (Lemma~\ref{lem:constants}) through the closed forms of
+Definition~\ref{def:constants}, in the artifacts of Sections~\ref{sec:lift}
+and \ref{sec:mixture}, and agrees with the independent $100$-digit solver
+\path{uc/liu9_binding.py} (difference enclosures containing $0$).  It exceeds
+$c^\ast\approx0.3823455$ of \cite{Yu23,Cam22} by $3.6\times10^{-4}$.
+
+Liu's printed values (91)--(94) read $p^\ast\approx0.893604513905457$,
+$x^\ast\approx0.690787593924988$, $c'\approx0.382709087918741$,
+$\beta^\ast\approx0.100052559862974$.  Of these, (92) agrees with the
+certified enclosure to all printed digits, while for (91), (93) and (94)
+the printed-minus-certified differences are approximately
+$-8.4\times10^{-15}$, $+6.0\times10^{-15}$ and $+8.1\times10^{-14}$
+respectively, i.e.\ they are wrong in their last two digits (last three for
+$\beta^\ast$); the correct $15$-digit roundings are
+$p^\ast\approx0.893604513905465$, $c'\approx0.382709087918735$,
+$\beta^\ast\approx0.100052559862893$.  The constants are defined by the
+same equations (87)--(90), so the discrepancy is in the printed decimals
+only and does not affect any statement above.
+
+\section{Verification: artifacts, replay, labels, scope}\label{sec:verification}
+
+\paragraph{Artifacts.}
+Table~\ref{tab:artifacts} lists the seven machine-checked artifacts, all
+under \path{math/uc/verification/results/}, produced by the modules under
+\path{math/uc/}.  Each artifact is a JSON document with a
+\texttt{claim\_status}, an internal digest \texttt{report\_sha256} (the SHA-256
+of the canonical compact serialisation of the document with that field
+omitted or blanked, in the module's declared scope), and, where the module
+records it, the SHA-256 of the module source that produced it.  The
+artifacts of Sections~\ref{sec:lift} and \ref{sec:mixture} pin the file
+hashes and claim statuses of the artifacts they depend on and fail if they
+change; the audit artifact pins the certificate it audits.
+
+\begin{table}[p]
+\centering\scriptsize
+\begin{tabular}{@{}ll@{}}
+\toprule
+artifact (module) & claim; status\\
+\midrule
+\path{liu9-h2-reduction.json} (\path{liu9_h2_reduction.py}) & (C1)--(C6), Theorem~\ref{thm:reduction}; \texttt{REDUCTION-CERTIFIED}\\
+\multicolumn{2}{@{}l@{}}{\quad file \texttt{c63ae94e4fbd2397e19ea9e2a4e2c155f1e02265852d0aacad5c97d70f078e3a}}\\
+\multicolumn{2}{@{}l@{}}{\quad internal \texttt{c40d27be152217bd0d862bf54c4a957ab7bcad22e6b2f7747cf7462e9bc7a397}}\\
+\multicolumn{2}{@{}l@{}}{\quad module \texttt{99840c239eb60c3db3a1093827f3c9849c5d010debec70eb13661a87e0418fe0}}\\
+\addlinespace
+\path{liu9-psi-reduction.json} (\path{liu9_psi_reduction_audit.py}) & independent re-derivation of the chain; \texttt{PROVED}\\
+\multicolumn{2}{@{}l@{}}{\quad file \texttt{9fb5766f1c3110cce9b231d2f2f1b7c1eec67bc3d6ac7602be50fc72b00c07a3}}\\
+\multicolumn{2}{@{}l@{}}{\quad internal \texttt{405eea478f2146fde762f749dd4a8f6986be79f0be47f56cb2cc24daf64b2af0}}\\
+\multicolumn{2}{@{}l@{}}{\quad module \texttt{18602dc7c8599ab6752583535ed5809df571deb8d8851e4accb4d07362e927bb}}\\
+\addlinespace
+\path{liu9-h2-twovar.json} (\path{liu9_h2_twovar_lemmas.py}) & $R\ge0$, $A\ge0$, Theorem~\ref{thm:twovar}; \texttt{CERTIFIED\_PROVED}\\
+\multicolumn{2}{@{}l@{}}{\quad file \texttt{a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb}}\\
+\multicolumn{2}{@{}l@{}}{\quad internal \texttt{4ddbf0f38ca881dde204f086076424617edcdbe6a2826dfa945ef963ebdf70c6}}\\
+\multicolumn{2}{@{}l@{}}{\quad module \texttt{2afe8e242aa5f506c6d54967a133fe246a7e5cb8bad4961b9860e93b86f67163}}\\
+\addlinespace
+\path{liu9-h2-boundary.json} (\path{liu9_h2_boundary_layer.py}) & $\Phi\ge0$, Theorem~\ref{thm:phi}; \texttt{PROVED}\\
+\multicolumn{2}{@{}l@{}}{\quad file \texttt{e4d6d96df3ae435800cef5739fb1ae45b98febf539ab418df116ceb03bd481c9}}\\
+\multicolumn{2}{@{}l@{}}{\quad internal \texttt{389804b249cd8b16a47f3c6ab64a70ad4a9afe78097b4a8c6739759804c9eaaa}}\\
+\multicolumn{2}{@{}l@{}}{\quad module \texttt{fcb3ed55e8bd9ad6d2f180f5ffa79f192dacc940a5c7506eca2a85aa612905e6}}\\
+\addlinespace
+\path{liu9-h2-phi-audit.json} (\path{liu9_h2_phi_audit.py}) & independent audit of $\Phi\ge0$; \texttt{AUDIT-PASSED}\\
+\multicolumn{2}{@{}l@{}}{\quad file \texttt{f2359fa3b3b08bab29965253d777dcf32e4b1aee1e0bacbfb0924b86ac163996}}\\
+\multicolumn{2}{@{}l@{}}{\quad internal \texttt{a515102c1807849b606bf4a681bd0a67173445b1a22610d397bb779440222cab}}\\
+\multicolumn{2}{@{}l@{}}{\quad module \texttt{b1d9ed3d9da9e7c99c026843b683447809fb38d28dba4c49a087729bf66cb50c}}\\
+\addlinespace
+\path{liu9-h2-general-lift.json} (\path{liu9_h2_general_lift.py}) & Theorem~\ref{thm:lift}; \texttt{PROVED}\\
+\multicolumn{2}{@{}l@{}}{\quad file \texttt{eb4874d39904593bddc3f2ae638d1bad6756a19d4ebf6e06a60427b6bb7ac1ce}}\\
+\multicolumn{2}{@{}l@{}}{\quad internal \texttt{3ff1e797cd5dbcc4273d9f002b9e540b58829d237b2d344f266e0bea46c02bc8}}\\
+\multicolumn{2}{@{}l@{}}{\quad module \texttt{b265e726d110098a09c00de331c4433454973ba741966b3018b77afcc225b5c3}}\\
+\addlinespace
+\path{liu9-h2-mixture-theorem.json} (\path{liu9_h2_mixture_theorem.py}) & Theorem~\ref{thm:mixture}; \texttt{PROVED}\\
+\multicolumn{2}{@{}l@{}}{\quad file \texttt{329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3}}\\
+\multicolumn{2}{@{}l@{}}{\quad internal \texttt{b108b781224dff601ffcf3f562703d3b620e7da6d89cf6d000b6ccbd06a4773b}}\\
+\multicolumn{2}{@{}l@{}}{\quad module \texttt{3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab}}\\
+\addlinespace
+\bottomrule
+\end{tabular}
+\caption{The certificate chain.  For each artifact: SHA-256 of the file, the
+internal digest, and the module source.  All $21$ values are pinned in
+\texttt{PROGRESS.md} and asserted by the replay driver.}\label{tab:artifacts}
+\end{table}
+
+\paragraph{Replay.}
+From \path{math/},
+\begin{center}
+\texttt{nice -n 19 ./.venv/bin/python -I -B uc/verification/replay\_h2\_chain.py}
+\end{center}
+re-runs each of the seven modules twice from the repository root under the
+same interpreter, requires every run to reproduce the on-disk artifact byte
+for byte, recomputes the three hashes of every artifact from disk in the
+module's own canonicalisation, checks the cross-artifact pins, and asserts
+every hash against the values pinned in the repository ledger
+\path{PROGRESS.md} (which contains the same $21$ values as
+Table~\ref{tab:artifacts}); the exit status is nonzero on any mismatch.
+The modules use python-flint (Arb ball arithmetic \cite{Joh17}; $400$ bits
+for the certificates of Sections~\ref{sec:twovar}--\ref{sec:mixture} and the
+audit, $480$ for the reduction, $320$ for its independent re-derivation) and
+sympy, single-threaded; the constants are
+never re-rounded through floating point, and the sole external inputs are
+the two audited transcriptions \path{uc/liu9_objective.py} (Liu's objective)
+and \path{uc/liu9_binding.py} (his equations (87)--(90)), both pinned by the
+lift and mixture artifacts.  Each module carries mutations --- deliberate
+errors in the statement or the certificate --- and refuses to certify when
+any of them is active; all $42$ mutations across the chain fire.
+
+\paragraph{What is proved and what is not.}
+Theorems~\ref{thm:reduction}, \ref{thm:twovar}, \ref{thm:phi},
+\ref{thm:lift}, \ref{thm:mixture} are \lbl{proved} with
+\lbl{machine-verified} finite components (identities, enclosures, covers);
+Theorem~\ref{thm:uc} is \lbl{proved} by the elementary argument of
+Section~\ref{sec:prop3}; Theorem~\ref{thm:value} is
+\lbl{machine-verified}.  Two blank-context adversarial reviews (one of the
+$\Phi$ certificate, one of the lift and mixture artifacts and of the
+argument of Section~\ref{sec:prop3}) found no soundness defect in the final
+versions; the first version of the lift artifact was refuted by the
+reviewer at the truncated constants (Remark~\ref{rem:exact}) and repaired.
+The result has not been refereed outside the repository; that is recorded
+as the adopted next step.  Nothing here concerns the conjectured value
+$\tfrac12$: Lemma~\ref{lem:sharp} shows that $c'$ is the best constant this
+particular pair of protocols at $\beta^\ast$ can give, and improving it
+requires a different protocol family.
+
+\paragraph{Why interval subdivision alone could not have closed
+Hypothesis~2.}
+$R$ has a nondegenerate interior zero (Lemma~\ref{lem:tight}); a function
+that touches zero cannot be proved nonnegative by bisection at any depth.
+The stratification of Section~\ref{sec:twovar} handles the zero by exact
+algebra plus a Taylor bound, and the identity of Section~\ref{sec:phi}
+converts the two-variable $B\ge0$, which vanishes on the entire diagonal
+(and on both axes), into the one-variable condition $\kappa\ge2$ with a
+uniform margin.  Both are
+what makes the dimension-free reduction of Section~\ref{sec:reduction}
+usable: Hypothesis~2, a nine-parameter statement, and its general-measure
+form are decided by two inequalities on the unit square.
+
+\begin{thebibliography}{99}
+\bibitem{AHS22} R.~Alweiss, B.~Huang, M.~Sellke, Improved lower bound for the
+union-closed sets conjecture, arXiv:2211.11731 (2022).
+\bibitem{Cam22} S.~Cambie, Better bounds for the union-closed sets conjecture
+using the entropy approach, arXiv:2212.12500 (2022).
+\bibitem{CL22} Z.~Chase, S.~Lovett, Approximate union closed conjecture,
+arXiv:2211.11689 (2022).
+\bibitem{Gil22} J.~Gilmer, A constant lower bound for the union-closed sets
+conjecture, arXiv:2211.09055 (2022).
+\bibitem{Joh17} F.~Johansson, Arb: efficient arbitrary-precision
+midpoint-radius interval arithmetic, IEEE Trans.\ Computers 66 (2017),
+1281--1292.
+\bibitem{Liu23} J.~Liu, Improving the lower bound for the union-closed sets
+conjecture via conditionally IID coupling, arXiv:2306.08824v1 (2023).
+\bibitem{Saw22} W.~Sawin, An improved lower bound for the union-closed set
+conjecture, arXiv:2211.11504 (2022).
+\bibitem{Yu23} L.~Yu, Dimension-free bounds for the union-closed sets
+conjecture, Entropy 25 (2023), 767.
+\end{thebibliography}
+
+\end{document}

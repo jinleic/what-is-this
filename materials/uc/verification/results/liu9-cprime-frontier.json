@@ -1,0 +1,615 @@
+{
+ "all_mutations_caught": true,
+ "artifact": "liu9-cprime-frontier",
+ "claim": "For Liu's same two protocols with beta varied over [0,1], beta* is the unique maximizer of the obtainable full-measure constant: the maximum is c'=1-m*. General-f values above c' below are discovery candidates only; the Sawin three-protocol obligation remains OPEN.",
+ "claim_status": "PROVED",
+ "dependencies": {
+  "binding_source": {
+   "match": true,
+   "path": "uc/liu9_binding.py",
+   "role": "exact root bracket and propagation of Liu (87)-(90)",
+   "sha256": "feb3a1aaded3cff0805d852c4349ff7142c55e24be4b2da3c0a27f8e7f58cac6"
+  },
+  "liu_source": {
+   "match": true,
+   "path": "LIU_H1/literature/pdfs/liu_2023_arxiv_2306.08824v1.pdf",
+   "role": "Example 5, (16), Lemma 8 and (29)",
+   "sha256": "e7463fcb0d3fdfefb411289282ab344a6fee718e4f4368c1dd3cc832d0e17d5b"
+  },
+  "mixture_theorem": {
+   "claim_status": "PROVED",
+   "match": true,
+   "path": "uc/verification/results/liu9-h2-mixture-theorem.json",
+   "role": "attainment: m_full(beta*) <= m* for every Borel law and conditionally i.i.d. self-coupling",
+   "sha256": "329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3"
+  },
+  "objective_source": {
+   "match": true,
+   "path": "uc/liu9_objective.py",
+   "role": "audited transcription of the same two protocol weights",
+   "sha256": "f043b8c99cb26c62804c6f4f29190065a7a876e47d5e7c27c9e6f555c4098c6c"
+  }
+ },
+ "general_f_candidates": {
+  "scaled_four_fifths": {
+   "A_face_check": {
+    "A_half_one": "[0.0136092348877997187664209306599 +/- 2.26e-32]",
+    "coefficient": "[0.0196339756829217225951303954692 +/- 3.53e-32]",
+    "conclusion": "the exact t=1 necessary condition is satisfied",
+    "identity": "A(s,1)=[1-beta-1/(2m)]h(s), because f(1)=h(1)=0",
+    "label": "MACHINE-VERIFIED"
+   },
+   "active_equations": {
+    "label": "MACHINE-VERIFIED",
+    "root_bracket": [
+     "6969391922924715796093418227794041703473602101790330440143499325373291/10000000000000000000000000000000000000000000000000000000000000000000000",
+     "1742347980731178949023354556948510425868400525447582610035874831343323/2500000000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "root_bracket_width": "1/10000000000000000000000000000000000000000000000000000000000000000000000",
+    "root_polynomial": "2x^2+(16/25)x^2(1-x)^2-1",
+    "stationarity_beta": "[0.1701959188103296960494100441415501843389 +/- 2.46e-41]",
+    "tightness": "p=h(x)/h(x^2), m=px",
+    "unique_root_on_2/3_to_1/sqrt(2)": true
+   },
+   "active_two_point_law": "(1-p)delta_0+p delta_x with x in [0.69693919229247157960934182277940417 +/- 3.48e-37], p in [0.88552107678047782994619860256636372 +/- 2.84e-37]",
+   "candidate_value_exceeds_cprime_certified": true,
+   "candidate_value_scope": "The strict scalar comparison concerns only the active endpoint equations; it is not a certified union-closed bound.",
+   "coarse_interval_partition_400_bit": {
+    "counts": {
+     "A": {
+      "certified_negative": 0,
+      "certified_nonnegative": 456,
+      "unresolved": 3640
+     },
+     "B": {
+      "certified_negative": 0,
+      "certified_nonnegative": 2150,
+      "unresolved": 1946
+     }
+    },
+    "first_certified_negative_cell": null,
+    "label": "COMPUTATIONAL-EVIDENCE",
+    "limitation": "Natural interval enclosures leave unresolved cells near zero strata and through dependency overestimation. Only a certified_negative cell would refute a kernel; zero such cells does not prove nonnegativity.",
+    "monotonicity_used_for_protocol_ranges": "partial_s[st+f(s)f(t)] = t[1+(16/25)(1-t)(1-2s)] >= (9/25)t >= 0; hence the protocol argument and its diagonal are coordinatewise increasing",
+    "partition": "64x64 exact rational rectangles",
+    "precision_bits": 400
+   },
+   "diagnostic_counts_regression_asserted": true,
+   "f": "f(x)=(4/5)x(1-x)",
+   "label": "COMPUTATIONAL-EVIDENCE",
+   "m": "[0.6171543440093459282799686718779859226406 +/- 4.03e-41]",
+   "name": "scaled_four_fifths",
+   "no_certificate_claimed": true,
+   "one_minus_m": "[0.3828456559906540717200313281220140773594 +/- 4.03e-41]",
+   "one_minus_m_minus_cprime": "[0.000136568071919041789718426023041 +/- 4.66e-34]",
+   "point_lattice_400_bit": {
+    "counts": {
+     "A": {
+      "certified_negative": 0,
+      "certified_nonnegative": 4096,
+      "unresolved": 0
+     },
+     "B": {
+      "certified_negative": 0,
+      "certified_nonnegative": 4160,
+      "unresolved": 0
+     }
+    },
+    "first_certified_negative": null,
+    "grid": "{0,1/64,...,1}^2",
+    "label": "COMPUTATIONAL-EVIDENCE",
+    "limitation": "finite rational points only; a clean lattice is not a continuum certificate",
+    "minimum_lower_endpoint": {
+     "A": "0",
+     "B": "0"
+    },
+    "structural_points_omitted": "A: s=0 or t=0; B: s=t"
+   },
+   "remaining_continuum_claim": {
+    "label": "OPEN",
+    "statement": "A>=0 and B>=0 on [0,1]^2 both remain unproved"
+   },
+   "verdict": "No negative witness appears in the requested coarse A/B diagnostics; continuum A>=0 and B>=0 remain OPEN"
+  },
+  "x_squared_one_minus_x": {
+   "A_face_check": {
+    "A_half_one": "[-0.0243416410487884835210909357501 +/- 4.17e-32]",
+    "coefficient": "[-0.0351175648281863713524628493185 +/- 8.18e-33]",
+    "conclusion": "A(1/2,1)<0 is a certified negative witness",
+    "identity": "A(s,1)=[1-beta-1/(2m)]h(s), because f(1)=h(1)=0",
+    "label": "MACHINE-VERIFIED"
+   },
+   "active_equations": {
+    "label": "MACHINE-VERIFIED",
+    "root_bracket": [
+     "3497104496745572605750893264851561533469856455061518430369912982264549/5000000000000000000000000000000000000000000000000000000000000000000000",
+     "6994208993491145211501786529703123066939712910123036860739825964529099/10000000000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "root_bracket_width": "1/10000000000000000000000000000000000000000000000000000000000000000000000",
+    "root_polynomial": "2x^2+x^4(1-x)^2-1",
+    "stationarity_beta": "[0.2248704421841617103616936380945065107868 +/- 6.73e-43]",
+    "tightness": "p=h(x)/h(x^2), m=px",
+    "unique_root_on_2/3_to_1/sqrt(2)": true
+   },
+   "active_two_point_law": "(1-p)delta_0+p delta_x with x in [0.69942089934911452115017865297031231 +/- 3.31e-36], p in [0.88229516971143834382489724549180715 +/- 3.96e-36]",
+   "candidate_value_exceeds_cprime_certified": true,
+   "candidate_value_scope": "The strict scalar comparison concerns only the active endpoint equations; it is not a certified union-closed bound.",
+   "coarse_interval_partition_400_bit": {
+    "counts": {
+     "A": {
+      "certified_negative": 0,
+      "certified_nonnegative": 0,
+      "unresolved": 4096
+     },
+     "B": {
+      "certified_negative": 0,
+      "certified_nonnegative": 2232,
+      "unresolved": 1864
+     }
+    },
+    "first_certified_negative_cell": null,
+    "label": "COMPUTATIONAL-EVIDENCE",
+    "limitation": "Natural interval enclosures leave unresolved cells near zero strata and through dependency overestimation. Only a certified_negative cell would refute a kernel; zero such cells does not prove nonnegativity.",
+    "monotonicity_used_for_protocol_ranges": "if s<=2/3 then f'(s)>=0; if s>2/3 then f'(s)>=-1 and f(t)<=t, so partial_s[st+f(s)f(t)] >= t-f(t)>0; the diagonal is therefore increasing",
+    "partition": "64x64 exact rational rectangles",
+    "precision_bits": 400
+   },
+   "diagnostic_counts_regression_asserted": true,
+   "f": "f(x)=x^2(1-x)",
+   "label": "COMPUTATIONAL-EVIDENCE",
+   "m": "[0.6170956810909538327080051357594426672520 +/- 4.02e-41]",
+   "name": "x_squared_one_minus_x",
+   "no_certificate_claimed": true,
+   "one_minus_m": "[0.3829043189090461672919948642405573327480 +/- 4.02e-41]",
+   "one_minus_m_minus_cprime": "[0.000195230990311137361681962141585 +/- 2.79e-34]",
+   "point_lattice_400_bit": {
+    "counts": {
+     "A": {
+      "certified_negative": 126,
+      "certified_nonnegative": 3970,
+      "unresolved": 0
+     },
+     "B": {
+      "certified_negative": 0,
+      "certified_nonnegative": 4160,
+      "unresolved": 0
+     }
+    },
+    "first_certified_negative": {
+     "A": {
+      "s": "1/64",
+      "t": "1",
+      "value": "[-0.00282643148342174865949912404626 +/- 6.87e-34]"
+     }
+    },
+    "grid": "{0,1/64,...,1}^2",
+    "label": "COMPUTATIONAL-EVIDENCE",
+    "limitation": "finite rational points only; a clean lattice is not a continuum certificate",
+    "minimum_lower_endpoint": {
+     "A": "[-0.024341641048788483521 +/- 9.10e-23]",
+     "B": "0"
+    },
+    "structural_points_omitted": "A: s=0 or t=0; B: s=t"
+   },
+   "remaining_continuum_claim": {
+    "label": "OPEN",
+    "statement": "B>=0 on [0,1]^2 remains unproved; A>=0 is already false, so this A/B sufficient route cannot certify the candidate"
+   },
+   "verdict": "The A>=0 candidate route has a certified negative witness; this does not refute the underlying protocol inequality"
+  }
+ },
+ "general_f_derivation": {
+  "beta_formula": "beta=(C-a')/(b'-a'), a'=2x h'(x^2), b'=(2x+2f(x)f'(x))h'(x^2+f(x)^2), C=(h'(x)+h(x)/x)/p",
+  "definitions": [
+   "z_f(x)=x^2+f(x)^2",
+   "D_{beta,f}(x)=(1-beta)h(x^2)+beta h(z_f(x))",
+   "N=w^2 D_{beta,f}(x), H=w h(x), M=wx"
+  ],
+  "endpoint_law": "mu_w=(1-w)delta_0+w delta_x",
+  "fixed_mean_stationarity": "D'_{beta,f}(x)/D_{beta,f}(x)=1/x+h'(x)/h(x), where D'=(1-beta)2x h'(x^2)+beta(2x+2f f')h'(x^2+f^2)",
+  "joint_interior_protocol_weight_stationarity": "If the beta optimum is interior and this single endpoint law is the active branch, envelope stationarity gives h(x^2+f(x)^2)=h(x^2). For f(x)>0 on the nontrivial branch this is x^2+f(x)^2=1-x^2, i.e. 2x^2+f(x)^2=1; then p=h(x)/h(x^2) and m=xh(x)/h(x^2).",
+  "label": "PROVED",
+  "protocol": "In Liu Example 5 use x=1-s. A measurable f with 0<=f(x)<=min(x,1-x) gives K_f(x,y)=h(xy+f(x)f(y)); the stationarity equations below additionally assume that f is differentiable at the active point x.",
+  "range_on_nontrivial_branch": "From f(x)<=x and f(x)^2=1-2x^2 one gets x>=1/sqrt(3)>1/2. Then f(x)<=1-x gives x>=2/3, while f(x)>0 gives x<1/sqrt(2).",
+  "scope_warning": "These equations identify Liu's analogous active two-point branch. They do not prove that the branch is the global minimizer, nor that A>=0 and B>=0 on the continuum.",
+  "tightness_equations": [
+   "p=h(x)/D_{beta,f}(x)",
+   "m=px=x h(x)/D_{beta,f}(x)"
+  ]
+ },
+ "general_f_discovery_scan": {
+  "admissible_improvements": 512,
+  "admissible_improvements_surviving_A_face_test": 75,
+  "arithmetic": "IEEE binary64 bisection and evaluation; discovery only",
+  "baseline": {
+   "A_face_coefficient": "0.08995657486712394",
+   "A_face_necessary_condition_survives": true,
+   "beta": "0.10005255986289421",
+   "beta_in_open_unit_interval": true,
+   "f": "x(1-x)",
+   "m": "0.61729091208126485",
+   "name": "baseline_k1",
+   "one_minus_m": "0.38270908791873515",
+   "p": "0.89360451390546514",
+   "x": "0.69078759392498812"
+  },
+  "general_f_constraint": "0<=f(x)<=min(x,1-x) on [0,1]",
+  "interpretation": "Values 1-m above c' in this binary64 scan are discovery hits, not bounds or certificate claims. Only promoted candidates below receive 400-bit diagnostics, which still decide no continuum kernel globally unless they exhibit a certified negative witness.",
+  "joint_active_branch": "2x^2+f(x)^2=1, p=h(x)/h(x^2), m=px, beta from fixed-mean stationarity",
+  "label": "COMPUTATIONAL-EVIDENCE",
+  "mixture_domain": "a,b in {0,1/40,...,1}, a>=0, b>=0, a+b<=1; this simplex is a sufficient protocol-validity domain",
+  "mixtures_scanned": 860,
+  "power_result": "k=1 is Liu's baseline; k=2,...,8 have beta>1 on this interior joint-stationary branch and hence are not admissible two-protocol optima",
+  "powers_k_1_through_8": [
+   {
+    "A_face_coefficient": "0.08995657486712394",
+    "A_face_necessary_condition_survives": true,
+    "beta": "0.10005255986289421",
+    "beta_in_open_unit_interval": true,
+    "f": "x(1-x)^1",
+    "m": "0.61729091208126485",
+    "name": "power_k1",
+    "one_minus_m": "0.38270908791873515",
+    "p": "0.89360451390546514",
+    "x": "0.69078759392498812"
+   },
+   {
+    "A_face_coefficient": "-1.2292681043754943",
+    "A_face_necessary_condition_survives": false,
+    "beta": "1.4188108178331145",
+    "beta_in_open_unit_interval": false,
+    "f": "x(1-x)^2",
+    "m": "0.6169356587971826",
+    "name": "power_k2",
+    "one_minus_m": "0.3830643412028174",
+    "p": "0.87411161173286445",
+    "x": "0.7057859093922243"
+   },
+   {
+    "A_face_coefficient": "-16.58561293531541",
+    "A_face_necessary_condition_survives": false,
+    "beta": "16.775113643844932",
+    "beta_in_open_unit_interval": false,
+    "f": "x(1-x)^3",
+    "m": "0.61690368549595664",
+    "name": "power_k3",
+    "one_minus_m": "0.38309631450404336",
+    "p": "0.87257156175465367",
+    "x": "0.70699494750370429"
+   },
+   {
+    "A_face_coefficient": "-195.58938202795696",
+    "A_face_necessary_condition_survives": false,
+    "beta": "195.77887915296088",
+    "beta_in_open_unit_interval": false,
+    "f": "x(1-x)^4",
+    "m": "0.61690095794221211",
+    "name": "power_k4",
+    "one_minus_m": "0.38309904205778789",
+    "p": "0.87244151695903627",
+    "x": "0.70709720474155002"
+   },
+   {
+    "A_face_coefficient": "-2282.2099968121533",
+    "A_face_necessary_condition_survives": false,
+    "beta": "2282.3994936301178",
+    "beta_in_open_unit_interval": false,
+    "f": "x(1-x)^5",
+    "m": "0.61690072424419051",
+    "name": "power_k5",
+    "one_minus_m": "0.38309927575580949",
+    "p": "0.87243038425104213",
+    "x": "0.7071059598340137"
+   },
+   {
+    "A_face_coefficient": "-26605.642364372699",
+    "A_face_necessary_condition_survives": false,
+    "beta": "26605.83186116433",
+    "beta_in_open_unit_interval": false,
+    "f": "x(1-x)^6",
+    "m": "0.61690070419949394",
+    "name": "power_k6",
+    "one_minus_m": "0.38309929580050606",
+    "p": "0.87242942944916491",
+    "x": "0.70710671072729991"
+   },
+   {
+    "A_face_coefficient": "-310140.34826777037",
+    "A_face_necessary_condition_survives": false,
+    "beta": "310140.53776455973",
+    "beta_in_open_unit_interval": false,
+    "f": "x(1-x)^7",
+    "m": "0.61690070247996553",
+    "name": "power_k7",
+    "one_minus_m": "0.38309929752003447",
+    "p": "0.87242934754228685",
+    "x": "0.70710677514211451"
+   },
+   {
+    "A_face_coefficient": "-3615262.9965428305",
+    "A_face_necessary_condition_survives": false,
+    "beta": "3615263.1860396196",
+    "beta_in_open_unit_interval": false,
+    "f": "x(1-x)^8",
+    "m": "0.61690070233245364",
+    "name": "power_k8",
+    "one_minus_m": "0.38309929766754636",
+    "p": "0.87242934051580689",
+    "x": "0.70710678066801735"
+   }
+  ],
+  "promotion_policy": "The scan rows are unpromoted endpoint-law hits. The separate general_f_candidates records promote f=(4/5)x(1-x), chosen for one rational parameter and a robust positive A-face margin, and f=x^2(1-x), chosen as the requested named-family negative control; both receive the 400-bit diagnostics.",
+  "top_five_admissible": [
+   {
+    "A_face_coefficient": "-0.8077156153389764",
+    "A_face_necessary_condition_survives": false,
+    "a": "11/40",
+    "b": "10/40",
+    "beta": "0.99727684128440131",
+    "beta_in_open_unit_interval": true,
+    "f": "(11/40)x(1-x)+(10/40)x(1-x)^2",
+    "m": "0.61694975118050055",
+    "name": "mix_11_10",
+    "one_minus_m": "0.38305024881949945",
+    "p": "0.87479974548518635",
+    "x": "0.70524683433501045"
+   },
+   {
+    "A_face_coefficient": "-0.79742422675996472",
+    "A_face_necessary_condition_survives": false,
+    "a": "14/40",
+    "b": "0/40",
+    "beta": "0.98698593661550471",
+    "beta_in_open_unit_interval": true,
+    "f": "(14/40)x(1-x)+(0/40)x(1-x)^2",
+    "m": "0.61695011955922685",
+    "name": "mix_14_0",
+    "one_minus_m": "0.38304988044077315",
+    "p": "0.87481781189031937",
+    "x": "0.70523269093722707"
+   },
+   {
+    "A_face_coefficient": "-0.80037522388117543",
+    "A_face_necessary_condition_survives": false,
+    "a": "9/40",
+    "b": "17/40",
+    "beta": "0.98993703629592877",
+    "beta_in_open_unit_interval": true,
+    "f": "(9/40)x(1-x)+(17/40)x(1-x)^2",
+    "m": "0.61695019763294046",
+    "name": "mix_9_17",
+    "one_minus_m": "0.38304980236705954",
+    "p": "0.87482164137754903",
+    "x": "0.70522969306229322"
+   },
+   {
+    "A_face_coefficient": "-0.80335012806193318",
+    "A_face_necessary_condition_survives": false,
+    "a": "4/40",
+    "b": "34/40",
+    "beta": "0.9929120440687137",
+    "beta_in_open_unit_interval": true,
+    "f": "(4/40)x(1-x)+(34/40)x(1-x)^2",
+    "m": "0.61695027649290879",
+    "name": "mix_4_34",
+    "one_minus_m": "0.38304972350709121",
+    "p": "0.87482550961370853",
+    "x": "0.70522666487552677"
+   },
+   {
+    "A_face_coefficient": "-0.79019203640707247",
+    "A_face_necessary_condition_survives": false,
+    "a": "12/40",
+    "b": "7/40",
+    "beta": "0.97975433423019764",
+    "beta_in_open_unit_interval": true,
+    "f": "(12/40)x(1-x)+(7/40)x(1-x)^2",
+    "m": "0.61695056715275687",
+    "name": "mix_12_7",
+    "one_minus_m": "0.38304943284724313",
+    "p": "0.87483976864194013",
+    "x": "0.70521550261767563"
+   }
+  ],
+  "top_five_surviving_A_face_test": [
+   {
+    "A_face_coefficient": "0.0012589896061732109",
+    "A_face_necessary_condition_survives": true,
+    "a": "30/40",
+    "b": "2/40",
+    "beta": "0.18854313608008896",
+    "beta_in_open_unit_interval": true,
+    "f": "(30/40)x(1-x)+(2/40)x(1-x)^2",
+    "m": "0.61713319159657776",
+    "name": "mix_30_2",
+    "one_minus_m": "0.38286680840342224",
+    "p": "0.88434239149560889",
+    "x": "0.6978441806378588"
+   },
+   {
+    "A_face_coefficient": "0.00036173332073308195",
+    "A_face_necessary_condition_survives": true,
+    "a": "27/40",
+    "b": "12/40",
+    "beta": "0.18944081612389635",
+    "beta_in_open_unit_interval": true,
+    "f": "(27/40)x(1-x)+(12/40)x(1-x)^2",
+    "m": "0.61713351437635622",
+    "name": "mix_27_12",
+    "one_minus_m": "0.38286648562364378",
+    "p": "0.88436024371068089",
+    "x": "0.69783045853229453"
+   },
+   {
+    "A_face_coefficient": "0.0020231430109800552",
+    "A_face_necessary_condition_survives": true,
+    "a": "28/40",
+    "b": "9/40",
+    "beta": "0.18778124376499006",
+    "beta_in_open_unit_interval": true,
+    "f": "(28/40)x(1-x)+(9/40)x(1-x)^2",
+    "m": "0.61713491388868247",
+    "name": "mix_28_9",
+    "one_minus_m": "0.38286508611131753",
+    "p": "0.88443769512491355",
+    "x": "0.6977709309433282"
+   },
+   {
+    "A_face_coefficient": "0.0036641821432605859",
+    "A_face_necessary_condition_survives": true,
+    "a": "29/40",
+    "b": "6/40",
+    "beta": "0.18614203998357221",
+    "beta_in_open_unit_interval": true,
+    "f": "(29/40)x(1-x)+(6/40)x(1-x)^2",
+    "m": "0.61713631189879758",
+    "name": "mix_29_6",
+    "one_minus_m": "0.38286368810120242",
+    "p": "0.88451514072999271",
+    "x": "0.69771141666322789"
+   },
+   {
+    "A_face_coefficient": "0.0052851663139756866",
+    "A_face_necessary_condition_survives": true,
+    "a": "30/40",
+    "b": "3/40",
+    "beta": "0.18452288912148068",
+    "beta_in_open_unit_interval": true,
+    "f": "(30/40)x(1-x)+(3/40)x(1-x)^2",
+    "m": "0.61713770835963644",
+    "name": "mix_30_3",
+    "one_minus_m": "0.38286229164036356",
+    "p": "0.88459257785055245",
+    "x": "0.69765191774410162"
+   }
+  ],
+  "x_squared_one_minus_x": {
+   "A_face_coefficient": "-0.035117564828185621",
+   "A_face_necessary_condition_survives": false,
+   "beta": "0.224870442184161",
+   "beta_in_open_unit_interval": true,
+   "f": "x^2(1-x)",
+   "m": "0.61709568109095381",
+   "name": "x_squared_one_minus_x",
+   "one_minus_m": "0.38290431890904619",
+   "p": "0.8822951697114384",
+   "x": "0.69942089934911444"
+  }
+ },
+ "label_legend": [
+  "COMPUTATIONAL-EVIDENCE",
+  "MACHINE-VERIFIED",
+  "OPEN",
+  "PROVED"
+ ],
+ "mutations": [
+  {
+   "caught": true,
+   "mutation": "replace (1-x)^2 by (1-x) in pi(x,x)",
+   "witness": "-x**4 + x**3"
+  },
+  {
+   "caught": true,
+   "mutation": "reverse the endpoint-frontier derivative direction",
+   "witness": "[-0.21176234053116612964 +/- 3.23e-21]"
+  },
+  {
+   "caught": true,
+   "mutation": "drop 2 f(x) f'(x) from the general protocol derivative",
+   "witness": "[-0.0010351976414156712372 +/- 9.27e-24]"
+  },
+  {
+   "caught": true,
+   "mutation": "drop -beta from the A(s,1) face coefficient",
+   "witness": {
+    "mutated": "[0.18975287735597533901 +/- 7.70e-22]",
+    "true": "[-0.035117564828186371352 +/- 4.63e-22]"
+   }
+  }
+ ],
+ "natural_log": true,
+ "precision_bits": 400,
+ "report_sha256": "8dc1bfe8cb32f45ca1174c6b960623486a1ba8f9dd5bfac2ea839a095988182b",
+ "same_protocol_beta_frontier": {
+  "arb_checks": {
+   "beta_star_in_open_unit_interval": true,
+   "bprime_minus_aprime_strictly_negative": true,
+   "complement_residual_contains_zero": true,
+   "endpoint_derivative_coefficient_strictly_positive": true,
+   "entropy_symmetry_residual_contains_zero": true,
+   "quartic_bracket_signs": true,
+   "stationarity_residual_contains_zero": true,
+   "xstar_in_open_unit_interval": true
+  },
+  "arb_values": {
+   "bprime_minus_aprime": "[-0.237427740050811909987000866668 +/- 1.84e-31]",
+   "h_pi_minus_h_xstar_squared": "[+/- 5.52e-70]",
+   "pi_diag_plus_xstar_squared_minus_one": "[+/- 2.86e-70]",
+   "rprime_coefficient_of_beta_minus_betastar": "[0.211762340531166129643220828050 +/- 1.06e-31]",
+   "stationarity_residual_at_betastar": "[+/- 2.25e-69]"
+  },
+  "constants_exact_balls": {
+   "betastar": "[0.10005255986289310666462829947694758779620618471265 +/- 1.99e-51]",
+   "cprime": "[0.38270908791873502993031290209897261162638143250576 +/- 2.42e-51]",
+   "mstar": "[0.61729091208126497006968709790102738837361856749424 +/- 2.42e-51]",
+   "pstar": "[0.89360451390546544647677001903876959717867771034844 +/- 1.12e-51]",
+   "xstar": "[0.69078759392498801415048820463627056258062817709687 +/- 2.93e-51]",
+   "xstar_bracket": {
+    "hi": "3453937969624940070752441023181352812903140885484335356434089254276873/5000000000000000000000000000000000000000000000000000000000000000000000",
+    "lo": "1381575187849976028300976409272541125161256354193734142573635701710749/2000000000000000000000000000000000000000000000000000000000000000000000",
+    "width": "1/10000000000000000000000000000000000000000000000000000000000000000000000"
+   }
+  },
+  "endpoint_frontier": "m_end(beta)=sup_{0<x<1} r_beta(x), r_beta(x)=x h(x)/((1-beta)h(x^2)+beta h(pi(x,x))); the one-component coupling Gamma=mu x mu gives m_full(beta)>=m_end(beta)",
+  "label": "PROVED",
+  "off_beta_exact_frontier": {
+   "label": "OPEN",
+   "statement": "For beta!=beta*, the exact value of m_full(beta) is not identified here; the endpoint ray proves only the strict lower bound m_full(beta)>=m_end(beta)>m*. This does not affect the unique-maximizer conclusion."
+  },
+  "premise_correction": "The true endpoint tightness equation is m=xh(x)/[(1-beta)h(x^2)+beta h(pi(x,x))]. For beta>0, imposing instead m=xh(x)/h(x^2) forces h(pi(x,x))=h(x^2). Binary-entropy symmetry and strict monotonicity on either side of 1/2 reduce this to pi=x^2 (only the endpoint x=1) or pi=1-x^2 (the unique interior quartic root x*). Thus the prompt's beta-dependent x_beta cannot occur with the beta-free denominator. For the genuine endpoint frontier an interior maximizer satisfies D_beta'(x_beta)/D_beta(x_beta)=1/x_beta+h'(x_beta)/h(x_beta); away from beta* this parameterizes only m_end(beta), an obstruction, and does not prove m_full(beta)=m_end(beta). The maximizer theorem above needs no such unproved equality.",
+  "proof": [
+   "For Gamma=mu_w x mu_w and mu_w=(1-w)delta_0+w delta_x, N_beta=w^2 D_beta(x), H=w h(x), M=wx; hence every admissible m is at least r_beta(x).",
+   "At the unique quartic root x*, pi(x*,x*)=1-x*^2, so h(pi)=h(x*^2) and r_beta(x*)=x*h(x*)/h(x*^2)=m* for every beta.",
+   "The derivative at x* is r_beta'(x*)=[-x*h(x)*(b'-a')/h(x^2)^2]*(beta-beta*). The bracketed coefficient is strictly positive. Thus beta != beta* gives a nearby x on the increasing side with r_beta(x)>m*.",
+   "At beta*, the pinned mixture theorem proves N_beta(Gamma)>=(M/m*)H(mu) for every Borel law and every conditionally i.i.d. self-coupling; the endpoint ray attains equality. Therefore m_full(beta*)=m*."
+  ],
+  "theorem": "Let m_full(beta) be the infimum of the positive m for which N_beta(Gamma) >= (M(mu)/m)H(mu) for every Borel probability law mu and every conditionally i.i.d. self-coupling Gamma with marginal mu. For every beta in [0,1], m_full(beta) >= m*. Equality holds at beta*, and for beta != beta* the inequality is strict. Consequently beta* is the unique maximizer of 1-m_full(beta), with maximum c'=1-m*."
+ },
+ "sawin_three_protocol": {
+  "attempted_here": false,
+  "classes": {
+   "C1(mu)": "the singleton {mu x mu} (Gilmer's independent protocol)",
+   "C2(mu)": "for the conservative certificate obligation used here, all symmetric self-couplings of mu; this contains every coupling induced by Sawin's max-entropy protocol, and Liu states that probably no better safe choice is known",
+   "C3(mu)": "{couplings of mu and mu} intersected with the weak closure of the convex hull of symmetric rank-one measures (the conditionally-i.i.d. class)"
+  },
+  "complemented_form_for_current_pair": "With X=1-S, the first and Example-5 terms become h(XY) and h(XY+f(X)f(Y)), exactly the two kernels certified in the H2 chain. The Sawin kernel remains minimized over C2(mu), not over product or rank-one mixtures.",
+  "exact_obligation": "To raise the current c', one must exhibit c_new>c', C>1, and fixed weights w1,w2,w3>=0 with w1+w2+w3=1 such that, for every probability law mu on [0,1] with E_mu[S]<=c_new,\n  w1 inf_{P_ST in C1(mu)} E[g1(S,T)]\n+ w2 inf_{P_SR1 in C2(mu)} E[g2(S,R1)]\n+ w3 inf_{P_SR2 in C3(mu)} E[g3(S,R2)] >= C E[h(S)].\nLiu's Lemma 8 uses w1=(1-alpha*)(1-beta), w2=alpha*(1-beta), w3=beta and g3 from Example 4.",
+  "kernels_in_Liu_variables": {
+   "g1(s,t)": "h((1-s)(1-t))",
+   "g2(s,r)": "h(max(s,r,min(s+r,1/2)))",
+   "g3_example4(s,r)": "h((1-s)(1-r)+a(s)a(r)(min(1-s,1-r)-(1-s)(1-r)))",
+   "g3_example5(s,r)": "h((1-s)(1-r)+f(1-s)f(1-r))"
+  },
+  "label": "OPEN",
+  "literature_scope": "Liu's Lemma 8 proves a non-explicit existence result strictly above the older c*=0.3823455, relative to the Sawin two-protocol input. It neither gives explicit (beta,c_new,C) nor proves a value above the current certified c'.",
+  "obstruction": "The existing reduction controls the product term and C3 through conditionally-i.i.d. rank-one mixtures. Sawin's protocol is not conditionally i.i.d. (Liu notes that its 2x2 kernel matrix is non-PSD for s=t<1/4), and C2(mu) must conservatively include all symmetric self-couplings. No finite-support/extreme-point reduction or uniform lower bound for inf_{C2(mu)} E[g2] at means up to c_new is proved in this repository. That infinite-dimensional symmetric-coupling minimization is the named obstruction.",
+  "source": "Liu, arXiv:2306.08824v1, Definition 1 and equation (16) on page 4; Example 5 and (23) on page 6; Lemma 8 and (29) on page 7"
+ },
+ "symbolic_identities": {
+  "all_residuals_zero": true,
+  "binding_beta_identity": "beta*=((h'(x)+h(x)/x)/p-a')/(b'-a') with p=h(x)/h(x^2)",
+  "binding_beta_residual": "0",
+  "endpoint_ray_identity": "N_beta(mu_w) - (M/m)H(mu_w) = 0 when m = x h(x)/D_beta(x)",
+  "endpoint_residual": "0",
+  "fixed_mean_residual": "0",
+  "fixed_mean_stationarity": "with p=h(x)/D, d[p^2D-ph] along d(px)=0 equals h(x)[h(x)D'-D(h'(x)+h(x)/x)]/D^2",
+  "frontier_derivative_identity": "given stationarity at beta*, the numerator of d/dx[xh/D_beta] at x* is -x h(x)(b'-a')(beta-beta*)",
+  "frontier_derivative_residual": "0",
+  "general_protocol_derivative": "d/dx[x^2+f(x)^2] = 2x+2f(x)f'(x)",
+  "general_protocol_derivative_residual": "0",
+  "label": "MACHINE-VERIFIED",
+  "quartic_identity": "x^2 + pi(x,x) - 1 = x^4 - 2x^3 + 3x^2 - 1",
+  "quartic_residual": "0"
+ },
+ "tool_sha256": "fcacffc1c33662f12068c4a06054304ba344f56508090e1625178264ac49c8b3"
+}

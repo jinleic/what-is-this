@@ -1,0 +1,156 @@
+{
+  "candidates": {
+    "100000000": {
+      "H_NULL": {
+        "band_inconclusive": 0.4425,
+        "band_not_reproduced": 0.5575,
+        "band_reproduced": 0.0,
+        "expected_beam8_failures": 222.99999999999997,
+        "expected_rung_failures": 27.0,
+        "gap_confirmed": 0.879,
+        "k1_ratio_excluded": 0.057,
+        "published_not_excluded": 0.121
+      },
+      "H_PAPER": {
+        "band_inconclusive": 0.991,
+        "band_not_reproduced": 0.009,
+        "band_reproduced": 0.0,
+        "expected_beam8_failures": 222.99999999999997,
+        "expected_rung_failures": 13.117647058823529,
+        "gap_confirmed": 0.0635,
+        "k1_ratio_excluded": 0.9155,
+        "published_not_excluded": 0.9365
+      },
+      "rss_gb_per_decode": 14.9,
+      "wall_hours_32res_24threads": 220.16666666666666,
+      "wall_hours_beam8_24threads": 9.722222222222221
+    },
+    "30000000": {
+      "H_NULL": {
+        "band_inconclusive": 0.836,
+        "band_not_reproduced": 0.164,
+        "band_reproduced": 0.0,
+        "expected_beam8_failures": 66.89999999999999,
+        "expected_rung_failures": 8.1,
+        "gap_confirmed": 0.337,
+        "k1_ratio_excluded": 0.0455,
+        "published_not_excluded": 0.663
+      },
+      "H_PAPER": {
+        "band_inconclusive": 0.997,
+        "band_not_reproduced": 0.003,
+        "band_reproduced": 0.0,
+        "expected_beam8_failures": 66.89999999999999,
+        "expected_rung_failures": 3.9352941176470586,
+        "gap_confirmed": 0.0415,
+        "k1_ratio_excluded": 0.4185,
+        "published_not_excluded": 0.9585
+      },
+      "rss_gb_per_decode": 4.47,
+      "wall_hours_32res_24threads": 66.05,
+      "wall_hours_beam8_24threads": 2.9166666666666665
+    },
+    "50000000": {
+      "H_NULL": {
+        "band_inconclusive": 0.728,
+        "band_not_reproduced": 0.272,
+        "band_reproduced": 0.0,
+        "expected_beam8_failures": 111.49999999999999,
+        "expected_rung_failures": 13.5,
+        "gap_confirmed": 0.555,
+        "k1_ratio_excluded": 0.0475,
+        "published_not_excluded": 0.445
+      },
+      "H_PAPER": {
+        "band_inconclusive": 0.994,
+        "band_not_reproduced": 0.006,
+        "band_reproduced": 0.0,
+        "expected_beam8_failures": 111.49999999999999,
+        "expected_rung_failures": 6.5588235294117645,
+        "gap_confirmed": 0.049,
+        "k1_ratio_excluded": 0.6665,
+        "published_not_excluded": 0.951
+      },
+      "rss_gb_per_decode": 7.45,
+      "wall_hours_32res_24threads": 110.08333333333333,
+      "wall_hours_beam8_24threads": 4.861111111111111
+    },
+    "70000000": {
+      "H_NULL": {
+        "band_inconclusive": 0.6345,
+        "band_not_reproduced": 0.3655,
+        "band_reproduced": 0.0,
+        "expected_beam8_failures": 156.1,
+        "expected_rung_failures": 18.900000000000002,
+        "gap_confirmed": 0.686,
+        "k1_ratio_excluded": 0.052,
+        "published_not_excluded": 0.314
+      },
+      "H_PAPER": {
+        "band_inconclusive": 0.995,
+        "band_not_reproduced": 0.005,
+        "band_reproduced": 0.0,
+        "expected_beam8_failures": 156.1,
+        "expected_rung_failures": 9.18235294117647,
+        "gap_confirmed": 0.0525,
+        "k1_ratio_excluded": 0.8025,
+        "published_not_excluded": 0.9475
+      },
+      "rss_gb_per_decode": 10.43,
+      "wall_hours_32res_24threads": 154.11666666666667,
+      "wall_hours_beam8_24threads": 6.805555555555555
+    }
+  },
+  "computed_from": {
+    "beam64_cells_per_1e8": {
+      "both_fail": 21,
+      "neither_fails": 99999771,
+      "reference_fails_candidate_ok": 202,
+      "reference_ok_candidate_fails": 6
+    },
+    "beam8_failures_per_1e8": 223,
+    "gb7_campaign": "20260901T145247Z_b7ea9ac4_ac3f6689e03b",
+    "gb7_summary_sha256": "bcbf72f4f7bce33c1c53f0875630ad086ae9322a5cefbd266dbc8310fbcd66f0"
+  },
+  "cost_model": {
+    "ms_per_shot_32res_24threads": 7.926,
+    "ms_per_shot_beam8_24threads": 0.35
+  },
+  "hypotheses": {
+    "H_NULL": {
+      "cell_probabilities": [
+        2.1e-07,
+        2.02e-06,
+        6e-08,
+        0.99999771
+      ],
+      "ratio_rung_over_beam8": 27
+    },
+    "H_PAPER": {
+      "c_fraction_of_rung_failures": 0.2222222222222222,
+      "cell_probabilities": [
+        1.0202614379084967e-07,
+        2.12797385620915e-06,
+        2.9150326797385618e-08,
+        0.9999977408496732
+      ],
+      "ratio_rung_over_beam8": 0.058823529411764705
+    }
+  },
+  "monte_carlo": {
+    "bootstrap_draws": 4000,
+    "note": "campaign uses 100000 draws; reduced here for speed",
+    "replicates": 2000,
+    "seed": 20260902
+  },
+  "revision": "GB9",
+  "rule": {
+    "band": "three-way: CI inside [1/22.1, 1/13.1] REPRODUCED; wholly outside NOT_REPRODUCED; else INCONCLUSIVE",
+    "band_factor": [
+      13.076923076923077,
+      22.1
+    ],
+    "gap": "McNemar p<0.05 and b>c AND CI excludes 1 AND CI excludes 1/17",
+    "published_factor": 17.0
+  }
+}

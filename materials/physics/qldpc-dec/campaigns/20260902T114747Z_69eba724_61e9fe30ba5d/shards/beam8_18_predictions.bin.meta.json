@@ -1,0 +1,31 @@
+{
+  "arm": "beam8",
+  "shots_file": "shots_18.bin",
+  "predictions": "beam8_18_predictions.bin",
+  "predictions_sha256": "be0f6581991820c97e9f1b78cb227ea78318d27622334a4cbd139b4713b28cdd",
+  "beam_binary_sha256": "297db977a57bd384100b2f033080ac33213caf4925c7eba8acea89e656b29023",
+  "source_shots_sha256": "477db4172523cb7df78910772a519171288033ed47f6fc48a0e2ffbf16a329c9",
+  "config_line": "config: beam_width=8 initial_iters=30 iters_per_round=20 max_rounds=10 num_results=1",
+  "stats_line": "stats: seed_conv=1 early_return=1 conv_invalid=0 fallback=1 bp_runs=5267386 bp_iters=56632302 rounds=212649",
+  "threads": 26,
+  "wall_s": 866.7740687500918,
+  "ms_per_shot_reported": 0.173,
+  "command": [
+    "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/src/beam_cpp/beam_nr_cpp",
+    "--dem",
+    "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260902T114747Z_69eba724_61e9fe30ba5d/pinned.dem",
+    "--lam",
+    "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260902T114747Z_69eba724_61e9fe30ba5d/pinned_lam.npy",
+    "--shots",
+    "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260902T114747Z_69eba724_61e9fe30ba5d/shards/shots_18.bin",
+    "--out",
+    "/Users/jinleic/jinleic-workspace/physics/qldpc-dec/campaigns/20260902T114747Z_69eba724_61e9fe30ba5d/shards/beam8_18_predictions.bin",
+    "--beam-width=8",
+    "--initial-iters=30",
+    "--iters-per-round=20",
+    "--max-rounds=10",
+    "--num-results=1",
+    "--threads",
+    "26"
+  ]
+}

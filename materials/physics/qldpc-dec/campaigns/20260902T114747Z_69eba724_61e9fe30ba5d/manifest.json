@@ -1,0 +1,198 @@
+{
+  "host": "studio.local",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "config": {
+    "run": "gateB-gb9-beam64-32res",
+    "p": 0.001,
+    "basis": "Z",
+    "rounds": 12,
+    "base_seed": 20260829,
+    "sampling_seed": 5192065653244964556,
+    "shots_shared": 100000000,
+    "shard_shots": 5000000,
+    "prefix_campaign_id": "20260901T145247Z_b7ea9ac4_ac3f6689e03b",
+    "prefix_shots": 100000000,
+    "arms": {
+      "beam8": {
+        "beam_width": 8,
+        "initial_iters": 30,
+        "iters_per_round": 20,
+        "max_rounds": 10,
+        "num_results": 1,
+        "paper_name": "beam8_230iters"
+      },
+      "beam64_32res": {
+        "beam_width": 64,
+        "initial_iters": 40,
+        "iters_per_round": 30,
+        "max_rounds": 20,
+        "num_results": 32,
+        "paper_name": "beam64_32res_640iters"
+      }
+    },
+    "published_factor": 17.0,
+    "band_factor": [
+      13.076923076923077,
+      22.1
+    ],
+    "decision": {
+      "width_effect": "exact two-sided McNemar p<0.05 and b>c (vs beam8)",
+      "paired_ratio": "Wilson when c=0; otherwise 100000-draw four-cell bootstrap",
+      "gap": "width effect AND CI excludes 1 AND CI excludes 1/17 -> GAP_CONFIRMED",
+      "band": "CI inside [1/22.1, 1/13.08] REPRODUCED; wholly outside NOT_REPRODUCED; else INCONCLUSIVE",
+      "k1": "same-shot McNemar vs frozen GB7 beam64_640iters mask; p<0.05 and b>c -> improvement",
+      "verdict": "GAP_CONFIRMED -> FROZEN-NEGATIVE; 1/17 not excluded and improvement -> FROZEN-CERTIFIED; else FROZEN-INCONCLUSIVE"
+    },
+    "beam_threads": 26,
+    "pre_statement": "GB9"
+  },
+  "config_hash12": "8d3459cdf2bd",
+  "circuit_sha256": "106f45471003ecdf6d843ea3b9da45d2f0a766716569a9fababaacbcdeb356db",
+  "dem_sha256": "0da75b9847b54a4c7079e8fdb8be6a2320fea0ee88caafd5f93153a76089e8e2",
+  "dem_dimensions": {
+    "detectors": 936,
+    "errors": 8784,
+    "observables": 12
+  },
+  "runner_sha256": "3a2e28001ea7e7b7fb061af4c9cacc90cdf603a2a30a48a6a7dc7b95aeb025ab",
+  "sizing_sha256": "5777193cc5980f96e083b776003483b19fd534e7416afa706ae6b021c82d4c54",
+  "beam_source_sha256": "8af248032fb5ddfd1d97956ea028fe005aa0bd5c739e8eddc0d3438ea8cfee01",
+  "beam_binary": "beam_nr_cpp",
+  "beam_binary_sha256": "297db977a57bd384100b2f033080ac33213caf4925c7eba8acea89e656b29023",
+  "frozen_k1_binary_sha256": "a480050b204112655f6c1939227f963420b0fbf060e55911d0189f6f15278b55",
+  "beam_equivalence_evidence": {
+    "binary_sha256": "297db977a57bd384100b2f033080ac33213caf4925c7eba8acea89e656b29023",
+    "beam64_32res": [
+      {
+        "path": "src/beam_cpp/evidence/gb5eq_beam64_32res_p0.001_n2000_beam_nr_cpp.json",
+        "p": 0.001,
+        "shots": 2000,
+        "mismatched_shots": 0,
+        "sha256": "1845e2a448a1f3757406da0434f17d0abaa7c4e34955ec07c291d125b6ff9217"
+      },
+      {
+        "path": "src/beam_cpp/evidence/gb5eq_beam64_32res_p0.003_n300_beam_nr_cpp.json",
+        "p": 0.003,
+        "shots": 300,
+        "mismatched_shots": 0,
+        "sha256": "ffbc0b287770e143f162c38acb23419185ed7841d0cecc490f4c918128caae75"
+      }
+    ],
+    "k1_regression": [
+      {
+        "rung": "beam8",
+        "p": 0.001,
+        "shots": 2000,
+        "cpp_predictions_sha256": "03c93dc2673eb08f305d37ff54d457d32e2e4c8ede4b63dedd1cb10759b32cb6",
+        "identical_to_frozen_binary": true
+      },
+      {
+        "rung": "beam32",
+        "p": 0.001,
+        "shots": 2000,
+        "cpp_predictions_sha256": "3e228a449b48d9ad9bd1e032e4dce093c0f23a8fbbf0fc8b5028b71cb25ae189",
+        "identical_to_frozen_binary": true
+      },
+      {
+        "rung": "beam64",
+        "p": 0.001,
+        "shots": 2000,
+        "cpp_predictions_sha256": "b683047d03a7dbbf00c2839d1426b2a523d6c2b287fdd6033f7e5701d089f570",
+        "identical_to_frozen_binary": true
+      },
+      {
+        "rung": "beam8",
+        "p": 0.003,
+        "shots": 300,
+        "cpp_predictions_sha256": "b725d07c0a186d0c69c9d62891417983fe4b7fab8e87d19290300c4b3a076f16",
+        "identical_to_frozen_binary": true
+      },
+      {
+        "rung": "beam32",
+        "p": 0.003,
+        "shots": 300,
+        "cpp_predictions_sha256": "0fa5a1f4a57ec550e7bf0e5df3c4117f5e7ebd34c14f948db1da23e38e0b42e8",
+        "identical_to_frozen_binary": true
+      },
+      {
+        "rung": "beam64",
+        "p": 0.003,
+        "shots": 300,
+        "cpp_predictions_sha256": "fed70837cc614513c2b3e5c99b3e75e1135e31b8ad74ec5a6b5ef80997a41610",
+        "identical_to_frozen_binary": true
+      }
+    ]
+  },
+  "prefix_campaign": {
+    "run_id": "20260901T145247Z_b7ea9ac4_ac3f6689e03b",
+    "terminal_verdict": "FROZEN-NEGATIVE",
+    "sha256s_txt_sha256": "d5b04d5df7958ee1ded5bbf08a12531d3e3db342578f5c4abb608a289fea2bf3",
+    "verified_files": {
+      "manifest.json": "fea595612fb86bf3bf040b93c86fc7e42ff13267b326af47f5e2e3c6f9b189a2",
+      "summary.json": "bcbf72f4f7bce33c1c53f0875630ad086ae9322a5cefbd266dbc8310fbcd66f0",
+      "shots_bposd.bin": "7030e816dcd41c74bcdcacbf04370d49cf707bec6059d5e63d8ced0d6111ac3b",
+      "beam8_predictions.bin": "6266f912a7a9bb687087e96369c4d7d0ee69ebf03852cbcc600fc7ac39392d80",
+      "beam64_predictions.bin": "e0495c4d4df170c234e1b0d859fbe0a8d96e900c829666de884ed3f1513c044d",
+      "beam8_failmask.bin": "f3a9fb8e241fd22a33ce0e00fef96b99c349fb245594fd47c354356f11e41cb9",
+      "beam64_failmask.bin": "9bcbf4bb70fc4f735d6fed407677257076ab504b784db8737a7f13762b1b138f"
+    },
+    "beam8_failures": 223,
+    "beam64_failures": 27,
+    "beam64_decision": {
+      "rung": "beam64",
+      "paired_cells": {
+        "both_fail": 21,
+        "reference_fails_candidate_ok": 202,
+        "reference_ok_candidate_fails": 6,
+        "neither_fails": 99999771
+      },
+      "mcnemar": {
+        "exact_two_sided_p": 5.238429916348986e-52,
+        "alpha": 0.05,
+        "directional_benefit": true,
+        "width_effect_confirmed": true,
+        "b_beam8_fails_rung_ok": 202,
+        "c_beam8_ok_rung_fails": 6
+      },
+      "paired_ratio_rung_over_beam8": {
+        "method": "four-cell paired multinomial percentile bootstrap",
+        "ratio": 0.1210762331838565,
+        "ci95": [
+          0.07906976744186046,
+          0.16740088105726872
+        ],
+        "beam8_failures": 223,
+        "rung_failures": 27,
+        "bootstrap_draws": 100000,
+        "valid_bootstrap_draws": 100000,
+        "bootstrap_seed": 2630674671271294484
+      },
+      "interval_excludes_one": true,
+      "published_reciprocal": 0.058823529411764705,
+      "published_factor": 17.0,
+      "published_factor_excluded": true,
+      "measured_factor_beam8_over_rung": 8.25925925925926,
+      "measured_factor_ci95": [
+        5.973684210526316,
+        12.647058823529411
+      ],
+      "gap_confirmed": true,
+      "outcome": "GAP_CONFIRMED"
+    }
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "stim": "1.16.0",
+    "ldpc": "2.4.1"
+  },
+  "pre_statement": "pre_statement.md Revision GB9",
+  "harness_created_utc": "2026-09-02T11:50:30.420297+00:00",
+  "run_id": "20260902T114747Z_69eba724_61e9fe30ba5d",
+  "target": "physics/qldpc-dec",
+  "gate": "gateB-gb9-beam64-32res",
+  "agent": "jinleic",
+  "prereg_sha256": "45d7a47f05fbdddd2af1a2f5bdaefeb2eaf11d20ea1ed61144edbc3dbf72cade",
+  "status": "RUNNING",
+  "created_utc": "2026-09-02T11:47:47Z"
+}

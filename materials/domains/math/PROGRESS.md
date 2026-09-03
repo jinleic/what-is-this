@@ -5,6 +5,504 @@ cost. "Verified" means a command ran and its output was observed, or a primary
 source was read directly — not that something looks right.
 
 
+### CPRIME-FRONTIER (2026-09-03) — THE SAME-PROTOCOL WEIGHT FRONTIER IS CLOSED: $\beta^*$ UNIQUELY MAXIMIZES THE FULL CONDITIONALLY-I.I.D. TWO-PROTOCOL CONSTANT, SO NO REWEIGHTING RAISES $c'$. GENERAL EXAMPLE-5 FUNCTIONS PRODUCE STRICTLY LARGER ENDPOINT CANDIDATES, BUT NO NEW UNION-CLOSED CONSTANT: ONE LOW-COMPLEXITY CANDIDATE SURVIVES ONLY COARSE $A/B$ DIAGNOSTICS, ANOTHER HAS A CERTIFIED NEGATIVE $A$ WITNESS. THE EXACT LIU-LEMMA-8/SAWIN $C_2(\mu)$ OBLIGATION IS RECORDED AND REMAINS OPEN
+
+* **Outcome first.** (1) **PROVED:** for every $\beta\in[0,1]$, let
+  $m_{\rm full}(\beta)$ be the infimum of positive $m$ for which the existing
+  Gilmer/Example-5 numerator dominates $(M/m)\langle\mu,h\rangle$ for every
+  Borel law and every conditionally i.i.d. self-coupling. Then
+  $m_{\rm full}(\beta)\ge m^*$, equality holds at $\beta^*$, and the inequality
+  is strict for every $\beta\ne\beta^*$. Therefore $\beta^*$ is the unique
+  maximizer of $1-m_{\rm full}(\beta)$ and its maximum is the already-certified
+  $c'=1-m^*$. (2) **COMPUTATIONAL-EVIDENCE only:** the general-$f$ scan finds
+  active endpoint values above $c'$, but none is adopted as a bound.
+  $f(x)=\frac45x(1-x)$ gives
+  $1-m=[0.3828456559906540717200313281220140773594\mathbin{+/-}4.03\mathrm e{-41}]$
+  and no negative witness on the requested 400-bit diagnostics; continuum
+  $A,B\ge0$ remains **OPEN**. The larger scalar value from
+  $f(x)=x^2(1-x)$ cannot use this sufficient route because
+  $A(1/2,1)<0$ is **MACHINE-VERIFIED**. (3) The exact Sawin three-protocol
+  obligation is stated but deliberately not attempted; it remains **OPEN**.
+* **Why $\beta^*$ is unique.** For the one-component endpoint ray
+  $\Gamma=\mu_w^{\otimes2}$,
+  $\mu_w=(1-w)\delta_0+w\delta_x$, put
+  \[
+    D_\beta(x)=(1-\beta)h(x^2)+\beta h(\pi(x,x)),\qquad
+    r_\beta(x)=\frac{x h(x)}{D_\beta(x)}.
+  \]
+  Then $N_\beta=w^2D_\beta$, $H=w h(x)$, $M=wx$, so every admissible $m$
+  is at least $r_\beta(x)$. At the exact quartic root $x^*$,
+  $\pi(x^*,x^*)=1-x^{*2}$ and hence $r_\beta(x^*)=m^*$ for every $\beta$.
+  With $a'=2x^*h'(x^{*2})$ and
+  $b'=\pi_{\rm diag}'(x^*)h'(\pi(x^*,x^*))$, exact differentiation gives
+  \[
+    r_\beta'(x^*)=
+    \frac{-x^*h(x^*)(b'-a')}{h(x^{*2})^2}(\beta-\beta^*).
+  \]
+  Arb proves $b'-a'<0$, so the coefficient is positive and every
+  $\beta\ne\beta^*$ has a nearby ray with $r_\beta(x)>m^*$. At $\beta^*$,
+  the pinned mixture theorem gives the reverse inequality for every
+  conditionally i.i.d. coupling. The exact off-$\beta^*$ value of
+  $m_{\rm full}(\beta)$ remains **OPEN**, but cannot affect this maximizer
+  conclusion. This also corrects the premise: the beta-free expression
+  $xh(x)/h(x^2)$ is compatible with positive-$\beta$ tightness only at $x^*$;
+  the genuine moving endpoint root has $D_\beta$ in its denominator.
+* **General Example-5 derivation and scan.** For differentiable valid
+  $0\le f(x)\le\min(x,1-x)$, set $z_f=x^2+f(x)^2$ and
+  $D_{\beta,f}=(1-\beta)h(x^2)+\beta h(z_f)$. Endpoint tightness and
+  fixed-mean stationarity are
+  \[
+    p=\frac{h(x)}{D_{\beta,f}(x)},\quad m=px,\quad
+    \frac{D_{\beta,f}'(x)}{D_{\beta,f}(x)}
+      =\frac1x+\frac{h'(x)}{h(x)}.
+  \]
+  If the protocol-weight optimum is interior and this branch is active,
+  envelope stationarity gives $h(z_f)=h(x^2)$; on the nontrivial branch,
+  $2x^2+f(x)^2=1$, $2/3\le x<1/\sqrt2$,
+  $p=h(x)/h(x^2)$, and
+  $\beta=(C-a')/(b'-a')$ with the full
+  $b'=(2x+2ff')h'(x^2+f^2)$ term. A deterministic binary64 discovery scan
+  tested $x(1-x)^k$ for $1\le k\le8$, $x^2(1-x)$, and all 860 rational
+  mixtures $x(1-x)[a+b(1-x)]$ on
+  $a,b\in\{0,1/40,\ldots,1\}$, $a+b\le1$; 512 mixtures had an interior
+  $\beta$ and endpoint scalar above $c'$, and 75 also passed the exact
+  $t=1$ necessary $A$-face test. These scan rows are not certificates.
+* **Promoted diagnostics, all at 400 bits.** For
+  $f=\frac45x(1-x)$, a 65-by-65 rational point lattice certified 4096
+  nonnegative non-structural $A$ values and 4160 nonnegative
+  non-structural $B$ values, with no negative or unresolved point. The
+  64-by-64 exact-rational cell diagnostic certified 456 $A$ cells and
+  2150 $B$ cells, found no negative cell, and left respectively 3640 and
+  1946 unresolved. This is **COMPUTATIONAL-EVIDENCE**, not a continuum
+  certificate. For $f=x^2(1-x)$, the point lattice found 126 certified
+  negative $A$ values; the exact face identity
+  $A(s,1)=[1-\beta-1/(2m)]h(s)$ gives the stronger witness
+  $A(1/2,1)=[-0.0243416410487884835210909357501\mathbin{+/-}4.17\mathrm e{-32}]$.
+* **Exact Sawin obligation and named obstruction.** To exceed the current
+  $c'$, one needs $c_{\rm new}>c'$, $C>1$, and fixed nonnegative weights
+  summing to one such that, for every $\mu$ with
+  $\mathbb E_\mu S\le c_{\rm new}$,
+  \[
+    w_1\inf_{C_1(\mu)}\mathbb E g_1+
+    w_2\inf_{C_2(\mu)}\mathbb E g_2+
+    w_3\inf_{C_3(\mu)}\mathbb E g_3
+    \ge C\,\mathbb E_\mu h(S).
+  \]
+  Here $C_1(\mu)=\{\mu^{\otimes2}\}$; conservatively,
+  $C_2(\mu)$ is every symmetric self-coupling and
+  $g_2(s,r)=h(\max\{s,r,\min(s+r,1/2)\})$; $C_3(\mu)$ is the self-couplings
+  in the weak closure of the convex hull of symmetric rank-one measures.
+  Liu Lemma 8 uses weights
+  $((1-\alpha^*)(1-\beta),\alpha^*(1-\beta),\beta)$ and his Example-4
+  third kernel. His result is non-explicit and only exceeds the older
+  $c^*=0.3823455$, not the current $c'$. The unresolved object is the
+  uniform infimum over the infinite-dimensional $C_2(\mu)$ class; Sawin's
+  protocol is not conditionally i.i.d., so the proved $A/B$ mixture theorem
+  does not control it.
+* **Artifact and exact pins.** [`uc/liu9_cprime_frontier.py`](uc/liu9_cprime_frontier.py)
+  has sha256 `fcacffc1c33662f12068c4a06054304ba344f56508090e1625178264ac49c8b3`.
+  [`liu9-cprime-frontier.json`](uc/verification/results/liu9-cprime-frontier.json)
+  has file sha256 `81ee7a5a76c45c0229b750babd32f2a77aebcdf95f24f2df1fa8af7899257bb0`
+  and internal digest
+  `8dc1bfe8cb32f45ca1174c6b960623486a1ba8f9dd5bfac2ea839a095988182b`
+  (compact sorted JSON, `report_sha256` omitted, trailing newline).
+  The artifact rechecks the pinned mixture theorem
+  `329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3`
+  (module
+  `3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab`),
+  exact binding source
+  `feb3a1aaded3cff0805d852c4349ff7142c55e24be4b2da3c0a27f8e7f58cac6`,
+  audited objective source
+  `f043b8c99cb26c62804c6f4f29190065a7a876e47d5e7c27c9e6f555c4098c6c`,
+  and Liu arXiv:2306.08824v1 PDF
+  `e7463fcb0d3fdfefb411289282ab344a6fee718e4f4368c1dd3cc832d0e17d5b`.
+* **Mutations and independent review.** Four mutations were caught: wrong
+  $(1-x)$ versus $(1-x)^2$ in $\pi(x,x)$; reversed frontier-derivative
+  direction; omitted $2ff'$; and omitted $-\beta$ in the $A(s,1)$ face.
+  A read-only `code-reviewer` independently re-derived the frontier,
+  general-$f$ equations, protocol validity, $A/B$ formulas and Sawin
+  transcription and reported no mathematical defect. A subsequent advisory
+  did catch a verification defect: the first symbolic frontier residual was
+  an affine tautology and did not encode stationarity at $\beta^*$. The final
+  version solves the symbolic stationarity equation, proves that solution
+  equals the binding formula for $\beta^*$, and only then factors the
+  derivative about it; both independent residuals are zero. The same
+  hardening restored the general-$\beta$ tightness list, derives the mpmath
+  scale from the same exact rational $\ell$, and asserts every reported
+  point/cell diagnostic count. A separate `fable` review found no
+  mathematical defect; three read-only scouts checked the beta frontier,
+  general-$f$ system, and Liu's primary-source $C_1/C_2/C_3$ definitions.
+* **Verified.** The final module ran twice under
+  `nice -n 19 ./.venv/bin/python -I -B`, both runs exited 0, printed
+  `CPRIME_FRONTIER PROVED`, caught all four mutations, emitted internal digest
+  `8dc1bfe8cb32f45ca1174c6b960623486a1ba8f9dd5bfac2ea839a095988182b`,
+  and produced byte-identical files (file sha256
+  `81ee7a5a76c45c0229b750babd32f2a77aebcdf95f24f2df1fa8af7899257bb0`).
+  An independent canonicalizer reproduced the internal digest and module pin.
+  The required full command
+  `nice -n 19 ./.venv/bin/python -I -B uc/verification/replay_h2_chain.py`
+  exited 0 in 579.07 s: `REPLAY_H2_CHAIN PASS`, 127 checks passed, zero
+  failed, and all 14 regenerated H2-chain outputs were byte-identical to the
+  seven pinned artifacts.
+  The extended `/tmp/verify_all.py` then exited 0: the new file/internal/module
+  hashes matched, all state sources resolved, both ledger rows remained
+  well-formed, the label/no-certificate boundaries held, and the adopted row
+  named the unique maximizer and Sawin obstruction.
+* **Ledger changes.** This entry, the adopted-target row in `RESULTS.md`, and
+  `uc/state.json` distinguish the closed same-pair frontier from the
+  candidate-only general-$f$ scan and the unattempted Sawin obligation. No
+  campaign was resumed or created.
+* **Cost.** Frontier generation and both 400-bit diagnostics: 1.5 s per run,
+  single-core at niceness 19. Full H2 replay: 579.07 s. Independent reviews
+  and derivation checks ran read-only.
+
+### H2-REFEREE-PACKAGE (2026-09-02) — THE PROVED CHAIN IS NOW A REPLAYABLE, SELF-CONTAINED REFEREE PACKAGE: `uc/verification/replay_h2_chain.py` RE-RUNS ALL SEVEN ARTIFACTS TWICE BYTE-IDENTICALLY AND ASSERTS 21 PINNED HASHES AGAINST THIS LEDGER; `uc/H2_PAPER/main.tex` (17 pp.) STATES AND PROVES THE REDUCTION, `R,A >= 0`, `Phi >= 0 => B >= 0`, THE GENERAL-MEASURE LIFT, THE MIXTURE THEOREM, AND `c' = 1 - m*`, WITH LIU'S PROPOSITION 3 RE-DERIVED SO THAT HYPOTHESIS 1 IS VISIBLY UNUSED. BLANK-CONTEXT ADVERSARIAL REVIEW OF THE MANUSCRIPT AGAINST THE ARTIFACTS: NO MATHEMATICAL DEFECT; TEN PRECISION/WORDING FINDINGS APPLIED; ONE REPRODUCIBILITY BLOCKER (TWO MODULE HASHES WERE NEVER PINNED HERE) CLOSED BY THIS ENTRY
+
+* **Outcome first.** (1) `uc/verification/replay_h2_chain.py` (sha256
+  `d6bba185117f4f92edf91edae019ba0182c02cb950c81b5496b831604346d3db`), standard library only: re-runs each of the seven
+  modules from the repository root under `-I -B` (default twice), requires every run to
+  reproduce the on-disk artifact byte for byte (modules with `--output` write to a scratch
+  directory; the one fixed-path module is restored from the pre-run bytes on any
+  divergence), recomputes every artifact's file hash, internal digest (in the module's own
+  canonicalisation: compact sorted JSON with `report_sha256` omitted, plus a trailing newline
+  for five of them, and with the field blanked for `liu9-psi-reduction`) and module hash,
+  checks the cross-artifact pins (the audit pins the boundary certificate; the lift and the
+  mixture theorem pin their dependencies with `match: true`), and asserts all 21 values
+  against this file; nonzero exit on any mismatch. (2) [`uc/H2_PAPER/main.tex`](uc/H2_PAPER/main.tex)
+  (sha256 `335ec00f6b3f729caf2acc7f3109cc94f60c4af52eea8bf09e67cadf0cf6ac11`; `main.pdf` built from it with pdflatex, not
+  pinned because pdflatex embeds timestamps): self-contained statements and proofs, every
+  theorem labelled PROVED / MACHINE-VERIFIED / COMPUTATIONAL-EVIDENCE and every
+  machine-assisted theorem citing its artifact with the full file, internal, and module
+  sha256. (3) Review by a blank-context `code-reviewer` (`PaperSkeptic`, 40 min, read-only):
+  hashes and digests recomputed with its own canonicalisation code, one full replay run, the
+  42 mutations recounted, the constants re-solved at 100 digits, every quoted enclosure
+  checked for containment, the identities re-derived in sympy, Liu's text compared line by
+  line, H1 non-use checked across the manuscript, the modules and the driver.
+* **The 21 pins (recomputed from disk by the script that wrote this entry).**
+  | artifact | module | file sha256 | internal digest | module sha256 |
+  |---|---|---|---|---|
+  | `liu9-h2-reduction.json` | `liu9_h2_reduction.py` | `c63ae94e4fbd2397e19ea9e2a4e2c155f1e02265852d0aacad5c97d70f078e3a` | `c40d27be152217bd0d862bf54c4a957ab7bcad22e6b2f7747cf7462e9bc7a397` | `99840c239eb60c3db3a1093827f3c9849c5d010debec70eb13661a87e0418fe0` |
+  | `liu9-psi-reduction.json` | `liu9_psi_reduction_audit.py` | `9fb5766f1c3110cce9b231d2f2f1b7c1eec67bc3d6ac7602be50fc72b00c07a3` | `405eea478f2146fde762f749dd4a8f6986be79f0be47f56cb2cc24daf64b2af0` | `18602dc7c8599ab6752583535ed5809df571deb8d8851e4accb4d07362e927bb` |
+  | `liu9-h2-twovar.json` | `liu9_h2_twovar_lemmas.py` | `a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb` | `4ddbf0f38ca881dde204f086076424617edcdbe6a2826dfa945ef963ebdf70c6` | `2afe8e242aa5f506c6d54967a133fe246a7e5cb8bad4961b9860e93b86f67163` |
+  | `liu9-h2-boundary.json` | `liu9_h2_boundary_layer.py` | `e4d6d96df3ae435800cef5739fb1ae45b98febf539ab418df116ceb03bd481c9` | `389804b249cd8b16a47f3c6ab64a70ad4a9afe78097b4a8c6739759804c9eaaa` | `fcb3ed55e8bd9ad6d2f180f5ffa79f192dacc940a5c7506eca2a85aa612905e6` |
+  | `liu9-h2-phi-audit.json` | `liu9_h2_phi_audit.py` | `f2359fa3b3b08bab29965253d777dcf32e4b1aee1e0bacbfb0924b86ac163996` | `a515102c1807849b606bf4a681bd0a67173445b1a22610d397bb779440222cab` | `b1d9ed3d9da9e7c99c026843b683447809fb38d28dba4c49a087729bf66cb50c` |
+  | `liu9-h2-general-lift.json` | `liu9_h2_general_lift.py` | `eb4874d39904593bddc3f2ae638d1bad6756a19d4ebf6e06a60427b6bb7ac1ce` | `3ff1e797cd5dbcc4273d9f002b9e540b58829d237b2d344f266e0bea46c02bc8` | `b265e726d110098a09c00de331c4433454973ba741966b3018b77afcc225b5c3` |
+  | `liu9-h2-mixture-theorem.json` | `liu9_h2_mixture_theorem.py` | `329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3` | `b108b781224dff601ffcf3f562703d3b620e7da6d89cf6d000b6ccbd06a4773b` | `3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab` |
+  The module hashes of `liu9_h2_reduction.py` and `liu9_psi_reduction_audit.py` had never
+  been pinned in this ledger (their artifacts carry no `tool_sha256`); the driver's first run
+  (all 14 replays byte-identical, 125 checks passed) failed exactly those two ledger-presence
+  checks, and the reviewer independently reported the same BLOCKER. Pinning them here closes
+  it: the replay recorded under **Verified** ran after this entry was written.
+* **What the manuscript proves, and how.** Section 2: the constants as exact objects
+  (`x*` the unique root of `z^4 - 2z^3 + 3z^2 - 1`, which is the relation
+  `x^2 + pi(x,x) = 1`, so `K(x*,x*) = h(x*^2)`; `p*`, `m*`, `beta*` in closed form; the
+  tight point `R(x*,x*) = 0`, `grad R = 0` by algebra, Hessian certified). Section 3: the
+  reduction (C1), (C4)–(C6) proved in the algebra of pairings for arbitrary Borel probability
+  measures (bilinearity, symmetry, product rule), so `A >= 0` and `B >= 0` imply H2 with no
+  density argument; the refuted entrywise route recorded. Section 4: `R >= 0`, `A >= 0` by
+  the stratification (faces, near-zero strip, `(1,1)` corner, Taylor ball at `(x*,x*)` with
+  `rho = 3 lambda / (2 sqrt 2 T_3)`, exhaustive Arb cover on the 14 remaining rectangles).
+  Section 5: `Phi >= 0` from L0–L5 (the exact identity, `kappa >= 2` via `sinh x >= x`,
+  the endpoint derivative bounds N0/N1, the cell rules (D)/(Q), theta = 9/4, 30,974 cells,
+  the two refutation witnesses, the independent audit at theta = 23/10) and `B >= 0`.
+  Section 6: Theorem B for all Borel probability measures (the lift). Section 7: the mixture
+  theorem via (I)–(III), the two-component case, and the sharpness family
+  `(1-w) delta_0 + w delta_{x*}` (equality at every mean). Section 8: Liu's Proposition 3
+  re-derived from Definition 1 and Example 5 (protocol lemma; Gilmer's protocol gives
+  `mu_i (x) mu_i`, Example 5 with `f(x) = x(1-x)` gives `Pi(0,0) = pi(1-s,1-t)` and a
+  conditionally i.i.d. `(S_i, T_i)` given `U^{i-1}`); the contradiction uses only
+  `H(X^n) >= ((1-c)/m*) H(X^n)` with `H > 0`, so no per-coordinate strictness is needed;
+  Theorem 9, Lemma 11, Theorem 12 and Section V-A of Liu are not invoked. Section 9: the
+  value of `c'` and Liu's misprints ((91), (93), (94) are wrong in their last digits; (92)
+  agrees). Section 10: the artifact table, the replay command, labels, scope (nothing about
+  `1/2`; sharpness shows `c'` is the best this protocol pair gives at `beta*`), and why
+  interval subdivision alone could never have closed H2.
+* **Review findings, all applied before the final build.** (1) BLOCKER: the two unpinned
+  module hashes (above). (2) BLOCKER-by-contract, MINOR in substance: several quoted Arb
+  enclosures had rounded midpoints with the artifact's `1e-51` radii and were therefore not
+  enclosures — every quoted ball is now either an exact copy of the artifact string (the
+  five 45-digit constants, checked programmatically) or the midpoint rounded to `k` digits
+  with radius `10^-k` (containment verified in mpmath), and every one-sided bound is a floor
+  or ceiling of the artifact value (the corner constant for `R` and `rho` for `A` had been
+  rounded the wrong way). (3) Remark 2.5 claimed that moving `beta` at fixed `m` makes
+  `R(x*,x*)` negative to first order; false — `R(x*,x*) = 0` for every `beta`, the
+  perturbation breaks stationarity and creates nearby negative values at second order.
+  (4) Lemma 2.4 had inferred `A`'s Hessian positivity from `A(s,s) = R(s,s)`; invalid —
+  `A`'s own certified entries (`A_ss = 0.5934...`, `A_st = -0.3366...`, same
+  `lambda_min`) are now cited, and the diagonal-derivative identity is restricted to
+  `0 < s < 1`. (5) The local-square distance bound is `sqrt2 (w + eta)`, as in the
+  artifact, not `sqrt2 w + eta`. (6) `Lambda`, L1, L2 and the quantitative `Phi` bound are
+  stated on the open square (undefined at `s = 0`). (7) The introductory theorems and
+  Theorem 9.1 lacked labels/certificates. (8)–(10) wording: `phi` is forced only at the
+  diagonal zeros of `R`; `B` vanishes on the axes too; the abstract's "reduces exactly to"
+  now reads "sufficient pair"; the ratio statement is qualified by `<P,h> > 0`; the
+  printed-minus-certified signs for Liu's decimals. The reviewer's final verdict:
+  "The mathematical theorem chain survived this scoped adversarial review; the UNSOUND
+  verdict is solely the current reproducibility-package BLOCKER" — closed here.
+* **Ledger changes.** `RESULTS.md`: the H2 row and the Fourth result gain the referee
+  package (manuscript + driver, hashes); the adopted-target row records that the write-up
+  is done and only external refereeing remains. `uc/state.json`: sources extended by the
+  manuscript and the driver, `updated_by: h2-referee-package`. This entry pins all 21
+  chain hashes plus the driver and the manuscript.
+* **Post-review hardening of the driver (same day).** Two advisory findings applied: the
+  fixed-path module's pinned bytes are now snapshotted to the scratch directory before each
+  run and restored in a `finally` whenever the file differs afterwards (previously an
+  in-memory snapshot, lost if the driver itself died mid-run), and the scratch directory is
+  kept and its path printed whenever any check fails, so divergent outputs survive as
+  witnesses (previously `TemporaryDirectory` deleted them). Both paths exercised with fake
+  divergent modules (garbage written into the pinned `liu9-psi-reduction.json` was reverted
+  byte-for-byte, the divergent bytes stashed, `main()` exited 1 and kept the scratch
+  directory). The driver hash cited above is the hardened one; the full two-run replay
+  with it is the second line under **Verified**.
+* **Verified.** Driver: first run before this entry (two replays per module) —
+  reduction 1.1 s, psi-reduction 245 s, twovar 12 s, boundary 11 s, phi-audit 49 s, lift
+  2.4 s, mixture 1.5 s per run, all 14 outputs byte-identical to the pinned artifacts, 125
+  checks passed, the 2 ledger-presence failures above. The reviewer's independent
+  `--runs 1` replay: byte-identical, 111 passed, the same 2 failures. The post-entry run is
+  recorded in the line below (appended by the run itself, not by hand).
+  Post-entry run (generated from the driver's `--report` JSON): `REPLAY_H2_CHAIN PASS`, exit 0, 127 checks passed, 0 failed, runs=2, every output byte-identical to its pinned artifact; wall seconds per run — boundary 10.14/10.17 s; general-lift 2.12/2.13 s; mixture-theorem 1.32/1.34 s; phi-audit 43.44/43.77 s; psi-reduction 219.3/218.99 s; reduction 0.96/0.72 s; twovar 10.51/10.59 s.
+  Hardened-driver run (generated from its `--report` JSON): `REPLAY_H2_CHAIN PASS`, exit 0, 127 checks passed, 0 failed, runs=2, every output byte-identical, scratch directory deleted on success; wall seconds per run — boundary 10.09/10.1 s; general-lift 2.14/2.09 s; mixture-theorem 1.31/1.34 s; phi-audit 44.09/43.65 s; psi-reduction 218.63/215.75 s; reduction 0.79/0.74 s; twovar 10.58/10.46 s.
+* **Cost.** Replay ~11 min single-core (psi-reduction dominates); manuscript ~2 h
+  including 12 compile cycles; review 40 min; the ledger edit script recomputed and asserted
+  every hash it wrote.
+
+### UC-CONSTANT-UNCONDITIONAL (2026-09-02) — LIU H2 PROVED FOR ALL BOREL PROBABILITY MEASURES AND FOR EVERY CONDITIONALLY I.I.D. COUPLING, WITH THE UNIFORM CONSTANT M/m* AND NO MEAN CONSTRAINT; BOTH OF LIU'S HYPOTHESES ARE BYPASSED AND **THE UNION-CLOSED CONSTANT c' = 1 - m* = 0.38270908791873502993... IS UNCONDITIONAL** (PROVED, INTERNALLY AUDITED BY TWO ADVERSARIAL READERS, NOT YET EXTERNALLY REFEREED). THE CONSTANTS ARE EXACT ALGEBRAIC OBJECTS: THE FIRST DELIVERY INSTANTIATED THEM AT 100-DIGIT TRUNCATIONS AND WAS REFUTED BY A CERTIFIED -5.95e-102 AT LIU'S MINIMISER. LIU'S PRINTED (93) IS WRONG IN ITS LAST TWO DIGITS
+
+* **Outcome first.** Two new certificates and one audited note.
+  (1) `uc/liu9_h2_general_lift.py` ->
+  [`liu9-h2-general-lift.json`](uc/verification/results/liu9-h2-general-lift.json),
+  `claim_status: PROVED`: at the exact `(beta*, m*)`, `gap(mu,nu,q) >= 0` for
+  ALL Borel probability measures `mu, nu` on `[0,1]`, all `q`, whenever
+  `M >= m*`. File sha256 `eb4874d39904593bddc3f2ae638d1bad6756a19d4ebf6e06a60427b6bb7ac1ce`,
+  internal `3ff1e797cd5dbcc4273d9f002b9e540b58829d237b2d344f266e0bea46c02bc8`, module
+  `b265e726d110098a09c00de331c4433454973ba741966b3018b77afcc225b5c3`. (2) `uc/liu9_h2_mixture_theorem.py` ->
+  [`liu9-h2-mixture-theorem.json`](uc/verification/results/liu9-h2-mixture-theorem.json),
+  `claim_status: PROVED`: for EVERY conditionally i.i.d. coupling
+  `Gamma = int nu_u (x) nu_u dP_U` of every law `mu`,
+  `(1-beta*)<mu(x)mu,h(xy)> + beta* int <nu_u(x)nu_u,h o pi> dP_U >= (M/m*) <mu,h>`,
+  with NO mean constraint. File sha256 `329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3`,
+  internal `b108b781224dff601ffcf3f562703d3b620e7da6d89cf6d000b6ccbd06a4773b`, module
+  `3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab`. (3)
+  [`uc/UC_CONSTANT_UNCONDITIONAL_2026-09-02.md`](uc/UC_CONSTANT_UNCONDITIONAL_2026-09-02.md)
+  (sha256 `f4451a1c01ea3c32df9bce868056bce4a92d9f64d1c6957dc964bb8db69ab9b4`): the chain from a
+  union-closed family to the constant, every step labelled, plus both reviews.
+  All hashes recomputed from disk by the script that wrote this entry, pinned
+  and asserted; every run byte-identical (three runs of each final module).
+* **Step 2 — the lift, and why no density argument.** The chain C1/C5/C6 is an
+  identity in the free algebra of pairings: bilinearity, symmetry of every
+  kernel, and the product rule `<mu(x)nu, f(s)g(t)> = <mu,f><nu,g>` are the only
+  facts used, and all hold for arbitrary Borel probability measures because every
+  kernel (`h(xy)`, `K = h o pi`, `D_M`, `R`, `P2`, `Q2`, `phi`, `A`, `B`) is
+  continuous on the compact square (L0: `h'' = -1/(u(1-u))`, `h(1/2) = log 2`,
+  `1 - pi(1-a,1-b) = a(1-b) + b(1-a) + ab(a+b-ab)`). Integrating the certified
+  pointwise `R >= 0`, `A >= 0`, `B >= 0` against product probability measures
+  gives the theorem outright. The prescribed weak-density-plus-modulus route was
+  therefore not taken: it would prove the same thing by a limit that is never
+  needed, and `h` is not Lipschitz at the endpoints. Weak continuity is recorded
+  as a non-load-bearing corollary. The product coupling `g_ij = a_i b_j` is an
+  exact polynomial identity in the masses (sympy at seven sizes; the general
+  argument is one line), and the general functional is tied to the audited
+  nine-variable transcription `liu9_objective.evaluate_arb` to `4e-119`.
+* **Step 4 — what H2 unlocks: the constant.** Liu's Theorem 13 obtains `c'`
+  under two hypotheses. Reading the paper (`LIU_H1/literature/pdfs/`, Sections
+  II–V): H1 (V-A) enters only Theorem 12, the Krein–Milman reduction of the
+  conditionally i.i.d. couplings to three shared-mass atoms; H2 (V-B) is the
+  assertion that the nine-parameter optimum is `>= 1`. Proposition 3 needs, for
+  every `c < c'`, a uniform `C > 1` in the two-protocol inequality over the
+  ACTUAL induced couplings, which (Liu, after Example 5) are conditionally
+  i.i.d. given `U^{i-1}`, i.e. general mixtures. So the theorem needed is the
+  mixture form, and it comes from three identities:
+  (I) `beta sum_k w_k K_kk - beta <mu(x)mu,K> = (beta/2) sum_kl w_k w_l <(nu_k - nu_l)^(x)2, K>`;
+  (II) `<mu(x)mu,(1-beta)h(xy) + beta K> - <mu,h> = <mu(x)mu,R> + ((M-m)/m) <mu,h>`;
+  (III) `<mu(x)mu,R> + channel = sum_kl w_k w_l <nu_k(x)nu_l,A> + sum_k w_k <nu_k(x)nu_k,B> + Var_w(<nu_k,phi>)`.
+  (III) is `>= 0` from `A >= 0`, `B >= 0`, and a variance; `R >= 0` is not even
+  used. Hence `numerator >= (M/m*) ehx` always, which is `gap >= 0` for
+  `M >= m*` (H2 for every mixture) and supplies `C = (1-c)/m* > 1` for `c < c'`
+  with no limiting argument — the strictness Liu's "optimum `>= 1`" leaves
+  implicit. The two-component case is exactly the earlier chain (variance
+  `q(1-q)(F_0 - F_1)^2`). Consequences: Theorem 9, Lemma 11, Theorem 12, Section
+  V-A, and this ledger's own H1 theorem are NOT load-bearing for the constant.
+  The chain (protocol construction, `X~^n ~ X^n`, chain rule, conditioning,
+  `H((X~ v Y~)_i | pasts) = E h(Pi_(S_i,T_i)(0,0))` with fresh `U_i`, the
+  conditionally-i.i.d. law of `(S_i,T_i)`, the union-closed entropy bound, the
+  trivial families) is written out and was re-derived independently by the
+  second reviewer, step by step.
+* **The constant.** `c' = 1 - m*`, `m* = p* x*`, `x*` the root of
+  `x^4 - 2x^3 + 3x^2 - 1`, `p* = h(x*)/h(x*^2)`; certified enclosure
+  `[0.382709087918735029930312902098972611626381433 +/- 4.95e-46]` from the 70-digit bracket (re-certified in
+  the modules: `f(lo) < 0 < f(hi)`, `f' > 0`), so `c' > 0.38270908791873 > c* =
+  0.3823455` (Sawin–Yu–Cambie) and above this ledger's certified
+  `psi + 3e-4 = 0.3822660112501052`. **Liu's printed (93) `0.382709087918741` is
+  wrong in its 14th–15th digits** (it exceeds the root-defined value by
+  `5.97e-15`; the second reviewer recomputed the constants at 170 digits and
+  confirmed); `RESULTS.md` had repeated that decimal and now cites the certified
+  value. No priority claim beyond the bounded literature search.
+* **The incident that mattered — constants are exact objects.** The first
+  delivery of the lift declared the binding's 100-digit `mpf` solution, converted
+  exactly to rationals, to be "the constants". `LiftSkeptic` (blank-context,
+  read-only, 900-bit Arb) refuted the theorem AT THOSE RATIONALS: Liu's
+  minimiser built from them has certified gap `[-5.9548013684e-102 +/- 4.85e-222]`
+  (14,233 configurations searched), and my own W1 had accepted `|gap| <= 1e-90`
+  regardless of sign — a witness that hid its own counterexample. The cause is
+  structural: `R >= 0` is TIGHT, with an exact nondegenerate interior zero at
+  `(x*,x*)` proved by algebra in `liu9-h2-twovar.json` (`R(x*,x*) = 0` from
+  `h(pi(x*,x*)) = h(x*^2)` and `m* = x* h(x*)/h(x*^2)`; `grad R = 0` from the
+  definition of `beta*`), so perturbing the constants cannot be assumed harmless
+  (lowering `m` or moving `beta` at fixed `m` breaks it to first order; raising
+  `m` alone does not, by L2). Repairs, then re-audited SOUND: the constants are
+  defined mathematically in the artifact and propagated as Arb balls from the
+  re-certified bracket through the closed-form `p*`, `m*`, `beta*` (Liu
+  (87)–(90)), cross-checked against the binding's propagation and against
+  `twovar`'s `constants` block (same quartic string, same closed form for `m`,
+  overlapping enclosures and brackets; a mismatch sets `CONSTANTS-MISMATCH`);
+  every theorem-validity sign claim is evaluated at the balls; the rationals are
+  serialised as exact fractions and used only as test points for parameter-free
+  identities; W1a is PROVED by algebra with the ball enclosure (`[+/- 4.5e-69]`)
+  as consistency check; W1b records the reviewer's counterexample as a certified
+  negative and a seventh mutation; `liu9_binding.py` and `liu9_objective.py` are
+  pinned. Lesson kept beside the `ReductionAudit` one: a proximity test is never
+  an equality test, and a tight theorem is a theorem about exact constants.
+* **Reviews.** `LiftSkeptic`: UNSOUND -> repaired -> caught a second overclaim
+  ("false for every perturbation"; refuted via L2) -> SOUND, hashes recomputed
+  by the reviewer. `ConstantSkeptic` (mixture theorem + note): SOUND, no
+  BLOCKER/MAJOR/MINOR; re-derived (I)–(III) for general `K`, ran the exact check
+  at `K = 1, 5, 8`, wrote out the Markov-kernel case, verified every step of
+  Proposition 3, Example 5 and the mean direction, and attacked with 27,006
+  random mixtures (`K <= 8`, `<= 6` atoms per component, atoms at `0`, `1`,
+  `10^-k`, weights to `9e18:1`, NO mean filter, all at 170 digits): no certified
+  negative; smallest nonzero-entropy margin `3.57e-53`, certified positive. Its
+  four nits (two X1 mutants share one error polynomial; inherited provenance
+  wording; "polynomial" vs "rational-function" identities; `setdefault` thread
+  environment) are applied in the final versions.
+* **Ledger changes.** `RESULTS.md`: row 509 -> PROVED for all measures and
+  couplings; the "OPEN scope … remains conditional" paragraph of the Second
+  result replaced; new **Fourth result** section; a pointer under the headline;
+  two rows in the theorem-status table; a new adopted-target row (external
+  refereeing, then DISCOVERY on improving `c'`). `uc/state.json` updated
+  (`updated_by: uc-constant-unconditional`). `RESEARCH_STATUS.md`: a dated
+  subsection at the head of the H2 material, a readiness row, and next actions
+  3/5 rewritten, and the stale "remains conditional" paragraph superseded in place. `README.md` map row for `uc/` updated. The frozen partial `liu9-h2-phi.json` is untouched.
+* **Verified.** Each final module run three times from the repo root under
+  `nice -n 19 ./.venv/bin/python -I -B`, byte-identical; both reviewers reproduced
+  the final artifacts byte-identically and recomputed the hashes; `/tmp/verify_all.py`
+  sweep after this edit (all cited hashes match disk, all paths resolve, internal
+  digests reproduce, no stale phrases in row 509).
+* **Cost.** Lift ~2.5 s, mixture ~1.5 s per run; five hash cycles of the chain
+  during review; the two reviews ran 22 and 37 minutes. Most of the session was
+  adversarial review, not computation — as it should be for a headline constant.
+
+### LIU-H2-PAIRED-CLASS-PROVED-AND-AUDITED (2026-09-02) — THE 2^-14 ENDPOINT LAYER IS GONE: `Phi >= 0`, HENCE `B >= 0`, IS PROVED ON ALL OF [0,1]^2 BY A SINGLE EXACT IDENTITY PLUS `kappa >= 2`, WITH `kappa -> +infinity` AT EVERY BOUNDARY, SO THE "ENDPOINT REMAINDER LEMMA" NEVER EXISTED. **LIU HYPOTHESIS 2 HOLDS FOR THE PAIRED CLASS — EVERY q, EVERY MASS VECTOR, EVERY ADMISSIBLE MEAN M >= m, ARBITRARILY MANY ATOMS, NO SUPPORT RESTRICTION.** INDEPENDENTLY AUDITED (CONSTRUCTIVE + READ-ONLY, ZERO SOUNDNESS FINDINGS); THE AUDIT TOOL ITSELF NEEDED SEVEN REPAIRS BEFORE IT WAS ACCEPTED
+
+* **Outcome first.** New module `uc/liu9_h2_boundary_layer.py` ->
+  [`liu9-h2-boundary.json`](uc/verification/results/liu9-h2-boundary.json),
+  `claim_status: PROVED`, Arb `ctx.prec = 400`, exhaustive 30,974-cell cover
+  (depth 23) with certified endpoint strips, five mutations caught (two of them
+  certified refutation witnesses), two byte-identical runs: file sha256
+  `e4d6d96df3ae435800cef5739fb1ae45b98febf539ab418df116ceb03bd481c9`, internal digest
+  `389804b249cd8b16a47f3c6ab64a70ad4a9afe78097b4a8c6739759804c9eaaa`, tool sha256
+  `fcb3ed55e8bd9ad6d2f180f5ffa79f192dacc940a5c7506eca2a85aa612905e6`. All three recomputed by me from
+  disk; my own runs are byte-identical to the on-disk artifact.
+* **The theorem, quotable.** Composing three machine-verified artifacts —
+  the exact reduction [`liu9-h2-reduction.json`](uc/verification/results/liu9-h2-reduction.json)
+  (file `c63ae94e4fbd2397e19ea9e2a4e2c155f1e02265852d0aacad5c97d70f078e3a`, internal
+  `c40d27be152217bd0d862bf54c4a957ab7bcad22e6b2f7747cf7462e9bc7a397`; independently re-derived with
+  exact zero residuals in [`liu9-psi-reduction.json`](uc/verification/results/liu9-psi-reduction.json),
+  file `9fb5766f1c3110cce9b231d2f2f1b7c1eec67bc3d6ac7602be50fc72b00c07a3`), the two-variable
+  lemmas [`liu9-h2-twovar.json`](uc/verification/results/liu9-h2-twovar.json)
+  (`R >= 0`, `A >= 0` on all of `[0,1]^2`; file
+  `a028ff17ae8492211a2ef9de5721de7f3a0afd8bd45bf7d8d9b77b7c90d2e6eb`, internal
+  `4ddbf0f38ca881dde204f086076424617edcdbe6a2826dfa945ef963ebdf70c6`, tool
+  `2afe8e242aa5f506c6d54967a133fe246a7e5cb8bad4961b9860e93b86f67163`), and the new `B >= 0`
+  certificate above — gives, since
+  `T = <mu,B mu> + <nu,B nu> + 2<mu,A nu> + (<mu,phi> - <nu,phi>)^2 >= 0` and
+  `gap = ((1-q)^2 I00 + q^2 I11)/M + q(1-q) T`:
+  > **Theorem.** Liu Hypothesis 2 holds for the paired class: for every
+  > mixture weight `q in [0,1]`, every mass vector, every admissible mean
+  > `M >= m`, arbitrarily many atoms, and **no restriction on the supports**.
+  > Liu's Hypothesis 2 as stated (Section V-B, nine parameters: three shared
+  > masses, six supports, `q`; `uc/liu9_objective.py`) is the three-atom case.
+  The paired -> general-measure lift (product coupling for finitely supported
+  pairs, weak density for non-atomic laws) was **asserted, not written or
+  checked** at the time of this entry. SUPERSEDED by the entry above
+  (UC-CONSTANT-UNCONDITIONAL, same day): written, machine-checked, PROVED for
+  all Borel probability measures and every conditionally i.i.d. coupling,
+  independently audited.
+* **The mechanism — why the layer was never the hard part.** With
+  `Lam(u) = h(u)/u`, `Lam_st = Lam(pi(s,t))` etc., `delta = (s-t)^2/(1+(1-s)(1-t))^2`
+  and `M_mu = mu(pi_ss) + mu(pi_tt) - 2 mu(pi_st) <= 0` (`mu` decreasing then
+  concave), the exact polynomial identity `pi_ss pi_tt - pi_st^2 = s^2 t^2 (s-t)^2`
+  turns `Phi` into `pi_st^2 [ (Lam_ss - Lam_tt)^2/4 + (log(1+delta) - M_mu)(Lam_st + Lbar)/2 ]
+  - s^2 t^2 (s-t)^2 Lam_ss Lam_tt`; dropping the nonnegative middle term and
+  writing `gamma = log Lam(pi(x,x))`, `Phi >= 0` follows from
+  `kappa(s,t) = (1+(1-s)(1-t)) (gamma(s) - gamma(t))/(t-s) >= 2` via
+  `sinh x >= x`. `kappa` has global minimum `2.394` at `s = t ~ 0.54` (a
+  uniform 20% margin, no tangential zeros) and **diverges to `+infinity` at
+  every boundary of the square**, so the singular-`h'` endpoint problem that
+  blocked interval methods is irrelevant: the only endpoint lemmas needed are
+  elementary lower bounds on `|gamma'|` near 0 and 1 (which are `>= 10^173` at
+  `2^-643`). Certified `kappa >= 9/4` on the whole square; the former
+  `2^-14` layer (exact area `16383/67108864`) closes by inclusion, and the
+  partial [`liu9-h2-phi.json`](uc/verification/results/liu9-h2-phi.json)
+  (file `dfc0cf7bbb25dd6e4e1f49cc1d6124af4e21eaff948b3fa7e4b3f06d399e10c3`) is superseded.
+  Refutation witnesses, both certified as disjoint Arb balls:
+  `kappa(27/50, 27/50 + 10^-6) = 2.3941933... < 12/5` (so a threshold above the
+  true minimum is uncertifiable) and `|gamma'(9/20)| = 1.9105187... < 2` (so the
+  `(1+(1-s)(1-t))` factor is load-bearing; the factor-free diagonal condition
+  fails). `Phi` is parameter-free; `beta > 0` (exact binary fraction from
+  `liu9_binding.solve_equation_parameters(100)`, never re-rounded through
+  `mpf()`) is the only constant used, to pass from `Phi >= 0` to `B >= 0`.
+* **Independent audit — passed.** Two blank-context agents attacked the
+  certificate by different routes. (i) Constructive: `uc/liu9_h2_phi_audit.py` ->
+  [`liu9-h2-phi-audit.json`](uc/verification/results/liu9-h2-phi-audit.json),
+  `claim_status: AUDIT-PASSED`, 400 bits; it re-derives the identity in its own
+  basis (log-form `Lam`, L1 algebra; residual `9.3e-120` in Arb and `1.26e-101`
+  in mpmath at 100 digits, at 22 points down to `2^-40` from the edges and the
+  diagonal), builds its **own** cover at `theta = 23/10` from a 16x16 grid with
+  its own strip lemmas at `1/16` and `15/16` (88,390 cells, depth 17, accepted
+  area `2151/4096` + discarded `1945/4096` = 1 exactly, certified minimum
+  `2.30000075...`), reproduces both witnesses, and catches 6/6 of its own
+  mutations. Final hashes, recomputed by me and byte-identical across the
+  auditor's run and two of mine: file
+  `f2359fa3b3b08bab29965253d777dcf32e4b1aee1e0bacbfb0924b86ac163996`, internal
+  `a515102c1807849b606bf4a681bd0a67173445b1a22610d397bb779440222cab`, audit module
+  `b1d9ed3d9da9e7c99c026843b683447809fb38d28dba4c49a087729bf66cb50c`. (ii) Read-only adversarial
+  review: SOUND, zero findings, all twelve checklist items answered with line
+  evidence; it re-derived the prose-only pieces (N0/N1 strip chains,
+  `M_mu <= 0`, bidegree) independently. Full record, sub-claim table, scope
+  limits: [`uc/H2_PHI_AUDIT_2026-09-02.md`](uc/H2_PHI_AUDIT_2026-09-02.md)
+  (sha256 `1a808988001f6160b149e7fed319884adaf2a2aeee5797784f0fb869ac1da5ec`).
+* **The audit tool needed seven repairs before I accepted it — none touching
+  the certificate.** (1) `nu_strip_lo` lower-bounded `2 - 3x + 2x^2` on
+  `(0, x0]` by `2 - 2x0`, false at `x = x0` for every `x0 < 1/2` (constant
+  `3.976` unjustified; valid `3.860`; true infimum `5.264`) — an overstated
+  bound of the retraction class, though no false acceptance. (2) `MP_DPS = 100`
+  was never applied: mpmath ran at 15 digits, ungated, recording `1.58e-16`
+  against a stated `1e-70` tolerance — the `ReductionAudit` trap again.
+  (3) `partition_area_exact` was `discarded + 1`. (4) docstring debris.
+  (5) missing top-level `sub_claims`. (6) the docstring promised "on failure
+  the failing sub-claim is recorded and the remaining steps still run", but
+  every step-1/2 check raised straight out of `build_audit()` — a false claim
+  about the artifact's own failure path; now every step runs through one
+  fail-soft wrapper and the path is **exercised** by a sixth mutation.
+  (7) a dead duplicate `build_audit` stub and a no-op linter line. Cover
+  counts were unchanged by every repair, as required. Lesson kept: a
+  self-consistent narrow ball proves nothing about the constants or the
+  precision it was built with — always cross-check digits independently and
+  read the precision-setting code, not the constant.
+* **Ledger corrections in this entry.** `RESULTS.md` row 509 previously cited
+  "`23cb0c56...`" for the reduction artifact; that string matched no file
+  hash, internal digest, or tool hash on disk and occurred in no result JSON.
+  Replaced by the recomputed file/internal hashes above. Row 509 status is now
+  **PROVED for the paired class**; `uc/state.json` updated
+  (`updated_by: h2-paired-class-proved-audited`).
+* **Verified.** `nice -n 19 ./.venv/bin/python -I -B uc/liu9_h2_boundary_layer.py`
+  twice (22 s, `BYTE-IDENTICAL`), `uc/liu9_h2_phi_audit.py` three times on the
+  final module (34 s each, byte-identical to the auditor's artifact); every
+  hash in this entry recomputed from disk by the script that wrote it, with the
+  values pinned and asserted; `/tmp/verify_all.py` sweep re-run after the edit.
+* **Cost.** Certificate ~22 s single-core; audit ~35 s per run; the bulk of
+  the session was adversarial review of the audit tool, not computation.
+
 ### H2-REDUCED-TO-A-2^-14-BOUNDARY-LAYER (2026-09-01) — THE CONTINUUM IS ELIMINATED ANALYTICALLY AND THEN ALMOST ENTIRELY PROVED. LIU H2 REDUCES EXACTLY FROM 9 VARIABLES + q + THE MEAN CONSTRAINT TO **TWO TWO-VARIABLE INEQUALITIES** `A >= 0` AND `B >= 0` ON [0,1]^2, VALID FOR ARBITRARILY MANY ATOMS (RANK-ONE DIANANDA SPLITTING). **`R >= 0` AND `A >= 0` ARE PROVED ON ALL OF [0,1]^2** (400-BIT ARB, EXHAUSTIVE STRATA, NO UNRESOLVED CELL); **`B >= 0` IS PROVED ON 99.9756%** OF THE SQUARE PLUS THE WHOLE DIAGONAL AND BOTH AXES. ALL THAT REMAINS OF H2 IS AN ENDPOINT LAYER OF WIDTH 2^-14. x* IS ALGEBRAIC OF DEGREE 4 (x^4-2x^3+3x^2-1=0) AND m = x*h(x*)/h(x*^2). FOUR ROUTES REFUTED WITH EXACT WITNESSES
 
 * **Outcome first.** New module `uc/liu9_h2_reduction.py` ->

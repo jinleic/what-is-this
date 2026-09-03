@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "perp-cross-section-daily-reversal-prefreeze-review",
+  "reviewed_before_candidate_outcome_access": true,
+  "reviewer": {
+    "model": "claude-fable-5 (local Claude CLI alias fable)",
+    "mode": "independent read-only; tools restricted to Read,Grep; no session persistence; no execution",
+    "invoked_by": "quant-frontier (this session) via claude -p, 2026-09-02"
+  },
+  "inputs_reviewed": [
+    "pre_statement_perp_cross_section_reversal.json",
+    "run_perp_cross_section_daily_reversal.py",
+    "test_run_perp_cross_section_daily_reversal.py",
+    "perp-cross-section-prior-window-audit.json",
+    "perp-cross-section-inputs.json (header and sampled entries)",
+    "frontier-loop-policy.json",
+    "focused-crypto-cross-section/strategy.json",
+    "strategy-registry.json",
+    "state.json",
+    "fetch_cross_section_archives.py",
+    "data/raw/binance/um-perp-1h-listing-20260902/download-plan.json (header)",
+    "docs/knowledge-system/WORKSPACE_CONTROL_PLANE.md (campaign lifecycle)"
+  ],
+  "verdict": "APPROVE",
+  "blockers": [],
+  "nonblocking_notes": [
+    "Pinned sha256 values were not independently recomputed by the reviewer; the runner re-verifies every pin before any outcome read and campaign.py init hashes the preregistration.",
+    "state.json next_action said future windows must end before spent frozen-campaign spans; the verbatim owner directive supersedes that sentence (calendars reused, channel novelty only). Addressed: governance.relation_to_state_next_action now records the supersession explicitly.",
+    "The one-hour-lagged diagnostic fallback chain was not spelled out in diagnostics.non_claim. Addressed: the chain is now spelled out verbatim; runner and tests unchanged.",
+    "The owner directive phrase \">= 2,000 independent symbol-date observations\" is reframed as a breadth minimum with date-level inference; disclosed in minimum_sample.rule.",
+    "Residual survivorship: symbols fully purged from Data Vision are invisible; disclosed in frozen_rule.universe.",
+    "verify_static_inputs re-hashes all 14,535 archives on every invocation; runtime cost only."
+  ],
+  "post_review_edits": "Two wording-only contract edits (governance.relation_to_state_next_action, diagnostics.non_claim) and the status line; no parameter, gate, window, universe, cost, runner, or test change. Contract sha256 before edits 78df0216cd12924cd6511e91b872b155f192efdb016105590607fd8db464a136; after edits 6862c08a196354923ca1dfb7e5e6aec0fdd695b039ee18b9c481d96b9bfa1ee4.",
+  "frozen_hashes_at_review_close": {
+    "contract_sha256": "6862c08a196354923ca1dfb7e5e6aec0fdd695b039ee18b9c481d96b9bfa1ee4",
+    "runner_sha256": "e1f4ec197b4e1be45add3a80acd30c4fe00afa9ace64c0fff60f5c29a404e9fc",
+    "tests_sha256": "b4094211c4e64988a8c5004a7a1f517cb3219c679e1af6d3a98f33f20cad7ca8",
+    "input_inventory_sha256": "0c7d5acd497cdf5499e795e06bc73ee1a0f5f47bb2454141e381dd4afbc00013",
+    "prior_window_audit_sha256": "74e3829b855d4ac161b96993fee36a3a02afb6e7876d3be399d94cee134c71fc",
+    "loop_policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0"
+  },
+  "unit_test_result": "35 passed / 0 failed (python3 -B -m unittest test_run_perp_cross_section_daily_reversal)",
+  "candidate_outcomes_accessed": false,
+  "recorded_at_utc": "2026-09-02T14:52:31Z"
+}

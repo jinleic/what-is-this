@@ -1,0 +1,158 @@
+{
+  "CPU_seconds": 2463.767273,
+  "completed_layers": [
+    {
+      "controls": 19,
+      "stage": "F"
+    },
+    {
+      "pgl_counts": {
+        "11": 1320,
+        "13": 2184
+      },
+      "stage": "B"
+    },
+    {
+      "circuits": 10,
+      "layer": "L5",
+      "n": 5,
+      "p": 11
+    },
+    {
+      "circuits": 72,
+      "layer": "L5",
+      "n": 6,
+      "p": 11
+    },
+    {
+      "circuits": 10,
+      "layer": "L5",
+      "n": 5,
+      "p": 13
+    },
+    {
+      "circuits": 72,
+      "layer": "L5",
+      "n": 6,
+      "p": 13
+    },
+    {
+      "circuits": 0,
+      "dependent": 200,
+      "fiber_extra": 200,
+      "layer": "L6",
+      "n": 5,
+      "other": 0,
+      "p": 11
+    },
+    {
+      "circuits": 0,
+      "dependent": 2160,
+      "fiber_extra": 2160,
+      "layer": "L6",
+      "n": 6,
+      "other": 0,
+      "p": 11
+    },
+    {
+      "circuits": 0,
+      "dependent": 200,
+      "fiber_extra": 200,
+      "layer": "L6",
+      "n": 5,
+      "other": 0,
+      "p": 13
+    },
+    {
+      "circuits": 0,
+      "dependent": 2160,
+      "fiber_extra": 2160,
+      "layer": "L6",
+      "n": 6,
+      "other": 0,
+      "p": 13
+    },
+    {
+      "circuits": 0,
+      "dependent": 1900,
+      "fiber_extra": 1900,
+      "layer": "L7",
+      "n": 5,
+      "other": 0,
+      "p": 11
+    },
+    {
+      "circuits": 0,
+      "dependent": 31320,
+      "fiber_extra": 31320,
+      "layer": "L7",
+      "n": 6,
+      "other": 0,
+      "p": 11
+    },
+    {
+      "circuits": 0,
+      "dependent": 1900,
+      "fiber_extra": 1900,
+      "layer": "L7",
+      "n": 5,
+      "other": 0,
+      "p": 13
+    },
+    {
+      "circuits": 0,
+      "dependent": 31320,
+      "fiber_extra": 31320,
+      "layer": "L7",
+      "n": 6,
+      "other": 0,
+      "p": 13
+    },
+    {
+      "circuits": 25,
+      "dependent": 11425,
+      "fiber_extra": 11400,
+      "layer": "L8",
+      "other": 25,
+      "p": 11,
+      "part": "n5_census"
+    },
+    {
+      "circuits": 900,
+      "layer": "L8",
+      "p": 11,
+      "part": "n6_crossings"
+    },
+    {
+      "circuits": 8,
+      "layer": "L8",
+      "p": 11,
+      "part": "n8_all_distinct",
+      "pgl": 8
+    },
+    {
+      "circuits": 25,
+      "dependent": 11425,
+      "fiber_extra": 11400,
+      "layer": "L8",
+      "other": 25,
+      "p": 13,
+      "part": "n5_census"
+    },
+    {
+      "circuits": 900,
+      "layer": "L8",
+      "p": 13,
+      "part": "n6_crossings"
+    },
+    {
+      "circuits": 4,
+      "layer": "L8",
+      "p": 13,
+      "part": "n8_all_distinct",
+      "pgl": 4
+    }
+  ],
+  "run_id": "20260902T135324Z_516630ab_ed03d008f0f6",
+  "wall_seconds": 2562.97898600006
+}

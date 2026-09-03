@@ -3958,3 +3958,158 @@ NIST-cost claim. Owner decision: the target stands down for this session with
 the three bounded instances; the named next campaign, if any, is the $m=12$
 waterfall census under its own prereg and a budget sized from the measured
 rates recorded in these three runs.
+
+## `rs-pe3d/` the general-size theorem — every Möbius law is one instance, 2026-09-02
+
+**Unification, certified.** For GRS factors with distinct evaluation points,
+let $V=F[x]_{<r_A}\otimes F[y]_{<r_B}$, of dimension $r_Ar_B$. Because the
+product column of $(u,v)$ is the evaluation vector $(x_u^iy_v^j)_{i,j}$, an
+all-distinct $k$-set $S$ of grid points is a circuit of $A\otimes B$ **iff**
+$S$ imposes exactly $k-1$ independent conditions on $V$ and every proper
+subset imposes independent conditions — the circuit definition transported
+through the evaluation map (HUMAN-AUDITED). The corollaries carry the
+content:
+- **C1, the unified Möbius law.** Points on the graph of a Möbius map lie on
+  the $(1,1)$-curve $c_3xy+c_2x+c_1y+c_0=0$, whose multiples inside $V$ form
+  a space of dimension $(r_A-1)(r_B-1)$, so any $r_A+r_B$ such points impose
+  at most $r_A+r_B-1$ conditions and are dependent. The first all-distinct
+  circuits therefore appear at size $r_A+r_B$ and, on every swept cell, are
+  exactly Möbius restrictions counted by
+  $\sum_{M\in\mathrm{PGL}(2,p)}\binom{k_M}{r_A+r_B}$ — sizes 4 ($2{\times}2$
+  rows), 5 ($2{\times}3$), 6 ($3{\times}3$ and $2{\times}4$), 7 ($3{\times}4$) are
+  one statement;
+- **C2, top sizes.** At $k=r_Ar_B$ the points lie on a unique curve of $V$
+  with no special proper subset; at $k=r_Ar_B+1$ every set is dependent and
+  circuits are the sets all of whose $r_Ar_B$-subsets are independent —
+  the two-row size-5 and tied three-row size-9/10 predicates as instances;
+- **C3, pencils.** At $k=r_Ar_B-1$ the vanishing space is a pencil; the
+  tied three-row size-8 complete-intersection law is the instance $r_A=r_B=3$.
+
+**Evidence (MACHINE-VERIFIED, set equality at all 15 anchor cells).**
+Owner-derived anchors before dispatch, over $\mathrm{GF}(13)$ with points
+$1..n$: $(2\times n)\otimes(4\times n)$ has no all-distinct size-5 dependency
+at $n=6$, and its size-6 circuits number 2 at $n=6$ and 42 at $n=7$, all
+Möbius, equal to the PGL sums; $(3\times7)\otimes(4\times7)$ has no size-6
+all-distinct dependency and exactly 2 size-7 circuits, both Möbius, PGL sum 2.
+In-run: these plus $p=11$ and $p=7$ (588 at $n=7$, $k=6$, where the residues
+of $1..7$ fold to $\{0,\dots,6\}$ — an expectation first pinned from a
+wrong-residue probe was corrected independently through the PGL sum and
+disclosed), the tied three-row re-expressions $12/4/2$ and $588/72/42$, C2 on
+$4\times4$ at sizes 9/10 $=0/16$ over three primes and on $5\times5$ over
+$\mathrm{GF}(7)$ at $36378/181960$, and the size-8 bootstrap
+$560/416$ complete intersections against $2192/1344$ rank-7 pencils with
+$1632/928$ common-$(1,1)$-component sets. Owner post-freeze check at a new
+prime: $(2\times7)\otimes(4\times7)$ over $\mathrm{GF}(11)$ has 72
+all-distinct size-6 circuits, all Möbius, PGL sum 72. Controls: ambient
+plant discriminating rank $=r_Ar_B$ exactly, a planted non-Möbius
+$(r_A{+}r_B)$-set that must be independent, wrong-coefficient and
+selected-pole replays, corrupted column, duplicated-column spark drop, concat
+guard — every accept/reject pair fired. 103 asserts, 1627.5 CPU-s of a 5400 s
+cap under `RLIMIT_CPU` raised to the cap. Five pre-freeze launch aborts and
+one post-run control-audit gap were disclosed in `defect_log.json` and
+remediated by a full second complete run; the prereg was never amended.
+
+Run `20260902T113614Z_a999d1b0_5daa598b6a04`, gate `H-GRS-GENERAL-SIZE`,
+**FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`dc9d41031de17e82951413821eb69fa46794b4b0851e59ae7b6fe0086c304f77`
+(13 files, owner-verified).
+
+**Scope, with the honest leads recorded in `state.json`.** The forward
+direction of C1 (Möbius $\Rightarrow$ dependent) and all set equalities are
+proved and verified; the **converse** of C1 (dependent at size $r_A+r_B$
+$\Rightarrow$ Möbius) is proved only for the swept row-configurations, the
+emptiness of all-distinct circuits below $r_A+r_B$ is a slice boundary rather
+than a general theorem, and C3's no-fixed-component characterisation is
+stated for $r_A=r_B=3$ only. Named next layer: $(4\times n)\otimes(4\times n)$.
+
+## `delcap/` q=3,n=13 box complete — 4/4 rows beat both published endpoints, one clean run, 2026-09-02
+
+**The frontier moves one more step, and this time without a crash.** All
+four $q=3,n=13$ cells are CERTIFIED in a single run with the budget not
+binding, every conservative outward interval strictly beating **both**
+Tavakoli–Nguyen–Bose endpoints.
+
+| $d$ | certified interval (outward, bits/symbol) | width upper |
+|:---:|:---|---:|
+| 1/2 | `[0.39713666568100003, 0.397161636764393]` | `2.497e-05` |
+| 1/5 | `[0.8966732662961678, 0.8967669676702715]` | `9.370e-05` |
+| 1/10 | `[1.1898717660767768, 1.1898901620041096]` | `1.840e-05` |
+| 1/20 | `[1.3725688358567392, 1.3725840117520043]` | `1.518e-05` |
+
+All widths inside $1/500$, all duals `ba_total_orbit_mass`; LB$^+$ margins
+$\ge9.86\times10^{-2}$ / $2.13\times10^{-2}$ / $5.37\times10^{-3}$ /
+$1.33\times10^{-3}$ and UB margins $\ge3.95\times10^{-1}$ /
+$3.71\times10^{-1}$ / $2.37\times10^{-1}$ / $1.33\times10^{-1}$
+(**MACHINE-VERIFIED**). Owner re-check from the frozen `orbit_rows.jsonl`:
+for every row the display decimals are outward of the exact binary
+rationals and the exact width is $\le1/500$.
+
+**Counts asserted, not adjusted.** $B(13)=133{,}225$ input orbits over
+$3^{13}=1{,}594{,}323$ and 200,205 output orbits over 2,391,484 (owner:
+Burnside table extended by one term reproduces both); the $k\le11$ and
+$k\le12$ prefixes reproduce the frozen 22,450 and 66,980; dense census
+$(133225,200205,152963378,93991184,246954562)$ byte-identical across the
+static guard, both production builds and all rows. Per-row orbit-mass
+identities hold (input $2^{30}$; BA post-bump $2^{30}+200{,}205$; uniform
+2,391,484). Controls: ACCEPT the frozen $n=12$ row $0{:}3{:}12{:}1/10$
+bit-exactly on all 41 certificate fields; REJECT R1a/R1b/R1c/R2/R3 all fired.
+An AST diff proves the 22 certificate functions byte-identical to the $n=12$
+instrument; the 180-assertion re-derivation passed.
+
+Cost 38,668 s CPU = 10.74 of 24 CPU-h, wall 11.28 of 26 h, maximum row RSS
+16.67 GB of 32 GiB (**COMPUTATIONAL-EVIDENCE**). Run
+`20260902T024656Z_90c757de_c4e9905d05a1`, gate
+`delcap-q3-n13-total-output-orbit-mass-v1`, **FROZEN-CERTIFIED**,
+checksum-ledger SHA-256
+`b362203bca3acf9fdf01aecbd5c75c7f5a33a5709f76ec95177bef1c2d0be6d5`
+(14 files, owner-verified 14/14).
+
+**Scope, and why the family stops here.** A finite-$n$ theorem for exactly
+these four cells; **no asymptotic-capacity claim.** $n=14$ was evaluated
+and **not opened**: measured per-row cost scales $287.6\to1916.1\to9573.8$ s
+across $n=11,12,13$, projecting ~13.9 h per row, ~55.5 CPU-h per box and a
+35–40 GB live peak — above the 32 GiB envelope this instrument was
+registered under. The targets are recorded ($B(14)=399{,}310$ input orbits,
+599,515 output) for a future fresh prereg with ~64 GiB / ~64 CPU-h caps or a
+separately frozen instrument change. The family rests at a complete
+certified box.
+
+## `rs-pe3d/` the tied four-row layer confirms every prediction of the general theorem, 2026-09-02
+
+**A prediction test, and the theory passed it.** For $(4\times n)\otimes(4\times n)$
+GRS pairs ($d=5$, ambient dimension 16, circuit sizes 5..17), each layer in
+scope was predicted from the certified theorems before compute and then
+certified (HUMAN-AUDITED conditions, MACHINE-VERIFIED sets):
+- **size 5**: circuits are exactly the fibers, $2n\binom{n}{5}$ — 10 at
+  $n=5$, 72 at $n=6$ — as support-set equality over both primes (owner
+  census: exactly 10 size-5 circuits, all fibers);
+- **size 6 $=d+1$**: **empty** at $n=5,6$ — Thm-CRIT's tied channel needs
+  $d_A+d_B-2=8\ne6$ and fiber lifts are circuits only at $k=\text{spark}=5$;
+  the only dependent 6-sets are fiber-plus-lone (200 and 2160), each
+  rejected by a deletion witness;
+- **size 7**: **empty** at $n=5,6$, by a full $\binom{36}{7}=8.35$M sweep in
+  which all 31,320 dependent sets contain a fiber;
+- **size 8**: at $n=5$ the exhaustive 1.08M census finds exactly **25**
+  circuits $=25\binom{5}{5}^2$ crossings and nothing else; at $n=6$ all 900
+  constructed crossings verify as circuits; and the first all-distinct
+  circuits appear at $r_A+r_B=8$ as **Möbius restrictions**, equal as sets
+  to $\sum_M\binom{k_M}{8}$ — 8 over $\mathrm{GF}(11)$ and 4 over
+  $\mathrm{GF}(13)$ (owner PGL sums: 8 and 4).
+Controls: a $4\times4$ sub-grid tensor basis with rank exactly 16, a 17-set
+dependent at rank 16, a 15-plus-duplicate 16-set of corank 1 with singular
+deletion rejected, corrupted column, concat guard (16 versus 7), crossing
+circuit and Möbius-8 restriction-minimality — every pair fired. 49 asserts,
+2463.8 CPU-s of a 5400 s cap. Defects disclosed: one control-plant slip
+fixed pre-launch, and one SIGXCPU kill when the first launch enumerated
+$\binom{64}{8}\approx4.4\times10^9$ tuples in the $n=8$ sweep, replaced by
+the $8!=40320$ bijection enumeration and rerun from the beginning; the
+prereg was never amended.
+
+Run `20260902T135324Z_516630ab_ed03d008f0f6`, gate `H-44ROW-LAYER`,
+**FROZEN-CERTIFIED** within its registered scope, checksum-ledger SHA-256
+`1dc80d247d61c5e8d1da69abb37ee615faca0fca0a293c326f07f96601e79445`
+(10 files, owner-verified).
+
+**Scope.** Tied size-8 exhaustiveness at $n\ge6$ (30.3M subsets) and sizes
+9–17 are explicit non-claims. The `rs-pe3d/` target rests for this session
+after **fourteen** campaigns.

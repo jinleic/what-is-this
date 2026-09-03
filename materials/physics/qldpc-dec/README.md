@@ -1,6 +1,11 @@
 # `qldpc-dec/` — cross-paper decoder reproduction harness for BB codes
 
-**Status (2026-09-02): Gate B is DECIDED on the paired 1e8-shot instrument
+**Status (2026-09-02): GB9 — the paper's actual 17x configuration
+(`beam64_32res_640iters`, num_results=32) — is RUNNING as a paired 1e8-shot
+campaign (`campaigns/20260902T114747Z_69eba724_61e9fe30ba5d`, pre-statement
+Revision GB9, launch gates passed: 32res equivalence 2000/2000 + 300/300,
+K=1 regression six of six byte-identical). Expected ~220 h of decoding; no
+terminal verdict yet. Gate B is DECIDED on the paired 1e8-shot instrument
 (GB7, `campaigns/20260901T145247Z_b7ea9ac4_ac3f6689e03b`, terminal verdict
 FROZEN-NEGATIVE on the beam32 gap hypothesis) and RE-TARGETED by Revision
 GB8 (2026-09-02, no sampling). On one shared stream at p=1e-3 Z: beam8 223,
@@ -404,6 +409,50 @@ No frozen artifact, rule or verdict label changes. Independent acceptance
 re-bootstrapped, GB8 re-target re-derived from the frozen summary):
 `scratch/verify_gb8.log`, QLDPC_GATEB_ACCEPTANCE_PASS, 87 PASS / 0 FAIL /
 0 SKIP.
+
+## Gate B — the paper's actual 17x: beam64_32res (GB9) — RUNNING (launched 2026-09-02T11:47Z)
+
+`campaigns/20260902T114747Z_69eba724_61e9fe30ba5d/` — pre-statement Revision
+GB9 (recorded 2026-09-02T10:56Z, before init and before any sample). Decoder
+under test: arXiv:2512.07057 Table 1 row 4, `beam64_32res_640iters` = (64,
+40, 30, 20, **num_results=32**), the configuration the paper credits with
+17x (Section III) and which GB8 showed had never been run.
+
+What was built and proven before launch:
+
+- Python reference `src/qldpc_dec/beam_search.py` made faithful to Algorithm
+  3 step 3 for num_results>1 (seed solution inserted, search continues); the
+  weight is a sequential index-order float64 sum; num_results=1 unchanged.
+- `src/beam_cpp/beam8.cpp` gained `--num-results=K`, built to a NEW binary
+  `src/beam_cpp/beam_nr_cpp` (sha `297db977a57b…`); the frozen `beam8_cpp`
+  (`a480050b2041…`) is untouched and still pinned by GB5a/GB6/GB7.
+- Equivalence gate (`src/gb5_equiv_width.py --rung beam64_32res --binary
+  beam_nr_cpp`): **2000/2000 identical at p=1e-3 and 300/300 at p=3e-3** vs
+  the Python reference (21 s/shot; sharded over 12-14 workers). K=1
+  regression on the six frozen gate points with the new binary: zero
+  mismatches and C++ prediction files **byte-identical** to the frozen
+  binary's on every point (`src/beam_cpp/evidence/gb5eq_*_beam_nr_cpp.json`).
+- Cost measured: num_results=32 is 188 ms/shot/thread (7.9 ms/shot on 24
+  threads) — 42 BP runs and 465 BP iterations per shot, since every shot
+  enters the search once the seed solution only counts as one result.
+- Sizing from frozen GB7 rates (`src/evidence/gb9_sizing.json`, sha
+  `5777193c…`): N = 1e8 pinned — P(refute 17x | no better than
+  beam64_640iters) = 0.88, P(exclude the K=1 baseline | true 17x) = 0.915;
+  the +-30% band [13.1x, 22.1x] is unreachable at any feasible N (needs
+  ~5.6e8) and is reported, not decisive.
+- Design: the ENTIRE frozen GB7 stream (resampled; byte-identity is a hard
+  void), beam8 re-decoded by the new binary (must equal GB7's frozen
+  predictions byte-for-byte: a 1e8-shot K=1 regression), beam64_32res
+  decoded shard-wise (20 x 5e6; assembled file byte-identical to a single
+  run, demonstrated pre-launch), the frozen GB7 beam64_640iters mask read for
+  the same-shot comparison.
+- Known differences from the authors' own code (github
+  ionq-publications/BeamSearchDecoder): a converged-branch skip and a
+  Tanner-degree-<=2 exclusion, both absent from the published Algorithm 3 —
+  pre-registered as the first suspects if 17x is not reproduced.
+
+Decision rule, verdict mapping and reporting are frozen in Revision GB9.
+No terminal verdict yet; `state refresh` reports `RUNNING` until close.
 
 
 ## Related
