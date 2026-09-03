@@ -1,0 +1,469 @@
+{
+ "all_mutations_caught": true,
+ "artifact": "liu9-cprime-four-fifths-ab",
+ "candidate": {
+  "artifact_crosscheck": {
+   "all_equal": true,
+   "artifact": "verification/results/liu9-cprime-frontier.json",
+   "compared_fields": [
+    "f",
+    "face_coefficient",
+    "m",
+    "one_minus_m",
+    "root_bracket",
+    "stationarity_beta"
+   ],
+   "frontier_one_minus_m_minus_cprime": "[0.000136568071919041789718426023041 +/- 4.66e-34]",
+   "frontier_open_statement": "A>=0 and B>=0 on [0,1]^2 both remain unproved",
+   "label": "MACHINE-VERIFIED"
+  },
+  "beta_enclosure": "[0.17019591881032969604941004414155018433892456417851 +/- 2.06e-51]",
+  "c0_equals_1_minus_beta_minus_1_over_2m_enclosure": "[0.01963397568292172259513039546916476007484 +/- 3.69e-42]",
+  "c1_equals_1_minus_1_over_2m_enclosure": "[0.1898298944932514186445404396107149444138 +/- 3.18e-41]",
+  "corner_slope_1_over_m_minus_1_plus_beta_enclosure": "[0.7905361298238268587603291649201202955114 +/- 1.20e-41]",
+  "f": "f(x)=(4/5)x(1-x)",
+  "kappa": "16/25",
+  "label": "MACHINE-VERIFIED",
+  "m_enclosure": "[0.61715434400934592827996867187798592264055976984958 +/- 5.34e-52]",
+  "one_minus_m_enclosure": "[0.38284565599065407172003132812201407735944023015042 +/- 5.34e-52]",
+  "p_enclosure": "[0.88552107678047782994619860256636371971626718245049 +/- 3.10e-51]",
+  "protocol": "pi(s,t) = s t (1 + kappa (1-s)(1-t)); q(s) = pi(s,s) = s^2 (1 + kappa (1-s)^2)",
+  "root_bracket": [
+   "6969391922924715796093418227794041703473602101790330440143499325373291/10000000000000000000000000000000000000000000000000000000000000000000000",
+   "1742347980731178949023354556948510425868400525447582610035874831343323/2500000000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "root_polynomial": "2x^2+(16/25)x^2(1-x)^2-1",
+  "x_enclosure": "[0.69693919229247157960934182277940417034736021017903 +/- 3.05e-51]"
+ },
+ "claim": "A(s,t) = P2(s,t) + phi(s)phi(t) >= 0 and B(s,t) = beta h(pi(s,t)) - phi(s)phi(t) >= 0 on [0,1]^2 for pi(s,t) = st + f(s)f(t), f(x) = (4/5)x(1-x), at the exact candidate balls (beta, m) of liu9-cprime-frontier.json",
+ "claim_status": "PROVED",
+ "consequence": {
+  "label": "PROVED",
+  "statement": "For every finite conditionally i.i.d. mixture Gamma = sum_k w_k nu_k x nu_k of every law mu on [0,1], under the f = (4/5)x(1-x) protocol, (1-beta)<mu x mu, h(xy)> + beta sum_k w_k <nu_k x nu_k, h(pi)> >= (M/m) <mu, h> with M = <mu, x>: the decomposition above is a sum of nonnegative terms (A >= 0, B >= 0 pointwise, variance >= 0). General P_U follows by the Fubini step of liu9_h2_mixture_theorem.py (bounded continuous kernels).",
+  "union_closed_constant": {
+   "exceeds_cprime_by": "[0.000136568071919041789718426023041 +/- 4.66e-34]",
+   "route": "the same route as c' (Liu Proposition 3 with the two-protocol inequality at constant M/m); the protocol f = (4/5)x(1-x) satisfies 0 <= f <= min(x,1-x) (frontier general_f_derivation)",
+   "value_1_minus_m": "[0.38284565599065407172003132812201407735944023015042 +/- 5.34e-52]"
+  }
+ },
+ "dependencies": {
+  "boundary_module": {
+   "match": true,
+   "path": "uc/liu9_h2_boundary_layer.py",
+   "role": "Phi >= 0 machinery: mu, Lam, cell cover scaffolding and identity points (kappa = 1 there)",
+   "sha256": "fcb3ed55e8bd9ad6d2f180f5ffa79f192dacc940a5c7506eca2a85aa612905e6"
+  },
+  "frontier_artifact": {
+   "claim_status": "PROVED",
+   "match": true,
+   "path": "uc/verification/results/liu9-cprime-frontier.json",
+   "role": "the recorded candidate balls this certificate is compared against string for string",
+   "sha256": "81ee7a5a76c45c0229b750babd32f2a77aebcdf95f24f2df1fa8af7899257bb0"
+  },
+  "frontier_module": {
+   "match": true,
+   "path": "uc/liu9_cprime_frontier.py",
+   "role": "build_candidate: the exact candidate balls (root bracket, p, m, beta, c0)",
+   "sha256": "fcacffc1c33662f12068c4a06054304ba344f56508090e1625178264ac49c8b3"
+  },
+  "mixture_artifact": {
+   "claim_status": "PROVED",
+   "match": true,
+   "path": "uc/verification/results/liu9-h2-mixture-theorem.json",
+   "role": "the kernel-free (I)-(III) identities in the free pairing algebra",
+   "sha256": "329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3"
+  },
+  "mixture_module": {
+   "match": true,
+   "path": "uc/liu9_h2_mixture_theorem.py",
+   "role": "numerator_ehx with a protocol argument; the (I)-(III) decomposition and its Fubini step",
+   "sha256": "3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab"
+  },
+  "twovar_module": {
+   "match": true,
+   "path": "uc/liu9_h2_twovar_lemmas.py",
+   "role": "Lemma A2 machinery: entropy ranges, Taylor and branch-and-bound scaffolding (kappa = 1 there)",
+   "sha256": "2afe8e242aa5f506c6d54967a133fe246a7e5cb8bad4961b9860e93b86f67163"
+  }
+ },
+ "determinism": "no timestamps; deterministic depth-first traversals; seeded mixtures; Arb strings at fixed digit counts",
+ "identities": {
+  "acheck_identity": "A(s,t) = s t Acheck(s,t)",
+  "acheck_max_abs_residual_upper": "[2.26243479907e-68 +/- 9.71e-81]",
+  "acorner_identity": "A(s,t) = (2-s-t) Acorner(s,t)",
+  "acorner_max_abs_residual_upper": "[2.34476173896e-68 +/- 9.07e-81]",
+  "acorner_points": 162,
+  "diagonal_identity": "A(s,s) = R(s,s) = P2(s,s) + beta h(q(s))",
+  "diagonal_max_abs_residual_upper": "[2.26243478178e-68 +/- 2.46e-80]",
+  "face_max_abs_residual_upper": "[1.16210552974e-68 +/- 1.55e-81]",
+  "faces": "A(0,t) = A(s,0) = 0; A(1,t) = A(t,1) = c0 h(t); B(s,s) = 0",
+  "interior_zero": {
+   "A_at_xx": "[+/- 1.19e-68]",
+   "A_s_at_xx": "[+/- 1.42e-69]",
+   "A_t_at_xx": "[+/- 1.42e-69]",
+   "candidate_equation_residual_q(x)+x^2-1": "[+/- 2.69e-70]",
+   "derivation": "q(x) = 1 - x^2 gives h(q(x)) = h(x^2); p = h(x)/h(x^2) and m = p x give R(x,x) = 0 = A(x,x); beta is the root of d/ds R(s,s) = 0 at x, and A_s(s,s) = (1/2) d/ds R(s,s) because phi phi' is half the diagonal derivative of beta h(q)"
+  },
+  "label": "MACHINE-VERIFIED",
+  "points": 162,
+  "residual_tolerance": "1e-60 (the candidate balls have radius about 1e-70, so Arb cannot cancel them exactly)"
+ },
+ "label_legend": {
+  "MACHINE-VERIFIED": "an exact identity or finite check verified in Arb at the listed points",
+  "PROVED": "a complete certificate: analytic strata plus exhaustive Arb covers with certified lower bounds"
+ },
+ "lemma_A": {
+  "claim": "A(s,t) >= 0 on [0,1]^2",
+  "corner_1_1": {
+   "bound": "For u in (0,2delta], A >= P2 >= u (log_coefficient log(1/u) - (log 2 + 1)/(2m)) >= u lower_coefficient >= 0; u = 0 is the exact corner zero.",
+   "delta": "1/1000000000000000000000000000000000000",
+   "derivation": "For a = 1-s, b = 1-t, u = a+b and W = 1-st = u-ab, h(W) >= u(1-delta/2) log(1/u). With Aent = a log(1/a) + b log(1/b) <= u(log(1/u)+log 2), the subtracted weighted entropies are at most Aent + u.  Dropping phi(s)phi(t) >= 0 gives the bound.",
+   "log_1_over_2delta_enclosure": "[82.1999161672256993152304602472 +/- 2.11e-29]",
+   "log_coefficient_enclosure": "[0.0196339756829217225951303954692 +/- 3.53e-32]",
+   "lower_coefficient_enclosure": "[0.242173925252808763910270270764 +/- 1.05e-31]"
+  },
+  "faces": {
+   "s_or_t_one": "A(1,t) = A(t,1) = c0 h(t) >= 0 with certified c0 > 0 (phi(1) = 0 since q(1) = 1)",
+   "s_or_t_zero": "A(0,t) = A(s,0) = 0 exactly (h(0) = 0, phi(0) = 0)"
+  },
+  "global_branch_and_bound": {
+   "accepted_cells": 5566,
+   "max_depth": 203,
+   "processed_cells": 11118,
+   "split_cells": 5552,
+   "worst_box": {
+    "depth": "3",
+    "s_hi": "680939192292471579609341822779404170347660210179033044014349932537329/4000000000000000000000000000000000000000000000000000000000000000000000",
+    "s_lo": "1/10000000000000000000000000000000000000000",
+    "t_hi": "680939192292471579609341822779404170347460210179033044014349932537329/2000000000000000000000000000000000000000000000000000000000000000000000",
+    "t_lo": "1/10000000000000000000000000000000000000000"
+   },
+   "worst_certified_lower_enclosure": "[3.3036741036710508471048126177004531186704072179034e-82 +/- 3.11e-132]"
+  },
+  "global_lower_bounds": {
+   "acceptance": "a box is accepted when the strongest of the certified lower bounds is positive",
+   "acheck": "s_lo t_lo Acheck_lo with Acheck_lo = c0 log(1/(s_hi t_hi)) + (1-beta) mu(s_hi t_hi) - (mu(s_lo)+mu(t_lo))/(2m) + psi(s_hi) psi(t_hi)",
+   "acorner": "u_lo Acorner_lo from the monotone factors of the Acorner identity (docstring of acorner_lower); only on boxes with 2 - s_hi - t_hi > 0",
+   "gradient": "A(mid) - sup|A_s| half_s - sup|A_t| half_t on boxes with s_hi < 1 and t_hi < 1",
+   "splitting": "the liu9_h2_twovar_lemmas strategy: peel the logarithmic near-face strip, otherwise bisect the longer side"
+  },
+  "local_x": {
+   "bound": "A >= ||d||^2 (lambda_min/2 - C3 ||d||/6) > 0 on the square minus its center",
+   "c3_upper_enclosure": "[33.2616634809196107290529893051 +/- 1.94e-29]",
+   "chosen_euclidean_distance_upper_enclosure": "[0.0226274169979695207808270195874 +/- 4.49e-32]",
+   "chosen_square_half_width": "2/125",
+   "derivative_box_radius_enclosure": "[0.0300000000000000000000000000000 +/- 1e-36]",
+   "distance_bound_direction": "sqrt(2)*(square half-width + sup|x - partition center|)",
+   "gradient_s_enclosure": "[+/- 1.42e-69]",
+   "gradient_t_enclosure": "[+/- 1.42e-69]",
+   "hessian_ss_enclosure": "[0.4867449106068594967113519965831782984170 +/- 7.29e-42]",
+   "hessian_st_enclosure": "[-0.2164476943457610740091541895992485447972 +/- 3.05e-41]",
+   "hessian_tt_enclosure": "[0.4867449106068594967113519965831782984170 +/- 7.29e-42]",
+   "lambda_min_lower_enclosure": "[0.2702972162610984227021978069839297536198 +/- 3.78e-41]",
+   "max_third_partial_upper_enclosure": "[11.7597739004516009211066236755 +/- 2.36e-29]",
+   "partition_center_to_x_distance_upper_enclosure": "[2.00000000194e-70 +/- 3.94e-82]",
+   "partition_square_center": "696939192292471579609341822779404170347360210179033044014349932537329/1000000000000000000000000000000000000000000000000000000000000000000000",
+   "proof_center": "the certified Arb ball bounded by the 70-digit rational root bracket",
+   "quadratic_minus_remainder_coefficient_lower_enclosure": "[0.00971101985906546819262825095305 +/- 2.77e-33]",
+   "rho_equals_3lambda_over_c3_enclosure": "[0.0243791670025300828569892124798 +/- 2.92e-34]",
+   "third_partial_enclosures": [
+    "[+/- 11.8]",
+    "[+/- 3.31]",
+    "[+/- 3.31]",
+    "[+/- 11.8]"
+   ],
+   "value_enclosure": "[+/- 1.19e-68]"
+  },
+  "mutations": [
+   {
+    "mutant_depth": 14,
+    "mutant_zero_cell": {
+     "depth": "14",
+     "s_hi": "697189192292471579609341822779404170347360210179033044014349932537329/1000000000000000000000000000000000000000000000000000000000000000000000",
+     "s_lo": "696939192292471579609341822779404170347360210179033044014349932537329/1000000000000000000000000000000000000000000000000000000000000000000000",
+     "t_hi": "697189192292471579609341822779404170347360210179033044014349932537329/1000000000000000000000000000000000000000000000000000000000000000000000",
+     "t_lo": "696939192292471579609341822779404170347360210179033044014349932537329/1000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "mutant_zero_cell_lower_bound": "[-2.5052761209514106792e-7 +/- 2.59e-28]",
+    "name": "drop_x_local_stratum",
+    "reason": "the nested cell contains A(x,x)=0, so no sound lower bound is positive",
+    "sound_local_coefficient_lower_enclosure": "[0.00971101985906546819262825095305 +/- 2.77e-33]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_depth": 14,
+    "mutant_zero_cell": {
+     "depth": "14",
+     "s_hi": "1/1",
+     "s_lo": "127999999999999999999999999999999999999/128000000000000000000000000000000000000",
+     "t_hi": "1/1",
+     "t_lo": "127999999999999999999999999999999999999/128000000000000000000000000000000000000"
+    },
+    "mutant_zero_cell_lower_bound": "[-1.1107570585796059825e-36 +/- 3.99e-56]",
+    "name": "drop_corner_1_1_stratum",
+    "reason": "the nested cell contains A(1,1)=0, so no sound lower bound is positive",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_c3_enclosure": "[2.07885396755747567056581183157 +/- 2.46e-30]",
+    "name": "understate_c3_by_factor_16",
+    "pointwise_required_c3_lower_enclosure": "[2.74342669876925379971374475162 +/- 2.90e-30]",
+    "reason": "the mutant is below a certified pure-coordinate third derivative at x",
+    "sound_c3_upper_enclosure": "[33.2616634809196107290529893051 +/- 1.94e-29]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_margin_enclosure": "[-3.42869619996162301224009252249 +/- 4.60e-30]",
+    "name": "flip_near_zero_log_term_sign",
+    "reason": "the flipped-sign lower coefficient is certified negative",
+    "sound_margin_enclosure": "[0.188015777934628686818254280928 +/- 2.69e-31]",
+    "status": "FAILED_AS_REQUIRED"
+   },
+   {
+    "mutant_A_at_xx_enclosure": "[-0.00024406534793245959905 +/- 4.49e-24]",
+    "name": "liu_kappa_one_diagonal_in_phi",
+    "observed": "interior zero/stationarity enclosure misses zero",
+    "reason": "with Liu's diagonal q(s)=s^2(1+(1-s)^2) the candidate point is not a zero of A, so the local stratum cannot start",
+    "status": "FAILED_AS_REQUIRED"
+   }
+  ],
+  "near_zero_strip": {
+   "bound": "Dropping phi(s)phi(t) >= 0 gives A >= P2 >= s t (c0 log(1/(st)) - 1/m) (h(u) >= u log(1/u) on the positive term, h(u) <= u log(1/u) + u on the subtracted ones). If min(s,t) <= epsilon this is >= s t lower_coefficient >= 0; endpoint faces are exact zeros.",
+   "epsilon": "1/10000000000000000000000000000000000000000",
+   "log_1_over_epsilon_enclosure": "[92.1034037197618273607196581874 +/- 2.55e-29]",
+   "lower_coefficient_enclosure": "[0.188015777934628686818254280928 +/- 2.69e-31]"
+  },
+  "status": "PROVED"
+ },
+ "lemma_B": {
+  "beta_enclosure": "[0.1701959188103296960494100441415501843389 +/- 2.46e-41]",
+  "claim": "B(s,t) = beta (h(pi(s,t)) - sqrt(h(q(s)) h(q(t)))) >= 0 on [0,1]^2",
+  "proof": "beta > 0 (candidate ball) and h >= 0, so Phi >= 0 is equivalent to h(pi_st) >= sqrt(h(q_s) h(q_t))",
+  "status": "PROVED"
+ },
+ "lemma_Phi": {
+  "cell_cover": {
+   "acceptance": "lower endpoint of the Arb bound (D) or (Q) strictly exceeds theta",
+   "accepted_by_D": 300,
+   "accepted_by_Q": 3150,
+   "discarded_cells": 13,
+   "max_depth": 19,
+   "min_certified_bound": "[2.00000186003165250686098648488 +/- 2.78e-30]",
+   "min_certified_cell": {
+    "depth": 16,
+    "s": [
+     "79/256",
+     "5/16"
+    ],
+    "t": [
+     "43/128",
+     "87/256"
+    ]
+   },
+   "numerical_minimum_of_kappa_master_DISCOVERY": "2.275 near s = t = 0.5015 (float scan, not load-bearing)",
+   "processed_cells": 6912,
+   "region": "closed triangle 0 <= s <= t <= 1; only 0 < s < t < 1 needs kappa_master (L3); cells with s_lo >= t_hi are discarded",
+   "theta": "2/1",
+   "two_sqrt_kappa": "8/5"
+  },
+  "claim": "Phi(s,t) = h(pi(s,t))^2 - h(q(s)) h(q(t)) >= 0 on [0,1]^2, hence B >= 0 (beta > 0)",
+  "definitions": {
+   "Lam": "h(u)/u = log(1/u) + mu(u)",
+   "g": "Lam(q(x))",
+   "gamma": "log g(x)",
+   "kappa_master": "(1 + kappa (1-s)(1-t)) (gamma(s)-gamma(t))/(t-s) for 0 < s < t < 1",
+   "mu": "-(1-u) log(1-u)/u"
+  },
+  "lemmas": {
+   "L0b_q_monotone": {
+    "proof": "(1-x)(1-2x) >= -1/8 (minimum at x = 3/4) and 1-6x+6x^2 >= -1/2 (minimum at x = 1/2)",
+    "statement": "q'(x) = 2x(1 + kappa(1-x)(1-2x)) >= 2x(1 - kappa/8) > 0 on (0,1]; q''(x) = 2 + 2kappa(1-6x+6x^2) >= 2 - kappa > 0",
+    "status": "PROVED"
+   },
+   "L0e_polynomial_identity": {
+    "degree_bound": "<= 4 in each variable",
+    "grid": "s,t in {1/7,...,6/7}",
+    "max_abs_residual_exact": "0/1",
+    "statement": "pi(s,s)*pi(t,t) - pi(s,t)^2 == kappa*s^2*t^2*(s-t)^2 with kappa = 16/25",
+    "status": "PROVED"
+   },
+   "L0f_M_mu_nonpositive": {
+    "proof": "L0e gives pi(s,t) <= sqrt(q(s)q(t)) <= (q(s)+q(t))/2; mu decreasing then concave",
+    "statement": "mu(q(s)) + mu(q(t)) - 2 mu(pi(s,t)) <= 0",
+    "status": "PROVED"
+   },
+   "L1_identity": {
+    "M_mu_max_upper_at_points": "[-7.4578399012498366339e-13 +/- 1.16e-33]",
+    "max_abs_residual_upper": "[9.67326028949e-120 +/- 4.07e-132]",
+    "middle_term_min_lower_at_points": "[3.3444242445073551877e-12 +/- 2.85e-32]",
+    "points": 14,
+    "residual_tolerance": "1e-100",
+    "status": "MACHINE-VERIFIED at the listed rational points; the identity is the algebra of L1 with kappa"
+   },
+   "L1_statement": "Phi = pi_st^2 [(Lam_ss-Lam_tt)^2/4 + (log(1+delta) - M_mu)/2 (Lam_st + Lbar)] - kappa s^2 t^2 (s-t)^2 Lam_ss Lam_tt, delta = kappa (s-t)^2/(1+kappa ab)^2",
+   "L2_master": {
+    "proof": "drop the nonnegative middle term of L1; g(s)-g(t) = 2 sqrt(g(s)g(t)) sinh((gamma(s)-gamma(t))/2); sinh x >= x",
+    "statement": "for 0 < s < t < 1: Phi >= s^2 t^2 (s-t)^2 g(s) g(t) (kappa_master^2/4 - kappa); kappa_master >= 2 sqrt(kappa) implies Phi >= 0",
+    "status": "PROVED"
+   },
+   "L3_boundary": {
+    "statement": "Phi(s,s) = 0; Phi(0,t) = 0; Phi(s,1) = h(s)^2 >= 0 since pi(s,1) = s and q(1) = 1; Phi symmetric",
+    "status": "PROVED"
+   },
+   "L4_endpoint_bounds": {
+    "N0": {
+     "statement": "0 < x <= x0 <= 1/3, x0 < exp(-(1+log(1+kappa))/2): |gamma'(x)| >= 2(1+kappa(1-3x0))/((1+kappa) x0 (2log(1/x0)+1-log(1+kappa)))",
+     "validity_certified": true,
+     "value": "[2.9283853862304257001 +/- 3.12e-20]",
+     "x0_used": "1/8"
+    },
+    "N1": {
+     "statement": "x1 <= x < 1: |gamma'(x)| >= q'(x1)/(1-q(x1)) ell1/(ell1+1), ell1 = log(1/(1-q(x1)))",
+     "value": "[4.3347701765338265363 +/- 2.86e-20]",
+     "x1_used": "7/8"
+    },
+    "hypothesis_guards": {
+     "asserted_for_X0": "x0 < exp(-(1+log(1+kappa))/2) and x0 <= 1/3",
+     "label": "MACHINE-VERIFIED",
+     "note": "these are the hypotheses of the N0 derivation, not a mutation: at x0 = 1/2 the displayed bound happens to remain below |gamma'| on (0,1/2], so the rejection is a domain guard.  The N0 mutation used here instead falsifies the bound itself",
+     "x0_equals_1/2_rejected": true
+    },
+    "samples": {
+     "note": "samples confirm the closed-form gamma' exceeds the analytic bounds; the bounds are proved in nu0/nu1",
+     "nu0_at_X0": "[2.9283853862304257001 +/- 3.12e-20]",
+     "nu1_at_X1": "[4.3347701765338265363 +/- 2.86e-20]",
+     "samples_above_X1": {
+      "18446744073709551615/18446744073709551616": "[1.80337721119e+19 +/- 5.56e+6]",
+      "255/256": "[213.403476878 +/- 4.86e-10]",
+      "4294967295/4294967296": "[4103974285.93 +/- 2.04e-3]",
+      "65535/65536": "[59786.9824741 +/- 2.57e-8]",
+      "7/8": "[5.89784848445 +/- 4.52e-12]"
+     },
+     "samples_below_X0": {
+      "1/16": "[5.13920007654 +/- 3.83e-12]",
+      "1/18446744073709551616": "[4.13473675018e+17 +/- 3.94e+4]",
+      "1/256": "[44.0762193792 +/- 4.13e-11]",
+      "1/4294967296": "[191454466.845 +/- 4.61e-4]",
+      "1/65536": "[5777.61934794 +/- 1.78e-9]"
+     }
+    },
+    "status": "PROVED (proofs in the docstrings of nu0 and nu1)"
+   },
+   "L5_interior_bound": {
+    "statement": "N(x) = -log(1-q(x)) q'(x) is positive increasing; inf_[l,r] |gamma'| >= N(l)/(q(r) max_[q(l),q(r)] h)",
+    "status": "PROVED"
+   }
+  },
+  "mutations": [
+   {
+    "caught": true,
+    "failing_cell": {
+     "depth": 24,
+     "s": [
+      "1577/4096",
+      "789/2048"
+     ],
+     "t": [
+      "1603/4096",
+      "401/1024"
+     ]
+    },
+    "mutation": "theta_2.3_above_true_minimum",
+    "observed": "cell budget 27648 exhausted",
+    "processed_cells": 27649,
+    "refutation_witness": {
+     "certified_below_23/10": true,
+     "kappa_master_enclosure": "[2.275086765014144819939496 +/- 4.33e-25]",
+     "point": [
+      "501/1000",
+      "501001/1000000"
+     ]
+    },
+    "theta": "23/10"
+   },
+   {
+    "caught": true,
+    "failing_cell": {
+     "depth": 27,
+     "s": [
+      "4069/16384",
+      "2035/8192"
+     ],
+     "t": [
+      "249/512",
+      "3985/8192"
+     ]
+    },
+    "mutation": "drop_(1+kappa(1-s)(1-t))_factor",
+    "observed": "cell budget 27648 exhausted",
+    "processed_cells": 27649,
+    "reason": "the diagonal limit of the factor-free condition is |gamma'(x)| >= theta, which fails at x = 0.432",
+    "refutation_witness": {
+     "abs_dgamma_enclosure": "[1.926050003455288550151689 +/- 2.56e-25]",
+     "certified_below_theta": true,
+     "point": "54/125"
+    },
+    "theta": "2/1"
+   },
+   {
+    "caught": true,
+    "mutation": "identity_with_liu_kappa_one",
+    "observed": "L1 identity residual excludes zero at 1/3,2/3: [0.0056028035273408279451781023762895597131760496667704925677509424300054672830141162675932946942581675794171800461225743 +/- 2.33e-119]"
+   },
+   {
+    "caught": true,
+    "mutation": "identity_quarter_replaced_by_half",
+    "observed": "L1 identity residual excludes zero at 1/3,2/3: [-0.0323983049593050478874840230175611560852278105361833794085097269607610355218735412890692369610157689680912678100916664 +/- 1.51e-119]"
+   },
+   {
+    "caught": true,
+    "certified_above_true_derivative": true,
+    "mutant_nu0_enclosure": "[4.802552033417898148112837 +/- 1.3e-28]",
+    "mutation": "N0_without_(1+kappa)_denominator_bound",
+    "reason": "omitting q <= (1+kappa)x^2 makes the claimed lower bound exceed the exact |gamma'(x0)|, so it is certified false at x0; the guard n0_validity/x0<=1/3 is a separate hypothesis check, asserted for the live X0",
+    "sound_nu0_enclosure": "[2.928385386230425700068803 +/- 4.88e-26]",
+    "true_abs_dgamma_at_x0": "[3.249243440498020263844499 +/- 2.23e-25]",
+    "x0": "1/8"
+   }
+  ],
+  "quantitative_form": {
+   "sanity": {
+    "coefficient_theta^2/4-kappa": "9/25",
+    "min_ratio_Phi_over_bound_at_points": "[4.36526740417718 +/- 2.67e-15]",
+    "note": "sanity only; the bound is a theorem once the cover certifies kappa_master >= theta"
+   },
+   "statement": "for 0 < s < t < 1: Phi >= (theta^2/4 - kappa) s^2 t^2 (s-t)^2 g(s) g(t) = (9/25) s^2 t^2 (s-t)^2 g(s) g(t)"
+  },
+  "status": "PROVED"
+ },
+ "mixture_decomposition_at_candidate_kernel": {
+  "atoms_at_0_and_1_included": true,
+  "atoms_per_component_up_to": 4,
+  "components_up_to": 5,
+  "kernel": "K(x,y) = h(pi(x,y)) with pi = xy + f(x)f(y), f = (4/5)x(1-x)",
+  "label": "MACHINE-VERIFIED",
+  "max_abs_residual_upper": "[3.87683731211e-68 +/- 4.00e-80]",
+  "mixtures": 20,
+  "residual_tolerance": "1e-60 (the candidate balls have radius about 1e-70)",
+  "seed": 20260903,
+  "statement": "numerator - (M/m) ehx = sum_kl w_k w_l <nu_k x nu_l, A> + sum_k w_k <nu_k x nu_k, B> + Var_w(<nu_k, phi>)"
+ },
+ "mixture_mutations": [
+  {
+   "caught": true,
+   "mutation": "drop_variance",
+   "observed": "mixture decomposition residual excludes zero at K=2: [0.0073847580848850183560226379200189449481777444329622908742573367924 +/- 2.69e-68]"
+  },
+  {
+   "caught": true,
+   "mutation": "mixture_form_B",
+   "observed": "mixture decomposition residual excludes zero at K=2: [-0.0019138064659211192758939817179363996933995338220943030748997264192 +/- 5.34e-68]"
+  }
+ ],
+ "natural_log": true,
+ "precision_bits": 400,
+ "report_sha256": "9a69041ae55a7d1e8e5d2fb3622753f323627a206cb18e101cd3eeabebad073e",
+ "report_sha256_scope": "SHA-256 of canonical sorted-key compact JSON with report_sha256 omitted, plus a trailing newline",
+ "tool": "liu9_cprime_four_fifths_ab.py (python-flint Arb)",
+ "tool_sha256": "dbbd83a59e16ac44d48de67faef403f1318dc7fa6fb5824df5238e032691c6be"
+}

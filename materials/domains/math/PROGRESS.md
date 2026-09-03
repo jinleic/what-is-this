@@ -5,6 +5,177 @@ cost. "Verified" means a command ran and its output was observed, or a primary
 source was read directly — not that something looks right.
 
 
+### CPRIME-FOUR-FIFTHS-AB (2026-09-03) — THE SURVIVING GENERAL-$f$ CANDIDATE IS NOW A FULL CERTIFICATE: $A\ge0$ AND $B\ge0$ ARE PROVED ON $[0,1]^2$ AT THE EXACT $f(x)=\frac45x(1-x)$ BALLS, THE MIXTURE DECOMPOSITION IS MACHINE-VERIFIED AT THAT KERNEL, AND THE UNION-CLOSED CONSTANT IMPROVES TO $c''=1-m_{4/5}=0.38284565599065407172\ldots$ (PENDING EXTERNAL REFEREEING)
+
+* **Outcome first.** The continuum inequalities left **OPEN** by the
+  frontier entry are **PROVED**: with $\kappa=(4/5)^2=16/25$,
+  $\pi(s,t)=st(1+\kappa(1-s)(1-t))$, $q(s)=\pi(s,s)$, and the frontier's
+  exact candidate balls
+  $x\in[0.69693919229247157960934182277940417034736\ldots]$,
+  $\beta\in[0.17019591881032969604941004414155018433892\ldots]$,
+  $m\in[0.61715434400934592827996867187798592264056\ldots]$
+  (root bracket width $10^{-70}$), the kernels
+  $A=P_2+\varphi\otimes\varphi$ and
+  $B=\beta h\circ\pi-\varphi\otimes\varphi$, $\varphi=\sqrt{\beta h\circ q}$,
+  are nonnegative on the whole closed unit square. Combined with the
+  kernel-free mixture identities (I)–(III), machine-verified here at this
+  kernel, the two-protocol inequality
+  $(1-\beta)\langle\mu^{\otimes2},h(xy)\rangle+\beta\int\langle\nu_u^{\otimes2},h\circ\pi\rangle dP_U\ge(M/m)\langle\mu,h\rangle$
+  holds for every conditionally i.i.d. coupling of every Borel law, with no
+  mean constraint; Liu Example 5 with $f(x)=\frac45x(1-x)$ is a valid
+  protocol ($0\le f\le\min(x,1-x)$, primary source re-read: "$0\le f(\bar s)\le s\wedge\bar s$"),
+  so the chain of `uc/UC_CONSTANT_UNCONDITIONAL_2026-09-02.md` §2 runs
+  verbatim with $\Pi^{(2)}$ replaced by this protocol and yields
+  \[
+    c''=1-m_{4/5}\in[0.38284565599065407172003132812201407735944023015042\pm5.34\mathrm e{-52}],
+  \]
+  exceeding $c'$ by $[0.000136568071919041789718426023041\pm4.66\mathrm e{-34}]$.
+  No counterexample exists on this route; the frontier's "OPEN" label for
+  this candidate is closed. The candidate $f=x^2(1-x)$ is unchanged
+  (certified $A(1/2,1)<0$). Sawin/$C_2(\mu)$ was not touched.
+* **Why the old strata could not be copied.** The face coefficient
+  $c_0=1-\beta-1/(2m)=0.0196339756829\ldots$ is $4.6\times$ smaller than
+  Liu's $0.0899565748671\ldots$, so the $f$-independent analytic strata of
+  `liu9_h2_twovar_lemmas.py` need $\varepsilon=10^{-40}$ (strip margin
+  $c_0\log(1/\varepsilon)-1/m\ge0.188015777934$) and $\delta=10^{-36}$
+  (corner margin $\ge0.242173925252$), and the raw kernel loses
+  $O(\log)$ to cancellation on every box down to those scales. Two exact
+  rescalings remove the cancellation:
+  \[
+    \frac{A}{st}=c_0\log\frac1{st}+(1-\beta)\mu(st)-\frac{\mu(s)+\mu(t)}{2m}+\psi(s)\psi(t),\qquad
+    \psi(s)=\sqrt{\beta\Lambda(q(s))(1+\kappa(1-s)^2)},
+  \]
+  with $\mu(u)=-(1-u)\log(1-u)/u$, $\Lambda=h(u)/u=\log(1/u)+\mu$, and, at
+  the corner with $a=1-s$, $b=1-t$, $u=a+b$, $r=ab/u$, $\alpha=a/u$,
+  \[
+    \frac{A}{u}=\Big[c_0+r\big(\tfrac1m-1+\beta\big)\Big]\log\frac1u
+      +(1-\beta)(1-r)\Big(\log\tfrac1{1-r}+\mu(W)\Big)
+      -\frac{(1-b)\alpha(\log\frac1\alpha+\mu(a))+(1-a)(1-\alpha)(\log\frac1{1-\alpha}+\mu(b))}{2m}
+      +\frac{\varphi(s)\varphi(t)}{u}.
+  \]
+  Every term is a product of monotone factors, so endpoint ranges give
+  first-order-tight lower bounds; both identities are Arb-verified at 90
+  rational points (residual $2.3\times10^{-68}$, the ball floor). The
+  branch-and-bound accepts a box when the strongest of the two rescaled
+  bounds and the centered gradient bound is positive: 11,118 boxes,
+  5,566 accepted, maximum depth 203 (the corner lattice down to
+  $10^{-36}$), weakest certified value $3.30\times10^{-82}$ on the box at
+  $s_{\rm lo}=t_{\rm lo}=10^{-40}$; 6.3 s. The interior zero $(x,x)$
+  ($q(x)=1-x^2$, $p=h(x)/h(x^2)$, $m=px$, $\beta$ from the diagonal
+  stationarity) has Hessian lower eigenvalue $\ge0.270297216261$,
+  $C_3\le33.2616634809$ on the radius-$0.03$ box, Taylor radius
+  $0.0243791670$, and the local square of half-width $2/125$ sits at
+  distance $\le0.0226274170$ with coefficient $\ge0.00971101986$.
+* **$\Phi\ge0$ with $\kappa$ carried through.** The boundary-layer proof
+  generalises verbatim: $\pi_{ss}\pi_{tt}-\pi_{st}^2=\kappa s^2t^2(s-t)^2$
+  (exact on a $6\times6$ rational grid), the L1 identity with
+  $\delta=\kappa(s-t)^2/(1+\kappa ab)^2$ (residual $<10^{-100}$ at the 14
+  pinned points), and the master condition
+  $\Phi\ge s^2t^2(s-t)^2g(s)g(t)(\kappa_{\rm master}^2/4-\kappa)$ with
+  $\kappa_{\rm master}=(1+\kappa ab)(\gamma(s)-\gamma(t))/(t-s)$, so
+  $\theta>2\sqrt\kappa=8/5$ suffices. N0 becomes
+  $|\gamma'|\ge2(1+\kappa(1-3x_0))/((1+\kappa)x_0(2\log(1/x_0)+1-\log(1+\kappa)))$
+  (valid for $x_0<e^{-(1+\log(1+\kappa))/2}=0.474$), N1 uses
+  $q''=2+2\kappa(1-6x+6x^2)\ge2-\kappa>0$ so $q'$ increases on all of
+  $[0,1]$. $\theta=2$ is certified: 6,912 cells (300 by the derivative rule,
+  3,150 by the quotient rule), depth 19, minimum certified bound
+  $2.00000186003$; numerical minimum $2.275$ near $s=t=0.5015$. Hence
+  $\Phi\ge\frac9{25}s^2t^2(s-t)^2g(s)g(t)$ and $B\ge0$ ($\beta>0$).
+* **Mixture decomposition at this kernel.** With `numerator_ehx` of the
+  pinned mixture module called with $\pi_\kappa$,
+  $\mathrm{numerator}-(M/m)\,\mathrm{ehx}=\sum_{kl}w_kw_l\langle\nu_k\otimes\nu_l,A\rangle+\sum_kw_k\langle\nu_k\otimes\nu_k,B\rangle+\mathrm{Var}_w\langle\nu_k,\varphi\rangle$
+  is Arb-verified at 20 seeded mixtures with up to 5 components and 4
+  atoms (atoms at 0 and 1 included), residual $\le3.9\times10^{-68}$.
+* **Artifact and exact pins.** [`uc/liu9_cprime_four_fifths_ab.py`](uc/liu9_cprime_four_fifths_ab.py)
+  has sha256 `dbbd83a59e16ac44d48de67faef403f1318dc7fa6fb5824df5238e032691c6be`.
+  [`liu9-cprime-four-fifths-ab.json`](uc/verification/results/liu9-cprime-four-fifths-ab.json)
+  has file sha256 `9812fa9f64f99b8117da7bd6d31a3dfd5458deeaaddf764355012d04645939d4`
+  and internal digest
+  `9a69041ae55a7d1e8e5d2fb3622753f323627a206cb18e101cd3eeabebad073e`
+  (compact sorted JSON, `report_sha256` omitted, trailing newline). It
+  imports only parameter-free helpers from the pinned chain modules and
+  rechecks at run time: frontier module
+  `fcacffc1c33662f12068c4a06054304ba344f56508090e1625178264ac49c8b3` and
+  artifact `81ee7a5a76c45c0229b750babd32f2a77aebcdf95f24f2df1fa8af7899257bb0`
+  (the candidate balls are compared string for string with the recorded
+  root bracket, $\beta$, $m$, $1-m$ and $c_0$), twovar module
+  `2afe8e242aa5f506c6d54967a133fe246a7e5cb8bad4961b9860e93b86f67163`,
+  boundary module
+  `fcb3ed55e8bd9ad6d2f180f5ffa79f192dacc940a5c7506eca2a85aa612905e6`,
+  mixture module
+  `3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab` and
+  artifact `329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3`.
+  No pinned chain module or artifact was modified.
+* **Mutations.** Twelve, all caught by a mathematical failure: for $A$,
+  the nested cell around $(x,x)$ keeps lower bound $-2.5\times10^{-7}$ and
+  the nested cell at $(1,1)$ keeps $-1.1\times10^{-36}$ under the full
+  evaluator; $C_3/16$ falls below a certified pure third derivative at
+  $x$; the flipped strip sign is certified negative; Liu's diagonal
+  $q_1(s)=s^2(1+(1-s)^2)$ in $\varphi$ makes $A(x,x)=-2.44\times10^{-4}$
+  so the local stratum cannot start. For $\Phi$: $\theta=23/10$ exhausts
+  the cell budget and is refuted by
+  $\kappa_{\rm master}(0.501,0.501001)=2.2750867650\ldots<23/10$; dropping
+  the $(1+\kappa ab)$ factor at $\theta=2$ fails and is refuted by
+  $|\gamma'(0.432)|=1.9260500035\ldots<2$; Liu's $\kappa=1$ identity applied
+  to this protocol and the $/2$-for-$/4$ identity both leave certified
+  nonzero residuals; and N0 without the $q\le(1+\kappa)x^2$ step claims
+  $4.8025520334\ldots$ at the live $x_0=1/8$ while
+  $|\gamma'(1/8)|=3.2492434405\ldots$ (the sound N0 gives
+  $2.9283853862\ldots$), so the mutant bound is certified false. For the
+  mixture identity: dropping the variance and using the mixture form
+  $\sum w_kw_l\langle\nu_k\otimes\nu_l,B\rangle$ both leave certified
+  nonzero residuals. The N0 hypothesis guard ($x_0<e^{-(1+\log(1+\kappa))/2}$,
+  $x_0\le1/3$, so $x_0=1/2$ is rejected) is recorded separately as a
+  domain check, not as a mutation.
+* **Independent review.** A blank-context read-only `code-reviewer`
+  (`ABCertSkeptic`) re-derived both rescaling identities and the corner
+  weight/coefficient identities in sympy (residual 0), re-verified every
+  monotonicity direction, ran its own 660-box/2,806-comparison 400-bit
+  attack on the three $A$ lower bounds (no bound above the true value;
+  minimum slacks $2.6\times10^{-40}$, $2.5\times10^{-35}$,
+  $6.1\times10^{-39}$), re-walked all 3,450 accepted $\Phi$ cells at
+  interior points, re-derived the $\kappa$ L0(e)/L1 identities and the
+  master condition, recomputed the Taylor constants, and re-derived the
+  $K=3$ mixture identity symbolically. Verdict SOUND, no BLOCKER/MAJOR.
+  Its one MINOR finding is applied: the previous N0 mutation was rejected
+  only by the applicability guard while its displayed bound is in fact
+  true on $(0,1/2]$ (the reviewer certified
+  $|\gamma'|\ge1.9174143565\ldots$ there against the mutant's
+  $0.8767912002\ldots$), so it has been replaced by the falsified-bound
+  mutation above, using the reviewer's own witness.
+* **Verified.** The module ran twice under
+  `nice -n 19 ./.venv/bin/python -I -B`, both runs exited 0, printed
+  `LEMMA_A PROVED cells=11118 depth=203`,
+  `LEMMA_PHI PROVED theta=2/1 cells=6912 depth=19`, `LEMMA_B PROVED`,
+  emitted internal digest
+  `9a69041ae55a7d1e8e5d2fb3622753f323627a206cb18e101cd3eeabebad073e`, and
+  produced byte-identical files (file sha256 above); an independent
+  canonicaliser reproduced the internal digest. Symbolic side checks
+  (sympy): $q',q'',q'''$ with $\kappa$, $\min_{[0,1]}(1-s)(1-2s)=-1/8$,
+  $\min_{[0,1]}(1-6s+6s^2)=-1/2$, the corner coefficient identity, the
+  weight identity $(1-b)\alpha+(1-a)(1-\alpha)=1-2ab/u$, and the
+  $\kappa$-polynomial identity. A randomised bound-direction attack
+  (400 boxes across the origin strips, the corner lattice down to
+  $2^{-120}$, the $s=1$ face and the interior; 11,520 point checks at 400
+  bits) found no certified lower bound above the true value of $A$, and
+  300 random points satisfied $\kappa_{\rm master}>2$ and the quantitative
+  $\Phi$ bound. The pinned H2 chain was replayed unchanged:
+  `nice -n 19 ./.venv/bin/python -I -B uc/verification/replay_h2_chain.py`
+  exited 0 in 596.22 s with `REPLAY_H2_CHAIN PASS`, 127 checks passed,
+  zero failed, and all 14 regenerated outputs byte-identical to the seven
+  pinned artifacts. The extended `/tmp/verify_all.py` then exited 0,
+  asserting the new file/internal/module hashes, the six dependency pins,
+  the PROVED labels, the 5+5+2 mutation counts, the cover accounting, the
+  state sources, and both `RESULTS.md` rows.
+* **Ledger changes.** This entry; the Fifth result section, a new status
+  row and the adopted-target row in `RESULTS.md`; `uc/state.json`
+  headline, gate, next action and sources. `uc/H2_PAPER/main.tex` still
+  proves $c'$ and is unchanged; writing $c''$ up is the next action. No
+  campaign was resumed or created.
+* **Cost.** 9.3 s per certificate run (A cover 6.3 s, $\Phi$ cover 0.4 s,
+  mutations 2 s), single core at niceness 19; H2 replay 596.22 s;
+  independent review read-only.
+
 ### CPRIME-FRONTIER (2026-09-03) — THE SAME-PROTOCOL WEIGHT FRONTIER IS CLOSED: $\beta^*$ UNIQUELY MAXIMIZES THE FULL CONDITIONALLY-I.I.D. TWO-PROTOCOL CONSTANT, SO NO REWEIGHTING RAISES $c'$. GENERAL EXAMPLE-5 FUNCTIONS PRODUCE STRICTLY LARGER ENDPOINT CANDIDATES, BUT NO NEW UNION-CLOSED CONSTANT: ONE LOW-COMPLEXITY CANDIDATE SURVIVES ONLY COARSE $A/B$ DIAGNOSTICS, ANOTHER HAS A CERTIFIED NEGATIVE $A$ WITNESS. THE EXACT LIU-LEMMA-8/SAWIN $C_2(\mu)$ OBLIGATION IS RECORDED AND REMAINS OPEN
 
 * **Outcome first.** (1) **PROVED:** for every $\beta\in[0,1]$, let

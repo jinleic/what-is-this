@@ -4113,3 +4113,61 @@ Run `20260902T135324Z_516630ab_ed03d008f0f6`, gate `H-44ROW-LAYER`,
 **Scope.** Tied size-8 exhaustiveness at $n\ge6$ (30.3M subsets) and sizes
 9–17 are explicit non-claims. The `rs-pe3d/` target rests for this session
 after **fourteen** campaigns.
+
+## `kg/` band $[1.75,3.5]$ CERTIFIED — 87/87 tiles, and the panel cap was never the obstruction, 2026-09-03
+
+**The band that had stood PARTIAL since the direct-D.4 era is closed.** All
+**87** tiles of $[1.75,3.5]$ certify under the corrected 2-D even-box
+envelope at ratio-1.008 tiling, `certified_prefix_right` $=3.5$ exactly,
+every leaf strictly positive (owner-verified: 87 tile records, indices
+complete $1..87$, all `passed`). The frozen midband run that this supersedes
+had left 6 open tiles and a gap $[3.1077\ldots,3.4998\ldots]$; that gap is now
+certified.
+
+**Decisive numbers (MACHINE-VERIFIED).** Worst certified margin across the
+whole band $4.84033886654731755225220389785\times10^{-8}\pm2.77\times10^{-38}$
+at tile 83 (c-pair $[3.36357938\ldots,3.39048801\ldots]$, cell
+$a_0\approx-0.8542$, $a_2\approx0.5104$, certified at 16384 panels) —
+owner-recomputed as the minimum over all 87 tiles. Panel histogram over
+148,520 boxes: $1024{:}46198$, $4096{:}31772$, $16384{:}26028$,
+$65536{:}22714$, $131072{:}21808$ — the ladder **tops out at $2^{17}$** and
+the registered $2^{19}$ fallback rung was **never used** (`fallback_runs`
+total $=0$, owner-verified). That vindicates the owner's pre-campaign
+scouting: the six frozen open cells were measured to close at $2^{17}$ with a
+uniform $+8.73\times10^{-5}$ panel-sup gain, ~12.7× the worst deficit, and the
+hardest tile was measured to PASS at $2^{17}$ before the campaign opened. The
+refutation gate never triggered.
+
+Cost 113,525.93 s $=31.53$ CPU-h of a 216,000 s budget (plus 9.49 s controls
+and an 800 s disclosed excluded charge), wall 163,712 s of 259,200, 2,760
+envelope evaluations of a 260,000 allowance. Controls passed in the
+pre-registered order before any tile: the 16-family startup battery, the
+instrument-identity reconciliation against Campaign A's frozen margin, the
+**near-miss flip** on the frozen closest-open midband cell (negative at
+32,768 panels, positive at 131,072 — the pre-registered discriminator that
+would have falsified the panel-cap classification), and the planted
+ratio-1.05 tile which must and did certify NEGATIVE.
+
+Run `20260901T135742Z_1a48b071_282f6f2490bc`, gate
+`band-1p75-3p5-corr-cap2p17`, **FROZEN-CERTIFIED**, checksum-ledger SHA-256
+`721b2c075e74361e68348022b22adb8ebdb7ebe5fa385db5e7639b370422b902`
+(125 files, owner-verified 125/125; `provenance.json` records both the
+init-time and appendix prereg hashes).
+
+**Disclosures, all in-run.** An earlier attempt at this gate was closed
+**REJECTED** for running read-only probes before the prereg commit, and a
+pre-battery driver smoke was preserved as excluded; a seven-hour idle window
+(OS App Nap of the worker kernel) is recorded as excluded with zero CPU
+charged; three owner-launched external drivers (17:58–18:03Z) are recorded as
+aborted with zero tiles and zero CPU — every one was rejected by the driver's
+own resume check, so the kernel remained the sole writer throughout; and
+tiles 41–87 ran at niceness 0 versus 15 for tiles 1–40, a scheduling
+deviation disclosed in the appendix (priority is not a scientific knob).
+
+**Scope.** This certifies the band $[1.75,3.5]$ under Campaign A's
+byte-shared envelope with the panel cap as the only knob, at 256-bit outward
+Arb over the full even disk with all compatible odd parts. Band
+$[4.083,6.0]$ remains certified only at tile 3 (Campaign C), and the two
+never-run bands $[1.0,1.3]$ and $[1.45,1.75]$ — which already hold valid
+certificates from the sound direct-D.4 instrument — are queued as
+corrected-lineage close-outs that supersede nothing.

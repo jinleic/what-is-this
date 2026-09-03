@@ -1,25 +1,27 @@
 {
   "schema_version": 1,
   "campaign": "quant-frontier-2026-08-29",
-  "updated_at": "2026-09-02T15:12:00+00:00",
+  "updated_at": "2026-09-03T10:35:00+00:00",
   "summary": {
     "independent_wave_one_directions": 12,
     "wave_one_selection_trials": 66,
     "initial_validation_passes": 2,
     "final_validated_or_deployable_candidates": 0,
     "frozen_certified_descriptive_mechanisms": 1,
-    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. Seven scripts/campaign.py campaigns have closed with terminal verdicts (6 FROZEN-NEGATIVE, 1 FROZEN-CERTIFIED) over six distinct mechanisms; every other registry entry is falsified, inconclusive, blocked, invalidated, or ineligible. Weekday-participation-premium passed its frozen 2024H1 primary and 2024H2 replication on BTCUSDT and ETHUSDT (descriptive participation regularity, not alpha). utc-2100-2300-net-premium (cycle 3) was falsified on 2020-2021 by its net-return bootstrap gate. perp-cross-section-daily-reversal (cycle 4, the first full 652-symbol USDT-perpetual cross-section channel) was falsified on 2022-2023 with all four gates false: net spread -5.22 bps/date, gross +4.77 bps insignificant, prior-day losers continued to underperform. Post-policy alpha spent 0.04 of 0.05. Public collectors remain active only for separately frozen future mechanisms.",
+    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. Eight scripts/campaign.py campaigns have closed with terminal verdicts (6 FROZEN-NEGATIVE, 1 FROZEN-CERTIFIED, 1 FROZEN-INCONCLUSIVE) over seven distinct mechanisms; every other registry entry is falsified, inconclusive, blocked, invalidated, or ineligible. Weekday-participation-premium passed its frozen 2024H1 primary and 2024H2 replication on BTCUSDT and ETHUSDT (descriptive participation regularity, not alpha). utc-2100-2300-net-premium (cycle 3) was falsified on 2020-2021 by its net-return bootstrap gate. perp-cross-section-daily-reversal (cycle 4, the first full 652-symbol USDT-perpetual cross-section channel) was falsified on 2022-2023 with all four gates false: net spread -5.22 bps/date, gross +4.77 bps insignificant, prior-day losers continued to underperform. Post-policy alpha spent 0.04 of 0.05. Public collectors remain active only for separately frozen future mechanisms.",
     "historical_confirmation_is_not_blind": true,
     "genuine_forward_start": "2026-08-29",
     "focused_directions": 4,
     "active_prospective_collectors": 2,
     "terminal_campaigns": {
-      "total": 7,
+      "total": 8,
       "frozen_negative": 6,
       "frozen_certified": 1,
-      "distinct_mechanisms": 6,
+      "frozen_inconclusive": 1,
+      "distinct_mechanisms": 7,
       "source": "quant-trading/explorations/campaigns/README.md"
-    }
+    },
+    "forty_percent_disposition": ""
   },
   "evidence_ranking": [
     {
@@ -557,6 +559,39 @@
       "disposition": "FALSIFIED on the primary window: every one of the four conjunctive gates was false. The published short-term reversal premium (Bianchi, Babiak and Dickerson 2022) does not exist as a net-of-taker-fee decile spread on the liquid Binance USDT-perpetual cross-section in 2022-2023; even before fees the spread is small and insignificant, and prior-day losers continued to underperform the universe. No threshold relaxation, universe change, pooling, re-windowing, or diagnostic reinterpretation is permitted; the family is closed.",
       "claim_boundary": "A two-window pass supports only a replicated net-of-taker-fee one-day cross-sectional reversal spread on Binance USDT perpetuals at a bar-open execution proxy over two reused historical calendars. Familywise-error language is scoped to post-policy cycles only. It does not establish causality, deployability, capacity, slippage-inclusive profitability, funding-inclusive profitability, or an absolute breakthrough, and nothing here bears on the 40% annual-return aspiration.",
       "post_closure_universe_sensitivity": "Post-closure descriptive check (not part of the frozen run, not a claim): re-aggregating the same frozen archives on the owner's literal universe of 321 symbols with >= 24 monthly 1h archives at inventory time gives, for the same primary window and rule, mean net spread -4.03 bps/date (gross +5.96, long excess -17.23, short excess +9.17, 4/8 quarters positive, bootstrap p 0.811, t = -0.71); every gate would still be false. The 331 symbols with fewer than 24 archives that the wording excludes (of which 20 were delisted young and 15 were actually held: LUNAUSDT, ANCUSDT, COCOSUSDT, RNDRUSDT, FOOTBALLUSDT and others) supplied 454 of 21,990 position-dates (2.1%) in the frozen run and moved the spread by about -1.2 bps; the broadened universe therefore biased against the mechanism, and the falsification holds under either universe definition."
+    },
+    "perp_oi_growth_cross_section": {
+      "id": "perp-oi-growth-cross-section",
+      "directory": "quant-trading/explorations (no per-mechanism dir; artifacts live in the frozen run dir)",
+      "campaign_run": "quant-trading/explorations/campaigns/20260903T102637Z_a0ab5202_383723d33c94",
+      "campaign_verdict": "FROZEN-INCONCLUSIVE",
+      "cycle_ordinal_k": 5,
+      "alpha_k": 0.0016666666666666668,
+      "artifact_status": "inconclusive",
+      "final_status": "inconclusive-integrity-abort-no-outcome-computed",
+      "trial_count": 1,
+      "return_rows": 0,
+      "returns_applicable": false,
+      "mechanism": "Cross-sectional open-interest growth on Binance USDT perpetuals: long the top quintile and short the bottom quintile of ln(OI_{d-1}/OI_{d-2}) from end-of-day 5-minute sum_open_interest, entered at the 00:00 UTC bar open and exited at the next, net of two 0.05% taker fees per position; 72-symbol pre-registered universe per window.",
+      "information_channel": "Binance Data Vision USD-M daily 5-minute metrics archives (data/futures/um/daily/metrics/), first registered use; 51,224 archives, 566.5 MB, all sidecar/size/CRC/header verified",
+      "windows": {
+        "primary": [
+          "2024-01-01T00:00:00Z",
+          "2025-01-01T00:00:00Z"
+        ],
+        "replication_registered_but_unspent": [
+          "2025-01-01T00:00:00Z",
+          "2026-01-01T00:00:00Z"
+        ]
+      },
+      "contract": "quant-trading/explorations/pre_statement_perp_oi_growth.json",
+      "contract_sha256": "e6c33ed21e2514e8a10467b78fe44120b59b734ab4647b5d084c461bbac4e703",
+      "disposition": "The primary run aborted during input parsing under the contract's own integrity rule (frozen_rule.open_interest: \"Every row must carry the archive date ... any drift aborts the invocation\"). 337 of 51,224 frozen archives (0.66%), all dated 2024-03-05..2024-04-03 window dates, carry exactly one trailing row stamped 00:00:00-00:00:02 of the following day; the first, 1000SHIBUSDT 2024-04-03 line 289, aborted the run at 36.7 s. No signal was formed, no date row was built, no gate was evaluated, and no results artifact exists on disk. The campaign closed FROZEN-INCONCLUSIVE with the census recorded in integrity_abort.json.",
+      "evidence": "integrity_abort.json inside the frozen run dir; 12/12 sha256s verify; no primary_results.json or replication_results.json exists",
+      "alpha_disposition": "frontier-loop-policy.json cycle_numbering spends the ordinal even on an integrity abort; alpha_5 = 0.05/30 is consumed and not recycled. Cumulative post-policy alpha spent: 0.0417 of 0.05.",
+      "open_owner_decision": "The policy also states that closed families are never tuned, extended, re-windowed, or revived. Whether a zero-outcome integrity abort permits one corrected re-registration of the same open-interest-growth mechanism at a later ordinal, or whether the family is closed permanently, is not resolved by the frozen policy text. This campaign takes the conservative reading (family closed; no revival without an explicit owner decision) and records the ambiguity instead of resolving it in its own favor.",
+      "reusable_assets": "The frozen 51,224-archive metrics inventory (perp-oi-growth-inputs.json, sha e7fa25f4...), the 2026-09-02 metrics listing snapshot, the per-window 72-symbol universe derivation, and the 30+3 behavioral tests remain valid as data and code and were never contaminated by an outcome read.",
+      "claim": "None. No return, alpha, deployment, or capital claim of any kind; the mechanism is untested, not falsified and not supported."
     }
   },
   "forty_percent_disposition": "No explored result supports a 40% net annual-return claim. Searching further against historical CAGR is prohibited; future strategies advance only through mechanism, benchmark excess, cost/collateral realism, and prospective forward evidence.",
@@ -800,6 +835,16 @@
       "trial_count": 1,
       "return_rows": 0,
       "disposition": "One-day cross-sectional reversal decile long-short on 652 Binance USDT perpetuals net of two taker fees, primary 2022-01..2023-12. Complete sample (730/730 dates, 21,990 positions) and all four gates false: mean net spread -5.22 bps/date against +5 bps, long-leg excess -20.77 bps (losers kept losing) and short-leg excess +10.33 bps, 3/8 quarters positive, bootstrap p 0.8636 against alpha_4 0.0025. Gross spread before fees +4.77 bps/date (p 0.162). Because all gates were conjunctive, the primary was falsified and the frozen 2024-01..2025-12 replication was not run. No threshold relaxation, universe change, or re-windowing is permitted."
+    },
+    {
+      "id": "perp-oi-growth-cross-section",
+      "artifact_status": "inconclusive",
+      "final_status": "inconclusive-integrity-abort-no-outcome-computed",
+      "directory": "quant-trading/explorations",
+      "campaign_verdict": "FROZEN-INCONCLUSIVE",
+      "trial_count": 1,
+      "return_rows": 0,
+      "disposition": "The primary run aborted during input parsing under the contract's own integrity rule (frozen_rule.open_interest: \"Every row must carry the archive date ... any drift aborts the invocation\"). 337 of 51,224 frozen archives (0.66%), all dated 2024-03-05..2024-04-"
     }
   ]
 }

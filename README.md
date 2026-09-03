@@ -68,7 +68,7 @@ Source: `~/jinleic-workspace/quant-trading`.
 
 | Target | source | last change | latest headline |
 |---|---|---|---|
-| [Quantitative trading research](quant-trading/index.html) | `quant-trading` | 2026-09-03 | No explored strategy supports a prospective alpha or capital-deployment claim. Seven scripts/campaign.py campaigns have closed with terminal verdicts (6 FROZEN-NEGATIVE, 1 FROZEN-C |
+| [Quantitative trading research](quant-trading/index.html) | `quant-trading` | 2026-09-03 | No explored strategy supports a prospective alpha or capital-deployment claim. Eight scripts/campaign.py campaigns have closed with terminal verdicts (6 FROZEN-NEGATIVE, 1 FROZEN-C |
 
 ## Update
 

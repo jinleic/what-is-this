@@ -5,7 +5,12 @@
   "prereg_source_commit": "862a999",
   "prereg_sha256_manifest": "5189a90c2152a5755920e309b3ee95ab246aad4fd609d9221896f124bc486df7",
   "prereg_copy_sha256": "5189a90c2152a5755920e309b3ee95ab246aad4fd609d9221896f124bc486df7",
-  "prereg_amended_after_init": false,
+  "result_appendix": {
+    "added_after_compute": true,
+    "note": "pre-statement section 7 (result appendix) appended post-compute, pre-freeze, as prescribed by section 6; section 6 of the pre-statement itself mandates this appendix, so this is not a protocol amendment",
+    "prereg_final_sha256": "35d5d4f6d2da99e3cb8e515a963f568660fcf996271e08f0ef928ba64bcc80e3",
+    "result_json_sha256": "93588cc2a7ff510c4800cb66fe911b854db30db5acbd2452dd0a21f1ea3b5b22"
+  },
   "protocol_predecessor": {
     "run_id": "20260901T134705Z_9da59c74_a3bb7abdb738",
     "verdict": "REJECTED",

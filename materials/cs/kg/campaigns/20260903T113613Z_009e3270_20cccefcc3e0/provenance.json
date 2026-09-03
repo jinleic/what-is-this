@@ -1,0 +1,57 @@
+{
+  "run_id": "20260903T113613Z_009e3270_20cccefcc3e0",
+  "gate": "closeout-1p0-1p3-corr-cap2p17",
+  "prereg_source": "cs/kg/prereg/20260902_closeout_1p0_1p3/pre_statement.md",
+  "prereg_source_commit": "82935f7",
+  "prereg_sha256_manifest": "cd3292cc17d35dd22771021e18e34b3b04ef029c7329397e6c01db12cbacb9f0",
+  "prereg_copy_sha256_at_init": "cd3292cc17d35dd22771021e18e34b3b04ef029c7329397e6c01db12cbacb9f0",
+  "prereg_amended_after_init": true,
+  "amendment": {
+    "when": "after init, before controls and before any band compute",
+    "reason": "section 0 originally paired the run-root summary result.json sha256 with the filename logs/band_1p75_3p5_result.json; corrected to cite both frozen artifacts with their own hashes",
+    "prereg_pre_amendment_sha256": "cd3292cc17d35dd22771021e18e34b3b04ef029c7329397e6c01db12cbacb9f0",
+    "prereg_post_amendment_sha256": "ad0d0aaa7a6d368001223bbbc6b25bbaf8af34cc2e812f7c07a7af292f7c42cf",
+    "no_knob_changed": true
+  },
+  "prereg_copy_sha256_current": "ad0d0aaa7a6d368001223bbbc6b25bbaf8af34cc2e812f7c07a7af292f7c42cf",
+  "primary_precondition": {
+    "run_id": "20260901T135742Z_1a48b071_282f6f2490bc",
+    "verdict": "FROZEN-CERTIFIED",
+    "band_result_input": {
+      "path": "logs/band_1p75_3p5_result.json",
+      "sha256": "f42d0463f11f4d7014febe9c6f799b8754c73d436a7ba227173265ae270e8bf1",
+      "source_commit": "ff14541",
+      "use": "satisfies the driver's registered close-out precondition guard only; never arithmetic input"
+    }
+  },
+  "instruments": {
+    "code/gate_corr_env.py": {
+      "sha256": "94c07adf14fbd860c54c5a59f5430dafe9125a86107c1f0b0f85da441d9eee30",
+      "source": "Campaign A frozen code/gate_corr_env.py, byte-identical through the primary band campaign"
+    },
+    "code/startup_controls.py": {
+      "sha256": "cf7d57fbb3052cb09fc719cafda6eb6de6830ce826b5f4ad1d8211cb7e965ac3",
+      "source": "Campaign A/C byte-identical"
+    },
+    "code/decompose_cell.py": {
+      "sha256": "291eddc1d76b5a60338855012629077a7d5799db9c7434e07b18ae19df6204ff",
+      "source": "Campaign B frozen; D1-D6 escalation template only"
+    },
+    "code/gate_subdiv.py": {
+      "sha256": "6f1b8ee0f4bd11e3a3dec1c0a584dfe72975c9b91ab53ff2b26366cb2e0b5df5",
+      "source": "Campaign B frozen; dependency of decompose_cell.py"
+    },
+    "code/gate_band175.py": {
+      "note": "computational core byte-identical to the primary campaign's frozen driver; only the header docstring names this campaign and its prereg"
+    }
+  },
+  "shared_dependency": "cs/kg/campaigns/20260831T082425Z_kg_direct_d4_restart/code/core.py",
+  "bytecode_policy": "PYTHONDONTWRITEBYTECODE=1 and sys.dont_write_bytecode=True before any frozen import",
+  "runtime": "worker-agent foreground eval kernel, niceness 0, RLIMIT_CPU soft unlimited, thread pools pinned to 1",
+  "result_appendix": {
+    "added_after_compute": true,
+    "note": "pre-statement section 6 (result appendix) appended post-compute, pre-freeze, as prescribed by section 5",
+    "prereg_final_sha256": "d560c071c7bbb1fc204dadb14910c3624bc04cb7aa0ceeef0613ed90bb8523d5",
+    "result_json_sha256": "dc890b83037e30663ab9342b80deb2c428ab1f023a0c91231f635b5c9796f17d"
+  }
+}

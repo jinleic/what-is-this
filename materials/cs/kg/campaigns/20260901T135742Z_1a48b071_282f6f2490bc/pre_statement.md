@@ -261,3 +261,38 @@ Then run `campaign.py freeze`, followed by one
 
 No claim about [4.083,6.0] is made. Campaign C's tile-3 PASS at cap 2^19 and
 its tiles-4–49 cost deferral remain exactly as frozen.
+
+## 7. Result appendix (post-compute, pre-freeze)
+
+UTC 2026-09-02. Primary band complete. **[1.75, 3.5] PASSES: 87/87 tiles,
+every leaf strictly positive, certified prefix = the full band
+(`certified_prefix_right = 3.5` exactly).** The registered 2^19 fallback was
+never invoked: `fallback_runs_total = 0` and the aggregate panel histogram
+tops out at 2^17 (1024: 46198, 4096: 31772, 16384: 26028, 65536: 22714,
+131072: 21808 boxes). Worst per-tile certified margin:
+`[4.84033886654731755225220389785e-8 +/- 2.77e-38]` at tile 83
+(c-pair [3.36357938183871825925116238300 +/- 1.11e-30],
+[3.39048801689342800532517168206 +/- 2.89e-30]; worst cell
+`[-0.864583333333333333333333 +/- 3.34e-25]|[-0.854166666666666666666667 +/- 3.34e-25]|0.5|[0.510416666666666666666667 +/- 3.34e-25]`,
+certified at 16384 panels). Full per-tile table, aggregates, and budget:
+`result.json` (run root). Envelope evaluations 2760 of 260000; tile CPU
+113525.933338 s (31.53 CPU-h); controls 9.494744 s; excluded-launch charge
+800 s; campaign total 114335.428082 s of the 216000 s budget; wall used
+163712.13 s of 259200 s. Refutation gate never triggered. Nothing inside
+[1.75,3.5] is left unswept; no claim about [4.083,6.0] is made.
+
+Runtime deviation disclosure (priority is a scheduling knob, not a scientific
+one): §2 specified niceness 15. Tiles 1-40 computed at niceness 15; the
+harness then recycled the worker kernel and tiles 41-87 computed at niceness
+0 (a lower value than specified, i.e. higher scheduling priority; interval
+arithmetic is unaffected). Excluded, zero-CPU events are disclosed in
+`logs/excluded_*.json`: five throttled/suspended launch attempts, one
+seven-hour OS suspension of the worker kernel (2026-09-02T10:18Z-17:31Z, no
+CPU charged, no evidence affected, tile 49 landed unharmed after resume), and
+three aborted parent-side launches (17:58-18:03Z, zero tiles, zero CPU; the
+kernel-side driver was the sole writer throughout). Per-tile CPU is summed
+from the per-tile `process_seconds` records only.
+
+Close-out status: [1.0,1.3] and [1.45,1.75] run as separate successor
+campaigns with their own prereg/init/controls, per owner instruction; they
+supersede nothing — the frozen direct-D.4 PASSes stand.

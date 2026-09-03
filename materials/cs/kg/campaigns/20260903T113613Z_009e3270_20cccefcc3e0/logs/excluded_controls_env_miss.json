@@ -1,0 +1,12 @@
+{
+  "excluded": true,
+  "kind": "operator_environment_miss",
+  "event": "first --phase controls attempt at init+0h raised 'startup_controls.py produced no JSON'",
+  "cause": "kernel-side launch did not export PYTHONPATH for the flint wheel, so the startup-battery subprocess crashed before writing; the driver raised before writing any artifact",
+  "tiles_completed": 0,
+  "tile_artifacts_written": 0,
+  "controls_json_written": false,
+  "verdict_weight": "none",
+  "cpu_charged_seconds": 0.0,
+  "correction": "PYTHONPATH exported in the kernel environment; controls rerun immediately after and PASSED"
+}

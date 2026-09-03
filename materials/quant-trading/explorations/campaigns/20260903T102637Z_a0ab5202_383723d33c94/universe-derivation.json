@@ -1,0 +1,856 @@
+{
+ "schema_version": 1,
+ "id": "perp-oi-growth-universe-derivation",
+ "created_at_utc": "2026-09-03T05:16:19Z",
+ "rule": "For each window starting on 1 January, rank the 652 symbols of the frozen cycle-4 kline inventory (perp-cross-section-inputs.json) by the sum of 1h quote_volume over complete 24-bar days in the preceding calendar year, require at least 300 complete days in that year, and keep the top 72 (ties broken by symbol). No window return, price, or open-interest value is read.",
+ "kline_inventory": "quant-trading/explorations/perp-cross-section-inputs.json",
+ "kline_inventory_sha256": "0c7d5acd497cdf5499e795e06bc73ee1a0f5f47bb2454141e381dd4afbc00013",
+ "windows": {
+  "primary": {
+   "start_utc_inclusive": "2024-01-01T00:00:00Z",
+   "end_utc_exclusive": "2025-01-01T00:00:00Z",
+   "lookback_calendar_year": 2023,
+   "universe": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "XRPUSDT",
+    "DOGEUSDT",
+    "APTUSDT",
+    "BNBUSDT",
+    "LTCUSDT",
+    "MATICUSDT",
+    "BCHUSDT",
+    "OPUSDT",
+    "LINKUSDT",
+    "AVAXUSDT",
+    "ADAUSDT",
+    "CFXUSDT",
+    "TRBUSDT",
+    "FILUSDT",
+    "1000SHIBUSDT",
+    "DYDXUSDT",
+    "MASKUSDT",
+    "FTMUSDT",
+    "GALAUSDT",
+    "ETCUSDT",
+    "INJUSDT",
+    "LINAUSDT",
+    "DOTUSDT",
+    "APEUSDT",
+    "GMTUSDT",
+    "LDOUSDT",
+    "NEARUSDT",
+    "EOSUSDT",
+    "CRVUSDT",
+    "STXUSDT",
+    "SANDUSDT",
+    "ATOMUSDT",
+    "TOMOUSDT",
+    "AXSUSDT",
+    "1000LUNCUSDT",
+    "RNDRUSDT",
+    "STORJUSDT",
+    "MKRUSDT",
+    "MANAUSDT",
+    "BLZUSDT",
+    "COMPUSDT",
+    "RUNEUSDT",
+    "WAVESUSDT",
+    "SXPUSDT",
+    "FETUSDT",
+    "MTLUSDT",
+    "XLMUSDT",
+    "GRTUSDT",
+    "TRXUSDT",
+    "UNFIUSDT",
+    "AGIXUSDT",
+    "ARPAUSDT",
+    "SNXUSDT",
+    "UNIUSDT",
+    "BAKEUSDT",
+    "AAVEUSDT",
+    "STMXUSDT",
+    "MAGICUSDT",
+    "OCEANUSDT",
+    "IMXUSDT",
+    "SUSHIUSDT",
+    "LPTUSDT",
+    "KAVAUSDT",
+    "NEOUSDT",
+    "CHZUSDT",
+    "ICPUSDT",
+    "MINAUSDT",
+    "HOOKUSDT",
+    "LUNA2USDT"
+   ],
+   "lookback_stats": {
+    "BTCUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 4199591156810.33
+    },
+    "ETHUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 2012210656561.036
+    },
+    "SOLUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 403096861928.94604
+    },
+    "XRPUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 296183499761.6865
+    },
+    "DOGEUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 189497629788.6466
+    },
+    "APTUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 149725085066.24396
+    },
+    "BNBUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 146297464947.8803
+    },
+    "LTCUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 139620004822.2138
+    },
+    "MATICUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 136609534750.7554
+    },
+    "BCHUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 123819520254.08133
+    },
+    "OPUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 120633592648.59842
+    },
+    "LINKUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 116497078072.72324
+    },
+    "AVAXUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 105457661847.16296
+    },
+    "ADAUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 99310290167.30798
+    },
+    "CFXUSDT": {
+     "complete_days": 314,
+     "quote_volume_usd": 95465135673.26173
+    },
+    "TRBUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 94020995134.80501
+    },
+    "FILUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 80773364809.0432
+    },
+    "1000SHIBUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 77520533708.48102
+    },
+    "DYDXUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 73370417368.43817
+    },
+    "MASKUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 72741966297.91203
+    },
+    "FTMUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 72726557723.78784
+    },
+    "GALAUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 72303018104.13438
+    },
+    "ETCUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 72087354603.27716
+    },
+    "INJUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 65741475639.508316
+    },
+    "LINAUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 59670405943.69569
+    },
+    "DOTUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 57735047044.12032
+    },
+    "APEUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 57662866976.654
+    },
+    "GMTUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 53085529336.85303
+    },
+    "LDOUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 51422788794.12761
+    },
+    "NEARUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 51016863777.329994
+    },
+    "EOSUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 50293571693.62081
+    },
+    "CRVUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 47920517338.3458
+    },
+    "STXUSDT": {
+     "complete_days": 313,
+     "quote_volume_usd": 46095281655.79896
+    },
+    "SANDUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 45806533533.11343
+    },
+    "ATOMUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 43778391818.46087
+    },
+    "TOMOUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 42652227145.854324
+    },
+    "AXSUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 38431675949.46195
+    },
+    "1000LUNCUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 36872849181.12372
+    },
+    "RNDRUSDT": {
+     "complete_days": 331,
+     "quote_volume_usd": 36399166405.22205
+    },
+    "STORJUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 35232384454.7963
+    },
+    "MKRUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 35130022704.11285
+    },
+    "MANAUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 34894686785.67961
+    },
+    "BLZUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 34696656841.17175
+    },
+    "COMPUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 34516302035.101494
+    },
+    "RUNEUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 33485937153.277996
+    },
+    "WAVESUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 33349346220.12387
+    },
+    "SXPUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 32439937016.192455
+    },
+    "FETUSDT": {
+     "complete_days": 348,
+     "quote_volume_usd": 29883658739.18971
+    },
+    "MTLUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 28515628696.685265
+    },
+    "XLMUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 28382534505.197186
+    },
+    "GRTUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 27459771643.265324
+    },
+    "TRXUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 26213405893.56838
+    },
+    "UNFIUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 25938973492.292393
+    },
+    "AGIXUSDT": {
+     "complete_days": 318,
+     "quote_volume_usd": 25800382897.65027
+    },
+    "ARPAUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 25783056211.91969
+    },
+    "SNXUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 25408041270.318287
+    },
+    "UNIUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 25284985074.997993
+    },
+    "BAKEUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 25168930621.676506
+    },
+    "AAVEUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 25116648928.181
+    },
+    "STMXUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 24734014817.88958
+    },
+    "MAGICUSDT": {
+     "complete_days": 340,
+     "quote_volume_usd": 24410681664.0606
+    },
+    "OCEANUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 23829150587.92944
+    },
+    "IMXUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 22975296038.014927
+    },
+    "SUSHIUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 22503119031.295986
+    },
+    "LPTUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 21236396084.94781
+    },
+    "KAVAUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 20932431338.633034
+    },
+    "NEOUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 20280994822.083744
+    },
+    "CHZUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 19894726969.19436
+    },
+    "ICPUSDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 19399684937.51901
+    },
+    "MINAUSDT": {
+     "complete_days": 327,
+     "quote_volume_usd": 19204905655.918213
+    },
+    "HOOKUSDT": {
+     "complete_days": 342,
+     "quote_volume_usd": 18792779138.073574
+    },
+    "LUNA2USDT": {
+     "complete_days": 365,
+     "quote_volume_usd": 18372608217.39441
+    }
+   }
+  },
+  "replication": {
+   "start_utc_inclusive": "2025-01-01T00:00:00Z",
+   "end_utc_exclusive": "2026-01-01T00:00:00Z",
+   "lookback_calendar_year": 2024,
+   "universe": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "DOGEUSDT",
+    "XRPUSDT",
+    "1000PEPEUSDT",
+    "WIFUSDT",
+    "BNBUSDT",
+    "SUIUSDT",
+    "WLDUSDT",
+    "ORDIUSDT",
+    "1000SHIBUSDT",
+    "AVAXUSDT",
+    "ADAUSDT",
+    "LINKUSDT",
+    "FILUSDT",
+    "1000BONKUSDT",
+    "PEOPLEUSDT",
+    "NEARUSDT",
+    "BCHUSDT",
+    "ARBUSDT",
+    "TIAUSDT",
+    "LTCUSDT",
+    "FTMUSDT",
+    "1000FLOKIUSDT",
+    "1000SATSUSDT",
+    "APTUSDT",
+    "DOTUSDT",
+    "OPUSDT",
+    "TRBUSDT",
+    "ETCUSDT",
+    "FETUSDT",
+    "SEIUSDT",
+    "UNIUSDT",
+    "INJUSDT",
+    "ONDOUSDT",
+    "GALAUSDT",
+    "ENSUSDT",
+    "XLMUSDT",
+    "HBARUSDT",
+    "AAVEUSDT",
+    "CRVUSDT",
+    "APEUSDT",
+    "STXUSDT",
+    "TONUSDT",
+    "SANDUSDT",
+    "JTOUSDT",
+    "JUPUSDT",
+    "JASMYUSDT",
+    "TRXUSDT",
+    "EOSUSDT",
+    "ATOMUSDT",
+    "1000RATSUSDT",
+    "LDOUSDT",
+    "GMTUSDT",
+    "DYDXUSDT",
+    "PENDLEUSDT",
+    "OMUSDT",
+    "ICPUSDT",
+    "MASKUSDT",
+    "CKBUSDT",
+    "RUNEUSDT",
+    "BIGTIMEUSDT",
+    "MANTAUSDT",
+    "XAIUSDT",
+    "REEFUSDT",
+    "ARKMUSDT",
+    "CFXUSDT",
+    "MEMEUSDT",
+    "ALTUSDT",
+    "UMAUSDT",
+    "PYTHUSDT"
+   ],
+   "lookback_stats": {
+    "BTCUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 6520876441061.18
+    },
+    "ETHUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 3194456298753.0337
+    },
+    "SOLUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 1109035030435.4712
+    },
+    "DOGEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 555684089798.2704
+    },
+    "XRPUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 449245627794.1722
+    },
+    "1000PEPEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 446884545661.7552
+    },
+    "WIFUSDT": {
+     "complete_days": 348,
+     "quote_volume_usd": 248774334202.23743
+    },
+    "BNBUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 211003679319.18213
+    },
+    "SUIUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 200171056613.71048
+    },
+    "WLDUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 169607387889.0074
+    },
+    "ORDIUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 167627141094.22424
+    },
+    "1000SHIBUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 167203068204.02963
+    },
+    "AVAXUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 137990289835.47214
+    },
+    "ADAUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 135264720783.3802
+    },
+    "LINKUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 117419426257.20763
+    },
+    "FILUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 102804785822.55261
+    },
+    "1000BONKUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 101757870672.81195
+    },
+    "PEOPLEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 100593694839.80377
+    },
+    "NEARUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 99569683188.35603
+    },
+    "BCHUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 97517572493.50966
+    },
+    "ARBUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 95652354576.45949
+    },
+    "TIAUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 92076477042.93939
+    },
+    "LTCUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 89550782395.06091
+    },
+    "FTMUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 85531567788.37062
+    },
+    "1000FLOKIUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 82754661760.52283
+    },
+    "1000SATSUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 82176593374.5252
+    },
+    "APTUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 79195409645.40417
+    },
+    "DOTUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 76952096946.09395
+    },
+    "OPUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 76690066302.67479
+    },
+    "TRBUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 75498781789.08781
+    },
+    "ETCUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 73376815502.05821
+    },
+    "FETUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 72349054025.01051
+    },
+    "SEIUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 70330168660.13069
+    },
+    "UNIUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 62487903322.595985
+    },
+    "INJUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 62011481192.166756
+    },
+    "ONDOUSDT": {
+     "complete_days": 346,
+     "quote_volume_usd": 60940905580.16269
+    },
+    "GALAUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 58746617539.928696
+    },
+    "ENSUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 57896151472.44293
+    },
+    "XLMUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 55293540497.86646
+    },
+    "HBARUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 55213152703.577835
+    },
+    "AAVEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 52386223044.33702
+    },
+    "CRVUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 51284663284.65091
+    },
+    "APEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 49850287072.9054
+    },
+    "STXUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 49127924823.482475
+    },
+    "TONUSDT": {
+     "complete_days": 305,
+     "quote_volume_usd": 49069991775.48032
+    },
+    "SANDUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 43029471229.58716
+    },
+    "JTOUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 42978667635.14011
+    },
+    "JUPUSDT": {
+     "complete_days": 335,
+     "quote_volume_usd": 42002132207.36067
+    },
+    "JASMYUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 41842522188.19906
+    },
+    "TRXUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 41795904402.57271
+    },
+    "EOSUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 40999936102.309296
+    },
+    "ATOMUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 39357924721.95953
+    },
+    "1000RATSUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 38137800031.18613
+    },
+    "LDOUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 37301597330.54712
+    },
+    "GMTUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 37003159565.93672
+    },
+    "DYDXUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 36187709864.27151
+    },
+    "PENDLEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 34621308772.036385
+    },
+    "OMUSDT": {
+     "complete_days": 322,
+     "quote_volume_usd": 34510451982.33813
+    },
+    "ICPUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 32493048548.45603
+    },
+    "MASKUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 32240481923.86686
+    },
+    "CKBUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 31941803405.006054
+    },
+    "RUNEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 31754553871.250008
+    },
+    "BIGTIMEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 31711463521.769085
+    },
+    "MANTAUSDT": {
+     "complete_days": 348,
+     "quote_volume_usd": 31375487164.4903
+    },
+    "XAIUSDT": {
+     "complete_days": 357,
+     "quote_volume_usd": 29967627805.471725
+    },
+    "REEFUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 29614363892.055088
+    },
+    "ARKMUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 29560350614.99059
+    },
+    "CFXUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 29105552766.642563
+    },
+    "MEMEUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 28890245443.255196
+    },
+    "ALTUSDT": {
+     "complete_days": 341,
+     "quote_volume_usd": 27762794135.54711
+    },
+    "UMAUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 27458362593.02497
+    },
+    "PYTHUSDT": {
+     "complete_days": 366,
+     "quote_volume_usd": 27348848202.06591
+    }
+   }
+  }
+ },
+ "union_symbols": [
+  "1000BONKUSDT",
+  "1000FLOKIUSDT",
+  "1000LUNCUSDT",
+  "1000PEPEUSDT",
+  "1000RATSUSDT",
+  "1000SATSUSDT",
+  "1000SHIBUSDT",
+  "AAVEUSDT",
+  "ADAUSDT",
+  "AGIXUSDT",
+  "ALTUSDT",
+  "APEUSDT",
+  "APTUSDT",
+  "ARBUSDT",
+  "ARKMUSDT",
+  "ARPAUSDT",
+  "ATOMUSDT",
+  "AVAXUSDT",
+  "AXSUSDT",
+  "BAKEUSDT",
+  "BCHUSDT",
+  "BIGTIMEUSDT",
+  "BLZUSDT",
+  "BNBUSDT",
+  "BTCUSDT",
+  "CFXUSDT",
+  "CHZUSDT",
+  "CKBUSDT",
+  "COMPUSDT",
+  "CRVUSDT",
+  "DOGEUSDT",
+  "DOTUSDT",
+  "DYDXUSDT",
+  "ENSUSDT",
+  "EOSUSDT",
+  "ETCUSDT",
+  "ETHUSDT",
+  "FETUSDT",
+  "FILUSDT",
+  "FTMUSDT",
+  "GALAUSDT",
+  "GMTUSDT",
+  "GRTUSDT",
+  "HBARUSDT",
+  "HOOKUSDT",
+  "ICPUSDT",
+  "IMXUSDT",
+  "INJUSDT",
+  "JASMYUSDT",
+  "JTOUSDT",
+  "JUPUSDT",
+  "KAVAUSDT",
+  "LDOUSDT",
+  "LINAUSDT",
+  "LINKUSDT",
+  "LPTUSDT",
+  "LTCUSDT",
+  "LUNA2USDT",
+  "MAGICUSDT",
+  "MANAUSDT",
+  "MANTAUSDT",
+  "MASKUSDT",
+  "MATICUSDT",
+  "MEMEUSDT",
+  "MINAUSDT",
+  "MKRUSDT",
+  "MTLUSDT",
+  "NEARUSDT",
+  "NEOUSDT",
+  "OCEANUSDT",
+  "OMUSDT",
+  "ONDOUSDT",
+  "OPUSDT",
+  "ORDIUSDT",
+  "PENDLEUSDT",
+  "PEOPLEUSDT",
+  "PYTHUSDT",
+  "REEFUSDT",
+  "RNDRUSDT",
+  "RUNEUSDT",
+  "SANDUSDT",
+  "SEIUSDT",
+  "SNXUSDT",
+  "SOLUSDT",
+  "STMXUSDT",
+  "STORJUSDT",
+  "STXUSDT",
+  "SUIUSDT",
+  "SUSHIUSDT",
+  "SXPUSDT",
+  "TIAUSDT",
+  "TOMOUSDT",
+  "TONUSDT",
+  "TRBUSDT",
+  "TRXUSDT",
+  "UMAUSDT",
+  "UNFIUSDT",
+  "UNIUSDT",
+  "WAVESUSDT",
+  "WIFUSDT",
+  "WLDUSDT",
+  "XAIUSDT",
+  "XLMUSDT",
+  "XRPUSDT"
+ ],
+ "overlap": 40,
+ "candidate_outcomes_accessed": false
+}
