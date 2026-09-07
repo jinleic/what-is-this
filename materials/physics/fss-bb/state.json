@@ -3,14 +3,21 @@
   "id": "physics/fss-bb",
   "problem": "BB erasure finite-size scaling + nu anomaly",
   "status": "active",
-  "current_gate": "20k ladder frozen; nu INCONCLUSIVE-UNDER-BUDGET; 200k ladder parked pending user approval (~221 core-h)",
+  "integrity_hold": {
+    "declared_utc": "2026-09-05",
+    "reason": "Reporting-layer reference-integrity failure. The comparison values 0.4608 (N=576) and 0.4702 (N=900) published in physics/RESULTS.md and the 2026-08-30 PROGRESS entry appear nowhere in arXiv:2603.19062v3; Table 1 gives 0.4453 [0.4452,0.4455] and 0.4674 [0.4673,0.4676]. The fields below were also stale or mis-scoped.",
+    "evidence": "data/fss-reference-integrity-20260905.json",
+    "rule": "No FSS work, promotion or campaign approval until a human adjudicates. Frozen campaign payloads are untouched and remain valid."
+  },
+  "current_gate": "HOLD: 20k ladder frozen, nu INCONCLUSIVE-UNDER-BUDGET; the 200k five-size Gate-A ladder is parked at the preregistered ~50 core-h estimate (the ~221 core-h figure is Gate-B's two extra sizes, not this ladder)",
   "latest_campaign": "20260829T235018Z_6df86846_e8697f77b182",
-  "latest_campaign_verdict": "RUNNING",
-  "headline": "nu=1.412 [1.391,1.434] measured; CIs 3.2x too wide to adjudicate",
-  "next_action": "Approve (or decline) the 200k full-ladder campaign",
+  "latest_campaign_verdict": "UNVERIFIED-LEGACY-NO-STATUS-FILE",
+  "verdict_provenance": "No authoritative close artifact exists: the legacy fss-bb layout writes no status.json and none was fabricated. Evidence that the run reached its end is indirect (final rename to <UTC>_<uuid>_<sha12>, manifest timing_total_s, complete thresholds/fss_fit/results.csv, and the 2026-08-30 PROGRESS entry). The earlier RUNNING value was stale launch-time wording; this field records that the verdict is unverified, not that it is frozen.",
+  "headline": "nu=1.412 [1.391,1.434] measured; CIs 3.2x too wide to adjudicate; reporting layer under integrity hold",
+  "next_action": "Adjudicate the reference-integrity report first. Do NOT approve the 200k ladder off the current published comparisons; correct the paper reference values and the core-hour scoping, then decide.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "workspace-architecture-fix",
+  "updated_utc": "2026-09-05T09:20:00Z",
+  "updated_by": "fss-reference-integrity-hold",
   "sources": [
     "physics/RESULTS.md",
     "physics/fss-bb/README.md"

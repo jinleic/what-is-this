@@ -148,12 +148,22 @@ def verify_static_inputs(contract: dict) -> tuple[dict, dict, dict]:
 
 
 def _parse_stamp(stamp: str) -> tuple[str, int]:
-    """(date part, milliseconds into that date). Malformed or out-of-range stamps abort."""
+    """(date part, milliseconds into that date). Malformed or out-of-range stamps abort.
+
+    Strictly stricter than the cycle-5 parser: every digit position must be an ASCII digit, so
+    space- or sign-padded fields are refused instead of silently coerced. This parser never
+    selects a value the cycle-5 parser would not have selected; wherever the two disagree this
+    one aborts and never substitutes. An outcome-blind scan of every create_time string in all
+    51,224 frozen archives found zero padded or non-canonical stamps, so the check is inert here.
+    """
     if len(stamp) != 19 or stamp[10] != " " or stamp[13] != ":" or stamp[16] != ":":
         raise ValueError(f"malformed create_time: {stamp!r}")
-    date, hour, minute, second = stamp[:10], int(stamp[11:13]), int(stamp[14:16]), int(stamp[17:19])
     if stamp[4] != "-" or stamp[7] != "-":
         raise ValueError(f"malformed create_time date: {stamp!r}")
+    digits = stamp[:4] + stamp[5:7] + stamp[8:10] + stamp[11:13] + stamp[14:16] + stamp[17:19]
+    if not digits.isdigit() or not digits.isascii():
+        raise ValueError(f"non-digit create_time field: {stamp!r}")
+    date, hour, minute, second = stamp[:10], int(stamp[11:13]), int(stamp[14:16]), int(stamp[17:19])
     datetime.strptime(date, "%Y-%m-%d")
     if not (0 <= hour < 24 and 0 <= minute < 60 and 0 <= second < 60):
         raise ValueError(f"create_time fields out of range: {stamp!r}")

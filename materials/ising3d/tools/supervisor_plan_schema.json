@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ising3d continuous supervisor: plan turn output",
+  "description": "One bounded exact-research task proposed by a planner/producer-author turn. The independent verifier is authored in a separate fresh review turn, so this object names no verifier script (seed plan files may add a 'verifier' object with the review-schema shape).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "front",
+    "hypothesis_id",
+    "next_prompt",
+    "artifact",
+    "producer",
+    "verifier_requirements",
+    "checkpoint_evidence",
+    "source_changes"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["run", "stop"],
+      "description": "'run' executes producer then independent verifier; 'stop' halts the supervisor safely (stop_reason required)."
+    },
+    "stop_reason": {"type": "string", "maxLength": 2000},
+    "front": {
+      "type": "string",
+      "enum": ["norm", "wlaw", "callen", "other"],
+      "description": "norm = characteristic-zero norm envelope (rank 1); wlaw = W-law defect blocks (rank 2); callen = Callen contact quotient (rank 3); other = another explicit ranked-queue item (front_rank and front_label required)."
+    },
+    "front_rank": {"type": "integer", "minimum": 1, "maximum": 11},
+    "front_label": {"type": "string", "maxLength": 200},
+    "hypothesis_id": {
+      "type": "string",
+      "pattern": "^H[0-9]{3,4}$",
+      "description": "New row appended this turn to notes/hypotheses.csv; must exceed the highest existing id."
+    },
+    "next_prompt": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 6000,
+      "description": "Context-rich statement of the bounded task, its falsifiable predictions, and its exact scope limits, written for the fresh review turn and the next planner."
+    },
+    "artifact": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "description": "Target-relative JSON path under results/ that the producer creates (must not exist yet) or, when producer is null, an existing artifact to verify."
+    },
+    "producer": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["script", "arguments"],
+      "properties": {
+        "script": {"type": "string", "minLength": 1, "maxLength": 300, "description": "target-relative path under experiments/"},
+        "arguments": {
+          "type": "array",
+          "items": {"type": "string", "maxLength": 300},
+          "maxItems": 24
+        }
+      }
+    },
+    "verifier_requirements": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 3000,
+      "description": "What an independent verifier must recompute or check, including exact digests/degrees/counts it must reproduce and the scope it must not exceed."
+    },
+    "artifact_expect": {
+      "type": "object",
+      "maxProperties": 16,
+      "additionalProperties": {
+        "anyOf": [{"type": "string"}, {"type": "number"}, {"type": "boolean"}, {"type": "null"}]
+      },
+      "description": "Dotted paths into the artifact document (e.g. 'data.scope', 'data.columns.1.column_sha256') with the exact expected scalar; the supervisor checks each after the producer run."
+    },
+    "checkpoint_evidence": {
+      "type": "array",
+      "items": {"type": "string", "maxLength": 400},
+      "minItems": 1,
+      "maxItems": 8,
+      "description": "Brief citations of the checkpoint lines/rows that justify this task."
+    },
+    "source_changes": {
+      "type": "array",
+      "items": {"type": "string", "maxLength": 300},
+      "maxItems": 16,
+      "description": "Target-relative files created or edited during this turn."
+    }
+  }
+}

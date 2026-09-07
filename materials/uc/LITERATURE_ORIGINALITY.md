@@ -1,10 +1,13 @@
 # Literature and originality audit: the explicit-constant and support-reduction route
 
 **Search date:** 2026-08-25  
-**Latest refresh:** the arXiv `all:"union-closed"` feed was queried again at
-2026-08-26T15:10:15Z.  It still reported 103 records, no record posted after
-the full-audit cutoff, and no theorem-level collision; see
-[`arxiv_refresh_2026-08-26.json`](literature/arxiv_refresh_2026-08-26.json).
+**Latest refresh:** 2026-09-03, arXiv `all:"union-closed"`, `submittedDate`
+descending — see
+[`arxiv_refresh_2026-09-03.json`](literature/arxiv_refresh_2026-09-03.json)
+and the dated section at the end of this file, which extends the audit from
+the \(\psi\)-route target to \(c'\) and \(c''\).  The previous refresh
+(2026-08-26, [`arxiv_refresh_2026-08-26.json`](literature/arxiv_refresh_2026-08-26.json))
+reported 103 records and no collision; the feed now reports 104.
 
 **Scope:** theorem-level prior art for an explicit union-closed frequency constant above
 \(\psi=(3-\sqrt5)/2\), dependent-coupling formulations, finite-support reductions,
@@ -13,6 +16,23 @@ and computer-assisted certificates.
 [`literature/search_protocol.json`](literature/search_protocol.json), and
 [`literature/citation_graph.json`](literature/citation_graph.json). The saved PDFs,
 source bundles, and author code are content-addressed there by SHA-256.
+
+## Targeted unresolved prior-art lead — 2026-09-05
+
+The user-supplied research history reports a Costa preprint dated 2026-08-23
+claiming a bound greater than 0.3827290879. **That lead remains unresolved.**
+The exact-author/topic
+[arXiv query](https://export.arxiv.org/api/query?search_query=all%3A%22union-closed%22%20AND%20au%3ACosta&start=0&max_results=20)
+returned `totalResults=0`; exact-number and author/topic web searches did not
+identify a primary source. Neither observation disproves the reported preprint
+or establishes priority. A search synthesis conflated this decimal with
+$(3-\sqrt5)/2$ and was discarded.
+
+Before making a priority claim, obtain the exact primary and compare its theorem
+assumptions, coupling/protocol and certification with the H2 manuscript.
+The earlier bounded-search conclusions below are historical, not clearance of
+this lead. The local proof claim is unchanged; external mathematical review
+has not occurred, and no new proof replay or submission was performed this session.
 
 > **Integration update (2026-08-26).** The independent mathematical audit
 > found no fatal proof gap, and a fresh eight-slice direct replay passed all
@@ -430,3 +450,59 @@ The requested classification is intentionally component-wise.
 5. **OPEN.** Make the final novelty sentence conditional on successful independent replay
    and on the explicitly bounded search protocol. Avoid an unqualified “largest known”
    claim until that replay and the proof audit are both closed.
+
+## Refresh 2026-09-03: the unconditional constant \(c'\) and the improved constant \(c''\)
+
+The audit above was written for the \(\psi\)-route target \(t_{\rm cert}\).  Two later
+results need their own originality record, and this section is the single authority for it.
+
+| Local result | Value | Classification through 2026-09-03 |
+|---|---|---|
+| \(c'=1-m^*\), Liu's value made **unconditional** | \(0.38270908791873502993\ldots\) | **Apparently new as an unconditional theorem.** The decimal itself is Liu's and is not claimed as new; what is new is removing his two numerically verified hypotheses. No audited source states it unconditionally. |
+| \(c''=1-m_{16/25}\), the scaled Example-5 protocol \(f(x)=\tfrac45x(1-x)\) | \(0.38284565599065407172\ldots\ (\pm5.34\mathrm e{-52})\) | **Apparently new value and new protocol.** No audited source gives any union-closed constant above Liu's \(0.38271\), and none treats the scaled family \(f_\lambda(x)=\lambda x(1-x)\). |
+
+**Method.** The arXiv `all:"union-closed"` endpoint of
+[`search_protocol.json`](literature/search_protocol.json) step 1 was re-queried
+(`submittedDate` descending), and the pinned-record `id_list` query was re-run to check for
+new versions.  Record:
+[`arxiv_refresh_2026-09-03.json`](literature/arxiv_refresh_2026-09-03.json).
+
+**One new record, opened at theorem level.**  arXiv:2608.25147v1 (Chenxiao Tian, *Frankl's
+Conjecture at Height Four and the Structure of Height-Five Counterexamples*,
+2026-08-25T20:55:41Z) proves Frankl for every union-closed family of height \(\le4\) in the
+empty-set-free form (\(\le5\) with \(\emptyset\)) and constrains height-five
+counterexamples.  It is a poset-height result and proves **no** universal frequency
+constant: the full v1 HTML contains zero occurrences of *entropy*, *entropic*, *Gilmer*,
+*Sawin*, *coupling*, *constant lower bound*, or the string `0.38`.  No collision.  It was
+missed by the 2026-08-26 refresh because it entered the `all:` index after that query
+(103 → 104 records), not because it was screened out.
+
+**Liu's conditionality, verbatim from the primary abstract (arXiv:2306.08824, still v1):**
+
+> Under numerically verified hypotheses, the lower bound for the union-closed sets
+> conjecture can be improved to approximately 0.38271, a number that can be defined as the
+> solution to an analytic equation.
+
+No revision has removed it: the pinned-record query confirms 2306.08824 is v1 of
+2023-06-15, and 2211.09055v2, 2211.11504v3, 2211.11689v1, 2211.11731v4, 2212.12500v2 are
+unchanged since the 2026-08-25 audit.  This is exactly the conditionality \(c'\) removes.
+
+**No near-collision exists — a caution against one specific error.**  The published ceiling
+of the i.i.d./max-entropy convex-combination route is \(\approx0.38234\) — Liu's own words:
+"the best constant obtainable through this approach is around 0.38234, as evaluated by Yu
+and Cambie" (locally certified as \(\psi+3\mathrm e{-4}=0.3823455\)).  That is **0.38234,
+not 0.38284**.  A search-engine synthesis was observed conflating the two, rendering the Yu/
+Cambie value as "0.38234 (approximately 0.38284)"; the conflation is false and must not be
+read as a near-collision with \(c''=0.38284565599065407172\ldots\).  The nearest published
+decimal to \(c''\) is Liu's conditional \(0.38271\).
+
+**Published progression (unchanged).** \(0.01\) (arXiv:2211.09055) \(\to\)
+\((3-\sqrt5)/2\approx0.38197\) (2211.11689, 2211.11731, 2211.11504) \(\to\)
+\(\approx0.38234\) (2212.12500; Yu, *Entropy* **25** (2023) 767) \(\to\) \(\approx0.38271\)
+**stated conditionally** (2306.08824).
+
+**Limitations.** One-index refresh, not a repeat of the full Crossref/OpenAlex/zbMATH and
+citation-graph audit; absence from arXiv is not universal priority; journal-only venues
+after 2026-08-25 are outside it.  The submission guidance above applies verbatim to \(c'\)
+and \(c''\): no unqualified "largest known" claim, and every novelty sentence stays
+conditional on the bounded search protocol and on independent replay.

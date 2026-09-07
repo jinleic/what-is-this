@@ -1,0 +1,29 @@
+{
+  "schema": "sbb11-canonical-reconciliation/1",
+  "target": "Exact Strikis-Browne-Beverland arXiv:2603.05481v1 Figure12 Gross SEC, conjectured circuit distance11",
+  "ownership": "math/qec only; preserve physics/qldpc-dec decoder contract, GB9 and prior frozen campaign",
+  "prior_result": "Two tentative transcriptions failed16 global row-phase settings. Accepted as ground truth; do not rerun the old source probe.",
+  "source_gate": {
+    "canonical_builder": "physics/fss-bb/src/bb_codes.py: bb_code(12,6), Hx=[A|B], Hz=[B.T|A.T], A=x^3+y+y^2, B=y^3+x+x^2",
+    "candidate_coordinate_map": {
+      "index": "6*u+v, u in Z12, v in Z6; coordinates modulo(24,12)",
+      "Xcheck": "(1-2*u,1-2*v)",
+      "Zcheck": "(4-2*u,4-2*v)",
+      "Ldata": "(1-2*u,4-2*v)",
+      "Rdata": "(4-2*u,1-2*v)"
+    },
+    "required_checks": ["Hx and Hz both72x144", "all row/column degrees6/3", "Hx Hz^T=0", "rankHx=rankHz=66 in existing independent GF2 implementations", "k=12", "full entrywise coordinate equivalence, not merely graph invariants", "12 independent logical observables per sector and nondegenerate pairing", "distinguish n,k from published or replayed d12 evidence"],
+    "timing_reconciliation": "Preserve all printed Figure12 edge times and local orders. Check both direct label/marker interpretations. Complete potentially unstated time origins separately for the six type/colour classes, modulo8, fixing one global origin to zero. Derive pairwise allowed relative origins from shared data-qubit collision avoidance and noninterleaving across adjacent cycles; enumerate at most8^5=32768 assignments per interpretation. This is source/timing constraint solving, not a distance search or CNOT-order optimization.",
+    "exact_admission": "Requires source-justified timing, full check measurement correctness, unit-duration preparation/CNOT/measurement/idle scheduling, Figure11 residual match, and explicit finite boundaries/detectors/logicals. A feasible arbitrary completion is not automatically the authors circuit."
+  },
+  "boundary_gate": "Correct previous unsupported inference. Primary paper says perfect terminal syndrome round. Direct pinned generator has data init_error and terminal meas_error; determine exact caller values and Figure12 applicability, keeping general generator versus target scope distinct.",
+  "physical_gate_if_admitted": {
+    "model": "One cost per primitive physical operation location; full Pauli support and same-location branch exclusivity. Independently derive effects from gate propagation and compare direct circuit injection/replay, not two solvers on a common DEM.",
+    "checks": ["known-answer circuits", "direct physical witness replay", "corrupt witness rejection", "same-location alternatives", "wrong logical", "wrong detector boundary"],
+    "must_pass_before_distance_assay": true
+  },
+  "distance_assay_if_all_gates_pass": {"threads":1,"maximum_calls":4,"wall_seconds_per_call":60,"sectors":"both X/Z, all12 logical observables; no unproved symmetry reductions","status":"Timeout or undecided gives no lower bound; solver UNSAT is about the encoding until model and proof obligations are met"},
+  "limits": {"source_wall_seconds":120,"validation_wall_seconds":300,"total_distance_wall_seconds":240,"rss_guard_bytes":2147483648,"rss_sampling_wait_seconds":0.01,"output_bytes":104857600,"threads_per_process":1},
+  "memory_limit_caveat": "Darwin rejected native AS/DATA limits in the previous campaign. Use explicit sampled RSS supervision plus outer wall/CPU caps; do not claim a hard instantaneous address-space limit.",
+  "stop": "Only a precise remaining external source fact or failed target-specific construction obligation after exhausting local canonical and construction evidence. No substitute circuit, ordering optimization, remote change, outreach or larger compute."
+}

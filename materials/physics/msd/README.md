@@ -1,8 +1,11 @@
 # `msd/` — zero-level CCZ reproduction target
 
 **Status: SCOPE-LIMITED-NON-TEST for the paper's `c≈300·p²` claim. The floor
-is now explained at mechanism level and the output-patch unblock route is
-CLOSED by construction (2026-08-30). Verdicts live in `../RESULTS.md`.**
+is explained at mechanism level and the output-patch unblock route is
+CLOSED by construction (2026-08-30). No further surrogate rebuild is
+scheduled; the official-author reproduction route is owned by `../qlops/`
+(see below, 2026-09-04) and the paper's claim remains UNTESTED here.
+Verdicts live in `../RESULTS.md`.**
 
 This target owns a Clifford-only Stim reconstruction of the zero-level CCZ
 distillation proposal, with explicit boundaries where the papers do not
@@ -30,10 +33,38 @@ channels but added anchorless-frame ones; d=7 is worse still (slope
 `src/run_expanded.py` (default behavior unchanged; circuit hashes match
 the frozen campaigns).
 
-The only remaining unblock is fault-tolerant readout of the **source**
-frame — a full rebuild whose decoder and scheduling would be [INFERENCE]
-against a paper that names no decoder. Even a future slope→2 result would
-bind only this reconstruction.
+Within this surrogate, the floor is a property of the bare **source**-frame
+readout: only fault-tolerant readout of the source frame could change the
+exponent, and any such rebuild's decoder and scheduling would be
+[INFERENCE] against a paper that names no decoder. Even a future slope→2
+result would bind only this reconstruction. That diagnosis is recorded as a
+fact about the surrogate, not as a work item: no source-frame rebuild is
+planned or required.
+
+### Official-author reproduction route (owned by `../qlops/`, 2026-09-04)
+
+An official-author code route is now available: `../qlops/` has pinned
+the official
+[`FujitsuResearch/Zero-level_CCZ_Distillation`](https://github.com/FujitsuResearch/Zero-level_CCZ_Distillation)
+source at commit `1b59e223590492e224bd8623a4e0bcba59029e01` and owns the
+procedure; see the [canonical handoff](../qlops/README.md#official-source-revision-7--frozen-readiness-smoke-only)
+and [`next_action` in QLOPS state](../qlops/state.json).
+The frozen readiness record establishes only the following:
+
+* The canonical R7 campaign
+  `../qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/` is
+  frozen/closed **REHEARSAL** with an eight-gate smoke verdict of **PASS**
+  ([summary](../qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/results/summary.md),
+  [status](../qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/status.json)).
+  That is launch-readiness evidence only — not a physical reproduction and
+  not a scientific result.
+* The 71,000,000-shot full run is unstarted, and the repository's
+  executable artifact is d=3/d=9, so even a completed full run evaluates
+  that artifact, not the paper's d=7 headline. The paper's `c≈300` claim
+  is **NOT-REPRODUCED** there and **UNTESTED** here.
+* Nothing in this target changes: the frozen campaigns, pre-statements,
+  verdict strings, and the expanded-patch negative control remain as
+  recorded, and this reconstruction remains **SCOPE-LIMITED-NON-TEST**.
 
 ## Gate A — refute or confirm
 
@@ -128,7 +159,7 @@ the low-p surrogate-refutation datum described above `[NUMERICAL]`.
 * `src/run_campaign.py` — finite p-grid runner and immutable artifact writer.
 * `campaigns/` — frozen run snapshots; `scratch/` — non-authoritative search.
 
-## How to run
+## Historical surrogate commands — no run queued
 
 From `physics/` (the prepared `.venv` is required):
 
@@ -144,6 +175,10 @@ point. The Gate-A-prime command stops after exactly three p points and
 10,000,000 shots per point. Use `--artifact-dir` only with a new empty
 directory; snapshots are immutable and contain `summary.json` plus one Stim
 circuit per noise point.
+
+These historical commands are not the official-source route above and
+do not test the paper's claim. No further surrogate campaign is queued;
+the frozen directories remain immutable.
 
 ## Layout
 

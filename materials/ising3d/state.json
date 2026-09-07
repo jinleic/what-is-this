@@ -1,18 +1,27 @@
 {
-  "schema": "target-state/1",
+  "current_gate": "Wave 28: two producer builds are byte-identical and one independent full-polynomial verifier execution passed; reduced modular degrees 19846/16048. H680 printed its largest-degree exact column but failed the monitored 2 GiB memory gate at 2064.1 MiB; no all-column sweep was launched. Characteristic-zero reconstruction, aggregate height, and real roots remain open",
+  "headline": "28 verified waves; full trace-nine modular determinant, characteristic-zero norm still open",
   "id": "math/ising3d",
-  "problem": "Exact 3D Ising model program",
-  "status": "active",
-  "current_gate": "Wave 26 done; primitive norm and emptiness of open-2x4 degree-182400 q polynomial remain open",
-  "latest_campaign": null,
-  "latest_campaign_verdict": null,
-  "headline": "26 verified waves; first nonplanar fixed-Walsh boundary matchgate defect",
-  "next_action": "Wave 27: primitive norm of the wave-26 polynomial or an emptiness argument",
+  "latest_campaign": "20260905T044318Z_bf035d8b_56ea779357e4",
+  "latest_campaign_verdict": "RUNNING",
+  "next_action": "continuous_supervisor: planning unavailable (7 consecutive agent failures; next attempt 2026-09-05T12:19:02Z); no mathematical work performed by the supervisor itself. Last error: agent CHILD_FAILED: completed; ",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "workspace-architecture-fix",
+  "problem": "Exact 3D Ising model program",
+  "schema": "target-state/1",
   "sources": [
     "math/ising3d/README.md",
     "math/ising3d/checkpoints/current_state.md"
-  ]
+  ],
+  "status": "active",
+  "supervisor": {
+    "campaign_run_id": "20260905T044318Z_bf035d8b_56ea779357e4",
+    "cycle": 4,
+    "halt_reason": null,
+    "last_outcome": "REVIEW_REJECTED",
+    "original_next_action": "H681: reduce post-lift retained data and stream canonical column hashing, verify digest equivalence, then retry only the bounded largest-degree canary under unchanged limits; require a successful resource exit before considering an all-column sweep",
+    "phase": "BACKOFF",
+    "updated_utc": "2026-09-05T11:19:02Z"
+  },
+  "updated_by": "continuous_supervisor",
+  "updated_utc": "2026-09-05T11:19:02Z"
 }

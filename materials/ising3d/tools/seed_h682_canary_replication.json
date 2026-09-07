@@ -1,0 +1,51 @@
+{
+  "decision": "run",
+  "front": "norm",
+  "front_rank": 1,
+  "front_label": "characteristic-zero norm envelope: bounded two-column canary under the hardened guard (H682)",
+  "hypothesis_id": "H682",
+  "next_prompt": "Re-derive and independently verify the bounded two-column canary under the hardened resource guard. tools/resource_guard.py gained a bounded teardown, a 30 s limit on descendants it may not measure, and unmeasurable-member reporting; because experiments/e254_trace_nine_bounded_canary.py imports the guard and pins it in meta.source_sha256, the H681 artifacts pin guard bytes that no longer exist in the working tree. Their accepted bytes are snapshotted at data/ising3d/accepted_sources/h681/ and no recorded hash was ever resealed. Rerun the producer to results/spectral/trace_nine_bounded_canary_replication_2.json and rerun tests/test_trace_nine_bounded_canary.py against it. Scope is BOUNDED_TWO_COLUMN_CANARY_ONLY: the constant monomial (0,0,0,0,0) column and the explicit largest standard monomial (0,0,0,0,8) column of the rank-96 quotient over the pinned 35-rule QQ(q) lift. Prediction: byte-identical data and identical digests to both earlier runs, with only the pinned guard hash changed. No full matrix, no aggregate height theorem, no characteristic-zero reconstruction, no real-root or thermodynamic claim follows from a PASS.",
+  "artifact": "results/spectral/trace_nine_bounded_canary_replication_2.json",
+  "producer": {
+    "script": "experiments/e254_trace_nine_bounded_canary.py",
+    "arguments": ["--output", "results/spectral/trace_nine_bounded_canary_replication_2.json"]
+  },
+  "verifier": {
+    "script": "tests/test_trace_nine_bounded_canary.py",
+    "arguments": ["--artifact", "results/spectral/trace_nine_bounded_canary_replication_2.json"],
+    "pass_marker": "TRACE_NINE_BOUNDED_CANARY_VERIFIER PASS"
+  },
+  "verifier_requirements": "Recompute both column records from the frozen Wave-27 lift by an independent reduction path; require rule digest f4cfe038d7625c6a411f2e01b9af12d9ae9ca06d980e64ad38d8eff030fe22cc, column digests 69065ff900271f44f3f34856b1bad85fd148182b8a045aefd1cc66cb1b8bdfb9 (37 entries, 19 reductions, degrees 181/145, L1 log2 224, scalar LCM bits 123) and 63b8a477b5d9dd25a354d1bd2f7d18666cbcf1bf21cb6060d0c2b1b51441f47b (96 entries, 578 reductions, degrees 629/513, L1 log2 1771, scalar LCM bits 1321); check meta.source_sha256 against the current working tree, including the hardened tools/resource_guard.py, and meta.data_sha256 against the canonical data; never write files; exit 0 only on full PASS.",
+  "artifact_expect": {
+    "meta.schema_version": 1,
+    "data.scope": "BOUNDED_TWO_COLUMN_CANARY_ONLY",
+    "data.quotient_rank": 96,
+    "data.final_rational_rule_sha256": "f4cfe038d7625c6a411f2e01b9af12d9ae9ca06d980e64ad38d8eff030fe22cc",
+    "data.full_matrix_status": "NOT_COMPUTED",
+    "data.physical_root_status": "UNRESOLVED",
+    "data.columns.0.column_sha256": "69065ff900271f44f3f34856b1bad85fd148182b8a045aefd1cc66cb1b8bdfb9",
+    "data.columns.0.maximum_numerator_degree": 181,
+    "data.columns.0.maximum_denominator_degree": 145,
+    "data.columns.0.maximum_numerator_l1_log2": 224,
+    "data.columns.0.column_scalar_lcm_bits": 123,
+    "data.columns.1.column_sha256": "63b8a477b5d9dd25a354d1bd2f7d18666cbcf1bf21cb6060d0c2b1b51441f47b",
+    "data.columns.1.maximum_numerator_degree": 629,
+    "data.columns.1.maximum_denominator_degree": 513,
+    "data.columns.1.maximum_numerator_l1_log2": 1771,
+    "data.columns.1.column_scalar_lcm_bits": 1321
+  },
+  "checkpoint_evidence": [
+    "campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0001_H681/evaluation.json: H681 CONFIRMED, producer and verifier guard reason completed",
+    "data/ising3d/accepted_sources/h681/manifest.json: byte snapshot of the accepted guard, 16 of 16 pinned sources verified before the hardening edit",
+    "checkpoints/next_actions.md section 1: LEDGER next free ID H682",
+    "notes/hypotheses.csv: H681 records the first replication under the pre-hardening guard"
+  ],
+  "source_changes": [
+    "tools/resource_guard.py: bounded teardown that signals but never waits on unsignallable members and reports whether the group went quiet; result adds unmeasurable_processes and unmeasurable_at_exit",
+    "tools/resource_guard.py: 30 s limit on unmeasurable descendants, with a reason the supervisor classifies apart from resource exhaustion",
+    "tools/continuous_supervisor.py: UNACCOUNTABLE classification halts instead of retiring a trial; rejected quota windows are waited out, not counted as failures",
+    "tools/continuous_supervisor.py: interrupted-turn recovery halts with evidence; claim pids are matched to a real supervisor command; checkpoint notes go where newest-first readers look",
+    "tests/test_research_resource_guard.py and tests/test_continuous_supervisor.py: 22 regressions covering the above, all passing",
+    "tools/seed_h682_canary_replication.json: this seed; the H681 artifacts keep their recorded hashes and are not deleted or resealed"
+  ]
+}

@@ -682,15 +682,20 @@ data/involution_f5_ramsey_square_census.json
   F5_RAMSEY_SIGNED_SQUARE_EMPTY_OVER_108_SUPPORT_ORBITS
 ```
 
-The trust boundary remains explicit. A deletion-free DFS certificate for
-source representative `0` has been checked by pinned VeriPB
-`6d38dab246af9c321b8f17cb5a187f2fbb9e491d`, elaborated, and checked again by
-pinned CakePB `a7593ef22de2fc0b47a688f2d4f08e6b742735af`; the independent replay
-prints `veripb_unsat=true` and `cakepb_unsat=true`. This is a **single-case
-certificate control**, not coverage of the campaign: 549 other `W`-negative
-supports plus all 155 deeper signed/Ramsey cases still need checked
-certificates. The committed Ramsey artifact therefore deliberately says
-`PENDING_VERIPB_CAKEPB`.
+The trust boundary remains explicit. Deletion-free DFS certificates are
+checked by pinned VeriPB `6d38dab246af9c321b8f17cb5a187f2fbb9e491d`,
+elaborated, and checked again by pinned CakePB
+`a7593ef22de2fc0b47a688f2d4f08e6b742735af`. The resumable promoter writes one
+atomic, strictly validated ledger for the 550 `W`-negative supports and one
+for the 155 deeper signed/Ramsey cases. Each committed record pins its formula,
+proof, elaborated kernel, compressed archives, checker result, and CakePB
+memory profile. A single scheduler advances three `W` records and then one
+deeper record; permanent driver/scheduler locks prevent duplicate writers,
+while `scratch/.host-heavy-job.lock` serializes CakePB with other large proof
+checkers. Heap exhaustion advances through the declared profiles and remains
+distinct from proof rejection. Current certified counts and the active case
+are recorded in `state.json`; the committed Ramsey artifact deliberately stays
+`PENDING_VERIPB_CAKEPB` until exact 550+155 coverage passes.
 
 ```bash
 ./.venv/bin/python -m unittest \

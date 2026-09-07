@@ -221,22 +221,56 @@ T6 = [
 # ----- Gate-B inputs -------------------------------------------------------
 # 7-T baseline = the Litinski Table-6 rows above.
 # Zero-level CCZ replacement (arXiv:2605.21867, Itogawa, Hirano, Akahoshi,
-# Fujii; v1 May 2026): abstract-level constants, first-hand read 2026-08-29
-# (https://arxiv.org/abs/2605.21867).  p_L ~= 300 p^2 ; 22 physical qubits,
-# circuit depth 24, 3 logical qubits, space-time ~22*24 qubitxcycles,
-# "5-10x" reduction vs previous methods.  Stays REPORTED: ../msd/ CANNOT
-# discharge it.  msd's reconstruction was shown (2026-08-30) to have a
-# distance-1 output frame -- per-observable failure is linear in p
-# (log-log slope 0.992, coefficient ~167 across p=1e-5..3e-4) -- so it
-# measures its own floor, not c*p^2, and is a SCOPE-LIMITED-NON-TEST of
-# this constant rather than a confirmation or refutation.  Discharging
-# this tag requires either the full paper's own numbers or an msd
-# reconstruction with distance-carrying (expanded d3/d7) output patches.
+# Fujii; v1 21 May 2026, the only version).  Constants were transcribed from
+# the ABSTRACT on 2026-08-29; the FULL TEXT was read first-hand 2026-09-03
+# (arxiv.org/html/2605.21867v1) and every printed value below was located in
+# the body, so the transcription half of the [REPORTED] tag is DISCHARGED:
+#   c = 300      : Sec. IV, "Least-squares fitting (solid lines) shows that
+#                  both cases satisfy p_L ~= 300 p^2", and the Fig. 10
+#                  caption; also abstract, Sec. I, Sec. V.  It is a fit, not
+#                  a table value (the paper prints no numbered tables).
+#   phys_qubits  : 22, abstract + Sec. I + Sec. III + Sec. V.  SCOPE: 22 is
+#                  the DISTILLATION CIRCUIT only; the 3 output surface-code
+#                  patches are additional and are NOT inside the 22.
+#   depth        : 24, abstract + Sec. I + Sec. III + Sec. V ("three rounds
+#                  of surface-code syndrome extraction").
+#   log_qubits   : 3, ditto (output patches, teleported from the [[8,3,2]]
+#                  block by AIT lattice surgery, Sec. III.2).
+# The REPRODUCTION half of the tag stays open and is now known to be
+# unreachable through ../msd/: msd's reconstruction has a distance-1 output
+# frame -- per-observable failure is linear in p (log-log slope 0.992,
+# coefficient ~167 across p=1e-5..3e-4) -- so it measures its own floor, not
+# c*p^2, and is a SCOPE-LIMITED-NON-TEST.  Reproducing 300 would need a
+# distance-carrying (expanded d3/d7) rebuild; the paper ships no Stim file,
+# no repository and no ancillary files (Appendix A is figure-only).
 ZERO_LEVEL_CCZ = dict(
     arxiv="2605.21867", c=300.0, p_L_formula="300 p^2", p_order=2,
-    phys_qubits=22, depth=24, log_qubits=3,
-    spacetime_qubitcycles=22 * 24,
+    phys_qubits=22, depth=24, syndrome_rounds=3, log_qubits=3,
+    # Historical Gate-B arithmetic, retained only so gate_b_sweep.py can
+    # reproduce the frozen artifact. This mixes physical-qubit*circuit-layer
+    # units with Litinski physical-qubit*syndrome-cycle units and is not a
+    # common-basis resource metric. See zero_level_provenance.py Revision 4.
+    legacy_gate_b_spacetime_mixed_units=22 * 24,
+    legacy_gate_b_spacetime_tag=DERIVED,
     claim="5-10x space-time reduction vs previous methods",
+    # Conditions the abstract-level transcription omitted (Sec. IV):
+    fit_p_range=(1e-4, 1e-3),          # six sampled p values
+    fit_trials_per_p="1e7-1e8",
+    fit_coefficient_uncertainty=None,  # no uncertainty/CI for fitted c
+    fit_residuals=None,                # no fit residuals printed
+    pointwise_error_bars=(
+        "Figures 10 and 11 draw pointwise error bars; their definition and "
+        "confidence level are not stated"),
+    decoder=None,                      # no decoder named anywhere
+    noise_model=("single-qubit depolarizing on gates/idles, flip on "
+                 "init/measurement, two-qubit depolarizing; all probability p"),
+    clifford_approximation=("T/T+ replaced by identity in Stim; paper states "
+                            "this makes p_L 'slightly optimistic', at most a "
+                            "modest correction to the prefactor"),
+    # Postselected protocol: 300 p^2 applies to ACCEPTED runs only (Fig. 11).
+    acceptance_p1e3=(0.30, 0.40),
+    acceptance_p1e4=0.90,
+    reduction_claim_evaluated_at_p=1e-3,
     tag=REPORTED,
 )
 

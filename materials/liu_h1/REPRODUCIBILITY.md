@@ -8,7 +8,7 @@ The continuum theorem is an ordinary **HUMAN-AUDITED** proof. The commands below
 2. **MACHINE-VERIFIED** finite Arb compression and finite-grid claims;
 3. **COMPUTATIONAL-EVIDENCE** floating-point spectra and fits.
 
-They do not formalize Taylor's theorem, logarithmic differentiation, convergence of the Gram series, Fubini, positive-kernel closure, or extension to finite signed Borel measures. Those steps are audited in [`AUDIT.md`](AUDIT.md). Liu's Hypothesis 2 remains **OPEN**.
+They do not formalize Taylor's theorem, logarithmic differentiation, convergence of the Gram series, Fubini, positive-kernel closure, or extension to finite signed Borel measures. Those steps are audited in [`AUDIT.md`](AUDIT.md). Hypothesis 2 is not proved by this H1 package; the separate current [H2 argument](../uc/H2_PAPER/REFEREE.md) has its own review obligations.
 
 ## Exact environment
 
@@ -60,7 +60,26 @@ python3 -I -B LIU_H1/verification/independent_exact_checker.py
 
 It imports no canonical `uc` module and no SymPy, FLINT, NumPy, SciPy, or mpmath code.
 
-## Observed clean results
+### Scaled-family extension — 2026-09-06
+
+The current manuscript explicitly extends the Gram proof to every
+`f_lambda(s)=lambda*s*(1-s)`, `0 <= lambda <= 1`. From `math/`:
+
+```sh
+nice -n 10 .venv/bin/python -I -B LIU_H1/verification/scaled_kernel_check.py
+```
+
+The new independent SymPy 1.14.0 calculation passed seven exact identities and
+the lost-square negative control (`-1/219`), under a 15-second CPU / 30-second
+wall cap. It imports no canonical proof code. This checks the new algebra;
+the continuum conclusion is the manuscript's ordinary proof, not a formalization.
+The unchanged standard-library checker above also passed its 16 identities.
+Current source/PDF/checker pins are in the
+[`2026-09-06 evidence record`](../../data/portfolio-supervisor-20260906-h1.json).
+The earlier source and log hash table below is historical and does not pin the
+now-extended manuscript.
+
+## Observed clean results — historical 2026-08-26
 
 All five commands exited `0`. Supervised wall times on this workstation were:
 
@@ -136,4 +155,4 @@ any mathematical review and contributes no positive evidence.
 - Finite Arb results are reported only for their named finite polynomial subspaces or node sets.
 - No finite spectrum, sampled ratio, or roundoff-scale eigenvalue is promoted to a continuum theorem.
 - The manuscript states the finite-signed-measure theorem first and treats the `L^2` operator statement as a corollary.
-- Hypothesis 2 and the decimal `0.382709087918741` remain conditional.
+- The H1 theorem and its scaled corollary alone imply no unconditional frequency improvement; do not cite them as a proof of Hypothesis 2.

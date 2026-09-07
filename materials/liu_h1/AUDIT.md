@@ -1,5 +1,12 @@
 # Audit of Liu Hypothesis 1
 
+**Current scope update (2026-09-06).** The dated Hypothesis-2 `OPEN`
+statements below describe what the H1 proof alone establishes, not the
+separate current [H2 manuscript](../uc/H2_PAPER/REFEREE.md).
+The H1 proof now records its uniform scaled-family corollary in
+[`paper/main.tex`](paper/main.tex), Corollary `cor:scaled-h1`.
+This is a strengthened explicit scope, not a new frequency bound or novelty claim.
+
 > **Integration update (2026-08-26).** The canonical status wording and
 > submission manuscript were revised after this audit: restricted-form
 > equality is now distinguished from the stronger unprojected theorem;
@@ -530,3 +537,39 @@ that failed attempt contributes no review evidence.
 not journal peer review and not proof-assistant formalization.  The primary
 source identification, ordinary calculus and functional analysis, universal
 priority, and Liu Hypothesis 2 retain the claim levels already stated above.
+
+## 16. Uniform scaled-family corollary — 2026-09-06
+
+**CLAIM STRENGTHENED (ordinary proof with exact algebra).** For every
+`kappa in [0,1]`, set `z_kappa=A(1+kappa B)` and
+`R_kappa=A[kappa B-(1+kappa B)log(1+kappa B)]-G(z_kappa)`.
+The same reciprocal-kernel lemma proves `R_kappa` NSD on every finite signed
+Borel measure, and the same three moment constraints annihilate the
+entropy-to-residual remainder. This covers all
+`f_lambda(s)=lambda s(1-s)`, `0 <= lambda <= 1`, not merely the scale-one endpoint.
+
+The complete new argument is the identity
+`-R_kappa=G(A)-kappa AB log(1-A)+kappa^2 integral_0^1 (1-r) H_(r kappa) dr`.
+Every `r kappa` lies in the domain of the already-proved reciprocal lemma;
+nonnegative integration preserves PSD. Its uniform corner bound and the
+logarithmic endpoint bound justify the closed square, including `kappa=0`.
+No grid, optimized parameter or new numerical bound is involved.
+
+Frozen algebraic obligation: seven symbolic identities for the Taylor initial
+value, first and second derivatives, scaled path curvature, both uniform
+endpoint factors and projected remainder. The independent new SymPy checker
+imports none of the canonical kernel code; it returned **PASS**, and changing
+the squared scale coefficient to a linear one gives the exact nonzero residual
+`-1/219` at its fixed rational negative control. The existing CAS-free H1
+checker also passed all 16 algebraic checks without modification.
+
+```sh
+nice -n 10 math/.venv/bin/python -I -B math/LIU_H1/verification/scaled_kernel_check.py
+nice -n 10 python3 -I -B math/LIU_H1/verification/independent_exact_checker.py
+```
+
+The new checker has a 15-second CPU and 30-second wall cap, no search and no
+retries. It checks algebra, not Taylor's theorem, PSD closure, the earlier
+Lorentz/Gram proof or signed-measure limits. Those remain the explicit ordinary
+mathematical proof. This corollary is inherited from that proof; independent
+publication novelty and external review remain unestablished.

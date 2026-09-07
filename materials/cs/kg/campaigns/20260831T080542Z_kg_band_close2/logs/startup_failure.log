@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/jinleic/jinleic-workspace/cs/kg/campaigns/20260831T080542Z_kg_band_close2/code/startup_controls.py", line 121, in <module>
-    main()
-    ~~~~^^
-  File "/Users/jinleic/jinleic-workspace/cs/kg/campaigns/20260831T080542Z_kg_band_close2/code/startup_controls.py", line 77, in main
-    assert old_margin_lower > arb('0.192'), old_margin_lower
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: [-0.149911438966541 +/- 2.64e-16]

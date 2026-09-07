@@ -1,0 +1,54 @@
+{
+  "checked_utc": "2026-09-03T00:00:00Z",
+  "endpoint": "https://export.arxiv.org/api/query?search_query=all%3A%22union-closed%22&start=0&max_results=40&sortBy=submittedDate&sortOrder=descending",
+  "feed_updated_utc": "2026-09-04T01:31:12Z",
+  "query": "all:\"union-closed\"",
+  "reported_total_results": 104,
+  "screened_results": 40,
+  "prior_refresh": {
+    "file": "arxiv_refresh_2026-08-26.json",
+    "checked_utc": "2026-08-26T15:10:15Z",
+    "reported_total_results": 103,
+    "delta": "+1 record; the prior refresh reported no record after the 2026-08-25 audit cutoff, but 2608.25147v1 was already public at 2026-08-25T20:55:41Z and had not yet entered the all: index at 2026-08-26T15:10:15Z (indexing lag, not a screening error)"
+  },
+  "newest_union_closed_combinatorics_record": {
+    "arxiv_id": "2608.25147v1",
+    "published_utc": "2026-08-25T20:55:41Z",
+    "title": "Frankl's Conjecture at Height Four and the Structure of Height-Five Counterexamples",
+    "author": "Chenxiao Tian",
+    "relevance_to_explicit_entropy_constant": "none at theorem level. Poset-height route: proves Frankl for every union-closed family of height <= 4 (empty-set-free form; <= 5 with the empty set) and constrains height-five counterexamples (even cardinality 2t, >= 3 critical elements, t >= 2n-1, critical join-cover number 3 or 4). It proves no universal frequency constant. Verified at theorem level by reading the full v1 HTML (67,063 characters of extracted text): zero occurrences of 'entropy', 'entropic', 'Gilmer', 'Sawin', 'coupling', 'constant lower bound', or the string '0.38'."
+  },
+  "records_after_prior_2026_08_26_refresh": [],
+  "records_after_prior_2026_08_25_cutoff": [
+    {
+      "arxiv_id": "2608.25147v1",
+      "published_utc": "2026-08-25T20:55:41Z",
+      "collides": false,
+      "basis": "orthogonal route; see relevance_to_explicit_entropy_constant"
+    }
+  ],
+  "revisions_after_prior_refresh": [],
+  "pinned_record_versions_checked_utc": "2026-09-03T00:00:00Z",
+  "pinned_record_versions": {
+    "2211.09055": "2",
+    "2211.11504": "3",
+    "2211.11689": "1",
+    "2211.11731": "4",
+    "2212.12500": "2",
+    "2306.08824": "1",
+    "2306.12351": "1",
+    "2412.18622": "1",
+    "2501.03302": "1",
+    "2601.19327": "1",
+    "2608.25147": "1"
+  },
+  "liu_conditionality_verbatim": "Under numerically verified hypotheses, the lower bound for the union-closed sets conjecture can be improved to approximately 0.38271, a number that can be defined as the solution to an analytic equation. (arXiv:2306.08824, abstract, still v1 of 2023-06-15: no revision has removed the conditionality)",
+  "yu_cambie_value_verbatim": "the best constant obtainable through this approach is around 0.38234, as evaluated by Yu and Cambie. (arXiv:2306.08824, abstract)",
+  "no_near_collision_note": "The published Yu/Cambie ceiling is 0.38234 (locally certified as psi+3e-4 = 0.3823455), NOT 0.38284. A search-engine synthesis was observed conflating the two ('0.38234 (approximately 0.38284)'); that conflation is false and is recorded here so it is not mistaken for a near-collision with c'' = 0.38284565599065407172... . The nearest published decimal to c'' is Liu's conditional 0.38271, which c' = 0.38270908791873502993... makes unconditional and which c'' exceeds by 1.37e-4.",
+  "conclusion": "No arXiv record collides at theorem level with either local result: c' = 1 - m* = 0.38270908791873502993... (Liu's conditional value, made unconditional) or c'' = 1 - m_{16/25} = 0.38284565599065407172... (a strictly larger constant from the scaled Example-5 protocol f(x) = (4/5)x(1-x)). The published progression remains 0.01 (2211.09055) -> (3-sqrt5)/2 (2211.11689, 2211.11731, 2211.11504) -> ~0.38234 (2212.12500, Yu Entropy 25 (2023) 767) -> ~0.38271 stated conditionally (2306.08824). No record was found treating the scaled family f_lambda(x) = lambda x (1-x).",
+  "limitations": [
+    "This is a one-index refresh, not a repeat of the full Crossref/OpenAlex/zbMATH and citation-graph audit of 2026-08-25.",
+    "Absence from arXiv does not establish universal priority.",
+    "Journal-only and non-arXiv venues after 2026-08-25 are outside this refresh."
+  ]
+}

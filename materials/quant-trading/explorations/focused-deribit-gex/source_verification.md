@@ -223,3 +223,38 @@ Proof scenarios (deterministic, no network):
 8  SIGTERM during backoff sleep: wakes in 0 ms
 9  SIGTERM pending REST: immediate abort with 'stop requested'
 10 day-scoped metadata: same-day reconnect writes nothing; rollover re-persists
+
+## 10. Offline collector integrity follow-up
+
+Ticker sampling is stored as integer milliseconds. Intervals that truncate to
+zero milliseconds are rejected before the capture directory or sink is created;
+one millisecond is accepted, and larger fractional intervals retain the existing
+truncation behavior.
+
+The shared collector fixture has no default REST metadata response. Tests that
+exercise metadata supply explicit responses; other tests receive an offline
+connection failure. Fixture refresh threads are joined before their metadata
+patch is removed, preventing network lookups from leaking into subsequent tests.
+The runner still blocks non-loopback collector traffic.
+
+Current attempts, source hashes, enforcement identity, resource observations,
+remaining tests, and the executable next prompt are owned by
+[`collector-integrity-checkpoint.json`](../collector-integrity-checkpoint.json).
+Historical results above are not a current full-suite certification. Test credit
+requires matching collector/test source hashes and the controller/extension
+enforcement hash.
+
+The external controller uses a single nice-15 execution lease, one-thread native
+library settings, three consecutive whole-machine CPU samples below 30% before
+launch, and owned-process pauses at 45% or unavailable telemetry. Worker cleanup
+retains scratch entries rather than deleting them; retained entries cannot be
+overwritten or renamed. Ordinary scratch writes and atomic derived-state
+replacement remain permitted. All retained fixtures remain charged against the
+cumulative 8 MiB artifact limit; reaching the reserve is a blocker, not permission
+to delete fixtures or reset the budget.
+
+A successor queues test work instead of running it concurrently with itself.
+The controller dispatches that queue only after the successor exits successfully
+and records its next prompt. Observed normal-exit handoffs do not prove crash
+recovery, service restart, or continuous execution. Check live process state
+before claiming that a supervisor is running.

@@ -1,5 +1,0 @@
-[A3-note] entrywise-zero (= would need truly exact factors): False ; bounded by 1e-2 (consistent with certified rho=1e-5): True
-ANCHOR1 n=2 rank=3  upper: True  lower_core: True => True
-ANCHOR2 n=4 rank=8  upper: True  chain: (True, True, True) => True
-ANCHOR3 tau rank=7 CONTROL  upper: True  lower chain: True => True
-ANCHORS_VERDICT: PASS

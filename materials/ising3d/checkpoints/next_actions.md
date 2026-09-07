@@ -1,26 +1,38 @@
 # Next actions
 
-**Snapshot:** 2026-08-24. Waves 18 through 26 LANDED and were independently verified.
+**Snapshot:** 2026-09-04. Waves 18 through 28 LANDED and were independently verified. `H675` owns the Wave-27 height correction; `H676` corrects its actual-runtime claim. The characteristic-zero norm remains unresolved.
 This file is the single source of truth for the ranked open queue, ledger/experiment allocation,
 and environment state. Strategic reasoning lives in `notes/frontier_analysis.md`; do not duplicate
 one into the other.
 
-**Repository:** `/Users/jinleic/jinleic-workspace/math/ising3d` · **Interpreter:** `.venv/bin/python`
+**Repository:** `/Users/jinleic/jinleic-workspace/math/ising3d` · **Interpreter:** `../.venv/bin/python`
 · `K_c = 0.221654626` stays benchmark-only · the ledger is append-only · `.venv` is shared and
 immutable for agents.
 
 ## 1. Ledger and numbering state (read before appending anything)
 
-- **LEDGER next free ID: `H672`.** Allocation to date: `H001`-`H505` historical through wave 19;
+- **LEDGER next free ID: `H689`; `H688` (cycle 4, turn 7, 2026-09-05) preregisters the exact
+  depth-3 bisection of all FOUR confirmed `H684` sign-change brackets including `(2,3)`
+  (`e257`, pending its guarded run and independent verifier); `H687` is the supervisor's
+  observed-outcome row for `H686` (REVIEW_REJECTED: `e256` hard-coded three brackets against a
+  census that records four, never ran); `H686` (cycle 3, turn 5, 2026-09-05) preregistered the
+  bisection of only three brackets (`e256`, rejected, unlanded draft);
+  `H685` is the supervisor's observed-outcome row for `H684`
+  (CONFIRMED: signs `-1,+1,-1,+1,-1,-1` at `q=5/4,3/2,5/3,2,3,5`, four brackets); `H684` (cycle 2, turn 3) re-issues the `H683` launch of the unchanged `H682` census (`e255`) after cycle-2 planner turns 1-2 died on the 1 MiB planner stdout cap before any producer ran (2026-09-05, pending guarded run and verifier); `H683` recorded that never-launched attempt, `H682` preregisters the exact rational-point sign census (`e255`), `H681` records the confirmed canary replication, `H680` records the observed largest-monomial memory wall, and `H679` records the completed first-column probe.** Allocation: `H001`-`H505` historical through wave 19;
   `H506`-`H583` wave 20; `H584`-`H587` and `H590`-`H595` wave 21; `H596`-`H634`
   wave 22; `H635`-`H642` wave 23; `H643`-`H657` wave 24; `H658`-`H668`
-  wave 25; `H669`-`H671` wave 26. `H588`-`H589` remain intentionally unallocated.
-  `H653`-`H657` are append-only wave-24 review corrections; wave-24 through wave-26 rows use the
-  11-field legacy schema.
-- **Next unused experiment number: `e252`.** Wave 26 lands `e251` finite trace-nine projection
-  for the open `2x4` layer. Wave 25 landed `e247` through `e250`. The pre-existing
-  `e233_trace_resultant_positivity.py` remains an unlanded draft with no artifact/test/proof;
-  do not claim it and do not reuse its number.
+  wave 25; `H669`-`H671` wave 26; `H672`-`H675` wave 27; `H676`-`H678` wave 28.
+  `H588`-`H589` remain intentionally unallocated. `H653`-`H657` are append-only
+  wave-24 review corrections; `H675` corrects primitive height and `H676` corrects
+  the runtime assertion. New rows retain the 11-field legacy schema.
+- **Next unused experiment number: `e258`.** `e254_trace_nine_bounded_canary.py` is
+  landed (`H681`); `e255_trace_nine_exact_sign_census.py` is landed (`H684`, CONFIRMED);
+  `e256_trace_nine_exact_bracket_bisection.py` was REVIEW_REJECTED for `H686` (three-bracket
+  miscount; never ran; do not reuse); `e257_trace_nine_four_bracket_bisection.py` is authored
+  for `H688` and awaits its guarded run and independent verifier. Wave 28 lands
+  `e253_trace_nine_structured_determinant.py`; wave 27 landed `e252`, wave 26
+  `e251`, and wave 25 `e247` through `e250`. The pre-existing
+  `e233_trace_resultant_positivity.py` remains an unlanded draft; do not claim or reuse it.
 - **Width anomalies (historical, do not edit):** `H388` has 12 fields; `H389`/`H390` have 6;
   `H393`-`H397` and `H399`-`H401` have 10. Recorded by append-only row `H402`. `H383`/`H385` are
   DUPLICATEs of `H380`/`H382`; `H384`/`H390` are corrections, per the canonical mapping in `H386`.
@@ -29,7 +41,64 @@ immutable for agents.
   `id, date, statement, topic, owner, status, artifact, artifact, detail, status-word, next-action`
   rather than the legacy header semantics. Wave-18 rows return to the legacy header.
 
-## 2. Waves 20-26 landed — do not re-open these
+## 2. Waves 20-28 landed — do not re-open these
+
+### Wave 28
+
+- **Complete one-prime polynomial, not characteristic zero.** The native FLINT
+  `3.6.0` polynomial-matrix backend materializes the degree-`36815` row-cleared
+  determinant over `F_2147483647[q]`. After restoring row scales and cancelling,
+  the reduced norm has degrees `19846/16048`. Its `60385` exact native scalar
+  determinants plus three direct point cross-checks do not establish a
+  characteristic-zero reconstruction or real-root list (`H677`, `e253`).
+- **Independent acceptance.** Two 705,192-byte builds compare identically,
+  SHA-256 `2895eda9e92eea26faf0ee2054bb0be56c4e19e9bc0a95072d295af04c2697f1`.
+  The separate direct-resultant/scan-reducer verifier recomputes the complete
+  matrix, polynomial, rational cancellation, theorem, provenance, and check/
+  mutation transcripts; eight checks and six resealed mutations pass (`H678`).
+- **Runtime and resource correction.** `H676` aligns the freeze with actual
+  Python `3.14.3`, python-flint `0.9.0`, and FLINT `3.6.0`, and independently
+  replays Wave 27. No environment package was installed or removed. The new
+  determinant builds and verifier averaged `32.65%-32.78%` of one core and
+  stayed below 497 MiB peak memory, with only two 689 KiB JSON writes.
+- **Bounded continuation completed.** `H679` computed the first exact `QQ(q)`
+  column: 37 entries, maximum degrees `181/145`, numerator `ceil(log2(l1))`
+  at most 224, and denominator scalar-LCM bit length 123. It used `32.86%`
+  average CPU, at most `33.09%` in observed 60-second windows, `1652.6 MiB`
+  monitored peak memory, and zero process writes. This is not a complete
+  entry-envelope certificate. Full certified CRT remains unlaunched; the
+  next prompt first addresses H680's observed memory wall without relaxing limits.
+- **Largest-monomial canary failed its resource gate (`H680`).** The unique
+  degree-8 monomial `(0,0,0,0,8)` gave 96 entries, 578 reductions, maximum
+  degrees `629/513`, numerator `ceil(log2(l1))=1771`, and denominator scalar-LCM
+  bit length 1321. It printed its result, but the monitor then stopped the
+  process at `2064.1 MiB`; wrapper exit 1 overrides the inner PASS for resource
+  acceptance. CPU averaged `32.86%`, writes were `0.00 MiB`, and free disk was
+  `128.34 GiB`. No full sweep was launched. Neither column proves a worst case.
+
+### Wave 27
+
+- **The fixed leading quotient lifts without q-dependent leading division.** A deterministic
+  35-element homogeneous transformation basis for degrees `(2,2,2,3,4)` yields the same
+  96-dimensional Hilbert vector as e251. Substituting the exact physical equations gives 35
+  monic triangular `QQ(q)` rules with standard tails (`H672`, `e252`).
+- **The determinant now has a much tighter exact envelope.** Fraction-free row clearing gives
+  numerator degree at most `40693`, denominator degree at most `33017`, and row-cleared
+  numerator `l1` norm at most `2^2343436`. Because polynomial cancellation can increase
+  coefficient height, the primitive-factor bound is the conservative `2^2384129`
+  (`H672`, corrected by `H675`). Independent rebuilds reproduce both e251 physical witnesses.
+- **Dense scalar CRT is certified resource-incompatible, not mathematically impossible.** It
+  needs 40,694 interpolation nodes for each of at least 76,908 safe 31-bit primes: at least
+  3,129,694,152 exact determinants, above the pinned 10,000,000 cap. The norm was not
+  materialized, so no real `q>1` root classification or emptiness theorem follows
+  (`H673`, corrected by `H675`).
+- **Verification.** Three observed template builds, including one from the final hardened source,
+  and two corrected final artifact builds were byte-identical. The independent scan-reducer
+  verifier directly reduces all defining equations, audits stored row/atom arithmetic, rebuilds
+  both e251 physical witnesses, and passes all 8 checks and 6 claim-falsifying mutations
+  (`H674`, corrected by `H675`). The artifact pins `math/requirements-freeze.txt`, which
+  describes the actual parent `.venv`. No full 172-script suite, endpoint movement,
+  thermodynamic calculation, or sampling-as-proof occurred.
 
 ### Wave 26
 
@@ -322,14 +391,43 @@ Frozen pre-implementation contract and decision record:
   upper endpoint. Mode-resolved four-point/DLR, multi-edge or block current, and sourced-current
   classes are untouched (`proofs/upper_endpoint4.md`, `H464`-`H469`).
 
-## 5. Ranked queue after wave 26
+## 5. Ranked queue after wave 28
 
-1. **Materialize the primitive open-`2x4` norm.** e251 proves the trace-nine projection is
-   nonzero and gives a safe degree bound `182400`, but generic per-node quotient sampling would
-   require 182,401 nodes. Build a fixed-leading-form lift or fraction-free border template, derive
-   a tighter denominator/valuation/height envelope, reconstruct with height-certified modular CRT,
-   isolate every `q>1` root, then use repeated-root-safe shifted `H0/H1` localizers. Never discard
-   chart-denominator roots or infer degree from apparent interpolation stabilization.
+1. **Tighten the characteristic-zero norm envelope before CRT.** e253 now
+   computes one entire modular determinant, but one prime does not recover
+   the rational/integer coefficients. The first exact `QQ(q)` column now
+   passes its bounded probe (`H679`), but its constant basis monomial is not
+   representative. The largest-monomial canary (`H680`, `(0,0,0,0,8)`) computed
+   its column but failed the memory gate at `2064.1 MiB`. Do not launch the
+   all-column sweep from this resource-failed run. First reduce lift-only
+   retained data and bulk digest allocations (`H681`), then rerun only the
+   bounded canary and require the same exact column digest plus a successful
+   resource exit. A canary does not prove a worst-case bound for all columns.
+   Keep the same enforced limits and derive a complete height bound before CRT;
+   optional exact matching bounds need primal/dual certificates.
+   Even direct reconstruction of the old row-cleared numerator needs at least
+   `3076262930` dense scalar determinants under its current bound. Never infer
+   an upper degree from modular stabilization or discard chart-denominator roots.
+   Real-root isolation and shifted `H0/H1` branch disposition follow only a
+   genuine characteristic-zero certificate.
+   `H681` (2026-09-05) replicated both canary digests with a successful guarded exit
+   (`1901.9 MiB` monitored peak, `677.95` CPU s); the all-column QQ(q) sweep is still
+   CPU-infeasible in one run. The launched bounded step is `H682`/`e255`: exact scalar
+   specialization of the pinned lift at six rational `q>1` points (`5/4,3/2,5/3,2,3,5`),
+   96 columns over `QQ`, and one exact integer determinant per point. A sign change
+   between consecutive points is an exact real-root bracket for the norm numerator;
+   equal signs prove nothing and never justify an emptiness claim.
+   `H684` (2026-09-05, CONFIRMED): the census observed exact signs `-1,+1,-1,+1,-1,-1`, twelve
+   residue agreements with the e253 reduced modular norm, and four exact brackets
+   `(5/4,3/2)`, `(3/2,5/3)`, `(5/3,2)`, `(2,3)`; guard `680.62` CPU s, `1559117824` bytes
+   monitored peak, `118784` bytes written. `H686`/`e256` (three brackets only) was
+   REVIEW_REJECTED before execution. The next bounded step is `H688`/`e257`: three exact
+   rational bisection steps in each of the four brackets under the unchanged specialization
+   (twelve points; first midpoints `11/8`, `19/12`, `11/6`, `5/2`; final widths `1/32`, `1/48`,
+   `1/24`, `1/8` if no exact zero). Depth 3 rather than 4 keeps the PREFLIGHT CPU estimate
+   (about 511 s lift plus twelve points at 30-60 s) inside the 1800 CPU s limit. A refined
+   bracket proves at least one real root of `N` inside it and nothing about uniqueness,
+   multiplicity, roots elsewhere, or the shifted `H0/H1` branch.
 2. **Lift the W-law defect-position blocks beyond stored `L=9`.** The central L8 inheritance and
    four exact L9 shells replace the opaque 17/133 determinants, but Smith invariant 6 kills the
    count-driven eight-copy/dyadic recurrence. Seek a direct shell formula, signed incidence
@@ -367,19 +465,43 @@ Frozen pre-implementation contract and decision record:
     `W8/W10` need actual square-lattice evaluation/bounds; Lax progress needs a concrete equation;
     Lee--Yang needs a no-earlier-root or argument-principle theorem, not larger fits.
 
-## 6. Environment state (measured during wave 26 on 2026-08-24)
+## 6. Environment state (updated 2026-09-04)
 
-- Host: 28 cores, 96 GB, ten to eleven users. Live load was roughly 3-9. Every heavy stage was
-  single-process and below 175 MB task RSS; no full suite, memory-14, series frontier, or primitive
-  norm interpolation ran.
-- The final e251 producer used 86.942454 process CPU seconds and 174,309,376 bytes. Its clean-room
-  verifier used 61.230270 seconds and 133,529,600 bytes. These are process CPU and Darwin task
-  peak RSS, not wall-clock claims.
-- Generic specialized quotient nodes remain vulnerable to background QoS throttling. The finite
-  witness uses only three bounded nodes; a full-node interpolation is forbidden without a compiled
-  reducer and a proved cost envelope.
+- **User resource ceiling (2026-09-04): keep local CPU below 50% and protect disk space.**
+  Continue only one low-priority heavy process at a time. The supervised
+  `/tmp/h676_resource_guard.py` runner targets 35% of one CPU core using measured
+  process CPU and stop/continue duty cycling; numerical thread counts are one.
+  It reserves 50 GiB free on both workspace and temporary filesystems, enforces
+  a 16 MiB kernel file-size ceiling, monitors a 64 MiB process-write ceiling,
+  and samples its own child's resident/physical memory, terminating it when
+  a sample reaches 2 GiB. This is a monitored stop threshold, not an OS-enforced
+  allocation cap; H680 recorded 16.1 MiB of overshoot before termination. Core dumps and
+  bytecode writes are disabled. Initial live native-determinant smoke: 15.39%
+  average CPU, 94.3 MiB peak RSS, no recorded writes, 129.71 GiB free.
+  Temporary runners may disappear after reboot: recreate and smoke-check them
+  before resuming; never silently fall back to unthrottled execution.
+  Do not delete files, mutate other users' processes, install packages, or
+  launch full-suite, bulk-export, or dense-CRT work.
+- Historical H675 runs used 1,108.36/1,092.42 producer wall seconds and 1,024.19
+  verifier seconds. H676 corrects their false actual-freeze assertion:
+  provenance-corrected builds passed in 1,154.80/1,193.07 seconds, followed by
+  a guarded verifier in 1,966.21 seconds at 32.74% average of one core and
+  1,669.3 MiB monitored peak memory. The mathematical data digest is unchanged.
+- The exact lift template passed byte-identically in 387.17, 390.09, and 405.12 wall seconds;
+  the last run used the final hardened producer source. Dense scalar CRT is stopped by the proved
+  lower bound of 3,129,694,152 determinant evaluations, not by an extrapolated timing claim.
+- Installed `python-flint` has no Python polynomial-matrix binding, but its
+  bundled FLINT dylib exports the required native API. The e253 pinned-ABI
+  bridge and full independent replay passed; the complete CRT route is still open.
+- The next-ranked W-law state has exact `L=8` and `L=9` shell data but no `W10` source or direct
+  signed-incidence formula. Do not launch a blind full `W10` closure or fit an exponent from two
+  sizes.
 - Darwin `mach_task_basic_info.resident_size_max` remains the required per-task RSS measurement.
-- Wave 26 leaves 171 auto-discovered test scripts. The new producer and clean-room verifier pass.
+- Wave 28 leaves 173 auto-discovered test scripts. Its two bounded builds used
+  1,492.65/1,519.09 wall seconds; the independent verifier used 1,677.70 seconds.
+  Corrected 60-second CPU windows stayed at or below 33.10% of one core.
+  Guard CPU telemetry converts Mach ticks through `mach_timebase_info`;
+  final accounting uses `wait4`. No full suite, bulk export, or full CRT ran.
 
 ## 7. Method notes worth reusing
 
@@ -421,3 +543,9 @@ Frozen pre-implementation contract and decision record:
   and `checkpoints/hypotheses_pre_overwrite_snapshot.csv` still await user deletion approval.
 - Worktrees under `/private/tmp/ising3d-w1*-*` and their `omp/w1*` branches can be removed with
   `git worktree remove` once no comparison is needed; ask before deleting.
+
+## 9. Prepared next exact prompt
+
+Continue from H686 (norm): REVIEW_REJECTED. Choose the highest admissible bounded exact test in the ranked queue. Read the linked evaluation, current checkpoint, failed routes and hypothesis ledger. State falsifiable predictions and scope; obtain independent pre-execution code review, run one bounded producer and its independent verifier, then checkpoint and continue. Do not repeat an unchanged failed input, rerun completed canaries, or interpret an inner PASS as a successful resource exit. Preserve nice 19, one thread, 35% of one core, the monitored 2 GiB stop, 50 GiB free reserve, bounded writes, and no deletions.
+
+Evidence: `math/ising3d/campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0003_H686/evaluation.json`.

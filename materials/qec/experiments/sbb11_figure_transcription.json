@@ -1,0 +1,25 @@
+{
+  "schema": "sbb11-figure-transcription/1",
+  "status": "UNADMITTED_TRANSCRIPTION_NOT_AN_AUTHORS_CIRCUIT",
+  "paper": "arXiv:2603.05481v1, figures 10 and 12",
+  "coordinates": "x increases right, y increases down; periodic width 24, height 12; nearest horizontal/vertical lattice spacing one",
+  "width": 24,
+  "height": 12,
+  "colour_order": ["red", "green", "blue"],
+  "colour_rule": "(x // 2 + y // 2) % 3",
+  "geometry": {
+    "filled": {"x_parity": 1, "y_parity": 1, "figure10_check_type": "X", "figure12_row_label": "Z", "NE": [3, -6], "SW": [-6, 3]},
+    "hollow": {"x_parity": 0, "y_parity": 0, "figure10_check_type": "Z", "figure12_row_label": "X", "NE": [6, -3], "SW": [-3, 6]}
+  },
+  "edge_order": ["N", "E", "S", "W", "NE", "SW"],
+  "figure12_times": {
+    "filled": {"blue": [3, 7, 4, 5, 6, 2], "red": [3, 5, 1, 6, 4, 2], "green": [3, 6, 1, 4, 5, 2]},
+    "hollow": {"blue": [2, 7, 4, 6, 3, 5], "red": [2, 6, 1, 5, 3, 4], "green": [2, 5, 1, 4, 3, 6]}
+  },
+  "timing_probe_only": "Interpret times relative to each row's origin; fix filled origin zero and inspect hollow origins 0..7 modulo eight. This probes, not assumes, a completion of the figure. No CNOT orders, colours or edge geometry may be optimized.",
+  "unresolved": [
+    "Figure 10 caption and Figure 12 row labels exchange X and Z for filled/hollow checks; a global duality may explain it but is not silently applied.",
+    "Figure 12 does not explicitly give relative row time origins or the preparation/measurement schedule of the modified LRC.",
+    "A valid periodic completion would not itself identify finite-round preparation, measurement-record boundaries or data-readout noise."
+  ]
+}

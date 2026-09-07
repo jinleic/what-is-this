@@ -1,8 +1,0 @@
-{
-  "ok": true,
-  "sha256": "211d8e9afd6491af62d7bb89282e586f300f5a32535320caa31aa342fc63beac",
-  "expected_sha256": "211d8e9afd6491af62d7bb89282e586f300f5a32535320caa31aa342fc63beac",
-  "aborted": null,
-  "controls_count": 16,
-  "stdout_tail": "False)\n[OK] margin_tight_accepted: separated ball margin True (must be True)\n[OK] margin_above_rejected: upper-above-d margin False (must be False)\n[OK] pstar_closed_form_window: J(1.30,p*) = [0.37483055458876357002453330452976048813 +/- 3.62e-41] inside frozen window\n[OK] envelope_admits_pstar: U(point box, 1.30).upper - J.lower = [0.200790035491548 +/- 1.39e-16] >= 0\nALL STARTUP CONTROLS PASSED\n"
-}

@@ -1,5 +1,18 @@
 # Union-closed sets conjecture — active target
 
+**Current delivery lane (2026-09-05):** start with
+[`H2_PAPER/REFEREE.md`](H2_PAPER/REFEREE.md), not the historical Campaign-I
+summary below. The local machine-assisted manuscript claims unconditional
+$c''=0.38284565599065407172\ldots$; its proof status is owned by
+[`../RESULTS.md`](../RESULTS.md). Outside mathematical refereeing and the
+[reported Costa prior-art comparison](LITERATURE_ORIGINALITY.md#targeted-unresolved-prior-art-lead--2026-09-05)
+remain open. No new decimal search or duplicate replay is queued by this session.
+
+**Inventory caveat:** `campaign.py state refresh` labels the latest legacy
+campaign `RUNNING` because it has no modern `status.json`. That generated
+label is not a live-job observation or a new scientific verdict; no legacy
+terminal file was fabricated. The current proof and review status is above.
+
 > **MACHINE-VERIFIED FINITE CERTIFICATE (2026-08-21).** Campaign
 > [`cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8`](campaigns/cert3_20260818T212601Z_425f109c15b64a6198785c6cebbbdaab_2f23a58ebdb8/)
 > replayed all eight traces and certified the explicit relaxed functional
@@ -224,7 +237,8 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./.venv/bin/python -B uc/shapley_n7_fal
 | $0.3820660112501052$ | this project | **candidate theorem**: human-audited reduction and entropy bridge plus replayed Arb certificate |
 | $c^*=0.3823455333667027$ | Yu [2212.00658](https://arxiv.org/abs/2212.00658), Cambie [2212.12500](https://arxiv.org/abs/2212.12500) | claimed; finite-dimensional verification gap remains |
 | $>c^*$, non-explicit | Liu [2306.08824](https://arxiv.org/abs/2306.08824) Thm 6 | proved, no explicit value |
-| $0.382709087918741$ | Liu, Thm 13 | conditional: Hypothesis 1 now has a human-audited candidate proof; Hypothesis 2 remains open |
+| $0.382709087918741$ | Liu, Thm 13 | published conditional claim; the later local H2 manuscript claims removal of the hypotheses — see [`H2_PAPER/REFEREE.md`](H2_PAPER/REFEREE.md), not the old open-obligation wording |
+| $0.38284565599065407172\ldots$ | local scaled-protocol H2 manuscript | machine-assisted unconditional theorem claim; outside refereeing and the reported Costa comparison remain open |
 
 Cambie states the gap in his own paper, verbatim:
 

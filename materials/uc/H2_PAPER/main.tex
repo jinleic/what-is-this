@@ -35,8 +35,10 @@
 \newcommand{\lbl}[1]{\textsc{#1}}
 \newcommand{\cert}[1]{\par\smallskip\noindent{\normalfont\textit{Certificate.} #1}}
 
-\title{Liu's Second Hypothesis Holds, and the Union-Closed Constant\\
-$c'=1-m^\ast=0.38270908791873502993\ldots$ Is Unconditional:\\
+\title{Liu's Second Hypothesis Holds, the Union-Closed Constant\\
+$c'=1-m^\ast=0.38270908791873502993\ldots$ Is Unconditional,\\
+and a Scaled Protocol Raises It to
+$c''=0.38284565599065407172\ldots$:\\
 a Machine-Checked Proof}
 \author{J.\ Chen\thanks{Repository manuscript package:
 \texttt{math/uc/H2\_PAPER/}.  Every theorem carries a status label
@@ -44,7 +46,7 @@ a Machine-Checked Proof}
 \lbl{open}), and every machine-assisted theorem cites the artifact and
 SHA-256 that certifies it; Section~\ref{sec:verification} explains how to
 replay the whole chain.}}
-\date{September 2, 2026}
+\date{September 3, 2026}
 
 \begin{document}
 \maketitle
@@ -68,12 +70,22 @@ tight inequality $R=A+B\ge0$, which has a nondegenerate interior zero) is
 certified by stratified analytic estimates and a finite Arb branch-and-bound
 cover, while $B\ge0$ is equivalent to a parameter-free inequality
 $\Phi\ge0$ that follows from an exact identity and a one-variable condition
-$\kappa\ge2$ with uniform margin.  Every non-elementary step is a
-machine-checked artifact with pinned hashes; a replay driver re-runs the
-seven artifacts and asserts byte-identity.  The bound is sharp along a
-one-parameter family, and Liu's printed decimal $0.382709087918741$ is
-incorrect in its last two digits.  The result concerns the constant only and
-says nothing about the conjectured value $1/2$.
+$\kappa_{\mathrm{master}}\ge2$ with uniform margin.  Every non-elementary step is a
+machine-checked artifact with pinned hashes; a replay driver re-runs all
+eight artifacts and asserts byte-identity.  Liu's printed
+decimal $0.382709087918741$ is incorrect in its last two digits.  Along the
+way the whole argument is shown to be a statement about a one-parameter
+family of protocols: Liu's Example~5 with $f_\lambda(x)=\lambda x(1-x)$ gives
+$\pi_\kappa(s,t)=st\bigl(1+\kappa(1-s)(1-t)\bigr)$, $\kappa=\lambda^2$, and
+every step above is $\kappa$-parametric.  We carry the two continuum
+inequalities through at $\lambda=\tfrac45$ --- where the face coefficient is
+$4.58$ times smaller, so the analytic strip is taken to $10^{-40}$ and the
+certified cover needs two exact rescalings of $A$ --- and obtain the strictly
+better unconditional constant
+$c''=1-m_{16/25}=0.38284565599065407172\ldots>c'$.  The bound $c'$ is sharp
+along a one-parameter family of laws \emph{for its own protocol pair}, which
+is why changing the protocol, not the laws, is what improves it.  The results
+concern the constant only and say nothing about the conjectured value $1/2$.
 \end{abstract}
 
 \section{Introduction and main results}\label{sec:intro}
@@ -101,13 +113,17 @@ Section V-B (``Hypothesis~2''), which asserts that the resulting
 nine-parameter optimisation (his (81)--(84)) has optimal value at least $1$.
 
 This paper proves the inequality behind Hypothesis~2 in a form strong enough
-to make Hypothesis~1 unnecessary.  Throughout, $\log$ is natural,
+to make Hypothesis~1 unnecessary, and then improves the constant by changing
+the protocol.  Throughout, $\log$ is natural and, for $\kappa\in[0,1]$,
 \begin{equation}\label{eq:defs}
   h(u)=-u\log u-(1-u)\log(1-u),\quad h(0)=h(1)=0,\qquad
-  \pi(s,t)=st\bigl(1+(1-s)(1-t)\bigr),\qquad K=h\circ\pi .
+  \pi_\kappa(s,t)=st\bigl(1+\kappa(1-s)(1-t)\bigr),
 \end{equation}
-For a Borel probability measure $\mu$ on $[0,1]$ write $M=\pr{\mu}{x}$ for
-its mean and $\pr{\mu}{h}=\int h\,d\mu$.
+and $K_\kappa=h\circ\pi_\kappa$.
+Sections~\ref{sec:constants}--\ref{sec:value} work at $\kappa=1$ and drop the
+subscript, writing $\pi=\pi_1$ and $K=K_1$; Section~\ref{sec:scaled} uses
+$\kappa=\tfrac{16}{25}$.  For a Borel probability measure $\mu$ on $[0,1]$
+write $M=\pr{\mu}{x}$ for its mean and $\pr{\mu}{h}=\int h\,d\mu$.
 
 \begin{definition}[conditionally i.i.d.\ coupling]\label{def:ciid}
 Let $(\Omega,P)$ be a probability space and $u\mapsto\nu_u$ a Markov kernel
@@ -161,6 +177,25 @@ $c'\,|\mathcal F|$ of its members, where
 \]
 \end{theorem}
 
+Changing $\kappa$ changes the constant.  For $\lambda\in[0,1]$ let
+$f_\lambda(x)=\lambda x(1-x)$ and let $\Pi^{(2,\lambda)}$ be Liu's Example~5
+protocol built from $f_\lambda$; its zero-zero probability is
+$\pi_{\lambda^2}(1-s,1-t)$, so $\lambda=1$ is the protocol behind $c'$.
+
+\begin{theorem}[a better constant; \lbl{proved}, Theorem~\ref{thm:uc45}]\label{thm:D}
+Let $\kappa=\tfrac{16}{25}$, let $x_\kappa$ be the unique root in $(0,1)$ of
+$x^2+\pi_\kappa(x,x)=1$ and put $m_\kappa=x_\kappa h(x_\kappa)/h(x_\kappa^2)$.
+Then, with $\Pi^{(1)}$ and $\Pi^{(2,4/5)}$ in place of $\Pi^{(1)}$ and
+$\Pi^{(2,1)}$, every union-closed family
+$\mathcal F\notin\{\emptyset,\{\emptyset\}\}$ has an element contained in at
+least $c''|\mathcal F|$ of its members, where
+\[
+  c''=1-m_{16/25}\in\bigl[0.38284565599065407172003132812201407735944023015042
+  \pm5.34\times10^{-52}\bigr],
+\]
+and $c''-c'\in[0.000136568071919041789718426023041\pm4.66\times10^{-34}]>0$.
+\end{theorem}
+
 The proof of Theorem~\ref{thm:C} re-derives Liu's Proposition~3 from his
 definitions (Section~\ref{sec:prop3}); the only inputs are Gilmer's
 independent protocol and Liu's Example~5, and Theorem~\ref{thm:A} applied
@@ -188,12 +223,18 @@ Theorem~\ref{thm:B}.  Section~\ref{sec:twovar} proves $R\ge0$ and $A\ge0$ by
 stratified analytic estimates plus a finite certified cover.
 Section~\ref{sec:phi} proves the parameter-free inequality
 $\Phi=K_{st}^2-K_{ss}K_{tt}\ge0$, which is equivalent to $B\ge0$, from an
-exact identity and a one-variable condition $\kappa\ge2$.
+exact identity and a one-variable condition $\kappa_{\mathrm{master}}\ge2$.
 Section~\ref{sec:lift} composes these into Theorem~\ref{thm:B}, and
 Section~\ref{sec:mixture} proves Theorem~\ref{thm:A}.
-Section~\ref{sec:prop3} proves Theorem~\ref{thm:C}, Section~\ref{sec:value}
-discusses the value of $c'$, and Section~\ref{sec:verification} lists the
-artifacts, their hashes, the replay procedure, and the scope of the result.
+Section~\ref{sec:prop3} isolates the protocol-to-constant step as
+Proposition~\ref{prop:route}, which turns any admissible Example-5 $f$ and
+any pair $(\beta,m)$ carrying the mixture inequality into a union-closed
+constant $1-m$, and deduces Theorem~\ref{thm:C}.
+Section~\ref{sec:value} discusses the value of $c'$.
+Section~\ref{sec:scaled} carries Sections~\ref{sec:constants}--\ref{sec:mixture}
+through at $\kappa=\tfrac{16}{25}$ and deduces Theorem~\ref{thm:D}, and
+Section~\ref{sec:verification} lists the
+artifacts, their hashes, the replay procedure, and the scope of the results.
 
 \paragraph{Labels.}
 \lbl{proved} means a complete argument is given here or in the cited
@@ -652,24 +693,27 @@ $\pi_{st}=st(1+ab)$, $\Lam_{ss}=g(s)$, $\Lam_{tt}=g(t)$ gives
 \end{proof}
 
 \begin{lemma}[master condition; \lbl{proved}]\label{lem:phi-L2}
-For $0<s<t<1$ put $\kappa(s,t)=(1+ab)\,\dfrac{\gamma(s)-\gamma(t)}{t-s}>0$.  Then
+For $0<s<t<1$ put $\kappa_{\mathrm{master}}(s,t)=(1+ab)\,\dfrac{\gamma(s)-\gamma(t)}{t-s}>0$
+(the artifacts call this quantity \texttt{kappa\_master}; it is unrelated to the
+protocol parameter $\kappa$ of \eqref{eq:defs}, which equals $1$ throughout
+Sections~\ref{sec:constants}--\ref{sec:value}).  Then
 \[
-  \Phi(s,t)\ \ge\ s^2t^2(s-t)^2g(s)g(t)\Bigl(\frac{\kappa^2}4-1\Bigr);
+  \Phi(s,t)\ \ge\ s^2t^2(s-t)^2g(s)g(t)\Bigl(\frac{\kappa_{\mathrm{master}}^2}4-1\Bigr);
 \]
-in particular $\kappa\ge2$ implies $\Phi\ge0$, and $\kappa\ge\tfrac94$ implies
+in particular $\kappa_{\mathrm{master}}\ge2$ implies $\Phi\ge0$, and $\kappa_{\mathrm{master}}\ge\tfrac94$ implies
 $\Phi\ge\tfrac{17}{64}s^2t^2(s-t)^2g(s)g(t)$.
 \end{lemma}
 \begin{proof}
 With $x=\tfrac12(\gamma(s)-\gamma(t))>0$, $g(s)-g(t)=e^{\gamma(s)}-e^{\gamma(t)}
 =2\sqrt{g(s)g(t)}\sinh x$, so the bracket in \eqref{eq:dagger} equals
 $(s-t)^2g(s)g(t)\bigl[((1+ab)\sinh x/(t-s))^2-1\bigr]$, and $\sinh x\ge x$
-gives $(1+ab)\sinh x/(t-s)\ge\kappa/2$.
+gives $(1+ab)\sinh x/(t-s)\ge\kappa_{\mathrm{master}}/2$.
 \end{proof}
 
 \begin{lemma}[boundary and symmetry; \lbl{proved}]\label{lem:phi-L3}
 $\Phi(s,s)=0$, $\Phi(0,t)=\Phi(s,0)=0$, $\Phi(s,1)=\Phi(1,s)=h(s)^2\ge0$, and
 $\Phi(s,t)=\Phi(t,s)$.  Hence $\Phi\ge0$ on $[0,1]^2$ follows from
-$\kappa\ge2$ on the open triangle $0<s<t<1$.
+$\kappa_{\mathrm{master}}\ge2$ on the open triangle $0<s<t<1$.
 \end{lemma}
 \begin{proof}
 $\pi(0,t)=0$, $\pi(s,1)=s$, $\pi(1,1)=1$ and $h(0)=h(1)=0$.
@@ -726,16 +770,16 @@ module \path{uc/liu9_h2_phi_audit.py} sha256
 \end{theorem}
 \begin{proof}
 By Lemmas~\ref{lem:phi-L2} and \ref{lem:phi-L3} it suffices to certify
-$\kappa\ge\theta:=\tfrac94$ on $0<s<t<1$.  For a rational cell
+$\kappa_{\mathrm{master}}\ge\theta:=\tfrac94$ on $0<s<t<1$.  For a rational cell
 $C=[s_1,s_2]\times[t_1,t_2]$ with $s_1<t_2$, every $(s,t)\in C$ with
 $0<s<t<1$ satisfies, by the mean value theorem and
 Lemma~\ref{lem:phi-L0}(c),
 \begin{itemize}[nosep]
-\item[(D)] $\kappa\ge(1+(1-s_2)(1-t_2))\cdot\inf_{\xi\in[s_1,t_2]\cap(0,1)}|\gamma'(\xi)|$,
+\item[(D)] $\kappa_{\mathrm{master}}\ge(1+(1-s_2)(1-t_2))\cdot\inf_{\xi\in[s_1,t_2]\cap(0,1)}|\gamma'(\xi)|$,
 the infimum being bounded below by the minimum of $\nu_0(\min(t_2,x_0))$ on
 $(0,x_0]$, $\nu_1(\max(s_1,x_1))$ on $[x_1,1)$, and (L5) on the middle piece,
 whichever apply (with $x_0=\tfrac18$, $x_1=\tfrac78$);
-\item[(Q)] if $s_2<t_1$: $\kappa\ge(1+(1-s_2)(1-t_2))\,(\gamma(s_2)-\gamma(t_1))/(t_2-s_1)$.
+\item[(Q)] if $s_2<t_1$: $\kappa_{\mathrm{master}}\ge(1+(1-s_2)(1-t_2))\,(\gamma(s_2)-\gamma(t_1))/(t_2-s_1)$.
 \end{itemize}
 Starting from the single cell $[0,1]^2$, a cell is accepted when the lower
 endpoint of the Arb enclosure of (D) or (Q) exceeds $\theta$, discarded
@@ -744,7 +788,7 @@ longer side otherwise.  The run terminates: $30{,}974$ cells processed, $792$
 accepted by (D), $14{,}687$ by (Q), $17$ discarded, maximal depth $23$, minimum
 certified bound $[2.2500008364172621445\pm10^{-19}]>\theta$.  Five
 mutations are caught: raising $\theta$ to $12/5$ (above the true minimum of
-$\kappa$; witness $\kappa(\tfrac{27}{50},\tfrac{27}{50}+10^{-6})\in
+$\kappa_{\mathrm{master}}$; witness $\kappa_{\mathrm{master}}(\tfrac{27}{50},\tfrac{27}{50}+10^{-6})\in
 [2.3941933797780204\pm10^{-16}]<12/5$, so the cover cannot be
 tightened past the true minimum); dropping the factor $(1+ab)$ (witness
 $|\gamma'(\tfrac9{20})|\in[1.9105187072037912\pm10^{-16}]<2$, so the
@@ -762,11 +806,11 @@ $6/6$ of its own mutations.
 \end{proof}
 
 \begin{remark}
-$\kappa$ diverges to $+\infty$ at every boundary point of the square
+$\kappa_{\mathrm{master}}$ diverges to $+\infty$ at every boundary point of the square
 (Lemma~\ref{lem:phi-L45}), so the singularity of $h'$ at entropy arguments
 $0$ and $1$ --- which defeats direct interval subdivision of $\Phi$ near the
 edges --- never enters: the endpoint strips are the easy part of the cover.
-The numerical minimum of $\kappa$ is $\approx2.394$ at $s=t\approx0.54$
+The numerical minimum of $\kappa_{\mathrm{master}}$ is $\approx2.394$ at $s=t\approx0.54$
 (\lbl{computational-evidence}), a uniform margin of $20\%$ over the
 threshold $2$.
 \end{remark}
@@ -974,23 +1018,34 @@ $\mathcal F$, and the uniform law maximises entropy on a given support.
 \end{proof}
 
 \paragraph{The two protocols.}
+Call $f:[0,1]\to\R$ \emph{admissible} if $0\le f(x)\le\min(x,1-x)$ on
+$[0,1]$; this is exactly the condition under which Liu's Example~5 defines a
+protocol.  For admissible $f$ put $\pi_f(a,b)=ab+f(a)f(b)$ and $K_f=h\circ\pi_f$.
 \begin{enumerate}[label=(\roman*),nosep]
 \item Gilmer's protocol $\Pi^{(1)}_{s,t}=\mathrm{Ber}(s)\otimes\mathrm{Ber}(t)$,
 $\Pi^{(1)}_{s,t}(0,0)=(1-s)(1-t)$.  The two coordinates use independent
 randomness at every step, so $\tilde X^{i-1}$ and $\tilde Y^{i-1}$ are
 independent and $(S_i,T_i)\sim\mu_i\otimes\mu_i$.
-\item Liu's Example~5 with $f(x)=x(1-x)$.  Let $U$ be uniform on $[0,1]$ and
-$\sigma(U)=+1$ if $U>\tfrac12$, $-1$ otherwise.  Given $(s,t)$ and $U$, set
-$\tilde X=0$ with probability $(1-s)+f(1-s)\sigma(U)=(1-s)(1+s\sigma(U))$
-using $\tilde X$'s local randomness, and $\tilde Y=0$ with probability
-$(1-t)(1+t\sigma(U))$ using $\tilde Y$'s local randomness and the same $U$.
-These are probabilities ($0\le(1-s)(1\pm s)\le1$), the means are $s$ and $t$
-($\E\sigma(U)=0$), and
-\[
-  \Pi^{(2)}_{s,t}(0,0)=\E\bigl[(1-s)(1+s\sigma)(1-t)(1+t\sigma)\bigr]
-  =(1-s)(1-t)(1+st)=\pi(1-s,1-t),
-\]
-since $\E\sigma=0$ and $\sigma^2=1$.  In the sequential construction a fresh
+\item Liu's Example~5 with an admissible $f$.  Let $U$ be uniform on $[0,1]$
+and $\sigma(U)=+1$ if $U>\tfrac12$, $-1$ otherwise.  Given $(s,t)$ and $U$,
+set $\tilde X=0$ with probability $(1-s)+f(1-s)\sigma(U)$ using $\tilde X$'s
+local randomness, and $\tilde Y=0$ with probability $(1-t)+f(1-t)\sigma(U)$
+using $\tilde Y$'s local randomness and the same $U$.  These are
+probabilities precisely because $f$ is admissible
+($0\le(1-s)\pm f(1-s)\le1$ is $f(1-s)\le\min(1-s,s)$), the means are $s$ and
+$t$ ($\E\sigma(U)=0$), and
+\begin{align*}
+  \Pi^{(2,f)}_{s,t}(0,0)
+  &=\E\bigl[\bigl((1-s)+f(1-s)\sigma\bigr)\bigl((1-t)+f(1-t)\sigma\bigr)\bigr]\\
+  &=(1-s)(1-t)+f(1-s)f(1-t)=\pi_f(1-s,1-t),
+\end{align*}
+since $\E\sigma=0$ and $\sigma^2=1$.  For $f_\lambda(x)=\lambda x(1-x)$,
+which is admissible for $0\le\lambda\le1$ because
+$\lambda x(1-x)\le\min(x,1-x)$ reduces to $\lambda(1-x)\le1$ and
+$\lambda x\le1$, this is
+$(1-s)(1-t)(1+\lambda^2st)=\pi_{\lambda^2}(1-s,1-t)$; the case $\lambda=1$ is
+the protocol of \eqref{eq:cprime} and $K_{f_1}=K$.  In the sequential
+construction a fresh
 $U_i$ is drawn at step $i$ and shared by the two coordinates.  Each
 $\tilde X_j$ is the same measurable function $G_j$ of
 $(\tilde X^{j-1},U_j,\xi_j)$ as $\tilde Y_j$ is of $(\tilde Y^{j-1},U_j,\eta_j)$,
@@ -1000,37 +1055,58 @@ and $\tilde Y^{i-1}$ are i.i.d., and so are $S_i=\sigma_i(\tilde X^{i-1})$ and
 $T_i=\sigma_i(\tilde Y^{i-1})$: the law of $(S_i,T_i)$ is
 $\Gamma_i=\int\nu_u\otimes\nu_u\,dP_{U^{i-1}}(u)$, with $\nu_u$ the regular
 conditional law of $S_i$ given $U^{i-1}=u$ and barycentre $\mu_i$.  This is
-Liu's observation after his Example~5.
+Liu's observation after his Example~5, and it uses only that both coordinates
+apply the same rule to the same $U_j$, not the form of $f$.
 \end{enumerate}
 
-\begin{theorem}[\lbl{proved}]\label{thm:uc}
-Theorem~\ref{thm:C} holds.
-\end{theorem}
+\begin{proposition}[protocol to constant; \lbl{proved}]\label{prop:route}
+Let $f$ be admissible, $\beta\in[0,1]$, $m\in(0,1)$, and suppose that
+\begin{equation}\label{eq:hyp-mix}
+  (1-\beta)\pr{\mu\otimes\mu}{h(xy)}+\beta\int\pr{\nu_u\otimes\nu_u}{K_f}\,dP(u)
+  \ \ge\ \frac{\pr{\mu}{x}}{m}\,\pr{\mu}{h}
+\end{equation}
+for every conditionally i.i.d.\ coupling $\Gamma=\int\nu_u\otimes\nu_u\,dP(u)$
+with barycentre $\mu$.  Then every union-closed family
+$\mathcal F\notin\{\emptyset,\{\emptyset\}\}$ of subsets of a finite set has
+an element contained in at least $(1-m)|\mathcal F|$ of its members.
+\end{proposition}
 \begin{proof}
 If $|\mathcal F|=1$ then $\mathcal F=\{A\}$ with $A\neq\emptyset$ and every
 element of $A$ has frequency $1$.  Let $|\mathcal F|\ge2$, so
-$H(X^n)>0$.  Fix $c<c'$ and suppose, for contradiction, that
-$\Prob(X_i=1)<c$ for every $i$.  Let $\bar\mu_i$, $\bar\Gamma_i$, $\bar\nu_u$
+$H(X^n)>0$.  Fix $c<1-m$ and suppose, for contradiction, that
+$\Prob(X_i=1)<c$ for every $i$.  Run the two protocols $\Pi^{(1)}$ and
+$\Pi^{(2,f)}$ on the law of $X^n$.  Let $\bar\mu_i$, $\bar\Gamma_i$,
+$\bar\nu_u$
 denote the images of $\mu_i$, $\Gamma_i$, $\nu_u$ under $s\mapsto1-s$; then
 $\bar\Gamma_i=\int\bar\nu_u\otimes\bar\nu_u\,dP_{U^{i-1}}$ is a conditionally
 i.i.d.\ coupling of $\bar\mu_i$, whose mean is
 $M_i=\E[1-S_i]=1-\Prob(X_i=1)>1-c$, and $\pr{\bar\mu_i}{h}=\E[h(S_i)]$ by
 the symmetry of $h$.  By Lemma~\ref{lem:protocol}(iii) for the two protocols,
 \begin{align*}
-&(1-\beta^\ast)\,H(\tilde X^{(1)n}\vee\tilde Y^{(1)n})+\beta^\ast H(\tilde X^{(2)n}\vee\tilde Y^{(2)n})\\
-&\qquad\ge\sum_i\Bigl[(1-\beta^\ast)\pr{\bar\mu_i\otimes\bar\mu_i}{h(xy)}
-+\beta^\ast\!\int\!\pr{\bar\nu_u\otimes\bar\nu_u}{K}\,dP_{U^{i-1}}\Bigr]
-=\sum_i\num(\bar\Gamma_i)\\
-&\qquad\ge\sum_i\frac{M_i}{m^\ast}\,\E[h(S_i)]
-\ \ge\ \frac{1-c}{m^\ast}\sum_i\E[h(S_i)]=\frac{1-c}{m^\ast}\,H(X^n),
+&(1-\beta)\,H(\tilde X^{(1)n}\vee\tilde Y^{(1)n})+\beta\,H(\tilde X^{(2,f)n}\vee\tilde Y^{(2,f)n})\\
+&\qquad\ge\sum_i\Bigl[(1-\beta)\pr{\bar\mu_i\otimes\bar\mu_i}{h(xy)}
++\beta\!\int\!\pr{\bar\nu_u\otimes\bar\nu_u}{K_f}\,dP_{U^{i-1}}\Bigr]\\
+&\qquad\ge\sum_i\frac{M_i}{m}\,\E[h(S_i)]
+\ \ge\ \frac{1-c}{m}\sum_i\E[h(S_i)]=\frac{1-c}{m}\,H(X^n),
 \end{align*}
-by Theorem~\ref{thm:mixture} for each $i$ and $\E[h(S_i)]\ge0$.  By
+by \eqref{eq:hyp-mix} for each $i$ and $\E[h(S_i)]\ge0$; the second line uses
+$\Pi^{(1)}_{s,t}(0,0)=(1-s)(1-t)$ and
+$\Pi^{(2,f)}_{s,t}(0,0)=\pi_f(1-s,1-t)$ read in the variables $1-s$.  By
 Lemma~\ref{lem:protocol}(iv) the left side is at most
-$(1-\beta^\ast)H(X^n)+\beta^\ast H(X^n)=H(X^n)$.  Since $H(X^n)>0$ this forces
-$(1-c)/m^\ast\le1$, i.e.\ $c\ge1-m^\ast=c'$, contradicting $c<c'$.  Hence for
-every $c<c'$ some $i$ has $\Prob(X_i=1)\ge c$; as the $n$ frequencies are
-fixed numbers, $\max_i\Prob(X_i=1)\ge c'$, i.e.\ some $i\in E$ lies in at
-least $c'|\mathcal F|$ members.
+$(1-\beta)H(X^n)+\beta H(X^n)=H(X^n)$.  Since $H(X^n)>0$ this forces
+$(1-c)/m\le1$, i.e.\ $c\ge1-m$, contradicting $c<1-m$.  Hence for
+every $c<1-m$ some $i$ has $\Prob(X_i=1)\ge c$; as the $n$ frequencies are
+fixed numbers, $\max_i\Prob(X_i=1)\ge1-m$, i.e.\ some $i\in E$ lies in at
+least $(1-m)|\mathcal F|$ members.
+\end{proof}
+
+\begin{theorem}[\lbl{proved}]\label{thm:uc}
+Theorem~\ref{thm:C} holds.
+\end{theorem}
+\begin{proof}
+Take $f=f_1$, $\beta=\beta^\ast$, $m=m^\ast$ in
+Proposition~\ref{prop:route}: $f_1$ is admissible, $K_{f_1}=K$, and
+\eqref{eq:hyp-mix} is Theorem~\ref{thm:mixture}.
 \end{proof}
 
 \begin{remark}[on Liu's argument, and what is not used]
@@ -1081,19 +1157,539 @@ $\beta^\ast\approx0.100052559862893$.  The constants are defined by the
 same equations (87)--(90), so the discrepancy is in the printed decimals
 only and does not affect any statement above.
 
+\section{The scaled protocol at \texorpdfstring{$\kappa=\tfrac{16}{25}$}{kappa=16/25}, and the constant \texorpdfstring{$c''$}{c''}}\label{sec:scaled}
+
+Nothing before Section~\ref{sec:value} used $\lambda=1$ except through the
+constants and four properties of $\pi$.  This section instantiates the whole
+chain at $\lambda=\tfrac45$, i.e.
+\begin{equation}\label{eq:kappa-objects}
+  \kappa=\lambda^2=\tfrac{16}{25},\qquad
+  \pi_\kappa(s,t)=st(1+\kappa ab),\qquad
+  q(s)=\pi_\kappa(s,s)=s^2\bigl(1+\kappa(1-s)^2\bigr),\qquad K_\kappa=h\circ\pi_\kappa,
+\end{equation}
+with $a=1-s$, $b=1-t$, and proves Theorem~\ref{thm:D}.  Given constants
+$(\beta,m)$, put
+\begin{equation}\label{eq:kappa-kernels}
+  P_2(s,t)=(1-\beta)h(st)-\frac{t\,h(s)+s\,h(t)}{2m},\quad
+  \varphi(s)=\sqrt{\beta\,h(q(s))},\quad
+  A=P_2+\varphi\otimes\varphi,\quad B=\beta K_\kappa-\varphi\otimes\varphi,
+\end{equation}
+and $\Phi(s,t)=K_\kappa(s,t)^2-h(q(s))\,h(q(t))$.  Two structural remarks
+organise everything below.  First, $P_2$ does not contain $\kappa$: the entire
+$\kappa$-dependence of $A$ sits in $\varphi$, and the two analytic strata of
+Section~\ref{sec:twovar} that discard $\varphi\otimes\varphi\ge0$ are
+therefore the $\kappa=1$ lemmas verbatim, with new constants.  Second, $\Phi$
+contains no constants at all, so Section~\ref{sec:phi} is a statement about
+$\kappa$ alone.
+
+\begin{definition}[the scaled constants]\label{def:scaled}
+Let $Q_\kappa(x)=x^2+\pi_\kappa(x,x)-1=2x^2+\kappa x^2(1-x)^2-1$, let $x_\kappa$
+be its unique root in $(0,1)$, and put
+\[
+  p_\kappa=\frac{h(x_\kappa)}{h(x_\kappa^2)},\qquad m_\kappa=p_\kappa x_\kappa,
+  \qquad c_\kappa=1-m_\kappa,\qquad
+  \beta_\kappa=\frac{\bigl(h'(x_\kappa)+h(x_\kappa)/x_\kappa\bigr)/p_\kappa-a'}{b'-a'},
+\]
+with $a'=2x_\kappa h'(x_\kappa^2)$ and $b'=h'(q(x_\kappa))\,q'(x_\kappa)$.  For
+the rest of this section $\beta=\beta_{16/25}$, $m=m_{16/25}$,
+$x=x_{16/25}$, $c_0=1-\beta-\tfrac1{2m}$ and $c''=c_{16/25}$.
+\end{definition}
+
+\begin{lemma}[\lbl{proved}; enclosures \lbl{machine-verified}]\label{lem:scaled-constants}
+\leavevmode
+\begin{enumerate}[label=(\alph*),nosep]
+\item $q'(x)=2x\bigl(1+\kappa(1-x)(1-2x)\bigr)\ge2x(1-\tfrac\kappa8)>0$ and
+$q''(x)=2+2\kappa(1-6x+6x^2)\ge2-\kappa>0$ on $(0,1]$, because
+$\min_{[0,1]}(1-x)(1-2x)=-\tfrac18$ (at $x=\tfrac34$) and
+$\min_{[0,1]}(1-6x+6x^2)=-\tfrac12$ (at $x=\tfrac12$).
+\item $Q_\kappa'(x)=2x+q'(x)=2x\bigl(2+\kappa(1-x)(1-2x)\bigr)\ge2x(2-\tfrac\kappa8)>0$,
+and $Q_\kappa(0)=-1<0<1=Q_\kappa(1)$: the root $x_\kappa$ exists and is unique in
+$(0,1)$.  Moreover $Q_\kappa(\tfrac23)=-\tfrac19+\tfrac{4\kappa}{81}<0$ and
+$Q_\kappa(2^{-1/2})=\tfrac\kappa2(1-2^{-1/2})^2>0$, so
+$x_\kappa\in(\tfrac23,2^{-1/2})$.
+\item $Q_\kappa(x)=0$ says $q(x_\kappa)=1-x_\kappa^2$, hence
+$h(q(x_\kappa))=h(x_\kappa^2)$ by the symmetry of $h$, and at $\kappa=1$ it
+reads $x^4-2x^3+3x^2-1=0$: Definition~\ref{def:scaled} specialises to
+Definition~\ref{def:constants}.
+\item Certified enclosures (Arb, $400$ bits, propagated from a rational
+bracket of $x$ of width $10^{-70}$ on which
+$Q_\kappa(\mathrm{lo})<0<Q_\kappa(\mathrm{hi})$ is certified; the polynomial is
+$2x^2+\tfrac{16}{25}x^2(1-x)^2-1$):
+\begin{align*}
+x&\in[0.69693919229247157960934182277940417034736021017903\pm3.05\times10^{-51}],\\
+p&\in[0.88552107678047782994619860256636371971626718245049\pm3.10\times10^{-51}],\\
+m&\in[0.61715434400934592827996867187798592264055976984958\pm5.34\times10^{-52}],\\
+\beta&\in[0.17019591881032969604941004414155018433892456417851\pm2.06\times10^{-51}],\\
+c''&\in[0.38284565599065407172003132812201407735944023015042\pm5.34\times10^{-52}],
+\end{align*}
+together with $c_0\in[0.01963397568292172259513039546916476007484\pm3.69\times10^{-42}]$,
+$1-\tfrac1{2m}\in[0.1898298944932514186445404396107149444138\pm3.18\times10^{-41}]$ and
+$\tfrac1m-1+\beta\in[0.7905361298238268587603291649201202955114\pm1.20\times10^{-41}]$;
+all three are certified positive, and $0<\beta<1$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a), (b) are the displayed computations, with the two quadratic minima
+attained at the stated interior points.  (c): $\pi_\kappa(x,x)=x^2+\kappa
+x^2(1-x)^2$, so $x^2+\pi_\kappa(x,x)-1=Q_\kappa(x)$, and at $\kappa=1$,
+$2x^2+x^2(1-x)^2-1=x^4-2x^3+3x^2-1$.  The definition of $\beta_\kappa$ is the
+$\kappa$-form of Lemma~\ref{lem:constants}(c): with
+$r(x)=(1-\beta)h(x^2)+\beta h(q(x))-x\,h(x)/m$ one has $r(x_\kappa)=0$ for
+every $\beta$ by (c) and the definition of $m_\kappa$, while
+$r'(x)=(1-\beta)2xh'(x^2)+\beta h'(q)q'-(h(x)+xh'(x))/m$ and, using
+$m=px$, $r'(x_\kappa)=0$ is $(1-\beta)a'+\beta b'=(h'(x)+h(x)/x)/p$, whose
+unique solution is $\beta_\kappa$ (the certificate records
+$b'-a'\neq0$ and the residual of this equation containing $0$).  (d) is the
+\texttt{candidate} block of the artifact of Theorem~\ref{thm:scaled-AB},
+which recomputes the balls through the pinned module
+\path{uc/liu9_cprime_frontier.py} and compares them field by field, as
+strings, with the pinned frontier artifact.
+\end{proof}
+
+\begin{theorem}[\lbl{proved} with \lbl{machine-verified} strata]\label{thm:scaled-AB}
+At $\kappa=\tfrac{16}{25}$ and the constants of Lemma~\ref{lem:scaled-constants},
+$A(s,t)\ge0$ and $B(s,t)\ge0$ for all $(s,t)\in[0,1]^2$.
+\cert{\path{liu9-cprime-four-fifths-ab.json}, sha256
+\hash{9812fa9f64f99b8117da7bd6d31a3dfd5458deeaaddf764355012d04645939d4},
+internal digest \hash{9a69041ae55a7d1e8e5d2fb3622753f323627a206cb18e101cd3eeabebad073e},
+module \path{uc/liu9_cprime_four_fifths_ab.py} sha256
+\hash{dbbd83a59e16ac44d48de67faef403f1318dc7fa6fb5824df5238e032691c6be};
+Arb at $400$ bits, \texttt{claim\_status} \texttt{PROVED}.  The module imports
+only parameter-free helpers from the modules of Sections~\ref{sec:twovar},
+\ref{sec:phi} and \ref{sec:mixture} and asserts their pinned hashes at run
+time, so no artifact of Table~\ref{tab:artifacts} is modified or re-derived.}
+\end{theorem}
+
+\subsection{\texorpdfstring{$A\ge0$}{A>=0}: the strata and two exact rescalings}
+
+As at $\kappa=1$, $A$ has exact zeros on $\{s=0\}\cup\{t=0\}$, at $(1,1)$ and
+at the interior point $(x,x)$, so each is handled analytically and the
+certified cover runs on the compact remainder.  The three analytic strata are
+the lemmas of Section~\ref{sec:twovar} with the new constants:
+
+\begin{lemma}[faces, strip, corner; \lbl{proved}]\label{lem:scaled-strata}
+\leavevmode
+\begin{enumerate}[label=(\alph*),nosep]
+\item $A(0,t)=A(s,0)=0$, and $A(1,t)=A(t,1)=c_0h(t)\ge0$ because
+$q(1)=1$ forces $\varphi(1)=0$.
+\item For $0<s,t\le1$, $A\ge P_2\ge st\bigl[c_0\log\frac1{st}-\frac1m\bigr]$;
+with $\varepsilon=10^{-40}$, if $\min(s,t)\le\varepsilon$ then
+$A\ge st\bigl[c_0\log\frac1\varepsilon-\frac1m\bigr]\ge0$, the bracket being
+certified $\ge0.188015777934628686818254280928$ (and
+$\log\frac1\varepsilon\in[92.1034037197618273607196581874\pm2.55\times10^{-29}]$).
+\item With $a=1-s$, $b=1-t$, $u=a+b\in(0,2\delta]$ and $\delta=10^{-36}$,
+\[
+  A\ \ge\ P_2\ \ge\ u\Bigl[\bigl(c_0-(1-\beta)\tfrac\delta2\bigr)\log\tfrac1u-\tfrac{\log2+1}{2m}\Bigr]\ \ge\ 0,
+\]
+the log coefficient being certified
+$\ge0.01963397568292172259513039546916$ and the whole bracket
+$\ge0.242173925252808763910270270764$ on $u\in(0,2\delta]$; $u=0$ is the exact
+corner zero.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Identical to Lemmas~\ref{lem:faces}, \ref{lem:strip} and \ref{lem:corner}:
+$h(0)=0$, $\pi_\kappa(0,t)=0$, $\pi_\kappa(1,t)=t$ and $q(1)=1$ give (a);
+(b) and (c) drop $\varphi\otimes\varphi\ge0$ and then involve only $P_2$,
+which is $\kappa$-free, so the estimates of Lemmas~\ref{lem:strip} and
+\ref{lem:corner} apply word for word --- note
+$(1-\beta)(1-\tfrac\delta2)-\tfrac1{2m}=c_0-(1-\beta)\tfrac\delta2$.  Only the
+numerical values of the brackets change, and with them the admissible
+$\varepsilon,\delta$ (Remark~\ref{rem:strata}).
+\end{proof}
+
+\begin{remark}[why the $\kappa=1$ strata do not transfer]\label{rem:strata}
+The face coefficient is $c_0=0.019633975683\ldots$ here against
+$0.089956574867\ldots$ at $\kappa=1$: smaller by a factor $4.58$.  Since the
+strip bracket is $c_0\log\frac1\varepsilon-\frac1m$ and $\frac1m$ moved the
+wrong way as well, positivity is ensured by
+$\varepsilon<1.1\times10^{-36}$ rather than by $\varepsilon<10^{-8}$ (the
+exact critical value is $1.4415\ldots\times10^{-36}$), and for the corner by
+$2\delta<4.4\times10^{-31}$ (critical value $4.5478\ldots\times10^{-31}$);
+we take $\varepsilon=10^{-40}$,
+$\delta=10^{-36}$.  The certified cover must therefore resolve boxes down to
+$10^{-40}$, which is what makes the rescalings of
+Lemma~\ref{lem:rescale} necessary.
+\end{remark}
+
+\begin{lemma}[two exact rescalings; \lbl{proved}, residuals \lbl{machine-verified}]\label{lem:rescale}
+Write $\Lambda(u)=h(u)/u=\log\frac1u+\mu(u)$ and
+$\mu(u)=-(1-u)\log(1-u)/u$ as in Section~\ref{sec:phi}.  Then, on $(0,1]^2$,
+with $z\log\frac1z$ read as $0$ at $z\in\{0,1\}$,
+\begin{equation}\label{eq:acheck}
+  \frac{A(s,t)}{st}=c_0\log\frac1{st}+(1-\beta)\mu(st)-\frac{\mu(s)+\mu(t)}{2m}
+  +\psi(s)\psi(t),\qquad
+  \psi(s)=\sqrt{\beta\,\Lambda(q(s))\bigl(1+\kappa(1-s)^2\bigr)},
+\end{equation}
+and, with $a=1-s$, $b=1-t$, $u=a+b>0$, $r=ab/u$, $\alpha=a/u$ and
+$W=1-st=u(1-r)$,
+\begin{multline}\label{eq:acorner}
+  \frac{A(s,t)}{u}=\Bigl[c_0+r\Bigl(\frac1m-1+\beta\Bigr)\Bigr]\log\frac1u
+  +(1-\beta)(1-r)\Bigl(\log\frac1{1-r}+\mu(W)\Bigr)\\
+  -\frac{(1-b)\alpha\bigl(\log\frac1\alpha+\mu(a)\bigr)
+  +(1-a)(1-\alpha)\bigl(\log\frac1{1-\alpha}+\mu(b)\bigr)}{2m}
+  +\frac{\varphi(s)\varphi(t)}{u}.
+\end{multline}
+In \eqref{eq:acheck} each of $\log\frac1{st}$, $\mu(st)$, $\mu(s)$, $\mu(t)$
+and $\psi$ is monotone in each variable and $\psi\ge0$; in
+\eqref{eq:acorner} $u$, $W$, $r$ are increasing in $a$ and $b$, $\alpha$ is
+increasing in $a$ and decreasing in $b$, and $\mu$ is decreasing.  Hence
+evaluating each factor at an endpoint of a rational box gives a certified
+lower bound whose loss is first order in the box width.
+\end{lemma}
+\begin{proof}
+For \eqref{eq:acheck}: $h(st)/(st)=\Lambda(st)=\log\frac1{st}+\mu(st)$ and
+\[
+  \frac{t\,h(s)+s\,h(t)}{2m\,st}=\frac{\Lambda(s)+\Lambda(t)}{2m}
+  =\frac{\log\frac1{st}+\mu(s)+\mu(t)}{2m},
+\]
+so the two logarithmic terms combine into
+$\bigl(1-\beta-\tfrac1{2m}\bigr)\log\frac1{st}=c_0\log\frac1{st}$; and
+$\varphi(s)/s=\sqrt{\beta h(q(s))/s^2}=\sqrt{\beta\Lambda(q(s))\,q(s)/s^2}=\psi(s)$
+because $q(s)/s^2=1+\kappa(1-s)^2$.  For \eqref{eq:acorner}: $W=1-st=u-ab=u(1-r)$,
+and $h(st)=h(W)=W\bigl(\log\frac1W+\mu(W)\bigr)$ with
+$\log\frac1W=\log\frac1u+\log\frac1{1-r}$; likewise $a=\alpha u$ and
+$b=(1-\alpha)u$ give $h(a)=\alpha u\bigl(\log\frac1u+\log\frac1\alpha+\mu(a)\bigr)$
+and $h(b)=(1-\alpha)u\bigl(\log\frac1u+\log\frac1{1-\alpha}+\mu(b)\bigr)$.
+Collecting the coefficient of $\log\frac1u$ and using
+$(1-b)\alpha+(1-a)(1-\alpha)=1-\frac{2ab}u=1-2r$ gives
+$(1-\beta)(1-r)-\frac{1-2r}{2m}=c_0+r\bigl(\frac1m-1+\beta\bigr)$.  The
+monotonicity claims are elementary ($\mu$ is decreasing by
+Lemma~\ref{lem:phi-L0}(d), $\Lambda$ is decreasing, $q$ is increasing by
+Lemma~\ref{lem:scaled-constants}(a), and $r,\alpha,W$ are the stated
+monotone rational functions).  Both identities are re-verified in Arb at
+$162$ rational points each, with maximal absolute residuals
+$[2.26243479907\times10^{-68}\pm9.71\times10^{-81}]$ and
+$[2.34476173896\times10^{-68}\pm9.07\times10^{-81}]$ against the tolerance
+$10^{-60}$; residuals of order $10^{-68}$ are the floor imposed by the
+$10^{-70}$-wide balls of the constants.
+\end{proof}
+
+\begin{lemma}[the interior zero; \lbl{proved}, constants \lbl{machine-verified}]\label{lem:scaled-local}
+$A(x,x)=0$ and $\nabla A(x,x)=0$, the Hessian there has certified entries
+\begin{align*}
+A_{ss}=A_{tt}&\in[0.4867449106068594967113519965831782984170\pm7.29\times10^{-42}],\\
+A_{st}&\in[-0.2164476943457610740091541895992485447972\pm3.05\times10^{-41}],\\
+\lambda_{\min}&\ge\lambda:=0.2702972162610984227021978069839297536198 .
+\end{align*}
+On the box of
+radius $r_0=0.03$ around $(x,x)$ all third partials of $A$ are bounded in
+absolute value by $T_3\le11.759773900451600921106623675524$, so, with
+$C_3=2\sqrt2\,T_3$ and $\rho=3\lambda/C_3$,
+\[
+  C_3\le33.2616634809196107290529893051,\qquad
+  \rho\ge0.0243791670025300828569892124798 .
+\]
+The square
+$[\hat x-w,\hat x+w]^2$ with $w=\tfrac2{125}$ and $\hat x$ the rational cover
+centre satisfies
+\[
+  \sqrt2\,(w+\eta)\le0.0226274169979695207808270195874<\rho,
+\]
+where $\eta\le2.01\times10^{-70}$ bounds $|x-\hat x|$; hence
+$A\ge|d|^2\bigl(\tfrac\lambda2-\tfrac{C_3}6|d|\bigr)\ge0$ there, with
+certified coefficient $\ge0.00971101985906546819262825095304$.
+\end{lemma}
+\begin{proof}
+Lemma~\ref{lem:local} verbatim, once $A(x,x)=0$ and $\nabla A(x,x)=0$ are
+established.  For those: $A(s,s)=P_2(s,s)+\varphi(s)^2=r(s)$ with $r$ as in
+the proof of Lemma~\ref{lem:scaled-constants}, and $r(x)=0$,
+$r'(x)=0$ hold by Lemma~\ref{lem:scaled-constants}(c) and the definition of
+$\beta$; by symmetry of $A$, $A_s=A_t$ on the diagonal, and
+$\partial_sA(s,s)=\tfrac12r'(s)$ because $\varphi\varphi'$ is half the
+diagonal derivative of $\beta h(q)$.  The Arb enclosures of the value and of
+the two gradient components at the ball of $x$ are
+$[\pm1.19\times10^{-68}]$ and $[\pm1.42\times10^{-69}]$, which contain $0$
+and serve as consistency checks; $\varphi$ is smooth near $(x,x)$ because
+$0<q(x)<1$.  The radius $r_0=0.03$ is the largest tried for which all third
+partials of $A$ have finite Arb enclosures on the box.
+\end{proof}
+
+\begin{proof}[Proof of $A\ge0$ in Theorem~\ref{thm:scaled-AB}]
+Lemma~\ref{lem:scaled-strata}(a),(b) cover the zero faces and
+$\{\min(s,t)\le\varepsilon\}$, (c) covers $\{a+b\le2\delta\}\supseteq[1-\delta,1]^2$,
+and Lemma~\ref{lem:scaled-local} covers the local square.  The remaining set
+is the union of the $14$ exact rational rectangles cut from $[\varepsilon,1]^2$
+by the coordinates $\varepsilon<\hat x-w<\hat x+w<1-\delta<1$ minus the local
+and corner cells.  A deterministic Arb branch-and-bound accepts a box as soon
+as one of three certified lower bounds is positive: $s_{\rm lo}t_{\rm lo}$
+times the endpoint bound of \eqref{eq:acheck}, $u_{\rm lo}$ times the
+endpoint bound of \eqref{eq:acorner} (on boxes with $2-s_{\rm hi}-t_{\rm hi}>0$),
+or the centred first-order bound
+$A(\mathrm{mid})-\sup|A_s|w_s-\sup|A_t|w_t$ of Section~\ref{sec:twovar} (on
+boxes with $s_{\rm hi},t_{\rm hi}<1$); otherwise it peels the logarithmic
+near-face strip or bisects the longer side.  The run terminates with every
+box accepted: $11{,}118$ processed, $5{,}566$ accepted, $5{,}552$ split,
+maximal depth $203$, weakest certified lower bound
+$[3.3036741036710508471048126177004531186704072179034\times10^{-82}
+\pm3.11\times10^{-132}]$ on the
+box with $s_{\rm lo}=t_{\rm lo}=10^{-40}$ adjacent to the strip.  Five
+mutations each make the run fail, as required: shrinking the local stratum so
+that a nested cell still contains $(x,x)$ leaves the certified lower bound at
+$-2.5\times10^{-7}$; the same at $(1,1)$ leaves $-1.1\times10^{-36}$;
+understating $C_3$ by a factor $16$ puts it below a certified pure third
+derivative at $x$ ($2.08<2.74$); flipping the sign of the logarithmic term in
+Lemma~\ref{lem:scaled-strata}(b) makes the bracket certified negative
+($-3.4287$); and using Liu's diagonal $s^2(1+(1-s)^2)$ inside $\varphi$ makes
+$A(x,x)=-2.44\times10^{-4}$, so the local stratum cannot start.
+\end{proof}
+
+\subsection{\texorpdfstring{$\Phi\ge0$}{Phi>=0} at \texorpdfstring{$\kappa$}{kappa}, hence \texorpdfstring{$B\ge0$}{B>=0}}
+
+Keep the notation of Section~\ref{sec:phi} with $\pi$ replaced by $\pi_\kappa$:
+$g=\Lambda\circ q$, $\gamma=\log g$, $\Lambda_{ss}=\Lambda(q(s))=g(s)$,
+$\Lambda_{st}=\Lambda(\pi_\kappa(s,t))$,
+$M_\mu=\mu(q(s))+\mu(q(t))-2\mu(\pi_\kappa(s,t))$, and let
+\[
+  \kappa_{\mathrm{master}}(s,t)=(1+\kappa ab)\,\frac{\gamma(s)-\gamma(t)}{t-s}\qquad(0<s<t<1)
+\]
+be the master quantity of Lemma~\ref{lem:phi-L2} read at $\kappa$.
+
+\begin{lemma}[the $\kappa$-identities; \lbl{proved}]\label{lem:scaled-phi-id}
+\leavevmode
+\begin{enumerate}[label=(\alph*),nosep]
+\item $\pi_\kappa(s,s)\pi_\kappa(t,t)-\pi_\kappa(s,t)^2=\kappa\,s^2t^2(s-t)^2$.
+\item $M_\mu\le0$.
+\item For $0<s,t<1$, with $\delta=\kappa(s-t)^2/(1+\kappa ab)^2$ and
+$\bar\Lambda=\tfrac12(\Lambda_{ss}+\Lambda_{tt})$,
+\[
+  \Phi=\pi_\kappa(s,t)^2\Bigl[\tfrac14(\Lambda_{ss}-\Lambda_{tt})^2
+  +\tfrac12\bigl(\log(1+\delta)-M_\mu\bigr)(\Lambda_{st}+\bar\Lambda)\Bigr]
+  -\kappa\,s^2t^2(s-t)^2\Lambda_{ss}\Lambda_{tt},
+\]
+and the middle term is nonnegative.
+\item $\Phi(s,s)=0$, $\Phi(0,t)=\Phi(s,0)=0$, $\Phi(s,1)=\Phi(1,s)=h(s)^2\ge0$,
+and $\Phi$ is symmetric.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) With $a=1-s$, $b=1-t$ the claim is
+$(1+\kappa a^2)(1+\kappa b^2)-(1+\kappa ab)^2=\kappa(a-b)^2$, which is
+immediate; both sides have degree $\le4$ in each variable, and the
+certificate also checks the residual to be exactly $0$ (in $\mathbb Q$) on the
+$6\times6$ grid $s,t\in\{\tfrac17,\dots,\tfrac67\}$, which proves the identity
+outright.  (b) By (a), $\pi_\kappa(s,t)\le\sqrt{q(s)q(t)}\le\tfrac12(q(s)+q(t))$,
+and $\mu$ is decreasing and concave (Lemma~\ref{lem:phi-L0}(d)).  (c) is the
+computation of Lemma~\ref{lem:phi-L1} with $\pi_{ss}\pi_{tt}-\pi_{st}^2$ taken
+from (a), so that
+$\delta=(\pi_{ss}\pi_{tt}-\pi_{st}^2)/\pi_{st}^2=\kappa(s-t)^2/(1+\kappa ab)^2$;
+nonnegativity of the middle term uses $\log(1+\delta)\ge0$, (b) and
+$\Lambda\ge0$.  The identity is re-verified in Arb at the $14$ reference
+points of Section~\ref{sec:phi} with maximal absolute residual
+$[9.67326028949\times10^{-120}\pm4.07\times10^{-132}]$ against the tolerance
+$10^{-100}$ (this identity carries no constants, so the $10^{-68}$ floor of
+Lemma~\ref{lem:rescale} does not apply).  (d) $\pi_\kappa(0,t)=0$,
+$\pi_\kappa(s,1)=s$, $q(1)=1$ and $h(0)=h(1)=0$.
+\end{proof}
+
+\begin{lemma}[master condition at $\kappa$; \lbl{proved}]\label{lem:scaled-master}
+For $0<s<t<1$,
+\[
+  \Phi(s,t)\ \ge\ s^2t^2(s-t)^2g(s)g(t)\Bigl(\frac{\kappa_{\mathrm{master}}^2}4-\kappa\Bigr).
+\]
+Hence $\kappa_{\mathrm{master}}\ge2\sqrt\kappa=\tfrac85$ implies $\Phi\ge0$, and
+$\kappa_{\mathrm{master}}\ge2$ implies
+$\Phi\ge\tfrac9{25}s^2t^2(s-t)^2g(s)g(t)$.
+\end{lemma}
+\begin{proof}
+Drop the middle term of Lemma~\ref{lem:scaled-phi-id}(c).  With
+$x=\tfrac12(\gamma(s)-\gamma(t))>0$,
+$g(s)-g(t)=2\sqrt{g(s)g(t)}\sinh x$, so the first term is
+$s^2t^2(1+\kappa ab)^2g(s)g(t)\sinh^2x$ and the bracket becomes
+$s^2t^2(s-t)^2g(s)g(t)\bigl[\bigl((1+\kappa ab)\sinh x/(t-s)\bigr)^2-\kappa\bigr]$;
+now $\sinh x\ge x$ gives $(1+\kappa ab)\sinh x/(t-s)\ge\kappa_{\mathrm{master}}/2$.  Finally
+$\tfrac{2^2}4-\tfrac{16}{25}=\tfrac9{25}$.
+\end{proof}
+
+\begin{lemma}[derivative bounds at $\kappa$; \lbl{proved}]\label{lem:scaled-N}
+$|\gamma'(x)|=-\log(1-q(x))\,q'(x)/\bigl(q(x)h(q(x))\bigr)$, and
+\begin{enumerate}[label=(N\arabic*),start=0,nosep]
+\item for $0<x\le x_0$ with $x_0\le\tfrac13$ and $x_0<e^{-(1+\log(1+\kappa))/2}$,
+\[
+  |\gamma'(x)|\ \ge\ \nu_0(x_0):=\frac{2\bigl(1+\kappa(1-3x_0)\bigr)}
+  {(1+\kappa)\,x_0\bigl(2\log\frac1{x_0}+1-\log(1+\kappa)\bigr)};
+\]
+\item for $x_1\le x<1$, with $\ell_1=\log\frac1{1-q(x_1)}$,
+$|\gamma'(x)|\ge\nu_1(x_1):=\dfrac{q'(x_1)}{1-q(x_1)}\cdot\dfrac{\ell_1}{\ell_1+1}$.
+\end{enumerate}
+Moreover $N(x)=-\log(1-q(x))\,q'(x)$ is positive and strictly increasing on
+$(0,1)$, so for $[l,r]\subset(0,1)$,
+$\inf_{[l,r]}|\gamma'|\ge N(l)\big/\bigl(q(r)\max_{[q(l),q(r)]}h\bigr)$.
+At $x_0=\tfrac18$ and $x_1=\tfrac78$ the two bounds are certified
+$\nu_0\in[2.9283853862304257001\pm3.12\times10^{-20}]$ and
+$\nu_1\in[4.3347701765338265363\pm2.86\times10^{-20}]$.
+\end{lemma}
+\begin{proof}
+The closed form is the chain rule with Lemma~\ref{lem:phi-L0}(a).
+(N0) $-\log(1-q)\ge q$, and $q'(x)=2x\bigl(1+\kappa(1-x)(1-2x)\bigr)\ge2x\bigl(1+\kappa(1-3x_0)\bigr)$
+for $x\le x_0$ because $(1-x)(1-2x)\ge1-3x\ge1-3x_0$, the last factor being
+positive since $x_0\le\tfrac13$.  For the denominator, $\mu\le1$ gives
+$h(q)\le q(\log\frac1q+1)$; also $q(x)\le(1+\kappa)x^2$ and
+$u\mapsto u(\log\frac1u+1)$ is increasing on $(0,1)$, so
+$h(q(x))\le(1+\kappa)x^2\bigl(2\log\frac1x+1-\log(1+\kappa)\bigr)$.  Hence
+$|\gamma'(x)|\ge q'/h(q)\ge2\bigl(1+\kappa(1-3x_0)\bigr)/\bigl((1+\kappa)x(2\log\frac1x+1-\log(1+\kappa))\bigr)$,
+and $x\mapsto x\bigl(2\log\frac1x+1-\log(1+\kappa)\bigr)$ is increasing for
+$x<e^{-(1+\log(1+\kappa))/2}$ (its derivative is
+$2\log\frac1x-1-\log(1+\kappa)$), so the denominator is at most its value at
+$x_0$.  Both hypotheses on $x_0$ are load-bearing and are asserted for the
+live $x_0=\tfrac18$; dropping the step $q\le(1+\kappa)x^2$ is one of the
+mutations below.  (N1) $q\le1$ and $h(q)=h(1-q)\le(1-q)(\log\frac1{1-q}+1)$
+give $|\gamma'|\ge\ell q'/\bigl((1-q)(\ell+1)\bigr)$ with
+$\ell=\log\frac1{1-q}$; $q''>0$ by Lemma~\ref{lem:scaled-constants}(a), so
+$q'$ increases and $q'\ge q'(x_1)$, while $\ell/(\ell+1)$ increases in $\ell$
+and $\ell$, $1/(1-q)$ increase in $x$.  The monotone-$N$ statement is
+Lemma~\ref{lem:phi-L45}(L5) with $q$ in place of $\pi_d$: $N$ is a product of
+positive increasing functions by Lemma~\ref{lem:scaled-constants}(a).
+\end{proof}
+
+\begin{theorem}[\lbl{proved} with a \lbl{machine-verified} finite cover]\label{thm:scaled-phi}
+$\Phi\ge0$ on $[0,1]^2$ at $\kappa=\tfrac{16}{25}$; quantitatively
+$\Phi\ge\tfrac9{25}s^2t^2(s-t)^2g(s)g(t)$ for $0<s,t<1$.  Consequently
+$B=\beta\bigl(K_\kappa(s,t)-\sqrt{h(q(s))h(q(t))}\bigr)\ge0$ on $[0,1]^2$.
+\end{theorem}
+\begin{proof}
+By Lemmas~\ref{lem:scaled-master} and \ref{lem:scaled-phi-id}(d) it suffices
+to certify $\kappa_{\mathrm{master}}\ge\theta:=2$ on the open triangle $0<s<t<1$; note
+$\theta=2>\tfrac85=2\sqrt\kappa$, which is checked in Arb before the cover
+starts.  The two cell bounds are those of Theorem~\ref{thm:phi} with the
+factor $(1+ab)$ replaced by $(1+\kappa ab)$ and with $\nu_0,\nu_1$, (L5) of
+Lemma~\ref{lem:scaled-N}: for a rational cell
+$[s_1,s_2]\times[t_1,t_2]$,
+\begin{align*}
+  \text{(D)}\quad&\kappa_{\mathrm{master}}\ge\bigl(1+\kappa(1-s_2)(1-t_2)\bigr)\inf_{[s_1,t_2]\cap(0,1)}|\gamma'|,\\
+  \text{(Q)}\quad&\kappa_{\mathrm{master}}\ge\bigl(1+\kappa(1-s_2)(1-t_2)\bigr)\frac{\gamma(s_2)-\gamma(t_1)}{t_2-s_1}
+\end{align*}
+(the latter when $s_2<t_1$).  Starting from $[0,1]^2$, a cell is accepted when
+the lower endpoint of the Arb enclosure of (D) or (Q) exceeds $\theta$,
+discarded when $s_1\ge t_2$, and bisected along its longer side otherwise.
+The run terminates: $6{,}912$ cells processed, $300$ accepted by (D), $3{,}150$
+by (Q), $3{,}462$ split, $13$ discarded, maximal depth $19$, minimum certified
+bound $[2.00000186003165250686098648488\pm2.78\times10^{-30}]>\theta$ (on the
+cell $s\in[\tfrac{79}{256},\tfrac5{16}]$, $t\in[\tfrac{43}{128},\tfrac{87}{256}]$
+at depth $16$).  For $B$: $\varphi(s)\varphi(t)=\beta\sqrt{h(q(s))h(q(t))}$, so
+$B=\beta\bigl(K_\kappa-\sqrt{h(q(s))h(q(t))}\bigr)$, and $\Phi\ge0$ with
+$h\ge0$ gives $K_\kappa\ge\sqrt{h(q(s))h(q(t))}$; $\beta>0$ is certified.
+Five mutations are caught.  Raising $\theta$ to $\tfrac{23}{10}$ exhausts the
+cell budget and is refuted by
+$\kappa_{\mathrm{master}}(\tfrac{501}{1000},\tfrac{501001}{1000000})\in[2.275086765014144819939496\pm4.33\times10^{-25}]<\tfrac{23}{10}$,
+so the cover cannot be tightened past the true minimum.  Dropping the factor
+$(1+\kappa ab)$ at $\theta=2$ also exhausts the budget and is refuted by
+$|\gamma'(\tfrac{54}{125})|\in[1.926050003455288550151689\pm2.56\times10^{-25}]<2$,
+so the factor is load-bearing.  Using Liu's $\kappa=1$ identity, or
+$\tfrac12$ in place of $\tfrac14$ in
+Lemma~\ref{lem:scaled-phi-id}(c), leaves certified nonzero residuals at
+$(\tfrac13,\tfrac23)$ ($5.6\times10^{-3}$ and $-3.2\times10^{-2}$).  Finally,
+omitting the step $q\le(1+\kappa)x^2$ from (N0) yields at $x_0=\tfrac18$ the
+claim $[4.802552033417898148112837\pm1.3\times10^{-28}]$, which is certified
+\emph{above} the exact
+$|\gamma'(\tfrac18)|\in[3.249243440498020263844499\pm2.23\times10^{-25}]$
+(the sound $\nu_0(\tfrac18)$ is $2.9283\ldots$), so the mutant bound is false.
+\end{proof}
+
+\begin{remark}
+The numerical minimum of $\kappa_{\mathrm{master}}$ at this $\kappa$ is $\approx2.275$ near
+$s=t\approx0.5015$ (\lbl{computational-evidence}), against the requirement
+$2\sqrt\kappa=1.6$: the margin is $42\%$, wider than the $20\%$ at $\kappa=1$,
+which is why $\theta=2$ suffices with a cover four times smaller than the one
+of Theorem~\ref{thm:phi}.
+\end{remark}
+
+\subsection{The mixture inequality, and the constant}
+
+\begin{theorem}[mixture theorem at $\kappa=\tfrac{16}{25}$; \lbl{proved}, identities \lbl{machine-verified}]\label{thm:scaled-mixture}
+Let $\Gamma=\int\nu_u\otimes\nu_u\,dP(u)$ be a conditionally i.i.d.\ coupling
+of $\mu=\int\nu_u\,dP(u)$ and $M=\pr{\mu}{x}$.  Then
+\[
+  (1-\beta)\pr{\mu\otimes\mu}{h(xy)}+\beta\int\pr{\nu_u\otimes\nu_u}{K_\kappa}\,dP(u)
+  \ \ge\ \frac{M}{m}\,\pr{\mu}{h}.
+\]
+\end{theorem}
+\begin{proof}
+The proof of Theorem~\ref{thm:mixture} is used unchanged.  Its identities
+(I), (II), (III) are statements in the algebra of pairings: (I) uses only
+$\int dP=1$; (II) uses only the definition of $P_2$ and the product rule
+$\pr{\mu\otimes\mu}{y\,h(x)+x\,h(y)}=2M\pr{\mu}{h}$; (III) uses only
+bilinearity and the product rule for $\varphi\otimes\varphi$.  None mentions
+$\pi$, so all three hold verbatim with $K_\kappa$, $\varphi$, $A$, $B$ of
+\eqref{eq:kappa-kernels} and the constants of
+Lemma~\ref{lem:scaled-constants}; Fubini applies because every kernel is
+bounded and continuous on the compact square (Lemma~\ref{lem:L0} applies to
+$\pi_\kappa$: $1-\pi_\kappa(s,t)=a(1-b)+b(1-a)+ab(1-\kappa+\kappa(a+b-ab))\ge0$
+for $\kappa\le1$, and $\pi_\kappa\ge0$).  The resulting right-hand side is
+$\iint\pr{\nu_u\otimes\nu_v}{A}\,dP\,dP+\int\pr{\nu_u\otimes\nu_u}{B}\,dP+\Var_P(F_U)$,
+which is $\ge0$ by Theorem~\ref{thm:scaled-AB} integrated against positive
+product measures, plus a variance.  $R\ge0$ is not used, and is not proved
+here.  The certificate re-verifies the whole decomposition in Arb at $20$
+seeded finite mixtures with this kernel (up to $5$ components, up to $4$
+atoms each, atoms at $0$ and $1$ included; maximal absolute residual
+$[3.87683731211\times10^{-68}\pm4.00\times10^{-80}]$ against the tolerance
+$10^{-60}$), and catches two mutations of the identity --- dropping the
+variance, and replacing $\sum_kw_k\pr{\nu_k\otimes\nu_k}{B}$ by
+$\sum_{k,l}w_kw_l\pr{\nu_k\otimes\nu_l}{B}$ --- each leaving a certified
+nonzero residual already at two components ($7.4\times10^{-3}$ and
+$-1.9\times10^{-3}$).
+\end{proof}
+
+\begin{theorem}[\lbl{proved}]\label{thm:uc45}
+Theorem~\ref{thm:D} holds.
+\end{theorem}
+\begin{proof}
+$f_{4/5}(x)=\tfrac45x(1-x)$ is admissible: $\tfrac45x(1-x)\le x$ and
+$\tfrac45x(1-x)\le1-x$ reduce to $\tfrac45(1-x)\le1$ and $\tfrac45x\le1$.  By
+the computation in Section~\ref{sec:prop3}(ii),
+$\Pi^{(2,4/5)}_{s,t}(0,0)=\pi_{16/25}(1-s,1-t)$, so $K_{f_{4/5}}=K_\kappa$
+with $\kappa=\tfrac{16}{25}$.  Theorem~\ref{thm:scaled-mixture} is
+hypothesis~\eqref{eq:hyp-mix} at $(\beta,m)=(\beta_{16/25},m_{16/25})$, and
+$0<\beta<1$, $0<m<1$ are certified in
+Lemma~\ref{lem:scaled-constants}(d).  Proposition~\ref{prop:route} then gives
+the constant $1-m=c''$.  The enclosure of $c''$ and of $c''-c'$ are the
+\texttt{candidate} and \texttt{consequence} blocks of the artifact of
+Theorem~\ref{thm:scaled-AB}, the difference being computed against the
+enclosure of $c'$ recomputed there from the pinned frontier module; it is
+certified positive.
+\end{proof}
+
+\begin{remark}[what is and is not claimed]\label{rem:scaled-scope}
+$c''$ improves on $c'$ by $1.366\times10^{-4}$ and on
+$c^\ast\approx0.3823455$ of \cite{Yu23,Cam22} by $5.0\times10^{-4}$.  Three
+limits of the statement.  (i) No optimality in $\lambda$ is claimed:
+$\lambda=\tfrac45$ is the value at which the endpoint constant of the family
+was found to exceed $c'$ while the necessary face condition $c_0>0$ still
+holds, and the certificate is for that value only.  Each $\lambda$ needs its
+own root, its own $\beta$, and its own $\varepsilon,\delta,r_0$; the analytic
+strata degrade as $c_0\downarrow0$.  (ii) Lemma~\ref{lem:sharp} transfers:
+with $\mu_w=(1-w)\delta_0+w\delta_{x}$ and $\Gamma=\mu_w\otimes\mu_w$ the
+inequality of Theorem~\ref{thm:scaled-mixture} is an equality for every $w$,
+because $q(x)=1-x^2$ makes the bracket $\beta$-free exactly as at
+$\kappa=1$; so $c''$ is the best constant \emph{this} protocol pair at
+$\beta_{16/25}$ can give, and a further improvement again requires a
+different protocol.  (iii) Nothing here bears on the conjectured value
+$\tfrac12$.
+\end{remark}
+
 \section{Verification: artifacts, replay, labels, scope}\label{sec:verification}
 
 \paragraph{Artifacts.}
-Table~\ref{tab:artifacts} lists the seven machine-checked artifacts, all
+Table~\ref{tab:artifacts} lists the eight machine-checked artifacts, all
 under \path{math/uc/verification/results/}, produced by the modules under
 \path{math/uc/}.  Each artifact is a JSON document with a
 \texttt{claim\_status}, an internal digest \texttt{report\_sha256} (the SHA-256
 of the canonical compact serialisation of the document with that field
 omitted or blanked, in the module's declared scope), and, where the module
 records it, the SHA-256 of the module source that produced it.  The
-artifacts of Sections~\ref{sec:lift} and \ref{sec:mixture} pin the file
-hashes and claim statuses of the artifacts they depend on and fail if they
-change; the audit artifact pins the certificate it audits.
+artifacts of Sections~\ref{sec:lift}, \ref{sec:mixture} and \ref{sec:scaled}
+pin the file hashes and claim statuses of the artifacts and modules they
+depend on and fail if they change; the audit artifact pins the certificate it
+audits.  The first seven form the $c'$ chain; the eighth is the $c''$
+certificate, which consumes the first seven only through parameter-free
+helper functions and through the frontier artifact
+\path{liu9-cprime-frontier.json} (sha256
+\hash{81ee7a5a76c45c0229b750babd32f2a77aebcdf95f24f2df1fa8af7899257bb0},
+module \path{uc/liu9_cprime_frontier.py} sha256
+\hash{fcacffc1c33662f12068c4a06054304ba344f56508090e1625178264ac49c8b3}),
+which records the candidate constants and, independently of $c''$, proves
+that $\beta^\ast$ uniquely maximises the constant obtainable from the
+$\kappa=1$ protocol pair.
 
 \begin{table}[p]
 \centering\scriptsize
@@ -1136,10 +1732,15 @@ artifact (module) & claim; status\\
 \multicolumn{2}{@{}l@{}}{\quad internal \texttt{b108b781224dff601ffcf3f562703d3b620e7da6d89cf6d000b6ccbd06a4773b}}\\
 \multicolumn{2}{@{}l@{}}{\quad module \texttt{3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab}}\\
 \addlinespace
+\path{liu9-cprime-four-fifths-ab.json} (\path{liu9_cprime_four_fifths_ab.py}) & $A\ge0$, $B\ge0$ at $\kappa=\tfrac{16}{25}$, Theorem~\ref{thm:scaled-AB}; \texttt{PROVED}\\
+\multicolumn{2}{@{}l@{}}{\quad file \texttt{9812fa9f64f99b8117da7bd6d31a3dfd5458deeaaddf764355012d04645939d4}}\\
+\multicolumn{2}{@{}l@{}}{\quad internal \texttt{9a69041ae55a7d1e8e5d2fb3622753f323627a206cb18e101cd3eeabebad073e}}\\
+\multicolumn{2}{@{}l@{}}{\quad module \texttt{dbbd83a59e16ac44d48de67faef403f1318dc7fa6fb5824df5238e032691c6be}}\\
+\addlinespace
 \bottomrule
 \end{tabular}
 \caption{The certificate chain.  For each artifact: SHA-256 of the file, the
-internal digest, and the module source.  All $21$ values are pinned in
+internal digest, and the module source.  All $24$ values are pinned in
 \texttt{PROGRESS.md} and asserted by the replay driver.}\label{tab:artifacts}
 \end{table}
 
@@ -1148,15 +1749,16 @@ From \path{math/},
 \begin{center}
 \texttt{nice -n 19 ./.venv/bin/python -I -B uc/verification/replay\_h2\_chain.py}
 \end{center}
-re-runs each of the seven modules twice from the repository root under the
+re-runs each of the eight modules twice from the repository root under the
 same interpreter, requires every run to reproduce the on-disk artifact byte
 for byte, recomputes the three hashes of every artifact from disk in the
 module's own canonicalisation, checks the cross-artifact pins, and asserts
 every hash against the values pinned in the repository ledger
-\path{PROGRESS.md} (which contains the same $21$ values as
+\path{PROGRESS.md} (which contains the same $24$ values as
 Table~\ref{tab:artifacts}); the exit status is nonzero on any mismatch.
 The modules use python-flint (Arb ball arithmetic \cite{Joh17}; $400$ bits
-for the certificates of Sections~\ref{sec:twovar}--\ref{sec:mixture} and the
+for the certificates of Sections~\ref{sec:twovar}--\ref{sec:mixture},
+Section~\ref{sec:scaled} and the
 audit, $480$ for the reduction, $320$ for its independent re-derivation) and
 sympy, single-threaded; the constants are
 never re-rounded through floating point, and the sole external inputs are
@@ -1164,24 +1766,36 @@ the two audited transcriptions \path{uc/liu9_objective.py} (Liu's objective)
 and \path{uc/liu9_binding.py} (his equations (87)--(90)), both pinned by the
 lift and mixture artifacts.  Each module carries mutations --- deliberate
 errors in the statement or the certificate --- and refuses to certify when
-any of them is active; all $42$ mutations across the chain fire.
+any of them is active; all $54$ mutations across the chain fire ($42$ for
+$c'$, $12$ for $c''$: five for $A$, five for $\Phi$, two for the mixture
+identity).
 
 \paragraph{What is proved and what is not.}
 Theorems~\ref{thm:reduction}, \ref{thm:twovar}, \ref{thm:phi},
-\ref{thm:lift}, \ref{thm:mixture} are \lbl{proved} with
+\ref{thm:lift}, \ref{thm:mixture}, \ref{thm:scaled-AB},
+\ref{thm:scaled-phi} and \ref{thm:scaled-mixture} are \lbl{proved} with
 \lbl{machine-verified} finite components (identities, enclosures, covers);
-Theorem~\ref{thm:uc} is \lbl{proved} by the elementary argument of
-Section~\ref{sec:prop3}; Theorem~\ref{thm:value} is
-\lbl{machine-verified}.  Two blank-context adversarial reviews (one of the
+Proposition~\ref{prop:route} and Theorems~\ref{thm:uc}, \ref{thm:uc45} are
+\lbl{proved} by the elementary argument of
+Section~\ref{sec:prop3}; Theorem~\ref{thm:value} and the enclosures of
+Lemma~\ref{lem:scaled-constants}(d) are
+\lbl{machine-verified}.  Three blank-context adversarial reviews (one of the
 $\Phi$ certificate, one of the lift and mixture artifacts and of the
-argument of Section~\ref{sec:prop3}) found no soundness defect in the final
+argument of Section~\ref{sec:prop3}, one of the $\kappa=\tfrac{16}{25}$
+certificate) found no soundness defect in the final
 versions; the first version of the lift artifact was refuted by the
-reviewer at the truncated constants (Remark~\ref{rem:exact}) and repaired.
-The result has not been refereed outside the repository; that is recorded
+reviewer at the truncated constants (Remark~\ref{rem:exact}) and repaired,
+and the third review replaced one mutation of the $c''$ certificate that
+rejected a hypothesis rather than falsifying a claim --- the N0 mutation of
+Theorem~\ref{thm:scaled-phi} is the repaired one, and the two hypotheses on
+$x_0$ in Lemma~\ref{lem:scaled-N}(N0) are recorded separately as guards.
+Neither result has been refereed outside the repository; that is recorded
 as the adopted next step.  Nothing here concerns the conjectured value
-$\tfrac12$: Lemma~\ref{lem:sharp} shows that $c'$ is the best constant this
-particular pair of protocols at $\beta^\ast$ can give, and improving it
-requires a different protocol family.
+$\tfrac12$: Lemma~\ref{lem:sharp} and Remark~\ref{rem:scaled-scope}(ii) show
+that $c'$ and $c''$ are the best constants their respective protocol pairs
+can give, so each further improvement requires another protocol.  In
+particular the improvement $c'\to c''$ was obtained by moving inside the
+family $f_\lambda$, not by any sharpening of the analysis at $\lambda=1$.
 
 \paragraph{Why interval subdivision alone could not have closed
 Hypothesis~2.}
@@ -1190,7 +1804,7 @@ that touches zero cannot be proved nonnegative by bisection at any depth.
 The stratification of Section~\ref{sec:twovar} handles the zero by exact
 algebra plus a Taylor bound, and the identity of Section~\ref{sec:phi}
 converts the two-variable $B\ge0$, which vanishes on the entire diagonal
-(and on both axes), into the one-variable condition $\kappa\ge2$ with a
+(and on both axes), into the one-variable condition $\kappa_{\mathrm{master}}\ge2$ with a
 uniform margin.  Both are
 what makes the dimension-free reduction of Section~\ref{sec:reduction}
 usable: Hypothesis~2, a nine-parameter statement, and its general-measure

@@ -1,7 +1,0 @@
-CKPT GATE_Z {"live_l1": 113.66562530936517, "frozen_l1": 113.66562530936552, "l1_agreement": 3.552713678800501e-13, "live_wmax": 4.640574461822501, "frozen_wmax": 4.640574461822503, "max_abs_grad_lo_dev": 1.199040866595169e-14, "max_abs_grad_hi_dev": 1.7763568394002505e-15}
-CKPT width_table_1_1 {"widths_sorted": [{"coord": 0, "width": 4.640574461822501, "share": 0.040826542318244334}, {"coord": 8, "width": 4.640570489745932, "share": 0.04082650737296903}, {"coord": 9, "width": 4.007578494860533, "share": 0.03525761182374228}, {"coord": 16, "width": 4.007520575213402, "s
-CKPT term_attribution_1_2 {"R_branches_detail": {"R_comp[0,3]": {"candidate_lows": [0.24530643888350231, 0.24530642754901422, 0.24530642751181178], "argmin": 2, "possible_minimizers": [0, 1, 2], "zero_possible": false, "candidate_interval_spans": [3.6132387470910743e-07, 3.8251867126581907e-07, 3.82592781
-CKPT branch_straddle_1_3 {"R_comp[0,3]": {"n_possible_minimizers": 3, "zero_possible": false, "max_candidate_span": 3.825927815115371e-07}, "R_comp[1,3]": {"n_possible_minimizers": 3, "zero_possible": false, "max_candidate_span": 3.3618547615188454e-07}, "R_comp[2,3]": {"n_possible_minimizers": 3, "zero_
-CKPT verdict {"branch": "SPREAD \u2014 QUANTIFIED OBSTRUCTION", "k_star_90pct": 36, "width_min": 0.6639861348561744, "width_max": 4.640574461822501, "n_ge_1pct_each": 40, "implied_subboxes_full": 1.5484423193682052e+67, "implied_subboxes_mild_half_reading": 3.935025183360591e+33, "obstruction
-CKPT done {"elapsed_total": 158.74476504325867}
-DONE SPREAD — QUANTIFIED OBSTRUCTION

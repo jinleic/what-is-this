@@ -1,27 +1,24 @@
 {
   "schema_version": 1,
   "campaign": "quant-frontier-2026-08-29",
-  "updated_at": "2026-09-03T10:35:00+00:00",
+  "updated_at": "2026-09-04T01:47:12Z",
   "summary": {
     "independent_wave_one_directions": 12,
     "wave_one_selection_trials": 66,
     "initial_validation_passes": 2,
     "final_validated_or_deployable_candidates": 0,
     "frozen_certified_descriptive_mechanisms": 1,
-    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. Eight scripts/campaign.py campaigns have closed with terminal verdicts (6 FROZEN-NEGATIVE, 1 FROZEN-CERTIFIED, 1 FROZEN-INCONCLUSIVE) over seven distinct mechanisms; every other registry entry is falsified, inconclusive, blocked, invalidated, or ineligible. Weekday-participation-premium passed its frozen 2024H1 primary and 2024H2 replication on BTCUSDT and ETHUSDT (descriptive participation regularity, not alpha). utc-2100-2300-net-premium (cycle 3) was falsified on 2020-2021 by its net-return bootstrap gate. perp-cross-section-daily-reversal (cycle 4, the first full 652-symbol USDT-perpetual cross-section channel) was falsified on 2022-2023 with all four gates false: net spread -5.22 bps/date, gross +4.77 bps insignificant, prior-day losers continued to underperform. Post-policy alpha spent 0.04 of 0.05. Public collectors remain active only for separately frozen future mechanisms.",
+    "final_conclusion": "No explored strategy supports a prospective alpha or capital-deployment claim. Ten scripts/campaign.py campaigns have closed with terminal verdicts (8 FROZEN-NEGATIVE, 1 FROZEN-CERTIFIED, 1 FROZEN-INCONCLUSIVE) over seven mechanism families and six upstream data channels; every other registry entry is falsified, inconclusive, blocked, invalidated, or ineligible. Weekday-participation-premium passed its frozen 2024H1 primary and 2024H2 replication on BTCUSDT and ETHUSDT (descriptive participation regularity, not alpha). utc-2100-2300-net-premium (cycle 3) was falsified on 2020-2021 by its net-return bootstrap gate. perp-cross-section-daily-reversal (cycle 4, the first full 652-symbol USDT-perpetual cross-section channel) was falsified on 2022-2023 with all four gates false: net spread -5.22 bps/date, gross +4.77 bps insignificant, prior-day losers continued to underperform. Post-policy alpha spent 0.04 of 0.05. Public collectors remain active only for separately frozen future mechanisms.",
     "historical_confirmation_is_not_blind": true,
     "genuine_forward_start": "2026-08-29",
     "focused_directions": 4,
     "active_prospective_collectors": 2,
-    "terminal_campaigns": {
-      "total": 8,
-      "frozen_negative": 6,
-      "frozen_certified": 1,
-      "frozen_inconclusive": 1,
-      "distinct_mechanisms": 7,
-      "source": "quant-trading/explorations/campaigns/README.md"
-    },
-    "forty_percent_disposition": ""
+    "terminal_campaigns": 10,
+    "forty_percent_disposition": "",
+    "mechanism_families": 7,
+    "distinct_upstream_channels": 6,
+    "campaigns_producing_a_return_series": 4,
+    "program_negative_published_utc": "2026-09-04T01:40:31Z"
   },
   "evidence_ranking": [
     {
@@ -240,7 +237,8 @@
       "prerequisite": "None for the frozen continuation screen; it is complete and must not be extended or rescued.",
       "mechanism": "Post-onset BTC/ETH continuation in forceOrder pressure direction after a 300-second same-symbol quiet period.",
       "first_gate": "Twenty complete onsets with per-asset, per-side, and block minima; then six registered 5m/15m continuation gates.",
-      "current_state": "falsified at the earliest registered stop: all sample conditions met and all six gates were false"
+      "current_state": "falsified at the earliest registered stop: all sample conditions met and all six gates were false",
+      "superseded_by": "program_negative.md - mechanism selection is closed; these directions are not to be opened"
     },
     {
       "rank": 2,
@@ -248,7 +246,8 @@
       "prerequisite": "None for the frozen same-day screen; any new test needs a separately preregistered mechanism and event-count stop.",
       "mechanism": "Dealer-mirror taker-flow gamma versus immediately following non-overlapping 15-minute realized volatility.",
       "first_gate": "At least 1,000 GEX-computable trades and 12 complete asset-block transitions with per-asset and per-sign minima, within a 90-minute hard cap.",
-      "current_state": "inconclusive at the hard cap: 10/12 transitions; three of four descriptive gates false; no week-long wait or promotion"
+      "current_state": "CLOSED FROZEN-NEGATIVE by the owner-authorized event-stop trial (campaign 20260902T095715Z_1772ff9e_65cee1db82fa, 2026-09-02): all four registered gates false, decision.no_returns=true, pooled n=15, spearman +0.1536 against a registered threshold of <= -0.25 (sign inverted). Supersedes the earlier \"inconclusive at the hard cap\" state. Any GEX successor is additionally BLOCKED: collector-audit-20260904.json shows the option ticker channel is not subscribed and open_interest/greeks exist only in ticker records.",
+      "superseded_by": "program_negative.md - mechanism selection is closed; these directions are not to be opened"
     },
     {
       "rank": 3,
@@ -256,7 +255,8 @@
       "prerequisite": "Lawful independent 2020-2024 OKX spot, perpetual, signed-funding, fee, collateral-haircut, and settlement history.",
       "mechanism": "Cross-venue funding term structure with preregistered collateral rebalancing, gross<=1x NAV, and independent venue collateral.",
       "first_gate": "Positive standalone cash-benchmark excess at 2x costs with zero margin calls and both venues independently reconciled.",
-      "current_state": "blocked: entry-and-hold and 24h retarget are falsified; Binance-only 168h and 720h margins are +0.12% and +0.30%, but the required OKX conjunct is unavailable"
+      "current_state": "blocked: entry-and-hold and 24h retarget are falsified; Binance-only 168h and 720h margins are +0.12% and +0.30%, but the required OKX conjunct is unavailable",
+      "superseded_by": "program_negative.md - mechanism selection is closed; these directions are not to be opened"
     },
     {
       "rank": 4,
@@ -264,7 +264,8 @@
       "prerequisite": "Lawful point-in-time adjusted prices, delistings, fixed universe, and causal next-day execution.",
       "mechanism": "Long-horizon cross-asset trend without selecting recent winners or reusing the contaminated local test.",
       "first_gate": "Benchmark-relative mean excess and drawdown improvement on a prospective forward window; zero test-selected parameters.",
-      "current_state": "not started in the focused campaign"
+      "current_state": "not started in the focused campaign",
+      "superseded_by": "program_negative.md - mechanism selection is closed; these directions are not to be opened"
     },
     {
       "rank": 5,
@@ -272,7 +273,8 @@
       "prerequisite": "Actual ETF/futures wrapper with total returns, turnover, borrow, fees, tax, and capacity.",
       "mechanism": "Test whether the academic factor timing result survives implementation.",
       "first_gate": "Positive mean excess versus the actual wrapper at 2x costs; no inference from Ken French factor returns alone.",
-      "current_state": "not started in the focused campaign"
+      "current_state": "not started in the focused campaign",
+      "superseded_by": "program_negative.md - mechanism selection is closed; these directions are not to be opened"
     }
   ],
   "focused_campaign": {
@@ -592,6 +594,96 @@
       "open_owner_decision": "The policy also states that closed families are never tuned, extended, re-windowed, or revived. Whether a zero-outcome integrity abort permits one corrected re-registration of the same open-interest-growth mechanism at a later ordinal, or whether the family is closed permanently, is not resolved by the frozen policy text. This campaign takes the conservative reading (family closed; no revival without an explicit owner decision) and records the ambiguity instead of resolving it in its own favor.",
       "reusable_assets": "The frozen 51,224-archive metrics inventory (perp-oi-growth-inputs.json, sha e7fa25f4...), the 2026-09-02 metrics listing snapshot, the per-window 72-symbol universe derivation, and the 30+3 behavioral tests remain valid as data and code and were never contaminated by an outcome read.",
       "claim": "None. No return, alpha, deployment, or capital claim of any kind; the mechanism is untested, not falsified and not supported."
+    },
+    "perp_oi_growth_corrected": {
+      "id": "perp-oi-growth-corrected",
+      "directory": "quant-trading/explorations (artifacts in the frozen run dir)",
+      "campaign_run": "quant-trading/explorations/campaigns/20260903T214955Z_73ca30fb_3e26bcdfe3a0",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "cycle_ordinal_k": 6,
+      "alpha_k": 0.0011904761904761906,
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-primary-window",
+      "trial_count": 1,
+      "return_rows": 364,
+      "mechanism": "Cross-sectional open-interest growth on Binance USDT perpetuals: long the top quintile and short the bottom quintile of ln(OI_{d-1}/OI_{d-2}) from the last in-date 5-minute sum_open_interest row at or after 23:45 UTC, entered at the 00:00 UTC bar open and exited at the next, net of two 0.05% taker fees per position; 72-symbol pre-registered universe. Identical to cycle 5 except boundary-row semantics and the ordinal alpha.",
+      "information_channel": "Binance Data Vision USD-M daily 5-minute metrics archives; the frozen 51,224-archive cycle-5 inventory reused byte-identically",
+      "windows": {
+        "primary": [
+          "2024-01-01T00:00:00Z",
+          "2025-01-01T00:00:00Z"
+        ],
+        "replication_registered_but_unspent": [
+          "2025-01-01T00:00:00Z",
+          "2026-01-01T00:00:00Z"
+        ]
+      },
+      "contract": "quant-trading/explorations/pre_statement_perp_oi_growth_corrected.json",
+      "contract_sha256": "a0f318936dfbf97b6580b51f5abcd440413e73e1512cee30ce0a5964655be149",
+      "runner_sha256": "17cb56da356ca7e1948008e17728f36343dfc899367262974e23958a9a2409f5",
+      "prior_window_audit_sha256": "0664e0ad4e3523174f8906b182fb930f8360603ebc8b533dee82ac92bb2d91a8",
+      "result": {
+        "included_dates": 364,
+        "expected_dates": 366,
+        "positions": 9760,
+        "distinct_symbols_held": 71,
+        "mean_eligible": 68.16,
+        "mean_leg_size": 13.41,
+        "mean_spread_net_bps_per_date": -13.842,
+        "mean_spread_gross_bps_per_date": -3.838,
+        "spread_net_sd_bps": 87.859,
+        "mean_long_excess_bps": -16.927,
+        "mean_short_excess_bps": -10.758,
+        "mean_market_gross_bps": 11.649,
+        "quarters_positive": "1 of 4",
+        "one_sided_block_bootstrap_p": 0.99985
+      },
+      "gates": {
+        "G1_net_magnitude": "FAIL: -13.84 bps/date vs >= +5",
+        "G2_leg_contribution": "FAIL: long excess -16.93, short excess -10.76, both must be > 0",
+        "G3_quarter_stability": "FAIL: 1 of 4 quarters positive vs >= 3/5",
+        "G4_dependence_robustness": "FAIL: p = 0.99985 vs alpha_6 = 0.0011904761904761906"
+      },
+      "disposition": "All four preregistered gates failed on the primary window; the sign is the opposite of the registered Hong-Yogo direction. The spread is negative even before fees (-3.84 bps/date gross), so this is not a cost artefact: high open-interest-growth symbols underperformed low-growth symbols over the following UTC day in 2024 on this universe. Per stopping_and_replication.on_primary_fail the replication window was prohibited and remains unspent; the campaign closed FROZEN-NEGATIVE. The crowding/unwind reading of the negative sign was pre-registered as an untested non-claim and is NOT adopted.",
+      "boundary_row_correction": "The corrected rule worked exactly as registered: 337 of 25,545 archives read in the primary span carried one off-date row each, all at offset +1 day, and none at or after the 23:45 cutoff, so no selected value could have differed from a keep-the-row alternative. 426 archives had no in-date end-of-day row and yielded no observation. The correction converted a cycle-5 abort into a completed falsification without touching any other rule.",
+      "independent_recomputation": "Reproduced from the committed date rows outside the runner: mean net spread -13.842 bps, long excess -16.927, short excess -10.758, 1 of 4 quarters positive, and an independently coded one-sided 7-date circular block bootstrap p = 0.99985, matching the runner exactly; the net-of-fee formula rebuilt from the leg gross means reproduces -13.842 bps.",
+      "alpha_disposition": "alpha_6 = 0.05/42 = 0.0011904761904761906 spent. Cumulative post-policy alpha spent: 0.0429 of 0.05. Cycle 7 runs at alpha_7 = 0.05/56 = 0.0008928571428571429.",
+      "claim": "None. A falsified mechanism. No return, alpha, deployment, or capital claim; the negative sign is not registered as a tradable short-side claim."
+    },
+    "delivery_term_structure_convergence": {
+      "id": "delivery-term-structure-convergence",
+      "cycle_ordinal_k": 7,
+      "alpha_k": 0.0008928571428571429,
+      "mechanism": "For three consecutive coin-margined quarterly delivery contracts (prev, near, far) on one base: at the first UTC day after the prev delivery on which both near and far are tradable at the 23:00 close, enter equal contract counts AGAINST the sign of c = ln(P_far/P_near) (short the rich leg), and exit at the near contract last complete UTC day before its delivery. Exact inverse base-unit P&L, four taker legs at 0.05% charged at their own transaction prices, return on entry gross exposure.",
+      "data_used": {
+        "source": "https://data.binance.vision keyless public GET; listing snapshot 2026-09-03",
+        "channel": "coin-margined dated quarterly delivery futures, 1h monthly klines",
+        "inventory": "quant-trading/explorations/delivery-term-structure-inputs.json",
+        "archives": 1724,
+        "zip_bytes": 42162591,
+        "contracts": 268,
+        "novelty": "information channel plus payoff structure; no fresh, blind or prospective calendar"
+      },
+      "windows_by_near_delivery": {
+        "primary": [
+          "2020-09-01",
+          "2024-01-01"
+        ],
+        "replication": [
+          "2024-01-01",
+          "2026-07-01"
+        ]
+      },
+      "gates": {
+        "G1_net_magnitude": "PASS +25.50 bps/position vs +10 floor",
+        "G2_segment_consistency": "PASS alt +31.54 / major +5.95 bps",
+        "G3_quarter_stability": "FAIL 7 of 13 positive, needs 8",
+        "G4_dependence_robustness": "FAIL p = 0.073746 vs alpha_7 = 0.000893"
+      },
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "replication_run": false,
+      "independent_review": "read-only pass 1 REJECT (2 blockers: replication-binding schema bug, price-value day selection), both fixed, pass 2 APPROVE no blockers; 10 notes applied",
+      "disposition": "First use of a new information channel: Binance coin-margined quarterly DELIVERY futures (1,724 sha256-verified 1h archives, 222 contracts, never touched by the prior 26 entries; the cycle-4 contract had explicitly excluded delivery contracts by regex). Event-conditioned calendar-spread convergence: enter against the sign of ln(P_far/P_near) at the scheduled contract hand-over, exit at the near contract last complete UTC day, four taker legs at 0.05%. Primary 2020Q4-2023Q4: 110 positions, 13 delivery quarters, 9 bases. G1 magnitude PASSED (+25.50 bps/position net vs +10 floor) and G2 segment consistency PASSED (alt +31.54, major +5.95 bps), but G3 quarter stability FAILED at 7 of 13 positive (needs 8 by the exact three-fifths rule) and G4 FAILED with block-bootstrap p = 0.0737 against alpha_7 = 0.00089, an ~83x miss. Conjunctive gates => falsified; the 2024Q1-2026Q2 replication window was never read. The regularity is regime-concentrated, not stable: +50.96 bps/position across 2021-2022 (n=71) versus -19.11 bps across 2023 (n=35), with every 2023 quarter negative. Median position +6.02 bps against a +25.50 mean, so the mean is outlier-driven; 26 of 110 spreads crossed zero and inverse-contract base-unit P&L amplifies positions whose price collapsed. No tuning, pooling, re-windowing, fee or threshold rescue. Family closed."
     }
   },
   "forty_percent_disposition": "No explored result supports a 40% net annual-return claim. Searching further against historical CAGR is prohibited; future strategies advance only through mechanism, benchmark excess, cost/collateral realism, and prospective forward evidence.",
@@ -845,6 +937,71 @@
       "trial_count": 1,
       "return_rows": 0,
       "disposition": "The primary run aborted during input parsing under the contract's own integrity rule (frozen_rule.open_interest: \"Every row must carry the archive date ... any drift aborts the invocation\"). 337 of 51,224 frozen archives (0.66%), all dated 2024-03-05..2024-04-"
+    },
+    {
+      "id": "perp-oi-growth-corrected",
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-primary-window",
+      "directory": "quant-trading/explorations",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "trial_count": 1,
+      "return_rows": 364,
+      "disposition": "All four preregistered gates failed on the primary window; the sign is the opposite of the registered Hong-Yogo direction. The spread is negative even before fees (-3.84 bps/date gross), so this is not a cost artefact: high open-interest-growth symbols underpe"
+    },
+    {
+      "id": "delivery-term-structure-convergence",
+      "artifact_status": "falsified",
+      "final_status": "falsified-on-primary-window-stability-and-dependence-gates",
+      "directory": "quant-trading/explorations (artifacts in the frozen run dir)",
+      "campaign_run": "quant-trading/explorations/campaigns/20260903T232456Z_fe88f408_b0504d79973a",
+      "campaign_verdict": "FROZEN-NEGATIVE",
+      "trial_count": 1,
+      "return_rows": 110,
+      "disposition": "First use of a new information channel: Binance coin-margined quarterly DELIVERY futures (1,724 sha256-verified 1h archives, 222 contracts, never touched by the prior 26 entries; the cycle-4 contract had explicitly excluded delivery contracts by regex). Event-conditioned calendar-spread convergence: enter against the sign of ln(P_far/P_near) at the scheduled contract hand-over, exit at the near contract last complete UTC day, four taker legs at 0.05%. Primary 2020Q4-2023Q4: 110 positions, 13 delivery quarters, 9 bases. G1 magnitude PASSED (+25.50 bps/position net vs +10 floor) and G2 segment consistency PASSED (alt +31.54, major +5.95 bps), but G3 quarter stability FAILED at 7 of 13 positive (needs 8 by the exact three-fifths rule) and G4 FAILED with block-bootstrap p = 0.0737 against alpha_7 = 0.00089, an ~83x miss. Conjunctive gates => falsified; the 2024Q1-2026Q2 replication window was never read. The regularity is regime-concentrated, not stable: +50.96 bps/position across 2021-2022 (n=71) versus -19.11 bps across 2023 (n=35), with every 2023 quarter negative. Median position +6.02 bps against a +25.50 mean, so the mean is outlier-driven; 26 of 110 spreads crossed zero and inverse-contract base-unit P&L amplifies positions whose price collapsed. No tuning, pooling, re-windowing, fee or threshold rescue. Family closed."
     }
-  ]
+  ],
+  "program_negative": {
+    "status": "PUBLISHED - mechanism selection CLOSED",
+    "published_utc": "2026-09-04T01:40:31Z",
+    "artifacts": {
+      "narrative": "quant-trading/explorations/program_negative.md",
+      "machine_readable": "quant-trading/explorations/program_negative.json",
+      "collector_audit": "quant-trading/explorations/collector-audit-20260904.json",
+      "prospective_registration": "quant-trading/explorations/prospective-forward-test-registration.json"
+    },
+    "sha256": {
+      "program_negative.md": "b0a7df8718310e697db07bf4a12bfc24bc45330e2ab5bf184c05ee141174f73b",
+      "program_negative.json": "3344a43ce47d218d1a53cd002c1d4efac5454cb16159c87b8d68c38642d89874",
+      "collector-audit-20260904.json": "63ee594c7fc4e4de1686d7fbf7046834be2175896dd18e849c8550d3dd840307",
+      "prospective-forward-test-registration.json": "2d2bebdd0ee80001ea9c252493d6bf0c70a952c8ab91c2a553a922d39372e735"
+    },
+    "claim": "Across 7 mechanism families and 6 upstream data channels, 10 pre-registered hash-frozen campaigns (7 consuming ordinals k=1..7 of a 0.05 familywise budget) produced no mechanism passing a conjunctive magnitude + consistency + stability + dependence gate set in a primary window and a pre-registered replication window. Only 4 of 10 produced a net-return series; none survived. The single both-window survivor is a descriptive participation regularity.",
+    "recomputed_failure_structure": {
+      "gate_evaluated": 9,
+      "failed_a_magnitude_or_sign_gate": 6,
+      "failed_only_stability_or_dependence": 2,
+      "passed_everything": 1,
+      "no_gate_evaluated": 1,
+      "point_estimate_sign_inverted": 5
+    },
+    "retraction": "Nine of ten campaigns died on stability or dependence, not on magnitude.",
+    "alpha_spent": 0.043750000000000004,
+    "alpha_share_of_budget": 0.875,
+    "what_would_overturn_it": [
+      "a both-window survivor with a net-return payoff under pre-frozen code",
+      "an exhibited defect in frozen code plus a corrected re-run under a NEW ordinal",
+      "byte-level evidence an input archive differed from upstream",
+      "a prospective pass over a horizon pre-registered before any byte in it existed"
+    ],
+    "what_would_not_overturn_it": [
+      "re-windowing",
+      "threshold tuning",
+      "pooling closed families",
+      "best-of variants",
+      "post-hoc subsets",
+      "another retrospective mechanism at alpha_8 that also fails"
+    ],
+    "ordinal_pinning": "Every campaign ordinal k is pinned from the frozen bytes by matching \"alpha*\" values against 0.05/(k(k+1)) at exact float equality, confirmed in at least two independent frozen files per ordinal-consuming campaign. See program_negative.json ordinal_derivation.",
+    "registry_reconcile": "27 registry ids -> 27 indexed rows, 0 missing, 0 extra (program_negative.json registry_entry_index)"
+  }
 }

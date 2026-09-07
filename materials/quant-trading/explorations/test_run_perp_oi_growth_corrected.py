@@ -172,6 +172,30 @@ class BoundaryRowTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "schema value"):
                 self.parse(rows)
 
+    def test_padded_or_non_digit_stamp_fields_abort(self) -> None:
+        """Regression: cycle 5 coerced " 5"/"+5"/"5 " via bare int(); this parser aborts.
+
+        A padded minute or second at hour 23 was selectable under cycle 5, so the honest property
+        is that this parser never selects a value cycle 5 would not have - where they differ it
+        aborts, never substitutes.
+        """
+        for stamp in ("2024-03-05  5:55:00", "2024-03-05 +5:55:00", "2024-03-05 23:5 :00",
+                      "2024-03-0５ 23:55:00"):
+            rows = full_day("AAAUSDT", "2024-03-05") + [(stamp, "AAAUSDT", "1")]
+            with self.assertRaisesRegex(ValueError, "schema value"):
+                self.parse(rows)
+        with self.assertRaisesRegex(ValueError, "non-digit create_time field"):
+            runner._parse_stamp("2024-03-05  5:55:00")
+
+    def test_non_finite_end_of_day_value_is_missing(self) -> None:
+        """Behavior-pinning coverage, not a regression: parent._positive already mapped
+        non-finite values to None before the stamp-strictness change."""
+        for text in ("nan", "inf", "-inf"):
+            rows = full_day("AAAUSDT", "2024-03-05")
+            rows[-1] = ("2024-03-05 23:55:00", "AAAUSDT", text)
+            value, _ = self.parse(rows)
+            self.assertIsNone(value, text)
+
     def test_impossible_calendar_date_aborts_rather_than_counting_as_off_date(self) -> None:
         rows = full_day("AAAUSDT", "2024-03-05") + [("2024-02-30 00:00:00", "AAAUSDT", "1")]
         with self.assertRaisesRegex(ValueError, "schema value"):
@@ -307,20 +331,23 @@ class ContractBindingTests(unittest.TestCase):
                 runner.POLICY_PATH: contract["loop_multiplicity"]["policy_sha256"],
                 runner.PARENT_PATH: contract["governance"]["parent_runner_sha256"],
                 runner.OI5_PATH: contract["governance"]["oi5_runner_sha256"]}
-        for mutate, message in (
-                (lambda inv: inv.update(candidate_outcomes_accessed=True), "pre-outcome"),
-                (lambda inv: inv.update(symbols=list(reversed(inv["symbols"]))), "archive count mismatch"),
-                (lambda inv: inv["windows"].pop("replication"), "primary and replication universes"),
-                (lambda inv: inv["windows"]["primary"]["universe"].pop(), "72 distinct symbols")):
+        inventory_pin = pins[runner.INVENTORY_PATH]
+        for mutate, message, fix_count in (
+                (lambda inv: inv.update(candidate_outcomes_accessed=True), "pre-outcome", True),
+                (lambda inv: inv.update(kline_inventory_sha256="0" * 64), "bind the frozen kline inventory", True),
+                (lambda inv: inv["files"].pop(), "archive count mismatch", False),
+                (lambda inv: inv["files"].append(dict(inv["files"][0])), "duplicate paths", True),
+                (lambda inv: inv["windows"].pop("replication"), "primary and replication universes", True),
+                (lambda inv: inv["windows"]["primary"]["universe"].pop(), "72 distinct symbols", True)):
             inventory = json.loads(json.dumps(good))
             mutate(inventory)
-            if "archive count mismatch" not in message and "duplicate" not in message:
+            if fix_count:
                 inventory["archive_count"] = len(inventory["files"])
             fake = directory / "inventory.json"
             fake.write_text(json.dumps(inventory), encoding="utf-8")
             with mock.patch.object(runner, "INVENTORY_PATH", fake), \
                  mock.patch.object(runner, "sha256_file",
-                                   side_effect=lambda p, pin=pins[runner.INVENTORY_PATH]: pins.get(p, pin)), \
+                                   side_effect=lambda p: pins.get(p, inventory_pin)), \
                  mock.patch.object(runner, "verify_metrics_archive"), \
                  mock.patch.object(parent, "verify_archive"):
                 with self.assertRaisesRegex(ValueError, message):

@@ -15,6 +15,8 @@ import sys
 import time
 from pathlib import Path
 
+import campaign_runtime
+import check_involution_f5_certificate_coverage as coverage
 import involution_f5_signed_completion as completion
 import involution_f5_t_square_census as t_census
 import involution_f5_w_square_census as w_census
@@ -92,11 +94,12 @@ def _proof_policy(path: Path) -> None:
         raise HierarchyViolation(f"non-UNSAT proof conclusion: {path}")
 
 
-def _run(command: list[str], timeout: float, env=None) -> tuple[subprocess.CompletedProcess, float]:
+def _run(command: list[str], timeout: float, env=None,
+         pass_fds: tuple[int, ...] = ()) -> tuple[subprocess.CompletedProcess, float]:
     started = time.monotonic()
     process = subprocess.run(
         command, check=False, capture_output=True, text=True,
-        timeout=timeout, env=env)
+        timeout=timeout, env=env, pass_fds=pass_fds)
     return process, time.monotonic() - started
 
 
@@ -108,22 +111,29 @@ def _gzip(source: Path, destination: Path) -> dict:
     return _record(destination)
 
 
-def _checked_bundle(formula: Path, proof: Path, kernel: Path,
-                    timeout: float, large: bool) -> dict:
+def _cakepb_profiles(formula_bytes: int, large: bool) -> tuple[int, ...]:
+    if not large:
+        return 8192, 32768, 65536, 90112, 114688
+    if formula_bytes > 350_000_000:
+        return (114688,)
+    if formula_bytes > 250_000_000:
+        return 90112, 114688
+    return 65536, 90112, 114688
+
+
+def _checked_bundle(
+        formula: Path, proof: Path, kernel: Path, timeout: float, large: bool,
+        pass_fds: tuple[int, ...] = ()) -> dict:
     _proof_policy(proof)
     elaborated, elaborate_wall = _run(
         [str(VERIPB), "--force-checked-deletion", "--elaborate", str(kernel),
-         str(formula), str(proof)], timeout)
+         str(formula), str(proof)], timeout, pass_fds=pass_fds)
     if (elaborated.returncode != 0
             or "s VERIFIED UNSATISFIABLE" not in
             elaborated.stdout.splitlines()):
         raise HierarchyViolation("VeriPB elaboration failed")
     _proof_policy(kernel)
-    profiles = (
-        ((90112,) if formula.stat().st_size > 250_000_000
-         else (65536, 90112))
-        if large else (8192, 32768, 65536)
-    )
+    profiles = _cakepb_profiles(formula.stat().st_size, large)
     cake_wall = 0.0
     cake_profile = None
     for heap_mib in profiles:
@@ -132,8 +142,13 @@ def _checked_bundle(formula: Path, proof: Path, kernel: Path,
             "CML_HEAP_SIZE": str(heap_mib),
             "CML_STACK_SIZE": "4096",
         })
-        checked, attempt_wall = _run(
-            [str(CAKEPB), str(formula), str(kernel)], timeout, env=environment)
+        with campaign_runtime.FileLock(
+                campaign_runtime.HOST_HEAVY_LOCK,
+                blocking=True) as host_lock:
+            checked, attempt_wall = _run(
+                [str(CAKEPB), str(formula), str(kernel)],
+                timeout, env=environment,
+                pass_fds=(*pass_fds, host_lock.fileno()))
         cake_wall += attempt_wall
         if (checked.returncode == 0
                 and "s VERIFIED UNSATISFIABLE" in checked.stdout.splitlines()):
@@ -261,61 +276,227 @@ def _archive_bundle(prefix: str, proof_dir: Path, proof: Path,
     }
 
 
+def _expected_toolchain() -> dict:
+    return {
+        "pins": {str(path.relative_to(WORKSPACE)): digest
+                 for path, digest in PINS.items()},
+        "veripb_commit": completion.VERIPB_COMMIT,
+        "cakepb_commit": completion.CAKEPB_COMMIT,
+        "unchecked_deletion_allowed": False,
+    }
+
+
+def _disposition(done: int, target: int) -> str:
+    if done == target:
+        return "F5_DEEPER_155_VERIPB_CAKEPB_CERTIFIED"
+    return f"F5_HIERARCHICAL_CERTIFICATES_IN_PROGRESS_{done}_OF_{target}"
+
+
+def _coverage_block(done: int, target: int) -> dict:
+    return {
+        "target_deeper_support_orbits": target,
+        "certified_support_orbits": done,
+        "remaining_support_orbits": target - done,
+        "campaign_complete": done == target,
+    }
+
+
+def _validate_partial_ledger(document: dict, records: list,
+                             target_indexes: set[int], target: int,
+                             ramsey_sources: set[int],
+                             expected_w: dict[int, int],
+                             expected_signed: dict[int, int]) -> None:
+    """Reject any persisted ledger whose reuse could overstate coverage."""
+    if (type(document.get("schema_version")) is not int
+            or document["schema_version"] != 1
+            or document.get("campaign_id")
+            != "involution_f5_hierarchical_certificates"):
+        raise HierarchyViolation(
+            "persisted ledger has stale campaign metadata")
+    toolchain = document.get("toolchain")
+    if (type(toolchain) is not dict
+            or toolchain != _expected_toolchain()
+            or toolchain.get("unchecked_deletion_allowed") is not False):
+        raise HierarchyViolation(
+            "persisted ledger has stale toolchain metadata")
+    if (document.get("strongly_regular_fixed_five_branch_only") is not True
+            or document.get("general_ramsey_bound_claimed") is not False):
+        raise HierarchyViolation("persisted ledger makes out-of-scope claims")
+    if document.get("disposition") != _disposition(len(records), target):
+        raise HierarchyViolation(
+            "persisted ledger disposition is inconsistent")
+    expected_coverage = _coverage_block(len(records), target)
+    observed_coverage = document.get("coverage")
+    if (type(observed_coverage) is not dict
+            or observed_coverage != expected_coverage
+            or type(observed_coverage.get(
+                "target_deeper_support_orbits")) is not int
+            or type(observed_coverage.get(
+                "certified_support_orbits")) is not int
+            or type(observed_coverage.get(
+                "remaining_support_orbits")) is not int
+            or (observed_coverage.get("campaign_complete")
+                is not expected_coverage["campaign_complete"])):
+        raise HierarchyViolation("persisted ledger coverage is inconsistent")
+    seen: set[int] = set()
+    for record in records:
+        source_index = (
+            record.get("source_index") if type(record) is dict else None)
+        if type(source_index) is not int:
+            raise HierarchyViolation(
+                "persisted record lacks an integer source_index")
+        if source_index in seen:
+            raise HierarchyViolation(
+                f"persisted duplicate record for source {source_index}")
+        if source_index not in target_indexes:
+            raise HierarchyViolation(
+                f"persisted foreign record for source {source_index}")
+        seen.add(source_index)
+    for record in records:
+        source_index = record["source_index"]
+        try:
+            coverage._check_hierarchy_record(
+                record, ramsey_sources, expected_w, expected_signed)
+        except (coverage.CoverageViolation, AttributeError, KeyError,
+                OSError, TypeError, ValueError) as error:
+            raise HierarchyViolation(
+                f"persisted record for source {source_index} is invalid: "
+                f"{error}") from error
+
+
 def _write_progress(output: Path, records: list[dict], target: int,
                     started: float) -> None:
     document = {
         "schema_version": 1,
         "campaign_id": "involution_f5_hierarchical_certificates",
-        "disposition": (
-            "F5_DEEPER_155_VERIPB_CAKEPB_CERTIFIED"
-            if len(records) == target else
-            f"F5_HIERARCHICAL_CERTIFICATES_IN_PROGRESS_{len(records)}_OF_{target}"
-        ),
-        "coverage": {
-            "target_deeper_support_orbits": target,
-            "certified_support_orbits": len(records),
-            "remaining_support_orbits": target - len(records),
-            "campaign_complete": len(records) == target,
-        },
-        "toolchain": {
-            "pins": {str(path.relative_to(WORKSPACE)): digest
-                     for path, digest in PINS.items()},
-            "veripb_commit": completion.VERIPB_COMMIT,
-            "cakepb_commit": completion.CAKEPB_COMMIT,
-            "unchecked_deletion_allowed": False,
-        },
+        "disposition": _disposition(len(records), target),
+        "coverage": _coverage_block(len(records), target),
+        "toolchain": _expected_toolchain(),
         "batch_wall_seconds_so_far": round(time.monotonic() - started, 6),
         "records": records,
         "strongly_regular_fixed_five_branch_only": True,
         "general_ramsey_bound_claimed": False,
     }
-    output.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n")
+    campaign_runtime.atomic_write_json(output, document)
+
+
+def _load_campaign_inputs() -> tuple[
+        dict[int, dict], dict[int, dict], list[int],
+        set[int], dict[int, int], dict[int, int],
+]:
+    _require_pins()
+    w_document = campaign_runtime.load_json_object(
+        W_CENSUS, HierarchyViolation)
+    signed_document = campaign_runtime.load_json_object(
+        SIGNED_CENSUS, HierarchyViolation)
+    ramsey_document = campaign_runtime.load_json_object(
+        RAMSEY_CENSUS, HierarchyViolation)
+    try:
+        w_candidates = w_document["census"]["candidates"]
+        signed_candidates = signed_document["census"]["candidates"]
+        ramsey_candidates = ramsey_document["census"]["candidates"]
+        signed_records = {
+            record["source_index"]: record for record in signed_candidates}
+        ramsey_records = {
+            record["source_index"]: record for record in ramsey_candidates}
+        deeper_targets = {
+            record["source_index"] for record in w_candidates
+            if record["w_square_satisfiable"]}
+    except (KeyError, TypeError) as error:
+        raise HierarchyViolation("invalid deeper census structure") from error
+    targets = sorted(signed_records)
+    if (type(w_candidates) is not list or len(w_candidates) != 705
+            or type(signed_candidates) is not list
+            or len(signed_candidates) != 155
+            or len(signed_records) != 155
+            or type(ramsey_candidates) is not list
+            or len(ramsey_candidates) != 108
+            or len(ramsey_records) != 108
+            or set(targets) != deeper_targets
+            or not set(ramsey_records).issubset(deeper_targets)
+            or any(type(source) is not int for source in deeper_targets)):
+        raise HierarchyViolation("unexpected deeper target set")
+    expected_w = {
+        record["source_index"]: record["w_completions_tested"]
+        for record in signed_records.values()}
+    expected_w.update({
+        record["source_index"]: record["w_completions_tested"]
+        for record in ramsey_records.values()})
+    expected_signed = {
+        record["source_index"]: record["signed_completions_tested"]
+        for record in ramsey_records.values()}
+    return (signed_records, ramsey_records, targets, set(ramsey_records),
+            expected_w, expected_signed)
+
+
+def _load_validated_output(
+        output: Path, target_indexes: set[int], target: int,
+        ramsey_sources: set[int], expected_w: dict[int, int],
+        expected_signed: dict[int, int],
+) -> dict:
+    document = campaign_runtime.load_json_object(output, HierarchyViolation)
+    records = document.get("records")
+    if type(records) is not list:
+        raise HierarchyViolation("persisted ledger records are not a list")
+    _validate_partial_ledger(
+        document, records, target_indexes, target, ramsey_sources,
+        expected_w, expected_signed)
+    return document
+
+
+def _validate_output_unlocked(
+        output: Path, *, require_complete: bool = False,
+) -> dict:
+    (_signed, _ramsey, targets, ramsey_sources,
+     expected_w, expected_signed) = _load_campaign_inputs()
+    document = _load_validated_output(
+        output, set(targets), len(targets), ramsey_sources,
+        expected_w, expected_signed)
+    if (require_complete
+            and document["coverage"]["campaign_complete"] is not True):
+        raise HierarchyViolation(
+            "hierarchical certificate campaign is not complete")
+    return document
+
+
+def validate_output(
+        output: Path = DEFAULT_OUTPUT, *, require_complete: bool = False,
+) -> dict:
+    """Validate one output while excluding every certificate batch driver."""
+    with campaign_runtime.FileLock(campaign_runtime.DRIVER_LOCK):
+        return _validate_output_unlocked(
+            output, require_complete=require_complete)
 
 
 def run(output: Path, proof_dir: Path, work: Path,
-        timeout_per_step: float) -> dict:
-    _require_pins()
-    signed_document = json.loads(SIGNED_CENSUS.read_text())
-    ramsey_document = json.loads(RAMSEY_CENSUS.read_text())
-    signed_records = {
-        record["source_index"]: record
-        for record in signed_document["census"]["candidates"]
-    }
-    ramsey_records = {
-        record["source_index"]: record
-        for record in ramsey_document["census"]["candidates"]
-    }
-    targets = sorted(signed_records)
-    if len(targets) != 155 or len(ramsey_records) != 108:
-        raise HierarchyViolation("unexpected deeper target set")
+        timeout_per_step: float,
+        max_new_records: int | None = None) -> dict:
+    """Run the batch under the shared driver lock for full mutual exclusion."""
+    with campaign_runtime.FileLock(
+            campaign_runtime.DRIVER_LOCK) as driver_lock:
+        return _run_locked(
+            output, proof_dir, work, timeout_per_step, max_new_records,
+            driver_lock_fd=driver_lock.fileno())
+
+
+def _run_locked(output: Path, proof_dir: Path, work: Path,
+                timeout_per_step: float,
+                max_new_records: int | None = None, *,
+                driver_lock_fd: int | None = None) -> dict:
+    driver_pass_fds = (() if driver_lock_fd is None
+                       else (driver_lock_fd,))
+    (signed_records, ramsey_records, targets, ramsey_sources,
+     expected_w, expected_signed) = _load_campaign_inputs()
     proof_dir.mkdir(parents=True, exist_ok=True)
     work.mkdir(parents=True, exist_ok=True)
-    records = []
+    records: list = []
     if output.is_file():
-        previous = json.loads(output.read_text())
-        if type(previous.get("records")) is list:
-            records = previous["records"]
+        previous = _load_validated_output(
+            output, set(targets), len(targets), ramsey_sources,
+            expected_w, expected_signed)
+        records = previous["records"]
     completed = {record["source_index"] for record in records}
+    new_records = 0
     started = time.monotonic()
     _write_progress(output, records, len(targets), started)
     dump = work / "current.wdom"
@@ -336,7 +517,8 @@ def run(output: Path, proof_dir: Path, work: Path,
         dump_record = w_census.write_domain_dump(instance, dump)
         generated, w_generate_wall = _run(
             [str(W_TERMINAL), str(dump), ROWS_TEXT, str(w_formula),
-             str(w_proof), str(w_terminals_path)], timeout_per_step)
+             str(w_proof), str(w_terminals_path)], timeout_per_step,
+            pass_fds=driver_pass_fds)
         if generated.returncode != 0:
             raise HierarchyViolation(
                 f"W terminal generator failed: {generated.stdout} {generated.stderr}")
@@ -359,7 +541,8 @@ def run(output: Path, proof_dir: Path, work: Path,
                        str(t_formula), str(t_proof)]
             if ramsey_mode:
                 command.append(str(t_terminals_path))
-            generated_t, t_generate_wall = _run(command, timeout_per_step)
+            generated_t, t_generate_wall = _run(
+                command, timeout_per_step, pass_fds=driver_pass_fds)
             if generated_t.returncode != 0:
                 raise HierarchyViolation(
                     f"T generator failed for {source_index}/{w_index}: "
@@ -374,7 +557,8 @@ def run(output: Path, proof_dir: Path, work: Path,
                     raise HierarchyViolation("T terminal count mismatch")
                 signed_terminal_total += len(t_terminals)
             checked_t = _checked_bundle(
-                t_formula, t_proof, t_kernel, timeout_per_step, large=False)
+                t_formula, t_proof, t_kernel, timeout_per_step, large=False,
+                pass_fds=driver_pass_fds)
             prefix = f"s{source_index:03d}-w{w_index:03d}-t"
             archived_t = _archive_bundle(
                 prefix, proof_dir, t_proof, t_kernel, checked_t)
@@ -392,7 +576,8 @@ def run(output: Path, proof_dir: Path, work: Path,
                 source_index]["signed_completions_tested"]:
             raise HierarchyViolation("signed terminal aggregate mismatch")
         checked_w = _checked_bundle(
-            w_formula, w_proof, w_kernel, timeout_per_step, large=True)
+            w_formula, w_proof, w_kernel, timeout_per_step, large=True,
+            pass_fds=driver_pass_fds)
         archived_w = _archive_bundle(
             f"s{source_index:03d}-w", proof_dir,
             w_proof, w_kernel, checked_w)
@@ -425,6 +610,9 @@ def run(output: Path, proof_dir: Path, work: Path,
             "w_terminals": len(w_terminals),
             "signed_terminals": signed_terminal_total,
         }, sort_keys=True), file=sys.stderr, flush=True)
+        new_records += 1
+        if max_new_records is not None and new_records >= max_new_records:
+            break
     return json.loads(output.read_text())
 
 
@@ -433,10 +621,14 @@ def main(argv=None) -> int:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--proof-dir", type=Path, default=DEFAULT_PROOF_DIR)
     parser.add_argument("--work", type=Path, default=DEFAULT_WORK)
-    parser.add_argument("--timeout-per-step", type=float, default=900.0)
+    parser.add_argument("--timeout-per-step", type=float, default=21600.0)
+    parser.add_argument("--max-new-records", type=int)
     args = parser.parse_args(argv)
+    if args.max_new_records is not None and args.max_new_records <= 0:
+        parser.error("--max-new-records must be positive")
     document = run(
-        args.output, args.proof_dir, args.work, args.timeout_per_step)
+        args.output, args.proof_dir, args.work, args.timeout_per_step,
+        args.max_new_records)
     print(json.dumps({
         "disposition": document["disposition"],
         "certified_support_orbits":

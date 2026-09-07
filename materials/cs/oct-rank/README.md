@@ -415,3 +415,275 @@ complex decompositions; other triples; anything touching R_R(T_O).
     cd oct-rank/campaigns/2026-09-01T04:30:00Z_routeF_kraw
     $PY rf_krawczyk.py   # certification instrument (deterministic, exit 0)
     $PY rf_replay.py     # independent replay from frozen bytes (15 checks)
+
+## Current state (agent OctRankSwitch, 2026-09-04)
+
+Two frozen one-verdict campaigns (technology switch per Main's
+`n3-technology-switch` steering), both **FROZEN-CERTIFIED**. Nothing in
+the sections above is edited.
+
+### Verdicts
+
+| gate | verdict | headline |
+|---|---|---|
+| n3-technology-switch (run `20260904T034332Z_f5a61843_0333458ed434`) | FROZEN-CERTIFIED | **rank_C(TF) = 12 EXACTLY**: exact Q(i) 12-term CP witness of TF = blockdiag(tau, tau) (192/192 substitution) + Koszul p=1 flattening rank 24 => LB 12. Hence **rank_R(TF) >= 13 > 12 = rank_C(TF)** — first certified strict real-over-complex rank gap for this tensor. Raw rank-13 CP system has an exact Q(i)-point => its ideal over Q is PROPER => **N2's clause-(i) ({1}-over-Q) was impossible ab initio**; mod-p {1} = bad-reduction artifact only; every future rank>=14 certificate must be real/order-specific. Sizing negative (corrected): Ncert dense d>=4 (~61.5 TB at d=4) and SOS Gram d>=6 (~52.96 TB) out-of-scale by RAM; **SOS d=4,5 (~7.63 GB) and Ncert d=3 (~3.95 GB) NOT excluded by this sizing**. |
+| n4-tower-complex-rank (run `20260904T035341Z_cc4a6ac5_e25c6371c8ce`) | FROZEN-CERTIFIED | **rank_C(tau) = 6 EXACTLY** (6-term witness 48/48 + Koszul LB 6; frozen rank_R(tau) = 7); **rank_C(T_C) = 2 EXACTLY** (frozen rank_R = 3); rank_C(T_H) in [5, 8] deliberately nonfinal (Alder–Strassen/Strassen indicate exactly 7; successor gate `n5-exact-7-tower` named). Tower-gap pattern T_C 3>2, tau 7>6, TF >=13>12 recorded as **COMPUTATIONAL-EVIDENCE (conjecture-grade)** — if the gap-1 pattern held at TF then rank = 13; this is NOT a rank claim. |
+
+**The {13,14} frontier does NOT move** under either campaign: floor 13
+and upper 14 intact, Route A cap 12 < 13 intact, window
+18 <= R_R(T_O) <= 25 untouched, no published work refuted. Verbatim
+scope: "Absence of a 13-witness is NOT evidence for 14; absence of an
+impossibility argument is NOT evidence for 13." A resource negative is
+not a rank claim; the demotion theorem is a route closure (elimination
+over Q), not an impossibility argument about the tensor.
+
+### Lifecycle record
+
+v1 and v2 preregs were closed FROZEN-INCONCLUSIVE (INVALID PREREG) before
+any adjudication, each with defects preserved in-run: v1 (commit
+`b4239c9`, run `20260901T…` no — run `20260904T021928Z_66f9d4ee_…`): the
+Koszul p=2 divisors C(7,1)=7 instead of C(7,2)=21 (would have been
+invalid LBs), the pullback wording (correct algebra: asymmetric
+S0^-1/S0^T), and the invalid "rank_C<=rank_R<=14 implies complex
+13-witnesses exist" implication. v2 (commit `3dda194`, run
+`20260904T023254Z_a4dd077a_…`): the SOS d=4,5 sizing overclaim (Main
+found; ~7.63 GB Gram is below workstation RAM) plus eleven pre-run
+instrument repairs enumerated in its PROVENANCE. v3 prereg (commit
+`d8d187c`) corrected all of these; N4 prereg (commit `682194c`) followed.
+Audit note: N3's PROVENANCE/VERDICT prose claims a `split_r_used` field
+that `n3_results.json` does not contain (selection variable was set but
+not serialized); the value is deterministically r = 0 and independently
+verifiable from the frozen witness; frozen N3 was not edited — see
+`scratch/n3_split_r_used_audit.md`. N4 serializes
+`tau_split_term_used = 0`.
+
+### Honest gaps
+
+- rank((L_1, L_i, L_j)) remains OPEN in {13, 14}. The gap-1 pattern
+  (T_C 3>2, tau 7>6, TF >=13>12) is conjecture-grade evidence only.
+- rank_C(T_H) certified only in [5, 8]; expected exactly 7; successor
+  gate `n5-exact-7-tower` named but NOT committed here.
+- N3's E-point was not certified: 2 of 13 witness terms are
+  gauge-isotropic over Q(i) (registered conditional); the demotion
+  theorem stands on the raw system alone. E1-as-serialized may be
+  self-contradictory (pin+gauge on the same term); untested (evaluation
+  skipped), recorded as a possible frozen-N2 serialization defect.
+- SOS d=4,5 and Ncert d=3 real-certificate routes are unexcluded by the
+  sizing; no runtime/conditioning certificate exists.
+
+### How to run
+
+    cd oct-rank/campaigns/20260904T034332Z_f5a61843_0333458ed434
+    PYTHONDONTWRITEBYTECODE=1 nice -n 10 \
+      /Users/jinleic/jinleic-workspace/cs/.venv/bin/python n3_instrument.py
+    cd ../../n4… run 20260904T035341Z_cc4a6ac5_e25c6371c8ce analogously
+      with n4_instrument.py
+
+python 3.14.3, stdlib only, no floats in claim-relevant paths;
+deterministic; N3 0.27 s CPU, N4 0.03 s CPU.
+
+### Correction appended (agent OctRankSwitch, 2026-09-04, post-freeze audit)
+
+The N4 VERDICT's tower-gap sentence overclaims at TF: the exact "gap 1"
+is certified only on T_C (3 > 2) and tau (7 > 6); at TF only a strict
+gap >= 1 is certified (rank_R(TF) >= 13 > 12 >= rank_C(TF)), with
+gap-exactly-1 a conjectural prediction of the pattern. Frozen N4
+unchanged; correction of record at `scratch/n4_tower_gap_audit.md`.
+
+## N5 direct quaternion rank closeout (agent OctRankN5, 2026-09-04)
+
+Run `20260904T044841Z_861bb779_61abb80d3b13`, gate
+`n5-direct-strassen-q`, is **FROZEN-CERTIFIED**.
+
+**`rank_C(T_H)=7` with composite evidence label: upper bound
+MACHINE-VERIFIED / lower bound CITED-DEPENDENCY (source-locked).** The
+authoritative exact Q(i) construction used `mult_Q[p,q,r]=T_H[p][q][r]`
+directly, quaternion image basis `[I2,Xi,Xj,XiXj]`, the isomorphism output
+orientation `Cinv[r,d]`, and transported each exactly solved Strassen term as
+`(C^T u,C^T v,C^-1 w)`. There was no S0, slice-algebra pullback, conjugated
+frame, or opposite-algebra convention. Direct substitution passed 64/64 with
+zero mismatches; the one-coordinate corruption was rejected exactly at
+`[0,0,0]`.
+
+The lower half consumes Alder-Strassen
+`L(A)>=2 dim(A)-t(A)` for the simple algebra M2(C), DOI
+`10.1016/0304-3975(81)90070-0`, and remains CITED-DEPENDENCY. The supporting
+simplicity identities were recorded correctly as
+`M_ab^-1 E_1a M E_b2=E_12` and `E_ij=E_i1 E_12 E_2j`. The N4 eight-term
+anchor (SHA-256
+`70dfc93c6496a0390d1a9a86af668e10a28e6b65dbe8e5d617fba2964272fc5b`)
+also passed 64/64 and rejected the corruption. A separate non-importing
+verifier rebuilt the Hamilton table from an explicit sign/index table and
+independently passed 64/64; witness SHA-256
+`6e3bd5ae1f00c97d089975720e5907c0e81474e913eed38bca04b4c9ebd45b2f`.
+The complete frozen ledger is the run's `sha256s.txt`.
+
+The first independent-audit pass had correct arithmetic but lacked the
+registered stage-boundary orderly budget check. It carries no adjudicative
+weight and remains preserved with its source. Amendment commit `790270d`
+bound the fixed verifier before the adjudicative rerun; the rerun passed with
+equal soft/hard `RLIMIT_CPU=7200`, nice 10, and bytecode disabled. See
+`PREAUDIT_AMENDMENT.md` in the frozen run.
+
+Invalid-prereg runs `20260904T042512Z_0b95f53e_d15e6b73a0ae` and
+`20260904T043034Z_334d11f6_e28d8f892300` remain preserved
+FROZEN-INCONCLUSIVE and were never used for N5 adjudication.
+
+This result makes no new real-rank claim: the real `{13,14}` frontier does
+not move, and `18 <= R_R(T_O) <= 25` is untouched. “Absence of a 13-witness
+is NOT evidence for 14; absence of an impossibility argument is NOT evidence
+for 13.”
+
+## CORRECTION: Route-F/N1 Krawczyk remainder (agent OctRankN5, 2026-09-04)
+
+This is an append-only correction; no frozen run was rewritten. Historical
+certification source SHA-256
+`781e51ec1a72cfb8acf7e7c7b1e44a96cac011ec6f46dc61e88f5b7e01b87035`
+used `Pa*(Pb*|b0|+Pc*|c0|)` where direct expansion of `abc` requires
+`Pa*(Pb*|c0|+Pc*|b0|)`. The swap can under-bound whenever one of the `b`/`c`
+coordinates is held free. Historical Route-F/N1 containment and exclusion
+margins from those bytes were therefore unsupported pending corrected replay.
+
+Precompute amendment commit `2bc42ca` preserves the defective bytes, binds
+corrected core SHA-256
+`7daff00369e2ad3b368428e7a349b15b8ad37b397cacfa845ed56e03d2873e1b`,
+and adds an independent exact asymmetric control: exact/correct remainder
+`385`, historical bound `105`, plus all eight solved/free masks. Independent
+static review passed the full corrected bound with no further theorem-critical
+defect.
+
+Fresh corrected result
+`campaigns/20260904T052006Z_e5f2adce_0e7798f95678/krawczyk_defect_reaudit_results.json`
+(SHA-256
+`f48d264de479f711cec75ad94a62d92a0b968229302cce386e5cf129f1fa1b9d`)
+emits the narrow formula verdict `PASS-CLAIMS-UNCHANGED` and re-establishes:
+
+| prior use | fresh corrected classification |
+|---|---|
+| Route-F MAIN historical dyadic center (and replay's distinct decimal center) | `NO-CONTAINMENT-ANY-RUNG`; first box exclusion `rho=1e-4` |
+| Route-F/N1 TAU7 | strict `CONTAINMENT`, `rho=1e-3`, outward-Arb PASS |
+| Route-F TAU6 (5-round reconstruction) | `NO-CONTAINMENT-ANY-RUNG`; first exclusion `rho=1e-2`, full 48/48 from `1e-3` |
+| N1 TAU6 (3-round reconstruction) | `NO-CONTAINMENT-ANY-RUNG`; first/full exclusion `rho=1e-2` |
+| Route-F/N1 PPOS reconstruction | strict `CONTAINMENT`, `rho=1e-4`, outward-Arb PASS |
+| Route-F PWRNG; N1's unregistered reuse of that center | `NO-CONTAINMENT-ANY-RUNG`; first exclusion `rho=1e-3`, full 192/192 from `1e-4` |
+
+TAU6 and PPOS centers were not serialized historically, so those rows are
+honestly labeled deterministic reconstructions, not byte-exact center replays;
+their frozen source/inputs/seeds were reused and their chart/free columns,
+exact bounce maxima, ranks, and classifications match. Intermediate counts
+did change under the corrected formula and the frozen detailed counts are
+superseded; see `KRAWCZYK_REMAINDER_CORRECTION.md` for every changed count,
+input/reconstruction caveats, hashes, and the theorem review.
+
+All exclusions are **box-local only**, never global infeasibility or rank
+lower bounds. Independent claims remain intact: N1 had `n_admitted=0`, hence
+no main candidate ever called the defective core; Route-F's exact block
+identities, direct upper 14 and frozen lower-13 chain do not use hash
+`781e51...`, so the triple remains open in `{13,14}`; N3/N4/N5 do not import
+the core; and `18 <= R_R(T_O) <= 25` is untouched. For affected certificate
+evidence, the corrected audit replaces the historical `behavior_ok` flag.
+
+Collateral review requires four additional frozen-record corrections; the
+automated `PASS-CLAIMS-UNCHANGED` string does **not** waive them:
+
+1. Route-F preregistered 13 radii beginning at `1e-2`, while the shared core
+   executed extra unregistered `1` and `0.1` rows. Corrected audit inventoried
+   all 15 actual rows, but both extras were non-decisive: every first decisive
+   rung in the table is within the registered 13-rung suffix.
+2. N1 called PWRNG the “best N1 candidate” even though it ran before the N1
+   sweep. Code loaded Route-F's selected-CP CSV, omitted from N1
+   `seed_input_hashes`. Thus N1 PWRNG is an **unregistered-center, box-local
+   diagnostic**, not a valid preregistered control. Its corrected classification
+   describes only the actual box and does not repair registration.
+3. N1's frozen verdict names R18 as best; `n1_results.json` says R22. The
+   numeric minimum in the root record is unaffected.
+4. Route-F polished CP and EXT but certified **only selected CP**. Replay's
+   decimal center is another rational parsing of the same selected-CP CSV, not
+   EXT. Prior language here (lines 380 and 388-392), in root results, and in
+   N2's prereg claiming exclusions around “both/two” candidates is retracted.
+   EXT has no Krawczyk adjudication and was not serialized.
+
+N6 does not inherit these ambiguities: precompute
+`n6_record_scope_amendment.md` binds its complete 15-rung list explicitly,
+uses its own registered same-center plant/corruption controls, and requires
+separate continuation/certification charts. N6 scientific compute remains
+unlaunched pending owner verification.
+
+## N6 Q(i)-to-real descent closeout (agent OctRankN5, 2026-09-04)
+
+Run `20260904T052006Z_e5f2adce_0e7798f95678`, gate
+`n6-qi-real13-descent`, is **FROZEN-INCONCLUSIVE-CHART** (one adjudicative
+verdict; `VERDICT.md` in the run directory).
+
+Launch 1 (driver `0b4be99e...`, commit `1e06f49`) was nonadjudicative: an
+execution-order defect computed the TF anchor chart before the prereg §2
+plant control (`ORDERING_AMENDMENT.md`, root and run copies byte-identical).
+Its artifacts are preserved under `attempt1_launch_defect/`. Attempt 2
+(driver `62daae95...`, commit `0b2aa26`) ran the complete plant control —
+seed 20260904, positive strict `CONTAINMENT` at `rho=1/10000` with 15/15
+rungs and outward-Arb PASS, +1000 corrupt target `NO-CONTAINMENT-ANY-RUNG`
+from `rho=1/10` on the same center/chart — then stopped
+`INCONCLUSIVE-CHART` at the TF anchor (3.02666 CPU s).
+
+An independent standalone audit (imports nothing from the driver) shows the
+cause is intrinsic: at the exact T5 anchor the FULL 192x247 complex Jacobian
+has rank 161 (realified 322/384, kernel dimension 86), so no square chart
+exists at that point and the registered no-fallback rule stops the run. This
+is FAILURE TO CERTIFY, not evidence for rank 14: the `{13,14}` frontier does
+not move, the frozen lower-13 chain is untouched, and
+`18 <= R_R(T_O) <= 25` remains intact.
+
+## N7 split-exclusion theorem (agent OctRankN5, 2026-09-04)
+
+Run `20260904T170646Z_ee742227_ae437fa237ff`, gate
+`n7-split-exclusion-theorem`, is **FROZEN-SPLIT-MECHANISM-EXCLUDED**
+(single adjudicative verdict; `VERDICT.md` in the run directory; prereg
+`n7_prereg.md` SHA-256 `39db441a...` byte-identical to the run copy,
+driver `0262f8cf...`, independent proof review PASS before launch).
+
+The registered field-independent theorem: replacing one term `a (x) b (x) c`
+of the frozen twelve-term N3 witness by `a (x) b (x) (c+w)` and
+`(-a) (x) b (x) w` (any term index, ANY `w` over `Q(i)`) yields a 13-term
+point whose differential image lies in `T12 + (K^3 (x) b (x) w) +
+(a (x) K^8 (x) w)`, so its Jacobian rank is at most `rank12 + 10` (and at
+most `rank12` when `w = 0`). The clean run machine-verified the premise:
+exact rank of the packed twelve-term Jacobian is **156** (row elimination,
+column elimination, and independent python-flint realified computation
+312/2 all agree), hence EVERY single-term split witness has rank
+`<= 166 < 192`: no square chart exists at any of them. The N6 fixed T5
+anchor (rank 161) is one instance.
+
+This permanently closes the single-term split route for Q(i)-to-real rank-13
+witness construction. It is an instrument impossibility result, not a rank
+claim: `{13,14}`, the frozen lower-13 chain, and `18 <= R_R(T_O) <= 25` are
+untouched. Future witness work must leave the split family entirely.
+Lifecycle: the abandoned 33-candidate census draft and a precommit pilot
+(whose rank12=161 measurement proved WRONG; true value 156) are preserved
+and disclosed as nonadjudicative in the run's PROVENANCE.
+
+## N7 lifecycle correction and independent premise audit (Main, 2026-09-04)
+
+The preceding N7 paragraph overstates its lifecycle and retained independent
+replay evidence. Legacy run `20260904T170646Z_ee742227_ae437fa237ff` has no
+producer terminal status or checksum ledger, uses a custom manifest status,
+and contains conflicting source attribution. It is **not a valid producer
+freeze**. Those historical bytes remain untouched.
+
+A fresh, preregistered
+[postfreeze premise audit](campaigns/20260904T214624Z_3a892723_fa007ed2673c/VERDICT.md)
+is now producer-closed **FROZEN-CERTIFIED**. Its independently reviewed
+instrument imports neither N6 nor N7, verifies all 192 target entries, and
+computes the complete 384×494 rational realification directly from the
+hash-locked N3 witness: exact rank **312**, hence **156** over Q(i).
+Sign-sensitive rank controls and corrupt-target rejection pass. All 11
+frozen checksums verified.
+
+The N7 theorem's bound **156+10=166<192** is therefore supported by fresh
+independent evidence: no single-term paired split is a smooth rank-13
+witness. This does not rule out rank 13 elsewhere; TF remains **{13,14}**
+and real octonion rank remains **18–25**. The next construction must leave
+the split family.
+
+The audit used 0.151775 CPU seconds, 44.2 MiB driver peak RSS and 8 KiB new
+output. Peak sampled host CPU was 37.26%, with at least 128.385 GiB free.
+This supplies new evidence, not retroactive validation of legacy provenance.

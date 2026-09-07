@@ -40,7 +40,7 @@ Naming rules:
 * Unverified/candidate material lives under `<target>/scratch/` (non-authoritative);
   promotion to a README requires the evidence labels below.
 
-Opened 2026-08-29 (**all six, one owner session each**): `qldpc-dec/`,
+Original targets opened 2026-08-29 (**six, one owner session each**): `qldpc-dec/`,
 `msd/`, `shadows/`, `na-compiler/`, `fss-bb/`, `qlops/`. Per-target state
 lives in each `README.md`; RESULTS.md collects verdicts.
 
@@ -70,6 +70,11 @@ p ∈ {1e-4, 3e-4, 1e-3} (pre_statement rev1/rev2). Verdicts live in
 
 Superseded v1 rows: `sdec/` folded into `qldpc-dec/`. Parked (not
 re-examined): `qmaqcma/`, `scars/`, `mbl2d/` from v1.
+
+Opened 2026-09-06: [`stabrank-witness/`](stabrank-witness/README.md), an exact
+magic-cat stabilizer-rank witness target. Its first gate calibrates the public
+classical search before probing a five-term cat-eight construction. Current
+state belongs to its README and RESULTS.md, not the historical ranking above.
 
 Note: `../math/qec/` is already active on the **algebraic** qLDPC side
 (non-CSS PBB programme, distance-reversal censuses). Any new `physics/qldpc-dec/`

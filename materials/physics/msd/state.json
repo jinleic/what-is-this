@@ -3,19 +3,23 @@
   "id": "physics/msd",
   "problem": "Zero-level CCZ magic-state supply reproduction",
   "status": "active",
-  "current_gate": "Output-side armoring provably cannot fix floor; source-frame readout only unblock",
+  "current_gate": "Historical surrogate closed SCOPE-LIMITED-NON-TEST; output-side armoring cannot fix its bare source-frame floor. Official-author reproduction is owned by physics/qlops, not a new MSD surrogate rebuild.",
   "latest_campaign": null,
   "latest_campaign_verdict": null,
-  "headline": "Floor explained: 7 weight-1 undetectable mechanisms; measured p_L tracks bare mass",
-  "next_action": "Fault-tolerant source-frame readout (full rebuild) or close as scope-limited",
+  "headline": "Floor explained by 7 weight-1 undetectable mechanisms; the paper's c~300 claim remains UNTESTED by this surrogate",
+  "next_action": "No further surrogate rebuild or independent MSD campaign is queued. Follow physics/qlops/README.md and physics/qlops/state.json for the official-author reproduction procedure, current readiness and resource-gated scheduling; its smoke is readiness evidence, not physical reproduction.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "workspace-architecture-fix",
+  "updated_utc": "2026-09-05T03:00:07Z",
+  "updated_by": "msd-official-source-handoff-fix",
   "sources": [
     "physics/RESULTS.md",
-    "physics/PROGRESS.md:298",
-    "physics/PROGRESS.md:461",
-    "physics/PROGRESS.md:704",
-    "physics/msd/README.md"
+    "physics/PROGRESS.md",
+    "physics/msd/README.md",
+    "physics/qlops/README.md",
+    "physics/qlops/state.json",
+    "physics/qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/results/summary.md",
+    "physics/qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/results/smoke.json",
+    "physics/qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/status.json",
+    "https://github.com/FujitsuResearch/Zero-level_CCZ_Distillation/tree/1b59e223590492e224bd8623a4e0bcba59029e01"
   ]
 }

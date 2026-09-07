@@ -1,0 +1,17 @@
+MPFR version   = 4.2.2, transcendental precision=192 bits
+x_* bracket = [0.69078759392498001, 0.690787593925]
+m_* derived   = [0.61729091208117659, 0.61729091208135323]
+beta derived  = [0.10005255986195014, 0.10005255986384369]
+t_* derived   = [0.36992289186769323, 0.36992289186772276]
+direct c_L > 0.382709087918735 : yes
+small-t eta(0.002) lower = 0.016672474402352748
+boundary v<=5e-5 lower    = 0.0011788376979667077
+boundary t>=1.4,v<=.1 lower= 0.035598095197518845
+tail t>=4.1 lower          = 0.010717682423498683
+local Hessian: min F_tt=0.13459156779665421, min F_dd=0.87181314699157286, max |F_td|=0.4645096021471406, min determinant=0.050114365218749776
+compact [0.002,0.1], v>=5e-05: leaves=238, local=0, splits=110, maxdepth=6, unresolved=0, min certified lower=0.00014683343626197839
+compact [0.1,0.34], v>=5e-05: leaves=363, local=10, splits=213, maxdepth=6, unresolved=0, min certified lower=1.2396204165999228e-06
+compact [0.34,0.4], v>=5e-05: leaves=245, local=27, splits=144, maxdepth=6, unresolved=0, min certified lower=0.00056012230503014744
+compact [0.4,1.4], v>=5e-05: leaves=722, local=10, splits=540, maxdepth=8, unresolved=0, min certified lower=6.9620924720995344e-06
+compact [1.4,4.1], v>=0.1: leaves=671, local=0, splits=351, maxdepth=2, unresolved=0, min certified lower=0.0044688168746738737
+PROPOSITION A.1 CERTIFICATE PASSED

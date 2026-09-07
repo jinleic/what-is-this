@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prospective-forward-test-registration",
+  "created_at_utc": "2026-09-04T01:47:12Z",
+  "status": "UNSPENT - REGISTERED, NOT RUN",
+  "explicit_non_execution": "This file registers a collection horizon and nothing else. No signal has been computed, no outcome has been read, no runner exists, no ordinal has been consumed, no alpha has been spent, and no gate has been evaluated. Running it requires a separate owner decision.",
+  "why_this_is_the_only_unspent_design": "frontier-loop-policy.json historical_data_boundary declares every historical calendar consumed. program_negative.json records 7 families over 6 upstream channels closed retrospectively with 0.04375 of the 0.05 familywise budget spent. The only data that is not yet historical is what the append-only collectors write AFTER a recorded collection start.",
+  "eligible_resource": {
+    "quant-liquidation-capture": {
+      "eligibility": "FULLY UNSPENT",
+      "evidence": "collector-audit-20260904.json: zero references in all 115 files of the 10 frozen campaign dirs.",
+      "integrity": "257,586 data records across the 5 completed UTC day files (111,092,429 bytes, immutable), 0 data-record monotonicity violations, byte-exact append-only; plus 3,610 data records in the in-progress 2026-09-04 file at the 2026-09-04T01:47:12Z byte pin. All 5 UTC day seams monotonic. Figures are byte-pinned and reproducible with `head -c <bytes_pinned>`; see collector-audit-20260904.json record_census.",
+      "audit_defect_to_respect": "collector-state.json is a stale sidecar (21.6 h behind). Recount bytes from files, never from the sidecar."
+    },
+    "quant-deribit-gex-capture": {
+      "eligibility": "PARTLY SPENT - trade-flow only, GEX BLOCKED",
+      "spent_window_utc": "2026-08-31T03:15:00Z -> 2026-09-02T09:30:00Z (deribit-gex-eventstop, FROZEN-NEGATIVE)",
+      "blocking_defect": "ticker.jsonl dead since 2026-08-30T12:03:37Z and the option ticker channel is not subscribed. open_interest and greeks exist ONLY in ticker records, so open-interest-weighted dealer GEX is not reconstructible for any date after that instant. A GEX forward test is INELIGIBLE until the subscription is restored and a new collection start is recorded."
+    }
+  },
+  "pre_registered_collection_horizon": {
+    "declared_before_any_observation_in_it": true,
+    "start_utc_inclusive": "2026-09-05T00:00:00Z",
+    "start_rationale": "Strictly after this registration timestamp and after the next UTC midnight, so no already-written byte is inside the horizon. Also strictly after 2026-09-01, excluding the 2026-08-31 bring-up outage (34.0 min and 73.6 min index gaps) documented in the collector audit.",
+    "minimum_duration_days": 28,
+    "end_rule": "The horizon closes at the FIRST UTC midnight at or after start + 28 days at which the eligibility conditions below are all met. If they are not met by start + 90 days the horizon closes UNMET and the design is retired without an outcome read.",
+    "hard_cap_utc": "2026-12-04T00:00:00Z",
+    "no_extension_clause": "The horizon may never be extended, re-anchored, or restarted to reach a sample. An unmet horizon is a terminal UNMET record, not an inconclusive to be retried."
+  },
+  "eligibility_conditions_for_the_horizon_to_be_readable": {
+    "collector_uptime_fraction_min": 0.98,
+    "max_tolerated_single_gap_minutes": 15,
+    "min_complete_utc_days": 24,
+    "monotonicity": "zero data-record monotonicity violations inside the horizon",
+    "byte_integrity": "every horizon day file hashed at horizon close and pinned before any signal is computed",
+    "restart_policy": "process restarts are permitted and must be counted; a restart that loses more than 15 minutes voids the affected day"
+  },
+  "binding_constraints_if_it_is_ever_run": {
+    "ordinal": "consumes the next unused ordinal; at k=8 that is alpha_8 = 0.0006944444444444445",
+    "alpha_note": "Registering a horizon spends no alpha. Alpha is consumed only when a mechanism is selected against it. This file deliberately does NOT select a mechanism.",
+    "freeze_order": "mechanism + gates + thresholds + runner + tests must be hash-frozen and reviewed BEFORE the horizon closes, and the contract sha256 recorded here, so that no threshold can be chosen after seeing the sample.",
+    "prohibited": [
+      "threshold tuning",
+      "re-windowing",
+      "pooling with any closed family",
+      "best-of variants",
+      "post-hoc subsets",
+      "horizon extension",
+      "reading any outcome before the contract is frozen",
+      "any deployment, capital-allocation or tradable-alpha claim"
+    ],
+    "claim_boundary": "A pass would establish only that a pre-registered rule survived one prospective window under its own gates. It would not establish tradable alpha, causality, capacity, or deployment readiness."
+  },
+  "what_this_registration_does_not_do": [
+    "It does not select a mechanism.",
+    "It does not choose a signal, an outcome variable, or a threshold.",
+    "It does not consume an ordinal or any alpha.",
+    "It does not authorize a runner to be written.",
+    "It does not reopen any closed family."
+  ]
+}

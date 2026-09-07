@@ -1,12 +1,62 @@
 # `na-compiler/` — certified-optimal small-instance transport scheduling
 
-**Status: BENCHMARK (smoke harness complete; one full parallelization-certificate set frozen; no multi-qubit campaign yet).** Exact ILP/SAT optima for neutral-atom zoned-array transport scheduling, computed against MQT QMAP's own output. Pure offline computation, `nice -n 10`, one core, explicit stop conditions.
+**Status (2026-09-05): fixed-placement strict batch-count headroom gate FROZEN-NEGATIVE.** No candidate search is queued on the tested benchmark. Earlier duration and exhaustive-state results below retain their original scope; they are not evidence of an unrestricted compiler advantage.
 
 Everything quantitative in this README is labeled:
 - **PROVED** — exact solver optimality proof archived (Z3 k−1 UNSAT + k SAT, or HiGHS `Optimal` with dual bound, in the campaign manifest).
 - **REPRODUCED** — a table in a frozen `campaigns/<ts>_<uuid>_<hash>/` rerun by `campaign_runner.py`.
 - **REPORTED** — single numerical probe (this README); rerun instructions included.
 - **DERIVED / INFERENCE** — modeling conclusions drawn from source reads, pinned with the source.
+
+## Baseline-headroom decision — 2026-09-05
+
+Before generating an AI scheduling rule, the preregistered assay compiled QFT and
+3-regular circuits (seeds 0/1) at 6, 8, 10 and 12 qubits with QMAP 3.9.0,
+explicit A-star placement and strict routing on the same 4×4 zoned architecture.
+**All 12 circuits, 242 transitions and 438 high-level batches were already
+optimal:** QMAP, true DSATUR, largest-first and smallest-last each used 438.
+Zero circuits met the escalation gate of at least 10% residual headroom in 6/12.
+
+The 1,475 physical `move` operations are **not** 1,475 independent-set batches.
+Load-to-store episodes were recovered without crossing gate or transfer-direction
+boundaries. Exact subset-DP optima agreed with Z3 UNSAT at k−1 / SAT at k.
+A separate standard-library verifier reparsed the raw NAViz with exact Fractions
+and found an explicit incompatibility clique matching every partition: 242/242.
+The assay used 1.033274 CPU seconds; the independent replay used 0.025658 seconds.
+The two 8-qubit regular interaction graphs are isomorphic; these are descriptive
+benchmark cases, not twelve independent statistical samples.
+
+Evidence: [`campaigns/20260906T012803Z_3c409686_c44470e4c9b4/`](campaigns/20260906T012803Z_3c409686_c44470e4c9b4/)
+contains the preregistration, runner, raw programs, SMT2 queries, all results,
+clique witnesses and review adjudication. Independent replay from workspace root:
+
+```sh
+nice -n 10 python3 -I -B physics/na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/verify_cliques.py
+```
+
+**Stop this benchmark's LLM batching search.** A restart needs demonstrated
+classical-baseline headroom on a different registered distribution or a changed
+placement/routing question. No conclusion follows about joint layout/routing,
+relaxed routing, hardware duration, fidelity or ghost-spot legality.
+[QMAP's newer IDS/relaxed-routing paper](https://arxiv.org/abs/2512.13790)
+must be considered before any state-of-the-art claim. This assay did not compare
+against it and did not establish an AI advantage.
+
+### Resource-contract audit — 2026-09-06
+
+**CLAIM VERIFIED, no new compiler run.** The frozen assay calls
+`RoutingAwareCompiler` directly with `log_level="error"`, strict routing,
+A-star placement and `max_nodes=100000` (`run.py:198–199`). Its source hash
+matches the recorded result, and all 517 frozen payload checksums match.
+The separate `compile_with_qmap` adapter omits `max_nodes` and therefore uses
+the installed 10,000,000-node default, but it is **not this assay's compiler
+path**. Changing it or rerunning the benchmark would not repair an error here.
+
+The preregistration names the twelve descriptive cases, fixed classical
+methods and null gap-closure policy when QMAP equals the optimum. No learned
+rule was evaluated and no generalization or AI-value claim follows. Such a
+claim would require a separate pre-outcome development/holdout protocol.
+[`Audit evidence`](../../data/portfolio-supervisor-20260906-na.json).
 
 ## Constraint model (pinned 2026-08-29 from first-hand reads)
 

@@ -1,6 +1,7 @@
 # Theoretical CS results — authoritative index
 
-**Current through 2026-09-01.** Repository opened 2026-08-29; a second wave of gate-C
+<!-- cs-autonomy-freshness --> Historical autonomous closeouts through **2026-09-05 10:15 UTC**; separate frontier additions through **2026-09-06** appear below.
+**Historical curated index through 2026-09-01; later updates are dated below.** Repository opened 2026-08-29; a second wave of gate-C
 campaigns and a repo-wide source audit landed 2026-08-30, followed by the dated
 frontier and mutable-source audit on 2026-08-31, and on 2026-09-01 the
 `rs-pe3d/` H-MINLINE falsification with the certified T-DGE replacement and the
@@ -10,6 +11,12 @@ are literal and defined in [`README.md`](README.md#evidence-labels):
 checked mathematics; **COMPUTATIONAL-EVIDENCE** is non-proof numerical
 evidence; **CITED-DEPENDENCY** is imported; **OPEN** is unresolved; **FAILED**
 means the wording or inference is not established.
+
+## Frontier scouting — 2026-09-06
+
+| target | disposition | observed result | evidence |
+|---|---|---|---|
+| [`xor/`](xor/README.md) | **FROZEN-INCONCLUSIVE; rank C for further local search** | Public 88-XOR AES MixColumns reproduced. No saving in 258 registered windows; independent search checked/lower-bounded 239 but returned UNKNOWN on 19. No new construction or completed irreducibility claim. | [`Frozen assay and adjudication`](xor/campaigns/20260906T021828Z_57f63dca_6cc09db616c6/) |
 
 ## Headline result
 
@@ -4171,3 +4178,742 @@ $[4.083,6.0]$ remains certified only at tile 3 (Campaign C), and the two
 never-run bands $[1.0,1.3]$ and $[1.45,1.75]$ — which already hold valid
 certificates from the sound direct-D.4 instrument — are queued as
 corrected-lineage close-outs that supersede nothing.
+
+## `kg/` corrected-envelope close-out $[1.0,1.3]$ CERTIFIED, 2026-09-03
+
+All **33/33** ratio-1.008 tiles certify, with complete tile indices $1..33$,
+every tile `passed`, and `certified_prefix_right` $=1.3$ exactly.  The worst
+certified margin is
+$4.05510296637725640452892980769\times10^{-7}\pm2.69\times10^{-37}$ at
+tile 15, certified at 65,536 panels.  Owner recomputation from the tile
+records matches the frozen aggregate: 33,086 envelope evaluations, panel
+histogram $1024{:}12556$, $2048{:}390$, $4096{:}5496$, $8192{:}152$,
+$16384{:}4838$, $32768{:}144$, $65536{:}4706$, $131072{:}4804$, and zero
+uses of the registered $2^{19}$ fallback.  Cost was 31,992.06 tile CPU-s plus
+9.53 control CPU-s (8.89 CPU-h total) of a 216,000 s cap.
+
+The registered positive controls and the planted negative ratio-1.05 tile
+both fired before band compute; the planted margin was
+$-0.004858506038358754\ldots$.  Run
+`20260903T113613Z_009e3270_20cccefcc3e0`, gate
+`closeout-1p0-1p3-corr-cap2p17`, is **FROZEN-CERTIFIED**.  Its checksum
+ledger has SHA-256
+`cf0cf96ae71b8ac754d99ec678ea2ddc5d867142f4810751b2f8cdcc9a1159cc`
+(54/54 entries owner-verified).  The preregistration was amended before
+controls or band compute only to correct an input artifact filename/hash
+pair; provenance preserves init hash
+`cd3292cc17d35dd22771021e18e34b3b04ef029c7329397e6c01db12cbacb9f0`,
+post-amendment hash
+`ad0d0aaa7a6d368001223bbbc6b25bbaf8af34cc2e812f7c07a7af292f7c42cf`,
+and final result-appendix hash
+`d560c071c7bbb1fc204dadb14910c3624bc04cb7aa0ceeef0613ed90bb8523d5`;
+no scientific knob changed.  This is a corrected-lineage consistency
+close-out and does not supersede the independent direct-D.4 certificate.
+
+## `rs-pe3d/` full two-factor GRS converse — the all-distinct layer is now classified in general, 2026-09-04
+
+**The two open directions of the general-size theorem are closed.**  Let
+$V=F[x]_{<r_A}\otimes F[y]_{<r_B}$ with $r_A,r_B\ge2$, and let $S$ be a
+coordinate-injective set of evaluation points.  Over any field:
+
+1. If $|S|<r_A+r_B$, then $S$ is independent.  For each point, partition
+   the other $|S|-1$ points into at most $r_A-1$ $x$-roots and at most
+   $r_B-1$ $y$-roots; their product is an explicit polynomial in $V$ that
+   separates that point from every other point.
+2. If $|S|=r_A+r_B$ and $S$ is dependent, its relation has full support.
+   Applying that relation to every all-but-two split polynomial and swapping
+   two roots forces equality of every $x$- and $y$-cross-ratio.  Three-point
+   reconstruction then gives a unique nondegenerate Möbius map $M$ with
+   $y=M(x)$ on all of $S$.
+
+Together with the previously certified forward direction, there are no
+all-distinct circuits below size $r_A+r_B$, while those at size
+$r_A+r_B$ are **exactly** the Möbius restrictions (and may be absent when a
+finite evaluation grid contains too few points on every such graph).  Their
+finite-set count is
+$\sum_{M\in\mathrm{PGL}(2,F)}\binom{k_M}{r_A+r_B}$.
+
+The exact run reproduced 17 anchor cells and nine new unbalanced cells over
+$\mathrm{GF}(7)$, $\mathrm{GF}(11)$, and $\mathrm{GF}(13)$.  All 1,577
+dependent sets passed dual-rank, full-support, every-split, every-cross-ratio,
+and two-seed reconstruction checks; direct support sets equalled PGL support
+sets with zero mismatches.  The new unbalanced counts included
+$(2,5),n=7$: $42/2/2$ over the three primes,
+$(3,5),n=8$: $8/4$ over GF(11)/GF(13),
+$(2,6),n=8$: $8/4$, and $(4,5),n=9$: $6/2$.
+An owner post-freeze check outside the registered table,
+$(2,3),k=n=5$ over GF(17) on disjoint coordinate sets, found exactly two
+dependent matchings and exactly the same two Möbius matchings among all 120.
+
+Controls ran before the censuses: a known Möbius circuit was accepted; two
+non-Möbius matchings, circuit-minus-one, corrupted sub-size sets, a wrong
+seed, a concatenation impostor, and dimension plants were rejected.  The
+completing launch recorded 199 assertions, 224.99 CPU-s of a 5,400 s cap,
+`RLIMIT_CPU=(5400,5400)`, bytecode guards, and exit 0.
+
+Run `20260904T020255Z_45d37a74_920d291c4cbe`, gate
+`H-GRS-CONVERSE`, is **FROZEN-CERTIFIED**.  The checksum ledger has SHA-256
+`ac692769575f2b1bc7ac8cbbb4e90fef8f221b9ec07734a0934c0e74dc883603`
+(16/16 entries owner-verified).  Two pre-compute corrections are explicit:
+the original prereg hash
+`a835083b2d3a6142201c4848c658283e393365d1973bb96bf471745b1ad5ad75`
+is preserved; a reconstruction typo was corrected; and an impossible O6
+request to apply the below-threshold separator at the threshold itself was
+rebound to O1--O4, with amended-text hash
+`e206b88100f8832a286fe6d52a4739900a9791d5e7ce4eba91879507aca6a0f6`.
+Two aborted launches and the complete fresh rerun are preserved and
+disclosed.  Tied-coordinate strata remain outside this theorem.  The
+multi-factor analogue at
+$K=2+\sum_i(r_i-1)$ is already preregistered as the next gate.
+
+## `mm3/` Laderman's full ternary orientation family has no sub-55 candidate — minimum certified lower bound 59, 2026-09-04
+
+The last unswept named-public slice is closed.  For `laderman23`, the exact
+three-stage linear-SLP census covered every ternary-unimodular sandwich
+$(P,Q,R)\in T^3$, $|T|=6960$, composed with all three cyclic
+$\sigma$-orientations.  The proved reduction
+$6960=145\times48$ turns the
+$3\times6960^3=\mathbf{1{,}011{,}460{,}608{,}000}$ raw instances into
+$3\times145^3=9{,}145{,}875$ data-level points.  Exactly 11,648 points per
+$\sigma$ class were all-ternary survivors; all 34,944 were active and
+decided.
+
+Every class has the same certified-lower-bound histogram: minimum **59**
+(one point, the all-monomial triple), next tier 61 (12 points), and maximum
+86.  Hence there are **zero** survivors with certified total lower bound
+$\le54$.  This is a negative for the registered Laderman orbit, not a
+universal no-54 theorem and not an exact circuit count; decompositions
+outside the five named public triples, non-ternary alphabets, and larger
+$\mathrm{GL}(3)$ actions remain open.
+
+The load-bearing floor layer was checked twice on every positive pair-side
+instance: complete memoized subset DFS and the frozen slot-availability CNF
+agreed on all **8,208** instances.  Of these, 1,179 were SAT and 7,029 were
+UNSAT; every UNSAT row has a DRAT-to-LRAT proof accepted by both pinned
+checkers.  Owner audit verified all 8,344 checksum entries, all 7,029 LRAT
+file hashes, all checker return codes, and zero DFS/CNF disagreements, then
+independently replayed one retained CNF/LRAT pair through both checkers
+(`s VERIFIED`, `c VERIFIED`).  The in-run post-audit added 138 checks,
+12 dual-checker replays, and 90 fresh pair decisions with zero failures.
+
+Acceptance controls re-expanded the hash-pinned Laderman factors over all
+729 Brent identities in integer and `fmpz` arithmetic, reproduced the
+frozen named rows, and accepted known circuits at their exact addition
+counts.  Planted gate deletion, operand corruption, an UNSAT floor paired
+with a known-SAT chain, and wrong-action transforms were rejected.  The
+$+14$ output-stage gap's activity precondition held on every survivor.
+Four pre-verdict instrument defects are preserved; each authoritative
+family was rerun after repair.
+
+Run `20260904T015105Z_49ed8737_988c6df478f1`, gate `sub55-newspace`, is
+**FROZEN-NEGATIVE**.  Checksum-ledger SHA-256:
+`abb8e874035a6c104b232b1ecf78e98805107b44deb6a8fcb6e0c2c85ae0ac37`
+(8,344/8,344 entries owner-verified).  A post-freeze arithmetic audit found
+one prose-only defect: frozen `report.md` prints
+$3{,}034{,}381{,}824{,}000$, multiplying the raw-space cardinality by three
+twice.  The preregistration, computed `campaign_result.json`, reduction
+identity, enumerated counts, and corrected target README all carry the
+right value $1{,}011{,}460{,}608{,}000$; no verdict quantity depends on the
+bad display constant.
+
+## `rs-pe3d/` all-distinct circuit law generalized to every number of GRS factors, 2026-09-04
+
+For $m\ge3$ Vandermonde/GRS factors with $r_i\ge2$, distinct evaluation
+coordinates, and
+$$K=2+\sum_i(r_i-1),$$
+every coordinate-injective set of size $k<K$ is independent.  At size $K$,
+the circuits, **if any**, are exactly the supports on simultaneous projective
+graphs $z_j=M_j(z_1)$ for unique nondegenerate maps
+$(M_2,\ldots,M_m)$.  Consequently their exact number is
+$$\sum_{(M_2,\ldots,M_m)}\binom{k_M}{K},\qquad
+k_M=\#\{z\in X_1:M_j(z)\in X_j\ \forall j\ge2\}.$$
+The sum can be zero; existence at $K$ is not asserted for arbitrary finite
+evaluation sets.
+
+The proof is field-general.  Capacity-partition separators give a Lagrange
+system below $K$.  At $K$, an all-partition relation and a two-victim swap
+between any two coordinate buckets force equality of every corresponding
+cross-ratio; three seeds then reconstruct each unique $M_j$.  Conversely,
+using each map's **individual reduced denominator** pulls every product
+polynomial back to a univariate numerator of degree at most $K-2$, forcing
+dependence; the separator result makes it a circuit.  This also subsumes the
+certified two-factor law.
+
+The exact run made 59 assertions and passed the full converse pipeline on
+1,841/1,841 dependent supports.  Exhaustive anchors gave
+$(2,2,2),n=5$: 36/100/36 over GF(13)/GF(11)/GF(7);
+$(2,2,2),n=6$: 448/1,056 over GF(13)/GF(11); and
+$(2,2,3),n=6$: 4/16, with all 3,110,400 size-five supports independent at
+each of GF(13) and GF(11).  Constructive simultaneous-graph sets and 200
+random sets per cell also passed at $(3,3,3),K=8$ and
+$(2,2,2,2),K=6$.  Runtime was 679.433 CPU-s under a 5,400-s cap.
+Acceptance, non-graph rejection, sub-$K$ rejection, wrong-seed rejection,
+Kronecker-layout, ambient-rank, and separator controls all passed.
+
+Owner post-freeze verification checked all 15 checksum entries
+(ledger SHA-256
+`87655eac1ced6d30e174d2ddd9899829a14410919296b76e593838256e4afe30`),
+the byte-identical preregistration hash
+`25d7884e9951797dc55da39351fd8cf498dad44c9c580b60a3f2193eda8c12de`,
+and an independent 14,400-support GF(13) census at
+$(2,2,2),n=5$: direct rank found 36 dependent supports, while six admitted
+PGL maps gave $6^2=36$.  An identity-graph plant had rank four with every
+deletion still rank four; a one-transposition non-graph plant had rank five.
+Three pre-census implementation aborts are disclosed and preserved; launch
+four reran the complete registered workload without weakening an assertion.
+
+Run `20260904T025704Z_7c5edb95_267bbf870b1d`, gate
+`H-GRS-M3-GENERAL`, is **FROZEN-CERTIFIED**.  Frozen theorem section 9 and
+the agent completion summary reuse the phrase “spark ... exactly $K$”; read
+that phrase only through the explicit conditional-existence correction
+above and frozen theorem section 0.  The registered next gate,
+`H-SPARK2-CONVERSE`, has been launched to close the remaining
+$d_A=2$ and/or $d_B=2$ crossing-converse boundary.
+
+## `oct-rank/` exact field switch certifies a strict real/complex rank gap for the three-slice target, 2026-09-04
+
+For
+$$T_F=\operatorname{blockdiag}(\tau,\tau)\in
+\mathbb R^3\otimes\mathbb R^8\otimes\mathbb R^8,$$
+the complex tensor rank is **exactly 12**.  The lower certificate is the
+$p=1$ Koszul flattening with the three-dimensional slice mode:
+$\operatorname{rank}K_{T_F}=24$ and each rank-one summand contributes at
+most $\binom{2}{1}=2$.  The upper certificate is an explicit 12-term
+$\mathbb Q(i)$ CP decomposition, pulled back asymmetrically as
+$(S^{-1}b,S^{\mathsf T}c)$ and checked on all 192 integer tensor entries.
+Together with the inherited certified real floor
+$\operatorname{rank}_{\mathbb R}(T_F)\ge13$, this gives
+$$\operatorname{rank}_{\mathbb R}(T_F)\ge13>12
+=\operatorname{rank}_{\mathbb C}(T_F).$$
+The real-rank frontier itself remains exactly $\{13,14\}$; the campaign
+does not decide either value.
+
+Splitting one witness term produced a nonzero 13-term $\mathbb Q(i)$ point
+of the raw 192-equation, 247-variable rank-13 CP system.  Therefore its
+ideal over $\mathbb Q$ is proper: the prior N2 clause seeking a
+$\{1\}$ certificate over $\mathbb Q$ was impossible, and a
+characteristic-zero lower bound of 14 must use real/order structure rather
+than complex infeasibility.  The gauge-extended system was not claimed:
+two of 13 terms were isotropic in the registered gauge chart, so its point
+and the pinned E1 observation were explicitly left uncertified.
+
+All accept/reject controls passed: frozen rank-3 and rank-8 witnesses;
+one-coordinate corruptions of both $T_C$ and $T_F$; $p=1$ Koszul plants
+of ranks 6/4; newly added $p=2$ plants of ranks 3/2; Kronecker-layout,
+dimension, and frozen-object anchors.  The corrected sizing gate proves
+only that the dense Ncert route is RAM-excluded from degree four
+(61,503,015,936,000 bytes at $d=4$) and the dense SOS Gram route from
+degree six (52,962,632,000,000 bytes at $d=6$) on the recorded
+103,079,215,104-byte machine.  Ncert $d=3$ and SOS $d=4,5$ remain
+unexcluded by RAM.
+
+Owner post-freeze verification checked all seven checksum entries
+(ledger SHA-256
+`da90c71a6ef3c78878446efd02e247c122f73fddc0828ce30a5cf4098eb17e73`)
+and the byte-identical preregistration hash
+`9580e520c3092fba7a16c97d6c453af0802f5cdbeac30f2d2f82969b508add00`.
+An independent exact reconstruction of the quaternion multiplication
+tensor found zero witness mismatches and exactly one mismatch after the
+registered target corruption.  A separately assembled Koszul matrix had
+full rank 24 modulo both 5 and 101, hence rank 24 over $\mathbb Q$.
+
+Run `20260904T034332Z_f5a61843_0333458ed434`, gate
+`n3-technology-switch`, is **FROZEN-CERTIFIED**.  Two earlier
+preregistrations were frozen inconclusive before authoritative compute
+after incorrect divisors, pullback language, logical implications, and a
+RAM overclaim were found; the final preregistration binds both invalidated
+hashes and all repairs.  Successor gate `n4-tower-complex-rank` has already
+been committed, initialized, and launched against the rank of $\tau$.
+
+## `oct-rank/` quaternion-tower complex ranks: $\tau=6$ and $T_C=2$ exactly, 2026-09-04
+
+The exact field-switch technology closes two smaller rungs.  For the
+quaternion three-slice tensor
+$\tau=(I_4,L_i,L_j)\in\mathbb R^3\otimes\mathbb R^4\otimes\mathbb R^4$,
+$$\operatorname{rank}_{\mathbb C}(\tau)=6.$$
+The slice-mode $p=1$ Koszul matrix has exact rank 12 and per-summand
+divisor two, while a six-term $\mathbb Q(i)$ witness matches all 48
+entries.  With the frozen real rank seven, this is an exact gap of one.
+Likewise the complex-multiplication tensor $T_C$ has complex rank exactly
+two (two-term witness and flattening lower bound two), versus frozen real
+rank three.
+
+For the full quaternion multiplication tensor $T_H$, this gate certifies
+only $5\le\operatorname{rank}_{\mathbb C}(T_H)\le8$: the eight-term
+witness matches all 64 entries and every registered Koszul map has raw
+rank 16, giving the battery floor five.  This interval is deliberately
+nonfinal; the expected exact value seven requires the separately launched
+Strassen/Alder--Strassen successor.
+
+A nonzero seven-term split of the $\tau$ witness also matches all 48
+entries, while the registered one-coordinate corruption produces one
+mismatch under both the six- and seven-term points.  Frozen rank-3 and
+rank-8 real witnesses, a corrupted $T_C$, four Koszul plants, dimension,
+Kronecker-layout, and source-anchor controls all passed.  The run used
+0.029 CPU-s.
+
+Owner post-freeze verification checked all seven checksum entries
+(ledger SHA-256
+`7e76c62fa2d0aee90281e6290a42a504c3e9266ea70f0b07326e91efb07e7bbe`)
+and the byte-identical preregistration hash
+`8081649a8e2d691b3538c7e4effc63271402725bbdf48e4da89bd2c12e1f363c`.
+Independent exact reconstruction found zero mismatches for the six-term
+$\tau$, two-term $T_C$, and eight-term $T_H$ witnesses, one mismatch for
+the corrupted $\tau$, and full rank 12 for the $\tau$ Koszul matrix
+modulo both 5 and 101.
+
+Run `20260904T035341Z_cc4a6ac5_e25c6371c8ce`, gate
+`n4-tower-complex-rank`, is **FROZEN-CERTIFIED**.  Frozen verdict
+lines 30--32 overstate the conjectural pattern by saying every rung has
+gap exactly one while writing only
+$\operatorname{rank}_{\mathbb R}(T_F)\ge13>12$; the authoritative
+interpretation is: exact gap one is proved for $T_C$ and $\tau$, a strict
+gap of at least one is proved for $T_F$, and “gap one at $T_F$” is only
+the prediction that its still-open real rank is 13 rather than 14.
+
+## `kg/` corrected-envelope close-out $[1.45,1.75]$ CERTIFIED, 2026-09-04
+
+All **24/24** ratio-1.008 tiles certify under the corrected two-dimensional
+even-box envelope, with complete indices $1,\ldots,24$, exact contiguous
+endpoints from $1.45$ through $1.75$, and every accepted leaf having a
+strictly positive outward-rounded Arb margin.  The worst tile is 11:
+
+$$
+2.62422886297790763936184607777\times10^{-6}
+\ \mathbin{\pm}\ 1.14\times10^{-36},
+$$
+
+at 131,072 panels.  The registered $2^{19}$ fallback was never used.
+
+Owner recomputation from the 24 frozen tile records matched the aggregate
+exactly: 26,972 envelope evaluations; panel histogram
+$1024{:}9870$, $4096{:}4946$, $16384{:}4220$, $65536{:}3994$,
+$131072{:}3942$; 24,181.684663 tile CPU-s plus 9.385688 control CPU-s.
+Every margin ball has positive lower endpoint, all tile boundaries match
+textually, and the tile CPU/evaluation/histogram sums equal `result.json`.
+
+The pre-compute controls passed: the 16-family startup battery, frozen
+instrument-identity reconciliation, the near-miss discriminator
+($-4.1478\ldots\times10^{-8}$ at 32,768 panels and
+$+8.7256\ldots\times10^{-5}$ at 131,072), and the planted ratio-1.05
+rejection with margin $-0.004858506038358754\ldots$.  Run
+`20260903T204806Z_af17de34_ab13b8c9b89c`, gate
+`closeout-1p45-1p75-corr-cap2p17`, is **FROZEN-CERTIFIED**.  Its checksum
+ledger has SHA-256
+`03514672512e6485c014ea5f0d59e0699e75ecd256e08fb014fe8c83697fc628`
+(44/44 entries owner-verified); the init preregistration hash is
+`946d8b894b782c89926f9aef5432fb59f141bc739fb7778ab1478c699102ea99`.
+
+This is a corrected-lineage consistency close-out and supersedes nothing:
+the independent direct-D.4 certificate remains valid.  Successor run
+`20260904T050531Z_fae0b1cf_44e93966ae8d` has been committed, initialized,
+and launched to certify $[4.083,6.0]$ tiles 4--49 at cap $2^{19}$, after the
+standing A/C certificates for tiles 1--3.
+
+## `oct-rank/` full quaternion multiplication has complex rank seven, 2026-09-04
+
+For the Hamilton quaternion multiplication tensor
+$T_H\in\mathbb R^4\otimes\mathbb R^4\otimes\mathbb R^4$,
+
+$$
+\operatorname{rank}_{\mathbb C}(T_H)=7,
+$$
+
+with the mandatory composite evidence label: **upper bound
+MACHINE-VERIFIED / lower bound CITED-DEPENDENCY (source-locked)**.
+
+For the upper bound, the run identified `mult_Q[p,q,r]` directly with the
+64-entry Hamilton table in basis $(1,i,j,k)$.  It used the exact
+$M_2(\mathbb Q(i))$ basis $(I,X_i,X_j,X_iX_j)$, verified all 64 change-of-
+basis identities with output orientation $(C^{-1})_{r,d}$, solved the four
+rank-seven $16\times7$ Strassen output systems exactly, and transported the
+seven terms as
+$(C^{\mathsf T}u,C^{\mathsf T}v,C^{-1}w)$.  The resulting $\mathbb Q(i)$
+witness matches all 64 entries and has no zero factor; changing only
+$T_H[0,0,0]$ produces exactly one mismatch.  The derived Strassen output
+vectors are the classical seven:
+$(1,0,0,1)$, $(0,0,1,-1)$, $(0,1,0,1)$, $(1,0,1,0)$,
+$(-1,1,0,0)$, $(0,0,0,1)$, and $(1,0,0,0)$.
+
+For the lower bound, Alder--Strassen's
+$L(A)\ge2\dim A-t(A)$ is source-locked to
+DOI `10.1016/0304-3975(81)90070-0`.  The exact matrix-unit argument records
+that every nonzero two-sided ideal of $M_2(\mathbb C)$ contains $E_{12}$ and
+then every $E_{ij}$; hence $\dim A=4$, $t(A)=1$, and the cited theorem gives
+seven.  The primary full text was unavailable to the source-lock session, so
+this half is deliberately not called machine-certified.
+
+The frozen N4 eight-term witness independently passed 64/64 and rejected the
+same corruption.  A separate no-import verifier rebuilt the Hamilton table
+from an independent basis-index/sign rule and accepted the seven-term witness
+with SHA-256
+`6e3bd5ae1f00c97d089975720e5907c0e81474e913eed38bca04b4c9ebd45b2f`.
+Owner reconstruction directly from the serialized factors likewise found
+zero mismatches and all factors nonzero.
+
+Run `20260904T044841Z_861bb779_61abb80d3b13`, gate
+`n5-direct-strassen-q`, is **FROZEN-CERTIFIED**.  Its preregistration is
+byte-identical at SHA-256
+`187e2c8d244df75a20bd83e3119a8c622ef3f5f2940e54d535acfc1f715e85ee`;
+the checksum ledger has SHA-256
+`5abe84739c3e4e6ed9d106da9e7a50fc625a84789d6c54ce0d9721c9114d9527`
+(12/12 entries owner-verified).  Two earlier N5 runs were frozen
+inconclusive before execution when static review found incorrect Strassen
+outputs, change-of-basis orientation, simplicity indices, slice-basis sign,
+and an unjustified $S_0$ pullback; they contribute no evidence.
+
+No real-rank claim changes: the $\{13,14\}$ frontier for $T_F$ and
+$18\le\operatorname{rank}_{\mathbb R}(T_O)\le25$ remain open.
+
+## `rs-pe3d/` spark-two boundary converse and exact extra-family count, 2026-09-04
+
+Let $A=(a_u)$ and $B=(b_v)$ have nonzero columns over a field, with
+$d_A=2$ and $d_B=\operatorname{spark}(B)\ge2$.  The size-$d_B$,
+profile-$(2,d_B)$ circuits of the product columns $a_u\otimes b_v$ are
+exactly
+
+$$
+\{u\}\times T\ \cup\ \{u'\}\times(J\setminus T),
+$$
+
+where $\{u,u'\}$ is a proportional pair,
+$J\in\operatorname{Circ}_B(d_B)$, and
+$\varnothing\ne T\ne J$.  If $a_{u'}=\lambda a_u$, their unique relation
+has coefficients
+$\gamma_{u,v}=\tau c_J(v)$ on $T$ and
+$\gamma_{u',v}=\tau\lambda^{-1}c_J(v)$ on its complement.  Consequently
+
+$$
+N_{(2,d_B)}
+=C_A(2)\,C_B(d_B)\,(2^{d_B}-2),
+$$
+
+with the symmetric formula when $d_B=2$.
+
+The proof is field-independent linear algebra.  An independent active row
+pair forces two sub-spark factor relations and hence zero coefficients; a
+proportional pair reduces dependence to
+$B(\alpha+\lambda\beta)=0$.  A dependent $d_B$-set is a factor circuit,
+whose one-dimensional full-support relation transfers invertibly to the
+product support.  The support itself recovers the row pair, $J$, and $T$, so
+the count has no collisions.
+
+Crossings are precisely $|T|=1$ or $d_B-1$.  The two descriptions coincide
+when $d_B=2$ and exhaust all six partitions when $d_B=3$; thus those two
+boundary cases are crossing-only.  For every $d_B\ge4$, there are exactly
+$2^{d_B}-2-2d_B$ additional noncrossing partition circuits per factor-pair
+choice.
+
+The exact run swept 9,300 candidates in 11 prime/branch cells and checked 536
+one-dimensional relation patterns.  At $(2,4)$ each prime had 70 circuits
+(40 crossing, 30 extra) and 980 independent candidates; $(2,3)$ had 60
+crossings and no extras; $(2,2)$ had the two diagonal crossings; the
+symmetric $(4,2)$ cells repeated 70/40/30 with a genuine nonunit
+$\lambda=2$ and rejected the inverted $\lambda^{-1}$ recovery on all 70
+circuits.  All 4,500 registered below-threshold supports were independent.
+Owner-independent GF(13) enumerators reproduced both 70/40/30/980
+distributions and directly verified that multiplying by $\lambda^{-1}$ on
+the second row fails while the stated relation vanishes.
+
+Run `20260904T040116Z_00df70c5_9bf664de2def`, gate
+`H-SPARK2-CONVERSE`, is **FROZEN-CERTIFIED** after 120/120 final assertions.
+Its 30-entry checksum ledger is owner-verified and has SHA-256
+`6053edb99e60c2b03bc8e6864f8f064b2454757121169237827da07eac14fedd`;
+the original preregistration and run copy are byte-identical at
+`57c2498171849138a3abd6e487e5c589268caed0e0fa93571c2199c79d92a1f6`.
+All six failed or coverage-incomplete launches and five binding amendments
+remain frozen in the ledger.  Successor gate `H-C3-34-RESIDUAL-POINT`, run
+`20260904T051205Z_d03471d8_0604b708af38`, is committed and initialized; it
+separates a universal Bezout residual-length lemma from its bounded GF(17)
+existence/minimality experiment.
+
+## `oct-rank/` corrected Krawczyk replay and scope repair, 2026-09-04
+
+Post-freeze review found a theorem-critical error in the square-slice
+Krawczyk source with SHA-256
+`781e51ec1a72cfb8acf7e7c7b1e44a96cac011ec6f46dc61e88f5b7e01b87035`,
+used by Route F and copied byte-for-byte by N1.  After subtracting the
+linearization of $abc$, the exact remainder is
+
+$$
+da\,db\,c_0+da\,dc\,b_0+db\,dc\,a_0+da\,db\,dc.
+$$
+
+The frozen code instead weighted $P_aP_b$ by $|b_0|$ and $P_aP_c$ by
+$|c_0|$; the correct weights are $|c_0|$ and $|b_0|$.  The error is
+sign-indefinite and can underbound: an independent asymmetric scalar control
+has exact remainder and corrected bound 385, while the historical expression
+returns 105.  Therefore none of the historical formula-sensitive
+containments or exclusions is accepted merely from those frozen bytes.
+
+A fresh append-only audit in run
+`20260904T052006Z_e5f2adce_0e7798f95678` used corrected-core SHA-256
+`7daff00369e2ad3b368428e7a349b15b8ad37b397cacfa845ed56e03d2873e1b`.
+It exhausted all eight solved/free masks and 64 rational corner/zero cases,
+checked direct expansion and $|Y|W$ propagation independently, rebuilt the
+exact residuals and Jacobians, verified every exact square inverse, and
+outward-Arb-checked every accepted strict margin.  A separate read-only
+mathematical/code review found no further theorem-critical defect.
+
+The corrected replay re-establishes every classification that was actually
+executed: the selected Route-F CP center and its independent decimal parse
+remain no-containment with box-local exclusion (first at $\rho=10^{-4}$);
+$\tau_7$ still contains at $10^{-3}$; the Route-F and N1 $\tau_6$ probes
+remain no-containment with box-local exclusion; PPOS still contains at
+$10^{-4}$; and the actual PWRNG box remains no-containment with exclusion
+first at $10^{-3}$.  All first decisive rungs are unchanged.  Corrected audit
+verdict: **PASS-CLAIMS-UNCHANGED**, 187.834240 CPU-s at nice 10; result
+SHA-256
+`f48d264de479f711cec75ad94a62d92a0b968229302cce386e5cf129f1fa1b9d`,
+independent-review SHA-256
+`3a0fc9c3d75ad64cd840d345cfe52b109906f7ad744a00967ec14eae1786a99d`.
+
+Four collateral record corrections are binding:
+
+1. Route F executed 15 radii, adding unregistered $1$ and $10^{-1}$ ahead of
+   its registered 13-rung suffix beginning at $10^{-2}$.  Those rows were
+   non-decisive; every first accepted/excluded rung above lies in the
+   registered suffix.
+2. Route F certified only its selected CP center.  Its EXT candidate never
+   entered `certify` and was not serialized.  The earlier statement that
+   boxes around “both polished candidates” were excluded is **retracted**;
+   corrected exclusion covers the selected CP center only (under both
+   recorded rational parsings).
+3. N1 preregistered PWRNG around the “best N1 candidate,” although controls
+   ran before that sweep.  The code actually used Route F's selected-CP CSV,
+   whose hash was omitted from N1's seed-input ledger.  Its corrected result
+   is an unregistered-center box-local diagnostic, not a valid
+   preregistered N1 control.
+4. N1's frozen prose names R18 as its best seed; `n1_results.json` proves it
+   was R22 at relative residual
+   $1.4139463464525952\times10^{-6}$.  The authoritative numerical minimum
+   was already correct.
+
+N1 admitted zero main candidates, so its 40-seed no-admission observation did
+not invoke the defective core and remains intact.  Route F's exact block
+identities, direct rank-14 upper bound, and frozen lower-13 chain are likewise
+independent.  Thus the real rank remains **OPEN in $\{13,14\}$**.  Every
+exclusion above is fixed-box only: none is a global infeasibility or lower-rank
+claim.  Gate A/C's published-certificate replays and the N3--N5 exact
+certificates use different instruments and are unaffected.
+
+## `oct-rank/` N6 controlled singular-anchor close, 2026-09-04
+
+Run `20260904T052006Z_e5f2adce_0e7798f95678`, gate
+`n6-qi-real13-descent`, is **FROZEN-INCONCLUSIVE-CHART**.  Its first launch
+was preserved as nonadjudicative because the target chart ran before the
+preregistered full-path plant control.  After an append-only ordering repair
+and independent re-review, the clean second attempt ran the plant first and
+then reproduced the target-chart stop.
+
+The instrument control passed end to end at seed `20260904`: conjugate
+continuation met at a real midpoint, the exact real plant had a strict
+Krawczyk containment first at $\rho=10^{-4}$, and the target corrupted by
+$1000$ in one coordinate had **NO-CONTAINMENT-ANY-RUNG** with box-local
+exclusions.  The adjudicative plant artifact has SHA-256
+`e950f4311de21d2386b9e726864152d58673101b52ec5877428da496c47feead`.
+
+At the registered T5 anchor, exact substitution still holds for the
+13-term point and its conjugate, but an independent driver-free
+$\mathbb Q(i)$ elimination found full Jacobian rank $161/192$ on all 247
+complex coordinate columns, hence realified rank $322/384$ and kernel
+dimension 86.  The float-QRCP-selected submatrix has the same exact rank, so
+no alternative column choice can provide the required square chart at this
+point.  Independent-audit SHA-256:
+`553c080597412412d687de7d1998eb2b7d8375e2818f9caf5b7a53be975d49ce`;
+terminal-result SHA-256:
+`e8b5513e0b64830973f0a6417ea85066637f163e0ffa77c1d75f6fbe99e50e91`.
+
+This is failure to certify, not evidence for real rank 14.  The frozen
+lower-13 chain remains cited, the real-rank frontier remains
+$\{13,14\}$, and $18\le R_{\mathbb R}(T_O)\le25$ is unchanged.  The next
+gate targets a smooth point in the rank-13 solution fiber rather than trying
+another chart at this provably singular anchor.
+
+## `rs-pe3d/` residual lemma and exhaustive finite-pool close, 2026-09-04
+
+The universal residual-length-one statement is conditional but analytic:
+eleven distinct rational affine points with injective projections, a
+two-dimensional vanishing pencil of bidegree (2,3), no common geometric
+component, and local intersection length one at each point leave a reduced
+rational residual projective point in the proper length-12 complete
+intersection. It need not lie in the affine search grid. This does not supply
+existence or full-support circuit minimality. The proof and independent
+NO BLOCKER review are linked from
+[`H-C3-34-RESIDUAL-FULLPOOL`](rs-pe3d/campaigns/20260904T152816Z_bb611cd1_455c4fdc03e3/VERDICT.md).
+Its POINT predecessor `20260904T051205Z_d03471d8_0604b708af38` closed
+**FROZEN-INCONCLUSIVE** after the registered one-million-pair E-empty sample.
+
+FULLPOOL is now producer-closed **FROZEN-CERTIFIED: E-empty in the registered
+finite pool**. Clean reviewed launch 6 exhausted all **41,587,200** compatible
+pairs; all 49 assertions passed. Exactly **185** pairs have twelve common
+affine zeros, but every one repeats an x- or y-coordinate: **zero qualifying
+base sets**, hence no eligible residual-deletion/minimality check. This is
+not universal, characteristic-zero, or extension-field nonexistence.
+
+A fresh driver-free replay independently matched the full histogram, all
+185 size-12 pairs, projections, and pool/traversal hashes; all nine comparison
+checks and four polynomial-GCD controls passed. Replay result SHA-256:
+`d9d27f75aa589bf53d3775919ba139b3a983a1b902412acdc87e528ba5eaff41`.
+The first replay's tuple-nesting memory defect was stopped, preserved and
+fixed at source; launch 1–5 defects and the mislabeled attempt-5 copy remain
+explicitly disclosed. Final replay: 18.237 s guard wall, peak sampled host CPU
+39.25%, peak group RSS 20.2 MiB, output growth 28 KiB, at least 128.388 GiB
+free. All **45 frozen checksums** verified. The next gate must leave this
+empty finite construction family rather than promote or repeat its miss.
+
+## `oct-rank/` independently certified N7 split premise, 2026-09-04
+
+Fresh producer run
+[`20260904T214624Z_3a892723_fa007ed2673c`](oct-rank/campaigns/20260904T214624Z_3a892723_fa007ed2673c/VERDICT.md)
+is **FROZEN-CERTIFIED**. A standalone instrument importing neither N6 nor N7
+reconstructed the complete 192×247 Q(i) CP Jacobian from the hash-locked N3
+witness. Its exact 384×494 rational realification has rank **312**, hence
+complex rank **156**. Direct substitution matches all 192 target entries;
+corrupt-tensor rejection and sign-sensitive rank-2/rank-4 controls pass.
+Result SHA-256:
+`00fbd8aaf912b288d5cd3640e76bd7d7757002f29c7b8409213253b3520d3a21`.
+
+Thus every single-term paired split `(a,b,c+w)+(-a,b,w)` has Jacobian rank
+at most **156+10=166<192**, for every term and every w over Q(i); gauge changes
+do not cure the deficiency. This excludes that smooth-witness mechanism,
+not all rank-13 points. TF remains **{13,14}**; real octonion bounds remain
+**18–25**.
+
+Legacy N7 `20260904T170646Z_ee742227_ae437fa237ff` is **not** a valid producer
+freeze: its terminal status/checksum ledger are absent, its manifest uses a
+custom status, and its source/replay provenance is incomplete. Its bytes are
+unchanged. The new registered audit supplies fresh exact evidence; it does
+not retroactively validate the legacy lifecycle. Independent final-byte
+review was NO BLOCKER before launch. Runtime: 0.151775 CPU seconds, 44.2 MiB
+driver peak RSS, 8 KiB output growth, peak sampled host CPU 37.26%, at least
+128.385 GiB free. All **11 frozen checksums** verified.
+
+## `rs-pe3d/` explicit nonempty characteristic-two residual circuits, 2026-09-04
+
+Run
+[`20260904T224223Z_9c13dba4_cbfbca8c94c3`](rs-pe3d/campaigns/20260904T224223Z_9c13dba4_cbfbca8c94c3/VERDICT.md)
+is **FROZEN-CERTIFIED**. This leaves the empty GF(17) factorized pool:
+over **GF(2048)**, let $t$ range over the twelve roots of
+$P(T)=T^{12}+T^3+T^2+1$, and take points $(t^3,t^2)$.
+They form the reduced proper complete intersection
+$x^2+y^3=x^2y^3+x+y+1=0$, with both projections injective.
+
+The full $(3,4)$ evaluation matrix has rank **10** and a two-dimensional
+vanishing pencil. All **66** ten-point subsets are independent; all **12**
+eleven-point deletions are circuits. For omitted root $a$, the explicit
+remaining relation is $\lambda_a(t)=(t+a)^2/t^4$, nonzero at every retained
+point. The residual point is exactly $(a^3,a^2)$; it is outside the grid
+formed only from the eleven retained projection coordinates.
+
+The [analytic proof](rs-pe3d/campaigns/20260904T224223Z_9c13dba4_cbfbca8c94c3/theorem_char2_explicit.md)
+received independent NO BLOCKER review, confidence 0.99, before compute.
+The fixed polynomial has irreducible factor degrees 1 and 11; the retained
+field modulus is $z^{11}+z^2+1$. Clean primary execution passed **86** checks.
+A separate verifier importing neither FLINT nor campaign arithmetic used
+integer bit-polynomial operations and forward elimination; all **106**
+checks passed, including every minor and explicit relation.
+
+Primary result SHA-256:
+`882c84b2a6a444c603672e001c52c09317d6dee6b0c9143ecb1e47ae8e7fcabc`;
+independent result:
+`1154680e8e55e76a3dc86cfbc95af44b33b891fd18df72148d7bd29a04aab91e`.
+The two final computations used **0.099366 CPU seconds combined** and
+**28 KiB** new output, without enumerating the field or product grid.
+All **20 frozen checksums** verified. The first successful warning-bearing
+run is preserved; its Python-3.14 publication warning was fixed at source
+and the complete experiment rerun before certification.
+
+This proves explicit characteristic-two existence and minimality for these
+supports, not global spark eleven, a complete C3 classification, a smallest
+field theorem, or odd-characteristic/characteristic-zero existence. The
+earlier finite-pool E-empty result remains valid and compatible.
+
+## `mm3/` sixth source locked; census resource-inconclusive, 2026-09-04
+
+Run
+[`20260904T035648Z_a4bf0c37_d790a569af43`](mm3/campaigns/20260904T035648Z_a4bf0c37_d790a569af43/VERDICT.md)
+is producer-closed **FROZEN-INCONCLUSIVE** for the full campaign, with an
+independently verified source-lock subresult. Clean attempt 4 selected
+**S1_smirnov_repo_139**, a 23-product ternary integer decomposition with
+139 nonzeros and sigma-zero projective non-axis counts **(20,14,14)**.
+Selection is ternarity-independent; the observed alphabet only controls
+the registered Branch-A dispatch.
+
+A standalone replay importing no campaign driver parsed the retained
+hash-locked public grid, checked all **729** standard tensor coefficients,
+reconstructed the five frozen triples, and proved separation under the
+registered signed-monomial/sigma/product-permutation/projective-gauge action.
+All **58 checks** passed. A classical 27-product positive control passed;
+deleting a selected product produced nine failing equations. Audit SHA-256:
+`aeebee649667ac851d0d2473f0dcec7a72cd3fcd692c94b5fd50e0929dca9908`.
+This is not arbitrary full-linear-isotopy classification or universal source
+census completeness.
+
+The guarded census stopped at its sampled **64 MiB output-growth cap**:
+actual growth 67,248,128 bytes, a 136 KiB sampling overshoot; peak sampled
+host CPU **41.98%**, peak group RSS **127.8 MiB**. The exact retained prefix
+contains **520** unique pair decisions (sigma-zero U=256, V=224, W=40),
+eight SAT and 512 with recorded successful dual-checker UNSAT returns,
+but **zero complete safe orientation rows**. No independent census replay
+or complete-census promotion occurred. There is no new addition-count upper
+bound or global no-54 claim. All prior attempts and partial files are
+preserved, and all **1,872 frozen checksums** verified.
+
+## `kg/` resource-compatible pause and inconclusive close, 2026-09-04
+
+Run
+[`20260904T050531Z_fae0b1cf_44e93966ae8d`](kg/campaigns/20260904T050531Z_fae0b1cf_44e93966ae8d/VERDICT.md)
+is producer-closed **FROZEN-INCONCLUSIVE**. Controls passed, but no tile-4
+adjudication or new certified tile was produced. Independent source review
+found no intra-tile restart state; the adjacent same-cap tile took about
+**12,329.887 process-seconds**. A short probation cannot promise durable
+progress and is not justified by that analogue. No new scientific run,
+priority boost, or user Terminal workaround was launched.
+
+The earlier assertion of demonstrated OS throttling is not established by
+reliable native evidence. Known Kg runner names were absent at closeout.
+The claim record was preserved, not deleted; all **41 frozen checksums**
+verified. Tiles 4–49 remain unresolved, pending verified finer/intra-tile
+checkpointing or a safe uninterrupted tile-boundary window. No K_G bound
+or previously certified domain changes.
+
+
+<!-- cs-autonomy:20260905T043238-e8dce0efdffe:1 -->
+## Autonomous mm3 closeout — 2026-09-05 05:01 UTC
+
+**FROZEN-CERTIFIED**. REVIEW of H-MM3-RESUME-BOUNDARY-1: VERIFIED within its registered scope (resumable ledger mechanism + retained 520-pair prefix integrity; no census progress, no addition-count or no-54 claim). Independent verifier review_verify.py (own code, primary driver read only as data; sealed sha256 cc1b781e…, one receipt rc 0, 2.0 s wall, 8 KiB growth) reproduced every registered finite claim: R1 prefix sha256 0adc781e…0e09, 520 unique keys = sigma|side|a|b, U/V/W 256/224/40, 8 SAT / 512 UNSAT, all UNSAT rcs 0 with lb=d+1/floor false, SAT cert null with lb=d/floor true, all 512+512 present cnf/lrat files hash to recorded values (8+8 missing = the SAT records), 0 anomalies. R2 own chain implementation of the documented H_0/H_i gives H_520 = 40887cc0…134e (= outA = outC) and H_200 = 8b875d99…8aba (= ckpt_200.json), ckpt last_key/tallies equal my recomputation over lines 1..200, outA.final == outC.final, six primary tampers rejected under the documented rules. R3 arithmetic reproduced exactly: cnf 44,758,113 B + lrat 17,139,872 B = 119,035 B/decision vs 724 B/decision ledger; 560 vs 92,646 decisions per 64 MiB. R4 triple ternary, 139 nonzeros (49,45,45), all 729 Brent identities hold in exactly one orientation (roles 0,1,2; my convention needs no transpose, the primary's convention reports transpose — a labeling difference, not a contradiction). Beyond the primary: R5 own pure-Python LRAT checker verified 5/5 deterministically sampled UNSAT pairs (0|U|20|1, 0|U|118|33, 0|V|40|38, 0|V|107|122, 0|W|77|115) independently of the recorded return codes; each proof is a single RUP step, i.e. these pair instances are unit-propagation refutable. Two findings: (a) the primary's open note is resolved — the locked triple hash cf9d004c…332c IS reproduced by the frozen lock's canonical form json.dumps({"U":U,"V":V,"W":W}, sort_keys=True) (independent_source_lock_audit.py lines 294–297); successors should pin this form. (b) Design gap, not a claim failure: the primary's checkpoint validator checks tallies only by n and sum consistency, so a compensated tamper (sat+1, unsat-1) passes validation (compensated_tamper_caught_by_primary_rules=false); the prereg wording 'refuse on any tally mismatch' is only met for the six tested tampers. A successor must recompute tallies from ledger lines 1..n (the chain already binds those lines, so this is cheap). Evidence: review/evidence/review_out.json, receipt compute-01.
+
+Evidence: [`mm3/campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd`](mm3/campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Harden the resume boundary before any census successor: validator must recompute side/sat/unsat tallies from ledger lines 1..n (chain-bound) instead of sum checks, and pin the canonical triple serialization json.dumps({'U','V','W'}, sort_keys=True) that reproduces cf9d004c...332c; certify with the compensated (sat+1, unsat-1) tamper plus the six existing tampers on the retained 520-line ledger.
+
+
+<!-- cs-autonomy:20260905T045017-d18d5052195f:1 -->
+## Autonomous rs-pe3d closeout — 2026-09-05 05:15 UTC
+
+**FROZEN-INCONCLUSIVE**. REVIEW of H-C3-35-ALLCHAR-EXPLICIT: INCONCLUSIVE (no compute receipt; the worker wall budget was exhausted before the sealed verifier could run, so no verified/rejected verdict is issued). What was completed: (1) Full analytic proof audit by reading the registered theorem_allchar_explicit.md (sha 6dab404f...): every step checked by hand and found sound within scope — disc(P mod p) = D mod p for monic P (valid also at p | 12 since lc = 1); x-injectivity from g + x^2 f = x^4 - x - y - 1; y-injectivity and a+b != 0 from P(T) - P(-T) = -2T^3 (char 2 handled); B = {f=g=0} with no points at infinity (F, G checked) and Jacobian det = 12t^13 - 3t^4 - 2t^3 = t^2 P'(t) recomputed by hand, so all 12 points reduced and exhaust the length-12 intersection; C has unit rows e_0,e_2..e_10 and zero columns 1, 11 so rank 10 in every characteristic with left kernel span(f,g); ten-subset independence from [T]Q_ab = -(a+b)/(a^2 b^2) != 0; relation from [T^11]L_t = 1/P'(t), [T]L_t = 1/(t^2 P'(t)); converse for p in E. Only a cosmetic note: 'degree dividing 12!' can be sharpened to 11! since P(-1) = 0. Primary receipts compute-01/02 (rc 0, sealed_intact) and the 50/50 PASS stdout log were read directly. (2) An independent pure-Python verifier review_verify.py (sha ff477886..., no sympy/flint, primary driver not imported) was written, preregistered and sealed in review/evidence together with review_statement.md: R1 Sylvester/Bareiss discriminant and Res(P(T),P(-T)); R2 own mod-p gcd + distinct-degree factorisation for all 47 primes compared to the primary table; R3 direct Z[a,b] expansion of both ideal-membership witnesses; R4 C-matrix rank over Q and mod all probe primes, left kernel, tau; R5 fresh exact replay at a different non-exception prime p = 29 in GF(29^10) = GF(29)[u]/(h) (h = degree-10 factor of P, roots as Frobenius conjugates): 66 ten-subsets, 12 eleven-subsets, explicit lambda_a with full support, corrupted relation; R6 positive failure certificate at p = 13 and 10417770367 (exact double root, hence <= 11 points); R7 data comparison with core_allchar.json (sha 5a13c42c...). It has not been executed; the claim remains a candidate pending that run. Nothing is promoted.
+
+Evidence: [`rs-pe3d/campaigns/20260905T050431Z_28f76694_6cffbbf64083`](rs-pe3d/campaigns/20260905T050431Z_28f76694_6cffbbf64083/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Re-run this review with a fresh wall budget: read only job_info, copy the already-written pure-Python verifier from scratch/autonomy/20260905T050609-677fcc187da7/1/review/evidence/review_verify.py and its statement verbatim, preregister within ~60 s, and execute it once (argv: review_out.json, path to the primary core_allchar.json; expected < 60 s, < 8 MiB). Finish verified iff verdict REVIEW-PASS on all R1-R7 checks including the GF(29^10) replay and the p = 13 failure certificate.
+
+
+<!-- cs-autonomy:20260905T045017-73185087234c:1 -->
+## Autonomous rs-pe3d closeout — 2026-09-05 05:28 UTC
+
+**FROZEN-INCONCLUSIVE**. REVIEW of H-C3-36-FAMILY-PRIMEFIELD: INCONCLUSIVE by tool rule only (the sealed verifier exited rc 1 because of a reviewer-side artefact; no substantive discrepancy with the primary was found, and the tool requires an rc-0 receipt for 'verified'). Compute-01 (sealed_intact, 23.3 s, 12 KiB growth) ran review_verify.py (sha ce23987d..., pure Python: own mod-p elimination, own coset DP, own brute force; primary driver not imported; primary JSON read as data). Substantive results, all PASS: R2 brute force over all 372,736 admissible 12-subsets of GF(29)^* yields exactly 448 solutions in 16 scaling orbits, containing the three primary-reported sets and the explicit instance R={2,3,4,7,11,12,19,20,21,23,24,28}; R3 ALL 448 GF(29) solutions pass every exact check (c_1=c_11=0, c_0!=0, no +- pair, injective squares/cubes, 12x12 M over bidegree-(2,3) monomials rank 10, f,g in left kernel and independent, Jacobian 2x g_y+3y^2 g_x = t^2 P'(t) != 0, g(t^3,t^2)=P(t) for all t in GF(29), 66 ten-subsets rank 10, 12 eleven-subsets rank 10 with lambda_a=(t^2-a^2)/(t^2P'(t)) annihilating, full support, corrupted lambda rejected, Q_ab/Q_t coefficient formulas, residual off-grid); recomputed P=[16,0,13,7,13,8,19,21,22,13,23,0,1] matches. R4 the three reported solutions at each of p=37,41,43,47 pass all checks with matching P. R1 own DP reproduces N_29=448, N_37=108, N_41=305,840, N_43=3,360, N_47=2,507,506 and admissible counts 372,736/46,656/515,973,120/6,205,248/5,538,111,488, and the exact set of primes with max admissible <12 = {2,3,5,7,11,13,17,19,23,31} with maxima 1,1,2,2,5,4,8,6,11,10 equal to the primary table. R5 negative control: 8 random 12-subsets of GF(29)^* with sum r = sum 1/r = 0 containing a +- pair {a,-a}: the ten-subset omitting {a,-a} has rank exactly 9 and all other ten-subsets rank 10, confirming 'independent iff no +- pair'. The only failed flag, R1_dp_table_matches_primary, is because my DP caps |S| at 12 (line 'if k + dk > 12: continue'), so max_admissible saturates at 12 for p in {29,41,43,47} where the primary reports 14,20,14,23; the uncapped values equal n_cosets times per-coset max (1 for p=2 mod 3, 2 for p=1 mod 3) and were checked by hand only. Analytic audit by hand, sound within scope: [1]Q_ab=c_0/(ab), [T]Q_ab=(a+b)c_0/(a^2b^2) from c_1=0; Jacobian by chain rule; C has unit rows e_0,e_2..e_10 and zero columns 1,11 iff c_1=c_11=0 (rank 10, kernel span(f,g)); relation via sum_t t^k/P'(t)=[T^11](T^k mod P)=0 for k in {-2,0,2,..,12} with T^-2 = -(T^10+c_10T^8+..+c_2)/c_0 mod P; no points at infinity; mu_6-coset lemma (exponent differences +-1 in Z/6 => <=2 per coset when p=1 mod 3) giving p>=29 / p>=37; c_1=-c_0 sum 1/r, c_11=-sum r. Minor wording: 'e=11 not representable' holds within the bidegree-(2,3) box only (x y^4 is outside it), which is what is meant. Reviewer's verdict on substance: the registered claim and scope are supported (p=29 smallest prime field for THIS family; no claim on extension fields q=25,27, other supports, C3 or spark eleven); promotion should wait for the rc-0 rerun proposed below.
+
+Evidence: [`rs-pe3d/campaigns/20260905T052113Z_c8edc589_cabb1348014b`](rs-pe3d/campaigns/20260905T052113Z_c8edc589_cabb1348014b/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Re-run the review verifier scratch/autonomy/20260905T052236-17e9b035bbae/1/review/evidence/review_verify.py with one edit: in coset_dp remove the '|S| <= 12' cap (or cap at 24) so max_admissible is uncapped, keep everything else verbatim, preregister within 60 s and execute once (argv: review_out.json, path to family_primefield.json; expected ~25 s, <16 MiB). Finish verified iff verdict REVIEW-PASS with rc 0.
+
+
+<!-- cs-autonomy:20260905T091934-6caca9f7f32f:1 -->
+## Autonomous mm3 closeout — 2026-09-05 10:15 UTC
+
+**FROZEN-CERTIFIED**. REVIEW of H-MM3-ENCODER-FIDELITY-1: VERIFIED within its registered scope (encoder fidelity on every retained hash oracle + sigma^0/1/2 instance-universe registration; no solving, no census progress, no addition-count or no-54 claim). Own pure-Python verifier review_encoder_replay.py (sha256 4f95c925…49c5, git c6de5673) written from the frozen sources read as data (new_decomp_offdiag 143-360/757-820/905-924, gate_b_floor 38-74, orbit_min_run 244-331/477-480/2270-2276/2330-2363/2506-2523, GAP=14) with different design (flat 9-tuples, adjugate inverse, orbit closure then sort, early-exit tables, index-merged rep lists); primary gate script neither imported nor copied, its registration JSON read only as data. One compute receipt rc 0, sealed_intact, 36.2 s charged, peak RSS 30 MB, growth 250 KB. All 17 preregistered booleans true: R1 census 19683/11808/6960/48/4656/4608, 145 orbits x 48 partition 6960, unique factorisation, mono 125, pin sha256 prefix bed89ca17f5bd868 = log; R2 tables 256/224/128, 224/128/256, 128/256/224 with 1024 survivors each (dense count agrees, lexicographic, mono-node counts 735/259/29/1 in all three classes, direct-sandwich sample + negative grid consistent, sigma^0/1 = log); R3 attempt-3 pair file = 660 records (608 sigma^0 then 52 sigma^1), the 608 keys equal my ordered sigma^0 pair-key list in FULL ORDER (closes the primary's 520-prefix-only order check), the 52 equal my first 52 sigma^1 keys, 0 mismatches over cnf_sha256/cert.cnf_sha256/vars/clauses/d/lb/cert-presence/agree; R4 attempt-4 = first 520 sigma^0 keys in order, 0 mismatches, decisions equal attempt-3; R5 1024 row keys = my sigma^0 survivor keys in order, side_lbs = the three pair lbs, total_lb = sum+14 for all rows (min 63; 0 rows <= 54 in retained data only); R6 primary registration reproduced from my own lists: pair_keys_sha256 929d5d46…bd29, row_keys_sha256 6d4367a7…69b8, combined 96c3ef1a…2488, per-class instance tables equal row by row (3x608) with instances_sha256 1af9f689…ed9c / 894f316d…cca3 / 9cddb483…8330, identical d histograms; the primary's two false booleans are exactly the two that assumed 608 records, so its 'wrong count prior' explanation is confirmed and its PASS-on-every-oracle conclusion is correct. Informational (no claim): exact CNF-hash overlap between sigma classes is small (|s0∩s1|=28, |s0∩s2|=16, |s1∩s2|=8 of 608), so the candidate 'sigma permutes the instance universe' idea is not supported at identical-CNF level and needs a class-set canonical form to test.
+
+Evidence: [`mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0`](mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Driver-free sigma^1 pair census chunk 1 (H-MM3-SIGMA1-PAIRS-1): sealed pure-Python encoder (now doubly validated, 1180 oracle hashes) + in-sandbox pysat at T=d for the 608 sigma^1 instances; SAT models verified by clause evaluation, UNSAT accepted only after an own UP/RUP refutation replay; resumable ledger of (key,d,cnf_sha256,sat,lb) in <=300 s / <=8 MiB chunks, with the 52 retained sigma^1 decisions (lines 609-660 of attempt-3) as cross-instrument controls that must agree.

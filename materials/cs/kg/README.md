@@ -1207,3 +1207,24 @@ not lower bounds on `J-d` and not a paper refutation. Together with the
 high-band mechanism audit, the next honest route must strengthen the
 even/odd enclosure or split certified hinge geometry; deeper reuse of the
 already-present `K_o` radius is not a new mechanism.
+
+## Tiles 4–49 resource-inconclusive close (Main, 2026-09-04)
+
+[Camp D](campaigns/20260904T050531Z_fae0b1cf_44e93966ae8d/VERDICT.md)
+is now producer-closed **FROZEN-INCONCLUSIVE**. Startup controls passed,
+but no tile-4 adjudication or new certified tile was obtained. All 41
+frozen checksums pass; the stale claim was preserved without deletion.
+
+The current instrument checkpoints only after a whole tile returns.
+Independent source review found no intra-tile restart state, while the
+adjacent same-cap tile recorded about 12,329.887 process-seconds. A short
+guarded probation cannot promise durable progress; none was launched in
+this continuation. No priority boost, launchagent, or user Terminal
+workaround was used.
+
+The earlier claim of demonstrated OS throttling is not established by
+reliable native evidence. The target remains paused pending verified
+finer/intra-tile checkpointing or a safe uninterrupted tile-boundary window.
+Tiles 4–49 remain unresolved; this closeout changes no K_G bound or
+previously certified interval. Root RESULTS remains authoritative for
+the other closed band campaigns.

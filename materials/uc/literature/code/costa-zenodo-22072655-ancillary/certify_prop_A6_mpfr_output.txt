@@ -1,0 +1,10 @@
+MPFR version=4.2.2, precision=192 bits
+m_* derived=[0.61729091208124531,0.61729091208128462]
+beta derived=[0.10005255986214717,0.10005255986364589]
+m_cert interval=[0.6172704120811997,0.61727041208133038]
+poly(left)=[-2.2537527399890684e-14,-1.8762769116165139e-14], poly(right)=[2.8643754035329026e-14,3.3306690738754709e-14]
+constant checks: root-left=1, root-right=1, derivative=1, m-containment=1, beta-containment=1
+A.6 boundary scalar lower=6.4360829338080744e-06
+three-construction inequality: leaves=4557, splits=4384, local=10, maxdepth=12, unresolved=0, min certified lower=5.3640462249763984e-09
+minimum box: t=[0.34375,0.34499999999999997], xi=[0.012499996710526318,0.018749995065789477]
+PROPOSITION A.6 CERTIFICATE PASSED

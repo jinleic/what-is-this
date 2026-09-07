@@ -285,3 +285,151 @@ simplifications of the unequal 2-by-3-row field-dependent size-seven
 determinant sums, repeated-index tied-three-row size-eight templates,
 structural parameterizations/counts for tied-three-row sizes nine and ten,
 and general higher-rank or higher-factor classifications.
+# SCOPE NOTE — the two all-distinct open leads closed (H-GRS-CONVERSE)
+# run `20260904T020255Z_45d37a74_920d291c4cbe`
+
+Status: the thirteenth gate H-GRS-CONVERSE is FROZEN-CERTIFIED (2026-09-04
+UTC); all twelve prior runs remain frozen and untouched. The gate closes both
+registered open leads of the general-size theorem at once, by a
+syzygy/separator route that avoids the slice-device boundary:
+
+1. **Emptiness below r_A+r_B — proved in general.** For any field and any
+   all-distinct set of size k < r_A+r_B, explicit capacity-partition
+   separators g_t = prod(x-x_u)prod(y-y_w) inside F[x]_{<r_A} (x) F[y]_{<r_B}
+   give a Lagrange system, so evaluation is surjective and every such set is
+   independent: no all-distinct circuit has size below r_A+r_B.
+2. **C1 converse — proved in general.** Every all-distinct dependent set of
+   exactly r_A+r_B points lies on the graph of a UNIQUE nondegenerate Moebius
+   map: full-support syzygy (by 1); all-but-two split relations over every
+   coordinate partition; a two-point swap between the partitions forces the
+   cross-ratio equality cr(x_t,x_t';x_u1,x_u2) = cr(y_t,y_t';y_u1,y_u2) on
+   every ordered quadruple; 3-seed PGL reconstruction with fourth-slot
+   injectivity on the y-line gives y_s = M(x_s). No factorization,
+   irreducibility, or component hypothesis is used, so reducible and
+   repeated-component cases are vacuous on this stratum; the (2,2) corner is
+   covered and matches the certified cross-ratio gate.
+
+With gate 15's certified forward law, the all-distinct size-(r_A+r_B) layer
+is EXACTLY the PGL-graph family with count sum_M C(k_M, r_A+r_B) over any
+factor pair and prime, and the minimum all-distinct circuit size is exactly
+r_A+r_B. In-run: 199 asserts, exit 0; 1577/1577 dependent sets passed the
+full line-by-line converse pipeline; all six certified anchors reproduced
+across GF(7)/GF(11)/GF(13) including (2,4) size-6 (12/4/2, 588/72/42), (3,3)
+size-6, (3,4) size-7 (42/2/2), and gate-12's (4,4) n=8 all-distinct 8/4; nine
+new unbalanced sweeps ((2,5),(3,5),(2,6),(4,5) at n=k) matched PGL sums
+exactly. Two pre-compute amendments are bound with both hashes: A1
+(typographical, reconstruction concludes y_s = M(x_s)) and A2 (binding: O6
+separator scope corrected to k < r_A+r_B, size-k sets verified by the
+all-but-two split relations O1-O4). Still open: tied-strata classifications,
+spark-2 converse branches, the C3 no-fixed-component characterization,
+arbitrary-X,Y closed forms, m>=3 factors (next gate), extension fields.
+# SCOPE ERRATUM (recorded 2026-09-04 UTC, catch by Main)
+
+The H-GRS-CONVERSE theorem record (frozen run 20260904T020255Z, section 5)
+and this note's earlier sentence "the minimum all-distinct circuit size is
+exactly r_A+r_B" overstate existence. Precise form: for arbitrary finite
+evaluation sets the PGL sum sum_M C(k_M, r_A+r_B) can be ZERO. Certified
+statements are: (a) NO all-distinct circuit has size < r_A+r_B (unconditional,
+Theorem E); (b) all-distinct circuits at size r_A+r_B, IF ANY, are exactly
+the single-Moebius-graph supports (converse + forward); (c) existence at
+size r_A+r_B requires some Moebius map with k_M >= r_A+r_B admitted points.
+The registered anchor instances all have nonzero populations, so every pinned
+count is unaffected. The frozen run is not edited; the correction is applied
+here and carried into the H-GRS-M3-GENERAL record, whose minimum claim is
+phrased conditionally.
+# SCOPE NOTE — general-size all-distinct law extended to m >= 3 factors
+# (H-GRS-M3-GENERAL, run `20260904T025704Z_7c5edb95_267bbf870b1d`)
+
+Status: the fourteenth gate H-GRS-M3-GENERAL is FROZEN-CERTIFIED (2026-09-04
+UTC); all prior runs remain frozen and untouched. For m >= 3 GRS factors
+(r_i >= 2, distinct evaluation points per factor, all-distinct supports) with
+K = 2 + sum_i(r_i - 1):
+
+1. **Independence below K — proved in general** (capacity-partition
+   separators, same device as the two-factor gate): every all-distinct set of
+   size k < K is independent; no all-distinct circuit has size below K.
+2. **At K — dependence iff simultaneous unique PGL graphs** — proved in
+   general: full-support syzygy; all-partition split relations; two-coordinate
+   swaps force cross-ratio equality on every coordinate pair and quadruple;
+   per-pair 3-seed reconstruction gives z_j = M_j(z_1) for a unique tuple
+   (M_2,...,M_m). Conversely (corrected device): simultaneous graphs pull V
+   back into univariate numerators of degree <= K-2 via INDIVIDUAL
+   denominators D_j (deg <= 1 each), so every such support is dependent, hence
+   a circuit.
+3. **Count** N = sum over canonical tuples (M_2..M_m) of binom(k_M, K),
+   parameterization injective for K >= 3. Conditional-existence caveat: the
+   sum is zero unless some tuple admits >= K points (scope erratum recorded
+   2026-09-04, catch by Main).
+
+In-run: 59 asserts, exit 0; 1841/1841 dependent sets passed the full
+line-by-line pipeline; exhaustive anchors (2,2,2) n=5 (36/100/36 at
+GF(13)/11/7) and n=6 (448/1056), (2,2,3) n=6 (4/16) with exhaustive sub-K
+emptiness including 3,110,400 swept size-5 sets per prime; m=2 regression
+anchor reproduced; (3,3,3) K=8 and m=4 K=6 verified by 200 random
+independence samples plus complete exact-prefilter constructive graph sets
+(64/16 and 64) passing the full pipeline; separators verified for sizes
+2..K-1 across m=3 and m=4 configs. Three pre-census instrument aborts were
+disclosed and remediated (pairing column dimension; dropped X5 definition;
+non-spanning ambient slice). Frontier: tied strata, C3 no-fixed-component
+characterization, spark-2 branches, arbitrary finite X_i closed forms,
+sizes above K for m factors.
+
+# SCOPE NOTE — spark-2 converse boundary closed; C3 (3,4) successor launched
+# H-SPARK2-CONVERSE run `20260904T040116Z_00df70c5_9bf664de2def`
+# successor H-C3-34-RESIDUAL-POINT run `20260904T051205Z_d03471d8_0604b708af38`
+
+Status: H-SPARK2-CONVERSE is FROZEN-CERTIFIED (2026-09-04 UTC), with one
+terminal verdict and 30 pre-close files pinned in `sha256s.txt`. Every prior
+run remains frozen and untouched. The spark-2 boundary excluded by the
+original crossing converse is now closed:
+
+1. If $d_A=2$, every size-$d_B$, profile-$(2,d_B)$ circuit is exactly a
+   nontrivial partition
+   $\{u\}\times T\cup\{u'\}\times(J\setminus T)$ of one
+   $J\in\operatorname{Circ}_B(d_B)$ across one proportional pair
+   $a_{u'}=\lambda a_u$. Conversely every such partition is a circuit.
+2. Its one-dimensional relation has the **same sign** on both rows:
+   $\gamma_{u,v}=\tau c_J(v)$ and
+   $\gamma_{u',v}=\tau\lambda^{-1}c_J(v)$. Thus recovery from the second row
+   multiplies by $\lambda$, not $\lambda^{-1}$.
+3. The exact count is
+   $$C_A(2)\,C_B(d_B)\,(2^{d_B}-2).$$
+   At $d_B=2$ the singleton/co-singleton descriptions coincide and give the
+   two diagonal crossings (the frozen 2-to-1 parameterization). At $d_B=3$
+   all six partitions are crossings. For every $d_B\ge4$, exactly
+   $2^{d_B}-2-2d_B$ partitions per factor-circuit pair are additional
+   noncrossing circuits. The symmetric $(d_A,2)$ statement follows by
+   transposition.
+
+Final launch 7 passed 120/120 assertions over 11 registered prime/branch
+cells. The all-row-pair sweeps covered 15 pairs per cell and 1,050/900/450
+partition candidates for the $(2,4)/(2,3)/(2,2)$ branches. The separate
+$(4,2)$ loop covered all 15 B-column pairs and 1,050 candidates at each of
+GF(13), GF(11), with the duplicate genuinely scaled by $\lambda=2$:
+70/70 correct multiply-by-$\lambda$ recoveries and 70/70 inverted recoveries
+rejected per prime. Nonproportional/noncircuit candidates were required to
+have full rank; promoted candidates were required to have rank $m_*-1$
+before every deletion witness. Across the gate: 9,300 candidates, 536
+relation-pattern checks, and 4,500 below-$m_*$ supports with zero dependence.
+Launches 1--6 and every artifact actually emitted are retained; the launch-2
+handler emitted no JSON, which is explicitly disclosed rather than
+fabricated.
+
+The immediate successor H-C3-34-RESIDUAL-POINT is live, preregistered at
+commit `709a6f42ab7e16bdb079c91867f822489c0efdb7`. It separates the universal
+Bezout fact for coprime $(2,3)$ pencils (an 11-point reduced rational support
+has residual scheme of length one) from a finite GF(17) existence/minimality
+experiment. Launch 1's low-residue pair generator aborted and is preserved;
+reviewed launch 2 passed 26 controls before geometry, certified a stream of
+one million distinct compatible equation pairs, and completed all one
+million exact route checks. Its registered factorized family was
+**E-empty**: zero qualifying reduced all-distinct 12-point base sets. This is
+only a result about that fixed family, not universal nonexistence and not a
+terminal verdict. Any nonempty successor family or claim change requires a
+new bound amendment before computation.
+
+The all-distinct existence caveat remains in force throughout: the frozen
+$K=2+\sum_i(r_i-1)$ theorem says independence below $K$ and classifies
+circuits at $K$ **when present**. No target-level summary may replace this by
+“spark exactly $K$” when the simultaneous-PGL incidence population can be
+zero.

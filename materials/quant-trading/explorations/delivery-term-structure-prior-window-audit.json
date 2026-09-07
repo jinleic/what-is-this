@@ -1,0 +1,1098 @@
+{
+  "schema_version": 1,
+  "id": "delivery-term-structure-prior-window-audit",
+  "created_at_utc": "2026-09-03T23:13:32Z",
+  "status": "frozen-before-candidate-outcome-access; independent read-only review required before campaign init",
+  "purpose": "Enumerate every prior registered direction and consumed window before the cycle-7 registration of a calendar-spread mechanism on Binance coin-margined quarterly DELIVERY futures, and establish with file+field citations that this instrument class is a new information channel that no prior entry consumed.",
+  "source_audit": {
+    "path": "perp-oi-growth-corrected-prior-window-audit.json",
+    "sha256": "0664e0ad4e3523174f8906b182fb930f8360603ebc8b533dee82ac92bb2d91a8",
+    "registered_directions": 18,
+    "later_campaigns_at_that_freeze": 8,
+    "note": "The 18 base directions and 4 cross-direction artifacts are reused byte-semantically; cycle 6 is appended below as the 9th later campaign."
+  },
+  "loop_policy": {
+    "file": "frontier-loop-policy.json",
+    "sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0",
+    "cycle_ordinal_k": 7,
+    "alpha_k": 0.0008928571428571429,
+    "alpha_formula": "0.05 / (k * (k + 1)) with k = 7",
+    "alpha_spent_before_this_cycle": 0.04285714285714286,
+    "ordinal_basis": "k=1 perp-spot-activity-volatility and taker-imbalance-semivariance-asymmetry predate the policy and are excluded from its budget; k=1 quarter-hour-algorithmic-burst, k=2 weekday-participation-premium, k=3 utc-2100-2300-net-premium, k=4 perp-cross-section-daily-reversal, k=5 perp-oi-growth-cross-section (consumed on a pre-outcome integrity abort), k=6 perp-oi-growth-corrected; the owner-authorized Deribit event-stop trial reran a closed mechanism outside the ordinal sequence",
+    "power_disclosure": "At alpha_7 = 0.00089 with delivery-quarter blocks (13 primary, 10 replication) the design can only detect a large and quarter-consistent effect. This is registered as a limitation of the ordinal, not a reason to relax any gate."
+  },
+  "coverage": {
+    "artifact_index_entries_at_freeze": 26,
+    "artifact_index_entries_enumerated": 26,
+    "base_directions_copied_byte_semantically": 18,
+    "later_campaigns_enumerated": 9,
+    "cross_direction_artifacts_enumerated": 4,
+    "candidate_outcomes_accessed": false
+  },
+  "directions": [
+    {
+      "id": "btc-eth-relative-value",
+      "citations": [
+        {
+          "file": "btc-eth-relative-value/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "btc-eth-relative-value/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        },
+        {
+          "file": "btc-eth-relative-value/strategy.json",
+          "field": "leakage_checks.no_holdout_reads",
+          "value": "all metrics came from 2020-08-01..2024-12-31"
+        }
+      ]
+    },
+    {
+      "id": "cftc-positioning",
+      "citations": [
+        {
+          "file": "cftc-positioning/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "cftc-positioning/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        },
+        {
+          "file": "cftc-positioning/strategy.json",
+          "field": "data_used[*].years",
+          "value": "CFTC/Treasury years 2020..2024"
+        }
+      ]
+    },
+    {
+      "id": "crypto-basis-convergence",
+      "citations": [
+        {
+          "file": "crypto-basis-convergence/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "crypto-basis-convergence/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crypto-carry-corrected-audit",
+      "citations": [
+        {
+          "file": "crypto-carry-corrected-audit/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "crypto-carry-corrected-audit/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        },
+        {
+          "file": "crypto-carry-corrected-audit/strategy.json",
+          "field": "historical_confirmation_window",
+          "value": [
+            "2025-01-01",
+            "2026-07-31"
+          ]
+        },
+        {
+          "file": "crypto-carry-corrected-audit/results.json",
+          "field": "windows.historical_confirmation",
+          "value": [
+            "2025-01-01",
+            "2026-07-31"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crypto-carry-decay",
+      "citations": [
+        {
+          "file": "crypto-carry-decay/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "crypto-carry-decay/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        },
+        {
+          "file": "historical-confirmation/results.json",
+          "field": "candidates.crypto-carry-decay.window",
+          "value": {
+            "requested": [
+              "2025-01-01",
+              "2026-07-31"
+            ],
+            "actual_first_date": "2025-01-01",
+            "actual_last_date": "2026-07-31",
+            "n_observations_daily": 577
+          }
+        }
+      ]
+    },
+    {
+      "id": "crypto-microstructure-execution",
+      "citations": [
+        {
+          "file": "crypto-microstructure-execution/strategy.json",
+          "field": "development_window",
+          "value": "2024-03-29 quotes; 2024-06-17 trades/depth"
+        },
+        {
+          "file": "crypto-microstructure-execution/strategy.json",
+          "field": "validation_window",
+          "value": "none; feasibility probe"
+        }
+      ],
+      "information_overlap": "Used spread/depth/trade data for execution-cost feasibility, not daily spot/perpetual activity ratios or forward volatility surprise."
+    },
+    {
+      "id": "crypto-trend-vol",
+      "citations": [
+        {
+          "file": "crypto-trend-vol/strategy.json",
+          "field": "development_window",
+          "value": {
+            "start": "2020-08-01",
+            "end": "2023-12-31"
+          }
+        },
+        {
+          "file": "crypto-trend-vol/strategy.json",
+          "field": "validation_window",
+          "value": {
+            "start": "2024-01-01",
+            "end": "2024-12-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "event-semantics",
+      "citations": [
+        {
+          "file": "event-semantics/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "event-semantics/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        }
+      ],
+      "consumption_note": "Blocked design artifact; registered those windows but produced no outcome result."
+    },
+    {
+      "id": "factor-momentum-timing",
+      "citations": [
+        {
+          "file": "factor-momentum-timing/strategy.json",
+          "field": "development_window",
+          "value": {
+            "start": "1930-01-01",
+            "end": "2009-12-31",
+            "warmup": "1926-11-03..1929"
+          }
+        },
+        {
+          "file": "factor-momentum-timing/strategy.json",
+          "field": "validation_window",
+          "value": {
+            "start": "2010-01-01",
+            "end": "2024-12-31"
+          }
+        },
+        {
+          "file": "historical-confirmation/results.json",
+          "field": "candidates.factor-momentum-timing.window",
+          "value": {
+            "requested": [
+              "2025-01-01",
+              "2026-07-31"
+            ],
+            "actual_first_date": "2025-01-02",
+            "actual_last_date": "2026-06-30",
+            "n_observations_daily": 373
+          }
+        }
+      ]
+    },
+    {
+      "id": "focused-cross-venue-carry",
+      "citations": [
+        {
+          "file": "focused-cross-venue-carry/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "focused-cross-venue-carry/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        },
+        {
+          "file": "focused-cross-venue-carry/results.json",
+          "field": "windows.validation",
+          "value": [
+            "2024-01-01T00:00Z",
+            "2025-01-01T00:00Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "focused-crypto-cross-section",
+      "citations": [
+        {
+          "file": "focused-crypto-cross-section/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "focused-crypto-cross-section/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        },
+        {
+          "file": "focused-crypto-cross-section/strategy.json",
+          "field": "holdout_note",
+          "value": "frozen 59-asset subsample deliberately evaluated on 2025-01-01..2026-07-31"
+        }
+      ],
+      "information_overlap": "Used quote volume as a liquidity screen, not the spot/perpetual quote-volume ratio as a predictive signal."
+    },
+    {
+      "id": "focused-deribit-gex",
+      "citations": [
+        {
+          "file": "focused-deribit-gex/strategy.json",
+          "field": "leakage_checks.no_historical_window_data",
+          "value": "capture began 2026-08-30T11:13:24Z; only a 20-trade REST parse fixture predates it and was not an outcome sample"
+        },
+        {
+          "file": "accelerated-intraday-replication-results.json",
+          "field": "window",
+          "value": [
+            "2026-08-31T00:00:00Z",
+            "2026-08-31T01:30:00Z"
+          ]
+        },
+        {
+          "file": "accelerated-intraday-feasibility-corrected-results.json",
+          "field": "window",
+          "value": [
+            "2026-08-31T01:30:00Z",
+            "2026-08-31T03:15:00Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "focused-liquidation-overlay",
+      "citations": [
+        {
+          "file": "focused-liquidation-overlay/results.json",
+          "field": "persistent_capture_live.session_start_utc",
+          "value": "2026-08-30T13:45:58.148Z"
+        },
+        {
+          "file": "accelerated-intraday-replication-results.json",
+          "field": "window",
+          "value": [
+            "2026-08-31T00:00:00Z",
+            "2026-08-31T01:30:00Z"
+          ]
+        },
+        {
+          "file": "accelerated-intraday-feasibility-corrected-results.json",
+          "field": "window",
+          "value": [
+            "2026-08-31T01:30:00Z",
+            "2026-08-31T03:15:00Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frozen-cross-asset-trend-audit",
+      "citations": [
+        {
+          "file": "frozen-cross-asset-trend-audit/strategy.json",
+          "field": "development_window",
+          "value": {
+            "start": "2012-05-21",
+            "end": "2019-12-31"
+          }
+        },
+        {
+          "file": "frozen-cross-asset-trend-audit/strategy.json",
+          "field": "validation_window",
+          "value": {
+            "start": "2024-01-01",
+            "end": "2024-12-31"
+          }
+        },
+        {
+          "file": "frozen-cross-asset-trend-audit/strategy.json",
+          "field": "mechanism.holdout_stance",
+          "value": "published test window 2023-01-03..2026-05-04 already exposed; dossier itself contains zero post-2024 observations"
+        }
+      ]
+    },
+    {
+      "id": "funding-crowding",
+      "citations": [
+        {
+          "file": "funding-crowding/strategy.json",
+          "field": "data_used.windows_used",
+          "value": {
+            "development": "2020-08-01..2023-12-31",
+            "validation": "2024-01-01..2024-12-31",
+            "holdout": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "macro-crypto-regime",
+      "citations": [
+        {
+          "file": "macro-crypto-regime/strategy.json",
+          "field": "development_window",
+          "value": [
+            "2020-08-01",
+            "2023-12-31"
+          ]
+        },
+        {
+          "file": "macro-crypto-regime/strategy.json",
+          "field": "validation_window",
+          "value": [
+            "2024-01-01",
+            "2024-12-31"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "persistent-funding-premium",
+      "citations": [
+        {
+          "file": "persistent-funding-premium/strategy.json",
+          "field": "development_window",
+          "value": "2024-07-01T00:00:00Z..2025-01-01T00:00:00Z"
+        },
+        {
+          "file": "persistent-funding-premium/strategy.json",
+          "field": "validation_window",
+          "value": "2025-01-01T00:00:00Z..2025-07-01T00:00:00Z"
+        },
+        {
+          "file": "persistent-funding-premium/trials.json",
+          "field": "replication.triggered",
+          "value": false
+        },
+        {
+          "file": "persistent-funding-premium-freshness-errata.json",
+          "field": "binding_constraint_for_next_contract.least_consumed_historical_band",
+          "value": "2026-01-01..2026-07-31 touched only by corrected carry audit \u2014 RETRACTED by this audit because historical-confirmation/results.json also records factor-momentum-timing through 2026-06-30 and crypto-carry-decay through 2026-07-31"
+        }
+      ]
+    },
+    {
+      "id": "volatility-risk-premium",
+      "citations": [
+        {
+          "file": "volatility-risk-premium/strategy.json",
+          "field": "development_window",
+          "value": "2020-08-01..2023-12-31"
+        },
+        {
+          "file": "volatility-risk-premium/strategy.json",
+          "field": "validation_window",
+          "value": "2024-01-01..2024-12-31"
+        }
+      ]
+    }
+  ],
+  "cross_direction_artifacts": [
+    {
+      "file": "historical-confirmation/results.json",
+      "field": "protocol.requested_window",
+      "value": [
+        "2025-01-01",
+        "2026-07-31"
+      ],
+      "consumed_by": [
+        "crypto-carry-decay",
+        "factor-momentum-timing"
+      ]
+    },
+    {
+      "file": "historical-confirmation/results.json",
+      "field": "data_coverage_note",
+      "value": "crypto-carry-decay through 2026-07-31; factor-momentum-timing through 2026-06-30"
+    },
+    {
+      "file": "accelerated-intraday-replication-results.json",
+      "field": "window",
+      "value": [
+        "2026-08-31T00:00:00Z",
+        "2026-08-31T01:30:00Z"
+      ]
+    },
+    {
+      "file": "accelerated-intraday-feasibility-corrected-results.json",
+      "field": "window",
+      "value": [
+        "2026-08-31T01:30:00Z",
+        "2026-08-31T03:15:00Z"
+      ]
+    }
+  ],
+  "later_campaigns": [
+    {
+      "id": "perp-spot-activity-volatility",
+      "citations": [
+        {
+          "file": "pre_statement.json",
+          "field": "windows.primary",
+          "value": {
+            "start_utc_inclusive": "2025-07-01T00:00:00Z",
+            "end_utc_exclusive": "2026-01-01T00:00:00Z"
+          }
+        },
+        {
+          "file": "campaigns/20260901T100003Z_57bfa07a_d4b29ad62376/primary_results.json",
+          "field": "result.window + result.status",
+          "value": {
+            "window": [
+              "2025-07-01T00:00:00Z",
+              "2026-01-01T00:00:00Z"
+            ],
+            "status": "falsified"
+          }
+        },
+        {
+          "file": "pre_statement.json",
+          "field": "windows.replication + stopping_and_replication.on_primary_fail",
+          "value": {
+            "registered_but_unspent": [
+              "2026-01-01T00:00:00Z",
+              "2026-07-01T00:00:00Z"
+            ],
+            "reason": "primary failed; replication prohibited"
+          }
+        }
+      ],
+      "information_channel": "daily spot/perpetual 1h quote-volume ratio; no 1m clock-phase contrast"
+    },
+    {
+      "id": "taker-imbalance-semivariance-asymmetry",
+      "citations": [
+        {
+          "file": "pre_statement_taker_imbalance.json",
+          "field": "windows.primary",
+          "value": {
+            "start_utc_inclusive": "2026-01-01T00:00:00Z",
+            "end_utc_exclusive": "2026-04-01T00:00:00Z"
+          }
+        },
+        {
+          "file": "campaigns/20260901T101229Z_1cc45862_c69537283467/primary_results.json",
+          "field": "result.window + result.status",
+          "value": {
+            "window": [
+              "2026-01-01T00:00:00Z",
+              "2026-04-01T00:00:00Z"
+            ],
+            "status": "falsified"
+          }
+        },
+        {
+          "file": "pre_statement_taker_imbalance.json",
+          "field": "windows.replication + stopping_and_replication.on_primary_fail",
+          "value": {
+            "registered_but_unspent": [
+              "2026-04-01T00:00:00Z",
+              "2026-07-01T00:00:00Z"
+            ],
+            "reason": "primary failed; replication prohibited"
+          }
+        }
+      ],
+      "information_channel": "daily 1h taker-share divergence; no 1m clock-phase contrast"
+    },
+    {
+      "id": "quarter-hour-algorithmic-burst",
+      "citations": [
+        {
+          "file": "pre_statement_quarter_hour.json",
+          "field": "windows.primary",
+          "value": {
+            "start_utc_inclusive": "2025-01-01T00:00:00Z",
+            "end_utc_exclusive": "2025-07-01T00:00:00Z"
+          }
+        },
+        {
+          "file": "campaigns/20260901T122711Z_8e36366e_8b38bc9b20b1/primary_results.json",
+          "field": "result.window + result.status",
+          "value": {
+            "window": [
+              "2025-01-01T00:00:00Z",
+              "2025-07-01T00:00:00Z"
+            ],
+            "status": "falsified"
+          }
+        },
+        {
+          "file": "pre_statement_quarter_hour.json",
+          "field": "windows.replication + stopping_and_replication.on_primary_fail",
+          "value": {
+            "registered_but_unspent": [
+              "2026-04-01T00:00:00Z",
+              "2026-08-01T00:00:00Z"
+            ],
+            "reason": "primary failed; replication prohibited"
+          }
+        }
+      ],
+      "information_channel": "1-minute minute-of-hour boundary contrast in trade count and absolute return; no day-of-week or weekday/weekend participation contrast"
+    },
+    {
+      "id": "weekday-participation-premium",
+      "citations": [
+        {
+          "file": "pre_statement_weekday_participation.json",
+          "field": "windows.primary",
+          "value": {
+            "start_utc_inclusive": "2024-01-01T00:00:00Z",
+            "end_utc_exclusive": "2024-07-01T00:00:00Z",
+            "expected_complete_weeks": 26,
+            "expected_pooled_observations": 52
+          }
+        },
+        {
+          "file": "campaigns/20260901T124115Z_6a5ffe70_d81efa8ef732/primary_results.json",
+          "field": "result.window + result.status",
+          "value": {
+            "window": [
+              "2024-01-01T00:00:00Z",
+              "2024-07-01T00:00:00Z"
+            ],
+            "status": "pass-on-this-sample"
+          }
+        },
+        {
+          "file": "pre_statement_weekday_participation.json",
+          "field": "windows.replication",
+          "value": {
+            "start_utc_inclusive": "2024-07-01T00:00:00Z",
+            "end_utc_exclusive": "2025-01-01T00:00:00Z",
+            "expected_complete_weeks": 26,
+            "expected_pooled_observations": 52
+          }
+        },
+        {
+          "file": "campaigns/20260901T124115Z_6a5ffe70_d81efa8ef732/replication_results.json",
+          "field": "result.window + result.status",
+          "value": {
+            "window": [
+              "2024-07-01T00:00:00Z",
+              "2025-01-01T00:00:00Z"
+            ],
+            "status": "pass-on-this-sample"
+          }
+        },
+        {
+          "file": "campaigns/20260901T124115Z_6a5ffe70_d81efa8ef732/status.json",
+          "field": "verdict",
+          "value": "FROZEN-CERTIFIED"
+        }
+      ],
+      "information_channel": "1-minute complete-week weekday/weekend contrast in number_of_trades and quote_asset_volume; descriptive participation only, no price, return, or hour-of-day contrast"
+    },
+    {
+      "id": "focused-deribit-gex (owner-authorized event-stop trial)",
+      "citations": [
+        {
+          "file": "deribit-gex-eventstop-contract.json",
+          "field": "stopping_rule / window derivation",
+          "value": {
+            "start_utc_inclusive": "2026-08-31T03:15:00.000Z",
+            "end_utc_exclusive": "2026-09-02T09:30:00.000Z"
+          }
+        },
+        {
+          "file": "campaigns/20260902T095715Z_1772ff9e_65cee1db82fa/deribit_gex_eventstop_results.json",
+          "field": "window + decision.verdict",
+          "value": {
+            "window": [
+              "2026-08-31T03:15:00.000Z",
+              "2026-09-02T09:30:00.000Z"
+            ],
+            "verdict": "falsified"
+          }
+        },
+        {
+          "file": "campaigns/20260902T095715Z_1772ff9e_65cee1db82fa/status.json",
+          "field": "verdict",
+          "value": "FROZEN-NEGATIVE"
+        }
+      ],
+      "information_channel": "Deribit option trades, public index, and 15-minute realized-volatility blocks from live capture after 2026-08-30; no Binance kline price, hour-of-day, or return-after-cost contrast"
+    },
+    {
+      "id": "utc-2100-2300-net-premium",
+      "citations": [
+        {
+          "file": "pre_statement_utc_2100_2300.json",
+          "field": "windows.primary",
+          "value": {
+            "start_utc_inclusive": "2020-01-01T00:00:00Z",
+            "end_utc_exclusive": "2022-01-01T00:00:00Z"
+          }
+        },
+        {
+          "file": "campaigns/20260902T125230Z_9329d0b8_e7db49e940ad/primary_results.json",
+          "field": "result.window + result.status",
+          "value": {
+            "window": [
+              "2020-01-01T00:00:00Z",
+              "2022-01-01T00:00:00Z"
+            ],
+            "status": "falsified"
+          }
+        },
+        {
+          "file": "pre_statement_utc_2100_2300.json",
+          "field": "windows.replication + stopping_and_replication.on_primary_fail",
+          "value": {
+            "registered_but_unspent": [
+              "2022-04-01T00:00:00Z",
+              "2024-01-01T00:00:00Z"
+            ],
+            "reason": "primary failed; replication prohibited"
+          }
+        }
+      ],
+      "information_channel": "BTCUSDT/ETHUSDT 1h kline opens at fixed UTC clock hours forming a two-hour net-of-taker-fee return; no cross-section, no ranking, no symbol beyond BTCUSDT/ETHUSDT"
+    },
+    {
+      "id": "perp-cross-section-daily-reversal",
+      "citations": [
+        {
+          "file": "pre_statement_perp_cross_section_reversal.json",
+          "field": "windows.primary",
+          "value": {
+            "start_utc_inclusive": "2022-01-01T00:00:00Z",
+            "end_utc_exclusive": "2024-01-01T00:00:00Z",
+            "expected_dates": 730
+          }
+        },
+        {
+          "file": "campaigns/20260902T145246Z_0e7153fc_e8afb1b09af8/primary_results.json",
+          "field": "result.window + result.status",
+          "value": {
+            "window": [
+              "2022-01-01T00:00:00Z",
+              "2024-01-01T00:00:00Z"
+            ],
+            "status": "falsified"
+          }
+        },
+        {
+          "file": "pre_statement_perp_cross_section_reversal.json",
+          "field": "windows.replication + stopping_and_replication.on_primary_fail",
+          "value": {
+            "registered_but_unspent": [
+              "2024-01-01T00:00:00Z",
+              "2026-01-01T00:00:00Z"
+            ],
+            "reason": "primary failed; replication prohibited"
+          }
+        },
+        {
+          "file": "strategy-registry.json",
+          "field": "focused_campaign.perp_cross_section_daily_reversal.campaign_verdict",
+          "value": "FROZEN-NEGATIVE"
+        }
+      ],
+      "information_channel": "Binance USD-M 1h klines for the 652-symbol USDT-perpetual cross-section (price-based prior-day return signal; quote volume for eligibility)",
+      "mechanism": "one-day cross-sectional reversal: long bottom decile / short top decile of the prior UTC day close-to-open return, net of two taker fees"
+    },
+    {
+      "id": "perp-oi-growth-cross-section (cycle 5, integrity abort, no outcome computed)",
+      "citations": [
+        {
+          "file": "pre_statement_perp_oi_growth.json",
+          "field": "windows.primary",
+          "value": {
+            "start_utc_inclusive": "2024-01-01T00:00:00Z",
+            "end_utc_exclusive": "2025-01-01T00:00:00Z"
+          }
+        },
+        {
+          "file": "pre_statement_perp_oi_growth.json",
+          "field": "windows.replication",
+          "value": {
+            "start_utc_inclusive": "2025-01-01T00:00:00Z",
+            "end_utc_exclusive": "2026-01-01T00:00:00Z",
+            "status": "registered, never run"
+          }
+        },
+        {
+          "file": "campaigns/20260903T102637Z_a0ab5202_383723d33c94/status.json",
+          "field": "verdict",
+          "value": "FROZEN-INCONCLUSIVE"
+        },
+        {
+          "file": "campaigns/20260903T102637Z_a0ab5202_383723d33c94/integrity_abort.json",
+          "field": "invocation.stage + invocation.exit_code + no_outcome_access",
+          "value": {
+            "stage": "load_end_of_day_open_interest (run_perp_oi_growth_cross_section.py:295)",
+            "exit_code": 1,
+            "no_outcome_access": true
+          }
+        },
+        {
+          "file": "campaigns/20260903T102637Z_a0ab5202_383723d33c94/",
+          "field": "directory listing",
+          "value": "no primary_results.json and no replication_results.json exist; 12/12 sha256s verify"
+        },
+        {
+          "file": "strategy-registry.json",
+          "field": "focused_campaign.perp_oi_growth_cross_section.final_status",
+          "value": "inconclusive-integrity-abort-no-outcome-computed"
+        }
+      ],
+      "consumption": "Both calendar windows are registered and therefore consumed as calendars, but no signal, portfolio date, gate, or return was ever computed on either: the run aborted inside input parsing. No outcome information from cycle 5 exists to leak into this contract."
+    },
+    {
+      "id": "perp-oi-growth-corrected",
+      "citations": [
+        {
+          "file": "campaigns/20260903T214955Z_73ca30fb_3e26bcdfe3a0/pre_statement_perp_oi_growth_corrected.json",
+          "field": "windows",
+          "value": {
+            "primary": [
+              "2024-01-01",
+              "2025-01-01"
+            ],
+            "replication": [
+              "2025-01-01",
+              "2026-01-01"
+            ]
+          }
+        },
+        {
+          "file": "campaigns/20260903T214955Z_73ca30fb_3e26bcdfe3a0/primary_results.json",
+          "field": "result.status",
+          "value": "falsified"
+        },
+        {
+          "file": "campaigns/20260903T214955Z_73ca30fb_3e26bcdfe3a0/status.json",
+          "field": "verdict",
+          "value": "FROZEN-NEGATIVE"
+        }
+      ],
+      "consumed": "USD-M perpetual daily open-interest cross-section, deliveries not involved; replication window registered but unspent (primary fail)"
+    }
+  ],
+  "information_channel_claim": {
+    "claim": "Binance coin-margined dated quarterly DELIVERY futures 1h klines are a new information channel. No entry in the 26-entry artifact_index reads any delivery-contract, coin-margined, or dated-futures series.",
+    "strongest_citation": {
+      "file": "pre_statement_perp_cross_section_reversal.json",
+      "field": "frozen_rule.universe",
+      "value_excerpt": "Every Binance USD-M symbol matching ^[A-Z0-9]+USDT$ ... Delivery contracts (underscore suffix), BUSD- and USDC-margined pairs, and the 16 SETTLED-suffix delisting stubs are excluded.",
+      "reading": "The nearest prior cross-sectional campaign explicitly EXCLUDED this instrument class, so it was never consumed by it."
+    },
+    "neighbour_data_citations": {
+      "crypto-basis-convergence": {
+        "file": "crypto-basis-convergence/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "[\"quant-trading/data/raw/binance/spot-1h/{BTCUSDT,ETHUSDT}: 1h kline closes 2020-08..2024-12 (manifest sha e1b760e96ba7d71a70188afdfa171db6ff33621d64f769fe182b37645f70a72d verified at run start)\", \"quant-trading/data/raw/binance/um-perp-1h/{BTCUSDT,ETHUSDT}: 1h kline closes 2020-08..2024-12\", \"quant"
+      },
+      "crypto-carry-decay": {
+        "file": "crypto-carry-decay/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "{\"spot\": \"data/raw/binance/spot-1h/{BTCUSDT,ETHUSDT}/BTCUSDT-1h-YYYY-MM.zip 1h OHLCV (open/close used), sha256-verified vs .CHECKSUM\", \"perpetual\": \"data/raw/binance/um-perp-1h/{BTCUSDT,ETHUSDT} 1h OHLCV (open/close used), sha256-verified; per-era format drift handled: optional header rows (2022-01."
+      },
+      "focused-cross-venue-carry": {
+        "file": "focused-cross-venue-carry/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "{\"binance_official_archives\": \"data/raw/binance/{funding-rate,spot-1h,um-perp-1h}/{BTCUSDT,ETHUSDT} monthly zips 2020-08..2026-07, sha256-verified against upstream .CHECKSUM at load; 4842 signed funding events per symbol in-window; full UTC calendar 38,736 hours (per-series ff for the 19 missing 202"
+      },
+      "crypto-microstructure-execution": {
+        "file": "crypto-microstructure-execution/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "{\"sample\": [\"downloads/BTCUSDT-aggTrades-2024-06-17.zip (spot, upstream-SHA256-verified)\", \"downloads/ETHUSDT-aggTrades-2024-06-17.zip (spot, verified)\", \"downloads/BTCUSDT-bookTicker-2024-03-29.zip (UM perp top-of-book, verified)\", \"downloads/ETHUSDT-bookTicker-2024-03-29.zip (UM perp top-of-book, "
+      },
+      "funding-crowding": {
+        "file": "funding-crowding/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "{\"sources\": [\"quant-trading/data/raw/binance/funding-rate/{BTCUSDT,ETHUSDT}/ monthly archives (calc_time, funding_interval_hours, last_funding_rate)\", \"quant-trading/data/raw/binance/spot-1h/{BTCUSDT,ETHUSDT}/ monthly klines (close)\", \"quant-trading/data/raw/binance/um-perp-1h/{BTCUSDT,ETHUSDT}/ mon"
+      },
+      "cftc-positioning": {
+        "file": "cftc-positioning/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "[{\"source\": \"cftc\", \"dataset\": \"fut_disagg_txt\", \"years\": [2020, 2021, 2022, 2023, 2024], \"contract\": \"088691 GOLD - COMMODITY EXCHANGE INC.\", \"fields\": [\"Report_Date_as_YYYY-MM-DD\", \"Open_Interest_All\", \"M_Money_Positions_Long_All\", \"M_Money_Positions_Short_All\"]}, {\"source\": \"cftc\", \"dataset\": \"fu"
+      },
+      "macro-crypto-regime": {
+        "file": "macro-crypto-regime/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "{\"crypto\": [\"Binance BTCUSDT spot 1h klines 2020-08..2024-12 (daily mark = 23:00-24:00 UTC bar close; manifest-verified SHA-256, rows, member lists)\", \"Binance ETHUSDT spot 1h klines 2020-08..2024-12 (same treatment)\"], \"macro\": [\"CBOE VIX_History.csv daily close (cross-checked equal to FRED VIXCLS "
+      },
+      "volatility-risk-premium": {
+        "file": "volatility-risk-premium/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "[{\"name\": \"Cboe PUT methodology index daily closes 2020-08..2024-12 slice\", \"source\": \"https://cdn.cboe.com/api/global/us_indices/daily_prices/PUT_History.csv\", \"sha256\": \"9a248601721c2176ce31e3ddd9b851dd4959607b46ef4df182ba759dd4b650df\", \"terms\": \"Cboe internal non-commercial research per manifest "
+      },
+      "crypto-trend-vol": {
+        "file": "crypto-trend-vol/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "{\"source\": \"quant-trading/data/raw/binance/spot-1h (Binance public data.binance.vision monthly zips)\", \"manifest_sha256_verified\": \"e1b760e96ba7d71a70188afdfa171db6ff33621d64f769fe182b37645f70a72d\", \"notes\": [\"534 fewer hourly bars than the ideal grid (0.035%); midsample gaps, all away from midnight"
+      },
+      "factor-momentum-timing": {
+        "file": "factor-momentum-timing/strategy.json",
+        "field": "data_used",
+        "value_excerpt": "[{\"source\": \"ken_french\", \"dataset\": \"ff3_daily\", \"url\": \"https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors_daily_CSV.zip\", \"local_path\": \"quant-trading/data/raw/factors/F-F_Research_Data_Factors_daily_CSV.zip\", \"sha256\": \"39f9ae1d0e9f575024bc23145980ac270cea508fb"
+      }
+    },
+    "mechanical_scan": {
+      "method": "Regex scan of every registered strategy.json / pre_statement*.json / trials.json under quant-trading/explorations for futures/cm, coin-m, delivery, dated, quarterly, and _YYMMDD contract suffixes.",
+      "files_scanned": 52,
+      "result": "Every hit is English prose (collector at-least-once \"raw_delivery\", \"quarter-stability\", an invalidation note), never a data path or series name. Zero references to a coin-margined or delivery-futures data series."
+    },
+    "filesystem_evidence": {
+      "path": "quant-trading/data/raw/binance",
+      "before_this_cycle": [
+        "funding-rate",
+        "spot-1h",
+        "um-perp-1h",
+        "um-perp-1m",
+        "um-perp-metrics-5m",
+        "(listing snapshots)"
+      ],
+      "created_this_cycle": "delivery-1h/cm/<SYMBOL>/ plus delivery-1h-listing-20260903/",
+      "reading": "No coin-margined or delivery-futures bytes existed in the workspace before 2026-09-03."
+    },
+    "what_is_NOT_claimed": "No fresh, untouched, blind, or prospective calendar. The delivery dates 2020Q4..2026Q2 overlap in wall-clock time with consumed perpetual/spot calendars. Per frontier-loop-policy.json historical_data_boundary, novelty is claimed at the information-channel and payoff-structure level only."
+  },
+  "new_channel_inventory_preview": {
+    "listing_snapshot": "quant-trading/data/raw/binance/delivery-1h-listing-20260903/download-plan.json",
+    "dated_contracts_listed": 272,
+    "quarterly_after_rule": 270,
+    "contracts_downloaded": 268,
+    "contracts_in_cm_mechanism_universe": 204,
+    "archives": 1724,
+    "bytes": 42162591,
+    "verification": "every archive sha256-verified against its upstream .CHECKSUM sidecar and its listing size; 1724/1724 verified, 0 failed",
+    "purge_check": "Every base has a contiguous quarterly delivery sequence with no missing quarter, so no dated archive appears to have been purged.",
+    "cm_quarterly_complete_channel": 222,
+    "contracts_in_cm_pair_universe_as_near_or_far": 204,
+    "completeness_note": "All 222 coin-margined quarterly contracts are inventoried, including the 18 that only ever serve as a prev leg, so the runner can rebuild the pair universe from the inventory symbol list alone."
+  },
+  "structural_census_outcome_blind": {
+    "fields_read": [
+      "open_time (column 0)",
+      "count / number of trades (column 8)"
+    ],
+    "fields_NOT_read": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "quote_volume",
+      "taker_buy_volume",
+      "taker_buy_quote_volume"
+    ],
+    "counters": {
+      "headerless": 520,
+      "header-present": 1204
+    },
+    "complete_24_bar_days": 43847,
+    "partial_days": 522,
+    "per_window": {
+      "primary": {
+        "window_near_delivery": [
+          "2020-09-01",
+          "2024-01-01"
+        ],
+        "candidates": 112,
+        "eligible_positions": 112,
+        "rejects": {},
+        "quarters": 13,
+        "bases": [
+          "ADAUSD",
+          "BCHUSD",
+          "BNBUSD",
+          "BTCUSD",
+          "DOTUSD",
+          "ETHUSD",
+          "LINKUSD",
+          "LTCUSD",
+          "XRPUSD"
+        ],
+        "segments": {
+          "alt": 86,
+          "major": 26
+        },
+        "hold_days_min_med_max": [
+          82,
+          89,
+          96
+        ],
+        "entry_lag_days_max": 2,
+        "positions_by_quarter": {
+          "2020Q4": 4,
+          "2021Q1": 9,
+          "2021Q2": 9,
+          "2021Q3": 9,
+          "2021Q4": 9,
+          "2022Q1": 9,
+          "2022Q2": 9,
+          "2022Q3": 9,
+          "2022Q4": 9,
+          "2023Q1": 9,
+          "2023Q2": 9,
+          "2023Q3": 9,
+          "2023Q4": 9
+        }
+      },
+      "replication": {
+        "window_near_delivery": [
+          "2024-01-01",
+          "2026-07-01"
+        ],
+        "candidates": 77,
+        "eligible_positions": 77,
+        "rejects": {},
+        "quarters": 10,
+        "bases": [
+          "ADAUSD",
+          "BCHUSD",
+          "BNBUSD",
+          "BTCUSD",
+          "DOTUSD",
+          "ETHUSD",
+          "LINKUSD",
+          "LTCUSD",
+          "SOLUSD",
+          "XRPUSD"
+        ],
+        "segments": {
+          "alt": 57,
+          "major": 20
+        },
+        "hold_days_min_med_max": [
+          69,
+          89,
+          89
+        ],
+        "entry_lag_days_max": 8,
+        "positions_by_quarter": {
+          "2024Q1": 9,
+          "2024Q2": 9,
+          "2024Q3": 9,
+          "2024Q4": 10,
+          "2025Q1": 10,
+          "2025Q2": 10,
+          "2025Q3": 5,
+          "2025Q4": 5,
+          "2026Q1": 5,
+          "2026Q2": 5
+        }
+      }
+    },
+    "reading": "No price was read and no spread, return, signal, or gate was computed. The census fixes the sample-size minimum and the coin-margined restriction before any outcome exists."
+  },
+  "candidate": {
+    "id": "delivery-term-structure-convergence",
+    "cycle_ordinal_k": 7,
+    "alpha_k": 0.0008928571428571429,
+    "windows_by_near_delivery": {
+      "primary": [
+        "2020-09-01",
+        "2024-01-01"
+      ],
+      "replication": [
+        "2024-01-01",
+        "2026-07-01"
+      ]
+    },
+    "direction_registered_before_any_outcome": "convergence: |calendar log-spread| shrinks over the near contract final quarter",
+    "direction_source": "He, Manela, Ross, von Wachter, arXiv 2212.06888 (futures/perpetual premia deviate but diminish over time and are bounded by trading costs)"
+  },
+  "conclusion": {
+    "virgin_historical_span_exists": false,
+    "every_prior_consumed_window_enumerated": true,
+    "candidate_outcomes_accessed": false,
+    "new_information_channel": true,
+    "distinct_from_all_26_entries": "argued entry-by-entry in the pre-statement contract distinctness table"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "run_id": "20260906T192206Z_955565c2_c9339b06c72c",
+  "run_path": "math/qec/campaigns/20260906T192206Z_955565c2_c9339b06c72c",
+  "cwd": "/Users/jinleic/jinleic-workspace/math/qec",
+  "command": "python3 ../../scripts/campaign.py freeze --run \"$RUN\" && python3 ../../scripts/campaign.py close --run \"$RUN\" --verdict FROZEN-INCONCLUSIVE",
+  "environment": {"RUN": "/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260906T192206Z_955565c2_c9339b06c72c", "PYTHONDONTWRITEBYTECODE": "1"},
+  "observed_exit_code": 0,
+  "observed_wall_seconds": 0.19,
+  "observed_frozen_payload_files": 63,
+  "observed_verdict": "FROZEN-INCONCLUSIVE",
+  "observed_claim_release": "Owned Main claim, pid 20072; not the physics/qldpc-dec GB9 claim",
+  "observed_inventory": "math/qec/experiments/README.md",
+  "note": "Stored outside the frozen campaign so the closed payload is not mutated. The campaign CLI itself writes its terminal status.json after freeze as part of close. Legacy math/qec state.json and runs_dir remain untouched."
+}

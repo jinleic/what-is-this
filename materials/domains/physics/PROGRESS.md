@@ -4,6 +4,314 @@ Newest first. One entry per session. Every claim links to its verification.
 
 ---
 
+## 2026-09-06 — calibrated magic-cat search stopped without rank-five witness
+
+After the AES XOR assay failed to show local headroom, the next admitted
+candidate was `chi(cat_8) <= 5`, which would improve QPG's Clifford+T
+simulation exponent. The
+[registered public-SA assay](stabrank-witness/campaigns/20260906T025240Z_725b49e8_31de21aa6d69/)
+used one chain/thread at a time and fixed settings/seeds. Exact calibration
+passed for cat4/rank2, cat6/rank3 and cat8/rank6. Seven rank-five seeds
+completed without a witness; seed 7 hit the 60-second cell limit.
+**FROZEN-INCONCLUSIVE**, 73.105411 CPU s, 72.049315 wall s; no retries.
+
+The verifier independently reconstructs affine-support/quadratic-phase
+stabilizers over Q(i), checks the full QPG target and rejects corrupt controls.
+The frozen cat8/rank6 witness replayed all 256 coordinates in a standalone
+process after closure. Q(i) suffices because certificate vectors omit each
+state's nonzero normalization; exact cat6 coefficients and full replay
+adjudicate the normalization advisory.
+
+Post-hoc exact normal-equation checks on the seven already returned rank-five
+tuples match the numerical residuals. Best squared distance: **205/2016 to
+one particular span**, not a global floor or a lower bound on stabilizer rank.
+Rank A-for-assay becomes **C for the unchanged SA lane**. Residual variation
+does not establish LLM headroom. No large search or external submission.
+
+[`Cross-field evidence and dossiers`](../data/frontier-scout-20260906/).
+
+## 2026-09-06 — Portfolio supervision: compiler provenance adjudicated
+
+**CLAIM VERIFIED, no new compilation or batching search.** The frozen
+headroom runner directly constructs QMAP with strict routing, A-star
+placement, `log_level="error"` and `max_nodes=100000`, matching its
+preregistration. The advisory about the generic adapter's 10,000,000-node
+default concerns a different call path. Source/result hashes and all 517
+frozen payload checksums match; the raw exact-Fraction clique replay again
+returned PASS on 12 circuits, 242 transitions and 438 optimum batches
+(0.026308 CPU s). The frozen snapshot was not modified.
+
+The test remains descriptive: fixed classical rules and a null policy for
+zero-denominator gap closure, no adapted AI rule or generalization claim.
+The existing strict-placement batching search remains stopped.
+[`Audit evidence`](../data/portfolio-supervisor-20260906-na.json).
+
+## 2026-09-05 — proposed batching search stopped by a classical-baseline ceiling
+
+The [preregistered headroom assay](na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/preregistration.json)
+closed **FROZEN-NEGATIVE on its investment gate**: all 12 fixed circuits,
+242 strict-placement transitions and 438 high-level batches were already optimal
+under QMAP, DSATUR, largest-first and smallest-last. No LLM candidates were
+generated; 0/12 circuits had the required 10% residual gap (6/12 needed).
+
+The [results](na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/results/results.json)
+include every circuit and transition, raw NAViz, physical/high-level accounting,
+subset-DP witnesses and Z3 UNSAT@k−1 / SAT@k decisions. Independent stdlib-only
+[replay](na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/verify_cliques.py)
+reconstructed all raw traces using exact Fractions and supplied a matching clique
+lower bound for each partition (242/242). Assay: 1.033274 CPU s; replay: 0.025658
+CPU s. A tool-free Fable review accepted the narrow claim; its overbroad argument
+about spurious transition splits was not relied on (see review-adjudication.json).
+
+This rules out batch-count improvement **on these fixed transitions**, not on
+different placements or relaxed routing. The two n=8 regular graphs are isomorphic.
+No hardware/novelty/AI-superiority claim, no larger run, and no GB9 or autonomous
+supervisor restart. Portfolio decisions and unresolved literature leads:
+[`data/research-resume-20260905.json`](../data/research-resume-20260905.json).
+
+## 2026-09-05 — FSS reporting branch stopped on reference-integrity failure
+
+[Primary Table 1](https://arxiv.org/html/2603.19062v3#S3.T1) gives
+N576 `0.4453 [0.4452,0.4455]` and N900 `0.4674 [0.4673,0.4676]`.
+The FSS row in RESULTS and the 2026-08-30 completion entry below instead
+use `0.4608` and `0.4702`; their N576 CI-miss and four-of-five-overlap
+statements are unsupported. Main read the primary table after an
+independent read-only provenance review.
+
+The same review found stale RUNNING wording in the FSS landing state and
+a resource-scope error: the preregistered estimate is about50 core-hours
+for the five-size Gate-A 200k ladder; about221 belongs to the two
+additional Gate-B sizes. Those are historical estimates, not new launch
+budgets. [Integrity evidence](../data/fss-reference-integrity-20260905.json)
+records the affected statements and source authority.
+
+**FSS work stopped pending integrity adjudication.** No reporting repair,
+frozen-payload change, modern status-file fabrication, new scientific
+verdict, or FSS workload was performed. The existing ν label remains
+INCONCLUSIVE-UNDER-BUDGET; the reporting errors must not support further
+promotion. GB9 supervision and its resource guard are independent.
+
+Quarantine applied the same day, without touching frozen payloads or the ν
+verdict: the FSS RESULTS row and landing state now carry an explicit
+integrity hold naming the correct Table 1 values, the ≈50 core-hour Gate-A
+scope, and a refusal to approve the 200k ladder off the current published
+comparisons. `latest_campaign_verdict` reads
+`UNVERIFIED-LEGACY-NO-STATUS-FILE` rather than a fabricated terminal verdict:
+the legacy layout writes no `status.json`, and the evidence that the run
+finished is indirect. Correcting the published numbers, and any FSS work at
+all, still waits on adjudication.
+
+## 2026-09-05 — MSD stale rebuild handoff replaced by the official-source route
+
+The [MSD README](msd/README.md) and [semantic state](msd/state.json)
+now route official-author reproduction to the
+[canonical QLOPS handoff](qlops/README.md#official-source-revision-7--frozen-readiness-smoke-only).
+The historical source-frame floor diagnosis remains intact, but no new
+surrogate rebuild is queued. R7's eight-gate smoke PASS is frozen
+REHEARSAL launch readiness only; the author artifact is d3/d9, not a
+reproduction of the paper's d7/c≈300 headline.
+
+The [frozen R7 summary](qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/results/summary.md)
+and [terminal status](qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/status.json)
+ground the handoff. MSD's historical data, preregistrations, negative
+controls and verdict strings are unchanged; the paper claim remains
+UNTESTED by its surrogate. No new campaign or computation was run.
+
+## 2026-09-05 — all pinned shadow families classified algebraically for every k
+
+The [complete pinned-family comparison](shadows/README.md#analytic-closure--complete-pinned-family-comparison)
+adds disjoint-pair factorization and exact Clifford layer identities to
+the chain recurrence below. Within these families, only the pure chain
+and lex CNOT mesh at k4 strictly improve on U_ct. Their full histograms
+agree for every k. Uniform-letter meshes and CZ mesh tie U_ct; every
+near-perfect matching loses for k≥3; U_ct then CZ loses for k≥2.
+The linked table states all small-k ties.
+
+- Independent symbolic reviews validated both remaining proof slices.
+- Main's exact checks passed for 96 layer maps on complete GF(2) bases
+  at k=1..12, all three pair transvections, and matching direct sums at
+  k=1..8; combined execution was under one second.
+- [Evidence](../data/shadows-pinned-family-analytic-20260905.json) records
+  the reviewed source hashes and exercised checks. No token or matching-
+  family enumeration, sampling, solver, or new campaign was run.
+- This is a scoped all-k theorem, not an arbitrary-Clifford obstruction.
+  Largest empirical k remains12, exhaustive matching search remains
+  k≤8, and all frozen payloads and experimental verdicts are unchanged.
+  The separate noisy-variance gate remains FROZEN-CERTIFIED.
+
+## 2026-09-05 — pure cx_chain asymptotic question closed by an exact transfer proof
+
+The [canonical derivation](shadows/README.md#analytic-closure--pure-cx_chain-for-every-k)
+settles the pinned pure open CNOT chain without another finite-k campaign.
+Writing `A_k=9^k*w_cx(k)`, the exact transfer identity gives
+`A_1=3, A_2=17, A_(k+2)=3*A_(k+1)+8*A_k`.
+An integer forcing recurrence proves the complete comparison with U_ct:
+**k=4 is the sole strict win; k=1,2,3,5 tie; every k≥6 loses.**
+The weight ratio tends to zero at exponential base `(3+sqrt(41))/10<1`;
+the reciprocal shadow-norm disadvantage grows.
+
+- Two independent hand reviews checked the map/transfer construction and
+  the all-k induction. The argument is not a fitted recurrence.
+- Main's exact four-state polynomial check matched all nine stored k=4..12
+  weight rows and all four complete k=9..12 size histograms. No token
+  enumeration, sampling, solver, or new campaign was run.
+- [Verification evidence](../data/shadows-cx-chain-analytic-20260905.json)
+  records exact differences, matrix identities and input byte hashes.
+  The legacy extension's short manifest identifier hashes its prereg/source
+  inputs, not the output JSON; no raw-output ledger is inferred from it.
+- Scope is the pinned pure open chain with uniform full-support X/Y/Z
+  tokens. Largest empirical k remains12; family(b), inserted identities,
+  rings and noise receive no new claim. Frozen campaigns and previous
+  verdicts, including noisy-variance FROZEN-CERTIFIED, remain unchanged.
+
+## 2026-09-04 — QLOPS official source pinned; R7 smoke PASS closed REHEARSAL; 71m full run unstarted
+
+The stale no-official-source premise is retired. The
+[`FujitsuResearch/Zero-level_CCZ_Distillation`](https://github.com/FujitsuResearch/Zero-level_CCZ_Distillation)
+repository is pinned at commit
+`1b59e223590492e224bd8623a4e0bcba59029e01`, tree
+`9a5d89401fd40554635fb0e9d0b4da818670c2bc`, and codeload tar sha256
+`d67dbe7482b391984da5e64aeff7668bdaee45c262e6fb2dfd41dfed3d7f3338`.
+Its executable artifact is d=3/d=9; the paper's headline grown result is
+d=7. These are never equated: paper d=7 and the physical c≈300 claim
+remain **NOT-REPRODUCED**.
+
+- **Instrument history:** R5
+  `qlops/campaigns/20260904T052209Z_2a0a2723_203c9b1d1900/` is
+  frozen/closed **SUPERSEDED** because its ungrown-p=0 shipped oracle was
+  unsupported; it has no accepted result. R6
+  `qlops/campaigns/20260904T054022Z_5f040b2a_1f64afb2c983/` is
+  frozen/closed **CRASHED** after a results-directory orchestration bug;
+  the regression was fixed before R7, and R6 has no accepted result.
+  Neither predecessor is evidence.
+- **Canonical readiness smoke:** campaign
+  `qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/`, gate
+  `zero-level-author-repro-r7`, preregistration sha256
+  `99b3985b261dc3de561917736ea25c1e552283a67b2353df50f137a954bb0668`,
+  is frozen and closed **REHEARSAL**. The smoke verdict is **PASS**, all
+  eight gates: builder-only ungrown p=0 recovery invariants, zero-error
+  DEM, zero detector/observable bits, and fixed-schedule replay; plus real
+  shipped grown p=0.001 rebuilt equality, fault-id invariants,
+  accepted-only scalar/batch bitwise agreement, and replay.
+- Canonical evidence:
+  [summary](qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/results/summary.md),
+  [smoke JSON](qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/results/smoke.json),
+  [manifest](qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/manifest.json),
+  [status](qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/status.json),
+  and [sha256 ledger](qlops/campaigns/20260904T054537Z_818bca48_18f5ac3b849c/sha256s.txt).
+  `sha256sum -c` passed all 31 listed payloads. This smoke has
+  launch-readiness weight only, not scientific-result weight.
+- The full author-count schedule remains pending and **unstarted**:
+  71,000,000 shots across 12 cells. After GB9 releases its 26 threads,
+  follow the canonical exact two-command handoff in
+  [`qlops/README.md`](qlops/README.md#official-source-revision-7--frozen-readiness-smoke-only).
+  It mints a fresh `zero-level-author-repro-r7` campaign, substitutes its
+  emitted run ID, consumes the immutable hash-verified R7 source tar, sets
+  the OMP/OpenBLAS/MKL/NumExpr/vecLib thread caps to one, and launches via
+  `/usr/bin/nice -n 10`; it does not depend on the ephemeral `/tmp` tar.
+  The R7 environment is Python 3.14.3, stim 1.16.0, pymatching 2.4.0,
+  and numpy 2.5.2.
+- Existing conclusions are unchanged: Gate A remains **REPRODUCED**
+  (81 checks, zero hard failures), and Gate B's magic-state axis still
+  falsifies QLOPS comparability. No part of this readiness smoke promotes
+  the zero-level physical result.
+
+## 2026-09-04 — shadows noisy-variance gate closed FROZEN-CERTIFIED: exact 132-cell no-flip regression (gate noisy-variance-r7)
+
+The channel-resolved real-versus-unitary variance question named as the
+live next step on 2026-09-03 is answered — by exact confirmation of known
+formulas, not discovery.
+
+- Campaign `shadows/campaigns/20260904T034040Z_bed4a462_be2fd1106eed/`
+  (gate `noisy-variance-r7`, pre_statement.md Revision 7) closed
+  **FROZEN-CERTIFIED** / `NO-FLIP-CONFIRMED-IN-SCOPE` at
+  2026-09-04T03:41:22Z. Closed-form `fractions.Fraction` arithmetic over
+  the frozen grid — no sampling, no RNG, single core; all six frozen
+  artifacts re-hash clean against the dir's `sha256s.txt`.
+- Grid: d ∈ {4, 8, 16} × two channels (depolarizing 60 cells, amplitude
+  damping 72 cells) × three anchors (GHZ projector, maximally-mixed
+  Pauli-Z, GHZ Pauli-X) = 132 unique cells. All 31 preregistered
+  regression identities hold (Eq. (37) == direct second-moment ratio and
+  Eq. (44) variance ratio ≥ second-moment ratio in every row);
+  `flip_cells: []`; no ratio ≤ 1 anywhere.
+- Extrema with provenance cells: second-moment ratio (Eq. 37) min
+  **1955/1539** (depolarizing d=16, p=1, GHZ projector), max **17/9**
+  (depolarizing d=16, p=1, maximally-mixed Pauli-Z); variance ratio
+  (Eq. 44) min **6815/4671** (depolarizing d=16, p=3/4, GHZ projector),
+  max **2** (depolarizing d=4, p=1, GHZ Pauli-X).
+- Limitation, frozen before the run: the paper proves the no-flip result
+  analytically (arXiv:2608.18935v1, Corollary 3.11 / Eq. (44)). This
+  campaign is regression-grade exact confirmation of the formula chain on
+  the frozen grid plus margin quantification — not a discovery search,
+  not a proof beyond the grid, and no evidence on whether the k=4 bounded
+  `cx_chain` edge persists. All earlier bounded-family facts stand
+  unchanged.
+- Provenance: prereg sha256
+  `8f9d51ba6adad68fc415526b7f37c1848ef9e17d0d04ca25b11155d39ad0fbf2`;
+  module snapshot sha256
+  `156b09c0cdaf75fb46053df91427693520e83af640a430db8b23a3f659ada5a0`;
+  results sha256
+  `fcb733b705b8535acb829f105aa5cf89b83fa077b723687befd7be1a2ddc82d2`;
+  summary sha256
+  `36885050aa43400e92cde27991fd1cbb718a03ec06c8e43a3bfd3591f4675227`.
+  Superseded predecessor `20260904T031748Z_cbbe7c0b_fbc8a23e2ed9` (r4
+  instrument, closed SUPERSEDED before any result was used; Revisions
+  5–7 hardened the instrument only). Post-close scoped re-check:
+  `shadows_noisy_variance.py --check` reproduces identities=31 failed=0,
+  FROZEN-CERTIFIED, 132 rows, min ratios 1955/1539 and 6815/4671.
+- Ledger sync: RESULTS.md shadows row and evidence ladder now carry the
+  R7 entry; README follow-up section records the closure with the frozen
+  scope; state.json now carries `latest_campaign`
+  `20260904T034040Z_bed4a462_be2fd1106eed` / `FROZEN-CERTIFIED` (exactly
+  what `campaign.py state refresh` derives from the run dir). No claim
+  beyond the grid is made anywhere.
+
+## 2026-09-04 — while GB9 decodes: qlops common-unit correction; shadows claims bounded
+
+Independent read-only review found and corrected provenance errors in two
+CPU-light targets; the 26-thread GB9 decoder was not interrupted.
+
+**`qlops/` Revision 4 — common-unit accepted-output accounting.** Revision 3's
+4.1×–632× band divided incompatible time units: zero-level depth 24 is circuit
+layers, while the Litinski denominator is in syndrome-extraction cycles. The
+frozen 193.3×–29,946.5× row is now explicitly
+`[DERIVED; LEGACY-MIXED-UNITS]`, not a published magnitude. The corrected
+deterministic comparison uses:
+
+- Litinski accepted CCZ equivalent =
+  `7 × Table-6 unit qubits × reported cycles`; Table 6 states that its cycle
+  count already includes postselection.
+- Zero-level accepted CCZ =
+  `(22 + 3(2d²−1)) × 3 syndrome rounds / acceptance`, for the paper-simulated
+  d=3 and d=7 variants.
+
+The worst sourced arm is d=7 with acceptance 0.30:
+**33.76693322683706×–5086.233185367411×**. Every arm still clears the
+preregistered 2× falsifier, so the Gate-B comparability verdict survives.
+The acceptance endpoints are approximate reported values cross-applied only as
+sensitivity arms. Figures 10/11 do contain graphical pointwise error bars; the
+paper gives no definition/confidence level, fit-coefficient uncertainty,
+residuals, or decoder. Artifact
+`qlops/src/evidence/zero_level_sensitivity.json`, sha256
+`1558bf3ebc493f1c3eff02bba13117c647537b78235a4c2d832ac340881e01a5`.
+Seven behavioral tests pass, including exact combination-set and worst-arm
+guards; regenerated Gate-A and Gate-B JSON is byte-identical to the frozen
+campaign.
+
+**`shadows/` — finite evidence bounded exactly.** The k=4 improvement belongs
+to the pure `cx_chain` and `cx_mesh_lex` maps, not their composition with
+`U_ct`; the literal composite is an excluded map with weight 1/81. The frozen
+extension proves EDGE-VANISHES only at k=9..12. Across those rows, the absolute
+weight gap narrows while w(`cx_chain`)/w(`U_ct`) decreases, so the relative
+and shadow-norm disadvantage widens. `largest_k_completed=12`; incremental
+row times 0.468/1.535/5.042/16.356 s grow by about 3.25×, not 2×. **Decision:
+do not run a further finite-k campaign.** More rows cannot change the
+already-closed k≤8 Gate-C verdict and cannot settle the unresolved asymptotic
+law; no claim is made beyond k=12, and family (b) was not searched past k=8.
+The authoritative results table now includes the missing shadows row. The live
+next question is the channel-resolved real-Clifford variance table
+(arXiv:2608.18935).
+
 ## 2026-09-02 — GB9 launched: the paper's actual 17x (beam64_32res, num_results=32), paired 1e8, RUNNING
 
 - Decoder built and proven before any sample. The paper's Algorithm 3 step 3
@@ -970,17 +1278,17 @@ cited source, then keyword-sweep the target's object and check each hit against 
 
 ---
 
-## 2026-08-30 — shadows gate-C k-extension: edge VANISHES at k≥9
+## 2026-08-30 — shadows gate-C k-extension: edge VANISHES at each enumerated k=9..12
 
 - ShadowsExt completed the Revision-2 campaign
   (`shadows/campaigns/2026-08-30T114124Z_ba4f8430_65d2435684e3/`, 23.8 s,
-  exact Fractions): regression gate 35/35 exact matches vs the frozen
-  k≤8 artifact — PASS; then k=9..12 all **EDGE-VANISHES**: w_cx < w_ct
-  exactly (e.g. k=9: 274721 vs 328801 over 129140163; k=12: 85655881 vs
-  122336033 over 282429536481), gap widening with k. Eq.(4) == enum at
-  every completed k. The k=4 CX-chain improvement is a finite-k effect:
-  the paper family U_ct is optimal (within the pinned carrier scope) by
-  k≥6 — cx_chain already loses from k=6 on, and the loss grows.
+  exact Fractions): regression gate 35/35 exact matches versus the frozen
+  k≤8 artifact — PASS; k=9..12 are all **EDGE-VANISHES**, with w_cx<w_ct
+  exactly. From k=9 to 12, the absolute weight gap narrows while w_cx/w_ct
+  decreases, so the relative/shadow-norm disadvantage widens. Eq. (4)
+  equals enumeration at every completed k. The pure `cx_chain` k=4
+  improvement is absent at every enumerated k=6..12; this is a bounded
+  finite-k result, not an asymptotic claim.
   Contract JSON copied at shadows/src/ext_k_contract.json.
 - Process notes recorded honestly: the agent first yielded empty (caught,
   restarted); then caught a direction inversion in MY context contract
@@ -1236,11 +1544,13 @@ cited source, then keyword-sweep the target's object and check each hit against 
   sharpens it — every two-qubit Clifford contracts exactly 0 or 4 of the 9
   size-2 Paulis (bimodal histogram, nothing in between); Gate B re-derives
   Eq. (3)–(7) exactly (k≤10 exhaustive, k≤16 integer-exact) plus the
-  1/(2^k+1) baseline; Gate C finds a scope-limited exact improvement,
-  CX-chain/mesh ∘ U_ct weight 361/6561 vs U_ct 353/6561 at k=4 (shadow
-  norm ratio 353/361, ~2.2% better at that single k — explicitly not an
-  asymptotic claim). Owner rerun of run_campaign.py reproduced the
-  artifacts (193.0 s). Pre-statement had been frozen before implementation;
+  1/(2^k+1) baseline; Gate C finds a scope-limited exact improvement: the
+  pure `cx_chain` and `cx_mesh_lex` maps have weight 361/6561 versus
+  353/6561 for `U_ct` at k=4 (shadow-norm ratio 353/361, ~2.2% better at
+  that single k). The literal `cx_chain`∘`U_ct` composite is a different
+  excluded map with weight 1/81 at k=4; no asymptotic claim is made. Owner
+  rerun of `run_campaign.py` reproduced the artifacts (193.0 s).
+  Pre-statement had been frozen before implementation;
   one handedness revision is documented (Revision 1), never silently
   edited.
 - `FssBb` reproduced the N=144 paper-budget fragment (p* = 0.37032,

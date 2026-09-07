@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ising3d continuous supervisor: independent review turn output",
+  "description": "Output of a fresh reviewer/verifier-author turn for one produced artifact. The verifier must be independent of the producer (no import of the producer module, different computation path where feasible), read-only, exit 0 only on full PASS, and print the pass_marker line only then.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "verifier",
+    "independence_statement",
+    "checked_claims",
+    "accepted_scope",
+    "concerns"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["verify", "reject"],
+      "description": "'verify' runs the named verifier under the resource guard; 'reject' records a failed route (reject_reason required) and no verifier runs."
+    },
+    "reject_reason": {"type": "string", "maxLength": 2000},
+    "verifier": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["script", "arguments", "pass_marker"],
+      "properties": {
+        "script": {"type": "string", "minLength": 1, "maxLength": 300, "description": "target-relative path under tests/ (or experiments/)"},
+        "arguments": {
+          "type": "array",
+          "items": {"type": "string", "maxLength": 300},
+          "maxItems": 24
+        },
+        "pass_marker": {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 120,
+          "description": "Exact single-line stdout marker printed only on full PASS."
+        }
+      }
+    },
+    "independence_statement": {"type": "string", "minLength": 20, "maxLength": 1500},
+    "checked_claims": {
+      "type": "array",
+      "items": {"type": "string", "maxLength": 300},
+      "minItems": 1,
+      "maxItems": 12
+    },
+    "accepted_scope": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 600,
+      "description": "Exactly what a PASS certifies (bounded, finite, no theorem beyond the observed scope)."
+    },
+    "concerns": {
+      "type": "array",
+      "items": {"type": "string", "maxLength": 300},
+      "maxItems": 8
+    }
+  }
+}

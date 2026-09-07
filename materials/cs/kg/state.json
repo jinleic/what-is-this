@@ -2,17 +2,18 @@
   "schema": "target-state/1",
   "id": "cs/kg",
   "problem": "Grothendieck constant K_G certified upper bound",
-  "status": "active",
-  "current_gate": "Band [4.083,6.0] FAILURE TO CERTIFY at tile 3/49 under the corrected 2-D even-box envelope; the kgcloseB3 retraction STANDS.",
-  "latest_campaign": "20260831T145732Z_kg_direct_d4_midband_panelcache",
-  "latest_campaign_verdict": "RUNNING",
-  "headline": "Headline K_G <= 1.78184132 certified (cited-tail dependency, unaffected). The pre-registered mq=t^2 subdivision is PROVABLY DEGENERATE (crossing root s*=45.703 outside [0,8], recovery exactly 0); tile 3's cell closes at panel cap 2^19.",
-  "next_action": "Campaign C: tile 3 entirely at cap 2^19 as a single-knob change gated on bit-exact reproduction of A's cap-2^17 margin, then tiles 4-49. Bands [1.0,1.3], [1.45,1.75], [1.75,3.5] remain NEVER RUN.",
+  "status": "paused",
+  "current_gate": "Tiles 4-49 continuation FROZEN-INCONCLUSIVE: startup controls passed, no tile-4 adjudication or new certified tile. No intra-tile restart state; no new scientific computation launched during resource-limited closeout.",
+  "latest_campaign": "20260904T050531Z_fae0b1cf_44e93966ae8d",
+  "latest_campaign_verdict": "FROZEN-INCONCLUSIVE",
+  "headline": "The cited-tail-dependent headline K_G <= 1.78184132 and previously certified domains are unchanged. The old OS-throttling diagnosis is not established by native evidence. Forty-one frozen hashes verify; the claim record is preserved.",
+  "next_action": "Remain paused until a separately registered and verified finer/intra-tile checkpoint strategy or a safe uninterrupted tile-boundary window exists. A short probation cannot promise durable progress: the adjacent same-cap tile used about 12,329.887 process-seconds. No scheduler/Terminal workaround; obey cs/README.md CPU, disk, memory and wall bounds. Consult root RESULTS for the other closed band campaigns.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "owner-main",
+  "updated_by": "Main",
   "sources": [
+    "cs/RESULTS.md",
     "cs/kg/README.md",
-    "cs/RESULTS.md headline"
-  ]
+    "cs/kg/campaigns/20260904T050531Z_fae0b1cf_44e93966ae8d/VERDICT.md"
+  ],
+  "updated_utc": "2026-09-04T23:42:54Z"
 }

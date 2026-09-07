@@ -5,6 +5,655 @@ cost. "Verified" means a command ran and its output was observed, or a primary
 source was read directly — not that something looks right.
 
 
+## 2026-09-06 — Gross distance-eleven feasibility stopped at source admission
+
+The sole new mainline is the exact Strikis–Browne–Beverland Figure 12
+gross-code SEC (arXiv:2603.05481v1), not the existing IonQ decoder circuit.
+The [one-page research card](qec/README.md#current-research-card--exact-gross-code-circuit-distance-eleven)
+records the physical-location fault metric, both memory bases, round/boundary
+obligations, strongest comparable methods, conjectural status and stop gates.
+The [registered campaign](qec/campaigns/20260906T192206Z_955565c2_c9339b06c72c/)
+is **FROZEN-INCONCLUSIVE**: the exact timed circuit was not admitted.
+
+Pinned the full primary source, Figure 10–12 PDFs, authors' repository at
+`eded83cf054ae1c79607fbd2bae98748d95f43bf`, Zenodo 18853601 and the
+Webster–Jacob–Higgott v2 baseline. The Zenodo archive has 124 Stim files from
+four other code families, no gross circuit. The complete repository has
+37 files, only a surface-code Stim example, and gross parity matrices
+without the proposed schedule.
+
+Executed both direct figure readings (matching markers and matching X/Z
+caption labels), each over eight relative row phases. Both satisfy the six
+basic graph checks, but **0/16** cases avoid simultaneous CNOT use of a data
+qubit. Marker-reading collision counts are 48/72/168/240/288/240/168/72;
+caption-reading counts are 240/120/240/168/144/120/96/168.
+This rejects those recorded transcriptions, **not the authors' circuit or
+conjecture**, and is not exhaustive over arbitrary staggerings.
+[Gate evidence and review adjudication](qec/campaigns/20260906T192206Z_955565c2_c9339b06c72c/decision.json).
+
+The two successful source probes used 0.035366 / 0.036094 seconds wall and
+0.072260 / 0.072127 seconds process CPU, with 29,540,352 / 29,736,960 bytes
+peak RSS. Native AS/DATA limit setup failed before compute; prospective
+amendments used 30-second subprocess wall limits and sampled 2 GiB RSS
+supervision, not a hard address-space guarantee. All failed attempts and
+commands are retained. No physical-fault model, known-answer circuit
+validation, physical witness replay, negative-control circuit or distance
+solver was run; **no upper/lower/exact circuit-distance claim** follows.
+
+A focused no-tool Fable review correctly rejected absence of an authors'
+file or mere global X/Z duality as sufficient stop reasons; the actual
+collision failures are decisive for these transcriptions. Next input is a
+source-justified exact timing/colour/round mapping or authors' circuit.
+Then validate measured checks, Figure 11 residuals, boundaries and
+independent physical faults before any SAT escalation. No MoE backup,
+external outreach, remote change, or decoder GB9 claim change.
+
+## 2026-09-06 — Portfolio supervision: proofs, novelty and stop decisions
+
+### H1: explicit uniform scaled-family corollary
+
+**CLAIM STRENGTHENED.** The existing Lorentz/Gram proof covers every
+`f_lambda(s)=lambda*s*(1-s)`, `lambda in [0,1]`, not only the scale-one
+endpoint. The new proof in `LIU_H1/paper/main.tex` uses the same reciprocal
+kernel at `r*kappa`, with `kappa=lambda^2`, and a `kappa^2` Taylor remainder.
+The original uniform endpoint bounds close the whole parameter cube.
+No frequency constant or publication novelty is claimed.
+
+`LIU_H1/verification/scaled_kernel_check.py` returned PASS on seven exact
+symbolic identities; a missing-square negative control returned `-1/219`.
+Run: `nice -n 10 math/.venv/bin/python -I -B math/LIU_H1/verification/scaled_kernel_check.py`
+from workspace root (0.58 s observed wall, 15 CPU / 30 wall cap).
+The unchanged CAS-free checker passed its 16 exact identities (0.05 s wall).
+The extended manuscript compiled with latexmk (1.44 s wall).
+Proof assumptions, scope and source/PDF pins:
+[`H1 evidence`](../data/portfolio-supervisor-20260906-h1.json).
+
+### UC: separate conditional entropy-bridge review
+
+A no-tool `claude-fable-5-1` review accepted the protocol-to-frequency
+implication **assuming the universal mixture inequality**. It checked
+prefix conditioning, marginal preservation, conditional-iid mixing,
+reflection, entropy accounting and degenerate families. It did not prove
+the interval inequalities or establish novelty; this is model review,
+not outside mathematical refereeing.
+[`Adjudicated review`](../data/portfolio-supervisor-20260906-uc-bridge-review.json).
+
+## 2026-09-05 — UC delivery routed to current package; priority lead held open
+
+The UC landing page now routes to `uc/H2_PAPER/REFEREE.md` and the local
+$0.38284565599065407172\ldots$ manuscript rather than presenting the old H2
+obligation as still unaddressed. No theorem or certificate was recomputed.
+
+The user-reported Costa preprint (2026-08-23, bound >0.3827290879) remains an
+unresolved prior-art lead. The targeted arXiv author/topic query returned zero
+records; two web query forms failed to identify a primary. Absence from those
+lookups is not nonexistence or novelty evidence. The literature audit and
+referee entry point now gate priority claims on a direct theorem comparison.
+No outside review, email, submission or public upload was performed.
+
+The portfolio continuation and the independently verified negative neutral-atom
+headroom experiment are recorded in
+[`data/research-resume-20260905.json`](../data/research-resume-20260905.json).
+
+Final checks: the updated referee-package closure passed (30 files, eight links,
+24 ledger pins). The UC mechanical refresh falls back to `RUNNING` for its
+legacy latest campaign without `status.json`; this is not a newly running job
+or a changed proof verdict. No legacy terminal status was fabricated.
+[`Verification record`](../data/research-resume-20260905-verification.json).
+
+### Supervisor outcome 0003_H686 — 2026-09-05T10:09:12Z
+
+- H686: **REVIEW_REJECTED**; bounded scope only.
+- Evidence: `math/ising3d/campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0003_H686/evaluation.json`.
+- Artifact: `results/spectral/trace_nine_exact_bracket_bisection.json`.
+- Guard verdicts: `{"producer":{},"verifier":{}}`.
+- Next prompt: Continue from H686 (norm): REVIEW_REJECTED. Choose the highest admissible bounded exact test in the ranked queue. Read the linked evaluation, current checkpoint, failed routes and hypothesis ledger. State falsifiable predictions and scope; obtain independent pre-execution code review, run one bounded producer and its independent verifier, then checkpoint and continue. Do not repeat an unchanged failed input, rerun completed canaries, or interpret an inner PASS as a successful resource exit. Preserve nice 19, one thread, 35% of one core, the monitored 2 GiB stop, 50 GiB free reserve, bounded writes, and no deletions.
+
+### Supervisor outcome 0002_H684 — 2026-09-05T10:00:15Z
+
+- H684: **CONFIRMED**; bounded scope only.
+- Evidence: `math/ising3d/campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0002_H684/evaluation.json`.
+- Artifact: `results/spectral/trace_nine_exact_sign_census.json`.
+- Guard verdicts: `{"producer":{"average_cpu_percent":33.1052,"child_exit_code":0,"command_wall_seconds":2055.937691,"cpu_seconds":680.622065,"free_disk_bytes":146775408640,"guard_exit_code":0,"max_60s_cpu_percent":33.07,"peak_memory_bytes":1559117824,"reason":"completed","unmeasurable_at_exit":0,"unmeasurable_processes":0,"wall_seconds":2055.937694,"written_bytes":118784},"verifier":{"average_cpu_percent":33.1041,"child_exit_code":0,"command_wall_seconds":1683.565831,"cpu_seconds":557.328685,"free_disk_bytes":146348740608,"guard_exit_code":0,"max_60s_cpu_percent":33.6104,"peak_memory_bytes":1190625280,"reason":"completed","unmeasurable_at_exit":0,"unmeasurable_processes":0,"wall_seconds":1683.565834,"written_bytes":0}}`.
+- Next prompt: Continue from H684 (norm): CONFIRMED. Choose the highest admissible bounded exact test in the ranked queue. Read the linked evaluation, current checkpoint, failed routes and hypothesis ledger. State falsifiable predictions and scope; obtain independent pre-execution code review, run one bounded producer and its independent verifier, then checkpoint and continue. Do not repeat an unchanged failed input, rerun completed canaries, or interpret an inner PASS as a successful resource exit. Preserve nice 19, one thread, 35% of one core, the monitored 2 GiB stop, 50 GiB free reserve, bounded writes, and no deletions.
+
+### Supervisor outcome 0001_H681 — 2026-09-05T05:50:24Z
+
+- H681: **CONFIRMED**; bounded scope only.
+- Evidence: `math/ising3d/campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0001_H681/evaluation.json`.
+- Artifact: `results/spectral/trace_nine_bounded_canary_replication.json`.
+- Guard verdicts: `{"producer":{"average_cpu_percent":32.9506,"child_exit_code":0,"command_wall_seconds":2057.466614,"cpu_seconds":677.948307,"free_disk_bytes":147643437056,"guard_exit_code":0,"max_60s_cpu_percent":33.0081,"peak_memory_bytes":1994260480,"reason":"completed","unmeasurable_processes":0,"wall_seconds":2057.466618,"written_bytes":4096},"verifier":{"average_cpu_percent":33.1266,"child_exit_code":0,"command_wall_seconds":1958.315775,"cpu_seconds":648.723518,"free_disk_bytes":147325222912,"guard_exit_code":0,"max_60s_cpu_percent":33.0926,"peak_memory_bytes":1399898112,"reason":"completed","unmeasurable_processes":0,"wall_seconds":1958.315779,"written_bytes":0}}`.
+- Next prompt: Continue from H681 (norm): CONFIRMED. Choose the highest admissible bounded exact test in the ranked queue. Read the linked evaluation, current checkpoint, failed routes and hypothesis ledger. State falsifiable predictions and scope; obtain independent pre-execution code review, run one bounded producer and its independent verifier, then checkpoint and continue. Do not repeat an unchanged failed input, rerun completed canaries, or interpret an inner PASS as a successful resource exit. Preserve nice 19, one thread, 35% of one core, the monitored 2 GiB stop, 50 GiB free reserve, bounded writes, and no deletions.
+
+
+### ISING-W28 (2026-09-04) — COMPLETE TRACE-NINE DETERMINANT MATERIALIZED MODULO ONE PRIME; CHARACTERISTIC-ZERO RECONSTRUCTION REMAINS OPEN
+
+* **Outcome.** The fixed rank-96 open-`2x4` quotient now has a complete
+  polynomial determinant over `F_2147483647[q]`, not merely evaluated
+  witnesses. The row-cleared determinant has degree `36815` and 32,944
+  nonzero coefficients. Restoring row scales and cancelling yields a nonzero
+  rational norm with numerator/denominator degrees `19846/16048` (`H677`).
+* **Exact method.** The installed Python binding lacks polynomial matrices,
+  but its bundled FLINT `3.6.0` dylib exports `nmod_poly_mat_det_interpolate`.
+  A version/layout/hash-pinned ctypes bridge first passed an exact 2x2 smoke.
+  Exact rational reduction then constructed all 96 columns, 8,557 nonzero
+  entries, and 26,131 ordered reductions. The maximum cleared entry degree
+  is `629`, so `96*629+1=60385` exact distinct interpolation nodes suffice
+  and fit the declared 10,000,000-evaluation gate. Direct scalar determinants
+  at q=`2,3,5/3` reproduce residues `1660951362,2143576240,843620109` over
+  the same prime; the first is the inherited e251 witness.
+* **Independent verification (one execution).** The verifier imports the independent
+  Wave-27/e251 verification stack, not e253. Direct resultant incidence, a separate
+  scan reducer, exact row normalization, and full native polynomial
+  reconstruction reproduce every coefficient and digest. Pure-Python scalar
+  elimination checks all three rational points. All eight checks and six
+  resealed mutations pass. Review found unchecked theorem/transcript/metadata
+  fields; the final verifier exact-compares those complete objects. Integration
+  also corrected the inherited check's Wave-27-versus-e251 digest reference.
+* **Determinism and local resource care (`H678`).** Two producer executions
+  yield byte-identical artifacts, 705,192 bytes each; there was one independent
+  verifier execution, not two. The supervised runner targets 35% of
+  one core, fixes numerical thread counts at one, reserves 50 GiB free disk,
+  disables core/bytecode writes, limits individual files to 16 MiB, and
+  monitors 2 GiB memory and 64 MiB process writes. No packages were installed.
+
+  | Guarded run | Wall seconds | Combined child/guard CPU seconds | Average CPU, one core | Highest 60-second CPU window | Producer/verifier peak RSS bytes |
+  |---|---:|---:|---:|---:|---:|
+  | Producer 1 | 1492.65 | 489.285 | 32.78% | 33.10% | 512917504 |
+  | Producer 2 | 1519.09 | 496.015 | 32.65% | 32.89% | 520093696 |
+  | Independent verifier | 1677.70 | 548.831 | 32.71% | 32.94% | 508035072 |
+
+  Each producer recorded only 0.68 MiB disk writes; the verifier recorded
+  none. Free disk at verification completion was 127.85 GiB. Corrected
+  rolling CPU accounting uses `mach_timebase_info`; final CPU uses `wait4`.
+* **Pinned files.**
+  [`ising3d/experiments/e253_trace_nine_structured_determinant.py`](ising3d/experiments/e253_trace_nine_structured_determinant.py):
+  `153891e9de914aa87f5a3a8b502d120eb8db932fc5a1c450b4ec658cc8982dfc`;
+  [`ising3d/tests/test_trace_nine_structured_determinant.py`](ising3d/tests/test_trace_nine_structured_determinant.py):
+  `d2ee81dd7777fdcc7b0f478494c1e17563a5adea1e2c30c388c183249f2bf349`;
+  [`ising3d/results/spectral/trace_nine_structured_determinant.json`](ising3d/results/spectral/trace_nine_structured_determinant.json):
+  `2895eda9e92eea26faf0ee2054bb0be56c4e19e9bc0a95072d295af04c2697f1`.
+  Internal data digest:
+  `bf63944b2da054699d95419026aacec78c2be3a69634dbdb9a057af0b0b8f667`;
+  reduced numerator coefficient digest:
+  `45834f272f6e171ae6072008bfd55556d2b3f39f0621c2f57684872999e61686`;
+  native FLINT dylib digest:
+  `9c257de62afab11ce51b94658faf6d9fd08a062809e86e117ccb8c8b8eea7d03`.
+* **Boundary and next action.** One finite-field polynomial does not determine
+  the characteristic-zero norm or its real roots. The full-CRT height gate
+  remains unpassed. H675's primitive-factor reconstruction route still needs
+  at least `40694*76908=3129694152` scalar determinants. The distinct alternative
+  of reconstructing the old row-cleared numerator directly gives the lower count
+  `40694*ceil(2343437/31)=3076262930`, above the cap. H679's constant-basis
+  column passed, but H680's largest-monomial canary failed the memory gate
+  despite finishing its algebra. The all-column sweep remains unlaunched.
+  The prepared next prompt in `ising3d/checkpoints/next_actions.md` requires
+  reducing retained working data and digest allocations before another bounded
+  canary (`H681`). No complete characteristic-zero matrix or aggregate bound
+  is claimed.
+* **H679 bounded continuation outcome (observed probe, not another verified wave).**
+  The exact 35-rule lift reproduced digest
+  `f4cfe038d7625c6a411f2e01b9af12d9ae9ca06d980e64ad38d8eff030fe22cc`.
+  The column for basis monomial `(0,0,0,0,0)` has 37 nonzero entries after 19
+  ordered reductions. Maximum numerator/denominator degrees are `181/145`,
+  maximum numerator `ceil(log2(l1))` is `224`, and the LCM of denominator
+  scalar contents has bit length `123`. Column digest:
+  `69065ff900271f44f3f34856b1bad85fd148182b8a045aefd1cc66cb1b8bdfb9`.
+  The guard recorded exit 0, `603.101s` combined CPU over `1835.63s` wall,
+  `32.86%` average CPU, `33.09%` maximum observed 60-second window, `1652.6 MiB`
+  monitored peak memory, `0.00 MiB` process writes, and `127.71 GiB` free.
+  The retained `/tmp/h679_exact_column_probe.py` has SHA-256
+  `50bb7ac5d08ec2dba2805669aad02abf2b0d4e6e3ce4443abe615d01341bf896`;
+  guard SHA-256 is
+  `5e3ff0f457e50ada7b6da4e41590e396244a0e1826b4bf9a1a6f0ebb8af33966`.
+  This single-column observation does not independently verify the remaining
+  95 columns, certify a whole-matrix height, or change the full-CRT gate.
+* **H680 observed memory wall (2026-09-05; resource gate FAILED).** The unique
+  maximum-total-degree standard monomial is `(0,0,0,0,8)`, index 8 in the
+  canonical product enumeration. Its column calculation printed 96 nonzero
+  entries after 578 ordered reductions, maximum numerator/denominator degrees
+  `629/513`, maximum numerator `ceil(log2(l1))=1771`, and denominator
+  scalar-LCM bit length `1321`. Column digest:
+  `63b8a477b5d9dd25a354d1bd2f7d18666cbcf1bf21cb6060d0c2b1b51441f47b`.
+  The column-and-digest phase used `135.512457s` CPU; recorded native peak RSS
+  rose from `1728086016` to `2164408320` bytes. This does not attribute the peak
+  to a particular allocation.
+  Although the script printed `H680_CANARY_PASS`, the guard terminated its
+  child with SIGTERM and exited 1 for `2 GiB memory ceiling reached`.
+  Monitored peak was `2064.1 MiB`, about `16.1 MiB` beyond the threshold before
+  the next sample stopped the process. The overall resource gate did not pass.
+  Guarded totals: `770.761s` CPU, `2345.59s` wall, `32.86%` average CPU,
+  `33.05%` maximum observed 60-second window, `0.00 MiB` process writes,
+  and `128.34 GiB` free disk. No full sweep or automatic restart followed.
+  Retained `/tmp/h680_largest_column_canary.py` SHA-256:
+  `cc9bb205d4b2582cd8ed3b9ff8c35f6accffe5f49902b7717fcc6cc9882d8717`.
+  This is an observed implementation/resource wall, not a mathematical
+  obstruction, an independently verified whole matrix, or a new verified wave.
+* **Scope and hygiene.** H676's actual-runtime correction is detailed in the
+  Wave-27 entry below. e248/e251 remain frozen. There are 173 targeted test
+  scripts; no full suite, endpoint change, thermodynamic claim, sampling-as-
+  proof, bulk export, deletion, commit, or push occurred. Small temporary
+  comparison/probe files are retained; deletion was not authorized.
+
+
+### ISING-W27 (2026-09-03; CORRECTED 2026-09-04 BY H675) — THE OPEN-`2x4` TRACE-NINE QUOTIENT HAS A DETERMINISTIC FIXED-LEADING RANK-96 LIFT AND A CERTIFIED FRACTION-FREE DETERMINANT ENVELOPE: ROW-CLEARED NUMERATOR DEGREE `<=40693`, DENOMINATOR DEGREE `<=33017`, ROW-CLEARED NUMERATOR `L1 <=2^2343436`, AND PRIMITIVE-FACTOR HEIGHT `<=2^2384129`. DENSE HEIGHT-CERTIFIED SCALAR CRT IS RESOURCE-INCOMPATIBLE; THE NORM AND ITS REAL `q>1` ROOTS REMAIN OPEN
+
+* **Outcome first.** Wave 27 completes the fixed-leading-form lift/envelope branch
+  selected after e251. The physical `F4`-`F8` quotient is represented by 35 monic
+  triangular rules over `QQ(q)` with the same 96 standard monomials, without any
+  q-dependent leading division. This yields a verified exact determinant envelope,
+  not the primitive norm or an open-`2x4` emptiness theorem.
+* **Exact construction.** The five homogeneous leading forms have degrees
+  `(2,2,2,3,4)`. A deterministic transformation certificate proves all 35
+  Groebner identities and gives pure-power leaders `(2,2,3,5,9)` and Hilbert
+  vector `(1,5,12,19,22,19,12,5,1)`. Substituting e251's normalized physical
+  rows, then exact interreduction, produces final-rule SHA-256
+  `f4cfe038d7625c6a411f2e01b9af12d9ae9ca06d980e64ad38d8eff030fe22cc`.
+* **Fraction-free envelope and nonzero witness.** Exact denominator-factor,
+  polynomial-degree, and coefficient-`l1` propagation through all 96
+  multiplication-by-`F9` columns performs 26,131 ordered reductions and leaves
+  8,557 bounded nonzero matrix entries. Row clearing plus the Leibniz inequality
+  proves numerator degree `<=40693`, denominator degree `<=33017`, and
+  row-cleared numerator `l1` norm `<=2^2343436`. Polynomial cancellation is not
+  coefficient-height monotone. Gauss's lemma and
+  `H(P)<=2^deg(P) M(P)<=2^deg(N) ||N||1` give the valid primitive-factor bound
+  `2^(2343436+40693)=2^2384129`. Independently rebuilt e251 specializations at
+  `q=2` and `q=5/3` reproduce both physical witnesses; at q=2 the rank is 96 and
+  determinant residue is `1660951362` modulo `2147483647`.
+* **Certified resource stop.** Dense scalar interpolation needs 40,694 nodes for
+  each of at least 76,908 safe 31-bit primes under the conservative primitive
+  bound: at least 3,129,694,152 exact determinants, versus the pinned cap
+  10,000,000. The producer records
+  `NOT_RUN_CERTIFIED_CRT_LOWER_BOUND_EXCEEDS_CAP`; no scalar sampling was
+  launched. This lower bound closes only that dense route. A structure-sensitive
+  polynomial-matrix determinant or a materially tighter exact height argument
+  may still materialize the norm.
+* **Determinism and independent replay.** Three observed homogeneous-template
+  builds were byte-identical in 387.17, 390.09, and 405.12 wall seconds; the
+  last used the final hardened source. Corrected producers passed C0--C7 in
+  1,108.36 and 1,092.42 wall seconds, and `cmp` confirmed byte-identical JSON
+  artifacts. The independent verifier uses a max-grevlex scan reducer rather
+  than the producer's heap reducer, directly reduces all five defining
+  equations to zero, independently audits the 96 stored row bounds and every
+  denominator atom, reconstructs the complete `data` and `checks`, rebuilds both
+  e251 physical witnesses, and reported
+  `WAVE27_NORM_ENVELOPE_VERIFIER PASS checks=8 mutations=6 degree=40693
+  height_bits=2384129` in 1,024.19 wall seconds.
+* **Claim-falsifying mutations.** All six controls were rejected: perturb one
+  homogeneous transformation coefficient; change the `a3^9` pure-power leader
+  to `a3^10`; lower the stored degree envelope by one; lower the stored
+  primitive-height envelope by one; assert a zero norm despite the q=2
+  determinant; and replace e248's `q^(-20)` trace-four normalization by
+  `q^(+20)`.
+* **Review hardening.** Review found two real proof/false-pass surfaces. First,
+  the producer formerly summed duplicate sparse monomials while the verifier
+  overwrote them; both now enforce five nonnegative exponents, reduced fractions
+  with positive denominators, nonzero coefficients, unique monomials, and
+  grevlex order. Second, the first landing incorrectly said polynomial
+  cancellation could only decrease height. H675 corrects H672--H674 with the
+  standard factor-height bound, rerun artifacts, and hardened verifier. The
+  artifact now pins `math/requirements-freeze.txt`, including
+  `python-flint==0.9.0`, as the actual Python `3.14.3` `math/.venv` contract
+  backed by FLINT `3.6.0`; producer and verifier compare every frozen
+  distribution against the installed environment. It also pins the inherited
+  `ising3d/uv.lock`. Resource guards run after template compression
+  and every matrix-envelope column. Frozen e251/e248 sources were not modified.
+* **H676 runtime correction (2026-09-04).** H675's claim that the previous
+  freeze described the installed environment was incorrect: it named
+  `python-flint==0.6.0`, not the installed `0.9.0`. The freeze now matches
+  all seven installed distributions, Python `3.14.3`, and FLINT `3.6.0`;
+  producer and verifier reject any mismatch. Two provenance-corrected builds
+  passed in 1,154.80 and 1,193.07 wall seconds and compared byte-identically.
+  The mathematical `data` digest is unchanged. The current independent
+  verifier then passed all eight checks and six mutations under the user's
+  resource guard: 1,966.21 wall seconds, 643.820 combined child/guard CPU
+  seconds, 32.74% average of one core, and 1,669.3 MiB monitored peak
+  resident/physical memory; no disk writes were recorded. The old 60-second
+  CPU telemetry was in Mach ticks and is not used as evidence; subsequent
+  guard windows convert through `mach_timebase_info`. Final CPU accounting
+  comes from `wait4` and the guard's own process clock.
+* **Pinned artifacts.**
+  [`ising3d/experiments/e252_trace_nine_norm_envelope.py`](ising3d/experiments/e252_trace_nine_norm_envelope.py)
+  SHA-256 `20a61da40cd9c7167bba14f339883f44cd75a6b508278009f206daa855929ea5`;
+  [`ising3d/tests/test_trace_nine_norm_envelope.py`](ising3d/tests/test_trace_nine_norm_envelope.py)
+  `7cc3caf51a17e7882bcf195fa8b3f5c1f3a3c9e55de0ca431325bcf5e906edf3`;
+  [`ising3d/proofs/trace_nine_norm_envelope.md`](ising3d/proofs/trace_nine_norm_envelope.md)
+  `6e533fac3d047f8e27a1cb6a30fa0c4d559f51a0f59d2e62455021d14cfc3193`;
+  [`ising3d/results/spectral/trace_nine_lift_template.json.xz`](ising3d/results/spectral/trace_nine_lift_template.json.xz)
+  `ef579cec3f1ed4cc1f607e209100ffdc686e776b4aaa82facbd4b53f6a09f34b`;
+  and
+  [`ising3d/results/spectral/trace_nine_norm_envelope.json`](ising3d/results/spectral/trace_nine_norm_envelope.json)
+  `b7e248d9ddfcaf6945b5054fea5980526a2735d7fc59ec4b198dd49b2b739b0c`.
+  The template payload digest is
+  `090622254128af90a69b2c4376cf2c72b442286690be7db0d224a82eaf9f3e63`;
+  the envelope's internal data digest is
+  `df61de8c805dfbeffc7bde36d1015f6e646501a89af8f0e057db045c4fc19b09`;
+  the actual runtime freeze digest is
+  `09fa69fc836d9dec8bd1de3ab8f0d8177db29ccad9f48b1066693cc71611ee76`;
+  and the frozen e251 source artifact digest is
+  `b43c46c25cda4c7b06a78405698cfab235e0e90cc9a6c3035a354090d2e3e82f`.
+* **Exact replay.** From `/Users/jinleic/jinleic-workspace/math`:
+
+  ```sh
+  nice -n 19 ./.venv/bin/python -I -B ising3d/experiments/e252_trace_nine_norm_envelope.py --build-template
+  nice -n 19 ./.venv/bin/python -I -B ising3d/experiments/e252_trace_nine_norm_envelope.py
+  nice -n 19 ./.venv/bin/python -I -B ising3d/tests/test_trace_nine_norm_envelope.py
+  ```
+
+* **Next ranked exact gate.** A polynomial-matrix determinant needs a new exact
+  implementation or external compiled route: installed `python-flint` exposes no
+  polynomial-matrix binding. The next W-law state was also inspected: stored exact
+  data stops at `L=9`, the normalized new shell has Smith
+  `1^23,2^5,6`, and there is no `W10` source or direct signed-incidence formula.
+  Do not launch blind dense CRT, blind full `W10` closure, or fit an exponent from
+  two sizes.
+* **Scope.** The primitive norm was not materialized, so no real `q>1` roots were
+  classified. No endpoint moved; no thermodynamic claim, sampling-as-proof, full
+  172-script suite, campaign, commit, or push occurred.
+
+
+### H2-REFEREE-PACKAGE-CPRIME2 (2026-09-03) — THE EXTERNAL REFEREE PACKAGE FOR BOTH CONSTANTS IS ASSEMBLED AND SELF-CONTAINED: A GENERATED 30-FILE DISTRIBUTION WITH `REFEREE.md` (REPLAY RECIPE + INDEPENDENT-VERIFICATION CHECKLIST), A DETERMINISTIC TARBALL, AND A CLOSURE CHECK OVER MANUSCRIPT PATHS / THE EIGHT CHAIN LINKS / THE IMPORT CLOSURE / THE 24 LEDGER PINS. A CHAIN MODULE REPRODUCES ITS ARTIFACT BYTE-IDENTICALLY FROM THE EXTRACTED TARBALL ALONE. LITERATURE CHECK: NO PUBLISHED IMPROVEMENT PAST LIU'S CONDITIONAL 0.38271, AND NO PUBLISHED OCCURRENCE OF $c''$ OR OF THE SCALED EXAMPLE-5 FAMILY
+
+* **Outcome first.** The adopted next action of `H2-PAPER-CPRIME2` — referee
+  $c'$ and $c''$ externally — now has a package to send. Nothing
+  mathematical changed; no certificate module, no artifact, and not the
+  manuscript were modified by this entry.
+* **Design: the package is derived, never stored.** Copying the eight
+  artifacts into `uc/H2_PAPER/` would create a second authority that drifts
+  from `uc/verification/results/`. Instead
+  [`uc/H2_PAPER/make_referee_package.py`](uc/H2_PAPER/make_referee_package.py)
+  is the single authority for *what* a referee needs and copies from the
+  canonical homes into `uc/H2_PAPER/dist/referee-package/` plus a tarball. A
+  change anywhere upstream shows up as a changed hash on the next run instead
+  of as silent drift. `dist/` was already excluded by `.gitignore` and
+  `.ignore`; the workspace `.stignore.shared` gained the matching `(?d)dist`
+  rule so the three ignore files agree.
+* **Closure is checked, not asserted.** `--check` verifies, before writing:
+  (i) every repository path `main.tex` names via `\path{...}` is in the list;
+  (ii) the eight `CHAIN` links of the driver, read out of its source by AST
+  without importing it, with all 24 pins recomputed from disk (artifact file
+  hash, module hash, and the internal digest recomputed in that link's own
+  `digest_scope`); (iii) each of the 24 occurs verbatim in `PROGRESS.md`;
+  (iv) the transitive local-import closure of the eight modules, computed by
+  AST, adds nothing unlisted — it reaches exactly `liu9_objective.py`,
+  `liu9_binding.py`, `liu9_cprime_frontier.py` and the frontier artifact.
+  Result: `REFEREE_PACKAGE files=30 links=8`, closure OK, exit 0.
+* **Contents.** 30 files, 2,041,627 B in the payload: `main.tex`;
+  `PROGRESS.md` (included in full because check [A] asserts the 24 pins
+  against it — shipping the ledger is what makes the anti-drift check
+  runnable); the driver; the eight chain modules; the three pinned helper
+  modules; the eight chain artifacts plus `liu9-cprime-frontier.json`;
+  `requirements-freeze.txt`; `REFEREE.md`; the generator itself; the
+  originality audit `uc/LITERATURE_ORIGINALITY.md` with
+  `literature/search_protocol.json` and `literature/arxiv_refresh_2026-09-03.json`;
+  and the cited Liu PDF. Plus generated `MANIFEST.tsv` (path, sha256, bytes,
+  role) and `SHA256SUMS`.
+* **`REFEREE.md`.** What is claimed (both enclosures); what is new against
+  the literature, quoting Liu's abstract verbatim — "Under numerically
+  verified hypotheses, the lower bound ... can be improved to approximately
+  0.38271" — which is exactly the conditionality the first result removes;
+  the one-command replay with expected output and the environment
+  (Python 3.9.6, `python-flint==0.6.0`, precisions 400/480/320 bits); a
+  seven-item independent-verification checklist executable without this
+  repository's tooling; and a plain statement of limits.
+* **A real trap for a referee, found and documented.** The
+  `report_sha256_scope` prose of `liu9-h2-twovar.json`,
+  `liu9-h2-boundary.json` and `liu9-h2-phi-audit.json` says only "with
+  `report_sha256` omitted", but their pinned internal digests are computed
+  over the compact JSON **plus a trailing newline** (verified directly: all
+  three match `omit+nl`, none matches `omit`). A referee following the
+  artifact's own prose would compute three wrong digests and conclude the
+  artifacts were corrupt. Not repaired in the artifacts, because editing
+  those strings would regenerate them and invalidate their pins through the
+  chain; instead `REFEREE.md` item 2 states the correct rule per artifact and
+  flags the discrepancy explicitly.
+* **Literature check, brought to repo standard (API records + primary
+  reads, not search summaries).** The first pass used search-engine
+  summaries; that is below the standard set by
+  `uc/literature/search_protocol.json`, so the `all:"union-closed"` arXiv
+  endpoint of its step 1 was re-queried (`submittedDate` descending) together
+  with the pinned-record `id_list` query. New machine record
+  [`uc/literature/arxiv_refresh_2026-09-03.json`](uc/literature/arxiv_refresh_2026-09-03.json),
+  in the same shape as `arxiv_refresh_2026-08-26.json`; the audit
+  [`uc/LITERATURE_ORIGINALITY.md`](uc/LITERATURE_ORIGINALITY.md) is the
+  single authority and was **extended, not duplicated** — its refresh header
+  now points at 2026-09-03 and a dated section classifies $c'$ and $c''$
+  component-wise.
+  * **One new record, opened at theorem level.** The feed reports 104
+    records (103 on 2026-08-26). The delta is arXiv:2608.25147v1 (Tian,
+    *Frankl's Conjecture at Height Four and the Structure of Height-Five
+    Counterexamples*, 2026-08-25T20:55:41Z): it proves Frankl for height
+    $\le4$ in the empty-set-free form ($\le5$ with $\emptyset$) and
+    constrains height-five counterexamples ($2t$ cardinality, $\ge3$
+    critical elements, $t\ge2n-1$, critical join-cover number 3 or 4). It
+    proves **no** universal frequency constant: its full v1 HTML (67,063
+    characters of extracted text) contains zero occurrences of *entropy*,
+    *entropic*, *Gilmer*, *Sawin*, *coupling*, *constant lower bound*, or the
+    string `0.38`. No collision. It was missed on 2026-08-26 by indexing lag,
+    not by screening.
+  * **Conditionality still stands.** The `id_list` query confirms
+    arXiv:2306.08824 is **still v1** of 2023-06-15, so no revision has
+    removed the two hypotheses; 2211.09055v2, 2211.11504v3, 2211.11689v1,
+    2211.11731v4, 2212.12500v2 are unchanged. Liu's abstract, read from the
+    primary source on disk, remains "Under numerically verified hypotheses
+    ... approximately 0.38271".
+  * **No near-collision exists, and one specific error is now recorded as
+    false.** The published convex-combination ceiling is
+    $\approx0.38234$ — Liu's own attribution, "as evaluated by Yu and
+    Cambie", certified locally as $\psi+3\times10^{-4}=0.3823455$ — which is
+    **0.38234, not 0.38284**. A search-engine synthesis was observed
+    rendering it as "0.38234 (approximately 0.38284)". That conflation is
+    wrong and must not be read as a near-miss of
+    $c''=0.38284565599065407172\ldots$; the nearest published decimal to
+    $c''$ is Liu's conditional $0.38271$. No near-collision was recorded in
+    the first pass either, but the caution is now explicit in both the audit
+    and `REFEREE.md` §2 so the engine's error cannot propagate.
+  * No published treatment of the scaled family
+    $f_\lambda(x)=\lambda x(1-x)$ was found. Coverage limits are unchanged
+    and restated: one-index refresh, not a repeat of the full
+    Crossref/OpenAlex/zbMATH and citation-graph audit; absence from arXiv is
+    not universal priority.
+* **Artifact and exact pins.**
+  [`uc/H2_PAPER/REFEREE.md`](uc/H2_PAPER/REFEREE.md) sha256
+  `2d45a2b2f4dd85c63277c3d26f07f4c3a69852c2596e3c43935ba08f1d69f397`;
+  [`uc/H2_PAPER/make_referee_package.py`](uc/H2_PAPER/make_referee_package.py)
+  sha256 `b33e013224723b3c7411084ea9d141027a036bd0b0a8008bf71b189d4428ae32`. The tarball
+  `uc/H2_PAPER/dist/referee-package.tar.gz` is deliberately **not** pinned
+  here, and cannot be: the payload contains `PROGRESS.md`, so any hash of the
+  tarball quoted *in* `PROGRESS.md` invalidates itself. It is generated
+  output, reproducible from the two files above plus the canonical sources,
+  and the generator prints its hash on every run. The generator makes it
+  deterministic (sorted members, zeroed
+  metadata, gzip mtime 0), so two builds agree byte for byte.
+* **Literature pins.**
+  [`uc/literature/arxiv_refresh_2026-09-03.json`](uc/literature/arxiv_refresh_2026-09-03.json)
+  sha256 `3a07e757bf5b18a42703aa3e7d1f651325788b00d823021e9bd5a123f953b646`
+  is the dated query record and is immutable;
+  `uc/LITERATURE_ORIGINALITY.md` is a living audit and is deliberately not
+  pinned, because the next refresh must extend it rather than fork a second
+  record.
+* **Verified.** `make_referee_package.py --check` exit 0; a full build exit 0;
+  two consecutive builds produced a **byte-identical tarball**; the payload's
+  own `SHA256SUMS` verifies **30/30 OK** under `shasum -a 256 -c`; the tarball
+  extracts to 32 files (30 + `MANIFEST.tsv` + `SHA256SUMS`) with zero
+  checksum mismatches; and — the end-to-end test that matters —
+  `uc/liu9_h2_mixture_theorem.py` run from the **extracted tree alone**, with
+  no driver and no repository present, exited 0 and reproduced its pinned
+  artifact **byte for byte**. The literature step was re-verified after the
+  fix: the arXiv endpoint matches `search_protocol.json` step 1 verbatim, the
+  new record's key shape is a superset of the 2026-08-26 record's, and the
+  extended `/tmp/verify_all.py` (now ten sections) exited 0.
+* **Ledger changes.** This entry; the Fifth-result referee paragraph in
+  `RESULTS.md`; `uc/state.json` gate, next action and 30 sources; the
+  `(?d)dist` rule in the workspace `.stignore.shared`; the refresh header and
+  a new dated section in `uc/LITERATURE_ORIGINALITY.md`; the new
+  `uc/literature/arxiv_refresh_2026-09-03.json`. No campaign was resumed or
+  created; Sawin / the three-protocol route and `uc/campaigns/` were not
+  touched, and no certificate module, artifact or the manuscript was
+  modified.
+* **Cost.** Package build 0.30 s; closure check 0.22 s; two arXiv API queries
+  (feed + `id_list`) and one full-text read of the new record; four earlier
+  web searches, now superseded as evidence by the API record; two read-only
+  scouts (inventory, checklist) whose every hash claim was recomputed
+  independently here (24/24 matched).
+
+### H2-PAPER-CPRIME2 (2026-09-03) — THE MANUSCRIPT NOW PROVES BOTH CONSTANTS: `uc/H2_PAPER/main.tex` IS $\kappa$-PARAMETRISED, THE PROTOCOL-TO-CONSTANT STEP IS FACTORED OUT AS A PROPOSITION FOR EVERY ADMISSIBLE EXAMPLE-5 $f$, AND A NEW SECTION PROVES $A\ge0$, $\Phi\ge0$, $B\ge0$ AND THE MIXTURE INEQUALITY AT $\kappa=16/25$, HENCE $c''=1-m_{4/5}=0.38284565599065407172\ldots>c'$. THE REPLAY DRIVER GAINS AN EIGHTH LINK AND RE-RUNS ALL EIGHT ARTIFACTS TWICE BYTE-IDENTICALLY (155 CHECKS, 0 FAILURES, 598 s)
+
+* **Outcome first.** The next action of `CPRIME-FOUR-FIFTHS-AB` is closed:
+  the referee manuscript states and proves $c''$, with every
+  machine-assisted theorem citing the artifact, internal digest and module
+  sha256, in the same per-theorem style as the $c'$ chain. Nothing about
+  $c'$ changed mathematically; no artifact was regenerated.
+* **What the manuscript now says.** (1) The kernel display is
+  $\pi_\kappa(s,t)=st(1+\kappa(1-s)(1-t))$, $K_\kappa=h\circ\pi_\kappa$, with
+  $\kappa=1$ the default through the $c'$ sections and $\kappa=\frac{16}{25}$
+  in the new one. (2) The master-condition quantity of the $\Phi$ section was
+  renamed $\kappa\to\kappa_{\rm master}$ (26 occurrences) so that $\kappa$ is
+  free for the protocol scale, matching the artifacts' own field name
+  `kappa_master`; its defining lemma now says in one clause that it is
+  unrelated to the protocol parameter. Without this the abstract's
+  "$\kappa\ge2$" would have read as impossible against $\kappa\in[0,1]$. No
+  statement changed. (3) "The two protocols" is now
+  stated for every *admissible* $f$ ($0\le f\le\min(x,1-x)$, exactly Liu's
+  Example-5 condition), with
+  $\Pi^{(2,f)}_{s,t}(0,0)=(1-s)(1-t)+f(1-s)f(1-t)=\pi_f(1-s,1-t)$ and
+  $f_\lambda(x)=\lambda x(1-x)$ admissible for $\lambda\in[0,1]$ giving
+  $\pi_{\lambda^2}$. (4) The Proposition-3 argument is factored into
+  `prop:route`: an admissible $f$ plus any $(\beta,m)$ carrying the mixture
+  inequality yields the union-closed constant $1-m$. Theorem `thm:uc` ($c'$)
+  and Theorem `thm:uc45` ($c''$) are now two instantiations of it, which
+  removes the duplicated contradiction argument. (5) The new
+  Section~"The scaled protocol at $\kappa=\frac{16}{25}$" proves
+  `lem:scaled-constants` (uniqueness of the root of
+  $Q_\kappa(x)=2x^2+\kappa x^2(1-x)^2-1$ from
+  $Q_\kappa'=2x(2+\kappa(1-x)(1-2x))>0$, the bracket
+  $x_\kappa\in(\frac23,2^{-1/2})$ from
+  $Q_\kappa(\frac23)=-\frac19+\frac{4\kappa}{81}<0<\frac\kappa2(1-2^{-1/2})^2$,
+  and the specialisation to Liu's quartic at $\kappa=1$), `thm:scaled-AB`,
+  the strata `lem:scaled-strata`, the two exact rescalings `lem:rescale`
+  with full derivations including the weight identity
+  $(1-b)\alpha+(1-a)(1-\alpha)=1-2ab/u$, the Taylor certificate
+  `lem:scaled-local`, the $\kappa$-identities and master condition
+  (`lem:scaled-phi-id`, `lem:scaled-master`: $\Phi\ge s^2t^2(s-t)^2g(s)g(t)
+  (\varkappa^2/4-\kappa)$, so $\varkappa\ge2\sqrt\kappa=\frac85$ suffices and
+  $\varkappa\ge2$ gives $\Phi\ge\frac9{25}s^2t^2(s-t)^2g(s)g(t)$), the
+  $\kappa$-endpoint bounds `lem:scaled-N`, `thm:scaled-phi`,
+  `thm:scaled-mixture` (the identities (I)–(III) of the mixture theorem are
+  kernel-free, so they hold verbatim at $K_\kappa$; $\pi_\kappa\in[0,1]$ from
+  $1-\pi_\kappa=a(1-b)+b(1-a)+ab(1-\kappa+\kappa(a+b-ab))$), `thm:uc45`, and
+  a scope remark: no optimality in $\lambda$ is claimed, and the sharpness
+  family transfers, so $c''$ is the best constant *this* pair gives.
+* **Why the $\kappa=1$ strata do not transfer, in the manuscript.**
+  `rem:strata` records $c_0=1-\beta-\frac1{2m}=0.019633975683\ldots$ against
+  $0.089956574867\ldots$ ($4.58\times$ smaller), hence
+  $\varepsilon<1.1\times10^{-36}$ and $2\delta<4.4\times10^{-31}$ are forced,
+  hence $\varepsilon=10^{-40}$, $\delta=10^{-36}$ and the need for the
+  rescalings.
+* **Replay driver: eighth link.**
+  [`uc/verification/replay_h2_chain.py`](uc/verification/replay_h2_chain.py)
+  now has sha256
+  `3134849e3ab4f7d4ab90c13ec5aed5debfa5bf52b9361e7cbc49e9cf696df38d`
+  (was `d6bba185117f4f92edf91edae019ba0182c02cb950c81b5496b831604346d3db`,
+  which must not reappear). Changes: the docstring table gains
+  `four-fifths-ab`; `CHAIN` gains the link
+  (`uc/liu9_cprime_four_fifths_ab.py` →
+  `liu9-cprime-four-fifths-ab.json`, claim status `PROVED`, `--output`
+  supported, digest scope `omit+nl`); and the cross-artifact dependency check
+  was made shape-complete. A dependency block may be keyed by artifact stem,
+  by a role name carrying the `path`, or by a module file name, and may spell
+  its pins with or without the `_expected` suffix; the check now resolves all
+  of these, compares artifact blocks against the link's `file_sha256` and
+  `claim_status` and module blocks against its `tool_sha256`, and asserts
+  that at least eight blocks resolved, so a resolver that silently matches
+  nothing is itself a failure. **This mattered:** the first version of the
+  eighth link resolved exactly **1** of the new artifact's 6 dependency
+  blocks (`mixture_artifact`); the other five are keyed `twovar_module`,
+  `boundary_module`, `mixture_module`, `frontier_module`,
+  `frontier_artifact` with `sha256`/`claim_status` keys, so the pin-equality
+  comparisons no-oped and only the `match: true` flag was being asserted —
+  exactly the silent skip the driver exists to prevent. Now **11** blocks
+  resolve across the three reports that carry dependency pins (general-lift
+  3, mixture-theorem 4, four-fifths-ab 4: `twovar_module`,
+  `boundary_module`, `mixture_module` against those links' module hashes and
+  `mixture_artifact` against the mixture-theorem file hash). The two that
+  remain unresolved are `frontier_module` and `frontier_artifact`, which are
+  genuinely outside the
+  chain: the certificate module asserts them itself at run time and refuses
+  to certify on a mismatch, so check [C] covers them indirectly. The driver
+  docstring now names all six precisely instead of saying "the frontier
+  artifact and module". The seven existing links are unaffected.
+* **Artifact and exact pins.**
+  [`uc/H2_PAPER/main.tex`](uc/H2_PAPER/main.tex) has sha256
+  `85ba5b0895c403063bcee9235dd6da3808b109d768bc3c239d964bcab56f45e0`
+  (was `335ec00f6b3f729caf2acc7f3109cc94f60c4af52eea8bf09e67cadf0cf6ac11`,
+  which must not reappear); $1{,}834$ lines, $25$ pages. `main.pdf` is built
+  from it with pdflatex and is not pinned, because pdflatex embeds
+  timestamps. Table~1 of the manuscript now lists eight artifacts and $24$
+  hashes; the certificate cited by the new section is
+  `liu9-cprime-four-fifths-ab.json` file
+  `9812fa9f64f99b8117da7bd6d31a3dfd5458deeaaddf764355012d04645939d4`,
+  internal `9a69041ae55a7d1e8e5d2fb3622753f323627a206cb18e101cd3eeabebad073e`,
+  module `dbbd83a59e16ac44d48de67faef403f1318dc7fa6fb5824df5238e032691c6be`.
+  No certificate module or artifact JSON was modified by this entry.
+* **Verified.** `pdflatex` twice, exit 0 both times, $25$ pages, zero
+  undefined references and zero multiply-defined labels. The eight-link
+  driver ran twice, once before and once after the dependency-resolver fix:
+  `nice -n 19 ./.venv/bin/python -I -B uc/verification/replay_h2_chain.py`
+  exited 0 in 749.37 s with `REPLAY_H2_CHAIN PASS`, **150 checks passed, 0
+  failed**, and again after the fix, exit 0 in 598.46 s,
+  `REPLAY_H2_CHAIN PASS`, **155 checks passed, 0 failed** (the five extra
+  checks are the four newly resolved cross-pins and the resolved-count
+  assertion); both runs regenerated all 16 outputs byte-identically to the
+  eight pinned artifacts (`four-fifths-ab` 8.51 s and 8.77 s in the second
+  run). Checks A and B were also
+  run standalone before each full replay (0 failures) and the new
+  extended `/tmp/verify_all.py` exited 0.
+* **Independent review of the write-up.** A blank-context read-only
+  `code-reviewer` (`PaperSkeptic2`, 23 min) re-derived every new proof in
+  sympy (both rescaling identities, the weight identity, the collected
+  $\log\frac1u$ coefficient, $\psi=\varphi/s$, the $\kappa$-polynomial and
+  $\delta$ identities, the complement decomposition of $1-\pi_\kappa$, the
+  $\kappa=1$ specialisation term by term, the sinh chain, every step of
+  N0/N1/L5, and the admissibility gaps $x[1-\lambda(1-x)]$,
+  $(1-x)(1-\lambda x)$), recomputed all eight artifact triples and both
+  frontier hashes independently, re-derived $\nu_0(1/8)$ and $\nu_1(7/8)$ to
+  100 digits, checked the sharpness family in 400-bit Arb at
+  $w=\frac15,\frac7{10},1$, diffed the refactored Proposition-3 argument
+  against the verbatim pre-edit text step by step (only the unused
+  definitional line $=\sum_i\num(\bar\Gamma_i)$ is gone), and confirmed the
+  $\kappa\to\varkappa$ rename missed nothing. Verdict: **0 BLOCKER**, 4
+  MAJOR, 2 MINOR, 1 NIT — all seven applied, none mathematical:
+  (i)–(iii) three printed *directed* decimals rounded the unsafe way (the
+  corner log coefficient, $T_3$, and the final Taylor coefficient were quoted
+  at the artifact's ball midpoint, which for those three lies on the wrong
+  side of the certified bound by $3.5\times10^{-32}$, $5.2\times10^{-29}$ and
+  $2.8\times10^{-33}$); they now read
+  $\ge0.01963397568292172259513039546916$,
+  $\le11.759773900451600921106623675524$ and
+  $\ge0.00971101985906546819262825095304$. (iv) the weakest cover bound was
+  quoted with a truncated midpoint and the artifact's radius, making the two
+  balls disjoint; it now carries all 50 digits. (v) the abstract wrote
+  $m_{4/5}$ for the $\kappa$-indexed $m_{16/25}$. (vi) the corner rescaling
+  now states the convention $z\log\frac1z=0$ at $z\in\{0,1\}$, needed at
+  $\alpha\in\{0,1\}$. (vii) "must reach"/"needs" overstated conservative
+  cutoffs; the remark now says "is ensured by" and records the exact critical
+  values $1.4415\ldots\times10^{-36}$ and $4.5478\ldots\times10^{-31}$. After
+  the fixes, all **nine** printed directed bounds of the new section were
+  re-checked at 600 bits against the module's own Arb objects and every one
+  holds in the stated direction; `/tmp/verify_all.py` section 8 now asserts
+  this mechanically, so the defect class cannot return silently.
+* **Ledger changes.** This entry; the `H2-REFEREE-PACKAGE` bullet re-pinned
+  (driver hash, module count $7\to8$, value count $21\to24$, and a note that
+  its manuscript hash was superseded here); the Fourth- and Fifth-result
+  referee paragraphs and the manuscript row in `RESULTS.md`;
+  `uc/state.json` headline, next action and sources. No campaign was resumed
+  or created; Sawin / the three-protocol route and `uc/campaigns/` were not
+  touched.
+* **Cost.** Manuscript compile 1.3 s per pass; eight-link replay 749.37 s
+  then 598.46 s
+  (dominated by `psi-reduction`, 318 s + 264 s); one read-only blank-context
+  manuscript review.
+
 ### CPRIME-FOUR-FIFTHS-AB (2026-09-03) — THE SURVIVING GENERAL-$f$ CANDIDATE IS NOW A FULL CERTIFICATE: $A\ge0$ AND $B\ge0$ ARE PROVED ON $[0,1]^2$ AT THE EXACT $f(x)=\frac45x(1-x)$ BALLS, THE MIXTURE DECOMPOSITION IS MACHINE-VERIFIED AT THAT KERNEL, AND THE UNION-CLOSED CONSTANT IMPROVES TO $c''=1-m_{4/5}=0.38284565599065407172\ldots$ (PENDING EXTERNAL REFEREEING)
 
 * **Outcome first.** The continuum inequalities left **OPEN** by the
@@ -327,10 +976,13 @@ source was read directly — not that something looks right.
   single-core at niceness 19. Full H2 replay: 579.07 s. Independent reviews
   and derivation checks ran read-only.
 
-### H2-REFEREE-PACKAGE (2026-09-02) — THE PROVED CHAIN IS NOW A REPLAYABLE, SELF-CONTAINED REFEREE PACKAGE: `uc/verification/replay_h2_chain.py` RE-RUNS ALL SEVEN ARTIFACTS TWICE BYTE-IDENTICALLY AND ASSERTS 21 PINNED HASHES AGAINST THIS LEDGER; `uc/H2_PAPER/main.tex` (17 pp.) STATES AND PROVES THE REDUCTION, `R,A >= 0`, `Phi >= 0 => B >= 0`, THE GENERAL-MEASURE LIFT, THE MIXTURE THEOREM, AND `c' = 1 - m*`, WITH LIU'S PROPOSITION 3 RE-DERIVED SO THAT HYPOTHESIS 1 IS VISIBLY UNUSED. BLANK-CONTEXT ADVERSARIAL REVIEW OF THE MANUSCRIPT AGAINST THE ARTIFACTS: NO MATHEMATICAL DEFECT; TEN PRECISION/WORDING FINDINGS APPLIED; ONE REPRODUCIBILITY BLOCKER (TWO MODULE HASHES WERE NEVER PINNED HERE) CLOSED BY THIS ENTRY
+### H2-REFEREE-PACKAGE (2026-09-02) — THE PROVED CHAIN IS NOW A REPLAYABLE, SELF-CONTAINED REFEREE PACKAGE: `uc/verification/replay_h2_chain.py` RE-RUNS ALL SEVEN ARTIFACTS TWICE BYTE-IDENTICALLY AND ASSERTS 21 PINNED HASHES AGAINST THIS LEDGER; `uc/H2_PAPER/main.tex` (17 pp.) STATES AND PROVES THE REDUCTION, `R,A >= 0`, `Phi >= 0 => B >= 0`, THE GENERAL-MEASURE LIFT, THE MIXTURE THEOREM, AND `c' = 1 - m*`, WITH LIU'S PROPOSITION 3 RE-DERIVED SO THAT HYPOTHESIS 1 IS VISIBLY UNUSED. BLANK-CONTEXT ADVERSARIAL REVIEW OF THE MANUSCRIPT AGAINST THE ARTIFACTS: NO MATHEMATICAL DEFECT; TEN PRECISION/WORDING FINDINGS APPLIED; ONE REPRODUCIBILITY BLOCKER (TWO MODULE HASHES WERE NEVER PINNED HERE) CLOSED BY THIS ENTRY. [SUPERSEDED 2026-09-03 BY `H2-PAPER-CPRIME2`: THE CHAIN IS NOW EIGHT ARTIFACTS AND 24 HASHES, AND BOTH SHA-256 VALUES QUOTED BELOW WERE RE-PINNED; THE SEVEN/21 COUNTS IN THIS HEADER ARE WHAT WAS TRUE ON 2026-09-02]
 
 * **Outcome first.** (1) `uc/verification/replay_h2_chain.py` (sha256
-  `d6bba185117f4f92edf91edae019ba0182c02cb950c81b5496b831604346d3db`), standard library only: re-runs each of the seven
+  `3134849e3ab4f7d4ab90c13ec5aed5debfa5bf52b9361e7cbc49e9cf696df38d`;
+  the hash, the module count and the value count in this bullet were re-pinned
+  by `H2-PAPER-CPRIME2 (2026-09-03)`, which added the eighth link), standard
+  library only: re-runs each of the eight
   modules from the repository root under `-I -B` (default twice), requires every run to
   reproduce the on-disk artifact byte for byte (modules with `--output` write to a scratch
   directory; the one fixed-path module is restored from the pre-run bytes on any
@@ -338,9 +990,12 @@ source was read directly — not that something looks right.
   canonicalisation: compact sorted JSON with `report_sha256` omitted, plus a trailing newline
   for five of them, and with the field blanked for `liu9-psi-reduction`) and module hash,
   checks the cross-artifact pins (the audit pins the boundary certificate; the lift and the
-  mixture theorem pin their dependencies with `match: true`), and asserts all 21 values
+  mixture theorem pin their dependencies with `match: true`), and asserts all 24 values
   against this file; nonzero exit on any mismatch. (2) [`uc/H2_PAPER/main.tex`](uc/H2_PAPER/main.tex)
-  (sha256 `335ec00f6b3f729caf2acc7f3109cc94f60c4af52eea8bf09e67cadf0cf6ac11`; `main.pdf` built from it with pdflatex, not
+  (sha256 was `335ec00f6b3f729caf2acc7f3109cc94f60c4af52eea8bf09e67cadf0cf6ac11` at the
+  time of this entry; superseded 2026-09-03 by
+  `85ba5b0895c403063bcee9235dd6da3808b109d768bc3c239d964bcab56f45e0`, see
+  `H2-PAPER-CPRIME2`; `main.pdf` built from it with pdflatex, not
   pinned because pdflatex embeds timestamps): self-contained statements and proofs, every
   theorem labelled PROVED / MACHINE-VERIFIED / COMPUTATIONAL-EVIDENCE and every
   machine-assisted theorem citing its artifact with the full file, internal, and module

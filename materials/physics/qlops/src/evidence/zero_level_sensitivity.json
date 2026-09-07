@@ -1,0 +1,417 @@
+{
+  "acceptance_scenarios": {
+    "p=1e-3_optimistic": {
+      "physical_error": 0.001,
+      "probability": 0.4,
+      "scope": "range endpoint applied to both paper variants as a sensitivity arm; the paper does not map 0.40 to one variant",
+      "tag": "[REPORTED approximate range endpoint]"
+    },
+    "p=1e-3_pessimistic": {
+      "physical_error": 0.001,
+      "probability": 0.3,
+      "scope": "range endpoint applied to both paper variants as a sensitivity arm; the paper does not map 0.30 to one variant",
+      "tag": "[REPORTED approximate range endpoint]"
+    },
+    "p=1e-4": {
+      "physical_error": 0.0001,
+      "probability": 0.9,
+      "scope": "approximate paper value applied to both variants",
+      "tag": "[REPORTED approximate value]"
+    }
+  },
+  "comparison_basis": {
+    "ccz_conversion_T_states": 7,
+    "ccz_conversion_tag": "[DERIVED assumption]",
+    "litinski_time": "QLOPS Table-6 reported cycles, including postselection",
+    "metric": "physical qubits x surface-code syndrome-extraction cycles per accepted CCZ",
+    "scope": "static full-patch footprint using the reported equivalence depth 24 = 3 syndrome rounds; not an end-to-end paper estimate",
+    "zero_level_time": {
+      "syndrome_rounds": 3,
+      "tag": "[REPORTED]"
+    }
+  },
+  "conflicts_recorded": [
+    "The frozen 22*24 resource row mixes circuit layers with Litinski syndrome-extraction cycles and has no common-unit magnitude interpretation.",
+    "22 excludes the three output surface-code patches, which the Litinski comparator's footprint includes.",
+    "300 p^2 is acceptance-conditional: acceptance is approximately 30-40% at p=1e-3 and 90% at p=1e-4.",
+    "QLOPS Table-6 cycles already include Litinski postselection; the accepted-output comparison must use the reported cycles."
+  ],
+  "corrected_combinations": {
+    "distillation_only_output_patches_omitted|accept_p=1e-3_optimistic": {
+      "acceptance": 0.4,
+      "advantage_factor": [
+        640.5484909090909,
+        96484.30224363635
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        1.036438028514587e-05,
+        0.0015611620575060004
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 165.0
+    },
+    "distillation_only_output_patches_omitted|accept_p=1e-3_pessimistic": {
+      "acceptance": 0.3,
+      "advantage_factor": [
+        480.4113681818182,
+        72363.22668272727
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        1.3819173713527825e-05,
+        0.0020815494100080005
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 220.0
+    },
+    "distillation_only_output_patches_omitted|accept_p=1e-4": {
+      "acceptance": 0.9,
+      "advantage_factor": [
+        1441.2341045454548,
+        217089.68004818182
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        4.606391237842608e-06,
+        0.0006938498033360001
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 73.33333333333333
+    },
+    "with_output_patches_d3|accept_p=1e-3_optimistic": {
+      "acceptance": 0.4,
+      "advantage_factor": [
+        193.04201095890411,
+        29077.460950136985
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        3.439089821889311e-05,
+        0.005180219554451728
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 547.5
+    },
+    "with_output_patches_d3|accept_p=1e-3_pessimistic": {
+      "acceptance": 0.3,
+      "advantage_factor": [
+        144.78150821917808,
+        21808.09571260274
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        4.585453095852415e-05,
+        0.006906959405935638
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 730.0
+    },
+    "with_output_patches_d3|accept_p=1e-4": {
+      "acceptance": 0.9,
+      "advantage_factor": [
+        434.3445246575343,
+        65424.28713780822
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        1.528484365284138e-05,
+        0.002302319801978546
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 243.33333333333331
+    },
+    "with_output_patches_d7|accept_p=1e-3_optimistic": {
+      "acceptance": 0.4,
+      "advantage_factor": [
+        45.02257763578275,
+        6781.644247156549
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        0.00014745686496593895,
+        0.022211078363608097
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 2347.5
+    },
+    "with_output_patches_d7|accept_p=1e-3_pessimistic": {
+      "acceptance": 0.3,
+      "advantage_factor": [
+        33.76693322683706,
+        5086.233185367411
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        0.00019660915328791861,
+        0.029614771151477464
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 3130.0
+    },
+    "with_output_patches_d7|accept_p=1e-4": {
+      "acceptance": 0.9,
+      "advantage_factor": [
+        101.30079968051119,
+        15258.699556102236
+      ],
+      "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+      "ratio_zero_vs_litinski_ccz": [
+        6.55363844293062e-05,
+        0.00987159038382582
+      ],
+      "still_exceeds_falsifier": true,
+      "tag": "[DERIVED]",
+      "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15",
+      "zero_level_spacetime_per_accepted_CCZ": 1043.3333333333333
+    }
+  },
+  "falsifier": 2.0,
+  "kind": "deterministic re-derivation; no sampling or campaign",
+  "legacy_frozen_gate_b_row": {
+    "acceptance_assumption": 1.0,
+    "advantage_factor": [
+      193.29545454545456,
+      29946.477272727276
+    ],
+    "basis": "LEGACY MIXED UNITS: zero-level physical-qubits*circuit-layers divided by Litinski physical-qubits*syndrome-cycles",
+    "ratio_zero_vs_litinski_ccz": [
+      3.339290931927795e-05,
+      0.005173427395649618
+    ],
+    "tag": "[DERIVED; LEGACY-MIXED-UNITS]",
+    "usable_for_common_basis_magnitude": false,
+    "zero_level_spacetime_per_attempt_mixed_units": 528.0
+  },
+  "litinski_accepted_baseline_rows": [
+    {
+      "cycles_including_postselection": 18.6423,
+      "spacetime_per_accepted_CCZ_equiv": 149548.5306,
+      "spacetime_per_accepted_T": 21364.0758,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "72,12,6-Z/15to1_9,3,3",
+      "unit_qubits": 1146
+    },
+    {
+      "cycles_including_postselection": 58.0795,
+      "spacetime_per_accepted_CCZ_equiv": 3324819.057,
+      "spacetime_per_accepted_T": 474974.151,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "72,12,6-Z/15to1_23,9,9",
+      "unit_qubits": 8178
+    },
+    {
+      "cycles_including_postselection": 18.6403,
+      "spacetime_per_accepted_CCZ_equiv": 105690.501,
+      "spacetime_per_accepted_T": 15098.643,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "72,12,6-Z/15to1_7,3,3",
+      "unit_qubits": 810
+    },
+    {
+      "cycles_including_postselection": 18.798,
+      "spacetime_per_accepted_CCZ_equiv": 201326.58,
+      "spacetime_per_accepted_T": 28760.94,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "90,8,10-Z/15to1_11,3,3",
+      "unit_qubits": 1530
+    },
+    {
+      "cycles_including_postselection": 70.1846,
+      "spacetime_per_accepted_CCZ_equiv": 5578131.6388,
+      "spacetime_per_accepted_T": 796875.9484,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "90,8,10-Z/15to1_29,9,11",
+      "unit_qubits": 11354
+    },
+    {
+      "cycles_including_postselection": 18.8261,
+      "spacetime_per_accepted_CCZ_equiv": 151022.9742,
+      "spacetime_per_accepted_T": 21574.7106,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "90,8,10-Z/15to1_9,3,3",
+      "unit_qubits": 1146
+    },
+    {
+      "cycles_including_postselection": 18.6779,
+      "spacetime_per_accepted_CCZ_equiv": 269073.8274,
+      "spacetime_per_accepted_T": 38439.118200000004,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "108,8,10-Z/15to1_11,5,3",
+      "unit_qubits": 2058
+    },
+    {
+      "cycles_including_postselection": 68.1534,
+      "spacetime_per_accepted_CCZ_equiv": 6080782.654800001,
+      "spacetime_per_accepted_T": 868683.2364,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "108,8,10-Z/15to1_29,11,11",
+      "unit_qubits": 12746
+    },
+    {
+      "cycles_including_postselection": 31.1579,
+      "spacetime_per_accepted_CCZ_equiv": 335445.9514,
+      "spacetime_per_accepted_T": 47920.8502,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "108,8,10-Z/15to1_11,3,5",
+      "unit_qubits": 1538
+    },
+    {
+      "cycles_including_postselection": 30.921,
+      "spacetime_per_accepted_CCZ_equiv": 332895.486,
+      "spacetime_per_accepted_T": 47556.498,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "144,12,12-Z/15to1_11,3,5",
+      "unit_qubits": 1538
+    },
+    {
+      "cycles_including_postselection": 68.2899,
+      "spacetime_per_accepted_CCZ_equiv": 6689542.0242,
+      "spacetime_per_accepted_T": 955648.8606,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "144,12,12-Z/15to1_31,11,11",
+      "unit_qubits": 13994
+    },
+    {
+      "cycles_including_postselection": 31.1579,
+      "spacetime_per_accepted_CCZ_equiv": 335445.9514,
+      "spacetime_per_accepted_T": 47920.8502,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "144,12,12-Z/15to1_11,3,5",
+      "unit_qubits": 1538
+    },
+    {
+      "cycles_including_postselection": 30.1425,
+      "spacetime_per_accepted_CCZ_equiv": 668862.075,
+      "spacetime_per_accepted_T": 95551.72499999999,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "288,12,18-Z/15to1_15,5,5",
+      "unit_qubits": 3170
+    },
+    {
+      "cycles_including_postselection": 90.6157,
+      "spacetime_per_accepted_CCZ_equiv": 15919909.870199999,
+      "spacetime_per_accepted_T": 2274272.8386,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "288,12,18-Z/15to1_39,17,15",
+      "unit_qubits": 25098
+    },
+    {
+      "cycles_including_postselection": 30.0962,
+      "spacetime_per_accepted_CCZ_equiv": 546486.7996,
+      "spacetime_per_accepted_T": 78069.5428,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "288,12,18-Z/15to1_13,5,5",
+      "unit_qubits": 2594
+    },
+    {
+      "cycles_including_postselection": 18.6423,
+      "spacetime_per_accepted_CCZ_equiv": 149548.5306,
+      "spacetime_per_accepted_T": 21364.0758,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "72,12,6-ALL/15to1_9,3,3",
+      "unit_qubits": 1146
+    },
+    {
+      "cycles_including_postselection": 57.4921,
+      "spacetime_per_accepted_CCZ_equiv": 4179790.6541999998,
+      "spacetime_per_accepted_T": 597112.9506,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "72,12,6-ALL/15to1_25,11,9",
+      "unit_qubits": 10386
+    },
+    {
+      "cycles_including_postselection": 18.8261,
+      "spacetime_per_accepted_CCZ_equiv": 151022.9742,
+      "spacetime_per_accepted_T": 21574.7106,
+      "tag": "[DERIVED from REPORTED Table-6 unit and cycles]",
+      "target": "72,12,6-ALL/15to1_9,3,3",
+      "unit_qubits": 1146
+    }
+  ],
+  "paper": {
+    "acceptance_p1e3": [
+      0.3,
+      0.4
+    ],
+    "acceptance_p1e4": 0.9,
+    "arxiv": "2605.21867",
+    "constants_located_in_body": {
+      "c=300": "Sec. IV least-squares fit + Fig. 10 caption (also abstract, Sec. I, Sec. V)",
+      "depth=24_and_syndrome_rounds=3": "Sec. III and Sec. V",
+      "log_qubits=3": "abstract, Sec. I, Sec. III, Sec. V (output patches)",
+      "phys_qubits=22": "abstract, Sec. I, Sec. III, Sec. V (distillation circuit only)"
+    },
+    "decoder_named": null,
+    "fit_coefficient_uncertainty": null,
+    "fit_p_range": [
+      0.0001,
+      0.001
+    ],
+    "fit_residuals": null,
+    "fit_trials_per_p": "1e7-1e8",
+    "full_text_read_utc": "2026-09-03",
+    "machine_readable_circuit": false,
+    "paper_own_spacetime_metric": "logical qubits x surface-code syndrome rounds (Sec. IV, Fig. 13)",
+    "pointwise_error_bars": "Figures 10 and 11 draw pointwise error bars; their definition and confidence level are not stated"
+  },
+  "revision": "Revision 4 (qlops)",
+  "verdict_survives_corrections": true,
+  "worst_case": {
+    "advantage_factor": [
+      33.76693322683706,
+      5086.233185367411
+    ],
+    "combination": "with_output_patches_d7|accept_p=1e-3_pessimistic",
+    "lower_endpoint_target": "72,12,6-Z/15to1_7,3,3",
+    "tag": "[DERIVED]",
+    "upper_endpoint_target": "288,12,18-Z/15to1_39,17,15"
+  },
+  "zero_level_variants": {
+    "distillation_only_output_patches_omitted": {
+      "basis": "22 distillation qubits; three output patches omitted",
+      "patch_distance": null,
+      "qubits": 22,
+      "scope": "diagnostic only; omits required output-patch footprint",
+      "spacetime_per_attempt": 66,
+      "syndrome_rounds": 3,
+      "tag": "[DERIVED from REPORTED qubits and syndrome rounds]"
+    },
+    "with_output_patches_d3": {
+      "basis": "22 distillation qubits + 3 full rotated d=3 patches (17 qubits each), held for three rounds",
+      "patch_distance": 3,
+      "patch_qubits_each": 17,
+      "qubits": 73,
+      "scope": "static full-footprint sensitivity; not a time-resolved paper resource estimate",
+      "spacetime_per_attempt": 219,
+      "syndrome_rounds": 3,
+      "tag": "[DERIVED from REPORTED qubits and syndrome rounds]"
+    },
+    "with_output_patches_d7": {
+      "basis": "22 distillation qubits + 3 full rotated d=7 patches (97 qubits each), held for three rounds",
+      "patch_distance": 7,
+      "patch_qubits_each": 97,
+      "qubits": 313,
+      "scope": "static full-footprint sensitivity; not a time-resolved paper resource estimate",
+      "spacetime_per_attempt": 939,
+      "syndrome_rounds": 3,
+      "tag": "[DERIVED from REPORTED qubits and syndrome rounds]"
+    }
+  }
+}

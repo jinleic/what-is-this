@@ -1,0 +1,1041 @@
+{
+  "schema_version": 1,
+  "id": "append-only-collector-audit",
+  "created_at_utc": "2026-09-04T01:47:12Z",
+  "purpose": "Outcome-blind operational audit of the two append-only collectors before any prospective design is registered. No signal computed, no outcome read, no returns formed.",
+  "method": "Streamed every JSONL byte; timestamps extracted by regex; monotonicity, inter-record gaps, day-seam continuity and record-type census computed. Read-only.",
+  "collectors": {
+    "quant-liquidation-capture": {
+      "process": {
+        "pid": 16210,
+        "uptime": "4d11h",
+        "restarts": 0,
+        "persist": true,
+        "state": "ready",
+        "observed_via": "hub ps at 2026-09-04T01:34Z"
+      },
+      "output_dir": "quant-trading/data/raw/focused/live/liquidations-persistent",
+      "venue_stream": "Binance USD(S)-M !forceOrder@arr plus oi_snapshot polling",
+      "collection_start_utc": "2026-08-30T13:45:58.148Z",
+      "latest_record_utc": "2026-09-04T01:35:34.574Z",
+      "total_bytes": 112485225,
+      "files": 6,
+      "monotonicity": {
+        "data_record_violations": 0,
+        "control_record_violations": 5,
+        "control_violation_cause": "At each UTC-midnight rotation the rotate control record is stamped when the rotation executes, 1-2 ms AFTER the receipt stamp of the event that triggered it, so line 3 of each rotated file precedes line 2. Structural and benign: identical in all 5 rotations, never affects ordering among data records.",
+        "day_seam_monotonic": true,
+        "day_seam_gaps_s": [
+          20.946,
+          56.475,
+          8.964,
+          4.435,
+          28.751
+        ],
+        "verified_at_pinned_bytes": true
+      },
+      "append_only_evidence": "collector-state.json day_bytes match the on-disk size EXACTLY for all four completed days (20260830 16768250, 20260831 17850982, 20260901 23259880, 20260902 28908205); no truncation or rewrite.",
+      "defect_found": {
+        "id": "stale-state-sidecar",
+        "severity": "low-but-disqualifying-as-evidence",
+        "detail": "collector-state.json last updated 2026-09-03T04:00:02.976Z, roughly 21.8 h before this audit. It records day_bytes[20260903] = 3,039,373 against an actual 24,305,112 bytes, total_bytes = 89,826,690 against an actual 112,608,692 bytes at the pin, and carries no 20260904 entry at all. The DATA stream is unaffected and current.",
+        "consequence": "The sidecar is stale bookkeeping and is NOT evidence of collector health. Every byte and record figure in this audit is recounted from the files. Do not cite collector-state.json for anything.",
+        "append_only_still_provable": "Yes, but only for the four days the sidecar recorded BEFORE it froze: day_bytes for 20260830, 20260831, 20260901 and 20260902 match the on-disk sizes exactly (16768250, 17850982, 23259880, 28908205), which shows those files were never truncated or rewritten. 20260903 grew past the frozen sidecar value, consistent with append-only."
+      },
+      "per_file": [
+        {
+          "file": "liquidation-capture-20260830.jsonl",
+          "records": 38250,
+          "kinds": {
+            "control": 3,
+            "event": 27098,
+            "oi_snapshot": 11149
+          },
+          "first": "2026-08-30T13:45:58.148",
+          "last": "2026-08-30T23:59:45.384",
+          "monotonicity_violations": 0,
+          "max_inter_record_gap_s": 109.14,
+          "gaps_over_60s": [
+            [
+              "2026-08-30T17:41:33",
+              71.9
+            ],
+            [
+              "2026-08-30T17:50:17",
+              71.0
+            ],
+            [
+              "2026-08-30T18:13:16",
+              109.1
+            ],
+            [
+              "2026-08-30T19:12:04",
+              70.2
+            ],
+            [
+              "2026-08-30T21:57:49",
+              88.0
+            ],
+            [
+              "2026-08-30T23:53:28",
+              80.1
+            ]
+          ],
+          "unparsed_ts": 0
+        },
+        {
+          "file": "liquidation-capture-20260831.jsonl",
+          "records": 41903,
+          "kinds": {
+            "control": 16,
+            "event": 28118,
+            "oi_snapshot": 13769
+          },
+          "first": "2026-08-31T00:00:06.330",
+          "last": "2026-08-31T23:59:08.664",
+          "monotonicity_violations": 1,
+          "max_inter_record_gap_s": 95.54,
+          "gaps_over_60s": [
+            [
+              "2026-08-31T00:45:08",
+              63.9
+            ],
+            [
+              "2026-08-31T02:06:22",
+              74.5
+            ],
+            [
+              "2026-08-31T02:08:57",
+              60.6
+            ],
+            [
+              "2026-08-31T02:21:51",
+              60.1
+            ],
+            [
+              "2026-08-31T06:30:19",
+              95.5
+            ],
+            [
+              "2026-08-31T06:33:04",
+              60.5
+            ],
+            [
+              "2026-08-31T07:20:45",
+              79.6
+            ],
+            [
+              "2026-08-31T18:28:43",
+              80.4
+            ],
+            [
+              "2026-08-31T18:38:36",
+              62.0
+            ],
+            [
+              "2026-08-31T21:21:52",
+              63.9
+            ],
+            [
+              "2026-08-31T21:37:59",
+              60.9
+            ],
+            [
+              "2026-08-31T22:28:59",
+              69.4
+            ],
+            [
+              "2026-08-31T23:12:18",
+              73.9
+            ],
+            [
+              "2026-08-31T23:39:10",
+              64.8
+            ],
+            [
+              "2026-08-31T23:47:59",
+              69.4
+            ],
+            [
+              "2026-08-31T23:55:09",
+              65.8
+            ]
+          ],
+          "unparsed_ts": 0
+        },
+        {
+          "file": "liquidation-capture-20260901.jsonl",
+          "records": 54808,
+          "kinds": {
+            "control": 2,
+            "event": 36462,
+            "oi_snapshot": 18344
+          },
+          "first": "2026-09-01T00:00:05.139",
+          "last": "2026-09-01T23:59:52.470",
+          "monotonicity_violations": 1,
+          "max_inter_record_gap_s": 192.37,
+          "gaps_over_60s": [
+            [
+              "2026-09-01T03:13:49",
+              71.1
+            ],
+            [
+              "2026-09-01T03:58:25",
+              66.9
+            ],
+            [
+              "2026-09-01T06:25:42",
+              105.2
+            ],
+            [
+              "2026-09-01T06:43:14",
+              63.5
+            ],
+            [
+              "2026-09-01T06:53:10",
+              60.6
+            ],
+            [
+              "2026-09-01T07:33:43",
+              67.5
+            ],
+            [
+              "2026-09-01T07:50:09",
+              192.4
+            ],
+            [
+              "2026-09-01T08:54:08",
+              63.4
+            ],
+            [
+              "2026-09-01T09:42:09",
+              98.0
+            ],
+            [
+              "2026-09-01T10:40:21",
+              81.6
+            ],
+            [
+              "2026-09-01T14:56:47",
+              104.5
+            ],
+            [
+              "2026-09-01T16:58:37",
+              80.4
+            ],
+            [
+              "2026-09-01T19:13:04",
+              83.6
+            ],
+            [
+              "2026-09-01T19:46:21",
+              76.9
+            ],
+            [
+              "2026-09-01T20:36:44",
+              68.9
+            ],
+            [
+              "2026-09-01T21:27:05",
+              63.0
+            ],
+            [
+              "2026-09-01T21:43:57",
+              66.3
+            ],
+            [
+              "2026-09-01T21:57:17",
+              72.8
+            ],
+            [
+              "2026-09-01T23:00:28",
+              60.6
+            ],
+            [
+              "2026-09-01T23:07:01",
+              64.3
+            ],
+            [
+              "2026-09-01T23:09:56",
+              61.2
+            ],
+            [
+              "2026-09-01T23:11:03",
+              94.0
+            ],
+            [
+              "2026-09-01T23:41:38",
+              88.9
+            ],
+            [
+              "2026-09-01T23:53:16",
+              97.3
+            ]
+          ],
+          "unparsed_ts": 0
+        },
+        {
+          "file": "liquidation-capture-20260902.jsonl",
+          "records": 66042,
+          "kinds": {
+            "control": 2,
+            "event": 46656,
+            "oi_snapshot": 19384
+          },
+          "first": "2026-09-02T00:00:01.434",
+          "last": "2026-09-02T23:59:59.507",
+          "monotonicity_violations": 1,
+          "max_inter_record_gap_s": 173.11,
+          "gaps_over_60s": [
+            [
+              "2026-09-02T00:42:10",
+              66.8
+            ],
+            [
+              "2026-09-02T02:55:33",
+              90.3
+            ],
+            [
+              "2026-09-02T04:29:46",
+              66.2
+            ],
+            [
+              "2026-09-02T04:58:23",
+              76.2
+            ],
+            [
+              "2026-09-02T04:59:39",
+              63.8
+            ],
+            [
+              "2026-09-02T05:57:34",
+              86.8
+            ],
+            [
+              "2026-09-02T07:06:43",
+              97.4
+            ],
+            [
+              "2026-09-02T07:48:30",
+              81.0
+            ],
+            [
+              "2026-09-02T08:48:18",
+              86.6
+            ],
+            [
+              "2026-09-02T14:22:42",
+              61.4
+            ],
+            [
+              "2026-09-02T14:41:33",
+              79.9
+            ],
+            [
+              "2026-09-02T14:43:29",
+              89.0
+            ],
+            [
+              "2026-09-02T14:47:24",
+              108.2
+            ],
+            [
+              "2026-09-02T14:52:47",
+              141.4
+            ],
+            [
+              "2026-09-02T14:55:27",
+              163.8
+            ],
+            [
+              "2026-09-02T14:59:38",
+              94.7
+            ],
+            [
+              "2026-09-02T15:04:15",
+              173.1
+            ],
+            [
+              "2026-09-02T15:10:46",
+              141.8
+            ],
+            [
+              "2026-09-02T15:16:45",
+              142.6
+            ],
+            [
+              "2026-09-02T15:25:25",
+              87.6
+            ],
+            [
+              "2026-09-02T18:12:58",
+              72.2
+            ],
+            [
+              "2026-09-02T20:29:22",
+              62.7
+            ],
+            [
+              "2026-09-02T22:36:05",
+              62.1
+            ],
+            [
+              "2026-09-02T23:18:27",
+              92.5
+            ],
+            [
+              "2026-09-02T23:47:45",
+              78.1
+            ]
+          ],
+          "unparsed_ts": 0
+        },
+        {
+          "file": "liquidation-capture-20260903.jsonl",
+          "records": 56610,
+          "kinds": {
+            "control": 4,
+            "event": 38558,
+            "oi_snapshot": 18048
+          },
+          "first": "2026-09-03T00:00:03.942",
+          "last": "2026-09-03T23:59:37.259",
+          "monotonicity_violations": 1,
+          "max_inter_record_gap_s": 117.6,
+          "gaps_over_60s": [
+            [
+              "2026-09-03T02:26:15",
+              67.2
+            ],
+            [
+              "2026-09-03T03:56:55",
+              72.3
+            ],
+            [
+              "2026-09-03T04:38:29",
+              70.0
+            ],
+            [
+              "2026-09-03T05:31:39",
+              101.6
+            ],
+            [
+              "2026-09-03T06:37:09",
+              70.8
+            ],
+            [
+              "2026-09-03T08:38:13",
+              71.0
+            ],
+            [
+              "2026-09-03T10:29:01",
+              72.1
+            ],
+            [
+              "2026-09-03T10:32:15",
+              72.7
+            ],
+            [
+              "2026-09-03T18:11:43",
+              61.5
+            ],
+            [
+              "2026-09-03T20:54:25",
+              97.2
+            ],
+            [
+              "2026-09-03T20:57:56",
+              97.2
+            ],
+            [
+              "2026-09-03T21:05:00",
+              71.4
+            ],
+            [
+              "2026-09-03T21:13:18",
+              73.6
+            ],
+            [
+              "2026-09-03T21:55:28",
+              62.0
+            ],
+            [
+              "2026-09-03T22:03:08",
+              117.6
+            ],
+            [
+              "2026-09-03T22:58:44",
+              81.4
+            ],
+            [
+              "2026-09-03T23:25:46",
+              69.5
+            ],
+            [
+              "2026-09-03T23:28:17",
+              62.9
+            ]
+          ],
+          "unparsed_ts": 0
+        },
+        {
+          "file": "liquidation-capture-20260904.jsonl",
+          "records": 3343,
+          "kinds": {
+            "control": 2,
+            "event": 2182,
+            "oi_snapshot": 1159
+          },
+          "first": "2026-09-04T00:00:06.010",
+          "last": "2026-09-04T01:35:34.574",
+          "monotonicity_violations": 1,
+          "max_inter_record_gap_s": 39.79,
+          "gaps_over_60s": [],
+          "unparsed_ts": 0
+        }
+      ],
+      "consumed_by_any_frozen_campaign": false,
+      "consumption_evidence": "Zero occurrences of liquidations-persistent / liquidation-capture in all 115 files across the 10 frozen campaign dirs.",
+      "record_census": {
+        "recount_method": "Byte-pinned: each file size was read FIRST, then exactly that many bytes were read and counted, so the figure is reproducible with `head -c <bytes_pinned>`. Required because the current-day file is still being appended to.",
+        "pinned_at_utc": "2026-09-04T01:47:12Z",
+        "canonical_figure": {
+          "basis": "the 5 COMPLETED UTC day files, which are immutable",
+          "files": 5,
+          "bytes": 111092429,
+          "data_records": 257586,
+          "data_record_monotonicity_violations": 0
+        },
+        "in_progress_day": {
+          "file": "liquidation-capture-20260904.jsonl",
+          "bytes_pinned": 1516263,
+          "data_records_at_pin": 3610,
+          "note": "a moving target; never quote this as a program figure without the pin instant"
+        },
+        "all_days_at_pin": {
+          "bytes": 112608692,
+          "records_all": 261225,
+          "records_data": 261196,
+          "data_record_monotonicity_violations": 0
+        },
+        "per_file": {
+          "liquidation-capture-20260830.jsonl": {
+            "bytes_pinned": 16768250,
+            "records_all": 38250,
+            "records_data": 38247,
+            "records_control": 3,
+            "trailing_partial_line": false,
+            "immutable": true
+          },
+          "liquidation-capture-20260831.jsonl": {
+            "bytes_pinned": 17850982,
+            "records_all": 41903,
+            "records_data": 41887,
+            "records_control": 16,
+            "trailing_partial_line": false,
+            "immutable": true
+          },
+          "liquidation-capture-20260901.jsonl": {
+            "bytes_pinned": 23259880,
+            "records_all": 54808,
+            "records_data": 54806,
+            "records_control": 2,
+            "trailing_partial_line": false,
+            "immutable": true
+          },
+          "liquidation-capture-20260902.jsonl": {
+            "bytes_pinned": 28908205,
+            "records_all": 66042,
+            "records_data": 66040,
+            "records_control": 2,
+            "trailing_partial_line": false,
+            "immutable": true
+          },
+          "liquidation-capture-20260903.jsonl": {
+            "bytes_pinned": 24305112,
+            "records_all": 56610,
+            "records_data": 56606,
+            "records_control": 4,
+            "trailing_partial_line": false,
+            "immutable": true
+          },
+          "liquidation-capture-20260904.jsonl": {
+            "bytes_pinned": 1516263,
+            "records_all": 3612,
+            "records_data": 3610,
+            "records_control": 2,
+            "trailing_partial_line": false,
+            "immutable": false
+          }
+        },
+        "supersedes": "An earlier draft of this audit reported data_records_total 260943 from a scan taken before the byte pin, and program_negative.md, prospective-forward-test-registration.json and state.json each quoted 261943, which was a transcription error of +1000 against every scan. Both figures are withdrawn; the canonical_figure above replaces them."
+      }
+    },
+    "quant-deribit-gex-capture": {
+      "process": {
+        "pid": 15122,
+        "uptime": "4d12h",
+        "restarts": 0,
+        "persist": true,
+        "state": "ready",
+        "observed_via": "hub ps at 2026-09-04T01:34Z"
+      },
+      "output_dir": "quant-trading/data/raw/focused/live/deribit",
+      "subscribed_channels": [
+        "deribit_price_index.btc_usd",
+        "deribit_price_index.eth_usd",
+        "trades.option.BTC.100ms",
+        "trades.option.ETH.100ms"
+      ],
+      "collection_start_utc": "2026-08-30T11:47:10Z",
+      "latest_record_utc": "2026-09-04T01:36:16Z",
+      "self_logged_events": {
+        "day_rotation_open": 23,
+        "instrument_seed_done": 95,
+        "reconnect_backoff": 51,
+        "subscribe_ack": 33,
+        "server_error_notification": 4,
+        "heartbeat_ok": 35958,
+        "restart_state_rehydrated": 5,
+        "connection_idle_ping": 402
+      },
+      "defects_found": [
+        {
+          "id": "ticker-stream-dead",
+          "severity": "HIGH-blocking-for-GEX",
+          "detail": "ticker.jsonl carries data ONLY for 2026-08-30 11:56:05 -> 12:03:37 (96,328 records). It is 0 bytes on 20260831, 20260901, 20260902, 20260903 and 20260904. The option ticker channel is NOT in the subscribe_ack channel set, so this is a dropped subscription, not a silent write failure.",
+          "consequence": "open_interest and greeks appear ONLY in ticker records. instruments.jsonl and trades.jsonl carry neither. Therefore open-interest-weighted dealer gamma exposure CANNOT be reconstructed for any date after 2026-08-30T12:03:37Z from this capture. Any prospective GEX design must first restore the ticker/book-summary subscription; the eventstop trial necessarily used a trade-flow gamma proxy, not open-interest GEX."
+        },
+        {
+          "id": "outage-20260831",
+          "severity": "medium",
+          "detail": "Two gaps on 2026-08-31 in index.jsonl: 02:06:24 -> 02:40:22 (34.0 min) and 06:30:08 -> 07:43:44 (73.6 min). trades.jsonl shows the matching 4,428.5 s max gap. From 2026-09-01 the stream is stable: index max gap 7.1 s, 8.6 s, 5.8 s and events max gap 10.9 s, 11.7 s, 11.5 s on 09-01/02/03.",
+          "consequence": "Any prospective horizon must start no earlier than 2026-09-01 to avoid the bring-up instability."
+        }
+      ],
+      "per_day": {
+        "day20260830": {
+          "events.jsonl": {
+            "day": "day20260830",
+            "file": "events.jsonl",
+            "bytes": 630336,
+            "records": 3784,
+            "viol": 1,
+            "max_gap_s": 1553.3,
+            "first": 1788090430882,
+            "last": 1788134397849,
+            "record_types": {
+              "capture_event": 3784
+            }
+          },
+          "index.jsonl": {
+            "day": "day20260830",
+            "file": "index.jsonl",
+            "bytes": 15977278,
+            "records": 67578,
+            "viol": 0,
+            "max_gap_s": 1555.0,
+            "first": 1788090965107,
+            "last": 1788134399279,
+            "record_types": {
+              "index_price": 67578
+            }
+          },
+          "instruments.jsonl": {
+            "day": "day20260830",
+            "file": "instruments.jsonl",
+            "bytes": 90671288,
+            "records": 88464,
+            "viol": 0,
+            "max_gap_s": 2706.0,
+            "first": 1788090430613,
+            "last": 1788094779681,
+            "record_types": {
+              "instrument": 88464
+            }
+          },
+          "ticker.jsonl": {
+            "day": "day20260830",
+            "file": "ticker.jsonl",
+            "bytes": 81773450,
+            "records": 96328,
+            "viol": 0,
+            "max_gap_s": 311.1,
+            "first": 1788090965100,
+            "last": 1788091417804,
+            "record_types": {
+              "option_ticker": 96328
+            }
+          },
+          "trades.jsonl": {
+            "day": "day20260830",
+            "file": "trades.jsonl",
+            "bytes": 2488500,
+            "records": 5239,
+            "viol": 0,
+            "max_gap_s": 1557.2,
+            "first": 1788091706731,
+            "last": 1788134398752,
+            "record_types": {
+              "option_trade": 5239
+            }
+          }
+        },
+        "day20260831": {
+          "events.jsonl": {
+            "day": "day20260831",
+            "file": "events.jsonl",
+            "bytes": 1310718,
+            "records": 7898,
+            "viol": 0,
+            "max_gap_s": 25.5,
+            "first": 1788134401262,
+            "last": 1788220790197,
+            "record_types": {
+              "capture_event": 7898
+            }
+          },
+          "index.jsonl": {
+            "day": "day20260831",
+            "file": "index.jsonl",
+            "bytes": 33500403,
+            "records": 141704,
+            "viol": 0,
+            "max_gap_s": 4415.2,
+            "first": 1788134401895,
+            "last": 1788220799315,
+            "record_types": {
+              "index_price": 141704
+            }
+          },
+          "instruments.jsonl": {
+            "day": "day20260831",
+            "file": "instruments.jsonl",
+            "bytes": 1955530,
+            "records": 1908,
+            "viol": 0,
+            "max_gap_s": 27820.7,
+            "first": 1788134401262,
+            "last": 1788162222007,
+            "record_types": {
+              "instrument": 1908
+            }
+          },
+          "ticker.jsonl": {
+            "day": "day20260831",
+            "file": "ticker.jsonl",
+            "bytes": 0,
+            "records": 0,
+            "viol": 0,
+            "max_gap_s": 0.0,
+            "first": null,
+            "last": null,
+            "record_types": {}
+          },
+          "trades.jsonl": {
+            "day": "day20260831",
+            "file": "trades.jsonl",
+            "bytes": 4824852,
+            "records": 10106,
+            "viol": 0,
+            "max_gap_s": 4428.5,
+            "first": 1788134401261,
+            "last": 1788220766727,
+            "record_types": {
+              "option_trade": 10106
+            }
+          }
+        },
+        "day20260901": {
+          "events.jsonl": {
+            "day": "day20260901",
+            "file": "events.jsonl",
+            "bytes": 1333461,
+            "records": 8118,
+            "viol": 0,
+            "max_gap_s": 10.9,
+            "first": 1788220800462,
+            "last": 1788307193753,
+            "record_types": {
+              "capture_event": 8118
+            }
+          },
+          "index.jsonl": {
+            "day": "day20260901",
+            "file": "index.jsonl",
+            "bytes": 35340272,
+            "records": 149483,
+            "viol": 0,
+            "max_gap_s": 7.1,
+            "first": 1788220800462,
+            "last": 1788307199612,
+            "record_types": {
+              "index_price": 149483
+            }
+          },
+          "instruments.jsonl": {
+            "day": "day20260901",
+            "file": "instruments.jsonl",
+            "bytes": 1994305,
+            "records": 1946,
+            "viol": 0,
+            "max_gap_s": 32508.6,
+            "first": 1788220800463,
+            "last": 1788298248281,
+            "record_types": {
+              "instrument": 1946
+            }
+          },
+          "ticker.jsonl": {
+            "day": "day20260901",
+            "file": "ticker.jsonl",
+            "bytes": 0,
+            "records": 0,
+            "viol": 0,
+            "max_gap_s": 0.0,
+            "first": null,
+            "last": null,
+            "record_types": {}
+          },
+          "trades.jsonl": {
+            "day": "day20260901",
+            "file": "trades.jsonl",
+            "bytes": 5392317,
+            "records": 11331,
+            "viol": 0,
+            "max_gap_s": 255.0,
+            "first": 1788220806195,
+            "last": 1788307103282,
+            "record_types": {
+              "option_trade": 11331
+            }
+          }
+        },
+        "day20260902": {
+          "events.jsonl": {
+            "day": "day20260902",
+            "file": "events.jsonl",
+            "bytes": 1333313,
+            "records": 8115,
+            "viol": 0,
+            "max_gap_s": 11.7,
+            "first": 1788307200481,
+            "last": 1788393592081,
+            "record_types": {
+              "capture_event": 8115
+            }
+          },
+          "index.jsonl": {
+            "day": "day20260902",
+            "file": "index.jsonl",
+            "bytes": 35359093,
+            "records": 149564,
+            "viol": 0,
+            "max_gap_s": 8.6,
+            "first": 1788307201134,
+            "last": 1788393599929,
+            "record_types": {
+              "index_price": 149564
+            }
+          },
+          "instruments.jsonl": {
+            "day": "day20260902",
+            "file": "instruments.jsonl",
+            "bytes": 1986137,
+            "records": 1938,
+            "viol": 0,
+            "max_gap_s": 36724.7,
+            "first": 1788307200481,
+            "last": 1788356500388,
+            "record_types": {
+              "instrument": 1938
+            }
+          },
+          "ticker.jsonl": {
+            "day": "day20260902",
+            "file": "ticker.jsonl",
+            "bytes": 0,
+            "records": 0,
+            "viol": 0,
+            "max_gap_s": 0.0,
+            "first": null,
+            "last": null,
+            "record_types": {}
+          },
+          "trades.jsonl": {
+            "day": "day20260902",
+            "file": "trades.jsonl",
+            "bytes": 5179167,
+            "records": 10896,
+            "viol": 0,
+            "max_gap_s": 355.7,
+            "first": 1788307200476,
+            "last": 1788393585214,
+            "record_types": {
+              "option_trade": 10896
+            }
+          }
+        },
+        "day20260903": {
+          "events.jsonl": {
+            "day": "day20260903",
+            "file": "events.jsonl",
+            "bytes": 1331577,
+            "records": 8110,
+            "viol": 0,
+            "max_gap_s": 11.5,
+            "first": 1788393600370,
+            "last": 1788479999911,
+            "record_types": {
+              "capture_event": 8110
+            }
+          },
+          "index.jsonl": {
+            "day": "day20260903",
+            "file": "index.jsonl",
+            "bytes": 36835293,
+            "records": 155806,
+            "viol": 0,
+            "max_gap_s": 5.8,
+            "first": 1788393600368,
+            "last": 1788479999947,
+            "record_types": {
+              "index_price": 155806
+            }
+          },
+          "instruments.jsonl": {
+            "day": "day20260903",
+            "file": "instruments.jsonl",
+            "bytes": 1988196,
+            "records": 1940,
+            "viol": 0,
+            "max_gap_s": 43340.8,
+            "first": 1788393600370,
+            "last": 1788448505470,
+            "record_types": {
+              "instrument": 1940
+            }
+          },
+          "ticker.jsonl": {
+            "day": "day20260903",
+            "file": "ticker.jsonl",
+            "bytes": 0,
+            "records": 0,
+            "viol": 0,
+            "max_gap_s": 0.0,
+            "first": null,
+            "last": null,
+            "record_types": {}
+          },
+          "trades.jsonl": {
+            "day": "day20260903",
+            "file": "trades.jsonl",
+            "bytes": 8084407,
+            "records": 16969,
+            "viol": 0,
+            "max_gap_s": 390.0,
+            "first": 1788393625559,
+            "last": 1788479998475,
+            "record_types": {
+              "option_trade": 16969
+            }
+          }
+        },
+        "day20260904": {
+          "events.jsonl": {
+            "day": "day20260904",
+            "file": "events.jsonl",
+            "bytes": 88966,
+            "records": 542,
+            "viol": 0,
+            "max_gap_s": 10.9,
+            "first": 1788480000346,
+            "last": 1788485770328,
+            "record_types": {
+              "capture_event": 542
+            }
+          },
+          "index.jsonl": {
+            "day": "day20260904",
+            "file": "index.jsonl",
+            "bytes": 2480019,
+            "records": 10490,
+            "viol": 0,
+            "max_gap_s": 4.0,
+            "first": 1788480000689,
+            "last": 1788485776277,
+            "record_types": {
+              "index_price": 10490
+            }
+          },
+          "instruments.jsonl": {
+            "day": "day20260904",
+            "file": "instruments.jsonl",
+            "bytes": 1906420,
+            "records": 1860,
+            "viol": 0,
+            "max_gap_s": 0.0,
+            "first": 1788480000060,
+            "last": 1788480000060,
+            "record_types": {
+              "instrument": 1860
+            }
+          },
+          "ticker.jsonl": {
+            "day": "day20260904",
+            "file": "ticker.jsonl",
+            "bytes": 0,
+            "records": 0,
+            "viol": 0,
+            "max_gap_s": 0.0,
+            "first": null,
+            "last": null,
+            "record_types": {}
+          },
+          "trades.jsonl": {
+            "day": "day20260904",
+            "file": "trades.jsonl",
+            "bytes": 318551,
+            "records": 670,
+            "viol": 0,
+            "max_gap_s": 116.7,
+            "first": 1788480000689,
+            "last": 1788485771748,
+            "record_types": {
+              "option_trade": 670
+            }
+          }
+        }
+      },
+      "consumed_by_any_frozen_campaign": true,
+      "consumption_evidence": "deribit-gex-eventstop (campaign 20260902T095715Z_1772ff9e_65cee1db82fa) read this capture. Its frozen window is 2026-08-31T03:15:00Z -> 2026-09-02T09:30:00Z with the event stop at 2026-08-31T13:00:00Z. Referenced in deribit-gex-eventstop-contract.json, deribit-eventstop-snapshot.json and deribit_gex_eventstop_results.json.",
+      "unconsumed_span_utc": {
+        "from": "2026-09-02T09:30:00Z",
+        "to": "2026-09-04T01:36:16Z",
+        "caveat": "Unconsumed for TRADE-FLOW mechanisms only. No open interest exists in this span, so GEX is not reconstructible."
+      },
+      "gap_free": false,
+      "gap_free_statement": "This collector is explicitly NOT gap-free and NOT healthy. Two independent defects are recorded below: a dead ticker substream across every day directory, and a 2026-08-31 outage. Do not describe it as clean.",
+      "ticker_substream_census": {
+        "day20260830": 81773450,
+        "day20260831": 0,
+        "day20260901": 0,
+        "day20260902": 0,
+        "day20260903": 0,
+        "day20260904": 0
+      },
+      "ticker_substream_verdict": "0 bytes on 20260831, 20260901, 20260902, 20260903 and 20260904; non-zero only on 20260830 (81,773,450 B, 96,328 records, spanning 11:56:05 -> 12:03:37 only). Checked across ALL day directories, not sampled."
+    }
+  },
+  "historical_calendar_check": {
+    "question": "Has any historical calendar been read into either collector, or has either collector been treated as a historical calendar?",
+    "answer": "No historical data was ever injected. Both collectors are forward-only websocket captures whose first record postdates their process start.",
+    "evidence": [
+      "Earliest liquidation record 2026-08-30T13:45:58.148Z; earliest deribit record 2026-08-30T11:47:10Z.",
+      "Every record carries a receipt stamp assigned at capture time (recv_epoch_ms / received_ts_ms), not a venue backfill field.",
+      "No backfill, import, replay-ingest or history event type appears in the collector event census: ['connection_idle_ping', 'day_rotation_open', 'heartbeat_ok', 'instrument_seed_done', 'reconnect_backoff', 'restart_state_rehydrated', 'server_error_notification', 'subscribe_ack']"
+    ],
+    "caveat": "The deribit capture is PARTLY SPENT as prospective evidence: the 2026-08-31T03:15Z -> 2026-09-02T09:30Z window was consumed by the eventstop trial and is now historical under frontier-loop-policy.json historical_data_boundary."
+  }
+}

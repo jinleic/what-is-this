@@ -3,15 +3,18 @@
   "id": "physics/shadows",
   "problem": "Contractive-shadow exact census (11520 two-qubit Cliffords)",
   "status": "active",
-  "current_gate": "Gate C k-extension EDGE-VANISHES (35/35 regression)",
-  "latest_campaign": null,
-  "latest_campaign_verdict": null,
-  "headline": "Gates A+B+C closed; k-extension regression confined boundary",
-  "next_action": "Decide whether higher-k extension is worth a further campaign",
+  "current_gate": "Gates A/B PROVED; gate C closed (k=4 pure cx_chain/cx_mesh_lex edge, shadow-norm ratio 353/361); k-extension closed EDGE-VANISHES at k=9..12, largest_k_completed=12; all pinned gate-C families now classified analytically for every k>=1: sole strict improvement is pure chain/lex mesh at k4; noisy-variance-r7 remains FROZEN-CERTIFIED (exact132-cell no-flip regression)",
+  "latest_campaign": "20260904T034040Z_bed4a462_be2fd1106eed",
+  "latest_campaign_verdict": "FROZEN-CERTIFIED",
+  "headline": "Complete all-k classification within the pinned gate-C families: only pure cx_chain/cx_mesh_lex at k4 beat U_ct; no new campaign and no change to frozen experimental verdicts",
+  "next_action": "No campaign queued. DO NOT extend finite-k or matching-family enumeration: the README proofs now classify every pinned family for all k. Largest empirical k remains12 and the exhaustive family(b) search remains k<=8. Noisy-variance remains closed and regression-grade. Arbitrary Clifford families, other gate orders, channels, estimators or token laws are distinct questions requiring appropriate preregistration before any new campaign.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "workspace-architecture-fix",
+  "updated_utc": "2026-09-05T02:51:55Z",
+  "updated_by": "pinned-family-analytic-closure",
   "sources": [
+    "physics/shadows/README.md",
+    "data/shadows-cx-chain-analytic-20260905.json",
+    "data/shadows-pinned-family-analytic-20260905.json",
     "physics/RESULTS.md"
   ]
 }

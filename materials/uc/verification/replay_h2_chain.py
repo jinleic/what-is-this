@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Replay driver for the Liu Hypothesis 2 / unconditional-constant certificate chain.
 
-The chain is seven machine-checked artifacts, each produced by one module:
+The chain is eight machine-checked artifacts, each produced by one module:
 
     reduction        uc/liu9_h2_reduction.py          -> liu9-h2-reduction.json
     psi-reduction    uc/liu9_psi_reduction_audit.py   -> liu9-psi-reduction.json
@@ -10,6 +10,18 @@ The chain is seven machine-checked artifacts, each produced by one module:
     phi-audit        uc/liu9_h2_phi_audit.py          -> liu9-h2-phi-audit.json
     general-lift     uc/liu9_h2_general_lift.py       -> liu9-h2-general-lift.json
     mixture-theorem  uc/liu9_h2_mixture_theorem.py    -> liu9-h2-mixture-theorem.json
+    four-fifths-ab   uc/liu9_cprime_four_fifths_ab.py -> liu9-cprime-four-fifths-ab.json
+
+The first seven prove Liu's Hypothesis 2 and the unconditional constant
+c' = 1 - m*.  The eighth proves A >= 0 and B >= 0 for the scaled Example-5
+protocol f(x) = (4/5)x(1-x) and hence the better constant c'' = 1 - m_{16/25}.
+Four of its six dependency pins are chain links and are cross-checked in [B]
+below (twovar_module, boundary_module, mixture_module against those links'
+module hashes; mixture_artifact against the mixture-theorem file hash).  The
+remaining two, frontier_module (uc/liu9_cprime_frontier.py) and
+frontier_artifact (uc/verification/results/liu9-cprime-frontier.json), are
+outside the chain: the certificate module asserts them itself at run time and
+refuses to certify on a mismatch, so [C] covers them indirectly.
 
 For every link this driver
 
@@ -115,9 +127,18 @@ CHAIN: Tuple[Link, ...] = (
          "329f7e2d71af8cd78d1a921c72b9ae4d05b71113134eb3341d69932f19ea24b3",
          "b108b781224dff601ffcf3f562703d3b620e7da6d89cf6d000b6ccbd06a4773b",
          "3098a1ca30a0f16582df02e1fb7dfd8fa27970c031167125e696e58ac43dfbab"),
+    Link("four-fifths-ab", "uc/liu9_cprime_four_fifths_ab.py",
+         "uc/verification/results/liu9-cprime-four-fifths-ab.json",
+         "PROVED", True, "omit+nl",
+         "9812fa9f64f99b8117da7bd6d31a3dfd5458deeaaddf764355012d04645939d4",
+         "9a69041ae55a7d1e8e5d2fb3622753f323627a206cb18e101cd3eeabebad073e",
+         "dbbd83a59e16ac44d48de67faef403f1318dc7fa6fb5824df5238e032691c6be"),
 )
 BY_NAME: Dict[str, Link] = {link.name: link for link in CHAIN}
 BY_ARTIFACT_STEM: Dict[str, Link] = {Path(link.artifact).stem: link for link in CHAIN}
+# A dependency block may name an artifact (hyphenated stem) or a module source
+# (underscored file name); index both so cross-pin checks never silently skip.
+BY_MODULE_NAME: Dict[str, Link] = {Path(link.module).name: link for link in CHAIN}
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -203,18 +224,38 @@ def check_on_disk(chk: Checker) -> Dict[str, dict]:
                    "[B] phi-audit: module_hashes_expected does not pin the boundary certificate")
         chk.expect(audit.get("audit_outcome") == "AUDIT-PASSED",
                    f"[B] phi-audit: audit_outcome {audit.get('audit_outcome')!r}")
-    for name in ("general-lift", "mixture-theorem"):
+    resolved = 0
+    for name in ("general-lift", "mixture-theorem", "four-fifths-ab"):
         report = reports.get(name)
         if report is None:
             continue
         for dep, block in report.get("dependencies", {}).items():
             chk.expect(block.get("match") is True, f"[B] {name}: dependency {dep} recorded match={block.get('match')!r}")
-            link = BY_ARTIFACT_STEM.get(dep)
+            # A block may be keyed by artifact stem, by a role name carrying the path, or
+            # by a module file name; and it may spell the pins with or without the
+            # `_expected` suffix.  Resolve every shape, so no cross-pin is skipped.
+            path = block.get("path")
+            stem = Path(str(path)).stem if isinstance(path, str) else None
+            base = Path(str(path)).name if isinstance(path, str) else None
+            pinned_sha = block.get("sha256_expected", block.get("sha256"))
+            link = BY_ARTIFACT_STEM.get(dep) or (BY_ARTIFACT_STEM.get(stem) if stem else None)
             if link is not None:
-                chk.expect(block.get("sha256_expected") == link.file_sha256,
-                           f"[B] {name}: dependency {dep} pins {str(block.get('sha256_expected'))[:16]}... != chain pin {link.file_sha256[:16]}...")
-                chk.expect(block.get("claim_status_expected") == link.claim_status,
-                           f"[B] {name}: dependency {dep} expects claim_status {block.get('claim_status_expected')!r}")
+                chk.expect(pinned_sha == link.file_sha256,
+                           f"[B] {name}: dependency {dep} pins artifact {str(pinned_sha)[:16]}... != chain pin {link.file_sha256[:16]}...")
+                pinned_status = block.get("claim_status_expected", block.get("claim_status"))
+                chk.expect(pinned_status == link.claim_status,
+                           f"[B] {name}: dependency {dep} expects claim_status {pinned_status!r}")
+                resolved += 1
+                continue
+            link = BY_MODULE_NAME.get(dep) or (BY_MODULE_NAME.get(base) if base else None)
+            if link is not None:
+                chk.expect(pinned_sha == link.tool_sha256,
+                           f"[B] {name}: dependency {dep} pins module {str(pinned_sha)[:16]}... != chain pin {link.tool_sha256[:16]}...")
+                resolved += 1
+    # Every one of these three reports pins at least one chain link; a resolver that
+    # silently matches nothing is itself a failure.
+    chk.expect(resolved >= 8,
+               f"[B] cross-artifact pins: only {resolved} dependency blocks resolved to a chain link")
     return reports
 
 

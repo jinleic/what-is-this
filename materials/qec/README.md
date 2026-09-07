@@ -5,6 +5,249 @@ circuits and decoders under circuit-level noise, centred on the non-CSS
 **perturbed bivariate-bicycle** (PBB) construction of arXiv:2606.02418 and the
 CSS bivariate-bicycle baselines of arXiv:2308.07915.
 
+## Current research card — exact gross-code circuit distance eleven
+
+**Question and scope (2026-09-06).** Certify or refute \(d_{\rm circ}=11\)
+for the **specific three-colour, depth-eight schedule in Figure 12 / Appendix
+H.2 of Strikis–Browne–Beverland, arXiv:2603.05481v1**, not an arbitrary
+gross-code schedule. The underlying code is [[144,12,12]], with 72 checks of
+each type and one ancilla per check. This is the sole new research mainline;
+MoE drafting remains a backup, not a concurrent experiment. Union-closed
+manuscript materials remain an externally unreviewed review lane; no outreach
+is authorized. Earlier PBB results below are unchanged.
+
+**Sources and admission.** [Primary paper](https://arxiv.org/pdf/2603.05481v1),
+[versioned source](https://arxiv.org/src/2603.05481v1),
+[authors' implementation](https://github.com/PurePhys/LR-circuits), and
+[archived circuits, version 18853601](https://doi.org/10.5281/zenodo.18853601).
+The downloaded archive contains no gross-code circuit. The paper's source
+contains the Figure 10–12 PDFs, not a machine-readable gross schedule.
+Source bytes and figure hashes are pinned in
+`../../physics/qldpc-dec/circuits/sbb2603_05481/`. An independently checked,
+unambiguous transcription of the graph, colours, CNOT times and staggered
+round boundaries is an admission requirement, not an assumed equivalence.
+The existing IonQ/beam-search circuit and decomposed DEM are **not substitutes**.
+
+**Fault and observable contract.** Use Section II.C's circuit-noise support:
+one fault per physical operation location; idle X/Y/Z, any of the 15
+nonidentity post-CNOT Paulis, preparation eigenstate flip, measurement outcome
+flip. Alternatives at one location are mutually exclusive and cost one,
+including a two-qubit Pauli; DEM decomposition fragments do not each become
+independent physical faults. Test both X- and Z-memory experiments and all
+12 logical observables. Detectors compare repeated check outcomes, with
+initial known-basis checks and terminal data-parity checks. **Correction:**
+Section II.C specifies a perfect terminal syndrome round, but the
+Section IV.B proof explicitly includes final data-measurement errors.
+“Perfect” therefore does not by itself mean noiseless destructive readout.
+Direct construction confirms the **generic** convention: the pinned
+`stim_circuit.py` applies data `init_error` and terminal `meas_error`;
+the documented caller sets both to \(p\), and its archived surface-code
+output includes the terminal error before `M`. This does **not** identify
+the slightly modified Figure 12 circuit's finite head/tail, staggered round
+cut or boundary idle exposure. Those target-specific details remain unresolved.
+The conjecture test used one QEC cycle. The generic logical-error protocol
+sets \(m=d\), hence twelve rounds for Gross; the source does not report a
+separate twelve-cycle Figure 12 experiment. Neither convention fixes
+the modified circuit's finite boundaries.
+
+**Baseline, missing ingredient and novelty.** The standard Bravyi et al.
+gross SEC has a reported weight-ten circuit logical. The paper proves
+\(d_{\rm circ}\le11\) for non-interleaved SECs and conjectures Figure 12
+saturates it after 10,000 heuristic outer loops without a sub-eleven witness.
+Its Theorem 1 identifies distance with the complete residual extended-code
+distance for the stated non-interleaved model; applying that theorem requires
+checking its hypotheses and lifting witnesses to the actual timed circuit.
+The missing ingredient is a trustworthy physical-model derivation plus a
+checkable exclusion of every weight-at-most-ten nontrivial undetected fault
+configuration. [Webster–Jacob–Higgott v2](https://arxiv.org/abs/2603.22532v2)
+provides exact SAT/MIP/enumeration baselines (Gurobi is its recommended exact
+BB-circuit baseline), not a certificate for this particular circuit.
+Morphing BB circuits reported at distance twelve change the circuit class;
+this is not a global hardware-performance record attempt.
+No later resolution was found in the targeted search; novelty remains
+**unconfirmed**, not established by search absence.
+
+**First gate and resources.** Admit the exact source first. Then compare an
+independent binary-Pauli propagation model with direct Stim fault injection;
+exercise known-answer circuits, witness replay and corrupt/missing-fault,
+wrong-boundary and wrong-logical controls. Only after these gates pass, run
+one serial, capped bound-search assay using existing QEC machinery: at most
+60 seconds per SAT call, four calls, one thread, a sampled 2 GiB RSS guard,
+and 100 MiB per-output-file cap. Solver wall time is capped at 240 seconds;
+source and validation stages have separate preregistered caps. Darwin did
+not support the attempted hard address-space limits. Freeze effective
+parameters and inputs before execution through `scripts/campaign.py`.
+Success is an admitted model and reproducible feasibility evidence; an exact
+distance additionally requires matching physical upper/lower evidence.
+Source ambiguity or a failed independent check stops search. Timeout is
+inconclusive, never a lower bound. Redirect only to resolving the concrete
+source/model blocker; no automatic compute escalation or topic expansion.
+
+### Authoritative-source follow-up — external blocker (2026-09-07)
+
+[New source-discovery campaign](campaigns/20260907T012847Z_9687c876_4f597eeab895/)
+found recoverable author-owned BB144 outputs in
+[commit `4eca62a`](https://github.com/PurePhys/LR-circuits/commit/4eca62a251c0ee1f56f8a5d0d52da6b8ffb31671),
+dated 2025-10-13. They include X/Z partner-order JSON, colouring arrays,
+residual data and two PCMs. The immediate child removed the generated outputs
+on 2025-10-17. The adjacent committed drivers select surface codes, not a
+BB144 finite-memory experiment; no author statement identifies these
+historical files as Figure 12.
+
+The [successor erratum](campaigns/20260907T061036Z_058f56ba_0590281d38d2/erratum.json)
+corrects the frozen report's nonexistent `input/PCM/BB_144.npz` entry:
+the actual paths are `circuit-generator/example-pcms/BB_144_Hx.npz` and
+`circuit-generator/example-pcms/BB_144_Hz.npz`. Closed reports, statuses and
+hash manifests are unchanged. The successor's
+[complete source provenance](campaigns/20260907T061036Z_058f56ba_0590281d38d2/source_provenance.json)
+pins three repository revisions, including the full historical constructor
+and order/residual implementation, with URLs, retrieval times and hashes.
+
+The [complete-source admission decision](campaigns/20260907T061036Z_058f56ba_0590281d38d2/source_admission.json)
+distinguishes known generic clocks, repeat assembly and noisy destructive
+closure from the missing **target-specific** construction. The paper calls
+the target a “slightly modified LRC” but supplies no modification recipe.
+Captured generic versions differ in final-loop `TICK` placement, endpoint
+idle suppression and observable indexing; none is identified as Figure 12.
+Combining a stock constructor with the PDF is therefore not exact admission.
+
+The historical code **does** define its array values as data-column IDs
+ordered by edge colour. A
+[new-candidate correspondence check](campaigns/20260907T012847Z_9687c876_4f597eeab895/historical_candidate_check.json)
+used preserved canonical results without rebuilding them: both 72-row
+support sets match. Each fixed Figure 10 colour class contains **four**
+normalized local orders in each basis. This count is **diagnostic-only**:
+no paper-level one-order invariant, contradiction, exclusion, residual
+inequivalence, Figure 12 identity or distance bound follows from it.
+Figure 12's own endpoint numerals remain semantically untyped, particularly
+the lower row headed **“X-check CNOT residuals.”**
+
+Earlier discovery covered all 39 reachable main-branch commits, public refs,
+issues/discussions, forks, author-linked assets and publication/deposit
+relationships. The official QCTiP 2026 abstract (book page 58) and QEC 2026
+poster listing (#167, board #16) confirm presentation provenance but supply
+no construction details. The QCTiP extended submission requires
+authentication; no public deck/poster was located. These are unavailable
+**leads**, not sources known to contain the missing construction. No
+authenticated private retrieval or outreach was attempted.
+
+[Current admission decision and coverage limits](campaigns/20260907T073526Z_5957d408_7f026b8f6489/source_admission.json):
+the exact target remains unadmitted. Required input is an authoritative
+Figure 12-specific endpoint/monomial and X/Z binding, common clock/cycle
+association, and finite preparation/readout/idle construction—or its
+author-identified machine-readable circuit. No closed numerical check,
+primitive-fault model, physical replay or distance assay was rerun.
+Reopen only on a concrete new source or clarification, not by repeating
+these closed checks. GB9, the decoder contract and prior frozen evidence
+remain untouched.
+
+The 07:12 UTC repository delta after 06:51:11 UTC returned no new
+default-branch commits or updated issues/PRs. The exact arXiv record still
+exposed v1 at 07:20 UTC. These metadata-only observations did not reopen
+the closed construction or numerical checks.
+The 07:38 UTC Zenodo concept/latest-version delta also resolved record
+18853601: publication date 2026-03-03, modification timestamp and
+publisher-reported file descriptors unchanged. No archive was downloaded
+or re-inventoried.
+
+### Canonical reconciliation — source blocker, no distance assay
+
+[Resumed campaign](campaigns/20260906T201730Z_6c85d571_e3816a3962de/)
+reuses `physics/fss-bb/src/bb_codes.py:bb_code(12,6)`, not a replacement
+Gross graph. Both parity-check matrices are \(72\times144\), commute, have
+rank 66 in the builder and two independent GF(2) implementations, and have
+row/column weights 6/3. Thus \(k=144-66-66=12\); the twelve logical pairs
+have full-rank pairing. All entries agree with the Figure 10 graph under
+the explicit map, for index \(6u+v\) and coordinates modulo \((24,12)\):
+
+| Canonical object | Figure coordinates |
+| --- | --- |
+| X check | \((1-2u,1-2v)\) |
+| Z check | \((4-2u,4-2v)\) |
+| Left data | \((1-2u,4-2v)\) |
+| Right data | \((4-2u,1-2v)\) |
+
+[Canonical checks](campaigns/20260906T201730Z_6c85d571_e3816a3962de/canonical_reconciliation.json)
+and [static witness replay](campaigns/20260906T201730Z_6c85d571_e3816a3962de/static_witness_replay.json)
+are distinct evidence: three existing weight-twelve static logical witnesses
+replay with zero syndrome and nonzero logical pairing. The published static
+distance twelve and historical cap-eleven UNSAT records are inherited;
+no new lower-bound solve or portable UNSAT-proof check was performed.
+
+The new source obstruction is **not** the old 0/16 timing result.
+[Exact rational vector extraction](campaigns/20260906T201730Z_6c85d571_e3816a3962de/residual_vector_correspondence.json)
+identifies all 18 Figure 11 shaded residual regions and 36 data-node
+centres. **Conditionally** sorting the Figure 12 endpoint integers gives
+matching residuals for all three upper/filled panels, but none of the
+lower/hollow panels, even modulo the full-check stabilizer. For example,
+lower red predicts pairs \(\{S,N\}\), \(\{W,E\}\); Figure 11 shows
+\(\{N,NE\}\), \(\{SW,W\}\). Both triples agree modulo the check.
+Independent colour cycling or reversing the order cannot remove this mismatch.
+
+A within-block monomial-slot cycle could repair those lower patterns, but
+no pinned source authorizes that non-geometric relabeling. Figure 11's
+colour-cycle permission preserves an **extended-code upper bound**, not
+the identity of every Figure 12 physical gate. The Figure 10 versus
+Figure 11/12 X/Z marker-name conflict also remains explicit. Neither an
+invented relabeling, a colour-permuted variant nor the stock generator's
+different stagger is admitted as the exact target.
+
+Remaining external input: a corrected endpoint/monomial and clock binding
+for Figure 12, with its modified-LRC finite boundary and idle exposure,
+or the authors' corresponding machine-readable circuit. Logical bases can
+be derived locally; matching an author's arbitrary basis ordering is not
+a blocker. No primitive-fault model, physical known-answer/replay gate or
+distance assay was run. **No new circuit-distance bound is claimed.**
+The decoder contract, GB9 and prior frozen campaign remain untouched.
+
+### Previous source-admission campaign — FROZEN-INCONCLUSIVE
+
+[Registered campaign](campaigns/20260906T192206Z_955565c2_c9339b06c72c/):
+**STOP distance search; redirect to exact source reconstruction.** The
+versioned Zenodo archive contains 124 Stim files, all from four other code
+families. The authors' complete, non-truncated repository tree at
+`eded83cf054ae1c79607fbd2bae98748d95f43bf` has 37 files and only a surface-code
+Stim example; its BB144 matrices do not specify the proposed SEC.
+
+Two tentative figure readings were exercised, matching graphical markers
+or X/Z caption labels. The old probe assumed the endpoint annotations were
+absolute CNOT clock values. **That assumption was not established from the
+source.** Its six basic graph checks and numerical collision counts describe
+those assumed encodings only; the 0/16 result is **not an admitted physical
+timing test and must not gate the resumed reconciliation**.
+
+| Figure reading | Simultaneous data-qubit CNOT collision slots |
+| --- | --- |
+| Marker-matched | 48, 72, 168, 240, 288, 240, 168, 72 |
+| Caption-matched | 240, 120, 240, 168, 144, 120, 96, 168 |
+
+The frozen numerical output is retained, but the prior timing-based stop
+inference is withdrawn. Endpoint/qubit labels, local CNOT ordering and
+absolute staggered clock slots must be distinguished from primary
+construction evidence. A canonical graph mismatch is likewise not
+established by these counts; the resumed gate checks full coordinate
+equivalence, ranks, source order semantics and direct boundary construction.
+
+[Commands and logs](campaigns/20260906T192206Z_955565c2_c9339b06c72c/execution_portable.json),
+[first probe](campaigns/20260906T192206Z_955565c2_c9339b06c72c/source_admission.json),
+and [caption probe](campaigns/20260906T192206Z_955565c2_c9339b06c72c/caption_interpretation/source_admission.json):
+0.035366 / 0.036094 seconds probe wall time; 29,540,352 / 29,736,960 bytes
+peak RSS. Native `RLIMIT_AS` and `RLIMIT_DATA` setup failed before compute;
+prospective amendments used a 30-second subprocess wall limit and sampled
+2 GiB RSS supervision, **not a hard address-space limit**. Failed attempts
+are retained. No primitive-fault model, known-answer physical-circuit
+validation, logical witness replay, SAT call or distance bound was produced.
+
+Next admission input: an exact authors' timed circuit, or a source-justified
+mapping resolving the graph/colour/time conventions, with collision-free
+unit-duration preparation/CNOT/measurement/idle placement and explicit
+one-cycle/12-round boundaries, detectors and 12 logical observables per
+basis. Then perform the independent physical-fault and witness gates before
+any solver escalation. No external request has been sent. The decoder GB9
+claim, earlier PBB results and legacy `state.json` routing are untouched;
+this campaign uses the CLI-returned absolute run path for freeze/close
+because legacy `math/qec` inventories use `experiments/`.
+
 ## Headline result
 
 Two proved layers, one on each Pauli sector, plus a consistent circuit-level

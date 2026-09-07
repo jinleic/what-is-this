@@ -1,0 +1,1133 @@
+{
+  "schema_version": 1,
+  "id": "collector-continuity-audit",
+  "audit_instant_utc": "2026-09-06T02:05:09.000Z",
+  "purpose": "Outcome-blind continuity, coverage and eligibility audit of both append-only collectors against the pre-registered prospective horizon. No payload field read; no signal computed; no outcome formed.",
+  "command": "nice -n 10 python3 explorations/collector_continuity_audit.py --now 2026-09-06T02:05:09Z --out <this file>",
+  "inputs": {
+    "registration": "explorations/prospective-forward-test-registration.json",
+    "registration_sha256": "2d2bebdd0ee80001ea9c252493d6bf0c70a952c8ab91c2a553a922d39372e735",
+    "liquidation_dir": "data/raw/focused/live/liquidations-persistent",
+    "deribit_dir": "data/raw/focused/live/deribit",
+    "horizon_start_utc": "2026-09-05T00:00:00Z",
+    "horizon_hard_cap_utc": "2026-12-04T00:00:00Z",
+    "eligibility": {
+      "collector_uptime_fraction_min": 0.98,
+      "max_tolerated_single_gap_minutes": 15,
+      "min_complete_utc_days": 24,
+      "monotonicity": "zero data-record monotonicity violations inside the horizon",
+      "byte_integrity": "every horizon day file hashed at horizon close and pinned before any signal is computed",
+      "restart_policy": "process restarts are permitted and must be counted; a restart that loses more than 15 minutes voids the affected day"
+    }
+  },
+  "host_evidence": {
+    "kern_boottime_utc": "2026-09-04T18:34:25.000Z",
+    "collector_processes_running_at_audit": "none: `pgrep -fl 'liquidation|deribit|collector'` empty and neither quant-liquidation-capture nor quant-deribit-gex-capture appears in hub ps"
+  },
+  "liquidation_collector": {
+    "files": [
+      {
+        "file": "liquidation-capture-20260830.jsonl",
+        "bytes_pinned": 16768250,
+        "sha256_pinned": "85a3a78a429d2594bbe1c78da9aa49450a3bb3514bddb80fa07cf5a1ddd869e7",
+        "records_all": 38250,
+        "records_data": 38247,
+        "records_control": 3,
+        "records_unparsed": 0,
+        "kinds": {
+          "control": 3,
+          "event": 27098,
+          "oi_snapshot": 11149
+        },
+        "first_data_ts_utc": "2026-08-30T13:46:05.377Z",
+        "last_data_ts_utc": "2026-08-30T23:59:45.384Z",
+        "last_any_ts_utc": "2026-08-30T23:59:45.384Z",
+        "data_record_monotonicity_violations": 0,
+        "max_data_gap_seconds": 109.141,
+        "max_data_gap_at": [
+          "2026-08-30T18:13:16.212Z",
+          "2026-08-30T18:15:05.353Z"
+        ],
+        "data_gaps_over_limit": [],
+        "trailing_partial_line": false
+      },
+      {
+        "file": "liquidation-capture-20260831.jsonl",
+        "bytes_pinned": 17850982,
+        "sha256_pinned": "5dae045e463ab890467639545e8448288a4d8760120c4f57e93ffa79a586acff",
+        "records_all": 41903,
+        "records_data": 41887,
+        "records_control": 16,
+        "records_unparsed": 0,
+        "kinds": {
+          "control": 16,
+          "event": 28118,
+          "oi_snapshot": 13769
+        },
+        "first_data_ts_utc": "2026-08-31T00:00:06.329Z",
+        "last_data_ts_utc": "2026-08-31T23:59:08.664Z",
+        "last_any_ts_utc": "2026-08-31T23:59:08.664Z",
+        "data_record_monotonicity_violations": 0,
+        "max_data_gap_seconds": 225.722,
+        "max_data_gap_at": [
+          "2026-08-31T06:30:19.932Z",
+          "2026-08-31T06:34:05.654Z"
+        ],
+        "data_gaps_over_limit": [],
+        "trailing_partial_line": false
+      },
+      {
+        "file": "liquidation-capture-20260901.jsonl",
+        "bytes_pinned": 23259880,
+        "sha256_pinned": "b26196d2eaa7f2803f3d7ebb3eecd39f06d7fc31c152780895f21a776a740429",
+        "records_all": 54808,
+        "records_data": 54806,
+        "records_control": 2,
+        "records_unparsed": 0,
+        "kinds": {
+          "control": 2,
+          "event": 36462,
+          "oi_snapshot": 18344
+        },
+        "first_data_ts_utc": "2026-09-01T00:00:05.138Z",
+        "last_data_ts_utc": "2026-09-01T23:59:52.470Z",
+        "last_any_ts_utc": "2026-09-01T23:59:52.470Z",
+        "data_record_monotonicity_violations": 0,
+        "max_data_gap_seconds": 192.373,
+        "max_data_gap_at": [
+          "2026-09-01T07:50:09.250Z",
+          "2026-09-01T07:53:21.623Z"
+        ],
+        "data_gaps_over_limit": [],
+        "trailing_partial_line": false
+      },
+      {
+        "file": "liquidation-capture-20260902.jsonl",
+        "bytes_pinned": 28908205,
+        "sha256_pinned": "20ac35b229a7d21860678d3bdc26241c70dcac4f129c2c631c1aa50d87c0b3ea",
+        "records_all": 66042,
+        "records_data": 66040,
+        "records_control": 2,
+        "records_unparsed": 0,
+        "kinds": {
+          "control": 2,
+          "event": 46656,
+          "oi_snapshot": 19384
+        },
+        "first_data_ts_utc": "2026-09-02T00:00:01.432Z",
+        "last_data_ts_utc": "2026-09-02T23:59:59.507Z",
+        "last_any_ts_utc": "2026-09-02T23:59:59.507Z",
+        "data_record_monotonicity_violations": 0,
+        "max_data_gap_seconds": 173.112,
+        "max_data_gap_at": [
+          "2026-09-02T15:04:15.249Z",
+          "2026-09-02T15:07:08.361Z"
+        ],
+        "data_gaps_over_limit": [],
+        "trailing_partial_line": false
+      },
+      {
+        "file": "liquidation-capture-20260903.jsonl",
+        "bytes_pinned": 24305112,
+        "sha256_pinned": "ff68fce8f3fef2f712004eb059c0d2fa94d1a7df18fdef6910b03ed4c3b87f0d",
+        "records_all": 56610,
+        "records_data": 56606,
+        "records_control": 4,
+        "records_unparsed": 0,
+        "kinds": {
+          "control": 4,
+          "event": 38558,
+          "oi_snapshot": 18048
+        },
+        "first_data_ts_utc": "2026-09-03T00:00:03.941Z",
+        "last_data_ts_utc": "2026-09-03T23:59:37.259Z",
+        "last_any_ts_utc": "2026-09-03T23:59:37.259Z",
+        "data_record_monotonicity_violations": 0,
+        "max_data_gap_seconds": 117.6,
+        "max_data_gap_at": [
+          "2026-09-03T22:03:08.781Z",
+          "2026-09-03T22:05:06.381Z"
+        ],
+        "data_gaps_over_limit": [],
+        "trailing_partial_line": false
+      },
+      {
+        "file": "liquidation-capture-20260904.jsonl",
+        "bytes_pinned": 21700225,
+        "sha256_pinned": "73ef1ed6fb5c5fdcc295ad8e262aa8de028601f7a6618f56eabd2c040b3091cc",
+        "records_all": 49585,
+        "records_data": 49583,
+        "records_control": 2,
+        "records_unparsed": 0,
+        "kinds": {
+          "control": 2,
+          "event": 34922,
+          "oi_snapshot": 14661
+        },
+        "first_data_ts_utc": "2026-09-04T00:00:06.009Z",
+        "last_data_ts_utc": "2026-09-04T18:28:00.771Z",
+        "last_any_ts_utc": "2026-09-04T18:28:00.771Z",
+        "data_record_monotonicity_violations": 0,
+        "max_data_gap_seconds": 84.028,
+        "max_data_gap_at": [
+          "2026-09-04T06:32:30.546Z",
+          "2026-09-04T06:33:54.574Z"
+        ],
+        "data_gaps_over_limit": [],
+        "trailing_partial_line": false
+      }
+    ],
+    "day_seams": [
+      {
+        "from_file": "liquidation-capture-20260830.jsonl",
+        "to_file": "liquidation-capture-20260831.jsonl",
+        "seconds": 20.945,
+        "monotonic": true
+      },
+      {
+        "from_file": "liquidation-capture-20260831.jsonl",
+        "to_file": "liquidation-capture-20260901.jsonl",
+        "seconds": 56.474,
+        "monotonic": true
+      },
+      {
+        "from_file": "liquidation-capture-20260901.jsonl",
+        "to_file": "liquidation-capture-20260902.jsonl",
+        "seconds": 8.962,
+        "monotonic": true
+      },
+      {
+        "from_file": "liquidation-capture-20260902.jsonl",
+        "to_file": "liquidation-capture-20260903.jsonl",
+        "seconds": 4.434,
+        "monotonic": true
+      },
+      {
+        "from_file": "liquidation-capture-20260903.jsonl",
+        "to_file": "liquidation-capture-20260904.jsonl",
+        "seconds": 28.75,
+        "monotonic": true
+      }
+    ],
+    "first_data_ts_utc": "2026-08-30T13:46:05.377Z",
+    "last_data_ts_utc": "2026-09-04T18:28:00.771Z",
+    "days_present": [
+      "20260830",
+      "20260831",
+      "20260901",
+      "20260902",
+      "20260903",
+      "20260904"
+    ],
+    "total_bytes": 132792654,
+    "total_data_records": 307169,
+    "total_data_record_monotonicity_violations": 0,
+    "data_gaps_over_limit_total": 0,
+    "any_trailing_partial_line": false
+  },
+  "deribit_collector": {
+    "days": {
+      "day20260830": {
+        "index": {
+          "bytes_pinned": 15977278,
+          "sha256_pinned": "6a7416b81cb34d80686a508140273c0f2318098c41e976df758f657044ed0a26",
+          "records": 67578,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-08-30T11:56:05.107Z",
+          "last_received_utc": "2026-08-30T23:59:59.279Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 1555.018,
+          "max_gap_at": [
+            "2026-08-30T12:33:47.756Z",
+            "2026-08-30T12:59:42.774Z"
+          ],
+          "gaps_over_limit": [
+            {
+              "from": "2026-08-30T12:33:47.756Z",
+              "to": "2026-08-30T12:59:42.774Z",
+              "seconds": 1555.018
+            }
+          ],
+          "trailing_partial_line": false
+        },
+        "trades": {
+          "bytes_pinned": 2488500,
+          "sha256_pinned": "36fc7ea323ff1d4bd34b033b60cf09de31c3d963f74e27dc1ce0d468f7dc3405",
+          "records": 5239,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-08-30T12:08:26.731Z",
+          "last_received_utc": "2026-08-30T23:59:58.752Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 1557.156,
+          "max_gap_at": [
+            "2026-08-30T12:33:47.435Z",
+            "2026-08-30T12:59:44.591Z"
+          ],
+          "gaps_over_limit": [
+            {
+              "from": "2026-08-30T12:33:47.435Z",
+              "to": "2026-08-30T12:59:44.591Z",
+              "seconds": 1557.156
+            }
+          ],
+          "trailing_partial_line": false
+        },
+        "events": {
+          "bytes_pinned": 630336,
+          "sha256_pinned": "899d58195f3db4fffa3cc785b8da5a4d1d94193c1338146c202a6023d945bf61",
+          "records": 3784,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-08-30T11:47:10.882Z",
+          "last_received_utc": "2026-08-30T23:59:57.849Z",
+          "received_monotonicity_violations": 1,
+          "max_gap_seconds": 1553.255,
+          "max_gap_at": [
+            "2026-08-30T12:33:46.856Z",
+            "2026-08-30T12:59:40.111Z"
+          ],
+          "gaps_over_limit": [
+            {
+              "from": "2026-08-30T12:33:46.856Z",
+              "to": "2026-08-30T12:59:40.111Z",
+              "seconds": 1553.255
+            }
+          ],
+          "trailing_partial_line": false,
+          "event_census": {
+            "day_rotation_open": 18,
+            "heartbeat_ok": 3649,
+            "instrument_seed_done": 68,
+            "reconnect_backoff": 29,
+            "restart_state_rehydrated": 5,
+            "server_error_notification": 4,
+            "subscribe_ack": 11
+          },
+          "subscribe_acks": [
+            {
+              "received_utc": "2026-08-30T11:56:04.541Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "ticker.BTC-11SEP26-60000-C.agg2",
+                "ticker.BTC-11SEP26-60000-P.agg2",
+                "ticker.BTC-11SEP26-64000-C.agg2"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T11:57:30.137Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "ticker.BTC-11SEP26-60000-C.agg2",
+                "ticker.BTC-11SEP26-60000-P.agg2",
+                "ticker.BTC-11SEP26-64000-C.agg2"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T12:03:37.182Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "ticker.BTC-11SEP26-60000-C.agg2",
+                "ticker.BTC-11SEP26-60000-P.agg2",
+                "ticker.BTC-11SEP26-64000-C.agg2"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T12:08:26.104Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T12:10:12.215Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T12:14:35.464Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T12:30:16.316Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T12:33:25.551Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T12:59:42.045Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T13:00:46.800Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-08-30T13:13:21.086Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            }
+          ]
+        },
+        "instruments": {
+          "bytes_pinned": 90671288,
+          "sha256_pinned": "4005d155b58a7d712e661334e5863492252a075213553047929d29021e0708ca"
+        },
+        "ticker": {
+          "bytes_pinned": 81773450,
+          "sha256_pinned": "766fca4312127a20b2011b09cb02dba1c314df878da6f388c86552b2081e7585"
+        }
+      },
+      "day20260831": {
+        "index": {
+          "bytes_pinned": 33500403,
+          "sha256_pinned": "d97b36f21c6b94d553427e0b41dd106f796246f39af3974c1f79e33f641a0c7b",
+          "records": 141704,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-08-31T00:00:01.895Z",
+          "last_received_utc": "2026-08-31T23:59:59.315Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 4415.248,
+          "max_gap_at": [
+            "2026-08-31T06:30:08.856Z",
+            "2026-08-31T07:43:44.104Z"
+          ],
+          "gaps_over_limit": [
+            {
+              "from": "2026-08-31T02:06:24.566Z",
+              "to": "2026-08-31T02:40:22.108Z",
+              "seconds": 2037.542
+            },
+            {
+              "from": "2026-08-31T06:30:08.856Z",
+              "to": "2026-08-31T07:43:44.104Z",
+              "seconds": 4415.248
+            }
+          ],
+          "trailing_partial_line": false
+        },
+        "trades": {
+          "bytes_pinned": 4824852,
+          "sha256_pinned": "980e9395c63bfdd547729133556eeaa232ebc4a996662937f66073ea9a2345ec",
+          "records": 10106,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-08-31T00:00:01.261Z",
+          "last_received_utc": "2026-08-31T23:59:26.727Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 4428.544,
+          "max_gap_at": [
+            "2026-08-31T06:30:03.765Z",
+            "2026-08-31T07:43:52.309Z"
+          ],
+          "gaps_over_limit": [
+            {
+              "from": "2026-08-31T02:06:23.747Z",
+              "to": "2026-08-31T02:40:32.625Z",
+              "seconds": 2048.878
+            },
+            {
+              "from": "2026-08-31T06:30:03.765Z",
+              "to": "2026-08-31T07:43:52.309Z",
+              "seconds": 4428.544
+            }
+          ],
+          "trailing_partial_line": false
+        },
+        "events": {
+          "bytes_pinned": 1310718,
+          "sha256_pinned": "8c465cf47e9f78248b7b2a9feeaa2eec3afec48911298f270bdb9e86fe5b4eb9",
+          "records": 7898,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-08-31T00:00:01.262Z",
+          "last_received_utc": "2026-08-31T23:59:50.197Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 25.543,
+          "max_gap_at": [
+            "2026-08-31T06:29:59.330Z",
+            "2026-08-31T06:30:24.873Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false,
+          "event_census": {
+            "connection_idle_ping": 402,
+            "day_rotation_open": 1,
+            "heartbeat_ok": 7488,
+            "instrument_seed_done": 3,
+            "reconnect_backoff": 2,
+            "subscribe_ack": 2
+          },
+          "subscribe_acks": [
+            {
+              "received_utc": "2026-08-31T02:40:21.210Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-08-31T07:43:43.907Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            }
+          ]
+        },
+        "instruments": {
+          "bytes_pinned": 1955530,
+          "sha256_pinned": "c0d3fc8a68f712e80fae4953fddb53426c544b7b487796b4658cc6cefbd20be7"
+        },
+        "ticker": {
+          "bytes_pinned": 0,
+          "sha256_pinned": null
+        }
+      },
+      "day20260901": {
+        "index": {
+          "bytes_pinned": 35340272,
+          "sha256_pinned": "86e48ad8bb931bec3c129039a3709b25fb81487d8272810be998cedc24b0f930",
+          "records": 149483,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-01T00:00:00.462Z",
+          "last_received_utc": "2026-09-01T23:59:59.612Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 7.069,
+          "max_gap_at": [
+            "2026-09-01T22:38:33.853Z",
+            "2026-09-01T22:38:40.922Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false
+        },
+        "trades": {
+          "bytes_pinned": 5392317,
+          "sha256_pinned": "16faa68536cd89224ffa68b0d60c26359ea3191e8f4bbb29e859523d2804ab38",
+          "records": 11331,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-01T00:00:06.195Z",
+          "last_received_utc": "2026-09-01T23:58:23.282Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 254.961,
+          "max_gap_at": [
+            "2026-09-01T23:51:52.689Z",
+            "2026-09-01T23:56:07.650Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false
+        },
+        "events": {
+          "bytes_pinned": 1333461,
+          "sha256_pinned": "fe9dbcd285344dee7cda9dcac7c24d5ed9ea2c93e2539ea74ecc57efa16387cb",
+          "records": 8118,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-01T00:00:00.462Z",
+          "last_received_utc": "2026-09-01T23:59:53.753Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 10.863,
+          "max_gap_at": [
+            "2026-09-01T09:20:08.148Z",
+            "2026-09-01T09:20:19.011Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false,
+          "event_census": {
+            "day_rotation_open": 1,
+            "heartbeat_ok": 8095,
+            "instrument_seed_done": 8,
+            "reconnect_backoff": 7,
+            "subscribe_ack": 7
+          },
+          "subscribe_acks": [
+            {
+              "received_utc": "2026-09-01T09:01:49.994Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-01T09:25:34.980Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-01T11:52:08.782Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-01T14:20:26.913Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-01T15:44:30.618Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-01T19:50:38.919Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-01T21:30:49.092Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            }
+          ]
+        },
+        "instruments": {
+          "bytes_pinned": 1994305,
+          "sha256_pinned": "9860f2a357e112af9f266e64d3c020144d85f49730d1b81ab3a08200dac95b1f"
+        },
+        "ticker": {
+          "bytes_pinned": 0,
+          "sha256_pinned": null
+        }
+      },
+      "day20260902": {
+        "index": {
+          "bytes_pinned": 35359093,
+          "sha256_pinned": "d8d9c2bac9e9962b75ee9db6ff989f40fb8475d856113e025e50b0954ee801c4",
+          "records": 149564,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-02T00:00:01.134Z",
+          "last_received_utc": "2026-09-02T23:59:59.929Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 8.578,
+          "max_gap_at": [
+            "2026-09-02T21:27:41.127Z",
+            "2026-09-02T21:27:49.705Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false
+        },
+        "trades": {
+          "bytes_pinned": 5179167,
+          "sha256_pinned": "42ed352e635b957a328f5e5d07d85d98983a6f05f28fc6bb12f2c3d95907c633",
+          "records": 10896,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-02T00:00:00.476Z",
+          "last_received_utc": "2026-09-02T23:59:45.214Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 355.679,
+          "max_gap_at": [
+            "2026-09-02T18:56:49.023Z",
+            "2026-09-02T19:02:44.702Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false
+        },
+        "events": {
+          "bytes_pinned": 1333313,
+          "sha256_pinned": "ffefc5e8a9abd72c8feed899f7c6d9f16b8bfcf9a8f029415109afd2fe1a7885",
+          "records": 8115,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-02T00:00:00.481Z",
+          "last_received_utc": "2026-09-02T23:59:52.081Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 11.728,
+          "max_gap_at": [
+            "2026-09-02T19:11:49.321Z",
+            "2026-09-02T19:12:01.049Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false,
+          "event_census": {
+            "day_rotation_open": 1,
+            "heartbeat_ok": 8089,
+            "instrument_seed_done": 9,
+            "reconnect_backoff": 8,
+            "subscribe_ack": 8
+          },
+          "subscribe_acks": [
+            {
+              "received_utc": "2026-09-02T00:39:17.285Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-02T10:12:06.083Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-02T10:20:51.437Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-02T10:35:59.624Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-02T12:11:37.746Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-02T13:07:55.984Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-02T13:41:41.204Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-02T20:05:45.545Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            }
+          ]
+        },
+        "instruments": {
+          "bytes_pinned": 1986137,
+          "sha256_pinned": "95c0ff22cf93540c46b0f843a1da1f0ebfd1a18ce43d3b278c347d231f5466d7"
+        },
+        "ticker": {
+          "bytes_pinned": 0,
+          "sha256_pinned": null
+        }
+      },
+      "day20260903": {
+        "index": {
+          "bytes_pinned": 36835293,
+          "sha256_pinned": "3f1be65687ee4fbe8d7242403c283c24514972fff49af58f58614d20b4296dfe",
+          "records": 155806,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-03T00:00:00.368Z",
+          "last_received_utc": "2026-09-03T23:59:59.947Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 5.835,
+          "max_gap_at": [
+            "2026-09-03T12:30:01.960Z",
+            "2026-09-03T12:30:07.795Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false
+        },
+        "trades": {
+          "bytes_pinned": 8084407,
+          "sha256_pinned": "1358d202f37114245a7c133ef390750ea4dc3dad602aaaef52494487b2c30b23",
+          "records": 16969,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-03T00:00:25.559Z",
+          "last_received_utc": "2026-09-03T23:59:58.475Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 389.979,
+          "max_gap_at": [
+            "2026-09-03T00:39:16.832Z",
+            "2026-09-03T00:45:46.811Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false
+        },
+        "events": {
+          "bytes_pinned": 1331577,
+          "sha256_pinned": "25897266d16db9e5af8bd740f0deae1bc129c8e17300fe76b660deb457828b7a",
+          "records": 8110,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-03T00:00:00.370Z",
+          "last_received_utc": "2026-09-03T23:59:59.911Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 11.469,
+          "max_gap_at": [
+            "2026-09-03T09:45:57.289Z",
+            "2026-09-03T09:46:08.758Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false,
+          "event_census": {
+            "day_rotation_open": 1,
+            "heartbeat_ok": 8093,
+            "instrument_seed_done": 6,
+            "reconnect_backoff": 5,
+            "subscribe_ack": 5
+          },
+          "subscribe_acks": [
+            {
+              "received_utc": "2026-09-03T00:38:25.729Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-03T06:05:54.120Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-03T12:02:21.952Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-03T14:32:20.138Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            },
+            {
+              "received_utc": "2026-09-03T15:15:06.290Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            }
+          ]
+        },
+        "instruments": {
+          "bytes_pinned": 1988196,
+          "sha256_pinned": "981cb08a805f9063845b83db7d31fbde079786ec6c59b85f0b7ed3902c4a91cb"
+        },
+        "ticker": {
+          "bytes_pinned": 0,
+          "sha256_pinned": null
+        }
+      },
+      "day20260904": {
+        "index": {
+          "bytes_pinned": 27798849,
+          "sha256_pinned": "0efc4e317f539292300101293d5e0a97c386643c7c4ec2712e7e4e8b383db6ba",
+          "records": 117579,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-04T00:00:00.689Z",
+          "last_received_utc": "2026-09-04T18:28:03.228Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 8.067,
+          "max_gap_at": [
+            "2026-09-04T04:08:16.024Z",
+            "2026-09-04T04:08:24.091Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false
+        },
+        "trades": {
+          "bytes_pinned": 6411190,
+          "sha256_pinned": "e89689fe4470d062687abf35da1d5af9534de42dba4148fb6e4e4d8b3e9edd67",
+          "records": 13458,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-04T00:00:00.689Z",
+          "last_received_utc": "2026-09-04T18:27:59.310Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 194.217,
+          "max_gap_at": [
+            "2026-09-04T02:31:16.611Z",
+            "2026-09-04T02:34:30.828Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false
+        },
+        "events": {
+          "bytes_pinned": 1023560,
+          "sha256_pinned": "beda4d70b40ef9e122acb678a910261732198fe3914adb173814a5682f560f1d",
+          "records": 6239,
+          "records_unparsed": 0,
+          "first_received_utc": "2026-09-04T00:00:00.346Z",
+          "last_received_utc": "2026-09-04T18:28:02.078Z",
+          "received_monotonicity_violations": 0,
+          "max_gap_seconds": 10.941,
+          "max_gap_at": [
+            "2026-09-04T01:01:58.495Z",
+            "2026-09-04T01:02:09.436Z"
+          ],
+          "gaps_over_limit": [],
+          "trailing_partial_line": false,
+          "event_census": {
+            "day_rotation_open": 1,
+            "heartbeat_ok": 6234,
+            "instrument_seed_done": 2,
+            "reconnect_backoff": 1,
+            "subscribe_ack": 1
+          },
+          "subscribe_acks": [
+            {
+              "received_utc": "2026-09-04T11:44:08.191Z",
+              "channels": [
+                "deribit_price_index.btc_usd",
+                "deribit_price_index.eth_usd",
+                "trades.option.BTC.100ms",
+                "trades.option.ETH.100ms"
+              ]
+            }
+          ]
+        },
+        "instruments": {
+          "bytes_pinned": 2029156,
+          "sha256_pinned": "c0500ce55662014447404eff20842354f4a932b2b36ab59a2533241014b0ec71"
+        },
+        "ticker": {
+          "bytes_pinned": 0,
+          "sha256_pinned": null
+        }
+      }
+    },
+    "last_received_utc_any_stream": "2026-09-04T18:28:03.228Z",
+    "ticker_bytes_by_day": {
+      "day20260830": 81773450,
+      "day20260831": 0,
+      "day20260901": 0,
+      "day20260902": 0,
+      "day20260903": 0,
+      "day20260904": 0
+    },
+    "ticker_channel_ever_in_subscribe_ack": true
+  },
+  "horizon_coverage": {
+    "horizon_start_utc": "2026-09-05T00:00:00.000Z",
+    "elapsed_in_horizon_seconds": 93909,
+    "liquidation_bytes_at_or_after_start": 0,
+    "liquidation_data_records_at_or_after_start": 0,
+    "deribit_day_dirs_at_or_after_start": [],
+    "horizon_utc_days_elapsed": [
+      "20260905",
+      "20260906"
+    ],
+    "horizon_utc_days_with_any_liquidation_data": [],
+    "last_record_utc_both_collectors": "2026-09-04T18:28:03.228Z",
+    "missing_interval_utc": {
+      "from": "2026-09-04T18:28:00.771Z",
+      "to": "2026-09-06T02:05:09.000Z",
+      "seconds": 113828,
+      "hours": 31.62
+    },
+    "uptime_fraction_inside_horizon_so_far": 0.0
+  },
+  "eligibility_arithmetic": {
+    "rule": "uptime >= u over a horizon of length L requires cumulative downtime D <= (1-u)*L; with the 90-day hard cap, D <= (1-u)*90 d",
+    "max_cumulative_downtime_under_hard_cap_seconds": 155520,
+    "restart_deadline_for_uptime_condition_to_remain_satisfiable_utc": "2026-09-06T19:12:00.000Z",
+    "downtime_inside_horizon_so_far_seconds": 93909,
+    "min_horizon_length_if_restarted_at_audit_instant_days": 54.345,
+    "earliest_utc_midnight_close_if_restarted_at_audit_instant_with_zero_further_downtime": "2026-10-30T00:00:00.000Z",
+    "void_horizon_days_under_15_minute_rule": [
+      "20260905",
+      "20260906"
+    ],
+    "denominator_caveat": "The registration does not pin the denominator of collector_uptime_fraction_min (horizon length vs. calendar since collection start). This arithmetic uses the horizon length, the only reading under which the fraction is a property of the horizon."
+  },
+  "alpha_ledger": {
+    "familywise_budget": 0.05,
+    "alpha_k": {
+      "1": 0.025,
+      "2": 0.008333333333333333,
+      "3": 0.004166666666666667,
+      "4": 0.0025,
+      "5": 0.0016666666666666668,
+      "6": 0.0011904761904761906,
+      "7": 0.0008928571428571429,
+      "8": 0.0006944444444444445
+    },
+    "spent_through_k7": 0.043750000000000004,
+    "remaining_alpha_8": 0.0006944444444444445,
+    "recorded": {
+      "program_negative.counts": {
+        "registry_entries": 27,
+        "entries_with_immutable_frozen_artifact": 10,
+        "entries_pre_campaign_only": 17,
+        "terminal_campaigns": 10,
+        "ordinal_consuming_campaigns": 7,
+        "families": 7,
+        "distinct_upstream_channels": 6,
+        "campaigns_that_produced_a_return_series": 4,
+        "frozen_files_verified": 95,
+        "replication_windows_run": 1,
+        "liquidation_collector_data_records_completed_days": 257586
+      },
+      "state.alpha_spent": {
+        "familywise_budget": 0.05,
+        "spent_through_cycle_7": 0.04375,
+        "share_of_budget": 0.875,
+        "alpha_8_if_selected": 0.0006944444444444445
+      },
+      "registration.status": "UNSPENT - REGISTERED, NOT RUN",
+      "registration.ordinal_clause": "consumes the next unused ordinal; at k=8 that is alpha_8 = 0.0006944444444444445"
+    },
+    "checks": {
+      "sum_k1_7_equals_0.04375": true,
+      "share_is_0.875": true,
+      "alpha_8_equals_registration": true,
+      "state_alpha_spent_matches": true,
+      "registration_unspent": true
+    }
+  },
+  "frozen_campaigns": {
+    "run_dirs": 10,
+    "files": 95,
+    "ok": 95,
+    "mismatch": 0,
+    "missing": 0,
+    "per_dir": {
+      "20260901T100003Z_57bfa07a_d4b29ad62376": {
+        "ok": 7,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260901T101229Z_1cc45862_c69537283467": {
+        "ok": 7,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260901T122711Z_8e36366e_8b38bc9b20b1": {
+        "ok": 9,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260901T124115Z_6a5ffe70_d81efa8ef732": {
+        "ok": 11,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260902T095715Z_1772ff9e_65cee1db82fa": {
+        "ok": 7,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260902T125230Z_9329d0b8_e7db49e940ad": {
+        "ok": 9,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260902T145246Z_0e7153fc_e8afb1b09af8": {
+        "ok": 11,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260903T102637Z_a0ab5202_383723d33c94": {
+        "ok": 12,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260903T214955Z_73ca30fb_3e26bcdfe3a0": {
+        "ok": 11,
+        "mismatch": 0,
+        "missing": 0
+      },
+      "20260903T232456Z_fe88f408_b0504d79973a": {
+        "ok": 11,
+        "mismatch": 0,
+        "missing": 0
+      }
+    }
+  }
+}

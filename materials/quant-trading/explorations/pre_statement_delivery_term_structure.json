@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "id": "delivery-term-structure-convergence",
+  "created_at_utc": "2026-09-03T23:06:14Z",
+  "status": "frozen-before-outcome-access: independent read-only review REJECT(2 blockers) then APPROVE(no blockers) after fixes; all 10 notes applied",
+  "classification": "Literature-informed, event-conditioned relative-value test on a NEW information channel (Binance coin-margined quarterly DELIVERY futures). Not fresh, blind, or prospective data; not predictive alpha; not a deployment claim; not a capital-allocation recommendation.",
+  "hypothesis": "The calendar log-spread between two consecutive quarterly delivery contracts on the same underlying measures the annualized term premium of that underlying. He, Manela, Ross and von Wachter (arXiv 2212.06888) report that crypto futures and perpetual premia deviate from no-arbitrage levels but diminish over time and are bounded by trading costs. If that convergence operates within the life of a quarterly contract, then a position taken against the sign of the calendar spread at the scheduled contract hand-over, held to the near contract last full trading day, earns a positive mean return on gross exposure after four taker legs. The registered direction is CONVERGENCE and is fixed before any price is read.",
+  "distinctness_from_every_registered_entry": {
+    "artifact_index_entries": 26,
+    "per_entry": {
+      "btc-eth-relative-value": "Directional spot relative momentum, long-winner/cash; no futures leg, no term structure.",
+      "cftc-positioning": "CFTC COT positioning on COMEX gold/S&P proxies; no crypto futures, no calendar spread.",
+      "crypto-basis-convergence": "Spot-vs-PERPETUAL basis z-score reversion. Different legs (spot+perp, not two dated futures), different object (funding-driven basis, not a term spread), and it rebalances on a rolling z-score rather than on the exchange delivery calendar.",
+      "crypto-carry-corrected-audit": "Retrospective accounting audit of the spot/perp carry sleeve; no new instrument class.",
+      "crypto-carry-decay": "Unconditional fully funded spot-long/perp-short carry; no dated contract, no delivery event.",
+      "crypto-microstructure-execution": "Spot aggTrades/bookTicker execution-cost study on one day; no futures, no holding period.",
+      "crypto-trend-vol": "Spot trend and volatility timing, directional; no spread payoff.",
+      "event-semantics": "Blocked tooling direction, no market mechanism.",
+      "factor-momentum-timing": "Ken French equity factor series; not crypto, not futures.",
+      "frozen-cross-asset-trend-audit": "Ineligible audit of a cross-asset trend claim; no new channel.",
+      "funding-crowding": "Signed perpetual FUNDING events plus spot; delivery futures pay no funding and are not used.",
+      "macro-crypto-regime": "FRED macro regime conditioning of spot exposure; directional, no term structure.",
+      "volatility-risk-premium": "Cboe PUT index option-writing on SPX; equity options, not crypto futures.",
+      "focused-cross-venue-carry": "Blocked spot/perp cross-venue carry with base-unit invariant; perpetual leg only.",
+      "focused-crypto-cross-section": "Cross-sectional perpetual return ranking; directional decile rebalance, no dated contract.",
+      "focused-liquidation-overlay": "Perpetual liquidation-stream overlay on directional exposure; different channel and payoff.",
+      "focused-deribit-gex": "Deribit option gamma exposure event-stop trial; options channel, not dated futures.",
+      "persistent-funding-premium": "Perpetual funding-streak conditioned spot/perp pair; funding channel.",
+      "perp-spot-activity-volatility": "Perp-vs-spot volume ratio predicting realized volatility; a volatility outcome, not a spread return.",
+      "taker-imbalance-semivariance-asymmetry": "Perpetual taker-flow imbalance predicting semivariance asymmetry; not a tradable spread.",
+      "quarter-hour-algorithmic-burst": "Intraday minute-of-hour participation on perpetuals; intraday microstructure.",
+      "weekday-participation-premium": "Weekday-vs-weekend perpetual participation; certified descriptive market structure, no position.",
+      "utc-2100-2300-net-premium": "Intraday 21:00-23:00 UTC perpetual seasonality; directional two-hour hold.",
+      "perp-cross-section-daily-reversal": "Daily cross-sectional perpetual reversal deciles; explicitly EXCLUDED delivery contracts in its universe rule.",
+      "perp-oi-growth-cross-section": "Cross-sectional perpetual open-interest growth quintiles; metrics channel, integrity abort.",
+      "perp-oi-growth-corrected": "Same as above with corrected boundary rows; metrics channel, falsified."
+    },
+    "summary": "All 26 prior entries trade or measure perpetuals, spot, equity factors, equity options, COT positioning, or macro series. None reads a dated delivery contract; the nearest cross-sectional campaign explicitly excluded them by name. This cycle is the first use of (i) coin-margined inverse contracts, (ii) dated delivery futures, and (iii) a calendar-spread payoff anchored on the exchange delivery calendar."
+  },
+  "frozen_rule": {
+    "universe": "Every Binance coin-margined dated contract matching ^[A-Z0-9]+USD_[0-9]{6}$ whose delivery month is 3, 6, 9 or 12 and which has at least one 1h monthly kline archive with an upstream .CHECKSUM sidecar in the data.binance.vision listing snapshot of 2026-09-03. USD-M USDT-margined dated contracts and BUSD monthly contracts are excluded by rule.",
+    "pair_construction": "For each base, order its quarterly contracts by delivery date. A candidate position is a triple of three consecutive contracts (prev, near, far) with both delivery gaps <= 100 days. The candidate set is pinned in delivery-term-structure-inputs.json (pair_universe, 194 candidates); the runner rebuilds it from the inventory symbol list alone and aborts on any mismatch. All 222 coin-margined quarterly contracts are inventoried so that rebuild is exact.",
+    "entry_event": "The scheduled contract hand-over: the earliest UTC date strictly after the PREV contract delivery date on which both the near and far contracts have a complete 24-bar UTC day, a non-zero trade count in the 23:00 bar, and a present 23:00 bar (implied by the 24 hours). Day selection is structural only: a price VALUE never selects or shifts a day. That date must fall on or before the midpoint of [prev_delivery, near_delivery]; otherwise the candidate is not an instance of the mechanism and is rejected as late-handover. The midpoint is a canonical bound, not a fitted threshold.",
+    "exit_event": "The latest UTC date strictly before the NEAR contract delivery date satisfying the same structural condition for both legs. The delivery date itself is never used: settlement is not modelled. Require exit > entry.",
+    "price": "Close of the 23:00 UTC hourly bar on the entry and exit dates. No other bar, price or field enters the return. If any of the four closes is non-positive or non-finite the whole candidate is rejected and counted under nonpositive-or-nonfinite-close; a bad price value never causes entry or exit to move to a neighbouring day.",
+    "signal": "c = ln(P_far / P_near) at entry. If c > 0 the far contract is rich: LONG NEAR, SHORT FAR. If c < 0: LONG FAR, SHORT NEAR. If c == 0 exactly the candidate is rejected (zero-spread-at-entry). No threshold, no ranking, no cross-sectional selection.",
+    "portfolio": "Equal CONTRACT counts on both legs. Because both legs are the same base they share one contract multiplier M, so equal counts are equal USD notional at entry and the position is USD-notional neutral and delta-neutral to first order. One position per candidate; positions are never pooled, netted or rebalanced; there is no leverage claim and no portfolio construction.",
+    "execution_and_costs": "Inverse-contract arithmetic in base units, exact, with M cancelling:\n  pnl   = (1/P_L_entry - 1/P_L_exit) - (1/P_S_entry - 1/P_S_exit)\n  fees  = f * (1/P_L_entry + 1/P_S_entry + 1/P_L_exit + 1/P_S_exit)\n  gross = 1/P_L_entry + 1/P_S_entry\n  net_return = (pnl - fees) / gross ;  gross_return = pnl / gross\nf = 0.0005, the Binance VIP0 coin-margined futures taker rate, charged on all four legs at their own transaction prices. Fees are always charged and never subtracted from a gate threshold. Delivery futures pay no funding, so no funding term exists.",
+    "parameters": {
+      "TAKER_FEE": 0.0005,
+      "HOURS_PER_DAY": 24,
+      "CLOSE_HOUR": 23,
+      "MAX_DELIVERY_GAP_DAYS": 100,
+      "MAGNITUDE_THRESHOLD": 0.001,
+      "QUARTER_STABILITY_NUMERATOR": 3,
+      "QUARTER_STABILITY_DENOMINATOR": 5,
+      "BOOTSTRAP_REPLICATES": 20000,
+      "BOOTSTRAP_SEED": 20260903,
+      "BOOTSTRAP_BLOCK_QUARTERS": 4,
+      "MIN_POSITIONS": 70,
+      "MIN_QUARTERS": 8,
+      "MIN_BASES": 6,
+      "MIN_SEGMENT_POSITIONS": 8,
+      "loop_alpha": 0.0008928571428571429
+    }
+  },
+  "windows_by_near_delivery": {
+    "primary": {
+      "start_inclusive": "2020-09-01",
+      "end_exclusive": "2024-01-01"
+    },
+    "replication": {
+      "start_inclusive": "2024-01-01",
+      "end_exclusive": "2026-07-01"
+    },
+    "disjointness": "Disjoint by near-contract delivery date. Candidates delivering on or after 2026-07-01 are in neither window and are never evaluated."
+  },
+  "minimum_sample": {
+    "rule": "If a window has fewer than 70 positions, fewer than 8 distinct delivery quarters, fewer than 6 distinct bases, or fewer than 8 positions in either the majors or the alts segment, the window is INCONCLUSIVE, not falsified.",
+    "basis": "Set from the outcome-blind structural census in delivery-term-structure-prior-window-audit.json (structural_census_outcome_blind.per_window): 112 eligible primary and 77 eligible replication positions, zero rejects in either window. Only open_time and trade count were read; no price. The minimum is a breadth floor, not an independence claim.",
+    "census_limitation": "The census was outcome-blind, so its \"zero rejects\" counts cover only the structural rejection keys (no-complete-entry-day, no-complete-exit-day, late-handover-entry, entry-not-before-exit). The two price-dependent keys (zero-spread-at-entry, nonpositive-or-nonfinite-close) cannot be counted without reading prices and are therefore not claimed; the runner counts them at run time. Margins over the floors (112 vs 70 primary, 77 vs 70 replication) absorb a small number."
+  },
+  "gates": {
+    "G1_net_magnitude": "mean net_return over all positions in the window >= 0.0010 (10 bps of gross exposure). The round-trip cost is about 2f = 10 bps of gross, so the mechanism must clear its own cost by 100%.",
+    "G2_segment_consistency": "mean net_return > 0 for the majors segment (BTCUSD, ETHUSD) AND for the alts segment. Both segments must be evaluable, each holding >= 8 positions; if either segment is smaller the gate FAILS rather than passing vacuously. The sample floor already requires >= 8 per segment before gates are evaluated.",
+    "G3_quarter_stability": "positive_quarters * 5 >= included_quarters * 3, in exact integer arithmetic, over delivery quarters with at least one position.",
+    "G4_dependence_robustness": "One-sided CIRCULAR moving-block bootstrap over the ordered delivery quarters (blocks wrap around the sequence), block length 4 quarters (one delivery year), 20000 replicates, seed 20260903, positions pooled across the resampled quarters. p is the add-one estimator (1 + #{resample means <= 0}) / (replicates + 1), so p is never exactly zero and is strictly conservative; its floor is about 5.0e-5. p must be strictly below alpha_7 = 0.0008928571428571429. If a window has fewer included quarters than one block the bootstrap returns no p and the gate FAILS; unreachable here because the sample floor requires >= 8 quarters before gates are evaluated.",
+    "conjunction": "All four gates must be true in a window for it to pass. No disjunctive endpoint, no best-of variant, no post-hoc subset."
+  },
+  "power_statement": "With 13 primary and 10 replication delivery-quarter clusters and 4-quarter blocks, a p below 0.00089 requires a large and near-universally quarter-consistent effect. The design is honestly underpowered against modest effects; that is a registered limitation of ordinal 7, never a reason to relax a gate.",
+  "claim_boundary": "A pass would be a statistical regularity on a historically consumed calendar observed through a new information channel. It is NOT tradable alpha, causality, deployment readiness, or a capital-allocation recommendation. There is no order-book model, no slippage beyond the taker fee, no margin, liquidation or delivery-settlement model, and no inverse-convexity hedge.",
+  "leakage_checks": {
+    "entry_and_exit_are_calendar_derived": "Both dates come from the exchange delivery calendar plus bar completeness; no price selects them.",
+    "no_price_selects_the_sample": "Eligibility and day selection use only bar presence, the 23:00 trade count, and the delivery calendar. tradable_days deliberately does NOT test the close value, so no price can shift which day becomes entry or exit; an invalid close rejects the candidate outright through a disclosed, counted rejection key.",
+    "direction_registered_first": "CONVERGENCE was registered from published literature before any price was read.",
+    "universe_survivorship": "The universe comes from the 2026-09-03 listing. Delivery contracts do not survive selectively, and every base has a contiguous quarterly sequence with no missing quarter, so no dated archive appears purged. Residual risk that Binance removed an entire dated contract archive cannot be excluded and is disclosed.",
+    "no_holdout_reads": "The replication window is not read unless the primary passes every gate."
+  },
+  "stopping_and_replication": {
+    "on_primary_fail": "Close FROZEN-NEGATIVE. The replication window is never read. No tuning, pooling, re-windowing, threshold or fee rescue.",
+    "on_primary_pass": "Run the replication window once with byte-identical frozen code and the same gates; certify only if every gate passes in both windows.",
+    "family_closure": "Whatever the verdict, this family is closed to tuning, extension and revival under frontier-loop-policy.json stopping_boundary."
+  },
+  "loop_multiplicity": {
+    "policy_file": "frontier-loop-policy.json",
+    "policy_sha256": "681ff16c68101d5f4b0b79c8cb65286dd80fa428668a0cae1aa24eada18101e0",
+    "cycle_ordinal_k": 7,
+    "alpha_k": 0.0008928571428571429,
+    "alpha_formula": "0.05 / (k * (k + 1)) with k = 7",
+    "alpha_spent_before_this_cycle": 0.04285714285714286
+  },
+  "assets_and_data": {
+    "input_inventory": "delivery-term-structure-inputs.json",
+    "input_inventory_sha256": "631f628c75e27d3b0f89c0a0f22e5ca6fd97752629db84a92c249924a1cfe4b8",
+    "archives": 1724,
+    "zip_bytes": 42162591,
+    "listing_snapshot": "quant-trading/data/raw/binance/delivery-1h-listing-20260903/download-plan.json",
+    "structural_census": "Two header forms (520 headerless, 1204 with header), 43847 complete 24-bar days, 522 partial days, zero duplicate timestamps, zero off-hour-grid rows, zero off-month rows, zero malformed field counts."
+  },
+  "novelty_and_consumption": {
+    "prior_window_audit": "delivery-term-structure-prior-window-audit.json",
+    "prior_window_audit_sha256": "87f3acff3b14853e14027a1083f24f0a374a74baf3774f35104063f3a7b1a1bc",
+    "novelty_kind": "information channel plus payoff structure",
+    "fresh_calendar_claimed": false
+  },
+  "governance": {
+    "reused_frozen_code": "none: this is a new family with no inherited rule, so no prior runner hash is bound",
+    "runner": "run_delivery_term_structure.py",
+    "tests": "test_run_delivery_term_structure.py",
+    "fetcher": "fetch_delivery_archives.py",
+    "write_once": "The runner refuses to overwrite an existing output and verifies every input hash before parsing any archive.",
+    "independent_review": {
+      "pass_1": {
+        "verdict": "REJECT",
+        "blockers": 2,
+        "notes": 6,
+        "blocker_1": "validate_primary_artifact read pins at the artifact top level while main() nests them under static_inputs, so a genuine primary->replication hand-off would always abort. Fixed; both replication-refusal tests were tautological against the real schema and were replaced by a true round trip.",
+        "blocker_2": "tradable_days excluded days whose 23:00 close was non-finite or <= 0, so a price value could shift entry/exit, contradicting leakage_checks. Fixed by removing the value test from day selection; invalid closes now reject the candidate through the disclosed counted key."
+      },
+      "notes_applied": [
+        "p-value add-one estimator now stated in G4",
+        "circular block wrap now disclosed in G4",
+        "G2 both-segments-evaluable strictness now stated",
+        "census outcome-blind limitation now stated in minimum_sample",
+        "PIN_FIELDS is now used by main() rather than tests only"
+      ],
+      "reviewer_could_not_verify_by_reading": [
+        "the 67-test suite was not executed by the reviewer",
+        "no sha256 pin or archive hash was recomputed by the reviewer",
+        "residual archive-purge survivorship risk",
+        "pass 2: the reviewer again did not execute the suite or recompute any sha256; archive and pin verification is runner-enforced at execution time"
+      ],
+      "pass_2": {
+        "verdict": "APPROVE",
+        "blockers": "NONE",
+        "notes": 4,
+        "confirmed": [
+          "both blockers fixed in code, not merely described",
+          "the replacement tests would fail against the pre-fix validator (independently reproduced by the author: 2/2 fail)",
+          "removing the close-value test introduces no None-reaches-arithmetic or KeyError hazard",
+          "amended contract text matches code behavior exactly",
+          "no previously sound test was weakened or made vacuous"
+        ],
+        "notes_applied": [
+          "exact trades > 0 comparison in tradable_days",
+          "G4 now discloses the no-p / gate-fails path when quarters < one block",
+          "frozen status set and every pin re-derived from the final contract bytes",
+          "this disclosure extended to pass 2"
+        ]
+      }
+    }
+  }
+}

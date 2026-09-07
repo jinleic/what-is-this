@@ -1,0 +1,49 @@
+{
+  "decision": "run",
+  "front": "norm",
+  "front_rank": 1,
+  "front_label": "characteristic-zero norm envelope: bounded two-column canary replication (H681)",
+  "hypothesis_id": "H681",
+  "next_prompt": "Replicate and independently verify the H681 bounded two-column canary under the corrected resource guard. experiments/e254_trace_nine_bounded_canary.py reruns from the frozen Wave-27 lift and writes results/spectral/trace_nine_bounded_canary_replication.json; tests/test_trace_nine_bounded_canary.py then recomputes both columns by an independent route. The earlier artifact results/spectral/trace_nine_bounded_canary.json stays in place as history: its meta.source_sha256 pins the pre-fix tools/resource_guard.py, which the producer imports, so that copy can no longer revalidate against the working tree. Scope is BOUNDED_TWO_COLUMN_CANARY_ONLY: the constant monomial (0,0,0,0,0) column and the explicit largest standard monomial (0,0,0,0,8) column of the rank-96 quotient over the pinned 35-rule QQ(q) lift. Predictions: identical rule digest and identical column digests to the first run. No full matrix, no aggregate height theorem, no characteristic-zero reconstruction, no real-root or thermodynamic claim follows from a PASS.",
+  "artifact": "results/spectral/trace_nine_bounded_canary_replication.json",
+  "producer": {
+    "script": "experiments/e254_trace_nine_bounded_canary.py",
+    "arguments": ["--output", "results/spectral/trace_nine_bounded_canary_replication.json"]
+  },
+  "verifier": {
+    "script": "tests/test_trace_nine_bounded_canary.py",
+    "arguments": ["--artifact", "results/spectral/trace_nine_bounded_canary_replication.json"],
+    "pass_marker": "TRACE_NINE_BOUNDED_CANARY_VERIFIER PASS"
+  },
+  "verifier_requirements": "Recompute both column records from the frozen Wave-27 lift by an independent reduction path; require rule digest f4cfe038d7625c6a411f2e01b9af12d9ae9ca06d980e64ad38d8eff030fe22cc, column digests 69065ff900271f44f3f34856b1bad85fd148182b8a045aefd1cc66cb1b8bdfb9 (37 entries, 19 reductions, degrees 181/145, L1 log2 224, scalar LCM bits 123) and 63b8a477b5d9dd25a354d1bd2f7d18666cbcf1bf21cb6060d0c2b1b51441f47b (96 entries, 578 reductions, degrees 629/513, L1 log2 1771, scalar LCM bits 1321); check meta.source_sha256 against the current working tree and meta.data_sha256 against the canonical data; never write files; exit 0 only on full PASS.",
+  "artifact_expect": {
+    "meta.schema_version": 1,
+    "data.scope": "BOUNDED_TWO_COLUMN_CANARY_ONLY",
+    "data.quotient_rank": 96,
+    "data.final_rational_rule_sha256": "f4cfe038d7625c6a411f2e01b9af12d9ae9ca06d980e64ad38d8eff030fe22cc",
+    "data.full_matrix_status": "NOT_COMPUTED",
+    "data.physical_root_status": "UNRESOLVED",
+    "data.columns.0.column_sha256": "69065ff900271f44f3f34856b1bad85fd148182b8a045aefd1cc66cb1b8bdfb9",
+    "data.columns.0.maximum_numerator_degree": 181,
+    "data.columns.0.maximum_denominator_degree": 145,
+    "data.columns.0.maximum_numerator_l1_log2": 224,
+    "data.columns.0.column_scalar_lcm_bits": 123,
+    "data.columns.1.column_sha256": "63b8a477b5d9dd25a354d1bd2f7d18666cbcf1bf21cb6060d0c2b1b51441f47b",
+    "data.columns.1.maximum_numerator_degree": 629,
+    "data.columns.1.maximum_denominator_degree": 513,
+    "data.columns.1.maximum_numerator_l1_log2": 1771,
+    "data.columns.1.column_scalar_lcm_bits": 1321
+  },
+  "checkpoint_evidence": [
+    "checkpoints/next_actions.md section 9: prepared next exact prompt (H681 memory reduction before another bounded canary)",
+    "checkpoints/next_actions.md section 5 item 1: rerun only the bounded canary and require the same exact column digest plus a successful resource exit",
+    "state.json next_action: H681 reduce post-lift retained data, stream canonical column hashing, retry only the bounded largest-degree canary",
+    "data/ising3d/h681_producer_guard.json: guard evidence of the first bounded canary run (completed, 1894.97 MiB peak, 655.23 CPU s)"
+  ],
+  "source_changes": [
+    "tools/resource_guard.py: group_samples now reports set-user-ID descendants it may not measure instead of aborting; supervise() stops the worker when one lives past DENIED_GRACE_SECONDS (5 s); teardown signals but never waits on unsignallable members; result adds unmeasurable_processes",
+    "tools/continuous_supervisor.py: LIMITS_TEXT and safeguard 7 state the 5-second unmeasurable-descendant rule",
+    "tests/test_research_resource_guard.py: regressions for a real setuid /bin/ps descendant and for the bounded accounting window",
+    "tools/seed_h681_canary_verifier.json: this seed now reruns the producer, because the pre-fix guard bytes pinned by the first artifact no longer exist in the working tree"
+  ]
+}

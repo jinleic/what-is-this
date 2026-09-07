@@ -20,6 +20,7 @@ EXPECTED = {
     SIGNED_CENSUS: "01a805f5a783d572966785cedb5c31c89b69ff986ed6bdc77bf3a5dc4c3b8150",
     RAMSEY_CENSUS: "6069740d3c5339dc1d734e10f70d07be53f7046ddcbf07c37974fab322f359c1",
 }
+W_SEED_MANIFEST = "r55/data/involution_f5_w_dfs_certificate_source0.json"
 
 
 class CoverageViolation(RuntimeError):
@@ -56,26 +57,70 @@ def _load(path: Path) -> dict:
     return document
 
 
-def _archive(relative: str, record: dict, nested: bool = False) -> None:
+def _archive_path(relative: str) -> Path:
     if type(relative) is not str or not relative.startswith("r55/data/"):
         raise CoverageViolation("invalid proof archive path")
-    path = ROOT / relative.removeprefix("r55/")
-    expected = record.get("gzip") if nested else record
-    if type(expected) is not dict or not path.is_file():
+    path = (ROOT / relative.removeprefix("r55/")).resolve()
+    try:
+        path.relative_to((ROOT / "data").resolve())
+    except ValueError as error:
+        raise CoverageViolation("invalid proof archive path") from error
+    return path
+
+
+def _archive(relative: str, record: dict, nested: bool = False) -> None:
+    path = _archive_path(relative)
+    if nested:
+        if type(record) is not dict:
+            raise CoverageViolation("invalid proof archive metadata")
+        expected = record.get("gzip")
+    else:
+        expected = record
+    if type(expected) is not dict:
+        raise CoverageViolation("invalid proof archive metadata")
+    if not path.is_file():
         raise CoverageViolation(f"missing proof archive {relative}")
-    if (path.stat().st_size != expected.get("bytes")
-            or _sha256(path) != expected.get("sha256")):
+    if (type(expected.get("bytes")) is not int
+            or type(expected.get("sha256")) is not str):
+        raise CoverageViolation("invalid proof archive metadata")
+    if (path.stat().st_size != expected["bytes"]
+            or _sha256(path) != expected["sha256"]):
         raise CoverageViolation(f"proof archive hash mismatch: {relative}")
 
 
+def _seed_archive(relative: str, record: dict) -> None:
+    """Validate source zero's historical gzip metadata schema."""
+    path = _archive_path(relative)
+    if type(record) is not dict:
+        raise CoverageViolation("invalid proof archive metadata")
+    if not path.is_file():
+        raise CoverageViolation(f"missing proof archive {relative}")
+    if (type(record.get("gzip_bytes")) is not int
+            or type(record.get("gzip_sha256")) is not str):
+        raise CoverageViolation("invalid proof archive metadata")
+    if (path.stat().st_size != record["gzip_bytes"]
+            or _sha256(path) != record["gzip_sha256"]):
+        raise CoverageViolation(f"proof archive hash mismatch: {relative}")
+
+
+
 def _check_w_record(record: dict) -> int:
+    if type(record) is not dict:
+        raise CoverageViolation("invalid W certificate record")
+    source = record.get("source_index")
     if (record.get("status") != "VERIPB_CAKEPB_VERIFIED"
-            or record.get("source_index") is None):
+            or type(source) is not int):
         raise CoverageViolation("invalid W certificate record")
     if "seed_manifest" in record:
+        if source != 0 or record["seed_manifest"] != W_SEED_MANIFEST:
+            raise CoverageViolation(
+                "W seed schema is restricted to source zero")
+        if (record.get("unchecked_deletion_present") is not None
+                and record.get("unchecked_deletion_present") is not False):
+            raise CoverageViolation("W proof permits unchecked deletion")
         for key in ("veripb_proof", "cakepb_kernel_proof"):
             artifact = record[key]
-            _archive(artifact["relative_path"], artifact)
+            _seed_archive(artifact["relative_path"], artifact)
     else:
         if record.get("unchecked_deletion_present") is not False:
             raise CoverageViolation("W proof permits unchecked deletion")
@@ -83,17 +128,22 @@ def _check_w_record(record: dict) -> int:
         kernel = record["cakepb_kernel_proof"]
         _archive(proof["relative_gzip_path"], proof, nested=True)
         _archive(kernel["relative_gzip_path"], kernel, nested=True)
-    return record["source_index"]
+    return source
 
 
 def _check_hierarchy_record(record: dict, ramsey_sources: set[int],
                             expected_w: dict[int, int],
                             expected_signed: dict[int, int]) -> int:
+    if type(record) is not dict:
+        raise CoverageViolation("invalid hierarchical record")
     source = record.get("source_index")
     if (record.get("status") != "VERIPB_CAKEPB_VERIFIED"
             or type(source) is not int
             or record.get("unchecked_deletion_present") is not False):
         raise CoverageViolation("invalid hierarchical record")
+    if "seed_manifest" in record:
+        raise CoverageViolation(
+            "W seed schema is invalid in hierarchical records")
     t_records = record.get("t_certificates")
     if type(t_records) is not list or len(t_records) != expected_w[source]:
         raise CoverageViolation("hierarchical W-terminal coverage mismatch")

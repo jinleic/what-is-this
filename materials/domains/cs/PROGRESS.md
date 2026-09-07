@@ -4,6 +4,170 @@ Newest first. One entry per session. Every claim links to its verification.
 
 ---
 
+## 2026-09-06 — exact AES XOR headroom assay stopped
+
+The strongest located primary is Jean's 88-XOR circuit
+([ePrint 2026/1481](https://eprint.iacr.org/2026/1481)), not the superseded
+89-XOR result. The
+[`registered assay`](xor/campaigns/20260906T021828Z_57f63dca_6cc09db616c6/)
+reproduced the public circuit and found no saving in all 258 fixed
+two-/three-/four-gate windows (0.015378 CPU s). Independent full-map/FIPS replay
+passed and the corrupted-operand control failed as required.
+
+The independent search checked or lower-bounded 239 windows; 19 Z3 calls were
+UNKNOWN at the fixed 500 ms limit (14.424723 CPU s total verification).
+Closed **FROZEN-INCONCLUSIVE**. Rank A-for-assay becomes **C for further
+local search**: no positive headroom witness, no completed irreducibility
+certificate, no record improvement and no AI-superiority claim.
+Limits and window scope were not expanded. Continue to a different candidate;
+no existing autonomous supervisor was restarted.
+
+[`Candidate and source evidence`](../data/frontier-scout-20260906/).
+
+
+<!-- cs-autonomy:20260905T091934-6caca9f7f32f:1 -->
+## Autonomous mm3 closeout — 2026-09-05 10:15 UTC
+
+**FROZEN-CERTIFIED**. REVIEW of H-MM3-ENCODER-FIDELITY-1: VERIFIED within its registered scope (encoder fidelity on every retained hash oracle + sigma^0/1/2 instance-universe registration; no solving, no census progress, no addition-count or no-54 claim). Own pure-Python verifier review_encoder_replay.py (sha256 4f95c925…49c5, git c6de5673) written from the frozen sources read as data (new_decomp_offdiag 143-360/757-820/905-924, gate_b_floor 38-74, orbit_min_run 244-331/477-480/2270-2276/2330-2363/2506-2523, GAP=14) with different design (flat 9-tuples, adjugate inverse, orbit closure then sort, early-exit tables, index-merged rep lists); primary gate script neither imported nor copied, its registration JSON read only as data. One compute receipt rc 0, sealed_intact, 36.2 s charged, peak RSS 30 MB, growth 250 KB. All 17 preregistered booleans true: R1 census 19683/11808/6960/48/4656/4608, 145 orbits x 48 partition 6960, unique factorisation, mono 125, pin sha256 prefix bed89ca17f5bd868 = log; R2 tables 256/224/128, 224/128/256, 128/256/224 with 1024 survivors each (dense count agrees, lexicographic, mono-node counts 735/259/29/1 in all three classes, direct-sandwich sample + negative grid consistent, sigma^0/1 = log); R3 attempt-3 pair file = 660 records (608 sigma^0 then 52 sigma^1), the 608 keys equal my ordered sigma^0 pair-key list in FULL ORDER (closes the primary's 520-prefix-only order check), the 52 equal my first 52 sigma^1 keys, 0 mismatches over cnf_sha256/cert.cnf_sha256/vars/clauses/d/lb/cert-presence/agree; R4 attempt-4 = first 520 sigma^0 keys in order, 0 mismatches, decisions equal attempt-3; R5 1024 row keys = my sigma^0 survivor keys in order, side_lbs = the three pair lbs, total_lb = sum+14 for all rows (min 63; 0 rows <= 54 in retained data only); R6 primary registration reproduced from my own lists: pair_keys_sha256 929d5d46…bd29, row_keys_sha256 6d4367a7…69b8, combined 96c3ef1a…2488, per-class instance tables equal row by row (3x608) with instances_sha256 1af9f689…ed9c / 894f316d…cca3 / 9cddb483…8330, identical d histograms; the primary's two false booleans are exactly the two that assumed 608 records, so its 'wrong count prior' explanation is confirmed and its PASS-on-every-oracle conclusion is correct. Informational (no claim): exact CNF-hash overlap between sigma classes is small (|s0∩s1|=28, |s0∩s2|=16, |s1∩s2|=8 of 608), so the candidate 'sigma permutes the instance universe' idea is not supported at identical-CNF level and needs a class-set canonical form to test.
+
+Evidence: [`mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0`](mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Driver-free sigma^1 pair census chunk 1 (H-MM3-SIGMA1-PAIRS-1): sealed pure-Python encoder (now doubly validated, 1180 oracle hashes) + in-sandbox pysat at T=d for the 608 sigma^1 instances; SAT models verified by clause evaluation, UNSAT accepted only after an own UP/RUP refutation replay; resumable ledger of (key,d,cnf_sha256,sat,lb) in <=300 s / <=8 MiB chunks, with the 52 retained sigma^1 decisions (lines 609-660 of attempt-3) as cross-instrument controls that must agree.
+
+## 2026-09-05 — Autonomous supervisor pause/recovery repair
+
+- Deployed coordinated charged-time accounting in the guard, compute watchdog and
+  worker. Pauses are uncharged but finite: 900 s cumulative per compute and
+  1500 s per worker; the worker has 990 s charged time and compute admission
+  rechecks both charged and real-time headroom after prerequisite probes.
+- Never-attempted runtime faults defer the same objective. Resource waits retain
+  the sealed registration and original claim owner across missing attempt
+  directories. Unknown/executed-but-unreported primaries receive an independent
+  review, not a synthetic scientific verdict or an unchanged research rerun.
+  Interrupted closeout retries with persisted backoff before dispatch.
+- Receipt status remains the execution authority even when a final evidence-size
+  observation exceeds the storage ceiling or wait-notification publication fails.
+  Closeouts carry the full owner state through producer import and report
+  human-owned inventory skips. Restored RS/Mm3 owner fields match the retained
+  restoration input (25 checked fields, zero mismatches).
+- Verification: **37 tests passed in 48.260 s**, including real native process
+  pause/resume beyond the charged wall, finite pause expiry, guarded sandboxed
+  compute, queue/receipt consistency, recovery and state-import boundaries.
+  CPU samples are scripted in those boundary checks; no host load was generated.
+- The installed LaunchAgent was kickstarted while control generation 2 remained
+  disabled: it recorded `stopped`, exited cleanly and dispatched nothing.
+  Explicit resume advanced to generation 3; the service recorded `ready` and
+  started an Mm3 planning worker. That worker called structured `finish`, the
+  supervisor persisted three successors, and the next worker started automatically
+  at 09:14:18 UTC. At 09:15 UTC: enabled, one running, 16 pending, failure backoff
+  reset to zero. No natural CPU-threshold crossing occurred in the 180 s live
+  observation window; sustained-pressure boundaries are covered by the scripted
+  real-process checks above. The service remains owner-stoppable via the documented CLI.
+- Evidence and restore point:
+  [supervisor repair verification](.autonomy/supervisor-repair-20260905T074741Z/verification.json).
+  Frozen campaign evidence and prior scientific verdicts were not rewritten.
+
+
+
+<!-- cs-autonomy:20260905T045017-73185087234c:1 -->
+## Autonomous rs-pe3d closeout — 2026-09-05 05:28 UTC
+
+**FROZEN-INCONCLUSIVE**. REVIEW of H-C3-36-FAMILY-PRIMEFIELD: INCONCLUSIVE by tool rule only (the sealed verifier exited rc 1 because of a reviewer-side artefact; no substantive discrepancy with the primary was found, and the tool requires an rc-0 receipt for 'verified'). Compute-01 (sealed_intact, 23.3 s, 12 KiB growth) ran review_verify.py (sha ce23987d..., pure Python: own mod-p elimination, own coset DP, own brute force; primary driver not imported; primary JSON read as data). Substantive results, all PASS: R2 brute force over all 372,736 admissible 12-subsets of GF(29)^* yields exactly 448 solutions in 16 scaling orbits, containing the three primary-reported sets and the explicit instance R={2,3,4,7,11,12,19,20,21,23,24,28}; R3 ALL 448 GF(29) solutions pass every exact check (c_1=c_11=0, c_0!=0, no +- pair, injective squares/cubes, 12x12 M over bidegree-(2,3) monomials rank 10, f,g in left kernel and independent, Jacobian 2x g_y+3y^2 g_x = t^2 P'(t) != 0, g(t^3,t^2)=P(t) for all t in GF(29), 66 ten-subsets rank 10, 12 eleven-subsets rank 10 with lambda_a=(t^2-a^2)/(t^2P'(t)) annihilating, full support, corrupted lambda rejected, Q_ab/Q_t coefficient formulas, residual off-grid); recomputed P=[16,0,13,7,13,8,19,21,22,13,23,0,1] matches. R4 the three reported solutions at each of p=37,41,43,47 pass all checks with matching P. R1 own DP reproduces N_29=448, N_37=108, N_41=305,840, N_43=3,360, N_47=2,507,506 and admissible counts 372,736/46,656/515,973,120/6,205,248/5,538,111,488, and the exact set of primes with max admissible <12 = {2,3,5,7,11,13,17,19,23,31} with maxima 1,1,2,2,5,4,8,6,11,10 equal to the primary table. R5 negative control: 8 random 12-subsets of GF(29)^* with sum r = sum 1/r = 0 containing a +- pair {a,-a}: the ten-subset omitting {a,-a} has rank exactly 9 and all other ten-subsets rank 10, confirming 'independent iff no +- pair'. The only failed flag, R1_dp_table_matches_primary, is because my DP caps |S| at 12 (line 'if k + dk > 12: continue'), so max_admissible saturates at 12 for p in {29,41,43,47} where the primary reports 14,20,14,23; the uncapped values equal n_cosets times per-coset max (1 for p=2 mod 3, 2 for p=1 mod 3) and were checked by hand only. Analytic audit by hand, sound within scope: [1]Q_ab=c_0/(ab), [T]Q_ab=(a+b)c_0/(a^2b^2) from c_1=0; Jacobian by chain rule; C has unit rows e_0,e_2..e_10 and zero columns 1,11 iff c_1=c_11=0 (rank 10, kernel span(f,g)); relation via sum_t t^k/P'(t)=[T^11](T^k mod P)=0 for k in {-2,0,2,..,12} with T^-2 = -(T^10+c_10T^8+..+c_2)/c_0 mod P; no points at infinity; mu_6-coset lemma (exponent differences +-1 in Z/6 => <=2 per coset when p=1 mod 3) giving p>=29 / p>=37; c_1=-c_0 sum 1/r, c_11=-sum r. Minor wording: 'e=11 not representable' holds within the bidegree-(2,3) box only (x y^4 is outside it), which is what is meant. Reviewer's verdict on substance: the registered claim and scope are supported (p=29 smallest prime field for THIS family; no claim on extension fields q=25,27, other supports, C3 or spark eleven); promotion should wait for the rc-0 rerun proposed below.
+
+Evidence: [`rs-pe3d/campaigns/20260905T052113Z_c8edc589_cabb1348014b`](rs-pe3d/campaigns/20260905T052113Z_c8edc589_cabb1348014b/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Re-run the review verifier scratch/autonomy/20260905T052236-17e9b035bbae/1/review/evidence/review_verify.py with one edit: in coset_dp remove the '|S| <= 12' cap (or cap at 24) so max_admissible is uncapped, keep everything else verbatim, preregister within 60 s and execute once (argv: review_out.json, path to family_primefield.json; expected ~25 s, <16 MiB). Finish verified iff verdict REVIEW-PASS with rc 0.
+
+
+<!-- cs-autonomy:20260905T045017-d18d5052195f:1 -->
+## Autonomous rs-pe3d closeout — 2026-09-05 05:15 UTC
+
+**FROZEN-INCONCLUSIVE**. REVIEW of H-C3-35-ALLCHAR-EXPLICIT: INCONCLUSIVE (no compute receipt; the worker wall budget was exhausted before the sealed verifier could run, so no verified/rejected verdict is issued). What was completed: (1) Full analytic proof audit by reading the registered theorem_allchar_explicit.md (sha 6dab404f...): every step checked by hand and found sound within scope — disc(P mod p) = D mod p for monic P (valid also at p | 12 since lc = 1); x-injectivity from g + x^2 f = x^4 - x - y - 1; y-injectivity and a+b != 0 from P(T) - P(-T) = -2T^3 (char 2 handled); B = {f=g=0} with no points at infinity (F, G checked) and Jacobian det = 12t^13 - 3t^4 - 2t^3 = t^2 P'(t) recomputed by hand, so all 12 points reduced and exhaust the length-12 intersection; C has unit rows e_0,e_2..e_10 and zero columns 1, 11 so rank 10 in every characteristic with left kernel span(f,g); ten-subset independence from [T]Q_ab = -(a+b)/(a^2 b^2) != 0; relation from [T^11]L_t = 1/P'(t), [T]L_t = 1/(t^2 P'(t)); converse for p in E. Only a cosmetic note: 'degree dividing 12!' can be sharpened to 11! since P(-1) = 0. Primary receipts compute-01/02 (rc 0, sealed_intact) and the 50/50 PASS stdout log were read directly. (2) An independent pure-Python verifier review_verify.py (sha ff477886..., no sympy/flint, primary driver not imported) was written, preregistered and sealed in review/evidence together with review_statement.md: R1 Sylvester/Bareiss discriminant and Res(P(T),P(-T)); R2 own mod-p gcd + distinct-degree factorisation for all 47 primes compared to the primary table; R3 direct Z[a,b] expansion of both ideal-membership witnesses; R4 C-matrix rank over Q and mod all probe primes, left kernel, tau; R5 fresh exact replay at a different non-exception prime p = 29 in GF(29^10) = GF(29)[u]/(h) (h = degree-10 factor of P, roots as Frobenius conjugates): 66 ten-subsets, 12 eleven-subsets, explicit lambda_a with full support, corrupted relation; R6 positive failure certificate at p = 13 and 10417770367 (exact double root, hence <= 11 points); R7 data comparison with core_allchar.json (sha 5a13c42c...). It has not been executed; the claim remains a candidate pending that run. Nothing is promoted.
+
+Evidence: [`rs-pe3d/campaigns/20260905T050431Z_28f76694_6cffbbf64083`](rs-pe3d/campaigns/20260905T050431Z_28f76694_6cffbbf64083/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Re-run this review with a fresh wall budget: read only job_info, copy the already-written pure-Python verifier from scratch/autonomy/20260905T050609-677fcc187da7/1/review/evidence/review_verify.py and its statement verbatim, preregister within ~60 s, and execute it once (argv: review_out.json, path to the primary core_allchar.json; expected < 60 s, < 8 MiB). Finish verified iff verdict REVIEW-PASS on all R1-R7 checks including the GF(29^10) replay and the p = 13 failure certificate.
+
+
+<!-- cs-autonomy:20260905T043238-e8dce0efdffe:1 -->
+## Autonomous mm3 closeout — 2026-09-05 05:01 UTC
+
+**FROZEN-CERTIFIED**. REVIEW of H-MM3-RESUME-BOUNDARY-1: VERIFIED within its registered scope (resumable ledger mechanism + retained 520-pair prefix integrity; no census progress, no addition-count or no-54 claim). Independent verifier review_verify.py (own code, primary driver read only as data; sealed sha256 cc1b781e…, one receipt rc 0, 2.0 s wall, 8 KiB growth) reproduced every registered finite claim: R1 prefix sha256 0adc781e…0e09, 520 unique keys = sigma|side|a|b, U/V/W 256/224/40, 8 SAT / 512 UNSAT, all UNSAT rcs 0 with lb=d+1/floor false, SAT cert null with lb=d/floor true, all 512+512 present cnf/lrat files hash to recorded values (8+8 missing = the SAT records), 0 anomalies. R2 own chain implementation of the documented H_0/H_i gives H_520 = 40887cc0…134e (= outA = outC) and H_200 = 8b875d99…8aba (= ckpt_200.json), ckpt last_key/tallies equal my recomputation over lines 1..200, outA.final == outC.final, six primary tampers rejected under the documented rules. R3 arithmetic reproduced exactly: cnf 44,758,113 B + lrat 17,139,872 B = 119,035 B/decision vs 724 B/decision ledger; 560 vs 92,646 decisions per 64 MiB. R4 triple ternary, 139 nonzeros (49,45,45), all 729 Brent identities hold in exactly one orientation (roles 0,1,2; my convention needs no transpose, the primary's convention reports transpose — a labeling difference, not a contradiction). Beyond the primary: R5 own pure-Python LRAT checker verified 5/5 deterministically sampled UNSAT pairs (0|U|20|1, 0|U|118|33, 0|V|40|38, 0|V|107|122, 0|W|77|115) independently of the recorded return codes; each proof is a single RUP step, i.e. these pair instances are unit-propagation refutable. Two findings: (a) the primary's open note is resolved — the locked triple hash cf9d004c…332c IS reproduced by the frozen lock's canonical form json.dumps({"U":U,"V":V,"W":W}, sort_keys=True) (independent_source_lock_audit.py lines 294–297); successors should pin this form. (b) Design gap, not a claim failure: the primary's checkpoint validator checks tallies only by n and sum consistency, so a compensated tamper (sat+1, unsat-1) passes validation (compensated_tamper_caught_by_primary_rules=false); the prereg wording 'refuse on any tally mismatch' is only met for the six tested tampers. A successor must recompute tallies from ledger lines 1..n (the chain already binds those lines, so this is cheap). Evidence: review/evidence/review_out.json, receipt compute-01.
+
+Evidence: [`mm3/campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd`](mm3/campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Harden the resume boundary before any census successor: validator must recompute side/sat/unsat tallies from ledger lines 1..n (chain-bound) instead of sum checks, and pin the canonical triple serialization json.dumps({'U','V','W'}, sort_keys=True) that reproduces cf9d004c...332c; certify with the compensated (sat+1, unsat-1) tamper plus the six existing tampers on the retained 520-line ledger.
+
+### Session 2026-09-05 — autonomous research supervisor (infrastructure only)
+
+- **No scientific claim in this entry.** This session built and started the
+  owner-authorized autonomous research machinery; every research verdict below
+  this entry is unchanged, and no frozen run was edited or deleted.
+- **Durable supervisor installed:** macOS user LaunchAgent
+  `local.jinleic.cs-research` with a SQLite control/task/compute store in
+  `~/Library/Application Support/cs-research`. One bounded worker at a time,
+  restart recovery from retained evidence, and a sticky `stop` that survives
+  restart, reinstallation and crash (only an explicit `resume` re-enables it).
+  See [`README.md`](README.md) "Autonomous research supervisor".
+- **Enforced, not advisory:** preregistration before compute with an
+  interruption-safe intent journal; hash-pinned guard plus deny-default
+  `sandbox-exec` (no network, fork, hardlinks, sealed-source, producer-metadata
+  or code writes) probed before every launch; no identical source+argv rerun;
+  `FROZEN-CERTIFIED` only with an independent review job bound to the primary
+  commit; planners cannot record scientific outcomes; an incomplete review
+  never closes a candidate run.
+- **Verification:** 27 real-process regressions across
+  [`tools/test_research_supervisor.py`](tools/test_research_supervisor.py) and
+  [`tools/test_resource_guard.py`](tools/test_resource_guard.py), plus retained
+  isolated end-to-end fixtures covering the real MCP transport, the real
+  restricted client (5 read-only tools exposed for planners), guarded sandboxed
+  compute (34 frozen checksums verified), certified closeout,
+  interrupted-preregistration recovery and sticky stop across restart.
+
+### Session 2026-09-04 — resource-limited continuation
+
+- **Local-machine policy enforced:** at most two single-thread, nice-10
+  guarded jobs; pause at 40% sampled host CPU and resume below 38% for two
+  samples; retain 100 GiB free disk, stop at 2 GiB sampled group RSS, limit
+  individual files to 64 MiB and bound each run's growth and wall time.
+  Eight guard regression tests passed. These are sampled protections for
+  owned jobs, not control of instantaneous unrelated host load.
+- **Residual FULLPOOL closed FROZEN-CERTIFIED, finite-pool E-empty:**
+  all 41,587,200 pairs, 49/49 assertions, 185 nonqualifying size-12
+  intersections; fresh independent replay agrees. All 45 frozen checksums
+  pass. Final replay peak sampled host CPU 39.25%, 20.2 MiB RSS and 28 KiB
+  new output. Earlier failures and the repaired memory defect are retained.
+- **Fresh N7 premise audit closed FROZEN-CERTIFIED:** exact realified rank
+  312 implies complex rank 156 and single-term split bound 166<192. All
+  11 frozen checksums pass. CPU 0.151775 s, 44.2 MiB peak RSS, 8 KiB new
+  output. Legacy N7 lifecycle claims are explicitly corrected, not rewritten.
+  TF {13,14} and real octonion bounds 18–25 remain unchanged.
+- **Explicit nonempty residual construction certified over GF(2048):**
+  twelve reduced points with injective projections, full rank ten, all
+  66 ten-point subsets independent and all 12 eleven-point deletions circuits.
+  Analytic NO BLOCKER; 86 primary and 106 independent bit-arithmetic checks
+  pass. Final compute totals 0.099366 CPU seconds and 28 KiB new output.
+  All 20 frozen checksums pass; the publication warning was fixed and rerun.
+- **Mm3 sixth source independently locked:** Smirnov repo139, 23 products,
+  139 nonzeros, counts (20,14,14); all 58 source-replay checks pass.
+  Full campaign closed FROZEN-INCONCLUSIVE at the sampled 64 MiB growth cap,
+  retaining 520 pair decisions and zero complete safe rows. Peak sampled
+  host CPU 41.98%, RSS 127.8 MiB. All 1,872 frozen checksums pass. The earlier
+  59/59-twice synthetic smoke remains lifecycle evidence only.
+- **Kg closed FROZEN-INCONCLUSIVE, target remains paused:** no new tile.
+  No intra-tile restart state; adjacent tile cost about 12,329.887 CPU seconds.
+  Prior OS-throttling diagnosis is unestablished. No scheduler/Terminal
+  workaround; all 41 frozen checksums pass.
+- Five closeouts in this continuation: three FROZEN-CERTIFIED and two
+  FROZEN-INCONCLUSIVE, **1,989 frozen checksums verified**. All claim records
+  were preserved, and the science claims directory is empty.
+
+Authoritative mathematical scope, evidence links and corrections are in
+[`RESULTS.md`](RESULTS.md). Resource policy and guard evidence are linked from
+[`README.md`](README.md).
+
+---
+
 ### Session 2026-09-01/02 — 36 lifecycle campaigns, 17 certified, every artifact owner-verified, 2026-09-02
 
 One entry for the whole autonomous session, newest first within the results

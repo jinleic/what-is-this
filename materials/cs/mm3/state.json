@@ -1,20 +1,59 @@
 {
-  "schema": "target-state/1",
+  "autonomy_latest": {
+    "next_proposals": [
+      {
+        "novelty": "First sigma^1 census progress without external binaries; controls bind the new instrument to the retained kissat/drat-trim/lrat-check decisions.",
+        "objective": "Driver-free sigma^1 pair census chunk 1 (H-MM3-SIGMA1-PAIRS-1): sealed pure-Python encoder (now doubly validated, 1180 oracle hashes) + in-sandbox pysat at T=d for the 608 sigma^1 instances; SAT models verified by clause evaluation, UNSAT accepted only after an own UP/RUP refutation replay; resumable ledger of (key,d,cnf_sha256,sat,lb) in <=300 s / <=8 MiB chunks, with the 52 retained sigma^1 decisions (lines 609-660 of attempt-3) as cross-instrument controls that must agree.",
+        "priority": 10,
+        "target": "mm3"
+      },
+      {
+        "novelty": "Replaces the untested hash-level hypothesis with a decidable isomorphism test; could reduce the census from 3x608 to 608 or refute the shortcut.",
+        "objective": "Test the sigma-symmetry candidate properly: for every pair instance compute a canonical form of its class set under the 9-coordinate permutation/sign group (or the 3x3 row/column relabeling subgroup induced by monomials) and compare canonical-form multisets across sigma^0/1/2; exact CNF hashes already show only 28/16/8 coincidences, so only an isomorphism-level match could let sigma^0 decisions transfer.",
+        "priority": 20,
+        "target": "mm3"
+      },
+      {
+        "novelty": "Same instrument as attempt-4 but with a preregistered expected order, making the resumed ledger independently replayable without the driver.",
+        "objective": "Supervised out-of-sandbox rerun of attempt-4's exact orbit_min_run.py with ledger-only retention resuming from the 520-key prefix, now with the independently verified ordered key lists (929d5d46\u2026/6d4367a7\u2026) as the expected traversal order for a replay-checkable ledger chain.",
+        "priority": 30,
+        "target": "mm3"
+      }
+    ],
+    "recorded_at": "2026-09-05 10:15 UTC",
+    "run": "cs/mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0",
+    "scope": "Registered statement only",
+    "summary": "REVIEW of H-MM3-ENCODER-FIDELITY-1: VERIFIED within its registered scope (encoder fidelity on every retained hash oracle + sigma^0/1/2 instance-universe registration; no solving, no census progress, no addition-count or no-54 claim). Own pure-Python verifier review_encoder_replay.py (sha256 4f95c925\u202649c5, git c6de5673) written from the frozen sources read as data (new_decomp_offdiag 143-360/757-820/905-924, gate_b_floor 38-74, orbit_min_run 244-331/477-480/2270-2276/2330-2363/2506-2523, GAP=14) with different design (flat 9-tuples, adjugate inverse, orbit closure then sort, early-exit tables, index-merged rep lists); primary gate script neither imported nor copied, its registration JSON read only as data. One compute receipt rc 0, sealed_intact, 36.2 s charged, peak RSS 30 MB, growth 250 KB. All 17 preregistered booleans true: R1 census 19683/11808/6960/48/4656/4608, 145 orbits x 48 partition 6960, unique factorisation, mono 125, pin sha256 prefix bed89ca17f5bd868 = log; R2 tables 256/224/128, 224/128/256, 128/256/224 with 1024 survivors each (dense count agrees, lexicographic, mono-node counts 735/259/29/1 in all three classes, direct-sandwich sample + negative grid consistent, sigma^0/1 = log); R3 attempt-3 pair file = 660 records (608 sigma^0 then 52 sigma^1), the 608 keys equal my ordered sigma^0 pair-key list in FULL ORDER (closes the primary's 520-prefix-only order check), the 52 equal my first 52 sigma^1 keys, 0 mismatches over cnf_sha256/cert.cnf_sha256/vars/clauses/d",
+    "verdict": "FROZEN-CERTIFIED"
+  },
+  "autonomy_legacy_closeout": {
+    "correction_evidence": "cs/.autonomy/supervisor-repair-20260905T074741Z/human-field-comparison.json",
+    "overwritten_owner_fields": {
+      "current_gate": "FROZEN-CERTIFIED: REVIEW of H-MM3-RESUME-BOUNDARY-1: VERIFIED within its registered scope (resumable ledger mechanism + retained 520-pair prefix integrity; no census progress, no addition-count or no-54 claim). Independent verifier review_verify.py (own code, primary driver read only as data; sealed sha256 cc1b781e\u2026, one receipt rc 0, 2.0 s wall, 8 KiB growth) reproduced every registered finite claim: R1 prefix sha256 0adc781e\u20260e09, 520 unique keys = sigma|side|a|b, U/V/W 256/224/40, 8 SAT / 512 UNSAT, all UNSAT rcs 0 with lb=d+1/floor false, SAT cert null with lb=d/floor true, all 512+512 present cnf/lrat files hash to recorded values (8+8 missing = the SAT records), 0 anomalies. R2 own chain implementation of the documented H_0/H_i gives H_520 = 40887cc0\u2026134e (= outA = outC) and H_200 = 8b875d99\u20268aba (= ckpt_200.json), ckpt last_key/tallies equal my recomputation over lines 1..200, outA.final == outC.final, six primary tampers rejected under the documented rules. R3 arithmetic reproduced exactly: cnf 44,758,113 B + lrat 17,139,872 B = 119,035 B/decision vs 724 B/decision ledger; 560 vs 92,646 decisions per 64 MiB. R4 triple ternary, 139 nonzeros (49,45,45), all 729 Brent identities hold in exactly one orientation (roles 0,1,2; my convention needs no transpose, the primary's convention reports transpose \u2014 a labeling difference, not a contradiction). Beyond the primary: R5 own pure-Python LRAT checker verified 5/5 deterministically sampled UNSAT pairs (0|U|20|1, 0|U|118|33, 0|V|40|38, 0|V|107|",
+      "latest_note": "Autonomous evidence at cs/mm3/campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd; scope is the registered statement only.",
+      "next_action": "Harden the resume boundary before any census successor: validator must recompute side/sat/unsat tallies from ledger lines 1..n (chain-bound) instead of sum checks, and pin the canonical triple serialization json.dumps({'U','V','W'}, sort_keys=True) that reproduces cf9d004c...332c; certify with the compensated (sat+1, unsat-1) tamper plus the six existing tampers on the retained 520-line ledger."
+    }
+  },
+  "current_gate": "Sixth source S1_smirnov_repo_139 independently locked: 23 products, 139 nonzeros, ternary, sigma-zero counts (20,14,14). Full campaign FROZEN-INCONCLUSIVE at the sampled 64 MiB output-growth cap; 520 pair decisions, zero complete safe rows.",
+  "headline": "The sixth public source passes 58 independent checks, including all 729 standard tensor coefficients and separation from the frozen five under the registered action. Its full orientation census is unresolved. Prior exact ladder remains paper55 55, sun56 56, mws59 58, stapleton60 60, laderman23 62; no new addition-count record or universal no-54 claim.",
   "id": "cs/mm3",
-  "problem": "Additive complexity of rank-23 3x3 matmul",
-  "status": "active",
-  "current_gate": "All named decompositions closed exact: paper55 55 (x3 orientations), sun56 56, mws59 58, stapleton60 60, laderman23 62.",
-  "latest_campaign": "20260902T023856Z_28ff8823_43330ec64df9",
+  "latest_campaign": "20260905T100124Z_4e1069d8_da4f5d1086e0",
   "latest_campaign_verdict": "FROZEN-CERTIFIED",
-  "headline": "laderman23 CLOSED EXACT at 62 = 16+16+30 (LB=UB) for Laderman's printed orientation, from a complete 1,224-instance hash-pinned dual-instrument aux-1 census with 1,224 dual-checked DRAT->LRAT certificates plus three explicit 16-gate circuits verified independently of the search and an end-to-end 81-monomial check (9/9). Laderman's printed basic form is exactly 98 = 28+28+42, so the slack his paper advertises as 'greatly reducible' is exactly 36 additions and 62 is the floor. Exact ladder: paper55 55 (three orientations, record), sun56 56, mws59 58, stapleton60 60, laderman23 62.",
-  "next_action": "Owner re-adjudication of the void session-3 transpose_check.py; the global sub-55 question (untouched, needs a genuinely different search space and its own prereg).",
+  "latest_note": null,
+  "next_action": "Preregister a resource-compatible census/evidence strategy with independent replay before reusing the retained 520-pair prefix. Do not promote the partial checkpoint or restart the unchanged disk-growth pattern. Preserve the original frozen run and apply the low-impact local resource policy.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-02T05:12:55Z",
-  "updated_by": "agent-Mm3NextGap",
+  "problem": "Additive complexity of rank-23 3x3 matmul",
+  "schema": "target-state/1",
   "sources": [
-    "cs/RESULTS.md mm3 section",
+    "cs/RESULTS.md",
+    "cs/mm3/README.md",
+    "cs/mm3/campaigns/20260904T035648Z_a4bf0c37_d790a569af43/VERDICT.md",
     "cs/mm3/campaigns/20260902T023856Z_28ff8823_43330ec64df9/report.md",
     "cs/mm3/campaigns/20260902T022208Z_8c279ad1_d0276dfee63d/report.md",
-    "cs/mm3/campaigns/20260902T015158Z_c0bea75d_761cb990fc40/report.md"
-  ]
+    "cs/mm3/campaigns/20260902T015158Z_c0bea75d_761cb990fc40/report.md",
+    "cs/mm3/campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd/autonomy/finalize.json"
+  ],
+  "status": "active",
+  "updated_by": "cs-research-supervisor",
+  "updated_utc": "2026-09-05T10:15:01Z"
 }

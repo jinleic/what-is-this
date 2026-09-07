@@ -1,0 +1,10 @@
+MPFR version=4.2.2, precision=192 bits
+m_* derived=[0.61729091208124531,0.61729091208128462]
+beta derived=[0.10005255986214717,0.10005255986364589]
+m_cert interval=[0.6172704120811997,0.61727041208133038]
+poly(left)=[-2.2537527399890684e-14,-1.8762769116165139e-14], poly(right)=[2.8643754035329026e-14,3.3306690738754709e-14]
+constant checks: root-left=1, root-right=1, derivative=1, m-containment=1, beta-containment=1
+local rectangle: min N_tt=0.22836139797078275, min N_dd=0.68037764661274025, min determinant=0.17291110546253904, max trace=1.4033802605635344
+local diagonal stationary point: left derivative upper=-1.6551140458176399e-08, right derivative lower=2.8118104733465537e-08, value lower=6.7220206068085965e-07
+former equality-point lower=2.9270160742389521e-05
+PROPOSITION A.5 CERTIFICATE PASSED

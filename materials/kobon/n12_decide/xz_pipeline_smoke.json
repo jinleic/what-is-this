@@ -1,0 +1,71 @@
+{
+  "schema": "kobon-xz-drat-pipeline-smoke/1",
+  "status": "PASS",
+  "checked_utc": "2026-09-04T05:41:09Z",
+  "purpose": "Exercise proof-consuming verification of Kissat binary DRAT compressed with XZ and streamed to drat-trim stdin.",
+  "legacy_verifier_guard": {
+    "path": "scratch/kobon/n12/autoverify_xz.sh",
+    "bytes": 2911,
+    "sha256": "aa7cf55482fb069257d47578b164f43d37031e529b0666378536b222d9278317",
+    "status": "REFUSED_UNBOUND_LEGACY_PIPELINE",
+    "exit_status": 2
+  },
+  "formula": {
+    "path": "scratch/kobon/n12/xz_pipeline_nonup_smoke.cnf",
+    "preserved_path": "math/kobon/n12_decide/xz_pipeline_nonup_smoke.cnf",
+    "bytes": 38,
+    "sha256": "bdcfed14408fb3f368fe82437336d283a9dedc953677460e9c7317724c5e1e58",
+    "variables": 2,
+    "clauses": 4,
+    "unit_clauses": 0
+  },
+  "producer": {
+    "path": "/opt/homebrew/Cellar/kissat/4.0.4/bin/kissat",
+    "bytes": 392456,
+    "sha256": "05d6f3e9c402a1fe8853b0746e384e1b3d1c4a550e255f11daa2461d279aa848",
+    "version": "4.0.4",
+    "argv": [
+      "/opt/homebrew/Cellar/kissat/4.0.4/bin/kissat",
+      "--unsat",
+      "scratch/kobon/n12/xz_pipeline_nonup_smoke.cnf",
+      "scratch/kobon/n12/xz_pipeline_nonup_smoke.drat.xz"
+    ],
+    "exit_status": 20,
+    "verdict": "s UNSATISFIABLE"
+  },
+  "proof": {
+    "path": "scratch/kobon/n12/xz_pipeline_nonup_smoke.drat.xz",
+    "preserved_path": "math/kobon/n12_decide/xz_pipeline_nonup_smoke.drat.xz",
+    "format": "XZ-compressed binary DRAT",
+    "compressed_bytes": 72,
+    "uncompressed_bytes": 8,
+    "sha256": "4df64601b946a6f42b9b1c11b155acb91c995adfc18eac0c82a4c2ad3669b42b",
+    "xz_integrity_check_exit_status": 0
+  },
+  "checker": {
+    "path": "scratch/kobon-audit/tools/drat-trim/drat-trim",
+    "bytes": 69720,
+    "sha256": "111b0405566d55629f5d391b80b3220cc7a3ebc3cd406a35895ff65cc9acd5e4",
+    "pipeline": "xz -dc PROOF | drat-trim FORMULA -i -w",
+    "binary_mode_required_for_stdin": true,
+    "exit_status": 0,
+    "verdict": "s VERIFIED",
+    "proof_bytes_reported_read": 8,
+    "core_lemmas": 2,
+    "resolution_steps": 5,
+    "log": {
+      "path": "math/kobon/n12_decide/xz_pipeline_smoke.log",
+      "bytes": 414,
+      "sha256": "cc5b5c626d4f39c34b85f2eeba9a3c4638b471d7d8b3a9a626a7b4f31d91d506"
+    }
+  },
+  "legacy_evidence_boundary": {
+    "trusted": false,
+    "paths": [
+      "scratch/kobon/n12/verdicts_xz.tsv",
+      "scratch/kobon/n12/state_xz/*.verified"
+    ],
+    "reason": "The legacy verifier passed the .xz container path directly to drat-trim and did not force binary mode on stdin; input-unit-propagation successes did not exercise a proof.",
+    "replacement_ledger": "scratch/kobon/n12/verdicts_xz_v2.tsv"
+  }
+}

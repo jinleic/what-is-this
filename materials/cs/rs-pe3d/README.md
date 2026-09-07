@@ -639,3 +639,120 @@ mathematical formulation — the final run is defect-free end-to-end. Grandfathe
 legacy campaign per the 2026-09-01 workspace control plane (no migration; frozen
 pre-statement 8114a8f untouched; all additions additive + checksums_addendum_w2.sha256).
 Full detail, option-(b) record, and rule-7 scope sentence: campaigns/2026-09-01T20-30-00Z_win4_pn4/freeze_addendum_w2.md.
+
+---
+
+## H-SPARK2-CONVERSE — CLOSED, FROZEN-CERTIFIED (2026-09-04)
+
+Run `20260904T040116Z_00df70c5_9bf664de2def` closes the proportional-column
+boundary left out of the frozen $d_A,d_B\ge3$ crossing converse. For
+$d_A=2$, the size-$d_B$, profile-$(2,d_B)$ circuits are exactly the
+nontrivial two-row partitions of a $B$-circuit across a proportional
+$A$-column pair, with exact count
+
+$$C_A(2)C_B(d_B)(2^{d_B}-2).$$
+
+The circuit coefficients have the same sign on both rows; if
+$a_{u'}=\lambda a_u$, the second-row coefficient is
+$\tau\lambda^{-1}c_J(v)$ and recovering $\tau$ multiplies by $\lambda$.
+Crossing-only holds at $d_B=2$ (two diagonals, with the 2-to-1 crossing
+parameter coincidence) and $d_B=3$; the noncrossing remainder
+$2^{d_B}-2-2d_B$ is positive exactly for $d_B\ge4$. The result is symmetric
+when the spark-2 factor is $B$.
+
+The final complete rerun passed 120 assertions: all 15 row/column pairs,
+9,300 registered partition candidates, 536 relation-pattern checks, exact
+rank-before-deletion promotion, full-rank noncircuit rejects, and 4,500
+below-threshold independence checks. Crucially, the separately coded
+$(4,2)$ loop used a scale-2 B duplicate at GF(13) and GF(11); all 70 circuits
+per prime recovered one common $\tau$ by multiplying with $\lambda=2$, while
+all 70 deliberately inverted recoveries were rejected. Full theorem,
+provenance, failed-launch disclosure, audit, and checksums are in the run
+directory. No frozen predecessor or `cs/RESULTS.md` was edited.
+
+Immediate successor `20260904T051205Z_d03471d8_0604b708af38`
+(H-C3-34-RESIDUAL-POINT) is RUNNING. Its preregistration and init are
+commit-bound. Reviewed launch 2 passed 26 pre-geometry controls (including a
+one-million-distinct-pair stream control) and completed the registered
+one-million-pair GF(17) search with outcome E-empty: no qualifying reduced
+all-distinct 12-point base set occurred in that fixed factorized family.
+That finite emptiness is not a universal C3 conclusion; the analytic
+Bezout residual-length-one lemma is a separate obligation, and a nonempty
+construction family requires a bound amendment before any further search.
+
+Existence language remains conditional: for the all-distinct
+$K=2+\sum_i(r_i-1)$ law, “none below $K$” is unconditional, while the
+simultaneous-PGL classification at $K$ supplies a circuit only when the
+relevant incidence population is nonzero. This README does not claim spark
+exactly $K$ in empty instances.
+
+## H-C3-34 residual closeout correction (Main, 2026-09-04)
+
+The POINT successor above is no longer RUNNING: it closed
+**FROZEN-INCONCLUSIVE** with an E-empty one-million-pair sample. Its
+residual-length-one lemma is separately analytically verified under the
+stated proper-intersection and local-length-one hypotheses; the rational
+residual point may lie outside the affine grid, and existence/minimality
+remain separate obligations.
+
+The registered
+[FULLPOOL run](campaigns/20260904T152816Z_bb611cd1_455c4fdc03e3/VERDICT.md)
+is now producer-closed **FROZEN-CERTIFIED: finite-pool E-empty**. All
+**41,587,200** compatible pairs were exhausted, with 49/49 assertions passing.
+All **185** size-12 intersections repeat a projection coordinate, so there
+are **zero qualifying base sets**. A fresh repaired driver-free replay
+matched the complete pool, histogram, candidate list and decisions; all
+nine comparisons and four GCD controls passed. All 45 frozen checksums
+verified. Failed launches, the stopped memory-defective replay, and the
+misnamed attempt-5 artifact copy are preserved and disclosed.
+
+This closes only the exact registered finite family, not universal C3,
+characteristic-zero, or extension-field existence. The next gate needs a
+nonempty construction family or an analytic existence/minimality argument.
+The successful replay obeyed the low-impact policy: sampled host CPU at
+most 39.25%, 20.2 MiB group RSS, 28 KiB new output, at least 128.388 GiB free.
+[Root results](../RESULTS.md) hold the authoritative outcome and scope.
+
+## Explicit characteristic-two residual circuits — CLOSED (Main, 2026-09-04)
+
+The next nonempty construction is now certified:
+[H-C3-34-CHAR2-EXPLICIT](campaigns/20260904T224223Z_9c13dba4_cbfbca8c94c3/VERDICT.md),
+producer verdict **FROZEN-CERTIFIED**. For the twelve roots of
+$T^{12}+T^3+T^2+1$ over **GF(2048)**, the points $(t^3,t^2)$ form the
+reduced proper $(2,3)$ complete intersection
+$x^2+y^3=x^2y^3+x+y+1=0$ with injective projections.
+
+Full evaluation rank is **10**; all **66** ten-point subsets are independent
+and all **12** eleven-point deletions are circuits. For omitted root $a$,
+the coefficients are $(t+a)^2/t^4$ on the remaining points. The residual
+point is the omitted point, possibly outside the retained coordinate grid.
+Independent analytic review, 86 exact primary checks, 106 independent
+bit-arithmetic checks and all 20 frozen checksums pass.
+
+The final primary/replay computations together used 0.099366 CPU seconds
+and 28 KiB new output; neither enumerated the field or full product grid.
+The warning-bearing first attempt is preserved beside the source repair and
+clean full rerun. This proves characteristic-two existence/minimality for
+these supports, not global spark eleven, classification, or other
+characteristics. A prospective extension to other characteristics requires
+new registration and evidence; the earlier GF(17) finite-pool miss is intact.
+
+
+<!-- cs-autonomy:20260905T045017-d18d5052195f:1 -->
+## Autonomous rs-pe3d closeout — 2026-09-05 05:15 UTC
+
+**FROZEN-INCONCLUSIVE**. REVIEW of H-C3-35-ALLCHAR-EXPLICIT: INCONCLUSIVE (no compute receipt; the worker wall budget was exhausted before the sealed verifier could run, so no verified/rejected verdict is issued). What was completed: (1) Full analytic proof audit by reading the registered theorem_allchar_explicit.md (sha 6dab404f...): every step checked by hand and found sound within scope — disc(P mod p) = D mod p for monic P (valid also at p | 12 since lc = 1); x-injectivity from g + x^2 f = x^4 - x - y - 1; y-injectivity and a+b != 0 from P(T) - P(-T) = -2T^3 (char 2 handled); B = {f=g=0} with no points at infinity (F, G checked) and Jacobian det = 12t^13 - 3t^4 - 2t^3 = t^2 P'(t) recomputed by hand, so all 12 points reduced and exhaust the length-12 intersection; C has unit rows e_0,e_2..e_10 and zero columns 1, 11 so rank 10 in every characteristic with left kernel span(f,g); ten-subset independence from [T]Q_ab = -(a+b)/(a^2 b^2) != 0; relation from [T^11]L_t = 1/P'(t), [T]L_t = 1/(t^2 P'(t)); converse for p in E. Only a cosmetic note: 'degree dividing 12!' can be sharpened to 11! since P(-1) = 0. Primary receipts compute-01/02 (rc 0, sealed_intact) and the 50/50 PASS stdout log were read directly. (2) An independent pure-Python verifier review_verify.py (sha ff477886..., no sympy/flint, primary driver not imported) was written, preregistered and sealed in review/evidence together with review_statement.md: R1 Sylvester/Bareiss discriminant and Res(P(T),P(-T)); R2 own mod-p gcd + distinct-degree factorisation for all 47 primes compared to the primary table; R3 direct Z[a,b] expansion of both ideal-membership witnesses; R4 C-matrix rank over Q and mod all probe primes, left kernel, tau; R5 fresh exact replay at a different non-exception prime p = 29 in GF(29^10) = GF(29)[u]/(h) (h = degree-10 factor of P, roots as Frobenius conjugates): 66 ten-subsets, 12 eleven-subsets, explicit lambda_a with full support, corrupted relation; R6 positive failure certificate at p = 13 and 10417770367 (exact double root, hence <= 11 points); R7 data comparison with core_allchar.json (sha 5a13c42c...). It has not been executed; the claim remains a candidate pending that run. Nothing is promoted.
+
+Evidence: [`rs-pe3d/campaigns/20260905T050431Z_28f76694_6cffbbf64083`](campaigns/20260905T050431Z_28f76694_6cffbbf64083/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Re-run this review with a fresh wall budget: read only job_info, copy the already-written pure-Python verifier from scratch/autonomy/20260905T050609-677fcc187da7/1/review/evidence/review_verify.py and its statement verbatim, preregister within ~60 s, and execute it once (argv: review_out.json, path to the primary core_allchar.json; expected < 60 s, < 8 MiB). Finish verified iff verdict REVIEW-PASS on all R1-R7 checks including the GF(29^10) replay and the p = 13 failure certificate.
+
+
+<!-- cs-autonomy:20260905T045017-73185087234c:1 -->
+## Autonomous rs-pe3d closeout — 2026-09-05 05:28 UTC
+
+**FROZEN-INCONCLUSIVE**. REVIEW of H-C3-36-FAMILY-PRIMEFIELD: INCONCLUSIVE by tool rule only (the sealed verifier exited rc 1 because of a reviewer-side artefact; no substantive discrepancy with the primary was found, and the tool requires an rc-0 receipt for 'verified'). Compute-01 (sealed_intact, 23.3 s, 12 KiB growth) ran review_verify.py (sha ce23987d..., pure Python: own mod-p elimination, own coset DP, own brute force; primary driver not imported; primary JSON read as data). Substantive results, all PASS: R2 brute force over all 372,736 admissible 12-subsets of GF(29)^* yields exactly 448 solutions in 16 scaling orbits, containing the three primary-reported sets and the explicit instance R={2,3,4,7,11,12,19,20,21,23,24,28}; R3 ALL 448 GF(29) solutions pass every exact check (c_1=c_11=0, c_0!=0, no +- pair, injective squares/cubes, 12x12 M over bidegree-(2,3) monomials rank 10, f,g in left kernel and independent, Jacobian 2x g_y+3y^2 g_x = t^2 P'(t) != 0, g(t^3,t^2)=P(t) for all t in GF(29), 66 ten-subsets rank 10, 12 eleven-subsets rank 10 with lambda_a=(t^2-a^2)/(t^2P'(t)) annihilating, full support, corrupted lambda rejected, Q_ab/Q_t coefficient formulas, residual off-grid); recomputed P=[16,0,13,7,13,8,19,21,22,13,23,0,1] matches. R4 the three reported solutions at each of p=37,41,43,47 pass all checks with matching P. R1 own DP reproduces N_29=448, N_37=108, N_41=305,840, N_43=3,360, N_47=2,507,506 and admissible counts 372,736/46,656/515,973,120/6,205,248/5,538,111,488, and the exact set of primes with max admissible <12 = {2,3,5,7,11,13,17,19,23,31} with maxima 1,1,2,2,5,4,8,6,11,10 equal to the primary table. R5 negative control: 8 random 12-subsets of GF(29)^* with sum r = sum 1/r = 0 containing a +- pair {a,-a}: the ten-subset omitting {a,-a} has rank exactly 9 and all other ten-subsets rank 10, confirming 'independent iff no +- pair'. The only failed flag, R1_dp_table_matches_primary, is because my DP caps |S| at 12 (line 'if k + dk > 12: continue'), so max_admissible saturates at 12 for p in {29,41,43,47} where the primary reports 14,20,14,23; the uncapped values equal n_cosets times per-coset max (1 for p=2 mod 3, 2 for p=1 mod 3) and were checked by hand only. Analytic audit by hand, sound within scope: [1]Q_ab=c_0/(ab), [T]Q_ab=(a+b)c_0/(a^2b^2) from c_1=0; Jacobian by chain rule; C has unit rows e_0,e_2..e_10 and zero columns 1,11 iff c_1=c_11=0 (rank 10, kernel span(f,g)); relation via sum_t t^k/P'(t)=[T^11](T^k mod P)=0 for k in {-2,0,2,..,12} with T^-2 = -(T^10+c_10T^8+..+c_2)/c_0 mod P; no points at infinity; mu_6-coset lemma (exponent differences +-1 in Z/6 => <=2 per coset when p=1 mod 3) giving p>=29 / p>=37; c_1=-c_0 sum 1/r, c_11=-sum r. Minor wording: 'e=11 not representable' holds within the bidegree-(2,3) box only (x y^4 is outside it), which is what is meant. Reviewer's verdict on substance: the registered claim and scope are supported (p=29 smallest prime field for THIS family; no claim on extension fields q=25,27, other supports, C3 or spark eleven); promotion should wait for the rc-0 rerun proposed below.
+
+Evidence: [`rs-pe3d/campaigns/20260905T052113Z_c8edc589_cabb1348014b`](campaigns/20260905T052113Z_c8edc589_cabb1348014b/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Re-run the review verifier scratch/autonomy/20260905T052236-17e9b035bbae/1/review/evidence/review_verify.py with one edit: in coset_dp remove the '|S| <= 12' cap (or cap at 24) so max_admissible is uncapped, keep everything else verbatim, preregister within 60 s and execute once (argv: review_out.json, path to family_primefield.json; expected ~25 s, <16 MiB). Finish verified iff verdict REVIEW-PASS with rc 0.

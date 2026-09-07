@@ -64,7 +64,7 @@ DOMAINS = {
     ),
 }
 
-VERIFIED_TARGET_EXCLUDES = ("scratch", "campaigns-smoke")
+VERIFIED_TARGET_EXCLUDES = ("scratch",)
 
 # ---------------------------------------------------------------- projects
 PROJECTS = [
@@ -95,7 +95,7 @@ PROJECTS = [
          dirname="uc", session="019ff0a0-6557-7000-8b8c-9bdbccb719e4",
          keywords=("cert3", "union-closed", "Cambie", "Liu", "Frankl", "pscil"),
          anchor="UC-",
-         exclude_dirs=("campaigns", "independent-arithmetic"),
+         exclude_dirs=("independent-arithmetic",),
          papers=("README.md", "ANNOUNCEMENT.md", "PROOF.md",
                  "paper/main.pdf", "paper/main.tex", "paper/refs.bib")),
     dict(slug="ising3d", name="Three-dimensional Ising model (exact solution)",
@@ -114,7 +114,8 @@ PROJECTS = [
          keywords=("qec", "QEC", "LDPC", "syzygy", "circuit distance",
                    "logical qubits", "EXP-0", "dressing"),
          anchor=None,
-         exclude_dirs=(".venv", "third_party", "dist"),
+         exclude_dirs=(".venv", "third_party", "dist", "results", "scratch",
+                       "archive"),
          papers=("README.md",
                  "reports/paper_pbb_nogo.pdf",
                  "reports/fig_trade_law.pdf",
@@ -254,6 +255,7 @@ PROJECTS = [
          keywords=("mm3", "rank-23", "55 additions"),
          anchor=None,
          exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         exclude_paths=(".README.md.lock",),
          papers=("README.md",)),
 
     # Quantitative trading has one curated overview. Raw market data, return
@@ -368,8 +370,14 @@ def project_source_label(project: dict) -> str:
 
 JUNK_DIRS = {"__pycache__", ".venv", "venv", ".git", "node_modules",
              ".ipynb_checkpoints", ".pytest_cache", ".mypy_cache",
-             ".ruff_cache", "build", "dist", "egg-info"}
-JUNK_EXTS = {".pyc", ".pyo"}
+             ".ruff_cache", "build", "dist", "egg-info",
+             # Campaign run directories are timestamped raw outputs, never
+             # curated mirror content (their summaries live in PROGRESS.md).
+             "campaigns", "campaigns-smoke"}
+# Archives are opaque to the text-based publication gate, so they are never
+# walk-mirrored; curated archives ship only via an explicit `papers` entry.
+JUNK_EXTS = {".pyc", ".pyo", ".zip", ".tar", ".tgz", ".gz", ".bz2",
+             ".xz", ".zst", ".7z", ".rar"}
 
 # ---------------------------------------------------------------- privacy
 def load_private_words() -> list[str]:

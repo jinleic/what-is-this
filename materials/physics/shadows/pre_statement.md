@@ -239,3 +239,204 @@ The k <= 8 reproduction rows carry verdicts only as REGRESSION-OK/
 REGRESSION-FAIL (they re-anchor the closed campaign; they are not new
 edge claims). Only k = 9..12 rows carry EDGE-PERSISTS/EDGE-VANISHES/
 UNKNOWN-BUDGET.
+
+## Revision 3 (2026-09-03, appended before any noisy-variance campaign run)
+
+Scope for the channel-resolved real-versus-unitary variance table (new run
+directories only; Revisions 0-2 text above unchanged). Owner: shadows.
+Primary source: arXiv:2608.18935v1 (Hingane & Koh, "Real Classical Shadows
+with Noise", posted 2026-08-19), read first-hand 2026-09-03 from the arXiv
+HTML v1; Eqs. (28), (29), (33), (36), (37), (39), (44) transcribed verbatim
+(supporting: Eq. (31) scalar invariants, Eq. (32) second-moment shape,
+Section 3.4 beta conventions).
+
+### Character of the run (frozen wording)
+
+The paper already proves the outcome analytically: Corollary 3.11 / Eq. (44)
+gives Var_U/Var_O = (R - x)/(1 - x) >= R with R the Eq. (37) second-moment
+ratio, and R >= rho_S(d) = (d+1)(d+4)/(d+2)^2 > 1 for every d >= 2 on the
+whole invertible domain 1 < beta <= d. The no-flip result is therefore
+ANALYTICALLY KNOWN; this campaign is regression-grade exact confirmation of
+the formula chain and quantification of margins, NOT a discovery search. A
+ratio <= 1 in any cell would indicate an instrument error first and a physics
+finding only after the identities below are re-examined.
+
+### Two independent ratio paths (frozen)
+
+Direct path: Eq. (31) invariants t = tr(O_0^2), r = tr(rho O_0^2),
+m = tr(O_0 rho) -> Eq. (33) constants C_O, a_O, C_U, a_U -> second moments
+E[o^2] = C(a t + 2 r) (Eq. (32); Eqs. (28)/(29) with the shared m^2 added
+back) -> R = E_U/E_O; variances = E[o^2] - m^2 (exactly Eqs. (28)/(29));
+variance ratio = (R - x)/(1 - x) with x = m^2/E_O (Eq. (44)).
+Criterion path: kappa = a_O t/(2 r) (Eq. (36)) -> ratio
+(rho_L kappa + rho_S)/(kappa + 1) (Eq. (37)). The two paths must agree
+exactly (Fraction equality) in every cell; disagreement = broken instrument.
+The SECOND-MOMENT ratio (Eq. 37) and the VARIANCE ratio (Eq. 44) are
+distinct quantities and are always reported separately; only the variance
+ratio is operationally decisive.
+
+### Frozen grid (132 unique cells) and anchors
+
+- depolarizing (section 3.4.1): beta = 1 + p(d-1); p in {1, 3/4, 1/2, 1/4,
+  1/10, 1/100} plus the crossing point p*(d) = (beta*(d)-1)/(d-1) from
+  Eq. (39), deduplicated per d preserving first occurrence; the d=4 crossing
+  point p*(4) = 3/4 coincides with a ladder value and carries provenance via
+  the row field p_roles = ["grid", "crossing_point"] instead of a duplicate
+  row. 3 anchors x {6, 7, 7} p-values at d = {4, 8, 16} = 60 rows.
+- amplitude damping (section 3.4.2): beta = (1+p)^n, d = 2^n; p in {1, 9/10,
+  4/5, 3/4, 1/2, 1/4, 1/10, 1/100}; 3 anchors x 8 p-values x 3 dimensions
+  = 72 rows.
+- anchors, with Eq. (31) invariants (t, r, m) exact at every d:
+  maximally_mixed_pauli_z (rho = I/d, O_0 = Z_1): (d, 1, 0);
+  ghz_projector (rho = |GHZ><GHZ|, O_0 = P_GHZ - I/d):
+  ((d-1)/d, ((d-1)/d)^2, (d-1)/d);
+  ghz_pauli_x (rho = |GHZ><GHZ|, O_0 = X^xn): (d, 1, 1).
+- Domain guard per cell: 1 < beta <= d (Setting 3.1 invertibility; Claim 2.4
+  range), validated before any formula is evaluated.
+
+### Regression identities (paper-verbatim anchors, frozen)
+
+rho_S(d) = (d+1)(d+4)/(d+2)^2 = {10/9, 27/25, 85/81} at d = {4, 8, 16};
+beta*(d) per Eq. (39) = {13/4, 128/23, 752/77}; p*(4) = 3/4 and p*(8) =
+15/23 (verbatim in the paper's Section 3.3 numerics), p*(16) = 45/77;
+rho_L(4, beta = 5/2) = 50/27 (the paper's own "At d=4 and p=0.5, rho_L =
+1.852" cross-check); rho_L(d, beta*(d)) = 2 exactly (Eq. (43) numerator);
+the three anchor invariants above; amplitude-damping beta = d at p = 1;
+grid shape 132/60/72 with all cells unique; Eq. (37) == direct ratio in all
+132 rows; variance ratio >= second-moment ratio in all 132 rows (Cor. 3.11).
+
+### Terminal verdict mapping (frozen before run)
+
+- any regression identity invalid -> FROZEN-INCONCLUSIVE;
+- identities valid and any second-moment or variance ratio <= 1 ->
+  FROZEN-NEGATIVE/FLIP-FOUND;
+- all 132 rows valid with both ratio families > 1 ->
+  FROZEN-CERTIFIED/NO-FLIP-CONFIRMED-IN-SCOPE.
+Exact per-family minima and maxima over the grid are reported with their
+provenance cell so every verdict is re-derivable without trust.
+
+### Budget (pinned before run)
+
+One minute wall cap on a single core, comfortably above need: the runner is
+closed-form Fraction arithmetic over 132 cells (no enumeration). No RNG
+anywhere, no floats in any verdict path, no matrix allocation; every
+Fraction serialized with numerator, denominator and canonical reduced text.
+The CLI refuses to create the run directory and requires an existing,
+initialized, RUNNING campaign manifest (schema shadows-noisy-manifest/1);
+it snapshots the executed module and this preregistration byte-for-byte into
+the run directory before inventory generation, so a campaign freeze binds
+code and prereg, not merely external hashes.
+
+## Revision 4 (2026-09-04, appended before any noisy-variance campaign run)
+
+Revision 3 used slash-joined strings for the control-plane verdict and the
+scientific label, and described a custom manifest schema. The workspace
+control plane accepts only its canonical terminal values and owns the
+manifest schema. This correction changes no grid, formula, identity,
+threshold, or scientific branch:
+
+- the campaign gate is `noisy-variance-r4`, initialized only by
+  `scripts/campaign.py init`;
+- the terminal values written for `campaign.py close` are exactly
+  `FROZEN-INCONCLUSIVE`, `FROZEN-NEGATIVE`, or `FROZEN-CERTIFIED`;
+- `INCONCLUSIVE-IDENTITIES-INVALID`, `FLIP-FOUND`, and
+  `NO-FLIP-CONFIRMED-IN-SCOPE` are separate scientific labels;
+- row validity covers domain, positivity, and the independent Eq. (37) and
+  Eq. (44) identities. It deliberately excludes the observed `ratio > 1`
+  outcome so the preregistered `FROZEN-NEGATIVE` branch is reachable;
+- the runner must accept the canonical `campaign.py` manifest, require
+  target `physics/shadows`, gate `noisy-variance-r4`, matching run id,
+  `RUNNING` status, and exact equality between the manifest's
+  `prereg_sha256` and the bytes snapshotted into the run.
+
+## Revision 5 (2026-09-04, appended before the replacement noisy-variance run)
+
+The first `noisy-variance-r4` instrument run
+`20260904T031748Z_cbbe7c0b_fbc8a23e2ed9` was closed `SUPERSEDED` without
+freezing or using its result. Independent review found that its cardinality
+checks could not reject a same-sized wrong p ladder and that its source
+snapshot was read only after evaluation. The formulas and observed 132 rows
+were not challenged, but that instrument was not strong enough to certify.
+
+The replacement gate is `noisy-variance-r5`. It keeps every scientific
+formula, grid value, anchor, threshold, and terminal mapping from Revisions
+3-4, with these additional instrument gates:
+
+- the canonical sorted records
+  `noise_model|d|p|anchor|comma-separated-p_roles` must hash to SHA256
+  `7d573827348828f932bd008836c718c72ec09af12b0257cf24dc5703893e732a`;
+  crossing roles must occur exactly for p*(d), all three anchors, and no
+  other rows;
+- the executed module bytes and preregistration bytes are captured before
+  evaluation. The module must remain byte-identical through payload
+  assembly, and the captured preregistration must hash exactly to the
+  `campaign.py` manifest and remain byte-identical through evaluation;
+- Revision headings must be strictly increasing and the latest captured
+  heading must be Revision 5. A later revision requires a new runner gate
+  and campaign rather than silently running under this contract.
+
+Failure of any added gate is an instrument failure and maps to
+`FROZEN-INCONCLUSIVE`; it cannot produce a certified scientific result.
+
+## Revision 6 (2026-09-04, appended before the replacement noisy-variance run)
+
+Revision 5's final sentence conflated two failure classes. Input-provenance
+failures (manifest/preregistration hash mismatch, wrong latest revision, or
+module/preregistration mutation during execution) are pre-verdict
+`REFUSED` exits: no result artifacts are written and no terminal scientific
+verdict is assigned. A valid frozen input that computes a grid-signature,
+role, formula-identity, domain, or positivity failure writes the auditable
+result and maps to `FROZEN-INCONCLUSIVE`. The replacement campaign gate is
+therefore `noisy-variance-r6`; all scientific values and branches remain
+unchanged.
+
+## Revision 7 (2026-09-04, appended before the replacement noisy-variance run)
+
+Revision 6 described computed failure handling too broadly. Any exception
+before a complete 132-row table exists, including a beta-domain or zero-
+denominator guard, is a pre-verdict `REFUSED` exit and writes no result
+artifacts. Once the complete table exists, false grid-signature, crossing-
+role, independent formula-identity, row-validity, or positivity checks write
+an auditable result and map to `FROZEN-INCONCLUSIVE`; a valid table with a
+ratio at or below one retains the `FROZEN-NEGATIVE` branch. The replacement
+campaign gate is `noisy-variance-r7`; no grid value, formula, threshold, or
+scientific branch changes.
+
+## Analytical follow-up (2026-09-05; no new experimental gate)
+
+The post-campaign [pure-chain proof](README.md#analytic-closure--pure-cx_chain-for-every-k)
+settles the formerly open asymptotic question algebraically. This is not
+a retrospective preregistration or a change to any frozen campaign.
+For the pinned open sequential CNOT chain and uniform full-support token
+law, the exact transfer identity implies
+`A_1=3, A_2=17, A_(k+2)=3*A_(k+1)+8*A_k`,
+where `A_k=9^k*w_cx(k)`. The forcing-recurrence proof establishes the sole
+strict win at k=4, ties at k=1,2,3,5, and strict losses for every k≥6;
+the weight ratio to U_ct tends to zero.
+
+The canonical derivation is in the linked README section. Its
+[verification record](../../data/shadows-cx-chain-analytic-20260905.json)
+matches existing weight rows and complete stored size distributions;
+it introduces no sampling, token enumeration, k>12 row, or new campaign.
+This note does not change the latest experimental revision (Revision 7),
+the noisy-variance grid, or any terminal mapping. Any new experimental
+question still requires its own preregistration and campaign.
+
+## Analytical follow-up (2026-09-05; complete pinned-family classification)
+
+The separate [matching-factorization and layer-identity proofs](README.md#analytic-closure--complete-pinned-family-comparison)
+now extend the analytical closure to all gate-C families for every k≥1
+under the original uniform full-support token law. Only the pure ascending
+chain and lex CNOT mesh at k4 strictly beat U_ct. Uniform-letter meshes
+and the CZ mesh tie it for every k; near-perfect matchings lose for every
+k≥3 (ties k1,2); U_ct then CZ loses for every k≥2 (tie k1).
+The chain and lex mesh tie at k1,2,3,5 and lose for every k≥6.
+
+This is post-campaign algebra, not a new or retrospective experimental
+gate. Independent symbolic reviews and
+[exact basis-map checks](../../data/shadows-pinned-family-analytic-20260905.json)
+support the canonical README derivation without token or matching-family
+enumeration. Largest empirical k remains12; the exhaustive matching
+search remains limited to k≤8. Revisions 0–7, frozen campaigns and
+terminal mappings are unchanged. No claim is made about arbitrary
+Clifford circuits, other gate orders, noise, or identity insertion.

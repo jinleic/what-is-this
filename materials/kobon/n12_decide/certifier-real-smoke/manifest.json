@@ -1,0 +1,32 @@
+{
+  "case_count": 2,
+  "case_order": [
+    "proof_nonup",
+    "input_up"
+  ],
+  "instances": [
+    {
+      "bytes": 38,
+      "clauses": 4,
+      "cube": "proof_nonup",
+      "path": "math/kobon/n12_decide/xz_pipeline_nonup_smoke.cnf",
+      "sha256": "bdcfed14408fb3f368fe82437336d283a9dedc953677460e9c7317724c5e1e58",
+      "variables": 2
+    },
+    {
+      "bytes": 19,
+      "clauses": 2,
+      "cube": "input_up",
+      "path": "math/kobon/n12_decide/xz_pipeline_input_up_smoke.cnf",
+      "sha256": "ac42a371b5a124286c410ed5dfa2e3be7ee7d5b1feac6f08e7e1715f0c3669a8",
+      "variables": 1
+    }
+  ],
+  "schema": "kobon-n12-decision-manifest/2",
+  "solver": {
+    "bytes": 392456,
+    "path": "/opt/homebrew/Cellar/kissat/4.0.4/bin/kissat",
+    "sha256": "05d6f3e9c402a1fe8853b0746e384e1b3d1c4a550e255f11daa2461d279aa848",
+    "version": "4.0.4"
+  }
+}

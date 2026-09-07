@@ -989,13 +989,14 @@
     "structural_knowledge_acquired_at_cycle_5": {
       "what": "A post-abort census read only create_time strings and row counts from all 51,224 archives: 337 archives carry exactly one off-date row (next-day 00:00:00 x249, 00:00:01 x85, 00:00:02 x3) on 22 dates in 2024-03-05..2024-04-03; 834 archives have a row count other than 288; 681 archives have no row at or after the 23:45 cutoff.",
       "not_read": [
-        "sum_open_interest",
+        "sum_open_interest (by the census; see the separate pre-freeze verification read below)",
         "any price or return",
         "any ranking",
         "any spread, gate, or p-value"
       ],
       "consequence": "This is schema and sample-size knowledge, not outcome knowledge. It bounds the achievable sample (the 300-date minimum is unaffected in expectation) and it is the sole basis for the boundary-row correction. It cannot indicate the sign or size of the candidate return.",
-      "evidence": "campaigns/20260903T102637Z_a0ab5202_383723d33c94/integrity_abort.json fields census, no_outcome_access, fields_read"
+      "evidence": "campaigns/20260903T102637Z_a0ab5202_383723d33c94/integrity_abort.json fields census, no_outcome_access, fields_read",
+      "separate_pre_freeze_read_cross_reference": "The census read no values. Separately, before freezing, sum_open_interest values were read from 5 of the 51,224 archives to prove that dropping off-date rows changes no selected end-of-day value; that read is disclosed in pre_statement_perp_oi_growth_corrected.json field assets_and_data.boundary_row_census.verification_read_disclosed. A reader of this audit alone must not conclude that no value was read pre-freeze."
     }
   },
   "candidate": {

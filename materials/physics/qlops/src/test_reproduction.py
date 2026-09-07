@@ -115,6 +115,55 @@ def test_latency_axis_bounded_by_2():
     assert abs((q2 / q1) - (35 / 45)) < 1e-12  # ceil clean at both ends
 
 
+def test_zero_level_sensitivity_uses_common_units_and_full_envelope():
+    """Revision 4: accepted-output comparison uses one physical-qubit×SEC basis."""
+    import zero_level_provenance as Z
+    s = Z.sensitivity()
+
+    legacy = s["legacy_frozen_gate_b_row"]
+    assert abs(legacy["advantage_factor"][0] - 193.3) < 0.1
+    assert abs(legacy["advantage_factor"][1] - 29946.5) < 0.1
+    assert legacy["usable_for_common_basis_magnitude"] is False
+
+    baseline = s["litinski_accepted_baseline_rows"]
+    assert baseline[0]["cycles_including_postselection"] == P.T6[0]["cycles"]
+    assert baseline[0]["spacetime_per_accepted_T"] == (
+        P.T6[0]["unit"] * P.T6[0]["cycles"])
+
+    variants = s["zero_level_variants"]
+    assert set(variants) == {
+        "distillation_only_output_patches_omitted",
+        "with_output_patches_d3",
+        "with_output_patches_d7",
+    }
+    assert variants["with_output_patches_d3"]["qubits"] == 73
+    assert variants["with_output_patches_d7"]["qubits"] == 313
+    assert variants["with_output_patches_d7"]["spacetime_per_attempt"] == 939
+
+    acceptance_keys = {
+        "p=1e-3_optimistic", "p=1e-3_pessimistic", "p=1e-4"}
+    expected_combinations = {
+        f"{variant}|accept_{acceptance}"
+        for variant in variants
+        for acceptance in acceptance_keys
+    }
+    assert set(s["corrected_combinations"]) == expected_combinations
+
+    worst_key = "with_output_patches_d7|accept_p=1e-3_pessimistic"
+    worst = s["worst_case"]
+    assert worst["combination"] == worst_key
+    assert math.isclose(worst["advantage_factor"][0], 33.76693322683706)
+    assert math.isclose(worst["advantage_factor"][1], 5086.233185367411)
+    assert worst["advantage_factor"][0] == min(
+        combo["advantage_factor"][0]
+        for combo in s["corrected_combinations"].values())
+    assert s["verdict_survives_corrections"] == (
+        worst["advantage_factor"][0] > P.GATE_B["comparability_falsifier"])
+
+    assert Z.rotated_patch_qubits(3) == 17
+    assert Z.rotated_patch_qubits(7) == 97
+
+
 if __name__ == "__main__":
     fns = [v for kk, v in sorted(globals().items())
            if kk.startswith("test_") and callable(v)]

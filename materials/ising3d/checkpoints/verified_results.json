@@ -1,11 +1,12 @@
 {
   "provenance": {
     "generated_utc": "2026-08-23T03:05:48.021811+00:00",
-    "last_updated_utc": "2026-08-25T05:08:05Z",
-    "last_update": "Wave 26 integration: the open-2x4 trace-nine incidence now has two exact nonzero 96-dimensional modular quotient witnesses and one singular eight-mode control. Multihomogeneous clearing gives a nonzero q-projection of degree at most 182400. Seven direct Lucas-product shortcuts pass rather than separate. The primitive norm and exceptional-set emptiness remain unresolved; no endpoint moved and no full 171-script suite ran.",
-    "method": "Bookkeeping synthesis from repository proofs, notes, result JSON artifacts, experiment sources, and a fresh tests/run_all.sh execution | wave-6 entries appended by lead after independent standalone test verification of all nine agent deliverables | wave-7/8 entries appended by lead after independent standalone verification of every agent deliverable; 65/65 full-suite run 2026-08-14; repository relocated to math/ising3d | wave-9 entries appended by lead after independent standalone test verification of all ten agent deliverables | wave-10 entries appended by lead after independent standalone verification of all ten e90-e99 deliverables plus e100 OA-3x3 synthesis | wave-11 entries appended by lead after independent standalone verification of all four deliverables inside the main checkout plus four independent code reviews | wave-12 entries appended by lead after independent standalone verification of all five deliverables inside the main checkout, five independent code reviews, and lead clean-room recomputation of the SAW block profile and union arithmetic | wave-13 entries appended by lead after independent standalone verification of all eight deliverables inside the main checkout, seven independent code reviews (one blocked by a provider limit and replaced by a lead audit), and one advisory-driven correction of an overstated proof note | wave-14 entries appended by lead after wave-14 acceptance (fullsuite14: 110 total, 109 passed, 1 failed \u2014 tests/test_extensive_3d_r2.py, a dropped artifact-load line, a lead regression; standalone rerun after one-line restore PASS 555 s; full-suite re-run deferred to wave-15 close-out) and independent standalone verification of the six canonical deliverables (2x5 pair-product, sector-saturation refutation, s<=5 extensive-charge class, Peierls-at-incumbent limitation, KW 11111 anchor components, sieve-union endpoint) | wave-15 entries appended by lead after independent standalone verification of all five landed fronts (kw_boundary, char0_quotient, ladder_l8, octahedral, paired_momentum) | wave-20: twelve independent creative fronts plus lead finite-memory SAW front; all thirteen standalone verifiers run by lead, with one review-caught susceptibility ratio wording error corrected and reverified; H506-H583 appended | wave-24 entries appended after all three producers and clean-room verifiers passed, followed by independent theorem reviews and review-driven normalization/path-scope/provenance false-pass repairs",
+    "last_updated_utc": "2026-09-04T23:20:10Z",
+    "last_update": "Wave 28 independently materializes the complete trace-nine row-cleared determinant modulo 2147483647, degree 36815, with reduced rational numerator/denominator degrees 19846/16048. Two 705192-byte artifacts are identical and the clean-room verifier passes eight checks and six mutations. H676 corrects the actual runtime freeze and independently replays Wave 27. All new heavy runs are sequential and throttled to 35% of one core with disk/memory guards. Characteristic-zero reconstruction and real roots remain unresolved; no full suite or endpoint change occurred.",
+    "method": "Historical base bookkeeping synthesis from repository proofs, notes, result JSON artifacts, experiment sources, and a tests/run_all.sh execution; later wave entries use their explicitly stated targeted verification | wave-6 entries appended by lead after independent standalone test verification of all nine agent deliverables | wave-7/8 entries appended by lead after independent standalone verification of every agent deliverable; 65/65 full-suite run 2026-08-14; repository relocated to math/ising3d | wave-9 entries appended by lead after independent standalone test verification of all ten agent deliverables | wave-10 entries appended by lead after independent standalone verification of all ten e90-e99 deliverables plus e100 OA-3x3 synthesis | wave-11 entries appended by lead after independent standalone verification of all four deliverables inside the main checkout plus four independent code reviews | wave-12 entries appended by lead after independent standalone verification of all five deliverables inside the main checkout, five independent code reviews, and lead clean-room recomputation of the SAW block profile and union arithmetic | wave-13 entries appended by lead after independent standalone verification of all eight deliverables inside the main checkout, seven independent code reviews (one blocked by a provider limit and replaced by a lead audit), and one advisory-driven correction of an overstated proof note | wave-14 entries appended by lead after wave-14 acceptance (fullsuite14: 110 total, 109 passed, 1 failed \u2014 tests/test_extensive_3d_r2.py, a dropped artifact-load line, a lead regression; standalone rerun after one-line restore PASS 555 s; full-suite re-run deferred to wave-15 close-out) and independent standalone verification of the six canonical deliverables (2x5 pair-product, sector-saturation refutation, s<=5 extensive-charge class, Peierls-at-incumbent limitation, KW 11111 anchor components, sieve-union endpoint) | wave-15 entries appended by lead after independent standalone verification of all five landed fronts (kw_boundary, char0_quotient, ladder_l8, octahedral, paired_momentum) | wave-20: twelve independent creative fronts plus lead finite-memory SAW front; all thirteen standalone verifiers run by lead, with one review-caught susceptibility ratio wording error corrected and reverified; H506-H583 appended | wave-24 entries appended after all three producers and clean-room verifiers passed, followed by independent theorem reviews and review-driven normalization/path-scope/provenance false-pass repairs | wave-25: four targeted producer/verifier fronts; no full suite | wave-26: one targeted e251 producer and clean-room verifier; no full suite | wave-27: three byte-identical observed template builds, two byte-identical corrected e252 artifacts, and one hardened independent verifier with direct defining-equation normal forms, artifact row/atom arithmetic, both e251 physical witnesses, and six mutations; no full suite",
     "repository_root": "/Users/jinleic/jinleic-workspace/math/ising3d",
-    "interpreter": ".venv/bin/python",
+    "interpreter": "../.venv/bin/python",
+    "runtime_freeze": "../requirements-freeze.txt",
     "status_vocabulary": [
       "theorem",
       "machine_verified",
@@ -2566,6 +2567,78 @@
           "checkpoints/wave26_research_plan.md"
         ],
         "status": "theorem"
+      },
+      {
+        "id": "trace_nine_fixed_leading_norm_envelope_open_2x4",
+        "category": "THEOREM(exact determinant envelope)+METHOD LIMITATION+UNRESOLVED norm",
+        "value": {
+          "graph": "finite open 2x4 layer",
+          "homogeneous_leading_degrees": [2, 2, 2, 3, 4],
+          "transformation_basis_count": 35,
+          "pure_power_bounds": [2, 2, 3, 5, 9],
+          "hilbert_vector": [1, 5, 12, 19, 22, 19, 12, 5, 1],
+          "quotient_rank": 96,
+          "fixed_leading_lift": "35 monic triangular QQ(q) rules with standard tails and no q-dependent leading division",
+          "bounded_nonzero_matrix_entries": 8557,
+          "determinant_numerator_degree_bound": 40693,
+          "determinant_denominator_degree_bound": 33017,
+          "row_cleared_numerator_l1_log2_bound": 2343436,
+          "primitive_coefficient_height_log2_bound": 2384129,
+          "nonzero_witness": {
+            "q": "2",
+            "prime": 2147483647,
+            "determinant_residue": 1660951362,
+            "matrix_rank": 96
+          },
+          "dense_scalar_reconstruction": {
+            "interpolation_nodes_per_prime": 40694,
+            "safe_31_bit_prime_count_lower_bound": 76908,
+            "determinant_evaluation_count_lower_bound": 3129694152,
+            "determinant_evaluation_cap": 10000000,
+            "verdict": "NOT_RUN_CERTIFIED_CRT_LOWER_BOUND_EXCEEDS_CAP"
+          },
+          "theorem": "the nonzero rank-96 trace-nine multiplication determinant has numerator degree at most 40693, denominator degree at most 33017, row-cleared numerator l1 norm at most 2^2343436, and primitive-factor coefficient height at most 2^2384129",
+          "unresolved": "primitive norm, every real q>1 root, repeated-root-safe shifted H0/H1 branch disposition, and open-2x4 emptiness"
+        },
+        "script": "experiments/e252_trace_nine_norm_envelope.py",
+        "how_verified": "Three observed homogeneous-template builds were byte-identical. H675 corrected the primitive-factor height argument. H676 then corrected the false actual-runtime assertion: the freeze now exactly matches Python 3.14.3, python-flint 0.9.0, and FLINT 3.6.0. Two corrected builds passed in 1154.80/1193.07 wall seconds and compared identically with artifact SHA-256 b7e248d9ddfcaf6945b5054fea5980526a2735d7fc59ec4b198dd49b2b739b0c; the mathematical data digest remains df61de8c805dfbeffc7bde36d1015f6e646501a89af8f0e057db045c4fc19b09. The independent scan-reducer verifier directly checks F4-F8, all row and atom arithmetic, and both e251 physical witnesses. Its guarded current-source replay passed eight checks and six mutations in 1966.21 wall seconds, averaging 32.74% of one core.",
+        "artifact_paths": [
+          "results/spectral/trace_nine_lift_template.json.xz",
+          "results/spectral/trace_nine_norm_envelope.json",
+          "proofs/trace_nine_norm_envelope.md",
+          "experiments/e252_trace_nine_norm_envelope.py",
+          "tests/test_trace_nine_norm_envelope.py"
+        ],
+        "status": "theorem"
+      },
+      {
+        "id": "trace_nine_modular_polynomial_determinant_open_2x4",
+        "category": "EXACT COMPUTATION(one finite field)+UNRESOLVED characteristic zero",
+        "value": {
+          "graph": "finite open 2x4 layer",
+          "prime": 2147483647,
+          "quotient_rank": 96,
+          "matrix_nonzero_entries": 8557,
+          "ordered_reduction_steps": 26131,
+          "row_denominator_degree_sum": 33017,
+          "maximum_cleared_entry_degree": 629,
+          "native_scalar_determinants": 60385,
+          "row_cleared_determinant_degree": 36815,
+          "reduced_numerator_degree": 19846,
+          "reduced_denominator_degree": 16048,
+          "reduced_numerator_sha256": "45834f272f6e171ae6072008bfd55556d2b3f39f0621c2f57684872999e61686",
+          "artifact_sha256": "2895eda9e92eea26faf0ee2054bb0be56c4e19e9bc0a95072d295af04c2697f1",
+          "artifact_bytes": 705192,
+          "scope": "complete determinant and reduced rational norm over F_2147483647 only; characteristic-zero coefficients, real roots, and full CRT remain unresolved"
+        },
+        "script": "experiments/e253_trace_nine_structured_determinant.py",
+        "how_verified": "Two bounded producer executions yield byte-identical artifacts; one independent verifier execution passed. The clean-room verifier imports no e253 code and independently reconstructs direct-resultant incidence, exact rational columns with a scan reducer, row factors, the complete native polynomial determinant, reduced norm, and three pure-Python scalar determinants. It validates complete theorem, metadata, and check/mutation transcripts and rejects all six resealed mutations. Guarded producer runs used 1492.65/1519.09 wall seconds and the one verifier run used 1677.70 seconds, averaging 32.65%-32.78% of one CPU core; maximum measured 60-second CPU was 33.10%, and peak RSS remained below 497 MiB. Each producer recorded 0.68 MiB writes; the verifier recorded none.",
+        "artifact_paths": [
+          "results/spectral/trace_nine_structured_determinant.json",
+          "experiments/e253_trace_nine_structured_determinant.py",
+          "tests/test_trace_nine_structured_determinant.py"
+        ],
+        "status": "machine_verified"
       }
     ]
   },
@@ -2614,6 +2687,16 @@
       "name": "wave26_targeted_verifiers",
       "passed": true,
       "detail": "1/1 wave-26 standalone front passed in the lead checkout: e251 ten-gate producer plus clean-room direct-resultant, independent-reducer, scalar-elimination verifier. Three adversarial reviewers returned final PASS after identity, denominator/count, q-guard, and scope hardening. The first wrong-sign normalization pilot was discarded before artifact generation; both landed paths bind the q^(-10k) e248 targets. No primitive norm, emptiness, full 171-script suite, endpoint change, or thermodynamic result is claimed."
+    },
+    {
+      "name": "wave27_targeted_verifiers",
+      "passed": true,
+      "detail": "1/1 wave-27 standalone front passes the current-source guarded replay: eight checks and six mutations. H675 corrects the primitive-height theorem; H676 corrects the previously false actual-runtime assertion, compares two provenance-corrected builds, and verifies installed versions against the freeze. Mathematical data and the full-CRT resource blocker are unchanged. No characteristic-zero norm, root list, full suite, endpoint change, or thermodynamic result is claimed."
+    },
+    {
+      "name": "wave28_targeted_verifiers",
+      "passed": true,
+      "detail": "1/1 wave-28 standalone front passes: two byte-identical complete modular determinant artifacts, plus a clean-room full-polynomial verifier passing eight checks and six resealed mutations. Current metadata, theorem scope, and all check/mutation records are verified. All three runs obey the sequential 35%-of-one-core resource guard. One prime is not a characteristic-zero reconstruction; no full suite or endpoint change ran."
     }
   ]
 }

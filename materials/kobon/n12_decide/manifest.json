@@ -1,0 +1,171 @@
+{
+  "case_count": 15,
+  "case_order": [
+    "simple",
+    "par_noc",
+    "par_conc",
+    "c0",
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7",
+    "c8",
+    "c9",
+    "c10",
+    "c11"
+  ],
+  "claim_scope": "K_gen(12), broad convention, relaxed target-39 15-case split",
+  "engine": {
+    "bytes": 65426,
+    "path": "math/kobon/engine.py",
+    "sha256": "d1ff89892e0bc5130c701365066c0cd43dbdc3d4d1d96e836502115617ff6351"
+  },
+  "evidence_contract": {
+    "SAT": "Boolean candidate only; requires extraction, straightening, and exact-rational verify_selection(minimum=39)",
+    "all_UNSAT_without_proofs": "discovery evidence only",
+    "manifest_binding": "Hashes the current engine and existing CNFs independently; does not prove the engine emitted those CNFs. Byte-regeneration/provenance audit is required before certification",
+    "theorem_grade_upper_bound": "all cases require complete DRAT, drat-trim s VERIFIED, and CNF provenance/cover audit"
+  },
+  "implementation": {
+    "bytes": 34614,
+    "path": "math/kobon/n12_decide/supervise.py",
+    "sha256": "68ac9900bde9b884cf6451ff80ec285160d99b4698f49d69a7c60b5531ade01f"
+  },
+  "instances": [
+    {
+      "bytes": 64621160,
+      "clauses": 1937254,
+      "cube": "simple",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_simple.cnf",
+      "sha256": "c95779cea89bd0a278a7900fe9fc8edc732cd168b18e727d26d61072c8a8bd49",
+      "variables": 65594
+    },
+    {
+      "bytes": 64618615,
+      "clauses": 1937114,
+      "cube": "par_noc",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_par_noc.cnf",
+      "sha256": "842befaff63d3e071efc364abece2795f9b7376f7b117b266d7e73dce05bb2d1",
+      "variables": 70922
+    },
+    {
+      "bytes": 64423253,
+      "clauses": 1925750,
+      "cube": "par_conc",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_par_conc.cnf",
+      "sha256": "15676b1766ec9bd540e75da5f9aa3dcf35275c17552e9091ba9bcffbc49ecb57",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422750,
+      "clauses": 1925815,
+      "cube": "c0",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c0.cnf",
+      "sha256": "353b577eb00b9b17e1b3022369c26c7dc47cd9c8b98ad67ddd7c2fe47ea08446",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422750,
+      "clauses": 1925815,
+      "cube": "c1",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c1.cnf",
+      "sha256": "8467b46a0f72fae17f39ca43d98516e4a3eb6eb430c45081f7c3ce5f8d791090",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c2",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c2.cnf",
+      "sha256": "ba132ee3d8b45ce343979c7b2972e1be15490e583bb1a6765903b036b97cf7da",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c3",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c3.cnf",
+      "sha256": "0e7b69cba76f9af3ab92921e731d0ba1105ca325da4abec26c706b1be1a45d5e",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c4",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c4.cnf",
+      "sha256": "713836793e9eb297fb0de297ea5f8d827255e67d296a1588ad8dce4b606eade1",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c5",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c5.cnf",
+      "sha256": "fc2884c9260436b8f8f1f1d35879f82028ddaa597e33155a4ed31ff1a645b7af",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c6",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c6.cnf",
+      "sha256": "44790a2009f5f695cc23c441dd24708be92e2a13c05c1d6a5e7a6cad43a10a66",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c7",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c7.cnf",
+      "sha256": "78169fc153cca37b3b5dc61a80f0299faac5ec7aef53508717eb47c1ad370e41",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c8",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c8.cnf",
+      "sha256": "317f045db8ebed3628b428ac23132b44697981e500831e0679d547d056f37f27",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c9",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c9.cnf",
+      "sha256": "f0c3742e513ba5edbd709cec98921bf37672dcf1bfeb392ec780b6d788fa8922",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c10",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c10.cnf",
+      "sha256": "c057fb928d26a0b51a665e3a30c17cbc425d61a328f0785c4850b3d48216ae81",
+      "variables": 60194
+    },
+    {
+      "bytes": 64422751,
+      "clauses": 1925815,
+      "cube": "c11",
+      "path": "scratch/kobon/n12/kobon_n12_t39_proof_c11.cnf",
+      "sha256": "8cb80fb61adf153b8836d220c4289d17e4a238efd3437c4a27b1bf1aa8ba9336",
+      "variables": 60194
+    }
+  ],
+  "runner": {
+    "bytes": 1693,
+    "path": "math/kobon/n12_decide/run_cubes.sh",
+    "sha256": "c5d3293f9a4098281e9a6f1b76b9c9e016e59421638484c1d156964ef00a6dcc"
+  },
+  "schema": "kobon-n12-decision-manifest/2",
+  "solver": {
+    "bytes": 392456,
+    "path": "/opt/homebrew/Cellar/kissat/4.0.4/bin/kissat",
+    "sha256": "05d6f3e9c402a1fe8853b0746e384e1b3d1c4a550e255f11daa2461d279aa848",
+    "version": "4.0.4"
+  }
+}

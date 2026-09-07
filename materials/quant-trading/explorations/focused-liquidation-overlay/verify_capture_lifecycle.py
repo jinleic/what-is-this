@@ -89,7 +89,15 @@ def proof_reconnect_keeps_sink():
     try:
         try:
             loop.run_until_complete(
-                asyncio.wait_for(c.subscribe_and(ws_bad, ack_timeout=1), timeout=5))
+                asyncio.wait_for(
+                    c.subscribe_and(
+                        ws_bad,
+                        c._connection_id(),
+                        ack_timeout=1,
+                    ),
+                    timeout=5,
+                )
+            )
             raise AssertionError("should have raised")
         except (TimeoutError, RuntimeError):
             pass
@@ -112,7 +120,13 @@ def proof_reconnect_keeps_sink():
                 raise ConnectionError("dropped after ready")
 
         acked = BoomWS([{"id": 1, "result": None}])
-        loop.run_until_complete(c.subscribe_and(acked, ack_timeout=2))
+        loop.run_until_complete(
+            c.subscribe_and(
+                acked,
+                c._connection_id(),
+                ack_timeout=2,
+            )
+        )
         c.emit_control("disconnect", reason="unit:failure-after-ready",
                        phase="post-ready")
         c.save_state()
@@ -132,13 +146,23 @@ def proof_exact_ack():
     async def expect_reject(collector, replies, timeout=1.0):
         ws = FakeWS(replies)
         try:
-            await collector.subscribe_and(ws, timeout)
+            await collector.subscribe_and(
+                ws,
+                collector._connection_id(),
+                ack_timeout=timeout,
+            )
             return None
         except (RuntimeError, TimeoutError) as exc:
             return type(exc).__name__
 
     try:
-        loop.run_until_complete(c.subscribe_and(good, 2))
+        loop.run_until_complete(
+            c.subscribe_and(
+                good,
+                c._connection_id(),
+                ack_timeout=2,
+            )
+        )
         r_null_bad = loop.run_until_complete(
             expect_reject(c, [{"id": 1, "result": 42}]))
         r_err = loop.run_until_complete(
@@ -168,20 +192,26 @@ def proof_exact_ack():
 def proof_midnight_cap_attribution():
     # Force rotation across days by calling open_for with a different day then
     # verifying caps checked the TARGET day and control lands in the new file.
-    c, out = fresh({"max_bytes_per_day": 5_000})
+    c, out = fresh({"max_bytes_per_day": 100_000})
     c.emit_control("seed")
     old_day = c._file_day
-    new_day = (datetime.strptime(old_day, "%Y%m%d") + timedelta(days=1)).strftime("%Y%m%d")
-    # Pre-fill the NEW day leaving exactly the room the rotation controls
-    # need (~330B measured); the next ordinary write (~130B) must trip with
-    # the NEW day named in the error.
-    c.day_bytes[new_day] = 4_650
-    c.open_for(new_day)  # rotate; controls go to NEW day and count against it
+    new_dt = datetime.strptime(old_day, "%Y%m%d").replace(
+        tzinfo=timezone.utc
+    ) + timedelta(days=1)
+    new_day = new_dt.strftime("%Y%m%d")
+    new_clock = (
+        new_dt.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+        new_dt.timestamp(),
+    )
+    c.open_for(new_day, write_clock=new_clock)
     used_new_after_controls = c._day_used(new_day)
-    assert used_new_after_controls >= 4_800
+    assert used_new_after_controls > 0
+    # Pin the limit to the exact target-day usage after rotation. Any next
+    # record must fail, without depending on encoded control-record size.
+    c.max_bytes_per_day = used_new_after_controls
     tripped = None
     try:
-        c.emit_control("over-budget")
+        c.emit_control("over-budget", write_clock=new_clock)
     except cap.CapExceeded as exc:
         tripped = str(exc)
     assert tripped is not None and new_day in tripped, tripped
@@ -228,15 +258,37 @@ def proof_cap_freeze():
 
 
 def proof_near_cap_startup():
-    """UNIT (no network): pre-fill today's budget so only file_created fits;
-    session_start must trip the cap; run() must exit 3 with the sink closed
-    and session_start NOT written. Purely in-process."""
-    out = Path(tempfile.mkdtemp())
-    c = cap.Collector(out, "wss://example/ws", ["!forceOrder@arr"], None,
-                      10_000_000, 100_000_000)
-    c.load_state()
+    """UNIT (no network): leave exactly enough measured headroom for the
+    file_created record. session_start must trip the real cap, and run() must
+    exit 3 without persisting session_start."""
+    max_day_bytes = 10_000_000
     today = cap.utc_date()
-    c.day_bytes[today] = 10_000_000 - 200  # tiny headroom
+    probe_out = Path(tempfile.mkdtemp())
+    probe = cap.Collector(
+        probe_out,
+        "wss://example/ws",
+        ["!forceOrder@arr"],
+        None,
+        max_day_bytes,
+        100_000_000,
+    )
+    probe.load_state()
+    probe.open_for(today)
+    file_created_bytes = probe._day_used(today)
+    probe.fsync_close()
+    probe.release_lease()
+
+    out = Path(tempfile.mkdtemp())
+    c = cap.Collector(
+        out,
+        "wss://example/ws",
+        ["!forceOrder@arr"],
+        None,
+        max_day_bytes,
+        100_000_000,
+    )
+    c.load_state()
+    c.day_bytes[today] = max_day_bytes - file_created_bytes
     rc = asyncio.new_event_loop().run_until_complete(c.run())
     types = []
     for f in sorted(out.glob("liquidation-capture-*.jsonl")):
@@ -280,10 +332,11 @@ def proof_oi_worker_unit():
     c.load_state()
     calls = []
 
-    def fake_fetch(symbol):  # mocked: deterministic, no socket
+    def fake_fetch(symbol, timeout=5.0):  # mocked: deterministic, no socket
+        del timeout
         calls.append(symbol)
-        return {"symbol": symbol, "row": {"sumOpenInterest": "1"},
-                "url": "mock://", "retrieved_utc": cap.utc_now()[0]}
+        return ({"symbol": symbol, "row": {"sumOpenInterest": "1"},
+                 "url": "mock://", "retrieved_utc": cap.utc_now()[0]}, None)
 
     cap.fetch_open_interest_snapshot = fake_fetch
     c.schedule_oi_snapshot("OKUSDT")
@@ -301,8 +354,9 @@ def proof_oi_worker_unit():
                        10_000_000, 10**9)
     c2.load_state()
 
-    def failing(symbol):
-        return None
+    def failing(symbol, timeout=5.0):
+        del symbol, timeout
+        return None, {"reason": "test-block", "scope": "test"}
 
     cap.fetch_open_interest_snapshot = failing
     c2.schedule_oi_snapshot("BLOCKUSDT")
@@ -365,8 +419,9 @@ def proof_oi_idle_start_then_event():
                       10**7, 10**9)
     c.load_state()
 
-    def fake(symbol):
-        return {"symbol": symbol, "row": {"sumOpenInterest": "1"}}
+    def fake(symbol, timeout=5.0):
+        del timeout
+        return {"symbol": symbol, "row": {"sumOpenInterest": "1"}}, None
 
     cap.fetch_open_interest_snapshot = fake
 
@@ -406,8 +461,9 @@ def proof_worker_cap_trip_stops_collector():
     c.load_state()
     c.day_bytes[cap.utc_date()] = 160  # file_created fits; oi record trips
 
-    def fake(symbol):
-        return {"symbol": symbol, "row": {"sumOpenInterest": "1"}}
+    def fake(symbol, timeout=5.0):
+        del timeout
+        return {"symbol": symbol, "row": {"sumOpenInterest": "1"}}, None
 
     cap.fetch_open_interest_snapshot = fake
     c.schedule_oi_snapshot("TRIPUSDT")
@@ -422,9 +478,9 @@ def proof_worker_cap_trip_stops_collector():
 
 
 def proof_raw_wrapped_equivalence():
-    """UNIT (no network): raw and wrapped liquidation frames produce the SAME
-    event id, dedup cross-shape, and an unknown raw event type fails closed
-    (unknown_raw_event_type control, never an event)."""
+    """UNIT (no network): explicit-stream raw and wrapped liquidation frames
+    produce the SAME event id and dedup cross-shape; missing stream identity
+    and unknown event types both fail closed."""
     out = Path(tempfile.mkdtemp())
     c = cap.Collector(out, "wss://example/ws", ["!forceOrder@arr"], 2.0,
                       10**7, 10**9)
@@ -436,14 +492,15 @@ def proof_raw_wrapped_equivalence():
                "data": {"e": "forceOrder", "E": 999, "o": o}}
     assert cap.event_id_for("!forceOrder@arr", raw) \
         == cap.event_id_for("!forceOrder@arr", wrapped)
-    canon_raw = cap.canonical_force_order("", raw)
+    canon_raw = cap.canonical_force_order("!forceOrder@arr", raw)
     canon_wrapped = cap.canonical_force_order("", wrapped)
     assert canon_raw is not None and canon_wrapped is not None
     assert canon_raw[0] == canon_wrapped[0] == "!forceOrder@arr"
     c.emit_event(canon_raw[0], raw)
     c.emit_event("!forceOrder@arr", wrapped)  # same event, other shape
+    assert cap.canonical_force_order("", raw) is None
     unknown = {"e": "mysteryEvent", "x": 1}
-    assert cap.canonical_force_order("", unknown) is None
+    assert cap.canonical_force_order("!forceOrder@arr", unknown) is None
     c.emit_control("unknown_raw_event_type", event_type="mysteryEvent")
     c.fsync_close()
     c.save_state()

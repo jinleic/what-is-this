@@ -74,19 +74,19 @@ Naming rules:
 
 ## Targets
 
-All seven opened 2026-08-29 from the ranked shortlist in
+The initial seven targets opened 2026-08-29 from the ranked shortlist in
 [`docs/CS_FRONTIER_SCAN_2026-08-29.md`](docs/CS_FRONTIER_SCAN_2026-08-29.md).
 Per-target state, gates and pre-campaign requirements live in each
 `README.md`; verdicts are collected in [`RESULTS.md`](RESULTS.md).
 
-**The third column below is the problem framing as each target was OPENED on 2026-08-29. It is
+**The third column below is the problem framing when each target was opened. It is
 deliberately not maintained.** Current status is owned by [`RESULTS.md`](RESULTS.md) and by each
 `<target>/README.md`; duplicating it here would create a second authority for one fact, which the
 tracking contract above forbids. So `BENCHMARK` in this table means "this is what the target was
 opened to do", never "this is where the target is now" — several have since passed gates A, B
 and C. Read the column for the *problem*, follow the link for the *state*.
 
-| directory | problem | framing at opening (2026-08-29) — NOT current status |
+| directory | problem | framing at opening — NOT current status |
 |---|---|---|
 | [`mceliece/`](mceliece/README.md) | **Classic McEliece hold-out "waterfall" dispute** — is the derivative-flag collapse at $c=2t+3$ real on binary Goppa? | BENCHMARK. Live four-paper ePrint dispute (2026/1747 → 2026/1810 → 2026/1786 → v2), all abstracts owner-read. Gate A is a nine-instance exact $\mathbb F_{2^m}$ nullity census, under an hour, decisive either way. |
 | [`kg/`](kg/README.md) | **Grothendieck constant $K_G$** | BENCHMARK. Triple-arrival target. $6\pi/11\le K_G\le\pi/(2\log(1+\sqrt2))-3.47\times10^{-4}$ (arXiv:2608.11158, owner-read); the tenths-digit corollary is already re-derived here in Arb. Both bounds reduce to finite interval-arithmetic inequalities; gate C attempts a certified improvement. |
@@ -95,6 +95,7 @@ and C. Read the column for the *problem*, follow the link for the *state*.
 | [`oct-rank/`](oct-rank/README.md) | **real tensor rank of octonion multiplication** | BENCHMARK. $18\le\mathrm R_{\mathbb R}(T_{\mathbb O})\le25$ (arXiv:2608.16649, owner-read), narrowed from 15–30 twelve days ago. Gate B attacks rank 24 by Krawczyk certification; lower-bound search is explicitly ruled unsound. |
 | [`rs-pe3d/`](rs-pe3d/README.md) | **high-dimensional product expansion for Reed–Solomon tensor codes** | BENCHMARK. ECCC TR26-150 Conjecture 4.2 (owner-read abstract); lowest duplication risk in the scan — the only existing attempt is an AI proof the authors state is unverified. Near-linear private PCPs depend on it. |
 | [`mm3/`](mm3/README.md) | **additive complexity of rank-23 $3\times3$ matmul** | BENCHMARK. 55 additions (arXiv:2607.28676, owner-read); the "provably optimal for this fixed orientation" claim is ILP/SAT-decidable, and 54 would break the record. |
+| [`xor/`](xor/README.md) | **Exact XOR synthesis for AES MixColumns** (opened 2026-09-06) | Assay of local headroom in the public 88-XOR circuit; exact GF(2) functional replay and independently bounded local resynthesis, not a private benchmark or an AI-superiority claim. |
 
 ## Target-selection surveys
 
@@ -351,3 +352,96 @@ not be fetched).
    Lean proof, machine-checked replay of a full campaign) promotes to `PROVED`.
 7. **A no-go theorem is worth exactly its hypotheses.** Transcribe them; the
    surviving hypotheses are where a construction can live.
+
+## Local-machine resource contract (owner instruction, 2026-09-04)
+
+The owner requires total CPU below 50% and preservation of local disk
+headroom. Launch numerical work through [`tools/resource_guard.py`](tools/resource_guard.py)
+under the process supervisor, never through an unbounded background shell.
+Only audited single-threaded commands that wait for their children may use
+this wrapper. Its constants own the operational thresholds: two concurrent
+slots, CPU pause/resume margin below the owner's ceiling, a 100 GiB disk
+reserve, bounded file/output growth, and a sampled process-group RSS stop.
+Every job also has a finite wall ceiling. Resource stops preserve partial
+evidence and are never successful scientific outcomes.
+
+The guard signals only the process group it created. It cannot impose a
+global quota on unrelated applications or prevent their instantaneous CPU
+spikes; samples and pause/stop events are the verification evidence. Do not
+bypass it with scheduler boosts, additional workers, large artifact copies,
+or unregistered retries. Keep scope-specific resource amendments beside each
+live campaign, preserve failed attempts, and do not delete existing files to
+recover space. [`tools/test_resource_guard.py`](tools/test_resource_guard.py)
+exercises the stop/admission boundaries using small real processes without
+generating CPU or memory pressure.
+
+## Autonomous research supervisor (owner-authorized, 2026-09-05)
+
+A durable macOS user LaunchAgent (`local.jinleic.cs-research`) dispatches one
+bounded research worker at a time against the queue in
+`~/Library/Application Support/cs-research`. Code:
+[`tools/research_supervisor.py`](tools/research_supervisor.py) (service,
+recovery, promotion), [`tools/research_queue.py`](tools/research_queue.py)
+(durable SQLite control/tasks/compute leases) and
+[`tools/research_tools.py`](tools/research_tools.py) (the only tools a worker
+has: bounded read/list/search, draft writes, preregistration, guarded compute,
+one structured finish).
+
+Control, from the workspace root:
+
+```
+python3 -B cs/tools/research_supervisor.py status
+python3 -B cs/tools/research_supervisor.py stop   --reason "..."
+python3 -B cs/tools/research_supervisor.py resume --reason "..."
+```
+
+`stop` is sticky: it disables the store, bumps the control generation, stops
+owned worker and compute groups by kernel birth identity, and survives
+restarts, reinstallation and crashes. Only an explicit `resume` re-enables
+dispatch. Nothing is deleted on stop.
+
+Invariants the machinery enforces, not the model's cooperation:
+
+- **Preregister before compute.** A statement plus every source is committed
+  locally, copied into the producer run and hashed; sealed bytes are immutable
+  and unreadable-if-modified thereafter. An interruption after producer init is
+  recovered from a durable intent journal, never re-minted.
+- **Guarded, sandboxed compute only.** Sealed scripts run under
+  `tools/resource_guard.py` (hash-pinned) plus a deny-default `sandbox-exec`
+  profile: writes confined to the run dir with sealed sources, producer
+  metadata and importable code denied; no network, no fork, no hardlinks. Each
+  compute is probed before launch and refuses if any boundary is open.
+- **No unchanged reruns.** Identical sealed source plus logical argv (inputs by
+  hash) can never execute twice; only a never-started resource wait is reusable.
+- **Independent verification before promotion.** `FROZEN-CERTIFIED` requires a
+  candidate/complete primary with a successful receipt, plus a separate review
+  job with its own preregistration, its own successful receipt, a `verified`
+  outcome and a binding to the primary commit. An incomplete review retains
+  the primary for a later review, rather than inventing a scientific verdict.
+- **Honest recovery.** No structured finish means no infrastructure-authored
+  scientific outcome. Never-started attempts defer with their sealed registration;
+  uncertain or executed-but-unreported primaries go to independent review and
+  cannot be certified without a primary finish. Receipt execution status stays
+  authoritative; storage-limit observations are separate facts.
+- **Bounded execution and pauses.** A compute has at most 600 s charged execution,
+  a prelaunch admission wait no longer than its requested wall, and at most
+  900 s cumulative pause time. The watchdog also bounds total real elapsed time.
+  A worker has 990 s charged time (600 compute + 90 guard grace + 300 turn reserve)
+  and at most 1500 s cumulative pauses. Pauses do not consume execution time;
+  finite pause ceilings retain partial evidence and release owned processes.
+  Live remaining compute budgets include both limits and are rechecked after probes.
+  Other ceilings remain: 64 MiB growth per compute, 96 MiB cumulative evidence,
+  2 GiB sampled group RSS, 100 GiB disk reserve, and capped logs. Resource admission
+  waits retry after 30 s without increasing failure backoff; infrastructure/failure
+  backoff is exponential, capped at 900 s.
+- **Owner-state preservation.** Closeouts update only `autonomy_latest` and
+  producer-derived fields, carrying all existing owner fields through state import.
+  Human-owned inventories are preserved and refresh skips are reported explicitly.
+
+Verification: `tools/test_research_supervisor.py` and
+`tools/test_resource_guard.py` exercise real process suspension/resumption,
+finite pause expiry, guarded sandboxed compute, receipt/queue consistency,
+restart recovery, retained registrations, independent-review dispatch and sticky stop.
+Host-load boundaries use scripted samples; the tests do not generate host load.
+Deployment evidence is retained under
+`.autonomy/supervisor-repair-20260905T074741Z/`.

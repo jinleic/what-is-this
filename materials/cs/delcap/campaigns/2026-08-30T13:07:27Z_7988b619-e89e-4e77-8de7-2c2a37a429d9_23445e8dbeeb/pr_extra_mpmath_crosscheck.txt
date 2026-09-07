@@ -1,6 +1,0 @@
-Additional route-2 (mpmath 150-dps locator, delcap_cert certify_capacity) rows at n=9 from a separate parallel
-run, cross-checked against the route-1 fast-path table. Both intervals must contain the same true C_{n,k},
-so the test is overlap.
-
-C_9,2: route1 [1.227806455819, 1.227806455822]  route2 [1.227806455819, 1.227806485267]  overlap=True  route2_wall=185.8s
-C_9,9: route1 [9.000000000000, 9.000000000000]  route2 [9.000000000000, 9.000000000000]  overlap=True  route2_wall=0.1s

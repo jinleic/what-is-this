@@ -1,26 +1,39 @@
 {
-  "schema": "target-state/1",
+  "current_gate": "H-C3-34-CHAR2-EXPLICIT FROZEN-CERTIFIED: twelve reduced injective-projection points over GF(2048), rank ten, all 66 ten-point subsets independent and all 12 eleven-point deletions circuits. Primary 86/86 and independent bit replay 106/106 checks pass.",
+  "headline": "Explicit characteristic-two nonempty residual-point circuits now certified; the earlier GF(17) complete factorized pool remains E-empty. The spark-2 crossing-converse partition law is unchanged. No global spark-eleven or complete C3 classification claim.",
   "id": "cs/rs-pe3d",
-  "problem": "High-dimensional product expansion for RS tensor codes",
-  "status": "active",
-  "current_gate": "H-44ROW-LAYER FROZEN-CERTIFIED: tied four-row layers 5-8 match the general theorem exactly - size 5 = fibers only (10/72 at n=5/6, both primes); size 6 empty (Thm-CRIT: tied channel needs dA+dB-2=8 != 6, no factor 6-circuits at spark 5); size 7 empty including the full C(36,7) sweep; size 8 = 25 C(n,5)^2 crossings + all-distinct Moebius-8 restrictions with support-set equality against sum_M C(kM,8) at n=8 over GF(11)/GF(13) (8/4 circuits) and the n=5 exhaustive census yielding exactly the 25 crossings.",
-  "latest_campaign": "20260902T135324Z_516630ab_ed03d008f0f6",
-  "latest_campaign_verdict": "FROZEN-CERTIFIED",
-  "headline": "Prediction test of the general theorem on (4xn) tensor (4xn): layers 5-8 behave exactly as predicted - fibers-only at 5, empty at 6 and 7 (C(36,7)=8.35M swept), crossings + first all-distinct Moebius-8 layer at 8 with per-prime PGL set equality (8 GF(11) / 4 GF(13)). 49 asserts, exit 0, CPU 2463.8/5400.",
-  "next_action": "Target rests for the remainder of this session. Future work, if reopened, is limited to: tied four-row size-8 exhaustiveness at n >= 6; four-row sizes 9-17; C1's converse; general all-distinct emptiness below rA+rB; a no-fixed-component C3 characterization; plus the prior spark-2, 2-by-3-row determinant, repeated-index size-8, and sizes 9-10 structural items.",
-  "owner": "jinleic",
-  "updated_utc": "2026-09-02T16:46:10Z",
+  "latest_campaign": "20260905T074127Z_c38d71f1_281e34dd72a6",
+  "latest_campaign_verdict": "FROZEN-INCONCLUSIVE",
+  "latest_note": "POINT remains FROZEN-INCONCLUSIVE; FULLPOOL FROZEN-CERTIFIED has an independent complete replay and 45 verified frozen hashes. Explicit construction is separately FROZEN-CERTIFIED with 20 verified frozen hashes. Failed and warning-bearing attempts are preserved. No universal nonexistence or characteristic-zero existence claim.",
+  "next_action": "Preregister an extension of the fixed analytic construction to other characteristics, or a structural classification beyond these supports. Verify the new field-dependent hypotheses before any promotion. Do not rerun the exhausted empty GF(17) pool. All local compute uses the cs/README.md low-impact resource policy.",
   "open_questions": [
-    "Theorem X spark-2 boundary branches (d_A=2 and/or d_B=2), including possible permutation-shaped supports.",
+    "C3 at (3,4): extend the certified characteristic-two construction to other characteristics or classify further reduced all-distinct no-common-component pencils; existence and minimality are now settled for the explicit GF(2048) family.",
     "Tied four-row size-8 exhaustiveness at n >= 6 (30.3M at n=6 scoped out under the 90 CPU-min cap); all of sizes 9-17 untested.",
-    "C1 converse for the all-distinct size-(r_A+r_B) layer: does every dependent set lie on one Moebius graph (true at every enumerated anchor, unproved generally)?.",
-    "General emptiness of the all-distinct layer below r_A+r_B beyond the registered anchors; slice-device boundary recorded in the general-size prereg.",
-    "A no-fixed-component characterization of the C3 size-(r_A r_B - 1) pencil layer; the converse fails at (3,3) per gate-10.",
     "Closed evaluations or injective geometric parameterizations for the unequal 2-by-3-row size-7 q=5,6,7 determinant sums.",
-    "A structural classification of repeated-index tied-three-row size-8 circuit templates; the all-distinct channel is now closed.",
-    "Structural parameterizations and closed incidence counts for tied-three-row size-9 and size-10 circuits beyond the exact curve/deletion predicates."
+    "A structural classification of repeated-index tied-three-row size-8 circuit templates; the all-distinct channel is closed.",
+    "Structural parameterizations and closed incidence counts for tied-three-row size-9 and size-10 circuits beyond the exact curve/deletion predicates.",
+    "Closed forms for arbitrary finite evaluation-set PGL incidence sums and structural classifications above K for m-factor products."
   ],
+  "owner": "jinleic",
+  "problem": "High-dimensional product expansion for RS tensor codes",
+  "schema": "target-state/1",
   "sources": [
-    "cs/RESULTS.md rs-pe3d section"
-  ]
+    "cs/RESULTS.md",
+    "cs/rs-pe3d/README.md",
+    "cs/rs-pe3d/campaigns/20260904T224223Z_9c13dba4_cbfbca8c94c3/VERDICT.md",
+    "cs/rs-pe3d/campaigns/20260904T152816Z_bb611cd1_455c4fdc03e3/VERDICT.md",
+    "cs/rs-pe3d/campaigns/20260905T050431Z_28f76694_6cffbbf64083/autonomy/finalize.json",
+    "cs/rs-pe3d/campaigns/20260905T052113Z_c8edc589_cabb1348014b/autonomy/finalize.json"
+  ],
+  "status": "active",
+  "updated_by": "cs-research-supervisor",
+  "updated_utc": "2026-09-05T07:42:18Z",
+  "autonomy_legacy_closeout": {
+    "overwritten_owner_fields": {
+      "current_gate": "FROZEN-INCONCLUSIVE: REVIEW of H-C3-36-FAMILY-PRIMEFIELD: INCONCLUSIVE by tool rule only (the sealed verifier exited rc 1 because of a reviewer-side artefact; no substantive discrepancy with the primary was found, and the tool requires an rc-0 receipt for 'verified'). Compute-01 (sealed_intact, 23.3 s, 12 KiB growth) ran review_verify.py (sha ce23987d..., pure Python: own mod-p elimination, own coset DP, own brute force; primary driver not imported; primary JSON read as data). Substantive results, all PASS: R2 brute force over all 372,736 admissible 12-subsets of GF(29)^* yields exactly 448 solutions in 16 scaling orbits, containing the three primary-reported sets and the explicit instance R={2,3,4,7,11,12,19,20,21,23,24,28}; R3 ALL 448 GF(29) solutions pass every exact check (c_1=c_11=0, c_0!=0, no +- pair, injective squares/cubes, 12x12 M over bidegree-(2,3) monomials rank 10, f,g in left kernel and independent, Jacobian 2x g_y+3y^2 g_x = t^2 P'(t) != 0, g(t^3,t^2)=P(t) for all t in GF(29), 66 ten-subsets rank 10, 12 eleven-subsets rank 10 with lambda_a=(t^2-a^2)/(t^2P'(t)) annihilating, full support, corrupted lambda rejected, Q_ab/Q_t coefficient formulas, residual off-grid); recomputed P=[16,0,13,7,13,8,19,21,22,13,23,0,1] matches. R4 the three reported solutions at each of p=37,41,43,47 pass all checks with matching P. R1 own DP reproduces N_29=448, N_37=108, N_41=305,840, N_43=3,360, N_47=2,507,506 and admissible counts 372,736/46,656/515,973,120/6,205,248/5,538,111,488, and the exact set ",
+      "latest_note": "Autonomous evidence at cs/rs-pe3d/campaigns/20260905T052113Z_c8edc589_cabb1348014b; scope is the registered statement only.",
+      "next_action": "Re-run the review verifier scratch/autonomy/20260905T052236-17e9b035bbae/1/review/evidence/review_verify.py with one edit: in coset_dp remove the '|S| <= 12' cap (or cap at 24) so max_admissible is uncapped, keep everything else verbatim, preregister within 60 s and execute once (argv: review_out.json, path to family_primefield.json; expected ~25 s, <16 MiB). Finish verified iff verdict REVIEW-PASS with rc 0."
+    },
+    "correction_evidence": "cs/.autonomy/supervisor-repair-20260905T074741Z/human-field-comparison.json"
+  }
 }

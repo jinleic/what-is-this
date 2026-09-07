@@ -1229,3 +1229,125 @@ exact minimum): `paper55` sigma^0 55 -> **55** (record) · sigma^1 (57) ->
 **Still open.** Owner re-adjudication of the void session-3
 `transpose_check.py` artifact; and the global question of any rank-23 3x3
 scheme below 55, which no campaign here has touched.
+
+## Session 16 (2026-09-03/04, agent `Mm3Sub55`): `sub55-newspace` CLOSED — the full ternary orientation orbit of `laderman23` certifies >= 59 with ZERO <=54-certifiable points; the named landscape is now complete over all five public rank-23 factor triples; verdict FROZEN-NEGATIVE
+
+Frozen campaign:
+`campaigns/20260904T015105Z_49ed8737_988c6df478f1/` (verdict
+`FROZEN-NEGATIVE`; prereg `sub55_newspace_pre_statement.md` committed at
+git `e25d23e` BEFORE any compute, byte-identical copy + provenance in the
+run dir).
+
+**The decided space.** Sessions 5-8 swept the full ternary-unimodular
+orbit $(P,Q,R)\in T^3$ ($|T|=6960$) x sigma-orbit for four factor triples;
+`laderman23`'s verified factors did not exist until session 14 and session
+15 decided only sigma^0. This campaign enumerated and decided the last
+unswept named slice: $3\times6960^3 = 1{,}011{,}460{,}608{,}000$ raw
+scheme-instances, through the proven 145-node factorization (universe
+hash-pinned `bed89ca17f5bd868...` from two independent enumeration shapes)
+to 34,944 admitted data triples (11,648 per sigma class, equal counts and
+equal LB histograms exactly as sigma-conjugation predicts), each decided.
+
+**Result.** Minimum certified total LB = **59** in every sigma class,
+unique at the all-monomial data triple (125,125,125) — reproducing the
+frozen session-15 sigma^0 anchor — with the next tier at 61 (12 triples
+per class), max 86, and **zero rows <= 54**. The +14 transposition gap's
+activity precondition held on all 34,944 triples (zero gap-drops).
+
+**Instruments (dual, upgraded over sessions 7/8 which were DFS-only).**
+Every positive pair-side instance (2,736 per sigma; 8,208 total) decided by
+complete memoized subset-DFS AND kissat 4.0.4 on the slot-availability CNF
+at $T=d$, with **100% instrument agreement**; all 7,029 floor-impossibilities
+carry DRAT->LRAT proofs accepted by BOTH pinned checkers (drat-trim +
+lrat-check, frozen 2e3b2dc snapshots); CaDiCaL 3.0.1 concordant on
+representatives. All `.lrat` retained; full per-instance hash ledger.
+
+**Controls, both directions.** ACCEPT: Brent 729/729 int+fmpz on the
+hash-pinned triple (sha `522ba07f...`); 12 frozen anchor rows reproduced;
+known-true circuits accepted at exact counts (paper55 13/14/28 = 55;
+session-15 witnesses 16/16/16, recount 62); relabeling invariance 30/30;
+145^2 full-row + 400-random direct-vs-table controls. REJECT: gate-deleted
+plant (coverage), operand-perturbed plant (gate value), planted UNSAT floor
+at T=14 with fresh dual-checked certificate + known-SAT chain, planted
+monomial anchors, wrong-action plants. No transposition-derived witness
+used. Independent post-audit: `postcompute_audit.py` — 138 checks,
+0 failures (fresh survivor re-enumeration, histogram identity across
+sigma, ledger coverage exact, retained-proof re-verification, 90 fresh
+dual-DFS pair re-decisions).
+
+**Defects (pre-verdict, preserved).** Two launch failures (a path bug; an
+A3 target-set error — witnesses must be checked against laderman23's own
+locked rows, up-to-sign per the free-sign-change semantics) and one
+instrument repair (kissat's positional DRAT argument had been dropped;
+aborted per prereg, fixed, pre-flighted). Attempt logs retained
+(`runner_log.attempt*.txt`, `nohup_runner.attempt*.out`).
+Post-freeze owner audit corrected one display-only arithmetic typo:
+$3\times6960^3=1{,}011{,}460{,}608{,}000$.  The frozen `report.md` prints
+$3{,}034{,}381{,}824{,}000$ after multiplying by three twice; the
+pre-registration, `campaign_result.json`, reduction identity
+$3\times145^3\times48^3$, and every enumerated count use the correct value.
+
+**Rule-7 scope sentence.** This campaign swept exactly `laderman23` under
+the full ternary-unimodular product and the 3-element sigma orbit under the
+proven automorphism family; it does not sweep any decomposition outside the
+five named public ones, non-ternary alphabets, GL(3,Q)/GL(3,Z) beyond T,
+actions outside the proven family, anti-cyclic BA swaps, or upper-bound
+synthesis; it establishes **no universal no-54 claim**. An LB is a lower
+bound only: no circuit or optimality claim is made.
+
+**Where the frontier now stands.** The named landscape — five public
+rank-23 factor triples x full ternary orientation orbits x sigma — is
+certified >= 55 end to end, with zero <=54-certifiable points. Remaining:
+(i) `laderman23-orbit-min` — the orbit's exact minimum (preregistered
+next; expected 62 exact via aux-1 pushes on the 36 LB-61 triples);
+(ii) public decompositions beyond the five named (need primary
+source-locks); (iii) the genuinely global question, for which candidate
+(c)-style rank-profile bounds were CLOSED here as provably non-decisive
+(universal per-side bound sharp at rank-9 => total >= ru+rv-4 <= 42 < 54).
+
+## Sixth public source locked; census capped — CLOSED (Main, 2026-09-04)
+
+[Run 20260904T035648Z_a4bf0c37_d790a569af43](campaigns/20260904T035648Z_a4bf0c37_d790a569af43/VERDICT.md)
+is **FROZEN-INCONCLUSIVE** for its full census, with an independently verified
+sixth-source lock: **S1_smirnov_repo_139**, 23 products, 139 nonzeros,
+ternary, sigma-zero non-axis projective-class counts **(20,14,14)**.
+The fixed-order selection no longer depends on ternarity; ternarity only
+chooses its registered census path.
+
+A driver-free source replay passed all **58 checks**, including all 729
+standard tensor coefficients, the classical positive/deleted-product negative
+controls, and exact invariant separation from all five frozen triples under
+the registered equivalence action. This is not arbitrary linear-isotopy
+classification or a new addition-count record.
+
+The sampled 64 MiB growth cap stopped the census with **520 pair decisions**
+and **zero complete safe orientation rows**. Peak sampled host CPU was
+41.98%, group RSS 127.8 MiB; actual growth was 64.133 MiB. The prefix is
+preserved but has no independent full-census audit or negative promotion.
+All **1,872 frozen checksums** pass. Prior failed attempts and stale smoke
+artifacts were preserved, not deleted.
+
+A successor needs a preregistered resource-compatible census/evidence
+strategy and independent replay before reusing the saved prefix. The former
+five-source results remain scoped to those five; this sixth source's full
+orientation landscape is still unresolved. No universal no-54 claim follows.
+
+
+<!-- cs-autonomy:20260905T043238-e8dce0efdffe:1 -->
+## Autonomous mm3 closeout — 2026-09-05 05:01 UTC
+
+**FROZEN-CERTIFIED**. REVIEW of H-MM3-RESUME-BOUNDARY-1: VERIFIED within its registered scope (resumable ledger mechanism + retained 520-pair prefix integrity; no census progress, no addition-count or no-54 claim). Independent verifier review_verify.py (own code, primary driver read only as data; sealed sha256 cc1b781e…, one receipt rc 0, 2.0 s wall, 8 KiB growth) reproduced every registered finite claim: R1 prefix sha256 0adc781e…0e09, 520 unique keys = sigma|side|a|b, U/V/W 256/224/40, 8 SAT / 512 UNSAT, all UNSAT rcs 0 with lb=d+1/floor false, SAT cert null with lb=d/floor true, all 512+512 present cnf/lrat files hash to recorded values (8+8 missing = the SAT records), 0 anomalies. R2 own chain implementation of the documented H_0/H_i gives H_520 = 40887cc0…134e (= outA = outC) and H_200 = 8b875d99…8aba (= ckpt_200.json), ckpt last_key/tallies equal my recomputation over lines 1..200, outA.final == outC.final, six primary tampers rejected under the documented rules. R3 arithmetic reproduced exactly: cnf 44,758,113 B + lrat 17,139,872 B = 119,035 B/decision vs 724 B/decision ledger; 560 vs 92,646 decisions per 64 MiB. R4 triple ternary, 139 nonzeros (49,45,45), all 729 Brent identities hold in exactly one orientation (roles 0,1,2; my convention needs no transpose, the primary's convention reports transpose — a labeling difference, not a contradiction). Beyond the primary: R5 own pure-Python LRAT checker verified 5/5 deterministically sampled UNSAT pairs (0|U|20|1, 0|U|118|33, 0|V|40|38, 0|V|107|122, 0|W|77|115) independently of the recorded return codes; each proof is a single RUP step, i.e. these pair instances are unit-propagation refutable. Two findings: (a) the primary's open note is resolved — the locked triple hash cf9d004c…332c IS reproduced by the frozen lock's canonical form json.dumps({"U":U,"V":V,"W":W}, sort_keys=True) (independent_source_lock_audit.py lines 294–297); successors should pin this form. (b) Design gap, not a claim failure: the primary's checkpoint validator checks tallies only by n and sum consistency, so a compensated tamper (sat+1, unsat-1) passes validation (compensated_tamper_caught_by_primary_rules=false); the prereg wording 'refuse on any tally mismatch' is only met for the six tested tampers. A successor must recompute tallies from ledger lines 1..n (the chain already binds those lines, so this is cheap). Evidence: review/evidence/review_out.json, receipt compute-01.
+
+Evidence: [`mm3/campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd`](campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Harden the resume boundary before any census successor: validator must recompute side/sat/unsat tallies from ledger lines 1..n (chain-bound) instead of sum checks, and pin the canonical triple serialization json.dumps({'U','V','W'}, sort_keys=True) that reproduces cf9d004c...332c; certify with the compensated (sat+1, unsat-1) tamper plus the six existing tampers on the retained 520-line ledger.
+
+
+<!-- cs-autonomy:20260905T091934-6caca9f7f32f:1 -->
+## Autonomous mm3 closeout — 2026-09-05 10:15 UTC
+
+**FROZEN-CERTIFIED**. REVIEW of H-MM3-ENCODER-FIDELITY-1: VERIFIED within its registered scope (encoder fidelity on every retained hash oracle + sigma^0/1/2 instance-universe registration; no solving, no census progress, no addition-count or no-54 claim). Own pure-Python verifier review_encoder_replay.py (sha256 4f95c925…49c5, git c6de5673) written from the frozen sources read as data (new_decomp_offdiag 143-360/757-820/905-924, gate_b_floor 38-74, orbit_min_run 244-331/477-480/2270-2276/2330-2363/2506-2523, GAP=14) with different design (flat 9-tuples, adjugate inverse, orbit closure then sort, early-exit tables, index-merged rep lists); primary gate script neither imported nor copied, its registration JSON read only as data. One compute receipt rc 0, sealed_intact, 36.2 s charged, peak RSS 30 MB, growth 250 KB. All 17 preregistered booleans true: R1 census 19683/11808/6960/48/4656/4608, 145 orbits x 48 partition 6960, unique factorisation, mono 125, pin sha256 prefix bed89ca17f5bd868 = log; R2 tables 256/224/128, 224/128/256, 128/256/224 with 1024 survivors each (dense count agrees, lexicographic, mono-node counts 735/259/29/1 in all three classes, direct-sandwich sample + negative grid consistent, sigma^0/1 = log); R3 attempt-3 pair file = 660 records (608 sigma^0 then 52 sigma^1), the 608 keys equal my ordered sigma^0 pair-key list in FULL ORDER (closes the primary's 520-prefix-only order check), the 52 equal my first 52 sigma^1 keys, 0 mismatches over cnf_sha256/cert.cnf_sha256/vars/clauses/d/lb/cert-presence/agree; R4 attempt-4 = first 520 sigma^0 keys in order, 0 mismatches, decisions equal attempt-3; R5 1024 row keys = my sigma^0 survivor keys in order, side_lbs = the three pair lbs, total_lb = sum+14 for all rows (min 63; 0 rows <= 54 in retained data only); R6 primary registration reproduced from my own lists: pair_keys_sha256 929d5d46…bd29, row_keys_sha256 6d4367a7…69b8, combined 96c3ef1a…2488, per-class instance tables equal row by row (3x608) with instances_sha256 1af9f689…ed9c / 894f316d…cca3 / 9cddb483…8330, identical d histograms; the primary's two false booleans are exactly the two that assumed 608 records, so its 'wrong count prior' explanation is confirmed and its PASS-on-every-oracle conclusion is correct. Informational (no claim): exact CNF-hash overlap between sigma classes is small (|s0∩s1|=28, |s0∩s2|=16, |s1∩s2|=8 of 608), so the candidate 'sigma permutes the instance universe' idea is not supported at identical-CNF level and needs a class-set canonical form to test.
+
+Evidence: [`mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0`](campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
+
+Next registered-work proposal: Driver-free sigma^1 pair census chunk 1 (H-MM3-SIGMA1-PAIRS-1): sealed pure-Python encoder (now doubly validated, 1180 oracle hashes) + in-sandbox pysat at T=d for the 608 sigma^1 instances; SAT models verified by clause evaluation, UNSAT accepted only after an own UP/RUP refutation replay; resumable ledger of (key,d,cnf_sha256,sat,lb) in <=300 s / <=8 MiB chunks, with the 52 retained sigma^1 decisions (lines 609-660 of attempt-3) as cross-instrument controls that must agree.

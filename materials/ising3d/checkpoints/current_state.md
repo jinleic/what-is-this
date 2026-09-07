@@ -1,6 +1,132 @@
 # Current state
 
-**Snapshot:** 2026-08-24, wave 26 landed the first nonzero open-`2x4` trace-nine projection; the targeted producer and clean-room verifier pass.
+**Snapshot:** 2026-09-04, wave 28 materialized and independently verified the complete trace-nine determinant modulo `2147483647`; the characteristic-zero norm and real roots remain open. All new heavy work is sequential, low-priority, and throttled below the user's 50% CPU ceiling.
+
+- **Guard provenance boundary (operator note, 2026-09-05).** `tools/resource_guard.py` was
+  hardened after `H681` was confirmed: bounded teardown, a 30 s limit on descendants it may not
+  measure, `unmeasurable_processes`/`unmeasurable_at_exit` reporting, and a reason the supervisor
+  classifies as `UNACCOUNTABLE` instead of `RESOURCE_BLOCKED`. `experiments/e254_trace_nine_bounded_canary.py`
+  imports the guard and pins it in `meta.source_sha256`, so
+  `results/spectral/trace_nine_bounded_canary.json` and
+  `results/spectral/trace_nine_bounded_canary_replication.json` pin guard bytes that are no
+  longer in the working tree. Re-running `tests/test_trace_nine_bounded_canary.py` against either
+  file now fails on source provenance **by construction, not by data corruption**: their `data`
+  is byte-identical and their `data_sha256` still matches. The accepted guard bytes
+  (`sha256 e3b76676d18ed9f2b04b385e6da361528183a717061932c923e98cd22f7720ef`) are snapshotted at
+  `data/ising3d/accepted_sources/h681/` with a 16-of-16 pin manifest; no recorded hash was
+  resealed and nothing was deleted. A re-run was refused by the supervisor as an identical retry
+  of `0001_H681`, which is correct. The next producer must pin the current guard; do not reseal or
+  re-derive the two canary artifacts.
+
+- **Wave 28 (landed, one exact producer/verifier front):**
+  1. **A complete modular polynomial replaces isolated determinant witnesses.**
+     The pinned FLINT `3.6.0` native polynomial-matrix API is available despite the
+     missing Python binding. Exact `F_2147483647(q)` reduction produces all 96
+     multiplication columns, 8,557 nonzero entries, and 26,131 ordered reductions.
+     After row clearing, native interpolation computes the full degree-36,815
+     determinant with 60,385 exact scalar determinants. Restoring row scales and
+     cancelling gives numerator degree `19846` and denominator degree `16048`.
+     Direct determinants at `q=2,3,5/3` agree; q=2 reproduces `1660951362` (`H677`, `e253`).
+  2. **Scope remains one finite field.** No characteristic-zero coefficients or
+     real roots were reconstructed. The Wave-27 full-CRT resource blocker is
+     not bypassed merely by making one prime inexpensive. Exact characteristic-zero
+     entry/row normalization is the next ranked envelope investigation.
+  3. **Reproducibility and resource limits pass.** Two builds are byte-identical:
+     705,192 bytes, SHA-256
+     `2895eda9e92eea26faf0ee2054bb0be56c4e19e9bc0a95072d295af04c2697f1`.
+     One independent direct-resultant/scan-reducer verifier execution recomputes
+     the full matrix and polynomial, checks the complete theorem/provenance/
+     transcripts, and passes eight checks plus six resealed mutations. Guarded
+     builds used 1,492.65/1,519.09 wall seconds; the single verifier used 1,677.70 seconds.
+     Average CPU stayed `32.65%-32.78%` of one core; the largest observed
+     60-second window was `33.10%`. New determinant runs stayed below 497 MiB
+     peak memory and wrote only two 689 KiB JSON copies (`H678`).
+  4. **Runtime correction and continuation.** `H676` corrects the old actual-runtime
+     claim: the freeze now matches Python `3.14.3`, python-flint `0.9.0`, and
+     FLINT `3.6.0`; no packages were installed or removed. `H679` completed the
+     bounded exact first column: 37 entries, degrees at most `181/145`, maximum
+     numerator `ceil(log2(l1))=224`, and denominator scalar-LCM bit length 123.
+     Its guard recorded `32.86%` average CPU, `33.09%` maximum 60-second window,
+     `1652.6 MiB` monitored peak memory, and zero process writes. These are
+     first-column observations, not an aggregate height certificate. `H680`
+     completed its maximum-degree column calculation (96 entries, degrees
+     `629/513`, numerator `ceil(log2(l1))=1771`) but FAILED the resource gate:
+     the guard stopped it at `2064.1 MiB`, above the 2048 MiB threshold.
+     CPU averaged `32.86%`, process writes were zero, and no full sweep followed.
+     `H681` reduced the retained working set and streamed the column digests, then
+     replicated both canary digests (`e254`) with a successful guarded exit: 677.95 CPU s,
+     2057.47 wall s, 32.95% average CPU, 33.01% maximum 60-second window,
+     `1994260480` bytes (`1901.9 MiB`) monitored peak, 4096 bytes written; the
+     independent verifier passed in 648.72 CPU s at `1335.1 MiB` peak (CONFIRMED,
+     2026-09-05). Limits remain unchanged. `H682`/`e255` is authored next: an exact
+     rational-point sign census of the characteristic-zero norm at six `q>1` points,
+     pending its guarded run and independent verifier. `H683` (supervisor cycle 2,
+     2026-09-05) launches `e255` unchanged; its artifact
+     `results/spectral/trace_nine_exact_sign_census.json` does not exist yet.
+     Cycle-2 planner turns 1 and 2 both ended with exit 153 (planner stdout hit the
+     harness 1 MiB cap; turn 1 also hit a schema-validator strict-mode error) before any
+     producer launched, so `H683` recorded a launch that never happened. `H684` (turn 3,
+     2026-09-05) re-issues the identical unexecuted `e255` launch after checking its
+     dependencies; no `e255` run, fingerprint, or artifact exists at that point.
+     `e254` is landed; `e256` is next unused, and there are 173 test scripts. No full suite,
+     endpoint change, thermodynamic claim, deletion, commit, or push occurred.
+     `H684` then ran and was CONFIRMED (2026-09-05): exact signs `-1,+1,-1,+1,-1,-1` at
+     `q=5/4,3/2,5/3,2,3,5`, six agreements with the e253 reduced modular norm, four landed
+     residue matches, and four exact real-root brackets `(5/4,3/2)`, `(3/2,5/3)`, `(5/3,2)`,
+     `(2,3)` for the norm numerator `N` (the census `summary.sign_change_brackets` has four
+     entries; earlier text here said three); producer guard `680.62` CPU s, `1559117824` bytes monitored
+     peak, `118784` bytes written; verifier `557.33` CPU s, `1190625280` bytes peak. `H686`
+     (cycle 3, turn 5) authors `e256_trace_nine_exact_bracket_bisection.py`: four exact rational
+     bisection steps per bracket under the unchanged e255 specialization, artifact
+     `results/spectral/trace_nine_exact_bracket_bisection.json` pending. A refined bracket
+     proves at least one real root of `N` inside it and nothing about uniqueness, multiplicity,
+     roots elsewhere, coefficients, height, or the shifted `H0/H1` branch. `H686` was
+     REVIEW_REJECTED before execution (2026-09-05T10:09:12Z): `e256` hard-coded three brackets
+     and asserts against the census list of four, so it would fail at `load_census` and write
+     nothing; no artifact exists. `H688` (cycle 4, turn 7) authors
+     `e257_trace_nine_four_bracket_bisection.py`: bracket list derived from the census signs
+     and asserted against the artifact, all four brackets, depth 3 (twelve points; first
+     midpoints `11/8`, `19/12`, `11/6`, `5/2`), artifact
+     `results/spectral/trace_nine_four_bracket_bisection.json` pending its guarded run and
+     independent verifier. `e258` is next unused.
+
+- **Wave 27 (landed, one exact producer/verifier front run by the lead):**
+  1. **The e251 leading quotient now lifts exactly over `QQ(q)`.** The five homogeneous
+     leading forms of degrees `(2,2,2,3,4)` have a deterministic 35-element grevlex
+     transformation basis with pure-power bounds `(2,2,3,5,9)`, Hilbert vector
+     `(1,5,12,19,22,19,12,5,1)`, and rank 96. Substitution of the physical `F4`-`F8`
+     equations and fixed leading coefficients yields 35 monic triangular rules with standard
+     tails, without any q-dependent leading division (`H672`, `e252`).
+  2. **A fraction-free `96x96` multiplication envelope is now certified.** Exact denominator
+     propagation, row clearing, and a Leibniz bound over 8,557 nonzero entries give determinant
+     numerator degree at most `40693`, denominator degree at most `33017`, and row-cleared
+     numerator `l1` norm at most `2^2343436`. Polynomial cancellation is not height-monotone;
+     the standard factor-height bound instead gives primitive-factor coefficient height at most
+     `2^2384129`. The e251 positivity proof covers every inherited denominator atom for real
+     `q>1`; independent rebuilds at `q=2` and `q=5/3` reproduce both physical witnesses
+     (`H672`, corrected by `H675`).
+  3. **The norm was not materialized.** Certified dense scalar interpolation under the
+     conservative primitive bound would require 40,694 nodes for each of at least 76,908 safe
+     31-bit primes, hence at least 3,129,694,152 exact determinant evaluations, above the pinned
+     cap of 10,000,000. This is a resource obstruction for that route, not a proof that a
+     structured exact determinant algorithm cannot succeed. There is therefore no primitive
+     polynomial whose real `q>1` roots can yet be classified, and open-`2x4` emptiness remains
+     unresolved (`H673`, corrected by `H675`).
+  4. **Determinism and independent verification pass.** Three observed homogeneous-template
+     builds, including one from the final hardened source, were byte-identical (payload SHA-256
+     `090622254128af90a69b2c4376cf2c72b442286690be7db0d224a82eaf9f3e63`,
+     compressed SHA-256
+     `ef579cec3f1ed4cc1f607e209100ffdc686e776b4aaa82facbd4b53f6a09f34b`);
+     the corrected final JSON artifact was produced twice byte-identically (SHA-256
+     `b7e248d9ddfcaf6945b5054fea5980526a2735d7fc59ec4b198dd49b2b739b0c`,
+     after the H676 actual-runtime correction).
+     The independent verifier uses a different scan reducer, directly reduces all five defining
+     equations, audits stored row and denominator-atom arithmetic, rebuilds both e251 physical
+     witnesses, and passed 8 checks plus all 6 claim-falsifying mutations. The artifact pins the
+     actual `math/.venv` dependency freeze after `H676` corrected the previous
+     false environment claim. The current guarded verifier passed again in
+     1,966.21 wall seconds at 32.74% average of one core. Allocation and the
+     current test count are superseded by the Wave-28 block above.
 
 Frozen Wave-26 plan and decision contract: `checkpoints/wave26_research_plan.md`.
 
@@ -281,6 +407,22 @@ Frozen Wave-24 plan and decision contract: `checkpoints/wave24_research_plan.md`
 **Interpreter:** `.venv/bin/python`  
 **Research status:** active exact-research program; **the 3D Ising model is not solved**.
 
+### Supervisor outcome 0003_H686 — 2026-09-05T10:09:12Z
+
+- H686: **REVIEW_REJECTED**; bounded scope only.
+- Evidence: `math/ising3d/campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0003_H686/evaluation.json`.
+- Artifact: `results/spectral/trace_nine_exact_bracket_bisection.json`.
+- Guard verdicts: `{"producer":{},"verifier":{}}`.
+- Next prompt: Continue from H686 (norm): REVIEW_REJECTED. Choose the highest admissible bounded exact test in the ranked queue. Read the linked evaluation, current checkpoint, failed routes and hypothesis ledger. State falsifiable predictions and scope; obtain independent pre-execution code review, run one bounded producer and its independent verifier, then checkpoint and continue. Do not repeat an unchanged failed input, rerun completed canaries, or interpret an inner PASS as a successful resource exit. Preserve nice 19, one thread, 35% of one core, the monitored 2 GiB stop, 50 GiB free reserve, bounded writes, and no deletions.
+
+### Supervisor outcome 0002_H684 — 2026-09-05T10:00:15Z
+
+- H684: **CONFIRMED**; bounded scope only.
+- Evidence: `math/ising3d/campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0002_H684/evaluation.json`.
+- Artifact: `results/spectral/trace_nine_exact_sign_census.json`.
+- Guard verdicts: `{"producer":{"average_cpu_percent":33.1052,"child_exit_code":0,"command_wall_seconds":2055.937691,"cpu_seconds":680.622065,"free_disk_bytes":146775408640,"guard_exit_code":0,"max_60s_cpu_percent":33.07,"peak_memory_bytes":1559117824,"reason":"completed","unmeasurable_at_exit":0,"unmeasurable_processes":0,"wall_seconds":2055.937694,"written_bytes":118784},"verifier":{"average_cpu_percent":33.1041,"child_exit_code":0,"command_wall_seconds":1683.565831,"cpu_seconds":557.328685,"free_disk_bytes":146348740608,"guard_exit_code":0,"max_60s_cpu_percent":33.6104,"peak_memory_bytes":1190625280,"reason":"completed","unmeasurable_at_exit":0,"unmeasurable_processes":0,"wall_seconds":1683.565834,"written_bytes":0}}`.
+- Next prompt: Continue from H684 (norm): CONFIRMED. Choose the highest admissible bounded exact test in the ranked queue. Read the linked evaluation, current checkpoint, failed routes and hypothesis ledger. State falsifiable predictions and scope; obtain independent pre-execution code review, run one bounded producer and its independent verifier, then checkpoint and continue. Do not repeat an unchanged failed input, rerun completed canaries, or interpret an inner PASS as a successful resource exit. Preserve nice 19, one thread, 35% of one core, the monitored 2 GiB stop, 50 GiB free reserve, bounded writes, and no deletions.
+
 ## Cold-resume orientation
 
 The repository studies the simple-cubic nearest-neighbour Ising model using exact finite-volume arithmetic, the 2D Onsager/Kaufman solution as a control, exact finite-lattice series, rigorous critical bounds, and scoped algebraic/integrability obstructions.  Begin with:
@@ -479,3 +621,11 @@ mathematical regression: recheck that single test in isolation before treating i
 - Do not use `0.221654626` to fit or select a derivation; it is comparison-only.
 - Treat ranks over the two recorded primes as rigorous lower bounds over `Q`; two-prime agreement is a cross-check, not a universal rational-rank proof.
 - Preserve result scopes exactly: finite, ansatz-bounded, numerical, external, or theorem.
+
+### Supervisor outcome 0001_H681 — 2026-09-05T05:50:24Z
+
+- H681: **CONFIRMED**; bounded scope only.
+- Evidence: `math/ising3d/campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0001_H681/evaluation.json`.
+- Artifact: `results/spectral/trace_nine_bounded_canary_replication.json`.
+- Guard verdicts: `{"producer":{"average_cpu_percent":32.9506,"child_exit_code":0,"command_wall_seconds":2057.466614,"cpu_seconds":677.948307,"free_disk_bytes":147643437056,"guard_exit_code":0,"max_60s_cpu_percent":33.0081,"peak_memory_bytes":1994260480,"reason":"completed","unmeasurable_processes":0,"wall_seconds":2057.466618,"written_bytes":4096},"verifier":{"average_cpu_percent":33.1266,"child_exit_code":0,"command_wall_seconds":1958.315775,"cpu_seconds":648.723518,"free_disk_bytes":147325222912,"guard_exit_code":0,"max_60s_cpu_percent":33.0926,"peak_memory_bytes":1399898112,"reason":"completed","unmeasurable_processes":0,"wall_seconds":1958.315779,"written_bytes":0}}`.
+- Next prompt: Continue from H681 (norm): CONFIRMED. Choose the highest admissible bounded exact test in the ranked queue. Read the linked evaluation, current checkpoint, failed routes and hypothesis ledger. State falsifiable predictions and scope; obtain independent pre-execution code review, run one bounded producer and its independent verifier, then checkpoint and continue. Do not repeat an unchanged failed input, rerun completed canaries, or interpret an inner PASS as a successful resource exit. Preserve nice 19, one thread, 35% of one core, the monitored 2 GiB stop, 50 GiB free reserve, bounded writes, and no deletions.

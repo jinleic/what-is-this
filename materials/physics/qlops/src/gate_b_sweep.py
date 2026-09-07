@@ -8,12 +8,14 @@ shifting > 2x vs the baseline (m=1) falsifies cross-paper comparability
 along this axis.
 
 Axis 2 -- magic-state protocol swap: 7-T/Litinski 15-to-1 baseline vs
-zero-level CCZ constants (arXiv:2605.21867, [REPORTED] until ../msd gate A
-verifies c~300 within 2x).  Compared on
+zero-level CCZ constants (arXiv:2605.21867, [REPORTED] until reproduced).
+Compared on
   (a) feasibility under the paper's own rule p_out <= p0 for each Table-6
       target at physical error p in {1e-3, 1e-4};
-  (b) space-time per magic state: unit_qubits*plain_cycles (Litinski) vs
-      22*24 qubit-cycles (zero-level).
+  (b) the frozen legacy arithmetic: unit_qubits*plain_cycles (Litinski) vs
+      22*24 (zero-level). The latter mixes syndrome-cycle and circuit-layer
+      time units; it is preserved only to reproduce the frozen Gate-B artifact.
+      zero_level_provenance.py Revision 4 supplies the common-unit comparison.
 
 Run: python3 src/gate_b_sweep.py <out_json>
 """
@@ -125,7 +127,7 @@ def msd_axis():
         m = re.match(r"15to1_(\d+),(\d+),(\d+)", row["proto"])
         dX, dZ, dm = map(int, m.groups())
         spacetime_base = litinski_unit_spacetime(dX, dZ, dm)
-        spacetime_zero = z["spacetime_qubitcycles"]
+        spacetime_zero = z["legacy_gate_b_spacetime_mixed_units"]
         for p_phys, ptag in ((1e-3, "p=1e-3"), (1e-4, "p=1e-4")):
             pL_zero, feas = zero_level_feasibility(row["p0"], p_phys)
             rows.append(dict(

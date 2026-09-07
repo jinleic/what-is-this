@@ -2,17 +2,21 @@
   "schema": "target-state/1",
   "id": "physics/na-compiler",
   "problem": "Certified-optimal neutral-atom transport baselines",
-  "status": "active",
-  "current_gate": "Gate B 4x4 full exhaustion complete; global microsecond optima certified",
-  "latest_campaign": "20260830T021851Z_6e74b176_4683ec3d3949",
-  "latest_campaign_verdict": "RUNNING",
-  "headline": "n=5/n=6 global optima closed; consistent-A* dependency dropped",
-  "next_action": "Optional n=7 if wall-time budget allows",
+  "status": "paused",
+  "current_gate": "Strict fixed-placement batch-count headroom: FROZEN-NEGATIVE; earlier Gate A/B results retain their historical scope.",
+  "latest_campaign": "20260906T012803Z_3c409686_c44470e4c9b4",
+  "latest_campaign_verdict": "FROZEN-NEGATIVE",
+  "headline": "12 circuits / 242 transitions: QMAP, DSATUR, largest-first and smallest-last each attain 438 exact-optimum batches; stdlib raw-trace replay and explicit clique lower bounds pass.",
+  "next_action": "No LLM batching search on the tested benchmark. Reopen only with demonstrated classical headroom on a preregistered different distribution or a changed placement/routing question; include current IDS/relaxed routing before any state-of-the-art comparison.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "workspace-architecture-fix",
+  "updated_utc": "2026-09-06T01:42:06Z",
+  "updated_by": "Main: bounded scientific resume",
   "sources": [
+    "physics/na-compiler/README.md",
     "physics/RESULTS.md",
-    "physics/PROGRESS.md:72-103"
+    "physics/PROGRESS.md",
+    "physics/na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/status.json",
+    "physics/na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/overview.json",
+    "physics/na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/clique-verification.json"
   ]
 }

@@ -1,0 +1,26 @@
+{
+  "schema": "sbb11-deposit-version-delta/1",
+  "target": "Exact Figure12 / Appendix H.2 Gross circuit in arXiv:2603.05481v1",
+  "prior_campaign": "campaigns/20260907T070841Z_1a7d72be_800984f3c5a1",
+  "reason": "The closed new-window delta covered repository and arXiv updates but not the author's machine-readable circuit deposit. This successor adds that distinct authoritative channel without reopening closed checks.",
+  "canonical_preregistration": "This file is staging input only. Copy exact bytes to the successor inputs/preregistration.json and verify its SHA256 against manifest.prereg_sha256 before any live deposit retrieval.",
+  "baseline": {
+    "concept_doi": "10.5281/zenodo.18853600",
+    "version_id": "18853601",
+    "version_doi": "10.5281/zenodo.18853601",
+    "publication_date": "2026-03-03",
+    "created": "2026-03-05T11:10:57.484765+00:00",
+    "modified": "2026-03-05T11:10:57.778855+00:00",
+    "file": {"key": "STIM_LRCircuits.zip", "bytes": 3152452, "publisher_checksum": "md5:0c8a51f4c9c51ec96c398270bf36b0fc"},
+    "source": "campaigns/20260907T012847Z_9687c876_4f597eeab895/zenodo_versions.reader.txt"
+  },
+  "retrievals": ["https://doi.org/10.5281/zenodo.18853600", "https://zenodo.org/api/records/18853601/versions/latest"],
+  "scope": "Resolve the concept DOI to its current published version and compare version identity, publication/modification metadata and publisher file descriptors with the pinned baseline. Follow exact publisher links only as needed to resolve the current version. A different/new-to-baseline version is eligible even if publication predates the last campaign close, because this deposit delta was not previously performed.",
+  "eligibility": "Inspect newly exposed versions, materially changed construction-file descriptors, or newly modified target-relevant metadata/links. If version, scientific metadata and file descriptors are unchanged, do not download or inventory the closed zip again. Ignore changing usage statistics as construction evidence.",
+  "provenance": "Store complete response bytes, requested/final URLs and redirect resolution, retrieval UTC, HTTP outcomes, SHA256, concept/version DOI and publication/modified dates. Publisher file checksums are metadata, not a claim that this run rehashed the zip. A failed resolution is not absence; use an available alternate public publisher route.",
+  "preserve": ["GB9", "decoder contract", "all closed runs, status and hash manifests", "legacy state.json routing", "diagnostic-only four-order interpretation", "existing staging files"],
+  "admission_requires": ["Exact Figure12 endpoint/monomial and X/Z binding", "Author-defined slightly modified LRC shared clocks and cycle association", "Exact finite preparation/readout/idle operation and error-location set"],
+  "downstream_gate": "Only after exact admission: derive independent primitive physical faults, validate replay and negative controls, then run the inherited capped assay. No substitute circuit or outreach.",
+  "inherited_assay_caps_if_admitted": {"threads": 1, "maximum_calls": 4, "wall_seconds_per_call": 60, "total_solver_wall_seconds": 240, "sampled_rss_guard_bytes": 2147483648, "per_output_file_bytes": 104857600},
+  "stop": "If no newly eligible construction or clarification is recovered, document the exact remaining external input, freeze and close FROZEN-INCONCLUSIVE through campaign.py. No distance bounds from inconclusive source evidence."
+}

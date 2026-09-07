@@ -27,9 +27,34 @@ dimensions: `simple` 65,594 vars / 1,937,254 clauses; `par_noc`
 1,925,750–1,925,815. `par_conc` is split 8-way on X-vars 545/927/1385
 (byte-verified = parent + 3 units). A second 8-way split under
 `par_conc_0` uses X-vars 295/775/1121: branches 1/3/5/7 are
-DRAT-verified UNSAT. A compressed, completion-gated rerun now has
-`par_noc` branches 1/3/5/7 independently `s VERIFIED`; the remaining
-branches of `par_noc`, `simple`, `par_conc_0`, `c0`, and `c1` are active.
+DRAT-verified UNSAT.
+
+A legacy compressed rerun produced `s VERIFIED` markers for four `par_noc`
+branches, but those markers are **untrusted**: its wrapper passed the XZ
+container itself to `drat-trim`, so input unit propagation could masquerade as
+proof checking. The legacy wrapper now fails closed; these markers do not
+change the bound.
+
+The current replacement campaign is bound to schema-2 decision manifest
+SHA-256 `48671f44f726dc4272438d0797beff936878c39b9b8d26ec110546b1136db7cf`.
+Regeneration is byte-identical for the base instance and all 15 cubes; an exact
+$D_{12}$ audit covers all 220 triples in 12 disjoint orbits. The proof-free
+Kissat 4.0.4 discovery lanes `simple`, `par_noc`, `par_conc`, and `c0`–`c3`
+are live; no cube has a verdict.
+
+`n12_decide/certify_unsat.py` is the clean certificate path. It binds the
+decision manifest, CNFs, tools, child environment, and its own source hash;
+writes Kissat's binary DRAT directly inside XZ; streams decompression into
+`drat-trim -i -w`; separates proof-consuming UNSAT from input-unit-propagation
+UNSAT; preserves every attempt; and freshly rechecks terminal evidence on
+resume. Solver production has an 8 GiB aggregate process-group RSS cap and a
+64 GiB free-space reserve. The production status receipt
+`n12_decide/certificate_status.final.json` records all 15 cases as
+`UNATTEMPTED`, so this infrastructure is not a target-39 verdict. A real-tool
+control in `n12_decide/certifier-real-smoke/` records
+`PROOF_CONSUMING_BINARY_DRAT_XZ` with two nonzero core lemmas for a non-unit
+UNSAT formula, `INPUT_UNIT_PROPAGATION_UNSAT` for the distinct input-UP
+control, and `XZ_INTEGRITY_FAILED` for a one-byte-corrupted proof.
 
 An independent all-degeneracy direct-gap lane now adds two proved accelerator
 families: hereditary subarrangement bounds from the already established

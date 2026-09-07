@@ -1,0 +1,246 @@
+{
+  "base": {
+    "byte_identical": true,
+    "canonical_bytes": 64422412,
+    "canonical_path": "scratch/kobon/n12/kobon_n12_t39_proof.cnf",
+    "canonical_sha256": "c7757ab834e7008622aa812c44f1520b57f39341d8c44ebe45c77aed3e6d3650",
+    "generated_bytes": 64422412,
+    "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof.cnf",
+    "generated_sha256": "c7757ab834e7008622aa812c44f1520b57f39341d8c44ebe45c77aed3e6d3650"
+  },
+  "cases": [
+    {
+      "byte_identical": true,
+      "cube": "simple",
+      "expected_bytes": 64621160,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_simple.cnf",
+      "expected_sha256": "c95779cea89bd0a278a7900fe9fc8edc732cd168b18e727d26d61072c8a8bd49",
+      "generated_bytes": 64621160,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_simple.cnf",
+      "generated_sha256": "c95779cea89bd0a278a7900fe9fc8edc732cd168b18e727d26d61072c8a8bd49"
+    },
+    {
+      "byte_identical": true,
+      "cube": "par_noc",
+      "expected_bytes": 64618615,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_par_noc.cnf",
+      "expected_sha256": "842befaff63d3e071efc364abece2795f9b7376f7b117b266d7e73dce05bb2d1",
+      "generated_bytes": 64618615,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_par_noc.cnf",
+      "generated_sha256": "842befaff63d3e071efc364abece2795f9b7376f7b117b266d7e73dce05bb2d1"
+    },
+    {
+      "byte_identical": true,
+      "cube": "par_conc",
+      "expected_bytes": 64423253,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_par_conc.cnf",
+      "expected_sha256": "15676b1766ec9bd540e75da5f9aa3dcf35275c17552e9091ba9bcffbc49ecb57",
+      "generated_bytes": 64423253,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_par_conc.cnf",
+      "generated_sha256": "15676b1766ec9bd540e75da5f9aa3dcf35275c17552e9091ba9bcffbc49ecb57"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c0",
+      "expected_bytes": 64422750,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c0.cnf",
+      "expected_sha256": "353b577eb00b9b17e1b3022369c26c7dc47cd9c8b98ad67ddd7c2fe47ea08446",
+      "generated_bytes": 64422750,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c0.cnf",
+      "generated_sha256": "353b577eb00b9b17e1b3022369c26c7dc47cd9c8b98ad67ddd7c2fe47ea08446"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c1",
+      "expected_bytes": 64422750,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c1.cnf",
+      "expected_sha256": "8467b46a0f72fae17f39ca43d98516e4a3eb6eb430c45081f7c3ce5f8d791090",
+      "generated_bytes": 64422750,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c1.cnf",
+      "generated_sha256": "8467b46a0f72fae17f39ca43d98516e4a3eb6eb430c45081f7c3ce5f8d791090"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c2",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c2.cnf",
+      "expected_sha256": "ba132ee3d8b45ce343979c7b2972e1be15490e583bb1a6765903b036b97cf7da",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c2.cnf",
+      "generated_sha256": "ba132ee3d8b45ce343979c7b2972e1be15490e583bb1a6765903b036b97cf7da"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c3",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c3.cnf",
+      "expected_sha256": "0e7b69cba76f9af3ab92921e731d0ba1105ca325da4abec26c706b1be1a45d5e",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c3.cnf",
+      "generated_sha256": "0e7b69cba76f9af3ab92921e731d0ba1105ca325da4abec26c706b1be1a45d5e"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c4",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c4.cnf",
+      "expected_sha256": "713836793e9eb297fb0de297ea5f8d827255e67d296a1588ad8dce4b606eade1",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c4.cnf",
+      "generated_sha256": "713836793e9eb297fb0de297ea5f8d827255e67d296a1588ad8dce4b606eade1"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c5",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c5.cnf",
+      "expected_sha256": "fc2884c9260436b8f8f1f1d35879f82028ddaa597e33155a4ed31ff1a645b7af",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c5.cnf",
+      "generated_sha256": "fc2884c9260436b8f8f1f1d35879f82028ddaa597e33155a4ed31ff1a645b7af"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c6",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c6.cnf",
+      "expected_sha256": "44790a2009f5f695cc23c441dd24708be92e2a13c05c1d6a5e7a6cad43a10a66",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c6.cnf",
+      "generated_sha256": "44790a2009f5f695cc23c441dd24708be92e2a13c05c1d6a5e7a6cad43a10a66"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c7",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c7.cnf",
+      "expected_sha256": "78169fc153cca37b3b5dc61a80f0299faac5ec7aef53508717eb47c1ad370e41",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c7.cnf",
+      "generated_sha256": "78169fc153cca37b3b5dc61a80f0299faac5ec7aef53508717eb47c1ad370e41"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c8",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c8.cnf",
+      "expected_sha256": "317f045db8ebed3628b428ac23132b44697981e500831e0679d547d056f37f27",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c8.cnf",
+      "generated_sha256": "317f045db8ebed3628b428ac23132b44697981e500831e0679d547d056f37f27"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c9",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c9.cnf",
+      "expected_sha256": "f0c3742e513ba5edbd709cec98921bf37672dcf1bfeb392ec780b6d788fa8922",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c9.cnf",
+      "generated_sha256": "f0c3742e513ba5edbd709cec98921bf37672dcf1bfeb392ec780b6d788fa8922"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c10",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c10.cnf",
+      "expected_sha256": "c057fb928d26a0b51a665e3a30c17cbc425d61a328f0785c4850b3d48216ae81",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c10.cnf",
+      "generated_sha256": "c057fb928d26a0b51a665e3a30c17cbc425d61a328f0785c4850b3d48216ae81"
+    },
+    {
+      "byte_identical": true,
+      "cube": "c11",
+      "expected_bytes": 64422751,
+      "expected_path": "scratch/kobon/n12/kobon_n12_t39_proof_c11.cnf",
+      "expected_sha256": "8cb80fb61adf153b8836d220c4289d17e4a238efd3437c4a27b1bf1aa8ba9336",
+      "generated_bytes": 64422751,
+      "generated_path": "scratch/kobon/n12/regenerated_48671f44f726dc42/kobon_n12_t39_proof_c11.cnf",
+      "generated_sha256": "8cb80fb61adf153b8836d220c4289d17e4a238efd3437c4a27b1bf1aa8ba9336"
+    }
+  ],
+  "claim_scope": "byte regeneration of the existing CNF family plus exact D12 triple-orbit cover",
+  "cover": {
+    "covered_triples": 220,
+    "exact_cover": true,
+    "expected_triples": 220,
+    "pairwise_disjoint_orbits": true,
+    "representative_count": 12,
+    "representatives": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        0,
+        1,
+        6
+      ],
+      [
+        0,
+        2,
+        4
+      ],
+      [
+        0,
+        2,
+        5
+      ],
+      [
+        0,
+        2,
+        6
+      ],
+      [
+        0,
+        2,
+        7
+      ],
+      [
+        0,
+        3,
+        6
+      ],
+      [
+        0,
+        3,
+        7
+      ],
+      [
+        0,
+        4,
+        8
+      ]
+    ]
+  },
+  "engine": {
+    "bytes": 65426,
+    "path": "math/kobon/engine.py",
+    "sha256": "d1ff89892e0bc5130c701365066c0cd43dbdc3d4d1d96e836502115617ff6351"
+  },
+  "limits": [
+    "This check proves byte identity and the finite D12 triple-orbit partition.",
+    "It does not replace the clause-soundness argument for engine.dump_instances.",
+    "Solver UNSAT remains discovery-only until complete DRAT proofs verify."
+  ],
+  "manifest_sha256": "48671f44f726dc4272438d0797beff936878c39b9b8d26ec110546b1136db7cf",
+  "schema": "kobon-n12-provenance/1",
+  "status": "PASS"
+}

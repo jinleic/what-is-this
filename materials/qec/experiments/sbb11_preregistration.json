@@ -1,0 +1,41 @@
+{
+  "schema": "sbb11-feasibility/1",
+  "target": "arXiv:2603.05481v1 Figure 12 and Appendix H.2, exactly the proposed three-colour gross SEC",
+  "campaign_gate": "SBB11-source-model-admission",
+  "authoritative_card": "math/qec/README.md#current-research-card--exact-gross-code-circuit-distance-eleven",
+  "scope": "Source admission, independent physical fault-model validation, and only conditionally a capped distance assay; no backup or outreach",
+  "source_pins": {
+    "arxiv_source_sha256": "630dd47eb7c6b7763501146da87480aea905ea4e5dea37b720190573d4a1d5be",
+    "zenodo_record": 18853601,
+    "zenodo_archive_sha256": "9708542ef5238591a3b9f3ea27c3419b883233e36d02b58813fe0a23b148bade",
+    "github_commit": "eded83cf054ae1c79607fbd2bae98748d95f43bf",
+    "figure10_sha256": "c5130577ba096a0dc3b11b63a86e881172a40fb19dd9f26470b4b61138fefe62",
+    "figure11_sha256": "9b086de6a5c267b7db0d6f91a7aea56d5db5576d0cd8b6f21be995b2a5b72d55",
+    "figure12_sha256": "6c9abb5228454fa86af51587b9b69f998d2f559736b86b9b14a43e20605856a1"
+  },
+  "prior_observations": [
+    "Authors' archived Stim files contain only FB126, Haah128, HGP625, Tanner200, not the gross circuit.",
+    "Full paper source contains graph/residual/schedule figures, not a gross Stim file.",
+    "Figure 10 caption says filled checks are X, whereas Figure 12 labels the filled-check row Z. No silent relabelling is admitted.",
+    "No model propagation or distance search has been run. Figure transcription feasibility is untested."
+  ],
+  "source_gate": {
+    "checks": ["exact source hashes", "full archive and repository manifest", "unambiguous Figure 10/12 graph and schedule agreement", "288 qubits with 144 data and 144 ancillas", "unit-duration operations without qubit collisions", "non-interleaving and check measurement validity", "explicit X/Z round offset and initialization/termination"],
+    "allowed_probe": "Literal figure transcription; inspect all eight relative X/Z phases modulo the stated depth eight to detect timing ambiguity, without optimizing or changing CNOT orders. Do not promote a tested completion to the authors' exact circuit without source justification.",
+    "stop_on": "Any unresolvable identity, timing, boundary or fault-support ambiguity"
+  },
+  "conditional_model_gate": {
+    "weight": "number of distinct physical operation locations; nonidentity Pauli alternatives exclusive at each location",
+    "models": "Independent binary Pauli propagation from primitive locations, compared with direct Stim circuit fault injection, not two consumers of one DEM",
+    "boundaries": "Must freeze resolved preparation, final readout, first/last staggered rounds before executing the model gate",
+    "controls": ["known-answer code/circuit", "physical witness replay", "corrupt witness", "same-location incompatible faults", "wrong logical observable", "wrong detector boundary"],
+    "required_before_search": true
+  },
+  "limits": {"threads": 1, "total_assay_wall_seconds": 600, "solver_wall_seconds_per_call": 60, "maximum_solver_calls": 4, "address_space_bytes": 2147483648, "maximum_output_bytes": 104857600},
+  "verdicts": {
+    "FROZEN-INCONCLUSIVE": "Source/model gate blocked or capped search unresolved; no circuit-distance bound follows from failure or timeout.",
+    "FROZEN-NEGATIVE": "Admitted physical witness of weight at most ten refutes the exact scoped conjecture.",
+    "FROZEN-CERTIFIED": "Only if a justified full model, independently checked matching lower proof and directly replayed upper witness establish the exact distance."
+  },
+  "operational_notes": "math/qec is the existing code/circuit co-design home and has no claim; physics/qldpc-dec GB9 claim is left untouched. campaign.py init writes campaigns even though legacy math/qec runs_dir is experiments, so use the absolute returned run path for freeze/close; do not alter legacy state/runs_dir or claim."
+}

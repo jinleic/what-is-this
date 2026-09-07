@@ -707,6 +707,47 @@ measure \(\sum_i c_i\delta_{s_i}\) lies in \(\V_{\M}\).  Thus
 semidefiniteness of the negative projected matrix.
 \end{proof}
 
+\begin{corollary}[All admissible quadratic scales; \HumanAudited]
+\label{cor:scaled-h1}
+For every \(\kappa\in[0,1]\), put \(z_\kappa=A(1+\kappa B)\) and
+\[
+R_\kappa=A\{\kappa B-(1+\kappa B)\ln(1+\kappa B)\}-G(z_\kappa).
+\]
+Then \(R_\kappa\) is continuous and NSD on all finite signed Borel measures
+on \([0,1]\).  For \(\mu\in\V_{\M}\),
+\[
+(\ln2)\QF_{h\circ z_\kappa}(\mu)=\QF_{R_\kappa}(\mu)\le0.
+\]
+Thus the projected sign assertion holds throughout
+\(f_\lambda(s)=\lambda s(1-s)\), \(0\le\lambda\le1\),
+with \(\kappa=\lambda^2\).
+\end{corollary}
+\begin{proof}
+Apply the same Taylor identity to \(\phi_A(\kappa B)\), rather than
+\(\phi_A(B)\).  Exactly,
+\[
+-R_\kappa=G(A)-\kappa AB\ln(1-A)
+       +\kappa^2\int_0^1(1-r)H_{r\kappa}(s,t)\,dr.
+\]
+Since \(r\kappa\in[0,1]\), Lemma~\ref{lem:reciprocal} applies without
+any new factorization.  The other two terms are nonnegative multiples
+of the PSD kernels in \eqref{eq:first-psd-series} and
+\eqref{eq:second-psd-series}.  Their endpoint bounds and
+\(0\le H_{r\kappa}\le\max\{s,t\}^3\) are uniform in \(r,\kappa\),
+so Lemma~\ref{lem:psd-closure} gives the signed-measure conclusion,
+including \(\kappa=0\).
+The entropy reduction is unchanged except for a factor \(\kappa\) on
+the terms containing \(us\,vt\); each still has a factor annihilated
+by \(\mu\).  This proves the displayed projected identity.
+\end{proof}
+
+The independent symbolic calculation
+\path{../verification/scaled_kernel_check.py} checks the new derivative,
+reparameterization and endpoint identities, and rejects a lost-square
+error in the \(\kappa^2\) coefficient at an exact rational point.
+This is an explicit corollary of the existing Gram proof, not a new
+frequency bound or an assertion of publication priority.
+
 \section{Discussion and limits of the result}
 \label{sec:discussion}
 
@@ -722,13 +763,13 @@ extend to the closed square by \eqref{eq:log-endpoint} and the uniform
 \(H_r\le\max\{s,t\}^3\) estimate, respectively.
 
 \OpenStatus{} Liu's Hypothesis~2 is a separate global optimization assertion
-for a nine-parameter objective.  Nothing in Theorem~\ref{thm:residual} proves
-that assertion, identifies its global minimizers, or validates the stronger
-union-closed constant that Liu derives when both hypotheses are assumed.
-Accordingly, both Liu's printed decimal \(0.382709087918741\) and the nearby
-equation-defined value discussed in the canonical audit remain conditional as
-union-closed frequency claims.  This paper does not claim an unconditional
-result at either value, nor does it claim Frankl's conjectured constant
+for a nine-parameter objective.  Nothing in Theorem~\ref{thm:residual} or
+Corollary~\ref{cor:scaled-h1} alone proves that assertion, identifies its global
+minimizers, or establishes a stronger union-closed frequency constant.
+The separate current argument at \path{../../uc/H2_PAPER/REFEREE.md}
+has its own proof and novelty-review obligations; it is not a consequence
+of this Hypothesis~1 proof alone.  This paper does not claim a frequency
+improvement or Frankl's conjectured constant
 \(1/2\).
 
 \HumanAudited{} The completed bounded literature audit found this proof

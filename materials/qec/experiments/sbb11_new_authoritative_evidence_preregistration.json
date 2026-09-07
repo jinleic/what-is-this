@@ -1,0 +1,22 @@
+{
+  "schema": "sbb11-new-authoritative-evidence/1",
+  "target": "Exact Figure12 / Appendix H.2 Gross circuit in arXiv:2603.05481v1",
+  "prior_campaign": "campaigns/20260907T061036Z_058f56ba_0590281d38d2",
+  "new_evidence_after_utc": "2026-09-07T06:51:11Z",
+  "canonical_preregistration": "Use this staging file only for campaign.py init. Copy exact bytes to the new run inputs/preregistration.json and verify against manifest.prereg_sha256 before retrieving new evidence.",
+  "new_scope": [
+    "Author-owned PurePhys/LR-circuits default-branch commits dated after the cutoff, using the API since filter; inspect only genuinely new eligible commits",
+    "New or updated public issues/PRs in that repository after the cutoff, using the API since filter; inspect only new eligible clarification content",
+    "Current official arXiv quant-ph announcements: retain an entry as a lead only if it identifies exact arXiv 2603.05481 and is published or updated after the cutoff",
+    "Follow only new authoritative construction/correction links revealed by those eligible updates; pin every adopted asset before interpretation"
+  ],
+  "coverage_limits": "This is a new-time-window delta, not a repeat of the closed history, repository, paper or public-channel audits. Commit date filters do not cover backdated or off-default-branch additions; current RSS coverage is limited to its served announcements. Report those limits, not global absence. If an endpoint fails, try an available alternate public delivery path without broadening into closed searches or private access.",
+  "provenance": "For every response preserve exact requested/final URL, retrieval UTC, HTTP outcome, complete response bytes and SHA256. Preserve commit or PR head SHA and entry updated/published times for any eligible lead. No source admission from unpinned live views, unrelated title-query noise or old entries.",
+  "preserved_results": "Accept the frozen PCM erratum, complete pinned-source audit, canonical graph and static evidence, 72-X/72-Z historical support correspondence and diagnostic-only four-order counts without repetition. Do not infer a one-order exclusion. Generic clocks/boundaries are known; exact Figure12 adoption/modification is not.",
+  "admission_requires": ["Authoritative endpoint/monomial and caption-versus-marker X/Z binding", "Explicit Figure12 modified shared-clock and cycle association", "Exact finite preparation/readout/idle operation and error-location set for the one-cycle target experiment"],
+  "not_missing": ["The distance-test cycle count: one", "Both requested X/Z memory experiments", "An author-specific logical-basis ordering", "An arbitrary numeric time-origin label", "Numeric p values for combinatorial fault weight"],
+  "downstream_gate": "Only after exact target admission: independently derive primitive physical fault effects, validate direct replay and negative controls, then execute the inherited capped assay. No generic constructor or residual-equivalent circuit may substitute for Figure12.",
+  "inherited_assay_caps_if_admitted": {"threads": 1, "maximum_calls": 4, "wall_seconds_per_call": 60, "total_solver_wall_seconds": 240, "sampled_rss_guard_bytes": 2147483648, "per_output_file_bytes": 104857600},
+  "prohibitions": ["Re-running closed searches or numerical checks", "Changes to GB9, decoder contract, closed runs or hash manifests", "Changes to math/qec/state.json or legacy routing", "Substitute circuits or guessed annotation semantics", "Outreach, private authenticated retrieval or external mutation", "Bounds from inconclusive evidence", "Deleting staging or existing files"],
+  "stop": "If this genuinely new time window yields no admissible authoritative construction and no new actionable source link, document the exact remaining target-binding/modification input and the bounded coverage, freeze and close FROZEN-INCONCLUSIVE. Do not reopen old work merely to manufacture progress."
+}

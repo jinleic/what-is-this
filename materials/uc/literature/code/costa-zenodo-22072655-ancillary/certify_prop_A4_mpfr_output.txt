@@ -1,0 +1,11 @@
+MPFR version=4.2.2, precision=192 bits
+m_* derived=[0.61729091208124531,0.61729091208128462]
+beta derived=[0.10005255986214717,0.10005255986364589]
+m_cert interval=[0.6172704120811997,0.61727041208133038]
+poly(left)=[-2.2537527399890684e-14,-1.8762769116165139e-14], poly(right)=[2.8643754035329026e-14,3.3306690738754709e-14]
+constant checks: root-left=1, root-right=1, derivative=1, m-containment=1, beta-containment=1
+c_epsilon lower=0.53084624205541608
+small-t scalar lower=0.035919173514281852
+boundary scalar lower=6.4360829338080744e-06
+tail scalar lower=0.024386055203189365
+PROPOSITION A.4 CERTIFICATE PASSED

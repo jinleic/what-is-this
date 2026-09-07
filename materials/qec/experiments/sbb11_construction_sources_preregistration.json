@@ -1,0 +1,23 @@
+{
+  "schema": "sbb11-construction-source-admission/1",
+  "target": "Exact Figure12 / Appendix H.2 three-colour depth-eight Gross SEC in arXiv:2603.05481v1",
+  "prior_campaign": "campaigns/20260907T012847Z_9687c876_4f597eeab895",
+  "prior_disposition": "FROZEN-INCONCLUSIVE; authoritative exact target not admitted; no physical fault or distance assay execution",
+  "canonical_preregistration": "The staging file is only campaign.py init input. Copy its exact bytes into the successor inputs/preregistration.json and verify SHA256 equals manifest.prereg_sha256 before collecting evidence.",
+  "scope": [
+    "Record an immutable successor erratum: replace the prior report's nonexistent input/PCM/BB_144.npz inventory entry with circuit-generator/example-pcms/BB_144_Hx.npz and BB_144_Hz.npz, without editing closed evidence",
+    "Capture complete pinned author construction sources, especially cost_analysis.py and the previously truncated Stim constructor, with exact URL, UTC retrieval time, commit or paper version, complete-byte SHA256 and Git blob identity where applicable",
+    "Inspect source-defined local order and residual semantics, common-clock/cycle construction and finite preparation/readout/idle boundaries, distinguishing generic code from an author-identified Figure12 circuit",
+    "Inspect the exact versioned paper's Figure12 and Appendix H construction statements, without repeating numerical figure extraction or order probes",
+    "Pursue only concrete new authoritative links revealed by the complete pinned sources; do not repeat the closed broad public searches"
+  ],
+  "accepted_without_repetition": ["User-reported PCM-path erratum", "Prior canonical Figure10 marker-matched support/coordinate equivalence, ranks and static witnesses", "Historical arrays' 72 X and 72 Z support correspondence under that fixed mapping", "Prior scoped public-channel discovery and FROZEN-INCONCLUSIVE outcomes"],
+  "four_order_count_policy": "Descriptive only: four normalized local orders per fixed Figure10 colour class in each basis. No paper-level one-order invariant, contradiction, exclusion, residual inequivalence or exact Figure12 identity is inferred from the count.",
+  "admission_requires": ["Authoritative Figure12 endpoint/monomial and X/Z binding; lower-row endpoint numerals remain untyped until source-defined", "Exact shared CNOT clocks, stagger and cycle association", "Exact modified-LRC finite preparation/readout and idle boundaries, not merely generic constructor conventions"],
+  "provenance_policy": "A complete raw source blob and metadata are canonical; reader excerpts are derived views. Pin API response bytes, exact URL, UTC retrieval time and SHA/version. Generic title-query noise is not source evidence. A failed fetch is not absence. No new evidence is written into a closed run.",
+  "downstream_gate": "Only after exact admission derive independent primitive-operation Pauli effects, then validate direct replay/known answers and negative controls, then execute the inherited capped assay. Until admission these stages remain disabled.",
+  "inherited_assay_caps_if_admitted": {"threads": 1, "maximum_calls": 4, "wall_seconds_per_call": 60, "total_solver_wall_seconds": 240, "sampled_rss_guard_bytes": 2147483648, "per_output_file_bytes": 104857600},
+  "prohibitions": ["Changes to GB9 or decoder contract", "Changes to any closed campaign, status or hash manifest", "Changing math/qec/state.json or legacy experiments routing", "Substitute circuits, guessed annotation clocks or monomial relabeling", "Numerical source-phase or distance search before admission", "Outreach, external mutation or private authenticated retrieval", "Distance bounds from inconclusive evidence", "Deletion of staging or existing files"],
+  "ownership": "Main owns successor capture, provenance, erratum, admission decision and active Q1 card. Read-only analysis workers may inspect disjoint complete source and exact-paper slices. No worker runs builds, linters, formatters or tests.",
+  "completion": "Either complete exact admission and downstream gates within inherited caps, or exhaust genuinely actionable new source work, name the exact missing authoritative input, freeze the successor and close FROZEN-INCONCLUSIVE through campaign.py using its explicit absolute run path. Preserve all closed evidence."
+}

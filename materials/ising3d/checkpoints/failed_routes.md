@@ -593,3 +593,149 @@ This ledger distinguishes a decisive falsification from a scoped obstruction or 
 - **Evidence:** `checkpoints/wave26_research_plan.md`,
   `experiments/e251_trace_nine_projection.py`,
   `tests/test_trace_nine_projection.py`.
+
+## Wave-27 bounded routes
+
+### Height-certified dense scalar norm reconstruction — resource-incompatible
+
+- **Route:** reuse the fixed 96-dimensional monic quotient template, evaluate the
+  `F9` determinant at every interpolation node, and recover every integer
+  coefficient by signed modular CRT.
+- **Blocker:** the exact rowwise envelope gives numerator degree at most `40693`
+  and row-cleared numerator `l1` norm at most `2^2343436`. Polynomial
+  cancellation is not coefficient-height monotone; the standard factor bound
+  gives primitive height at most `2^2384129`. Dense interpolation under that
+  conservative bound needs 40,694 nodes; even granting the optimistic ceiling
+  of 31 information bits per safe prime, signed uniqueness needs at least
+  76,908 primes and 3,129,694,152 determinant evaluations. This exceeds the
+  declared 10,000,000-evaluation gate, so no reconstruction was launched.
+- **What survives:** the deterministic homogeneous transformation certificate,
+  the exact monic physical lift, the corrected degree/denominator/height
+  envelope, and independently rebuilt nonzero witnesses at `q=2` and `q=5/3`.
+  A polynomial-matrix determinant, structured reconstruction, or a rigorously
+  sharper envelope remains live.
+  This correction supersedes the earlier primitive-height wording.
+- **Evidence:** `proofs/trace_nine_norm_envelope.md`,
+  `results/spectral/trace_nine_norm_envelope.json`,
+  `results/spectral/trace_nine_lift_template.json.xz`,
+  `tests/test_trace_nine_norm_envelope.py`.
+
+## Wave-28 bounded routes
+
+### One modular polynomial as a characteristic-zero reconstruction — insufficient
+
+- **What succeeded:** native FLINT polynomial-matrix interpolation materialized
+  the entire determinant over `F_2147483647[q]`, not just a few evaluated
+  witnesses. It has degree `36815`; the reduced rational norm has degrees
+  `19846/16048`. All coefficients were independently recomputed.
+- **Boundary:** a complete polynomial over one finite field does not determine
+  its characteristic-zero lift or real roots. The `60385` native scalar
+  determinants fit the per-run cap, but that does not certify a full CRT run.
+- **Still blocked:** even reconstructing the Wave-27 row-cleared numerator
+  directly under its `2^2343436` L1 bound, avoiding the primitive-factor
+  height surcharge, gives the optimistic lower count
+  `40694*ceil(2343437/31)=40694*75595=3076262930`, still above `10000000`.
+  This is an exact bound for that dense reconstruction route, not a
+  lower bound for every determinant algorithm.
+  H675's primitive-factor route remains at `40694*76908=3129694152`; the smaller
+  direct-numerator count is a different reconstruction target, not a reversion
+  of the corrected primitive-factor bound.
+- **Next:** exact characteristic-zero entry cancellation and row normalization,
+  followed by a proved aggregate height and optional integer matching bounds.
+  H679's first-column probe completed within the resource limits (37 entries,
+  maximum degrees `181/145`, maximum numerator `ceil(log2(l1))=224`); do not
+  extrapolate its data into a complete matrix or height theorem. H680's largest
+  degree column subsequently failed the memory gate; the next bounded step is
+  reducing the retained working set, not launching the full sweep.
+- **Evidence:** `results/spectral/trace_nine_structured_determinant.json`,
+  `tests/test_trace_nine_structured_determinant.py`, and `../PROGRESS.md`.
+
+### Largest-degree exact column — OBSERVED memory stop, not a mathematical no-go
+
+- **Scope:** H680 selects the unique total-degree-8 standard monomial
+  `(0,0,0,0,8)` after replaying the pinned exact lift and H679 constant column.
+- **Algebra printed before termination:** 96 entries, 578 ordered reductions,
+  maximum numerator/denominator degrees `629/513`, maximum numerator
+  `ceil(log2(l1))=1771`, denominator scalar-LCM bit length 1321, and digest
+  `63b8a477b5d9dd25a354d1bd2f7d18666cbcf1bf21cb6060d0c2b1b51441f47b`.
+- **Authoritative process result:** wrapper exit 1, child SIGTERM, reason
+  `2 GiB memory ceiling reached`, monitored peak `2064.1 MiB`. The inner
+  `H680_CANARY_PASS` does not override the failed resource gate. The sampled
+  monitor caught about 16.1 MiB of overshoot; this is not an OS-enforced cap.
+- **Resources:** `770.761s` combined CPU over `2345.59s` wall, `32.86%` average
+  CPU, `33.05%` maximum observed 60-second window, zero process disk writes,
+  and `128.34 GiB` free disk. No full sweep or automatic restart followed.
+- **Next:** reduce lift-only retained data and bulk digest allocations; verify
+  digest equivalence before another bounded canary. These are candidate
+  reductions, not proven allocation attribution. Do not relax the limits or
+  infer a universal column bound from either canary.
+  For reclaimed-headroom measurements, query fresh `proc_pid_rusage` resident
+  and footprint fields. Both `base.peak_rss_bytes()` and the guard's periodic
+  `rss_mib` retain cumulative maxima; neither measures the post-release floor.
+- **Degree comparison only:** the canary's maximum exact numerator degree 629
+  equals H677's maximum row-cleared modular entry degree 629 numerically.
+  These have different normalizations; the equality is not an independent
+  verification or a characteristic-zero upper bound for the remaining columns.
+- **Evidence:** retained `/tmp/h680_largest_column_canary.py` (SHA-256
+  `cc9bb205d4b2582cd8ed3b9ff8c35f6accffe5f49902b7717fcc6cc9882d8717`),
+  `../PROGRESS.md`, and `checkpoints/next_actions.md`.
+
+### H686 / e256 exact bracket bisection — REJECTED at pre-execution review (2026-09-05)
+
+- **Reviewer:** independent review turn for supervisor task `0003_H686`
+  (2026-09-05T10:06:42Z); the producer never ran and no artifact exists.
+- **Defect:** the planner's task statement and the H686 ledger row describe
+  "three confirmed H684 sign-change brackets" `(5/4,3/2)`, `(3/2,5/3)`,
+  `(5/3,2)`. The confirmed census artifact
+  `results/spectral/trace_nine_exact_sign_census.json` (data digest
+  `009d8d7e647184a0cc13052bcbc63eb477eacc0fe86d2c121645ec675b6a55e9`) records
+  `summary.signs` `[-1,1,-1,1,-1,-1]` at `q=5/4,3/2,5/3,2,3,5`, hence FOUR
+  `sign_change_brackets`: the three above plus `(2,3)`. The passed H684
+  verifier log prints `brackets=4`.
+- **Consequence:** `experiments/e256_trace_nine_exact_bracket_bisection.py`
+  pins `EXPECTED_BRACKETS` to the three-tuple and asserts at `load_census`
+  (lines 164-165) that the recorded bracket list equals it. That assertion is
+  false against the working tree, so the producer would raise
+  `AssertionError` after the smoke test and modular-norm load and before the
+  lift replay, writing no artifact. Running it would be a guaranteed
+  failed job, not an informative refutation of any mathematical claim.
+- **Not a mathematical result:** nothing here changes the H684 outcome. The
+  bracket `(2,3)` is a fourth exact real-root bracket of the norm numerator
+  `N` already proved by H684; it was simply omitted from the H686 premise.
+- **Safety inspection completed (for the next author):** apart from the
+  bracket miscount, e256 is a thin wrapper over the accepted e255 stack:
+  no subprocess, network, threads, or deletion; single exclusive-create
+  write of `--output`; refuses an existing file; self-limits via
+  `base.guard_resources`. A corrected producer needs only the census-derived
+  bracket list (or an explicit, documented subset with the omission stated)
+  and a matching `planned_point_count`.
+- **Next:** a fresh plan turn must either (a) re-issue the bisection with
+  the bracket list read from the census artifact (four brackets, 16 points
+  at DEPTH 4, roughly one third more per-point CPU than the H686 preflight
+  estimate; check the 1800 CPU s budget) or (b) explicitly restrict to a
+  named subset and say why `(2,3)` is deferred. No identical retry of e256
+  as written.
+
+### Supervisor outcome 0003_H686 — 2026-09-05T10:09:12Z
+
+- H686: **REVIEW_REJECTED**; bounded scope only.
+- Evidence: `math/ising3d/campaigns/20260905T044318Z_bf035d8b_56ea779357e4/supervisor/tasks/0003_H686/evaluation.json`.
+- Artifact: `results/spectral/trace_nine_exact_bracket_bisection.json`.
+- Guard verdicts: `{"producer":{},"verifier":{}}`.
+- Next prompt: Continue from H686 (norm): REVIEW_REJECTED. Choose the highest admissible bounded exact test in the ranked queue. Read the linked evaluation, current checkpoint, failed routes and hypothesis ledger. State falsifiable predictions and scope; obtain independent pre-execution code review, run one bounded producer and its independent verifier, then checkpoint and continue. Do not repeat an unchanged failed input, rerun completed canaries, or interpret an inner PASS as a successful resource exit. Preserve nice 19, one thread, 35% of one core, the monitored 2 GiB stop, 50 GiB free reserve, bounded writes, and no deletions.
+
+### Planner disposition of the H686 rejection — 2026-09-05 (cycle 4, turn 7)
+
+- **Confirmed the reviewer's finding directly:** the census artifact's
+  `summary.sign_change_brackets` lists `(5/4,3/2)`, `(3/2,5/3)`, `(5/3,2)`, `(2,3)` and
+  `summary.signs` is `[-1,1,-1,1,-1,-1]`. The H686 premise, its ledger row, and the
+  current-state/next-actions text that said "three brackets" were wrong; `e256` is not
+  rerun and stays an unlanded draft.
+- **Replacement:** `H688`/`experiments/e257_trace_nine_four_bracket_bisection.py` derives
+  the bracket list from the census signs, asserts it against the recorded list and a pinned
+  four-tuple before the lift, and bisects all four brackets at depth 3 (twelve points, final
+  widths `1/32`, `1/48`, `1/24`, `1/8` if no exact zero). Depth 3 rather than 4 is a
+  deliberate CPU reduction: sixteen points at an unmeasured per-point growth factor was
+  flagged as tight against the 1800 CPU s self-limit. Artifact
+  `results/spectral/trace_nine_four_bracket_bisection.json` (does not exist yet).
+- **Not a mathematical result:** nothing here changes H684; the (2,3) bracket was already proved.
