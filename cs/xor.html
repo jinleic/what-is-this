@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Minimum binary-XOR circuit for AES MixColumns — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1f2328}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px;vertical-align:top}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.4rem 0 1rem}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+.markdown-body{box-sizing:border-box;background:transparent;font-size:15px;margin:0 0 1.2rem}
+details{border:1px solid #d0d7de;border-radius:6px;padding:6px 12px;margin:8px 0;background:#fafbfc}
+summary{cursor:pointer;font-size:14px}
+ul.files{margin:8px 0;padding-left:20px;font-size:13px}
+ul.files li{margin:2px 0}
+.fsize{color:#57606a;font-size:11px}
+mjx-container{overflow-x:auto;max-width:100%}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css">
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  function renderMD(el, md) {
+    var math = [];
+    function stash(re) {
+      md = md.replace(re, function (m) {
+        math.push(m);
+        return '@@MATH' + (math.length - 1) + '@@';
+      });
+    }
+    stash(/\$\$[\s\S]+?\$\$/g);
+    stash(/\\\[[\s\S]+?\\\]/g);
+    stash(/\\\((?:[^\\]|\\[^)])+?\\\)/g);
+    stash(/\$(?=\S)(?:[^$\n]*?\S)?\$/g);
+    var out = marked.parse(md, { mangle: false, headerIds: false });
+    out = out.replace(/@@MATH(\d+)@@/g, function (_, i) {
+      return math[+i].replace(/&/g, '&amp;')
+                     .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    });
+    el.innerHTML = out;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    function rewriteLinks(el) {
+      var config = (window.__LINKS__ || {})[el.id];
+      if (!config) return;
+      var base = typeof config === 'string' ? config : config.base;
+      var root = typeof config === 'string' ? null : config.root;
+      var nodes = el.querySelectorAll('a[href], img[src]');
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        var attr = n.tagName === 'IMG' ? 'src' : 'href';
+        var h = n.getAttribute(attr);
+        if (!h) continue;
+        if (/^(?:https?:|mailto:|tel:|#|\/\/|\/)/i.test(h)) continue;
+        var prefix = root && /^(?:\.\/)?(?:README|RESULTS|PROGRESS)\.md(?:[#?].*)?$/i.test(h)
+          ? root : base;
+        n.setAttribute(attr, prefix + h);
+      }
+    }
+    var blobs = window.__MD__ || {};
+    Object.keys(blobs).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      try { renderMD(el, blobs[id]); rewriteLinks(el); }
+      catch (err) {
+        var p = document.createElement('pre');
+        p.textContent = blobs[id];
+        el.innerHTML = '';
+        el.appendChild(p);
+      }
+    });
+    if (window.MathJax) {
+      if (MathJax.typesetPromise) { MathJax.typesetPromise(); }
+      else if (MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(function () { MathJax.typesetPromise(); });
+      }
+    }
+  });
+})();
+</script>
+</head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+<h1>Minimum binary-XOR circuit for AES MixColumns</h1>
+<p class="tag">source <code>cs/xor</code> ·
+last change 2026-09-09T03:53:07Z</p>
+<p class="tag">Domain documents: <a href="../materials/domains/cs/PROGRESS.md"><code>PROGRESS.md</code></a> · <a href="../materials/domains/cs/README.md"><code>README.md</code></a> · <a href="../materials/domains/cs/RESULTS.md"><code>RESULTS.md</code></a></p>
+<h2>Latest progress</h2><p class="tag">newest matching entry, quoted from <code>cs/PROGRESS.md</code></p><div class="markdown-body" id="md-progress"></div>
+<h2>Target README</h2><p class="tag">first lines, verbatim</p><div class="markdown-body" id="md-readme"></div>
+<h2>Code &amp; artifacts</h2>
+<p class="tag">mirrored from the source tree; oversized, raw, provisional,
+third-party, and publication-gated files are excluded</p>
+<details open><summary><code>project root</code> — 4 files, 0.0 MB</summary><ul class="files"><li><a href="../materials/cs/xor/README.md">README.md</a> <span class="fsize">6 KB</span></li><li><a href="../materials/cs/xor/replay.py">replay.py</a> <span class="fsize">5 KB</span></li><li><a href="../materials/cs/xor/state.json">state.json</a> <span class="fsize">1 KB</span></li><li><a href="../materials/cs/xor/test_replay.py">test_replay.py</a> <span class="fsize">1 KB</span></li></ul></details>
+<script>window.__MD__ = {"md-progress": "## 2026-09-06 — exact AES XOR headroom assay stopped\n\nThe strongest located primary is Jean's 88-XOR circuit\n([ePrint 2026/1481](https://eprint.iacr.org/2026/1481)), not the superseded\n89-XOR result. The\n[`registered assay`](xor/campaigns/20260906T021828Z_57f63dca_6cc09db616c6/)\nreproduced the public circuit and found no saving in all 258 fixed\ntwo-/three-/four-gate windows (0.015378 CPU s). Independent full-map/FIPS replay\npassed and the corrupted-operand control failed as required.\n\nThe independent search checked or lower-bounded 239 windows; 19 Z3 calls were\nUNKNOWN at the fixed 500 ms limit (14.424723 CPU s total verification).\nClosed **FROZEN-INCONCLUSIVE**. Rank A-for-assay becomes **C for further\nlocal search**: no positive headroom witness, no completed irreducibility\ncertificate, no record improvement and no AI-superiority claim.\nLimits and window scope were not expanded. Continue to a different candidate;\nno existing autonomous supervisor was restarted.\n\n[`Candidate and source evidence`](../data/frontier-scout-20260906/).\n\n\n\u003c!-- cs-autonomy:20260905T091934-6caca9f7f32f:1 -->", "md-readme": "# Exact XOR-circuit headroom\n\n## Claim and scope\n\nCan an exact binary-XOR circuit compute the AES MixColumns 32-by-32 binary\nlinear map with at most 87 XOR gates? The strongest primary result located on\n2026-09-06 is Jérémy Jean's **88-XOR construction**,\n[ePrint 2026/1481](https://eprint.iacr.org/2026/1481), following the 89-XOR\nconstruction of [Sun, Yang and Li](https://eprint.iacr.org/2025/1493).\nA bounded search did not locate a subsequent smaller construction; that is not\nexhaustive priority clearance. Jean explicitly credits Codex assistance.\n\nThe metric is unrestricted binary XOR count with free wires/fanout and free\nrenaming, not XOR depth, in-place operations, silicon area, or cryptographic\nsecurity. A smaller independently checked circuit would improve an externally\npublished construction. An algorithmic AI-superiority claim is a different task.\n\n### Verified bit/byte interface\n\nThe two-page ePrint names `x0..x31` and `y0..y31` without an explicit\nbyte/bit-order definition. Our verified interface is\n`x_(8*j+b) = coefficient of t^b in s[j,c]` for one AES column; likewise for\n`y`. Thus bits are LSB-first within each byte, and the local integer places\nbyte `j` at bits `8*j..8*j+7`. This is an explicit interface, not attributed\nauthor intent or FIPS bit-sequence numbering: FIPS sequence bit\n`r_(8*j+7-b)` corresponds to this circuit's `x_(8*j+b)`.\n\n[FIPS 197-upd1](https://doi.org/10.6028/NIST.FIPS.197-upd1) sections 3.2–3.4\nand equations 4.1, 4.3, 5.7–5.8 define the byte polynomial, modulus and\nMixColumns matrix. An independent carryless-polynomial/long-division replay\nchecked all 32 basis inputs under 16 normal/reversed-byte and LSB/MSB-order\ninput/output combinations; only the stated interface matched within that\ncensus. The NIST Appendix B column `d4 bf 5d 30 -> 04 66 81 e5` also passed.\nSee the [exact convention receipt](../../data/frontier-scout-20260906/aes-convention-adjudication.json).\nThese are post-assay functional checks, not new candidate evaluations.\n\n## Candidate gate\n\n**Initial rank: A for a cheap assay, not permission for a large campaign.**\nImportance is concrete: MixColumns is a standardized, widely used linear map.\nInputs are obtainable: the two-page primary contains all 88 assignments.\nVerification is exact: compare the full linear map against the AES field\nmultiplication definition, not just the author's circuit or random vectors.\nHeadroom is **unknown**, not inferred from a loose global lower bound.\n\nThe first representation is deliberately modest: re-synthesize short windows\nof the current circuit over the exact GF(2) forms available at their boundaries.\nClassical exact search, not an LLM, is the first control. This directly tests\nwhether that cheap neighborhood has already been exhausted. Failure prevents\nwasting program-search calls there; it is not a new global optimality theorem.\n\n## Frozen first assay\n\nBefore evaluation, `scratch/headroom-preregistration.json` pins the exact primary\nPDF, transcribed 88-gate input, source hashes, and all 258 contiguous windows of\nwidths 2, 3 and 4 in published order. Boundary inputs include every earlier wire;\nrequired outputs include all wires consumed later and every final output.\nEvery replacement uses at most one fewer gate. Exact search covers at most\nthree binary XORs, with a complete finite lower-bound/search argument.\n\nThe independent checker uses the AES polynomial x^8+x^4+x^3+x+1 and the\nMixColumns coefficient matrix. It checks all 32 basis vectors and the FIPS\n`db 13 53 45 -> 8e 4d a1 bc` example, and rejects a deliberately corrupted\ncircuit. No floating point, private training instances, or source-text-based\nfunctional claims are used.\n\nLimits: one CPU core, nice 10, 60 CPU seconds, 90 wall seconds, no automatic\nretries, no extension of windows after seeing outcomes. A timeout is\ninconclusive; no partially explored neighborhood is called optimal. Primary\nmetric is integer gate savings. Global optimum is unknown, so global gap\nclosure is null; a zero denominator is never called 100% closure.\n\nSuccess means a strictly smaller circuit whose full map independently checks.\nNegative means no saving in the completely explored stated neighborhood only.\nBoth outcomes stop this assay. A positive result needs refreshed priority\ncomparison before a record claim; an algorithmic follow-on must freeze public\nmatrices, development/holdout split, candidate-evaluation and compute budgets,\nand compare against contemporary non-AI local optimization and LCB-BP controls.\n\n## Failure and publication boundary\n\nThe public circuit may already be irreducible under these local substitutions.\nA breakthrough may require nonlocal sharing or a different circuit ordering.\nThe exact verifier does not establish an efficient search strategy. A local\nirreducibility result alone is unlikely to merit a research paper. A genuinely\nsmaller AES circuit, a substantive new lower bound, or a transferable method\nbeating current public comparators is the publication-level target.\n\nSource acquisition and selection evidence:\n[`data/frontier-scout-20260906`](../../data/frontier-scout-20260906/).\nCampaigns must be minted and frozen with `../../scripts/campaign.py`.\n\n## Current state (agent Main, 2026-09-06)\n\n**C: do not extend this local-search lane.** The\n[`first assay`](campaigns/20260906T021828Z_57f63dca_6cc09db616c6/)\nclosed **FROZEN-INCONCLUSIVE**, not certified irreducibility.\nThe 88-gate public circuit reproduced exactly; the normal-form search found\nno saving in all 258 registered windows (0.015378 CPU seconds).\nIndependent byte-field replay passed every basis vector and the worked byte example;"};</script>
+<script>window.__LINKS__ = {"md-progress": {"base": "../materials/cs/", "root": "../materials/domains/cs/"}, "md-readme": "../materials/cs/xor/"};</script>
+<hr><p class="tag">Auto-generated by tools/sync.py · public research mirror</p>
+</body></html>

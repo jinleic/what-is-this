@@ -9,7 +9,7 @@
   "headline": "n=270 deep target-20 re-screen certified: 1,636 of 1,657 k=8 residuals dominated by fresh verified witnesses (weights 12-20), shards strict under validator-v11; Liang row b base pair + prefix55 initial complete, 9 prefix runs short of binding; 21 k=8 + 147 k=12 undecided, 210 survivors unpromoted",
   "next_action": "Bind Liang row b: run the remaining 9 prefix runs (prefix55 replay; prefixes 56/135/175/269 initial+replay, ~3,700-4,300 s each) plus assemble/validate under the two-run stop rule, strict validator-v11; minis are free (GB9 stopped). Time-boxed: complete as many prefix pairs as fit, bank progress honestly; 21 k=8 residuals (witness 22 vs threshold 20) deferred to a later allocation",
   "owner": "jinleic",
-  "updated_utc": "2026-09-09T02:15:46Z",
+  "updated_utc": "2026-09-09T03:35:46Z",
   "updated_by": "workspace-architecture-fix",
   "sources": [
     "math/PROGRESS.md#QEC (2026-08-24) \u2014 TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$",
@@ -99,6 +99,15 @@
         "reason": "allocation {\"runs_max\": 5, \"seconds_max\": 45000.0}",
         "evidence": [],
         "actor": "main"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-09T03:35:46Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"runs_max\": 5, \"seconds_max\": 45000.0}",
+        "evidence": [],
+        "actor": "Main"
       }
     ],
     "reason": "owner 2026-09-09: resume \u2014 bind Liang row b (9 prefix runs + assemble/validate); lifetime caps raised to used+3 runs (5) and used+36,828 s (45,000)",
@@ -111,7 +120,11 @@
     "runs_used": 2,
     "tokens_used": 0,
     "seconds_used": 8172.0,
-    "gate_at_last_progress": "n=270 deep re-screen done (1,636/1,657 k=8 decided at threshold 20, strict validator-v11); closure open: 21 k=8 (best witness 22) + 147 k=12 undecided, 210 k=20/24 survivors unpromoted, Liang row b unbound (base pair + prefix55 initial done, 9 prefix runs remain)"
+    "gate_at_last_progress": "n=270 deep re-screen done (1,636/1,657 k=8 decided at threshold 20, strict validator-v11); closure open: 21 k=8 (best witness 22) + 147 k=12 undecided, 210 k=20/24 survivors unpromoted, Liang row b unbound (base pair + prefix55 initial done, 9 prefix runs remain)",
+    "tokens_unreported_runs": 2,
+    "seconds_unreported_runs": 0,
+    "alloc_runs": 3,
+    "alloc_seconds": 36828.0
   },
   "priority": {
     "value": 4,

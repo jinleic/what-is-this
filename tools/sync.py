@@ -204,6 +204,13 @@ PROJECTS = [
          anchor=None,
          exclude_dirs=VERIFIED_TARGET_EXCLUDES,
          papers=("README.md",)),
+    dict(domain="physics", slug="stabrank-witness",
+         name="Stabilizer-rank witness for QPG magic cat8",
+         dirname="stabrank-witness", session="",
+         keywords=("stabrank-witness", "stabilizer rank", "magic cat8"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
+         papers=("README.md",)),
 
     # Theoretical computer science and information theory targets.
     dict(domain="cs", slug="mceliece",
@@ -256,6 +263,13 @@ PROJECTS = [
          anchor=None,
          exclude_dirs=VERIFIED_TARGET_EXCLUDES,
          exclude_paths=(".README.md.lock",),
+         papers=("README.md",)),
+    dict(domain="cs", slug="xor",
+         name="Minimum binary-XOR circuit for AES MixColumns",
+         dirname="xor", session="",
+         keywords=("xor", "MixColumns", "AES", "straight-line circuit"),
+         anchor=None,
+         exclude_dirs=VERIFIED_TARGET_EXCLUDES,
          papers=("README.md",)),
 
     # Quantitative trading has one curated overview. Raw market data, return
@@ -374,14 +388,33 @@ def project_source_label(project: dict) -> str:
 # list — a promoted target would run for weeks and never appear on the
 # site.  Resolve a drift warning by adding a PROJECTS entry (to publish)
 # or a DRIFT_GUARD_IGNORE entry (to document the deliberate omission).
-DRIFT_GUARD_IGNORE: frozenset[tuple[str, str]] = frozenset()
+DRIFT_GUARD_IGNORE: frozenset[tuple[str, str]] = frozenset({
+    # Closed self-test leftover (pre_statement_smoke.md), not a target.
+    ("math", "smoke"),
+    # Vendored external checkout (PrimeGapsLib, Apache-2.0).  Its
+    # PROVENANCE.md forbids citing it as a result of this repository —
+    # mirroring it here would be an attribution error, so never publish.
+    ("math", "prime-gaps"),
+    # quant-trading ships one curated overview page; the explorations/
+    # registry stays out by design.
+    ("quant-trading", "explorations"),
+})
 
 
-def drift_guard() -> list[str]:
-    """Unregistered targets: state.json present but no PROJECTS entry."""
-    registered = {(project_domain(p), p["dirname"]) for p in PROJECTS}
-    drift = []
-    for domain, cfg in DOMAINS.items():
+def drift_guard(
+    domains: dict = DOMAINS,
+    projects: list[dict] = PROJECTS,
+) -> dict[str, list[str]]:
+    """Two-sided PROJECTS/workspace drift.
+
+    unregistered: a directory with state.json but no PROJECTS entry —
+    institute-managed yet invisible on the site.
+    missing: a PROJECTS entry (dirname != ".") whose source directory no
+    longer exists — its stale page and materials stay published forever.
+    """
+    registered = {(project_domain(p), p["dirname"]) for p in projects}
+    out: dict[str, list[str]] = {"unregistered": [], "missing": []}
+    for domain, cfg in domains.items():
         root = cfg["root"]
         if not root.is_dir():
             continue
@@ -394,11 +427,20 @@ def drift_guard() -> list[str]:
                     or (domain, d.name) in DRIFT_GUARD_IGNORE):
                 continue
             if (d / "state.json").is_file():
-                drift.append(f"{domain}/{d.name}")
-    return drift
+                out["unregistered"].append(f"{domain}/{d.name}")
+    for p in projects:
+        if p["dirname"] == ".":
+            continue
+        src = domains[project_domain(p)]["root"] / p["dirname"]
+        if not src.is_dir():
+            out["missing"].append(project_source_label(p))
+    return out
 
 
 JUNK_DIRS = {"__pycache__", ".venv", "venv", ".git", "node_modules",
+             # Vendored/build trees inside targets: Lean toolchain output
+             # (.lake = mathlib source + artifacts) and CI config.
+             ".lake", ".github",
              ".ipynb_checkpoints", ".pytest_cache", ".mypy_cache",
              ".ruff_cache", "build", "dist", "egg-info",
              # Campaign run directories are timestamped raw outputs, never
@@ -1225,12 +1267,16 @@ def main() -> int:
         f"pages rewritten this run: {pages_rewritten}"
     )
     drift = drift_guard()
-    for d in drift:
+    for d in drift["unregistered"]:
         print(f"DRIFT WARNING: {d} has state.json but no PROJECTS entry — "
               f"invisible on the site; add it to PROJECTS (publish) or "
               f"DRIFT_GUARD_IGNORE (deliberate omission)")
-    if not drift:
-        print("drift guard: every state.json target is registered")
+    for d in drift["missing"]:
+        print(f"DRIFT WARNING: {d} is registered but its source directory "
+              f"is gone — stale page and materials stay published; remove "
+              f"the PROJECTS entry or restore the target")
+    if not any(drift.values()):
+        print("drift guard: PROJECTS and workspace targets agree")
     rc = final_gate(words)
     if rc == 0:
         print("clean — sync with: git add -A && git commit && git push")

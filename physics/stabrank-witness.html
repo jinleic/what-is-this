@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stabilizer-rank witness for QPG magic cat8 — what-is-this</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1f2328}
+h1,h2,h3{line-height:1.25}
+pre{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:12px;
+overflow-x:auto;font-size:13px;line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;font-size:14px;vertical-align:top}
+th{background:#f6f8fa}
+a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+.tag{font-size:12px;color:#57606a;margin:-0.4rem 0 1rem}
+.tip{background:#fff8c5;border:1px solid #d4a72c66;border-radius:6px;padding:8px 12px;font-size:13px}
+.markdown-body{box-sizing:border-box;background:transparent;font-size:15px;margin:0 0 1.2rem}
+details{border:1px solid #d0d7de;border-radius:6px;padding:6px 12px;margin:8px 0;background:#fafbfc}
+summary{cursor:pointer;font-size:14px}
+ul.files{margin:8px 0;padding-left:20px;font-size:13px}
+ul.files li{margin:2px 0}
+.fsize{color:#57606a;font-size:11px}
+mjx-container{overflow-x:auto;max-width:100%}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css">
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    packages: {'[+]': ['color', 'ams']}
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  function renderMD(el, md) {
+    var math = [];
+    function stash(re) {
+      md = md.replace(re, function (m) {
+        math.push(m);
+        return '@@MATH' + (math.length - 1) + '@@';
+      });
+    }
+    stash(/\$\$[\s\S]+?\$\$/g);
+    stash(/\\\[[\s\S]+?\\\]/g);
+    stash(/\\\((?:[^\\]|\\[^)])+?\\\)/g);
+    stash(/\$(?=\S)(?:[^$\n]*?\S)?\$/g);
+    var out = marked.parse(md, { mangle: false, headerIds: false });
+    out = out.replace(/@@MATH(\d+)@@/g, function (_, i) {
+      return math[+i].replace(/&/g, '&amp;')
+                     .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    });
+    el.innerHTML = out;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    function rewriteLinks(el) {
+      var config = (window.__LINKS__ || {})[el.id];
+      if (!config) return;
+      var base = typeof config === 'string' ? config : config.base;
+      var root = typeof config === 'string' ? null : config.root;
+      var nodes = el.querySelectorAll('a[href], img[src]');
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        var attr = n.tagName === 'IMG' ? 'src' : 'href';
+        var h = n.getAttribute(attr);
+        if (!h) continue;
+        if (/^(?:https?:|mailto:|tel:|#|\/\/|\/)/i.test(h)) continue;
+        var prefix = root && /^(?:\.\/)?(?:README|RESULTS|PROGRESS)\.md(?:[#?].*)?$/i.test(h)
+          ? root : base;
+        n.setAttribute(attr, prefix + h);
+      }
+    }
+    var blobs = window.__MD__ || {};
+    Object.keys(blobs).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      try { renderMD(el, blobs[id]); rewriteLinks(el); }
+      catch (err) {
+        var p = document.createElement('pre');
+        p.textContent = blobs[id];
+        el.innerHTML = '';
+        el.appendChild(p);
+      }
+    });
+    if (window.MathJax) {
+      if (MathJax.typesetPromise) { MathJax.typesetPromise(); }
+      else if (MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(function () { MathJax.typesetPromise(); });
+      }
+    }
+  });
+})();
+</script>
+</head>
+<body>
+<p><a href="../index.html">&larr; index</a></p>
+<h1>Stabilizer-rank witness for QPG magic cat8</h1>
+<p class="tag">source <code>physics/stabrank-witness</code> ·
+last change 2026-09-09T03:53:07Z</p>
+<p class="tag">Domain documents: <a href="../materials/domains/physics/PROGRESS.md"><code>PROGRESS.md</code></a> · <a href="../materials/domains/physics/README.md"><code>README.md</code></a> · <a href="../materials/domains/physics/RESULTS.md"><code>RESULTS.md</code></a></p>
+<h2>Latest progress</h2><p class="tag">newest matching entry, quoted from <code>physics/PROGRESS.md</code></p><div class="markdown-body" id="md-progress"></div>
+<h2>Target README</h2><p class="tag">first lines, verbatim</p><div class="markdown-body" id="md-readme"></div>
+<h2>Code &amp; artifacts</h2>
+<p class="tag">mirrored from the source tree; oversized, raw, provisional,
+third-party, and publication-gated files are excluded</p>
+<details open><summary><code>project root</code> — 2 files, 0.0 MB</summary><ul class="files"><li><a href="../materials/physics/stabrank-witness/README.md">README.md</a> <span class="fsize">7 KB</span></li><li><a href="../materials/physics/stabrank-witness/state.json">state.json</a> <span class="fsize">1 KB</span></li></ul></details>
+<script>window.__MD__ = {"md-progress": "## 2026-09-06 — calibrated magic-cat search stopped without rank-five witness\n\nAfter the AES XOR assay failed to show local headroom, the next admitted\ncandidate was `chi(cat_8) \u003c= 5`, which would improve QPG's Clifford+T\nsimulation exponent. The\n[registered public-SA assay](stabrank-witness/campaigns/20260906T025240Z_725b49e8_31de21aa6d69/)\nused one chain/thread at a time and fixed settings/seeds. Exact calibration\npassed for cat4/rank2, cat6/rank3 and cat8/rank6. Seven rank-five seeds\ncompleted without a witness; seed 7 hit the 60-second cell limit.\n**FROZEN-INCONCLUSIVE**, 73.105411 CPU s, 72.049315 wall s; no retries.\n\nThe verifier independently reconstructs affine-support/quadratic-phase\nstabilizers over Q(i), checks the full QPG target and rejects corrupt controls.\nThe frozen cat8/rank6 witness replayed all 256 coordinates in a standalone\nprocess after closure. Q(i) suffices because certificate vectors omit each\nstate's nonzero normalization; exact cat6 coefficients and full replay\nadjudicate the normalization advisory.\n\nPost-hoc exact normal-equation checks on the seven already returned rank-five\ntuples match the numerical residuals. Best squared distance: **205/2016 to\none particular span**, not a global floor or a lower bound on stabilizer rank.\nRank A-for-assay becomes **C for the unchanged SA lane**. Residual variation\ndoes not establish LLM headroom. No large search or external submission.\n\n[`Cross-field evidence and dossiers`](../data/frontier-scout-20260906/).\n", "md-readme": "# Magic-cat stabilizer-rank witness\n\n## Current state (Main, 2026-09-06)\n\n**C for unchanged local simulated annealing; mathematical rank remains open.**\nThe [registered assay](campaigns/20260906T025240Z_725b49e8_31de21aa6d69/)\nclosed **FROZEN-INCONCLUSIVE**. The public search recovered exact\n`cat_4`/rank-2, `cat_6`/rank-3 and `cat_8`/rank-6 witnesses. Seven rank-5\nseeds completed without a witness; seed 7 hit the frozen 60-second cell wall\nlimit. No limits, schedules or seeds were changed.\n\nAssay plus supervision: **73.105411 CPU s / 72.049315 wall s**; largest child\nRSS **100,204,544 bytes**. The independent checker reconstructs genuine\nstabilizers and checks the full target exactly over Q(i). After freeze, the\nsix-term cat-eight certificate replayed all 256 coordinates successfully.\nCorrupted phase, target and support controls were rejected.\n\nPost-assay exact diagnostics on the already returned tuples agree with all\nseven numerical residuals. The best returned five-state span has squared\ndistance **205/2016** from the normalized target. This is a distance to that\nparticular span, **not** a global floor or a rank lower bound. No new record,\ngeneralization or AI-value claim follows. No LLM search is queued.\n\nReplay the frozen known six-term witness from the workspace root, without\nrunning the search or writing into its frozen directory:\n\n```sh\nphysics/stabrank-witness/.venv/bin/python -I -B \\\n  physics/stabrank-witness/campaigns/20260906T025240Z_725b49e8_31de21aa6d69/exact_verify.py \\\n  physics/stabrank-witness/campaigns/20260906T025240Z_725b49e8_31de21aa6d69/cat8-r6-seed0.json \\\n  physics/stabrank-witness/scratch/cat8-replay.json\n```\n\nDependencies: Python 3.12.12, SymPy 1.14.0 for exact replay; search dependencies\nand all effective SA settings are pinned in the campaign registration.\nThe next scientifically justified step needs a material structural ansatz,\nnot more seeds or inference from variation among local minima.\n\n## Claim and frontier at admission\n\n**A for a bounded headroom assay; headroom is not yet demonstrated.** Find an\nexact expression of the eight-qubit Qassim–Pashayan–Gosset magic cat state as a\nlinear combination of at most five stabilizer states. The strongest located\npublished bound is six terms; the exact optimum is unknown.\n\nDefine `T = (|0> + exp(i*pi/4)|1>)/sqrt(2)`, `T_perp = Z T`, and\n`cat_m = (T^tensor(m) + T_perp^tensor(m))/sqrt(2)`. This is the edge-type orbit,\nnot the distinct face-type Bravyi–Kitaev T state. In computational coordinates,\nthe unnormalized target is zero at odd Hamming weight and `i^(weight/2)` at\neven weight. Removing the parity ancilla by CNOTs gives the compressed target\non `m-1` qubits: amplitude `i^ceil(weight(y)/2)`.\n\nA five-term witness would imply `chi(T^tensor(n)) = O(5^(n/6))` by chaining cat\nstates with stabilizer `cat_2` contractions: `l` copies yield `cat_(6*l+2)` with\nat most `5^l` terms. Together with `chi(T^tensor(n)) \u003c= 2 chi(cat_n)` and\nprojection monotonicity, the exponent is `log2(5)/6 = 0.386988...`, below the\nlocated `log2(3)/4 = 0.396240...`. This direct cat-contraction argument does not\nrely on the regular-exponential-growth assumption in the general-code Theorem 4.\n\nPrimary sources:\n- [Qassim–Pashayan–Gosset, Quantum 5, 606 (2021)](https://arxiv.org/abs/2106.07740),\n  magic-cat contractions and Appendix A (`chi(cat_8) \u003c= 6`).\n- [Labib–Russo (2026)](https://arxiv.org/abs/2605.28586), current related orbit\n  results and exact-verification workflow.\n- [Public stabrank leaderboard](https://unitaryfoundation.github.io/stabrank/)\n  and [search engine](https://github.com/unitaryfoundation/stabrank).\n\n## Ten admission gates\n\n1. **External value:** finite witness improves an asymptotic simulation bound,\n   not an internal score.\n2. **Precise statement:** exact rank upper bound for the pinned magic-cat state;\n   amplitudes and Clifford compression are explicit above.\n3. **Strongest comparator:** public six-term cat construction and contemporary\n   non-AI simulated annealing, not a naive random-state baseline.\n4. **Accessible artifacts:** public formula and wheel `stabrank==0.1.1`;\n   isolated local environment, package files pinned before compute.\n5. **Verifier:** independent affine-support/quadratic-phase reconstruction and\n   exact Gaussian-rational span membership; a float residual is never proof.\n6. **Headroom:** unknown. Reproduce known-answer cells before probing rank five;\n   a failed search is not a rank lower bound.\n7. **Search leverage:** finite exact witness in dimension 128; nonlocal sharing\n   of stabilizer states is the representation, not open-ended prose proving.\n8. **Novelty:** only an exact witness below the located bound can become a\n   discovery, after refreshed prior art. Reproductions are labeled separately.\n9. **Bounded cost and AI role:** one chain/thread at a time, fixed seeds and\n   iteration limits; no LLM search until a separate matched-budget experiment\n   is justified. This assay is non-AI.\n10. **Failure value:** distinguish an uncalibrated instrument from a calibrated\n    search miss; preserve exact candidate tuples, residuals and resource costs.\n\n## Frozen assay design\n\nThe machine-readable registration is `scratch/headroom-preregistration.json`;\nits hash is bound by `../../scripts/campaign.py init` before any target search.\nThe candidate ladder is compressed `cat_4` at rank 2, `cat_6` at rank 3,\n`cat_8` at rank 6, then the one discovery cell `cat_8` at rank 5. The first\nthree are calibration/reproduction controls. A failed calibration stops the\nladder; it does not imply absent mathematical headroom.\n"};</script>
+<script>window.__LINKS__ = {"md-progress": {"base": "../materials/physics/", "root": "../materials/domains/physics/"}, "md-readme": "../materials/physics/stabrank-witness/"};</script>
+<hr><p class="tag">Auto-generated by tools/sync.py · public research mirror</p>
+</body></html>

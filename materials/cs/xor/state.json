@@ -1,0 +1,48 @@
+{
+  "schema": "target-state/1",
+  "id": "cs/xor",
+  "problem": "Minimum binary-XOR straight-line circuit for AES MixColumns",
+  "status": "parked",
+  "current_gate": "aes88-local-headroom: stopped, rank C",
+  "latest_campaign": "20260906T021828Z_57f63dca_6cc09db616c6",
+  "latest_campaign_verdict": "FROZEN-INCONCLUSIVE",
+  "headline": "88-gate public circuit reproduced; no savings in 258 local windows; independent negatives incomplete (19 UNKNOWN); FROZEN-INCONCLUSIVE.",
+  "next_action": "No local-search extension or autonomous run. Re-enter only with a separately preregistered nonlocal representation and strongest public comparator; first demonstrate constructive headroom.",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-08T15:03:03Z",
+  "sources": [
+    "cs/xor/README.md",
+    "cs/RESULTS.md",
+    "cs/PROGRESS.md",
+    "cs/xor/campaigns/20260906T021828Z_57f63dca_6cc09db616c6/adjudication.json"
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": "paused",
+        "to": "parked",
+        "at": "2026-09-08T15:03:03Z",
+        "cause": "manual",
+        "reason": "vocabulary migration: paused -> parked (stopped, rank C)",
+        "evidence": []
+      }
+    ],
+    "reason": "vocabulary migration: paused -> parked (stopped, rank C)",
+    "evidence": []
+  },
+  "budget": {
+    "runs_max": null,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 0,
+    "tokens_used": 0,
+    "seconds_used": 0.0,
+    "gate_at_last_progress": "aes88-local-headroom: stopped, rank C"
+  },
+  "priority": {
+    "value": 1,
+    "expected_progress": 0.5,
+    "blocker": "none",
+    "blocker_detail": null
+  }
+}

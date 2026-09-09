@@ -44,6 +44,7 @@ Root documents: [`PROGRESS.md`](materials/domains/physics/PROGRESS.md), [`README
 | [Certified neutral-atom transport scheduling](physics/na-compiler.html) | `physics/na-compiler` | 2026-09-09 | 2026-08-30 — na-compiler cost rows upgraded to GLOBAL µs optima (and a heap bug I wrote, caught by arithmetic) |
 | [Contractive-shadow exact census](physics/shadows.html) | `physics/shadows` | 2026-09-07 | 2026-09-04 — shadows noisy-variance gate closed FROZEN-CERTIFIED: exact 132-cell no-flip regression (gate noisy-variance-r7) |
 | [Fault-tolerant QLOPS arithmetic audit](physics/qlops.html) | `physics/qlops` | 2026-09-09 | 2026-09-08 — physics/qlops: F-Z4 resolved (driver-version drift), Revision-8 71m-shot run closes FROZEN-INCONCLUSIVE |
+| [Stabilizer-rank witness for QPG magic cat8](physics/stabrank-witness.html) | `physics/stabrank-witness` | 2026-09-09 | 2026-09-06 — calibrated magic-cat search stopped without rank-five witness |
 | [Zero-level CCZ reproduction](physics/msd.html) | `physics/msd` | 2026-09-07 | 2026-09-05 — MSD stale rebuild handoff replaced by the official-source route |
 
 ## Theoretical computer science and information theory
@@ -59,6 +60,7 @@ Root documents: [`PROGRESS.md`](materials/domains/cs/PROGRESS.md), [`README.md`]
 | [Classic McEliece hold-out "waterfall" dispute](cs/mceliece.html) | `cs/mceliece` | 2026-09-07 | mceliece/ m=12 REACHED at a real NIST cell; alpha measured, not derived; the section-3.6 hole stays BOUNDED, 2026-09-01 |
 | [Grothendieck constant](cs/kg.html) | `cs/kg` | 2026-09-09 | kg/ the pre-registered subdivision is PROVABLY DEGENERATE; the obstruction identifies the real binding constraint, 2026-09-01 |
 | [Matrix multiplication exponent](cs/omega.html) | `cs/omega` | 2026-09-07 | omega/ branch-and-bound feasibility gate: SPREAD, frozen as a quantified obstruction; stage 2 never opened, 2026-09-01 |
+| [Minimum binary-XOR circuit for AES MixColumns](cs/xor.html) | `cs/xor` | 2026-09-09 | 2026-09-06 — exact AES XOR headroom assay stopped |
 | [Real tensor rank of octonion multiplication](cs/oct-rank.html) | `cs/oct-rank` | 2026-09-07 | oct-rank/ Route F: FAILURE TO CERTIFY with a certified local negative; the instrument proved it can discriminate, 2026-09-01 |
 | [Reed–Solomon three-dimensional product expansion](cs/rs-pe3d.html) | `cs/rs-pe3d` | 2026-09-07 | Autonomous rs-pe3d closeout — 2026-09-05 05:28 UTC |
 

@@ -239,5 +239,49 @@ class DomainSyncTest(unittest.TestCase):
         self.assertFalse(sync.sensitive_hit(b"token loaded from environment"))
 
 
+class DriftGuardTest(unittest.TestCase):
+    def _run(self, root: Path, projects: list[dict]) -> dict[str, list[str]]:
+        domains = {"math": {"root": root}}
+        return sync.drift_guard(domains=domains, projects=projects)
+
+    def test_unregistered_state_json_is_flagged(self) -> None:
+        # dirname/slug case mismatch is the trap: registration matches the
+        # on-disk dirname (LIU_H1), not the slug (liu_h1).
+        projects = [dict(slug="liu_h1", dirname="LIU_H1")]
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            for name in ("LIU_H1", "newtarget", "scratch", ".hidden"):
+                d = root / name
+                d.mkdir()
+                (d / "state.json").write_text("{}")
+            (root / "nostate").mkdir()
+
+            drift = self._run(root, projects)
+
+        self.assertEqual(drift["unregistered"], ["math/newtarget"])
+
+    def test_registered_but_missing_source_is_flagged(self) -> None:
+        projects = [
+            dict(slug="overview", domain="quant-trading", dirname="."),
+            dict(slug="gone", dirname="gone"),
+        ]
+        with tempfile.TemporaryDirectory() as tmpdir:
+            drift = self._run(Path(tmpdir), projects)
+
+        self.assertEqual(drift["missing"], ["math/gone"])
+        self.assertEqual(drift["unregistered"], [])
+
+    def test_ignored_dirs_are_not_flagged(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            smoke = root / "smoke"
+            smoke.mkdir()
+            (smoke / "state.json").write_text("{}")
+
+            drift = self._run(root, [])
+
+        self.assertEqual(drift["unregistered"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

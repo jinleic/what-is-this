@@ -1,0 +1,48 @@
+{
+  "schema": "target-state/1",
+  "id": "physics/stabrank-witness",
+  "problem": "Five-term stabilizer-rank witness for QPG magic cat8",
+  "status": "parked",
+  "current_gate": "magic-cat-headroom: stopped, rank C for unchanged SA",
+  "latest_campaign": "20260906T025240Z_725b49e8_31de21aa6d69",
+  "latest_campaign_verdict": "FROZEN-INCONCLUSIVE",
+  "headline": "Known cat4/2,cat6/3,cat8/6 exact witnesses reproduced; seven rank5 seeds found none, eighth hit cell wall limit; FROZEN-INCONCLUSIVE.",
+  "next_action": "Do not extend unchanged SA or launch LLM search. Re-enter only with a material structural representation and a new preregistration, exact witness verification and strongest non-AI controls.",
+  "owner": "jinleic",
+  "updated_utc": "2026-09-08T15:03:03Z",
+  "sources": [
+    "physics/stabrank-witness/README.md",
+    "physics/RESULTS.md",
+    "physics/PROGRESS.md",
+    "physics/stabrank-witness/campaigns/20260906T025240Z_725b49e8_31de21aa6d69/adjudication.json"
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": "paused",
+        "to": "parked",
+        "at": "2026-09-08T15:03:03Z",
+        "cause": "manual",
+        "reason": "vocabulary migration: paused -> parked (stopped, rank C)",
+        "evidence": []
+      }
+    ],
+    "reason": "vocabulary migration: paused -> parked (stopped, rank C)",
+    "evidence": []
+  },
+  "budget": {
+    "runs_max": null,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 0,
+    "tokens_used": 0,
+    "seconds_used": 0.0,
+    "gate_at_last_progress": "magic-cat-headroom: stopped, rank C for unchanged SA"
+  },
+  "priority": {
+    "value": 1,
+    "expected_progress": 0.5,
+    "blocker": "none",
+    "blocker_detail": null
+  }
+}
