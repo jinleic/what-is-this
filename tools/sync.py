@@ -389,8 +389,6 @@ def project_source_label(project: dict) -> str:
 # site.  Resolve a drift warning by adding a PROJECTS entry (to publish)
 # or a DRIFT_GUARD_IGNORE entry (to document the deliberate omission).
 DRIFT_GUARD_IGNORE: frozenset[tuple[str, str]] = frozenset({
-    # Closed self-test leftover (pre_statement_smoke.md), not a target.
-    ("math", "smoke"),
     # Vendored external checkout (PrimeGapsLib, Apache-2.0).  Its
     # PROVENANCE.md forbids citing it as a result of this repository —
     # mirroring it here would be an attribution error, so never publish.
@@ -404,6 +402,7 @@ DRIFT_GUARD_IGNORE: frozenset[tuple[str, str]] = frozenset({
 def drift_guard(
     domains: dict = DOMAINS,
     projects: list[dict] = PROJECTS,
+    ignore: frozenset[tuple[str, str]] = DRIFT_GUARD_IGNORE,
 ) -> dict[str, list[str]]:
     """Two-sided PROJECTS/workspace drift.
 
@@ -424,7 +423,7 @@ def drift_guard(
                     or d.name in VERIFIED_TARGET_EXCLUDES):
                 continue
             if ((domain, d.name) in registered
-                    or (domain, d.name) in DRIFT_GUARD_IGNORE):
+                    or (domain, d.name) in ignore):
                 continue
             if (d / "state.json").is_file():
                 out["unregistered"].append(f"{domain}/{d.name}")

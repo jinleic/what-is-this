@@ -272,13 +272,20 @@ class DriftGuardTest(unittest.TestCase):
         self.assertEqual(drift["unregistered"], [])
 
     def test_ignored_dirs_are_not_flagged(self) -> None:
+        # Fixture name is local: the contract is "ignore set is honored",
+        # not any particular live DRIFT_GUARD_IGNORE content.
+        ignored = ("math", "deliberate-omission")
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
-            smoke = root / "smoke"
-            smoke.mkdir()
-            (smoke / "state.json").write_text("{}")
+            d = root / "deliberate-omission"
+            d.mkdir()
+            (d / "state.json").write_text("{}")
 
-            drift = self._run(root, [])
+            drift = sync.drift_guard(
+                domains={"math": {"root": root}},
+                projects=[],
+                ignore=frozenset({ignored}),
+            )
 
         self.assertEqual(drift["unregistered"], [])
 

@@ -136,9 +136,10 @@ treated as claims and re-audited fresh.
 **Pipeline smoke test** (target `math/smoke` exists only to validate the
 institute pipeline end to end; it carries no scientific ambition). Cycle
 `20260908T172756Z_bf9b54`, campaign
-[`20260908T172852Z_677d6e3a_fc598c359ebd`](smoke/campaigns/20260908T172852Z_677d6e3a_fc598c359ebd/),
-gate `smoke`, prereg
-[`smoke/pre_statement_smoke.md`](smoke/pre_statement_smoke.md).
+`20260908T172852Z_677d6e3a_fc598c359ebd`, gate `smoke`, prereg
+`smoke/pre_statement_smoke.md`. (Evidence dir retired 2026-09-09 with owner
+approval: closed self-test, no research output; links removed rather than
+left dangling.)
 
 Exhaustively verified the bounded Goldbach claim: every even $n$ with
 $4 \le n \le 100000$ is a sum of two primes. Primary verifier (Sieve of
