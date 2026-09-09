@@ -10,3 +10,5 @@ Legend: LIVE = claim held / awaiting terminal verdict; every verdict stands unti
 | 20260907T061036Z_058f56ba_0590281d38d2 | SBB11-construction-source-admission | FROZEN-INCONCLUSIVE | 2026-09-07T06:51:11Z | Main |
 | 20260907T070841Z_1a7d72be_800984f3c5a1 | SBB11-new-authoritative-evidence | FROZEN-INCONCLUSIVE | 2026-09-07T07:29:16Z | Main |
 | 20260907T073526Z_5957d408_7f026b8f6489 | SBB11-deposit-version-delta | FROZEN-INCONCLUSIVE | 2026-09-07T07:46:08Z | Main |
+| 20260907T120059Z_2a5cca9c_a7b4eb60c485 | SBB11-pdf-semantics | FROZEN-INCONCLUSIVE | 2026-09-08T01:06:15Z | Main |
+| 20260908T015946Z_8066cf36_0e6e4247e2ba | SBB11-lrc-control | FROZEN-INCONCLUSIVE | 2026-09-08T08:00:50Z | Main |

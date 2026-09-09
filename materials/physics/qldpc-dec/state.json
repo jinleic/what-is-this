@@ -2,18 +2,74 @@
   "schema": "target-state/1",
   "id": "physics/qldpc-dec",
   "problem": "Cross-paper decoder reproduction harness for BB codes",
-  "status": "active",
-  "current_gate": "GB9 RUNNING: the paper's actual 17x configuration beam64_32res_640iters (num_results=32) on the paired 1e8 GB7 stream; Revision GB9 pre-registered, equivalence gate passed (2000/2000, 300/300; K=1 six of six byte-identical); Gate B otherwise decided (GB7 FROZEN-NEGATIVE, GB8 re-target)",
-  "latest_campaign": "20260902T114747Z_69eba724_61e9fe30ba5d",
-  "latest_campaign_verdict": "RUNNING",
-  "headline": "beam32 5.44x [4.17,7.55] vs published 5.6x REPRODUCED; beam64 8.26x [5.97,12.65] CONSISTENT with published 7.0x for the configuration run (RETRACTED 2026-09-01 '17x REFUTED': 17x is beam64_32res_640iters, num_results=32, never run); 223/41/27 failures per 1e8 paired",
-  "next_action": "Block on gb9-run (campaigns/20260902T114747Z_69eba724_61e9fe30ba5d, ~220 h): on exit verify summary/inventory, campaign.py freeze -> close --verdict per Revision GB9 mapping, run verify_gateb_gb5.py with the GB9 dir as 4th arg, update README/RESULTS/PROGRESS/state with the factor and interval vs 13.1x/17x/22.1x",
+  "status": "parked",
+  "current_gate": "GB9 RUNNING: the paper's actual 17x configuration beam64_32res_640iters (num_results=32) on the paired 1e8 GB7 stream, relaunched as run 20260908T194719Z_e9e0a889_e5962c4be23b on mini-0.local after 20260902T114747Z_69eba724_61e9fe30ba5d closed CRASHED; Revision GB9 pre-registered, equivalence gate passed (2000/2000, 300/300; K=1 six of six byte-identical); Gate B otherwise decided (GB7 FROZEN-NEGATIVE, GB8 re-target)",
+  "latest_campaign": "20260908T194719Z_e9e0a889_e5962c4be23b",
+  "latest_campaign_verdict": "CRASHED",
+  "headline": "beam32 5.44x [4.17,7.55] vs published 5.6x REPRODUCED; beam64 8.26x [5.97,12.65] CONSISTENT with published 7.0x for the configuration run (RETRACTED 2026-09-01 '17x REFUTED': 17x is beam64_32res_640iters, num_results=32, never run); 223/41/27 failures per 1e8 paired; GB9 (the actual 17x rung) relaunched 2026-09-08 on mini-0 after the first attempt closed CRASHED \u2014 IN-FLIGHT, 4/20 beam64_32res shards inherited hash-verified",
+  "next_action": "Monitor gb9 rerun on mini-0 (campaigns/20260908T194719Z_e9e0a889_e5962c4be23b; ssh mini-0.local 'pgrep -fl \"gateb_gb9_32res|beam_nr_cpp\"'; ~3 wk for shards 04-19): on exit sync the run dir back, verify summary/inventory, campaign.py freeze -> close --verdict per Revision GB9 mapping, run verify_gateb_gb5.py with the GB9 dir as 4th arg, update README/RESULTS/PROGRESS/state with the factor and interval vs 13.1x/17x/22.1x",
   "owner": "jinleic",
-  "updated_utc": "2026-09-02T11:51:38Z",
+  "updated_utc": "2026-09-09T02:38:48Z",
   "updated_by": "gate-b-gb9-launch",
   "sources": [
     "physics/RESULTS.md",
     "physics/PROGRESS.md",
     "physics/qldpc-dec/README.md"
-  ]
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": null,
+        "to": "active",
+        "at": "2026-09-08T19:32:28Z",
+        "cause": "manual",
+        "reason": "owner directive: re-run GB9 (beam64_32res_640iters) on the minis with a live monitored claim",
+        "evidence": [
+          "physics/qldpc-dec/README.md"
+        ],
+        "actor": "Main (owner-directed)"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-08T19:32:28Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"runs_max\": 1}",
+        "evidence": [
+          "physics/qldpc-dec/README.md"
+        ],
+        "actor": "Main (owner-directed)"
+      },
+      {
+        "from": "active",
+        "to": "parked",
+        "at": "2026-09-09T02:38:48Z",
+        "cause": "manual",
+        "reason": "Owner stop: projected remaining 480-720 hours exceeds 72-hour per-task per-mini limit; canceled GB9 has no scientific verdict",
+        "evidence": [
+          "physics/qldpc-dec/campaigns/20260908T194719Z_e9e0a889_e5962c4be23b/RESULTS.md"
+        ],
+        "actor": "Main"
+      }
+    ],
+    "reason": "Owner stop: projected remaining 480-720 hours exceeds 72-hour per-task per-mini limit; canceled GB9 has no scientific verdict",
+    "evidence": [
+      "physics/qldpc-dec/campaigns/20260908T194719Z_e9e0a889_e5962c4be23b/RESULTS.md"
+    ]
+  },
+  "budget": {
+    "runs_max": 1,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 1,
+    "tokens_used": 0,
+    "seconds_used": 23094.0,
+    "gate_at_last_progress": "GB9 RUNNING: the paper's actual 17x configuration beam64_32res_640iters (num_results=32) on the paired 1e8 GB7 stream, relaunched as run 20260908T194719Z_e9e0a889_e5962c4be23b on mini-0.local after 20260902T114747Z_69eba724_61e9fe30ba5d closed CRASHED; Revision GB9 pre-registered, equivalence gate passed (2000/2000, 300/300; K=1 six of six byte-identical); Gate B otherwise decided (GB7 FROZEN-NEGATIVE, GB8 re-target)"
+  },
+  "priority": {
+    "value": 3,
+    "expected_progress": 0.5,
+    "blocker": "none",
+    "blocker_detail": null
+  }
 }

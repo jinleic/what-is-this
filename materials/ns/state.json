@@ -2,16 +2,84 @@
   "schema": "target-state/1",
   "id": "math/ns",
   "problem": "Clay Navier-Stokes, Fefferman (C) on R^3",
-  "status": "paused",
-  "current_gate": "BLOCKED: two publisher-inaccessible primaries (NRS, ESS)",
-  "latest_campaign": null,
-  "latest_campaign_verdict": null,
-  "headline": "Obstruction map; exact-self-similar routes closed; localized/asymptotic DSS open",
-  "next_action": "Discharge UNVERIFIABLE tag on NRS/ESS or pause indefinitely",
+  "status": "closed",
+  "current_gate": "Independent verification of the OpenAI (C)+(D) Lean formalization complete (FROZEN-CERTIFIED); next gate is independent-checker (nanoda/Comparator) re-confirmation and mathematical community review",
+  "latest_campaign": "20260908T193739Z_14ac2c45_44bf28712a9f",
+  "latest_campaign_verdict": "FROZEN-CERTIFIED",
+  "headline": "OpenAI (C)+(D) claim VERIFIED formally (FROZEN-CERTIFIED, run 20260908T193739Z_14ac2c45_44bf28712a9f): Lean repo builds in 22min, statements match CMI verbatim incl. errata, zero sorry/axiom holes, standard axioms only; route is a forced Type-II anisotropic vortex in the obstruction map's open rows",
+  "next_action": "None: target closed 2026-09-09 per owner \u2014 verification banked (FROZEN-CERTIFIED); independent kernel re-check and community review proceed outside the institute",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "workspace-architecture-fix",
+  "updated_utc": "2026-09-09T02:15:37Z",
+  "updated_by": "NsRunner",
   "sources": [
     "math/ns/README.md"
-  ]
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": "paused",
+        "to": "stalled",
+        "at": "2026-09-08T15:03:03Z",
+        "cause": "manual",
+        "reason": "vocabulary migration: paused -> stalled (blocker-driven)",
+        "evidence": []
+      },
+      {
+        "from": "stalled",
+        "to": "active",
+        "at": "2026-09-08T19:32:28Z",
+        "cause": "manual",
+        "reason": "OpenAI published a claimed resolution of NS (C)+(D) with public Lean formalization (2026-09-08); verify independently: build Lean, check statement matches CMI (C), audit for sorry/axioms, confront workspace obstruction map",
+        "evidence": [
+          "math/ns/README.md",
+          "https://openai.com/index/navier-stokes-solution/",
+          "https://github.com/openai/NavierStokesAndEuler"
+        ],
+        "actor": "Main (owner-directed)"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-08T19:32:28Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"expected_progress\": 0.5, \"runs_max\": 2, \"seconds_max\": 14400.0, \"value\": 5}",
+        "evidence": [
+          "math/ns/README.md",
+          "https://openai.com/index/navier-stokes-solution/",
+          "https://github.com/openai/NavierStokesAndEuler"
+        ],
+        "actor": "Main (owner-directed)"
+      },
+      {
+        "from": "active",
+        "to": "closed",
+        "at": "2026-09-09T02:15:37Z",
+        "cause": "manual",
+        "reason": "owner 2026-09-09: verification complete and banked (FROZEN-CERTIFIED run 20260908T193739Z_14ac2c45_44bf28712a9f); no further work funded \u2014 independent kernel re-check and community review happen outside the institute",
+        "evidence": [
+          "math/ns/campaigns/20260908T193739Z_14ac2c45_44bf28712a9f/RESULTS.md"
+        ],
+        "actor": "main"
+      }
+    ],
+    "reason": "owner 2026-09-09: verification complete and banked (FROZEN-CERTIFIED run 20260908T193739Z_14ac2c45_44bf28712a9f); no further work funded \u2014 independent kernel re-check and community review happen outside the institute",
+    "evidence": [
+      "math/ns/campaigns/20260908T193739Z_14ac2c45_44bf28712a9f/RESULTS.md"
+    ]
+  },
+  "budget": {
+    "runs_max": 2,
+    "tokens_max": null,
+    "seconds_max": 14400.0,
+    "runs_used": 1,
+    "tokens_used": 0,
+    "seconds_used": 2012.0,
+    "gate_at_last_progress": "Independent verification of the OpenAI (C)+(D) Lean formalization complete (FROZEN-CERTIFIED); next gate is independent-checker (nanoda/Comparator) re-confirmation and mathematical community review"
+  },
+  "priority": {
+    "value": 5,
+    "expected_progress": 0.5,
+    "blocker": "none",
+    "blocker_detail": "OpenAI proof+Lean public 2026-09-08; verification needs no publisher access"
+  }
 }

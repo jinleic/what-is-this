@@ -47,6 +47,7 @@ which extends the frozen gate-B table (n <= 7) to n = 8, 9.
 Owner: DelcapGateC.
 """
 from __future__ import annotations
+import os
 import itertools, json, math, os, sys, time, hashlib, uuid
 
 import numpy as np
@@ -55,7 +56,7 @@ from flint import arb, fmpq, fmpz, ctx
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 PREC = 400
-OUT_ROOT = '/Users/jinleic/jinleic-workspace/cs/delcap/campaigns'
+OUT_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'campaigns')
 
 # ---------------------------------------------------------------- E(m,w) table
 # Typed from Morozov-Duman Table I (complete sets), columns m = 20, 21, 22, 23.

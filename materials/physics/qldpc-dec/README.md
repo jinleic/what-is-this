@@ -1,11 +1,12 @@
 # `qldpc-dec/` — cross-paper decoder reproduction harness for BB codes
 
-**Status (2026-09-02): GB9 — the paper's actual 17x configuration
-(`beam64_32res_640iters`, num_results=32) — is RUNNING as a paired 1e8-shot
-campaign (`campaigns/20260902T114747Z_69eba724_61e9fe30ba5d`, pre-statement
-Revision GB9, launch gates passed: 32res equivalence 2000/2000 + 300/300,
-K=1 regression six of six byte-identical). Expected ~220 h of decoding; no
-terminal verdict yet. Gate B is DECIDED on the paired 1e8-shot instrument
+**Status (2026-09-09): PARKED.** GB9's mini-0 relaunch
+[`20260908T194719Z_e9e0a889_e5962c4be23b`](campaigns/20260908T194719Z_e9e0a889_e5962c4be23b/RESULTS.md)
+was stopped by owner direction: 16 remaining shards at 30–45 h each exceed
+the 72-hour per-task per-mini occupation limit. Administrative close
+`CRASHED` (cancellation); no scientific verdict on the partial num_results=32
+experiment. GB9 will not resume under this allocation. Gate B remains DECIDED
+on the completed paired 1e8-shot instrument
 (GB7, `campaigns/20260901T145247Z_b7ea9ac4_ac3f6689e03b`, terminal verdict
 FROZEN-NEGATIVE on the beam32 gap hypothesis) and RE-TARGETED by Revision
 GB8 (2026-09-02, no sampling). On one shared stream at p=1e-3 Z: beam8 223,
@@ -14,7 +15,7 @@ beam32 41, beam64 27 failures per 1e8. beam32 measured expansion **5.44x
 measured **8.26x [5.97, 12.65]**; the paper's factor for the configuration
 we ran (`beam64_640iters`, num_results=1) is **7.0x**, inside the interval —
 **CONSISTENT with the published point value**. The "17x" is the paper's
-`beam64_32res_640iters` (num_results=32), never run: neither reproduced nor
+`beam64_32res_640iters` (num_results=32), never completed: neither reproduced nor
 refuted. The 2026-09-01 headline "beam64 17x refuted" is **RETRACTED**
 (transcription error in the original 2026-08-29 Gate B pre-statement, corrected by Revision GB8); GB7's frozen `GAP_CONFIRMED` against
 1/17 stands as arithmetic but tests a target the paper does not make. GB5a
@@ -410,7 +411,7 @@ re-bootstrapped, GB8 re-target re-derived from the frozen summary):
 `scratch/verify_gb8.log`, QLDPC_GATEB_ACCEPTANCE_PASS, 87 PASS / 0 FAIL /
 0 SKIP.
 
-## Gate B — the paper's actual 17x: beam64_32res (GB9) — RUNNING (launched 2026-09-02T11:47Z)
+## Gate B — the paper's actual 17x: beam64_32res (GB9) — stopped, unresolved
 
 `campaigns/20260902T114747Z_69eba724_61e9fe30ba5d/` — pre-statement Revision
 GB9 (recorded 2026-09-02T10:56Z, before init and before any sample). Decoder
@@ -452,7 +453,11 @@ What was built and proven before launch:
   pre-registered as the first suspects if 17x is not reproduced.
 
 Decision rule, verdict mapping and reporting are frozen in Revision GB9.
-No terminal verdict yet; `state refresh` reports `RUNNING` until close.
+The initial campaign closed CRASHED on 2026-09-08. The mini-0 relaunch
+[`20260908T194719Z_e9e0a889_e5962c4be23b`](campaigns/20260908T194719Z_e9e0a889_e5962c4be23b/RESULTS.md)
+was canceled during shard 04 on 2026-09-09 for projected runtime. Both are
+failed execution records, not scientific negatives; the partial-sample rule
+still forbids a scientific verdict. No new factor or interval is claimed.
 
 
 ## Related

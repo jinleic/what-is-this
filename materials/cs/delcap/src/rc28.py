@@ -23,6 +23,7 @@ Verdict rule (fixed in pre_statement.md):
     from an upper bound alone).
 """
 from __future__ import annotations
+import os
 import math, time, json, os, sys
 import numpy as np
 import flint
@@ -224,7 +225,7 @@ class Grid:
 
 def main():
     t_start = time.time()
-    out_dir = '/Users/jinleic/jinleic-workspace/cs/delcap/campaigns'
+    out_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'campaigns')
     stamp = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
     import hashlib, platform
     tag = hashlib.sha256((platform.platform() + str(time.time())).encode()).hexdigest()[:12]

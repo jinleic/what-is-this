@@ -145,7 +145,7 @@ def _validate_bound_archive(payload: dict[str, Any]) -> None:
         raise RuntimeError("reference-rebind archive hash is stale")
     archived = json.loads(archive.read_text(encoding="utf-8"))
     E55._validate_screen_shard_aggregates(archived)
-    E55._validate_screen_shard_records(archived)
+    E55._validate_screen_shard_records(archived, allow_stale_thresholds=True)
 
 
 
@@ -154,7 +154,12 @@ def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, A
     original_bytes = path.read_bytes()
     payload = json.loads(original_bytes)
     E55._validate_screen_shard_aggregates(payload)
-    E55._validate_screen_shard_records(payload)
+    # The original shard's thresholds are pinned to the previous battery by
+    # construction; repairing exactly that staleness is this tool's purpose.
+    # Every identity, witness, and verdict-structure check still runs here,
+    # and the rebound shard below is validated strictly against the live
+    # battery before it is written.
+    E55._validate_screen_shard_records(payload, allow_stale_thresholds=True)
     _validate_bound_archive(payload)
     old_protocol = payload["protocol"]
     k_min, k_max = old_protocol["k_range"]
@@ -231,7 +236,7 @@ def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, A
         archived_bytes = archive.read_bytes()
         archived = json.loads(archived_bytes)
         E55._validate_screen_shard_aggregates(archived)
-        E55._validate_screen_shard_records(archived)
+        E55._validate_screen_shard_records(archived, allow_stale_thresholds=True)
         if archived_bytes != original_bytes:
             raise RuntimeError("reference-rebind archive disagrees with source shard")
     else:

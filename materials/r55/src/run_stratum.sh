@@ -4,7 +4,7 @@
 set -eu
 n="$1"; e="$2"; expect="$3"; workers="${4:-8}"
 cd "$(dirname "$0")/.."
-PY=/Users/jinleic/jinleic-workspace/math/.venv/bin/python
+PY="$(cd "$(dirname "$0")/.." && pwd)/../.venv/bin/python"
 $PY src/glue_census.py --n "$n" --e "$e" --workers "$workers"
 labelg "outA/r45_${n}_${e}.g6" 2>/dev/null | sort -u > "outA/r45_${n}_${e}.canon"
 got=$(wc -l < "outA/r45_${n}_${e}.canon" | tr -d ' ')

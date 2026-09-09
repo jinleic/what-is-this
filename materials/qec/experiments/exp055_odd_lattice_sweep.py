@@ -828,6 +828,7 @@ FRONTIER_REFERENCE_KINDS = {
     "exp060_odd_exact": ("EXP-060", "exp060_frontier_ratchet.py"),
     "exp064_odd_exact": ("EXP-064", "exp064_n210_promotions.py"),
     "exp067_odd_exact": ("EXP-067", "exp067_n234_connected_cluster.py"),
+    "exp070_odd_exact": ("EXP-070", "exp070_n270_connected_cluster.py"),
 }
 
 
@@ -1195,6 +1196,19 @@ EXACT_REFERENCES = [
         "certificate_kind": "exp067_odd_exact",
         "distance_certificate":
             "results/certificates/exp067_234_8_18_bundle22_distance.json",
+    },
+    {
+        "name": "EXP-070 [[270,8,20]] Liang row a",
+        "n": 270,
+        "k": 8,
+        "d": 20,
+        "ell": 15,
+        "m": 9,
+        "A": [[0, 0], [6, 1], [6, 8]],
+        "B": [[0, 0], [1, 6], [2, 6]],
+        "certificate_kind": "exp070_odd_exact",
+        "distance_certificate":
+            "results/certificates/exp070_270_8_20_liang270a_distance.json",
     },
     {
         "name": "EXP-037 [[180,8,16]]",
@@ -1579,8 +1593,17 @@ def _fallback_witness_evidence_valid(record: dict) -> bool:
     )
 
 
-def _validate_screen_shard_records(shard: dict) -> None:
-    """Rebuild every record identity, threshold, and claimed domination proof."""
+def _validate_screen_shard_records(
+    shard: dict, allow_stale_thresholds: bool = False
+) -> None:
+    """Rebuild every record identity, threshold, and claimed domination proof.
+
+    With ``allow_stale_thresholds`` the record's own pinned threshold is used
+    instead of the live battery's: that mode exists so the monotone rebind
+    (EXP-063) can validate the historical shard it is about to repair and its
+    archives, whose thresholds are pinned to older batteries by construction.
+    Every physical witness, identity, and verdict-structure check still runs.
+    """
     if shard.get("schema") != "exp055-screen-v3":
         raise RuntimeError("unexpected screen shard schema")
     ell, m = int(shard["ell"]), int(shard["m"])
@@ -1651,7 +1674,10 @@ def _validate_screen_shard_records(shard: dict) -> None:
             threshold,
             source,
         ):
-            raise RuntimeError("screen shard record threshold is stale")
+            if not allow_stale_thresholds:
+                raise RuntimeError("screen shard record threshold is stale")
+            threshold = int(record.get("threshold", 0))
+            source = record.get("threshold_source")
         verdict = record["verdict"]
         if verdict == "no_reference":
             if threshold != 0:

@@ -20,16 +20,17 @@ Both intervals must contain the same true C_{n,k}, so the check is that they
 OVERLAP; a disjoint pair would mean at least one certificate is wrong.
 """
 from __future__ import annotations
+import os
 import hashlib, json, os, sys, time, uuid
 
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-OUT_ROOT = '/Users/jinleic/jinleic-workspace/cs/delcap/campaigns'
-FROZEN_MPMATH = ('/Users/jinleic/jinleic-workspace/cs/delcap/campaigns/'
+OUT_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'campaigns')
+FROZEN_MPMATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'campaigns',
                  '2026-08-30T12:34:14Z_4cd10de4-efae-43f4-b9a6-39cab1db46b5_'
-                 '8ecf82513989/pr_cnk_rows.jsonl')
+                 '8ecf82513989', 'pr_cnk_rows.jsonl')
 
 
 def utc():

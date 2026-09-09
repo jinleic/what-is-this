@@ -1,7 +1,7 @@
 #!/bin/bash
 # Compare glue2 full-stratum output multiset against the already-produced outB files.
 set -e
-cd /Users/jinleic/jinleic-workspace/math/r55/srcB
+cd "$(dirname "$0")"
 for spec in "13 52" "16 71"; do
   n=${spec% *}; e=${spec#* }
   rm -f /tmp/g2_all.g6 /tmp/g2_all.csv

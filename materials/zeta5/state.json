@@ -2,16 +2,59 @@
   "schema": "target-state/1",
   "id": "math/zeta5",
   "problem": "Irrationality of zeta(5)",
-  "status": "active",
-  "current_gate": "Gate 1 passed (Zudilin recursion certified); honesty deficit 3.914 vs threshold; Gate 2 sweep next",
-  "latest_campaign": null,
-  "latest_campaign_verdict": null,
-  "headline": "Baseline established; deficit too large; recurrence-search tool validated",
-  "next_action": "Gate 2 construction sweep",
+  "status": "closed",
+  "current_gate": "Gate 1 passed (Zudilin recursion certified); Gate 2 construction sweep closed FROZEN-NEGATIVE (zero survivors in frozen 44-probe ladder); campaign stopped at gate 2 per README go/no-go",
+  "latest_campaign": "20260908T150622Z_6a444c77_79aa3a46d868",
+  "latest_campaign_verdict": "FROZEN-NEGATIVE",
+  "headline": "Gate 2 closed FROZEN-NEGATIVE: zero of 44 swept constructions beats baseline mu2=0.337537; deficit 3.914 stands; record byte-stable",
+  "next_action": "None standing: campaign stopped at gate 2 per contract; resumption requires proposing a NEW family ladder (fresh triage decision, not a re-run of the swept 44 probes)",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "workspace-architecture-fix",
+  "updated_utc": "2026-09-08T15:43:22Z",
+  "updated_by": "Zeta5SubAgent",
   "sources": [
     "math/zeta5/README.md"
-  ]
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": null,
+        "to": "active",
+        "at": "2026-09-08T15:03:03Z",
+        "cause": "manual",
+        "reason": "registered under institute management",
+        "evidence": []
+      },
+      {
+        "from": "active",
+        "to": "closed",
+        "at": "2026-09-08T15:27:15Z",
+        "cause": "manual",
+        "reason": "Gate 2 FROZEN-NEGATIVE (run 20260908T150622Z_6a444c77_79aa3a46d868); README stop rule fired: zero survivors better than baseline, campaign records and stops; revival requires a new family ladder",
+        "evidence": [
+          "math/zeta5/campaigns/20260908T150622Z_6a444c77_79aa3a46d868/status.json",
+          "math/zeta5/README.md"
+        ]
+      }
+    ],
+    "reason": "Gate 2 FROZEN-NEGATIVE (run 20260908T150622Z_6a444c77_79aa3a46d868); README stop rule fired: zero survivors better than baseline, campaign records and stops; revival requires a new family ladder",
+    "evidence": [
+      "math/zeta5/campaigns/20260908T150622Z_6a444c77_79aa3a46d868/status.json",
+      "math/zeta5/README.md"
+    ]
+  },
+  "budget": {
+    "runs_max": 2,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 1,
+    "tokens_used": 0,
+    "seconds_used": 398.0,
+    "gate_at_last_progress": "Gate 1 passed (Zudilin recursion certified); Gate 2 construction sweep closed FROZEN-NEGATIVE (zero survivors in frozen 44-probe ladder); campaign stopped at gate 2 per README go/no-go"
+  },
+  "priority": {
+    "value": 3,
+    "expected_progress": 0.4,
+    "blocker": "none",
+    "blocker_detail": null
+  }
 }

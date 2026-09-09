@@ -20,8 +20,10 @@ is authorized. Earlier PBB results below are unchanged.
 [versioned source](https://arxiv.org/src/2603.05481v1),
 [authors' implementation](https://github.com/PurePhys/LR-circuits), and
 [archived circuits, version 18853601](https://doi.org/10.5281/zenodo.18853601).
-The downloaded archive contains no gross-code circuit. The paper's source
-contains the Figure 10–12 PDFs, not a machine-readable gross schedule.
+The archived Stim bundle contains no gross-code circuit. The complete arXiv
+source contains the Figure 10–12 vector PDFs; absence of a generator script
+does not preclude reconstruction. The source analysis below recovers their
+printed annotations and checks the resulting interpretations mathematically.
 Source bytes and figure hashes are pinned in
 `../../physics/qldpc-dec/circuits/sbb2603_05481/`. An independently checked,
 unambiguous transcription of the graph, colours, CNOT times and staggered
@@ -83,6 +85,235 @@ Source ambiguity or a failed independent check stops search. Timeout is
 inconclusive, never a lower bound. Redirect only to resolving the concrete
 source/model blocker; no automatic compute escalation or topic expansion.
 
+### n=270 deep re-screen: 1,636/1,657 k=8 residuals decided (2026-09-08, cycle campaign)
+
+[Campaign `20260908T194313Z_2eb90dad_d3c7ccce6e21`](campaigns/20260908T194313Z_2eb90dad_d3c7ccce6e21/)
+(cycle `20260908T193320Z_ba7b32`) executed the deferred deep target-20
+re-screen and the bounded Liang row b continuation. **FROZEN-INCONCLUSIVE**
+per the frozen prereg mapping — the re-screen sub-objective is certified
+fresh; row b advanced but is not bound.
+
+* The live threshold-20 battery forced a fresh screen protocol: both
+  lattices re-enumerated, fresh initial screens, and 2,000-try deepening of
+  every \(k=8\) undecided class with threshold-20-derived seeds.
+  **1,636 of 1,657 decided** (15x9: 1,457; 27x5: 179), all with physically
+  re-verified witnesses at weights 12–20; shards validate strict under
+  validator-v11. Remaining: 21 \(k=8\) undecided (best witness 22), 147
+  \(k=12\) undecided, 210 \(k=20/24\) survivors unpromoted.
+* Liang row b: base replay COMPLETE (1,326 s, exhaustive through 16,
+  `validate_run_record` PASS) ⇒ the base pair is closed; prefix partition
+  {55, 56, 135, 175, 269} computed; prefix55 initial run under the two-run
+  stop rule. Nine prefix runs + assemble/validate remain; row b is NOT in
+  `EXACT_REFERENCES`.
+* One environment obstruction was repaired: mini-pro lacked the homebrew
+  `libpng16.16.dylib` the pinned solver links; the identical artifact was
+  provisioned (solver binary hash unchanged).
+* Full findings and claims-that-do-not-hold:
+  [RESULTS](campaigns/20260908T194313Z_2eb90dad_d3c7ccce6e21/RESULTS.md) ·
+  [AUDIT](campaigns/20260908T194313Z_2eb90dad_d3c7ccce6e21/AUDIT.md).
+
+### n=270 screen certified; closure open (2026-09-08, cycle campaign)
+
+[Campaign `20260908T175247Z_e40ae2c8_8d516c12d880`](campaigns/20260908T175247Z_e40ae2c8_8d516c12d880/)
+(cycle `20260908T174625Z_a9a475`) executed the documented n=270 gate:
+presentation collapse then two-root screening. **FROZEN-INCONCLUSIVE** per
+the frozen prereg mapping — the gate advanced, closure did not close.
+
+* The CRT isomorphism \(\mathbb Z_{15}\times\mathbb Z_9\to\mathbb Z_{45}\times\mathbb Z_3\)
+  was re-audited exhaustively (bijection, inverse, 18,225-pair homomorphism);
+  both presentations enumerate 5,024 classes / 192,834 pairs, so (45,3) is a
+  duplicate of the same physical family and (15,9) is the sole screened
+  noncyclic presentation ([fresh audit](campaigns/20260908T175247Z_e40ae2c8_8d516c12d880/transport_audit.json)).
+* Liang Table III **row a** is now bound by the two-root protocol: the
+  EXP-070 certificate was re-assembled from the 12 pinned run records and
+  re-validated — base exhaustion through weight 16, five prefix branches at
+  weight 18 (initial+replay pairs), even-parity exclusion of 17/19,
+  exhaustive pure-second-block enumeration, weight-20 witness ⇒
+  **CERTIFIED_EXACT \([[270,8,20]]\)**; admitted to `EXACT_REFERENCES`
+  (`exp070_odd_exact`), raising the \(k=8\) threshold at \(n=270\) to 20.
+  Row b remains a source lead (≈11 pinned runs exceeded the cycle budget).
+* Both screen shards passed strict validator-v11 aggregate+record
+  re-validation; the EXP-063 monotone rebind (repaired this run — v11 had
+  made it unusable after any battery raise; disclosed opt-in tolerant mode
+  for historical snapshots only) moved 223+28 \(k=8\) classes with verified
+  weight-20 witnesses to dominated. Final: 15x9 = 3,216 dominated / 187
+  survivor / 1,621 undecided; 27x5 = 482 / 23 / 183.
+* **Closure residuals (no overclaim):** 1,657 \(k=8\) undecided (witnesses
+  only at 22–36 vs. threshold 20; deep re-screen deferred), 147 \(k=12\)
+  undecided (exact fallback over budget), 210 \(k=20/24\) survivors decided
+  \(d\ge5>4\) but unpromoted. Pre-staged (2026-08-24/25) screen checkpoints,
+  CP-SAT payloads and dist-m4ri runs were hash-bound and re-validated, not
+  re-executed; the native solver remains trusted code.
+* Full findings, claims-that-do-not-hold and evidence map:
+  [RESULTS](campaigns/20260908T175247Z_e40ae2c8_8d516c12d880/RESULTS.md) ·
+  [AUDIT](campaigns/20260908T175247Z_e40ae2c8_8d516c12d880/AUDIT.md).
+
+### Authorized-assay successor prepared; awaiting budget (2026-09-08)
+
+[Successor `20260908T124248Z_78b7187d_b9950942769a`](campaigns/20260908T124248Z_78b7187d_b9950942769a/)
+is registered and hash-bound to the admitted model. **Zero solver calls are
+authorized; none ran.** No distance bound is claimed. The preregistration is
+not a grant: solving requires a fresh explicit user authorization bound to
+this run, its canonical preregistration and its validated execution seal.
+
+Verified without a solver: all **166** frozen parent files unchanged;
+**175** representative primitive replays per basis plus the wrong-boundary,
+wrong-logical, corrupt-reference and same-location composition controls, now
+consuming the frozen `.stim` bytes and pinned builder metadata instead of a
+rebuilt circuit; **21** durable-accounting scenarios on synthetic fixtures
+with Python-only probes; the real CLI refusing `status`, `solve-next`,
+`reconcile` and `_child` before any model, encoding or reservation work; and
+the production acceptance path verifying fixed logical controls while
+rejecting **8** malformed or over-cap witnesses and a modified adjudication.
+
+Two accounting defects were reproduced and repaired before sealing
+([pre-fix evidence](campaigns/20260908T124248Z_78b7187d_b9950942769a/validation/pre_fix_guard_regressions.json)):
+a measured overrun under 0.5 seconds counted as compliant, and completed
+receipts were reused without rechecking retained output hashes. A solver-free
+regression now covers each. One full 60-second slot is charged durably before
+launch and never refunded; a detached supervisor owns the watchdog and
+survives launcher death; measured time is recorded unclipped.
+
+Sealed disposition: **READY_PENDING_EXPLICIT_USER_AUTHORIZATION**
+([readiness](campaigns/20260908T124248Z_78b7187d_b9950942769a/readiness.json),
+[seal](campaigns/20260908T124248Z_78b7187d_b9950942769a/execution_seal.json)).
+The run stays live and holds the `math/qec` claim; it is deliberately not
+frozen, because no assay conclusion exists yet.
+
+### Source-derived reconstruction admitted (2026-09-08)
+
+[Methodology-control successor](campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/)
+resolves the reconstruction. Running the authors' **unmodified** constructor
+produced six noiseless generic-LRC memory controls (X and Z at 1, 2, 3
+rounds) with deterministic detectors and observables. Under true
+preparation-to-measurement chronology the earlier periodic criterion
+rejects **zero** check pairs; sorting that same valid circuit by cyclic
+clock residue falsely rejects **216**. The earlier obstruction was a
+cyclic-snapshot ordering error, not a source ambiguity.
+
+The residual law is identical under \(X\leftrightarrow Z\): hook suffixes,
+with the paper's **90** reduced classes reproduced. All three upper Figure 12
+panels match Figure 11 at cyclic cut 0 and all three lower panels at cut 3,
+with **no endpoint permutation**. The previously explored monomial cycles
+mixed axial and diagonal spokes and are not used.
+
+From the pinned block structure the physical ticks are \(\ell-1\) for
+\(L_X, R_Z, R_X\) and \(\ell+1\) for \(L_Z\), whose half belongs to the
+preceding calendar period. With one unknown row origin \(\beta\), the source
+round convention \(Z_r<X_r<Z_{r+1}\) forces
+\(\max(D_0)-8<\beta<\min(D_0)\); the observed interval \((-2,0)\) gives
+**\(\beta=-1\) uniquely**. All 864 CNOTs and ancilla boundaries are
+qubit-exclusive across neighbouring rounds and all 648 overlapping pairs
+satisfy the ordering. The old two-check witness becomes differences
+\(2,4\) — no obstruction.
+
+Both one-cycle memories were built in an effective and a source-style
+serialized representation with identical named outcome/detector/observable
+definitions; **360 endpoint moves provably cross no operation or noise** on
+the moved qubit. A separate proof gives exact boundary-move equivalence and
+minimum-weight invariance to other idle/boundary choices, with its
+assumptions and a necessity counterexample recorded.
+
+[Admission and metric scope](campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/source_admission.json):
+the target is admitted as a **source-derived canonical representative**, not
+an author-identical file. Any distance value is **one-cycle** and tied to the
+stated detector sets; the earlier frozen obstruction is retracted as a
+blocker, with its files untouched
+([correction](campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/methodology_correction.json)).
+
+**Physical-model validation passed.** Each memory basis has 1,728 physical
+locations and 14,400 Pauli/record-flip options. Independent binary propagation
+and Stim agree on every detector/observable column. Repaired replay checks
+pass 175 representative primitive cases per basis, fixed logical and
+corrupted-readout controls, the wrong-boundary control, and same-location
+composition/cancellation. All 14,400 columns per basis also agree across the
+two boundary serializations after semantic relabelling
+([replay evidence](campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/replay_validation.json)).
+
+The frozen [comparison report](campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/fault_model.json)
+localizes the surface-code control's raw-record differences to 112 of 1,259
+primitive-fault columns, only on records not individually certified
+deterministic. There are zero differences on the 12 certified records out
+of 33, and every detector/observable column agrees. These counts establish
+where the raw-frame mismatch occurs, not why the representations differ.
+Validation adopts this scoped agreement on the tested circuits, not general
+raw-record frame equivalence.
+
+**The distance assay is invalid; no bound is accepted.** Main incorrectly
+restarted the ladder after an outer-wrapper timeout and again after a replay
+bug. Per-process counters reset instead of preserving the campaign-wide
+four-call/240-second budget, and report exclusivity was checked only after
+solver work. Individual call answers were not durably retained. The original
+failed report is preserved; elapsed time is not evidence of UNSAT.
+The campaign is locked against further solver calls. Both entrypoints now
+fail before dispatch; replay-only repairs used no additional solver calls.
+Further bound search requires explicit new user authorization and a separately
+accounted budget—not another reset of this run.
+Any future UNSAT answer must be labelled solver-asserted unless its proof is
+independently checked; agreement from another solver is corroboration, not a
+checked proof. A published known-answer control must match the circuit and
+boundaries being modelled. Failure of a capped search to find a published
+weight-10 witness is inconclusive, not by itself evidence of a model error.
+[Qualified result](campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/result_summary.json),
+[incident audit](campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/assay_incident.json).
+
+Terminal disposition: **FROZEN-INCONCLUSIVE**. All **166 frozen evidence-file
+SHA-256 checks passed**; source/model admission does not make the failed
+assay a distance result.
+
+### Superseded interpretation obstruction (2026-09-07)
+
+The section below is **retracted as an admission blocker** by the
+2026-09-08 control above; the conditional computations themselves stand and
+their run is frozen.
+
+### Coordinate-certified reconstruction — explicit interpretation obstruction
+
+[Source-only successor](campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/)
+recovers all **36 Figure 12 annotations** with unique coordinate-based
+endpoint associations. Independent PDFKit decoding agrees with the Poppler
+text/vector extraction; all values match the old transcription. Direct
+Figure 10 vector checks also confirm all **144 check colours** and the
+four displayed long-range endpoint displacements. No closed graph, rank,
+static-witness or metadata sweep was repeated.
+
+The interpretation checks use the standard CSS extraction gate pattern:
+directed check CNOTs, ancilla preparation/measurement and idles, not
+undisclosed additional data gates.
+
+The new result is a **minimal conditional obstruction**, not a distance
+bound. Under the literal Figure 10 monomial association, canonical
+\(X(0,0)\) and \(Z(1,1)\) share exactly \(L(0,1)\) and \(R(1,0)\).
+Figure 12 gives chronological ranks \((0,4)\) versus \((4,0)\) if its
+integers are read in increasing time order. In a stationary depth-eight
+cycle with separate unit preparation and measurement, every reused
+weight-six ancilla is saturated. The rank differences \(-4,+4\) force a
+collision or an odd ancilla-to-ancilla transfer for every relative origin.
+[Independent polynomial/CNOT verification](campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/two_check_validity_certificate.json)
+and a [reset-aware adjoint check](campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/reset_observable_certificate.json)
+confirm this necessary validity failure. It excludes that interpretation,
+**not the authors' intended circuit or the distance-eleven conjecture**.
+
+A common residual-compatible endpoint map is unique within the declared
+block-preserving model, but neither marker-based nor caption-based family
+assignment has a non-interleaved clock completion. This was checked first
+with family/colour phases, then with **144 independent per-check phases**
+and replayable domain-removal proofs. These are explicit restricted
+interpretation results, not an exhaustive impossibility claim.
+
+The explicit global CSS duality \(P H_X\Pi=H_Z,\ P H_Z\Pi=H_X\) is verified;
+arbitrary global X/Z naming alone is not an external blocker. Conditional
+on the saturated chronological model, first-CNOT time \(s\) forces
+preparation at \(s-1\) and measurement at \(s+6\). The amortized depth
+definition alone does not identify the target's finite cut.
+
+**Exact target admission remains unmet.** The precise unresolved input is a
+joint endpoint/order/clock interpretation that addresses the saved
+four-binding witness, not access to the LaTeX or raw annotation values.
+[Full derivation, scope limits and executable evidence](campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/source_resolution.txt).
+No target primitive-fault model, physical replay/control gate or distance
+assay was run; GB9, the decoder contract and frozen runs remain untouched.
+
 ### Authoritative-source follow-up — external blocker (2026-09-07)
 
 [New source-discovery campaign](campaigns/20260907T012847Z_9687c876_4f597eeab895/)
@@ -131,14 +362,15 @@ authentication; no public deck/poster was located. These are unavailable
 **leads**, not sources known to contain the missing construction. No
 authenticated private retrieval or outreach was attempted.
 
-[Current admission decision and coverage limits](campaigns/20260907T073526Z_5957d408_7f026b8f6489/source_admission.json):
-the exact target remains unadmitted. Required input is an authoritative
-Figure 12-specific endpoint/monomial and X/Z binding, common clock/cycle
-association, and finite preparation/readout/idle construction—or its
-author-identified machine-readable circuit. No closed numerical check,
-primitive-fault model, physical replay or distance assay was rerun.
-Reopen only on a concrete new source or clarification, not by repeating
-these closed checks. GB9, the decoder contract and prior frozen evidence
+[Archived source-only disposition and coverage](campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/source_admission.json):
+at that stage the exact target was unadmitted. The then-current obstruction
+specifies which joint endpoint/monomial and numeric timing interpretation
+must be resolved before instantiating the finite circuit. An executable
+listing is not mandatory if an unambiguous mathematical derivation suffices.
+No closed numerical check or target physical/distance stage was rerun.
+Reopen for a concrete new source, clarification or source-derived proof
+addressing those constraints, not another unchanged sweep. GB9, the decoder
+contract and prior frozen evidence
 remain untouched.
 
 The 07:12 UTC repository delta after 06:51:11 UTC returned no new
@@ -318,7 +550,13 @@ hard-digest-pinned single-thread entrypoint. EXP-068 then binds physical
 witnesses to all 57 legacy fallback dominations and validator v11 rebuilds
 identity/transport, threshold and witness proofs on every one of the 22
 shards. The $k$ census remains complete through $n=360$; no distance-closure
-claim is made beyond $n=234$.
+claim is made beyond $n=234$. At $n=270$ the screen itself is now certified
+(collapse of $(15,9)/(45,3)$; $5{,}024+688$ classes validated; Liang row a
+bound exact $[[270,8,20]]$ and admitted as a reference; $3{,}698$ classes
+dominated) but closure is OPEN: $1{,}657$ $k=8$ + $147$ $k=12$ undecided,
+$210$ $k=20/24$ survivors unpromoted, Liang row b unbound — see the
+[2026-09-08 cycle note](#n270-screen-certified-closure-open-2026-09-08-cycle-campaign)
+above.
 
 **Circuit level.** No circuit-level result favoured the PBB candidate: depth
 (basis-independent $\ge8$ vs Gross $7$), gates, hook structure, sampled LER and

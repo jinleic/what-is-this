@@ -9,6 +9,7 @@ for EVERY assignment. Any direction failing breaks the spec:
  - constraint holds but glue not Ramsey  -> unsound (spec emits bad graphs)
  - glue Ramsey but constraint fails     -> incomplete (spec misses graphs) FATAL
 """
+import os
 import random
 import sys
 from itertools import combinations
@@ -16,7 +17,7 @@ from itertools import combinations
 from g6lib import (parse_g6, has_clique, has_indep, indep_sets, cliques,
                    load_g6_file)
 
-DATA = "/Users/jinleic/jinleic-workspace/math/r55/data"
+DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 random.seed(20260813)
 
 fails = []

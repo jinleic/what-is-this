@@ -1,0 +1,29 @@
+{
+  "schema": "sbb11-lrc-control/1",
+  "target": "Exact Figure12 / Appendix H.2 Gross circuit in arXiv:2603.05481v1",
+  "prior_campaign": "campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485",
+  "reason": "The frozen obstruction certificates are conditional on a stationary all-round-translate timing model that was never exercised on a circuit the paper calls valid. Advisory review identifies this as the load-bearing gap. Before any target adjudication is carried forward, the identical methodology must be tested on the authors' generic left-right circuit, whose schedule, staggering and one-round non-interleaving claim are stated in pinned source.",
+  "canonical_preregistration": "Copy these exact bytes to successor inputs/preregistration.json and verify SHA256 against manifest.prereg_sha256 before any new derivation.",
+  "inherited_inputs": {
+    "paper": "campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/inputs/paper_source.tar.gz sha256 630dd47eb7c6b7763501146da87480aea905ea4e5dea37b720190573d4a1d5be",
+    "figure12_geometry": "campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/figure12_extraction.json plus text_and_duality_certificate.json",
+    "canonical_code_and_coordinates": "campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/inputs/canonical_gross.npz and canonical_coordinate_map.json",
+    "figure11_regions": "campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/inputs/frozen_figure11_regions.json",
+    "pinned_constructor": "campaigns/20260907T061036Z_058f56ba_0590281d38d2/sources/eded83cf054ae1c79607fbd2bae98748d95f43bf/lr_circuits/utils/stim_circuit.py and pinned utils"
+  },
+  "control_design": [
+    "Build the generic LRC for the canonical gross code with left=L block, right=R block, and explicit proper edge colourings of L_X, R_X, L_Z, R_Z derived from the polynomial structure. Record the colourings; do not treat them as the authors' Figure12 colouring.",
+    "Derive per-check chronological CNOT times, preparations and measurements from 03-left-right-circuits.tex:29-49, with the explicit wrap-around round identification: an X ancilla prepared at1 and measured at t1+t2+2 within a round; a Z ancilla prepared at t1+3 of round k and measured at t1+2 of round k+1. State this convention explicitly and check it against the pinned constructor block structure rather than asserting it.",
+    "Feed the resulting schedule to the frozen prove_local_timing criterion (all relative round translates), the one-round criterion (k=0 only), and the residual/hook-propagation derivation. A criterion that rejects the generic LRC is not a valid Figure12 admission criterion.",
+    "Build the same schedule through the pinned constructor to compare finite one-cycle operation lists, preparation/measurement times and detector structure. Reuse only the pinned constructor module; do not modify it.",
+    "Derive residual classes from explicit Pauli propagation of a single ancilla hook rather than an assumed prefix/suffix formula; compare against the paper's residual definition and its 90-residual-set count where applicable.",
+    "Only then reassess Figure12 under whichever criteria survive the control. Distinguish a genuine refutation of the literal reading from an artifact of the stationary all-translate model."
+  ],
+  "source_analysis_limits": {"threads": 1, "wall_seconds_per_command": 120, "sampled_rss_guard_bytes": 2147483648, "per_output_file_bytes": 104857600, "rss_sampling_wait_seconds": 0.05},
+  "admission_requires": ["Exact endpoint/monomial and X/Z binding", "Author-supported modified shared clocks and cycle association", "Specified finite preparation/readout/idle operation and error-location set for the one-cycle experiment"],
+  "downstream_gate": "Only after exact admission: independently derive primitive faults with same-location branch exclusivity, validate direct replay/negative controls and then run the inherited capped assay. No physical model of an unadmitted substitute may stand in for the target.",
+  "inherited_assay_caps_if_admitted": {"threads": 1, "maximum_calls": 4, "wall_seconds_per_call": 60, "total_solver_wall_seconds": 240, "sampled_rss_guard_bytes": 2147483648, "per_output_file_bytes": 104857600},
+  "preserve": ["GB9", "decoder contract", "all frozen campaigns and hashes", "legacy state.json routing", "existing staging files"],
+  "prohibited": ["Outreach or private retrieval", "Repeated searches or unchanged metadata sweeps", "Editing any frozen run", "Unannounced circuit replacement", "Bounds inferred from inconclusive evidence"],
+  "disposition": "Freeze through campaign.py after the control verdict and target reassessment. FROZEN-INCONCLUSIVE if exact source admission is still unmet; if the control refutes the frozen obstruction model, record that retraction explicitly in the research card."
+}

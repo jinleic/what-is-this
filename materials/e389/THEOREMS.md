@@ -1741,7 +1741,7 @@ P_0(N,m)=\min\{p:p^2>4N+2m\ \text{and}\ p>m\},}
 $$
 
 then every class $c\bmod M$ contains a non-witness $k\in[N,2N)$: the class
-meets the block in $\Lambda\ge N/M\ge P_0$ terms with
+meets the block in $\Lambda\ge\lfloor N/M\rfloor\ge P_0$ terms with
 $\mathrm{top}\le2N+m$. Since $P_0<2\max(\sqrt{4N+2m},m)$, the condition holds
 for $M\le N/\bigl(2\max(\sqrt{4N+2m},m)\bigr)$, and in practice up to
 $M\approx\sqrt N/2$.
@@ -1839,60 +1839,95 @@ with a better constant than the conditional route. Nothing a Siegel zero could
 damage appears anywhere in Section 15: no class is ever asked to contain a
 prime.
 
-### 15.6 The minimal analytic input above $\sqrt N$ — INTERFACE
+### 15.6 The analytic input above $\sqrt N$ — INTERFACE AND REVIEW-PENDING CANDIDATE
 
-Above (38) the construction does not break; only its *guarantee* does. Keeping
-$i$ and the factorisation $k+i=d_ipt$, eviction of the class from $[N,2N)$ by
-the prime $p$ is exactly the statement
+Fix a bad-window position $i$ and the class splitting (34), with
+$d=d_i$, $q=q_i$, $a=a_i$. For a prime $p>\max(m,\sqrt{4N+2m})$ with
+$(p,q)=1$, a sufficient prime-spike certificate is an integer lift of
 
 $$
-a_i\,p^{-1}\bmod q_i\ \in\ J_p:=\Bigl[\tfrac{N+i}{d_ip},\tfrac{2N+i}{d_ip}\Bigr)
-\pmod{q_i},\qquad |J_p|=\frac N{d_ip}.
+a\,p^{-1}\bmod q\ \in\
+J_p:=\Bigl[\frac{N+i}{dp},\frac{2N+i}{dp}\Bigr)\pmod q,
+\qquad |J_p|=\frac N{dp}.
 \tag{40}
 $$
 
-So the only missing ingredient is:
+The interval depends on $p$; a fixed-arc estimate cannot be substituted
+without a reduction. Use $P<p\le3P/2$ and the fixed inner interval
+$J=[(N+i)/(dP),\,2(2N+i)/(3dP))$, of width $(N-i)/(3dP)$.
+For $i<N$ every integer lift in $J$ satisfies (40), including the correct
+half-open endpoints. The full real dyadic band's common interval instead
+has width $-i/(2dP)$; shortening the band is essential to this particular
+repair, but $3/2$ is not the only possible fixed ratio.
 
-> **Hypothesis IP$(q,a,P,J)$.** Some prime $p\in(P,2P]$ has
-> $a\,p^{-1}\bmod q$ inside the arc $J$.
-
-(38) is the trivial case $|J|\ge q$. Below it, completion turns IP into an
-exponential sum: with $H\asymp q$,
+Let $\mathcal P=\{P<p\le3P/2:p\text{ prime},\ (p,q)=1\}$ and
+$\Pi=|\mathcal P|$. If $0<|J|<q$, ordinary discrepancy for the real circle
+arc, with any integer cutoff $H\ge1$, gives
 
 $$
-\#\{p\sim P:\,ap^{-1}\in J\}
-=\frac{|J|}q\,\pi(P)+O\Bigl(\frac{\pi(P)}H+\sum_{0<|h|\le H}\frac1h
-\Bigl|\sum_{p\sim P}e_q\bigl(h\,a\,p^{-1}\bigr)\Bigr|\Bigr).
+\#\{p\in\mathcal P:ap^{-1}\in J\pmod q\}
+=\frac{|J|}{q}\Pi+
+O\!\left(\frac{\Pi}{H+1}+
+\sum_{h=1}^{H}\frac1h
+\left|\sum_{p\in\mathcal P}e_q(ha p^{-1})\right|\right).
 \tag{41}
 $$
 
-The main term is independent of $P$: since $|J|=N/(d_iP)$ and $d_iq_i=M$,
+Here membership means that the residue has an integer lift in $J$.
+Equivalently translate the residue points by the real lower endpoint of
+$J$ before applying discrepancy. Integer cardinality is not equated with
+real width. If $|J|\ge q$, every residue has a lift and any admitted prime
+suffices. For $i=o(N)$ and $q$ polynomially bounded in $P$, the nontrivial
+arc's main mass is
 
 $$
-\frac{|J|}{q_i}\pi(P)\asymp\frac N{M\log P}.
+\frac{|J|}{q}\Pi\sim\frac{N}{6M\log P}.
 \tag{42}
 $$
 
-**Consequence (the exchange rate).** Suppose the inverse-prime sums admit
-$\bigl|\sum_{p\sim P}e_q(hp^{-1})\bigr|\ll\sqrt q\,q^{\varepsilon}$ uniformly
-in $h\not\equiv0$ — Weil strength for a complete Kloosterman sum. Then (41) and
-(42) evict every class with $N/M\gg M^{1/2+\varepsilon}$, that is
+**Scope correction.** Uniform cancellation for every nonzero $h$ is false:
+if $q$ is even and $h=q/2$, every admitted odd prime has
+$e_q(hp^{-1})=-1$. The earlier unrestricted exchange-rate deduction is
+therefore withdrawn. Large $d$ can also make the proposed floor-prime
+band empty; it is not freely available in every class.
+
+**Candidate, not a certified theorem (2026-09-08).** A written derivation
+in [the separately captured proof](../../docs/knowledge-system/institute/cycles/20260908T155849Z_f7f167/recovery-evidence/20260908T155952Z_9f8455ad_30f0ba9e47a9/INTEGRATED_PROOF.md)
+targets every-class non-witness existence, for each fixed $C,\varepsilon>0$
+and all sufficiently large $N$, in the regime
 
 $$
-\boxed{M\le N^{2/3-\varepsilon}.}
+\boxed{9\le m\le C\sqrt N,\qquad M\le N^{17/32-\varepsilon}.}
 \tag{43}
 $$
 
-More generally a saving $q^{-\delta}$ against the trivial bound $\pi(P)$ evicts
-$M\le N^{1/(2(1-\delta))-\varepsilon}$, so $\delta\to\tfrac12$ is what it takes
-to reach every class that meets the block at all. The parameter $P$ is free in
-$\bigl[\max(\sqrt{4N+2m},m),\,N/d_i\bigr]$ and may be chosen to satisfy whatever
-length-versus-modulus hypothesis a given bound requires; it cancels from (42).
+Its two additional ingredients are
+$\prod_{j=1}^{5}\gcd(c+i_j,M)\mid24M$ for five consecutive positions,
+which selects $d\le(24M)^{1/5}$, and the cutoff
+$H=\lfloor q/(3P/2)^{3/4}\rfloor$.
+Every retained frequency reduces to a primitive numerator at modulus
+$r=q/(h,q)\ge(3P/2)^{3/4}$, allowing the cited Fouvry--Shparlinski bound
+at both prefix endpoints. The full argument, error terms and quantifiers
+are retained in the campaign; `LOCALIZATION.md` §2 records source scope.
+The independent Opus review did not return a verdict within the bounded
+attempts, so (43) is **review-pending**, not promoted to PROVED.
+The original campaign was administratively closed CRASHED before this
+session detected the closure; some subsequent writes violated its immutable
+boundary. The [reconciliation](../../docs/knowledge-system/institute/cycles/20260908T155849Z_f7f167/reconciliation.md)
+records the separately pinned post-closure capture and unchanged terminal
+status. The capture is not a retroactive campaign freeze.
 
-This is a strictly weaker demand than the one Section 14's earlier scope note
-reached for. It does not ask for a prime in a prescribed progression, nor in a
-short interval; it asks for equidistribution of $p^{-1}\bmod q$ over primes of
-a dyadic range, in arcs of relative length $N/(PM)$.
+The unrestricted prime-spike route has a separate obstruction: for
+$m=2$, $M=2^s$, $c=M-2$ and $N\asymp M^{1/\theta}$ with
+$1/2<\theta<17/32$, its sole position has $d=M,q=1$ and free cofactor
+$O(N/M)=o(\sqrt N)$. No floor-sized prime can divide that cofactor, and
+the only prime in $M$ is $2\le m$. This does not rule out another
+non-witness certificate or refute Erdős #389. No new universal extension
+for $m=1,\ldots,8$ is claimed.
+This is the established smooth-modulus obstruction of §16.2: here
+$M^2\gg N$, so that proposition also applies to the shifted term $n=k+2$.
+The displayed family locates this known failure mode inside the advertised
+range; it is not a new obstruction.
 
 ### 15.7 The measured barrier
 

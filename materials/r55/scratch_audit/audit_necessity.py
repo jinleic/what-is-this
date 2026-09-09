@@ -2,6 +2,7 @@
 EVERY vertex (frame claims) and at every max-degree vertex (constraint claims)
 and verify every spec claim holds. Any violation = spec would miss real graphs.
 """
+import os
 import sys
 from itertools import combinations
 from math import ceil
@@ -9,7 +10,7 @@ from math import ceil
 from g6lib import (parse_g6, ecount, has_clique, has_indep, indep_sets,
                    cliques, induced, load_g6_file)
 
-DATA = "/Users/jinleic/jinleic-workspace/math/r55/data/r45extreme"
+DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'r45extreme')
 
 STRATA = [  # (n, e, expected iso classes)
     (12, 48, 1), (13, 53, 2), (13, 52, 10), (14, 60, 1), (15, 66, 1),

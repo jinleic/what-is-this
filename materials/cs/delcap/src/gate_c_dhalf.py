@@ -36,6 +36,7 @@ N log2 N — computed from the EXACT integer histogram of N_n values, in Arb.
 Owner: DelcapGateC. Committed grid: see the gate-C section of pre_statement.md.
 """
 from __future__ import annotations
+import os
 import itertools, json, math, os, sys, time, hashlib, platform, uuid
 
 import numpy as np
@@ -45,7 +46,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 PREC = 400
-OUT_ROOT = '/Users/jinleic/jinleic-workspace/cs/delcap/campaigns'
+OUT_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'campaigns')
 
 
 # ---------------------------------------------------------------- exact channel
@@ -367,7 +368,7 @@ def main():
     # freeze the scripts as run + tool versions BEFORE computing (write-first)
     import shutil, subprocess
     shutil.copy(__file__, os.path.join(camp, os.path.basename(__file__)))
-    shutil.copy('/Users/jinleic/jinleic-workspace/cs/delcap/pre_statement.md',
+    shutil.copy(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'pre_statement.md'),
                 os.path.join(camp, 'pre_statement.md'))
     with open(os.path.join(camp, 'tool_versions.txt'), 'w') as f:
         import flint, numpy, mpmath, platform

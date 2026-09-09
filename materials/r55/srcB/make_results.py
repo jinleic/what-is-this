@@ -2,7 +2,7 @@
 """Render srcB/RESULTS.md from outB/ladder_report.csv."""
 import os
 
-BASE = "/Users/jinleic/jinleic-workspace/math/r55"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPORT = os.path.join(BASE, "outB", "ladder_report.csv")
 OUT = os.path.join(BASE, "srcB", "RESULTS.md")
 

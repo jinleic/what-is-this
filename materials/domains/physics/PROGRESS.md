@@ -4,6 +4,98 @@ Newest first. One entry per session. Every claim links to its verification.
 
 ---
 
+## 2026-09-09 — qldpc-dec: owner cancellation, not a scientific negative
+
+**qldpc-dec GB9 owner stop (2026-09-09):** run
+[`20260908T194719Z_e9e0a889_e5962c4be23b`](qldpc-dec/campaigns/20260908T194719Z_e9e0a889_e5962c4be23b/RESULTS.md)
+was canceled during shard 04. The remaining 16 shards were estimated at
+480–720 hours on mini-0, exceeding the 72-hour per-scientific-task per-mini
+occupation limit. Administrative close: **CRASHED (owner cancellation)**;
+topic **PARKED**. Revision GB9 says partial runs have no scientific verdict:
+the paper's 17x configuration is neither confirmed nor refuted. Four
+32res shards were inherited, not newly completed. The stop log reports exit
+-15; full sync-back timed out, and only the terminal log transfer is newly
+confirmed. Existing local and remote artifacts remain preserved. No restart
+of this multi-week objective; a new bounded question needs new preregistration.
+
+## 2026-09-08 — physics/qlops: F-Z4 resolved (driver-version drift), Revision-8 71m-shot run closes FROZEN-INCONCLUSIVE
+
+- Diagnosis (builder-only, no authors): the four split shipped grown
+  circuits are a different construction generation of the same
+  lattice — mechanism **(b) driver-version drift**; evidence in
+  `qlops/scratch/diag-report.json` / `diag2-report.json` (identical
+  detectors/observables after coordinate relabeling; 5/36 rounds
+  rewired; DEM Jaccard 0.989).
+- `pre_statement.md` Revision 8 preregistered rebuilt-oracle semantics
+  for the four F-Z4 cells (pinned-driver rebuild is the reference;
+  shipped artifacts demoted to provenance); adapter bumped to r8
+  (35/35 adapter tests pass).
+- Fresh 71,000,000-shot/12-cell run on mini-0
+  (`qlops/campaigns/20260908T195555Z_67d0f894_cfb28f9ee00f`): 12/12
+  cells completed, validated, bitwise-replayable; 23/24 comparisons
+  pass; one mild failure (grown@0.0006 acceptance z = +3.79);
+  preregistered close **FROZEN-INCONCLUSIVE**.
+- Audit: 10/10 fresh checks pass, incl. cross-machine bitwise identity
+  of the 7 cells overlapping the frozen REJECTED run and bitwise replay
+  of two rebuilt-oracle cells (`qlops/scratch/audit-out.txt`).
+- d=7 / c≈300 remain NOT-REPRODUCED; Gate A/B unchanged.
+
+## 2026-09-08 — qldpc-dec: GB9 relaunched on mini-0 after CRASHED first attempt; IN-FLIGHT
+
+Owner-directed re-run of GB9 (the paper's 17x configuration
+`beam64_32res_640iters`, num_results=32, on the paired 1e8 GB7 stream).
+First attempt
+([`20260902T114747Z_69eba724_61e9fe30ba5d`](qldpc-dec/campaigns/20260902T114747Z_69eba724_61e9fe30ba5d/))
+died silently twice on studio.local and was closed CRASHED 2026-09-08T16:29:10Z
+(beam8 arm complete and byte-identical to frozen GB7; beam64_32res shards
+00–03 of 20 complete). Relaunched as run
+[`20260908T194719Z_e9e0a889_e5962c4be23b`](qldpc-dec/campaigns/20260908T194719Z_e9e0a889_e5962c4be23b/):
+same runner (sha `3a2e2800…`), same pinned binary (`297db977…`), same frozen
+Revision GB9 decision rule; execution site moved to mini-0.local with
+`nohup caffeinate -s` detachment and a heartbeat-maintained claim. The
+inherited stream/predictions are re-hash-verified by the runner before new
+decode (hard voids unchanged: stream == frozen GB7; beam8 predictions ==
+frozen GB7 byte-for-byte). No verdict this cycle; close per the Revision GB9
+mapping when shards 04–19 finish (~3 weeks at 10 threads; cadence reference:
+15.1 h/shard at 26 threads on the M3 Ultra in the crashed run).
+
+## 2026-09-08 — qlops: 71m-shot full run launched; REJECTED at grown@0.0008 (finding F-Z4)
+
+Verdict-mapping prereg (the cycle freeze artifact named in the run's
+PLAN/ITERATE) is outside the run freeze; pinned post-settle:
+`physics/qlops/pre_statement_after-gb9-releases-its-26-threads-follow-the-exa.md`
+sha256 `f34b8d4abda4f50ba6d0d9fdfa3c30d8a48edc27f50bb9fe8751253c07389e26`.
+
+The previously unstarted 71,000,000-shot / 12-cell R7 full schedule was
+launched (run
+[`20260908T174922Z_dc3b41ff_d04f0ae58ca0`](qlops/campaigns/20260908T174922Z_dc3b41ff_d04f0ae58ca0/RESULTS.md))
+after its named precondition was satisfied (qldpc-dec GB9 closed CRASHED
+16:29:10Z, releasing its 26 threads). The run re-passed the eight-gate
+smoke battery and completed **7/12 cells (36,000,000/71,000,000 shots =
+50.7%)** — all six ungrown cells plus grown@0.001 — every completed row
+re-validated against its expected identity, and an author-scale bitwise
+replay of ungrown@0.001 (5e6 shots, preregistered seed) reproduced the
+stored row with zero mismatched keys. Descriptive z-scores for the 14
+completed comparisons are all |z| ≤ 1.71 vs the author rows (descriptive
+only; the preregistered familywise 24-comparison gate was never reached).
+
+The run then closed **REJECTED** per its preregistered semantics: the
+mandatory shipped-vs-rebuilt flattened-equality gate failed at
+grown@0.0008. Independent audit mapped all 12 cells — finding **F-Z4**:
+shipped grown circuits at p ∈ {0.0008, 0.0006, 0.0004, 0.0001} differ
+from the pinned-driver rebuild by an *identical* 23-hunk delta (52
+shipped-only, 32 rebuilt-only flattened lines; same instruction mix;
+noise strengths correctly parameterized), while grown@0.001/0.0002 and
+all ungrown cells match. The pinned repo's shipped grown artifacts are
+generationally split; the 12-cell reproduction is blocked at source
+level, **unresolved — neither certified nor negated**. Next: obtain the
+authors' matching construction revision or preregister a Revision-8
+rebuilt-oracle/builder-only amendment for the four cells. Paper d=7 and
+physical c≈300 remain NOT-REPRODUCED; Gate A/B conclusions unchanged;
+R5/R6/R7 frozen runs untouched.
+[AUDIT](qlops/campaigns/20260908T174922Z_dc3b41ff_d04f0ae58ca0/AUDIT.md) ·
+[sha256 ledger, 39 files](qlops/campaigns/20260908T174922Z_dc3b41ff_d04f0ae58ca0/sha256s.txt)
+
 ## 2026-09-06 — calibrated magic-cat search stopped without rank-five witness
 
 After the AES XOR assay failed to show local headroom, the next admitted

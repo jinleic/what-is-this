@@ -23,7 +23,7 @@ from pathlib import Path
 
 from flint import arb, ctx, fmpq
 
-ROOT = Path("/Users/jinleic/jinleic-workspace/cs/delcap")
+ROOT = Path(__file__).resolve().parents[1]
 CORRECTION = ROOT / "campaigns" / (
     "2026-08-31T09:13:25Z_7dc5babe-5e1b-44fa-a9e5-03d2f10183b6_q3-invariance-correction"
 )

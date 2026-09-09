@@ -1,19 +1,122 @@
 {
   "schema": "target-state/1",
   "id": "math/qec",
-  "runs_dir": "experiments",
   "problem": "Automated co-design of quantum LDPC codes (non-CSS PBB programme)",
   "status": "active",
-  "current_gate": "Fixed-point closure certified through n=234; next gate n=270: collapse (15,9)/(45,3), screen 5024 noncyclic + 688 cyclic (27,5) classes",
-  "latest_campaign": null,
-  "latest_campaign_verdict": null,
-  "headline": "Published [[234,8,18]] prior art repaired; dX=dZ=18 exact; suite 1026 green",
-  "next_action": "n=270 gate: presentation collapse then two-root screening",
+  "current_gate": "n=270 deep re-screen done (1,636/1,657 k=8 decided at threshold 20, strict validator-v11); closure open: 21 k=8 (best witness 22) + 147 k=12 undecided, 210 k=20/24 survivors unpromoted, Liang row b unbound (base pair + prefix55 initial done, 9 prefix runs remain)",
+  "latest_campaign": "20260908T194313Z_2eb90dad_d3c7ccce6e21",
+  "latest_campaign_verdict": "FROZEN-INCONCLUSIVE",
+  "headline": "n=270 deep target-20 re-screen certified: 1,636 of 1,657 k=8 residuals dominated by fresh verified witnesses (weights 12-20), shards strict under validator-v11; Liang row b base pair + prefix55 initial complete, 9 prefix runs short of binding; 21 k=8 + 147 k=12 undecided, 210 survivors unpromoted",
+  "next_action": "Bind Liang row b: run the remaining 9 prefix runs (prefix55 replay; prefixes 56/135/175/269 initial+replay, ~3,700-4,300 s each) plus assemble/validate under the two-run stop rule, strict validator-v11; minis are free (GB9 stopped). Time-boxed: complete as many prefix pairs as fit, bank progress honestly; 21 k=8 residuals (witness 22 vs threshold 20) deferred to a later allocation",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T08:26:03Z",
+  "updated_utc": "2026-09-09T02:15:46Z",
   "updated_by": "workspace-architecture-fix",
   "sources": [
-    "math/PROGRESS.md:4018-4074",
+    "math/PROGRESS.md#QEC (2026-08-24) \u2014 TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$",
     "math/qec/README.md"
-  ]
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": null,
+        "to": "active",
+        "at": "2026-09-08T17:45:03Z",
+        "cause": "manual",
+        "reason": "owner-directed quantum push; n=270 collapse gate is the documented next objective",
+        "evidence": [
+          "math/qec/README.md"
+        ],
+        "actor": "Main (owner-directed quantum launch)"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-08T17:45:03Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"expected_progress\": 0.4, \"runs_max\": 1, \"seconds_max\": 7200.0, \"value\": 4}",
+        "evidence": [
+          "math/qec/README.md"
+        ],
+        "actor": "Main (owner-directed quantum launch)"
+      },
+      {
+        "from": "active",
+        "to": "parked",
+        "at": "2026-09-08T18:12:42Z",
+        "cause": "budget",
+        "reason": "budget exhausted (runs 1/1) after gate progress; revive with a new allocation",
+        "evidence": [
+          "20260908T175247Z_e40ae2c8_8d516c12d880"
+        ]
+      },
+      {
+        "from": "parked",
+        "to": "active",
+        "at": "2026-09-08T19:32:28Z",
+        "cause": "manual",
+        "reason": "owner revival: n=270 deep re-screen + Liang row b",
+        "evidence": [
+          "math/qec/campaigns/20260908T175247Z_e40ae2c8_8d516c12d880/RESULTS.md"
+        ],
+        "actor": "Main (owner-directed)"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-08T19:32:28Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"runs_max\": 2, \"seconds_max\": 18000.0}",
+        "evidence": [
+          "math/qec/campaigns/20260908T175247Z_e40ae2c8_8d516c12d880/RESULTS.md"
+        ],
+        "actor": "Main (owner-directed)"
+      },
+      {
+        "from": "active",
+        "to": "parked",
+        "at": "2026-09-08T21:35:30Z",
+        "cause": "budget",
+        "reason": "budget exhausted (runs 2/2) after gate progress; revive with a new allocation",
+        "evidence": [
+          "20260908T175247Z_e40ae2c8_8d516c12d880",
+          "20260908T194313Z_2eb90dad_d3c7ccce6e21"
+        ]
+      },
+      {
+        "from": "parked",
+        "to": "active",
+        "at": "2026-09-09T02:15:46Z",
+        "cause": "manual",
+        "reason": "owner 2026-09-09: resume \u2014 bind Liang row b (9 prefix runs + assemble/validate); lifetime caps raised to used+3 runs (5) and used+36,828 s (45,000)",
+        "evidence": [],
+        "actor": "main"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-09T02:15:46Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"runs_max\": 5, \"seconds_max\": 45000.0}",
+        "evidence": [],
+        "actor": "main"
+      }
+    ],
+    "reason": "owner 2026-09-09: resume \u2014 bind Liang row b (9 prefix runs + assemble/validate); lifetime caps raised to used+3 runs (5) and used+36,828 s (45,000)",
+    "evidence": []
+  },
+  "budget": {
+    "runs_max": 5,
+    "seconds_max": 45000.0,
+    "tokens_max": null,
+    "runs_used": 2,
+    "tokens_used": 0,
+    "seconds_used": 8172.0,
+    "gate_at_last_progress": "n=270 deep re-screen done (1,636/1,657 k=8 decided at threshold 20, strict validator-v11); closure open: 21 k=8 (best witness 22) + 147 k=12 undecided, 210 k=20/24 survivors unpromoted, Liang row b unbound (base pair + prefix55 initial done, 9 prefix runs remain)"
+  },
+  "priority": {
+    "value": 4,
+    "expected_progress": 0.4,
+    "blocker": "none",
+    "blocker_detail": null
+  }
 }

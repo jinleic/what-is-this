@@ -5,6 +5,425 @@ cost. "Verified" means a command ran and its output was observed, or a primary
 source was read directly — not that something looks right.
 
 
+## QEC (2026-09-08) — DEEP TARGET-20 RE-SCREEN DECIDES 1,636 OF 1,657 $n=270$, $k=8$ RESIDUALS; LIANG ROW b BASE PAIR COMPLETE
+
+Cycle `20260908T193320Z_ba7b32`, campaign
+[`20260908T194313Z_2eb90dad_d3c7ccce6e21`](qec/campaigns/20260908T194313Z_2eb90dad_d3c7ccce6e21/)
+(**FROZEN-INCONCLUSIVE** per the frozen prereg mapping).
+
+* **Deep re-screen executed fresh.** The EXP-070 [[270,8,20]] row-a
+  reference (threshold 20) forced a new screen protocol, so both lattices
+  were re-enumerated and re-resolved rather than rebound: fresh initial
+  screens plus 2,000-try information-set deepening with threshold-20-derived
+  seeds for every undecided $k=8$ class. The published shards validate
+  strict under validator-v11 (no tolerant mode anywhere in the run).
+* **1,636 of 1,657 decided.** 15x9: 1,457 newly dominated_by_deep_reduction
+  (witnesses at weights 12–20; 3,216 already dominated, 187 survivors);
+  27x5: 179 newly dominated (weights 14–20; 482 already dominated, 23
+  survivors). Every new witness was re-verified from the (A,B) terms
+  (kernel membership, rank increment, weight equality).
+* **Residuals, honestly.** 21 $k=8$ classes remain undecided with best
+  witness 22 — one weight class above threshold; the 147 $k=12$ undecided
+  and 210 $k=20/24$ survivors are unchanged.
+* **Liang row b advanced, not bound.** The base replay (1,326 s) completed
+  the base initial+replay pair, exhaustive through weight 16; the root
+  prefix partition is {55, 56, 135, 175, 269} and the first prefix initial
+  was run under a two-run stop rule. Nine prefix runs plus assemble/validate
+  remain before row b can be certified.
+
+## 2026-09-08 — OpenAI Navier–Stokes (C)+(D) claim VERIFIED formally: Lean repo builds, statement verbatim CMI, zero holes (FROZEN-CERTIFIED)
+
+Cycle `20260908T193320Z_ba7b32`, campaign
+[`20260908T193739Z_14ac2c45_44bf28712a9f`](ns/campaigns/20260908T193739Z_14ac2c45_44bf28712a9f/),
+gate `build-the-lean-repo-reproducibly-check-the-forma`, prereg
+[`ns/pre_statement_build-the-lean-repo-reproducibly-check-the-forma.md`](ns/pre_statement_build-the-lean-repo-reproducibly-check-the-forma.md).
+Independent verification of OpenAI's 2026-09-08 claim that Navier–Stokes
+alternatives (C) and (D) are resolved, with public Lean formalization
+(`openai/NavierStokesAndEuler` @ `8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538`).
+
+* **Statement match: MATCH on every clause of (C) and (D).** The main theorems
+  `navier_stokes_breakdown_R3` / `navier_stokes_breakdown_periodic` were
+  compared verbatim against the official CMI PDF (retrieved this run, incl.
+  the pressure-periodicity errata): quantifier shape, ∀ν>0, R³ and R³/Z³,
+  (1)(2)(3), smoothness (6)/(11), bounded energy (7) (with the `MemLp` field
+  closing Mathlib's totalized-integral vacuity hole), Schwartz data (4),
+  force class (5)/(9), polarity. The repo attributes its Clay definitions to
+  DeepMind's formal-conjectures (attribution taken from the repo, not
+  independently diffed against upstream). Witnesses: **u₀≡0 plus a
+  C_c^∞(R³×(0,∞)) force** — inside CMI's admissible classes; the force, not
+  the data, creates the blowup.
+* **Zero proof holes.** 0 sorry/admit/axiom/native_decide/opaque/unsafe across
+  the 2418-file proof tree (repo sorries are vendored Comparator fixtures and
+  the never-imported challenge placeholders). `#print axioms` (build log +
+  fresh elaboration): `[propext, Classical.choice, Quot.sound]` only, on all
+  four main theorems (NS (C), NS (D), Euler ×2).
+* **Reproducible build (mini-pro.local).** Pinned toolchain
+  `leanprover/lean4:v4.34.0-rc2`, `lake exe cache get` + `lake build` → exit 0,
+  11251 jobs, ~22 min; logs in the run dir.
+* **Route vs the obstruction map.** The constructed blowup is an anisotropic
+  self-similar vortex (ℓ_r≍τ^½, ℓ_z≍τ^{½−h}, |u|≍τ^{−½−h}) — Type II with
+  unbounded L³ and an engineered smooth force: it routes around every closed
+  route of `ns/README.md` (Lemma 1's one-scale hypothesis, Tsai/NRS exactness,
+  DSS covariance, Lemma 4 exact-covariance all fail to engage) and lives in
+  exactly the rows the map left open. Map and claim are mutually consistent.
+* **Limits.** Single-kernel verification (no nanoda re-check run); statement
+  match by hand against the CMI text; PDE content not re-refereed beyond the
+  Lean kernel. Wall cost ~50 min of the 4 h cap.
+
+## 2026-09-08 — QEC n=270 SCREEN CERTIFIED: (15,9)/(45,3) collapse proved; Liang row a exact $[[270,8,20]]$ admitted; closure open (FROZEN-INCONCLUSIVE)
+
+Cycle `20260908T174625Z_a9a475`, campaign
+[`20260908T175247Z_e40ae2c8_8d516c12d880`](qec/campaigns/20260908T175247Z_e40ae2c8_8d516c12d880/),
+gate `n-270-gate-presentation-collapse-then-two-root-s`, prereg
+[`qec/pre_statement_n-270-gate-presentation-collapse-then-two-root-s.md`](qec/pre_statement_n-270-gate-presentation-collapse-then-two-root-s.md).
+The pre-staged (2026-08-24/25, un-campaigned) EXP-069/070 artifacts were
+treated as claims and re-audited fresh.
+
+* **Collapse certified fresh (C1).** EXP-069 transport audit re-run: the CRT
+  isomorphism $\mathbb Z_{15}\times\mathbb Z_9\to\mathbb Z_{45}\times\mathbb Z_3$
+  is bijective with exact inverse and exhaustive (18,225-pair) homomorphism;
+  $5{,}024=5{,}024$ classes / $192{,}834=192{,}834$ represented pairs;
+  screening $(45,3)$ would duplicate the same physical family, so $(15,9)$ is
+  the sole screened noncyclic presentation. Both Liang Table III quotient
+  transports re-verified (order 135, surjective, relations vanish, $k=8$ in
+  both rectangles, exact $H_X/H_Z$ matrix transport).
+* **Liang row a bound by the two-root protocol (C3 partial).** The EXP-070
+  certificate was RE-ASSEMBLED from the 12 pinned single-threaded dist-m4ri
+  run records (base exhaustive through weight 16; five prefix branches
+  exhaustive at weight 18; initial+replay pairs) and re-validated twice:
+  even kernel parity excludes weights 17/19, exhaustive pure-second-block
+  enumeration gives minimum $\ge20$, the weight-20 upper witness verifies,
+  BB duality holds $\Rightarrow$ **CERTIFIED_EXACT $[[270,8,20]]$**,
+  certificate sha256 `c10f45816dd229e3bff2c7f4ff2c203ab85a5e98b4bd3e4b76f4086ab41f5c97`.
+  The row is registered in `EXACT_REFERENCES` (new `exp070_odd_exact` kind);
+  the $k=8$ domination threshold at $n=270$ is now 20.
+* **Screen validated and adjudicated (C2).** Validator v11 (aggregate +
+  record) re-run fresh and strict on both rebound shards; every domination
+  physically re-verified ($H_Xv=0$, rank increment, weight $\le$ threshold);
+  every record identity re-derived from fresh candidate enumeration. The
+  EXP-063 monotone rebind (battery `7daefcaa…` → `4dd92828…`) moved
+  $223+28$ $k=8$ classes with verified weight-20 witnesses to dominated.
+  Final: 15x9 — 3,216 dominated / 187 survivor / 1,621 undecided; 27x5 —
+  482 / 23 / 183 (totals 5,024 and 688).
+* **Tooling repair disclosed.** EXP-063 could not run after any battery
+  raise: validator v11's staleness check rejects the very input the rebind
+  exists to repair (reproduced). Minimal opt-in
+  `allow_stale_thresholds` mode judges historical shards by their own pinned
+  battery while keeping every identity/witness/structure check; strict
+  validation is unchanged everywhere else and is what the audit exercised on
+  the rebound shards.
+* **Closure NOT achieved (C4 fails; residuals named).** 1,657 $k=8$ undecided
+  (carried witnesses only at weights 22–36 vs. threshold 20; the target-20
+  deep re-screen is deferred), 147 $k=12$ undecided (serial exact fallback
+  over the bounded budget), 210 $k=20/24$ survivors decided $d\ge5>4$ but
+  unpromoted, and Liang row b unbound (base replay + five prefix pairs
+  $\approx$ 11 pinned runs of 1,200–4,300 s $\gg$ the 7,200 s budget). The
+  pre-staged CP-SAT payloads (374+46 recorded calls) and the 12 dist-m4ri
+  runs were hash-bound and structurally re-validated, NOT re-executed; the
+  native solver remains trusted code (no proof trace, EXP-067 TCB note
+  unchanged).
+* **Cost and verdict.** Heavy compute on mini-pro.local detached per the
+  placement rules (transport 27 s; assemble+validate 31+16 s; rebind 75 s;
+  audit 78.8 s); control plane local. One funded run spent (1/1); 1,452 s
+  wall; tokens null (not exposed). Verdict per the frozen mapping:
+  **FROZEN-INCONCLUSIVE** — the gate advanced (collapse certified, screen
+  validated, first local exact $[[270,8,20]]$ reference admitted, 251 classes
+  adjudicated) but $n=270$ fixed-point closure is not achieved.
+
+
+## 2026-09-08 — smoke: pipeline smoke test closes FROZEN-CERTIFIED; Goldbach exhaustion certified on [4, 100000]
+
+**Pipeline smoke test** (target `math/smoke` exists only to validate the
+institute pipeline end to end; it carries no scientific ambition). Cycle
+`20260908T172756Z_bf9b54`, campaign
+[`20260908T172852Z_677d6e3a_fc598c359ebd`](smoke/campaigns/20260908T172852Z_677d6e3a_fc598c359ebd/),
+gate `smoke`, prereg
+[`smoke/pre_statement_smoke.md`](smoke/pre_statement_smoke.md).
+
+Exhaustively verified the bounded Goldbach claim: every even $n$ with
+$4 \le n \le 100000$ is a sum of two primes. Primary verifier (Sieve of
+Eratosthenes, self-tested against the known $\pi(100000)=9592$) enumerated
+all 49,999 even values with zero counterexamples in 0.063 s; an independent
+fresh audit implementation (deterministic Miller–Rabin, bases 2/7/61,
+opposite scan direction, no shared code) reproduced
+`checked=49999 counterexamples=0` in 0.816 s. Both outputs are pinned in the
+run dir. Verdict per the prereg mapping: **FROZEN-CERTIFIED** — certificate
+covers $[4,100000]$ only. Compute ran locally: sub-second jobs, far below
+the brief's multi-minute mini-0 threshold. One funded run spent (1/1);
+token count not exposed by the harness (null). The pipeline itself passed:
+init → PLAN → ITERATE → AUDIT → freeze → close → usage → state → ledger →
+refresh all executed under `scripts/campaign.py` with no control-plane
+refusals. Target closes after this cycle per its README disposition.
+
+
+## 2026-09-08 — E389 Input-I candidate remains review-pending; administrative CRASHED outcome reconciled
+
+Campaign
+[`20260908T155952Z_9f8455ad_30f0ba9e47a9`](e389/campaigns/20260908T155952Z_9f8455ad_30f0ba9e47a9/)
+investigated the two Input-I gaps. **The previous wording that a restricted
+theorem was accepted/banked is withdrawn:** the audit was an Astra actor
+artifact, and no independent Opus verdict was obtained.
+
+**Candidate and observations.** The written argument uses a fixed
+$(P,3P/2]$ prime rectangle, five consecutive gcds with product dividing
+$24M$, and a truncated frequency cutoff. Its proposed scope is fixed
+$C,\varepsilon>0$, sufficiently large $N$, $9\le m\le C\sqrt N$,
+$M\le N^{17/32-\varepsilon}$, arbitrary moduli and all classes.
+It constructs non-witnesses if accepted, not witnesses or a solution to
+Erdős #389. The even-$q$, $h=q/2$ phase and the $m=2,q=1$
+cofactor-dominated family invalidate the unqualified prime-spike black box,
+not class eviction by every possible mechanism.
+
+**Observed verification.** On `jinleic@mini-0.local`, the main exact
+verifier passed in 0.841 seconds including SSH; 14 explicit boundary cases
+passed in 0.296 seconds. A later 1.094-second remote check reproduced the
+class-count rounding error at $N=10,M=3,c=0$: members $12,15,18$
+violate the unrounded bound but satisfy $\lfloor N/M\rfloor$. The active
+elementary proof now uses that floor; its original hypothesis still suffices.
+All scientific execution was on mini-0. No heavy compute was launched.
+
+**Review and administration.** The approved pairing was Astra/Opus.
+The native loop stopped at 600 seconds; standalone Opus attempts at
+240 and 180 seconds also produced no usable final verdict. The run was
+administratively closed **CRASHED at 16:34:00Z** and settled at 16:34:05Z,
+making e389 **abandoned (2/2 runs)**. Those records stand; no verdict
+replacement, revival or second settlement is performed here. The recorded
+closure reason relied on PID 2736, which was the short-lived campaign-init
+CLI PID, not evidence that this OMP session had died.
+
+**Integrity disclosure.** Some research artifacts were written after that
+close, before this session detected it. No original run writes followed
+discovery. A separate post-closure capture pins 30 research/control files
+and its manifest; all 31 checksum checks passed. It does not retroactively
+freeze the campaign or establish what bytes existed at closure.
+The [reconciliation](../docs/knowledge-system/institute/cycles/20260908T155849Z_f7f167/reconciliation.md)
+is the current handoff and links the captured evidence. The scientific
+disposition is review-incomplete; CRASHED remains the actual terminal label.
+Next: obtain owner authorization for a review-only recovery allocation.
+
+
+## 2026-09-08 — E389 Sierra-route decision: "Richmond/Tao comparison" resolves to no instrument; conditional frontier accepted; next action is the Input-I two-gap closure
+
+Campaign
+[`20260908T151056Z_6e08f503_527b4fd78381`](e389/campaigns/20260908T151056Z_6e08f503_527b4fd78381/)
+(gate `sierra-route-richmond-tao-comparison-localizatio`, verdict
+FROZEN-CERTIFIED; prereg
+[`e389/pre_statement_sierra-route-richmond-tao-comparison-localizatio.md`](e389/pre_statement_sierra-route-richmond-tao-comparison-localizatio.md))
+executed the bounded decision objective frozen in `e389/state.json`: pursue
+the Sierra route (the effective per-class bound route of LOCALIZATION
+§3.1/§10 item 3, labelled "Richmond/Tao-style comparison theorem" in the
+E389-SHIU-EFFECTIVE-MARGIN next-action note) or accept the conditional
+frontier.
+
+**Identification result.** The "Richmond/Tao comparison theorem" name resolves
+to nothing citable. Nine channels queried (math/e389 record grep; arXiv API
+author search — math.NT has only L. Bruce Richmond, enumeration; arXiv
+full-text Richmond ∧ smooth-numbers and Richmond ∧ Dickman — zero; Tao's
+recent math.NT bibliography — no Richmond co-authorship and no per-class
+comparison theorem; Semantic Scholar; web search; grep of the audited Wright
+source `shiu_for_journal.tex` from arXiv:2508.17217v2 — zero matches;
+erdosproblems.com/389; OEIS A375071; git history). The name labels §10 item
+3's metered requirement, not an instrument. Full trail in the run dir.
+
+**Route comparison (memo, run dir).** (i) Per-class effective bound: no
+instrument on record — Wright REFUTED-for-purpose (ceiling $165/328$ vs
+required $e>0.880084778655420\ldots$; $u^\ast\approx2.2125>2$), Shiu
+$R\ge2(M/\phi)\ge2$ at every depth (coverage stops at $M=2\sqrt N$),
+Balog–Pomerance ineffective, the rest FAIL on hypotheses; closing it needs a
+new per-class sieve with level $\ln z'>M/\phi$ — a research program. (ii)
+Weyl-sum route (46): Vaughan $M\ll LN^{1/5}$ and GRH $L\sqrt N/\log^3N$ both
+sit below the proved Theorem 15.3 reach $\sqrt N/2$; Li's minorant is
+smooth-modulus, $10/19<17/32$, subsumed; Montgomery is conjectural. (iii)
+Input VII (94): explicitly absent in Pascadi; no unconditional theorem through
+August 2026; $1/8$ benchmark gap. (iv) Input-I gaps: the only identified
+finite route — §10 item 5 states both are "finite work against a fixed cited
+bound".
+
+**Decision (b): accept the conditional frontier.** Sierra declined as a
+bounded objective; the conditional frontier
+$\theta\le17/32-\varepsilon=0.53125$ (F–S 2011 $\equiv$ C–K Thm 1 at the
+floor, modulo two internal gaps) stands as the honest record. Gate unchanged.
+Adopted next action: close the two Input-I gaps of §2/§10 item 5 —
+reconstruct the lost gap enumeration from THEOREMS §15.6 (40)–(43), then the
+$p$-dependent $Z_p$ coefficients and degenerate $h$ — banking $\theta\le17/32$
+class eviction from cited theorems. A record defect is flagged (not repaired):
+§2's gap-introduction sentence lost its itemized enumeration; descriptions
+survive in §10 item 5.
+
+**Freshness and cost.** `verify_decision.py` (prereg §5 checks) PASS fresh at
+audit. The two quoted certified artifacts re-ran this session:
+`shiu_effective_margin.py` byte-identical to the MD5 recorded in this ledger;
+`wright_indicator_corollary_margin.py` exit 0 reproducing every quoted
+constant. Wall time and null token count in the run's `institute_usage.json`;
+compute was two sub-second script re-runs.
+
+## 2026-09-08 — ζ(5) Gate-2 construction sweep closed under the campaign control plane: FROZEN-NEGATIVE, zero survivors in the frozen 44-probe ladder; baseline μ2 = 0.337537 unbeaten
+
+* **Outcome first.** Run
+  [`20260908T150622Z_6a444c77_79aa3a46d868`](zeta5/campaigns/20260908T150622Z_6a444c77_79aa3a46d868/)
+  (gate `gate-2-construction-sweep`; prereg
+  [`zeta5/pre_statement_gate-2-construction-sweep.md`](zeta5/pre_statement_gate-2-construction-sweep.md),
+  frozen before compute with explicit family bounds and verdict mapping)
+  re-executed the README gate-2 sweep end-to-end under `scripts/campaign.py`
+  and closed **FROZEN-NEGATIVE**: 0 of 44 probes retained. This is the
+  README's expected-plausible stop: "Zero survivors better than the baseline
+  deficit ⇒ the campaign fails here; record and stop."
+* **What the run adds over the 2026-08-29 session.** Control-plane closure:
+  preregistered family bounds and verdict mapping; baseline re-certified
+  (`zudilin_rec.py` exit 0, deficit 3.913920638); guesser re-validated blind
+  (`recsearch.py --selftest` exit 0); the sweep + multi-anchor audit executed
+  twice (23.79 s, 24.05 s single-core) reproducing
+  [`zeta5/data/GATE2_SWEEP.json`](zeta5/data/GATE2_SWEEP.json)
+  **byte-identically** (sha256
+  `d7d71318fa62d2c3276eff473409b0ad8f68c968bf2da6673c46e53fb8476cb7`); plus an
+  independent fresh-compute spot-check (15/15 PASS) re-deriving two promoted
+  probes' exact sequences and recurrence candidates vector-for-vector.
+* **Why each family died (unchanged substance, re-verified).** 33/44 no
+  recurrence in window (orders 2–3, degree ≤ 14); 7/44 slower than baseline.
+  F1 (0, −1, w = 4/5/6): rate-stable (min-root 0.0021–0.0049 across anchors)
+  but the s2 = −1 numerator factor is exactly (1/2)^n, constant in k —
+  content-free shrinking rationals, FAIL retention (b). F3 (r = 1): fresh
+  anchors swing ~0.10–0.15 at n_ref = 10 to > 1 at n_ref = 30/79 — the 0.1729
+  at n_ref = 40 is an evaluation artifact; withdrawn.
+* **Labels and scope.** Verdict FROZEN-NEGATIVE; rate claims
+  NUMERICAL/DISCOVERY-ONLY; the negative meters the frozen ladder only.
+  Documented deviation: the sweep tool exits 3 (not 0) when rate-stable
+  promotions exist — anticipated 0 in the prereg, corrected on the record;
+  mapping unaffected.
+* **Cost.** ~52 s single-core total compute; one funded run spent (1/2).
+* **Next action (adopted).** Gate 2 closed for the swept ladder. Resumption
+  requires proposing a NEW family ladder (e.g. creative-telescoping
+  certification round on fresh candidates) — a fresh decision for a future
+  cycle, not a standing task.
+
+## 2026-09-08 — Q1 authorized-assay successor prepared; no budget granted
+
+[Successor `20260908T124248Z_78b7187d_b9950942769a`](qec/campaigns/20260908T124248Z_78b7187d_b9950942769a/)
+is registered against the admitted one-cycle Figure 12 model. **Zero solver
+calls were authorized and none ran; no distance bound is claimed.** Source
+reconstruction was not repeated: the model is consumed as pinned inputs
+(saved fault columns, frozen `.stim` bytes, pinned builder metadata).
+
+Verified without a solver: 166/166 frozen parent files unchanged; 175
+representative primitive replays per basis with the wrong-boundary,
+wrong-logical, corrupt-reference and composition controls; 21 durable
+accounting scenarios (missing/mismatched grants, concurrency, exhaustion,
+wall/RSS/file stops, launcher death with a surviving supervisor, orphaned
+reservations, tampered request and output); the real CLI refusing every
+entrypoint before model imports, encoding or reservations; and the production
+acceptance path rejecting 8 malformed or over-cap witnesses plus a modified
+adjudication.
+
+Two accounting defects were reproduced first and then repaired: a sub-0.5 s
+measured overrun was accepted as compliant, and completed receipts were
+reused without rechecking retained output hashes. Both now have retained
+regressions. Replay no longer rebuilds the circuit or disarms the parent's
+closed-run guard. Independent read-only review found no receipt-integrity,
+duplicate-dispatch or assertion-versus-proof defect; its two low-severity
+observations were fixed before sealing.
+
+Outcome: **READY_PENDING_EXPLICIT_USER_AUTHORIZATION**. The run stays live and
+holds the `math/qec` claim, deliberately unfrozen because no assay conclusion
+exists. A solver-asserted UNSAT will remain solver-asserted: no proof checker
+is installed. All prior frozen campaigns, GB9, the decoder contract and legacy
+routing are untouched.
+[Readiness](qec/campaigns/20260908T124248Z_78b7187d_b9950942769a/readiness.json).
+
+
+## 2026-09-08 — Q1 source model admitted; assay protocol failed
+
+The [methodology-control successor](qec/campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/)
+corrects the preceding source-blocker inference. Six noiseless generic LRC
+controls from the pinned, unmodified author constructor pass. True
+preparation-to-measurement chronology rejects zero pairs; phase-sorted ranks
+falsely reject 216. The source suffix law yields 90 reduced classes, and the
+unchanged Figure 12 endpoints match Figure 11 with upper cut 0 and lower cut 3.
+The source clock and validity constraints uniquely fix the relative row
+origin to \(\beta=-1\). No monomial permutation or new source retrieval was
+needed.
+
+The canonical one-cycle model is admitted with explicit detector/boundary
+scope. Four finite memories (X/Z, effective/source-style serialization) pass
+noiseless verification and exact boundary-move checks. Each basis has
+1,728 physical locations and 14,400 primitive options; independent binary and
+Stim detector/observable effects agree. Surface-code and repetition controls
+match all 219 and 15 respective DEM signatures. Solver-free repaired replay
+passes 175 representative cases per basis, known logical/corrupt-readout and
+wrong-boundary controls, composition/cancellation, and complete equality of
+all 14,400 columns across boundary representations.
+
+**The capped assay is not valid evidence.** Main used the 120-second source
+wrapper for a potentially 240-second assay, then restarted the ladder after
+that timeout and after a replay bug. The runner reset its in-memory budget
+per invocation and deferred exclusive-output checking until the end.
+Campaign-wide caps were not preserved; per-call results were lost.
+The original failed report is unchanged, and no SAT/UNSAT answer or distance
+bound is accepted. Exact aggregate call/time totals are not recoverable;
+the [incident audit](qec/campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/assay_incident.json)
+separates observed attempts from control-flow inference.
+
+Further solver execution in this campaign is locked. Normal and child
+entrypoints were tested to refuse before dispatch. The repaired runner adds
+early output checks, one-launch reservation, replay preflight, durable
+per-call records and actual-time accounting; that new solver path was not
+tested by spending another call. The subsequent replay repair used **zero**
+additional solver calls. No matching owned solver child remained at the
+post-repair check.
+
+Outcome: **source reconstruction and physical validation are usable; the
+distance remains unresolved.** Further assay work needs explicit new budget
+authorization. GB9, decoder contract, legacy routing and all earlier frozen
+campaigns remain untouched. No outreach or substitute CNOT schedule was used.
+[Qualified handoff](qec/campaigns/20260908T015946Z_8066cf36_0e6e4247e2ba/RESULT.txt).
+The campaign closed **FROZEN-INCONCLUSIVE**; all **166 frozen evidence-file
+SHA-256 checks passed**. The failed assay is not a bound.
+
+
+## 2026-09-08 (UTC) — Q1 coordinate reconstruction and a minimal interpretation obstruction
+
+The [hash-bound successor](qec/campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/)
+used unexamined layers of the already pinned sources, not another publication
+or metadata sweep. It is **FROZEN-INCONCLUSIVE**: the exact author-intended
+Figure 12 circuit is not admitted, but the remaining ambiguity is now
+specified by executable source and mathematical certificates.
+
+Recovered all **36 Figure 12 numeric annotations** with exact-rational
+text/vector endpoint associations; independent Apple PDFKit decoding agrees,
+and none differs from the old manual values. Direct Figure 10 vector
+registration confirms **144 check colours** and its four displayed
+long-range endpoint displacements. Closed graph/rank/static-distance commands
+were not rerun.
+
+For the literal monomial association and increasing-time reading in a
+stationary depth-eight, standard CNOT-only CSS extraction model, two checks
+share data with CNOT ranks \((0,4)\) versus \((4,0)\). Their rank differences
+\(-4,+4\) force a collision or an unwanted ancilla transfer for every relative
+origin. Independent polynomial/GF(2) verification and a reset-aware adjoint
+check confirm the obstruction. **This refutes that interpretation, not the
+authors' circuit or distance-eleven conjecture.** A global CSS duality is
+also verified; arbitrary X/Z naming alone is not an external obstacle.
+
+The unique common block-preserving residual correspondence was derived and
+checked under both marker- and caption-based family assignments. Neither has
+a non-interleaved clock completion, including with **144 independent check
+phases**; exact domain-removal traces replay. The result is limited to the
+declared interpretation classes. Conditional preparation/readout formulas
+and the precise remaining endpoint/order/clock question are recorded in the
+[full source-resolution report](qec/campaigns/20260907T120059Z_2a5cca9c_a7b4eb60c485/source_resolution.txt).
+
+Verification: **135 frozen evidence-file SHA-256 checks passed**. Fifteen
+successful capped source commands used **15.951 seconds summed command wall
+time**, excluding analysis/review time; maximum sampled child RSS across
+recorded attempts was **651,509,760 bytes**. Failed tool/API attempts and
+their corrections are preserved. Unsupported scout claims were rejected;
+no outside expert review or novelty clearance is claimed.
+
+**Zero target primitive-fault derivations, target replay/control runs, or
+distance-solver calls; no new bound.** GB9, the decoder contract, legacy
+state routing and frozen campaigns remain unchanged. No outreach or
+substitute circuit was used.
+
+
 ## 2026-09-06 — Gross distance-eleven feasibility stopped at source admission
 
 The sole new mainline is the exact Strikis–Browne–Beverland Figure 12

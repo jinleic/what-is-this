@@ -113,9 +113,13 @@ def test_member_pin_table_matches_ticket_and_is_wellformed():
     assert Z.TREE_SHA == "9a5d89401fd40554635fb0e9d0b4da818670c2bc"
     assert Z.TAR_SHA256.startswith("d67dbe7482b391984da5e64aeff7668")
     assert Z.TAR_SIZE == 1_072_583
-    assert Z.GATE == "zero-level-author-repro-r7"
-    assert Z.ADAPTER_VERSION == "r7"
-    assert Z.PREREG_REVISION_MARKER == "## Revision 7"
+    assert Z.GATE == "zero-level-author-repro-r8"
+    assert Z.ADAPTER_VERSION == "r8"
+    assert Z.PREREG_REVISION_MARKER == "## Revision 8"
+    assert Z.REBUILT_ORACLE_CELLS == frozenset({
+        ("grown", "0.0008"), ("grown", "0.0006"),
+        ("grown", "0.0004"), ("grown", "0.0001"),
+    })
 
 
 # ------------------------------------------------- author rows and arithmetic
@@ -212,17 +216,26 @@ def _base_identity(run_id=None, prereg_sha256="a" * 64):
     }
 
 
+def _oracle_of(variant, p_label):
+    return ("rebuilt" if (variant, p_label) in Z.REBUILT_ORACLE_CELLS
+            else "shipped")
+
+
 def _recovery(variant, p_label, identity, source_root=None):
     if source_root is None:
         source_root = (Z.TARGET_DIR / "campaigns" / identity["run_id"]
                        / "source")
     mask = [0, 2]
+    rebuilt = _oracle_of(variant, p_label) == "rebuilt"
     return {
         "variant": variant, "p": float(p_label), "p_label": p_label,
-        "recovery_mode": "shipped_equality_required",
-        "sampled_circuit_source": "shipped_author_circuit",
-        "dem_source": "shipped_author_circuit",
-        "shipped_oracle_used": True,
+        "recovery_mode": ("rebuilt_oracle_r8" if rebuilt
+                          else "shipped_equality_required"),
+        "sampled_circuit_source": ("rebuilt_from_pinned_driver_builder"
+                                   if rebuilt else "shipped_author_circuit"),
+        "dem_source": ("rebuilt_from_pinned_driver_builder"
+                       if rebuilt else "shipped_author_circuit"),
+        "shipped_oracle_used": not rebuilt,
         "driver_role": f"driver_{variant}",
         "driver_blob_sha1": Z.MEMBER_PINS[f"driver_{variant}"][1],
         "builder_role": f"builder_{variant}",
@@ -243,7 +256,7 @@ def _recovery(variant, p_label, identity, source_root=None):
         "dem_sha256": Z.sha256_bytes(
             f"dem:{variant}:{p_label}".encode()),
         "dem_error_instructions": 1,
-        "shipped_rebuilt_flattened_equal": True,
+        "shipped_rebuilt_flattened_equal": not rebuilt,
         "mask_source": ("executed pinned driver prefix + pinned stim_builder"
                         ".postselct_numbers(); never inferred from .stim"),
     }
@@ -287,7 +300,8 @@ def _point_row(variant, i, *, identity_base=None, source_root=None,
     return {
         "identity": identity,
         "variant": variant, "p": float(label), "p_label": label,
-        "status": "ok", "flattened_equal": True,
+        "status": "ok", "oracle": _oracle_of(variant, label),
+        "flattened_equal": _oracle_of(variant, label) == "shipped",
         "recovery": _recovery(variant, label, identity_base, source_root),
         "ended_utc": "2026-09-03T00:00:00Z",
         "reason": None, "seed": seed, "shots": shots,
@@ -561,6 +575,105 @@ def test_author_sampled_recovery_cannot_bypass_or_survive_inequality(
         Z.recover_point(source_root, "grown", "0.001")
     assert opened == ["shipped author circuit"]
     assert rebuilt.dem_calls == shipped.dem_calls == 0
+
+
+def test_rebuilt_oracle_r8_samples_rebuild_and_records_inequality(
+        tmp_path, monkeypatch):
+    # rebuilt-oracle is refused outside the F-Z4 split cells, and the two
+    # non-shipped recovery modes are mutually exclusive.
+    with pytest.raises(Z.Refusal, match="restricted to the Revision-8"):
+        Z.recover_point(tmp_path, "grown", "0.001", rebuilt_oracle=True)
+    with pytest.raises(Z.Refusal, match="restricted to the Revision-8"):
+        Z.recover_point(tmp_path, "ungrown", "0.0008", rebuilt_oracle=True)
+    with pytest.raises(Z.Refusal, match="mutually exclusive"):
+        Z.recover_point(tmp_path, "grown", "0.0008", builder_only=True,
+                        rebuilt_oracle=True)
+
+    source_root, vdir = _write_recovery_driver(tmp_path, "grown")
+    (vdir / Z.shipped_filename("0.0008")).write_text(
+        "shipped split-generation circuit", encoding="utf-8")
+    rebuilt = _RecoveryCircuit("rebuilt", error_instructions=1)
+    shipped = _RecoveryCircuit("shipped-DIFFERENT", dem_allowed=False)
+    builder = _RecoveryBuilder()
+    monkeypatch.setattr(
+        Z, "_exec_driver_prefix",
+        lambda prefix, variant_dir, p: (builder, [rebuilt], "c" * 64))
+    opened = []
+
+    class FakeStim:
+        @staticmethod
+        def Circuit(text):
+            opened.append(text)
+            return shipped
+
+    class FakeMatcher:
+        num_fault_ids = 3
+
+    class FakeMatching:
+        seen_dems = []
+
+        @staticmethod
+        def from_detector_error_model(dem):
+            FakeMatching.seen_dems.append(dem)
+            return FakeMatcher()
+
+    class FakePyMatching:
+        Matching = FakeMatching
+
+    monkeypatch.setitem(sys.modules, "stim", FakeStim)
+    monkeypatch.setitem(sys.modules, "pymatching", FakePyMatching)
+
+    recovered = Z.recover_point(source_root, "grown", "0.0008",
+                                rebuilt_oracle=True)
+
+    # the shipped artifact is opened for provenance but never sampled, never
+    # DEM'd, and its factual inequality is recorded — never refused.
+    assert opened == ["shipped split-generation circuit"]
+    assert recovered.circuit is rebuilt
+    assert recovered.rebuilt is rebuilt
+    assert recovered.flattened_equal is False
+    assert rebuilt.dem_calls == 1
+    assert shipped.dem_calls == 0
+    assert len(FakeMatching.seen_dems) == 1
+    provenance = recovered.provenance
+    assert provenance["recovery_mode"] == "rebuilt_oracle_r8"
+    assert provenance["sampled_circuit_source"] == \
+        "rebuilt_from_pinned_driver_builder"
+    assert provenance["dem_source"] == "rebuilt_from_pinned_driver_builder"
+    assert provenance["shipped_oracle_used"] is False
+    assert provenance["shipped_rebuilt_flattened_equal"] is False
+    assert provenance["shipped_path"].endswith(
+        Z.shipped_filename("0.0008"))
+    assert provenance["shipped_blob_sha1"] == \
+        Z.MEMBER_PINS["shipped_grown_0.0008"][1]
+    assert provenance["dem_error_instructions"] == 1
+
+
+def test_rebuilt_oracle_rows_validate_and_stay_comparable():
+    rows = [_point_row("ungrown", i) for i in range(6)]
+    rows += [_point_row("grown", i) for i in range(6)]
+    analysis = Z.analyze_points(rows)
+    # all twelve cells comparable; the four rebuilt-oracle grown cells are
+    # comparable on their own clean recovery despite flattened_equal=False.
+    assert all(c["comparable"] for c in analysis["comparisons"])
+    split = [c for c in analysis["comparisons"]
+             if (c["variant"], str(c["p"])) in
+             {("grown", p) for _, p in Z.REBUILT_ORACLE_CELLS}]
+    assert len(split) == 4
+    for row in rows:
+        key = (row["variant"], row["p_label"])
+        if key in Z.REBUILT_ORACLE_CELLS:
+            assert row["oracle"] == "rebuilt"
+            assert row["flattened_equal"] is False
+        else:
+            assert row["oracle"] == "shipped"
+            assert row["flattened_equal"] is True
+    # a rebuilt-oracle cell mislabelled shipped must fail validation
+    bad = _point_row("grown", 1)  # grown@0.0008 is a split cell
+    bad["oracle"] = "shipped"
+    bad["flattened_equal"] = True
+    with pytest.raises(Z.Refusal, match="oracle"):
+        Z._validate_point_rows([bad])
 
 
 def test_smoke_wires_builder_only_p0_and_shipped_grown_oracle(monkeypatch):
@@ -937,7 +1050,9 @@ def _prereg(tmp_path):
         "# pre_statement.md\n\n"
         "## Revision 5 — zero-level original\nold prereg body\n\n"
         "## Revision 6 — zero-level oracle replacement\nreplacement body\n\n"
-        "## Revision 7 — zero-level writer fix\nprereg body\n",
+        "## Revision 7 — zero-level writer fix\nprereg body\n\n"
+        "## Revision 8 — rebuilt-oracle amendment for the F-Z4 split cells\n"
+        "amendment body\n",
         encoding="utf-8")
     return path
 
@@ -1039,7 +1154,7 @@ def test_canonical_manifest_and_live_campaign_gates(tmp_path, monkeypatch):
     plain = tmp_path / "plain.md"
     plain.write_text("no revision marker\n", encoding="utf-8")
     plain_run = _write_campaign_run(target_dir, _canonical_manifest(plain))
-    with pytest.raises(Z.Refusal, match="Revision 7"):
+    with pytest.raises(Z.Refusal, match="Revision 8"):
         Z.validate_run_dir(plain_run, plain)
     missing = target_dir / "campaigns" / "does_not_exist"
     with pytest.raises(Z.Refusal, match="never created"):
@@ -1053,9 +1168,10 @@ class _StubRecovered:
     circuit = None
     mask = []
     matcher = None
-    flattened_equal = True
 
     def __init__(self, variant, p_label, identity, source_root):
+        # factual F-Z4 inequality on the Revision-8 rebuilt-oracle cells
+        self.flattened_equal = (variant, p_label) not in Z.REBUILT_ORACLE_CELLS
         self.provenance = _recovery(
             variant, p_label, identity, source_root)
 
@@ -1111,8 +1227,10 @@ def test_full_mode_runs_smoke_then_writes_and_resumes_complete_rows(
 
     monkeypatch.setattr(Z, "run_smoke_gates", fake_smoke)
 
-    def fake_recover(source_root, variant, p_label):
+    def fake_recover(source_root, variant, p_label, *, rebuilt_oracle=False):
         order.append(f"recover:{variant}:{p_label}")
+        assert rebuilt_oracle == (
+            (variant, p_label) in Z.REBUILT_ORACLE_CELLS)
         return _StubRecovered(
             variant, p_label, ctx["identity"], source_root)
 
@@ -1252,12 +1370,12 @@ def test_validate_run_dir_prereg_byte_gates(tmp_path, monkeypatch):
     with pytest.raises(Z.Refusal, match="captured prereg bytes"):
         Z.validate_run_dir(run_dir, good + b"tail")
 
-    rev8 = tmp_path / "rev8.md"
-    rev8.write_bytes(good + b"\n## Revision 8 (\n")
-    rev8_run = _write_campaign_run(
-        target_dir, _canonical_manifest(rev8, uuid8="00000008"))
-    with pytest.raises(Z.Refusal, match="expected exactly 7"):
-        Z.validate_run_dir(rev8_run, rev8.read_bytes())
+    rev9 = tmp_path / "rev9.md"
+    rev9.write_bytes(good + b"\n## Revision 9 (\n")
+    rev9_run = _write_campaign_run(
+        target_dir, _canonical_manifest(rev9, uuid8="00000009"))
+    with pytest.raises(Z.Refusal, match="expected exactly 8"):
+        Z.validate_run_dir(rev9_run, rev9.read_bytes())
 
     bad = tmp_path / "bad_order.md"
     bad.write_bytes(good + b"\n## Revision 4 (\n")

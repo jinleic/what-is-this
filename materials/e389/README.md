@@ -235,6 +235,34 @@ Labels are literal.
   over the 26 published witnesses gives $R^2=0.989$ and predicts a least
   $m=27$ witness near $2.8\cdot10^{13}$; the independence model predicts
   $5.1\cdot10^{12}$. Both exceed every exhausted range here.
+- **DECISION (2026-09-08, campaign
+  [`20260908T151056Z_6e08f503_527b4fd78381`](campaigns/20260908T151056Z_6e08f503_527b4fd78381/),
+  FROZEN-CERTIFIED):** the Sierra route (the effective per-class bound route
+  of [`LOCALIZATION.md`](LOCALIZATION.md) §3.1/§10 item 3) is **declined as a
+  bounded objective** — its "Richmond/Tao comparison theorem" label resolves
+  to no citable theorem (nine-channel identification trail in the run dir),
+  Wright's indicator corollary is certified REFUTED-for-purpose at the corner
+  (ceiling $165/328$ vs required $e>0.8801$), and Shiu's cascade carries
+  $R\ge2(M/\phi)$ at every sieve depth. The conditional frontier
+  $\theta\le17/32-\varepsilon=0.53125$ is accepted as the honest record; the
+  adopted next objective is closing the two Input-I gaps (LOCALIZATION §10
+  item 5). Decision memo and fresh verification in the run dir.
+- **REVIEW-PENDING (2026-09-08, campaign
+  [`20260908T155952Z_9f8455ad_30f0ba9e47a9`](campaigns/20260908T155952Z_9f8455ad_30f0ba9e47a9/),
+  administratively closed CRASHED):** a written candidate targets
+  every-class non-witness existence for fixed $C,\varepsilon>0$, sufficiently
+  large $N$, $9\le m\le C\sqrt N$, and $M\le N^{17/32-\varepsilon}$.
+  The fixed rectangle, five-position gcd bound and truncated discrepancy
+  are documented, but **no independent Opus verdict was obtained**. The
+  Astra actor audit does not bank a theorem or satisfy independent review.
+  Exact checks ran on mini-0 and exposed defects in the unrestricted
+  prime-spike route; these are not a disproof of Erdős #389.
+  The administrative close occurred while work continued, and some artifacts
+  were written before that closure was detected. The terminal verdict and
+  abandoned lifecycle remain unchanged; no retroactive freeze is claimed.
+  See the [reconciliation and separately pinned recovery evidence](../../docs/knowledge-system/institute/cycles/20260908T155849Z_f7f167/reconciliation.md).
+  The next action is an authorized review-only recovery, not further
+  computation or promotion of the unreviewed candidate.
 - **OPEN:** Conjecture R($L$) for $L\ge2$. For $L=2$, the short-cofactor pair
   is closed and the exact selected-prime requirement is (74), blocked on Input
   VII plus the separate small-factor tail of Section 21. For $L\ge3$, the

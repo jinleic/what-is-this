@@ -2,14 +2,14 @@
   "schema": "target-state/1",
   "id": "physics/na-compiler",
   "problem": "Certified-optimal neutral-atom transport baselines",
-  "status": "paused",
+  "status": "parked",
   "current_gate": "Strict fixed-placement batch-count headroom: FROZEN-NEGATIVE; earlier Gate A/B results retain their historical scope.",
   "latest_campaign": "20260906T012803Z_3c409686_c44470e4c9b4",
   "latest_campaign_verdict": "FROZEN-NEGATIVE",
   "headline": "12 circuits / 242 transitions: QMAP, DSATUR, largest-first and smallest-last each attain 438 exact-optimum batches; stdlib raw-trace replay and explicit clique lower bounds pass.",
   "next_action": "No LLM batching search on the tested benchmark. Reopen only with demonstrated classical headroom on a preregistered different distribution or a changed placement/routing question; include current IDS/relaxed routing before any state-of-the-art comparison.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-06T01:42:06Z",
+  "updated_utc": "2026-09-08T15:03:03Z",
   "updated_by": "Main: bounded scientific resume",
   "sources": [
     "physics/na-compiler/README.md",
@@ -18,5 +18,34 @@
     "physics/na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/status.json",
     "physics/na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/overview.json",
     "physics/na-compiler/campaigns/20260906T012803Z_3c409686_c44470e4c9b4/clique-verification.json"
-  ]
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": "paused",
+        "to": "parked",
+        "at": "2026-09-08T15:03:03Z",
+        "cause": "manual",
+        "reason": "vocabulary migration: paused -> parked (FROZEN-NEGATIVE headroom)",
+        "evidence": []
+      }
+    ],
+    "reason": "vocabulary migration: paused -> parked (FROZEN-NEGATIVE headroom)",
+    "evidence": []
+  },
+  "budget": {
+    "runs_max": null,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 0,
+    "tokens_used": 0,
+    "seconds_used": 0.0,
+    "gate_at_last_progress": "Strict fixed-placement batch-count headroom: FROZEN-NEGATIVE; earlier Gate A/B results retain their historical scope."
+  },
+  "priority": {
+    "value": 2,
+    "expected_progress": 0.5,
+    "blocker": "none",
+    "blocker_detail": null
+  }
 }

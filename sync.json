@@ -1,7 +1,7 @@
 {
  "domains": {
   "cs": {
-   "bytes": 702885,
+   "bytes": 703034,
    "files": [
     {
      "path": "PROGRESS.md",
@@ -10,8 +10,8 @@
     },
     {
      "path": "README.md",
-     "sha256": "2c9d7b9c3c90",
-     "size": 31545
+     "sha256": "50de266b1da2",
+     "size": 31694
     },
     {
      "path": "RESULTS.md",
@@ -19,21 +19,21 @@
      "size": 367850
     }
    ],
-   "sig": "0238b119c47ccb1f",
-   "updated": "2026-09-07T11:51:00Z"
+   "sig": "77a8c0fb79208b8f",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "math": {
-   "bytes": 1132202,
+   "bytes": 1158957,
    "files": [
     {
      "path": "PROGRESS.md",
-     "sha256": "9f59c6ef247a",
-     "size": 957100
+     "sha256": "74ca55bcd36b",
+     "size": 983706
     },
     {
      "path": "README.md",
-     "sha256": "046645357125",
-     "size": 24601
+     "sha256": "3d6b3e16c1c0",
+     "size": 24750
     },
     {
      "path": "RESEARCH_STATUS.md",
@@ -46,36 +46,36 @@
      "size": 86330
     }
    ],
-   "sig": "a676fccb0172c45e",
-   "updated": "2026-09-07T11:51:00Z"
+   "sig": "f97c63acc5b19646",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "physics": {
-   "bytes": 140950,
+   "bytes": 151170,
    "files": [
     {
      "path": "PROGRESS.md",
-     "sha256": "a9379b49adcb",
-     "size": 104260
+     "sha256": "580dbc8b19aa",
+     "size": 110037
     },
     {
      "path": "README.md",
-     "sha256": "db7b4287ee93",
-     "size": 9847
+     "sha256": "da64a4ad6c37",
+     "size": 9996
     },
     {
      "path": "RESULTS.md",
-     "sha256": "9cbc56acdb4d",
-     "size": 26843
+     "sha256": "73bcd29f4c17",
+     "size": 31137
     }
    ],
-   "sig": "2fe4522f02df02ad",
-   "updated": "2026-09-07T11:51:00Z"
+   "sig": "860ef738031c1105",
+   "updated": "2026-09-09T02:39:08Z"
   }
  },
  "limit_kb": 5120,
  "projects": {
   "ccf": {
-   "bytes": 36528,
+   "bytes": 37268,
    "domain": "math",
    "files": [
     {
@@ -95,8 +95,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "ad811a12f012",
-     "size": 558
+     "sha256": "5739f901638f",
+     "size": 1298
     },
     {
      "path": "tail_basis.py",
@@ -123,11 +123,11 @@
    "material": "materials/ccf",
    "page": "problems/ccf.html",
    "progress_header": "### Salvage from the paused subproject",
-   "sig": "969ed2f681c37871",
-   "updated": "2026-09-02T09:53:09Z"
+   "sig": "a3570008f915836a",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "cs/delcap": {
-   "bytes": 435301,
+   "bytes": 435588,
    "domain": "cs",
    "files": [
     {
@@ -167,53 +167,53 @@
     },
     {
      "path": "src/gate_ab_run.py",
-     "sha256": "d1e1beb23517",
-     "size": 9041
+     "sha256": "d75b2dd3ed3e",
+     "size": 9060
     },
     {
      "path": "src/gate_c_dhalf.py",
-     "sha256": "9bee55a5e137",
-     "size": 15654
+     "sha256": "b9d4abaaf0b1",
+     "size": 15728
     },
     {
      "path": "src/gate_c_freeze.py",
-     "sha256": "23445e8dbeeb",
-     "size": 31316
+     "sha256": "6d1996ec87f6",
+     "size": 31341
     },
     {
      "path": "src/gate_c_md.py",
-     "sha256": "8ecf82513989",
-     "size": 19221
+     "sha256": "a41f0840a8bf",
+     "size": 19263
     },
     {
      "path": "src/gate_c_pr.py",
-     "sha256": "c92652d2f9a9",
-     "size": 5681
+     "sha256": "b58549f4b624",
+     "size": 5756
     },
     {
      "path": "src/gate_c_q3_invariance_correction.py",
-     "sha256": "ed84c1a3982f",
-     "size": 28547
+     "sha256": "4da090d39e5c",
+     "size": 28532
     },
     {
      "path": "src/gate_c_q4.py",
-     "sha256": "6d12cc77cefe",
-     "size": 65852
+     "sha256": "79095d2e6a11",
+     "size": 65837
     },
     {
      "path": "src/gate_c_q4_total_orbit.py",
-     "sha256": "469e31a7cb59",
-     "size": 43104
+     "sha256": "537fd2b7b432",
+     "size": 43089
     },
     {
      "path": "src/gate_c_run.py",
-     "sha256": "78dc5f0e26bc",
-     "size": 24152
+     "sha256": "63d82ad6f3a8",
+     "size": 24194
     },
     {
      "path": "src/gate_c_tnb_table1.py",
-     "sha256": "bd57c5ca185a",
-     "size": 10515
+     "sha256": "d3d04b778c40",
+     "size": 10540
     },
     {
      "path": "src/prc_cert.py",
@@ -222,8 +222,8 @@
     },
     {
      "path": "src/rc28.py",
-     "sha256": "41f5c0d07b2f",
-     "size": 12073
+     "sha256": "25ac00654110",
+     "size": 12115
     },
     {
      "path": "src/rc_baa.py",
@@ -232,8 +232,8 @@
     },
     {
      "path": "src/render_q3_correction_outward.py",
-     "sha256": "bc8901f1038d",
-     "size": 5820
+     "sha256": "1730cbe57e16",
+     "size": 5808
     },
     {
      "path": "state.json",
@@ -245,11 +245,11 @@
    "material": "materials/cs/delcap",
    "page": "cs/delcap.html",
    "progress_header": "### `delcap/` q=3,n=11 extension completed; 4/4 strict finite-$n$ improvements, 2026-08-31",
-   "sig": "774826329331d6c8",
-   "updated": "2026-09-07T11:57:07Z"
+   "sig": "bd8341057ea556cc",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "cs/kg": {
-   "bytes": 491568,
+   "bytes": 492426,
    "domain": "cs",
    "files": [
     {
@@ -509,16 +509,16 @@
     },
     {
      "path": "state.json",
-     "sha256": "076e8d69cdbb",
-     "size": 1393
+     "sha256": "8062f32f73d5",
+     "size": 2251
     }
    ],
    "headline": "### `kg/` the pre-registered subdivision is PROVABLY DEGENERATE; the obstruction identifies the real binding constraint, 2026-09-01",
    "material": "materials/cs/kg",
    "page": "cs/kg.html",
    "progress_header": "### `kg/` the pre-registered subdivision is PROVABLY DEGENERATE; the obstruction identifies the real binding constraint, 2026-09-01",
-   "sig": "79c106460f827023",
-   "updated": "2026-09-07T11:57:07Z"
+   "sig": "7f8acd537e7f1c20",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "cs/mceliece": {
    "bytes": 153332,
@@ -1346,23 +1346,23 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "e389": {
-   "bytes": 1032292,
+   "bytes": 1046495,
    "domain": "math",
    "files": [
     {
      "path": "LOCALIZATION.md",
-     "sha256": "a1107bdc8979",
-     "size": 44061
+     "sha256": "01ec7f5ef5cb",
+     "size": 42756
     },
     {
      "path": "README.md",
-     "sha256": "6a2a269eb199",
-     "size": 45234
+     "sha256": "602a49987c56",
+     "size": 47319
     },
     {
      "path": "THEOREMS.md",
-     "sha256": "454e88954201",
-     "size": 146387
+     "sha256": "953b88bdd345",
+     "size": 148577
     },
     {
      "path": "adaptive_eviction_analysis.py",
@@ -1465,6 +1465,16 @@
      "size": 12648
     },
     {
+     "path": "pre_statement_input_i_gap_closure.md",
+     "sha256": "6ea991513a96",
+     "size": 4173
+    },
+    {
+     "path": "pre_statement_sierra-route-richmond-tao-comparison-localizatio.md",
+     "sha256": "49ca5fc19b0a",
+     "size": 5365
+    },
+    {
      "path": "prime_repair_analysis.py",
      "sha256": "3ec5330af11c",
      "size": 7950
@@ -1506,8 +1516,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "030b28e94ee1",
-     "size": 756
+     "sha256": "f7f1c794a4ca",
+     "size": 2451
     },
     {
      "path": "survivor_census.py",
@@ -1545,15 +1555,15 @@
      "size": 5896
     }
    ],
-   "headline": "### E389-SHIU-EFFECTIVE-MARGIN (2026-08-29) — SHIU'S PER-CLASS THEOREM EFFECTIVIZED AT SOURCE: NO INEFFECTIVE CONSTANT EXISTS, MARGIN NEVER BELOW 1 AT ANY SIEVE DEPTH (57.7 CONCRET",
+   "headline": "## 2026-09-08 — E389 Input-I candidate remains review-pending; administrative CRASHED outcome reconciled",
    "material": "materials/e389",
    "page": "problems/e389.html",
-   "progress_header": "### E389-SHIU-EFFECTIVE-MARGIN (2026-08-29) — SHIU'S PER-CLASS THEOREM EFFECTIVIZED AT SOURCE: NO INEFFECTIVE CONSTANT EXISTS, MARGIN NEVER BELOW 1 AT ANY SIEVE DEPTH (57.7 CONCRETE / 5.77 BALANCED / 2 IDEALIZED, ALL >= 2(M/phi) >= 2); COVERAGE STOPS AT M = 2 sqrt(N); KOROLEV NO-OR-ORTHOGONAL; (45) Input-II ROUTE EXHAUSTED ACROSS THE PUBLISHED TOOLBOX",
-   "sig": "c207e7b4daaa8065",
-   "updated": "2026-09-02T09:53:09Z"
+   "progress_header": "## 2026-09-08 — E389 Input-I candidate remains review-pending; administrative CRASHED outcome reconciled",
+   "sig": "dc05e80f71be1a73",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "h10q": {
-   "bytes": 20380741,
+   "bytes": 20380791,
    "domain": "math",
    "files": [
     {
@@ -2648,8 +2658,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "cb8e9364a4a1",
-     "size": 673
+     "sha256": "0fc8c5fdf99a",
+     "size": 723
     },
     {
      "path": "test_bls.py",
@@ -2661,8 +2671,8 @@
    "material": "materials/h10q",
    "page": "problems/h10q.html",
    "progress_header": "### H10/Q (2026-08-24g) — L34 SHARP AP1 PAIR-MOMENT THRESHOLD",
-   "sig": "f1814ca7ac72403a",
-   "updated": "2026-09-02T09:53:09Z"
+   "sig": "fa3135190dc85535",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "ising3d": {
    "bytes": 68380801,
@@ -10245,7 +10255,7 @@
     },
     {
      "path": "tools/continuous_supervisor.py",
-     "sha256": "64817814effc",
+     "sha256": "115b5fcda658",
      "size": 124846
     },
     {
@@ -10283,11 +10293,11 @@
    "material": "materials/ising3d",
    "page": "problems/ising3d.html",
    "progress_header": "### ISING-W28 (2026-09-04) — COMPLETE TRACE-NINE DETERMINANT MATERIALIZED MODULO ONE PRIME; CHARACTERISTIC-ZERO RECONSTRUCTION REMAINS OPEN",
-   "sig": "d6f9c4d83474a82c",
-   "updated": "2026-09-07T11:57:07Z"
+   "sig": "963fac220e0a3088",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "kobon": {
-   "bytes": 11272269,
+   "bytes": 11274776,
    "domain": "math",
    "files": [
     {
@@ -11452,8 +11462,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "a23d5b2b1e52",
-     "size": 3319
+     "sha256": "3fa186da6ff1",
+     "size": 5826
     },
     {
      "path": "test_engine.py",
@@ -11530,8 +11540,8 @@
    "material": "materials/kobon",
    "page": "problems/kobon.html",
    "progress_header": "### KOBON (2026-08-24f) — GENERALIZED LINE-0 COVECTOR LIFT EXHAUSTED",
-   "sig": "b163396d431669bd",
-   "updated": "2026-09-07T11:57:07Z"
+   "sig": "980951167c2c1dcc",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "liu_h1": {
    "bytes": 538742,
@@ -11631,13 +11641,13 @@
    "updated": "2026-09-07T11:51:00Z"
   },
   "ns": {
-   "bytes": 3739626,
+   "bytes": 3748380,
    "domain": "math",
    "files": [
     {
      "path": "README.md",
-     "sha256": "a8d17a43f0d7",
-     "size": 26804
+     "sha256": "d9ce0db5d986",
+     "size": 27864
     },
     {
      "path": "dss.py",
@@ -11648,6 +11658,11 @@
      "path": "forcing.py",
      "sha256": "c1f3659566df",
      "size": 16295
+    },
+    {
+     "path": "pre_statement_build-the-lean-repo-reproducibly-check-the-forma.md",
+     "sha256": "7c12ebf4f2ce",
+     "size": 4401
     },
     {
      "path": "scaling.py",
@@ -11756,16 +11771,16 @@
     },
     {
      "path": "state.json",
-     "sha256": "fa7339461f79",
-     "size": 602
+     "sha256": "32c5247fded7",
+     "size": 3895
     }
    ],
    "headline": "## 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim",
    "material": "materials/ns",
    "page": "problems/ns.html",
    "progress_header": "## 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim",
-   "sig": "82911f2977e8389d",
-   "updated": "2026-09-02T09:53:09Z"
+   "sig": "ac076e06e2e73891",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "physics/fss-bb": {
    "bytes": 71708,
@@ -11922,7 +11937,7 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "physics/na-compiler": {
-   "bytes": 127452,
+   "bytes": 128264,
    "domain": "physics",
    "files": [
     {
@@ -12002,25 +12017,25 @@
     },
     {
      "path": "state.json",
-     "sha256": "976bf9da82e5",
-     "size": 1377
+     "sha256": "af0c06fb5690",
+     "size": 2189
     }
    ],
    "headline": "## 2026-08-30 — na-compiler cost rows upgraded to GLOBAL µs optima (and a heap bug I wrote, caught by arithmetic)",
    "material": "materials/physics/na-compiler",
    "page": "physics/na-compiler.html",
    "progress_header": "## 2026-08-30 — na-compiler cost rows upgraded to GLOBAL µs optima (and a heap bug I wrote, caught by arithmetic)",
-   "sig": "56205d2fa30d6383",
-   "updated": "2026-09-07T11:57:07Z"
+   "sig": "5e70e89359f22d0a",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "physics/qldpc-dec": {
-   "bytes": 12590126,
+   "bytes": 12599017,
    "domain": "physics",
    "files": [
     {
      "path": "README.md",
-     "sha256": "8ca4c3b04483",
-     "size": 27155
+     "sha256": "be4d2b29193e",
+     "size": 27532
     },
     {
      "path": "circuits/BB_144_144_12_memory_X_p0.0003_sr12_derived_p1e-3_rescale.stim",
@@ -12136,6 +12151,11 @@
      "path": "pre_statement.md",
      "sha256": "45d7a47f05fb",
      "size": 53890
+    },
+    {
+     "path": "pre_statement_block-on-gb9-run-campaigns-20260902t114747z-69eb.md",
+     "sha256": "9c4be7c28ac7",
+     "size": 5994
     },
     {
      "path": "src/beam_cpp/README.md",
@@ -12644,30 +12664,40 @@
     },
     {
      "path": "state.json",
-     "sha256": "75e7305ebedc",
-     "size": 1389
+     "sha256": "68d5de4eecff",
+     "size": 3909
     }
    ],
-   "headline": "## 2026-08-31 — qldpc-dec absolute LER normalization corrected (Gate B ratios unchanged)",
+   "headline": "## 2026-09-09 — qldpc-dec: owner cancellation, not a scientific negative",
    "material": "materials/physics/qldpc-dec",
    "page": "physics/qldpc-dec.html",
-   "progress_header": "## 2026-08-31 — qldpc-dec absolute LER normalization corrected (Gate B ratios unchanged)",
-   "sig": "7d470ce750307def",
-   "updated": "2026-09-07T11:57:07Z"
+   "progress_header": "## 2026-09-09 — qldpc-dec: owner cancellation, not a scientific negative",
+   "sig": "9b391b9177d00dae",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "physics/qlops": {
-   "bytes": 254590,
+   "bytes": 289619,
    "domain": "physics",
    "files": [
     {
      "path": "README.md",
-     "sha256": "5c850c9822a5",
-     "size": 12844
+     "sha256": "148c34f2b275",
+     "size": 14401
     },
     {
      "path": "pre_statement.md",
-     "sha256": "99b3985b261d",
-     "size": 27633
+     "sha256": "4d417acd7705",
+     "size": 32307
+    },
+    {
+     "path": "pre_statement_after-gb9-releases-its-26-threads-follow-the-exa.md",
+     "sha256": "f34b8d4abda4",
+     "size": 6238
+    },
+    {
+     "path": "pre_statement_resolve-f-z4-obtain-the-authors-construction-rev.md",
+     "sha256": "eb8219271ee1",
+     "size": 7533
     },
     {
      "path": "src/evidence/zero_level_sensitivity.json",
@@ -12701,8 +12731,8 @@
     },
     {
      "path": "src/test_zero_level_repo_repro.py",
-     "sha256": "5861c58a397e",
-     "size": 58054
+     "sha256": "a03eca8e0345",
+     "size": 63251
     },
     {
      "path": "src/zero_level_provenance.py",
@@ -12711,21 +12741,21 @@
     },
     {
      "path": "src/zero_level_repo_repro.py",
-     "sha256": "cc3e82ae4a25",
-     "size": 79637
+     "sha256": "eb3dd94514f4",
+     "size": 83621
     },
     {
      "path": "state.json",
-     "sha256": "acaf0acb04c4",
-     "size": 2206
+     "sha256": "6e4bc982ba8c",
+     "size": 8052
     }
    ],
-   "headline": "## 2026-09-04 — QLOPS official source pinned; R7 smoke PASS closed REHEARSAL; 71m full run unstarted",
+   "headline": "## 2026-09-08 — physics/qlops: F-Z4 resolved (driver-version drift), Revision-8 71m-shot run closes FROZEN-INCONCLUSIVE",
    "material": "materials/physics/qlops",
    "page": "physics/qlops.html",
-   "progress_header": "## 2026-09-04 — QLOPS official source pinned; R7 smoke PASS closed REHEARSAL; 71m full run unstarted",
-   "sig": "25e283822710f0a8",
-   "updated": "2026-09-07T11:57:07Z"
+   "progress_header": "## 2026-09-08 — physics/qlops: F-Z4 resolved (driver-version drift), Revision-8 71m-shot run closes FROZEN-INCONCLUSIVE",
+   "sig": "75c0a6ab747ff29e",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "physics/shadows": {
    "bytes": 144879,
@@ -12785,7 +12815,7 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "qec": {
-   "bytes": 4595501,
+   "bytes": 4668300,
    "domain": "math",
    "files": [
     {
@@ -12800,8 +12830,8 @@
     },
     {
      "path": "README.md",
-     "sha256": "2a5b2b32ba74",
-     "size": 41510
+     "sha256": "c7560b42ebbc",
+     "size": 56536
     },
     {
      "path": "artifacts/manifest.yaml",
@@ -12825,8 +12855,8 @@
     },
     {
      "path": "experiments/README.md",
-     "sha256": "6dfe5039fc5e",
-     "size": 1067
+     "sha256": "7c0618fa0a11",
+     "size": 1299
     },
     {
      "path": "experiments/exp001_exact_distance_bb.py",
@@ -13120,8 +13150,8 @@
     },
     {
      "path": "experiments/exp055_odd_lattice_sweep.py",
-     "sha256": "2a4d3dd04f5e",
-     "size": 97500
+     "sha256": "55da883ea4eb",
+     "size": 98550
     },
     {
      "path": "experiments/exp056_odd_distance.py",
@@ -13165,8 +13195,8 @@
     },
     {
      "path": "experiments/exp063_reference_rebind.py",
-     "sha256": "037025c260a0",
-     "size": 11731
+     "sha256": "8e9dbd9d94dc",
+     "size": 12156
     },
     {
      "path": "experiments/exp064_n210_promotions.py",
@@ -13204,6 +13234,11 @@
      "size": 32700
     },
     {
+     "path": "experiments/q1_authorized_assay_preregistration.json",
+     "sha256": "f58c8e8d53e8",
+     "size": 22692
+    },
+    {
      "path": "experiments/sbb11_clarification_preregistration.json",
      "sha256": "941a5b646c00",
      "size": 3406
@@ -13229,9 +13264,19 @@
      "size": 1027
     },
     {
+     "path": "experiments/sbb11_lrc_control_preregistration.json",
+     "sha256": "cc999f7da74a",
+     "size": 4784
+    },
+    {
      "path": "experiments/sbb11_new_authoritative_evidence_preregistration.json",
      "sha256": "4881612e8686",
      "size": 3936
+    },
+    {
+     "path": "experiments/sbb11_pdf_semantics_preregistration.json",
+     "sha256": "942addb5640f",
+     "size": 4549
     },
     {
      "path": "experiments/sbb11_preregistration.json",
@@ -13447,6 +13492,21 @@
      "path": "notes/venue_plan.md",
      "sha256": "0ca2c036e9e1",
      "size": 3092
+    },
+    {
+     "path": "pre_statement_bind-liang-row-b-run-the-remaining-9-prefix-runs.md",
+     "sha256": "e4fd04b57562",
+     "size": 6333
+    },
+    {
+     "path": "pre_statement_n-270-closure-deep-target-20-re-screen-of-1-657-.md",
+     "sha256": "1a8497ad98f8",
+     "size": 5878
+    },
+    {
+     "path": "pre_statement_n-270-gate-presentation-collapse-then-two-root-s.md",
+     "sha256": "0766a766a6b7",
+     "size": 7478
     },
     {
      "path": "proofs/equations.md",
@@ -13695,8 +13755,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "1d09b1684dc5",
-     "size": 764
+     "sha256": "7057554d1a4a",
+     "size": 5116
     },
     {
      "path": "tests/test_artifact_manifest.py",
@@ -13904,12 +13964,12 @@
      "size": 211264
     }
    ],
-   "headline": "### QEC (2026-08-24) — TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$",
+   "headline": "## QEC (2026-09-08) — DEEP TARGET-20 RE-SCREEN DECIDES 1,636 OF 1,657 $n=270$, $k=8$ RESIDUALS; LIANG ROW b BASE PAIR COMPLETE",
    "material": "materials/qec",
    "page": "problems/qec.html",
-   "progress_header": "### QEC (2026-08-24) — TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$",
-   "sig": "0bf4bdc975646908",
-   "updated": "2026-09-07T11:57:07Z"
+   "progress_header": "## QEC (2026-09-08) — DEEP TARGET-20 RE-SCREEN DECIDES 1,636 OF 1,657 $n=270$, $k=8$ RESIDUALS; LIANG ROW b BASE PAIR COMPLETE",
+   "sig": "227eff6eb138da7a",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "quant-trading/overview": {
    "bytes": 5070061,
@@ -14744,7 +14804,7 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "r55": {
-   "bytes": 8654650,
+   "bytes": 8657464,
    "domain": "math",
    "files": [
     {
@@ -21394,33 +21454,33 @@
     },
     {
      "path": "scratch_audit/audit_catalog_membership.py",
-     "sha256": "5bd4b5a80365",
-     "size": 4087
+     "sha256": "acfec7e55077",
+     "size": 4130
     },
     {
      "path": "scratch_audit/audit_drange.py",
-     "sha256": "6947cf692895",
-     "size": 1412
+     "sha256": "a19664b4aecf",
+     "size": 1455
     },
     {
      "path": "scratch_audit/audit_equiv2.py",
-     "sha256": "d533afb9de52",
-     "size": 6527
+     "sha256": "a790d1a009eb",
+     "size": 6570
     },
     {
      "path": "scratch_audit/audit_equiv3.py",
-     "sha256": "d478d4330310",
-     "size": 8143
+     "sha256": "5a8f5516c7b7",
+     "size": 8186
     },
     {
      "path": "scratch_audit/audit_equivalence.py",
-     "sha256": "5a574c7d2df7",
-     "size": 5082
+     "sha256": "e256049a3f4c",
+     "size": 5125
     },
     {
      "path": "scratch_audit/audit_necessity.py",
-     "sha256": "7441e9091890",
-     "size": 6851
+     "sha256": "442785a3bc64",
+     "size": 6897
     },
     {
      "path": "scratch_audit/g6lib.py",
@@ -21709,8 +21769,8 @@
     },
     {
      "path": "src/n49_gluing_sat.py",
-     "sha256": "4d290a7855aa",
-     "size": 5265
+     "sha256": "f4677985afed",
+     "size": 5221
     },
     {
      "path": "src/odd_prime_srg_frontier.py",
@@ -21734,8 +21794,8 @@
     },
     {
      "path": "src/run_stratum.sh",
-     "sha256": "0440a9db6922",
-     "size": 1026
+     "sha256": "e3cd40e7778d",
+     "size": 1027
     },
     {
      "path": "src/run_stratum_c.py",
@@ -21794,8 +21854,8 @@
     },
     {
      "path": "srcB/cmp_glue2.sh",
-     "sha256": "e8f8d0539300",
-     "size": 915
+     "sha256": "8fbe4c6d1ce0",
+     "size": 886
     },
     {
      "path": "srcB/debug_decompose.py",
@@ -21824,13 +21884,13 @@
     },
     {
      "path": "srcB/make_results.py",
-     "sha256": "b0dc509e4db6",
-     "size": 3213
+     "sha256": "a31316bf4a22",
+     "size": 3229
     },
     {
      "path": "srcB/run_census.py",
-     "sha256": "bd9f41a08977",
-     "size": 5459
+     "sha256": "39b36bda9c8a",
+     "size": 5475
     },
     {
      "path": "srcB/verify",
@@ -21844,8 +21904,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "11275b31e6cb",
-     "size": 2154
+     "sha256": "f95d9ed313d6",
+     "size": 4747
     },
     {
      "path": "tests/test_cayley_r55_search.py",
@@ -21972,8 +22032,8 @@
    "material": "materials/r55",
    "page": "problems/r55.html",
    "progress_header": "### R55 (2026-08-24d) — FIXED-FIVE CANDIDATE CENSUS EMPTY; FULL CERTIFICATION PENDING",
-   "sig": "d8774d044c7a9b8d",
-   "updated": "2026-09-07T11:51:00Z"
+   "sig": "9698997955655159",
+   "updated": "2026-09-09T02:39:08Z"
   },
   "uc": {
    "bytes": 73585358,
@@ -25113,18 +25173,23 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "zeta5": {
-   "bytes": 43140,
+   "bytes": 51337,
    "domain": "math",
    "files": [
     {
      "path": "README.md",
-     "sha256": "d616b8a61a9e",
-     "size": 6588
+     "sha256": "06b402b1bab8",
+     "size": 7442
     },
     {
      "path": "data/BASELINE.json",
      "sha256": "a510a5d8d5ee",
      "size": 768
+    },
+    {
+     "path": "pre_statement_gate-2-construction-sweep.md",
+     "sha256": "db8dee2974d2",
+     "size": 5434
     },
     {
      "path": "src/gate2_sweep.py",
@@ -25143,17 +25208,17 @@
     },
     {
      "path": "state.json",
-     "sha256": "473cf48b78d7",
-     "size": 593
+     "sha256": "0141bc26293a",
+     "size": 2502
     }
    ],
    "headline": "### ZETA5-GATE2-SWEEP (2026-08-29) — THE TRIAGE'S FOUR-WEEK GATE IS ANSWERED FOR THE SWEPT LADDER: ZERO SURVIVORS IN 44 PROBES; BASELINE μ2 = 0.337537 NEVER BEATEN BY A NONDEGENERA",
    "material": "materials/zeta5",
    "page": "problems/zeta5.html",
    "progress_header": "### ZETA5-GATE2-SWEEP (2026-08-29) — THE TRIAGE'S FOUR-WEEK GATE IS ANSWERED FOR THE SWEPT LADDER: ZERO SURVIVORS IN 44 PROBES; BASELINE μ2 = 0.337537 NEVER BEATEN BY A NONDEGENERATE CANDIDATE; CAMPAIGN STOPS AT GATE 2 PER ITS OWN GO/NO-GO",
-   "sig": "0894488d394b2165",
-   "updated": "2026-09-02T09:53:09Z"
+   "sig": "9cbee61bb819a4e9",
+   "updated": "2026-09-09T02:39:08Z"
   }
  },
- "updated": "2026-09-07T11:57:07Z"
+ "updated": "2026-09-09T02:39:08Z"
 }

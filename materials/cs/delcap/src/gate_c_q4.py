@@ -37,7 +37,7 @@ import numpy as np
 from flint import arb, ctx, fmpq, fmpz
 from scipy.sparse import csr_matrix
 
-ROOT = Path("/Users/jinleic/jinleic-workspace/cs/delcap")
+ROOT = Path(__file__).resolve().parents[1]
 CAMPAIGN = ROOT / "campaigns" / (
     "2026-08-31T08:01:53Z_9108c7d1-73f8-40dc-8c4a-4db1c6d9dcbf_q4-orbit"
 )

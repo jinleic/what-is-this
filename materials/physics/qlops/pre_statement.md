@@ -438,3 +438,82 @@ grown-p=0.001 and all-12-point shipped equality checks, 71,000,000-shot full
 schedule, exact source/environment/control-plane pins, fixed seeds/chunks,
 complete resume ledgers, 24-comparison Bonferroni gate, verdict precedence,
 fit reporting, and executable-d3/d9 versus paper-d7 limitation remain frozen.
+
+## Revision 8 — rebuilt-oracle amendment for the F-Z4 split cells
+ (2026-09-08; resolves finding F-Z4 of run
+ `20260908T174922Z_dc3b41ff_d04f0ae58ca0`; no earlier revision, verdict,
+ or frozen artifact is modified; the REJECTED run stays frozen and is
+ never reinterpreted)
+
+**Finding F-Z4 (frozen, cited):** inside the pinned repository (commit
+`1b59e22…2901`), the shipped grown circuits
+`832_text_{0.0008,0.0006,0.0004,0.0001}.stim` differ from the pinned-driver
+rebuild by an identical flattened delta (52 shipped-only / 32 rebuilt-only
+lines; first divergence at flattened line 2086), while
+`832_text_{0.001,0.0002}.stim` are flattened-equal to the rebuild.
+
+**Mechanism diagnosis (this cycle, builder-only, from structure —
+`scratch/diag-report.json` / `scratch/diag2-report.json`):** the split is
+**(b) driver-version drift**, not (a) a serialization/flattening artifact
+and not (c) a genuinely different construction.  Evidence: identical
+968-qubit lattice with identical coordinate sets; after relabeling shipped
+qubit indices onto rebuilt indices by `QUBIT_COORDS`, all 841 `DETECTOR`
+definitions and all 3 `OBSERVABLE_INCLUDE`s are byte-identical; the delta is
+confined to 5 of 36 tick-rounds (rounds 10–14), where the two generations
+schedule and wire the reset, hookup, and measurement of three ancilla
+qubits differently (net +13 CX, −3 R, −2 X_ERROR on the shipped side with
+matching `DEPOLARIZE2` placement); noise strengths are correctly
+parameterized per-p on both sides; the detector-error models share 14,307
+of 14,466 lines (Jaccard 0.989); the interaction graphs are
+WL-refinement-equal; and the noise-normalized cross-p comparison shows all
+six rebuilds are one generation while the four split shipped files are
+another.  Because the instruction multisets, measurement streams, and DEMs
+genuinely differ, the split shipped artifacts can never serve as oracles
+for the pinned driver — and because the lattices, detectors, and
+observables are identical, the pinned-driver rebuild is a well-defined,
+honest-broker reference for those cells.
+
+**Amendment — rebuilt-oracle semantics for exactly four cells.**
+`REBUILT_ORACLE_CELLS = {("grown","0.0008"), ("grown","0.0006"),
+("grown","0.0004"), ("grown","0.0001")}`.  For these cells ONLY:
+
+* The reference and sampled circuit is the circuit REBUILT from the pinned
+  driver/builder at the cell's error rate (recovery mode
+  `rebuilt_oracle_r8`); `flattened_equal=False` is expected, recorded
+  factually, and is NOT a defect and NOT a refusal.
+* The shipped artifact is demoted to provenance: it is opened once, its
+  pinned blob sha1 and its factual flattened inequality are recorded, and
+  it is never DEM'd, decoded, or sampled.
+* The author row (shots, LER, acceptance), seed, 10,000-shot chunk
+  schedule, and both z-comparisons for the cell are UNCHANGED; the row
+  carries `oracle: "rebuilt"` and is comparable on the strength of its own
+  clean recovery and sampling.
+
+Every other cell keeps shipped-oracle semantics exactly as in Revisions
+5–7 (shipped artifact sampled; flattened inequality ⇒ REJECTED refusal
+before sampling).  The ungrown p=0 builder-only smoke arm is unchanged.
+
+**Everything else is unchanged.**  The 71,000,000-shot 12-cell schedule
+(run fresh, end-to-end, under this revision), all 12 author rows and
+seeds, the full smoke battery executed first in full mode, per-point
+atomic resume schema and complete chunk ledgers, all 24 LER/acceptance
+comparisons, combined analytic binomial uncertainties, the
+dependence-valid Bonferroni `|z| <= 3.53` familywise-1% contract,
+decisive/inconclusive/certified precedence, fit reporting,
+environment/source/blob pins, tar capture and extraction defenses,
+campaign parent/mint/live-marker checks, manifest and preregistration
+TOCTOU checks, and the executable-d3/d9 versus paper-d7 limitation remain
+exactly as in Revisions 5–7.  Package environment pins are unchanged
+(stim 1.16.0, pymatching 2.4.0, numpy 2.5.2; interpreter version is
+recorded in run identity, not pinned); the Revision-8 execution host is
+`mini-0.local` per the cycle host assignment (thread caps <= 6,
+`nice -n 10`).
+
+**Gate and adapter**: replacement gate `zero-level-author-repro-r8`,
+adapter version `r8`, bound to this latest Revision 8 and a newly
+initialized campaign.  A full-mode candidate FROZEN-CERTIFIED under this
+revision certifies that the PINNED-DRIVER construction reproduces the
+author schedule statistics for the executable d3/d9 artifact, with the
+shipped split-generation artifacts documented as F-Z4 provenance; it does
+not certify the four shipped split artifacts, and paper d=7 / physical
+c≈300 remain NOT-REPRODUCED.

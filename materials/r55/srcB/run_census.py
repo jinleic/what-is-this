@@ -13,7 +13,7 @@ import sys
 import time
 from concurrent.futures import ProcessPoolExecutor
 
-BASE = "/Users/jinleic/jinleic-workspace/math/r55"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRCB = os.path.join(BASE, "srcB")
 OUTB = os.path.join(BASE, "outB")
 DATA = os.path.join(BASE, "data")

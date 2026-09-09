@@ -1,0 +1,29 @@
+{
+  "schema": "sbb11-pdf-semantics/1",
+  "target": "Exact Figure12 / Appendix H.2 Gross circuit of arXiv:2603.05481v1",
+  "prior_campaign": "campaigns/20260907T073526Z_5957d408_7f026b8f6489",
+  "authorization": "User requests explicit mathematics and independently verifiable circuit code using unexamined pinned evidence, including coordinate-preserving PDF text/vector extraction. Resolve the target or demonstrate precise remaining ambiguity; do not invent missing information.",
+  "novel_scope": "First direct Figure12 numeric text-to-vector-endpoint association. The closed 192206 probe consumed manually transcribed figure12_times; the 201730 exact rational vector parser processed Figure11 only and reused that transcription. The later paper audit explicitly excluded numerical annotation extraction. Do not repeat the old global phase sweeps, graph/rank checks, static witnesses, residual-region extraction, repository searches or unchanged metadata queries.",
+  "canonical_preregistration": "Copy these exact bytes to successor inputs/preregistration.json and verify SHA256 against manifest.prereg_sha256 before any new extraction or inference. Record binding and inherited input path/hash provenance.",
+  "source_pins": {
+    "paper_source_url": "https://arxiv.org/src/2603.05481v1",
+    "paper_source_sha256": "630dd47eb7c6b7763501146da87480aea905ea4e5dea37b720190573d4a1d5be",
+    "figure12_sha256": "6c9abb5228454fa86af51587b9b69f998d2f559736b86b9b14a43e20605856a1",
+    "source_campaign": "campaigns/20260907T061036Z_058f56ba_0590281d38d2",
+    "canonical_geometry_campaign": "campaigns/20260906T201730Z_6c85d571_e3816a3962de"
+  },
+  "method": [
+    "Extract PDF text, text matrices/current transformation matrices, vector nodes and edges with preserved coordinates. Bind numeric annotations to drawn endpoints by explicit geometric rules with uniqueness/separation certificates, not visual transcription. Preserve panel heading text separately from graphical node styles and inherited Figure10 type labels.",
+    "Compare the recovered Figure12 associations with the frozen manual table, without repeating its downstream computations. Only use new recovered associations for any new mathematical consequence. Distinguish a reproduced annotation from proof of its physical meaning.",
+    "Prove endpoint/monomial and X/Z interpretation using preserved canonical geometry and author definitions. Track coordinate changes and any global duality explicitly; never silently substitute a different circuit.",
+    "Derive shared timing, cycle association and finite preparation/readout/idle error support from the pinned definitions and exact schedule. If not uniquely determined, exhibit explicit alternatives or a precise incompatible constraint with exact source locations; no generic blocker summary.",
+    "Require independent extraction or verifier agreement and a narrowly scoped independent semantic review before admission. Keep source-only certificates separate from physical fault replay and distance evidence."
+  ],
+  "source_analysis_limits": {"threads": 1, "wall_seconds_per_command": 120, "sampled_rss_guard_bytes": 2147483648, "per_output_file_bytes": 104857600},
+  "admission_requires": ["Exact endpoint/monomial and X/Z binding", "Author-supported modified shared clocks and cycle association", "Specified finite preparation/readout/idle operation and error-location set for the one-cycle experiment"],
+  "downstream_gate": "Only after exact admission: independently derive primitive faults with same-location branch exclusivity, validate direct replay/negative controls and then run the inherited capped distance assay. No physical model of an unadmitted substitute may stand in for the target.",
+  "inherited_assay_caps_if_admitted": {"threads": 1, "maximum_calls": 4, "wall_seconds_per_call": 60, "total_solver_wall_seconds": 240, "sampled_rss_guard_bytes": 2147483648, "per_output_file_bytes": 104857600},
+  "preserve": ["GB9", "decoder contract", "all frozen campaigns and hashes", "legacy state.json routing", "existing staging files", "diagnostic-only four-order results"],
+  "prohibited": ["Outreach or private retrieval", "Repeated searches or unchanged metadata sweeps", "Unannounced circuit replacement", "Bounds inferred from inconclusive evidence"],
+  "disposition": "Freeze through campaign.py after verified resolution or a mathematical demonstration of the precise remaining ambiguity. FROZEN-INCONCLUSIVE if exact source admission is still unmet; do not label source-only ambiguity as a distance bound."
+}

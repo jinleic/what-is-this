@@ -12,9 +12,10 @@ Source campaigns consumed (each immutable, left untouched):
   C) 2026-08-30T12:34:14Z_4cd10de4…  gate_c_md.py: LO-CVB, extension, GAVB, PR
 """
 from __future__ import annotations
+import os
 import glob, hashlib, json, os, shutil, sys, time, uuid
 
-ROOT = '/Users/jinleic/jinleic-workspace/cs/delcap'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAMP = os.path.join(ROOT, 'campaigns')
 SRC = os.path.join(ROOT, 'src')
 

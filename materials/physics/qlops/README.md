@@ -2,8 +2,12 @@
 
 **Status: BENCHMARK (gate A complete: reproduced; gate B complete: latency
 robust, magic-state-swap falsifies comparability; official zero-level source
-pinned; R7 smoke PASS is frozen REHEARSAL only; the 71m-shot full run is
-unstarted and paper d=7/c≈300 remain NOT-REPRODUCED).**
+pinned; R7 smoke PASS is frozen REHEARSAL only; the 71m-shot full run was
+launched and closed REJECTED on finding F-Z4; F-Z4 then resolved WITHOUT the
+authors as mechanism (b) driver-version drift, and the Revision-8
+rebuilt-oracle amendment run completed 12/12 cells, closed
+FROZEN-INCONCLUSIVE (23/24 comparisons pass, one mild acceptance failure);
+paper d=7/c≈300 remain NOT-REPRODUCED).**
 Reuse published fault-tolerant QC resource/benchmark estimates from their stated
 formulas, reproduce their numbers, then run sensitivity sweeps. Pure arithmetic;
 minutes per run.
@@ -175,8 +179,12 @@ reconstruction is attempted, and paper d=7/c≈300 remain
   evidence only, with no scientific-result weight.
 
 The frozen full schedule is 71,000,000 author-count shots across 12 cells.
-It remains pending and **has not been launched**. After GB9 releases its
-26 threads, run this sequence from `physics/qlops`. First mint a fresh R7
+**Historical note (2026-09-08):** this R7 launch was executed and closed
+REJECTED on finding F-Z4 (run `20260908T174922Z_dc3b41ff_d04f0ae58ca0`);
+the superseding Revision-8 amendment and its completed FROZEN-INCONCLUSIVE
+run `20260908T195555Z_67d0f894_cfb28f9ee00f` are recorded above and in
+`pre_statement.md` Revision 8. The R7 handoff below is preserved verbatim
+for provenance only — do not launch it again. First mint a fresh R7
 campaign:
 
 ```sh
@@ -220,17 +228,33 @@ python3 src/test_reproduction.py              # 7 behavioral tests
   CRASHED R6 instrument run; results-directory regression, no accepted result.
 - `campaigns/20260904T054537Z_818bca48_18f5ac3b849c/` — canonical
   frozen/closed R7 REHEARSAL; eight-gate smoke PASS, readiness only.
+- `campaigns/20260908T174922Z_dc3b41ff_d04f0ae58ca0/` — frozen/closed
+  REJECTED 71m-shot full run: 7/12 cells completed and replayable;
+  preregistered refusal at grown@0.0008 (finding F-Z4: four shipped grown
+  circuits are a different construction generation than the pinned
+  driver).
+- `campaigns/20260908T195555Z_67d0f894_cfb28f9ee00f/` — frozen/closed
+  FROZEN-INCONCLUSIVE R8 full run (gate `zero-level-author-repro-r8`,
+  `pre_statement.md` Revision 8): F-Z4 mechanism diagnosed builder-only
+  as driver-version drift (identical lattice/detectors/observables; 5/36
+  rounds rewired; DEM Jaccard 0.989); rebuilt-oracle amendment for the
+  four split cells; fresh 71,000,000-shot/12-cell schedule completed
+  12/12 on mini-0, 23/24 comparisons pass (grown@0.0006 acceptance
+  z = +3.79), zero decisive.
 - `scratch/` — non-authoritative downloads.
 - `pre_statement.md` — pre-registered gates, tolerances, falsifiers
   (written before the run; only tolerance language unchanged).
 
 ## Open items
 
-- The official source is now pinned, but the 71,000,000-shot, 12-cell R7
-  full run remains pending and unstarted; the completed eight-gate smoke
-  is REHEARSAL readiness evidence only. A successful full run can evaluate
-  only the repository's executable d=3/d=9 artifact. The paper's d=7
-  headline and physical c≈300 claim remain **NOT-REPRODUCED**, and no d=7
+- The 71,000,000-shot, 12-cell schedule is now EXECUTED under Revision 8
+  (run `20260908T195555Z_67d0f894_cfb28f9ee00f`, FROZEN-INCONCLUSIVE):
+  12/12 cells, 23/24 comparisons, one mild acceptance failure at the
+  rebuilt-oracle grown@0.0006 cell. The executable d3/d9 artifact is
+  neither certified nor negated. An optional funded follow-up could test
+  (Revision 9) whether the shipped split-generation artifacts reproduce
+  the embedded author rows directly. The paper's d=7 headline and
+  physical c≈300 claim remain **NOT-REPRODUCED**, and no d=7
   reconstruction is attempted.
 - Fig. 1 fit constants and Table 6 sim-level numbers remain
   NOT-REPRODUCED-from-stated-inputs (missing quantitative inputs, recorded

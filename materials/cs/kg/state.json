@@ -2,7 +2,7 @@
   "schema": "target-state/1",
   "id": "cs/kg",
   "problem": "Grothendieck constant K_G certified upper bound",
-  "status": "paused",
+  "status": "parked",
   "current_gate": "Tiles 4-49 continuation FROZEN-INCONCLUSIVE: startup controls passed, no tile-4 adjudication or new certified tile. No intra-tile restart state; no new scientific computation launched during resource-limited closeout.",
   "latest_campaign": "20260904T050531Z_fae0b1cf_44e93966ae8d",
   "latest_campaign_verdict": "FROZEN-INCONCLUSIVE",
@@ -15,5 +15,34 @@
     "cs/kg/README.md",
     "cs/kg/campaigns/20260904T050531Z_fae0b1cf_44e93966ae8d/VERDICT.md"
   ],
-  "updated_utc": "2026-09-04T23:42:54Z"
+  "updated_utc": "2026-09-08T15:03:03Z",
+  "lifecycle": {
+    "history": [
+      {
+        "from": "paused",
+        "to": "parked",
+        "at": "2026-09-08T15:03:03Z",
+        "cause": "manual",
+        "reason": "vocabulary migration: paused -> parked",
+        "evidence": []
+      }
+    ],
+    "reason": "vocabulary migration: paused -> parked",
+    "evidence": []
+  },
+  "budget": {
+    "runs_max": null,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 0,
+    "tokens_used": 0,
+    "seconds_used": 0.0,
+    "gate_at_last_progress": "Tiles 4-49 continuation FROZEN-INCONCLUSIVE: startup controls passed, no tile-4 adjudication or new certified tile. No intra-tile restart state; no new scientific computation launched during resource-limited closeout."
+  },
+  "priority": {
+    "value": 2,
+    "expected_progress": 0.5,
+    "blocker": "none",
+    "blocker_detail": null
+  }
 }

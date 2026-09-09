@@ -7,6 +7,7 @@ Part B: boundary mutation testing around REAL decompositions taken from the
         constraints(H,K,S) == Ramsey(glue) every time. This probes exactly
         the boundary where a wrong/missing constraint would show up.
 """
+import os
 import random
 import sys
 from itertools import combinations
@@ -14,7 +15,7 @@ from itertools import combinations
 from g6lib import (parse_g6, has_clique, has_indep, indep_sets, cliques,
                    induced, load_g6_file, ecount)
 
-DATA = "/Users/jinleic/jinleic-workspace/math/r55/data"
+DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 random.seed(20260813)
 fails = []
 

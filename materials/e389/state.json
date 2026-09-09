@@ -2,18 +2,61 @@
   "schema": "target-state/1",
   "id": "math/e389",
   "problem": "Erdos Problem #389: consecutive-product divisibility",
-  "status": "active",
+  "status": "abandoned",
   "current_gate": "Input-II needs new effective per-class constant (sieve depth ln z' > M/phi); published toolbox exhausted",
-  "latest_campaign": null,
-  "latest_campaign_verdict": null,
-  "headline": "Shiu/Korolev/Wright audited at source; reduction stands, universal claim open",
-  "next_action": "Sierra route: Richmond/Tao comparison (LOCALIZATION s10) or accept conditional frontier",
+  "latest_campaign": "20260908T155952Z_9f8455ad_30f0ba9e47a9",
+  "latest_campaign_verdict": "CRASHED",
+  "headline": "Input-I restricted m>=9 proof candidate and exact route-obstruction evidence recorded; independent Opus review incomplete. Administrative CRASHED/abandoned outcome retained; post-close writes disclosed and captured separately.",
+  "next_action": "Obtain owner authorization for a review-only recovery allocation, then secure an independent Opus verdict on the existing Input-I candidate and corrections linked from the cycle reconciliation. Do not repeat finite checks, reopen the closed run, or promote the candidate without review.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
-  "updated_by": "workspace-architecture-fix",
+  "updated_utc": "2026-09-08T16:54:21Z",
+  "updated_by": "institute-astra-reconciliation",
   "sources": [
-    "math/PROGRESS.md:480-536",
+    "docs/knowledge-system/institute/cycles/20260908T155849Z_f7f167/reconciliation.md",
     "math/e389/README.md",
     "math/e389/LOCALIZATION.md"
-  ]
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": null,
+        "to": "active",
+        "at": "2026-09-08T15:03:03Z",
+        "cause": "manual",
+        "reason": "registered under institute management",
+        "evidence": []
+      },
+      {
+        "from": "active",
+        "to": "abandoned",
+        "at": "2026-09-08T16:34:05Z",
+        "cause": "budget",
+        "reason": "budget burned (2/2 runs) without gate progress since the marker was pinned",
+        "evidence": [
+          "20260908T151056Z_6e08f503_527b4fd78381",
+          "20260908T155952Z_9f8455ad_30f0ba9e47a9"
+        ]
+      }
+    ],
+    "reason": "budget burned (2/2 runs) without gate progress since the marker was pinned",
+    "evidence": [
+      "20260908T151056Z_6e08f503_527b4fd78381",
+      "20260908T155952Z_9f8455ad_30f0ba9e47a9"
+    ]
+  },
+  "budget": {
+    "runs_max": 2,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 2,
+    "tokens_used": 0,
+    "seconds_used": 4764.0,
+    "gate_at_last_progress": "Input-II needs new effective per-class constant (sieve depth ln z' > M/phi); published toolbox exhausted"
+  },
+  "priority": {
+    "value": 4,
+    "expected_progress": 0.55,
+    "blocker": "none",
+    "blocker_detail": null
+  }
 }

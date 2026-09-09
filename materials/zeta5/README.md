@@ -74,15 +74,26 @@ candidate.
    $q_0..q_{63}$ it re-derives (1) as the *unique* order-3/degree-9 recurrence
    (exact primitive-vector match) and finds nothing at order 2 (deg ≤ 12) or
    order 3, deg ≤ 8.
-2. **Systematic construction sweep — the triage's four-week falsifiable gate.**
-   Enumerate low-order polynomial recurrences from exact data of candidate
-   constructions: deformations of the very-well-poised series (7) of
+2. **CLOSED 2026-09-08 — FROZEN-NEGATIVE, zero survivors** (run
+   [`20260908T150622Z_6a444c77_79aa3a46d868`](campaigns/20260908T150622Z_6a444c77_79aa3a46d868/),
+   prereg [`pre_statement_gate-2-construction-sweep.md`](pre_statement_gate-2-construction-sweep.md)).
+   The frozen 44-probe ladder (F1 very-well-poised deformations of series (7),
+   slopes {−1,0,1}² × w ∈ {4,5,6}; F2 Vasilyev-type t = 1..3, s = 0..4; F3
+   Ball–Rivoal-type r = 1,2; 80 exact terms each; orders 2–3, degree ≤ 14)
+   retains nothing: 33/44 no recurrence in window, 7/44 slower than baseline,
+   and all 4 fast-looking promotions withdrawn on audit (3 degenerate
+   content-free, 1 rate artifact). Baseline stands:
+   $\mu_2 = 0.33753726443403620704$, deficit $3.9139206383732506583$. The
+   campaign records and stops here per the rule below; resumption requires a
+   NEW family ladder (fresh triage decision). The gate as frozen:
+   enumerate low-order polynomial recurrences from exact data of candidate
+   constructions (deformations of the very-well-poised series (7) of
    math/0206178, Vasilyev-type integrals, Ball–Rivoal-type series; guess with
-   `recsearch`, certify by creative telescoping. A candidate is **retained only
-   if all three hold**: exact symbolic recurrence identity; integrality /
-   denominator control (proved, or LCM-scaled with certified exponent); certified
-   exponential error bounds. **Zero survivors better than the baseline deficit
-   ⇒ the campaign fails here; record and stop.**
+   `recsearch`, certify by creative telescoping); a candidate is retained only
+   if all three hold (exact symbolic recurrence identity; integrality /
+   denominator control; certified exponential error bounds). The honored rule:
+   **zero survivors better than the baseline deficit ⇒ the campaign fails
+   here; record and stop** — which is exactly what the run executed.
 3. **Arithmetic sharpening — only on a gate-2 survivor.** Denominator-gain
    proofs and contaminant elimination toward $\lim\tfrac1n\log|\ell_n|<-5$.
 

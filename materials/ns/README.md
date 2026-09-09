@@ -422,3 +422,20 @@ between the live route and a construction attempt.
   is not reported as such.
 - No experiment enters this directory unless it is tied to a named lemma or hole in the
   obstruction map above.
+
+## 2026-09-08 — External claim verified formally (FROZEN-CERTIFIED)
+
+OpenAI published (2026-09-08) a claimed resolution of (C)+(D) with a public
+Lean formalization. Independent verification in campaign
+[`campaigns/20260908T193739Z_14ac2c45_44bf28712a9f/`](campaigns/20260908T193739Z_14ac2c45_44bf28712a9f/):
+the pinned repo builds reproducibly (exit 0, 11251 jobs, ~22 min, mini-pro),
+the formalized statements match CMI (C) and (D) verbatim clause-by-clause
+(including the pressure-periodicity errata), and the proof tree has zero
+sorry/admit/axiom/native_decide with only the three standard Lean axioms.
+The construction (zero initial data, C_c^∞ force, anisotropic Type-II vortex
+with unbounded L³) routes around every closed route of the obstruction map
+above and occupies exactly its open rows — the map and the claim are
+consistent. See the run dir for STATEMENT_MATCH.md, AXIOM_AUDIT.md,
+UNDERSTAND.md, and build logs. This target's gate now moves to
+independent-checker (nanoda/Comparator) confirmation and community review of
+the mathematics.

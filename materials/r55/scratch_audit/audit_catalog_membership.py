@@ -3,11 +3,12 @@ H = G[N(v)] must be isomorphic to some line of r35_d.g6 and
 K = G[rest] isomorphic to some line of r44_q.g6.
 Own backtracking isomorphism test (invariant prefilter + refinement).
 """
+import os
 import sys
 from itertools import combinations
 from g6lib import load_g6_file, induced, ecount
 
-DATA = "/Users/jinleic/jinleic-workspace/math/r55/data"
+DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 fails = []
 
 

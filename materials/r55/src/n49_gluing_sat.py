@@ -1,6 +1,6 @@
 
-import sys, json, time
-sys.path.insert(0, '/Users/jinleic/jinleic-workspace/math/.venv/lib/python3.9/site-packages')
+import os
+import sys, json, time, os
 from pysat.solvers import Cadical195
 from pysat.card import CardEnc, EncType
 from pysat.formula import IDPool
@@ -98,5 +98,5 @@ def solve(Xa, tag):
     return out
 
 results=[solve(X1,"X1/complX1"), solve(X2,"X2/complX2")]
-json.dump(results, open('/Users/jinleic/jinleic-workspace/math/r55/data/n49_gluing_sat.json',"w"), indent=1)
+json.dump(results, open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'n49_gluing_sat.json'),"w"), indent=1)
 print("DONE", flush=True)

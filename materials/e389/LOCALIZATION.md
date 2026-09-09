@@ -38,20 +38,25 @@ $N=10^7$; neither is a theorem.
 
 ## 2. Input I — inverse-prime sums (Kloosterman with primes)
 
-Completion (15.6, eq. 41) turns IP into $\sum_{p\sim P}e_q(h\,a\,p^{-1})$. Our
-parameters: $q=M\in[\sqrt{2N},N]$, $P$ free in $[\sqrt{4N+2m},N/d_i]$, minimal
-$P\approx2\sqrt N$, so $P\approx q^{1/(2\theta)}$ with $M=N^\theta$ — at
-$\theta\approx\tfrac12$ this is $P\approx q$, comfortably inside the published
-ranges. A saving $q^{-\delta}$ uniform in $h\not\equiv0$ evicts
-$M\le N^{1/(2(1-\delta))-\varepsilon}$ (15.6, eq. 43).
+**2026-09-08 update:** the two missing reductions now have a written candidate
+for $9\le m\le C\sqrt N$, $M\le N^{17/32-\varepsilon}$, with fixed
+$C,\varepsilon>0$ and sufficiently large $N$. It is **review-pending**:
+the required Opus verdict was not obtained, so no theorem is certified here.
+The unrestricted all-class prime-spike deduction is not valid.
+
+The relevant modulus is $q=M/d_i$, not automatically $M$. Moving intervals
+are replaced by a fixed rectangle on $P<p\le3P/2$; nonprimitive frequencies
+are handled by truncation and effective-modulus reduction, not uniform
+all-frequency cancellation. The table retains earlier primitive-sum
+comparisons; their exponent balances alone are not every-class theorems.
 
 | Bound | Hypotheses | Saving at $P\approx q$ | Verdict |
 |---|---|---|---|
 | Bourgain, *GAFA* 15 (2005) 1–34, explicit $\delta=0.0005\varepsilon^4$ by Baker, *Acta Arith.* 156 (2012) 351–372 | **$q$ prime**, $(ab,q)=1$, $X\ge q^{1/2+\varepsilon}$ | $q^{-\delta}$, $\delta\sim10^{-3}\varepsilon^4$ | APPLIES for prime $M$ throughout $[\sqrt{2N},N]$; yields $\theta\le\frac12+O(\delta)$ — a genuine but numerically minute crossing |
-| Fouvry–Shparlinski, *Acta Arith.* 150 (2011) 285–314 | any $q$, $q^{3/4+\varepsilon}\le X\le q^{4/3-\varepsilon}$ | $X^{15/16}+X^{2/3}q^{1/4}$ | **APPLIES for every modulus; under the floor standard (note below) it delivers $\theta\le\frac{17}{32}-\varepsilon=0.53125$** — its first term's line $s=\frac t{16}$ (active past the $12/13$ arm crossing) binds at the floor $t=\frac{16}{17}$; its second term's would-be $8/15$ is infeasible (escapes its own arm region) |
+| Fouvry–Shparlinski, *Acta Arith.* 150 (2011) 285–314, Thm 3.1 | $q\ge2$, $(A,q)=1$, $X^{3/4}\le q\le X^{4/3}$; prefix convention in §3.1 | $(X^{15/16}+X^{2/3}q^{1/4})q^\rho$, every fixed $\rho>0$ | **SOURCE CHECKED 2026-09-08**; supports the restricted $17/32$ candidate below. Independent proof review remains pending. |
 | Korolev, eq. (7) of arXiv:1911.09981 | any composite $q$, $X\ge q^{7/10+\varepsilon}$ | $X^{32/37}q^{7/74+\varepsilon}$, i.e. $q^{-3/74}$ at $X\approx q$ | APPLIES for composite $M$; true fixed point $\theta\le14/27=0.5185$ (the recorded $37/71=0.521$ evaluates at $X=q$) — dominated by Fouvry–Shparlinski above |
 | Korolev, *Res. Number Theory* 6:24 (2020) Thm 1 | any $q$, $(ab,q)=1$, $q^{3/4+\varepsilon}\le X\le(q/2)^{3/2}$, $\Lambda$-weighted, inhomogeneous | $(q^{3/4}/X)^{1/7}$ or $(q^{2/3}/X)^{3/35}$ | APPLIES with an exact printed saving; at the floor length dominated by Fouvry–Shparlinski above |
-| Changa–Korolev, *Math. Notes* 108:1 (2020) 87–93 (Mat. Zametki 108:1, 94–101; DOI 10.4213/mzm12693), Theorem 1 | any $q$, $(a,q)=1$, $0<\delta_0<1/100$, $0<\varepsilon\le1/6$, $q^{1/2+\varepsilon}\le X\le q^{3/2}$: $T_q(X)\ll Xq^{\delta_0}\Delta$, $\Delta$ a five-piece function of $X/q$ | **CHECKED at source (2026-08-29): APPLIES, conditional on the two gaps below** — net saving $q^{-(1/16-\delta_0)}$ at $X=q$, $q^{-(3/32-\delta_0)}$ at the range top; under the floor standard it delivers $\theta\le\frac{17}{32}-\varepsilon$, *tying* F–S 2011 exactly (identical binding lines past $t=12/13$), with wider premium coverage $X\in[q^{1/2+\varepsilon},q^{3/2}]$ (F–S premise: $[q^{3/4},q^{4/3}]$) and a strictly steeper interior on $[21/26,9/10)$; see the note below the table |
+| Changa–Korolev, *Math. Notes* 108:1 (2020) 87–93, DOI 10.4213/mzm12693, Thm 1 | $(a,q)=1$, $0<\delta_0<1/100$, $0<\varepsilon\le1/6$, $q^{1/2+\varepsilon}\le X\le q^{3/2}$ | $T_q(X)\ll Xq^{\delta_0}\Delta$; piecewise saving recorded below | Primitive input source-checked 2026-08-29, not consumed by the current F–S-only candidate. Its wider range may help smaller windows but does not independently certify eviction. |
 | Kowalski–Michel–Sawin, *Ann. of Math.* 186 (2017) 413–500 | **$q$ prime**, general bilinear forms, $M=N>q^{3/7}$ | power | Engine, not directly our shape; §1.5.2 states composite moduli open |
 | Bourgain–Garaev, *Izv. Math.* 78 (2014) 656–707 | **$q$ prime**, multilinear, $\prod|I_j|>q^{1/2+\varepsilon}$ | power | Engine; also records that one published short-sum claim has a proof "in doubt" |
 
@@ -80,70 +85,52 @@ Every piece has slope $<1$, so $s$ increases in $\log_qX$ throughout
 $[q^{1/2+\varepsilon},q^{3/2}]$: at $X=q$, $s=1/16$; the maximum sits at the
 range top $X=q^{3/2}$ with $s=3/32$.
 
-**Eviction update via the exchange rate (43) — consume at the floor.** The
-prime range $P$ in (41)–(43) is free in $[\max(\sqrt{4N+2m},m),N/d_i]$; the
-main term (42) cancels it, but the completion's error term carries both the
-linear $X$-prefactor and the saving $s(t)$, $t=\log_qX$ — and since $s$
-grows with slope $<1$ in every cited piece, the *floor* length
-$X=P\approx2\sqrt N$, i.e. $t=1/(2\theta)$, is where the balance
-$s\ge1-t$ is hardest. Consuming the saving at $X=q$ or at a range top
-overstates it: the resulting $\theta\le8/15$ (from $s=1/16$ at $X=q$) and
-$\theta\le16/29$ (from $s=3/32$ at the top) are artifacts — at $\theta=8/15$
-the floor saving is only $t/16=15/256<1/16$. With $t_0=1/(2\theta)$, both
-frontier theorems reduce to one line: F–S's loss
-$\max(X^{15/16},\,X^{2/3}q^{1/4})$ switches arms at exactly $t=12/13$
-($\frac{15}{16}=\frac23\cdot\frac{12}{13}+\frac14$), so past $12/13$ its net
-saving is $s=\frac t{16}$ — *the same line* as C–K's piece 5 — and the fixed
-point
+**Floor-band admissibility.** At $X\asymp_C\sqrt N$, F–S requires
+$q_i\gtrsim_C N^{3/8}$ from $X^{3/4}\le q_i$; C–K requires
+$q_i\gtrsim_C N^{1/3}$ from $X\le q_i^{3/2}$. Below their respective
+caps these inputs do not cover cofactor-dominated classes, a previously
+identified failure regime. The candidate's $q\gg_C N^{2/5}$ clears the
+F–S cap by $2/5-3/8=1/40$, explaining the growth of its cutoff $H$.
 
-$$
-\frac{t_0}{16}=1-t_0
-\quad\Longleftrightarrow\quad
-t_0=\frac{16}{17}
-\quad\Longleftrightarrow\quad
-\theta\le\frac{17}{32}=0.53125
-$$
+**Current source-to-target reduction.** Fouvry--Shparlinski's
+[primary PDF](https://www.impan.pl/shop/publication/transaction/download/product/82801)
+states Theorem 3.1 on printed p.297; §3.1, printed p.296, explicitly permits
+prefix sums with the same bound up to a constant. Subtracting prefixes at
+$P$ and $3P/2$ is therefore allowed when both range premises hold.
 
-is attained by **both** F–S 2011 and C–K Thm 1 (feasible: $16/17>12/13$; the
-second arm's tempting $8/15$ escapes its own region). Under the same
-standard Korolev 2019 ($s=\frac5{37}t-\frac7{74}$ on its range) gives
-$\theta\le14/27=0.5185$; the previously recorded $37/71=0.521$ was an $X=q$
-corner evaluation. C–K's distinguishing value is *below* the tie: on
-$[9/10,12/13)$ its piece 4 ($s=\frac t3-\frac14$) coincides exactly with
-F–S's arm 2, while on $[21/26,9/10)$ its piece 3
-($s=\frac t8-\frac1{16}$) is strictly steeper (e.g. $0.0413$ vs $0.0333$ at
-$t=0.85$), and its premise extends to $t\le\frac32$ (F–S stops at $\frac43$)
-and down to $t=\frac12+\varepsilon$ (F–S floors at $\frac34$) — the only
-published nontrivial saving for arbitrary moduli at half-length sums.
+The previously missing gaps are now explicit:
 
-**Floor-band admissibility.** At $q=M\in[\sqrt{2N},N]$ ($d_i=1$) the floor
-$t\in[15/16,16/17]$ sits inside both premises. For reduced moduli
-$q_i=M/d_i$ the premise caps bite: F–S needs $q_i\gtrsim N^{3/8}$, C–K only
-$q_i\gtrsim N^{1/3}$ — C–K covers strictly smaller reduced moduli at the
-floor length. Below those caps (cofactor-dominated classes) both theorems
-fall away, folding into the same effective-modulus recheck as the
-degenerate-$h$ gap below.
+1. **Moving interval:** use the fixed real interval
+   $[(N+i)/(dP),\,2(2N+i)/(3dP))$, of width $(N-i)/(3dP)$.
+   It lies inside every required $J_p$ on the shorter prime band. At
+   $i=o(N)$ its main mass is $N/(6M\log P)$, with no moving Fourier weight.
+2. **Nonprimitive frequencies and admissible positions:** the candidate
+   chooses $H=\lfloor q/(3P/2)^{3/4}\rfloor$. For $h\le H$,
+   $r=q/(h,q)\ge(3P/2)^{3/4}$ and the numerator is primitive modulo $r$.
+   The discarded frequencies are paid for by the discrepancy term
+   $\Pi/(H+1)$, not assumed to cancel. Five consecutive positions give
+   $\prod d_i\mid24M$, selecting $d\le(24M)^{1/5}$; such five positions
+   exist when $m\ge9$.
 
-Two technical gaps stand between these bounds and a theorem here, and this
-project has not closed either:
+For $P\asymp_C\sqrt N$, outside the elementary small-$M$ range, this gives
+$q\gg_C N^{2/5}$ and $H\gg_C N^{1/40}$. The candidate's relative errors,
+apart from logarithms and a sufficiently small source loss $q^\rho$, have
+powers
+$-3/160-\varepsilon/5$, $-\varepsilon$, and
+$-1/384-5\varepsilon/4$. Both endpoints of the published range and the
+excluded-prime correction are checked in the written derivation.
 
-**Conclusion for I.** Under the floor standard the conditional
-arbitrary-modulus frontier is $\theta\le\frac{17}{32}-\varepsilon=0.53125$,
-delivered identically by F–S 2011's first term and by the source-checked
-Changa–Korolev Theorem 1 (their net-saving lines coincide past $t=12/13$);
-C–K additionally carries strictly steeper interior savings on
-$[21/26,9/10)$, a wider premium range ($t$ up to $\frac32$), a cheaper
-reduced-modulus premise ($q_i\gtrsim N^{1/3}$ vs $N^{3/8}$), and the only
-published nontrivial saving at half-length sums ($t\to\frac12$, piece 1,
-$s\to\frac\alpha2\approx0.0173$). Korolev 2019's true floor value is
-$14/27=0.5185$; the previously recorded $37/71=0.521$ was an $X=q$ corner
-evaluation, so the net movement of the recorded frontier is
-$0.521\to0.53125$, not the $0.5517$ a top-of-range reading would suggest.
-All conditional on the two gaps below. Reaching every class that meets the
-block ($\theta\to1$) needs a saving $s\ge1-\frac1{2\theta}$ at the floor
-band $t\in[\frac12,\frac{16}{17}]$: at $t\to\frac12$, roughly square-root
-cancellation in a half-length prime sum over an arbitrary modulus — beyond
-current technology.
+**Conclusion for I.** The candidate covers arbitrary moduli and all classes
+only with the stated $9\le m\le C\sqrt N$ restriction. The Opus review
+attempts timed out, so it remains unaccepted. The former assertion that
+closing two technical gaps automatically certifies every $m$ is withdrawn:
+even $q,h=q/2$ disproves uniform all-frequency saving, and $m=2$,
+$d=M=2^s$, $q=1$ gives an asymptotically empty floor-prime route at
+$1/2<\theta<17/32$. Neither obstruction disproves class eviction by
+another mechanism or Erdős #389.
+
+Evidence, post-closure integrity disclosure and the exact remaining review gate:
+[cycle reconciliation](../../docs/knowledge-system/institute/cycles/20260908T155849Z_f7f167/reconciliation.md).
 
 
 ## 3. Input II — survivors (smooth numbers in one progression)
@@ -597,8 +584,8 @@ With $M=N^\theta$ and $L=\lceil m/2\rceil$:
 | $M\le\sqrt N/2$ | **PROVED**, all $N$, all classes | Theorem 15.3 (Bertrand + one inversion) |
 | $\sqrt N/2<M\le\sqrt{2N}$ | proved for non-smooth classes; sharp obstruction for $m$-smooth $M$ | Theorem 15.3 vs Proposition 16.2 |
 | $\sqrt{2N}<M\lesssim L\sqrt N/2$ | **CERTIFIED FINITE** per instance | covering criterion, $O(L\log L)$ per prime |
-| $\theta\le17/32-\varepsilon$, any $M$ with $q_i\gtrsim N^{1/3}$ | conditional on cited bounds, modulo the two gaps of §2 | F–S 2011 and Changa–Korolev Thm 1 (tie at the floor; C–K reaches smaller $q_i$ and wider $X$) |
-| $\theta\le\frac12+O(10^{-3}\varepsilon^4)$, prime $M$ | same exchange rate, subsumed by the row above | Bourgain–Baker |
+| $\theta\le17/32-\varepsilon$, $9\le m\le C\sqrt N$, fixed $C,\varepsilon>0$ | **CANDIDATE; independent review pending**, all sufficiently large $N$, arbitrary $M$ and classes | F–S 2011 + fixed rectangle + five-position gcd bound + truncated discrepancy; §15.6 |
+| $\theta\le\frac12+O(10^{-3}\varepsilon^4)$, prime reduced modulus | primitive-sum comparison only; class/position hypotheses still required | Bourgain–Baker |
 | $\theta\in(\frac12,\frac{10}{19})$, smooth $M$ | conditional on a cited 2025 preprint; subsumed by the $17/32$ row on its overlap | Li's prime minorant |
 | $\theta<1$, any $M$ | **CERTIFIED FINITE** at $N=10^7$ for $m\ge27$ | survivor census, multi-position |
 | $\theta<1$, all $N$ | **OPEN** | (45) with an effective constant, or (46) |
@@ -632,11 +619,9 @@ With $M=N^\theta$ and $L=\lceil m/2\rceil$:
    the Dickman gain at $\eta=\frac12$, or from a different instrument.
 4. Failing that, fall back to the Weyl-sum route of input III; only one class
    in each window of $L$ must hold a prime.
-5. Input I is now *citation-complete* under the floor standard (§2):
-   arbitrary-modulus eviction to $\theta\le\frac{17}{32}-\varepsilon$ follows
-   identically from F–S 2011 and from the source-checked Changa–Korolev
-   Thm 1 (C–K reaches smaller reduced moduli and wider $X$), **provided** the
-   two §2 gaps are closed — the $p$-dependent interval $Z_p$
-   (unbounded-variation coefficients) and degenerate $h$ with $(h,q)>1$.
-   Both are finite work against a fixed cited bound; close them before
-   banking any $\theta>1/2$ class-eviction claim.
+5. Input I: obtain an independent Opus verdict on the existing restricted
+   candidate in campaign `20260908T155952Z_9f8455ad_30f0ba9e47a9`, including
+   the floor-count and counting-convention corrections. Do not rerun the
+   finite identities or promote the candidate before that verdict.
+   Only afterward consider extending the $m\ge9$ argument to smaller
+   windows; the $m=2,q=1$ prime-spike obstruction must remain explicit.

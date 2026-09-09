@@ -2,14 +2,14 @@
   "schema": "target-state/1",
   "id": "math/kobon",
   "problem": "Kobon triangle problem, K_gen(12)",
-  "status": "active",
+  "status": "stalled",
   "current_gate": "K_gen(12) remains in {38,39}: the exact-rational 38-triangle lower certificate replays, while seven of the 15 relaxed target-39 cubes are running proof-free under Kissat 4.0.4 with no verdict. Current engine regeneration is byte-identical for the base and all 15 cubes, and the exact D12 audit covers all 220 triples in 12 disjoint orbits. The clean certifier is bound to decision manifest 48671f44f726dc4272438d0797beff936878c39b9b8d26ec110546b1136db7cf; its production status records all 15 cases UNATTEMPTED. A real Kissat/XZ/drat-trim control passed with two consumed core lemmas for non-unit UNSAT, a distinct INPUT_UNIT_PROPAGATION_UNSAT classification, and XZ_INTEGRITY_FAILED for a corrupted proof. Production defaults now launch on this host with an 8 GiB aggregate RSS cap and 64 GiB free-space reserve. Legacy XZ VERIFIED markers remain untrusted and the legacy wrapper fails closed.",
-  "latest_campaign": "n12-target39-15-cube-decision",
+  "latest_campaign": null,
   "latest_campaign_verdict": null,
   "headline": "K_gen(12) >= 38 proved; target-39 upper-bound campaign active with no verdict",
   "next_action": "Complete the live discovery ledger. For every UNSAT case, run the manifest-bound clean certifier and require CERTIFIED_UNSAT; for any SAT case, extract, straighten, and pass exact-rational verify_selection(minimum=39). Use the locked v2 supervisor for any new proof-free run.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-04T08:10:27Z",
+  "updated_utc": "2026-09-08T17:27:56Z",
   "updated_by": "three-cannon-campaign",
   "sources": [
     "math/kobon/README.md",
@@ -39,5 +39,44 @@
     "math/kobon/n12_decide/xz_pipeline_input_up_smoke.cnf",
     "math/kobon/tests/test_certify_unsat.py",
     "scratch/kobon/n12/autoverify_xz.sh"
-  ]
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": null,
+        "to": "active",
+        "at": "2026-09-08T16:29:46Z",
+        "cause": "manual",
+        "reason": "registered under institute management",
+        "evidence": [
+          "math/kobon/README.md"
+        ]
+      },
+      {
+        "from": "active",
+        "to": "stalled",
+        "at": "2026-09-08T17:27:56Z",
+        "cause": "blocker",
+        "reason": "blocker: compute \u2014 7/15 relaxed target-39 cubes left proof-free under Kissat 4.0.4 with no verdict; runs live outside the control plane (no campaigns/ dir) and dark (no live process 2026-09-08). Decide: adopt into campaigns/ with claims or take verdict from existing evidence.",
+        "evidence": []
+      }
+    ],
+    "reason": "blocker: compute \u2014 7/15 relaxed target-39 cubes left proof-free under Kissat 4.0.4 with no verdict; runs live outside the control plane (no campaigns/ dir) and dark (no live process 2026-09-08). Decide: adopt into campaigns/ with claims or take verdict from existing evidence.",
+    "evidence": []
+  },
+  "budget": {
+    "runs_max": null,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 0,
+    "tokens_used": 0,
+    "seconds_used": 0.0,
+    "gate_at_last_progress": "K_gen(12) remains in {38,39}: the exact-rational 38-triangle lower certificate replays, while seven of the 15 relaxed target-39 cubes are running proof-free under Kissat 4.0.4 with no verdict. Current engine regeneration is byte-identical for the base and all 15 cubes, and the exact D12 audit covers all 220 triples in 12 disjoint orbits. The clean certifier is bound to decision manifest 48671f44f726dc4272438d0797beff936878c39b9b8d26ec110546b1136db7cf; its production status records all 15 cases UNATTEMPTED. A real Kissat/XZ/drat-trim control passed with two consumed core lemmas for non-unit UNSAT, a distinct INPUT_UNIT_PROPAGATION_UNSAT classification, and XZ_INTEGRITY_FAILED for a corrupted proof. Production defaults now launch on this host with an 8 GiB aggregate RSS cap and 64 GiB free-space reserve. Legacy XZ VERIFIED markers remain untrusted and the legacy wrapper fails closed."
+  },
+  "priority": {
+    "value": 3,
+    "expected_progress": 0.5,
+    "blocker": "compute",
+    "blocker_detail": "7/15 relaxed target-39 cubes left proof-free under Kissat 4.0.4 with no verdict; runs live outside the control plane (no campaigns/ dir) and dark (no live process 2026-09-08). Decide: adopt into campaigns/ with claims or take verdict from existing evidence."
+  }
 }

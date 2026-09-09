@@ -28,10 +28,11 @@ q,d group). So LB_1 and UB are compared on all 18 rows from values already
 computed; LB+ carries Delta_n(d) and is compared on the 15 rows we computed.
 """
 from __future__ import annotations
+import os
 import csv, hashlib, json, os, time, uuid
 from decimal import Decimal, ROUND_CEILING, ROUND_HALF_UP, ROUND_FLOOR
 
-ROOT = '/Users/jinleic/jinleic-workspace/cs/delcap'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FROZEN = os.path.join(
     ROOT, 'campaigns',
     '2026-08-30T13:07:27Z_7988b619-e89e-4e77-8de7-2c2a37a429d9_23445e8dbeeb',

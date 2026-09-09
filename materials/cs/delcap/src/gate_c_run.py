@@ -31,6 +31,7 @@ exact integers) / COMPUTATIONAL-EVIDENCE (float) / REPORTED (not opened).
 Owner: DelcapGateC. Runs: `cs/.venv/bin/python src/gate_c_run.py`.
 """
 from __future__ import annotations
+import os
 import json, math, time, hashlib, platform, sys, os, itertools
 
 import numpy as np
@@ -39,7 +40,7 @@ from flint import arb, fmpq, fmpz, ctx
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-SRC = '/Users/jinleic/jinleic-workspace/cs/delcap/src'
+SRC = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SRC)
 
 # ----------------------------------------------------------------- helpers
@@ -456,8 +457,9 @@ def mac():
 
 def main():
     stamp = utc()
-    camp_dir = (f"/Users/jinleic/jinleic-workspace/cs/delcap/campaigns/{stamp}_"
-                + str(__import__('uuid').uuid4()) + f"_{mac()}")
+    camp_dir = (os.path.join(os.path.dirname(SRC), "campaigns",
+                             f"{stamp}_" + str(__import__('uuid').uuid4())
+                             + f"_{mac()}"))
     os.makedirs(camp_dir, exist_ok=True)
     log_path = os.path.join(camp_dir, 'gate_c_log.txt')
     rows = []

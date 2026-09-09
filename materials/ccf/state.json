@@ -2,16 +2,45 @@
   "schema": "target-state/1",
   "id": "math/ccf",
   "problem": "Cordoba-Cordoba-Fontelos 1D model",
-  "status": "paused",
+  "status": "parked",
   "current_gate": "Technique-validation only; no Clay-tied use",
   "latest_campaign": null,
   "latest_campaign_verdict": null,
   "headline": "Reusable Hilbert-transform basis machinery; paused pending Clay-tied use",
   "next_action": "None unless a Clay-tied use is identified",
   "owner": "jinleic",
-  "updated_utc": "2026-09-01T07:34:05Z",
+  "updated_utc": "2026-09-08T15:03:03Z",
   "updated_by": "workspace-architecture-fix",
   "sources": [
     "math/ccf/README.md"
-  ]
+  ],
+  "lifecycle": {
+    "history": [
+      {
+        "from": "paused",
+        "to": "parked",
+        "at": "2026-09-08T15:03:03Z",
+        "cause": "manual",
+        "reason": "vocabulary migration: paused -> parked (technique-validation only)",
+        "evidence": []
+      }
+    ],
+    "reason": "vocabulary migration: paused -> parked (technique-validation only)",
+    "evidence": []
+  },
+  "budget": {
+    "runs_max": null,
+    "tokens_max": null,
+    "seconds_max": null,
+    "runs_used": 0,
+    "tokens_used": 0,
+    "seconds_used": 0.0,
+    "gate_at_last_progress": "Technique-validation only; no Clay-tied use"
+  },
+  "priority": {
+    "value": 2,
+    "expected_progress": 0.5,
+    "blocker": "none",
+    "blocker_detail": null
+  }
 }

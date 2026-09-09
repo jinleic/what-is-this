@@ -18,14 +18,15 @@ Rows covered (verdicts per pre_statement.md):
     reachable subset.)
 """
 from __future__ import annotations
+import os
 import json, math, time, hashlib, platform, sys, os
 import numpy as np
 
-sys.path.insert(0, '/Users/jinleic/jinleic-workspace/cs/delcap/src')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from delcap_cert import certify_capacity, subseq_matrix, certify_ab
 from flint import arb
 
-OUT = '/Users/jinleic/jinleic-workspace/cs/delcap'
+OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def mac():

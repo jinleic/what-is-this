@@ -4,10 +4,11 @@
  - observed Delta multiset per stratum, confirm within range
  - confirm every r35_d (d<=13) / r44_q (q<=17) catalog is nonempty
 """
+import os
 from math import ceil
 from g6lib import load_g6_file, ecount
 
-DATA = "/Users/jinleic/jinleic-workspace/math/r55/data"
+DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 STRATA = [(12, 48), (13, 53), (13, 52), (14, 60), (15, 66),
           (16, 72), (16, 71), (17, 79), (17, 78), (21, 107)]
 

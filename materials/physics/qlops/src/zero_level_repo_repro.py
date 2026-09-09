@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """zero_level_repo_repro.py — control-plane adapter for gate
-`zero-level-author-repro-r7` (physics/qlops): reproduce the c ≈ 300 zero-level
+`zero-level-author-repro-r8` (physics/qlops): reproduce the c ≈ 300 zero-level
 CCZ Monte-Carlo study of Itogawa et al. (arXiv:2605.21867) from the authors'
 own pinned repository, without ever editing or trusting a single float of it.
 
@@ -45,7 +45,11 @@ Hard rules enforced by this file:
     against scalar decode on the exact accepted smoke rows.  A decode_batch
     ValueError, or shipped != rebuilt (flattened) on any shipped author-sampled
     circuit, is a source/API semantic failure: REJECTED refusal before any
-    scientific artifact is written.
+    scientific artifact is written.  Sole exception (Revision 8): the four
+    F-Z4 split grown cells in REBUILT_ORACLE_CELLS are sampled from the
+    pinned-driver rebuild itself (rebuilt oracle); their shipped artifacts
+    are opened for provenance only and their factual inequality is recorded,
+    never refused.
 
 Determinism disclaimer (restated in every artifact): seeded streams are
 reproducible only for this stim build, this machine, and this exact chunk
@@ -74,14 +78,26 @@ import numpy as np
 
 # --------------------------------------------------------------- identity pins
 
-GATE = "zero-level-author-repro-r7"
-ADAPTER_VERSION = "r7"
+GATE = "zero-level-author-repro-r8"
+ADAPTER_VERSION = "r8"
 TARGET = "physics/qlops"
 ADAPTER_DIR = Path(__file__).resolve().parent
 TARGET_DIR = ADAPTER_DIR.parent
 PREREG_PATH = TARGET_DIR / "pre_statement.md"
 TEST_PATH = ADAPTER_DIR / "test_zero_level_repo_repro.py"
-PREREG_REVISION_MARKER = "## Revision 7"
+PREREG_REVISION_MARKER = "## Revision 8"
+
+# Revision 8 (F-Z4 amendment): the four grown cells whose shipped circuits
+# differ from the pinned-driver rebuild by the frozen 23-hunk topology delta
+# (run 20260908T174922Z_dc3b41ff_d04f0ae58ca0) are recovered with
+# REBUILT-ORACLE semantics: the pinned-driver rebuild IS the reference and
+# sampled circuit; the shipped artifact is demoted to provenance (blob pin,
+# factual flattened inequality) and never sampled.  Every other cell keeps
+# shipped-oracle semantics; inequality there remains a REJECTED refusal.
+REBUILT_ORACLE_CELLS: frozenset[tuple[str, str]] = frozenset({
+    ("grown", "0.0008"), ("grown", "0.0006"),
+    ("grown", "0.0004"), ("grown", "0.0001"),
+})
 
 REPO = "FujitsuResearch/Zero-level_CCZ_Distillation"
 COMMIT = "1b59e223590492e224bd8623a4e0bcba59029e01"
@@ -614,14 +630,14 @@ def validate_run_dir(run_dir: Path, prereg_source, *,
             "an out-of-date preregistration")
     revisions = [int(n) for n in re.findall(
         r"^## Revision ([1-9][0-9]*)\b", prereg_text, re.MULTILINE)]
-    if 7 not in revisions:
-        raise Refusal("prereg has no '## Revision 7' heading")
+    if 8 not in revisions:
+        raise Refusal("prereg has no '## Revision 8' heading")
     if revisions != sorted(set(revisions)):
         raise Refusal(
             f"Revision headings not strictly increasing: {revisions}")
-    if revisions[-1] != 7:
+    if revisions[-1] != 8:
         raise Refusal(f"latest prereg revision is {revisions[-1]}; expected "
-                      "exactly 7 (no later revision may exist)")
+                      "exactly 8 (no later revision may exist)")
     assert_run_live(run_dir, manifest_bytes)
     return manifest
 
@@ -725,19 +741,33 @@ class RecoveredPoint:
 
 
 def recover_point(source_root: Path, variant: str, p_label: str, *,
-                  builder_only: bool = False) -> RecoveredPoint:
+                  builder_only: bool = False,
+                  rebuilt_oracle: bool = False) -> RecoveredPoint:
     """Recover a pinned circuit and builder mask with explicit provenance.
 
     Default recovery reads the shipped circuit and refuses flattened
     inequality here, before DEM construction or sampling.  Builder-only
     recovery is permitted solely for the ungrown p=0 smoke arm; it samples
     the rebuilt circuit without opening or making any claim about
-    ``832_text_0.stim``.
+    ``832_text_0.stim``.  Rebuilt-oracle recovery (Revision 8) is permitted
+    solely for the F-Z4 split cells in ``REBUILT_ORACLE_CELLS``: it opens
+    the shipped artifact for provenance only (blob pin and factual
+    flattened inequality are recorded), never refuses on that inequality,
+    and samples the pinned-driver rebuild, which IS the reference circuit
+    for those cells.
     """
+    if builder_only and rebuilt_oracle:
+        raise Refusal("builder_only and rebuilt_oracle are mutually "
+                      "exclusive recovery modes")
     if builder_only and (variant, p_label) != ("ungrown", "0"):
         raise Refusal(
             "builder-only recovery is restricted to the ungrown p=0 smoke "
             "arm; shipped equality remains mandatory for author-sampled arms")
+    if rebuilt_oracle and (variant, p_label) not in REBUILT_ORACLE_CELLS:
+        raise Refusal(
+            "rebuilt-oracle recovery is restricted to the Revision-8 F-Z4 "
+            f"split cells {sorted(REBUILT_ORACLE_CELLS)}; "
+            f"{variant}@{p_label} keeps shipped-oracle semantics")
 
     import stim
     import pymatching
@@ -768,12 +798,13 @@ def recover_point(source_root: Path, variant: str, p_label: str, *,
         shipped_path = vdir / shipped_filename(p_label)
         shipped = stim.Circuit(shipped_path.read_text(encoding="utf-8"))
         flattened_equal = rebuilt.flattened() == shipped.flattened()
-        if not flattened_equal:
+        if not flattened_equal and not rebuilt_oracle:
             raise Refusal(
                 f"{variant}@{p_label}: shipped != rebuilt (flattened()); "
                 "source semantic failure — refusing before sampling")
-        circuit = shipped
-        sampled_source = "shipped_author_circuit"
+        if not rebuilt_oracle:
+            circuit = shipped
+            sampled_source = "shipped_author_circuit"
 
     if circuit.num_observables != 3 or rebuilt.num_observables != 3:
         raise Refusal(
@@ -803,13 +834,15 @@ def recover_point(source_root: Path, variant: str, p_label: str, *,
                 f"({matcher.num_fault_ids}) != num_observables "
                 f"({circuit.num_observables})")
 
+    recovery_mode = ("builder_only_p0" if builder_only
+                     else "rebuilt_oracle_r8" if rebuilt_oracle
+                     else "shipped_equality_required")
     provenance = {
         "variant": variant, "p": p, "p_label": p_label,
-        "recovery_mode": ("builder_only_p0" if builder_only
-                          else "shipped_equality_required"),
+        "recovery_mode": recovery_mode,
         "sampled_circuit_source": sampled_source,
         "dem_source": sampled_source,
-        "shipped_oracle_used": not builder_only,
+        "shipped_oracle_used": not builder_only and not rebuilt_oracle,
         "driver_role": driver_role, "driver_blob_sha1": _blob_of(driver_role),
         "builder_role": f"builder_{variant}",
         "builder_blob_sha1": _blob_of(f"builder_{variant}"),
@@ -1011,7 +1044,7 @@ def _validate_point_rows(rows: list[dict], *,
     """
     expected_cells = {(v, label) for v in VARIANTS for label in P_LABELS}
     row_fields = {
-        "identity", "variant", "p", "p_label", "status",
+        "identity", "variant", "p", "p_label", "status", "oracle",
         "flattened_equal", "recovery", "ended_utc", "reason", "seed",
         "shots", "schedule", "accepted", "errors", "discarded",
         "acceptance", "ler", "chunk_records", "crosscheck",
@@ -1102,13 +1135,26 @@ def _validate_point_rows(rows: list[dict], *,
         elif base_identity != shared_base_identity:
             raise Refusal("point rows mix different run identities")
 
+        expected_oracle = ("rebuilt" if key in REBUILT_ORACLE_CELLS
+                           else "shipped")
+        if row["oracle"] != expected_oracle:
+            raise Refusal(f"row/identity disagreement for {key}: oracle "
+                          f"{row['oracle']!r} != {expected_oracle!r}")
         if (row["shots"] != shots or row["seed"] != seed
                 or row["schedule"] != sched or row["status"] != "ok"
-                or row["flattened_equal"] is not True
                 or row["p"] != float(key[1])
                 or row["reason"] is not None
                 or row["crosscheck"] is not None):
             raise Refusal(f"row/identity disagreement for {key}")
+        if expected_oracle == "shipped":
+            if row["flattened_equal"] is not True:
+                raise Refusal(f"row/identity disagreement for {key}: "
+                              "shipped-oracle row must record "
+                              "flattened_equal True")
+        elif not isinstance(row["flattened_equal"], bool):
+            raise Refusal(f"row/identity disagreement for {key}: "
+                          "rebuilt-oracle row must record the factual "
+                          "flattened_equal bool")
         try:
             ended = datetime.strptime(row["ended_utc"], TS_Z)
         except (TypeError, ValueError) as exc:
@@ -1125,14 +1171,23 @@ def _validate_point_rows(rows: list[dict], *,
             "surface": f"surface_{key[0]}",
             "shipped": f"shipped_{key[0]}_{key[1]}",
         }
+        if expected_oracle == "shipped":
+            expected_mode = "shipped_equality_required"
+            expected_source = "shipped_author_circuit"
+            expected_oracle_used = True
+            expected_fe: bool | None = True
+        else:
+            expected_mode = "rebuilt_oracle_r8"
+            expected_source = "rebuilt_from_pinned_driver_builder"
+            expected_oracle_used = False
+            expected_fe = row["flattened_equal"]
         if (recovery["variant"] != key[0]
                 or recovery["p"] != float(key[1])
                 or recovery["p_label"] != key[1]
-                or recovery["recovery_mode"] != "shipped_equality_required"
-                or recovery["sampled_circuit_source"] !=
-                "shipped_author_circuit"
-                or recovery["dem_source"] != "shipped_author_circuit"
-                or recovery["shipped_oracle_used"] is not True
+                or recovery["recovery_mode"] != expected_mode
+                or recovery["sampled_circuit_source"] != expected_source
+                or recovery["dem_source"] != expected_source
+                or recovery["shipped_oracle_used"] is not expected_oracle_used
                 or recovery["driver_role"] != roles["driver"]
                 or recovery["driver_blob_sha1"] != _blob_of(roles["driver"])
                 or recovery["builder_role"] != roles["builder"]
@@ -1142,7 +1197,7 @@ def _validate_point_rows(rows: list[dict], *,
                 or recovery["shipped_blob_sha1"] != _blob_of(
                     roles["shipped"])
                 or recovery["num_observables"] != 3
-                or recovery["shipped_rebuilt_flattened_equal"] is not True
+                or recovery["shipped_rebuilt_flattened_equal"] != expected_fe
                 or recovery["mask_source"] !=
                 "executed pinned driver prefix + pinned stim_builder"
                 ".postselct_numbers(); never inferred from .stim"):
@@ -1247,7 +1302,13 @@ def analyze_points(point_rows: list[dict]) -> dict:
             author = _author_row(variant, row["p_label"])
             author_ler, author_acc = author[2], author[3]
             author_shots = author[1]
-            if row["status"] != "ok" or not row["flattened_equal"]:
+            # Revision 8: a rebuilt-oracle row is comparable on the strength
+            # of its own clean recovery+sampling; its factual
+            # flattened_equal=False records F-Z4 and is not a defect.
+            clean = (row["status"] == "ok"
+                     and (row["oracle"] == "rebuilt"
+                          or row["flattened_equal"]))
+            if not clean:
                 comparisons.append({"variant": variant, "p": row["p"],
                                     "comparable": False,
                                     "reason": row.get("reason")
@@ -1531,8 +1592,10 @@ def run_full(run_dir: Path, ctx: dict) -> dict:
             rows.append(resumed[key])
             continue
 
-        recovered = recover_point(ctx["source_root"], variant, p_label)
-        if not recovered.flattened_equal:
+        rebuilt_oracle = key in REBUILT_ORACLE_CELLS
+        recovered = recover_point(ctx["source_root"], variant, p_label,
+                                  rebuilt_oracle=rebuilt_oracle)
+        if not rebuilt_oracle and not recovered.flattened_equal:
             raise Refusal(
                 f"{variant}@{p_label}: shipped != rebuilt (flattened()); "
                 "source semantic failure — refusing before sampling")
@@ -1541,10 +1604,14 @@ def run_full(run_dir: Path, ctx: dict) -> dict:
             spec["shots"], CHUNK_FULL, spec["seed"])
         # Canonical row schema: status/flattened_equal live at the top;
         # recovery provenance and the complete sampling ledger are mandatory
-        # for both fresh writes and resumed acceptance.
+        # for both fresh writes and resumed acceptance.  ``oracle`` names the
+        # Revision-8 semantics: "shipped" (shipped artifact sampled, equality
+        # mandatory) or "rebuilt" (pinned-driver rebuild sampled; shipped
+        # artifact provenance-only, factual inequality recorded).
         row = {"identity": spec["identity"],
                "variant": variant, "p": float(p_label),
                "p_label": p_label, "status": "ok",
+               "oracle": "rebuilt" if rebuilt_oracle else "shipped",
                "flattened_equal": bool(recovered.flattened_equal),
                "recovery": recovered.provenance, "ended_utc": _now()}
         row.update(counts)

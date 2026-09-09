@@ -24,7 +24,7 @@ from pathlib import Path
 import numpy as np
 from flint import arb, ctx, fmpq
 
-ROOT = Path("/Users/jinleic/jinleic-workspace/cs/delcap")
+ROOT = Path(__file__).resolve().parents[1]
 CAMPAIGN_ID = (
     "2026-08-31T09:59:17Z_b6cd7315-caf3-4225-bb78-e4a81bf9a0f7_"
     "q4-total-output-orbit-mass"
