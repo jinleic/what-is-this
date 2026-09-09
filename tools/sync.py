@@ -368,6 +368,36 @@ def project_source_label(project: dict) -> str:
     return domain if dirname == "." else f"{domain}/{dirname}"
 
 
+# Directories holding a state.json that are deliberately not mirrored.
+# Anything else unregistered is drift: institute.py auto-discovers targets
+# from <domain>/<target>/state.json, but PROJECTS above is a hand-written
+# list — a promoted target would run for weeks and never appear on the
+# site.  Resolve a drift warning by adding a PROJECTS entry (to publish)
+# or a DRIFT_GUARD_IGNORE entry (to document the deliberate omission).
+DRIFT_GUARD_IGNORE: frozenset[tuple[str, str]] = frozenset()
+
+
+def drift_guard() -> list[str]:
+    """Unregistered targets: state.json present but no PROJECTS entry."""
+    registered = {(project_domain(p), p["dirname"]) for p in PROJECTS}
+    drift = []
+    for domain, cfg in DOMAINS.items():
+        root = cfg["root"]
+        if not root.is_dir():
+            continue
+        for d in sorted(root.iterdir()):
+            if (not d.is_dir() or d.name.startswith(".")
+                    or d.name in JUNK_DIRS
+                    or d.name in VERIFIED_TARGET_EXCLUDES):
+                continue
+            if ((domain, d.name) in registered
+                    or (domain, d.name) in DRIFT_GUARD_IGNORE):
+                continue
+            if (d / "state.json").is_file():
+                drift.append(f"{domain}/{d.name}")
+    return drift
+
+
 JUNK_DIRS = {"__pycache__", ".venv", "venv", ".git", "node_modules",
              ".ipynb_checkpoints", ".pytest_cache", ".mypy_cache",
              ".ruff_cache", "build", "dist", "egg-info",
@@ -1194,6 +1224,13 @@ def main() -> int:
         f"\ntotal mirrored: {total_bytes / 1e6:.1f} MB; "
         f"pages rewritten this run: {pages_rewritten}"
     )
+    drift = drift_guard()
+    for d in drift:
+        print(f"DRIFT WARNING: {d} has state.json but no PROJECTS entry — "
+              f"invisible on the site; add it to PROJECTS (publish) or "
+              f"DRIFT_GUARD_IGNORE (deliberate omission)")
+    if not drift:
+        print("drift guard: every state.json target is registered")
     rc = final_gate(words)
     if rc == 0:
         print("clean — sync with: git add -A && git commit && git push")
