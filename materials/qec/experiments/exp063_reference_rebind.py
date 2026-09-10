@@ -152,6 +152,7 @@ def _validate_bound_archive(payload: dict[str, Any]) -> None:
 
 def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, Any]:
     original_bytes = path.read_bytes()
+    old_shard_sha256 = hashlib.sha256(original_bytes).hexdigest()
     payload = json.loads(original_bytes)
     E55._validate_screen_shard_aggregates(payload)
     # The original shard's thresholds are pinned to the previous battery by
@@ -168,6 +169,7 @@ def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, A
         int(k_min), int(k_max), float(old_protocol["time_limit_s"]),
     )
     if old_protocol == new_protocol:
+        E55._validate_screen_shard_records(payload)
         return payload
 
     transitions: dict[str, int] = {}
@@ -230,7 +232,7 @@ def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, A
     for record in records:
         verdicts[record["verdict"]] = verdicts.get(record["verdict"], 0) + 1
     version = E55.REFERENCE_VALIDATION_VERSION
-    archive = ARCHIVE_DIR / version / path.name
+    archive = ARCHIVE_DIR / version / old_shard_sha256 / path.name
     archive.parent.mkdir(parents=True, exist_ok=True)
     if archive.exists():
         archived_bytes = archive.read_bytes()
@@ -251,7 +253,7 @@ def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, A
         "undecided": [record for record in records if record["verdict"] == "undecided"],
         "reference_rebind": {
             "schema": SCHEMA,
-            "old_shard_sha256": hashlib.sha256(original_bytes).hexdigest(),
+            "old_shard_sha256": old_shard_sha256,
             "old_reference_sha256": old_protocol["reference_sha256"],
             "new_reference_sha256": new_protocol["reference_sha256"],
             "old_validation_version": old_protocol["reference_validation_version"],
@@ -262,6 +264,13 @@ def rebind_shard(path: Path, ratchets: dict[str, dict[str, Any]]) -> dict[str, A
             "archive": str(archive.relative_to(ROOT)),
         },
     }
+    if isinstance(payload.get("transport"), dict):
+        source = payload["transport"]["source_lattice"]
+        source_path = E55.SCREEN_DIR / f"{source[0]}x{source[1]}.json"
+        rebound["transport"] = {
+            **payload["transport"],
+            "source_shard_sha256": file_sha256(source_path),
+        }
     E55._validate_screen_shard_aggregates(rebound)
     E55._validate_screen_shard_records(rebound)
     temporary = path.with_suffix(path.suffix + ".tmp")

@@ -9,7 +9,7 @@
   "headline": "Zero Ramsey-good fixed-five involution orbits at candidate level; VeriPB/CakePB promotion in progress",
   "next_action": "Keep the restart-disabled math/r55/src/run_involution_f5_certificate_campaign.py queue running to full 550+155 coverage, then run check_involution_f5_certificate_coverage.py. Distinguish explicit proof rejection from timeout or calibrated CakePB heap exhaustion.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-08T17:27:56Z",
+  "updated_utc": "2026-09-09T06:03:32Z",
   "updated_by": "three-cannon-campaign",
   "sources": [
     "math/PROGRESS.md#R55 (2026-08-24d) \u2014 FIXED-FIVE CANDIDATE CENSUS EMPTY; FULL CERTIFICATION PENDING",
@@ -52,7 +52,9 @@
     "runs_used": 0,
     "tokens_used": 0,
     "seconds_used": 0.0,
-    "gate_at_last_progress": "Fixed-five involution branch certification is live and incomplete. Canonical ledgers contain 54/550 W-negative and 10/155 hierarchical source orbits. Every canonical record is VERIPB_CAKEPB_VERIFIED with exact source/formula/proof/kernel hashes and its successful heap profile. Recent W records include source 59 at 4,531.983323 CakePB seconds and sources 62-69. Recent hierarchical records include source 86 with 64 W terminals and 4,224 signed terminals, source 113 with 8 W terminals and no signed terminals, and source 120 with 32 W terminals and 48 signed terminals. Hierarchical source 130 is now in its W-terminal CakePB check. The locked 3:1 scheduler polls disk and permits one CakePB process. Current/future drivers share scratch/.host-heavy-job.lock with Kobon DRAT checking and pass live DRIVER/HOST descriptors to subprocesses; lsof confirmed both locks open in the source-36 CakePB child. Full 550+155 coverage closes only this branch, not R(5,5) <= 45 globally."
+    "gate_at_last_progress": "Fixed-five involution branch certification is live and incomplete. Canonical ledgers contain 54/550 W-negative and 10/155 hierarchical source orbits. Every canonical record is VERIPB_CAKEPB_VERIFIED with exact source/formula/proof/kernel hashes and its successful heap profile. Recent W records include source 59 at 4,531.983323 CakePB seconds and sources 62-69. Recent hierarchical records include source 86 with 64 W terminals and 4,224 signed terminals, source 113 with 8 W terminals and no signed terminals, and source 120 with 32 W terminals and 48 signed terminals. Hierarchical source 130 is now in its W-terminal CakePB check. The locked 3:1 scheduler polls disk and permits one CakePB process. Current/future drivers share scratch/.host-heavy-job.lock with Kobon DRAT checking and pass live DRIVER/HOST descriptors to subprocesses; lsof confirmed both locks open in the source-36 CakePB child. Full 550+155 coverage closes only this branch, not R(5,5) <= 45 globally.",
+    "tokens_unreported_runs": 0,
+    "seconds_unreported_runs": 0
   },
   "priority": {
     "value": 3,

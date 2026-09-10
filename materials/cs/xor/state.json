@@ -9,7 +9,7 @@
   "headline": "88-gate public circuit reproduced; no savings in 258 local windows; independent negatives incomplete (19 UNKNOWN); FROZEN-INCONCLUSIVE.",
   "next_action": "No local-search extension or autonomous run. Re-enter only with a separately preregistered nonlocal representation and strongest public comparator; first demonstrate constructive headroom.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-08T15:03:03Z",
+  "updated_utc": "2026-09-09T06:03:32Z",
   "sources": [
     "cs/xor/README.md",
     "cs/RESULTS.md",
@@ -37,7 +37,9 @@
     "runs_used": 0,
     "tokens_used": 0,
     "seconds_used": 0.0,
-    "gate_at_last_progress": "aes88-local-headroom: stopped, rank C"
+    "gate_at_last_progress": "aes88-local-headroom: stopped, rank C",
+    "tokens_unreported_runs": 0,
+    "seconds_unreported_runs": 0
   },
   "priority": {
     "value": 1,

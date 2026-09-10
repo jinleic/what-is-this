@@ -9,7 +9,7 @@
   "headline": "Reusable Hilbert-transform basis machinery; paused pending Clay-tied use",
   "next_action": "None unless a Clay-tied use is identified",
   "owner": "jinleic",
-  "updated_utc": "2026-09-08T15:03:03Z",
+  "updated_utc": "2026-09-09T06:03:32Z",
   "updated_by": "workspace-architecture-fix",
   "sources": [
     "math/ccf/README.md"
@@ -35,7 +35,9 @@
     "runs_used": 0,
     "tokens_used": 0,
     "seconds_used": 0.0,
-    "gate_at_last_progress": "Technique-validation only; no Clay-tied use"
+    "gate_at_last_progress": "Technique-validation only; no Clay-tied use",
+    "tokens_unreported_runs": 0,
+    "seconds_unreported_runs": 0
   },
   "priority": {
     "value": 2,

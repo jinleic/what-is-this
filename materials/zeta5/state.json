@@ -9,7 +9,7 @@
   "headline": "Gate 2 closed FROZEN-NEGATIVE: zero of 44 swept constructions beats baseline mu2=0.337537; deficit 3.914 stands; record byte-stable",
   "next_action": "None standing: campaign stopped at gate 2 per contract; resumption requires proposing a NEW family ladder (fresh triage decision, not a re-run of the swept 44 probes)",
   "owner": "jinleic",
-  "updated_utc": "2026-09-08T15:43:22Z",
+  "updated_utc": "2026-09-09T06:03:32Z",
   "updated_by": "Zeta5SubAgent",
   "sources": [
     "math/zeta5/README.md"
@@ -49,7 +49,9 @@
     "runs_used": 1,
     "tokens_used": 0,
     "seconds_used": 398.0,
-    "gate_at_last_progress": "Gate 1 passed (Zudilin recursion certified); Gate 2 construction sweep closed FROZEN-NEGATIVE (zero survivors in frozen 44-probe ladder); campaign stopped at gate 2 per README go/no-go"
+    "gate_at_last_progress": "Gate 1 passed (Zudilin recursion certified); Gate 2 construction sweep closed FROZEN-NEGATIVE (zero survivors in frozen 44-probe ladder); campaign stopped at gate 2 per README go/no-go",
+    "tokens_unreported_runs": 1,
+    "seconds_unreported_runs": 0
   },
   "priority": {
     "value": 3,

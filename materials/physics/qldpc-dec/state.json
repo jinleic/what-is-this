@@ -9,7 +9,7 @@
   "headline": "GB9 canceled, not scientifically negated; four inherited 32res shards, no completed 1e8-shot experiment. Prior beam32 5.44x [4.17,7.55] vs 5.6x reproduced; K=1 beam64 8.26x [5.97,12.65] consistent with published 7.0x. The num_results=32 17x claim remains unresolved.",
   "next_action": "Preserve canceled GB9 evidence; do not restart the multi-week objective. Reconsider only a genuinely new bounded question with a new preregistration and projected total mini occupation, including retries, at most 72 hours per mini.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-09T02:38:48Z",
+  "updated_utc": "2026-09-09T06:03:32Z",
   "updated_by": "Main (owner-directed GB9 stop)",
   "sources": [
     "physics/RESULTS.md",
@@ -64,7 +64,9 @@
     "runs_used": 1,
     "tokens_used": 0,
     "seconds_used": 23094.0,
-    "gate_at_last_progress": "GB9 RUNNING: the paper's actual 17x configuration beam64_32res_640iters (num_results=32) on the paired 1e8 GB7 stream, relaunched as run 20260908T194719Z_e9e0a889_e5962c4be23b on mini-0.local after 20260902T114747Z_69eba724_61e9fe30ba5d closed CRASHED; Revision GB9 pre-registered, equivalence gate passed (2000/2000, 300/300; K=1 six of six byte-identical); Gate B otherwise decided (GB7 FROZEN-NEGATIVE, GB8 re-target)"
+    "gate_at_last_progress": "GB9 stopped during shard 04 by owner direction: projected remaining 480-720 hours exceeds the 72-hour per-scientific-task per-mini limit. Run 20260908T194719Z_e9e0a889_e5962c4be23b closed CRASHED (administrative cancellation), with no scientific verdict on the partial sample. GB7 results and GB8 configuration correction stand.",
+    "tokens_unreported_runs": 1,
+    "seconds_unreported_runs": 0
   },
   "priority": {
     "value": 3,

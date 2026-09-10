@@ -28,14 +28,14 @@
   },
   "title": "Perturbing a bivariate-bicycle code cannot buy distance for free",
   "subtitle": "An exact, perturbation-independent rate–distance obstruction for perturbed bivariate-bicycle (PBB) codes, with machine-checked certificates",
-  "abstract": "Perturbed bivariate-bicycle (PBB) codes are non-CSS stabilizer codes obtained from a CSS\nbivariate-bicycle (BB) parent $P$ by adding a $Z$-type perturbation $[C\\;D]$ to the\n$X$-check block. They have been proposed as a route past the CSS BB rate–distance\nenvelope, on the strength of a published catalogue of $368$ codes including a non-CSS\n$[[144,12,12]]$ and a $[[360,12,\\le 24]]$ candidate.\n\nWe prove that the perturbation degree of freedom is not free. Let\n$\\Delta=\\{\\lambda[C\\;D] : \\lambda[A;B]=0\\}$ be the *dressing space* of the perturbation.\nWe show (i) $\\Delta$ is an $R$-submodule of the $Z$-sector for\n$R=\\mathbb{F}_2[x,y]/(x^{\\ell}-1,y^{m}-1)$, (ii) the PBB dimension obeys the exact\nidentity $k_Q = k_P - \\dim\\bar\\Delta$, and (iii) any minimum-weight $Z$-logical of the\nparent that is *not* absorbed by $\\Delta$ survives as a logical of $Q$, certifying\n$d_Q \\le d_Z(P)$.\n\nBecause $\\Delta$ is a submodule, absorbing one minimum-weight parent logical absorbs its\nentire translation orbit. This upgrades the per-perturbation criterion to a\n**parent-level no-go theorem**: with\n$T(P)=\\dim\\big(M(P)+S_Z\\big)/S_Z$, where $M(P)$ is the span of the translation orbits of\n*all* minimum-weight $Z$-logicals of $P$,\n\n$$\\boxed{\\;d_Q > d_Z(P)\\ \\Longrightarrow\\ k_Q \\le k_P - T(P)\\quad\\text{for \\emph{every} perturbation } [C\\;D]\\;}$$\n\n$T(P)$ depends only on the parent and is computed *exactly* — not bounded — by a SAT\nenumeration that terminates in a certified UNSAT. When $T(P)=k_P$ the entire family is\nclosed: no PBB over $P$ retains a single logical qubit while exceeding $d_Z(P)$.\n\nWe compute $T$ exactly for $134$ of the $202$ distinct parents in the published\ncatalogue — exhaustively for every parent at $n\\le 144$. **$61$ parents are family-closed**, including the Gross code\n$A=x^3+y+y^2,\\;B=y^3+x+x^2$ itself ($T=12=k_P$) and all $11$ distinct catalogue\n$[[144,12,12]]$ parents. This settles $249$ of the $368$ catalogue rows with no per-row\nsearch at all, and it forecloses the headline direction of the construction over the\nmost important parent in the family.\n\nThe bound is not merely valid but *exact*.  A second elementary identity — the\ndressing space is the image of the left kernel of $[A\\;B]$, whose dimension is\n$k_P/2$ on every BB parent — caps $\\dim\\bar\\Delta\\le k_P/2$.  Whenever\n$T(P)\\ge k_P/2$, which holds on $133$ of the $134$ certified parents, the two\nbounds **sandwich**:\n\n$$\\boxed{\\;d_Q > d_Z(P)\\ \\text{and}\\ T(P)\\ge k_P/2\\quad\\Longrightarrow\\quad\nk_Q = k_P - T(P)\\ \\text{exactly}\\;}$$\n\nPerturbation does not just pay at least $T$ logical qubits for distance; on\nevery parent in the theorem's class it pays *precisely* $T$, no more and no\nless.  All $7$ independently certified distance-increasing perturbations sit on\nthe law exactly (slack $0$, hypotheses replay-certified), and a controlled\nsmall-lattice probe — $64$ sampled parents across four lattices, $26{,}898$\nvalid $\\delta>0$ perturbations of $Z$-support $\\le 4$, distances decided by\nexact symplectic meet-in-the-middle — found $496$ further\nstrict increases, **every one on the law, zero above it**: instances we now\nknow were theorem-forced rather than lucky.",
+  "abstract": "Perturbed bivariate-bicycle (PBB) codes are non-CSS stabilizer codes obtained from a CSS\nbivariate-bicycle (BB) parent $P$ by adding a $Z$-type perturbation $[C\\;D]$ to the\n$X$-check block. They have been proposed as a route past the CSS BB rate–distance\nenvelope, on the strength of a published catalogue of $368$ codes including a non-CSS\n$[[144,12,12]]$ and a $[[360,12,\\le 24]]$ candidate.\n\nWe prove that the perturbation degree of freedom is not free. Let\n$\\Delta=\\{\\lambda[C\\;D] : \\lambda[A;B]=0\\}$ be the *dressing space* of the perturbation.\nWe show (i) $\\Delta$ is an $R$-submodule of the $Z$-sector for\n$R=\\mathbb{F}_2[x,y]/(x^{\\ell}-1,y^{m}-1)$, (ii) the PBB dimension obeys the exact\nidentity $k_Q = k_P - \\dim\\bar\\Delta$, and (iii) any minimum-weight $Z$-logical of the\nparent that is *not* absorbed by $\\Delta$ survives as a logical of $Q$, certifying\n$d_Q \\le d_Z(P)$.\n\nBecause $\\Delta$ is a submodule, absorbing one minimum-weight parent logical absorbs its\nentire translation orbit. This upgrades the per-perturbation criterion to a\n**parent-level no-go theorem**: with\n$T(P)=\\dim\\big(M(P)+S_Z\\big)/S_Z$, where $M(P)$ is the span of the translation orbits of\n*all* minimum-weight $Z$-logicals of $P$,\n\n$$\\boxed{\\;d_Q > d_Z(P)\\ \\Longrightarrow\\ k_Q \\le k_P - T(P)\\quad\\text{for \\emph{every} perturbation } [C\\;D]\\;}$$\n\n$T(P)$ depends only on the parent and is computed *exactly* — not bounded — by a SAT\nenumeration that terminates in a certified UNSAT. When $T(P)=k_P$ the entire family is\nclosed: no PBB over $P$ retains a single logical qubit while exceeding $d_Z(P)$.\n\nWe compute $T$ exactly for $139$ of the $202$ distinct parents in the published\ncatalogue — exhaustively for every parent at $n\\le 144$. **$63$ parents are family-closed**, including the Gross code\n$A=x^3+y+y^2,\\;B=y^3+x+x^2$ itself ($T=12=k_P$) and all $11$ distinct catalogue\n$[[144,12,12]]$ parents. This settles $253$ of the $368$ catalogue rows with no per-row\nsearch at all, and it forecloses the headline direction of the construction over the\nmost important parent in the family.\n\nThe bound is not merely valid but *exact*.  A second elementary identity — the\ndressing space is the image of the left kernel of $[A\\;B]$, whose dimension is\n$k_P/2$ on every BB parent — caps $\\dim\\bar\\Delta\\le k_P/2$.  Whenever\n$T(P)\\ge k_P/2$, which holds on $138$ of the $139$ certified parents, the two\nbounds **sandwich**:\n\n$$\\boxed{\\;d_Q > d_Z(P)\\ \\text{and}\\ T(P)\\ge k_P/2\\quad\\Longrightarrow\\quad\nk_Q = k_P - T(P)\\ \\text{exactly}\\;}$$\n\nPerturbation does not just pay at least $T$ logical qubits for distance; on\nevery parent in the theorem's class it pays *precisely* $T$, no more and no\nless.  All $7$ independently certified distance-increasing perturbations sit on\nthe law exactly (slack $0$, hypotheses replay-certified), and a controlled\nsmall-lattice probe — $64$ sampled parents across four lattices, $26{,}898$\nvalid $\\delta>0$ perturbations of $Z$-support $\\le 4$, distances decided by\nexact symplectic meet-in-the-middle — found $496$ further\nstrict increases, **every one on the law, zero above it**: instances we now\nknow were theorem-forced rather than lucky.\n\nOn the $X$ side the companion collapse mechanism is classified completely. The\nset of perturbation directions that *cannot* demote a parent $X$-stabilizer is\nan invariant of the single ideal $I=\\operatorname{Ann}_R(A,B)$: writing\n$I^\\infty$ for its stable power, $\\dim S=2\\dim I^\\infty$, so a parent is\ndemote-full iff $I$ is nilpotent, demote-immune iff $I$ is idempotent, and\nmixed iff neither (Theorem J-G) — reproducing the $202$-parent catalogue\nclassification in $9$ s with no module computation, and sharpening it: $I^2=0$\non all $192$ demoting parents, $I^2=I$ on all $10$ immune ones. Two corollaries\nare structural rather than computational. If $\\ell$ and $m$ are both odd, $R$ is\nsemisimple and *no* parent can demote at all — of the seven published BB\ninstances exactly one, the $[[90,8,10]]$ code on the $(15,3)$ lattice, is\nprotected this way. And splitting $G=\\mathbb Z_\\ell\\times\\mathbb Z_m$ into its\n$2$-part and odd part shows that exact vanishing at a local factor costs two\nsupport points per occupied $2$-coset, whence **no pair with\n$\\operatorname{wt}(A),\\operatorname{wt}(B)\\le3$ — the entire family used in the\nliterature — is ever mixed** (Theorem J-I), while weight $4$ already realizes\nit: $A=(1+x)(y+y^2)$, $B=Ay$ on $(2,3)$ is mixed with $240$ of $255$ classes\ndemoting (Theorem J-J, verified by three independent routes). An exhaustive\ncensus of $653{,}022{,}021$ weight-$\\le3$ pairs over $18$ lattices confirms the\nweight law with zero exceptions.",
   "abstract_verification": {
-    "method": "slice '## Abstract' body (md lines 13-63) byte-exact; fenced verbatim embed in reports/arxiv_package.md §1; re-extract and compare",
+    "method": "Extract complete ## Abstract body through next --- from the pinned paper_md; replace the stale kit fence verbatim; re-extract and compare",
     "exact_substring_of_paper_md": true,
     "occurs_exactly_once": true,
     "embedded_equals_source_bytes": true,
-    "chars": 3158,
-    "lines": 51,
+    "chars": 4638,
+    "lines": 72,
     "boxed_results": 2
   },
   "categories": {
@@ -78,127 +78,174 @@
     {
       "path": "reports/paper_pbb_nogo.tex",
       "bytes": 71077,
-      "description": "LaTeX source compiled from the md (primary tex for arXiv; 18-page reference build)."
+      "description": "LaTeX source compiled from the md (primary tex for arXiv; 18-page reference build).",
+      "sha256": "d3d3d0dca00626cccf54841ffe395caf7dcf7d7f42cc9d96d740854d51448a75"
     },
     {
       "path": "reports/paper_pbb_nogo.bib",
       "bytes": 3173,
-      "description": "Bibliography (bbl produced from it; arXiv runs its own bibtex pass)."
+      "description": "Bibliography (bbl produced from it; arXiv runs its own bibtex pass).",
+      "sha256": "579b1d8efe0a69bb6f767a43fec3802c8aef183a817f0373baff6a390672cb69"
     },
     {
       "path": "reports/paper_pbb_nogo.pdf",
       "bytes": 716216,
-      "description": "Reference build (18 pages) for preview; arXiv rebuilds from tex."
+      "description": "Reference build (18 pages) for preview; arXiv rebuilds from tex.",
+      "sha256": "6d907fb8f48ca313154db32aff5e462b1a24e18fd6d1af838795b8f148555079"
     },
     {
       "path": "reports/claims_matrix.md",
       "bytes": 35340,
-      "description": "57-claim provenance ledger: number -> artifact -> regenerating command -> guarding test (38 VERIFIED / 19 UNGUARDED)."
+      "description": "57-claim provenance ledger: number -> artifact -> regenerating command -> guarding test (38 VERIFIED / 19 UNGUARDED).",
+      "sha256": "e6909b042db18f4fbfc11852799c26c01504e8bd50298faa1d8f44c0ca259d1d"
     },
     {
       "path": "notes/open_status_2026-08-17.md",
       "bytes": 10729,
-      "description": "Dated novelty/open-status annex backing paper §9 (literature-search audit trail)."
+      "description": "Dated novelty/open-status annex backing paper §9 (literature-search audit trail).",
+      "sha256": "85ddb8b59c38a92b7f4243bb56b3f77815ed30045697f8789a33f720c028a724"
     },
     {
       "path": "results/partial_runs/exp039_nogo_module.json",
-      "bytes": 66430,
-      "description": "EXP-039 assembled result: 134 parent T-certificates; 61 family-closed parents; 249 rows capped a priori; falsification-gate summary. NOTE: task template said results/processed/ but the artifact lives under partial_runs/ (as in paper §8)."
+      "bytes": 67667,
+      "description": "Live EXP-039 aggregate; descriptor bytes/hash measured, scientific claims not revalidated here. Historical staging counts differ; see dependency_reconciliation.publication_holds.",
+      "sha256": "f8d32e4386d819cfcf750626d75b72796545163ffd74eb7f24a2391d14003fe7"
     },
     {
       "path": "results/partial_runs/exp039/",
-      "bytes": null,
-      "description": "Per-parent SAT/UNSAT certificates with witness vectors, T_is_exact, wall times (full replay inputs)."
+      "bytes": 776194,
+      "description": "Current EXP-039 per-parent evidence directory; exact byte/file inventory measured, historical paper counts not refreshed or independently revalidated here.",
+      "sha256": "f5df9827beaf6a8ac849f5af7c8457c0feb44dc14c6ec3295ce7dc053583109c",
+      "file_count": 153,
+      "hash_method": "SHA256 of canonical sorted path/bytes/sha256 file inventory in ancillary-inventory.json"
     },
     {
       "path": "results/processed/exp036_envelope_check.json",
       "bytes": 46979,
-      "description": "EXP-036/037: all 7 certified reversals CSS-dominated at equal n over 162 exact candidates."
+      "description": "EXP-036/037: all 7 certified reversals CSS-dominated at equal n over 162 exact candidates.",
+      "sha256": "a50af190913ce3e24ef4fa4bd3365e92912c2ccf7800cae722fe97efb24a26e5"
     },
     {
       "path": "results/processed/exp040_saturation_probe.json",
       "bytes": 1009661,
-      "description": "EXP-040 probe: 64 parents, 26,898 valid perturbations, 496 strict increases, all on the law, none above."
+      "description": "EXP-040 probe: 64 parents, 26,898 valid perturbations, 496 strict increases, all on the law, none above.",
+      "sha256": "b359524f7dcac1aa21be3f1414ebf8def911474655f6924aa20cddea67d7e1c8"
     },
     {
       "path": "results/processed/exp041_t_crosscheck.json",
       "bytes": 70288,
-      "description": "EXP-041: independent T recomputation cross-checking EXP-039 host values."
+      "description": "EXP-041: independent T recomputation cross-checking EXP-039 host values.",
+      "sha256": "01edb29ed21aacb6904dff63e3319e91eed4cc8615387200541257fac296b819"
     },
     {
       "path": "results/certificates/exp056_wm_162_8_14_distance.json",
       "bytes": 127917,
-      "description": "EXP-056 exact [[162,8,14]] certificate: 20 replayed class-orbit UNSATs, weight-14 witness, exact X/Z duality."
+      "description": "EXP-056 exact [[162,8,14]] certificate: 20 replayed class-orbit UNSATs, weight-14 witness, exact X/Z duality.",
+      "sha256": "3165e8139e9468ec4573816d4ba30a1d7f1007efc5aef631b96a6c8f8493a984"
     },
     {
       "path": "results/certificates/exp057_170_16_10_distance.json",
       "bytes": 4516,
-      "description": "EXP-057 replayed exact [[170,16,10]] certificate."
+      "description": "EXP-057 replayed exact [[170,16,10]] certificate.",
+      "sha256": "334092ae806faea5d46d2f52e24fc64ed5d3f7a6094941606d447f8dad0ca99b"
     },
     {
       "path": "results/certificates/exp058_186_10_14_distance.json",
       "bytes": 5572,
-      "description": "EXP-058 replayed exact [[186,10,14]] promoted-class certificate; seven exact classes audited."
+      "description": "EXP-058 replayed exact [[186,10,14]] promoted-class certificate; seven exact classes audited.",
+      "sha256": "736a51d5c7a1306f2a0aaba69d74504490a0c11677ad79e6569691c3270de4ae"
     },
     {
       "path": "results/certificates/exp060_210_18_8_distance.json",
       "bytes": 3833,
-      "description": "EXP-060 replayed exact [[210,18,8]] promoted-class certificate; thirteen exact classes."
+      "description": "EXP-060 replayed exact [[210,18,8]] promoted-class certificate; thirteen exact classes.",
+      "sha256": "cffafadc22f93e12b2b394378c8f2a51c7e50a3288deda12ad7e608fb4588f48"
     },
     {
       "path": "results/certificates/exp064_210_24_4_distance.json",
       "bytes": 3536,
-      "description": "EXP-064 replayed exact [[210,24,4]] certificate."
+      "description": "EXP-064 replayed exact [[210,24,4]] certificate.",
+      "sha256": "4e1745e9f06d7be53bb54e5cfe6fbcb330038182aa55a3b7ab7df8f2a4fc2aea"
     },
     {
       "path": "results/certificates/exp064_210_14_12_distance.json",
       "bytes": 3827,
-      "description": "EXP-064 replayed exact [[210,14,12]] certificate."
+      "description": "EXP-064 replayed exact [[210,14,12]] certificate.",
+      "sha256": "bdf41639c9982b61e8be6a53a71cf2e2494211cd5c115682f7e848bff1cfea3f"
     },
     {
       "path": "results/certificates/exp064_210_10_16_distance.json",
       "bytes": 3966,
-      "description": "EXP-064 replayed exact [[210,10,16]] certificate."
+      "description": "EXP-064 replayed exact [[210,10,16]] certificate.",
+      "sha256": "45147bf9d9613019d20cc57f7b0ebdd2f2f71a34bb1f9901abdbacba023861c8"
     },
     {
       "path": "results/processed/exp059_coprime_transport.json",
       "bytes": 1287,
-      "description": "Exact all-monomial CRT transport certificate for the three coprime N=105 lattices."
+      "description": "Exact all-monomial CRT transport certificate for the three coprime N=105 lattices.",
+      "sha256": "9cb9f75a5b9c6b08b243e7d0643c424c1b1734cf03e2bd318cbf7d5a8199c760"
     },
     {
       "path": "results/processed/exp060_n210_ratchet.json",
       "bytes": 54307,
-      "description": "Adaptive parity/duality exact results: 17 exact n=210 classes plus one witness-only dominated k=8 row."
+      "description": "Adaptive parity/duality exact results: 17 exact n=210 classes plus one witness-only dominated k=8 row.",
+      "sha256": "36ae7a30dd1e32201b9422a3cd26f1e7af9eb1960e3d80dc4268a9846fc0a075"
     },
     {
       "path": "results/certificates/exp067_234_8_18_bundle19_distance.json",
       "bytes": 7027,
-      "description": "EXP-067 exact [[234,8,18]] certificate for automorphism bundle 19: original/block-swapped rooted cap-16 exhaustion, both replayed, plus weight-18 X/Z witnesses."
+      "description": "EXP-067 exact [[234,8,18]] certificate for automorphism bundle 19: original/block-swapped rooted cap-16 exhaustion, both replayed, plus weight-18 X/Z witnesses.",
+      "sha256": "f8f58c6e0afa8324e743d1a2c68fc00e6e67ac3bb63e439b8259aaf4f0212ca8"
     },
     {
       "path": "results/certificates/exp067_234_8_18_bundle22_distance.json",
       "bytes": 7024,
-      "description": "EXP-067 exact [[234,8,18]] certificate for automorphism bundle 22: original/block-swapped rooted cap-16 exhaustion, both replayed, plus weight-18 X/Z witnesses."
+      "description": "EXP-067 exact [[234,8,18]] certificate for automorphism bundle 22: original/block-swapped rooted cap-16 exhaustion, both replayed, plus weight-18 X/Z witnesses.",
+      "sha256": "fab883dee6b2de4130b392ce2d7fc0472118fb3cfed90f69c0f19e23391046c6"
     },
     {
       "path": "results/partial_runs/exp068_screen_witnesses/",
       "bytes": 73393,
-      "description": "EXP-068 record-level proof repair: 57 hash-bound physical fallback witnesses (29 independent, 28 exact CRT transports) used by validator v11."
+      "description": "EXP-068 record-level proof repair: 57 hash-bound physical fallback witnesses (29 independent, 28 exact CRT transports) used by validator v11.",
+      "sha256": "0d893b1e0cea2573d570984ae0b4c57b2715eed5aecd5b22bcf6432b68fc3aad",
+      "file_count": 57,
+      "hash_method": "SHA256 of canonical sorted path/bytes/sha256 file inventory in ancillary-inventory.json"
     },
     {
       "path": "results/processed/exp055_odd_lattice_screen.json",
-      "bytes": 7147344,
-      "description": "Validator-v11 exact odd-lattice fixed-point screen through n=234: 4,862 classes / 150,581 pairs; all 4,658 referenced classes carry record-level domination proofs, 204 no-reference, zero survivor/undecided."
+      "bytes": 7148774,
+      "description": "Current validator-v11 n<=234 aggregate, reconciled by certified EXP-055 run 20260909T095538Z_4809c2f8_816c74c3bcbd: 22 lattices, 4862 classes, 150581 pairs, 4658 dominated, 204 no-reference, zero survivor/undecided; n=270 excluded.",
+      "sha256": "d95a3e4537387587f80295b43782fcf7bb85c2ee1cfc1ca68ecb3fbe057b38dd"
     },
     {
       "path": "results/processed/exp066_n234_frontier.json",
       "bytes": 10398,
-      "description": "EXP-066 576-map automorphism audit refreshed after EXP-067 promotion: 182 hard classes to 30 bundles, all 842 local n=234 classes dominated."
+      "description": "Current EXP-066 summary regenerated through EXP-067 from the certified EXP-055 bytes: 842 local classes dominated; 576-map audit, 182 original hard classes and 30 bundles unchanged; protocol/shard/global hashes current.",
+      "sha256": "ecd0248b26d38469f976fa9f83d5dfae2da85331560f0991f559fa05a67f937d"
     },
     {
       "path": "results/certificates/exp055_odd_lattice_survivors.json",
       "bytes": 356,
-      "description": "Empty-survivor certificate hash-bound to the exact n=234 screen."
+      "description": "Historical empty-survivor certificate only; binds archived pre-reconciliation n<=234 aggregate, not the current screen.",
+      "sha256": "2299063e0af75c25f59f4fea78541f44dd80614f8f096a85ee1caf71fa39fd4d"
+    },
+    {
+      "path": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json",
+      "bytes": 356,
+      "sha256": "8d7b207ec4a4919ee6bbaa36df0287aac732f3d9b9959554fff2c2160af573b9",
+      "description": "Current empty-survivor attestation bound to the unchanged certified n<=234 aggregate; no new distance or n=270 closure."
+    },
+    {
+      "path": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/inputs/results/processed/exp055_odd_lattice_screen.json",
+      "bytes": 7147344,
+      "sha256": "4d9e6b51f3879d8a436fbed767fa091749f643e151dcc66ab4dfa5b1dcdc8340",
+      "description": "Archived aggregate matching the historical empty-survivor certificate."
+    },
+    {
+      "path": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/RESULTS.md",
+      "bytes": 4663,
+      "sha256": "db79274fa742f4b1e2ed4d13cad6b3c73a3a01ae46519be83341a0061704239f",
+      "description": "Authoritative closed source-run findings; reconciliation only."
     }
   ],
   "reviewer_quickstart": [
@@ -262,5 +309,53 @@
   "pre_submission_blockers": [
     "Author block empty ([TO FILL BY HUMAN]) - arXiv requires a named human submitter",
     "License choice + actual submission are human actions; this kit posts nothing"
-  ]
+  ],
+  "dependency_reconciliation": {
+    "run": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc",
+    "source_run": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd",
+    "descriptor_date": "2026-09-09",
+    "scope": "EXP-066/067 derived-summary and package/checkpoint dependency bindings only",
+    "protocol": {
+      "cdcl_conflict_budget": 1000000,
+      "cdcl_solver": "cadical195",
+      "census_sha256": "c6733189b9e5a533daca6b0743ac54e222194509fa9e45c729a9524c34b6b1d5",
+      "k_range": [
+        8,
+        24
+      ],
+      "reference_sha256": "b0bfb677c46a9aa9b68136167475e270bd2af16bbd6e103dbc0742500111f540",
+      "reference_validation_version": "exp055-exact-reference-validator-v11",
+      "residual_workers": 8,
+      "time_limit_s": 120.0,
+      "witness_keep": 64,
+      "witness_tries": 8
+    },
+    "current_screen": {
+      "path": "results/processed/exp055_odd_lattice_screen.json",
+      "bytes": 7148774,
+      "sha256": "d95a3e4537387587f80295b43782fcf7bb85c2ee1cfc1ca68ecb3fbe057b38dd"
+    },
+    "current_summary": {
+      "path": "results/processed/exp066_n234_frontier.json",
+      "bytes": 10398,
+      "sha256": "ecd0248b26d38469f976fa9f83d5dfae2da85331560f0991f559fa05a67f937d"
+    },
+    "current_empty_attestation": {
+      "path": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json",
+      "bytes": 356,
+      "sha256": "8d7b207ec4a4919ee6bbaa36df0287aac732f3d9b9959554fff2c2160af573b9"
+    },
+    "historical_empty_attestation": {
+      "path": "results/certificates/exp055_odd_lattice_survivors.json",
+      "bytes": 356,
+      "sha256": "2299063e0af75c25f59f4fea78541f44dd80614f8f096a85ee1caf71fa39fd4d",
+      "screen_sha256": "4d9e6b51f3879d8a436fbed767fa091749f643e151dcc66ab4dfa5b1dcdc8340",
+      "screen_snapshot": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/inputs/results/processed/exp055_odd_lattice_screen.json"
+    },
+    "inventory": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/ancillary-inventory.json",
+    "publication_holds": [
+      "The manuscript source/build bytes remain unchanged, and the original staging verification/timing records are historical, not freshly certified here. The stale kit abstract (134/61/249) is replaced byte-verbatim from the pinned paper abstract (139/63/253 plus its X-side paragraph); the live EXP-039 aggregate reports 139/63/253. This is observed metadata drift, not new science. Human manuscript/content review, authorship/license decisions and explicit publication authorization remain required. No full-suite, manuscript-wide or repository-wide consistency claim is made."
+    ],
+    "external_publication": false
+  }
 }

@@ -1211,6 +1211,19 @@ EXACT_REFERENCES = [
             "results/certificates/exp070_270_8_20_liang270a_distance.json",
     },
     {
+        "name": "EXP-070 [[270,8,20]] Liang row b",
+        "n": 270,
+        "k": 8,
+        "d": 20,
+        "ell": 15,
+        "m": 9,
+        "A": [[0, 0], [6, 1], [6, 2]],
+        "B": [[0, 0], [4, 4], [14, 8]],
+        "certificate_kind": "exp070_odd_exact",
+        "distance_certificate":
+            "results/certificates/exp070_270_8_20_liang270b_distance.json",
+    },
+    {
         "name": "EXP-037 [[180,8,16]]",
         "n": 180,
         "k": 8,
@@ -1628,9 +1641,24 @@ def _validate_screen_shard_records(
         if len(source) != 2 or transport.get("target_lattice") != [ell, m]:
             raise RuntimeError("transported shard lattice binding is stale")
         source_path = SCREEN_DIR / f"{source[0]}x{source[1]}.json"
+        if (
+            allow_stale_thresholds
+            and _file_sha256(source_path) != transport.get("source_shard_sha256")
+        ):
+            # Historical transports bind immutable source bytes, not whichever
+            # reference battery the live source has since been rebound to.
+            archives = ROOT / "results" / "partial_runs" / "exp063_reference_rebind"
+            for archived in archives.rglob(source_path.name):
+                if _file_sha256(archived) == transport.get("source_shard_sha256"):
+                    source_path = archived
+                    break
+            else:
+                raise RuntimeError("transported shard historical source is missing")
         source_shard = json.loads(source_path.read_text(encoding="utf-8"))
         _validate_screen_shard_aggregates(source_shard)
-        _validate_screen_shard_records(source_shard)
+        _validate_screen_shard_records(
+            source_shard, allow_stale_thresholds=allow_stale_thresholds
+        )
         mapping = E59.coordinate_transport(*source, *target)
         expected_records = [
             E59._transport_record(record, source, target, mapping)

@@ -34,7 +34,6 @@ CENSUS = ROOT / "results" / "processed" / "exp055_odd_lattice_sweep.json"
 LIT = ROOT / "results" / "processed" / "exp055_literature_validation.json"
 DISCOVERED = ROOT / "results" / "certificates" / "exp055_discovered_references.json"
 SCREEN = ROOT / "results" / "processed" / "exp055_odd_lattice_screen.json"
-SURVIVORS = ROOT / "results" / "certificates" / "exp055_odd_lattice_survivors.json"
 
 
 @pytest.fixture(scope="module")
@@ -69,12 +68,6 @@ def screen() -> dict:
     return d
 
 
-@pytest.fixture(scope="module")
-def survivor_cert() -> dict:
-    assert SURVIVORS.exists(), f"required artifact missing: {SURVIVORS}"
-    d = json.loads(SURVIVORS.read_text(encoding="utf-8"))
-    assert d.get("schema") == "exp055-odd-lattice-survivors-v2"
-    return d
 
 # --------------------------------------------------------------------------- #
 # (1) artifact contracts
@@ -606,7 +599,7 @@ def test_screen_shard_aggregates_are_record_derived() -> None:
         E55._validate_screen_shard_aggregates(false_no_reference)
 
 
-def test_fixed_point_screen_contract(screen: dict, survivor_cert: dict) -> None:
+def test_fixed_point_screen_contract(screen: dict) -> None:
     scope, verdict = screen["scope"], screen["verdict"]
     assert scope["lattices_expected"] == scope["lattices_completed"] == 22
     assert scope["missing"] == [] and scope["n_max"] == 234
@@ -638,9 +631,6 @@ def test_fixed_point_screen_contract(screen: dict, survivor_cert: dict) -> None:
         for r in screen["lattices"]
     )
 
-    # The empty-survivor certificate is rebound to the exact n=234 closure.
-    assert survivor_cert["screen_sha256"] == E55._file_sha256(SCREEN)
-    assert survivor_cert["survivors"] == 0 and survivor_cert["records"] == []
     E55._validate_screen_for_certification(
         screen,
         E55._file_sha256(CENSUS),

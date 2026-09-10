@@ -5,6 +5,8 @@ submission has been made. Compiled: 2026-08-24 against `paper_pbb_nogo.md`
 (current revision, abstract with **two** boxed results; verified verbatim, see
 §9) and `paper_pbb_nogo.pdf` (pdflatex: 18 pages, 716,216 bytes).
 
+**Dependency reconciliation (2026-09-09; staging only).** The ancillary inventory and EXP-066/067 bindings below now follow [certified EXP-055 source](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/RESULTS.md) and [this run's inventory](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/ancillary-inventory.json). The manuscript source/build bytes remain unchanged, and the original staging verification/timing records are historical, not freshly certified here. The stale kit abstract (134/61/249) is replaced byte-verbatim from the pinned paper abstract (139/63/253 plus its X-side paragraph); the live EXP-039 aggregate reports 139/63/253. This is observed metadata drift, not new science. Human manuscript/content review, authorship/license decisions and explicit publication authorization remain required. No full-suite, manuscript-wide or repository-wide consistency claim is made. All statements labelled 'this session' in the retained original sections refer to that historical staging session, not this dependency campaign.
+
 ---
 
 ## 1. Title and abstract
@@ -18,7 +20,7 @@ fold into the abstract's first sentence only if a combined one-liner is wanted):
 
 > An exact, perturbation-independent rate–distance obstruction for perturbed bivariate-bicycle (PBB) codes, with machine-checked certificates
 
-**Abstract field (verbatim from `reports/paper_pbb_nogo.md`, lines 13-63,
+**Abstract field (verbatim from `reports/paper_pbb_nogo.md`, lines 13-84,
 `## Abstract` body, hard-wrapped exactly as in the source; contains the TWO boxed
 results. Programmatic verbatim check: PASS — see §9):**
 
@@ -49,17 +51,17 @@ $T(P)$ depends only on the parent and is computed *exactly* — not bounded — 
 enumeration that terminates in a certified UNSAT. When $T(P)=k_P$ the entire family is
 closed: no PBB over $P$ retains a single logical qubit while exceeding $d_Z(P)$.
 
-We compute $T$ exactly for $134$ of the $202$ distinct parents in the published
-catalogue — exhaustively for every parent at $n\le 144$. **$61$ parents are family-closed**, including the Gross code
+We compute $T$ exactly for $139$ of the $202$ distinct parents in the published
+catalogue — exhaustively for every parent at $n\le 144$. **$63$ parents are family-closed**, including the Gross code
 $A=x^3+y+y^2,\;B=y^3+x+x^2$ itself ($T=12=k_P$) and all $11$ distinct catalogue
-$[[144,12,12]]$ parents. This settles $249$ of the $368$ catalogue rows with no per-row
+$[[144,12,12]]$ parents. This settles $253$ of the $368$ catalogue rows with no per-row
 search at all, and it forecloses the headline direction of the construction over the
 most important parent in the family.
 
 The bound is not merely valid but *exact*.  A second elementary identity — the
 dressing space is the image of the left kernel of $[A\;B]$, whose dimension is
 $k_P/2$ on every BB parent — caps $\dim\bar\Delta\le k_P/2$.  Whenever
-$T(P)\ge k_P/2$, which holds on $133$ of the $134$ certified parents, the two
+$T(P)\ge k_P/2$, which holds on $138$ of the $139$ certified parents, the two
 bounds **sandwich**:
 
 $$\boxed{\;d_Q > d_Z(P)\ \text{and}\ T(P)\ge k_P/2\quad\Longrightarrow\quad
@@ -74,12 +76,32 @@ valid $\delta>0$ perturbations of $Z$-support $\le 4$, distances decided by
 exact symplectic meet-in-the-middle — found $496$ further
 strict increases, **every one on the law, zero above it**: instances we now
 know were theorem-forced rather than lucky.
+
+On the $X$ side the companion collapse mechanism is classified completely. The
+set of perturbation directions that *cannot* demote a parent $X$-stabilizer is
+an invariant of the single ideal $I=\operatorname{Ann}_R(A,B)$: writing
+$I^\infty$ for its stable power, $\dim S=2\dim I^\infty$, so a parent is
+demote-full iff $I$ is nilpotent, demote-immune iff $I$ is idempotent, and
+mixed iff neither (Theorem J-G) — reproducing the $202$-parent catalogue
+classification in $9$ s with no module computation, and sharpening it: $I^2=0$
+on all $192$ demoting parents, $I^2=I$ on all $10$ immune ones. Two corollaries
+are structural rather than computational. If $\ell$ and $m$ are both odd, $R$ is
+semisimple and *no* parent can demote at all — of the seven published BB
+instances exactly one, the $[[90,8,10]]$ code on the $(15,3)$ lattice, is
+protected this way. And splitting $G=\mathbb Z_\ell\times\mathbb Z_m$ into its
+$2$-part and odd part shows that exact vanishing at a local factor costs two
+support points per occupied $2$-coset, whence **no pair with
+$\operatorname{wt}(A),\operatorname{wt}(B)\le3$ — the entire family used in the
+literature — is ever mixed** (Theorem J-I), while weight $4$ already realizes
+it: $A=(1+x)(y+y^2)$, $B=Ay$ on $(2,3)$ is mixed with $240$ of $255$ classes
+demoting (Theorem J-J, verified by three independent routes). An exhaustive
+census of $653{,}022{,}021$ weight-$\le3$ pairs over $18$ lattices confirms the
+weight law with zero exceptions.
 ```
 
 *arXiv LaTeX note:* the abstract renders under arXiv's math support as-is
 (`$...$` + `$$\boxed{...}$$` are fine; there is one display-math block per boxed
-result, and `\text`/`\emph` usage is standard). No cut needed: 3,158 chars ≈ 500
-words — inside arXiv's abstract length limit.
+result, and `\text`/`\emph` usage is standard). No cut needed: 4,638 chars; current arXiv submission limits have not been rechecked.
 
 ---
 
@@ -113,7 +135,7 @@ plus 1 longtable, 6 tabular environments plus 1 longtable, and 0 figures.
 ## 4. Ancillary files
 
 Upload the tex sources normally plus these as ancillary files (arXiv "ancillary files"
-mechanism). Paths relative to repo root `math/qec/`; sizes as of 2026-08-24.
+mechanism). Paths relative to repo root `math/qec/`; descriptor sizes/hashes refreshed 2026-09-09; paper bytes unchanged.
 
 | File | Size | One-line description |
 |---|---|---|
@@ -131,18 +153,22 @@ mechanism). Paths relative to repo root `math/qec/`; sizes as of 2026-08-24.
 | `results/processed/exp060_n210_ratchet.json` | 54,307 B | Adaptive exact results plus one explicitly witness-only dominated $k=8$ row. |
 | `results/certificates/exp067_234_8_18_bundle19_distance.json` | 7,027 B | EXP-067: exact Liang Table III $[[234,8,18]]$ row 2, two rooted cap-16 runs plus replays and physical $X/Z$ witnesses. |
 | `results/certificates/exp067_234_8_18_bundle22_distance.json` | 7,024 B | EXP-067: exact Liang Table III $[[234,8,18]]$ row 1, two rooted cap-16 runs plus replays and physical $X/Z$ witnesses. |
-| `results/partial_runs/exp067_n234_cluster/` | ~776 KiB | Eight rooted connected-cluster run records, exact MatrixMarket inputs, race-free arm64 solver binary, build manifest, license, and complete dist-m4ri/M4RI source archives. |
-| `results/partial_runs/exp068_screen_witnesses/` | ~72 KiB | 57 hash-bound physical fallback witnesses: 29 independent deterministic coset reductions and 28 exact CRT transports, all checked against rebuilt matrices. |
-| `results/processed/exp055_odd_lattice_screen.json` | 7,147,344 B | Validator-v11 exact fixed-point screen through $n=234$: 4,862 classes / 150,581 pairs, all 4,658 referenced dominated with record-level proofs, 204 no-reference, zero survivor/undecided. |
-| `results/processed/exp066_n234_frontier.json` | 10,398 B | EXP-066 576-map audit refreshed after EXP-067 promotion: 182 hard classes to 30 bundles, all 842 local classes dominated. |
-| `results/certificates/exp055_odd_lattice_survivors.json` | 356 B | Empty-survivor certificate hash-bound to the exact $n=234$ screen. |
+| `results/partial_runs/exp067_n234_cluster/` | 742,230 B | Eight rooted connected-cluster run records, exact MatrixMarket inputs, race-free arm64 solver binary, build manifest, license, and complete dist-m4ri/M4RI source archives. |
+| `results/partial_runs/exp068_screen_witnesses/` | 73,393 B | 57 hash-bound physical fallback witnesses: 29 independent deterministic coset reductions and 28 exact CRT transports, all checked against rebuilt matrices. |
+| `results/processed/exp055_odd_lattice_screen.json` | 7,148,774 B | Current validator-v11 n<=234 aggregate, reconciled by certified EXP-055 run 20260909T095538Z_4809c2f8_816c74c3bcbd: 22 lattices, 4862 classes, 150581 pairs, 4658 dominated, 204 no-reference, zero survivor/undecided; n=270 excluded. |
+| `results/processed/exp066_n234_frontier.json` | 10,398 B | Current EXP-066 summary regenerated through EXP-067 from the certified EXP-055 bytes: 842 local classes dominated; 576-map audit, 182 original hard classes and 30 bundles unchanged; protocol/shard/global hashes current. |
+| `results/certificates/exp055_odd_lattice_survivors.json` | 356 B | Historical empty-survivor certificate only; binds archived pre-reconciliation n<=234 aggregate, not the current screen. |
 | `reports/claims_matrix.md` | 35,340 B | Machine-auditable 57-claim provenance ledger: every number → certifying artifact → regenerating command → guarding test (38 VERIFIED / 19 UNGUARDED, status-as-printed in the ledger). |
 | `notes/open_status_2026-08-17.md` | 10,729 B | Dated novelty/open-status annex: literature-search audit trail supporting the "to our knowledge new here" list (paper §9). |
-| `results/partial_runs/exp039_nogo_module.json` | 66,430 B | EXP-039 assembled result over the 134 parent T-certificates — 61 family-closed parents, 249 rows capped a priori, falsification-gate summary. **NOTE: the task template listed `results/processed/exp039_nogo_module.json`; the artifact actually lives under `results/partial_runs/` (as in paper §8). No `processed/` copy exists; ship the `partial_runs` path.** |
-| `results/partial_runs/exp039/` (134 per-parent files) | ~413 KB total | Per-parent SAT/UNSAT certificates with witness vectors, `T_is_exact`, and per-parent wall times (full replay inputs for the gate). |
+| `results/partial_runs/exp039_nogo_module.json` | 67,667 B | Live EXP-039 aggregate; descriptor bytes/hash measured, scientific claims not revalidated here. Historical staging counts differ; see dependency_reconciliation.publication_holds. |
+| `results/partial_runs/exp039/` | 776,194 B | Current EXP-039 per-parent evidence directory; exact byte/file inventory measured, historical paper counts not refreshed or independently revalidated here. |
 | `results/processed/exp036_envelope_check.json` | 46,979 B | EXP-036/037: all 7 certified reversals are CSS-dominated at equal n over 162 exact candidates. |
 | `results/processed/exp040_saturation_probe.json` | 1,009,661 B | EXP-040 small-lattice probe: 64 parents, 26,898 valid perturbations, 496 strict increases — every one on the theorem law, none above it. |
 | `results/processed/exp041_t_crosscheck.json` | 70,288 B | EXP-041: independent T recomputation cross-checking the EXP-039 host values. |
+
+| `campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json` | 356 B | Current empty-survivor attestation; exact current n<=234 aggregate hash, no new distance. |
+| `campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/inputs/results/processed/exp055_odd_lattice_screen.json` | 7,147,344 B | Frozen historical aggregate matching the old empty-survivor certificate. |
+| `campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/RESULTS.md` | 4,663 B | Closed source-run authority for the installed 25 EXP-055 artifacts. |
 
 Keep `results/partial_runs/exp039/` in the package only if the total stays under
 arXiv's ancillary size budget; the assembled JSON alone already supports the gate.
@@ -227,7 +253,7 @@ Each box names the satisfying test/artifact (paths relative to `math/qec/`).
 
 - [x] **Abstract is byte-verbatim the paper's current abstract, incl. both boxed
   results.** Verbatim-substring check re-run this session: PASS (§9; source:
-  `reports/paper_pbb_nogo.md` lines 13-63).
+  `reports/paper_pbb_nogo.md` lines 13-84).
 - [x] **Page/table counts in §3 measured from the compiled PDF, not the md.**
   `reports/paper_pbb_nogo.log` → "Output written on paper_pbb_nogo.pdf (18 pages,
   716216 bytes)"; `reports/paper_pbb_nogo.tex` → 7 tables / 0 figures (grep counts).
@@ -268,7 +294,7 @@ Each box names the satisfying test/artifact (paths relative to `math/qec/`).
 ## 9. Verification record (abstract verbatim check)
 
 Method (this session): locate the `## Abstract` body in `reports/paper_pbb_nogo.md`,
-slice lines 13-63 out byte-exact, embed them above inside a fenced
+slice lines 13-84 out byte-exact, embed them above inside a fenced
 code block (no quoting/mangling), then verify on the round trip that extracting the
 fence contents reproduces the source slice byte-for-byte:
 

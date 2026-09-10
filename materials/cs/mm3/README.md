@@ -1351,3 +1351,35 @@ Next registered-work proposal: Harden the resume boundary before any census succ
 Evidence: [`mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0`](campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
 
 Next registered-work proposal: Driver-free sigma^1 pair census chunk 1 (H-MM3-SIGMA1-PAIRS-1): sealed pure-Python encoder (now doubly validated, 1180 oracle hashes) + in-sandbox pysat at T=d for the 608 sigma^1 instances; SAT models verified by clause evaluation, UNSAT accepted only after an own UP/RUP refutation replay; resumable ledger of (key,d,cnf_sha256,sat,lb) in <=300 s / <=8 MiB chunks, with the 52 retained sigma^1 decisions (lines 609-660 of attempt-3) as cross-instrument controls that must agree.
+
+## Institute cycle 20260910T013633Z_25f67e — sigma^1 pair census certified
+
+[Run 20260910T014717Z_5f1b5fb1_136d5deadc31](campaigns/20260910T014717Z_5f1b5fb1_136d5deadc31/RESULTS.md)
+is **FROZEN-CERTIFIED** for **H-MM3-SIGMA1-PAIRS-1**: all **608**
+registered sigma^1 positive-pair instances for S1_smirnov_repo_139 at T=d,
+U/V/W=224/128/256, **8 SAT (lb=d)** and **600 UNSAT (lb=d+1)**.
+The exact resumable ledger was produced with the sealed pure-Python encoder
+and in-sandbox python-sat/Glucose3, then every certificate was replayed with
+the independently written encoder in both a replay and a fresh exact audit.
+
+All UNSAT evidence is **independent original-CNF unit propagation**; all raw
+Glucose proof logs were empty. All **52 historical controls agree**, but they
+are exclusively **U-side UNSAT**, so the eight SAT decisions and V/W rely on
+fresh certificate verification rather than historical controls. The prior
+registration oracle was hash-sealed before first launch and independently
+confirmed byte-identical to its certified predecessor. The original
+**520-line sigma^0 prefix** remains untouched and unpromoted.
+
+Independent **anthropic/claude-opus-5** reviewer
+**MM3Sigma1.MM3OpusReview** found **NO BLOCKER**, including the fresh audit
+and a single-instance structural probe. Startup/import/empty-proof refusals
+and additive sealed repairs are preserved; no failed attempt supplied an
+accepted decision. All twelve monitored attempts are terminal and mini-0 was
+explicitly released to QECResidual147 and Main after all requested replay.
+
+No new addition-count record, orientation-row completeness, global optimum,
+universal no-54, or sigma^0/2 census follows, even if all 608 pairs complete.
+The full sixth-source orientation landscape and the global sub-55 question
+remain unresolved. Next bounded proposal: separately preregister the
+driver-free sigma^2 pair census against its already certified registration,
+without assuming a sigma-symmetry transfer or restarting the legacy driver.

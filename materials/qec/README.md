@@ -85,6 +85,88 @@ Source ambiguity or a failed independent check stops search. Timeout is
 inconclusive, never a lower bound. Redirect only to resolving the concrete
 source/model blocker; no automatic compute escalation or topic expansion.
 
+### n=270 k=12 residual147 fully scoped; search remains unfunded (2026-09-10)
+
+[Campaign `20260910T014853Z_ce4f83e6_a658b6cbe069`](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/) is **FROZEN-CERTIFIED — scoping/projection only**, after independent Claude Opus5 NO_BLOCKER review and full fresh audit. All147 original15x9 k12-undecided identities are retained in [residuals.json](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/residuals.json); every threshold12/source [[144,12,12]] is preserved. Two monitored passes verify294 old physical witness/ceiling slots each and reproduce147 distinct threshold12 CNFs without solving, rejecting16 controls per pass. No147 obligation is newly decided.
+
+**Projection, not allocation:** [the full147 attempt+replay proposal](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/RESIDUAL_SCOPE.md) reserves257760s/71.6h, fitting only the72h ceiling and exceeding74307.941s target allocation remaining at dispatch. It cannot launch under unchanged budgets. The scoping-only fourfold setup margin does not cover future24 CP-SAT constructions, newly found witness checks, flush/teardown or unmeasured transition costs; the1440s remainder has no sufficiency guarantee. No solver-success, future completion or launch-readiness claim. A separate sufficient allocation and actual-overhead admission are required before search.
+
+**Unchanged boundaries:** canonical n270 remains5355 dominated /147 k12 undecided /210 unpromoted k20/k24 survivors, zero k8 undecided, across5712 records. No completed21 k8 integration rerun, canonical mutation, new exact distance, lower-bound solve, survivor promotion or n270 closure. The same n<=234 aggregate and paper/arXiv/package/checkpoint bytes remain unchanged; do_not_post, human manuscript review and explicit publication authorization remain required.
+
+Three serial mini-0 monitor attempts complete rc0,1031.573s with21 retained output hash/prefix bindings. Explicit MM3 release plus all12 predecessor-terminal checks preceded launch; full actor wall including queue is separately measured, tokens null.149 current inputs and765 predecessor frozen files remain unchanged. [RESULTS](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/RESULTS.md), [AUDIT](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/AUDIT.md), [REVIEW](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/REVIEW.md), [fresh verification](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/audit-fresh.json), [summary](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/summary.json) and [receipts](/Users/jinleic/jinleic-workspace/math/qec/campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/receipt-verification.json) are the evidence authority.
+
+### n=270 k=8 witnesses canonically integrated; global closure open (2026-09-10)
+
+[Campaign `20260910T005007Z_48f01b2e_094481472b62`](campaigns/20260910T005007Z_48f01b2e_094481472b62/) is **FROZEN-CERTIFIED — exact21 canonical witness integration only**, after independent Opus NO_BLOCKER review and verified installation. Exactly17+4 reviewed weight20 logicals now replace the selected k8 undecided records through the existing EXP-069 finalizer; threshold20 / Liang row-a attribution is unchanged. This proves d<=20, not exact distances.
+
+**Canonical state:** 5355 dominated /147 k12 undecided /210 unpromoted k20/k24 survivors across5712 n270 records; zero k8 undecided. All5691 nonselected JSON record objects remain unchanged. Two content-addressed immediate preimage archives were added; all124 old archives and21 certificates are unchanged. All four installed hashes equal the reviewed/fresh-audited candidates;670 other current inputs and265 derived dependencies remain exact. The same22-lattice n<=234 aggregate remains4862 classes /150581 pairs,4658 dominated and204 no-reference, with no survivors/undecided.
+
+**Verification and limits:** two separate monitored audits reverify all21 physical supports with both existing GF(2) paths, strict shard/protocol/archive checks and full EXP-066 derived validation; each rejects12 controls. Three preserved dependency-admission failures were recovered without regenerating candidates or resetting the original deadline. Five attempts total541.311 monitor seconds with12 output hash/prefix bindings; full actor usage is recorded separately, tokens null. Historical2000-try shard metadata and imported20000-request source timing are explicitly separated; the source repeats its deterministic2000-order prefix and actual completed order counts are unknown. Original absolute input-path aliases remain a nonportable replay dependency; neither an independent software checker nor a project-wide green suite is claimed.
+
+**Boundary and next objective:** no new search/solver, resolve_screen, Liang rerun, k12 processing, survivor promotion, new exact distance or n270 closure. Under a separate allocation, scope the147 remaining k12 witness/decision obligations into one preregistered, projected-to-fit monitored campaign; do not repeat this completed integration or implicitly promote the210 survivors. n<=234 and paper/arXiv/package/checkpoint bytes are unchanged; do_not_post, human manuscript review and explicit publication authorization remain required.
+
+[RESULTS](campaigns/20260910T005007Z_48f01b2e_094481472b62/RESULTS.md), [AUDIT](campaigns/20260910T005007Z_48f01b2e_094481472b62/AUDIT.md), [fresh audit](campaigns/20260910T005007Z_48f01b2e_094481472b62/audit-fresh.json), [Opus review](campaigns/20260910T005007Z_48f01b2e_094481472b62/OPUS_REVIEW.json), [installed hashes](campaigns/20260910T005007Z_48f01b2e_094481472b62/installation-verification.json) and [receipt bindings](campaigns/20260910T005007Z_48f01b2e_094481472b62/receipt-verification.json) are the closed evidence authority.
+
+### All 21 n=270 k=8 residuals have domination witnesses; canonical integration pending (2026-09-10)
+
+[Campaign `20260910T001649Z_faeb16bd_a50d496cd443`](campaigns/20260910T001649Z_faeb16bd_a50d496cd443/) is **FROZEN-CERTIFIED — all21 run-local domination only**, after independent Opus NO_BLOCKER review. The exact 17+4 selected records each have a physically reverified weight20 logical witness against threshold20 / Liang row a. This establishes d<=20, not exact distances, lower bounds or global n270 closure.
+
+Two fresh monitored replays verify weight, zero syndrome, non-stabilizer membership and X/Z transport through NumPy and bitset GF(2) paths; all21 pass, nine negative controls rejected per replay. One mini-pro lane and 120s whole-child caps; maximum26.004s, sum275.477s. Three monitor attempts total300.689s with 14 output hashes/prefixes verified under one original3600s deadline. The calls request tries=20000 but repeat the deterministic prior2000-order prefix; early stopping means actual completed order counts are unknown, not 20000 independent new trials. Full actor usage is recorded separately, tokens null.
+
+**Canonical/publication boundary:** both canonical shards remain byte-unchanged (21 k8 + 147 k12 undecided; 210 unpromoted k20/k24 survivors). The 21 run-local witness obligations are discharged, but canonical integration is a separate bounded next objective using existing finalization/validation conventions without new search, preserving all nonselected records, threshold/source and the n<=234 aggregate. No resolve_screen, Liang rerun, solver/lower-bound work, k12 processing or survivor promotion. No n270 closure, new exact distance or publication authorization; human manuscript review remains required.
+
+[RESULTS](campaigns/20260910T001649Z_faeb16bd_a50d496cd443/RESULTS.md), [AUDIT](campaigns/20260910T001649Z_faeb16bd_a50d496cd443/AUDIT.md), [fresh verification](campaigns/20260910T001649Z_faeb16bd_a50d496cd443/verification-fresh.json), [Opus review](campaigns/20260910T001649Z_faeb16bd_a50d496cd443/OPUS_REVIEW.json) and [receipt bindings](campaigns/20260910T001649Z_faeb16bd_a50d496cd443/receipt-verification.json) are the evidence authority. Process-level/dual-GF(2) verification is not an independent software reimplementation; inference-based prefix continuity and other nonclaims are retained in the audit.
+
+### EXP-066/067 dependency reconciliation certified; n=270 remains open (2026-09-09)
+
+[Campaign `20260909T104044Z_ee9cb6ad_d3fe7f7a6efc`](campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/) is **FROZEN-CERTIFIED — dependency reconciliation only**, after independent Opus candidate review and post-installation acceptance. The summary changed exactly five provenance/generation fields; scientific records, protocol parameters, thresholds and verdicts are unchanged. The closed 22-lattice n<=234 aggregate remains 4,862 classes / 150,581 pairs, with 4,658 dominated, 204 no-reference and no survivors/undecided; n=270 is excluded.
+
+**The prior note's specifically recorded descriptor staleness is reconciled:** arXiv metadata/package and five checkpoint evidence records now distinguish current bindings from historical evidence; 265 dependencies, 28 metadata ancillary entries and 29 package rows verify. Four installed files equal the reviewed/fresh-audited hashes. The old empty-survivor certificate remains byte-unchanged and historical. The new [current attestation](campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json) is an empty-list attestation, not a distance proof; the EXP-067 checkpoint now relies on retention of this frozen run. The descriptor abstract now exactly copies the existing unchanged paper's 4,638-character / 72-line text and existing 139/63/253 counts, rather than the stale 3,158-character excerpt. No paper rebuild or new manuscript proof ran.
+
+**Verification and cost:** strict fresh audit; four adversarial stale/identity controls rejected; original focused tests **11 passed in 139.07 s** on the disposable remote candidate tree. All 25 source-run installed artifacts, 734 protected files and 555 prior frozen hashes remain unchanged. Four monitored rc0 attempts total 450.933 s with 18 verified output hashes/prefixes under one fixed deadline; full actor wall usage is recorded separately in the cycle usage JSON, tokens null. Canonical installation was separately verified by Main and Opus; no project-wide green-suite claim.
+
+**Scope/publication holds:** 21 k=8 and 147 k=12 undecided plus 210 k=20/24 unpromoted survivors remain; n=270 k=8 threshold 20 / Liang row-a attribution unchanged. No Liang/residual search, new distance, improved threshold or n=270 closure. The [separately scoped 21-record objective](campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/RESIDUAL_SCOPE.md) still requires its own allocation. Existing native solver trust boundary remains. The n=270 adversarial refusal is identity-level; two absolute local staging links are nonportable. `do_not_post`, human manuscript review, submission-limit checks, authorship/license decisions and explicit publication authorization remain required. This is not manuscript-wide or repository-wide certification.
+
+[RESULTS](campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/RESULTS.md), [AUDIT](campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/AUDIT.md), [installed hashes](campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/installation-verification.json), [Opus acceptance/erratum](campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/OPUS_REVIEW_ADDENDUM.md) and [final audit](campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/audit.json) are the evidence authority for this reconciliation.
+
+### EXP-055 reference battery reconciled; scientific verdicts unchanged (2026-09-09)
+
+[Campaign `20260909T095538Z_4809c2f8_816c74c3bcbd`](campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/) is **FROZEN-CERTIFIED — reconciliation only**, with independent Opus `NO_BLOCKER` review. All 24 shards / 10,574 records and the original 22-lattice n<=234 aggregate now carry the validated row-a/row-b reference fingerprint. Every threshold, source, scientific record and verdict is unchanged; n=270 k=8 remains threshold 20 from Liang row a. Two fresh-process audits each rechecked 20,944 canonical witness/ceiling support slots; all 18 explicit exact references validate. Same-version preimage collisions and historical transport bindings are repaired; 24 new content-addressed archives preserve all 100 old archives and 21 certificates. Rebind is byte-idempotent. Focused checks: 19 passed / 18 deselected; no global green-suite claim.
+
+**Closure remains open:** 21 k=8 residuals (17+4), each with a weight-22 upper witness, plus 147 k=12 undecided and 210 unpromoted k=20/24 survivors. [Separate residual scope](campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/RESIDUAL_SCOPE.md) pins a proposed one-hour allocation; no residual or Liang search ran. No new code, distance, threshold or n=270 closure is claimed. The explicit 22-lattice list now separates the closed aggregate from n=270; including undecided data would fail the unchanged certification guard. Nested historical/source-frame copies and stale-threshold archive checks are diagnostic provenance, not independent proofs.
+
+**Publication gate:** EXP-066/067 derived summary bindings, arXiv/package descriptors and checkpoint evidence lists remain historical/stale relative to the newly installed screen bytes. Reconcile those separately before any package or repository-consistency publication; the old empty-survivor certificate binds only the archived old aggregate. [RESULTS](campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/RESULTS.md), [AUDIT](campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/AUDIT.md), [Opus clarification](campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/OPUS_CLARIFICATION.txt) and [downstream holds](campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/downstream-publication-holds.json) record the exact boundaries.
+
+### Liang row b bound exactly [[270,8,20]] (2026-09-09)
+
+[Campaign `20260909T064505Z_a103d783_f221100a8dd4`](campaigns/20260909T064505Z_a103d783_f221100a8dd4/) is **FROZEN-CERTIFIED**, independently reviewed by Opus (`NO_BLOCKER`). Prefix175 and prefix269 initial/replay pairs completed; all twelve records validate and the eight banked records are unchanged. The base pair exhausts 16; prefix coverage through 18, even parity, pure-second-block enumeration and weight-20 logicals establish d_X=d_Z=d=20 under the pinned native-solver trust boundary.
+
+Row b is admitted to `EXACT_REFERENCES` with the prescribed (15,9) A/B supports; threshold 20 and row-a attribution are unchanged. This exactifies published prior art, not a new code. [RESULTS](campaigns/20260909T064505Z_a103d783_f221100a8dd4/RESULTS.md) and [AUDIT](campaigns/20260909T064505Z_a103d783_f221100a8dd4/AUDIT.md) retain certificate, monitor and review evidence, including the assembly-output capture deviation. No n=270 closure or project-wide green suite is claimed: 21 k=8 + 147 k=12 undecided and 210 unpromoted survivors remain; reference-fingerprint/rebind reconciliation is deferred outside this allocation.
+
+### Liang row b: prefix pairs 55/56/135 closed, 8/12 records (2026-09-09, cycle campaign)
+
+[Campaign `20260909T022016Z_81295935_492d78f41de6`](campaigns/20260909T022016Z_81295935_492d78f41de6/)
+(cycle `20260909T021553Z_fa9cef`) ran the outstanding prefix runs under the
+two-lane pair-stop time-box. **FROZEN-INCONCLUSIVE** per the frozen prereg
+mapping — row b advanced but is still not bound.
+
+* Five of nine outstanding prefix runs completed on the two minis (prefix55
+  replay; prefix56 initial+replay; prefix135 initial+replay; 4,059.9–4,188.2 s
+  each), every one rc 0, NO_LOGICAL_THROUGH_CAP exhaustive through weight 18,
+  `validate_run_record` PASS fresh locally. With the banked base pair and
+  prefix55 initial, **8 of the 12 two-root records** now validate.
+* Prefix175 and prefix269 pairs were never started: the frozen pair-stop
+  rule barred any pair that could not finish initial+replay by the ~4 h
+  window close (06:20Z). `assemble` not attempted; no certificate; row b
+  is NOT in `EXACT_REFERENCES`. Four runs (~2.5 h two-lane) plus
+  assemble/validate remain.
+* mini-0 was provisioned this run (path-identical tree, the identical
+  homebrew `libpng16.16.dylib` artifact, fresh venv) and provenance-verified
+  before use; driver and solver hashes unchanged through the closing audit.
+* Full findings and claims-that-do-not-hold:
+  [RESULTS](campaigns/20260909T022016Z_81295935_492d78f41de6/RESULTS.md) ·
+  [AUDIT](campaigns/20260909T022016Z_81295935_492d78f41de6/AUDIT.md).
+
 ### n=270 deep re-screen: 1,636/1,657 k=8 residuals decided (2026-09-08, cycle campaign)
 
 [Campaign `20260908T194313Z_2eb90dad_d3c7ccce6e21`](campaigns/20260908T194313Z_2eb90dad_d3c7ccce6e21/)
@@ -550,13 +632,13 @@ hard-digest-pinned single-thread entrypoint. EXP-068 then binds physical
 witnesses to all 57 legacy fallback dominations and validator v11 rebuilds
 identity/transport, threshold and witness proofs on every one of the 22
 shards. The $k$ census remains complete through $n=360$; no distance-closure
-claim is made beyond $n=234$. At $n=270$ the screen itself is now certified
-(collapse of $(15,9)/(45,3)$; $5{,}024+688$ classes validated; Liang row a
-bound exact $[[270,8,20]]$ and admitted as a reference; $3{,}698$ classes
-dominated) but closure is OPEN: $1{,}657$ $k=8$ + $147$ $k=12$ undecided,
-$210$ $k=20/24$ survivors unpromoted, Liang row b unbound — see the
-[2026-09-08 cycle note](#n270-screen-certified-closure-open-2026-09-08-cycle-campaign)
-above.
+claim is made beyond $n=234$. At $n=270$ the certified screen represents
+$5{,}024+688$ classes; both Liang $[[270,8,20]]$ rows are admitted references,
+with the $k=8$ threshold still 20 attributed to row a. The canonical shards now
+have $5{,}355$ dominated classes, zero $k=8$ undecided, $147$ $k=12$ undecided
+and $210$ unpromoted $k=20/24$ survivors. Global closure remains OPEN — see the
+[2026-09-10 integration note](#n270-k8-witnesses-canonically-integrated-global-closure-open-2026-09-10)
+above; this is domination-witness integration, not new exact distances.
 
 **Circuit level.** No circuit-level result favoured the PBB candidate: depth
 (basis-independent $\ge8$ vs Gross $7$), gates, hook structure, sampled LER and

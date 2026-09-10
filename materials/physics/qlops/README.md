@@ -7,6 +7,10 @@ launched and closed REJECTED on finding F-Z4; F-Z4 then resolved WITHOUT the
 authors as mechanism (b) driver-version drift, and the Revision-8
 rebuilt-oracle amendment run completed 12/12 cells, closed
 FROZEN-INCONCLUSIVE (23/24 comparisons pass, one mild acceptance failure);
+Revision-9 direct-shipped follow-up completed all four F-Z4 cells and closed
+FROZEN-CERTIFIED for four-cell finite agreement only (8/8 comparisons pass,
+full exact replay and independent Opus clearance); no historic-generation
+or full twelve-cell certification;
 paper d=7/c≈300 remain NOT-REPRODUCED).**
 Reuse published fault-tolerant QC resource/benchmark estimates from their stated
 formulas, reproduce their numbers, then run sensitivity sweeps. Pure arithmetic;
@@ -241,21 +245,42 @@ python3 src/test_reproduction.py              # 7 behavioral tests
   four split cells; fresh 71,000,000-shot/12-cell schedule completed
   12/12 on mini-0, 23/24 comparisons pass (grown@0.0006 acceptance
   z = +3.79), zero decisive.
+- `campaigns/20260910T014759Z_005434a3_4a9842de64ef/` — frozen/closed
+  **FROZEN-CERTIFIED for four-cell finite statistical agreement only**,
+  Revision 9, actual shipped F-Z4 grown artifacts sampled directly on
+  mini-pro: 25,000,000 primary shots, 8/8 comparisons within |z|<=3.53,
+  all-four 25,000,000-shot audit replay exact. Grown@0.0006 shipped
+  acceptance 0.461656, z=+0.388844 versus preserved R8 rebuilt +3.78981;
+  descriptive, not a historical-generator or causal attribution.
+  [RESULTS](campaigns/20260910T014759Z_005434a3_4a9842de64ef/RESULTS.md),
+  [AUDIT](campaigns/20260910T014759Z_005434a3_4a9842de64ef/AUDIT.md),
+  [independent Opus REVIEW](campaigns/20260910T014759Z_005434a3_4a9842de64ef/REVIEW.md).
+  Two administrative failures and additional analyze-only/review-supplement
+  commands are disclosed; completed primary rows were not rerun or rewritten.
+- `pre_statement_optional-follow-up-new-cycle-would-need-funding-.md` —
+  Revision-9 preregistration, pinned by the completed run; never rewrite.
+- `src/zero_level_shipped_r9.py` — direct-shipped R9 instrument; original
+  producer and corrected analysis/audit code identities are separately
+  preserved in the run. Closed-run evidence is not a resumable new campaign.
 - `scratch/` — non-authoritative downloads.
 - `pre_statement.md` — pre-registered gates, tolerances, falsifiers
   (written before the run; only tolerance language unchanged).
 
 ## Open items
 
-- The 71,000,000-shot, 12-cell schedule is now EXECUTED under Revision 8
-  (run `20260908T195555Z_67d0f894_cfb28f9ee00f`, FROZEN-INCONCLUSIVE):
-  12/12 cells, 23/24 comparisons, one mild acceptance failure at the
-  rebuilt-oracle grown@0.0006 cell. The executable d3/d9 artifact is
-  neither certified nor negated. An optional funded follow-up could test
-  (Revision 9) whether the shipped split-generation artifacts reproduce
-  the embedded author rows directly. The paper's d=7 headline and
-  physical c≈300 claim remain **NOT-REPRODUCED**, and no d=7
-  reconstruction is attempted.
+- Revision 9's funded follow-up is complete (run
+  `20260910T014759Z_005434a3_4a9842de64ef`): direct sampling of the four
+  shipped F-Z4 artifacts gives 8/8 passing comparisons and exact full replay,
+  with independent Claude Opus 5 review cleared before closure. This is a
+  finite approximate-binomial instrument, not proof of which historical
+  generator produced the author rows; bitwise replay does not eliminate
+  Monte-Carlo fluctuation as an account of R8's +3.79.
+- Revision 8's full 12-cell FROZEN-INCONCLUSIVE verdict remains unchanged;
+  R9 does not certify all twelve cells or assert a combined sequential
+  familywise guarantee. No further sampling is queued. Historical generator
+  attribution would need primary provenance in a separately funded bounded
+  follow-up. Paper d=7 and physical c≈300 remain **NOT-REPRODUCED**, and no
+  d=7 reconstruction is attempted.
 - Fig. 1 fit constants and Table 6 sim-level numbers remain
   NOT-REPRODUCED-from-stated-inputs (missing quantitative inputs, recorded
   per pre_statement.md policy — not guessed).

@@ -9,7 +9,7 @@
   "headline": "K_gen(12) >= 38 proved; target-39 upper-bound campaign active with no verdict",
   "next_action": "Complete the live discovery ledger. For every UNSAT case, run the manifest-bound clean certifier and require CERTIFIED_UNSAT; for any SAT case, extract, straighten, and pass exact-rational verify_selection(minimum=39). Use the locked v2 supervisor for any new proof-free run.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-08T17:27:56Z",
+  "updated_utc": "2026-09-09T06:03:32Z",
   "updated_by": "three-cannon-campaign",
   "sources": [
     "math/kobon/README.md",
@@ -71,7 +71,9 @@
     "runs_used": 0,
     "tokens_used": 0,
     "seconds_used": 0.0,
-    "gate_at_last_progress": "K_gen(12) remains in {38,39}: the exact-rational 38-triangle lower certificate replays, while seven of the 15 relaxed target-39 cubes are running proof-free under Kissat 4.0.4 with no verdict. Current engine regeneration is byte-identical for the base and all 15 cubes, and the exact D12 audit covers all 220 triples in 12 disjoint orbits. The clean certifier is bound to decision manifest 48671f44f726dc4272438d0797beff936878c39b9b8d26ec110546b1136db7cf; its production status records all 15 cases UNATTEMPTED. A real Kissat/XZ/drat-trim control passed with two consumed core lemmas for non-unit UNSAT, a distinct INPUT_UNIT_PROPAGATION_UNSAT classification, and XZ_INTEGRITY_FAILED for a corrupted proof. Production defaults now launch on this host with an 8 GiB aggregate RSS cap and 64 GiB free-space reserve. Legacy XZ VERIFIED markers remain untrusted and the legacy wrapper fails closed."
+    "gate_at_last_progress": "K_gen(12) remains in {38,39}: the exact-rational 38-triangle lower certificate replays, while seven of the 15 relaxed target-39 cubes are running proof-free under Kissat 4.0.4 with no verdict. Current engine regeneration is byte-identical for the base and all 15 cubes, and the exact D12 audit covers all 220 triples in 12 disjoint orbits. The clean certifier is bound to decision manifest 48671f44f726dc4272438d0797beff936878c39b9b8d26ec110546b1136db7cf; its production status records all 15 cases UNATTEMPTED. A real Kissat/XZ/drat-trim control passed with two consumed core lemmas for non-unit UNSAT, a distinct INPUT_UNIT_PROPAGATION_UNSAT classification, and XZ_INTEGRITY_FAILED for a corrupted proof. Production defaults now launch on this host with an 8 GiB aggregate RSS cap and 64 GiB free-space reserve. Legacy XZ VERIFIED markers remain untrusted and the legacy wrapper fails closed.",
+    "tokens_unreported_runs": 0,
+    "seconds_unreported_runs": 0
   },
   "priority": {
     "value": 3,

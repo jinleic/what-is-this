@@ -2,14 +2,14 @@
   "schema": "target-state/1",
   "id": "math/qec",
   "problem": "Automated co-design of quantum LDPC codes (non-CSS PBB programme)",
-  "status": "active",
-  "current_gate": "n=270 deep re-screen done (1,636/1,657 k=8 decided at threshold 20, strict validator-v11); closure open: 21 k=8 (best witness 22) + 147 k=12 undecided, 210 k=20/24 survivors unpromoted, Liang row b unbound (base pair + prefix55 initial done, 9 prefix runs remain)",
-  "latest_campaign": "20260908T194313Z_2eb90dad_d3c7ccce6e21",
-  "latest_campaign_verdict": "FROZEN-INCONCLUSIVE",
-  "headline": "n=270 deep target-20 re-screen certified: 1,636 of 1,657 k=8 residuals dominated by fresh verified witnesses (weights 12-20), shards strict under validator-v11; Liang row b base pair + prefix55 initial complete, 9 prefix runs short of binding; 21 k=8 + 147 k=12 undecided, 210 survivors unpromoted",
-  "next_action": "Bind Liang row b: run the remaining 9 prefix runs (prefix55 replay; prefixes 56/135/175/269 initial+replay, ~3,700-4,300 s each) plus assemble/validate under the two-run stop rule, strict validator-v11; minis are free (GB9 stopped). Time-boxed: complete as many prefix pairs as fit, bank progress honestly; 21 k=8 residuals (witness 22 vs threshold 20) deferred to a later allocation",
+  "status": "parked",
+  "current_gate": "n270 k12 residual147 scoping/projection gate CERTIFIED: all147 full 15x9 identities and threshold12 / [[144,12,12]] source pinned, two fresh all147 solver-free physical/CNF passes and Opus NO_BLOCKER; conditional 71.6h full attempt/replay proposal fits72h only, not current allocation or launch readiness; all147 remain undecided,210 survivors unpromoted; n270 open,n<=234 and publication holds unchanged",
+  "latest_campaign": "20260910T014853Z_ce4f83e6_a658b6cbe069",
+  "latest_campaign_verdict": "FROZEN-CERTIFIED",
+  "headline": "Campaign 20260910T014853Z_ce4f83e6_a658b6cbe069 scoped all147 k12 obligations without new search:294 old supports and147 unique CNFs verified per pass,16 controls each, Opus NO_BLOCKER; future257760s proposal exceeds current remaining allocation and has unmeasured solver/transition overhead; all canonical and publication bytes unchanged",
+  "next_action": "Only under a separate sufficient allocation, implement and execute the retained full147 threshold12 comparison initial+replay proposal in campaigns/20260910T014853Z_ce4f83e6_a658b6cbe069/RESIDUAL_SCOPE.md, preserving every exact15x9 identity and [[144,12,12]] source. Before any new search, account explicitly for CP-SAT construction and inter-child transitions within the original objective deadline; the nominal257760s proposal fits72h only and is not launchable under the present seconds/run allocation. Never narrow147, repeat completed k8 integration, or process/promote210 survivors implicitly. Keep all timeouts/partial covers unresolved, n270 open, n<=234 closure unchanged, no new exact distance or publication-readiness claim; human manuscript review and explicit publication authorization remain required.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-09T03:35:46Z",
+  "updated_utc": "2026-09-10T03:01:12Z",
   "updated_by": "workspace-architecture-fix",
   "sources": [
     "math/PROGRESS.md#QEC (2026-08-24) \u2014 TWO PUBLISHED $[[234,8,18]]$ CODES EXACTIFIED; FIXED-POINT CLOSURE THROUGH $n=234$",
@@ -108,20 +108,152 @@
         "reason": "allocation {\"runs_max\": 5, \"seconds_max\": 45000.0}",
         "evidence": [],
         "actor": "Main"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-09T06:28:43Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"runs_max\": 6}",
+        "evidence": [
+          "math/qec/campaigns/20260909T062304Z_78153ea7_93d27950e52b/status.json",
+          "docs/knowledge-system/institute/cycles/20260909T061841Z_e637ad/usage-math-qec-20260909T062304Z_78153ea7_93d27950e52b.json"
+        ],
+        "actor": "workspace-owner-delegate"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-09T06:37:23Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"runs_max\": 7}",
+        "evidence": [
+          "math/qec/campaigns/20260909T063357Z_cd838a4a_87c577196652/status.json",
+          "docs/knowledge-system/institute/cycles/20260909T063105Z_fd6e1e/usage-math-qec-20260909T063357Z_cd838a4a_87c577196652.json"
+        ],
+        "actor": "workspace-owner-delegate"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-09T09:48:58Z",
+        "cause": "auto-grant",
+        "reason": "progress refill {\"runs\": 1, \"seconds\": 36828.0}",
+        "evidence": [
+          "20260909T064505Z_a103d783_f221100a8dd4"
+        ],
+        "actor": "institute",
+        "allocation": {
+          "runs": 1,
+          "seconds": 36828.0
+        },
+        "caps": {
+          "runs_max": 8,
+          "seconds_max": 81828.0
+        }
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-09T10:36:27Z",
+        "cause": "auto-grant",
+        "reason": "progress refill {\"runs\": 1, \"seconds\": 36828.0}",
+        "evidence": [
+          "20260909T095538Z_4809c2f8_816c74c3bcbd"
+        ],
+        "actor": "institute",
+        "allocation": {
+          "runs": 1,
+          "seconds": 36828.0
+        },
+        "caps": {
+          "runs_max": 9,
+          "seconds_max": 118656.0
+        }
+      },
+      {
+        "from": "active",
+        "to": "parked",
+        "at": "2026-09-09T11:17:34Z",
+        "cause": "budget",
+        "reason": "budget exhausted (runs 9/9) after gate progress; auto-refill ceiling reached or not enabled",
+        "evidence": [
+          "20260908T175247Z_e40ae2c8_8d516c12d880",
+          "20260908T194313Z_2eb90dad_d3c7ccce6e21",
+          "20260909T022016Z_81295935_492d78f41de6",
+          "20260909T060842Z_d2157df3_6c46899daecd",
+          "20260909T062304Z_78153ea7_93d27950e52b",
+          "20260909T063357Z_cd838a4a_87c577196652",
+          "20260909T064505Z_a103d783_f221100a8dd4",
+          "20260909T095538Z_4809c2f8_816c74c3bcbd",
+          "20260909T104044Z_ee9cb6ad_d3fe7f7a6efc"
+        ]
+      },
+      {
+        "from": "parked",
+        "to": "active",
+        "at": "2026-09-10T00:13:03Z",
+        "cause": "manual",
+        "reason": "Owner approved three additional QEC runs and continuous Astra/Opus operation; global cap stays 20; first objective is the existing 21-record residual scope with one mini-pro lane and 3600-second deadline; no publication",
+        "evidence": [],
+        "actor": "owner:jinleic"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-10T00:13:03Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"runs_max\": 12}",
+        "evidence": [],
+        "actor": "owner:jinleic"
+      },
+      {
+        "from": "active",
+        "to": "parked",
+        "at": "2026-09-10T03:01:12Z",
+        "cause": "budget",
+        "reason": "budget exhausted (runs 12/12) after gate progress; auto-refill ceiling reached or not enabled",
+        "evidence": [
+          "20260908T175247Z_e40ae2c8_8d516c12d880",
+          "20260908T194313Z_2eb90dad_d3c7ccce6e21",
+          "20260909T022016Z_81295935_492d78f41de6",
+          "20260909T060842Z_d2157df3_6c46899daecd",
+          "20260909T062304Z_78153ea7_93d27950e52b",
+          "20260909T063357Z_cd838a4a_87c577196652",
+          "20260909T064505Z_a103d783_f221100a8dd4",
+          "20260909T095538Z_4809c2f8_816c74c3bcbd",
+          "20260909T104044Z_ee9cb6ad_d3fe7f7a6efc",
+          "20260910T001649Z_faeb16bd_a50d496cd443",
+          "20260910T005007Z_48f01b2e_094481472b62",
+          "20260910T014853Z_ce4f83e6_a658b6cbe069"
+        ]
       }
     ],
-    "reason": "owner 2026-09-09: resume \u2014 bind Liang row b (9 prefix runs + assemble/validate); lifetime caps raised to used+3 runs (5) and used+36,828 s (45,000)",
-    "evidence": []
+    "reason": "budget exhausted (runs 12/12) after gate progress; auto-refill ceiling reached or not enabled",
+    "evidence": [
+      "20260908T175247Z_e40ae2c8_8d516c12d880",
+      "20260908T194313Z_2eb90dad_d3c7ccce6e21",
+      "20260909T022016Z_81295935_492d78f41de6",
+      "20260909T060842Z_d2157df3_6c46899daecd",
+      "20260909T062304Z_78153ea7_93d27950e52b",
+      "20260909T063357Z_cd838a4a_87c577196652",
+      "20260909T064505Z_a103d783_f221100a8dd4",
+      "20260909T095538Z_4809c2f8_816c74c3bcbd",
+      "20260909T104044Z_ee9cb6ad_d3fe7f7a6efc",
+      "20260910T001649Z_faeb16bd_a50d496cd443",
+      "20260910T005007Z_48f01b2e_094481472b62",
+      "20260910T014853Z_ce4f83e6_a658b6cbe069"
+    ]
   },
   "budget": {
-    "runs_max": 5,
-    "seconds_max": 45000.0,
+    "runs_max": 12,
+    "seconds_max": 118656.0,
     "tokens_max": null,
-    "runs_used": 2,
+    "runs_used": 12,
     "tokens_used": 0,
-    "seconds_used": 8172.0,
-    "gate_at_last_progress": "n=270 deep re-screen done (1,636/1,657 k=8 decided at threshold 20, strict validator-v11); closure open: 21 k=8 (best witness 22) + 147 k=12 undecided, 210 k=20/24 survivors unpromoted, Liang row b unbound (base pair + prefix55 initial done, 9 prefix runs remain)",
-    "tokens_unreported_runs": 2,
+    "seconds_used": 48586.583,
+    "gate_at_last_progress": "n270 k12 residual147 scoping/projection gate CERTIFIED: all147 full 15x9 identities and threshold12 / [[144,12,12]] source pinned, two fresh all147 solver-free physical/CNF passes and Opus NO_BLOCKER; conditional 71.6h full attempt/replay proposal fits72h only, not current allocation or launch readiness; all147 remain undecided,210 survivors unpromoted; n270 open,n<=234 and publication holds unchanged",
+    "tokens_unreported_runs": 12,
     "seconds_unreported_runs": 0,
     "alloc_runs": 3,
     "alloc_seconds": 36828.0

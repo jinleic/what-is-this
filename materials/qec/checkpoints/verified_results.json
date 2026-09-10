@@ -14715,7 +14715,35 @@
    "evidence:experiment": "experiments/exp055_odd_lattice_sweep.py",
    "evidence:tests": "tests/test_exp055_odd_lattice.py + tests/test_paper_claims.py (38 targeted); full suite 961 passed, 1 skipped",
    "evidence:note": "notes/theorem_k_certified_ceiling.md; notes/next_breakthroughs.md; notes/failed_routes.md FR-025/026; reports/paper_pbb_nogo.pdf (17 pp)",
-   "classification": "PUBLISHED STRUCTURE REPRODUCED + EXACT COMPUTATION + NEW BB CONSTRUCTOR (GLOBALLY DOMINATED)"
+   "classification": "PUBLISHED STRUCTURE REPRODUCED + EXACT COMPUTATION + NEW BB CONSTRUCTOR (GLOBALLY DOMINATED)",
+   "evidence:screen_binding": {
+    "reconciled_date": "2026-09-09",
+    "source_run": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd",
+    "statement_status": "Historical stage statement retained verbatim; live screen pointers are successor evidence, not a replay of this older stage",
+    "current_screen": {
+     "path": "results/processed/exp055_odd_lattice_screen.json",
+     "bytes": 7148774,
+     "sha256": "d95a3e4537387587f80295b43782fcf7bb85c2ee1cfc1ca68ecb3fbe057b38dd"
+    },
+    "current_summary": {
+     "path": "results/processed/exp066_n234_frontier.json",
+     "bytes": 10398,
+     "sha256": "ecd0248b26d38469f976fa9f83d5dfae2da85331560f0991f559fa05a67f937d"
+    },
+    "current_empty_attestation": {
+     "path": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json",
+     "bytes": 356,
+     "sha256": "8d7b207ec4a4919ee6bbaa36df0287aac732f3d9b9959554fff2c2160af573b9"
+    },
+    "historical_empty_attestation": {
+     "path": "results/certificates/exp055_odd_lattice_survivors.json",
+     "bytes": 356,
+     "sha256": "2299063e0af75c25f59f4fea78541f44dd80614f8f096a85ee1caf71fa39fd4d",
+     "screen_snapshot": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/inputs/results/processed/exp055_odd_lattice_screen.json",
+     "screen_sha256": "4d9e6b51f3879d8a436fbed767fa091749f643e151dcc66ab4dfa5b1dcdc8340"
+    },
+    "reconciliation_run": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc"
+   }
   },
   {
    "id": "exp056:odd_lattice_exact_162_screen_closure",
@@ -14727,7 +14755,35 @@
    "evidence:experiment": "experiments/exp056_odd_distance.py; experiments/exp055_odd_lattice_sweep.py",
    "evidence:tests": "tests/test_exp056_odd_distance.py; tests/test_exp055_odd_lattice.py; tests/test_paper_claims.py; 49 targeted passed; full suite 972 passed, 1 skipped",
    "evidence:note": "notes/theorem_k_certified_ceiling.md; notes/failed_routes.md FR-027; reports/paper_pbb_nogo.pdf (17 pages, zero undefined references)",
-   "classification": "EXACT COMPUTATION + REPLAYED CERTIFICATE + COMPLETE BOUNDED SCREEN"
+   "classification": "EXACT COMPUTATION + REPLAYED CERTIFICATE + COMPLETE BOUNDED SCREEN",
+   "evidence:screen_binding": {
+    "reconciled_date": "2026-09-09",
+    "source_run": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd",
+    "statement_status": "Historical stage statement retained verbatim; live screen pointers are successor evidence, not a replay of this older stage",
+    "current_screen": {
+     "path": "results/processed/exp055_odd_lattice_screen.json",
+     "bytes": 7148774,
+     "sha256": "d95a3e4537387587f80295b43782fcf7bb85c2ee1cfc1ca68ecb3fbe057b38dd"
+    },
+    "current_summary": {
+     "path": "results/processed/exp066_n234_frontier.json",
+     "bytes": 10398,
+     "sha256": "ecd0248b26d38469f976fa9f83d5dfae2da85331560f0991f559fa05a67f937d"
+    },
+    "current_empty_attestation": {
+     "path": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json",
+     "bytes": 356,
+     "sha256": "8d7b207ec4a4919ee6bbaa36df0287aac732f3d9b9959554fff2c2160af573b9"
+    },
+    "historical_empty_attestation": {
+     "path": "results/certificates/exp055_odd_lattice_survivors.json",
+     "bytes": 356,
+     "sha256": "2299063e0af75c25f59f4fea78541f44dd80614f8f096a85ee1caf71fa39fd4d",
+     "screen_snapshot": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/inputs/results/processed/exp055_odd_lattice_screen.json",
+     "screen_sha256": "4d9e6b51f3879d8a436fbed767fa091749f643e151dcc66ab4dfa5b1dcdc8340"
+    },
+    "reconciliation_run": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc"
+   }
   },
   {
    "id": "exp065:adaptive_frontier_exact_210_screen_closure",
@@ -14740,7 +14796,35 @@
    "evidence:experiments": "experiments/exp057_odd_frontier.py through experiments/exp065_quotient_projection.py; src/qec_research/distance/sat_decide.py",
    "evidence:tests": "tests/test_exp055_odd_lattice.py; tests/test_exp057_odd_frontier.py; tests/test_exp058_odd_frontier.py; tests/test_exp059_coprime_transport.py; tests/test_exp060_frontier_ratchet.py; tests/test_exp061_n105_methods.py; tests/test_exp063_reference_rebind.py; tests/test_exp064_n210_promotions.py",
    "evidence:notes": "notes/theorem_k_certified_ceiling.md; notes/failed_routes.md FR-028/029/030/031; reports/paper_pbb_nogo.pdf",
-   "classification": "EXACT COMPUTATION + REPLAYED CERTIFICATES + COMPLETE BOUNDED SCREEN + FAILED-CLOSED NEW METHODS"
+   "classification": "EXACT COMPUTATION + REPLAYED CERTIFICATES + COMPLETE BOUNDED SCREEN + FAILED-CLOSED NEW METHODS",
+   "evidence:screen_binding": {
+    "reconciled_date": "2026-09-09",
+    "source_run": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd",
+    "statement_status": "Historical stage statement retained verbatim; live screen pointers are successor evidence, not a replay of this older stage",
+    "current_screen": {
+     "path": "results/processed/exp055_odd_lattice_screen.json",
+     "bytes": 7148774,
+     "sha256": "d95a3e4537387587f80295b43782fcf7bb85c2ee1cfc1ca68ecb3fbe057b38dd"
+    },
+    "current_summary": {
+     "path": "results/processed/exp066_n234_frontier.json",
+     "bytes": 10398,
+     "sha256": "ecd0248b26d38469f976fa9f83d5dfae2da85331560f0991f559fa05a67f937d"
+    },
+    "current_empty_attestation": {
+     "path": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json",
+     "bytes": 356,
+     "sha256": "8d7b207ec4a4919ee6bbaa36df0287aac732f3d9b9959554fff2c2160af573b9"
+    },
+    "historical_empty_attestation": {
+     "path": "results/certificates/exp055_odd_lattice_survivors.json",
+     "bytes": 356,
+     "sha256": "2299063e0af75c25f59f4fea78541f44dd80614f8f096a85ee1caf71fa39fd4d",
+     "screen_snapshot": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/inputs/results/processed/exp055_odd_lattice_screen.json",
+     "screen_sha256": "4d9e6b51f3879d8a436fbed767fa091749f643e151dcc66ab4dfa5b1dcdc8340"
+    },
+    "reconciliation_run": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc"
+   }
   },
   {
    "id": "exp066:n234_bounded_extension_hard_wall",
@@ -14751,7 +14835,35 @@
    "evidence:experiment": "experiments/exp066_n234_frontier.py",
    "evidence:tests": "tests/test_exp066_n234_frontier.py; tests/test_paper_claims.py",
    "evidence:notes": "notes/next_breakthroughs.md; notes/failed_routes.md FR-032; checkpoints/current_state.md",
-   "classification": "COMPLETE COMPARISON ENUMERATION + EXACT AUTOMORPHISM PARTITION + VERIFIED UPPER WITNESSES + FAIL-CLOSED LOWER RESIDUAL"
+   "classification": "COMPLETE COMPARISON ENUMERATION + EXACT AUTOMORPHISM PARTITION + VERIFIED UPPER WITNESSES + FAIL-CLOSED LOWER RESIDUAL",
+   "evidence:screen_binding": {
+    "reconciled_date": "2026-09-09",
+    "source_run": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd",
+    "statement_status": "Historical stage statement retained verbatim; live screen pointers are successor evidence, not a replay of this older stage",
+    "current_screen": {
+     "path": "results/processed/exp055_odd_lattice_screen.json",
+     "bytes": 7148774,
+     "sha256": "d95a3e4537387587f80295b43782fcf7bb85c2ee1cfc1ca68ecb3fbe057b38dd"
+    },
+    "current_summary": {
+     "path": "results/processed/exp066_n234_frontier.json",
+     "bytes": 10398,
+     "sha256": "ecd0248b26d38469f976fa9f83d5dfae2da85331560f0991f559fa05a67f937d"
+    },
+    "current_empty_attestation": {
+     "path": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json",
+     "bytes": 356,
+     "sha256": "8d7b207ec4a4919ee6bbaa36df0287aac732f3d9b9959554fff2c2160af573b9"
+    },
+    "historical_empty_attestation": {
+     "path": "results/certificates/exp055_odd_lattice_survivors.json",
+     "bytes": 356,
+     "sha256": "2299063e0af75c25f59f4fea78541f44dd80614f8f096a85ee1caf71fa39fd4d",
+     "screen_snapshot": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/inputs/results/processed/exp055_odd_lattice_screen.json",
+     "screen_sha256": "4d9e6b51f3879d8a436fbed767fa091749f643e151dcc66ab4dfa5b1dcdc8340"
+    },
+    "reconciliation_run": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc"
+   }
   },
   {
    "id": "exp067:n234_exact_closure",
@@ -14760,11 +14872,39 @@
    "statement": "EXP-067 identifies the two open EXP-066 (39,3) bundles with Liang et al. arXiv:2503.03827v3 Table III's two published [[234,8,18]] rows by unique quotient-lattice maps and exact HX/HZ rowspace permutations. For each representative, race-free legacy dist-m4ri connected-cluster searches exhaust weights 1--16 in original and block-swapped presentations and replay both. Odd column degree excludes 17; independent weight-18 X/Z witnesses close d_X=d_Z=d=18. The multithreaded coordinator was rejected before certification for a one-root completion race (FR-033). EXP-068 closes the global fail-open path found in final review: 29 independent and 28 CRT-transported physical witnesses now bind all 57 fallback dominations, while validator v11 rebuilds identity/transport, threshold/source and physical proof on all 22 shards before/after/archive rebind. The exact fixed-point screen through n=234 has 4,862 classes / 150,581 represented pairs, all 4,658 referenced classes dominated, 204 no-reference, zero survivor/undecided. The codes are published prior art; the independent certificate and exhaustive closure are local.",
    "evidence:certificates": "results/certificates/exp067_234_8_18_bundle19_distance.json; results/certificates/exp067_234_8_18_bundle22_distance.json",
    "evidence:runs": "results/partial_runs/exp067_n234_cluster/runs/*.json; results/partial_runs/exp067_n234_cluster/solver_build.json; source archives under results/partial_runs/exp067_n234_cluster/solver/; results/partial_runs/exp068_screen_witnesses/*.json",
-   "evidence:screen": "results/processed/exp055_odd_lattice_screen.json; results/processed/exp066_n234_frontier.json; results/certificates/exp055_odd_lattice_survivors.json; results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v11/",
+   "evidence:screen": "results/processed/exp055_odd_lattice_screen.json; results/processed/exp066_n234_frontier.json; campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json; results/partial_runs/exp063_reference_rebind/exp055-exact-reference-validator-v11/",
    "evidence:experiment": "experiments/exp067_n234_connected_cluster.py; experiments/exp068_screen_proof_repair.py",
    "evidence:tests": "tests/test_exp067_n234_connected_cluster.py; tests/test_exp066_n234_frontier.py; tests/test_exp055_odd_lattice.py; tests/test_exp063_reference_rebind.py; tests/test_paper_claims.py",
    "evidence:notes": "notes/theorem_k_certified_ceiling.md; notes/failed_routes.md FR-033/034/035; checkpoints/current_state.md",
-   "classification": "EXACT PUBLISHED-CODE REPRODUCTION + REPLAYED ROOTED LOWER CERTIFICATES + COMPLETE FIXED-POINT SCREEN + REJECTED RACY BACKEND"
+   "classification": "EXACT PUBLISHED-CODE REPRODUCTION + REPLAYED ROOTED LOWER CERTIFICATES + COMPLETE FIXED-POINT SCREEN + REJECTED RACY BACKEND",
+   "evidence:screen_binding": {
+    "reconciled_date": "2026-09-09",
+    "source_run": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd",
+    "statement_status": "n<=234 closure counts unchanged; certificate trust boundary unchanged",
+    "current_screen": {
+     "path": "results/processed/exp055_odd_lattice_screen.json",
+     "bytes": 7148774,
+     "sha256": "d95a3e4537387587f80295b43782fcf7bb85c2ee1cfc1ca68ecb3fbe057b38dd"
+    },
+    "current_summary": {
+     "path": "results/processed/exp066_n234_frontier.json",
+     "bytes": 10398,
+     "sha256": "ecd0248b26d38469f976fa9f83d5dfae2da85331560f0991f559fa05a67f937d"
+    },
+    "current_empty_attestation": {
+     "path": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc/evidence/exp055_current_empty_survivors.json",
+     "bytes": 356,
+     "sha256": "8d7b207ec4a4919ee6bbaa36df0287aac732f3d9b9959554fff2c2160af573b9"
+    },
+    "historical_empty_attestation": {
+     "path": "results/certificates/exp055_odd_lattice_survivors.json",
+     "bytes": 356,
+     "sha256": "2299063e0af75c25f59f4fea78541f44dd80614f8f096a85ee1caf71fa39fd4d",
+     "screen_snapshot": "campaigns/20260909T095538Z_4809c2f8_816c74c3bcbd/inputs/results/processed/exp055_odd_lattice_screen.json",
+     "screen_sha256": "4d9e6b51f3879d8a436fbed767fa091749f643e151dcc66ab4dfa5b1dcdc8340"
+    },
+    "reconciliation_run": "campaigns/20260909T104044Z_ee9cb6ad_d3fe7f7a6efc"
+   }
   }
  ]
 }

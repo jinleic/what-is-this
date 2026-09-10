@@ -1,12 +1,12 @@
 {
  "domains": {
   "cs": {
-   "bytes": 703034,
+   "bytes": 707337,
    "files": [
     {
      "path": "PROGRESS.md",
-     "sha256": "866ab3835101",
-     "size": 303490
+     "sha256": "3f9714058255",
+     "size": 305484
     },
     {
      "path": "README.md",
@@ -15,20 +15,20 @@
     },
     {
      "path": "RESULTS.md",
-     "sha256": "58d2fbdf793a",
-     "size": 367850
+     "sha256": "7c7e22299ec0",
+     "size": 370159
     }
    ],
-   "sig": "77a8c0fb79208b8f",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "3b900cf8d5438a9f",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "math": {
-   "bytes": 1159000,
+   "bytes": 1178872,
    "files": [
     {
      "path": "PROGRESS.md",
-     "sha256": "2e46f1799e28",
-     "size": 983749
+     "sha256": "d347a3567772",
+     "size": 1003621
     },
     {
      "path": "README.md",
@@ -46,16 +46,16 @@
      "size": 86330
     }
    ],
-   "sig": "c5b834c721f9e636",
-   "updated": "2026-09-09T03:57:23Z"
+   "sig": "d5e6184beeb2fe71",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "physics": {
-   "bytes": 151170,
+   "bytes": 154856,
    "files": [
     {
      "path": "PROGRESS.md",
-     "sha256": "580dbc8b19aa",
-     "size": 110037
+     "sha256": "9bdba5de766a",
+     "size": 112112
     },
     {
      "path": "README.md",
@@ -64,18 +64,18 @@
     },
     {
      "path": "RESULTS.md",
-     "sha256": "73bcd29f4c17",
-     "size": 31137
+     "sha256": "cb95686278de",
+     "size": 32748
     }
    ],
-   "sig": "860ef738031c1105",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "f51ac2934a273b64",
+   "updated": "2026-09-10T05:19:28Z"
   }
  },
  "limit_kb": 5120,
  "projects": {
   "ccf": {
-   "bytes": 37268,
+   "bytes": 37335,
    "domain": "math",
    "files": [
     {
@@ -95,8 +95,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "5739f901638f",
-     "size": 1298
+     "sha256": "f3000967c4a8",
+     "size": 1365
     },
     {
      "path": "tail_basis.py",
@@ -123,8 +123,8 @@
    "material": "materials/ccf",
    "page": "problems/ccf.html",
    "progress_header": "### Salvage from the paused subproject",
-   "sig": "a3570008f915836a",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "531b80fa680c4b9e",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "cs/delcap": {
    "bytes": 435588,
@@ -249,7 +249,7 @@
    "updated": "2026-09-09T02:39:08Z"
   },
   "cs/kg": {
-   "bytes": 492426,
+   "bytes": 492493,
    "domain": "cs",
    "files": [
     {
@@ -509,16 +509,16 @@
     },
     {
      "path": "state.json",
-     "sha256": "8062f32f73d5",
-     "size": 2251
+     "sha256": "4843a6d76b25",
+     "size": 2318
     }
    ],
    "headline": "### `kg/` the pre-registered subdivision is PROVABLY DEGENERATE; the obstruction identifies the real binding constraint, 2026-09-01",
    "material": "materials/cs/kg",
    "page": "cs/kg.html",
    "progress_header": "### `kg/` the pre-registered subdivision is PROVABLY DEGENERATE; the obstruction identifies the real binding constraint, 2026-09-01",
-   "sig": "7f8acd537e7f1c20",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "dff0bf7a286b35ea",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "cs/mceliece": {
    "bytes": 153332,
@@ -588,13 +588,13 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "cs/mm3": {
-   "bytes": 452247,
+   "bytes": 477013,
    "domain": "cs",
    "files": [
     {
      "path": "README.md",
-     "sha256": "36fead070670",
-     "size": 90938
+     "sha256": "a5e9a49eff00",
+     "size": 92946
     },
     {
      "path": "laderman23_ladder_pre_statement.md",
@@ -625,6 +625,21 @@
      "path": "pre_statement.md",
      "sha256": "66cf17edb8e3",
      "size": 11433
+    },
+    {
+     "path": "pre_statement_execute-the-registered-driver-free-sigma-1-pair-.md",
+     "sha256": "6c2d71891b07",
+     "size": 7651
+    },
+    {
+     "path": "pre_statement_preregister-a-separately-funded-driver-free-sigm.md",
+     "sha256": "c80dbc80eda0",
+     "size": 9979
+    },
+    {
+     "path": "pre_statement_sigma1_clock_binding.md",
+     "sha256": "5aed384d46cf",
+     "size": 917
     },
     {
      "path": "sixth_source_or_orbit_min_pre_statement.md",
@@ -738,8 +753,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "b92f066738ad",
-     "size": 7787
+     "sha256": "24330e2c10e1",
+     "size": 11998
     },
     {
      "path": "sub55_newspace_pre_statement.md",
@@ -752,12 +767,12 @@
      "size": 19191
     }
    ],
-   "headline": "## Autonomous mm3 closeout — 2026-09-05 10:15 UTC",
+   "headline": "## 2026-09-10 — `mm3/` H-MM3-SIGMA1-PAIRS-1 closed, complete finite pair census",
    "material": "materials/cs/mm3",
    "page": "cs/mm3.html",
-   "progress_header": "## Autonomous mm3 closeout — 2026-09-05 10:15 UTC",
-   "sig": "39cb2317d3f314ca",
-   "updated": "2026-09-07T11:53:04Z"
+   "progress_header": "## 2026-09-10 — `mm3/` H-MM3-SIGMA1-PAIRS-1 closed, complete finite pair census",
+   "sig": "a2f2404e2d06d152",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "cs/oct-rank": {
    "bytes": 467703,
@@ -1346,7 +1361,7 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "cs/xor": {
-   "bytes": 15587,
+   "bytes": 15654,
    "domain": "cs",
    "files": [
     {
@@ -1361,8 +1376,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "2f33026179d9",
-     "size": 1629
+     "sha256": "b5d5751b48f7",
+     "size": 1696
     },
     {
      "path": "test_replay.py",
@@ -1374,11 +1389,11 @@
    "material": "materials/cs/xor",
    "page": "cs/xor.html",
    "progress_header": "## 2026-09-06 — exact AES XOR headroom assay stopped",
-   "sig": "c56611b5af1e9970",
-   "updated": "2026-09-09T03:53:07Z"
+   "sig": "0e6303bd44ba3ab3",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "e389": {
-   "bytes": 1046495,
+   "bytes": 1046562,
    "domain": "math",
    "files": [
     {
@@ -1548,8 +1563,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "f7f1c794a4ca",
-     "size": 2451
+     "sha256": "fef24e41f40d",
+     "size": 2518
     },
     {
      "path": "survivor_census.py",
@@ -1591,8 +1606,8 @@
    "material": "materials/e389",
    "page": "problems/e389.html",
    "progress_header": "## 2026-09-08 — E389 Input-I candidate remains review-pending; administrative CRASHED outcome reconciled",
-   "sig": "dc05e80f71be1a73",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "74f26020d5abc8a3",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "h10q": {
    "bytes": 20380791,
@@ -10329,7 +10344,7 @@
    "updated": "2026-09-09T02:39:08Z"
   },
   "kobon": {
-   "bytes": 11274776,
+   "bytes": 11274843,
    "domain": "math",
    "files": [
     {
@@ -11494,8 +11509,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "3fa186da6ff1",
-     "size": 5826
+     "sha256": "3843b8819ebd",
+     "size": 5893
     },
     {
      "path": "test_engine.py",
@@ -11572,8 +11587,8 @@
    "material": "materials/kobon",
    "page": "problems/kobon.html",
    "progress_header": "### KOBON (2026-08-24f) — GENERALIZED LINE-0 COVECTOR LIFT EXHAUSTED",
-   "sig": "980951167c2c1dcc",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "351634f27fbe21c3",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "liu_h1": {
    "bytes": 538742,
@@ -11673,7 +11688,7 @@
    "updated": "2026-09-07T11:51:00Z"
   },
   "ns": {
-   "bytes": 3748380,
+   "bytes": 3748447,
    "domain": "math",
    "files": [
     {
@@ -11803,16 +11818,16 @@
     },
     {
      "path": "state.json",
-     "sha256": "32c5247fded7",
-     "size": 3895
+     "sha256": "f78ccb32b173",
+     "size": 3962
     }
    ],
    "headline": "## 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim",
    "material": "materials/ns",
    "page": "problems/ns.html",
    "progress_header": "## 2026-08-15 — Session 8: NS unblocked — NRS and ESS primaries retrieved and verified verbatim",
-   "sig": "ac076e06e2e73891",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "85cef5e2c5b40a42",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "physics/fss-bb": {
    "bytes": 71708,
@@ -11969,7 +11984,7 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "physics/na-compiler": {
-   "bytes": 128264,
+   "bytes": 128331,
    "domain": "physics",
    "files": [
     {
@@ -12049,19 +12064,19 @@
     },
     {
      "path": "state.json",
-     "sha256": "af0c06fb5690",
-     "size": 2189
+     "sha256": "2932dc2ac7f1",
+     "size": 2256
     }
    ],
    "headline": "## 2026-08-30 — na-compiler cost rows upgraded to GLOBAL µs optima (and a heap bug I wrote, caught by arithmetic)",
    "material": "materials/physics/na-compiler",
    "page": "physics/na-compiler.html",
    "progress_header": "## 2026-08-30 — na-compiler cost rows upgraded to GLOBAL µs optima (and a heap bug I wrote, caught by arithmetic)",
-   "sig": "5e70e89359f22d0a",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "b55b3156b787b175",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "physics/qldpc-dec": {
-   "bytes": 12598580,
+   "bytes": 12598555,
    "domain": "physics",
    "files": [
     {
@@ -12696,25 +12711,25 @@
     },
     {
      "path": "state.json",
-     "sha256": "da61f38a4886",
-     "size": 3472
+     "sha256": "427aafafd903",
+     "size": 3447
     }
    ],
    "headline": "## 2026-09-09 — qldpc-dec: owner cancellation, not a scientific negative",
    "material": "materials/physics/qldpc-dec",
    "page": "physics/qldpc-dec.html",
    "progress_header": "## 2026-09-09 — qldpc-dec: owner cancellation, not a scientific negative",
-   "sig": "8cb7153d8e74adbc",
-   "updated": "2026-09-09T02:40:00Z"
+   "sig": "d7bcbfb234e5e62f",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "physics/qlops": {
-   "bytes": 289619,
+   "bytes": 336713,
    "domain": "physics",
    "files": [
     {
      "path": "README.md",
-     "sha256": "148c34f2b275",
-     "size": 14401
+     "sha256": "711d3dc8b57c",
+     "size": 16210
     },
     {
      "path": "pre_statement.md",
@@ -12725,6 +12740,16 @@
      "path": "pre_statement_after-gb9-releases-its-26-threads-follow-the-exa.md",
      "sha256": "f34b8d4abda4",
      "size": 6238
+    },
+    {
+     "path": "pre_statement_no-further-sampling-queued-the-funded-revision-9.md",
+     "sha256": "87752db140c5",
+     "size": 8285
+    },
+    {
+     "path": "pre_statement_optional-follow-up-new-cycle-would-need-funding-.md",
+     "sha256": "a2cec34d0947",
+     "size": 11178
     },
     {
      "path": "pre_statement_resolve-f-z4-obtain-the-authors-construction-rev.md",
@@ -12777,17 +12802,22 @@
      "size": 83621
     },
     {
+     "path": "src/zero_level_shipped_r9.py",
+     "sha256": "dd4ad0d4e918",
+     "size": 24509
+    },
+    {
      "path": "state.json",
-     "sha256": "6e4bc982ba8c",
-     "size": 8052
+     "sha256": "b88c533e258c",
+     "size": 9365
     }
    ],
-   "headline": "## 2026-09-08 — physics/qlops: F-Z4 resolved (driver-version drift), Revision-8 71m-shot run closes FROZEN-INCONCLUSIVE",
+   "headline": "## 2026-09-10 — qlops: Revision-9 shipped F-Z4 four-cell agreement, independently reviewed",
    "material": "materials/physics/qlops",
    "page": "physics/qlops.html",
-   "progress_header": "## 2026-09-08 — physics/qlops: F-Z4 resolved (driver-version drift), Revision-8 71m-shot run closes FROZEN-INCONCLUSIVE",
-   "sig": "75c0a6ab747ff29e",
-   "updated": "2026-09-09T02:39:08Z"
+   "progress_header": "## 2026-09-10 — qlops: Revision-9 shipped F-Z4 four-cell agreement, independently reviewed",
+   "sig": "4e224eadb012dfaa",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "physics/shadows": {
    "bytes": 144879,
@@ -12847,7 +12877,7 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "physics/stabrank-witness": {
-   "bytes": 9072,
+   "bytes": 9139,
    "domain": "physics",
    "files": [
     {
@@ -12857,19 +12887,19 @@
     },
     {
      "path": "state.json",
-     "sha256": "cc80be1fad9c",
-     "size": 1715
+     "sha256": "1c2fde1cae7f",
+     "size": 1782
     }
    ],
    "headline": "## 2026-09-06 — calibrated magic-cat search stopped without rank-five witness",
    "material": "materials/physics/stabrank-witness",
    "page": "physics/stabrank-witness.html",
    "progress_header": "## 2026-09-06 — calibrated magic-cat search stopped without rank-five witness",
-   "sig": "de6e43571743ceff",
-   "updated": "2026-09-09T03:53:07Z"
+   "sig": "5dbfa084cfe452fc",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "qec": {
-   "bytes": 4668680,
+   "bytes": 4777959,
    "domain": "math",
    "files": [
     {
@@ -12884,8 +12914,8 @@
     },
     {
      "path": "README.md",
-     "sha256": "c7560b42ebbc",
-     "size": 56536
+     "sha256": "f3e8549f7818",
+     "size": 73367
     },
     {
      "path": "artifacts/manifest.yaml",
@@ -12904,8 +12934,8 @@
     },
     {
      "path": "checkpoints/verified_results.json",
-     "sha256": "d4140ad39ffe",
-     "size": 307241
+     "sha256": "82083548cb14",
+     "size": 314532
     },
     {
      "path": "experiments/README.md",
@@ -13204,8 +13234,8 @@
     },
     {
      "path": "experiments/exp055_odd_lattice_sweep.py",
-     "sha256": "55da883ea4eb",
-     "size": 98550
+     "sha256": "e4a0e63f3faa",
+     "size": 99702
     },
     {
      "path": "experiments/exp056_odd_distance.py",
@@ -13249,8 +13279,8 @@
     },
     {
      "path": "experiments/exp063_reference_rebind.py",
-     "sha256": "8e9dbd9d94dc",
-     "size": 12156
+     "sha256": "6cececaf8886",
+     "size": 12585
     },
     {
      "path": "experiments/exp064_n210_promotions.py",
@@ -13553,6 +13583,11 @@
      "size": 6333
     },
     {
+     "path": "pre_statement_finish-binding-liang-row-b-run-prefix175-initial.md",
+     "sha256": "2b23c10c51c6",
+     "size": 8229
+    },
+    {
      "path": "pre_statement_n-270-closure-deep-target-20-re-screen-of-1-657-.md",
      "sha256": "1a8497ad98f8",
      "size": 5878
@@ -13561,6 +13596,41 @@
      "path": "pre_statement_n-270-gate-presentation-collapse-then-two-root-s.md",
      "sha256": "0766a766a6b7",
      "size": 7478
+    },
+    {
+     "path": "pre_statement_reconcile-exp-066-067-derived-summary-protocol-s.md",
+     "sha256": "9089d7dc159c",
+     "size": 7394
+    },
+    {
+     "path": "pre_statement_reconcile-the-historical-exp-055-screen-battery-.md",
+     "sha256": "32cff9e331e7",
+     "size": 6473
+    },
+    {
+     "path": "pre_statement_under-a-separate-allocation-execute-exactly-the-.md",
+     "sha256": "069450ff29a6",
+     "size": 7499
+    },
+    {
+     "path": "pre_statement_under-a-separate-allocation-integrate-only-the-2.md",
+     "sha256": "ee8879ef0da1",
+     "size": 8896
+    },
+    {
+     "path": "pre_statement_under-a-separate-allocation-scope-the-remaining-.md",
+     "sha256": "4e37365c2bcb",
+     "size": 11160
+    },
+    {
+     "path": "preregs/20260909T060332Z_b28210/pre_statement_bind-liang-row-b-run-the-remaining-9-prefix-runs.md",
+     "sha256": "420e903536af",
+     "size": 7028
+    },
+    {
+     "path": "preregs/20260909T063105Z_fd6e1e/pre_statement_finish-binding-liang-row-b-run-prefix175-initial.md",
+     "sha256": "7dfe5524d27e",
+     "size": 7380
     },
     {
      "path": "proofs/equations.md",
@@ -13579,13 +13649,13 @@
     },
     {
      "path": "reports/arxiv_metadata.json",
-     "sha256": "8072bb57d732",
-     "size": 14840
+     "sha256": "3045c5d7013d",
+     "size": 22554
     },
     {
      "path": "reports/arxiv_package.md",
-     "sha256": "af29b9a2f6e1",
-     "size": 19021
+     "sha256": "a69d1491941f",
+     "size": 22237
     },
     {
      "path": "reports/baseline_reproduction.md",
@@ -13809,8 +13879,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "1c0118188d30",
-     "size": 5496
+     "sha256": "58018a4c0ee7",
+     "size": 11052
     },
     {
      "path": "tests/test_artifact_manifest.py",
@@ -13909,8 +13979,8 @@
     },
     {
      "path": "tests/test_exp055_odd_lattice.py",
-     "sha256": "6b3f9a7fba09",
-     "size": 28643
+     "sha256": "cdaa53a19b58",
+     "size": 28045
     },
     {
      "path": "tests/test_exp056_odd_distance.py",
@@ -13944,8 +14014,8 @@
     },
     {
      "path": "tests/test_exp063_reference_rebind.py",
-     "sha256": "7aa3859ac343",
-     "size": 3429
+     "sha256": "6cc78f117da0",
+     "size": 7058
     },
     {
      "path": "tests/test_exp064_n210_promotions.py",
@@ -14018,12 +14088,12 @@
      "size": 211264
     }
    ],
-   "headline": "## QEC (2026-09-08) — DEEP TARGET-20 RE-SCREEN DECIDES 1,636 OF 1,657 $n=270$, $k=8$ RESIDUALS; LIANG ROW b BASE PAIR COMPLETE",
+   "headline": "## QEC (2026-09-10) — FULL147 k12 SCOPE CERTIFIED; NO NEW SEARCH",
    "material": "materials/qec",
    "page": "problems/qec.html",
-   "progress_header": "## QEC (2026-09-08) — DEEP TARGET-20 RE-SCREEN DECIDES 1,636 OF 1,657 $n=270$, $k=8$ RESIDUALS; LIANG ROW b BASE PAIR COMPLETE",
-   "sig": "f15e56c76827a3a8",
-   "updated": "2026-09-09T03:53:07Z"
+   "progress_header": "## QEC (2026-09-10) — FULL147 k12 SCOPE CERTIFIED; NO NEW SEARCH",
+   "sig": "1e786843973d5473",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "quant-trading/overview": {
    "bytes": 5070061,
@@ -14858,7 +14928,7 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "r55": {
-   "bytes": 8657464,
+   "bytes": 8657531,
    "domain": "math",
    "files": [
     {
@@ -21958,8 +22028,8 @@
     },
     {
      "path": "state.json",
-     "sha256": "f95d9ed313d6",
-     "size": 4747
+     "sha256": "5f792de19941",
+     "size": 4814
     },
     {
      "path": "tests/test_cayley_r55_search.py",
@@ -22086,8 +22156,8 @@
    "material": "materials/r55",
    "page": "problems/r55.html",
    "progress_header": "### R55 (2026-08-24d) — FIXED-FIVE CANDIDATE CENSUS EMPTY; FULL CERTIFICATION PENDING",
-   "sig": "9698997955655159",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "017300a96cb13bbd",
+   "updated": "2026-09-10T05:19:28Z"
   },
   "uc": {
    "bytes": 73585358,
@@ -25227,7 +25297,7 @@
    "updated": "2026-09-07T11:57:07Z"
   },
   "zeta5": {
-   "bytes": 51337,
+   "bytes": 51404,
    "domain": "math",
    "files": [
     {
@@ -25262,17 +25332,17 @@
     },
     {
      "path": "state.json",
-     "sha256": "0141bc26293a",
-     "size": 2502
+     "sha256": "c033d202f751",
+     "size": 2569
     }
    ],
    "headline": "### ZETA5-GATE2-SWEEP (2026-08-29) — THE TRIAGE'S FOUR-WEEK GATE IS ANSWERED FOR THE SWEPT LADDER: ZERO SURVIVORS IN 44 PROBES; BASELINE μ2 = 0.337537 NEVER BEATEN BY A NONDEGENERA",
    "material": "materials/zeta5",
    "page": "problems/zeta5.html",
    "progress_header": "### ZETA5-GATE2-SWEEP (2026-08-29) — THE TRIAGE'S FOUR-WEEK GATE IS ANSWERED FOR THE SWEPT LADDER: ZERO SURVIVORS IN 44 PROBES; BASELINE μ2 = 0.337537 NEVER BEATEN BY A NONDEGENERATE CANDIDATE; CAMPAIGN STOPS AT GATE 2 PER ITS OWN GO/NO-GO",
-   "sig": "9cbee61bb819a4e9",
-   "updated": "2026-09-09T02:39:08Z"
+   "sig": "288a7cada47c017a",
+   "updated": "2026-09-10T05:19:28Z"
   }
  },
- "updated": "2026-09-09T03:57:23Z"
+ "updated": "2026-09-10T05:19:28Z"
 }

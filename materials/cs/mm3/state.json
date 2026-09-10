@@ -34,13 +34,13 @@
       "next_action": "Harden the resume boundary before any census successor: validator must recompute side/sat/unsat tallies from ledger lines 1..n (chain-bound) instead of sum checks, and pin the canonical triple serialization json.dumps({'U','V','W'}, sort_keys=True) that reproduces cf9d004c...332c; certify with the compensated (sat+1, unsat-1) tamper plus the six existing tampers on the retained 520-line ledger."
     }
   },
-  "current_gate": "Sixth source S1_smirnov_repo_139 independently locked: 23 products, 139 nonzeros, ternary, sigma-zero counts (20,14,14). Full campaign FROZEN-INCONCLUSIVE at the sampled 64 MiB output-growth cap; 520 pair decisions, zero complete safe rows.",
-  "headline": "The sixth public source passes 58 independent checks, including all 729 standard tensor coefficients and separation from the frozen five under the registered action. Its full orientation census is unresolved. Prior exact ladder remains paper55 55, sun56 56, mws59 58, stapleton60 60, laderman23 62; no new addition-count record or universal no-54 claim.",
+  "current_gate": "H-MM3-SIGMA1-PAIRS-1 FROZEN-CERTIFIED: all 608 S1_smirnov_repo_139 sigma^1 positive-pair floor instances decided and freshly replayed, U/V/W=224/128/256, 8 SAT/600 independently UP-certified UNSAT; 52 retained U/UNSAT controls agree. The separate 520-line sigma^0 prefix is preserved; full sixth-source orientation census remains unresolved.",
+  "headline": "The sixth source now has a complete certified sigma^1 pair census at T=d: 608 decisions, with independent-encoder replay, fresh audit and approved Opus NO BLOCKER. Every UNSAT rests on original-CNF UP, not a Glucose proof log. Full orientation landscape remains unresolved; prior exact ladder paper55 55, sun56 56, mws59 58, stapleton60 60, laderman23 62 is unchanged. No new addition-count record or universal no-54 claim.",
   "id": "cs/mm3",
-  "latest_campaign": "20260905T100124Z_4e1069d8_da4f5d1086e0",
+  "latest_campaign": "20260910T014717Z_5f1b5fb1_136d5deadc31",
   "latest_campaign_verdict": "FROZEN-CERTIFIED",
   "latest_note": null,
-  "next_action": "Preregister a resource-compatible census/evidence strategy with independent replay before reusing the retained 520-pair prefix. Do not promote the partial checkpoint or restart the unchanged disk-growth pattern. Preserve the original frozen run and apply the low-impact local resource policy.",
+  "next_action": "Preregister a separately funded driver-free sigma^2 pair census for the locked sixth source using the already certified 608-instance sigma^2 registration, sealed pure-Python encoder and in-sandbox pysat at T=d, clause-evaluated SAT and independent UP/RUP UNSAT replay. Retain exact key/d/CNF-hash/sat/lb ledger in <=300-second / <=8-MiB chunks on one coordinator-assigned low-priority mini lane, with a fixed overall cap including review, audit and termination. Preserve the completed sigma^1 ledger and the original 520-line sigma^0 prefix; do not restart the stopped legacy supervisor or unchanged disk-growth driver. No sigma^0/2 transfer by assumed symmetry and no full-orientation or no-54 promotion from pair coverage.",
   "owner": "jinleic",
   "problem": "Additive complexity of rank-23 3x3 matmul",
   "schema": "target-state/1",
@@ -54,6 +54,86 @@
     "cs/mm3/campaigns/20260905T045503Z_bbba5a52_6c94aeba1afd/autonomy/finalize.json"
   ],
   "status": "active",
-  "updated_by": "cs-research-supervisor",
-  "updated_utc": "2026-09-05T10:15:01Z"
+  "updated_by": "owner-approved-institute-parallel-launch",
+  "updated_utc": "2026-09-10T04:59:44Z",
+  "lifecycle": {
+    "history": [
+      {
+        "from": null,
+        "to": "active",
+        "at": "2026-09-10T00:48:50Z",
+        "cause": "manual",
+        "reason": "Owner approved selecting and funding MM3 as the third parallel research topic; one bounded sigma1 census campaign using the certified encoder and retained controls; global cap explicitly approved at 21",
+        "evidence": [],
+        "actor": "owner:jinleic"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-10T00:48:50Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"expected_progress\": 0.3, \"runs_max\": 1, \"seconds_max\": 3600.0, \"value\": 3}",
+        "evidence": [],
+        "actor": "owner:jinleic"
+      },
+      {
+        "from": "active",
+        "to": "parked",
+        "at": "2026-09-10T03:01:12Z",
+        "cause": "budget",
+        "reason": "budget exhausted (runs 1/1) after gate progress; auto-refill ceiling reached or not enabled",
+        "evidence": [
+          "20260910T014717Z_5f1b5fb1_136d5deadc31"
+        ]
+      },
+      {
+        "from": "parked",
+        "to": "active",
+        "at": "2026-09-10T04:59:44Z",
+        "cause": "manual",
+        "reason": "Owner approved six additional institute runs with expensive Astra workers and independent Opus review. Allocate bounded mm3 continuation beginning with the registered sigma2 census, six additional campaign hours; preserve fixed objective deadlines, chunk limits, stopped legacy drivers and all claim restrictions. Global lifetime envelope increases from 21 to 27; other parked targets remain unchanged.",
+        "evidence": [
+          "cs/mm3/state.json",
+          "docs/knowledge-system/institute/cycles/20260910T013633Z_25f67e/report.md"
+        ],
+        "actor": "Main on explicit owner approval"
+      },
+      {
+        "from": "active",
+        "to": "active",
+        "at": "2026-09-10T04:59:44Z",
+        "cause": "budget-grant",
+        "reason": "allocation {\"runs_max\": 7, \"seconds_max\": 25200.0}",
+        "evidence": [
+          "cs/mm3/state.json",
+          "docs/knowledge-system/institute/cycles/20260910T013633Z_25f67e/report.md"
+        ],
+        "actor": "Main on explicit owner approval"
+      }
+    ],
+    "reason": "Owner approved six additional institute runs with expensive Astra workers and independent Opus review. Allocate bounded mm3 continuation beginning with the registered sigma2 census, six additional campaign hours; preserve fixed objective deadlines, chunk limits, stopped legacy drivers and all claim restrictions. Global lifetime envelope increases from 21 to 27; other parked targets remain unchanged.",
+    "evidence": [
+      "cs/mm3/state.json",
+      "docs/knowledge-system/institute/cycles/20260910T013633Z_25f67e/report.md"
+    ]
+  },
+  "budget": {
+    "runs_max": 7,
+    "seconds_max": 25200.0,
+    "tokens_max": null,
+    "runs_used": 1,
+    "tokens_used": 0,
+    "seconds_used": 2388.561,
+    "tokens_unreported_runs": 1,
+    "seconds_unreported_runs": 0,
+    "alloc_runs": 6,
+    "alloc_seconds": 22811.439159,
+    "gate_at_last_progress": "H-MM3-SIGMA1-PAIRS-1 FROZEN-CERTIFIED: all 608 S1_smirnov_repo_139 sigma^1 positive-pair floor instances decided and freshly replayed, U/V/W=224/128/256, 8 SAT/600 independently UP-certified UNSAT; 52 retained U/UNSAT controls agree. The separate 520-line sigma^0 prefix is preserved; full sixth-source orientation census remains unresolved."
+  },
+  "priority": {
+    "value": 3,
+    "expected_progress": 0.3,
+    "blocker": "none",
+    "blocker_detail": null
+  }
 }

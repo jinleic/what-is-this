@@ -9,7 +9,7 @@
   "headline": "OpenAI (C)+(D) claim VERIFIED formally (FROZEN-CERTIFIED, run 20260908T193739Z_14ac2c45_44bf28712a9f): Lean repo builds in 22min, statements match CMI verbatim incl. errata, zero sorry/axiom holes, standard axioms only; route is a forced Type-II anisotropic vortex in the obstruction map's open rows",
   "next_action": "None: target closed 2026-09-09 per owner \u2014 verification banked (FROZEN-CERTIFIED); independent kernel re-check and community review proceed outside the institute",
   "owner": "jinleic",
-  "updated_utc": "2026-09-09T02:15:37Z",
+  "updated_utc": "2026-09-09T06:03:32Z",
   "updated_by": "NsRunner",
   "sources": [
     "math/ns/README.md"
@@ -74,7 +74,9 @@
     "runs_used": 1,
     "tokens_used": 0,
     "seconds_used": 2012.0,
-    "gate_at_last_progress": "Independent verification of the OpenAI (C)+(D) Lean formalization complete (FROZEN-CERTIFIED); next gate is independent-checker (nanoda/Comparator) re-confirmation and mathematical community review"
+    "gate_at_last_progress": "Independent verification of the OpenAI (C)+(D) Lean formalization complete (FROZEN-CERTIFIED); next gate is independent-checker (nanoda/Comparator) re-confirmation and mathematical community review",
+    "tokens_unreported_runs": 1,
+    "seconds_unreported_runs": 0
   },
   "priority": {
     "value": 5,

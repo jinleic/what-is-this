@@ -9,7 +9,7 @@
   "headline": "Known cat4/2,cat6/3,cat8/6 exact witnesses reproduced; seven rank5 seeds found none, eighth hit cell wall limit; FROZEN-INCONCLUSIVE.",
   "next_action": "Do not extend unchanged SA or launch LLM search. Re-enter only with a material structural representation and a new preregistration, exact witness verification and strongest non-AI controls.",
   "owner": "jinleic",
-  "updated_utc": "2026-09-08T15:03:03Z",
+  "updated_utc": "2026-09-09T06:03:32Z",
   "sources": [
     "physics/stabrank-witness/README.md",
     "physics/RESULTS.md",
@@ -37,7 +37,9 @@
     "runs_used": 0,
     "tokens_used": 0,
     "seconds_used": 0.0,
-    "gate_at_last_progress": "magic-cat-headroom: stopped, rank C for unchanged SA"
+    "gate_at_last_progress": "magic-cat-headroom: stopped, rank C for unchanged SA",
+    "tokens_unreported_runs": 0,
+    "seconds_unreported_runs": 0
   },
   "priority": {
     "value": 1,

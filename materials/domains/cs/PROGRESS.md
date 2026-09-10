@@ -4,6 +4,13 @@ Newest first. One entry per session. Every claim links to its verification.
 
 ---
 
+## 2026-09-10 — `mm3/` H-MM3-SIGMA1-PAIRS-1 closed, complete finite pair census
+
+- Run [`20260910T014717Z_5f1b5fb1_136d5deadc31`](/Users/jinleic/jinleic-workspace/cs/mm3/campaigns/20260910T014717Z_5f1b5fb1_136d5deadc31/RESULTS.md): **FROZEN-CERTIFIED** for all **608 sigma^1 pair instances** (U/V/W=224/128/256), at T=d: **8 SAT**, **600 UNSAT**. The exact resumable key/d/CNF-hash/sat/lb ledger is complete, with clause-evaluated models and independent original-CNF UP refutations. Every UNSAT raw Glucose proof log was empty; no solver-proof-log certification is implied.
+- All **52 controls agree**, all **U-side UNSAT**. Independent-encoder replay and fresh exact audit each rechecked 608/608 with positive/negative checker controls and ledger-tamper controls passing. The registration oracle was sealed before first launch and confirmed byte-identical to the prior certified artifact. The retained **520-line sigma^0 prefix** and every frozen predecessor remain untouched.
+- Approved **anthropic/claude-opus-5** reviewer **MM3Sigma1.MM3OpusReview** returned **NO BLOCKER**, including the fresh audit and optional single-instance structural probe. Three primary startup/certificate-dispatch failures and one diagnostic import failure were preserved; repairs were additive/sealed, with sandbox system/uv-cache read scope disclosed. Five successful decision chunks stayed below 300 s/8 MiB each on exclusively assigned mini-0; all replays used the same original objective/deadline. Full measured cycle usage includes preparation, failures, review, audit, transfer and closure, not merely solver time.
+- No new addition-count record, orientation-row completeness, global optimum, universal no-54, or sigma^0/2 census follows, even if all 608 pairs complete. The sixth-source full orientation landscape remains open; no historical-prefix or full-census promotion. Next work requires a separately preregistered bounded sigma^2 pair census, not a restart of the legacy disk-growth supervisor.
+
 ## 2026-09-06 — exact AES XOR headroom assay stopped
 
 The strongest located primary is Jean's 88-XOR circuit

@@ -4917,3 +4917,15 @@ Next registered-work proposal: Re-run the review verifier scratch/autonomy/20260
 Evidence: [`mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0`](mm3/campaigns/20260905T100124Z_4e1069d8_da4f5d1086e0/autonomy/finalize.json). The label applies only to the registered claim; no broader frontier improvement is implied.
 
 Next registered-work proposal: Driver-free sigma^1 pair census chunk 1 (H-MM3-SIGMA1-PAIRS-1): sealed pure-Python encoder (now doubly validated, 1180 oracle hashes) + in-sandbox pysat at T=d for the 608 sigma^1 instances; SAT models verified by clause evaluation, UNSAT accepted only after an own UP/RUP refutation replay; resumable ledger of (key,d,cnf_sha256,sat,lb) in <=300 s / <=8 MiB chunks, with the 52 retained sigma^1 decisions (lines 609-660 of attempt-3) as cross-instrument controls that must agree.
+
+## `mm3/` driver-free sigma^1 pair census certified, 2026-09-10
+
+Run [`20260910T014717Z_5f1b5fb1_136d5deadc31`](/Users/jinleic/jinleic-workspace/cs/mm3/campaigns/20260910T014717Z_5f1b5fb1_136d5deadc31/RESULTS.md) is **FROZEN-CERTIFIED** for exactly **H-MM3-SIGMA1-PAIRS-1**: all **608** registered sigma^1 positive-pair instances at T=d for locked source S1_smirnov_repo_139, U/V/W=224/128/256, with **8 SAT (lb=d)** and **600 UNSAT (lb=d+1)**. Every SAT model satisfies every CNF clause. All 600 UNSAT certificates are **independent original-CNF unit-propagation refutations**; Glucose raw proof logs were empty, so none is a solver-proof-log certificate.
+
+The sealed pure-Python encoder plus in-sandbox python-sat 1.8.dev24/Glucose3 produced a complete hash/chained resumable ledger in five bounded chunks. All **52 retained controls agree**, but every historical control is **side-U UNSAT**; SAT and V/W have no historical control and rely on fresh certificate checks. Independent-encoder replay and the [fresh exact audit](/Users/jinleic/jinleic-workspace/cs/mm3/campaigns/20260910T014717Z_5f1b5fb1_136d5deadc31/AUDIT.md) each rechecked all 608. The prior registration oracle was hash-sealed before first launch, not in the prereg text; independent byte-identity to the earlier certified artifact was confirmed. The retained **520-line sigma^0 prefix** is unchanged and unpromoted.
+
+[Independent review](/Users/jinleic/jinleic-workspace/cs/mm3/campaigns/20260910T014717Z_5f1b5fb1_136d5deadc31/REVIEW.md), **anthropic/claude-opus-5**, handle **MM3Sigma1.MM3OpusReview**, found **NO BLOCKER / no scientific veto** after primary evidence and the fresh audit. Three pre-decision failures and one optional diagnostic import failure are preserved; additive sealed repairs and read-only system/uv-cache allowances are disclosed. A single review-driven probe observed one unrepresentable required class for 1|U|24|6, explaining only that instance's UP conflict. Every invocation stayed below 300 s/8 MiB on the sole mini-0 lane.
+
+No new addition-count record, orientation-row completeness, global optimum,
+universal no-54, or sigma^0/2 census follows, even if all 608 pairs complete.
+The full sixth-source orientation landscape remains unresolved; record 55 and the prior fixed-orientation ladder are unchanged.

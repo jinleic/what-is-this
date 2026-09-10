@@ -4,6 +4,14 @@ Newest first. One entry per session. Every claim links to its verification.
 
 ---
 
+## 2026-09-10 — qlops: Revision-9 shipped F-Z4 four-cell agreement, independently reviewed
+
+- Run [`20260910T014759Z_005434a3_4a9842de64ef`](qlops/campaigns/20260910T014759Z_005434a3_4a9842de64ef/RESULTS.md), gate `optional-follow-up-new-cycle-would-need-funding-`, closed **FROZEN-CERTIFIED: four-cell finite statistical agreement only**. The funded Revision-9 amendment sampled the four actual shipped grown d=9 artifacts directly, not the Revision-8 rebuild: 25,000,000 primary shots, all four author-count schedules, 8/8 comparisons within unchanged |z|<=3.53, zero undefined/decisive.
+- The motivated grown@0.0006 acceptance excess is absent in the new fixed-seed shipped sample: acceptance 0.461656, z=+0.388844, versus preserved R8 rebuilt z=+3.7898098460504315. Descriptive evidence only; it neither identifies the historical generator nor excludes Monte-Carlo fluctuation as an account of R8's excess.
+- [Fresh audit](qlops/campaigns/20260910T014759Z_005434a3_4a9842de64ef/AUDIT.md): another 25,000,000 shots replayed all four full ledgers exactly; fresh smoke and all eight comparisons agree. The reviewer-requested supplement measures 14,391 DEM error instructions and 1,030 shipped/rebuilt measurements in every cell. All five mini-pro monitor attempts are terminal under the original objective/deadline; two operational failures and the extra analysis-only/supplement argv forms are disclosed, without rerunning or rewriting any completed primary row.
+- [Independent review](qlops/campaigns/20260910T014759Z_005434a3_4a9842de64ef/REVIEW.md): actual reviewer anthropic/claude-opus-5, handle QLopsRevision9.QLopsR9OpusReview; evidence-first conditional acceptance followed by inspection of full replay, supplement and disclosures; all five findings resolved before verdict/freeze/close.
+- Scope stays finite and approximate: no twelve-cell certification, no combined sequential familywise guarantee, R8 verdict unchanged; Gate A/B unchanged; paper d=7/physical c~300 remain **NOT-REPRODUCED**. No additional campaign or primary shots authorized by this result.
+
 ## 2026-09-09 — qldpc-dec: owner cancellation, not a scientific negative
 
 **qldpc-dec GB9 owner stop (2026-09-09):** run
